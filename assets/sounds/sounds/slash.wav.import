@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slash.wav-4bd4607c8d3822df001add8558b75557.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/slash.wav"
+dest_files=[ "res://.import/slash.wav-4bd4607c8d3822df001add8558b75557.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

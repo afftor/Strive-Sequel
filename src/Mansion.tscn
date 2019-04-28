@@ -1,0 +1,346 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://src/Mansion.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=3]
+[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=4]
+[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=5]
+[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=6]
+[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=7]
+[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=8]
+[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=9]
+[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=10]
+[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=11]
+[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=14]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=15]
+[ext_resource path="res://src/SlaveList.gd" type="Script" id=16]
+[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=20]
+[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=21]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=23]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 2 )
+
+[node name="InventoryButton" type="Button" parent="."]
+margin_left = 23.3762
+margin_top = 999.333
+margin_right = 241.376
+margin_bottom = 1068.33
+text = "Inventory"
+
+[node name="TaskButton" type="Button" parent="."]
+margin_left = 273.376
+margin_top = 999.333
+margin_right = 491.376
+margin_bottom = 1068.33
+text = "Tasks"
+
+[node name="CraftButton" type="Button" parent="."]
+margin_left = 513.376
+margin_top = 999.333
+margin_right = 731.376
+margin_bottom = 1068.33
+text = "Craft"
+
+[node name="TimeNode" type="TextureRect" parent="."]
+margin_right = 313.0
+margin_bottom = 159.0
+texture = ExtResource( 3 )
+
+[node name="Date" type="Label" parent="TimeNode"]
+margin_left = 11.0
+margin_top = 9.0
+margin_right = 156.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 0.597656, 0.428544, 0.0280151, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Date"
+
+[node name="0speed" type="TextureButton" parent="TimeNode"]
+margin_left = 152.0
+margin_top = -1.0
+margin_right = 205.0
+margin_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+
+[node name="1speed" type="TextureButton" parent="TimeNode"]
+margin_left = 203.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+
+[node name="2speed" type="TextureButton" parent="TimeNode"]
+margin_left = 254.0
+margin_top = -1.0
+margin_right = 304.0
+margin_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+
+[node name="HidePanel" type="Panel" parent="TimeNode"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.77898 )
+margin_left = -1.0
+margin_right = 312.0
+margin_bottom = 158.0
+
+[node name="TimeWheel" type="TextureRect" parent="TimeNode"]
+show_behind_parent = true
+margin_left = 2.0
+margin_top = -153.0
+margin_right = 309.0
+margin_bottom = 154.0
+rect_rotation = 360.0
+rect_pivot_offset = Vector2( 153.5, 153.5 )
+mouse_filter = 2
+texture = ExtResource( 13 )
+
+[node name="TaskProgress" type="Panel" parent="."]
+editor/display_folded = true
+margin_left = 19.0
+margin_top = 165.156
+margin_right = 425.0
+margin_bottom = 410.156
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TaskProgress"]
+margin_left = 3.89606
+margin_top = 9.74008
+margin_right = 399.896
+margin_bottom = 214.74
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskProgress/ScrollContainer"]
+margin_right = 396.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Panel" parent="TaskProgress/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 396.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="TaskProgress/ScrollContainer/VBoxContainer/Button"]
+margin_left = 3.06094
+margin_top = 11.9723
+margin_right = 135.061
+margin_bottom = 35.9723
+text = "Task Name"
+
+[node name="ProgressBar" type="ProgressBar" parent="TaskProgress/ScrollContainer/VBoxContainer/Button"]
+margin_left = 139.325
+margin_top = 11.0
+margin_right = 328.325
+margin_bottom = 35.0
+percent_visible = false
+
+[node name="icon" type="TextureRect" parent="TaskProgress/ScrollContainer/VBoxContainer/Button"]
+margin_left = 334.539
+margin_top = -5.56581
+margin_right = 399.539
+margin_bottom = 54.4342
+texture = ExtResource( 14 )
+expand = true
+
+[node name="SlaveList" type="Panel" parent="."]
+editor/display_folded = true
+margin_left = 1221.0
+margin_top = 64.0
+margin_right = 1905.0
+margin_bottom = 878.0
+theme = ExtResource( 15 )
+script = ExtResource( 16 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlaveList"]
+margin_left = 13.0
+margin_top = 20.0
+margin_right = 661.0
+margin_bottom = 801.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveList/ScrollContainer"]
+margin_right = 648.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="SlaveList/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 648.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="icon" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 17 )
+expand = true
+
+[node name="state" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 392.0
+margin_right = 442.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="en" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 442.0
+margin_right = 492.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+hint_tooltip = "TOOLTIPENERGY"
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/en"]
+margin_left = 1.39673
+margin_top = 13.7767
+margin_right = 43.3967
+margin_bottom = 37.7767
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+
+[node name="mp" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 492.0
+margin_right = 542.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/mp"]
+margin_left = 1.39673
+margin_top = 13.7767
+margin_right = 43.3967
+margin_bottom = 37.7767
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+
+[node name="obed" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 542.0
+margin_right = 592.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+hint_tooltip = "TOOLTIPOBEDIENCE"
+mouse_filter = 2
+texture = ExtResource( 19 )
+expand = true
+
+[node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/obed"]
+visible = false
+margin_left = 1.39673
+margin_top = 13.7767
+margin_right = 43.3967
+margin_bottom = 37.7767
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+
+[node name="fear" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 592.0
+margin_right = 642.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+hint_tooltip = "TOOLTIPFEAR"
+mouse_filter = 2
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/fear"]
+visible = false
+margin_left = 1.39673
+margin_top = 13.7767
+margin_right = 43.3967
+margin_bottom = 37.7767
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+
+[node name="name" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 58.499
+margin_top = 12.8336
+margin_right = 430.499
+margin_bottom = 36.8336
+text = "Name Race Age Class"
+
+[node name="SlavePanel" parent="." instance=ExtResource( 21 )]
+visible = false
+margin_left = 32.1478
+margin_top = 96.6894
+margin_right = 1350.15
+margin_bottom = 960.689
+
+[node name="Inventory" parent="." instance=ExtResource( 22 )]
+visible = false
+margin_left = 28.9677
+margin_top = 144.582
+margin_right = 677.968
+margin_bottom = 932.582
+
+[node name="CraftPanel" parent="." instance=ExtResource( 23 )]
+visible = false
+
+[node name="TaskPanel" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 630.143
+margin_top = 230.829
+margin_right = 1351.14
+margin_bottom = 768.829
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TaskPanel"]
+margin_left = 22.0
+margin_top = 274.0
+margin_right = 688.0
+margin_bottom = 374.0
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TaskPanel/ScrollContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="Button" type="TextureButton" parent="TaskPanel/ScrollContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="TaskPanel/ScrollContainer/HBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+expand = true
+
+[node name="Button" type="Button" parent="TaskPanel"]
+margin_left = 266.222
+margin_top = 461.684
+margin_right = 453.222
+margin_bottom = 508.684
+

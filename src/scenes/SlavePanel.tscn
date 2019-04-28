@@ -1,0 +1,1008 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/SlavePanel.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/gui icons/wit_factor.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/charm_factor.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/sex_factor.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/gui icons/brave_factor.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/gui icons/dirt.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/gui icons/food_love.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/gui icons/food_hate.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/iconsclasses/Worker.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/iconsclasses/Blacksmith.png" type="Texture" id=17]
+[ext_resource path="res://src/scenes/ClassPanel.gd" type="Script" id=18]
+[ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=27]
+
+[node name="SlavePanel" type="Panel"]
+margin_left = 30.0973
+margin_top = 6.46533
+margin_right = 1348.1
+margin_bottom = 870.465
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="name" type="Label" parent="."]
+margin_left = 29.1887
+margin_top = 224.431
+margin_right = 191.189
+margin_bottom = 249.431
+text = "Name"
+align = 1
+
+[node name="currentwork" type="Label" parent="."]
+margin_left = 1110.86
+margin_top = 111.456
+margin_right = 1272.86
+margin_bottom = 136.456
+text = "task"
+align = 1
+
+[node name="exp" type="Label" parent="."]
+visible = false
+margin_left = 1110.86
+margin_top = 71.4558
+margin_right = 1272.86
+margin_bottom = 96.4558
+text = "Exp"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 245.77
+margin_top = 142.911
+margin_right = 1053.77
+margin_bottom = 620.911
+bbcode_enabled = true
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 13.9868
+margin_top = 13.078
+margin_right = 213.987
+margin_bottom = 213.078
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Body" type="TextureRect" parent="."]
+margin_left = 1348.27
+margin_top = 0.306641
+margin_right = 1874.27
+margin_bottom = 859.307
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="base_stats" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 233.0
+margin_top = 25.0
+margin_right = 433.0
+margin_bottom = 118.0
+custom_constants/separation = 9
+
+[node name="hp" type="ProgressBar" parent="base_stats"]
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="base_stats/hp"]
+margin_right = 199.0
+margin_bottom = 24.0
+text = "1.100"
+align = 1
+
+[node name="energy" type="ProgressBar" parent="base_stats"]
+margin_top = 34.0
+margin_right = 200.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="base_stats/energy"]
+margin_right = 199.0
+margin_bottom = 24.0
+text = "1.100"
+align = 1
+
+[node name="mp" type="ProgressBar" parent="base_stats"]
+margin_top = 68.0
+margin_right = 200.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="base_stats/mp"]
+margin_right = 199.0
+margin_bottom = 24.0
+text = "1.100"
+align = 1
+
+[node name="progress" type="HBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 440.587
+margin_top = 53.1468
+margin_right = 1303.59
+margin_bottom = 89.1468
+custom_constants/separation = 21
+
+[node name="physics" type="Label" parent="progress"]
+margin_top = 5.0
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 25 )
+mouse_filter = 0
+text = "physics"
+align = 1
+
+[node name="wits" type="Label" parent="progress"]
+margin_left = 221.0
+margin_top = 5.0
+margin_right = 421.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 25 )
+mouse_filter = 0
+text = "wits"
+align = 1
+
+[node name="charm" type="Label" parent="progress"]
+margin_left = 442.0
+margin_top = 5.0
+margin_right = 642.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 25 )
+mouse_filter = 0
+text = "charm"
+align = 1
+
+[node name="sexuals" type="Label" parent="progress"]
+margin_left = 663.0
+margin_top = 5.0
+margin_right = 863.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 25 )
+mouse_filter = 0
+text = "sexuals"
+align = 1
+
+[node name="factors" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 66.2053
+margin_top = 259.795
+margin_right = 187.205
+margin_bottom = 574.795
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 0
+
+[node name="base_exp" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_right = 35.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/base_exp"]
+margin_left = 34.0
+margin_top = 7.0
+margin_right = 111.0
+margin_bottom = 31.0
+text = "0"
+align = 1
+
+[node name="growth_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 35.0
+margin_right = 35.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/growth_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="physics_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 70.0
+margin_right = 35.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/physics_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="magic_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 105.0
+margin_right = 35.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/magic_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="wits_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 140.0
+margin_right = 35.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/wits_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="charm_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 175.0
+margin_right = 35.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/charm_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="sexuals_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 210.0
+margin_right = 35.0
+margin_bottom = 245.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/sexuals_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="tame_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 245.0
+margin_right = 35.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/tame_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="brave_factor" type="TextureRect" parent="factors"]
+editor/display_folded = true
+margin_top = 280.0
+margin_right = 35.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/brave_factor"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="dirtiness" type="TextureRect" parent="factors"]
+editor/display_folded = true
+visible = false
+margin_top = 280.0
+margin_right = 35.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 13 )
+expand = true
+
+[node name="Label" type="Label" parent="factors/dirtiness"]
+margin_left = 59.2385
+margin_top = 7.0
+margin_right = 219.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="mentality" type="VBoxContainer" parent="."]
+margin_left = 15.0
+margin_top = 582.0
+margin_right = 215.0
+margin_bottom = 879.0
+custom_constants/separation = 9
+
+[node name="obedience" type="ProgressBar" parent="mentality"]
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="mentality/obedience"]
+margin_left = 3.0
+margin_right = 198.0
+margin_bottom = 24.0
+text = "1/100"
+align = 1
+
+[node name="fear" type="ProgressBar" parent="mentality"]
+margin_top = 34.0
+margin_right = 200.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="mentality/fear"]
+margin_left = 3.0
+margin_right = 198.0
+margin_bottom = 24.0
+text = "1/100"
+align = 1
+
+[node name="lust" type="ProgressBar" parent="mentality"]
+margin_top = 68.0
+margin_right = 200.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="mentality/lust"]
+margin_left = 3.0
+margin_right = 198.0
+margin_bottom = 24.0
+text = "1/100"
+align = 1
+
+[node name="loyal" type="ProgressBar" parent="mentality"]
+margin_top = 102.0
+margin_right = 200.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="mentality/loyal"]
+margin_left = 3.0
+margin_right = 198.0
+margin_bottom = 24.0
+text = "1/100"
+align = 1
+
+[node name="food_love" type="TextureRect" parent="mentality"]
+margin_top = 136.0
+margin_right = 35.0
+margin_bottom = 171.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Label" type="Label" parent="mentality/food_love"]
+margin_left = 36.5083
+margin_top = 8.41333
+margin_right = 236.508
+margin_bottom = 32.4133
+text = "Food Pref: Grai"
+autowrap = true
+
+[node name="food_hate" type="TextureRect" parent="mentality"]
+margin_top = 180.0
+margin_right = 35.0
+margin_bottom = 215.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 15 )
+expand = true
+
+[node name="Label" type="Label" parent="mentality/food_hate"]
+margin_left = 36.5083
+margin_top = 8.41333
+margin_right = 236.508
+margin_bottom = 32.4133
+text = "Food Pref: Grai"
+autowrap = true
+
+[node name="job" type="VBoxContainer" parent="."]
+margin_left = 1093.0
+margin_top = 155.0
+margin_right = 1293.0
+margin_bottom = 248.0
+custom_constants/separation = 9
+
+[node name="energy" type="ProgressBar" parent="job"]
+visible = false
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="job/energy"]
+margin_right = 199.0
+margin_bottom = 24.0
+text = "1.100"
+align = 1
+
+[node name="fatigue" type="ProgressBar" parent="job"]
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="job/fatigue"]
+margin_right = 199.0
+margin_bottom = 24.0
+text = "1.100"
+align = 1
+
+[node name="exhaustion" type="ProgressBar" parent="job"]
+margin_top = 34.0
+margin_right = 200.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 200, 25 )
+percent_visible = false
+
+[node name="Label" type="Label" parent="job/exhaustion"]
+margin_right = 199.0
+margin_bottom = 24.0
+text = "1.100"
+align = 1
+
+[node name="traitslabel" type="Label" parent="."]
+margin_left = 279.189
+margin_top = 654.431
+margin_right = 441.189
+margin_bottom = 679.431
+text = "Traits"
+align = 1
+
+[node name="traits" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 263.0
+margin_top = 682.0
+margin_right = 463.0
+margin_bottom = 830.0
+custom_constants/separation = 9
+alignment = 1
+
+[node name="Button" type="Label" parent="traits"]
+visible = false
+margin_top = 62.0
+margin_right = 200.0
+margin_bottom = 86.0
+text = "1.100"
+align = 1
+
+[node name="JobButton" type="Button" parent="."]
+margin_left = 1096.42
+margin_top = 278.098
+margin_right = 1288.42
+margin_bottom = 328.098
+text = "Job"
+
+[node name="UseButton" type="Button" parent="."]
+margin_left = 1096.42
+margin_top = 338.098
+margin_right = 1288.42
+margin_bottom = 388.098
+text = "Use Skill"
+
+[node name="GearButton" type="Button" parent="."]
+margin_left = 1096.42
+margin_top = 398.098
+margin_right = 1288.42
+margin_bottom = 448.098
+text = "Gear"
+
+[node name="CustmizeButton" type="Button" parent="."]
+margin_left = 1096.42
+margin_top = 458.098
+margin_right = 1288.42
+margin_bottom = 508.098
+text = "Customize"
+
+[node name="ClassButton" type="Button" parent="."]
+margin_left = 1096.42
+margin_top = 518.098
+margin_right = 1288.42
+margin_bottom = 568.098
+text = "Class"
+
+[node name="professions" type="GridContainer" parent="."]
+margin_left = 12.0
+margin_top = 864.0
+margin_right = 868.0
+margin_bottom = 964.0
+grow_horizontal = 0
+grow_vertical = 0
+columns = 8
+
+[node name="Button" type="TextureRect" parent="professions"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="class_learn" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 618.737
+margin_top = 13.4883
+margin_right = 1201.74
+margin_bottom = 860.488
+
+[node name="categories" type="VBoxContainer" parent="class_learn"]
+margin_left = 23.4036
+margin_top = 27.161
+margin_right = 100.404
+margin_bottom = 441.161
+
+[node name="all" type="Button" parent="class_learn/categories"]
+margin_right = 77.0
+margin_bottom = 30.0
+toggle_mode = true
+text = "All"
+
+[node name="social" type="Button" parent="class_learn/categories"]
+margin_top = 34.0
+margin_right = 77.0
+margin_bottom = 64.0
+toggle_mode = true
+text = "Soc"
+
+[node name="labor" type="Button" parent="class_learn/categories"]
+margin_top = 68.0
+margin_right = 77.0
+margin_bottom = 98.0
+toggle_mode = true
+text = "Lab"
+
+[node name="sexual" type="Button" parent="class_learn/categories"]
+margin_top = 102.0
+margin_right = 77.0
+margin_bottom = 132.0
+toggle_mode = true
+text = "Sex"
+
+[node name="combat" type="Button" parent="class_learn/categories"]
+margin_top = 136.0
+margin_right = 77.0
+margin_bottom = 166.0
+toggle_mode = true
+text = "Com"
+
+[node name="magic" type="Button" parent="class_learn/categories"]
+margin_top = 170.0
+margin_right = 77.0
+margin_bottom = 200.0
+toggle_mode = true
+text = "Mag"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="class_learn"]
+margin_left = 127.0
+margin_top = 50.0
+margin_right = 514.0
+margin_bottom = 752.0
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="class_learn/ScrollContainer"]
+columns = 4
+
+[node name="Button" type="TextureButton" parent="class_learn/ScrollContainer/GridContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+
+[node name="icon" type="TextureRect" parent="class_learn/ScrollContainer/GridContainer/Button"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 17 )
+expand = true
+
+[node name="name" type="Label" parent="class_learn/ScrollContainer/GridContainer/Button"]
+margin_left = -1.80499
+margin_top = 1.80499
+margin_right = 97.195
+margin_bottom = 26.805
+text = "Name"
+align = 1
+
+[node name="Label" type="Label" parent="class_learn"]
+margin_left = 118.897
+margin_top = 12.4618
+margin_right = 472.897
+margin_bottom = 37.4618
+text = "Professions: "
+align = 1
+
+[node name="ClassPanel" type="Panel" parent="class_learn"]
+visible = false
+margin_left = -132.0
+margin_top = -5.82666
+margin_right = 763.0
+margin_bottom = 687.173
+script = ExtResource( 18 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="class_learn/ClassPanel"]
+margin_left = 182.0
+margin_top = 23.0076
+margin_right = 826.0
+margin_bottom = 277.008
+bbcode_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="class_learn/ClassPanel"]
+margin_left = 22.2074
+margin_top = 16.6556
+margin_right = 172.207
+margin_bottom = 166.656
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Unlock" type="Button" parent="class_learn/ClassPanel"]
+margin_left = 379.409
+margin_top = 623.347
+margin_right = 510.409
+margin_bottom = 678.347
+text = "Unlock"
+
+[node name="SocialSkills" type="ScrollContainer" parent="class_learn/ClassPanel"]
+editor/display_folded = true
+margin_left = 33.0
+margin_top = 362.0
+margin_right = 872.0
+margin_bottom = 462.0
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="class_learn/ClassPanel/SocialSkills"]
+margin_right = 839.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Button" type="TextureRect" parent="class_learn/ClassPanel/SocialSkills/HBoxContainer"]
+visible = false
+margin_left = 369.0
+margin_right = 469.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="CombatSkills" type="ScrollContainer" parent="class_learn/ClassPanel"]
+editor/display_folded = true
+margin_left = 33.0
+margin_top = 505.0
+margin_right = 872.0
+margin_bottom = 605.0
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="class_learn/ClassPanel/CombatSkills"]
+margin_right = 839.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Button" type="TextureRect" parent="class_learn/ClassPanel/CombatSkills/HBoxContainer"]
+visible = false
+margin_left = 369.0
+margin_right = 469.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="SocialLabel" type="Label" parent="class_learn/ClassPanel"]
+margin_left = 390.0
+margin_top = 330.0
+margin_right = 513.0
+margin_bottom = 355.0
+text = "Social Skills"
+
+[node name="CombatLabel" type="Label" parent="class_learn/ClassPanel"]
+margin_left = 380.0
+margin_top = 476.0
+margin_right = 525.0
+margin_bottom = 501.0
+text = "Combat Skills"
+
+[node name="ExpLabel" type="Label" parent="class_learn/ClassPanel"]
+margin_left = 28.0
+margin_top = 634.0
+margin_right = 322.0
+margin_bottom = 658.0
+text = "Exp : "
+
+[node name="CheckBox" type="CheckBox" parent="class_learn"]
+margin_left = 200.023
+margin_top = 800.242
+margin_right = 391.023
+margin_bottom = 832.242
+text = "Show Locked"
+
+[node name="job_panel" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 294.382
+margin_top = 41.197
+margin_right = 1312.39
+margin_bottom = 841.197
+
+[node name="ScrollContainer" type="ScrollContainer" parent="job_panel"]
+margin_left = 22.0
+margin_top = 24.0
+margin_right = 340.0
+margin_bottom = 741.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="job_panel/ScrollContainer"]
+margin_right = 318.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="job_panel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 318.0
+margin_bottom = 30.0
+toggle_mode = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="job_panel"]
+margin_left = 450.952
+margin_top = 63.1599
+margin_right = 940.952
+margin_bottom = 268.16
+bbcode_enabled = true
+
+[node name="interactions" type="HSlider" parent="job_panel"]
+visible = false
+margin_left = 482.801
+margin_top = 747.812
+margin_right = 892.801
+margin_bottom = 779.812
+ticks_on_borders = true
+
+[node name="iteractionslabel" type="Label" parent="job_panel"]
+visible = false
+margin_left = 499.825
+margin_top = 720.815
+margin_right = 874.825
+margin_bottom = 745.815
+text = "Days"
+align = 1
+
+[node name="resourcelabel" type="Label" parent="job_panel"]
+margin_left = 532.843
+margin_top = 352.503
+margin_right = 859.843
+margin_bottom = 376.503
+text = "Select Desired Resources"
+align = 1
+
+[node name="ResourceOptions" type="HBoxContainer" parent="job_panel"]
+margin_left = 460.002
+margin_top = 385.23
+margin_right = 954.002
+margin_bottom = 485.23
+
+[node name="Button" type="TextureButton" parent="job_panel/ResourceOptions"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_vertical = 0
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 21 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="job_panel/ResourceOptions/Button"]
+show_behind_parent = true
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 90.0
+margin_bottom = 90.0
+mouse_filter = 2
+texture = ExtResource( 22 )
+expand = true
+
+[node name="number" type="Label" parent="job_panel/ResourceOptions/Button"]
+margin_left = 12.0
+margin_top = 68.0
+margin_right = 90.0
+margin_bottom = 92.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 1
+
+[node name="restup" type="TextureButton" parent="job_panel"]
+margin_left = 509.51
+margin_top = 554.774
+margin_right = 549.51
+margin_bottom = 594.774
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+expand = true
+
+[node name="workup" type="TextureButton" parent="job_panel"]
+margin_left = 669.51
+margin_top = 554.287
+margin_right = 709.51
+margin_bottom = 594.287
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+expand = true
+
+[node name="joyup" type="TextureButton" parent="job_panel"]
+margin_left = 829.51
+margin_top = 554.287
+margin_right = 869.51
+margin_bottom = 594.287
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+expand = true
+
+[node name="restdown" type="TextureButton" parent="job_panel"]
+margin_left = 509.51
+margin_top = 640.941
+margin_right = 549.51
+margin_bottom = 680.941
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
+expand = true
+
+[node name="workdown" type="TextureButton" parent="job_panel"]
+margin_left = 669.51
+margin_top = 640.941
+margin_right = 709.51
+margin_bottom = 680.941
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
+expand = true
+
+[node name="joydown" type="TextureButton" parent="job_panel"]
+margin_left = 829.51
+margin_top = 640.941
+margin_right = 869.51
+margin_bottom = 680.941
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
+expand = true
+
+[node name="restlabel" type="Label" parent="job_panel"]
+margin_left = 501.212
+margin_top = 606.42
+margin_right = 561.213
+margin_bottom = 630.42
+text = "0"
+align = 1
+
+[node name="worklabel" type="Label" parent="job_panel"]
+margin_left = 661.213
+margin_top = 605.932
+margin_right = 721.213
+margin_bottom = 629.932
+text = "0"
+align = 1
+
+[node name="joylabel" type="Label" parent="job_panel"]
+margin_left = 821.213
+margin_top = 605.932
+margin_right = 881.213
+margin_bottom = 629.932
+text = "0"
+align = 1
+
+[node name="totallabel" type="Label" parent="job_panel"]
+margin_left = 568.737
+margin_top = 687.947
+margin_right = 812.737
+margin_bottom = 711.947
+text = "Free Hours left: "
+align = 1
+
+[node name="totallabel2" type="Label" parent="job_panel"]
+margin_left = 455.704
+margin_top = 521.784
+margin_right = 605.704
+margin_bottom = 545.784
+text = "Rest Hours"
+align = 1
+
+[node name="totallabel3" type="Label" parent="job_panel"]
+margin_left = 615.704
+margin_top = 521.784
+margin_right = 765.704
+margin_bottom = 545.784
+text = "Work Hours"
+align = 1
+
+[node name="totallabel4" type="Label" parent="job_panel"]
+margin_left = 775.704
+margin_top = 521.296
+margin_right = 925.704
+margin_bottom = 545.296
+text = "Joy Hours"
+align = 1
+

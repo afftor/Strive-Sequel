@@ -1,0 +1,44 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/gui/combat/cloud.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 modulate:hint_color;
+uniform sampler2D glow_texture;
+
+float edge_dist (vec2 r){
+	float res = 1.0;
+	res = min(res, r.x);
+	res = min(res, r.y);
+	res = min(res, 1.0 - r.x);
+	res = min(res, 1.0 - r.y);
+	return res;
+}
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	if (modulate.a >0.0){
+		col.rgb = col.rgb * col.a;
+		vec2 ps = TEXTURE_PIXEL_SIZE;
+		vec4 glow = texture(glow_texture, UV);
+		if (glow.a > 0.05){
+			glow = glow * modulate;
+			vec4 glow2 = modulate;
+			glow.a = max(0.0, 0.9 - 2.0*edge_dist(UV));
+			glow2.a = glow.a * 1.0;
+			col = mix(col, glow, 1.0-col.a);
+			//col = mix(col, glow, 0.2);
+			//col = col + glow2 * 0.2;
+		}
+	}
+	COLOR = col;
+	}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/modulate = Color( 1, 1, 1, 1 )
+shader_param/glow_texture = ExtResource( 1 )
+

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knocking.wav-a69452d7a6c1ec23f922ae390c5f402a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/knocking.wav"
+dest_files=[ "res://.import/knocking.wav-a69452d7a6c1ec23f922ae390c5f402a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

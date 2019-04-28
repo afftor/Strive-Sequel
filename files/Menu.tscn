@@ -1,0 +1,193 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/MainScreen/Continue.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/MainScreen/ContinueSelect.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/MainScreen/NewGames.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/MainScreen/NewGamesSelect.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/MainScreen/Load.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/MainScreen/LoadSelect.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/MainScreen/Options.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/MainScreen/OptionsSelect.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/MainScreen/Quit.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/MainScreen/QuitSelect.png" type="Texture" id=12]
+[ext_resource path="res://files/buttons/mainmenu/patreonlogo.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/Discord_Logo.png" type="Texture" id=14]
+[ext_resource path="res://files/buttons/mainmenu/itchio.jpg" type="Texture" id=15]
+[ext_resource path="res://files/Options.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=18]
+
+[node name="Menu" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 760.0
+margin_top = 358.0
+margin_right = 1208.0
+margin_bottom = 1018.0
+custom_constants/separation = 8
+
+[node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
+margin_right = 448.0
+margin_bottom = 68.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+
+[node name="newgamebutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 76.0
+margin_right = 448.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+
+[node name="loadbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 152.0
+margin_right = 448.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+
+[node name="optionsbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 228.0
+margin_right = 448.0
+margin_bottom = 296.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 10 )
+
+[node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 448.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 1730.0
+margin_top = 40.0
+margin_right = 1916.0
+margin_bottom = 534.0
+rect_scale = Vector2( 0.8, 0.8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+margin_left = 17.0
+margin_top = 9.0
+margin_right = 167.0
+margin_bottom = 359.0
+
+[node name="Patreon" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 13 )
+expand = true
+stretch_mode = 5
+
+[node name="Discord" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_top = 154.0
+margin_right = 150.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="Itch" type="TextureButton" parent="Panel/VBoxContainer"]
+margin_top = 308.0
+margin_right = 150.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="Options" parent="." instance=ExtResource( 16 )]
+visible = false
+
+[node name="saveloadpanel" parent="." instance=ExtResource( 17 )]
+visible = false
+margin_left = 594.0
+margin_top = 212.0
+margin_right = 1221.0
+margin_bottom = 735.0
+
+[node name="version" type="Label" parent="."]
+margin_right = 168.0
+margin_bottom = 24.0
+text = "ver. 0.1.0"
+
+[node name="WarnScreen" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[node name="DemoPanel" type="Panel" parent="."]
+visible = false
+margin_left = 716.0
+margin_top = 347.0
+margin_right = 1336.0
+margin_bottom = 712.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DemoPanel"]
+margin_left = 47.0
+margin_top = 47.0
+margin_right = 574.0
+margin_bottom = 215.0
+bbcode_enabled = true
+bbcode_text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+
+[node name="Button" type="Button" parent="DemoPanel"]
+margin_left = 170.0
+margin_top = 289.0
+margin_right = 431.0
+margin_bottom = 340.0
+text = "Confirm"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+bbcode_enabled = true
+bbcode_text = "Added health bars to heroes on main screen
+0.1.3
+Fixed lumber mill
+Fixed outro ending
+0.1.2
+Fixed ending scene not triggering
+Fixed completed areas still being presented in the list
+Fixed angry dwarves causing issues with loot
+Fixed barrier items being mixed
+0.1.1
+Fixed issues with fullscreen, Added hotkey (F9) and option to toggle fullscreen in menu 
+Fixed gear items selling
+Fixed defeated characters not being able to participate in combat
+Fixed certain issues with some panels on scene change"
+text = "Added health bars to heroes on main screen
+0.1.3
+Fixed lumber mill
+Fixed outro ending
+0.1.2
+Fixed ending scene not triggering
+Fixed completed areas still being presented in the list
+Fixed angry dwarves causing issues with loot
+Fixed barrier items being mixed
+0.1.1
+Fixed issues with fullscreen, Added hotkey (F9) and option to toggle fullscreen in menu 
+Fixed gear items selling
+Fixed defeated characters not being able to participate in combat
+Fixed certain issues with some panels on scene change"
+

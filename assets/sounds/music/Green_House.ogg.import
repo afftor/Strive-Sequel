@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Green_House.ogg-dafea591717bd4113a3366b5b8885dbb.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/Green_House.ogg"
+dest_files=[ "res://.import/Green_House.ogg-dafea591717bd4113a3366b5b8885dbb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

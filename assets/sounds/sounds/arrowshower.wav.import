@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/arrowshower.wav-00f13ec8898d07bc5636d28657735d87.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/arrowshower.wav"
+dest_files=[ "res://.import/arrowshower.wav-00f13ec8898d07bc5636d28657735d87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

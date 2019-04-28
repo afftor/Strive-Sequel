@@ -1,0 +1,1462 @@
+[gd_scene load_steps=67 format=2]
+
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://files/MainScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/backgrounds/sky.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/backgrounds/town.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/buildings/forge.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/buildings/forge_hl.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/buildings/city_hall.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/buildings/city_hall_hl.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/buildings/tavern.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/buildings/tavern_hl.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/buildings/market.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/buildings/market_hl.png" type="Texture" id=12]
+[ext_resource path="res://icon.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/buildings/gate.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/buildings/gate_hl.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/universal/mspanel.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/universal/msstash1.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/universal/msstash2.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/universal/msworkers1.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/universal/msworkers2.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/universal/msheroes1.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/universal/msheroes2.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/universal/msoptions1.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/universal/msoptions2.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=25]
+[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=26]
+[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=27]
+[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=28]
+[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=29]
+[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=30]
+[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=31]
+[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=32]
+[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=33]
+[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/gui/goblin.png" type="Texture" id=36]
+[ext_resource path="res://src/TaskWorkerWindow.tscn" type="PackedScene" id=37]
+[ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=38]
+[ext_resource path="res://files/SlavePanel.gd" type="Script" id=39]
+[ext_resource path="res://assets/images/gui/buildings/workericon.png" type="Texture" id=40]
+[ext_resource path="res://assets/images/gui/buildings/workerline.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/gui/buildings/remove.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/gui/buildings/removehl.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/gui/buildings/use.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/gui/buildings/usehl.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/gui/buildings/activetask.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/gui/taskmenu/jobgui.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/gui/universal/progressbar2.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/gui/universal/progressbar.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=51]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=52]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=53]
+[ext_resource path="res://assets/images/gui/taskmenu/timeicon.png" type="Texture" id=54]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=55]
+[ext_resource path="res://files/Blacksmith/Blacksmith.tscn" type="PackedScene" id=56]
+[ext_resource path="res://files/Blacksmith/TownHall.tscn" type="PackedScene" id=57]
+[ext_resource path="res://files/Blacksmith/SlaveMarket.tscn" type="PackedScene" id=58]
+[ext_resource path="res://files/HeroGuild.tscn" type="PackedScene" id=59]
+[ext_resource path="res://src/HeroList.tscn" type="PackedScene" id=60]
+[ext_resource path="res://FoodConvert.tscn" type="PackedScene" id=61]
+[ext_resource path="res://src/ExploreScreen.tscn" type="PackedScene" id=62]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=63]
+[ext_resource path="res://files/SFX/black.png" type="Texture" id=64]
+
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 49 )
+region_rect = Rect2( 0, 0, 368, 31 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Expand Margin", "Margin" ]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 50 )
+region_rect = Rect2( 0, 0, 382, 39 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[node name="MainScreen" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Pause", "Theme" ]
+
+[node name="Sky" type="Sprite" parent="." index="0"]
+
+position = Vector2( 960, 537 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="Background" type="TextureRect" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 4
+_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+
+[node name="BlacksmithNode" type="TextureButton" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1320.0
+margin_top = 438.0
+margin_right = 1591.0
+margin_bottom = 664.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+stretch_mode = 4
+_sections_unfolded = [ "Hint", "Rect", "Visibility" ]
+
+[node name="TownHallNode" type="TextureButton" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 638.0
+margin_top = 216.0
+margin_right = 1090.0
+margin_bottom = 573.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+stretch_mode = 4
+_sections_unfolded = [ "Hint", "Rect", "Textures", "Visibility" ]
+
+[node name="TavernNode" type="TextureButton" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1407.0
+margin_top = 642.0
+margin_right = 1858.0
+margin_bottom = 963.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+stretch_mode = 4
+_sections_unfolded = [ "Hint", "Rect", "Textures", "Visibility" ]
+
+[node name="WorkBuildNode" type="TextureButton" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 223.0
+margin_top = 493.0
+margin_right = 538.0
+margin_bottom = 916.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+stretch_mode = 4
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="HeroBuildNode" type="TextureButton" parent="." index="6"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1074.0
+margin_top = 311.0
+margin_right = 1270.0
+margin_bottom = 490.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 13 )
+expand = true
+_sections_unfolded = [ "Textures" ]
+
+[node name="Gate" type="TextureButton" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1570.0
+margin_top = 519.0
+margin_right = 1764.0
+margin_bottom = 682.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 15 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Lumber" type="TextureButton" parent="." index="8"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 496.0
+margin_top = 32.0
+margin_right = 692.0
+margin_bottom = 211.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 13 )
+expand = true
+_sections_unfolded = [ "Textures" ]
+
+[node name="ControlPanel" type="TextureRect" parent="." index="9"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 111.0
+margin_top = 970.0
+margin_right = 607.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+stretch_mode = 0
+
+[node name="Inventory" type="TextureButton" parent="ControlPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 31.0
+margin_top = 24.0
+margin_right = 108.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Slavelist" type="TextureButton" parent="ControlPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 151.0
+margin_top = 25.0
+margin_right = 228.0
+margin_bottom = 102.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 20 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Herolist" type="TextureButton" parent="ControlPanel" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 269.0
+margin_top = 24.0
+margin_right = 346.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Options" type="TextureButton" parent="ControlPanel" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 388.0
+margin_top = 24.0
+margin_right = 465.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="FoodConv" type="TextureButton" parent="ControlPanel" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -96.0
+margin_top = 24.0
+margin_right = -19.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Gold" type="Label" parent="ControlPanel" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -103.0
+margin_top = 30.0
+margin_right = -51.0
+margin_bottom = 54.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Gold"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Food" type="Label" parent="ControlPanel" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -103.0
+margin_top = 60.0
+margin_right = -44.0
+margin_bottom = 84.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Food"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TimeNode" type="TextureRect" parent="." index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 234.0
+margin_bottom = 125.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 25 )
+stretch_mode = 0
+_sections_unfolded = [ "Theme", "custom_styles" ]
+
+[node name="Date" type="Label" parent="TimeNode" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 11.0
+margin_top = 9.0
+margin_right = 156.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.597656, 0.428544, 0.0280151, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Date"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="0speed" type="TextureButton" parent="TimeNode" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 152.0
+margin_top = -1.0
+margin_right = 205.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+_sections_unfolded = [ "Hint", "Textures" ]
+
+[node name="1speed" type="TextureButton" parent="TimeNode" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 203.0
+margin_top = -1.0
+margin_right = 256.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="2speed" type="TextureButton" parent="TimeNode" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 254.0
+margin_top = -1.0
+margin_right = 304.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 34 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="HidePanel" type="Panel" parent="TimeNode" index="4"]
+
+visible = false
+self_modulate = Color( 1, 1, 1, 0.77898 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -1.0
+margin_right = 312.0
+margin_bottom = 158.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="TimeWheel" type="TextureRect" parent="TimeNode" index="5"]
+
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = -153.0
+margin_right = 309.0
+margin_bottom = 154.0
+rect_rotation = 360.0
+rect_pivot_offset = Vector2( 153.5, 153.5 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 35 )
+stretch_mode = 0
+_sections_unfolded = [ "Material", "Mouse", "Rect", "Visibility" ]
+
+[node name="TaskCounter" type="VBoxContainer" parent="." index="11"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 182.0
+margin_right = 348.0
+margin_bottom = 310.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Mouse" ]
+
+[node name="Button" type="TextureButton" parent="TaskCounter" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 333.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+expand = true
+_sections_unfolded = [ "Rect" ]
+
+[node name="Icon" type="TextureRect" parent="TaskCounter/Button" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Mouse", "Theme" ]
+
+[node name="Progress" type="ProgressBar" parent="TaskCounter/Button" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_top = 9.0
+margin_right = 281.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="SelectWorker" parent="." index="12" instance=ExtResource( 37 )]
+
+[node name="SlavePanel" type="TextureRect" parent="." index="13" groups=[
+"pauseprocess",
+]]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = 100.0
+margin_right = 689.0
+margin_bottom = 888.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 38 )
+stretch_mode = 0
+script = ExtResource( 39 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlavePanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 110.0
+margin_right = 588.0
+margin_bottom = 680.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+scroll_horizontal_enabled = false
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+scroll_deadzone = 0
+_sections_unfolded = [ "Scroll" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SlavePanel/ScrollContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 12
+alignment = 0
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="Button" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="Line" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="0"]
+
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 93.0
+margin_top = 11.0
+margin_right = 518.0
+margin_bottom = 89.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 41 )
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Name" type="Label" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 109.0
+margin_top = 19.0
+margin_right = 243.0
+margin_bottom = 43.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Mouse" ]
+
+[node name="Remove" type="TextureButton" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 446.0
+margin_top = 17.0
+margin_right = 512.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 40, 40 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 43 )
+texture_hover = ExtResource( 43 )
+_sections_unfolded = [ "Hint", "Rect", "Textures" ]
+
+[node name="Use" type="TextureButton" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 380.0
+margin_top = 17.0
+margin_right = 446.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 40, 40 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 44 )
+texture_pressed = ExtResource( 45 )
+texture_hover = ExtResource( 45 )
+_sections_unfolded = [ "Hint", "Rect", "Textures" ]
+
+[node name="Task" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 327.0
+margin_top = 23.0
+margin_right = 379.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 46 )
+stretch_mode = 0
+
+[node name="EnIcon" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 109.0
+margin_top = 50.0
+margin_right = 142.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 47 )
+expand = true
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 91.0
+margin_bottom = 90.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Rect" ]
+
+[node name="Energy" type="Label" parent="SlavePanel/ScrollContainer/VBoxContainer/Button" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 146.0
+margin_top = 56.0
+margin_right = 312.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TaskPanel" type="TextureRect" parent="SlavePanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 677.0
+margin_top = 4.0
+margin_right = 1326.0
+margin_bottom = 792.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 48 )
+stretch_mode = 0
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="ToolImage" type="TextureRect" parent="SlavePanel/TaskPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 464.0
+margin_top = 466.0
+margin_right = 564.0
+margin_bottom = 566.0
+rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label2" type="Label" parent="SlavePanel/TaskPanel/ToolImage" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -10.0
+margin_top = -60.0
+margin_right = 102.0
+margin_bottom = -36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Used Tool"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TaskDescript" type="RichTextLabel" parent="SlavePanel/TaskPanel" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 57.0
+margin_top = 96.0
+margin_right = 584.0
+margin_bottom = 181.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
+[node name="TaskProgress" type="ProgressBar" parent="SlavePanel/TaskPanel" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_top = 606.0
+margin_right = 584.0
+margin_bottom = 645.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 90.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "Percent", "custom_colors", "custom_styles" ]
+
+[node name="Label" type="Label" parent="SlavePanel/TaskPanel/TaskProgress" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 160.0
+margin_top = -40.0
+margin_right = 377.0
+margin_bottom = -16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Progress until next"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="StopButton" type="TextureButton" parent="SlavePanel/TaskPanel" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 249.0
+margin_top = 679.0
+margin_right = 387.0
+margin_bottom = 747.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 53 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Label" type="Label" parent="SlavePanel/TaskPanel/StopButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 11.0
+margin_top = 20.0
+margin_right = 126.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Stop"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="EnergyIcon" type="TextureRect" parent="SlavePanel/TaskPanel" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 384.0
+margin_top = 232.0
+margin_right = 437.0
+margin_bottom = 287.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 47 )
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="EnergyCost" type="Label" parent="SlavePanel/TaskPanel/EnergyIcon" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -220.0
+margin_top = 14.0
+margin_right = -74.0
+margin_bottom = 38.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="TimeIcon" type="TextureRect" parent="SlavePanel/TaskPanel" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 234.0
+margin_right = 157.0
+margin_bottom = 287.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 54 )
+stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
+
+[node name="TimeCost" type="Label" parent="SlavePanel/TaskPanel/TimeIcon" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 340.0
+margin_top = 12.0
+margin_right = 486.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Head" type="Label" parent="SlavePanel/TaskPanel" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 184.0
+margin_top = 26.0
+margin_right = 413.0
+margin_bottom = 77.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Inventory" parent="." index="14" groups=[
+"pauseprocess",
+] instance=ExtResource( 55 )]
+
+visible = false
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 689.0
+margin_bottom = 828.0
+theme = ExtResource( 1 )
+
+[node name="LogPanel" type="Panel" parent="." index="15"]
+
+editor/display_folded = true
+visible = false
+self_modulate = Color( 0.0234375, 1, 0.267578, 0.364627 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1332.0
+margin_top = 633.0
+margin_right = 1910.0
+margin_bottom = 1056.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Visibility" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LogPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_top = 17.0
+margin_right = 566.0
+margin_bottom = 410.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = true
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Mouse" ]
+
+[node name="blacksmith" parent="." index="16" groups=[
+"pauseprocess",
+] instance=ExtResource( 56 )]
+
+visible = false
+
+[node name="TownHall" parent="." index="17" groups=[
+"pauseprocess",
+] instance=ExtResource( 57 )]
+
+visible = false
+
+[node name="SlaveMarket" parent="." index="18" groups=[
+"pauseprocess",
+] instance=ExtResource( 58 )]
+
+visible = false
+
+[node name="HeroGuild" parent="." index="19" groups=[
+"pauseprocess",
+] instance=ExtResource( 59 )]
+
+visible = false
+
+[node name="HeroList" parent="." index="20" instance=ExtResource( 60 )]
+
+visible = false
+
+[node name="FoodConvert" parent="." index="21" instance=ExtResource( 61 )]
+
+visible = false
+
+[node name="ExploreScreen" parent="." index="22" groups=[
+"pauseprocess",
+] instance=ExtResource( 62 )]
+
+visible = false
+
+[node name="MenuPanel" parent="." index="23" groups=[
+"pauseprocess",
+] instance=ExtResource( 63 )]
+
+visible = false
+margin_left = 780.0
+margin_top = 320.0
+margin_right = 1099.0
+margin_bottom = 714.0
+
+[node name="BlackScreen" type="TextureRect" parent="." index="24"]
+
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 64 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Tween" type="Tween" parent="." index="25"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+

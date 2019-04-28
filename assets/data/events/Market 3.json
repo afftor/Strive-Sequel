@@ -1,0 +1,13 @@
+[{"effect":"music","value":"eventlight"},
+{"args":0.4,"delay":1,"effect":"sfx","value":"blackscreentransition"},
+{"effect":"gui","value":"gui_inside"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"So, you brought elves here."},
+{"effect":"text","portrait":"ErikaHappy","sound":null,"source":"ERIKA","value":"Nice to meet you."},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Uh-huh. "},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Well, here's a bit of gold for your hardship. "},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Do note, that you might be able to get different results from using different workers, so make sure to give it a try."},
+{"effect":"text","portrait":"ArronSmile","sound":null,"source":"ARRON","value":"Are you just making me spend more money on your service?"},
+{"effect":"text","portrait":"Flak","sound":null,"source":"FLAK","value":"Shut up. I'll charge you extra for them now."},
+{"effect":"state","value":"finish_quest", "args":"elves"},
+{"args":0.4,"delay":1,"effect":"sfx","value":"blackscreentransition"},
+{"effect":"stop","value":""}]

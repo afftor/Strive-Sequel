@@ -1,0 +1,11 @@
+[
+{"args":null,"effect":"sfx","value":"blackscreenturnon"},
+{"effect":"gui","value":"gui_normal"},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"This is the end of playable demo story."},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"We hope you enjoyed it as much as we enjoyed working on it."},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"We want to especially thanks all the patrons who made this project possible."},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"In case you wish to support or check out our previous game, make sure to visit it at [url]https://www.patreon.com/maverik[/url]"},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Also, you can leave the feedback at striveforpower@gmail.com."},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"All links can be found at the main menu."},
+{"effect":"text","portrait":null,"sound":null,"source":"narrator","value":"Reception of this demo will help us make necessary adjustments to deliver a better creation."},
+{"effect":"stop","value":""}]
