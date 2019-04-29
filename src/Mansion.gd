@@ -22,6 +22,10 @@ func _ready():
 	
 	$InventoryButton.connect("pressed",self,'open_inventory')
 	$CraftButton.connect("pressed",self,"open_craft")
+	$ExploreButton.connect("pressed",$Exploration,"open")
+	
+	state.money = 500
+	state.log_node = $TextLog
 	
 	state.connect("task_added", self, 'build_task_bar')
 
@@ -104,19 +108,34 @@ func build_task_bar():
 	for i in state.active_tasks:
 		var newnode = globals.DuplicateContainerTemplate($TaskProgress/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = races.tasklist[i.code].name
-		if i.code in ['alchemy','tailor','cook','forge']:
-			pass
+		if i.code in ['alchemy','tailor','cook','smith']:
+			if state.craftinglists[i.code].size() <= 0:
+				newnode.hide()
+			else:
+				newnode.show()
+				newnode.get_node("ProgressBar").max_value = state.craftinglists[i.code][0].workunits_needed
+				newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
+#			newnode.get_node("ProgressBar").max_value = state.craftinglists[i.code][0].workunits_needed
+#			newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
 		else:
 			newnode.get_node("icon").texture = Items.materiallist[races.tasklist[i.code].production[i.product].item].icon
-		newnode.get_node("ProgressBar").max_value = i.threshhold
-		newnode.get_node("ProgressBar").value = i.progress
+			newnode.get_node("ProgressBar").max_value = i.threshhold
+			newnode.get_node("ProgressBar").value = i.progress
 		newnode.set_meta("dict", i)
 
 func update_task_bar():
 	for i in $TaskProgress/ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta("dict"):
 			var task = i.get_meta('dict')
-			i.get_node("ProgressBar").value = task.progress
+			if task.code in ['alchemy','tailor','cook','smith']:
+				if state.craftinglists[task.code].size() <= 0:
+					i.hide()
+				else:
+					i.show()
+					i.get_node("ProgressBar").max_value = state.craftinglists[task.code][0].workunits_needed
+					i.get_node("ProgressBar").value = state.craftinglists[task.code][0].workunits
+			else:
+				i.get_node("ProgressBar").value = task.progress
 
 func open_task_panel(task):
 	globals.ClearContainer($TaskPanel/ScrollContainer/HBoxContainer)

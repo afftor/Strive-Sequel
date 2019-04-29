@@ -7,6 +7,7 @@ var mode
 var category = 'all'
 var itemarray = []
 
+#warning-ignore-all:return_value_discarded
 
 func _ready():
 	$ScrollContainer/GridContainer/Button.set_meta('type', 'none')
@@ -14,13 +15,9 @@ func _ready():
 		i.connect('pressed',self,'selectcategory', [i])
 	
 	#number select panel
-#warning-ignore:return_value_discarded
 	$NumberSelectPanel/ConfirmButton.connect("pressed", self, "NumberConfirm")
-#warning-ignore:return_value_discarded
 	$NumberSelectPanel/CancelButton.connect("pressed", self, "NumberClose")
-#warning-ignore:return_value_discarded
 	$NumberSelectPanel/SpinBox.connect('value_changed', self, 'NumberChanged')
-#warning-ignore:return_value_discarded
 	$NumberSelectPanel/MaxButton.connect("pressed",self, "NumberMax")
 	
 

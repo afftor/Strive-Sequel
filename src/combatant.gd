@@ -56,7 +56,7 @@ var armor = 0
 var mdef = 0
 
 #progress stats
-var physics := 15.0
+var physics := 0.0
 var physics_bonus := 0.0
 var wits := 0.0
 var wits_bonus := 0.0
@@ -153,21 +153,12 @@ var relatives = {}
 #temps
 #var profs = load("res://assets/data/Skills.gd").new().professions
 
-func generate_slave_from_area_data(data, desired_class = null, adjust_difficulty = 0):
+func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
 	
-	var leadrace = data.lead_race
-	var secondaryraces = data.secondary_races
-	var otherraces = races.racelist.keys()
+	gendata.race = races[randi()%races.size()]
 	#figuring out the race
-	if randf() <= 0.8:
-		gendata.race = leadrace
-	else:
-		if randf() <= 0.8:
-			gendata.race = secondaryraces[randi()%secondaryraces.size()]
-		else:
-			gendata.race = otherraces[randi()%otherraces.size()]
-	if gendata.race == null: gendata.race = leadrace
+
 	create(gendata.race, gendata.sex, gendata.age)
 	
 	if randf() <= 0.003:
@@ -178,13 +169,15 @@ func generate_slave_from_area_data(data, desired_class = null, adjust_difficulty
 	if slaveclass == null:
 		slaveclass = input_handler.weightedrandom([['combat', 1],['magic', 1],['social', 1],['sexual',1], ['labor',1]])
 	
+	if slaveclass == 'magic' && magic_factor == 1: #prevents finding no class as there's no magic base classes which allow magic factor < 2
+		magic_factor = 2
 	
-	var difficulty = data.difficulty + adjust_difficulty
+	var difficulty = adjust_difficulty
 	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1])) 
 	
 	
 	#Add extra stats for harder characters
-	while adjust_difficulty > 1:
+	while difficulty > 1:
 		var array = []
 		if randf() >= 0.7:
 			array = ['physics_factor', 'magic_factor', 'wits_factor', 'brave_factor', 'sexuals_factor', 'charm_factor']
@@ -199,9 +192,26 @@ func generate_slave_from_area_data(data, desired_class = null, adjust_difficulty
 				'labor':
 					array = ['physics_factor', 'wits_factor']
 		array = array[randi()%array.size()]
-		
 		self.set(array, self.get(array) + 1)
-		adjust_difficulty -= 1
+		difficulty -= 1
+	difficulty = adjust_difficulty
+	while difficulty > -1:
+		var array = []
+		if randf() >= 0.7:
+			array = ['physics', 'wits','sexuals', 'charm']
+		else:
+			match slaveclass:
+				'combat':
+					array = ['physics']
+				'magic':
+					array = ['wits']
+				'social', 'sexual':
+					array = ['charm', 'sexuals']
+				'labor':
+					array = ['physics', 'wits']
+		array = array[randi()%array.size()]
+		self.set(array, self.get(array) + rand_range(10,15))
+		difficulty -= 1
 	
 	#assign classes
 	while classcounter > 0:
@@ -217,11 +227,10 @@ func generate_slave_from_area_data(data, desired_class = null, adjust_difficulty
 func get_class_list(category, person):
 	var array = []
 	for i in Skilldata.professions.values():
-		if category != 'any' && i.categories.has(category) == false && professions.has(i.code) == false:
+		if (category != 'any' && i.categories.has(category) == false) || professions.has(i.code) == true:
 			continue
 		if checkreqs(i.reqs, true) == true:
 			array.append(i)
-	
 	
 	return array
 
@@ -692,15 +701,16 @@ func work_tick():
 		work = ''
 		return
 	
-	if currenttask.product in ['smith','alchemy','tailor']:
+	if currenttask.product in ['smith','alchemy','tailor','cook']:
 		if state.craftinglists[currenttask.product].size() <= 0:
+			state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
 			rest_tick()
 			return
 		else:
 			var craftingitem = state.craftinglists[currenttask.product][0]
-			if craftingitem.workunits == 0:
+			if craftingitem.resources_taken == false:
 				if check_recipe_resources(craftingitem) == false:
-					print("not enough resources")
+					state.text_log_add(get_short_name() + ": Not Enough Resources for craft. ")
 					rest_tick()
 					return
 				else:
@@ -713,18 +723,15 @@ func work_tick():
 			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
 			if craftingitem.workunits >= craftingitem.workunits_needed:
 				make_item(craftingitem)
-				craftingitem.repeats -= 1
 				craftingitem.workunits -= craftingitem.workunits_needed
-				while craftingitem.workunits >= craftingitem.workunits_needed && craftingitem.repeats != 0:
+				while craftingitem.repeats != 0:
 					if check_recipe_resources(craftingitem) == true:
 						spend_resources(craftingitem)
-						craftingitem.repeats -= 1
-						craftingitem.workunits -= craftingitem.workunits_needed
-						if craftingitem.repeats == 0:
-							state.craftinglists[currenttask.product].pop_front()
-							break
+						if craftingitem.workunits >= craftingitem.workunits_needed:
+							make_item(craftingitem)
+							craftingitem.workunits -= craftingitem.workunits_needed
 					else:
-						print("not enough resources2")
+						state.text_log_add(get_short_name() + ": " + "Not Enough Resources for craft. ")
 						break
 	else:
 		current_day_spent.workhours += 1
@@ -751,14 +758,13 @@ func check_recipe_resources(temprecipe):
 		if check == false:
 			return false
 	else:
-		var item = Items[recipe.resultitem]
+		var item = Items.itemlist[recipe.resultitem]
 		var check = true
 		for i in temprecipe.partdict:
 			if state.materials[temprecipe.partdict[i]] < item.parts[i]:
 				check = false
 		if check == false:
 			return false
-	
 	return true
 
 func spend_resources(temprecipe):
@@ -769,12 +775,14 @@ func spend_resources(temprecipe):
 		for i in recipe.items:
 			state.remove_item(i, recipe.items[i])
 	else:
-		var item = Items[recipe.resultitem]
+		var item = Items.itemlist[recipe.resultitem]
 		for i in temprecipe.partdict:
 			state.materials[temprecipe.partdict[i]] -= item.parts[i]
+	temprecipe.resources_taken = true
 
 func make_item(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
+	temprecipe.resources_taken = false
 	if recipe.resultitemtype == 'material':
 		state.materials[recipe.resultitem] += recipe.resultamount
 	else:
@@ -783,6 +791,10 @@ func make_item(temprecipe):
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
 			globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
+	if temprecipe.repeats > 0:
+		temprecipe.repeats -= 1
+		if temprecipe.repeats == 0:
+			state.craftinglists[Items.recipes[temprecipe.code].worktype].erase(temprecipe)
 
 func joy_tick():
 	current_day_spent.joyhours += 1
@@ -864,3 +876,11 @@ func translate(text):
 	text = text.replace("[boy]", rtext)
 	
 	return text
+
+func calculate_price():
+	var value = 0
+	value += (physics + wits + charm + sexuals)*2.5
+	value += (physics_factor + wits_factor + charm_factor + sexuals_factor + tame_factor + brave_factor)*8 + growth_factor*25 + magic_factor*15
+	value += professions.size()*40
+	
+	return max(100,round(value))

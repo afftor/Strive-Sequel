@@ -4,6 +4,8 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var person
 
+var type
+
 func _ready():
 	#setting tooltips
 	for i in $progress.get_children():
@@ -18,11 +20,11 @@ func _ready():
 	
 	###############
 	
-	$ClassButton.connect("pressed",self,'open_class_window')
+	$controls/ClassButton.connect("pressed",self,'open_class_window')
 	globals.AddPanelOpenCloseAnimation($job_panel)
 	globals.AddPanelOpenCloseAnimation($class_learn)
 	
-	$JobButton.connect("pressed", self, "open_jobs_window")
+	$controls/JobButton.connect("pressed", self, "open_jobs_window")
 	
 	
 	for i in $class_learn/categories.get_children():
@@ -31,33 +33,19 @@ func _ready():
 	$class_learn/CheckBox.connect("pressed", self, "checkbox_locked")
 
 
-func change_hours(stat):
-	var freepoints = 24 - (person.workhours + person.resthours + person.joyhours)
-	if stat.find('up') >= 0:
-		if freepoints <= 0:
-			return
-		else:
-			var statcode = stat.substr(0,stat.length()-2) + "hours"
-			person.set(statcode, person.get(statcode) + 1)
-	else:
-		var statcode = stat.substr(0,stat.length()-4) + "hours"
-		if person.get(statcode) == 0:
-			return
-		person.set(statcode, person.get(statcode) - 1)
-	
-	
-	update_hours()
-
-func update_hours():
-	$job_panel/worklabel.text = str(person.workhours)
-	$job_panel/restlabel.text = str(person.resthours)
-	$job_panel/joylabel.text = str(person.joyhours)
-	$job_panel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
-	if currentjob != null:
-		show_job_details(currentjob)
-	
-
 func open(tempperson):
+	if tempperson.professions.has("Master"):
+		type = 'master'
+		for i in get_tree().get_nodes_in_group("hide_master"):
+			i.visible = false
+	elif state.characters.has(tempperson.id):
+		type = 'slave'
+		for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger"):
+			i.visible = true
+	else:
+		type = 'stranger'
+		for i in get_tree().get_nodes_in_group("hide_stranger"):
+			i.visible = false
 	var text = ''
 	show()
 	person = tempperson
@@ -108,6 +96,7 @@ func open(tempperson):
 		var newnode = globals.DuplicateContainerTemplate($professions)
 		var prof = Skilldata.professions[i]
 		newnode.texture = prof.icon
+		newnode.get_node("Label").text = prof.name
 	
 	globals.ClearContainer($traits)
 	for i in person.traits:
@@ -187,4 +176,30 @@ func unlock_class(i):
 	$class_learn/ClassPanel.selectedcharacter = person
 	$class_learn/ClassPanel.open(i)
 
+
+func change_hours(stat):
+	var freepoints = 24 - (person.workhours + person.resthours + person.joyhours)
+	if stat.find('up') >= 0:
+		if freepoints <= 0:
+			return
+		else:
+			var statcode = stat.substr(0,stat.length()-2) + "hours"
+			person.set(statcode, person.get(statcode) + 1)
+	else:
+		var statcode = stat.substr(0,stat.length()-4) + "hours"
+		if person.get(statcode) == 0:
+			return
+		person.set(statcode, person.get(statcode) - 1)
+	
+	
+	update_hours()
+
+func update_hours():
+	$job_panel/worklabel.text = str(person.workhours)
+	$job_panel/restlabel.text = str(person.resthours)
+	$job_panel/joylabel.text = str(person.joyhours)
+	$job_panel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
+	if currentjob != null:
+		show_job_details(currentjob)
+	
 

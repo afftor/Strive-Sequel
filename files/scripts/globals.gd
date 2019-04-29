@@ -26,7 +26,7 @@ var randomgroups
 
 var enemylist
 var upgradelist
-
+var characterdata = load("res://src/combatant.gd")
 #var skillsdata
 #var effectdata
 
@@ -270,9 +270,9 @@ func CreateUsableItem(item, amount = 1):
 func AddItemToInventory(item):
 	item.inventory = state.items
 	if item.stackable == false:
-		item.id = "i" + str(state.itemidcounter)
+		item.id = "i" + str(state.itemcounter)
 		state.items[item.id] = item
-		state.itemidcounter += 1
+		state.itemcounter += 1
 	else:
 		var id = get_item_id_by_code(item.itembase)
 		if id != null:
@@ -381,10 +381,10 @@ func disconnectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
 		node.disconnect("mouse_entered",item,'tooltip')
 
-func connectmaterialtooltip(node, material, type = 'default'):
+func connectmaterialtooltip(node, material, bonustext = ''):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
 		node.disconnect("mouse_entered",self,'mattooltip')
-	node.connect("mouse_entered",self,'mattooltip', [node, material, type])
+	node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext])
 
 func connectslavetooltip(node, person):
 	if node.is_connected("mouse_entered",self,'slavetooltip'):

@@ -2,10 +2,10 @@ extends Panel
 
 var time = 4
 
-var characterdata = load("res://src/combatant.gd")
 
 func _ready():
 	globals.CurrentScene = self
+	state.connect("slave_added",self,"rebuild")
 #	var x = 5
 #	while x > 0:
 #		var character = load("res://src/combatant.gd").new()
@@ -13,9 +13,8 @@ func _ready():
 #		state.characters[character.id] = character
 #		x -= 1
 
-	var character = characterdata.new()
+	var character = globals.characterdata.new()
 	character.create('random', 'random', 'random')
-	character.tame_factor = 3
 	state.characters[character.id] = character
 #	var character2 = characterdata.new()
 #	character2.create('random', 'random', 'random')

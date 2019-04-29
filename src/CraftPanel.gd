@@ -110,6 +110,7 @@ func confirm_craft():
 	data.workunits = 0
 	data.workunits_needed = selected_item.workunits
 	data.materials = selected_item.items.duplicate()
+	data.resources_taken = false
 	state.craftinglists[list].append(data)
 	if selected_item.crafttype == 'modular':
 		data.partdict = partdict.duplicate()

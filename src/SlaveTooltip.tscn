@@ -179,6 +179,14 @@ mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
 
+[node name="Label" type="Label" parent="GridContainer/Button"]
+margin_left = 3.53465
+margin_top = 82.0997
+margin_right = 93.5347
+margin_bottom = 106.1
+text = "name"
+align = 1
+
 [node name="exp" type="Label" parent="."]
 margin_left = 278.041
 margin_top = 266.253

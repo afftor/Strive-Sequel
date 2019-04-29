@@ -44,21 +44,14 @@ margin_bottom = 249.431
 text = "Name"
 align = 1
 
-[node name="currentwork" type="Label" parent="."]
+[node name="currentwork" type="Label" parent="." groups=[
+"hide_stranger",
+]]
 margin_left = 1110.86
 margin_top = 111.456
 margin_right = 1272.86
 margin_bottom = 136.456
 text = "task"
-align = 1
-
-[node name="exp" type="Label" parent="."]
-visible = false
-margin_left = 1110.86
-margin_top = 71.4558
-margin_right = 1272.86
-margin_bottom = 96.4558
-text = "Exp"
 align = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -380,7 +373,11 @@ margin_right = 219.239
 margin_bottom = 31.0
 text = "25"
 
-[node name="mentality" type="VBoxContainer" parent="."]
+[node name="mentality" type="VBoxContainer" parent="." groups=[
+"hide_master",
+"hide_stranger",
+]]
+editor/display_folded = true
 margin_left = 15.0
 margin_top = 582.0
 margin_right = 215.0
@@ -476,7 +473,10 @@ margin_bottom = 32.4133
 text = "Food Pref: Grai"
 autowrap = true
 
-[node name="job" type="VBoxContainer" parent="."]
+[node name="job" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
+editor/display_folded = true
 margin_left = 1093.0
 margin_top = 155.0
 margin_right = 1293.0
@@ -546,39 +546,47 @@ margin_bottom = 86.0
 text = "1.100"
 align = 1
 
-[node name="JobButton" type="Button" parent="."]
-margin_left = 1096.42
-margin_top = 278.098
-margin_right = 1288.42
-margin_bottom = 328.098
+[node name="controls" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
+margin_left = 1088.0
+margin_top = 274.0
+margin_right = 1298.0
+margin_bottom = 760.0
+custom_constants/separation = 6
+
+[node name="JobButton" type="Button" parent="controls"]
+margin_right = 210.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
 text = "Job"
 
-[node name="UseButton" type="Button" parent="."]
-margin_left = 1096.42
-margin_top = 338.098
-margin_right = 1288.42
-margin_bottom = 388.098
+[node name="UseButton" type="Button" parent="controls"]
+margin_top = 56.0
+margin_right = 210.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 0, 50 )
 text = "Use Skill"
 
-[node name="GearButton" type="Button" parent="."]
-margin_left = 1096.42
-margin_top = 398.098
-margin_right = 1288.42
-margin_bottom = 448.098
+[node name="GearButton" type="Button" parent="controls"]
+margin_top = 112.0
+margin_right = 210.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 0, 50 )
 text = "Gear"
 
-[node name="CustmizeButton" type="Button" parent="."]
-margin_left = 1096.42
-margin_top = 458.098
-margin_right = 1288.42
-margin_bottom = 508.098
+[node name="CustmizeButton" type="Button" parent="controls"]
+margin_top = 168.0
+margin_right = 210.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 50 )
 text = "Customize"
 
-[node name="ClassButton" type="Button" parent="."]
-margin_left = 1096.42
-margin_top = 518.098
-margin_right = 1288.42
-margin_bottom = 568.098
+[node name="ClassButton" type="Button" parent="controls"]
+margin_top = 224.0
+margin_right = 210.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 0, 50 )
 text = "Class"
 
 [node name="professions" type="GridContainer" parent="."]
@@ -600,6 +608,13 @@ rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
+
+[node name="Label" type="Label" parent="professions/Button"]
+margin_left = -1.0
+margin_top = 76.0
+margin_right = 100.0
+margin_bottom = 100.0
+align = 1
 
 [node name="class_learn" type="Panel" parent="."]
 editor/display_folded = true

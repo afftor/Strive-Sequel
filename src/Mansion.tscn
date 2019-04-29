@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
@@ -20,19 +20,26 @@
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=20]
-[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=21]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=22]
-[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=24]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="InventoryButton" type="Button" parent="."]
 margin_left = 23.3762
@@ -42,6 +49,7 @@ margin_bottom = 1068.33
 text = "Inventory"
 
 [node name="TaskButton" type="Button" parent="."]
+visible = false
 margin_left = 273.376
 margin_top = 999.333
 margin_right = 491.376
@@ -49,13 +57,21 @@ margin_bottom = 1068.33
 text = "Tasks"
 
 [node name="CraftButton" type="Button" parent="."]
-margin_left = 513.376
+margin_left = 263.376
 margin_top = 999.333
-margin_right = 731.376
+margin_right = 481.376
 margin_bottom = 1068.33
 text = "Craft"
 
+[node name="ExploreButton" type="Button" parent="."]
+margin_left = 493.376
+margin_top = 999.333
+margin_right = 711.376
+margin_bottom = 1068.33
+text = "Outside"
+
 [node name="TimeNode" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_right = 313.0
 margin_bottom = 159.0
 texture = ExtResource( 3 )
@@ -289,21 +305,14 @@ margin_right = 430.499
 margin_bottom = 36.8336
 text = "Name Race Age Class"
 
-[node name="SlavePanel" parent="." instance=ExtResource( 21 )]
-visible = false
-margin_left = 32.1478
-margin_top = 96.6894
-margin_right = 1350.15
-margin_bottom = 960.689
-
-[node name="Inventory" parent="." instance=ExtResource( 22 )]
+[node name="Inventory" parent="." instance=ExtResource( 21 )]
 visible = false
 margin_left = 28.9677
 margin_top = 144.582
 margin_right = 677.968
 margin_bottom = 932.582
 
-[node name="CraftPanel" parent="." instance=ExtResource( 23 )]
+[node name="CraftPanel" parent="." instance=ExtResource( 22 )]
 visible = false
 
 [node name="TaskPanel" type="Panel" parent="."]
@@ -343,4 +352,21 @@ margin_left = 266.222
 margin_top = 461.684
 margin_right = 453.222
 margin_bottom = 508.684
+
+[node name="Exploration" parent="." instance=ExtResource( 23 )]
+visible = false
+
+[node name="SlavePanel" parent="." instance=ExtResource( 24 )]
+visible = false
+margin_left = 32.1478
+margin_top = 96.6894
+margin_right = 1350.15
+margin_bottom = 960.689
+
+[node name="TextLog" type="RichTextLabel" parent="."]
+margin_left = 1252.0
+margin_top = 900.0
+margin_right = 1892.0
+margin_bottom = 1056.0
+bbcode_enabled = true
 

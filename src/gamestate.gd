@@ -1,13 +1,21 @@
 extends Node
 
+#warning-ignore-all:unused_signal
 signal task_added
+signal slave_added
 
 var date := 1
 var daytime = 0
 
+var log_node
+
 var newgame = false
 
 var votelinksseen = false
+
+#world
+var areas = []
+var startingcity = ''
 
 #resources
 var itemcounter := 0
@@ -21,7 +29,6 @@ var items := {}
 var active_tasks := [] 
 var craftinglists = {alchemy = [], smith = [], cook = [], tailor = []}
 var materials := {} setget materials_set
-var lognode 
 var oldmaterials := {}
 var unlocks := []
 
@@ -64,7 +71,7 @@ func revert():
 	items.clear()
 	active_tasks.resize(0)
 	materials.clear()
-	lognode = null
+	log_node = null
 	oldmaterials.clear()
 	unlocks.resize(0)
 	combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} 
@@ -110,18 +117,18 @@ func materials_set(value):
 				else:
 					text += "Lost "
 				text += str(value[i] - oldmaterials[i]) + ' {color=yellow|' + Items.materiallist[i].name + '}'
-				logupdate(text)
+				#logupdate(text)
 	materials = value
 	oldmaterials = materials.duplicate()
 
-func logupdate(text):
-	if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
-		return
-	lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
-	text = lognode.bbcode_text + '\n' + text
-	
-	#lognode.bbcode_text += '\n' + 
-	lognode.bbcode_text = globals.TextEncoder(text)
+#func logupdate(text):
+#	if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
+#		return
+#	lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
+#	text = lognode.bbcode_text + '\n' + text
+#
+#	#lognode.bbcode_text += '\n' + 
+#	lognode.bbcode_text = globals.TextEncoder(text)
 
 func assignworker(data):
 	data.worker.task = data
@@ -193,6 +200,10 @@ func FinishEvent():
 	CurEvent = ""
 	keyframes.clear()
 
+func add_slave(person):
+	characters[person.id] = person
+	text_log_add("New character acquired: " + person.get_short_name() + ". ")
+	emit_signal("slave_added")
 
 func if_has_money(value):
 	return (money >= value)
@@ -328,3 +339,7 @@ func remove_item(itemcode, number):
 		if item != null:
 			item.amount -= 1
 		number -= 1
+
+func text_log_add(text):
+	if log_node != null:
+		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(daytime)) + "[/right]" 

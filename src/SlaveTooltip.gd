@@ -44,7 +44,8 @@ func showup(node, person):
 	globals.ClearContainer($GridContainer)
 	for i in person.professions:
 		var newnode = globals.DuplicateContainerTemplate($GridContainer)
-		newnode.icon = Skilldata.professions[i].icon
+		newnode.texture = Skilldata.professions[i].icon
+		newnode.get_node("Label").text = Skilldata.professions[i].name
 	
 	
 	prevnode = parentnode
