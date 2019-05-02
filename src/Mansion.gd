@@ -1,13 +1,26 @@
 extends Control
 
+#warning-ignore-all:return_value_discarded
 var gamepaused_nonplayer = false
 var gamepaused = false
 var gamespeed = 1
+var gametime = 0
 var previouspeed = 0
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
 
 func _ready():
+	globals.CurrentScene = self
+	
+	var speedvalues = [0,1,5]
+	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
+	var counter = 0
+	for i in timebuttons:
+		i.hint_tooltip = tooltips[counter]
+		i.connect("pressed",self,'changespeed',[i])
+		i.set_meta('value', speedvalues[counter])
+		counter += 1
+	
 	for i in Skilldata.professions.values():
 		i.name = tr("PROF" + i.code.to_upper())
 		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
@@ -23,24 +36,32 @@ func _ready():
 	$InventoryButton.connect("pressed",self,'open_inventory')
 	$CraftButton.connect("pressed",self,"open_craft")
 	$ExploreButton.connect("pressed",$Exploration,"open")
+	$QuestlogButton.connect("pressed", self, "open_questlog")
+	
 	
 	state.money = 500
 	state.log_node = $TextLog
 	
 	state.connect("task_added", self, 'build_task_bar')
-
-func open_inventory():
-	$Inventory.open()
-
-func open_craft():
-	$CraftPanel.open()
+	settime()
+	
+	var character = globals.characterdata.new()
+	character.create('random', 'random', 'random')
+	state.characters[character.id] = character
+	character = globals.characterdata.new()
+	character.create('random', 'random', 'random')
+	state.characters[character.id] = character
+	character = globals.characterdata.new()
+	character.create('random', 'random', 'random')
+	state.characters[character.id] = character
+	$SlaveList.rebuild()
 
 
 func _process(delta):
 	if self.visible == false:
 		return
 	$TimeNode/HidePanel.visible = gamepaused_nonplayer
-	settime()
+	$gold.text = str(state.money)
 	
 	#buildscreen()
 	update_task_bar()
@@ -71,18 +92,27 @@ func _process(delta):
 	
 #	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
-		state.daytime += delta * gamespeed
-		for i in state.characters.values():
-			pass
+		gametime += delta * gamespeed
+		if gametime >= variables.SecondsPerHour:
+			settime()
+			gametime -= variables.SecondsPerHour
+			state.hour += 1
+			if state.hour >= variables.HoursPerDay:
+				state.hour = 0
+				state.date += 1
+				for i in state.areas.values():
+					world_gen.update_guilds(i)
+			for i in state.characters.values():
+				i.tick()
 
 
 func settime():
-	if state.daytime > variables.TimePerDay:
-		state.date += 1
-		state.daytime = 0
-		globals.EventCheck() #После переноса эвентов на сигналы нужно перенести все эвенты, тригерящиеся в определенные дни на середину дня а не на начало
-	$TimeNode/Date.text = tr("DAY") + ": " + str(state.date)
-	$TimeNode/TimeWheel.rect_rotation = (state.daytime / variables.TimePerDay * 360) - 90
+#	if state.daytime > variables.TimePerDay:
+#		state.date += 1
+#		state.daytime = 0
+#		globals.EventCheck() #После переноса эвентов на сигналы нужно перенести все эвенты, тригерящиеся в определенные дни на середину дня а не на начало
+	$TimeNode/Date.text = "D: " + str(state.date) + " T: " + str(state.hour) + ":00"
+	$TimeNode/TimeWheel.rect_rotation = (float(state.hour) / variables.HoursPerDay * 360)-180
 
 func changespeed(button, playsound = true):
 	var oldvalue = gamespeed
@@ -145,3 +175,12 @@ func open_task_panel(task):
 		newbutton.connect("pressed",self,"open_slave", [i])
 
 
+func open_inventory():
+	$Inventory.open()
+
+func open_craft():
+	$CraftPanel.open()
+
+func open_questlog():
+	$QuestPanel.open()
+	

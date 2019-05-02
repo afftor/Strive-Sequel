@@ -146,8 +146,14 @@ var joyhours = 4
 var current_day_spent = {workhours = 0, resthours = 0, joyhours = 0}
 var rules = []
 
+var area = ''
+var location = 'mansion'
+var travel_target = {area = '', location = ''}
+var travel_time = 0
+
 #communications
 var relatives = {}
+var tags = []
 
 
 #temps
@@ -381,6 +387,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = input_handler.operate(i.operant, race, i.value)
 			'one_of_races':
 				check = race in i.value
+			'is_free':
+				check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
 		if check == false:
 			return false
 	return true
@@ -576,10 +584,7 @@ func raise_stat(stat, value):
 func assign_to_task(taskcode, taskproduct, iterations = -1):
 	var task = races.tasklist[taskcode]
 	#remove existing work
-	if work != '':
-		for i in state.active_tasks:
-			if i.code == work:
-				i.workers.erase(self.id)
+	remove_from_task()
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
 	for i in state.active_tasks:
@@ -600,10 +605,19 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	state.active_tasks.append(dict)
 	state.emit_signal("task_added")
 
+func remove_from_task():
+	if work != '':
+		for i in state.active_tasks:
+			if i.code == work:
+				i.workers.erase(self.id)
+	work = ''
+
 func tick():
 	var skip_work = false
 	if work == '':
 		skip_work = true
+	
+	
 	
 	food_counter -= 1
 	if food_counter <= 0:
@@ -614,10 +628,19 @@ func tick():
 	self.fatigue += 1
 	self.lust += 1.05
 	
-	
-	
 	self.obedience -= 100.0/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 	self.fear -= 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
+	
+	if work == 'travel':
+		if travel_time > 0:
+			travel_time -= 1
+			if travel_time == 0:
+				area = travel_target.area
+				location = travel_target.location
+				state.emit_signal("slave_arrived", self)
+		
+		return
+	
 	
 	
 	

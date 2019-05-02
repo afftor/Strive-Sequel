@@ -1,7 +1,7 @@
 extends Node
 
 var Skilllist = {
-	praise = { #+25 obedience - tame factor (-66% on 1 tame), +5 loyal, -10 fear
+	praise = { #+25 obedience, +5 loyal, -10 fear
 		code = 'praise',
 		name = '',
 		descript = '',
@@ -17,7 +17,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	warn = {#+25 fear  - tame factor (-66% on 1 tame), +10 obedience - tame factor
+	warn = {#+25 fear, +10 obedience
 		code = 'warn',
 		name = '',
 		descript = '',
@@ -49,7 +49,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	rewardsex = {#+35 obedience - tame factor(-66% on tame1), +5 lewdness, +5 loyal, target must be horny, -10 resist
+	rewardsex = {#+35 obedience, +5 loyal, -25 lust (can't be used if lust is lower)
 		code = 'rewardsex',
 		name = '',
 		descript = '',
@@ -65,7 +65,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	punish = {#+40 obedience - tame factor(-66% on tame 1), +50 fear - brave factor (-50% on brave 1), target fatigue -25, -15 resist
+	punish = {#+20 obedienc, +50 fear, target exhaustion -20
 		code = 'punish',
 		name = '',
 		descript = '',
@@ -81,7 +81,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	abuse = {#-25 fatigue, +20 obedience, -25 obedience to target, -10 loyal to target, +20 fear to the target, relationship -100
+	abuse = {#-25 fatigue to caster, +20 obedience to caster, -25 obedience to target, -10 loyal to target, +20 fear to the target, relationship -100
 		code = 'abuse',
 		name = '',
 		descript = '',
@@ -97,7 +97,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	publichumiliation = {#everyone fear +25 (brave resist 5% per point-1), target fear + 50 (brave resist 5% per point-1), target fatigue -25
+	publichumiliation = {#everyone fear +25, target fear + 60, target exhaustion -25
 		code = 'publichumiliation',
 		name = '',
 		descript = '',
@@ -114,7 +114,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	publicsexhumiliation = {#everyone fear +20 (brave resist 5% per point-1), everyone's lewdness +5, target fear + 40(brave resist 5% per point-1), target.lewdness + 5 (+10 if sexfactor > 2), target fatigue -25
+	publicsexhumiliation = {#everyone fear +20, everyone's lust +15, target fear + 35, target fatigue -20
 		code = 'publichumiliation',
 		name = '',
 		descript = '',
@@ -131,7 +131,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	publicexecution = {#everyone fear +50 (brave resist 3% per point-1), target dies, target obedience must be < 25%
+	publicexecution = {#everyone fear +65, target dies, target obedience must be < 25%
 		code = 'publicexecution',
 		name = '',
 		descript = '',
@@ -149,7 +149,7 @@ var Skilllist = {
 		tags = [],
 	},
 	
-	charm = {# + 50% lust per day for x*charm days (must be in range of preferences). buff overwrites itself + 100 relations
+	charm = {# + 50% lust growth per day for x*charm days (has check for preferences). buff overwrites itself + 100 relations
 		code = 'seduce',
 		name = '',
 		descript = '',
@@ -165,7 +165,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	seduce = {#lust + 100, obed +50 - tame factor (-50% on tame 1), must not be detested, resisted by wits
+	seduce = {#lust + 100, obed +50, (has check for preferences, resisted by wits)
 		code = 'seduce',
 		name = '',
 		descript = '',
@@ -213,7 +213,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	serve = {#target -10 fatigue, +20 energy, +25 obedience
+	serve = {#target -10 fatigue, -10 exhaustion, +20 energy, +25 obedience
 		code = 'serve',
 		name = '',
 		descript = '',
@@ -309,7 +309,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	mindcontrol = {#100 obedience, 0 resist, 0 fear, +50 loyal. Success depends on magic factor and wits vs mf and wits of target
+	mindcontrol = {#100 obedience, +50 loyal. Success depends on magic factor and wits vs mf and wits of target
 		code = 'mindcontrol',
 		name = '',
 		descript = '',
@@ -336,12 +336,12 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 1,
-		cooldown = 40,
+		cooldown = 30,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
 	},
-	discipline = {#+50% labor production efficiency for 1 day
+	discipline = {#+50% production efficiency for 1 day (except for sex tasks)
 		code = 'discipline',
 		name = '',
 		descript = '',
@@ -389,7 +389,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	make_undead = {#turns target into undead
+	make_undead = {#turns target into undead (trait)
 		code = 'make_undead',
 		name = '',
 		descript = '',
@@ -436,19 +436,19 @@ var Skilllist = {
 	barrier = {
 		
 	},
-	fly_evasion = {
+	fly_evasion = { #boost evasion for x turns
 		
 	},
-	disruption_shot = {
+	disruption_shot = { #Removes 1 buff from target (before damage hit)
 		
 	},
 	bleeding_strike = {
 		
 	},
-	hide = {
+	hide = {#makes untargetable for enemies (but can still hit from aoe). If all melee units are hidden, enemy melee can hit back rows
 		
 	},
-	assassinate = {
+	assassinate = {#great damage
 		
 	},
 	

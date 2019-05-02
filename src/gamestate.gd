@@ -3,9 +3,10 @@ extends Node
 #warning-ignore-all:unused_signal
 signal task_added
 signal slave_added
+signal slave_arrived
 
 var date := 1
-var daytime = 0
+var hour = 6
 
 var log_node
 
@@ -14,13 +15,13 @@ var newgame = false
 var votelinksseen = false
 
 #world
-var areas = []
+var areas = {}
 var startingcity = ''
 
 #resources
 var itemcounter := 0
 var slavecounter := 0
-var workeridcounter := 0
+var locationcounter := 0
 var money = 0
 var food = 50
 var townupgrades := {}
@@ -39,8 +40,6 @@ var CurrentTextScene
 var CurrentScreen
 var CurrentLine := 0
 
-var heroguild := {}
-
 var OldEvents := {}
 var CurEvent := "" #event name
 var CurBuild := ""
@@ -58,12 +57,12 @@ var viewed_tips := []
 
 func revert():
 	date = 1
-	daytime = 0
+	hour = 6
 	newgame = false
 	votelinksseen = false
 	itemcounter = 0
 	slavecounter = 0
-	workeridcounter = 0
+	locationcounter = 0
 	money = 0
 	food = 50
 	townupgrades.clear()
@@ -78,7 +77,6 @@ func revert():
 	CurrentTextScene = null
 	CurrentScreen = null
 	CurrentLine = 0
-	heroguild.clear()
 	OldEvents.clear()
 	CurEvent = "" #event name
 	CurBuild = ""
@@ -340,6 +338,22 @@ func remove_item(itemcode, number):
 			item.amount -= 1
 		number -= 1
 
+func set_material(material, operant, value):
+	match operant:
+		'+':
+			materials[material] += value
+		'-':
+			materials[material] -= value
+		'*':
+			materials[material] *= value
+		"/":
+			materials[material] /= value
+		'=':
+			materials[material] = value
+
+func remove_slave(tempslave):
+	characters.erase(tempslave)
+
 func text_log_add(text):
 	if log_node != null:
-		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(daytime)) + "[/right]" 
+		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(hour)) + "[/right]" 

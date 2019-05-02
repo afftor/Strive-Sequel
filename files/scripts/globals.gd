@@ -151,8 +151,8 @@ func _init():
 	TranslationServer.add_translation(activetranslation)
 
 func _ready():
-#	OS.window_size = Vector2(1280,720)
-#	OS.window_position = Vector2(300,0)
+	OS.window_size = globalsettings.window_size
+	OS.window_position = globalsettings.window_pos
 	randomize()
 	#Settings and folders
 	settings_load()
@@ -185,15 +185,8 @@ func _ready():
 	
 	#workersdict = TownData.workersdict
 	
-	
-	state.materials.wood = 5
-	state.materials.salvia = 10
-	state.materials.fleawarts = 5
-	state.materials.woodmagic = 20
-	state.materials.iron = 10
-	state.materials.steel = 10
-	state.materials.bone = 10
-	state.materials.cloth = 10
+	for i in Items.materiallist:
+		state.materials[i] = 100
 	state.money = 500
 	
 
@@ -510,7 +503,7 @@ func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	showtooltip(text, node)
 
-func CharacterSelect(targetscript, type, function, requirements):
+func CharacterSelect(targetscript, function, requirements):
 	var node 
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
@@ -523,20 +516,17 @@ func CharacterSelect(targetscript, type, function, requirements):
 		AddPanelOpenCloseAnimation(node)
 	
 	node.show()
-	#node.set_as_toplevel(true)
 	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
 	
 	var array = []
-	if type == 'workers':
-		array = state.workers.values()
+	array = state.characters.values()
 	
 	for i in array:
-		if requirements == 'notask' && i.task != null:
+		if i.checkreqs(requirements) == false:
 			continue
 		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 		newnode.get_node("Icon").texture = load(i.icon)
-		newnode.get_node("Energy").text = str(i.energy) + '/' + str(i.maxenergy)
 		newnode.connect('pressed', targetscript, function, [i.id])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 

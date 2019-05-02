@@ -3,6 +3,7 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var craft_category
 var selected_item
 var recipes = []
+#warning-ignore-all:return_value_discarded
 
 func _ready():
 	globals.AddPanelOpenCloseAnimation($NumberSelect)

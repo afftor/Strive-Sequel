@@ -6,15 +6,16 @@ func _ready():
 
 func build_world():
 	for i in lands:
-		state.areas.append(make_area(i))
+		make_area(i)
 
 var lands = {
 	plains = {
 		code = 'plains',
+		name = "Plains",
 		lead_race = 'Human', #lead race has 80% chance to be presented in all settlements
 		secondary_races = ['Halfbreeds'], #secondary races have 30% chance to be presented in all settlements (or guaranteed if lead race is not) and 50% for another additional race 
 		policies = [], #not used as of now
-		travel_time = 0, #how long it gonna take to travel to region
+		travel_time = [0,0], #how long it gonna take to travel to region
 		difficulty = 0, #growing number defining quests and individuals
 		disposition = 100, #reputation, not currently used
 		population = [100000, 200000], #population, not currently used, but planned to be possible to affect its numbers
@@ -22,14 +23,15 @@ var lands = {
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = [], #array to fill up with settlements and dungeons
 		locationpool = ['caves', 'bandit_camp'], #array of allowed locations to generate
-		guilds = ['fighters','mages','workers','servants'],
+		guilds = ['workers','servants','fighters','mages'],
 	},
 	forests = {
 		code = 'forests',
+		name = "Forests",
 		lead_race = 'Elf',
 		secondary_races = ['DarkElf','Fairy','Dryad','Halfbreeds'],
 		policies = [],
-		travel_time = 1,
+		travel_time = [12,28],
 		difficulty = 1,
 		disposition = 25,
 		population = [20000, 50000],
@@ -44,7 +46,11 @@ var lands = {
 
 func make_area(code):
 	var areadata = lands[code].duplicate()
+	state.areas[areadata.code] = areadata
 	areadata.population = round(rand_range(areadata.population[0],areadata.population[1]))
+	areadata.quests = {guilds = {}, global = []}
+	areadata.questlocations = []
+	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
 	for i in areadata.start_settlements_number:
 		var number = round(rand_range(areadata.start_settlements_number[i][0], areadata.start_settlements_number[i][1]))
 		while number > 0:
@@ -53,12 +59,11 @@ func make_area(code):
 	while areadata.start_locations_number > 0:
 		make_location(areadata.locationpool[randi()%areadata.locationpool.size()], areadata)
 		areadata.start_locations_number -= 1
-	areadata.existing_guilds = []
+	areadata.factions = {}
+	areadata.quests.factions = {}
 	for i in areadata.guilds:
 		make_guild(i, areadata)
-	areadata.guilds = areadata.existing_guilds
-	areadata.erase("existing_guilds")
-	return areadata
+	areadata.erase('guilds')
 
 var guildsdata = {
 	fighters = {
@@ -109,13 +114,14 @@ var guildsdata = {
 
 func make_guild(code, area):
 	var factiondata = guildsdata[code].duplicate(true)
+	area.quests.factions[factiondata.code] = []
 	var guilddatatemplate = {
-		base = factiondata.code,
+		code = factiondata.code,
 		name = factiondata.name,
+		area = area.code,
 		preferences = factiondata.preference,
 		description = factiondata.description,
 		questpool = {easy = factiondata.quests_easy, medium = factiondata.quests_medium, hard = factiondata.quests_hard},
-		quests = {easy = [], medium = [], hard = []},
 		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
 		reputation = 0,
@@ -124,38 +130,38 @@ func make_guild(code, area):
 	}
 	factiondata.slavenumber = round(rand_range(factiondata.slavenumber[0], factiondata.slavenumber[1]))
 	factiondata.questnumber = round(rand_range(factiondata.questnumber[0], factiondata.questnumber[1]))
+	guilddatatemplate.slavenumber = factiondata.slavenumber
 	
 	while factiondata.slavenumber > 0:
 		make_slave_for_guild(guilddatatemplate)
 		factiondata.slavenumber -= 1
-#		var newslave = globals.characterdata.new()
-#		var data = {races = guilddatatemplate.races}
-#		var desclass = guilddatatemplate.preferences[randi()%guilddatatemplate.preferences.size()]
-#		var difficulty = 0
-#		newslave.generate_random_character_from_data(data, desclass, difficulty)
-#		#state.characters[character.id] = character
-#		guilddatatemplate.slaves.append(newslave)
-	
+	if factiondata.questnumber > 0:
+		area.quests.factions[factiondata.code] = []
 	while factiondata.questnumber > 0:
 		for i in ['easy','medium','hard']:
-			while guilddatatemplate.questsetting[i] > guilddatatemplate.quests[i].size():
-				var newquest = make_quest(guilddatatemplate.questpool[i][randi()%guilddatatemplate.questpool[i].size()])
-				newquest.source = code
-				newquest.area = area.code
-				newquest.travel_time = area.travel_time + round(randf()+1)
-				guilddatatemplate.quests[i].append(newquest)
+			while guilddatatemplate.questsetting[i] > area.quests.factions[factiondata.code].size():
+				make_quest_for_guild(guilddatatemplate, i)
 		factiondata.questnumber -= 1
 	
-	area.existing_guilds.append(guilddatatemplate)
+	area.factions[guilddatatemplate.code] = guilddatatemplate
 
 func make_slave_for_guild(guild):
 	var newslave = globals.characterdata.new()
 	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty)
 	guild.slaves.append(newslave)
 
+func make_quest_for_guild(guilddatatemplate, difficulty):
+	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])
+	newquest.source = guilddatatemplate.code
+	newquest.area = guilddatatemplate.area
+	newquest.travel_time = state.areas[guilddatatemplate.area].travel_time + round(randf()*24)
+	newquest.difficulty = difficulty
+	state.areas[newquest.area].quests.factions[newquest.source].append(newquest)
+
 func make_settlement(code, area):
 	var settlement = locations[code].duplicate(true)
 	settlement.population = round(rand_range(settlement.population[0],settlement.population[1]))
+	settlement.travel_time = round(rand_range(6,24))
 	settlement.name = 'Settlement'#add random names based on races/areas
 	if randf() <= 0.8:
 		settlement.races.append(area.lead_race)
@@ -198,12 +204,54 @@ func make_location(code, area):
 	var location = locations[code].duplicate(true)
 	location.name = code #add name generation
 	location.strength = round(rand_range(location.strength[0],location.strength[1]))
-	
+	location.id = "L" + str(state.locationcounter)
+	location.travel_time = round(rand_range(6,24))
+	state.locationcounter += 1
 	area.locations.append(location)
+
+func update_guilds(area):
+	
+	#rebuild quests and slaves in guild
+	for i in area.factions.values():
+		for k in i.slaves:
+			if randf() >= 0.7:
+				i.slaves.erase(k)
+		while i.slaves.size() < i.slavenumber:
+			make_slave_for_guild(i)
+		for faction in area.quests.factions:
+			for quest in area.quests.factions[faction]:
+				if quest.taken == true && quest.complete == false:
+					quest.time_limit -= 1
+					if quest.time_limit < 0:
+						fail_quest(quest)
+				else:
+					if randf() >= 0.7 || quest.complete == true:
+						area.quests.factions[faction].erase(quest)
+					fill_faction_quests(faction, area.code)
+
+func fill_faction_quests(faction, area):
+	var areadata = state.areas[area]
+	var factiondata = areadata.factions[faction]
+	
+	#get existing quests data
+	var difficulty = {easy = 0, medium = 0, hard = 0}
+	
+	for i in areadata.quests.factions[faction]:
+		difficulty[i.difficulty] += 1
+	for i in difficulty:
+		while factiondata.questsetting[i] > difficulty[i]:
+			make_quest_for_guild(factiondata, i)
+			difficulty[i] += 1
+
+func fail_quest(quest):
+	pass
+
+
 
 var locations = {
 	settlement_small = {
 		code = 'settlement_small',
+		type = 'settlement',
 		races = [],
 		population = [100,500],
 		resources = [],
@@ -217,6 +265,7 @@ var locations = {
 	},
 	settlement_large = {
 		code = 'settlement_large',
+		type = 'settlement',
 		races = [],
 		population = [1000,10000],
 		resources = [],
@@ -230,6 +279,7 @@ var locations = {
 	},
 	caves = {
 		code = 'caves',
+		type = 'dungeon',
 		actions = [],
 		strength = [1,10],
 		levels = [5,10],
@@ -238,6 +288,7 @@ var locations = {
 	},
 	bandit_camp = {
 		code = 'bandit_camp',
+		type = 'dungeon',
 		actions = [],
 		strength = [5,10],
 		levels = [3,5],
@@ -255,8 +306,8 @@ var questdata = {
 	workers_resources_basic = {
 		code = 'workers_resources_basic',
 		type = 'materialsquest',
-		name = '',
-		descript = '',
+		name = 'Resource gathering',
+		descript = 'The guild requires additional resources for its needs. ',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['wood','stone','cloth'], range = [45,60]},{use_once = false, code = 'material', function = 'range', type = ['bone','leather'], range = [25,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -265,9 +316,9 @@ var questdata = {
 	workers_food_basic = {
 		code = 'workers_food_basic',
 		type = 'materialsquest',
-		name = '',
-		descript = '',
-		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['meat','fish','vegetables','grain'], range = [45,60]}]},
+		name = 'Food supply',
+		descript = 'The guild requires additional food supplies.',
+		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['meat','fish','vegetables','grains'], range = [45,60]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [6,10],
@@ -275,8 +326,8 @@ var questdata = {
 	workers_craft_tools_basic = {
 		code = 'workers_craft_tools_basic',
 		type = 'itemsquest',
-		name = '',
-		descript = '',
+		name = 'Tool making',
+		descript = 'The guild requires a specific instruments. ',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'item', function = 'range', type = ['axe','pickaxe','sickle'], range = [2,2]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -285,8 +336,8 @@ var questdata = {
 	workers_threat_basic = {
 		code = 'workers_threat_basic',
 		type = 'eventlocationquest',
-		name = '',
-		descript = '',
+		name = 'Trouble solving',
+		descript = 'The guild requires a help with a certain issue',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
@@ -327,7 +378,7 @@ var questdata = {
 		type = 'slavegetquest',
 		name = '',
 		descript = '',
-		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range', type = ['physics'], range = [20,40]}]},
+		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat', operant = 'gte', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['physics'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [6,10],
@@ -367,7 +418,7 @@ var questdata = {
 		type = 'slavegetquest',
 		name = '',
 		descript = '',
-		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range', type = ['wits'], range = [20,40]}]},
+		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat',operant = 'gte', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['wits'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [6,10],
@@ -387,7 +438,7 @@ var questdata = {
 		type = 'slavegetquest',
 		name = '',
 		descript = '',
-		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range', type = ['charm','sexuals'], range = [20,40]}]},
+		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [6,10],
@@ -411,17 +462,18 @@ func make_quest(questcode):
 	var data = quest_template.duplicate(true)
 	
 	data.code = template.code
-	data.name = template.code#change to name later
+	data.name = template.name
 	data.descript = template.descript
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.type = template.type
+	data.complete = false
 	
 	#location = location - add quest placement
 	var requirements_number = round(rand_range(template.randomconditions.number[0], template.randomconditions.number[1]))
 	var reqsarray = template.randomconditions.variances.duplicate()
 	while requirements_number > 0:
 		var tempdata = reqsarray[randi()%reqsarray.size()].duplicate()
-		var reqsarrayposition = reqsarray.find(tempdata) #save position to clear same types if to be used multiple times
+		var reqsarrayposition = reqsarray.find(tempdata) #Bug - stat req can repeat itself
 		match tempdata.function:
 			'range':
 				tempdata.value = round(rand_range(tempdata.range[0], tempdata.range[1]))
@@ -445,18 +497,20 @@ func make_quest(questcode):
 	
 	return data
 
-func take_quest(quest):
+func take_quest(quest, area):
 	quest.taken = true
 	if quest.type in ['eventlocationquest','dungeonquest']:
-		make_quest_location(quest)
+		area.questlocations.append(make_quest_location(quest))
 
 func make_quest_location(quest):
 	var locationdata = {}
+	locationdata.id = "L" + str(state.locationcounter)
+	state.locationcounter += 1
 	for i in quest.requirements:
 		match quest.type:
 			'eventlocationquest':
 				var data = event_locations_data[i.type].duplicate(true)
-				locationdata.type = 'event'
+				locationdata.type = 'quest_event'
 				locationdata.code = data.code
 				locationdata.name = data.name
 				locationdata.descript = data.descript
@@ -466,7 +520,7 @@ func make_quest_location(quest):
 				locationdata.event = data.event_code
 			'dungeonquest':
 				var data = dungeons[i.type].duplicate(true)
-				locationdata.type = 'dungeon'
+				locationdata.type = 'quest_dungeon'
 				locationdata.code = data.code
 				locationdata.name = data.name
 				locationdata.descript = data.descript
@@ -476,8 +530,52 @@ func make_quest_location(quest):
 				locationdata.stages = round(rand_range(data.stages[0], data.stages[1]))
 				locationdata.enemies = data.enemies
 				locationdata.difficulty = round(rand_range(data.difficulty[0], data.difficulty[1]))
-				
+	return locationdata
+
+func make_quest_descript(quest):
+	var text = '[center]' + quest.name + '[/center]\n' + quest.descript
 	
+	text += "\n\nRequirements: "
+	#reqs
+	match quest.type:
+		"materialsquest":
+			text += "\nProvide resources: "
+		"itemsquest":
+			text += "\nProvide items: "
+		"slavegetquest":
+			text += "\nProvide slave: "
+		"monsterhuntquest":
+			text += "\nDefeat enemies: "
+		"dungeonquest":
+			text += "\nClear location: "
+		"eventlocationquest":
+			text += "\nComplete encounter: "
+	for i in quest.requirements:
+		match i.code:
+			'material':
+				text += "\n" + Items.materiallist[i.type].name + ": " + str(i.value)
+			"item":
+				text += "\n" + Items.itemlist[i.type].name + ": " + str(i.value)
+			"monsters":
+				text += "\n" + world_gen.enemies[i.type].name + ": " + str(i.value)
+			"stat":
+				text += "\n" + i.type + ": " + str(i.value)
+			"eventlocation":
+				text += "\n" + i.type
+			"dungeon":
+				text += "\n" + i.type
+	
+	text += "\n\nRewards:"
+	
+	for i in quest.rewards:
+		match i.code:
+			'gold':
+				text += "\nGold - " + str(i.value)
+			'reputation':
+				text += "\nReputation: " + str(quest.source) + " - " + str(i.value)
+	
+	return text
+
 
 var dungeons = {
 	dungeon_easy = {
@@ -496,7 +594,7 @@ var dungeons = {
 var enemies = {
 	bandit_easy = {
 		code = 'bandit_easy',
-		name = '',
+		name = 'bandit_easy',
 		hp = 100,
 		armor = 0,
 		mdef = 0,
@@ -517,7 +615,7 @@ var enemies = {
 	},
 	cave_goblin = {
 		code = 'cave_goblin',
-		name = '',
+		name = 'cave_goblin',
 		hp = 75,
 		armor = 0,
 		mdef = 0,
@@ -538,7 +636,7 @@ var enemies = {
 	},
 	skeleton = {
 		code = 'skeleton',
-		name = '',
+		name = 'skeleton',
 		hp = 90,
 		armor = 0,
 		mdef = 0,
@@ -559,7 +657,7 @@ var enemies = {
 	},
 	wolf = {
 		code = 'wolf',
-		name = '',
+		name = 'wolf',
 		hp = 90,
 		armor = 0,
 		mdef = 0,
@@ -580,7 +678,7 @@ var enemies = {
 	},
 	spider = {
 		code = 'spider',
-		name = '',
+		name = 'spider',
 		hp = 90,
 		armor = 0,
 		mdef = 0,
@@ -601,7 +699,7 @@ var enemies = {
 	},
 	rat = {
 		code = 'rat',
-		name = '',
+		name = 'rat',
 		hp = 40,
 		armor = 0,
 		mdef = 0,
@@ -622,7 +720,7 @@ var enemies = {
 	},
 	gryphon = {
 		code = 'gryphon',
-		name = '',
+		name = 'gryphon',
 		hp = 300,
 		armor = 25,
 		mdef = 50,

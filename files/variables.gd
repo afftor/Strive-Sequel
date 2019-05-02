@@ -1,6 +1,7 @@
 extends Node
 #Game Settings
-var TimePerDay = 120
+var HoursPerDay = 24
+var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 

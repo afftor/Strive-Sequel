@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=23]
 [ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=25]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -70,8 +71,14 @@ margin_right = 711.376
 margin_bottom = 1068.33
 text = "Outside"
 
+[node name="QuestlogButton" type="Button" parent="."]
+margin_left = 723.376
+margin_top = 999.333
+margin_right = 941.376
+margin_bottom = 1068.33
+text = "Quest Menu"
+
 [node name="TimeNode" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_right = 313.0
 margin_bottom = 159.0
 texture = ExtResource( 3 )
@@ -132,6 +139,12 @@ rect_rotation = 360.0
 rect_pivot_offset = Vector2( 153.5, 153.5 )
 mouse_filter = 2
 texture = ExtResource( 13 )
+
+[node name="gold" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 372.0
+margin_right = 244.0
+margin_bottom = 400.0
 
 [node name="TaskProgress" type="Panel" parent="."]
 editor/display_folded = true
@@ -312,7 +325,9 @@ margin_top = 144.582
 margin_right = 677.968
 margin_bottom = 932.582
 
-[node name="CraftPanel" parent="." instance=ExtResource( 22 )]
+[node name="CraftPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 22 )]
 visible = false
 
 [node name="TaskPanel" type="Panel" parent="."]
@@ -353,15 +368,24 @@ margin_top = 461.684
 margin_right = 453.222
 margin_bottom = 508.684
 
-[node name="Exploration" parent="." instance=ExtResource( 23 )]
+[node name="Exploration" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 23 )]
 visible = false
 
-[node name="SlavePanel" parent="." instance=ExtResource( 24 )]
+[node name="SlavePanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 24 )]
 visible = false
 margin_left = 32.1478
 margin_top = 96.6894
 margin_right = 1350.15
 margin_bottom = 960.689
+
+[node name="QuestPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 25 )]
+visible = false
 
 [node name="TextLog" type="RichTextLabel" parent="."]
 margin_left = 1252.0

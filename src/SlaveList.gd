@@ -1,35 +1,10 @@
 extends Panel
 
-var time = 4
-
 
 func _ready():
-	globals.CurrentScene = self
 	state.connect("slave_added",self,"rebuild")
-#	var x = 5
-#	while x > 0:
-#		var character = load("res://src/combatant.gd").new()
-#		character.create('random', 'random', 'random')
-#		state.characters[character.id] = character
-#		x -= 1
-
-	var character = globals.characterdata.new()
-	character.create('random', 'random', 'random')
-	state.characters[character.id] = character
-#	var character2 = characterdata.new()
-#	character2.create('random', 'random', 'random')
-#	character2.tame_factor = 4
-#	state.characters[character2.id] = character2
 	rebuild()
 
-func _process(delta):
-	time += delta
-	if time >= 1:
-		time -= 1
-		for i in state.characters.values():
-			i.tick()
-		if get_parent().get_node("SlavePanel").visible == true:
-			get_parent().get_node("SlavePanel").open(get_parent().get_node("SlavePanel").person)
 
 
 func rebuild():
