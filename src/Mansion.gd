@@ -16,7 +16,8 @@ func _ready():
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
 	for i in timebuttons:
-		i.hint_tooltip = tooltips[counter]
+		globals.connecttexttooltip(i, tooltips[counter])
+		#i.hint_tooltip = tooltips[counter]
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
@@ -33,6 +34,11 @@ func _ready():
 		i.name = tr("ITEM" + i.code.to_upper())
 		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
 	
+	for i in Skilldata.Skilllist.values():
+		i.name = tr("SKILL" + i.code.to_upper())
+		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
+		
+	
 	$InventoryButton.connect("pressed",self,'open_inventory')
 	$CraftButton.connect("pressed",self,"open_craft")
 	$ExploreButton.connect("pressed",$Exploration,"open")
@@ -48,6 +54,7 @@ func _ready():
 	var character = globals.characterdata.new()
 	character.create('random', 'random', 'random')
 	state.characters[character.id] = character
+	character.unlock_class("master")
 	character = globals.characterdata.new()
 	character.create('random', 'random', 'random')
 	state.characters[character.id] = character
@@ -55,7 +62,8 @@ func _ready():
 	character.create('random', 'random', 'random')
 	state.characters[character.id] = character
 	$SlaveList.rebuild()
-
+	
+	
 
 func _process(delta):
 	if self.visible == false:
@@ -100,6 +108,8 @@ func _process(delta):
 			if state.hour >= variables.HoursPerDay:
 				state.hour = 0
 				state.date += 1
+				for i in state.characters.values():
+					i.cooldown_tick()
 				for i in state.areas.values():
 					world_gen.update_guilds(i)
 			for i in state.characters.values():

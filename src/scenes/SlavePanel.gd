@@ -6,14 +6,21 @@ var person
 
 var type
 
+func _input(event):
+	if self.visible == false:
+		return
+
+
 func _ready():
 	#setting tooltips
 	for i in $progress.get_children():
 		i.connect("mouse_entered", self, "show_progress_tooltip", [i])
 	for i in $factors.get_children():
-		i.hint_tooltip = tr("TOOLTIP" + i.name.replace("_", "").to_upper())
+		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.replace("_", "").to_upper()))
+		#i.hint_tooltip = tr("TOOLTIP" + i.name.replace("_", "").to_upper())
 	for i in $mentality.get_children():
-		i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
+		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.replace("_", "").to_upper()))
+		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
 		get_node("job_panel/"+i).connect("pressed", self, "change_hours", [i])
@@ -97,6 +104,10 @@ func open(tempperson):
 		var prof = Skilldata.professions[i]
 		newnode.texture = prof.icon
 		newnode.get_node("Label").text = prof.name
+	
+	$SkillPanel.visible = type != 'stranger'
+	if $SkillPanel.visible == true:
+		build_skill_panel()
 	
 	globals.ClearContainer($traits)
 	for i in person.traits:
@@ -201,5 +212,63 @@ func update_hours():
 	$job_panel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
 	if currentjob != null:
 		show_job_details(currentjob)
-	
 
+func build_skill_panel():
+	globals.ClearContainer($SkillPanel)
+	for i in range(1,13):
+		var text = ''
+		var newbutton = globals.DuplicateContainerTemplate($SkillPanel)
+		if person.social_skill_panel.has(i):
+			var skill = Skilldata.Skilllist[person.social_skill_panel[i]]
+			newbutton.get_node("icon").texture = skill.icon
+			newbutton.get_node("icon").show()
+			if skill.manacost > 0:
+				newbutton.get_node("manacost").visible = true
+				newbutton.get_node("manacost").text = str(skill.manacost)
+				if person.mana < skill.manacost:
+					newbutton.disabled = true
+					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
+			if skill.energycost > 0:
+				newbutton.get_node("energycost").visible = true
+				newbutton.get_node("energycost").text = str(skill.energycost)
+				if person.energy < skill.energycost:
+					newbutton.disabled = true
+					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
+			if person.social_skills_charges.has(skill.code):
+				text = str(skill.charges - person.social_skills_charges[skill.code]) + "/" + str(skill.charges)
+			else:
+				text = str(skill.charges) + "/" + str(skill.charges)
+			newbutton.get_node("charges").text = text
+			newbutton.get_node("charges").show()
+			if person.social_skills_charges.has(skill.code) && skill.charges - person.social_skills_charges[skill.code] <= 0:
+				newbutton.disabled = true
+			
+			newbutton.connect("pressed",self,"select_skill_target", [skill.code])
+			globals.connectskilltooltip(newbutton, skill.code, person)
+		else:
+			newbutton.connect('pressed',self,'select_skill_for_position', [i])
+		
+		newbutton.set_script(load("res://src/RightClickReactButton.gd"))
+		newbutton.connect('signal_RMB',self,'select_skill_for_position', [i])
+
+var active_position
+var active_skill
+
+func select_skill_for_position(position):
+	active_position = position
+	input_handler.ShowSkillSelectPanel(person, 'social', self, 'skill_selected')
+
+func skill_selected(skill):
+	if skill == null:
+		person.social_skill_panel.erase(active_position)
+	else:
+		person.social_skill_panel[active_position] = skill
+	build_skill_panel()
+
+func select_skill_target(skillcode):
+	active_skill = skillcode
+	input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free'}, {code = 'is_id', operant = 'neq', value = person.id}])
+
+func use_skill(target):
+	person.use_skill(active_skill, target)
+	open(person)

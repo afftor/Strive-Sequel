@@ -87,6 +87,7 @@ func Reward():
 				state.money += i.value
 			'reputation':
 				state.areas[selectedquest.area].factions[selectedquest.source].reputation += i.value
+				state.areas[selectedquest.area].factions[selectedquest.source].totalreputation += i.value
 	open()
 
 func CancelQuest():

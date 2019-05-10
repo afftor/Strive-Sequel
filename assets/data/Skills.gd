@@ -12,7 +12,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 10,
 		charges = 3,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 2,
 		icon = null,
 		tags = [],
@@ -28,7 +28,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 10,
 		charges = 3,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 2,
 		icon = null,
 		tags = [],
@@ -44,7 +44,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 10,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -59,7 +59,7 @@ var Skilllist = {
 		effects = [],
 		manacost = 0,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		energycost = 20,
 		receiverdaylimit = 1,
 		icon = null,
@@ -75,7 +75,7 @@ var Skilllist = {
 		effects = [],
 		manacost = 0,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		energycost = 20,
 		receiverdaylimit = 2,
 		icon = null,
@@ -91,7 +91,7 @@ var Skilllist = {
 		effects = [],
 		manacost = 0,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		energycost = 10,
 		receiverdaylimit = 4,
 		icon = null,
@@ -108,7 +108,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 25,
 		charges = 1,
-		cooldown = 20,
+		cooldown = 2,
 		receiverdaylimit = 1,
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
@@ -125,7 +125,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 25,
 		charges = 1,
-		cooldown = 30,
+		cooldown = 3,
 		receiverdaylimit = 1,
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
@@ -142,7 +142,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 1,
-		cooldown = 30,
+		cooldown = 3,
 		receiverdaylimit = 1,
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
@@ -160,7 +160,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 20,
 		charges = 3,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -176,7 +176,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 10,
 		charges = 1,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -192,7 +192,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 10,
 		charges = 1,
-		cooldown = 40,
+		cooldown = 4,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -208,7 +208,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 3,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 3,
 		icon = null,
 		tags = [],
@@ -223,7 +223,7 @@ var Skilllist = {
 		effects = [],
 		manacost = 0,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		energycost = 20,
 		receiverdaylimit = 1,
 		icon = null,
@@ -240,7 +240,7 @@ var Skilllist = {
 		manacost = 15,
 		energycost = 0,
 		charges = 1,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -256,7 +256,7 @@ var Skilllist = {
 		manacost = 15,
 		energycost = 0,
 		charges = 1,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -272,7 +272,7 @@ var Skilllist = {
 		manacost = 25,
 		energycost = 0,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -288,7 +288,7 @@ var Skilllist = {
 		manacost = 30,
 		energycost = 0,
 		charges = 1,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -304,7 +304,7 @@ var Skilllist = {
 		manacost = 50,
 		energycost = 0,
 		charges = 1,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -320,7 +320,7 @@ var Skilllist = {
 		manacost = 100,
 		energycost = 0,
 		charges = 1,
-		cooldown = 30,
+		cooldown = 3,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -336,7 +336,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 1,
-		cooldown = 30,
+		cooldown = 3,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -352,7 +352,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 25,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -368,7 +368,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 10,
 		charges = 2,
-		cooldown = 10,
+		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -384,7 +384,7 @@ var Skilllist = {
 		manacost = 150,
 		energycost = 100,
 		charges = 1,
-		cooldown = 70,
+		cooldown = 7,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
@@ -400,57 +400,57 @@ var Skilllist = {
 		manacost = 75,
 		energycost = 0,
 		charges = 1,
-		cooldown = 30,
+		cooldown = 3,
 		receiverdaylimit = 1,
 		icon = null,
 		tags = [],
 	},
 	
-	double_attack = { #double melee attack
-		
-	},
-	slash = { #aoe attack
-		
-	},
-	charge = { #heavy attack
-		
-	},
-	rage_strike = { #attack with growing damage from missing health
-		
-	},
-	serrated_shot = { #causes bleeding
-		
-	},
-	lesser_heal = {
-		
-	},
-	mass_lesser_heal = {
-		
-	},
-	fire_bolt = {
-		
-	},
-	firestorm = {
-		
-	},
-	barrier = {
-		
-	},
-	fly_evasion = { #boost evasion for x turns
-		
-	},
-	disruption_shot = { #Removes 1 buff from target (before damage hit)
-		
-	},
-	bleeding_strike = {
-		
-	},
-	hide = {#makes untargetable for enemies (but can still hit from aoe). If all melee units are hidden, enemy melee can hit back rows
-		
-	},
-	assassinate = {#great damage
-		
-	},
+#	double_attack = { #double melee attack
+#
+#	},
+#	slash = { #aoe attack
+#
+#	},
+#	charge = { #heavy attack
+#
+#	},
+#	rage_strike = { #attack with growing damage from missing health
+#
+#	},
+#	serrated_shot = { #causes bleeding
+#
+#	},
+#	lesser_heal = {
+#
+#	},
+#	mass_lesser_heal = {
+#
+#	},
+#	fire_bolt = {
+#
+#	},
+#	firestorm = {
+#
+#	},
+#	barrier = {
+#
+#	},
+#	fly_evasion = { #boost evasion for x turns
+#
+#	},
+#	disruption_shot = { #Removes 1 buff from target (before damage hit)
+#
+#	},
+#	bleeding_strike = {
+#
+#	},
+#	hide = {#makes untargetable for enemies (but can still hit from aoe). If all melee units are hidden, enemy melee can hit back rows
+#
+#	},
+#	assassinate = {#great damage
+#
+#	},
 	
 }
 
@@ -467,7 +467,7 @@ var professions = {
 		reqs = [{code = 'global_profession_limit', name = 'master', value = 1}],
 		statchanges = [],
 		traits = ['master_effect'],
-		skills = ['praise', 'warn', 'reward','rewardsex','punish'],
+		skills = ['praise', 'warn', 'reward','punish'],
 		combatskills = [],
 	},
 	ruler = {

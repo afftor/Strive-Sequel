@@ -37,6 +37,8 @@ var class_cap_per_growth = 1
 var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
 var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 
+var instant_travel = true
+
 var pregduration = 90
 
 var slave_classes_per_difficulty = {

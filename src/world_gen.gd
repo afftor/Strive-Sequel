@@ -8,6 +8,9 @@ func build_world():
 	for i in lands:
 		make_area(i)
 
+var dungeonnoun = ['Tunnels','Quarters','Caves','Halls','Delves','Burrows','Vault','Labyrinth','Chambers','Crypt','Tombs','Catacombs','Lair','Dungeon','Caverns']
+var dungeonadj = ['Dark','White','Red','Black','Molten','Distant','Eternal','Gloomy','Lower','Moaning','Demonic','Rocking','Living','Crystal','Deadly','Roaring']
+
 var lands = {
 	plains = {
 		code = 'plains',
@@ -22,8 +25,10 @@ var lands = {
 		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]}, #will generate said locations on first generation
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = [], #array to fill up with settlements and dungeons
-		locationpool = ['caves', 'bandit_camp'], #array of allowed locations to generate
+		locationpool = ['dungeon_bandit_den_easy', "dungeon_goblin_cave_easy"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages'],
+		capital_shop_resources = ['meat','fish','grains','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
+		capital_shop_items = [],
 	},
 	forests = {
 		code = 'forests',
@@ -38,8 +43,10 @@ var lands = {
 		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
 		start_locations_number = 3, 
 		locations = [],
-		locationpool = ['caves'],
+		locationpool = ['dungeon_goblin_cave_easy'],
 		guilds = [],
+		capital_shop_resources = ['grains','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
+		capital_shop_items = [],
 	},
 }
 
@@ -64,6 +71,37 @@ func make_area(code):
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
+
+var guild_upgrades = {
+	slavenumberupgrade = {
+		code = 'slavenumberupgrade',
+		descript = 'Increases the number of available characters for hire at once by 1. ',
+		name = 'Hirelings number',
+		cost = [100,500,1000,2000],
+		reqs = [],
+		maxlevel = 4,
+		effects = [{code = 'slavenumber', operant = '+', value = 1}],
+	},
+	slavequality = {
+		code = 'slavequality',
+		descript = 'Increases quality of characters available for hire. Stronger characters might have higher initial skills, attributes and more classes, but cost higher. ',
+		name = 'Hirelings quality',
+		cost = [100,500,1000,2000],
+		reqs = [],
+		maxlevel = 4,
+		effects = [{code = 'slavelevel', operant = '+', value = 1}],
+	},
+	questnumberupgrade = {
+		code = 'questnumberupgrade',
+		descript = 'Increases the amount of available quests at once by 1.',
+		name = 'Quest Number',
+		cost = [100,500,1000,2000],
+		reqs = [],
+		maxlevel = 4,
+		effects = [{code = 'questsetting:total', operant = '+', value = 1}],
+	},
+	
+}
 
 var guildsdata = {
 	fighters = {
@@ -124,9 +162,12 @@ func make_guild(code, area):
 		questpool = {easy = factiondata.quests_easy, medium = factiondata.quests_medium, hard = factiondata.quests_hard},
 		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
-		reputation = 0,
+		reputation = 5000,
+		totalreputation = 0,
 		difficulty = area.difficulty,
 		races = [area.lead_race] + area.secondary_races,
+		upgrades = {},
+		slavelevel = 0,
 	}
 	factiondata.slavenumber = round(rand_range(factiondata.slavenumber[0], factiondata.slavenumber[1]))
 	factiondata.questnumber = round(rand_range(factiondata.questnumber[0], factiondata.questnumber[1]))
@@ -163,6 +204,10 @@ func make_settlement(code, area):
 	settlement.population = round(rand_range(settlement.population[0],settlement.population[1]))
 	settlement.travel_time = round(rand_range(6,24))
 	settlement.name = 'Settlement'#add random names based on races/areas
+	settlement.id = "L" + str(state.locationcounter)
+	settlement.group = {}
+	settlement.type = 'settlement'
+	state.locationcounter += 1
 	if randf() <= 0.8:
 		settlement.races.append(area.lead_race)
 	if randf() >= 0.7 || settlement.races.size() == 0:
@@ -201,11 +246,13 @@ func make_settlement(code, area):
 
 
 func make_location(code, area):
-	var location = locations[code].duplicate(true)
-	location.name = code #add name generation
-	location.strength = round(rand_range(location.strength[0],location.strength[1]))
+	var location = dungeons[code].duplicate(true)
+	location.name =  "The " + dungeonadj[randi()%dungeonadj.size()] + " " + dungeonnoun[randi()%dungeonnoun.size()]
 	location.id = "L" + str(state.locationcounter)
 	location.travel_time = round(rand_range(6,24))
+	location.type = 'dungeon'
+	location.group = {}
+	location.progress = {level = 0, stage = 0}
 	state.locationcounter += 1
 	area.locations.append(location)
 
@@ -277,23 +324,8 @@ var locations = {
 		food_type_number = [2,4],
 		resources_type_number = [2,3],
 	},
-	caves = {
-		code = 'caves',
-		type = 'dungeon',
-		actions = [],
-		strength = [1,10],
-		levels = [5,10],
-		enemies = [],
-		events = [],
-	},
-	bandit_camp = {
-		code = 'bandit_camp',
-		type = 'dungeon',
-		actions = [],
-		strength = [5,10],
-		levels = [3,5],
-		enemies = ['bandit_easy']
-	},
+	caves = [],
+	bandit_camp = [],
 }
 
 
@@ -518,6 +550,8 @@ func make_quest_location(quest):
 				locationdata.area = quest.area
 				locationdata.travel_time = quest.travel_time
 				locationdata.event = data.event_code
+				locationdata.group = {}
+				locationdata.progress = {level = 0, stage = 0}
 			'dungeonquest':
 				var data = dungeons[i.type].duplicate(true)
 				locationdata.type = 'quest_dungeon'
@@ -529,7 +563,9 @@ func make_quest_location(quest):
 				locationdata.travel_time = quest.travel_time
 				locationdata.stages = round(rand_range(data.stages[0], data.stages[1]))
 				locationdata.enemies = data.enemies
-				locationdata.difficulty = round(rand_range(data.difficulty[0], data.difficulty[1]))
+				locationdata.difficulty = data.difficulty
+				locationdata.group = {}
+				locationdata.progress = {level = 0, stage = 0}
 	return locationdata
 
 func make_quest_descript(quest):
@@ -578,17 +614,46 @@ func make_quest_descript(quest):
 
 
 var dungeons = {
-	dungeon_easy = {
-		code = 'dungeon_easy',
+	dungeon_bandit_den_easy = {
+		code = 'dungeon_bandit_den_easy',
 		name = '',
 		descript = '',
 		background = '',
-		stages = [3,5],
-		difficulty = [1,2],
-		enemies = [['bandits_easy', 1]],
+		levels = [2,3],
+		stages_per_level = [3,5],
+		difficulty = 'easy',
+		enemies = [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+		final_enemy = [['bandits_easy_boss',1]],
+		final_enemy_type = 'character',
 		affiliation = ['local'], #defines character races and events
 		events = [],
 	},
+	dungeon_goblin_cave_easy = {
+		code = 'dungeon_goblin_cave_easy',
+		name = '',
+		descript = '',
+		background = '',
+		levels = [2,3],
+		stages_per_level = [3,5],
+		difficulty = 'easy',
+		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		final_enemy = [['goblins_easy_boss',1]],
+		final_enemy_type = 'monster',
+		affiliation = ['local'], #defines character races and events
+		events = [],
+	},
+}
+
+var enemygroups = {
+	rats_easy = {reqs = [], units = {rat = [2,6]}},
+	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_easy = [1,3]}},
+	goblins_easy = {reqs = [], units = {cave_goblin_easy = [2,4]}},
+	bandits_easy = {reqs = [], units = {bandit_easy = [2,3]}},
+	bandits_easy2 = {reqs = [], units = {bandit_easy = [2,4]}},
+	bandits_easy3 = {reqs = [], units = {bandit_easy = [1,3], bandit_med = [1,1]}},
+	bandits_easy_boss = {reqs = [], units = {bandit_easy = [0,2], boss = [1,1]}},
+	rats = {reqs = [], units = {rat = [3,5]}},
+	
 }
 
 var enemies = {
@@ -598,6 +663,27 @@ var enemies = {
 		hp = 100,
 		armor = 0,
 		mdef = 0,
+		hitrate = 85,
+		evasion = 0,
+		armorpenetration = 0,
+		damage = 10,
+		speed = 50,
+		resists = {},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = null,
+		skills = [],
+		tags = [],
+		is_character = true,
+		gear = [],
+		ai = ['ranged','melee'],
+	},
+	bandit_med = {
+		code = 'bandit_med',
+		name = 'bandit_med',
+		hp = 150,
+		armor = 20,
+		mdef = 10,
 		hitrate = 85,
 		evasion = 0,
 		armorpenetration = 0,
@@ -739,9 +825,6 @@ var enemies = {
 		gear = [],
 		ai = ['melee'],
 	},
-}
-var enemygroups = {
-	bandits_group_easy = {bandit_easy = [2,4]},
 }
 
 var event_locations_data = {

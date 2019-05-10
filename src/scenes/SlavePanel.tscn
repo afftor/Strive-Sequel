@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/SlavePanel.gd" type="Script" id=2]
@@ -27,6 +27,9 @@
 [ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=28]
+[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=29]
+[ext_resource path="res://assets/images/iconsskills/slash.png" type="Texture" id=30]
 
 [node name="SlavePanel" type="Panel"]
 margin_left = 30.0973
@@ -71,10 +74,10 @@ expand = true
 stretch_mode = 6
 
 [node name="Body" type="TextureRect" parent="."]
-margin_left = 1348.27
-margin_top = 0.306641
-margin_right = 1874.27
-margin_bottom = 859.307
+margin_left = 1326.06
+margin_top = -1.54401
+margin_right = 1852.06
+margin_bottom = 857.456
 mouse_filter = 2
 texture = ExtResource( 3 )
 stretch_mode = 6
@@ -374,8 +377,8 @@ margin_bottom = 31.0
 text = "25"
 
 [node name="mentality" type="VBoxContainer" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 editor/display_folded = true
 margin_left = 15.0
@@ -549,6 +552,7 @@ align = 1
 [node name="controls" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
+editor/display_folded = true
 margin_left = 1088.0
 margin_top = 274.0
 margin_right = 1298.0
@@ -590,10 +594,11 @@ rect_min_size = Vector2( 0, 50 )
 text = "Class"
 
 [node name="professions" type="GridContainer" parent="."]
-margin_left = 12.0
-margin_top = 864.0
-margin_right = 868.0
-margin_bottom = 964.0
+editor/display_folded = true
+margin_left = 1318.0
+margin_top = 880.656
+margin_right = 1858.0
+margin_bottom = 980.656
 grow_horizontal = 0
 grow_vertical = 0
 columns = 8
@@ -1020,4 +1025,69 @@ margin_right = 925.704
 margin_bottom = 545.296
 text = "Joy Hours"
 align = 1
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 5.0
+margin_top = 861.0
+margin_right = 1314.0
+margin_bottom = 993.0
+
+[node name="SkillPanel" type="HBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 18.6339
+margin_top = 876.339
+margin_right = 788.634
+margin_bottom = 951.339
+custom_constants/separation = 7
+
+[node name="Button" type="TextureButton" parent="SkillPanel"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 28 )
+expand = true
+script = ExtResource( 29 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/Button"]
+visible = false
+margin_left = 0.7547
+margin_top = -0.37738
+margin_right = 100.755
+margin_bottom = 99.6226
+rect_min_size = Vector2( 100, 100 )
+mouse_filter = 2
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="charges" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 58.0462
+margin_top = 1.50122
+margin_right = 98.0462
+margin_bottom = 25.5012
+text = "1"
+align = 2
+
+[node name="energycost" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 58.0462
+margin_top = 79.5012
+margin_right = 98.0462
+margin_bottom = 103.501
+custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="manacost" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 4.04623
+margin_top = 79.5012
+margin_right = 44.0462
+margin_bottom = 103.501
+custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
 

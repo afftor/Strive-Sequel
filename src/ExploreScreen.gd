@@ -19,7 +19,6 @@ func _ready():
 	$areaspanel/Return.connect("pressed", self, "ReturnToVillage")
 	globals.CurrentScene = self
 	for i in positiondict:
-#warning-ignore:return_value_discarded
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
 
 
@@ -78,6 +77,20 @@ func HeroSelected(hero):
 	
 	state.combatparty[SelectingPosition] = hero.id
 	UpdatePositions()
+
+func UpdatePositions():
+	for i in positiondict.values():
+		get_node(i+'/Image').hide()
+	
+	for i in state.combatparty:
+		if state.combatparty[i] != null:
+			get_node(positiondict[i] + "/Image").texture = state.heroes[state.combatparty[i]].portrait()
+			get_node(positiondict[i] + "/Image").show()
+	$AreaProgress/ProceedButton.disabled = state.if_party_level('lte', 0)
+	if $AreaProgress/ProceedButton.disabled:
+		$AreaProgress/ProceedButton.hint_tooltip = "You must assign party before venturing"
+	else:
+		$AreaProgress/ProceedButton.hint_tooltip = ''
 
 var encountercode
 
@@ -170,19 +183,7 @@ func ReturnToVillage():
 
 
 
-func UpdatePositions():
-	for i in positiondict.values():
-		get_node(i+'/Image').hide()
-	
-	for i in state.combatparty:
-		if state.combatparty[i] != null:
-			get_node(positiondict[i] + "/Image").texture = state.heroes[state.combatparty[i]].portrait()
-			get_node(positiondict[i] + "/Image").show()
-	$AreaProgress/ProceedButton.disabled = state.if_party_level('lte', 0)
-	if $AreaProgress/ProceedButton.disabled:
-		$AreaProgress/ProceedButton.hint_tooltip = "You must assign party before venturing"
-	else:
-		$AreaProgress/ProceedButton.hint_tooltip = ''
+
 
 func openinventory(hero):
 	$Inventory.open(hero)

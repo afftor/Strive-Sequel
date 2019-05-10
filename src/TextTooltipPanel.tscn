@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/TextTooltipPanel.gd" type="Script" id=1]
+
+[node name="TextTooltipPanel" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 662.327
+margin_top = 216.23
+margin_right = 1260.33
+margin_bottom = 540.23
+script = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 14.9854
+margin_top = 27.0
+margin_right = 573.985
+margin_bottom = 290.0
+bbcode_enabled = true
+

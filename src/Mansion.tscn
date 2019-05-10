@@ -79,6 +79,7 @@ margin_bottom = 1068.33
 text = "Quest Menu"
 
 [node name="TimeNode" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_right = 313.0
 margin_bottom = 159.0
 texture = ExtResource( 3 )
@@ -192,7 +193,6 @@ texture = ExtResource( 14 )
 expand = true
 
 [node name="SlaveList" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 1221.0
 margin_top = 64.0
 margin_right = 1905.0
@@ -212,6 +212,7 @@ margin_right = 648.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="SlaveList/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
 visible = false
 margin_right = 648.0
 margin_bottom = 50.0
@@ -377,10 +378,10 @@ visible = false
 "pauseprocess",
 ] instance=ExtResource( 24 )]
 visible = false
-margin_left = 32.1478
-margin_top = 96.6894
-margin_right = 1350.15
-margin_bottom = 960.689
+margin_left = 22.1478
+margin_top = 56.6894
+margin_right = 1340.15
+margin_bottom = 920.689
 
 [node name="QuestPanel" parent="." groups=[
 "pauseprocess",

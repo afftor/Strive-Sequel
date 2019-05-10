@@ -6,7 +6,7 @@ var is_person = true
 
 var unique 
 
-var icon = 'res://assets/images/gui/elficon.png'
+var icon = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body = null
 
 var name = ''
@@ -20,8 +20,11 @@ var sex = ''
 var professions = []
 var social_skills = []
 var social_cooldowns = {}
+var social_skills_charges = {}
 var combat_skills = []
 var combat_cooldowns = {}
+var social_skill_panel = {}
+var combat_skill_panel = {}
 var traits = []
 var effects = []
 
@@ -389,6 +392,10 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = race in i.value
 			'is_free':
 				check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
+			'is_at_location':
+				check = travel_time == 0 && location == i.type
+			'is_id':
+				check = input_handler.operate(i.operant, id, i.value)
 		if check == false:
 			return false
 	return true
@@ -534,6 +541,11 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 func learn_skill(skill):
 	if !social_skills.has(skill):
 		social_skills.append(skill)
+		if social_skill_panel.size() < 12:
+			for i in range(1,13):
+				if social_skill_panel.has(i) == false:
+					social_skill_panel[i] = skill
+					break
 
 func unlearn_skill(skill):
 	var check = false
@@ -547,12 +559,39 @@ func unlearn_skill(skill):
 
 func use_skill(skillcode, target):
 	var skill = Skilldata.Skilllist[skillcode]
-	if mp < skill.manacost || energy < skill.energycost:
-		#Not enough energy or mana
+	if mp < skill.manacost:
+		input_handler.SystemMessage(get_short_name() + ": Not enough mana.")
+		return
+	if energy < skill.energycost:
+		input_handler.SystemMessage(get_short_name() + ": Not enough energy.")
+		return
+	if social_skills_charges.has(skillcode) && social_skills_charges[skillcode] >= skill.charges:
+		input_handler.SystemMessage(get_short_name() + ": " + skill.name + " - No charges left.")
+		#No charges left
 		return
 	
-	mp -= skill.manacost
+	
+	self.mp -= skill.manacost
 	self.energy -= skill.energycost
+	
+	if social_skills_charges.has(skillcode):
+		social_skills_charges[skillcode] += 1
+	else:
+		social_skills_charges[skillcode] = 1
+	social_cooldowns[skillcode] = skill.cooldown
+	
+	#add skill effect
+
+func cooldown_tick():
+	var cleararray = []
+	for i in social_cooldowns:
+		social_cooldowns[i] -= 1
+		if social_cooldowns[i] <= 0:
+			social_skills_charges.erase(i)
+			cleararray.append(i)
+	
+	for i in cleararray:
+		social_cooldowns.erase(i)
 
 func skill_tooltip(skillcode):
 	var text = ''
@@ -562,8 +601,6 @@ func skill_tooltip(skillcode):
 	var manacost = skill.manacost
 	var energycost = skill.energycost
 	
-	
-	
 	return text
 
 var stat_connections = {
@@ -571,7 +608,6 @@ var stat_connections = {
 	wits = 'wits_factor',
 	sexuals = 'sexuals_factor',
 	charm = 'charm_factor'
-	
 }
 
 func raise_stat(stat, value):
@@ -885,6 +921,7 @@ func translate(text):
 	text = text.replace("[His]", globals.fastif(sex == 'male', 'His', 'Her'))
 	text = text.replace("[raceadj]", races.racelist[race].adjective)
 	text = text.replace("[race]", races.racelist[race].name)
+	text = text.replace("[name]", get_short_name())
 	text = text.replace("[age]", age.capitalize())
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)

@@ -14,32 +14,22 @@ func _process(delta):
 func _init():
 	set_process(false)
 
-func showup(node, skillcode):
-	var skill = Skilldata.Skilllist[skillcode]
+func showup(node, text):
 	parentnode = node
 	if shutoff == true && prevnode == parentnode:
 		return
 	show()
 	set_process(true)
-	$name.text = skill.name
-	$manacost.text = str(skill.manacost)
-	$manacost.visible = skill.manacost != 0
-	$manaicon.visible = skill.manacost != 0
 	
-	$energycost.text = str(skill.energycost)
-	$energycost.visible = skill.energycost != 0
-	$energyicon.visible = $energycost.visible
+	$RichTextLabel.rect_size.y = 10
+	$RichTextLabel.bbcode_text = text
 	
-	$charges.text = str(skill.charges)
+	yield(get_tree(), 'idle_frame')
 	
-#	if skill.skilltype == 'skill':
-#		$type.set("custom_colors/font_color", Color(1,0,0))
-#	elif skill.skilltype == 'spell':
-#		$type.set("custom_colors/font_color", Color(0,0,1))
-	$cooldown.text = str(skill.cooldown)
-#	$type.text = skill.skilltype.capitalize()
-	$descript.bbcode_text = skill.descript#character.skill_tooltip_text(skillcode)
-	#$RichTextLabel.bbcode_text = text
+	rect_size.y = $RichTextLabel.get_v_scroll().get_max() + 50
+	$RichTextLabel.rect_size.y = rect_size.y
+	
+	
 	
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)

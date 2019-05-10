@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 signal signal_RMB
 signal signal_RMB_release

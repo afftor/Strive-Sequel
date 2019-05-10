@@ -24,7 +24,7 @@ func open(classcode):
 		var skill = Skilldata.Skilllist[i]
 		var newnode = globals.DuplicateContainerTemplate($SocialSkills/HBoxContainer)
 		newnode.texture = skill.icon
-		#add_tooltip
+		globals.connectskilltooltip(newnode, skill.code, selectedcharacter)
 	for i in tempclass.combatskills:
 		var skill = Skilldata.Skilllist[i]
 		var newnode = globals.DuplicateContainerTemplate($CombatSkills/HBoxContainer)

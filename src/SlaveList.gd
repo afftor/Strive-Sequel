@@ -1,6 +1,7 @@
 extends Panel
 
 
+#warning-ignore-all:return_value_discarded
 func _ready():
 	state.connect("slave_added",self,"rebuild")
 	rebuild()
@@ -64,6 +65,6 @@ func get_fear_texture(tempchar):
 	return fear_textures[rval]
 
 func get_state_texture(tempchar):
-	var rval
+	var rval = tempchar
 	return rval
 

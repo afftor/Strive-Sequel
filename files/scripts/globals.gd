@@ -328,14 +328,14 @@ func DuplicateContainerTemplate(container):
 	container.move_child(container.get_node('Button'), newbutton.get_position_in_parent())
 	return newbutton
 
-func connecttooltip(node, text):
-	if node.is_connected("mouse_entered",self,'showtooltip'):
-		node.disconnect("mouse_entered",self,'showtooltip')
-	node.connect("mouse_entered",self,'showtooltip', [text,node])
+func connecttexttooltip(node, text):
+	if node.is_connected("mouse_entered",self,'showtexttooltip'):
+		node.disconnect("mouse_entered",self,'showtexttooltip')
+	node.connect("mouse_entered",self,'showtexttooltip', [node, text])
 
-func disconnecttooltip(node):
-	if node.is_connected("mouse_entered",self,'showtooltip'):
-		node.disconnect("mouse_entered",self,'showtooltip')
+func showtexttooltip(node, text):
+	var texttooltip = input_handler.GetTextTooltip()
+	texttooltip.showup(node, text)
 
 func connectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
@@ -364,9 +364,6 @@ func connectskilltooltip(node, skill, character):
 
 func showskilltooltip(skill, node, character):
 	var skilltooltip = input_handler.GetSkillTooltip()
-	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
-	skilltooltip.set_global_position(pos)
 	skilltooltip.character = character
 	skilltooltip.showup(node, skill)
 
@@ -406,34 +403,6 @@ func mattooltip(targetnode, material, bonustext = ''):
 
 
 
-func showtooltip(text, node):
-	var screen = get_viewport().get_visible_rect()
-	var tooltip 
-	if get_tree().get_root().has_node("tooltip") == false:
-		tooltip = load("res://files/Simple Tooltip/SimpleTooltip.tscn").instance()
-		get_tree().get_root().add_child(tooltip)
-		tooltip.name = 'tooltip'
-	else:
-		tooltip = get_tree().get_root().get_node('tooltip')
-	tooltip.get_node("RichTextLabel").bbcode_text = text
-	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
-	tooltip.set_global_position(pos)
-	tooltip.showup(node, text)
-#	tooltip.get_node("RichTextLabel").rect_size.y = tooltip.get_node("RichTextLabel").get_v_scroll().get_max()
-#	tooltip.rect_size.y = tooltip.get_node("RichTextLabel").rect_size.y + 30
-#	if tooltip.get_rect().end.x >= screen.size.x:
-#		tooltip.rect_global_position.x -= tooltip.get_rect().end.x - screen.size.x
-#	if tooltip.get_rect().end.y >= screen.size.y:
-#		tooltip.rect_global_position.y -= tooltip.get_rect().end.y - screen.size.y
-
-func hidetooltip(empty = null):
-	if get_tree().get_root().has_node("tooltip") == false:
-		var tooltip = load("res://files/Simple Tooltip/SimpleTooltip.tscn").instance()
-		get_tree().get_root().add_child(tooltip)
-		tooltip.name = 'tooltip'
-	get_tree().get_root().get_node("tooltip").parentnode = null
-	get_tree().get_root().get_node("tooltip").hide()
 
 func RomanNumberConvert(value):
 	var rval = ''
@@ -501,9 +470,9 @@ func TextEncoder(text, node = null):
 
 func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
-	showtooltip(text, node)
+	#showtooltip(text, node)
 
-func CharacterSelect(targetscript, function, requirements):
+func CharacterSelect(targetscript, function, requirements, allow_remove = false):
 	var node 
 	if get_tree().get_root().has_node("CharacterSelect"):
 		node = get_tree().get_root().get_node("CharacterSelect")
@@ -521,10 +490,18 @@ func CharacterSelect(targetscript, function, requirements):
 	var array = []
 	array = state.characters.values()
 	
+	var newnode
+	
+	if allow_remove == true:
+		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode.get_node("Label").text = tr("REMOVE")
+		newnode.connect('pressed', targetscript, function, [null])
+		newnode.connect('pressed',self,'CloseSelection', [node])
+	
 	for i in array:
 		if i.checkreqs(requirements) == false:
 			continue
-		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
+		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
 		newnode.get_node("Icon").texture = load(i.icon)
 		newnode.connect('pressed', targetscript, function, [i.id])

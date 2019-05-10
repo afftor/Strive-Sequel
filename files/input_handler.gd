@@ -107,6 +107,18 @@ func Open(node):
 	OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
+func GetTextTooltip():
+	var tooltipnode
+	var node = get_tree().get_root()
+	if node.has_node('texttooltip'):
+		tooltipnode = node.get_node('texttooltip')
+		node.remove_child(tooltipnode)
+	else:
+		tooltipnode = load("res://src/TextTooltipPanel.tscn").instance()
+		tooltipnode.name = 'texttooltip'
+	node.add_child(tooltipnode)
+	return tooltipnode
+
 func GetItemTooltip():
 	var tooltipnode
 	var node = get_tree().get_root()
@@ -307,6 +319,40 @@ func GetEventNode():
 		get_tree().get_root().add_child(node)
 	return node
 
+func GetSkillSelectNode():
+	var node
+	if get_tree().get_root().has_node('SelectSkillMenu') == false:
+		node = load("res://src/SkillSelectMenu.tscn").instance()
+		get_tree().get_root().add_child(node)
+		#node.set_as_toplevel(true)
+		node.name = 'SelectSkillMenu'
+	else:
+		node = get_tree().get_root().get_node("SelectSkillMenu")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
+	return node
+
+func ShowSkillSelectPanel(person, type, TargetNode, TargetFunction):
+	var node = GetSkillSelectNode()
+	node.open(person, type, TargetNode, TargetFunction)
+
+func GetSlaveSelectNode():
+	var node
+	if get_tree().get_root().has_node('SelectSlaveMenu') == false:
+		node = load("res://src/SlaveSelectMenu.tscn").instance()
+		get_tree().get_root().add_child(node)
+		#node.set_as_toplevel(true)
+		node.name = 'SelectSlaveMenu'
+	else:
+		node = get_tree().get_root().get_node("SelectSlaveMenu")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
+	return node
+
+func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs):
+	var node = GetSlaveSelectNode()
+	node.open(TargetNode, TargetFunction, reqs)
+
 func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 	var node
 	if get_tree().get_root().has_node('ConfirmPanel') == false:
@@ -353,7 +399,7 @@ func CloseAnimation(node):
 	yield(get_tree().create_timer(0.3), 'timeout')
 	node.visible = false
 	BeingAnimated.erase(node)
-	globals.hidetooltip()
+	#globals.hidetooltip()
 	#globals.call_deferred('EventCheck');
 
 func OpenAnimation(node):
@@ -485,6 +531,18 @@ func operate(operation, value1, value2):
 		'lt':
 			result = value1 < value2
 	return result
+
+func math(operation, value1, value2):
+	match operation:
+		'+':
+			value1 += value2
+		'-':
+			value1 -= value2
+		'*':
+			value1 *= value2
+		'/':
+			value1 /= value2
+	return value1
 
 func string_to_math(value = 0, string = ''):
 	var modvalue = float(string.substr(1, string.length()))

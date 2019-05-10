@@ -47,7 +47,7 @@ var sprites = {
 	}
 
 var portraits = {
-	Null = null,
+#	Null = null,
 	ArronSmile = load("res://assets/images/portraits/ArronSmile.png"),
 	ArronNeutral = load("res://assets/images/portraits/ArronNeutral.png"),
 	ArronShock = load("res://assets/images/portraits/ArronShock.png"),
