@@ -1,9 +1,12 @@
 extends Node
 
 #warning-ignore-all:unused_signal
+#warning-ignore-all:return_value_discarded
+
 signal task_added
 signal slave_added
 signal slave_arrived
+signal hour_tick
 
 var date := 1
 var hour = 6
@@ -24,8 +27,11 @@ var slavecounter := 0
 var locationcounter := 0
 var money = 0
 var food = 50
-var townupgrades := {}
+var upgrades := {}
+var upgrade_progresses = {}
+var selected_upgrade = {code = '', level = 0}
 var characters := {}
+var babies = []
 var items := {}
 var active_tasks := [] 
 var craftinglists = {alchemy = [], smith = [], cook = [], tailor = []}
@@ -65,7 +71,7 @@ func revert():
 	locationcounter = 0
 	money = 0
 	food = 50
-	townupgrades.clear()
+	upgrades.clear()
 	characters.clear()
 	items.clear()
 	active_tasks.resize(0)
@@ -94,13 +100,9 @@ func pos_set(value):
 	combatparty = value
 	for p in combatparty:
 		if combatparty[p] == null: continue
-		#heroes[combatparty[p]].position = p
 
 func _ready():
 	pass
-#	for i in Items.Materials:
-#		materials[i] = 0
-#	oldmaterials = materials.duplicate()
 
 func materials_set(value):
 	var text = ''
@@ -118,15 +120,6 @@ func materials_set(value):
 				#logupdate(text)
 	materials = value
 	oldmaterials = materials.duplicate()
-
-#func logupdate(text):
-#	if globals.get_tree().get_root().has_node("LogPanel/RichTextLabel") == false:
-#		return
-#	lognode = globals.get_tree().get_root().get_node("LogPanel/RichTextLabel")
-#	text = lognode.bbcode_text + '\n' + text
-#
-#	#lognode.bbcode_text += '\n' + 
-#	lognode.bbcode_text = globals.TextEncoder(text)
 
 func assignworker(data):
 	data.worker.task = data
@@ -150,13 +143,6 @@ func gettaskfromworker(worker):
 			return i
 	return false
 
-func GetWorkerLimit():
-	var value
-	if townupgrades.has("houses") == false:
-		value = 3
-	else:
-		value = globals.upgradelist.houses.levels[townupgrades.houses].limitchange
-	return value
 
 func ProgressMainStage(stage = null):
 	if stage == null:
@@ -307,8 +293,8 @@ func if_has_progress(value, operant):
 	return input_handler.operate(operant, mainprogress, value)
 
 func if_has_upgrade(upgrade, level):
-	if !townupgrades.has(upgrade): return false
-	else: return townupgrades[upgrade] >= level
+	if !upgrades.has(upgrade): return false
+	else: return upgrades[upgrade] >= level
 
 func get_character_by_pos(pos):
 	if combatparty[pos] == null: return null

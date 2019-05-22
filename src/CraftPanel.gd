@@ -11,7 +11,7 @@ func _ready():
 	$NumberSelect/HSlider.connect("value_changed", self, "number_change")
 	globals.AddPanelOpenCloseAnimation($NumberSelect/MaterialSelect)
 	
-	for i in [$NumberSelect/Part1, $NumberSelect/Part2, $NumberSelect/Part3]:
+	for i in [$NumberSelect/MaterialSetupPanel/Part1, $NumberSelect/MaterialSetupPanel/Part2, $NumberSelect/MaterialSetupPanel/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
 	
 	for i in $categories.get_children():
@@ -42,7 +42,7 @@ func select_category(category):
 			globals.connecttempitemtooltip(newbutton.get_node('icon'),item)
 		else:
 			item = Items.materiallist[i.resultitem]
-			globals.connectmaterialtooltip(newbutton,item)
+			globals.connectmaterialtooltip(newbutton.get_node('icon'),item)
 		newbutton.get_node("number").text = str(i.resultamount)
 		newbutton.get_node('Label').text = item.name
 		newbutton.connect("pressed", self, 'selectcraftitem', [i])
@@ -51,14 +51,15 @@ func select_category(category):
 		if i.crafttype == 'basic':
 			for k in i.items:
 				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
-				var recipeitem
-				if Items.materiallist.has(k):
-					recipeitem = Items.materiallist[k]
-					globals.connectmaterialtooltip(newnode,recipeitem)
-				else:
-					recipeitem = Items.itemlist[k]
+				var recipeitem = Items.itemlist[k]
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.items[k])
+			for k in i.materials:
+				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
+				var recipeitem = Items.materiallist[k]
+				globals.connectmaterialtooltip(newnode,recipeitem)
+				newnode.texture = recipeitem.icon
+				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':
 			newbutton.get_node("icon").material = load("res://files/ItemShader.tres")
 			for k in item.parts:
@@ -96,11 +97,11 @@ func number_change(value):
 		visiblerepeats = '∞'
 	text = "Produce this item " + visiblerepeats + " times. "#" + selected_item.name + "
 	$NumberSelect/RichTextLabel.bbcode_text = text
-
-func craft_select(item):
-	selected_item = item
-	number_change(1)
-	$NumberSelect.show()
+#
+#func craft_select(item):
+#	selected_item = item
+#	number_change(1)
+#	$NumberSelect.show()
 
 func confirm_craft():
 	$NumberSelect.hide()
@@ -136,14 +137,16 @@ var chosenpartbutton
 
 func selectcraftitem(item):
 	selected_item = item
-	globals.hidetooltip()
-	cleartemplate()
 	itemtemplate = item.resultitem
 	$NumberSelect.show()
 	
 	if item.crafttype == 'basic':
-		$NumberSelect/NumberConfirm.disabled = false
+		$NumberSelect/MaterialSetupPanel.hide()
+		
+		
 	else:
+		$NumberSelect/MaterialSetupPanel.show()
+		$NumberSelect/MaterialSetupPanel/EndItemDescript.bbcode_text = ''
 		item = Items.itemlist[item.resultitem]
 		var array = []
 		for i in item.parts:
@@ -152,21 +155,21 @@ func selectcraftitem(item):
 		itemparts.clear()
 		
 		for i in ['Part1','Part2','Part3']:
-			get_node("NumberSelect/" + i).texture_normal = null
-			get_node("NumberSelect/" + i + '/number').hide()
-			get_node("NumberSelect/" + i + 'Descript').bbcode_text = ''
-		$NumberSelect/EndItem.texture = null
+			get_node("NumberSelect/MaterialSetupPanel/" + i).texture_normal = null
+			get_node("NumberSelect/MaterialSetupPanel/" + i + '/number').hide()
+			get_node("NumberSelect/MaterialSetupPanel/" + i + 'Descript').bbcode_text = ''
+		$NumberSelect/MaterialSetupPanel/EndItem.texture = null
 		
-		$NumberSelect/Part1.set_meta('part',array[0])
-		$NumberSelect/Part1.set_meta('cost',item.parts[array[0]])
-		$NumberSelect/Part2.set_meta('part',array[1])
-		$NumberSelect/Part2.set_meta('cost',item.parts[array[1]])
+		$NumberSelect/MaterialSetupPanel/Part1.set_meta('part',array[0])
+		$NumberSelect/MaterialSetupPanel/Part1.set_meta('cost',item.parts[array[0]])
+		$NumberSelect/MaterialSetupPanel/Part2.set_meta('part',array[1])
+		$NumberSelect/MaterialSetupPanel/Part2.set_meta('cost',item.parts[array[1]])
 		if array.size() < 3:
-			$NumberSelect/Part3.hide()
+			$NumberSelect/MaterialSetupPanel/Part3.hide()
 		else:
-			$NumberSelect/Part3.show()
-			$NumberSelect/Part3.set_meta('part',array[2])
-			$NumberSelect/Part3.set_meta('cost',item.parts[array[3]])
+			$NumberSelect/MaterialSetupPanel/Part3.show()
+			$NumberSelect/MaterialSetupPanel/Part3.set_meta('part',array[2])
+			$NumberSelect/MaterialSetupPanel/Part3.set_meta('cost',item.parts[array[3]])
 
 
 func choosematerial(button):
@@ -198,17 +201,11 @@ func choosematerial(button):
 #			if tempmaterial < cost:
 #				newbutton.disabled = true
 #				newbutton.get_node("Label").text += '\nNot Enough Materials'
-			globals.connecttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
+			globals.connecttexttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
 			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
 			
 
-func cleartemplate():
-	$NumberSelect/CreateItem.disabled = true
-	$NumberSelect/EndItemDescript.bbcode_text = ''
-	globals.disconnecttooltip($NumberSelect/EndItem)
-
 func selectmaterial(material, part, cost):
-	globals.hidetooltip()
 	itemparts[part] = {material = material.code, price = cost}
 	chosenpartbutton.texture_normal = material.icon
 	chosenpartbutton.get_node("number").text = str(cost)
@@ -226,7 +223,7 @@ func selectmaterial(material, part, cost):
 		else:
 			for k in material.parts[part][i]:
 				text += '\n' + Effectdata.effects[k].descript
-	get_node('NumberSelect/' + chosenpartbutton.name + 'Descript').bbcode_text = text
+	get_node('NumberSelect/MaterialSetupPanel/' + chosenpartbutton.name + 'Descript').bbcode_text = text
 
 var enditem
 
@@ -250,7 +247,7 @@ func checkcreatingitem(item):
 		if !itemparts.has(i):
 			fullrecipe = false
 	
-	$NumberSelect/CreateItem.disabled = !fullrecipe
+	#$NumberSelect/CreateItem.disabled = !fullrecipe
 	
 	
 	var temppartdict = {}
@@ -267,15 +264,15 @@ func checkcreatingitem(item):
 		text += '\n\n'
 		$NumberSelect/NumberConfirm.disabled = false
 	
-	globals.TextEncoder(text, $NumberSelect/EndItemDescript)
+	globals.TextEncoder(text, $NumberSelect/MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
-	$NumberSelect/EndItem.set_texture(baseitem.icon)
-	input_handler.itemshadeimage($NumberSelect/EndItem, enditem)
+	$NumberSelect/MaterialSetupPanel/EndItem.set_texture(baseitem.icon)
+	input_handler.itemshadeimage($NumberSelect/MaterialSetupPanel/EndItem, enditem)
 
 
 func CreateItem():
 	input_handler.PlaySound("itemcreate")
-	$NumberSelect/CreateItem.disabled = true
+	#$NumberSelect/CreateItem.disabled = true
 	enditem.substractitemcost()
 	var time = 1.5
 	input_handler.SmoothValueAnimation($NumberSelect/CraftProgress, time, 0, 100)

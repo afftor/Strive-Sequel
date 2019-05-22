@@ -70,6 +70,81 @@ func UseItem(user = null, target = null):
 			finaltarget = target
 		Effectdata.call(effect.effect, finaltarget, effect.value)
 
+func CreateGearSimple(ItemName = ''):
+	itembase = ItemName
+	bonusstats = {damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	stackable = false
+	var itemtemplate = Items.itemlist[ItemName]
+	var tempname = itemtemplate.name
+	
+	
+	geartype = itemtemplate.geartype
+	if itemtemplate.has('weaponrange'):
+		weaponrange = itemtemplate.weaponrange
+	itemtype = itemtemplate.itemtype
+	
+	for i in itemtemplate.basestats:
+		if bonusstats.has(i):
+			bonusstats[i] += itemtemplate.basestats[i]
+	
+	
+	if itemtemplate.has('effects'):
+		for e in itemtemplate.effects:
+			effects.push_back(e)
+	
+	
+	#durability = itemtemplate.basedurability
+	tags = itemtemplate.tags
+	if itemtemplate.has('multislots'):
+		multislots = itemtemplate.multislots
+	if itemtemplate.has('hitsound'):
+		hitsound = itemtemplate.hitsound
+	slots = itemtemplate.slots
+	var parteffectdict = {}
+	for i in parts:
+		var material = Items.materiallist[parts[i]]
+		var materialeffects = material['parts'][i]
+		materials.append(material.code)
+		globals.AddOrIncrementDict(parteffectdict, materialeffects)
+	if parteffectdict.has('durabilitymod'):
+		durability *= parteffectdict.durabilitymod
+	for i in parteffectdict:
+		if self.get(i) != null && i != 'effects':
+			#self[i] += parteffectdict[i]
+			set(i, get(i)+parteffectdict[i])
+		elif bonusstats.has(i):
+			bonusstats[i] += parteffectdict[i]
+		elif i == 'effects':
+			for k in parteffectdict[i]:
+				effects.append(k)
+#	for i in itemtemplate.basemods:
+#		if bonusstats.has(i):
+#			bonusstats[i] *= itemtemplate.basemods[i]
+	
+	
+	if itemtemplate.icon != null:
+		if itemtemplate.has("alticons"):
+			var alticon = false
+			for i in itemtemplate.alticons.values():
+				if i.materials.has(parts[i.part]):
+					icon = i.icon.get_path()
+					if i.has('altname'):
+						tempname = i.altname
+					alticon = true
+			if alticon == false:
+				icon = itemtemplate.icon.get_path()
+		else:
+			icon = itemtemplate.icon.get_path()
+	
+	
+	
+	
+	
+	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
+	bonusstats.erase('damagemod')
+#	durability = round(durability)
+#	maxdurability = round(durability)
+
 
 func CreateGear(ItemName = '', dictparts = {}):
 	itembase = ItemName
@@ -284,26 +359,3 @@ func calculateprice():
 		for i in materialsdict:
 			price += Items.materiallist[i].price*materialsdict[i]
 	return price
-
-func serialize():
-	var tmp = {};
-	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'amount', 'useeffects', 'useskill', 'foodvalue', 'type', 'itemtype', 'geartype', 'subtype', 'durability', 'maxdurability', 'price', 'task', 'owner', 'partcolororder', 'broken', 'weaponrange'];
-	var atr2 = ['bonusstats', 'parts', 'effects', 'tags', 'materials', 'multislots', 'slots'];
-	for a in atr:
-		tmp[a] = get(a)
-	for a in atr2:
-		tmp[a] = get(a).duplicate()
-	return tmp;
-
-func deserialize(tmp):
-	var atr = ['name', 'id', 'itembase', 'code', 'icon', 'descirption', 'stackable', 'useeffects', 'useskill', 'foodvalue', 'type', 'itemtype', 'geartype', 'subtype', 'durability', 'maxdurability', 'price', 'task', 'owner', 'partcolororder', 'broken', 'weaponrange'];
-	var atr2 = ['bonusstats', 'parts', 'effects', 'tags', 'materials', 'multislots', 'slots'];
-	for a in atr:
-		set(a, tmp[a])
-	for a in atr2:
-		set(a, tmp[a].duplicate())
-	amount = tmp.amount;
-	inventory = state.items;
-	#id = int(id);
-	#if owner != null: owner = int(owner);
-

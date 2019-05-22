@@ -7,8 +7,12 @@ var person
 var type
 
 func _input(event):
-	if self.visible == false:
+	if self.visible == false || type == 'stranger' || input_handler.text_field_input == true:
 		return
+	if str(event.as_text().replace("Kp ",'')) in str(range(0,9)) && event.is_pressed():
+		var number = int(event.as_text().replace("Kp ",''))-1
+		if $SkillPanel.get_child(number).disabled == false:
+			$SkillPanel.get_child(number).emit_signal("pressed")
 
 
 func _ready():
@@ -16,10 +20,13 @@ func _ready():
 	for i in $progress.get_children():
 		i.connect("mouse_entered", self, "show_progress_tooltip", [i])
 	for i in $factors.get_children():
-		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.replace("_", "").to_upper()))
+		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.to_upper()))
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.replace("_", "").to_upper())
 	for i in $mentality.get_children():
-		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.replace("_", "").to_upper()))
+		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.to_upper()))
+	
+	for i in $base_stats.get_children():
+		globals.connecttexttooltip(i, tr("TOOLTIP"+i.name.to_upper()))
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
@@ -27,17 +34,19 @@ func _ready():
 	
 	###############
 	
-	$controls/ClassButton.connect("pressed",self,'open_class_window')
+	$controls/ClassButton.connect("pressed",self ,'open_class_selection')
 	globals.AddPanelOpenCloseAnimation($job_panel)
-	globals.AddPanelOpenCloseAnimation($class_learn)
 	
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
+	$controls/CustmizeButton.connect('pressed', self, "open_customize_button")
 	
 	
-	for i in $class_learn/categories.get_children():
-		i.connect("pressed",self,'class_category', [i.name])
 	
-	$class_learn/CheckBox.connect("pressed", self, "checkbox_locked")
+	globals.AddPanelOpenCloseAnimation($DetailsPanel)
+	$DetailsPanel/VBoxContainer/descript.connect("pressed", self, "custom_description_open")
+	$DetailsPanel/VBoxContainer/icon.connect("pressed", $ImageSelect, "chooseimage",['portrait'])
+	$DetailsPanel/VBoxContainer/body.connect("pressed", $ImageSelect, "chooseimage",['body'])
+	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 
 
 func open(tempperson):
@@ -57,14 +66,12 @@ func open(tempperson):
 	show()
 	person = tempperson
 	$name.text = person.get_short_name()
-	if person.icon == null:
+	if person.icon_image == null:
 		$Portrait.texture = null
 	else:
-		$Portrait.texture = load(person.icon)
-	if person.body == null:
-		$Body.texture = null
-	else:
-		$Body.texture = load(person.body)
+		$Portrait.texture = person.get_icon()
+	$Body.texture = person.get_body_image()
+	$BodyPanel.visible = $Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
 	$currentwork.text = person.work
 	#$exp.text = str(person.base_exp)
@@ -115,6 +122,11 @@ func open(tempperson):
 		var trait
 		newnode.text = i
 
+func show_progress_tooltip(node):
+	pass
+
+func open_class_selection():
+	$class_learn.open(person)
 
 func open_jobs_window():
 	$job_panel.show()
@@ -143,8 +155,11 @@ func show_job_details(job):
 			newbutton.get_node("number").text = str(number)
 			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], "\n[color=yellow]Expected gain per work day: "+str(number) + "[/color]")
 		else:
-			#add craft items + tooltips
-			pass
+			var number = stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
+			newbutton.get_node("number").text = str(number)
+			newbutton.get_node("icon").texture = i.icon
+			globals.connecttexttooltip(newbutton, i.descript + "\n[color=yellow]Expected gain per work day: "+str(number) + "[/color]")
+			
 		newbutton.connect('pressed', self, 'select_job', [job, i.code])
 
 func select_job(job, production):
@@ -155,37 +170,6 @@ func select_job(job, production):
 	open(person)
 	
 
-var category = 'all'
-
-func open_class_window():
-	$class_learn.show()
-	globals.ClearContainer($class_learn/ScrollContainer/GridContainer)
-	
-	for i in Skilldata.professions.values():
-		if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs):
-			continue
-		if !$class_learn/CheckBox.pressed && person.checkreqs(i.reqs) == false:
-			continue
-		var newbutton = globals.DuplicateContainerTemplate($class_learn/ScrollContainer/GridContainer)
-		#newbutton.get_node('icon').texture = i.icon
-		newbutton.get_node('name').text = i.name
-		newbutton.connect('pressed',self,"unlock_class", [i.code])
-
-func checkbox_locked():
-	open_class_window()
-
-func class_category(name):
-	category = name
-	for i in $class_learn/categories.get_children():
-		i.pressed = i.name == category
-	open_class_window()
-
-func show_progress_tooltip(node):
-	pass
-
-func unlock_class(i):
-	$class_learn/ClassPanel.selectedcharacter = person
-	$class_learn/ClassPanel.open(i)
 
 
 func change_hours(stat):
@@ -215,7 +199,7 @@ func update_hours():
 
 func build_skill_panel():
 	globals.ClearContainer($SkillPanel)
-	for i in range(1,13):
+	for i in range(1,11):
 		var text = ''
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel)
 		if person.social_skill_panel.has(i):
@@ -272,3 +256,22 @@ func select_skill_target(skillcode):
 func use_skill(target):
 	person.use_skill(active_skill, target)
 	open(person)
+
+func custom_description_open():
+	var node = input_handler.GetTextEditNode()
+	node.open(self, 'custom_description_set', person.bonus_description)
+
+func custom_description_set(text):
+	person.bonus_description = text
+	open(person)
+
+func custom_nickname_open():
+	var node = input_handler.GetTextEditNode()
+	node.open(self, 'custom_nickname_set', person.nickname)
+
+func custom_nickname_set(text):
+	person.nickname = text
+	open(person)
+
+func open_customize_button():
+	$DetailsPanel.show()

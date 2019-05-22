@@ -6,8 +6,8 @@ var is_person = true
 
 var unique 
 
-var icon = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
-var body = null
+var icon_image = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
+var body_image = 'default'
 
 var name = ''
 var surname = ''
@@ -158,6 +158,8 @@ var travel_time = 0
 var relatives = {}
 var tags = []
 
+var last_tick_assignement = 'rest'
+var messages = []
 
 #temps
 #var profs = load("res://assets/data/Skills.gd").new().professions
@@ -272,15 +274,22 @@ func create(temp_race, temp_gender, temp_age):
 	
 	get_random_name()
 	
+	random_icon()
+	
 	#setting food filter
 	for i in Items.materiallist.values():
 		if i.type == 'food':
-			if food_love == i.code:
+			if i.tags.has(food_love):
 				food_filter.high.append(i.code)
-			elif food_hate.has(i.code):
-				food_filter.low.append(i.code)
 			else:
-				food_filter.med.append(i.code)
+				var check = false
+				for k in food_hate: 
+					if i.tags.has(k):
+						food_filter.low.append(i.code)
+						check = true
+						break
+				if check == false:
+					food_filter.med.append(i.code)
 
 func get_short_name():
 	var text = ''
@@ -635,7 +644,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	if taskexisted == true:
 		return
 	#make new task if it didn't exist
-	var dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations}
+	var dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = []}
 	dict.workers.append(self.id)
 	work = taskcode
 	state.active_tasks.append(dict)
@@ -735,23 +744,41 @@ func get_food():
 	var eaten = false
 	for j in ['high','med','low']:
 		for i in food_filter[j]:
+			var food = Items.materiallist[i]
 			if state.materials[i] >= food_consumption:
 				state.materials[i] -= food_consumption
 				eaten = true
 			if eaten == true:
-				if food_love == i:
-					pass#add food bonus
-				elif food_hate.has(i):
-					pass#add food debuf
+				if food.tags.has(food_love):
+					var check = false
+					for k in food_hate:
+						if food.tags.has(k):
+							check = true
+					if check == false:
+						fatigue -= 10
+						obedience += 10
+				else:
+					var check = false
+					for k in food_hate:
+						if food.tags.has(k):
+							check = true
+					if check == true:
+						fatigue += 10
+						if food.tags.size() <= 1:
+							obedience -= 10
 				break
 		if eaten == true:
 			break
 	
 	if eaten == false:
+		exhaustion += 25
+		obedience -= 25
+		input_handler.SystemMessage(get_short_name() + ": no food.")
 		pass#add starvation debuf
 
 func work_tick():
 	var currenttask
+	last_tick_assignement = 'work'
 	for i in state.active_tasks:
 		if i.workers.has(self.id):
 			currenttask = i
@@ -762,47 +789,75 @@ func work_tick():
 	
 	if currenttask.product in ['smith','alchemy','tailor','cook']:
 		if state.craftinglists[currenttask.product].size() <= 0:
-			state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+			if currenttask.messages.has('notask') == false:
+				state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+				currenttask.messages.append('notask')
 			rest_tick()
 			return
 		else:
 			var craftingitem = state.craftinglists[currenttask.product][0]
+			currenttask.messages.erase("notask")
 			if craftingitem.resources_taken == false:
 				if check_recipe_resources(craftingitem) == false:
-					state.text_log_add(get_short_name() + ": Not Enough Resources for craft. ")
+					if currenttask.messages.has('noresources') == false:
+						state.text_log_add(get_short_name() + ": Not Enough Resources for craft. ")
+						currenttask.messages.append("noresources")
 					rest_tick()
 					return
 				else:
 					spend_resources(craftingitem)
-			current_day_spent.workhours += 1
-			self.energy -= 8.75
-			base_exp += 2.1
-			var workstat = races.tasklist[currenttask.code].workstat
-			set(workstat, get(workstat) + 0.1)
+					currenttask.messages.erase("noresources")
+			work_tick_values(currenttask)
 			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
-			if craftingitem.workunits >= craftingitem.workunits_needed:
-				make_item(craftingitem)
-				craftingitem.workunits -= craftingitem.workunits_needed
-				while craftingitem.repeats != 0:
-					if check_recipe_resources(craftingitem) == true:
-						spend_resources(craftingitem)
-						if craftingitem.workunits >= craftingitem.workunits_needed:
-							make_item(craftingitem)
-							craftingitem.workunits -= craftingitem.workunits_needed
-					else:
-						state.text_log_add(get_short_name() + ": " + "Not Enough Resources for craft. ")
-						break
+			make_item_sequence(currenttask, craftingitem)
+	elif currenttask.product == 'building':
+		if state.selected_upgrade.code == '':
+			rest_tick()
+			if messages.has("noupgrade") == false:
+				state.text_log_add(get_short_name() + ": No task or upgrade selected for building. ")
+				messages.append("noupgrade")
+			return
+		else:
+			messages.erase('noupgrade')
+			work_tick_values(currenttask)
+			state.upgrade_progresses[state.selected_upgrade.code].progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
+			if state.upgrade_progresses[state.selected_upgrade.code].progress >= globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress:
+				if state.upgrades.has(state.selected_upgrade.code):
+					state.upgrades[state.selected_upgrade.code] += 1
+				else:
+					state.upgrades[state.selected_upgrade.code] = 1
+				input_handler.emit_signal("UpgradeUnlocked", globals.upgradelist[state.selected_upgrade.code])
+				state.text_log_add("Upgrade finished: " + globals.upgradelist[state.selected_upgrade.code].name)
+				state.upgrade_progresses.erase(state.selected_upgrade.code)
+				state.selected_upgrade.code = ''
 	else:
-		current_day_spent.workhours += 1
-		self.energy -= 8.75
 		#print(races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function,self)*(productivity/100))
-		var workstat = races.tasklist[currenttask.code].workstat
-		set(workstat, get(workstat) + 0.1)
-		base_exp += 2.1
+		work_tick_values(currenttask)
 		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
+
+func work_tick_values(currenttask):
+	current_day_spent.workhours += 1
+	self.energy -= 8.75
+	var workstat = races.tasklist[currenttask.code].workstat
+	set(workstat, get(workstat) + 0.1)
+	base_exp += 2.1
+
+func make_item_sequence(currenttask, craftingitem):
+	if craftingitem.workunits >= craftingitem.workunits_needed:
+		make_item(craftingitem)
+		craftingitem.workunits -= craftingitem.workunits_needed
+		if craftingitem.repeats != 0:
+			if check_recipe_resources(craftingitem) == true:
+				spend_resources(craftingitem)
+				if craftingitem.workunits >= craftingitem.workunits_needed:
+					make_item_sequence(currenttask, craftingitem)
+			else:
+				if currenttask.messages.has('noresources') == false:
+					state.text_log_add(get_short_name() + ": " + "Not Enough Resources for craft. ")
+					currenttask.messages.append("noresources")
 
 func check_recipe_resources(temprecipe):
 	var recipe = Items.recipes[temprecipe.code]
@@ -849,17 +904,22 @@ func make_item(temprecipe):
 		if item.type == 'usable':
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
-			globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
+			if recipe.crafttype == 'modular':
+				globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
+			else:
+				globals.AddItemToInventory(globals.CreateGearItem(item.code, [], null, true))
 	if temprecipe.repeats > 0:
 		temprecipe.repeats -= 1
 		if temprecipe.repeats == 0:
 			state.craftinglists[Items.recipes[temprecipe.code].worktype].erase(temprecipe)
 
 func joy_tick():
+	last_tick_assignement = 'joy'
 	current_day_spent.joyhours += 1
 	fatigue -= 4
 
 func rest_tick():
+	last_tick_assignement = 'rest'
 	current_day_spent.resthours += 1
 	if exhaustion > 0:
 		if exhaustion - float(energymax)/16 < 0:
@@ -944,3 +1004,38 @@ func calculate_price():
 	value += professions.size()*40
 	
 	return max(100,round(value))
+
+func get_icon():
+	if ResourcePreloader.new().has_resource(icon_image) == false:
+		return globals.loadimage(icon_image)
+	else:
+		return load(icon_image)
+
+func get_body_image():
+	if ResourcePreloader.new().has_resource(body_image) == null:
+		return globals.loadimage(body_image)
+	else:
+		if body_image == 'default':
+			var text = race.to_lower().replace('halfkin','beastkin')
+			if sex == 'male':
+				text += "_m"
+			else:
+				text += "_f"
+			if images.shades.has(text):
+				return images.shades[text]
+			else:
+				return null
+		return load(body_image)
+
+
+func random_icon():
+	var array = []
+	var racenames = race.split(" ")
+	for i in globals.dir_contents(globals.globalsettings.portrait_folder):
+		for k in racenames:
+			if i.findn(k) >= 0:
+				array.append(i)
+				continue
+	if array.size() > 0:
+		icon_image = array[randi()%array.size()]
+

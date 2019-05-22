@@ -22,27 +22,32 @@ func _ready():
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
 	
-	for i in Skilldata.professions.values():
-		i.name = tr("PROF" + i.code.to_upper())
-		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
+#	for i in Skilldata.professions.values():
+#		i.name = tr("PROF" + i.code.to_upper())
+#		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
+#
+#	for i in Items.materiallist.values():
+#		i.name = tr("MATERIAL" + i.code.to_upper())
+#		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
+#
+#	for i in Items.itemlist.values():
+#		i.name = tr("ITEM" + i.code.to_upper())
+#		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
+#
+#	for i in Skilldata.Skilllist.values():
+#		i.name = tr("SKILL" + i.code.to_upper())
+#		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
+#
+#	for i in globals.statdata.value():
+#		i.name = tr("STAT" + i.code.to_upper())
+#		i.descript = tr("TOOLTIP" + i.code.to_upper())
 	
-	for i in Items.materiallist.values():
-		i.name = tr("MATERIAL" + i.code.to_upper())
-		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
-	
-	for i in Items.itemlist.values():
-		i.name = tr("ITEM" + i.code.to_upper())
-		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
-	
-	for i in Skilldata.Skilllist.values():
-		i.name = tr("SKILL" + i.code.to_upper())
-		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
-		
 	
 	$InventoryButton.connect("pressed",self,'open_inventory')
 	$CraftButton.connect("pressed",self,"open_craft")
 	$ExploreButton.connect("pressed",$Exploration,"open")
 	$QuestlogButton.connect("pressed", self, "open_questlog")
+	$UpgradeButton.connect("pressed", self, "open_upgrades")
 	
 	
 	state.money = 500
@@ -51,19 +56,27 @@ func _ready():
 	state.connect("task_added", self, 'build_task_bar')
 	settime()
 	
-	var character = globals.characterdata.new()
-	character.create('random', 'random', 'random')
-	state.characters[character.id] = character
-	character.unlock_class("master")
-	character = globals.characterdata.new()
-	character.create('random', 'random', 'random')
-	state.characters[character.id] = character
-	character = globals.characterdata.new()
-	character.create('random', 'random', 'random')
-	state.characters[character.id] = character
-	$SlaveList.rebuild()
+	if globals.start_new_game == false:
+		var character = globals.characterdata.new()
+		character.create('random', 'random', 'random')
+		state.characters[character.id] = character
+		character.unlock_class("master")
+		character = globals.characterdata.new()
+		character.create('random', 'random', 'random')
+		state.characters[character.id] = character
+		character = globals.characterdata.new()
+		character.create('random', 'random', 'random')
+		state.characters[character.id] = character
+		$SlaveList.rebuild()
+		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", [], null, true))
+	else:
+		globals.start_new_game = false
+		self.visible = false
+		input_handler.StartCharacterCreation("master")
+		input_handler.connect("CharacterCreated", self, "show", [], 4)
 	
 	
+	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):
 	if self.visible == false:
@@ -104,6 +117,7 @@ func _process(delta):
 		if gametime >= variables.SecondsPerHour:
 			settime()
 			gametime -= variables.SecondsPerHour
+			state.emit_signal("hour_tick")
 			state.hour += 1
 			if state.hour >= variables.HoursPerDay:
 				state.hour = 0
@@ -155,13 +169,28 @@ func build_task_bar():
 				newnode.show()
 				newnode.get_node("ProgressBar").max_value = state.craftinglists[i.code][0].workunits_needed
 				newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
-#			newnode.get_node("ProgressBar").max_value = state.craftinglists[i.code][0].workunits_needed
-#			newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
+				newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
+				if state.craftinglists[i.code][0].has('partdict'):
+					newnode.get_node('icon').material = load("res://files/ItemShader.tres")
+		elif i.product in ['prostitutegold']:
+			newnode.get_node("icon").texture = races.tasklist[i.code].production[i.product].icon
+			newnode.get_node("ProgressBar").max_value = i.threshhold
+			newnode.get_node("ProgressBar").value = i.progress
+		elif i.product == 'building':
+			if state.selected_upgrade.code == '':
+				newnode.hide()
+			else:
+				newnode.show()
+				newnode.get_node("icon").texture = races.tasklist[i.code].production[i.product].icon
+				newnode.get_node("ProgressBar").max_value = globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress
+				newnode.get_node("ProgressBar").value = state.upgrade_progresses[state.selected_upgrade.code].progress
+				
 		else:
 			newnode.get_node("icon").texture = Items.materiallist[races.tasklist[i.code].production[i.product].item].icon
 			newnode.get_node("ProgressBar").max_value = i.threshhold
 			newnode.get_node("ProgressBar").value = i.progress
 		newnode.set_meta("dict", i)
+		
 
 func update_task_bar():
 	for i in $TaskProgress/ScrollContainer/VBoxContainer.get_children():
@@ -174,15 +203,18 @@ func update_task_bar():
 					i.show()
 					i.get_node("ProgressBar").max_value = state.craftinglists[task.code][0].workunits_needed
 					i.get_node("ProgressBar").value = state.craftinglists[task.code][0].workunits
+			elif task.code == 'building':
+				if state.selected_upgrade.code == '':
+					i.hide()
+				else:
+					i.show()
+					i.get_node("icon").texture = races.tasklist[task.code].production[task.product].icon
+					i.get_node("ProgressBar").max_value = globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress
+					i.get_node("ProgressBar").value = state.upgrade_progresses[state.selected_upgrade.code].progress
 			else:
+				i.visible = task.workers.size() != 0
 				i.get_node("ProgressBar").value = task.progress
 
-func open_task_panel(task):
-	globals.ClearContainer($TaskPanel/ScrollContainer/HBoxContainer)
-	for i in task.workers:
-		var newbutton = globals.DuplicateContainerTemplate($TaskPanel/ScrollContainer/HBoxContainer)
-		newbutton.get_node("icon").texture = i.icon
-		newbutton.connect("pressed",self,"open_slave", [i])
 
 
 func open_inventory():
@@ -193,4 +225,6 @@ func open_craft():
 
 func open_questlog():
 	$QuestPanel.open()
-	
+
+func open_upgrades():
+	$UpgradeList.open()

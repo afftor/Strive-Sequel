@@ -16,6 +16,10 @@ var RepairCostMultiplierHard = 0.8
 var ItemEffectNaturalMultiplier = 0.15
 #Heroes
 var all_races_array = []
+var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
+
+var master_starting_stats = 10
+var slave_starting_stats = 15
 
 #sex chances
 var male_to_female_ratio = 0.5

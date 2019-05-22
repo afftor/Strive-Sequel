@@ -10,6 +10,7 @@ var CurrentScreen = 'Town'
 var BeingAnimated = []
 var SystemMessageNode
 
+var text_field_input = false
 
 signal ScreenChanged
 signal BuildingEntered
@@ -24,6 +25,8 @@ signal UpgradeUnlocked
 signal EventFinished
 signal QuestStarted
 signal QuestCompleted
+signal CharacterCreated
+
 
 
 func _input(event):
@@ -41,7 +44,7 @@ func _input(event):
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
 	
-	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0:
+	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
 		if str(int(event.as_text())) in str(range(1,4)):
 			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 
@@ -107,6 +110,18 @@ func Open(node):
 	OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
+func StartCharacterCreation(mode):
+	var charnode
+	var node = get_tree().get_root()
+	if node.has_node('charcreationpanel'):
+		charnode = node.get_node('charcreationpanel')
+		node.remove_child(charnode)
+	else:
+		charnode = load("res://src/CharacterCreationPanel.tscn").instance()
+		charnode.name = 'charcreationpanel'
+	node.add_child(charnode)
+	charnode.open(mode)
+
 func GetTextTooltip():
 	var tooltipnode
 	var node = get_tree().get_root()
@@ -154,6 +169,18 @@ func GetSlaveTooltip():
 		tooltipnode.name = 'slavetooltip'
 	node.add_child(tooltipnode)
 	return tooltipnode
+
+func GetTextEditNode():
+	var editnode
+	var node = get_tree().get_root()
+	if node.has_node('texteditnode'):
+		editnode = node.get_node('texteditnode')
+		node.remove_child(editnode)
+	else:
+		editnode = load("res://src/TextEditField.tscn").instance()
+		editnode.name = 'texteditnode'
+	node.add_child(editnode)
+	return editnode
 
 func GetTweenNode(node):
 	var tweennode
@@ -370,18 +397,26 @@ func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 
 func itemshadeimage(node, item):
 	var shader = load("res://files/ItemShader.tres").duplicate()
-	if node.get_class() == "TextureButton":
-		node.texture_normal = load(item.icon)
+	var icon
+	var is_template = false
+	if typeof(item.icon) == TYPE_STRING:
+		icon = load(item.icon)
 	else:
-		node.texture = load(item.icon)
+		icon = item.icon
+		is_template = true
+	if node.get_class() == "TextureButton":
+		node.texture_normal = icon
+	else:
+		node.texture = icon
 	if node.material != shader:
 		node.material = shader
 	else:
 		shader = node.material
-	for i in item.parts:
-		var part = 'part' +  str(item.partcolororder[i]) + 'color'
-		var color = Items.materiallist[item.parts[i]].color
-		node.material.set_shader_param(part, color)
+	if is_template == false:
+		for i in item.parts:
+			var part = 'part' +  str(item.partcolororder[i]) + 'color'
+			var color = Items.materiallist[item.parts[i]].color
+			node.material.set_shader_param(part, color)
 	
 
 

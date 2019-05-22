@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/gui/MainScreen/Background.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/backgrounds/intro.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/MainScreen/Continue.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/MainScreen/ContinueSelect.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/MainScreen/NewGames.png" type="Texture" id=5]
@@ -28,10 +28,10 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 760.0
-margin_top = 358.0
-margin_right = 1208.0
-margin_bottom = 1018.0
+margin_left = 29.4929
+margin_top = 95.0175
+margin_right = 477.493
+margin_bottom = 755.017
 custom_constants/separation = 8
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
@@ -127,8 +127,10 @@ margin_right = 1221.0
 margin_bottom = 735.0
 
 [node name="version" type="Label" parent="."]
-margin_right = 168.0
-margin_bottom = 24.0
+margin_left = 14.8086
+margin_top = 1043.2
+margin_right = 182.809
+margin_bottom = 1067.2
 text = "ver. 0.1.0"
 
 [node name="WarnScreen" parent="." instance=ExtResource( 18 )]

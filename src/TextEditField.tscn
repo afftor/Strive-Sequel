@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/TextEditField.gd" type="Script" id=1]
+
+[node name="Panel" type="Panel"]
+margin_left = 580.516
+margin_top = 180.646
+margin_right = 1306.52
+margin_bottom = 669.646
+script = ExtResource( 1 )
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 52.5553
+margin_top = 52.5037
+margin_right = 668.555
+margin_bottom = 356.504
+
+[node name="ConfirmButton" type="Button" parent="."]
+margin_left = 257.208
+margin_top = 404.184
+margin_right = 471.208
+margin_bottom = 467.184
+text = "Confirm"
+

@@ -25,7 +25,7 @@ func showup(node, data):
 	textnode.bbcode_text = data.text
 	$Cost/Label.text = data.price
 	$Cost.visible = int(data.price) != 0
-	if data.has('material'):
+	if data.item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, data.item)
 	else:
 		iconnode.material = null

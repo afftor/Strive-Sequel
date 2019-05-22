@@ -4,39 +4,40 @@ extends Panel
 #warning-ignore-all:return_value_discarded
 func _ready():
 	state.connect("slave_added",self,"rebuild")
+	state.connect("hour_tick", self, "update")
 	rebuild()
-
-
 
 func rebuild():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.characters.values():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.get_node("icon").texture = load(i.icon)
+		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(i)
 		newbutton.get_node("fear").texture = get_fear_texture(i)
 		newbutton.get_node("state").texture = get_state_texture(i)
-		newbutton.get_node("obed/Label").text = str(i.obedience)
-		newbutton.get_node("fear/Label").text = str(i.fear)
-		newbutton.get_node("en/Label").text = str(i.energy)
-		newbutton.get_node("mp/Label").text = str(i.mp)
+		newbutton.get_node("obed/Label").text = str(round(i.obedience))
+		newbutton.get_node("fear/Label").text = str(round(i.fear))
+		newbutton.get_node("en/Label").text = str(round(i.energy))
+		newbutton.get_node("mp/Label").text = str(round(i.mp))
 		newbutton.set_meta('slave', i)
 		newbutton.connect('pressed', self, 'open_slave_tab', [i])
 		globals.connectslavetooltip(newbutton, i)
 
 func update():
 	for newbutton in $ScrollContainer/VBoxContainer.get_children():
+		if newbutton.name == 'Button':
+			continue
 		var i = newbutton.get_meta('slave')
-		newbutton.get_node("icon").texture = load(i.icon)
+		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(i)
 		newbutton.get_node("fear").texture = get_fear_texture(i)
 		newbutton.get_node("state").texture = get_state_texture(i)
-		newbutton.get_node("obed/Label").text = str(i.obedience)
-		newbutton.get_node("fear/Label").text = str(i.fear)
-		newbutton.get_node("en/Label").text = str(i.energy)
-		newbutton.get_node("mp/Label").text = str(i.mp)
+		newbutton.get_node("obed/Label").text = str(round(i.obedience))
+		newbutton.get_node("fear/Label").text = str(round(i.fear))
+		newbutton.get_node("en/Label").text = str(round(i.energy))
+		newbutton.get_node("mp/Label").text = str(round(i.mp))
 
 func open_slave_tab(character):
 	get_parent().get_node("SlavePanel").open(character)
@@ -64,7 +65,14 @@ func get_fear_texture(tempchar):
 		rval = 'med'
 	return fear_textures[rval]
 
+var stateicons = {
+	work = load('res://assets/images/gui/work_icon.png'),
+	rest = load('res://assets/images/gui/rest_icon.png'),
+	joy = load('res://assets/images/gui/joy_icon.png'),
+}
 func get_state_texture(tempchar):
-	var rval = tempchar
+	var rval = tempchar.last_tick_assignement
+	
+	rval = stateicons[rval]
 	return rval
 

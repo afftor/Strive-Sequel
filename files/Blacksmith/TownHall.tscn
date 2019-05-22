@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/gui/buildings/panel.png" type="Texture" id=1]
-[ext_resource path="res://src/Townhall.gd" type="Script" id=2]
+[ext_resource path="res://src/UpgradePanel.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/buildings/buttonpanel.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/buildings/button.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/buildings/buttonpress.png" type="Texture" id=5]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=13]
 [ext_resource path="res://FoodConvert.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/Questlog.tscn" type="PackedScene" id=15]
+
 
 [node name="TownHall" type="TextureRect"]
 

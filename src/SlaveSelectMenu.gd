@@ -12,7 +12,7 @@ func open(targetnode, targetfunc, reqs = []):
 		if i.checkreqs(reqs) == false:
 			continue
 		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newnode.get_node("icon").texture = load(i.icon)
+		newnode.get_node("icon").texture = i.get_icon()
 		newnode.get_node('text').text = i.get_short_name()
 		newnode.connect('pressed', self, 'select', [i])
 		globals.connectslavetooltip(newnode, i)

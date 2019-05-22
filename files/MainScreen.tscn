@@ -28,7 +28,7 @@
 [ext_resource path="res://assets/images/gui/universal/msheroes2.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/universal/msoptions1.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/gui/universal/msoptions2.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/iconsitems/Food.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=29]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=30]
 [ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=31]
 [ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=32]
@@ -77,6 +77,8 @@
 [ext_resource path="res://assets/images/gui/buildings/buttonhl.png" type="Texture" id=75]
 [ext_resource path="res://src/Tutorial.tscn" type="PackedScene" id=76]
 [ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=77]
+
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 56 )

@@ -1,10 +1,12 @@
 extends Node
 
-const gameversion = '0.1.3'
+const gameversion = '0.1.0'
 
 #const worker = preload("res://files/scripts/worker.gd");
 #const Item = preload("res://src/ItemClass.gd")
 #const combatant = preload ('res://src/combatant.gd')
+
+var start_new_game = false
 
 var SpriteDict = {}
 var TranslationData = {}
@@ -14,7 +16,7 @@ var EventList = events.checks
 
 var scenedict = {
 	menu = "res://files/Menu.tscn",
-	town = "res://files/MainScreen.tscn"
+	mansion = "res://src/Mansion.tscn"
 	
 }
 
@@ -39,6 +41,236 @@ var effects
 var combateffects
 var explorationares 
 
+var system_messages = {
+	no_resources = "MESSAGE_NORESOURCE",
+	no_crafting_item = "MESSAGE_NOCRAFTINGITEM",
+	
+}
+
+var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] #the rest is only for same race
+var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'bodyshape']
+var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
+
+func impregnate(father, mother):
+	var check = true
+	if father.race != mother.race:
+		for i in [father, mother]:
+			var race = i.race
+			if race.find("Beastkin") >= 0:
+				race = 'Beastkin'
+			elif race.find('Halfkin') >= 0:
+				race = "Halfkin"
+			
+			if impregnation_compatibility.has(race) == false:
+				check = false
+	if check == false && mother.professions.has('breeder') == false:
+		return #incompatible races
+	
+	var baby = globals.characterdata.new()
+	if randf() >= 0.5:
+		baby.race = mother.race
+	else:
+		baby.race = father.race
+	if father.race.find('Beastkin') >= 0 && mother.race.find("Beastkin") < 0:
+		baby.race = father.race.replace("Beastkin", "Halfkin")
+	elif mother.race.find('Beastkin') >= 0 && father.race.find("Beastkin") < 0:
+		baby.race = mother.race.replace("Beastkin", "Halfkin")
+	baby.create(baby.race, 'random', 'teen')
+	for i in inheritedassets:
+		if randf() >= 0.5:
+			baby.set(i, father[i])
+		else:
+			baby.set(i, mother[i])
+	
+	for i in inheritedstats:
+		if randf() >= 0.5 || mother.professions.has("breeder"):
+			baby.set(i, mother[i])
+		else:
+			baby.set(i, father[i])
+	
+	mother.pregnancy.baby = baby.id
+	mother.pregnancy.duration = variables.pregduration
+	state.babies.append(baby)
+
+
+var statdata = {
+	base_exp = {
+		code = 'base_exp',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/growth_factor.png"),
+		type = 'misc',
+	},
+	growth_factor = {
+		code = 'growth_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/growth_factor.png"),
+		type = 'factor',
+	},
+	physics_factor = {
+		code = 'physics_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/physics_factor.png"),
+		type = 'factor',
+	},
+	wits_factor = {
+		code = 'wits_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/wit_factor.png"),
+		type = 'factor',
+	},
+	charm_factor = {
+		code = 'charm_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/charm_factor.png"),
+		type = 'factor',
+	},
+	sexuals_factor = {
+		code = 'sexuals_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/sex_factor.png"),
+		type = 'factor',
+	},
+	
+	magic_factor = {
+		code = 'magic_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/magic_factor.png"),
+		type = 'factor',
+	},
+	
+	tame_factor = {
+		code = 'tame_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/tame_factor.png"),
+		type = 'factor',
+	},
+	brave_factor = {
+		code = 'brave_factor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		type = 'factor',
+	},
+	
+	physics = { 
+		code = 'physics',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		type = 'primal',
+	},
+	wits = { 
+		code = 'wits',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		type = 'primal',
+	},
+	charm = { 
+		code = 'charm',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		type = 'primal',
+	},
+	sexuals = { 
+		code = 'sexuals',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		type = 'primal',
+	},
+	
+	obedience = {
+		code = 'obedience',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/obed_good.png"),
+		type = 'mental_stat',
+	},
+	fear = {
+		code = 'fear',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/fear_good.png"),
+		type = 'mental_stat',
+	},
+	lust = {
+		code = 'lust',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/charm_factor.png"),
+		type = 'mental_stat',
+	},
+	loyal = {
+		code = 'loyal',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/charm_factor.png"),
+		type = 'mental_stat',
+	},
+	
+	food_hate = {
+		code = 'food_hate',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_hate.png"),
+		type = 'misc',
+	},
+	food_love = {
+		code = 'food_love',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	
+}
+
+var bodypartsdata = {
+	skin = {
+		pale = {
+			code = 'pale',
+			name = 'pale',
+			descript = '',
+		},
+		fair = {
+			code = 'fair',
+			name = 'fair',
+			descript = '',
+		},
+		olive = {
+			code = 'olive',
+			name = 'olive',
+			descript = '',
+		},
+		brown = {
+			code = 'brown',
+			name = 'brown',
+			descript = '',
+		},
+		dark = {
+			code = 'dark',
+			name = 'dark',
+			descript = '',
+		},
+		slime = {
+			code = 'slime',
+			name = 'slime',
+			descript = '',
+		},
+	},
+	
+	
+}
 
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -92,6 +324,10 @@ var globalsettings = {
 	furry = true,
 	furry_multiple_nipples = true,
 	futa_balls = true,
+	#user_folders_settings
+	portrait_folder = 'user://portraits/',
+	body_folder = 'user://bodies/',
+	mod_folder = 'user://mods/',
 	
 } setget settings_save
 
@@ -156,6 +392,36 @@ func _ready():
 	randomize()
 	#Settings and folders
 	settings_load()
+	
+	for i in Skilldata.professions.values():
+		i.name = tr("PROF" + i.code.to_upper())
+		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
+	
+	for i in Items.materiallist.values():
+		i.name = tr("MATERIAL" + i.code.to_upper())
+		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
+	
+	for i in Items.itemlist.values():
+		i.name = tr("ITEM" + i.code.to_upper())
+		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
+	
+	for i in Skilldata.Skilllist.values():
+		i.name = tr("SKILL" + i.code.to_upper())
+		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
+	
+	for i in globals.statdata.values():
+		i.name = tr("STAT" + i.code.to_upper())
+		i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
+	
+	for i in races.racelist.values():
+		i.name = tr("RACE" + i.code.to_upper())
+		i.descript = tr("RACE" + i.code.to_upper() + 'DESCRIPT')
+		i.adjective = tr("RACE" + i.code.to_upper() + "ADJ")
+	
+	for i in races.tasklist.values():
+		i.name = tr("TASK" + i.code.to_upper())
+		i.descript = tr("TASK" + i.code.to_upper() + "DESCRIPT")
+	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true
@@ -247,9 +513,12 @@ func StartEventScene(name, debug = false, line = 0):
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
-func CreateGearItem(item, parts, newname = null):
+func CreateGearItem(item, parts, newname = null, simple = false):
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	if simple == false:
+		newitem.CreateGear(item, parts)
+	else:
+		newitem.CreateGearSimple(item)
 	if newname != null:
 		newitem.name = newname
 	
@@ -400,7 +669,20 @@ func mattooltip(targetnode, material, bonustext = ''):
 	
 	node.showup(targetnode, data)
 
-
+func loadimage(path):
+	#var file = File.new()
+	if typeof(path) == TYPE_OBJECT:
+		return path
+	if path == null:
+		return
+	if path.find('res:') >= 0:
+		return load(path)
+	var image = Image.new()
+	if File.new().file_exists(path):
+		image.load(path)
+	var temptexture = ImageTexture.new()
+	temptexture.create_from_image(image)
+	return temptexture
 
 
 
@@ -503,7 +785,7 @@ func CharacterSelect(targetscript, function, requirements, allow_remove = false)
 			continue
 		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
 		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = load(i.icon)
+		newnode.get_node("Icon").texture = i.get_icon()
 		newnode.connect('pressed', targetscript, function, [i.id])
 		newnode.connect('pressed',self,'CloseSelection', [node])
 

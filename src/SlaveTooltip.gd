@@ -24,7 +24,7 @@ func showup(node, person):
 	
 	var text = person.get_short_name() + person.translate(" [race] [male] [age]")
 	
-	$icon.texture = load(person.icon)
+	$icon.texture = person.get_icon()
 	$RichTextLabel.bbcode_text = text
 	$exp.text = str(person.base_exp)
 	for i in ['physics','wits','charm','sexuals']:
@@ -39,6 +39,13 @@ func showup(node, person):
 		get_node("VBoxContainer/"+ i ).value = person[i]
 		get_node("VBoxContainer/"+ i ).max_value = person[i+'max']
 		get_node("VBoxContainer/"+ i + '/Label').text = str(person[i]) + "/" + str(person[i+'max'])
+	
+	if person.work != '':
+		text = "Occupation: " + races.tasklist[person.work].name
+	else:
+		text = "Occupation: None"
+	text += '\nCurrent State: ' + person.last_tick_assignement
+	$job.text = text 
 	
 	
 	globals.ClearContainer($GridContainer)

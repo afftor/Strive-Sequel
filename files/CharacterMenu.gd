@@ -54,7 +54,7 @@ func open(hero):
 	
 	globals.ClearContainer($Main/skillcontainer)
 	for i in character.skills:
-		var skill = Skillsdata.skilllist[i]
+		var skill = Skilldata.skilllist[i]
 		var newbutton = globals.DuplicateContainerTemplate($Main/skillcontainer)
 		#newbutton.get_node("Label").text = skill.name
 		#newbutton.connect("pressed", self, "SkillTooltip", [skill])

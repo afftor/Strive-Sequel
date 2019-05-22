@@ -1,4 +1,5 @@
 extends Node
+#warning-ignore-all:return_value_discarded
 
 var lastsave = null
 
@@ -12,11 +13,9 @@ func _ready():
 	input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,5):
-#warning-ignore:return_value_discarded
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	
-#warning-ignore:return_value_discarded
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	
 	if globals.globalsettings.warnseen == true:
@@ -42,13 +41,14 @@ func continueb():
 
 func newgame():
 	#state = load("res://src/gamestate.gd").new()
+	globals.start_new_game = true
 	
 	state.newgame = true
 	state._ready()
 	get_node("/root").remove_child(self)
-	globals.ChangeScene('town')
+	globals.ChangeScene('mansion')
 	yield(globals, 'scene_changed')
-	input_handler.ActivateTutorial()
+	#input_handler.ActivateTutorial()
 	#globals.StartEventScene("Intro")
 	self.queue_free()
 

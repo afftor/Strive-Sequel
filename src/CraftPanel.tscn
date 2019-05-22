@@ -1,16 +1,16 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://src/CraftPanel.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/buildings/upgrade_house.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/buildings/upgrade_farm.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/buildings/upgrade_lumbermill.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/buildings/upgrade_forge2.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/iconsitems/ElvenWood.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/panels/itemactive2.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/buildings/itemcreationpanel.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/buildings/ui_framebackground.png" type="Texture" id=11]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/CraftPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/buildings/upgrade_house.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/buildings/upgrade_farm.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/buildings/upgrade_lumbermill.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/buildings/upgrade_forge2.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/iconsitems/ElvenWood.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/panels/itemactive2.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/solid_panel.tres" type="StyleBox" id=11]
 [ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=14]
@@ -25,7 +25,8 @@ margin_left = 187.0
 margin_top = 30.0
 margin_right = 1739.0
 margin_bottom = 1029.0
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="categories" type="HBoxContainer" parent="."]
 margin_left = 157.0
@@ -36,7 +37,7 @@ margin_bottom = 244.0
 [node name="cook" type="TextureButton" parent="categories"]
 margin_right = 300.0
 margin_bottom = 200.0
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="categories/cook"]
 margin_left = 17.0
@@ -52,7 +53,7 @@ align = 1
 margin_left = 304.0
 margin_right = 604.0
 margin_bottom = 200.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="categories/tailor"]
 margin_left = 17.0
@@ -68,7 +69,7 @@ align = 1
 margin_left = 608.0
 margin_right = 908.0
 margin_bottom = 200.0
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="categories/alchemy"]
 margin_left = 17.0
@@ -84,7 +85,7 @@ align = 1
 margin_left = 912.0
 margin_right = 1212.0
 margin_bottom = 200.0
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="categories/smith"]
 margin_left = 17.0
@@ -118,7 +119,7 @@ expand = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 expand = true
 
 [node name="Label" type="Label" parent="CraftSelect/VBoxContainer/Button"]
@@ -141,7 +142,7 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="CraftSelect/VBoxContainer/Button/HBoxContainer/Button"]
@@ -153,9 +154,9 @@ text = "1"
 align = 1
 
 [node name="number" type="Label" parent="CraftSelect/VBoxContainer/Button"]
-margin_left = 45.7807
+margin_left = 43.7807
 margin_top = 68.5699
-margin_right = 85.7807
+margin_right = 83.7807
 margin_bottom = 92.5699
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -176,14 +177,14 @@ visible = false
 margin_right = 419.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 9 )
 expand = true
 
 [node name="icon" type="TextureRect" parent="CraftScheldue/VBoxContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 expand = true
 
 [node name="Label" type="Label" parent="CraftScheldue/VBoxContainer/Button"]
@@ -216,66 +217,59 @@ margin_bottom = 314.0
 text = "Item produced"
 align = 1
 
-[node name="NumberSelect" type="TextureRect" parent="."]
+[node name="NumberSelect" type="Panel" parent="."]
 visible = false
-margin_left = 218.473
-margin_top = 39.0837
-margin_right = 1372.47
-margin_bottom = 918.084
-texture = ExtResource( 10 )
-stretch_mode = 5
+margin_left = 225.032
+margin_top = 48.9353
+margin_right = 1379.03
+margin_bottom = 259.935
+custom_styles/panel = ExtResource( 11 )
 
-[node name="TextureRect" type="TextureRect" parent="NumberSelect"]
-show_behind_parent = true
-margin_left = 44.0
-margin_top = 103.0
-margin_right = 1051.0
-margin_bottom = 735.0
-texture = ExtResource( 11 )
-expand = true
+[node name="MaterialSetupPanel" type="Panel" parent="NumberSelect"]
+visible = false
+margin_left = 53.0
+margin_top = 216.0
+margin_right = 1082.0
+margin_bottom = 875.0
+custom_styles/panel = ExtResource( 11 )
 
-[node name="Part1Descript" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 219.0
-margin_top = 119.0
-margin_right = 564.0
-margin_bottom = 285.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+[node name="Part1Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 205.0
+margin_top = 26.0
+margin_right = 550.0
+margin_bottom = 192.0
 
-[node name="Part2Descript" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 223.0
-margin_top = 339.0
-margin_right = 563.0
-margin_bottom = 506.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+[node name="Part2Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 209.0
+margin_top = 246.0
+margin_right = 549.0
+margin_bottom = 413.0
 
-[node name="Part3Descript" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 220.0
-margin_top = 574.0
-margin_right = 564.0
-margin_bottom = 730.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
+[node name="Part3Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 206.0
+margin_top = 481.0
+margin_right = 550.0
+margin_bottom = 637.0
 
-[node name="EndItem" type="TextureRect" parent="NumberSelect"]
-show_behind_parent = true
-margin_left = 819.0
-margin_top = 131.0
-margin_right = 945.0
-margin_bottom = 266.0
+[node name="EndItem" type="TextureRect" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 715.0
+margin_top = 28.0
+margin_right = 841.0
+margin_bottom = 163.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
-[node name="Part1" type="TextureButton" parent="NumberSelect"]
+[node name="Part1" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
 editor/display_folded = true
-show_behind_parent = true
-margin_left = 51.0
-margin_top = 144.0
-margin_right = 172.0
-margin_bottom = 261.0
+margin_left = 37.0
+margin_top = 51.0
+margin_right = 158.0
+margin_bottom = 168.0
 expand = true
 stretch_mode = 5
 
-[node name="number" type="Label" parent="NumberSelect/Part1"]
+[node name="number" type="Label" parent="NumberSelect/MaterialSetupPanel/Part1"]
 margin_left = 83.0
 margin_top = 96.0
 margin_right = 121.0
@@ -283,24 +277,23 @@ margin_bottom = 120.0
 text = "1"
 align = 1
 
-[node name="TextureRect" type="TextureRect" parent="NumberSelect/Part1"]
+[node name="TextureRect" type="TextureRect" parent="NumberSelect/MaterialSetupPanel/Part1"]
 show_behind_parent = true
 margin_right = 121.0
 margin_bottom = 117.0
 texture = ExtResource( 13 )
 stretch_mode = 4
 
-[node name="Part2" type="TextureButton" parent="NumberSelect"]
+[node name="Part2" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
 editor/display_folded = true
-show_behind_parent = true
-margin_left = 50.0
-margin_top = 362.0
-margin_right = 172.0
-margin_bottom = 484.0
+margin_left = 36.0
+margin_top = 269.0
+margin_right = 158.0
+margin_bottom = 391.0
 expand = true
 stretch_mode = 5
 
-[node name="number" type="Label" parent="NumberSelect/Part2"]
+[node name="number" type="Label" parent="NumberSelect/MaterialSetupPanel/Part2"]
 margin_left = 83.0
 margin_top = 96.0
 margin_right = 121.0
@@ -308,24 +301,23 @@ margin_bottom = 120.0
 text = "1"
 align = 1
 
-[node name="TextureRect2" type="TextureRect" parent="NumberSelect/Part2"]
+[node name="TextureRect2" type="TextureRect" parent="NumberSelect/MaterialSetupPanel/Part2"]
 show_behind_parent = true
 margin_right = 121.0
 margin_bottom = 117.0
 texture = ExtResource( 13 )
 stretch_mode = 4
 
-[node name="Part3" type="TextureButton" parent="NumberSelect"]
+[node name="Part3" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
 editor/display_folded = true
-show_behind_parent = true
-margin_left = 49.0
-margin_top = 591.0
-margin_right = 171.0
-margin_bottom = 711.0
+margin_left = 35.0
+margin_top = 498.0
+margin_right = 157.0
+margin_bottom = 618.0
 expand = true
 stretch_mode = 5
 
-[node name="number" type="Label" parent="NumberSelect/Part3"]
+[node name="number" type="Label" parent="NumberSelect/MaterialSetupPanel/Part3"]
 margin_left = 83.0
 margin_top = 96.0
 margin_right = 121.0
@@ -333,25 +325,26 @@ margin_bottom = 120.0
 text = "1"
 align = 1
 
-[node name="TextureRect3" type="TextureRect" parent="NumberSelect/Part3"]
+[node name="TextureRect3" type="TextureRect" parent="NumberSelect/MaterialSetupPanel/Part3"]
 show_behind_parent = true
 margin_right = 121.0
 margin_bottom = 117.0
 texture = ExtResource( 13 )
 stretch_mode = 4
 
-[node name="CreateItem" type="TextureButton" parent="NumberSelect"]
+[node name="CreateItem" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
+editor/display_folded = true
 visible = false
-margin_left = 507.0
-margin_top = 775.0
-margin_right = 645.0
-margin_bottom = 843.0
+margin_left = 463.0
+margin_top = 672.0
+margin_right = 601.0
+margin_bottom = 740.0
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
 texture_disabled = ExtResource( 17 )
 
-[node name="Label" type="Label" parent="NumberSelect/CreateItem"]
+[node name="Label" type="Label" parent="NumberSelect/MaterialSetupPanel/CreateItem"]
 margin_left = 14.0
 margin_top = 21.0
 margin_right = 126.0
@@ -359,7 +352,23 @@ margin_bottom = 45.0
 text = "CRAFT"
 align = 1
 
+[node name="EndItemDescript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 552.0
+margin_top = 220.0
+margin_right = 1005.0
+margin_bottom = 644.0
+bbcode_enabled = true
+
+[node name="Label" type="Label" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 28.6832
+margin_top = 14.9109
+margin_right = 174.683
+margin_bottom = 38.9109
+text = "Parts"
+align = 1
+
 [node name="MaterialSelect" type="TextureRect" parent="NumberSelect"]
+editor/display_folded = true
 visible = false
 margin_right = 649.0
 margin_bottom = 788.0
@@ -414,33 +423,26 @@ margin_bottom = 68.0
 text = "SELECTMATERIAL"
 align = 1
 
-[node name="EndItemDescript" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 656.0
-margin_top = 323.0
-margin_right = 1109.0
-margin_bottom = 747.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
-
-[node name="HSlider" type="HSlider" parent="NumberSelect"]
-margin_left = 387.834
-margin_top = 909.423
-margin_right = 815.834
-margin_bottom = 925.423
-min_value = 1.0
-value = 1.0
-
 [node name="NumberConfirm" type="Button" parent="NumberSelect"]
-margin_left = 450.737
-margin_top = 776.137
-margin_right = 724.737
-margin_bottom = 830.137
+margin_left = 448.219
+margin_top = 111.015
+margin_right = 722.219
+margin_bottom = 165.015
 text = "Confirm"
 
+[node name="HSlider" type="HSlider" parent="NumberSelect"]
+margin_left = 385.316
+margin_top = 74.3013
+margin_right = 813.316
+margin_bottom = 90.3013
+min_value = 1.0
+value = 1.0
+ticks_on_borders = true
+
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 353.874
-margin_top = 870.676
-margin_right = 849.874
-margin_bottom = 902.676
+margin_left = 351.356
+margin_top = 35.5544
+margin_right = 847.356
+margin_bottom = 67.5544
 text = "Repeat: 1 time"
 

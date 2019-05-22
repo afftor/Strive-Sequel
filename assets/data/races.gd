@@ -1,15 +1,5 @@
 extends Node
 
-func _ready():
-	for i in racelist.values():
-		i.name = tr("RACE" + i.code.to_upper())
-		i.descript = tr("RACE" + i.code.to_upper() + 'DESCRIPT')
-		i.adjective = tr("RACE" + i.code.to_upper() + "ADJ")
-	
-	for i in tasklist.values():
-		i.name = tr("TASK" + i.code.to_upper())
-		i.descript = tr("TASK" + i.code.to_upper() + "DESCRIPT")
-
 class state:
 	var craft_list_forget = []
 	var craft_list_smith = []
@@ -27,6 +17,9 @@ func hunt_meat(character):
 func fishing(character):
 	return 8 + (8*(character.physics/200+character.wits/75))
 
+func farming(character):
+	return 8 + (8*(character.physics/200+character.wits/75))
+
 func hunt_leather(character):
 	return 16 + character.physics/3
 
@@ -39,12 +32,20 @@ func mining_stone(character):
 func whoring_gold(character):
 	return 3 + character.sexuals/10 + character.charm/20
 
+func cooking_progress(character):
+	return 30 + character.wits
+
+func tailor_progress(character):
+	return 30 + character.physics
+
 func forge_progress(character):
 	return 3 + character.physics
 
 func alchemy_progress(character):
 	return 3 + character.wits
 
+func building_progress(character):
+	return 3 + character.wits/10 + character.physics/20
 
 var tasklist = {
 	hunting = {
@@ -66,6 +67,17 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 9, reqs = [], progress_function = 'fishing'}},
+		icon = null,
+		tags = [],
+	},
+	farming = {
+		code = 'farming',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'physics',
+		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [], progress_function = 'farming'},
+		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [], progress_function = 'farming'}},
 		icon = null,
 		tags = [],
 	},
@@ -95,7 +107,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'sexuals',
-		production = {prostitutegold = {code = 'prostitutegold',item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
+		production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
 		tags = ['sex'],
 	},
@@ -109,13 +121,33 @@ var tasklist = {
 #		icon = null,
 #		tags = [],
 #	},
+	cooking = {
+		code = 'cooking',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'wits',
+		production = {tailor = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_cooking.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
+		icon = null,
+		tags = ['tailor'],
+	},
+	tailor = {
+		code = 'tailor',
+		reqs = [],
+		name = '',
+		descript = '',
+		workstat = 'physics',
+		production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_tailor.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
+		icon = null,
+		tags = ['tailor'],
+	},
 	smith = {
 		code = 'smith',
 		reqs = [],
 		name = '',
 		descript = '',
 		workstat = 'physics',
-		production = {smith = {code = 'smith',item = 'smith', progress_per_item = 0, reqs = [], progress_function = 'forge_progress'}},
+		production = {smith = {code = 'smith',item = 'smith',descript = tr("JOBSMITHCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_smith.png"), progress_per_item = 1, reqs = [], progress_function = 'forge_progress'}},
 		icon = null,
 		tags = ['smith'],
 	},
@@ -125,7 +157,17 @@ var tasklist = {
 		name = '',
 		descript = tr("TASKALCHEMYDESCRIPT"),
 		workstat = 'wits',
-		production = {alchemy = {code = 'alchemy',item = 'alchemy', progress_per_item = 0, reqs = [], progress_function = 'alchemy_progress'}},
+		production = {alchemy = {code = 'alchemy',item = 'alchemy',descript = tr("JOBALCHEMYCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_alchemy.png"), progress_per_item = 1, reqs = [], progress_function = 'alchemy_progress'}},
+		icon = null,
+		tags = ['alchemy'],
+	},
+	building = {
+		code = 'building',
+		reqs = [],
+		name = '',
+		descript = tr("TASKBUILDINGDESCRIPT"),
+		workstat = 'wits',
+		production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_alchemy.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
 		icon = null,
 		tags = ['alchemy'],
 	},
@@ -157,7 +199,15 @@ var racelist = {
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused
 		tags = [],
-		bodyparts = {},
+		bodyparts = {
+			height = ['petite','short','average','tall','towering'],
+			ears = ['normal'],
+			skin = ['pale','fair','olive','tan','brown'],
+			hair_color = ['blond','red','auburn','brown','black'],
+			eye_color = ['blue','green','grey','brown','black'],
+			hair_length = ['ear','neck','shoulder','waist','hips'],
+			eye_shape = ['normal'],
+			},
 		global_weight = 100,
 	},
 	Elf = {
@@ -184,8 +234,9 @@ var racelist = {
 		diet_hate = {vege = 0, meat = 75, fish = 25, grain = 10},
 		tags = [],
 		bodyparts = {
+			skin = ['pale','fair','olive'],
 			ears = ['elven'],
-			hair = ['blonde','green','brown','white'],
+			hair_color = ['blond','green','brown','white'],
 			},
 		global_weight = 40,
 	},
@@ -215,7 +266,7 @@ var racelist = {
 		bodyparts = {
 			ears = ['elven'],
 			skin = ['dark','brown','olive'],
-			hairadd = ['white'],
+			hair_color = ['blond','red','auburn','brown','black','white'],
 			},
 		global_weight = 30,
 	},
@@ -245,7 +296,7 @@ var racelist = {
 		bodyparts = {
 			ears = ['elven'],
 			skin = ['grey','purple','teal'],
-			hair = ['purple','green','white'],
+			hair_color = ['purple','green','white'],
 			},
 		global_weight = 10,
 	},
@@ -275,7 +326,7 @@ var racelist = {
 		bodyparts = {
 			ears = ['orcish'],
 			skin = ['green','grey','brown'],
-			size = ['average','big','huge'],
+			height = ['average','tall','towering'],
 			},
 		global_weight = 45,
 	},
@@ -305,7 +356,7 @@ var racelist = {
 		bodyparts = {
 			ears = ['orcish'],
 			skin = ['green','grey','brown'],
-			size = ['petite', 'small'],
+			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
 			},
 		global_weight = 20,
@@ -334,7 +385,7 @@ var racelist = {
 		diet_hate = {vege = 10, meat = 25, fish = 10, grain = 15},
 		tags = [],
 		bodyparts = {
-			size = ['petite', 'small'],
+			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
 			},
 		global_weight = 15,
@@ -363,7 +414,7 @@ var racelist = {
 		diet_hate = {vege = 35, meat = 10, fish = 15, grain = 15},
 		tags = [],
 		bodyparts = {
-			size = ['petite', 'small'],
+			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
 			},
 		global_weight = 60,
@@ -393,8 +444,8 @@ var racelist = {
 		tags = [],
 		bodyparts = {
 			ears = ['elven'],
-			hair = ['green','blonde','purple','white','gradient'],
-			size = ['petite'],
+			hair_color = ['green','blond','purple','white','gradient'],
+			height = ['tiny','petite'],
 			wings = ['fairy'],
 			body_shape = ['shortstack'],
 			},
@@ -427,7 +478,7 @@ var racelist = {
 			ears = ['elven'],
 			skin = ['green','purple','brown'],
 			skin_coverage = ['plant'],
-			hair = ['green','purple'],
+			hair_color = ['green','purple'],
 			},
 		global_weight = 12,
 	},
@@ -552,7 +603,7 @@ var racelist = {
 			body_lower = ['horse'],
 			body_shape = ['halfhorse'],
 			tail = ['horse'],
-			size = ['big', 'huge'],
+			height = ['tall', 'towering'],
 			penis_type = ['equine'],
 			},
 		global_weight = 20,
