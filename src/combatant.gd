@@ -439,6 +439,22 @@ var descriptions = load("res://assets/data/descriptions.gd").new()
 func make_description():
 	return translate(descriptions.create_character_description(self))
 
+func show_race_description():
+	var temprace = races.racelist[race]
+	var text = ''
+	if temprace.tags.has('beast'):
+		if race.find("Beastkin") >= 0:
+			text += tr("RACEBEASTKINDESCRIPT") + "\n\n"
+		elif race.find("Halfkin") >= 0:
+			text += tr("RACEHALFKINDESCRIPT") + "\n\n"
+	text += temprace.descript
+	text += "\n\nRace bonuses: "
+	for i in temprace.racetrait:
+		text += globals.statdata[i].name + ": " + str(temprace.racetrait[i]) + ', '
+	text = text.substr(0, text.length() - 2) + "."
+	
+	return text
+
 var stat_description = {
 	1 : "[color=white]Very Low[/color]", 2 : '[color=green]Low[/color]', 3 : "[color=blue]Average[/color]", 4 : "[color=purple]Good[/color]", 5 :"[color=yellow]Great[/color]", 6: "[color=]Superb[/color]"
 }

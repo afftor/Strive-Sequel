@@ -1151,4 +1151,9 @@ var effects = {
 	hated_food_combined = {#-10 fatigue: when eating cooked hated food with other tags
 		
 	},
+	#Trait: Small
+	small_size = {#given to short races: goblins, gnomes, fairies. physical tasks -25%, melee damage -20%
+		
+	},
+	
 }

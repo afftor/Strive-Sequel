@@ -16,12 +16,20 @@ func _ready():
 	
 	for i in $categories.get_children():
 		i.connect("pressed", self, 'select_category', [i.name])
-	
-	
+
+var craftcategories = {
+	cook = {reqs = []},
+	tailor = {reqs = [{type = "has_upgrade", name = 'tailor', value = 1}]},
+	alchemy = {reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}]},
+	smith = {reqs = [{type = "has_upgrade", name = 'forge', value = 1}]},
+}
 
 func open():
 	show()
-	clear()
+	for i in craftcategories:
+		$categories.get_node(i).visible = state.checkreqs(craftcategories[i].reqs)
+	if craft_category != null:
+		select_category(craft_category)
 
 func clear():
 	craft_category = null

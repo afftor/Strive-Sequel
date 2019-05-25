@@ -17,30 +17,10 @@ func _ready():
 	var counter = 0
 	for i in timebuttons:
 		globals.connecttexttooltip(i, tooltips[counter])
-		#i.hint_tooltip = tooltips[counter]
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
 	
-#	for i in Skilldata.professions.values():
-#		i.name = tr("PROF" + i.code.to_upper())
-#		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
-#
-#	for i in Items.materiallist.values():
-#		i.name = tr("MATERIAL" + i.code.to_upper())
-#		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
-#
-#	for i in Items.itemlist.values():
-#		i.name = tr("ITEM" + i.code.to_upper())
-#		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
-#
-#	for i in Skilldata.Skilllist.values():
-#		i.name = tr("SKILL" + i.code.to_upper())
-#		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
-#
-#	for i in globals.statdata.value():
-#		i.name = tr("STAT" + i.code.to_upper())
-#		i.descript = tr("TOOLTIP" + i.code.to_upper())
 	
 	
 	$InventoryButton.connect("pressed",self,'open_inventory')
@@ -48,6 +28,7 @@ func _ready():
 	$ExploreButton.connect("pressed",$Exploration,"open")
 	$QuestlogButton.connect("pressed", self, "open_questlog")
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
+	$MenuButton.connect("pressed", $MenuPanel, "open")
 	
 	
 	state.money = 500
@@ -74,7 +55,6 @@ func _ready():
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
-	
 	
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 

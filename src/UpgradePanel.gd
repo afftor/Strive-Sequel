@@ -109,6 +109,8 @@ func selectupgrade(upgrade):
 	
 	if state.upgrade_progresses.has(upgrade.code):
 		canpurchase = false
+	if variables.free_upgrades == true:
+		canpurchase = true
 	
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
@@ -122,17 +124,22 @@ func findupgradelevel(upgrade):
 func unlockupgrade():
 	var upgrade = selectedupgrade
 	var currentupgradelevel = findupgradelevel(upgrade)
-	for i in upgrade.levels[currentupgradelevel].cost:
-		state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
+	if variables.free_upgrades == false:
+		for i in upgrade.levels[currentupgradelevel].cost:
+			state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
 	var upgradecode = upgrade.code
 	
-	state.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
-	state.selected_upgrade = {code = upgradecode, level = currentupgradelevel}
-	
-#	if state.upgrades.has(upgrade.code):
-#		state.upgrades[upgrade.code] += 1
-#	else:
-#		state.upgrades[upgrade.code] = 1
+	if variables.instant_upgrades == false:
+		
+		state.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
+		state.selected_upgrade = {code = upgradecode, level = currentupgradelevel}
+		
+	else:
+		
+		if state.upgrades.has(upgrade.code):
+			state.upgrades[upgrade.code] += 1
+		else:
+			state.upgrades[upgrade.code] = 1
 	
 	open()
 	#input_handler.emit_signal("UpgradeUnlocked", upgrade)

@@ -397,8 +397,8 @@ margin_bottom = 31.0
 text = "25"
 
 [node name="mentality" type="VBoxContainer" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 15.0
 margin_top = 582.0

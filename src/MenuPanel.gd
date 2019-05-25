@@ -1,20 +1,17 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
+#warning-ignore-all:return_value_discarded
 
 func _ready():
-#warning-ignore:return_value_discarded
 	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'SavePanelOpen')
-#warning-ignore:return_value_discarded
 	$VBoxContainer/Load.connect('pressed', $saveloadpanel, 'LoadPanelOpen')
-#warning-ignore:return_value_discarded
 	$VBoxContainer/Options.connect('pressed', self, 'OptionsOpen')
-#warning-ignore:return_value_discarded
 	$VBoxContainer/Exit.connect('pressed', self, 'Exit')
 	move_child($InputBlock, 0)
 	for i in $VBoxContainer.get_children():
 		i.connect("pressed", self, "PlayClickSound")
 
-func show():
+func open():
 	.show()
 	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
 		$VBoxContainer/Save.disabled = true

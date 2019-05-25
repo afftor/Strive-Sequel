@@ -40,6 +40,8 @@ func _ready():
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
 	$controls/CustmizeButton.connect('pressed', self, "open_customize_button")
 	
+	$RichTextLabel.connect("meta_clicked", self, 'show_race_descript')
+	
 	
 	
 	globals.AddPanelOpenCloseAnimation($DetailsPanel)
@@ -125,6 +127,9 @@ func open(tempperson):
 func show_progress_tooltip(node):
 	pass
 
+func show_race_descript(meta):
+	globals.connecttexttooltip($RichTextLabel, person.show_race_description())
+
 func open_class_selection():
 	$class_learn.open(person)
 
@@ -134,6 +139,8 @@ func open_jobs_window():
 	currentjob = null
 	update_hours()
 	for i in races.tasklist.values():
+		if state.checkreqs(i.reqs) == false:
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 		newbutton.text = i.name
 		#newbutton.connect('pressed', self, 'select_job', [i.code])
@@ -145,9 +152,11 @@ func show_job_details(job):
 	currentjob = job
 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 		i.pressed = i.text == job.name
-	$job_panel/RichTextLabel.bbcode_text = "[center]" + job.name + '[/center]\n' + job.descript
+	$job_panel/RichTextLabel.bbcode_text = "[center]" + job.name + '[/center]\n' + job.descript + "\n\n" + tr("TASKMAINSTAT") + ": [color=yellow]" + globals.statdata[job.workstat].name + "[/color]"
 	globals.ClearContainer($job_panel/ResourceOptions)
 	for i in job.production.values():
+		if state.checkreqs(i.reqs) == false:
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/ResourceOptions)
 		if Items.materiallist.has(i.item):
 			var number = stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)

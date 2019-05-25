@@ -82,7 +82,6 @@ margin_right = 344.0
 margin_bottom = 308.0
 rect_min_size = Vector2( 0, 50 )
 text = "SLAVEPARTSEX"
-selected = 0
 
 [node name="Label5" type="Label" parent="VBoxContainer"]
 margin_top = 314.0
@@ -433,7 +432,7 @@ margin_right = 376.792
 margin_bottom = 691.497
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RaceSelection/ScrollContainer"]
-margin_right = 349.0
+margin_right = 348.999
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="RaceSelection/ScrollContainer/VBoxContainer"]

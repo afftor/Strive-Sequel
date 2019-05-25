@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=28]
 [ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=30]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -45,6 +46,14 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="MenuButton" type="Button" parent="."]
+margin_left = 1774.15
+margin_top = 13.5203
+margin_right = 1906.15
+margin_bottom = 57.5203
+theme = ExtResource( 3 )
+text = "Menu"
 
 [node name="InventoryButton" type="Button" parent="."]
 margin_left = 23.3762
@@ -336,7 +345,9 @@ margin_right = 430.499
 margin_bottom = 36.8336
 text = "Name Race Age Class"
 
-[node name="Inventory" parent="." instance=ExtResource( 24 )]
+[node name="Inventory" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 24 )]
 visible = false
 margin_left = 28.9677
 margin_top = 144.582
@@ -387,4 +398,13 @@ margin_top = 801.205
 margin_right = 858.847
 margin_bottom = 855.205
 text = "Test"
+
+[node name="MenuPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 30 )]
+visible = false
+margin_left = 826.375
+margin_top = 277.826
+margin_right = 1192.38
+margin_bottom = 719.826
 

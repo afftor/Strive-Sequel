@@ -5,6 +5,7 @@ var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 
+
 enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6}; 
 enum {TR_CAST, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN};
 enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, S_FULL = 31}
@@ -41,7 +42,10 @@ var class_cap_per_growth = 1
 var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
 var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 
+#Cheats
 var instant_travel = true
+var instant_upgrades = true
+var free_upgrades = true
 
 var pregduration = 90
 
@@ -58,3 +62,4 @@ var slave_classes_per_difficulty = {
 	9 : [6, 10],
 	10 : [6, 10],
 }
+

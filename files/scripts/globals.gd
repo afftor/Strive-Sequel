@@ -233,45 +233,42 @@ var statdata = {
 		type = 'misc',
 	},
 	
-}
-
-var bodypartsdata = {
-	skin = {
-		pale = {
-			code = 'pale',
-			name = 'pale',
-			descript = '',
-		},
-		fair = {
-			code = 'fair',
-			name = 'fair',
-			descript = '',
-		},
-		olive = {
-			code = 'olive',
-			name = 'olive',
-			descript = '',
-		},
-		brown = {
-			code = 'brown',
-			name = 'brown',
-			descript = '',
-		},
-		dark = {
-			code = 'dark',
-			name = 'dark',
-			descript = '',
-		},
-		slime = {
-			code = 'slime',
-			name = 'slime',
-			descript = '',
-		},
+	hp = {
+		code = 'hp',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
 	},
-	
-	
+	hpmax = {
+		code = 'hpmax',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	mp = {
+		code = 'mp',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	mpmax = {
+		code = 'mpmax',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	hitrate = {
+		code = 'hitrate',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
 }
-
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
 
@@ -392,6 +389,9 @@ func _ready():
 	randomize()
 	#Settings and folders
 	settings_load()
+	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
+
+	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 	
 	for i in Skilldata.professions.values():
 		i.name = tr("PROF" + i.code.to_upper())
@@ -422,6 +422,10 @@ func _ready():
 		i.name = tr("TASK" + i.code.to_upper())
 		i.descript = tr("TASK" + i.code.to_upper() + "DESCRIPT")
 	
+	for i in upgradelist.values():
+		i.name = tr("UPGRADE" + i.code.to_upper())
+		i.descript = tr("UPGRADE" + i.code.to_upper() + "DESCRIPT")
+	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true
@@ -434,9 +438,6 @@ func _ready():
 	#TownData = load("res://files/TownData.gd").new()
 	#Traitdata = load("res://assets/data/Traits.gd").new()
 	#combatantdata = load("res://files/CombatantClass.gd").new()
-	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
-
-	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 
 	#====================================
 	

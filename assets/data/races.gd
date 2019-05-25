@@ -1,5 +1,7 @@
 extends Node
 
+#warning-ignore-all:unused_class_variable
+
 class state:
 	var craft_list_forget = []
 	var craft_list_smith = []
@@ -76,8 +78,8 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
-		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [], progress_function = 'farming'},
-		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [], progress_function = 'farming'}},
+		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [{type = "has_upgrade", name = 'farm_vegetables', value = 1}], progress_function = 'farming'},
+		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'farm_grains', value = 1}], progress_function = 'farming'}},
 		icon = null,
 		tags = [],
 	},
@@ -111,16 +113,6 @@ var tasklist = {
 		icon = null,
 		tags = ['sex'],
 	},
-#	market = {
-#		code = 'market',
-#		reqs = [],
-#		name = '',
-#		descript = '',
-#		workstat = 'wits',
-#		production = {gold = [5,10]},
-#		icon = null,
-#		tags = [],
-#	},
 	cooking = {
 		code = 'cooking',
 		reqs = [],
@@ -133,7 +125,7 @@ var tasklist = {
 	},
 	tailor = {
 		code = 'tailor',
-		reqs = [],
+		reqs = [{type = "has_upgrade", name = 'tailor', value = 1}],
 		name = '',
 		descript = '',
 		workstat = 'physics',
@@ -143,7 +135,7 @@ var tasklist = {
 	},
 	smith = {
 		code = 'smith',
-		reqs = [],
+		reqs = [{type = "has_upgrade", name = 'forge', value = 1}],
 		name = '',
 		descript = '',
 		workstat = 'physics',
@@ -153,7 +145,7 @@ var tasklist = {
 	},
 	alchemy = {
 		code = 'alchemy',
-		reqs = [],
+		reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}],
 		name = '',
 		descript = tr("TASKALCHEMYDESCRIPT"),
 		workstat = 'wits',
@@ -166,15 +158,13 @@ var tasklist = {
 		reqs = [],
 		name = '',
 		descript = tr("TASKBUILDINGDESCRIPT"),
-		workstat = 'wits',
+		workstat = 'physics',
 		production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_alchemy.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
 		icon = null,
 		tags = ['alchemy'],
 	},
 }
 
-#slime lamia arachna scylla nereid
-#warning-ignore:unused_class_variable
 var racelist = {
 	Human = {
 		code = "Human",
@@ -187,7 +177,7 @@ var racelist = {
 			food_consumption = [2,4],
 			dirtiness = [2,4],
 			physics_factor = [2,4],
-			magic_factor = [1,1],
+			magic_factor = [1,2],
 			tame_factor = [3,5],
 			brave_factor = [2,4],
 			growth_factor = [1,2],
@@ -297,6 +287,7 @@ var racelist = {
 			ears = ['elven'],
 			skin = ['grey','purple','teal'],
 			hair_color = ['purple','green','white'],
+			eye_color = ['red','amber'],
 			},
 		global_weight = 10,
 	},
@@ -462,7 +453,7 @@ var racelist = {
 			food_consumption = [1,3],
 			dirtiness = [3,4],
 			physics_factor = [2,4],
-			magic_factor = [1,3],
+			magic_factor = [2,4],
 			tame_factor = [1,3],
 			brave_factor = [2,4],
 			growth_factor = [1,3],
@@ -524,7 +515,7 @@ var racelist = {
 		basestats = {
 			food_consumption = [1,3],
 			dirtiness = [1,3],
-			physics_factor = [1,3],
+			physics_factor = [2,3],
 			magic_factor = [3,4],
 			tame_factor = [2,3],
 			brave_factor = [2,4],
@@ -621,7 +612,7 @@ var racelist = {
 			physics_factor = [3,5],
 			magic_factor = [1,2],
 			tame_factor = [4,5],
-			brave_factor = [2,3],
+			brave_factor = [2,4],
 			growth_factor = [1,3],
 			sexuals_factor = [2,4],
 			charm_factor = [1,3],

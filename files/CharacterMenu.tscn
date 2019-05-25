@@ -37,7 +37,6 @@ margin_bottom = 848.0
 rect_min_size = Vector2( 948, 788 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect", "custom_styles" ]
 
 [node name="Main" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -59,6 +58,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="Main"]
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -341,6 +341,7 @@ texture_under = ExtResource( 18 )
 texture_progress = ExtResource( 19 )
 
 [node name="stats&skills" type="Panel" parent="Main"]
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 500.0
 margin_top = 496.0
@@ -468,6 +469,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Image: Value"
 
 [node name="skillcontainer" type="GridContainer" parent="Main"]
+editor/display_folded = true
 show_behind_parent = true
 margin_left = 524.0
 margin_top = 201.0
