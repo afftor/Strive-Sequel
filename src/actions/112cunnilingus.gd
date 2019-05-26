@@ -32,9 +32,9 @@ func requirements():
 #			if i.mouth != null:
 #				valid = false
 		for i in takers:
-#			if i.vagina != null || i.person.vagina == 'none':
+#			if i.vagina != null || i.person.has_pussy == false:
 #				valid = false
-			if i.person.vagina == 'none':
+			if i.person.has_pussy == false:
 				valid = false
 #			elif i.clit != null:
 #				valid = false

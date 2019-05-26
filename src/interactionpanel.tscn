@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/interactionpanel.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gui/panels/paneltransperent.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 500, 500 )
 margin_left = 10.0
 margin_right = 10.0
@@ -10,13 +12,18 @@ margin_top = 10.0
 margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id=2]
+region_rect = Rect2( 0, 0, 500, 500 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=3]
 region_rect = Rect2( 0, 0, 50, 50 )
 margin_left = 15.0
 margin_right = 15.0
 margin_top = 10.0
 margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=3]
 
 [sub_resource type="StyleBoxTexture" id=4]
 
@@ -25,6 +32,8 @@ margin_bottom = 10.0
 [sub_resource type="StyleBoxTexture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -45,6 +54,7 @@ margin_right = 25.0
 margin_bottom = 127.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_styles/panel = SubResource( 1 )
 
 [node name="LogPanel" type="Panel" parent="Panel"]
 anchor_top = 1.0
@@ -56,15 +66,15 @@ margin_right = -14.0
 margin_bottom = -64.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="sceneeffects" type="RichTextLabel" parent="Panel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 32.0
+margin_left = 34.0505
 margin_top = -299.0
-margin_right = -504.0
+margin_right = -501.949
 margin_bottom = -76.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -103,10 +113,10 @@ text = "Text2"
 editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 481.0
+margin_left = 582.0
 margin_top = 16.0
 margin_right = -439.0
-margin_bottom = -412.0
+margin_bottom = -478.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
@@ -150,10 +160,10 @@ text = "A"
 editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 454.0
-margin_top = 368.0
-margin_right = -435.0
-margin_bottom = -304.0
+margin_left = 653.0
+margin_top = 627.0
+margin_right = -509.0
+margin_bottom = -351.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
@@ -195,13 +205,12 @@ custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -1344.0
-margin_top = 11.0
-margin_right = -919.0
-margin_bottom = 392.0
+margin_left = -1900.99
+margin_top = 13.1559
+margin_right = -1471.99
+margin_bottom = 413.156
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
@@ -218,7 +227,7 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 425, 45 )
 size_flags_horizontal = 0
 size_flags_vertical = 2
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="arousal" type="TextureProgress" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 380.0
@@ -238,11 +247,11 @@ margin_right = 142.0
 margin_bottom = 29.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.03125, 1, 0, 1 )
@@ -335,10 +344,9 @@ mouse_filter = 0
 expand = true
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Panel"]
-editor/display_folded = true
-margin_left = 439.0
+margin_left = 519.0
 margin_top = 15.0
-margin_right = 479.0
+margin_right = 559.0
 margin_bottom = 231.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -471,9 +479,10 @@ toggle_mode = true
 text = "Only watch"
 
 [node name="givetakepanel" type="Panel" parent="Panel"]
-margin_left = 924.0
-margin_right = 1336.0
-margin_bottom = 397.0
+margin_left = 1486.98
+margin_top = 23.3762
+margin_right = 1898.98
+margin_bottom = 420.376
 
 [node name="givercontainer" type="VBoxContainer" parent="Panel/givetakepanel"]
 margin_left = 16.0
@@ -548,22 +557,21 @@ size_flags_vertical = 0
 text = "x20"
 
 [node name="Control" type="Control" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = -35.0
 margin_top = -15.0
-margin_right = 1390.0
-margin_bottom = 809.0
+margin_right = 2034.0
+margin_bottom = 1158.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="Panel" type="Panel" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 431.0
-margin_top = 162.0
-margin_right = -390.0
-margin_bottom = -301.0
+margin_left = 521.0
+margin_top = 286.0
+margin_right = -911.0
+margin_bottom = -544.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
@@ -642,7 +650,6 @@ margin_top = 680.0
 margin_right = 510.0
 margin_bottom = 719.0
 text = "Debug"
-
 [connection signal="meta_clicked" from="Panel/sceneeffects1" to="." method="_on_sceneeffects1_meta_clicked"]
 [connection signal="pressed" from="Panel/stopbutton" to="." method="_on_stopbutton_pressed"]
 [connection signal="pressed" from="Panel/passbutton" to="." method="_on_passbutton_pressed"]

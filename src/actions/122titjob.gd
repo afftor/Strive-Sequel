@@ -34,14 +34,14 @@ func requirements():
 		valid = false
 	else:
 		for i in givers:
-			if i.person.titssize in ['masculine','flat']:
+			if i.person.tits_size in ['masculine','flat']:
 				valid = false
 			if i.limbs == false:
 				valid = false
 		for i in takers:
-#			if i.penis != null || i.person.penis == 'none':
+#			if i.penis != null || i.person.penis_size == '':
 #				valid = false
-			if i.person.penis == 'none':
+			if i.person.penis_size == '':
 				valid = false
 	return valid
 

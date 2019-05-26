@@ -36,7 +36,7 @@ func requirements():
 			if !globals.longtails.has(i.person.tail):
 				valid = false
 		for i in takers:
-			if i.person.vagina == 'none':
+			if i.person.has_pussy == false:
 				valid = false
 	return valid
 

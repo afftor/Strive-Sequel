@@ -23,20 +23,20 @@ func decoder(text, tempgivers = null, temptakers = null):
 	#dictionary of replacements
 	var replacements = {
 		#state verbs
-		'[their]' : 'your' if givers[0].person == globals.player || takers[0].person == globals.player else 'their',
-		'[is1]' : 'are' if givers.size() >= 2 or givers[0].person == globals.player else 'is',
-		'[is2]' : 'are' if takers.size() >= 2 or takers[0].person == globals.player else 'is',
-		'[has1]' : 'have' if givers.size() >= 2 or givers[0].person == globals.player else 'has',
-		'[has2]' : 'have' if takers.size() >= 2 or takers[0].person == globals.player else 'has',
-		'[was1]' : 'were' if givers.size() >= 2 or givers[0].person == globals.player else 'was',
-		'[was2]' : 'were' if takers.size() >= 2 or takers[0].person == globals.player else 'was',
+		'[their]' : 'your' if givers[0].person.professions.has("master") || takers[0].person.professions.has("master") else 'their',
+		'[is1]' : 'are' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'is',
+		'[is2]' : 'are' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'is',
+		'[has1]' : 'have' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'has',
+		'[has2]' : 'have' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'has',
+		'[was1]' : 'were' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'was',
+		'[was2]' : 'were' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'was',
 		#verb endings
-		'[ies/y1]' : 'y' if givers.size() >= 2 or givers[0].person == globals.player else 'ies',
-		'[ies/y2]' : 'y' if takers.size() >= 2 or takers[0].person == globals.player else 'ies',
-		'[s/1]' : '' if givers.size() >= 2 or givers[0].person == globals.player else 's',
-		'[s/2]' : '' if takers.size() >= 2 or takers[0].person == globals.player else 's',
-		'[es/1]' : '' if givers.size() >= 2 or givers[0].person == globals.player else 'es',
-		'[es/2]' : '' if takers.size() >= 2 or takers[0].person == globals.player else 'es',
+		'[ies/y1]' : 'y' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'ies',
+		'[ies/y2]' : 'y' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'ies',
+		'[s/1]' : '' if givers.size() >= 2 or givers[0].person.professions.has("master") else 's',
+		'[s/2]' : '' if takers.size() >= 2 or takers[0].person.professions.has("master") else 's',
+		'[es/1]' : '' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'es',
+		'[es/2]' : '' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'es',
 		#verb endings involving objects and body actions
 		#same as above, but only takes number into account
 		'[ies/y#1]' : 'y' if givers.size() >= 2 else 'ies',
@@ -185,11 +185,11 @@ func capitallogic(text):
 
 
 func dictionary(member, text):
-	if member.person == globals.player:
+	if member.person.professions.has("master"):
 		text = text.replace('[name]', '[color=yellow]' + 'you' + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + 'you' + '[/color]')
 	else:
 		text = text.replace('[name]', '[color=yellow]' + member.name + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + member.name + '[/color]')
-	if member.person == globals.player:
+	if member.person.professions.has("master"):
 		text = text.replace('[his]', 'you')
 	else:
 		text = text.replace('[his]', 'his' if member.person.sex == 'male' else 'her')
@@ -198,7 +198,7 @@ func dictionary(member, text):
 
 func he(group):
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			if group.size() == 1:
 				return 'you'
 			elif group.size() == 2:
@@ -217,7 +217,7 @@ func he(group):
 
 func himself(group):
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			if group.size() == 1:
 				return 'yourself'
 			else:
@@ -232,7 +232,7 @@ func himself(group):
 
 func his(group):
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			if group.size() == 1:
 				return 'your'
 			elif group.size() == 2:
@@ -249,7 +249,7 @@ func his(group):
 
 func his_(group):
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			return 'yours'
 	if group.size() == 1:
 		if group[0].sex == 'male':
@@ -261,7 +261,7 @@ func his_(group):
 
 func him(group):
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			if group.size() == 1:
 				return 'you'
 			elif group.size() == 2:
@@ -285,7 +285,7 @@ func name(group):
 		
 		if group == givers:
 			text += '[color=yellow]'
-			if i.person == globals.player:
+			if i.person.professions.has("master"):
 				text += 'you'
 			else:
 				text += i.name
@@ -296,11 +296,11 @@ func name(group):
 				text += ' and '
 		else:
 			text += '[color=aqua]'
-			if i.person == globals.player:
+			if i.person.professions.has("master"):
 				text += 'you'
 			else:
 				if globals.getrelativename(givers[0].person, i.person) != null && randf() >= 0.5:
-					if givers[0].person == globals.player:
+					if givers[0].person.professions.has("master"):
 						text += givers[0].person.dictionary('your ') 
 					else:
 						text += givers[0].person.dictionary('$his ') 
@@ -320,7 +320,7 @@ func names(group):
 		#text += "%" + str(i.number)
 		if group == givers:
 			text += '[color=yellow]'
-			if i.person == globals.player:
+			if i.person.professions.has("master"):
 				if group.size() == 1:
 					text += 'your'
 				else:
@@ -334,7 +334,7 @@ func names(group):
 				text += ' and '
 		else:
 			text += '[color=aqua]'
-			if i.person == globals.player:
+			if i.person.professions.has("master"):
 				if group.size() == 1:
 					text += 'your'
 				else:
@@ -346,7 +346,7 @@ func names(group):
 				text += ', '
 			elif takers.find(i) == takers.size()-2:
 				text += ' and '
-		if i.person != globals.player:
+		if i.person.professions.has("master") == false:
 			text += "'s"
 	return text
 
@@ -375,7 +375,7 @@ func fucks(group):
 	if group.size() >= 2:
 		return fuck(group)
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			return fuck(group)
 	var outputs = []
 	var temp = ''
@@ -435,7 +435,7 @@ func vfucks(group):
 	if group.size() >= 2:
 		return vfuck(group)
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			return vfuck(group)
 	var outputs = []
 	var temp = ''
@@ -503,7 +503,7 @@ func afucks(group):
 	if group.size() >= 2:
 		return afuck(group)
 	for i in group:
-		if i.person == globals.player:
+		if i.person.professions.has("master"):
 			return afuck(group)
 	var outputs = []
 	var temp = ''
@@ -739,14 +739,14 @@ func partner(group):
 	var tarray = []
 	var boygirl = ''
 	for i in group:
-		if i.person == globals.player && group.size() == 1:
+		if i.person.professions.has("master") && group.size() == 1:
 			return "you"
 		var mp = i.person
 		array1 = []
 		array2 = []
 		var thick = thickness(mp)
 		#feminity descriptors
-		if mp.titssize == 'masculine':
+		if mp.tits_size == 'masculine':
 			array1 += ["muscular","toned"]
 		elif thick < 3:
 			array1 += ["dainty","delicate","slim"]
@@ -757,7 +757,7 @@ func partner(group):
 		else:
 			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic","meaty"]
 		#body
-		if mp.preg.duration > 1:
+		if mp.pregnancy.duration > 1:
 			array1 += ["pregnant","gravid"]
 		#age
 		if mp.age == 'child':
@@ -769,7 +769,7 @@ func partner(group):
 		else:
 			array1 += ['mature', 'adult']
 		#beauty
-		if mp.beauty_get() >= 50:
+		if mp.charm >= 50:
 			array1 += ['attractive']
 			if mp.sex == 'male':
 				array1 += ['handsome']
@@ -790,12 +790,12 @@ func partner(group):
 				array1 += ['adorable','cute']
 			if mp.age in ['adult','teen']:
 				array1 += ['charming','enchanting','captivating']
-		if mp.cour < 40:
-			array1 += ['shy','meek']
-		if mp.wit > 80:
+#		if mp.cour < 40:
+#			array1 += ['shy','meek']
+		if mp.wits > 80:
 			array1 += ['clever']
-		if mp.conf > 65:
-			array1 += ['proud','haughty']
+#		if mp.conf > 65:
+#			array1 += ['proud','haughty']
 		if i.lust > 300:
 			array1 += ['horny', 'excited']
 		#boy/girl
@@ -853,14 +853,14 @@ func partners(group):
 	var tarray = []
 	var boygirl = ''
 	for i in group:
-		if i.person == globals.player && group.size() == 1:
+		if i.person.professions.has("master") && group.size() == 1:
 			return "your"
 		var mp = i.person
 		array1 = []
 		array2 = []
 		var thick = thickness(mp)
 		#feminity descriptors
-		if mp.titssize == 'masculine':
+		if mp.tits_size == 'masculine':
 			array1 += ["muscular","toned"]
 		elif thick < 3:
 			array1 += ["dainty","delicate","slim","petite"]
@@ -871,7 +871,7 @@ func partners(group):
 		else:
 			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic","meaty"]
 		#body
-		if mp.preg.duration > 1:
+		if mp.pregnancy.duration > 1:
 			array1 += ["pregnant","gravid"]
 		#age
 		if mp.age == 'child':
@@ -883,7 +883,7 @@ func partners(group):
 		else:
 			array1 += ['mature', 'adult']
 		#beauty
-		if mp.beauty_get() >= 50:
+		if mp.charm >= 50:
 			array1 += ['attractive']
 			if mp.sex == 'male':
 				array1 += ['handsome']
@@ -904,12 +904,12 @@ func partners(group):
 				array1 += ['adorable','cute']
 			if mp.age in ['adult','teen']:
 				array1 += ['charming','enchanting','captivating']
-		if mp.cour < 40:
-			array1 += ['shy','meek']
-		if mp.wit > 80:
+#		if mp.cour < 40:
+#			array1 += ['shy','meek']
+		if mp.wits > 80:
 			array1 += ['clever']
-		if mp.conf > 65:
-			array1 += ['proud','haughty']
+#		if mp.conf > 65:
+#			array1 += ['proud','haughty']
 		if i.lust > 300:
 			array1 += ['horny', 'excited']
 		#boy/girl
@@ -972,7 +972,7 @@ func body(group):
 		var mp = i.person
 		var thick = thickness(mp)
 		#feminity
-		if mp.titssize == 'masculine':
+		if mp.tits_size == 'masculine':
 			array1 += ["muscular","toned"]
 		elif thick < 3:
 			array1 += ["dainty","delicate","slim","petite"]
@@ -983,7 +983,7 @@ func body(group):
 		else:
 			array1 += ["sensuous","curvaceous","buxom","voluptuous","bombastic"]
 		#beauty
-		if mp.beauty_get() >= 50:
+		if mp.charm >= 50:
 			array1 += ['alluring','enticing']
 			if mp.age in ['adult','teen'] && mp.sex != 'male':
 				array1 += ['ravishing','seductive']
@@ -1003,11 +1003,11 @@ func body(group):
 		elif mp.height in ['tall','towering']:
 			array1 += ["giant","huge","large"]
 		#bodytype
-		if mp.bodyshape == 'jelly':
+		if mp.body_shape == 'jelly':
 			array1 += ["transparent","squishy","gelatinous"]
-		if mp.bodyshape == 'halfsnake':
+		if mp.body_shape == 'halfsnake':
 			array1 += ["long","serpentine"]
-		elif mp.skincov == 'full_body_fur':
+		elif mp.skin_coverage == 'full_body_fur':
 			array1 += ["furry","fluffy","fur-covered"]
 		#for multiple people, only incude shared
 		if marray1 == null:
@@ -1039,28 +1039,28 @@ func penis(group):
 		array2 = ['cock','dick','penis','shaft'] if group.size() == 1 else ['cocks','dicks','penises','shafts']
 		var mp = i.person
 		#size/age descriptors
-		if mp.penis == 'small':
+		if mp.penis_size== 'small':
 			array1 += ["tiny","small","petite"]
 			if mp.age == 'child':
 				array1 += ["immature"]
-		elif mp.penis == 'average':
+		elif mp.penis_size== 'average':
 			array1 += ["average-sized","decently-sized"]
 			if mp.age == 'child':
 				array1 += ["well-developed","adult-like"]
-		elif mp.penis == 'big':
+		elif mp.penis_size== 'big':
 			array1 += ["big","sizeable","thick","girthy","impressively large"]
 			if mp.age == 'child':
 				array1 += ["overgrown","surprisingly large"]
 		#penistype descriptors
-		if mp.penistype == 'feline':
+		if mp.penis_type == 'feline':
 			array1 += ['barbed']
-		elif mp.penistype == 'canine':
+		elif mp.penis_type == 'canine':
 			array1 += ['knotted','tapered']
-		elif mp.penistype == 'equine':
+		elif mp.penis_type == 'equine':
 			array1 += ['flared','long']
 			array2 += ['horse cock','horse dick']
 		#other descriptors
-		if mp.penis == 'none':
+		if mp.penis_size== 'none':
 			array2 = ['strap-on','shaft'] if group.size() == 1 else ['strap-ons','shafts']
 		elif mp.sex == 'male':
 			array2 += ['manhood'] if group.size() == 1 else ['manhoods']
@@ -1099,15 +1099,15 @@ func pussy(group):
 		#body
 		if i.lube > 5:
 			array1 += ["wet","slick","dripping"]
-		if mp.preg.has_womb == true && mp.preg.duration == 0:
+		if mp.has_womb == true && mp.pregnancy.duration == 0:
 			array1 += ["fertile"]
-		if mp.vagvirgin == true:
+		if mp.vaginal_virgin == true:
 			array1 += ["virgin","virginal","unused"]
-		if mp.pubichair == 'clean':
-			if mp.age == 'child':
-				array1 += ["smooth","hairless","pubeless","bald"]
-			else:
-				array1 += ["smoothly shaved","hairless","pubeless","shaved"]
+#		if mp.pubichair == 'clean':
+#			if mp.age == 'child':
+#				array1 += ["smooth","hairless","pubeless","bald"]
+#			else:
+#				array1 += ["smoothly shaved","hairless","pubeless","shaved"]
 		#age
 		if mp.age == 'child':
 			array1 += ["childish","immature","girlish","youthful","undeveloped"]
@@ -1116,7 +1116,7 @@ func pussy(group):
 		else:
 			array1 += ["womanly","mature","developed"]
 		#race
-		if mp.bodyshape == 'halfhorse':
+		if mp.body_shape == 'halfhorse':
 			array1 += ["muscular","horse","horse"]
 		else:
 			array2 += ["slit"] if group.size() == 1 else ["slits"]
@@ -1154,49 +1154,49 @@ func ass(group):
 		array2 = ["ass","butt","backside","rear"] if group.size() == 1 else ["asses","butts","backsides","rears"]
 		var mp = i.person
 		#size/age descriptors
-		if mp.asssize == 'flat':
+		if mp.ass_size == 'flat':
 			array1 += ["flat","compact"]
 			if mp.age == 'teen':
 				array1 += ["tiny","developing","childlike"]
 			elif mp.age == 'child':
 				array1 += ["tiny","developing","undeveloped","immature"]
-		elif mp.asssize == 'small':
+		elif mp.ass_size == 'small':
 			array1 += ["small","compact"]
 			if mp.age == 'teen':
 				array1 += ["developing"]
 			elif mp.age == 'child':
 				array1 += ["undeveloped","immature"]
-		elif mp.asssize == 'average':
+		elif mp.ass_size == 'average':
 			array1 += ["round","well-rounded","shapely"]
 			if mp.age == 'teen':
 				array1 += ["well-developed"]
 			elif mp.age == 'child':
 				array1 += ["well-developed","impressively large"]
-		elif mp.asssize == 'big':
+		elif mp.ass_size == 'big':
 			array1 += ["big","sizeable","plump","hefty"]
 			if mp.age == 'teen':
 				array1 += ["well-developed","impressively large"]
 			elif mp.age == 'child':
 				array1 += ["overgrown","surprisingly large"]
-		elif mp.asssize == 'huge':
+		elif mp.ass_size == 'huge':
 			array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
 			if mp.age == 'teen':
 				array1 += ["well-developed","surprisingly large"]
 			elif mp.age == 'child':
 				array1 += ["overgrown","shockingly large"]
 		#bodytype descriptors
-		if mp.bodyshape == 'jelly':
+		if mp.body_shape == 'jelly':
 			array1 += ["gelatinous","slimy","gooey"]
-		elif mp.bodyshape == 'halfhorse':
+		elif mp.body_shape == 'halfhorse':
 			array1 += ["equine","hairy"]
 			array2 += ["hindquarters"]
-		elif mp.bodyshape == 'halfspider':
+		elif mp.body_shape == 'halfspider':
 			array1 += ["chitinous","spider"]
 			array2 = ["abdomen","butt"] if group.size() == 1 else ["abdomens","butts"]
-		elif mp.skincov == 'full_body_fur':
+		elif mp.skin_coverage == 'full_body_fur':
 			array1 += ["furry","hairy"]
 		#beauty descriptors
-		if mp.beauty_get() >= 50:
+		if mp.charm >= 50:
 			if mp.age == 'child':
 				array1 += ["cute","cute","flawless","perfect"]
 			elif mp.age == 'teen':
@@ -1235,36 +1235,36 @@ func hips(group):
 		array2 = ["hips"]
 		var mp = i.person
 		#size/age descriptors
-		if mp.sex == 'male' && mp.asssize in ['flat','small']:
+		if mp.sex == 'male' && mp.ass_size in ['flat','small']:
 			array1 += ["trim","slim"]
-		elif mp.asssize == 'flat':
+		elif mp.ass_size == 'flat':
 			array1 += ["slim","slender","petite","tiny"]
-		elif mp.asssize == 'small':
+		elif mp.ass_size == 'small':
 			array1 += ["slim","slender","svelte","small"]
-		elif mp.asssize == 'average':
+		elif mp.ass_size == 'average':
 			array1 += ["curved","shapely"]
 			if mp.age == 'teen':
 				array1 += ["well-developed"]
 			elif mp.age == 'child':
 				array1 += ["well-developed","impressively thick"]
-		elif mp.asssize == 'big':
+		elif mp.ass_size == 'big':
 			array1 += ["sizeable","ample","wide","thick","curvaceous"]
 			if mp.age == 'teen':
 				array1 += ["well-developed","impressively thick"]
 			elif mp.age == 'child':
 				array1 += ["overgrown","surprisingly thick"]
-		elif mp.asssize == 'huge':
+		elif mp.ass_size == 'huge':
 			array1 += ["huge","massive","enormous","wide","thick","curvaceous"]
 			if mp.age == 'teen':
 				array1 += ["well-developed","surprisingly thick"]
 			elif mp.age == 'child':
 				array1 += ["overgrown","shockingly thick"]
 		#bodytype descriptors
-		if mp.bodyshape == 'halfhorse':
+		if mp.body_shape == 'halfhorse':
 			array1 += ["equine","hairy"]
-		elif mp.bodyshape == 'halfsnake':
+		elif mp.body_shape == 'halfsnake':
 			array1 += ["scaly"]
-		elif mp.skincov == 'full_body_fur':
+		elif mp.skin_coverage == 'full_body_fur':
 			array1 += ["furry","hairy"]
 		#for multiple people, only incude shared
 		if marray1 == null:
@@ -1296,46 +1296,46 @@ func tits(group):
 		array2 = ["tits","boobs","breasts","chest"] if group.size() == 1 else ["tits","boobs","breasts","chests"]
 		var mp = i.person
 		#size/age descriptors
-		if mp.titssize == 'masculine':
+		if mp.tits_size == 'masculine':
 			array1 += ["muscular","strong","toned"]
 			array2 = ["chest","pecs"] if group.size() == 1 else ["chests","pecs"]
-		elif mp.titssize == 'flat':
+		elif mp.tits_size == 'flat':
 			array1 += ["flat","small"]
 			if mp.age == 'teen':
 				array1 += ["tiny","developing","childlike"]
 			elif mp.age == 'child':
 				array1 += ["tiny","developing","undeveloped","immature"]
-		elif mp.titssize == 'small':
+		elif mp.tits_size == 'small':
 			array1 += ["small","compact"]
 			if mp.age == 'teen':
 				array1 += ["developing"]
 			elif mp.age == 'child':
 				array1 += ["undeveloped","immature"]
-		elif mp.titssize == 'average':
+		elif mp.tits_size == 'average':
 			array1 += ["round","well-rounded","shapely"]
 			if mp.age == 'teen':
 				array1 += ["well-developed"]
 			elif mp.age == 'child':
 				array1 += ["well-developed","impressively large"]
-		elif mp.titssize == 'big':
+		elif mp.tits_size == 'big':
 			array1 += ["big","sizeable","plump","hefty"]
 			if mp.age == 'teen':
 				array1 += ["well-developed","impressively large"]
 			elif mp.age == 'child':
 				array1 += ["overgrown","surprisingly large"]
-		elif mp.titssize == 'huge':
+		elif mp.tits_size == 'huge':
 			array1 += ["huge","massive","fat","meaty","gigantic","enormous"]
 			if mp.age == 'teen':
 				array1 += ["well-developed","surprisingly large"]
 			elif mp.age == 'child':
 				array1 += ["overgrown","shockingly large"]
 		#bodytype descriptors
-		if mp.bodyshape == 'jelly':
+		if mp.body_shape == 'jelly':
 			array1 += ["gelatinous","slimy","gooey"]
-		elif mp.skincov == 'full_body_fur':
+		elif mp.skin_coverage == 'full_body_fur':
 			array1 += ["furry","fluffy"]
 		#beauty descriptors
-		if mp.beauty_get() >= 50:
+		if mp.charm >= 50:
 			if mp.age == 'child':
 				array1 += ["cute","cute","flawless","perfect"]
 			elif mp.age == 'teen':
@@ -1364,7 +1364,7 @@ func tits(group):
 func anus(member):
 	var array = []
 	var array2 = ["anus","asshole","butthole","rectum"]
-	if member.person.assvirgin == true:
+	if member.person.anal_virgin == true:
 		array += ["virgin","virginal","unused"]
 	if member.person.age != 'adult':
 		array += ["pink","youthful"]
@@ -1375,21 +1375,21 @@ func anus(member):
 #register tickness
 func thickness(mp):
 	var thick = 0
-	if mp.titssize == 'small':
+	if mp.tits_size == 'small':
 		thick += 1
-	elif mp.titssize == 'average':
+	elif mp.tits_size == 'average':
 		thick += 2
-	elif mp.titssize == 'big':
+	elif mp.tits_size == 'big':
 		thick += 3
-	elif mp.titssize == 'huge':
+	elif mp.tits_size == 'huge':
 		thick += 4
-	if mp.asssize == 'small':
+	if mp.ass_size == 'small':
 		thick += 1
-	elif mp.asssize == 'average':
+	elif mp.ass_size == 'average':
 		thick += 2
-	elif mp.asssize == 'big':
+	elif mp.ass_size == 'big':
 		thick += 3
-	elif mp.asssize == 'huge':
+	elif mp.ass_size == 'huge':
 		thick += 4
 	return thick
 

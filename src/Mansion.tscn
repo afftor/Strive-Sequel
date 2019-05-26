@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
@@ -28,8 +28,9 @@
 [ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=26]
 [ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=29]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=31]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -103,6 +104,14 @@ margin_right = 1171.38
 margin_bottom = 1068.33
 theme = ExtResource( 3 )
 text = "Upgrades"
+
+[node name="InteractButton" type="Button" parent="."]
+margin_left = 1183.38
+margin_top = 999.333
+margin_right = 1401.38
+margin_bottom = 1068.33
+theme = ExtResource( 3 )
+text = "Sex"
 
 [node name="TimeNode" type="TextureRect" parent="."]
 editor/display_folded = true
@@ -378,9 +387,14 @@ margin_bottom = 921.0
 ] instance=ExtResource( 28 )]
 visible = false
 
-[node name="UpgradeList" parent="." groups=[
+[node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",
 ] instance=ExtResource( 29 )]
+visible = false
+
+[node name="UpgradeList" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 30 )]
 visible = false
 
 [node name="TextLog" type="RichTextLabel" parent="."]
@@ -401,10 +415,9 @@ text = "Test"
 
 [node name="MenuPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 30 )]
+] instance=ExtResource( 31 )]
 visible = false
 margin_left = 826.375
 margin_top = 277.826
 margin_right = 1192.38
 margin_bottom = 719.826
-

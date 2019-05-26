@@ -161,6 +161,11 @@ var tags = []
 var last_tick_assignement = 'rest'
 var messages = []
 
+var sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}}
+var relations = {}
+var metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0}
+
+
 #temps
 #var profs = load("res://assets/data/Skills.gd").new().professions
 

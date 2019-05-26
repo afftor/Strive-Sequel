@@ -29,6 +29,7 @@ func _ready():
 	$QuestlogButton.connect("pressed", self, "open_questlog")
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
+	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	
 	
 	state.money = 500

@@ -38,6 +38,7 @@ var craftinglists = {alchemy = [], smith = [], cook = [], tailor = []}
 var materials := {} setget materials_set
 var oldmaterials := {}
 var unlocks := []
+var relativesdata = {}
 
 var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
@@ -343,3 +344,4 @@ func remove_slave(tempslave):
 func text_log_add(text):
 	if log_node != null:
 		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(hour)) + "[/right]" 
+

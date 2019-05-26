@@ -47,50 +47,11 @@ var system_messages = {
 	
 }
 
+var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
+
 var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'bodyshape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
-
-func impregnate(father, mother):
-	var check = true
-	if father.race != mother.race:
-		for i in [father, mother]:
-			var race = i.race
-			if race.find("Beastkin") >= 0:
-				race = 'Beastkin'
-			elif race.find('Halfkin') >= 0:
-				race = "Halfkin"
-			
-			if impregnation_compatibility.has(race) == false:
-				check = false
-	if check == false && mother.professions.has('breeder') == false:
-		return #incompatible races
-	
-	var baby = globals.characterdata.new()
-	if randf() >= 0.5:
-		baby.race = mother.race
-	else:
-		baby.race = father.race
-	if father.race.find('Beastkin') >= 0 && mother.race.find("Beastkin") < 0:
-		baby.race = father.race.replace("Beastkin", "Halfkin")
-	elif mother.race.find('Beastkin') >= 0 && father.race.find("Beastkin") < 0:
-		baby.race = mother.race.replace("Beastkin", "Halfkin")
-	baby.create(baby.race, 'random', 'teen')
-	for i in inheritedassets:
-		if randf() >= 0.5:
-			baby.set(i, father[i])
-		else:
-			baby.set(i, mother[i])
-	
-	for i in inheritedstats:
-		if randf() >= 0.5 || mother.professions.has("breeder"):
-			baby.set(i, mother[i])
-		else:
-			baby.set(i, father[i])
-	
-	mother.pregnancy.baby = baby.id
-	mother.pregnancy.duration = variables.pregduration
-	state.babies.append(baby)
 
 
 var statdata = {
@@ -1036,3 +997,176 @@ func fastif(value, result1, result2):
 	else:
 		return result2
 
+
+
+func addrelations(person, person2, value):
+	if person.professions.has("master") || person2.professions.has("master") || person == person2:
+		return
+	if person.relations.has(person2.id) == false:
+		person.relations[person2.id] = 0
+	if person2.relations.has(person.id) == false:
+		person2.relations[person.id] = 0
+	if person.relations[person2.id] > 500 && value > 0 && checkifrelatives(person, person2):
+		value = value/1.5
+	elif person.relations[person2.id] < -500 && value < 0 && checkifrelatives(person,person2):
+		value = value/1.5
+	person.relations[person2.id] += value
+	person.relations[person2.id] = clamp(person.relations[person2.id], -1000, 1000)
+	person2.relations[person.id] = person.relations[person2.id]
+	if person.relations[person2.id] < -200 && value < 0:
+		person.stress += rand_range(4,8)
+		person2.stress += rand_range(4,8)
+
+func connectrelatives(person1, person2, way):
+	if person1 == null || person2 == null:
+		return
+	if state.relativesdata.has(person1.id) == false:
+		createrelativesdata(person1)
+	if state.relativesdata.has(person2.id) == false:
+		createrelativesdata(person2)
+	if way in ['mother','father']:
+		var entry = state.relativesdata[person1.id]
+		entry.children.append(person2.id)
+		for i in entry.children:
+			if i != person2.id:
+				var entry2 = state.relativesdata[i]
+				connectrelatives(person2, entry2, 'sibling')
+		entry = state.relativesdata[person2.id]
+		entry[way] = person1.id
+		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
+			addrelations(person1, person2, 200)
+	elif way == 'sibling':
+		var entry = state.relativesdata[person1.id]
+		var entry2 = state.relativesdata[person2.id]
+		if entry.siblings.has(entry2.id) == false: entry.siblings.append(entry2.id)
+		if entry2.siblings.has(entry.id) == false: entry2.siblings.append(entry.id)
+		for i in entry.siblings + entry2.siblings:
+			if !state.relativesdata[i].siblings.has(entry.id) && i != entry.id:
+				state.relativesdata[i].siblings.append(entry.id)
+			if !state.relativesdata[i].siblings.has(entry2.id) && i != entry2.id:
+				state.relativesdata[i].siblings.append(entry2.id)
+			if !entry.siblings.has(i) && i != entry.id:
+				entry.siblings.append(i)
+			if !entry2.siblings.has(i) && i != entry2.id:
+				entry2.siblings.append(i)
+		
+		if typeof(person1) != TYPE_DICTIONARY && typeof(person2) != TYPE_DICTIONARY:
+			addrelations(person1, person2, 0)
+
+
+func createrelativesdata(person):
+	var newdata = {name = person.get_full_name(), id = person.id, race = person.race, sex = person.sex, mother = -1, father = -1, siblings = [], halfsiblings = [], children = []}
+	state.relativesdata[person.id] = newdata
+
+func clearrelativesdata(id):
+	var entry
+	if state.relativesdata.has(id):
+		entry = state.relativesdata[id]
+		
+		for i in ['mother','father']:
+			if state.relativesdata.has(entry[i]):
+				var entry2 = state.relativesdata[entry[i]]
+				entry2.children.erase(id)
+		for i in entry.siblings:
+			if state.relativesdata.has(i):
+				var entry2 = state.relativesdata[i]
+				entry2.siblings.erase(id)
+		
+	
+	state.relativesdata.erase(id)
+
+func checkifrelatives(person, person2):
+	var result = false
+	var data1 
+	var data2
+	if state.relativesdata.has(person.id):
+		data1 = state.relativesdata[person.id]
+	else:
+		createrelativesdata(person)
+		data1 = state.relativesdata[person.id]
+	if state.relativesdata.has(person2.id):
+		data2 = state.relativesdata[person2.id]
+	else:
+		createrelativesdata(person2)
+		data2 = state.relativesdata[person2.id]
+	for i in ['mother','father']:
+		if str(data1[i]) == str(data2.id) || str(data2[i]) == str(data1.id):
+			result = true
+	for i in [data1, data2]:
+		if i.siblings.has(data1.id) || i.siblings.has(data2.id):
+			result = true
+	
+	
+	return result
+
+func getrelativename(person, person2):
+	var result = null
+	var data1 
+	var data2
+	if state.relativesdata.has(person.id):
+		data1 = state.relativesdata[person.id]
+	else:
+		createrelativesdata(person)
+		data1 = state.relativesdata[person.id]
+	if state.relativesdata.has(person2.id):
+		data2 = state.relativesdata[person2.id]
+	else:
+		createrelativesdata(person2)
+		data2 = state.relativesdata[person2.id]
+	
+	#print(data1, data2)
+	for i in ['mother','father']:
+		if str(data1[i]) == str(data2.id):
+			result = '$parent'
+		elif str(data2[i]) == str(data1.id):
+			result = '$son'
+	for i in [data1, data2]:
+		if i.siblings.has(data1.id) || i.siblings.has(data2.id):
+			result = '$sibling'
+	if result != null:
+		result = person2.dictionary(result)
+	return result
+
+func impregnate(father, mother):
+	var check = true
+	if father.race != mother.race:
+		for i in [father, mother]:
+			var race = i.race
+			if race.find("Beastkin") >= 0:
+				race = 'Beastkin'
+			elif race.find('Halfkin') >= 0:
+				race = "Halfkin"
+			
+			if impregnation_compatibility.has(race) == false:
+				check = false
+	if check == false && mother.professions.has('breeder') == false:
+		return #incompatible races
+	
+	var baby = globals.characterdata.new()
+	if randf() >= 0.5:
+		baby.race = mother.race
+	else:
+		baby.race = father.race
+	if father.race.find('Beastkin') >= 0 && mother.race.find("Beastkin") < 0:
+		baby.race = father.race.replace("Beastkin", "Halfkin")
+	elif mother.race.find('Beastkin') >= 0 && father.race.find("Beastkin") < 0:
+		baby.race = mother.race.replace("Beastkin", "Halfkin")
+	baby.create(baby.race, 'random', 'teen')
+	for i in inheritedassets:
+		if randf() >= 0.5:
+			baby.set(i, father[i])
+		else:
+			baby.set(i, mother[i])
+	
+	for i in inheritedstats:
+		if randf() >= 0.5 || mother.professions.has("breeder"):
+			baby.set(i, mother[i])
+		else:
+			baby.set(i, father[i])
+	
+	mother.pregnancy.baby = baby.id
+	mother.pregnancy.duration = variables.pregduration
+	state.babies.append(baby)
+
+
+var punishcategories = ['spanking','whipping','nippleclap','clitclap','nosehook','mashshow','facesit','afacesit','grovel']
