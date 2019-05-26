@@ -53,6 +53,13 @@ var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] 
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'bodyshape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
 
+var sexicons = {
+	male = load("res://assets/images/sexicons/male.png"),
+	female = load("res://assets/images/sexicons/female.png"),
+	futa = load("res://assets/images/sexicons/futa.png"),
+}
+
+
 
 var statdata = {
 	base_exp = {

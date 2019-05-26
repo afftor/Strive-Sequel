@@ -658,19 +658,19 @@ func rebuildparticipantslist():
 		newnode.get_node("name").set_text(i.person.translate('[name]'))
 		newnode.get_node("name").connect("pressed",self,"slavedescription",[i])
 		newnode.set_meta("person", i)
-		#newnode.get_node("sex").set_texture(globals.sexicon[i.person.sex])
-		newnode.get_node("sex").set_tooltip(i.person.sex)
+		newnode.get_node("container/sex").set_texture(globals.sexicons[i.person.sex])
+		newnode.get_node("container/sex").set_tooltip(i.person.sex)
 		newnode.get_node('arousal').value = i.sens
 		newnode.get_node("portrait").texture = globals.loadimage(i.person.icon_image)
 		newnode.get_node("portrait").connect("mouse_entered",self,'showbody',[i])
 		newnode.get_node("portrait").connect("mouse_exited",self,'hidebody')
 		
 		if i.request != null:
-			newnode.get_node('desire').show()
-			newnode.get_node('desire').hint_tooltip = i.person.translate(requests[i.request])
+			newnode.get_node('container/desire').show()
+			newnode.get_node('container/desire').hint_tooltip = i.person.translate(requests[i.request])
 		
 		for k in i.effects:
-			newnode.get_node(k).visible = true
+			newnode.get_node('container/' + k).visible = true
 		
 #		if ai.has(i):
 #			newnode.get_node('name').set('custom_colors/font_color', Color(1,0.2,0.8))
@@ -834,9 +834,9 @@ pet = "[name] wishes to be touched.",
 petgive = '[name] wishes to touch.',
 fuck = '[name] wishes to be penetrated.',
 fuckgive = '[name] wishes to penetrate.',
-pussy = "[name] wishes to have $his pussy used.",
-penis = '[name] wishes to use $his penis.',
-anal = '[name] wishes to have $his ass used.',
+pussy = "[name] wishes to have [his] pussy used.",
+penis = '[name] wishes to use [his] penis.',
+anal = '[name] wishes to have [his] ass used.',
 punish = '[name] wishes to be punished.',
 humiliate = '[name] wishes to be humiliated.',
 group = '[name] wishes to have multiple partners.'
@@ -1826,7 +1826,7 @@ func endencounter():
 			i.person.lust = 0
 		else:
 			i.person.lust = i.sens/10
-		i.person.lastsexday = globals.resources.day
+		i.person.lastsexday = state.date
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
 		
 		for trait in i.actionshad.addtraits:

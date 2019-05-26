@@ -1,7 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/interactionpanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/panels/paneltransperent.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/sexicons/lust1.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/sexicons/rope.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/sexicons/sexcrazed.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/sexicons/drunk.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/sexicons/resist.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/sexicons/forced.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -241,10 +248,10 @@ value = 100.0
 fill_mode = 3
 
 [node name="name" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 59.0
-margin_top = 10.0
-margin_right = 142.0
-margin_bottom = 29.0
+margin_left = 57.6033
+margin_top = 12.7934
+margin_right = 140.603
+margin_bottom = 36.7934
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_styles/hover = SubResource( 4 )
@@ -260,87 +267,99 @@ text = "Name"
 clip_text = true
 align = 0
 
-[node name="sex" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 146.0
-margin_top = 11.0
-margin_right = 168.0
-margin_bottom = 31.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-expand = true
-stretch_mode = 6
-
 [node name="portrait" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 6.0
 margin_top = 5.0
 margin_right = 41.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 45, 45 )
 expand = true
 stretch_mode = 7
 
-[node name="desire" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+[node name="container" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+margin_left = 125.0
+margin_top = 3.0
+margin_right = 429.0
+margin_bottom = 43.0
+
+[node name="sex" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="desire" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 341.0
-margin_top = 1.0
-margin_right = 381.0
-margin_bottom = 41.0
+margin_left = 44.0
+margin_right = 84.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "lust"
 size_flags_horizontal = 2
 size_flags_vertical = 2
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="tied" type="TextureButton" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+[node name="tied" type="TextureButton" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 248.0
-margin_top = 7.0
-margin_right = 278.0
-margin_bottom = 37.0
+margin_left = 88.0
+margin_right = 128.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Tied"
+texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 4
 
-[node name="sexcrazed" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+[node name="sexcrazed" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 276.0
-margin_top = 7.0
-margin_right = 306.0
-margin_bottom = 37.0
+margin_left = 132.0
+margin_right = 172.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Sex-crazed"
 mouse_filter = 0
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
-[node name="drunk" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+[node name="drunk" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 301.0
-margin_top = 7.0
-margin_right = 331.0
-margin_bottom = 37.0
+margin_left = 176.0
+margin_right = 216.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Drunk"
 mouse_filter = 0
+texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="resist" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+[node name="resist" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 218.0
-margin_top = 7.0
-margin_right = 248.0
-margin_bottom = 37.0
+margin_left = 220.0
+margin_right = 260.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Resists"
 mouse_filter = 0
+texture = ExtResource( 8 )
 expand = true
 
-[node name="forced" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
+[node name="forced" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 188.0
-margin_top = 7.0
-margin_right = 218.0
-margin_bottom = 37.0
+margin_left = 264.0
+margin_right = 304.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Forced"
 mouse_filter = 0
+texture = ExtResource( 9 )
 expand = true
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -479,57 +498,59 @@ toggle_mode = true
 text = "Only watch"
 
 [node name="givetakepanel" type="Panel" parent="Panel"]
-margin_left = 1486.98
-margin_top = 23.3762
-margin_right = 1898.98
-margin_bottom = 420.376
+margin_left = 1423.0
+margin_top = 23.0
+margin_right = 1899.0
+margin_bottom = 420.0
 
 [node name="givercontainer" type="VBoxContainer" parent="Panel/givetakepanel"]
-margin_left = 16.0
-margin_top = 39.0
-margin_right = 196.0
-margin_bottom = 218.0
+margin_left = 20.0
+margin_top = 60.0
+margin_right = 200.0
+margin_bottom = 389.0
 
 [node name="Button" type="Button" parent="Panel/givetakepanel/givercontainer"]
 visible = false
 margin_right = 180.0
-margin_bottom = 39.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 180, 40 )
 toggle_mode = true
 text = "Name"
 
 [node name="receivercontainer" type="VBoxContainer" parent="Panel/givetakepanel"]
-margin_left = 216.0
-margin_top = 39.0
-margin_right = 396.0
-margin_bottom = 218.0
+margin_left = 270.0
+margin_top = 60.0
+margin_right = 450.0
+margin_bottom = 383.0
 
 [node name="Button" type="Button" parent="Panel/givetakepanel/receivercontainer"]
 visible = false
 margin_right = 180.0
-margin_bottom = 39.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 180, 40 )
 toggle_mode = true
 text = "Name"
 
 [node name="Label" type="Label" parent="Panel/givetakepanel"]
-margin_left = 61.0
-margin_top = 19.0
-margin_right = 159.0
-margin_bottom = 39.0
+margin_left = 60.0
+margin_top = 4.0
+margin_right = 158.0
+margin_bottom = 28.0
 text = "Actors"
 align = 1
 
 [node name="Label2" type="Label" parent="Panel/givetakepanel"]
-margin_left = 261.0
-margin_top = 19.0
-margin_right = 359.0
-margin_bottom = 39.0
+margin_left = 300.0
+margin_top = 4.0
+margin_right = 412.0
+margin_bottom = 28.0
 text = "Receivers"
 align = 1
 
 [node name="VSeparator" type="VSeparator" parent="Panel/givetakepanel"]
-margin_left = 205.0
+margin_left = 228.0
 margin_top = 9.0
-margin_right = 209.0
+margin_right = 232.0
 margin_bottom = 388.0
 
 [node name="TextureFrame" type="TextureRect" parent="."]
