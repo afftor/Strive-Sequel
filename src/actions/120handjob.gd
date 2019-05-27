@@ -38,9 +38,9 @@ func requirements():
 		valid = false
 	else:
 		for i in takers:
-#			if i.penis != null || i.person.penis == 'none':
+#			if i.penis != null || i.person.penis_size == '':
 #				valid = false
-			if i.person.penis == 'none':
+			if i.person.penis_size == '':
 				valid = false
 	return valid
 

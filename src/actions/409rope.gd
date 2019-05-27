@@ -63,7 +63,7 @@ func initiate():
 	temparray += ["[name1] {^wrap:tie}[s/1] a rope around [names2] body to restrict [his2] movements."]
 	text += temparray[randi()%temparray.size()]
 	for i in takers:
-		globals.state.removeStackableItem('rope')
+		#globals.state.removeStackableItem('rope')
 		i.effects.append('tied')
 	temparray.clear()
 	return text

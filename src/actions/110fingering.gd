@@ -31,7 +31,7 @@ func requirements():
 		if i.limbs == false:
 			valid = false
 	for i in takers:
-#		if i.vagina != null || i.person.vagina == 'none':
+#		if i.vagina != null || i.person.has_pussy == false:
 #			valid = false
 		if i.person.sex == 'male':
 			valid = false
@@ -65,7 +65,7 @@ func initiate():
 		text += "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [pussy2]"
 	else:
 		text += "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] fingers into [names2] [pussy2]"
-	if takers[0].person.vagvirgin == true:
+	if takers[0].person.vaginal_virgin == true:
 		text += ", {^probing inside:pumping [his1] fingers:stimulating the enterance} without breaking [his2] hymen[/s2]."
 	else:
 		text += ", {^driving:pumping:pushing} [his1] fingers in and out."

@@ -61,4 +61,3 @@ VScrollBar/styles/grabber_highlight = SubResource( 4 )
 VScrollBar/styles/grabber_pressed = SubResource( 5 )
 VScrollBar/styles/scroll = SubResource( 6 )
 VScrollBar/styles/scroll_focus = null
-

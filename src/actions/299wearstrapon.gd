@@ -25,7 +25,7 @@ func requirements():
 	if givers.size() < 1:
 		valid = false
 	for i in givers:
-		if i.person.penis != 'none' || i.strapon != null:
+		if i.person.penis_size != '' || i.strapon != null:
 			valid = false
 	return valid
 

@@ -21,7 +21,7 @@ func requirements():
 #	elif givers.size() + takers.size() == 2 && (!givers[0].penis in [takers[0].vagina, takers[0].anus] ):
 #		valid = false
 	for i in givers:
-		if i.person.penis == 'none' && i.strapon == null:
+		if i.person.penis_size == '' && i.strapon == null:
 			valid = false
 #		elif i.penis != null && givers.size() > 1:
 #			valid = false

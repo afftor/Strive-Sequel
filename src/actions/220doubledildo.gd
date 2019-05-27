@@ -29,10 +29,10 @@ func requirements():
 		valid = false
 	else:
 		for i in givers:
-			if i.person.vagina == 'none' :
+			if i.person.has_pussy == false :
 				valid = false
 		for i in takers:
-			if i.person.vagina == 'none' :
+			if i.person.has_pussy == false :
 				valid = false
 #			elif i.vagina != null:
 #				valid = false

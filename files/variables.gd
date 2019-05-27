@@ -5,6 +5,7 @@ var SecondsPerHour = 3
 var NoScenes = false
 var CombatAllyHpAlwaysVisible = true
 
+var timeforinteraction = 20
 
 enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6}; 
 enum {TR_CAST, TR_HIT, TR_DEF, TR_TURN_S, TR_TURN_F, TR_DEATH, TR_KILL, TR_DMG, TR_POSTDAMAGE, TR_HEAL, TR_COMBAT_S, TR_COMBAT_F, TR_SHIELD_DOWN};

@@ -39,7 +39,7 @@ func requirements():
 			if i.limbs == false:
 				valid = false
 		for i in takers:
-			if i.person.penis == 'none':
+			if i.person.penis_size == '':
 				valid = false
 	return valid
 

@@ -31,9 +31,9 @@ func requirements():
 		valid = false
 	else:
 		for i in takers:
-#			if i.penis != null || i.person.penis == 'none':
+#			if i.penis != null || i.person.penis_size == '':
 #				valid = false
-			if i.person.penis == 'none':
+			if i.person.penis_size == '':
 				valid = false
 		for i in givers:
 			if i.person.legs in ['horse','spider', 'snake']:
