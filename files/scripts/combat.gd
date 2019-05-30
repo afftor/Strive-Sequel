@@ -13,7 +13,7 @@ var instantanimation = null
 
 var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false, delayuntilnext = 0}
 
-var CombatAnimations = preload("res://core/CombatAnimations.gd").new()
+var CombatAnimations = preload("res://src/CombatAnimations.gd").new()
 
 var debug = false
 
@@ -317,7 +317,7 @@ func player_turn(pos):
 #rangetypes melee, any, backmelee
 
 func UpdateSkillTargets():
-	var skill = Skillsdata.skilllist[activeaction]
+	var skill = Skilldata.skilllist[activeaction]
 	var fighter = activecharacter
 	var targetgroups = skill.allowedtargets
 	var targetpattern = skill.targetpattern
@@ -404,7 +404,7 @@ func enemy_turn(pos):
 	Highlight(pos, 'enemy')
 	
 	for i in fighter.skills:
-		var skill = Skillsdata.skilllist[i]
+		var skill = Skilldata.skilllist[i]
 		if fighter.cooldowns.has(skill.code) || fighter.mana < skill.manacost:
 			continue
 		if !fighter.process_check(skill.reqs):
@@ -447,7 +447,7 @@ func enemy_turn(pos):
 		fighter.taunt = null
 		if playergroup[t_pos].hp > 0:
 			target = playergroup[t_pos];
-			castskill = Skillsdata.skilllist['attack'];
+			castskill = Skilldata.skilllist['attack'];
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
@@ -528,7 +528,7 @@ func FighterMouseOver(fighter):
 		else:
 			Input.set_custom_mouse_cursor(cursors.support)
 		var cur_targets = [];
-		cur_targets = CalculateTargets(Skillsdata.skilllist[activeaction], activecharacter, fighter); 
+		cur_targets = CalculateTargets(Skilldata.skilllist[activeaction], activecharacter, fighter); 
 		Stop_Target_Glow();
 		for c in cur_targets:
 			Target_eff_Glow(c.position);
@@ -609,7 +609,7 @@ func buildenemygroup(enemygroup):
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
-		enemygroup[i] = combatant.new()
+		enemygroup[i] = Slave.new()
 		enemygroup[i].createfromenemy(tempname)
 		enemygroup[i].combatgroup = 'enemy'
 		battlefield[i] = enemygroup[i]
@@ -645,7 +645,7 @@ func summon(montype, limit):
 	if pos.size() == 0: return;
 	var sum_pos = pos[randi() % pos.size()];
 	summons.push_back(sum_pos);
-	enemygroup[sum_pos] = combatant.new();
+	enemygroup[sum_pos] = Slave.new();
 	enemygroup[sum_pos].createfromenemy(montype);
 	enemygroup[sum_pos].combatgroup = 'enemy'
 	battlefield[sum_pos] = enemygroup[sum_pos];
@@ -674,7 +674,7 @@ func summon(montype, limit):
 func use_skill(skill_code, caster, target):
 	allowaction = false
 	
-	var skill = Skillsdata.skilllist[skill_code]
+	var skill = Skilldata.skilllist[skill_code]
 	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
 	caster.mana -= skill.manacost
@@ -1092,7 +1092,7 @@ func RebuildSkillPanel():
 	ClearSkillPanel()
 	for i in activecharacter.skills:
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
-		var skill = Skillsdata.skilllist[i]
+		var skill = Skilldata.skilllist[i]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
 		if skill.manacost <= 0:
@@ -1114,7 +1114,7 @@ func RebuildSkillPanel():
 
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
-	skill = Skillsdata.skilllist[skill]
+	skill = Skilldata.skilllist[skill]
 	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack');

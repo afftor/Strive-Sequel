@@ -1059,11 +1059,12 @@ func get_body_image():
 func random_icon():
 	var array = []
 	var racenames = race.split(" ")
-	for i in globals.dir_contents(globals.globalsettings.portrait_folder):
-		for k in racenames:
-			if i.findn(k) >= 0:
-				array.append(i)
-				continue
+#commented because runtame error, need not fixing here
+#	for i in globals.dir_contents(globals.globalsettings.portrait_folder):
+#		for k in racenames:
+#			if i.findn(k) >= 0:
+#				array.append(i)
+#				continue
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 

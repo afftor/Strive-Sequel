@@ -37,7 +37,7 @@ func clone():
 	return dict2inst(inst2dict(self))
 
 func createfromskill(s_code):
-	template = Skillsdata.skilllist[s_code]
+	template = Skilldata.skilllist[s_code]
 	code = s_code
 	damagetype = template.damagetype
 	skilltype = template.skilltype

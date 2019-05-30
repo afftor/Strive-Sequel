@@ -17,7 +17,7 @@ func levelup(arg):
 	var text = tr(character.namebase) + tr("LEVEUPTEXT")
 	for i in combatantdata.classlist[character.combatclass].learnableskills:
 		if combatantdata.classlist[character.combatclass].learnableskills[i] == character.level:
-			text += "\nNew skill unlocked: "+"[color=aqua]" + Skillsdata.skilllist[i].name + "[/color]!"
+			text += "\nNew skill unlocked: "+"[color=aqua]" + Skilldata.skilllist[i].name + "[/color]!"
 	$Label.bbcode_text = text
 	
 	var array = character.get_lvup_traits()
