@@ -11,7 +11,7 @@ const takerpart = 'vagina'
 const virginloss = true
 const giverconsent = 'basic'
 const takerconsent = 'any'
-const givertags = ['penis']
+const givertags = ['penis','group']
 const takertags = ['vagina','penetration', 'group']
 
 func requirements():
@@ -42,30 +42,14 @@ func getongoingdescription(givers, takers):
 
 
 func givereffect(member):
-	var result
-	var effects = {sens = 220, tags = ['group']}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.sens >= 200) && member.person.traits.has("Fickle"):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	if member.person.penis == 'none':
+	var effects = {sens = 220, horny = 15}
+	if member.person.penis_size == '':
 		effects.sens /= 1.2
-	return [result, effects]
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {sens = 240, tags = ['group']}
-	if (member.consent == true || member.person.traits.find("Likes it rough") >= 0) && member.sens >= 400 && member.lube >= 3  && member.person.traits.has("Fickle"):
-		result = 'good'
-	elif (member.consent == true || member.person.traits.find("Likes it rough") >= 0):
-		result = 'average'
-	else:
-		result = 'bad'
-	if member.lube < 3:
-		effects.pain = 2
-	return [result, effects]
+	var effects = {sens = 240, horny = 5}
+	return effects
 
 func initiate():
 	var text = ''

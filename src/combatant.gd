@@ -1060,3 +1060,4 @@ func random_icon():
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 
+var masternoun = 'Master'

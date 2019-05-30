@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/interactionpanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/panels/paneltransperent.png" type="Texture" id=2]
@@ -7,8 +7,11 @@
 [ext_resource path="res://assets/images/sexicons/rope.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/sexicons/sexcrazed.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/sexicons/drunk.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/sexicons/resist.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/sexicons/forced.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/sexicons/forced.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/sexicons/sens3.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/sexicons/sens5.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/iconsitems/bag.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/sexicons/time.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -59,6 +62,7 @@ margin_left = 7.0
 margin_top = 3.0
 margin_right = 25.0
 margin_bottom = 127.0
+rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_styles/panel = SubResource( 1 )
@@ -117,12 +121,11 @@ bbcode_text = "Text2"
 text = "Text2"
 
 [node name="GridContainer" type="ScrollContainer" parent="Panel"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 582.0
 margin_top = 16.0
-margin_right = -439.0
+margin_right = -494.0
 margin_bottom = -478.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -136,8 +139,8 @@ columns = 2
 [node name="Button" type="Button" parent="Panel/GridContainer/GridContainer"]
 visible = false
 margin_right = 200.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 200, 20 )
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Caress"
@@ -149,6 +152,7 @@ visible = false
 margin_left = 160.0
 margin_right = 200.0
 margin_bottom = 39.0
+hint_tooltip = "Continue (continuing actions are only half as effective)"
 size_flags_horizontal = 2
 size_flags_vertical = 2
 toggle_mode = true
@@ -164,7 +168,6 @@ custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
 
 [node name="GridContainer2" type="ScrollContainer" parent="Panel"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 653.0
@@ -181,11 +184,10 @@ custom_constants/hseparation = -2
 columns = 3
 
 [node name="Button" type="Button" parent="Panel/GridContainer2/GridContainer"]
-editor/display_folded = true
 visible = false
-margin_right = 150.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 150, 20 )
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Caress"
@@ -214,38 +216,28 @@ text = "A"
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -1900.99
-margin_top = 13.1559
-margin_right = -1471.99
-margin_bottom = 413.156
+margin_left = -1900.56
+margin_top = 11.7454
+margin_right = -1403.56
+margin_bottom = 411.745
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-size_flags_horizontal = 0
+margin_right = 497.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_constants/separation = -1
 
 [node name="Panel" type="Panel" parent="Panel/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 425.0
+margin_right = 497.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 425, 45 )
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 2
 custom_styles/panel = SubResource( 3 )
-
-[node name="arousal" type="TextureProgress" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 380.0
-margin_top = 2.0
-margin_right = 480.0
-margin_bottom = 102.0
-rect_scale = Vector2( 0.4, 0.4 )
-hint_tooltip = "Arousal"
-max_value = 1000.0
-value = 100.0
-fill_mode = 3
 
 [node name="name" type="Button" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 57.6033
@@ -279,7 +271,7 @@ stretch_mode = 7
 [node name="container" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 125.0
 margin_top = 3.0
-margin_right = 429.0
+margin_right = 489.0
 margin_bottom = 43.0
 
 [node name="sex" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
@@ -294,8 +286,8 @@ stretch_mode = 6
 
 [node name="desire" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 44.0
-margin_right = 84.0
+margin_left = 52.0
+margin_right = 92.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "lust"
@@ -307,8 +299,8 @@ stretch_mode = 6
 
 [node name="tied" type="TextureButton" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 88.0
-margin_right = 128.0
+margin_left = 104.0
+margin_right = 144.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Tied"
@@ -316,13 +308,13 @@ texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 4
 
-[node name="sexcrazed" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
+[node name="horny" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 132.0
-margin_right = 172.0
+margin_left = 148.0
+margin_right = 188.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Sex-crazed"
+hint_tooltip = "Horny: Arousal gain is doubled"
 mouse_filter = 0
 texture = ExtResource( 6 )
 expand = true
@@ -330,8 +322,8 @@ stretch_mode = 5
 
 [node name="drunk" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 176.0
-margin_right = 216.0
+margin_left = 192.0
+margin_right = 232.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Drunk"
@@ -340,26 +332,36 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="resist" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
-visible = false
-margin_left = 220.0
-margin_right = 260.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Resists"
-mouse_filter = 0
-texture = ExtResource( 8 )
-expand = true
-
 [node name="forced" type="TextureRect" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
 visible = false
-margin_left = 264.0
-margin_right = 304.0
+margin_left = 236.0
+margin_right = 276.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Forced"
 mouse_filter = 0
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
+expand = true
+
+[node name="arousal" type="TextureProgress" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
+margin_left = 280.0
+margin_right = 320.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Arousal"
+max_value = 1000.0
+value = 100.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 10 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="items" type="TextureButton" parent="Panel/ScrollContainer/VBoxContainer/Panel/container"]
+margin_left = 324.0
+margin_right = 364.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 0 )
+texture_normal = ExtResource( 11 )
 expand = true
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Panel"]
@@ -480,19 +482,21 @@ margin_bottom = 609.0
 [node name="blacklist" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = -59.0
-margin_right = 176.0
-margin_bottom = -20.0
+margin_left = 22.4415
+margin_top = -63.0812
+margin_right = 222.442
+margin_bottom = -18.0812
+rect_min_size = Vector2( 200, 45 )
 text = "Action visibility"
 
 [node name="aiallow" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 187.0
-margin_top = -59.0
-margin_right = 346.0
-margin_bottom = -20.0
+margin_left = 242.442
+margin_top = -63.0812
+margin_right = 442.442
+margin_bottom = -18.0812
+rect_min_size = Vector2( 200, 45 )
 hint_tooltip = "When toggled, main character won't be selected for actions by other participants."
 toggle_mode = true
 text = "Only watch"
@@ -554,7 +558,6 @@ margin_right = 232.0
 margin_bottom = 388.0
 
 [node name="TextureFrame" type="TextureRect" parent="."]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -565,6 +568,7 @@ margin_right = -348.0
 margin_bottom = 107.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
@@ -589,27 +593,27 @@ size_flags_vertical = 2
 [node name="Panel" type="Panel" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 521.0
-margin_top = 286.0
-margin_right = -911.0
-margin_bottom = -544.0
+margin_left = 517.0
+margin_top = 90.0
+margin_right = -611.0
+margin_bottom = -352.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel"]
 margin_left = 53.0
 margin_top = 33.0
-margin_right = 553.0
-margin_bottom = 264.0
+margin_right = 907.0
+margin_bottom = 605.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 bbcode_enabled = true
 
 [node name="finishbutton" type="Button" parent="Control/Panel"]
-margin_left = 231.0
-margin_top = 289.0
-margin_right = 384.0
-margin_bottom = 328.0
+margin_left = 395.044
+margin_top = 677.524
+margin_right = 548.044
+margin_bottom = 716.524
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Finish"

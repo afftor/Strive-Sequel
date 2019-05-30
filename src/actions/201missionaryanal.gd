@@ -18,16 +18,9 @@ func requirements():
 	var valid = true
 	if takers.size() != 1 || givers.size() != 1:
 		valid = false
-#	elif givers.size() + takers.size() == 2 && (!givers[0].penis in [takers[0].vagina, takers[0].anus] ):
-#		valid = false
 	for i in givers:
 		if i.person.penis_size == '' && i.strapon == null:
 			valid = false
-#		elif i.penis != null && givers.size() > 1:
-#			valid = false
-#	for i in takers:
-#		if i.anus != null && takers.size() > 1:
-#			valid = false
 	
 	return valid
 
@@ -39,32 +32,15 @@ func getongoingname(givers, takers):
 	return "[name1] fuck[s/1] [names2] ass[/es2] in the missionary position."
 
 func givereffect(member):
-	var result
-	var effects = {sens = 200}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.sens >= 200):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	if member.person.penis == 'none':
+	var effects = {sens = 200, horny = 20}
+	if member.person.penis_size == '':
 		effects.sens /= 1.2
-	return [result, effects]
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {sens = 190}
+	var effects = {sens = 190, horny = 5}
 	member.person.metrics.anal += 1
-	if (member.consent == true || member.person.traits.find("Likes it rough") >= 0) && member.sens >= 300 && member.lube >= 5:
-		result = 'good'
-	elif (member.consent == true || member.person.traits.find("Likes it rough") >= 0):
-		result = 'average'
-	else:
-		result = 'bad'
-	if member.lube < 5:
-		effects.pain = 3
-	
-	return [result, effects]
+	return effects
 
 #orientation of givers/takers
 const rotation1 = Quat(0.5,0.0,0.0,0.0)

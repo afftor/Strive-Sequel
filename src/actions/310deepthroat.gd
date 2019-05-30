@@ -12,7 +12,7 @@ const virginloss = false
 const giverconsent = 'basic'
 const takerconsent = 'any'
 const givertags = ['penis']
-const takertags = ['mouth','penetration']
+const takertags = ['mouth','penetration','pain']
 
 func getname(state = null):
 	return "Deepthroat"
@@ -45,28 +45,12 @@ func requirements():
 	return valid
 
 func givereffect(member):
-	var result
-	var effects = {sens = 220}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 15):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	return [result, effects]
+	var effects = {sens = 220, horny = 15}
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {pain = 3, tags = ['punish','pervert'], obed = rand_range(10,15), stress = rand_range(3,6)}
-	if (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 30) || member.person.traits.find('Masochist') >= 0:
-		result = 'good'
-		effects.sens = 150
-	elif member.person.traits.find("Likes it rough") >= 0 || member.sens >= 700:
-		result = 'average'
-		effects.sens = 100
-	else:
-		result = 'bad'
-	return [result, effects]
+	var effects = {sens = 80, horny = 10}
+	return effects
 
 func initiate():
 	var temparray = []

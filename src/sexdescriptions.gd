@@ -1060,7 +1060,7 @@ func penis(group):
 			array1 += ['flared','long']
 			array2 += ['horse cock','horse dick']
 		#other descriptors
-		if mp.penis_size== 'none':
+		if mp.penis_size == '':
 			array2 = ['strap-on','shaft'] if group.size() == 1 else ['strap-ons','shafts']
 		elif mp.sex == 'male':
 			array2 += ['manhood'] if group.size() == 1 else ['manhoods']
@@ -1097,7 +1097,7 @@ func pussy(group):
 		array2 = ["vagina","pussy","cunt"] if group.size() == 1 else ["vaginas","pussies","cunts"]
 		var mp = i.person
 		#body
-		if i.lube > 5:
+		if i.horny >= 100:
 			array1 += ["wet","slick","dripping"]
 		if mp.has_womb == true && mp.pregnancy.duration == 0:
 			array1 += ["fertile"]

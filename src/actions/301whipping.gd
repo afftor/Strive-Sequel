@@ -31,28 +31,12 @@ func requirements():
 	return valid
 
 func givereffect(member):
-	var result
-	var effects = {sens = 20}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 10):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	return [result, effects]
+	var effects = {sens = 20, horny = 15}
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {pain = 2, tags = ['punish'], obed = rand_range(14,22), stress = rand_range(5,10)}
-	if (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 30) || member.person.traits.find('Masochist') >= 0:
-		result = 'good'
-		effects.sens = 100
-	elif member.person.traits.find("Likes it rough") >= 0 || member.sens >= 700:
-		result = 'average'
-		effects.sens = 50
-	else:
-		result = 'bad'
-	return [result, effects]
+	var effects = {sens = 120, horny = 15}
+	return effects
 
 func initiate():
 	var temparray = []

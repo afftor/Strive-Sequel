@@ -35,28 +35,14 @@ func requirements():
 	return valid
 
 func givereffect(member):
-	var result
-	var effects = {lust = 0, tags = ['pervert']}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 10):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	return [result, effects]
+	var effects = {}
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {lust = 25, sens = 35, tags = ['pervert']}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 10):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
+	var effects = {sens = 35, tags = ['pervert'], horny = 15}
 	if member.person.sex == 'male':
 		effects.sens /= 1.5
-	return [result, effects]
+	return effects
 
 func initiate():
 	var text = ''

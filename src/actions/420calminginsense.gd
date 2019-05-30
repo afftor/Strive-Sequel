@@ -34,7 +34,7 @@ func givereffect(member):
 		result = 'average'
 	else:
 		result = 'bad'
-	return [result, effects]
+	return effects
 
 func takereffect(member):
 	var result
@@ -45,7 +45,7 @@ func takereffect(member):
 		result = 'average'
 	else:
 		result = 'bad'
-	return [result, effects]
+	return effects
 
 func initiate():
 	var text = ''

@@ -130,4 +130,36 @@ var upgradelist = {
 			}
 		}
 	},
+	master_bedroom = {
+		code = 'master_bedroom',
+		name = '',
+		positionorder = 3,
+		descript = '',
+		levels = {
+			1:{
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS"),
+				taskprogress = 200,
+				#townnode = "farm",
+				cost = {wood = 30, cloth = 20},
+			},
+			2:{
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS"),
+				taskprogress = 350,
+				#townnode = "farm",
+				cost = {wood = 50, clothsilk = 15},
+			},
+			3:{
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+				bonusdescript = tr("UPGRADEMASTERBEDROOMBONUS"),
+				taskprogress = 500,
+				#townnode = "farm",
+				cost = {wood = 100, clothsilk = 35},
+			}
+		}
+	},
 }
