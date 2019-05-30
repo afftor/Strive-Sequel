@@ -28,6 +28,12 @@ var combat_skill_panel = {}
 var traits = []
 var effects = []
 
+var static_effects = []
+var temp_effects = []  
+var triggered_effects = []
+var area_effects = [] 
+var own_area_effects = [] 
+
 var obed_mods = []
 var fear_mods = []
 var lust_mods = []
@@ -57,6 +63,7 @@ var evasion = 0
 var resists = 0
 var armor = 0
 var mdef = 0
+var position
 
 #progress stats
 var physics := 0.0
@@ -1052,12 +1059,283 @@ func get_body_image():
 func random_icon():
 	var array = []
 	var racenames = race.split(" ")
-	for i in globals.dir_contents(globals.globalsettings.portrait_folder):
-		for k in racenames:
-			if i.findn(k) >= 0:
-				array.append(i)
-				continue
+#commented because runtame error, need not fixing here
+#	for i in globals.dir_contents(globals.globalsettings.portrait_folder):
+#		for k in racenames:
+#			if i.findn(k) >= 0:
+#				array.append(i)
+#				continue
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 
 var masternoun = 'Master'
+
+#effects related part from displaced
+#if you are planning to use more functions from it (trait-related, eqip etc) - keep track of actual code
+func apply_atomic(template): 
+	match template.type:
+		'damage':
+			#deal_damage(template.value, template.source)
+			pass
+		'heal':
+			#heal(template.value)
+			pass
+		'mana':
+			#mana_update(template.value)
+			pass
+		'stat_set', 'stat_set_revert':
+			template.buffer = get(template.stat)
+			set(template.stat, template.value)
+			pass
+		'stat_add':
+			set(template.stat, get(template.stat) + template.value)
+			pass
+		'stat_mul':
+			set(template.stat, get(template.stat) * template.value)
+			pass
+		'signal':
+			#stub for signal emitting
+			globals.emit_signal(template.value)
+		'remove_effect': 
+			remove_temp_effect_tag(template.value)
+			pass
+
+
+func remove_atomic(template):
+	match template.type:
+		'stat_set_revert':
+			set(template.stat, template.buffer)
+			pass
+		'stat_add':
+			set(template.stat, get(template.stat) - template.value)
+			pass
+		'stat_mul':
+			set(template.stat, get(template.stat) / template.value)
+			pass
+	pass
+
+func find_temp_effect(eff_code):
+	var res = -1
+	var tres = 9999999
+	var nm = 0
+	for i in range(temp_effects.size()):
+		var eff = effects_pool.get_effect_by_id(temp_effects[i])
+		if eff.template.name != eff_code:continue
+		nm += 1
+		if eff.remains < tres: 
+			tres = eff.remains
+			res = i
+	return {num = nm, index = res}
+
+func find_temp_effect_tag(eff_tag):
+	var res = []
+	for e in temp_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.tags.has(eff_tag):
+			res.push_back(e)
+		return res
+
+func find_eff_by_trait(trait_code):
+	var res = []
+	for e in (static_effects + own_area_effects + triggered_effects + temp_effects):
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.self_args.has('trait'):
+			if eff.self_args.trait == trait_code:
+				res.push_back(e)
+	return res
+
+func find_eff_by_item(item_id):
+	var res = []
+	for e in (static_effects + own_area_effects + triggered_effects + temp_effects):
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.self_args.has('item'):
+			if eff.self_args.item == item_id:
+				res.push_back(e)
+	return res
+
+func apply_temp_effect(eff_id):
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	var eff_n = eff.template.name
+	var tmp = find_temp_effect(eff_n)
+	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
+		temp_effects.push_back(eff_id)
+		#eff.applied_pos = position
+		eff.applied_char = id
+		eff.apply()
+	else:
+		var eff_a = effects_pool.get_effect_by_id(temp_effects[tmp.index])
+		match eff_a.template.type:
+			'temp_s':eff_a.reset_duration()
+			'temp_p':eff_a.reset_duration() #i'm not sure if this case should exist or if it should be treated like this
+			'temp_u':eff_a.upgrade() #i'm also not sure about this collision treatement, but for this i'm sure that upgradeable effects should have stack 1
+		eff.remove()
+
+
+func add_area_effect(eff_id):
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	own_area_effects.push_back(eff_id)
+	eff.apply()
+
+func remove_area_effect(eff_id):
+	own_area_effects.erase(eff_id)
+
+func add_ext_area_effect(eff_id):
+	if own_area_effects.has(eff_id): return
+	area_effects.push_back(eff_id)
+
+func remove_ext_area_effect(eff_id):
+	if own_area_effects.has(eff_id): return
+	area_effects.erase(eff_id)
+
+func set_position(new_pos):
+	if new_pos == position: return
+	#remove ext area effects
+	for e in area_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove_pos(position)
+	
+	position = new_pos
+	#reapply own area effects
+	for e in own_area_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.apply()
+	#reapply ext area effects
+	for e in area_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.apply_pos(position)
+
+
+func apply_effect(eff_id):
+	var obj = effects_pool.get_effect_by_id(eff_id)
+	match obj.template.type:
+		'static': 
+			static_effects.push_back(eff_id)
+			#obj.applied_pos = position
+			obj.applied_char = id
+			obj.apply()
+		'trigger': 
+			triggered_effects.push_back(eff_id)
+			#obj.applied_pos = position
+			obj.applied_char = id
+			obj.apply()
+		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
+		'area': add_area_effect(eff_id)
+		'oneshot': 
+			obj.applied_obj = self
+			obj.apply()
+
+
+func remove_effect(eff_id):
+	var obj = effects_pool.get_effect_by_id(eff_id)
+	match obj.template.type:
+		'static': static_effects.erase(eff_id)
+		'trigger': triggered_effects.erase(eff_id)
+		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
+		'area': remove_area_effect(eff_id)
+	pass
+
+func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
+	var eff = effects_pool.get_effect_by_id(eff_id)
+	eff.remove()
+	pass
+
+func remove_all_temp_effects():
+	for e in temp_effects:
+		var obj = effects_pool.get_effect_by_id(e)
+		obj.call_deferred('remove')
+
+func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, like heal or dispel
+	var tmp = find_temp_effect_tag(eff_tag)
+	if tmp.size() == 0: return
+	var i = globals.rng.randi_range(0, tmp.size()-1)
+	remove_temp_effect(tmp[i])
+	pass
+
+func clean_effects():#clean effects before deleting character
+	for e in temp_effects + static_effects + triggered_effects + own_area_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	pass
+
+func process_event(ev):
+	for e in temp_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.process_event(ev)
+	for e in triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill: continue
+		var tr = eff.process_event(ev) #stub for more direct controling of temps removal
+	pass
+
+func can_act():
+	var res = true
+	for e in static_effects + temp_effects:
+		var obj = effects_pool.get_effect_by_id(e)
+		if obj.template.has('disable'):
+			res = false
+	return res
+
+func calculate_number_from_string_array(array):
+	var endvalue = 0
+	var firstrun = true
+	for i in array:
+		var modvalue = i
+		if i.find('caster') >= 0:
+			i = i.split('.')
+			if i[0] == 'caster':
+				#modvalue = str(self[i[1]])
+				modvalue = str(get(i[1]))
+			elif i[0] == 'target':
+				return ""; #nonexistent yet case of skill value being based completely on target
+		if !modvalue[0].is_valid_float():
+			if modvalue[0] == '-' && firstrun == true:
+				endvalue += float(modvalue)
+			else:
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
+		else:
+			endvalue += float(modvalue)
+		firstrun = false
+	return endvalue
+
+func process_check(check):
+	if typeof(check) == TYPE_ARRAY:
+		var res = true
+		for ch in check:
+			res = res and input_handler.requirementcombatantcheck(ch, self)
+		return res
+	else: return input_handler.requirementcombatantcheck(check, self)
+	pass
+
+func get_all_buffs():
+	var res = {}
+	for e in temp_effects + static_effects + triggered_effects:
+		var eff = effects_pool.get_effect_by_id(e)
+		#eff.calculate_args()
+		for b in eff.buffs:
+			b.calculate_args()
+			if !res.has(b.template_name):
+				if !(b.template.has('limit') and b.template.limit == 0):
+					res[b.template_name] = []
+					res[b.template_name].push_back(b)
+			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+				res[b.template_name].push_back(b)
+	for e in area_effects:
+		var eff:area_effect = effects_pool.get_effect_by_id(e)
+		if !eff.is_applied_to_pos(position) :
+			continue
+		#eff.calculate_args()
+		for b in eff.buffs:
+			b.calculate_args()
+			if !res.has(b.template_name):
+				if !(b.template.has('limit') and b.template.limit == 0):
+					res[b.template_name] = []
+					res[b.template_name].push_back(b)
+			elif (!b.template.has('limit')) or (res[b.template_name].size() < b.template.limit):
+				res[b.template_name].push_back(b)
+	var tmp = []
+	for b_a in res.values():
+		for b in b_a: tmp.push_back(b)
+	return tmp
+
+
+

@@ -10,14 +10,69 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "Buff",
+"language": "GDScript",
+"path": "res://files/scripts/buff.gd"
+}, {
+"base": "Reference",
 "class": "Item",
 "language": "GDScript",
 "path": "res://src/ItemClass.gd"
 }, {
 "base": "Reference",
+"class": "S_Skill",
+"language": "GDScript",
+"path": "res://files/scripts/short_skill.gd"
+}, {
+"base": "Reference",
 "class": "Slave",
 "language": "GDScript",
 "path": "res://src/combatant.gd"
+}, {
+"base": "base_effect",
+"class": "area_effect",
+"language": "GDScript",
+"path": "res://files/scripts/area_effect.gd"
+}, {
+"base": "Reference",
+"class": "atomic_effect",
+"language": "GDScript",
+"path": "res://files/scripts/atomic_effect.gd"
+}, {
+"base": "Reference",
+"class": "base_effect",
+"language": "GDScript",
+"path": "res://files/scripts/base_effect.gd"
+}, {
+"base": "base_effect",
+"class": "oneshot_effect",
+"language": "GDScript",
+"path": "res://files/scripts/oneshot_effect.gd"
+}, {
+"base": "base_effect",
+"class": "static_effect",
+"language": "GDScript",
+"path": "res://files/scripts/static_effect.gd"
+}, {
+"base": "base_effect",
+"class": "temp_e_progress",
+"language": "GDScript",
+"path": "res://files/scripts/temp_effect_progress.gd"
+}, {
+"base": "base_effect",
+"class": "temp_e_simple",
+"language": "GDScript",
+"path": "res://files/scripts/temp_effect_simple.gd"
+}, {
+"base": "base_effect",
+"class": "temp_e_upgrade",
+"language": "GDScript",
+"path": "res://files/scripts/temp_effect_upgrade.gd"
+}, {
+"base": "base_effect",
+"class": "triggered_effect",
+"language": "GDScript",
+"path": "res://files/scripts/triggered_effect.gd"
 }, {
 "base": "Reference",
 "class": "worker",
@@ -25,8 +80,19 @@ _global_script_classes=[ {
 "path": "res://files/scripts/worker.gd"
 } ]
 _global_script_class_icons={
+"Buff": "",
 "Item": "",
+"S_Skill": "",
 "Slave": "",
+"area_effect": "",
+"atomic_effect": "",
+"base_effect": "",
+"oneshot_effect": "",
+"static_effect": "",
+"temp_e_progress": "",
+"temp_e_simple": "",
+"temp_e_upgrade": "",
+"triggered_effect": "",
 "worker": ""
 }
 
@@ -57,6 +123,7 @@ input_handler="*res://files/input_handler.gd"
 races="*res://assets/data/races.gd"
 Items="*res://assets/data/Items.gd"
 world_gen="*res://src/world_gen.gd"
+effects_pool="*res://src/effects_pool.gd"
 
 [debug]
 
