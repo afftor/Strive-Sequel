@@ -32,7 +32,7 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	if givers[0].strapon != null && takers[0].person.penis != 'none':
+	if givers[0].strapon != null && takers[0].person.penis_size != '':
 		return "Lotus Pegging"
 	else:
 		return "Lotus Anal"
@@ -41,32 +41,16 @@ func getongoingname(givers, takers):
 	return "[name1] fuck[s/1] [names2] ass[/es2] in the lotus position."
 
 func givereffect(member):
-	var result
-	var effects = {sens = 200}
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.sens >= 200):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	if member.person.penis == 'none':
+	var effects = {sens = 200, horny = 20}
+	if member.person.penis_size == '':
 		effects.sens /= 1.2
-	return [result, effects]
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {sens = 180}
+	var effects = {sens = 180, horny = 5}
 	member.person.metrics.anal += 1
-	if (member.consent == true || member.person.traits.find("Likes it rough") >= 0) && member.sens >= 400 && member.lube >= 5:
-		result = 'good'
-	elif (member.consent == true || member.person.traits.find("Likes it rough") >= 0):
-		result = 'average'
-	else:
-		result = 'bad'
-	if member.lube < 5:
-		effects.pain = 3
 	
-	return [result, effects]
+	return effects
 
 #orientation of givers/takers
 const rotation1 = Quat(0.0,0.0,0.0,0.0)

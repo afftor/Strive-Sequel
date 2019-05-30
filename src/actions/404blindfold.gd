@@ -44,7 +44,7 @@ func givereffect(member):
 		result = 'average'
 	else:
 		result = 'bad'
-	return [result, effects]
+	return effects
 
 #Disabling until something is decided about tools
 func takereffect(member):
@@ -56,7 +56,7 @@ func takereffect(member):
 		result = 'average'
 	else:
 		result = 'bad'
-	return [result, effects]
+	return effects
 
 func initiate():
 	var text = ''

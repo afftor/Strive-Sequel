@@ -1068,6 +1068,8 @@ func random_icon():
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 
+var masternoun = 'Master'
+
 #effects related part from displaced
 #if you are planning to use more functions from it (trait-related, eqip etc) - keep track of actual code
 func apply_atomic(template): 
@@ -1334,3 +1336,6 @@ func get_all_buffs():
 	for b_a in res.values():
 		for b in b_a: tmp.push_back(b)
 	return tmp
+
+
+

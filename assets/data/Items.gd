@@ -936,6 +936,22 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
+		interaction_effect = 'aphrodisiac',
+	},
+	sensetivity_drug = {#maxes out lust, 1 per day
+		code = 'sensetivity_drug',
+		name = "",
+		descript = "",
+		type = 'usable',
+		crafttype = 'basic',
+		slots = [],
+		price = 75,
+		icon = load("res://assets/images/iconsitems/PotionLesser.png"),
+		unlockreqs = [],
+		reqs = [],
+		effects = [],
+		tags = [],
+		interaction_effect = 'sensetivity_drug',
 	},
 	alcohol = {#recovers fatigue at small health and fear reduction
 		code = 'alcohol',
@@ -950,6 +966,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
+		interaction_effect = 'alcohol',
 	},
 	tamedrug = {# + 1-2 tame factor, - 1-2 brave factor, -1 wit factor (permanent)
 		code = 'tamedrug',
@@ -1096,7 +1113,7 @@ var recipes = {
 	},
 	alcohol = {
 		code = 'alcohol',
-		materials = {fleawarts = 5, salvia = 3},
+		materials = {wheat = 6, salvia = 1},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
@@ -1104,7 +1121,7 @@ var recipes = {
 		resultitemtype = 'item', 
 		resultitem = 'alcohol', 
 		workunits = 25,
-		worktype = 'alchemy'
+		worktype = 'cooking'
 	},
 	tamedrug = {
 		code = 'tamedrug',

@@ -50,7 +50,7 @@ var system_messages = {
 var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
 
 var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] #the rest is only for same race
-var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'bodyshape']
+var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
 
 var sexicons = {
@@ -843,8 +843,6 @@ func ItemSelect(targetscript, type, function, requirements = true):
 
 func CloseSelection(panel):
 	panel.hide()
-
-
 
 func calculatepercent(value1, value2):
 	return value1*100/max(value2,1)

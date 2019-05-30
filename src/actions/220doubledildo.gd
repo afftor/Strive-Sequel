@@ -39,29 +39,14 @@ func requirements():
 	return valid
 
 func givereffect(member):
-	var result
-	var effects = {sens = 200}
+	var effects = {sens = 200, horny = 10}
 	member.person.metrics.vag += 1
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.sens >= 400):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	return [result, effects]
+	return effects
 
 func takereffect(member):
-	var result
-	var effects = {sens = 200}
+	var effects = {sens = 200, horny = 10}
 	member.person.metrics.vag += 1
-	member.lube()
-	if member.consent == true || (member.person.traits.find("Likes it rough") >= 0 && member.sens >= 400):
-		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
-		result = 'average'
-	else:
-		result = 'bad'
-	return [result, effects]
+	return effects
 
 func initiate():
 	var text = ''
