@@ -29,8 +29,10 @@ func _ready():
 	$VBoxContainer/race.connect("pressed", self, "select_race")
 	$VBoxContainer/age.connect("item_selected", self, "select_age")
 	$VBoxContainer/sex.connect("item_selected", self, "select_sex")
+	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
+	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
 	
 	for i in ['name','surname','nickname']:
 		$VBoxContainer.get_node(i).connect("text_changed", self, 'text_changed', [i])
@@ -44,7 +46,7 @@ func _ready():
 	for i in ['vaginal_virgin','anal_virgin','penis_virgin']:
 		$bodyparts2.get_node(i).connect("pressed", self, "select_checkbox", [i, $bodyparts2.get_node(i)])
 	
-	
+	open()
 
 func text_changed(text, value):
 	if text != '':
@@ -91,9 +93,6 @@ func open(type = 'slave'):
 			total_stat_points = variables.slave_starting_stats
 	
 	rebuild_slave()
-	
-	
-	
 
 func rebuild_slave():
 	var race = person.race
@@ -173,6 +172,11 @@ func RebuildStatsContainer():
 				preservedsettings[i.code] = 5
 	
 	var counter = total_stat_points
+	
+	if person.sex_traits.size() == 0:
+		$VBoxContainer/sextrait.text = "Select Sex Trait"
+	else:
+		$VBoxContainer/sextrait.text = Traitdata.sex_traits[person.sex_traits[0]].name
 	
 	
 	for i in array:
@@ -331,3 +335,26 @@ func finish_character():
 	input_handler.emit_signal("CharacterCreated")
 	
 	self.hide()
+
+func open_sex_traits():
+	$TraitSelection.show()
+	globals.ClearContainer($TraitSelection/ScrollContainer/VBoxContainer)
+	for i in Traitdata.sex_traits.values():
+		if i.starting == false || person.checkreqs(i.acquire_reqs) == false:
+			continue
+		var newbutton = globals.DuplicateContainerTemplate($TraitSelection/ScrollContainer/VBoxContainer)
+		newbutton.text = i.name
+		if person.sex_traits.has(i.code):
+			newbutton.pressed = true
+		newbutton.connect("pressed", self, "select_sex_trait", [i])
+		globals.connecttexttooltip(newbutton, person.translate(i.descript))
+
+func select_sex_trait(trait):
+	if person.sex_traits.has(trait.code):
+		person.sex_traits.erase(trait.code)
+	else:
+		person.sex_traits.clear()
+		person.sex_traits.append(trait.code)
+	$TraitSelection.hide()
+	RebuildStatsContainer()
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/cave.png" type="Texture" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
+[ext_resource path="res://assets/sfx/arrow.png" type="Texture" id=30]
+[ext_resource path="res://assets/sfx/meteor.png" type="Texture" id=31]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
@@ -76,6 +78,17 @@ size = 55
 use_filter = true
 font_data = ExtResource( 11 )
 
+[sub_resource type="Curve" id=10]
+max_value = 1024.0
+bake_resolution = 1
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.286353, 836.403 ), 7920.24, 7920.24, 0, 0, Vector2( 1, 1016.63 ), -21945.2, -21945.2, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CanvasItemMaterial" id=9]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="combat" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -93,6 +106,7 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="Panel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 34.0
 margin_top = 41.0
 margin_right = 675.0
@@ -326,6 +340,7 @@ rect_min_size = Vector2( 249, 311 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SkillPanel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 743.0
 margin_top = 678.0
 margin_right = 1167.0
@@ -376,6 +391,7 @@ expand = true
 stretch_mode = 6
 
 [node name="ItemPanel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 743.0
 margin_top = 38.0
 margin_right = 1167.0
@@ -431,6 +447,7 @@ margin_bottom = 44.0
 text = "Victory"
 
 [node name="Combatlog" type="Panel" parent="."]
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0.674039 )
 margin_left = 748.0
 margin_top = 455.0
@@ -448,6 +465,7 @@ text = "This is a test text"
 scroll_following = true
 
 [node name="StatsPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 269.0
 margin_top = 64.0
@@ -589,6 +607,8 @@ margin_bottom = 665.0
 bbcode_enabled = true
 
 [node name="Rewards" type="TextureRect" parent="."]
+editor/display_folded = true
+visible = false
 margin_left = 535.0
 margin_top = 17.0
 margin_right = 1194.0
@@ -712,3 +732,51 @@ custom_fonts/font = SubResource( 7 )
 text = "VICTORY"
 align = 1
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 1549.55, 58.7864 )
+rotation = 1.57079
+amount = 15
+explosiveness = 0.15
+local_coords = false
+texture = ExtResource( 30 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 300 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 1000.0
+damping_random = 1.0
+damping_curve = SubResource( 10 )
+scale_amount = 0.5
+anim_offset_random = 1.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
+material = SubResource( 9 )
+position = Vector2( 1550.73, 508.986 )
+rotation = 1.57079
+lifetime = 2.0
+speed_scale = 3.0
+local_coords = false
+texture = ExtResource( 31 )
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 200 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.0
+scale_amount = 0.35
+anim_speed = 1.0
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+visible = false
+material = SubResource( 9 )
+position = Vector2( 1550.73, 508.986 )
+rotation = 1.57079
+lifetime = 7.08
+speed_scale = 3.0
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 500, 200 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.0
+scale_amount = 5.0
+anim_speed = 1.0

@@ -50,7 +50,8 @@ func _ready():
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
 		$SlaveList.rebuild()
-		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", [], null, true))
+		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', Blade = 'wood'}))
 	else:
 		globals.start_new_game = false
 		self.visible = false
@@ -196,10 +197,8 @@ func update_task_bar():
 				i.visible = task.workers.size() != 0
 				i.get_node("ProgressBar").value = task.progress
 
-
-
 func open_inventory():
-	$Inventory.open()
+	input_handler.ShowInentory({mode = 'all'})
 
 func open_craft():
 	$CraftPanel.open()

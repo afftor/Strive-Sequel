@@ -394,6 +394,10 @@ func _ready():
 		i.name = tr("UPGRADE" + i.code.to_upper())
 		i.descript = tr("UPGRADE" + i.code.to_upper() + "DESCRIPT")
 	
+	for i in Traitdata.sex_traits.values():
+		i.name = tr("SEXTRAIT" + i.code.to_upper())
+		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
+	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true
@@ -482,15 +486,11 @@ func StartEventScene(name, debug = false, line = 0):
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
-func CreateGearItem(item, parts, newname = null, simple = false):
+func CreateGearItem(item, parts, newname = null):
 	var newitem = Item.new()
-	if simple == false:
-		newitem.CreateGear(item, parts)
-	else:
-		newitem.CreateGearSimple(item)
+	newitem.CreateGear(item, parts)
 	if newname != null:
 		newitem.name = newname
-	
 	return newitem
 
 func CreateUsableItem(item, amount = 1):
@@ -580,6 +580,9 @@ func connectitemtooltip(node, item):
 		node.disconnect("mouse_entered",item,'tooltip')
 	node.connect("mouse_entered",item,'tooltip', [node])
 
+func disconnectitemtooltip(node):
+	print(node.get_signal_connection_list("mouse_entered"))
+
 func connecttempitemtooltip(node, item):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
@@ -605,9 +608,9 @@ func showskilltooltip(skill, node, character):
 	skilltooltip.character = character
 	skilltooltip.showup(node, skill)
 
-func disconnectitemtooltip(node, item):
-	if node.is_connected("mouse_entered",item,'tooltip'):
-		node.disconnect("mouse_entered",item,'tooltip')
+#func disconnectitemtooltip(node, item):
+#	if node.is_connected("mouse_entered",item,'tooltip'):
+#		node.disconnect("mouse_entered",item,'tooltip')
 
 func connectmaterialtooltip(node, material, bonustext = ''):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
@@ -823,6 +826,10 @@ func ItemSelect(targetscript, type, function, requirements = true):
 	elif type == 'edible':
 		for i in state.items.values():
 			if i.foodvalue > 0:
+				array.append(i)
+	elif type == 'sex_use':
+		for i in state.items.values():
+			if i.interaction_use == true:
 				array.append(i)
 	
 	for i in array:

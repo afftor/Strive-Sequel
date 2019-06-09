@@ -133,7 +133,7 @@ var Skilllist = {
 		icon = null,
 		tags = [],
 	},
-	publicexecution = {#everyone fear +65, target dies, target obedience must be < 25%
+	publicexecution = {#everyone present fear +65, target dies, target obedience must be < 25%
 		code = 'publicexecution',
 		name = '',
 		descript = '',

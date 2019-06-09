@@ -39,10 +39,9 @@ func _ready():
 	
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
 	$controls/CustmizeButton.connect('pressed', self, "open_customize_button")
+	$controls/GearButton.connect("pressed", self, "show_gear_gui")
 	
 	$RichTextLabel.connect("meta_clicked", self, 'show_race_descript')
-	
-	
 	
 	globals.AddPanelOpenCloseAnimation($DetailsPanel)
 	$DetailsPanel/VBoxContainer/descript.connect("pressed", self, "custom_description_open")
@@ -123,6 +122,13 @@ func open(tempperson):
 		var newnode = globals.DuplicateContainerTemplate($traits)
 		var trait
 		newnode.text = i
+	
+	
+	
+	for i in person.sex_traits:
+		var newnode = globals.DuplicateContainerTemplate($traits)
+		newnode.text = i
+
 
 func show_progress_tooltip(node):
 	pass
@@ -284,3 +290,7 @@ func custom_nickname_set(text):
 
 func open_customize_button():
 	$DetailsPanel.show()
+
+func show_gear_gui():
+	var inventory = input_handler.ShowInentory({mode = 'character', person = person})
+

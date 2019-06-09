@@ -54,6 +54,12 @@ func showup(node, person):
 		newnode.texture = Skilldata.professions[i].icon
 		newnode.get_node("Label").text = Skilldata.professions[i].name
 	
+	globals.ClearContainer($Sextraits)
+	for i in person.sex_traits:
+		var trait = Traitdata.sex_traits[i]
+		var newbutton = globals.DuplicateContainerTemplate($Sextraits)
+		newbutton.text = trait.name
+	
 	
 	prevnode = parentnode
 	

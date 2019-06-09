@@ -1,49 +1,65 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://assets/images/gui/inventory/inventory.png" type="Texture" id=1]
-[ext_resource path="res://files/Inventory.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/iconsgear/ArmorBasic.png" type="Texture" id=6]
-[ext_resource path="res://files/buttons/inventory/all0.png" type="Texture" id=7]
-[ext_resource path="res://files/buttons/inventory/all2.png" type="Texture" id=8]
-[ext_resource path="res://files/buttons/inventory/all1.png" type="Texture" id=9]
-[ext_resource path="res://files/buttons/inventory/weapon0.png" type="Texture" id=10]
-[ext_resource path="res://files/buttons/inventory/weapon2.png" type="Texture" id=11]
-[ext_resource path="res://files/buttons/inventory/weapon1.png" type="Texture" id=12]
-[ext_resource path="res://files/buttons/inventory/armor0.png" type="Texture" id=13]
-[ext_resource path="res://files/buttons/inventory/armor2.png" type="Texture" id=14]
-[ext_resource path="res://files/buttons/inventory/armor1.png" type="Texture" id=15]
-[ext_resource path="res://files/buttons/inventory/mats0.png" type="Texture" id=16]
-[ext_resource path="res://files/buttons/inventory/mats2.png" type="Texture" id=17]
-[ext_resource path="res://files/buttons/inventory/mats1.png" type="Texture" id=18]
-[ext_resource path="res://files/buttons/inventory/use0.png" type="Texture" id=19]
-[ext_resource path="res://files/buttons/inventory/use2.png" type="Texture" id=20]
-[ext_resource path="res://files/buttons/inventory/use1.png" type="Texture" id=21]
-[ext_resource path="res://files/buttons/inventory/quest0.png" type="Texture" id=22]
-[ext_resource path="res://files/buttons/inventory/quest2.png" type="Texture" id=23]
-[ext_resource path="res://files/buttons/inventory/quest1.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/menu/menubuttonnorm.png" type="Texture" id=26]
-[ext_resource path="res://assets/images/gui/menu/menubuttonpressed.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/gui/menu/menubuttonhl.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=29]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/gui/inventory/inventory.png" type="Texture" id=2]
+[ext_resource path="res://files/Inventory.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/iconsgear/ArmorBasic.png" type="Texture" id=4]
+[ext_resource path="res://files/buttons/inventory/all0.png" type="Texture" id=5]
+[ext_resource path="res://files/buttons/inventory/all2.png" type="Texture" id=6]
+[ext_resource path="res://files/buttons/inventory/all1.png" type="Texture" id=7]
+[ext_resource path="res://files/buttons/inventory/weapon0.png" type="Texture" id=8]
+[ext_resource path="res://files/buttons/inventory/weapon2.png" type="Texture" id=9]
+[ext_resource path="res://files/buttons/inventory/weapon1.png" type="Texture" id=10]
+[ext_resource path="res://files/buttons/inventory/armor0.png" type="Texture" id=11]
+[ext_resource path="res://files/buttons/inventory/armor2.png" type="Texture" id=12]
+[ext_resource path="res://files/buttons/inventory/armor1.png" type="Texture" id=13]
+[ext_resource path="res://files/buttons/inventory/mats0.png" type="Texture" id=14]
+[ext_resource path="res://files/buttons/inventory/mats2.png" type="Texture" id=15]
+[ext_resource path="res://files/buttons/inventory/mats1.png" type="Texture" id=16]
+[ext_resource path="res://files/buttons/inventory/use0.png" type="Texture" id=17]
+[ext_resource path="res://files/buttons/inventory/use2.png" type="Texture" id=18]
+[ext_resource path="res://files/buttons/inventory/use1.png" type="Texture" id=19]
+[ext_resource path="res://files/buttons/inventory/quest0.png" type="Texture" id=20]
+[ext_resource path="res://files/buttons/inventory/quest2.png" type="Texture" id=21]
+[ext_resource path="res://files/buttons/inventory/quest1.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/menu/menubuttonnorm.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/menu/menubuttonpressed.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/menu/menubuttonhl.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/raceshades/Human_F.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 649, 788 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 648.85, 802.995 )
+margin_left = 81.3163
+margin_right = 91.6105
+margin_top = 239.309
+margin_bottom = 85.6616
 
 [node name="Panel" type="Panel"]
 margin_left = 36.0
 margin_top = 18.0
 margin_right = 685.0
-margin_bottom = 806.0
+margin_bottom = 1080.0
 rect_min_size = Vector2( 649, 788 )
+theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Blockout" type="Panel" parent="."]
+show_behind_parent = true
+margin_left = -56.0
+margin_top = -39.0
+margin_right = 1904.0
+margin_bottom = 1082.0
 
 [node name="HiddenContainer" type="ScrollContainer" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 81.0
 margin_top = 230.0
@@ -55,46 +71,65 @@ scroll_horizontal_enabled = false
 columns = 7
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+editor/display_folded = true
 margin_left = 81.0
 margin_top = 230.0
-margin_right = 554.0
-margin_bottom = 702.0
+margin_right = 569.0
+margin_bottom = 961.0
 scroll_horizontal_enabled = false
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-columns = 7
+[node name="GridContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 488.0
+size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+editor/display_folded = true
 visible = false
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
+margin_right = 488.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
 expand = true
-
-[node name="Number" type="Label" parent="ScrollContainer/GridContainer/Button"]
-visible = false
-margin_left = 1.0
-margin_top = 41.0
-margin_right = 62.0
-margin_bottom = 65.0
-text = "100%"
-align = 2
 
 [node name="Image" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
 show_behind_parent = true
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 60.0
-margin_bottom = 60.0
+margin_left = -0.10791
+margin_top = 0.0527039
+margin_right = 49.8921
+margin_bottom = 50.0527
+rect_min_size = Vector2( 5, 0 )
 mouse_filter = 2
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
+[node name="Name" type="Label" parent="ScrollContainer/GridContainer/Button"]
+margin_left = 83.2328
+margin_top = 13.3426
+margin_right = 208.233
+margin_bottom = 37.3426
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Item Name"
+
+[node name="Type" type="Label" parent="ScrollContainer/GridContainer/Button"]
+margin_left = 311.0
+margin_top = 16.0
+margin_right = 389.0
+margin_bottom = 40.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Type"
+align = 1
+
+[node name="Number" type="Label" parent="ScrollContainer/GridContainer/Button"]
+margin_left = 408.804
+margin_top = 16.3669
+margin_right = 469.804
+margin_bottom = 40.3669
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100%"
+align = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 76.0
 margin_top = 106.0
 margin_right = 562.0
@@ -106,9 +141,9 @@ margin_right = 66.0
 margin_bottom = 64.0
 hint_tooltip = "INVENTORYALL"
 toggle_mode = true
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 
 [node name="weapon" type="TextureButton" parent="HBoxContainer"]
 margin_left = 84.0
@@ -116,9 +151,9 @@ margin_right = 150.0
 margin_bottom = 64.0
 hint_tooltip = "INVENTORYWEAPON"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_hover = ExtResource( 12 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
 
 [node name="armor" type="TextureButton" parent="HBoxContainer"]
 margin_left = 168.0
@@ -126,9 +161,9 @@ margin_right = 234.0
 margin_bottom = 64.0
 hint_tooltip = "INVENTORYARMOR"
 toggle_mode = true
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 15 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
 
 [node name="mat" type="TextureButton" parent="HBoxContainer"]
 margin_left = 252.0
@@ -136,9 +171,9 @@ margin_right = 318.0
 margin_bottom = 64.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 
 [node name="usable" type="TextureButton" parent="HBoxContainer"]
 margin_left = 336.0
@@ -146,9 +181,9 @@ margin_right = 402.0
 margin_bottom = 64.0
 hint_tooltip = "INVENTORYUSE"
 toggle_mode = true
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 20 )
-texture_hover = ExtResource( 21 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
 
 [node name="quest" type="TextureButton" parent="HBoxContainer"]
 margin_left = 420.0
@@ -156,17 +191,18 @@ margin_right = 486.0
 margin_bottom = 64.0
 hint_tooltip = "INVENTORYQUEST"
 toggle_mode = true
-texture_normal = ExtResource( 22 )
-texture_pressed = ExtResource( 23 )
-texture_hover = ExtResource( 24 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
 
 [node name="NumberSelectPanel" type="TextureRect" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 197.0
 margin_top = 206.0
 margin_right = 669.0
 margin_bottom = 445.0
-texture = ExtResource( 25 )
+texture = ExtResource( 23 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelectPanel"]
 margin_left = 78.0
@@ -189,9 +225,9 @@ margin_left = 38.0
 margin_top = 161.0
 margin_right = 206.0
 margin_bottom = 216.0
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 27 )
-texture_hover = ExtResource( 28 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -208,9 +244,9 @@ margin_left = 258.0
 margin_top = 161.0
 margin_right = 426.0
 margin_bottom = 216.0
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 27 )
-texture_hover = ExtResource( 28 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -253,7 +289,238 @@ margin_top = 117.0
 margin_right = 426.0
 margin_bottom = 170.0
 mouse_filter = 2
-texture = ExtResource( 29 )
+texture = ExtResource( 27 )
 expand = true
 stretch_mode = 6
 
+[node name="GearPanel" type="Panel" parent="."]
+margin_left = 1182.45
+margin_top = 64.2845
+margin_right = 1834.45
+margin_bottom = 979.285
+
+[node name="BodyImage" type="TextureRect" parent="GearPanel"]
+margin_right = 649.0
+margin_bottom = 913.0
+texture = ExtResource( 28 )
+stretch_mode = 7
+
+[node name="helm" type="TextureButton" parent="GearPanel"]
+margin_left = 327.0
+margin_top = 33.0
+margin_right = 427.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/helm"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="body" type="TextureButton" parent="GearPanel"]
+margin_left = 267.0
+margin_top = 343.0
+margin_right = 367.0
+margin_bottom = 443.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/body"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="underwear" type="TextureButton" parent="GearPanel"]
+margin_left = 267.0
+margin_top = 453.0
+margin_right = 367.0
+margin_bottom = 553.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/underwear"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="boots" type="TextureButton" parent="GearPanel"]
+margin_left = 267.0
+margin_top = 773.0
+margin_right = 367.0
+margin_bottom = 873.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/boots"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="gloves" type="TextureButton" parent="GearPanel"]
+margin_left = 27.0
+margin_top = 353.0
+margin_right = 127.0
+margin_bottom = 453.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/gloves"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="rhand" type="TextureButton" parent="GearPanel"]
+margin_left = 27.0
+margin_top = 473.0
+margin_right = 127.0
+margin_bottom = 573.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/rhand"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="lhand" type="TextureButton" parent="GearPanel"]
+margin_left = 527.0
+margin_top = 473.0
+margin_right = 627.0
+margin_bottom = 573.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/lhand"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="neck" type="TextureButton" parent="GearPanel"]
+margin_left = 267.0
+margin_top = 223.0
+margin_right = 367.0
+margin_bottom = 323.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/neck"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="head" type="TextureButton" parent="GearPanel"]
+margin_left = 217.0
+margin_top = 33.0
+margin_right = 317.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/head"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="ass" type="TextureButton" parent="GearPanel"]
+margin_left = 327.0
+margin_top = 593.0
+margin_right = 427.0
+margin_bottom = 693.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/ass"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="crotch" type="TextureButton" parent="GearPanel"]
+margin_left = 217.0
+margin_top = 593.0
+margin_right = 317.0
+margin_bottom = 693.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/crotch"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6

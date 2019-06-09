@@ -26,6 +26,7 @@ var combat_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
 var traits = []
+var sex_traits = []
 var effects = []
 
 var static_effects = []
@@ -173,6 +174,8 @@ var relations = {}
 var metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0}
 var lastsexday
 
+
+var masternoun = 'Master'
 #temps
 #var profs = load("res://assets/data/Skills.gd").new().professions
 
@@ -246,6 +249,18 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		if classarray != null:
 			unlock_class(classarray[randi()%classarray.size()].code, true)
 		classcounter -= 1
+	
+	var traitarray = []
+	#assign traits
+	for i in Traitdata.sex_traits.values():
+		if i.starting == true && checkreqs(i.acquire_reqs) == true:
+			traitarray.append(i)
+	var rolls = max(1,ceil(sexuals_factor/3))
+	while rolls > 0:
+		var newtrait = traitarray[randi()%traitarray.size()]
+		sex_traits.append(newtrait.code)
+		traitarray.erase(newtrait)
+		rolls -= 1
 
 func get_class_list(category, person):
 	var array = []
@@ -417,6 +432,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = travel_time == 0 && location == i.type
 			'is_id':
 				check = input_handler.operate(i.operant, id, i.value)
+			'long_tail':
+				check = globals.longtails.has(tail)
 		if check == false:
 			return false
 	return true
@@ -429,6 +446,54 @@ func check_gear_equipped(gearname):
 		if tempgear.base_type == gearname:
 			return true
 	return false
+
+func equip(item):
+	if false:#add checks for gear traits
+		input_handler.SystemMessage(tr("INVALIDCLASS"))
+		return
+	for i in item.multislots:
+		if gear[i] != null:
+			unequip(state.items[gear[i]])
+	for i in item.slots:
+		if gear[i] != null:
+			unequip(state.items[gear[i]])
+		gear[i] = item.id
+	item.owner = id
+	#adding bonuses
+#	for i in item.bonusstats:
+#		#self[i] += item.bonusstats[i]
+#		set(i, get(i) + item.bonusstats[i])
+#	for i in item.effects:
+#		var tmp = Effectdata.effects[i].effects;
+#		for e in tmp:
+#			#apply_effect(e);
+#			var eff = effects_pool.e_createfromtemplate(e)
+#			apply_effect(effects_pool.add_effect(eff))
+#			eff.set_args('item', item.id)
+		#addpassiveeffect(i)
+		#NEED REPLACING
+	#checkequipmenteffects()
+
+
+func unequip(item):#NEEDS REMAKING!!!!
+	#removing links
+	item.owner = null
+	for i in gear:
+		if gear[i] == item.id:
+			gear[i] = null
+	#removing bonuses
+#	for i in item.bonusstats:
+#		#self[i] -= item.bonusstats[i]
+#		set(i, get(i) - item.bonusstats[i])
+	
+#	for i in item.effects:
+#		var tmp = Effectdata.effects[i].effects;
+#		for e in find_eff_by_item(item.id):
+#			var eff = effects_pool.get_effect_by_id(e)
+#			eff.remove()
+#		#removepassiveeffect(i) 
+#		#NEED REPLACING
+	#checkequipmenteffects()
 
 func check_profession_limit(name, value):
 	var counter = 0
@@ -711,6 +776,8 @@ func tick():
 				area = travel_target.area
 				location = travel_target.location
 				state.emit_signal("slave_arrived", self)
+				if location == 'mansion':
+					work = 'rest'
 		
 		return
 	
@@ -935,7 +1002,7 @@ func make_item(temprecipe):
 			if recipe.crafttype == 'modular':
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
 			else:
-				globals.AddItemToInventory(globals.CreateGearItem(item.code, [], null, true))
+				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
 	if temprecipe.repeats > 0:
 		temprecipe.repeats -= 1
 		if temprecipe.repeats == 0:
@@ -1068,7 +1135,6 @@ func random_icon():
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 
-var masternoun = 'Master'
 
 #effects related part from displaced
 #if you are planning to use more functions from it (trait-related, eqip etc) - keep track of actual code

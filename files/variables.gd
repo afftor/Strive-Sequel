@@ -66,6 +66,7 @@ var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 var instant_travel = true
 var instant_upgrades = true
 var free_upgrades = true
+var skip_combat = true
 
 var pregduration = 90
 

@@ -54,11 +54,15 @@ func select_area(area):
 	clear_groups()
 	active_area = area
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	if selectedcategory == null:
+		selectedcategory = 'capital'
+	select_category(selectedcategory)
 	for i in $AreaSelection.get_children():
 		i.pressed = i.text == area.name
 
 func select_category(category):
 	var newbutton
+	selectedcategory = category
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	clear_groups()
 	if active_area == null:
@@ -76,11 +80,23 @@ func select_category(category):
 			for i in active_area.locations:
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.text = i.name
+				var presented_characters = []
+				for k in state.characters.values():
+					if k.area == active_area.code && k.location == i.id && k.travel_time == 0:
+						presented_characters.append(k)
+				if presented_characters.size() > 0:
+					newbutton.text += ' ('+str(presented_characters.size())+')'
 				newbutton.connect("pressed", self, "enter_location", [i])
 		"quests":
 			for i in active_area.questlocations:
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.text = i.name
+				var presented_characters = []
+				for k in state.characters.values():
+					if k.area == active_area.code && k.location == i.id && k.travel_time == 0:
+						presented_characters.append(k)
+				if presented_characters.size() > 0:
+					newbutton.text += ' ('+str(presented_characters.size())+')'
 				newbutton.connect("pressed", self, "enter_location", [i])
 
 var shopcategory
@@ -293,6 +309,14 @@ func enter_location(data):
 		globals.ClearContainer($ScrollContainer/VBoxContainer)
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = "No characters present. "
+		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = 'Leave'
+		newbutton.connect("pressed",self,"select_category", [selectedcategory])
+	var text = ''
+	text = active_location.name + "\nLevels: " + str(active_location.levels.size()) + "\nCurrent Level: " + str(active_location.progress.level) + "Current Stage: " + str(active_location.progress.stage) + "/" + str(active_location.levels[int(active_location.progress.level)].stages)
+	$AreaDescription.bbcode_text = text
+	
+
 
 
 
@@ -317,7 +341,7 @@ func update_slave_list():
 	for i in active_slave_list:
 		newbutton = globals.DuplicateContainerTemplate($SlaveSelectionPanel/ScrollContainer/VBoxContainer)
 		newbutton.text = i.get_short_name()
-		newbutton.get_node('icon').texture = load(i.icon)
+		newbutton.get_node('icon').texture = i.get_icon()
 		newbutton.connect("pressed",self,"remove_slave_selection", [i])
 	
 
@@ -363,7 +387,7 @@ func open_location_actions():
 			newbutton.connect("pressed",self,"enter_dungeon")
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Leave'
-			newbutton.connect("pressed",self,"select_area", [active_area])
+			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 		'settlement':
 			pass
 		'eventlocationquest':
@@ -397,7 +421,7 @@ func build_location_group():
 	clear_groups()
 	for i in positiondict:
 		if active_location.group.has('pos'+str(i)) && state.characters[active_location.group['pos'+str(i)]] != null:
-			get_node(positiondict[i]+"/Image").texture = load(state.characters[active_location.group['pos'+str(i)]].icon)
+			get_node(positiondict[i]+"/Image").texture = state.characters[active_location.group['pos'+str(i)]].get_icon()
 		else:
 			get_node(positiondict[i]+"/Image").texture = null
 	$PresentedSlavesPanel.show()
@@ -408,12 +432,12 @@ func build_location_group():
 	for i in state.characters.values():
 		if i.location == active_location.id && i.travel_time == 0:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("icon").texture = load(i.icon)
+			newbutton.get_node("icon").texture = i.get_icon()
 			newbutton.get_node("name").text = i.get_short_name()
 			newbutton.connect("pressed", self, "return_character", [i])
 		elif i.travel_target.location == active_location.id:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("icon").texture = load(i.icon)
+			newbutton.get_node("icon").texture = i.get_icon()
 			newbutton.get_node("name").text = i.get_short_name() + ": Arriving in " + str(i.travel_time) + " hours."
 			newbutton.disabled = true
 
@@ -427,6 +451,9 @@ func return_character_confirm():
 		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
 	else:
 		selectedperson.location = 'mansion'
+	for i in active_location.group:
+		if active_location.group[i] == selectedperson.id:
+			active_location.group.erase(i)
 	build_location_group()
 
 var pos
@@ -452,7 +479,7 @@ func slave_position_selected(character):
 			oldheroposition = i
 			active_location.group.erase(i)
 	
-	if oldheroposition != null && positiontaken == true:
+	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
 		active_location.group[oldheroposition] = active_location.group[pos]
 	
 	active_location.group[pos] = character
@@ -472,25 +499,128 @@ func UpdatePositions():
 	else:
 		$AreaProgress/ProceedButton.hint_tooltip = ''
 
-#Combat functions
+#Combat/explore functions
 
-func enter_dungeon(level = 1):
-	var data = active_location.enemies
-	#Figure level
+func enter_dungeon():
+	check_events('enter')
+	var completed_floors = active_location.progress.level
+	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	
-	fight(data)
+	var newbutton
+	
+	while completed_floors > 0:
+		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = 'Level: ' + str(completed_floors)
+		if active_location.progress.level > completed_floors || (active_location.progress.level == completed_floors && active_location.progress.stage >= active_location.levels[active_location.progress.level].stages):
+			newbutton.text += "(completed)"
+		newbutton.connect("pressed",self,"enter_level", [completed_floors])
+		completed_floors -= 1
+	
+	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = 'Exit'
+	newbutton.connect("pressed",self,"leave_location")
 
-func fight(data):
+var action_type
+var current_level
+
+func enter_level(level):
+	current_level = level
+	
+	$AreaDescription.bbcode_text = "Level: " + str(level) + "\nStages: " + str(active_location.levels[level].stages)
+	
+	if active_location.progress.level < level:
+		active_location.progress.level = level
+		active_location.progress.stage = 0
+	
+	if check_events('enter_level') == true:
+		return
+	
+	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	var newbutton
+	if active_location.progress.level == level && active_location.progress.stage < active_location.levels[level].stages:
+		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = 'Advance'
+		newbutton.connect("pressed",self,"area_advance",['advance'])
+	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels[level].stages:
+		if active_location.levels.has(level + 1) == true:
+			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.text = 'Move to the next level'
+			newbutton.connect("pressed",self,"enter_level",[level+1])
+		else:
+			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.text = 'Complete location'
+			newbutton.connect("pressed",self,"clear_dungeon")
+	
+	
+	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = 'Roam'
+	newbutton.connect("pressed",self,"area_advance",['roam'])
+	
+	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = 'Return'
+	newbutton.connect("pressed",self,"enter_dungeon")
+
+func area_advance(mode):
 	if check_location_group() == false:
-		state.text_log_add("Select at least 1 character before starting a combat. ")
+		state.text_log_add("Select at least 1 character before advancing. ")
+		return
+	if check_events(mode) == true:
+		return
+	if check_random_event() == true:
+		return
+	
+	action_type = mode
+	
+	StartCombat()
+
+
+func finish_combat():
+	if check_events("finish_combat") == true:
+		return
+	if action_type == 'advance':
+		active_location.progress.stage += 1
+		enter_level(active_location.progress.level)
 	else:
-		StartCombat(data)
+		enter_level(current_level)
+
+func clear_dungeon():
+	pass
+
+func leave_location():
+	select_category(selectedcategory)
+
+func check_events(action):
+	var eventarray = active_location.scriptedevents
+	var erasearray = []
+	var eventtriggered = false
+	for i in eventarray:
+		if i.trigger == action:
+			call(i.action, i.args)
+			eventtriggered = true
+			if i.oneshot == true:
+				erasearray.append(i)
+	for i in erasearray:
+		eventarray.erase(i)
+	return eventtriggered
+
+func check_random_event():
+	var eventarray = active_location.randomevents
+	var eventtriggered = false
+	for i in eventarray:
+		pass
+	return eventtriggered
 
 
-func StartCombat(data):
+func StartCombat():
+	var data = ''
 	var enemygroup = {}
 	var enemies = []
 	var music = 'combattheme'
+	
+	if variables.skip_combat == true:
+		finish_combat()
+		return
+	
 	if typeof(data) == TYPE_ARRAY:
 #		for i in data:
 #			if state.checkreqs(i.reqs) == true:
@@ -572,5 +702,4 @@ func makerandomgroup(enemygroup):
 	
 	
 	return combatparty
-
 

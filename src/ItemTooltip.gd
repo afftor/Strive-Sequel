@@ -25,10 +25,13 @@ func showup(node, data):
 	textnode.bbcode_text = data.text
 	$Cost/Label.text = data.price
 	$Cost.visible = int(data.price) != 0
-	if data.item.get('partcolororder') != null:
-		input_handler.itemshadeimage(iconnode, data.item)
+	if typeof(data) == TYPE_DICTIONARY:
+		if data.item.get('partcolororder') != null:
+			input_handler.itemshadeimage(iconnode, data.item)
+		else:
+			iconnode.material = null
 	else:
-		iconnode.material = null
+		data.item.set_icon(iconnode)
 	
 	prevnode = parentnode
 	
@@ -44,7 +47,7 @@ func showup(node, data):
 	
 	if get_rect().end.x > screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
-	if node.get_rect().end.y > screen.size.y:
+	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
 	set_process(true)

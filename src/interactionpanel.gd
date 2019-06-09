@@ -61,6 +61,8 @@ class member:
 	var lust = 0 setget lust_set
 	var sens = 0 setget sens_set
 	var sensmod = 1.0
+	var lewd = 0 setget lewd_set
+	var lewdmod = 1.0
 	var role
 	var sex
 	var orgasms = 0
@@ -80,7 +82,6 @@ class member:
 	var sbreast = 0
 	var spenis = 0
 	var sanus = 0
-	var lewd
 	var activeactions = []
 	
 	var performed_actions = {}
@@ -134,6 +135,9 @@ class member:
 			sens = 0
 			orgasm()
 	
+	func lewd_set(value):
+		var change = value - lewd
+		lewd += change*lewdmod
 	
 	func orgasm():
 		var text = ''
@@ -316,8 +320,8 @@ class member:
 	func actioneffect(values, scenedict):
 		var sensinput = 0
 		var hornyinput = 0
-		var sensmod = 1
-		var hornymod = 1
+		var sens_mod = 1
+		var horny_mod = 1
 		
 		lastaction = scenedict
 		person.sexuals += 0.05
@@ -327,19 +331,19 @@ class member:
 			hornyinput = values.horny
 		
 		if horny < 100:
-			sensmod -= 0.5
+			sens_mod -= 0.5
 		
 		
 		
 		if performed_actions.has(scenedict.scene.code):
-			sensmod -= 0.05*performed_actions[scenedict.scene.code]
+			sens_mod -= 0.05*performed_actions[scenedict.scene.code]
 			performed_actions[scenedict.scene.code] += 1
 		else:
 			performed_actions[scenedict.scene.code] = 1
 		
-		if sceneref.isencountersamesex(scenedict.givers, scenedict.takers, self) == true && person.traits.has("Bisexual") == false && person.traits.has("Homosexual") == false:
-			sensmod -= 0.33
-			hornymod -= 0.33
+		if sceneref.isencountersamesex(scenedict.givers, scenedict.takers, self) == true && sex_traits.has("bisexual") == false:
+			sens_mod -= 0.33
+			horny_mod -= 0.33
 		
 		if scenedict.scene.code in globals.punishcategories:
 			if scenedict.givers.has(self):
@@ -360,6 +364,9 @@ class member:
 		for i in scenedict[seek_group+'s']:
 			if i.person.sexuals + i.person.sexuals_bonus > partner_skill:
 				partner_skill = i.person.sexuals + i.person.sexuals_bonus
+			if i.person.traits.has("undead") && sex_traits.has('omnisexual') == false:
+				sens_mod -= 0.5
+				horny_mod -= 0.5
 			for k in i.sex_traits:
 				var trait = sceneref.sextraits[k]
 				if trait.trigger_side != 'partner' || checkreqs(trait.reqs, seek_group, scenedict) == false :
@@ -367,11 +374,11 @@ class member:
 				for j in trait.effects:
 					match j.effect:
 						'sens_bonus':
-							input_handler.math(j.operant, sensmod, j.value)
+							input_handler.math(j.operant, sens_mod, j.value)
 						'horny_bonus':
-							input_handler.math(j.operant, hornymod, j.value)
+							input_handler.math(j.operant, horny_mod, j.value)
 		
-		sensmod += partner_skill/200
+		sens_mod += partner_skill/200
 		
 		
 		
@@ -380,10 +387,6 @@ class member:
 				if (person.obedience < 90 || mode == 'forced') && (!person.traits.has('Masochist') && !person.traits.has('Likes it rough') && !person.traits.has('Sex-crazed')):
 					for i in scenedict.givers:
 						globals.addrelations(person, i.person, -rand_range(5,10))
-					if values.has('obed') == false:
-						values.obedience = 0
-					if values.has("stress") == false:
-						values.stress = rand_range(3,5)
 					person.obedience += values.obed
 					person.stress += values.stress
 					if person.effects.has("captured") && randf() >= values.obed/2:
@@ -395,20 +398,6 @@ class member:
 						if values.has('stress') == false:
 							values.stress = rand_range(2,6)
 						person.stress += values.stress
-			if values.tags.has('pervert'):
-				if person.traits.has('Pervert'):
-					self.sens += sensinput
-				else:
-					if person.traits.has('Sex-crazed'):
-						self.sens += sensinput
-						if lust >= 750 && randf() < 0.2:
-							actionshad.addtraits.append("Pervert")
-					else:
-						self.sens += sensinput
-						if lust >= 750 && randf() < 0.2:
-							actionshad.addtraits.append("Pervert")
-						else:
-							person.stress += rand_range(2,4)
 			if values.tags.has('group'):
 				actionshad.group += 1
 		
@@ -421,9 +410,9 @@ class member:
 			for k in trait.effects:
 				match k.effect:
 					'sens_bonus':
-						input_handler.math(k.operant, sensmod, k.value)
+						input_handler.math(k.operant, sens_mod, k.value)
 					'horny_bonus':
-						input_handler.math(k.operant, hornymod, k.value)
+						input_handler.math(k.operant, horny_mod, k.value)
 			
 		
 #		if values.has('obed') && values.obedience > 0 && effects.has('resist'):
@@ -436,9 +425,9 @@ class member:
 #				#yield(sceneref.get_tree().create_timer(0.1), "timeout")
 #				effects.erase('resist')
 #				sceneref.get_node("Panel/sceneeffects").bbcode_text += sceneref.decoder(text, scenedict.givers, scenedict.takers) + '\n'
-		sceneref.get_node("Panel/sceneeffects").bbcode_text += str(sensmod*100) + "%"
-		self.sens += sensinput*max(0.1, sensmod)
-		self.horny += hornyinput*max(0.1, hornymod)
+		sceneref.get_node("Panel/sceneeffects").bbcode_text += str(sens_mod*100) + "%"
+		self.sens += sensinput*max(0.1, sens_mod)
+		self.horny += hornyinput*max(0.1, horny_mod)
 	
 	func checkreqs(reqs, group, scene):
 		var check = true
@@ -457,6 +446,8 @@ class member:
 				return effects.has(dict.value)
 			'action_tag':
 				return scene.scene.get(group+'tags').has(dict.value)
+			'partner_check':
+				return false
 	
 
 func dog():
@@ -610,6 +601,7 @@ func startsequence(actors):
 		newmember.lust = person.lust*10
 		newmember.sens = 0
 		newmember.name = person.get_short_name()
+		newmember.sex_traits = person.sex_traits
 #		newmember.svagina = person.sensvagina
 #		newmember.smouth = person.sensmouth
 #		newmember.spenis = person.senspenis
@@ -830,8 +822,6 @@ func open_item_list(member):
 func use_item(item):
 	pass
 
-func aphrodisiac(member):
-	member.horny += 100
 
 var categoriesorder = ['caress', 'fucking', 'tools', 'SM', 'humiliation']
 
@@ -1168,6 +1158,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	
 	
+	
 	if scenescript.code in ['strapon', 'rope', 'subdue']:
 		cont = true
 	#to make action switch on that hole even if they comes from another body part
@@ -1262,23 +1253,17 @@ func startscene(scenescript, cont = false, pretext = ''):
 			request = checkrequest(i)
 			if request == true:
 				textdict.orgasms += decoder("[color=aqua]Desire fullfiled! [name1] grows lewder and more sensitive. [/color]\n", [i], [i])
-#			if i.sens >= 1000:
-#				textdict.orgasms += triggerorgasm(i)
-#				i.orgasm = true
-#			else:
-#				i.orgasm = false
 		else:
 			for j in ongoingactions:
 				if i in j.givers + j.takers:
 					i.lastaction = j
-#					if i.sens >= 1000:
-#						textdict.orgasms += triggerorgasm(i)
-#						i.orgasm = true
-#					else:
-#						i.orgasm = false
 		if not i.lastaction in ongoingactions:
 			i.lastaction = null
 		
+		for k in i.sex_traits:
+			if Traitdata[k].trigger_side == 'everyone_turn':
+				for j in k.effects:
+					call(j.code, i)
 	
 	if cont == true && sceneexists == false: 
 		ongoingactions.append(dict)
@@ -1303,22 +1288,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	
 	var text = textdict.mainevent + "\n" + textdict.repeats + '\n' + textdict.speech + textdict.orgasms
-#	temptext = ''
-#	while text.length() > 0:
-#		if !text.begins_with('%'):
-#			if text.find('%') >= 0:
-#				temptext = text.substr(0,text.find('%'))
-#			else:
-#				temptext = text
-#			text = text.replace(temptext, '')
-#			$Panel/sceneeffects.append_bbcode(temptext)
-#		else:
-#			var string = text.substr(text.find("%"), 2)
-#			add_portrait_to_text(participants[int(string.substr(1,1))])
-#			text.erase(0,2)
-		#print($Panel/sceneeffects.text)
-		#get_node("Panel/sceneeffects").add_text()
-	#$Panel/sceneeffects.bbcode_enabled = true
+	
 	get_node("Panel/sceneeffects").bbcode_text += '\n' + text
 	
 	
@@ -1335,6 +1305,12 @@ func startscene(scenescript, cont = false, pretext = ''):
 		generaterequest(temparray[randi()%temparray.size()])
 	
 	rebuildparticipantslist()
+
+func lewdness_aura(caster):
+	for i in participants:
+		if i != caster:
+			i.horny += 5
+			i.sens += 50
 
 func characterspeech(scene, details = []):
 	var character
@@ -1393,7 +1369,7 @@ func characterspeech(scene, details = []):
 		dict.vagina = [speechdict.vagina, 1]
 	if scene.scene.code in ['missionaryanal', 'doggyanal', 'lotusanal','revlotusanal', 'inserttaila', 'insertinturnsass'] && partnerside == 'givers':
 		dict.anal = [speechdict.anal, 1]
-	if (!character.person.traits.has('Lesbian') && !character.person.traits.has("Bisexual")) && character.sex != 'male' && partner.sex != 'male' && partnerside == 'givers':
+	if (!character.person.traits.has('Lesbian') && !character.person.sex_traits.has("bisexual")) && character.sex != 'male' && partner.sex != 'male' && partnerside == 'givers':
 		dict.nonlesbian = [speechdict.nonlesbian, 1]
 	if scene.scene.get("takertags") && scene.scene.takertags.has("pain") && partnerside == 'givers' && !character.person.traits.has('Likes it rough') && !character.person.traits.has("Masochist"):
 		dict.pain = [speechdict.pain, 2.5]
@@ -2188,147 +2164,19 @@ func resistattempt(member):
 
 
 
+func alcohol(member):
+	if member.effects.has("drunk") == false:
+		member.sensmod += 0.2
+		member.lewdmod += 0.5
+		member.effects.append('drunk')
+		return true
+	return false
 
+func aphrodisiac(member):
+	member.lewd += 100
 
-var sextraits = {
-	skilled_petting = {
-		code = "skilled_petting",
-		name = "",
-		descript = "",
-		starting = false,
-		acquire_reqs = [],
-		trigger_side = 'partner',
-		reqs = [{code = "action_tag", value = "petting"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.33},{effect = 'horny_bonus', operant = "+", value = 0.33}],
-	},
-	skilled_mouth = {
-		code = "skilled_mouth",
-		name = "",
-		descript = "",
-		starting = false,
-		acquire_reqs = [],
-		trigger_side = 'partner',
-		reqs = [{code = "action_tag", value = "oral"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.33},{effect = 'horny_bonus', operant = "+", value = 0.33}],
-	},
-	skilled_tail = {
-		code = "skilled_tail",
-		name = "",
-		descript = "",
-		starting = false,
-		acquire_reqs = [{code = 'custom', value = 'long_tail'}],
-		trigger_side = 'partner',
-		reqs = [{code = "action_tag", value = "tail"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.4},{effect = 'horny_bonus', operant = "+", value = 0.4}],
-	},
-	oral = {
-		code = "oral",
-		name = "",
-		descript = "",
-		starting = true,
-		acquire_reqs = [],
-		trigget_side = 'self',
-		reqs = [{code = "action_tag", value = "oral"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5},{effect = 'horny_bonus', operant = "+", value = 0.5}],
-	},
-	anal = {
-		code = "anal",
-		name = "",
-		descript = "",
-		starting = true,
-		acquire_reqs = [],
-		trigget_side = 'self',
-		reqs = [{code = "action_tag", value = "anal"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5},{effect = 'horny_bonus', operant = "+", value = 0.5}],
-	},
-	masochist = {
-		code = "masochist",
-		name = "",
-		descript = "",
-		starting = true,
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [{code = "action_tag", value = "punish"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5},{effect = 'horny_bonus', operant = "+", value = 0.5}],
-	},
-	sadist = {
-		code = "sadist",
-		name = "",
-		descript = "",
-		starting = true,
-		acquire_reqs = [],
-		trigger_side = 'partner',
-		reqs = [{code = "action_tag", value = "punish"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5},{effect = 'horny_bonus', operant = "+", value = 0.5}],
-	},
-	submissive = {
-		code = "submissive",
-		name = "",
-		descript = "",
-		acquire_reqs = [],
-		starting = true,
-		trigger_side = 'self',
-		reqs = [{code = "effect_exists", value = "tied", orflag = true}, {code = "effect_exists", value = 'subdued', orflag = true}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.25},{effect = 'horny_bonus', operant = "+", value = 0.25}],
-	},
-	group = {
-		code = "group",
-		name = "",
-		descript = "",
-		starting = true,
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [{code = "action_tag", value = "group"}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.33},{effect = 'horny_bonus', operant = "+", value = 0.33}],
-	},
-	likes_shortstacks = {
-		code = "likes_shortstacks",
-		name = "",
-		descript = "",
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [{code = 'partner_check', value = 'height', operant = 'lte', name = 'tiny'}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5},{effect = 'horny_bonus', operant = "+", value = 0.5}],
-	},
-	likes_beasts = {
-		code = "likes_beasts",
-		name = "",
-		descript = "",
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [{code = 'partner_check', value = 'race', operant = 'findn', name = 'Beastkin', orflag = true},{code = 'partner_check', value = 'race', operant = 'findn', name = 'Halfkin', orflag = true}],
-		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5},{effect = 'horny_bonus', operant = "+", value = 0.5}],
-	},
-	lewdness_aura = {
-		code = "lewdness_aura",
-		name = "",
-		descript = "",
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [],
-		effects = [{effect = 'lewdness_aura'}],
-	},
-	bisexual = {
-		code = "bisexual",
-		name = "",
-		descript = "",
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [],
-		effects = [],
-	},
-	omnisexual = {
-		code = "omnisexual",
-		name = "",
-		descript = "",
-		acquire_reqs = [],
-		trigger_side = 'self',
-		reqs = [],
-		effects = [],
-	},
-}
-
-
+func sensetivity_pot(member):
+	member.sensmod += 1
 
 
 

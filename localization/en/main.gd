@@ -517,6 +517,8 @@ var TranslationDict = {
 	TOOLTIPEXHAUSTION = "Exhaustion grows when character is forced to work with no energy left. Exhaustion causes penalty to maximum health and production, and can lead to fatal cause if not taken care of for a long time.",
 	TOOLTIPLOYAL = "Loyalty represents character's willingness to follow master's orders even they neither obedient, nor fearful. It grows with time and stops servants from escaping. ",
 	
+	TOOLTIPSEXTRAITS = "Sexual traits are a special bonuses which provide benefits during the interaction sequence. ",
+	
 	TOOLTIPHP = "",
 	TOOLTIPMANA = "",
 	
@@ -1082,7 +1084,35 @@ var TranslationDict = {
 	BODYPARTVAGINAL_VIRGINTRUE_FALSEDESCRIPT = "[He] has a [color=yellow]normal pussy[/color] below [his] waist.",
 	BODYPARTHAS_PUSSYFALSEDESCRIPT = " ",
 	
+	SEXTRAITSKILLED_PETTING = "Nimble Fingers",
+	SEXTRAITSKILLED_MOUTH = "Masterful Tongue",
+	SEXTRAITSKILLED_TAIL = "Resourceful Tail",
+	SEXTRAITORAL = "Oral Lover",
+	SEXTRAITANAL = "Anal Lover",
+	SEXTRAITMASOCHIST = "Masochist",
+	SEXTRAITSADIST = "Sadist",
+	SEXTRAITSUBMISSIVE = "Submissive",
+	SEXTRAITGROUP = "Company Lover",
+	SEXTRAITLIKES_SHORTSTACKS = "Shortstack Enthusiast",
+	SEXTRAITLIKES_BEASTS = "Likes them beasty",
+	SEXTRAITLEWDNESS_AURA = "Perversy Aura",
+	SEXTRAITBISEXUAL = "Bisexual",
+	SEXTRAITOMNISEXUAL = "Omnisexual",
 	
+	SEXTRAITSSKILLED_PETTINGDESCRIPT = "[name]'s hands are more skillful at providing pleasure. Partner's lust and arousal on petting actions: +33%. ", 
+	SEXTRAITSKILLED_MOUTHDESCRIPT = "[name]'s mouth are more skillful at providing pleasure. Partner's lust and arousal on oral actions: +33%. ",  
+	SEXTRAITSKILLED_TAILDESCRIPT = "[name] has mastered the usse of [his] tail and now it can serve as an additional limb. Partner's lust and arousal on tail-related actions: +40%. ", 
+	SEXTRAITORALDESCRIPT = "[name]'s mouth is unusually sensetive. Lust and Arousal from oral actions: +50%.", 
+	SEXTRAITANALDESCRIPT = "[name] seems to find a special joy form using [his] rear. Lust and Arousal from anal actions: +50%.", 
+	SEXTRAITMASOCHISTDESCRIPT = "[name] seems to find pleasure in pain. Lust and Arousal from punishing actions: +50%.",  
+	SEXTRAITSADISTDESCRIPT = "[name] seems to find pleasure in causing pain to others. Lust and Arousal from giving punishments: +50%.",  
+	SEXTRAITSUBMISSIVEDESCRIPT = "[name] has a thing for being forcefully used by others. Lust and Arousal while being Tied or Subdued: +25%.",  
+	SEXTRAITGROUPDESCRIPT = "[name] likes handling multiple partners at once. Group actions give 33% more lust and arousal. ",  
+	SEXTRAITLIKES_SHORTSTACKSDESCRIPT = "[name] has a preferences for shorter partners. Actions with Petite or smaller characters give 50% more Arousal and Lust.", 
+	SEXTRAITLIKES_BEASTSDESCRIPT = "[name] has a preferences for beasty partners. Actions with beastkin or halfkin races give 50% more Arousal and Lust.",  
+	SEXTRAITLEWDNESS_AURADESCRIPT = "[name] has an unusual aura around [him], making everyone participating slightly more aroused every turn. ", 
+	SEXTRAITBISEXUALDESCRIPT = "[name] has fully accepted drowning in sexual pleasure with any gender. Removes penalty from same-sex actions.", 
+	SEXTRAITOMNISEXUALDESCRIPT = "[name] is ready to go to the lengths normal people wouldn't usually go. Removes penalty from actions with animals and undeads. ", 
 	
 }
 

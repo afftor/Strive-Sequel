@@ -1,4 +1,5 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
+# warning-ignore-all:return_value_discarded
 
 var participants = []
 
