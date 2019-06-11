@@ -59,6 +59,7 @@ func select_area(area):
 	select_category(selectedcategory)
 	for i in $AreaSelection.get_children():
 		i.pressed = i.text == area.name
+	build_area_description()
 
 func select_category(category):
 	var newbutton
@@ -294,6 +295,26 @@ func unlock_upgrade(upgrade, level):
 		#print(active_faction)
 	open_details()
 
+func build_location_description():
+	var text = ''
+	text += active_location.name
+	match active_location.type:
+		'dungeon':
+			text += "\nLevels: " + str(current_level) + "/" + str(active_location.levels.size())
+			text += "\nProgress Level: " + str(active_location.progress.level)
+		'settlement':
+			pass
+		'skirmish':
+			pass
+	$AreaDescription.bbcode_text = text
+
+func build_area_description():
+	var text = ''
+	text += active_area.name
+	text += "\nDominant Race: " + active_area.lead_race
+	text += "\nPopulation: " + str(active_area.population)
+	$AreaDescription.bbcode_text = text
+
 func enter_location(data):
 	active_location = data
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
@@ -312,12 +333,7 @@ func enter_location(data):
 		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = 'Leave'
 		newbutton.connect("pressed",self,"select_category", [selectedcategory])
-	var text = ''
-	text = active_location.name + "\nLevels: " + str(active_location.levels.size()) + "\nCurrent Level: " + str(active_location.progress.level) + "Current Stage: " + str(active_location.progress.stage) + "/" + str(active_location.levels[int(active_location.progress.level)].stages)
-	$AreaDescription.bbcode_text = text
-	
-
-
+	build_location_description()
 
 
 
@@ -390,8 +406,13 @@ func open_location_actions():
 			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 		'settlement':
 			pass
-		'eventlocationquest':
-			pass
+		'skirmish':
+			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.text = 'Explore'
+			newbutton.connect("pressed",self,"enter_dungeon")
+			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.text = 'Leave'
+			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 
 
 func check_location_group():
@@ -521,12 +542,11 @@ func enter_dungeon():
 	newbutton.connect("pressed",self,"leave_location")
 
 var action_type
-var current_level
+var current_level = 1
+var current_stage = 0
 
 func enter_level(level):
 	current_level = level
-	
-	$AreaDescription.bbcode_text = "Level: " + str(level) + "\nStages: " + str(active_location.levels[level].stages)
 	
 	if active_location.progress.level < level:
 		active_location.progress.level = level
@@ -559,11 +579,18 @@ func enter_level(level):
 	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	newbutton.text = 'Return'
 	newbutton.connect("pressed",self,"enter_dungeon")
+	
+	build_location_description()
 
 func area_advance(mode):
 	if check_location_group() == false:
 		state.text_log_add("Select at least 1 character before advancing. ")
 		return
+	match mode:
+		'advance':
+			current_stage = active_location.progress.stage
+		'roam':
+			current_stage = 0
 	if check_events(mode) == true:
 		return
 	if check_random_event() == true:
@@ -572,6 +599,7 @@ func area_advance(mode):
 	action_type = mode
 	
 	StartCombat()
+
 
 
 func finish_combat():
@@ -584,7 +612,15 @@ func finish_combat():
 		enter_level(current_level)
 
 func clear_dungeon():
-	pass
+	input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
+
+func clear_dungeon_confirm():
+	for i in state.characters.values():
+		if (i.location == active_location.id && i.travel_time == 0) || i.travel_target.location == active_location.id:
+			selectedperson = i
+			return_character_confirm()
+	active_area.locations.erase(active_location)
+	leave_location()
 
 func leave_location():
 	select_category(selectedcategory)
@@ -610,37 +646,35 @@ func check_random_event():
 		pass
 	return eventtriggered
 
-
 func StartCombat():
-	var data = ''
+	var enemydata
 	var enemygroup = {}
 	var enemies = []
 	var music = 'combattheme'
+	
+	
 	
 	if variables.skip_combat == true:
 		finish_combat()
 		return
 	
-	if typeof(data) == TYPE_ARRAY:
-#		for i in data:
-#			if state.checkreqs(i.reqs) == true:
-#				enemies.append(i)
-		enemies = input_handler.weightedrandom(data)
-#		for i in data:
-#			var currentgroup = world_gen.enemygroups[i[0]]
-#			if state.checkreqs(currentgroup.reqs) == false:
-#				continue
-#			enemygroup[i] = currentgroup
-#		enemygroup = input_handler.weightedrandom(enemygroup.values())
-		enemies = makerandomgroup(world_gen.enemygroups[enemies])
-	else:
-		enemies = makespecificgroup(data)
+	for i in active_location.stagedenemies:
+		if i.stage == current_stage && i.level == current_level:
+			enemydata = i.enemy
+	if enemydata == null:
+		enemydata = active_location.enemies
 	
-	input_handler.emit_signal("CombatStarted", data)
+	if typeof(enemydata) == TYPE_ARRAY:
+		enemies = input_handler.weightedrandom(enemydata)
+		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
+	else:
+		enemies = makespecificgroup(enemydata)
+	
+	input_handler.emit_signal("CombatStarted", enemydata)
 	input_handler.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	$combat.encountercode = data 
-	$combat.start_combat(enemies, 'background', music)
+	$combat.encountercode = enemydata 
+	$combat.start_combat(active_location.group, enemies, 'background', music)
 	$combat.show()
 
 func makespecificgroup(group):
@@ -650,7 +684,6 @@ func makespecificgroup(group):
 		combatparty[i] = enemies.group[i]
 	
 	return combatparty
-	
 
 func makerandomgroup(enemygroup):
 	var array = []
@@ -669,7 +702,7 @@ func makerandomgroup(enemygroup):
 	#Assign units to rows
 	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
 	for i in array:
-		var unit = world_gen.enemies[i.units]
+		var unit = Enemydata.enemies[i.units]
 		while i.number > 0:
 			var temparray = []
 			

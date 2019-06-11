@@ -78,8 +78,8 @@ func _process(delta):
 	pass
 
 
-func start_combat(newenemygroup, background, music = 'combattheme'):
-	$Background.texture = images.backgrounds[background]
+func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme'):
+	#$Background.texture = images.backgrounds[background]
 	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
 	playergroup.clear()
@@ -89,14 +89,14 @@ func start_combat(newenemygroup, background, music = 'combattheme'):
 	$Rewards.visible = false
 	allowaction = false
 	enemygroup = newenemygroup
-	playergroup = state.combatparty
+	playergroup = newplayergroup
 	buildenemygroup(enemygroup)
 	buildplayergroup(playergroup)
 	#victory()
 	#start combat triggers
 	for i in state.combatparty:
 		if state.combatparty[i] == null: continue
-		var p = state.heroes[state.combatparty[i]]
+		var p = state.characters[state.combatparty[i]]
 		p.process_event(variables.TR_COMBAT_S)
 		p.displaynode.rebuildbuffs()
 	input_handler.ShowGameTip('aftercombat')
@@ -403,9 +403,9 @@ func enemy_turn(pos):
 	
 	Highlight(pos, 'enemy')
 	
-	for i in fighter.skills:
-		var skill = Skilldata.skilllist[i]
-		if fighter.cooldowns.has(skill.code) || fighter.mana < skill.manacost:
+	for i in fighter.combat_skills:
+		var skill = Skilldata.Skilllist[i]
+		if fighter.cooldowns.has(skill.code) || fighter.mp < skill.manacost:
 			continue
 		if !fighter.process_check(skill.reqs):
 			continue
@@ -415,7 +415,7 @@ func enemy_turn(pos):
 	castskill = input_handler.weightedrandom(castskill)
 	
 	#Figuring Casting Skill range
-	var skillrange = castskill.userange
+	var skillrange = castskill.target_range
 	if skillrange == 'weapon':
 		if fighter.gear.rhand == null:
 			skillrange = 'melee'
@@ -475,13 +475,14 @@ func speedsort(first, second):
 func make_fighter_panel(fighter, spot):
 	#need to implement clearing panel if fighter is null for the sake of removing summons
 	#or simply implement func clear_fighter_panel(pos)
-	var container = battlefieldpositions[spot]
+	spot = int(spot)
+	var container = battlefieldpositions[int(spot)]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
 	panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
 	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'
-	panel.set_script(load("res://files/scenes/FighterNode.gd"))
+	panel.set_script(load("res://files/FighterNode.gd"))
 	panel.position = int(spot)
 	fighter.position = int(spot)
 	panel.fighter = fighter
@@ -494,11 +495,11 @@ func make_fighter_panel(fighter, spot):
 		panel.get_node("hplabel").show()
 		panel.get_node("mplabel").show()
 	panel.set_meta('character',fighter)
-	panel.get_node("Icon").texture = fighter.combat_portrait()
+	panel.get_node("Icon").texture = fighter.get_icon()
 	panel.get_node("HP").value = globals.calculatepercent(fighter.hp, fighter.hpmax)
-	panel.get_node("Mana").value = globals.calculatepercent(fighter.mana, fighter.manamax)
+	panel.get_node("Mana").value = globals.calculatepercent(fighter.mp, fighter.mpmax)
 	panel.hp = fighter.hp
-	if fighter.manamax == 0:
+	if fighter.mpmax == 0:
 		panel.get_node("Mana").value = 0
 	panel.get_node("Label").text = fighter.name
 	container.add_child(panel)
@@ -554,15 +555,15 @@ func ShowFighterStats(fighter):
 	var text = ''
 	if fighter.combatgroup == 'ally':
 
-		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.hpmax())
+		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.hpmax)
 		if fighter.manamax > 0:
-			$StatsPanel/mana.text = "Mana: " + str(fighter.mana) + '/' + str(fighter.manamax)
+			$StatsPanel/mana.text = "Mana: " + str(fighter.mp) + '/' + str(fighter.mpmax)
 		else:
 			$StatsPanel/mana.text = ''
 	else:
-		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + "%"
+		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.hpmax))) + "%"
 		if fighter.manamax > 0:
-			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mana, fighter.manamax))) + "%"
+			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.mpmax))) + "%"
 		else:
 			$StatsPanel/mana.text = ''
 	$StatsPanel/damage.text = "Damage: " + str(round(fighter.damage)) 
@@ -606,29 +607,31 @@ func buildenemygroup(enemygroup):
 		enemygroup.erase(i)
 	
 	for i in enemygroup:
+		if enemygroup[i] == 'boss':
+			continue
 		if enemygroup[i] == null:
 			continue
 		var tempname = enemygroup[i]
 		enemygroup[i] = Slave.new()
-		enemygroup[i].createfromenemy(tempname)
+		enemygroup[i].generate_simple_fighter(tempname)
 		enemygroup[i].combatgroup = 'enemy'
-		battlefield[i] = enemygroup[i]
-		make_fighter_panel(battlefield[i], i)
+		battlefield[int(i)] = enemygroup[i]
+		make_fighter_panel(battlefield[int(i)], i)
 		#new part for gamestate 
-		state.heroes[enemygroup[i].id] = enemygroup[i]
+		state.characters[enemygroup[i].id] = enemygroup[i]
 		state.combatparty[i] = enemygroup[i].id
 		
 
 func buildplayergroup(group):
 	var newgroup = {}
 	for i in group:
-		if i > 6: break
+		if int(i) > 6: break
 		if group[i] == null:
 			continue
-		var fighter = state.heroes[group[i]]
+		var fighter = state.characters[group[i]]
 		fighter.combatgroup = 'ally'
-		battlefield[i] = fighter
-		make_fighter_panel(battlefield[i], i)
+		battlefield[int(i)] = fighter
+		make_fighter_panel(battlefield[int(i)], i)
 		newgroup[i] = fighter
 	playergroup = newgroup
 
@@ -677,7 +680,7 @@ func use_skill(skill_code, caster, target):
 	var skill = Skilldata.skilllist[skill_code]
 	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
-	caster.mana -= skill.manacost
+	caster.mp -= skill.manacost
 	var endturn = !skill.tags.has('instant');
 	#old part
 #	for i in skill.casteffects:
@@ -1106,7 +1109,7 @@ func RebuildSkillPanel():
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
-		if activecharacter.mana < skill.manacost:
+		if activecharacter.mp < skill.manacost:
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.set_meta('skill', skill.code)
@@ -1115,7 +1118,7 @@ func RebuildSkillPanel():
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skilldata.skilllist[skill]
-	if activecharacter.mana < skill.manacost || activecharacter.cooldowns.has(skill.code):
+	if activecharacter.mp < skill.manacost || activecharacter.cooldowns.has(skill.code):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack');
 		return

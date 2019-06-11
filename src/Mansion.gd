@@ -22,7 +22,6 @@ func _ready():
 		counter += 1
 	
 	
-	
 	$InventoryButton.connect("pressed",self,'open_inventory')
 	$CraftButton.connect("pressed",self,"open_craft")
 	$ExploreButton.connect("pressed",$Exploration,"open")
@@ -39,14 +38,14 @@ func _ready():
 	settime()
 	
 	if globals.start_new_game == false:
-		var character = globals.characterdata.new()
+		var character = Slave.new()
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
 		character.unlock_class("master")
-		character = globals.characterdata.new()
+		character = Slave.new()
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
-		character = globals.characterdata.new()
+		character = Slave.new()
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
 		$SlaveList.rebuild()

@@ -85,15 +85,15 @@ func update_mana():
 
 func update_hp_label():
 	if fighter.combatgroup == 'ally':
-		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax())
+		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax)
 	else:
-		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax()))) + '%'
+		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax))) + '%'
 
 func update_mp_label():
 	if fighter.combatgroup == 'ally':
-		$mplabel.text = str(fighter.mana) + '/' + str(fighter.manamax())
+		$mplabel.text = str(fighter.mana) + '/' + str(fighter.mpmax)
 	else:
-		$mplabel.text = str(round(globals.calculatepercent(fighter.mana, fighter.manamax()))) + '%'
+		$mplabel.text = str(round(globals.calculatepercent(fighter.mana, fighter.mpmax))) + '%'
 
 func defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
@@ -112,7 +112,7 @@ func update_shield(): #FILL COLORS FOR OTHER SHIELD TYPES
 
 func rebuildbuffs():
 	globals.ClearContainer($Buffs)
-	for i in fighter.buffs:
+	for i in fighter.get_all_buffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)
 		var buff = Effectdata.buffs[i]
 		var text = buff.description

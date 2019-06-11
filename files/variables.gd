@@ -13,6 +13,8 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_REMOVE}
 
 var dmg_mod_list = ['hp', 'mana']
+var resists_list = ['fire','earth','air','water']
+var fighter_stats_list = ['hp','mana','damage','armor','mdef','hitrate','evasion','armorpenetration','speed']
 const playerparty = [1, 2, 3, 4, 5, 6]
 const enemyparty = [7, 8, 9, 10, 11, 12]
 const rows = {
@@ -66,7 +68,7 @@ var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 var instant_travel = true
 var instant_upgrades = true
 var free_upgrades = true
-var skip_combat = true
+var skip_combat = false
 
 var pregduration = 90
 

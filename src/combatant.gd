@@ -8,6 +8,13 @@ var unique
 
 var icon_image = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body_image = 'default'
+var npc_reference
+#####required for combat
+var combatgroup 
+var displaynode
+var defeated = false
+var cooldowns = []
+#####
 
 var name = ''
 var surname = ''
@@ -43,7 +50,6 @@ var obedience = 100.0 setget obed_set, obed_get
 var fear = 70.0 setget fear_set, fear_get
 var lust = 20.0 setget lust_set, lust_get
 var loyal = 0.0
-var resist = 0
 var lustmax = 50
 
 var hp = 100 setget hp_set
@@ -61,10 +67,12 @@ var productivity := 100.0
 
 var hitrate = 0
 var evasion = 0
-var resists = 0
+var resists = {}
 var armor = 0
 var mdef = 0
 var position
+var buffs = []
+var speed = 0
 
 #progress stats
 var physics := 0.0
@@ -190,6 +198,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	if randf() <= 0.003:
 		pass #make check for easter egg character
 	
+	for i in variables.resists_list:
+		resists[i] = 0
 	
 	var slaveclass = desired_class
 	if slaveclass == null:
@@ -272,6 +282,23 @@ func get_class_list(category, person):
 	
 	return array
 
+func generate_simple_fighter(tempname):
+	var data = Enemydata.enemies[tempname]
+	
+	for i in variables.fighter_stats_list:
+		if data.has(i) == false:
+			set(i, 0)
+		else:
+			set(i, data[i])
+	icon_image = data.icon
+	body_image = data.body
+	combat_skills = data.skills
+	npc_reference = data.code
+	is_person = false
+	for i in variables.resists_list:
+		resists[i] = 0
+	for i in data.resists:
+		resists[i] = data.resists[i]
 
 
 func create(temp_race, temp_gender, temp_age):
@@ -303,6 +330,8 @@ func create(temp_race, temp_gender, temp_age):
 	
 	random_icon()
 	
+	for i in variables.resists_list:
+		resists[i] = 0
 	#setting food filter
 	for i in Items.materiallist.values():
 		if i.type == 'food':
@@ -1101,6 +1130,8 @@ func calculate_price():
 	return max(100,round(value))
 
 func get_icon():
+	if icon_image == null:
+		return null
 	if ResourcePreloader.new().has_resource(icon_image) == false:
 		return globals.loadimage(icon_image)
 	else:

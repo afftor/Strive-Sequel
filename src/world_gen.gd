@@ -187,7 +187,7 @@ func make_guild(code, area):
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
 func make_slave_for_guild(guild):
-	var newslave = globals.characterdata.new()
+	var newslave = Slave.new()
 	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty)
 	guild.slaves.append(newslave)
 
@@ -260,7 +260,12 @@ func make_location(code, area):
 	location.scriptedevents = []
 	location.randomevents = []
 	location.progress = {level = 1, stage = 0}
-	location.stagebosses = {}
+	location.stagedenemies = []
+	if location.has("final_enemy"):
+		var bossenemy = input_handler.weightedrandom(location.final_enemy)
+		location.stagedenemies.append({enemy = bossenemy, level = location.levels.size(), stage = location.levels[location.levels.size()].stages})
+		if location.final_enemy_type == 'character':
+			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages, operant = 'gte'}]})
 	state.locationcounter += 1
 	area.locations.append(location)
 
