@@ -44,6 +44,10 @@ var lust = 20.0 setget lust_set, lust_get
 var loyal = 0.0
 var resist = 0
 var lustmax = 50
+var lusttick = 1.05
+var obed_degrade_mod = 1.0
+var energy_work_mod = 8.75
+
 
 var hp = 100 setget hp_set
 var hpmax = 100
@@ -58,12 +62,31 @@ var fatigue = 0 setget fatigue_set
 var exhaustion = 0 setget exhaustion_set
 var productivity := 100.0
 
+#productivity mods
+var mod_collect = 1.0
+var mod_hunt = 1.0
+var mod_cook = 1.0
+var mod_smith = 1.0
+var mod_alchemy = 1.0
+var mod_farm = 1.0
+var mod_pros_gold = 1.0
+#to add all other mods to fully cover all tasks
+#also adding mods requires to add those mods to discipline effect 
+#var mod_pros_energy = 1.0
+var mod_default = 1.0
+
+var damage = 0 #maybe needs setget
 var hitrate = 0
 var evasion = 0
 var resists = 0
 var armor = 0
 var mdef = 0
+var armorpenetration = 0
+var critchance = 0
 var position
+var hide = false
+var silenced = false
+var manacost_mod = 1.0
 
 #progress stats
 var physics := 0.0
@@ -155,6 +178,8 @@ var resthours = 8
 var joyhours = 4
 var current_day_spent = {workhours = 0, resthours = 0, joyhours = 0}
 var rules = []
+
+var shackles_chance = null
 
 var area = ''
 var location = 'mansion'
@@ -672,7 +697,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	if taskexisted == true:
 		return
 	#make new task if it didn't exist
-	var dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = []}
+	var dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = [], mod = task.mod}
 	dict.workers.append(self.id)
 	work = taskcode
 	state.active_tasks.append(dict)
@@ -686,22 +711,21 @@ func remove_from_task():
 	work = ''
 
 func tick():
+	process_event(variables.TR_TICK)
+	
 	var skip_work = false
 	if work == '':
 		skip_work = true
-	
-	
 	
 	food_counter -= 1
 	if food_counter <= 0:
 		food_counter = 23
 		get_food()
 	
-	
 	self.fatigue += 1
-	self.lust += 1.05
+	self.lust += lusttick
 	
-	self.obedience -= 100.0/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
+	self.obedience -= 100.0 * obed_degrade_mod/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 	self.fear -= 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
 	
 	if work == 'travel':
@@ -713,9 +737,6 @@ func tick():
 				state.emit_signal("slave_arrived", self)
 		
 		return
-	
-	
-	
 	
 	if skip_work == false:
 		var totalday = 0
@@ -758,6 +779,7 @@ func energy_set(value):
 		energy = min(value, energymax)
 
 func fatigue_set(value):
+	if traits.has('undead'): return
 	fatigue = value
 
 func exhaustion_set(value):
@@ -814,8 +836,8 @@ func work_tick():
 	if currenttask == null:
 		work = ''
 		return
-	
-	if currenttask.product in ['smith','alchemy','tailor','cook']:
+
+	if ['smith','alchemy','tailor','cook'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
 				state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
@@ -836,7 +858,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
+			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mode)/100)
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -861,14 +883,19 @@ func work_tick():
 	else:
 		#print(races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function,self)*(productivity/100))
 		work_tick_values(currenttask)
-		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
+		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mode)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 
 func work_tick_values(currenttask):
 	current_day_spent.workhours += 1
-	self.energy -= 8.75
+	if traits.has('undead'):
+		self.energy -= 0
+	elif currenttask.code == 'prostitution' && traits.has('succubus_trait'): 
+		self.energy -= energy_work_mod * 0.7
+	else: 
+		self.energy -= energy_work_mod
 	var workstat = races.tasklist[currenttask.code].workstat
 	set(workstat, get(workstat) + 0.1)
 	base_exp += 2.1
@@ -978,6 +1005,7 @@ func lust_set(value):
 	
 	lust = clamp(value, 0, lustmax)
 
+
 func lust_get():
 	return lust
 
@@ -992,6 +1020,13 @@ func check_escape_chance():
 func check_escape_possibility():
 	if check_escape_chance() == false || sleep == 'jail':
 		return false
+	if shackles_chance != null:
+		var tmpchance = max(0, shackles_chance)
+		if randf()*100 <= tmpchance:
+			process_event(variables.TR_SHACKLES_OFF)
+			#shackles_chance = null
+			input_handler.emit_signal('shackles_off') #stub
+		return
 	var minchance = 50-min(obedience + loyal/2, fear + loyal/2)
 	if randf()*50 <= minchance:
 		escape()
@@ -1099,6 +1134,11 @@ func apply_atomic(template):
 		'remove_effect': 
 			remove_temp_effect_tag(template.value)
 			pass
+		'add_trait':
+			#to implement, since this part was not transfered from displaced
+			pass
+		'event':
+			process_event(template.value)
 
 
 func remove_atomic(template):
@@ -1244,7 +1284,7 @@ func remove_all_temp_effects():
 		var obj = effects_pool.get_effect_by_id(e)
 		obj.call_deferred('remove')
 
-func remove_temp_effect_tag(eff_tag):#function for nonn-direct temps removing, like heal or dispel
+func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
 	var tmp = find_temp_effect_tag(eff_tag)
 	if tmp.size() == 0: return
 	var i = globals.rng.randi_range(0, tmp.size()-1)
@@ -1269,7 +1309,7 @@ func process_event(ev):
 
 func can_act():
 	var res = true
-	for e in static_effects + temp_effects:
+	for e in static_effects + temp_effects + triggered_effects:
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has('disable'):
 			res = false
@@ -1301,10 +1341,50 @@ func process_check(check):
 	if typeof(check) == TYPE_ARRAY:
 		var res = true
 		for ch in check:
-			res = res and input_handler.requirementcombatantcheck(ch, self)
+			res = res and simple_check(ch)
 		return res
-	else: return input_handler.requirementcombatantcheck(check, self)
+	else: return simple_check(check)
 	pass
+
+func simple_check(req):#Gear, Race, Types, Resists, stats
+	var result
+	match req.type:
+		'chance':
+			result = (randf()*100 < req.value);
+		'stats':
+			result = input_handler.operate(req.operant, self.get(req.name), req.value)
+		'gear':
+			match req.slot:
+				'any':
+					var tempresult = false
+					for i in gear.values():
+						if i != null:
+							tempresult = input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value])
+							if tempresult == true:
+								result = true
+								break
+				'all':
+					result = true
+					for i in gear.values():
+						if i != null:
+							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
+								result = false
+								break
+		'race': 
+			result = (req.value == race);
+		'race_group':
+			#stub to implement humanoid and non-humanoid checks
+			pass
+	return result
+
+func stat_update(stat, value):
+	var tmp = get(stat)
+	value = round(value)
+	if variables.dmg_rel_list.has(stat): set(stat, tmp + value)
+	else: set(stat, value)
+	if tmp != null: tmp = get(stat) - tmp
+	else:  tmp = get(stat)
+	return tmp
 
 func get_all_buffs():
 	var res = {}
@@ -1337,5 +1417,81 @@ func get_all_buffs():
 		for b in b_a: tmp.push_back(b)
 	return tmp
 
-
-
+func use_social_skill(s_code, target):#add logging if needed
+	var template = Skilldata.Skilllist[s_code]
+	
+	#paying costs
+	self.mp -= template.manacost
+	self.energy -= template.energycost
+	if template.has('goldcost'):
+		state.money -= template.goldcost
+	#calcuate 'all' receviers
+	var targ_targ = [target]
+	var targ_cast = [self]
+	var targ_all = []
+	for h_id in state.characters:
+		if id == h_id: continue
+		if state.characters[h_id].work == 'travel':continue
+		targ_all.push_back(state.characters[h_id])
+	#to apply social skill cooldowns and other stuff
+	
+	#create s_skill and process triggers
+	var s_skill = S_Skill.new()
+	s_skill.createfromskill(s_code)
+	s_skill.setup_caster(self)
+	s_skill.setup_target(target)
+	s_skill.process_event(variables.TR_CAST)
+	for e in triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill)
+			eff.process_event(variables.TR_S_CAST)
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(variables.TR_S_CAST)
+	for e in target.triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill)
+			eff.process_event(variables.TR_S_TARGET) 
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(variables.TR_S_TARGET)
+	#assumption that no social skill will have more than 1 repeat or target_number 
+	s_skill.setup_final()
+	s_skill.hit_roll()
+	s_skill.resolve_value(true)
+	#s_skill.calculate_dmg() not really needed
+	
+	#to implement not fully described social chance-to-success system 
+	
+	#applying values
+	for i in range(s_skill.value.size()):
+		var targ_fin
+		match s_skill.receiver[i]:
+			'caster': targ_fin = targ_cast
+			'target': targ_fin = targ_targ
+			'all': targ_fin = targ_all
+		for h in targ_fin:
+			var tmp = h.stat_update(s_skill.damagestat[i], s_skill.value[i])
+			if s_skill.is_drain: self.stat_update(s_skill.damagestat[i], -tmp)
+		pass
+	
+	#postdamage triggers
+	s_skill.process_event(variables.TR_POSTDAMAGE)
+	for e in triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill)
+			eff.process_event(variables.TR_POSTDAMAGE)
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(variables.TR_POSTDAMAGE)
+	for e in target.triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill)
+			eff.process_event(variables.TR_POSTDAMAGE) 
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(variables.TR_POSTDAMAGE)

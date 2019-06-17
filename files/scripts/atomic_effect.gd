@@ -12,7 +12,9 @@ func _init(buff_ta, obj):
 		template = buff_ta.duplicate()
 	parent = obj
 
-func calculate_property(prop: Array):
+func calculate_property(prop): #updated version. copy this to displaced
+	if typeof(prop) != TYPE_ARRAY:
+		return prop
 	var res = 0
 	var par = effects_pool.get_effect_by_id(parent)
 	if typeof(prop[0]) == TYPE_ARRAY:
@@ -41,16 +43,16 @@ func calculate_property(prop: Array):
 	while prop.size() > 1:
 		match prop[1]:
 			'+':
-				prop[2] = prop[0] + prop[2]
+				prop[2] = prop[0] + calculate_property(prop[2])
 				pass
 			'-':
-				prop[2] = prop[0] - prop[2]
+				prop[2] = prop[0] - calculate_property(prop[2])
 				pass
 			'*':
-				prop[2] = prop[0] * prop[2]
+				prop[2] = prop[0] * calculate_property(prop[2])
 				pass
 			'/':
-				prop[2] = prop[0] / prop[2]
+				prop[2] = prop[0] / calculate_property(prop[2])
 				pass
 		prop.pop_front()
 		prop.pop_front()

@@ -4,26 +4,31 @@ class_name S_Skill
 var code
 var template
 
-var damagetype
-var damagesrc
-var damagestat = []
+var type
+
 var is_drain = false
-var skilltype
+var ability_type
 var tags
 var value = []
 var long_value = []
+var damagestat = []
+var receiver = []
 var manacost
-var userange
-var targetpattern
+var energycost
+var goldcost
+var target_range
+var target_number
+var damage_type
+var damagesrc
 var repeat
 
 var chance
 var evade
+var critchance
+var armor_p
 var caster
 var target
-var critchance
 var hit_res
-var armor_p
 
 var effects = []
 var process_value
@@ -31,19 +36,33 @@ var process_value
 func _init():
 	caster = null
 	target = null
+	target_range = 'any'
+	target_number = 'single'
+	damage_type = 'direct'
+	goldcost = 0
 	pass
 
 func clone():
 	return dict2inst(inst2dict(self))
 
+
+
 func createfromskill(s_code):
 	template = Skilldata.skilllist[s_code]
 	code = s_code
-	damagetype = template.damagetype
-	skilltype = template.skilltype
+	type = template.type
+	ability_type = template.ability_type
 	tags = template.tags.duplicate()
 	manacost = template.manacost
-	targetpattern = template.targetpattern
+	energycost = template.energycost
+	if template.has('goldcost'):
+		goldcost = template.goldcost
+	if template.has('target_range'):
+		target_range = template.target_range
+	if template.has('target_number'):
+		target_number = template.target_number
+	if template.has('damage_type'):
+		damage_type = template.damage_type
 	
 	if typeof(template.value[0]) == TYPE_ARRAY:
 		long_value = template.value.duplicate()
@@ -54,8 +73,17 @@ func createfromskill(s_code):
 			damagestat.push_back(template.damagestat)
 		else:
 			damagestat.push_back('hp')
-	userange = template.userange
-	for e in template.casteffects:
+	if template.has('receiver'):
+		if typeof(template.receiver) == TYPE_ARRAY:
+			receiver = template.receiver.duplicate()
+		else:
+			for i in range(long_value.size()):
+				receiver.push_back(template.receiver)
+	else:
+		for i in range(long_value.size()):
+			receiver.push_back('target')
+
+	for e in template.effects:
 		var eff = effects_pool.e_createfromtemplate(e, self)
 		apply_effect(effects_pool.add_effect(eff))
 	if template.has('repeat'):
@@ -94,26 +122,45 @@ func process_check(check:Array):
 
 func setup_caster(c):
 	caster = c
-	chance = caster.hitrate
-	critchance = caster.critchance
-	armor_p = caster.armorpenetration
+	if type == 'combat':
+		chance = caster.hitrate
+		critchance = caster.critchance
+		armor_p = caster.armorpenetration
+	else:
+		chance = 100
+		critchance = 0
+		armor_p = 0
 
 func setup_target(t):
 	target = t
-	evade = target.evasion
+	if type == 'combat':
+		evade = target.evasion
+	else:
+		evade = 0
 
 func setup_final():
 	if template.keys().has('chance'):
 		chance = template.chance
-	if template.keys().has('critchance'):
-		critchance = template.critchance
+		if typeof(chance) == TYPE_ARRAY:
+			chance = input_handler.calculate_number_from_string_array(chance, caster, target)
 	if template.keys().has('evade'):
 		evade = template.evade
+		if typeof(evade) == TYPE_ARRAY:
+			evade = input_handler.calculate_number_from_string_array(evade, caster, target)
 	if template.keys().has('armor_p'):
-		armor_p = template['armor_p']
+		armor_p = template.armor_p
+		if typeof(armor_p) == TYPE_ARRAY:
+			armor_p = input_handler.calculate_number_from_string_array(armor_p, caster, target)
+	if template.keys().has('critchance'):
+		critchance = template.critchance
+		if typeof(critchance) == TYPE_ARRAY:
+			critchance = input_handler.calculate_number_from_string_array(critchance, caster, target)
 
 
 func hit_roll():
+	if type == 'social':
+		hit_res = variables.RES_HIT
+		return
 	var prop = chance - evade
 	if prop < randf()*100 && caster.combatgroup != target.combatgroup:
 		hit_res = variables.RES_MISS
@@ -235,11 +282,11 @@ func resolve_value(check_m):
 	value.resize(long_value.size())
 	for i in range(long_value.size()):
 		var endvalue = input_handler.calculate_number_from_string_array(long_value[i], caster, target)
-		if !(damagestat[i] in variables.dmg_mod_list): 
+		if !(variables.dmg_mod_list.has(damagestat[i])): 
 			value[i] = endvalue
 			continue
 		var rangetype
-		if userange == 'weapon':
+		if target_range == 'weapon':
 			if caster.gear.rhand == null:
 				rangetype = 'melee'
 			else:
@@ -251,31 +298,31 @@ func resolve_value(check_m):
 	process_value = value[0]
 
 func calculate_dmg():
-	if damagetype == 'weapon':
+	if damage_type == 'weapon':
 		damagesrc = variables.S_PHYS
-	elif damagetype == 'fire':
+	elif damage_type == 'fire':
 		damagesrc = variables.S_FIRE
-	elif damagetype == 'water':
+	elif damage_type == 'water':
 		damagesrc = variables.S_WATER
-	elif damagetype == 'air':
+	elif damage_type == 'air':
 		damagesrc = variables.S_AIR
-	elif damagetype == 'earth':
+	elif damage_type == 'earth':
 		damagesrc = variables.S_EARTH
 	if hit_res == variables.RES_CRIT:
 		for i in range(value.size()): 
-			if damagestat[i] in variables.dmg_mod_list:
+			if variables.dmg_mod_list.has(damagestat[i]):
 				value[i] *= caster.critmod
 	var reduction = 0
-	if skilltype == 'skill':
+	if ability_type == 'skill':
 		reduction = max(0, target.armor - armor_p)
-	elif skilltype == 'spell':
+	elif ability_type == 'spell':
 		reduction = max(0, target.mdef)
 	if !tags.has('noreduce'):#tag for all reduction-ignoring skills i.e heals and others
 		for i in range(value.size()): 
-			if damagestat[i] in variables.dmg_mod_list:
+			if variables.dmg_mod_list.has(damagestat[i]):
 				 value[i] *= (float(100 - reduction)/100.0)
-	if damagetype in ['fire','water','air','earth']:
+	if ['fire','water','air','earth'].has(damage_type):
 		for i in range(value.size()): 
-			if damagestat[i] in variables.dmg_mod_list:
-				 value[i] *= ((100 - target['resist' + damagetype])/100.0)
+			if variables.dmg_mod_list.has(damagestat[i]):
+				 value[i] *= ((100 - target['resist' + damage_type])/100.0)
 	for v in value: v = round(v)

@@ -32,7 +32,7 @@ func mining_stone(character):
 	return 16 + character.physics/3
 
 func whoring_gold(character):
-	return 3 + character.sexuals/10 + character.charm/20
+	return (3 + character.sexuals/10 + character.charm/20) * character.mod_pros_gold
 
 func cooking_progress(character):
 	return 30 + character.wits
@@ -49,6 +49,8 @@ func alchemy_progress(character):
 func building_progress(character):
 	return 3 + character.wits/10 + character.physics/20
 
+#i added to task tamplates link to a corresponding productivity modifier. rewiev these values and fix them if needed 
+#also tried to fix cooking but not sure if all was made
 var tasklist = {
 	hunting = {
 		code = 'hunting',
@@ -61,6 +63,7 @@ var tasklist = {
 			huntleather = {code = 'huntleather', item = 'leather', progress_per_item = 100, reqs = [], progress_function = 'hunt_leather'}}, #later change function to array
 		icon = null,
 		tags = [],
+		mod = 'mod_hunt'
 	},
 	fishing = {
 		code = 'fishing',
@@ -71,6 +74,7 @@ var tasklist = {
 		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 9, reqs = [], progress_function = 'fishing'}},
 		icon = null,
 		tags = [],
+		mod = 'mod_collect'
 	},
 	farming = {
 		code = 'farming',
@@ -82,6 +86,7 @@ var tasklist = {
 		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'farm_grains', value = 1}], progress_function = 'farming'}},
 		icon = null,
 		tags = [],
+		mod = 'mod_farm'
 	},
 	woodcutting = {
 		code = 'woodcutting',
@@ -92,6 +97,7 @@ var tasklist = {
 		production = {woodcutlumber = {code = 'woodcutlumber', item = 'wood', progress_per_item = 100, reqs = [], progress_function = 'woodcutting_lumber'}},
 		icon = null,
 		tags = [],
+		mod = 'mod_collect'
 	},
 	mining = {
 		code = 'mining',
@@ -102,6 +108,7 @@ var tasklist = {
 		production = {minestone = {code = 'minestone', item = 'stone', progress_per_item = 100, reqs = [], progress_function = 'mining_stone'}},
 		icon = null,
 		tags = [],
+		mod = 'mod_collect'
 	},
 	prostitution = {
 		code = 'prostitution',
@@ -112,6 +119,7 @@ var tasklist = {
 		production = {prostitutegold = {code = 'prostitutegold', descript = tr("JOBPROSTITUTEGOLDDESCRIPT"), icon = load("res://assets/images/iconsitems/gold.png"), item = 'gold', progress_per_item = 1, reqs = [], progress_function = 'whoring_gold'}},
 		icon = null,
 		tags = ['sex'],
+		mod = 'mod_default'
 	},
 	cooking = {
 		code = 'cooking',
@@ -119,9 +127,10 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'wits',
-		production = {tailor = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_cooking.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
+		production = {cooking = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_cooking.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
 		icon = null,
-		tags = ['tailor'],
+		tags = ['tailor'],#????
+		mod = 'mod_cook'
 	},
 	tailor = {
 		code = 'tailor',
@@ -132,6 +141,7 @@ var tasklist = {
 		production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_tailor.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
 		icon = null,
 		tags = ['tailor'],
+		mod = 'mod_default'
 	},
 	smith = {
 		code = 'smith',
@@ -142,6 +152,7 @@ var tasklist = {
 		production = {smith = {code = 'smith',item = 'smith',descript = tr("JOBSMITHCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_smith.png"), progress_per_item = 1, reqs = [], progress_function = 'forge_progress'}},
 		icon = null,
 		tags = ['smith'],
+		mod = 'mod_smith'
 	},
 	alchemy = {
 		code = 'alchemy',
@@ -152,6 +163,7 @@ var tasklist = {
 		production = {alchemy = {code = 'alchemy',item = 'alchemy',descript = tr("JOBALCHEMYCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_alchemy.png"), progress_per_item = 1, reqs = [], progress_function = 'alchemy_progress'}},
 		icon = null,
 		tags = ['alchemy'],
+		mod = 'mod_alchemy'
 	},
 	building = {
 		code = 'building',
@@ -162,6 +174,7 @@ var tasklist = {
 		production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_alchemy.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
 		icon = null,
 		tags = ['alchemy'],
+		mod = 'mod_default'
 	},
 }
 
