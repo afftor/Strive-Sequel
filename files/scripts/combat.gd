@@ -925,6 +925,7 @@ func execute_skill(skill, caster, target):
 		combatlogadd(target.name + " evades the damage.")
 		Off_Target_Glow()
 		return
+	target = s_skill2.target #not sure if it is safe
 	s_skill2.calculate_dmg()
 	var text = '\n'
 	if s_skill2.hit_res == variables.RES_CRIT:
@@ -971,7 +972,7 @@ func execute_skill(skill, caster, target):
 		else: #add, drain, remove, set, no log
 			var rval = target.stat_update(s_skill2.damagestat[i], s_skill2.value[i])
 			if s_skill2.is_drain:
-				var rval2 = caster.stat_update(s_skill2.damagestat[i], caster.get(s_skill2.damagestat[i])-rval)
+				var rval2 = caster.stat_update(s_skill2.damagestat[i], -rval) # do not use drain on stats that are not rel-damaging
 			if s_skill2.tags.has('s_heal'):
 				text += "%s restored %d %s\n" %[target.name, rval, tr(s_skill2.damagestat[i])] 
 			elif s_skill2.tags.has('s_drain') && s_skill2.is_drain:

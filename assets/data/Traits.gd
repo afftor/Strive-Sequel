@@ -8,7 +8,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_master'],
 	}, 
 	
 	worker_trait = {#+50% productivity on collection tasks except hunting
@@ -17,7 +17,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_worker'],
 	}, 
 	foreman_trait = {#+100% productivity on collection tasks except hunting
 		code = 'foreman_trait',
@@ -25,7 +25,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_foreman'],
 	}, 
 	hunter_trait = {#+50% productivity on hunting tasks
 		code = 'hunter_trait',
@@ -33,7 +33,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_hunter'],
 	}, 
 	smith_trait = {#+100% productivity on smith crafting
 		code = 'smith_trait',
@@ -41,7 +41,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_smith'],
 	}, 
 	chef_trait = {#+100% productivity on cooking
 		code = 'chef_trait',
@@ -49,7 +49,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_chef'],
 	}, 
 	attendant_trait = {#item usage in combat takes no turn
 		code = 'attendant_trait',
@@ -65,7 +65,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_alchemist','e_tr_potion'],
 	}, 
 	cattle_trait = {#+50% farm production
 		code = 'cattle_trait',
@@ -73,7 +73,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_cattle'],
 	}, 
 	breeder_trait = {#+100% farm production, allows breeding with any race, -30% pregnancy duration
 		code = 'breeder_trait',
@@ -81,15 +81,15 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
-	}, 
+		effects = ['e_tr_breeder'],
+	}, #second and third effects need to be hardcoded
 	harlot_trait = {#+50% gold from prostitution
 		code = 'harlot_trait',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_harlot'],
 	}, 
 	succubus_trait = {#-30% energy consumption on prostitution
 		code = 'succubus_trait',
@@ -98,14 +98,14 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],
-	}, 
+	}, #hardcoded
 	pet_trait = {#+25% gold from prostitution
 		code = 'pet_trait',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_pet'],
 	}, 
 	sextoy_trait = {#+50% gold from prostitution
 		code = 'sextoy_trait',
@@ -113,11 +113,11 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_harlot'],
 	}, 
 	
 	#exploration related traits
-	
+	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor
 		code = 'medium_armor',
 		name = '',

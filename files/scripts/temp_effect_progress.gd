@@ -78,7 +78,7 @@ func deserialize(tmp):
 				rem_event.push_back(int(tr))
 		else:
 			rem_event.push_back(int(template.rem_event))
-	remains = tmp.remains
+	remains = int(tmp.remains)
 	template_name = template.name
 	pass
 

@@ -6,7 +6,8 @@ class_name temp_e_upgrade
 
 var tick_event := []
 var rem_event := []
-var remains := -1
+var remains = -1
+var stage = 1
 
 var template_name
 
@@ -26,7 +27,6 @@ func createfromtemplate(tmp):
 			rem_event = template.rem_event.duplicate()
 		else:
 			rem_event.clear()
-			rem_event.push_back(template.rem_event)
 	template_name = template.name
 
 func apply():
@@ -37,10 +37,34 @@ func apply():
 		obj.apply_effect(eff)
 
 func upgrade():
+	if template.has('stages'):
+		stage += 1
+		if stage <= template.stages:
+			reapply()
+			return
 	if !template.has('next_level'): return
 	remove()
 	createfromtemplate(template.next_level)
+	if template.has('stages'):
+		stage = 1
 	apply()
+	pass
+
+func downgrade():
+	if template.has('stages'):
+		stage -= 1
+		if stage > 0:
+			reapply()
+			return variables.TE_RES_TICK
+	if !template.has('prev_level'): 
+		remove()
+		return variables.TE_RES_REMOVE
+	remove()
+	createfromtemplate(template.prev_level)
+	if template.has('stages'):
+		stage = template.stages
+	apply()
+	return variables.TE_RES_DGRADE
 	pass
 
 func process_event(ev):
@@ -52,8 +76,7 @@ func process_event(ev):
 		for b in buffs:
 			b.calculate_args()
 		if remains == 0:
-			remove()
-			res = variables.TE_RES_REMOVE
+			res = downgrade()
 	if ev == rem_event:
 		remove()
 		res = variables.TE_RES_REMOVE
@@ -63,6 +86,7 @@ func serialize():
 	var tmp = .serialize()
 	tmp['type'] = 'temp_u'
 	tmp['remains'] = remains
+	tmp['stage'] = stage
 	return tmp
 	pass
 
@@ -81,8 +105,9 @@ func deserialize(tmp):
 				rem_event.push_back(int(tr))
 		else:
 			rem_event.push_back(int(template.rem_event))
-	remains = tmp.remains
+	remains = int(tmp.remains)
 	template_name = template.name
+	stage = int(tmp.stage)
 	pass
 
 func remove():
