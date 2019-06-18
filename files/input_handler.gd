@@ -417,7 +417,6 @@ func itemshadeimage(node, item):
 			var part = 'part' +  str(item.partcolororder[i]) + 'color'
 			var color = Items.materiallist[item.parts[i]].color
 			node.material.set_shader_param(part, color)
-	
 
 
 #Enlarge/fade out animation
@@ -671,3 +670,19 @@ func HideOutline(node):
 
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
+
+#Inventory
+
+func ShowInentory(args):
+	var inventory
+	var node = get_tree().get_root()
+	if node.has_node('inventory'):
+		inventory = node.get_node('inventory')
+		node.remove_child(inventory)
+	else:
+		inventory = load("res://files/Inventory.tscn").instance()
+		inventory.name = 'inventory'
+	node.add_child(inventory)
+	inventory.open(args)
+	
+	return inventory

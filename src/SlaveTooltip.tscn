@@ -206,45 +206,57 @@ text = "name"
 align = 1
 
 [node name="exp" type="Label" parent="."]
-margin_left = 278.041
+margin_left = 256.041
 margin_top = 266.253
-margin_right = 478.041
+margin_right = 456.041
 margin_bottom = 290.253
 text = "Exp"
 
 [node name="physics" type="Label" parent="."]
-margin_left = 278.041
+margin_left = 256.041
 margin_top = 294.253
-margin_right = 478.041
+margin_right = 456.041
 margin_bottom = 318.253
 text = "Physics"
 
 [node name="wits" type="Label" parent="."]
-margin_left = 278.041
+margin_left = 256.041
 margin_top = 322.253
-margin_right = 478.041
+margin_right = 456.041
 margin_bottom = 346.253
 text = "Wits"
 
 [node name="charm" type="Label" parent="."]
-margin_left = 278.041
+margin_left = 256.041
 margin_top = 350.253
-margin_right = 478.041
+margin_right = 456.041
 margin_bottom = 374.253
 text = "Charm"
 
 [node name="sexuals" type="Label" parent="."]
-margin_left = 278.041
+margin_left = 256.041
 margin_top = 378.253
-margin_right = 478.041
+margin_right = 456.041
 margin_bottom = 402.253
 text = "Sexuals"
 
 [node name="job" type="Label" parent="."]
-margin_left = 276.0
+margin_left = 256.0
 margin_top = 192.0
-margin_right = 456.0
-margin_bottom = 216.0
+margin_right = 436.0
+margin_bottom = 243.0
 text = "State
 Job"
 
+[node name="Sextraits" type="VBoxContainer" parent="."]
+margin_left = 379.951
+margin_top = 308.872
+margin_right = 569.951
+margin_bottom = 467.872
+
+[node name="Button" type="Label" parent="Sextraits"]
+visible = false
+margin_right = 190.0
+margin_bottom = 24.0
+size_flags_vertical = 1
+text = "Test text"

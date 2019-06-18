@@ -187,7 +187,7 @@ func make_guild(code, area):
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
 func make_slave_for_guild(guild):
-	var newslave = globals.characterdata.new()
+	var newslave = Slave.new()
 	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty)
 	guild.slaves.append(newslave)
 
@@ -207,6 +207,7 @@ func make_settlement(code, area):
 	settlement.id = "L" + str(state.locationcounter)
 	settlement.group = {}
 	settlement.type = 'settlement'
+	settlement.levels = {}
 	state.locationcounter += 1
 	if randf() <= 0.8:
 		settlement.races.append(area.lead_race)
@@ -250,14 +251,25 @@ func make_location(code, area):
 	location.name =  "The " + dungeonadj[randi()%dungeonadj.size()] + " " + dungeonnoun[randi()%dungeonnoun.size()]
 	location.id = "L" + str(state.locationcounter)
 	location.travel_time = round(rand_range(6,24))
-	location.type = 'dungeon'
+	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
+	location.levels = {}
+	while levelnumber > 0:
+		location.levels[int(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
+		levelnumber -= 1
 	location.group = {}
-	location.progress = {level = 0, stage = 0}
+	location.scriptedevents = []
+	location.randomevents = []
+	location.progress = {level = 1, stage = 0}
+	location.stagedenemies = []
+	if location.has("final_enemy"):
+		var bossenemy = input_handler.weightedrandom(location.final_enemy)
+		location.stagedenemies.append({enemy = bossenemy, level = location.levels.size(), stage = location.levels[location.levels.size()].stages})
+		if location.final_enemy_type == 'character':
+			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages, operant = 'gte'}]})
 	state.locationcounter += 1
 	area.locations.append(location)
 
 func update_guilds(area):
-	
 	#rebuild quests and slaves in guild
 	for i in area.factions.values():
 		for k in i.slaves:
@@ -324,8 +336,6 @@ var locations = {
 		food_type_number = [2,4],
 		resources_type_number = [2,3],
 	},
-	caves = [],
-	bandit_camp = [],
 }
 
 
@@ -561,6 +571,7 @@ func make_quest_location(quest):
 				locationdata.quest = quest.code
 				locationdata.area = quest.area
 				locationdata.travel_time = quest.travel_time
+				locationdata.levels = round(rand_range(data.levels[0], data.levels[1]))
 				locationdata.stages = round(rand_range(data.stages[0], data.stages[1]))
 				locationdata.enemies = data.enemies
 				locationdata.difficulty = data.difficulty
@@ -614,8 +625,41 @@ func make_quest_descript(quest):
 
 
 var dungeons = {
+	skirmish_bandit_camp_easy = {
+		code = 'skirmish_bandit_camp_easy',
+		type = 'skirmish',
+		name = '',
+		descript = '',
+		background = '',
+		levels = [1,1],
+		stages_per_level = [1,1],
+		difficulty = 'easy',
+		enemies = [["rats_easy", 1]],
+		final_enemy = [['bandits_easy_boss',1]],
+		final_enemy_type = 'character',
+		affiliation = ['local'], #defines character races and events
+		events = [],
+	},
+	skirmish_forest_wolves_easy = {
+		code = 'skirmish_forest_wolves_easy',
+		type = 'skirmish',
+		name = '',
+		descript = '',
+		background = '',
+		levels = [1,1],
+		stages_per_level = [1,1],
+		difficulty = 'easy',
+		enemies = [["wolves_easy1", 1]],
+		final_enemy = [['bandits_easy_boss',1]],
+		final_enemy_type = 'character',
+		affiliation = ['local'], #defines character races and events
+		events = [],
+	},
+	
+	
 	dungeon_bandit_den_easy = {
 		code = 'dungeon_bandit_den_easy',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -630,6 +674,7 @@ var dungeons = {
 	},
 	dungeon_goblin_cave_easy = {
 		code = 'dungeon_goblin_cave_easy',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -644,6 +689,7 @@ var dungeons = {
 	},
 	dungeon_grove_easy = {
 		code = 'dungeon_grove_easy',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -658,6 +704,7 @@ var dungeons = {
 	},
 	dungeon_crypt_easy = {
 		code = 'dungeon_crypt_easy',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -672,6 +719,7 @@ var dungeons = {
 	},
 	dungeon_mountains_med = {
 		code = 'dungeon_mountains_med',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -686,6 +734,7 @@ var dungeons = {
 	},
 	dungeon_volcano_easy = {
 		code = 'dungeon_volcano_easy',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -700,6 +749,7 @@ var dungeons = {
 	},
 	dungeon_city_easy = {
 		code = 'dungeon_city_easy',
+		type = 'dungeon',
 		name = '',
 		descript = '',
 		background = '',
@@ -718,7 +768,31 @@ var event_locations_data = {
 	
 }
 
+var scripteventdata = {
+	dungeon_entrance_tutorial = {
+		code = 'dungeon_entrance_tutorial',
+		trigger = 'enter',
+		oneshot = true,
+		action = 'startevent',
+		arg = 'dungeon_enter_tutorial',
+	},
+	
+}
+
 var eventscrits = {
+	dungeon_enter_tutorial = {
+		reqs = [],
+		event_start = [
+			{
+				effects = [],
+				action = 'close_event',
+				text = 'This is an event. ',
+				reqs = [],
+			},
+			],
+		
+	},
+	
 	bandits_threat_quest = {
 		reqs = [],
 		event_start = [
@@ -759,6 +833,8 @@ var eventscrits = {
 	}
 	
 }
+
+
 
 
 var easter_egg_characters = {

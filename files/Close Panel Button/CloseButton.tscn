@@ -10,4 +10,3 @@ margin_bottom = 35.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
-

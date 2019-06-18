@@ -55,7 +55,6 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="AreaCategories" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 146.599
 margin_top = 154.184
 margin_right = 192.599
@@ -229,12 +228,11 @@ expand = true
 stretch_mode = 5
 
 [node name="PresentedSlavesPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
-margin_left = 995.0
-margin_top = 164.0
-margin_right = 1441.0
-margin_bottom = 865.0
+margin_left = 1009.35
+margin_top = 326.633
+margin_right = 1455.35
+margin_bottom = 1027.63
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PresentedSlavesPanel"]
 margin_left = 30.2186
@@ -437,6 +435,7 @@ margin_right = 969.909
 margin_bottom = 812.36
 
 [node name="FactionDetailsPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 202.991
 margin_top = 70.3418
@@ -505,6 +504,7 @@ margin_bottom = 710.0
 text = "Unspent: "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FactionDetailsPanel"]
+editor/display_folded = true
 margin_left = 50.0
 margin_top = 439.0
 margin_right = 358.0
@@ -723,3 +723,9 @@ margin_right = 69.2678
 margin_bottom = 36.9508
 text = "Gold"
 
+[node name="AreaDescription" type="RichTextLabel" parent="."]
+margin_left = 907.0
+margin_top = 24.0
+margin_right = 1478.0
+margin_bottom = 302.0
+bbcode_enabled = true

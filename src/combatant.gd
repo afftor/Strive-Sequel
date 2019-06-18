@@ -8,6 +8,13 @@ var unique
 
 var icon_image = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body_image = 'default'
+var npc_reference
+#####required for combat
+var combatgroup 
+var displaynode
+var defeated = false
+var cooldowns = []
+#####
 
 var name = ''
 var surname = ''
@@ -26,6 +33,7 @@ var combat_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
 var traits = []
+var sex_traits = []
 var effects = []
 
 var static_effects = []
@@ -42,7 +50,6 @@ var obedience = 100.0 setget obed_set, obed_get
 var fear = 70.0 setget fear_set, fear_get
 var lust = 20.0 setget lust_set, lust_get
 var loyal = 0.0
-var resist = 0
 var lustmax = 50
 var lusttick = 1.05
 var obed_degrade_mod = 1.0
@@ -78,15 +85,19 @@ var mod_default = 1.0
 var damage = 0 #maybe needs setget
 var hitrate = 0
 var evasion = 0
-var resists = 0
+var resists = {}
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
 var critchance = 0
 var position
+
 var hide = false
 var silenced = false
 var manacost_mod = 1.0
+
+var speed = 0
+
 
 #progress stats
 var physics := 0.0
@@ -198,6 +209,8 @@ var relations = {}
 var metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0}
 var lastsexday
 
+
+var masternoun = 'Master'
 #temps
 #var profs = load("res://assets/data/Skills.gd").new().professions
 
@@ -212,6 +225,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	if randf() <= 0.003:
 		pass #make check for easter egg character
 	
+	for i in variables.resists_list:
+		resists[i] = 0
 	
 	var slaveclass = desired_class
 	if slaveclass == null:
@@ -271,6 +286,18 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		if classarray != null:
 			unlock_class(classarray[randi()%classarray.size()].code, true)
 		classcounter -= 1
+	
+	var traitarray = []
+	#assign traits
+	for i in Traitdata.sex_traits.values():
+		if i.starting == true && checkreqs(i.acquire_reqs) == true:
+			traitarray.append(i)
+	var rolls = max(1,ceil(sexuals_factor/3))
+	while rolls > 0:
+		var newtrait = traitarray[randi()%traitarray.size()]
+		sex_traits.append(newtrait.code)
+		traitarray.erase(newtrait)
+		rolls -= 1
 
 func get_class_list(category, person):
 	var array = []
@@ -282,6 +309,23 @@ func get_class_list(category, person):
 	
 	return array
 
+func generate_simple_fighter(tempname):
+	var data = Enemydata.enemies[tempname]
+	
+	for i in variables.fighter_stats_list:
+		if data.has(i) == false:
+			set(i, 0)
+		else:
+			set(i, data[i])
+	icon_image = data.icon
+	body_image = data.body
+	combat_skills = data.skills
+	npc_reference = data.code
+	is_person = false
+	for i in variables.resists_list:
+		resists[i] = 0
+	for i in data.resists:
+		resists[i] = data.resists[i]
 
 
 func create(temp_race, temp_gender, temp_age):
@@ -313,6 +357,8 @@ func create(temp_race, temp_gender, temp_age):
 	
 	random_icon()
 	
+	for i in variables.resists_list:
+		resists[i] = 0
 	#setting food filter
 	for i in Items.materiallist.values():
 		if i.type == 'food':
@@ -442,6 +488,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = travel_time == 0 && location == i.type
 			'is_id':
 				check = input_handler.operate(i.operant, id, i.value)
+			'long_tail':
+				check = globals.longtails.has(tail)
 		if check == false:
 			return false
 	return true
@@ -454,6 +502,54 @@ func check_gear_equipped(gearname):
 		if tempgear.base_type == gearname:
 			return true
 	return false
+
+func equip(item):
+	if false:#add checks for gear traits
+		input_handler.SystemMessage(tr("INVALIDCLASS"))
+		return
+	for i in item.multislots:
+		if gear[i] != null:
+			unequip(state.items[gear[i]])
+	for i in item.slots:
+		if gear[i] != null:
+			unequip(state.items[gear[i]])
+		gear[i] = item.id
+	item.owner = id
+	#adding bonuses
+#	for i in item.bonusstats:
+#		#self[i] += item.bonusstats[i]
+#		set(i, get(i) + item.bonusstats[i])
+#	for i in item.effects:
+#		var tmp = Effectdata.effects[i].effects;
+#		for e in tmp:
+#			#apply_effect(e);
+#			var eff = effects_pool.e_createfromtemplate(e)
+#			apply_effect(effects_pool.add_effect(eff))
+#			eff.set_args('item', item.id)
+		#addpassiveeffect(i)
+		#NEED REPLACING
+	#checkequipmenteffects()
+
+
+func unequip(item):#NEEDS REMAKING!!!!
+	#removing links
+	item.owner = null
+	for i in gear:
+		if gear[i] == item.id:
+			gear[i] = null
+	#removing bonuses
+#	for i in item.bonusstats:
+#		#self[i] -= item.bonusstats[i]
+#		set(i, get(i) - item.bonusstats[i])
+	
+#	for i in item.effects:
+#		var tmp = Effectdata.effects[i].effects;
+#		for e in find_eff_by_item(item.id):
+#			var eff = effects_pool.get_effect_by_id(e)
+#			eff.remove()
+#		#removepassiveeffect(i) 
+#		#NEED REPLACING
+	#checkequipmenteffects()
 
 func check_profession_limit(name, value):
 	var counter = 0
@@ -735,6 +831,8 @@ func tick():
 				area = travel_target.area
 				location = travel_target.location
 				state.emit_signal("slave_arrived", self)
+				if location == 'mansion':
+					work = 'rest'
 		
 		return
 	
@@ -962,7 +1060,7 @@ func make_item(temprecipe):
 			if recipe.crafttype == 'modular':
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
 			else:
-				globals.AddItemToInventory(globals.CreateGearItem(item.code, [], null, true))
+				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
 	if temprecipe.repeats > 0:
 		temprecipe.repeats -= 1
 		if temprecipe.repeats == 0:
@@ -1069,6 +1167,8 @@ func calculate_price():
 	return max(100,round(value))
 
 func get_icon():
+	if icon_image == null:
+		return null
 	if ResourcePreloader.new().has_resource(icon_image) == false:
 		return globals.loadimage(icon_image)
 	else:
@@ -1103,7 +1203,6 @@ func random_icon():
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 
-var masternoun = 'Master'
 
 #effects related part from displaced
 #if you are planning to use more functions from it (trait-related, eqip etc) - keep track of actual code

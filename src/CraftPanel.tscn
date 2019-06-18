@@ -367,6 +367,29 @@ margin_bottom = 38.9109
 text = "Parts"
 align = 1
 
+[node name="NumberConfirm" type="Button" parent="NumberSelect"]
+margin_left = 448.219
+margin_top = 111.015
+margin_right = 722.219
+margin_bottom = 165.015
+text = "Confirm"
+
+[node name="HSlider" type="HSlider" parent="NumberSelect"]
+margin_left = 385.316
+margin_top = 74.3013
+margin_right = 813.316
+margin_bottom = 90.3013
+min_value = 1.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
+margin_left = 351.356
+margin_top = 35.5544
+margin_right = 847.356
+margin_bottom = 67.5544
+text = "Repeat: 1 time"
+
 [node name="MaterialSelect" type="TextureRect" parent="NumberSelect"]
 editor/display_folded = true
 visible = false
@@ -422,27 +445,3 @@ margin_right = 456.0
 margin_bottom = 68.0
 text = "SELECTMATERIAL"
 align = 1
-
-[node name="NumberConfirm" type="Button" parent="NumberSelect"]
-margin_left = 448.219
-margin_top = 111.015
-margin_right = 722.219
-margin_bottom = 165.015
-text = "Confirm"
-
-[node name="HSlider" type="HSlider" parent="NumberSelect"]
-margin_left = 385.316
-margin_top = 74.3013
-margin_right = 813.316
-margin_bottom = 90.3013
-min_value = 1.0
-value = 1.0
-ticks_on_borders = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
-margin_left = 351.356
-margin_top = 35.5544
-margin_right = 847.356
-margin_bottom = 67.5544
-text = "Repeat: 1 time"
-

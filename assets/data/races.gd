@@ -176,6 +176,17 @@ var tasklist = {
 		tags = ['alchemy'],
 		mod = 'mod_default'
 	},
+	
+	travel = { #dummy task for travelling assignment 
+		code = 'travel',
+		reqs = [{type = 'disabled'}],
+		name = '',
+		descript = tr("TASKTRAVELDESCRIPT"),
+		workstat = '',
+		production = {},
+		icon = null,
+		tags = [],
+	},
 }
 
 var racelist = {

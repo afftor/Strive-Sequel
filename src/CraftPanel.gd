@@ -89,6 +89,8 @@ func select_category(category):
 		var recipe = Items.recipes[i.code]
 		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
 		newnode.get_node("icon").texture = item.icon
+		if item.type == 'gear':
+			newnode.get_node("icon").material = load("res://files/ItemShader.tres").duplicate()
 		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
 		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
@@ -150,9 +152,8 @@ func selectcraftitem(item):
 	
 	if item.crafttype == 'basic':
 		$NumberSelect/MaterialSetupPanel.hide()
-		
-		
 	else:
+		$NumberSelect/NumberConfirm.disabled = true
 		$NumberSelect/MaterialSetupPanel.show()
 		$NumberSelect/MaterialSetupPanel/EndItemDescript.bbcode_text = ''
 		item = Items.itemlist[item.resultitem]
@@ -192,11 +193,6 @@ func choosematerial(button):
 	
 	for i in Items.materiallist.values():
 		var tempmaterial = state.materials[i.code]
-#		if tempmaterial <= 0:
-#			continue
-#		for j in itemparts.values():
-#			if j.material == i.code:
-#				tempmaterial -= j.price
 		if !i.has("parts"):
 			continue
 		if i.parts.has(part):
@@ -206,9 +202,6 @@ func choosematerial(button):
 			newbutton.get_node('Icon').texture = i.icon
 			newbutton.get_node("amount").text = str(tempmaterial)
 			newbutton.get_node("Label").text = i.name
-#			if tempmaterial < cost:
-#				newbutton.disabled = true
-#				newbutton.get_node("Label").text += '\nNot Enough Materials'
 			globals.connecttexttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
 			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
 			

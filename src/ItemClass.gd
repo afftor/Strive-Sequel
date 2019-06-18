@@ -36,8 +36,11 @@ var weaponrange
 var multislots = []
 var slots = []
 var hitsound
+var interaction_use = false
+
 
 func CreateUsable(ItemName = '', number = 1):
+	type = 'usable'
 	itembase = ItemName
 	code = ItemName
 	stackable = true
@@ -46,6 +49,8 @@ func CreateUsable(ItemName = '', number = 1):
 	if itemtemplate.icon != null:
 		icon = itemtemplate.icon.get_path()
 	name = itemtemplate.name
+	if itemtemplate.has("interaction_effect"):
+		interaction_use = true
 	#itemtype = itemtemplate.itemtype
 #	useeffects = itemtemplate.useeffects
 #	useskill = itemtemplate.useskill
@@ -70,91 +75,18 @@ func UseItem(user = null, target = null):
 			finaltarget = target
 		Effectdata.call(effect.effect, finaltarget, effect.value)
 
-func CreateGearSimple(ItemName = ''):
-	itembase = ItemName
-	bonusstats = {damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
-	stackable = false
-	var itemtemplate = Items.itemlist[ItemName]
-	var tempname = itemtemplate.name
-	
-	
-	geartype = itemtemplate.geartype
-	if itemtemplate.has('weaponrange'):
-		weaponrange = itemtemplate.weaponrange
-	itemtype = itemtemplate.itemtype
-	
-	for i in itemtemplate.basestats:
-		if bonusstats.has(i):
-			bonusstats[i] += itemtemplate.basestats[i]
-	
-	
-	if itemtemplate.has('effects'):
-		for e in itemtemplate.effects:
-			effects.push_back(e)
-	
-	
-	#durability = itemtemplate.basedurability
-	tags = itemtemplate.tags
-	if itemtemplate.has('multislots'):
-		multislots = itemtemplate.multislots
-	if itemtemplate.has('hitsound'):
-		hitsound = itemtemplate.hitsound
-	slots = itemtemplate.slots
-	var parteffectdict = {}
-	for i in parts:
-		var material = Items.materiallist[parts[i]]
-		var materialeffects = material['parts'][i]
-		materials.append(material.code)
-		globals.AddOrIncrementDict(parteffectdict, materialeffects)
-	if parteffectdict.has('durabilitymod'):
-		durability *= parteffectdict.durabilitymod
-	for i in parteffectdict:
-		if self.get(i) != null && i != 'effects':
-			#self[i] += parteffectdict[i]
-			set(i, get(i)+parteffectdict[i])
-		elif bonusstats.has(i):
-			bonusstats[i] += parteffectdict[i]
-		elif i == 'effects':
-			for k in parteffectdict[i]:
-				effects.append(k)
-#	for i in itemtemplate.basemods:
-#		if bonusstats.has(i):
-#			bonusstats[i] *= itemtemplate.basemods[i]
-	
-	
-	if itemtemplate.icon != null:
-		if itemtemplate.has("alticons"):
-			var alticon = false
-			for i in itemtemplate.alticons.values():
-				if i.materials.has(parts[i.part]):
-					icon = i.icon.get_path()
-					if i.has('altname'):
-						tempname = i.altname
-					alticon = true
-			if alticon == false:
-				icon = itemtemplate.icon.get_path()
-		else:
-			icon = itemtemplate.icon.get_path()
-	
-	
-	
-	
-	
-	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
-	bonusstats.erase('damagemod')
-#	durability = round(durability)
-#	maxdurability = round(durability)
-
-
 func CreateGear(ItemName = '', dictparts = {}):
+	var mode = 'normal'
+	if dictparts.size() == 0:
+		mode = 'simple'
 	itembase = ItemName
 	bonusstats = {damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
+	type = 'gear'
 	var itemtemplate = Items.itemlist[ItemName]
 	var tempname = itemtemplate.name
 	
 	
-	partcolororder = itemtemplate.partcolororder
 	geartype = itemtemplate.geartype
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
@@ -169,34 +101,38 @@ func CreateGear(ItemName = '', dictparts = {}):
 		for e in itemtemplate.effects:
 			effects.push_back(e)
 	
-	parts = dictparts.duplicate()
-	durability = itemtemplate.basedurability
+	
 	tags = itemtemplate.tags
 	if itemtemplate.has('multislots'):
 		multislots = itemtemplate.multislots
 	if itemtemplate.has('hitsound'):
 		hitsound = itemtemplate.hitsound
 	slots = itemtemplate.slots
-	var parteffectdict = {}
-	for i in parts:
-		var material = Items.materiallist[parts[i]]
-		var materialeffects = material['parts'][i]
-		materials.append(material.code)
-		globals.AddOrIncrementDict(parteffectdict, materialeffects)
-	if parteffectdict.has('durabilitymod'):
-		durability *= parteffectdict.durabilitymod
-	for i in parteffectdict:
-		if self.get(i) != null && i != 'effects':
-			#self[i] += parteffectdict[i]
-			set(i, get(i)+parteffectdict[i])
-		elif bonusstats.has(i):
-			bonusstats[i] += parteffectdict[i]
-		elif i == 'effects':
-			for k in parteffectdict[i]:
-				effects.append(k)
-	for i in itemtemplate.basemods:
-		if bonusstats.has(i):
-			bonusstats[i] *= itemtemplate.basemods[i]
+	if mode == 'normal':
+		parts = dictparts.duplicate()
+		durability = itemtemplate.basedurability
+		partcolororder = itemtemplate.partcolororder
+	
+		var parteffectdict = {}
+		for i in parts:
+			var material = Items.materiallist[parts[i]]
+			var materialeffects = material['parts'][i]
+			materials.append(material.code)
+			globals.AddOrIncrementDict(parteffectdict, materialeffects)
+		if parteffectdict.has('durabilitymod'):
+			durability *= parteffectdict.durabilitymod
+		for i in parteffectdict:
+			if self.get(i) != null && i != 'effects':
+				#self[i] += parteffectdict[i]
+				set(i, get(i)+parteffectdict[i])
+			elif bonusstats.has(i):
+				bonusstats[i] += parteffectdict[i]
+			elif i == 'effects':
+				for k in parteffectdict[i]:
+					effects.append(k)
+		for i in itemtemplate.basemods:
+			if bonusstats.has(i):
+				bonusstats[i] *= itemtemplate.basemods[i]
 	
 	
 	if itemtemplate.icon != null:
@@ -215,35 +151,47 @@ func CreateGear(ItemName = '', dictparts = {}):
 	
 	
 	
-	if dictparts.size() == itemtemplate.parts.size():
-		name = Items.materiallist[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
-	else:
-		name = tempname
+	if mode == 'normal':
+		durability = round(durability)
+		maxdurability = round(durability)
+		if dictparts.size() == itemtemplate.parts.size():
+			name = Items.materiallist[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
+		else:
+			name = tempname
 	
 	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
 	bonusstats.erase('damagemod')
-	durability = round(durability)
-	maxdurability = round(durability)
+	
+	
 
 func substractitemcost():
 	var itemtemplate = Items.itemlist[itembase]
 	for i in parts:
 		state.materials[parts[i]] -= itemtemplate.parts[i]
 
-func itemshadeimage(node):
-	var shader = load("res://files/ItemShader.tres").duplicate()
+func set_icon(node):
+	var icon_texture
+	if ResourcePreloader.new().has_resource(icon) == false:
+		icon_texture = globals.loadimage(icon)
+	else:
+		icon_texture = load(icon)
+	
 	if node.get_class() == "TextureButton":
-		node.texture_normal = load(icon)
+		node.texture_normal = icon_texture
 	else:
-		node.texture = load(icon)
-	if node.material != shader:
-		node.material = shader
-	else:
-		shader = node.material
-	for i in parts:
-		var part = 'part' +  str(partcolororder[i]) + 'color'
-		var color = Items.materiallist[parts[i]].color
-		node.material.set_shader_param(part, color)
+		node.texture = icon_texture
+	if parts.size() > 0:
+		var shader = load("res://files/ItemShader.tres").duplicate()
+		if node.material != shader:
+			node.material = shader
+		else:
+			shader = node.material
+		for i in parts:
+			var part = 'part' +  str(partcolororder[i]) + 'color'
+			var color = Items.materiallist[parts[i]].color
+			node.material.set_shader_param(part, color)
+
+
 
 func tooltiptext():
 	var text = ''
@@ -359,3 +307,4 @@ func calculateprice():
 		for i in materialsdict:
 			price += Items.materiallist[i].price*materialsdict[i]
 	return price
+

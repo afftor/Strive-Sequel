@@ -263,6 +263,8 @@ func valuecheck(dict):
 			return if_has_items(dict.name, dict.operant, dict.value)
 		"has_free_items":
 			return if_has_free_items(dict.name, dict.operant, dict.value)
+		'disabled':
+			return false
 
 func if_has_items(name, operant, value):
 	var counter = 0

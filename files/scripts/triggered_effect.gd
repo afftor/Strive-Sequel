@@ -2,6 +2,7 @@ extends base_effect
 class_name triggered_effect
 #triggers. please do not add atomic effects to triggers - put them into separate static effect
 
+# warning-ignore-all:return_value_discarded
 var triggered_event := []
 var reset_event := []
 var ready = true

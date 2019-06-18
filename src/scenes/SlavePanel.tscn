@@ -397,8 +397,8 @@ margin_bottom = 31.0
 text = "25"
 
 [node name="mentality" type="VBoxContainer" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 15.0
 margin_top = 582.0
@@ -506,6 +506,7 @@ autowrap = true
 [node name="job" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
+editor/display_folded = true
 margin_left = 953.0
 margin_top = 155.0
 margin_right = 1153.0
@@ -578,6 +579,7 @@ align = 1
 [node name="controls" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
+editor/display_folded = true
 margin_left = 948.0
 margin_top = 274.0
 margin_right = 1158.0
@@ -963,4 +965,3 @@ margin_left = -1237.97
 margin_top = -786.834
 margin_right = 346.031
 margin_bottom = 133.166
-

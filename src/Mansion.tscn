@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
@@ -23,14 +23,13 @@
 [ext_resource path="res://assets/images/gui/panels/mana.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=23]
-[ext_resource path="res://files/Inventory.tscn" type="PackedScene" id=24]
-[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=25]
-[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=26]
-[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=27]
-[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=29]
-[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=30]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=31]
+[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=30]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -63,15 +62,6 @@ margin_right = 241.376
 margin_bottom = 1068.33
 theme = ExtResource( 3 )
 text = "Inventory"
-
-[node name="TaskButton" type="Button" parent="."]
-visible = false
-margin_left = 273.376
-margin_top = 999.333
-margin_right = 491.376
-margin_bottom = 1068.33
-theme = ExtResource( 3 )
-text = "Tasks"
 
 [node name="CraftButton" type="Button" parent="."]
 margin_left = 263.376
@@ -106,10 +96,10 @@ theme = ExtResource( 3 )
 text = "Upgrades"
 
 [node name="InteractButton" type="Button" parent="."]
-margin_left = 1183.38
-margin_top = 999.333
-margin_right = 1401.38
-margin_bottom = 1068.33
+margin_left = 23.2352
+margin_top = 926.346
+margin_right = 241.235
+margin_bottom = 995.343
 theme = ExtResource( 3 )
 text = "Sex"
 
@@ -354,28 +344,19 @@ margin_right = 430.499
 margin_bottom = 36.8336
 text = "Name Race Age Class"
 
-[node name="Inventory" parent="." groups=[
-"pauseprocess",
-] instance=ExtResource( 24 )]
-visible = false
-margin_left = 28.9677
-margin_top = 144.582
-margin_right = 677.968
-margin_bottom = 932.582
-
 [node name="CraftPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 25 )]
+] instance=ExtResource( 24 )]
 visible = false
 
 [node name="Exploration" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 26 )]
+] instance=ExtResource( 25 )]
 visible = false
 
 [node name="SlavePanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 27 )]
+] instance=ExtResource( 26 )]
 visible = false
 margin_left = 22.0
 margin_top = 57.0
@@ -384,17 +365,17 @@ margin_bottom = 921.0
 
 [node name="QuestPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 28 )]
+] instance=ExtResource( 27 )]
 visible = false
 
 [node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 29 )]
+] instance=ExtResource( 28 )]
 visible = false
 
 [node name="UpgradeList" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 30 )]
+] instance=ExtResource( 29 )]
 visible = false
 
 [node name="TextLog" type="RichTextLabel" parent="."]
@@ -415,7 +396,7 @@ text = "Test"
 
 [node name="MenuPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 31 )]
+] instance=ExtResource( 30 )]
 visible = false
 margin_left = 826.375
 margin_top = 277.826
