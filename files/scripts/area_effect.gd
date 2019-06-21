@@ -32,7 +32,7 @@ func apply():
 	is_applied = true
 	atomic.clear()
 	for a in template.atomic:
-		var tmp := atomic_effect.new(a, self)
+		var tmp := atomic_effect.new(a, id)
 		tmp.resolve_template()
 		atomic.push_back(tmp.template)
 	buffs.clear()

@@ -347,3 +347,18 @@ func text_log_add(text):
 	if log_node != null:
 		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(hour)) + "[/right]" 
 
+func serialize():
+	var tmp = {}
+	#to add serializing
+	tmp['effects'] = effects_pool.serialize()
+	tmp['characters'] = characters_pool.serialize()
+	return tmp
+
+func deserialize(tmp:Dictionary):
+	effects_pool.deserialize(tmp['effects'])
+	tmp.erase('effects')
+	effects_pool.deserialize(tmp['characters'])
+	tmp.erase('characters')
+	for prop in tmp.keys():
+		set(prop, tmp[prop])
+	#to add custom properties deserializing
