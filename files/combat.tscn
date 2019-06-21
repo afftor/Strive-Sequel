@@ -78,7 +78,7 @@ size = 55
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=8]
 max_value = 1024.0
 bake_resolution = 1
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.286353, 836.403 ), 7920.24, 7920.24, 0, 0, Vector2( 1, 1016.63 ), -21945.2, -21945.2, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
@@ -746,7 +746,7 @@ spread = 0.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 1000.0
 damping_random = 1.0
-damping_curve = SubResource( 10 )
+damping_curve = SubResource( 8 )
 scale_amount = 0.5
 anim_offset_random = 1.0
 
@@ -780,3 +780,4 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
 scale_amount = 5.0
 anim_speed = 1.0
+

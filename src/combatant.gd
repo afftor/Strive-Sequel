@@ -3,6 +3,7 @@ class_name Slave
 
 var id = ''
 var is_person = true
+var is_active = true
 
 var unique 
 
@@ -866,6 +867,8 @@ func mp_set(value):
 	mp = clamp(0, value, mpmax)
 
 func death():
+	is_active = false
+	clean_effects()
 	pass
 
 func energy_set(value):
