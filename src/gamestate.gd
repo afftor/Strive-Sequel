@@ -186,7 +186,8 @@ func FinishEvent():
 	keyframes.clear()
 
 func add_slave(person):
-	characters[person.id] = person
+	#characters[person.id] = person
+	characters_pool.move_to_state(person.id)
 	text_log_add("New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 

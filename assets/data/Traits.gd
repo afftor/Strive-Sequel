@@ -1,6 +1,14 @@
 extends Node
 
 var traits = {
+	core_trait = {#adds core effects
+		code = 'core',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_core_ex', 'e_core_ex_rem', 'e_core_fat', 'e_core_fat_rem'],
+	}, 
 	
 	master_effect = {#150% effect from social skills
 		code = 'master_effect',
