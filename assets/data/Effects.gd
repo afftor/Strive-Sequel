@@ -1020,7 +1020,8 @@ var effect_table = {
 	e_core_ex = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
-		conditions = [{type = 'target', value = {type = 'stats', name = 'exhaustion', operant = 'gt', value = 0} }],
+		req_skill = false,
+		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'gt', value = 0} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_t_ex1']
@@ -1028,7 +1029,8 @@ var effect_table = {
 	e_core_ex_rem = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
-		conditions = [{type = 'target', value = {type = 'stats', name = 'exhaustion', operant = 'lte', value = 0} }],
+		req_skill = false,
+		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'lte', value = 0} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_fire_custom']
@@ -1144,7 +1146,8 @@ var effect_table = {
 	e_core_fat = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
-		conditions = [{type = 'target', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 30} }],
+		req_skill = false,
+		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 30} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_t_fat1']
@@ -1152,7 +1155,8 @@ var effect_table = {
 	e_core_fat_rem = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
-		conditions = [{type = 'target', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 30} }],
+		req_skill = false,
+		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 30} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_fire_custom1']

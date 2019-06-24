@@ -215,15 +215,15 @@ var lastsexday
 var masternoun = 'Master'
 
 
-func _init():
-	var eff = effects_pool.e_createfromtemplate('e_core_ex')
-	apply_effect(effects_pool.add_effect(eff))
-	eff = effects_pool.e_createfromtemplate('e_core_fat')
-	apply_effect(effects_pool.add_effect(eff))
-	eff = effects_pool.e_createfromtemplate('e_core_ex_rem')
-	apply_effect(effects_pool.add_effect(eff))
-	eff = effects_pool.e_createfromtemplate('e_core_fat_rem')
-	apply_effect(effects_pool.add_effect(eff))
+#func _init():
+#	var eff = effects_pool.e_createfromtemplate('e_core_ex')
+#	apply_effect(effects_pool.add_effect(eff))
+#	eff = effects_pool.e_createfromtemplate('e_core_fat')
+#	apply_effect(effects_pool.add_effect(eff))
+#	eff = effects_pool.e_createfromtemplate('e_core_ex_rem')
+#	apply_effect(effects_pool.add_effect(eff))
+#	eff = effects_pool.e_createfromtemplate('e_core_fat_rem')
+#	apply_effect(effects_pool.add_effect(eff))
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
