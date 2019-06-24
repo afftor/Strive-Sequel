@@ -214,6 +214,7 @@ var lastsexday
 
 var masternoun = 'Master'
 
+
 func _init():
 	var eff = effects_pool.e_createfromtemplate('e_core_ex')
 	apply_effect(effects_pool.add_effect(eff))
@@ -705,6 +706,7 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	professions.append(prof.code)
 	for i in prof.skills:
 		learn_skill(i)
+
 
 func get_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]

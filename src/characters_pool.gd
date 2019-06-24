@@ -32,8 +32,10 @@ func cleanup():
 			remove_id(id)
 
 func remove_id(id):
+
 	if state.characters.has(id): state.characters.erase(id)
 	else: characters.erase(id)
+
 
 
 func serialize():
