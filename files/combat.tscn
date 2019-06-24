@@ -780,4 +780,3 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
 scale_amount = 5.0
 anim_speed = 1.0
-

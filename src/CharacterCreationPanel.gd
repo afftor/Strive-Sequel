@@ -78,7 +78,7 @@ func open(type = 'slave'):
 	preservedsettings.clear()
 	
 	
-	person = globals.characterdata.new()
+	person = Slave.new()
 	mode = type
 	match mode:
 		'master':
@@ -98,7 +98,7 @@ func rebuild_slave():
 	var race = person.race
 	var sex = person.sex
 	var age = person.age
-	person = globals.characterdata.new()
+	person = Slave.new()
 	person.create(race, sex, age)
 	if mode == 'master':
 		person.unlock_class('master')

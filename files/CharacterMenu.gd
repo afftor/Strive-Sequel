@@ -19,7 +19,7 @@ func open(hero):
 	for i in globals.gearlist:
 		var node = get_node('Main/Panel/charandgear/' + i)
 		if node.has_meta("item") && node.get_meta("item") != null:
-			globals.disconnectitemtooltip(node, node.get_meta("item"))
+			#globals.disconnectitemtooltip(node, node.get_meta("item"))
 			node.set_meta("item", null)
 	if hero != character:
 		$Traitlist.hide()
@@ -66,7 +66,7 @@ func unequip(slot):
 	if character.gear[slot] != null:
 		var gear = state.items[character.gear[slot]]
 		character.unequip(gear)
-		globals.disconnectitemtooltip(get_node('Main/Panel/charandgear/' + slot), gear)
+		#globals.disconnectitemtooltip(get_node('Main/Panel/charandgear/' + slot), gear)
 		input_handler.GetItemTooltip().hide()
 		open(character)
 

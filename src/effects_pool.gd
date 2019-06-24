@@ -1,9 +1,6 @@
 extends Node
 # warning-ignore-all:return_value_discarded
 
-func _ready():
-	pass # Replace with function body.
-
 var effects: = {}
 
 func get_new_id():
@@ -12,7 +9,6 @@ func get_new_id():
 	while effects.has(s % t):
 		t += 1
 	return s % t
-
 
 func add_effect(eff):
 	var id = get_new_id()
@@ -30,7 +26,6 @@ func cleanup():
 	for id in effects:
 		if !effects[id].is_applied:
 			remove_id(id)
-	pass
 
 func remove_id(id):
 	for eff in effects.values():
@@ -39,7 +34,6 @@ func remove_id(id):
 		if eff.sub_effects.has(id):
 			eff.sub_effects.erase(id)
 	effects.erase(id)
-	pass
 
 func serialize():
 	cleanup()
@@ -80,7 +74,6 @@ func e_createfromtemplate(buff_t, caller = null):
 		'oneshot': tmp = oneshot_effect.new(caller)
 	tmp.createfromtemplate(template)
 	return tmp
-	pass
 
 func deserialize(tmp):
 	effects.clear()

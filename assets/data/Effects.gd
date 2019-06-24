@@ -349,9 +349,9 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_mul', stat = 'damage', value = 1.5},
-			{type = 'stat_mul', stat = 'armor', value = 1.5},
-			{type = 'stat_mul', stat = 'mdef', value = 1.5},
+			{type = 'stat_mul', stat = 'damage', value = 1.2},
+			{type = 'stat_mul', stat = 'armor', value = 1.2},
+			{type = 'stat_mul', stat = 'mdef', value = 1.2},
 		],
 		buffs = [
 			{

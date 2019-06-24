@@ -20,13 +20,13 @@ func _ready():
 	for i in $progress.get_children():
 		i.connect("mouse_entered", self, "show_progress_tooltip", [i])
 	for i in $factors.get_children():
-		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.to_upper()))
+		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.replace("_", "").to_upper())
 	for i in $mentality.get_children():
-		globals.connecttexttooltip(i, tr("TOOLTIP" + i.name.to_upper()))
+		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 	
 	for i in $base_stats.get_children():
-		globals.connecttexttooltip(i, tr("TOOLTIP"+i.name.to_upper()))
+		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
@@ -48,10 +48,13 @@ func _ready():
 	$DetailsPanel/VBoxContainer/icon.connect("pressed", $ImageSelect, "chooseimage",['portrait'])
 	$DetailsPanel/VBoxContainer/body.connect("pressed", $ImageSelect, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
-
+	
+	input_handler.slave_panel_node = self
 
 func open(tempperson):
-	if tempperson.professions.has("Master"):
+	if tempperson == null:
+		tempperson = person
+	if tempperson.professions.has("master"):
 		type = 'master'
 		for i in get_tree().get_nodes_in_group("hide_master"):
 			i.visible = false
@@ -269,7 +272,7 @@ func select_skill_target(skillcode):
 	input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free'}, {code = 'is_id', operant = 'neq', value = person.id}])
 
 func use_skill(target):
-	person.use_skill(active_skill, target)
+	person.use_social_skill(active_skill, target)
 	open(person)
 
 func custom_description_open():

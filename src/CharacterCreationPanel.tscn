@@ -355,7 +355,6 @@ text = "SLAVEPARTANAL_VIRGIN"
 clip_text = true
 
 [node name="StatsContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 25.0
 margin_top = 743.0
 margin_right = 877.0

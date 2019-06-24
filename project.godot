@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Slave",
 "language": "GDScript",
-"path": "res://src/combatant.gd"
+"path": "res://src/CharacterClass.gd"
 }, {
 "base": "base_effect",
 "class": "area_effect",
@@ -115,6 +115,7 @@ Enemydata="*res://assets/data/enemydata.gd"
 Skilldata="*res://assets/data/Skills.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Traitdata="*res://assets/data/Traits.gd"
+scenedata="*res://assets/data/scenedata.gd"
 TownData="*res://files/TownData.gd"
 combatantdata="*res://files/CombatantClass.gd"
 state="*res://src/gamestate.gd"
@@ -132,6 +133,7 @@ settings/fps/force_fps=60
 gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
+gdscript/warnings/unreachable_code=false
 
 [display]
 

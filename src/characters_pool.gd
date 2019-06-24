@@ -1,9 +1,6 @@
 extends Node
 # warning-ignore-all:return_value_discarded
 
-func _ready():
-	pass # Replace with function body.
-
 var characters: = {}
 
 func get_new_id():
@@ -31,32 +28,10 @@ func cleanup():
 		if !characters[id].is_active:
 			characters[id].clean_effects()
 			remove_id(id)
-	pass
 
 func remove_id(id):
 	characters.erase(id)
-	pass
 
-
-#func e_createfromtemplate(buff_t, caller = null):
-#	var template
-#	var tmp
-#	if typeof(buff_t) == TYPE_STRING:
-#		template = Effectdata.effect_table[buff_t]
-#	else:
-#		template = buff_t.duplicate()
-#	match template.type:
-#		'base': tmp = base_effect.new(caller)
-#		'static': tmp = static_effect.new(caller)
-#		'trigger': tmp = triggered_effect.new(caller)
-#		'temp_s': tmp = temp_e_simple.new(caller)
-#		'temp_p': tmp = temp_e_progress.new(caller)
-#		'temp_u': tmp = temp_e_upgrade.new(caller)
-#		'area': tmp = area_effect.new(caller)
-#		'oneshot': tmp = oneshot_effect.new(caller)
-#	tmp.createfromtemplate(template)
-#	return tmp
-#	pass
 
 func serialize():
 	var tmp = {}

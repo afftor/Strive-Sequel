@@ -15,7 +15,7 @@ var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false
 
 var CombatAnimations = preload("res://src/CombatAnimations.gd").new()
 
-var debug = false
+var debug = true
 
 var allowaction = false
 var highlightargets = false

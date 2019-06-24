@@ -38,13 +38,14 @@ func showup(node, person):
 	for i in ['hp','energy','mp']:
 		get_node("VBoxContainer/"+ i ).value = person[i]
 		get_node("VBoxContainer/"+ i ).max_value = person[i+'max']
-		get_node("VBoxContainer/"+ i + '/Label').text = str(person[i]) + "/" + str(person[i+'max'])
+		get_node("VBoxContainer/"+ i + '/Label').text = str(round(person[i])) + "/" + str(person[i+'max'])
 	
-	if person.work != '':
-		text = "Occupation: " + races.tasklist[person.work].name
-	else:
-		text = "Occupation: None"
-	text += '\nCurrent State: ' + person.last_tick_assignement
+	if person.is_players_character == true:
+		if person.work != '':
+			text = "Occupation: " + races.tasklist[person.work].name
+		else:
+			text = "Occupation: None"
+		text += '\nCurrent State: ' + person.last_tick_assignement
 	$job.text = text 
 	
 	
@@ -59,6 +60,16 @@ func showup(node, person):
 		var trait = Traitdata.sex_traits[i]
 		var newbutton = globals.DuplicateContainerTemplate($Sextraits)
 		newbutton.text = trait.name
+	
+	if person.professions.has('master') || person.is_players_character == false:
+		if person.is_players_character == false:
+			$VBoxContainer/lust.hide()
+		$VBoxContainer/fear.hide()
+		$VBoxContainer/obedience.hide()
+	else:
+		$VBoxContainer/lust.show()
+		$VBoxContainer/fear.show()
+		$VBoxContainer/obedience.show()
 	
 	
 	prevnode = parentnode
