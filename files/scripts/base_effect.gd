@@ -100,8 +100,8 @@ func remove():
 func get_applied_obj():
 	if applied_char == null:
 		if applied_pos == null: return null
-		applied_char = state.combatparty[applied_pos]
-	return state.heroes[applied_char]
+		applied_char = state.combatparty[applied_pos] #to change after final version of parties storing in state
+	return characters_pool.get_char_by_id(applied_char)
 
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:

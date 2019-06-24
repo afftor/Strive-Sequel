@@ -5,11 +5,12 @@ func _ready():
 	pass # Replace with function body.
 
 var characters: = {}
-
+# for now for the sake of working of all legacy code only temporal characters are stored directly in pool, all player-controlled characters are still stored in state.characters
+  
 func get_new_id():
 	var s := "hid%d"
 	var t = randi()
-	while characters.has(s % t):
+	while characters.has(s % t) or state.characters.has(s % t):
 		t += 1
 	return s % t
 
@@ -24,6 +25,7 @@ func add_stored_char(id, ch):
 	characters[id] = ch
 
 func get_char_by_id(id):
+	if state.characters.has(id): return state.characters[id]
 	return characters[id]
 
 func cleanup():
@@ -34,7 +36,8 @@ func cleanup():
 	pass
 
 func remove_id(id):
-	characters.erase(id)
+	if state.characters.has(id): state.characters.erase(id)
+	else: characters.erase(id)
 	pass
 
 

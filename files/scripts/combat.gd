@@ -184,7 +184,7 @@ func checkdeaths():
 func checkwinlose():
 	var playergroupcounter = 0
 	var enemygroupcounter = 0
-	for i in battlefield:
+	for i in range(battlefield.size()):
 		if battlefield[i] == null:
 			continue
 		if characters_pool.get_char_by_id(battlefield[i]).defeated:
