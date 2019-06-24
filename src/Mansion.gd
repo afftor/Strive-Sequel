@@ -40,16 +40,19 @@ func _ready():
 	if globals.start_new_game == false:
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
-		state.characters[character.id] = character
+		characters_pool.move_to_state(character.id)
+		character.get_trait('core_trait')
 		character.unlock_class("master")
 		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
-		state.characters[character.id] = character
+		characters_pool.move_to_state(character.id)
+		character.get_trait('core_trait')
 		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
-		state.characters[character.id] = character
+		characters_pool.move_to_state(character.id)
+		character.get_trait('core_trait')
 		character.is_players_character = true
 		$SlaveList.rebuild()
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))

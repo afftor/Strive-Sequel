@@ -340,8 +340,9 @@ func generate_simple_fighter(tempname):
 
 
 func create(temp_race, temp_gender, temp_age):
-	id = 's' + str(state.slavecounter)
-	state.slavecounter += 1
+	#id = 's' + str(state.slavecounter)
+	#state.slavecounter += 1
+	id = characters_pool.add_char(self)
 	
 	race = temp_race
 	sex = temp_gender
