@@ -706,7 +706,8 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	professions.append(prof.code)
 	for i in prof.skills:
 		learn_skill(i)
-
+	for i in prof.traits:
+		get_trait(i)
 
 func get_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
