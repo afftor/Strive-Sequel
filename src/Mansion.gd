@@ -42,14 +42,18 @@ func _ready():
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
 		character.unlock_class("master")
+		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
+		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		state.characters[character.id] = character
+		character.is_players_character = true
 		$SlaveList.rebuild()
 		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
+		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', Blade = 'wood'}))
 	else:
 		globals.start_new_game = false
@@ -112,10 +116,6 @@ func _process(delta):
 
 
 func settime():
-#	if state.daytime > variables.TimePerDay:
-#		state.date += 1
-#		state.daytime = 0
-#		globals.EventCheck() #После переноса эвентов на сигналы нужно перенести все эвенты, тригерящиеся в определенные дни на середину дня а не на начало
 	$TimeNode/Date.text = "D: " + str(state.date) + " T: " + str(state.hour) + ":00"
 	$TimeNode/TimeWheel.rect_rotation = (float(state.hour) / variables.HoursPerDay * 360)-180
 

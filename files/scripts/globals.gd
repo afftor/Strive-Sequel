@@ -28,7 +28,6 @@ var randomgroups
 
 var enemylist
 var upgradelist
-var characterdata = load("res://src/combatant.gd")
 #var skillsdata
 #var effectdata
 
@@ -236,6 +235,14 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	energy = {
+		code = 'energy',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	
 }
 
 var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -823,10 +830,6 @@ func ItemSelect(targetscript, type, function, requirements = true):
 		for i in state.items.values():
 			if i.durability < i.maxdurability:
 				array.append(i)
-	elif type == 'edible':
-		for i in state.items.values():
-			if i.foodvalue > 0:
-				array.append(i)
 	elif type == 'sex_use':
 		for i in state.items.values():
 			if i.interaction_use == true:
@@ -840,10 +843,11 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				newnode.get_node("Percent").show()
 				newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
 				connectitemtooltip(newnode, i)
-			"edible":
+			'sex_use':
 				newnode.texture_normal = load(i.icon)
 				newnode.get_node("Percent").show()
-				newnode.get_node("Percent").text = str(i.foodvalue)
+				newnode.get_node('name').text = i.name
+				newnode.get_node("Percent").text = str(i.amount)
 				connectitemtooltip(newnode, i)
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',self,'CloseSelection', [node])

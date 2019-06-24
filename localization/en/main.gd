@@ -316,7 +316,7 @@ var TranslationDict = {
 	
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
-	
+	DIALOGUEREPEATACTION = "Repeat",
 	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
@@ -508,25 +508,20 @@ var TranslationDict = {
 	
 	
 	
-	TOOLTIPBASEEXP = "Character's unspent experience. Can be used to unlock classes.",
-	TOOLTIPOBEDIENCE = "Obedience represents the character's willingness to work for you. If both obedience and fear drop too low, the character might stop following orders or even escape. Obedience is gained by praises and rewards. ",
-	TOOLTIPFEAR = "Fear represents the character's awe towards you and your orders. If both obedience and fear drop too low, the character might stop following orders or even escape. Fear is gained from punishments and abusive behavior. ",
-	TOOLTIPLUST = "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when approached correctly.",
-	TOOLTIPENERGY = "Energy is restored during sleep and is required for task productions. When character is forced to work with no energy left, they accomodate Exhaustion. ",
-	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertaining activities. When unmanaged may cause performance penalty.",
-	TOOLTIPEXHAUSTION = "Exhaustion grows when character is forced to work with no energy left. Exhaustion causes penalty to maximum health and production, and can lead to fatal cause if not taken care of for a long time.",
-	TOOLTIPLOYAL = "Loyalty represents character's willingness to follow master's orders even they neither obedient, nor fearful. It grows with time and stops servants from escaping. ",
-	
 	TOOLTIPSEXTRAITS = "Sexual traits are a special bonuses which provide benefits during the interaction sequence. ",
 	
-	TOOLTIPHP = "",
-	TOOLTIPMANA = "",
-	
 	STATHP = "Health",
+	STATHPDESCRIPT = "Health decreases in combat and from some skills and events. Once health reduced to 0, character dies.",
+	STATENERGY = "Energy",
+	STATENERGYDESCRIPT = "Energy is restored during sleep and is required for task productions. When character is forced to work with no energy left, they accomodate Exhaustion. ",
 	STATHPMAX = "Max. Health",
 	STATMP = "Mana",
+	STATMPDESCRIPT = "Mana is used for casting spells and using some abilitites.",
 	STATMPMAX = "Max. Mana",
 	STATHITRATE = "Hit chance",
+	
+	STATBASE_EXP = "Experience",
+	STATBASE_EXPDESCRIPT = "Experience is acquired by combat and work. Experience is used to unlock new classes.",
 	
 	STATPHYSICS = "Physical",
 	STATWITS = "Wits",
@@ -547,6 +542,19 @@ var TranslationDict = {
 	STATTAME_FACTOR = "Tame Factor",
 	STATBRAVE_FACTOR = "Brave Factor",
 	
+	STATOBEDIENCE = "Obedience",
+	STATOBEDIENCEDESCRIPT = "Obedience represents the character's willingness to work for you. If both obedience and fear drop too low, the character might stop following orders or even escape. Obedience is gained by praises and rewards. ",
+	STATFEAR = "Fear",
+	STATFEARDESCRIPT = "Fear represents the character's awe towards you and your orders. If both obedience and fear drop too low, the character might stop following orders or even escape. Fear is gained from punishments and abusive behavior. ",
+	STATLOYAL = "Loyalty",
+	STATLOYALDESCRIPT = "Loyalty represents character's willingness to follow master's orders even they neither obedient, nor fearful. It grows with time and stops servants from escaping. ",
+	STATLUST = "Lust",
+	STATLUSTDESCRIPT =  "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when approached correctly.",
+	
+	
+	TOOLTIPENERGY = "Energy is restored during sleep and is required for task productions. When character is forced to work with no energy left, they accomodate Exhaustion. ",
+	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertaining activities. When unmanaged may cause performance penalty.",
+	TOOLTIPEXHAUSTION = "Exhaustion grows when character is forced to work with no energy left. Exhaustion causes penalty to maximum health and production, and can lead to fatal cause if not taken care of for a long time.",
 	
 	
 	
@@ -560,8 +568,8 @@ var TranslationDict = {
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth.",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It limits [color=aqua]Sexuals[/color] growth.",
 	
-	STATFOOD_LOVE = "When favorite food is eaten, it gives minor boost to obedience and reduces fatigue. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
-	STATFOOD_HATE = "When hated food is eaten, it will increase fatigue. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
+	STATFOOD_LOVEDESCRIPT = "When favorite food is eaten, it gives minor boost to obedience and reduces fatigue. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
+	STATFOOD_HATEDESCRIPT = "When hated food is eaten, it will increase fatigue. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
 	
 	
 	

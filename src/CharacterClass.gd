@@ -4,6 +4,7 @@ class_name Slave
 var id = ''
 var is_person = true
 var is_active = true
+var is_players_character = false
 
 var unique 
 
@@ -47,7 +48,7 @@ var obed_mods = []
 var fear_mods = []
 var lust_mods = []
 
-var obedience = 100.0 setget obed_set, obed_get
+var obedience = 25.0 setget obed_set, obed_get
 var fear = 70.0 setget fear_set, fear_get
 var lust = 20.0 setget lust_set, lust_get
 var loyal = 0.0
@@ -212,8 +213,6 @@ var lastsexday
 
 
 var masternoun = 'Master'
-#temps
-#var profs = load("res://assets/data/Skills.gd").new().professions
 
 func _init():
 	var eff = effects_pool.e_createfromtemplate('e_core_ex')
@@ -745,30 +744,6 @@ func unlearn_skill(skill):
 	if check == false:
 		social_skills.erase(skill)
 
-func use_skill(skillcode, target):
-	var skill = Skilldata.Skilllist[skillcode]
-	if mp < skill.manacost:
-		input_handler.SystemMessage(get_short_name() + ": Not enough mana.")
-		return
-	if energy < skill.energycost:
-		input_handler.SystemMessage(get_short_name() + ": Not enough energy.")
-		return
-	if social_skills_charges.has(skillcode) && social_skills_charges[skillcode] >= skill.charges:
-		input_handler.SystemMessage(get_short_name() + ": " + skill.name + " - No charges left.")
-		#No charges left
-		return
-	
-	
-	self.mp -= skill.manacost
-	self.energy -= skill.energycost
-	
-	if social_skills_charges.has(skillcode):
-		social_skills_charges[skillcode] += 1
-	else:
-		social_skills_charges[skillcode] = 1
-	social_cooldowns[skillcode] = skill.cooldown
-	
-	#add skill effect
 
 func cooldown_tick():
 	var cleararray = []
@@ -1252,19 +1227,15 @@ func apply_atomic(template):
 		'stat_set', 'stat_set_revert':
 			template.buffer = get(template.stat)
 			set(template.stat, template.value)
-			pass
 		'stat_add':
 			set(template.stat, get(template.stat) + template.value)
-			pass
 		'stat_mul':
 			set(template.stat, get(template.stat) * template.value)
-			pass
 		'signal':
 			#stub for signal emitting
 			globals.emit_signal(template.value)
 		'remove_effect': 
 			remove_temp_effect_tag(template.value)
-			pass
 		'add_trait':
 			#to implement, since this part was not transfered from displaced
 			pass
@@ -1276,14 +1247,10 @@ func remove_atomic(template):
 	match template.type:
 		'stat_set_revert':
 			set(template.stat, template.buffer)
-			pass
 		'stat_add':
 			set(template.stat, get(template.stat) - template.value)
-			pass
 		'stat_mul':
 			set(template.stat, get(template.stat) / template.value)
-			pass
-	pass
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -1403,12 +1370,10 @@ func remove_effect(eff_id):
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
 		'area': remove_area_effect(eff_id)
-	pass
 
 func remove_temp_effect(eff_id):#warning!! this mathod can remove effect that is not applied to character
 	var eff = effects_pool.get_effect_by_id(eff_id)
 	eff.remove()
-	pass
 
 func remove_all_temp_effects():
 	for e in temp_effects:
@@ -1420,13 +1385,11 @@ func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, li
 	if tmp.size() == 0: return
 	var i = globals.rng.randi_range(0, tmp.size()-1)
 	remove_temp_effect(tmp[i])
-	pass
 
 func clean_effects():#clean effects before deleting character
 	for e in temp_effects + static_effects + triggered_effects + own_area_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
-	pass
 
 func process_event(ev):
 	for e in temp_effects:
@@ -1436,7 +1399,6 @@ func process_event(ev):
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill: continue
 		var tr = eff.process_event(ev) #stub for more direct controling of temps removal
-	pass
 
 func can_act():
 	var res = true
@@ -1444,7 +1406,6 @@ func can_act():
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has('disable'):
 			res = false
-	return res
 
 func calculate_number_from_string_array(array):
 	var endvalue = 0
@@ -1475,7 +1436,6 @@ func process_check(check):
 			res = res and simple_check(ch)
 		return res
 	else: return simple_check(check)
-	pass
 
 func simple_check(req):#Gear, Race, Types, Resists, stats
 	var result
@@ -1548,23 +1508,54 @@ func get_all_buffs():
 		for b in b_a: tmp.push_back(b)
 	return tmp
 
+func check_skill_availability(s_code, target):
+	var check = true
+	
+	var template = Skilldata.Skilllist[s_code]
+	var descript = ''
+	
+	if mp < template.manacost:
+		descript = get_short_name() + ": Not enough mana."
+		check = false
+	if energy < template.energycost:
+		descript = get_short_name() + ": Not enough energy."
+		check = false
+	if social_skills_charges.has(s_code) && social_skills_charges[s_code] >= template.charges:
+		descript = get_short_name() + ": " + template.name + " - No charges left."
+		check = false
+	
+	return {check = check, descript = descript}
+
 func use_social_skill(s_code, target):#add logging if needed
 	var template = Skilldata.Skilllist[s_code]
 	
+	var check = check_skill_availability(s_code, target)
+	if check.check == false:
+		input_handler.SystemMessage(check.descript)
+		return
+	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = self, target = target}
+	
+	
 	#paying costs
-	self.mp -= template.manacost
-	self.energy -= template.energycost
 	if template.has('goldcost'):
 		state.money -= template.goldcost
+	self.mp -= template.manacost
+	self.energy -= template.energycost
+	
+	if social_skills_charges.has(s_code):
+		social_skills_charges[s_code] += 1
+	else:
+		social_skills_charges[s_code] = 1
+	social_cooldowns[s_code] = template.cooldown
+	
 	#calcuate 'all' receviers
 	var targ_targ = [target]
 	var targ_cast = [self]
 	var targ_all = []
 	for h_id in state.characters:
-		if id == h_id: continue
+		if id == h_id || target.id == h_id: continue
 		if state.characters[h_id].work == 'travel':continue
 		targ_all.push_back(state.characters[h_id])
-	#to apply social skill cooldowns and other stuff
 	
 	#create s_skill and process triggers
 	var s_skill = S_Skill.new()
@@ -1596,6 +1587,8 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	#to implement not fully described social chance-to-success system 
 	
+	var effect_text = '\n'
+	
 	#applying values
 	for i in range(s_skill.value.size()):
 		var targ_fin
@@ -1606,8 +1599,13 @@ func use_social_skill(s_code, target):#add logging if needed
 		for h in targ_fin:
 			var tmp = h.stat_update(s_skill.damagestat[i], s_skill.value[i])
 			if s_skill.is_drain: self.stat_update(s_skill.damagestat[i], -tmp)
-		pass
+			effect_text += "\n" + h.name + ", " + globals.statdata[s_skill.damagestat[i]].name + ": "  + str(round(tmp)) 
 	
+	if template.has("dialogue"):
+		var args = {name1 = self, name2 = target, bonustext = effect_text}
+		if check_skill_availability(s_code, target).check == true:
+			args.repeat = true
+		input_handler.interactive_message(template.dialogue, 'social_skill', args)
 	#postdamage triggers
 	s_skill.process_event(variables.TR_POSTDAMAGE)
 	for e in triggered_effects:
@@ -1626,3 +1624,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(variables.TR_POSTDAMAGE)
+	
+	input_handler.update_slave_list()
+	input_handler.update_slave_panel()
+

@@ -27,6 +27,10 @@ signal QuestStarted
 signal QuestCompleted
 signal CharacterCreated
 
+var last_action_data = {}
+
+var slave_panel_node
+var slave_list_node
 
 
 func _input(event):
@@ -686,3 +690,68 @@ func ShowInentory(args):
 	inventory.open(args)
 	
 	return inventory
+
+func calculate_number_from_string_array(array, caster, target):
+	var endvalue = 0
+	var firstrun = true
+	for i in array:
+		var modvalue = i
+		if (i.find('caster') >= 0) or (i.find('target') >= 0):
+			i = i.split('.')
+			if i[0] == 'caster':
+				modvalue = str(caster.get(i[1]))
+			elif i[0] == 'target':
+				modvalue = str(target.get(i[1]))
+		elif (i.find('random') >= 0):
+			i = i.split(' ')
+			modvalue = str(globals.rng.randi_range(0, int(i[1])))
+		if !modvalue[0].is_valid_float():
+			if modvalue[0] == '-' && firstrun == true:
+				endvalue += float(modvalue)
+			else:
+				endvalue = input_handler.string_to_math(endvalue, modvalue)
+		else:
+			endvalue += float(modvalue)
+		firstrun = false
+	return endvalue
+
+func get_dialogue_node():
+	var dialogue
+	var node = get_tree().get_root()
+	if node.has_node('dialogue'):
+		dialogue = node.get_node('dialogue')
+		node.remove_child(dialogue)
+	else:
+		dialogue = load("res://src/InteractiveMessage.tscn").instance()
+		dialogue.name = 'dialogue'
+	node.add_child(dialogue)
+	return dialogue
+
+func interactive_message(code, type, args):
+	var data = scenedata.scenedict[code].duplicate(true)
+	var scene = get_dialogue_node()
+	match type:
+		'social_skill':
+			for i in variables.dynamic_text_vars:
+				data.text = data.text.replace("[" + i + '1' + ']', "[" + i + "]")
+			data.text = args.name1.translate(data.text)
+			for i in variables.dynamic_text_vars:
+				data.text = data.text.replace("[" + i + '2' + ']', "[" + i + "]")
+			data.text = args.name2.translate(data.text)
+			if args.has("bonustext"):
+				data.text += args.bonustext
+			if args.has('repeat'):
+				data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = !args.repeat})
+	
+	scene.open(data)
+
+func repeat_social_skill():
+	if last_action_data.code == 'social_skill':
+		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
+
+
+func update_slave_list():
+	slave_list_node.update()
+
+func update_slave_panel():
+	slave_panel_node.open(null)

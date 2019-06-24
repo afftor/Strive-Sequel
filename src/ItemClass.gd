@@ -6,7 +6,7 @@ var id
 var itembase
 var code
 var icon
-var descirption
+var description
 var stackable = false
 var inventory
 
@@ -51,10 +51,12 @@ func CreateUsable(ItemName = '', number = 1):
 	name = itemtemplate.name
 	if itemtemplate.has("interaction_effect"):
 		interaction_use = true
+	itemtype = 'usable'
+	description = itemtemplate.descript
 	#itemtype = itemtemplate.itemtype
 #	useeffects = itemtemplate.useeffects
 #	useskill = itemtemplate.useskill
-#	descirption = itemtemplate.description
+#	description = itemtemplate.description
 
 func amount_set(value):
 	amount = value
@@ -217,7 +219,7 @@ func tooltiptext():
 				text += value + '}\n'
 		text += tooltipeffects()
 	elif itemtype == 'usable':
-		text += descirption + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
+		text += description + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
 	
 	text = globals.TextEncoder(text)
 	return text

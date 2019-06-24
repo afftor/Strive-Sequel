@@ -368,7 +368,7 @@ class member:
 				sens_mod -= 0.5
 				horny_mod -= 0.5
 			for k in i.sex_traits:
-				var trait = sceneref.sextraits[k]
+				var trait = Traitdata.sex_traits[k]
 				if trait.trigger_side != 'partner' || checkreqs(trait.reqs, seek_group, scenedict) == false :
 					continue
 				for j in trait.effects:
@@ -403,7 +403,7 @@ class member:
 		
 		
 		for i in sex_traits:
-			var trait = sceneref.sextraits[i]
+			var trait = Traitdata.sex_traits[i]
 			if trait.trigger_side != 'self' || checkreqs(trait.reqs, self_group, scenedict) == false:
 				continue
 			
@@ -425,7 +425,7 @@ class member:
 #				#yield(sceneref.get_tree().create_timer(0.1), "timeout")
 #				effects.erase('resist')
 #				sceneref.get_node("Panel/sceneeffects").bbcode_text += sceneref.decoder(text, scenedict.givers, scenedict.takers) + '\n'
-		sceneref.get_node("Panel/sceneeffects").bbcode_text += str(sens_mod*100) + "%"
+		#sceneref.get_node("Panel/sceneeffects").bbcode_text += str(sens_mod*100) + "%"
 		self.sens += sensinput*max(0.1, sens_mod)
 		self.horny += hornyinput*max(0.1, horny_mod)
 	
@@ -511,6 +511,7 @@ func _ready():
 	
 	var i = 4
 	if globals.CurrentScene == null:
+		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		while i > 0:
 			i -= 1
 			createtestdummy()
@@ -548,7 +549,7 @@ func _input(event):
 var dummycounter = 0
 
 func createtestdummy(type = 'normal'):
-	var person = globals.characterdata.new()
+	var person = Slave.new()
 	person.create('random', 'random', 'random')
 	var newmember = member.new()
 	newmember.sceneref = self
@@ -609,8 +610,8 @@ func startsequence(actors):
 		newmember.lewd = 100
 #		newmember.person.metrics.sex += 1
 		participants.append(newmember)
-		if person.obedience < 80 && person.professions.has("master"):
-			newmember.effects.append('resist')
+#		if person.obedience < 80 && person.professions.has("master"):
+#			newmember.effects.append('resist')
 		if person.traits.has("Sex-crazed"):
 			newmember.effects.append("sexcrazed")
 	$Panel/aiallow.pressed = aiobserve
@@ -939,7 +940,7 @@ var ai = []
 
 func activateai():
 	for i in givers:
-		if i.submission < 20 || i.consent == false:
+		if i.submission < 10 || i.consent == false:
 			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate('[name] refuses to participate. ')
 			return
 		elif i.effects.has('tied') || i.subduedby.size() > 0:
@@ -993,26 +994,26 @@ func checkaction(action, doubledildo):
 				break
 		if valid == false:
 			return ['false']
-	for k in givers:
-		if action.giverconsent != 'any' && ( k.person.obedience < 80) && !k.person.traits.has('Masochist') && !k.person.traits.has('Likes it rough') :
-			disabled = true
-			hint_tooltip = k.person.translate("[name] refuses to perform this action (low obedience)")
-			continue
-		elif action.giverconsent == 'advanced' && k.lust < 50:
-			disabled = true
-			hint_tooltip = k.person.translate("[name] refuses to perform this action (low lewdness)")
-			continue
-	for k in takers:
-		if k.person.professions.has("master") == true:
-			continue
-		if action.takerconsent != 'any' && (k.person.obedience < 80) && !k.person.traits.has('Masochist') && !k.person.traits.has('Likes it rough')  :
-			disabled = true
-			hint_tooltip = k.person.translate("[name] refuses to perform this action (low obedience)")
-			continue
-		elif action.takerconsent == 'advanced' && k.lust < 50:
-			disabled = true
-			hint_tooltip = k.person.translate("[name] refuses to perform this action (low lewdness)")
-			continue
+#	for k in givers:
+#		if action.giverconsent != 'any' && ( k.person.obedience < 20) && !k.person.traits.has('Masochist') && !k.person.traits.has('Likes it rough') :
+#			disabled = true
+#			hint_tooltip = k.person.translate("[name] refuses to perform this action (low obedience)")
+#			continue
+#		elif action.giverconsent == 'advanced' && k.lust < 50:
+#			disabled = true
+#			hint_tooltip = k.person.translate("[name] refuses to perform this action (low lewdness)")
+#			continue
+#	for k in takers:
+#		if k.person.professions.has("master") == true:
+#			continue
+#		if action.takerconsent != 'any' && (k.person.obedience < 80) && !k.person.traits.has('Masochist') && !k.person.traits.has('Likes it rough')  :
+#			disabled = true
+#			hint_tooltip = k.person.translate("[name] refuses to perform this action (low obedience)")
+#			continue
+#		elif action.takerconsent == 'advanced' && k.lust < 50:
+#			disabled = true
+#			hint_tooltip = k.person.translate("[name] refuses to perform this action (low lewdness)")
+#			continue
 	if disabled == true:
 		return ['disabled',hint_tooltip]
 	else:
@@ -1261,7 +1262,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 			i.lastaction = null
 		
 		for k in i.sex_traits:
-			if Traitdata[k].trigger_side == 'everyone_turn':
+			if Traitdata.sex_traits[k].trigger_side == 'everyone_turn':
 				for j in k.effects:
 					call(j.code, i)
 	

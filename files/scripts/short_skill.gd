@@ -40,15 +40,12 @@ func _init():
 	target_number = 'single'
 	damage_type = 'direct'
 	goldcost = 0
-	pass
 
 func clone():
 	return dict2inst(inst2dict(self))
 
-
-
 func createfromskill(s_code):
-	template = Skilldata.skilllist[s_code]
+	template = Skilldata.Skilllist[s_code]
 	code = s_code
 	type = template.type
 	ability_type = template.ability_type
@@ -118,7 +115,6 @@ func process_check(check:Array):
 	if typeof(op2) == TYPE_STRING && check[1] != 'has':
 		op2 = get(op2)
 	return input_handler.operate(check[1], op1, op2)
-	pass
 
 func setup_caster(c):
 	caster = c
@@ -193,49 +189,6 @@ func apply_atomic(tmp):
 				pass
 			else: set(tmp.stat, tmp.value)
 
-#old code
-#func apply_effect(code, trigger):
-#	var tmp = Effectdata.effect_table[code]
-#	var rec
-#	var res = true
-#	if tmp.trigger != trigger: return
-#	for cond in tmp.conditions:
-#		match cond.target:
-#			'skill':
-#				match cond.check:
-#					'type': res = res and (skilltype == cond.value)
-#					'tag': res = res and tags.has(cond.value)
-#					'result': res = res and (hit_res & cond.value != 0)
-#			'caster':
-#				res = res and input_handler.requirementcombatantcheck(cond.value, caster)
-#			'target':
-#				res = res and input_handler.requirementcombatantcheck(cond.value, target)
-#			'chance':
-#				res = res and (randf()*100 < cond.value)
-#	if !res: return
-#	for ee in tmp.effects:
-#			var eee
-#			if typeof(ee) == TYPE_STRING: eee = Effectdata.atomic[ee].duplicate()
-#			else: eee = ee.duplicate()
-#			#convert effect to constant form
-#			if eee.type == 'skill':
-#				eee.type = eee.new_type
-#				eee.value = get(eee.value) * eee.mul
-#			if eee.type == 'caster':
-#				eee.type = eee.new_type
-#				eee.value = caster.get(eee.value) * eee.mul
-#			if eee.type == 'target':
-#				eee.type = eee.new_type
-#				eee.value = target.get(eee.value) * eee.mul
-#
-#			match eee.target:
-#				'caster':
-#					rec = caster
-#				'target':
-#					rec = target
-#				'skill':
-#					rec = self
-#			rec.apply_atomic(eee)
 
 func apply_effect(eff):
 	var obj = effects_pool.get_effect_by_id(eff)
@@ -244,18 +197,15 @@ func apply_effect(eff):
 			obj.set_args('skill', self)
 			effects.push_back(obj.id)
 			obj.apply()
-			pass
 		'oneshot':
 			obj.applied_obj = self
 			obj.apply()
-			pass
 
 
 func remove_effects():
 	for e in effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
-		pass
 
 func process_event(ev):
 	for e in effects:

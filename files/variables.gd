@@ -91,3 +91,4 @@ var slave_classes_per_difficulty = {
 	10 : [6, 10],
 }
 
+var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']

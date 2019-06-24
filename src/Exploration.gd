@@ -206,6 +206,7 @@ func guild_hire_slave():
 	active_faction.slaves.erase(selectedperson)
 	selectedperson.area = active_area.code
 	selectedperson.location = 'mansion'
+	selectedperson.is_players_character = true
 	open_slave_list()
 
 func open_slave_info(character):

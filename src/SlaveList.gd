@@ -5,12 +5,16 @@ extends Panel
 func _ready():
 	state.connect("slave_added",self,"rebuild")
 	state.connect("hour_tick", self, "update")
+	input_handler.slave_list_node = self
 	rebuild()
 
 func rebuild():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.characters.values():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		if i.professions.has("master") == true:
+			newbutton.get_node("obed").hide()
+			newbutton.get_node("fear").hide()
 		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(i)
