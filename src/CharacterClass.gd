@@ -38,6 +38,8 @@ var traits = []
 var sex_traits = []
 var effects = []
 
+var selectedskill = 'attack'
+
 var static_effects = []
 var temp_effects = []  
 var triggered_effects = []
@@ -94,6 +96,8 @@ var armorpenetration = 0
 var critchance = 0
 var critmod = 1.5
 var position
+var taunt
+
 
 var hide = false
 var silenced = false
@@ -331,7 +335,7 @@ func generate_simple_fighter(tempname):
 			set(i, data[i])
 	icon_image = data.icon
 	body_image = data.body
-	combat_skills = data.skills
+	combat_skills = data.skills + ['attack']
 	npc_reference = data.code
 	is_person = false
 	for i in variables.resists_list:
