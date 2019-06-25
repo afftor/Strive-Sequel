@@ -756,7 +756,7 @@ func use_skill(skill_code, caster, target):
 				new_targets.push_back(enemygroup[t]);
 			if new_targets.size() == 0:
 				break;
-			target = new_targets[int(randf()*new_targets.size())];
+			target = characters_pool.get_char_by_id(new_targets[int(randf()*new_targets.size())]);
 			targets = CalculateTargets(skill, caster, target) 
 		var animations = skill.sfx
 		var animationdict = {windup = [], predamage = [], postdamage = []}

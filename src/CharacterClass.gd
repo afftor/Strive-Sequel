@@ -87,7 +87,7 @@ var mod_pros_gold = 1.0
 var mod_default = 1.0
 
 var damage = 0 #maybe needs setget
-var hitrate = 0
+var hitrate = 80
 var evasion = 0
 var resists = {}
 var armor = 0
