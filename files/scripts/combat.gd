@@ -323,11 +323,10 @@ func player_turn(pos):
 #rangetypes melee, any, backmelee
 
 func UpdateSkillTargets():
-	var skill = Skilldata.skilllist[activeaction]
+	var skill = Skilldata.Skilllist[activeaction]
 	var fighter = activecharacter
 	var targetgroups = skill.allowedtargets
-	var targetpattern = skill.targetpattern
-	var rangetype = skill.userange
+	var rangetype = skill.target_range
 	ClearSkillTargets()
 	
 	for i in $SkillPanel/ScrollContainer/GridContainer.get_children() + $ItemPanel/ScrollContainer/GridContainer.get_children():
@@ -459,7 +458,7 @@ func enemy_turn(pos):
 		fighter.taunt = null
 		if targ.hp > 0:
 			target = targ;
-			castskill = Skilldata.skilllist['attack'];
+			castskill = Skilldata.Skilllist['attack'];
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
@@ -543,7 +542,7 @@ func FighterMouseOver(fighter):
 		else:
 			Input.set_custom_mouse_cursor(cursors.support)
 		var cur_targets = [];
-		cur_targets = CalculateTargets(Skilldata.skilllist[activeaction], activecharacter, fighter); 
+		cur_targets = CalculateTargets(Skilldata.Skilllist[activeaction], activecharacter, fighter); 
 		Stop_Target_Glow();
 		for c in cur_targets:
 			Target_eff_Glow(c.position);
@@ -707,7 +706,7 @@ func use_skill(skill_code, caster, target):
 	#and various limits and cooldowns
 	allowaction = false
 	
-	var skill = Skilldata.skilllist[skill_code]
+	var skill = Skilldata.Skilllist[skill_code]
 	combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
 	
 	caster.mp -= skill.manacost
@@ -884,7 +883,7 @@ func CalculateTargets(skill, caster, target):
 	else:
 		targetgroup = 'enemy'
 	#not sure about adding hide checks here
-	match skill.targetpattern:
+	match skill.target_range:
 		'single':
 			array = [target]
 		'row':
@@ -1117,14 +1116,14 @@ func ClearSkillPanel():
 
 func RebuildSkillPanel():
 	ClearSkillPanel()
-	for i in activecharacter.skills:
+	for i in activecharacter.combat_skills:
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
-		var skill = Skilldata.skilllist[i]
+		var skill = Skilldata.Skilllist[i]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
 		if skill.manacost <= 0:
 			newbutton.get_node("manacost").hide()
-		if skill.manacost > activecharacter.mana:
+		if skill.manacost > activecharacter.mp:
 			newbutton.get_node("Icon").modulate = Color(0,0,1)
 		if activecharacter.cooldowns.has(i):
 			newbutton.disabled = true
@@ -1141,7 +1140,7 @@ func RebuildSkillPanel():
 
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
-	skill = Skilldata.skilllist[skill]
+	skill = Skilldata.Skilllist[skill]
 	if activecharacter.mp < skill.manacost || activecharacter.cooldowns.has(skill.code):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack');
