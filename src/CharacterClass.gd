@@ -1415,6 +1415,7 @@ func can_act():
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has('disable'):
 			res = false
+	return res
 
 func calculate_number_from_string_array(array):
 	var endvalue = 0
