@@ -73,7 +73,8 @@ class member:
 	var number = 0
 	var sceneref
 	
-	var horny = 0
+	var horny = 0 setget horny_set
+	var hornymod = 1.0
 	
 	
 	var svagina = 0
@@ -138,6 +139,10 @@ class member:
 	func lewd_set(value):
 		var change = value - lewd
 		lewd += change*lewdmod
+	
+	func horny_set(value):
+		var change = value - horny
+		horny += change*hornymod
 	
 	func orgasm():
 		var text = ''
@@ -512,6 +517,7 @@ func _ready():
 	var i = 4
 	if globals.CurrentScene == null:
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
+		globals.AddItemToInventory(globals.CreateUsableItem("aphrodisiac"))
 		while i > 0:
 			i -= 1
 			createtestdummy()
@@ -821,7 +827,10 @@ func open_item_list(member):
 	globals.ItemSelect(self, 'sex_use', 'use_item')
 
 func use_item(item):
-	pass
+	var effect = Items.itemlist[item.itembase].interaction_effect
+	item.amount -= 1
+	call(effect, itemusemember)
+	rebuildparticipantslist()
 
 
 var categoriesorder = ['caress', 'fucking', 'tools', 'SM', 'humiliation']
@@ -2166,19 +2175,28 @@ func resistattempt(member):
 
 
 func alcohol(member):
+	var text = "\n" + member.name + " has drank an alcoholic bevarage. "
 	if member.effects.has("drunk") == false:
 		member.sensmod += 0.2
-		member.lewdmod += 0.5
+		member.hornymod += 0.5
+		member.horny += 10
 		member.effects.append('drunk')
-		return true
-	return false
+		text += "It made [him] slightly more horny and sensitive. "
+	else:
+		text += "But it seems [he] is already tipsy. "
+	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 
 func aphrodisiac(member):
-	member.lewd += 100
+	member.horny += 100
+	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier. "
+	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	
 
 func sensetivity_pot(member):
 	member.sensmod += 1
-
+	member.lewdmod += 0.2
+	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive. "
+	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 
 
 

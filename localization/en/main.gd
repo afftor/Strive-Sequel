@@ -710,7 +710,7 @@ var TranslationDict = {
 	
 	PROFMASTER = "Master",
 	PROFMASTERALT = "Mistress",
-	PROFMASTERDESCRIPT = "The sole ruler of domain. $His power strike fear and respect even in those who are only joined recently.\n\nPraises and punishments twice as effective.",
+	PROFMASTERDESCRIPT = "The sole ruler of domain. $His power strike fear and respect even in those who are only joined recently.\n\nPraises and punishments are 50% more effective. Obedience, Fear and Loyalty are ignored.",
 	PROFRULER = "Ruler",
 	PROFRULERDESCRIPT = "You decided to step up from being only a $master. ",
 	PROFDIRECTOR = "Director",

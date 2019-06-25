@@ -30,7 +30,7 @@ var professions = []
 var social_skills = []
 var social_cooldowns = {}
 var social_skills_charges = {}
-var combat_skills = []
+var combat_skills = ['attack']
 var combat_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
@@ -92,6 +92,7 @@ var armor = 0
 var mdef = 0
 var armorpenetration = 0
 var critchance = 0
+var critmod = 1.5
 var position
 
 var hide = false
@@ -1567,6 +1568,9 @@ func use_social_skill(s_code, target):#add logging if needed
 	s_skill.setup_caster(self)
 	s_skill.setup_target(target)
 	s_skill.process_event(variables.TR_CAST)
+	s_skill.setup_final()
+	s_skill.hit_roll()
+	s_skill.resolve_value(true)
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill:
@@ -1584,9 +1588,6 @@ func use_social_skill(s_code, target):#add logging if needed
 		else:
 			eff.process_event(variables.TR_S_TARGET)
 	#assumption that no social skill will have more than 1 repeat or target_number 
-	s_skill.setup_final()
-	s_skill.hit_roll()
-	s_skill.resolve_value(true)
 	#s_skill.calculate_dmg() not really needed
 	
 	#to implement not fully described social chance-to-success system 
