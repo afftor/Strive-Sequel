@@ -91,9 +91,9 @@ func update_hp_label():
 
 func update_mp_label():
 	if fighter.combatgroup == 'ally':
-		$mplabel.text = str(fighter.mana) + '/' + str(fighter.mpmax)
+		$mplabel.text = str(fighter.mp) + '/' + str(fighter.mpmax)
 	else:
-		$mplabel.text = str(round(globals.calculatepercent(fighter.mana, fighter.mpmax))) + '%'
+		$mplabel.text = str(round(globals.calculatepercent(fighter.mp, fighter.mpmax))) + '%'
 
 func defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")

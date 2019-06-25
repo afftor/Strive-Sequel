@@ -570,13 +570,13 @@ func ShowFighterStats(fighter):
 	if fighter.combatgroup == 'ally':
 
 		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.hpmax)
-		if fighter.manamax > 0:
+		if fighter.mpmax > 0:
 			$StatsPanel/mana.text = "Mana: " + str(fighter.mp) + '/' + str(fighter.mpmax)
 		else:
 			$StatsPanel/mana.text = ''
 	else:
 		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.hpmax))) + "%"
-		if fighter.manamax > 0:
+		if fighter.mpmax > 0:
 			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.mpmax))) + "%"
 		else:
 			$StatsPanel/mana.text = ''
@@ -591,11 +591,11 @@ func ShowFighterStats(fighter):
 	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
 
 	for i in ['fire','water','earth','air']:
-		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter['resist'+i]) + " "
+		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.resists[i]) + " "
 	$StatsPanel.show()
 	$StatsPanel/name.text = tr(fighter.name)
-	$StatsPanel/descript.text = fighter.flavor
-	$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
+	#$StatsPanel/descript.text = fighter.flavor
+	#$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
 #	for i in fighter.buffs:
 #		text += i + "\n"
 	for b in fighter.get_all_buffs():
@@ -633,7 +633,6 @@ func buildenemygroup(enemygroup):
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
 
-
 func buildplayergroup(group):
 	#to remake getting data from state
 	#operating this data was remade
@@ -641,13 +640,28 @@ func buildplayergroup(group):
 	for i in group:
 		if int(i) > 6: break
 		if group[i] == null:
-			continue
-		var fighter = state.characters[group[i]] #!!
+		    continue
+		var fighter = state.characters[group[i]] 
 		fighter.combatgroup = 'ally'
 		battlefield[int(i)] = fighter.id
 		make_fighter_panel(fighter, i)
-		newgroup[i] = fighter.id
+		newgroup[int(i)] = fighter.id #only change
 	playergroup = newgroup
+
+#func buildplayergroup(group):
+#	#to remake getting data from state
+#	#operating this data was remade
+#	var newgroup = {}
+#	for i in group:
+#		if int(i) > 6: break
+#		if group[i] == null:
+#			continue
+#		var fighter = state.characters[group[i]] #!!
+#		fighter.combatgroup = 'ally'
+#		battlefield[int(i)] = fighter.id
+#		make_fighter_panel(fighter, i)
+#		newgroup[i] = fighter.id
+#	playergroup = newgroup
 
 func summon(montype, limit):
 	# for now summoning is implemented only for opponents

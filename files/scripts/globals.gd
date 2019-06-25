@@ -839,12 +839,12 @@ func ItemSelect(targetscript, type, function, requirements = true):
 		var newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
 		match type:
 			'gear':
-				input_handler.itemshadeimage(newnode, i)
+				i.set_icon(newnode.get_node("icon"))
 				newnode.get_node("Percent").show()
 				newnode.get_node("Percent").text = str(calculatepercent(i.durability, i.maxdurability)) + '%'
 				connectitemtooltip(newnode, i)
 			'sex_use':
-				newnode.texture_normal = load(i.icon)
+				i.set_icon(newnode.get_node("icon"))
 				newnode.get_node("Percent").show()
 				newnode.get_node('name').text = i.name
 				newnode.get_node("Percent").text = str(i.amount)
