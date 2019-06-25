@@ -628,6 +628,7 @@ func buildenemygroup(enemygroup):
 		var tchar = Slave.new()
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
+		tchar.position = i
 		enemygroup[i] = characters_pool.add_char(tchar)
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
