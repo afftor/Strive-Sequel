@@ -788,7 +788,7 @@ func use_skill(skill_code, caster, target):
 				yield(CombatAnimations, 'pass_next_animation')
 			if animationdict.predamage.size() > 0:
 				yield(CombatAnimations, 'predamage_finished')
-			if skill.damagetype == 'summon':
+			if skill.damage_type == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			else: 
 				execute_skill(s_skill1, caster, i)
@@ -879,12 +879,12 @@ func CalculateTargets(skill, caster, target):
 	var targetgroup
 	var skilltargetgroups = skill.allowedtargets
 	
-	if target.position in range(1,7):
+	if int(target.position) in range(1,7):
 		targetgroup = 'player'
 	else:
 		targetgroup = 'enemy'
 	#not sure about adding hide checks here
-	match skill.target_range:
+	match skill.target_number:
 		'single':
 			array = [target]
 		'row':

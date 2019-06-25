@@ -748,7 +748,7 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = ['10'],
 		sfx = [], 
-		sounddata = {initiate = null},
+		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	ranged_attack = {#melee attack
 		code = 'ranged_attack',
@@ -776,7 +776,7 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = ['10'],
 		sfx = [], 
-		sounddata = {initiate = null},
+		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	
 	double_attack = {#double melee attack, must have melee weapon
