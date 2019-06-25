@@ -1225,13 +1225,13 @@ func random_icon():
 func apply_atomic(template): 
 	match template.type:
 		'damage':
-			#deal_damage(template.value, template.source)
+			deal_damage(template.value, template.source)
 			pass
 		'heal':
-			#heal(template.value)
+			heal(template.value)
 			pass
 		'mana':
-			#mana_update(template.value)
+			mana_update(template.value)
 			pass
 		'stat_set', 'stat_set_revert':
 			template.buffer = get(template.stat)
@@ -1477,6 +1477,42 @@ func simple_check(req):#Gear, Race, Types, Resists, stats
 			#stub to implement humanoid and non-humanoid checks
 			pass
 	return result
+
+var shield = 0
+var shieldtype
+
+func deal_damage(value, source):
+	var tmp = hp
+	value = round(value);
+	if (shield > 0) and ((int(shieldtype) & int(source)) != 0):
+		self.shield -= value
+		if shield < 0:
+			self.hp = hp + shield
+			process_event(variables.TR_DMG)
+			self.shield = 0
+		if shield == 0: process_event(variables.TR_SHIELD_DOWN)
+	else:
+		self.hp = hp - value
+		process_event(variables.TR_DMG)
+	tmp = tmp - hp
+	return tmp
+
+func heal(value):
+	var tmp = hp
+	value = round(value)
+	self.hp += value
+	tmp = hp - tmp
+	process_event(variables.TR_HEAL)
+	return tmp
+
+func mana_update(value):
+	var tmp = mp
+	value = round(value)
+	self.mp += value
+	tmp = mp - tmp
+	#maybe better to rigger heal triggers on this
+	#process_event(variables.TR_HEAL)
+	return tmp
 
 func stat_update(stat, value):
 	var tmp = get(stat)
