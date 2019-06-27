@@ -881,6 +881,7 @@ func mp_set(value):
 
 func death():
 	is_active = false
+	defeated = true
 	clean_effects()
 	pass
 
