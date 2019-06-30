@@ -242,6 +242,18 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	fatigue = {
+		code = 'fatigue',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	exhaustion = {
+		code = 'exhaustion',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 	
 }
 
@@ -927,7 +939,7 @@ func LoadGame(filename):
 	#state = load("res://src/gamestate.gd").new()
 	#state._ready()
 	CurrentScene.queue_free()
-	ChangeScene('town');
+	ChangeScene('mansion');
 	yield(self, "scene_changed")
 	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)

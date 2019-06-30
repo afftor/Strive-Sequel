@@ -3,17 +3,17 @@
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=3]
-[ext_resource path="res://assets/images/gui/timepanel.png" type="Texture" id=4]
-[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=5]
-[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=6]
-[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=7]
+[ext_resource path="res://files/buttons/main screen/frame.png" type="Texture" id=4]
+[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=5]
+[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=6]
+[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=7]
 [ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=8]
 [ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=9]
 [ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=10]
-[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=11]
-[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=12]
-[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/timesphere.png" type="Texture" id=14]
+[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=11]
+[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=12]
+[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=13]
+[ext_resource path="res://files/buttons/main screen/hourprogress.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=15]
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=16]
 [ext_resource path="res://src/SlaveList.gd" type="Script" id=17]
@@ -104,45 +104,46 @@ theme = ExtResource( 3 )
 text = "Sex"
 
 [node name="TimeNode" type="TextureRect" parent="."]
-editor/display_folded = true
-margin_right = 313.0
-margin_bottom = 159.0
+margin_left = 6.91928
+margin_top = 3.509
+margin_right = 295.919
+margin_bottom = 172.509
 texture = ExtResource( 4 )
 
 [node name="Date" type="Label" parent="TimeNode"]
-margin_left = 11.0
-margin_top = 9.0
-margin_right = 156.0
-margin_bottom = 33.0
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 254.0
+margin_bottom = 48.0
 custom_colors/font_color = Color( 0.597656, 0.428544, 0.0280151, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Date"
 
-[node name="0speed" type="TextureButton" parent="TimeNode"]
-margin_left = 152.0
-margin_top = -1.0
-margin_right = 205.0
-margin_bottom = 40.0
+[node name="2speed" type="TextureButton" parent="TimeNode"]
+margin_left = 190.133
+margin_top = 63.7351
+margin_right = 286.133
+margin_bottom = 124.735
 toggle_mode = true
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 
 [node name="1speed" type="TextureButton" parent="TimeNode"]
-margin_left = 203.0
-margin_top = -1.0
-margin_right = 256.0
-margin_bottom = 40.0
+margin_left = 96.7619
+margin_top = 63.7459
+margin_right = 191.762
+margin_bottom = 124.746
 toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
 
-[node name="2speed" type="TextureButton" parent="TimeNode"]
-margin_left = 254.0
-margin_top = -1.0
-margin_right = 304.0
-margin_bottom = 40.0
+[node name="0speed" type="TextureButton" parent="TimeNode"]
+margin_left = 3.09059
+margin_top = 64.45
+margin_right = 99.0906
+margin_bottom = 125.45
 toggle_mode = true
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 12 )
@@ -155,16 +156,14 @@ margin_left = -1.0
 margin_right = 312.0
 margin_bottom = 158.0
 
-[node name="TimeWheel" type="TextureRect" parent="TimeNode"]
+[node name="dayprogress" type="TextureProgress" parent="TimeNode"]
 show_behind_parent = true
-margin_left = 2.0
-margin_top = -153.0
-margin_right = 309.0
-margin_bottom = 154.0
-rect_rotation = 360.0
-rect_pivot_offset = Vector2( 153.5, 153.5 )
-mouse_filter = 2
-texture = ExtResource( 14 )
+margin_left = 5.0
+margin_top = 130.0
+margin_right = 285.0
+margin_bottom = 167.0
+value = 50.0
+texture_progress = ExtResource( 14 )
 
 [node name="gold" type="Label" parent="."]
 margin_left = 1679.87
@@ -173,11 +172,10 @@ margin_right = 1893.87
 margin_bottom = 41.0939
 
 [node name="TaskProgress" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 19.0
-margin_top = 165.156
+margin_top = 195.156
 margin_right = 425.0
-margin_bottom = 410.156
+margin_bottom = 440.156
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TaskProgress"]
 margin_left = 3.89606
@@ -218,7 +216,6 @@ texture = ExtResource( 15 )
 expand = true
 
 [node name="SlaveList" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 1221.0
 margin_top = 64.0
 margin_right = 1905.0
@@ -227,19 +224,19 @@ theme = ExtResource( 16 )
 script = ExtResource( 17 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveList"]
-margin_left = 13.0
-margin_top = 20.0
-margin_right = 661.0
+margin_left = 26.7148
+margin_top = 26.0
+margin_right = 649.715
 margin_bottom = 801.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveList/ScrollContainer"]
-margin_right = 648.0
+margin_right = 623.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="SlaveList/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 648.0
+margin_right = 623.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
@@ -252,8 +249,8 @@ texture = ExtResource( 18 )
 expand = true
 
 [node name="state" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 392.0
-margin_right = 442.0
+margin_left = 372.0
+margin_right = 422.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
@@ -261,8 +258,9 @@ texture = ExtResource( 19 )
 expand = true
 
 [node name="en" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 442.0
-margin_right = 492.0
+editor/display_folded = true
+margin_left = 422.0
+margin_right = 472.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPENERGY"
@@ -280,8 +278,9 @@ text = "100"
 align = 1
 
 [node name="mp" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 492.0
-margin_right = 542.0
+editor/display_folded = true
+margin_left = 472.0
+margin_right = 522.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
@@ -298,8 +297,9 @@ text = "100"
 align = 1
 
 [node name="obed" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 542.0
-margin_right = 592.0
+editor/display_folded = true
+margin_left = 522.0
+margin_right = 572.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPOBEDIENCE"
@@ -318,8 +318,9 @@ text = "100"
 align = 1
 
 [node name="fear" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 592.0
-margin_right = 642.0
+editor/display_folded = true
+margin_left = 572.0
+margin_right = 622.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPFEAR"
@@ -360,8 +361,8 @@ visible = false
 visible = false
 margin_left = 22.0
 margin_top = 57.0
-margin_right = 1212.0
-margin_bottom = 921.0
+margin_right = 1220.0
+margin_bottom = 917.0
 
 [node name="QuestPanel" parent="." groups=[
 "pauseprocess",
@@ -383,6 +384,7 @@ margin_left = 1252.0
 margin_top = 900.0
 margin_right = 1892.0
 margin_bottom = 1056.0
+mouse_filter = 2
 bbcode_enabled = true
 scroll_following = true
 

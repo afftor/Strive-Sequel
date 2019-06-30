@@ -724,6 +724,7 @@ text = "Confirm"
 visible = false
 
 [node name="Gold" type="Label" parent="."]
+visible = false
 margin_left = 17.2678
 margin_top = 12.9508
 margin_right = 69.2678

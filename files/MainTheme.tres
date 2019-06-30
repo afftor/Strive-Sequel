@@ -1,17 +1,17 @@
 [gd_resource type="Theme" load_steps=11 format=2]
 
-[ext_resource path="res://assets/images/gui/panels/paneltransperent.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/panel.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/text scene/tooltippanel.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/gui/universal/scroll.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/universal/scrollunder.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 500, 500 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
+region_rect = Rect2( 0, 0, 528, 528 )
+margin_left = 100.0
+margin_right = 100.0
+margin_top = 100.0
+margin_bottom = 100.0
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )

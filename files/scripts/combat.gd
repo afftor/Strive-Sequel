@@ -71,8 +71,9 @@ func _ready():
 
 
 func cheatvictory():
-	for i in enemygroup.values():
-		i.hp = 0
+	for i in enemygroup:
+		var tchar = characters_pool.get_char_by_id(enemygroup[i])
+		tchar.hp = 0
 	#checkwinlose()
 
 func _process(delta):
@@ -122,9 +123,7 @@ func FinishCombat():
 	input_handler.ShowGameTip('explore')
 	input_handler.emit_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("towntheme")
-	get_parent().wincontinue()
-	get_parent().levelupscheck()
-	globals.call_deferred('EventCheck')
+	get_parent().finish_combat()
 
 
 func select_actor():
@@ -245,29 +244,29 @@ func victory():
 		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 			$Rewards/HBoxContainer/first.remove_child(newbutton)
 			$Rewards/HBoxContainer/second.add_child(newbutton)
-		newbutton.get_node('icon').texture = tchar.portrait_circle()
-		newbutton.get_node("xpbar").value = tchar.baseexp
-		var level = tchar.level
-		tchar.baseexp += ceil(rewardsdict.xp*tchar.xpmod)
+		#newbutton.get_node('icon').texture = tchar.portrait_circle()
+		newbutton.get_node("xpbar").value = tchar.base_exp
+		tchar.base_exp += ceil(rewardsdict.xp*tchar.exp_mod)
+		#var level = tchar.level
 		var subtween = input_handler.GetTweenNode(newbutton)
-		if tchar.level > level:
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(tchar.level) + "!")
-			subtween.interpolate_callback(input_handler, 1, 'PlaySound', "levelup")
-		elif i.level == level && i.baseexp == 100 :
-			newbutton.get_node("xpbar").value = 100
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
-			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
-		else:
-			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, tchar.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
-			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*tchar.xpmod)))
-		subtween.start()
+#		if tchar.level > level:
+#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+#			subtween.interpolate_callback(input_handler, 1, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("LEVELUP")+ ': ' + str(tchar.level) + "!")
+#			subtween.interpolate_callback(input_handler, 1, 'PlaySound', "levelup")
+#		elif i.level == level && i.baseexp == 100 :
+#			newbutton.get_node("xpbar").value = 100
+#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
+#			subtween.interpolate_callback(input_handler, 0, 'DelayedText', newbutton.get_node("xpbar/Label"), tr("MAXLEVEL"))
+#		else:
+#			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, tchar.baseexp, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
+#			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*tchar.xpmod)))
+#		subtween.start()
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	$Rewards.visible = true
 	$Rewards.set_meta("result", 'victory')
 	for i in rewardsdict.materials:
-		var item = Items.Materials[i]
+		var item = Items.materiallist[i]
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		newbutton.hide()
 		newbutton.texture = item.icon
@@ -510,10 +509,10 @@ func make_fighter_panel(fighter, spot):
 	panel.set_meta('character',fighter)
 	panel.get_node("Icon").texture = fighter.get_icon()
 	panel.get_node("HP").value = globals.calculatepercent(fighter.hp, fighter.hpmax)
-	panel.get_node("Mana").value = globals.calculatepercent(fighter.mp, fighter.mpmax)
+	panel.get_node("MP").value = globals.calculatepercent(fighter.mp, fighter.mpmax)
 	panel.hp = fighter.hp
 	if fighter.mpmax == 0:
-		panel.get_node("Mana").value = 0
+		panel.get_node("MP").value = 0
 	panel.get_node("Label").text = fighter.name
 	container.add_child(panel)
 	panel.rect_position = Vector2(0,0)

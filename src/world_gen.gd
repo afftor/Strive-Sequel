@@ -24,7 +24,7 @@ var lands = {
 		population = [100000, 200000], #population, not currently used, but planned to be possible to affect its numbers
 		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]}, #will generate said locations on first generation
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
-		locations = [], #array to fill up with settlements and dungeons
+		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den_easy', "dungeon_goblin_cave_easy"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages'],
 		capital_shop_resources = ['meat','fish','grains','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
@@ -42,7 +42,7 @@ var lands = {
 		population = [20000, 50000],
 		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
 		start_locations_number = 3, 
-		locations = [],
+		locations = {},
 		locationpool = ['dungeon_goblin_cave_easy'],
 		guilds = [],
 		capital_shop_resources = ['grains','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
@@ -55,8 +55,8 @@ func make_area(code):
 	var areadata = lands[code].duplicate()
 	state.areas[areadata.code] = areadata
 	areadata.population = round(rand_range(areadata.population[0],areadata.population[1]))
-	areadata.quests = {guilds = {}, global = []}
-	areadata.questlocations = []
+	areadata.quests = {global = {}}
+	areadata.questlocations = {}
 	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
 	for i in areadata.start_settlements_number:
 		var number = round(rand_range(areadata.start_settlements_number[i][0], areadata.start_settlements_number[i][1]))
@@ -64,8 +64,10 @@ func make_area(code):
 			make_settlement(i, areadata)
 			number -= 1
 	while areadata.start_locations_number > 0:
-		make_location(areadata.locationpool[randi()%areadata.locationpool.size()], areadata)
+		var location = make_location(areadata.locationpool[randi()%areadata.locationpool.size()], areadata)
 		areadata.start_locations_number -= 1
+		areadata.locations[location.id] = location
+		state.location_links[location.id] = {area = code, category = 'locations'} 
 	areadata.factions = {}
 	areadata.quests.factions = {}
 	for i in areadata.guilds:
@@ -109,7 +111,7 @@ var guildsdata = {
 		name = 'Fighters',
 		description = '',
 		preference = ['combat'],
-		quests_easy = ['warriors_threat_basic','warriors_dungeon_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
+		quests_easy = ['warriors_dungeon_basic'],#'warriors_threat_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [1,1],
@@ -152,7 +154,7 @@ var guildsdata = {
 
 func make_guild(code, area):
 	var factiondata = guildsdata[code].duplicate(true)
-	area.quests.factions[factiondata.code] = []
+	area.quests.factions[factiondata.code] = {}
 	var guilddatatemplate = {
 		code = factiondata.code,
 		name = factiondata.name,
@@ -177,7 +179,7 @@ func make_guild(code, area):
 		make_slave_for_guild(guilddatatemplate)
 		factiondata.slavenumber -= 1
 	if factiondata.questnumber > 0:
-		area.quests.factions[factiondata.code] = []
+		area.quests.factions[factiondata.code] = {}
 	while factiondata.questnumber > 0:
 		for i in ['easy','medium','hard']:
 			while guilddatatemplate.questsetting[i] > area.quests.factions[factiondata.code].size():
@@ -188,7 +190,7 @@ func make_guild(code, area):
 
 func make_slave_for_guild(guild):
 	var newslave = Slave.new()
-	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty)
+	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
 	guild.slaves.append(newslave)
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
@@ -197,7 +199,7 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 	newquest.area = guilddatatemplate.area
 	newquest.travel_time = state.areas[guilddatatemplate.area].travel_time + round(randf()*24)
 	newquest.difficulty = difficulty
-	state.areas[newquest.area].quests.factions[newquest.source].append(newquest)
+	state.areas[newquest.area].quests.factions[newquest.source][newquest.id] = newquest
 
 func make_settlement(code, area):
 	var settlement = locations[code].duplicate(true)
@@ -243,7 +245,7 @@ func make_settlement(code, area):
 		resource_types -= 1
 	
 	
-	area.locations.append(settlement)
+	area.locations[settlement.id] = settlement
 
 
 func make_location(code, area):
@@ -251,23 +253,24 @@ func make_location(code, area):
 	location.name =  "The " + dungeonadj[randi()%dungeonadj.size()] + " " + dungeonnoun[randi()%dungeonnoun.size()]
 	location.id = "L" + str(state.locationcounter)
 	location.travel_time = round(rand_range(6,24))
+	location.code = code
 	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
 	location.levels = {}
 	while levelnumber > 0:
 		location.levels[int(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
 		levelnumber -= 1
 	location.group = {}
-	location.scriptedevents = []
 	location.randomevents = []
+	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
 	location.stagedenemies = []
 	if location.has("final_enemy"):
 		var bossenemy = input_handler.weightedrandom(location.final_enemy)
 		location.stagedenemies.append({enemy = bossenemy, level = location.levels.size(), stage = location.levels[location.levels.size()].stages})
 		if location.final_enemy_type == 'character':
-			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages, operant = 'gte'}]})
+			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages-1, operant = 'gte'}]})
 	state.locationcounter += 1
-	area.locations.append(location)
+	return location
 
 func update_guilds(area):
 	#rebuild quests and slaves in guild
@@ -278,7 +281,7 @@ func update_guilds(area):
 		while i.slaves.size() < i.slavenumber:
 			make_slave_for_guild(i)
 		for faction in area.quests.factions:
-			for quest in area.quests.factions[faction]:
+			for quest in area.quests.factions[faction].values():
 				if quest.taken == true && quest.complete == false:
 					quest.time_limit -= 1
 					if quest.time_limit < 0:
@@ -295,7 +298,7 @@ func fill_faction_quests(faction, area):
 	#get existing quests data
 	var difficulty = {easy = 0, medium = 0, hard = 0}
 	
-	for i in areadata.quests.factions[faction]:
+	for i in areadata.quests.factions[faction].values():
 		difficulty[i.difficulty] += 1
 	for i in difficulty:
 		while factiondata.questsetting[i] > difficulty[i]:
@@ -503,12 +506,15 @@ func make_quest(questcode):
 	var template = questdata[questcode].duplicate(true)#array[randi()%array.size()]
 	var data = quest_template.duplicate(true)
 	
+	data.id = "Q" + str(state.questcounter)
+	state.questcounter += 1
 	data.code = template.code
 	data.name = template.name
 	data.descript = template.descript
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.type = template.type
 	data.complete = false
+	data.failed = false
 	
 	#location = location - add quest placement
 	var requirements_number = round(rand_range(template.randomconditions.number[0], template.randomconditions.number[1]))
@@ -542,9 +548,12 @@ func make_quest(questcode):
 func take_quest(quest, area):
 	quest.taken = true
 	if quest.type in ['eventlocationquest','dungeonquest']:
-		area.questlocations.append(make_quest_location(quest))
+		var location = make_quest_location(quest, area)
+		area.questlocations[location.id] = location
+		location.questid = quest.id
+		state.location_links[location.id] = {area = area.code, category = 'questlocations'} 
 
-func make_quest_location(quest):
+func make_quest_location(quest,area):
 	var locationdata = {}
 	locationdata.id = "L" + str(state.locationcounter)
 	state.locationcounter += 1
@@ -563,20 +572,23 @@ func make_quest_location(quest):
 				locationdata.group = {}
 				locationdata.progress = {level = 0, stage = 0}
 			'dungeonquest':
-				var data = dungeons[i.type].duplicate(true)
-				locationdata.type = 'quest_dungeon'
-				locationdata.code = data.code
-				locationdata.name = data.name
-				locationdata.descript = data.descript
-				locationdata.quest = quest.code
-				locationdata.area = quest.area
-				locationdata.travel_time = quest.travel_time
-				locationdata.levels = round(rand_range(data.levels[0], data.levels[1]))
-				locationdata.stages = round(rand_range(data.stages[0], data.stages[1]))
-				locationdata.enemies = data.enemies
-				locationdata.difficulty = data.difficulty
-				locationdata.group = {}
-				locationdata.progress = {level = 0, stage = 0}
+				locationdata = make_location(i.type, area)
+				i.value = locationdata.id
+				locationdata.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
+#				var data = dungeons[i.type].duplicate(true)
+#				locationdata.type = 'quest_dungeon'
+#				locationdata.code = data.code
+#				locationdata.name = data.name
+#				locationdata.descript = data.descript
+#				locationdata.quest = quest.code
+#				locationdata.area = quest.area
+#				locationdata.travel_time = quest.travel_time
+#				locationdata.levels = round(rand_range(data.levels[0], data.levels[1]))
+#				locationdata.stages = round(rand_range(data.stages[0], data.stages[1]))
+#				locationdata.enemies = data.enemies
+#				locationdata.difficulty = data.difficulty
+#				locationdata.group = {}
+#				locationdata.progress = {level = 0, stage = 0}
 	return locationdata
 
 func make_quest_descript(quest):
@@ -637,7 +649,8 @@ var dungeons = {
 		enemies = [["rats_easy", 1]],
 		final_enemy = [['bandits_easy_boss',1]],
 		final_enemy_type = 'character',
-		affiliation = ['local'], #defines character races and events
+		final_enemy_class = ['combat'],
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	skirmish_forest_wolves_easy = {
@@ -651,8 +664,8 @@ var dungeons = {
 		difficulty = 'easy',
 		enemies = [["wolves_easy1", 1]],
 		final_enemy = [['bandits_easy_boss',1]],
-		final_enemy_type = 'character',
-		affiliation = ['local'], #defines character races and events
+		final_enemy_type = 'monster',
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	
@@ -669,7 +682,8 @@ var dungeons = {
 		enemies = [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
 		final_enemy = [['bandits_easy_boss',1]],
 		final_enemy_type = 'character',
-		affiliation = ['local'], #defines character races and events
+		final_enemy_class = ['combat'],
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	dungeon_goblin_cave_easy = {
@@ -684,7 +698,7 @@ var dungeons = {
 		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
-		affiliation = ['local'], #defines character races and events
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	dungeon_grove_easy = {
@@ -699,7 +713,7 @@ var dungeons = {
 		enemies = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
-		affiliation = ['local'], #defines character races and events
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	dungeon_crypt_easy = {
@@ -714,7 +728,7 @@ var dungeons = {
 		enemies = [["rats_easy", 1]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
-		affiliation = ['local'], #defines character races and events
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	dungeon_mountains_med = {
@@ -729,7 +743,7 @@ var dungeons = {
 		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
-		affiliation = ['local'], #defines character races and events
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	dungeon_volcano_easy = {
@@ -744,7 +758,7 @@ var dungeons = {
 		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
-		affiliation = ['local'], #defines character races and events
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 	dungeon_city_easy = {
@@ -759,7 +773,7 @@ var dungeons = {
 		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
-		affiliation = ['local'], #defines character races and events
+		affiliation = 'local', #defines character races and events
 		events = [],
 	},
 }

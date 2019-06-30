@@ -563,7 +563,7 @@ var TranslationDict = {
 	STATPHYSICS_FACTORDESCRIPT = "Body factor represents physical potential of the character. It limits [color=aqua]Physical[/color] growth and influences melee combat.",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also influences spell effects and damage. ",
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy is to befriend the character. The higher it is, the slower Obedience decays. ", 
-	STATBRAVE_FACTORDESCRIPT = "Brave factor represents how hard is to keep character in Fear. The higher it is, the quicker Fear decays. ",
+	STATBRAVE_FACTORDESCRIPT = "Brave factor represents how hard is to keep character in Fear. The higher it is, the quicker Fear decays. It also determines how likely the character will attempt to escape. ",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents character's mind potential. It limits [color=aqua]Wits[/color] growth.",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth.",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It limits [color=aqua]Sexuals[/color] growth.",
@@ -710,9 +710,9 @@ var TranslationDict = {
 	
 	PROFMASTER = "Master",
 	PROFMASTERALT = "Mistress",
-	PROFMASTERDESCRIPT = "The sole ruler of domain. $His power strike fear and respect even in those who are only joined recently.\n\nPraises and punishments are 50% more effective. Obedience, Fear and Loyalty are ignored.",
+	PROFMASTERDESCRIPT = "The sole ruler of domain. [His] power strike fear and respect even in those who are only joined recently.\n\nPraises and punishments are 50% more effective. Obedience, Fear and Loyalty are ignored.",
 	PROFRULER = "Ruler",
-	PROFRULERDESCRIPT = "You decided to step up from being only a $master. ",
+	PROFRULERDESCRIPT = "You decided to step up from being only a [master]. ",
 	PROFDIRECTOR = "Director",
 	PROFDIRECTORDESCRIPT = "Director can issue a higher tier discipline on the servants in name of the master. ",
 	PROFSADIST = "Sadist",
@@ -1121,6 +1121,20 @@ var TranslationDict = {
 	SEXTRAITLEWDNESS_AURADESCRIPT = "[name] has an unusual aura around [him], making everyone participating slightly more aroused every turn. ", 
 	SEXTRAITBISEXUALDESCRIPT = "[name] has fully accepted drowning in sexual pleasure with any gender. Removes penalty from same-sex actions.", 
 	SEXTRAITOMNISEXUALDESCRIPT = "[name] is ready to go to the lengths normal people wouldn't usually go. Removes penalty from actions with animals and undeads. ", 
+	
+	
+	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should focus on their morals or behavior.",
+	DIALOGUEESCAPECLOSE = "This is unfortunate",
+	DIALOGUEPRAISETEXT = "[name1] has prased [name2] for [his2] efforts.",
+	DIALOGUEPRAISECLOSE = "Close",
+	
+	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. It's up to you what to do with [him]. ",
+	DIALOGUERECRUITBOSSOPTION = "Take into custody",
+	DIALOGUEEXECUTEOPTION = "Execute",
+	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
+	
+	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
+	RETURNCHARACTERCONFIRM = "Order [name] return to mansion immidiatly?",
 	
 }
 

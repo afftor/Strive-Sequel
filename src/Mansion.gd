@@ -12,6 +12,8 @@ onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2s
 func _ready():
 	globals.CurrentScene = self
 	
+	
+	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
@@ -35,7 +37,8 @@ func _ready():
 	state.log_node = $TextLog
 	
 	state.connect("task_added", self, 'build_task_bar')
-	settime()
+	
+	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
 	if globals.start_new_game == false:
 		var character = Slave.new()
@@ -96,14 +99,10 @@ func _process(delta):
 			gamepaused_nonplayer = false
 			gamepaused = false
 	
-#	$ControlPanel/Gold.text = str(state.money)
-#	$ControlPanel/Food.text = str(state.food)
-	
-#	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		gametime += delta * gamespeed
+		$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
 		if gametime >= variables.SecondsPerHour:
-			settime()
 			gametime -= variables.SecondsPerHour
 			state.emit_signal("hour_tick")
 			state.hour += 1
@@ -116,11 +115,10 @@ func _process(delta):
 					world_gen.update_guilds(i)
 			for i in state.characters.values():
 				i.tick()
+			
+			$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 
 
-func settime():
-	$TimeNode/Date.text = "D: " + str(state.date) + " T: " + str(state.hour) + ":00"
-	$TimeNode/TimeWheel.rect_rotation = (float(state.hour) / variables.HoursPerDay * 360)-180
 
 func changespeed(button, playsound = true):
 	var oldvalue = gamespeed

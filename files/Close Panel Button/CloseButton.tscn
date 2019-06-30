@@ -5,8 +5,10 @@
 [ext_resource path="res://assets/images/gui/universal/closebuttonhl.png" type="Texture" id=3]
 
 [node name="CloseButton" type="TextureButton"]
-margin_right = 35.0
-margin_bottom = 35.0
+margin_right = 55.0
+margin_bottom = 52.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 3 )
+expand = true
+stretch_mode = 5

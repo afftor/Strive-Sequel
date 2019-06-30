@@ -2,18 +2,22 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_02.png-af95a52bd5de4b2dffcefa789cf38584.stex"
+path="res://.import/item_mithril.png-059c7bf6b0fec48deddfbcc0dc0109c6.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://files/buttons/main screen/button_02.png"
-dest_files=[ "res://.import/button_02.png-af95a52bd5de4b2dffcefa789cf38584.stex" ]
+source_file="res://assets/images/iconsitems/item_mithril.png"
+dest_files=[ "res://.import/item_mithril.png-059c7bf6b0fec48deddfbcc0dc0109c6.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true
