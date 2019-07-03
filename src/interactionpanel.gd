@@ -113,7 +113,7 @@ class member:
 	var mouth
 	var anus
 	var tail
-	var strapon
+	var strapon = false
 	var nipples
 	var posh1
 	var mode = 'normal'
@@ -231,7 +231,7 @@ class member:
 					vaginatext = sceneref.decoder(vaginatext, scene.givers, [self])
 				#no default conditon
 		#penis present
-		if person.penis_size != 'none':
+		if person.penis_size != '':
 			#penis in use, find scene
 			if penis != null:
 				scene = penis
@@ -420,17 +420,6 @@ class member:
 						input_handler.math(k.operant, horny_mod, k.value)
 			
 		
-#		if values.has('obed') && values.obedience > 0 && effects.has('resist'):
-#			if person.obedience >= 90 && person.professions.has("master"):
-#				var text = ''
-#				text += "\n[color=green]Afterward, {^[name2] seems to have:it looks as though [name2] [has2]} {^learned [his2] lesson:reformed [his2] rebellious ways:surrendered} and shows {^complete:total} {^submission:obedience:compliance}"
-#				if person.traits.find("Masochist") >= 0:
-#					text += ", but there is also {^an unusual:a strange} {^flash:hint:look} of desire in [his2] eyes"
-#				text += '. [/color]'
-#				#yield(sceneref.get_tree().create_timer(0.1), "timeout")
-#				effects.erase('resist')
-#				sceneref.get_node("Panel/sceneeffects").bbcode_text += sceneref.decoder(text, scenedict.givers, scenedict.takers) + '\n'
-		#sceneref.get_node("Panel/sceneeffects").bbcode_text += str(sens_mod*100) + "%"
 		self.sens += sensinput*max(0.1, sens_mod)
 		self.horny += hornyinput*max(0.1, horny_mod)
 	
@@ -600,7 +589,6 @@ func startsequence(actors):
 #					person.sexexp.watchers[i.id] += 1
 #				else:
 #					person.sexexp.watchers[i.id] = 1
-		#erson.lastinteractionday = globals.resources.day
 		newmember.loyalty = person.loyal
 		newmember.submission = person.obedience
 		newmember.person = person
@@ -609,10 +597,8 @@ func startsequence(actors):
 		newmember.sens = 0
 		newmember.name = person.get_short_name()
 		newmember.sex_traits = person.sex_traits
-#		newmember.svagina = person.sensvagina
-#		newmember.smouth = person.sensmouth
-#		newmember.spenis = person.senspenis
-#		newmember.sanus = person.sensanal
+		if person.gear.crotch != null && state.items[person.gear.crotch].itembase == 'strapon':
+			newmember.strapon = true
 		newmember.lewd = 100
 #		newmember.person.metrics.sex += 1
 		participants.append(newmember)
@@ -734,7 +720,7 @@ func rebuildparticipantslist():
 			actionreplacetext = i.person.translate("[name] is busy holding down ") + i.subduing.person.translate("[name] \nand can only act on $him. ")
 	
 	var array = []
-	var bottomrow =  ['rope', 'subdue', 'strapon']
+	var bottomrow =  ['rope', 'subdue']
 	
 	if showactions == true:
 		for i in actionarray:
@@ -877,7 +863,7 @@ func generaterequest(member):
 		rval.erase('fuck')
 	if member.person.penis_size == 'none':
 		rval.erase('penis')
-	if member.person.penis_size == 'none' && member.strapon == null:
+	if member.person.penis_size == 'none' && member.strapon == false:
 		rval.erase('fuckgive')
 	if member.person.vagina == 'none':
 		rval.erase('pussy')
@@ -1169,7 +1155,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	
 	
-	if scenescript.code in ['strapon', 'rope', 'subdue']:
+	if scenescript.code in ['rope', 'subdue']:
 		cont = true
 	#to make action switch on that hole even if they comes from another body part
 	if scenescript.code in ['doubledildo','doubledildoass','tribadism']:
@@ -1181,8 +1167,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 		for i in ongoingactions.duplicate():
 			if i.scene.category == 'fucking' && (i.givers.has(givers[0]) || i.takers.has(givers[0]) || i.givers.has(takers[0]) || i.takers.has(takers[0])):
 				if i.givers == givers && i.takers == takers:
-					if i.scene.code != 'strapon':
-						stopongoingaction(i)
+					stopongoingaction(i)
 	if scenescript.category == 'fucking':
 		for i in ongoingactions.duplicate():
 			if i.scene.code in ['cunnilingus','rimjob','facesit','afacesit','massagefoot','lickfeet'] && (i.givers.has(givers[0]) || i.takers.has(givers[0]) || i.givers.has(takers[0]) || i.takers.has(takers[0])):
@@ -1782,8 +1767,6 @@ func stopongoingaction(meta, rebuild = false):
 			i[action.scene.takerpart] = null
 		if action.scene.get("takerpart2"):
 			i[action.scene.takerpart2] = null
-	if action.scene.code == 'strapon' && action.givers[0]['penis'] != null:
-		stopongoingaction(action.givers[0]['penis'])
 	if action.scene.code == 'rope':
 		for i in action.takers:
 			i.effects.erase('tied')
@@ -2030,7 +2013,7 @@ func askslaveforaction(chosen):
 				if j.category == 'fucking':
 					value += max(turns, 15)
 				
-				if j.code in ['tribadism','doubledildo','doubledildoass','frottage'] && (chosen.strapon != null || target.strapon != null):
+				if j.code in ['tribadism','doubledildo','doubledildoass','frottage'] && (chosen.strapon == true || target.strapon == true):
 					value = 0
 				
 				debug += str(value) + '\n'

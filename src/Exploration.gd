@@ -126,7 +126,7 @@ func update_shop_list():
 				newbutton.get_node("icon").texture = item.icon
 				newbutton.get_node("price").text = str(item.price)
 				newbutton.connect("pressed",self,"item_purchase", [item])
-				globals.connectmaterialtooltip(newbutton, item)
+				globals.connectmaterialtooltip(newbutton, item, 'material')
 		'sell':
 			for i in state.materials:
 				if state.materials[i] <= 0:

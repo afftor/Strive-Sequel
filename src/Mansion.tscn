@@ -216,6 +216,7 @@ texture = ExtResource( 15 )
 expand = true
 
 [node name="SlaveList" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 1221.0
 margin_top = 64.0
 margin_right = 1905.0
@@ -224,6 +225,7 @@ theme = ExtResource( 16 )
 script = ExtResource( 17 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveList"]
+editor/display_folded = true
 margin_left = 26.7148
 margin_top = 26.0
 margin_right = 649.715

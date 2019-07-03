@@ -21,7 +21,7 @@ func requirements():
 	elif takers.size() < 2 && givers.size() < 2:
 		valid = false
 	for i in givers:
-		if i.person.penis_size == '' && i.strapon == null:
+		if i.person.penis_size == '' && i.strapon == false:
 			valid = false
 	for i in takers:
 		if i.person.has_pussy == false:

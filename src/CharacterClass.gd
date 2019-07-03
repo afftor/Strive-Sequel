@@ -981,7 +981,7 @@ func work_tick():
 		work = ''
 		return
 
-	if ['smith','alchemy','tailor','cook'].has(currenttask.product):
+	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
 				state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
@@ -1002,7 +1002,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mode)/100)
+			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1027,7 +1027,7 @@ func work_tick():
 	else:
 		#print(races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function,self)*(productivity/100))
 		work_tick_values(currenttask)
-		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mode)/100)
+		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1

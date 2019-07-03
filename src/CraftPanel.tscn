@@ -34,12 +34,12 @@ margin_top = 44.0
 margin_right = 1369.0
 margin_bottom = 244.0
 
-[node name="cook" type="TextureButton" parent="categories"]
+[node name="cooking" type="TextureButton" parent="categories"]
 margin_right = 300.0
 margin_bottom = 200.0
 texture_normal = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="categories/cook"]
+[node name="Label" type="Label" parent="categories/cooking"]
 margin_left = 17.0
 margin_top = 165.0
 margin_right = 268.0

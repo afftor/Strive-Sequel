@@ -41,7 +41,9 @@ margin_right = 91.6105
 margin_top = 239.309
 margin_bottom = 85.6616
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" groups=[
+"pauseprocess",
+]]
 margin_left = 36.0
 margin_top = 18.0
 margin_right = 685.0

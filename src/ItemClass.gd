@@ -88,6 +88,10 @@ func CreateGear(ItemName = '', dictparts = {}):
 	var itemtemplate = Items.itemlist[ItemName]
 	var tempname = itemtemplate.name
 	
+	if mode == 'simple':
+		name = itemtemplate.name
+		description = itemtemplate.descript
+	
 	
 	geartype = itemtemplate.geartype
 	if itemtemplate.has('weaponrange'):
@@ -198,8 +202,10 @@ func set_icon(node):
 func tooltiptext():
 	var text = ''
 	text += '[center]' + name + '[/center]\n' 
-	if itemtype in ['armor','weapon']:
-		text += 'Durability: ' + str(durability) + '/' + str(maxdurability)
+	if description != null:
+		text += description + "\n"
+	if itemtype in ['armor','weapon','tool']:
+		#text += 'Durability: ' + str(durability) + '/' + str(maxdurability)
 		text += "\n\n"
 		for i in bonusstats:
 			if bonusstats[i] != 0:
@@ -219,7 +225,7 @@ func tooltiptext():
 				text += value + '}\n'
 		text += tooltipeffects()
 	elif itemtype == 'usable':
-		text += description + '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
+		text += '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
 	
 	text = globals.TextEncoder(text)
 	return text
@@ -235,7 +241,7 @@ func tooltip(targetnode):
 	var node = input_handler.GetItemTooltip()
 	var data = {text = tooltiptext(), icon = load(icon), item = self, price = str(calculateprice())}
 	
-	node.showup(targetnode, data)
+	node.showup(targetnode, data, 'gear')
 
 
 func repairwithmaterials():

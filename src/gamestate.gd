@@ -37,7 +37,7 @@ var characters := {}
 var babies = []
 var items := {}
 var active_tasks := [] 
-var craftinglists = {alchemy = [], smith = [], cook = [], tailor = []}
+var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials := {} setget materials_set
 var oldmaterials := {}
 var unlocks := []

@@ -65,11 +65,33 @@ var Parts = {
 
 var partmaterials = {
 	ToolHandle = {
+		wood = {task_energy_tool = 0.05},
+		woodmagic = {task_energy_tool = 0.1},
+		iron = {task_energy_tool = 0.1},
+		steel = {task_energy_tool = 0.12},
+		bone = {task_energy_tool = 0.1},
+		obsidian = {task_energy_tool = 0.05},
+		woodiron = {task_energy_tool = 0.15},
+		woodancient = {task_energy_tool = 0.2},
+		boneancient = {task_energy_tool = 0.15},
+		bonedragon = {task_energy_tool = 0.18},
+		mithril = {task_energy_tool = 0.15},
+		adamantine = {task_energy_tool = 0.2},
+		
+	},
+	WeaponHandle = {
 		wood = {hitrate = 5},
 		woodmagic = {hitrate = 10},
 		iron = {effects = ['gobmetalhandle']},
 		steel = {effects = ['elfmetalhandle']},
 		bone = {hpmod = 0.05},
+	},
+	ToolBlade = {
+		wood = {damagemod = -0.5},
+		woodmagic = {damagemod = -0.4},
+		iron = {damage = 3, effects = ['gobmetalblade']},
+		steel = {damagemod = 0.3, effects = ['elfmetalblade']},
+		bone = {damagemod = -0.1},
 	},
 	Blade = {
 		wood = {damagemod = -0.5},
@@ -513,7 +535,7 @@ var itemlist = {
 	
 	#gear
 	
-	leather_collar = {#-15% obedience decay
+	leather_collar = {#-20% fear decay
 		code = 'leather_collar',
 		name = "",
 		descript = "",
@@ -530,7 +552,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	elegant_choker = {#-10% obedience decay, +10% loyalty
+	elegant_choker = {#-15% obedience decay, -10% fear decay
 		code = 'elegant_chocker',
 		name = "",
 		descript = "",
@@ -547,7 +569,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	steel_collar = {#-20% obedience decay
+	steel_collar = {#-25% fear decay
 		code = 'steel_collar',
 		name = "",
 		descript = "",
@@ -564,7 +586,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	animal_ears = {#charm+
+	animal_ears = {# +10 charm
 		code = 'animal_ears',
 		name = "",
 		descript = "",
@@ -581,7 +603,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	tail_plug = {#+15% lust, +charm if used with pet suit
+	tail_plug = {#+10 charm if used with pet suit, +10% lust growth
 		code = 'tail_plug',
 		name = "",
 		descript = "",
@@ -597,14 +619,14 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	animal_gloves = {#++charm, -physics
+	animal_gloves = {#+15 charm, -10 physics
 		code = 'animal_gloves',
 		name = "",
 		descript = "",
 		itemtype = 'costume',
 		geartype = 'costume',
 		crafttype = 'basic',
-		slots = ['hands'],
+		slots = ['gloves'],
 		price = 100,
 		icon = load("res://assets/images/enemies/RatIcon.png"),
 		unlockreqs = [],
@@ -613,7 +635,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	pet_suit = {#+++charm, --physics, -15% obedience decay, takes 3 slots, animal ears, gloves and leather collar
+	pet_suit = {#+30 charm, -15 physics, -20% fear decay, -15% obedience decay
 		code = 'pet_suit',
 		name = "",
 		descript = "",
@@ -638,9 +660,43 @@ var itemlist = {
 		itemtype = 'costume',
 		geartype = 'costume',
 		crafttype = 'basic',
-		slots = ['boots'],
+		slots = ['gloves'],
 		price = 100,
 		icon = load("res://assets/images/enemies/RatIcon.png"),
+		unlockreqs = [],
+		reqs = [],
+		effects = [],
+		tags = [],
+		basestats = {},
+	},
+	handcuffs = {#physics -10, Adds hidden counter: +x value per day, when counter hits 100, add trait "submissive"
+		code = 'handcuffs',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'costume',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['gloves'],
+		price = 100,
+		icon = load("res://assets/images/enemies/RatIcon.png"),
+		unlockreqs = [],
+		reqs = [],
+		effects = [],
+		tags = [],
+		basestats = {},
+	},
+	strapon = {#substitutes for penis in sex actions
+		code = 'strapon',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'costume',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['crotch'],
+		price = 100,
+		icon = load("res://assets/images/sexicons/strapon.png"),
 		unlockreqs = [],
 		reqs = [],
 		effects = [],
@@ -681,8 +737,8 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	tentacle_suit = {#+50% lust per day 
-		code = 'stimulative_underwear',
+	tentacle_suit = {#+100% lust per day 
+		code = 'tentacle_suit',
 		name = "",
 		descript = "",
 		type = 'gear',
@@ -691,6 +747,40 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['crotch','underwear'],
 		price = 100,
+		icon = load("res://assets/images/enemies/RatIcon.png"),
+		unlockreqs = [],
+		reqs = [],
+		effects = [],
+		tags = [],
+		basestats = {},
+	},
+	anal_beads = {#Adds hidden counter: +x*sexuals_factor value per day, when counter hits 100, add trait "anal". If has trait "anal": +15% lust growth per day
+		code = 'anal_beads',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'costume',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['ass'],
+		price = 200,
+		icon = load("res://assets/images/enemies/RatIcon.png"),
+		unlockreqs = [],
+		reqs = [],
+		effects = [],
+		tags = [],
+		basestats = {},
+	},
+	anal_plug = {#Adds hidden counter: +x*sexuals_factor value per day, when counter hits 100, add trait "anal". If has trait "anal": +15% lust growth per day
+		code = 'anal_plug',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'costume',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['ass'],
+		price = 200,
 		icon = load("res://assets/images/enemies/RatIcon.png"),
 		unlockreqs = [],
 		reqs = [],
@@ -707,16 +797,16 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/AxeBasic.png"),
 		price = 0,
 		basedurability = 50.0,
-		basestats = {damage = 20},
+		basestats = {damage = 5},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
-		itemtype = 'weapon',
+		itemtype = 'tool',
 		geartype = 'axe',
 		weaponrange = 'melee',
 		unlockreqs = [],
-		parts = {Blade = 10, ToolHandle = 5},
-		partcolororder = {ToolHandle = 1, Blade = 2},
+		parts = {ToolBlade = 10, ToolHandle = 5},
+		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "Blade",
 		tags = ['tool', 'recipe'],
 		repairdifficulty = 'easy',
@@ -731,16 +821,16 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/AxeBasic.png"),
 		price = 0,
 		basedurability = 50.0,
-		basestats = {damage = 20},
+		basestats = {damage = 5},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
-		itemtype = 'weapon',
+		itemtype = 'tool',
 		geartype = 'pickaxe',
 		weaponrange = 'melee',
 		unlockreqs = [],
-		parts = {Blade = 10, ToolHandle = 5},
-		partcolororder = {ToolHandle = 1, Blade = 2},
+		parts = {ToolBlade = 10, ToolHandle = 5},
+		partcolororder = {ToolHandle = 1, ToolBlade = 2},
 		partmaterialname = "Blade",
 		tags = ['tool', 'recipe'],
 		repairdifficulty = 'easy',
@@ -996,7 +1086,7 @@ var itemlist = {
 		effects = [],
 		tags = [],
 	},
-	sexdrug = {# -1 body factor, -2 wit factor, 3x lust growth, 6 sex factor (permanent)
+	sexdrug = {# -1 body factor, -2 wit factor, 6 sex factor (permanent)
 		code = 'sexdrug',
 		name = "",
 		descript = "",
@@ -1024,7 +1114,7 @@ var recipes = {
 		resultitemtype = 'material', 
 		resultitem = 'bread', 
 		workunits = 15, 
-		worktype = 'cook'
+		worktype = 'cooking'
 	},
 	meatsoup = {
 		code = 'meatsoup',
@@ -1036,7 +1126,7 @@ var recipes = {
 		resultitemtype = 'material', 
 		resultitem = 'meatsoup', 
 		workunits = 5, 
-		worktype = 'cook'
+		worktype = 'cooking'
 	},
 	fishcakes = {
 		code = 'fishcakes',
@@ -1048,7 +1138,7 @@ var recipes = {
 		resultitemtype = 'material', 
 		resultitem = 'fishcakes', 
 		workunits = 5, 
-		worktype = 'cook'
+		worktype = 'cooking'
 	},
 	#smith
 	trap = {
@@ -1113,7 +1203,7 @@ var recipes = {
 	},
 	alcohol = {
 		code = 'alcohol',
-		materials = {wheat = 6, salvia = 1},
+		materials = {grains = 6, salvia = 1},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
@@ -1209,8 +1299,8 @@ var recipes = {
 	},
 	tail_plug = {
 		code = 'tail_plug',
-		materials = {cloth = 5, wood = 3, leather = 3},
-		items = {},
+		materials = {cloth = 5, leather = 2},
+		items = {anal_plug = 1},
 		unlockreqs = [], 
 		crafttype = 'basic',
 		resultamount = 1, 
@@ -1221,7 +1311,7 @@ var recipes = {
 	},
 	animal_gloves= {
 		code = 'animal_gloves',
-		materials = {cloth = 10, wood = 3},
+		materials = {cloth = 10, clothsilk = 3},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
@@ -1245,7 +1335,7 @@ var recipes = {
 	},
 	chastity_belt = {
 		code = 'chastity_belt',
-		materials = {leather = 10},
+		materials = {leather = 10, iron = 5},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
@@ -1257,7 +1347,7 @@ var recipes = {
 	},
 	stimulative_underwear = {
 		code = 'stimulative_underwear',
-		materials = {cloth = 5, leather = 2, wood = 5},
+		materials = {cloth = 5, clothsilk = 10, leatherthick = 5},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
@@ -1265,6 +1355,54 @@ var recipes = {
 		resultitemtype = 'item', 
 		resultitem = 'stimulative_underwear',
 		workunits = 500, 
+		worktype = 'tailor'
+	},
+	strapon = {
+		code = 'strapon',
+		materials = {leather = 5, wood = 5},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'strapon',
+		workunits = 300, 
+		worktype = 'tailor'
+	},
+	handcuffs = {
+		code = 'handcuffs',
+		materials = {leather = 5, cloth = 5},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'handcuffs',
+		workunits = 200, 
+		worktype = 'tailor'
+	},
+	anal_beads = {
+		code = 'anal_beads',
+		materials = {leather = 5, wood = 5},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'anal_beads',
+		workunits = 200, 
+		worktype = 'tailor'
+	},
+	anal_plug = {
+		code = 'anal_plug',
+		materials = {wood = 10},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'anal_plug',
+		workunits = 200, 
 		worktype = 'tailor'
 	},
 	axe = {

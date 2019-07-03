@@ -58,7 +58,7 @@ func _ready():
 		character.get_trait('core_trait')
 		character.is_players_character = true
 		$SlaveList.rebuild()
-		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', Blade = 'wood'}))
 	else:
@@ -144,14 +144,18 @@ func build_task_bar():
 	for i in state.active_tasks:
 		var newnode = globals.DuplicateContainerTemplate($TaskProgress/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = races.tasklist[i.code].name
-		if i.code in ['alchemy','tailor','cook','smith']:
+		if i.code in ['alchemy','tailor','cooking','smith']:
 			if state.craftinglists[i.code].size() <= 0:
 				newnode.hide()
 			else:
 				newnode.show()
 				newnode.get_node("ProgressBar").max_value = state.craftinglists[i.code][0].workunits_needed
 				newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
-				newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
+				var recipe = Items.recipes[state.craftinglists[i.code][0].code]
+				if recipe.resultitemtype == 'material':
+					newnode.get_node("icon").texture = Items.materiallist[state.craftinglists[i.code][0].code].icon
+				else:
+					newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
 				if state.craftinglists[i.code][0].has('partdict'):
 					newnode.get_node('icon').material = load("res://files/ItemShader.tres")
 		elif i.product in ['prostitutegold']:

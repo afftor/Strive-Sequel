@@ -15,24 +15,26 @@ func _process(delta):
 func _init():
 	set_process(false)
 
-func showup(node, data):
+func showup(node, data, type): #types material materialowned gear geartemplate
 	parentnode = node
 	
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
 		return
-	iconnode.texture = data.icon
-	textnode.bbcode_text = data.text
-	$Cost/Label.text = data.price
-	$Cost.visible = int(data.price) != 0
-	if typeof(data) == TYPE_DICTIONARY:
-		if data.item.get('partcolororder') != null:
-			input_handler.itemshadeimage(iconnode, data.item)
-		else:
-			iconnode.material = null
-	else:
-		data.item.set_icon(iconnode)
 	
+	$Image/amount.hide()
+	iconnode.material = null
+	$type.text = ''
+	
+	match type:
+		'material':
+			material_tooltip(data)
+		'materialowned':
+			materialowned_tooltip(data)
+		'gear':
+			gear_tooltip(data)
+		'geartemplate':
+			geartemplete_tooltip(data)
 	prevnode = parentnode
 	
 	input_handler.GetTweenNode(self).stop_all()
@@ -51,6 +53,59 @@ func showup(node, data):
 		rect_global_position.y -= get_rect().end.y - screen.size.y
 	
 	set_process(true)
+
+func material_tooltip(data):
+	var item = data.item
+	var text = '[center]' + item.name + '[/center]\n' + item.descript
+	if state.materials.has(data.item) && state.materials[data.item] > 0:
+		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(state.materials[data.item])
+	iconnode.texture = item.icon
+	$Cost/Label.text = str(item.price)
+	$Cost.visible = int(item.price) != 0
+	textnode.bbcode_text = text
+	$type.text = tr('MATERIALCATEGORY' + item.type.to_upper())
+
+func materialowned_tooltip(data):
+	material_tooltip(data)
+	$Image/amount.show()
+	$Image/amount.text = str(state.materials[data.item.code])
+
+
+func gear_tooltip(data, item = null):
+	if item == null:
+		item = data.item
+	var text = item.tooltiptext()
+	$Cost/Label.text = str(data.price)
+	$Cost.visible = item.price != 0
+	if item.geartype == null:
+		$type.text = tr("USABLE")
+	else:
+		$type.text = item.geartype + ":"
+	if data.item.slots.size() == 1:
+		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
+	elif data.item.slots.size() > 1:
+		$type.text += 'Multislot'
+	if item.get('partcolororder') != null:
+		input_handler.itemshadeimage(iconnode, item)
+	else:
+		iconnode.texture = load(item.icon)
+	textnode.bbcode_text = text
+
+func geartemplete_tooltip(data):
+	var item = data.item
+	var text = '[center]' + item.name + '[/center]\n' + item.descript
+	
+	iconnode.texture = item.icon
+	if data.item.slots.size() == 1:
+		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
+	elif data.item.slots.size() > 1:
+		$type.text += 'Multislot'
+	else:
+		$type.text = tr("USABLE")
+	if item.get('partcolororder') != null:
+		input_handler.itemshadeimage(iconnode, item)
+	textnode.bbcode_text = text
+	
 
 func cooldown():
 	shutoff = true

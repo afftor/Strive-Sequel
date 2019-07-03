@@ -599,15 +599,12 @@ func connectitemtooltip(node, item):
 		node.disconnect("mouse_entered",item,'tooltip')
 	node.connect("mouse_entered",item,'tooltip', [node])
 
-func disconnectitemtooltip(node):
-	print(node.get_signal_connection_list("mouse_entered"))
-
-func connecttempitemtooltip(node, item):
+func connecttempitemtooltip(node, item, mode):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
-	node.connect("mouse_entered",self,'tempitemtooltip', [node, item])
+	node.connect("mouse_entered",self,'tempitemtooltip', [node, item, mode])
 
-func tempitemtooltip(targetnode, item):
+func tempitemtooltip(targetnode, item, mode):
 	var node = input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
@@ -615,7 +612,7 @@ func tempitemtooltip(targetnode, item):
 	data.item = item
 	data.icon = item.icon
 	data.price = str(item.price)
-	node.showup(targetnode, data)
+	node.showup(targetnode, data, mode)
 
 func connectskilltooltip(node, skill, character):
 	if node.is_connected("mouse_entered",self,'showskilltooltip'):
@@ -645,20 +642,20 @@ func slavetooltip(targetnode, person):
 	var node = input_handler.GetSlaveTooltip()
 	node.showup(targetnode, person)
 
-func mattooltip(targetnode, material, bonustext = ''):
+func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
 	var node = input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + material.name + '[/center]\n' + material.descript
-	if state.materials[material.code] > 0:
-		text += '\n\n' + tr("INPOSESSION") + ": " + str(state.materials[material.code])
 	data.text = text + bonustext
 	data.item = material
 	data.icon = material.icon
 	data.price = str(material.price)
+	if state.materials[material.code] > 0:
+		data.amount = state.materials[material.code]
 	
 	
-	node.showup(targetnode, data)
+	node.showup(targetnode, data, type)
 
 func loadimage(path):
 	#var file = File.new()
