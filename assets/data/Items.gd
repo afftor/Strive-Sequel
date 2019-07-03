@@ -49,6 +49,8 @@ func applyeffect(effect, caster, target):
 
 var Parts = {
 	ToolHandle = {name = tr("TOOLHANDLE"), code = 'ToolHandle', icon = null},
+	ToolBlade = {name = tr("TOOLBLADE"), code = "ToolBlade", icon = null},
+	WeaponHandle = {name = tr("WEAPONHANDLE"), code = 'WeaponHandle', icon = null},
 	Blade = {name = tr("BLADE"), code = 'Blade', icon = load("res://assets/images/gui/universal/msworkers1.png")},
 	Blunt = {name = tr("BLUNT"), code = 'Blunt', icon = null},
 	Rod = {name = tr("ROD"), code = 'Rod', icon = null},
@@ -236,6 +238,7 @@ var materiallist = {
 		price = 20,
 		type = 'stone',
 		tags = [],
+		parts = {},
 	},
 	wood = {
 		code = 'wood',
