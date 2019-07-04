@@ -630,9 +630,10 @@ func get_random_age():
 		array.append({name = i, weight = variables.get(i+"_age_weight")})
 	return input_handler.weightedrandom(array).name
 
-var names = load("res://assets/data/names.gd").new()
+
 
 func get_random_name():
+	var names = load("res://assets/data/names.gd").new() #even better would be to move this data to another singleton
 	var text = race.to_lower()+sex.replace("futa",'female')
 	if !names.namelist.has(text):
 		text = 'human'+ sex.replace("futa",'female')
