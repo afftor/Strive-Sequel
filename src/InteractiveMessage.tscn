@@ -3,7 +3,9 @@
 [ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
 
-[node name="InteractiveMessage" type="Panel"]
+[node name="InteractiveMessage" type="Panel" groups=[
+"pauseprocess",
+]]
 margin_left = 472.461
 margin_top = 68.8755
 margin_right = 1497.46

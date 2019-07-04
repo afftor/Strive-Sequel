@@ -12,9 +12,6 @@ func rebuild():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.characters.values():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		if i.professions.has("master") == true:
-			newbutton.get_node("obed").hide()
-			newbutton.get_node("fear").hide()
 		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(i)
@@ -25,6 +22,18 @@ func rebuild():
 		newbutton.get_node("en/Label").text = str(round(i.energy))
 		newbutton.get_node("mp/Label").text = str(round(i.mp))
 		newbutton.set_meta('slave', i)
+		
+		if i.location != 'mansion':
+			newbutton.get_node('name').text = i.get_full_name()+ ' - Traveling'
+			newbutton.get_node("state").visible = i.location == 'mansion'
+			newbutton.get_node("en").visible = i.location == 'mansion'
+			newbutton.get_node("mp").visible = i.location == 'mansion'
+			newbutton.get_node("obed").visible = i.location == 'mansion'
+			newbutton.get_node("fear").visible = i.location == 'mansion'
+		
+		if i.professions.has("master") == true:
+			newbutton.get_node("obed").hide()
+			newbutton.get_node("fear").hide()
 		newbutton.connect('pressed', self, 'open_slave_tab', [i])
 		globals.connectslavetooltip(newbutton, i)
 
@@ -42,9 +51,22 @@ func update():
 		newbutton.get_node("fear/Label").text = str(round(i.fear))
 		newbutton.get_node("en/Label").text = str(round(i.energy))
 		newbutton.get_node("mp/Label").text = str(round(i.mp))
+		if i.location != 'mansion':
+			if i.location == 'travel':
+				newbutton.get_node('name').text = i.get_full_name() + ' - Relocating: ' + str(i.travel_time) + " hours until arrival. " 
+			else:
+				newbutton.get_node('name').text = i.get_full_name() + ' - Positioned: ' + state.areas[state.location_links[i.location].area][state.location_links[i.location].category][i.location].name
+		newbutton.get_node("state").visible = i.location == 'mansion'
+		newbutton.get_node("en").visible = i.location == 'mansion'
+		newbutton.get_node("mp").visible = i.location == 'mansion'
+		newbutton.get_node("obed").visible = i.location == 'mansion'
+		newbutton.get_node("fear").visible = i.location == 'mansion'
+		if i.professions.has("master") == true:
+			newbutton.get_node("obed").hide()
+			newbutton.get_node("fear").hide()
 
 func open_slave_tab(character):
-	get_parent().get_node("SlavePanel").open(character)
+	input_handler.ShowSlavePanel(character)
 
 var obed_textures = {high = load("res://assets/images/gui/obed_good.png"), med = load("res://assets/images/gui/obed_med.png"), low = load("res://assets/images/gui/obed_bad.png")}
 var fear_textures = {high = load('res://assets/images/gui/fear_good.png'), med = load("res://assets/images/gui/fear_med.png"), low = load("res://assets/images/gui/fear_bad.png")}

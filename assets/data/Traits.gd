@@ -114,7 +114,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_pet'],
-	}, 
+	},
 	sextoy_trait = {#+50% gold from prostitution
 		code = 'sextoy_trait',
 		name = '',
@@ -122,7 +122,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_harlot'],
-	}, 
+	},
 	
 	#exploration related traits
 	#needs to hardcode most of traits
@@ -323,8 +323,8 @@ var sex_traits = { #only for interaction tab
 		reqs = [],
 		effects = [],
 	},
-	omnisexual = {
-		code = "omnisexual",
+	deviant = {
+		code = "deviant",
 		name = "",
 		descript = "",
 		starting = true,

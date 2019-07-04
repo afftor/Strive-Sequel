@@ -49,8 +49,13 @@ var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'Beastk
 var master_starting_stats = 10
 var slave_starting_stats = 15
 
+var power_adjustments_per_difficulty = {
+	easy = [1,2],
+	medium = [2,4],
+	hard = [3,6]
+}
 #sex chances
-var male_to_female_ratio = 0.5
+var male_to_female_ratio = 0.0
 var futa_to_female_ratio = 0.1
 
 var teen_age_weight = 1
@@ -73,7 +78,7 @@ var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 var instant_travel = true
 var instant_upgrades = true
 var free_upgrades = true
-var skip_combat = false
+var skip_combat = true
 
 var pregduration = 90
 

@@ -7,7 +7,7 @@ var person
 var type
 
 func _input(event):
-	if self.visible == false || type == 'stranger' || input_handler.text_field_input == true:
+	if self.visible == false || $SkillPanel.visible == false || input_handler.text_field_input == true:
 		return
 	if str(event.as_text().replace("Kp ",'')) in str(range(0,9)) && event.is_pressed():
 		var number = int(event.as_text().replace("Kp ",''))-1
@@ -40,6 +40,7 @@ func _ready():
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
 	$controls/CustmizeButton.connect('pressed', self, "open_customize_button")
 	$controls/GearButton.connect("pressed", self, "show_gear_gui")
+	$controls/ReturnButton.connect("pressed", self, "return_to_mansion_confirm")
 	
 	$RichTextLabel.connect("meta_clicked", self, 'show_race_descript')
 	
@@ -51,24 +52,31 @@ func _ready():
 	
 	input_handler.slave_panel_node = self
 
+
 func open(tempperson):
 	if tempperson == null:
 		tempperson = person
-	if tempperson.professions.has("master"):
-		type = 'master'
-		for i in get_tree().get_nodes_in_group("hide_master"):
-			i.visible = false
-	elif state.characters.has(tempperson.id):
+	person = tempperson
+	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler"):
+		i.visible = true
+	if state.characters.has(tempperson.id):
 		type = 'slave'
-		for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger"):
-			i.visible = true
+		if tempperson.professions.has("master"):
+			type = 'master'
+			for i in get_tree().get_nodes_in_group("hide_master"):
+				i.visible = false
+		if person.location != 'mansion':
+			type = 'traveler'
+			for i in get_tree().get_nodes_in_group("hide_traveler"):
+				i.hide()
 	else:
 		type = 'stranger'
 		for i in get_tree().get_nodes_in_group("hide_stranger"):
 			i.visible = false
+	for i in get_tree().get_nodes_in_group("show_traveler"):
+		i.visible = type == 'traveler' && person.travel_target.location != 'mansion'
 	var text = ''
 	show()
-	person = tempperson
 	$name.text = person.get_short_name()
 	if person.icon_image == null:
 		$Portrait.texture = null
@@ -77,6 +85,8 @@ func open(tempperson):
 	$Body.texture = person.get_body_image()
 	$BodyPanel.visible = $Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
+	if person.location == 'travel':
+		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	$currentwork.text = person.work
 	#$exp.text = str(person.base_exp)
 	
@@ -115,23 +125,46 @@ func open(tempperson):
 		var prof = Skilldata.professions[i]
 		newnode.texture = prof.icon
 		newnode.get_node("Label").text = prof.name
+		globals.connecttexttooltip(newnode, "[center]" + prof.name + '[/center]\n' + person.translate(prof.descript))
 	
-	$SkillPanel.visible = type != 'stranger'
 	if $SkillPanel.visible == true:
 		build_skill_panel()
 	
 	globals.ClearContainer($traits)
 	for i in person.traits:
+		var trait = Traitdata.traits[i]
+		if trait.visible == false:
+			continue
 		var newnode = globals.DuplicateContainerTemplate($traits)
-		var trait
-		newnode.text = i
+		newnode.text = trait.name
 	
 	
 	
 	for i in person.sex_traits:
+		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
-		newnode.text = i
+		newnode.text = trait.name
 
+func make_location_description():
+	var text = ''
+	var active_area_name
+	var active_location_name
+	if person.location == 'travel':
+		if person.travel_target.location == 'mansion':
+			active_location_name = 'Mansion'
+			active_area_name = state.starting_area
+		else:
+			active_area_name = state.areas[state.location_links[person.travel_target.location].area].name
+			active_location_name = state.areas[state.location_links[person.travel_target.location].area][state.location_links[person.travel_target.location].category][person.travel_target.location].name
+	else:
+		active_area_name = state.areas[state.location_links[person.location].area].name
+		active_location_name = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.travel_target.location].name
+	
+	if person.location == 'travel':
+		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(person.travel_time) + ' hours.'
+	else:
+		text = '[name] currently positioned at [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]"
+	return text
 
 func show_progress_tooltip(node):
 	pass
@@ -297,3 +330,24 @@ func open_customize_button():
 func show_gear_gui():
 	var inventory = input_handler.ShowInentory({mode = 'character', person = person})
 
+func return_to_mansion_confirm():
+	input_handler.ShowConfirmPanel(self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM")))
+
+func return_to_mansion():
+	var active_area 
+	var active_location
+	if person.location == 'travel':
+		active_area = state.areas[state.location_links[person.travel_target.location].area]
+		active_location = state.areas[state.location_links[person.travel_target.location].area][state.location_links[person.travel_target.location].category][person.travel_target.location]
+	else:
+		active_area = state.areas[state.location_links[person.location].area]
+		active_location = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.travel_target.location]
+	
+	if variables.instant_travel == false:
+		person.location = 'travel'
+		person.travel_target = {area = '', location = 'mansion'}
+		person.travel_time = max(1, active_area.travel_time + active_location.travel_time - person.travel_time)
+	else:
+		person.location = 'mansion'
+	open(person)
+	input_handler.update_slave_list()

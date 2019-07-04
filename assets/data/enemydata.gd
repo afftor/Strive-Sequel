@@ -43,6 +43,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 15,
 	},
 	bandit_archer = {
 		code = 'bandit_archer',
@@ -66,6 +67,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 15,
 	},
 	bandit_mage = {
 		code = 'bandit_mage',
@@ -89,6 +91,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 20,
 	},
 	cave_goblin_melee = {
 		code = 'cave_goblin_melee',
@@ -112,6 +115,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 10,
 	},
 	cave_goblin_archer = {
 		code = 'cave_goblin_archer',
@@ -135,6 +139,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 10,
 	},
 	cave_goblin_mage = {
 		code = 'cave_goblin_mage',
@@ -158,6 +163,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 10,
 	},
 	ogre_melee = {
 		code = 'ogre_melee',
@@ -181,6 +187,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 50,
 	},
 	ogre_mage = {
 		code = 'ogre_mage',
@@ -204,6 +211,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 40,
 	},
 	troll = {
 		code = 'troll',
@@ -227,6 +235,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 80,
 	},
 	skeleton_melee = {
 		code = 'skeleton_melee',
@@ -250,6 +259,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 20,
 	},
 	skeleton_archer = {
 		code = 'skeleton_archer',
@@ -273,6 +283,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 20,
 	},
 	zombie = {
 		code = 'zombie',
@@ -296,6 +307,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 20,
 	},
 	wolf = {
 		code = 'wolf',
@@ -319,6 +331,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 10,
 	},
 	spider = {
 		code = 'spider',
@@ -342,6 +355,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['ranged'],
+		xpreward = 15,
 	},
 	rat = {
 		code = 'rat',
@@ -365,6 +379,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 5,
 	},
 	gryphon = {
 		code = 'gryphon',
@@ -388,6 +403,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = ['melee'],
+		xpreward = 100,
 	},
 }
 

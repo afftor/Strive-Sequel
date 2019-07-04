@@ -14,10 +14,10 @@ func open():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.areas.values():
 		for guild in i.quests.factions:
-			for quest in i.quests.factions[guild]:
+			for quest in i.quests.factions[guild].values():
 				if quest.taken == true && quest.complete == false:
 					make_quest_button(quest)
-		for quest in i.quests.global:
+		for quest in i.quests.global.values():
 			if quest.taken == true && quest.complete == false:
 				make_quest_button(quest)
 
@@ -54,6 +54,8 @@ func CompleteQuest():
 				"slavegetquest":
 					select_character_for_quest()
 					check = false
+				'dungeonquest':
+					check = state.completed_locations.has(i.value)
 			if check == false:
 				break
 		if check == false:

@@ -1,5 +1,6 @@
 extends Reference
 class_name Slave
+# warning-ignore-all:return_value_discarded
 
 var id = ''
 var is_person = true
@@ -68,6 +69,11 @@ var energy := 100.0 setget energy_set
 var energymax = 100
 var energybonus = 0
 var base_exp = 0
+var exp_mod = 1
+
+#enemy combat/reward data
+var xpreward = 10
+var loottable
 
 var fatigue = 0 setget fatigue_set
 var exhaustion = 0 setget exhaustion_set
@@ -86,7 +92,8 @@ var mod_pros_gold = 1.0
 #var mod_pros_energy = 1.0
 var mod_default = 1.0
 
-var damage = 0 #maybe needs setget
+var damage = 20 #maybe needs setget
+
 var hitrate = 80
 var evasion = 0
 var resists = {}
@@ -233,7 +240,10 @@ var masternoun = 'Master'
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
 	
-	gendata.race = races[randi()%races.size()]
+	if typeof(races) == TYPE_STRING:
+		gendata.race = races
+	else:
+		gendata.race = races[randi()%races.size()]
 	#figuring out the race
 
 	create(gendata.race, gendata.sex, gendata.age)
@@ -251,14 +261,14 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	if slaveclass == 'magic' && magic_factor == 1: #prevents finding no class as there's no magic base classes which allow magic factor < 2
 		magic_factor = 2
 	
-	var difficulty = adjust_difficulty
+	var difficulty = int(round(adjust_difficulty))
 	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1])) 
 	
 	
 	#Add extra stats for harder characters
 	while difficulty > 1:
 		var array = []
-		if randf() >= 0.7:
+		if randf() >= 0.75:
 			array = ['physics_factor', 'magic_factor', 'wits_factor', 'brave_factor', 'sexuals_factor', 'charm_factor']
 		else:
 			match slaveclass:
@@ -276,7 +286,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	difficulty = adjust_difficulty
 	while difficulty > -1:
 		var array = []
-		if randf() >= 0.7:
+		if randf() >= 0.75:
 			array = ['physics', 'wits','sexuals', 'charm']
 		else:
 			match slaveclass:
@@ -289,13 +299,13 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'labor':
 					array = ['physics', 'wits']
 		array = array[randi()%array.size()]
-		self.set(array, self.get(array) + rand_range(10,15))
+		self.set(array, self.get(array) + rand_range(10,20))
 		difficulty -= 1
 	
 	#assign classes
 	while classcounter > 0:
 		var classarray = []
-		if randf() >= 0.8:
+		if randf() >= 0.85:
 			classarray = get_class_list('any', self)
 		else:
 			classarray = get_class_list(slaveclass, self)
@@ -308,12 +318,16 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	for i in Traitdata.sex_traits.values():
 		if i.starting == true && checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
-	var rolls = max(1,ceil(sexuals_factor/3))
+	var rolls = 1 
+	if randf() >= 0.8: rolls = 2
 	while rolls > 0:
 		var newtrait = traitarray[randi()%traitarray.size()]
 		sex_traits.append(newtrait.code)
 		traitarray.erase(newtrait)
 		rolls -= 1
+	
+	for i in ['physics', 'wits','sexuals', 'charm']:
+		set(i, min(self.get(i), self.get(i+'_factor')*20))
 
 func get_class_list(category, person):
 	var array = []
@@ -338,6 +352,8 @@ func generate_simple_fighter(tempname):
 	combat_skills = data.skills + ['attack']
 	npc_reference = data.code
 	is_person = false
+	xpreward = data.xpreward
+	loottable = data.loot
 	for i in variables.resists_list:
 		resists[i] = 0
 	for i in data.resists:
@@ -507,6 +523,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = input_handler.operate(i.operant, id, i.value)
 			'long_tail':
 				check = globals.longtails.has(tail)
+			'cant_spawn_naturally':
+				check = !ignore_npc_stats_gear
 		if check == false:
 			return false
 	return true
@@ -836,8 +854,15 @@ func tick():
 	self.fatigue += 1
 	self.lust += lusttick
 	
-	self.obedience -= 100.0 * obed_degrade_mod/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
-	self.fear -= 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
+	var obed_reduce = 100.0 * obed_degrade_mod/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
+	var fear_reduce = 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
+	
+	if location != 'mansion':
+		obed_reduce = obed_reduce/4
+		fear_reduce = fear_reduce/4
+	
+	self.obedience -= obed_reduce
+	self.fear -= fear_reduce
 	
 	if work == 'travel':
 		if travel_time > 0:
@@ -870,6 +895,12 @@ func tick():
 			joy_tick()
 		else:
 			rest_tick()
+	
+	
+	if last_escape_day_check != state.date && randf() <= 0.2:
+		check_escape_possibility()
+
+var last_escape_day_check = 0
 
 func hp_set(value):
 	if value < 0:
@@ -884,7 +915,6 @@ func death():
 	is_active = false
 	defeated = true
 	clean_effects()
-	pass
 
 func energy_set(value):
 	energymax = 100 + energybonus + round(physics + physics_bonus)
@@ -953,7 +983,7 @@ func work_tick():
 		work = ''
 		return
 
-	if ['smith','alchemy','tailor','cook'].has(currenttask.product):
+	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
 				state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
@@ -974,7 +1004,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mode)/100)
+			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -999,7 +1029,7 @@ func work_tick():
 	else:
 		#print(races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function,self)*(productivity/100))
 		work_tick_values(currenttask)
-		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mode)/100)
+		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
@@ -1126,15 +1156,15 @@ func lust_get():
 	return lust
 
 func check_escape_chance():
+	var check = false
 	var base_chance = brave_factor * 8
-	if obedience + loyal/2 < base_chance:
-		return true
-	if fear + loyal/2 < base_chance:
-		return true
-	return false
+	if obedience + loyal/2 < base_chance && fear + loyal/2 < base_chance:
+		check = true
+	return check
 
 func check_escape_possibility():
-	if check_escape_chance() == false || sleep == 'jail':
+	last_escape_day_check = state.date
+	if check_escape_chance() == false || sleep == 'jail' || professions.has("master") || randf() < brave_factor * 0.1:
 		return false
 	if shackles_chance != null:
 		var tmpchance = max(0, shackles_chance)
@@ -1148,7 +1178,13 @@ func check_escape_possibility():
 		escape()
 
 func escape():
-	pass
+	for i in gear:
+		if gear[i] != null:
+			unequip(state.items[gear[i]])
+	state.characters.erase(id)
+	input_handler.slave_list_node.rebuild()
+	input_handler.interactive_message('slave_escape', 'escape', self)
+	#state.text_log_add(get_short_name() + " has escaped. ")
 
 
 func translate(text):
@@ -1165,6 +1201,7 @@ func translate(text):
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
 	text = text.replace("[hair_color]", hair_color)
+	text = text.replace("[master]", globals.fastif(state.get_master().sex == 'male', "master", "mistress"))
 	match sex:
 		'male':
 			rtext = 'boy'

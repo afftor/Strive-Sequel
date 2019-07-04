@@ -21,7 +21,7 @@ func requirements():
 #	elif givers.size() + takers.size() == 2 && (!givers[0].penis in [takers[0].vagina, takers[0].anus] ):
 #		valid = false
 	for i in givers:
-		if i.person.penis_size == '' && i.strapon == null:
+		if i.person.penis_size == '' && i.strapon == false:
 			valid = false
 #		elif i.penis != null && givers.size() > 1:
 #			valid = false
@@ -32,7 +32,7 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	if givers[0].strapon != null && takers[0].person.penis_size != '':
+	if givers[0].strapon == true && takers[0].person.penis_size != '':
 		return "Lotus Pegging"
 	else:
 		return "Lotus Anal"

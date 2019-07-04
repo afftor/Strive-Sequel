@@ -77,19 +77,21 @@ func textdamageeffect(data):
 
 func update_mana():
 	var tween = input_handler.GetTweenNode(self)
-	var node = get_node("Mana")
-	mp = fighter.mana
+	var node = get_node("MP")
+	mp = fighter.mp
 	
 	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.mana, fighter.manamax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 func update_hp_label():
+	$HP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
 	if fighter.combatgroup == 'ally':
 		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax)
 	else:
 		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax))) + '%'
 
 func update_mp_label():
+	$MP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
 	if fighter.combatgroup == 'ally':
 		$mplabel.text = str(fighter.mp) + '/' + str(fighter.mpmax)
 	else:

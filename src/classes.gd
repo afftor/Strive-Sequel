@@ -9,7 +9,7 @@ var professions = {
 		tags = [],
 		categories = ['social'],
 		showupreqs = [{code = 'global_profession_limit', name = 'master', value = 1}],
-		reqs = [{code = 'global_profession_limit', name = 'master', value = 1}],
+		reqs = [{code = 'global_profession_limit', name = 'master', value = 1},{code = 'cant_spawn_naturally'}],
 		statchanges = [],
 		traits = ['master_effect'], #150% effect from social skills
 		skills = ['praise', 'warn', 'reward','punish'],

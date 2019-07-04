@@ -2,18 +2,22 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_2_0022_Слой-1.png-51aa9ddfe15491611263f59dceb45384.stex"
+path="res://.import/closebuttondisabled.png-9eceb22214e2d5affa745746a8a81085.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://files/buttons/main screen/sprite_2_0022_Слой-1.png"
-dest_files=[ "res://.import/sprite_2_0022_Слой-1.png-51aa9ddfe15491611263f59dceb45384.stex" ]
+source_file="res://assets/images/gui/universal/closebuttondisabled.png"
+dest_files=[ "res://.import/closebuttondisabled.png-9eceb22214e2d5affa745746a8a81085.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

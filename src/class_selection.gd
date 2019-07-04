@@ -77,7 +77,7 @@ func open_class(classcode):
 
 func get_class_details(classdata):
 	var text = ''
-	text += "[center]" + classdata.name + '[/center]\n' + classdata.descript 
+	text += "[center]" + classdata.name + '[/center]\n' + person.translate(classdata.descript) 
 	
 	if person.decipher_reqs(classdata.reqs, true) != '':
 		text += '\n\n' + person.decipher_reqs(classdata.reqs, true)

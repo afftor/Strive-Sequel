@@ -53,6 +53,7 @@ var active_location
 func select_area(area):
 	clear_groups()
 	active_area = area
+	input_handler.active_area = active_area
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	if selectedcategory == null:
 		selectedcategory = 'capital'
@@ -78,7 +79,7 @@ func select_category(category):
 			newbutton.text = "Shop"
 			newbutton.connect("pressed", self, "open_shop")
 		"locations":
-			for i in active_area.locations:
+			for i in active_area.locations.values():
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.text = i.name
 				var presented_characters = []
@@ -89,7 +90,7 @@ func select_category(category):
 					newbutton.text += ' ('+str(presented_characters.size())+')'
 				newbutton.connect("pressed", self, "enter_location", [i])
 		"quests":
-			for i in active_area.questlocations:
+			for i in active_area.questlocations.values():
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.text = i.name
 				var presented_characters = []
@@ -125,7 +126,7 @@ func update_shop_list():
 				newbutton.get_node("icon").texture = item.icon
 				newbutton.get_node("price").text = str(item.price)
 				newbutton.connect("pressed",self,"item_purchase", [item])
-				globals.connectmaterialtooltip(newbutton, item)
+				globals.connectmaterialtooltip(newbutton, item, 'material')
 		'sell':
 			for i in state.materials:
 				if state.materials[i] <= 0:
@@ -165,7 +166,7 @@ func item_sell_confirm(value):
 
 func enter_guild(guild):
 	active_area = state.areas[guild.area]
-	active_faction = guild 
+	active_faction = guild
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	
 	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -210,7 +211,8 @@ func guild_hire_slave():
 	open_slave_list()
 
 func open_slave_info(character):
-	get_parent().get_node("SlavePanel").open(character)
+	input_handler.ShowSlavePanel(character)
+	#get_parent().get_node("SlavePanel").open(character)
 
 func open_quest_list():
 	$QuestPanel.show()
@@ -218,7 +220,7 @@ func open_quest_list():
 	$QuestPanel/RichTextLabel.clear()
 	$QuestPanel/AcceptQuest.hide()
 	globals.ClearContainer($QuestPanel/VBoxContainer)
-	for i in active_area.quests.factions[active_faction.code]:
+	for i in active_area.quests.factions[active_faction.code].values():
 		if i.taken == false:
 			var newbutton = globals.DuplicateContainerTemplate($QuestPanel/VBoxContainer)
 			newbutton.text = i.name
@@ -303,6 +305,9 @@ func build_location_description():
 		'dungeon':
 			text += "\nLevels: " + str(current_level) + "/" + str(active_location.levels.size())
 			text += "\nProgress Level: " + str(active_location.progress.level)
+			if true:
+				text += "\nType: " + active_location.code
+			
 		'settlement':
 			pass
 		'skirmish':
@@ -318,6 +323,7 @@ func build_area_description():
 
 func enter_location(data):
 	active_location = data
+	input_handler.active_location = active_location
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	#check if anyone is present
 	build_location_group()
@@ -389,7 +395,7 @@ func confirm_party_selection():
 			i.work = 'travel'
 			i.location = active_location.id
 			i.area = active_area.code
-	
+	input_handler.update_slave_list()
 	$SlaveSelectionPanel.hide()
 	active_slave_list.clear()
 	enter_location(active_location)
@@ -469,6 +475,7 @@ func return_character(character):
 
 func return_character_confirm():
 	if variables.instant_travel == false:
+		selectedperson.location = 'travel'
 		selectedperson.travel_target = {area = '', location = 'mansion'}
 		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
 	else:
@@ -554,7 +561,7 @@ func enter_level(level):
 		active_location.progress.stage = 0
 	
 	if check_events('enter_level') == true:
-		return
+		yield(input_handler, 'EventFinished')
 	
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	var newbutton
@@ -593,9 +600,9 @@ func area_advance(mode):
 		'roam':
 			current_stage = 0
 	if check_events(mode) == true:
-		return
+		yield(input_handler, 'EventFinished')
 	if check_random_event() == true:
-		return
+		yield(input_handler, 'EventFinished')
 	
 	action_type = mode
 	
@@ -605,7 +612,7 @@ func area_advance(mode):
 
 func finish_combat():
 	if check_events("finish_combat") == true:
-		return
+		yield(input_handler, 'EventFinished')
 	if action_type == 'advance':
 		active_location.progress.stage += 1
 		enter_level(active_location.progress.level)
@@ -620,7 +627,10 @@ func clear_dungeon_confirm():
 		if (i.location == active_location.id && i.travel_time == 0) || i.travel_target.location == active_location.id:
 			selectedperson = i
 			return_character_confirm()
-	active_area.locations.erase(active_location)
+	check_events('complete_location')
+	active_area.locations.erase(active_location.id)
+	active_area.questlocations.erase(active_location.id)
+	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
 	leave_location()
 
 func leave_location():
@@ -631,14 +641,54 @@ func check_events(action):
 	var erasearray = []
 	var eventtriggered = false
 	for i in eventarray:
-		if i.trigger == action:
-			call(i.action, i.args)
+		if i.trigger == action && check_event_reqs(i.reqs) == true:
+			if i.has('args'):
+				call(i.event, i.args)
+			else:
+				call(i.event)
 			eventtriggered = true
-			if i.oneshot == true:
+			if i.has('oneshot') && i.oneshot == true:
 				erasearray.append(i)
+			break
 	for i in erasearray:
 		eventarray.erase(i)
 	return eventtriggered
+
+func finish_quest_dungeon(args):
+	input_handler.interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+
+func character_boss_defeat():
+	var character_race = []
+	var character_class = []
+	var difficulty
+	if active_location.affiliation == 'local':
+		character_race.append([active_area.lead_race, 1])
+		for i in active_area.secondary_races:
+			character_race.append([i, 0.15])
+	if active_location.has("final_enemy_class"):
+		for i in active_location.final_enemy_class:
+			character_class.append([i, 1])
+	
+	character_race = input_handler.weightedrandom(character_race)
+	character_class = input_handler.weightedrandom(character_class)
+	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
+	difficulty = rand_range(difficulty[0], difficulty[1])
+	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {race = character_race, class = character_class, difficulty = difficulty}})
+
+
+func check_event_reqs(reqs):
+	var check = true
+	for i in reqs:
+		match i.code:
+			'level':
+				check = input_handler.operate(i.operant, current_level, i.value)
+			'stage':
+				check = input_handler.operate(i.operant, current_stage, i.value)
+		if check == false:
+			break
+	
+	
+	return check
 
 func check_random_event():
 	var eventarray = active_location.randomevents
@@ -674,7 +724,7 @@ func StartCombat():
 	input_handler.emit_signal("CombatStarted", enemydata)
 	input_handler.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
-	$combat.encountercode = enemydata 
+	$combat.encountercode = enemydata
 	$combat.start_combat(active_location.group, enemies, 'background', music)
 	$combat.show()
 

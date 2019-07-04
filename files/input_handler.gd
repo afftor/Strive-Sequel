@@ -29,8 +29,11 @@ signal CharacterCreated
 
 var last_action_data = {}
 
-var slave_panel_node
+var slave_panel_node = preload("res://src/scenes/SlavePanel.tscn")
 var slave_list_node
+var scene_character
+var active_area
+var active_location
 
 
 func _input(event):
@@ -675,6 +678,14 @@ func HideOutline(node):
 func ConnectSound(node, sound, action):
 	node.connect(action, input_handler, 'PlaySound', [sound])
 
+#Slave Panel
+
+func ShowSlavePanel(person):
+	var node = get_tree().get_root()
+	slave_panel_node.get_parent().remove_child(slave_panel_node)
+	node.add_child(slave_panel_node)
+	slave_panel_node.open(person)
+
 #Inventory
 
 func ShowInentory(args):
@@ -742,7 +753,15 @@ func interactive_message(code, type, args):
 				data.text += args.bonustext
 			if args.has('repeat'):
 				data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = !args.repeat})
-	
+		'escape':
+			data.text = args.translate(data.text)
+		'character_event':
+			var newcharacter = Slave.new()
+			newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+			scene_character = newcharacter
+			data.options.append({code = 'inspect_scene_character', text = "Inspect"})
+		'quest_finish_event':
+			data.text = data.text.replace("[dungeonname]", args.locationname)
 	scene.open(data)
 
 func repeat_social_skill():

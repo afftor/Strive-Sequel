@@ -18,7 +18,7 @@ func _ready():
 		i.connect("pressed", self, 'select_category', [i.name])
 
 var craftcategories = {
-	cook = {reqs = []},
+	cooking = {reqs = []},
 	tailor = {reqs = [{type = "has_upgrade", name = 'tailor', value = 1}]},
 	alchemy = {reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}]},
 	smith = {reqs = [{type = "has_upgrade", name = 'forge', value = 1}]},
@@ -47,10 +47,10 @@ func select_category(category):
 		var item
 		if i.resultitemtype == 'item':
 			item = Items.itemlist[i.resultitem]
-			globals.connecttempitemtooltip(newbutton.get_node('icon'),item)
+			globals.connecttempitemtooltip(newbutton.get_node('icon'), item, 'geartemplate')
 		else:
 			item = Items.materiallist[i.resultitem]
-			globals.connectmaterialtooltip(newbutton.get_node('icon'),item)
+			globals.connectmaterialtooltip(newbutton.get_node('icon'), item, 'material')
 		newbutton.get_node("number").text = str(i.resultamount)
 		newbutton.get_node('Label').text = item.name
 		newbutton.connect("pressed", self, 'selectcraftitem', [i])
@@ -60,12 +60,13 @@ func select_category(category):
 			for k in i.items:
 				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var recipeitem = Items.itemlist[k]
+				globals.connecttempitemtooltip(newnode, recipeitem, 'geartemplate')
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.items[k])
 			for k in i.materials:
 				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var recipeitem = Items.materiallist[k]
-				globals.connectmaterialtooltip(newnode,recipeitem)
+				globals.connectmaterialtooltip(newnode,recipeitem,'material')
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':

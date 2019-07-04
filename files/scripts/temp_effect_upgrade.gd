@@ -65,19 +65,18 @@ func downgrade():
 		stage = template.stages
 	apply()
 	return variables.TE_RES_DGRADE
-	pass
 
 func process_event(ev):
 	if !is_applied: return
 	var res = variables.TE_RES_NOACT
-	if ev == tick_event:
+	if tick_event.has(ev):
 		res = variables.TE_RES_TICK
 		remains -= 1
 		for b in buffs:
 			b.calculate_args()
 		if remains == 0:
 			res = downgrade()
-	if ev == rem_event:
+	if rem_event.has(ev):
 		remove()
 		res = variables.TE_RES_REMOVE
 	return res

@@ -19,12 +19,15 @@ var votelinksseen = false
 
 #world
 var areas = {}
-var startingcity = ''
+var starting_area = 'Plains'
+var location_links = {}
+var completed_locations = {}
 
 #resources
 var itemcounter := 0
 var slavecounter := 0
 var locationcounter := 0
+var questcounter := 0
 var money = 0
 var food = 50
 var upgrades := {}
@@ -34,7 +37,7 @@ var characters := {}
 var babies = []
 var items := {}
 var active_tasks := [] 
-var craftinglists = {alchemy = [], smith = [], cook = [], tailor = []}
+var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials := {} setget materials_set
 var oldmaterials := {}
 var unlocks := []
@@ -153,6 +156,11 @@ func FinishEvent():
 	StoreEvent(CurEvent)
 	CurEvent = ""
 	keyframes.clear()
+
+func get_master():
+	for i in characters.values():
+		if i.professions.has("master"):
+			return i
 
 func add_slave(person):
 	#characters[person.id] = person

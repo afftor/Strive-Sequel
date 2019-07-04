@@ -12,6 +12,8 @@ onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2s
 func _ready():
 	globals.CurrentScene = self
 	
+	
+	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
@@ -35,7 +37,8 @@ func _ready():
 	state.log_node = $TextLog
 	
 	state.connect("task_added", self, 'build_task_bar')
-	settime()
+	
+	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
 	if globals.start_new_game == false:
 		var character = Slave.new()
@@ -55,7 +58,7 @@ func _ready():
 		character.get_trait('core_trait')
 		character.is_players_character = true
 		$SlaveList.rebuild()
-		globals.AddItemToInventory(globals.CreateGearItem("leather_collar", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', Blade = 'wood'}))
 	else:
@@ -96,14 +99,10 @@ func _process(delta):
 			gamepaused_nonplayer = false
 			gamepaused = false
 	
-#	$ControlPanel/Gold.text = str(state.money)
-#	$ControlPanel/Food.text = str(state.food)
-	
-#	$BlackScreen.visible = $BlackScreen.modulate.a > 0.0
 	if gamespeed != 0:
 		gametime += delta * gamespeed
+		$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
 		if gametime >= variables.SecondsPerHour:
-			settime()
 			gametime -= variables.SecondsPerHour
 			state.emit_signal("hour_tick")
 			state.hour += 1
@@ -116,11 +115,10 @@ func _process(delta):
 					world_gen.update_guilds(i)
 			for i in state.characters.values():
 				i.tick()
+			
+			$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 
 
-func settime():
-	$TimeNode/Date.text = "D: " + str(state.date) + " T: " + str(state.hour) + ":00"
-	$TimeNode/TimeWheel.rect_rotation = (float(state.hour) / variables.HoursPerDay * 360)-180
 
 func changespeed(button, playsound = true):
 	var oldvalue = gamespeed
@@ -146,14 +144,18 @@ func build_task_bar():
 	for i in state.active_tasks:
 		var newnode = globals.DuplicateContainerTemplate($TaskProgress/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = races.tasklist[i.code].name
-		if i.code in ['alchemy','tailor','cook','smith']:
+		if i.code in ['alchemy','tailor','cooking','smith']:
 			if state.craftinglists[i.code].size() <= 0:
 				newnode.hide()
 			else:
 				newnode.show()
 				newnode.get_node("ProgressBar").max_value = state.craftinglists[i.code][0].workunits_needed
 				newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
-				newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
+				var recipe = Items.recipes[state.craftinglists[i.code][0].code]
+				if recipe.resultitemtype == 'material':
+					newnode.get_node("icon").texture = Items.materiallist[state.craftinglists[i.code][0].code].icon
+				else:
+					newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
 				if state.craftinglists[i.code][0].has('partdict'):
 					newnode.get_node('icon').material = load("res://files/ItemShader.tres")
 		elif i.product in ['prostitutegold']:

@@ -2,18 +2,22 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/button_01.png-d484ef5f93de580d64a0deca1ecfd3fa.stex"
+path="res://.import/item_clothethereal.png-779932391ea026937b245f900dc5cc32.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://files/buttons/main screen/button_01.png"
-dest_files=[ "res://.import/button_01.png-d484ef5f93de580d64a0deca1ecfd3fa.stex" ]
+source_file="res://assets/images/iconsitems/item_clothethereal.png"
+dest_files=[ "res://.import/item_clothethereal.png-779932391ea026937b245f900dc5cc32.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true
