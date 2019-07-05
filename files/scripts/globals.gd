@@ -528,7 +528,7 @@ func AddItemToInventory(item):
 		if id != null:
 			state.items[id].amount += item.amount
 		else:
-			item.id = state.itemcounter
+			item.id = "i" + str(state.itemcounter)
 			state.items[item.id] = item
 			state.itemcounter += 1
 		
@@ -982,6 +982,7 @@ func LoadGame(filename):
 #		tempdict[i] = int(state.townupgrades[i])
 #	state.townupgrades = tempdict.duplicate()
 #	tempdict.clear()
+#	WE NEED BUILDSCREEN IN MANSION!!! (at least to rebuild slavelist)
 #	CurrentScene.buildscreen()
 #	for i in state.tasks:
 #		CurrentScene.buildcounter(i)
