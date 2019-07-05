@@ -619,7 +619,6 @@ text = "Return"
 [node name="class_learn" parent="." instance=ExtResource( 25 )]
 
 [node name="job_panel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 294.382
 margin_top = 41.197

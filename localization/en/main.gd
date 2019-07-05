@@ -249,6 +249,9 @@ var TranslationDict = {
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
 	LEVEUPTEXT = " has just acquired a level. Select a new trait to unlock",
+	TASKENERGYTOOL = "Work Energy Bonus",
+	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
+	TOOLWORKCATEGORY = "Tool",
 	
 	#stat tooltips
 	TOOLTIPDAMAGE = "Defines damage output of skills and spells",
@@ -262,8 +265,10 @@ var TranslationDict = {
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
 	
 	#Item Parts
-	TOOLHANDLE = 'Handle',
+	TOOLHANDLE = 'Tool Handle',
+	WEAPONHANDLE = 'Weapon Handle',
 	BLADE = 'Blade',
+	TOOLBLADE = "Tool Blade",
 	BLUNT = 'Head',
 	ROD = 'Knub',
 	BOWBASE = 'Bow Limb',

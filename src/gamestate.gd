@@ -36,7 +36,7 @@ var selected_upgrade = {code = '', level = 0}
 var characters := {}
 var babies = []
 var items := {}
-var active_tasks := [] 
+var active_tasks := []
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials := {} setget materials_set
 var oldmaterials := {}

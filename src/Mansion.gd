@@ -60,7 +60,7 @@ func _ready():
 		$SlaveList.rebuild()
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', Blade = 'wood'}))
+		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 	else:
 		globals.start_new_game = false
 		self.visible = false
