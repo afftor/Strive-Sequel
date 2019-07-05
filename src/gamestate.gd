@@ -33,7 +33,7 @@ var food = 50
 var upgrades := {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}
-var characters := {}
+var characters := {} 
 var babies = []
 var items := {}
 var active_tasks := []
@@ -65,40 +65,10 @@ var currentarea
 var currenttutorial = 'tutorial1'
 var viewed_tips := []
 
+
 func revert():
-	date = 1
-	hour = 6
-	newgame = false
-	votelinksseen = false
-	itemcounter = 0
-	slavecounter = 0
-	locationcounter = 0
-	money = 0
-	food = 50
-	upgrades.clear()
-	characters.clear()
-	items.clear()
-	active_tasks.resize(0)
-	materials.clear()
-	log_node = null
-	oldmaterials.clear()
-	unlocks.resize(0)
-	combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} 
-	CurrentTextScene = null
-	CurrentScreen = null
-	CurrentLine = 0
-	OldEvents.clear()
-	CurEvent = "" #event name
-	CurBuild = ""
-	keyframes.resize(0)
-	mainprogress = 0
-	decisions.resize(0)
-	activequests.resize(0)
-	completedquests.resize(0)
-	areaprogress.clear()
-	currentarea = null
-	currenttutorial = 'tutorial1'
-	viewed_tips.resize(0)
+#to make
+	pass
 
 func pos_set(value):
 	combatparty = value
@@ -361,13 +331,27 @@ func serialize():
 	#to add serializing
 	tmp['effects'] = effects_pool.serialize()
 	tmp['characters'] = characters_pool.serialize()
+	tmp['state'] = inst2dict(self)
+	#tmp['state']['items'].clear()
+	#tmp['state']['characters'].clear()
+	tmp['items'] = {}
+	tmp['heroes'] = {}
+	for i in items:
+		tmp['items'][i] = inst2dict(items[i])
+	for h in characters:
+		tmp['heroes'][h] = inst2dict(characters[h])
 	return tmp
 
 func deserialize(tmp:Dictionary):
 	effects_pool.deserialize(tmp['effects'])
-	tmp.erase('effects')
-	effects_pool.deserialize(tmp['characters'])
-	tmp.erase('characters')
-	for prop in tmp.keys():
-		set(prop, tmp[prop])
-	#to add custom properties deserializing
+	characters_pool.deserialize(tmp['characters'])
+	var tempstate = dict2inst(tmp['state'])
+	var prlist = tempstate.get_property_list()
+	for v in prlist:
+		if !(v.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) : continue
+		set(v.name, tempstate.get(v.name))
+	for i in tmp['items']:
+		items[i] = dict2inst(tmp['items'][i])
+	for h in tmp['heroes']:
+		characters[h] = dict2inst(tmp['heroes'][h])
+	tempstate.free()

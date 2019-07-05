@@ -528,7 +528,9 @@ func AddItemToInventory(item):
 		if id != null:
 			state.items[id].amount += item.amount
 		else:
-			item.id = 'i' + str(state.itemcounter)
+
+			item.id = "i" + str(state.itemcounter)
+
 			state.items[item.id] = item
 			state.itemcounter += 1
 		
@@ -935,9 +937,12 @@ func LoadGame(filename):
 	#approach 1
 	#state = load("res://src/gamestate.gd").new()
 	#state._ready()
+	
+	#current approach
 	CurrentScene.queue_free()
 	ChangeScene('mansion');
 	yield(self, "scene_changed")
+
 	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
@@ -979,17 +984,18 @@ func LoadGame(filename):
 #		tempdict[i] = int(state.townupgrades[i])
 #	state.townupgrades = tempdict.duplicate()
 #	tempdict.clear()
-	CurrentScene.buildscreen()
-	for i in state.tasks:
-		CurrentScene.buildcounter(i)
-	
-	if state.CurBuild != '' and state.CurBuild != null:
-		CurrentScene.get_node(state.CurBuild).show()
-	#opentextscene
+#	WE NEED BUILDSCREEN IN MANSION!!! (at least to rebuild slavelist)
+#	CurrentScene.buildscreen()
+#	for i in state.tasks:
+#		CurrentScene.buildcounter(i)
+#
+#	if state.CurBuild != '' and state.CurBuild != null:
+#		CurrentScene.get_node(state.CurBuild).show()
+#	#opentextscene
 	if state.CurEvent != "":
 		StartEventScene(state.CurEvent, false, state.CurrentLine);
-	else:
-		call_deferred('EventCheck');
+#	else:
+#		call_deferred('EventCheck');
 
 func datetime_comp(a, b):
 	if a.year > b.year: return true
