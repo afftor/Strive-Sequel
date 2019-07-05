@@ -528,7 +528,9 @@ func AddItemToInventory(item):
 		if id != null:
 			state.items[id].amount += item.amount
 		else:
+
 			item.id = "i" + str(state.itemcounter)
+
 			state.items[item.id] = item
 			state.itemcounter += 1
 		

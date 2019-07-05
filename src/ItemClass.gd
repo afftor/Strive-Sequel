@@ -18,6 +18,7 @@ var useskill
 #Gear Data
 var type
 var itemtype
+var toolcategory
 var geartype
 var subtype
 var durability
@@ -82,7 +83,7 @@ func CreateGear(ItemName = '', dictparts = {}):
 	if dictparts.size() == 0:
 		mode = 'simple'
 	itembase = ItemName
-	bonusstats = {damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	bonusstats = {task_energy_tool = 0, task_efficiency_tool = 0, damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
 	type = 'gear'
 	var itemtemplate = Items.itemlist[ItemName]
@@ -97,6 +98,10 @@ func CreateGear(ItemName = '', dictparts = {}):
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
+	
+	if itemtype == 'tool':
+		toolcategory = itemtemplate.tool_category
+		
 	
 	for i in itemtemplate.basestats:
 		if bonusstats.has(i):
@@ -201,7 +206,10 @@ func set_icon(node):
 
 func tooltiptext():
 	var text = ''
-	text += '[center]' + name + '[/center]\n' 
+	text += '[center]' + name + '[/center]\n'
+	if toolcategory != null:
+		text += tr("TOOLWORKCATEGORY") + ": " + toolcategory
+		
 	if description != null:
 		text += description + "\n"
 	if itemtype in ['armor','weapon','tool']:
@@ -211,7 +219,7 @@ func tooltiptext():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if i in ['hpmod', 'manamod']:
+				if i in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value*100
 				text += Items.stats[i] + ': {color='
 				if value > 0:
@@ -220,7 +228,7 @@ func tooltiptext():
 				else:
 					text += 'red|'
 				value = str(value)
-				if i in ['hpmod', 'manamod']:
+				if i in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = change + value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()

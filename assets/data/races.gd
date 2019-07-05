@@ -2,16 +2,16 @@ extends Node
 
 #warning-ignore-all:unused_class_variable
 
-class state:
-	var craft_list_forget = []
-	var craft_list_smith = []
-	var craft_list_alchemy = []
-	var craft_list_carpenter = []
-	var craft_list_tailor = []
-	var craft_list_cook = []
-
-
-
+func get_progress_task(character, temptask, tempsubtask):
+	var task = tasklist[temptask]
+	var subtask = task.production[tempsubtask]
+	var value = call(subtask.progress_function, character)
+	if character.gear.rhand != null:
+		var item = state.items[character.gear.rhand]
+		if task.has('worktool') && item.toolcategory == task.worktool && item.bonusstats.has("task_efficiency_tool"):
+			value = value + value*item.bonusstats.task_efficiency_tool
+	
+	return value
 
 func hunt_meat(character):
 	return 8 + (8*(character.physics/50))
@@ -58,6 +58,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
+		worktool = 'bow',
 		production = {
 			huntmeat = {code = 'huntmeat', item = 'meat', progress_per_item = 10, reqs = [], progress_function = 'hunt_meat'},
 			huntleather = {code = 'huntleather', item = 'leather', progress_per_item = 100, reqs = [], progress_function = 'hunt_leather'}}, #later change function to array
@@ -71,6 +72,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
+		worktool = 'rod',
 		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 9, reqs = [], progress_function = 'fishing'}},
 		icon = null,
 		tags = [],
@@ -82,6 +84,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
+		worktool = 'sickle',
 		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [{type = "has_upgrade", name = 'farm_vegetables', value = 1}], progress_function = 'farming'},
 		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'farm_grains', value = 1}], progress_function = 'farming'}},
 		icon = null,
@@ -94,6 +97,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
+		worktool = 'axe',
 		production = {woodcutlumber = {code = 'woodcutlumber', item = 'wood', progress_per_item = 100, reqs = [], progress_function = 'woodcutting_lumber'}},
 		icon = null,
 		tags = [],
@@ -105,6 +109,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
+		worktool = 'pickaxe',
 		production = {minestone = {code = 'minestone', item = 'stone', progress_per_item = 100, reqs = [], progress_function = 'mining_stone'}},
 		icon = null,
 		tags = [],
@@ -149,6 +154,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
+		worktool = 'hammer',
 		production = {smith = {code = 'smith',item = 'smith',descript = tr("JOBSMITHCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_smith.png"), progress_per_item = 1, reqs = [], progress_function = 'forge_progress'}},
 		icon = null,
 		tags = ['smith'],
@@ -171,6 +177,7 @@ var tasklist = {
 		name = '',
 		descript = tr("TASKBUILDINGDESCRIPT"),
 		workstat = 'physics',
+		worktool = 'hammer',
 		production = {building = {code = 'building', item = 'building',descript = tr("JOBBUILDINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_alchemy.png"), progress_per_item = 1, reqs = [], progress_function = 'building_progress'}},
 		icon = null,
 		tags = ['alchemy'],

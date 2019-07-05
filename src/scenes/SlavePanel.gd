@@ -201,12 +201,12 @@ func show_job_details(job):
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/ResourceOptions)
 		if Items.materiallist.has(i.item):
-			var number = stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
+			var number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
 			newbutton.get_node("number").text = str(number)
 			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], "\n[color=yellow]Expected gain per work day: "+str(number) + "[/color]")
 		else:
-			var number = stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
+			var number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1) # stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
 			newbutton.get_node("number").text = str(number)
 			newbutton.get_node("icon").texture = i.icon
 			globals.connecttexttooltip(newbutton, i.descript + "\n[color=yellow]Expected gain per work day: "+str(number) + "[/color]")
