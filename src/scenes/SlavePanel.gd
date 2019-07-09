@@ -30,12 +30,13 @@ func _ready():
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
-		get_node("job_panel/"+i).connect("pressed", self, "change_hours", [i])
+		get_node("job_panel/job_details/"+i).connect("pressed", self, "change_hours", [i])
 	
 	###############
 	
 	$controls/ClassButton.connect("pressed",self ,'open_class_selection')
 	globals.AddPanelOpenCloseAnimation($job_panel)
+	$job_panel.move_child($job_panel/CloseButton, 3)
 	
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
 	$controls/CustmizeButton.connect('pressed', self, "open_customize_button")
@@ -177,6 +178,7 @@ func open_class_selection():
 
 func open_jobs_window():
 	$job_panel.show()
+	$job_panel/job_details.hide()
 	globals.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 	currentjob = null
 	update_hours()
@@ -192,14 +194,24 @@ var currentjob
 
 func show_job_details(job):
 	currentjob = job
+	$job_panel/job_details.show()
 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 		i.pressed = i.text == job.name
-	$job_panel/RichTextLabel.bbcode_text = "[center]" + job.name + '[/center]\n' + job.descript + "\n\n" + tr("TASKMAINSTAT") + ": [color=yellow]" + globals.statdata[job.workstat].name + "[/color]"
-	globals.ClearContainer($job_panel/ResourceOptions)
+	var text =  "[center]" + job.name + '[/center]\n' + job.descript + "\n\n" + tr("TASKMAINSTAT") + ": [color=yellow]" + globals.statdata[job.workstat].name + "[/color]"
+	if job.has("worktool"):
+		text += "\n" + tr("WORKTOOL") + ": [color=aqua]" + globals.worktoolnames[job.worktool] + "[/color]. \n"
+		if person.gear.rhand != null:
+			var item = state.items[person.gear.rhand]
+			if item.toolcategory == job.worktool:
+				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") +"[/color]"
+	
+	$job_panel/job_details/RichTextLabel.bbcode_text = text
+	globals.ClearContainer($job_panel/job_details/ResourceOptions)
+	
 	for i in job.production.values():
 		if state.checkreqs(i.reqs) == false:
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($job_panel/ResourceOptions)
+		var newbutton = globals.DuplicateContainerTemplate($job_panel/job_details/ResourceOptions)
 		if Items.materiallist.has(i.item):
 			var number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
@@ -241,10 +253,10 @@ func change_hours(stat):
 	update_hours()
 
 func update_hours():
-	$job_panel/worklabel.text = str(person.workhours)
-	$job_panel/restlabel.text = str(person.resthours)
-	$job_panel/joylabel.text = str(person.joyhours)
-	$job_panel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
+	$job_panel/job_details/worklabel.text = str(person.workhours)
+	$job_panel/job_details/restlabel.text = str(person.resthours)
+	$job_panel/job_details/joylabel.text = str(person.joyhours)
+	$job_panel/job_details/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
 	if currentjob != null:
 		show_job_details(currentjob)
 

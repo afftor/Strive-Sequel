@@ -746,7 +746,7 @@ var Skilllist = {
 		aipriority = 1,
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = ['caster.damage'],
+		value = ['caster.atk'],
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -774,7 +774,7 @@ var Skilllist = {
 		aipriority = 1,
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = ['caster.damage'],
+		value = ['caster.atk'],
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -802,7 +802,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		repeat = 2,
 		#damage = 50,
-		value = ['caster.damage'],#i think so
+		value = ['caster.atk'],#i think so
 		sfx = [], 
 		sound = [],
 	},
@@ -828,7 +828,7 @@ var Skilllist = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		#damage = 50,
-		value = ['caster.damage'],#i think so
+		value = ['caster.atk'],#i think so
 		sfx = [], 
 		sound = [],
 	},
@@ -907,7 +907,7 @@ var Skilllist = {
 		sfx = [], 
 		sound = [],
 		armor_p = ['caster.armorpenetration','+25'],
-		value = ['caster.damage', '*2.5']
+		value = ['caster.atk', '*2.5']
 	},
 	rage_strike = {#deals 1.5 times damage + 2*% of missing hp/100 (up to 3.5 times damage)
 		code = 'rage_strike',
@@ -933,9 +933,9 @@ var Skilllist = {
 		#damage = 75,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage']
+		value = ['caster.atk']
 	},
-	magic_arrow = {#deals 1.5 times magic damage
+	magic_arrow = {#deals 1 times magic damage
 		code = 'magic_arrow',
 		name = '',
 		descript = '',
@@ -959,7 +959,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage','*1.5']
+		value = ['caster.matk']
 	},
 	lesser_heal = {#heals target for 1x damage
 		code = 'lesser_heal',
@@ -985,7 +985,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage']
+		value = ['caster.matk']
 	},
 	serrated_shot = {#applies debuff: deal 25% bonus damage every turn for 4 turns
 	#i understand this as bonus damage over time
@@ -1012,7 +1012,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage']
+		value = ['caster.atk']
 	},
 	disruption_shot = {#Removes 1 buff from target (before damage hit), silences target for 2 turns (can't use spell type abilities)
 		code = 'disruption_shot',
@@ -1038,7 +1038,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage']
+		value = ['caster.atk']
 	},
 	mass_lesser_heal = {#heals all allies for 1x damage
 		code = 'mass_lesser_heal',
@@ -1064,7 +1064,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage']
+		value = ['caster.matk']
 	},
 	barrier = {#buff: protect from 100 damage for 3 turns
 		code = 'barrier',
@@ -1115,7 +1115,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'water',
 		#damage = 50,
-		value = ['caster.damage'],
+		value = ['caster.matk'],
 		sfx = [], 
 		sound = [],
 	},
@@ -1194,7 +1194,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage','*2']
+		value = ['caster.matk','*2']
 	},
 	fly_evasion = {#buff on self: +25 evasion for 4 turns
 		code = 'fly_evasion',
@@ -1244,7 +1244,7 @@ var Skilllist = {
 		target_range = 'weapon',
 		damage_type = 'weapon',
 		#damage = 50,
-		value = ['caster.damage'],
+		value = ['caster.atk'],
 		sfx = [], 
 		sound = [],
 	},
@@ -1297,7 +1297,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.damage', '*4.0']
+		value = ['caster.atk', '*4.0']
 	},
 }
 

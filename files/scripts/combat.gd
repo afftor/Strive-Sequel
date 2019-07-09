@@ -578,7 +578,7 @@ func ShowFighterStats(fighter):
 			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.mpmax))) + "%"
 		else:
 			$StatsPanel/mana.text = ''
-	$StatsPanel/damage.text = "Damage: " + str(round(fighter.damage)) 
+	$StatsPanel/damage.text = "Attack: " + str(round(fighter.atk)) 
 	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.critchance) + "%/" + str(fighter.critmod*100) + '%' 
 	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
 	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)

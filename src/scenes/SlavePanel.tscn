@@ -8,13 +8,13 @@
 [ext_resource path="res://assets/images/gui/panels/hpbar.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/panels/energybar.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/panels/manabar.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/gui icons/wit_factor.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/gui icons/charm_factor.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/gui icons/sex_factor.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/gui icons/wit.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/gui icons/charm.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/gui icons/sex.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/gui icons/brave_factor.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/panels/obedbar.png" type="Texture" id=18]
@@ -83,17 +83,16 @@ expand = true
 stretch_mode = 6
 
 [node name="BodyPanel" type="Panel" parent="."]
-margin_left = 1189.0
-margin_top = -2.0
-margin_right = 1814.0
-margin_bottom = 868.0
+margin_left = 1194.0
+margin_right = 1818.0
+margin_bottom = 857.0
 mouse_filter = 2
 
 [node name="Body" type="TextureRect" parent="."]
-margin_left = 1196.0
-margin_top = -12.5055
-margin_right = 1806.0
-margin_bottom = 844.495
+margin_left = 1200.0
+margin_top = -10.5055
+margin_right = 1810.0
+margin_bottom = 846.495
 mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
@@ -196,29 +195,29 @@ text = "sexuals"
 align = 1
 
 [node name="factors" type="VBoxContainer" parent="."]
-margin_left = 66.2053
+margin_left = 56.2053
 margin_top = 259.795
-margin_right = 187.205
+margin_right = 177.205
 margin_bottom = 574.795
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 0
 
 [node name="base_exp" type="TextureRect" parent="factors"]
-editor/display_folded = true
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 35.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 9 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/base_exp"]
-margin_left = 34.0
+margin_left = 44.0
 margin_top = 7.0
-margin_right = 111.0
+margin_right = 121.0
 margin_bottom = 31.0
 text = "0"
 align = 1
@@ -226,158 +225,158 @@ align = 1
 [node name="growth_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",
 ]]
-editor/display_folded = true
 margin_top = 35.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 10 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/growth_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="physics_factor" type="TextureRect" parent="factors"]
-editor/display_folded = true
 margin_top = 70.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 105.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 11 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/physics_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="magic_factor" type="TextureRect" parent="factors"]
-editor/display_folded = true
 margin_top = 105.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 140.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 12 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/magic_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="wits_factor" type="TextureRect" parent="factors"]
-editor/display_folded = true
 margin_top = 140.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 175.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 13 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/wits_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="charm_factor" type="TextureRect" parent="factors"]
-editor/display_folded = true
 margin_top = 175.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 210.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 14 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/charm_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="sexuals_factor" type="TextureRect" parent="factors"]
-editor/display_folded = true
 margin_top = 210.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 245.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 15 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/sexuals_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="tame_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",
 ]]
-editor/display_folded = true
 margin_top = 245.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 280.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 16 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/tame_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
 [node name="brave_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",
 ]]
-editor/display_folded = true
 margin_top = 280.0
-margin_right = 35.0
+margin_right = 50.0
 margin_bottom = 315.0
-rect_min_size = Vector2( 35, 35 )
+rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 17 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/brave_factor"]
-margin_left = 59.2385
+margin_left = 69.2385
 margin_top = 7.0
-margin_right = 219.239
+margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
@@ -642,45 +641,51 @@ margin_right = 318.0
 margin_bottom = 30.0
 toggle_mode = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="job_panel"]
-margin_left = 450.952
+[node name="job_details" type="Panel" parent="job_panel"]
+margin_left = 373.0
+margin_right = 1018.0
+margin_bottom = 799.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="job_panel/job_details"]
+margin_left = 79.952
 margin_top = 63.1599
-margin_right = 940.952
+margin_right = 569.952
 margin_bottom = 268.16
 bbcode_enabled = true
 
-[node name="interactions" type="HSlider" parent="job_panel"]
+[node name="interactions" type="HSlider" parent="job_panel/job_details"]
 visible = false
-margin_left = 482.801
+margin_left = 111.801
 margin_top = 747.812
-margin_right = 892.801
+margin_right = 521.801
 margin_bottom = 779.812
 ticks_on_borders = true
 
-[node name="iteractionslabel" type="Label" parent="job_panel"]
+[node name="iteractionslabel" type="Label" parent="job_panel/job_details"]
 visible = false
-margin_left = 499.825
+margin_left = 128.825
 margin_top = 720.815
-margin_right = 874.825
+margin_right = 503.825
 margin_bottom = 745.815
 text = "Days"
 align = 1
 
-[node name="resourcelabel" type="Label" parent="job_panel"]
-margin_left = 532.843
+[node name="resourcelabel" type="Label" parent="job_panel/job_details"]
+margin_left = 161.843
 margin_top = 352.503
-margin_right = 859.843
+margin_right = 488.843
 margin_bottom = 376.503
 text = "Select Desired Resources"
 align = 1
 
-[node name="ResourceOptions" type="HBoxContainer" parent="job_panel"]
-margin_left = 460.002
+[node name="ResourceOptions" type="HBoxContainer" parent="job_panel/job_details"]
+editor/display_folded = true
+margin_left = 89.0021
 margin_top = 385.23
-margin_right = 954.002
+margin_right = 583.002
 margin_bottom = 485.23
 
-[node name="Button" type="TextureButton" parent="job_panel/ResourceOptions"]
+[node name="Button" type="TextureButton" parent="job_panel/job_details/ResourceOptions"]
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
@@ -691,7 +696,7 @@ texture_pressed = ExtResource( 27 )
 texture_hover = ExtResource( 28 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="job_panel/ResourceOptions/Button"]
+[node name="icon" type="TextureRect" parent="job_panel/job_details/ResourceOptions/Button"]
 show_behind_parent = true
 margin_left = 8.0
 margin_top = 8.0
@@ -701,7 +706,7 @@ mouse_filter = 2
 texture = ExtResource( 29 )
 expand = true
 
-[node name="number" type="Label" parent="job_panel/ResourceOptions/Button"]
+[node name="number" type="Label" parent="job_panel/job_details/ResourceOptions/Button"]
 margin_left = 12.0
 margin_top = 68.0
 margin_right = 90.0
@@ -710,118 +715,118 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 1
 
-[node name="restup" type="TextureButton" parent="job_panel"]
-margin_left = 509.51
+[node name="restup" type="TextureButton" parent="job_panel/job_details"]
+margin_left = 138.51
 margin_top = 554.774
-margin_right = 549.51
+margin_right = 178.51
 margin_bottom = 594.774
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 31 )
 texture_hover = ExtResource( 30 )
 expand = true
 
-[node name="workup" type="TextureButton" parent="job_panel"]
-margin_left = 669.51
+[node name="workup" type="TextureButton" parent="job_panel/job_details"]
+margin_left = 298.51
 margin_top = 554.287
-margin_right = 709.51
+margin_right = 338.51
 margin_bottom = 594.287
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 31 )
 texture_hover = ExtResource( 30 )
 expand = true
 
-[node name="joyup" type="TextureButton" parent="job_panel"]
-margin_left = 829.51
+[node name="joyup" type="TextureButton" parent="job_panel/job_details"]
+margin_left = 458.51
 margin_top = 554.287
-margin_right = 869.51
+margin_right = 498.51
 margin_bottom = 594.287
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 31 )
 texture_hover = ExtResource( 30 )
 expand = true
 
-[node name="restdown" type="TextureButton" parent="job_panel"]
-margin_left = 509.51
+[node name="restdown" type="TextureButton" parent="job_panel/job_details"]
+margin_left = 138.51
 margin_top = 640.941
-margin_right = 549.51
+margin_right = 178.51
 margin_bottom = 680.941
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
 expand = true
 
-[node name="workdown" type="TextureButton" parent="job_panel"]
-margin_left = 669.51
+[node name="workdown" type="TextureButton" parent="job_panel/job_details"]
+margin_left = 298.51
 margin_top = 640.941
-margin_right = 709.51
+margin_right = 338.51
 margin_bottom = 680.941
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
 expand = true
 
-[node name="joydown" type="TextureButton" parent="job_panel"]
-margin_left = 829.51
+[node name="joydown" type="TextureButton" parent="job_panel/job_details"]
+margin_left = 458.51
 margin_top = 640.941
-margin_right = 869.51
+margin_right = 498.51
 margin_bottom = 680.941
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
 expand = true
 
-[node name="restlabel" type="Label" parent="job_panel"]
-margin_left = 501.212
+[node name="restlabel" type="Label" parent="job_panel/job_details"]
+margin_left = 130.212
 margin_top = 606.42
-margin_right = 561.213
+margin_right = 190.213
 margin_bottom = 630.42
 text = "0"
 align = 1
 
-[node name="worklabel" type="Label" parent="job_panel"]
-margin_left = 661.213
+[node name="worklabel" type="Label" parent="job_panel/job_details"]
+margin_left = 290.213
 margin_top = 605.932
-margin_right = 721.213
+margin_right = 350.213
 margin_bottom = 629.932
 text = "0"
 align = 1
 
-[node name="joylabel" type="Label" parent="job_panel"]
-margin_left = 821.213
+[node name="joylabel" type="Label" parent="job_panel/job_details"]
+margin_left = 450.213
 margin_top = 605.932
-margin_right = 881.213
+margin_right = 510.213
 margin_bottom = 629.932
 text = "0"
 align = 1
 
-[node name="totallabel" type="Label" parent="job_panel"]
-margin_left = 568.737
+[node name="totallabel" type="Label" parent="job_panel/job_details"]
+margin_left = 197.737
 margin_top = 687.947
-margin_right = 812.737
+margin_right = 441.737
 margin_bottom = 711.947
 text = "Free Hours left: "
 align = 1
 
-[node name="totallabel2" type="Label" parent="job_panel"]
-margin_left = 455.704
+[node name="totallabel2" type="Label" parent="job_panel/job_details"]
+margin_left = 84.704
 margin_top = 521.784
-margin_right = 605.704
+margin_right = 234.704
 margin_bottom = 545.784
 text = "Rest Hours"
 align = 1
 
-[node name="totallabel3" type="Label" parent="job_panel"]
-margin_left = 615.704
+[node name="totallabel3" type="Label" parent="job_panel/job_details"]
+margin_left = 244.704
 margin_top = 521.784
-margin_right = 765.704
+margin_right = 394.704
 margin_bottom = 545.784
 text = "Work Hours"
 align = 1
 
-[node name="totallabel4" type="Label" parent="job_panel"]
-margin_left = 775.704
+[node name="totallabel4" type="Label" parent="job_panel/job_details"]
+margin_left = 404.704
 margin_top = 521.296
-margin_right = 925.704
+margin_right = 554.704
 margin_bottom = 545.296
 text = "Joy Hours"
 align = 1

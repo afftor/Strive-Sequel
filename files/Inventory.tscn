@@ -296,10 +296,10 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
-margin_left = 1182.45
-margin_top = 64.2845
-margin_right = 1834.45
-margin_bottom = 979.285
+margin_left = 1182.0
+margin_top = 64.0
+margin_right = 1838.0
+margin_bottom = 1001.0
 
 [node name="BodyImage" type="TextureRect" parent="GearPanel"]
 margin_right = 649.0
@@ -307,30 +307,10 @@ margin_bottom = 913.0
 texture = ExtResource( 28 )
 stretch_mode = 7
 
-[node name="helm" type="TextureButton" parent="GearPanel"]
+[node name="chest" type="TextureButton" parent="GearPanel"]
 margin_left = 327.0
-margin_top = 33.0
-margin_right = 427.0
-margin_bottom = 133.0
-rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 29 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 31 )
-expand = true
-
-[node name="icon" type="TextureRect" parent="GearPanel/helm"]
-show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 32 )
-expand = true
-stretch_mode = 6
-
-[node name="body" type="TextureButton" parent="GearPanel"]
-margin_left = 267.0
 margin_top = 343.0
-margin_right = 367.0
+margin_right = 427.0
 margin_bottom = 443.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 29 )
@@ -338,7 +318,7 @@ texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 31 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="GearPanel/body"]
+[node name="icon" type="TextureRect" parent="GearPanel/chest"]
 show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
@@ -348,10 +328,10 @@ expand = true
 stretch_mode = 6
 
 [node name="underwear" type="TextureButton" parent="GearPanel"]
-margin_left = 267.0
-margin_top = 453.0
-margin_right = 367.0
-margin_bottom = 553.0
+margin_left = 207.0
+margin_top = 343.0
+margin_right = 307.0
+margin_bottom = 443.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 29 )
 texture_pressed = ExtResource( 30 )
@@ -367,7 +347,7 @@ texture = ExtResource( 32 )
 expand = true
 stretch_mode = 6
 
-[node name="boots" type="TextureButton" parent="GearPanel"]
+[node name="legs" type="TextureButton" parent="GearPanel"]
 margin_left = 267.0
 margin_top = 773.0
 margin_right = 367.0
@@ -378,16 +358,17 @@ texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 31 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="GearPanel/boots"]
+[node name="icon" type="TextureRect" parent="GearPanel/legs"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = -1.22778
+margin_right = 100.0
+margin_bottom = 98.7722
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 32 )
 expand = true
 stretch_mode = 6
 
-[node name="gloves" type="TextureButton" parent="GearPanel"]
+[node name="hands" type="TextureButton" parent="GearPanel"]
 margin_left = 27.0
 margin_top = 353.0
 margin_right = 127.0
@@ -398,7 +379,7 @@ texture_pressed = ExtResource( 30 )
 texture_hover = ExtResource( 31 )
 expand = true
 
-[node name="icon" type="TextureRect" parent="GearPanel/gloves"]
+[node name="icon" type="TextureRect" parent="GearPanel/hands"]
 show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
@@ -468,10 +449,10 @@ expand = true
 stretch_mode = 6
 
 [node name="head" type="TextureButton" parent="GearPanel"]
-margin_left = 217.0
-margin_top = 33.0
-margin_right = 317.0
-margin_bottom = 133.0
+margin_left = 267.0
+margin_top = 43.0
+margin_right = 367.0
+margin_bottom = 143.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 29 )
 texture_pressed = ExtResource( 30 )
