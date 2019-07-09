@@ -257,7 +257,16 @@ var statdata = {
 	
 }
 
-var gearlist = ['helm', 'chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
+var worktoolnames = {
+	bow = '',
+	axe = '',
+	pickaxe = '',
+	rod = '',
+	sickle = '',
+	hammer = '',
+}
+
+var gearlist = ['chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
 
 var file = File.new()
 var dir = Directory.new()
@@ -416,6 +425,9 @@ func _ready():
 	for i in Traitdata.sex_traits.values():
 		i.name = tr("SEXTRAIT" + i.code.to_upper())
 		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
+	
+	for i in worktoolnames:
+		worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
 	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:

@@ -59,6 +59,7 @@ func _ready():
 		character.is_players_character = true
 		$SlaveList.rebuild()
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 	else:
@@ -66,6 +67,7 @@ func _ready():
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
+	
 	
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 

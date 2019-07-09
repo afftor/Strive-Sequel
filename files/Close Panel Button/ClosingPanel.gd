@@ -1,6 +1,6 @@
 extends Control
 
-var closebuttonoffset = [20,20]
+var closebuttonoffset = [9,9]
 var closebutton
 var open_sound = 'menu_open'
 var close_sound = 'menu_close'

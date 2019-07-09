@@ -88,10 +88,10 @@ theme = ExtResource( 3 )
 text = "Quest Menu"
 
 [node name="UpgradeButton" type="Button" parent="."]
-margin_left = 953.376
-margin_top = 999.333
-margin_right = 1171.38
-margin_bottom = 1068.33
+margin_left = 953.0
+margin_top = 999.0
+margin_right = 1171.0
+margin_bottom = 1068.0
 theme = ExtResource( 3 )
 text = "Upgrades"
 

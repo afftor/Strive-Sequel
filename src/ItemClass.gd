@@ -121,7 +121,7 @@ func CreateGear(ItemName = '', dictparts = {}):
 	slots = itemtemplate.slots
 	if mode == 'normal':
 		parts = dictparts.duplicate()
-		durability = itemtemplate.basedurability
+		#durability = itemtemplate.basedurability
 		partcolororder = itemtemplate.partcolororder
 	
 		var parteffectdict = {}
@@ -130,8 +130,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 			var materialeffects = material['parts'][i]
 			materials.append(material.code)
 			globals.AddOrIncrementDict(parteffectdict, materialeffects)
-		if parteffectdict.has('durabilitymod'):
-			durability *= parteffectdict.durabilitymod
+#		if parteffectdict.has('durabilitymod'):
+#			durability *= parteffectdict.durabilitymod
 		for i in parteffectdict:
 			if self.get(i) != null && i != 'effects':
 				#self[i] += parteffectdict[i]
@@ -163,8 +163,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 	
 	
 	if mode == 'normal':
-		durability = round(durability)
-		maxdurability = round(durability)
+		#durability = round(durability)
+		#maxdurability = round(durability)
 		if dictparts.size() == itemtemplate.parts.size():
 			name = Items.materiallist[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
 		else:
@@ -208,7 +208,7 @@ func tooltiptext():
 	var text = ''
 	text += '[center]' + name + '[/center]\n'
 	if toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": " + toolcategory
+		text += tr("TOOLWORKCATEGORY") + ": " + globals.worktoolnames[toolcategory]
 		
 	if description != null:
 		text += description + "\n"

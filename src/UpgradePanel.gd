@@ -6,6 +6,14 @@ var selectedupgrade
 func _ready():
 	globals.AddPanelOpenCloseAnimation($UpgradeDescript)
 	$UpgradeDescript/UnlockButton.connect("pressed", self, "unlockupgrade")
+	
+	if variables.unlock_all_upgrades == true:
+		for i in globals.upgradelist.values():
+			selectupgrade(i)
+			unlockupgrade()
+	yield(get_tree().create_timer(0.3), "timeout")
+	hide()
+	
 
 func open():
 	show()

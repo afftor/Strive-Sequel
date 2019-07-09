@@ -58,7 +58,6 @@ var loyal = 0.0
 var lustmax = 50
 var lusttick = 1.05
 var obed_degrade_mod = 1.0
-var energy_work_mod = 8.75
 
 
 var hp = 100 setget hp_set
@@ -92,9 +91,10 @@ var mod_pros_gold = 1.0
 #var mod_pros_energy = 1.0
 var mod_default = 1.0
 
-var damage = 20 #maybe needs setget
+var atk = 20 #maybe needs setget
+var matk = 20
 
-var hitrate = 80
+var hitrate = 100
 var evasion = 0
 var resists = {}
 var armor = 0
@@ -140,12 +140,11 @@ var food_hate = []
 var food_filter = {high = [], med = [], low = [], disable = []}
 #gear
 var gear = {
-	helm = null,
-	body = null,
+	chest = null,
 	rhand = null,
 	lhand = null,
-	gloves = null,
-	boots = null,
+	hands = null,
+	legs = null,
 	
 	#cosmetics&lewds
 	neck = null,
@@ -1004,7 +1003,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity*get(currenttask.mod)/100)
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1016,7 +1015,7 @@ func work_tick():
 		else:
 			messages.erase('noupgrade')
 			work_tick_values(currenttask)
-			state.upgrade_progresses[state.selected_upgrade.code].progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity/100)
+			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity/100)
 			if state.upgrade_progresses[state.selected_upgrade.code].progress >= globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress:
 				if state.upgrades.has(state.selected_upgrade.code):
 					state.upgrades[state.selected_upgrade.code] += 1
@@ -1027,21 +1026,28 @@ func work_tick():
 				state.upgrade_progresses.erase(state.selected_upgrade.code)
 				state.selected_upgrade.code = ''
 	else:
-		#print(races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function,self)*(productivity/100))
 		work_tick_values(currenttask)
-		currenttask.progress += races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity*get(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 
 func work_tick_values(currenttask):
+	var energyvalue = variables.basic_energy_per_work_tick
 	current_day_spent.workhours += 1
 	if traits.has('undead'):
-		self.energy -= 0
+		energyvalue = 0
 	elif currenttask.code == 'prostitution' && traits.has('succubus_trait'): 
-		self.energy -= energy_work_mod * 0.7
-	else: 
-		self.energy -= energy_work_mod
+		energyvalue *= 0.7
+	
+	if self.gear.rhand != null:
+		var task = races.tasklist[currenttask.code]
+		var item = state.items[self.gear.rhand]
+		if task.has('worktool') && item.toolcategory == task.worktool && item.bonusstats.has("task_efficiency_tool"):
+			energyvalue = energyvalue - energyvalue*item.bonusstats.task_energy_tool
+	
+	
+	self.energy -= energyvalue
 	var workstat = races.tasklist[currenttask.code].workstat
 	set(workstat, get(workstat) + 0.1)
 	base_exp += 2.1

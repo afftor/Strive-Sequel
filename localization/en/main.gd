@@ -101,17 +101,16 @@ var TranslationDict = {
 	MATERIALUNSTABLE_CONCOCTION = "Unstable Concoction",
 	MATERIALUNSTABLE_CONCOCTIONDESCRIPT = "A potent alchemical mixture. Required for certain skills. ",
 	
-	ITEMSLOTHELM = "Helmet",
+	ITEMSLOTHEAD = "Head",
 	ITEMSLOTCHEST = "Chest",
 	ITEMSLOTBOOTS = "Boots",
 	ITEMSLOTGLOVES = "Hands",
 	ITEMSLOTCROTCH = "Crotch",
-	ITEMSLOTASS = "Ass",
+	ITEMSLOTASS = "Rear",
 	ITEMSLOTUNDERWEAR = "Underwear",
 	ITEMSLOTLHAND = "Left Hand",
 	ITEMSLOTRHAND = "Right Hand",
 	ITEMSLOTNECK = "Neck",
-	ITEMSLOTHEAD = "Head",
 	
 	ITEMBED = "Bed",
 	ITEMBEDDESCRIPT = "",
@@ -269,6 +268,7 @@ var TranslationDict = {
 	WEAPONHANDLE = 'Weapon Handle',
 	BLADE = 'Blade',
 	TOOLBLADE = "Tool Blade",
+	TOOLCLOTHWORK = "Clothwork",
 	BLUNT = 'Head',
 	ROD = 'Knub',
 	BOWBASE = 'Bow Limb',
@@ -433,6 +433,17 @@ var TranslationDict = {
 	SKILLCOMBOATTACKDESCRIPT = "Deals 3 consecutive hits for %d Weapon damage to target. ",
 	SKILLDOUBLEATTACK = "Double Attack",
 	SKILLDOUBLEATTACKDESCRIPT= "Attacks for %d damage twice.",
+	
+	WORKTOOL = "Work Tool",
+	WORKTOOLAXE = "Lumber Axe",
+	WORKTOOLROD = "Fishing Tools",
+	WORKTOOLPICKAXE = "Pickaxe",
+	WORKTOOLHAMMER = "Hammer",
+	WORKTOOLBOW = "Hunting Bow",
+	WORKTOOLSICKLE = "Sickle",
+	
+	
+	CORRECTTOOLEQUIPPED = "Correct Tool equipped: its bonus will apply. ",
 	
 	
 	TASKHUNTING = "Hunt",
