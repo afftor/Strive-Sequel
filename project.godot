@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://files/scripts/base_effect.gd"
 }, {
 "base": "base_effect",
+"class": "condition_effect",
+"language": "GDScript",
+"path": "res://files/scripts/condition_effect.gd"
+}, {
+"base": "base_effect",
 "class": "oneshot_effect",
 "language": "GDScript",
 "path": "res://files/scripts/oneshot_effect.gd"
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "area_effect": "",
 "atomic_effect": "",
 "base_effect": "",
+"condition_effect": "",
 "oneshot_effect": "",
 "static_effect": "",
 "temp_e_progress": "",

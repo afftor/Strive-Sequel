@@ -1394,7 +1394,7 @@ func set_position(new_pos):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static': 
+		'static', 'c_static': 
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
@@ -1486,7 +1486,7 @@ func process_check(check):
 		return res
 	else: return simple_check(check)
 
-func simple_check(req):#Gear, Race, Types, Resists, stats
+func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 	var result
 	match req.type:
 		'chance':
@@ -1515,6 +1515,10 @@ func simple_check(req):#Gear, Race, Types, Resists, stats
 		'race_group':
 			#stub to implement humanoid and non-humanoid checks
 			pass
+		'trait':
+			result = traits.has('req.value')
+		'not_trait':
+			result = !traits.has('req.value')
 	return result
 
 var shield = 0

@@ -85,6 +85,9 @@ func remove_siblings():
 		var eff = effects_pool.get_effect_by_id(se)
 		eff.remove()
 
+func recheck(): #overriden in condition_static effect, have no meaning in other cases
+	pass
+
 func remove():
 	if !is_applied: return
 	var obj = get_applied_obj()
