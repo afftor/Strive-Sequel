@@ -8,15 +8,12 @@ func build_world():
 	for i in lands:
 		make_area(i)
 
-var dungeonnoun = ['Tunnels','Quarters','Caves','Halls','Delves','Burrows','Vault','Labyrinth','Chambers','Crypt','Tombs','Catacombs','Lair','Dungeon','Caverns']
-var dungeonadj = ['Dark','White','Red','Black','Molten','Distant','Eternal','Gloomy','Lower','Moaning','Demonic','Rocking','Living','Crystal','Deadly','Roaring']
-
 var lands = {
 	plains = {
 		code = 'plains',
 		name = "Plains",
 		lead_race = 'Human', #lead race has 80% chance to be presented in all settlements
-		secondary_races = ['Halfbreeds'], #secondary races have 30% chance to be presented in all settlements (or guaranteed if lead race is not) and 50% for another additional race 
+		secondary_races = ['Halfbreeds'], #secondary races have 30% chance to be presented in all settlements (or guaranteed if lead race is not) and 50% for another additional race. If secondary races are empty, all settlements will belong to lead race
 		policies = [], #not used as of now
 		travel_time = [0,0], #how long it gonna take to travel to region
 		difficulty = 0, #growing number defining quests and individuals
@@ -25,10 +22,10 @@ var lands = {
 		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]}, #will generate said locations on first generation
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
-		locationpool = ['dungeon_bandit_den_easy', "dungeon_goblin_cave_easy"], #array of allowed locations to generate
+		locationpool = ['dungeon_bandit_den', "dungeon_goblin_cave"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages'],
 		capital_shop_resources = ['meat','fish','grains','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
-		capital_shop_items = [],
+		capital_shop_items = ['lifeshard'],
 	},
 	forests = {
 		code = 'forests',
@@ -43,9 +40,63 @@ var lands = {
 		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
 		start_locations_number = 3, 
 		locations = {},
-		locationpool = ['dungeon_goblin_cave_easy'],
+		locationpool = ['dungeon_grove'],
 		guilds = [],
 		capital_shop_resources = ['grains','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
+		capital_shop_items = [],
+	},
+	mountains = {
+		code = 'mountains',
+		name = "Mountains",
+		lead_race = 'Dwarf',
+		secondary_races = [],
+		policies = [],
+		travel_time = [12,28],
+		difficulty = 1,
+		disposition = 15,
+		population = [10000, 30000],
+		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
+		start_locations_number = 1, 
+		locations = {},
+		locationpool = ['dungeon_goblin_cave'],
+		guilds = [],
+		capital_shop_resources = ['meat','vegetables','iron','steel','leather','bone','mithril','stone','obsidian'],
+		capital_shop_items = [],
+	},
+	steppe = {
+		code = 'steppe',
+		name = "Steppe",
+		lead_race = 'Orc',
+		secondary_races = ['Goblin','Centaur'],
+		policies = [],
+		travel_time = [15,36],
+		difficulty = 1,
+		disposition = 15,
+		population = [10000, 30000],
+		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
+		start_locations_number = 2, 
+		locations = {},
+		locationpool = ['dungeon_goblin_cave'],
+		guilds = [],
+		capital_shop_resources = ['meat','fish','iron','leather','leatherthick','bone','boneancient','stone'],
+		capital_shop_items = [],
+	},
+	seas = {
+		code = 'seas',
+		name = "Seas",
+		lead_race = 'Nereid',
+		secondary_races = ['Lamia','Scylla'],
+		policies = [],
+		travel_time = [15,36],
+		difficulty = 1,
+		disposition = 15,
+		population = [10000, 30000],
+		start_settlements_number = {},
+		start_locations_number = 0, 
+		locations = {},
+		locationpool = ['dungeon_bandit_den'],
+		guilds = [],
+		capital_shop_resources = ['fish','leather','leatherthick','bone'],
 		capital_shop_items = [],
 	},
 }
@@ -205,15 +256,16 @@ func make_settlement(code, area):
 	var settlement = locations[code].duplicate(true)
 	settlement.population = round(rand_range(settlement.population[0],settlement.population[1]))
 	settlement.travel_time = round(rand_range(6,24))
-	settlement.name = 'Settlement'#add random names based on races/areas
+	var text = locationnames[settlement.name+"1"][randi()%locationnames[settlement.name + "1"].size()] + locationnames[settlement.name+"2"][randi()%locationnames[settlement.name + "2"].size()]
+	settlement.name = text
 	settlement.id = "L" + str(state.locationcounter)
 	settlement.group = {}
 	settlement.type = 'settlement'
 	settlement.levels = {}
 	state.locationcounter += 1
-	if randf() <= 0.8:
+	if randf() <= 0.8 || area.secondary_races.size() == 0:
 		settlement.races.append(area.lead_race)
-	if randf() >= 0.7 || settlement.races.size() == 0:
+	if (randf() >= 0.7 || settlement.races.size() == 0) && area.secondary_races.size() != 0:
 		var added_races = area.secondary_races.duplicate()
 		var another_race = added_races[randi()%added_races.size()]
 		settlement.races.append(another_race)
@@ -246,30 +298,35 @@ func make_settlement(code, area):
 	
 	
 	area.locations[settlement.id] = settlement
+	state.location_links[settlement.id] = {area = area.code, category = 'locations'} 
 
 
-func make_location(code, area):
+func make_location(code, area, difficulty = 'easy'):
 	var location = dungeons[code].duplicate(true)
-	location.name =  "The " + dungeonadj[randi()%dungeonadj.size()] + " " + dungeonnoun[randi()%dungeonnoun.size()]
+	var text = "The " + locationnames[location.name+"_adjs"][randi()%locationnames[location.name + "_adjs"].size()] + " " + locationnames[location.name+"_nouns"][randi()%locationnames[location.name + "_nouns"].size()]
+	location.name = text
 	location.id = "L" + str(state.locationcounter)
 	location.travel_time = round(rand_range(6,24))
 	location.code = code
-	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
+	var levelnumber = round(rand_range(location.difficulties[difficulty].levels[0], location.difficulties[difficulty].levels[1]))
 	location.levels = {}
 	while levelnumber > 0:
-		location.levels[int(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
+		location.levels[int(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
 		levelnumber -= 1
 	location.group = {}
 	location.randomevents = []
 	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
 	location.stagedenemies = []
-	if location.has("final_enemy"):
-		var bossenemy = input_handler.weightedrandom(location.final_enemy)
-		location.stagedenemies.append({enemy = bossenemy, level = location.levels.size(), stage = location.levels[location.levels.size()].stages})
-		if location.final_enemy_type == 'character':
+	location.difficulty = difficulty
+	location.enemies = location.difficulties[difficulty].enemyarray.duplicate(true)
+	if location.difficulties[difficulty].has("final_enemy"):
+		var bossenemy = input_handler.weightedrandom(location.difficulties[difficulty].final_enemy)
+		location.stagedenemies.append({enemy = bossenemy, level = location.difficulties[difficulty].levels.size(), stage = location.levels[location.levels.size()].stages})
+		if location.difficulties[difficulty].final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages-1, operant = 'gte'}]})
 	state.locationcounter += 1
+	location.erase('difficulties')
 	return location
 
 func update_guilds(area):
@@ -314,6 +371,8 @@ var locations = {
 	settlement_small = {
 		code = 'settlement_small',
 		type = 'settlement',
+		classname = 'settlement_small',
+		name = 'town',
 		races = [],
 		population = [100,500],
 		resources = [],
@@ -328,6 +387,8 @@ var locations = {
 	settlement_large = {
 		code = 'settlement_large',
 		type = 'settlement',
+		classname = 'settlement_large',
+		name = 'town',
 		races = [],
 		population = [1000,10000],
 		resources = [],
@@ -635,106 +696,190 @@ func make_quest_descript(quest):
 	
 	return text
 
+var locationnames = {
+	town1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
+	town2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
+	
+	goblin_cave_nouns = ['Cave','Tunnel','Burrow','Cavern','Den'],
+	goblin_cave_adjs = ['Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
+	bandit_den_nouns = ['Hideout', 'Cave', 'Den', 'Pit'],
+	bandit_den_adjs = ['Bandit', 'Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
+	grove_nouns = ['Forest','Grove','Thicket','Woodland','Backwoods','Cover','Timberland','Wildwood','Orchard','Spinney','Hedge'],
+	grove_adjs = ['Dark', 'Green', 'White', 'Gold', 'Silver', 'Dense', 'Thick', 'Overgrown', 'Shiny', 'Bushy', 'Living'],
+	crypt_nouns = ['Crypt','Cemetery', 'Grave','Catacomb','Mausoleum','Tomb','Vault','Chamber'],
+	crypt_adjs = ['Dark','Black','Blood', 'Bone', 'Rotten', 'Flesh', 'Evil', 'Blood', 'Red', 'Grim', 'Great', 'Demonic', 'Gloomy', 'Deadly'],
+	mountains_nouns = ['Caves','Tunnels','Burrows','Caverns','Mine','Quarry','Chambers','Dungeon'],
+	mountains_adjs = ['Dark','Black', 'Distant', 'Red', 'Blue','Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
+	volcano_nouns = ['Caves','Dungeon','Scar', 'Chambers', 'Halls', 'Lair'],
+	volcano_adjs = ['Burning','Fire','Scorching', 'Heating'],
+	city_nouns = ['Ruins','Chambers','Halls','Quarters','Labyrinth'],
+	city_adjs =  ['Dark','Distant', 'Red', 'Blue', 'Black', 'Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
+}
+
+
+var dungeonnoun = ['Tunnels','Quarters','Caves','Halls','Delves','Burrows','Vault','Labyrinth','Chambers','Crypt','Tombs','Catacombs','Lair','Dungeon','Caverns']
+var dungeonadj = ['Dark','White','Red','Black','Molten','Distant','Eternal','Gloomy','Lower','Moaning','Demonic','Rocking','Living','Crystal','Deadly','Roaring']
+
 
 var dungeons = {
-	skirmish_bandit_camp_easy = {
-		code = 'skirmish_bandit_camp_easy',
-		type = 'skirmish',
-		name = '',
-		descript = '',
-		background = '',
-		levels = [1,1],
-		stages_per_level = [1,1],
-		difficulty = 'easy',
-		enemies = [["rats_easy", 1]],
-		final_enemy = [['bandits_easy_boss',1]],
-		final_enemy_type = 'character',
-		final_enemy_class = ['combat'],
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
-	skirmish_forest_wolves_easy = {
-		code = 'skirmish_forest_wolves_easy',
-		type = 'skirmish',
-		name = '',
-		descript = '',
-		background = '',
-		levels = [1,1],
-		stages_per_level = [1,1],
-		difficulty = 'easy',
-		enemies = [["wolves_easy1", 1]],
-		final_enemy = [['bandits_easy_boss',1]],
-		final_enemy_type = 'monster',
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
+#	skirmish_bandit_camp = {
+#		code = 'skirmish_bandit_camp',
+#		type = 'skirmish',
+#		name = '',
+#		classname = '',
+#		descript = '',
+#		background = '',
+#		levels = [1,1],
+#		stages_per_level = [1,1],
+#		difficulty = 'easy',
+#		enemies = [["rats_easy", 1]],
+#		final_enemy = [['bandits_easy_boss',1]],
+#		final_enemy_type = 'character',
+#		final_enemy_class = ['combat'],
+#		affiliation = 'local', #defines character races and events
+#		events = [],
+#	},
+#	skirmish_forest_wolves = {
+#		code = 'skirmish_forest_wolves',
+#		type = 'skirmish',
+#		name = '',
+#		classname = '',
+#		descript = '',
+#		background = '',
+#		levels = [1,1],
+#		stages_per_level = [1,1],
+#		difficulty = 'easy',
+#		enemies = [["wolves_easy1", 1]],
+#		final_enemy = [['bandits_easy_boss',1]],
+#		final_enemy_type = 'monster',
+#		affiliation = 'local', #defines character races and events
+#		events = [],
+#
+#
+#
+#
+#	},
 	
 	
-	dungeon_bandit_den_easy = {
-		code = 'dungeon_bandit_den_easy',
+	dungeon_bandit_den = {
+		code = 'dungeon_bandit_den',
 		type = 'dungeon',
-		name = '',
+		name = 'bandit_den',
+		classname = '',
 		descript = '',
 		background = '',
-		levels = [2,3],
-		stages_per_level = [3,5],
-		difficulty = 'easy',
-		enemies = [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-		final_enemy = [['bandits_easy_boss',1]],
-		final_enemy_type = 'character',
-		final_enemy_class = ['combat'],
+		difficulties = {
+			easy = {code = 'easy', 
+			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+			eventarray = [], 
+			levels = [2,3], 
+			stages_per_level = [3,5]
+			},
+			medium = {code = 'medium', 
+			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+			eventarray = [], 
+			levels = [4,5], 
+			stages_per_level = [4,6]
+			},
+			hard = {code = 'hard', 
+			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+			eventarray = [], 
+			levels = [5,6], 
+			stages_per_level = [5,6]
+			},
+		},
+		
+#		levels = [2,3],
+#		stages_per_level = [3,5],
+#		difficulty = 'easy',
+#		enemies = [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
+#		final_enemy = [['bandits_easy_boss',1]],
+#		final_enemy_type = 'character',
+#		final_enemy_class = ['combat'],
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
-	dungeon_goblin_cave_easy = {
-		code = 'dungeon_goblin_cave_easy',
+	dungeon_goblin_cave = {
+		code = 'dungeon_goblin_cave',
 		type = 'dungeon',
-		name = '',
+		name = 'goblin_cave',
+		classname = '',
 		descript = '',
 		background = '',
-		levels = [2,4],
-		stages_per_level = [3,5],
-		difficulty = 'easy',
-		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-		final_enemy = [['goblins_easy_boss',1]],
-		final_enemy_type = 'monster',
+		difficulties = {
+			easy = {code = 'easy', 
+			enemyarray =  [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+			eventarray = [], 
+			levels = [2,4], 
+			stages_per_level = [3,5]
+			},
+			medium = {code = 'medium', 
+			enemyarray =  [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+			eventarray = [], 
+			levels = [4,6], 
+			stages_per_level = [3,5]
+			},
+		},
+#		levels = [2,4],
+#		stages_per_level = [3,5],
+#		difficulty = 'easy',
+#		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+#		final_enemy = [['goblins_easy_boss',1]],
+#		final_enemy_type = 'monster',
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
-	dungeon_grove_easy = {
-		code = 'dungeon_grove_easy',
+	dungeon_grove = {
+		code = 'dungeon_grove',
 		type = 'dungeon',
-		name = '',
+		name = 'grove',
+		classname = '',
+		descript = '',
+		background = '',
+		difficulties = {
+			easy = {code = 'easy', 
+			enemyarray = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
+			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+			eventarray = [], 
+			levels = [2,3],
+			stages_per_level = [2,4],
+			},
+		},
+#		levels = [2,3],
+#		stages_per_level = [2,4],
+#		difficulty = 'easy',
+#		enemies = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
+#		final_enemy = [['goblins_easy_boss',1]],
+#		final_enemy_type = 'monster',
+		affiliation = 'local', #defines character races and events
+		events = [],
+	},
+	dungeon_crypt = {
+		code = 'dungeon_crypt',
+		type = 'dungeon',
+		name = 'crypt',
+		classname = '',
 		descript = '',
 		background = '',
 		levels = [2,3],
 		stages_per_level = [2,4],
 		difficulty = 'easy',
-		enemies = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
-		final_enemy = [['goblins_easy_boss',1]],
-		final_enemy_type = 'monster',
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
-	dungeon_crypt_easy = {
-		code = 'dungeon_crypt_easy',
-		type = 'dungeon',
-		name = '',
-		descript = '',
-		background = '',
-		levels = [2,3],
-		stages_per_level = [2,4],
-		difficulty = 'easy',
 		enemies = [["rats_easy", 1]],
 		final_enemy = [['goblins_easy_boss',1]],
 		final_enemy_type = 'monster',
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
-	dungeon_mountains_med = {
-		code = 'dungeon_mountains_med',
+	dungeon_mountains = {
+		code = 'dungeon_mountains',
 		type = 'dungeon',
-		name = '',
+		name = 'mountains',
+		classname = '',
 		descript = '',
 		background = '',
 		levels = [2,3],
@@ -746,10 +891,11 @@ var dungeons = {
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
-	dungeon_volcano_easy = {
-		code = 'dungeon_volcano_easy',
+	dungeon_volcano = {
+		code = 'dungeon_volcano',
 		type = 'dungeon',
-		name = '',
+		name = 'volcano',
+		classname = '',
 		descript = '',
 		background = '',
 		levels = [2,3],
@@ -761,10 +907,11 @@ var dungeons = {
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
-	dungeon_city_easy = {
-		code = 'dungeon_city_easy',
+	dungeon_city = {
+		code = 'dungeon_city',
 		type = 'dungeon',
-		name = '',
+		name = 'city',
+		classname = '',
 		descript = '',
 		background = '',
 		levels = [2,3],
@@ -823,7 +970,7 @@ var eventscrits = {
 		event_fight = [
 			{
 				action = 'start_fight',
-				value = 'bandits_group_easy',
+				value = 'bandits_group',
 				wineffects = [{code = 'quest_complete'}],
 			}
 			]

@@ -12,8 +12,6 @@ onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2s
 func _ready():
 	globals.CurrentScene = self
 	
-	
-	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0

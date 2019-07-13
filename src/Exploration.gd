@@ -78,6 +78,12 @@ func select_category(category):
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = "Shop"
 			newbutton.connect("pressed", self, "open_shop")
+			
+			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.text = "Buy Dungeon Location"
+			newbutton.connect("pressed", self, "purchase_location_list")
+			
+			
 		"locations":
 			for i in active_area.locations.values():
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -127,6 +133,13 @@ func update_shop_list():
 				newbutton.get_node("price").text = str(item.price)
 				newbutton.connect("pressed",self,"item_purchase", [item])
 				globals.connectmaterialtooltip(newbutton, item, 'material')
+			for i in active_area.capital_shop_items:
+				var item = Items.itemlist[i]
+				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
+				newbutton.get_node("name").text = item.name
+				newbutton.get_node("icon").texture = item.icon
+				newbutton.get_node("price").text = str(item.price)
+				newbutton.connect('pressed', self, "item_purchase", [item])
 		'sell':
 			for i in state.materials:
 				if state.materials[i] <= 0:
@@ -152,9 +165,17 @@ func item_sell(item):
 	$NumberSelection.open(self, 'item_sell_confirm', "Sell $n " + item.name + "? Gained gold: $m", item.price, 0, state.materials[item.code], false)
 
 func item_puchase_confirm(value):
-	state.set_material(purchase_item.code, '+', value)
-	state.money -= purchase_item.price*value
-	$Gold.text = str(state.money)
+	if Items.materiallist.has(purchase_item.code):
+		state.set_material(purchase_item.code, '+', value)
+		state.money -= purchase_item.price*value
+		$Gold.text = str(state.money)
+	elif Items.itemlist.has(purchase_item.code):
+		while value > 0:
+			globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
+			value -= 1
+		#state.set_material(purchase_item.code, '+', value)
+		state.money -= purchase_item.price*value
+		$Gold.text = str(state.money)
 	update_shop_list()
 
 func item_sell_confirm(value):
@@ -298,18 +319,36 @@ func unlock_upgrade(upgrade, level):
 		#print(active_faction)
 	open_details()
 
+var purch_location_list = {
+	easy = {price = 100, name = 'Easy Dungeon'},
+	medium = {price = 200, name = 'Medium Dungeon'},
+	hard = {price = 300, name = 'Hard Dungeon'},
+}
+
+func purchase_location_list():
+	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	for i in purch_location_list.values():
+		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = i.name + ": " + str(i.price) + " gold"
+		newbutton.connect("pressed", self, 'purchase_location', [i])
+		
+
+func purchase_location(purchasing_location):
+	if active_area.locations.size() < 8:
+		world_gen.make_location(purchasing_location.code, active_area)
+		state.money -= purchasing_location.price
+	else:
+		input_handler.SystemMessage("Can't purchase anymore")
+
 func build_location_description():
 	var text = ''
-	text += active_location.name
 	match active_location.type:
 		'dungeon':
-			text += "\nLevels: " + str(current_level) + "/" + str(active_location.levels.size())
-			text += "\nProgress Level: " + str(active_location.progress.level)
-			if true:
-				text += "\nType: " + active_location.code
-			
+			text =  active_location.name + " (" + active_location.classname + ")\n"  + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
+			text += "\nProgress: Levels - " + str(current_level) + "/" + str(active_location.levels.size()) + ", "
+			text += "Stage - " + str(active_location.progress.level) 
 		'settlement':
-			pass
+			text = active_location.classname + ": " + active_location.name
 		'skirmish':
 			pass
 	$AreaDescription.bbcode_text = text
@@ -333,13 +372,12 @@ func enter_location(data):
 			presented_characters.append(i)
 	if presented_characters.size() > 0:
 		open_location_actions()
-	else:
-		globals.ClearContainer($ScrollContainer/VBoxContainer)
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.text = "No characters present. "
-		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.text = 'Leave'
-		newbutton.connect("pressed",self,"select_category", [selectedcategory])
+	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = "Send characters here"
+	newbutton.connect("pressed",self,"open_slave_selection_list")
+	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = 'Leave'
+	newbutton.connect("pressed",self,"select_category", [selectedcategory])
 	build_location_description()
 
 
@@ -408,18 +446,18 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.text = 'Leave'
-			newbutton.connect("pressed",self,"select_category", [selectedcategory])
+#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Leave'
+#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 		'settlement':
 			pass
 		'skirmish':
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.text = 'Leave'
-			newbutton.connect("pressed",self,"select_category", [selectedcategory])
+#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Leave'
+#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 
 
 func check_location_group():
@@ -449,14 +487,20 @@ func build_location_group():
 	clear_groups()
 	for i in positiondict:
 		if active_location.group.has('pos'+str(i)) && state.characters[active_location.group['pos'+str(i)]] != null:
-			get_node(positiondict[i]+"/Image").texture = state.characters[active_location.group['pos'+str(i)]].get_icon()
+			var character = state.characters[active_location.group['pos'+str(i)]]
+			get_node(positiondict[i]+"/Image").texture = character.get_icon()
+			get_node(positiondict[i]+"/Image").show()
+			get_node(positiondict[i]+"/Image/hp").text = str(character.hp) + '/' + str(character.hpmax)
+			get_node(positiondict[i]+"/Image/mp").text = str(character.mp) + '/' + str(character.mpmax)
+			
 		else:
 			get_node(positiondict[i]+"/Image").texture = null
+			get_node(positiondict[i]+"/Image").hide()
 	$PresentedSlavesPanel.show()
 	$Positions.show()
-	var newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-	newbutton.get_node("name").text = "Send characters"
-	newbutton.connect('pressed',self,'open_slave_selection_list')
+	var newbutton# = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+#	newbutton.get_node("name").text = "Send characters"
+#	newbutton.connect('pressed',self,'open_slave_selection_list')
 	for i in state.characters.values():
 		if i.location == active_location.id && i.travel_time == 0:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
@@ -587,7 +631,7 @@ func enter_level(level):
 	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	newbutton.text = 'Return'
 	newbutton.connect("pressed",self,"enter_dungeon")
-	
+	build_location_group()
 	build_location_description()
 
 func area_advance(mode):
@@ -763,7 +807,7 @@ func makerandomgroup(enemygroup):
 				for i in combatparty:
 					if combatparty[i] != null:
 						continue
-					var aiposition = unit.ai[randi()%unit.ai.size()]
+					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
 					if aiposition == 'melee' && i in [1,2,3]:
 						temparray.append(i)
 					if aiposition == 'ranged' && i in [4,5,6]:

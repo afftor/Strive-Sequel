@@ -140,6 +140,8 @@ var TranslationDict = {
 	ITEMANAL_BEADSDESCRIPT = "A bunch of balls connected with string. Designed for rear usage. \n\nDevelops Anal sexual trait with tine. If user already has one, increases daily Lust gain by 10%.",
 	ITEMANAL_PLUG = "Anal Plug",
 	ITEMANAL_PLUGDESCRIPT = "A piece of wood of specific shape. Designed for rear usage. \n\nDevelops Anal sexual trait with tine. If user already has one, increases daily Lust gain by 10%.",
+	ITEMSTRAPON = "Strapon",
+	ITEMSTRAPONDESCRIPT = "Allows girls to pass for boys, but only in bed. ",
 	
 	ITEMAPHRODISIAC = "Aphrodisiac",
 	ITEMAPHRODISIACDESCRIPT = "A strong potion bringing out person's inner lust. \n\nTurns character Horny during sex interactions. ",
@@ -157,9 +159,19 @@ var TranslationDict = {
 	ITEMMANAPOT = "Mana Potion",
 	ITEMMANAPOTDESCRIPT = "Restores some mana. Can be used in combat.",
 	
+	ITEMLIFESHARD = "Shard of Life",
+	ITEMLIFESHARDDESCRIPT = "A piece of stone possessing a healing properties. Heals 15-20 life on use.",
+	ITEMLIFEGEM = "Gem of Life",
+	ITEMLIFEGEMDESCRIPT = "A valuable stone possessing a healing properties. Heals 35-45 life on use.",
+	ITEMENERGYSHARD = "Shard of Energy",
+	ITEMENERGYSHARDDESCRIPT = "A piace of stone imbued with magical energies. Restores 20-25 mana on use.",
+	ITEMENERGYGEM = "Gem of Energy",
+	ITEMENERGYGEMDESCRIPT = "A stone brimming with magical power. Restores 50-65 mana on use.",
+	ITEMSPARKLINGPOWDER = "Sparkling Powder",
+	ITEMSPARKLINGPOWDERDESCRIPT = "A pinch of dust composed mainly of life shards dust. Heals 25-35 life to all party members.",
+	ITEMREVITALIZER = "Revitalizer",
+	ITEMREVITALIZERDESCRIPT = "A heavy stone possessing a large amount of life energy. Ressurects fallen character with 20% of their maximum health.",
 	
-	ITEMSTRAPON = "Strapon",
-	ITEMSTRAPONDESCRIPT = "Allows girls to pass for boys, but only in bed. ",
 	
 	
 	
@@ -1184,6 +1196,24 @@ var TranslationDict = {
 	
 	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
 	RETURNCHARACTERCONFIRM = "Order [name] return to mansion immidiatly?",
+	
+	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp",
+	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Forest",
+	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Bandit Den",
+	LOCATIONNAMEDUNGEON_GROVE = "Grove",
+	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = "Goblin Cave",
+	LOCATIONNAMEDUNGEON_CRYPT = "Crypt",
+	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave",
+	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
+	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
+	
+	SETTLEMENT_SMALL = "Village",
+	SETTLEMENT_LARGE = "Town",
+	
+	DUNGEONDIFFICULTY = "Difficulty",
+	DUNGEONDIFFICULTYEASY = "Easy",
+	DUNGEONDIFFICULTYMEDIUM = "Medium",
+	DUNGEONDIFFICULTYHARD = "Hard",
 	
 }
 

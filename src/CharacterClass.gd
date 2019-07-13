@@ -62,8 +62,8 @@ var obed_degrade_mod = 1.0
 
 var hp = 100 setget hp_set
 var hpmax = 100
-var mp = 10 setget mp_set
-var mpmax = 10
+var mp = 0 setget mp_set
+var mpmax = 0
 var energy := 100.0 setget energy_set
 var energymax = 100
 var energybonus = 0

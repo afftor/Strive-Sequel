@@ -429,6 +429,12 @@ func _ready():
 	for i in worktoolnames:
 		worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
 	
+	for i in world_gen.dungeons.values():
+		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
+	
+	for i in world_gen.locations.values():
+		i.classname = tr(i.code.to_upper())
+	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true

@@ -626,7 +626,6 @@ text = "CLOSE"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Rewards"]
-visible = false
 margin_left = 59.0
 margin_top = 579.0
 margin_right = 581.0

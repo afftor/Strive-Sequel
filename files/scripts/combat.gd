@@ -217,23 +217,53 @@ func victory():
 	
 	input_handler.PlaySound("victory")
 	
-	rewardsdict = {materials = {}, items = [], xp = 0}
+	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null: #not sure why was this check added
 			continue
 		var tchar = characters_pool.get_char_by_id(i)
 		rewardsdict.xp += tchar.xpreward
 		var loot = {}
-		if Enemydata.loottables[tchar.loottable].has('materials'):
-			for j in Enemydata.loottables[tchar.loottable].materials:
-				if randf()*100 <= j.chance:
-					loot[j.code] = round(rand_range(j.min, j.max))
-			globals.AddOrIncrementDict(rewardsdict.materials, loot)
-		if Enemydata.loottables[tchar.loottable].has('usables'):
-			for j in Enemydata.loottables[tchar.loottable].usables:
-				if randf()*100 <= j.chance:
-					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
-					rewardsdict.items.append(newitem)
+		for i in Enemydata.loottables[tchar.loottable]:
+			if i[0] == 'gold':
+				var counter = 1
+				if i.size() > 2:
+					counter = i[2]
+				while counter > 0:
+					if randf() >= i[1]:
+						rewardsdict.gold += 1
+					counter -= 1
+			elif Items.materiallist.has(i[0]):
+				var counter = 1
+				if i.size() > 2:
+					counter = i[2]
+				while counter > 0:
+					if randf() >= i[1]:
+						globals.AddOrIncrementDict(loot, {i[0] : 1})
+					counter -= 1
+				globals.AddOrIncrementDict(rewardsdict.materials, loot)
+			elif Items.itemlist.has(i[0]):
+				var itemtemp = Items.itemlist[i[0]]
+				var counter = 1
+				if i.size() > 2:
+					counter = i[2]
+				while counter > 0:
+					if randf() >= i[1]:
+						if itemtemp.type == 'usable':
+							var newitem = globals.CreateUsableItem(i[0])
+							rewardsdict.items.append(newitem)
+					counter -= 1
+		
+#		if Enemydata.loottables[tchar.loottable].has('materials'):
+#			for j in Enemydata.loottables[tchar.loottable].materials:
+#				if randf()*100 <= j.chance:
+#					loot[j.code] = round(rand_range(j.min, j.max))
+#			globals.AddOrIncrementDict(rewardsdict.materials, loot)
+#		if Enemydata.loottables[tchar.loottable].has('usables'):
+#			for j in Enemydata.loottables[tchar.loottable].usables:
+#				if randf()*100 <= j.chance:
+#					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
+#					rewardsdict.items.append(newitem)
 	
 	globals.ClearContainerForced($Rewards/HBoxContainer/first)
 	globals.ClearContainerForced($Rewards/HBoxContainer/second)

@@ -17,7 +17,7 @@ var dmg_mod_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 
-var resists_list = ['fire','earth','air','water']
+var resists_list = ['normal','fire','earth','air','water']
 var fighter_stats_list = ['hp','mana','damage','armor','mdef','hitrate','evasion','armorpenetration','speed']
 
 const playerparty = [1, 2, 3, 4, 5, 6]

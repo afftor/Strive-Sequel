@@ -128,10 +128,16 @@ func useitem(item, type):
 	if mode == null:
 		return
 	elif mode == 'character' && selectedhero != null:
-		selectedhero.equip(item)
-		input_handler.GetItemTooltip().hide()
-		emit_signal("item_equipped")
-		rebuildinventory()
+		if item.type == 'gear':
+			selectedhero.equip(item)
+			input_handler.GetItemTooltip().hide()
+			emit_signal("item_equipped")
+			rebuildinventory()
+		elif item.type == 'usable':
+			input_handler.GetItemTooltip().hide()
+			emit_signal("item_used")
+			rebuildinventory()
+			pass
 	elif mode == 'shop':
 		sellwindow(item, type)
 
