@@ -75,6 +75,10 @@ var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
 var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 
 #Slave values
+var basic_max_hp = 100
+var basic_max_mp = 30
+var max_mp_per_magic_factor = 10
+
 var basic_energy_per_work_tick = 8.75
 
 #Cheats

@@ -431,7 +431,10 @@ func get_racial_features():
 	for i in race_template.basestats:
 		self.set(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
 	for i in race_template.racetrait:
-		self.set(i, self.get(i) + race_template.racetrait[i])
+		if i == 'hpfactor':
+			self.hpmax = variables.basic_max_hp*race_template.racetrait[i]
+		else:
+			self.set(i, self.get(i) + race_template.racetrait[i])
 	for i in race_template.bodyparts:
 		self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])
 	
