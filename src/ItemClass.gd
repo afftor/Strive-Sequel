@@ -89,9 +89,7 @@ func CreateGear(ItemName = '', dictparts = {}):
 	var itemtemplate = Items.itemlist[ItemName]
 	var tempname = itemtemplate.name
 	
-	if mode == 'simple':
-		name = itemtemplate.name
-		description = itemtemplate.descript
+	
 	
 	
 	geartype = itemtemplate.geartype
@@ -173,6 +171,12 @@ func CreateGear(ItemName = '', dictparts = {}):
 	bonusstats.atk = ceil(bonusstats.atk * bonusstats.damagemod)
 	bonusstats.erase('damagemod')
 	
+	if mode == 'simple':
+		name = itemtemplate.name
+		description = itemtemplate.descript
+	else:
+		name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
+		#name = itemtemplate.partmaterialname
 	
 
 func substractitemcost():
@@ -248,7 +252,6 @@ func tooltipeffects():
 func tooltip(targetnode):
 	var node = input_handler.GetItemTooltip()
 	var data = {text = tooltiptext(), icon = load(icon), item = self, price = str(calculateprice())}
-	
 	node.showup(targetnode, data, 'gear')
 
 
@@ -324,3 +327,5 @@ func calculateprice():
 			price += Items.materiallist[i].price*materialsdict[i]
 	return price
 
+func use_explore(character):
+	pass

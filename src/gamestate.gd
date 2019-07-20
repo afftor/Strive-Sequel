@@ -34,7 +34,7 @@ var upgrades := {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}
 var characters := {} 
-var babies = []
+var babies = {}
 var items := {}
 var active_tasks := []
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}

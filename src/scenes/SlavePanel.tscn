@@ -17,12 +17,12 @@
 [ext_resource path="res://assets/images/gui/gui icons/sex.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/gui icons/brave_factor.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/panels/obedbar.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/panels/fearbar.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/panels/lustbar.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/panels/loyalbar.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/gui icons/food_love.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/gui icons/food_hate.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/gui icons/food_love.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/food_hate.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/panels/obedbar.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/panels/fearbar.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/panels/lustbar.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/panels/loyalbar.png" type="Texture" id=23]
 [ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=24]
 [ext_resource path="res://src/class_selection.tscn" type="PackedScene" id=25]
 [ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=26]
@@ -60,9 +60,9 @@ align = 1
 "hide_stranger",
 ]]
 margin_left = 970.86
-margin_top = 111.456
+margin_top = 200.389
 margin_right = 1132.86
-margin_bottom = 136.456
+margin_bottom = 225.389
 text = "task"
 align = 1
 
@@ -99,10 +99,10 @@ expand = true
 stretch_mode = 7
 
 [node name="base_stats" type="VBoxContainer" parent="."]
-margin_left = 233.0
-margin_top = 25.0
-margin_right = 433.0
-margin_bottom = 118.0
+margin_left = 13.0
+margin_top = 255.0
+margin_right = 213.0
+margin_bottom = 348.0
 custom_constants/separation = 9
 
 [node name="hp" type="TextureProgress" parent="base_stats"]
@@ -153,9 +153,9 @@ text = "1.100"
 align = 1
 
 [node name="progress" type="HBoxContainer" parent="."]
-margin_left = 441.0
+margin_left = 231.0
 margin_top = 20.0
-margin_right = 847.0
+margin_right = 637.0
 margin_bottom = 45.0
 custom_constants/separation = 2
 
@@ -196,9 +196,9 @@ align = 1
 
 [node name="factors" type="VBoxContainer" parent="."]
 margin_left = 56.2053
-margin_top = 259.795
+margin_top = 359.795
 margin_right = 177.205
-margin_bottom = 574.795
+margin_bottom = 674.795
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 0
@@ -380,14 +380,50 @@ margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
+[node name="food_love" type="TextureRect" parent="."]
+margin_left = 15.0
+margin_top = 708.0
+margin_right = 50.0
+margin_bottom = 743.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 18 )
+expand = true
+
+[node name="Label" type="Label" parent="food_love"]
+margin_left = 36.5083
+margin_top = 8.41333
+margin_right = 236.508
+margin_bottom = 32.4133
+text = "Food Pref: Grai"
+autowrap = true
+
+[node name="food_hate" type="TextureRect" parent="."]
+margin_left = 15.0
+margin_top = 752.0
+margin_right = 50.0
+margin_bottom = 787.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 19 )
+expand = true
+
+[node name="Label" type="Label" parent="food_hate"]
+margin_left = 36.5083
+margin_top = 8.41333
+margin_right = 236.508
+margin_bottom = 32.4133
+text = "Food Pref: Grai"
+autowrap = true
+
 [node name="mentality" type="VBoxContainer" parent="." groups=[
 "hide_master",
 "hide_stranger",
 ]]
-margin_left = 15.0
-margin_top = 582.0
-margin_right = 215.0
-margin_bottom = 879.0
+margin_left = 645.0
+margin_top = 22.0
+margin_right = 845.0
+margin_bottom = 149.0
 custom_constants/separation = 9
 
 [node name="obedience" type="TextureProgress" parent="mentality"]
@@ -396,7 +432,7 @@ margin_bottom = 25.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 5 )
-texture_progress = ExtResource( 18 )
+texture_progress = ExtResource( 20 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="mentality/obedience"]
@@ -412,7 +448,7 @@ margin_bottom = 59.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 5 )
-texture_progress = ExtResource( 19 )
+texture_progress = ExtResource( 21 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="mentality/fear"]
@@ -428,7 +464,7 @@ margin_bottom = 93.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 5 )
-texture_progress = ExtResource( 20 )
+texture_progress = ExtResource( 22 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="mentality/lust"]
@@ -444,7 +480,7 @@ margin_bottom = 127.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 5 )
-texture_progress = ExtResource( 21 )
+texture_progress = ExtResource( 23 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="mentality/loyal"]
@@ -453,48 +489,14 @@ margin_bottom = 24.0
 text = "1.100"
 align = 1
 
-[node name="food_love" type="TextureRect" parent="mentality"]
-margin_top = 136.0
-margin_right = 35.0
-margin_bottom = 171.0
-rect_min_size = Vector2( 35, 35 )
-size_flags_horizontal = 0
-texture = ExtResource( 22 )
-expand = true
-
-[node name="Label" type="Label" parent="mentality/food_love"]
-margin_left = 36.5083
-margin_top = 8.41333
-margin_right = 236.508
-margin_bottom = 32.4133
-text = "Food Pref: Grai"
-autowrap = true
-
-[node name="food_hate" type="TextureRect" parent="mentality"]
-margin_top = 180.0
-margin_right = 35.0
-margin_bottom = 215.0
-rect_min_size = Vector2( 35, 35 )
-size_flags_horizontal = 0
-texture = ExtResource( 23 )
-expand = true
-
-[node name="Label" type="Label" parent="mentality/food_hate"]
-margin_left = 36.5083
-margin_top = 8.41333
-margin_right = 236.508
-margin_bottom = 32.4133
-text = "Food Pref: Grai"
-autowrap = true
-
 [node name="job" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
 editor/display_folded = true
-margin_left = 953.0
-margin_top = 155.0
-margin_right = 1153.0
-margin_bottom = 248.0
+margin_left = 853.0
+margin_top = 25.0
+margin_right = 1053.0
+margin_bottom = 118.0
 custom_constants/separation = 9
 
 [node name="energy" type="ProgressBar" parent="job"]
@@ -570,47 +572,56 @@ margin_bottom = 760.0
 theme = ExtResource( 24 )
 custom_constants/separation = 6
 
-[node name="JobButton" type="Button" parent="controls" groups=[
+[node name="DietButton" type="Button" parent="controls" groups=[
 "hide_traveler",
 ]]
 margin_right = 210.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-text = "Job"
+text = "Diet"
 
-[node name="GearButton" type="Button" parent="controls" groups=[
+[node name="JobButton" type="Button" parent="controls" groups=[
 "hide_traveler",
 ]]
 margin_top = 56.0
 margin_right = 210.0
 margin_bottom = 106.0
 rect_min_size = Vector2( 0, 50 )
-text = "Gear"
+text = "Job"
 
-[node name="CustmizeButton" type="Button" parent="controls" groups=[
+[node name="GearButton" type="Button" parent="controls" groups=[
 "hide_traveler",
 ]]
 margin_top = 112.0
 margin_right = 210.0
 margin_bottom = 162.0
 rect_min_size = Vector2( 0, 50 )
-text = "Customize"
+text = "Gear"
 
-[node name="ClassButton" type="Button" parent="controls" groups=[
+[node name="CustmizeButton" type="Button" parent="controls" groups=[
 "hide_traveler",
 ]]
 margin_top = 168.0
 margin_right = 210.0
 margin_bottom = 218.0
 rect_min_size = Vector2( 0, 50 )
+text = "Customize"
+
+[node name="ClassButton" type="Button" parent="controls" groups=[
+"hide_traveler",
+]]
+margin_top = 224.0
+margin_right = 210.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 0, 50 )
 text = "Class"
 
 [node name="ReturnButton" type="Button" parent="controls" groups=[
 "show_traveler",
 ]]
-margin_top = 224.0
+margin_top = 280.0
 margin_right = 210.0
-margin_bottom = 274.0
+margin_bottom = 330.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "RETURNTOMANSIONBUTTON"
 text = "Return"
@@ -618,6 +629,7 @@ text = "Return"
 [node name="class_learn" parent="." instance=ExtResource( 25 )]
 
 [node name="job_panel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 294.382
 margin_top = 41.197
@@ -852,7 +864,6 @@ custom_constants/separation = 7
 
 [node name="Button" type="TextureButton" parent="SkillPanel"]
 editor/display_folded = true
-visible = false
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
@@ -943,6 +954,53 @@ margin_right = 291.0
 margin_bottom = 227.0
 rect_min_size = Vector2( 0, 50 )
 text = "Select Custom Body"
+
+[node name="DietPanel" type="Panel" parent="."]
+visible = false
+margin_left = 539.638
+margin_top = 65.0147
+margin_right = 1376.64
+margin_bottom = 820.015
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DietPanel"]
+margin_left = 68.2722
+margin_top = 143.258
+margin_right = 754.272
+margin_bottom = 667.258
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DietPanel/ScrollContainer"]
+margin_right = 686.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="DietPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 686.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="DietPanel/ScrollContainer/VBoxContainer/Button"]
+anchor_top = 0.18
+anchor_right = 0.211
+anchor_bottom = 0.5
+margin_left = 18.2053
+margin_top = 1.00528
+margin_right = 110.459
+margin_bottom = 12.2053
+text = "Food Name"
+
+[node name="filter" type="Label" parent="DietPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 593.0
+margin_top = 8.0
+margin_right = 685.0
+margin_bottom = 32.0
+text = "High"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DietPanel"]
+margin_left = 143.952
+margin_top = 38.06
+margin_right = 669.952
+margin_bottom = 146.06
+bbcode_enabled = true
 
 [node name="ImageSelect" parent="." instance=ExtResource( 38 )]
 margin_left = -1237.97

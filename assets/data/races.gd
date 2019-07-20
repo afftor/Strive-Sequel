@@ -86,7 +86,7 @@ var tasklist = {
 		workstat = 'physics',
 		worktool = 'sickle',
 		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [{type = "has_upgrade", name = 'farm_vegetables', value = 1}], progress_function = 'farming'},
-		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'farm_grains', value = 1}], progress_function = 'farming'}},
+		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'farm_grains', value = 1}], progress_function = 'farming'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
@@ -460,7 +460,7 @@ var racelist = {
 			charm_factor = [4,5],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpfactor = 0.5},
+		racetrait = {hpfactor = 0.5, matk = 10},
 		diet_love = {vege = 1, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
 		tags = [],

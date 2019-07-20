@@ -26,7 +26,7 @@ func open():
 	array.sort_custom(self, 'sortupgrades')
 	
 	for i in array:
-		var currentupgradelevel = findupgradelevel(i)
+		var currentupgradelevel = int(findupgradelevel(i))
 		
 		var check = true
 		if i.levels.has(currentupgradelevel):

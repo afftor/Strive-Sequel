@@ -5,6 +5,8 @@ extends Node
 
 var CloseableWindowsArray = []
 var ShakingNodes = []
+var MousePositionScripts = []
+
 var CurrentScreen = 'Town'
 
 var BeingAnimated = []
@@ -51,6 +53,7 @@ func _input(event):
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
 	
+	
 	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
 		if str(int(event.as_text())) in str(range(1,4)):
 			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
@@ -73,6 +76,11 @@ func _process(delta):
 			ShakingNodes.erase(i)
 	soundcooldown -= delta
 	
+	for i in MousePositionScripts:
+		if check_mouse_in_nodes(i.nodes) == false:
+			i.targetnode.call(i.script)
+			MousePositionScripts.erase(i)
+	
 	if musicfading:
 		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
 		if AudioServer.get_bus_volume_db(1) <= -80:
@@ -82,9 +90,6 @@ func _process(delta):
 		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
 			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
 			musicraising = false
-	
-
-
 
 
 func CloseTopWindow():
@@ -762,6 +767,11 @@ func interactive_message(code, type, args):
 			data.options.append({code = 'inspect_scene_character', text = "Inspect"})
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
+		'childbirth':
+			scene_character = args.pregchar
+			data.text = scene_character.translate(data.text)
+			var baby = state.babies[scene_character.pregnancy.baby]
+			data.options.append({code = 'inspect_character_child', text = tr("DIALOGUEINSPECTBABY")})
 	scene.open(data)
 
 func repeat_social_skill():
@@ -774,3 +784,10 @@ func update_slave_list():
 
 func update_slave_panel():
 	slave_panel_node.open(null)
+
+func check_mouse_in_nodes(nodes):
+	var check = false
+	for i in nodes:
+		if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
+			check = true
+	return check

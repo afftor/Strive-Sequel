@@ -45,6 +45,7 @@ func open(args):
 	
 	
 	$GearPanel.visible = args.mode == 'character'
+	$StatsPanel.visible = args.mode == 'character'
 	emit_signal("inventory_opened")
 
 func hide():
@@ -114,6 +115,11 @@ func rebuildinventory():
 			else:
 				var item = state.items[selectedhero.gear[i]]
 				item.set_icon($GearPanel.get_node(i + "/icon"))
+		var text = globals.statdata.hp.name + ": " + str(selectedhero.hp) + "/" + str(selectedhero.hpmax) + "\n" + globals.statdata.mp.name + ": " + str(selectedhero.mp) + '/' + str(selectedhero.mpmax)
+		var statsarray = ['atk','matk','armor','mdef','hitrate','evasion']
+		for i in statsarray:
+			text += '\n' + globals.statdata[i].name + ": " + str(selectedhero[i])
+		$StatsPanel/RichTextLabel.bbcode_text = text
 
 func selectcategory(button):
 	var type = button.name
@@ -211,5 +217,5 @@ func unequip(slot):
 	if selectedhero.gear[slot] != null:
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
 		input_handler.GetItemTooltip().hide()
-		rebuildinventory()
+		buildinventory()
 

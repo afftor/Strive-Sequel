@@ -45,6 +45,9 @@ func _ready():
 		character.get_trait('core_trait')
 		character.unlock_class("master")
 		character.is_players_character = true
+#		globals.impregnate(character, character)
+#		character.pregnancy.duration = 1
+		
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
@@ -59,6 +62,8 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
+		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 	else:
 		globals.start_new_game = false
@@ -66,7 +71,7 @@ func _ready():
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
 	
-	
+	#$LootWindow.open(world_gen.make_chest_loot('easy_chest'), 'Teh Loot')
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):
@@ -144,7 +149,7 @@ func build_task_bar():
 	for i in state.active_tasks:
 		var newnode = globals.DuplicateContainerTemplate($TaskProgress/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = races.tasklist[i.code].name
-		if i.code in ['alchemy','tailor','cooking','smith']:
+		if i.code in ['alchemy','tailor','cooking','smith','cooking']:
 			if state.craftinglists[i.code].size() <= 0:
 				newnode.hide()
 			else:
@@ -153,7 +158,10 @@ func build_task_bar():
 				newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
 				var recipe = Items.recipes[state.craftinglists[i.code][0].code]
 				if recipe.resultitemtype == 'material':
+
 					newnode.get_node("icon").texture = Items.materiallist[state.craftinglists[i.code][0].code].icon
+					newnode.get_node("icon/Label").show()
+					newnode.get_node("icon/Label").text = str(state.materials[state.craftinglists[i.code][0].code])
 				else:
 					newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
 				if state.craftinglists[i.code][0].has('partdict'):
@@ -182,13 +190,31 @@ func update_task_bar():
 	for i in $TaskProgress/ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta("dict"):
 			var task = i.get_meta('dict')
-			if task.code in ['alchemy','tailor','cook','smith']:
+			var text = 'Active workers: '
+			for i in i.workers:
+				text += "\n" + state.characters[i].name
+			globals.connecttexttooltip(i, text)
+			if task.code in ['alchemy','tailor','cook','smith','cooking']:
 				if state.craftinglists[task.code].size() <= 0:
 					i.hide()
 				else:
 					i.show()
+					var recipe = Items.recipes[state.craftinglists[task.code][0].code]
 					i.get_node("ProgressBar").max_value = state.craftinglists[task.code][0].workunits_needed
 					i.get_node("ProgressBar").value = state.craftinglists[task.code][0].workunits
+					if recipe.resultitemtype == 'material':
+						i.get_node("icon").texture = Items.materiallist[state.craftinglists[task.code][0].code].icon
+						i.get_node("icon/Label").show()
+						i.get_node("icon/Label").text = str(state.materials[state.craftinglists[task.code][0].code])
+					else:
+						i.get_node("icon").texture = Items.itemlist[state.craftinglists[task.code][0].code].icon
+					if state.craftinglists[task.code][0].has('partdict'):
+						i.get_node('icon').material = load("res://files/ItemShader.tres").duplicate()
+						var itemtemplate = Items.itemlist[state.craftinglists[task.code][0].code]
+						for k in state.craftinglists[task.code][0].partdict:
+							var part = 'part' +  str(itemtemplate.partcolororder[k]) + 'color'
+							var color = Items.materiallist[state.craftinglists[task.code][0].partdict[k]].color
+							i.get_node("icon").material.set_shader_param(part, color)
 			elif task.code == 'building':
 				if state.selected_upgrade.code == '':
 					i.hide()
@@ -200,6 +226,14 @@ func update_task_bar():
 			else:
 				i.visible = task.workers.size() != 0
 				i.get_node("ProgressBar").value = task.progress
+	
+
+func show_task_workers(newnode):
+	input_handler.MousePositionScripts.append({nodes = [newnode], targetnode = self, script = 'hide_task_workers'})
+	var data = newnode.get_meta("dict")
+
+func hide_task_workers():
+	pass
 
 func open_inventory():
 	input_handler.ShowInentory({mode = 'all'})

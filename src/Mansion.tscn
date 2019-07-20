@@ -14,22 +14,22 @@
 [ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=12]
 [ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=13]
 [ext_resource path="res://files/buttons/main screen/hourprogress.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=15]
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=16]
-[ext_resource path="res://src/SlaveList.gd" type="Script" id=17]
-[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/rest_icon.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/panels/mana.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=23]
-[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=24]
-[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=25]
-[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=26]
-[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=27]
-[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=29]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=30]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=15]
+[ext_resource path="res://src/SlaveList.gd" type="Script" id=16]
+[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/gui icons/sleepicon.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/energy.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/gui icons/mana.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=22]
+[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=30]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -189,7 +189,7 @@ size_flags_horizontal = 3
 
 [node name="Button" type="Panel" parent="TaskProgress/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 396.0
+margin_right = 395.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
@@ -212,20 +212,27 @@ margin_left = 334.539
 margin_top = -5.56581
 margin_right = 399.539
 margin_bottom = 54.4342
-texture = ExtResource( 15 )
 expand = true
 
+[node name="Label" type="Label" parent="TaskProgress/ScrollContainer/VBoxContainer/Button/icon"]
+visible = false
+margin_left = 18.4276
+margin_top = 32.8968
+margin_right = 58.4276
+margin_bottom = 56.8968
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
 [node name="SlaveList" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 1221.0
 margin_top = 64.0
 margin_right = 1905.0
 margin_bottom = 878.0
-theme = ExtResource( 16 )
-script = ExtResource( 17 )
+theme = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveList"]
-editor/display_folded = true
 margin_left = 26.7148
 margin_top = 26.0
 margin_right = 649.715
@@ -247,7 +254,7 @@ margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
-texture = ExtResource( 18 )
+texture = ExtResource( 17 )
 expand = true
 
 [node name="state" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
@@ -256,44 +263,46 @@ margin_right = 422.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
-texture = ExtResource( 19 )
+texture = ExtResource( 18 )
 expand = true
 
 [node name="en" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-editor/display_folded = true
 margin_left = 422.0
 margin_right = 472.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPENERGY"
 mouse_filter = 2
-texture = ExtResource( 20 )
+texture = ExtResource( 19 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/en"]
-margin_left = 1.39673
-margin_top = 13.7767
-margin_right = 43.3967
-margin_bottom = 37.7767
+margin_left = 1.0
+margin_top = 14.0
+margin_right = 47.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 1
 
 [node name="mp" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-editor/display_folded = true
 margin_left = 472.0
 margin_right = 522.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
-texture = ExtResource( 21 )
+texture = ExtResource( 20 )
 expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/mp"]
-margin_left = 1.39673
-margin_top = 13.7767
-margin_right = 43.3967
-margin_bottom = 37.7767
+margin_left = 1.0
+margin_top = 14.0
+margin_right = 47.0
+margin_bottom = 38.0
+custom_colors/font_color = Color( 0, 0.886275, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 1
@@ -306,7 +315,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPOBEDIENCE"
 mouse_filter = 2
-texture = ExtResource( 22 )
+texture = ExtResource( 21 )
 expand = true
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/obed"]
@@ -327,7 +336,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPFEAR"
 mouse_filter = 2
-texture = ExtResource( 23 )
+texture = ExtResource( 22 )
 expand = true
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/fear"]
@@ -349,17 +358,17 @@ text = "Name Race Age Class"
 
 [node name="CraftPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 24 )]
+] instance=ExtResource( 23 )]
 visible = false
 
 [node name="Exploration" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 25 )]
+] instance=ExtResource( 24 )]
 visible = false
 
 [node name="SlavePanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 26 )]
+] instance=ExtResource( 25 )]
 visible = false
 margin_left = 22.0
 margin_top = 57.0
@@ -368,17 +377,17 @@ margin_bottom = 917.0
 
 [node name="QuestPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 27 )]
+] instance=ExtResource( 26 )]
 visible = false
 
 [node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 28 )]
+] instance=ExtResource( 27 )]
 visible = false
 
 [node name="UpgradeList" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 29 )]
+] instance=ExtResource( 28 )]
 visible = false
 
 [node name="TextLog" type="RichTextLabel" parent="."]
@@ -400,9 +409,13 @@ text = "Test"
 
 [node name="MenuPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 30 )]
+] instance=ExtResource( 29 )]
 visible = false
 margin_left = 826.375
 margin_top = 277.826
 margin_right = 1192.38
 margin_bottom = 719.826
+
+[node name="LootWindow" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 30 )]

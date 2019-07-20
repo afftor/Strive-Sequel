@@ -11,4 +11,3 @@ shader_param/part1color = Color( 1, 1, 1, 1 )
 shader_param/part2color = Color( 1, 1, 1, 1 )
 shader_param/part3color = Color( 1, 1, 1, 1 )
 shader_param/dist = 0.1
-

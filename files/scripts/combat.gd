@@ -80,7 +80,7 @@ func _process(delta):
 	pass
 
 
-func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme'):
+func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
 	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
@@ -92,7 +92,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'combatthem
 	allowaction = false
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
-	buildenemygroup(enemygroup)
+	buildenemygroup(enemygroup, enemy_stats_mod)
 	buildplayergroup(playergroup)
 	#victory()
 	#start combat triggers
@@ -229,10 +229,13 @@ func victory():
 				var counter = 1
 				if i.size() > 2:
 					counter = i[2]
-				while counter > 0:
-					if randf() >= i[1]:
-						rewardsdict.gold += 1
-					counter -= 1
+				if i[1] >= 1:
+					rewardsdict.gold += i[2]
+				else:
+					while counter > 0:
+						if randf() >= i[1]:
+							rewardsdict.gold += 1
+						counter -= 1
 			elif Items.materiallist.has(i[0]):
 				var counter = 1
 				if i.size() > 2:
@@ -250,8 +253,15 @@ func victory():
 				while counter > 0:
 					if randf() >= i[1]:
 						if itemtemp.type == 'usable':
-							var newitem = globals.CreateUsableItem(i[0])
-							rewardsdict.items.append(newitem)
+							var itemfound = false
+							for k in rewardsdict.items:
+								if k.itembase == i[0]:
+									k.amount += 1
+									itemfound = true
+									break
+							if itemfound == false:
+								var newitem = globals.CreateUsableItem(i[0])
+								rewardsdict.items.append(newitem)
 					counter -= 1
 		
 #		if Enemydata.loottables[tchar.loottable].has('materials'):
@@ -642,7 +652,7 @@ func FighterPress(pos):
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
 
-func buildenemygroup(enemygroup):
+func buildenemygroup(enemygroup, enemy_stats_mod):
 	for i in range(1,7):
 		if enemygroup[i] != null:
 			enemygroup[i+6] = enemygroup[i]
@@ -658,6 +668,9 @@ func buildenemygroup(enemygroup):
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
+		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
+			tchar.set(i, tchar.get(i) * enemy_stats_mod)
+		tchar.hp = tchar.hpmax
 		enemygroup[i] = characters_pool.add_char(tchar)
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
@@ -712,24 +725,6 @@ func summon(montype, limit):
 	battlefield[sum_pos] = enemygroup[sum_pos];
 	make_fighter_panel(battlefield[sum_pos], sum_pos);
 
-
-#func SendSkillEffect(skilleffect, caster, target):
-#	var endtargets = []
-#	if skilleffect.target == 'self':
-#		endtargets.append(caster)
-#	elif skilleffect.target == 'target':
-#		endtargets.append(target)
-#
-#	var data = {caster = caster}
-#	if skilleffect.has('value'):
-#		data.value = skilleffect.value
-#
-#	for i in endtargets:
-#		if skilleffect.has('chance') && skilleffect.chance < randf():
-#			continue
-#		data.target = i
-#		globals.skillsdata.call(skilleffect.effect, data)
-#
 
 func use_skill(skill_code, caster, target):
 	#to add code for different costs

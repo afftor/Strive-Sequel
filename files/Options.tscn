@@ -65,6 +65,7 @@ margin_bottom = 19.0
 min_value = -40.0
 max_value = 0.0
 value = -20.0
+ticks_on_borders = true
 
 [node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/master"]
 margin_left = 458.0
@@ -87,6 +88,7 @@ margin_right = 413.0
 margin_bottom = 69.0
 min_value = -40.0
 max_value = 0.0
+ticks_on_borders = true
 
 [node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/music"]
 margin_left = 458.0

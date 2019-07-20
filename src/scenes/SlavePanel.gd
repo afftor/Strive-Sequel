@@ -36,8 +36,10 @@ func _ready():
 	
 	$controls/ClassButton.connect("pressed",self ,'open_class_selection')
 	globals.AddPanelOpenCloseAnimation($job_panel)
+	globals.AddPanelOpenCloseAnimation($DietPanel)
 	$job_panel.move_child($job_panel/CloseButton, 3)
 	
+	$controls/DietButton.connect("pressed", self, "open_diet_window")
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
 	$controls/CustmizeButton.connect('pressed', self, "open_customize_button")
 	$controls/GearButton.connect("pressed", self, "show_gear_gui")
@@ -47,8 +49,8 @@ func _ready():
 	
 	globals.AddPanelOpenCloseAnimation($DetailsPanel)
 	$DetailsPanel/VBoxContainer/descript.connect("pressed", self, "custom_description_open")
-	$DetailsPanel/VBoxContainer/icon.connect("pressed", $ImageSelect, "chooseimage",['portrait'])
-	$DetailsPanel/VBoxContainer/body.connect("pressed", $ImageSelect, "chooseimage",['body'])
+	$DetailsPanel/VBoxContainer/icon.connect("pressed", self, "chooseimage",['portrait'])
+	$DetailsPanel/VBoxContainer/body.connect("pressed", self, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 	
 	input_handler.slave_panel_node = self
@@ -114,11 +116,11 @@ func open(tempperson):
 	$mentality/lust.max_value = person.lustmax
 	$mentality/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	
-	$mentality/food_love/Label.text = person.food_love
+	$food_love/Label.text = person.food_love
 	for i in person.food_hate:
 		text += i + ", "
 	text = text.substr(0, text.length()-2)
-	$mentality/food_hate/Label.text =  text
+	$food_hate/Label.text =  text
 	
 	globals.ClearContainer($professions)
 	for i in person.professions:
@@ -342,11 +344,58 @@ func open_customize_button():
 func show_gear_gui():
 	var inventory = input_handler.ShowInentory({mode = 'character', person = person})
 
+
+func open_diet_window():
+	$DietPanel.show()
+	globals.ClearContainer($DietPanel/ScrollContainer/VBoxContainer)
+	$DietPanel/RichTextLabel.bbcode_text = tr("INFOFOODFILTER")
+	var array = []
+	for i in Items.materiallist.values():
+		if i.type == 'food':
+			array.append(i)
+	array.sort_custom(self, 'sort_food')
+	for i in array:
+		var newbutton = globals.DuplicateContainerTemplate($DietPanel/ScrollContainer/VBoxContainer)
+		newbutton.get_node("Label").text = i.name
+		globals.connectmaterialtooltip(newbutton, i)
+		for k in ['high','med','low','disable']:
+			if person.food_filter[k].has(i.code):
+				newbutton.get_node("filter").text = tr("FOODFILTER" + k.to_upper())
+				newbutton.get_node("filter").set("custom_colors/font_color", Color(globals.hexcolordict[categorycolors[k]]))
+				break
+		newbutton.connect("pressed", self, "change_food_category", [i.code])
+
+func change_food_category(foodcode):
+	var current_category
+	for i in ['high','med','low','disable']:
+		if person.food_filter[i].has(foodcode):
+			current_category = i
+			break
+	person.food_filter[current_category].erase(foodcode)
+	var newcategory
+	if category_order.size() > category_order.find(current_category)+1:
+		newcategory = category_order[category_order.find(current_category)+1]
+	else:
+		newcategory = category_order[0]
+	person.food_filter[newcategory].append(foodcode)
+	input_handler.GetItemTooltip().hide()
+	open_diet_window()
+
+var category_order = ['high','med','low','disable']
+var categorycolors = {high = "green", med = 'yellow', low = 'red', disable = 'gray'}
+
+func sort_food(first, second):
+	if first.name >= second.name:
+		return false
+	else:
+		return true
+
+
 func return_to_mansion_confirm():
 	input_handler.ShowConfirmPanel(self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM")))
 
 func return_to_mansion():
-	var active_area 
+	var active_area
 	var active_location
 	if person.location == 'travel':
 		active_area = state.areas[state.location_links[person.travel_target.location].area]
@@ -363,3 +412,9 @@ func return_to_mansion():
 		person.location = 'mansion'
 	open(person)
 	input_handler.update_slave_list()
+
+
+func chooseimage(type):
+	$ImageSelect.chooseimage(person, type)
+
+

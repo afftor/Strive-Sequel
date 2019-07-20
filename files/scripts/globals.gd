@@ -235,6 +235,13 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	evasion = {
+		code = 'evasion',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
 	energy = {
 		code = 'energy',
 		name = '',
@@ -254,7 +261,30 @@ var statdata = {
 		descript = '',
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
-	
+	atk = {
+		code = 'atk',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	matk = {
+		code = 'matk',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	armor = {
+		code = 'armor',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mdef = {
+		code = 'mdef',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 }
 
 var worktoolnames = {
@@ -396,6 +426,7 @@ func _ready():
 	for i in Items.materiallist.values():
 		i.name = tr("MATERIAL" + i.code.to_upper())
 		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
+		i.adjective = tr("MATERIAL" + i.code.to_upper() + "ADJ")
 	
 	for i in Items.itemlist.values():
 		i.name = tr("ITEM" + i.code.to_upper())
@@ -434,6 +465,9 @@ func _ready():
 	
 	for i in world_gen.locations.values():
 		i.classname = tr(i.code.to_upper())
+	
+	for i in Enemydata.enemies.values():
+		i.name = tr("ENEMY" + i.code.to_upper())
 	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
@@ -1191,7 +1225,7 @@ func impregnate(father, mother):
 	if check == false && mother.professions.has('breeder') == false:
 		return #incompatible races
 	
-	var baby = globals.characterdata.new()
+	var baby = Slave.new()
 	if randf() >= 0.5:
 		baby.race = mother.race
 	else:
@@ -1212,10 +1246,12 @@ func impregnate(father, mother):
 			baby.set(i, mother[i])
 		else:
 			baby.set(i, father[i])
-	
+	baby.relatives.mother = mother.id
+	baby.relatives.father = father.id
+	baby.baby_transform()
 	mother.pregnancy.baby = baby.id
 	mother.pregnancy.duration = variables.pregduration
-	state.babies.append(baby)
+	state.babies[baby.id] = baby
 
 
 var punishcategories = ['spanking','whipping','nippleclap','clitclap','nosehook','mashshow','facesit','afacesit','grovel']

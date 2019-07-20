@@ -119,6 +119,11 @@ func make_area(code):
 		areadata.start_locations_number -= 1
 		areadata.locations[location.id] = location
 		state.location_links[location.id] = {area = code, category = 'locations'} 
+		
+		
+		input_handler.active_location = location
+		
+		
 	areadata.factions = {}
 	areadata.quests.factions = {}
 	for i in areadata.guilds:
@@ -314,6 +319,7 @@ func make_location(code, area, difficulty = 'easy'):
 		location.levels[int(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
 		levelnumber -= 1
 	location.group = {}
+	location.resources = location.difficulties[difficulty].resources
 	location.randomevents = []
 	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
@@ -696,6 +702,58 @@ func make_quest_descript(quest):
 	
 	return text
 
+func make_chest_loot(chest):
+	var data = Enemydata.loot_chests_data[chest]
+	var dict = {materials = {}, items = []}
+	var location = input_handler.active_location
+	for i in data:
+		var difficulty = location.difficulty
+		match i.code:
+			'material':
+				var tempdict = {location.resources[randi()%location.resources.size()] : round(rand_range(i.min,i.max))}
+				globals.AddOrIncrementDict(dict.materials, tempdict)
+			'usable':
+				dict.items.append(globals.CreateUsableItem(usables_by_difficulty[difficulty][randi()%usables_by_difficulty[difficulty].size()], round(rand_range(i.min, i.max))))
+			'static_gear':
+				var number = round(rand_range(i.min, i.max))
+				while number > 0:
+					dict.items.append(globals.CreateGearItem(static_gear_by_difficulty[difficulty][randi()%static_gear_by_difficulty[difficulty].size()],{}))
+					number -= 1
+			'gear':
+				var number = round(rand_range(i.min, i.max))
+				while number > 0:
+					var itemtemplate = Items.itemlist[gear_by_difficulty[difficulty][randi()%gear_by_difficulty[difficulty].size()]]
+					var itemparts = {}
+					for i_part in itemtemplate.parts:
+						if i.materials == 'location':
+							var material_array = []
+							for material in location.resources:
+								if Items.materiallist[material].parts.has(i_part):
+									material_array.append(material)
+							
+							itemparts[i_part] = material_array[randi()%material_array.size()]
+					
+					dict.items.append(globals.CreateGearItem(itemtemplate.code,itemparts))
+					number -= 1
+	return dict
+
+var usables_by_difficulty = {
+	easy = ['lifeshard','energyshard','lifegem','energygem'],
+	medium = [],
+	hard = [],
+}
+var gear_by_difficulty = {
+	easy = ['sword','axe','pickaxe','chest_base_cloth','chest_base_leather'],
+	medium = [],
+	hard = [],
+}
+var static_gear_by_difficulty = {
+	easy = ['tail_plug'],
+	medium = [],
+	hard = [],
+}
+
+
 var locationnames = {
 	town1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
 	town2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
@@ -772,33 +830,28 @@ var dungeons = {
 			easy = {code = 'easy', 
 			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [], 
+			eventarray = [['dungeon_find_chest_easy', 1]], 
 			levels = [2,3], 
+			resources = ['cloth','leather','iron','wood','clothsilk'],
 			stages_per_level = [3,5]
 			},
 			medium = {code = 'medium', 
-			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+			enemyarray =  [['bandits_medium', 2],['bandits_assassin', 1], ['bandits_assassin2', 1], ['bandits_medium_bear', 1], ['bandits_golem', 1]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 			eventarray = [], 
-			levels = [4,5], 
+			levels = [3,5], 
+			resources = ['cloth','leather','iron','wood','clothsilk'],
 			stages_per_level = [4,6]
 			},
 			hard = {code = 'hard', 
 			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 			eventarray = [], 
-			levels = [5,6], 
+			levels = [4,6], 
+			resources = ['cloth','leather','iron','wood','clothsilk'],
 			stages_per_level = [5,6]
 			},
 		},
-		
-#		levels = [2,3],
-#		stages_per_level = [3,5],
-#		difficulty = 'easy',
-#		enemies = [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]],
-#		final_enemy = [['bandits_easy_boss',1]],
-#		final_enemy_type = 'character',
-#		final_enemy_class = ['combat'],
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
@@ -815,6 +868,7 @@ var dungeons = {
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [], 
 			levels = [2,4], 
+			resources = ['cloth','leather','iron','wood'],
 			stages_per_level = [3,5]
 			},
 			medium = {code = 'medium', 
@@ -822,15 +876,10 @@ var dungeons = {
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [], 
 			levels = [4,6], 
+			resources = ['cloth','leather','iron','wood'],
 			stages_per_level = [3,5]
 			},
 		},
-#		levels = [2,4],
-#		stages_per_level = [3,5],
-#		difficulty = 'easy',
-#		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-#		final_enemy = [['goblins_easy_boss',1]],
-#		final_enemy_type = 'monster',
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
@@ -847,15 +896,10 @@ var dungeons = {
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [], 
 			levels = [2,3],
+			resources = ['cloth','leather','iron','wood'],
 			stages_per_level = [2,4],
 			},
 		},
-#		levels = [2,3],
-#		stages_per_level = [2,4],
-#		difficulty = 'easy',
-#		enemies = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
-#		final_enemy = [['goblins_easy_boss',1]],
-#		final_enemy_type = 'monster',
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},

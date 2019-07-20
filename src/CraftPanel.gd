@@ -153,6 +153,7 @@ func selectcraftitem(item):
 	
 	if item.crafttype == 'basic':
 		$NumberSelect/MaterialSetupPanel.hide()
+		$NumberSelect/NumberConfirm.disabled = false
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
 		$NumberSelect/MaterialSetupPanel.show()

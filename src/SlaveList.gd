@@ -68,8 +68,8 @@ func update():
 func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)
 
-var obed_textures = {high = load("res://assets/images/gui/obed_good.png"), med = load("res://assets/images/gui/obed_med.png"), low = load("res://assets/images/gui/obed_bad.png")}
-var fear_textures = {high = load('res://assets/images/gui/fear_good.png'), med = load("res://assets/images/gui/fear_med.png"), low = load("res://assets/images/gui/fear_bad.png")}
+var obed_textures = {high = load("res://assets/images/gui/gui icons/obedience1.png"), med = load("res://assets/images/gui/gui icons/obedience2.png"), low = load("res://assets/images/gui/gui icons/obedience3.png")}
+var fear_textures = {high = load('res://assets/images/gui/gui icons/fear1.png'), med = load("res://assets/images/gui/gui icons/fear2.png"), low = load("res://assets/images/gui/gui icons/fear3.png")}
 
 func get_obed_texture(tempchar):
 	var rval 
@@ -92,9 +92,9 @@ func get_fear_texture(tempchar):
 	return fear_textures[rval]
 
 var stateicons = {
-	work = load('res://assets/images/gui/work_icon.png'),
-	rest = load('res://assets/images/gui/rest_icon.png'),
-	joy = load('res://assets/images/gui/joy_icon.png'),
+	work = load('res://assets/images/gui/gui icons/workicon.png'),
+	rest = load('res://assets/images/gui/gui icons/sleepicon.png'),
+	joy = load('res://assets/images/gui/gui icons/joyicon.png'),
 }
 func get_state_texture(tempchar):
 	var rval = tempchar.last_tick_assignement

@@ -10,14 +10,14 @@ func _init():
 
 
 var stats = {
-	damage = tr('DAMAGE'),
+	atk = tr('DAMAGE'),
 	matk = tr('MATK'),
 	damagemod = tr('DAMAGEMOD'),
 	armor = tr('ARMOR'),
 	evasion = tr('EVASION'),
 	hitrate = tr('HITRATE'),
 	hpmod = tr("HEALTHPERCENT"),
-	manamod = tr("MANAPERCENT"),
+	mpmod = tr("MANAPERCENT"),
 	critchance = tr("CRITCHANCE"),
 	critmod = tr("CRITMOD"),
 	hpmax = tr("HEALTH"),
@@ -85,9 +85,9 @@ var partmaterials = {
 	},
 	WeaponHandle = {
 		wood = {hitrate = 5},
-		woodmagic = {hitrate = 10, manamod = 0.1, matk = 3},
+		woodmagic = {hitrate = 10, mpmod = 0.1, matk = 3},
 		woodiron = {hitrate = 15, hpmod = 0.1},
-		woodancient = {hitrate = 20, hpmod = 0.1, manamod = 0.05},
+		woodancient = {hitrate = 20, hpmod = 0.1, mpmod = 0.05},
 		iron = {armor = 3},
 		steel = {armor = 5},
 		mithril = {armor = 10, mdef = 5},
@@ -127,7 +127,7 @@ var partmaterials = {
 	},
 	BowBase = {
 		wood = {atk = 6},
-		woodmagic = {atk = 8, manamod = 0.1, matk = 5},
+		woodmagic = {atk = 8, mpmod = 0.1, matk = 5},
 		woodiron = {atk = 10},
 		woodancient = {atk = 15},
 		obsidian = {atk = 10, armorpenetration = 10},
@@ -141,7 +141,7 @@ var partmaterials = {
 	},
 	Rod = {
 		wood = {atk = 3, matk = 7},
-		woodmagic = {atk = 4, manamod = 0.1, matk = 12},
+		woodmagic = {atk = 4, mpmod = 0.1, matk = 12},
 		woodiron = {atk = 6, matk = 10},
 		woodancient = {atk = 5, matk = 15},
 		obsidian = {atk = 3, matk = 13},
@@ -156,7 +156,7 @@ var partmaterials = {
 	Blunt = {
 		wood = {damagemod = -0.2},
 		woodmagic = {damagemod = 0.1},
-		iron = {damage = 2, armorpenetration = 10},
+		iron = {atk = 2, armorpenetration = 10},
 		steel = {damagemod = 0.3, effects = ['elfmetalblunt']},
 		bone = {damagemod = -0.1},
 	},
@@ -185,13 +185,13 @@ var partmaterials = {
 	},
 	ArmorTrim = {
 		wood = {hpmod = 0.1},
-		woodmagic = {hpmod = 0.1, manamod = 0.1},
+		woodmagic = {hpmod = 0.1, mpmod = 0.1},
 		woodiron = {},
 		woodancient = {},
 		bone = {mdef = 3},
 		boneancient = {},
 		bonedragon = {},
-		cloth = {manamod = 0.1},
+		cloth = {mpmod = 0.1},
 		clothsilk = {},
 		clothmagic = {}, 
 		clothethereal = {},
@@ -222,14 +222,14 @@ var materiallist = {
 		type = 'food',
 		tags = ['fish'],
 	},
-	grains = {
-		code = 'grains',
+	grain = {
+		code = 'grain',
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_grain.png"),
 		price = 2,
 		type = 'food',
-		tags = ['grains'],
+		tags = ['grain'],
 	},
 	vegetables = {
 		code = 'vegetables',
@@ -238,7 +238,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_vege.png"),
 		price = 2,
 		type = 'food',
-		tags = ['veges'],
+		tags = ['vege'],
 	},
 	bread = {
 		code = 'bread',
@@ -247,7 +247,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_bread.png"),
 		price = 2,
 		type = 'food',
-		tags = ['grains'],
+		tags = ['grain'],
 	},
 	meatsoup = {
 		code = 'meatsoup',
@@ -256,7 +256,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_soup.png"),
 		price = 3,
 		type = 'food',
-		tags = ['veges', 'meat'],
+		tags = ['vege', 'meat'],
 	},
 	fishcakes = {
 		code = 'fishcakes',
@@ -265,7 +265,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_cake.png"),
 		price = 3,
 		type = 'food',
-		tags = ['grains', 'fish'],
+		tags = ['grain', 'fish'],
 	},
 	stone = {
 		code = 'stone',
@@ -276,7 +276,7 @@ var materiallist = {
 		price = 5,
 		type = 'stone',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(35,38,29),
 		parts = {},
 	},
 	obsidian = {
@@ -288,7 +288,7 @@ var materiallist = {
 		price = 20,
 		type = 'stone',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(135,45,255),
 		parts = {},
 	},
 	wood = {
@@ -312,7 +312,7 @@ var materiallist = {
 		price = 25,
 		type = 'wood',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(54,99,80),
 		parts = {},
 	},
 	woodiron = {
@@ -324,7 +324,7 @@ var materiallist = {
 		price = 25,
 		type = 'wood',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(51,42,23),
 		parts = {},
 	},
 	woodancient = {
@@ -336,7 +336,7 @@ var materiallist = {
 		price = 25,
 		type = 'wood',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(57,45,65),
 		parts = {},
 	},
 	leather = {
@@ -348,7 +348,7 @@ var materiallist = {
 		price = 10,
 		type = 'leather',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(165,109,86),
 		parts = {},
 	},
 	leatherthick = {
@@ -360,7 +360,7 @@ var materiallist = {
 		price = 50,
 		type = 'leather',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(43,24,16),
 		parts = {},
 	},
 	leathermythic = {
@@ -372,7 +372,7 @@ var materiallist = {
 		price = 50,
 		type = 'leather',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(159,109,78),
 		parts = {},
 	},
 	leatherdragon = {
@@ -384,7 +384,7 @@ var materiallist = {
 		price = 100,
 		type = 'leather',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(146,64,64),
 		parts = {},
 	},
 	bone = {
@@ -396,7 +396,7 @@ var materiallist = {
 		price = 10,
 		type = 'bone',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(169,180,186),
 		parts = {},
 	},
 	boneancient = {
@@ -408,7 +408,7 @@ var materiallist = {
 		price = 50,
 		type = 'bone',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(116,129,167),
 		parts = {},
 	},
 	bonedragon = {
@@ -420,7 +420,7 @@ var materiallist = {
 		price = 100,
 		type = 'bone',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(167,116,116),
 		parts = {},
 	},
 	cloth = {
@@ -432,7 +432,7 @@ var materiallist = {
 		price = 10,
 		type = 'cloth',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(45,57,55),
 		parts = {},
 	},
 	clothsilk = {
@@ -444,7 +444,7 @@ var materiallist = {
 		price = 25,
 		type = 'cloth',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(169,123,178),
 		parts = {},
 	},
 	clothmagic = {
@@ -456,7 +456,7 @@ var materiallist = {
 		price = 50,
 		type = 'cloth',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(72,89,132),
 		parts = {},
 	},
 	clothethereal = {
@@ -468,7 +468,7 @@ var materiallist = {
 		price = 100,
 		type = 'cloth',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(28,201,240),
 		parts = {},
 	},
 	iron = {
@@ -480,7 +480,7 @@ var materiallist = {
 		price = 10,
 		type = 'metal',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(125,104,79),
 		parts = {},
 	},
 	steel = {
@@ -492,7 +492,7 @@ var materiallist = {
 		price = 25,
 		type = 'metal',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(112,123,134),
 		parts = {},
 	},
 	mithril = {
@@ -504,7 +504,7 @@ var materiallist = {
 		price = 75,
 		type = 'metal',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(2,59,65),
 		parts = {},
 	},
 	adamantine = {
@@ -516,7 +516,7 @@ var materiallist = {
 		price = 100,
 		type = 'metal',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color8(60,38,97),
 		parts = {},
 	},
 	
@@ -867,7 +867,7 @@ var itemlist = {
 		description = tr("WEAPONAXEDESCRIPT"),
 		icon = load("res://assets/images/iconsgear/AxeBasic.png"),
 		price = 0,
-		basestats = {damage = 5},
+		basestats = {atk = 5},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -891,7 +891,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
 		price = 0,
-		basestats = {damage = 5},
+		basestats = {atk = 5},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -907,7 +907,7 @@ var itemlist = {
 		repairdifficulty = 'easy',
 		slots = ['rhand'],
 		hitsound = 'blade',
-		effects = ['pickaxe'],
+		effects = ['pick'],
 	},
 	fishingtools = {
 		name = '', 
@@ -915,7 +915,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
 		price = 0,
-		basestats = {damage = 1},
+		basestats = {atk = 1},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -939,7 +939,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
 		price = 0,
-		basestats = {damage = 1},
+		basestats = {atk = 1},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -963,7 +963,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/PickaxeBasic.png"),
 		price = 0,
-		basestats = {damage = 1},
+		basestats = {atk = 1},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -987,7 +987,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/SwordBasic.png"),
 		price = 0,
-		basestats = {damage = 10},
+		basestats = {atk = 10},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -1010,7 +1010,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/BowBasic.png"),
 		price = 0,
-		basestats = {damage = 20},
+		basestats = {atk = 20},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -1033,7 +1033,7 @@ var itemlist = {
 		description = '',
 		icon = load("res://assets/images/iconsgear/StaffBasic.png"),
 		price = 0,
-		basestats = {damage = 20},
+		basestats = {atk = 20},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -1428,7 +1428,7 @@ var recipes = {
 	#cooking
 	bread = {
 		code = 'bread',
-		materials = {grains = 3},
+		materials = {grain = 3},
 		items = {},
 		unlockreqs = [],
 		crafttype = 'basic',
@@ -1452,7 +1452,7 @@ var recipes = {
 	},
 	fishcakes = {
 		code = 'fishcakes',
-		materials = {fish = 1, grains = 1},
+		materials = {fish = 1, grain = 1},
 		items = {},
 		unlockreqs = [],
 		crafttype = 'basic',
@@ -1525,7 +1525,7 @@ var recipes = {
 	},
 	alcohol = {
 		code = 'alcohol',
-		materials = {grains = 6, salvia = 1},
+		materials = {grain = 6, salvia = 1},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',

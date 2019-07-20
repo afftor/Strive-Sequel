@@ -38,3 +38,30 @@ func execute():
 
 func inspect_scene_character():
 	input_handler.ShowSlavePanel(input_handler.scene_character)
+
+func inspect_character_child():
+	input_handler.ShowSlavePanel(state.babies[input_handler.scene_character.pregnancy.baby])
+
+func keepbaby():
+	var node = input_handler.GetTextEditNode()
+	var person = state.babies[input_handler.scene_character.pregnancy.baby]
+	person.get_random_name()
+	node.open(self, 'set_baby_name', person.name)
+
+func removebaby():
+	close()
+	state.babies.erase(input_handler.scene_character.pregnancy.baby)
+	input_handler.scene_character.pregnancy.baby = null
+
+func set_baby_name(text):
+	var person = state.babies[input_handler.scene_character.pregnancy.baby]
+	person.name = text
+	person.surname = input_handler.scene_character.surname
+	state.add_slave(person)
+	close()
+
+func open_chest_easy():
+	var chest = world_gen.make_chest_loot(input_handler.active_location)
+
+func leave():
+	close()

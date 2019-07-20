@@ -346,6 +346,7 @@ func generate_simple_fighter(tempname):
 			set(i, 0)
 		else:
 			set(i, data[i])
+	hpmax = hp
 	icon_image = data.icon
 	body_image = data.body
 	combat_skills = data.skills + ['attack']
@@ -353,6 +354,7 @@ func generate_simple_fighter(tempname):
 	is_person = false
 	xpreward = data.xpreward
 	loottable = data.loot
+	name = data.name
 	for i in variables.resists_list:
 		resists[i] = 0
 	for i in data.resists:
@@ -817,7 +819,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
 	for i in state.active_tasks:
-		if i.code == taskcode:
+		if i.code == taskcode && i.product == taskproduct:
 			taskexisted = true
 			i.workers.append(self.id)
 			work = i.code
@@ -898,9 +900,17 @@ func tick():
 		else:
 			rest_tick()
 	
-	
 	if last_escape_day_check != state.date && randf() <= 0.2:
 		check_escape_possibility()
+		if state.characters.has(self.id):
+			return
+	
+	if pregnancy.duration > 0 && pregnancy.baby != null:
+		pregnancy.duration -= 1
+		if pregnancy.duration == 0:
+			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = self})
+	
+	
 
 var last_escape_day_check = 0
 
@@ -1033,7 +1043,10 @@ func work_tick():
 		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity*get(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
-			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
+			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
+				state.money += 1
+			else:
+				state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 
 func work_tick_values(currenttask):
 	var energyvalue = variables.basic_energy_per_work_tick
@@ -1531,6 +1544,8 @@ var shieldtype
 
 func deal_damage(value, source):
 	var tmp = hp
+	if state.characters.has(self.id) && variables.invincible_player:
+		return 0
 	value = round(value);
 	if (shield > 0) and ((int(shieldtype) & int(source)) != 0):
 		self.shield -= value
@@ -1722,3 +1737,13 @@ func use_social_skill(s_code, target):#add logging if needed
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
 
+func baby_transform():
+	var mother = state.characters[relatives.mother]
+	name = 'Child of ' + mother.name
+	if mother.surname != '':
+		name += " " + mother.surname
+	surname = ''
+	anal_virgin = true
+	mouth_virgin = true
+	penis_virgin = true
+	vaginal_virgin = true

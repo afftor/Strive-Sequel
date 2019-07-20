@@ -24,12 +24,33 @@ func _ready():
 		i.connect("pressed",self,"select_category", [i.name])
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
+		get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
 	
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
 		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
 		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
 
+func show_heal_items(position):
+	if get_node(positiondict[position] + "/Image").visible == true:
+		input_handler.MousePositionScripts.append({nodes = [$Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
+		$Positions/itemusepanel.show()
+		$Positions/itemusepanel.rect_global_position.y = get_node(positiondict[position] + "/Image").rect_global_position.y - $Positions/itemusepanel.rect_size.y
+		globals.ClearContainer($Positions/itemusepanel/GridContainer)
+		for i in state.items.values():
+			if Items.itemlist[i.itembase].has('explor_effect') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+			newbutton.get_node("Label").text = str(i.amount)
+			i.set_icon(newbutton)
+			globals.connectitemtooltip(newbutton, i)
+			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
 
+func use_item_on_character(position, item):
+	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	build_location_group()
+
+func hide_heal_items():
+	$Positions/itemusepanel.hide()
 
 func open():
 	globals.AddPanelOpenCloseAnimation($QuestPanel)
@@ -765,11 +786,16 @@ func StartCombat():
 	else:
 		enemies = makespecificgroup(enemydata)
 	
+	var enemy_stats_mod = 0.95 + 0.05 * current_level
+#		for i in enemies:
+#			for k in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
+#				i.set(i.get(k), i.get(k) * enemy_stats_mod)
+	
 	input_handler.emit_signal("CombatStarted", enemydata)
 	input_handler.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$combat.encountercode = enemydata
-	$combat.start_combat(active_location.group, enemies, 'background', music)
+	$combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
 	$combat.show()
 
 func makespecificgroup(group):

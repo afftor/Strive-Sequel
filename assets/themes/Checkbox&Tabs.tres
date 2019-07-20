@@ -13,6 +13,8 @@
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 243, 15 )
+margin_left = 5.0
+margin_right = 5.0
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )

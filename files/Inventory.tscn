@@ -296,10 +296,11 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
-margin_left = 1182.0
-margin_top = 64.0
-margin_right = 1838.0
-margin_bottom = 1001.0
+editor/display_folded = true
+margin_left = 647.0
+margin_top = 50.0
+margin_right = 1303.0
+margin_bottom = 987.0
 
 [node name="BodyImage" type="TextureRect" parent="GearPanel"]
 margin_right = 649.0
@@ -507,3 +508,15 @@ rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 32 )
 expand = true
 stretch_mode = 6
+
+[node name="StatsPanel" type="Panel" parent="."]
+margin_left = 1329.0
+margin_top = 50.0
+margin_right = 1874.0
+margin_bottom = 989.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
+margin_left = 30.0
+margin_top = 33.0
+margin_right = 518.0
+margin_bottom = 898.0

@@ -17,8 +17,8 @@ var dmg_mod_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 
-var resists_list = ['normal','fire','earth','air','water']
-var fighter_stats_list = ['hp','mana','damage','armor','mdef','hitrate','evasion','armorpenetration','speed']
+var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
+var fighter_stats_list = ['hp','mana','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed']
 
 const playerparty = [1, 2, 3, 4, 5, 6]
 const enemyparty = [7, 8, 9, 10, 11, 12]
@@ -87,6 +87,8 @@ var instant_upgrades = true
 var free_upgrades = true
 var skip_combat = false
 var unlock_all_upgrades = true
+var invincible_player = true
+var show_enemy_hp = true
 
 var pregduration = 90
 

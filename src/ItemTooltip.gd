@@ -6,17 +6,36 @@ var prevnode
 onready var iconnode = $Image
 onready var textnode = $RichTextLabel
 
+var currentdata
+var currenttype
+var mode = 'default'
 
 func _process(delta):
 	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
 		hide()
 
+func _input(event):
+	if event.is_pressed():
+		if event.is_action("shift"):
+			mode = 'advanced'
+			update()
+	elif event.is_action_released("shift"):
+		mode = 'default'
+		update()
+
 func _init():
 	set_process(false)
 
+func update():
+	showup(parentnode, currentdata, currenttype)
+
 func showup(node, data, type): #types material materialowned gear geartemplate
+	if node == null:
+		return
 	parentnode = node
+	currentdata = data
+	currenttype = type
 	
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:
@@ -32,7 +51,10 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 		'materialowned':
 			materialowned_tooltip(data)
 		'gear':
-			gear_tooltip(data)
+			if mode == 'default':
+				gear_tooltip(data)
+			elif mode == 'advanced':
+				geat_detailed_tooltip(data)
 		'geartemplate':
 			geartemplete_tooltip(data)
 	prevnode = parentnode
@@ -90,6 +112,35 @@ func gear_tooltip(data, item = null):
 	else:
 		iconnode.texture = load(item.icon)
 	textnode.bbcode_text = text
+
+func geat_detailed_tooltip(data, item = null):
+	gear_tooltip(data, item)
+	item = data.item
+	if item.parts.size() == 0:
+		return
+	var text = '[center]'+data.item.name+'[/center]'
+	for i in item.parts:
+		var material = Items.materiallist[item.parts[i]]
+		text += "\n" + Items.Parts[i].name + ": " + material.name 
+		for k in material.parts[i]:
+			if material.parts[i][k] != 0:
+				var value = material.parts[i][k]
+				var change = ''
+				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
+					value = value*100
+				text += '\n' + Items.stats[k] + ': {color='
+				if value > 0:
+					change = '+'
+					text += 'green|'
+				else:
+					text += 'red|'
+				value = str(value)
+				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
+					value = change + value + '%'
+				text += value + '}\n'
+#		for k in material.parts[i]:
+#			text += "\n" + Items.stats[k] + " " + str(material.parts[i][k])
+	textnode.bbcode_text = globals.TextEncoder(text)
 
 func geartemplete_tooltip(data):
 	var item = data.item
