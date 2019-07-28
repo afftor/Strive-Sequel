@@ -59,6 +59,7 @@ var sexicons = {
 }
 
 
+var descriptions = load("res://assets/data/descriptions.gd").new()
 
 var statdata = {
 	base_exp = {
@@ -469,6 +470,13 @@ func _ready():
 	for i in Enemydata.enemies.values():
 		i.name = tr("ENEMY" + i.code.to_upper())
 	
+	
+	for i in descriptions.bodypartsdata:
+		for k in descriptions.bodypartsdata[i].values():
+			k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
+#			text += k.name + ' = "' + k.code + '",\n'
+			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
+	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true
@@ -487,6 +495,9 @@ func _ready():
 	for i in Items.materiallist.keys():
 		state.materials[i] = 0
 	
+	for i in upgradelist.keys():
+		state.upgrades[i] = 0
+	
 	#randomgroups = Enemydata.randomgroups
 	#enemylist = Enemydata.enemylist
 	#effects = Effectdata.effects
@@ -495,8 +506,8 @@ func _ready():
 	
 	#workersdict = TownData.workersdict
 	
-	for i in Items.materiallist:
-		state.materials[i] = 100
+#	for i in Items.materiallist:
+#		state.materials[i] = 100
 	state.money = 500
 	
 
@@ -580,9 +591,7 @@ func AddItemToInventory(item):
 		if id != null:
 			state.items[id].amount += item.amount
 		else:
-
 			item.id = "i" + str(state.itemcounter)
-
 			state.items[item.id] = item
 			state.itemcounter += 1
 		
@@ -707,7 +716,6 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	data.price = str(material.price)
 	if state.materials[material.code] > 0:
 		data.amount = state.materials[material.code]
-	
 	
 	node.showup(targetnode, data, type)
 
@@ -990,15 +998,18 @@ func LoadGame(filename):
 	#state = load("res://src/gamestate.gd").new()
 	#state._ready()
 	
+	
+	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
+	var savedict = parse_json(file.get_as_text())
+	file.close()
+	
+	state.deserialize(savedict)
+	
 	#current approach
 	CurrentScene.queue_free()
 	ChangeScene('mansion');
 	yield(self, "scene_changed")
 
-	
-	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
-	var savedict = parse_json(file.get_as_text())
-	file.close()
 	
 	#state = dict2inst(savedict.state)
 	#state.heroes.clear()
@@ -1018,7 +1029,6 @@ func LoadGame(filename):
 #		t = dict2inst(i)
 #		state.workers[t.id] = t
 	
-	state.deserialize(savedict)
 	#converting floats to ints
 	
 #	var tempdict = {}

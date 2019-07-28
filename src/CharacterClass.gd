@@ -62,8 +62,8 @@ var obed_degrade_mod = 1.0
 
 var hp = 100 setget hp_set
 var hpmax = 100
-var mp = 0 setget mp_set
-var mpmax = 0
+var mp = 50 setget mp_set
+var mpmax = 50
 var energy := 100.0 setget energy_set
 var energymax = 100
 var energybonus = 0
@@ -100,7 +100,7 @@ var resists = {}
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
-var critchance = 0
+var critchance = 10
 var critmod = 1.5
 var position
 var taunt
@@ -197,6 +197,8 @@ var mouth_virgin = true
 #tasks
 var sleep = ''
 var work = ''
+var work_simple = true
+var work_simple_state = 'work'
 var workhours = 12
 var resthours = 8
 var joyhours = 4
@@ -308,7 +310,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 			classarray = get_class_list('any', self)
 		else:
 			classarray = get_class_list(slaveclass, self)
-		if classarray != null:
+		if classarray != null && classarray.size() > 0:
 			unlock_class(classarray[randi()%classarray.size()].code, true)
 		classcounter -= 1
 	
@@ -606,10 +608,9 @@ func assign_gender():
 	else:
 		sex = 'male'
 
-var descriptions = load("res://assets/data/descriptions.gd").new()
 
 func make_description():
-	return translate(descriptions.create_character_description(self))
+	return translate(globals.descriptions.create_character_description(self))
 
 func show_race_description():
 	var temprace = races.racelist[race]
@@ -843,6 +844,12 @@ func remove_from_task():
 				i.workers.erase(self.id)
 	work = ''
 
+func travel_tick():
+	var value = 1
+	if state.upgrades.has('stables'):
+		value = 1 + variables.stable_boost_per_level * state.upgrades.stables
+	return value
+
 func tick():
 	process_event(variables.TR_TICK)
 	
@@ -870,8 +877,9 @@ func tick():
 	
 	if work == 'travel':
 		if travel_time > 0:
-			travel_time -= 1
-			if travel_time == 0:
+			travel_time -= travel_tick()
+			if travel_time <= 0:
+				travel_time = 0
 				area = travel_target.area
 				location = travel_target.location
 				state.emit_signal("slave_arrived", self)
@@ -881,19 +889,34 @@ func tick():
 		return
 	
 	if skip_work == false:
-		var totalday = 0
-		for i in current_day_spent.values():
-			totalday += i
-		if totalday >= 24:
-			for i in current_day_spent:
-				current_day_spent[i] = 0
-		
-		if current_day_spent.workhours < workhours:
-			work_tick()
-		elif current_day_spent.joyhours < joyhours:
-			joy_tick()
+		if work_simple == true:
+			match work_simple_state:
+				'work':
+					if energy <= 0:
+						work_simple_state = 'joy'
+				'joy':
+					if fatigue <= 0:
+						work_simple_state = 'rest' 
+				'rest':
+					if energy >= 100:
+						work_simple_state = 'work'
+			
+			call(work_simple_state + "_tick")
+			
 		else:
-			rest_tick()
+			var totalday = 0
+			for i in current_day_spent.values():
+				totalday += i
+			if totalday >= 24:
+				for i in current_day_spent:
+					current_day_spent[i] = 0
+			
+			if current_day_spent.workhours < workhours:
+				work_tick()
+			elif current_day_spent.joyhours < joyhours:
+				joy_tick()
+			else:
+				rest_tick()
 	else:
 		if fatigue > 10:
 			joy_tick()
@@ -929,7 +952,7 @@ func death():
 	clean_effects()
 
 func energy_set(value):
-	energymax = 100 + energybonus + round(physics + physics_bonus)
+	energymax = 100 + energybonus# + round(physics + physics_bonus)
 	if value < 0:
 		self.exhaustion += -value
 		energy = 0
@@ -1223,7 +1246,10 @@ func translate(text):
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
 	text = text.replace("[hair_color]", hair_color)
-	text = text.replace("[master]", globals.fastif(state.get_master().sex == 'male', "master", "mistress"))
+	var masternoun = 'master'
+	if state.get_master() != null && state.get_master().sex != 'male':
+		masternoun = 'mistress'
+	text = text.replace("[master]", masternoun)
 	match sex:
 		'male':
 			rtext = 'boy'

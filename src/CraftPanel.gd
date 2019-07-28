@@ -70,7 +70,7 @@ func select_category(category):
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':
-			newbutton.get_node("icon").material = load("res://files/ItemShader.tres")
+			newbutton.get_node("icon").material = load("res://files/ItemShader.tres").duplicate()
 			for k in item.parts:
 				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var partdata = Items.Parts[k]

@@ -67,7 +67,7 @@ func open_class(classcode):
 		#newnode.texture = skill.icon
 		#add_toolti
 	
-	text = "Experience required: " + str(person.base_exp) + "/" + str(person.get_next_class_exp()) 
+	text = "Experience required: " + str(floor(person.base_exp)) + "/" + str(person.get_next_class_exp()) 
 	
 	$ClassPanel/Unlock.disabled = person.base_exp < person.get_next_class_exp()
 	

@@ -1,35 +1,41 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=3]
-[ext_resource path="res://files/buttons/main screen/frame.png" type="Texture" id=4]
-[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=5]
-[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=6]
-[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=7]
-[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=8]
-[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=9]
-[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=10]
-[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=11]
-[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=12]
-[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=13]
-[ext_resource path="res://files/buttons/main screen/hourprogress.png" type="Texture" id=14]
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=15]
-[ext_resource path="res://src/SlaveList.gd" type="Script" id=16]
-[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/gui icons/sleepicon.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/gui icons/energy.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/gui icons/mana.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=22]
-[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=23]
-[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=24]
-[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=25]
-[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=26]
-[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=27]
-[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=28]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=29]
-[ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=30]
+[ext_resource path="res://assets/sfx/loadshader.shader" type="Shader" id=2]
+[ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=4]
+[ext_resource path="res://files/buttons/main screen/frame.png" type="Texture" id=5]
+[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=6]
+[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=7]
+[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=8]
+[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=9]
+[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=10]
+[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=11]
+[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=12]
+[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=13]
+[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=14]
+[ext_resource path="res://files/buttons/main screen/hourprogress.png" type="Texture" id=15]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=16]
+[ext_resource path="res://src/SlaveList.gd" type="Script" id=17]
+[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/sleepicon.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/gui icons/energy.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/gui icons/mana.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/obed_bad.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=23]
+[ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=26]
+[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=31]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/dist = 1.3
+shader_param/width = 0.35
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -40,9 +46,10 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="."]
+material = SubResource( 2 )
 margin_right = 1920.0
 margin_bottom = 1080.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -52,7 +59,7 @@ margin_left = 1774.15
 margin_top = 13.5203
 margin_right = 1906.15
 margin_bottom = 57.5203
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Menu"
 
 [node name="InventoryButton" type="Button" parent="."]
@@ -60,7 +67,7 @@ margin_left = 23.3762
 margin_top = 999.333
 margin_right = 241.376
 margin_bottom = 1068.33
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Inventory"
 
 [node name="CraftButton" type="Button" parent="."]
@@ -68,7 +75,7 @@ margin_left = 263.376
 margin_top = 999.333
 margin_right = 481.376
 margin_bottom = 1068.33
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Craft"
 
 [node name="ExploreButton" type="Button" parent="."]
@@ -76,7 +83,7 @@ margin_left = 493.376
 margin_top = 999.333
 margin_right = 711.376
 margin_bottom = 1068.33
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Outside"
 
 [node name="QuestlogButton" type="Button" parent="."]
@@ -84,7 +91,7 @@ margin_left = 723.376
 margin_top = 999.333
 margin_right = 941.376
 margin_bottom = 1068.33
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Quest Menu"
 
 [node name="UpgradeButton" type="Button" parent="."]
@@ -92,7 +99,7 @@ margin_left = 953.0
 margin_top = 999.0
 margin_right = 1171.0
 margin_bottom = 1068.0
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Upgrades"
 
 [node name="InteractButton" type="Button" parent="."]
@@ -100,15 +107,16 @@ margin_left = 23.2352
 margin_top = 926.346
 margin_right = 241.235
 margin_bottom = 995.343
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 text = "Sex"
 
 [node name="TimeNode" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 6.91928
 margin_top = 3.509
 margin_right = 295.919
 margin_bottom = 172.509
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Date" type="Label" parent="TimeNode"]
 margin_left = 32.0
@@ -125,9 +133,9 @@ margin_top = 63.7351
 margin_right = 286.133
 margin_bottom = 124.735
 toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 7 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
 
 [node name="1speed" type="TextureButton" parent="TimeNode"]
 margin_left = 96.7619
@@ -135,9 +143,9 @@ margin_top = 63.7459
 margin_right = 191.762
 margin_bottom = 124.746
 toggle_mode = true
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
 
 [node name="0speed" type="TextureButton" parent="TimeNode"]
 margin_left = 3.09059
@@ -145,9 +153,9 @@ margin_top = 64.45
 margin_right = 99.0906
 margin_bottom = 125.45
 toggle_mode = true
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 
 [node name="HidePanel" type="Panel" parent="TimeNode"]
 visible = false
@@ -163,7 +171,7 @@ margin_top = 130.0
 margin_right = 285.0
 margin_bottom = 167.0
 value = 50.0
-texture_progress = ExtResource( 14 )
+texture_progress = ExtResource( 15 )
 
 [node name="gold" type="Label" parent="."]
 margin_left = 1679.87
@@ -225,12 +233,13 @@ text = "1"
 align = 2
 
 [node name="SlaveList" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 1221.0
 margin_top = 64.0
 margin_right = 1905.0
 margin_bottom = 878.0
-theme = ExtResource( 15 )
-script = ExtResource( 16 )
+theme = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveList"]
 margin_left = 26.7148
@@ -254,7 +263,7 @@ margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 expand = true
 
 [node name="state" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
@@ -263,7 +272,7 @@ margin_right = 422.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 expand = true
 
 [node name="en" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
@@ -273,7 +282,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPENERGY"
 mouse_filter = 2
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 expand = true
 stretch_mode = 6
 
@@ -293,7 +302,7 @@ margin_right = 522.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 expand = true
 stretch_mode = 6
 
@@ -315,7 +324,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPOBEDIENCE"
 mouse_filter = 2
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 expand = true
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/obed"]
@@ -336,7 +345,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 hint_tooltip = "TOOLTIPFEAR"
 mouse_filter = 2
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 expand = true
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/fear"]
@@ -358,36 +367,32 @@ text = "Name Race Age Class"
 
 [node name="CraftPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 23 )]
+] instance=ExtResource( 24 )]
 visible = false
 
 [node name="Exploration" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 24 )]
+] instance=ExtResource( 25 )]
 visible = false
 
 [node name="SlavePanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 25 )]
-visible = false
-margin_left = 22.0
-margin_top = 57.0
-margin_right = 1220.0
-margin_bottom = 917.0
-
-[node name="QuestPanel" parent="." groups=[
-"pauseprocess",
 ] instance=ExtResource( 26 )]
 visible = false
 
-[node name="InteractionSelectPanel" parent="." groups=[
+[node name="QuestPanel" parent="." groups=[
 "pauseprocess",
 ] instance=ExtResource( 27 )]
 visible = false
 
-[node name="UpgradeList" parent="." groups=[
+[node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",
 ] instance=ExtResource( 28 )]
+visible = false
+
+[node name="UpgradeList" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 29 )]
 visible = false
 
 [node name="TextLog" type="RichTextLabel" parent="."]
@@ -409,7 +414,7 @@ text = "Test"
 
 [node name="MenuPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 29 )]
+] instance=ExtResource( 30 )]
 visible = false
 margin_left = 826.375
 margin_top = 277.826
@@ -418,4 +423,4 @@ margin_bottom = 719.826
 
 [node name="LootWindow" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 30 )]
+] instance=ExtResource( 31 )]

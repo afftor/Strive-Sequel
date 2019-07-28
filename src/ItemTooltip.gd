@@ -11,6 +11,9 @@ var currenttype
 var mode = 'default'
 
 func _process(delta):
+	if weakref(parentnode) == null:
+		hide()
+		return
 	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
 		hide()
@@ -78,7 +81,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 
 func material_tooltip(data):
 	var item = data.item
-	var text = '[center]' + item.name + '[/center]\n' + item.descript
+	var text = data.text#'[center]' + item.name + '[/center]\n' + item.descript
 	if state.materials.has(data.item) && state.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(state.materials[data.item])
 	iconnode.texture = item.icon
@@ -147,6 +150,8 @@ func geartemplete_tooltip(data):
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
 	
 	iconnode.texture = item.icon
+	$Cost/Label.text = str(data.price)
+	
 	if data.item.slots.size() == 1:
 		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
 	elif data.item.slots.size() > 1:

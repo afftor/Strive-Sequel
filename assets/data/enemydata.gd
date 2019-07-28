@@ -625,14 +625,21 @@ var enemies = {
 }
 
 var loot_chests_data = {
-	easy_chest = [
-	{code = 'material', min = 2, max = 5}, 
-	{code = 'material', min = 1, max = 3}, 
-	{code = 'usable', min = 3, max = 5}, 
-	{code = 'gear', min = 1, max = 1, materials = 'location'},
-	{code = 'static_gear', min = 1, max = 1}
+	easy_chest_usable = [
+	{code = 'material', min = 6, max = 10, grade = ['easy', 'medium']}, 
+	{code = 'material', min = 2, max = 5, grade = ['location']}, 
+	{code = 'usable', min = 3, max = 5, grade = ['easy']}, 
 	],
-	
+	easy_chest_gear = [
+	{code = 'material', min = 2, max = 5, grade = ['easy']}, 
+	{code = 'material', min = 1, max = 3, grade = ['location']}, 
+	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = ['easy']},
+	],
+	easy_chest_cosmetics= [
+	{code = 'material', min = 3, max = 8, grade = ['easy']}, 
+	{code = 'material', min = 1, max = 3, grade = ['location']}, 
+	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
+	],
 }
 
 

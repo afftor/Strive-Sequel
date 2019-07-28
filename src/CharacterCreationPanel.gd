@@ -76,7 +76,7 @@ func select_checkbox(bodypart, node):
 
 func open(type = 'slave'):
 	preservedsettings.clear()
-	
+	show()
 	
 	person = Slave.new()
 	mode = type
@@ -164,7 +164,7 @@ func RebuildStatsContainer():
 	globals.ClearContainer($StatsContainer)
 	var array = []
 	for i in globals.statdata.values():
-		if i.type == 'factor':
+		if i.has('type') && i.type == 'factor':
 			array.append(i)
 			if preservedsettings.has(i.code) == false:
 				preservedsettings[i.code] = 1
@@ -333,7 +333,7 @@ func finish_character():
 	apply_preserved_settings()
 	state.add_slave(person)
 	input_handler.emit_signal("CharacterCreated")
-	
+	person.food_consumption = 3
 	self.hide()
 
 func open_sex_traits():

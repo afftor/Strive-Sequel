@@ -30,7 +30,7 @@ func _ready():
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
-		get_node("job_panel/job_details/"+i).connect("pressed", self, "change_hours", [i])
+		get_node("job_panel/job_details/WorkDetailsPanel/"+i).connect("pressed", self, "change_hours", [i])
 	
 	###############
 	
@@ -38,6 +38,8 @@ func _ready():
 	globals.AddPanelOpenCloseAnimation($job_panel)
 	globals.AddPanelOpenCloseAnimation($DietPanel)
 	$job_panel.move_child($job_panel/CloseButton, 3)
+	
+	$job_panel/job_details/SimpleBehaviorCheck.connect("pressed", self, "check_simple_behavior")
 	
 	$controls/DietButton.connect("pressed", self, "open_diet_window")
 	$controls/JobButton.connect("pressed", self, "open_jobs_window")
@@ -117,6 +119,8 @@ func open(tempperson):
 	$mentality/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	
 	$food_love/Label.text = person.food_love
+	
+	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
 		text += i + ", "
 	text = text.substr(0, text.length()-2)
@@ -147,6 +151,15 @@ func open(tempperson):
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
 		newnode.text = trait.name
+	
+	globals.ClearContainer($buffscontainer)
+	print(person.temp_effects)
+	for i in person.get_all_buffs():
+		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
+		newnode.texture = load(i.icon)
+		#newnode.get_node("Label").text = str(i.duration)
+		globals.connecttexttooltip(newnode, i.description)
+	
 
 func make_location_description():
 	var text = ''
@@ -164,7 +177,7 @@ func make_location_description():
 		active_location_name = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.travel_target.location].name
 	
 	if person.location == 'travel':
-		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(person.travel_time) + ' hours.'
+		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(round(person.travel_time / person.travel_tick())) + ' hours.'
 	else:
 		text = '[name] currently positioned at [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]"
 	return text
@@ -210,20 +223,36 @@ func show_job_details(job):
 	$job_panel/job_details/RichTextLabel.bbcode_text = text
 	globals.ClearContainer($job_panel/job_details/ResourceOptions)
 	
+	$job_panel/job_details/WorkDetailsPanel.visible = !person.work_simple
+	$job_panel/job_details/SimpleBehaviorCheck.pressed = person.work_simple
+	
 	for i in job.production.values():
 		if state.checkreqs(i.reqs) == false:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/job_details/ResourceOptions)
 		if Items.materiallist.has(i.item):
-			var number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
+			var number
+			if person.work_simple == true:
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)
+				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
+			else:
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
+				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
 			newbutton.get_node("number").text = str(number)
-			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], "\n[color=yellow]Expected gain per work day: "+str(number) + "[/color]")
+			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
 		else:
-			var number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1) # stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
+			var number
+			if person.work_simple == true:
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)
+				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
+			else:
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
+				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
+			#number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1) # stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
 			newbutton.get_node("number").text = str(number)
 			newbutton.get_node("icon").texture = i.icon
-			globals.connecttexttooltip(newbutton, i.descript + "\n[color=yellow]Expected gain per work day: "+str(number) + "[/color]")
+			globals.connecttexttooltip(newbutton, i.descript + text)
 			
 		newbutton.connect('pressed', self, 'select_job', [job, i.code])
 
@@ -233,9 +262,10 @@ func select_job(job, production):
 		i = 0
 	$job_panel.hide()
 	open(person)
-	
 
-
+func check_simple_behavior():
+	person.work_simple = $job_panel/job_details/SimpleBehaviorCheck.pressed
+	show_job_details(currentjob)
 
 func change_hours(stat):
 	var freepoints = 24 - (person.workhours + person.resthours + person.joyhours)
@@ -255,10 +285,10 @@ func change_hours(stat):
 	update_hours()
 
 func update_hours():
-	$job_panel/job_details/worklabel.text = str(person.workhours)
-	$job_panel/job_details/restlabel.text = str(person.resthours)
-	$job_panel/job_details/joylabel.text = str(person.joyhours)
-	$job_panel/job_details/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
+	$job_panel/job_details/WorkDetailsPanel/worklabel.text = str(person.workhours)
+	$job_panel/job_details/WorkDetailsPanel/restlabel.text = str(person.resthours)
+	$job_panel/job_details/WorkDetailsPanel/joylabel.text = str(person.joyhours)
+	$job_panel/job_details/WorkDetailsPanel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
 	if currentjob != null:
 		show_job_details(currentjob)
 
@@ -274,7 +304,7 @@ func build_skill_panel():
 			if skill.manacost > 0:
 				newbutton.get_node("manacost").visible = true
 				newbutton.get_node("manacost").text = str(skill.manacost)
-				if person.mana < skill.manacost:
+				if person.mp < skill.manacost:
 					newbutton.disabled = true
 					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
 			if skill.energycost > 0:
@@ -407,7 +437,7 @@ func return_to_mansion():
 	if variables.instant_travel == false:
 		person.location = 'travel'
 		person.travel_target = {area = '', location = 'mansion'}
-		person.travel_time = max(1, active_area.travel_time + active_location.travel_time - person.travel_time)
+		person.travel_time = max(1, round(active_area.travel_time + active_location.travel_time - person.travel_time))
 	else:
 		person.location = 'mansion'
 	open(person)

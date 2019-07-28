@@ -68,15 +68,20 @@ var viewed_tips := []
 
 func revert():
 #to make
-	pass
+	date = 1
+	hour = 6
+	characters.clear()
+	items.clear()
+	materials.clear()
+	globals._ready()
 
 func pos_set(value):
 	combatparty = value
 	for p in combatparty:
 		if combatparty[p] == null: continue
 
-func _ready():
-	pass
+func get_pop_cap():
+	return variables.base_population_cap + variables.population_cap_per_room_upgrade * upgrades.rooms
 
 func materials_set(value):
 	var text = ''
@@ -354,4 +359,9 @@ func deserialize(tmp:Dictionary):
 		items[i] = dict2inst(tmp['items'][i])
 	for h in tmp['heroes']:
 		characters[h] = dict2inst(tmp['heroes'][h])
+		#fixing saved skill shortcuts
+		var ssp = characters[h].social_skill_panel.duplicate()
+		characters[h].social_skill_panel.clear()
+		for i in ssp:
+			characters[h].social_skill_panel[int(i)] = ssp[i]
 	tempstate.free()

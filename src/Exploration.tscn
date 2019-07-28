@@ -523,7 +523,6 @@ margin_bottom = 838.156
 text = "Accept"
 
 [node name="ShopPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 40.7423
 margin_top = 91.4415
@@ -531,7 +530,6 @@ margin_right = 1075.74
 margin_bottom = 965.442
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopPanel"]
-editor/display_folded = true
 margin_left = 40.0
 margin_top = 20.0
 margin_right = 444.0
@@ -553,7 +551,6 @@ toggle_mode = true
 text = "Sell"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPanel"]
-editor/display_folded = true
 margin_left = 41.0
 margin_top = 79.0
 margin_right = 445.0

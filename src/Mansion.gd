@@ -38,12 +38,14 @@ func _ready():
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
-	if globals.start_new_game == false:
+	if globals.start_new_game == false && true:
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
+		character.unlock_class("dancer")
+		character.unlock_class("caster")
 		character.is_players_character = true
 #		globals.impregnate(character, character)
 #		character.pregnancy.duration = 1
@@ -65,13 +67,15 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
-	else:
+	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
 	
-	#$LootWindow.open(world_gen.make_chest_loot('easy_chest'), 'Teh Loot')
+	build_task_bar()
+	$SlaveList.rebuild()
+	#$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):
@@ -109,7 +113,6 @@ func _process(delta):
 		$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
 		if gametime >= variables.SecondsPerHour:
 			gametime -= variables.SecondsPerHour
-			state.emit_signal("hour_tick")
 			state.hour += 1
 			if state.hour >= variables.HoursPerDay:
 				state.hour = 0
@@ -122,6 +125,7 @@ func _process(delta):
 				i.tick()
 			
 			$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
+			state.emit_signal("hour_tick")
 
 
 
@@ -158,7 +162,6 @@ func build_task_bar():
 				newnode.get_node("ProgressBar").value = state.craftinglists[i.code][0].workunits
 				var recipe = Items.recipes[state.craftinglists[i.code][0].code]
 				if recipe.resultitemtype == 'material':
-
 					newnode.get_node("icon").texture = Items.materiallist[state.craftinglists[i.code][0].code].icon
 					newnode.get_node("icon/Label").show()
 					newnode.get_node("icon/Label").text = str(state.materials[state.craftinglists[i.code][0].code])
@@ -183,6 +186,8 @@ func build_task_bar():
 			newnode.get_node("icon").texture = Items.materiallist[races.tasklist[i.code].production[i.product].item].icon
 			newnode.get_node("ProgressBar").max_value = i.threshhold
 			newnode.get_node("ProgressBar").value = i.progress
+			newnode.get_node("icon/Label").show()
+			newnode.get_node("icon/Label").text = str(state.materials[races.tasklist[i.code].production[i.product].item])
 		newnode.set_meta("dict", i)
 		
 
@@ -226,6 +231,7 @@ func update_task_bar():
 			else:
 				i.visible = task.workers.size() != 0
 				i.get_node("ProgressBar").value = task.progress
+				i.get_node("icon/Label").text = str(state.materials[races.tasklist[task.code].production[task.product].item])
 	
 
 func show_task_workers(newnode):

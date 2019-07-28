@@ -19,12 +19,12 @@ var lands = {
 		difficulty = 0, #growing number defining quests and individuals
 		disposition = 100, #reputation, not currently used
 		population = [100000, 200000], #population, not currently used, but planned to be possible to affect its numbers
-		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]}, #will generate said locations on first generation
+		start_settlements_number = {settlement_small = [2,2]}, #will generate said locations on first generation
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den', "dungeon_goblin_cave"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages'],
-		capital_shop_resources = ['meat','fish','grains','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
+		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
 		capital_shop_items = ['lifeshard'],
 	},
 	forests = {
@@ -37,12 +37,12 @@ var lands = {
 		difficulty = 1,
 		disposition = 25,
 		population = [20000, 50000],
-		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
+		start_settlements_number = {settlement_small = [1,1]},
 		start_locations_number = 3, 
 		locations = {},
 		locationpool = ['dungeon_grove'],
 		guilds = [],
-		capital_shop_resources = ['grains','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
+		capital_shop_resources = ['grain','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
 		capital_shop_items = [],
 	},
 	mountains = {
@@ -55,7 +55,7 @@ var lands = {
 		difficulty = 1,
 		disposition = 15,
 		population = [10000, 30000],
-		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
+		start_settlements_number = {settlement_small = [1,1]},
 		start_locations_number = 1, 
 		locations = {},
 		locationpool = ['dungeon_goblin_cave'],
@@ -73,7 +73,7 @@ var lands = {
 		difficulty = 1,
 		disposition = 15,
 		population = [10000, 30000],
-		start_settlements_number = {settlement_large = [1,1], settlement_small = [1,1]},
+		start_settlements_number = {settlement_small = [1,1]},
 		start_locations_number = 2, 
 		locations = {},
 		locationpool = ['dungeon_goblin_cave'],
@@ -267,6 +267,8 @@ func make_settlement(code, area):
 	settlement.group = {}
 	settlement.type = 'settlement'
 	settlement.levels = {}
+	settlement.shop_resources = {}
+	settlement.shop_items = {}
 	state.locationcounter += 1
 	if randf() <= 0.8 || area.secondary_races.size() == 0:
 		settlement.races.append(area.lead_race)
@@ -280,31 +282,76 @@ func make_settlement(code, area):
 	
 	
 	#adding resource types the settlement is going to have
+	var resourcedata = settlement.resources.duplicate()
+	settlement.resources.clear()
 	var food_types = round(rand_range(settlement.food_type_number[0], settlement.food_type_number[1]))
 	var resource_array = []
-	for i in Items.materiallist.values():
-		if i.type == 'food':
-			resource_array.append(i.code)
+	for i in resourcedata:
+		if Items.materiallist[i].type == 'food':
+			resource_array.append(i)
 	while food_types > 0:
 		var resource = resource_array[randi()%resource_array.size()]
 		settlement.resources.append(resource)
+		settlement.shop_resources[resource] = round(rand_range(settlement.food_type_amount[0], settlement.food_type_amount[1]))
 		resource_array.erase(resource)
 		food_types -= 1
 	var resource_types = round(rand_range(settlement.resources_type_number[0], settlement.resources_type_number[1]))
-	resource_array = []
-	for i in Items.materiallist.values():
-		if i.code in ['wood', 'stone', 'cloth']:
-			resource_array.append(i.code)
+	resource_array.clear()
+	for i in resourcedata:
+		if Items.materiallist[i].type != 'food':
+			resource_array.append(i)
 	while resource_types > 0:
 		var resource = resource_array[randi()%resource_array.size()]
 		settlement.resources.append(resource)
+		settlement.shop_resources[resource] = round(rand_range(settlement.resource_type_amount[0], settlement.resource_type_amount[1]))
 		resource_array.erase(resource)
 		resource_types -= 1
-	
-	
+	var item_types = round(rand_range(settlement.item_type_number[0], settlement.item_type_number[1]))
+	while item_types > 0:
+		var itemdata = settlement.items[randi()%settlement.items.size()]
+		if Items.itemlist[itemdata[0]].has("parts"):
+			var parts = {}
+			for i in Items.itemlist[itemdata[0]].parts:
+				var materialarray = []
+				for k in settlement.resources:
+					if Items.materiallist[k].has('parts') && Items.materiallist[k].parts.has(i):
+						materialarray.append(k)
+				if materialarray.size() == 0:
+					for k in Items.materiallist.values():
+						if k.has('parts') && k.parts.has(i):
+							materialarray.append([k.code, 1.0/k.price])
+					materialarray = [input_handler.weightedrandom(materialarray)]
+				parts[i] = materialarray[randi()%materialarray.size()]
+			settlement.shop_items[itemdata[0]] = parts
+		else:
+			settlement.shop_items[itemdata[0]] = round(rand_range(itemdata[1], itemdata[2]))
+			item_types -= 1
 	area.locations[settlement.id] = settlement
 	state.location_links[settlement.id] = {area = area.code, category = 'locations'} 
 
+var locations = {
+	settlement_small = {
+		code = 'settlement_small',
+		type = 'settlement',
+		classname = 'settlement_small',
+		name = 'village_human',
+		races = [],
+		population = [100,500],
+		resources = ['stone', 'wood', 'iron', 'leather', 'cloth', 'fish','meat','grain', 'vegetables'],
+		items = [['lifeshard', 3, 7],['energyshard', 3,7],['alcohol',4,10], ['pickaxe',1,2], ['axe',2,3], ['sickle',1,2]],
+		fear = 0,
+		approval = 0,
+		leader = '',
+		actions = ['local_shop','local_events_search'],
+		events = [['event_good_recruit', 0.01], ['event_good_loot_small', 1], ['event_nothing_found', 0.01]],
+		strength = [1,10],
+		food_type_number = [1,2],
+		food_type_amount = [100,200],
+		resources_type_number = [2,3],
+		resource_type_amount = [30,50],
+		item_type_number = [3,5],
+	},
+}
 
 func make_location(code, area, difficulty = 'easy'):
 	var location = dungeons[code].duplicate(true)
@@ -373,40 +420,6 @@ func fail_quest(quest):
 
 
 
-var locations = {
-	settlement_small = {
-		code = 'settlement_small',
-		type = 'settlement',
-		classname = 'settlement_small',
-		name = 'town',
-		races = [],
-		population = [100,500],
-		resources = [],
-		fear = 0,
-		approval = 0,
-		leader = '',
-		actions = [],
-		strength = [1,10],
-		food_type_number = [1,2],
-		resources_type_number = [1,2],
-	},
-	settlement_large = {
-		code = 'settlement_large',
-		type = 'settlement',
-		classname = 'settlement_large',
-		name = 'town',
-		races = [],
-		population = [1000,10000],
-		resources = [],
-		fear = 0,
-		approval = 0,
-		leader = '',
-		actions = [],
-		strength = [20,50],
-		food_type_number = [2,4],
-		resources_type_number = [2,3],
-	},
-}
 
 
 
@@ -430,7 +443,7 @@ var questdata = {
 		type = 'materialsquest',
 		name = 'Food supply',
 		descript = 'The guild requires additional food supplies.',
-		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['meat','fish','vegetables','grains'], range = [45,60]}]},
+		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['meat','fish','vegetables','grain'], range = [45,60]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [6,10],
@@ -703,60 +716,70 @@ func make_quest_descript(quest):
 	return text
 
 func make_chest_loot(chest):
-	var data = Enemydata.loot_chests_data[chest]
+	var data
+	if typeof(chest) == TYPE_STRING:
+		data = Enemydata.loot_chests_data[chest]
+	else:
+		data = chest
 	var dict = {materials = {}, items = []}
 	var location = input_handler.active_location
 	for i in data:
 		var difficulty = location.difficulty
 		match i.code:
 			'material':
-				var tempdict = {location.resources[randi()%location.resources.size()] : round(rand_range(i.min,i.max))}
+				var tempdict 
+				if i.grade[0] == 'location':
+					tempdict = {location.resources[randi()%location.resources.size()] : round(rand_range(i.min,i.max))}
+				else:
+					var array = []
+					for k in Items.materiallist.values():
+						if k.type != 'food' && i.grade.has(k.tier):
+							array.append(k.code)
+					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
 				globals.AddOrIncrementDict(dict.materials, tempdict)
 			'usable':
-				dict.items.append(globals.CreateUsableItem(usables_by_difficulty[difficulty][randi()%usables_by_difficulty[difficulty].size()], round(rand_range(i.min, i.max))))
+				var array = []
+				for k in Items.itemlist.values():
+					if i.grade.has(k.tier) && k.type == 'usable':
+						dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], round(rand_range(i.min, i.max))))
 			'static_gear':
 				var number = round(rand_range(i.min, i.max))
+				var array = []
+				for k in Items.itemlist.values():
+					if i.grade.has(k.tier) && k.has('geartype') && k.geartype == 'costume':
+						array.append(k.code)
 				while number > 0:
-					dict.items.append(globals.CreateGearItem(static_gear_by_difficulty[difficulty][randi()%static_gear_by_difficulty[difficulty].size()],{}))
+					dict.items.append(globals.CreateGearItem(array[randi()%array.size()],{}))
 					number -= 1
 			'gear':
 				var number = round(rand_range(i.min, i.max))
+				var array = []
+				for k in Items.itemlist.values():
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor']:
+						array.append(k.code)
 				while number > 0:
-					var itemtemplate = Items.itemlist[gear_by_difficulty[difficulty][randi()%gear_by_difficulty[difficulty].size()]]
+					var itemtemplate = Items.itemlist[array[randi()%array.size()]]
 					var itemparts = {}
 					for i_part in itemtemplate.parts:
-						if i.materials == 'location':
-							var material_array = []
+						var material_array = []
+						if i.material_grade[0] == 'location':
 							for material in location.resources:
 								if Items.materiallist[material].parts.has(i_part):
 									material_array.append(material)
-							
-							itemparts[i_part] = material_array[randi()%material_array.size()]
+						else:
+							for k in Items.materiallist.values():
+								if k.has('parts') && k.parts.has(i_part) && i.material_grade.has(k.tier):
+									material_array.append(k.code)
+						itemparts[i_part] = material_array[randi()%material_array.size()]
 					
 					dict.items.append(globals.CreateGearItem(itemtemplate.code,itemparts))
 					number -= 1
 	return dict
 
-var usables_by_difficulty = {
-	easy = ['lifeshard','energyshard','lifegem','energygem'],
-	medium = [],
-	hard = [],
-}
-var gear_by_difficulty = {
-	easy = ['sword','axe','pickaxe','chest_base_cloth','chest_base_leather'],
-	medium = [],
-	hard = [],
-}
-var static_gear_by_difficulty = {
-	easy = ['tail_plug'],
-	medium = [],
-	hard = [],
-}
-
 
 var locationnames = {
-	town1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
-	town2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
+	village_human1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
+	village_human2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
 	
 	goblin_cave_nouns = ['Cave','Tunnel','Burrow','Cavern','Den'],
 	goblin_cave_adjs = ['Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],

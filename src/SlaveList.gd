@@ -24,7 +24,7 @@ func rebuild():
 		newbutton.set_meta('slave', i)
 		
 		if i.location != 'mansion':
-			newbutton.get_node('name').text = i.get_full_name()+ ' - Traveling'
+			newbutton.get_node('name').text = i.get_full_name() + ' - Traveling'
 			newbutton.get_node("state").visible = i.location == 'mansion'
 			newbutton.get_node("en").visible = i.location == 'mansion'
 			newbutton.get_node("mp").visible = i.location == 'mansion'
@@ -53,7 +53,7 @@ func update():
 		newbutton.get_node("mp/Label").text = str(round(i.mp))
 		if i.location != 'mansion':
 			if i.location == 'travel':
-				newbutton.get_node('name').text = i.get_full_name() + ' - Relocating: ' + str(i.travel_time) + " hours until arrival. " 
+				newbutton.get_node('name').text = i.get_full_name() + ' - Relocating: ' + str(round(i.travel_time / i.travel_tick())) + " hours until arrival. " 
 			else:
 				newbutton.get_node('name').text = i.get_full_name() + ' - Positioned: ' + state.areas[state.location_links[i.location].area][state.location_links[i.location].category][i.location].name
 		newbutton.get_node("state").visible = i.location == 'mansion'

@@ -34,6 +34,7 @@ var last_action_data = {}
 var slave_panel_node = preload("res://src/scenes/SlavePanel.tscn")
 var slave_list_node
 var scene_character
+var scene_loot
 var active_area
 var active_location
 
@@ -761,10 +762,16 @@ func interactive_message(code, type, args):
 		'escape':
 			data.text = args.translate(data.text)
 		'character_event':
-			var newcharacter = Slave.new()
-			newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+			var newcharacter
+			match args.characterdata.type:
+				'raw':
+					newcharacter = Slave.new()
+					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+				'function':
+					newcharacter = call(args.characterdata.function, args.characterdata.args)
 			scene_character = newcharacter
-			data.options.append({code = 'inspect_scene_character', text = "Inspect"})
+			data.text = newcharacter.translate(data.text)
+			data.options.push_front({code = 'inspect_scene_character', text = tr("DIALOGUECHARINSPECT")})
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
@@ -772,12 +779,31 @@ func interactive_message(code, type, args):
 			data.text = scene_character.translate(data.text)
 			var baby = state.babies[scene_character.pregnancy.baby]
 			data.options.append({code = 'inspect_character_child', text = tr("DIALOGUEINSPECTBABY")})
+		'event_selection':
+			data.location = active_location
+		'loot':
+			var loot
+			match args.loot_data.type:
+				'function':
+					loot = call(args.loot_data.function, args.loot_data.args)
+			scene_loot = world_gen.make_chest_loot(loot)
+	if data.text.find("[locationname]") >= 0:
+		data.text = data.text.replace("[locationname]", active_location.name)
 	scene.open(data)
+
+func make_location_chest_loot(args):
+	var lootdict = {}
+	
+	return lootdict
 
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
+func make_local_recruit(args):
+	var newchar = Slave.new()
+	newchar.generate_random_character_from_data(active_location.races)
+	return newchar
 
 func update_slave_list():
 	slave_list_node.update()

@@ -22,6 +22,12 @@ func repeat():
 	input_handler.slave_panel_node.open(null)
 
 func recruit():
+	if state.characters.size() >= state.get_pop_cap():
+		if state.get_pop_cap() < variables.max_population_cap:
+			input_handler.SystemMessage("You don't have enough rooms")
+		else:
+			input_handler.SystemMessage("Population limit reached")
+		return
 	var person = input_handler.scene_character
 	state.add_slave(person)
 	if variables.instant_travel == false:
@@ -32,6 +38,12 @@ func recruit():
 		person.location = 'mansion'
 	
 	close()
+
+func create_location_recruit(args):
+	var newchar = Slave.new()
+	input_handler.scene_character = newchar
+	newchar.generate_random_character_from_data(input_handler.active_location.races)
+	$RichTextLabel.bbcode_text = newchar.translate($RichTextLabel.bbcode_text)
 
 func execute():
 	close()
@@ -60,8 +72,30 @@ func set_baby_name(text):
 	state.add_slave(person)
 	close()
 
-func open_chest_easy():
+func open_chest():
 	var chest = world_gen.make_chest_loot(input_handler.active_location)
+
+func good_event():
+	var eventlist = input_handler.active_location.events
+	var array = []
+	for i in eventlist:
+		if scenedata.scenedict[i[0]].has('tags') && scenedata.scenedict[i[0]].tags.has('good'):
+			array.append(i)
+	
+	if array.size() == 0:
+		print("no correct good event: " + input_handler.active_location.events)
+		return
+	var event = input_handler.weightedrandom(array)
+	var eventtype = "event_selection"
+	if scenedata.scenedict[event].has("default_event_type"):
+		eventtype = scenedata.scenedict[event].default_event_type
+	var dict = {}
+	if scenedata.scenedict[event].has('bonus_args'):
+		dict = scenedata.scenedict[event].bonus_args
+	input_handler.interactive_message(event, eventtype, dict)
+
+func evil_event():
+	pass
 
 func leave():
 	close()

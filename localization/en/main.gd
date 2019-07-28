@@ -190,6 +190,7 @@ var TranslationDict = {
 	ITEMSWORD = 'Sword',
 	ITEMBOW = "Bow",
 	ITEMSTAFF = "Staff",
+	ITEMSICKLE = "Sickle",
 	
 	
 	ITEMAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
@@ -489,6 +490,7 @@ var TranslationDict = {
 	TASKALCHEMYDESCRIPT = "Craft alchemical potions and items. Must have crafting items selected. ",
 	TASKBUILDING = "Upgrading",
 	TASKBUILDINGDESCRIPT = "Work on the currently active upgrade. ",
+	TASKTRAVEL = "Travel",
 	
 	TASKMAINSTAT = "Main characteristic",
 	
@@ -528,6 +530,7 @@ var TranslationDict = {
 	SLAVEPARTVAGINAL_VIRGIN = "Vaginal Virgin",
 	SLAVEPARTANAL_VIRGIN = "Anal Virgin",
 	SLAVEPARTPENIS_VIRGIN = "Penis Virgin",
+	SLAVEPARTSEXTRAIT = "Sexual Trait",
 	
 	
 	#Bodyparts
@@ -649,6 +652,7 @@ var TranslationDict = {
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertaining activities. When unmanaged may cause performance penalty.",
 	TOOLTIPEXHAUSTION = "Exhaustion grows when character is forced to work with no energy left. Exhaustion causes penalty to maximum health and production, and can lead to fatal cause if not taken care of for a long time.",
 	
+	TOOLTIPSIMPLEBEHAVIOR = "While having Simple Behavior active, character will work until they run out of energy, Rest until its full and Joy until fatigue is gone. Recommended for begginers.",
 	
 	
 	
@@ -892,18 +896,63 @@ var TranslationDict = {
 	PROFASSASSIN = "Assassin",
 	PROFASSASSINDESCRIPT = "",
 	
+	UPGRADEPREVBONUS = "Previous bonus: ",
 	UPGRADENEXTBONUS = "Upgrade bonus: ",
 	
-	UPGRADEFARM_VEGETABLES = "Farm: Vegetables",
-	UPGRADEFARM_VEGETABLESDESCRIPT = "Upgrades your farm plot.",
+	UPGRADERESOURCE_GATHER_VEGES = "Farm: Vegetables",
+	UPGRADERESOURCE_GATHER_VEGESDESCRIPT = "Farm task upgrade",
 	UPGRADEFARMVEGEBONUS = "Allows gathering of Vegetables",
-	UPGRADEFARM_GRAINS = "Farm: Grains",
-	UPGRADEFARM_GRAINSDESCRIPT = "Upgrades your farm plot",
+	UPGRADERESOURCE_GATHER_GRAINS = "Farm: Grains",
+	UPGRADERESOURCE_GATHER_GRAINSDESCRIPT = "Farm task upgrade",
+	UPGRADERESOURCE_GATHER_CLOTHSILK = "Farm: Silk",
+	UPGRADERESOURCE_GATHER_CLOTHSILKDESCRIPT = "Farm task upgrade",
+	UPGRADERESOURCE_GATHER_WOODMAGIC = "Woodcutting: Magic Wood",
+	UPGRADERESOURCE_GATHER_WOODMAGICDESCRIPT = "Woodcutting task upgrade",
+	UPGRADERESOURCE_GATHER_WOODIRON = "Woodcutting: Iron Wood",
+	UPGRADERESOURCE_GATHER_WOODIRONDESCRIPT = "Woodcutting task upgrade",
 	UPGRADEFARMGRAINSBONUS = "Allows gathering of Grains",
 	UPGRADETAILOR = "Tailor Workshop",
 	UPGRADETAILORDESCRIPT = "Allows production of cloth and leather gear",
+	UPGRADETAILORBONUS1 = "Unlocks basic clothes and leather gear recipes.",
+	UPGRADETAILORBONUS2 = "Unlocks advanced clothes and leather gear recipes. Unlocks Magic Cloth recipe.",
+	UPGRADETAILORBONUS3 = "Unlocks Ethereal Cloth recipe.",
 	UPGRADEFORGE = "Forge",
 	UPGRADEFORGEDESCRIPT = "Allows production of metal parts and gear",
+	UPGRADEFORGEBONUS1 = "Unlocks basic metal tools and weapon recipes. Unlocks Steel production.",
+	UPGRADEFORGEBONUS2 = "Unlocks advanced metal tools and weapon recipes.",
+	UPGRADEFORGEBONUS3 = "Not currently used for anything",
+	UPGRADEALCHEMY = "Alchemy",
+	UPGRADEALCHEMYDESCRIPT = "Allows production of potions and advanced resources",
+	UPGRADEALCHEMYBONUS1 = "Unlocks basic alchemical and healing item recipes.",
+	UPGRADEALCHEMYBONUS2 = "Unlocks advanced alchemical and healing item recipes. Unlocks recipes for Enchanted Wood and Adamantine.",
+	UPGRADEMASTER_BEDROOM = "Master's Bedroom",
+	UPGRADEMASTER_BEDROOMDESCRIPT = "Master's Bedroom upgrade",
+	UPGRADERESOURCE_GATHER_LEATHER = "Leather Gathering",
+	UPGRADERESOURCE_GATHER_LEATHERDESCRIPT = "Hunting task upgrade",
+	UPGRADELEATHERBONUS1 = "Allows gathering of Thick Leather",
+	UPGRADELEATHERBONUS2 = "Allows gathering of Mythic Leather",
+	UPGRADEGATHERSILKBONUS = "Allows gathering of Silk",
+	UPGRADEGATHERWOODIRONBONUS = "Allows gathering of Iron Wood",
+	UPGRADEGATHERWOODMAGICBONUS = "Allows gathering of Magic Wood",
+	UPGRADEGATHERIRONBONUS = "Allows gathering of Iron",
+	UPGRADEGATHERMITHRILBONUS = "Allows gathering of Mithril",
+	
+	UPGRADEMASTERBEDROOMBONUS1 = 'Increases number of total participants in sex interactions to 3',
+	UPGRADEMASTERBEDROOMBONUS2 = 'Increases number of total participants in sex interactions to 4',
+	UPGRADEMASTERBEDROOMBONUS3 = 'Increases number of total participants in sex interactions to 5',
+	
+	UPGRADESTABLES = "Stables",
+	UPGRADESTABLESDESCRIPT = "Makes traveling faster",
+	UPGRADESTABLESBONUS1 = "Increases character traveling speed by 20%",
+	UPGRADESTABLESBONUS2 = "Increases character traveling speed by 40%",
+	UPGRADESTABLESBONUS3 = "Increases character traveling speed by 60%",
+	
+	UPGRADEFORGEWORKSHOP = "Forge Tools",
+	UPGRADEFORGEWORKSHOPDESCRIPT = "Improves the speed of Smithing and Upgrading tasks.",
+	UPGRADEFORGEWORKBONUS1 = "Improves the speed by 25%",
+	UPGRADEFORGEWORKBONUS2 = "Improves the speed by 50%",
+	
+	
 	UPGRADEMINE_RESOURCE = "Mine: Resources",
 	UPGRADEMINE_RESOURCEDESCRIPT = "Allows harvesting of additional resources from Mining",
 	UPGRADEWOOD_RESOURCE = "Wood: Resources",
@@ -1231,8 +1280,19 @@ var TranslationDict = {
 	DIALOGUEEXECUTEOPTION = "Execute",
 	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
 	
+	DIALOGUELOCATIONEVENT = "You can scout settlement for opportunities. This action can only be done once a day. Your reputation will change depending on your actions and can alter the outcome. ",
+	
+	DIALOGUELOCATIONEVENTGOOD = "Lawful",
+	DIALOGUELOCATIONEVENTEVIL = "Misbehave",
+	
+	DIALOGUECHARINSPECT = "Inspect",
+	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
+	DIALOGUELEAVEOPTION = "Leave",
+	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heared the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
+	
 	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
 	RETURNCHARACTERCONFIRM = "Order [name] return to mansion immidiatly?",
+	
 	
 	LOCATIONNAMESKIRMISH_BANDIT_CAMP = "Bandit Camp",
 	LOCATIONNAMESKIRMISH_FOREST_WOLVES = "Forest",
@@ -1272,6 +1332,7 @@ var TranslationDict = {
 	
 	USABLE = "Usable",
 	
-	
+	SWITCHSTATS = "Individual Stats",
+	SWITCHLIST = "Character List",
 }
 

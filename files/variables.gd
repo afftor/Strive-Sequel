@@ -18,7 +18,7 @@ var dmg_mod_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue
 var dmg_rel_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
-var fighter_stats_list = ['hp','mana','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed']
+var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 const playerparty = [1, 2, 3, 4, 5, 6]
 const enemyparty = [7, 8, 9, 10, 11, 12]
@@ -36,6 +36,12 @@ const lines = {
 	3 : [7,8,9],
 	4 : [10,11,12],
 }
+
+#mansion & ugprades
+var base_population_cap = 5
+var population_cap_per_room_upgrade = 5
+var max_population_cap = 30
+var stable_boost_per_level = 0.2
 
 #Items
 var RepairCostMultiplierEasy = 0.5
@@ -82,13 +88,16 @@ var max_mp_per_magic_factor = 10
 var basic_energy_per_work_tick = 8.75
 
 #Cheats
-var instant_travel = true
-var instant_upgrades = true
-var free_upgrades = true
+var instant_travel = false
+var instant_upgrades = false
+var free_upgrades = false
 var skip_combat = false
-var unlock_all_upgrades = true
+var unlock_all_upgrades = false
 var invincible_player = true
 var show_enemy_hp = true
+
+#debug_only
+var allow_remote_intereaction = true
 
 var pregduration = 90
 
