@@ -16,7 +16,8 @@ func open():
 	show()
 	participants.clear()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_short_name()

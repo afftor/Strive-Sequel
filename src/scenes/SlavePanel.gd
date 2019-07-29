@@ -151,14 +151,14 @@ func open(tempperson):
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
 		newnode.text = trait.name
+		globals.connecttexttooltip(newnode, person.translate(trait.descript))
 	
 	globals.ClearContainer($buffscontainer)
-	print(person.temp_effects)
 	for i in person.get_all_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
-		newnode.texture = load(i.icon)
+		newnode.texture = i.icon
 		#newnode.get_node("Label").text = str(i.duration)
-		globals.connecttexttooltip(newnode, i.description)
+		globals.connecttexttooltip(newnode, i.tooltip)
 	
 
 func make_location_description():

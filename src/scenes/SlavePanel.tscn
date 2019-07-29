@@ -164,16 +164,15 @@ margin_bottom = 24.0
 text = "1.100"
 align = 1
 
-[node name="progress" type="HBoxContainer" parent="."]
-editor/display_folded = true
-margin_left = 231.0
-margin_top = 20.0
-margin_right = 637.0
-margin_bottom = 45.0
+[node name="progress" type="VBoxContainer" parent="."]
+margin_left = 263.0
+margin_top = 16.0
+margin_right = 586.0
+margin_bottom = 122.0
 custom_constants/separation = 2
 
 [node name="physics" type="Label" parent="progress"]
-margin_right = 100.0
+margin_right = 323.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 100, 25 )
 mouse_filter = 0
@@ -181,27 +180,27 @@ text = "physics"
 align = 1
 
 [node name="wits" type="Label" parent="progress"]
-margin_left = 102.0
-margin_right = 202.0
-margin_bottom = 25.0
+margin_top = 27.0
+margin_right = 323.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 100, 25 )
 mouse_filter = 0
 text = "wits"
 align = 1
 
 [node name="charm" type="Label" parent="progress"]
-margin_left = 204.0
-margin_right = 304.0
-margin_bottom = 25.0
+margin_top = 54.0
+margin_right = 323.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 100, 25 )
 mouse_filter = 0
 text = "charm"
 align = 1
 
 [node name="sexuals" type="Label" parent="progress"]
-margin_left = 306.0
-margin_right = 406.0
-margin_bottom = 25.0
+margin_top = 81.0
+margin_right = 323.0
+margin_bottom = 106.0
 rect_min_size = Vector2( 100, 25 )
 mouse_filter = 0
 text = "sexuals"
@@ -577,19 +576,17 @@ text = "Traits"
 align = 1
 
 [node name="traits" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 263.0
 margin_top = 682.0
 margin_right = 463.0
 margin_bottom = 830.0
 custom_constants/separation = 9
-alignment = 1
 
 [node name="Button" type="Label" parent="traits"]
 visible = false
-margin_top = 62.0
 margin_right = 200.0
-margin_bottom = 86.0
+margin_bottom = 24.0
+mouse_filter = 0
 text = "1.100"
 align = 1
 

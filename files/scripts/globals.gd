@@ -87,21 +87,21 @@ var statdata = {
 		code = 'wits_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/wit_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/wit.png"),
 		type = 'factor',
 	},
 	charm_factor = {
 		code = 'charm_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/charm_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/charm.png"),
 		type = 'factor',
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/sex_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/sex.png"),
 		type = 'factor',
 	},
 	
@@ -210,6 +210,13 @@ var statdata = {
 	},
 	hpmax = {
 		code = 'hpmax',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	hpfactor = {
+		code = 'hpfactor',
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),

@@ -9,7 +9,7 @@ var is_players_character = false
 
 var unique 
 
-var icon_image = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
+var icon_image = "res://assets/images/portraits/RoseNormal.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body_image = 'default'
 var npc_reference
 #####required for combat

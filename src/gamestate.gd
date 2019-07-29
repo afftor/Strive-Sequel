@@ -45,6 +45,7 @@ var relativesdata = {}
 
 var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
+var character_order = []
 
 var CurrentTextScene
 var CurrentScreen

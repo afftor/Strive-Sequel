@@ -10,32 +10,33 @@ func _ready():
 
 func rebuild():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	for i in state.characters.values():
+	for i in state.character_order:
+		var person = state.characters[i]
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.get_node("icon").texture = i.get_icon()
-		newbutton.get_node("name").text = i.get_full_name()
-		newbutton.get_node("obed").texture = get_obed_texture(i)
-		newbutton.get_node("fear").texture = get_fear_texture(i)
-		newbutton.get_node("state").texture = get_state_texture(i)
-		newbutton.get_node("obed/Label").text = str(round(i.obedience))
-		newbutton.get_node("fear/Label").text = str(round(i.fear))
-		newbutton.get_node("en/Label").text = str(round(i.energy))
-		newbutton.get_node("mp/Label").text = str(round(i.mp))
-		newbutton.set_meta('slave', i)
+		newbutton.get_node("icon").texture = person.get_icon()
+		newbutton.get_node("name").text = person.get_full_name()
+		newbutton.get_node("obed").texture = get_obed_texture(person)
+		newbutton.get_node("fear").texture = get_fear_texture(person)
+		newbutton.get_node("state").texture = get_state_texture(person)
+		newbutton.get_node("obed/Label").text = str(round(person.obedience))
+		newbutton.get_node("fear/Label").text = str(round(person.fear))
+		newbutton.get_node("en/Label").text = str(round(person.energy))
+		newbutton.get_node("mp/Label").text = str(round(person.mp))
+		newbutton.set_meta('slave', person)
 		
-		if i.location != 'mansion':
-			newbutton.get_node('name').text = i.get_full_name() + ' - Traveling'
-			newbutton.get_node("state").visible = i.location == 'mansion'
-			newbutton.get_node("en").visible = i.location == 'mansion'
-			newbutton.get_node("mp").visible = i.location == 'mansion'
-			newbutton.get_node("obed").visible = i.location == 'mansion'
-			newbutton.get_node("fear").visible = i.location == 'mansion'
+		if person.location != 'mansion':
+			newbutton.get_node('name').text = person.get_full_name() + ' - Traveling'
+			newbutton.get_node("state").visible = person.location == 'mansion'
+			newbutton.get_node("en").visible = person.location == 'mansion'
+			newbutton.get_node("mp").visible = person.location == 'mansion'
+			newbutton.get_node("obed").visible = person.location == 'mansion'
+			newbutton.get_node("fear").visible = person.location == 'mansion'
 		
-		if i.professions.has("master") == true:
+		if person.professions.has("master") == true:
 			newbutton.get_node("obed").hide()
 			newbutton.get_node("fear").hide()
-		newbutton.connect('pressed', self, 'open_slave_tab', [i])
-		globals.connectslavetooltip(newbutton, i)
+		newbutton.connect('pressed', self, 'open_slave_tab', [person])
+		globals.connectslavetooltip(newbutton, person)
 
 func update():
 	for newbutton in $ScrollContainer/VBoxContainer.get_children():

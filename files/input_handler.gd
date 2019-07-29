@@ -577,7 +577,12 @@ func operate(operation, value1, value2):
 			result = value1 <= value2
 		'lt':
 			result = value1 < value2
+		'has':
+			result = value1.has(value2)
+		'mask':
+			result = (int(value1) & int(value2)) != 0
 	return result
+
 
 func math(operation, value1, value2):
 	match operation:

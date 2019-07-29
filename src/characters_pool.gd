@@ -40,6 +40,7 @@ func move_to_state(id):
 	var tmp = characters[id]
 	characters.erase(id)
 	state.characters[id] = tmp
+	state.character_order.append(id)
 
 func serialize():
 	var tmp = {}

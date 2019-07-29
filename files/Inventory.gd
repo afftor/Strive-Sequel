@@ -269,7 +269,8 @@ func unequip(slot):
 
 func rebuild_characters():
 	globals.ClearContainer($CharacterPanel/ScrollContainer/VBoxContainer)
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		var newnode = globals.DuplicateContainerTemplate($CharacterPanel/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = i.get_full_name()
 		newnode.connect("pressed", self, "open", [{mode = 'character', person = i}])

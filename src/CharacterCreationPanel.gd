@@ -141,8 +141,17 @@ func select_race():
 func show_race_info(temprace):
 	var race = races.racelist[temprace]
 	var image
-	$RaceSelection/RichTextLabel.bbcode_text = race.descript
-	var text = race.code.to_lower().replace('halfkin','beastkin')
+	var text = race.descript
+	
+	text += "\n\nRace bonuses: "
+	for i in race.racetrait:
+		text += globals.statdata[i].name + ": " + str(race.racetrait[i]) + ', '
+	text = text.substr(0, text.length() - 2) + "."
+	
+	
+	
+	$RaceSelection/RichTextLabel.bbcode_text = text
+	text = race.code.to_lower().replace('halfkin','beastkin')
 	if person.sex != null:
 		if person.sex == 'male':
 			text += "_m"
@@ -151,6 +160,7 @@ func show_race_info(temprace):
 		
 		if images.shades.has(text):
 			image = images.shades[text]
+	
 	
 	
 	$RaceSelection/TextureRect.texture = image
@@ -185,7 +195,6 @@ func RebuildStatsContainer():
 		var newnode = globals.DuplicateContainerTemplate($StatsContainer)
 		newnode.get_node("up").connect("pressed", self, 'stat_up', [i])
 		newnode.get_node("down").connect("pressed", self, 'stat_down', [i])
-		newnode.get_node("name").text = i.name
 		newnode.get_node("Label").text = str(preservedsettings[i.code])
 		counter -= preservedsettings[i.code]-1
 		newnode.get_node("icon").texture = i.baseicon

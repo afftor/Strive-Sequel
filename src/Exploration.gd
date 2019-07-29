@@ -455,7 +455,8 @@ func enter_location(data):
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		if i.area == active_area.code && i.location == active_location.id && i.travel_time == 0:
 			presented_characters.append(i)
 	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
@@ -477,7 +478,8 @@ func open_slave_selection_list():
 	$SlaveSelectionPanel.show()
 	active_slave_list.clear()
 	$SlaveSelectionPanel/RichTextLabel.bbcode_text = text
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		i.tags.erase('selected')
 	update_slave_list()
 
@@ -597,7 +599,8 @@ func build_location_group():
 	var newbutton# = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 #	newbutton.get_node("name").text = "Send characters"
 #	newbutton.connect('pressed',self,'open_slave_selection_list')
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		if i.location == active_location.id && i.travel_time == 0:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 			newbutton.get_node("icon").texture = i.get_icon()
@@ -763,7 +766,8 @@ func clear_dungeon():
 	input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
 
 func clear_dungeon_confirm():
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		if (i.location == active_location.id && i.travel_time == 0) || i.travel_target.location == active_location.id:
 			selectedperson = i
 			return_character_confirm()

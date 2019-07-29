@@ -588,6 +588,9 @@ var TranslationDict = {
 	STATENERGY = "Energy",
 	STATENERGYDESCRIPT = "Energy is restored during sleep and is required for task productions. When character is forced to work with no energy left, they accomodate Exhaustion. ",
 	STATHPMAX = "Max. Health",
+	STATHPFACTOR = "Health Factor",
+	STATHPFACTORDESCRIPT = "Determines health bonuses acquired in most ways. High health factor can greatly increase survivability. ",
+	
 	STATMP = "Mana",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilitites.",
 	STATMPMAX = "Max. Mana",

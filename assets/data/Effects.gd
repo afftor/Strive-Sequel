@@ -200,7 +200,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsitems/Charm.png", 
 				description = "Is charmed",
 				limit = 1,
 				t_name = 'charmed'
