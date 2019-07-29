@@ -522,7 +522,6 @@ align = 1
 [node name="job" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
-editor/display_folded = true
 margin_left = 853.0
 margin_top = 25.0
 margin_right = 1053.0

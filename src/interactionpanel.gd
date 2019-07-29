@@ -350,11 +350,11 @@ class member:
 			sens_mod -= 0.33
 			horny_mod -= 0.33
 		
-		if scenedict.scene.code in globals.punishcategories:
-			if scenedict.givers.has(self):
-				person.asser += rand_range(1,2)
-			else:
-				person.asser -= rand_range(1,2)
+#		if scenedict.scene.code in globals.punishcategories:
+#			if scenedict.givers.has(self):
+#				person.asser += rand_range(1,2)
+#			else:
+#				person.asser -= rand_range(1,2)
 		
 		var position
 		var seek_group
@@ -1257,8 +1257,8 @@ func startscene(scenescript, cont = false, pretext = ''):
 		
 		for k in i.sex_traits:
 			if Traitdata.sex_traits[k].trigger_side == 'everyone_turn':
-				for j in k.effects:
-					call(j.code, i)
+				for j in Traitdata.sex_traits[k].effects:
+					call(j.effect, i)
 	
 	if cont == true && sceneexists == false: 
 		ongoingactions.append(dict)

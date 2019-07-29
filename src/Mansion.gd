@@ -32,7 +32,7 @@ func _ready():
 	
 	
 	state.money = 500
-	state.log_node = $TextLog
+	state.log_node = $Log
 	
 	state.connect("task_added", self, 'build_task_bar')
 	

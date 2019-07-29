@@ -885,6 +885,9 @@ func tick():
 				state.emit_signal("slave_arrived", self)
 				if location == 'mansion':
 					work = 'rest'
+					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
+				else:
+					state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.location_links[location].area][state.location_links[location].category][location].name)
 		
 		return
 	
@@ -949,6 +952,7 @@ func mp_set(value):
 func death():
 	is_active = false
 	defeated = true
+	state.character_order.erase(id)
 	clean_effects()
 
 func energy_set(value):
@@ -961,7 +965,7 @@ func energy_set(value):
 
 func fatigue_set(value):
 	if traits.has('undead'): return
-	fatigue = value
+	fatigue = clamp(value, 0, 100)
 
 func exhaustion_set(value):
 	exhaustion = clamp(value, 0, 1000)
@@ -1021,7 +1025,7 @@ func work_tick():
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
-				state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+				state.text_log_add('crafting',get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
 				currenttask.messages.append('notask')
 			rest_tick()
 			return
@@ -1031,7 +1035,7 @@ func work_tick():
 			if craftingitem.resources_taken == false:
 				if check_recipe_resources(craftingitem) == false:
 					if currenttask.messages.has('noresources') == false:
-						state.text_log_add(get_short_name() + ": Not Enough Resources for craft. ")
+						state.text_log_add('crafting',get_short_name() + ": Not Enough Resources for craft. ")
 						currenttask.messages.append("noresources")
 					rest_tick()
 					return
@@ -1045,7 +1049,7 @@ func work_tick():
 		if state.selected_upgrade.code == '':
 			rest_tick()
 			if messages.has("noupgrade") == false:
-				state.text_log_add(get_short_name() + ": No task or upgrade selected for building. ")
+				state.text_log_add('upgrades',get_short_name() + ": No task or upgrade selected for building. ")
 				messages.append("noupgrade")
 			return
 		else:
@@ -1058,7 +1062,7 @@ func work_tick():
 				else:
 					state.upgrades[state.selected_upgrade.code] = 1
 				input_handler.emit_signal("UpgradeUnlocked", globals.upgradelist[state.selected_upgrade.code])
-				state.text_log_add("Upgrade finished: " + globals.upgradelist[state.selected_upgrade.code].name)
+				state.text_log_add('upgrades',"Upgrade finished: " + globals.upgradelist[state.selected_upgrade.code].name)
 				state.upgrade_progresses.erase(state.selected_upgrade.code)
 				state.selected_upgrade.code = ''
 	else:
@@ -1102,7 +1106,7 @@ func make_item_sequence(currenttask, craftingitem):
 					make_item_sequence(currenttask, craftingitem)
 			else:
 				if currenttask.messages.has('noresources') == false:
-					state.text_log_add(get_short_name() + ": " + "Not Enough Resources for craft. ")
+					state.text_log_add('crafting',get_short_name() + ": " + "Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 
 func check_recipe_resources(temprecipe):
@@ -1147,6 +1151,7 @@ func make_item(temprecipe):
 		state.materials[recipe.resultitem] += recipe.resultamount
 	else:
 		var item = Items.itemlist[recipe.resultitem]
+		state.text_log_add("crafting", "Item created: " + item.name)
 		if item.type == 'usable':
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
@@ -1154,6 +1159,7 @@ func make_item(temprecipe):
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
 			else:
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
+	
 	if temprecipe.repeats > 0:
 		temprecipe.repeats -= 1
 		if temprecipe.repeats == 0:
@@ -1726,6 +1732,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	#applying values
 	for i in range(s_skill.value.size()):
+		if s_skill.damagestat[i] == 'no_stat': continue
 		var targ_fin
 		match s_skill.receiver[i]:
 			'caster': targ_fin = targ_cast

@@ -12,6 +12,7 @@ var date := 1
 var hour = 6
 
 var log_node
+var log_storage = []
 
 var newgame = false
 
@@ -170,9 +171,8 @@ func get_master():
 			return i
 
 func add_slave(person):
-	#characters[person.id] = person
 	characters_pool.move_to_state(person.id)
-	text_log_add("New character acquired: " + person.get_short_name() + ". ")
+	text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 
 func if_has_money(value):
@@ -328,9 +328,15 @@ func set_material(material, operant, value):
 func remove_slave(tempslave):
 	characters.erase(tempslave)
 
-func text_log_add(text):
-	if log_node != null:
-		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(hour)) + "[/right]" 
+func text_log_add(label, text):
+	log_storage.append({type = label, text = text, time = str(date) + ":" + str(round(hour))})
+	if weakref(log_node) != null:
+		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
+		newfield.show()
+		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
+		newfield.get_node("label").bbcode_text = label
+		newfield.get_node("text").bbcode_text = text
+		newfield.get_node("date").bbcode_text =  str(date) + " - " + str(round(hour)) + ":00"
 
 func serialize():
 	var tmp = {}

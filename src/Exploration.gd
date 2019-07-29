@@ -735,7 +735,7 @@ func enter_level(level):
 
 func area_advance(mode):
 	if check_location_group() == false:
-		state.text_log_add("Select at least 1 character before advancing. ")
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 	match mode:
 		'advance':

@@ -220,8 +220,9 @@ var effect_table = {
 	e_shackles1 = { 
 		type = 'temp_s',
 		target = 'target',
-		name = 'shacles',
+		name = 'shackles',
 		rem_event = variables.TR_SHACKLES_OFF,
+		stack = 1,
 		tags = [],
 		sub_effects = [],
 		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
@@ -240,8 +241,9 @@ var effect_table = {
 	e_shackles2 = { 
 		type = 'temp_s',
 		target = 'target',
-		name = 'shacles',
+		name = 'shackles',
 		rem_event = variables.TR_SHACKLES_OFF,
+		stack = 1,
 		tags = [],
 		sub_effects = [],
 		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]

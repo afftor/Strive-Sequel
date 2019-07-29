@@ -97,7 +97,7 @@ var invincible_player = true
 var show_enemy_hp = true
 
 #debug_only
-var allow_remote_intereaction = true
+var allow_remote_intereaction = false
 
 var pregduration = 90
 
