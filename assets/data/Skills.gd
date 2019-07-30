@@ -116,9 +116,9 @@ var Skilllist = {
 		receiverdaylimit = 4,
 		icon = load("res://assets/images/iconsskills/Punish.png"),
 		tags = [],
-		value = [['-25'],['20'],['-25'],['-10'],['20'],['-100']],
-		damagestat = ['fatigue','obedience','obedience','loyal','fear','relationship'],
-		receiver = ['caster','caster','target','target','target','target']
+		value = [['-25'],['20'],['-25'],['-10'],['20']],
+		damagestat = ['fatigue','obedience','obedience','loyal','fear'], #add relationship damage later
+		receiver = ['caster','caster','target','target','target']
 	},
 	publichumiliation = {#everyone fear +25, target fear + 60, target exhaustion -25
 		code = 'publichumiliation',
@@ -239,7 +239,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
 		tags = [],
 		value = [['100'], ['50'], ['25']],
-		damagestat = ['lust','obedience','loyalty']
+		damagestat = ['lust','obedience','loyal']
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
 		code = 'drain',
@@ -258,8 +258,8 @@ var Skilllist = {
 		icon = null,
 		tags = ['drain'],
 		is_drain = true,
-		value = [['-20'],['target.hp','*-0.2'],['target.mana','*-0.2']],
-		damagestat = ['energy','hp','mana'],
+		value = [['-20'],['target.hp','*-0.2'],['target.mp','*-0.2']],
+		damagestat = ['energy','hp','mp'],
 	},
 	serve = {#target -10 fatigue, -10 exhaustion, +20 energy, +25 obedience
 		code = 'serve',
@@ -393,7 +393,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
 		tags = [],
 		value = [['100'], ['50']],
-		damagestat = ['obedience', 'loyalty']
+		damagestat = ['obedience', 'loyal']
 	},
 	hardwork = {#+50% productivity for the day
 		code = 'hardwork',
@@ -1197,7 +1197,7 @@ var Skilllist = {
 		sfx = [], 
 		sound = [],
 		value = [['caster.hp','*-0.1'],['caster.hp','*0.03']],
-		damagestat = ['hp', 'mana']
+		damagestat = ['hp', 'mp']
 	},
 	blood_explosion = { #sacrifice 75% health to deal 2x weapon spell damage to all enemies, usable once a day, can't use if health <= 75% 
 		code = 'blood_explosion',
@@ -1363,16 +1363,13 @@ var effects = {
 	},
 	
 	
-	starvation = {#energy recovery -50%, +20 exhaustion: happens when no food eaten
-		
-	},
-	#will add to eating checks personaly
-	hated_food_combined = {#-10 fatigue: when eating cooked hated food with other tags
-		
-	},
-	#Trait: Small
-	small_size = {#given to short races: goblins, gnomes, fairies. physical tasks -25%, melee damage -20%
-		
-	},
+	#starvation = {#energy recovery -50%, +20 exhaustion: happens when no food eaten
+	
+	#loved_food_consumed - +10% productivity, +5 physics/wit/charm/sex bonuses for 1 day
+	
+	#hated_food_combined = {#-10% productivity, -15 fatigue for 1 day
+	
+	#Trait: Small - given to short races: goblins, gnomes, fairies. physical tasks -25%, melee damage -20%, evasion +25
+	
 	
 }

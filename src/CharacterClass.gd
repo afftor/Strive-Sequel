@@ -83,6 +83,7 @@ var mod_collect = 1.0
 var mod_hunt = 1.0
 var mod_cook = 1.0
 var mod_smith = 1.0
+var mod_tailor = 1.0
 var mod_alchemy = 1.0
 var mod_farm = 1.0
 var mod_pros_gold = 1.0
@@ -501,7 +502,6 @@ func get_sex_features():
 		mouth_virgin = false
 
 func checkreqs(array, ignore_npc_stats_gear = false):
-	
 	for i in array:
 		var check = true
 		match i.code:
@@ -672,7 +672,7 @@ func decipher_reqs(reqs, colorcode = false):
 	for i in reqs:
 		match i.code:
 			'stat':
-				text += i.type + ': ' + str(i.value) + " "
+				text += globals.statdata[i.type].name + ': ' + str(i.value) + " "
 				match i.operant:
 					'gte':
 						text += "or higher"
@@ -941,7 +941,7 @@ func tick():
 var last_escape_day_check = 0
 
 func hp_set(value):
-	if value < 0:
+	if value <= 0:
 		death()
 	else:
 		hp = min(value, hpmax)
@@ -953,6 +953,7 @@ func death():
 	is_active = false
 	defeated = true
 	state.character_order.erase(id)
+	input_handler.slave_list_node.rebuild()
 	clean_effects()
 
 func energy_set(value):

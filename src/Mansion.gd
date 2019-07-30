@@ -43,9 +43,13 @@ func _ready():
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
-		character.unlock_class("master")
-		character.unlock_class("dancer")
-		character.unlock_class("caster")
+		character.unlock_class("smith")
+#		character.unlock_class("dancer")
+#		character.unlock_class("caster")
+		for i in Skilldata.Skilllist:
+			if Skilldata.Skilllist[i].type != 'social':
+				continue
+			character.social_skills.append(i)
 		character.is_players_character = true
 #		globals.impregnate(character, character)
 #		character.pregnancy.duration = 1

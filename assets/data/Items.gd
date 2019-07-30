@@ -229,7 +229,7 @@ var materiallist = {
 		icon = load("res://assets/images/iconsitems/item_grain.png"),
 		price = 2,
 		type = 'food',
-		tags = ['grain'],
+		tags = [],
 	},
 	vegetables = {
 		code = 'vegetables',

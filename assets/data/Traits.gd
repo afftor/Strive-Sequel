@@ -270,7 +270,7 @@ var sex_traits = { #only for interaction tab
 		acquire_reqs = [],
 		starting = true,
 		trigger_side = 'self',
-		reqs = [{code = "effect_exists", value = "tied", orflag = true}, {code = "effect_exists", value = 'subdued', orflag = true}],
+		reqs = [{code = "effect_exists", value = "tied"}, {code = "effect_exists", value = 'subdued', orflag = true}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.25},{effect = 'horny_bonus', operant = "+", value = 0.25}],
 	},
 	group = {

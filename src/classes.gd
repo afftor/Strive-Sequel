@@ -149,7 +149,7 @@ var professions = {
 		tags = [],
 		categories = ['labor'],
 		showupreqs = [],
-		reqs = [{code = 'stat', type = 'physics', operant = 'gte', value = 2}],
+		reqs = [{code = 'stat', type = 'physics_factor', operant = 'gte', value = 2}],
 		statchanges = [{physics_bonus = 10}],
 		traits = ['smith_trait'],#smith assignement speed +100%
 		skills = [],
@@ -177,7 +177,7 @@ var professions = {
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [],
-		reqs = [{code = 'stat', type = 'physics', operant = 'gte', value = 1}],
+		reqs = [],
 		statchanges = [],
 		traits = ['attendant_trait'],
 		skills = [],
@@ -569,7 +569,7 @@ var professions = {
 		tags = [],
 		categories = ['combat', 'social'],
 		showupreqs = [],
-		reqs = [{code = 'stat', type = 'physics', operant = 'gte', value = 1}, {code = 'stat', type = 'wits', operant = 'gte', value = 2}],
+		reqs = [{code = 'stat', type = 'wits', operant = 'gte', value = 2}],
 		statchanges = [{evasion = 10}],
 		traits = ['lockpicking', 'trap_detection','medium_armor','weapon_mastery'], #allows lockpicking chests and trap detect actions in events
 		skills = [],

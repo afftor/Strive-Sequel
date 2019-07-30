@@ -52,6 +52,9 @@ var ItemEffectNaturalMultiplier = 0.15
 var all_races_array = []
 var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
 
+var master_starting_classes = ['fighter','archer','worker','smith','apprentice']
+var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith', 'apprentice']
+
 var master_starting_stats = 10
 var slave_starting_stats = 15
 
@@ -89,8 +92,8 @@ var basic_energy_per_work_tick = 8.75
 
 #Cheats
 var instant_travel = false
-var instant_upgrades = false
-var free_upgrades = false
+var instant_upgrades = true
+var free_upgrades = true
 var skip_combat = false
 var unlock_all_upgrades = false
 var invincible_player = true

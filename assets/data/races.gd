@@ -88,7 +88,7 @@ var tasklist = {
 	},
 	farming = {
 		code = 'farming',
-		reqs = [],
+		reqs = [{type = 'has_upgrade', name = 'resource_gather_grains', value = 1},{type = "has_upgrade", name = 'resource_gather_veges', value = 1, orflag = true}, {type = "has_upgrade", name = 'resource_gather_clothsilk', value = 1, orflag = true}],
 		name = '',
 		descript = '',
 		workstat = 'physics',
@@ -159,7 +159,7 @@ var tasklist = {
 		production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_tailor.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
 		icon = null,
 		tags = ['tailor'],
-		mod = 'mod_default'
+		mod = 'mod_tailor'
 	},
 	smith = {
 		code = 'smith',

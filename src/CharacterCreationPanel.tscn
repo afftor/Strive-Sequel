@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/CharacterCreationPanel.gd" type="Script" id=2]
@@ -10,8 +10,36 @@
 [ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/raceshades/Scylla_F.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 548, 47 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+modulate_color = Color( 0.662745, 0.333333, 0.333333, 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
 
 [node name="CharacterCreation" type="Panel"]
 margin_left = 50.0
@@ -262,7 +290,6 @@ margin_bottom = 716.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="bodyparts2" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 827.0
 margin_top = 21.0
 margin_right = 1105.0
@@ -356,7 +383,34 @@ rect_min_size = Vector2( 0, 40 )
 text = "SLAVEPARTANAL_VIRGIN"
 clip_text = true
 
+[node name="diet_label" type="Label" parent="bodyparts2"]
+margin_top = 492.0
+margin_right = 278.0
+margin_bottom = 516.0
+text = "SLAVEDIET"
+align = 1
+
+[node name="diet" type="Button" parent="bodyparts2"]
+margin_top = 520.0
+margin_right = 278.0
+margin_bottom = 570.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="class_label" type="Label" parent="bodyparts2"]
+margin_top = 574.0
+margin_right = 278.0
+margin_bottom = 598.0
+text = "SLAVESTARTINGCLASS"
+align = 1
+
+[node name="class" type="Button" parent="bodyparts2"]
+margin_top = 602.0
+margin_right = 278.0
+margin_bottom = 652.0
+rect_min_size = Vector2( 0, 50 )
+
 [node name="StatsContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 25.0
 margin_top = 743.0
 margin_right = 877.0
@@ -423,7 +477,6 @@ margin_right = 620.988
 margin_bottom = 984.445
 
 [node name="RaceSelection" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 self_modulate = Color( 0.741176, 0, 0, 1 )
 margin_left = 533.186
@@ -500,3 +553,146 @@ margin_top = 908.67
 margin_right = 1795.02
 margin_bottom = 968.67
 text = "CONFIRM"
+
+[node name="DietPanel" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 755.0
+margin_top = 301.0
+margin_right = 1189.0
+margin_bottom = 687.0
+
+[node name="Button" type="Button" parent="DietPanel"]
+margin_left = 82.6316
+margin_top = 315.053
+margin_right = 355.632
+margin_bottom = 360.053
+text = "Close"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DietPanel"]
+margin_left = 78.0
+margin_top = 141.0
+margin_right = 367.0
+margin_bottom = 296.0
+custom_constants/separation = 11
+
+[node name="meat" type="Label" parent="DietPanel/VBoxContainer"]
+margin_right = 289.0
+margin_bottom = 24.0
+text = "Meat"
+
+[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/meat"]
+margin_left = 195.822
+margin_top = -3.095
+margin_right = 293.822
+margin_bottom = 26.905
+rect_min_size = Vector2( 145, 0 )
+text = "Like"
+items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
+selected = 1
+
+[node name="fish" type="Label" parent="DietPanel/VBoxContainer"]
+margin_top = 35.0
+margin_right = 289.0
+margin_bottom = 59.0
+text = "Fish"
+
+[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/fish"]
+margin_left = 195.822
+margin_top = -3.095
+margin_right = 293.822
+margin_bottom = 26.905
+rect_min_size = Vector2( 145, 0 )
+text = "Like"
+items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
+selected = 1
+
+[node name="veges" type="Label" parent="DietPanel/VBoxContainer"]
+margin_top = 70.0
+margin_right = 289.0
+margin_bottom = 94.0
+text = "Vegetables"
+
+[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/veges"]
+margin_left = 195.822
+margin_top = -3.095
+margin_right = 293.822
+margin_bottom = 26.905
+rect_min_size = Vector2( 145, 0 )
+text = "Like"
+items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
+selected = 1
+
+[node name="grains" type="Label" parent="DietPanel/VBoxContainer"]
+margin_top = 105.0
+margin_right = 289.0
+margin_bottom = 129.0
+text = "Grains"
+
+[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/grains"]
+margin_left = 195.822
+margin_top = -3.095
+margin_right = 293.822
+margin_bottom = 26.905
+rect_min_size = Vector2( 145, 0 )
+text = "Like"
+items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
+selected = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DietPanel"]
+margin_left = 49.0
+margin_top = 28.0
+margin_right = 396.0
+margin_bottom = 120.0
+text = "Select 1 Liked and at least 1 Hated food types."
+
+[node name="ClassPanel" type="Panel" parent="."]
+visible = false
+margin_left = 576.988
+margin_top = 73.844
+margin_right = 1222.99
+margin_bottom = 865.844
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ClassPanel"]
+margin_left = 25.0
+margin_top = 172.0
+margin_right = 620.0
+margin_bottom = 748.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClassPanel/ScrollContainer"]
+margin_right = 595.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ClassPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 595.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 0, 110 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="icon" type="TextureRect" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 4.6731
+margin_top = 5.0
+margin_right = 104.673
+margin_bottom = 105.0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 156.146
+margin_top = 40.0016
+margin_right = 490.146
+margin_bottom = 64.0016
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Class Name"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 36.1733
+margin_top = 31.52
+margin_right = 625.173
+margin_bottom = 142.52
+text = "Select starting character class. Other classes can be learned later. "

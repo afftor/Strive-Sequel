@@ -104,7 +104,7 @@ var effect_table = {
 	},
 	e_tr_smith = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'mod_smith', value = 2.0}],
+		atomic = [{type = 'stat_mul', stat = 'mod_smith', value = 2.0}, {type = "stat_mul", stat = 'mod_tailor', value = 2.0}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -303,6 +303,7 @@ var effect_table = {
 			{type = 'stat_mul', stat = 'mod_cook', value = 1.5},
 			{type = 'stat_mul', stat = 'mod_smith', value = 1.5},
 			{type = 'stat_mul', stat = 'mod_alchemy', value = 1.5},
+			{type = 'stat_mul', stat = 'mod_tailor', value = 1.5},
 			{type = 'stat_mul', stat = 'mod_farm', value = 1.5},
 			#{type = 'stat_mul', stat = 'mod_collect', value = 1.5},
 		],

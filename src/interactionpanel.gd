@@ -430,8 +430,6 @@ class member:
 				check = check or valuecheck(i, group, scene)
 			else:
 				check = check and valuecheck(i, group, scene)
-			if check == false:
-				break
 		return check
 	
 	func valuecheck(dict, group, scene):#effect_exists action_tag action_effect_tag

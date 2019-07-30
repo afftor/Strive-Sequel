@@ -197,9 +197,18 @@ func if_has_material(mat, operant, val):
 func checkreqs(array):
 	var check = true
 	for i in array:
-		if valuecheck(i) == false:
-			check = false
+		if i.has('orflag'):
+			check = check or valuecheck(i)
+		else:
+			check = check and valuecheck(i)
 	return check
+
+#func checkreqs(array):
+#	var check = true
+#	for i in array:
+#		if valuecheck(i) == false:
+#			check = false
+#	return check
 
 func valuecheck(dict):
 	if !dict.has('type'): return true
@@ -330,7 +339,7 @@ func remove_slave(tempslave):
 
 func text_log_add(label, text):
 	log_storage.append({type = label, text = text, time = str(date) + ":" + str(round(hour))})
-	if weakref(log_node) != null:
+	if log_node != null && weakref(log_node) != null:
 		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
 		newfield.show()
 		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)

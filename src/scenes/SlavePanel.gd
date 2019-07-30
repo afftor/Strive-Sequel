@@ -233,10 +233,10 @@ func show_job_details(job):
 		if Items.materiallist.has(i.item):
 			var number
 			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
 				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
 			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
 				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
 			newbutton.get_node("number").text = str(number)
@@ -244,12 +244,11 @@ func show_job_details(job):
 		else:
 			var number
 			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
 				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
 			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)#races.call(i.progress_function, person)/i.progress_per_item,0.1)
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
 				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
-			#number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1) # stepify(person.workhours*races.call(i.progress_function, person)/i.progress_per_item,0.1)
 			newbutton.get_node("number").text = str(number)
 			newbutton.get_node("icon").texture = i.icon
 			globals.connecttexttooltip(newbutton, i.descript + text)
@@ -381,7 +380,7 @@ func open_diet_window():
 	$DietPanel/RichTextLabel.bbcode_text = tr("INFOFOODFILTER")
 	var array = []
 	for i in Items.materiallist.values():
-		if i.type == 'food':
+		if i.type == 'food' && i.tags.size() > 0:
 			array.append(i)
 	array.sort_custom(self, 'sort_food')
 	for i in array:
