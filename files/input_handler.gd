@@ -364,7 +364,6 @@ func GetSkillSelectNode():
 	if get_tree().get_root().has_node('SelectSkillMenu') == false:
 		node = load("res://src/SkillSelectMenu.tscn").instance()
 		get_tree().get_root().add_child(node)
-		#node.set_as_toplevel(true)
 		node.name = 'SelectSkillMenu'
 	else:
 		node = get_tree().get_root().get_node("SelectSkillMenu")

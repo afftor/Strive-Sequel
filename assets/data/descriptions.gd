@@ -72,6 +72,8 @@ func entry():
 		text += '"' + person.nickname + '" '
 	if person.surname != '':
 		text += person.surname + ". "
+	if person.professions.has('master'):
+		text =  "[color=green]Mansion's [Master][/color] - " + text
 	return text
 
 var showmode = 'default'

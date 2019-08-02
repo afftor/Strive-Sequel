@@ -73,11 +73,6 @@ _global_script_classes=[ {
 "class": "triggered_effect",
 "language": "GDScript",
 "path": "res://files/scripts/triggered_effect.gd"
-}, {
-"base": "Reference",
-"class": "worker",
-"language": "GDScript",
-"path": "res://files/scripts/worker.gd"
 } ]
 _global_script_class_icons={
 "Buff": "",
@@ -92,8 +87,7 @@ _global_script_class_icons={
 "temp_e_progress": "",
 "temp_e_simple": "",
 "temp_e_upgrade": "",
-"triggered_effect": "",
-"worker": ""
+"triggered_effect": ""
 }
 
 [application]
@@ -108,7 +102,6 @@ config/icon="res://assets/images/gui/timesphere.png"
 [autoload]
 
 variables="*res://files/variables.gd"
-events="*res://assets/data/eventdata.gd"
 images="*res://files/scripts/ResourceImages.gd"
 audio="*res://files/scripts/ResourceAudio.gd"
 Enemydata="*res://assets/data/enemydata.gd"

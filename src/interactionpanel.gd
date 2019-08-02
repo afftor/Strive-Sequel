@@ -2178,6 +2178,3 @@ func sensetivity_pot(member):
 	member.lewdmod += 0.2
 	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
-
-
-

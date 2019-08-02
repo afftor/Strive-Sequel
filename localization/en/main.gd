@@ -662,7 +662,7 @@ var TranslationDict = {
 	
 	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience unlocking new class will take until soft cap limit.",
 	STATPHYSICS_FACTORDESCRIPT = "Body factor represents physical potential of the character. It limits [color=aqua]Physical[/color] growth and influences melee combat.",
-	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also influences spell effects and damage. ",
+	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration. ",
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy is to befriend the character. The higher it is, the slower Obedience decays. ", 
 	STATBRAVE_FACTORDESCRIPT = "Brave factor represents how hard is to keep character in Fear. The higher it is, the quicker Fear decays. It also determines how likely the character will attempt to escape. ",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents character's mind potential. It limits [color=aqua]Wits[/color] growth.",

@@ -47,7 +47,8 @@ func _ready():
 	$controls/GearButton.connect("pressed", self, "show_gear_gui")
 	$controls/ReturnButton.connect("pressed", self, "return_to_mansion_confirm")
 	
-	$RichTextLabel.connect("meta_clicked", self, 'show_race_descript')
+	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
+	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	
 	globals.AddPanelOpenCloseAnimation($DetailsPanel)
 	$DetailsPanel/VBoxContainer/descript.connect("pressed", self, "custom_description_open")
@@ -56,7 +57,17 @@ func _ready():
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 	
 	input_handler.slave_panel_node = self
+	
+	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
+	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
 
+func stats_panel():
+	$BodyPanel/StatsPanel.open(person)
+	$"BodyPanel/StatsPanel".visible = !$BodyPanel/StatsPanel.visible
+
+func set_body_opacity(value):
+	for i in [$BodyPanel, $BodyPanel/Body]:
+		i.self_modulate = Color(1,1,1, value/100)
 
 func open(tempperson):
 	if tempperson == null:
@@ -87,8 +98,8 @@ func open(tempperson):
 		$Portrait.texture = null
 	else:
 		$Portrait.texture = person.get_icon()
-	$Body.texture = person.get_body_image()
-	$BodyPanel.visible = $Body.texture != null
+	$BodyPanel/Body.texture = person.get_body_image()
+	$BodyPanel.visible = $BodyPanel/Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
 	if person.location == 'travel':
 		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
@@ -104,8 +115,8 @@ func open(tempperson):
 		i.value = person.get(i.name)
 		i.get_node("Label").text = str(floor(person.get(i.name))) + "/" + '100'
 	for i in $base_stats.get_children():
-		i.value = person.get(i.name)
 		i.max_value = person.get(i.name+'max')
+		i.value = person.get(i.name)
 		i.get_node("Label").text = str(floor(person.get(i.name))) + "/" + str(floor(person.get(i.name+'max')))
 	
 	$mentality/loyal.value = person.loyal
@@ -185,8 +196,20 @@ func make_location_description():
 func show_progress_tooltip(node):
 	pass
 
-func show_race_descript(meta):
-	globals.connecttexttooltip($RichTextLabel, person.show_race_description())
+func text_url_hover(meta):
+	match meta:
+		'race':
+			var texttooltip = input_handler.GetTextTooltip()
+			texttooltip.showup($RichTextLabel, person.show_race_description())
+			yield(get_tree(), 'idle_frame')
+			texttooltip.rect_global_position = get_global_mouse_position()
+	#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
+
+func text_url_hover_hide(meta = null):
+	match meta:
+		'race':
+			var texttooltip = input_handler.GetTextTooltip()
+			texttooltip.hide()
 
 func open_class_selection():
 	$class_learn.open(person)
@@ -293,7 +316,7 @@ func update_hours():
 
 func build_skill_panel():
 	globals.ClearContainer($SkillPanel)
-	for i in range(1,11):
+	for i in range(1,10):
 		var text = ''
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel)
 		if person.social_skill_panel.has(i):

@@ -12,7 +12,7 @@ var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList = events.checks
+var EventList #= events.checks
 
 var scenedict = {
 	menu = "res://files/Menu.tscn",
@@ -516,7 +516,6 @@ func _ready():
 #	for i in Items.materiallist:
 #		state.materials[i] = 100
 	state.money = 500
-	
 
 func logupdate(text):
 	state.logupdate(text)

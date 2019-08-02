@@ -116,7 +116,6 @@ theme = ExtResource( 4 )
 text = "Sex"
 
 [node name="TimeNode" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 6.91928
 margin_top = 3.509
 margin_right = 295.919
@@ -175,7 +174,6 @@ margin_left = 5.0
 margin_top = 130.0
 margin_right = 285.0
 margin_bottom = 167.0
-value = 50.0
 texture_progress = ExtResource( 15 )
 
 [node name="gold" type="Label" parent="."]
@@ -185,6 +183,7 @@ margin_right = 1893.87
 margin_bottom = 41.0939
 
 [node name="TaskProgress" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 19.0
 margin_top = 195.156
 margin_right = 425.0
@@ -238,6 +237,7 @@ text = "1"
 align = 2
 
 [node name="Log" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 464.0
 margin_top = 62.0
 margin_right = 1192.0

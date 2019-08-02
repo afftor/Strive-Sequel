@@ -3,7 +3,7 @@ extends Control
 #warning-ignore-all:return_value_discarded
 var gamepaused_nonplayer = false
 var gamepaused = false
-var gamespeed = 1
+var gamespeed = 0
 var gametime = 0
 var previouspeed = 0
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
@@ -31,7 +31,7 @@ func _ready():
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	
 	
-	state.money = 500
+	#state.money = 500
 	state.log_node = $Log
 	
 	state.connect("task_added", self, 'build_task_bar')
@@ -43,7 +43,7 @@ func _ready():
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
-		character.unlock_class("smith")
+		character.unlock_class("master")
 #		character.unlock_class("dancer")
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:

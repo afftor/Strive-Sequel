@@ -383,6 +383,9 @@ func create(temp_race, temp_gender, temp_age):
 	if temp_age == 'random':
 		age = get_random_age()
 	
+	for i in variables.resists_list:
+		resists[i] = 0
+	
 	get_sex_features()
 	
 	if globals.globalsettings.furry == false && race.find("Beastkin") >= 0:
@@ -394,8 +397,8 @@ func create(temp_race, temp_gender, temp_age):
 	
 	random_icon()
 	
-	for i in variables.resists_list:
-		resists[i] = 0
+	hp = hpmax
+	
 	#setting food filter
 	for i in Items.materiallist.values():
 		if i.type == 'food':
@@ -610,7 +613,7 @@ func assign_gender():
 
 
 func make_description():
-	return translate(globals.descriptions.create_character_description(self))
+	return globals.TextEncoder(translate(globals.descriptions.create_character_description(self)))
 
 func show_race_description():
 	var temprace = races.racelist[race]
@@ -859,8 +862,11 @@ func tick():
 	
 	food_counter -= 1
 	if food_counter <= 0:
-		food_counter = 23
+		food_counter = 24
 		get_food()
+	
+	self.hp += variables.basic_hp_regen
+	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
 	
 	self.fatigue += 1
 	self.lust += lusttick
@@ -947,7 +953,7 @@ func hp_set(value):
 		hp = min(value, hpmax)
 
 func mp_set(value):
-	mp = clamp(0, value, mpmax)
+	mp = clamp(value, 0, mpmax)
 
 func death():
 	is_active = false
@@ -991,24 +997,23 @@ func get_food():
 						if food.tags.has(k):
 							check = true
 					if check == false:
-						fatigue -= 10
-						obedience += 10
+						self.fatigue -= 10
+						self.obedience += 10
 				else:
 					var check = false
 					for k in food_hate:
 						if food.tags.has(k):
 							check = true
 					if check == true:
-						fatigue += 10
 						if food.tags.size() <= 1:
-							obedience -= 10
+							self.obedience -= 10
 				break
 		if eaten == true:
 			break
 	
 	if eaten == false:
-		exhaustion += 25
-		obedience -= 25
+		self.exhaustion += 25
+		self.obedience -= 25
 		input_handler.SystemMessage(get_short_name() + ": no food.")
 		pass#add starvation debuf
 
@@ -1169,7 +1174,7 @@ func make_item(temprecipe):
 func joy_tick():
 	last_tick_assignement = 'joy'
 	current_day_spent.joyhours += 1
-	fatigue -= 4
+	self.fatigue -= 4
 
 func rest_tick():
 	last_tick_assignement = 'rest'
@@ -1184,7 +1189,7 @@ func rest_tick():
 			self.energy += float(energymax)/10
 	else:
 		self.energy += float(energymax)/8
-	fatigue -= 1
+	self.fatigue -= 1
 
 func obed_set(value):
 	obedience = clamp(float(value), 0, 100)
@@ -1257,6 +1262,7 @@ func translate(text):
 	if state.get_master() != null && state.get_master().sex != 'male':
 		masternoun = 'mistress'
 	text = text.replace("[master]", masternoun)
+	text = text.replace("[Master]", masternoun.capitalize())
 	match sex:
 		'male':
 			rtext = 'boy'
@@ -1684,7 +1690,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	self.mp -= template.manacost
 	self.energy -= template.energycost
 	
-	if social_skills_charges.has(s_code):
+	if social_skills_charges.has(s_code) && template.charges > 0:
 		social_skills_charges[s_code] += 1
 	else:
 		social_skills_charges[s_code] = 1

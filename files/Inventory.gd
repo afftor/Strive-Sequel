@@ -94,13 +94,14 @@ func buildinventory():
 			continue
 		var newbutton = globals.DuplicateContainerTemplate(itemcontainer)
 		var material = Items.materiallist[i]
+		var type = get_item_category(material)
 		newbutton.get_node('Image').texture = material.icon
 		newbutton.get_node('Number').text = str(state.materials[i])
 		newbutton.get_node('Number').show()
-		newbutton.set_meta('type', 'material')
+		newbutton.set_meta('type', type)
 		newbutton.get_node("Name").text = material.name
 		globals.connectmaterialtooltip(newbutton, material)
-		newbutton.get_node("Type").text = material.type
+		newbutton.get_node("Type").texture = get_item_type_icon(material)
 		newbutton.set_meta("item", i)
 		newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		itemarray.append(newbutton)
@@ -117,14 +118,51 @@ func buildinventory():
 		else:
 			newnode.get_node("Number").hide()
 		i.set_icon(newnode.get_node("Image"))
+		var type = get_item_category(i)
 		globals.connectitemtooltip(newnode, i)
 		newnode.get_node("Name").text = i.name
-		newnode.get_node("Type").text = i.type
-		newnode.set_meta('type', i.itemtype)
+		newnode.get_node("Type").texture = get_item_type_icon(i)
+		newnode.set_meta('type', type)
 		newnode.set_meta("item", i)
 		newnode.connect("pressed",self,'useitem', [i, i.type])
 		itemarray.append(newnode)
 	rebuildinventory()
+
+var icondict = {
+	food = "res://assets/images/gui/inventory/icon_food1.png",
+	material = "res://assets/images/gui/inventory/icon_res1.png",
+	tool = "res://assets/images/gui/inventory/icon_craft1.png",
+	weapon = "res://assets/images/gui/inventory/icon_weap1.png",
+	armor = "res://assets/images/gui/inventory/icon_armor1.png",
+	costume = "res://assets/images/gui/inventory/icon_cosm1.png",
+	usable = "res://assets/images/gui/inventory/icon_food1.png",
+	
+}
+
+func get_item_type_icon(item):
+	return load(icondict[get_item_category(item)])
+
+func get_item_category(item):
+	var type
+	if Items.materiallist.has(item.code):
+		if item.type == 'food':
+			type = 'food'
+		else:
+			type = 'material'
+	else:
+		if item.itemtype == 'weapon':
+			if item.toolcategory != null:
+				type = 'tool'
+			else:
+				type = 'weapon'
+		elif item.itemtype == 'armor':
+			if item.geartype == 'costume':
+				type = 'costume'
+			else:
+				type = 'armor'
+		else:
+			type = 'usable'
+	return type
 
 func rebuildinventory():
 	for i in itemarray:
