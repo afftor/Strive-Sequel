@@ -2565,7 +2565,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/Charm.png", 
-				description = "Productivity increased by 20%",
+				description = "Productivity increased by 20%%",
 				limit = 1,
 				t_name = 'Morale'
 			}

@@ -259,6 +259,22 @@ func valuecheck(dict):
 			return if_has_free_items(dict.name, dict.operant, dict.value)
 		'disabled':
 			return false
+		'master_stat':
+			return if_master_has_stat(dict.name, dict.operant, dict.value)
+		'master_is_beast':
+			return if_master_is_beast(dict.value)
+
+func if_master_is_beast(boolean):
+	var character = get_master()
+	if character == null:
+		return false
+	return character.checkreqs([{code = 'race_is_beast', value = boolean}])
+
+func if_master_has_stat(name, operant, value):
+	var character = get_master()
+	if character == null:
+		return false
+	return input_handler.operate(operant, character.get(name), value)
 
 func if_has_items(name, operant, value):
 	var counter = 0
@@ -381,3 +397,15 @@ func deserialize(tmp:Dictionary):
 		for i in ssp:
 			characters[h].social_skill_panel[int(i)] = ssp[i]
 	tempstate.free()
+
+func common_effects(effects):
+	for i in effects:
+		match i.code:
+			'money_change':
+				money = input_handler.math(i.operant, money, i.value)
+			'make_story_character':
+				var newslave = Slave.new()
+				newslave.generate_predescribed_character(world_gen.pregen_characters[i.value])
+				state.add_slave(newslave)
+
+

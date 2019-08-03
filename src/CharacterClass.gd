@@ -76,7 +76,7 @@ var loottable
 
 var fatigue = 0 setget fatigue_set
 var exhaustion = 0 setget exhaustion_set
-var productivity := 100.0
+var productivity := 100.0 setget ,productivity_get
 
 #productivity mods
 var mod_collect = 1.0
@@ -364,6 +364,12 @@ func generate_simple_fighter(tempname):
 		resists[i] = data.resists[i]
 
 
+func generate_predescribed_character(data):
+	create(data.race, data.sex, data.age)
+	for i in data:
+		set(i, data[i])
+	unique = data.code
+
 func create(temp_race, temp_gender, temp_age):
 	#id = 's' + str(state.slavecounter)
 	#state.slavecounter += 1
@@ -534,6 +540,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = globals.longtails.has(tail)
 			'cant_spawn_naturally':
 				check = !ignore_npc_stats_gear
+			'sex':
+				check = input_handler.operate(i.operant, sex, i.value)
 		if check == false:
 			return false
 	return true
@@ -981,6 +989,9 @@ func exhaustion_set(value):
 
 func set_productivity():
 	productivity = 100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1)
+
+func productivity_get():
+	return productivity
 
 func get_food():
 	var eaten = false

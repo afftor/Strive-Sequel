@@ -67,11 +67,13 @@ func new_charcter_description(character):
 
 func entry():
 	var text = ''
-	text += person.name + " "
+	text += person.name
 	if person.nickname != '':
-		text += '"' + person.nickname + '" '
+		text += ' "' + person.nickname + '" '
 	if person.surname != '':
-		text += person.surname + ". "
+		text += " " + person.surname + ". "
+	else:
+		text += ". "
 	if person.professions.has('master'):
 		text =  "[color=green]Mansion's [Master][/color] - " + text
 	return text

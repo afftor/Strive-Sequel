@@ -657,7 +657,7 @@ var TranslationDict = {
 	TOOLTIPEXHAUSTION = "Exhaustion grows when character is forced to work with no energy left. Exhaustion causes penalty to maximum health and production, and can lead to fatal cause if not taken care of for a long time.",
 	
 	TOOLTIPSIMPLEBEHAVIOR = "While having Simple Behavior active, character will work until they run out of energy, Rest until its full and Joy until fatigue is gone. Recommended for begginers.",
-	
+	TOOLTIPPBASEPRODUCTIVITY = "Base Productivity. Reduced by Fatigue and Exhaustion.",
 	
 	
 	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience unlocking new class will take until soft cap limit.",
@@ -821,7 +821,7 @@ var TranslationDict = {
 	PROFWATCHDOG = "Watchdog",
 	PROFWATCHDOGDESCRIPT = "The servants, who proven their loyal to master are allowed to act in his name to instigate obedience of others.",
 	PROFHEADGIRL = "Headgirl",
-	PROFHEADGIRLALT = "Headman",
+	PROFHEADGIRLALT = "Butler",
 	PROFHEADGIRLDESCRIPT = "The servant with higher authority is allowed to direct multiple lower servants at once.\n\nPraises and punishements 1.5 times as effective",
 	PROFTRAINER = "Trainer",
 	PROFTRAINERDESCRIPT = "Trainers can dramatically change the attitude of even very rebellious slave. ",
@@ -877,7 +877,7 @@ var TranslationDict = {
 	PROFBLOODMAGEDESCRIPT = "",
 	
 	PROFMAID = "Maid",
-	PROFMAIDALT = "Butler",
+	PROFMAIDALT = "Servant",
 	PROFMAIDDESCRIPT = "A trained servant not only knows their place but also is better to the eye.",
 	PROFDRAGONKNIGHT = "Dragon Knight",
 	PROFDRAGONKNIGHTDESCRIPT = "The dragon blood flowing in their veins allow them become a fearsome warriors resistant to fire.",

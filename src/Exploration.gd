@@ -58,6 +58,7 @@ func open():
 	globals.AddPanelOpenCloseAnimation($ShopPanel)
 	show()
 	
+	input_handler.interactive_message('daisy_meet', 'story_event', [])
 	globals.ClearContainer($AreaSelection)
 	for i in state.areas.values():
 		var newbutton = globals.DuplicateContainerTemplate($AreaSelection)

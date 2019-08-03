@@ -40,7 +40,7 @@ func _ready():
 	
 	if globals.start_new_game == false && true:
 		var character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('BeastkinWolf', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
@@ -64,13 +64,21 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.is_players_character = true
-		$SlaveList.rebuild()
+		
+#		character = Slave.new()
+#		character.generate_predescribed_character(world_gen.pregen_characters.Daisy)
+#		characters_pool.move_to_state(character.id)
+#		character.get_trait('core_trait')
+#		character.is_players_character = true
+		
+		
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+		$SlaveList.rebuild()
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false

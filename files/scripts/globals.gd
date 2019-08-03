@@ -430,6 +430,8 @@ func _ready():
 	for i in Skilldata.professions.values():
 		i.name = tr("PROF" + i.code.to_upper())
 		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
+		if i.has('altname'):
+			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
 	
 	for i in Items.materiallist.values():
 		i.name = tr("MATERIAL" + i.code.to_upper())

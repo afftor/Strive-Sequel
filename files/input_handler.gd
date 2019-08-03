@@ -791,8 +791,6 @@ func interactive_message(code, type, args):
 				'function':
 					loot = call(args.loot_data.function, args.loot_data.args)
 			scene_loot = world_gen.make_chest_loot(loot)
-	if data.text.find("[locationname]") >= 0:
-		data.text = data.text.replace("[locationname]", active_location.name)
 	scene.open(data)
 
 func make_location_chest_loot(args):

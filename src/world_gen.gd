@@ -129,6 +129,7 @@ func make_area(code):
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
+	areadata.events = []
 
 var guild_upgrades = {
 	slavenumberupgrade = {
@@ -1062,7 +1063,45 @@ var eventscrits = {
 	
 }
 
-
+var pregen_characters = {
+	Daisy = {
+		code = 'daisy',
+		name = 'Daisy',
+		surname = '',
+		race = 'HalfkinBunny',
+		sex = 'female',
+		age = 'teen',
+		height = 'short',
+		hair_color = 'blond',
+		hair_length = 'waist',
+		hair_style = 'straight',
+		eye_color = 'blue',
+		ears = 'bunny_drooping',
+		skin = 'pale',
+		physics_factor = 1,
+		wits_factor = 2,
+		charm_factor = 4,
+		sexuals_factor = 4,
+		magic_factor = 2,
+		growth_factor = 3,
+		tame_factor = 4,
+		brave_factor = 1,
+		food_consumption = 2,
+		icon = null,
+		body = null,
+		physics = 11.0,
+		wits = 2.0,
+		charm = 0.0,
+		sexuals = 0.0,
+		fear = 40,
+		obedience = 65,
+		vaginal_virgin = true,
+		anal_virgin = true,
+		mouth_virgin = true,
+		ass_size = 'small',
+		tits_size = 'average',
+	},
+}
 
 
 var easter_egg_characters = {

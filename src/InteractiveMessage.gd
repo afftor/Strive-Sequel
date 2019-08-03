@@ -4,14 +4,33 @@ var operation_data
 
 func open(scene):
 	show()
+	if scene.has("variations"):
+		for i in scene.variations:
+			if state.checkreqs(i.reqs):
+				open(i)
+				break
+		
+		return
+	if scene.text.find("[locationname]") >= 0:
+		scene.text = scene.text.replace("[locationname]", input_handler.active_location.name)
 	$RichTextLabel.bbcode_text = scene.text
 	globals.ClearContainer($VBoxContainer)
+	if scene.has("common_effects"):
+		state.common_effects(scene.common_effects)
 	for i in scene.options:
+		if state.checkreqs(i.reqs) == false:
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($VBoxContainer)
 		newbutton.text = i.text
-		newbutton.connect("pressed", self, i.code)
+		if scene.tags.has('linked_event'):
+			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
+		else:
+			newbutton.connect("pressed", self, i.code)
 		if i.has('disabled') && i.disabled == true:
 			newbutton.disabled = true
+	
+	
+	
 
 func close():
 	hide()

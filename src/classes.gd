@@ -4,6 +4,8 @@ var professions = {
 	master = {
 		code = 'master',
 		name = '',
+		altname = '',
+		altnamereqs = [{code = 'sex',operant = 'neq', value = 'male'}],
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Master.png"),
 		tags = [],
@@ -59,6 +61,8 @@ var professions = {
 	},
 	headgirl = {
 		code = 'headgirl',
+		altname = '',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Headman.png"),
@@ -256,6 +260,8 @@ var professions = {
 	succubus = {
 		code = 'succubus',
 		name = '',
+		altname = '',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Succubus.png"),
 		tags = [],
@@ -270,6 +276,8 @@ var professions = {
 	true_succubus = {
 		code = 'true_succubus',
 		name = '',
+		altname = '',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/True_Succubus.png"),
 		tags = [],
@@ -340,6 +348,8 @@ var professions = {
 	maid = {
 		code = 'maid',
 		name = '',
+		altname = '',
+		altnamereqs = [{code = 'sex', operant = 'eq', value = 'male'}],
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Maid.png"),
 		tags = [],

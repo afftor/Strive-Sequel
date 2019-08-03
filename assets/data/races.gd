@@ -596,7 +596,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpfactor = 1.9},
+		racetrait = {hpfactor = 1.7},
 		diet_love = {vege = 1, meat = 3, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 5, fish = 10, grain = 30},
 		tags = [],

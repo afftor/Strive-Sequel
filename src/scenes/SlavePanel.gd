@@ -131,6 +131,8 @@ func open(tempperson):
 	
 	$food_love/Label.text = person.food_love
 	
+	$productivity/Label.text = str(person.productivity) + "%"
+	
 	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
 		text += i + ", "
@@ -141,9 +143,12 @@ func open(tempperson):
 	for i in person.professions:
 		var newnode = globals.DuplicateContainerTemplate($professions)
 		var prof = Skilldata.professions[i]
+		var name = prof.name
+		if prof.has('altname') && person.checkreqs(prof.altnamereqs):
+			name = prof.altname
+		newnode.get_node("Label").text = name
 		newnode.texture = prof.icon
-		newnode.get_node("Label").text = prof.name
-		globals.connecttexttooltip(newnode, "[center]" + prof.name + '[/center]\n' + person.translate(prof.descript))
+		globals.connecttexttooltip(newnode, "[center]" + name + '[/center]\n' + person.translate(prof.descript))
 	
 	if $SkillPanel.visible == true:
 		build_skill_panel()
