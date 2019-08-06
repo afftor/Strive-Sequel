@@ -38,9 +38,10 @@ func _ready():
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
-	if globals.start_new_game == false && true:
+	if variables.generate_test_chars:
 		var character = Slave.new()
-		character.create('BeastkinWolf', 'random', 'random')
+		character.create('BeastkinCat', 'male', 'random')
+		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
@@ -129,6 +130,7 @@ func _process(delta):
 			if state.hour >= variables.HoursPerDay:
 				state.hour = 0
 				state.date += 1
+				state.daily_interactions_left = 1
 				for i in state.characters.values():
 					i.cooldown_tick()
 				for i in state.areas.values():

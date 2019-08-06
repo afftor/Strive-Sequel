@@ -6,6 +6,7 @@ var id = ''
 var is_person = true
 var is_active = true
 var is_players_character = false
+var is_known_to_player = false #for purpose of private parts
 
 var unique 
 
@@ -56,7 +57,6 @@ var fear = 70.0 setget fear_set, fear_get
 var lust = 20.0 setget lust_set, lust_get
 var loyal = 0.0
 var lustmax = 50
-var lusttick = 1.05
 var obed_degrade_mod = 1.0
 
 
@@ -518,7 +518,7 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				if ignore_npc_stats_gear == false || !i.type in ['physics','wits','charm','sexuals']:
 					check = input_handler.operate(i.operant, self.get(i.type), i.value)
 			'has_profession':
-				check = professions.has(i.value)
+				check = professions.has(i.value) == i.check
 			'race_is_beast':
 				check = races.racelist[race].tags.has('beast') == i.value
 			'gear_equiped':
@@ -621,6 +621,7 @@ func assign_gender():
 
 
 func make_description():
+	input_handler.scene_character = self
 	return globals.TextEncoder(translate(globals.descriptions.create_character_description(self)))
 
 func show_race_description():
@@ -681,6 +682,8 @@ func get_random_name():
 func decipher_reqs(reqs, colorcode = false):
 	var text = ''
 	for i in reqs:
+		if i.has('orflag'):
+			continue
 		match i.code:
 			'stat':
 				text += globals.statdata[i.type].name + ': ' + str(i.value) + " "
@@ -690,7 +693,10 @@ func decipher_reqs(reqs, colorcode = false):
 					'lte':
 						text += "or lower"
 			'has_profession':
-				text += 'Has Profession: ' + Skilldata.professions[i.value].name
+				if i.check == true:
+					text += 'Has Class: ' + Skilldata.professions[i.value].name
+				else:
+					text += 'Has NO Class: ' + Skilldata.professions[i.value].name
 			'race':
 				if i.operant == 'eq':
 					text += 'Race: ' + races.racelist[i.value].name
@@ -877,7 +883,8 @@ func tick():
 	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
 	
 	self.fatigue += 1
-	self.lust += lusttick
+	self.lust += variables.basic_lust_per_tick
+	
 	
 	var obed_reduce = 100.0 * obed_degrade_mod/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 	var fear_reduce = 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
@@ -1216,7 +1223,6 @@ func fear_get():
 
 func lust_set(value):
 	lustmax = 25 + sexuals_factor * 25
-	
 	lust = clamp(value, 0, lustmax)
 
 
@@ -1690,7 +1696,31 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	var check = check_skill_availability(s_code, target)
 	if check.check == false:
-		input_handler.SystemMessage(check.descript)
+		#input_handler.SystemMessage(check.descript)
+		state.text_log_add('skill',check.descript)
+		return
+	
+	if template.tags.has("dialogue_skill"):
+		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}#childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = null, tags = [], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+		var text = translate(template.dialogue_text)
+		text = target.translate(text.replace("[targetname]", "[name]"))
+		text = target.translate(text.replace("[targethis]", "[his]"))
+		data.text = text
+		
+		if template.charges > 0:
+			if social_skills_charges.has(s_code):
+				social_skills_charges[s_code] += 1
+			else:
+				social_skills_charges[s_code] = 1
+		
+		input_handler.scene_character = self
+		input_handler.target_character = target
+		input_handler.activated_skill = s_code
+		for i in template.dialogue_options:
+			data.options.append(i)
+		data.options.append({code = 'cancel_skill_usage', text = "Cancel", reqs = []})
+		
+		input_handler.interactive_message_custom(data)
 		return
 	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = self, target = target}
 	
@@ -1701,10 +1731,11 @@ func use_social_skill(s_code, target):#add logging if needed
 	self.mp -= template.manacost
 	self.energy -= template.energycost
 	
-	if social_skills_charges.has(s_code) && template.charges > 0:
-		social_skills_charges[s_code] += 1
-	else:
-		social_skills_charges[s_code] = 1
+	if template.charges > 0:
+		if social_skills_charges.has(s_code):
+			social_skills_charges[s_code] += 1
+		else:
+			social_skills_charges[s_code] = 1
 	social_cooldowns[s_code] = template.cooldown
 	
 	#calcuate 'all' receviers
@@ -1787,6 +1818,14 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
+
+func restore_skill_charge(code):
+	if social_skills_charges.has(code):
+		social_skills_charges[code] -= 1
+		if social_skills_charges[code] <= 0:
+			social_cooldowns.erase(code)
+			social_skills_charges.erase(code)
+	
 
 func baby_transform():
 	var mother = state.characters[relatives.mother]

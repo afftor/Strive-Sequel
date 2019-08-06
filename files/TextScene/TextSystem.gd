@@ -286,9 +286,6 @@ func StateEffect(value, args):
 			state.AdvanceQuest(args)
 		"finish_quest":
 			state.FinishQuest(args)
-		'worker_add':
-			var newworker = worker.new()
-			newworker.create(TownData.workersdict[args])
 
 func QuestSet(value, args):
 	match value:

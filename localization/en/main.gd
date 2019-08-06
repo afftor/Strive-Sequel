@@ -211,35 +211,8 @@ var TranslationDict = {
 	ITEMBASICGLOVES = "Gloves",
 	ITEMBASICGLOVESDESCRIPT = "Offers basic hand protection",
 	
-	USABLEMORSEL = "Morsel",
-	USABLEMORSELDESCRIPT = "A questionable piece of meat. Restores 50 health. Can be converted into Food.",
-	USABLEMANAGRASS = "Blue Grass",
-	USABLEMANAGRASSDESCRIPT = "An unusual plant with magical properties. Restores 25 mana on use. ",
-	USABLEBARRICADE = "Barricade",
-	USABLEBARRICADEDESCRIPT = "A makeshift wooden obstacle. Shields target from 50 physical damage for 2 turns",
-	USABLEPROTECTIVECHARM = "Protective Charm",
-	USABLEPROTECTIVECHARMDESCRIPT = "An enchanted piece of paper. Shields target from 50 magic damage for 2 turns",
-	USABLEELIXIR = "Elixir",
-	USABLEELIXIRDESCRIPT = "A rejuvinating potion. Restores 75 health and 40 mana.",
 	
-	INFOFOODFILTER = "Select food filter for character. They will attempt to consume food placed higher in the priority before moving lower. If food is forbidden, they will ignore it entirely. ",
-	#enemies
-	MONSTERELVENRAT = "Elven Rat",
-	MONSTERELVENRATFLAVOR = "These animals are fairly common in most areas. Distinct ears make them accumulate all sorts of moniker, but goblins seem to label them this way...",
-	MONSTERTREANT = "Ent",
-	MONSTERTREANTFLAVOR = "Despite its looks, this thing is actually a plant. Often disguises itself as a simple trunk for a nasty surprise.",
-	MONSTERBIGTREANT = "Big Ent",
-	MONSTERBIGTREANTFLAVOR = "Big ents are somewhat mobile and quite dangerous when provoked.",
-	MONSTEREARTHGOLEM = "Earth Golem",
-	MONSTEREARTHGOLEMFLAVOR = "A magic creature of considerable power. They seem to roam around some caves and dungeons with little thought. I would expect more from a hand-made slave. ",
-	MONSTERSPIDER = "Spider",
-	MONSTERSPIDERFLAVOR = "Of course just ents weren't enough...",
-	MONSTERFAIRIES = "Fairies",
-	MONSTERFAIRIESFLAVOR = "If not for their nasty nature, I would even consider them appealing.",
-	MONSTERANGRYDWARF = "Angry Dwarf",
-	MONSTERANGRYDWARFFLAVOR = "Dumb but strong for their size. Despite my best attempts, they didn't seem to be up for any sort of negotiation. ",
-	MONSTEREARTHGOLEMBOSS = "Greater Golem",
-	MONSTEREARTHGOLEMBOSSFLAVOR = "Twice as big as normal golem. And twice as angry...",
+	
 	#gearclasses
 	GEARSWORD = "Swords",
 	GEARAXE = "Axes",
@@ -299,16 +272,6 @@ var TranslationDict = {
 	ARMORTRIM = 'Trim',
 	JEWELRYGEM = 'Gem',
 	
-	
-	#Material Effects
-	GOBMETALHANDLEDESCRIPT = "Deals 15% more damage when enemy's health below 30%",
-	ELFMETALHANDLEDESCRIPT = "Gain +1 Mana on skill hit",
-	GOBMETALBLADEDESCRIPT = "Deals small bonus earth damage",
-	ELFMETALBLADEDESCRIPT = "Deals +10 damage on first hit",
-	ELFWOODRODDESCRIPT = "Restores 10% mana on the end of combat",
-	GOBMETALRODDESCRIPT = "For 1 turn reduces target's speed by 10 on spell hit",
-	BONERODDESCRIPT = "Restores 3% health on spell hit",
-	BONEBOWDESCRIPT = "+1 health on hit",
 	
 	
 	#Menu
@@ -808,6 +771,17 @@ var TranslationDict = {
 	SKILLGREATSHACKLEDESCRIPT = "Creates a stronger version of magical shackles which are a lot harder to break.",
 	SKILLMINDCONTROL = "Mind Control",
 	SKILLMINDCONTROLDESCRIPT = "Overwhelms target's mind forcing a nearly complete submission. Can be resisted with powerful mind. ",
+	SKILLABUSE = "Abuse",
+	SKILLABUSEDESCRIPT = "Take your anger on someone else. \n\nImproves Obedience and removes some Fatigue for self. Target loses some Health and gain Fatigue, but also receive Fear.",
+	SKILLMASTER_LUST_SKILL = "Lust Relief",
+	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. ",
+	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore Obedience\n4. Improve Productivity by 20% for 3 days for 50 lust\n5. Increase Atk and Matk by 15% for 2 days for 50 lust.",
+	
+	SKILLSUCCUBUS_LUST_SKILL = "Lust Drain",
+	SKILLSUCCUBUS_LUST_SKILLDESCRIPT = "Utilizes taret's Lust for self benefit. ",
+	DIALOGUESUCCUBUS_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore Obedience\n4. Increase Atk and Matk by 25% for 2 days for 50 lust.",
+	
+	
 	
 	PROFMASTER = "Master",
 	PROFMASTERALT = "Mistress",
@@ -826,13 +800,13 @@ var TranslationDict = {
 	PROFTRAINER = "Trainer",
 	PROFTRAINERDESCRIPT = "Trainers can dramatically change the attitude of even very rebellious slave. ",
 	PROFWORKER = "Worker",
-	PROFWORKERDESCRIPT = "Workers are great manual laborers for your everyday needs. You won't need them to gather resources, but they can do it much faster. \n\nManual labor tasks efficieny +50%.",
+	PROFWORKERDESCRIPT = "Workers are great manual laborers for your everyday needs. You won't need them to gather resources, but they can do it much faster. \n\nWoodcutting and Mining efficiency: +50%.",
 	PROFFOREMAN = "Foreman",
-	PROFFOREMANDESCRIPT = "A seasoned worker can not only show higher proficiency, but also boost productivity of other workers.\n\nManual labor tasks efficieny +33%.",
+	PROFFOREMANDESCRIPT = "A seasoned worker can not only show higher proficiency, but also boost productivity of other workers.\n\nWoodcutting and Mining efficiency: +33%.",
 	PROFHUNTER = "Hunter",
-	PROFHUNTERDESCRIPT = "Hunters specialize in tracking and killing the game. \n\nIncreases Hunting productivity by 50%. Allows to use Bows.",
+	PROFHUNTERDESCRIPT = "Hunters specialize in tracking and killing the game. \n\nIncreases Hunting and Fishing productivity by 50%. Allows to use Bows.",
 	PROFSMITH = "Blacksmith",
-	PROFSMITHDESCRIPT = "Smiths are mandatory when dealing with metalcrafting. \n\nAllows to craft metal items.",
+	PROFSMITHDESCRIPT = "Smiths are masters craftsmen, meant to work with all sorts of materials. \n\nIncreases tailor and metalwork crafts speed by 50%.",
 	PROFCHEF = "Chef",
 	PROFCHEFDESCRIPT = "A skilled cook is always a valuable addition to a growing group. \n\nCooking efficiency +50%.",
 	PROFATTENDANT = "Attendant",
@@ -962,6 +936,9 @@ var TranslationDict = {
 	UPGRADEWOOD_RESOURCE = "Wood: Resources",
 	UPGRADEWOOD_RESOURCEDESCRIPT = "Allows harvesting of additional resources from Wood Cutting",
 	
+	INTERACTIONSNOSEXTAG = "[name]'s personal story has not been progressed to the point of allowing [him] to participate in this kind of actions.",
+	
+	NOSEXDETAILSDESCRIPT = "{color=green|Unfortunately, you are unable to check on [his] private parts.}",
 	
 	BODYPARTAGETEEN = "teen",
 	BODYPARTAGEADULT = "adult",
@@ -1095,18 +1072,21 @@ var TranslationDict = {
 	BODYPARTVAGINAL_VIRGINTRUE_FALSE = "is not a virgin",
 	
 	
-	BODYPARTPENIS_SIZEHUMAN_SMALLDESCRIPT = 'Below [his] waist dangles a [color=yellow]tiny humanish dick[/color], small enough that it could be called cute.',
-	BODYPARTPENIS_SIZEHUMAN_AVERAGEDESCRIPT ='[He] has an [color=yellow]ordinary humanish penis[/color] below [his] waist, more than enough to make most men proud.',
-	BODYPARTPENIS_SIZEHUMAN_BIGDESCRIPT = 'A [color=yellow]huge humanish cock[/color] swings heavily from [his] groin, big enough to give even the most veteran whore pause.',
-	BODYPARTPENIS_SIZECANINE_SMALLDESCRIPT = 'A slender, pointed [color=yellow]canine dick[/color] hangs below [his] waist, so small that its knot is barely noticeable.',
-	BODYPARTPENIS_SIZECANINE_AVERAGEDESCRIPT = '[He] has a knobby, red, [color=yellow]canine cock[/color] of respectable size below [his] waist, which wouldn’t look out of place on a large dog.', 
-	BODYPARTPENIS_SIZECANINE_BIGDESCRIPT = 'Growing from [his] crotch is a [color=yellow]massive canine dick[/color], red-skinned and sporting a thick knot near the base.',
-	BODYPARTPENIS_SIZEFELINE_SMALLDESCRIPT = 'A [color=yellow]tiny feline penis[/color] dangles below [his] waist, so small you can barely see the barbs.',
-	BODYPARTPENIS_SIZEFELINE_AVERAGEDESCRIPT = '[He] has a barbed [color=yellow]cat dick[/color] growing from [his] crotch, big enough to rival an average human.',
-	BODYPARTPENIS_SIZEFELINE_BIGDESCRIPT = 'There is a frighteningly [color=yellow]large feline cock[/color] hanging between [his] thighs, its sizable barbs making it somewhat intimidating.', 
-	BODYPARTPENIS_SIZEEQUINE_SMALLDESCRIPT = 'Below [his] waist hangs a [color=yellow]smallish equine cock[/color], which is still respectable compared to the average man.',
-	BODYPARTPENIS_SIZEEQUINE_AVERAGEDESCRIPT = 'A [color=yellow]sizable equine cock[/color] grows from [his] nethers, which, while small on a horse, is still thicker and heavier than the average human tool.',
-	BODYPARTPENIS_SIZEEQUINE_BIGDESCRIPT = 'A [color=yellow]massive equine cock[/color] hangs heavily below [his] waist, its mottled texture not quite matching the rest of [his] skin.',
+	BODYPARTANAL_VIRGINTRUEDESCRIPT = "[His] asshole has been yet [color=aqua]unclaimed[/color] by anyone.",
+	BODYPARTANAL_VIRGINFALSEDESCRIPT = "[His] asshole is trained enough for penetration.",
+	
+	BODYPARTPENIS_SIZEHUMAN_SMALLDESCRIPT = 'Below [his] waist dangles a [color=yellow]tiny humanish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} dick[/color], small enough that it could be called cute.',
+	BODYPARTPENIS_SIZEHUMAN_AVERAGEDESCRIPT ='[He] has an [color=yellow]ordinary humanish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} penis[/color] below [his] waist, more than enough to make most men proud.',
+	BODYPARTPENIS_SIZEHUMAN_BIGDESCRIPT = 'A [color=yellow]huge humanish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} cock[/color] swings heavily from [his] groin, big enough to give even the most veteran whore pause.',
+	BODYPARTPENIS_SIZECANINE_SMALLDESCRIPT = 'A slender, pointed[color=yellow]{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} canine dick[/color] hangs below [his] waist, so small that its knot is barely noticeable.',
+	BODYPARTPENIS_SIZECANINE_AVERAGEDESCRIPT = '[He] has a knobby, red,[color=yellow]{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} canine cock[/color] of respectable size below [his] waist, which wouldn’t look out of place on a large dog.', 
+	BODYPARTPENIS_SIZECANINE_BIGDESCRIPT = 'Growing from [his] crotch is a [color=yellow]massive{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} canine dick[/color], red-skinned and sporting a thick knot near the base.',
+	BODYPARTPENIS_SIZEFELINE_SMALLDESCRIPT = 'A [color=yellow]tiny{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} feline penis[/color] dangles below [his] waist, so small you can barely see the barbs.',
+	BODYPARTPENIS_SIZEFELINE_AVERAGEDESCRIPT = '[He] has a barbed[color=yellow]{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} cat dick[/color] growing from [his] crotch, big enough to rival an average human.',
+	BODYPARTPENIS_SIZEFELINE_BIGDESCRIPT = 'There is a frighteningly [color=yellow]large{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} feline cock[/color] hanging between [his] thighs, its sizable barbs making it somewhat intimidating.', 
+	BODYPARTPENIS_SIZEEQUINE_SMALLDESCRIPT = 'Below [his] waist hangs a [color=yellow]smallish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} equine cock[/color], which is still respectable compared to the average man.',
+	BODYPARTPENIS_SIZEEQUINE_AVERAGEDESCRIPT = 'A [color=yellow]sizable{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} equine cock[/color] grows from [his] nethers, which, while small on a horse, is still thicker and heavier than the average human tool.',
+	BODYPARTPENIS_SIZEEQUINE_BIGDESCRIPT = 'A [color=yellow]massive{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} equine cock[/color] hangs heavily below [his] waist, its mottled texture not quite matching the rest of [his] skin.',
 	
 	BODYPARTAGETEENDESCRIPT = "[He]'s a [color=aqua]teenage [boy][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
 	BODYPARTAGEADULTDESCRIPT = "[He]'s a [color=aqua]young adult [male][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",

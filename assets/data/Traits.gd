@@ -19,7 +19,7 @@ var traits = {
 		effects = ['e_tr_master'],
 	}, 
 	
-	worker_trait = {#+50% productivity on collection tasks except hunting
+	worker_trait = {
 		code = 'worker_trait',
 		name = '',
 		descript = '',
@@ -27,7 +27,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_worker'],
 	}, 
-	foreman_trait = {#+100% productivity on collection tasks except hunting
+	foreman_trait = {
 		code = 'foreman_trait',
 		name = '',
 		descript = '',
@@ -35,7 +35,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_foreman'],
 	}, 
-	hunter_trait = {#+50% productivity on hunting tasks
+	hunter_trait = {
 		code = 'hunter_trait',
 		name = '',
 		descript = '',
@@ -43,7 +43,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_hunter'],
 	}, 
-	smith_trait = {#+100% productivity on smith crafting
+	smith_trait = {
 		code = 'smith_trait',
 		name = '',
 		descript = '',
@@ -51,7 +51,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_smith'],
 	}, 
-	chef_trait = {#+100% productivity on cooking
+	chef_trait = {
 		code = 'chef_trait',
 		name = '',
 		descript = '',

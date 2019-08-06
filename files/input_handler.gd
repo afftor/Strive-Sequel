@@ -38,6 +38,8 @@ var scene_loot
 var active_area
 var active_location
 
+var activated_skill
+var target_character
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -791,7 +793,17 @@ func interactive_message(code, type, args):
 				'function':
 					loot = call(args.loot_data.function, args.loot_data.args)
 			scene_loot = world_gen.make_chest_loot(loot)
+		'area_oneshot_event':
+			for i in active_area.events:
+				if i.code == code:
+					active_area.events.erase(i)
+					break
 	scene.open(data)
+
+func interactive_message_custom(data):
+	var scene = get_dialogue_node()
+	scene.open(data)
+
 
 func make_location_chest_loot(args):
 	var lootdict = {}

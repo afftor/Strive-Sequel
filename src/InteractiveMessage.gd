@@ -13,6 +13,11 @@ func open(scene):
 		return
 	if scene.text.find("[locationname]") >= 0:
 		scene.text = scene.text.replace("[locationname]", input_handler.active_location.name)
+	if scene.tags.has("master_translate"):
+		if state.get_master() == null:
+			print("master_not_found")
+			return
+		scene.text = state.get_master().translate(scene.text)
 	$RichTextLabel.bbcode_text = scene.text
 	globals.ClearContainer($VBoxContainer)
 	if scene.has("common_effects"):
@@ -24,17 +29,22 @@ func open(scene):
 		newbutton.text = i.text
 		if scene.tags.has('linked_event'):
 			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
+		elif scene.tags.has("skill_event") && i.code != 'cancel_skill_usage':
+			newbutton.connect("pressed", self, 'close')
+			newbutton.connect("pressed", input_handler.scene_character, 'use_social_skill',[i.code, input_handler.target_character])
 		else:
 			newbutton.connect("pressed", self, i.code)
 		if i.has('disabled') && i.disabled == true:
 			newbutton.disabled = true
-	
-	
-	
 
 func close():
 	hide()
 	input_handler.emit_signal("EventFinished")
+
+func cancel_skill_usage():
+	hide()
+	input_handler.scene_character.restore_skill_charge(input_handler.activated_skill)
+	input_handler.ShowSlavePanel(input_handler.scene_character)
 
 func repeat():
 	input_handler.repeat_social_skill()

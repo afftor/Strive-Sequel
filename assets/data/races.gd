@@ -14,46 +14,46 @@ func get_progress_task(character, temptask, tempsubtask):
 	return value
 
 func hunt_meat(character):
-	return 8 + (8*(character.physics/50))
+	return 1 + (1*(character.physics/66))
 
 func fishing(character):
-	return 8 + (8*(character.physics/200+character.wits/75))
+	return 1 + (1*(character.physics/100+character.wits/57))
 
 func farming(character):
-	return 8 + (8*(character.physics/200+character.wits/75))
+	return 1 + (1*(character.physics/57+character.wits/100))
 
 func hunt_leather(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func woodcutting_lumber(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func woodmagiccutting_lumber(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func woodironcutting_lumber(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func mining_stone(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func whoring_gold(character):
 	return (3 + character.sexuals/10 + character.charm/20) * character.mod_pros_gold
 
 func cooking_progress(character):
-	return 30 + character.wits
+	return 1 + (1*(character.wits/50))
 
 func tailor_progress(character):
-	return 30 + character.physics
+	return 1 + (1*(character.wits/66+character.physics/150))
 
 func forge_progress(character):
-	return (3 + character.physics) * (1+0.25*state.upgrades.forgeworkshop)
+	return 1 + (1*(character.wits/66+character.physics/150)) * (1+0.25*state.upgrades.forgeworkshop)
 
 func alchemy_progress(character):
-	return 3 + character.wits
+	return 1 + (1*(character.wits/50))
 
 func building_progress(character):
-	return (3 + character.wits/10 + character.physics/20) * (1+0.25*state.upgrades.forgeworkshop)
+	return (1 + character.wits/100 + character.physics/50) * (1+0.25*state.upgrades.forgeworkshop)
 
 #i added to task tamplates link to a corresponding productivity modifier. rewiev these values and fix them if needed 
 #also tried to fix cooking but not sure if all was made
@@ -66,10 +66,10 @@ var tasklist = {
 		workstat = 'physics',
 		worktool = 'bow',
 		production = {
-			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 10, reqs = [], progress_function = 'hunt_meat'},
-			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 100, reqs = [], progress_function = 'hunt_leather'},
-			leatherthickgather = {code = 'leatherthickgather', item = 'leatherthick', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 1}], progress_function = 'hunt_leather'},
-			leathermythicgather = {code = 'leathermythicgather', item = 'leathermythic', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 2}], progress_function = 'hunt_leather'}},
+			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
+			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 6, reqs = [], progress_function = 'hunt_leather'},
+			leatherthickgather = {code = 'leatherthickgather', item = 'leatherthick', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 1}], progress_function = 'hunt_leather'},
+			leathermythicgather = {code = 'leathermythicgather', item = 'leathermythic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 2}], progress_function = 'hunt_leather'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_hunt'
@@ -81,10 +81,10 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'rod',
-		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 9, reqs = [], progress_function = 'fishing'}},
+		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1, reqs = [], progress_function = 'fishing'}},
 		icon = null,
 		tags = [],
-		mod = 'mod_collect'
+		mod = 'mod_hunt'
 	},
 	farming = {
 		code = 'farming',
@@ -93,9 +93,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
-		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming'},
-		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming'},
-		farming_silk = {code = 'farming_silk',item = 'clothsilk', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'resource_gather_clothsilk', value = 1}], progress_function = 'farming'}},
+		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 1.5, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming'},
+		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 1.2, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming'},
+		farming_silk = {code = 'farming_silk',item = 'clothsilk', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_clothsilk', value = 1}], progress_function = 'farming'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
@@ -107,9 +107,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'axe',
-		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 100, reqs = [], progress_function = 'woodcutting_lumber'},
-		woodmagicgather = {code = 'woodmagicgather', item = 'woodmagic', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'resource_gather_woodmagic', value = 1}], progress_function = 'woodmagiccutting_lumber'},
-		woodirongather = {code = 'woodirongather', item = 'woodiron', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'resource_gather_woodiron', value = 1}], progress_function = 'woodmagiccutting_lumber'}},
+		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 6, reqs = [], progress_function = 'woodcutting_lumber'},
+		woodmagicgather = {code = 'woodmagicgather', item = 'woodmagic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_woodmagic', value = 1}], progress_function = 'woodmagiccutting_lumber'},
+		woodirongather = {code = 'woodirongather', item = 'woodiron', progress_per_item = 18, reqs = [{type = "has_upgrade", name = 'resource_gather_woodiron', value = 1}], progress_function = 'woodmagiccutting_lumber'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -121,9 +121,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'pickaxe',
-		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 100, reqs = [], progress_function = 'mining_stone'},
-		gatheriron = {code = 'gatheriron', item = 'iron', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 1}], progress_function = 'mining_stone'},
-		gathermithril = {code = 'gathermithril', item = 'mithril', progress_per_item = 100, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 2}], progress_function = 'mining_stone'}},
+		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 7, reqs = [], progress_function = 'mining_stone'},
+		gatheriron = {code = 'gatheriron', item = 'iron', progress_per_item = 10, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 1}], progress_function = 'mining_stone'},
+		gathermithril = {code = 'gathermithril', item = 'mithril', progress_per_item = 25, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 2}], progress_function = 'mining_stone'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -147,7 +147,7 @@ var tasklist = {
 		workstat = 'wits',
 		production = {cooking = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_cooking.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
 		icon = null,
-		tags = ['tailor'],#????
+		tags = ['cooking'],
 		mod = 'mod_cook'
 	},
 	tailor = {

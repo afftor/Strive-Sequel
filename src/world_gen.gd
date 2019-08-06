@@ -26,6 +26,7 @@ var lands = {
 		guilds = ['workers','servants','fighters','mages'],
 		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
 		capital_shop_items = ['lifeshard'],
+		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
 	},
 	forests = {
 		code = 'forests',
@@ -44,61 +45,62 @@ var lands = {
 		guilds = [],
 		capital_shop_resources = ['grain','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
 		capital_shop_items = [],
+		events = [],
 	},
-	mountains = {
-		code = 'mountains',
-		name = "Mountains",
-		lead_race = 'Dwarf',
-		secondary_races = [],
-		policies = [],
-		travel_time = [12,28],
-		difficulty = 1,
-		disposition = 15,
-		population = [10000, 30000],
-		start_settlements_number = {settlement_small = [1,1]},
-		start_locations_number = 1, 
-		locations = {},
-		locationpool = ['dungeon_goblin_cave'],
-		guilds = [],
-		capital_shop_resources = ['meat','vegetables','iron','steel','leather','bone','mithril','stone','obsidian'],
-		capital_shop_items = [],
-	},
-	steppe = {
-		code = 'steppe',
-		name = "Steppe",
-		lead_race = 'Orc',
-		secondary_races = ['Goblin','Centaur'],
-		policies = [],
-		travel_time = [15,36],
-		difficulty = 1,
-		disposition = 15,
-		population = [10000, 30000],
-		start_settlements_number = {settlement_small = [1,1]},
-		start_locations_number = 2, 
-		locations = {},
-		locationpool = ['dungeon_goblin_cave'],
-		guilds = [],
-		capital_shop_resources = ['meat','fish','iron','leather','leatherthick','bone','boneancient','stone'],
-		capital_shop_items = [],
-	},
-	seas = {
-		code = 'seas',
-		name = "Seas",
-		lead_race = 'Nereid',
-		secondary_races = ['Lamia','Scylla'],
-		policies = [],
-		travel_time = [15,36],
-		difficulty = 1,
-		disposition = 15,
-		population = [10000, 30000],
-		start_settlements_number = {},
-		start_locations_number = 0, 
-		locations = {},
-		locationpool = ['dungeon_bandit_den'],
-		guilds = [],
-		capital_shop_resources = ['fish','leather','leatherthick','bone'],
-		capital_shop_items = [],
-	},
+#	mountains = {
+#		code = 'mountains',
+#		name = "Mountains",
+#		lead_race = 'Dwarf',
+#		secondary_races = [],
+#		policies = [],
+#		travel_time = [12,28],
+#		difficulty = 1,
+#		disposition = 15,
+#		population = [10000, 30000],
+#		start_settlements_number = {settlement_small = [1,1]},
+#		start_locations_number = 1, 
+#		locations = {},
+#		locationpool = ['dungeon_goblin_cave'],
+#		guilds = [],
+#		capital_shop_resources = ['meat','vegetables','iron','steel','leather','bone','mithril','stone','obsidian'],
+#		capital_shop_items = [],
+#	},
+#	steppe = {
+#		code = 'steppe',
+#		name = "Steppe",
+#		lead_race = 'Orc',
+#		secondary_races = ['Goblin','Centaur'],
+#		policies = [],
+#		travel_time = [15,36],
+#		difficulty = 1,
+#		disposition = 15,
+#		population = [10000, 30000],
+#		start_settlements_number = {settlement_small = [1,1]},
+#		start_locations_number = 2, 
+#		locations = {},
+#		locationpool = ['dungeon_goblin_cave'],
+#		guilds = [],
+#		capital_shop_resources = ['meat','fish','iron','leather','leatherthick','bone','boneancient','stone'],
+#		capital_shop_items = [],
+#	},
+#	seas = {
+#		code = 'seas',
+#		name = "Seas",
+#		lead_race = 'Nereid',
+#		secondary_races = ['Lamia','Scylla'],
+#		policies = [],
+#		travel_time = [15,36],
+#		difficulty = 1,
+#		disposition = 15,
+#		population = [10000, 30000],
+#		start_settlements_number = {},
+#		start_locations_number = 0, 
+#		locations = {},
+#		locationpool = ['dungeon_bandit_den'],
+#		guilds = [],
+#		capital_shop_resources = ['fish','leather','leatherthick','bone'],
+#		capital_shop_items = [],
+#	},
 }
 
 
@@ -122,14 +124,11 @@ func make_area(code):
 		
 		
 		input_handler.active_location = location
-		
-		
 	areadata.factions = {}
 	areadata.quests.factions = {}
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
-	areadata.events = []
 
 var guild_upgrades = {
 	slavenumberupgrade = {
@@ -248,6 +247,7 @@ func make_guild(code, area):
 func make_slave_for_guild(guild):
 	var newslave = Slave.new()
 	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
+	newslave.is_known_to_player = true
 	guild.slaves.append(newslave)
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
@@ -1100,6 +1100,7 @@ var pregen_characters = {
 		mouth_virgin = true,
 		ass_size = 'small',
 		tits_size = 'average',
+		tags = ['no_sex'],
 	},
 }
 

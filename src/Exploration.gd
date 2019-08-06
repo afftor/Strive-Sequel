@@ -58,7 +58,7 @@ func open():
 	globals.AddPanelOpenCloseAnimation($ShopPanel)
 	show()
 	
-	input_handler.interactive_message('daisy_meet', 'story_event', [])
+	#input_handler.interactive_message('daisy_meet', 'story_event', [])
 	globals.ClearContainer($AreaSelection)
 	for i in state.areas.values():
 		var newbutton = globals.DuplicateContainerTemplate($AreaSelection)
@@ -105,6 +105,13 @@ func select_category(category):
 			newbutton.text = "Buy Dungeon Location"
 			newbutton.connect("pressed", self, "purchase_location_list")
 			
+			for i in active_area.events:
+				if state.checkreqs(i.reqs) == false:
+					continue
+				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+				newbutton.text = i.text
+				newbutton.connect("pressed", input_handler, "interactive_message", [i.code,'area_oneshot_event',i.args])
+				newbutton.connect("pressed", self, "select_category", [selectedcategory])
 			
 		"locations":
 			for i in active_area.locations.values():
@@ -322,7 +329,6 @@ func guild_hire_slave():
 
 func open_slave_info(character):
 	input_handler.ShowSlavePanel(character)
-	#get_parent().get_node("SlavePanel").open(character)
 
 func open_quest_list():
 	$QuestPanel.show()

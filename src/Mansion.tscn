@@ -237,7 +237,6 @@ text = "1"
 align = 2
 
 [node name="Log" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 464.0
 margin_top = 62.0
 margin_right = 1192.0
@@ -272,17 +271,18 @@ bbcode_enabled = true
 
 [node name="text" type="RichTextLabel" parent="Log/ScrollContainer/VBoxContainer/field"]
 margin_left = 104.0
-margin_right = 585.0
+margin_right = 565.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 bbcode_enabled = true
 
 [node name="date" type="RichTextLabel" parent="Log/ScrollContainer/VBoxContainer/field"]
-margin_left = 589.0
+margin_left = 569.0
 margin_right = 689.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 100, 0 )
+rect_min_size = Vector2( 120, 0 )
 bbcode_enabled = true
+scroll_active = false
 
 [node name="SlaveList" type="Panel" parent="."]
 editor/display_folded = true

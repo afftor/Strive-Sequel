@@ -62,14 +62,14 @@ var Skilllist = {
 		value = ['10'],
 		damagestat = ['loyal'],
 	},
-	rewardsex = {#+35 obedience, +5 loyal, -25 lust (can't be used if lust is lower)
+	rewardsex = {#REDO into dialogue
 		code = 'rewardsex',
 		name = '',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'state', type = 'lust',operant = 'gte', value = 25}],
+		targetreqs = [{code = 'state', type = 'lust', operant = 'gte', value = 25}],
 		effects = [],
 		manacost = 0,
 		charges = 2,
@@ -81,7 +81,7 @@ var Skilllist = {
 		value = [['35'],['5'],['-25']],
 		damagestat = ['obedience','loyal','lust'],
 	},
-	punish = {#+20 obedienc, +50 fear, target exhaustion +20
+	punish = {
 		code = 'punish',
 		name = '',
 		descript = '',
@@ -97,10 +97,10 @@ var Skilllist = {
 		receiverdaylimit = 2,
 		icon = load("res://assets/images/iconsskills/Punish.png"),
 		tags = [],
-		value = [['20'],['50'],['20']],
-		damagestat = ['obedience','fear','exhaustion'],
+		value = [['20'],['50']],
+		damagestat = ['obedience','fear'],
 	},
-	abuse = {#-25 fatigue to caster, +20 obedience to caster, -25 obedience to target, -10 loyal to target, +20 fear to the target, relationship -100
+	abuse = {
 		code = 'abuse',
 		name = '',
 		descript = '',
@@ -116,8 +116,8 @@ var Skilllist = {
 		receiverdaylimit = 4,
 		icon = load("res://assets/images/iconsskills/Punish.png"),
 		tags = [],
-		value = [['-25'],['20'],['-25'],['-10'],['20']],
-		damagestat = ['fatigue','obedience','obedience','loyal','fear'], #add relationship damage later
+		value = [['-15'],['35'],['20'],['-20'], ['15']],
+		damagestat = ['fatigue','obedience','fear','hp','fatigue'],
 		receiver = ['caster','caster','target','target','target']
 	},
 	publichumiliation = {#everyone fear +25, target fear + 60, target exhaustion -25
@@ -203,7 +203,7 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'lust',
 	},
-	seduce = {#lust + 100, obed +50, (has check for preferences, resisted by wits)
+	seduce = {
 		code = 'seduce',
 		name = '',
 		descript = '',
@@ -212,17 +212,17 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [],
-		manacost = 0,
-		energycost = 10,
-		charges = 1,
+		manacost = 10,
+		energycost = 0,
+		charges = 2,
 		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Seduce.png"),
 		tags = [],
-		value = [['100'], ['50']],
+		value = [['25'], ['50']],
 		damagestat = ['lust','obedience']
 	},
-	greatseduce = {#lust + 100, obed +100, loyal +25, Resisted by wits
+	greatseduce = {
 		code = 'greatseduce',
 		name = '',
 		descript = '',
@@ -231,8 +231,8 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [],
-		manacost = 0,
-		energycost = 10,
+		manacost = 25,
+		energycost = 0,
 		charges = 1,
 		cooldown = 4,
 		receiverdaylimit = 1,
@@ -261,7 +261,7 @@ var Skilllist = {
 		value = [['-20'],['target.hp','*-0.2'],['target.mp','*-0.2']],
 		damagestat = ['energy','hp','mp'],
 	},
-	serve = {#target -10 fatigue, -10 exhaustion, +20 energy, +25 obedience
+	serve = {#target -10 fatigue, -10 exhaustion, +30 obedience
 		code = 'serve',
 		name = '',
 		descript = '',
@@ -271,17 +271,17 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [],
 		manacost = 0,
-		charges = 2,
+		charges = 1,
 		cooldown = 1,
 		energycost = 0,
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Serve.png"),
 		tags = [],
-		value = [['25'],['-10'],['-10'],['20']],
-		damagestat = ['obedience','fatigue','exhaustion','energy'],
-		receiver = ['target','target','target','target']
+		value = [['30'],['-10'],['-10']],
+		damagestat = ['obedience','fatigue','exhaustion'],
+		receiver = ['target','target','target']
 	},
-	sedate = {#target +35 obedience
+	sedate = {
 		code = 'sedate',
 		name = '',
 		descript = '',
@@ -297,10 +297,10 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Sedate.png"),
 		tags = [],
-		value = ['35'],
+		value = ['40'],
 		damagestat = 'obedience',
 	},
-	fear = {#target +35 fear
+	fear = {
 		code = 'fear',
 		name = '',
 		descript = '',
@@ -309,7 +309,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [],
-		manacost = 15,
+		manacost = 10,
 		energycost = 0,
 		charges = 1,
 		cooldown = 1,
@@ -347,7 +347,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = ['e_s_shackles1'],
-		manacost = 30,
+		manacost = 25,
 		energycost = 0,
 		charges = 1,
 		cooldown = 1,
@@ -376,7 +376,7 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
-	mindcontrol = {#100 obedience, +50 loyal. Success depends on magic factor and wits vs mf and wits of target
+	mindcontrol = {
 		code = 'mindcontrol',
 		name = '',
 		descript = '',
@@ -392,8 +392,8 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
 		tags = [],
-		value = [['100'], ['50']],
-		damagestat = ['obedience', 'loyal']
+		value = [['100']],
+		damagestat = ['obedience']
 	},
 	hardwork = {#+50% productivity for the day
 		code = 'hardwork',
@@ -1329,6 +1329,32 @@ var Skilllist = {
 	},
 
 #dummyskills
+	master_lust_skill ={
+		code = 'master_lust_skill',
+		name = '',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		manacost = 0,
+		charges = 1,
+		cooldown = 1,
+		energycost = 0,
+		receiverdaylimit = 0,
+		icon = null,
+		tags = ['dialogue_skill'],
+		dialogue_text = '',
+		dialogue_image = null,
+		dialogue_options = [{code = "master_lust_exp", reqs = [], text = '1'},
+		{code = "master_lust_hp", reqs = [], text = '2'},
+		{code = "master_lust_obed", reqs = [], text = '3'},
+		{code = "master_lust_buff", reqs = [], text = '4'},
+		{code = "master_lust_combat_buff", reqs = [], text = '5'}
+		],
+	},
+	
 	master_lust_exp = {#consume all target lust, give 1xp per 1lust to target
 		code = 'master_lust_exp',
 		name = '',
@@ -1345,7 +1371,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = null,
 		tags = [],
-		value = [['-target.lust'],['target.lust']],
+		value = [['target.lust','*-1.0'],['target.lust']],
 		damagestat = ['lust','base_exp'],
 	},
 	master_lust_hp = {#consume all target lust, give 1hp 0.5mp per lust
@@ -1364,7 +1390,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = null,
 		tags = [],
-		value = [['-target.lust'],['target.lust'],['target.lust','*0.5']],
+		value = [['target.lust','*-1.0'],['target.lust'],['target.lust','*0.5']],
 		damagestat = ['lust','hp','mp'],
 	},
 	master_lust_obed = {#consume all target lust, gives 2 obedience and 2 fear per 1 lust
@@ -1383,7 +1409,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = null,
 		tags = [],
-		value = [['-target.lust'],['target.lust','*2'],['target.fear','*2']],
+		value = [['target.lust','*-1.0'],['target.lust','*2'],['target.fear','*2']],
 		damagestat = ['lust','obedience','fear'],
 	},
 	master_lust_buff = {#consume 50 target lust, gives +20% productivity for 3 days buff
@@ -1424,6 +1450,30 @@ var Skilllist = {
 		value = [['50']],
 		damagestat = ['lust'],
 	},
+	succubus_lust_skill ={
+		code = 'succubus_lust_skill',
+		name = '',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		manacost = 0,
+		charges = 1,
+		cooldown = 1,
+		energycost = 0,
+		receiverdaylimit = 0,
+		icon = null,
+		tags = ['dialogue_skill'],
+		dialogue_text = '',
+		dialogue_image = null,
+		dialogue_options = [{code = "succubus_lust_xp_convert", reqs = [], text = '1'},
+		{code = "succubus_lust_hp_convert", reqs = [], text = '2'},
+		{code = "succubus_lust_obed_convert", reqs = [], text = '3'},
+		{code = "succubus_lust_combat_buff", reqs = [], text = '4'}
+		],
+	},
 	succubus_lust_xp_convert = {#consume target lust, receive base exp based on lust consumed
 		code = 'succubus_lust_xp_convert',
 		name = '',
@@ -1440,12 +1490,12 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
 		tags = [],
-		value = [['-target.lust'],['target.lust']],
+		value = [['target.lust','*-1.0'],['target.lust']],
 		damagestat = ['lust','base_exp'],
 		receiver = ['target','caster']
 	},
 	succubus_lust_hp_convert = {#consume target lust, recover 1x hp and 0.75x mana 
-		code = 'master_lust_combat_buff',
+		code = 'succubus_lust_hp_convert',
 		name = '',
 		descript = '',
 		type = 'social',
@@ -1460,7 +1510,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
 		tags = [],
-		value = [['-target.lust'],['target.lust'],['target.lust', '*0.75']],
+		value = [['target.lust','*-1.0'],['target.lust'],['target.lust', '*0.75']],
 		damagestat = ['lust','hp', 'mp'],
 		receiver = ['target','caster', 'caster']
 	},
@@ -1484,7 +1534,49 @@ var Skilllist = {
 		damagestat = ['lust','obedience'],
 		receiver = ['target','caster']
 	},
-	
+	succubus_lust_combat_buff = {#consume 50 target lust, gives +25% atk/matk buff for 2 days
+		code = 'succubus_lust_combat_buff',
+		name = '',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = ['succubus_combat_buff_1'],
+		manacost = 0,
+		charges = 0,
+		cooldown = 0,
+		energycost = 0,
+		receiverdaylimit = 0,
+		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
+		tags = [],
+		value = [['-50']],
+		damagestat = ['lust'],
+	},
+	pet_lust_skill ={
+		code = 'succubus_lust_skill',
+		name = '',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		manacost = 0,
+		charges = 1,
+		cooldown = 1,
+		energycost = 0,
+		receiverdaylimit = 0,
+		icon = null,
+		tags = ['dialogue_skill'],
+		dialogue_text = '',
+		dialogue_image = null,
+		dialogue_options = [{code = "succubus_lust_xp_convert", reqs = [], text = '1'},
+		{code = "succubus_lust_hp_convert", reqs = [], text = '2'},
+		{code = "succubus_lust_obed_convert", reqs = [], text = '3'},
+		{code = "succubus_lust_combat_buff", reqs = [], text = '4'}
+		],
+	},
 	pet_lust_obed_convert = {#consume caster lust, target receive full obedience and "Loyal" buff for 2 days
 		code = 'pet_lust_obed_convert',
 		name = '',
@@ -1521,7 +1613,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
 		tags = [],
-		value = [['-caster.lust'],['caster.lust']],
+		value = [['caster.lust','*-1.0'],['caster.lust']],
 		damagestat = ['lust','base_exp'],
 		receiver = ['caster','target']
 	},
@@ -1541,7 +1633,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
 		tags = [],
-		value = [['-caster.lust'],['caster.lust'],['caster.lust']],
+		value = [['caster.lust','*-1.0'],['caster.lust'],['caster.lust']],
 		damagestat = ['lust','hp','mp'],
 		receiver = ['caster','target','target']
 	},

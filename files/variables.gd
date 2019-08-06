@@ -13,7 +13,7 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
-var dmg_mod_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp']
+var dmg_mod_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp']
 
@@ -52,8 +52,8 @@ var ItemEffectNaturalMultiplier = 0.15
 var all_races_array = []
 var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
 
-var master_starting_classes = ['fighter','archer','worker','smith','apprentice']
-var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith', 'apprentice']
+var master_starting_classes = ['fighter','archer','worker','smith','apprentice','hunter']
+var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith', 'apprentice','hunter']
 
 var master_starting_stats = 10
 var slave_starting_stats = 15
@@ -90,13 +90,13 @@ var basic_hp_regen = 1
 var basic_mp_regen = 0.2
 var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
-
-var basic_energy_per_work_tick = 8.75
+var basic_lust_per_tick = 0.57
+var basic_energy_per_work_tick = 8.33
 
 #Cheats
 var instant_travel = false
-var instant_upgrades = true
-var free_upgrades = true
+var instant_upgrades = false
+var free_upgrades = false
 var skip_combat = false
 var unlock_all_upgrades = false
 var invincible_player = true
@@ -104,6 +104,9 @@ var show_enemy_hp = true
 
 #debug_only
 var allow_remote_intereaction = false
+var no_event_wait_time = false
+var generate_test_chars = true
+
 
 var pregduration = 90
 

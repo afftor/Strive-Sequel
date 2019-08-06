@@ -432,6 +432,7 @@ func _ready():
 		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
 		if i.has('altname'):
 			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
+		
 	
 	for i in Items.materiallist.values():
 		i.name = tr("MATERIAL" + i.code.to_upper())
@@ -445,6 +446,8 @@ func _ready():
 	for i in Skilldata.Skilllist.values():
 		i.name = tr("SKILL" + i.code.to_upper())
 		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
+		if i.has('dialogue_text'):
+			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 	
 	for i in globals.statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())
@@ -629,10 +632,11 @@ func dir_contents(target):
 
 func evaluate(input): #used to read strings as conditions when needed
 	var script = GDScript.new()
-	script.set_source_code("func eval():\n\treturn " + input)
+	script.set_source_code("var active_slave\nfunc eval():\n\treturn " + input)
 	script.reload()
 	var obj = Reference.new()
 	obj.set_script(script)
+	obj.active_slave = input_handler.scene_character
 	return obj.eval()
 
 
@@ -795,6 +799,9 @@ func TextEncoder(text, node = null):
 					startcode += '[url=' + str(counter) + ']'
 					endcode = '[/url]' + endcode
 					counter += 1
+				'check':
+					if evaluate(data[1]) == false:
+						originaltext = ''
 		
 		
 		text = text.replace(newtext, startcode + originaltext + endcode)
@@ -977,8 +984,6 @@ func QuickSave():
 
 
 func SaveGame(name):
-	if state.CurEvent != '':
-		state.CurrentLine = input_handler.GetEventNode().CurrentLine
 #	approach 1, not compatrible with sigletones + still  need reworking
 #	var savedict = {state = null, heroes = [], items = [], workers = []}
 #	savedict.state = inst2dict(state)
@@ -1062,8 +1067,8 @@ func LoadGame(filename):
 #	if state.CurBuild != '' and state.CurBuild != null:
 #		CurrentScene.get_node(state.CurBuild).show()
 #	#opentextscene
-	if state.CurEvent != "":
-		StartEventScene(state.CurEvent, false, state.CurrentLine);
+#	if state.CurEvent != "":
+#		StartEventScene(state.CurEvent, false, state.CurrentLine);
 #	else:
 #		call_deferred('EventCheck');
 

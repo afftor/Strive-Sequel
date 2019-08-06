@@ -230,8 +230,10 @@ func open_jobs_window():
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 		newbutton.text = i.name
-		#newbutton.connect('pressed', self, 'select_job', [i.code])
 		newbutton.connect('pressed', self, 'show_job_details', [i])
+		if person.tags.has('no_sex') && i.tags.has("sex"):
+			newbutton.disabled = true
+			globals.connecttexttooltip(newbutton, person.translate(tr("INTERACTIONSNOSEXTAG")))
 
 var currentjob
 

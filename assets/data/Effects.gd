@@ -92,7 +92,7 @@ var effect_table = {
 	},
 	e_tr_foreman = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'mod_collect', value = 2}],
+		atomic = [{type = 'stat_mul', stat = 'mod_collect', value = 1.33}],
 		buffs = [],
 		sub_effects = [],
 	},

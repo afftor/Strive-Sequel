@@ -177,6 +177,7 @@ func rebuild_slave():
 	var age = person.age
 	person = Slave.new()
 	person.create(race, sex, age)
+	person.is_known_to_player = true
 	if mode == 'master':
 		person.unlock_class('master')
 	
@@ -380,6 +381,7 @@ func build_bodyparts():
 				if i in ['penis_size', 'penis_type', 'balls_size']:
 					$bodyparts2.get_node(i).visible = false
 					$bodyparts2.get_node(i + "_label").visible = false
+					person[i] = ''
 					preservedsettings.erase(i)
 			'futa':
 				if i == 'balls_size':
