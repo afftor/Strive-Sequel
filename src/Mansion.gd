@@ -89,6 +89,7 @@ func _ready():
 	build_task_bar()
 	$SlaveList.rebuild()
 	#$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
+
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):

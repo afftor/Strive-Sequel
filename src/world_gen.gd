@@ -247,8 +247,10 @@ func make_guild(code, area):
 func make_slave_for_guild(guild):
 	var newslave = Slave.new()
 	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
+
+	guild.slaves.append(newslave.id)
 	newslave.is_known_to_player = true
-	guild.slaves.append(newslave)
+
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
 	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])

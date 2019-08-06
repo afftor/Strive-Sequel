@@ -52,6 +52,9 @@ var obed_mods = []
 var fear_mods = []
 var lust_mods = []
 
+var bonuses = {
+}
+
 var obedience = 25.0 setget obed_set, obed_get
 var fear = 70.0 setget fear_set, fear_get
 var lust = 20.0 setget lust_set, lust_get
@@ -61,9 +64,11 @@ var obed_degrade_mod = 1.0
 
 
 var hp = 100 setget hp_set
-var hpmax = 100
+
+var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
-var mpmax = 50
+var mpmax = 50 setget , get_mana_max
+
 var energy := 100.0 setget energy_set
 var energymax = 100
 var energybonus = 0
@@ -97,7 +102,7 @@ var matk = 20
 
 var hitrate = 100
 var evasion = 0
-var resists = {}
+var resists = {} setget ,get_res
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
@@ -107,14 +112,19 @@ var position
 var taunt
 
 
-var hide = false
-var silenced = false
+#var hide = false
+#var silenced = false
+#var disarmed = false
+#var banished 
 var manacost_mod = 1.0
 
 var speed = 0
 
+#enemy AI. do not forget to set to null at end of combat
+var ai = null
 
 #progress stats
+#maybe bonus stats are to remove
 var physics := 0.0
 var physics_bonus := 0.0
 var wits := 0.0
@@ -239,6 +249,96 @@ var masternoun = 'Master'
 #	eff = effects_pool.e_createfromtemplate('e_core_fat_rem')
 #	apply_effect(effects_pool.add_effect(eff))
 
+
+#stub for bonus system
+func get_stat(statname):
+	var res = get(statname)
+	if variables.bonuses_stat_list.has(statname):
+		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
+		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
+	return res
+
+func add_stat(statname, value, revert = false):
+	if variables.direct_access_stat_list.has(statname):
+		if revert: set(statname, get(statname) - value)
+		else: set(statname, get(statname) + value)
+	else:
+		if bonuses.has(statname + '_add'): 
+			if revert: 
+				bonuses[statname + '_add'] -= value
+				if bonuses[statname + '_add'] == 0:
+					bonuses.erase(statname + '_add')
+			else: bonuses[statname + '_add'] += value
+		else: 
+			if revert: print('error bonus not found')
+			else: bonuses[statname + '_add'] = value
+
+func mul_stat(statname, value, revert = false):
+	if variables.direct_access_stat_list.has(statname):
+		if revert: set(statname, get(statname) / value)
+		else: set(statname, get(statname) * value)
+	else:
+		if bonuses.has(statname + '_mul'): 
+			if revert: 
+				bonuses[statname + '_mul'] /= value
+				if bonuses[statname + '_mul'] == 1:
+					bonuses.erase(statname + '_mul')
+			else: bonuses[statname + '_mul'] *= value
+		else: 
+			if revert: print('error bonus not found')
+			else: bonuses[statname + '_mul'] = value
+
+func add_part_stat(statname, value, revert = false):
+	if variables.direct_access_stat_list.has(statname):
+		if revert: set(statname, get(statname) / (1.0 + value))
+		else: set(statname, get(statname) * (1.0 + value))
+	else:
+		if bonuses.has(statname + '_mul'): 
+			if revert:
+				bonuses[statname + '_mul'] -= value
+				if bonuses[statname + '_mul'] == 1:
+					bonuses.erase(statname + '_mul')
+			else: bonuses[statname + '_mul'] += value
+		else: 
+			if revert: print('error bonus not found')
+			else: bonuses[statname + '_mul'] = 1.0 + value
+
+#confirmed getters
+func get_hp_max():
+	#(variables.basic_max_hp*race.hpfactor + hp_scaleble_bonus*race.hpfactor + hp_flat_bonus)*hp_percent_bonus
+	var res = variables.basic_max_hp
+	if bonuses.has('hpmax_add'): res += bonuses.hpmax_add
+	#if races.racelist[race].has('hpfactor'):res *= races.racelist[race].hpfactor
+	if bonuses.has('hp_flat_bonus'): res += bonuses.hp_flat_bonus
+	if bonuses.has('hpmax_mul'): res *= bonuses.hpmax_mul
+	return res
+
+func get_mana_max():
+	#(vairables.basic_max_mp + variables.max_mp_per_magic_factor*10 + mp_flat_bonus)*mp_percent_bonus 
+	var res = variables.basic_max_mp + variables.max_mp_per_magic_factor * get_stat('magic_factor')
+	if bonuses.has('mpmax_add'): res += bonuses.mpmax_add
+	if bonuses.has('mpmax_mul'): res *= bonuses.mpmax_mul
+	return res
+
+func get_res():
+	var res = resists.duplicate()
+	for r in variables.resists_list:
+		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
+		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+	return res
+
+#some AI-related functions
+func need_heal(): #stub. borderlines are subject to tuning
+	if has_status('banish'): return -1.0
+	var rate = hp * 1.0 / self.hpmax
+	if rate < 0.2: return 1.0
+	if rate < 0.4: return 0.5
+	if rate < 0.6: return 0.0
+	if rate < 0.8: return -0.5
+	return -1.0
+
+
+
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
 	
@@ -283,7 +383,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'labor':
 					array = ['physics_factor', 'wits_factor']
 		array = array[randi()%array.size()]
-		self.set(array, self.get(array) + 1)
+		self.set(array, self.get(array) + 1)#initial setup direct access
 		difficulty -= 1
 	difficulty = adjust_difficulty
 	while difficulty > -1:
@@ -301,7 +401,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'labor':
 					array = ['physics', 'wits']
 		array = array[randi()%array.size()]
-		self.set(array, self.get(array) + rand_range(10,20))
+		self.set(array, self.get(array) + rand_range(10,20))#initial setup direct access
 		difficulty -= 1
 	
 	#assign classes
@@ -329,7 +429,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		rolls -= 1
 	
 	for i in ['physics', 'wits','sexuals', 'charm']:
-		set(i, min(self.get(i), self.get(i+'_factor')*20))
+		set(i, min(self.get(i), self.get(i+'_factor')*20)) #initial setup direct access
 
 func get_class_list(category, person):
 	var array = []
@@ -445,8 +545,9 @@ func get_racial_features():
 	for i in race_template.basestats:
 		self.set(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
 	for i in race_template.racetrait:
+
 		if i == 'hpfactor':
-			self.hpmax = variables.basic_max_hp*race_template.racetrait[i]
+			self.hpmax = variables.basic_max_hp*race_template.racetrait[i] #wrong, this shoould be stored some way to use in hpmax getter
 		else:
 			self.set(i, self.get(i) + race_template.racetrait[i])
 	for i in race_template.bodyparts:
@@ -516,7 +617,7 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 		match i.code:
 			'stat':
 				if ignore_npc_stats_gear == false || !i.type in ['physics','wits','charm','sexuals']:
-					check = input_handler.operate(i.operant, self.get(i.type), i.value)
+					check = input_handler.operate(i.operant, self.get_stat(i.type), i.value)
 			'has_profession':
 				check = professions.has(i.value) == i.check
 			'race_is_beast':
@@ -1091,7 +1192,9 @@ func work_tick():
 				state.selected_upgrade.code = ''
 	else:
 		work_tick_values(currenttask)
-		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity*get(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+
+		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(get_stat('productivity')*get_stat(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
@@ -1350,23 +1453,31 @@ func apply_atomic(template):
 		'mana':
 			mana_update(template.value)
 			pass
-		'stat_set', 'stat_set_revert':
+		'stat_set', 'stat_set_revert': #use this on direct-accessed stats
 			template.buffer = get(template.stat)
 			set(template.stat, template.value)
 		'stat_add':
-			set(template.stat, get(template.stat) + template.value)
-		'stat_mul':
-			set(template.stat, get(template.stat) * template.value)
+			add_stat(template.stat, template.value)
+		'stat_mul':#do not mix add_part and mul for the sake of logic
+			mul_stat(template.stat, template.value)
+		'stat_add_part':
+			add_part_stat(template.stat, template.value)
+		'bonus': #reverting those effect can not clear no-bonus entries, so be careful not to overuse those
+			if bonuses.has(template.bonusname): bonuses[template.bonusname] += template.value
+			else: bonuses[template.bonusname] = template.value
 		'signal':
 			#stub for signal emitting
 			globals.emit_signal(template.value)
 		'remove_effect': 
 			remove_temp_effect_tag(template.value)
 		'add_trait':
-			#to implement, since this part was not transfered from displaced
-			pass
+			get_trait(template.trait)
 		'event':
 			process_event(template.value)
+		'resurrect':
+			if is_active: return
+			self.hp = template.value
+			is_active = true
 
 
 func remove_atomic(template):
@@ -1374,9 +1485,14 @@ func remove_atomic(template):
 		'stat_set_revert':
 			set(template.stat, template.buffer)
 		'stat_add':
-			set(template.stat, get(template.stat) - template.value)
+			add_stat(template.stat, template.value, true)
 		'stat_mul':
-			set(template.stat, get(template.stat) / template.value)
+			mul_stat(template.stat, template.value, true)
+		'stat_add_part':
+			add_part_stat(template.stat, template.value, true)
+		'bonus':
+			if bonuses.has(template.bonusname): bonuses[template.bonusname] -= template.value
+			else: print('error bonus not found')
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -1472,7 +1588,7 @@ func set_position(new_pos):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static': 
+		'static', 'c_static': 
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
@@ -1534,6 +1650,30 @@ func can_act():
 			res = false
 	return res
 
+func can_evade():
+	var res = can_act()
+	if has_status('defend'): res = false
+	return res
+
+func has_status(status):
+	var res = false
+	for e in static_effects + temp_effects + triggered_effects:
+		var obj = effects_pool.get_effect_by_id(e)
+		if obj.template.has(status):
+			res = true
+	return res
+
+func can_be_damaged(s_name):
+	var skill = Skilldata.Skilllist[s_name]
+	match skill.ability_type:
+		'skill': return !has_status('banish')
+		'spell': return !has_status('void')
+
+func get_skill_by_tag(tg):
+	for s in combat_skills:
+		var s_f = Skilldata.Skilllist[s]
+		if s_f.tags.has(tg): return s
+
 func calculate_number_from_string_array(array):
 	var endvalue = 0
 	var firstrun = true
@@ -1543,7 +1683,7 @@ func calculate_number_from_string_array(array):
 			i = i.split('.')
 			if i[0] == 'caster':
 				#modvalue = str(self[i[1]])
-				modvalue = str(get(i[1]))
+				modvalue = str(get_stat(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
 		if !modvalue[0].is_valid_float():
@@ -1564,13 +1704,13 @@ func process_check(check):
 		return res
 	else: return simple_check(check)
 
-func simple_check(req):#Gear, Race, Types, Resists, stats
+func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 	var result
 	match req.type:
 		'chance':
 			result = (randf()*100 < req.value);
 		'stats':
-			result = input_handler.operate(req.operant, self.get(req.name), req.value)
+			result = input_handler.operate(req.operant, self.get_stat(req.name), req.value)
 		'gear':
 			match req.slot:
 				'any':
@@ -1593,6 +1733,12 @@ func simple_check(req):#Gear, Race, Types, Resists, stats
 		'race_group':
 			#stub to implement humanoid and non-humanoid checks
 			pass
+		'trait':
+			result = traits.has('req.value')
+		'not_trait':
+			result = !traits.has('req.value')
+		'dead':
+			result = !is_active
 	return result
 
 var shield = 0
@@ -1633,7 +1779,7 @@ func mana_update(value):
 	#process_event(variables.TR_HEAL)
 	return tmp
 
-func stat_update(stat, value):
+func stat_update(stat, value): #for permanent changes
 	var tmp = get(stat)
 	value = round(value)
 	if variables.dmg_rel_list.has(stat): set(stat, tmp + value)
@@ -1641,6 +1787,12 @@ func stat_update(stat, value):
 	if tmp != null: tmp = get(stat) - tmp
 	else:  tmp = get(stat)
 	return tmp
+
+func resurrect(hp_per):
+	if !defeated: return
+	defeated = false
+	hp = int(hpmax * hp_per /100)
+	pass
 
 func get_all_buffs():
 	var res = {}

@@ -297,12 +297,13 @@ func open_slave_list():
 	$HirePanel/Button.hide()
 	globals.ClearContainer($HirePanel/VBoxContainer)
 	for i in active_faction.slaves:
+		var tchar = characters_pool.get_char_by_id(i)
 		var newbutton = globals.DuplicateContainerTemplate($HirePanel/VBoxContainer)
-		newbutton.get_node("name").text = i.name
-		newbutton.get_node("Price").text = str(i.calculate_price())
-		newbutton.connect('signal_RMB',self,'open_slave_info', [i])
-		newbutton.connect("pressed", self, "select_slave_in_guild", [i])
-		globals.connectslavetooltip(newbutton, i)
+		newbutton.get_node("name").text = tchar.name
+		newbutton.get_node("Price").text = str(tchar.calculate_price())
+		newbutton.connect('signal_RMB',self,'open_slave_info', [tchar])
+		newbutton.connect("pressed", self, "select_slave_in_guild", [tchar])
+		globals.connectslavetooltip(newbutton, tchar)
 
 var selectedperson
 
@@ -690,7 +691,7 @@ func enter_dungeon():
 	while completed_floors > 0:
 		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = 'Level: ' + str(completed_floors)
-		if active_location.progress.level > completed_floors || (active_location.progress.level == completed_floors && active_location.progress.stage >= active_location.levels[active_location.progress.level].stages):
+		if active_location.progress.level > completed_floors || (active_location.progress.level == completed_floors && active_location.progress.stage >= active_location.levels[int(active_location.progress.level)].stages):
 			newbutton.text += "(completed)"
 		newbutton.connect("pressed",self,"enter_level", [completed_floors])
 		completed_floors -= 1

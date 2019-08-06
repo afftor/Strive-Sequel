@@ -2707,3 +2707,26 @@ var buffs = {
 #	cripple = {icon = load("res://assets/images/traits/speeddebuf.png"), description = "Damage Reduced"},
 #	dwarwnbuf_icon = {icon = load("res://assets/images/traits/beastdamage.png"), description = "Damage increases when taking damage"},
 };
+
+func rebuild_template(args):
+	var res = {
+		type = 'trigger',
+		req_skill = true,
+		trigger = [],
+		conditions = [],
+		buffs = [],
+		sub_effects = []
+	}
+	if args.has('trigger'): res.trigger.push_back(args.trigger) #for simplicity only one trigger type can be passed
+	else: res.trigger.push_back(variables.TR_POSTDAMAGE)
+	
+	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
+	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
+	
+	if args.has('chance'): res.conditions.push_back({type = 'random', value = args.chance})
+	
+	if args.has('duration'):
+		res.duration = args.duration
+	res.sub_effects.push_back(args.effect)
+	
+	return res

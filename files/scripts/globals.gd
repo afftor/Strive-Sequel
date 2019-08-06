@@ -19,6 +19,7 @@ var scenedict = {
 	mansion = "res://src/Mansion.tscn"
 	
 }
+var rng := RandomNumberGenerator.new()
 
 #var items
 #var TownData
@@ -39,6 +40,8 @@ var skills
 var effects
 var combateffects
 var explorationares 
+
+var combat_node = null
 
 var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",
@@ -420,7 +423,8 @@ func _init():
 func _ready():
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
-	randomize()
+	randomize() #for legacy code sake
+	rng.randomize()
 	#Settings and folders
 	settings_load()
 	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
@@ -473,6 +477,7 @@ func _ready():
 	for i in worktoolnames:
 		worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
 	
+
 	for i in world_gen.dungeons.values():
 		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
 	
@@ -489,6 +494,7 @@ func _ready():
 #			text += k.name + ' = "' + k.code + '",\n'
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 	
+
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true

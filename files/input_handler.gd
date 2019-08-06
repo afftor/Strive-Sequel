@@ -609,6 +609,7 @@ func string_to_math(value = 0, string = ''):
 	return value
 	
 func weightedrandom(array): #array must be made out of dictionaries with {value = name, weight = number} Number is relative to other elements which may appear
+#alternative option is to use array of arrays of format [value, weight]
 	var total = 0
 	var counter = 0
 	for i in array:
@@ -620,11 +621,11 @@ func weightedrandom(array): #array must be made out of dictionaries with {value 
 	for i in array:
 		if typeof(i) == TYPE_DICTIONARY:
 			if counter + i.weight >= random:
-				return i
+				return i #!!
 			counter += i.weight
 		else:
 			if counter + i[1] >= random:
-				return i[0]
+				return i[0] # strangely, array version returns value directly, while dict version returnt full dictionary
 			counter += i[1]
 
 func open_shell(string):

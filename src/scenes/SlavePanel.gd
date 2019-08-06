@@ -30,13 +30,17 @@ func _ready():
 		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
+
 		get_node("job_panel/job_details/WorkDetailsPanel/"+i).connect("pressed", self, "change_hours", [i])
+
 	
 	###############
 	
 	$controls/ClassButton.connect("pressed",self ,'open_class_selection')
 	globals.AddPanelOpenCloseAnimation($job_panel)
+
 	globals.AddPanelOpenCloseAnimation($DietPanel)
+
 	$job_panel.move_child($job_panel/CloseButton, 3)
 	
 	$job_panel/job_details/SimpleBehaviorCheck.connect("pressed", self, "check_simple_behavior")
@@ -253,9 +257,11 @@ func show_job_details(job):
 	$job_panel/job_details/RichTextLabel.bbcode_text = text
 	globals.ClearContainer($job_panel/job_details/ResourceOptions)
 	
+
 	$job_panel/job_details/WorkDetailsPanel.visible = !person.work_simple
 	$job_panel/job_details/SimpleBehaviorCheck.pressed = person.work_simple
 	
+
 	for i in job.production.values():
 		if state.checkreqs(i.reqs) == false:
 			continue
@@ -314,10 +320,12 @@ func change_hours(stat):
 	update_hours()
 
 func update_hours():
+
 	$job_panel/job_details/WorkDetailsPanel/worklabel.text = str(person.workhours)
 	$job_panel/job_details/WorkDetailsPanel/restlabel.text = str(person.resthours)
 	$job_panel/job_details/WorkDetailsPanel/joylabel.text = str(person.joyhours)
 	$job_panel/job_details/WorkDetailsPanel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
+
 	if currentjob != null:
 		show_job_details(currentjob)
 
