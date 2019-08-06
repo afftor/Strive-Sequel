@@ -31,7 +31,33 @@ func createfromtemplate(tmp):
 
 func apply():
 	.apply()
-	if template.has('duration'): remains = template.duration
+	if template.has('duration'): 
+		if typeof(template.duration) == TYPE_STRING:
+			match template.duration:
+				'parent':
+					var par
+					if typeof(parent) == TYPE_STRING:
+						par = effects_pool.get_effect_by_id(parent)
+					else:
+						par = parent
+					if par != null:
+						remains = int(par.duration)
+					else:
+						print('error in template %s' % template_name)
+						remains = -1
+				'parent_arg':
+					var par
+					if typeof(parent) == TYPE_STRING:
+						par = effects_pool.get_effect_by_id(parent)
+					else:
+						par = parent
+					if par != null:
+						remains = int(par.get_arg('duration'))
+					else:
+						print('error in template %s' % template_name)
+						remains = -1
+		else:
+			remains = template.duration
 	var obj = get_applied_obj()
 	for eff in sub_effects:
 		obj.apply_effect(eff)

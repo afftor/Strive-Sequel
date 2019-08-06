@@ -126,7 +126,7 @@ func selectupgrade(upgrade):
 func findupgradelevel(upgrade):
 	var rval = 1
 	if state.upgrades.has(upgrade.code):
-		rval += state.upgrades[upgrade.code]
+		rval = state.upgrades[upgrade.code]
 	return rval
 
 func unlockupgrade():

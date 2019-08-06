@@ -13,12 +13,25 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
-var dmg_mod_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
+var dmg_mod_list = ['damage_hp', 'restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
+#list for values modified bu random_mod
+var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 
 var resists_list = ['fire','earth','air','water']
 var fighter_stats_list = ['hp','mana','damage','armor','mdef','hitrate','evasion','armorpenetration','speed']
+
+#list for stats with stored bonuses that use generic getter (not custom getter!!)
+#to add them all :)
+var bonuses_stat_list = ['productivity', 'mod_collect', ]
+#list for stats that do not uses bonuses system
+#imho must include all of dmg_rel stats
+var direct_access_stat_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
+
+
+#mode for applying absolute random damage mod
+const relative_random_add = true
 
 const playerparty = [1, 2, 3, 4, 5, 6]
 const enemyparty = [7, 8, 9, 10, 11, 12]
@@ -75,6 +88,13 @@ var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
 var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 
 #Slave values
+var basic_max_hp = 100
+var basic_max_mp = 30
+var basic_hp_regen = 1
+var basic_mp_regen = 0.2
+var mp_regen_per_magic = 0.1
+var max_mp_per_magic_factor = 10
+
 var basic_energy_per_work_tick = 8.75
 
 #Cheats

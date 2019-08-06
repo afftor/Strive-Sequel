@@ -29,7 +29,7 @@ func cleanup():
 
 func remove_id(id):
 	for eff in effects.values():
-		if eff.parent == id:
+		if typeof(eff.parent) == TYPE_STRING and eff.parent == id:
 			eff.parent = null
 		if eff.sub_effects.has(id):
 			eff.sub_effects.erase(id)
