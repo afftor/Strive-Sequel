@@ -3,7 +3,7 @@ extends Control
 #warning-ignore-all:return_value_discarded
 var gamepaused_nonplayer = false
 var gamepaused = false
-var gamespeed = 1
+var gamespeed = 0
 var gametime = 0
 var previouspeed = 0
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
@@ -11,8 +11,6 @@ onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2s
 
 func _ready():
 	globals.CurrentScene = self
-	
-	
 	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
@@ -33,20 +31,30 @@ func _ready():
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	
 	
-	state.money = 500
-	state.log_node = $TextLog
+	#state.money = 500
+	state.log_node = $Log
 	
 	state.connect("task_added", self, 'build_task_bar')
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
-	if globals.start_new_game == false:
+	if variables.generate_test_chars:
 		var character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('BeastkinCat', 'male', 'random')
+		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
+#		character.unlock_class("dancer")
+#		character.unlock_class("caster")
+		for i in Skilldata.Skilllist:
+			if Skilldata.Skilllist[i].type != 'social':
+				continue
+			character.social_skills.append(i)
 		character.is_players_character = true
+#		globals.impregnate(character, character)
+#		character.pregnancy.duration = 1
+		
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
@@ -57,18 +65,31 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.is_players_character = true
-		$SlaveList.rebuild()
+		
+#		character = Slave.new()
+#		character.generate_predescribed_character(world_gen.pregen_characters.Daisy)
+#		characters_pool.move_to_state(character.id)
+#		character.get_trait('core_trait')
+#		character.is_players_character = true
+		
+		
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
+		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
-	else:
+		$SlaveList.rebuild()
+	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
 	
-	
+	build_task_bar()
+	$SlaveList.rebuild()
+	#$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
+
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):
@@ -106,11 +127,11 @@ func _process(delta):
 		$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
 		if gametime >= variables.SecondsPerHour:
 			gametime -= variables.SecondsPerHour
-			state.emit_signal("hour_tick")
 			state.hour += 1
 			if state.hour >= variables.HoursPerDay:
 				state.hour = 0
 				state.date += 1
+				state.daily_interactions_left = 1
 				for i in state.characters.values():
 					i.cooldown_tick()
 				for i in state.areas.values():
@@ -119,6 +140,7 @@ func _process(delta):
 				i.tick()
 			
 			$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
+			state.emit_signal("hour_tick")
 
 
 
@@ -146,7 +168,7 @@ func build_task_bar():
 	for i in state.active_tasks:
 		var newnode = globals.DuplicateContainerTemplate($TaskProgress/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = races.tasklist[i.code].name
-		if i.code in ['alchemy','tailor','cooking','smith']:
+		if i.code in ['alchemy','tailor','cooking','smith','cooking']:
 			if state.craftinglists[i.code].size() <= 0:
 				newnode.hide()
 			else:
@@ -156,6 +178,8 @@ func build_task_bar():
 				var recipe = Items.recipes[state.craftinglists[i.code][0].code]
 				if recipe.resultitemtype == 'material':
 					newnode.get_node("icon").texture = Items.materiallist[state.craftinglists[i.code][0].code].icon
+					newnode.get_node("icon/Label").show()
+					newnode.get_node("icon/Label").text = str(state.materials[state.craftinglists[i.code][0].code])
 				else:
 					newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
 				if state.craftinglists[i.code][0].has('partdict'):
@@ -177,6 +201,8 @@ func build_task_bar():
 			newnode.get_node("icon").texture = Items.materiallist[races.tasklist[i.code].production[i.product].item].icon
 			newnode.get_node("ProgressBar").max_value = i.threshhold
 			newnode.get_node("ProgressBar").value = i.progress
+			newnode.get_node("icon/Label").show()
+			newnode.get_node("icon/Label").text = str(state.materials[races.tasklist[i.code].production[i.product].item])
 		newnode.set_meta("dict", i)
 		
 
@@ -184,13 +210,31 @@ func update_task_bar():
 	for i in $TaskProgress/ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta("dict"):
 			var task = i.get_meta('dict')
-			if task.code in ['alchemy','tailor','cook','smith']:
+			var text = 'Active workers: '
+			for i in i.workers:
+				text += "\n" + state.characters[i].name
+			globals.connecttexttooltip(i, text)
+			if task.code in ['alchemy','tailor','cook','smith','cooking']:
 				if state.craftinglists[task.code].size() <= 0:
 					i.hide()
 				else:
 					i.show()
+					var recipe = Items.recipes[state.craftinglists[task.code][0].code]
 					i.get_node("ProgressBar").max_value = state.craftinglists[task.code][0].workunits_needed
 					i.get_node("ProgressBar").value = state.craftinglists[task.code][0].workunits
+					if recipe.resultitemtype == 'material':
+						i.get_node("icon").texture = Items.materiallist[state.craftinglists[task.code][0].code].icon
+						i.get_node("icon/Label").show()
+						i.get_node("icon/Label").text = str(state.materials[state.craftinglists[task.code][0].code])
+					else:
+						i.get_node("icon").texture = Items.itemlist[state.craftinglists[task.code][0].code].icon
+					if state.craftinglists[task.code][0].has('partdict'):
+						i.get_node('icon').material = load("res://files/ItemShader.tres").duplicate()
+						var itemtemplate = Items.itemlist[state.craftinglists[task.code][0].code]
+						for k in state.craftinglists[task.code][0].partdict:
+							var part = 'part' +  str(itemtemplate.partcolororder[k]) + 'color'
+							var color = Items.materiallist[state.craftinglists[task.code][0].partdict[k]].color
+							i.get_node("icon").material.set_shader_param(part, color)
 			elif task.code == 'building':
 				if state.selected_upgrade.code == '':
 					i.hide()
@@ -202,6 +246,15 @@ func update_task_bar():
 			else:
 				i.visible = task.workers.size() != 0
 				i.get_node("ProgressBar").value = task.progress
+				i.get_node("icon/Label").text = str(state.materials[races.tasklist[task.code].production[task.product].item])
+	
+
+func show_task_workers(newnode):
+	input_handler.MousePositionScripts.append({nodes = [newnode], targetnode = self, script = 'hide_task_workers'})
+	var data = newnode.get_meta("dict")
+
+func hide_task_workers():
+	pass
 
 func open_inventory():
 	input_handler.ShowInentory({mode = 'all'})

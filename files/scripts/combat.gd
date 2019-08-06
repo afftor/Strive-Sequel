@@ -82,7 +82,7 @@ func _process(delta):
 	pass
 
 
-func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme'):
+func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
 	globals.combat_node = self
 	$Combatlog/RichTextLabel.clear()
@@ -95,7 +95,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'combatthem
 	allowaction = false
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
-	buildenemygroup(enemygroup)
+	buildenemygroup(enemygroup, enemy_stats_mod)
 	buildplayergroup(playergroup)
 	#victory()
 	#start combat triggers
@@ -222,23 +222,63 @@ func victory():
 	
 	input_handler.PlaySound("victory")
 	
-	rewardsdict = {materials = {}, items = [], xp = 0}
+	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
 		if i == null: #not sure why was this check added
 			continue
 		var tchar = characters_pool.get_char_by_id(i)
 		rewardsdict.xp += tchar.xpreward
 		var loot = {}
-		if Enemydata.loottables[tchar.loottable].has('materials'):
-			for j in Enemydata.loottables[tchar.loottable].materials:
-				if randf()*100 <= j.chance:
-					loot[j.code] = round(rand_range(j.min, j.max))
-			globals.AddOrIncrementDict(rewardsdict.materials, loot)
-		if Enemydata.loottables[tchar.loottable].has('usables'):
-			for j in Enemydata.loottables[tchar.loottable].usables:
-				if randf()*100 <= j.chance:
-					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
-					rewardsdict.items.append(newitem)
+		for i in Enemydata.loottables[tchar.loottable]:
+			if i[0] == 'gold':
+				var counter = 1
+				if i.size() > 2:
+					counter = i[2]
+				if i[1] >= 1:
+					rewardsdict.gold += i[2]
+				else:
+					while counter > 0:
+						if randf() >= i[1]:
+							rewardsdict.gold += 1
+						counter -= 1
+			elif Items.materiallist.has(i[0]):
+				var counter = 1
+				if i.size() > 2:
+					counter = i[2]
+				while counter > 0:
+					if randf() >= i[1]:
+						globals.AddOrIncrementDict(loot, {i[0] : 1})
+					counter -= 1
+				globals.AddOrIncrementDict(rewardsdict.materials, loot)
+			elif Items.itemlist.has(i[0]):
+				var itemtemp = Items.itemlist[i[0]]
+				var counter = 1
+				if i.size() > 2:
+					counter = i[2]
+				while counter > 0:
+					if randf() >= i[1]:
+						if itemtemp.type == 'usable':
+							var itemfound = false
+							for k in rewardsdict.items:
+								if k.itembase == i[0]:
+									k.amount += 1
+									itemfound = true
+									break
+							if itemfound == false:
+								var newitem = globals.CreateUsableItem(i[0])
+								rewardsdict.items.append(newitem)
+					counter -= 1
+		
+#		if Enemydata.loottables[tchar.loottable].has('materials'):
+#			for j in Enemydata.loottables[tchar.loottable].materials:
+#				if randf()*100 <= j.chance:
+#					loot[j.code] = round(rand_range(j.min, j.max))
+#			globals.AddOrIncrementDict(rewardsdict.materials, loot)
+#		if Enemydata.loottables[tchar.loottable].has('usables'):
+#			for j in Enemydata.loottables[tchar.loottable].usables:
+#				if randf()*100 <= j.chance:
+#					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
+#					rewardsdict.items.append(newitem)
 	
 	globals.ClearContainerForced($Rewards/HBoxContainer/first)
 	globals.ClearContainerForced($Rewards/HBoxContainer/second)
@@ -561,6 +601,7 @@ func ShowFighterStats(fighter):
 #
 #	for i in ['fire','water','earth','air']:
 #		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.resists[i]) + " "
+
 	$StatsPanel.show()
 	$StatsPanel/name.text = tr(fighter.name)
 	#$StatsPanel/descript.text = fighter.flavor
@@ -583,7 +624,7 @@ func FighterPress(pos):
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
 
-func buildenemygroup(enemygroup):
+func buildenemygroup(enemygroup, enemy_stats_mod):
 	for i in range(1,7):
 		if enemygroup[i] != null:
 			enemygroup[i+6] = enemygroup[i]
@@ -599,11 +640,16 @@ func buildenemygroup(enemygroup):
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
+    
 		#stub for AI setuping, need func in charclass for it
 		tchar.ai = ai_base.new()
 		tchar.ai.set_single_state({})
 		tchar.ai.app_obj = tchar
 		
+		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
+			tchar.set(i, tchar.get(i) * enemy_stats_mod)
+		tchar.hp = tchar.hpmax
+
 		enemygroup[i] = characters_pool.add_char(tchar)
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
@@ -640,7 +686,6 @@ func summon(montype, limit):
 	enemygroup[sum_pos] = characters_pool.add_char(tchar)
 	battlefield[sum_pos] = enemygroup[sum_pos];
 	make_fighter_panel(battlefield[sum_pos], sum_pos);
-
 
 
 func use_skill(skill_code, caster, target):

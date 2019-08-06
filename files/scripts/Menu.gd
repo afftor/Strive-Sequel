@@ -42,9 +42,8 @@ func continueb():
 func newgame():
 	#state = load("res://src/gamestate.gd").new()
 	globals.start_new_game = true
-	
+	state.revert()
 	state.newgame = true
-	state._ready()
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('mansion')
 	yield(globals, 'scene_changed')

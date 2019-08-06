@@ -85,14 +85,14 @@ func update_mana():
 
 func update_hp_label():
 	$HP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
-	if fighter.combatgroup == 'ally':
+	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax)
 	else:
 		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax))) + '%'
 
 func update_mp_label():
 	$MP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
-	if fighter.combatgroup == 'ally':
+	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$mplabel.text = str(fighter.mp) + '/' + str(fighter.mpmax)
 	else:
 		$mplabel.text = str(round(globals.calculatepercent(fighter.mp, fighter.mpmax))) + '%'

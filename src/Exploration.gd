@@ -24,12 +24,33 @@ func _ready():
 		i.connect("pressed",self,"select_category", [i.name])
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
+		get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
 	
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
 		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
 		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
 
+func show_heal_items(position):
+	if get_node(positiondict[position] + "/Image").visible == true:
+		input_handler.MousePositionScripts.append({nodes = [$Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
+		$Positions/itemusepanel.show()
+		$Positions/itemusepanel.rect_global_position.y = get_node(positiondict[position] + "/Image").rect_global_position.y - $Positions/itemusepanel.rect_size.y
+		globals.ClearContainer($Positions/itemusepanel/GridContainer)
+		for i in state.items.values():
+			if Items.itemlist[i.itembase].has('explor_effect') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+			newbutton.get_node("Label").text = str(i.amount)
+			i.set_icon(newbutton)
+			globals.connectitemtooltip(newbutton, i)
+			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
 
+func use_item_on_character(position, item):
+	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	build_location_group()
+
+func hide_heal_items():
+	$Positions/itemusepanel.hide()
 
 func open():
 	globals.AddPanelOpenCloseAnimation($QuestPanel)
@@ -37,6 +58,7 @@ func open():
 	globals.AddPanelOpenCloseAnimation($ShopPanel)
 	show()
 	
+	#input_handler.interactive_message('daisy_meet', 'story_event', [])
 	globals.ClearContainer($AreaSelection)
 	for i in state.areas.values():
 		var newbutton = globals.DuplicateContainerTemplate($AreaSelection)
@@ -77,7 +99,20 @@ func select_category(category):
 				newbutton.connect("pressed", self, "enter_guild", [i])
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = "Shop"
-			newbutton.connect("pressed", self, "open_shop")
+			newbutton.connect("pressed", self, "open_shop", ['area'])
+			
+			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.text = "Buy Dungeon Location"
+			newbutton.connect("pressed", self, "purchase_location_list")
+			
+			for i in active_area.events:
+				if state.checkreqs(i.reqs) == false:
+					continue
+				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+				newbutton.text = i.text
+				newbutton.connect("pressed", input_handler, "interactive_message", [i.code,'area_oneshot_event',i.args])
+				newbutton.connect("pressed", self, "select_category", [selectedcategory])
+			
 		"locations":
 			for i in active_area.locations.values():
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -101,6 +136,7 @@ func select_category(category):
 					newbutton.text += ' ('+str(presented_characters.size())+')'
 				newbutton.connect("pressed", self, "enter_location", [i])
 
+var active_shop = {}
 var shopcategory
 
 func select_shop_category(category):
@@ -110,23 +146,69 @@ func select_shop_category(category):
 	shopcategory = category
 	update_shop_list()
 
-func open_shop():
+func open_shop(shop):
 	$ShopPanel.show()
+	match shop:
+		'area':
+			active_shop.materials = active_area.capital_shop_resources
+			active_shop.items = active_area.capital_shop_items
+		'location':
+			active_shop.materials = active_location.shop_resources
+			active_shop.items = active_location.shop_items
 	shopcategory = 'buy'
 	update_shop_list()
 
+var tempitems = []
+
 func update_shop_list():
 	globals.ClearContainer($ShopPanel/ScrollContainer/VBoxContainer)
+	tempitems.clear()
 	match shopcategory:
 		'buy':
-			for i in active_area.capital_shop_resources:
+			for i in active_shop.materials:
 				var item = Items.materiallist[i]
+				var amount = -1
+				if typeof(active_shop.materials) == TYPE_DICTIONARY:
+					amount = active_shop.materials[i]
+				if amount == 0:
+					continue
 				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
 				newbutton.get_node("name").text = item.name
 				newbutton.get_node("icon").texture = item.icon
 				newbutton.get_node("price").text = str(item.price)
-				newbutton.connect("pressed",self,"item_purchase", [item])
+				newbutton.connect("pressed",self,"item_purchase", [item, amount])
 				globals.connectmaterialtooltip(newbutton, item, 'material')
+				if amount > 0:
+					newbutton.get_node("amount").text = str(amount)
+					newbutton.get_node("amount").show()
+			for i in active_shop.items:
+				var item = Items.itemlist[i]
+				var amount = -1
+				if item.has('parts'):
+					amount = 1
+				else:
+					if typeof(active_shop.items) == TYPE_DICTIONARY:
+						amount = active_shop.items[i]
+					if amount == 0:
+						continue
+				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
+				newbutton.get_node("name").text = item.name
+				newbutton.get_node("icon").texture = item.icon
+				newbutton.get_node("price").text = str(item.price)
+				if item.has('parts'):
+					var newitem = globals.CreateGearItem(i, active_shop.items[i])
+					newitem.set_icon(newbutton.get_node('icon'))
+					newbutton.get_node("name").text = newitem.name
+					tempitems.append(newitem)
+					globals.connectitemtooltip(newbutton, newitem)
+					newbutton.get_node("price").text = str(newitem.calculateprice())
+					newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
+				else:
+					globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
+					newbutton.connect('pressed', self, "item_purchase", [item, amount])
+				if amount > 0:
+					newbutton.get_node("amount").text = str(amount)
+					newbutton.get_node("amount").show()
 		'sell':
 			for i in state.materials:
 				if state.materials[i] <= 0:
@@ -143,19 +225,47 @@ func update_shop_list():
 
 var purchase_item
 
-func item_purchase(item):#(targetnode = null, targetfunction = null, text = '', cost = 0, minvalue = 0, maxvalue = 100, requiregold = false)
+func item_purchase(item, amount):#(targetnode = null, targetfunction = null, text = '', cost = 0, minvalue = 0, maxvalue = 100, requiregold = false)
 	purchase_item = item
-	$NumberSelection.open(self, 'item_puchase_confirm', "Purchase $n " + item.name + "? Total cost: $m", item.price, 0, 100, true)
+	if amount < 0:
+		amount = 100
+	var price = 0
+	if typeof(item) == TYPE_OBJECT:
+		price = item.calculateprice()
+	else:
+		price = item.price
+	$NumberSelection.open(self, 'item_puchase_confirm', "Purchase $n " + item.name + "? Total cost: $m", price, 0, amount, true)
 
 func item_sell(item):
 	purchase_item = item
 	$NumberSelection.open(self, 'item_sell_confirm', "Sell $n " + item.name + "? Gained gold: $m", item.price, 0, state.materials[item.code], false)
 
 func item_puchase_confirm(value):
-	state.set_material(purchase_item.code, '+', value)
-	state.money -= purchase_item.price*value
-	$Gold.text = str(state.money)
-	update_shop_list()
+	if typeof(purchase_item) == TYPE_OBJECT:
+		globals.AddItemToInventory(purchase_item)
+		state.money -= purchase_item.calculateprice()
+		$Gold.text = str(state.money)
+		for i in active_shop.items:
+			if purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop.items[i]):
+				active_shop.items.erase(i)
+				break
+		update_shop_list()
+	else:
+		if Items.materiallist.has(purchase_item.code):
+			state.set_material(purchase_item.code, '+', value)
+			state.money -= purchase_item.price*value
+			$Gold.text = str(state.money)
+			if typeof(active_shop.materials) == TYPE_DICTIONARY:
+				active_shop.materials[purchase_item.code] -= value
+		elif Items.itemlist.has(purchase_item.code):
+			state.money -= purchase_item.price*value
+			if typeof(active_shop.items) == TYPE_DICTIONARY:
+				active_shop.items[purchase_item.code] -= value
+			while value > 0:
+				globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
+				value -= 1
+			$Gold.text = str(state.money)
+		update_shop_list()
 
 func item_sell_confirm(value):
 	state.set_material(purchase_item.code, '-', value)
@@ -203,6 +313,13 @@ func select_slave_in_guild(person):
 	$HirePanel/Button.disabled = state.money < person.calculate_price()
 
 func guild_hire_slave():
+	if state.characters.size() >= state.get_pop_cap():
+		if state.get_pop_cap() < variables.max_population_cap:
+			input_handler.SystemMessage("You don't have enough rooms")
+		else:
+			input_handler.SystemMessage("Population limit reached")
+		return
+		
 	state.money -= selectedperson.calculate_price()
 	state.add_slave(selectedperson)
 	active_faction.slaves.erase(selectedperson)
@@ -213,7 +330,6 @@ func guild_hire_slave():
 
 func open_slave_info(character):
 	input_handler.ShowSlavePanel(character)
-	#get_parent().get_node("SlavePanel").open(character)
 
 func open_quest_list():
 	$QuestPanel.show()
@@ -299,18 +415,36 @@ func unlock_upgrade(upgrade, level):
 		#print(active_faction)
 	open_details()
 
+var purch_location_list = {
+	easy = {price = 100, name = 'Easy Dungeon'},
+	medium = {price = 200, name = 'Medium Dungeon'},
+	hard = {price = 300, name = 'Hard Dungeon'},
+}
+
+func purchase_location_list():
+	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	for i in purch_location_list.values():
+		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = i.name + ": " + str(i.price) + " gold"
+		newbutton.connect("pressed", self, 'purchase_location', [i])
+		
+
+func purchase_location(purchasing_location):
+	if active_area.locations.size() < 8:
+		world_gen.make_location(purchasing_location.code, active_area)
+		state.money -= purchasing_location.price
+	else:
+		input_handler.SystemMessage("Can't purchase anymore")
+
 func build_location_description():
 	var text = ''
-	text += active_location.name
 	match active_location.type:
 		'dungeon':
-			text += "\nLevels: " + str(current_level) + "/" + str(active_location.levels.size())
-			text += "\nProgress Level: " + str(active_location.progress.level)
-			if true:
-				text += "\nType: " + active_location.code
-			
+			text =  active_location.name + " (" + active_location.classname + ")\n"  + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
+			text += "\nProgress: Levels - " + str(current_level) + "/" + str(active_location.levels.size()) + ", "
+			text += "Stage - " + str(active_location.progress.level) 
 		'settlement':
-			pass
+			text = active_location.classname + ": " + active_location.name
 		'skirmish':
 			pass
 	$AreaDescription.bbcode_text = text
@@ -329,18 +463,18 @@ func enter_location(data):
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		if i.area == active_area.code && i.location == active_location.id && i.travel_time == 0:
 			presented_characters.append(i)
-	if presented_characters.size() > 0:
+	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
 		open_location_actions()
-	else:
-		globals.ClearContainer($ScrollContainer/VBoxContainer)
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.text = "No characters present. "
-		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.text = 'Leave'
-		newbutton.connect("pressed",self,"select_category", [selectedcategory])
+	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = "Send characters here"
+	newbutton.connect("pressed",self,"open_slave_selection_list")
+	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton.text = 'Leave'
+	newbutton.connect("pressed",self,"select_category", [selectedcategory])
 	build_location_description()
 
 
@@ -348,11 +482,12 @@ func enter_location(data):
 var active_slave_list = []
 
 func open_slave_selection_list():
-	var text = 'Select characters to send to ' + active_location.name + '. Travel time: ' + str(active_location.travel_time + active_area.travel_time)
+	var text = 'Select characters to send to ' + active_location.name + '. Base travel time: ' + str(round(active_location.travel_time + active_area.travel_time))
 	$SlaveSelectionPanel.show()
 	active_slave_list.clear()
 	$SlaveSelectionPanel/RichTextLabel.bbcode_text = text
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		i.tags.erase('selected')
 	update_slave_list()
 
@@ -409,19 +544,27 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.text = 'Leave'
-			newbutton.connect("pressed",self,"select_category", [selectedcategory])
+#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Leave'
+#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 		'settlement':
-			pass
+			for i in active_location.actions:
+				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+				newbutton.text = i
+				newbutton.connect("pressed", self, i)
 		'skirmish':
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.text = 'Leave'
-			newbutton.connect("pressed",self,"select_category", [selectedcategory])
+#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Leave'
+#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 
+func local_shop():
+	open_shop('location')
+
+func local_events_search():
+	input_handler.interactive_message('location_event_search', 'event_selection', {})
 
 func check_location_group():
 	var counter = 0
@@ -450,15 +593,22 @@ func build_location_group():
 	clear_groups()
 	for i in positiondict:
 		if active_location.group.has('pos'+str(i)) && state.characters[active_location.group['pos'+str(i)]] != null:
-			get_node(positiondict[i]+"/Image").texture = state.characters[active_location.group['pos'+str(i)]].get_icon()
+			var character = state.characters[active_location.group['pos'+str(i)]]
+			get_node(positiondict[i]+"/Image").texture = character.get_icon()
+			get_node(positiondict[i]+"/Image").show()
+			get_node(positiondict[i]+"/Image/hp").text = str(character.hp) + '/' + str(character.hpmax)
+			get_node(positiondict[i]+"/Image/mp").text = str(character.mp) + '/' + str(character.mpmax)
+			
 		else:
 			get_node(positiondict[i]+"/Image").texture = null
+			get_node(positiondict[i]+"/Image").hide()
 	$PresentedSlavesPanel.show()
 	$Positions.show()
-	var newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-	newbutton.get_node("name").text = "Send characters"
-	newbutton.connect('pressed',self,'open_slave_selection_list')
-	for i in state.characters.values():
+	var newbutton# = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+#	newbutton.get_node("name").text = "Send characters"
+#	newbutton.connect('pressed',self,'open_slave_selection_list')
+	for id in state.character_order:
+		var i = state.characters[id]
 		if i.location == active_location.id && i.travel_time == 0:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 			newbutton.get_node("icon").texture = i.get_icon()
@@ -467,7 +617,7 @@ func build_location_group():
 		elif i.travel_target.location == active_location.id:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 			newbutton.get_node("icon").texture = i.get_icon()
-			newbutton.get_node("name").text = i.get_short_name() + ": Arriving in " + str(i.travel_time) + " hours."
+			newbutton.get_node("name").text = i.get_short_name() + ": Arriving in " + str(round(i.travel_time / i.travel_tick())) + " hours."
 			newbutton.disabled = true
 
 func return_character(character):
@@ -588,12 +738,12 @@ func enter_level(level):
 	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	newbutton.text = 'Return'
 	newbutton.connect("pressed",self,"enter_dungeon")
-	
+	build_location_group()
 	build_location_description()
 
 func area_advance(mode):
 	if check_location_group() == false:
-		state.text_log_add("Select at least 1 character before advancing. ")
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 	match mode:
 		'advance':
@@ -624,7 +774,8 @@ func clear_dungeon():
 	input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
 
 func clear_dungeon_confirm():
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		if (i.location == active_location.id && i.travel_time == 0) || i.travel_target.location == active_location.id:
 			selectedperson = i
 			return_character_confirm()
@@ -674,7 +825,7 @@ func character_boss_defeat():
 	character_class = input_handler.weightedrandom(character_class)
 	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
 	difficulty = rand_range(difficulty[0], difficulty[1])
-	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {race = character_race, class = character_class, difficulty = difficulty}})
+	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty}})
 
 
 func check_event_reqs(reqs):
@@ -722,11 +873,16 @@ func StartCombat():
 	else:
 		enemies = makespecificgroup(enemydata)
 	
+	var enemy_stats_mod = 0.95 + 0.05 * current_level
+#		for i in enemies:
+#			for k in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
+#				i.set(i.get(k), i.get(k) * enemy_stats_mod)
+	
 	input_handler.emit_signal("CombatStarted", enemydata)
 	input_handler.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$combat.encountercode = enemydata
-	$combat.start_combat(active_location.group, enemies, 'background', music)
+	$combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
 	$combat.show()
 
 func makespecificgroup(group):
@@ -764,7 +920,7 @@ func makerandomgroup(enemygroup):
 				for i in combatparty:
 					if combatparty[i] != null:
 						continue
-					var aiposition = unit.ai[randi()%unit.ai.size()]
+					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
 					if aiposition == 'melee' && i in [1,2,3]:
 						temparray.append(i)
 					if aiposition == 'ranged' && i in [4,5,6]:

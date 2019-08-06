@@ -83,15 +83,13 @@ func CreateGear(ItemName = '', dictparts = {}):
 	if dictparts.size() == 0:
 		mode = 'simple'
 	itembase = ItemName
-	bonusstats = {task_energy_tool = 0, task_efficiency_tool = 0, damage = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	bonusstats = {task_energy_tool = 0, task_efficiency_tool = 0, atk = 0, matk = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
 	type = 'gear'
 	var itemtemplate = Items.itemlist[ItemName]
 	var tempname = itemtemplate.name
 	
-	if mode == 'simple':
-		name = itemtemplate.name
-		description = itemtemplate.descript
+	
 	
 	
 	geartype = itemtemplate.geartype
@@ -99,7 +97,7 @@ func CreateGear(ItemName = '', dictparts = {}):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
 	
-	if itemtype == 'tool':
+	if itemtemplate.tags.has('tool'):
 		toolcategory = itemtemplate.tool_category
 		
 	
@@ -170,9 +168,15 @@ func CreateGear(ItemName = '', dictparts = {}):
 		else:
 			name = tempname
 	
-	bonusstats.damage = ceil(bonusstats.damage * bonusstats.damagemod)
+	bonusstats.atk = ceil(bonusstats.atk * bonusstats.damagemod)
 	bonusstats.erase('damagemod')
 	
+	if mode == 'simple':
+		name = itemtemplate.name
+		description = itemtemplate.descript
+	else:
+		name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
+		#name = itemtemplate.partmaterialname
 	
 
 func substractitemcost():
@@ -248,7 +252,6 @@ func tooltipeffects():
 func tooltip(targetnode):
 	var node = input_handler.GetItemTooltip()
 	var data = {text = tooltiptext(), icon = load(icon), item = self, price = str(calculateprice())}
-	
 	node.showup(targetnode, data, 'gear')
 
 
@@ -324,3 +327,5 @@ func calculateprice():
 			price += Items.materiallist[i].price*materialsdict[i]
 	return price
 
+func use_explore(character):
+	pass

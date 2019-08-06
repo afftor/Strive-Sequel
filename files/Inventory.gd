@@ -4,8 +4,11 @@ onready var itemcontainer = $ScrollContainer/GridContainer
 
 var selectedhero
 var mode
+var show_list = true
 var category = 'all'
 var itemarray = []
+
+var categories = ['all','weapon','gear','usable','material']
 
 signal inventory_opened
 signal inventory_hidden
@@ -28,23 +31,54 @@ func _ready():
 	$NumberSelectPanel/SpinBox.connect('value_changed', self, 'NumberChanged')
 	$NumberSelectPanel/MaxButton.connect("pressed",self, "NumberMax")
 	
+	$SwitchButton.connect("pressed",self,"switch_slave_stats")
+	
+	$SearchFilter.connect("text_changed", self, 'filter_changed')
 	
 	for i in $GearPanel.get_children():
 		if i.name != 'BodyImage':
 			i.connect("pressed", self, 'unequip', [i.name])
 			i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
-	
+
+func switch_slave_stats(newvalue = null):
+	if (newvalue == false || show_list == true) && mode == 'all':
+		$CharacterPanel.show()
+		$StatsPanel.hide()
+		$SwitchButton.text = tr("SWITCHLIST")
+		rebuild_characters()
+		return
+	if newvalue == null:
+		show_list = !show_list
+	else:
+		show_list = newvalue
+	match show_list:
+		true:
+			$CharacterPanel.show()
+			$StatsPanel.hide()
+			$SwitchButton.text = tr("SWITCHLIST")
+			rebuild_characters()
+		false:
+			$CharacterPanel.hide()
+			$StatsPanel.show()
+			$SwitchButton.text = tr("SWITCHSTATS")
+			rebuildinventory()
+
+func filter_changed(text):
+	rebuildinventory()
 
 func open(args):
 	if args.mode == 'character':
 		selectedhero = args.person
 	mode = args.mode
+	if mode == 'all':
+		switch_slave_stats(true)
 	move_child($Blockout, 0)
 	show()
 	buildinventory()
-	
+	rebuild_characters()
 	
 	$GearPanel.visible = args.mode == 'character'
+	$StatsPanel.visible = args.mode == 'character'
 	emit_signal("inventory_opened")
 
 func hide():
@@ -55,22 +89,22 @@ func buildinventory():
 	globals.ClearContainer(itemcontainer)
 	globals.ClearContainer($HiddenContainer/GridContainer)
 	itemarray.clear()
-	if mode == 'all':
-		for i in state.materials:
-			if state.materials[i] <= 0:
-				continue
-			var newbutton = globals.DuplicateContainerTemplate(itemcontainer)
-			var material = Items.materiallist[i]
-			newbutton.get_node('Image').texture = material.icon
-			newbutton.get_node('Number').text = str(state.materials[i])
-			newbutton.get_node('Number').show()
-			newbutton.set_meta('type', 'mat')
-			newbutton.get_node("Name").text = material.name
-			globals.connectmaterialtooltip(newbutton, material)
-			newbutton.get_node("Type").text = material.type
-			newbutton.set_meta("item", i)
-			newbutton.connect("pressed",self,'useitem', [i, 'material'])
-			itemarray.append(newbutton)
+	for i in state.materials:
+		if state.materials[i] <= 0:
+			continue
+		var newbutton = globals.DuplicateContainerTemplate(itemcontainer)
+		var material = Items.materiallist[i]
+		var type = get_item_category(material)
+		newbutton.get_node('Image').texture = material.icon
+		newbutton.get_node('Number').text = str(state.materials[i])
+		newbutton.get_node('Number').show()
+		newbutton.set_meta('type', type)
+		newbutton.get_node("Name").text = material.name
+		globals.connectmaterialtooltip(newbutton, material)
+		newbutton.get_node("Type").texture = get_item_type_icon(material)
+		newbutton.set_meta("item", i)
+		newbutton.connect("pressed",self,'useitem', [i, 'material'])
+		itemarray.append(newbutton)
 	for i in state.items.values():
 		if i.owner != null:
 			continue
@@ -78,34 +112,86 @@ func buildinventory():
 		if i.durability != null:
 			newnode.get_node("Number").show()
 			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'
-		if i.amount != null && i.amount > 1:
+		if i.amount != null && (i.amount > 1 || i.type == 'usable') :
 			newnode.get_node("Number").show()
 			newnode.get_node("Number").text = str(i.amount)
-		i.set_icon(newnode.get_node("Image"))#input_handler.itemshadeimage(newnode.get_node('Image'), i)
+		else:
+			newnode.get_node("Number").hide()
+		i.set_icon(newnode.get_node("Image"))
+		var type = get_item_category(i)
 		globals.connectitemtooltip(newnode, i)
 		newnode.get_node("Name").text = i.name
-		newnode.get_node("Type").text = i.itemtype
-		newnode.set_meta('type', i.itemtype)
+		newnode.get_node("Type").texture = get_item_type_icon(i)
+		newnode.set_meta('type', type)
 		newnode.set_meta("item", i)
-		newnode.connect("pressed",self,'useitem', [i, i.itemtype])
+		newnode.connect("pressed",self,'useitem', [i, i.type])
 		itemarray.append(newnode)
 	rebuildinventory()
+
+var icondict = {
+	food = "res://assets/images/gui/inventory/icon_food1.png",
+	material = "res://assets/images/gui/inventory/icon_res1.png",
+	tool = "res://assets/images/gui/inventory/icon_craft1.png",
+	weapon = "res://assets/images/gui/inventory/icon_weap1.png",
+	armor = "res://assets/images/gui/inventory/icon_armor1.png",
+	costume = "res://assets/images/gui/inventory/icon_cosm1.png",
+	usable = "res://assets/images/gui/inventory/icon_food1.png",
+	
+}
+
+func get_item_type_icon(item):
+	return load(icondict[get_item_category(item)])
+
+func get_item_category(item):
+	var type
+	if Items.materiallist.has(item.code):
+		if item.type == 'food':
+			type = 'food'
+		else:
+			type = 'material'
+	else:
+		if item.itemtype == 'weapon':
+			if item.toolcategory != null:
+				type = 'tool'
+			else:
+				type = 'weapon'
+		elif item.itemtype == 'armor':
+			if item.geartype == 'costume':
+				type = 'costume'
+			else:
+				type = 'armor'
+		else:
+			type = 'usable'
+	return type
 
 func rebuildinventory():
 	for i in itemarray:
 		i.get_parent().remove_child(i)
-		match mode:
-			'all':
-				if (category == 'all' || i.get_meta('type') == category):
-					itemcontainer.add_child(i)
+		if category != 'all' && i.get_meta('type') != category:
+			$HiddenContainer/GridContainer.add_child(i)
+		else:
+			var item = i.get_meta("item")
+			if item == null:
+				continue
+			if $SearchFilter.text != '':
+				var text = $SearchFilter.text
+				if typeof(item) == TYPE_STRING:
+					item = Items.materiallist[item]
+					if (item.name.findn(text) < 0 && item.descript.findn(text) < 0 && item.adjective.findn(text) < 0): 
+						$HiddenContainer/GridContainer.add_child(i)
+					else:
+						itemcontainer.add_child(i)
 				else:
+					if (item.name.findn(text) < 0 && item.description.findn(text) < 0 && item.itembase.findn(text) < 0) || item.owner != null:
+						$HiddenContainer/GridContainer.add_child(i)
+					else:
+						itemcontainer.add_child(i)
+			else:
+				var text = $SearchFilter.text
+				if typeof(item) == TYPE_OBJECT && item.owner != null:
 					$HiddenContainer/GridContainer.add_child(i)
-			'character':
-				var item = i.get_meta("item")
-				if item.owner == null:
-					itemcontainer.add_child(i)
 				else:
-					$HiddenContainer/GridContainer.add_child(i)
+					itemcontainer.add_child(i)
 	if mode == 'character':
 		$GearPanel/BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.gear:
@@ -114,6 +200,12 @@ func rebuildinventory():
 			else:
 				var item = state.items[selectedhero.gear[i]]
 				item.set_icon($GearPanel.get_node(i + "/icon"))
+		$StatsPanel.open(selectedhero)
+#		var text = globals.statdata.hp.name + ": " + str(selectedhero.hp) + "/" + str(selectedhero.hpmax) + "\n" + globals.statdata.mp.name + ": " + str(selectedhero.mp) + '/' + str(selectedhero.mpmax)
+#		var statsarray = ['atk','matk','armor','mdef','hitrate','evasion']
+#		for i in statsarray:
+#			text += '\n' + globals.statdata[i].name + ": " + str(selectedhero[i])
+#		$StatsPanel/RichTextLabel.bbcode_text = text
 
 func selectcategory(button):
 	var type = button.name
@@ -128,10 +220,16 @@ func useitem(item, type):
 	if mode == null:
 		return
 	elif mode == 'character' && selectedhero != null:
-		selectedhero.equip(item)
-		input_handler.GetItemTooltip().hide()
-		emit_signal("item_equipped")
-		rebuildinventory()
+		if type == 'gear':
+			selectedhero.equip(item)
+			input_handler.GetItemTooltip().hide()
+			emit_signal("item_equipped")
+			rebuildinventory()
+		elif type == 'usable':
+			input_handler.GetItemTooltip().hide()
+			emit_signal("item_used")
+			rebuildinventory()
+			pass
 	elif mode == 'shop':
 		sellwindow(item, type)
 
@@ -205,5 +303,12 @@ func unequip(slot):
 	if selectedhero.gear[slot] != null:
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
 		input_handler.GetItemTooltip().hide()
-		rebuildinventory()
+		buildinventory()
 
+func rebuild_characters():
+	globals.ClearContainer($CharacterPanel/ScrollContainer/VBoxContainer)
+	for id in state.character_order:
+		var i = state.characters[id]
+		var newnode = globals.DuplicateContainerTemplate($CharacterPanel/ScrollContainer/VBoxContainer)
+		newnode.get_node("Label").text = i.get_full_name()
+		newnode.connect("pressed", self, "open", [{mode = 'character', person = i}])

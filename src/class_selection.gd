@@ -25,7 +25,10 @@ func open(tempperson, tempmode = 'normal'):
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		newbutton.get_node('icon').texture = i.icon
-		newbutton.get_node('name').text = i.name
+		var name = i.name
+		if i.has('altname') && person.checkreqs(i.altnamereqs):
+			name = i.altname
+		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"unlock_class", [i.code])
 
 func checkbox_locked():
@@ -67,7 +70,7 @@ func open_class(classcode):
 		#newnode.texture = skill.icon
 		#add_toolti
 	
-	text = "Experience required: " + str(person.base_exp) + "/" + str(person.get_next_class_exp()) 
+	text = "Experience required: " + str(floor(person.base_exp)) + "/" + str(person.get_next_class_exp()) 
 	
 	$ClassPanel/Unlock.disabled = person.base_exp < person.get_next_class_exp()
 	
@@ -77,7 +80,10 @@ func open_class(classcode):
 
 func get_class_details(classdata):
 	var text = ''
-	text += "[center]" + classdata.name + '[/center]\n' + person.translate(classdata.descript) 
+	var name = classdata.name
+	if classdata.has('altname') && person.checkreqs(classdata.altnamereqs):
+		name = classdata.altname
+	text += "[center]" + name + '[/center]\n' + person.translate(classdata.descript) 
 	
 	if person.decipher_reqs(classdata.reqs, true) != '':
 		text += '\n\n' + person.decipher_reqs(classdata.reqs, true)

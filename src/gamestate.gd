@@ -12,6 +12,7 @@ var date := 1
 var hour = 6
 
 var log_node
+var log_storage = []
 
 var newgame = false
 
@@ -34,7 +35,7 @@ var upgrades := {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}
 var characters := {} 
-var babies = []
+var babies = {}
 var items := {}
 var active_tasks := []
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
@@ -45,15 +46,17 @@ var relativesdata = {}
 
 var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
+var character_order = []
 
 var CurrentTextScene
 var CurrentScreen
 var CurrentLine := 0
 
-var OldEvents := {}
-var CurEvent := "" #event name
-var CurBuild := ""
-var keyframes := []
+var stored_events = {
+	timed_events = [],
+	
+	
+}
 
 #Progress
 var mainprogress = 0
@@ -65,18 +68,28 @@ var currentarea
 var currenttutorial = 'tutorial1'
 var viewed_tips := []
 
+var daily_interactions_left = 1
+
 
 func revert():
 #to make
-	pass
+	date = 1
+	hour = 6
+	characters.clear()
+	items.clear()
+	materials.clear()
+	globals._ready()
+
+func _ready():
+	connect("hour_tick", self, 'check_timed_events')
 
 func pos_set(value):
 	combatparty = value
 	for p in combatparty:
 		if combatparty[p] == null: continue
 
-func _ready():
-	pass
+func get_pop_cap():
+	return variables.base_population_cap + variables.population_cap_per_room_upgrade * upgrades.rooms
 
 func materials_set(value):
 	var text = ''
@@ -95,78 +108,20 @@ func materials_set(value):
 	materials = value
 	oldmaterials = materials.duplicate()
 
-func assignworker(data):
-	data.worker.task = data
-	if data.instrument != null:
-		data.instrument.task = data
-	active_tasks.append(data)
-
-func stoptask(data):
-	data.worker.task = null
-	data.instrument.task = null
-	active_tasks.erase(data)
-
-func stopworkertask(worker):
-	var data = gettaskfromworker(worker)
-	if data != false:
-		stoptask(data)
-
-func gettaskfromworker(worker):
-	for i in active_tasks:
-		if i.worker == worker:
-			return i
-	return false
-
-
-func ProgressMainStage(stage = null):
-	if stage == null:
-		mainprogress += 1
-	else:
-		mainprogress = stage
-
-func MakeQuest(code):
-	activequests.append({code = code, stage = 1})
-	input_handler.emit_signal("QuestStarted", code)
-
-func GetQuest(code):
-	for i in activequests:
-		if i.code == code:
-			return i.stage
-	return null
-
-func AdvanceQuest(code):
-	for i in activequests:
-		if i.code == code:
-			i.stage += 1
-
-func FinishQuest(code):
-	var tempquest
-	for i in activequests:
-		if i.code == code:
-			tempquest = i
-	
-	activequests.erase(tempquest)
-	completedquests.append(tempquest.code)
-	input_handler.emit_signal("QuestCompleted", code)
-
-func StoreEvent(nm):
-	OldEvents[nm] = date
-
-func FinishEvent():
-	if CurEvent == "" or CurEvent == null:return
-	StoreEvent(CurEvent)
-	CurEvent = ""
-	keyframes.clear()
-
 func get_master():
 	for i in characters.values():
 		if i.professions.has("master"):
 			return i
 
+func get_unique_slave(code):
+	for i in characters.values():
+		if i.unique == code:
+			return i
+
 func add_slave(person):
-	#characters[person.id] = person
 	characters_pool.move_to_state(person.id)
-	text_log_add("New character acquired: " + person.get_short_name() + ". ")
+	person.is_players_character = true
+	text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 
 func if_has_money(value):
@@ -191,8 +146,10 @@ func if_has_material(mat, operant, val):
 func checkreqs(array):
 	var check = true
 	for i in array:
-		if valuecheck(i) == false:
-			check = false
+		if i.has('orflag'):
+			check = check or valuecheck(i)
+		else:
+			check = check and valuecheck(i)
 	return check
 
 func valuecheck(dict):
@@ -206,17 +163,14 @@ func valuecheck(dict):
 			return if_has_property(dict['prop'], dict['value'])
 		"has_hero":
 			return if_has_hero(dict['name'])
-		"event_finished":
-			var tmp = OldEvents.has(dict['name'])
-			if tmp and dict.has('delay'):
-				tmp = OldEvents[dict['name']] + dict['delay'] <= date
-			return tmp
 		"has_material":
 			return if_has_material(dict['material'], dict.operant, dict['value'])
 		"date":
-			return date >= dict['date']
-		"building":
-			return CurBuild == dict['value']
+			if variables.no_event_wait_time: return true
+			return input_handler.operate(dict.operant, date, dict.value)
+		'hour':
+			if variables.no_event_wait_time: return true
+			return input_handler.operate(dict.operant, hour, dict.value)
 		"gamestart":
 			return newgame
 		"has_upgrade":
@@ -244,6 +198,26 @@ func valuecheck(dict):
 			return if_has_free_items(dict.name, dict.operant, dict.value)
 		'disabled':
 			return false
+		'master_stat':
+			return if_master_has_stat(dict.name, dict.operant, dict.value)
+		'master_is_beast':
+			return if_master_is_beast(dict.value)
+		'unique_character_at_mansion':
+			var character = get_unique_slave(dict.value)
+			if character == null:return false
+			return character.checkreqs([{code = 'is_free'}])
+
+func if_master_is_beast(boolean):
+	var character = get_master()
+	if character == null:
+		return false
+	return character.checkreqs([{code = 'race_is_beast', value = boolean}])
+
+func if_master_has_stat(name, operant, value):
+	var character = get_master()
+	if character == null:
+		return false
+	return input_handler.operate(operant, character.get(name), value)
 
 func if_has_items(name, operant, value):
 	var counter = 0
@@ -261,7 +235,7 @@ func if_has_free_items(name, operant, value):
 
 func if_quest_stage(name, value, operant):
 	var questprogress
-	questprogress = GetQuest(name)
+	#questprogress = GetQuest(name)
 	if questprogress == null:
 		questprogress = 0
 	
@@ -322,9 +296,20 @@ func set_material(material, operant, value):
 func remove_slave(tempslave):
 	characters.erase(tempslave)
 
-func text_log_add(text):
-	if log_node != null:
-		log_node.bbcode_text += "\n[right]" + text + str(date) + ":" + str(round(hour)) + "[/right]" 
+func text_log_add(label, text):
+	log_storage.append({type = label, text = text, time = str(date) + ":" + str(round(hour))})
+	if log_node != null && weakref(log_node) != null:
+		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
+		newfield.show()
+		newfield.get_node("label").bbcode_text = label
+		newfield.get_node("text").bbcode_text = text
+		newfield.get_node("date").bbcode_text = '[right]'+ str(date) + " - " + str(round(hour)) + ":00[/right]"
+		log_node.get_node("ScrollContainer/VBoxContainer").add_child(newfield)
+		yield(get_tree(), 'idle_frame')
+		var textfield = newfield.get_node('text')
+		textfield.rect_size.y = textfield.get_v_scroll().get_max()
+		newfield.rect_min_size.y = textfield.rect_size.y
+		
 
 func serialize():
 	var tmp = {}
@@ -354,4 +339,72 @@ func deserialize(tmp:Dictionary):
 		items[i] = dict2inst(tmp['items'][i])
 	for h in tmp['heroes']:
 		characters[h] = dict2inst(tmp['heroes'][h])
+		#fixing saved skill shortcuts
+		var ssp = characters[h].social_skill_panel.duplicate()
+		characters[h].social_skill_panel.clear()
+		for i in ssp:
+			characters[h].social_skill_panel[int(i)] = ssp[i]
 	tempstate.free()
+
+func common_effects(effects):
+	for i in effects:
+		match i.code:
+			'money_change':
+				money = input_handler.math(i.operant, money, i.value)
+				text_log_add('money',"Gold used: " + str(i.value))
+			'make_story_character':
+				var newslave = Slave.new()
+				newslave.generate_predescribed_character(world_gen.pregen_characters[i.value])
+				state.add_slave(newslave)
+			'add_timed_event':
+				var newevent = {reqs = [], code = i.value}
+				for k in i.args:
+					match k.type:
+						'add_to_date':
+							var newreq = [{type = 'date', operant = 'eq', value = state.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
+							newevent.reqs += newreq
+				stored_events.timed_events.append(newevent)
+			'unique_character_changes':
+				var character = get_unique_slave(i.value)
+				for k in i.args:
+					if k.code == 'sextrait':
+						match k.operant:
+							'add':
+								character.sex_traits.append(k.value)
+								var text = character.get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[k.value].name
+								text_log_add('char', text)
+					elif k.code == 'tag':
+						match k.operant:
+							'remove':
+								if k.value == 'no_sex':
+									var text = character.get_short_name() + ": " + "Sex unlocked"
+									text_log_add('char', text)
+								character.tags.erase(k.value)
+					else:
+						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
+						if k.value > 0:
+							text += " + "
+						else:
+							text += " - "
+						text += str(k.value)
+						text_log_add('char', text)
+						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
+			'start_event':
+				input_handler.interactive_message(i.data, 'start_event', i.args)
+
+func check_timed_events():
+	for i in stored_events.timed_events:
+		if checkreqs(i.reqs):
+			var event = scenedata.scenedict[i.code]
+			if event.has('reqs'):
+				for k in event.reqs:
+					if valuecheck(k) == false:
+						match k.negative:
+							'repeat_next_day':
+								for j in i.reqs:
+									if j.type in ['date']:
+										j.value += 1
+						return
+			input_handler.interactive_message(i.code, 'story_event', {})
+			stored_events.timed_events.erase(i)
+			break

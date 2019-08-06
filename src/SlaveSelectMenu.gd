@@ -8,7 +8,8 @@ func open(targetnode, targetfunc, reqs = []):
 	target_node = targetnode
 	show()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	for i in state.characters.values():
+	for id in state.character_order:
+		var i = state.characters[id]
 		if i.checkreqs(reqs) == false:
 			continue
 		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)

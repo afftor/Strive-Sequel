@@ -6,10 +6,11 @@ var id = ''
 var is_person = true
 var is_active = true
 var is_players_character = false
+var is_known_to_player = false #for purpose of private parts
 
 var unique 
 
-var icon_image = "res://assets/images/portraits/GoblinTrader.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
+var icon_image = "res://assets/images/portraits/RoseNormal.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body_image = 'default'
 var npc_reference
 #####required for combat
@@ -59,14 +60,15 @@ var fear = 70.0 setget fear_set, fear_get
 var lust = 20.0 setget lust_set, lust_get
 var loyal = 0.0
 var lustmax = 50
-var lusttick = 1.05
 var obed_degrade_mod = 1.0
 
 
 var hp = 100 setget hp_set
+
 var hpmax = 100 setget ,get_hp_max
-var mp = 10 setget mp_set
-var mpmax = 10 setget , get_mana_max
+var mp = 50 setget mp_set
+var mpmax = 50 setget , get_mana_max
+
 var energy := 100.0 setget energy_set
 var energymax = 100
 var energybonus = 0
@@ -79,13 +81,14 @@ var loottable
 
 var fatigue = 0 setget fatigue_set
 var exhaustion = 0 setget exhaustion_set
-var productivity := 100.0
+var productivity := 100.0 setget ,productivity_get
 
 #productivity mods
 var mod_collect = 1.0
 var mod_hunt = 1.0
 var mod_cook = 1.0
 var mod_smith = 1.0
+var mod_tailor = 1.0
 var mod_alchemy = 1.0
 var mod_farm = 1.0
 var mod_pros_gold = 1.0
@@ -103,7 +106,7 @@ var resists = {} setget ,get_res
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
-var critchance = 0
+var critchance = 10
 var critmod = 1.5
 var position
 var taunt
@@ -205,6 +208,8 @@ var mouth_virgin = true
 #tasks
 var sleep = ''
 var work = ''
+var work_simple = true
+var work_simple_state = 'work'
 var workhours = 12
 var resthours = 8
 var joyhours = 4
@@ -406,7 +411,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 			classarray = get_class_list('any', self)
 		else:
 			classarray = get_class_list(slaveclass, self)
-		if classarray != null:
+		if classarray != null && classarray.size() > 0:
 			unlock_class(classarray[randi()%classarray.size()].code, true)
 		classcounter -= 1
 	
@@ -444,6 +449,7 @@ func generate_simple_fighter(tempname):
 			set(i, 0)
 		else:
 			set(i, data[i])
+	hpmax = hp
 	icon_image = data.icon
 	body_image = data.body
 	combat_skills = data.skills + ['attack']
@@ -451,11 +457,18 @@ func generate_simple_fighter(tempname):
 	is_person = false
 	xpreward = data.xpreward
 	loottable = data.loot
+	name = data.name
 	for i in variables.resists_list:
 		resists[i] = 0
 	for i in data.resists:
 		resists[i] = data.resists[i]
 
+
+func generate_predescribed_character(data):
+	create(data.race, data.sex, data.age)
+	for i in data:
+		set(i, data[i])
+	unique = data.code
 
 func create(temp_race, temp_gender, temp_age):
 	#id = 's' + str(state.slavecounter)
@@ -476,6 +489,9 @@ func create(temp_race, temp_gender, temp_age):
 	if temp_age == 'random':
 		age = get_random_age()
 	
+	for i in variables.resists_list:
+		resists[i] = 0
+	
 	get_sex_features()
 	
 	if globals.globalsettings.furry == false && race.find("Beastkin") >= 0:
@@ -487,8 +503,8 @@ func create(temp_race, temp_gender, temp_age):
 	
 	random_icon()
 	
-	for i in variables.resists_list:
-		resists[i] = 0
+	hp = hpmax
+	
 	#setting food filter
 	for i in Items.materiallist.values():
 		if i.type == 'food':
@@ -529,7 +545,11 @@ func get_racial_features():
 	for i in race_template.basestats:
 		self.set(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
 	for i in race_template.racetrait:
-		self.set(i, self.get(i) + race_template.racetrait[i])#not sure about direct access
+
+		if i == 'hpfactor':
+			self.hpmax = variables.basic_max_hp*race_template.racetrait[i] #wrong, this shoould be stored some way to use in hpmax getter
+		else:
+			self.set(i, self.get(i) + race_template.racetrait[i])
 	for i in race_template.bodyparts:
 		self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])
 	
@@ -592,7 +612,6 @@ func get_sex_features():
 		mouth_virgin = false
 
 func checkreqs(array, ignore_npc_stats_gear = false):
-	
 	for i in array:
 		var check = true
 		match i.code:
@@ -600,7 +619,7 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				if ignore_npc_stats_gear == false || !i.type in ['physics','wits','charm','sexuals']:
 					check = input_handler.operate(i.operant, self.get_stat(i.type), i.value)
 			'has_profession':
-				check = professions.has(i.value)
+				check = professions.has(i.value) == i.check
 			'race_is_beast':
 				check = races.racelist[race].tags.has('beast') == i.value
 			'gear_equiped':
@@ -622,6 +641,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = globals.longtails.has(tail)
 			'cant_spawn_naturally':
 				check = !ignore_npc_stats_gear
+			'sex':
+				check = input_handler.operate(i.operant, sex, i.value)
 		if check == false:
 			return false
 	return true
@@ -699,10 +720,10 @@ func assign_gender():
 	else:
 		sex = 'male'
 
-var descriptions = load("res://assets/data/descriptions.gd").new()
 
 func make_description():
-	return translate(descriptions.create_character_description(self))
+	input_handler.scene_character = self
+	return globals.TextEncoder(translate(globals.descriptions.create_character_description(self)))
 
 func show_race_description():
 	var temprace = races.racelist[race]
@@ -762,16 +783,21 @@ func get_random_name():
 func decipher_reqs(reqs, colorcode = false):
 	var text = ''
 	for i in reqs:
+		if i.has('orflag'):
+			continue
 		match i.code:
 			'stat':
-				text += i.type + ': ' + str(i.value) + " "
+				text += globals.statdata[i.type].name + ': ' + str(i.value) + " "
 				match i.operant:
 					'gte':
 						text += "or higher"
 					'lte':
 						text += "or lower"
 			'has_profession':
-				text += 'Has Profession: ' + Skilldata.professions[i.value].name
+				if i.check == true:
+					text += 'Has Class: ' + Skilldata.professions[i.value].name
+				else:
+					text += 'Has NO Class: ' + Skilldata.professions[i.value].name
 			'race':
 				if i.operant == 'eq':
 					text += 'Race: ' + races.racelist[i.value].name
@@ -912,7 +938,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
 	for i in state.active_tasks:
-		if i.code == taskcode:
+		if i.code == taskcode && i.product == taskproduct:
 			taskexisted = true
 			i.workers.append(self.id)
 			work = i.code
@@ -936,6 +962,12 @@ func remove_from_task():
 				i.workers.erase(self.id)
 	work = ''
 
+func travel_tick():
+	var value = 1
+	if state.upgrades.has('stables'):
+		value = 1 + variables.stable_boost_per_level * state.upgrades.stables
+	return value
+
 func tick():
 	process_event(variables.TR_TICK)
 	
@@ -945,11 +977,15 @@ func tick():
 	
 	food_counter -= 1
 	if food_counter <= 0:
-		food_counter = 23
+		food_counter = 24
 		get_food()
 	
+	self.hp += variables.basic_hp_regen
+	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
+	
 	self.fatigue += 1
-	self.lust += lusttick
+	self.lust += variables.basic_lust_per_tick
+	
 	
 	var obed_reduce = 100.0 * obed_degrade_mod/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 	var fear_reduce = 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
@@ -963,58 +999,87 @@ func tick():
 	
 	if work == 'travel':
 		if travel_time > 0:
-			travel_time -= 1
-			if travel_time == 0:
+			travel_time -= travel_tick()
+			if travel_time <= 0:
+				travel_time = 0
 				area = travel_target.area
 				location = travel_target.location
 				state.emit_signal("slave_arrived", self)
 				if location == 'mansion':
 					work = 'rest'
+					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
+				else:
+					state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.location_links[location].area][state.location_links[location].category][location].name)
 		
 		return
 	
 	if skip_work == false:
-		var totalday = 0
-		for i in current_day_spent.values():
-			totalday += i
-		if totalday >= 24:
-			for i in current_day_spent:
-				current_day_spent[i] = 0
-		
-		if current_day_spent.workhours < workhours:
-			work_tick()
-		elif current_day_spent.joyhours < joyhours:
-			joy_tick()
+		if work_simple == true:
+			match work_simple_state:
+				'work':
+					if energy <= 0:
+						work_simple_state = 'joy'
+				'joy':
+					if fatigue <= 0:
+						work_simple_state = 'rest' 
+				'rest':
+					if energy >= 100:
+						work_simple_state = 'work'
+			
+			call(work_simple_state + "_tick")
+			
 		else:
-			rest_tick()
+			var totalday = 0
+			for i in current_day_spent.values():
+				totalday += i
+			if totalday >= 24:
+				for i in current_day_spent:
+					current_day_spent[i] = 0
+			
+			if current_day_spent.workhours < workhours:
+				work_tick()
+			elif current_day_spent.joyhours < joyhours:
+				joy_tick()
+			else:
+				rest_tick()
 	else:
 		if fatigue > 10:
 			joy_tick()
 		else:
 			rest_tick()
 	
-	
 	if last_escape_day_check != state.date && randf() <= 0.2:
 		check_escape_possibility()
+		if state.characters.has(self.id):
+			return
+	
+	if pregnancy.duration > 0 && pregnancy.baby != null:
+		pregnancy.duration -= 1
+		if pregnancy.duration == 0:
+			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = self})
+	
+	
 
 var last_escape_day_check = 0
 
 func hp_set(value):
-	if value < 0:
+	if value <= 0:
 		death()
 	else:
 		hp = min(value, hpmax)
 
 func mp_set(value):
-	mp = clamp(0, value, mpmax)
+	mp = clamp(value, 0, mpmax)
 
 func death():
 	is_active = false
 	defeated = true
+	state.character_order.erase(id)
+	input_handler.slave_list_node.rebuild()
 	clean_effects()
 
 func energy_set(value):
-	energymax = 100 + energybonus + round(physics + physics_bonus)
+	energymax = 100 + energybonus# + round(physics + physics_bonus)
 	if value < 0:
 		self.exhaustion += -value
 		energy = 0
@@ -1023,7 +1088,7 @@ func energy_set(value):
 
 func fatigue_set(value):
 	if traits.has('undead'): return
-	fatigue = value
+	fatigue = clamp(value, 0, 100)
 
 func exhaustion_set(value):
 	exhaustion = clamp(value, 0, 1000)
@@ -1032,6 +1097,9 @@ func exhaustion_set(value):
 
 func set_productivity():
 	productivity = 100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1)
+
+func productivity_get():
+	return productivity
 
 func get_food():
 	var eaten = false
@@ -1048,24 +1116,23 @@ func get_food():
 						if food.tags.has(k):
 							check = true
 					if check == false:
-						fatigue -= 10
-						obedience += 10
+						self.fatigue -= 10
+						self.obedience += 10
 				else:
 					var check = false
 					for k in food_hate:
 						if food.tags.has(k):
 							check = true
 					if check == true:
-						fatigue += 10
 						if food.tags.size() <= 1:
-							obedience -= 10
+							self.obedience -= 10
 				break
 		if eaten == true:
 			break
 	
 	if eaten == false:
-		exhaustion += 25
-		obedience -= 25
+		self.exhaustion += 25
+		self.obedience -= 25
 		input_handler.SystemMessage(get_short_name() + ": no food.")
 		pass#add starvation debuf
 
@@ -1083,7 +1150,7 @@ func work_tick():
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
-				state.text_log_add(get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
+				state.text_log_add('crafting',get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
 				currenttask.messages.append('notask')
 			rest_tick()
 			return
@@ -1093,7 +1160,7 @@ func work_tick():
 			if craftingitem.resources_taken == false:
 				if check_recipe_resources(craftingitem) == false:
 					if currenttask.messages.has('noresources') == false:
-						state.text_log_add(get_short_name() + ": Not Enough Resources for craft. ")
+						state.text_log_add('crafting',get_short_name() + ": Not Enough Resources for craft. ")
 						currenttask.messages.append("noresources")
 					rest_tick()
 					return
@@ -1107,7 +1174,7 @@ func work_tick():
 		if state.selected_upgrade.code == '':
 			rest_tick()
 			if messages.has("noupgrade") == false:
-				state.text_log_add(get_short_name() + ": No task or upgrade selected for building. ")
+				state.text_log_add('upgrades',get_short_name() + ": No task or upgrade selected for building. ")
 				messages.append("noupgrade")
 			return
 		else:
@@ -1120,15 +1187,20 @@ func work_tick():
 				else:
 					state.upgrades[state.selected_upgrade.code] = 1
 				input_handler.emit_signal("UpgradeUnlocked", globals.upgradelist[state.selected_upgrade.code])
-				state.text_log_add("Upgrade finished: " + globals.upgradelist[state.selected_upgrade.code].name)
+				state.text_log_add('upgrades',"Upgrade finished: " + globals.upgradelist[state.selected_upgrade.code].name)
 				state.upgrade_progresses.erase(state.selected_upgrade.code)
 				state.selected_upgrade.code = ''
 	else:
 		work_tick_values(currenttask)
+
 		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(get_stat('productivity')*get_stat(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
-			state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
+			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
+				state.money += 1
+			else:
+				state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 
 func work_tick_values(currenttask):
 	var energyvalue = variables.basic_energy_per_work_tick
@@ -1161,7 +1233,7 @@ func make_item_sequence(currenttask, craftingitem):
 					make_item_sequence(currenttask, craftingitem)
 			else:
 				if currenttask.messages.has('noresources') == false:
-					state.text_log_add(get_short_name() + ": " + "Not Enough Resources for craft. ")
+					state.text_log_add('crafting',get_short_name() + ": " + "Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 
 func check_recipe_resources(temprecipe):
@@ -1206,6 +1278,7 @@ func make_item(temprecipe):
 		state.materials[recipe.resultitem] += recipe.resultamount
 	else:
 		var item = Items.itemlist[recipe.resultitem]
+		state.text_log_add("crafting", "Item created: " + item.name)
 		if item.type == 'usable':
 			globals.AddItemToInventory(globals.CreateUsableItem(item.code))
 		elif item.type == 'gear':
@@ -1213,6 +1286,7 @@ func make_item(temprecipe):
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, temprecipe.partdict))
 			else:
 				globals.AddItemToInventory(globals.CreateGearItem(item.code, {}))
+	
 	if temprecipe.repeats > 0:
 		temprecipe.repeats -= 1
 		if temprecipe.repeats == 0:
@@ -1221,7 +1295,7 @@ func make_item(temprecipe):
 func joy_tick():
 	last_tick_assignement = 'joy'
 	current_day_spent.joyhours += 1
-	fatigue -= 4
+	self.fatigue -= 4
 
 func rest_tick():
 	last_tick_assignement = 'rest'
@@ -1236,7 +1310,7 @@ func rest_tick():
 			self.energy += float(energymax)/10
 	else:
 		self.energy += float(energymax)/8
-	fatigue -= 1
+	self.fatigue -= 1
 
 func obed_set(value):
 	obedience = clamp(float(value), 0, 100)
@@ -1252,7 +1326,6 @@ func fear_get():
 
 func lust_set(value):
 	lustmax = 25 + sexuals_factor * 25
-	
 	lust = clamp(value, 0, lustmax)
 
 
@@ -1305,7 +1378,11 @@ func translate(text):
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
 	text = text.replace("[hair_color]", hair_color)
-	text = text.replace("[master]", globals.fastif(state.get_master().sex == 'male', "master", "mistress"))
+	var masternoun = 'master'
+	if state.get_master() != null && state.get_master().sex != 'male':
+		masternoun = 'mistress'
+	text = text.replace("[master]", masternoun)
+	text = text.replace("[Master]", masternoun.capitalize())
 	match sex:
 		'male':
 			rtext = 'boy'
@@ -1669,6 +1746,8 @@ var shieldtype
 
 func deal_damage(value, source):
 	var tmp = hp
+	if state.characters.has(self.id) && variables.invincible_player:
+		return 0
 	value = round(value);
 	if (shield > 0) and ((int(shieldtype) & int(source)) != 0):
 		self.shield -= value
@@ -1769,7 +1848,31 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	var check = check_skill_availability(s_code, target)
 	if check.check == false:
-		input_handler.SystemMessage(check.descript)
+		#input_handler.SystemMessage(check.descript)
+		state.text_log_add('skill',check.descript)
+		return
+	
+	if template.tags.has("dialogue_skill"):
+		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}#childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = null, tags = [], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+		var text = translate(template.dialogue_text)
+		text = target.translate(text.replace("[targetname]", "[name]"))
+		text = target.translate(text.replace("[targethis]", "[his]"))
+		data.text = text
+		
+		if template.charges > 0:
+			if social_skills_charges.has(s_code):
+				social_skills_charges[s_code] += 1
+			else:
+				social_skills_charges[s_code] = 1
+		
+		input_handler.scene_character = self
+		input_handler.target_character = target
+		input_handler.activated_skill = s_code
+		for i in template.dialogue_options:
+			data.options.append(i)
+		data.options.append({code = 'cancel_skill_usage', text = "Cancel", reqs = []})
+		
+		input_handler.interactive_message_custom(data)
 		return
 	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = self, target = target}
 	
@@ -1780,10 +1883,11 @@ func use_social_skill(s_code, target):#add logging if needed
 	self.mp -= template.manacost
 	self.energy -= template.energycost
 	
-	if social_skills_charges.has(s_code):
-		social_skills_charges[s_code] += 1
-	else:
-		social_skills_charges[s_code] = 1
+	if template.charges > 0:
+		if social_skills_charges.has(s_code):
+			social_skills_charges[s_code] += 1
+		else:
+			social_skills_charges[s_code] = 1
 	social_cooldowns[s_code] = template.cooldown
 	
 	#calcuate 'all' receviers
@@ -1867,3 +1971,21 @@ func use_social_skill(s_code, target):#add logging if needed
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
 
+func restore_skill_charge(code):
+	if social_skills_charges.has(code):
+		social_skills_charges[code] -= 1
+		if social_skills_charges[code] <= 0:
+			social_cooldowns.erase(code)
+			social_skills_charges.erase(code)
+	
+
+func baby_transform():
+	var mother = state.characters[relatives.mother]
+	name = 'Child of ' + mother.name
+	if mother.surname != '':
+		name += " " + mother.surname
+	surname = ''
+	anal_virgin = true
+	mouth_virgin = true
+	penis_virgin = true
+	vaginal_virgin = true

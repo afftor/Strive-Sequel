@@ -22,5 +22,4 @@ func confirm_text():
 	hide()
 
 func disable_input():
-	print(true)
 	input_handler.text_field_input = false

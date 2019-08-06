@@ -132,6 +132,8 @@ func setslaveimage(path):
 			person.icon_image = path.replace('bodies',"portraits")
 	self.visible = false
 	updatepage()
+	input_handler.update_slave_list()
+	input_handler.update_slave_panel()
 
 
 

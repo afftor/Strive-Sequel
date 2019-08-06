@@ -12,7 +12,7 @@ var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList = events.checks
+var EventList #= events.checks
 
 var scenedict = {
 	menu = "res://files/Menu.tscn",
@@ -62,6 +62,7 @@ var sexicons = {
 }
 
 
+var descriptions = load("res://assets/data/descriptions.gd").new()
 
 var statdata = {
 	base_exp = {
@@ -89,21 +90,21 @@ var statdata = {
 		code = 'wits_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/wit_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/wit.png"),
 		type = 'factor',
 	},
 	charm_factor = {
 		code = 'charm_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/charm_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/charm.png"),
 		type = 'factor',
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/sex_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/sex.png"),
 		type = 'factor',
 	},
 	
@@ -217,6 +218,13 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	hpfactor = {
+		code = 'hpfactor',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
 	mp = {
 		code = 'mp',
 		name = '',
@@ -233,6 +241,13 @@ var statdata = {
 	},
 	hitrate = {
 		code = 'hitrate',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	evasion = {
+		code = 'evasion',
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
@@ -257,7 +272,30 @@ var statdata = {
 		descript = '',
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
-	
+	atk = {
+		code = 'atk',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	matk = {
+		code = 'matk',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	armor = {
+		code = 'armor',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mdef = {
+		code = 'mdef',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 }
 
 var worktoolnames = {
@@ -396,10 +434,14 @@ func _ready():
 	for i in Skilldata.professions.values():
 		i.name = tr("PROF" + i.code.to_upper())
 		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
+		if i.has('altname'):
+			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
+		
 	
 	for i in Items.materiallist.values():
 		i.name = tr("MATERIAL" + i.code.to_upper())
 		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
+		i.adjective = tr("MATERIAL" + i.code.to_upper() + "ADJ")
 	
 	for i in Items.itemlist.values():
 		i.name = tr("ITEM" + i.code.to_upper())
@@ -408,6 +450,8 @@ func _ready():
 	for i in Skilldata.Skilllist.values():
 		i.name = tr("SKILL" + i.code.to_upper())
 		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
+		if i.has('dialogue_text'):
+			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 	
 	for i in globals.statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())
@@ -433,6 +477,24 @@ func _ready():
 	for i in worktoolnames:
 		worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
 	
+
+	for i in world_gen.dungeons.values():
+		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
+	
+	for i in world_gen.locations.values():
+		i.classname = tr(i.code.to_upper())
+	
+	for i in Enemydata.enemies.values():
+		i.name = tr("ENEMY" + i.code.to_upper())
+	
+	
+	for i in descriptions.bodypartsdata:
+		for k in descriptions.bodypartsdata[i].values():
+			k.name = tr("BODYPART" + i.to_upper() + k.code.to_upper())
+#			text += k.name + ' = "' + k.code + '",\n'
+			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
+	
+
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true
@@ -451,6 +513,9 @@ func _ready():
 	for i in Items.materiallist.keys():
 		state.materials[i] = 0
 	
+	for i in upgradelist.keys():
+		state.upgrades[i] = 0
+	
 	#randomgroups = Enemydata.randomgroups
 	#enemylist = Enemydata.enemylist
 	#effects = Effectdata.effects
@@ -459,10 +524,9 @@ func _ready():
 	
 	#workersdict = TownData.workersdict
 	
-	for i in Items.materiallist:
-		state.materials[i] = 100
+#	for i in Items.materiallist:
+#		state.materials[i] = 100
 	state.money = 500
-	
 
 func logupdate(text):
 	state.logupdate(text)
@@ -544,9 +608,7 @@ func AddItemToInventory(item):
 		if id != null:
 			state.items[id].amount += item.amount
 		else:
-
 			item.id = "i" + str(state.itemcounter)
-
 			state.items[item.id] = item
 			state.itemcounter += 1
 		
@@ -576,10 +638,11 @@ func dir_contents(target):
 
 func evaluate(input): #used to read strings as conditions when needed
 	var script = GDScript.new()
-	script.set_source_code("func eval():\n\treturn " + input)
+	script.set_source_code("var active_slave\nfunc eval():\n\treturn " + input)
 	script.reload()
 	var obj = Reference.new()
 	obj.set_script(script)
+	obj.active_slave = input_handler.scene_character
 	return obj.eval()
 
 
@@ -672,7 +735,6 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	if state.materials[material.code] > 0:
 		data.amount = state.materials[material.code]
 	
-	
 	node.showup(targetnode, data, type)
 
 func loadimage(path):
@@ -743,6 +805,9 @@ func TextEncoder(text, node = null):
 					startcode += '[url=' + str(counter) + ']'
 					endcode = '[/url]' + endcode
 					counter += 1
+				'check':
+					if evaluate(data[1]) == false:
+						originaltext = ''
 		
 		
 		text = text.replace(newtext, startcode + originaltext + endcode)
@@ -925,8 +990,6 @@ func QuickSave():
 
 
 func SaveGame(name):
-	if state.CurEvent != '':
-		state.CurrentLine = input_handler.GetEventNode().CurrentLine
 #	approach 1, not compatrible with sigletones + still  need reworking
 #	var savedict = {state = null, heroes = [], items = [], workers = []}
 #	savedict.state = inst2dict(state)
@@ -954,15 +1017,18 @@ func LoadGame(filename):
 	#state = load("res://src/gamestate.gd").new()
 	#state._ready()
 	
+	
+	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
+	var savedict = parse_json(file.get_as_text())
+	file.close()
+	
+	state.deserialize(savedict)
+	
 	#current approach
 	CurrentScene.queue_free()
 	ChangeScene('mansion');
 	yield(self, "scene_changed")
 
-	
-	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)
-	var savedict = parse_json(file.get_as_text())
-	file.close()
 	
 	#state = dict2inst(savedict.state)
 	#state.heroes.clear()
@@ -982,7 +1048,6 @@ func LoadGame(filename):
 #		t = dict2inst(i)
 #		state.workers[t.id] = t
 	
-	state.deserialize(savedict)
 	#converting floats to ints
 	
 #	var tempdict = {}
@@ -1008,8 +1073,8 @@ func LoadGame(filename):
 #	if state.CurBuild != '' and state.CurBuild != null:
 #		CurrentScene.get_node(state.CurBuild).show()
 #	#opentextscene
-	if state.CurEvent != "":
-		StartEventScene(state.CurEvent, false, state.CurrentLine);
+#	if state.CurEvent != "":
+#		StartEventScene(state.CurEvent, false, state.CurrentLine);
 #	else:
 #		call_deferred('EventCheck');
 
@@ -1189,7 +1254,7 @@ func impregnate(father, mother):
 	if check == false && mother.professions.has('breeder') == false:
 		return #incompatible races
 	
-	var baby = globals.characterdata.new()
+	var baby = Slave.new()
 	if randf() >= 0.5:
 		baby.race = mother.race
 	else:
@@ -1210,10 +1275,12 @@ func impregnate(father, mother):
 			baby.set(i, mother[i])
 		else:
 			baby.set(i, father[i])
-	
+	baby.relatives.mother = mother.id
+	baby.relatives.father = father.id
+	baby.baby_transform()
 	mother.pregnancy.baby = baby.id
 	mother.pregnancy.duration = variables.pregduration
-	state.babies.append(baby)
+	state.babies[baby.id] = baby
 
 
 var punishcategories = ['spanking','whipping','nippleclap','clitclap','nosehook','mashshow','facesit','afacesit','grovel']

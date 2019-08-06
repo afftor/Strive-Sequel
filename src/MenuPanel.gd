@@ -13,10 +13,10 @@ func _ready():
 
 func open():
 	.show()
-	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
-		$VBoxContainer/Save.disabled = true
-	else:
-		$VBoxContainer/Save.disabled = false
+#	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
+#		$VBoxContainer/Save.disabled = true
+#	else:
+#		$VBoxContainer/Save.disabled = false
 
 func OptionsOpen():
 	$Options.open()

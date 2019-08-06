@@ -17,6 +17,7 @@ var short_sizes = ['small','average','big']
 var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
 var sexbodypartsarray = ['penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
+var selected_class = ''
 
 func _ready():
 	globals.AddPanelOpenCloseAnimation($RaceSelection)
@@ -46,7 +47,40 @@ func _ready():
 	for i in ['vaginal_virgin','anal_virgin','penis_virgin']:
 		$bodyparts2.get_node(i).connect("pressed", self, "select_checkbox", [i, $bodyparts2.get_node(i)])
 	
+	$bodyparts2/diet.connect("pressed", self, 'select_diet')
+	$DietPanel/Button.connect("pressed", self, 'finish_diet_selection')
+	for i in $DietPanel/VBoxContainer.get_children():
+		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
+	
+	$bodyparts2/class.connect("pressed", self, "open_class_list")
+	
 	open()
+
+func open_class_list():
+	$ClassPanel.show()
+	globals.ClearContainer($ClassPanel/ScrollContainer/VBoxContainer)
+	var array
+	if mode == 'master':
+		array = variables.master_starting_classes
+	elif mode == 'slave':
+		array = variables.slave_starting_classes
+	for i in array:
+		var tempclass = Skilldata.professions[i]
+		var newbutton = globals.DuplicateContainerTemplate($ClassPanel/ScrollContainer/VBoxContainer)
+		newbutton.get_node("icon").texture = tempclass.icon
+		newbutton.get_node("name").text = tempclass.name
+		newbutton.connect('pressed', self, "select_class", [tempclass.code])
+		var text = tempclass.descript
+		if tempclass.reqs.size() > 0:
+			text += "\n\nRequirements: " + person.decipher_reqs(tempclass.reqs, true)
+		globals.connecttexttooltip(newbutton, text)
+		if person.checkreqs(tempclass.reqs) == false:
+			newbutton.disabled = true
+
+func select_class(tempclass):
+	selected_class = tempclass
+	$ClassPanel.hide()
+	check_confirm_possibility()
 
 func text_changed(text, value):
 	if text != '':
@@ -73,10 +107,53 @@ func select_checkbox(bodypart, node):
 	apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
 
+func select_diet():
+	$DietPanel.show()
+	var array = ['Neutral', "Like", "Hate"]
+	for i in $DietPanel/VBoxContainer.get_children():
+		i.get_node("OptionButton").set_item_disabled(1, person.food_love != '')
+		if  person.food_love == i.name:
+			i.get_node("OptionButton").selected = 1
+		elif person.food_hate.has(i.name):
+			i.get_node("OptionButton").selected = 2
+		else:
+			i.get_node("OptionButton").selected = 0
+	
+	$DietPanel/Button.disabled = !(person.food_love != '' && person.food_hate.size() > 0)
+
+func select_food_pref(selected_id, type):
+	match selected_id:
+		0:
+			if person.food_love == type:
+				person.food_love = ''
+			if person.food_hate.has(type):
+				person.food_hate.erase(type)
+		1:
+			person.food_love = type
+			if person.food_hate.has(type):
+				person.food_hate.erase(type)
+		2:
+			if !person.food_hate.has(type):
+				person.food_hate.append(type)
+			if person.food_love == type:
+				person.food_love = ''
+	select_diet()
+
+func finish_diet_selection():
+	$DietPanel.hide()
+	preservedsettings['food_love'] = person.food_love
+	preservedsettings['food_hate'] = person.food_hate
+	var text = person.food_love + "|"
+	for i in person.food_hate:
+		text += i + " "
+	$bodyparts2/diet.text = text
+	check_confirm_possibility()
 
 func open(type = 'slave'):
 	preservedsettings.clear()
+	show()
 	
+	selected_class = ''
 	
 	person = Slave.new()
 	mode = type
@@ -100,6 +177,7 @@ func rebuild_slave():
 	var age = person.age
 	person = Slave.new()
 	person.create(race, sex, age)
+	person.is_known_to_player = true
 	if mode == 'master':
 		person.unlock_class('master')
 	
@@ -107,6 +185,8 @@ func rebuild_slave():
 	$VBoxContainer/race.text = races.racelist[person.race].name
 	$VBoxContainer/sex.select(sexarray.find(person.sex))
 	$VBoxContainer/age.select(agearray.find(person.age))
+	person.food_love = ''
+	person.food_hate.clear()
 	
 	for i in ['name','surname','nickname']:
 		if preservedsettings.has(i):
@@ -118,6 +198,30 @@ func rebuild_slave():
 	build_bodyparts()
 	apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
+	
+	
+	check_confirm_possibility()
+
+func check_confirm_possibility():
+	var can_confirm = true
+	
+	if preservedsettings.has('food_love') == false:
+		$bodyparts2/diet.text = "Select"
+		can_confirm = false
+	else:
+		var text = person.food_love + "|"
+		for i in person.food_hate:
+			text += i + " "
+		$bodyparts2/diet.text = text
+	
+	
+	if selected_class == '':
+		$bodyparts2/class.text = "Select"
+		can_confirm = false
+	else:
+		$bodyparts2/class.text = Skilldata.professions[selected_class].name
+	
+	$ConfirmButton.disabled = !can_confirm
 
 func select_age(value):
 	person.age = agearray[value]
@@ -141,8 +245,17 @@ func select_race():
 func show_race_info(temprace):
 	var race = races.racelist[temprace]
 	var image
-	$RaceSelection/RichTextLabel.bbcode_text = race.descript
-	var text = race.code.to_lower().replace('halfkin','beastkin')
+	var text = race.descript
+	
+	text += "\n\nRace bonuses: "
+	for i in race.racetrait:
+		text += globals.statdata[i].name + ": " + str(race.racetrait[i]) + ', '
+	text = text.substr(0, text.length() - 2) + "."
+	
+	
+	
+	$RaceSelection/RichTextLabel.bbcode_text = text
+	text = race.code.to_lower().replace('halfkin','beastkin')
 	if person.sex != null:
 		if person.sex == 'male':
 			text += "_m"
@@ -151,6 +264,7 @@ func show_race_info(temprace):
 		
 		if images.shades.has(text):
 			image = images.shades[text]
+	
 	
 	
 	$RaceSelection/TextureRect.texture = image
@@ -164,7 +278,7 @@ func RebuildStatsContainer():
 	globals.ClearContainer($StatsContainer)
 	var array = []
 	for i in globals.statdata.values():
-		if i.type == 'factor':
+		if i.has('type') && i.type == 'factor':
 			array.append(i)
 			if preservedsettings.has(i.code) == false:
 				preservedsettings[i.code] = 1
@@ -185,7 +299,6 @@ func RebuildStatsContainer():
 		var newnode = globals.DuplicateContainerTemplate($StatsContainer)
 		newnode.get_node("up").connect("pressed", self, 'stat_up', [i])
 		newnode.get_node("down").connect("pressed", self, 'stat_down', [i])
-		newnode.get_node("name").text = i.name
 		newnode.get_node("Label").text = str(preservedsettings[i.code])
 		counter -= preservedsettings[i.code]-1
 		newnode.get_node("icon").texture = i.baseicon
@@ -196,6 +309,11 @@ func RebuildStatsContainer():
 	
 	unassigned_points = counter
 	$totalstatlabel.text = 'Free points left: ' + str(counter)
+	
+	apply_preserved_settings()
+	if selected_class != '' && person.checkreqs(Skilldata.professions[selected_class].reqs) == false:
+		selected_class = ''
+		check_confirm_possibility()
 
 func stat_up(stat):
 	if preservedsettings[stat.code] >= 5 || unassigned_points == 0:
@@ -263,6 +381,7 @@ func build_bodyparts():
 				if i in ['penis_size', 'penis_type', 'balls_size']:
 					$bodyparts2.get_node(i).visible = false
 					$bodyparts2.get_node(i + "_label").visible = false
+					person[i] = ''
 					preservedsettings.erase(i)
 			'futa':
 				if i == 'balls_size':
@@ -332,8 +451,9 @@ func confirm_character():
 func finish_character():
 	apply_preserved_settings()
 	state.add_slave(person)
+	person.unlock_class(selected_class)
 	input_handler.emit_signal("CharacterCreated")
-	
+	person.food_consumption = 3
 	self.hide()
 
 func open_sex_traits():

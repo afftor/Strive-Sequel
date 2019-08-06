@@ -5,6 +5,8 @@ extends Node
 
 var CloseableWindowsArray = []
 var ShakingNodes = []
+var MousePositionScripts = []
+
 var CurrentScreen = 'Town'
 
 var BeingAnimated = []
@@ -32,9 +34,12 @@ var last_action_data = {}
 var slave_panel_node = preload("res://src/scenes/SlavePanel.tscn")
 var slave_list_node
 var scene_character
+var scene_loot
 var active_area
 var active_location
 
+var activated_skill
+var target_character
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -50,6 +55,7 @@ func _input(event):
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
+	
 	
 	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
 		if str(int(event.as_text())) in str(range(1,4)):
@@ -73,6 +79,11 @@ func _process(delta):
 			ShakingNodes.erase(i)
 	soundcooldown -= delta
 	
+	for i in MousePositionScripts:
+		if check_mouse_in_nodes(i.nodes) == false:
+			i.targetnode.call(i.script)
+			MousePositionScripts.erase(i)
+	
 	if musicfading:
 		AudioServer.set_bus_volume_db(1, AudioServer.get_bus_volume_db(1) - delta*50)
 		if AudioServer.get_bus_volume_db(1) <= -80:
@@ -82,9 +93,6 @@ func _process(delta):
 		if AudioServer.get_bus_volume_db(1) >= globals.globalsettings.musicvol:
 			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
 			musicraising = false
-	
-
-
 
 
 func CloseTopWindow():
@@ -358,7 +366,6 @@ func GetSkillSelectNode():
 	if get_tree().get_root().has_node('SelectSkillMenu') == false:
 		node = load("res://src/SkillSelectMenu.tscn").instance()
 		get_tree().get_root().add_child(node)
-		#node.set_as_toplevel(true)
 		node.name = 'SelectSkillMenu'
 	else:
 		node = get_tree().get_root().get_node("SelectSkillMenu")
@@ -571,7 +578,12 @@ func operate(operation, value1, value2):
 			result = value1 <= value2
 		'lt':
 			result = value1 < value2
+		'has':
+			result = value1.has(value2)
+		'mask':
+			result = (int(value1) & int(value2)) != 0
 	return result
+
 
 func math(operation, value1, value2):
 	match operation:
@@ -757,21 +769,66 @@ func interactive_message(code, type, args):
 		'escape':
 			data.text = args.translate(data.text)
 		'character_event':
-			var newcharacter = Slave.new()
-			newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+			var newcharacter
+			match args.characterdata.type:
+				'raw':
+					newcharacter = Slave.new()
+					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+				'function':
+					newcharacter = call(args.characterdata.function, args.characterdata.args)
 			scene_character = newcharacter
-			data.options.append({code = 'inspect_scene_character', text = "Inspect"})
+			data.text = newcharacter.translate(data.text)
+			data.options.push_front({code = 'inspect_scene_character', text = tr("DIALOGUECHARINSPECT")})
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
+		'childbirth':
+			scene_character = args.pregchar
+			data.text = scene_character.translate(data.text)
+			var baby = state.babies[scene_character.pregnancy.baby]
+			data.options.append({code = 'inspect_character_child', text = tr("DIALOGUEINSPECTBABY")})
+		'event_selection':
+			data.location = active_location
+		'loot':
+			var loot
+			match args.loot_data.type:
+				'function':
+					loot = call(args.loot_data.function, args.loot_data.args)
+			scene_loot = world_gen.make_chest_loot(loot)
+		'area_oneshot_event':
+			for i in active_area.events:
+				if i.code == code:
+					active_area.events.erase(i)
+					break
 	scene.open(data)
+
+func interactive_message_custom(data):
+	var scene = get_dialogue_node()
+	scene.open(data)
+
+
+func make_location_chest_loot(args):
+	var lootdict = {}
+	
+	return lootdict
 
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
+func make_local_recruit(args):
+	var newchar = Slave.new()
+	newchar.generate_random_character_from_data(active_location.races)
+	return newchar
 
 func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
 	slave_panel_node.open(null)
+
+func check_mouse_in_nodes(nodes):
+	var check = false
+	for i in nodes:
+		if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
+			check = true
+	return check

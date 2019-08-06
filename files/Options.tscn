@@ -61,10 +61,11 @@ custom_constants/separation = 31
 
 [node name="master" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
 margin_right = 413.0
-margin_bottom = 19.0
+margin_bottom = 15.0
 min_value = -40.0
 max_value = 0.0
 value = -20.0
+ticks_on_borders = true
 
 [node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/master"]
 margin_left = 458.0
@@ -82,11 +83,12 @@ text = "MASTERSOUND"
 align = 1
 
 [node name="music" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
-margin_top = 50.0
+margin_top = 46.0
 margin_right = 413.0
-margin_bottom = 69.0
+margin_bottom = 61.0
 min_value = -40.0
 max_value = 0.0
+ticks_on_borders = true
 
 [node name="CheckBox" type="CheckBox" parent="TabContainer/Audio/VBoxContainer/music"]
 margin_left = 458.0
@@ -104,9 +106,9 @@ text = "MUSIC"
 align = 1
 
 [node name="sound" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
-margin_top = 100.0
+margin_top = 92.0
 margin_right = 413.0
-margin_bottom = 119.0
+margin_bottom = 107.0
 min_value = -40.0
 max_value = 0.0
 

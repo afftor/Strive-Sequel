@@ -163,7 +163,7 @@ func calculate_args():
 
 func get_arg(index):
 	var arg = template.args[index]
-	if arg.has('dynamic'):
+	if arg.has('dynamic') || args[index] == null:
 		match arg.obj:
 			'parent':
 				var par

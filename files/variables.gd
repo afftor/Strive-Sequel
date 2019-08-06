@@ -13,14 +13,15 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
+
 var dmg_mod_list = ['damage_hp', 'restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 #list for values modified bu random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
 #list for values with relative values
-var dmg_rel_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'relation']
+var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp']
 
-var resists_list = ['fire','earth','air','water']
-var fighter_stats_list = ['hp','mana','damage','armor','mdef','hitrate','evasion','armorpenetration','speed']
+var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
+var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
@@ -50,6 +51,12 @@ const lines = {
 	4 : [10,11,12],
 }
 
+#mansion & ugprades
+var base_population_cap = 5
+var population_cap_per_room_upgrade = 5
+var max_population_cap = 30
+var stable_boost_per_level = 0.2
+
 #Items
 var RepairCostMultiplierEasy = 0.5
 var RepairCostMultiplierMedium = 0.65
@@ -58,6 +65,9 @@ var ItemEffectNaturalMultiplier = 0.15
 #Heroes
 var all_races_array = []
 var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
+
+var master_starting_classes = ['fighter','archer','worker','smith','apprentice','hunter']
+var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith', 'apprentice','hunter']
 
 var master_starting_stats = 10
 var slave_starting_stats = 15
@@ -95,14 +105,23 @@ var basic_mp_regen = 0.2
 var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
-var basic_energy_per_work_tick = 8.75
+var basic_lust_per_tick = 0.57
+var basic_energy_per_work_tick = 8.33
 
 #Cheats
-var instant_travel = true
-var instant_upgrades = true
-var free_upgrades = true
+var instant_travel = false
+var instant_upgrades = false
+var free_upgrades = false
 var skip_combat = false
-var unlock_all_upgrades = true
+var unlock_all_upgrades = false
+var invincible_player = true
+var show_enemy_hp = true
+
+#debug_only
+var allow_remote_intereaction = false
+var no_event_wait_time = false
+var generate_test_chars = true
+
 
 var pregduration = 90
 

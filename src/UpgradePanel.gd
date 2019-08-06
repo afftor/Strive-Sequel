@@ -101,6 +101,8 @@ func selectupgrade(upgrade):
 	if upgrade.levels.has(currentupgradelevel):
 		text += '\n\n' + tr("UPGRADENEXTBONUS") + ': ' + upgrade.levels[currentupgradelevel].bonusdescript
 		
+		$UpgradeDescript/Time.show()
+		$UpgradeDescript/Time/Label.text = str(upgrade.levels[currentupgradelevel].taskprogress)
 		for i in upgrade.levels[currentupgradelevel].cost:
 			var item = Items.materiallist[i]
 			var newnode = globals.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
@@ -113,6 +115,7 @@ func selectupgrade(upgrade):
 				newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
 				canpurchase = false
 	else:
+		$UpgradeDescript/Time.hide()
 		canpurchase = false
 	
 	if state.upgrade_progresses.has(upgrade.code):
@@ -128,6 +131,7 @@ func findupgradelevel(upgrade):
 	if state.upgrades.has(upgrade.code):
 		rval = state.upgrades[upgrade.code]
 	return rval
+
 
 func unlockupgrade():
 	var upgrade = selectedupgrade

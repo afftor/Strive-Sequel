@@ -18,7 +18,7 @@ func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, min
 	target_function = targetfunction
 	target_node = targetnode
 	cost = itemcost
-	$HSlider.value = 0
+	$HSlider.value = 1
 	$HSlider.min_value = minvalue
 	$HSlider.max_value = maxvalue
 	require_gold = requiregold

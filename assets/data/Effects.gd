@@ -92,7 +92,7 @@ var effect_table = {
 	},
 	e_tr_foreman = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'mod_collect', value = 2}],
+		atomic = [{type = 'stat_mul', stat = 'mod_collect', value = 1.33}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -104,7 +104,7 @@ var effect_table = {
 	},
 	e_tr_smith = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'mod_smith', value = 2.0}],
+		atomic = [{type = 'stat_mul', stat = 'mod_smith', value = 2.0}, {type = "stat_mul", stat = 'mod_tailor', value = 2.0}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -200,7 +200,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsitems/Charm.png", 
 				description = "Is charmed",
 				limit = 1,
 				t_name = 'charmed'
@@ -303,6 +303,7 @@ var effect_table = {
 			{type = 'stat_mul', stat = 'mod_cook', value = 1.5},
 			{type = 'stat_mul', stat = 'mod_smith', value = 1.5},
 			{type = 'stat_mul', stat = 'mod_alchemy', value = 1.5},
+			{type = 'stat_mul', stat = 'mod_tailor', value = 1.5},
 			{type = 'stat_mul', stat = 'mod_farm', value = 1.5},
 			#{type = 'stat_mul', stat = 'mod_collect', value = 1.5},
 		],
@@ -2540,6 +2541,39 @@ var effect_table = {
 		],
 		buffs = []
 	},
+	
+	master_productivity_1 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['master_productivity_2'],
+		buffs = []
+	},
+	master_productivity_2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'Morale',
+		tick_event = variables.TR_DAY,
+		duration = 3, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_mul', stat = 'productivity', value = 1.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/Charm.png", 
+				description = "Productivity increased by 20%%",
+				limit = 1,
+				t_name = 'Morale'
+			}
+		],
+	},
+	
+	
+	
 #	e_i_barrier2 = {
 #		type = 'oneshot',
 #		trigger = variables.TR_HIT,

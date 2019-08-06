@@ -14,40 +14,46 @@ func get_progress_task(character, temptask, tempsubtask):
 	return value
 
 func hunt_meat(character):
-	return 8 + (8*(character.physics/50))
+	return 1 + (1*(character.physics/66))
 
 func fishing(character):
-	return 8 + (8*(character.physics/200+character.wits/75))
+	return 1 + (1*(character.physics/100+character.wits/57))
 
 func farming(character):
-	return 8 + (8*(character.physics/200+character.wits/75))
+	return 1 + (1*(character.physics/57+character.wits/100))
 
 func hunt_leather(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func woodcutting_lumber(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
+
+func woodmagiccutting_lumber(character):
+	return 1 + (1*(character.physics/66))
+
+func woodironcutting_lumber(character):
+	return 1 + (1*(character.physics/66))
 
 func mining_stone(character):
-	return 16 + character.physics/3
+	return 1 + (1*(character.physics/66))
 
 func whoring_gold(character):
 	return (3 + character.sexuals/10 + character.charm/20) * character.mod_pros_gold
 
 func cooking_progress(character):
-	return 30 + character.wits
+	return 1 + (1*(character.wits/50))
 
 func tailor_progress(character):
-	return 30 + character.physics
+	return 1 + (1*(character.wits/66+character.physics/150))
 
 func forge_progress(character):
-	return 3 + character.physics
+	return 1 + (1*(character.wits/66+character.physics/150)) * (1+0.25*state.upgrades.forgeworkshop)
 
 func alchemy_progress(character):
-	return 3 + character.wits
+	return 1 + (1*(character.wits/50))
 
 func building_progress(character):
-	return 3 + character.wits/10 + character.physics/20
+	return (1 + character.wits/100 + character.physics/50) * (1+0.25*state.upgrades.forgeworkshop)
 
 #i added to task tamplates link to a corresponding productivity modifier. rewiev these values and fix them if needed 
 #also tried to fix cooking but not sure if all was made
@@ -60,8 +66,10 @@ var tasklist = {
 		workstat = 'physics',
 		worktool = 'bow',
 		production = {
-			huntmeat = {code = 'huntmeat', item = 'meat', progress_per_item = 10, reqs = [], progress_function = 'hunt_meat'},
-			huntleather = {code = 'huntleather', item = 'leather', progress_per_item = 100, reqs = [], progress_function = 'hunt_leather'}}, #later change function to array
+			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
+			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 6, reqs = [], progress_function = 'hunt_leather'},
+			leatherthickgather = {code = 'leatherthickgather', item = 'leatherthick', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 1}], progress_function = 'hunt_leather'},
+			leathermythicgather = {code = 'leathermythicgather', item = 'leathermythic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 2}], progress_function = 'hunt_leather'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_hunt'
@@ -73,20 +81,21 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'rod',
-		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 9, reqs = [], progress_function = 'fishing'}},
+		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1, reqs = [], progress_function = 'fishing'}},
 		icon = null,
 		tags = [],
-		mod = 'mod_collect'
+		mod = 'mod_hunt'
 	},
 	farming = {
 		code = 'farming',
-		reqs = [],
+		reqs = [{type = 'has_upgrade', name = 'resource_gather_grains', value = 1},{type = "has_upgrade", name = 'resource_gather_veges', value = 1, orflag = true}, {type = "has_upgrade", name = 'resource_gather_clothsilk', value = 1, orflag = true}],
 		name = '',
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
-		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 9, reqs = [{type = "has_upgrade", name = 'farm_vegetables', value = 1}], progress_function = 'farming'},
-		farming_grain = {code = 'farming_grain',item = 'grains', progress_per_item = 8, reqs = [{type = "has_upgrade", name = 'farm_grains', value = 1}], progress_function = 'farming'}},
+		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 1.5, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming'},
+		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 1.2, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming'},
+		farming_silk = {code = 'farming_silk',item = 'clothsilk', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_clothsilk', value = 1}], progress_function = 'farming'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
@@ -98,7 +107,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'axe',
-		production = {woodcutlumber = {code = 'woodcutlumber', item = 'wood', progress_per_item = 100, reqs = [], progress_function = 'woodcutting_lumber'}},
+		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 6, reqs = [], progress_function = 'woodcutting_lumber'},
+		woodmagicgather = {code = 'woodmagicgather', item = 'woodmagic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_woodmagic', value = 1}], progress_function = 'woodmagiccutting_lumber'},
+		woodirongather = {code = 'woodirongather', item = 'woodiron', progress_per_item = 18, reqs = [{type = "has_upgrade", name = 'resource_gather_woodiron', value = 1}], progress_function = 'woodmagiccutting_lumber'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -110,7 +121,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'pickaxe',
-		production = {minestone = {code = 'minestone', item = 'stone', progress_per_item = 100, reqs = [], progress_function = 'mining_stone'}},
+		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 7, reqs = [], progress_function = 'mining_stone'},
+		gatheriron = {code = 'gatheriron', item = 'iron', progress_per_item = 10, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 1}], progress_function = 'mining_stone'},
+		gathermithril = {code = 'gathermithril', item = 'mithril', progress_per_item = 25, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 2}], progress_function = 'mining_stone'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'
@@ -134,7 +147,7 @@ var tasklist = {
 		workstat = 'wits',
 		production = {cooking = {code = 'cooking',item = 'cooking',descript = tr("JOBCOOKINGCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_cooking.png"), progress_per_item = 1, reqs = [], progress_function = 'cooking_progress'}},
 		icon = null,
-		tags = ['tailor'],#????
+		tags = ['cooking'],
 		mod = 'mod_cook'
 	},
 	tailor = {
@@ -146,7 +159,7 @@ var tasklist = {
 		production = {tailor = {code = 'tailor',item = 'tailor',descript = tr("JOBTAILORCRAFTDESCRIPT"), icon = load("res://assets/images/iconsitems/task_tailor.png"), progress_per_item = 1, reqs = [], progress_function = 'tailor_progress'}},
 		icon = null,
 		tags = ['tailor'],
-		mod = 'mod_default'
+		mod = 'mod_tailor'
 	},
 	smith = {
 		code = 'smith',
@@ -216,7 +229,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 50},
+		racetrait = {hpfactor = 1.2},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1}, #weight for 1 random prefered food type
 		diet_hate = {vege = 10, meat = 10, fish = 10, grain = 10},#%chance for each food type to be refused
 		tags = [],
@@ -250,7 +263,7 @@ var racelist = {
 			charm_factor = [2,3],
 			wit_factor = [3,4],
 		},
-		racetrait = {hpmax = 20, mpmax = 35, hitrate = 10},
+		racetrait = {hpfactor = 0.9, hitrate = 10},
 		diet_love = {vege = 1, meat = 0.2, fish = 0.3, grain = 1},
 		diet_hate = {vege = 0, meat = 75, fish = 25, grain = 10},
 		tags = [],
@@ -280,7 +293,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 30, mpmax = 15, hitrate = 10},
+		racetrait = {hpfactor = 0.95, hitrate = 10},
 		diet_love = {vege = 1, meat = 0.2, fish = 0.5, grain = 1},
 		diet_hate = {vege = 5, meat = 45, fish = 15, grain = 5},
 		tags = [],
@@ -310,7 +323,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [3,5],
 		},
-		racetrait = {hpmax = 50, mpmax = 50, hitrate = 20},
+		racetrait = {hpfactor = 1.1, hitrate = 20},
 		diet_love = {vege = 1, meat = 0.5, fish = 0.5, grain = 1},
 		diet_hate = {vege = 10, meat = 20, fish = 20, grain = 10},
 		tags = [],
@@ -341,7 +354,7 @@ var racelist = {
 			charm_factor = [1,2],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 75},
+		racetrait = {hpfactor = 1.5},
 		diet_love = {vege = 0.1, meat = 2, fish = 0.5, grain = 0.4},
 		diet_hate = {vege = 45, meat = 0, fish = 15, grain = 25},
 		tags = [],
@@ -371,7 +384,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 35, evasion = 10},
+		racetrait = {hpfactor = 0.8, evasion = 10},
 		diet_love = {vege = 0.4, meat = 2, fish = 1, grain = 0.7},
 		diet_hate = {vege = 55, meat = 1, fish = 10, grain = 25},
 		tags = [],
@@ -402,7 +415,7 @@ var racelist = {
 			charm_factor = [3,5],
 			wit_factor = [2,5],
 		},
-		racetrait = {hpmax = 25, evasion = 20},
+		racetrait = {hpfactor = 0.7, evasion = 20},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 25, fish = 10, grain = 15},
 		tags = [],
@@ -431,7 +444,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 55},
+		racetrait = {hpfactor = 1.3},
 		diet_love = {vege = 0.3, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 10, fish = 15, grain = 15},
 		tags = [],
@@ -460,7 +473,7 @@ var racelist = {
 			charm_factor = [4,5],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 10, mpmax = 75},
+		racetrait = {hpfactor = 0.5, matk = 10},
 		diet_love = {vege = 1, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
 		tags = [],
@@ -492,7 +505,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 50, mpmax = 15},
+		racetrait = {hpfactor = 0.9},
 		diet_love = {vege = 2, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 45, grain = 10},
 		tags = [],
@@ -523,7 +536,7 @@ var racelist = {
 			charm_factor = [1,4],
 			wit_factor = [2,5],
 		},
-		racetrait = {hpmax = 45, mpmax = 35},
+		racetrait = {hpfactor = 1.3},
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 20, meat = 5, fish = 10, grain = 15},
 		tags = [],
@@ -555,7 +568,7 @@ var racelist = {
 			charm_factor = [3,5],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 30, mpmax = 45},
+		racetrait = {hpfactor = 1.4},
 		diet_love = {vege = 1, meat = 0.3, fish = 0.7, grain = 1},
 		diet_hate = {vege = 5, meat = 15, fish = 10, grain = 5},
 		tags = [],
@@ -583,7 +596,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 75, mpmax = 35},
+		racetrait = {hpfactor = 1.7},
 		diet_love = {vege = 1, meat = 3, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 5, fish = 10, grain = 30},
 		tags = [],
@@ -617,7 +630,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 70},
+		racetrait = {hpfactor = 1.8},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 2},
 		diet_hate = {vege = 5, meat = 15, fish = 10, grain = 5},
 		tags = [],
@@ -649,7 +662,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [1,2],
 		},
-		racetrait = {hpmax = 65},
+		racetrait = {hpfactor = 1.7},
 		diet_love = {vege = 2, meat = 0.1, fish = 0.5, grain = 3},
 		diet_hate = {vege = 5, meat = 75, fish = 50, grain = 5},
 		tags = ['large_tits'],
@@ -679,7 +692,7 @@ var racelist = {
 			charm_factor = [2,4],
 			wit_factor = [1,2],
 		},
-		racetrait = {hpmax = 40, mpmax = 20},
+		racetrait = {hpfactor = 1.1},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 15, meat = 10, fish = 5, grain = 5},
 		tags = [],
@@ -711,7 +724,7 @@ var racelist = {
 			charm_factor = [1,2],
 			wit_factor = [1,2],
 		},
-		racetrait = {hpmax = 35, mpmax = 40},
+		racetrait = {hpfactor = 1.4},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 15, meat = 15, fish = 15, grain = 15},
 		tags = [],
@@ -740,7 +753,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [1,4],
 		},
-		racetrait = {hpmax = 55, mpmax = 30},
+		racetrait = {hpfactor = 1.3},
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 75, meat = 5, fish = 5, grain = 50},
 		tags = [],
@@ -772,7 +785,7 @@ var racelist = {
 			charm_factor = [1,2],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 35, mpmax = 50},
+		racetrait = {hpfactor = 1.25},
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 75, meat = 5, fish = 5, grain = 50},
 		tags = [],
@@ -803,7 +816,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 45, mpmax = 40},
+		racetrait = {hpfactor = 1.15},
 		diet_love = {vege = 1, meat = 1, fish = 3, grain = 0.5},
 		diet_hate = {vege = 10, meat = 15, fish = 5, grain = 10},
 		tags = [],
@@ -833,7 +846,7 @@ var racelist = {
 			charm_factor = [2,4],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 45, mpmax = 40},
+		racetrait = {hpfactor = 0.85},
 		diet_love = {vege = 0.5, meat = 1, fish = 3, grain = 1.5},
 		diet_hate = {vege = 15, meat = 15, fish = 0, grain = 5},
 		tags = [],
@@ -866,7 +879,7 @@ var racelist = {
 			charm_factor = [2,5],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 50, evasion = 10},
+		racetrait = {hpfactor = 1.05, evasion = 10},
 		diet_love = {vege = 0.5, meat = 2, fish = 2, grain = 1.5},
 		diet_hate = {vege = 80, meat = 5, fish = 5, grain = 40},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
@@ -900,7 +913,7 @@ var racelist = {
 			charm_factor = [2,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 60},
+		racetrait = {hpfactor = 1.35},
 		diet_love = {vege = 0.5, meat = 4, fish = 1, grain = 1},
 		diet_hate = {vege = 50, meat = 5, fish = 15, grain = 20},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
@@ -934,7 +947,7 @@ var racelist = {
 			charm_factor = [3,5],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 30, mpmax = 30},
+		racetrait = {hpfactor = 1.1},
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 70, meat = 5, fish = 15, grain = 35},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
@@ -968,7 +981,7 @@ var racelist = {
 			charm_factor = [2,5],
 			wit_factor = [1,2],
 		},
-		racetrait = {hpmax = 30, mpmax = 20},
+		racetrait = {hpfactor = 1},
 		diet_love = {vege = 3, meat = 0.3, fish = 0.5, grain = 2},
 		diet_hate = {vege = 5, meat = 40, fish = 30, grain = 5},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
@@ -1000,7 +1013,7 @@ var racelist = {
 			charm_factor = [2,4],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 45, mpmax = 15},
+		racetrait = {hpfactor = 1.1},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 15, fish = 5, grain = 10},
 		tags = ['has_halfkin_counterpart','multibreasts','beast'],
@@ -1032,7 +1045,7 @@ var racelist = {
 			charm_factor = [2,5],
 			wit_factor = [1,3],
 		},
-		racetrait = {hpmax = 50, evasion = 10},
+		racetrait = {hpfactor = 1.05, evasion = 10},
 		diet_love = {vege = 0.5, meat = 2, fish = 2, grain = 1.5},
 		diet_hate = {vege = 80, meat = 5, fish = 5, grain = 40},
 		tags = ['beast'],
@@ -1062,7 +1075,7 @@ var racelist = {
 			charm_factor = [2,3],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 60},
+		racetrait = {hpfactor = 1.35},
 		diet_love = {vege = 0.5, meat = 4, fish = 1, grain = 1},
 		diet_hate = {vege = 50, meat = 5, fish = 15, grain = 20},
 		tags = ['beast'],
@@ -1092,7 +1105,7 @@ var racelist = {
 			charm_factor = [3,5],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 30, mpmax = 30},
+		racetrait = {hpfactor = 1.1},
 		diet_love = {vege = 0.5, meat = 2, fish = 1, grain = 1},
 		diet_hate = {vege = 70, meat = 5, fish = 15, grain = 35},
 		tags = ['beast'],
@@ -1122,7 +1135,7 @@ var racelist = {
 			charm_factor = [2,5],
 			wit_factor = [1,2],
 		},
-		racetrait = {hpmax = 30, mpmax = 20},
+		racetrait = {hpfactor = 1},
 		diet_love = {vege = 3, meat = 0.3, fish = 0.5, grain = 2},
 		diet_hate = {vege = 5, meat = 40, fish = 30, grain = 5},
 		tags = ['beast'],
@@ -1149,7 +1162,7 @@ var racelist = {
 			charm_factor = [2,4],
 			wit_factor = [2,4],
 		},
-		racetrait = {hpmax = 45, mpmax = 15},
+		racetrait = {hpfactor = 1.1},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 15, fish = 5, grain = 10},
 		tags = ['beast'],
