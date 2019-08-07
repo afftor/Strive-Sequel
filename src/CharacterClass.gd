@@ -55,9 +55,9 @@ var lust_mods = []
 var bonuses = {
 }
 
-var obedience = 25.0 setget obed_set, obed_get
-var fear = 70.0 setget fear_set, fear_get
-var lust = 20.0 setget lust_set, lust_get
+var obedience = 0.0 setget obed_set, obed_get
+var fear = 0.0 setget fear_set, fear_get
+var lust = 0.0 setget lust_set, lust_get
 var loyal = 0.0
 var lustmax = 50
 var obed_degrade_mod = 1.0
@@ -1845,7 +1845,6 @@ func check_skill_availability(s_code, target):
 
 func use_social_skill(s_code, target):#add logging if needed
 	var template = Skilldata.Skilllist[s_code]
-	
 	var check = check_skill_availability(s_code, target)
 	if check.check == false:
 		#input_handler.SystemMessage(check.descript)
@@ -1853,10 +1852,9 @@ func use_social_skill(s_code, target):#add logging if needed
 		return
 	
 	if template.tags.has("dialogue_skill"):
-		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}#childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = null, tags = [], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
 		var text = translate(template.dialogue_text)
-		text = target.translate(text.replace("[targetname]", "[name]"))
-		text = target.translate(text.replace("[targethis]", "[his]"))
+		text = target.translate(text.replace("[target", "["))
 		data.text = text
 		
 		if template.charges > 0:
@@ -1930,7 +1928,6 @@ func use_social_skill(s_code, target):#add logging if needed
 	#to implement not fully described social chance-to-success system 
 	
 	var effect_text = '\n'
-	
 	#applying values
 	for i in range(s_skill.value.size()):
 		if s_skill.damagestat[i] == 'no_stat': continue
@@ -1942,13 +1939,33 @@ func use_social_skill(s_code, target):#add logging if needed
 		for h in targ_fin:
 			var tmp = h.stat_update(s_skill.damagestat[i], s_skill.value[i])
 			if s_skill.is_drain: self.stat_update(s_skill.damagestat[i], -tmp)
-			effect_text += "\n" + h.name + ", " + globals.statdata[s_skill.damagestat[i]].name + ": "  + str(round(tmp)) 
-	
-	if template.has("dialogue"):
-		var args = {name1 = self, name2 = target, bonustext = effect_text}
-		if check_skill_availability(s_code, target).check == true:
-			args.repeat = true
-		input_handler.interactive_message(template.dialogue, 'social_skill', args)
+			effect_text += "\n" + h.name + ", " + globals.statdata[s_skill.damagestat[i]].name
+			var maxstat = 100
+			if h.get(s_skill.damagestat[i]+'max') != null:
+				maxstat = h.get(s_skill.damagestat[i] + "max")
+			var change = '+'
+			if tmp < 0:
+				change = ''
+			effect_text += ": " +  str(h.get(s_skill.damagestat[i])) + "/" + str(maxstat) + " (" + change + "" + str(round(tmp)) + ")"
+	if template.has("dialogue_report"):
+		var data = {text = '', image = template.dialogue_report, tags = ['skill_report_event'], options = []}
+		var text = translate(template.dialogue_report)
+		text = target.translate(text.replace("[target", "["))
+		data.text = text + effect_text
+		if template.dialogue_show_repeat == true:
+			data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = true, reqs = []})
+			if check_skill_availability(s_code, target).check == true:
+				data.options[0].disabled = false
+		
+		input_handler.scene_character = self
+		input_handler.target_character = target
+		input_handler.activated_skill = s_code
+		
+		data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
+		
+		input_handler.interactive_message_custom(data)
+		
+		#input_handler.interactive_message(template.dialogue, 'social_skill', args)
 	#postdamage triggers
 	s_skill.process_event(variables.TR_POSTDAMAGE)
 	for e in triggered_effects:

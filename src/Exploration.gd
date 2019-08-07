@@ -322,7 +322,7 @@ func guild_hire_slave():
 		
 	state.money -= selectedperson.calculate_price()
 	state.add_slave(selectedperson)
-	active_faction.slaves.erase(selectedperson)
+	active_faction.slaves.erase(selectedperson.id)
 	selectedperson.area = active_area.code
 	selectedperson.location = 'mansion'
 	selectedperson.is_players_character = true

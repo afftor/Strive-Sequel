@@ -774,12 +774,13 @@ var TranslationDict = {
 	SKILLABUSE = "Abuse",
 	SKILLABUSEDESCRIPT = "Take your anger on someone else. \n\nImproves Obedience and removes some Fatigue for self. Target loses some Health and gain Fatigue, but also receive Fear.",
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
-	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. ",
-	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore Obedience\n4. Improve Productivity by 20% for 3 days for 50 lust\n5. Increase Atk and Matk by 15% for 2 days for 50 lust.",
+	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. Target must have at least 50 Lust.",
+	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore full Obedience for 50 Lust\n4. Improve Productivity by 20% for 3 days for 50 Lust\n5. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
 	
 	SKILLSUCCUBUS_LUST_SKILL = "Lust Drain",
 	SKILLSUCCUBUS_LUST_SKILLDESCRIPT = "Utilizes taret's Lust for self benefit. ",
 	DIALOGUESUCCUBUS_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore Obedience\n4. Increase Atk and Matk by 25% for 2 days for 50 lust.",
+	
 	
 	
 	
@@ -1251,8 +1252,10 @@ var TranslationDict = {
 	
 	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should focus on their morals or behavior.",
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
-	DIALOGUEPRAISETEXT = "[name1] has prased [name2] for [his2] efforts.",
-	DIALOGUEPRAISECLOSE = "Close",
+	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.",
+	DIALOGUEMASTER_LUST_EXPREPORT = "You use [targetname]'s lust to provide [targethim] with experience.",
+	
+	DIALOGUECLOSE = "Close",
 	
 	DIALOGUECHILDBIRTHTEXT = "[name] has gave birth to a healthy child. Do you wish to keep it?",
 	DIALOGUEKEEPBABY = "Keep baby",

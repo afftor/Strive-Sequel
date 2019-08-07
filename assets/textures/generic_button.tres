@@ -13,9 +13,6 @@ margin_right = 25.0
 margin_top = 10.0
 margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id=5]
-region_rect = Rect2( 1264, 79, 3, 1 )
-
 [sub_resource type="StyleBoxTexture" id=2]
 region_rect = Rect2( 1264, 79, 3, 1 )
 
@@ -37,11 +34,11 @@ margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 214, 50 )
-margin_left = 25.0
-margin_right = 25.0
-margin_top = 10.0
-margin_bottom = 10.0
+region_rect = Rect2( 0, 0, 210, 51 )
+margin_left = 23.3192
+margin_right = 23.3192
+margin_top = 9.45374
+margin_bottom = 8.82349
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )

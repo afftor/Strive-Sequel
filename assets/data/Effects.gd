@@ -71,7 +71,7 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],
 		req_skill = true,
-		conditions = [],
+		conditions = [{type = 'skill', value = ['tags', 'has', 'discipline']}],
 		atomic = [],
 		buffs = [],
 		sub_effects = [

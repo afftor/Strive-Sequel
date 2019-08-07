@@ -135,7 +135,7 @@ func open(tempperson):
 	
 	$food_love/Label.text = person.food_love
 	
-	$productivity/Label.text = str(person.productivity) + "%"
+#	$productivity/Label.text = str(person.productivity) + "%"
 	
 	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
@@ -383,7 +383,7 @@ func skill_selected(skill):
 
 func select_skill_target(skillcode):
 	active_skill = skillcode
-	input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free'}, {code = 'is_id', operant = 'neq', value = person.id}])
+	input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free'}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
 
 func use_skill(target):
 	person.use_social_skill(active_skill, target)

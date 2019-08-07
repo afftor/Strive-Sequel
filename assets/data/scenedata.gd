@@ -6,7 +6,7 @@ var scenedict = {
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
 	
 	
-	dialogue_praise = {text = tr('DIALOGUEPRAISETEXT'),tags = [], image = null, options = [{code = 'close', reqs = [], text = tr('DIALOGUEPRAISECLOSE')}]},
+	#dialogue_praise = {text = tr('DIALOGUEPRAISETEXT'),tags = [], image = null, options = [{code = 'close', reqs = [], text = tr('DIALOGUECLOSE')}]},
 	
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = null, options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
@@ -90,7 +90,7 @@ var scenedict = {
 		image = null,
 		common_effects = [{code = 'make_story_character', value = 'Daisy'},{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_purchase = {
@@ -138,7 +138,7 @@ var scenedict = {
 		{code = 'make_story_character', value = 'Daisy'}, #make_story_character takes character data from worldgen.pregen_characters
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_purchase_confirm_discount = {
@@ -148,7 +148,7 @@ var scenedict = {
 		image = null,
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_purchase_leave = {
@@ -158,7 +158,7 @@ var scenedict = {
 		image = null,
 		common_effects = [],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_ignore_purchase = {
@@ -168,7 +168,7 @@ var scenedict = {
 		image = null,
 		common_effects = [],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	
@@ -196,7 +196,7 @@ var scenedict = {
 			]},
 		],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_first_event_discipline = {
@@ -212,7 +212,7 @@ var scenedict = {
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_confess_event = {
@@ -240,7 +240,7 @@ var scenedict = {
 			]},
 		],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 	daisy_confess_refuse = {
@@ -254,7 +254,7 @@ var scenedict = {
 			]},
 		],
 		options = [
-		{code = 'close', text = 'Close', reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
 		],
 	},
 }
