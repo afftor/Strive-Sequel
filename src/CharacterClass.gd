@@ -505,6 +505,11 @@ func create(temp_race, temp_gender, temp_age):
 	
 	hp = hpmax
 	
+	for i in globals.descriptions.bodypartsdata:
+		if globals.descriptions.bodypartsdata[i].has(get(i)):
+			if globals.descriptions.bodypartsdata[i][get(i)].bodychanges.size() > 0:
+				apply_custom_bodychange(i, get(i))
+	
 	#setting food filter
 	for i in Items.materiallist.values():
 		if i.type == 'food':
@@ -519,6 +524,18 @@ func create(temp_race, temp_gender, temp_age):
 						break
 				if check == false:
 					food_filter.med.append(i.code)
+
+func apply_custom_bodychange(target, part):
+	set(target, part)
+	for i in globals.descriptions.bodypartsdata[target][part].bodychanges:
+		if checkreqs(i.reqs) == true:
+			var newvalue = i.value
+			if typeof(newvalue) == TYPE_ARRAY:
+				if typeof(newvalue[0]) == TYPE_ARRAY:
+					newvalue = input_handler.weightedrandom(newvalue)
+				else:
+					newvalue = newvalue[randi()%newvalue.size()]
+			set(i.code, newvalue)
 
 func get_short_name():
 	var text = ''
@@ -551,7 +568,10 @@ func get_racial_features():
 		else:
 			self.set(i, self.get(i) + race_template.racetrait[i])
 	for i in race_template.bodyparts:
-		self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])
+		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
+			self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])
+		else:
+			self.set(i, input_handler.weightedrandom(race_template.bodyparts[i]))
 	
 	var array = []
 	for i in race_template.diet_love:

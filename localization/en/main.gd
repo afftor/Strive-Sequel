@@ -515,9 +515,7 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 	
-	SLAVEAGETEENDESCRIPT = "[He]'s a [color=aqua]teenage [boy][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
-	SLAVEAGEADULTDESCRIPT = "[He]'s a [color=aqua]young adult [male][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
-	SLAVEAGEMATUREDESCRIPT = "[He]'s a [color=aqua]matured [male][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
+	
 	
 	SLAVEBODYHUMANOID = "Humanoid",
 	SLAVEBODYBESTIAL = "Bestial",

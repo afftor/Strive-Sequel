@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wimborn.ogg-05fa90a5750a1a300c6af17417e8c220.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/wimborn.ogg"
+dest_files=[ "res://.import/wimborn.ogg-05fa90a5750a1a300c6af17417e8c220.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

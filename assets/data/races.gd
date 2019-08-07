@@ -241,6 +241,8 @@ var racelist = {
 			eye_color = ['blue','green','grey','brown','black'],
 			hair_length = ['ear','neck','shoulder','waist','hips'],
 			eye_shape = ['normal'],
+			ass_size = [['small', 1],['flat',0.1]],
+			penis_type = ['human']
 			},
 		global_weight = 100,
 	},

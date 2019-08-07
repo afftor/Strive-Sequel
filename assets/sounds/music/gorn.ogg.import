@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gorn.ogg-35eb59f58bf1b7c0c8a980b24bd2d583.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/gorn.ogg"
+dest_files=[ "res://.import/gorn.ogg-35eb59f58bf1b7c0c8a980b24bd2d583.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -76,6 +76,7 @@ func open_class_list():
 		globals.connecttexttooltip(newbutton, text)
 		if person.checkreqs(tempclass.reqs) == false:
 			newbutton.disabled = true
+	
 
 func select_class(tempclass):
 	selected_class = tempclass
@@ -373,6 +374,10 @@ func build_bodyparts():
 		if preservedsettings.has(i) == false && current_bodypart != '':
 			preservedsettings[i] = current_bodypart
 		
+		if i == 'penis_type' && racedata.has(i) && !racedata[i].has(person[i]):
+			person.set(i, racedata[i][randi()%racedata[i].size()])
+			preservedsettings[i] = person[i]
+		
 		match person.sex:
 			'male':
 				$bodyparts2.get_node(i).visible = true
@@ -425,10 +430,10 @@ func build_bodyparts():
 		if i == 'penis_type':
 			$bodyparts2.get_node(i).add_item(person.penis_type)
 		
-		if i in ['vaginal_virgin','anal_virgin','penis_virgin']:
-			$bodyparts2.get_node(i).pressed = preservedsettings[i]
-		
 		$bodyparts2.get_node(i).disabled = $bodyparts2.get_node(i).get_item_count() == 1
+	
+	for i in ['vaginal_virgin','anal_virgin','penis_virgin']:
+		$bodyparts2.get_node(i).pressed = person.get(i)
 	
 	match person.sex:
 		'male':

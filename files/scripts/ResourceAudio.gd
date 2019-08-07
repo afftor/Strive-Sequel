@@ -1,15 +1,29 @@
 extends Node
 
 var music = {
-	eventlight = load("res://assets/sounds/music/TSGM - Track 4 (Displaced OST).ogg"),
-	eventgeneric = load("res://assets/sounds/music/TSGM - Track 1 (Displaced OST).ogg"),
-	towntheme = load("res://assets/sounds/music/TSGM - Track 3 (Displaced OST).ogg"),
-	combattheme = load("res://assets/sounds/music/Lets_Fight.ogg"),
-	erotheme = load("res://assets/sounds/music/Green_House.ogg"),
-	bosstheme = load("res://assets/sounds/music/TSGM - Track 2 (Displaced OST).ogg"),
+	mansion1 = load("res://assets/sounds/music/mansion1.ogg"),
+	mansion2 = load("res://assets/sounds/music/mansion2.ogg"),
+	mansion3 = load("res://assets/sounds/music/mansion3.ogg"),
+	mansion4 = load("res://assets/sounds/music/mansion4.ogg"),
 	
+	battle1 = load("res://assets/sounds/music/battle1.ogg"),
+	battle2 = load("res://assets/sounds/music/battle2.ogg"),
+	battle3 = load("res://assets/sounds/music/battle3.ogg"),
+	
+	
+	dungeon = load("res://assets/sounds/music/dungeon.ogg"),
+	ending = load("res://assets/sounds/music/ending.ogg"),
+	exploration = load("res://assets/sounds/music/exploration.ogg"),
+	
+	wimborn = load("res://assets/sounds/music/wimborn.ogg"),
+	gorn = load("res://assets/sounds/music/gorn.ogg"),
+	frostford = load("res://assets/sounds/music/frostford.ogg"),
+	
+	opening = load("res://assets/sounds/music/opening.ogg"),
+	intimate = load("res://assets/sounds/music/intimate.ogg"),
 	
 }
+
 var sounds = {
 	time_start = load("res://assets/sounds/sounds/fx start time.wav"),
 	time_stop = load("res://assets/sounds/sounds/fx stop time.wav"),

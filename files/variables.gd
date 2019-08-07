@@ -120,7 +120,7 @@ var show_enemy_hp = true
 #debug_only
 var allow_remote_intereaction = false
 var no_event_wait_time = false
-var generate_test_chars = true
+var generate_test_chars = false
 
 
 var pregduration = 90
