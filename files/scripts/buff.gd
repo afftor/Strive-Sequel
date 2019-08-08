@@ -59,6 +59,10 @@ func calculate_args():
 					args.push_back(par.get_arg(int(arg.param)))
 		pass
 
+func get_duration():
+	var par = effects_pool.get_effect_by_id(parent)
+	return par.get('remains')
+
 func set_args(arg, value):
 	self_args[arg] = value
 

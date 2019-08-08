@@ -28,7 +28,7 @@ var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasi
 var bonuses_stat_list = ['productivity', 'mod_collect', ]
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
+var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 
 
 #mode for applying absolute random damage mod
@@ -121,7 +121,7 @@ var show_enemy_hp = true
 var allow_remote_intereaction = false
 var no_event_wait_time = false
 var generate_test_chars = true
-
+var new_stat_bonuses_syntax = false
 
 var pregduration = 90
 

@@ -310,7 +310,7 @@ var selectedperson
 func select_slave_in_guild(person):
 	selectedperson = person
 	$HirePanel/Button.show()
-	$HirePanel/Button.disabled = state.money < person.calculate_price()
+	$HirePanel/Button.disabled = (state.money < person.calculate_price())
 
 func guild_hire_slave():
 	if state.characters.size() >= state.get_pop_cap():
@@ -322,7 +322,7 @@ func guild_hire_slave():
 		
 	state.money -= selectedperson.calculate_price()
 	state.add_slave(selectedperson)
-	active_faction.slaves.erase(selectedperson)
+	active_faction.slaves.erase(selectedperson.id)
 	selectedperson.area = active_area.code
 	selectedperson.location = 'mansion'
 	selectedperson.is_players_character = true

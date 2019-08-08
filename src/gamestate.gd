@@ -335,8 +335,10 @@ func deserialize(tmp:Dictionary):
 	for v in prlist:
 		if !(v.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) : continue
 		set(v.name, tempstate.get(v.name))
+	items.clear()
 	for i in tmp['items']:
 		items[i] = dict2inst(tmp['items'][i])
+	characters.clear()
 	for h in tmp['heroes']:
 		characters[h] = dict2inst(tmp['heroes'][h])
 		#fixing saved skill shortcuts

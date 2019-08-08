@@ -258,20 +258,51 @@ func get_stat(statname):
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
 	return res
 
+func add_stat_bonuses(ls:Dictionary):
+	if variables.new_stat_bonuses_syntax:
+		for rec in ls:
+			add_bonus(rec, ls[rec])
+	else:
+		for rec in ls:
+			if (rec as String).begins_with('resist') :
+				add_bonus(rec + '_add', ls[rec])
+			if get(rec) == null:
+				#safe variant
+				#add_bonus(rec, ls[rec])
+				continue
+			add_stat(rec, ls[rec])
+
+func remove_stat_bonuses(ls:Dictionary):
+	if variables.new_stat_bonuses_syntax:
+		for rec in ls:
+			add_bonus(rec, ls[rec], true)
+	else:
+		for rec in ls:
+			if (rec as String).begins_with('resist'): add_bonus(rec + '_add', ls[rec], true)
+			if get(rec) == null: continue
+			add_stat(rec, ls[rec], true)
+
+func add_bonus(b_rec:String, value, revert = false):
+	if bonuses.has(b_rec):
+		if revert: 
+			bonuses[b_rec] -= value
+			if b_rec.ends_with('_add') and bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
+			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
+		else: bonuses[b_rec] += value
+	else:
+		if revert: print('error bonus not found')
+		else: 
+			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
+			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
+			else: bonuses[b_rec] = value
+	pass
+
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
 		if revert: set(statname, get(statname) - value)
 		else: set(statname, get(statname) + value)
 	else:
-		if bonuses.has(statname + '_add'): 
-			if revert: 
-				bonuses[statname + '_add'] -= value
-				if bonuses[statname + '_add'] == 0:
-					bonuses.erase(statname + '_add')
-			else: bonuses[statname + '_add'] += value
-		else: 
-			if revert: print('error bonus not found')
-			else: bonuses[statname + '_add'] = value
+		add_bonus(statname+'_add', value, revert)
 
 func mul_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -293,22 +324,17 @@ func add_part_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / (1.0 + value))
 		else: set(statname, get(statname) * (1.0 + value))
 	else:
-		if bonuses.has(statname + '_mul'): 
-			if revert:
-				bonuses[statname + '_mul'] -= value
-				if bonuses[statname + '_mul'] == 1:
-					bonuses.erase(statname + '_mul')
-			else: bonuses[statname + '_mul'] += value
-		else: 
-			if revert: print('error bonus not found')
-			else: bonuses[statname + '_mul'] = 1.0 + value
+		add_bonus(statname+'_mul', value, revert)
 
 #confirmed getters
 func get_hp_max():
 	#(variables.basic_max_hp*race.hpfactor + hp_scaleble_bonus*race.hpfactor + hp_flat_bonus)*hp_percent_bonus
 	var res = variables.basic_max_hp
 	if bonuses.has('hpmax_add'): res += bonuses.hpmax_add
-	#if races.racelist[race].has('hpfactor'):res *= races.racelist[race].hpfactor
+	if variables.new_stat_bonuses_syntax == true:
+		if bonuses.has('hpfactor'): res *= bonuses['hpfactor']
+	else:
+		if races.racelist[race].race_bonus.has('hpfactor'):res *= races.racelist[race].race_bonus.hpfactor
 	if bonuses.has('hp_flat_bonus'): res += bonuses.hp_flat_bonus
 	if bonuses.has('hpmax_mul'): res *= bonuses.hpmax_mul
 	return res
@@ -544,12 +570,8 @@ func get_racial_features():
 	var race_template = races.racelist[race]
 	for i in race_template.basestats:
 		self.set(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
-	for i in race_template.racetrait:
-
-		if i == 'hpfactor':
-			self.hpmax = variables.basic_max_hp*race_template.racetrait[i] #wrong, this shoould be stored some way to use in hpmax getter
-		else:
-			self.set(i, self.get(i) + race_template.racetrait[i])
+	
+	add_stat_bonuses(race_template.race_bonus)
 	for i in race_template.bodyparts:
 		self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])
 	
@@ -669,6 +691,7 @@ func equip(item):
 		gear[i] = item.id
 	item.owner = id
 	#adding bonuses
+	add_stat_bonuses(item.bonusstats)
 #	for i in item.bonusstats:
 #		#self[i] += item.bonusstats[i]
 #		set(i, get(i) + item.bonusstats[i])
@@ -691,6 +714,8 @@ func unequip(item):#NEEDS REMAKING!!!!
 		if gear[i] == item.id:
 			gear[i] = null
 	#removing bonuses
+	remove_stat_bonuses(item.bonusstats)
+	
 #	for i in item.bonusstats:
 #		#self[i] -= item.bonusstats[i]
 #		set(i, get(i) - item.bonusstats[i])
@@ -849,9 +874,10 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		for i in prof.reqs:
 			if i.code == 'stat' && i.type in ['physics','wits','charm','sexuals']:
 				self.set(i.type, i.value)
-	if professions.has(prof.code):
-		return "Already has this profession"
+	if professions.has(prof.code): 
+		return "Already has this profession" 
 	professions.append(prof.code)
+	add_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
 		learn_skill(i)
 	for i in prof.traits:
@@ -1458,9 +1484,9 @@ func apply_atomic(template):
 			set(template.stat, template.value)
 		'stat_add':
 			add_stat(template.stat, template.value)
-		'stat_mul':#do not mix add_part and mul for the sake of logic
+		'stat_mul':#do not mix add_p and mul for the sake of logic
 			mul_stat(template.stat, template.value)
-		'stat_add_part':
+		'stat_add_p':
 			add_part_stat(template.stat, template.value)
 		'bonus': #reverting those effect can not clear no-bonus entries, so be careful not to overuse those
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] += template.value

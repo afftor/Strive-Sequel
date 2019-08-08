@@ -90,8 +90,6 @@ func CreateGear(ItemName = '', dictparts = {}):
 	var tempname = itemtemplate.name
 	
 	
-	
-	
 	geartype = itemtemplate.geartype
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
