@@ -452,6 +452,8 @@ func _ready():
 		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
 		if i.has('dialogue_text'):
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
+		if i.has('dialogue_report'):
+			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
 	
 	for i in globals.statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())

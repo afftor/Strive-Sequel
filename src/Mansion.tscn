@@ -467,4 +467,3 @@ margin_bottom = 719.826
 [node name="LootWindow" parent="." groups=[
 "pauseprocess",
 ] instance=ExtResource( 32 )]
- 

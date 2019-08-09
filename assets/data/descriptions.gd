@@ -245,6 +245,13 @@ var tattoooptions = {
 
 var bodypartsdata = {
 	age = {
+#		child = {code = 'child', name = '', chardescript = '', bodychanges = [
+#			{code = 'height', value = [['petite', 1],['short',1]], reqs = [{code = 'stat', type = 'height', operant = 'hasnt', value = ['petite', 'short', 'tiny']}]},
+#			{code = 'ass_size', value = [['flat', 2],['small',1]], reqs = [{code = 'stat', type = 'sex', operant = 'neq', value = 'male'}]},
+#			{code = 'tits_size', value = [['flat', 2],['small',1]], reqs = [{code = 'stat', type = 'sex', operant = 'neq', value = 'male'}]},
+#		]
+#		},
+		
 		teen = {code = 'teen', name = '', chardescript = '', bodychanges = []},
 		adult = {code = 'adult', name = '', chardescript = '', bodychanges = []},
 		mature = {code = 'mature', name = '', chardescript = '', bodychanges = []},
@@ -387,10 +394,10 @@ var bodypartsdata = {
 		big = {code = 'big', name = '', chardescript = '', bodychanges = []},
 	},
 	penis_type = {
-		human = {code = 'human', combine = 'penis_size'},
-		canine = {code = 'canine', combine = 'penis_size'},
-		feline = {code = 'feline', combine = 'penis_size'},
-		equine = {code = 'equine', combine = 'penis_size'},
+		human = {code = 'human', combine = 'penis_size', bodychanges = []},
+		canine = {code = 'canine', combine = 'penis_size', bodychanges = []},
+		feline = {code = 'feline', combine = 'penis_size', bodychanges = []},
+		equine = {code = 'equine', combine = 'penis_size', bodychanges = []},
 	},
 	penis_size = {
 		human_small = {code = 'human_small', name = '', chardescript = '', bodychanges = []},
@@ -408,7 +415,7 @@ var bodypartsdata = {
 		
 	},
 	has_pussy = {
-		true : {code = 'true', combine = "vaginal_virgin"},
+		true : {code = 'true', combine = "vaginal_virgin", bodychanges = []},
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 		
 	},

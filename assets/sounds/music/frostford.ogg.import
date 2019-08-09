@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/frostford.ogg-bdbd59ac7ece29ad4e06407e377a7afd.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/frostford.ogg"
+dest_files=[ "res://.import/frostford.ogg-bdbd59ac7ece29ad4e06407e377a7afd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

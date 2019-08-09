@@ -63,6 +63,7 @@ func _ready():
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		character.lust = 50
 		character.get_trait('core_trait')
 		character.is_players_character = true
 		
