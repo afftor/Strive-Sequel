@@ -725,9 +725,9 @@ func calculate_number_from_string_array(array, caster, target):
 		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
 			if i[0] == 'caster':
-				modvalue = str(caster.get(i[1]))
+				modvalue = str(caster.get_stat(i[1]))
 			elif i[0] == 'target':
-				modvalue = str(target.get(i[1]))
+				modvalue = str(target.get_stat(i[1]))
 		elif (i.find('random') >= 0):
 			i = i.split(' ')
 			modvalue = str(globals.rng.randi_range(0, int(i[1])))

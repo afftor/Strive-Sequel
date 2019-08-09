@@ -110,9 +110,9 @@ func process_check(check:Array):
 func setup_caster(c):
 	caster = c
 	if type == 'combat' and c!= null:
-		chance = caster.hitrate
-		critchance = caster.critchance
-		armor_p = caster.armorpenetration
+		chance = caster.get_stat('hitrate')
+		critchance = caster.get_stat('critchance')
+		armor_p = caster.get_stat('armorpenetration')
 	else:
 		chance = 100
 		critchance = 0
@@ -121,7 +121,7 @@ func setup_caster(c):
 func setup_target(t):
 	target = t
 	if type == 'combat':
-		evade = target.evasion
+		evade = target.get_stat('evasion')
 	else:
 		evade = 0
 

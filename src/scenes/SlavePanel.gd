@@ -135,7 +135,9 @@ func open(tempperson):
 	
 	$food_love/Label.text = person.food_love
 	
-#	$productivity/Label.text = str(person.productivity) + "%"
+
+	#$productivity/Label.text = str(person.get_stat('productivity')) + "%"
+
 	
 	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
@@ -177,8 +179,8 @@ func open(tempperson):
 	for i in person.get_all_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
 		newnode.texture = i.icon
-		#newnode.get_node("Label").text = str(i.duration)
-		globals.connecttexttooltip(newnode, i.tooltip)
+		newnode.get_node("Label").text = str(i.get_duration())
+		globals.connecttexttooltip(newnode, i.description)
 	
 
 func make_location_description():

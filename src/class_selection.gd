@@ -89,7 +89,7 @@ func get_class_details(classdata):
 		text += '\n\n' + person.decipher_reqs(classdata.reqs, true)
 	text += '\n'
 	for i in classdata.statchanges:
-		text += i.keys()[0] + ": " + str(i.values()[0]) + "\n"
+		text += i + ": " + str(classdata.statchanges[i]) + "\n"
 	
 	
 	return text
