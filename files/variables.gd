@@ -110,10 +110,10 @@ var basic_energy_per_work_tick = 8.33
 
 #Cheats
 var instant_travel = false
-var instant_upgrades = false
-var free_upgrades = false
+var instant_upgrades = true
+var free_upgrades = true
 var skip_combat = false
-var unlock_all_upgrades = false
+var unlock_all_upgrades = true
 var invincible_player = true
 var show_enemy_hp = true
 
