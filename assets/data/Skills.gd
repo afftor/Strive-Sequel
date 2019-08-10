@@ -19,7 +19,7 @@ var Skilllist = {
 		receiverdaylimit = 2,
 		icon = load("res://assets/images/iconsskills/Praise.png"),
 		tags = ['discipline'],
-		dialogue_report = 'dialogue_praise',
+		dialogue_report = '',
 		dialogue_show_repeat = true,
 		value = [['25']],
 		damagestat = ['obedience'],
@@ -40,7 +40,7 @@ var Skilllist = {
 		receiverdaylimit = 2,
 		icon = load("res://assets/images/iconsskills/Warn.png"),
 		tags = ['discipline'],
-		dialogue_report = 'dialogue_warn',
+		dialogue_report = '',
 		dialogue_show_repeat = true,
 		value = [['10'],['25']],
 		damagestat = ['obedience','fear'],
@@ -62,6 +62,8 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Reward.png"),
 		tags = ['discipline'],
+		dialogue_report = '',
+		dialogue_show_repeat = true,
 		value = ['10'],
 		damagestat = ['loyal'],
 	},
@@ -81,6 +83,8 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Reward_with_sex 3.png"),
 		tags = ['discipline'],
+		dialogue_report = '',
+		dialogue_show_repeat = true,
 		value = [['35'],['5'],['-25']],
 		damagestat = ['obedience','loyal','lust'],
 	},
@@ -100,6 +104,8 @@ var Skilllist = {
 		receiverdaylimit = 2,
 		icon = load("res://assets/images/iconsskills/Punish.png"),
 		tags = ['discipline'],
+		dialogue_report = '',
+		dialogue_show_repeat = true,
 		value = [['20'],['50']],
 		damagestat = ['obedience','fear'],
 	},
@@ -119,6 +125,8 @@ var Skilllist = {
 		receiverdaylimit = 4,
 		icon = load("res://assets/images/iconsskills/Punish.png"),
 		tags = ['discipline'],
+		dialogue_report = '',
+		dialogue_show_repeat = true,
 		value = [['-15'],['35'],['20'],['-20'], ['15']],
 		damagestat = ['fatigue','obedience','fear','hp','fatigue'],
 		receiver = ['caster','caster','target','target','target']
@@ -139,12 +147,14 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
+		dialogue_report = '',
+		dialogue_show_repeat = false,
 		tags = ['discipline'],
-		value = [['25'],['60'],['-25']],
-		damagestat = ['fear','fear','exhaustion'],
-		receiver = ['all','target','target']
+		value = [['60'],['50'],['25']],
+		damagestat = ['fear','exhaustion','fear'],
+		receiver = ['target','target','all']
 	},
-	publicsexhumiliation = {#everyone fear +20, everyone's lust +15, target fear + 35, target fatigue -20
+	publicsexhumiliation = {
 		code = 'publicsexhumiliation',
 		name = '',
 		descript = '',
@@ -161,11 +171,13 @@ var Skilllist = {
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
 		tags = ['discipline'],
-		value = [['20'],['35'],['-30'],['15']],
-		damagestat = ['fear','fear','fatigue','lust'],
-		receiver = ['all','target','target','all']
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		value = [['50'],['50'],['20'],['20']],
+		damagestat = ['fear','fatigue','lust','fear'],
+		receiver = ['target','target','all','all']
 	},
-	publicexecution = {#everyone present fear +65, target dies, target obedience must be < 25%
+	publicexecution = {
 		code = 'publicexecution',
 		name = '',
 		descript = '',
@@ -182,7 +194,9 @@ var Skilllist = {
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
 		tags = ['discipline'],
-		value = ['65'],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		value = ['100'],
 		damagestat = 'fear',
 		receiver = 'all'
 	},
@@ -1353,8 +1367,8 @@ var Skilllist = {
 		dialogue_options = [{code = "master_lust_exp", reqs = [], text = '1'},
 		{code = "master_lust_hp", reqs = [], text = '2'},
 		{code = "master_lust_obed", reqs = [], text = '3'},
-		{code = "master_lust_buff", reqs = [], text = '4'},
-		{code = "master_lust_combat_buff", reqs = [], text = '5'}
+		{code = "master_lust_buff", reqs = [], text = '4'}, #+20% productivity for 3 days
+		{code = "master_lust_combat_buff", reqs = [], text = '5'} # +15% atk matk for 2 days
 		],
 	},
 	
@@ -1374,7 +1388,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = null,
 		tags = [],
-		dialogue_report = 'dialogue_master_lust_exp',
+		dialogue_report = '',
 		dialogue_show_repeat = false,
 		value = [['target.lust','*-1.0'],['target.lust']],
 		damagestat = ['lust','base_exp'],
@@ -1395,7 +1409,7 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = null,
 		tags = [],
-		dialogue_report = 'dialogue_master_lust_hp',
+		dialogue_report = '',
 		dialogue_show_repeat = false,
 		value = [['target.lust','*-1.0'],['target.lust'],['target.lust','*0.5']],
 		damagestat = ['lust','hp','mp'],
@@ -1416,9 +1430,9 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = null,
 		tags = [],
-		dialogue_report = 'dialogue_master_lust_obed',
+		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['50'],['100']],
+		value = [['-50'],['100']],
 		damagestat = ['lust','obedience'],
 	},
 	master_lust_buff = {#consume 50 target lust, gives +20% productivity for 3 days buff
@@ -1437,9 +1451,9 @@ var Skilllist = {
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsclasses/Alchemist.png"),
 		tags = [],
-		dialogue_report = 'dialogue_master_lust_buff',
+		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['50']],
+		value = [['-50']],
 		damagestat = ['lust'],
 	},
 	master_lust_combat_buff = {#consume 50 target lust, gives +15% atk and matk for 1 day buff
@@ -1460,10 +1474,10 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = 'dialogue_master_lust_combat_buff',
 		dialogue_show_repeat = false,
-		value = [['50']],
+		value = [['-50']],
 		damagestat = ['lust'],
 	},
-	succubus_lust_skill ={
+	succubus_lust_skill = {
 		code = 'succubus_lust_skill',
 		name = '',
 		descript = '',

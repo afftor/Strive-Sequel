@@ -1143,6 +1143,51 @@ var effect_table = {
 		]
 	},
 	
+	
+	master_combat_1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Master's Morale",
+		tick_event = variables.TR_TICK,
+		duration = 48,
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'atk', value = 1.15},
+			{type = 'stat_add', stat = 'matk', value = 1.15},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/Charm.png", 
+				description = "Atk and Matk increased by 15%%",
+				limit = 1,
+				t_name = "Master's Morale",
+			}
+		],
+	},
+	master_productivity_1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Master's Morale",
+		tick_event = variables.TR_TICK,
+		duration = 72, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'productivity', value = 1.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/Charm.png", 
+				description = "Productivity increased by 20%%",
+				limit = 1,
+				t_name = "Master's Morale",
+			}
+		],
+	},
+	
 };
 
 var atomic = {

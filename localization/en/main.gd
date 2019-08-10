@@ -579,6 +579,10 @@ var TranslationDict = {
 	STATARMORPENETRATION = "Armor Pen.",
 	STATARMORPENETRATIONDESCRIPT = "Ignores value of enemy's armor. ",
 	
+	STATFATIGUE = "Fatigue",
+	STATEXHAUSTION = "Exhaustion",
+	STATFATIGUEDESCRIPT = "Mental fatigue of the character. Fatigue reduces productivity. Restores while joy hours.",
+	STATEXHAUSTIONDESCRIPT = "Physical exhaustion of the character. Reduces productivity and may cause other health issues. Restores while sleeping. ",
 	
 	
 	STATBASE_EXP = "Experience",
@@ -773,13 +777,33 @@ var TranslationDict = {
 	SKILLABUSEDESCRIPT = "Take your anger on someone else. \n\nImproves Obedience and removes some Fatigue for self. Target loses some Health and gain Fatigue, but also receive Fear.",
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
 	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. Target must have at least 50 Lust.",
+	SKILLHARDWORK = "Hard Work",
+	SKILLHARDWORKDESCRIPT = "Increases target's productivity for 50% for 1 day. ",
+	SKILLPUBLICHUMILIATION = "Public Humiliation",
+	SKILLPUBLICHUMILIATIONDESCRIPT = "Set up a public humiliation for selected target, increasing fear for all observants and making target take exhaustion damage. Can only be used once a day by all characters.",
+	SKILLPUBLICSEXHUMILIATION = "Public Sex Humiliation",
+	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "Set up a public sex humiliation for selected target, increasing fear and a bit of lust for all observants and making target take fatigue damage. Can only be used once a day by all characters.",
+	SKILLPUBLICEXECUTION = "Public Execution",
+	SKILLPUBLICEXECUTIONDESCRIPT = "Executes selected character. All presented characters have fear maximized. Target character must have obedience below 25. Can only be used once a day by all characters.",
+	SKILLCHARM = "Charm",
+	SKILLCHARMDESCRIPT = "",
+	
+	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore full Obedience for 50 Lust\n4. Improve Productivity by 20% for 3 days for 50 Lust\n5. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
+	
+	DIALOGUEMASTER_LUST_EXPREPORT = "You use [targetname]'s lust to provide [targethim] with experience.",
+	DIALOGUEMASTER_LUST_BUFFREPORT = "You use [targetname]'s lust to provide [targethim] with a productivity boost.",
+	DIALOGUEMASTER_LUST_HPREPORT = "You use [targetname]'s lust to restore [targethis] Health and Mana.",
+	DIALOGUEMASTER_LUST_OBEDREPORT = "You use [targetname]'s lust to restore [targethis] obedience.",
+	DIALOGUEMASTER_LUST_COMBAT_BUFFREPORT = "You use [targetname]'s lust to enhance [targethis] combat proficiency.",
 	
 	SKILLSUCCUBUS_LUST_SKILL = "Lust Drain",
 	SKILLSUCCUBUS_LUST_SKILLDESCRIPT = "Utilizes taret's Lust for self benefit. ",
 	DIALOGUESUCCUBUS_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore Obedience\n4. Increase Atk and Matk by 25% for 2 days for 50 lust.",
 	
-	
+	DIALOGUEPUBLICHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. For next long moments [targethe]'s being punished as audience hears [targethis] cries. By the end of it not only [targetname] learned [targethis] lesson, but the observers has seem to get more docile. ",
+	DIALOGUEPUBLICSEXHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. For next long moments [targethe]'s being sexually punished clearly exposed to the audience. By the end of it not only observers got more docile, but they also have shown some hints of excitement. ",
+	DIALOGUEPUBLICEXECUTIONREPORT = "You put [targetname] as an example to everyone in your mansion by ending [targethis] life in front of their eyes. This seems to be rather effective, albeit unnecessarily cruel for some.",
 	
 	
 	PROFMASTER = "Master",
@@ -1251,7 +1275,6 @@ var TranslationDict = {
 	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should focus on their morals or behavior.",
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
 	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.",
-	DIALOGUEMASTER_LUST_EXPREPORT = "You use [targetname]'s lust to provide [targethim] with experience.",
 	
 	DIALOGUECLOSE = "Close",
 	
@@ -1319,5 +1342,30 @@ var TranslationDict = {
 	
 	SWITCHSTATS = "Individual Stats",
 	SWITCHLIST = "Character List",
+	
+	SCENEDAISY_MEET_TEXT = "As you walk around the town, you hear some arguing. A large man yells at crying young halfkin bunny girl sitting near the pottery shards.\n\n- You clumsy dumbass! This was the third time. I'm selling you to the brothel now, this way at least you will be useful at something.\n\nThe girl does seem to be not suited for manual labor, but is fairly appealing. ",
+	SCENEDAISY_MEET_OPTION1 = "Offer to purchase the girl",
+	SCENEDAISY_MEET_OPTION2 = "Demand the girl as your kinsman",
+	SCENEDAISY_MEET_OPTION3 = "Ignore",
+	SCENEDAISY_CLAIM_KINSHIPTEXT = "You tell the man that the girl is your kinsman and his behavior is unnacceptable.\n\nTaken aback by your interruption, he quickly falls back and passes her to you.\n\nThe girl seemingly relieved, even though she saw through your lie. \n\nShe tells that her name is Daisy and she will try her best for you. ",
+	SCENEDAISY_PURCHASE_TEXT = "You offer the man to purchase poor girl from him.\n\nAfter some negotiations he offers you the price of 200 gold for her. ",
+	SCENEDAISY_PURCHASE_OPTION1 = "Ask for a discount",
+	SCENEDAISY_PURCHASE_OPTION2 = "Purchase",
+	SCENEDAISY_PURCHASE_OPTION3 = "Refuse",
+	SCENEDAISY_PURCHASE_NEGOTIATE_TEXT1 = "With some additional points you manage to make the man drop his demand to 100 gold. But this is his last word.",
+	SCENEDAISY_PURCHASE_NEGOTIATE_TEXT2 = "Your futher attempts to bring girl's price down have failed and the man asks for 200 gold or tells you to beg off.",
+	SCENEDAISY_PURCHASE_CONFIRM_TEXT = "You pay the price and bunny girl move warily to your side. You learn that her name is Daisy.\n\nShe promises to do her best, but you can see her clearly forcing herself to look up at you. ",
+	SCENEDAISY_PURCHASE_LEAVE_TEXT = "You refuse the man's price and walk away from the scene.",
+	SCENEDAISY_IGNORE_TEXT = "You continue your way without paying any further attention to them.",
+	SCENEDAISY_FIRST_EVENT_TEXT = "You hear the crash and soon find Daisy, who seem to have destroyed a piece of tableware.\n\nTeary eyed she looks up at you waiting for your punishment. ",
+	SCENEDAISY_FIRST_EVENT_OPTION1 = "Reassure her",
+	SCENEDAISY_FIRST_EVENT_OPTION2 = "Discipline her",
+	SCENEDAISY_FIRST_EVENT_REASSURE = "You help and encourage her to do better next time.\n\nTaken back by your kindness, Daisy's expression badly hides her inner happiness.",
+	SCENEDAISY_FIRST_EVENT_DISCIPLINE = "You take shiverring Daisy into a private room.\n\nStarting with some pain and humiliation you gradually provide her body with new sensations.\n\nHer cries of pain slowly obtain a new notes.\n\nAnd her teared eyes reflect not only a fear, but a drunk bliss.\n\nAfterwards you make sure she learned her lesson and she responds with respectful eagerness.",
+	SCENEDAISY_CONFESS_EVENT_TEXT = "As you walk around the mansion, you notice Daisy looking depressed.\n\nYou approach her and ask what happened, but she worryingly dodges the question.\n\nAfter ordering her to tell what's wrong she finally cracks up. \n\n- I... I love [master], but there's no way [he] will ever love someone useless like me. ",
+	SCENEDAISY_CONFESS_EVENT_OPTION1 = "Accept her feelings",
+	SCENEDAISY_CONFESS_EVENT_OPTION2 = "Refuse her",
+	SCENEDAISY_CONFESS_ACCEPT_TEXT = "- N..No way! You feel the same?! I can't believe it...\n\nYou seal your lips with Daisy and she gives in into your embrace.\n\nThis night she's hoping to spend with you.",
+	SCENEDAISY_CONFESS_REFUSE_TEXT = "You politely refuse Daisy's proposal.\n\n- I see... But if that's too much for you, I could be your... night servant.\n\nIt seems Daisy still has some leftover hope to eventually win you over. ",
 }
 

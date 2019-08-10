@@ -14,7 +14,7 @@ var professions = {
 		reqs = [{code = 'global_profession_limit', name = 'master', value = 1},{code = 'cant_spawn_naturally'}],
 		statchanges = {},
 		traits = ['master_effect'], #150% effect from social skills
-		skills = ['praise', 'warn','master_lust_skill', 'charm'],
+		skills = ['praise', 'warn','master_lust_skill'],
 		combatskills = [],
 	},
 	ruler = {

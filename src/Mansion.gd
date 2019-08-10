@@ -45,7 +45,8 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
-#		character.unlock_class("dancer")
+#		character.learn_skill("hardwork")
+		character.unlock_class("ruler")
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -130,6 +131,7 @@ func _process(delta):
 			gametime -= variables.SecondsPerHour
 			state.hour += 1
 			if state.hour >= variables.HoursPerDay:
+				state.update_global_cooldowns()
 				state.hour = 0
 				state.date += 1
 				state.daily_interactions_left = 1

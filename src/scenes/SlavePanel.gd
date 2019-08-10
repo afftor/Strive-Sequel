@@ -135,9 +135,9 @@ func open(tempperson):
 	
 	$food_love/Label.text = person.food_love
 	
-
-	#$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-
+	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
+	
+	
 	
 	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
@@ -179,7 +179,10 @@ func open(tempperson):
 	for i in person.get_all_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
 		newnode.texture = i.icon
-		newnode.get_node("Label").text = str(i.get_duration())
+		if i.get_duration() >= 0:
+			newnode.get_node("Label").text = str(i.get_duration())
+		else:
+			newnode.get_node("Label").hide()
 		globals.connecttexttooltip(newnode, i.description)
 	
 

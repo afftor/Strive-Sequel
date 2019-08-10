@@ -14,7 +14,7 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['damage_hp', 'restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
+var dmg_mod_list = ['damage_hp', 'restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'energy']
 #list for values modified bu random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
@@ -116,12 +116,13 @@ var skip_combat = false
 var unlock_all_upgrades = true
 var invincible_player = true
 var show_enemy_hp = true
+var social_skill_unlimited_charges = true
 
 #debug_only
 var allow_remote_intereaction = false
 var no_event_wait_time = false
 
-var generate_test_chars = false
+var generate_test_chars = true
 var new_stat_bonuses_syntax = false
 
 

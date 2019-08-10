@@ -43,6 +43,7 @@ var materials := {} setget materials_set
 var oldmaterials := {}
 var unlocks := []
 var relativesdata = {}
+var global_skills_used = {}
 
 var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
@@ -79,9 +80,16 @@ func revert():
 	items.clear()
 	materials.clear()
 	globals._ready()
+	global_skills_used.clear()
 
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')
+
+func update_global_cooldowns():
+	for i in global_skills_used.duplicate():
+		global_skills_used[i] -= 1
+		if global_skills_used[i] <= 0:
+			global_skills_used.erase(i)
 
 func pos_set(value):
 	combatparty = value
