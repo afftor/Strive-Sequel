@@ -26,7 +26,7 @@ func showup(node, person):
 	
 	$icon.texture = person.get_icon()
 	$RichTextLabel.bbcode_text = text
-	$exp.text = str(person.base_exp)
+	$exp.text = str(floor(person.base_exp))
 	for i in ['physics','wits','charm','sexuals']:
 		get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) + '/' + str(person[i+'_factor']*20) 
 	for i in ['obedience','fear','lust']:
@@ -38,7 +38,7 @@ func showup(node, person):
 	for i in ['hp','energy','mp']:
 		get_node("VBoxContainer/"+ i ).value = person[i]
 		get_node("VBoxContainer/"+ i ).max_value = person[i+'max']
-		get_node("VBoxContainer/"+ i + '/Label').text = str(round(person[i])) + "/" + str(person[i+'max'])
+		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(floor(person[i+'max']))
 	
 	if person.is_players_character == true:
 		if person.work != '':

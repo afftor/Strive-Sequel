@@ -4,22 +4,25 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var category = 'all'
 var person
 var mode
+var current_class
 
 func _ready():
 	for i in $categories.get_children():
 		i.connect("pressed",self,'class_category', [i.name])
 	
+	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
 	$CheckBox.connect("pressed", self, "checkbox_locked")
 	globals.AddPanelOpenCloseAnimation($ClassPanel)
 
 func open(tempperson, tempmode = 'normal'):
 	person = tempperson
 	mode = tempmode
+	current_class = null
 	show()
 	globals.ClearContainer($ScrollContainer/GridContainer)
 	
 	for i in Skilldata.professions.values():
-		if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs):
+		if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs) || person.professions.has(i.code):
 			continue
 		if !$CheckBox.pressed && person.checkreqs(i.reqs) == false:
 			continue
@@ -29,7 +32,7 @@ func open(tempperson, tempmode = 'normal'):
 		if i.has('altname') && person.checkreqs(i.altnamereqs):
 			name = i.altname
 		newbutton.get_node('name').text = name
-		newbutton.connect('pressed',self,"unlock_class", [i.code])
+		newbutton.connect('pressed',self,"open_class", [i.code])
 
 func checkbox_locked():
 	open(person, mode)
@@ -44,8 +47,8 @@ func class_category(name):
 
 func open_class(classcode):
 	var tempclass = Skilldata.professions[classcode]
-	var text = get_class_details(tempclass)#"[center]" + tempclass.name + '[/center]\n' + tempclass.descript
-	
+	var text = globals.descriptions.get_class_details(person, tempclass)
+	current_class = classcode
 	$ClassPanel.show()
 	
 	$ClassPanel/TextureRect.texture = tempclass.icon
@@ -64,38 +67,33 @@ func open_class(classcode):
 		var newnode = globals.DuplicateContainerTemplate($ClassPanel/SocialSkills/HBoxContainer)
 		newnode.texture = skill.icon
 		globals.connectskilltooltip(newnode, skill.code, person)
+		if skill.icon == null:
+			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
 	for i in tempclass.combatskills:
 		var skill = Skilldata.Skilllist[i]
 		var newnode = globals.DuplicateContainerTemplate($ClassPanel/CombatSkills/HBoxContainer)
-		#newnode.texture = skill.icon
-		#add_toolti
+		newnode.texture = skill.icon
+		if skill.icon == null:
+			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
+		globals.connectskilltooltip(newnode, skill.code, person)
+	$ClassPanel/CombatLabel.visible = tempclass.combatskills.size() > 0
 	
-	text = "Experience required: " + str(floor(person.base_exp)) + "/" + str(person.get_next_class_exp()) 
-	
-	$ClassPanel/Unlock.disabled = person.base_exp < person.get_next_class_exp()
+	if person.professions.has(tempclass.code):
+		text = person.translate('[name] has already acquired this class.')
+		$ClassPanel/Unlock.hide()
+	else:
+		text = "Experience required: " + str(floor(person.base_exp)) + "/" + str(person.get_next_class_exp()) 
+		$ClassPanel/Unlock.disabled = person.base_exp < person.get_next_class_exp()
+		$ClassPanel/Unlock.show()
 	
 	$ClassPanel/ExpLabel.text = text
 
 
-
-func get_class_details(classdata):
-	var text = ''
-	var name = classdata.name
-	if classdata.has('altname') && person.checkreqs(classdata.altnamereqs):
-		name = classdata.altname
-	text += "[center]" + name + '[/center]\n' + person.translate(classdata.descript) 
+func unlock_class():
+	$ClassPanel.visible = false
+	self.visible = false
+	person.unlock_class(current_class)
+	person.base_exp -= person.get_next_class_exp()
+	input_handler.ShowSlavePanel(person)
+	state.text_log_add("class", person.translate("[name] has acquired new Class: " + Skilldata.professions[current_class].name))
 	
-	if person.decipher_reqs(classdata.reqs, true) != '':
-		text += '\n\n' + person.decipher_reqs(classdata.reqs, true)
-	text += '\n'
-	for i in classdata.statchanges:
-		text += i + ": " + str(classdata.statchanges[i]) + "\n"
-	
-	
-	return text
-	
-	#$RichTextLabel.bbcode_text = text
-
-
-func unlock_class(i):
-	open_class(i)

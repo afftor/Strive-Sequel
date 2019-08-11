@@ -253,6 +253,13 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	speed = {
+		code = 'speed',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
 	energy = {
 		code = 'energy',
 		name = '',
@@ -296,6 +303,37 @@ var statdata = {
 		descript = '',
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
+	
+	physics_bonus = {
+		code = 'physics_bonus',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	wits_bonus = {
+		code = 'wits_bonus',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	charm_bonus = {
+		code = 'charm_bonus',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	sexuals_bonus = {
+		code = 'sexuals_bonus',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	productivity = {
+		code = 'productivity',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 }
 
 var worktoolnames = {
@@ -327,6 +365,7 @@ var hexcolordict = {
 	brown = "#8B572A",
 	gray = "#4B4B4B",
 	green = '#00b700',
+	white = '#ffffff',
 }
 var textcodedict = {
 	color = {start = '[color=', end = '[/color]'},
@@ -475,6 +514,11 @@ func _ready():
 	for i in Traitdata.sex_traits.values():
 		i.name = tr("SEXTRAIT" + i.code.to_upper())
 		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
+	
+	for i in Traitdata.traits.values():
+		i.name = tr("TRAIT" + i.code.to_upper())
+		i.descript = tr("TRAIT" + i.code.to_upper() + "DESCRIPT")
+		
 	
 	for i in worktoolnames:
 		worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
@@ -985,8 +1029,7 @@ func scanfolder(path): #makes an array of all folders in modfolder
 		return array
 
 func QuickSave():
-	SaveGame('QuickSave');
-	
+	SaveGame('QuickSave')
 
 
 

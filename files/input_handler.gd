@@ -834,3 +834,8 @@ func check_mouse_in_nodes(nodes):
 		if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
 			check = true
 	return check
+
+func text_cut_excessive_lines(text:String):
+	while text.ends_with(" ") || text.ends_with("\n"):
+		text.erase(text.length()-1, text.length())
+	return text

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/slavepanel/slavepanel.png" type="Texture" id=2]
@@ -26,9 +26,9 @@
 [ext_resource path="res://assets/images/gui/panels/hpbarbot.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/panels/obedbar.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/panels/fearbar.png" type="Texture" id=26]
-[ext_resource path="res://assets/images/gui/panels/lustbar.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/gui/panels/loyalbar.png" type="Texture" id=28]
-[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=29]
+[ext_resource path="res://assets/images/gui/panels/loyalbar.png" type="Texture" id=27]
+[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=28]
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=29]
 [ext_resource path="res://src/class_selection.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=32]
@@ -49,7 +49,6 @@
 [ext_resource path="res://src/imageselect.tscn" type="PackedScene" id=47]
 [ext_resource path="res://assets/images/gui/slavepanel/class_panel.png" type="Texture" id=48]
 [ext_resource path="res://assets/images/iconsclasses/Worker.png" type="Texture" id=49]
-[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=50]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -75,17 +74,17 @@ align = 1
 [node name="currentwork" type="Label" parent="." groups=[
 "hide_stranger",
 ]]
-margin_left = 1014.1
-margin_top = 150.122
-margin_right = 1176.1
-margin_bottom = 175.122
+margin_left = 980.782
+margin_top = 194.549
+margin_right = 1142.78
+margin_bottom = 219.549
 text = "task"
 align = 1
 
 [node name="productivity" type="TextureRect" parent="."]
-margin_left = 952.244
+margin_left = 1002.24
 margin_top = 129.731
-margin_right = 1018.24
+margin_right = 1068.24
 margin_bottom = 195.731
 texture = ExtResource( 4 )
 
@@ -155,7 +154,6 @@ expand = true
 stretch_mode = 5
 
 [node name="base_stats" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 13.0
 margin_top = 255.0
 margin_right = 213.0
@@ -166,14 +164,16 @@ custom_constants/separation = 9
 margin_right = 200.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 200, 25 )
-value = 50.0
+value = 100.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/hp"]
+margin_top = 2.0
 margin_right = 199.0
-margin_bottom = 24.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
 
@@ -182,14 +182,16 @@ margin_top = 34.0
 margin_right = 200.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 200, 25 )
-value = 50.0
+value = 100.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 11 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/energy"]
+margin_top = 2.0
 margin_right = 199.0
-margin_bottom = 24.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
 
@@ -204,8 +206,28 @@ texture_progress = ExtResource( 12 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/mp"]
+margin_top = 2.0
 margin_right = 199.0
-margin_bottom = 24.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="lust" type="TextureProgress" parent="base_stats"]
+margin_top = 102.0
+margin_right = 200.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/lust"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
 
@@ -255,9 +277,9 @@ align = 1
 [node name="factors" type="VBoxContainer" parent="."]
 editor/display_folded = true
 margin_left = 67.255
-margin_top = 362.251
+margin_top = 382.251
 margin_right = 188.255
-margin_bottom = 677.25
+margin_bottom = 697.251
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 0
@@ -532,7 +554,7 @@ margin_bottom = 24.0
 text = "1.100"
 align = 1
 
-[node name="lust" type="TextureProgress" parent="mentality"]
+[node name="loyal" type="TextureProgress" parent="mentality"]
 margin_top = 68.0
 margin_right = 200.0
 margin_bottom = 93.0
@@ -540,22 +562,6 @@ rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 24 )
 texture_progress = ExtResource( 27 )
-nine_patch_stretch = true
-
-[node name="Label" type="Label" parent="mentality/lust"]
-margin_right = 199.0
-margin_bottom = 24.0
-text = "1.100"
-align = 1
-
-[node name="loyal" type="TextureProgress" parent="mentality"]
-margin_top = 102.0
-margin_right = 200.0
-margin_bottom = 127.0
-rect_min_size = Vector2( 200, 25 )
-value = 50.0
-texture_under = ExtResource( 24 )
-texture_progress = ExtResource( 28 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="mentality/loyal"]
@@ -567,7 +573,6 @@ align = 1
 [node name="job" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
-editor/display_folded = true
 margin_left = 853.0
 margin_top = 25.0
 margin_right = 1053.0
@@ -638,11 +643,11 @@ align = 1
 [node name="controls" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
-margin_left = 963.438
-margin_top = 185.55
-margin_right = 1173.44
-margin_bottom = 603.55
-theme = ExtResource( 29 )
+margin_left = 963.0
+margin_top = 232.0
+margin_right = 1173.0
+margin_bottom = 604.0
+theme = ExtResource( 28 )
 custom_constants/separation = 6
 
 [node name="JobButton" type="Button" parent="controls" groups=[
@@ -698,6 +703,30 @@ margin_bottom = 330.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "RETURNTOMANSIONBUTTON"
 text = "Return"
+
+[node name="buffscontainer" type="GridContainer" parent="."]
+margin_left = 858.0
+margin_top = 678.0
+margin_right = 1178.0
+margin_bottom = 838.0
+columns = 6
+
+[node name="Button" type="TextureRect" parent="buffscontainer"]
+visible = false
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="buffscontainer/Button"]
+margin_top = 28.0
+margin_right = 49.0
+margin_bottom = 52.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
 
 [node name="class_learn" parent="." instance=ExtResource( 30 )]
 
@@ -1133,28 +1162,4 @@ margin_left = -1.0
 margin_top = 76.0
 margin_right = 100.0
 margin_bottom = 100.0
-align = 1
-
-[node name="buffscontainer" type="GridContainer" parent="."]
-margin_left = 858.0
-margin_top = 678.0
-margin_right = 1178.0
-margin_bottom = 838.0
-columns = 6
-
-[node name="Button" type="TextureRect" parent="buffscontainer"]
-visible = false
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 50 )
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="buffscontainer/Button"]
-margin_top = 28.0
-margin_right = 49.0
-margin_bottom = 52.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
 align = 1

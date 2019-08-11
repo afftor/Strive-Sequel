@@ -742,7 +742,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	shackles = {#prevents escape if body_factor < 4, physics -25
+	shackles = {#prevents escape if body_factor < 4; physics -25
 		code = 'shackles',
 		name = "",
 		descript = "",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/cave.png" type="Texture" id=2]
@@ -18,17 +18,15 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=17]
 [ext_resource path="res://assets/sfx/white shader material.tres" type="Material" id=18]
-[ext_resource path="res://assets/images/sprites/EmberHappy.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/combat/combatwinpanel.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/combat/combatwincharacter.png" type="Texture" id=26]
-[ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/combatportraits/arroncircle.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/gui/combat/combatwinpanel.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/combat/combatwincharacter.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/combat/combatexpbar.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=27]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
@@ -451,7 +449,6 @@ text = "This is a test text"
 scroll_following = true
 
 [node name="StatsPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 269.0
 margin_top = 64.0
@@ -465,7 +462,6 @@ margin_top = 30.0
 margin_right = 690.0
 margin_bottom = 730.0
 mouse_filter = 2
-texture = ExtResource( 19 )
 expand = true
 stretch_mode = 6
 
@@ -599,7 +595,7 @@ margin_top = 17.0
 margin_right = 1194.0
 margin_bottom = 893.0
 rect_scale = Vector2( 1.2, 1.2 )
-texture = ExtResource( 20 )
+texture = ExtResource( 19 )
 
 [node name="Control" type="Control" parent="Rewards"]
 margin_left = -651.0
@@ -612,10 +608,10 @@ margin_left = 258.0
 margin_top = 764.0
 margin_right = 396.0
 margin_bottom = 832.0
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
-texture_disabled = ExtResource( 24 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
+texture_disabled = ExtResource( 23 )
 
 [node name="Label" type="Label" parent="Rewards/CloseButton"]
 margin_left = 2.0
@@ -641,7 +637,7 @@ margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 rect_pivot_offset = Vector2( 37.5, 37.5 )
-texture = ExtResource( 25 )
+texture = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -669,7 +665,7 @@ visible = false
 margin_right = 278.0
 margin_bottom = 119.0
 rect_pivot_offset = Vector2( 139, 59.5 )
-texture = ExtResource( 26 )
+texture = ExtResource( 25 )
 
 [node name="xpbar" type="TextureProgress" parent="Rewards/HBoxContainer/first/Button"]
 margin_left = 121.0
@@ -678,7 +674,7 @@ margin_right = 263.0
 margin_bottom = 66.0
 value = 50.0
 exp_edit = true
-texture_progress = ExtResource( 27 )
+texture_progress = ExtResource( 26 )
 
 [node name="Label" type="Label" parent="Rewards/HBoxContainer/first/Button/xpbar"]
 margin_left = -15.0
@@ -690,7 +686,6 @@ align = 1
 margin_left = 10.0
 margin_right = 117.0
 margin_bottom = 117.0
-texture = ExtResource( 28 )
 expand = true
 stretch_mode = 5
 
@@ -705,7 +700,7 @@ margin_top = -29.0
 margin_right = 825.0
 margin_bottom = 165.0
 rect_pivot_offset = Vector2( 485, 99 )
-texture = ExtResource( 29 )
+texture = ExtResource( 27 )
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Rewards/victorylabel"]

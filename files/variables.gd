@@ -25,10 +25,12 @@ var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasi
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity', 'mod_collect', ]
+var bonuses_stat_list = ['productivity','mod_collect','atk','matk','hitrate','evasion','armor','mdef','critrate','critmod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
+var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 
+'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor',
+'sexuals_factor','magic_factor','growth_factor']
 
 
 #mode for applying absolute random damage mod
@@ -116,7 +118,7 @@ var skip_combat = false
 var unlock_all_upgrades = true
 var invincible_player = true
 var show_enemy_hp = true
-var social_skill_unlimited_charges = true
+var social_skill_unlimited_charges = false
 
 #debug_only
 var allow_remote_intereaction = false

@@ -238,25 +238,12 @@ var lastsexday
 
 var masternoun = 'Master'
 
-
-#func _init():
-#	var eff = effects_pool.e_createfromtemplate('e_core_ex')
-#	apply_effect(effects_pool.add_effect(eff))
-#	eff = effects_pool.e_createfromtemplate('e_core_fat')
-#	apply_effect(effects_pool.add_effect(eff))
-#	eff = effects_pool.e_createfromtemplate('e_core_ex_rem')
-#	apply_effect(effects_pool.add_effect(eff))
-#	eff = effects_pool.e_createfromtemplate('e_core_fat_rem')
-#	apply_effect(effects_pool.add_effect(eff))
-
-
 #stub for bonus system
 func get_stat(statname):
 	var res = get(statname)
 	if variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
-	print(bonuses)
 	return res
 
 func add_stat_bonuses(ls:Dictionary):
@@ -1062,8 +1049,12 @@ func tick():
 	
 	if skip_work == false:
 		if work_simple == true:
+			#print(energy, fatigue, work_simple_state)
+			
+			call(work_simple_state + "_tick")
+			
 			match work_simple_state:
-				'work':
+				'work':	
 					if energy <= 0:
 						work_simple_state = 'joy'
 				'joy':
@@ -1072,8 +1063,6 @@ func tick():
 				'rest':
 					if energy >= 100:
 						work_simple_state = 'work'
-			
-			call(work_simple_state + "_tick")
 			
 		else:
 			var totalday = 0
@@ -1113,10 +1102,10 @@ func hp_set(value):
 	if value <= 0:
 		death()
 	else:
-		hp = min(value, hpmax)
+		hp = min(value, self.hpmax)
 
 func mp_set(value):
-	mp = clamp(value, 0, mpmax)
+	mp = clamp(value, 0, self.mpmax)
 
 func death():
 	is_active = false
@@ -1143,7 +1132,7 @@ func exhaustion_set(value):
 	#add exhaustion debuff checks
 
 func set_productivity():
-	productivity = 100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1)
+	productivity = ceil(100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1))
 
 func productivity_get():
 	return productivity
@@ -2010,7 +1999,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			var change = '+'
 			if tmp < 0:
 				change = ''
-			effect_text += ": " +  str(h.get(s_skill.damagestat[i])) + "/" + str(maxstat) + " (" + change + "" + str(round(tmp)) + ")"
+			effect_text += ": " +  str(floor(h.get(s_skill.damagestat[i]))) + "/" + str(floor(maxstat)) + " (" + change + "" + str(floor(tmp)) + ")"
 	if template.has("dialogue_report"):
 		var data = {text = '', image = template.dialogue_report, tags = ['skill_report_event'], options = []}
 		var text = translate(template.dialogue_report)

@@ -1,40 +1,72 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/panel.png" type="Texture" id=1]
+[ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 500, 500 )
+margin_left = 71.7497
+margin_right = 64.5747
+margin_top = 71.09
+margin_bottom = 64.5747
 
 [node name="InteractiveMessage" type="Panel" groups=[
 "pauseprocess",
 ]]
-margin_left = 472.461
-margin_top = 68.8755
-margin_right = 1497.46
-margin_bottom = 999.875
-script = ExtResource( 1 )
+visible = false
+margin_left = 644.0
+margin_top = 395.0
+margin_right = 1428.0
+margin_bottom = 1051.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 3.34027
+margin_top = -378.644
+margin_right = 788.34
+margin_bottom = 2.35614
+texture = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 217.929
-margin_top = 45.5975
-margin_right = 817.929
-margin_bottom = 327.598
-texture = ExtResource( 2 )
+margin_left = 10.0
+margin_top = -368.0
+margin_right = 784.0
+margin_bottom = -9.0
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 203.988
-margin_top = 394.253
-margin_right = 874.988
-margin_bottom = 705.253
+margin_left = 62.0
+margin_top = 22.0
+margin_right = 733.0
+margin_bottom = 383.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 203.328
-margin_top = 742.663
-margin_right = 847.328
-margin_bottom = 880.663
+margin_left = 59.1584
+margin_top = 414.803
+margin_right = 731.158
+margin_bottom = 603.803
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="TextureButton" parent="VBoxContainer"]
 visible = false
-margin_right = 644.0
-margin_bottom = 45.0
-text = "Close"
+margin_right = 672.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Button"]
+margin_left = 1.10803
+margin_top = 6.3241
+margin_right = 670.108
+margin_bottom = 44.3241
+text = "Text"
+align = 1
+valign = 1

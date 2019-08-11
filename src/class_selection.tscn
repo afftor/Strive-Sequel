@@ -70,7 +70,6 @@ scroll_horizontal_enabled = false
 columns = 7
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
-editor/display_folded = true
 visible = false
 margin_right = 150.0
 margin_bottom = 150.0
@@ -84,10 +83,9 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="name" type="Label" parent="ScrollContainer/GridContainer/Button"]
-margin_left = 23.8198
-margin_top = 0.297651
-margin_right = 122.82
-margin_bottom = 25.2977
+margin_left = 5.0
+margin_right = 147.0
+margin_bottom = 25.0
 text = "Name"
 align = 1
 
@@ -101,10 +99,10 @@ align = 1
 
 [node name="ClassPanel" type="Panel" parent="."]
 visible = false
-margin_left = -143.36
-margin_top = 103.233
-margin_right = 751.64
-margin_bottom = 796.232
+margin_left = 242.143
+margin_top = 86.8286
+margin_right = 1137.14
+margin_bottom = 779.828
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel"]
 margin_left = 182.0

@@ -45,8 +45,10 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
+		character.charm_factor = 1
 #		character.learn_skill("hardwork")
-		character.unlock_class("ruler")
+		character.unlock_class("succubus")
+		character.mp = 50
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -59,13 +61,16 @@ func _ready():
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		character.unlock_class("pet")
 		character.get_trait('core_trait')
 		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.lust = 50
+		character.base_exp += 500
 		character.get_trait('core_trait')
+		character.unlock_class("succubus")
 		character.is_players_character = true
 		
 #		character = Slave.new()
