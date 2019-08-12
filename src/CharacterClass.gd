@@ -1804,13 +1804,13 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 			#stub to implement humanoid and non-humanoid checks
 			pass
 		'trait':
-			result = traits.has('req.value')
+			result = traits.has(req.value) or sex_traits.has(req.value)
 		'not_trait':
-			result = !traits.has('req.value')
+			result = !(traits.has(req.value) or sex_traits.has(req.value))
 		'class':
-			result = professions.has('req.value')
+			result = professions.has(req.value)
 		'not_class':
-			result = !professions.has('req.value')
+			result = !professions.has(req.value)
 		'dead':
 			result = !is_active
 	return result
