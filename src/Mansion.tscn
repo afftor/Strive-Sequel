@@ -69,49 +69,49 @@ text = "Menu"
 
 [node name="InventoryButton" type="Button" parent="."]
 margin_left = 23.3762
-margin_top = 999.333
+margin_top = 927.333
 margin_right = 241.376
-margin_bottom = 1068.33
+margin_bottom = 996.33
 theme = ExtResource( 4 )
 text = "Inventory"
 
 [node name="CraftButton" type="Button" parent="."]
-margin_left = 263.376
+margin_left = 23.376
 margin_top = 999.333
-margin_right = 481.376
+margin_right = 241.376
 margin_bottom = 1068.33
 theme = ExtResource( 4 )
 text = "Craft"
 
 [node name="ExploreButton" type="Button" parent="."]
-margin_left = 493.376
+margin_left = 1673.38
 margin_top = 999.333
-margin_right = 711.376
+margin_right = 1891.38
 margin_bottom = 1068.33
 theme = ExtResource( 4 )
 text = "Outside"
 
 [node name="QuestlogButton" type="Button" parent="."]
-margin_left = 723.376
+margin_left = 1450.38
 margin_top = 999.333
-margin_right = 941.376
+margin_right = 1668.38
 margin_bottom = 1068.33
 theme = ExtResource( 4 )
 text = "Quest Menu"
 
 [node name="UpgradeButton" type="Button" parent="."]
-margin_left = 953.0
+margin_left = 492.0
 margin_top = 999.0
-margin_right = 1171.0
+margin_right = 710.0
 margin_bottom = 1068.0
 theme = ExtResource( 4 )
 text = "Upgrades"
 
 [node name="InteractButton" type="Button" parent="."]
-margin_left = 23.2352
-margin_top = 926.346
-margin_right = 241.235
-margin_bottom = 995.343
+margin_left = 263.235
+margin_top = 999.346
+margin_right = 481.235
+margin_bottom = 1068.34
 theme = ExtResource( 4 )
 text = "Sex"
 
