@@ -239,18 +239,6 @@ var lastsexday
 
 var masternoun = 'Master'
 
-
-#func _init():
-#	var eff = effects_pool.e_createfromtemplate('e_core_ex')
-#	apply_effect(effects_pool.add_effect(eff))
-#	eff = effects_pool.e_createfromtemplate('e_core_fat')
-#	apply_effect(effects_pool.add_effect(eff))
-#	eff = effects_pool.e_createfromtemplate('e_core_ex_rem')
-#	apply_effect(effects_pool.add_effect(eff))
-#	eff = effects_pool.e_createfromtemplate('e_core_fat_rem')
-#	apply_effect(effects_pool.add_effect(eff))
-
-
 #stub for bonus system
 func get_stat(statname):
 	var res = get(statname)
@@ -1063,8 +1051,12 @@ func tick():
 	
 	if skip_work == false:
 		if work_simple == true:
+			#print(energy, fatigue, work_simple_state)
+			
+			call(work_simple_state + "_tick")
+			
 			match work_simple_state:
-				'work':
+				'work':	
 					if energy <= 0:
 						work_simple_state = 'joy'
 				'joy':
@@ -1073,8 +1065,6 @@ func tick():
 				'rest':
 					if energy >= 100:
 						work_simple_state = 'work'
-			
-			call(work_simple_state + "_tick")
 			
 		else:
 			var totalday = 0
@@ -1114,10 +1104,10 @@ func hp_set(value):
 	if value <= 0:
 		death()
 	else:
-		hp = min(value, hpmax)
+		hp = min(value, self.hpmax)
 
 func mp_set(value):
-	mp = clamp(value, 0, mpmax)
+	mp = clamp(value, 0, self.mpmax)
 
 func death():
 	process_event(variables.TR_DEATH)
@@ -1145,7 +1135,7 @@ func exhaustion_set(value):
 	#add exhaustion debuff checks
 
 func set_productivity():
-	productivity = 100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1)
+	productivity = ceil(100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1))
 
 func productivity_get():
 	return productivity
@@ -1408,6 +1398,7 @@ func escape():
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
 	state.characters.erase(id)
+	state.character_order.erase(id)
 	input_handler.slave_list_node.rebuild()
 	input_handler.interactive_message('slave_escape', 'escape', self)
 	#state.text_log_add(get_short_name() + " has escaped. ")
@@ -1491,7 +1482,7 @@ func random_icon():
 
 #effects related part from displaced
 #if you are planning to use more functions from it (trait-related, eqip etc) - keep track of actual code
-func apply_atomic(template): 
+func apply_atomic(template):
 	match template.type:
 		'damage':
 			deal_damage(template.value, template.source)
@@ -1923,6 +1914,9 @@ func check_skill_availability(s_code, target):
 	if social_skills_charges.has(s_code) && social_skills_charges[s_code] >= template.charges:
 		descript = get_short_name() + ": " + template.name + " - No charges left."
 		check = false
+	if template.has('globallimit') && state.global_skills_used.has(s_code) && state.global_skills_used[s_code] >= template.globallimit:
+		descript = get_short_name() + ": Can't use this skill today anymore."
+		check = false
 	
 	return {check = check, descript = descript}
 
@@ -1940,11 +1934,17 @@ func use_social_skill(s_code, target):#add logging if needed
 		text = target.translate(text.replace("[target", "["))
 		data.text = text
 		
-		if template.charges > 0:
+		if template.charges > 0 && variables.social_skill_unlimited_charges == false:
 			if social_skills_charges.has(s_code):
 				social_skills_charges[s_code] += 1
 			else:
 				social_skills_charges[s_code] = 1
+		
+		if template.has("globallimit"):
+			if state.global_skills_used.has(template.code):
+				state.global_skills_used[template.code] += 1
+			else:
+				state.global_skills_used[template.code] = 1
 		
 		input_handler.scene_character = self
 		input_handler.target_character = target
@@ -1964,11 +1964,18 @@ func use_social_skill(s_code, target):#add logging if needed
 	self.mp -= template.manacost
 	self.energy -= template.energycost
 	
-	if template.charges > 0:
+	if template.charges > 0 && variables.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
 			social_skills_charges[s_code] += 1
 		else:
 			social_skills_charges[s_code] = 1
+	
+	if template.has("globallimit"):
+			if state.global_skills_used.has(template.code):
+				state.global_skills_used[template.code] += 1
+			else:
+				state.global_skills_used[template.code] = 1
+	
 	social_cooldowns[s_code] = template.cooldown
 	
 	#calcuate 'all' receviers
@@ -2029,7 +2036,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			var change = '+'
 			if tmp < 0:
 				change = ''
-			effect_text += ": " +  str(h.get(s_skill.damagestat[i])) + "/" + str(maxstat) + " (" + change + "" + str(round(tmp)) + ")"
+			effect_text += ": " +  str(floor(h.get(s_skill.damagestat[i]))) + "/" + str(floor(maxstat)) + " (" + change + "" + str(floor(tmp)) + ")"
 	if template.has("dialogue_report"):
 		var data = {text = '', image = template.dialogue_report, tags = ['skill_report_event'], options = []}
 		var text = translate(template.dialogue_report)
@@ -2048,7 +2055,6 @@ func use_social_skill(s_code, target):#add logging if needed
 		
 		input_handler.interactive_message_custom(data)
 		
-		#input_handler.interactive_message(template.dialogue, 'social_skill', args)
 	#postdamage triggers
 	s_skill.process_event(variables.TR_POSTDAMAGE)
 	for e in triggered_effects:
@@ -2077,6 +2083,11 @@ func restore_skill_charge(code):
 		if social_skills_charges[code] <= 0:
 			social_cooldowns.erase(code)
 			social_skills_charges.erase(code)
+	
+	if state.global_skills_used.has(code):
+		state.global_skills_used[code] -= 1
+		if state.global_skills_used[code] <= 0:
+			state.global_skills_used.erase(code)
 	
 
 func baby_transform():

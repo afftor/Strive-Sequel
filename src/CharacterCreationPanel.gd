@@ -70,9 +70,9 @@ func open_class_list():
 		newbutton.get_node("icon").texture = tempclass.icon
 		newbutton.get_node("name").text = tempclass.name
 		newbutton.connect('pressed', self, "select_class", [tempclass.code])
-		var text = tempclass.descript
-		if tempclass.reqs.size() > 0:
-			text += "\n\nRequirements: " + person.decipher_reqs(tempclass.reqs, true)
+		var text = globals.descriptions.get_class_details(person, tempclass, true, true)
+#		if tempclass.reqs.size() > 0:
+#			text += "\n\nRequirements: " + person.decipher_reqs(tempclass.reqs, true)
 		globals.connecttexttooltip(newbutton, text)
 		if person.checkreqs(tempclass.reqs) == false:
 			newbutton.disabled = true

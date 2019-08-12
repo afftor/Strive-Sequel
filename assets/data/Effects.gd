@@ -116,7 +116,7 @@ var effect_table = {
 	},
 	e_tr_alchemist = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_alchemy', value = 1}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -234,7 +234,7 @@ var effect_table = {
 		sub_effects = [],
 		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
 		atomic = ['a_shackles_2'],
-		buffs = ['b_shackles'],
+		buffs = ['b_great_shackles'],
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
@@ -246,12 +246,12 @@ var effect_table = {
 		tags = ['s_dur_add'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_app_p', stat = 'productivity', value = 0.5},
+			{type = 'stat_add_p', stat = 'productivity', value = 0.5},
 			#{type = 'stat_add', stat = 'productivity', value = 50},
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Worker.png", 
 				description = "Productivity increased",
 				limit = 1,
 				t_name = 'hardwork'
@@ -279,7 +279,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Efficiency increased",
 				limit = 1,
 				t_name = 'discipline'
@@ -412,7 +412,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsskills/Praise.png", 
 				description = "Inspired - damage and defence increased",
 				limit = 1,
 				t_name = 'inspire'
@@ -435,7 +435,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Trainer.png", 
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'command'
@@ -488,7 +488,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Blacksmith.png", 
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'refine'
@@ -510,7 +510,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsitems/miscarriagepot.png", 
 				description = "Armor reduced",
 				limit = 1,
 				t_name = 'acid_bomb'
@@ -573,7 +573,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Whore.png", 
 				description = "Damage reduced",
 				limit = 1,
 				t_name = 'attract'
@@ -659,7 +659,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Knight.png", 
 				description = "Armor increased",
 				limit = 1,
 				t_name = 'protect_c'
@@ -694,7 +694,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Knight.png", 
 				description = "Is protected",
 				limit = 1,
 				t_name = 'protect_t'
@@ -731,7 +731,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Dragon_Knight.png", 
 				description = "Damage and armor increased",
 				limit = 1,
 				t_name = 'dragonmight'
@@ -776,7 +776,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Blood_Mage.png", 
 				description = "Damage over time",
 				t_name = 'bleed'
 			}
@@ -851,7 +851,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/traits/speeddebuf.png", 
 				description = "Speed reduced",
 				limit = 1,
 				t_name = 'blizzard'
@@ -878,7 +878,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/traits/dodgedebuff.png", 
 				description = "Is blesed - various stats increased",
 				limit = 1,
 				t_name = 'bless'
@@ -916,7 +916,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add', stat = 'evasion', value = 25}],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/traits/speed.png", 
 				description = "Evasion increased",
 				limit = 1,
 				t_name = 'fly'
@@ -933,7 +933,7 @@ var effect_table = {
 		atomic = [{type = 'stat_set_revert', stat = 'hide', value = true}],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/traits/experience.png", 
 				description = "Hidden",
 				t_name = 'hide'
 			}
@@ -1081,14 +1081,7 @@ var effect_table = {
 		stages = 11,
 		next_level = 'e_t_ex2',
 		atomic = [],
-		buffs = [
-			{
-				icon = "", 
-				description = "Exhausted - first phase",
-				t_name = 'exhaustion',
-				limit = 1
-			}
-		],
+		buffs = [],
 		sub_effects = [],
 	},
 	e_t_ex2 = {
@@ -1106,7 +1099,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/gui/panels/exhaust.png", 
 				description = "Exhausted - second phase",
 				t_name = 'exhaustion',
 				limit = 1
@@ -1133,7 +1126,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/gui/panels/exhaust.png", 
 				description = "Exhausted - third phase",
 				t_name = 'exhaustion',
 				limit = 1
@@ -1160,7 +1153,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/gui/panels/exhaust.png", 
 				description = "Exhausted - fourth phase",
 				t_name = 'exhaustion',
 				limit = 1
@@ -1208,12 +1201,6 @@ var effect_table = {
 		next_level = 'e_t_fat2',
 		atomic = [],
 		buffs = [
-			{
-				icon = "", 
-				description = "Fatigued - first phase",
-				t_name = 'fatigue',
-				limit = 1
-			}
 		],
 		sub_effects = [],
 	},
@@ -1234,7 +1221,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Cattle.png", 
 				description = "Fatigued - second phase",
 				t_name = 'fatigue',
 				limit = 1
@@ -1258,7 +1245,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsclasses/Cattle.png", 
 				description = "Fatigued - third phase",
 				t_name = 'fatigue',
 				limit = 1
@@ -1299,12 +1286,78 @@ var effect_table = {
 		]
 	},
 	
+	
+	master_combat_1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Master's Morale",
+		tick_event = variables.TR_TICK,
+		duration = 48,
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.15},
+			{type = 'stat_add_p', stat = 'matk', value = 0.15},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Fighter.png", 
+				description = "Atk and Matk increased by 15%%",
+				limit = 1,
+				t_name = "Master's Morale",
+			}
+		],
+	},
+	master_productivity_1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Master's Morale",
+		tick_event = variables.TR_TICK,
+		duration = 72, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", 
+				description = "Productivity increased by 20%%",
+				limit = 1,
+				t_name = "Master's Morale",
+			}
+		],
+	},
+	succubus_combat_1 = {
+		type = 'temp_s',
+		target = 'caster',
+		name = "Lust Drain",
+		tick_event = variables.TR_TICK,
+		duration = 48,
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+			{type = 'stat_add_p', stat = 'matk', value = 0.25},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Fighter.png", 
+				description = "Atk and Matk increased by 25%%",
+				limit = 1,
+				t_name = "Lust Drain",
+			}
+		],
+	},
 };
 
 var atomic = {
 	#new part
-	a_shackles_1 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '+', 15]},
-	a_shackles_2 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '+', 10]},
+	a_shackles_1 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 5]},
+	a_shackles_2 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 30]},
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_stat_mul = {type = 'stat_mul', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_poison_arg025 = {type = 'damage', source = variables.S_PHYS, value = [['parent_args', 0],'*',0.25]},
@@ -1335,8 +1388,14 @@ var buffs = {
 	#new part
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_shackles = {
-		icon = "", 
+		icon = "res://assets/images/iconsskills/Magic Shackles.png", 
 		description = "Shackles",
+		limit = 1,
+		t_name = 'shackles'
+	},
+	b_great_shackles = {
+		icon = "res://assets/images/iconsskills/Strong Magic Shackles.png", 
+		description = "Great Shackles",
 		limit = 1,
 		t_name = 'shackles'
 	},
@@ -1354,19 +1413,19 @@ var buffs = {
 		t_name = 'stun'
 	},
 	b_trap = {
-		icon = "", 
+		icon = "res://assets/images/traits/hitrate.png", 
 		description = "Trapped",
 		limit = 1,
 		t_name = 'trap'
 	},
 	b_distract = {
-		icon = "", 
+		icon = "res://assets/images/traits/dodge.png", 
 		description = "Evasion reduced",
 		limit = 1,
 		t_name = 'distract'
 	},
 	b_silence = {
-		icon = "", 
+		icon = "res://assets/images/iconsclasses/Whore.png", 
 		description = "Silenced",
 		t_name = 'silence'
 	},

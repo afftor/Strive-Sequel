@@ -26,7 +26,7 @@ func open(scene):
 		if state.checkreqs(i.reqs) == false:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($VBoxContainer)
-		newbutton.text = i.text
+		newbutton.get_node("Label").text = i.text
 		if scene.tags.has('linked_event'):
 			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
 		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':

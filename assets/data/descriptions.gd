@@ -75,6 +75,9 @@ func new_charcter_description(character):
 			if newtext != ' ':
 				text += newtext
 			text += " "
+	
+	text = input_handler.text_cut_excessive_lines(text)
+	
 	return text
 
 func entry():
@@ -428,3 +431,39 @@ var bodypartsdata = {
 		false : {code = 'false', name = '', chardescript = '', bodychanges = []},
 	}
 }
+
+func get_class_details(newperson, classdata, showreqs = true, showskills = false):
+	var text = ''
+	person = newperson
+	var name = classdata.name
+	if classdata.has('altname') && person.checkreqs(classdata.altnamereqs):
+		name = classdata.altname
+	text += "[center]" + name + '[/center]\n' + person.translate(classdata.descript) 
+	
+	if person.decipher_reqs(classdata.reqs, true) != '' && showreqs == true:
+		text += '\n\nRequirements:\n' + person.decipher_reqs(classdata.reqs, true)
+	if classdata.statchanges.size() > 0:
+		text += '\n\n' + tr("Bonus:") + "\n"
+		for i in classdata.statchanges:
+			text += globals.statdata[i].name + ": "
+			if classdata.statchanges[i]  > 0:
+				text += "+"
+			text += str(classdata.statchanges[i]) + "\n"
+	text += "\n"
+	for i in classdata.traits:
+		var trait = Traitdata.traits[i]
+		text += trait.descript + "\n"
+	
+	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:
+		if classdata.skills.size() > 0:
+			text += "\n[color=yellow]Skills: "
+			for i in classdata.skills:
+				text += Skilldata.Skilllist[i].name + ", "
+			text = text.substr(0, text.length() - 2) + "[/color]"
+		if classdata.combatskills.size() > 0:
+			text += "\n[color=yellow]Combat Skills: "
+			for i in classdata.combatskills:
+				text += Skilldata.Skilllist[i].name + ", "
+		text = text.substr(0, text.length() - 2) + "[/color]"
+	
+	return input_handler.text_cut_excessive_lines(text)

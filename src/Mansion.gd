@@ -45,7 +45,10 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
-#		character.unlock_class("dancer")
+		character.charm_factor = 1
+#		character.learn_skill("hardwork")
+		character.unlock_class("succubus")
+		character.mp = 50
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -58,13 +61,16 @@ func _ready():
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		character.unlock_class("pet")
 		character.get_trait('core_trait')
 		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.lust = 50
+		character.base_exp += 500
 		character.get_trait('core_trait')
+		character.unlock_class("succubus")
 		character.is_players_character = true
 		
 #		character = Slave.new()
@@ -130,6 +136,7 @@ func _process(delta):
 			gametime -= variables.SecondsPerHour
 			state.hour += 1
 			if state.hour >= variables.HoursPerDay:
+				state.update_global_cooldowns()
 				state.hour = 0
 				state.date += 1
 				state.daily_interactions_left = 1

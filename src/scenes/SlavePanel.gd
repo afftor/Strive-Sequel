@@ -62,6 +62,8 @@ func _ready():
 	
 	input_handler.slave_panel_node = self
 	
+	globals.connecttexttooltip($productivity, "[center]" + globals.statdata.productivity.name + "[/center]\n" + globals.statdata.productivity.descript)
+	
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
 	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
 
@@ -107,11 +109,17 @@ func open(tempperson):
 	$RichTextLabel.bbcode_text = person.make_description()
 	if person.location == 'travel':
 		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
-	$currentwork.text = person.work
-	#$exp.text = str(person.base_exp)
-	
+	if person.work != '':
+		$currentwork.text = races.tasklist[person.work].name
+	else:
+		$currentwork.text = ''
 	for i in $progress.get_children():
-		i.text = str(floor(person.get(i.name) + person.get(i.name+'_bonus'))) + '/' + str(person.get(i.name +"_factor")*20)
+		i.text = str(floor(person.get(i.name))) + '/' + str(person.get(i.name +"_factor")*20)
+		if person.get(i.name+'_bonus') > 0:
+			i.set("custom_colors/font_color", globals.hexcolordict.green) 
+			i.text +=  "+"+ str(person.get(i.name+'_bonus'))
+		else:
+			i.set("custom_colors/font_color", globals.hexcolordict.white) 
 	
 	for i in $factors.get_children():
 		i.get_node("Label").text = str(floor(person.get(i.name)))
@@ -129,15 +137,14 @@ func open(tempperson):
 	$mentality/obedience/Label.text = str(floor(person.obedience)) + '/' + '100'
 	$mentality/fear.value = person.fear
 	$mentality/fear/Label.text = str(floor(person.fear)) + '/' + '100'
-	$mentality/lust.value = person.lust
-	$mentality/lust.max_value = person.lustmax
-	$mentality/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
+	$base_stats/lust.value = person.lust
+	$base_stats/lust.max_value = person.lustmax
+	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	
 	$food_love/Label.text = person.food_love
 	
-
-	#$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-
+	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
+	
 	
 	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
@@ -154,7 +161,7 @@ func open(tempperson):
 			name = prof.altname
 		newnode.get_node("Label").text = name
 		newnode.texture = prof.icon
-		globals.connecttexttooltip(newnode, "[center]" + name + '[/center]\n' + person.translate(prof.descript))
+		globals.connecttexttooltip(newnode, globals.descriptions.get_class_details(person, prof, false))
 	
 	if $SkillPanel.visible == true:
 		build_skill_panel()
@@ -179,7 +186,10 @@ func open(tempperson):
 	for i in person.get_all_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
 		newnode.texture = i.icon
-		newnode.get_node("Label").text = str(i.get_duration())
+		if i.get_duration() >= 0:
+			newnode.get_node("Label").text = str(i.get_duration())
+		else:
+			newnode.get_node("Label").hide()
 		globals.connecttexttooltip(newnode, i.description)
 	
 
@@ -271,10 +281,10 @@ func show_job_details(job):
 		if Items.materiallist.has(i.item):
 			var number
 			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
 			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
 			newbutton.get_node("number").text = str(number)
@@ -282,10 +292,10 @@ func show_job_details(job):
 		else:
 			var number
 			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
 			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item,0.1)*(person.productivity*person.get(job.mod)/100)
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("number").text = str(number)
 			newbutton.get_node("icon").texture = i.icon
@@ -339,6 +349,8 @@ func build_skill_panel():
 		if person.social_skill_panel.has(i):
 			var skill = Skilldata.Skilllist[person.social_skill_panel[i]]
 			newbutton.get_node("icon").texture = skill.icon
+			if skill.icon == null:
+				newbutton.get_node("icon").texture = load("res://assets/images/gui/panels/noimage.png")
 			newbutton.get_node("icon").show()
 			if skill.manacost > 0:
 				newbutton.get_node("manacost").visible = true
@@ -356,6 +368,10 @@ func build_skill_panel():
 				text = str(skill.charges - person.social_skills_charges[skill.code]) + "/" + str(skill.charges)
 			else:
 				text = str(skill.charges) + "/" + str(skill.charges)
+			
+			if person.checkreqs(skill.reqs) == false:
+				newbutton.disabled = true
+				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
 			newbutton.get_node("charges").text = text
 			newbutton.get_node("charges").show()
 			if person.social_skills_charges.has(skill.code) && skill.charges - person.social_skills_charges[skill.code] <= 0:

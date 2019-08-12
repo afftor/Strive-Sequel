@@ -13,11 +13,11 @@ func _ready():
 
 func open(character):
 	for i in ['hp','mp','energy']:
-		$VBoxContainer.get_node(i).text = str(character.get(i)) + "/" + str(character.get(i+"max"))
+		$VBoxContainer.get_node(i).text = str(character.get_stat(i)) + "/" + str(floor(character.get_stat(i+"max")))
 	
 	for i in variables.fighter_stats_list:
 		if !i in ['hp', 'mp']:
-			$"base stats".get_node(i).text = str(character.get(i))
+			$"base stats".get_node(i).text = str(character.get_stat(i))
 	
 	for i in $resists.get_children():
 		if variables.resists_list.has(i.name):

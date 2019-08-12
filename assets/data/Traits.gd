@@ -10,8 +10,8 @@ var traits = {
 		effects = ['e_core_ex', 'e_core_ex_rem', 'e_core_fat', 'e_core_fat_rem'],
 	}, 
 	
-	master_effect = {#150% effect from social skills
-		code = 'master_effect',
+	master = {#150% effect from social skills
+		code = 'master',
 		name = '',
 		descript = '',
 		visible = false,
@@ -19,104 +19,104 @@ var traits = {
 		effects = ['e_tr_master'],
 	}, 
 	
-	worker_trait = {
-		code = 'worker_trait',
+	worker = {
+		code = 'worker',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_worker'],
 	}, 
-	foreman_trait = {
-		code = 'foreman_trait',
+	foreman = {
+		code = 'foreman',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_foreman'],
 	}, 
-	hunter_trait = {
-		code = 'hunter_trait',
+	hunter= {
+		code = 'hunter',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_hunter'],
 	}, 
-	smith_trait = {
-		code = 'smith_trait',
+	smith = {
+		code = 'smith',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_smith'],
 	}, 
-	chef_trait = {
-		code = 'chef_trait',
+	chef = {
+		code = 'chef',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_chef'],
 	}, 
-	attendant_trait = {#item usage in combat takes no turn
-		code = 'attendant_trait',
+	attendant = {#item usage in combat takes no turn
+		code = 'attendant',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = [],
 	}, 
-	alchemist_trait = {#+100% alchemy production, potions restore 25% more
-		code = 'alchemist_trait',
+	alchemist = {#+100% alchemy production, potions restore 25% more
+		code = 'alchemist',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_alchemist','e_tr_potion'],
 	}, 
-	cattle_trait = {#+50% farm production
-		code = 'cattle_trait',
+	cattle = {#+50% farm production
+		code = 'cattle',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_cattle'],
 	}, 
-	breeder_trait = {#+100% farm production, allows breeding with any race, -30% pregnancy duration
-		code = 'breeder_trait',
+	breeder = {#+100% farm production, allows breeding with any race, -30% pregnancy duration
+		code = 'breeder',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_breeder'],
 	}, #second and third effects need to be hardcoded
-	harlot_trait = {#+50% gold from prostitution
-		code = 'harlot_trait',
+	harlot = {#+50% gold from prostitution
+		code = 'harlot',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_harlot'],
 	}, 
-	succubus_trait = {#-30% energy consumption on prostitution
-		code = 'succubus_trait',
+	succubus = {#-30% energy consumption on prostitution
+		code = 'succubus',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = [],
 	}, #hardcoded
-	pet_trait = {#+25% gold from prostitution
-		code = 'pet_trait',
+	pet = {#+25% gold from prostitution
+		code = 'pet',
 		name = '',
 		descript = '',
 		visible = false,
 		icon = null,
 		effects = ['e_tr_pet'],
 	},
-	sextoy_trait = {#+50% gold from prostitution
-		code = 'sextoy_trait',
+	sextoy = {#+50% gold from prostitution
+		code = 'sextoy',
 		name = '',
 		descript = '',
 		visible = false,
