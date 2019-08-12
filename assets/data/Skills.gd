@@ -207,6 +207,7 @@ var Skilllist = {
 		damagestat = 'lust',
 	},
 	seduce = {
+		#temp version
 		code = 'seduce',
 		name = '',
 		descript = '',
@@ -214,7 +215,7 @@ var Skilllist = {
 		ability_type = 'skill',
 		reqs = [],
 		targetreqs = [],
-		effects = [],
+		effects = [Effectdata.rebuild_template({duration = 72, effect = 'e_t_seduce'})],
 		manacost = 10,
 		energycost = 0,
 		charges = 2,
@@ -222,8 +223,9 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Seduce.png"),
 		tags = [],
-		value = [['25'], ['50']],
-		damagestat = ['lust','obedience']
+		#value = [['25'], ['50']],
+		value = ['0'],
+		damagestat = ['no_stat']
 	},
 	greatseduce = {
 		code = 'greatseduce',
@@ -233,7 +235,7 @@ var Skilllist = {
 		ability_type = 'skill',
 		reqs = [],
 		targetreqs = [],
-		effects = [],
+		effects = [Effectdata.rebuild_template({duration = 72, effect = 'e_t_seduce1'})],
 		manacost = 25,
 		energycost = 0,
 		charges = 1,
@@ -241,8 +243,9 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Great_Seduce.png"),
 		tags = [],
-		value = [['100'], ['50'], ['25']],
-		damagestat = ['lust','obedience','loyal']
+		#value = [['100'], ['50'], ['25']],
+		value = ['100'],
+		damagestat = ['obedience']
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
 		code = 'drain',
@@ -387,7 +390,7 @@ var Skilllist = {
 		ability_type = 'spell',
 		reqs = [],
 		targetreqs = [],
-		effects = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_mindcontrol'})],
 		manacost = 100,
 		energycost = 0,
 		charges = 1,
@@ -395,8 +398,27 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
 		tags = [],
-		value = [['100']],
-		damagestat = ['obedience']
+		value = ['0'],
+		damagestat = 'no_stat'
+	},
+	stopmindcontrol = {#fix to target self and all other params
+		code = 'stopmindcontrol',
+		name = '',
+		descript = '',
+		type = 'social',
+		ability_type = 'spell',
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_stopcontrol'})],
+		manacost = 100,
+		energycost = 0,
+		charges = 1,
+		cooldown = 3,
+		receiverdaylimit = 1,
+		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
+		tags = [],
+		value = ['0'],
+		damagestat = 'no_stat'
 	},
 	hardwork = {#+50% productivity for the day
 		code = 'hardwork',

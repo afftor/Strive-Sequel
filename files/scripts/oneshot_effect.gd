@@ -12,6 +12,11 @@ func get_applied_obj():
 	return applied_obj
 
 func apply():
+	var tres = true
+	if template.has('conditions'):
+		for cond in template.conditions:
+			tres = tres && applied_obj.process_check(cond)
+	if !tres: return
 	atomic.clear()
 	calculate_args()
 	for a in template.atomic:

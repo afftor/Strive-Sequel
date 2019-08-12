@@ -52,8 +52,8 @@ var obed_mods = []
 var fear_mods = []
 var lust_mods = []
 
-var bonuses = {
-}
+var bonuses = {}
+var counters = []
 
 var obedience = 0.0 setget obed_set, obed_get
 var fear = 0.0 setget fear_set, fear_get
@@ -61,7 +61,8 @@ var lust = 0.0 setget lust_set, lust_get
 var loyal = 0.0
 var lustmax = 50
 var obed_degrade_mod = 1.0
-
+var fear_degrade_mod = 1.0
+var lusttick = variables.basic_lust_per_tick
 
 var hp = 100 setget hp_set
 
@@ -295,6 +296,7 @@ func add_bonus(b_rec:String, value, revert = false):
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
+	recheck_effect_tag('recheck_stats')
 	pass
 
 func add_stat(statname, value, revert = false):
@@ -715,15 +717,11 @@ func equip(item):
 #	for i in item.bonusstats:
 #		#self[i] += item.bonusstats[i]
 #		set(i, get(i) + item.bonusstats[i])
-#	for i in item.effects:
-#		var tmp = Effectdata.effects[i].effects;
-#		for e in tmp:
-#			#apply_effect(e);
-#			var eff = effects_pool.e_createfromtemplate(e)
-#			apply_effect(effects_pool.add_effect(eff))
-#			eff.set_args('item', item.id)
-		#addpassiveeffect(i)
-		#NEED REPLACING
+	for e in item.effects:
+		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+		apply_effect(effects_pool.add_effect(eff))
+		eff.set_args('item', item.id)
+	recheck_effect_tag('recheck_item')
 	#checkequipmenteffects()
 
 
@@ -740,13 +738,11 @@ func unequip(item):#NEEDS REMAKING!!!!
 #		#self[i] -= item.bonusstats[i]
 #		set(i, get(i) - item.bonusstats[i])
 	
-#	for i in item.effects:
-#		var tmp = Effectdata.effects[i].effects;
-#		for e in find_eff_by_item(item.id):
-#			var eff = effects_pool.get_effect_by_id(e)
-#			eff.remove()
-#		#removepassiveeffect(i) 
-#		#NEED REPLACING
+	var arr = find_eff_by_item(item.id)
+	for e in arr:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	recheck_effect_tag('recheck_item')
 	#checkequipmenteffects()
 
 func check_profession_limit(name, value):
@@ -780,8 +776,8 @@ func show_race_description():
 			text += tr("RACEHALFKINDESCRIPT") + "\n\n"
 	text += temprace.descript
 	text += "\n\nRace bonuses: "
-	for i in temprace.racetrait:
-		text += globals.statdata[i].name + ": " + str(temprace.racetrait[i]) + ', '
+	for i in temprace.race_bonus:
+		text += globals.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
 	return text
@@ -902,6 +898,7 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		learn_skill(i)
 	for i in prof.traits:
 		get_trait(i)
+	recheck_effect_tag('recheck_class')
 
 func get_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
@@ -911,6 +908,7 @@ func get_trait(tr_code):
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tr_code)
+	recheck_effect_tag('recheck_trait')
 
 func remove_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
@@ -920,6 +918,7 @@ func remove_trait(tr_code):
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
+	recheck_effect_tag('recheck_trait')
 
 
 func learn_skill(skill):
@@ -1016,6 +1015,7 @@ func travel_tick():
 
 func tick():
 	process_event(variables.TR_TICK)
+	recheck_effect_tag('recheck_tick')
 	
 	var skip_work = false
 	if work == '':
@@ -1030,18 +1030,20 @@ func tick():
 	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
 	
 	self.fatigue += 1
-	self.lust += variables.basic_lust_per_tick
+	self.lust += lusttick
 	
 	
-	var obed_reduce = 100.0 * obed_degrade_mod/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
-	var fear_reduce = 100.0/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
+	var obed_reduce = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
+	var fear_reduce = 100.0 * get_stat('fear_degrade_mod')/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
 	
 	if location != 'mansion':
 		obed_reduce = obed_reduce/4
 		fear_reduce = fear_reduce/4
 	
-	self.obedience -= obed_reduce
-	self.fear -= fear_reduce
+	if !has_status('no_obed_reduce'):
+		self.obedience -= obed_reduce
+	if !has_status('no_fear_reduce'):
+		self.fear -= fear_reduce
 	
 	if work == 'travel':
 		if travel_time > 0:
@@ -1118,11 +1120,12 @@ func mp_set(value):
 	mp = clamp(value, 0, mpmax)
 
 func death():
+	process_event(variables.TR_DEATH)
 	is_active = false
 	defeated = true
 	state.character_order.erase(id)
 	input_handler.slave_list_node.rebuild()
-	clean_effects()
+	#clean_effects()
 
 func energy_set(value):
 	energymax = 100 + energybonus# + round(physics + physics_bonus)
@@ -1380,14 +1383,14 @@ func lust_get():
 
 func check_escape_chance():
 	var check = false
-	var base_chance = brave_factor * 8
+	var base_chance = get_stat('brave_factor') * 8
 	if obedience + loyal/2 < base_chance && fear + loyal/2 < base_chance:
 		check = true
 	return check
 
 func check_escape_possibility():
 	last_escape_day_check = state.date
-	if check_escape_chance() == false || sleep == 'jail' || professions.has("master") || randf() < brave_factor * 0.1:
+	if check_escape_chance() == false || sleep == 'jail' || professions.has("master") || has_status('no_escape') || randf() < get_stat('brave_factor') * 0.1:
 		return false
 	if shackles_chance != null:
 		var tmpchance = max(0, shackles_chance)
@@ -1518,12 +1521,28 @@ func apply_atomic(template):
 			remove_temp_effect_tag(template.value)
 		'add_trait':
 			get_trait(template.trait)
+		'add_sex_trait':
+			sex_traits.push_back(template.trait)
 		'event':
 			process_event(template.value)
 		'resurrect':
 			if is_active: return
 			self.hp = template.value
 			is_active = true
+			defeated = false
+			process_event(variables.TR_RES)
+		'use_combat_skill':
+			if globals.combat_node == null: return
+			globals.combat_node.use_skill(template.value, self, null)
+		'add_counter':
+			if counters.size() <= template.index + 1:
+				counters.resize(template.index + 1)
+				counters[template.index] = template.value
+			else: counters[template.index] += template.value
+		'add_soc_skill':
+			social_skills.push_back(template.skill)
+		'add_combat_skill':
+			combat_skills.push_back(template.skill)
 
 
 func remove_atomic(template):
@@ -1539,6 +1558,12 @@ func remove_atomic(template):
 		'bonus':
 			if bonuses.has(template.bonusname): bonuses[template.bonusname] -= template.value
 			else: print('error bonus not found')
+		'add_soc_skill':
+			social_skills.erase(template.skill)
+			social_cooldowns.erase(template.skill)
+		'add_combat_skill':
+			combat_skills.erase(template.skill)
+			combat_cooldowns.erase(template.skill)
 
 func find_temp_effect(eff_code):
 	var res = -1
@@ -1555,7 +1580,7 @@ func find_temp_effect(eff_code):
 
 func find_temp_effect_tag(eff_tag):
 	var res = []
-	for e in temp_effects:
+	for e in temp_effects + static_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		if eff.tags.has(eff_tag):
 			res.push_back(e)
@@ -1569,6 +1594,7 @@ func find_eff_by_trait(trait_code):
 			if eff.self_args.trait == trait_code:
 				res.push_back(e)
 	return res
+
 
 func find_eff_by_item(item_id):
 	var res = []
@@ -1596,6 +1622,11 @@ func apply_temp_effect(eff_id):
 			'temp_u':eff_a.upgrade() #i'm also not sure about this collision treatement, but for this i'm sure that upgradeable effects should have stack 1
 		eff.remove()
 
+func recheck_effect_tag(tg):
+	var e_list = find_temp_effect_tag(tg)
+	for e in e_list:
+		var tmp = effects_pool.get_effect_by_id(e)
+		tmp.recheck()
 
 func add_area_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
@@ -1756,7 +1787,9 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 		'chance':
 			result = (randf()*100 < req.value);
 		'stats':
-			result = input_handler.operate(req.operant, self.get_stat(req.name), req.value)
+			result = input_handler.operate(req.operant, get_stat(req.name), req.value)
+		'stat_index':
+			result = input_handler.operate(req.operant, get_stat(req.name)[req.index], req.value)
 		'gear':
 			match req.slot:
 				'any':
@@ -1783,6 +1816,10 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 			result = traits.has('req.value')
 		'not_trait':
 			result = !traits.has('req.value')
+		'class':
+			result = professions.has('req.value')
+		'not_class':
+			result = !professions.has('req.value')
 		'dead':
 			result = !is_active
 	return result

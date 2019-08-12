@@ -250,7 +250,7 @@ func show_race_info(temprace):
 	
 	text += "\n\nRace bonuses: "
 	for i in race.racetrait:
-		text += globals.statdata[i].name + ": " + str(race.racetrait[i]) + ', '
+		text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
 	
