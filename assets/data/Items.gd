@@ -668,7 +668,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {charm = 10},
+		basestats = {charm_bonus = 10},
 	},
 	tail_plug = {#+10 charm if used with pet suit, +10% lust growth
 		code = 'tail_plug',
@@ -704,7 +704,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {charm = 15, physics = -10},
+		basestats = {charm_bonus = 15, physics_bonus = -10},
 	},
 	pet_suit = {#+30 charm, -15 physics, -20% fear decay, -15% obedience decay
 		#temp effect
@@ -759,7 +759,7 @@ var itemlist = {
 		reqs = [],
 		effects = ['e_i_shackles'],
 		tags = [],
-		basestats = {physics = -25},
+		basestats = {physics_bonus = -25},
 	},
 	handcuffs = {#physics -10, Adds hidden counter: +x value per day, when counter hits 100, add trait "submissive"
 		code = 'handcuffs',
@@ -777,7 +777,7 @@ var itemlist = {
 		reqs = [],
 		effects = ['e_i_counter1'],
 		tags = [],
-		basestats = {physics = -10},
+		basestats = {physics_bonus = -10},
 	},
 	strapon = {#substitutes for penis in sex actions
 		code = 'strapon',
