@@ -990,6 +990,14 @@ var effect_table = {
 		buffs = [],
 		sub_effects = ['e_master_small'],
 	},
+	e_i_anal = {
+		type = 'c_static',
+		conditions = [{type = 'trait', value = 'anal'}],
+		tags = ['recheck_trait', 'recheck_item'],
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_master_small = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],
@@ -1024,8 +1032,67 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				conditions = [{type = 'stat_index', name = 'counters', index = 1, operant = 'gte', value = 100}],
+				conditions = [
+					{type = 'stat_index', name = 'counters', index = 1, operant = 'gte', value = 100},
+					{type = 'not_trait', value = 'submissive'},
+				],
 				atomic = [{type = 'add_sex_trait', trait = 'submissive'}],
+			},
+		],
+		buffs = []
+	},
+	e_i_counter2 = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_DAY],
+		req_skill = false,
+		args = [{obj = 'app_obj', param = 'sex_factor'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				X = 1.0, #X from item description
+				args = [{obj = 'parent_args', index = 0}, {obj = 'template', param = 'X'}],
+				atomic = [
+					{type = 'add_counter', index = 2, value = [['parent_args', 0],'*',['parent_args',1]]} 
+				],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [
+					{type = 'stat_index', name = 'counters', index = 2, operant = 'gte', value = 100},
+					{type = 'not_trait', value = 'anal'},
+				],
+				atomic = [{type = 'add_sex_trait', trait = 'anal'}],
+			},
+		],
+		buffs = []
+	},
+	e_i_counter3 = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_DAY],
+		req_skill = false,
+		args = [{obj = 'app_obj', param = 'sex_factor'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				X = 1.0, #X from item description
+				args = [{obj = 'parent_args', index = 0}, {obj = 'template', param = 'X'}],
+				atomic = [
+					{type = 'add_counter', index = 3, value = [['parent_args', 0],'*',['parent_args',1]]} 
+				],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [
+					{type = 'stat_index', name = 'counters', index = 3, operant = 'gte', value = 100},
+					{type = 'not_trait', value = 'anal'},
+				],
+				atomic = [{type = 'add_sex_trait', trait = 'anal'}],
 			},
 		],
 		buffs = []
