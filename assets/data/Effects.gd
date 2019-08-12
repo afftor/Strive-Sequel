@@ -286,6 +286,97 @@ var effect_table = {
 			}
 		],
 	},
+	e_t_seduce = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'seduce',
+		tick_event = variables.TR_TICK,
+		duration = 'parent', 
+		stack = 1,
+		no_obed_reduce = true,
+		no_escape = true,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [],
+		buffs = [
+			{
+				icon = "", 
+				description = "seduced",
+				limit = 1,
+				t_name = ''
+			}
+		],
+	},
+	e_t_seduce1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'seduce1',
+		tick_event = variables.TR_TICK,
+		duration = 'parent', 
+		stack = 1,
+		no_obed_reduce = true,
+		no_escape = true,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.5}],
+		buffs = [
+			{
+				icon = "", 
+				description = "seduced",
+				limit = 1,
+				t_name = ''
+			}
+		],
+	},
+	e_t_charm1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'charm1',
+		tick_event = variables.TR_TICK,
+		duration = 'parent_arg', 
+		stack = 1,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.2}],
+		buffs = [
+			{
+				icon = "", 
+				description = "charmed",
+				limit = 1,
+				t_name = ''
+			}
+		],
+	},
+	e_t_mindcontrol = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'mindcontrol', 
+		stack = 1,
+		no_obed_reduce = true,
+		no_escape = true,
+		tags = ['mindcontrol'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'wits_bonus', value = -100},
+			{type = 'stat_add', stat = 'charm_bonus', value = -50},
+			{type = 'add_soc_skill', skill = 'stopmindcontrol'},
+		],
+		buffs = [
+			{
+				icon = "", 
+				description = "Mind controlled",
+				limit = 1,
+				t_name = ''
+			}
+		],
+	},
+	e_t_stopcontrol = {
+		type = 'oneshot',
+		target = 'caster',
+		atomic = [{type = 'remove_effect', value = 'mindcontrol'}],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_s_undead = {
 		type = 'trigger',
 		trigger = [variables.TR_POSTDAMAGE],
@@ -881,6 +972,71 @@ var effect_table = {
 		],
 		sub_effects = [],
 	},
+	e_i_shackles = {
+		type = 'c_static',
+		conditions = [{type = 'stats', name = 'body_factor', operant = 'lt', value = 4}],
+		tags = ['recheck_stats', 'recheck_item'],
+		no_escape = true,
+		atomic = [],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_i_pet = {
+		type = 'c_static',
+		conditions = [{type = 'class', value = 'pet'}],
+		tags = ['recheck_class', 'recheck_item'],
+		no_escape = true,
+		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 15}],
+		buffs = [],
+		sub_effects = ['e_master_small'],
+	},
+	e_master_small = {
+		type = 'trigger',
+		trigger = [variables.TR_S_CAST],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['tags', 'has', 'discipline']}],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.1}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_i_counter1 = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_DAY],
+		req_skill = false,
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'owner',
+				index = 1,
+				value = 1,# X from item description
+				args = [{obj = 'template', param = 'index'},{obj = 'template', param = 'value'}],
+				atomic = ['a_add_counter_args'],
+			},
+			{
+				type = 'oneshot',
+				target = 'owner',
+				conditions = [{type = 'stat_index', name = 'counters', index = 1, operant = 'gte', value = 100}],
+				atomic = [{type = 'add_sex_trait', trait = 'submissive'}],
+			},
+		],
+		buffs = []
+	},
+	#temp items
+	e_temp_collar1 = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8}],
+		buffs = [],
+		sub_effects = [],
+	},
 	#core
 	e_fire_custom = {
 		type = 'oneshot',
@@ -1225,6 +1381,7 @@ var atomic = {
 	a_souls1 = {type = 'stat_add', stat = 'damage', value = [['parent_args', 0],'*',5]},
 	a_souls2 = {type = 'stat_add', stat = 'armor', value = [['parent_args', 0],'*',5]},
 	a_damage_arg = {type = 'damage', value = ['parent_args', 0]},
+	a_add_counter_args = {type = 'add_counter', index = ['parent_args', 0], value = ['parent_args', 1]}
 };
 #needs filling
 var buffs = {
