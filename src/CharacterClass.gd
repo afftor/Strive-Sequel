@@ -1584,7 +1584,7 @@ func find_temp_effect_tag(eff_tag):
 		var eff = effects_pool.get_effect_by_id(e)
 		if eff.tags.has(eff_tag):
 			res.push_back(e)
-		return res
+	return res
 
 func find_eff_by_trait(trait_code):
 	var res = []

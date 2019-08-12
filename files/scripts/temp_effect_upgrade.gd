@@ -41,7 +41,7 @@ func apply():
 					else:
 						par = parent
 					if par != null:
-						remains = int(par.template.duration)
+						remains = int(par.self_args['duration'])
 					else:
 						print('error in template %s' % template_name)
 						remains = -1

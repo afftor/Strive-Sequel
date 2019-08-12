@@ -140,6 +140,11 @@ func setup_final():
 		critchance = input_handler.calculate_number_from_string_array(critchance, caster, target)
 	if caster.combatgroup == target.combatgroup:
 		critchance = 0
+	if template.has('custom_duration'):
+		var tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
+		for e in effects:
+			var eff = effects_pool.get_effect_by_id(e)
+			eff.set_args('duration', tempdur)
 
 
 func hit_roll():#not implemented various chance stat rolls due to not having formulaes

@@ -195,7 +195,8 @@ var Skilllist = {
 		ability_type = 'skill',
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({duration = 72, effect = 'e_t_charm'})],
+		custom_duration = ['caster.charm','*0.3','+24'],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_charm1'})],
 		manacost = 0,
 		energycost = 20,
 		charges = 3,
@@ -203,8 +204,8 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsitems/Charm.png"),
 		tags = [],
-		value = ['0'],
-		damagestat = 'lust',
+		value = ['caster.charm','*0.25','+25'],
+		damagestat = 'obedience',
 	},
 	seduce = {
 		#temp version

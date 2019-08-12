@@ -328,6 +328,25 @@ var effect_table = {
 			}
 		],
 	},
+	e_t_charm1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'charm1',
+		tick_event = variables.TR_TICK,
+		duration = 'parent_arg', 
+		stack = 1,
+		tags = ['s_dur_add'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.2}],
+		buffs = [
+			{
+				icon = "", 
+				description = "charmed",
+				limit = 1,
+				t_name = ''
+			}
+		],
+	},
 	e_t_mindcontrol = {
 		type = 'temp_s',
 		target = 'target',
