@@ -47,7 +47,7 @@ func _ready():
 		character.unlock_class("master")
 		character.charm_factor = 1
 #		character.learn_skill("hardwork")
-		character.unlock_class("succubus")
+		character.unlock_class("dancer")
 		character.mp = 50
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
@@ -82,6 +82,7 @@ func _ready():
 		
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))

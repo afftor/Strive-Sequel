@@ -245,6 +245,8 @@ func get_stat(statname):
 	if variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
+	elif statname in ['physics','wits','charm','sexuals']:
+		res = get(statname) + get(statname+"_bonus")
 	return res
 
 func add_stat_bonuses(ls:Dictionary):
@@ -684,7 +686,7 @@ func check_gear_equipped(gearname):
 		if i == null:
 			continue
 		var tempgear = state.items[i]
-		if tempgear.base_type == gearname:
+		if tempgear.itembase == gearname:
 			return true
 	return false
 
@@ -1018,7 +1020,7 @@ func tick():
 	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
 	
 	self.fatigue += 1
-	self.lust += lusttick
+	self.lust += get_stat('lusttick')
 	
 	
 	var obed_reduce = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
@@ -1782,22 +1784,7 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 		'stat_index':
 			result = input_handler.operate(req.operant, get_stat(req.name)[req.index], req.value)
 		'gear':
-			match req.slot:
-				'any':
-					var tempresult = false
-					for i in gear.values():
-						if i != null:
-							tempresult = input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value])
-							if tempresult == true:
-								result = true
-								break
-				'all':
-					result = true
-					for i in gear.values():
-						if i != null:
-							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
-								result = false
-								break
+			result = check_gear_equipped(req.name)
 		'race': 
 			result = (req.value == race);
 		'race_group':

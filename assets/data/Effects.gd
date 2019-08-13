@@ -247,7 +247,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.5},
-			#{type = 'stat_add', stat = 'productivity', value = 50},
 		],
 		buffs = [
 			{
@@ -981,14 +980,26 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_i_pet = {
+	e_i_pet_suit = {
+		type = 'static',
+		conditions = [{type = 'class', value = 'pet'}],
+		descript = "Charm: +15\nPhysics: -15\nObedience Decoy: -15%\nFear Decoy: -20%.",
+		tags = ['recheck_class', 'recheck_item'],
+		atomic = [
+		{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8},
+		{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_i_pet_suit_bonus = {
 		type = 'c_static',
 		conditions = [{type = 'class', value = 'pet'}],
+		descript = "When wearer has Pet class:\nCharm: +10\nSocial skills effect: +10%.",
 		tags = ['recheck_class', 'recheck_item'],
-		no_escape = true,
-		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 15}],
+		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		buffs = [],
-		sub_effects = ['e_master_small'],
+		sub_effects = ['e_pet_suit_bonus_skill'],
 	},
 	e_i_anal = {
 		type = 'c_static',
@@ -998,7 +1009,7 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_master_small = {
+	e_pet_suit_bonus_skill = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],
 		req_skill = true,
@@ -1098,12 +1109,44 @@ var effect_table = {
 		buffs = []
 	},
 	#temp items
-	e_temp_collar1 = {
+	e_leather_collar_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8}],
+		descript = 'Reduces Fear decay by 20%.',
 		buffs = [],
 		sub_effects = [],
 	},
+	e_chocker_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.9},{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85}],
+		descript = "Reduces Fear decay by 10%.\n Reduces Obedience decay by 15%.",
+		buffs = [],
+		sub_effects = [],
+	},
+	e_steel_collar_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.75}],
+		descript = 'Reduces Fear decay by 25%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tail_plug_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.1}],
+		descript = 'Increases Lust growth by 10%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tail_plug_bonus = {
+		type = 'c_static',
+		tags = ['recheck_item'],
+		conditions = [{type = 'gear', name = 'pet_suit', check = true}],
+		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
+		descript = 'Increases Charm by 10 if Pet Suit equipped.',
+		buffs = [],
+		sub_effects = [],
+	},
+	
 	#core
 	e_fire_custom = {
 		type = 'oneshot',
@@ -1394,6 +1437,48 @@ var effect_table = {
 				description = "Productivity increased by 20%%",
 				limit = 1,
 				t_name = "Master's Morale",
+			}
+		],
+	},
+	satisfaction_1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Satisfaction",
+		tick_event = variables.TR_TICK,
+		duration = 36, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = "Productivity increased by 10%%",
+				limit = 1,
+				t_name = "Satisfaction",
+			}
+		],
+	},
+	satisfaction_2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Satisfaction",
+		tick_event = variables.TR_TICK,
+		duration = 36, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = "Productivity increased by 20%%",
+				limit = 1,
+				t_name = "Satisfaction",
 			}
 		],
 	},

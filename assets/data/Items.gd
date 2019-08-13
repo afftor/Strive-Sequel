@@ -612,7 +612,7 @@ var itemlist = {
 		tier = 'easy',
 		unlockreqs = [],
 		reqs = [],
-		effects = ['e_temp_collar1'],
+		effects = ['e_leather_collar_effect'],
 		tags = [],
 		basestats = {},
 	},
@@ -630,7 +630,7 @@ var itemlist = {
 		tier = 'medium',
 		unlockreqs = [],
 		reqs = [],
-		effects = [],
+		effects = ['e_chocker_effect'],
 		tags = [],
 		basestats = {},
 	},
@@ -652,7 +652,7 @@ var itemlist = {
 		tags = [],
 		basestats = {},
 	},
-	animal_ears = {# +10 charm
+	animal_ears = {#
 		code = 'animal_ears',
 		name = "",
 		descript = "",
@@ -684,7 +684,7 @@ var itemlist = {
 		tier = 'medium',
 		unlockreqs = [],
 		reqs = [],
-		effects = [],
+		effects = ['e_tail_plug_effect','e_tail_plug_bonus'],
 		tags = [],
 		basestats = {},
 	},
@@ -707,7 +707,6 @@ var itemlist = {
 		basestats = {charm_bonus = 15, physics_bonus = -10},
 	},
 	pet_suit = {#+30 charm, -15 physics, -20% fear decay, -15% obedience decay
-		#temp effect
 		code = 'pet_suit',
 		name = "",
 		descript = "",
@@ -721,9 +720,9 @@ var itemlist = {
 		tier = 'medium',
 		unlockreqs = [],
 		reqs = [],
-		effects = ['e_i_pet'],
+		effects = ['e_i_pet_suit', 'e_i_pet_suit_bonus'],
 		tags = [],
-		basestats = {},
+		basestats = {charm_bonus = 15, physics_bonus = -15},
 	},
 	latex_suit = {# 
 		code = 'latex_suit',
@@ -912,7 +911,7 @@ var itemlist = {
 		repairdifficulty = 'easy',
 		slots = ['rhand'],
 		hitsound = 'blade',
-		effects = ['axe'],
+		effects = [],
 	},
 	pickaxe = {
 		name = '', 
@@ -937,7 +936,7 @@ var itemlist = {
 		repairdifficulty = 'easy',
 		slots = ['rhand'],
 		hitsound = 'blade',
-		effects = ['pick'],
+		effects = [],
 	},
 	fishingtools = {
 		name = '', 

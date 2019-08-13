@@ -153,7 +153,9 @@ texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
-[node name="base_stats" type="VBoxContainer" parent="."]
+[node name="base_stats" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
 margin_left = 13.0
 margin_top = 255.0
 margin_right = 213.0

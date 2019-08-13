@@ -1798,15 +1798,19 @@ func endencounter():
 	for i in participants:
 		i.person.lastsexday = state.date
 		
-		i.person.lust += i.orgasms*5*i.person.sexuals_factor
-		i.person.obedience += i.orgasms*10
-		i.person.loyal += i.orgasms
+		i.person.lust += 20 + i.orgasms*5*i.person.sexuals_factor
 		
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
 		
-		text += "; Lust gained: " +  str(i.orgasms*5*i.person.sexuals_factor)
+		text += "; Lust gained: " +  str(20 + i.orgasms*5*i.person.sexuals_factor)
 		if i.orgasms > 0:
-			text += "; Obedience gained: " + str(i.orgasms*10)
+			var effect = 'satisfaction_1'
+			if i.orgasms >= 3:
+				effect = 'satisfaction_2'
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[effect])
+			i.person.apply_effect(effects_pool.add_effect(eff))
+#		if i.orgasms > 0:
+#			text += "; Obedience gained: " + str(i.orgasms*10)
 			#Add 10% all productivity bonus
 			#i.person.add_effect()
 		

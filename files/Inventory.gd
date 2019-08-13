@@ -229,7 +229,7 @@ func useitem(item, type):
 			input_handler.GetItemTooltip().hide()
 			emit_signal("item_used")
 			rebuildinventory()
-			pass
+		input_handler.update_slave_panel()
 	elif mode == 'shop':
 		sellwindow(item, type)
 
@@ -304,6 +304,7 @@ func unequip(slot):
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
 		input_handler.GetItemTooltip().hide()
 		buildinventory()
+		input_handler.update_slave_panel()
 
 func rebuild_characters():
 	globals.ClearContainer($CharacterPanel/ScrollContainer/VBoxContainer)

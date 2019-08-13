@@ -213,7 +213,7 @@ func tooltiptext():
 		text += tr("TOOLWORKCATEGORY") + ": " + globals.worktoolnames[toolcategory]
 		
 	if description != null:
-		text += description + "\n"
+		text += description 
 	if itemtype in ['armor','weapon','tool']:
 		#text += 'Durability: ' + str(durability) + '/' + str(maxdurability)
 		text += "\n\n"
@@ -243,8 +243,9 @@ func tooltiptext():
 func tooltipeffects():
 	var text = ''
 	for i in effects:
-		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
-		text += '}\n'
+		text += Effectdata.effect_table[i].descript + "\n"
+#		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
+#		text += '}\n'
 	return text
 
 func tooltip(targetnode):
