@@ -14,46 +14,46 @@ func get_progress_task(character, temptask, tempsubtask):
 	return value
 
 func hunt_meat(character):
-	return 1 + (1*(character.physics/66))
+	return 1 + (1*(character.get_stat('physics')/66))
 
 func fishing(character):
-	return 1 + (1*(character.physics/100+character.wits/57))
+	return 1 + (1*(character.get_stat('physics')/100+character.get_stat('wits')/57))
 
 func farming(character):
-	return 1 + (1*(character.physics/57+character.wits/100))
+	return 1 + (1*(character.get_stat('physics')/57+character.get_stat('wits')/100))
 
 func hunt_leather(character):
-	return 1 + (1*(character.physics/66))
+	return 1 + (1*(character.get_stat('physics')/66))
 
 func woodcutting_lumber(character):
-	return 1 + (1*(character.physics/66))
+	return 1 + (1*(character.get_stat('physics')/66))
 
 func woodmagiccutting_lumber(character):
-	return 1 + (1*(character.physics/66))
+	return 1 + (1*(character.get_stat('physics')/66))
 
 func woodironcutting_lumber(character):
-	return 1 + (1*(character.physics/66))
+	return 1 + (1*(character.get_stat('physics')/66))
 
 func mining_stone(character):
-	return 1 + (1*(character.physics/66))
+	return 1 + (1*(character.get_stat('physics')/66))
 
 func whoring_gold(character):
-	return (3 + character.sexuals/10 + character.charm/20) * character.mod_pros_gold
+	return (3 + character.get_stat('sexuals')/10 + character.get_stat('charm')/20) * character.mod_pros_gold
 
 func cooking_progress(character):
-	return 1 + (1*(character.wits/50))
+	return 1 + (1*(character.get_stat('wits')/50))
 
 func tailor_progress(character):
-	return 1 + (1*(character.wits/66+character.physics/150))
+	return 1 + (1*(character.get_stat('wits')/66+character.get_stat('physics')/150))
 
 func forge_progress(character):
-	return 1 + (1*(character.wits/66+character.physics/150)) * (1+0.25*state.upgrades.forgeworkshop)
+	return 1 + (1*(character.get_stat('wits')/66+character.get_stat('physics')/150)) * (1+0.25*state.upgrades.forgeworkshop)
 
 func alchemy_progress(character):
-	return 1 + (1*(character.wits/50))
+	return 1 + (1*(character.get_stat('wits')/50))
 
 func building_progress(character):
-	return (1 + character.wits/100 + character.physics/50) * (1+0.25*state.upgrades.forgeworkshop)
+	return (1 + character.get_stat('wits')/100 + character.get_stat('physics')/50) * (1+0.25*state.upgrades.forgeworkshop)
 
 #i added to task tamplates link to a corresponding productivity modifier. rewiev these values and fix them if needed 
 #also tried to fix cooking but not sure if all was made

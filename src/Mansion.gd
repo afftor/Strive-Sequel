@@ -83,6 +83,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("shackles", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))

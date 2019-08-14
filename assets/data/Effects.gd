@@ -973,7 +973,8 @@ var effect_table = {
 	},
 	e_i_shackles = {
 		type = 'c_static',
-		conditions = [{type = 'stats', name = 'body_factor', operant = 'lt', value = 4}],
+		descript = '',
+		conditions = [{type = 'stats', name = 'physics_factor', operant = 'lt', value = 4}],
 		tags = ['recheck_stats', 'recheck_item'],
 		no_escape = true,
 		atomic = [],

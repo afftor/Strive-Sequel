@@ -234,7 +234,6 @@ text = "1.100"
 align = 1
 
 [node name="progress" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 263.0
 margin_top = 16.0
 margin_right = 586.0

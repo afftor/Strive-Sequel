@@ -160,6 +160,8 @@ var statdata = {
 		type = 'primal',
 	},
 	
+	
+	
 	obedience = {
 		code = 'obedience',
 		name = '',

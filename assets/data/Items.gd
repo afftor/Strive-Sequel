@@ -32,6 +32,11 @@ var stats = {
 	mdef = tr("MDEF"),
 	task_energy_tool = tr("TASKENERGYTOOL"),
 	task_efficiency_tool = tr("TASKEFFICIENCYTOOL"),
+	
+	physics_bonus = '',
+	wits_bonus = '',
+	charm_bonus = '',
+	sexuals_bonus = '',
 }
 
 

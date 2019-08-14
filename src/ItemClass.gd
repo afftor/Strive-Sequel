@@ -102,6 +102,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 	for i in itemtemplate.basestats:
 		if bonusstats.has(i):
 			bonusstats[i] += itemtemplate.basestats[i]
+		else:
+			bonusstats[i] = itemtemplate.basestats[i]
 	
 	
 	if itemtemplate.has('effects'):

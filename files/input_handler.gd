@@ -826,7 +826,8 @@ func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
-	slave_panel_node.open(null)
+	if slave_panel_node.visible == true:
+		slave_panel_node.open(null)
 
 func check_mouse_in_nodes(nodes):
 	var check = false

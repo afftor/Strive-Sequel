@@ -118,6 +118,9 @@ func open(tempperson):
 		if person.get(i.name+'_bonus') > 0:
 			i.set("custom_colors/font_color", globals.hexcolordict.green) 
 			i.text +=  "+"+ str(person.get(i.name+'_bonus'))
+		elif person.get(i.name+'_bonus') < 0:
+			i.set("custom_colors/font_color", globals.hexcolordict.red) 
+			i.text += str(person.get(i.name+'_bonus'))
 		else:
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
 	

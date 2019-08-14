@@ -1678,7 +1678,7 @@ func apply_effect(eff_id):
 func remove_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static': static_effects.erase(eff_id)
+		'static','c_static': static_effects.erase(eff_id)
 		'trigger': triggered_effects.erase(eff_id)
 		'temp_s','temp_p','temp_u': temp_effects.erase(eff_id)
 		'area': remove_area_effect(eff_id)
