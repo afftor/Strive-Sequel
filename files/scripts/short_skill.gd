@@ -42,15 +42,24 @@ func _init():
 	target_number = 'single'
 	damage_type = 'direct'
 	goldcost = 0
+	damagestat = 'damage_hp'
+	receiver = 'target'
 	random_factor = 0
 	random_factor_p = 0.0
 
 func clone():
 	return dict2inst(inst2dict(self))
 
-func get_from_template(attr):
-	if template.has(attr):
+func get_from_template(attr, val_rel = false):
+	if template.has(attr): 
+		if typeof(template[attr]) == TYPE_ARRAY:
+			set(attr, template[attr].duplicate())
+			return
 		set(attr, template[attr])
+	if val_rel:
+		var tres = []
+		for i in range(long_value.size()): tres.push_back(get(attr))
+		set(attr, tres)
 
 func createfromskill(s_code):
 	template = Skilldata.Skilllist[s_code]
@@ -64,28 +73,17 @@ func createfromskill(s_code):
 	get_from_template('target_range')
 	get_from_template('target_number')
 	get_from_template('damage_type')
-	get_from_template('random_factor')
-	get_from_template('random_factor_p')
+
 	
 	if typeof(template.value[0]) == TYPE_ARRAY:
 		long_value = template.value.duplicate()
-		damagestat = template.damagestat.duplicate()
 	else:
 		long_value.push_back(template.value.duplicate())
-		if template.has('damagestat'):
-			damagestat.push_back(template.damagestat)
-		else:
-			damagestat.push_back('damage_hp')
 	
-	if template.has('receiver'):
-		if typeof(template.receiver) == TYPE_ARRAY:
-			receiver = template.receiver.duplicate()
-		else:
-			for i in range(long_value.size()):
-				receiver.push_back(template.receiver)
-	else:
-		for i in range(long_value.size()):
-			receiver.push_back('target')
+	get_from_template('damagestat', true)
+	get_from_template('receiver', true)
+	get_from_template('random_factor', true)
+	get_from_template('random_factor_p', true)
 	
 	for e in template.effects:
 		var eff = effects_pool.e_createfromtemplate(e, self)
@@ -297,13 +295,13 @@ func apply_random():
 			var rmax
 			if variables.relative_random_add:
 				rmin = 0
-				rmax = random_factor
+				rmax = random_factor[i]
 			else:
-				rmin = -random_factor
-				rmax = random_factor
+				rmin = -random_factor[i]
+				rmax = random_factor[i]
 			var val_add = globals.rng.randi_range(rmin, rmax)
-			rmin = 1.0 - random_factor_p
-			rmax = 1.0 + random_factor_p
+			rmin = 1.0 - random_factor_p[i]
+			rmax = 1.0 + random_factor_p[i]
 			var val_mul = globals.rng.randf_range(rmin,rmax)
 			value[i] += val_add
 			value[i] *= val_mul
