@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/energybar.png-9b8cae4c9c4e8e272a0bca93406d9335.stex"
+path="res://.import/sexuals.png-6510061d1a1b6d7763f60e3c352619a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/panels/energybar.png"
-dest_files=[ "res://.import/energybar.png-9b8cae4c9c4e8e272a0bca93406d9335.stex" ]
+source_file="res://assets/images/gui/slavepanel/sexuals.png"
+dest_files=[ "res://.import/sexuals.png-6510061d1a1b6d7763f60e3c352619a7.stex" ]
 
 [params]
 

@@ -63,18 +63,17 @@ func new_charcter_description(character):
 			continue
 		var charpart = character.get(i)
 		if str(charpart) != '':
-			var newtext = ' '
+			var newtext = ''
 			if bodypartsdata[i].has(charpart):
 				newtext = bodypartsdata[i][charpart].chardescript
 				if bodypartsdata[i][charpart].has('combine') && str(character.get(bodypartsdata[i][charpart].combine)) != '':
 					newtext = bodypartsdata[bodypartsdata[i][charpart].combine][str(charpart) + "_" + str(character.get(bodypartsdata[i][charpart].combine))].chardescript
 				elif bodypartsdata[i][charpart].has('combine') && character.get(bodypartsdata[i][charpart].combine) == '':
-					newtext = ' '
+					newtext = ''
 			elif bodypartsdata[i].has('default'):
 				newtext = bodypartsdata[i].default.chardescript
-			if newtext != ' ':
-				text += newtext
-			text += " "
+			if !newtext in ["", " "]:
+				text += newtext + " "
 	
 	text = input_handler.text_cut_excessive_lines(text)
 	
@@ -247,6 +246,39 @@ var tattoooptions = {
 
 
 var bodypartsdata = {
+	sex = {
+		male = {code = 'male', name = '', chardescript = '', bodychanges = [
+			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoudler',0.5]], reqs = []},
+			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1]], reqs = []},
+			{code = 'ass_size', value = [['flat', 1], ['masculine',1]], reqs = []},
+			{code = 'tits_size', value = [['flat', 1], ['masculine', 1]], reqs = []},
+			{code = 'has_womb', value = [[false,1]], reqs = []},
+			{code = 'has_pussy', value = [[false,1]], reqs = []},
+			{code = 'penis_size', value = [['small', 1], ['average', 5], ['big',1]], reqs = []},
+			{code = 'balls_size', value = [['small', 1], ['average', 5], ['big',1]], reqs = []},
+		]},
+		female = {code = 'female', name = '', chardescript = '', bodychanges = [
+			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
+			{code = 'hair_style', value = [['straight', 2],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1]], reqs = []},
+			{code = 'ass_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
+			{code = 'tits_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
+			{code = 'has_womb', value = [[true,1]], reqs = []},
+			{code = 'has_pussy', value = [[true,1]], reqs = []},
+			{code = 'penis_size', value = [['',1]], reqs = []},
+			{code = 'balls_size', value = [['',1]], reqs = []},
+		]},
+		futa = {code = 'futa', name = '', chardescript = '', bodychanges = [
+			{code = 'hair_length', value = [['ear', 0.5],['neck',2],['shoulder',3],['waist',1],['hips',0.5]], reqs = []},
+			{code = 'hair_style', value = [['straight', 2],['ponytail',1],['pigtails',1],['braid',1],['twinbraids',1]], reqs = []},
+			{code = 'ass_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
+			{code = 'tits_size', value = [['flat', 1], ['small',1], ['average', 1], ['big', 1], ['huge', 1]], reqs = []},
+			{code = 'has_womb', value = [[true,1]], reqs = [],},
+			{code = 'has_pussy', value = [[true,1]], reqs = []},
+			{code = 'penis_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = []},
+			{code = 'balls_size', value = [['small', 1], ['average', 3], ['big', 1]], reqs = [{code = 'rule', type = 'futa_balls', value = true}]},
+			{code = 'balls_size', value = [['',1]], reqs = [{code = 'rule', type = 'futa_balls', value = false}]},
+		]},
+	},
 	age = {
 #		child = {code = 'child', name = '', chardescript = '', bodychanges = [
 #			{code = 'height', value = [['petite', 1],['short',1]], reqs = [{code = 'stat', type = 'height', operant = 'hasnt', value = ['petite', 'short', 'tiny']}]},

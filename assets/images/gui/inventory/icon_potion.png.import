@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/manabar.png-8c1bde2ef8c908b9552b8d15eb2db669.stex"
+path="res://.import/icon_potion.png-0630ae1daa95465be369ffad2ded0211.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/panels/manabar.png"
-dest_files=[ "res://.import/manabar.png-8c1bde2ef8c908b9552b8d15eb2db669.stex" ]
+source_file="res://assets/images/gui/inventory/icon_potion.png"
+dest_files=[ "res://.import/icon_potion.png-0630ae1daa95465be369ffad2ded0211.stex" ]
 
 [params]
 

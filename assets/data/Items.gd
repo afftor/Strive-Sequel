@@ -817,7 +817,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {},
+		basestats = {sexuals_bonus = -25},
 	},
 	stimulative_underwear = {#+25% lust per day, must have normal lower body
 		code = 'stimulative_underwear',
@@ -833,7 +833,7 @@ var itemlist = {
 		tier = 'hard',
 		unlockreqs = [],
 		reqs = [],
-		effects = [],
+		effects = ['e_sunderwear_effect'],
 		tags = [],
 		basestats = {},
 	},
@@ -851,7 +851,7 @@ var itemlist = {
 		tier = 'hard',
 		unlockreqs = [],
 		reqs = [],
-		effects = [],
+		effects = ['e_tentacle_suit_effect'],
 		tags = [],
 		basestats = {},
 	},
@@ -1245,6 +1245,8 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
+		uses_per_day = 1,
+		mansion_effect = 'aphrodisiac',
 		interaction_effect = 'aphrodisiac',
 	},
 	sensetivity_drug = {#maxes out lust, 1 per day
@@ -1263,7 +1265,7 @@ var itemlist = {
 		tags = [],
 		interaction_effect = 'sensetivity_drug',
 	},
-	alcohol = {#recovers fatigue at small health and fear reduction
+	alcohol = {
 		code = 'alcohol',
 		name = "",
 		descript = "",
@@ -1277,6 +1279,8 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
+		uses_per_day = 0,
+		mansion_effect = 'alcohol',
 		interaction_effect = 'alcohol',
 	},
 	tamedrug = {# + 1-2 tame factor, - 1-2 brave factor, -1 wit factor (permanent)
@@ -1293,7 +1297,9 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		mansion_effect = '',
+		uses_per_target = 1,
+		mansion_effect = 'tamedrug',
+		interaction_effect = '',
 	},
 	ragedrug = {# - 1-2 tame factor, + 1-2 brave factor, +1 body factor (permanent)
 		code = 'ragedrug',
@@ -1309,7 +1315,9 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		mansion_effect = '',
+		uses_per_target = 1,
+		mansion_effect = 'ragedrug',
+		interaction_effect = '',
 	},
 	sexdrug = {# -1 body factor, -2 wit factor, 6 sex factor (permanent)
 		code = 'sexdrug',
@@ -1325,7 +1333,9 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		mansion_effect = '',
+		uses_per_target = 1,
+		mansion_effect = 'sexdrug',
+		interaction_effect = '',
 	},
 	oblivionpotion = {#Makes slave unlearn 1 class of choice. 
 		code = 'oblivionpotion',

@@ -546,6 +546,7 @@ func createtestdummy(type = 'normal'):
 	person.create('random', 'random', 'random')
 	var newmember = member.new()
 	newmember.sceneref = self
+	person.vaginal_virgin = true
 	person.mods['hollownipples'] = 'hollownipples'
 	#person.sex = 'male'
 #	if type == 'resist':
@@ -1046,6 +1047,9 @@ func switchsides(panel, side):
 func startscene(scenescript, cont = false, pretext = ''):
 	var textdict = {mainevent = pretext, repeats = '', orgasms = '', speech = ''}
 	var effects
+	
+	var mandatoryspeech = false
+	var mandatoryspeechdict 
 	scenescript.givers = givers
 	scenescript.takers = takers
 	turns -= 1
@@ -1103,18 +1107,28 @@ func startscene(scenescript, cont = false, pretext = ''):
 			for i in takers:
 				textdict.mainevent += '\n' + output(scenescript, scenescript.reaction, givers, [i])
 	
+	var virgin = {type = null, character = null}
+	
 	#remove virginity if relevant
 	if scenescript.virginloss == true:
 		for i in givers:
-			if scenescript.giverpart == 'vagina':
+			if scenescript.giverpart == 'vagina' && i.person.vaginal_virgin == true:
 				i.person.vaginal_virgin = false
-			elif scenescript.giverpart == 'anus':
+				virgin.type = 'vaginal'
+				virgin.character = i
+			elif scenescript.giverpart == 'anus' && i.person.anal_virgin == true:
 				i.person.anal_virgin = false
+				virgin.type = 'anal'
+				virgin.character = i
 		for i in takers:
-			if scenescript.takerpart == 'vagina':
+			if scenescript.takerpart == 'vagina' && i.person.vaginal_virgin == true:
 				i.person.vaginal_virgin = false
-			elif scenescript.takerpart == 'anus':
+				virgin.type = 'vaginal'
+				virgin.character = i
+			elif scenescript.takerpart == 'anus' && i.person.anal_virgin == true:
 				i.person.anal_virgin = false
+				virgin.type = 'anal'
+				virgin.character = i
 	
 	
 	
@@ -1155,6 +1169,9 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	if scenescript.code in ['rope', 'subdue']:
 		cont = true
+		if scenescript.code == 'rope':
+			mandatoryspeech = true
+			mandatoryspeechdict = {character = takers[0], line = 'rope'}
 	#to make action switch on that hole even if they comes from another body part
 	if scenescript.code in ['doubledildo','doubledildoass','tribadism']:
 		for i in ongoingactions.duplicate():
@@ -1272,8 +1289,18 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	var x = (givers.size()+takers.size())/2
 	
+	if virgin.type != null && virgin.character.person.professions.has("master") == false:
+		mandatoryspeech = true
+		mandatoryspeechdict = {character = virgin.character, line = "virgin_" + virgin.type}
+	
+	
+	
 	while x > 0:
-		if randf() < 0.3: #0.3
+		if mandatoryspeech == true:
+			var charspeech = forced_character_speech(dict, mandatoryspeechdict.character, mandatoryspeechdict.line)
+			if charspeech.text != '':
+				textdict.speech += charspeech.character.name + ': ' + decoder(charspeech.text, [charspeech.character], [charspeech.partner]) + '\n'
+		elif randf() < 0.3:
 			var charspeech = characterspeech(dict)
 			if charspeech.text != '':
 				textdict.speech += charspeech.character.name + ': ' + decoder(charspeech.text, [charspeech.character], [charspeech.partner]) + '\n'
@@ -1305,7 +1332,34 @@ func lewdness_aura(caster):
 			i.horny += 5
 			i.sens += 50
 
-func characterspeech(scene, details = []):
+func forced_character_speech(scene, character, textdict):
+	var text = ''
+	var partnerside
+	var partner
+	
+	if character in scene.takers:
+		partnerside = 'givers'
+	else:
+		partnerside = 'takers'
+	partner = scene[partnerside][0]
+	
+	match textdict:
+		'virgin_vaginal', 'virgin_anal':
+			var resist = false
+			if character.horny < 100: resist = true
+			if resist == false: textdict += "_like" 
+			else: textdict += "_dislike"
+		'rope':
+			var like = false
+			if character.person.sex_traits.has("submissive"): like = true
+			if like == true: textdict += "_like"
+			else: textdict += "_dislike"
+	
+	text = speechdict[textdict][randi()%speechdict[textdict].size()]
+	
+	return show_charcter_speech(character, partner, text)
+
+func characterspeech(scene):
 	var character
 	var partner
 	var text = ''
@@ -1329,7 +1383,6 @@ func characterspeech(scene, details = []):
 	partner = scene[partnerside][0]
 	
 	array.clear() #array will serve as speech selector
-	var preventrest = true
 	var dict = {}
 	var prevailing_lines = ['mute', 'silence', 'orgasm', 'resistorgasm', 'pain', 'painlike', 'resist', 'blowjob']
 	
@@ -1339,13 +1392,13 @@ func characterspeech(scene, details = []):
 		dict.mute = [speechdict.mute, 1]
 	if character.person.traits.has('Sex-crazed'):
 		dict.sexcrazed = [speechdict.sexcrazed, 1]
-	if character.person.traits.has('Enjoys Anal'):
-		dict.sexcrazed = [speechdict.enjoysanal, 1]
-	if character.person.traits.has('Likes it rough'):
-		dict.sexcrazed = [speechdict.rough, 1]
+	if character.person.sex_traits.has('anal'):
+		dict.enjoysanal = [speechdict.enjoysanal, 1]
+	if character.person.sex_traits.has('submissive'):
+		dict.rough = [speechdict.rough, 1]
 #	if character.person.rules.silence == true:
 #		dict.silence = [speechdict.silence, 1]
-	if character.effects.has('forced'):
+	if character.horny < 100:
 		dict.resist = [speechdict.resist, 1]
 		if scene.scene.code in ['missionaryanal', 'doggyanal', 'lotusanal','revlotusanal', 'inserttaila', 'insertinturnsass']  && partnerside == 'givers':
 			dict.analrape = [speechdict.analrape, 1]
@@ -1355,9 +1408,9 @@ func characterspeech(scene, details = []):
 		else:
 			dict.orgasm = [speechdict.orgasm, 1]
 	if scene.scene.code in ['blowjob'] && partnerside == 'takers':
-		dict.mouth = [speechdict.blowjob, 1]
+		dict.blowjob = [speechdict.blowjob, 1]
 	if scene.scene.code in ['blowjob','spitroast'] && partnerside == 'givers':
-		dict.mouth = [speechdict.blowjobtake, 1]
+		dict.blowjobtake = [speechdict.blowjobtake, 1]
 	if scene.scene.code in ['missionary', 'doggy', 'lotus', 'revlotus', 'inserttailv', 'insertinturns'] && partnerside == 'givers':
 		dict.vagina = [speechdict.vagina, 1]
 	if scene.scene.code in ['missionaryanal', 'doggyanal', 'lotusanal','revlotusanal', 'inserttaila', 'insertinturnsass'] && partnerside == 'givers':
@@ -1385,7 +1438,9 @@ func characterspeech(scene, details = []):
 	
 	if text == null:
 		text = ''
-	
+	return show_charcter_speech(character, partner, text)
+
+func show_charcter_speech(character, partner, text):
 	if partner.person.professions.has("master") || character.person.traits.has("Monogamous"):
 		text = text.replace('[name2]', character.person.masternoun)
 	else:
@@ -1415,7 +1470,14 @@ rough = ["[name2], do me harder...", "Yes... Please, abuse me!"],
 pain = ["Ouch! It hurts...", "Please, no more...", "*sob*", 'It hurts...', '[name2], please, stop...'],
 painlike = ["Umh... Yes, hit me harder...", "Yes, [name2], punish me...", "Ah... this strings... nicely..."],
 silence = ['Mmhmm...', '*gasp*', 'Mhm!!'],
-moans = ["Ah...", "Oh...", "Mmmh...", "[name2]..."]
+moans = ["Ah...", "Oh...", "Mmmh...", "[name2]..."],
+
+virgin_vaginal_like = ["Aaah! My first time...","[name2]... You took my first time...","Ah! I Had no idea this... feels so good..."],
+virgin_vaginal_dislike = ["Ouch... it hurts...", "Ah... No... *sob*", "Noo... My... First time..."],
+virgin_anal_like = ["Ah! My {^ass:butt}... Soiled...", "Oh! [name2], what are you... with my {^ass:butt}..."],
+virgin_anal_dislike = ["Ugh, no... It hurts...", "Why, my {^ass:butt}... stop..."],
+rope_like = ["Mmh... What are you going to do with me now?...", "Oooh... I feel... hot...", "Is this wrong... to like it?..."],
+rope_dislike = ["Tying me... why?", "Ugh.. This rope is so thick...", "W-what's this for?"],
 
 }
 

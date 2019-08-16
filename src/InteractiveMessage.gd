@@ -30,7 +30,6 @@ func open(scene):
 		if scene.tags.has('linked_event'):
 			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
 		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':
-			#newbutton.connect("pressed", self, 'close')
 			newbutton.connect("pressed", input_handler.scene_character, 'use_social_skill', [i.code, input_handler.target_character])
 		else:
 			newbutton.connect("pressed", self, i.code)

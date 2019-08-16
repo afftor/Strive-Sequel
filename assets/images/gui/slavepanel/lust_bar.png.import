@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lustbar.png-d76f318cba7ff64698741969420c95a2.stex"
+path="res://.import/lust_bar.png-1036a164e6a283fe9f5dcd322d2e7a61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/panels/lustbar.png"
-dest_files=[ "res://.import/lustbar.png-d76f318cba7ff64698741969420c95a2.stex" ]
+source_file="res://assets/images/gui/slavepanel/lust_bar.png"
+dest_files=[ "res://.import/lust_bar.png-1036a164e6a283fe9f5dcd322d2e7a61.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fearbar.png-6da6c5ddd3c2dff26766604fcf97f184.stex"
+path="res://.import/icon_s_potion.png-be57207d319c912c9cb99d0c02d66357.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/panels/fearbar.png"
-dest_files=[ "res://.import/fearbar.png-6da6c5ddd3c2dff26766604fcf97f184.stex" ]
+source_file="res://assets/images/gui/inventory/icon_s_potion.png"
+dest_files=[ "res://.import/icon_s_potion.png-be57207d319c912c9cb99d0c02d66357.stex" ]
 
 [params]
 

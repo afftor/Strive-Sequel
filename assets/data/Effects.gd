@@ -98,7 +98,7 @@ var effect_table = {
 	},
 	e_tr_hunter = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5}, {type = 'stat_add_p', stat = 'mod_fish', value = 0.5}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -134,13 +134,13 @@ var effect_table = {
 	},
 	e_tr_harlot = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros_gold', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.5}],
 		buffs = [],
 		sub_effects = [],
 	},
 	e_tr_pet = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros_gold', value = 0.25}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.25}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -238,7 +238,6 @@ var effect_table = {
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'hardwork',
 		tick_event = variables.TR_TICK,
 		duration = 'parent', 
@@ -257,6 +256,65 @@ var effect_table = {
 			}
 		],
 	},
+	e_food_like = {
+		type = 'temp_s',
+		name = 'food_like',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", 
+				description = "Favorite Food: Productivity increased by 10%%.",
+				limit = 1,
+				t_name = 'food_like'
+			}
+		],
+	},
+	e_food_dislike = {
+		type = 'temp_s',
+		name = 'food_dislike',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = -0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", 
+				description = "Hated Food: Productivity reduced by 10%%.",
+				limit = 1,
+				t_name = 'food_hate'
+			}
+		],
+	},
+	e_starve = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'starvation',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/food_old.png", 
+				description = "No food has been eaten: Exhaustion does not restore while resting.",
+				limit = 1,
+				t_name = 'starvation'
+			}
+		],
+	},
 	e_t_discipline = {
 		type = 'temp_s',
 		target = 'target',
@@ -269,6 +327,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add_p', stat = 'mod_collect', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5},
+			{type = 'stat_add_p', stat = 'mod_fish', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_cook', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_smith', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.5},
@@ -290,7 +349,7 @@ var effect_table = {
 		target = 'target',
 		name = 'seduce',
 		tick_event = variables.TR_TICK,
-		duration = 'parent', 
+		duration = 'parent_arg', 
 		stack = 1,
 		no_obed_reduce = true,
 		no_escape = true,
@@ -299,19 +358,19 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "", 
-				description = "seduced",
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = tr("BUFFSEDUCE"),
 				limit = 1,
 				t_name = ''
 			}
 		],
 	},
-	e_t_seduce1 = {
+	e_t_greatseduce = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'seduce1',
 		tick_event = variables.TR_TICK,
-		duration = 'parent', 
+		duration = 'parent_arg', 
 		stack = 1,
 		no_obed_reduce = true,
 		no_escape = true,
@@ -320,8 +379,8 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.5}],
 		buffs = [
 			{
-				icon = "", 
-				description = "seduced",
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = tr("BUFFGREATSEDUCE"),
 				limit = 1,
 				t_name = ''
 			}
@@ -1144,6 +1203,21 @@ var effect_table = {
 		conditions = [{type = 'gear', name = 'pet_suit', check = true}],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		descript = 'Increases Charm by 10 if Pet Suit equipped.',
+		buffs = [],
+		sub_effects = [],
+	},
+	
+	e_sunderwear_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.25}],
+		descript = 'Increases Lust growth by 25%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tentacle_suit_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 1}],
+		descript = 'Increases Lust growth by 100%.',
 		buffs = [],
 		sub_effects = [],
 	},

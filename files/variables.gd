@@ -25,13 +25,13 @@ var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasi
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','atk','matk','hitrate','evasion','armor','mdef','critrate','critmod', 'lusttick']
+var bonuses_stat_list = ['productivity','mod_collect','atk','matk','hitrate','evasion','armor','mdef','critrate','critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','fear_degrade_mod','obed_degrade_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 
 'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor',
 'sexuals_factor','magic_factor','growth_factor']
-
+var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']
 
 #mode for applying absolute random damage mod
 const relative_random_add = true
@@ -108,14 +108,14 @@ var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
-var basic_energy_per_work_tick = 8.33
+var basic_energy_per_work_tick = 8.35
 
 #Cheats
 var instant_travel = false
-var instant_upgrades = true
-var free_upgrades = true
+var instant_upgrades = false
+var free_upgrades = false
 var skip_combat = false
-var unlock_all_upgrades = true
+var unlock_all_upgrades = false
 var invincible_player = true
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false

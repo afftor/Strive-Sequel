@@ -135,7 +135,7 @@ var icondict = {
 	weapon = "res://assets/images/gui/inventory/icon_weap1.png",
 	armor = "res://assets/images/gui/inventory/icon_armor1.png",
 	costume = "res://assets/images/gui/inventory/icon_cosm1.png",
-	usable = "res://assets/images/gui/inventory/icon_food1.png",
+	usable = "res://assets/images/gui/inventory/icon_potion1.png",
 	
 }
 
@@ -173,6 +173,8 @@ func rebuildinventory():
 			var item = i.get_meta("item")
 			if item == null:
 				continue
+			if item.amount != null && (item.amount > 1 || item.type == 'usable'):
+				i.get_node("Number").text = str(item.amount)
 			if $SearchFilter.text != '':
 				var text = $SearchFilter.text
 				if typeof(item) == TYPE_STRING:
@@ -182,13 +184,13 @@ func rebuildinventory():
 					else:
 						itemcontainer.add_child(i)
 				else:
-					if (item.name.findn(text) < 0 && item.description.findn(text) < 0 && item.itembase.findn(text) < 0) || item.owner != null:
+					if (item.name.findn(text) < 0 && item.description.findn(text) < 0 && item.itembase.findn(text) < 0) || item.owner != null || item.amount <= 0:
 						$HiddenContainer/GridContainer.add_child(i)
 					else:
 						itemcontainer.add_child(i)
 			else:
 				var text = $SearchFilter.text
-				if typeof(item) == TYPE_OBJECT && item.owner != null:
+				if typeof(item) == TYPE_OBJECT && item.owner != null || item.amount <= 0:
 					$HiddenContainer/GridContainer.add_child(i)
 				else:
 					itemcontainer.add_child(i)
@@ -225,9 +227,10 @@ func useitem(item, type):
 			input_handler.GetItemTooltip().hide()
 			emit_signal("item_equipped")
 			rebuildinventory()
-		elif type == 'usable':
+		elif type == 'usable' && Items.itemlist[item.itembase].has("mansion_effect"):
 			input_handler.GetItemTooltip().hide()
 			emit_signal("item_used")
+			selectedhero.use_mansion_item(item)
 			rebuildinventory()
 		input_handler.update_slave_panel()
 	elif mode == 'shop':

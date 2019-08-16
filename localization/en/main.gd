@@ -182,7 +182,7 @@ var TranslationDict = {
 	ITEMREVITALIZERDESCRIPT = "A heavy stone possessing a large amount of life energy. Ressurects fallen character with 20% of their maximum health.",
 	
 	
-	
+	BUFFSEDUCE = "[name] is under a seduction spell. [He] will not attempt to escape and [his] obedience is not going to drop for that time. ",
 	
 	#Items
 	ITEMAXE = "Axe",
@@ -1210,7 +1210,7 @@ var TranslationDict = {
 	BODYPARTHAIR_STYLEBUNDESCRIPT = "It is tied into a neat [color=aqua]bun[/color].",
 	
 	BODYPARTEYE_COLORDEFAULTDESCRIPT = "[His] eyes are [color=aqua][eye_color][/color].",
-	BODYPARTEYE_SHAPENORMALDESCRIPT = ' ',
+	BODYPARTEYE_SHAPENORMALDESCRIPT = " ",
 	BODYPARTEYE_SHAPESLITDESCRIPT = "[He] has [color=aqua]vertical, animalistic pupils[/color].",
 	
 	BODYPARTHORNSSHORTDESCRIPT = "There is a pair of [color=aqua]tiny, pointed horns[/color] on top of [his] head.",

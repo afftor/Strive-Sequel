@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/loyalbar.png-0628bcb7e872b398317c39f5edf99e72.stex"
+path="res://.import/icon_potion1.png-ee0fff3f6ef7efd020c527b179f2b766.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/panels/loyalbar.png"
-dest_files=[ "res://.import/loyalbar.png-0628bcb7e872b398317c39f5edf99e72.stex" ]
+source_file="res://assets/images/gui/inventory/icon_potion1.png"
+dest_files=[ "res://.import/icon_potion1.png-ee0fff3f6ef7efd020c527b179f2b766.stex" ]
 
 [params]
 

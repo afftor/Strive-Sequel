@@ -130,7 +130,7 @@ func findupgradelevel(upgrade):
 	var rval = 1
 	if state.upgrades.has(upgrade.code):
 		rval = max(1, state.upgrades[upgrade.code])
-	return rval
+	return int(rval)
 
 
 func unlockupgrade():

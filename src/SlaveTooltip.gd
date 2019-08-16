@@ -29,16 +29,16 @@ func showup(node, person):
 	$exp.text = str(floor(person.base_exp))
 	for i in ['physics','wits','charm','sexuals']:
 		get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) + '/' + str(person[i+'_factor']*20) 
-	for i in ['obedience','fear','lust']:
+	for i in ['obedience','fear']:
 		get_node("VBoxContainer/"+ i + '/bar').value = person[i]
 		if i == 'lust':
 			get_node("VBoxContainer/"+ i + '/bar').max_value = person.lustmax
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(get_node("VBoxContainer/"+ i + '/bar').max_value)
 	
-	for i in ['hp','energy','mp']:
-		get_node("VBoxContainer/"+ i ).value = person[i]
-		get_node("VBoxContainer/"+ i ).max_value = person[i+'max']
-		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(floor(person[i+'max']))
+	for i in ['hp','energy','mp','lust']:
+		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
+		get_node("VBoxContainer/"+ i ).value = person.get_stat(i)
+		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
 	
 	if person.is_players_character == true:
 		if person.work != '':
@@ -70,6 +70,17 @@ func showup(node, person):
 		$VBoxContainer/lust.show()
 		$VBoxContainer/fear.show()
 		$VBoxContainer/obedience.show()
+	
+	
+	globals.ClearContainer($buffs)
+	
+	for i in person.get_all_buffs():
+		var newnode = globals.DuplicateContainerTemplate($buffs)
+		newnode.texture = i.icon
+		if i.get_duration() >= 0:
+			newnode.get_node("Label").text = str(i.get_duration())
+		else:
+			newnode.get_node("Label").hide()
 	
 	
 	prevnode = parentnode

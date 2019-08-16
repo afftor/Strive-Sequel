@@ -40,14 +40,13 @@ func _ready():
 	
 	if variables.generate_test_chars:
 		var character = Slave.new()
-		character.create('BeastkinCat', 'male', 'random')
+		character.create('BeastkinWolf', 'male', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
 		character.charm_factor = 1
-#		character.learn_skill("hardwork")
-		character.unlock_class("dancer")
+		#character.unlock_class("worker")
 		character.mp = 50
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
@@ -86,7 +85,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("shackles", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
-		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("tamedrug", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		$SlaveList.rebuild()
 	elif globals.start_new_game == true:
