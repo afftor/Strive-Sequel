@@ -290,19 +290,17 @@ func calculate_dmg():
 
 func apply_random():
 	for i in range(value.size()):
-		if variables.dmg_rnd_list.has(damagestat[i]):
-			var rmin
-			var rmax
-			if variables.relative_random_add:
-				rmin = 0
-				rmax = random_factor[i]
-			else:
-				rmin = -random_factor[i]
-				rmax = random_factor[i]
-			var val_add = globals.rng.randi_range(rmin, rmax)
-			rmin = 1.0 - random_factor_p[i]
-			rmax = 1.0 + random_factor_p[i]
-			var val_mul = globals.rng.randf_range(rmin,rmax)
-			value[i] += val_add
-			value[i] *= val_mul
-	pass
+		var rmin
+		var rmax
+		if variables.relative_random_add:
+			rmin = 0
+			rmax = random_factor[i]
+		else:
+			rmin = -random_factor[i]
+			rmax = random_factor[i]
+		var val_add = globals.rng.randi_range(rmin, rmax)
+		rmin = 1.0 - random_factor_p[i]
+		rmax = 1.0 + random_factor_p[i]
+		var val_mul = globals.rng.randf_range(rmin,rmax)
+		value[i] += val_add
+		value[i] *= val_mul

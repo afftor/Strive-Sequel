@@ -768,7 +768,7 @@ func interactive_message(code, type, args):
 				data.text += args.bonustext
 			if args.has('repeat'):
 				data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = !args.repeat})
-		'escape':
+		'char_translate':
 			data.text = args.translate(data.text)
 		'character_event':
 			var newcharacter
@@ -785,7 +785,6 @@ func interactive_message(code, type, args):
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
 			scene_character = args.pregchar
-			data.text = scene_character.translate(data.text)
 			var baby = state.babies[scene_character.pregnancy.baby]
 			data.options.append({code = 'inspect_character_child', text = tr("DIALOGUEINSPECTBABY")})
 		'event_selection':

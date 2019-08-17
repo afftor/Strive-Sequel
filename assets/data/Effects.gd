@@ -1042,8 +1042,8 @@ var effect_table = {
 	},
 	e_i_pet_suit = {
 		type = 'static',
-		conditions = [{type = 'class', value = 'pet'}],
-		descript = "Charm: +15\nPhysics: -15\nObedience Decoy: -15%\nFear Decoy: -20%.",
+		conditions = [],
+		descript = "Obedience Decoy: -15%\nFear Decoy: -20%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [
 		{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8},
@@ -1061,10 +1061,53 @@ var effect_table = {
 		buffs = [],
 		sub_effects = ['e_pet_suit_bonus_skill'],
 	},
+	e_maid_dress_effect = {
+		type = 'static',
+		conditions = [],
+		descript = "Obedience Decay: -25%",
+		tags = [],
+		atomic = [
+		{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.75},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_worker_outfit_effect = {
+		type = 'static',
+		conditions = [],
+		descript = "Hunting, Fishing and Collecting Tasks: +25%",
+		tags = [],
+		atomic = [
+		{type = 'stat_add_p', stat = 'mod_hunt', value = 0.25}, 
+		{type = 'stat_add_p', stat = 'mod_fish', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_collect', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_farm', value = 0.25},
+		
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_craftman_suit_effect = {
+		type = 'static',
+		conditions = [],
+		descript = "Cooking, Smithing, Alchemy, Tailor and Upgrading Tasks: +25%",
+		tags = [],
+		atomic = [
+		{type = 'stat_add_p', stat = 'mod_cook', value = 0.25}, 
+		{type = 'stat_add_p', stat = 'mod_smith', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_build', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_tailor', value = 0.25},
+		
+		],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_i_anal = {
 		type = 'c_static',
 		conditions = [{type = 'trait', value = 'anal'}],
 		tags = ['recheck_trait', 'recheck_item'],
+		descript = '',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
 		buffs = [],
 		sub_effects = [],
@@ -1090,13 +1133,14 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
+		descript = '',
 		req_skill = false,
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
 				index = 1,
-				value = 1,# X from item description
+				value = 75,# X from item description
 				args = [{obj = 'template', param = 'index'},{obj = 'template', param = 'value'}],
 				atomic = ['a_add_counter_args'],
 			},
@@ -1116,13 +1160,14 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
+		descript = '',
 		req_skill = false,
 		args = [{obj = 'app_obj', param = 'sex_factor'}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				X = 1.0, #X from item description
+				X = 75, #X from item description
 				args = [{obj = 'parent_args', index = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 2, value = [['parent_args', 0],'*',['parent_args',1]]} 
@@ -1144,13 +1189,14 @@ var effect_table = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
+		descript = '',
 		req_skill = false,
 		args = [{obj = 'app_obj', param = 'sex_factor'}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				X = 1.0, #X from item description
+				X = 75, #X from item description
 				args = [{obj = 'parent_args', index = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 3, value = [['parent_args', 0],'*',['parent_args',1]]} 

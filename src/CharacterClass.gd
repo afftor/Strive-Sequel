@@ -135,14 +135,14 @@ var charm := 0.0
 var charm_bonus := 0.0
 #constant stats
 var dirtiness = 1
-var physics_factor = 1 #physics
-var magic_factor = 1
-var tame_factor = 1
-var brave_factor = 1
-var growth_factor = 1
-var charm_factor = 1 #charm
-var wits_factor = 1 #wit
-var sexuals_factor = 1 #sexuals
+var physics_factor = 1 setget phy_f_set
+var magic_factor = 1 setget mag_f_set
+var tame_factor = 1 setget tam_f_set
+var brave_factor = 1 setget brv_f_set
+var growth_factor = 1 setget gro_f_set
+var charm_factor = 1 setget cha_f_set
+var wits_factor = 1 setget wit_f_set
+var sexuals_factor = 1 setget sex_f_set
 #food
 var food_counter = 23
 var food_consumption = 1
@@ -287,7 +287,6 @@ func add_bonus(b_rec:String, value, revert = false):
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
 	recheck_effect_tag('recheck_stats')
-	pass
 
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
@@ -664,6 +663,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = (state.get_master() == self) == i.check
 			'rules':
 				check = globals.globalsettings[i.type] == i.check
+			'bodypart':
+				check = input_handler.operate(i.operant, get(i.name), i.value)
 		if check == false:
 			return false
 	return true
@@ -1382,8 +1383,8 @@ func lust_get():
 
 func check_escape_chance():
 	var check = false
-	var base_chance = get_stat('brave_factor') * 8
-	if obedience + loyal/2 < base_chance && fear + loyal/2 < base_chance:
+	var base_chance = get_stat('brave_factor') * 7
+	if obedience < base_chance && fear < base_chance:
 		check = true
 	return check
 
@@ -1398,8 +1399,8 @@ func check_escape_possibility():
 			#shackles_chance = null
 			input_handler.emit_signal('shackles_off') #stub
 		return
-	var minchance = 50-min(obedience + loyal/2, fear + loyal/2)
-	if randf()*50 <= minchance:
+	var minchance = 50-min(obedience, fear)
+	if randf()*100 <= minchance:
 		escape()
 
 func escape():
@@ -1409,7 +1410,8 @@ func escape():
 	state.characters.erase(id)
 	state.character_order.erase(id)
 	input_handler.slave_list_node.rebuild()
-	input_handler.interactive_message('slave_escape', 'escape', self)
+	input_handler.scene_character = self
+	input_handler.interactive_message('slave_escape', '', {})
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
 
@@ -1538,7 +1540,8 @@ func apply_atomic(template):
 			if counters.size() <= template.index + 1:
 				counters.resize(template.index + 1)
 				counters[template.index] = template.value
-			else: counters[template.index] += template.value
+			else:
+				counters[template.index] += template.value
 		'add_soc_skill':
 			social_skills.push_back(template.skill)
 		'add_combat_skill':
@@ -1915,6 +1918,9 @@ func check_skill_availability(s_code, target):
 
 func use_social_skill(s_code, target):#add logging if needed
 	var template = Skilldata.Skilllist[s_code]
+	if template.has('special'):
+		globals.custom_effects.call(template.special, self)
+		return
 	var check = check_skill_availability(s_code, target)
 	if check.check == false:
 		#input_handler.SystemMessage(check.descript)
@@ -1989,6 +1995,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	s_skill.setup_final()
 	s_skill.hit_roll()
 	s_skill.resolve_value(true)
+	s_skill.apply_random()
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill:
@@ -2112,3 +2119,28 @@ func use_mansion_item(item):
 			items_used_global[itembase.code] = 1
 	item.amount -= 1
 	use_social_skill(skill, self)
+
+func phy_f_set(value):
+	physics_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func mag_f_set(value):
+	magic_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func tam_f_set(value):
+	tame_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func brv_f_set(value):
+	brave_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func gro_f_set(value):
+	growth_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func cha_f_set(value):
+	charm_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func wit_f_set(value):
+	wits_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func sex_f_set(value):
+	sexuals_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+

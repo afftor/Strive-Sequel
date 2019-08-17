@@ -63,6 +63,7 @@ var sexicons = {
 
 
 var descriptions = load("res://assets/data/descriptions.gd").new()
+var custom_effects = load("res://src/custom_effects.gd").new()
 
 var statdata = {
 	base_exp = {
@@ -403,6 +404,20 @@ var statdata = {
 	},
 	mod_pros = {
 		code = 'mod_pros',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	task_energy_tool = {
+		code = 'task_energy_tool',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	task_efficiency_tool = {
+		code = 'task_efficiency_tool',
 		name = '',
 		descript = '',
 		percent = true,

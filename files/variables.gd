@@ -18,7 +18,7 @@ var dmg_mod_list = ['damage_hp', 'restore_mana', 'lust', 'obedience', 'fear', 'l
 #list for values modified bu random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
-var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp']
+var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
 var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
@@ -74,6 +74,9 @@ var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith
 var master_starting_stats = 10
 var slave_starting_stats = 15
 
+var minimum_factor_value = 1
+var maximum_factor_value = 6
+
 var power_adjustments_per_difficulty = {
 	easy = [1,2],
 	medium = [2,4],
@@ -100,6 +103,9 @@ var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
 var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 
 #Slave values
+var slave_basic_sizes = ['masculine','flat','small','average','big','huge']
+var slave_genital_sizes = ['small','average','big']
+
 var basic_max_hp = 100
 var basic_max_mp = 30
 var basic_hp_regen = 1
@@ -112,10 +118,10 @@ var basic_energy_per_work_tick = 8.35
 
 #Cheats
 var instant_travel = false
-var instant_upgrades = false
-var free_upgrades = false
 var skip_combat = false
-var unlock_all_upgrades = false
+var free_upgrades = true
+var instant_upgrades = true
+var unlock_all_upgrades = true
 var invincible_player = true
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false

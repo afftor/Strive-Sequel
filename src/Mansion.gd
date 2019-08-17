@@ -62,10 +62,12 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.unlock_class("pet")
 		character.get_trait('core_trait')
+		character.obedience = 100
 		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		character.obedience = 100
 		character.lust = 50
 		character.base_exp += 500
 		character.get_trait('core_trait')
@@ -78,14 +80,20 @@ func _ready():
 #		character.get_trait('core_trait')
 #		character.is_players_character = true
 		
-		
+		state.materials.meat = 100
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("anal_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("shackles", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
-		globals.AddItemToInventory(globals.CreateUsableItem("tamedrug", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
+		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		$SlaveList.rebuild()
 	elif globals.start_new_game == true:
@@ -143,6 +151,7 @@ func _process(delta):
 				state.daily_interactions_left = 1
 				for i in state.characters.values():
 					i.cooldown_tick()
+					i.process_event(variables.TR_DAY)
 				for i in state.areas.values():
 					world_gen.update_guilds(i)
 			for i in state.characters.values():

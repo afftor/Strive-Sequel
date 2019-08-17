@@ -214,6 +214,10 @@ func valuecheck(dict):
 			var character = get_unique_slave(dict.value)
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free'}])
+		'scene_character_checks':
+			var character = input_handler.scene_character
+			if character == null:return false
+			return character.checkreqs(dict.charreqs)
 
 func if_master_is_beast(boolean):
 	var character = get_master()

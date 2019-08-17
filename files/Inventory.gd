@@ -39,6 +39,7 @@ func _ready():
 		if i.name != 'BodyImage':
 			i.connect("pressed", self, 'unequip', [i.name])
 			i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
+			i.hint_tooltip = tr("ITEMSLOT" + i.name.to_upper())
 
 func switch_slave_stats(newvalue = null):
 	if (newvalue == false || show_list == true) && mode == 'all':
@@ -173,8 +174,7 @@ func rebuildinventory():
 			var item = i.get_meta("item")
 			if item == null:
 				continue
-			if item.amount != null && (item.amount > 1 || item.type == 'usable'):
-				i.get_node("Number").text = str(item.amount)
+			
 			if $SearchFilter.text != '':
 				var text = $SearchFilter.text
 				if typeof(item) == TYPE_STRING:
@@ -188,9 +188,11 @@ func rebuildinventory():
 						$HiddenContainer/GridContainer.add_child(i)
 					else:
 						itemcontainer.add_child(i)
+					if item.amount != null && (item.amount > 1 || item.type == 'usable'):
+						i.get_node("Number").text = str(item.amount)
 			else:
 				var text = $SearchFilter.text
-				if typeof(item) == TYPE_OBJECT && item.owner != null || item.amount <= 0:
+				if typeof(item) == TYPE_OBJECT && (item.owner != null || item.amount <= 0):
 					$HiddenContainer/GridContainer.add_child(i)
 				else:
 					itemcontainer.add_child(i)

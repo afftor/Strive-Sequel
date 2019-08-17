@@ -18,6 +18,8 @@ func open(scene):
 			print("master_not_found")
 			return
 		scene.text = state.get_master().translate(scene.text)
+	if scene.tags.has("scene_character_translate"):
+		scene.text = input_handler.scene_character.translate(scene.text)
 	$RichTextLabel.bbcode_text = scene.text
 	globals.ClearContainer($VBoxContainer)
 	if scene.has("common_effects"):
@@ -31,6 +33,8 @@ func open(scene):
 			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
 		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':
 			newbutton.connect("pressed", input_handler.scene_character, 'use_social_skill', [i.code, input_handler.target_character])
+		elif scene.tags.has("custom_effect"):
+			newbutton.connect('pressed', globals.custom_effects, i.code)
 		else:
 			newbutton.connect("pressed", self, i.code)
 		if i.has('disabled') && i.disabled == true:

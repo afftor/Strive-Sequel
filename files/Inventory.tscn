@@ -331,7 +331,6 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 657.0
 margin_top = 70.0

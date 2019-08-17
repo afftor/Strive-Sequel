@@ -1435,5 +1435,31 @@ var TranslationDict = {
 	SCENEDAISY_CONFESS_EVENT_OPTION2 = "Refuse her",
 	SCENEDAISY_CONFESS_ACCEPT_TEXT = "- N..No way! You feel the same?! I can't believe it...\n\nYou seal your lips with Daisy and she gives in into your embrace.\n\nThis night she's hoping to spend with you.",
 	SCENEDAISY_CONFESS_REFUSE_TEXT = "You politely refuse Daisy's proposal.\n\n- I see... But if that's too much for you, I could be your... night servant.\n\nIt seems Daisy still has some leftover hope to eventually win you over. ",
+	
+	ITEMHAIRDYE = "Hair Dye",
+	ITEMHAIRDYEDESCRIPT = "Allow to change person's hair color.",
+	
+	ITEMMINORUS_POTION = "Minorus Potion",
+	ITEMMINORUS_POTIONDESCRIPT = "A special potion, which can be used to reduce person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
+	ITEMMAJORUS_POTION = "Majorus Potion",
+	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to expand person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
+	
+	DIALOGUEEVENTMINORUSSELECT = "Select which body part of [name] should be reduced.",
+	DIALOGUEEVENTMAJORUSSELECT = "Select which body part of [name] should be expanded.",
+	DIALOGUEPOTIONNOEFFECT = "Unfortunately, this potion was entirely uneffective.",
+	
+	DIALOGUEMINORUSPOTTITS = "After [name]'s breasts has been applied with Minorus Potion, they reduced in size.",
+	DIALOGUEMINORUSPOTASS = "After [name]'s butt has been applied with Minorus Potion, it reduced in size.",
+	DIALOGUEMINORUSPOTPENIS = "After [name]'s penis has been applied with Minorus Potion, it reduced in size.",
+	DIALOGUEMINORUSPOTBALLS = "After [name]'s balls has been applied with Minorus Potion, it reduced in size.",
+	DIALOGUEMAJORUSPOTTITS = "After [name]'s breasts has been applied with Majorus Potion, they increased in size.",
+	DIALOGUEMAJORUSPOTASS = "After [name]'s butt has been applied with Majorus Potion, it increased in size.",
+	DIALOGUEMAJORUSPOTPENIS = "After [name]'s penis has been applied with Majorus Potion, it increased in size.",
+	DIALOGUEMAJORUSPOTBALLS = "After [name]'s balls has been applied with Majorus Potion, it increased in size.",
+	
+	DIALOGUETITSSELECT = "Breasts",
+	DIALOGUEASSSELECT = "Rear",
+	DIALOGUEBALLSSELECT = "Balls",
+	DIALOGUEPENISSELECT = "Penis",
 }
 
