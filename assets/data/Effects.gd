@@ -1168,7 +1168,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				X = 75, #X from item description
-				args = [{obj = 'parent_args', index = 0}, {obj = 'template', param = 'X'}],
+				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 2, value = [['parent_args', 0],'*',['parent_args',1]]} 
 				],
@@ -1197,7 +1197,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				X = 75, #X from item description
-				args = [{obj = 'parent_args', index = 0}, {obj = 'template', param = 'X'}],
+				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 3, value = [['parent_args', 0],'*',['parent_args',1]]} 
 				],

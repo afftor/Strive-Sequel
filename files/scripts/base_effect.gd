@@ -106,15 +106,26 @@ func get_applied_obj():
 		applied_char = state.combatparty[applied_pos] #to change after final version of parties storing in state
 	return characters_pool.get_char_by_id(applied_char)
 
+#func createfromtemplate(buff_t):
+#	if typeof(buff_t) == TYPE_STRING:
+#		template = Effectdata.effect_table[buff_t]
+#	else:
+#		template = buff_t.duplicate()
+#	if template.has('tags'):
+#		tags = template.tags.duplicate()
 func createfromtemplate(buff_t):
-	if typeof(buff_t) == TYPE_STRING:
-		template = Effectdata.effect_table[buff_t]
-	else:
-		template = buff_t.duplicate()
-	if template.has('tags'):
-		tags = template.tags.duplicate()
-
-
+    if typeof(buff_t) == TYPE_STRING:
+        template = Effectdata.effect_table[buff_t].duplicate()
+    else:
+        template = buff_t.duplicate()
+    if template.has('tags'):
+        tags = template.tags.duplicate()
+    if !template.has('sub_effects'):
+        template['sub_effects'] = []
+    if !template.has('buffs'):
+        template['buffs'] = []
+    if !template.has('atomic'):
+        template['atomic'] = []
 
 func calculate_args():
 	args.clear()
