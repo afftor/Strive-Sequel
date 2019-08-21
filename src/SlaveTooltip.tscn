@@ -1,16 +1,24 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/SlaveTooltip.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=1]
+[ext_resource path="res://src/SlaveTooltip.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/slavepanel/statbar.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/slavepanel/hp_bar.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/slavepanel/en_bar.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/slavepanel/mp_bar.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/slavepanel/lust_bar.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/obedience2.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/fear2.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/panels/sex.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/iconsskills/Reward_with_sex 3.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 224, 215 )
+margin_left = 62.7569
+margin_right = 61.2495
+margin_top = 61.2495
+margin_bottom = 61.2495
 
 [node name="SlaveTooltip" type="Panel"]
 anchor_right = 1.0
@@ -20,15 +28,15 @@ margin_top = 13.0
 margin_right = -1339.0
 margin_bottom = -584.0
 mouse_filter = 2
-script = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
 
 [node name="icon" type="TextureRect" parent="."]
-margin_left = 22.6101
-margin_top = 40.6982
-margin_right = 222.61
-margin_bottom = 240.698
+margin_left = 29.2583
+margin_top = 36.2661
+margin_right = 229.258
+margin_bottom = 236.266
 mouse_filter = 2
-texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
 

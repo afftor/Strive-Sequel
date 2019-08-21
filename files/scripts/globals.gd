@@ -307,6 +307,24 @@ var statdata = {
 		descript = '',
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
+	armorpenetration = {
+		code = 'armorpenetration',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	critchance = {
+		code = 'critchance',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	critmod = {
+		code = 'critmod',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 	
 	physics_bonus = {
 		code = 'physics_bonus',
@@ -449,12 +467,18 @@ var userfolder = 'user://'
 var scenes = {}
 
 var hexcolordict = {
-	red = '#ff0000',
+	red = '#ff5e5e',
 	yellow = "#ffff00",
 	brown = "#8B572A",
 	gray = "#4B4B4B",
 	green = '#00b700',
 	white = '#ffffff',
+	factor1 = '#ff5e5e',
+	factor2 = '#f6922a',
+	factor3 = '#4dff83',
+	factor4 = '#13a40d',
+	factor5 = '#25b8ff',
+	factor6 = '#bc53ff',
 }
 var textcodedict = {
 	color = {start = '[color=', end = '[/color]'},
@@ -475,6 +499,8 @@ var globalsettings = {
 	fullscreen = true,
 	window_size = Vector2(1366,768),
 	window_pos = Vector2(0,0),
+	
+	factors_as_words = true,
 	
 	textspeed = 60,
 	skipread = false,

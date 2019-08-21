@@ -434,7 +434,16 @@ func itemshadeimage(node, item):
 
 
 #Enlarge/fade out animation
-
+func OpenAnimation(node):
+	if BeingAnimated.has(node) == true:
+		return
+	BeingAnimated.append(node)
+	node.visible = true
+	var tweennode = GetTweenNode(node)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.start()
+	yield(get_tree().create_timer(0.15), 'timeout')
+	BeingAnimated.erase(node)
 
 func CloseAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -442,15 +451,12 @@ func CloseAnimation(node):
 	BeingAnimated.append(node)
 	var tweennode = GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweennode.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(0.7,0.6), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tweennode.start()
-	yield(get_tree().create_timer(0.3), 'timeout')
+	yield(get_tree().create_timer(0.15), 'timeout')
 	node.visible = false
 	BeingAnimated.erase(node)
-	#globals.hidetooltip()
-	#globals.call_deferred('EventCheck');
 
-func OpenAnimation(node):
+func OldOpenAnimation(node):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
@@ -461,7 +467,19 @@ func OpenAnimation(node):
 	tweennode.start()
 	yield(get_tree().create_timer(0.3), 'timeout')
 	BeingAnimated.erase(node)
-	#globals.call_deferred('EventCheck');
+
+func OldCloseAnimation(node):
+	if BeingAnimated.has(node) == true:
+		return
+	BeingAnimated.append(node)
+	var tweennode = GetTweenNode(node)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(0.7,0.6), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.start()
+	yield(get_tree().create_timer(0.3), 'timeout')
+	node.visible = false
+	BeingAnimated.erase(node)
+
 
 func FadeAnimation(node, time = 0.3, delay = 0):
 	var tweennode = GetTweenNode(node)

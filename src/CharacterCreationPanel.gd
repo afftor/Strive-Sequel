@@ -19,6 +19,8 @@ var sexbodypartsarray = ['penis_size', 'penis_type', 'balls_size','tits_size', '
 
 var selected_class = ''
 
+var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
+
 func _ready():
 	globals.AddPanelOpenCloseAnimation($RaceSelection)
 	for i in agearray:
@@ -154,6 +156,7 @@ func open(type = 'slave'):
 	preservedsettings.clear()
 	show()
 	
+	$introduction.bbcode_text = introduction_text[type]
 	selected_class = ''
 	
 	person = Slave.new()
@@ -290,8 +293,11 @@ func RebuildStatsContainer():
 			array.append(i)
 			if preservedsettings.has(i.code) == false:
 				preservedsettings[i.code] = 1
+			else:
+				person[i.code] = preservedsettings[i.code]
 			if i.code in ['growth_factor','brave_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
+			
 	
 	var counter = total_stat_points
 	
@@ -470,9 +476,11 @@ func finish_character():
 	apply_preserved_settings()
 	state.add_slave(person)
 	person.unlock_class(selected_class)
-	input_handler.emit_signal("CharacterCreated")
 	person.food_consumption = 3
+	person.hp = person.get_stat('hpmax')
+	person.mp = person.get_stat('mpmax')
 	self.hide()
+	input_handler.emit_signal("CharacterCreated")
 
 func open_sex_traits():
 	$TraitSelection.show()

@@ -432,14 +432,24 @@ class member:
 				check = check and valuecheck(i, group, scene)
 		return check
 	
-	func valuecheck(dict, group, scene):#effect_exists action_tag action_effect_tag
+	func valuecheck(dict, group, scene):
 		match dict.code:
 			'effect_exists':
 				return effects.has(dict.value)
 			'action_tag':
 				return scene.scene.get(group+'tags').has(dict.value)
 			'partner_check':
-				return false
+				var partners 
+				if scene.givers.has(self):
+					partners = scene.takers
+				else:
+					partners = scene.givers
+				var check = false
+				for i in partners:
+					if i.person.checkreqs(dict.value) == true:
+						check = true
+						break
+				return check
 	
 
 func dog():
@@ -562,7 +572,7 @@ func createtestdummy(type = 'normal'):
 	newmember.name = person.get_short_name()
 	newmember.lewd = 100
 	newmember.number = dummycounter
-	newmember.sex_traits = ['skilled_petting']
+	newmember.sex_traits = ['skilled_petting','likes_beasts']
 	dummycounter += 1
 	
 #	if person.consent == false && person.professions.has("master"):
@@ -860,9 +870,9 @@ func generaterequest(member):
 	
 	if member.person.vaginal_virgin == true:
 		rval.erase('fuck')
-	if member.person.penis_size == 'none':
+	if member.person.penis_size == '':
 		rval.erase('penis')
-	if member.person.penis_size == 'none' && member.strapon == false:
+	if member.person.penis_size == '' && member.strapon == false:
 		rval.erase('fuckgive')
 	if member.person.vagina == 'none':
 		rval.erase('pussy')
@@ -1865,6 +1875,7 @@ func endencounter():
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
 		
 		text += "; Lust gained: " +  str(20 + i.orgasms*5*i.person.sexuals_factor)
+		i.person.sexuals += i.orgasms
 		if i.orgasms > 0:
 			var effect = 'satisfaction_1'
 			if i.orgasms >= 3:

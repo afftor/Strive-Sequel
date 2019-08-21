@@ -1,24 +1,37 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/CraftPanel.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/buildings/upgrade_house.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/buildings/upgrade_farm.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/buildings/upgrade_lumbermill.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/buildings/upgrade_forge2.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/iconsitems/ElvenWood.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/panels/itemactive2.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=10]
-[ext_resource path="res://assets/textures/solid_panel.tres" type="StyleBox" id=11]
-[ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/taskmenu/workerpanel.png" type="Texture" id=18]
-[ext_resource path="res://MainFont.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/images/gui/craftgui/Group 3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/craftgui/cooking_p.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/craftgui/tailor.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/craftgui/tailor_p.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/craftgui/alchemy.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/craftgui/Group 3 copy 2.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/craftgui/smithing.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/craftgui/smithing_p.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/iconsitems/ElvenWood.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/panels/itemactive2.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/solid_panel.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/slavepanel/text_panel.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=23]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=24]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 716, 512 )
+margin_left = 70.9508
+margin_right = 71.2509
+margin_top = 59.0
+margin_bottom = 60.9508
 
 [node name="CraftPanel" type="Panel"]
 margin_left = 187.0
@@ -29,73 +42,41 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="categories" type="HBoxContainer" parent="."]
-margin_left = 157.0
-margin_top = 44.0
-margin_right = 1369.0
-margin_bottom = 244.0
+margin_left = 427.0
+margin_top = 32.0
+margin_right = 1174.0
+margin_bottom = 218.0
 
 [node name="cooking" type="TextureButton" parent="categories"]
-margin_right = 300.0
-margin_bottom = 200.0
+margin_right = 186.0
+margin_bottom = 186.0
+toggle_mode = true
 texture_normal = ExtResource( 3 )
-
-[node name="Label" type="Label" parent="categories/cooking"]
-margin_left = 17.0
-margin_top = 165.0
-margin_right = 268.0
-margin_bottom = 189.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Cooking"
-align = 1
+texture_pressed = ExtResource( 4 )
 
 [node name="tailor" type="TextureButton" parent="categories"]
-margin_left = 304.0
-margin_right = 604.0
-margin_bottom = 200.0
-texture_normal = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="categories/tailor"]
-margin_left = 17.0
-margin_top = 165.0
-margin_right = 268.0
-margin_bottom = 189.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Tailor"
-align = 1
+margin_left = 190.0
+margin_right = 376.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
 
 [node name="alchemy" type="TextureButton" parent="categories"]
-margin_left = 608.0
-margin_right = 908.0
-margin_bottom = 200.0
-texture_normal = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="categories/alchemy"]
-margin_left = 17.0
-margin_top = 165.0
-margin_right = 268.0
-margin_bottom = 189.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Alchemy"
-align = 1
+margin_left = 380.0
+margin_right = 566.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 
 [node name="smith" type="TextureButton" parent="categories"]
-margin_left = 912.0
-margin_right = 1212.0
-margin_bottom = 200.0
-texture_normal = ExtResource( 6 )
-
-[node name="Label" type="Label" parent="categories/smith"]
-margin_left = 17.0
-margin_top = 165.0
-margin_right = 268.0
-margin_bottom = 189.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Smith"
-align = 1
+margin_left = 570.0
+margin_right = 756.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
 
 [node name="CraftSelect" type="ScrollContainer" parent="."]
 margin_left = 105.0
@@ -119,7 +100,7 @@ expand = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 expand = true
 
 [node name="Label" type="Label" parent="CraftSelect/VBoxContainer/Button"]
@@ -142,7 +123,7 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-texture = ExtResource( 8 )
+texture = ExtResource( 12 )
 expand = true
 
 [node name="Label" type="Label" parent="CraftSelect/VBoxContainer/Button/HBoxContainer/Button"]
@@ -177,14 +158,14 @@ visible = false
 margin_right = 419.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 9 )
+texture_normal = ExtResource( 13 )
 expand = true
 
 [node name="icon" type="TextureRect" parent="CraftScheldue/VBoxContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
 expand = true
 
 [node name="Label" type="Label" parent="CraftScheldue/VBoxContainer/Button"]
@@ -223,7 +204,7 @@ margin_left = 225.032
 margin_top = 48.9353
 margin_right = 1379.03
 margin_bottom = 259.935
-custom_styles/panel = ExtResource( 11 )
+custom_styles/panel = ExtResource( 15 )
 
 [node name="MaterialSetupPanel" type="Panel" parent="NumberSelect"]
 visible = false
@@ -231,7 +212,6 @@ margin_left = 53.0
 margin_top = 216.0
 margin_right = 1082.0
 margin_bottom = 875.0
-custom_styles/panel = ExtResource( 11 )
 
 [node name="Part1Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
 margin_left = 205.0
@@ -256,7 +236,7 @@ margin_left = 715.0
 margin_top = 28.0
 margin_right = 841.0
 margin_bottom = 163.0
-texture = ExtResource( 12 )
+texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
 
@@ -281,7 +261,7 @@ align = 1
 show_behind_parent = true
 margin_right = 121.0
 margin_bottom = 117.0
-texture = ExtResource( 13 )
+texture = ExtResource( 17 )
 stretch_mode = 4
 
 [node name="Part2" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
@@ -305,7 +285,7 @@ align = 1
 show_behind_parent = true
 margin_right = 121.0
 margin_bottom = 117.0
-texture = ExtResource( 13 )
+texture = ExtResource( 17 )
 stretch_mode = 4
 
 [node name="Part3" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
@@ -329,7 +309,7 @@ align = 1
 show_behind_parent = true
 margin_right = 121.0
 margin_bottom = 117.0
-texture = ExtResource( 13 )
+texture = ExtResource( 17 )
 stretch_mode = 4
 
 [node name="CreateItem" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
@@ -339,10 +319,10 @@ margin_left = 463.0
 margin_top = 672.0
 margin_right = 601.0
 margin_bottom = 740.0
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
-texture_disabled = ExtResource( 17 )
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
+texture_disabled = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="NumberSelect/MaterialSetupPanel/CreateItem"]
 margin_left = 14.0
@@ -375,10 +355,11 @@ margin_bottom = 165.015
 text = "Confirm"
 
 [node name="HSlider" type="HSlider" parent="NumberSelect"]
-margin_left = 385.316
-margin_top = 74.3013
-margin_right = 813.316
-margin_bottom = 90.3013
+margin_left = 286.339
+margin_top = 69.7233
+margin_right = 901.339
+margin_bottom = 94.7233
+theme = ExtResource( 1 )
 min_value = 1.0
 value = 1.0
 ticks_on_borders = true
@@ -390,12 +371,13 @@ margin_right = 847.356
 margin_bottom = 67.5544
 text = "Repeat: 1 time"
 
-[node name="MaterialSelect" type="TextureRect" parent="NumberSelect"]
-editor/display_folded = true
+[node name="MaterialSelect" type="Panel" parent="NumberSelect"]
 visible = false
-margin_right = 649.0
-margin_bottom = 788.0
-texture = ExtResource( 18 )
+margin_left = 250.0
+margin_top = 20.0
+margin_right = 899.0
+margin_bottom = 808.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="Container" type="ScrollContainer" parent="NumberSelect/MaterialSelect"]
 margin_left = 38.0
@@ -416,6 +398,7 @@ expand = true
 [node name="Icon" type="TextureRect" parent="NumberSelect/MaterialSelect/Container/VBoxContainer/Button"]
 margin_right = 128.0
 margin_bottom = 128.0
+texture = ExtResource( 23 )
 expand = true
 stretch_mode = 6
 
@@ -424,7 +407,7 @@ margin_left = 88.0
 margin_top = 100.0
 margin_right = 120.0
 margin_bottom = 124.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 24 )
 text = "5"
 align = 2
 
@@ -433,7 +416,6 @@ margin_left = 164.0
 margin_top = 30.0
 margin_right = 512.0
 margin_bottom = 97.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Material"
 align = 1
 valign = 1

@@ -39,7 +39,7 @@ func showup(node, person):
 		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
 		get_node("VBoxContainer/"+ i ).value = person.get_stat(i)
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
-	
+	text = ''
 	if person.is_players_character == true:
 		if person.work != '':
 			text = "Occupation: " + races.tasklist[person.work].name
@@ -61,6 +61,7 @@ func showup(node, person):
 		var newbutton = globals.DuplicateContainerTemplate($Sextraits)
 		newbutton.text = trait.name
 	
+	$VBoxContainer.visible = person.is_players_character
 	if person.professions.has('master') || person.is_players_character == false:
 		if person.is_players_character == false:
 			$VBoxContainer/lust.hide()
@@ -71,6 +72,26 @@ func showup(node, person):
 		$VBoxContainer/fear.show()
 		$VBoxContainer/obedience.show()
 	
+	
+	if $VBoxContainer/obedience.visible:
+		if person.obedience > 50:
+			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+		elif person.obedience > person.brave_factor*7:
+			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+		else:
+			if person.check_escape_chance() == true:
+				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+			else:
+				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+		if person.fear > 50:
+			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+		elif person.fear > person.brave_factor*7:
+			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+		else:
+			if person.check_escape_chance() == true:
+				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+			else:
+				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
 	
 	globals.ClearContainer($buffs)
 	

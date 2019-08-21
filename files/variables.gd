@@ -121,7 +121,7 @@ var instant_travel = false
 var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
-var unlock_all_upgrades = true
+var unlock_all_upgrades = false
 var invincible_player = true
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
@@ -149,6 +149,13 @@ var slave_classes_per_difficulty = {
 	8 : [6, 10],
 	9 : [6, 10],
 	10 : [6, 10],
+}
+
+var starting_resources = {
+	meat = 25,
+	fish = 25,
+	bread = 25,
+	vegetables = 25,
 }
 
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']

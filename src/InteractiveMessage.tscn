@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/images/panel.png" type="Texture" id=1]
-[ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=6]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/panel.png" type="Texture" id=2]
+[ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/scene/answer_blocked.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 500, 500 )
 margin_left = 71.7497
 margin_right = 64.5747
@@ -18,27 +20,27 @@ margin_bottom = 64.5747
 [node name="InteractiveMessage" type="Panel" groups=[
 "pauseprocess",
 ]]
-visible = false
 margin_left = 644.0
 margin_top = 395.0
 margin_right = 1428.0
 margin_bottom = 1051.0
+theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = 3.34027
 margin_top = -378.644
 margin_right = 788.34
 margin_bottom = 2.35614
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 10.0
 margin_top = -368.0
 margin_right = 784.0
 margin_bottom = -9.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
@@ -48,21 +50,25 @@ margin_top = 22.0
 margin_right = 733.0
 margin_bottom = 383.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 59.1584
-margin_top = 414.803
-margin_right = 731.158
-margin_bottom = 603.803
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 63.0
+margin_top = 399.0
+margin_right = 734.0
+margin_bottom = 606.0
+scroll_horizontal_enabled = false
 
-[node name="Button" type="TextureButton" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 672.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 6 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 7 )
+texture_disabled = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="VBoxContainer/Button"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 1.10803
 margin_top = 6.3241
 margin_right = 670.108

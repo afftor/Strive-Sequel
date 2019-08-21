@@ -31,6 +31,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 29.4929
 margin_top = 95.0175
 margin_right = 477.493
@@ -138,6 +139,10 @@ text = "ver. 0.1.0"
 
 [node name="WarnScreen" parent="." instance=ExtResource( 18 )]
 visible = false
+margin_left = 3.01477
+margin_top = 9.04404
+margin_right = 1923.01
+margin_bottom = 1089.04
 
 [node name="DemoPanel" type="Panel" parent="."]
 visible = false

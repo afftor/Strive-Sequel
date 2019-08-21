@@ -46,7 +46,11 @@ func update():
 		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(i)
+		if newbutton.get_node('obed').texture == obed_textures.low && i.check_escape_chance() == false:
+			newbutton.get_node("obed").texture = null
 		newbutton.get_node("fear").texture = get_fear_texture(i)
+		if newbutton.get_node('fear').texture == fear_textures.low && i.check_escape_chance() == false:
+			newbutton.get_node("fear").texture = null
 		newbutton.get_node("state").texture = get_state_texture(i)
 		newbutton.get_node("obed/Label").text = str(round(i.obedience))
 		newbutton.get_node("fear/Label").text = str(round(i.fear))
@@ -76,7 +80,7 @@ func get_obed_texture(tempchar):
 	var rval 
 	if tempchar.obedience >= 50:
 		rval = 'high'
-	elif tempchar.obedience + tempchar.loyal/2 < tempchar.brave_factor*8:
+	elif tempchar.obedience < tempchar.brave_factor*7:
 		rval = 'low'
 	else:
 		rval = 'med'
@@ -86,7 +90,7 @@ func get_fear_texture(tempchar):
 	var rval
 	if tempchar.fear >= 50:
 		rval = 'high'
-	elif tempchar.fear + tempchar.loyal/2 < tempchar.brave_factor*8:
+	elif tempchar.fear < tempchar.brave_factor*7:
 		rval = 'low'
 	else:
 		rval = 'med'

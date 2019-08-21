@@ -229,7 +229,7 @@ var Skilllist = {
 		name = '',
 		descript = '',
 		type = 'social',
-		ability_type = 'skill',
+		ability_type = 'spell',
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
 		custom_duration = ['caster.charm','*0.35','+48'],
@@ -251,7 +251,7 @@ var Skilllist = {
 		name = '',
 		descript = '',
 		type = 'social',
-		ability_type = 'skill',
+		ability_type = 'spell',
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
 		custom_duration = ['caster.charm','*0.4','+48'],
@@ -273,7 +273,7 @@ var Skilllist = {
 		name = '',
 		descript = '',
 		type = 'social',
-		ability_type = 'skill',
+		ability_type = 'spell',
 		reqs = [],
 		targetreqs = [],
 		effects = [],
@@ -295,7 +295,7 @@ var Skilllist = {
 		name = '',
 		descript = '',
 		type = 'social',
-		ability_type = 'skill',
+		ability_type = 'spell',
 		reqs = [],
 		targetreqs = [],
 		effects = [],
@@ -326,6 +326,8 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Serve.png"),
 		tags = ['discipline'],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
 		value = [['20'],['caster.charm','*0.2','+30'],['-10'],['-10']],
 		damagestat = ['lust','obedience','fatigue','exhaustion'],
 		receiver = ['caster','target','target','target']
@@ -650,7 +652,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_refine'})], 
 		manacost = 0,
-		energycost = 20,
+		energycost = 0,
 		charges = 3,
 		combatcooldown = 0,
 		cooldown = 1,
@@ -2042,12 +2044,6 @@ var effects = {
 		visible = true,
 	},
 	
-	
-	#starvation = {#energy recovery -50%, +20 exhaustion: happens when no food eaten
-	
-	#loved_food_consumed - +10% productivity, +5 physics/wit/charm/sex bonuses for 1 day
-	
-	#hated_food_combined = {#-10% productivity, -15 fatigue for 1 day
 	
 	#Trait: Small - given to short races: goblins, gnomes, fairies. physical tasks -25%, melee damage -20%, evasion +25
 	

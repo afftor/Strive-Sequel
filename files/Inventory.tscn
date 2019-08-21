@@ -99,6 +99,7 @@ margin_right = 488.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+editor/display_folded = true
 visible = false
 margin_right = 488.0
 margin_bottom = 50.0
@@ -147,6 +148,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0000"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 50.1578
 margin_top = 171.947
 margin_right = 606.158
@@ -331,7 +333,6 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
-visible = false
 margin_left = 657.0
 margin_top = 70.0
 margin_right = 1313.0
@@ -344,10 +345,11 @@ texture = ExtResource( 37 )
 stretch_mode = 7
 
 [node name="chest" type="TextureButton" parent="GearPanel"]
-margin_left = 327.0
-margin_top = 343.0
-margin_right = 427.0
-margin_bottom = 443.0
+editor/display_folded = true
+margin_left = 267.0
+margin_top = 338.0
+margin_right = 367.0
+margin_bottom = 438.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -356,18 +358,20 @@ expand = true
 
 [node name="icon" type="TextureRect" parent="GearPanel/chest"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = -0.546295
+margin_right = 100.0
+margin_bottom = 99.4537
 rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 41 )
 expand = true
 stretch_mode = 6
 
 [node name="underwear" type="TextureButton" parent="GearPanel"]
-margin_left = 207.0
-margin_top = 343.0
-margin_right = 307.0
-margin_bottom = 443.0
+editor/display_folded = true
+margin_left = 267.0
+margin_top = 523.0
+margin_right = 367.0
+margin_bottom = 623.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -384,6 +388,7 @@ expand = true
 stretch_mode = 6
 
 [node name="legs" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 267.0
 margin_top = 773.0
 margin_right = 367.0
@@ -405,6 +410,7 @@ expand = true
 stretch_mode = 6
 
 [node name="hands" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 27.0
 margin_top = 353.0
 margin_right = 127.0
@@ -425,6 +431,7 @@ expand = true
 stretch_mode = 6
 
 [node name="rhand" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 27.0
 margin_top = 473.0
 margin_right = 127.0
@@ -445,6 +452,7 @@ expand = true
 stretch_mode = 6
 
 [node name="lhand" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 527.0
 margin_top = 473.0
 margin_right = 627.0
@@ -465,6 +473,7 @@ expand = true
 stretch_mode = 6
 
 [node name="neck" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 267.0
 margin_top = 223.0
 margin_right = 367.0
@@ -485,6 +494,7 @@ expand = true
 stretch_mode = 6
 
 [node name="head" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 267.0
 margin_top = 43.0
 margin_right = 367.0
@@ -505,10 +515,11 @@ expand = true
 stretch_mode = 6
 
 [node name="ass" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 327.0
-margin_top = 593.0
+margin_top = 633.0
 margin_right = 427.0
-margin_bottom = 693.0
+margin_bottom = 733.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -525,10 +536,11 @@ expand = true
 stretch_mode = 6
 
 [node name="crotch" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 217.0
-margin_top = 593.0
+margin_top = 633.0
 margin_right = 317.0
-margin_bottom = 693.0
+margin_bottom = 733.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )

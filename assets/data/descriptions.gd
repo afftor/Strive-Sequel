@@ -464,6 +464,15 @@ var bodypartsdata = {
 	}
 }
 
+var factor_descripts = {
+	1:'Terrible',
+	2:"Poor",
+	3:"Average",
+	4:"Good",
+	5:"Great",
+	6:"Excellent"
+}
+
 func get_class_details(newperson, classdata, showreqs = true, showskills = false):
 	var text = ''
 	person = newperson

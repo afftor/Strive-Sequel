@@ -30,8 +30,9 @@ func _ready():
 	$MenuButton.connect("pressed", $MenuPanel, "open")
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	
-	
-	#state.money = 500
+	globals.connecttexttooltip($gold/TextureRect, tr("TOOLTIPGOLD"))
+	globals.connecttexttooltip($food/TextureRect, tr("TOOLTIPFOOD"))
+
 	state.log_node = $Log
 	
 	state.connect("task_added", self, 'build_task_bar')
@@ -70,17 +71,14 @@ func _ready():
 		character.obedience = 100
 		character.lust = 50
 		character.base_exp += 500
+		#character.exhaustion = 1000
 		character.get_trait('core_trait')
 		character.unlock_class("succubus")
 		character.is_players_character = true
 		
-#		character = Slave.new()
-#		character.generate_predescribed_character(world_gen.pregen_characters.Daisy)
-#		characters_pool.move_to_state(character.id)
-#		character.get_trait('core_trait')
-#		character.is_players_character = true
-		
-		state.materials.meat = 100
+		#state.revert()
+		for i in Items.materiallist:
+			state.materials[i] = 100
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
@@ -101,6 +99,7 @@ func _ready():
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
+		input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
 	
 	build_task_bar()
 	$SlaveList.rebuild()
@@ -113,7 +112,8 @@ func _process(delta):
 		return
 	$TimeNode/HidePanel.visible = gamepaused_nonplayer
 	$gold.text = str(state.money)
-	
+	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
+	$population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
 	#buildscreen()
 	update_task_bar()
 	

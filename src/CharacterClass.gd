@@ -55,8 +55,8 @@ var lust_mods = []
 var bonuses = {}
 var counters = []
 
-var obedience = 0.0 setget obed_set, obed_get
-var fear = 0.0 setget fear_set, fear_get
+var obedience = 100.0 setget obed_set, obed_get
+var fear = 100.0 setget fear_set, fear_get
 var lust = 0.0 setget lust_set, lust_get
 var loyal = 0.0
 var lustmax = 50
@@ -529,8 +529,6 @@ func create(temp_race, temp_gender, temp_age):
 			if globals.descriptions.bodypartsdata[i][get(i)].bodychanges.size() > 0:
 				apply_custom_bodychange(i, get(i))
 	
-	hp = get_stat('hpmax')
-	mp = get_stat('mpmax')
 	
 	#setting food filter
 	for i in Items.materiallist.values():
@@ -546,6 +544,9 @@ func create(temp_race, temp_gender, temp_age):
 						break
 				if check == false:
 					food_filter.med.append(i.code)
+	
+	hp = get_stat('hpmax')
+	mp = get_stat('mpmax')
 
 func apply_custom_bodychange(target, part):
 	set(target, part)
@@ -638,6 +639,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = professions.has(i.value) == i.check
 			'race_is_beast':
 				check = races.racelist[race].tags.has('beast') == i.value
+			'is_shortstack':
+				check = height in ['tiny','petite']
 			'gear_equiped':
 				if ignore_npc_stats_gear == false:
 					check = check_gear_equipped(i.value)
@@ -809,7 +812,10 @@ func decipher_reqs(reqs, colorcode = false):
 			continue
 		match i.code:
 			'stat':
-				text += globals.statdata[i.type].name + ': ' + str(i.value) + " "
+				if i.type.find("factor") > 0:
+					text += globals.statdata[i.type].name + ': ' + globals.descriptions.factor_descripts[i.value] + " "
+				else:
+					text += globals.statdata[i.type].name + ': ' + str(i.value) + " "
 				match i.operant:
 					'gte':
 						text += "or higher"
@@ -1462,7 +1468,7 @@ func get_icon():
 		return load(icon_image)
 
 func get_body_image():
-	if ResourcePreloader.new().has_resource(body_image) == null:
+	if ResourcePreloader.new().has_resource(body_image) == false && body_image != 'default':
 		return globals.loadimage(body_image)
 	else:
 		if body_image == 'default':
@@ -1525,6 +1531,8 @@ func apply_atomic(template):
 			get_trait(template.trait)
 		'add_sex_trait':
 			sex_traits.push_back(template.trait)
+			var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[template.trait].name
+			state.text_log_add('char', text)
 		'event':
 			process_event(template.value)
 		'resurrect':
@@ -1539,7 +1547,7 @@ func apply_atomic(template):
 		'add_counter':
 			if counters.size() <= template.index + 1:
 				counters.resize(template.index + 1)
-				counters[template.index] = template.value
+			if counters[template.index] == null:counters[template.index] = template.value
 			else:
 				counters[template.index] += template.value
 		'add_soc_skill':

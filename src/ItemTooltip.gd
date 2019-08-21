@@ -71,26 +71,25 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	self.set_global_position(pos)
 	
-	$RichTextLabel.rect_size.y = 240
-	rect_size.y = 300
-	#$RichTextLabel.bbcode_text = 
+	$RichTextLabel.rect_size.y = 125
+	rect_size.y = 250
 	
 	yield(get_tree(), 'idle_frame')
 	
-	rect_size.y = max(250, $RichTextLabel.get_v_scroll().get_max() + 60)
-	$RichTextLabel.rect_size.y = rect_size.y - 20
+	rect_size.y = max(250, $RichTextLabel.get_v_scroll().get_max() + 220)
+	$RichTextLabel.rect_size.y = rect_size.y - 100
 	
 	
 	if get_rect().end.x > screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y > screen.size.y:
-		rect_global_position.y -= get_rect().end.y - screen.size.y
+		rect_global_position.y = node.get_global_rect().position.y - rect_size.y
 	
 	set_process(true)
 
 func material_tooltip(data):
 	var item = data.item
-	var text = data.text#'[center]' + item.name + '[/center]\n' + item.descript
+	var text = data.text
 	if state.materials.has(data.item) && state.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(state.materials[data.item])
 	iconnode.texture = item.icon

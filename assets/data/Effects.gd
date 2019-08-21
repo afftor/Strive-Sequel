@@ -1032,7 +1032,7 @@ var effect_table = {
 	},
 	e_i_shackles = {
 		type = 'c_static',
-		descript = '',
+		descript = 'Prevents escape if Physics Factor less than 4',
 		conditions = [{type = 'stats', name = 'physics_factor', operant = 'lt', value = 4}],
 		tags = ['recheck_stats', 'recheck_item'],
 		no_escape = true,
@@ -1107,7 +1107,7 @@ var effect_table = {
 		type = 'c_static',
 		conditions = [{type = 'trait', value = 'anal'}],
 		tags = ['recheck_trait', 'recheck_item'],
-		descript = '',
+		descript = 'If wearer has "Likes Anal" trait: Lust growth + 15%.',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
 		buffs = [],
 		sub_effects = [],
@@ -1129,18 +1129,18 @@ var effect_table = {
 			}
 		]
 	},
-	e_i_counter1 = {
+	e_handcuffs_effect = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
-		descript = '',
+		descript = 'Prolonged wearing might cause wearer to become Submissive.',
 		req_skill = false,
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
 				index = 1,
-				value = 75,# X from item description
+				value = 8,# X from item description
 				args = [{obj = 'template', param = 'index'},{obj = 'template', param = 'value'}],
 				atomic = ['a_add_counter_args'],
 			},
@@ -1156,18 +1156,18 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_i_counter2 = {
+	e_anal_trait_counter = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
-		descript = '',
+		descript = 'Prolonged wearing makes wearer more responsive to Anal.',
 		req_skill = false,
-		args = [{obj = 'app_obj', param = 'sex_factor'}],
+		args = [{obj = 'app_obj', param = 'sexuals_factor'}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				X = 75, #X from item description
+				X = 2,
 				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 2, value = [['parent_args', 0],'*',['parent_args',1]]} 
@@ -1178,35 +1178,6 @@ var effect_table = {
 				target = 'owner',
 				conditions = [
 					{type = 'stat_index', name = 'counters', index = 2, operant = 'gte', value = 100},
-					{type = 'not_trait', value = 'anal'},
-				],
-				atomic = [{type = 'add_sex_trait', trait = 'anal'}],
-			},
-		],
-		buffs = []
-	},
-	e_i_counter3 = {
-		type = 'trigger',
-		conditions = [],
-		trigger = [variables.TR_DAY],
-		descript = '',
-		req_skill = false,
-		args = [{obj = 'app_obj', param = 'sex_factor'}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				X = 75, #X from item description
-				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
-				atomic = [
-					{type = 'add_counter', index = 3, value = [['parent_args', 0],'*',['parent_args',1]]} 
-				],
-			},
-			{
-				type = 'oneshot',
-				target = 'owner',
-				conditions = [
-					{type = 'stat_index', name = 'counters', index = 3, operant = 'gte', value = 100},
 					{type = 'not_trait', value = 'anal'},
 				],
 				atomic = [{type = 'add_sex_trait', trait = 'anal'}],
@@ -1225,7 +1196,7 @@ var effect_table = {
 	e_chocker_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.9},{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85}],
-		descript = "Reduces Fear decay by 10%.\n Reduces Obedience decay by 15%.",
+		descript = "Reduces Fear decay by 10%.\nReduces Obedience decay by 15%.",
 		buffs = [],
 		sub_effects = [],
 	},

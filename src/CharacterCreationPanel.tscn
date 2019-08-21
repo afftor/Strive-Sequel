@@ -1,23 +1,24 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/CharacterCreationPanel.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/raceshades/Scylla_F.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=13]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=3]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/raceshades/Scylla_F.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 548, 47 )
 margin_left = 10.0
 margin_right = 10.0
@@ -25,7 +26,7 @@ margin_top = 10.0
 margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 548, 45 )
 margin_left = 10.0
 margin_right = 10.0
@@ -34,7 +35,7 @@ margin_bottom = 10.0
 modulate_color = Color( 0.662745, 0.333333, 0.333333, 1 )
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 548, 45 )
 margin_left = 10.0
 margin_right = 10.0
@@ -49,11 +50,20 @@ margin_bottom = 1025.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
+[node name="introduction" type="RichTextLabel" parent="."]
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 385.0
+margin_bottom = 141.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.886275, 0.745098, 0.0156863, 1 )
+text = "Create your Master Character"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 38.3467
-margin_top = 40.8278
+margin_top = 160.828
 margin_right = 382.347
-margin_bottom = 285.828
+margin_bottom = 726.828
 custom_constants/separation = 6
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -429,9 +439,9 @@ margin_left = 28.0001
 margin_top = 73.0001
 margin_right = 68.0001
 margin_bottom = 113.0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
@@ -440,9 +450,9 @@ margin_left = 28.0001
 margin_top = 143.0
 margin_right = 68.0001
 margin_bottom = 183.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 8 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 
@@ -451,7 +461,7 @@ margin_left = 29.4346
 margin_top = 20.1974
 margin_right = 69.4346
 margin_bottom = 60.1974
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
@@ -507,7 +517,7 @@ margin_left = 418.0
 margin_top = 51.0
 margin_right = 793.0
 margin_bottom = 688.0
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 7
 
 [node name="RichTextLabel" type="RichTextLabel" parent="RaceSelection"]
@@ -678,7 +688,7 @@ margin_left = 4.6731
 margin_top = 5.0
 margin_right = 104.673
 margin_bottom = 105.0
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 

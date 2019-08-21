@@ -61,6 +61,7 @@ func _ready():
 	
 	input_handler.slave_panel_node = self
 	
+	
 	$testbutton.connect('pressed', self, "run_test")
 	
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
@@ -128,7 +129,14 @@ func open(tempperson):
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
 	
 	for i in $factors.get_children():
-		i.get_node("Label").text = str(floor(person.get(i.name)))
+		if i.name == 'base_exp':
+			i.get_node("Label").text = str(floor(person.get(i.name)))
+			continue
+		if globals.globalsettings.factors_as_words:
+			i.get_node("Label").text = globals.descriptions.factor_descripts[int(floor(person.get(i.name)))]
+			i.get_node("Label").set("custom_colors/font_color", globals.hexcolordict['factor'+str(int(floor(person.get(i.name))))]) 
+		else:
+			i.get_node("Label").text = str(floor(person.get(i.name)))
 	for i in $job.get_children():
 		i.text = globals.statdata[i.name].name + ": " + str(floor(person.get(i.name)))
 	for i in $base_stats.get_children():
@@ -148,6 +156,27 @@ func open(tempperson):
 	$base_stats/lust.max_value = person.lustmax
 	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
+	
+	if person.obedience > 50:
+		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+	elif person.obedience > person.brave_factor*7:
+		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+	else:
+		if person.check_escape_chance() == true:
+			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+		else:
+			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+	$obedlabel.set("custom_colors/font_color", $mentality/obedience/Label.get("custom_colors/font_color"))
+	if person.fear > 50:
+		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+	elif person.fear > person.brave_factor*7:
+		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+	else:
+		if person.check_escape_chance() == true:
+			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+		else:
+			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+	$fearlabel.set("custom_colors/font_color", $mentality/fear/Label.get("custom_colors/font_color"))
 	
 	
 	text = globals.statdata.obedience.descript
@@ -194,7 +223,6 @@ func open(tempperson):
 		newnode.text = trait.name
 	
 	
-	
 	for i in person.sex_traits:
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
@@ -213,10 +241,20 @@ func open(tempperson):
 	
 	text = "[center]" + globals.statdata.productivity.name + "[/center]\n" + globals.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity'))) 
 	for i in variables.productivity_mods:
-		text += "\n" + i.replace("mod_", "") + ": " + str(floor(person.get_stat(i)*100))
+		if person.get_stat(i) > 1:
+			text += "\n{color=green|" + str(round(person.get_stat(i)*100)) + " - " + globals.statdata[i].name + "}"
+		elif person.get_stat(i) < 1:
+			text += "\n{color=red|" + str(round(person.get_stat(i)*100)) + " - " + globals.statdata[i].name + "}"
+		else:
+			text += "\n" + str(round(person.get_stat(i)*100)) + " - " + globals.statdata[i].name
+		
 	
-	globals.connecttexttooltip($productivity, text)
+	$masterlabel.visible = person.professions.has('master')
+	$masterlabel.text = person.translate('[master]').capitalize()
 	
+	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
+
+
 
 func make_location_description():
 	var text = ''
@@ -266,6 +304,10 @@ func open_jobs_window():
 	globals.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 	currentjob = null
 	update_hours()
+	var restbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
+	restbutton.text = "Rest"
+	restbutton.connect("pressed", self, 'set_rest')
+	
 	for i in races.tasklist.values():
 		if state.checkreqs(i.reqs) == false:
 			continue
@@ -281,6 +323,7 @@ var currentjob
 func show_job_details(job):
 	currentjob = job
 	$job_panel/job_details.show()
+	globals.ClearContainer($job_panel/job_details/ResourceOptions)
 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 		i.pressed = i.text == job.name
 	var text =  "[center]" + job.name + '[/center]\n' + job.descript + "\n\n" + tr("TASKMAINSTAT") + ": [color=yellow]" + globals.statdata[job.workstat].name + "[/color]"
@@ -292,7 +335,6 @@ func show_job_details(job):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") +"[/color]"
 	
 	$job_panel/job_details/RichTextLabel.bbcode_text = text
-	globals.ClearContainer($job_panel/job_details/ResourceOptions)
 	
 
 	$job_panel/job_details/WorkDetailsPanel.visible = !person.work_simple
@@ -327,6 +369,12 @@ func show_job_details(job):
 			globals.connecttexttooltip(newbutton, i.descript + text)
 			
 		newbutton.connect('pressed', self, 'select_job', [job, i.code])
+
+func set_rest():
+	person.remove_from_task()
+	person.work = ''
+	$job_panel.hide()
+	open(person)
 
 func select_job(job, production):
 	person.assign_to_task(job.code, production)

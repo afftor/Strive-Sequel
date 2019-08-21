@@ -10,6 +10,9 @@ func _ready():
 		newvalue.name = i
 		newlabel.show()
 		newvalue.show()
+	for i in $"base stats".get_children():
+		if globals.statdata.has(i.name.replace("label_","")):
+			globals.connecttexttooltip(i, globals.statdata[i.name.replace("label_", "")].descript)
 
 func open(character):
 	for i in ['hp','mp','energy']:

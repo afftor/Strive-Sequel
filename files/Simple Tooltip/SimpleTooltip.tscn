@@ -4,73 +4,24 @@
 [ext_resource path="res://files/Simple Tooltip/SimpleTooltip.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxTexture" id=1]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 454, 428 )
-margin_left = 0.0
-margin_right = 0.0
 margin_top = 40.0
 margin_bottom = 20.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-_sections_unfolded = [ "Margin", "Modulate", "Resource" ]
 
 [node name="tooltip" type="PopupPanel"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 404.0
 margin_bottom = 108.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 custom_styles/panel = SubResource( 1 )
-popup_exclusive = false
 script = ExtResource( 2 )
-_sections_unfolded = [ "Mouse", "Popup", "Rect", "Visibility", "custom_styles" ]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 18.0
-margin_top = 39.0
-margin_right = 387.0
-margin_bottom = 183.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_top = 40.0
+margin_right = 404.0
+margin_bottom = 88.0
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "Test Text"
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
 text = "Test Text"
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Mouse", "custom_colors", "custom_fonts" ]
-
-

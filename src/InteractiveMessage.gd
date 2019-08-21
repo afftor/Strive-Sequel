@@ -21,13 +21,13 @@ func open(scene):
 	if scene.tags.has("scene_character_translate"):
 		scene.text = input_handler.scene_character.translate(scene.text)
 	$RichTextLabel.bbcode_text = scene.text
-	globals.ClearContainer($VBoxContainer)
+	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	if scene.has("common_effects"):
 		state.common_effects(scene.common_effects)
 	for i in scene.options:
 		if state.checkreqs(i.reqs) == false:
 			continue
-		var newbutton = globals.DuplicateContainerTemplate($VBoxContainer)
+		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.text
 		if scene.tags.has('linked_event'):
 			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
