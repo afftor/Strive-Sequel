@@ -83,14 +83,14 @@ func calculate_target_list(): #utility checks and targets calculating
 								if act_targets.size() < 4: target_dir.quality *= 0.5
 								if act_targets.size() < 2: target_dir.quality *= 0.5
 							'line':
-								if act_targets.size() < 2: target_dir.quality *= 0.5
+								if act_targets.size() < 2: target_dir.quality *= 0.4
 							'row':
 								if act_targets.size() < 2: target_dir.quality *= 0.5
 						target_array.push_back(target_dir)
 			'enemy':
 				var pos_targets
 				match t_skill.target_range:
-					'melee': pos_targets = globals.combat_node.get_enemy_targets_melee(app_obj)
+					'melee', 'weapon': pos_targets = globals.combat_node.get_enemy_targets_melee(app_obj)
 					'any': pos_targets = globals.combat_node.get_enemy_targets_all(app_obj)
 				for target in pos_targets:
 					var target_dir = {target = target.position, quality = 1.0}

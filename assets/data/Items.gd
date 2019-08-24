@@ -1445,8 +1445,8 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		explor_effect = '',
-		combat_effect = '',
+		explor_effect = 'i_res',
+		combat_effect = 'i_res',
 	},
 }
 

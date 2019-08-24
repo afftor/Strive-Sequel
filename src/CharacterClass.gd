@@ -272,6 +272,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_stat(rec, ls[rec], true)
 
 func add_bonus(b_rec:String, value, revert = false):
+	if value == 0: return
 	if bonuses.has(b_rec):
 		if revert: 
 			bonuses[b_rec] -= value
@@ -1596,8 +1597,17 @@ func find_eff_by_item(item_id):
 				res.push_back(e)
 	return res
 
+func check_status_resist(eff):
+	for s in variables.resists_list:
+		if !eff.tags.has(s): continue
+		var res = get_stat('resists')[s]
+		var roll = globals.rng.randi_range(0, 99)
+		if roll < res: return true
+	return false
+
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
+	if check_status_resist(eff): return
 	var eff_n = eff.template.name
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
@@ -1737,6 +1747,7 @@ func can_be_damaged(s_name):
 		'skill': return !has_status('banish')
 		'spell': return !has_status('void')
 
+
 func get_skill_by_tag(tg):
 	for s in combat_skills:
 		var s_f = Skilldata.Skilllist[s]
@@ -1822,19 +1833,14 @@ func deal_damage(value, source):
 	var tmp = hp
 	if state.characters.has(self.id) && variables.invincible_player:
 		return 0
+	value *= (1.0 - get_stat('resists')[source]/100.0)
 	value = round(value);
-	if (shield > 0) and ((int(shieldtype) & int(source)) != 0):
-		self.shield -= value
-		if shield < 0:
-			self.hp = hp + shield
-			process_event(variables.TR_DMG)
-			self.shield = 0
-		if shield == 0: process_event(variables.TR_SHIELD_DOWN)
-	else:
-		self.hp = hp - value
+	if value > 0:
 		process_event(variables.TR_DMG)
-	tmp = tmp - hp
-	return tmp
+		tmp = tmp - hp
+		return tmp
+	else:
+		return heal(-value)
 
 func heal(value):
 	var tmp = hp
@@ -1853,14 +1859,23 @@ func mana_update(value):
 	#process_event(variables.TR_HEAL)
 	return tmp
 
-func stat_update(stat, value): #for permanent changes
+func stat_update(stat, value, is_set = false): #for permanent changes
 	var tmp = get(stat)
 	value = round(value)
-	if variables.dmg_rel_list.has(stat): set(stat, tmp + value)
+	if !is_set: set(stat, tmp + value)
 	else: set(stat, value)
 	if tmp != null: tmp = get(stat) - tmp
 	else:  tmp = get(stat)
 	return tmp
+
+func get_stat_data():
+	var res = {}
+	res['skill_stat'] = 'physics'
+	res['spell_stat'] = 'wits'
+	res['skill_atk'] = 'atk'
+	res['spell_atk'] = 'matk'
+	#to add trait checks
+	return res
 
 func resurrect(hp_per):
 	if !defeated: return
@@ -1985,6 +2000,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	for h_id in state.characters:
 		if id == h_id || target.id == h_id: continue
 		if state.characters[h_id].work == 'travel':continue
+		if state.characters[h_id].location != location: continue
 		targ_all.push_back(state.characters[h_id])
 	
 	#create s_skill and process triggers
@@ -2027,16 +2043,26 @@ func use_social_skill(s_code, target):#add logging if needed
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
 		for h in targ_fin:
-			var tmp = h.stat_update(s_skill.damagestat[i], s_skill.value[i])
-			if s_skill.is_drain: self.stat_update(s_skill.damagestat[i], -tmp)
-			effect_text += "\n" + h.name + ", " + globals.statdata[s_skill.damagestat[i]].name
+			var mod = s_skill.damagestat[i][0]
+			var stat = s_skill.damagestat[i].right(1)
+			var tmp
+			match mod:
+				'+':
+					tmp = h.stat_update(stat, s_skill.value[i])
+				'-':
+					tmp = h.stat_update(stat, -s_skill.value[i])
+					if s_skill.is_drain: self.stat_update(stat, -tmp)
+				'=':
+					tmp = h.stat_update(stat, s_skill.value[i], true) 
+					if s_skill.is_drain: self.stat_update(stat, -tmp)
+			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100
-			if h.get(s_skill.damagestat[i]+'max') != null:
-				maxstat = h.get(s_skill.damagestat[i] + "max")
+			if h.get(stat +'max') != null:
+				maxstat = h.get_stat(stat + "max")
 			var change = '+'
 			if tmp < 0:
 				change = ''
-			effect_text += ": " +  str(floor(h.get(s_skill.damagestat[i]))) + "/" + str(floor(maxstat)) + " (" + change + "" + str(floor(tmp)) + ")"
+			effect_text += ": " +  str(floor(h.get_stat(stat))) + "/" + str(floor(maxstat)) + " (" + change + "" + str(floor(tmp)) + ")"
 	if template.has("dialogue_report"):
 		var data = {text = '', image = template.dialogue_report, tags = ['skill_report_event'], options = []}
 		var text = translate(template.dialogue_report)
