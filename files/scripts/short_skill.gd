@@ -19,7 +19,7 @@ var goldcost
 var target_range
 var target_number
 var damage_type
-var damagesrc
+#var damagesrc
 var repeat
 
 var chance
@@ -42,7 +42,8 @@ func _init():
 	target_number = 'single'
 	damage_type = 'direct'
 	goldcost = 0
-	damagestat = 'damage_hp'
+	damagestat = '+damage_hp'
+
 	receiver = 'target'
 	random_factor = 0
 	random_factor_p = 0.0
@@ -75,12 +76,19 @@ func createfromskill(s_code):
 	get_from_template('damage_type')
 
 	
-	if typeof(template.value[0]) == TYPE_ARRAY:
-		long_value = template.value.duplicate()
+	if typeof(template.value) == TYPE_ARRAY: 
+		if typeof(template.value[0]) == TYPE_ARRAY:
+			long_value = template.value.duplicate()
+		else:
+			long_value.push_back(template.value.duplicate())
 	else:
-		long_value.push_back(template.value.duplicate())
+		long_value.push_back(template.value)
 	
 	get_from_template('damagestat', true)
+	for s in range(damagestat.size()):
+		if damagestat[s] == 'no_stat': continue
+		if !(damagestat[s][0] in ['+','-','=']):
+			damagestat[s] = '+'+damagestat[s]
 	get_from_template('receiver', true)
 	get_from_template('random_factor', true)
 	get_from_template('random_factor_p', true)
@@ -182,6 +190,8 @@ func apply_atomic(tmp):
 						value[i] = tmp.value
 				pass
 			else: set(tmp.stat, tmp.value)
+		'add_tag':
+			tags.push_back(tmp.value)
 
 
 func apply_effect(eff):
@@ -216,12 +226,13 @@ func resolve_value(check_m):
 		if typeof(long_value[i]) != TYPE_ARRAY:#value as dmg multiplier, combat only
 			var atk
 			var stat
+			var data = caster.get_stat_data()
 			if ability_type == 'skill':
-				stat = caster.get_stat('physics')
-				atk = caster.get_stat('atk')
+				stat = caster.get_stat(data['skill_stat'])
+				atk = caster.get_stat(data['skill_atk'])
 			elif ability_type == 'spell':
-				stat = caster.get_stat('wits')
-				atk = caster.get_stat('matk')
+				stat = caster.get_stat(data['spell_stat'])
+				atk = caster.get_stat(data['spell_atk'])
 			else: 
 				print('ERROR IN SKILL TEMPLATE %s' % code)
 				return
@@ -245,16 +256,16 @@ func resolve_value(check_m):
 func calculate_dmg():
 	apply_random() 
 	
-	if damage_type == 'weapon':
-		damagesrc = variables.S_PHYS #maybe needs to get from weapon
-	elif damage_type == 'fire':
-		damagesrc = variables.S_FIRE
-	elif damage_type == 'water':
-		damagesrc = variables.S_WATER
-	elif damage_type == 'air':
-		damagesrc = variables.S_AIR
-	elif damage_type == 'earth':
-		damagesrc = variables.S_EARTH
+#	if damage_type == 'weapon':
+#		damagesrc = variables.S_PHYS #maybe needs to get from weapon
+#	elif damage_type == 'fire':
+#		damagesrc = variables.S_FIRE
+#	elif damage_type == 'water':
+#		damagesrc = variables.S_WATER
+#	elif damage_type == 'air':
+#		damagesrc = variables.S_AIR
+#	elif damage_type == 'earth':
+#		damagesrc = variables.S_EARTH
 	
 	#crit modification
 	if hit_res == variables.RES_CRIT and !tags.has('nocritmod'):
@@ -280,10 +291,10 @@ func calculate_dmg():
 				 value[i] *= (float(100 - reduction)/100.0)
 	
 	#resist
-	if variables.resists_list.has(damage_type) and !tags.has('noresist'):
-		for i in range(value.size()): 
-			if variables.dmg_mod_list.has(damagestat[i]):
-				 value[i] *= (float(100 - target.get_stat('resists')[damage_type])/100.0)
+#	if variables.resists_list.has(damage_type) and !tags.has('noresist'):
+#		for i in range(value.size()): 
+#			if variables.dmg_mod_list.has(damagestat[i]):
+#				 value[i] *= (float(100 - target.get_stat('resists')[damage_type])/100.0)
 	
 	for v in value: v = round(v)
 

@@ -114,18 +114,20 @@ func get_applied_obj():
 #	if template.has('tags'):
 #		tags = template.tags.duplicate()
 func createfromtemplate(buff_t):
-    if typeof(buff_t) == TYPE_STRING:
-        template = Effectdata.effect_table[buff_t].duplicate()
-    else:
-        template = buff_t.duplicate()
-    if template.has('tags'):
-        tags = template.tags.duplicate()
-    if !template.has('sub_effects'):
-        template['sub_effects'] = []
-    if !template.has('buffs'):
-        template['buffs'] = []
-    if !template.has('atomic'):
-        template['atomic'] = []
+	if typeof(buff_t) == TYPE_STRING:
+		template = Effectdata.effect_table[buff_t].duplicate()
+	else:
+		template = buff_t.duplicate()
+	if template.has('tags'):
+		tags = template.tags.duplicate()
+	if !template.has('sub_effects'):
+		template['sub_effects'] = []
+	if !template.has('buffs'):
+		template['buffs'] = []
+	if !template.has('atomic'):
+		template['atomic'] = []
+
+
 
 func calculate_args():
 	args.clear()
