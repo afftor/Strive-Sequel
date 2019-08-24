@@ -30,5 +30,4 @@ func apply():
 		#tmp.calculate_args()
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		applied_obj.apply_effect(tmp)
-	pass
 

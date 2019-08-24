@@ -22,24 +22,26 @@ func showup(node, person):
 	if shutoff == true && prevnode == parentnode:
 		return
 	
-	var text = person.get_short_name() + person.translate(" [race] [male] [age]")
+	var text = person.get_short_name() + person.translate(" [race] [age]")
+	
+	$sex.texture = globals.sexicons[person.sex]
 	
 	$icon.texture = person.get_icon()
 	$RichTextLabel.bbcode_text = text
 	$exp.text = str(floor(person.base_exp))
 	for i in ['physics','wits','charm','sexuals']:
 		get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) + '/' + str(person[i+'_factor']*20) 
-	for i in ['obedience','fear','lust']:
+	for i in ['obedience','fear']:
 		get_node("VBoxContainer/"+ i + '/bar').value = person[i]
 		if i == 'lust':
 			get_node("VBoxContainer/"+ i + '/bar').max_value = person.lustmax
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(get_node("VBoxContainer/"+ i + '/bar').max_value)
 	
-	for i in ['hp','energy','mp']:
-		get_node("VBoxContainer/"+ i ).value = person[i]
-		get_node("VBoxContainer/"+ i ).max_value = person[i+'max']
-		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(floor(person[i+'max']))
-	
+	for i in ['hp','energy','mp','lust']:
+		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
+		get_node("VBoxContainer/"+ i ).value = person.get_stat(i)
+		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
+	text = ''
 	if person.is_players_character == true:
 		if person.work != '':
 			text = "Occupation: " + races.tasklist[person.work].name
@@ -55,12 +57,8 @@ func showup(node, person):
 		newnode.texture = Skilldata.professions[i].icon
 		newnode.get_node("Label").text = Skilldata.professions[i].name
 	
-	globals.ClearContainer($Sextraits)
-	for i in person.sex_traits:
-		var trait = Traitdata.sex_traits[i]
-		var newbutton = globals.DuplicateContainerTemplate($Sextraits)
-		newbutton.text = trait.name
 	
+	$VBoxContainer.visible = person.is_players_character
 	if person.professions.has('master') || person.is_players_character == false:
 		if person.is_players_character == false:
 			$VBoxContainer/lust.hide()
@@ -70,6 +68,37 @@ func showup(node, person):
 		$VBoxContainer/lust.show()
 		$VBoxContainer/fear.show()
 		$VBoxContainer/obedience.show()
+	
+	
+	if $VBoxContainer/obedience.visible:
+		if person.obedience > 50:
+			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+		elif person.obedience > person.brave_factor*7:
+			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+		else:
+			if person.check_escape_chance() == true:
+				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+			else:
+				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+		if person.fear > 50:
+			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+		elif person.fear > person.brave_factor*7:
+			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+		else:
+			if person.check_escape_chance() == true:
+				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+			else:
+				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+	
+	globals.ClearContainer($buffs)
+	
+	for i in person.get_all_buffs():
+		var newnode = globals.DuplicateContainerTemplate($buffs)
+		newnode.texture = i.icon
+		if i.get_duration() >= 0:
+			newnode.get_node("Label").text = str(i.get_duration())
+		else:
+			newnode.get_node("Label").hide()
 	
 	
 	prevnode = parentnode

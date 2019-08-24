@@ -83,7 +83,7 @@ func CreateGear(ItemName = '', dictparts = {}):
 	if dictparts.size() == 0:
 		mode = 'simple'
 	itembase = ItemName
-	bonusstats = {task_energy_tool = 0, task_efficiency_tool = 0, atk = 0, matk = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	bonusstats = {}#task_energy_tool = 0, task_efficiency_tool = 0, atk = 0, matk = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
 	stackable = false
 	type = 'gear'
 	var itemtemplate = Items.itemlist[ItemName]
@@ -102,6 +102,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 	for i in itemtemplate.basestats:
 		if bonusstats.has(i):
 			bonusstats[i] += itemtemplate.basestats[i]
+		else:
+			bonusstats[i] = itemtemplate.basestats[i]
 	
 	
 	if itemtemplate.has('effects'):
@@ -165,9 +167,9 @@ func CreateGear(ItemName = '', dictparts = {}):
 			name = Items.materiallist[dictparts[itemtemplate.partmaterialname]].adjective.capitalize() + ' ' + tempname
 		else:
 			name = tempname
-	
-	bonusstats.atk = ceil(bonusstats.atk * bonusstats.damagemod)
-	bonusstats.erase('damagemod')
+	if bonusstats.has('atk') && bonusstats.has('damagemod'):
+		bonusstats.atk = ceil(bonusstats.atk * bonusstats.damagemod)
+		bonusstats.erase('damagemod')
 	
 	if mode == 'simple':
 		name = itemtemplate.name
@@ -209,29 +211,38 @@ func set_icon(node):
 func tooltiptext():
 	var text = ''
 	text += '[center]' + name + '[/center]\n'
+	if geartype != null:
+		text += 'Type: ' + geartype + "\n"
+	else:
+		text += "Type: Usable\n"
+	
+	if slots.size() > 0:
+		text += "Slots: "
+		for i in slots:
+			text += tr("ITEMSLOT"+i.to_upper()) + ", "
+		text = text.substr(0, text.length() -2) + ". \n"
+	
 	if toolcategory != null:
 		text += tr("TOOLWORKCATEGORY") + ": " + globals.worktoolnames[toolcategory]
-		
 	if description != null:
-		text += description + "\n"
+		text += description 
 	if itemtype in ['armor','weapon','tool']:
-		#text += 'Durability: ' + str(durability) + '/' + str(maxdurability)
 		text += "\n\n"
 		for i in bonusstats:
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if i in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
+				if globals.statdata[i].has('percent'):
 					value = value*100
-				text += Items.stats[i] + ': {color='
+				text += globals.statdata[i].name + " " +Items.stats[i] + ': {color='
 				if value > 0:
 					change = '+'
-					text += 'green|'
+					text += 'green|' + change
 				else:
 					text += 'red|'
 				value = str(value)
-				if i in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
-					value = change + value + '%'
+				if globals.statdata[i].has('percent'):
+					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()
 	elif itemtype == 'usable':
@@ -243,8 +254,10 @@ func tooltiptext():
 func tooltipeffects():
 	var text = ''
 	for i in effects:
-		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
-		text += '}\n'
+		if Effectdata.effect_table[i].descript != '':
+			text += Effectdata.effect_table[i].descript + "\n"
+#		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
+#		text += '}\n'
 	return text
 
 func tooltip(targetnode):

@@ -1,17 +1,25 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://src/SlaveTooltip.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/gui/elficon.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/panels/hpbarbot.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/panels/hpbar.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/panels/energybar.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/panels/manabar.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/panels/obedbar.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/panels/fearbar.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=1]
+[ext_resource path="res://src/SlaveTooltip.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/slavepanel/statbar.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/slavepanel/hp_bar.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/slavepanel/en_bar.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/slavepanel/mp_bar.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/slavepanel/lust_bar.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/obedience2.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/fear2.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/panels/sex.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/panels/lustbar.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/iconsskills/Reward_with_sex 3.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 224, 215 )
+margin_left = 62.7569
+margin_right = 61.2495
+margin_top = 61.2495
+margin_bottom = 61.2495
 
 [node name="SlaveTooltip" type="Panel"]
 anchor_right = 1.0
@@ -21,23 +29,33 @@ margin_top = 13.0
 margin_right = -1339.0
 margin_bottom = -584.0
 mouse_filter = 2
-script = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
 
 [node name="icon" type="TextureRect" parent="."]
-margin_left = 22.6101
-margin_top = 40.6982
-margin_right = 222.61
-margin_bottom = 240.698
+margin_left = 5.63766
+margin_top = 6.12943
+margin_right = 205.637
+margin_bottom = 206.129
 mouse_filter = 2
-texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="sex" type="TextureRect" parent="."]
+margin_left = 215.15
+margin_top = 20.3501
+margin_right = 265.15
+margin_bottom = 71.3501
+mouse_filter = 2
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 21.0
-margin_top = 244.0
-margin_right = 221.0
-margin_bottom = 651.0
+margin_left = 10.4114
+margin_top = 213.863
+margin_right = 210.411
+margin_bottom = 620.863
 mouse_filter = 2
 
 [node name="hp" type="TextureProgress" parent="VBoxContainer"]
@@ -45,8 +63,9 @@ margin_right = 200.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="VBoxContainer/hp"]
@@ -61,14 +80,15 @@ margin_right = 200.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 5 )
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="VBoxContainer/energy"]
 margin_right = 196.0
 margin_bottom = 24.0
-text = "energy"
+text = "hp"
 align = 1
 
 [node name="mp" type="TextureProgress" parent="VBoxContainer"]
@@ -77,24 +97,42 @@ margin_right = 200.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 6 )
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 7 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="VBoxContainer/mp"]
 margin_right = 196.0
 margin_bottom = 24.0
-text = "mana"
+text = "hp"
+align = 1
+
+[node name="lust" type="TextureProgress" parent="VBoxContainer"]
+margin_top = 87.0
+margin_right = 200.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 25 )
+mouse_filter = 2
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="VBoxContainer/lust"]
+margin_right = 196.0
+margin_bottom = 24.0
+text = "hp"
 align = 1
 
 [node name="obedience" type="TextureRect" parent="VBoxContainer"]
-margin_top = 87.0
+margin_top = 116.0
 margin_right = 40.0
-margin_bottom = 127.0
+margin_bottom = 156.0
 rect_min_size = Vector2( 40, 40 )
 mouse_filter = 2
 size_flags_horizontal = 0
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="bar" type="TextureProgress" parent="VBoxContainer/obedience"]
@@ -103,8 +141,6 @@ margin_top = 9.09372
 margin_right = 198.434
 margin_bottom = 33.0937
 mouse_filter = 2
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 8 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="VBoxContainer/obedience"]
@@ -116,13 +152,13 @@ text = "1/100"
 align = 1
 
 [node name="fear" type="TextureRect" parent="VBoxContainer"]
-margin_top = 131.0
+margin_top = 160.0
 margin_right = 40.0
-margin_bottom = 171.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 40, 40 )
 mouse_filter = 2
 size_flags_horizontal = 0
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 expand = true
 
 [node name="bar" type="TextureProgress" parent="VBoxContainer/fear"]
@@ -131,8 +167,6 @@ margin_top = 9.09372
 margin_right = 198.434
 margin_bottom = 33.0937
 mouse_filter = 2
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="VBoxContainer/fear"]
@@ -143,39 +177,11 @@ margin_bottom = 32.0
 text = "1/100"
 align = 1
 
-[node name="lust" type="TextureRect" parent="VBoxContainer"]
-margin_top = 175.0
-margin_right = 40.0
-margin_bottom = 215.0
-rect_min_size = Vector2( 40, 40 )
-mouse_filter = 2
-size_flags_horizontal = 0
-texture = ExtResource( 11 )
-expand = true
-
-[node name="bar" type="TextureProgress" parent="VBoxContainer/lust"]
-margin_left = 40.4337
-margin_top = 9.09372
-margin_right = 198.434
-margin_bottom = 33.0937
-mouse_filter = 2
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 12 )
-nine_patch_stretch = true
-
-[node name="Label" type="Label" parent="VBoxContainer/lust"]
-margin_left = 42.0
-margin_top = 8.0
-margin_right = 196.0
-margin_bottom = 32.0
-text = "1/100"
-align = 1
-
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 245.0
-margin_top = 37.0
-margin_right = 544.0
-margin_bottom = 108.0
+margin_left = 269.0
+margin_top = 31.0
+margin_right = 551.0
+margin_bottom = 102.0
 mouse_filter = 2
 text = "Name Race Age Sex"
 
@@ -249,15 +255,24 @@ margin_bottom = 243.0
 text = "State
 Job"
 
-[node name="Sextraits" type="VBoxContainer" parent="."]
-margin_left = 379.951
-margin_top = 308.872
-margin_right = 569.951
-margin_bottom = 467.872
+[node name="buffs" type="VBoxContainer" parent="."]
+margin_left = 585.507
+margin_top = 1.0
+margin_right = 660.507
+margin_bottom = 487.0
 
-[node name="Button" type="Label" parent="Sextraits"]
+[node name="Button" type="TextureRect" parent="buffs"]
 visible = false
-margin_right = 190.0
-margin_bottom = 24.0
-size_flags_vertical = 1
-text = "Test text"
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="buffs/Button"]
+margin_left = 25.0
+margin_top = 50.0
+margin_right = 62.0
+margin_bottom = 74.0
+text = "15"

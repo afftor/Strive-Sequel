@@ -30,8 +30,9 @@ func _ready():
 	$MenuButton.connect("pressed", $MenuPanel, "open")
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	
-	
-	#state.money = 500
+	globals.connecttexttooltip($gold/TextureRect, tr("TOOLTIPGOLD"))
+	globals.connecttexttooltip($food/TextureRect, tr("TOOLTIPFOOD"))
+
 	state.log_node = $Log
 	
 	state.connect("task_added", self, 'build_task_bar')
@@ -40,14 +41,13 @@ func _ready():
 	
 	if variables.generate_test_chars:
 		var character = Slave.new()
-		character.create('BeastkinCat', 'male', 'random')
+		character.create('BeastkinWolf', 'male', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
 		character.unlock_class("master")
 		character.charm_factor = 1
-#		character.learn_skill("hardwork")
-		character.unlock_class("succubus")
+		#character.unlock_class("worker")
 		character.mp = 50
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
@@ -63,28 +63,35 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.unlock_class("pet")
 		character.get_trait('core_trait')
+		character.obedience = 100
 		character.is_players_character = true
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		character.obedience = 100
 		character.lust = 50
 		character.base_exp += 500
+		#character.exhaustion = 1000
 		character.get_trait('core_trait')
 		character.unlock_class("succubus")
 		character.is_players_character = true
 		
-#		character = Slave.new()
-#		character.generate_predescribed_character(world_gen.pregen_characters.Daisy)
-#		characters_pool.move_to_state(character.id)
-#		character.get_trait('core_trait')
-#		character.is_players_character = true
-		
-		
+		#state.revert()
+		for i in Items.materiallist:
+			state.materials[i] = 100
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("anal_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("shackles", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard"))
-		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
+		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		$SlaveList.rebuild()
 	elif globals.start_new_game == true:
@@ -92,9 +99,13 @@ func _ready():
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
 		input_handler.connect("CharacterCreated", self, "show", [], 4)
+		input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
 	
 	build_task_bar()
 	$SlaveList.rebuild()
+	
+	input_handler.SetMusicRandom("mansion")
+	
 	#$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
 
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
@@ -104,7 +115,8 @@ func _process(delta):
 		return
 	$TimeNode/HidePanel.visible = gamepaused_nonplayer
 	$gold.text = str(state.money)
-	
+	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
+	$population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
 	#buildscreen()
 	update_task_bar()
 	
@@ -142,6 +154,7 @@ func _process(delta):
 				state.daily_interactions_left = 1
 				for i in state.characters.values():
 					i.cooldown_tick()
+					i.process_event(variables.TR_DAY)
 				for i in state.areas.values():
 					world_gen.update_guilds(i)
 			for i in state.characters.values():

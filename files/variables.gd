@@ -18,14 +18,14 @@ var dmg_mod_list = ['damage_hp', 'restore_mana', 'lust', 'obedience', 'fear', 'l
 #list for values modified bu random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
-var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp']
+var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind','stun']
 var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','atk','matk','hitrate','evasion','armor','mdef','critrate','critmod', 'lusttick']
+var bonuses_stat_list = ['productivity','mod_collect','atk','matk','hitrate','evasion','armor','mdef','critrate','critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','fear_degrade_mod','obed_degrade_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 
@@ -33,6 +33,9 @@ var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal',
 'sexuals_factor','magic_factor','growth_factor']
 
 var status_list = ['stun']
+
+var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']
+
 
 #mode for applying absolute random damage mod
 const relative_random_add = true
@@ -75,14 +78,15 @@ var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith
 var master_starting_stats = 10
 var slave_starting_stats = 15
 
+var minimum_factor_value = 1
+var maximum_factor_value = 6
+
 var power_adjustments_per_difficulty = {
 	easy = [1,2],
 	medium = [2,4],
 	hard = [3,6]
 }
 #sex chances
-var male_to_female_ratio = 0.0
-var futa_to_female_ratio = 0.1
 
 var teen_age_weight = 1
 var adult_age_weight = 1
@@ -101,6 +105,9 @@ var soft_level_reqs = [100,150,200,300,400,500,650,800,950]
 var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 
 #Slave values
+var slave_basic_sizes = ['masculine','flat','small','average','big','huge']
+var slave_genital_sizes = ['small','average','big']
+
 var basic_max_hp = 100
 var basic_max_mp = 30
 var basic_hp_regen = 1
@@ -109,13 +116,13 @@ var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
-var basic_energy_per_work_tick = 8.33
+var basic_energy_per_work_tick = 8.35
 
 #Cheats
 var instant_travel = false
-var instant_upgrades = true
-var free_upgrades = true
 var skip_combat = false
+var free_upgrades = true
+var instant_upgrades = true
 var unlock_all_upgrades = true
 var invincible_player = true
 var show_enemy_hp = true
@@ -144,6 +151,13 @@ var slave_classes_per_difficulty = {
 	8 : [6, 10],
 	9 : [6, 10],
 	10 : [6, 10],
+}
+
+var starting_resources = {
+	meat = 25,
+	fish = 25,
+	bread = 25,
+	vegetables = 25,
 }
 
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']

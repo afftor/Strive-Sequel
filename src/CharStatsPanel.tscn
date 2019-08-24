@@ -77,9 +77,10 @@ custom_constants/vseparation = 7
 custom_constants/hseparation = 0
 columns = 4
 
-[node name="Label9" type="Label" parent="base stats"]
+[node name="label_atk" type="Label" parent="base stats"]
 margin_right = 175.0
 margin_bottom = 24.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Attack:"
 align = 2
@@ -88,12 +89,14 @@ align = 2
 margin_left = 175.0
 margin_right = 203.0
 margin_bottom = 24.0
+mouse_filter = 1
 text = "25"
 
-[node name="Label10" type="Label" parent="base stats"]
+[node name="label_matk" type="Label" parent="base stats"]
 margin_left = 203.0
 margin_right = 378.0
 margin_bottom = 24.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "M.Attack:"
 align = 2
@@ -102,12 +105,14 @@ align = 2
 margin_left = 378.0
 margin_right = 409.0
 margin_bottom = 24.0
+mouse_filter = 1
 text = "20"
 
-[node name="Label12" type="Label" parent="base stats"]
+[node name="label_armor" type="Label" parent="base stats"]
 margin_top = 31.0
 margin_right = 175.0
 margin_bottom = 55.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Defence:"
 align = 2
@@ -117,13 +122,15 @@ margin_left = 175.0
 margin_top = 31.0
 margin_right = 203.0
 margin_bottom = 55.0
+mouse_filter = 1
 text = "15"
 
-[node name="Label11" type="Label" parent="base stats"]
+[node name="label_mdef" type="Label" parent="base stats"]
 margin_left = 203.0
 margin_top = 31.0
 margin_right = 378.0
 margin_bottom = 55.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "M.Defence:"
 align = 2
@@ -133,12 +140,14 @@ margin_left = 378.0
 margin_top = 31.0
 margin_right = 409.0
 margin_bottom = 55.0
+mouse_filter = 1
 text = "20"
 
-[node name="Label13" type="Label" parent="base stats"]
+[node name="label_hitrate" type="Label" parent="base stats"]
 margin_top = 62.0
 margin_right = 175.0
 margin_bottom = 86.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Hit Rate:"
 align = 2
@@ -148,13 +157,15 @@ margin_left = 175.0
 margin_top = 62.0
 margin_right = 203.0
 margin_bottom = 86.0
+mouse_filter = 1
 text = "15"
 
-[node name="Label14" type="Label" parent="base stats"]
+[node name="label_evasion" type="Label" parent="base stats"]
 margin_left = 203.0
 margin_top = 62.0
 margin_right = 378.0
 margin_bottom = 86.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Evasion:"
 align = 2
@@ -164,12 +175,14 @@ margin_left = 378.0
 margin_top = 62.0
 margin_right = 409.0
 margin_bottom = 86.0
+mouse_filter = 1
 text = "20"
 
-[node name="Label15" type="Label" parent="base stats"]
+[node name="label_speed" type="Label" parent="base stats"]
 margin_top = 93.0
 margin_right = 175.0
 margin_bottom = 117.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Speed:"
 align = 2
@@ -179,13 +192,15 @@ margin_left = 175.0
 margin_top = 93.0
 margin_right = 203.0
 margin_bottom = 117.0
+mouse_filter = 1
 text = "15"
 
-[node name="Label16" type="Label" parent="base stats"]
+[node name="label_armorpenetration" type="Label" parent="base stats"]
 margin_left = 203.0
 margin_top = 93.0
 margin_right = 378.0
 margin_bottom = 117.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Armor Pen.:"
 align = 2
@@ -195,12 +210,14 @@ margin_left = 378.0
 margin_top = 93.0
 margin_right = 409.0
 margin_bottom = 117.0
+mouse_filter = 1
 text = "20"
 
-[node name="Label17" type="Label" parent="base stats"]
+[node name="label_critchance" type="Label" parent="base stats"]
 margin_top = 124.0
 margin_right = 175.0
 margin_bottom = 148.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Critical:"
 align = 2
@@ -210,13 +227,15 @@ margin_left = 175.0
 margin_top = 124.0
 margin_right = 203.0
 margin_bottom = 148.0
+mouse_filter = 1
 text = "15"
 
-[node name="Label18" type="Label" parent="base stats"]
+[node name="label_critmod" type="Label" parent="base stats"]
 margin_left = 203.0
 margin_top = 124.0
 margin_right = 378.0
 margin_bottom = 148.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "Critical Mod:"
 align = 2
@@ -226,6 +245,7 @@ margin_left = 378.0
 margin_top = 124.0
 margin_right = 409.0
 margin_bottom = 148.0
+mouse_filter = 1
 text = "20"
 
 [node name="resists" type="GridContainer" parent="."]

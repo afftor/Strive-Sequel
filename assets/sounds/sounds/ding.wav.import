@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ding.wav-1afd397faccbe806c911dbb3ace1e001.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/ding.wav"
+dest_files=[ "res://.import/ding.wav-1afd397faccbe806c911dbb3ace1e001.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

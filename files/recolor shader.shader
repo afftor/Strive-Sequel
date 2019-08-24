@@ -54,6 +54,7 @@ void fragment(){
 		float rot = dcolor.x - t1.x;
 		k.x = k.x + rot;
 		k.y = dcolor.y;
+		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		color = vec4(k.xyz, a);
 		}
@@ -62,6 +63,7 @@ void fragment(){
 		float rot = dcolor.x - t2.x;
 		k.x = k.x + rot;
 		k.y = dcolor.y;
+		k.z *= dcolor.z;
 		k = hsl2rgb(k);
 		color = vec4(k.xyz, a);
 		}
@@ -70,6 +72,7 @@ void fragment(){
 		float rot = dcolor.x - t3.x;
 		k.x = k.x + rot;
 		k.y = dcolor.y;
+		k.z = dcolor.z;
 		k = hsl2rgb(k);
 		color = vec4(k.xyz, a);
 		}

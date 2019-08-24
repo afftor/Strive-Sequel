@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/class_selection.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/iconsclasses/Blacksmith.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=4]
 
 [node name="class_learn" type="Panel"]
 visible = false
@@ -193,8 +194,9 @@ margin_bottom = 658.0
 text = "Exp : "
 
 [node name="CheckBox" type="CheckBox" parent="."]
-margin_left = 509.025
-margin_top = 800.242
-margin_right = 700.025
-margin_bottom = 832.242
+margin_left = 509.0
+margin_top = 800.0
+margin_right = 709.0
+margin_bottom = 841.0
+theme = ExtResource( 4 )
 text = "Show Locked"

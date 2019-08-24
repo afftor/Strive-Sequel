@@ -109,7 +109,7 @@ run/main_scene="res://files/Menu.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://assets/images/backgrounds/loading.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://assets/images/gui/timesphere.png"
+config/icon="res://assets/images/iconsclasses/Master.png"
 
 [autoload]
 
@@ -120,7 +120,6 @@ Enemydata="*res://assets/data/enemydata.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Skilldata="*res://assets/data/Skills.gd"
 Traitdata="*res://assets/data/Traits.gd"
-TownData="*res://files/TownData.gd"
 combatantdata="*res://files/CombatantClass.gd"
 state="*res://src/gamestate.gd"
 globals="*res://files/scripts/globals.gd"

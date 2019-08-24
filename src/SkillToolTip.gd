@@ -21,29 +21,36 @@ func showup(node, skillcode):
 		return
 	show()
 	set_process(true)
-	$name.text = skill.name
-	$manacost.text = str(skill.manacost)
-	$manacost.visible = skill.manacost != 0
-	$manaicon.visible = skill.manacost != 0
+	var text = '[center]'+skill.name+'[/center]' + "\n[color=aqua]Type: " + skill.ability_type + " - " + skill.type + "[/color]\n" + skill.descript
 	
-	$energycost.text = str(skill.energycost)
-	$energycost.visible = skill.energycost != 0
-	$energyicon.visible = $energycost.visible
+	if skill.charges > 0:
+		text += "\n\nMax Charges: [color=yellow]" + str(skill.charges) + "[/color]. Cooldown: " + str(skill.cooldown) + " day(s)."
+	$descript.bbcode_text = text
 	
-	$charges.text = str(skill.charges)
+	text = "Usage Cost: "
+	if skill.manacost > 0:
+		text += "Mana: " + str(skill.manacost) + ". "
+	if skill.energycost > 0:
+		text += "Energy: " + str(skill.energycost) + ". "
+	if text == "Usage Cost: ":
+		text += "None"
+	$cost.text = text
 	
-#	if skill.skilltype == 'skill':
-#		$type.set("custom_colors/font_color", Color(1,0,0))
-#	elif skill.skilltype == 'spell':
-#		$type.set("custom_colors/font_color", Color(0,0,1))
-	$cooldown.text = str(skill.cooldown)
-#	$type.text = skill.skilltype.capitalize()
-	$descript.bbcode_text = skill.descript#character.skill_tooltip_text(skillcode)
-	#$RichTextLabel.bbcode_text = text
 	
 	var pos = node.get_global_rect()
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	set_global_position(pos)
+	
+	$descript.rect_size.y = 190
+	rect_size.y = 270
+	
+	yield(get_tree(), 'idle_frame')
+	
+	rect_size.y = max(270, $descript.get_v_scroll().get_max() + 90)
+	$descript.rect_size.y = rect_size.y - 80
+	
+	
+	
 	var screen = get_viewport().get_visible_rect()
 	if get_rect().end.x >= screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x

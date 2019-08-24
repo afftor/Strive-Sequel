@@ -21,18 +21,17 @@ func _ready():
 		i.connect("mouse_entered", self, "show_progress_tooltip", [i])
 	for i in $factors.get_children():
 		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
-		#i.hint_tooltip = tr("TOOLTIP" + i.name.replace("_", "").to_upper())
-	for i in $mentality.get_children():
-		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
+	
 	
 	for i in $base_stats.get_children():
 		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
-		#i.hint_tooltip = tr("TOOLTIP" + i.name.to_upper())
 	
 	for i in ['restup', 'workup', 'joyup', 'restdown', 'workdown', 'joydown']:
 
 		get_node("job_panel/job_details/WorkDetailsPanel/"+i).connect("pressed", self, "change_hours", [i])
-
+	
+	for i in $job.get_children():
+		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 	
 	###############
 	
@@ -62,10 +61,15 @@ func _ready():
 	
 	input_handler.slave_panel_node = self
 	
-	globals.connecttexttooltip($productivity, "[center]" + globals.statdata.productivity.name + "[/center]\n" + globals.statdata.productivity.descript)
+	
+	$testbutton.connect('pressed', self, "run_test")
 	
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
 	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
+
+func run_test():
+	person.apply_custom_bodychange('sex', 'female')
+	open(person)
 
 func stats_panel():
 	$BodyPanel/StatsPanel.open(person)
@@ -100,6 +104,7 @@ func open(tempperson):
 	var text = ''
 	show()
 	$name.text = person.get_short_name()
+	$name/sex.texture = globals.sexicons[person.sex]
 	if person.icon_image == null:
 		$Portrait.texture = null
 	else:
@@ -118,34 +123,78 @@ func open(tempperson):
 		if person.get(i.name+'_bonus') > 0:
 			i.set("custom_colors/font_color", globals.hexcolordict.green) 
 			i.text +=  "+"+ str(person.get(i.name+'_bonus'))
+		elif person.get(i.name+'_bonus') < 0:
+			i.set("custom_colors/font_color", globals.hexcolordict.red) 
+			i.text += str(person.get(i.name+'_bonus'))
 		else:
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
 	
 	for i in $factors.get_children():
-		i.get_node("Label").text = str(floor(person.get(i.name)))
+		if i.name == 'base_exp':
+			i.get_node("Label").text = str(floor(person.get(i.name)))
+			continue
+		if globals.globalsettings.factors_as_words:
+			i.get_node("Label").text = globals.descriptions.factor_descripts[int(floor(person.get(i.name)))]
+			i.get_node("Label").set("custom_colors/font_color", globals.hexcolordict['factor'+str(int(floor(person.get(i.name))))]) 
+		else:
+			i.get_node("Label").text = str(floor(person.get(i.name)))
 	for i in $job.get_children():
-		i.value = person.get(i.name)
-		i.get_node("Label").text = str(floor(person.get(i.name))) + "/" + '100'
+		i.text = globals.statdata[i.name].name + ": " + str(floor(person.get(i.name)))
 	for i in $base_stats.get_children():
 		i.max_value = person.get(i.name+'max')
 		i.value = person.get(i.name)
 		i.get_node("Label").text = str(floor(person.get(i.name))) + "/" + str(floor(person.get(i.name+'max')))
 	
-	$mentality/loyal.value = person.loyal
-	$mentality/loyal/Label.text = str(floor(person.loyal)) + '/' + '100'
+#	$mentality/loyal.value = person.loyal
+#	$mentality/loyal/Label.text = str(floor(person.loyal)) + '/' + '100'
 	$mentality/obedience.value = person.obedience
 	$mentality/obedience/Label.text = str(floor(person.obedience)) + '/' + '100'
+	$mentality/obedience/decay.text = 'Daily Decay: ' + str(round(person.get_obed_reduction()*24))
 	$mentality/fear.value = person.fear
 	$mentality/fear/Label.text = str(floor(person.fear)) + '/' + '100'
+	$mentality/fear/decay.text = 'Daily Decay: ' + str(round(person.get_fear_reduction()*24))
 	$base_stats/lust.value = person.lust
 	$base_stats/lust.max_value = person.lustmax
 	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
-	
-	$food_love/Label.text = person.food_love
-	
 	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
 	
+	if person.obedience > 50:
+		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+	elif person.obedience > person.brave_factor*7:
+		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+	else:
+		if person.check_escape_chance() == true:
+			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+		else:
+			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+	$obedlabel.set("custom_colors/font_color", $mentality/obedience/Label.get("custom_colors/font_color"))
+	if person.fear > 50:
+		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+	elif person.fear > person.brave_factor*7:
+		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+	else:
+		if person.check_escape_chance() == true:
+			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+		else:
+			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+	$fearlabel.set("custom_colors/font_color", $mentality/fear/Label.get("custom_colors/font_color"))
 	
+	
+	text = globals.statdata.obedience.descript
+	if person.has_status('no_obed_reduce'):
+		text += "\n\n[color=green]No decay[/color]"
+	else:
+		text += '\n\n[color=yellow]Expected daily decay: ' + str(round(person.get_obed_reduction()*24)) + "[/color]"
+	globals.connecttexttooltip($mentality/obedience, text)
+	text = globals.statdata.fear.descript
+	if person.has_status('no_fear_reduce'):
+		text += "\n\n[color=green]No decay[/color]"
+	else:
+		text += '\n\n[color=yellow]Expected daily decay: ' + str(round(person.get_fear_reduction()*24)) + "[/color]"
+	globals.connecttexttooltip($mentality/fear, text)
+	
+	text = ''
+	$food_love/Label.text = person.food_love
 	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
 	for i in person.food_hate:
 		text += i + ", "
@@ -175,7 +224,6 @@ func open(tempperson):
 		newnode.text = trait.name
 	
 	
-	
 	for i in person.sex_traits:
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
@@ -190,8 +238,24 @@ func open(tempperson):
 			newnode.get_node("Label").text = str(i.get_duration())
 		else:
 			newnode.get_node("Label").hide()
-		globals.connecttexttooltip(newnode, i.description)
+		globals.connecttexttooltip(newnode, person.translate(i.description))
 	
+	text = "[center]" + globals.statdata.productivity.name + "[/center]\n" + globals.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity'))) 
+	for i in variables.productivity_mods:
+		if person.get_stat(i) > 1:
+			text += "\n{color=green|" + str(round(person.get_stat(i)*100)) + " - " + globals.statdata[i].name + "}"
+		elif person.get_stat(i) < 1:
+			text += "\n{color=red|" + str(round(person.get_stat(i)*100)) + " - " + globals.statdata[i].name + "}"
+		else:
+			text += "\n" + str(round(person.get_stat(i)*100)) + " - " + globals.statdata[i].name
+		
+	
+	$masterlabel.visible = person.professions.has('master')
+	$masterlabel.text = person.translate('[master]').capitalize()
+	
+	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
+
+
 
 func make_location_description():
 	var text = ''
@@ -241,6 +305,10 @@ func open_jobs_window():
 	globals.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 	currentjob = null
 	update_hours()
+	var restbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
+	restbutton.text = "Rest"
+	restbutton.connect("pressed", self, 'set_rest')
+	
 	for i in races.tasklist.values():
 		if state.checkreqs(i.reqs) == false:
 			continue
@@ -256,6 +324,7 @@ var currentjob
 func show_job_details(job):
 	currentjob = job
 	$job_panel/job_details.show()
+	globals.ClearContainer($job_panel/job_details/ResourceOptions)
 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 		i.pressed = i.text == job.name
 	var text =  "[center]" + job.name + '[/center]\n' + job.descript + "\n\n" + tr("TASKMAINSTAT") + ": [color=yellow]" + globals.statdata[job.workstat].name + "[/color]"
@@ -267,7 +336,6 @@ func show_job_details(job):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") +"[/color]"
 	
 	$job_panel/job_details/RichTextLabel.bbcode_text = text
-	globals.ClearContainer($job_panel/job_details/ResourceOptions)
 	
 
 	$job_panel/job_details/WorkDetailsPanel.visible = !person.work_simple
@@ -281,10 +349,10 @@ func show_job_details(job):
 		if Items.materiallist.has(i.item):
 			var number
 			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
 			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
 			newbutton.get_node("number").text = str(number)
@@ -292,16 +360,22 @@ func show_job_details(job):
 		else:
 			var number
 			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
+				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
 			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get(job.mod)/100),0.1)
+				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
 				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("number").text = str(number)
 			newbutton.get_node("icon").texture = i.icon
 			globals.connecttexttooltip(newbutton, i.descript + text)
 			
 		newbutton.connect('pressed', self, 'select_job', [job, i.code])
+
+func set_rest():
+	person.remove_from_task()
+	person.work = ''
+	$job_panel.hide()
+	open(person)
 
 func select_job(job, production):
 	person.assign_to_task(job.code, production)

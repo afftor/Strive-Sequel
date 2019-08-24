@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/normalattack.wav-595fcaddb4837e90b4ddafa44219d628.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/normalattack.wav"
+dest_files=[ "res://.import/normalattack.wav-595fcaddb4837e90b4ddafa44219d628.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -63,6 +63,7 @@ var sexicons = {
 
 
 var descriptions = load("res://assets/data/descriptions.gd").new()
+var custom_effects = load("res://src/custom_effects.gd").new()
 
 var statdata = {
 	base_exp = {
@@ -160,6 +161,8 @@ var statdata = {
 		type = 'primal',
 	},
 	
+	
+	
 	obedience = {
 		code = 'obedience',
 		name = '',
@@ -222,6 +225,7 @@ var statdata = {
 		code = 'hpfactor',
 		name = '',
 		descript = '',
+		percent = true,
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
@@ -303,6 +307,24 @@ var statdata = {
 		descript = '',
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
+	armorpenetration = {
+		code = 'armorpenetration',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	critchance = {
+		code = 'critchance',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	critmod = {
+		code = 'critmod',
+		name = '',
+		descript = '',
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 	
 	physics_bonus = {
 		code = 'physics_bonus',
@@ -332,6 +354,91 @@ var statdata = {
 		code = 'productivity',
 		name = '',
 		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_collect = {
+		code = 'mod_collect',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_build = {
+		code = 'mod_build',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_hunt = {
+		code = 'mod_hunt',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_fish = {
+		code = 'mod_fish',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_cook = {
+		code = 'mod_cook',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_smith = {
+		code = 'mod_smith',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_tailor = {
+		code = 'mod_tailor',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_alchemy = {
+		code = 'mod_alchemy',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_farm = {
+		code = 'mod_farm',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	mod_pros = {
+		code = 'mod_pros',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	task_energy_tool = {
+		code = 'task_energy_tool',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	task_efficiency_tool = {
+		code = 'task_efficiency_tool',
+		name = '',
+		descript = '',
+		percent = true,
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
 }
@@ -360,12 +467,18 @@ var userfolder = 'user://'
 var scenes = {}
 
 var hexcolordict = {
-	red = '#ff0000',
+	red = '#ff5e5e',
 	yellow = "#ffff00",
 	brown = "#8B572A",
 	gray = "#4B4B4B",
 	green = '#00b700',
 	white = '#ffffff',
+	factor1 = '#ff5e5e',
+	factor2 = '#f6922a',
+	factor3 = '#4dff83',
+	factor4 = '#13a40d',
+	factor5 = '#25b8ff',
+	factor6 = '#bc53ff',
 }
 var textcodedict = {
 	color = {start = '[color=', end = '[/color]'},
@@ -387,6 +500,8 @@ var globalsettings = {
 	window_size = Vector2(1366,768),
 	window_pos = Vector2(0,0),
 	
+	factors_as_words = true,
+	
 	textspeed = 60,
 	skipread = false,
 	textmonocolor = false,
@@ -397,6 +512,8 @@ var globalsettings = {
 	furry = true,
 	furry_multiple_nipples = true,
 	futa_balls = true,
+	futachance = 10,
+	malechance = 50,
 	#user_folders_settings
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',

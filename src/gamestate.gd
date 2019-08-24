@@ -3,6 +3,7 @@ extends Node
 #warning-ignore-all:unused_signal
 #warning-ignore-all:return_value_discarded
 
+
 signal task_added
 signal slave_added
 signal slave_arrived
@@ -30,7 +31,6 @@ var slavecounter := 0
 var locationcounter := 0
 var questcounter := 0
 var money = 0
-var food = 50
 var upgrades := {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}
@@ -77,13 +77,18 @@ func revert():
 	date = 1
 	hour = 6
 	characters.clear()
+	character_order.clear()
 	items.clear()
 	materials.clear()
 	globals._ready()
 	global_skills_used.clear()
+	for i in variables.starting_resources:
+		materials[i] = variables.starting_resources[i]
+	world_gen.build_world()
 
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')
+	revert()
 
 func update_global_cooldowns():
 	for i in global_skills_used.duplicate():
@@ -214,6 +219,10 @@ func valuecheck(dict):
 			var character = get_unique_slave(dict.value)
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free'}])
+		'scene_character_checks':
+			var character = input_handler.scene_character
+			if character == null:return false
+			return character.checkreqs(dict.charreqs)
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -418,3 +427,17 @@ func check_timed_events():
 			input_handler.interactive_message(i.code, 'story_event', {})
 			stored_events.timed_events.erase(i)
 			break
+
+func get_food():
+	var counter = 0
+	for i in materials:
+		if Items.materiallist[i].type == 'food' && i != 'grain':
+			counter += materials[i]
+	return counter
+
+func get_food_consumption():
+	var counter = 0
+	
+	for i in characters.values():
+		counter += i.food_consumption
+	return counter

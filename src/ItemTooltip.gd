@@ -44,9 +44,9 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	if shutoff == true && prevnode == parentnode:
 		return
 	
-	$Image/amount.hide()
+	#$Image/amount.hide()
 	iconnode.material = null
-	$type.text = ''
+	#$type.text = ''
 	
 	match type:
 		'material':
@@ -71,29 +71,37 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	pos = Vector2(pos.position.x, pos.end.y + 10)
 	self.set_global_position(pos)
 	
+	$RichTextLabel.rect_size.y = 125
+	rect_size.y = 250
+	
+	yield(get_tree(), 'idle_frame')
+	
+	rect_size.y = max(250, $RichTextLabel.get_v_scroll().get_max() + 220)
+	$RichTextLabel.rect_size.y = rect_size.y - 100
+	
 	
 	if get_rect().end.x > screen.size.x:
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y > screen.size.y:
-		rect_global_position.y -= get_rect().end.y - screen.size.y
+		rect_global_position.y = node.get_global_rect().position.y - rect_size.y
 	
 	set_process(true)
 
 func material_tooltip(data):
 	var item = data.item
-	var text = data.text#'[center]' + item.name + '[/center]\n' + item.descript
+	var text = data.text
 	if state.materials.has(data.item) && state.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(state.materials[data.item])
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0
 	textnode.bbcode_text = text
-	$type.text = tr('MATERIALCATEGORY' + item.type.to_upper())
+#	$type.text = tr('MATERIALCATEGORY' + item.type.to_upper())
 
 func materialowned_tooltip(data):
 	material_tooltip(data)
-	$Image/amount.show()
-	$Image/amount.text = str(state.materials[data.item.code])
+	#$Image/amount.show()
+	#$Image/amount.text = str(state.materials[data.item.code])
 
 
 func gear_tooltip(data, item = null):
@@ -102,14 +110,7 @@ func gear_tooltip(data, item = null):
 	var text = item.tooltiptext()
 	$Cost/Label.text = str(data.price)
 	$Cost.visible = item.price != 0
-	if item.geartype == null:
-		$type.text = tr("USABLE")
-	else:
-		$type.text = item.geartype + ":"
-	if data.item.slots.size() == 1:
-		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
-	elif data.item.slots.size() > 1:
-		$type.text += 'Multislot'
+	
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 	else:
@@ -134,12 +135,12 @@ func geat_detailed_tooltip(data, item = null):
 				text += '\n' + Items.stats[k] + ': {color='
 				if value > 0:
 					change = '+'
-					text += 'green|'
+					text += 'green|' + change
 				else:
 					text += 'red|'
 				value = str(value)
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
-					value = change + value + '%'
+					value = value + '%'
 				text += value + '}\n'
 #		for k in material.parts[i]:
 #			text += "\n" + Items.stats[k] + " " + str(material.parts[i][k])
@@ -149,18 +150,43 @@ func geartemplete_tooltip(data):
 	var item = data.item
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
 	
+	if item.itemtype in ['armor','weapon','tool']:
+		text += "\n\n"
+		for i in item.basestats:
+			if item.basestats[i] != 0:
+				var value = item.basestats[i]
+				var change = ''
+				if globals.statdata[i].has('percent'):
+					value = value*100
+				text += globals.statdata[i].name + " " +Items.stats[i] + ': {color='
+				if value > 0:
+					change = '+'
+					text += 'green|' + change
+				else:
+					text += 'red|'
+				value = str(value)
+				if globals.statdata[i].has('percent'):
+					value = value + '%'
+				text += value + '}\n'
+	
+	
+	for i in item.effects:
+		text += Effectdata.effect_table[i].descript + "\n"
+	
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(data.price)
 	
-	if data.item.slots.size() == 1:
-		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
-	elif data.item.slots.size() > 1:
-		$type.text += 'Multislot'
-	else:
-		$type.text = tr("USABLE")
+	
+	
+#	if data.item.slots.size() == 1:
+#		$type.text += tr("ITEMSLOT" + data.item.slots[0].to_upper())
+#	elif data.item.slots.size() > 1:
+#		$type.text += 'Multislot'
+#	else:
+#		$type.text = tr("USABLE")
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-	textnode.bbcode_text = text
+	textnode.bbcode_text = globals.TextEncoder(text)
 	
 
 func cooldown():

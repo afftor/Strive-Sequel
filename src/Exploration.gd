@@ -11,6 +11,9 @@ var positiondict = {
 }
 
 func _ready():
+	globals.AddPanelOpenCloseAnimation($QuestPanel)
+	globals.AddPanelOpenCloseAnimation($HirePanel)
+	globals.AddPanelOpenCloseAnimation($ShopPanel)
 	$HirePanel/Button.connect("pressed", self, "guild_hire_slave")
 	$QuestPanel/AcceptQuest.connect("pressed", self, "accept_quest")
 	$SlaveSelectionPanel/ConfirmButton.connect("pressed", self, "confirm_party_selection")
@@ -53,12 +56,11 @@ func hide_heal_items():
 	$Positions/itemusepanel.hide()
 
 func open():
-	globals.AddPanelOpenCloseAnimation($QuestPanel)
-	globals.AddPanelOpenCloseAnimation($HirePanel)
-	globals.AddPanelOpenCloseAnimation($ShopPanel)
-	show()
+	input_handler.PlaySound("door_open")
+	input_handler.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
 	
-	#input_handler.interactive_message('daisy_meet', 'story_event', [])
+	show()
 	globals.ClearContainer($AreaSelection)
 	for i in state.areas.values():
 		var newbutton = globals.DuplicateContainerTemplate($AreaSelection)

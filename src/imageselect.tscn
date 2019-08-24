@@ -267,7 +267,6 @@ margin_right = 1463.56
 margin_bottom = 427.3
 hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
 text = "Assign Both"
-
 [connection signal="pressed" from="cancelportait" to="." method="_on_cancelportait_pressed"]
 [connection signal="pressed" from="racelock" to="." method="_on_racelock_pressed"]
 [connection signal="text_changed" from="search" to="." method="_on_search_text_changed"]

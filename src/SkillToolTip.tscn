@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/images/gui/panels/panelsmall.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/slavepanel/CharScreen_0012_character-panel.png" type="Texture" id=1]
 [ext_resource path="res://src/SkillToolTip.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/gui/charpanel/manaorb.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/taskmenu/timeicon.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 500, 499 )
+region_rect = Rect2( 0, 0, 669, 841 )
+margin_left = 19.9725
+margin_right = 27.9615
+margin_top = 19.9725
+margin_bottom = 23.967
 
 [node name="skilltooltip" type="Panel"]
 margin_left = 1027.0
@@ -19,17 +20,9 @@ mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
-[node name="name" type="Label" parent="."]
-margin_left = 41.6732
-margin_top = 8.67319
-margin_right = 391.673
-margin_bottom = 32.6732
-text = "Name"
-align = 1
-
 [node name="descript" type="RichTextLabel" parent="."]
 margin_left = 11.0
-margin_top = 34.0
+margin_top = 11.0
 margin_right = 423.0
 margin_bottom = 202.0
 mouse_filter = 2
@@ -37,81 +30,12 @@ bbcode_enabled = true
 bbcode_text = "Skill Description"
 text = "Skill Description"
 
-[node name="type" type="Label" parent="."]
-visible = false
-margin_left = 313.0
-margin_top = 229.0
-margin_right = 414.0
-margin_bottom = 253.0
-text = "SkillType"
-align = 2
-
-[node name="manacost" type="Label" parent="."]
-margin_left = 111.567
-margin_top = 231.702
-margin_right = 164.567
-margin_bottom = 255.702
-custom_colors/font_color = Color( 0, 0.109375, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
-
-[node name="energycost" type="Label" parent="."]
-margin_left = 52.567
-margin_top = 231.702
-margin_right = 105.567
-margin_bottom = 255.702
-custom_colors/font_color = Color( 0.980392, 1, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
-
-[node name="cooldown" type="Label" parent="."]
-margin_left = 408.0
-margin_top = 232.958
-margin_right = 461.0
-margin_bottom = 256.958
-custom_colors/font_color = Color( 0.271519, 0.851563, 0.252808, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
-
-[node name="charges" type="Label" parent="."]
-margin_left = 338.0
-margin_top = 232.958
-margin_right = 391.0
-margin_bottom = 256.958
-custom_colors/font_color = Color( 0.271519, 0.851563, 0.252808, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
-
-[node name="manaicon" type="TextureRect" parent="."]
-margin_left = 68.567
-margin_top = 221.702
-margin_right = 108.567
-margin_bottom = 261.702
-texture = ExtResource( 3 )
-
-[node name="energyicon" type="TextureRect" parent="."]
-margin_left = 10.0
-margin_top = 222.0
-margin_right = 49.0
-margin_bottom = 261.0
-texture = ExtResource( 4 )
-expand = true
-
-[node name="cdicon" type="TextureRect" parent="."]
-margin_left = 362.0
-margin_top = 221.958
-margin_right = 406.0
-margin_bottom = 263.958
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
-
-[node name="chargeicon" type="TextureRect" parent="."]
-margin_left = 292.0
-margin_top = 221.958
-margin_right = 336.0
-margin_bottom = 263.958
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 6
-
+[node name="cost" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = -37.0
+margin_right = 421.0
+margin_bottom = -6.0
+text = "Cost"
+valign = 1

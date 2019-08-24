@@ -83,6 +83,7 @@ func CompleteReqs():
 	Reward()
 
 func Reward():
+	input_handler.PlaySound("questcomplete")
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':

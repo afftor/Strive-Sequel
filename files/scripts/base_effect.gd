@@ -106,6 +106,13 @@ func get_applied_obj():
 		applied_char = state.combatparty[applied_pos] #to change after final version of parties storing in state
 	return characters_pool.get_char_by_id(applied_char)
 
+#func createfromtemplate(buff_t):
+#	if typeof(buff_t) == TYPE_STRING:
+#		template = Effectdata.effect_table[buff_t]
+#	else:
+#		template = buff_t.duplicate()
+#	if template.has('tags'):
+#		tags = template.tags.duplicate()
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:
 		template = Effectdata.effect_table[buff_t].duplicate()

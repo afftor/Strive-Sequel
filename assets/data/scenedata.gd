@@ -1,9 +1,9 @@
 extends Node
 
 var scenedict = {
-	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = null, tags = [], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = null, tags = ['scene_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	
-	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
+	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = null, tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
 	
 	
 	#dialogue_praise = {text = tr('DIALOGUEPRAISETEXT'),tags = [], image = null, options = [{code = 'close', reqs = [], text = tr('DIALOGUECLOSE')}]},
@@ -70,6 +70,38 @@ var scenedict = {
 	]
 	},
 	
+	#items with options
+	
+	minorus_potion_select = {text = tr("DIALOGUEEVENTMINORUSSELECT"), 
+	tags = ['custom_effect','scene_character_translate'],
+	image = null, 
+	options = [
+	{code = 'minorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
+	{code = 'minorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
+	{code = 'minorus_balls', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'minorus_penis', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	]
+	},
+	majorus_potion_select = {text = tr("DIALOGUEEVENTMAJORUSSELECT"), 
+	tags = ['custom_effect','scene_character_translate'],
+	image = null, 
+	options = [
+	{code = 'majorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
+	{code = 'majorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
+	{code = 'majorus_balls', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'majorus_penis', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	]
+	},
+	
+	minorus_potion_tits = {text = tr("DIALOGUEMINORUSPOTTITS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	minorus_potion_ass = {text = tr("DIALOGUEMINORUSPOTASS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	minorus_potion_penis = {text = tr("DIALOGUEMINORUSPOTPENIS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	minorus_potion_balls = {text = tr("DIALOGUEMINORUSPOTBALLS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	majorus_potion_tits = {text = tr("DIALOGUEMAJORUSPOTTITS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	majorus_potion_ass = {text = tr("DIALOGUEEMAJORUSPOTASS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	majorus_potion_penis = {text = tr("DIALOGUEMAJORUSPOTPENIS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	majorus_potion_balls = {text = tr("DIALOGUEEMAJORUSPOTBALLS"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	potion_no_effect = {text = tr("DIALOGUEPOTIONNOEFFECT"), image = null, tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
 	#Story Events
 	daisy_meet = {

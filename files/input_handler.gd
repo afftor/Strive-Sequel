@@ -297,6 +297,10 @@ func StopTweenRepeat(node):
 	tween.remove_all()
 
 #Music
+func SetMusicRandom(category):
+	var track = audio.music_categories[category]
+	track = track[randi()%track.size()]
+	SetMusic(track)
 
 func SetMusic(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
@@ -434,7 +438,16 @@ func itemshadeimage(node, item):
 
 
 #Enlarge/fade out animation
-
+func OpenAnimation(node):
+	if BeingAnimated.has(node) == true:
+		return
+	BeingAnimated.append(node)
+	node.visible = true
+	var tweennode = GetTweenNode(node)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.start()
+	yield(get_tree().create_timer(0.15), 'timeout')
+	BeingAnimated.erase(node)
 
 func CloseAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -442,15 +455,12 @@ func CloseAnimation(node):
 	BeingAnimated.append(node)
 	var tweennode = GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweennode.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(0.7,0.6), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tweennode.start()
-	yield(get_tree().create_timer(0.3), 'timeout')
+	yield(get_tree().create_timer(0.15), 'timeout')
 	node.visible = false
 	BeingAnimated.erase(node)
-	#globals.hidetooltip()
-	#globals.call_deferred('EventCheck');
 
-func OpenAnimation(node):
+func OldOpenAnimation(node):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
@@ -461,7 +471,19 @@ func OpenAnimation(node):
 	tweennode.start()
 	yield(get_tree().create_timer(0.3), 'timeout')
 	BeingAnimated.erase(node)
-	#globals.call_deferred('EventCheck');
+
+func OldCloseAnimation(node):
+	if BeingAnimated.has(node) == true:
+		return
+	BeingAnimated.append(node)
+	var tweennode = GetTweenNode(node)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.interpolate_property(node, 'rect_scale', Vector2(1,1), Vector2(0.7,0.6), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.start()
+	yield(get_tree().create_timer(0.3), 'timeout')
+	node.visible = false
+	BeingAnimated.erase(node)
+
 
 func FadeAnimation(node, time = 0.3, delay = 0):
 	var tweennode = GetTweenNode(node)
@@ -768,7 +790,7 @@ func interactive_message(code, type, args):
 				data.text += args.bonustext
 			if args.has('repeat'):
 				data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = !args.repeat})
-		'escape':
+		'char_translate':
 			data.text = args.translate(data.text)
 		'character_event':
 			var newcharacter
@@ -785,7 +807,6 @@ func interactive_message(code, type, args):
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
 			scene_character = args.pregchar
-			data.text = scene_character.translate(data.text)
 			var baby = state.babies[scene_character.pregnancy.baby]
 			data.options.append({code = 'inspect_character_child', text = tr("DIALOGUEINSPECTBABY")})
 		'event_selection':
@@ -826,7 +847,8 @@ func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
-	slave_panel_node.open(null)
+	if slave_panel_node.visible == true:
+		slave_panel_node.open(null)
 
 func check_mouse_in_nodes(nodes):
 	var check = false

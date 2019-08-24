@@ -9,8 +9,7 @@ func _ready():
 	
 	if variables.unlock_all_upgrades == true:
 		for i in globals.upgradelist.values():
-			selectupgrade(i)
-			unlockupgrade()
+			state.upgrades[i.code] = i.levels.keys().back()
 	yield(get_tree().create_timer(0.3), "timeout")
 	hide()
 	
@@ -29,8 +28,8 @@ func open():
 		var currentupgradelevel = findupgradelevel(i)
 		
 		var check = true
-		if i.levels.has(currentupgradelevel):
-			for k in i.levels[currentupgradelevel].unlockreqs:
+		if i.levels.has(currentupgradelevel+1):
+			for k in i.levels[currentupgradelevel+1].unlockreqs:
 				if state.valuecheck(k) == false:
 					check = false
 		if check == false:
@@ -38,17 +37,17 @@ func open():
 		
 		var text = i.name
 		
-		if currentupgradelevel > 1 && i.levels.has(currentupgradelevel):
-			text += ": " + str(currentupgradelevel)
+		if currentupgradelevel > 0 && i.levels.has(currentupgradelevel+1):
+			text += ": " + str(currentupgradelevel+1)
 		
 		
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		if i.levels.has(currentupgradelevel) == false:
+		if i.levels.has(currentupgradelevel+1) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0,0.6,0))
 			text += ' Unlocked'
-			newbutton.get_node("icon").texture = i.levels[currentupgradelevel-1].icon
-		else:
-			newbutton.get_node("icon").texture = i.levels[currentupgradelevel].icon
+			#newbutton.get_node("icon").texture = i.levels[currentupgradelevel-1].icon
+		#else:
+			#newbutton.get_node("icon").texture = i.levels[currentupgradelevel].icon
 		if state.upgrade_progresses.has(i.code):
 			newbutton.get_node("progress").visible = true
 			newbutton.get_node("progress").value = state.upgrade_progresses[i.code].progress
@@ -56,6 +55,7 @@ func open():
 		if state.selected_upgrade.code == i.code:
 			text += " - Current Upgrade"
 		newbutton.get_node("name").text = text
+		newbutton.set_meta('upgrade', i)
 		newbutton.connect("pressed", self, "selectupgrade", [i])
 	
 	if state.selected_upgrade.code != '':
@@ -86,11 +86,12 @@ func selectupgrade(upgrade):
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
 	
-	
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		i.pressed = i.get_meta("upgrade") == selectedupgrade
 	
 	globals.ClearContainer($UpgradeDescript/HBoxContainer)
 	
-	var currentupgradelevel = findupgradelevel(upgrade)
+	var currentupgradelevel = findupgradelevel(upgrade)+1
 	
 	
 	if currentupgradelevel > 1:
@@ -127,10 +128,10 @@ func selectupgrade(upgrade):
 	$UpgradeDescript/UnlockButton.visible = canpurchase
 
 func findupgradelevel(upgrade):
-	var rval = 1
+	var rval = 0
 	if state.upgrades.has(upgrade.code):
-		rval = max(1, state.upgrades[upgrade.code])
-	return rval
+		rval = state.upgrades[upgrade.code]
+	return int(rval)
 
 
 func unlockupgrade():

@@ -28,7 +28,6 @@ func createfromtemplate(buff_t):
 func get_tooltip():
 	calculate_args()
 	return description % args
-	pass
 
 func get_icon():
 	if icon.is_rel_path() or icon.is_abs_path():

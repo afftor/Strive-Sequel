@@ -19,6 +19,8 @@ var sexbodypartsarray = ['penis_size', 'penis_type', 'balls_size','tits_size', '
 
 var selected_class = ''
 
+var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
+
 func _ready():
 	globals.AddPanelOpenCloseAnimation($RaceSelection)
 	for i in agearray:
@@ -154,6 +156,7 @@ func open(type = 'slave'):
 	preservedsettings.clear()
 	show()
 	
+	$introduction.bbcode_text = introduction_text[type]
 	selected_class = ''
 	
 	person = Slave.new()
@@ -194,7 +197,6 @@ func rebuild_slave():
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
 		else:
 			$VBoxContainer.get_node(i).text = person.get(i)
-	
 	RebuildStatsContainer()
 	build_bodyparts()
 	apply_preserved_settings()
@@ -249,8 +251,16 @@ func show_race_info(temprace):
 	var text = race.descript
 	
 	text += "\n\nRace bonuses: "
-	for i in race.racetrait:
-		text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
+	for i in race.race_bonus:
+		if (i as String).begins_with('resist'):
+			text += i.replace("resist","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
+			continue
+		if globals.statdata[i].has("percent") && globals.statdata[i].percent == true:
+			text += globals.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
+		else:
+			text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
+#	for i in race.race_bonus:
+#		text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
 	
@@ -283,8 +293,11 @@ func RebuildStatsContainer():
 			array.append(i)
 			if preservedsettings.has(i.code) == false:
 				preservedsettings[i.code] = 1
+			else:
+				person[i.code] = preservedsettings[i.code]
 			if i.code in ['growth_factor','brave_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
+			
 	
 	var counter = total_stat_points
 	
@@ -311,7 +324,7 @@ func RebuildStatsContainer():
 	unassigned_points = counter
 	$totalstatlabel.text = 'Free points left: ' + str(counter)
 	
-	apply_preserved_settings()
+	#apply_preserved_settings()
 	if selected_class != '' && person.checkreqs(Skilldata.professions[selected_class].reqs) == false:
 		selected_class = ''
 		check_confirm_possibility()
@@ -332,7 +345,7 @@ func stat_down(stat):
 
 func build_bodyparts():
 	var racedata = races.racelist[person.race].bodyparts
-	
+	#print(person.skin)
 	for i in bodypartsarray:
 		$bodyparts.get_node(i).clear()
 		var current_bodypart = person.get(i)
@@ -355,7 +368,9 @@ func build_bodyparts():
 				$bodyparts.get_node(i).select($bodyparts.get_node(i).get_item_count()-1)
 		
 		if preserved_option_exists == false:
-			preservedsettings[i] = person.get(i)
+			preservedsettings.erase(i)
+			#preservedsettings[i] = person.get(i)
+			#print(i, person.get(i))
 		
 		
 		
@@ -366,7 +381,6 @@ func build_bodyparts():
 		
 		$bodyparts.get_node(i).visible = $bodyparts.get_node(i).get_item_count() != 0
 		$bodyparts.get_node(i+'_label').visible = $bodyparts.get_node(i).visible
-	
 	for i in sexbodypartsarray:
 		$bodyparts2.get_node(i).clear()
 		var current_bodypart = person.get(i)
@@ -374,9 +388,14 @@ func build_bodyparts():
 		if preservedsettings.has(i) == false && current_bodypart != '':
 			preservedsettings[i] = current_bodypart
 		
-		if i == 'penis_type' && racedata.has(i) && !racedata[i].has(person[i]):
+		
+		if i == 'penis_type' && racedata.has(i) && !racedata[i].has(preservedsettings[i]):
 			person.set(i, racedata[i][randi()%racedata[i].size()])
 			preservedsettings[i] = person[i]
+		elif i == 'penis_type' && racedata.has(i) == false && preservedsettings[i] != 'human':
+			person.set(i, 'human')
+			preservedsettings[i] = person[i]
+		
 		
 		match person.sex:
 			'male':
@@ -457,9 +476,11 @@ func finish_character():
 	apply_preserved_settings()
 	state.add_slave(person)
 	person.unlock_class(selected_class)
-	input_handler.emit_signal("CharacterCreated")
 	person.food_consumption = 3
+	person.hp = person.get_stat('hpmax')
+	person.mp = person.get_stat('mpmax')
 	self.hide()
+	input_handler.emit_signal("CharacterCreated")
 
 func open_sex_traits():
 	$TraitSelection.show()

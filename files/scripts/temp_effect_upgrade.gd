@@ -73,7 +73,7 @@ func upgrade():
 	createfromtemplate(template.next_level)
 	if template.has('stages'):
 		stage = 1
-	apply()
+	get_applied_obj().apply_effect(id)
 	pass
 
 func downgrade():

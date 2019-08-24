@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/inventory/Group 5.png" type="Texture" id=2]
@@ -13,9 +13,9 @@
 [ext_resource path="res://assets/images/gui/inventory/icon_food.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/inventory/icon_p_food.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/inventory/icon_s_food.png" type="Texture" id=13]
-[ext_resource path="res://files/buttons/inventory/use0.png" type="Texture" id=14]
-[ext_resource path="res://files/buttons/inventory/use2.png" type="Texture" id=15]
-[ext_resource path="res://files/buttons/inventory/use1.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/inventory/icon_potion.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/inventory/icon_p_potion.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/inventory/icon_s_potion.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/inventory/icon_res.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/inventory/icon_p_res.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/inventory/icon_s_res.png" type="Texture" id=19]
@@ -40,9 +40,10 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=39]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=40]
-[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=41]
-[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=42]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=43]
+[ext_resource path="res://files/ItemShader.tres" type="Material" id=41]
+[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=42]
+[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=44]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -55,7 +56,7 @@ margin_bottom = 85.6616
 [sub_resource type="DynamicFont" id=2]
 size = 46
 use_filter = true
-font_data = ExtResource( 43 )
+font_data = ExtResource( 44 )
 
 [node name="Panel" type="Panel" groups=[
 "pauseprocess",
@@ -77,7 +78,6 @@ margin_right = 1904.0
 margin_bottom = 1069.0
 
 [node name="HiddenContainer" type="ScrollContainer" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 81.0
 margin_top = 230.0
@@ -100,6 +100,7 @@ margin_right = 488.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+editor/display_folded = true
 visible = false
 margin_right = 488.0
 margin_bottom = 50.0
@@ -148,6 +149,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0000"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 50.1578
 margin_top = 171.947
 margin_right = 606.158
@@ -332,8 +334,6 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
-editor/display_folded = true
-visible = false
 margin_left = 657.0
 margin_top = 70.0
 margin_right = 1313.0
@@ -346,10 +346,10 @@ texture = ExtResource( 37 )
 stretch_mode = 7
 
 [node name="chest" type="TextureButton" parent="GearPanel"]
-margin_left = 327.0
-margin_top = 343.0
-margin_right = 427.0
-margin_bottom = 443.0
+margin_left = 267.0
+margin_top = 338.0
+margin_right = 367.0
+margin_bottom = 438.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -358,18 +358,21 @@ expand = true
 
 [node name="icon" type="TextureRect" parent="GearPanel/chest"]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
+material = ExtResource( 41 )
+margin_top = -0.546295
+margin_right = 100.0
+margin_bottom = 99.4537
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
 [node name="underwear" type="TextureButton" parent="GearPanel"]
-margin_left = 207.0
-margin_top = 343.0
-margin_right = 307.0
-margin_bottom = 443.0
+editor/display_folded = true
+margin_left = 267.0
+margin_top = 523.0
+margin_right = 367.0
+margin_bottom = 623.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -381,11 +384,12 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="legs" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 267.0
 margin_top = 773.0
 margin_right = 367.0
@@ -402,11 +406,12 @@ margin_top = -1.22778
 margin_right = 100.0
 margin_bottom = 98.7722
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="hands" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 27.0
 margin_top = 353.0
 margin_right = 127.0
@@ -422,11 +427,12 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="rhand" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 27.0
 margin_top = 473.0
 margin_right = 127.0
@@ -442,11 +448,12 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="lhand" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 527.0
 margin_top = 473.0
 margin_right = 627.0
@@ -462,11 +469,12 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="neck" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 267.0
 margin_top = 223.0
 margin_right = 367.0
@@ -482,11 +490,12 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="head" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 267.0
 margin_top = 43.0
 margin_right = 367.0
@@ -502,15 +511,16 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="ass" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 327.0
-margin_top = 593.0
+margin_top = 633.0
 margin_right = 427.0
-margin_bottom = 693.0
+margin_bottom = 733.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -522,15 +532,16 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="crotch" type="TextureButton" parent="GearPanel"]
+editor/display_folded = true
 margin_left = 217.0
-margin_top = 593.0
+margin_top = 633.0
 margin_right = 317.0
-margin_bottom = 693.0
+margin_bottom = 733.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 39 )
@@ -542,11 +553,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
-[node name="StatsPanel" parent="." instance=ExtResource( 42 )]
+[node name="StatsPanel" parent="." instance=ExtResource( 43 )]
 visible = false
 margin_left = 1339.0
 margin_top = 70.0

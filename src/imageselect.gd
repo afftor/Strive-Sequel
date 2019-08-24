@@ -152,9 +152,9 @@ func _on_search_text_changed( text ):
 
 func _on_removeportrait_pressed():
 	if mode == 'portrait':
-		person.icon_image = null
+		person.icon_image = 'default'
 	elif mode == 'body':
-		person.body_image = null
+		person.body_image = 'default'
 	self.visible = false
 	updatepage()
 
@@ -181,6 +181,10 @@ func _on_reverseportrait_pressed():
 		self.visible = false
 		person.imagefull = null
 		updatepage()
+	else:
+		person.body_image = 'default'
+		person.icon_image = 'default'
+		updatepage()
 
 
 
@@ -198,7 +202,8 @@ func _on_openfolder_pressed():
 	OS.shell_open(OS.get_user_data_dir())
 
 func updatepage():
-	pass
+	input_handler.update_slave_panel()
+	input_handler.update_slave_list()
 #	if person == globals.player:
 #		get_tree().get_current_scene()._on_selfbutton_pressed()
 #	else:

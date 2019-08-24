@@ -38,6 +38,8 @@ func clear():
 
 func select_category(category):
 	craft_category = category
+	for i in $categories.get_children():
+		i.pressed = i.name == category
 	globals.ClearContainer($CraftScheldue/VBoxContainer)
 	globals.ClearContainer($CraftSelect/VBoxContainer)
 	for i in Items.recipes.values():
@@ -50,7 +52,7 @@ func select_category(category):
 			globals.connecttempitemtooltip(newbutton.get_node('icon'), item, 'geartemplate')
 		else:
 			item = Items.materiallist[i.resultitem]
-			globals.connectmaterialtooltip(newbutton.get_node('icon'), item, 'material')
+			globals.connectmaterialtooltip(newbutton.get_node('icon'), item, '')
 		newbutton.get_node("number").text = str(i.resultamount)
 		newbutton.get_node('Label').text = item.name
 		newbutton.connect("pressed", self, 'selectcraftitem', [i])
@@ -66,7 +68,7 @@ func select_category(category):
 			for k in i.materials:
 				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var recipeitem = Items.materiallist[k]
-				globals.connectmaterialtooltip(newnode,recipeitem,'material')
+				globals.connectmaterialtooltip(newnode,recipeitem,'')
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':
@@ -80,7 +82,7 @@ func select_category(category):
 		
 		
 		var progressnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
-		progressnode.texture = load("res://assets/images/gui/taskmenu/timeicon.png")
+		progressnode.texture = load("res://assets/images/gui/craftgui/Time.png")
 		progressnode.get_node("Label").text = str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
 	
@@ -195,7 +197,7 @@ func choosematerial(button):
 	
 	for i in Items.materiallist.values():
 		var tempmaterial = state.materials[i.code]
-		if !i.has("parts"):
+		if !i.has("parts") || tempmaterial < 1:
 			continue
 		if i.parts.has(part):
 			var newbutton = $NumberSelect/MaterialSelect/Container/VBoxContainer/Button.duplicate()

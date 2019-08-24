@@ -1,25 +1,34 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
-var tabnames = {Audio = "AUDIO", Graphics = "GRAPHICS", Text = "TEXT"}
+#warning-ignore-all:return_value_discarded
+var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
 
 func _ready():
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
 		i.get_node("CheckBox").connect('pressed', self, 'mutepressed', [i.get_node("CheckBox")])
-#warning-ignore:return_value_discarded
-	$TabContainer/Text/textspeed.connect("value_changed", self, 'textspeed') 
-#warning-ignore:return_value_discarded
-	$TabContainer/Text/skipread.connect("pressed", self, 'pressedskipread') 
-#warning-ignore:return_value_discarded
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
-#warning-ignore:return_value_discarded
 	$CloseButton.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
+	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
+	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
+	
+	for i in ['furry','furry_multiple_nipples', 'futa_balls']:
+		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
+		get_node("TabContainer/Gameplay/" + i).pressed = globals.globalsettings[i]
+	
+	for i in cheats:
+		var newbutton = globals.DuplicateContainerTemplate($TabContainer/debug/ScrollContainer/VBoxContainer)
+		newbutton.pressed = variables.get(i)
+		newbutton.text = i
+		newbutton.connect("pressed", self, 'cheat_toggle', [i, newbutton])
+
 
 func open():
 	show()
-	$TabContainer/Text/skipread.pressed = globals.globalsettings.skipread
-	$TabContainer/Text/textspeed.value = globals.globalsettings.textspeed
+	male_rate_change(globals.globalsettings.malechance)
+	futa_rate_change(globals.globalsettings.futachance)
+	
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
@@ -52,11 +61,24 @@ func updatesounds():
 		AudioServer.set_bus_volume_db(counter, globals.globalsettings[i+'vol'])
 		counter += 1
 
-func textspeed(value):
-	globals.globalsettings.textspeed = value
-
-func pressedskipread():
-	globals.globalsettings.skipread = $TabContainer/Text/skipread.pressed
 
 func close():
 	hide()
+
+func cheat_toggle(i, button):
+	variables[i] = button.pressed
+
+func male_rate_change(value):
+	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
+	globals.globalsettings.malechance = value
+	var text = 'Male generation chance: ' + str(value) + "%"
+	$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
+
+func futa_rate_change(value):
+	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
+	globals.globalsettings.futarate = value
+	var text = 'Futa generation chance: ' + str(value) + "%"
+	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
+
+func gameplay_rule(rule):
+	globals.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed

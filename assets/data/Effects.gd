@@ -98,7 +98,7 @@ var effect_table = {
 	},
 	e_tr_hunter = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5}, {type = 'stat_add_p', stat = 'mod_fish', value = 0.5}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -134,13 +134,13 @@ var effect_table = {
 	},
 	e_tr_harlot = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros_gold', value = 0.5}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.5}],
 		buffs = [],
 		sub_effects = [],
 	},
 	e_tr_pet = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_pros_gold', value = 0.25}],
+		atomic = [{type = 'stat_add_p', stat = 'mod_pros', value = 0.25}],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -238,7 +238,6 @@ var effect_table = {
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'hardwork',
 		tick_event = variables.TR_TICK,
 		duration = 'parent', 
@@ -247,7 +246,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.5},
-			#{type = 'stat_add', stat = 'productivity', value = 50},
 		],
 		buffs = [
 			{
@@ -255,6 +253,65 @@ var effect_table = {
 				description = "Productivity increased",
 				limit = 1,
 				t_name = 'hardwork'
+			}
+		],
+	},
+	e_food_like = {
+		type = 'temp_s',
+		name = 'food_like',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", 
+				description = "Favorite Food: Productivity increased by 10%%.",
+				limit = 1,
+				t_name = 'food_like'
+			}
+		],
+	},
+	e_food_dislike = {
+		type = 'temp_s',
+		name = 'food_dislike',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = -0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", 
+				description = "Hated Food: Productivity reduced by 10%%.",
+				limit = 1,
+				t_name = 'food_hate'
+			}
+		],
+	},
+	e_starve = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'starvation',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsitems/food_old.png", 
+				description = "No food has been eaten: Exhaustion does not restore while resting.",
+				limit = 1,
+				t_name = 'starvation'
 			}
 		],
 	},
@@ -270,6 +327,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add_p', stat = 'mod_collect', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_hunt', value = 0.5},
+			{type = 'stat_add_p', stat = 'mod_fish', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_cook', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_smith', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.5},
@@ -291,7 +349,7 @@ var effect_table = {
 		target = 'target',
 		name = 'seduce',
 		tick_event = variables.TR_TICK,
-		duration = 'parent', 
+		duration = 'parent_arg', 
 		stack = 1,
 		no_obed_reduce = true,
 		no_escape = true,
@@ -300,19 +358,19 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "", 
-				description = "seduced",
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = tr("BUFFSEDUCE"),
 				limit = 1,
 				t_name = ''
 			}
 		],
 	},
-	e_t_seduce1 = {
+	e_t_greatseduce = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'seduce1',
 		tick_event = variables.TR_TICK,
-		duration = 'parent', 
+		duration = 'parent_arg', 
 		stack = 1,
 		no_obed_reduce = true,
 		no_escape = true,
@@ -321,8 +379,8 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.5}],
 		buffs = [
 			{
-				icon = "", 
-				description = "seduced",
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = tr("BUFFGREATSEDUCE"),
 				limit = 1,
 				t_name = ''
 			}
@@ -1429,31 +1487,87 @@ var effect_table = {
 	},
 	e_i_shackles = {
 		type = 'c_static',
-		conditions = [{type = 'stats', name = 'body_factor', operant = 'lt', value = 4}],
+		descript = 'Prevents escape if Physics Factor less than 4',
+		conditions = [{type = 'stats', name = 'physics_factor', operant = 'lt', value = 4}],
 		tags = ['recheck_stats', 'recheck_item'],
 		no_escape = true,
 		atomic = [],
 		buffs = [],
 		sub_effects = [],
 	},
-	e_i_pet = {
+	e_i_pet_suit = {
+		type = 'static',
+		conditions = [],
+		descript = "Obedience Decoy: -15%\nFear Decoy: -20%.",
+		tags = ['recheck_class', 'recheck_item'],
+		atomic = [
+		{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8},
+		{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_i_pet_suit_bonus = {
 		type = 'c_static',
 		conditions = [{type = 'class', value = 'pet'}],
+		descript = "When wearer has Pet class:\nCharm: +10\nSocial skills effect: +10%.",
 		tags = ['recheck_class', 'recheck_item'],
-		no_escape = true,
-		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 15}],
+		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		buffs = [],
-		sub_effects = ['e_master_small'],
+		sub_effects = ['e_pet_suit_bonus_skill'],
+	},
+	e_maid_dress_effect = {
+		type = 'static',
+		conditions = [],
+		descript = "Obedience Decay: -25%",
+		tags = [],
+		atomic = [
+		{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.75},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_worker_outfit_effect = {
+		type = 'static',
+		conditions = [],
+		descript = "Hunting, Fishing and Collecting Tasks: +25%",
+		tags = [],
+		atomic = [
+		{type = 'stat_add_p', stat = 'mod_hunt', value = 0.25}, 
+		{type = 'stat_add_p', stat = 'mod_fish', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_collect', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_farm', value = 0.25},
+		
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_craftman_suit_effect = {
+		type = 'static',
+		conditions = [],
+		descript = "Cooking, Smithing, Alchemy, Tailor and Upgrading Tasks: +25%",
+		tags = [],
+		atomic = [
+		{type = 'stat_add_p', stat = 'mod_cook', value = 0.25}, 
+		{type = 'stat_add_p', stat = 'mod_smith', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_build', value = 0.25},
+		{type = 'stat_add_p', stat = 'mod_tailor', value = 0.25},
+		
+		],
+		buffs = [],
+		sub_effects = [],
 	},
 	e_i_anal = {
 		type = 'c_static',
 		conditions = [{type = 'trait', value = 'anal'}],
 		tags = ['recheck_trait', 'recheck_item'],
+		descript = 'If wearer has "Likes Anal" trait: Lust growth + 15%.',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
 		buffs = [],
 		sub_effects = [],
 	},
-	e_master_small = {
+	e_pet_suit_bonus_skill = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],
 		req_skill = true,
@@ -1470,17 +1584,18 @@ var effect_table = {
 			}
 		]
 	},
-	e_i_counter1 = {
+	e_handcuffs_effect = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
+		descript = 'Prolonged wearing might cause wearer to become Submissive.',
 		req_skill = false,
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
 				index = 1,
-				value = 1,# X from item description
+				value = 8,# X from item description
 				args = [{obj = 'template', param = 'index'},{obj = 'template', param = 'value'}],
 				atomic = ['a_add_counter_args'],
 			},
@@ -1496,17 +1611,18 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_i_counter2 = {
+	e_anal_trait_counter = {
 		type = 'trigger',
 		conditions = [],
 		trigger = [variables.TR_DAY],
+		descript = 'Prolonged wearing makes wearer more responsive to Anal.',
 		req_skill = false,
-		args = [{obj = 'app_obj', param = 'sex_factor'}],
+		args = [{obj = 'app_obj', param = 'sexuals_factor'}],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'owner',
-				X = 1.0, #X from item description
+				X = 2,
 				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 2, value = [['parent_args', 0],'*',['parent_args',1]]} 
@@ -1524,47 +1640,60 @@ var effect_table = {
 		],
 		buffs = []
 	},
-	e_i_counter3 = {
-		type = 'trigger',
-		conditions = [],
-		trigger = [variables.TR_DAY],
-		req_skill = false,
-		args = [{obj = 'app_obj', param = 'sex_factor'}],
-		sub_effects = [
-			{
-				type = 'oneshot',
-				target = 'owner',
-				X = 1.0, #X from item description
-				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
-				atomic = [
-					{type = 'add_counter', index = 3, value = [['parent_args', 0],'*',['parent_args',1]]} 
-				],
-			},
-			{
-				type = 'oneshot',
-				target = 'owner',
-				conditions = [
-					{type = 'stat_index', name = 'counters', index = 3, operant = 'gte', value = 100},
-					{type = 'not_trait', value = 'anal'},
-				],
-				atomic = [{type = 'add_sex_trait', trait = 'anal'}],
-			},
-		],
-		buffs = []
-	},
-	e_res = {
-		type = 'oneshot',
-		target = 'target',
-		args = [{obj = 'parent_args', param = 0}],
-		atomic = ['a_res'],
-	},
 	#temp items
-	e_temp_collar1 = {
+	e_leather_collar_effect = {
 		type = 'static',
 		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8}],
+		descript = 'Reduces Fear decay by 20%.',
 		buffs = [],
 		sub_effects = [],
 	},
+	e_chocker_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.9},{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85}],
+		descript = "Reduces Fear decay by 10%.\nReduces Obedience decay by 15%.",
+		buffs = [],
+		sub_effects = [],
+	},
+	e_steel_collar_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.75}],
+		descript = 'Reduces Fear decay by 25%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tail_plug_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.1}],
+		descript = 'Increases Lust growth by 10%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tail_plug_bonus = {
+		type = 'c_static',
+		tags = ['recheck_item'],
+		conditions = [{type = 'gear', name = 'pet_suit', check = true}],
+		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
+		descript = 'Increases Charm by 10 if Pet Suit equipped.',
+		buffs = [],
+		sub_effects = [],
+	},
+	
+	e_sunderwear_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.25}],
+		descript = 'Increases Lust growth by 25%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tentacle_suit_effect = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 1}],
+		descript = 'Increases Lust growth by 100%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	
 	#core
 	e_fire_custom = {
 		type = 'oneshot',
@@ -1855,6 +1984,48 @@ var effect_table = {
 				description = "Productivity increased by 20%%",
 				limit = 1,
 				t_name = "Master's Morale",
+			}
+		],
+	},
+	satisfaction_1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Satisfaction",
+		tick_event = variables.TR_TICK,
+		duration = 36, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = "Productivity increased by 10%%",
+				limit = 1,
+				t_name = "Satisfaction",
+			}
+		],
+	},
+	satisfaction_2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = "Satisfaction",
+		tick_event = variables.TR_TICK,
+		duration = 36, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
+				description = "Productivity increased by 20%%",
+				limit = 1,
+				t_name = "Satisfaction",
 			}
 		],
 	},
