@@ -1,5 +1,6 @@
 extends Control
 
+#warning-ignore-all:return_value_discarded
 var currentenemies
 var area
 var turns = 0
@@ -58,23 +59,20 @@ onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Pane
 7 : $Panel2/EnemyGroup/Front/left, 8 : $Panel2/EnemyGroup/Front/mid, 9 : $Panel2/EnemyGroup/Front/right,
 10: $Panel2/EnemyGroup/Back/left, 11 : $Panel2/EnemyGroup/Back/mid, 12 : $Panel2/EnemyGroup/Back/right}
 
-var testenemygroup = {1 : 'elvenrat', 5 : 'elvenrat', 6 : 'elvenrat'}
-var testplayergroup = {4 : 'elvenrat', 5 : 'elvenrat', 6 : 'elvenrat'}
 
-var dummy = {
-	triggered_effects = []
-}
-
+var dummy
 
 func _ready():
 	battlefield.resize(14)
 	for i in range(1,13):
 		battlefield[i] = null
 	add_child(CombatAnimations)
-#warning-ignore:return_value_discarded
 	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
-#warning-ignore:return_value_discarded
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
+	
+#	if variables.combat_tests == true:
+#		start_combat(testplayergroup, testenemygroup, 'mansion')
+	
 
 
 func cheatvictory():

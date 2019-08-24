@@ -1,6 +1,8 @@
 extends Node
 
-
+var predeterminatedgroups = {
+	rats_easy = {group = {1 : 'rat', 2 : 'rat'}}
+} 
 
 var enemygroups = {
 	rats_easy = {reqs = [], units = {rat = [2,6]}},
