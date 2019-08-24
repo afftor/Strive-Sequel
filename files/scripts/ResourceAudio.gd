@@ -19,9 +19,13 @@ var music = {
 	gorn = load("res://assets/sounds/music/gorn.ogg"),
 	frostford = load("res://assets/sounds/music/frostford.ogg"),
 	
-	opening = load("res://assets/sounds/music/opening.ogg"),
+	intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),
 	
+}
+
+var music_categories = {
+	mansion = ['mansion1','mansion2','mansion3','mansion4']
 }
 
 var sounds = {
@@ -38,6 +42,9 @@ var sounds = {
 	crash = load("res://assets/sounds/sounds/crash.wav"),
 	punch = load("res://assets/sounds/sounds/punch.wav"),
 	
+	door_open = load("res://assets/sounds/sounds/door.wav"),
+	ding = load("res://assets/sounds/sounds/ding.wav"),
+	
 	morning = load("res://assets/sounds/sounds/morning_rooster.wav"),
 	
 	gameover = load("res://assets/sounds/sounds/GameOver.wav"),
@@ -45,7 +52,7 @@ var sounds = {
 	blade = load("res://assets/sounds/sounds/dodge.wav"),#load("res://assets/sounds/sounds/fx knife hit solo.wav"),
 	fleshhit = load("res://assets/sounds/sounds/fx knife body hit.wav"),
 	bow = load("res://assets/sounds/sounds/ArrowShot.wav"),
-	heal = load("res://assets/sounds/sounds/healeffect.wav"),
+	skill_scene = load("res://assets/sounds/sounds/healeffect.wav"),
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),
 	building = load("res://assets/sounds/sounds/building.wav"),
@@ -56,6 +63,13 @@ var sounds = {
 	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
 	dodge = load("res://assets/sounds/sounds/dodge.wav"),
 	levelup = load("res://assets/sounds/sounds/levelup.wav"),
+	
+	questcomplete = load("res://assets/sounds/sounds/win.wav"),
+	
+	page = load('res://assets/sounds/sounds/page.wav'),
+	book = load('res://assets/sounds/sounds/book.wav'),
+	
+	magic = load("res://assets/sounds/sounds/magic.wav"),
 	
 	#skills
 	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),

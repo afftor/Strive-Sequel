@@ -1,8 +1,8 @@
 extends Node
 
-
-func _ready():
-	build_world()
+#
+#func _ready():
+#	build_world()
 
 func build_world():
 	for i in lands:
@@ -220,7 +220,7 @@ func make_guild(code, area):
 		questpool = {easy = factiondata.quests_easy, medium = factiondata.quests_medium, hard = factiondata.quests_hard},
 		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
-		reputation = 5000,
+		reputation = 0,
 		totalreputation = 0,
 		difficulty = area.difficulty,
 		races = [area.lead_race] + area.secondary_races,
@@ -465,7 +465,7 @@ var questdata = {
 		code = 'workers_threat_basic',
 		type = 'eventlocationquest',
 		name = 'Trouble solving',
-		descript = 'The guild requires a help with a certain issue',
+		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
@@ -474,8 +474,8 @@ var questdata = {
 	warriors_threat_basic = {
 		code = 'warriors_threat_basic',
 		type = 'eventlocationquest',
-		name = '',
-		descript = '',
+		name = 'Trouble solving',
+		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
@@ -484,8 +484,8 @@ var questdata = {
 	warriors_dungeon_basic = {
 		code = 'warriors_dungeon_basic',
 		type = 'dungeonquest',
-		name = '',
-		descript = '',
+		name = 'Dungeon clear',
+		descript = 'The guild requires a local dungeon to be cleared.',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'dungeon', function = 'range', type = ['dungeon_bandit_den_easy', 'dungeon_goblin_cave_easy'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -494,8 +494,8 @@ var questdata = {
 	warriors_monster_hunt_basic = {
 		code = 'warriors_monster_hunt_basic',
 		type = 'monsterhuntquest',
-		name = '',
-		descript = '',
+		name = 'Monster Hunt',
+		descript = 'The guild has a task for hunting certain amount of enemies.',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'monsters', function = 'range', type = ['rat'], range = [6,9]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -504,8 +504,8 @@ var questdata = {
 	warriors_fighter_slave_basic = {
 		code = 'warriors_fighter_slave_basic',
 		type = 'slavegetquest',
-		name = '',
-		descript = '',
+		name = 'Slave Request',
+		descript = 'The guild is in need of specific trained individual.',
 		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat', operant = 'gte', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['physics'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -514,8 +514,8 @@ var questdata = {
 	mages_materials_basic = {
 		code = 'mages_materials_basic',
 		type = 'materialsquest',
-		name = '',
-		descript = '',
+		name = 'Resource gathering',
+		descript = 'The guild requires additional resources for its needs. ',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['salvia','fleawarts','cloth'], range = [15,25]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -524,8 +524,8 @@ var questdata = {
 	mages_craft_potions_basic = {
 		code = 'mages_craft_potions_basic',
 		type = 'itemsquest',
-		name = '',
-		descript = '',
+		name = 'Potion Making',
+		descript = 'The guild requires a certain number of created items.',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'item', function = 'range', type = ['aphrodisiac', 'alcohol'], range = [2,4]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
@@ -534,8 +534,8 @@ var questdata = {
 	mages_threat_basic = {
 		code = 'mages_threat_basic',
 		type = 'eventlocationquest',
-		name = '',
-		descript = '',
+		name = 'Trouble Solving',
+		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
@@ -544,8 +544,8 @@ var questdata = {
 	mages_slave_basic = {
 		code = 'mages_slave_basic',
 		type = 'slavegetquest',
-		name = '',
-		descript = '',
+		name = 'Slave Request',
+		descript = 'The guild is in need of specific trained individual.',
 		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat',operant = 'gte', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['wits'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -554,8 +554,8 @@ var questdata = {
 	servants_craft_items_basic = {
 		code = 'servants_craft_items_basic',
 		type = 'itemsquest',
-		name = '',
-		descript = '',
+		name = 'Items Request',
+		descript = 'The guild needs a specific crafter items',
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'item', function = 'range', type = ['leather_collar'], range = [2,2]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
@@ -564,8 +564,8 @@ var questdata = {
 	servants_slave_basic = {
 		code = 'servants_slave_basic',
 		type = 'slavegetquest',
-		name = '',
-		descript = '',
+		name = 'Slave Request',
+		descript = 'The guild is in need of specific trained individual.',
 		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],

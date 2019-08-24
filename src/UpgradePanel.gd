@@ -9,7 +9,7 @@ func _ready():
 	
 	if variables.unlock_all_upgrades == true:
 		for i in globals.upgradelist.values():
-			state.upgrades[i.code] = i.levels.keys().back()+1
+			state.upgrades[i.code] = i.levels.keys().back()
 	yield(get_tree().create_timer(0.3), "timeout")
 	hide()
 	
@@ -55,6 +55,7 @@ func open():
 		if state.selected_upgrade.code == i.code:
 			text += " - Current Upgrade"
 		newbutton.get_node("name").text = text
+		newbutton.set_meta('upgrade', i)
 		newbutton.connect("pressed", self, "selectupgrade", [i])
 	
 	if state.selected_upgrade.code != '':
@@ -85,7 +86,8 @@ func selectupgrade(upgrade):
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
 	
-	
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		i.pressed = i.get_meta("upgrade") == selectedupgrade
 	
 	globals.ClearContainer($UpgradeDescript/HBoxContainer)
 	

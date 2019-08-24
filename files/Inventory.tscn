@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/inventory/Group 5.png" type="Texture" id=2]
@@ -40,9 +40,10 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=39]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=40]
-[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=41]
-[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=42]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=43]
+[ext_resource path="res://files/ItemShader.tres" type="Material" id=41]
+[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=42]
+[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=44]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -55,7 +56,7 @@ margin_bottom = 85.6616
 [sub_resource type="DynamicFont" id=2]
 size = 46
 use_filter = true
-font_data = ExtResource( 43 )
+font_data = ExtResource( 44 )
 
 [node name="Panel" type="Panel" groups=[
 "pauseprocess",
@@ -345,7 +346,6 @@ texture = ExtResource( 37 )
 stretch_mode = 7
 
 [node name="chest" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 267.0
 margin_top = 338.0
 margin_right = 367.0
@@ -358,11 +358,12 @@ expand = true
 
 [node name="icon" type="TextureRect" parent="GearPanel/chest"]
 show_behind_parent = true
+material = ExtResource( 41 )
 margin_top = -0.546295
 margin_right = 100.0
 margin_bottom = 99.4537
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 
@@ -383,7 +384,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -405,7 +406,7 @@ margin_top = -1.22778
 margin_right = 100.0
 margin_bottom = 98.7722
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -426,7 +427,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -447,7 +448,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -468,7 +469,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -489,7 +490,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -510,7 +511,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -531,7 +532,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -552,11 +553,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
-[node name="StatsPanel" parent="." instance=ExtResource( 42 )]
+[node name="StatsPanel" parent="." instance=ExtResource( 43 )]
 visible = false
 margin_left = 1339.0
 margin_top = 70.0

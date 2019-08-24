@@ -18,8 +18,6 @@ func _ready():
 	
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	
-	if globals.globalsettings.warnseen == true:
-		$DemoPanel.hide()
 	
 	OS.window_fullscreen = globals.globalsettings.fullscreen
 	if OS.window_fullscreen == false:
@@ -28,6 +26,10 @@ func _ready():
 	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
+	if globals.globalsettings.warnseen == true:
+		$DemoPanel.hide()
+		$WarnScreen.hide()
+		input_handler.SetMusic("intro")
 
 func check_last_save():
 	lastsave = globals.get_last_save();
@@ -54,6 +56,7 @@ func newgame():
 func CloseDemoWarn():
 	globals.globalsettings.warnseen = true
 	$DemoPanel.hide()
+
 
 func loadwindow():
 	$saveloadpanel.LoadPanelOpen()

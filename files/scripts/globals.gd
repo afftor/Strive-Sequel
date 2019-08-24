@@ -512,6 +512,8 @@ var globalsettings = {
 	furry = true,
 	furry_multiple_nipples = true,
 	futa_balls = true,
+	futachance = 10,
+	malechance = 50,
 	#user_folders_settings
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',

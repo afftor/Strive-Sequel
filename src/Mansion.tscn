@@ -472,6 +472,7 @@ visible = false
 "pauseprocess",
 ] instance=ExtResource( 29 )]
 visible = false
+theme = ExtResource( 19 )
 
 [node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",

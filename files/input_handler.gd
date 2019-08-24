@@ -297,6 +297,10 @@ func StopTweenRepeat(node):
 	tween.remove_all()
 
 #Music
+func SetMusicRandom(category):
+	var track = audio.music_categories[category]
+	track = track[randi()%track.size()]
+	SetMusic(track)
 
 func SetMusic(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')

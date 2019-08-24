@@ -235,6 +235,8 @@ var relations = {}
 var metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0}
 var lastsexday
 
+var asser = 0
+
 var starvation = false
 
 var masternoun = 'Master'
@@ -778,9 +780,9 @@ func get_random_race():
 	return input_handler.weightedrandom(array).name
 
 func get_random_sex():
-	if randf() <= variables.male_to_female_ratio:
+	if randf()*100 <= globals.globalsettings.malechance:
 		return 'male'
-	elif randf() <= variables.futa_to_female_ratio && globals.globalsettings.futa == true:
+	elif randf()*100 <= globals.globalsettings.futachance && globals.globalsettings.futa == true:
 		return 'futa'
 	else:
 		return 'female'
@@ -1053,6 +1055,7 @@ func tick():
 				area = travel_target.area
 				location = travel_target.location
 				state.emit_signal("slave_arrived", self)
+				input_handler.PlaySound("ding")
 				if location == 'mansion':
 					work = 'rest'
 					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
@@ -1067,7 +1070,7 @@ func tick():
 			call(work_simple_state + "_tick")
 			
 			match work_simple_state:
-				'work':	
+				'work':
 					if energy <= 0:
 						work_simple_state = 'joy'
 				'joy':
@@ -1964,6 +1967,7 @@ func use_social_skill(s_code, target):#add logging if needed
 		return
 	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = self, target = target}
 	
+	input_handler.PlaySound('page')
 	
 	#paying costs
 	if template.has('goldcost'):

@@ -83,8 +83,6 @@ var power_adjustments_per_difficulty = {
 	hard = [3,6]
 }
 #sex chances
-var male_to_female_ratio = 0.0
-var futa_to_female_ratio = 0.1
 
 var teen_age_weight = 1
 var adult_age_weight = 1
@@ -121,7 +119,7 @@ var instant_travel = false
 var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
-var unlock_all_upgrades = false
+var unlock_all_upgrades = true
 var invincible_player = true
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false

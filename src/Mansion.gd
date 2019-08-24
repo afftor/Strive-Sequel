@@ -103,6 +103,9 @@ func _ready():
 	
 	build_task_bar()
 	$SlaveList.rebuild()
+	
+	input_handler.SetMusicRandom("mansion")
+	
 	#$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
 
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])

@@ -104,6 +104,7 @@ func open(tempperson):
 	var text = ''
 	show()
 	$name.text = person.get_short_name()
+	$name/sex.texture = globals.sexicons[person.sex]
 	if person.icon_image == null:
 		$Portrait.texture = null
 	else:

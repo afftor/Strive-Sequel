@@ -3,7 +3,6 @@ extends Panel
 var operation_data
 
 func open(scene):
-	show()
 	if scene.has("variations"):
 		for i in scene.variations:
 			if state.checkreqs(i.reqs):
@@ -11,6 +10,14 @@ func open(scene):
 				break
 		
 		return
+	
+	if self.visible == false:
+		input_handler.UnfadeAnimation(self, 0.2)
+		yield(get_tree().create_timer(0.2), "timeout")
+	$RichTextLabel.modulate.a = 0
+	$ScrollContainer.modulate.a = 0
+	
+	show()
 	if scene.text.find("[locationname]") >= 0:
 		scene.text = scene.text.replace("[locationname]", input_handler.active_location.name)
 	if scene.tags.has("master_translate"):
@@ -21,6 +28,8 @@ func open(scene):
 	if scene.tags.has("scene_character_translate"):
 		scene.text = input_handler.scene_character.translate(scene.text)
 	$RichTextLabel.bbcode_text = scene.text
+	input_handler.UnfadeAnimation($RichTextLabel,1)
+	input_handler.UnfadeAnimation($ScrollContainer,1)
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	if scene.has("common_effects"):
 		state.common_effects(scene.common_effects)
@@ -41,6 +50,8 @@ func open(scene):
 			newbutton.disabled = true
 
 func close():
+	input_handler.FadeAnimation(self, 0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
 	input_handler.emit_signal("EventFinished")
 

@@ -282,7 +282,7 @@ var materiallist = {
 		type = 'stone',
 		tier = 'easy',
 		tags = [],
-		color = Color8(35,38,29),
+		color = Color('aaaaaa'),
 		parts = {},
 	},
 	obsidian = {
@@ -295,7 +295,7 @@ var materiallist = {
 		type = 'stone',
 		tier = 'medium',
 		tags = [],
-		color = Color8(135,45,255),
+		color = Color('a980ca'),
 		parts = {},
 	},
 	wood = {
@@ -308,7 +308,7 @@ var materiallist = {
 		type = 'wood',
 		tier = 'easy',
 		tags = [],
-		color = Color8(73,49,28),
+		color = Color('ebba79'),
 		parts = {},
 	},
 	woodmagic = {
@@ -321,7 +321,7 @@ var materiallist = {
 		type = 'wood',
 		tier = 'medium',
 		tags = [],
-		color = Color8(54,99,80),
+		color = Color('76c3c9'),
 		parts = {},
 	},
 	woodiron = {
@@ -334,7 +334,7 @@ var materiallist = {
 		type = 'wood',
 		tier = 'medium',
 		tags = [],
-		color = Color8(51,42,23),
+		color = Color('db6e2d'),
 		parts = {},
 	},
 	woodancient = {
@@ -347,7 +347,7 @@ var materiallist = {
 		type = 'wood',
 		tier = 'hard',
 		tags = [],
-		color = Color8(57,45,65),
+		color = Color('8b92c9'),
 		parts = {},
 	},
 	leather = {
@@ -360,7 +360,7 @@ var materiallist = {
 		type = 'leather',
 		tier = 'easy',
 		tags = [],
-		color = Color8(165,109,86),
+		color = Color('d29b52'),
 		parts = {},
 	},
 	leatherthick = {
@@ -373,7 +373,7 @@ var materiallist = {
 		type = 'leather',
 		tier = 'medium',
 		tags = [],
-		color = Color8(43,24,16),
+		color = Color('9e916a'),
 		parts = {},
 	},
 	leathermythic = {
@@ -386,7 +386,7 @@ var materiallist = {
 		type = 'leather',
 		tier = 'hard',
 		tags = [],
-		color = Color8(159,109,78),
+		color = Color("ca9bd9"),
 		parts = {},
 	},
 	leatherdragon = {
@@ -399,7 +399,7 @@ var materiallist = {
 		type = 'leather',
 		tier = 'hard',
 		tags = [],
-		color = Color8(146,64,64),
+		color = Color("d99b9b"),
 		parts = {},
 	},
 	bone = {
@@ -412,7 +412,7 @@ var materiallist = {
 		type = 'bone',
 		tier = 'easy',
 		tags = [],
-		color = Color8(169,180,186),
+		color = Color('ffffff'),
 		parts = {},
 	},
 	boneancient = {
@@ -425,7 +425,7 @@ var materiallist = {
 		type = 'bone',
 		tier = 'medium',
 		tags = [],
-		color = Color8(116,129,167),
+		color = Color("40ffff"),
 		parts = {},
 	},
 	bonedragon = {
@@ -438,7 +438,7 @@ var materiallist = {
 		type = 'bone',
 		tier = 'hard',
 		tags = [],
-		color = Color8(167,116,116),
+		color = Color("686c6c"),
 		parts = {},
 	},
 	cloth = {
@@ -451,7 +451,7 @@ var materiallist = {
 		type = 'cloth',
 		tier = 'easy',
 		tags = [],
-		color = Color8(45,57,55),
+		color = Color("ededed"),
 		parts = {},
 	},
 	clothsilk = {
@@ -464,7 +464,7 @@ var materiallist = {
 		type = 'cloth',
 		tier = 'easy',
 		tags = [],
-		color = Color8(169,123,178),
+		color = Color('d2bbe3'),
 		parts = {},
 	},
 	clothmagic = {
@@ -477,7 +477,7 @@ var materiallist = {
 		type = 'cloth',
 		tier = 'medium',
 		tags = [],
-		color = Color8(72,89,132),
+		color = Color("87e6d6"),
 		parts = {},
 	},
 	clothethereal = {
@@ -490,7 +490,7 @@ var materiallist = {
 		type = 'cloth',
 		tier = 'hard',
 		tags = [],
-		color = Color8(28,201,240),
+		color = Color("87c5e6"),
 		parts = {},
 	},
 	iron = {
@@ -503,7 +503,7 @@ var materiallist = {
 		type = 'metal',
 		tier = 'easy',
 		tags = [],
-		color = Color8(125,104,79),
+		color = Color("9797a0"),
 		parts = {},
 	},
 	steel = {
@@ -516,7 +516,7 @@ var materiallist = {
 		type = 'metal',
 		tier = 'medium',
 		tags = [],
-		color = Color8(112,123,134),
+		color = Color('98b8c6'),
 		parts = {},
 	},
 	mithril = {
@@ -529,7 +529,7 @@ var materiallist = {
 		type = 'metal',
 		tier = 'hard',
 		tags = [],
-		color = Color8(2,59,65),
+		color = Color("7fd8ff"),
 		parts = {},
 	},
 	adamantine = {
@@ -542,7 +542,7 @@ var materiallist = {
 		type = 'metal',
 		tier = 'hard',
 		tags = [],
-		color = Color8(60,38,97),
+		color = Color("a88ac6"),
 		parts = {},
 	},
 	

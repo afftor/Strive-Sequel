@@ -22,7 +22,9 @@ func showup(node, person):
 	if shutoff == true && prevnode == parentnode:
 		return
 	
-	var text = person.get_short_name() + person.translate(" [race] [male] [age]")
+	var text = person.get_short_name() + person.translate(" [race] [age]")
+	
+	$sex.texture = globals.sexicons[person.sex]
 	
 	$icon.texture = person.get_icon()
 	$RichTextLabel.bbcode_text = text
@@ -55,11 +57,6 @@ func showup(node, person):
 		newnode.texture = Skilldata.professions[i].icon
 		newnode.get_node("Label").text = Skilldata.professions[i].name
 	
-	globals.ClearContainer($Sextraits)
-	for i in person.sex_traits:
-		var trait = Traitdata.sex_traits[i]
-		var newbutton = globals.DuplicateContainerTemplate($Sextraits)
-		newbutton.text = trait.name
 	
 	$VBoxContainer.visible = person.is_players_character
 	if person.professions.has('master') || person.is_players_character == false:

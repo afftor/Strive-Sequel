@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://files/scripts/Options.gd" type="Script" id=2]
@@ -6,9 +6,6 @@
 [ext_resource path="res://assets/images/gui/universal/tabactive.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/universal/tabinactive.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/universal/tabpanel.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -46,6 +43,78 @@ custom_styles/panel = SubResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color_bg = Color( 0, 0, 0, 1 )
 custom_colors/font_color_fg = Color( 0, 0, 0, 1 )
+
+[node name="Gameplay" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 34.0
+
+[node name="furry" type="CheckBox" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 182.0
+margin_right = 532.0
+margin_bottom = 212.0
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Furries"
+
+[node name="furry_multiple_nipples" type="CheckBox" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 220.0
+margin_right = 532.0
+margin_bottom = 250.0
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Multiple Nipples on Furries"
+
+[node name="futa_balls" type="CheckBox" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 258.0
+margin_right = 532.0
+margin_bottom = 288.0
+custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Futas with balls"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 90.0
+margin_right = 532.0
+margin_bottom = 151.0
+custom_constants/separation = 31
+
+[node name="malerate" type="HSlider" parent="TabContainer/Gameplay/VBoxContainer"]
+margin_right = 492.0
+margin_bottom = 15.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer/malerate"]
+margin_left = 11.0
+margin_top = -24.0
+margin_right = 482.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "MALERATE"
+align = 1
+
+[node name="futarate" type="HSlider" parent="TabContainer/Gameplay/VBoxContainer"]
+margin_top = 46.0
+margin_right = 492.0
+margin_bottom = 61.0
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="TabContainer/Gameplay/VBoxContainer/futarate"]
+margin_left = 11.0
+margin_top = -24.0
+margin_right = 482.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "FUTARATE"
+align = 1
 
 [node name="Audio" type="Tabs" parent="TabContainer"]
 visible = false
@@ -152,6 +221,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Full Screen"
 
 [node name="debug" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
@@ -175,21 +245,20 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "5136"
 
-[node name="CloseButton" type="TextureButton" parent="."]
+[node name="CloseButton" type="Button" parent="."]
 margin_left = 249.0
 margin_top = 681.0
 margin_right = 387.0
 margin_bottom = 749.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="CloseButton"]
-margin_left = 29.0
-margin_top = 23.0
-margin_right = 107.0
-margin_bottom = 47.0
+margin_left = 21.0
+margin_top = 25.0
+margin_right = 124.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CLOSE"
+align = 1
 
 [node name="Label" type="Label" parent="."]
 margin_left = 217.0

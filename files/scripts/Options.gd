@@ -1,7 +1,6 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 #warning-ignore-all:return_value_discarded
-var tabnames = {Audio = "AUDIO", Graphics = "GRAPHICS"}
 var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
 
 func _ready():
@@ -11,17 +10,25 @@ func _ready():
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 	$CloseButton.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
+	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
+	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
+	
+	for i in ['furry','furry_multiple_nipples', 'futa_balls']:
+		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
+		get_node("TabContainer/Gameplay/" + i).pressed = globals.globalsettings[i]
+	
 	for i in cheats:
 		var newbutton = globals.DuplicateContainerTemplate($TabContainer/debug/ScrollContainer/VBoxContainer)
 		newbutton.pressed = variables.get(i)
 		newbutton.text = i
 		newbutton.connect("pressed", self, 'cheat_toggle', [i, newbutton])
 
-func cheat_toggle(i, button):
-	variables[i] = button.pressed
 
 func open():
 	show()
+	male_rate_change(globals.globalsettings.malechance)
+	futa_rate_change(globals.globalsettings.futachance)
+	
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.value = globals.globalsettings[i.name+'vol']
 		i.get_node("CheckBox").pressed = globals.globalsettings[i.name+'mute']
@@ -57,3 +64,21 @@ func updatesounds():
 
 func close():
 	hide()
+
+func cheat_toggle(i, button):
+	variables[i] = button.pressed
+
+func male_rate_change(value):
+	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
+	globals.globalsettings.malechance = value
+	var text = 'Male generation chance: ' + str(value) + "%"
+	$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
+
+func futa_rate_change(value):
+	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
+	globals.globalsettings.futarate = value
+	var text = 'Futa generation chance: ' + str(value) + "%"
+	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
+
+func gameplay_rule(rule):
+	globals.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed

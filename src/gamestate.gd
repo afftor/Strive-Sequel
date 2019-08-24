@@ -84,6 +84,7 @@ func revert():
 	global_skills_used.clear()
 	for i in variables.starting_resources:
 		materials[i] = variables.starting_resources[i]
+	world_gen.build_world()
 
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')
