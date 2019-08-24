@@ -1785,8 +1785,8 @@ var Skilllist = {
 		sound = [],
 		value = 1.1
 	},
-	sstrike = {
-		code = 'sstrike',
+	shadowstrike = {
+		code = 'shadowstrike',
 		name = '',
 		descript = '',
 		icon = null,
@@ -1836,8 +1836,8 @@ var Skilllist = {
 		sound = [],
 		value = 1
 	},
-	lstrike = {
-		code = 'lstrike',
+	lightning = {
+		code = 'lightning',
 		name = '',
 		descript = '',
 		icon = null,

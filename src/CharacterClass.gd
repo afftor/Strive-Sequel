@@ -325,10 +325,11 @@ func get_hp_max():
 	#(variables.basic_max_hp*race.hpfactor + hp_scaleble_bonus*race.hpfactor + hp_flat_bonus)*hp_percent_bonus
 	var res = variables.basic_max_hp
 	if bonuses.has('hpmax_add'): res += bonuses.hpmax_add
-	if variables.new_stat_bonuses_syntax == true:
-		if bonuses.has('hpfactor'): res *= bonuses['hpfactor']
-	else:
-		if races.racelist[race].race_bonus.has('hpfactor'):res *= races.racelist[race].race_bonus.hpfactor
+	if race != '':
+		if variables.new_stat_bonuses_syntax == true:
+			if bonuses.has('hpfactor'): res *= bonuses['hpfactor']
+		else:
+			if races.racelist[race].race_bonus.has('hpfactor'):res *= races.racelist[race].race_bonus.hpfactor
 	if bonuses.has('hp_flat_bonus'): res += bonuses.hp_flat_bonus
 	if bonuses.has('hpmax_mul'): res *= bonuses.hpmax_mul
 	return res

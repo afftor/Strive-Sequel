@@ -32,6 +32,19 @@ func _ready():
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
 		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
 		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
+	
+	
+	if variables.combat_tests == true:
+		current_level = 1
+		current_stage = 1
+		active_location = {}
+		active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
+		var test_slave = Slave.new()
+		test_slave.create('BeastkinWolf', 'male', 'random')
+		test_slave.unlock_class("fighter")
+		state.add_slave(test_slave)
+		active_location.group = {1:test_slave.id}
+		StartCombat()
 
 func show_heal_items(position):
 	if get_node(positiondict[position] + "/Image").visible == true:
@@ -881,8 +894,9 @@ func StartCombat():
 #				i.set(i.get(k), i.get(k) * enemy_stats_mod)
 	
 	input_handler.emit_signal("CombatStarted", enemydata)
-	input_handler.BlackScreenTransition(0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
+	if variables.combat_tests == false:
+		input_handler.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
 	$combat.encountercode = enemydata
 	$combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
 	$combat.show()

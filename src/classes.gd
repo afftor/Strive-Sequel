@@ -199,7 +199,7 @@ var professions = {
 		statchanges = {wits_bonus = 10},
 		traits = ['alchemist'],
 		skills = [],
-		combatskills = ['acid_bomb','fire_bomb'],
+		combatskills = ['acidbomb','firebomb'],
 	},
 	cattle = {
 		code = 'cattle',
@@ -373,7 +373,7 @@ var professions = {
 		statchanges = {physics_bonus = 10, hpmax = 20},
 		traits = ['weapon_mastery','medium_armor'],
 		skills = [],
-		combatskills = ['double_attack'], 
+		combatskills = ['double_attack','earth_atk'], 
 	},
 	knight = {
 		code = 'knight',
@@ -387,7 +387,7 @@ var professions = {
 		statchanges = {hpmax = 40, armor = 10},
 		traits = ['heavy_armor'],
 		skills = [],
-		combatskills = ['slash', 'protect'],
+		combatskills = ['holy_atk','fire_cleave', 'protect'],
 	},
 	dragonknight = {
 		code = 'dragonknight',
@@ -401,7 +401,7 @@ var professions = {
 		statchanges = {hpmax = 25, physics_bonus = 20, resistfire = 75},
 		traits = ['heavy_armor'],
 		skills = [],
-		combatskills = ['slash','dragonmight','charge'],#increases damage and armor by 25% until end of battle. Once in 2 days
+		combatskills = ['fire_burst','air_cutter','dragonmight','charge'],#increases damage and armor by 25% until end of battle. Once in 2 days
 	},
 	berserker = {
 		code = 'berserker',
@@ -415,7 +415,7 @@ var professions = {
 		statchanges = {hpmax = 20, physics_bonus = 10},
 		traits = [],
 		skills = [],
-		combatskills = ['rage_strike'], #deals bonus damage depending on health missing
+		combatskills = ['earth_shatter','revenge'],
 	},
 	apprentice = {
 		code = 'apprentice',
@@ -429,7 +429,7 @@ var professions = {
 		statchanges = {wits_bonus = 10},
 		traits = ['magic_tools'],
 		skills = ['fear','sedate'],
-		combatskills = ['magic_arrow','lesser_heal'],
+		combatskills = ['firearr','lesser_heal'],
 	},
 	caster = {
 		code = 'caster',
@@ -443,7 +443,7 @@ var professions = {
 		statchanges = {magic_factor = 1},
 		traits = [],
 		skills = ['shackles'],
-		combatskills = ['blizzard','barrier'],
+		combatskills = ['blizzard','lightning','barrier'],
 	},
 	healer = {
 		code = 'healer',
@@ -457,7 +457,7 @@ var professions = {
 		statchanges = {physics_bonus = 10, hpmax = 10},
 		traits = [],
 		skills = ['innervate'],
-		combatskills = ['mass_lesser_heal','bless'],
+		combatskills = ['mass_lesser_heal','bless','resurrect'],
 	},
 	dominator = {
 		code = 'dominator',
@@ -471,7 +471,7 @@ var professions = {
 		statchanges = {charm_bonus = 20, wits_factor = 1},
 		traits = [],
 		skills = ['innervate','greatshackles','mindcontrol','stopmindcontrol'],
-		combatskills = [],
+		combatskills = ['mindblast'],
 	},
 	druid = {
 		code = 'druid',
@@ -485,7 +485,7 @@ var professions = {
 		statchanges = {wits_bonus = 15, hpmax = 10},
 		traits = [],
 		skills = [],
-		combatskills = ['mass_lesser_heal','entangle'],
+		combatskills = ['mass_lesser_heal','entangle','overgrowth'],
 	},
 	bloodmage = {
 		code = 'bloodmage',
@@ -513,7 +513,7 @@ var professions = {
 		statchanges = {hpmax = 20, physics_bonus = 15},
 		traits = ['medium_armor'],
 		skills = [],
-		combatskills = ['charge','fly_evasion'],
+		combatskills = ['holy_lance','swipe','fly_evasion'],
 	},
 	souleater = {
 		code = 'souleater',
@@ -541,7 +541,7 @@ var professions = {
 		statchanges = {mpmax = 15, wits_bonus = 10},
 		traits = [],
 		skills = ['make_undead'],
-		combatskills = ['decay'],#deals earth damage to all enemies
+		combatskills = ['decay'],
 	},
 	archer = {
 		code = 'archer',
@@ -555,7 +555,7 @@ var professions = {
 		statchanges = {hitrate = 10, hpmax = 5},
 		traits = ['ranged_weapon_mastery','medium_armor'],
 		skills = [],
-		combatskills = ['serrated_shot'],
+		combatskills = ['serrated_shot','wind_atk'],
 	},
 	sniper = {
 		code = 'sniper',
@@ -569,7 +569,7 @@ var professions = {
 		statchanges = {hitrate = 25, physics_factor = 1},
 		traits = ['medium_armor'],
 		skills = [],
-		combatskills = ['disruption_shot'],#dispells 1 buff from target and silences it for 3 turns
+		combatskills = ['arrowrain','explosivearr'],
 	},
 	rogue = {
 		code = 'rogue',
@@ -583,7 +583,7 @@ var professions = {
 		statchanges = {evasion = 10},
 		traits = ['lockpicking', 'trap_detection','medium_armor','weapon_mastery'], #allows lockpicking chests and trap detect actions in events
 		skills = [],
-		combatskills = ['bleeding_strike','hide'],
+		combatskills = ['water_atk','bleeding_strike','hide'],
 	},
 	assassin = {
 		code = 'assassin',
@@ -597,7 +597,7 @@ var professions = {
 		statchanges = {speed = 10, evasion = 25, wits_factor = 1},
 		traits = [],
 		skills = [],
-		combatskills = ['assassinate'], 
+		combatskills = ['shadowstrike','assassinate'], 
 	},
 	
 	
