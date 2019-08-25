@@ -106,7 +106,7 @@ func _ready():
 	
 	input_handler.SetMusicRandom("mansion")
 	
-	#$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
+	$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
 
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 

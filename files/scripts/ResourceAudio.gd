@@ -11,6 +11,8 @@ var music = {
 	battle3 = load("res://assets/sounds/music/battle3.ogg"),
 	
 	
+	combattheme = load("res://assets/sounds/music/battle1.ogg"),
+	
 	dungeon = load("res://assets/sounds/music/dungeon.ogg"),
 	ending = load("res://assets/sounds/music/ending.ogg"),
 	exploration = load("res://assets/sounds/music/exploration.ogg"),
