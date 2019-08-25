@@ -85,7 +85,7 @@ func _process(delta):
 	pass
 
 
-func start_combat(newplayergroup, newenemygroup, background, music = 'combattheme', enemy_stats_mod = 1):
+func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
 	globals.combat_node = self
 	$Combatlog/RichTextLabel.clear()
@@ -1049,16 +1049,16 @@ func execute_skill(skill, caster, target):
 		if s_skill2.damagestat[i] == 'no_stat': continue #for skill values that directly process into effects
 		if s_skill2.damagestat[i] == '+damage_hp': #drain, damage, damage no log, drain no log
 			if s_skill2.is_drain && s_skill2.tags.has('no_log'):
-				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
+				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 				var rval2 = caster.heal(rval)
 			elif s_skill2.is_drain:
-				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
+				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 				var rval2 = caster.heal(rval)
 				text += "%s drained %d hp (%d actually) from %s and gained %d hp\n" %[caster.name, s_skill2.value[i], rval, target.name, rval2]
 			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
-				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
+				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 			else:
-				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damagesrc)
+				var rval = target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 				text += "%s is hit for %d damage (%d actually)\n" %[target.name, s_skill2.value[i], rval] 
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			if s_skill2.tags.has('no_log'):

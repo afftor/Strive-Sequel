@@ -489,6 +489,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'dungeon', function = 'range', type = ['dungeon_bandit_den_easy', 'dungeon_goblin_cave_easy'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		randomrewards = [[{code = 'gear', materialgrade = 'medium', name = ['axe','sword','bow']}]],
 		time_limit = [6,10],
 	},
 	warriors_monster_hunt_basic = {
@@ -625,6 +626,11 @@ func make_quest(questcode):
 		i.value = round(rand_range(i.range[0],i.range[1]))
 		i.erase('range')
 		data.rewards.append(i)
+#	for i in template.randomrewards.duplicate():
+#		match i.code:
+#			'gear':
+#				pass
+		data.rewards.append(i)
 	
 	return data
 
@@ -758,27 +764,51 @@ func make_chest_loot(chest):
 				var number = round(rand_range(i.min, i.max))
 				var array = []
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor']:
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor'] && k.geartype != 'costume':
 						array.append(k.code)
 				while number > 0:
-					var itemtemplate = Items.itemlist[array[randi()%array.size()]]
-					var itemparts = {}
-					for i_part in itemtemplate.parts:
-						var material_array = []
-						if i.material_grade[0] == 'location':
-							for material in location.resources:
-								if Items.materiallist[material].parts.has(i_part):
-									material_array.append(material)
-						else:
-							for k in Items.materiallist.values():
-								if k.has('parts') && k.parts.has(i_part) && i.material_grade.has(k.tier):
-									material_array.append(k.code)
-						itemparts[i_part] = material_array[randi()%material_array.size()]
+					var itemdict = {}
+					itemdict.item = array[randi()%array.size()]
+					itemdict.grade = i.grade[randi()%i.grade.size()]
+					if i.has('material_grade'):
+						var materialgrade = i.material_grade[randi()%i.material_grade.size()]
+						if materialgrade == 'location':
+							itemdict.locationmaterials = location.resources
+						itemdict.material_grade = materialgrade
+					var item = generate_random_gear(itemdict)
+#					var itemparts = {}
+#					for i_part in itemtemplate.parts:
+#						var material_array = []
+#						if i.material_grade[0] == 'location':
+#							for material in location.resources:
+#								if Items.materiallist[material].parts.has(i_part):
+#									material_array.append(material)
+#						else:
+#							for k in Items.materiallist.values():
+#								if k.has('parts') && k.parts.has(i_part) && i.material_grade.has(k.tier):
+#									material_array.append(k.code)
+#						itemparts[i_part] = material_array[randi()%material_array.size()]
 					
-					dict.items.append(globals.CreateGearItem(itemtemplate.code,itemparts))
+					dict.items.append(item)
 					number -= 1
 	return dict
 
+func generate_random_gear(dict):
+	var itemtemplate = Items.itemlist[dict.item]
+	var itemparts = {}
+	for i_part in itemtemplate.parts:
+		var material_array = []
+		if dict.material_grade == 'location':
+			for material in dict.locationmaterials:
+				if Items.materiallist[material].parts.has(i_part):
+					material_array.append(material)
+		else:
+			for i in Items.materiallist.values():
+				if i.has('parts') && i.parts.has(i_part) && i.tier == dict.material_grade:
+					material_array.append(i.code)
+		itemparts[i_part] = material_array[randi()%material_array.size()]
+	
+	return globals.CreateGearItem(itemtemplate.code,itemparts)
 
 var locationnames = {
 	village_human1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],

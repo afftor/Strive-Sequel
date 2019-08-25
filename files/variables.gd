@@ -133,7 +133,7 @@ var allow_remote_intereaction = false
 var no_event_wait_time = false
 
 var generate_test_chars = true
-var combat_tests = true #for combat testing
+var combat_tests = false #for combat testing
 
 
 
