@@ -666,7 +666,14 @@ var TranslationDict = {
 	STATMOD_FARM = "Farm Task Efficiency",
 	STATMOD_PROS = "Prostitution Task Efficiency",
 	
-	
+	STATRESISTNORMAL = "Neutral Resist",
+	STATRESISTFIRE = "Fire Resist",
+	STATRESISTAIR = "Air Resist",
+	STATRESISTEARTH = "Earth Resist", 
+	STATRESISTWATER = "Water Resist",
+	STATRESISTHOLY = "Holy Resist",
+	STATRESISTDARK = "Dark Resist",
+	STATRESISTMIND = "Mind Resist",
 	
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, they increase Exhaustion. ",
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertaining activities. When unmanaged may cause a performance penalty.",
@@ -692,7 +699,8 @@ var TranslationDict = {
 	STATFOOD_LOVEDESCRIPT = "When a favorite food is eaten, it gives a minor boost to productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
 	STATFOOD_HATEDESCRIPT = "When hated food is eaten, it will increase fatigue and reduce productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
 	
-	
+	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
+	STATTASK_ENERGY_TOOL = "Task Energy Bonus",
 	
 	
 	

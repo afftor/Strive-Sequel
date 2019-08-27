@@ -2,6 +2,7 @@ extends Node
 
 #This script handles inputs, sounds, closes windows and plays animation
 #warning-ignore-all:unused_signal
+#warning-ignore-all:return_value_discarded
 
 var CloseableWindowsArray = []
 var ShakingNodes = []
@@ -40,6 +41,8 @@ var active_location
 
 var activated_skill
 var target_character
+
+var ghost_items = []
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -409,7 +412,18 @@ func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 		get_tree().get_root().remove_child(node)
 		get_tree().get_root().add_child(node)
 	node.Show(TargetNode, TargetFunction, Text)
-	
+
+func ShowPopupPanel(Text, ButtonText = 'Confirm'):
+	var node
+	if get_tree().get_root().has_node('PopupPanel') == false:
+		node = load("res://src/scenes/PopupPanel.tscn").instance()
+		get_tree().get_root().add_child(node)
+		node.name = 'PopupPanel'
+	else:
+		node = get_tree().get_root().get_node("PopupPanel")
+		get_tree().get_root().remove_child(node)
+		get_tree().get_root().add_child(node)
+	node.open(Text, ButtonText)
 
 #Item shading function
 
@@ -661,14 +675,14 @@ func open_shell(string):
 			path = 'https://www.patreon.com/maverik'
 		'Discord':
 			path = "https://discord.gg/VXSx9Zk"
-#warning-ignore:return_value_discarded
 	OS.shell_open(path)
 
 func SystemMessage(text, time = 4):
 	var basetime = time
-	if SystemMessageNode == null:
+	if weakref(SystemMessageNode) == null:
 		return
 	text = '[center]' + tr(text) + '[/center]'
+	SystemMessageNode.show()
 	SystemMessageNode.modulate.a = 1
 	SystemMessageNode.bbcode_text = text
 	FadeAnimation(SystemMessageNode, 1, basetime)

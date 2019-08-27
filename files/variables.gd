@@ -131,6 +131,7 @@ var social_skill_unlimited_charges = false
 #debug_only
 var allow_remote_intereaction = false
 var no_event_wait_time = false
+var ignore_quest_requirements = true
 
 var generate_test_chars = true
 var combat_tests = false #for combat testing

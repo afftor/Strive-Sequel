@@ -41,7 +41,7 @@ func _ready():
 	
 	if variables.generate_test_chars:
 		var character = Slave.new()
-		character.create('BeastkinWolf', 'male', 'random')
+		character.create('Dragonkin', 'male', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')
@@ -107,6 +107,7 @@ func _ready():
 	input_handler.SetMusicRandom("mansion")
 	
 	$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
+	input_handler.SystemMessageNode = $SysMessage
 
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 

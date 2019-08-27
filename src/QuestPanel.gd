@@ -5,6 +5,7 @@ var selectedquest
 
 func _ready():
 	$CompleteButton.connect("pressed", self, "CompleteQuest")
+	$CancelButton.connect("pressed", self, "CancelQuest")
 
 func open():
 	show()
@@ -12,13 +13,18 @@ func open():
 	$CompleteButton.visible = false
 	$QuestDescript.clear()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	$rewards.hide()
+	$reqs.hide()
+	$Label.hide()
+	$Label2.hide()
+	$Time.hide()
 	for i in state.areas.values():
 		for guild in i.quests.factions:
 			for quest in i.quests.factions[guild].values():
-				if quest.taken == true && quest.complete == false:
+				if quest.state == 'taken':
 					make_quest_button(quest)
 		for quest in i.quests.global.values():
-			if quest.taken == true && quest.complete == false:
+			if quest.state == 'taken':
 				make_quest_button(quest)
 
 func make_quest_button(quest):
@@ -29,13 +35,77 @@ func make_quest_button(quest):
 
 func show_quest_info(quest):
 	selectedquest = quest
-	var text = world_gen.make_quest_descript(quest)
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('quest'):
 			i.pressed = i.get_meta('quest') == quest
-	text += "\n\nArea: " + world_gen.lands[quest.area].name + ", " + quest.source
+	#text += "\n\nArea: " + world_gen.lands[quest.area].name + ", " + quest.source
+	$rewards.show()
+	$reqs.show()
+	$Label.show()
+	$Label2.show()
+	$Time.show()
+	globals.ClearContainer($reqs)
+	globals.ClearContainer($rewards)
+	#print(quest)
+	for i in quest.requirements:
+		var newbutton = globals.DuplicateContainerTemplate($reqs)
+		match i.code:
+			'monsters':
+				newbutton.texture = Enemydata.enemies[i.type].icon
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.value)
+			'item':
+				var itemtemplate = Items.itemlist[i.type]
+				newbutton.texture = itemtemplate.icon
+				if itemtemplate.has('parts'):
+					newbutton.material = load("res://files/ItemShader.tres").duplicate()
+				newbutton.get_node("amount").text = str(i.value) 
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
+			'eventlocation':
+				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.hint_tooltip = "Complete quest event"
+				#print(i.location)
+			'dungeon':
+				newbutton.texture = globals.quest_icons[i.code]
+				var location = world_gen.find_location_from_req(i)
+				globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + state.areas[i.area].name + "[/color]: [color=yellow]" + location.name + "[/color]")
+			'material':
+				newbutton.texture = Items.materiallist[i.type].icon
+				newbutton.get_node("amount").show()
+				newbutton.get_node("amount").text = str(i.value)
+				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]Required: ' + str(i.value) + "[/color]")
 	
-	$QuestDescript.bbcode_text = text
+	
+	for i in quest.rewards:
+		var newbutton = globals.DuplicateContainerTemplate($rewards)
+		match i.code:
+			'gear':
+				var item = globals.CreateGearItem(i.item, i.itemparts)
+				item.set_icon(newbutton)
+				input_handler.ghost_items.append(item)
+				globals.connectitemtooltip(newbutton, item)
+			'gold':
+				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = "Gold: " + str(i.value)
+			'reputation':
+				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = "Reputation (" + quest.source + "): +" + str(i.value)
+			'material':
+				var material = Items.materiallist[i.type]
+				newbutton.texture = material.icon
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				globals.connectmaterialtooltip(newbutton, material)
+	$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
+	$Time/Label.text = "Limit: " + str(quest.time_limit) + " days."
+	
+	
 	$CancelButton.visible = true
 	$CompleteButton.visible = true
 
@@ -44,7 +114,10 @@ var selectedslave
 func CompleteQuest():
 	var text = ''
 	var check = true
-	if selectedquest.complete == false:
+	if variables.ignore_quest_requirements:
+		CompleteReqs()
+		return
+	if selectedquest.state == 'taken':
 		for i in selectedquest.requirements:
 			match selectedquest.type:
 				"materialsquest":
@@ -59,6 +132,8 @@ func CompleteQuest():
 			if check == false:
 				break
 		if check == false:
+			input_handler.SystemMessage("Requirements are no met.")
+			input_handler.PlaySound("error")
 			return
 		else:
 			CompleteReqs()
@@ -79,7 +154,8 @@ func CompleteReqs():
 				state.remove_item(i.type, i.value)
 			"slavegetquest":
 				state.remove_slave(selectedslave)
-	selectedquest.complete = true
+	selectedquest.state = 'complete'
+	state.text_log_add("quest", "Quest Complete: " + selectedquest.name)
 	Reward()
 
 func Reward():
@@ -91,7 +167,15 @@ func Reward():
 			'reputation':
 				state.areas[selectedquest.area].factions[selectedquest.source].reputation += i.value
 				state.areas[selectedquest.area].factions[selectedquest.source].totalreputation += i.value
+			'gear':
+				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
+			'material':
+				state.materials[i.item] += i.value
 	open()
 
 func CancelQuest():
-	pass
+	input_handler.ShowConfirmPanel(self, "cancel_quest_confirm", "Forfeit This Quest?")
+
+func cancel_quest_confirm():
+	world_gen.fail_quest(selectedquest)
+	open()
