@@ -116,13 +116,13 @@ func rebuildbuffs():
 	globals.ClearContainer($Buffs)
 	for i in fighter.get_all_buffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)
-		var buff = Effectdata.buffs[i]
-		var text = buff.description
-		newbuff.texture = buff.icon
-		if buff.has('bonuseffect'):
-			match buff.bonuseffect:
+		#var buff = Effectdata.buffs[i]
+		var text = i.description
+		newbuff.texture = i.icon
+		if i.template.has('bonuseffect'):
+			match i.template.bonuseffect:
 				'barrier':
 					newbuff.get_node("Label").show()
 					newbuff.get_node("Label").text = str(fighter.shield)
-		globals.connecttooltip(newbuff, text)
+		globals.connecttexttooltip(newbuff, text)
 

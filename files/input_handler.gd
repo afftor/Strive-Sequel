@@ -755,6 +755,8 @@ func ShowInentory(args):
 
 func calculate_number_from_string_array(array, caster, target):
 	var endvalue = 0
+	if typeof(array) != TYPE_ARRAY:
+		return float(array)
 	var firstrun = true
 	for i in array:
 		var modvalue = i

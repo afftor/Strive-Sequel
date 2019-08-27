@@ -49,7 +49,12 @@ func _init():
 	random_factor_p = 0.0
 
 func clone():
-	return dict2inst(inst2dict(self))
+	var res = dict2inst(inst2dict(self))
+	res.effects.clear()
+	for e in template.effects:
+		var eff = effects_pool.e_createfromtemplate(e, res)
+		res.apply_effect(effects_pool.add_effect(eff))
+	return res
 
 func get_from_template(attr, val_rel = false):
 	if template.has(attr): 
@@ -247,7 +252,7 @@ func resolve_value(check_m):
 				else:
 					var weapon = state.items[caster.gear.rhand]
 					rangetype = weapon.weaponrange
-			if rangetype == 'melee' && input_handler.FindFighterRow(caster) == 'backrow' && !check_m:
+			if rangetype == 'melee' && globals.combat_node.FindFighterRow(caster) == 'backrow' && !check_m:
 				endvalue /= 2
 		
 		value[i] = endvalue
@@ -256,8 +261,9 @@ func resolve_value(check_m):
 func calculate_dmg():
 	apply_random() 
 	
-#	if damage_type == 'weapon':
-#		damagesrc = variables.S_PHYS #maybe needs to get from weapon
+	if damage_type == 'weapon':
+		damage_type = caster.get_weapon_element()
+	#	damagesrc = variables.S_PHYS #maybe needs to get from weapon
 #	elif damage_type == 'fire':
 #		damagesrc = variables.S_FIRE
 #	elif damage_type == 'water':
