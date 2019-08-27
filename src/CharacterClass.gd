@@ -888,6 +888,8 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	add_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
 		learn_skill(i)
+	for i in prof.combatskills:
+		learn_c_skill(i)
 	for i in prof.traits:
 		get_trait(i)
 	recheck_effect_tag('recheck_class')
@@ -921,6 +923,10 @@ func learn_skill(skill):
 				if social_skill_panel.has(i) == false:
 					social_skill_panel[i] = skill
 					break
+
+func learn_c_skill(skill):
+	if !combat_skills.has(skill):
+		combat_skills.append(skill)
 
 func unlearn_skill(skill):
 	var check = false
@@ -1843,9 +1849,10 @@ func deal_damage(value, source):
 	if state.characters.has(self.id) && variables.invincible_player:
 		return 0
 	value *= (1.0 - get_stat('resists')[source]/100.0)
-	value = round(value);
+	value = int(value);
 	if value > 0:
 		process_event(variables.TR_DMG)
+		self.hp -= value
 		tmp = tmp - hp
 		return tmp
 	else:
@@ -2121,6 +2128,10 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
+
+func get_weapon_element():
+	#for testing
+	return 'normal'
 
 func restore_skill_charge(code):
 	if social_skills_charges.has(code):

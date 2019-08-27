@@ -360,7 +360,9 @@ func player_turn(pos):
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
 	if !selected_character.can_act():
+		combatlogadd("%s cannot act" % selected_character.name)
 		selected_character.process_event(variables.TR_TURN_F)
+		selected_character.displaynode.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	if selected_character.has_status('confuse'):
@@ -443,6 +445,14 @@ func ClearSkillTargets():
 		if characters_pool.get_char_by_id(battlefield[pos]).displaynode == null:continue #this check obviosly covers some bug still needed to be found and fixen 
 		StopHighlight(pos)
 
+func FindFighterRow(fighter):
+	var pos = fighter.position
+	if pos in range(4,7) || pos in range(10,13):
+		pos = 'backrow'
+	else:
+		pos = 'frontrow'
+	return pos
+
 func CheckMeleeRange(group): #Check if group front row is still in place
 	var rval = false
 	var counter = 0
@@ -455,7 +465,7 @@ func CheckMeleeRange(group): #Check if group front row is still in place
 				if tchar.defeated == true: continue
 				if tchar.has_status('hide'): continue
 				counter += 1
-		'player':
+		'ally':
 			for pos in range(1,4):
 				if battlefield[pos] == null:continue
 				var tchar = characters_pool.get_char_by_id(battlefield[pos])
@@ -482,7 +492,9 @@ func enemy_turn(pos):
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
 	if !fighter.can_act():
+		combatlogadd("%s cannot act" % fighter.name)
 		fighter.process_event(variables.TR_TURN_F)
+		fighter.displaynode.rebuildbuffs()
 		call_deferred('select_actor')
 		return
 	#Selecting active skill
@@ -789,7 +801,7 @@ func use_skill(skill_code, caster, target):
 			animationdict[i.period].append(i)
 		
 		#casteranimations
-		if skill.sounddata.initiate != null:
+		if skill.has('sounddata') and skill.sounddata.initiate != null:
 			input_handler.PlaySound(skill.sounddata.initiate)
 		for i in animationdict.windup:
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
@@ -799,7 +811,7 @@ func use_skill(skill_code, caster, target):
 		if animationdict.windup.size() > 0:
 			yield(CombatAnimations, 'cast_finished')
 		for i in targets:
-			if skill.sounddata.strike != null:
+			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
 					input_handler.PlaySound(get_weapon_sound(caster))
 				else:
@@ -816,11 +828,11 @@ func use_skill(skill_code, caster, target):
 				i.resurrect(skill.value[0]) #not sure
 			else: 
 				execute_skill(s_skill1, caster, i)
-				s_skill1.remove_effects()
+				#s_skill1.remove_effects()
 			
 			#hit landed animation
 			
-			if skill.sounddata.hit != null:
+			if skill.has('sounddata') and skill.sounddata.hit != null:
 				if skill.sounddata.hittype == 'absolute':
 					input_handler.PlaySound(skill.sounddata.hit)
 				elif skill.sounddata.hittype == 'bodyarmor':
@@ -834,11 +846,7 @@ func use_skill(skill_code, caster, target):
 		
 		if animationdict.postdamage.size() > 0:
 			yield(CombatAnimations, 'alleffectsfinished')
-		target.displaynode.rebuildbuffs()
-		checkdeaths()
-		if target.displaynode != null:
-			target.displaynode.rebuildbuffs()
-		checkdeaths()
+		
 	
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
 	for e in caster.triggered_effects:
@@ -849,6 +857,7 @@ func use_skill(skill_code, caster, target):
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(variables.TR_SKILL_FINISH)
+	s_skill1.remove_effects()
 	#follow-up
 	if skill.has('follow_up'):
 		use_skill(skill.follow_up, caster, target)
@@ -1127,7 +1136,12 @@ func execute_skill(skill, caster, target):
 				eff.process_event(variables.TR_KILL)
 		#caster.process_event(variables.TR_KILL)
 	#checkdeaths()
+	target.displaynode.rebuildbuffs()
+	checkdeaths()
+	if target.displaynode != null:
+		target.displaynode.rebuildbuffs()
 	Off_Target_Glow();
+	s_skill2.remove_effects()
 
 
 func miss(fighter):
@@ -1220,7 +1234,7 @@ func RebuildSkillPanel():
 		if activecharacter.cooldowns.has(i):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if !activecharacter.process_check(skill.reqs):
+		if !activecharacter.checkreqs(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])

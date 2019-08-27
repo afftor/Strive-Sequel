@@ -21,8 +21,8 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
-		value = [['caster.charm', '*0.2','+20']],
-		damagestat = ['obedience'],
+		value = ['caster.charm', '*0.2','+20'],
+		damagestat = ['+obedience'],
 	},
 	warn = {#
 		code = 'warn',
@@ -43,7 +43,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		value = [['caster.charm','*0.15','+10'],['caster.physics','*0.2','+20']],
-		damagestat = ['obedience','fear'],
+		damagestat = ['+obedience','+fear'],
 	},
 	reward = {#
 		code = 'reward',
@@ -85,8 +85,8 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
-		value = [['caster.sexuals','/5','+40'],['-25']],
-		damagestat = ['obedience','lust'],
+		value = [['caster.sexuals','/5','+40'],['25']],
+		damagestat = ['+obedience','-lust'],
 	},
 	punish = {
 		code = 'punish',
@@ -107,7 +107,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		value = [['15'],['caster.physics', '*0.3', '+40']],
-		damagestat = ['obedience','fear'],
+		damagestat = ['+obedience','+fear'],
 	},
 	abuse = {
 		code = 'abuse',
@@ -127,8 +127,8 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
-		value = [['-15'],['35'],['20'],['-20'], ['15']],
-		damagestat = ['fatigue','obedience','fear','hp','fatigue'],
+		value = [['15'],['35'],['20'],['20'], ['15']],
+		damagestat = ['-fatigue','obedience','fear','-hp','fatigue'],
 		receiver = ['caster','caster','target','target','target']
 	},
 	publichumiliation = {
@@ -266,7 +266,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		value = [['100']],
-		damagestat = ['obedience']
+		damagestat = ['=obedience']
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
 		code = 'drain',
@@ -816,7 +816,8 @@ var Skilllist = {
 		aipriority = 1,
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = ['caster.atk'],
+		value = 1,
+		random_factor_p = 0.1,
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -844,7 +845,7 @@ var Skilllist = {
 		aipriority = 1,
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = ['caster.atk', '*1.2'],
+		value = 1.2,
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -872,7 +873,7 @@ var Skilllist = {
 		aipriority = 1,
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
-		value = ['caster.atk'],
+		value = 1,
 		sfx = [], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -900,7 +901,7 @@ var Skilllist = {
 		damage_type = 'weapon',
 		repeat = 2,
 		#damage = 50,
-		value = ['caster.atk'],#i think so
+		value = 1,#i think so
 		sfx = [], 
 		sound = [],
 	},
@@ -926,7 +927,7 @@ var Skilllist = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		#damage = 50,
-		value = ['caster.atk'],#i think so
+		value = 1,#i think so
 		sfx = [], 
 		sound = [],
 	},
@@ -1005,8 +1006,9 @@ var Skilllist = {
 		sfx = [], 
 		sound = [],
 		armor_p = ['caster.armorpenetration','+25'],
-		value = ['caster.atk', '*2.5']
+		value = 2.5
 	},
+	#not used
 	rage_strike = {#deals 1.5 times damage + 2*% of missing hp/100 (up to 3.5 times damage)
 		code = 'rage_strike',
 		name = '',
@@ -1057,7 +1059,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.matk']
+		value = 1
 	},
 	lesser_heal = {#heals target for 1x damage
 		code = 'lesser_heal',
@@ -1083,10 +1085,12 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = 1
+		value = 1,
+		damagestat = ['-damage_hp']
 	},
 	serrated_shot = {#applies debuff: deal 25% bonus damage every turn for 4 turns
 	#i understand this as bonus damage over time
+	#should it be generic bleed status?
 		code = 'serrated_shot',
 		name = '',
 		descript = '',
@@ -1110,7 +1114,7 @@ var Skilllist = {
 		#damage = 50,
 		sfx = [], 
 		sound = [],
-		value = ['caster.atk']
+		value = 1
 	},
 	disruption_shot = {#Removes 1 buff from target (before damage hit), silences target for 2 turns (can't use spell type abilities)
 		code = 'disruption_shot',
@@ -1269,8 +1273,8 @@ var Skilllist = {
 		target_range = 'any',
 		sfx = [], 
 		sound = [],
-		value = [['caster.hp','*-0.1'],['caster.hp','*0.03']],
-		damagestat = ['hp', 'mp']
+		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
+		damagestat = ['-hp', '+mp']
 	},
 	blood_explosion = { #sacrifice 75% health to deal 2x weapon spell damage to all enemies, usable once a day, can't use if health <= 75% 
 		code = 'blood_explosion',
@@ -1324,6 +1328,7 @@ var Skilllist = {
 	},
 	bleeding_strike = {#applies debuff: deal 25% bonus damage every turn for 4 turns
 	#so additional effect is the same as of serrated shot
+	#the sama as serrated shot - should it be simple bleed?
 		code = 'bleeding_strike',
 		name = '',
 		descript = '',
@@ -1501,7 +1506,8 @@ var Skilllist = {
 		damage_type = 'water',
 		sfx = [], 
 		sound = [],
-		value = 0.9
+		value = [['caster.atk','*0.2'],0.9],
+		damagestat = ['no_stat', '+damage_hp']
 	},
 	holy_atk = {
 		code = 'holy_atk',
@@ -1552,7 +1558,8 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [], 
 		sound = [],
-		value = 0.75
+		value = [['caster.atk','*0.2'], 0.75],
+		damagestat = ['no_stat', '+damage_hp']
 	},
 	earth_shatter = {
 		code = 'earth_shatter',
@@ -1653,7 +1660,8 @@ var Skilllist = {
 		damage_type = 'air',
 		sfx = [], 
 		sound = [],
-		value = 0.85,
+		value = [['caster.atk','*0.2'],0.85],
+		damagestat = ['no_stat', '+damage_hp'],
 		follow_up = 'air_cutter_1'
 	},
 	air_cutter_1 = {
@@ -1682,7 +1690,8 @@ var Skilllist = {
 		random_target = true,
 		sfx = [], 
 		sound = [],
-		value = 0.85,
+		value = [['caster.atk','*0.2'],0.85],
+		damagestat = ['no_stat', '+damage_hp'],
 	},
 	holy_lance = {
 		code = 'holy_lance',
@@ -1783,7 +1792,8 @@ var Skilllist = {
 		damage_type = 'air',
 		sfx = [], 
 		sound = [],
-		value = 1.1
+		value = [['caster.atk','*0.2'],1.1],
+		damagestat = ['no_stat', '+damage_hp']
 	},
 	shadowstrike = {
 		code = 'shadowstrike',
@@ -1834,7 +1844,8 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [], 
 		sound = [],
-		value = 1
+		value = [['caster.matk','*0.2'],1],
+		damagestat = ['no_stat', '+damage_hp']
 	},
 	lightning = {
 		code = 'lightning',
@@ -1884,7 +1895,8 @@ var Skilllist = {
 		damage_type = 'mind',
 		sfx = [], 
 		sound = [],
-		value = 1.2
+		value = 1.2,
+		random_factor_p = 0.1
 	},
 	resurrect = {
 		code = 'resurrect',
@@ -1985,7 +1997,8 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [], 
 		sound = [],
-		value = 2.5
+		value = [['caster.matk','*0.2'],2.5],
+		damagestat = ['no_stat', '+damage_hp']
 	},
 	acidbomb = {
 		code = 'acidbomb',
@@ -2312,9 +2325,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
-		value = [['-30'], ['-15']],
+		value = [['20'], ['10']],
 		random_factor = [10,5],
-		damagestat = ['fatigue','fear']
+		damagestat = ['-fatigue','-fear']
 	},
 	tamedrug = {
 		code = 'tamedrug',
@@ -2341,9 +2354,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
-		value = [['1'], ['-2'], ['-1']],
+		value = [['1'], ['1'], ['1']],
 		random_factor = [2,1,0],
-		damagestat = ['tame_factor','brave_factor','wits_factor']
+		damagestat = ['tame_factor','-brave_factor','-wits_factor']
 	},
 	ragedrug = {
 		code = 'ragedrug',
@@ -2370,9 +2383,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
-		value = [['-2'], ['1'], ['1']],
+		value = [['1'], ['1'], ['1']],
 		random_factor = [1,2,0],
-		damagestat = ['tame_factor','brave_factor','physics_factor']
+		damagestat = ['-tame_factor','brave_factor','physics_factor']
 	},
 	sexdrug = {
 		code = 'sexdrug',
@@ -2399,9 +2412,9 @@ var Skilllist = {
 		dialogue_show_repeat = false,
 		sfx = [], 
 		sound = [],
-		value = [['-2'], ['6'], ['-1']],
+		value = [['1'], ['6'], ['1']],
 		random_factor = [1,0,0],
-		damagestat = ['wits_factor','sexuals_factor','physics_factor']
+		damagestat = ['-wits_factor','+sexuals_factor','-physics_factor']
 	},
 	
 	hairdye = {

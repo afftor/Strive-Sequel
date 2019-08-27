@@ -1359,7 +1359,8 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'burn',
-		tick_event = [variables.TR_TURN_GET],
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent_arg',
 		tags = ['affliction'],
@@ -1394,7 +1395,8 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'poison',
-		tick_event = [variables.TR_TURN_GET],
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent_arg',
 		tags = ['affliction'],
@@ -1429,8 +1431,9 @@ var effect_table = {
 	e_s_bleed = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'burn',
-		tick_event = [variables.TR_TURN_GET],
+		name = 'bleed',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent_arg',
 		tags = ['affliction'],
@@ -2164,7 +2167,7 @@ var buffs = {
 	},
 	b_burn = {
 		icon = "res://assets/images/iconsclasses/Whore.png", 
-		description = "Disarmed",
+		description = "Burning",
 		t_name = 'burn'
 	},
 	b_poison = {
@@ -2177,7 +2180,11 @@ var buffs = {
 		description = "Disarmed",
 		t_name = 'bleed'
 	},
-	
+	b_confuse = {
+		icon = "res://assets/images/iconsclasses/Whore.png", 
+		description = "Confused",
+		t_name = 'confuse'
+	},
 };
 
 func rebuild_template(args):
