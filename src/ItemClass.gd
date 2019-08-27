@@ -78,7 +78,7 @@ func UseItem(user = null, target = null):
 			finaltarget = target
 		Effectdata.call(effect.effect, finaltarget, effect.value)
 
-func CreateGear(ItemName = '', dictparts = {}):
+func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 	var mode = 'normal'
 	if dictparts.size() == 0:
 		mode = 'simple'
@@ -139,6 +139,8 @@ func CreateGear(ItemName = '', dictparts = {}):
 			elif i == 'effects':
 				for k in parteffectdict[i]:
 					effects.append(k)
+			else:
+				bonusstats[i] = parteffectdict[i]
 		for i in itemtemplate.basemods:
 			if bonusstats.has(i):
 				bonusstats[i] *= itemtemplate.basemods[i]
@@ -225,7 +227,7 @@ func tooltiptext():
 	if toolcategory != null:
 		text += tr("TOOLWORKCATEGORY") + ": " + globals.worktoolnames[toolcategory]
 	if description != null:
-		text += description 
+		text += description
 	if itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
 		for i in bonusstats:
@@ -234,7 +236,7 @@ func tooltiptext():
 				var change = ''
 				if globals.statdata[i].has('percent'):
 					value = value*100
-				text += globals.statdata[i].name + " " +Items.stats[i] + ': {color='
+				text += globals.statdata[i].name + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|' + change

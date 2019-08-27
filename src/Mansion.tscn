@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/sfx/loadshader.shader" type="Shader" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=31]
 [ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=32]
 [ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=33]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=34]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -503,3 +504,12 @@ margin_left = 713.369
 margin_top = 143.537
 margin_right = 1284.37
 margin_bottom = 868.537
+
+[node name="SysMessage" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 161.0
+margin_top = 114.0
+margin_right = 1837.0
+margin_bottom = 186.0
+custom_fonts/normal_font = ExtResource( 34 )
+bbcode_enabled = true

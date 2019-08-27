@@ -485,6 +485,12 @@ var textcodedict = {
 	url = {start = '[url=',end = '[/url]'}
 }
 
+var quest_icons = {
+	eventlocation = load("res://assets/images/gui/panels/noimage.png"),
+	dungeon = load("res://assets/images/gui/panels/noimage.png"),
+	reputation = load("res://assets/images/gui/panels/noimage.png"),
+	
+}
 
 var globalsettings = { 
 	ActiveLocalization = 'en',
@@ -518,6 +524,10 @@ var globalsettings = {
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
 	mod_folder = 'user://mods/',
+	
+	
+	guilds_any_race = true,
+	
 	
 } setget settings_save
 
@@ -610,6 +620,9 @@ func _ready():
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 		if i.has('dialogue_report'):
 			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
+	
+	for i in variables.resists_list:
+		statdata['resist'+i] = {code = "resist"+i}
 	
 	for i in globals.statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())
@@ -748,9 +761,9 @@ func StartEventScene(name, debug = false, line = 0):
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
-func CreateGearItem(item, parts, newname = null):
+func CreateGearItem(item, parts, bonus = {}, newname = null):
 	var newitem = Item.new()
-	newitem.CreateGear(item, parts)
+	newitem.CreateGear(item, parts, bonus)
 	if newname != null:
 		newitem.name = newname
 	return newitem

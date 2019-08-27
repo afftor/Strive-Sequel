@@ -200,10 +200,10 @@ var partmaterials = {
 		clothsilk = {mdef = 5, resistearth = 10},
 		clothmagic = {mdef = 5, matk = 4, resistwater = 10}, 
 		clothethereal = {mdef = 8, resistmind = 10},
-		iron = {def = 3, resistearth = 10},
-		steel = {def = 5, resistfire = 10, resistearth = 10},
-		mithril = {def = 7, resistearth = 15, resistdark = 10},
-		adamantine = {def = 10, resistearth = 15, resistfire = 10},
+		iron = {armor = 3, resistearth = 10},
+		steel = {armor = 5, resistfire = 10, resistearth = 10},
+		mithril = {armor = 7, resistearth = 15, resistdark = 10},
+		adamantine = {armor = 10, resistearth = 15, resistfire = 10},
 		obsidian = {resistfire = 10, resistair = 10}
 	},
 }
@@ -451,7 +451,7 @@ var materiallist = {
 		type = 'cloth',
 		tier = 'easy',
 		tags = [],
-		color = Color("ededed"),
+		color = Color("b0c8cb"),
 		parts = {},
 	},
 	clothsilk = {
@@ -503,7 +503,7 @@ var materiallist = {
 		type = 'metal',
 		tier = 'easy',
 		tags = [],
-		color = Color("9797a0"),
+		color = Color("eeeeee"),
 		parts = {},
 	},
 	steel = {

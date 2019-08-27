@@ -24,6 +24,7 @@ var music = {
 	intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),
 	
+	
 }
 
 var music_categories = {
@@ -72,6 +73,8 @@ var sounds = {
 	book = load('res://assets/sounds/sounds/book.wav'),
 	
 	magic = load("res://assets/sounds/sounds/magic.wav"),
+	
+	error = load("res://assets/sounds/sounds/magiceffect.wav"),
 	
 	#skills
 	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),

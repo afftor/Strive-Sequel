@@ -10,8 +10,11 @@ func _ready():
 	$TabContainer/Graphics/fullscreen.connect("pressed",self,"togglefullscreen")
 	$CloseButton.connect("pressed",self,'close')
 	$TabContainer/Graphics/fullscreen.pressed = globals.globalsettings.fullscreen
+	$TabContainer/Graphics/factors.pressed = globals.globalsettings.factors_as_words
 	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
 	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
+	
+	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
 	
 	for i in ['furry','furry_multiple_nipples', 'futa_balls']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
@@ -82,3 +85,6 @@ func futa_rate_change(value):
 
 func gameplay_rule(rule):
 	globals.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed
+
+func toggle_factors():
+	globals.globalsettings.factors_as_words = $TabContainer/Graphics/factors.pressed
