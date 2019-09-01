@@ -1555,6 +1555,9 @@ func apply_atomic(template):
 		'use_combat_skill':
 			if globals.combat_node == null: return
 			globals.combat_node.use_skill(template.value, self, null)
+		'use_social_skill':
+			if location != 'mansion': return
+			use_social_skill(template.value, null)
 		'add_counter':
 			if counters.size() <= template.index + 1:
 				counters.resize(template.index + 1)
@@ -1955,11 +1958,12 @@ func use_social_skill(s_code, target):#add logging if needed
 	if template.has('special'):
 		globals.custom_effects.call(template.special, self)
 		return
-	var check = check_skill_availability(s_code, target)
-	if check.check == false:
-		#input_handler.SystemMessage(check.descript)
-		state.text_log_add('skill',check.descript)
-		return
+	if target != null:
+		var check = check_skill_availability(s_code, target)
+		if check.check == false:
+			#input_handler.SystemMessage(check.descript)
+			state.text_log_add('skill',check.descript)
+			return
 	
 	if template.tags.has("dialogue_skill"):
 		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
@@ -2017,7 +2021,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	var targ_cast = [self]
 	var targ_all = []
 	for h_id in state.characters:
-		if id == h_id || target.id == h_id: continue
+		if id == h_id || target != null and target.id == h_id: continue
 		if state.characters[h_id].work == 'travel':continue
 		if state.characters[h_id].location != location: continue
 		targ_all.push_back(state.characters[h_id])
@@ -2040,14 +2044,15 @@ func use_social_skill(s_code, target):#add logging if needed
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(variables.TR_S_CAST)
-	for e in target.triggered_effects:
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill:
-			eff.set_args('skill', s_skill)
-			eff.process_event(variables.TR_S_TARGET) 
-			eff.set_args('skill', null)
-		else:
-			eff.process_event(variables.TR_S_TARGET)
+	if target != null:
+		for e in target.triggered_effects:
+			var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+			if eff.req_skill:
+				eff.set_args('skill', s_skill)
+				eff.process_event(variables.TR_S_TARGET) 
+				eff.set_args('skill', null)
+			else:
+				eff.process_event(variables.TR_S_TARGET)
 	#assumption that no social skill will have more than 1 repeat or target_number 
 	#s_skill.calculate_dmg() not really needed
 	
@@ -2056,12 +2061,20 @@ func use_social_skill(s_code, target):#add logging if needed
 	var effect_text = '\n'
 	#applying values
 	for i in range(s_skill.value.size()):
-		if s_skill.damagestat[i] == 'no_stat': continue
 		var targ_fin
 		match s_skill.receiver[i]:
 			'caster': targ_fin = targ_cast
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
+		if s_skill.damagestat[i] == 'no_stat': 
+			if template.has('process_no_stat'):
+				for h in targ_fin:
+					for e in s_skill.effects:
+						var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+						eff.set_args('receiver', h)
+						eff.process_event(variables.TR_SOC_SPEC)
+						eff.set_args('receiver', null)
+			continue
 		for h in targ_fin:
 			var mod = s_skill.damagestat[i][0]
 			var stat = s_skill.damagestat[i].right(1)
@@ -2077,14 +2090,14 @@ func use_social_skill(s_code, target):#add logging if needed
 					if s_skill.is_drain: self.stat_update(stat, -tmp)
 			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100
-			if h.get(s_skill.damagestat[i]+'max') != null:
-				maxstat = h.get_stat(s_skill.damagestat[i] + "max")
+			if h.get(stat+'max') != null:
+				maxstat = h.get_stat(stat + "max")
 			elif s_skill.damagestat[i].find("factor")>=0:
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
 				change = ''
-			effect_text += ": " +  str(floor(h.get(s_skill.damagestat[i])))
+			effect_text += ": " +  str(floor(h.get(stat)))
 			if maxstat != 0:
 				effect_text += "/" + str(floor(maxstat))
 			effect_text += " (" + change + "" + str(floor(tmp)) + ")"
@@ -2117,14 +2130,15 @@ func use_social_skill(s_code, target):#add logging if needed
 			eff.set_args('skill', null)
 		else:
 			eff.process_event(variables.TR_POSTDAMAGE)
-	for e in target.triggered_effects:
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill:
-			eff.set_args('skill', s_skill)
-			eff.process_event(variables.TR_POSTDAMAGE) 
-			eff.set_args('skill', null)
-		else:
-			eff.process_event(variables.TR_POSTDAMAGE)
+	if target != null:
+		for e in target.triggered_effects:
+			var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+			if eff.req_skill:
+				eff.set_args('skill', s_skill)
+				eff.process_event(variables.TR_POSTDAMAGE) 
+				eff.set_args('skill', null)
+			else:
+				eff.process_event(variables.TR_POSTDAMAGE)
 	
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
