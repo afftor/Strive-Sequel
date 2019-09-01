@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
@@ -7,18 +7,27 @@
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/portraits/GoblinTrader.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/iconsitems/lockpick.png" type="Texture" id=8]
-[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=9]
-[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=17]
-[ext_resource path="res://src/NumberSelection.gd" type="Script" id=18]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/iconsitems/lockpick.png" type="Texture" id=9]
+[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=10]
+[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=18]
+[ext_resource path="res://src/NumberSelection.gd" type="Script" id=19]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=20]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 617, 136 )
+margin_left = 10.5263
+margin_right = 14.7368
+margin_top = 11.0
+margin_bottom = 13.9474
 
 [node name="Exploration" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -90,7 +99,6 @@ margin_bottom = 122.251
 text = "Q"
 
 [node name="Positions" type="TextureRect" parent="."]
-visible = false
 margin_left = 866.0
 margin_top = 167.0
 margin_right = 1312.0
@@ -373,14 +381,17 @@ align = 1
 
 [node name="itemusepanel" type="Panel" parent="Positions"]
 visible = false
-margin_left = 37.9938
-margin_top = -145.463
-margin_right = 420.994
-margin_bottom = 18.5368
+margin_left = 29.0
+margin_top = -145.0
+margin_right = 426.0
+margin_bottom = 19.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="Positions/itemusepanel"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 56.0
+margin_bottom = 57.0
 columns = 7
 
 [node name="Button" type="TextureButton" parent="Positions/itemusepanel/GridContainer"]
@@ -388,7 +399,7 @@ visible = false
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="Positions/itemusepanel/GridContainer/Button"]
@@ -463,7 +474,7 @@ margin_right = 404.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="name" type="Label" parent="HirePanel/VBoxContainer/Button"]
 margin_left = 53.0526
@@ -536,7 +547,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 6
 
@@ -561,7 +572,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 6
 
@@ -596,7 +607,7 @@ margin_left = 670.813
 margin_top = 693.075
 margin_right = 710.813
 margin_bottom = 745.075
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="QuestPanel/time"]
 margin_left = 41.0
@@ -782,9 +793,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
 expand = true
 stretch_mode = 5
 
@@ -793,9 +804,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 
@@ -826,9 +837,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
 expand = true
 stretch_mode = 5
 
@@ -837,9 +848,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 
@@ -870,9 +881,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 15 )
 expand = true
 stretch_mode = 5
 
@@ -881,9 +892,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 
@@ -944,7 +955,7 @@ margin_left = 602.0
 margin_top = 305.0
 margin_right = 1199.0
 margin_bottom = 547.0
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [node name="HSlider" type="HSlider" parent="NumberSelection"]
 margin_left = 54.0
@@ -967,7 +978,7 @@ margin_right = 420.538
 margin_bottom = 214.415
 text = "Confirm"
 
-[node name="combat" parent="." instance=ExtResource( 19 )]
+[node name="combat" parent="." instance=ExtResource( 20 )]
 visible = false
 
 [node name="Gold" type="Label" parent="."]

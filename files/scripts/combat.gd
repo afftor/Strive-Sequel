@@ -129,7 +129,7 @@ func FinishCombat():
 	globals.combat_node = null
 	input_handler.ShowGameTip('explore')
 	input_handler.emit_signal("CombatEnded", encountercode)
-	input_handler.SetMusic("towntheme")
+	input_handler.SetMusic("exploration")
 	get_parent().finish_combat()
 
 
@@ -1264,7 +1264,7 @@ func RebuildItemPanel():
 	ClearItemPanel()
 	
 	for i in state.items.values():
-		if i.itemtype == 'usable':
+		if i.itemtype == 'usable' && Items.itemlist[i.itembase].has('combat_effect'):
 			array.append(i)
 	
 	for i in array:
