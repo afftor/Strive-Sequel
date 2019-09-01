@@ -218,6 +218,8 @@ margin_top = 14.0
 margin_right = 293.0
 margin_bottom = 58.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Full Screen"
 
 [node name="factors" type="CheckBox" parent="TabContainer/Graphics"]
@@ -227,6 +229,8 @@ margin_right = 293.0
 margin_bottom = 98.0
 hint_tooltip = "Toggle to display factors as words or numbers"
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Factors as words"
 
 [node name="debug" type="Tabs" parent="TabContainer"]

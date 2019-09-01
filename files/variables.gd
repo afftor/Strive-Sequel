@@ -119,7 +119,7 @@ var basic_lust_per_tick = 0.57
 var basic_energy_per_work_tick = 8.35
 
 #Cheats
-var instant_travel = false
+var instant_travel = true
 var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
@@ -134,7 +134,7 @@ var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
-var combat_tests = true #for combat testing
+var combat_tests = false #for combat testing
 
 
 

@@ -481,7 +481,7 @@ var questdata = {
 		type = 'dungeonquest',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
-		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'dungeon', function = 'range', type = ['dungeon_bandit_den', 'dungeon_goblin_cave'], range = [1,1]}]},
+		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'dungeon', function = 'range', type = ['dungeon_bandit_den', 'dungeon_goblin_cave'], range = [1,1], difficulty = 'easy'}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		randomrewards = [[{code = 'gear', material_grade = 'medium', name = ['axe','sword','bow']}]],
@@ -669,7 +669,7 @@ func make_quest_location(quest,area):
 	locationdata.id = "L" + str(state.locationcounter)
 	state.locationcounter += 1
 	for i in quest.requirements:
-		match quest.type:
+		match i.code:
 			'eventlocationquest':
 				var data = event_locations_data[i.type].duplicate(true)
 				locationdata.type = 'quest_event'
@@ -682,8 +682,8 @@ func make_quest_location(quest,area):
 				locationdata.event = data.event_code
 				locationdata.group = {}
 				locationdata.progress = {level = 0, stage = 0}
-			'dungeonquest':
-				locationdata = make_location(i.type, area)
+			'dungeon':
+				locationdata = make_location(i.type, area, i.difficulty)
 				locationdata.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
 #				var data = dungeons[i.type].duplicate(true)
 #				locationdata.type = 'quest_dungeon'

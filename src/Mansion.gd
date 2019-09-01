@@ -41,7 +41,7 @@ func _ready():
 	
 	if variables.generate_test_chars:
 		var character = Slave.new()
-		character.create('Dragonkin', 'male', 'random')
+		character.create('random', 'random', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.get_trait('core_trait')

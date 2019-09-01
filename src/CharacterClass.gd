@@ -2065,31 +2065,31 @@ func use_social_skill(s_code, target):#add logging if needed
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
 		for h in targ_fin:
-			var mod = s_skill.damagestat[i][0]
-			var stat = s_skill.damagestat[i].right(1)
-			var tmp
-			match mod:
-				'+':
-					tmp = h.stat_update(stat, s_skill.value[i])
-				'-':
-					tmp = h.stat_update(stat, -s_skill.value[i])
-					if s_skill.is_drain: self.stat_update(stat, -tmp)
-				'=':
-					tmp = h.stat_update(stat, s_skill.value[i], true) 
-					if s_skill.is_drain: self.stat_update(stat, -tmp)
-			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
-			var maxstat = 100
-			if h.get(s_skill.damagestat[i]+'max') != null:
-				maxstat = h.get_stat(s_skill.damagestat[i] + "max")
-			elif s_skill.damagestat[i].find("factor")>=0:
-				maxstat = 0
-			var change = '+'
-			if tmp < 0:
-				change = ''
-			effect_text += ": " +  str(floor(h.get(s_skill.damagestat[i])))
-			if maxstat != 0:
-				effect_text += "/" + str(floor(maxstat))
-			effect_text += " (" + change + "" + str(floor(tmp)) + ")"
+            var mod = s_skill.damagestat[i][0]
+            var stat = s_skill.damagestat[i].right(1)
+            var tmp
+            match mod:
+                '+':
+                    tmp = h.stat_update(stat, s_skill.value[i])
+                '-':
+                    tmp = h.stat_update(stat, -s_skill.value[i])
+                    if s_skill.is_drain: self.stat_update(stat, -tmp)
+                '=':
+                    tmp = h.stat_update(stat, s_skill.value[i], true) 
+                    if s_skill.is_drain: self.stat_update(stat, -tmp)
+            effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
+            var maxstat = 100
+            if h.get(stat+'max') != null:
+                maxstat = h.get_stat(stat + "max")
+            elif s_skill.damagestat[i].find("factor")>=0:
+                maxstat = 0
+            var change = '+'
+            if tmp < 0:
+                change = ''
+            effect_text += ": " +  str(floor(h.get(stat)))
+            if maxstat != 0:
+                effect_text += "/" + str(floor(maxstat))
+            effect_text += " (" + change + "" + str(floor(tmp)) + ")"
 
 	if template.has("dialogue_report"):
 		var data = {text = '', image = template.dialogue_report, tags = ['skill_report_event'], options = []}
