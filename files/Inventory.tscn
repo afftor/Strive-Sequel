@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/inventory/Group 5.png" type="Texture" id=2]
@@ -41,9 +41,10 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=39]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=40]
 [ext_resource path="res://files/ItemShader.tres" type="Material" id=41]
-[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=42]
-[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=43]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=44]
+[ext_resource path="res://assets/images/iconsgear/PickaxeBasic.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=43]
+[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=45]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -56,7 +57,7 @@ margin_bottom = 85.6616
 [sub_resource type="DynamicFont" id=2]
 size = 46
 use_filter = true
-font_data = ExtResource( 44 )
+font_data = ExtResource( 45 )
 
 [node name="Panel" type="Panel" groups=[
 "pauseprocess",
@@ -72,10 +73,10 @@ script = ExtResource( 3 )
 
 [node name="Blockout" type="Panel" parent="."]
 show_behind_parent = true
-margin_left = -16.0
-margin_top = -11.0
-margin_right = 1904.0
-margin_bottom = 1069.0
+margin_left = 40.8799
+margin_top = -21.7773
+margin_right = 1960.88
+margin_bottom = 1058.22
 
 [node name="HiddenContainer" type="ScrollContainer" parent="."]
 visible = false
@@ -334,6 +335,7 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 657.0
 margin_top = 70.0
 margin_right = 1313.0
@@ -363,12 +365,11 @@ margin_top = -0.546295
 margin_right = 100.0
 margin_bottom = 99.4537
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 6 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
 [node name="underwear" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 267.0
 margin_top = 523.0
 margin_right = 367.0
@@ -384,12 +385,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="legs" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 267.0
 margin_top = 773.0
 margin_right = 367.0
@@ -406,12 +406,11 @@ margin_top = -1.22778
 margin_right = 100.0
 margin_bottom = 98.7722
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="hands" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 27.0
 margin_top = 353.0
 margin_right = 127.0
@@ -427,12 +426,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="rhand" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 27.0
 margin_top = 473.0
 margin_right = 127.0
@@ -448,12 +446,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="lhand" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 527.0
 margin_top = 473.0
 margin_right = 627.0
@@ -469,12 +466,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="neck" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 267.0
 margin_top = 223.0
 margin_right = 367.0
@@ -490,12 +486,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="head" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 267.0
 margin_top = 43.0
 margin_right = 367.0
@@ -511,12 +506,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="ass" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 327.0
 margin_top = 633.0
 margin_right = 427.0
@@ -532,12 +526,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
 [node name="crotch" type="TextureButton" parent="GearPanel"]
-editor/display_folded = true
 margin_left = 217.0
 margin_top = 633.0
 margin_right = 317.0
@@ -553,11 +546,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 43 )
 expand = true
 stretch_mode = 6
 
-[node name="StatsPanel" parent="." instance=ExtResource( 43 )]
+[node name="StatsPanel" parent="." instance=ExtResource( 44 )]
 visible = false
 margin_left = 1339.0
 margin_top = 70.0
@@ -584,13 +577,14 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="CharacterPanel/ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 493.0
-margin_bottom = 30.0
+margin_bottom = 38.2509
 
 [node name="Label" type="Label" parent="CharacterPanel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 7.0
 margin_top = 4.0
 margin_right = 254.0
 margin_bottom = 28.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Name"
 
 [node name="SearchFilter" type="LineEdit" parent="."]

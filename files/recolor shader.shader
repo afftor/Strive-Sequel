@@ -9,7 +9,8 @@ uniform vec4 part1color : hint_color;
 uniform vec4 part2color : hint_color;
 uniform vec4 part3color : hint_color;
 
-uniform float dist =0.7;
+uniform float dist = 0.7;
+uniform float lmod = 0.6;
 
 vec3 rgb2hsl(vec3 c )
 {
@@ -49,6 +50,7 @@ void fragment(){
 	vec3 t2 = rgb2hsl(target2color.rgb);
 	vec3 t3 = rgb2hsl(target3color.rgb);
 	vec3 k = rgb2hsl(color.rgb);
+	k = pow (k, vec3(1.0, 1.0, lmod));
 	if (abs(k.x - t1.x) < dist){
 		vec3 dcolor = rgb2hsl(part1color.rgb);
 		float rot = dcolor.x - t1.x;

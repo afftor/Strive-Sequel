@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/LootWindow.gd" type="Script" id=1]
-[ext_resource path="res://files/ItemShader.tres" type="Material" id=2]
-[ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=3]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/LootWindow.gd" type="Script" id=2]
+[ext_resource path="res://files/ItemShader.tres" type="Material" id=3]
+[ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=4]
 
 [node name="LootWindow" type="PopupPanel"]
 margin_left = 694.986
 margin_top = 331.398
 margin_right = 1430.99
 margin_bottom = 782.398
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 732.0
+margin_right = 732.004
 margin_bottom = 447.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
@@ -29,11 +31,11 @@ columns = 7
 
 [node name="Button" type="TextureRect" parent="Panel/ScrollContainer/GridContainer"]
 visible = false
-material = ExtResource( 2 )
+material = ExtResource( 3 )
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 7
 

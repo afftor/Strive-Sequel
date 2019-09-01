@@ -349,11 +349,16 @@ func open_slave_info(character):
 func open_quest_list():
 	$QuestPanel.show()
 	selectedquest = null
+	$QuestPanel/Label.hide()
+	$QuestPanel/Label2.hide()
+	$QuestPanel/questrewards.hide()
+	$QuestPanel/questreqs.hide()
 	$QuestPanel/RichTextLabel.clear()
 	$QuestPanel/AcceptQuest.hide()
+	$QuestPanel/time.hide()
 	globals.ClearContainer($QuestPanel/VBoxContainer)
 	for i in active_area.quests.factions[active_faction.code].values():
-		if i.taken == false:
+		if i.state == 'free':
 			var newbutton = globals.DuplicateContainerTemplate($QuestPanel/VBoxContainer)
 			newbutton.text = i.name
 			newbutton.connect("pressed",self,"see_quest_info", [i])
@@ -361,13 +366,73 @@ func open_quest_list():
 var selectedquest
 
 func see_quest_info(quest):
-	var text = world_gen.make_quest_descript(quest)
+	input_handler.ghost_items.clear()
 	selectedquest = quest
+	$QuestPanel/Label.show()
+	$QuestPanel/Label2.show()
 	$QuestPanel/AcceptQuest.show()
-	$QuestPanel/RichTextLabel.bbcode_text = text
+	$QuestPanel/questrewards.show()
+	$QuestPanel/questreqs.show()
+	$QuestPanel/time.show()
+	globals.ClearContainer($QuestPanel/questreqs)
+	globals.ClearContainer($QuestPanel/questrewards)
+	#print(quest.requirements)
+	for i in quest.requirements:
+		var newbutton = globals.DuplicateContainerTemplate($QuestPanel/questreqs)
+		match i.code:
+			'monsters':
+				newbutton.texture = Enemydata.enemies[i.type].icon
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.value)
+			'item':
+				var itemtemplate = Items.itemlist[i.type]
+				newbutton.texture = itemtemplate.icon
+				if itemtemplate.has('parts'):
+					newbutton.material = load("res://files/ItemShader.tres").duplicate()
+				newbutton.get_node("amount").text = str(i.value) 
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
+			'eventlocation':
+				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.hint_tooltip = "Complete quest event"
+			'dungeon':
+				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.hint_tooltip = "Complete quest dungeon"
+			'material':
+				newbutton.texture = Items.materiallist[i.type].icon
+				newbutton.get_node("amount").show()
+				newbutton.get_node("amount").text = str(i.value)
+				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]Required: ' + str(i.value) + "[/color]")
+	
+	
+	for i in quest.rewards:
+		var newbutton = globals.DuplicateContainerTemplate($QuestPanel/questrewards)
+		match i.code:
+			'gear':
+				var item = globals.CreateGearItem(i.item, i.itemparts)
+				item.set_icon(newbutton)
+				input_handler.ghost_items.append(item)
+				globals.connectitemtooltip(newbutton, item)
+			'gold':
+				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = "Gold: " + str(i.value)
+			'reputation':
+				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				newbutton.hint_tooltip = "Reputation (" + quest.source + "): +" + str(i.value)
+	$QuestPanel/RichTextLabel.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
+	$QuestPanel/time/Label.text = "Limit: " + str(quest.time_limit) + " days."
 
 func accept_quest():
 	world_gen.take_quest(selectedquest, active_area)
+	for i in selectedquest.requirements:
+		if i.code in ['dungeon','eventlocation']:
+			input_handler.ShowPopupPanel("You've received a new quest location.")
+			break
 	open_quest_list()
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "

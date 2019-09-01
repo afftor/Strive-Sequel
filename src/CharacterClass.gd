@@ -363,7 +363,9 @@ func need_heal(): #stub. borderlines are subject to tuning
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
 	
-	if typeof(races) == TYPE_STRING:
+	if typeof(race) == TYPE_STRING && race == 'random':
+		race = get_random_race()
+	elif typeof(races) == TYPE_STRING:
 		gendata.race = races
 	else:
 		gendata.race = races[randi()%races.size()]

@@ -138,6 +138,7 @@ func open(tempperson):
 			i.get_node("Label").set("custom_colors/font_color", globals.hexcolordict['factor'+str(int(floor(person.get(i.name))))]) 
 		else:
 			i.get_node("Label").text = str(floor(person.get(i.name)))
+			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 	for i in $job.get_children():
 		i.text = globals.statdata[i.name].name + ": " + str(floor(person.get(i.name)))
 	for i in $base_stats.get_children():

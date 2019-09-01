@@ -246,7 +246,10 @@ func make_guild(code, area):
 
 func make_slave_for_guild(guild):
 	var newslave = Slave.new()
-	newslave.generate_random_character_from_data(guild.races, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
+	var race = guild.races
+	if globals.globalsettings.guilds_any_race:
+		race = 'random'
+	newslave.generate_random_character_from_data(race, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
 
 	guild.slaves.append(newslave.id)
 	newslave.is_known_to_player = true
@@ -395,12 +398,12 @@ func update_guilds(area):
 			make_slave_for_guild(i)
 		for faction in area.quests.factions:
 			for quest in area.quests.factions[faction].values():
-				if quest.taken == true && quest.complete == false:
+				if quest.state == 'taken':
 					quest.time_limit -= 1
 					if quest.time_limit < 0:
 						fail_quest(quest)
 				else:
-					if randf() >= 0.7 || quest.complete == true:
+					if randf() >= 0.7 || quest.state == 'complete':
 						area.quests.factions[faction].erase(quest)
 					fill_faction_quests(faction, area.code)
 
@@ -419,15 +422,7 @@ func fill_faction_quests(faction, area):
 			difficulty[i] += 1
 
 func fail_quest(quest):
-	pass
-
-
-
-
-
-
-
-
+	quest.state = 'failed'
 
 
 var questdata = {
@@ -439,7 +434,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['wood','stone','cloth'], range = [45,60]},{use_once = false, code = 'material', function = 'range', type = ['bone','leather'], range = [25,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	workers_food_basic = {
 		code = 'workers_food_basic',
@@ -449,7 +444,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['meat','fish','vegetables','grain'], range = [45,60]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	workers_craft_tools_basic = {
 		code = 'workers_craft_tools_basic',
@@ -459,7 +454,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'item', function = 'range', type = ['axe','pickaxe','sickle'], range = [2,2]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	workers_threat_basic = {
 		code = 'workers_threat_basic',
@@ -469,7 +464,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	warriors_threat_basic = {
 		code = 'warriors_threat_basic',
@@ -479,18 +474,18 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	warriors_dungeon_basic = {
 		code = 'warriors_dungeon_basic',
 		type = 'dungeonquest',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
-		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'dungeon', function = 'range', type = ['dungeon_bandit_den_easy', 'dungeon_goblin_cave_easy'], range = [1,1]}]},
+		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'dungeon', function = 'range', type = ['dungeon_bandit_den', 'dungeon_goblin_cave'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		randomrewards = [[{code = 'gear', materialgrade = 'medium', name = ['axe','sword','bow']}]],
-		time_limit = [6,10],
+		randomrewards = [[{code = 'gear', material_grade = 'medium', name = ['axe','sword','bow']}]],
+		time_limit = [8,12],
 	},
 	warriors_monster_hunt_basic = {
 		code = 'warriors_monster_hunt_basic',
@@ -500,7 +495,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'monsters', function = 'range', type = ['rat'], range = [6,9]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	warriors_fighter_slave_basic = {
 		code = 'warriors_fighter_slave_basic',
@@ -510,7 +505,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat', operant = 'gte', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['physics'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	mages_materials_basic = {
 		code = 'mages_materials_basic',
@@ -520,7 +515,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'material', function = 'range', type = ['salvia','fleawarts','cloth'], range = [15,25]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	mages_craft_potions_basic = {
 		code = 'mages_craft_potions_basic',
@@ -530,7 +525,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'item', function = 'range', type = ['aphrodisiac', 'alcohol'], range = [2,4]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	mages_threat_basic = {
 		code = 'mages_threat_basic',
@@ -540,7 +535,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'eventlocation', function = 'range', type = ['basic_threat_bandits'], range = [1,1]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	mages_slave_basic = {
 		code = 'mages_slave_basic',
@@ -550,7 +545,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = true, code = 'stat',operant = 'gte', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['wits'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	servants_craft_items_basic = {
 		code = 'servants_craft_items_basic',
@@ -560,7 +555,7 @@ var questdata = {
 		randomconditions = {number = [1,1], variances = [{use_once = false, code = 'item', function = 'range', type = ['leather_collar'], range = [2,2]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 	servants_slave_basic = {
 		code = 'servants_slave_basic',
@@ -570,7 +565,7 @@ var questdata = {
 		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
 		unlockreqs = [],
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		time_limit = [6,10],
+		time_limit = [8,12],
 	},
 }
 
@@ -586,6 +581,8 @@ var quest_template = {
 	taken = false,
 }
 
+
+
 func make_quest(questcode):
 	var template = questdata[questcode].duplicate(true)#array[randi()%array.size()]
 	var data = quest_template.duplicate(true)
@@ -597,8 +594,7 @@ func make_quest(questcode):
 	data.descript = template.descript
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.type = template.type
-	data.complete = false
-	data.failed = false
+	data.state = 'free'
 	
 	#location = location - add quest placement
 	var requirements_number = round(rand_range(template.randomconditions.number[0], template.randomconditions.number[1]))
@@ -626,21 +622,47 @@ func make_quest(questcode):
 		i.value = round(rand_range(i.range[0],i.range[1]))
 		i.erase('range')
 		data.rewards.append(i)
-#	for i in template.randomrewards.duplicate():
-#		match i.code:
-#			'gear':
-#				pass
-		data.rewards.append(i)
+	if template.has('randomrewards'):
+		var bonus_reward = template.randomrewards[randi()%template.randomrewards.size()].duplicate(true)
+		for i in bonus_reward:
+			var reward
+			match i.code:#{code = 'gear', materialgrade = 'medium', name = ['axe','sword','bow']
+				'gear':
+					var dict = {item = i.name[randi()%i.name.size()], material_grade = i.material_grade}
+					reward = generate_random_gear(dict)
+					reward.item = reward.code
+					reward.code = 'gear'
+				'material':
+					reward.code = 'material'
+					reward.item = i.name[randi()%i.name.size()]
+					if reward.item in ['low','medium','high']:
+						reward.item = get_materials_by_grade(reward.item)
+						reward.item = reward.item[randi()%reward.item.size()]
+					reward.value = round(rand_range(i.value[0], i.value[1]))
+			data.rewards.append(reward)
 	
 	return data
 
 func take_quest(quest, area):
-	quest.taken = true
-	if quest.type in ['eventlocationquest','dungeonquest']:
-		var location = make_quest_location(quest, area)
-		area.questlocations[location.id] = location
-		location.questid = quest.id
-		state.location_links[location.id] = {area = area.code, category = 'questlocations'} 
+	quest.state = 'taken'
+	for i in quest.requirements:
+		if i.code in ['dungeon', 'eventlocation']:
+			var location = make_quest_location(quest, area)
+			area.questlocations[location.id] = location
+			location.questid = quest.id
+			i.location = location.id
+			i.area = area.code
+			state.location_links[location.id] = {area = area.code, category = 'questlocations'}
+#	if quest.type in ['eventlocationquest','dungeonquest']:
+#		var location = make_quest_location(quest, area)
+#		area.questlocations[location.id] = location
+#		location.questid = quest.id
+#		quest.location = location.id
+#		state.location_links[location.id] = {area = area.code, category = 'questlocations'} 
+
+func find_location_from_req(req):
+	var location = state.areas[req.area].questlocations[req.location]
+	return location
 
 func make_quest_location(quest,area):
 	var locationdata = {}
@@ -662,7 +684,6 @@ func make_quest_location(quest,area):
 				locationdata.progress = {level = 0, stage = 0}
 			'dungeonquest':
 				locationdata = make_location(i.type, area)
-				i.value = locationdata.id
 				locationdata.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
 #				var data = dungeons[i.type].duplicate(true)
 #				locationdata.type = 'quest_dungeon'
@@ -680,49 +701,11 @@ func make_quest_location(quest,area):
 #				locationdata.progress = {level = 0, stage = 0}
 	return locationdata
 
-func make_quest_descript(quest):
-	var text = '[center]' + quest.name + '[/center]\n' + quest.descript
-	
-	text += "\n\nRequirements: "
-	#reqs
-	match quest.type:
-		"materialsquest":
-			text += "\nProvide resources: "
-		"itemsquest":
-			text += "\nProvide items: "
-		"slavegetquest":
-			text += "\nProvide slave: "
-		"monsterhuntquest":
-			text += "\nDefeat enemies: "
-		"dungeonquest":
-			text += "\nClear location: "
-		"eventlocationquest":
-			text += "\nComplete encounter: "
-	for i in quest.requirements:
-		match i.code:
-			'material':
-				text += "\n" + Items.materiallist[i.type].name + ": " + str(i.value)
-			"item":
-				text += "\n" + Items.itemlist[i.type].name + ": " + str(i.value)
-			"monsters":
-				text += "\n" + Enemydata.enemies[i.type].name + ": " + str(i.value)
-			"stat":
-				text += "\n" + i.type + ": " + str(i.value)
-			"eventlocation":
-				text += "\n" + i.type
-			"dungeon":
-				text += "\n" + i.type
-	
-	text += "\n\nRewards:"
-	
-	for i in quest.rewards:
-		match i.code:
-			'gold':
-				text += "\nGold - " + str(i.value)
-			'reputation':
-				text += "\nReputation: " + str(quest.source) + " - " + str(i.value)
-	
-	return text
+func get_materials_by_grade(grade):
+	var array = []
+	for i in Items.materiallist.values():
+		array.append(i.code)
+	return array
 
 func make_chest_loot(chest):
 	var data
@@ -776,6 +759,7 @@ func make_chest_loot(chest):
 							itemdict.locationmaterials = location.resources
 						itemdict.material_grade = materialgrade
 					var item = generate_random_gear(itemdict)
+					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
 #					var itemparts = {}
 #					for i_part in itemtemplate.parts:
 #						var material_array = []
@@ -793,7 +777,7 @@ func make_chest_loot(chest):
 					number -= 1
 	return dict
 
-func generate_random_gear(dict):
+func generate_random_gear(dict):#dict = {item = code, material_grade = 'location', locationmaterials = []/optional/}
 	var itemtemplate = Items.itemlist[dict.item]
 	var itemparts = {}
 	for i_part in itemtemplate.parts:
@@ -808,7 +792,7 @@ func generate_random_gear(dict):
 					material_array.append(i.code)
 		itemparts[i_part] = material_array[randi()%material_array.size()]
 	
-	return globals.CreateGearItem(itemtemplate.code,itemparts)
+	return {code = itemtemplate.code, itemparts = itemparts, bonus = {}}
 
 var locationnames = {
 	village_human1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],

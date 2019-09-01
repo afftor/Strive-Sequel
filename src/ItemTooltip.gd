@@ -57,7 +57,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			if mode == 'default':
 				gear_tooltip(data)
 			elif mode == 'advanced':
-				geat_detailed_tooltip(data)
+				gear_detailed_tooltip(data)
 		'geartemplate':
 			geartemplete_tooltip(data)
 	prevnode = parentnode
@@ -117,7 +117,7 @@ func gear_tooltip(data, item = null):
 		iconnode.texture = load(item.icon)
 	textnode.bbcode_text = text
 
-func geat_detailed_tooltip(data, item = null):
+func gear_detailed_tooltip(data, item = null):
 	gear_tooltip(data, item)
 	item = data.item
 	if item.parts.size() == 0:
