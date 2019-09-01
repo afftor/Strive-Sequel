@@ -235,7 +235,7 @@ func open(tempperson):
 	for i in person.get_all_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
 		newnode.texture = i.icon
-		if i.get_duration() >= 0:
+		if i.get_duration() != null and i.get_duration() >= 0:
 			newnode.get_node("Label").text = str(i.get_duration())
 		else:
 			newnode.get_node("Label").hide()

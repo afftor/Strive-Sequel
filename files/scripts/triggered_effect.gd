@@ -118,6 +118,9 @@ func e_apply():
 			'target':
 				var obj = self_args['skill']
 				obj.target.apply_effect(e)
+			'receiver':
+				var obj = self_args['receiver']
+				obj.apply_effect(e)
 			'owner':
 				var obj = get_applied_obj()
 				obj.apply_effect(e)

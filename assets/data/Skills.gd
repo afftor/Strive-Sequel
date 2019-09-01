@@ -3,6 +3,27 @@ extends Node
 var professions = load("res://src/classes.gd").new().professions
 
 var Skilllist = {
+	test_recast = {
+		code = 'test_recast',
+		name = 'test_recast',
+		descript = 'test_recast',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'test_recast1', trigger = variables.TR_SOC_SPEC})],
+		manacost = 0,
+		energycost = 0,
+		charges = 2,
+		cooldown = 1,
+		receiverdaylimit = 2,
+		icon = load("res://assets/images/iconsskills/Praise.png"),
+		tags = ['discipline'],
+		process_no_stat = true,
+		value = ['20'],
+		damagestat = ['no_stat'],
+		receiver = ['all']
+	},
 	praise = { #+25 obedience, +5 loyal
 		code = 'praise',
 		name = '',

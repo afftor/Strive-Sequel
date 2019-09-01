@@ -2054,6 +2054,27 @@ var effect_table = {
 			}
 		],
 	},
+	test_recast = {
+		type = 'trigger',
+		trigger = [variables.TR_TICK],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			atomic = [{type = 'use_social_skill', value = 'test_recast'}]
+		}],
+		buffs = ['b_stun']
+	},
+	test_recast1 = {
+		type = 'temp_s',
+		target = 'receiver',
+		name = 'test',
+		buffs = ['b_freeze'],
+		duration = 1,
+		stack = 0,
+		tick_event = variables.TR_TICK,
+	},
 };
 
 var atomic = {

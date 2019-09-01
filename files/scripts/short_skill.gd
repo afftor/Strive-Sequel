@@ -149,7 +149,7 @@ func setup_final():
 	get_from_template('critchance')
 	if typeof(critchance) == TYPE_ARRAY:
 		critchance = input_handler.calculate_number_from_string_array(critchance, caster, target)
-	if caster.combatgroup == target.combatgroup:
+	if target == null or caster.combatgroup == target.combatgroup:
 		critchance = 0
 	if template.has('custom_duration'):
 		var tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
