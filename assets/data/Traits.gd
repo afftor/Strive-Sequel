@@ -16,7 +16,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_master'],
+		effects = ['e_tr_master']#,'test_recast'],
 	}, 
 	
 	worker = {
