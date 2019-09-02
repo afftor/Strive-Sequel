@@ -2071,9 +2071,8 @@ var effect_table = {
 		target = 'receiver',
 		name = 'test',
 		buffs = ['b_freeze'],
-		duration = 1,
 		stack = 0,
-		tick_event = variables.TR_TICK,
+		rem_event = variables.TR_TICK,
 	},
 };
 

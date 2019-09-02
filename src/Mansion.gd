@@ -159,6 +159,10 @@ func _process(delta):
 				for i in state.areas.values():
 					world_gen.update_guilds(i)
 			for i in state.characters.values():
+				i.pretick()
+			for i in state.characters.values():
+				i.act_prepared()
+			for i in state.characters.values():
 				i.tick()
 			
 			$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"

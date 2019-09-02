@@ -1027,10 +1027,19 @@ func get_fear_reduction():
 		value = value/4
 	return value
 
-func tick():
+
+var prepared_act = []
+
+func pretick():
 	process_event(variables.TR_TICK)
 	recheck_effect_tag('recheck_tick')
-	
+
+func act_prepared():
+	for prep in prepared_act:
+		use_social_skill(prep, null)
+	prepared_act.clear()
+
+func tick():
 	var skip_work = false
 	if work == '':
 		skip_work = true
@@ -1559,7 +1568,8 @@ func apply_atomic(template):
 			globals.combat_node.use_skill(template.value, self, null)
 		'use_social_skill':
 			if location != 'mansion': return
-			use_social_skill(template.value, null)
+			#use_social_skill(template.value, null)
+			prepared_act.push_back(template.value)
 		'add_counter':
 			if counters.size() <= template.index + 1:
 				counters.resize(template.index + 1)
