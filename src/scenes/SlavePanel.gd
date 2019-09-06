@@ -9,6 +9,7 @@ var type
 func _input(event):
 	if self.visible == false || $SkillPanel.visible == false || input_handler.text_field_input == true:
 		return
+	if person.active_panel == variables.PANEL_COM: return
 	if str(event.as_text().replace("Kp ",'')) in str(range(0,9)) && event.is_pressed():
 		var number = int(event.as_text().replace("Kp ",''))-1
 		if $SkillPanel.get_child(number).disabled == false:
@@ -418,11 +419,14 @@ func update_hours():
 
 func build_skill_panel():
 	globals.ClearContainer($SkillPanel)
+	var src
+	if person.active_panel == variables.PANEL_SOC: src = person.social_skill_panel
+	else: src = person.combat_skill_panel
 	for i in range(1,10):
 		var text = ''
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel)
-		if person.social_skill_panel.has(i):
-			var skill = Skilldata.Skilllist[person.social_skill_panel[i]]
+		if src.has(i):
+			var skill = Skilldata.Skilllist[src[i]]
 			newbutton.get_node("icon").texture = skill.icon
 			if skill.icon == null:
 				newbutton.get_node("icon").texture = load("res://assets/images/gui/panels/noimage.png")
@@ -451,6 +455,7 @@ func build_skill_panel():
 			newbutton.get_node("charges").show()
 			if person.social_skills_charges.has(skill.code) && skill.charges - person.social_skills_charges[skill.code] <= 0:
 				newbutton.disabled = true
+			if person.active_panel == variables.PANEL_COM: newbutton.disabled = true
 			
 			newbutton.connect("pressed",self,"select_skill_target", [skill.code])
 			globals.connectskilltooltip(newbutton, skill.code, person)
@@ -463,15 +468,28 @@ func build_skill_panel():
 var active_position
 var active_skill
 
+func change_panel_type():
+	if person.active_panel == variables.PANEL_SOC:
+		person.active_panel = variables.PANEL_COM
+	elif person.active_panel == variables.PANEL_COM: #redundant check for the case of any of future changes
+		person.active_panel = variables.PANEL_SOC
+	build_skill_panel()
+
 func select_skill_for_position(position):
 	active_position = position
-	input_handler.ShowSkillSelectPanel(person, 'social', self, 'skill_selected')
+	input_handler.ShowSkillSelectPanel(person, person.active_panel, self, 'skill_selected')
 
 func skill_selected(skill):
 	if skill == null:
-		person.social_skill_panel.erase(active_position)
+		if person.active_panel == variables.PANEL_SOC:
+			person.social_skill_panel.erase(active_position)
+		else:
+			person.combat_skill_panel.erase(active_position)
 	else:
-		person.social_skill_panel[active_position] = skill
+		if person.active_panel == variables.PANEL_SOC:
+			person.social_skill_panel[active_position] = skill
+		else:
+			person.combat_skill_panel[active_position] = skill
 	build_skill_panel()
 
 func select_skill_target(skillcode):

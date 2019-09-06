@@ -10,10 +10,10 @@ func open(character, category, triggernode, triggerfunction):
 	trigger_function = triggerfunction
 	var skillarray = []
 	match category:
-		'social':
+		variables.PANEL_SOC:
 			for i in person.social_skills:
 				skillarray.append(Skilldata.Skilllist[i])
-		'combat':
+		variables.PANEL_COM:
 			for i in person.combat_skills:
 				skillarray.append(Skilldata.Skilllist[i])
 	
