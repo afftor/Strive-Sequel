@@ -9,7 +9,7 @@ var type
 func _input(event):
 	if self.visible == false || $SkillPanel.visible == false || input_handler.text_field_input == true:
 		return
-	if person.active_panel == variables.PANEL_COM: return
+	if person != null and person.active_panel == variables.PANEL_COM: return
 	if str(event.as_text().replace("Kp ",'')) in str(range(0,9)) && event.is_pressed():
 		var number = int(event.as_text().replace("Kp ",''))-1
 		if $SkillPanel.get_child(number).disabled == false:
