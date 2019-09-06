@@ -542,12 +542,11 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add_p', stat = 'atk', value = 0.3},
-			{type = 'stat_add_p', stat = 'atk', value = 0.3},
 		],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsclasses/Blacksmith.png", 
-				description = "Damage increased",
+				description = "Skill damage increased",
 				limit = 1,
 				t_name = 'refine'
 			}

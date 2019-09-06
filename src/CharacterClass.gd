@@ -1146,8 +1146,9 @@ func death():
 	process_event(variables.TR_DEATH)
 	is_active = false
 	defeated = true
-	state.character_order.erase(id)
-	input_handler.slave_list_node.rebuild()
+	if state.characters.has(id):
+		state.character_order.erase(id)
+		input_handler.slave_list_node.rebuild()
 	#clean_effects()
 
 func energy_set(value):

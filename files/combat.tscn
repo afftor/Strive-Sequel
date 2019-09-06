@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/portraits/ArronNeutral.png" type="Texture" id=17]
-[ext_resource path="res://assets/sfx/white shader material.tres" type="Material" id=18]
+[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/images/gui/combat/combatwinpanel.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=21]
@@ -448,145 +448,10 @@ bbcode_text = "This is a test text"
 text = "This is a test text"
 scroll_following = true
 
-[node name="StatsPanel" type="Panel" parent="."]
+[node name="StatsPanel" parent="." instance=ExtResource( 18 )]
 visible = false
-margin_left = 269.0
-margin_top = 64.0
-margin_right = 1372.0
-margin_bottom = 947.0
-
-[node name="TextureRect" type="TextureRect" parent="StatsPanel"]
-material = ExtResource( 18 )
-margin_left = -153.0
-margin_top = 30.0
-margin_right = 690.0
-margin_bottom = 730.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="name" type="Label" parent="StatsPanel"]
-margin_left = 32.0
-margin_top = 741.0
-margin_right = 480.0
-margin_bottom = 765.0
-text = "Name"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="descript" type="Label" parent="StatsPanel"]
-margin_left = 28.0
-margin_top = 770.0
-margin_right = 480.0
-margin_bottom = 858.0
-text = "Flavor Text"
-autowrap = true
-
-[node name="hp" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 32.0
-margin_right = 710.0
-margin_bottom = 56.0
-text = "stat: value"
-
-[node name="mana" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 32.0
-margin_right = 910.0
-margin_bottom = 56.0
-text = "stat: value"
-
-[node name="damage" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 92.0
-margin_right = 710.0
-margin_bottom = 116.0
-text = "stat: value"
-
-[node name="crit" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 92.0
-margin_right = 910.0
-margin_bottom = 116.0
-text = "stat: value"
-
-[node name="hitrate" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 122.0
-margin_right = 710.0
-margin_bottom = 146.0
-text = "stat: value"
-
-[node name="armorpen" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 122.0
-margin_right = 910.0
-margin_bottom = 146.0
-text = "stat: value"
-
-[node name="armor" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 172.0
-margin_right = 710.0
-margin_bottom = 196.0
-text = "stat: value"
-
-[node name="speed" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 172.0
-margin_right = 910.0
-margin_bottom = 196.0
-text = "stat: value"
-
-[node name="mdef" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 202.0
-margin_right = 710.0
-margin_bottom = 226.0
-text = "stat: value"
-
-[node name="evasion" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 202.0
-margin_right = 910.0
-margin_bottom = 226.0
-text = "stat: value"
-
-[node name="resistfire" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 252.0
-margin_right = 710.0
-margin_bottom = 276.0
-text = "stat: value"
-
-[node name="resistwater" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 252.0
-margin_right = 910.0
-margin_bottom = 276.0
-text = "stat: value"
-
-[node name="resistearth" type="Label" parent="StatsPanel"]
-margin_left = 557.0
-margin_top = 282.0
-margin_right = 710.0
-margin_bottom = 306.0
-text = "stat: value"
-
-[node name="resistair" type="Label" parent="StatsPanel"]
-margin_left = 757.0
-margin_top = 282.0
-margin_right = 910.0
-margin_bottom = 306.0
-text = "stat: value"
-
-[node name="effects" type="RichTextLabel" parent="StatsPanel"]
-margin_left = 538.0
-margin_top = 372.0
-margin_right = 932.0
-margin_bottom = 665.0
-bbcode_enabled = true
+margin_left = 709.561
+margin_right = 1254.56
 
 [node name="Rewards" type="TextureRect" parent="."]
 visible = false

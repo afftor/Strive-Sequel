@@ -1,4 +1,4 @@
-extends Node
+	extends Node
 #Game Settings
 var HoursPerDay = 24
 var SecondsPerHour = 3
@@ -134,7 +134,7 @@ var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
-var combat_tests = false #for combat testing
+var combat_tests = true #for combat testing
 
 
 

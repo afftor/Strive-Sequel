@@ -277,3 +277,11 @@ margin_top = 402.504
 margin_right = 319.145
 margin_bottom = 426.504
 text = "Resists"
+
+[node name="name" type="Label" parent="."]
+margin_left = 125.153
+margin_top = 15.0734
+margin_right = 405.153
+margin_bottom = 39.0734
+text = "Name"
+align = 1
