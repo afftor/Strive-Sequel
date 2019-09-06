@@ -426,7 +426,7 @@ var TranslationDict = {
 	
 	#Skills
 	SKILLATTACK = "Attack",
-	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon for %d damage. ",
+	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon. ",
 	SKILLFIREBOLT = "Firebolt",
 	SKILLFIREBOLTDESCRIPT = "Launches a fire spell on target. Deal %d Fire damage to all targets in same row.",
 	SKILLWINDARROW = "Wind Arrow",
@@ -939,7 +939,8 @@ var TranslationDict = {
 	SKILLCHARM = "Charm",
 	SKILLCHARMDESCRIPT = "Entices the target, increasing their obedience and providing increased lust growth. ",
 	
-	
+	SKILLMINDBLAST = "Mind Blast",
+	SKILLMINDBLASTDESCRIPT = "Deals Mind damage to the target.",
 	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
 	

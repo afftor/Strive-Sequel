@@ -70,8 +70,6 @@ func _ready():
 	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
 	
-#	if variables.combat_tests == true:
-#		start_combat(testplayergroup, testenemygroup, 'mansion')
 	
 
 
@@ -81,8 +79,6 @@ func cheatvictory():
 		tchar.hp = 0
 	#checkwinlose()
 
-func _process(delta):
-	pass
 
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
@@ -801,17 +797,19 @@ func use_skill(skill_code, caster, target):
 		#sort animations
 		for i in animations:
 			animationdict[i.period].append(i)
-		
 		#casteranimations
 		if skill.has('sounddata') and skill.sounddata.initiate != null:
 			input_handler.PlaySound(skill.sounddata.initiate)
 		for i in animationdict.windup:
 			var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 			CombatAnimations.call(i.code, sfxtarget)
+			#print("yielding_winup")
 			yield(CombatAnimations, 'pass_next_animation')
-		
+		#print("all_windups_played")
 		if animationdict.windup.size() > 0:
+			#print("yielding_windup_finishes")
 			yield(CombatAnimations, 'cast_finished')
+		#print("windup_phase_finished")
 		for i in targets:
 			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
@@ -821,8 +819,10 @@ func use_skill(skill_code, caster, target):
 			for j in animationdict.predamage:
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				CombatAnimations.call(j.code, sfxtarget)
+				#print("pre_damage_yield")
 				yield(CombatAnimations, 'pass_next_animation')
 			if animationdict.predamage.size() > 0:
+				#print("pre_damage_yield_finish")
 				yield(CombatAnimations, 'predamage_finished')
 			if skill.damage_type == 'summon':
 				summon(skill.value[0], skill.value[1]);

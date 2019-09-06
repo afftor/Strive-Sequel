@@ -12,15 +12,15 @@ var postdamagetimer = 0
 var aftereffectdelay = 0.1
 
 func _process(delta):
-	if cast_timer > 0:
+	if cast_timer >= 0:
 		cast_timer -= delta
 		if cast_timer <= 0:
 			cast_finished()
-	if aftereffecttimer > 0:
+	if aftereffecttimer >= 0:
 		aftereffecttimer -= delta
 		if aftereffecttimer <= 0:
 			predamage_finished()
-	if postdamagetimer > 0:
+	if postdamagetimer >= 0:
 		postdamagetimer -= delta
 		if postdamagetimer <= 0:
 			postdamage_finished()
@@ -32,8 +32,8 @@ func casterattack(node):
 	var effectdelay = 0.6
 	var nextanimationtime = 0
 	
-	#tween.interpolate_property(node, 'rect_position', node.get_position(), node.get_position() + Vector2(100,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
-	#tween.interpolate_property(node, 'rect_position', node.get_position() + Vector2(100,0), node.get_position(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, playtime)
+	tween.interpolate_property(node, 'rect_position', node.get_position(), node.get_position() + Vector2(100,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
+	tween.interpolate_property(node, 'rect_position', node.get_position() + Vector2(100,0), node.get_position(), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, playtime)
 	tween.start()
 	
 	
@@ -44,24 +44,29 @@ func casterattack(node):
 	cast_timer = effectdelay
 
 func nextanimation():
+	#print("next_animation")
 	emit_signal("pass_next_animation")
 
 func cast_finished():
+	#print("cast_finished")
 	emit_signal("cast_finished")
 
 func predamage_finished():
+	#print("predamage_finished")
 	emit_signal("predamage_finished")
-#	var tween = input_handler.GetTweenNode(self)
-#	tween.interpolate_callback(self, 1, 'allanimationsfinished')
-#	tween.start()
+	var tween = input_handler.GetTweenNode(self)
+	tween.interpolate_callback(self, 1, 'allanimationsfinished')
+	tween.start()
 
 func postdamage_finished():
+	#print("postdamage_finished")
 	emit_signal("postdamage_finished")
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
 
 func allanimationsfinished():
+	#print("allanims_finished")
 	emit_signal("alleffectsfinished")
 
 

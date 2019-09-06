@@ -787,7 +787,7 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 1,
 		random_factor_p = 0.1,
-		sfx = [], 
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'}],#{code = 'targetattack', target = 'target', period = 'predamage'}],#{code = 'casterattack', target = 'caster', period = 'windup'},], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
@@ -1266,7 +1266,7 @@ var Skilllist = {
 		code = 'fly_evasion',
 		name = '',
 		descript = '',
-		icon = load('res://assets/images/iconsclasses/valkyry.png'),
+		icon = load('res://assets/images/iconsskills/Fear.png'),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['buff'],

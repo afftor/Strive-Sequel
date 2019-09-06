@@ -43,6 +43,7 @@ func _ready():
 		test_slave.create('BeastkinWolf', 'male', 'random')
 		test_slave.unlock_class("dominator")
 		state.add_slave(test_slave)
+		test_slave.speed = 100
 		active_location.group = {1:test_slave.id}
 		StartCombat()
 

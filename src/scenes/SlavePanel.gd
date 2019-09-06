@@ -39,6 +39,7 @@ func _ready():
 	globals.connecttexttooltip($food_hate,"[center]" +globals.statdata.food_hate.name + "[/center]\n"+ globals.statdata.food_hate.descript)
 	
 	###############
+	$skillpanelswitch.connect("pressed", self, "change_panel_type")
 	
 	$controls/ClassButton.connect("pressed",self ,'open_class_selection')
 	globals.AddPanelOpenCloseAnimation($job_panel)
@@ -477,6 +478,9 @@ func build_skill_panel():
 		
 		newbutton.set_script(load("res://src/RightClickReactButton.gd"))
 		newbutton.connect('signal_RMB',self,'select_skill_for_position', [i])
+		if person.active_panel == variables.PANEL_COM:
+			newbutton.texture_disabled = load("res://assets/images/gui/universal/skill_frame.png")
+			newbutton.get_node("charges").hide()
 
 var active_position
 var active_skill
