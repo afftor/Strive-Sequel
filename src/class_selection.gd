@@ -31,6 +31,9 @@ func open(tempperson, tempmode = 'normal'):
 		var name = i.name
 		if i.has('altname') && person.checkreqs(i.altnamereqs):
 			name = i.altname
+		if person.checkreqs(i.reqs) == false:
+			newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
 

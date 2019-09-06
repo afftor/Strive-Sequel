@@ -634,43 +634,45 @@ func FighterMouseOverFinish(fighter):
 func ShowFighterStats(fighter):
 	if fightover == true:
 		return
-	var text = ''
-	if fighter.combatgroup == 'ally':
-
-		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.get_stat('hpmax'))
-		if fighter.mpmax > 0:
-			$StatsPanel/mana.text = "Mana: " + str(fighter.mp) + '/' + str(fighter.get_stat('mpmax'))
-		else:
-			$StatsPanel/mana.text = ''
-	else:
-		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')))) + "%%"
-		if fighter.mpmax > 0:
-			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.get_stat('mpmax')))) + "%%"
-		else:
-			$StatsPanel/mana.text = ''
-	#TO REBUILD NEW STATS
-#	$StatsPanel/damage.text = "Attack: " + str(round(fighter.atk)) 
-#	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%%/" + str(fighter.critmod*100) + '%%' 
-#	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
-#	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
-#
-#	$StatsPanel/armor.text = "Armor: " + str(fighter.armor) 
-#	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
-#	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
-#	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
-#
-#	for i in ['fire','water','earth','air']:
-#		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.resists[i]) + " "
-
 	$StatsPanel.show()
-	$StatsPanel/name.text = tr(fighter.name)
-	#$StatsPanel/descript.text = fighter.flavor
-	#$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
-#	for i in fighter.buffs:
-#		text += i + "\n"
-	for b in fighter.get_all_buffs():
-		text += b.name + '\n'
-	$StatsPanel/effects.bbcode_text = text
+	$StatsPanel.open(fighter)
+#	var text = ''
+#	if fighter.combatgroup == 'ally':
+#
+#		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.get_stat('hpmax'))
+#		if fighter.mpmax > 0:
+#			$StatsPanel/mana.text = "Mana: " + str(fighter.mp) + '/' + str(fighter.get_stat('mpmax'))
+#		else:
+#			$StatsPanel/mana.text = ''
+#	else:
+#		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')))) + "%%"
+#		if fighter.mpmax > 0:
+#			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.get_stat('mpmax')))) + "%%"
+#		else:
+#			$StatsPanel/mana.text = ''
+#	#TO REBUILD NEW STATS
+##	$StatsPanel/damage.text = "Attack: " + str(round(fighter.atk)) 
+##	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%%/" + str(fighter.critmod*100) + '%%' 
+##	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
+##	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
+##
+##	$StatsPanel/armor.text = "Armor: " + str(fighter.armor) 
+##	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
+##	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
+##	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
+##
+##	for i in ['fire','water','earth','air']:
+##		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.resists[i]) + " "
+#
+#	$StatsPanel.show()
+#	$StatsPanel/name.text = tr(fighter.name)
+#	#$StatsPanel/descript.text = fighter.flavor
+#	#$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
+##	for i in fighter.buffs:
+##		text += i + "\n"
+#	for b in fighter.get_all_buffs():
+#		text += b.name + '\n'
+#	$StatsPanel/effects.bbcode_text = text
 
 func HideFighterStats():
 	$StatsPanel.hide()

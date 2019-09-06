@@ -19,7 +19,8 @@ func _input(event):
 func _ready():
 	#setting tooltips
 	for i in $progress.get_children():
-		i.connect("mouse_entered", self, "show_progress_tooltip", [i])
+		#i.connect("mouse_entered", self, "show_progress_tooltip", [i])
+		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 	for i in $factors.get_children():
 		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 	
@@ -33,6 +34,9 @@ func _ready():
 	
 	for i in $job.get_children():
 		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
+	
+	globals.connecttexttooltip($food_love,"[center]" +globals.statdata.food_love.name + "[/center]\n"+  globals.statdata.food_love.descript)
+	globals.connecttexttooltip($food_hate,"[center]" +globals.statdata.food_hate.name + "[/center]\n"+ globals.statdata.food_hate.descript)
 	
 	###############
 	
@@ -79,6 +83,14 @@ func stats_panel():
 func set_body_opacity(value):
 	for i in [$BodyPanel, $BodyPanel/Body]:
 		i.self_modulate = Color(1,1,1, value/100)
+
+var foodicons = {
+	meat = load("res://assets/images/gui/gui icons/icon_meat.png"),
+	fish = load("res://assets/images/gui/gui icons/icon_fish.png"),
+	vege = load("res://assets/images/gui/gui icons/icon_veg.png"),
+	grain = load("res://assets/images/gui/gui icons/icon_grain.png")
+	
+}
 
 func open(tempperson):
 	if tempperson == null:
@@ -131,7 +143,7 @@ func open(tempperson):
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
 	
 	for i in $factors.get_children():
-		if i.name == 'base_exp':
+		if i.name in ['base_exp','food_consumption']:
 			i.get_node("Label").text = str(floor(person.get(i.name)))
 			continue
 		if globals.globalsettings.factors_as_words:
@@ -196,12 +208,15 @@ func open(tempperson):
 	globals.connecttexttooltip($mentality/fear, text)
 	
 	text = ''
-	$food_love/Label.text = person.food_love
-	$food_consume.text = "Food Consumption: " +  str(person.food_consumption)
+	$factors/food_consumption/Label.text = str(person.food_consumption)
+	$food_love/Button.texture = foodicons[person.food_love]
+	$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food_love.to_upper())
+	$food_love/Button.visible = $food_love/Button.texture != null
+	globals.ClearContainer($food_hate/Container)
 	for i in person.food_hate:
-		text += i + ", "
-	text = text.substr(0, text.length()-2)
-	$food_hate/Label.text =  text
+		var newnode = globals.DuplicateContainerTemplate($food_hate/Container)
+		newnode.texture = foodicons[i]
+		newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
 	
 	globals.ClearContainer($professions)
 	for i in person.professions:
@@ -280,8 +295,6 @@ func make_location_description():
 		text = '[name] currently positioned at [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]"
 	return text
 
-func show_progress_tooltip(node):
-	pass
 
 func text_url_hover(meta):
 	match meta:

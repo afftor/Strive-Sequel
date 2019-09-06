@@ -108,7 +108,6 @@ expand = true
 stretch_mode = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Positions"]
-editor/display_folded = true
 margin_left = 45.0
 margin_top = 19.0
 margin_right = 422.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/slavepanel/slavepanel.png" type="Texture" id=2]
@@ -15,10 +15,10 @@
 [ext_resource path="res://assets/images/gui/slavepanel/en_bar.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/slavepanel/mp_bar.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/slavepanel/lust_bar.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/slavepanel/physics.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/slavepanel/wits.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/slavepanel/charm.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/slavepanel/sexuals.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=20]
 [ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=22]
@@ -28,39 +28,41 @@
 [ext_resource path="res://assets/images/gui/gui icons/sex.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=27]
 [ext_resource path="res://assets/images/gui/gui icons/brave_factor.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/gui/gui icons/food_love.png" type="Texture" id=29]
-[ext_resource path="res://assets/images/gui/gui icons/food_hate.png" type="Texture" id=30]
-[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=31]
-[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=32]
-[ext_resource path="res://assets/images/gui/slavepanel/skill_panel.png" type="Texture" id=33]
-[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=34]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=35]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=36]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=37]
-[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=38]
-[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0007_add-skill.png" type="Texture" id=39]
-[ext_resource path="res://assets/images/gui/slavepanel/class_panel.png" type="Texture" id=40]
-[ext_resource path="res://src/class_selection.tscn" type="PackedScene" id=41]
-[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=42]
-[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=43]
-[ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=44]
-[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=45]
-[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=46]
-[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=47]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=48]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=49]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=50]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=51]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=52]
-[ext_resource path="res://src/imageselect.tscn" type="PackedScene" id=53]
-[ext_resource path="res://assets/images/iconsclasses/Worker.png" type="Texture" id=54]
+[ext_resource path="res://assets/images/gui/gui icons/food.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/gui/gui icons/icon_lfood.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/gui icons/icon_meat.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=32]
+[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=33]
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/gui/slavepanel/skill_panel.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=39]
+[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=40]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0007_add-skill.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/gui/slavepanel/class_panel.png" type="Texture" id=42]
+[ext_resource path="res://src/class_selection.tscn" type="PackedScene" id=43]
+[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=47]
+[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=51]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=52]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=53]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=54]
+[ext_resource path="res://src/imageselect.tscn" type="PackedScene" id=55]
+[ext_resource path="res://assets/images/iconsclasses/Worker.png" type="Texture" id=56]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1178, 860 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 42 )
+texture = ExtResource( 44 )
 region_rect = Rect2( 0, 0, 548, 47 )
 margin_left = 9.0
 margin_right = 8.0
@@ -68,7 +70,7 @@ margin_top = 9.0
 margin_bottom = 7.0
 
 [sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 43 )
+texture = ExtResource( 45 )
 region_rect = Rect2( 0, 0, 548, 45 )
 margin_left = 10.0
 margin_right = 8.0
@@ -282,7 +284,6 @@ text = "1.100"
 align = 1
 
 [node name="progress" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 263.0
 margin_top = 16.0
 margin_right = 516.0
@@ -547,49 +548,68 @@ margin_right = 229.239
 margin_bottom = 31.0
 text = "25"
 
-[node name="food_love" type="TextureRect" parent="."]
-editor/display_folded = true
-margin_left = 15.0
-margin_top = 748.0
+[node name="food_consumption" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+margin_top = 315.0
 margin_right = 50.0
-margin_bottom = 783.0
-rect_min_size = Vector2( 35, 35 )
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
 size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource( 29 )
 expand = true
+stretch_mode = 6
 
-[node name="Label" type="Label" parent="food_love"]
-margin_left = 36.5083
-margin_top = 8.41333
-margin_right = 236.508
-margin_bottom = 32.4133
-text = "Food Pref: Grai"
-autowrap = true
+[node name="Label" type="Label" parent="factors/food_consumption"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
 
-[node name="food_hate" type="TextureRect" parent="."]
-editor/display_folded = true
-margin_left = 15.0
-margin_top = 792.0
-margin_right = 50.0
-margin_bottom = 827.0
+[node name="food_love" type="TextureRect" parent="."]
+margin_left = 45.0
+margin_top = 748.0
+margin_right = 80.0
+margin_bottom = 783.0
 rect_min_size = Vector2( 35, 35 )
 size_flags_horizontal = 0
 texture = ExtResource( 30 )
 expand = true
+stretch_mode = 6
 
-[node name="Label" type="Label" parent="food_hate"]
-margin_left = 36.5083
-margin_top = 8.41333
-margin_right = 236.508
-margin_bottom = 32.4133
-text = "Food Pref: Grai"
-autowrap = true
+[node name="Button" type="TextureRect" parent="food_love"]
+visible = false
+margin_left = 54.6665
+margin_top = 4.09863
+margin_right = 85.6665
+margin_bottom = 34.0986
+texture = ExtResource( 31 )
 
-[node name="food_consume" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 725.0
-margin_right = 216.0
-margin_bottom = 749.0
+[node name="food_hate" type="TextureRect" parent="."]
+margin_left = 45.0
+margin_top = 792.0
+margin_right = 80.0
+margin_bottom = 827.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="Container" type="HBoxContainer" parent="food_hate"]
+margin_left = 54.0
+margin_top = 9.0
+margin_right = 163.0
+margin_bottom = 39.0
+
+[node name="Button" type="TextureRect" parent="food_hate/Container"]
+visible = false
+margin_right = 31.0
+margin_bottom = 30.0
+texture = ExtResource( 31 )
 
 [node name="effectlabel" type="Label" parent="."]
 margin_left = 907.997
@@ -600,8 +620,8 @@ text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 522.0
 margin_top = 15.0
@@ -612,8 +632,8 @@ text = "Obedience"
 align = 1
 
 [node name="fearlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.0
 margin_top = 15.0
@@ -624,8 +644,8 @@ text = "Fear"
 align = 1
 
 [node name="mentality" type="HBoxContainer" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 editor/display_folded = true
 margin_left = 510.1
@@ -736,7 +756,7 @@ margin_left = 963.0
 margin_top = 232.0
 margin_right = 1173.0
 margin_bottom = 604.0
-theme = ExtResource( 31 )
+theme = ExtResource( 33 )
 custom_constants/separation = 6
 
 [node name="JobButton" type="Button" parent="controls" groups=[
@@ -806,7 +826,7 @@ visible = false
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 32 )
+texture = ExtResource( 34 )
 expand = true
 stretch_mode = 6
 
@@ -826,7 +846,7 @@ margin_left = -1.0
 margin_top = 856.0
 margin_right = 1177.0
 margin_bottom = 1028.0
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 
 [node name="SkillPanel" type="HBoxContainer" parent="." groups=[
 "hide_stranger",
@@ -844,12 +864,12 @@ visible = false
 margin_right = 115.0
 margin_bottom = 115.0
 rect_min_size = Vector2( 115, 115 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 35 )
-texture_hover = ExtResource( 36 )
-texture_disabled = ExtResource( 37 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 37 )
+texture_hover = ExtResource( 38 )
+texture_disabled = ExtResource( 39 )
 expand = true
-script = ExtResource( 38 )
+script = ExtResource( 40 )
 
 [node name="icon" type="TextureRect" parent="SkillPanel/Button"]
 show_behind_parent = true
@@ -859,7 +879,7 @@ margin_right = 110.792
 margin_bottom = 110.17
 rect_min_size = Vector2( 105, 105 )
 mouse_filter = 2
-texture = ExtResource( 39 )
+texture = ExtResource( 41 )
 expand = true
 stretch_mode = 6
 
@@ -898,9 +918,10 @@ margin_left = 1203.0
 margin_top = 890.0
 margin_right = 1820.0
 margin_bottom = 1026.0
-texture = ExtResource( 40 )
+texture = ExtResource( 42 )
 
-[node name="class_learn" parent="." instance=ExtResource( 41 )]
+[node name="class_learn" parent="." instance=ExtResource( 43 )]
+visible = false
 
 [node name="job_panel" type="Panel" parent="."]
 visible = false
@@ -983,9 +1004,9 @@ margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_vertical = 0
-texture_normal = ExtResource( 44 )
-texture_pressed = ExtResource( 45 )
-texture_hover = ExtResource( 46 )
+texture_normal = ExtResource( 46 )
+texture_pressed = ExtResource( 47 )
+texture_hover = ExtResource( 48 )
 expand = true
 
 [node name="icon" type="TextureRect" parent="job_panel/job_details/ResourceOptions/Button"]
@@ -995,7 +1016,7 @@ margin_top = 8.0
 margin_right = 90.0
 margin_bottom = 90.0
 mouse_filter = 2
-texture = ExtResource( 47 )
+texture = ExtResource( 49 )
 expand = true
 
 [node name="number" type="Label" parent="job_panel/job_details/ResourceOptions/Button"]
@@ -1025,9 +1046,9 @@ margin_left = 139.51
 margin_top = 46.774
 margin_right = 179.51
 margin_bottom = 86.774
-texture_normal = ExtResource( 48 )
-texture_pressed = ExtResource( 49 )
-texture_hover = ExtResource( 48 )
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 51 )
+texture_hover = ExtResource( 50 )
 expand = true
 
 [node name="workup" type="TextureButton" parent="job_panel/job_details/WorkDetailsPanel"]
@@ -1035,9 +1056,9 @@ margin_left = 299.51
 margin_top = 46.287
 margin_right = 339.51
 margin_bottom = 86.287
-texture_normal = ExtResource( 48 )
-texture_pressed = ExtResource( 49 )
-texture_hover = ExtResource( 48 )
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 51 )
+texture_hover = ExtResource( 50 )
 expand = true
 
 [node name="joyup" type="TextureButton" parent="job_panel/job_details/WorkDetailsPanel"]
@@ -1045,9 +1066,9 @@ margin_left = 459.51
 margin_top = 46.287
 margin_right = 499.51
 margin_bottom = 86.287
-texture_normal = ExtResource( 48 )
-texture_pressed = ExtResource( 49 )
-texture_hover = ExtResource( 48 )
+texture_normal = ExtResource( 50 )
+texture_pressed = ExtResource( 51 )
+texture_hover = ExtResource( 50 )
 expand = true
 
 [node name="restdown" type="TextureButton" parent="job_panel/job_details/WorkDetailsPanel"]
@@ -1055,9 +1076,9 @@ margin_left = 139.51
 margin_top = 132.941
 margin_right = 179.51
 margin_bottom = 172.941
-texture_normal = ExtResource( 50 )
-texture_pressed = ExtResource( 51 )
-texture_hover = ExtResource( 52 )
+texture_normal = ExtResource( 52 )
+texture_pressed = ExtResource( 53 )
+texture_hover = ExtResource( 54 )
 expand = true
 
 [node name="workdown" type="TextureButton" parent="job_panel/job_details/WorkDetailsPanel"]
@@ -1065,9 +1086,9 @@ margin_left = 299.51
 margin_top = 132.941
 margin_right = 339.51
 margin_bottom = 172.941
-texture_normal = ExtResource( 50 )
-texture_pressed = ExtResource( 51 )
-texture_hover = ExtResource( 52 )
+texture_normal = ExtResource( 52 )
+texture_pressed = ExtResource( 53 )
+texture_hover = ExtResource( 54 )
 expand = true
 
 [node name="joydown" type="TextureButton" parent="job_panel/job_details/WorkDetailsPanel"]
@@ -1075,9 +1096,9 @@ margin_left = 459.51
 margin_top = 132.941
 margin_right = 499.51
 margin_bottom = 172.941
-texture_normal = ExtResource( 50 )
-texture_pressed = ExtResource( 51 )
-texture_hover = ExtResource( 52 )
+texture_normal = ExtResource( 52 )
+texture_pressed = ExtResource( 53 )
+texture_hover = ExtResource( 54 )
 expand = true
 
 [node name="restlabel" type="Label" parent="job_panel/job_details/WorkDetailsPanel"]
@@ -1227,7 +1248,7 @@ margin_right = 669.952
 margin_bottom = 146.06
 bbcode_enabled = true
 
-[node name="ImageSelect" parent="." instance=ExtResource( 53 )]
+[node name="ImageSelect" parent="." instance=ExtResource( 55 )]
 margin_left = -1237.97
 margin_top = -786.834
 margin_right = 346.031
@@ -1250,7 +1271,7 @@ margin_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 54 )
+texture = ExtResource( 56 )
 expand = true
 stretch_mode = 6
 

@@ -191,6 +191,13 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/charm_factor.png"),
 		type = 'mental_stat',
 	},
+	food_consumption = {
+		code = 'food_consumption',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food.png"),
+		type = 'misc',
+	},
 	
 	food_hate = {
 		code = 'food_hate',
