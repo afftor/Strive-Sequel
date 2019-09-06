@@ -36,6 +36,7 @@ var combat_skills = ['attack']
 var combat_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
+var active_panel = variables.PANEL_SOC
 var traits = []
 var sex_traits = []
 var effects = []
@@ -1857,8 +1858,12 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 			result = !is_active
 	return result
 
-var shield = 0
-var shieldtype
+var shield = 0 setget set_shield
+
+func set_shield(value):
+	if shield == value: return
+	if value <= 0: process_event(variables.TR_SHIELD_DOWN)
+	shield = max(0, value)
 
 func deal_damage(value, source):
 	var tmp = hp
@@ -1867,6 +1872,12 @@ func deal_damage(value, source):
 	value *= (1.0 - get_stat('resists')[source]/100.0)
 	value = int(value);
 	if value > 0:
+		if shield > value:
+			self.shield -= value
+			return 0
+		else:
+			value -= shield
+			self.shield = 0
 		process_event(variables.TR_DMG)
 		self.hp -= value
 		tmp = tmp - hp
