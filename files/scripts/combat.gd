@@ -61,6 +61,8 @@ onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Pane
 
 
 var dummy
+signal skill_use_finshed
+var eot = true
 
 func _ready():
 	battlefield.resize(14)
@@ -517,9 +519,13 @@ func enemy_turn(pos):
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
-	while use_skill(castskill, fighter, target):
+	use_skill(castskill, fighter, target)
+	yield(self, "skill_use_finshed")
+	while eot:
 		castskill = fighter.ai._get_action()
 		target = get_char_by_pos(fighter.ai._get_target(castskill))
+		use_skill(castskill, fighter, target)
+		yield(self, "skill_use_finshed")
 
 
 
@@ -880,14 +886,14 @@ func use_skill(skill_code, caster, target):
 		#on end turn triggers
 		caster.process_event(variables.TR_TURN_F)
 		call_deferred('select_actor')
-		return false
+		eot = false
 	else:
 		allowaction = true
 		RebuildSkillPanel()
 		RebuildItemPanel()
 		SelectSkill(activeaction)
-		return true
-
+		eot = true
+	emit_signal("skill_use_finshed")
 
 func ProcessSfxTarget(sfxtarget, caster, target):
 	match sfxtarget:
