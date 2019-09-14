@@ -400,9 +400,9 @@ func GetSlaveSelectNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs):
+func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false):
 	var node = GetSlaveSelectNode()
-	node.open(TargetNode, TargetFunction, reqs)
+	node.open(TargetNode, TargetFunction, reqs, allowcancel)
 
 func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 	var node

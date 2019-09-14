@@ -16,7 +16,7 @@ func open(scene):
 		yield(get_tree().create_timer(0.2), "timeout")
 	$RichTextLabel.modulate.a = 0
 	$ScrollContainer.modulate.a = 0
-	if scene.image != '':
+	if scene.image != '' && scene.image != null:
 		$image.texture = images.scenes[scene.image]
 	else:
 		$image.texture = load("res://assets/images/scenes/noevent.png")

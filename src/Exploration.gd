@@ -599,11 +599,11 @@ func update_slave_list():
 
 func select_slave_for_group():
 	var reqs = [{code = 'is_free'}]
-	globals.CharacterSelect(self, 'slave_selected', reqs)
+	input_handler.ShowSlaveSelectPanel(self, 'slave_selected', reqs)
 
 func slave_selected(character):
-	active_slave_list.append(state.characters[character])
-	state.characters[character].tags.append("selected")
+	active_slave_list.append(character)
+	character.tags.append("selected")
 	update_slave_list()
 
 func remove_slave_selection(character):
@@ -637,9 +637,6 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Leave'
-#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 		'settlement':
 			for i in active_location.actions:
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -649,9 +646,6 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Leave'
-#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 
 func local_shop():
 	open_shop('location')
@@ -691,15 +685,12 @@ func build_location_group():
 			get_node(positiondict[i]+"/Image").show()
 			get_node(positiondict[i]+"/Image/hp").text = str(character.hp) + '/' + str(character.hpmax)
 			get_node(positiondict[i]+"/Image/mp").text = str(character.mp) + '/' + str(character.mpmax)
-			
 		else:
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
 	$PresentedSlavesPanel.show()
 	$Positions.show()
-	var newbutton# = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-#	newbutton.get_node("name").text = "Send characters"
-#	newbutton.connect('pressed',self,'open_slave_selection_list')
+	var newbutton
 	for id in state.character_order:
 		var i = state.characters[id]
 		if i.location == active_location.id && i.travel_time == 0:
@@ -707,6 +698,7 @@ func build_location_group():
 			newbutton.get_node("icon").texture = i.get_icon()
 			newbutton.get_node("name").text = i.get_short_name()
 			newbutton.connect("pressed", self, "return_character", [i])
+			globals.connectslavetooltip(newbutton, i)
 		elif i.travel_target.location == active_location.id:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 			newbutton.get_node("icon").texture = i.get_icon()
@@ -734,14 +726,14 @@ var pos
 func selectfighter(position):
 	pos = 'pos'+str(position)
 	var reqs = [{code = 'is_at_location', type = active_location.id}]
-	globals.CharacterSelect(self, 'slave_position_selected', reqs, true)
+	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
 func slave_position_selected(character):
 	if character == null:
 		active_location.group.erase(pos)
 		build_location_group()
 		return
-	
+	character = character.id
 	var positiontaken = false
 	var oldheroposition = null
 	if active_location.group.has(pos) && state.characters[active_location.group[pos]].travel_time == 0 && state.characters[active_location.group[pos]].location == active_location.id:

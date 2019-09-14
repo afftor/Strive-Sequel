@@ -139,7 +139,7 @@ func CompleteQuest():
 			CompleteReqs()
 
 func select_character_for_quest():
-	globals.CharacterSelect(self, 'character_selected', selectedquest.reqs)
+	input_handler.ShowSlaveSelectPanel(self, 'character_selected', selectedquest.reqs)
 
 func character_selected(character):
 	selectedslave = character
