@@ -787,7 +787,7 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 1,
 		random_factor_p = 0.1,
-		sfx = [], 
+		sfx = [ {code = 'casterattack', target = 'caster', period = 'windup'}, {code = 'targetattack', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
@@ -1169,7 +1169,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [
 			Effectdata.rebuild_template({effect = 'e_t_blizz'}),
-			Effectdata.rebuild_template({chance = 0.5, effect = 'e_s_freeze1'})
+			Effectdata.rebuild_template({chance = 0.5, effect = 'e_s_freeze1', duration = 2})
 		], 
 		manacost = 0,
 		energycost = 0,
@@ -1182,7 +1182,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'water',
 		value = 0.7,
-		sfx = [], 
+		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'}, {code = 'targetattack', target = 'target', period = 'postdamage'}], 
 		sound = [],
 	},
 	bless = {#buff: increase damage, armor, mdef, evasion, hitrate by 10 for 3 turns 
@@ -1232,6 +1232,7 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
+		damage_type = 'light',
 		sfx = [], 
 		sound = [],
 		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
@@ -1257,7 +1258,7 @@ var Skilllist = {
 		target = 'enemy',
 		target_number = 'all',
 		target_range = 'any',
-		damage_type = 'fire',
+		damage_type = 'fire',#?
 		sfx = [], 
 		sound = [],
 		value = ['caster.matk','*2']
