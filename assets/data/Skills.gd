@@ -42,6 +42,7 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
+		dialogue_image = 'praise',
 		value = ['caster.charm', '*0.2','+20'],
 		damagestat = ['+obedience'],
 	},
@@ -63,6 +64,7 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
+		dialogue_image = 'warn',
 		value = [['caster.charm','*0.15','+10'],['caster.physics','*0.2','+20']],
 		damagestat = ['+obedience','+fear'],
 	},
@@ -106,6 +108,7 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
+		dialogue_image = 'sexreward',
 		value = [['caster.sexuals','/5','+40'],['25']],
 		damagestat = ['+obedience','-lust'],
 	},
@@ -127,6 +130,7 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
+		dialogue_image = 'punish',
 		value = [['15'],['caster.physics', '*0.3', '+40']],
 		damagestat = ['+obedience','+fear'],
 	},
@@ -148,6 +152,7 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = true,
+		dialogue_image = 'abuse',
 		value = [['15'],['35'],['20'],['20'], ['15']],
 		damagestat = ['-fatigue','obedience','fear','-hp','fatigue'],
 		receiver = ['caster','caster','target','target','target']
@@ -170,6 +175,7 @@ var Skilllist = {
 		icon = null,
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'public_punish',
 		tags = ['discipline'],
 		value = [['60'],['50'],['25']],
 		damagestat = ['fear','exhaustion','fear'],
@@ -194,6 +200,7 @@ var Skilllist = {
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'public_sex',
 		value = [['50'],['50'],['20'],['20']],
 		damagestat = ['fear','fatigue','lust','fear'],
 		receiver = ['target','target','all','all']
@@ -215,6 +222,7 @@ var Skilllist = {
 		globallimit = 1, #limits you can use the skill per day regardless of users
 		icon = null,
 		tags = ['discipline'],
+		dialogue_image = 'execution',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		value = ['100'],
@@ -241,6 +249,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'charm',
 		value = ['caster.charm','*0.25','+25'],
 		damagestat = 'obedience',
 	},
@@ -264,6 +273,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'seduce',
 		value = [['0']],
 		damagestat = ['no_stat']
 	},
@@ -286,6 +296,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'seduce',
 		value = [['100']],
 		damagestat = ['=obedience']
 	},
@@ -348,7 +359,8 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/Serve.png"),
 		tags = ['discipline'],
 		dialogue_report = '',
-		dialogue_show_repeat = false,
+		dialogue_show_repeat = true,
+		dialogue_image = 'serve',
 		value = [['20'],['caster.charm','*0.2','+30'],['-10'],['-10']],
 		damagestat = ['lust','obedience','fatigue','exhaustion'],
 		receiver = ['caster','target','target','target']
@@ -368,6 +380,9 @@ var Skilllist = {
 		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Sedate.png"),
+		dialogue_report = '',
+		dialogue_show_repeat = true,
+		dialogue_image = 'sedation',
 		tags = ['discipline'],
 		value = [['caster.wits','*0.25','+30']],
 		damagestat = ['obedience'],
@@ -387,6 +402,9 @@ var Skilllist = {
 		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Fear.png"),
+		dialogue_report = '',
+		dialogue_show_repeat = true,
+		dialogue_image = 'fear',
 		tags = ['discipline'],
 		value = [['caster.wits','*0.3','+30']],
 		damagestat = ['fear'],
@@ -426,6 +444,9 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Magic Shackles.png"),
 		tags = [],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'shackles',
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -444,6 +465,9 @@ var Skilllist = {
 		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Strong Magic Shackles.png"),
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'shackles',
 		tags = [],
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -462,6 +486,9 @@ var Skilllist = {
 		charges = 1,
 		cooldown = 3,
 		receiverdaylimit = 1,
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'mindcontrol',
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
 		tags = [],
 		value = ['0'],
@@ -482,6 +509,9 @@ var Skilllist = {
 		cooldown = 1,
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'mindcontrol',
 		tags = [],
 		value = ['0'],
 		damagestat = 'no_stat'
@@ -560,6 +590,9 @@ var Skilllist = {
 		receiverdaylimit = 1,
 		icon = load("res://assets/images/iconsclasses/soul eater.png"),
 		tags = [],
+		dialogue_report = '',
+		dialogue_show_repeat = false,
+		dialogue_image = 'souleat',
 		value = ['target.base_exp'],
 		damagestat = 'base_exp',
 		receiver = 'caster',
@@ -787,8 +820,8 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 1,
 		random_factor_p = 0.1,
-		sfx = [{code = 'casterattack', target = 'caster', period = 'windup'}],#{code = 'targetattack', target = 'target', period = 'predamage'}],#{code = 'casterattack', target = 'caster', period = 'windup'},], 
-		sounddata = {initiate = null, strike = null, hit = null},
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],#{code = 'targetattack', target = 'target', period = 'predamage'}],#{code = 'casterattack', target = 'caster', period = 'windup'},], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
 		code = 'fire_attack',
@@ -815,8 +848,8 @@ var Skilllist = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = 1.2,
-		sfx = [], 
-		sounddata = {initiate = null, strike = null, hit = null},
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	ranged_attack = {#melee attack
 		code = 'ranged_attack',
@@ -843,8 +876,8 @@ var Skilllist = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = 1,
-		sfx = [], 
-		sounddata = {initiate = null, strike = null, hit = null},
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	
 	double_attack = {#double melee attack, must have melee weapon
@@ -870,8 +903,8 @@ var Skilllist = {
 		damage_type = 'weapon',
 		repeat = 2,
 		value = 1,#i think so
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	slash = {#melee attack vs all enemeis in row
 		code = 'slash',
@@ -895,8 +928,8 @@ var Skilllist = {
 		target_range = 'melee',
 		damage_type = 'weapon',
 		value = 1,#i think so
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	protect = {# buff ally: takes skill damage from ally for 2 turns (damage is reduced by caster's def and resists), +20 def on self
 		code = 'protect',
@@ -918,10 +951,10 @@ var Skilllist = {
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'any',
-		sfx = [], 
-		sound = [],
 		value = ['0'],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	dragonmight = {#increases damage and armor by 25% until end of battle. Once in 2 days
 		code = 'dragonmight',
@@ -943,10 +976,10 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
-		sfx = [], 
-		sound = [],
 		value = ['0'],
-		damagestat = 'no_stat'
+		damagestat = 'no_stat',
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 #	charge = {#deals 2.5 times damage with 25 extra armor penetration. Only once per battle
 #		code = 'charge',
@@ -1048,9 +1081,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1,
 		damagestat = ['-damage_hp']
 	},
@@ -1077,8 +1109,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1
 	},
 #	disruption_shot = {#Removes 1 buff from target (before damage hit), silences target for 2 turns (can't use spell type abilities)
@@ -1127,8 +1159,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.7
 	},
 	barrier = {#buff: protect from 100 damage for 3 turns
@@ -1182,8 +1214,8 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'water',
 		value = 0.7,
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	bless = {#buff: increase damage, armor, mdef, evasion, hitrate by 10 for 3 turns 
 		code = 'bless',
@@ -1207,8 +1239,8 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -1232,8 +1264,8 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
 		damagestat = ['-hp', '+mp']
 	},
@@ -1258,8 +1290,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.matk','*2']
 	},
 	fly_evasion = {#buff on self: +25 evasion for 4 turns
@@ -1282,8 +1314,8 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -1310,10 +1342,9 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'weapon',
-		
 		value = ['caster.atk'],
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	hide = {#buff on self: hiding breaks on spell cast, can't be targeted by non-aoe hits; if only possible target on the row for melee -> backrow can be attacked. If only target left, hide is canceled. 
 		code = 'hide',
@@ -1335,8 +1366,8 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -1361,9 +1392,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.atk', '*4.0']
 	},
 	earth_atk = {
@@ -1387,8 +1417,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'earth',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0
 	},
 	wind_atk = {
@@ -1412,8 +1442,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'air',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 		follow_up = 'wind_atk_1'
 	},
@@ -1439,8 +1469,8 @@ var Skilllist = {
 		target_range = 'weapon',
 		damage_type = 'air',
 		random_target = true,
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0,
 	},
 	water_atk = {
@@ -1465,8 +1495,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'water',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'],0.9],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -1491,8 +1521,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'light',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0
 	},
 	fire_cleave = {
@@ -1517,8 +1547,8 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'weapon',
 		damage_type = 'fire',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'], 0.75],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -1543,8 +1573,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8
 	},
 	revenge = {
@@ -1568,8 +1598,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'weapon',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2
 	},
 	fire_burst = {
@@ -1593,8 +1623,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1
 	},
 	air_cutter = {
@@ -1619,8 +1649,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'air',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'],0.85],
 		damagestat = ['no_stat', '+damage_hp'],
 		follow_up = 'air_cutter_1'
@@ -1649,8 +1679,8 @@ var Skilllist = {
 		target_range = 'melee',
 		damage_type = 'air',
 		random_target = true,
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'],0.85],
 		damagestat = ['no_stat', '+damage_hp'],
 	},
@@ -1675,8 +1705,8 @@ var Skilllist = {
 		target_number = 'row',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.0
 	},
 	swipe = {
@@ -1699,9 +1729,9 @@ var Skilllist = {
 		target = 'enemy',
 		target_number = 'line',
 		target_range = 'melee',
-		damage_type = 'air', #i think...
-		sfx = [], 
-		sound = [],
+		damage_type = 'air',
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8
 	},
 	arrowrain = {
@@ -1725,8 +1755,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.7
 	},
 	explosivearr = {
@@ -1751,8 +1781,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'],1.1],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -1777,8 +1807,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1
 	},
 	firearr = {
@@ -1803,8 +1833,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.matk','*0.2'],1],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -1829,8 +1859,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'air',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1
 	},
 	mindblast = {
@@ -1854,8 +1884,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'mind',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2,
 		random_factor_p = 0.1
 	},
@@ -1879,8 +1909,8 @@ var Skilllist = {
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'dead',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['40'],
 		damagestat = 'no_stat'
 	},
@@ -1905,8 +1935,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'dark',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.9
 	},
 	overgrowth = {
@@ -1930,8 +1960,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'earth',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 0.8
 	},
 	firebomb = {
@@ -1956,8 +1986,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.matk','*0.2'],2.5],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -1982,8 +2012,8 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'melee',
 		damage_type = 'earth', 
-		sfx = [], 
-		sound = [],
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.2
 	},
 
@@ -2135,7 +2165,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/Reward_with_sex 3.png"),
 		tags = ['dialogue_skill'],
 		dialogue_text = '',
-		dialogue_image = null,
+		dialogue_image = 'succubuslust',
 		dialogue_options = [{code = "succubus_lust_xp_convert", reqs = [], text = '1'},
 		{code = "succubus_lust_hp_convert", reqs = [], text = '2'},
 		{code = "succubus_lust_obed_convert", reqs = [], text = '3'},
@@ -2160,6 +2190,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'succubuslust',
 		value = [['target.lust','*-1.0'],['target.lust']],
 		damagestat = ['lust','base_exp'],
 		receiver = ['target','caster']
@@ -2182,6 +2213,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'succubuslust',
 		value = [['target.lust','*-1.0'],['target.lust'],['target.lust', '*0.75']],
 		damagestat = ['lust','hp', 'mp'],
 		receiver = ['target','caster', 'caster']
@@ -2204,6 +2236,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'succubuslust',
 		value = [['-50'],['100']],
 		damagestat = ['lust','obedience'],
 		receiver = ['target','caster']
@@ -2226,6 +2259,7 @@ var Skilllist = {
 		tags = [],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
+		dialogue_image = 'succubuslust',
 		value = [['-50']],
 		damagestat = ['lust'],
 	},

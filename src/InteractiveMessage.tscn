@@ -3,8 +3,8 @@
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/panel.png" type="Texture" id=2]
 [ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/backgrounds/townhall.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/scene/answer_blocked.png" type="Texture" id=8]
@@ -28,21 +28,21 @@ theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
+[node name="image" type="TextureRect" parent="."]
+margin_left = 3.0
+margin_top = -379.0
+margin_right = 787.0
+margin_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = 3.34027
 margin_top = -378.644
 margin_right = 788.34
 margin_bottom = 2.35614
-texture = ExtResource( 4 )
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 10.0
-margin_top = -368.0
-margin_right = 784.0
-margin_bottom = -9.0
 texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 62.0

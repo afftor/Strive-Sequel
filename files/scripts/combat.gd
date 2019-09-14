@@ -171,7 +171,8 @@ func checkdeaths():
 		if battlefield[i] == null: continue
 		var tchar = characters_pool.get_char_by_id(battlefield[i])
 		if tchar.defeated != true && tchar.hp <= 0:
-			tchar.death()
+			#tchar.displaynode.defeat()
+			#tchar.death()
 			combatlogadd("\n" + tchar.name + " has been defeated.")
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
@@ -704,7 +705,6 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
-    
 		#stub for AI setuping, need func in charclass for it
 		tchar.ai = ai_base.new()
 		tchar.ai.set_single_state({})
@@ -713,7 +713,6 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
 			tchar.set(i, tchar.get(i) * enemy_stats_mod)
 		tchar.hp = tchar.hpmax
-
 		enemygroup[i] = characters_pool.add_char(tchar)
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
@@ -759,7 +758,7 @@ func use_skill(skill_code, caster, target):
 	
 	var skill = Skilldata.Skilllist[skill_code]
 	if caster != null:
-		combatlogadd('\n'+ caster.name + ' uses ' + skill.name + ". ")
+		combatlogadd(caster.name + ' uses ' + skill.name + ". ")
 	
 		caster.mp -= skill.manacost
 
@@ -1057,7 +1056,7 @@ func execute_skill(skill, caster, target):
 		return
 	target = s_skill2.target #not sure if it is safe
 	s_skill2.calculate_dmg()
-	var text = '\n'
+	var text = ''
 	if s_skill2.hit_res == variables.RES_CRIT:
 		text += "[color=yellow]Critical!![/color] "
 	#new section applying conception of multi-value skills

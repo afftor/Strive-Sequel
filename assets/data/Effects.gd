@@ -1,68 +1,5 @@
 extends Node
 var effects = {
-	gobmetalhandle = {
-		descript = tr("GOBMETALHANDLEDESCRIPT"), 
-		code = 'gobmetalhandle', 
-		textcolor = 'yellow', 
-		effects = ['e_w_gobmet_h']
-	},
-	elfmetalhandle = {
-		descript = tr("ELFMETALHANDLEDESCRIPT"), 
-		code = 'elfmetalhandle', 
-		textcolor = 'yellow', 
-		effects = ['e_w_elfmet_h']
-	},
-	gobmetalblade = {
-		descript = tr("GOBMETALBLADEDESCRIPT"), 
-		code = 'gobmetalblade', 
-		textcolor = 'yellow', 
-		effects = ['e_w_gobmet_bl']
-	},
-	elfmetalblade = {
-		descript = tr("ELFMETALBLADEDESCRIPT"), 
-		code = 'elfmetalblade', 
-		textcolor = 'yellow', 
-		effects = ['e_w_elfmet_bl']
-	},
-	elfwoodrod = {
-		descript = tr("ELFWOODRODDESCRIPT"), 
-		code = 'elfwoodrod', 
-		textcolor = 'yellow', 
-		effects = ['e_w_elfw_r']
-	},
-	gobmetalrod = {
-		descript = tr("GOBMETALRODDESCRIPT"), 
-		code = 'gobmetalrod', 
-		textcolor = 'yellow', 
-		effects = ['e_tr_gobmet_r']
-	},
-	bonerod = {
-		descript = tr("BONERODDESCRIPT"), 
-		code = 'bonerod', 
-		textcolor = 'yellow', 
-		effects = ['e_w_bone_r'],
-	},
-	bonebow = {
-		descript = tr("BONEBOWDESCRIPT"), 
-		code = 'bonebow', 
-		textcolor = 'yellow', 
-		effects = ['e_w_bone_b']
-	},
-
-	axe = {#to complete??
-		name = tr("BRITTLE"), 
-		code = 'axe', 
-		descript = tr(""), 
-		textcolor = 'gray', 
-		effects = ['e_w_dmgtreant','e_w_dmgbigtreant']
-	},
-	pick = {#to complete??
-		name = tr("BRITTLE"), 
-		code = 'pick', 
-		descript = tr(""), 
-		textcolor = 'gray', 
-		effects = ['e_w_dmggolem','e_w_dmgbiggolem']
-	},
 }
 
 var effect_table = {
@@ -583,7 +520,7 @@ var effect_table = {
 		],
 		req_skill = true,
 		value = -30,
-		args = [{type = 'template', param = 'value'}],
+		args = [{obj = 'template', param = 'value'}],
 		sub_effects = ['e_t_distract'],
 		buffs = []
 	},
@@ -596,7 +533,7 @@ var effect_table = {
 		],
 		req_skill = true,
 		value = -20,
-		args = [{type = 'template', param = 'value'}],
+		args = [{obj = 'template', param = 'value'}],
 		sub_effects = ['e_t_distract'],
 		buffs = []
 	},
@@ -611,7 +548,7 @@ var effect_table = {
 		tags = ['debuff'],
 		sub_effects = [],
 		stat = 'evasion',
-		args = [{type = 'template', param = 'stat'}, {type = 'parent_args', param = 0}],
+		args = [{obj = 'template', param = 'stat'}, {type = 'parent_args', param = 0}],
 		atomic = ['a_stat_add'],
 		buffs = ['b_distract'],
 	},

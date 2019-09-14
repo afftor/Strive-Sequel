@@ -10,7 +10,7 @@ var is_known_to_player = false #for purpose of private parts
 
 var unique 
 
-var icon_image = "res://assets/images/portraits/RoseNormal.png" #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
+var icon_image = '' #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body_image = 'default'
 var npc_reference
 #####required for combat
@@ -323,7 +323,8 @@ func add_part_stat(statname, value, revert = false):
 
 #confirmed getters
 func get_hp_max():
-	#(variables.basic_max_hp*race.hpfactor + hp_scaleble_bonus*race.hpfactor + hp_flat_bonus)*hp_percent_bonus
+	if is_person == false:
+		return hpmax
 	var res = variables.basic_max_hp
 	if bonuses.has('hpmax_add'): res += bonuses.hpmax_add
 	if race != '':
@@ -476,7 +477,6 @@ func generate_simple_fighter(tempname):
 			set(i, 0)
 		else:
 			set(i, data[i])
-	hpmax = hp
 	icon_image = data.icon
 	body_image = data.body
 	combat_skills = data.skills + ['attack']
@@ -1135,10 +1135,11 @@ func tick():
 var last_escape_day_check = 0
 
 func hp_set(value):
-	if value <= 0:
+	hp = min(value, self.hpmax)
+	if displaynode != null:
+        displaynode.update_hp()
+	if hp <= 0:
 		death()
-	else:
-		hp = min(value, self.hpmax)
 
 func mp_set(value):
 	mp = clamp(value, 0, self.mpmax)
@@ -1150,6 +1151,8 @@ func death():
 	if state.characters.has(id):
 		state.character_order.erase(id)
 		input_handler.slave_list_node.rebuild()
+	if displaynode != null:
+		displaynode.defeat()
 	#clean_effects()
 
 func energy_set(value):
@@ -2127,8 +2130,12 @@ func use_social_skill(s_code, target):#add logging if needed
 			effect_text += " (" + change + "" + str(floor(tmp)) + ")"
 
 	if template.has("dialogue_report"):
-		var data = {text = '', image = template.dialogue_report, tags = ['skill_report_event'], options = []}
+		var data = {text = '', tags = ['skill_report_event'], options = []}
 		var text = translate(template.dialogue_report)
+		if template.has('dialogue_image'):
+			data.image = template.dialogue_image
+		else:
+			data.image = 'noevent'
 		text = target.translate(text.replace("[target", "["))
 		data.text = text + effect_text
 		if template.dialogue_show_repeat == true:

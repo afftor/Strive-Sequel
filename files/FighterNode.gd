@@ -61,18 +61,18 @@ func update_hp():
 		hp = fighter.hp
 		damageeffectsarray.append(data)
 	
+	
 
 func textdamageeffect(data):
 	var tween = input_handler.GetTweenNode(self)
 	var node = get_node("HP")
 	
+	input_handler.FloatText(self, str(data.value), data.type, data.color, 4, 0.5, Vector2(get_node('Icon').rect_position.x+25,get_node("Icon").rect_position.y+100))
+#	tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,0), Color(1,0,0,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,1), Color(1,0,0,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
 	
-	input_handler.FloatText(self, str(data.value), data.type, data.color, 2, 0.2, get_node('Icon').rect_size/2)
-#		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,0), Color(1,0,0,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#		tween.interpolate_property(self.material.shader, 'modulate', Color(1,0,0,1), Color(1,0,0,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
 	
-	
-	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.hp, fighter.hpmax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.hp, fighter.hpmax), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 func update_mana():
@@ -80,18 +80,18 @@ func update_mana():
 	var node = get_node("MP")
 	mp = fighter.mp
 	
-	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.mana, fighter.manamax()), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(node, 'value', node.value, globals.calculatepercent(fighter.mp, fighter.mpmax), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 func update_hp_label():
-	$HP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
+	#$HP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$hplabel.text = str(fighter.hp) + '/' + str(fighter.hpmax)
 	else:
 		$hplabel.text = str(round(globals.calculatepercent(fighter.hp, fighter.hpmax))) + '%'
 
 func update_mp_label():
-	$MP.value = globals.calculatepercent(fighter.hp, fighter.hpmax)
+	#$MP.value = globals.calculatepercent(fighter.mp, fighter.mpmax)
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$mplabel.text = str(fighter.mp) + '/' + str(fighter.mpmax)
 	else:
@@ -99,7 +99,7 @@ func update_mp_label():
 
 func defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
-	input_handler.FadeAnimation(self, 0.5, 0.3)
+	#input_handler.FadeAnimation(self, 0.5, 0.3)
 	set_process_input(false)
 
 

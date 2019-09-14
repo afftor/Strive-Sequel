@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/punish.png-eba1ba39dfa16a6a903c3a6bd4000daf.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/images/scenes/punish.png"
+dest_files=[ "res://.import/punish.png-eba1ba39dfa16a6a903c3a6bd4000daf.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

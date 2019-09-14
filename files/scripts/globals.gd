@@ -228,6 +228,13 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	hpmod = {
+		code = 'hpmod',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
 	hpfactor = {
 		code = 'hpfactor',
 		name = '',

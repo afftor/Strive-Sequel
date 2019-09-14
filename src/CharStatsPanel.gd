@@ -20,7 +20,7 @@ func open(character = Slave.new()):
 		$VBoxContainer.get_node(i).text = str(character.get_stat(i)) + "/" + str(floor(character.get_stat(i+"max")))
 	
 	for i in variables.fighter_stats_list:
-		if !i in ['hp', 'mp']:
+		if !i in ['hpmax', 'mpmax']:
 			$"base stats".get_node(i).text = str(character.get_stat(i))
 	
 	for i in $resists.get_children():

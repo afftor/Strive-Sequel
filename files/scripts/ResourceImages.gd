@@ -18,6 +18,41 @@ var backgrounds = {
 	#scenes
 	}
 
+var scenes = {
+	abuse = load("res://assets/images/scenes/abuse.png"),
+	bosscapturefemale = load("res://assets/images/scenes/bosscapturefemale.png"),
+	bosscapturemale = load("res://assets/images/scenes/bosscapturemale.png"),
+	charm = load("res://assets/images/scenes/charm.png"),
+	chest = load("res://assets/images/scenes/chest.png"),
+	daisyconfess = load("res://assets/images/scenes/daisyconfession.png"),
+	daisyevent = load("res://assets/images/scenes/daisyevent.png"),
+	daisystart = load("res://assets/images/scenes/daisystart.png"),
+	dungeonclear = load("res://assets/images/scenes/dungeonclear.png"),
+	execution = load("res://assets/images/scenes/execution.png"),
+	fear = load("res://assets/images/scenes/fear.png"),
+	locationpurchase = load("res://assets/images/scenes/locationpurchase.png"),
+	mindcontrol = load("res://assets/images/scenes/mindcontrol.png"),
+	noevent = load("res://assets/images/scenes/noevent.png"),
+	pot = load("res://assets/images/scenes/pot.png"),
+	potmaj = load("res://assets/images/scenes/potmaj.png"),
+	potmin = load("res://assets/images/scenes/potmin.png"),
+	potused = load("res://assets/images/scenes/potused.png"),
+	praise = load("res://assets/images/scenes/praise.png"),
+	public_punish = load("res://assets/images/scenes/public_punish.png"),
+	public_sex = load("res://assets/images/scenes/public_sex.png"),
+	punish = load("res://assets/images/scenes/punish.png"),
+	recruit = load("res://assets/images/scenes/recruit.png"),
+	sedation = load("res://assets/images/scenes/sedation.png"),
+	seduce = load("res://assets/images/scenes/seduce.png"),
+	serve = load("res://assets/images/scenes/serve.png"),
+	sexreward = load("res://assets/images/scenes/sexreward.png"),
+	shackles = load("res://assets/images/scenes/shackles.png"),
+	slaveescape = load("res://assets/images/scenes/slaveescape.png"),
+	souleat = load("res://assets/images/scenes/souleat.png"),
+	succubuslust = load("res://assets/images/scenes/succubuslust.png"),
+	warn = load("res://assets/images/scenes/warn.png"),
+}
+
 var sprites = {
 	empty = null,
 	}

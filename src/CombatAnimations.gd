@@ -9,7 +9,7 @@ signal alleffectsfinished
 var cast_timer = 0
 var aftereffecttimer = 0
 var postdamagetimer = 0
-var aftereffectdelay = 0.1
+var aftereffectdelay = 0.3
 
 func _process(delta):
 	if cast_timer >= 0:
@@ -72,7 +72,7 @@ func allanimationsfinished():
 
 func targetattack(node):
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
+	var nextanimationtime = 0.4
 	input_handler.gfx(node, 'slash')
 	tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -98,3 +98,11 @@ func miss(node):
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()
 	aftereffecttimer = nextanimationtime + aftereffectdelay
+
+func death_animation(node):
+	var tween = input_handler.GetTweenNode(node)
+	var playtime = 0.1
+	var nextanimationtime = 0.0
+	var delaytime = 0.8
+	
+	input_handler.FadeAnimation(node, 1, 0.5)

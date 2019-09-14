@@ -44,6 +44,7 @@ func _ready():
 		test_slave.unlock_class("dominator")
 		state.add_slave(test_slave)
 		test_slave.speed = 100
+		test_slave.atk = 15
 		active_location.group = {1:test_slave.id}
 		StartCombat()
 
@@ -104,6 +105,7 @@ func select_category(category):
 	var newbutton
 	selectedcategory = category
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	build_area_description()
 	clear_groups()
 	if active_area == null:
 		return
@@ -497,9 +499,9 @@ func unlock_upgrade(upgrade, level):
 	open_details()
 
 var purch_location_list = {
-	easy = {price = 100, name = 'Easy Dungeon'},
-	medium = {price = 200, name = 'Medium Dungeon'},
-	hard = {price = 300, name = 'Hard Dungeon'},
+	easy = {code = 'easy',price = 100, name = 'Easy Dungeon'},
+	medium = {code = 'medium',price = 200, name = 'Medium Dungeon'},
+	hard = {code = 'hard',price = 300, name = 'Hard Dungeon'},
 }
 
 func purchase_location_list():
@@ -508,14 +510,24 @@ func purchase_location_list():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = i.name + ": " + str(i.price) + " gold"
 		newbutton.connect("pressed", self, 'purchase_location', [i])
-		
+		if state.money < i.price:
+			newbutton.disabled = true
 
 func purchase_location(purchasing_location):
 	if active_area.locations.size() < 8:
-		world_gen.make_location(purchasing_location.code, active_area)
+		var randomlocation = []
+		for i in active_area.locationpool:
+			randomlocation.append(world_gen.dungeons[i].code)
+		randomlocation = randomlocation[randi()%randomlocation.size()]
+		randomlocation = world_gen.make_location(randomlocation, active_area, purchasing_location.code)
+		input_handler.active_location = randomlocation
+		active_area.locations[randomlocation.id] = randomlocation
+		state.location_links[randomlocation.id] = {area = active_area.code, category = 'locations'} 
 		state.money -= purchasing_location.price
+		input_handler.interactive_message('purchase_dungeon_location', 'location_purchase_event', {})
 	else:
 		input_handler.SystemMessage("Can't purchase anymore")
+	purchase_location_list()
 
 func build_location_description():
 	var text = ''
@@ -523,7 +535,7 @@ func build_location_description():
 		'dungeon':
 			text =  active_location.name + " (" + active_location.classname + ")\n"  + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 			text += "\nProgress: Levels - " + str(current_level) + "/" + str(active_location.levels.size()) + ", "
-			text += "Stage - " + str(active_location.progress.level) 
+			text += "Stage - " + str(active_location.progress.stage) 
 		'settlement':
 			text = active_location.classname + ": " + active_location.name
 		'skirmish':
@@ -787,7 +799,6 @@ var current_stage = 0
 
 func enter_level(level):
 	current_level = level
-	
 	if active_location.progress.level < level:
 		active_location.progress.level = level
 		active_location.progress.stage = 0

@@ -23,7 +23,7 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience'
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind','stun']
-var fighter_stats_list = ['hp','mp','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
+var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
@@ -136,7 +136,7 @@ var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
-var combat_tests = true #for combat testing
+var combat_tests = false #for combat testing
 
 
 
