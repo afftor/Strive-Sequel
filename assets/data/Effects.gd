@@ -802,6 +802,7 @@ var effect_table = {
 		tick_event = variables.TR_TURN_GET,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 2,
+		stack = 1,
 		tags = ['debuff'],
 		sub_effects = [],
 		atomic = [

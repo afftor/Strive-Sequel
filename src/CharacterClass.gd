@@ -1136,6 +1136,7 @@ var last_escape_day_check = 0
 
 func hp_set(value):
 	hp = min(value, self.hpmax)
+  hp = max(hp, 0)
 	if displaynode != null:
         displaynode.update_hp()
 	if hp <= 0:
@@ -1143,6 +1144,8 @@ func hp_set(value):
 
 func mp_set(value):
 	mp = clamp(value, 0, self.mpmax)
+	if displaynode != null:
+		displaynode.update_mana()
 
 func death():
 	process_event(variables.TR_DEATH)
@@ -1523,6 +1526,9 @@ func random_icon():
 	if array.size() > 0:
 		icon_image = array[randi()%array.size()]
 
+func play_sfx(code):
+	if displaynode != null:
+		displaynode.process_sfx(code)
 
 #effects related part from displaced
 #if you are planning to use more functions from it (trait-related, eqip etc) - keep track of actual code
@@ -1585,6 +1591,8 @@ func apply_atomic(template):
 			social_skills.push_back(template.skill)
 		'add_combat_skill':
 			combat_skills.push_back(template.skill)
+		'sfx':
+			play_sfx(template.value)
 
 
 func remove_atomic(template):

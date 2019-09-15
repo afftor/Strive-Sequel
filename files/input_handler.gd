@@ -719,7 +719,7 @@ func ShowGameTip(tip):
 	else:
 		tipnode = load("res://src/GameplayTips.tscn").instance()
 		tipnode.name = "GameTips"
-	node.add_child(tipnode)
+	node.add_child(tipnode) # possibly error
 	tipnode.showtip(tip)
 
 func ShowOutline(node):

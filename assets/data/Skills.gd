@@ -820,8 +820,8 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 1,
 		random_factor_p = 0.1,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}],#{code = 'targetattack', target = 'target', period = 'predamage'}],#{code = 'casterattack', target = 'caster', period = 'windup'},], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [ {code = 'casterattack', target = 'caster', period = 'windup'}, {code = 'targetattack', target = 'target', period = 'postdamage'}], 
+		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
 		code = 'fire_attack',
@@ -1201,7 +1201,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [
 			Effectdata.rebuild_template({effect = 'e_t_blizz'}),
-			Effectdata.rebuild_template({chance = 0.5, effect = 'e_s_freeze1'})
+			Effectdata.rebuild_template({chance = 0.5, effect = 'e_s_freeze1', duration = 2})
 		], 
 		manacost = 0,
 		energycost = 0,
@@ -1264,6 +1264,7 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
+		damage_type = 'light',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
