@@ -105,6 +105,10 @@ func allanimationsfinished():
 	emit_signal("alleffectsfinished")
 
 # ALL FUNCTIONS BELOW ARE SETUPPING ANIMATIONS AND THOUGH MUST RETURN THEIR ESTIMATING 'LOCK' TIME  
+func sound(node, args):
+	input_handler.PlaySound(args.sound)
+	return 0
+
 func casterattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.2

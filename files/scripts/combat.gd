@@ -829,9 +829,9 @@ func use_skill(skill_code, caster, target):
 		for i in targets:
 			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
-					input_handler.PlaySound(get_weapon_sound(caster))
+					caster.displaynode.proces_sound(get_weapon_sound(caster))
 				else:
-					input_handler.PlaySound(skill.sounddata.strike)
+					caster.displaynode.proces_sound(skill.sounddata.strike)
 			for j in animationdict.predamage:
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				sfxtarget.process_sfx(j.code)
@@ -882,9 +882,9 @@ func use_skill(skill_code, caster, target):
 				#hit landed animation
 				if skill.has('sounddata') and skill.sounddata.hit != null:
 					if skill.sounddata.hittype == 'absolute':
-						input_handler.PlaySound(skill.sounddata.hit)
+						s_skill2.target.displaynode.proces_sound(skill.sounddata.hit)
 					elif skill.sounddata.hittype == 'bodyarmor':
-						input_handler.PlaySound(calculate_hit_sound(skill, caster, s_skill2.target))
+						s_skill2.target.displaynode.proces_sound(calculate_hit_sound(skill, caster, s_skill2.target))
 				for j in animationdict.postdamage:
 					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
 					sfxtarget.process_sfx(j.code)
