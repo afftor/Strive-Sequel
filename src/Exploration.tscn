@@ -1,28 +1,27 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=3]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/portraits/GoblinTrader.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/iconsitems/lockpick.png" type="Texture" id=9]
-[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=10]
-[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=18]
-[ext_resource path="res://src/NumberSelection.gd" type="Script" id=19]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/iconsitems/lockpick.png" type="Texture" id=8]
+[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=9]
+[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=17]
+[ext_resource path="res://src/NumberSelection.gd" type="Script" id=18]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=19]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 617, 136 )
 margin_left = 10.5263
 margin_right = 14.7368
@@ -45,10 +44,10 @@ bbcode_enabled = true
 
 [node name="AreaSelection" type="HBoxContainer" parent="."]
 editor/display_folded = true
-margin_left = 270.377
-margin_top = 18.1766
-margin_right = 1222.38
-margin_bottom = 118.177
+margin_left = 447.647
+margin_top = 43.5009
+margin_right = 1399.65
+margin_bottom = 143.501
 theme = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="AreaSelection"]
@@ -59,10 +58,10 @@ rect_min_size = Vector2( 200, 100 )
 toggle_mode = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 246.0
-margin_top = 148.81
-margin_right = 769.0
-margin_bottom = 855.81
+margin_left = 726.0
+margin_top = 188.81
+margin_right = 1249.0
+margin_bottom = 895.81
 theme = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
@@ -75,34 +74,40 @@ margin_right = 523.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 0, 40 )
 
-[node name="AreaCategories" type="VBoxContainer" parent="."]
-margin_left = 146.599
-margin_top = 154.184
-margin_right = 192.599
-margin_bottom = 530.184
+[node name="AreaCategories" type="HBoxContainer" parent="."]
+margin_left = 760.0
+margin_top = 149.0
+margin_right = 1115.0
+margin_bottom = 187.0
 
 [node name="capital" type="Button" parent="AreaCategories"]
-margin_right = 46.0
+margin_right = 150.0
 margin_bottom = 38.2509
-text = "F"
+rect_min_size = Vector2( 150, 0 )
+text = "Capital"
 
 [node name="locations" type="Button" parent="AreaCategories"]
-margin_top = 42.0
-margin_right = 46.0
-margin_bottom = 80.2509
-text = "L"
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 38.2509
+rect_min_size = Vector2( 150, 0 )
+text = "Locations"
 
 [node name="quests" type="Button" parent="AreaCategories"]
-margin_top = 84.0
-margin_right = 46.0
-margin_bottom = 122.251
-text = "Q"
+margin_left = 308.0
+margin_right = 458.0
+margin_bottom = 38.2509
+rect_min_size = Vector2( 150, 0 )
+text = "Quests"
 
 [node name="Positions" type="TextureRect" parent="."]
-margin_left = 866.0
-margin_top = 167.0
-margin_right = 1312.0
-margin_bottom = 880.0
+editor/display_folded = true
+visible = false
+margin_left = 1506.0
+margin_top = 560.0
+margin_right = 1952.0
+margin_bottom = 1273.0
+rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
@@ -131,7 +136,6 @@ stretch_mode = 3
 margin_right = 174.0
 margin_bottom = 216.0
 mouse_filter = 2
-texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
@@ -169,7 +173,6 @@ stretch_mode = 3
 margin_right = 174.0
 margin_bottom = 216.0
 mouse_filter = 2
-texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
@@ -207,7 +210,6 @@ stretch_mode = 3
 margin_right = 174.0
 margin_bottom = 216.0
 mouse_filter = 2
-texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
@@ -250,7 +252,6 @@ stretch_mode = 3
 margin_right = 174.0
 margin_bottom = 216.0
 mouse_filter = 2
-texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
@@ -288,7 +289,6 @@ stretch_mode = 3
 margin_right = 174.0
 margin_bottom = 216.0
 mouse_filter = 2
-texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
@@ -326,7 +326,6 @@ stretch_mode = 3
 margin_right = 174.0
 margin_bottom = 216.0
 mouse_filter = 2
-texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
@@ -356,24 +355,24 @@ margin_top = 5.0
 margin_right = 445.0
 margin_bottom = 708.0
 mouse_filter = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Positions"]
-margin_left = 48.0
-margin_top = -12.0
-margin_right = 218.0
-margin_bottom = 12.0
+margin_left = 40.0857
+margin_top = 701.736
+margin_right = 210.086
+margin_bottom = 725.736
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "FRONT"
 align = 1
 
 [node name="Label2" type="Label" parent="Positions"]
-margin_left = 243.0
-margin_top = -12.0
-margin_right = 401.0
-margin_bottom = 12.0
+margin_left = 247.754
+margin_top = 700.958
+margin_right = 405.754
+margin_bottom = 724.958
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "BACK"
 align = 1
@@ -398,7 +397,7 @@ visible = false
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 9 )
+texture_normal = ExtResource( 8 )
 expand = true
 
 [node name="Label" type="Label" parent="Positions/itemusepanel/GridContainer/Button"]
@@ -410,18 +409,27 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10"
 align = 2
 
+[node name="Label3" type="Label" parent="Positions"]
+margin_left = 20.6855
+margin_top = -25.231
+margin_right = 434.686
+margin_bottom = -1.23102
+text = "Combat Party"
+align = 1
+
 [node name="PresentedSlavesPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
-margin_left = 1419.35
-margin_top = 166.633
-margin_right = 1865.35
-margin_bottom = 867.63
+margin_left = 1439.0
+margin_top = 37.0
+margin_right = 1885.0
+margin_bottom = 529.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PresentedSlavesPanel"]
-margin_left = 30.2186
-margin_top = 43.0976
-margin_right = 411.219
-margin_bottom = 675.098
+margin_left = 30.0
+margin_top = 43.0
+margin_right = 411.0
+margin_bottom = 460.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PresentedSlavesPanel/ScrollContainer"]
 margin_right = 381.0
@@ -473,7 +481,7 @@ margin_right = 404.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 
 [node name="name" type="Label" parent="HirePanel/VBoxContainer/Button"]
 margin_left = 53.0526
@@ -502,6 +510,7 @@ margin_bottom = 782.11
 text = "Hire"
 
 [node name="QuestPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 40.7423
 margin_top = 91.4415
@@ -546,7 +555,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
@@ -571,7 +580,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
@@ -606,7 +615,7 @@ margin_left = 670.813
 margin_top = 693.075
 margin_right = 710.813
 margin_bottom = 745.075
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="QuestPanel/time"]
 margin_left = 41.0
@@ -654,7 +663,6 @@ margin_right = 404.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="ShopPanel/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
 visible = false
 margin_right = 404.0
 margin_bottom = 50.0
@@ -667,10 +675,10 @@ mouse_filter = 2
 expand = true
 
 [node name="name" type="Label" parent="ShopPanel/ScrollContainer/VBoxContainer/Button"]
-margin_left = 44.0
-margin_top = 9.0
-margin_right = 343.0
-margin_bottom = 41.0
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 353.0
+margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="price" type="Label" parent="ShopPanel/ScrollContainer/VBoxContainer/Button"]
@@ -693,6 +701,7 @@ margin_left = 6.48608
 margin_top = 26.4076
 margin_right = 46.4861
 margin_bottom = 50.4076
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
 
@@ -792,9 +801,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 15 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 
@@ -803,9 +812,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
@@ -836,9 +845,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 15 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 
@@ -847,9 +856,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
@@ -880,9 +889,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 13 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 15 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 
@@ -891,9 +900,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 16 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
@@ -954,7 +963,7 @@ margin_left = 602.0
 margin_top = 305.0
 margin_right = 1199.0
 margin_bottom = 547.0
-script = ExtResource( 19 )
+script = ExtResource( 18 )
 
 [node name="HSlider" type="HSlider" parent="NumberSelection"]
 margin_left = 54.0
@@ -977,7 +986,7 @@ margin_right = 420.538
 margin_bottom = 214.415
 text = "Confirm"
 
-[node name="combat" parent="." instance=ExtResource( 20 )]
+[node name="combat" parent="." instance=ExtResource( 19 )]
 visible = false
 
 [node name="Gold" type="Label" parent="."]

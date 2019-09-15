@@ -64,9 +64,10 @@ func _ready():
 		character.unlock_class("pet")
 		character.get_trait('core_trait')
 		character.obedience = 100
+		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('Kobold', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 100
 		character.lust = 50

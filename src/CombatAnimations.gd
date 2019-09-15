@@ -9,7 +9,7 @@ signal alleffectsfinished
 var cast_timer = 0
 var aftereffecttimer = 0
 var postdamagetimer = 0
-var aftereffectdelay = 0.1
+var aftereffectdelay = 0.3
 
 var cur_timer
 var animations_queue = {}
@@ -79,24 +79,29 @@ func start_animation(node):
 
 #not used 
 func nextanimation():
+	#print("next_animation")
 	emit_signal("pass_next_animation")
 
 func cast_finished():
+	#print("cast_finished")
 	emit_signal("cast_finished")
 
 func predamage_finished():
+	#print("predamage_finished")
 	emit_signal("predamage_finished")
-#	var tween = input_handler.GetTweenNode(self)
-#	tween.interpolate_callback(self, 1, 'allanimationsfinished')
-#	tween.start()
+	var tween = input_handler.GetTweenNode(self)
+	tween.interpolate_callback(self, 1, 'allanimationsfinished')
+	tween.start()
 
 func postdamage_finished():
+	#print("postdamage_finished")
 	emit_signal("postdamage_finished")
 	var tween = input_handler.GetTweenNode(self)
 	tween.interpolate_callback(self, 1, 'allanimationsfinished')
 	tween.start()
 
 func allanimationsfinished():
+	#print("allanims_finished")
 	emit_signal("alleffectsfinished")
 
 # ALL FUNCTIONS BELOW ARE SETUPPING ANIMATIONS AND THOUGH MUST RETURN THEIR ESTIMATING 'LOCK' TIME  
@@ -121,7 +126,7 @@ func casterattack(node, args = null):
 
 func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
-	var nextanimationtime = 0.2
+	var nextanimationtime = 0.4
 	input_handler.gfx(node, 'slash')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -188,3 +193,12 @@ func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	input_handler.FadeAnimation(node, 0.5, 0.3)
 	return 0.0
 
+
+func death_animation(node):
+	var tween = input_handler.GetTweenNode(node)
+	var playtime = 0.1
+	var nextanimationtime = 0.0
+	var delaytime = 0.8
+	
+	input_handler.FadeAnimation(node, 1, 0.5)
+  return delaytime

@@ -80,7 +80,7 @@ func update_mana():
 
 func defeat():#not working correctly at all
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
-	input_handler.FadeAnimation(self, 0.5, 0.3)
+	#input_handler.FadeAnimation(self, 0.5, 0.3)
 	set_process_input(false)
 
 func update_shield(): 

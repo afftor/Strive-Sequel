@@ -38,6 +38,7 @@ size_flags_horizontal = 3
 text = "100/100"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
+visible = false
 margin_left = 264.0
 margin_right = 392.0
 margin_bottom = 24.0
@@ -46,6 +47,7 @@ text = "Energy:"
 align = 2
 
 [node name="energy" type="Label" parent="VBoxContainer"]
+visible = false
 margin_left = 396.0
 margin_right = 524.0
 margin_bottom = 24.0
@@ -53,18 +55,17 @@ size_flags_horizontal = 3
 text = "100/100"
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 128.0
-margin_bottom = 52.0
+margin_left = 264.0
+margin_right = 392.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Mana:"
 align = 2
 
 [node name="mp" type="Label" parent="VBoxContainer"]
-margin_left = 132.0
-margin_top = 28.0
-margin_right = 260.0
-margin_bottom = 52.0
+margin_left = 396.0
+margin_right = 524.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "100/100"
 

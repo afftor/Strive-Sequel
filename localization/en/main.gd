@@ -426,7 +426,8 @@ var TranslationDict = {
 	
 	#Skills
 	SKILLATTACK = "Attack",
-	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon for %d damage. ",
+	SKILLATTACKDESCRIPT = "Attacks target with equipped weapon. ",
+	SKILLRANGED_ATTACK = "Attack",
 	SKILLFIREBOLT = "Firebolt",
 	SKILLFIREBOLTDESCRIPT = "Launches a fire spell on target. Deal %d Fire damage to all targets in same row.",
 	SKILLWINDARROW = "Wind Arrow",
@@ -803,6 +804,8 @@ var TranslationDict = {
 	RACEORCADJ = "Orc",
 	RACEGOBLIN = "Goblin",
 	RACEGOBLINADJ = "Goblin",
+	RACEKOBOLD = "Kobold",
+	RACEKOBOLDADJ = "Kobold",
 	RACEDWARF = "Dwarf",
 	RACEDWARFADJ = "Dwarven",
 	RACEGNOME = "Gnome",
@@ -862,6 +865,7 @@ var TranslationDict = {
 	RACEDROWDESCRIPT = "A rare subspecies of elves propagated and trained for combat. Their bluish skin and rare eye colors make them very noticeable and force them to hide their bodies in clothes. Being adepts in both physical techniques and magic, they often happen to be a trained assassins, combatants and sellswords. However, they are not able to breed with other species and having no real society they have to desperately seek out each other for the purpose of procreation. Due to it, their sexual activity is the highest among all elves. ",
 	RACEORCDESCRIPT = "Orcs are a semi-sapient race of brutes inhabiting many desert and badland regions. Orcs resemble large, greenish humanoids with strong bodies and bad temper. Despite that, some orcs are rather capable of fitting into normal society or work as simple bodyguards and soldiers. \n\nCommonly orcs form tribes and aren't above killing each other or any stray groups they deem dangerous. They are also rather fond of forcefully using members of other races for sex, but aren't really capable of interbreeding with them. ",
 	RACEGOBLINDESCRIPT = "Goblins are short humanoids often occupying caves and dungeons. Most goblins are outright hostile to all outsiders and prefer to stick to groups, as their individual power is fairly low, but a certain amount of goblins have abandoned their initial groups and strived to live with other races, sometimes even becoming known adventurers, but more often being used for crude work, since they are hardly remarkable at anything except for their libido. ",
+	RACEKOBOLDDESCRIPT = "Kobolds are short, lizard-like race distinctively related to dragons. The generally live underground or in forests and aren't very friendly to other races, often seen as pests, but certain individuals have managed to find acceptance among other racial groups. ",
 	RACEGNOMEDESCRIPT = "Gnomes are a rare species of short, intelligent humanoids. Their poor physical strength makes them rather poor workers or fighters, but they possess some magical capabilities with good amount of charisma and easy time connecting with other races. Many gnomes find their place as traders or entertainers, but a good amount is pretty happy to serve at more lewd occupations... assuming they can find the demand. ",
 	RACEDWARFDESCRIPT = "Dwarves are a short, stout humanoid race, preferring to live by a strict set of rules and in an enclosed underground society. Dwarves are rather physically strong and can be quick to anger, but rarely fit for magic tasks. ",
 	RACEDRYADDESCRIPT = "Dryads are a rare species of forest humanoids possessing green skin and being covered in plant matter. They rarely engage in communication with other races and generally prefer to stick to their home. Despite that, they are quite capable of fighting and using magic.",
@@ -939,7 +943,8 @@ var TranslationDict = {
 	SKILLCHARM = "Charm",
 	SKILLCHARMDESCRIPT = "Entices the target, increasing their obedience and providing increased lust growth. ",
 	
-	
+	SKILLMINDBLAST = "Mind Blast",
+	SKILLMINDBLASTDESCRIPT = "Deals Mind damage to the target. Confuses target for 1 turn.",
 	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
 	
@@ -964,10 +969,10 @@ var TranslationDict = {
 	DIALOGUEPUBLICEXECUTIONTEXT = "As [targetname] hears about your decision, [he] quickly drops on the floor, begging you to spare [targethis] life, promising to do anything and never disappoint you again. ",
 	DIALOGUEPUBLICEXECUTIONREPORT = "You put [targetname] as an example to everyone in your mansion by ending [targethis] life in front of their eyes. This seems to be rather effective, albeit unnecessarily cruel for some.",
 	
-	
+	DIALOGUEPURCHASEDUNGEONLOCATION = "You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] - [locationtypename].",
 	
 	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.",
-	DIALOGUEWARNEREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of his behavior.",
+	DIALOGUEWARNREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of his behavior.",
 	DIALOGUESERVEREPORT = "[name] has approached [targetname] and provided [targethim] with [his] sincerest affection.",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly been enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making him quite docile.",
@@ -1556,6 +1561,7 @@ var TranslationDict = {
 	ENEMYWOLF = "Wolf",
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER = "Spider",
+	ENEMYTRAINED_DOG = "Trained Dog",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",

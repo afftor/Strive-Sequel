@@ -3,11 +3,16 @@ extends "res://files/Close Panel Button/ClosingPanel.gd"
 var target_func
 var target_node
 
-func open(targetnode, targetfunc, reqs = []):
+func open(targetnode, targetfunc, reqs = [], allow_remove = false):
 	target_func = targetfunc
 	target_node = targetnode
 	show()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	if allow_remove == true:
+		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newnode.get_node("text").text = tr("REMOVE")
+		newnode.connect('pressed', targetnode, targetfunc, [null])
+		newnode.connect('pressed',self,'hide')
 	for id in state.character_order:
 		var i = state.characters[id]
 		if i.checkreqs(reqs) == false:

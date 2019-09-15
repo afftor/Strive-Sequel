@@ -43,6 +43,8 @@ func _ready():
 		test_slave.create('BeastkinWolf', 'male', 'random')
 		test_slave.unlock_class("dominator")
 		state.add_slave(test_slave)
+		test_slave.speed = 100
+		test_slave.atk = 15
 		active_location.group = {1:test_slave.id}
 		StartCombat()
 
@@ -103,6 +105,7 @@ func select_category(category):
 	var newbutton
 	selectedcategory = category
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	build_area_description()
 	clear_groups()
 	if active_area == null:
 		return
@@ -496,9 +499,9 @@ func unlock_upgrade(upgrade, level):
 	open_details()
 
 var purch_location_list = {
-	easy = {price = 100, name = 'Easy Dungeon'},
-	medium = {price = 200, name = 'Medium Dungeon'},
-	hard = {price = 300, name = 'Hard Dungeon'},
+	easy = {code = 'easy',price = 100, name = 'Easy Dungeon'},
+	medium = {code = 'medium',price = 200, name = 'Medium Dungeon'},
+	hard = {code = 'hard',price = 300, name = 'Hard Dungeon'},
 }
 
 func purchase_location_list():
@@ -507,14 +510,24 @@ func purchase_location_list():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = i.name + ": " + str(i.price) + " gold"
 		newbutton.connect("pressed", self, 'purchase_location', [i])
-		
+		if state.money < i.price:
+			newbutton.disabled = true
 
 func purchase_location(purchasing_location):
 	if active_area.locations.size() < 8:
-		world_gen.make_location(purchasing_location.code, active_area)
+		var randomlocation = []
+		for i in active_area.locationpool:
+			randomlocation.append(world_gen.dungeons[i].code)
+		randomlocation = randomlocation[randi()%randomlocation.size()]
+		randomlocation = world_gen.make_location(randomlocation, active_area, purchasing_location.code)
+		input_handler.active_location = randomlocation
+		active_area.locations[randomlocation.id] = randomlocation
+		state.location_links[randomlocation.id] = {area = active_area.code, category = 'locations'} 
 		state.money -= purchasing_location.price
+		input_handler.interactive_message('purchase_dungeon_location', 'location_purchase_event', {})
 	else:
 		input_handler.SystemMessage("Can't purchase anymore")
+	purchase_location_list()
 
 func build_location_description():
 	var text = ''
@@ -522,7 +535,7 @@ func build_location_description():
 		'dungeon':
 			text =  active_location.name + " (" + active_location.classname + ")\n"  + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 			text += "\nProgress: Levels - " + str(current_level) + "/" + str(active_location.levels.size()) + ", "
-			text += "Stage - " + str(active_location.progress.level) 
+			text += "Stage - " + str(active_location.progress.stage) 
 		'settlement':
 			text = active_location.classname + ": " + active_location.name
 		'skirmish':
@@ -586,11 +599,11 @@ func update_slave_list():
 
 func select_slave_for_group():
 	var reqs = [{code = 'is_free'}]
-	globals.CharacterSelect(self, 'slave_selected', reqs)
+	input_handler.ShowSlaveSelectPanel(self, 'slave_selected', reqs)
 
 func slave_selected(character):
-	active_slave_list.append(state.characters[character])
-	state.characters[character].tags.append("selected")
+	active_slave_list.append(character)
+	character.tags.append("selected")
 	update_slave_list()
 
 func remove_slave_selection(character):
@@ -624,9 +637,6 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Leave'
-#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 		'settlement':
 			for i in active_location.actions:
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -636,9 +646,6 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Explore'
 			newbutton.connect("pressed",self,"enter_dungeon")
-#			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Leave'
-#			newbutton.connect("pressed",self,"select_category", [selectedcategory])
 
 func local_shop():
 	open_shop('location')
@@ -678,15 +685,12 @@ func build_location_group():
 			get_node(positiondict[i]+"/Image").show()
 			get_node(positiondict[i]+"/Image/hp").text = str(character.hp) + '/' + str(character.hpmax)
 			get_node(positiondict[i]+"/Image/mp").text = str(character.mp) + '/' + str(character.mpmax)
-			
 		else:
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
 	$PresentedSlavesPanel.show()
 	$Positions.show()
-	var newbutton# = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-#	newbutton.get_node("name").text = "Send characters"
-#	newbutton.connect('pressed',self,'open_slave_selection_list')
+	var newbutton
 	for id in state.character_order:
 		var i = state.characters[id]
 		if i.location == active_location.id && i.travel_time == 0:
@@ -694,6 +698,7 @@ func build_location_group():
 			newbutton.get_node("icon").texture = i.get_icon()
 			newbutton.get_node("name").text = i.get_short_name()
 			newbutton.connect("pressed", self, "return_character", [i])
+			globals.connectslavetooltip(newbutton, i)
 		elif i.travel_target.location == active_location.id:
 			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 			newbutton.get_node("icon").texture = i.get_icon()
@@ -721,14 +726,14 @@ var pos
 func selectfighter(position):
 	pos = 'pos'+str(position)
 	var reqs = [{code = 'is_at_location', type = active_location.id}]
-	globals.CharacterSelect(self, 'slave_position_selected', reqs, true)
+	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
 func slave_position_selected(character):
 	if character == null:
 		active_location.group.erase(pos)
 		build_location_group()
 		return
-	
+	character = character.id
 	var positiontaken = false
 	var oldheroposition = null
 	if active_location.group.has(pos) && state.characters[active_location.group[pos]].travel_time == 0 && state.characters[active_location.group[pos]].location == active_location.id:
@@ -786,7 +791,6 @@ var current_stage = 0
 
 func enter_level(level):
 	current_level = level
-	
 	if active_location.progress.level < level:
 		active_location.progress.level = level
 		active_location.progress.stage = 0

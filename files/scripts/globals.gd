@@ -228,6 +228,13 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
+	hpmod = {
+		code = 'hpmod',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
 	hpfactor = {
 		code = 'hpfactor',
 		name = '',
@@ -1007,77 +1014,6 @@ func TextEncoder(text, node = null):
 func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]
 	#showtooltip(text, node)
-
-func CharacterSelect(targetscript, function, requirements, allow_remove = false):
-	var node 
-	if get_tree().get_root().has_node("CharacterSelect"):
-		node = get_tree().get_root().get_node("CharacterSelect")
-		get_tree().get_root().remove_child(node)
-		get_tree().get_root().add_child(node)
-	else:
-		node = load("res://WorkerSelect.tscn").instance()
-		node.name = 'CharacterSelect'
-		get_tree().get_root().add_child(node)
-		AddPanelOpenCloseAnimation(node)
-	
-	node.show()
-	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
-	
-	var array = []
-	array = state.characters.values()
-	
-	var newnode
-	
-	if allow_remove == true:
-		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
-		newnode.get_node("Label").text = tr("REMOVE")
-		newnode.connect('pressed', targetscript, function, [null])
-		newnode.connect('pressed',self,'CloseSelection', [node])
-	
-	for i in array:
-		if i.checkreqs(requirements) == false:
-			continue
-		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
-		newnode.get_node("Label").text = i.name
-		newnode.get_node("Icon").texture = i.get_icon()
-		newnode.connect('pressed', targetscript, function, [i.id])
-		newnode.connect('pressed',self,'CloseSelection', [node])
-
-func HeroSelect(targetscript, type, function, requirements):
-	var node 
-	if get_tree().get_root().has_node("HeroSelect"):
-		node = get_tree().get_root().get_node("HeroSelect")
-		get_tree().get_root().remove_child(node)
-		get_tree().get_root().add_child(node)
-		
-	else:
-		node = load("res://HeroSelect.tscn").instance()
-		node.name = 'HeroSelect'
-		get_tree().get_root().add_child(node)
-		AddPanelOpenCloseAnimation(node)
-	
-	node.show()
-	#node.set_as_toplevel(true)
-	ClearContainer(node.get_node("ScrollContainer/VBoxContainer"))
-	
-	var array = []
-	var newnode
-	if type == 'heroposition':
-		array = state.heroes.values()
-		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
-		newnode.get_node("Label").text = tr("REMOVE")
-		newnode.connect('pressed', targetscript, function, [null])
-		newnode.connect('pressed',self,'CloseSelection', [node])
-	
-	for i in array:
-		newnode = DuplicateContainerTemplate(node.get_node("ScrollContainer/VBoxContainer"))
-		newnode.get_node("Label").text = i.name
-
-		newnode.get_node("Icon").texture = images.portraits[i.icon]
-
-		newnode.connect('pressed', targetscript, function, [i])
-		newnode.connect('pressed',self,'CloseSelection', [node])
-
 
 func ItemSelect(targetscript, type, function, requirements = true):
 	var node 

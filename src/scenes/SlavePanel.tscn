@@ -159,6 +159,7 @@ expand = true
 stretch_mode = 6
 
 [node name="BodyPanel" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 1202.66
 margin_top = 0.0238342
 margin_right = 1826.66
@@ -284,6 +285,7 @@ text = "1.100"
 align = 1
 
 [node name="progress" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 263.0
 margin_top = 16.0
 margin_right = 516.0
@@ -362,6 +364,7 @@ expand = true
 stretch_mode = 6
 
 [node name="factors" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 39.255
 margin_top = 392.251
 margin_right = 160.255
@@ -848,6 +851,12 @@ margin_right = 1177.0
 margin_bottom = 1028.0
 texture = ExtResource( 35 )
 
+[node name="skillpanelswitch" type="Button" parent="."]
+margin_left = -22.0
+margin_top = 900.0
+margin_right = 1.0
+margin_bottom = 1018.0
+
 [node name="SkillPanel" type="HBoxContainer" parent="." groups=[
 "hide_stranger",
 "hide_traveler",
@@ -924,6 +933,7 @@ texture = ExtResource( 42 )
 visible = false
 
 [node name="job_panel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 294.382
 margin_top = 41.197
@@ -954,6 +964,7 @@ toggle_mode = true
 text = "Test text"
 
 [node name="job_details" type="Panel" parent="job_panel"]
+editor/display_folded = true
 visible = false
 margin_left = 373.0
 margin_right = 1018.0
@@ -1037,6 +1048,7 @@ hint_tooltip = "TOOLTIPSIMPLEBEHAVIOR"
 text = "Simple Behavior"
 
 [node name="WorkDetailsPanel" type="Panel" parent="job_panel/job_details"]
+editor/display_folded = true
 margin_top = 575.0
 margin_right = 644.0
 margin_bottom = 798.0

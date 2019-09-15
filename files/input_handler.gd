@@ -257,7 +257,7 @@ func FloatText(node, text, type = '', color = Color(1,1,1), time = 3, fadetime =
 	textnode.rect_global_position = node.rect_global_position+positionoffset
 	textnode.set("custom_colors/font_color", color)
 	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
-	floatfont.size = 50
+	floatfont.size = 150
 	textnode.set("custom_fonts/font", floatfont)
 	match type:
 		'damageenemy':
@@ -275,15 +275,18 @@ func FloatText(node, text, type = '', color = Color(1,1,1), time = 3, fadetime =
 
 func DamageTextFly(node, reverse = false):
 	var tween = GetTweenNode(node)
-	var firstvector = Vector2(100, -100)
-	var secondvector = Vector2(200, 200)
-	if reverse == true:
-		firstvector = Vector2(-100, -100)
-		secondvector = Vector2(-200, 200)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
-	FadeAnimation(node, 0.2 , 0.7)
+#	var firstvector = Vector2(100, -100)
+#	var secondvector = Vector2(200, 200)
+#	if reverse == true:
+#		firstvector = Vector2(-100, -100)
+#		secondvector = Vector2(-200, 200)
+#	yield(get_tree().create_timer(0.5), 'timeout')
+#	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.interpolate_property(node, 'rect_position', node.rect_position+firstvector, node.rect_position+secondvector, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.3)
+#	FadeAnimation(node, 0.2 , 0.7)
+	var firstvector = Vector2(0, 0)
+	tween.interpolate_property(node, 'rect_position', node.rect_position, node.rect_position+firstvector, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT,0.5)
+	FadeAnimation(node, 0.2, 1)
 	tween.start()
 
 func HealTextFly(node):
@@ -397,9 +400,9 @@ func GetSlaveSelectNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs):
+func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false):
 	var node = GetSlaveSelectNode()
-	node.open(TargetNode, TargetFunction, reqs)
+	node.open(TargetNode, TargetFunction, reqs, allowcancel)
 
 func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 	var node
@@ -838,6 +841,8 @@ func interactive_message(code, type, args):
 				if i.code == code:
 					active_area.events.erase(i)
 					break
+		'location_purchase_event':
+			data.text = data.text.replace("[areaname]", active_area.name).replace('[locationname]', active_location.name).replace('[locationdescript]',active_location.descript).replace("[locationtypename]", active_location.classname)
 	scene.open(data)
 
 func interactive_message_custom(data):
