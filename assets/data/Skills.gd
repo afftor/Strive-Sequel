@@ -828,7 +828,7 @@ var Skilllist = {
 		value = 1,
 		random_factor_p = 0.1,
 		sfx = [{code = 'targetattack', target = 'target', period = 'postdamage'}], 
-		sounddata = {initiate = null, strike = null, hit = null},
+		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
 		code = 'fire_attack',

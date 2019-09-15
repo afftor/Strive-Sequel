@@ -276,6 +276,8 @@ func FloatText(node, text, type = '', size = 150, color = Color(1,1,1), time = 3
 		"heal":
 			HealTextFly(textnode)
 	#FadeAnimation(textnode, fadetime, time)
+#	node.remove_child(textnode)
+#	get_tree().get_current_scene().add_child(textnode)
 	var wr = weakref(textnode)
 	yield(get_tree().create_timer(time+1), 'timeout')
 	if wr.get_ref(): textnode.queue_free()

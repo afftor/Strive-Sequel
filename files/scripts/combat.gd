@@ -1,6 +1,7 @@
 extends Control
 
 #warning-ignore-all:return_value_discarded
+# warning-ignore:unused_signal
 var currentenemies
 var area
 var turns = 0

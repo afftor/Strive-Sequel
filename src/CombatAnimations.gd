@@ -167,7 +167,7 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	var nextanimationtime = 0.0
 	var delaytime = 0.8
 	input_handler.PlaySound("combatmiss")
-	input_handler.FloatText(node, tr("MISS"), 'miss', 75, Color(1,1,1), 0.5, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
+	input_handler.FloatText(node, tr("MISS"), 'miss', 75, Color(1,1,1), 1, 0.2)#, node.get_node('Icon').rect_size/2-Vector2(80,20))
 	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()
