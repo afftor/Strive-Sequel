@@ -169,7 +169,7 @@ func hp_update(node, args):
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage
-	input_handler.FloatText(node, str(args.damage), args.type, args.color, 2, 0.2, node.get_node('Icon').rect_size/2)
+	input_handler.FloatText(node, str(args.damage), args.type, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
 	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	#update hp label
