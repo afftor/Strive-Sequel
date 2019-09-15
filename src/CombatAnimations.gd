@@ -156,7 +156,7 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	var nextanimationtime = 0.0
 	var delaytime = 0.8
 	input_handler.PlaySound("combatmiss")
-	input_handler.FloatText(node, tr("MISS"), 'miss', Color(1,1,1), 0.5, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
+	input_handler.FloatText(node, tr("MISS"), 'miss', 75, Color(1,1,1), 0.5, 0.2, node.get_node('Icon').rect_size/2-Vector2(20,20))
 	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
 	tween.start()
@@ -169,7 +169,7 @@ func hp_update(node, args):
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage
-	input_handler.FloatText(node, str(args.damage), args.type, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
+	input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
 	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	#update hp label

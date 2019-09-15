@@ -829,9 +829,9 @@ func use_skill(skill_code, caster, target):
 		for i in targets:
 			if skill.has('sounddata') and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
-					caster.displaynode.proces_sound(get_weapon_sound(caster))
+					caster.displaynode.process_sound(get_weapon_sound(caster))
 				else:
-					caster.displaynode.proces_sound(skill.sounddata.strike)
+					caster.displaynode.process_sound(skill.sounddata.strike)
 			for j in animationdict.predamage:
 				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
 				sfxtarget.process_sfx(j.code)
