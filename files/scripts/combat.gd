@@ -811,7 +811,7 @@ func use_skill(skill_code, caster, target):
 	#casteranimations
 	#for sure at windup there should not be real_target-related animations
 	if skill.has('sounddata') and skill.sounddata.initiate != null:
-		input_handler.PlaySound(skill.sounddata.initiate)
+		caster.displaynode.proces_sound(skill.sounddata.initiate)
 	for i in animationdict.windup:
 		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
 		sfxtarget.process_sfx(i.code)
