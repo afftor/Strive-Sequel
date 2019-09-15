@@ -100,7 +100,7 @@ func process_sfx(code):
 	animation_node.add_new_data(data)
 
 func process_sound(sound):
-	var data = {node = self, time = globals.combat_node.turns, type = 'sound', slot = 'SFX', params = {sound = sound}}
+	var data = {node = self, time = globals.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 
 #control visuals
