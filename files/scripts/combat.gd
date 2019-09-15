@@ -1,6 +1,7 @@
 extends Control
 
 #warning-ignore-all:return_value_discarded
+# warning-ignore:unused_signal
 var currentenemies
 var area
 var turns = 0
@@ -213,6 +214,8 @@ var rewardsdict
 
 #to check next functions
 func victory():
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(cursors.default)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	fightover = true
@@ -352,6 +355,8 @@ func victory():
 	
 
 func defeat():
+	CombatAnimations.check_start()
+	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	globals.CurrentScene.GameOverShow()
 	set_process(false)
 	set_process_input(false)
