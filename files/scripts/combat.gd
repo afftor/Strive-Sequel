@@ -174,7 +174,8 @@ func checkdeaths():
 		if tchar.defeated != true && tchar.hp <= 0:
 			#tchar.displaynode.defeat()
 			#tchar.death()
-			combatlogadd("\n" + tchar.name + " has been defeated.")
+			tchar.defeated = true
+			combatlogadd("\n" + tchar.name + " has been defeated.\n")
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
 					turnorder.remove(j)

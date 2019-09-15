@@ -201,4 +201,4 @@ func death_animation(node):
 	var delaytime = 0.8
 	
 	input_handler.FadeAnimation(node, 1, 0.5)
-  return delaytime
+	return delaytime
