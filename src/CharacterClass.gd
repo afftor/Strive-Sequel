@@ -1136,7 +1136,7 @@ var last_escape_day_check = 0
 
 func hp_set(value):
 	hp = min(value, self.hpmax)
-  hp = max(hp, 0)
+	hp = max(hp, 0)
 	if displaynode != null:
         displaynode.update_hp()
 	if hp <= 0:
@@ -1150,7 +1150,7 @@ func mp_set(value):
 func death():
 	process_event(variables.TR_DEATH)
 	is_active = false
-	defeated = true
+	#defeated = true
 	if state.characters.has(id):
 		state.character_order.erase(id)
 		input_handler.slave_list_node.rebuild()
@@ -1934,6 +1934,7 @@ func get_stat_data():
 func resurrect(hp_per):
 	if !defeated: return
 	defeated = false
+	is_active = true
 	hp = int(hpmax * hp_per /100)
 
 func get_all_buffs():
