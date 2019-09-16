@@ -15,6 +15,11 @@ var cur_timer
 var animations_queue = {}
 #format: time - node - animations (data)
 #data format: time, node, slot, type, params
+
+#delays for playing animations in zones
+var hp_update_delays = {}
+
+#main timer
 var animation_delays = {}
 
 var is_busy = false
@@ -51,8 +56,10 @@ func check_start():
 	advance_timer()
 
 func advance_timer():
+	hp_update_delays.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
+	print (cur_timer)
 	for node in animations_queue[cur_timer]:
 		start_animation(node)
 
@@ -68,12 +75,14 @@ func finish_animation(node):
 				emit_signal("alleffectsfinished")
 			else: 
 				advance_timer()
+	else: 
+		start_animation(node)
 
 func start_animation(node):
 	var f_anim = animations_queue[cur_timer][node].front()
 	var delay = 0
 	for data in f_anim:
-		#print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
+		print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
 		delay = max(delay, call(data.type, data.node, data.params))
 	animation_delays[node] = delay
 
@@ -107,7 +116,7 @@ func allanimationsfinished():
 # ALL FUNCTIONS BELOW ARE SETUPPING ANIMATIONS AND THOUGH MUST RETURN THEIR ESTIMATING 'LOCK' TIME  
 func sound(node, args):
 	input_handler.PlaySound(args.sound)
-	return 0
+	return 0.1
 
 func casterattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
@@ -131,6 +140,7 @@ func casterattack(node, args = null):
 func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
+	hp_update_delays[node] = 0.4 #delay for hp updating during this animation
 	input_handler.gfx(node, 'slash')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -142,6 +152,7 @@ func targetattack(node, args = null):
 func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
+	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	input_handler.gfx(node, 'fire')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -165,17 +176,23 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
 func hp_update(node, args):
-	var delaytime = 0.3
+	var delay = 0
+	if hp_update_delays.has(node): delay = hp_update_delays[node]
+	hp_update_delays.erase(node)
+	
+	var delaytime = 1.5
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage
-	input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
+	tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(args.damage), type = args.type, size = 125, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
-	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	#update hp label
-	node.update_hp_label(args.newhp, args.newhpp)
+	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp, args.newhpp)
+	#node.update_hp_label(args.newhp, args.newhpp)
 	tween.start()
-	return delaytime
+	return delaytime + delay
 
 func mp_update(node, args):
 	var delaytime = 0.3
@@ -188,14 +205,17 @@ func mp_update(node, args):
 	tween.start()
 	return delaytime
 
+func test_combat_start(node, args):
+	return 1.0
+
 func shield_update(node, args):
 	node.material.set_shader_param('modulate', args.color)
-	return 0.0
+	return 0.1
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
 	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
 	input_handler.FadeAnimation(node, 0.5, 0.3)
-	return 0.0
+	return 0.1
 
 
 func death_animation(node):

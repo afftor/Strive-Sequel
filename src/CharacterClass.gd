@@ -551,7 +551,7 @@ func create(temp_race, temp_gender, temp_age):
 						break
 				if check == false:
 					food_filter.med.append(i.code)
-	
+	get_trait('core_trait')
 	hp = get_stat('hpmax')
 	mp = get_stat('mpmax')
 

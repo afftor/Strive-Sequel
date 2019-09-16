@@ -249,16 +249,23 @@ func TargetEnemyTurn(node):
 
 var floatfont = preload("res://FloatFont.tres")
 
+func FloatTextArgs(args):
+	print('ftchecked')
+	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
 func FloatText(node, text, type = '', size = 150, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
-	get_tree().get_root().add_child(textnode)
+	node.add_child(textnode)
+	var newfont = floatfont.duplicate()
+	newfont.size = size
+	textnode.set("custom_fonts/font", newfont)
 	textnode.text = text
-	textnode.rect_global_position = node.rect_global_position+positionoffset
+	textnode.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+	textnode.rect_position += positionoffset
+	
 	textnode.set("custom_colors/font_color", color)
 	textnode.set("custom_colors/font_color_shadow", Color(0,0,0))
-	floatfont.size = size
-	textnode.set("custom_fonts/font", floatfont)
+	
 	match type:
 		'damageenemy':
 			DamageTextFly(textnode, false)

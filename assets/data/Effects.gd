@@ -2011,6 +2011,17 @@ var effect_table = {
 		stack = 0,
 		rem_event = variables.TR_TICK,
 	},
+	test_combat_start = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_S],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			atomic = [{type = 'sfx', value = 'test_combat_start'}]
+		}],
+	},
 };
 
 var atomic = {
