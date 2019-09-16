@@ -106,6 +106,7 @@ var matk = 20
 var hitrate = 100
 var evasion = 0
 var resists = {} setget ,get_res
+var status_resists = {}
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
@@ -1077,7 +1078,7 @@ func tick():
 				state.emit_signal("slave_arrived", self)
 				input_handler.PlaySound("ding")
 				if location == 'mansion':
-					work = 'rest'
+					work = ''
 					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
 				else:
 					state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.location_links[location].area][state.location_links[location].category][location].name)

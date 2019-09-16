@@ -94,12 +94,19 @@ func select_area(area):
 	active_area = area
 	input_handler.active_area = active_area
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	$AreaCategories.show()
 	if selectedcategory == null:
 		selectedcategory = 'capital'
 	select_category(selectedcategory)
+	update_categories()
 	for i in $AreaSelection.get_children():
 		i.pressed = i.text == area.name
+	
+	
 	build_area_description()
+
+func update_categories():
+	$AreaCategories/quests.disabled = active_area.questlocations.size() <= 0
 
 func select_category(category):
 	var newbutton
@@ -435,6 +442,7 @@ func accept_quest():
 	for i in selectedquest.requirements:
 		if i.code in ['dungeon','eventlocation']:
 			input_handler.ShowPopupPanel("You've received a new quest location.")
+			update_categories()
 			break
 	open_quest_list()
 
@@ -868,6 +876,7 @@ func clear_dungeon_confirm():
 	active_area.questlocations.erase(active_location.id)
 	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
 	leave_location()
+	update_categories()
 
 func leave_location():
 	select_category(selectedcategory)
