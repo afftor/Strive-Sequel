@@ -827,13 +827,13 @@ func interactive_message(code, type, args):
 					newcharacter = call(args.characterdata.function, args.characterdata.args)
 			scene_character = newcharacter
 			data.text = newcharacter.translate(data.text)
-			data.options.push_front({code = 'inspect_scene_character', text = tr("DIALOGUECHARINSPECT")})
+			data.options.push_front({code = 'inspect_scene_character', reqs = [], text = tr("DIALOGUECHARINSPECT")})
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
 			scene_character = args.pregchar
 			var baby = state.babies[scene_character.pregnancy.baby]
-			data.options.append({code = 'inspect_character_child', text = tr("DIALOGUEINSPECTBABY")})
+			data.options.append({code = 'inspect_character_child', reqs = [], text = tr("DIALOGUEINSPECTBABY")})
 		'event_selection':
 			data.location = active_location
 		'loot':

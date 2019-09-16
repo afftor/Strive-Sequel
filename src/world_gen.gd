@@ -22,7 +22,7 @@ var lands = {
 		start_settlements_number = {settlement_small = [2,2]}, #will generate said locations on first generation
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
-		locationpool = ['dungeon_bandit_den', "dungeon_goblin_cave"], #array of allowed locations to generate
+		locationpool = ['dungeon_bandit_den'],#"dungeon_goblin_cave"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages'],
 		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
 		capital_shop_items = ['lifeshard'],
@@ -259,7 +259,7 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])
 	newquest.source = guilddatatemplate.code
 	newquest.area = guilddatatemplate.area
-	newquest.travel_time = state.areas[guilddatatemplate.area].travel_time + round(randf()*24)
+	newquest.travel_time = state.areas[guilddatatemplate.area].travel_time + round(randf()*12)
 	newquest.difficulty = difficulty
 	state.areas[newquest.area].quests.factions[newquest.source][newquest.id] = newquest
 
@@ -661,7 +661,9 @@ func take_quest(quest, area):
 #		state.location_links[location.id] = {area = area.code, category = 'questlocations'} 
 
 func find_location_from_req(req):
-	var location = state.areas[req.area].questlocations[req.location]
+	var location = null
+	if state.areas[req.area].questlocation.has(req.location):
+		location = req.location
 	return location
 
 func make_quest_location(quest,area):
@@ -684,6 +686,7 @@ func make_quest_location(quest,area):
 				locationdata.progress = {level = 0, stage = 0}
 			'dungeon':
 				locationdata = make_location(i.type, area, i.difficulty)
+				i.locationname = locationdata.name
 				locationdata.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {id = quest.id, source = quest.source, area = quest.area}})
 #				var data = dungeons[i.type].duplicate(true)
 #				locationdata.type = 'quest_dungeon'

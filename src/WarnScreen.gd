@@ -1,10 +1,9 @@
 extends Panel
+#warning-ignore-all:return_value_discarded
 
 func _ready():
 	show()
-#warning-ignore:return_value_discarded
 	$Accept.connect("pressed",self,"Accept")
-#warning-ignore:return_value_discarded
 	$Quit.connect("pressed",self, "Quit")
 
 func Accept():

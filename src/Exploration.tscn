@@ -75,6 +75,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="AreaCategories" type="HBoxContainer" parent="."]
+visible = false
 margin_left = 760.0
 margin_top = 149.0
 margin_right = 1115.0

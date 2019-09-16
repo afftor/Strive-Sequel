@@ -22,7 +22,8 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience'
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
 
-var resists_list = ['normal','fire','earth','air','water','light','dark','mind','stun']
+var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
+var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
@@ -34,7 +35,6 @@ var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal',
 'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor',
 'sexuals_factor','magic_factor','growth_factor']
 
-var status_list = ['stun']
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']
 
@@ -122,11 +122,11 @@ var basic_energy_per_work_tick = 8.35
 
 #Cheats
 var instant_travel = true
-var skip_combat = false
+var skip_combat = true
 var free_upgrades = true
 var instant_upgrades = true
 var unlock_all_upgrades = true
-var invincible_player = true
+var invincible_player = false
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
 
@@ -136,7 +136,7 @@ var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
-var combat_tests = true #for combat testing
+var combat_tests = false #for combat testing
 
 
 

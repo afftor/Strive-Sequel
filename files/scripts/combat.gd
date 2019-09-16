@@ -1094,7 +1094,7 @@ func get_random_target():
 
 
 func execute_skill(s_skill2):
-	var text = '\n'
+	var text = ''
 	if s_skill2.hit_res == variables.RES_CRIT:
 		text += "[color=yellow]Critical!![/color] "
 	#new section applying conception of multi-value skills
@@ -1108,22 +1108,22 @@ func execute_skill(s_skill2):
 			elif s_skill2.is_drain:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 				var rval2 = s_skill2.caster.heal(rval)
-				text += "%s drained %d hp (%d actually) from %s and gained %d hp\n" %[s_skill2.caster.name, s_skill2.value[i], rval, s_skill2.target.name, rval2]
+				text += "%s drained %d health from %s and gained %d health\n" %[s_skill2.caster.name, s_skill2.value[i], s_skill2.target.name, rval2]
 			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
-				text += "%s is hit for %d damage (%d actually)\n" %[s_skill2.target.name, s_skill2.value[i], rval] 
+				text += "%s is hit for %d damage\n" %[s_skill2.target.name, s_skill2.value[i]] 
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(s_skill2.value[i])
 			else:
 				var rval = s_skill2.target.heal(s_skill2.value[i])
-				text += "%s is healed for %d hp (%d actually)\n" %[s_skill2.target.name, s_skill2.value[i], rval]
+				text += "%s is healed for %d health\n" %[s_skill2.target.name, s_skill2.value[i]]
 		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
 			if !s_skill2.tags.has('no log'):
 				var rval = s_skill2.target.mana_update(s_skill2.value[i])
-				text += "%s restored %d mana (%d actually)\n" %[s_skill2.target.name, s_skill2.value[i], rval] 
+				text += "%s restored %d mana\n" %[s_skill2.target.name, s_skill2.value[i]] 
 			else:
 				s_skill2.target.mana_update(s_skill2.value[i])
 		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
@@ -1131,9 +1131,9 @@ func execute_skill(s_skill2):
 			if s_skill2.is_drain:
 				var rval2 = s_skill2.caster.mana_update(rval)
 				if !s_skill2.tags.has('no log'):
-					text += "%s drained %d mana (%d actually) from %s and gained %d mana\n" %[s_skill2.caster.name, s_skill2.value[i], rval, s_skill2.target.name, rval2]
+					text += "%s drained %d mana from %s and gained %d mana\n" %[s_skill2.caster.name, s_skill2.value[i], s_skill2.target.name, rval2]
 			if !s_skill2.tags.has('no log'):
-				text += "%s lost %d mana (%d actually)\n" %[s_skill2.target.name, s_skill2.value[i], -rval] 
+				text += "%s lost %d mana\n" %[s_skill2.target.name, s_skill2.value[i]] 
 		else: 
 			var mod = s_skill2.damagestat[i][0]
 			var stat = s_skill2.damagestat[i].right(1) 
