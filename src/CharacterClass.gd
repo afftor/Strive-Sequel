@@ -1177,12 +1177,15 @@ func death():
 	process_event(variables.TR_DEATH)
 	is_active = false
 	#defeated = true
-	if state.characters.has(id):
-		state.character_order.erase(id)
-		input_handler.slave_list_node.rebuild()
+#	if state.characters.has(id):
+#		state.character_order.erase(id)
+#		input_handler.slave_list_node.rebuild()
+	process_event(variables.TR_COMBAT_F)
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
+	if globals.combat_node == null:
+		characters_pool.cleanup()
 
 func energy_set(value):
 	energymax = 100 + energybonus
@@ -1469,11 +1472,10 @@ func escape():
 	for i in gear:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
-	state.characters.erase(id)
-	state.character_order.erase(id)
-	input_handler.slave_list_node.rebuild()
 	input_handler.scene_character = self
 	input_handler.interactive_message('slave_escape', '', {})
+	characters_pool.cleanup()
+	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
 
