@@ -1865,7 +1865,7 @@ var recipes = {
 	},
 	elegant_choker = {
 		code = 'elegant_choker',
-		materials = {cloth = 20},
+		materials = {cloth = 10, clothsilk = 5},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',

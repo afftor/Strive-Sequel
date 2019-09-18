@@ -67,7 +67,7 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('Kobold', 'random', 'random')
+		character.create('Gnome', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
 		character.fear = 25

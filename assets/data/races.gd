@@ -405,7 +405,7 @@ var racelist = {
 		icon = null,
 		body = null,
 		basestats = {
-			food_consumption = [1,3],
+			food_consumption = [1,2],
 			dirtiness = [1,3],
 			physics_factor = [1,3],
 			magic_factor = [1,3],
@@ -416,7 +416,7 @@ var racelist = {
 			charm_factor = [1,2],
 			wit_factor = [2,4],
 		},
-		race_bonus = {hpfactor = 0.75, evasion = 10},
+		race_bonus = {hpfactor = 0.75, mod_collect = 0.1},
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 55, meat = 0, fish = 1, grain = 25},
 		tags = [],

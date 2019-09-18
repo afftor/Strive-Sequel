@@ -129,8 +129,8 @@ var shades = {
 	fairy_f = load("res://assets/images/raceshades/Fairy_F.png"),
 	gnome_m = load("res://assets/images/raceshades/Gnome_M.png"),
 	gnome_f = load("res://assets/images/raceshades/Gnome_F.png"),
-	dwarf_m = load("res://assets/images/raceshades/Gnome_M.png"),
-	dwarf_f = load("res://assets/images/raceshades/Gnome_F.png"),
+	dwarf_m = load("res://assets/images/raceshades/Dwarf_M.png"),
+	dwarf_f = load("res://assets/images/raceshades/Dwarf_F.png"),
 	goblin_m = load("res://assets/images/raceshades/Goblin_M.png"),
 	goblin_f = load("res://assets/images/raceshades/Goblin_F.png"),
 	harpy_m = load("res://assets/images/raceshades/Harpy_M.png"),
@@ -151,5 +151,7 @@ var shades = {
 	slime_f = load("res://assets/images/raceshades/Slime_F.png"),
 	taurus_m = load("res://assets/images/raceshades/Taurus_M.png"),
 	taurus_f = load("res://assets/images/raceshades/Taurus_F.png"),
+	kobold_m = load("res://assets/images/raceshades/Kobold_M.png"),
+	kobold_f = load("res://assets/images/raceshades/Kobold_F.png"),
 	
 }

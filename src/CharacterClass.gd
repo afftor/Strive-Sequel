@@ -100,8 +100,8 @@ var mod_pros = 1.0
 #also adding mods requires to add those mods to discipline effect 
 #var mod_pros_energy = 1.0
 
-var atk = 20 #maybe needs setget
-var matk = 20
+var atk = 10 #maybe needs setget
+var matk = 10
 
 var hitrate = 100
 var evasion = 0
