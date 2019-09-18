@@ -113,8 +113,10 @@ func gear_tooltip(data, item = null):
 	
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
+		text += "\n\n[color=yellow]Hold shift for details[/color]"
 	else:
 		iconnode.texture = load(item.icon)
+	
 	textnode.bbcode_text = text
 
 func gear_detailed_tooltip(data, item = null):
@@ -186,6 +188,8 @@ func geartemplete_tooltip(data):
 #		$type.text = tr("USABLE")
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
+		
+		text += "\n\n[color=yellow]Hold shift for details[/color]"
 	textnode.bbcode_text = globals.TextEncoder(text)
 	
 

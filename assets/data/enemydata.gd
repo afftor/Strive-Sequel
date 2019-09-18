@@ -1,7 +1,7 @@
 extends Node
 
 var predeterminatedgroups = {
-	rats_easy = {group = {1 : 'rat', 2 : 'rat'}}
+	rats_easy = {group = {1 : 'bandit_melee', 2 : 'bandit_melee'}}
 } 
 
 var enemygroups = {
@@ -42,18 +42,18 @@ var enemies = {
 		atk = 10,
 		matk = 5,
 		speed = 40,
-		resists = {dark = 50, fire = 50},
+		resists = {dark = 50, fire = 50, earth = -50, water = -50},
 		status_resists = {},
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = null,
 		body = null,
-		skills = ['attack'],
+		skills = ['attack', 'earth_atk'],
 		traits = [],
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 66], ['ads', 33]],
+		ai = [['basic', 95], ['ads', 5]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 15,
@@ -71,12 +71,12 @@ var enemies = {
 		atk = 15,
 		matk = 5,
 		speed = 50,
-		resists = {fire = 50, air = 50},
+		resists = {fire = 50, air = 50, earth = -50, light = -50},
 		race = 'humanoid',
 		loot = 'bandit_loot',
 		icon = null,
 		body = null,
-		skills = ['ranged_attack'],
+		skills = ['wind_atk','ranged_attack'],
 		traits = [],
 		tags = [],
 		is_character = false,
@@ -125,7 +125,7 @@ var enemies = {
 		atk = 25,
 		matk = 0,
 		speed = 45,
-		resists = {air = 50},
+		resists = {air = 50, fire = -50},
 		race = 'beast',
 		loot = 'dog_loot',
 		icon = null,
@@ -152,7 +152,7 @@ var enemies = {
 		atk = 20,
 		matk = 0,
 		speed = 30,
-		resists = {earth = 50, water = 25},
+		resists = {earth = 50, water = 25, fire = -50},
 		race = 'beast',
 		loot = 'bear_loot',
 		icon = null,
@@ -179,7 +179,7 @@ var enemies = {
 		atk = 40,
 		matk = 0,
 		speed = 50,
-		resists = {air = 50, fire = 50},
+		resists = {air = 50, fire = 50, water = -50},
 		race = 'beast',
 		loot = 'raptor_loot',
 		icon = null,
