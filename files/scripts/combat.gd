@@ -729,10 +729,6 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
-		#stub for AI setuping, need func in charclass for it
-		tchar.ai = ai_base.new()
-		tchar.ai.set_single_state({})
-		tchar.ai.app_obj = tchar
 		
 		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
 			tchar.set(i, tchar.get(i) * enemy_stats_mod)
@@ -826,6 +822,7 @@ func use_skill(skill_code, caster, target):
 	for n in range(s_skill1.repeat):
 		#get all affected targets
 		if skill.has('random_target') or (target != null and target.hp <= 0) :
+			if checkwinlose(): return
 			UpdateSkillTargets();
 			target = get_random_target()
 		targets = CalculateTargets(skill, target, true) 

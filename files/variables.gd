@@ -122,7 +122,7 @@ var basic_energy_per_work_tick = 8.35
 
 #Cheats
 var instant_travel = true
-var skip_combat = true
+var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
 var unlock_all_upgrades = true
@@ -136,7 +136,8 @@ var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
-var combat_tests = false #for combat testing
+var combat_tests = true #for combat testing
+var ai_setup = 'off' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 
 
 

@@ -1,7 +1,7 @@
 extends Reference
 class_name ai_base
 
-var app_obj: Slave  #applied character
+var app_obj  #applied character
 
 var ai_data = {}
 var skill_targets = {} #s_name:[targets]
