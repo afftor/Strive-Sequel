@@ -69,7 +69,8 @@ func _ready():
 		character = Slave.new()
 		character.create('Kobold', 'random', 'random')
 		characters_pool.move_to_state(character.id)
-		character.obedience = 100
+		character.obedience = 0
+		character.fear = 25
 		character.lust = 50
 		character.base_exp += 500
 		#character.exhaustion = 1000

@@ -222,7 +222,6 @@ text = "Population"
 align = 1
 
 [node name="TaskProgress" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 19.0
 margin_top = 195.156
 margin_right = 425.0

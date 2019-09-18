@@ -21,7 +21,7 @@ func showup(node, skillcode):
 		return
 	show()
 	set_process(true)
-	var text = '[center]'+skill.name+'[/center]' + "\n[color=aqua]Type: " + skill.ability_type + " - " + skill.type + "[/color]\n" + skill.descript
+	var text = '[center]'+skill.name+'[/center]\n' + skill.descript
 	
 	if skill.charges > 0:
 		text += "\n\nMax Charges: [color=yellow]" + str(skill.charges) + "[/color]. Cooldown: " + str(skill.cooldown) + " day(s)."
