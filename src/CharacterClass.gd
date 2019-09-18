@@ -32,7 +32,7 @@ var professions = []
 var social_skills = []
 var social_cooldowns = {}
 var social_skills_charges = {}
-var combat_skills = ['attack']
+var combat_skills = []
 var combat_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
@@ -552,7 +552,7 @@ func create(temp_race, temp_gender, temp_age):
 						break
 				if check == false:
 					food_filter.med.append(i.code)
-	
+	learn_c_skill('attack')
 	hp = get_stat('hpmax')
 	mp = get_stat('mpmax')
 
@@ -922,8 +922,8 @@ func remove_trait(tr_code):
 func learn_skill(skill):
 	if !social_skills.has(skill):
 		social_skills.append(skill)
-		if social_skill_panel.size() < 12:
-			for i in range(1,13):
+		if social_skill_panel.size() < 11:
+			for i in range(1,12):
 				if social_skill_panel.has(i) == false:
 					social_skill_panel[i] = skill
 					break
@@ -931,6 +931,11 @@ func learn_skill(skill):
 func learn_c_skill(skill):
 	if !combat_skills.has(skill):
 		combat_skills.append(skill)
+		if combat_skill_panel.size() < 11:
+			for i in range(1,12):
+				if combat_skill_panel.has(i) == false:
+					combat_skill_panel[i] = skill
+					break
 
 func unlearn_skill(skill):
 	var check = false

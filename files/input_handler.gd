@@ -537,6 +537,7 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	x.texture = images.GFX[effect]
 	x.expand = true
 	x.stretch_mode = 6
+	x.mouse_filter = 2
 	node.add_child(x)
 	
 	x.rect_size = node.rect_size

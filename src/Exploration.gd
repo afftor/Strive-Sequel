@@ -41,7 +41,7 @@ func _ready():
 		active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 		var test_slave = Slave.new()
 		test_slave.create('BeastkinWolf', 'male', 'random')
-		test_slave.unlock_class("dominator")
+		test_slave.unlock_class("fighter")
 		state.add_slave(test_slave)
 		test_slave.speed = 100
 		test_slave.atk = 15

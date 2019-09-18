@@ -161,12 +161,12 @@ func newturn():
 		tchar.displaynode.rebuildbuffs()
 		#not sure about keeping all beyond - dis part, mb needs reworking
 		var cooldowncleararray = []
-		for k in tchar.cooldowns:
-			tchar.cooldowns[k] -= 1
-			if tchar.cooldowns[k] <= 0:
+		for k in tchar.combat_cooldowns:
+			tchar.combat_cooldowns[k] -= 1
+			if tchar.combat_cooldowns[k] <= 0:
 				cooldowncleararray.append(k)
 		for k in cooldowncleararray:
-			tchar.cooldowns.erase(k)
+			tchar.combat_cooldowns.erase(k)
 
 func checkdeaths():
 	for i in range(battlefield.size()):
@@ -370,7 +370,7 @@ func player_turn(pos):
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
 	if !selected_character.can_act():
-		combatlogadd("%s cannot act" % selected_character.name)
+		#combatlogadd("%s cannot act" % selected_character.name)
 		selected_character.process_event(variables.TR_TURN_F)
 		selected_character.displaynode.rebuildbuffs()
 		call_deferred('select_actor')
@@ -507,7 +507,7 @@ func enemy_turn(pos):
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if !fighter.can_act():
-		combatlogadd("%s cannot act" % fighter.name)
+		#combatlogadd("%s cannot act" % fighter.name)
 		fighter.process_event(variables.TR_TURN_F)
 		fighter.displaynode.rebuildbuffs()
 		call_deferred('select_actor')
@@ -1108,22 +1108,22 @@ func execute_skill(s_skill2):
 			elif s_skill2.is_drain:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 				var rval2 = s_skill2.caster.heal(rval)
-				text += "%s drained %d health from %s and gained %d health\n" %[s_skill2.caster.name, s_skill2.value[i], s_skill2.target.name, rval2]
+				text += "%s drained %d health from %s and gained %d health\n" %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
 			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
-				text += "%s is hit for %d damage\n" %[s_skill2.target.name, s_skill2.value[i]] 
+				text += "%s is hit for %d damage\n" %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(s_skill2.value[i])
 			else:
 				var rval = s_skill2.target.heal(s_skill2.value[i])
-				text += "%s is healed for %d health\n" %[s_skill2.target.name, s_skill2.value[i]]
+				text += "%s is healed for %d health\n" %[s_skill2.target.name, rval]
 		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
 			if !s_skill2.tags.has('no log'):
 				var rval = s_skill2.target.mana_update(s_skill2.value[i])
-				text += "%s restored %d mana\n" %[s_skill2.target.name, s_skill2.value[i]] 
+				text += "%s restored %d mana\n" %[s_skill2.target.name, rval] 
 			else:
 				s_skill2.target.mana_update(s_skill2.value[i])
 		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
@@ -1131,9 +1131,9 @@ func execute_skill(s_skill2):
 			if s_skill2.is_drain:
 				var rval2 = s_skill2.caster.mana_update(rval)
 				if !s_skill2.tags.has('no log'):
-					text += "%s drained %d mana from %s and gained %d mana\n" %[s_skill2.caster.name, s_skill2.value[i], s_skill2.target.name, rval2]
+					text += "%s drained %d mana from %s and gained %d mana\n" %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
 			if !s_skill2.tags.has('no log'):
-				text += "%s lost %d mana\n" %[s_skill2.target.name, s_skill2.value[i]] 
+				text += "%s lost %d mana\n" %[s_skill2.target.name, rval] 
 		else: 
 			var mod = s_skill2.damagestat[i][0]
 			var stat = s_skill2.damagestat[i].right(1) 
@@ -1236,16 +1236,16 @@ func ClearSkillPanel():
 
 func RebuildSkillPanel():
 	ClearSkillPanel()
-	for i in activecharacter.combat_skills:
+	for i in activecharacter.combat_skill_panel:
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
-		var skill = Skilldata.Skilllist[i]
+		var skill = Skilldata.Skilllist[activecharacter.combat_skill_panel[i]]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
 		if skill.manacost <= 0:
 			newbutton.get_node("manacost").hide()
 		if skill.manacost > activecharacter.mp:
 			newbutton.get_node("Icon").modulate = Color(0,0,1)
-		if activecharacter.cooldowns.has(i):
+		if activecharacter.combat_cooldowns.has(i):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		if !activecharacter.checkreqs(skill.reqs):
@@ -1256,7 +1256,7 @@ func RebuildSkillPanel():
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.set_meta('skill', skill.code)
-		globals.connectskilltooltip(newbutton, i, activecharacter)
+		globals.connectskilltooltip(newbutton, skill.code, activecharacter)
 
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
