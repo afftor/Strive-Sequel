@@ -106,7 +106,7 @@ var matk = 10
 var hitrate = 100
 var evasion = 0
 var resists = {} setget ,get_res
-var status_resists = {}
+var status_resists = {} setget ,get_res_s
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
@@ -351,6 +351,13 @@ func get_res():
 		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
 	return res
 
+func get_res_s():
+	var res = status_resists.duplicate()
+	for r in variables.status_list:
+		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
+		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+	return res
+
 #some AI-related functions
 func need_heal(): #stub. borderlines are subject to tuning
 	if has_status('banish'): return -1.0
@@ -378,9 +385,6 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	
 	if randf() <= 0.003:
 		pass #make check for easter egg character
-	
-	for i in variables.resists_list:
-		resists[i] = 0
 	
 	var slaveclass = desired_class
 	if slaveclass == null:
@@ -470,6 +474,18 @@ func get_class_list(category, person):
 	
 	return array
 
+func fill_ai(data):
+	match variables.ai_setup:
+		'off':
+			ai.set_single_state({})
+		'new':
+			ai.set_single_state(data)
+		'old':
+			var newdata = {}
+			for arr in data:
+				newdata[arr[0]] = arr[1]
+			ai.set_single_state(newdata)
+
 func generate_simple_fighter(tempname):
 	var data = Enemydata.enemies[tempname]
 	
@@ -488,8 +504,15 @@ func generate_simple_fighter(tempname):
 	name = data.name
 	for i in variables.resists_list:
 		resists[i] = 0
-	for i in data.resists:
-		resists[i] = data.resists[i]
+	for i in variables.status_list:
+		status_resists[i] = 0
+	ai = ai_base.new()
+	if data.has('full_ai'):
+		ai.set_simple_ai(data.ai)
+	else:
+		#need check for hard difficulty
+		fill_ai(data.ai)
+	ai.app_obj = self
 
 
 func generate_predescribed_character(data):
@@ -519,6 +542,8 @@ func create(temp_race, temp_gender, temp_age):
 	
 	for i in variables.resists_list:
 		resists[i] = 0
+	for i in variables.status_list:
+		status_resists[i] = 0
 	
 	get_sex_features()
 	
@@ -1158,12 +1183,15 @@ func death():
 	process_event(variables.TR_DEATH)
 	is_active = false
 	#defeated = true
-	if state.characters.has(id):
-		state.character_order.erase(id)
-		input_handler.slave_list_node.rebuild()
+#	if state.characters.has(id):
+#		state.character_order.erase(id)
+#		input_handler.slave_list_node.rebuild()
+	process_event(variables.TR_COMBAT_F)
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
+	if globals.combat_node == null:
+		characters_pool.cleanup()
 
 func energy_set(value):
 	energymax = 100 + energybonus
@@ -1450,11 +1478,10 @@ func escape():
 	for i in gear:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
-	state.characters.erase(id)
-	state.character_order.erase(id)
-	input_handler.slave_list_node.rebuild()
 	input_handler.scene_character = self
 	input_handler.interactive_message('slave_escape', '', {})
+	characters_pool.cleanup()
+	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
 
@@ -1663,9 +1690,9 @@ func find_eff_by_item(item_id):
 	return res
 
 func check_status_resist(eff):
-	for s in variables.resists_list:
+	for s in variables.status_list:
 		if !eff.tags.has(s): continue
-		var res = get_stat('resists')[s]
+		var res = get_stat('status_resists')[s]
 		var roll = globals.rng.randi_range(0, 99)
 		if roll < res: return true
 	return false
