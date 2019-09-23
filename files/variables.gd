@@ -83,11 +83,15 @@ var slave_starting_stats = 15
 var minimum_factor_value = 1
 var maximum_factor_value = 6
 
+var basic_character_atk = 25
+var basic_character_matk = 25
+
 var power_adjustments_per_difficulty = {
 	easy = [1,2],
 	medium = [2,4],
 	hard = [3,6]
 }
+var difficulty_per_level = 0.05 #% enemy stat increase
 #sex chances
 
 var teen_age_weight = 1
@@ -120,6 +124,9 @@ var max_mp_per_magic_factor = 10
 var basic_lust_per_tick = 0.57
 var basic_energy_per_work_tick = 8.35
 
+var obedience_modifier = 1.0
+var fear_modifier = 1.0
+
 #Cheats
 var instant_travel = true
 var skip_combat = false
@@ -129,16 +136,16 @@ var unlock_all_upgrades = true
 var invincible_player = false
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
+var allow_skip_fights = true
 
 #debug_only
-var allow_remote_intereaction = false
+var allow_remote_intereaction = true
 var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
 var combat_tests = true #for combat testing
-var ai_setup = 'off' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
-
+var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 
 
 

@@ -1,7 +1,7 @@
 extends Node
 
 var predeterminatedgroups = {
-	rats_easy = {group = {1 : 'bandit_melee', 2 : 'bandit_melee'}}
+	rats_easy = {group = {1 : 'bandit_melee', 4 : 'bandit_archer',5 : 'rat'}},
 } 
 
 var enemygroups = {
@@ -10,11 +10,13 @@ var enemygroups = {
 	bandits_easy = {reqs = [], units = {bandit_melee = [1,3], trained_dog = [0,2]}},
 	bandits_easy2 = {reqs = [], units = {bandit_melee = [1,3], bandit_archer = [1,2]}},
 	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}},
+	
+	bandits_easy_boss = {maxunits = 3, reqs = [], units = {bandit_boss = [0,2], bandit_melee = [0,2], bandit_archer = [0,1]}},
+	
 	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}},
 	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}},
 	bandits_medium_bear = {reqs = [], units = {trained_bear = [1,2], bandit_archer = [1,2]}},
 	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}},
-	bandits_easy_boss = {reqs = [], units = {bandit_melee = [0,2], boss = [1,1], bandit_archer = [0,1]}},
 	
 	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
 	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
@@ -53,10 +55,10 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 95], ['ads', 5]],
+		ai = [['basic', 66], ['ads', 33]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 15,
+		xpreward = 10,
 	},
 	bandit_archer = {
 		code = 'bandit_archer',
@@ -83,7 +85,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 15,
+		xpreward = 10,
 	},
 	bandit_assassin = {
 		code = 'bandit_assassin',
@@ -110,8 +112,38 @@ var enemies = {
 		gear = [],
 		ai =  [['ads', 100]],
 		ai_position = ['ranged'],
-		xpreward = 25,
+		xpreward = 20,
 	},
+	bandit_boss = {
+		code = 'bandit_boss',
+		name = '',
+		descript = '',
+		hpmax = 250,
+		armor = 10,
+		mdef = 10,
+		hitrate = 85,
+		evasion = 15,
+		armorpenetration = 0,
+		atk = 20,
+		matk = 15,
+		speed = 35,
+		resists = {dark = 50, fire = 50, earth = -50, water = -50},
+		status_resists = {stun = 25},
+		race = 'humanoid',
+		loot = 'bandit_loot',
+		icon = null,
+		body = null,
+		skills = ['attack', 'slash'],
+		traits = [],
+		tags = [],
+		is_character = false,
+		gear = [],
+		ai = [['basic', 85], ['aoe', 15]],
+		ai_hard = [['basic', 85], ['aoe', 50]],
+		ai_position = ['melee'],
+		xpreward = 50,
+	},
+	
 	trained_dog = {
 		code = 'trained_dog',
 		name = '',
@@ -122,7 +154,7 @@ var enemies = {
 		hitrate = 85,
 		evasion = 25,
 		armorpenetration = 0,
-		atk = 25,
+		atk = 20,
 		matk = 0,
 		speed = 45,
 		resists = {air = 50, fire = -50},
@@ -191,7 +223,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 25,
 	},
 	guardian_golem = {
 		code = 'guardian_golem',
@@ -218,7 +250,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 50,
+		xpreward = 25,
 	},
 	ballista = {
 		code = 'ballista',
@@ -245,7 +277,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['ranged'],
-		xpreward = 50,
+		xpreward = 25,
 	},
 	bandit_mage = {
 		code = 'bandit_mage',
@@ -299,7 +331,7 @@ var enemies = {
 		gear = [],
 		ai = ['melee'],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 8,
 	},
 	cave_goblin_archer = {
 		code = 'cave_goblin_archer',
@@ -326,7 +358,7 @@ var enemies = {
 		gear = [],
 		ai = ['ranged'],
 		ai_position = ['ranged'],
-		xpreward = 10,
+		xpreward = 8,
 	},
 	cave_goblin_mage = {
 		code = 'cave_goblin_mage',
@@ -650,9 +682,10 @@ var loot_chests_data = {
 
 #		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
 var loottables = {
-	rat_loot = [['leather', 0.15], ['lifeshard', 0.25]],
+	rat_loot = [['leather', 0.1], ['lifeshard', 0.2]],
 	spider_loot = [['clothsilk', 0.5],['clothsilk', 0.5], ['lifeshard', 0.20]],
 	bandit_loot = [['cloth', 0.5, 2], ['lifeshard', 0.3], ['gold', 75, 3]],
+	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 1, 30], ['gold', 0.5, 5]],
 	skeleton_loot = [['bone', 0.75, 4], ['energyshard', 0.3], ['gold', 25, 3]],
 	wolf_loot = [['leather', 0.5, 3]],
 	gryphon_loot = [['leathermythic', 1, 5], ['leathermythic', 0.5, 3]],

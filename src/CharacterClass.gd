@@ -100,8 +100,8 @@ var mod_pros = 1.0
 #also adding mods requires to add those mods to discipline effect 
 #var mod_pros_energy = 1.0
 
-var atk = 10 #maybe needs setget
-var matk = 10
+var atk = variables.basic_character_atk #maybe needs setget
+var matk = variables.basic_character_matk
 
 var hitrate = 100
 var evasion = 0
@@ -261,9 +261,13 @@ func add_stat_bonuses(ls:Dictionary):
 		for rec in ls:
 			if (rec as String).begins_with('resist') :
 				add_bonus(rec + '_add', ls[rec])
+				continue
+			if (rec as String).ends_with('mod') :
+				add_bonus(rec.replace('mod','_mul'), ls[rec])
+				continue
 			if get(rec) == null:
-				#safe variant
-				#add_bonus(rec, ls[rec])
+			#safe variant
+			#add_bonus(rec, ls[rec])
 				continue
 			add_stat(rec, ls[rec])
 
@@ -504,6 +508,8 @@ func generate_simple_fighter(tempname):
 	name = data.name
 	for i in variables.resists_list:
 		resists[i] = 0
+		if data.resists.has(i):
+			resists[i] = data.resists[i]
 	for i in variables.status_list:
 		status_resists[i] = 0
 	ai = ai_base.new()
@@ -1052,13 +1058,13 @@ func get_obed_reduction():
 	var value = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 	if location != 'mansion':
 		value = value/4
-	return value
+	return value*variables.obedience_modifier
 
 func get_fear_reduction():
 	var value = 100.0 * get_stat('fear_degrade_mod')/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
 	if location != 'mansion':
 		value = value/4
-	return value
+	return value*variables.fear_modifier
 
 
 var prepared_act = []

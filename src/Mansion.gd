@@ -71,6 +71,7 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
 		character.fear = 25
+		character.tame_factor = 6
 		character.lust = 50
 		character.base_exp += 500
 		#character.exhaustion = 1000
@@ -110,7 +111,9 @@ func _ready():
 	
 	$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
 	input_handler.SystemMessageNode = $SysMessage
-
+	
+	
+	
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):

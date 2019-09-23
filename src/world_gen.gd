@@ -26,6 +26,7 @@ var lands = {
 		guilds = ['workers','servants','fighters','mages'],
 		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
 		capital_shop_items = ['lifeshard'],
+		capital_locations = ['dungeon_tutorial'],
 		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
 	},
 	forests = {
@@ -170,8 +171,8 @@ var guildsdata = {
 		quests_easy = ['warriors_dungeon_basic'],#'warriors_threat_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
-		slavenumber = [1,1],
-		questnumber = [1,1],
+		slavenumber = [2,2],
+		questnumber = [2,2],
 	},
 	mages = {
 		code = 'mages',
@@ -181,8 +182,8 @@ var guildsdata = {
 		quests_easy = ['mages_materials_basic','mages_craft_potions_basic','mages_threat_basic','mages_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
-		slavenumber = [1,1],
-		questnumber = [1,1],
+		slavenumber = [2,2],
+		questnumber = [2,2],
 	},
 	workers = {
 		code = 'workers',
@@ -192,8 +193,8 @@ var guildsdata = {
 		quests_easy = ['workers_resources_basic','workers_food_basic','workers_craft_tools_basic','workers_threat_basic'],
 		quests_medium = [],
 		quests_hard = [],
-		slavenumber = [1,1],
-		questnumber = [1,1],
+		slavenumber = [2,2],
+		questnumber = [2,2],
 	},
 	servants = {
 		code = 'servants',
@@ -203,8 +204,8 @@ var guildsdata = {
 		quests_easy = ['servants_craft_items_basic','servants_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
-		slavenumber = [2,2],
-		questnumber = [1,1],
+		slavenumber = [2,3],
+		questnumber = [2,2],
 	},
 }
 
@@ -230,7 +231,6 @@ func make_guild(code, area):
 	factiondata.slavenumber = round(rand_range(factiondata.slavenumber[0], factiondata.slavenumber[1]))
 	factiondata.questnumber = round(rand_range(factiondata.questnumber[0], factiondata.questnumber[1]))
 	guilddatatemplate.slavenumber = factiondata.slavenumber
-	
 	while factiondata.slavenumber > 0:
 		make_slave_for_guild(guilddatatemplate)
 		factiondata.slavenumber -= 1
@@ -238,7 +238,7 @@ func make_guild(code, area):
 		area.quests.factions[factiondata.code] = {}
 	while factiondata.questnumber > 0:
 		for i in ['easy','medium','hard']:
-			while guilddatatemplate.questsetting[i] > area.quests.factions[factiondata.code].size():
+			while guilddatatemplate.questsetting[i] >= area.quests.factions[factiondata.code].size():
 				make_quest_for_guild(guilddatatemplate, i)
 		factiondata.questnumber -= 1
 	
@@ -361,7 +361,11 @@ var locations = {
 
 func make_location(code, area, difficulty = 'easy'):
 	var location = dungeons[code].duplicate(true)
-	var text = "The " + locationnames[location.name+"_adjs"][randi()%locationnames[location.name + "_adjs"].size()] + " " + locationnames[location.name+"_nouns"][randi()%locationnames[location.name + "_nouns"].size()]
+	var text = location.name
+	if locationnames.has(location.name+'_adjs'):
+		text = "The " + locationnames[location.name+"_adjs"][randi()%locationnames[location.name + "_adjs"].size()] + " " + locationnames[location.name+"_nouns"][randi()%locationnames[location.name + "_nouns"].size()]
+	if location.has('singlename'):
+		text = location.singlename
 	location.name = text
 	location.id = "L" + str(state.locationcounter)
 	location.travel_time = round(rand_range(6,24))
@@ -381,7 +385,7 @@ func make_location(code, area, difficulty = 'easy'):
 	location.enemies = location.difficulties[difficulty].enemyarray.duplicate(true)
 	if location.difficulties[difficulty].has("final_enemy"):
 		var bossenemy = input_handler.weightedrandom(location.difficulties[difficulty].final_enemy)
-		location.stagedenemies.append({enemy = bossenemy, level = location.difficulties[difficulty].levels.size(), stage = location.levels[location.levels.size()].stages})
+		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels[location.levels.size()].stages-1})
 		if location.difficulties[difficulty].final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages-1, operant = 'gte'}]})
 	state.locationcounter += 1
@@ -823,6 +827,30 @@ var dungeonadj = ['Dark','White','Red','Black','Molten','Distant','Eternal','Glo
 
 
 var dungeons = {
+	
+	dungeon_tutorial = {
+		code = 'dungeon_tutorial',
+		type = 'dungeon',
+		name = '',
+		singlename = 'Sewers',
+		classname = '',
+		descript = '',
+		background = '',
+		default_difficulty = 'easy',
+		difficulties = {
+			easy = {code = 'easy', 
+			enemyarray =  [["rats_easy", 1]], 
+			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+			eventarray = [], 
+			levels = [1,1], 
+			resources = [],
+			stages_per_level = [3,3]
+			}
+		},
+		affiliation = 'local', #defines character races and events
+		events = [],
+	},
+	
 #	skirmish_bandit_camp = {
 #		code = 'skirmish_bandit_camp',
 #		type = 'skirmish',

@@ -250,7 +250,7 @@ func TargetEnemyTurn(node):
 var floatfont = preload("res://FloatFont.tres")
 
 func FloatTextArgs(args):
-	print('ftchecked')
+	#print('ftchecked')
 	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
 func FloatText(node, text, type = '', size = 150, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):

@@ -300,7 +300,7 @@ func victory():
 			$Rewards/HBoxContainer/second.add_child(newbutton)
 		#newbutton.get_node('icon').texture = tchar.portrait_circle()
 		newbutton.get_node("xpbar").value = tchar.base_exp
-		tchar.base_exp += ceil(rewardsdict.xp*tchar.exp_mod)
+		tchar.base_exp += ceil(rewardsdict.xp*tchar.exp_mod/playergroup.size())
 		#var level = tchar.level
 		var subtween = input_handler.GetTweenNode(newbutton)
 #		if tchar.level > level:
@@ -352,14 +352,14 @@ func victory():
 	
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
-	
 
 func defeat():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	globals.CurrentScene.GameOverShow()
 	set_process(false)
 	set_process_input(false)
+	self.hide()
+	get_parent().combat_defeat()
 
 func player_turn(pos):
 	turns += 1
@@ -730,8 +730,8 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
 		
-		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
-			tchar.set(i, tchar.get(i) * enemy_stats_mod)
+		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
+			tchar.set(i, round(tchar.get(i) * enemy_stats_mod))
 		tchar.hp = tchar.hpmax
 		enemygroup[i] = characters_pool.add_char(tchar)
 		battlefield[int(i)] = enemygroup[i]
@@ -878,7 +878,7 @@ func use_skill(skill_code, caster, target):
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
 				s_skill2.target.play_sfx('miss')
-				combatlogadd(target.name + " evades the damage.")
+				combatlogadd(target.name + " evades the damage.\n")
 				Off_Target_Glow()
 			else:
 				#hit landed animation

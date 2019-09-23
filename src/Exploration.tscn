@@ -511,7 +511,6 @@ margin_bottom = 782.11
 text = "Hire"
 
 [node name="QuestPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 40.7423
 margin_top = 91.4415

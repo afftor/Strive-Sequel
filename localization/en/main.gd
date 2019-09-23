@@ -664,6 +664,8 @@ var TranslationDict = {
 	STATHPFACTOR = "Health Factor",
 	STATHPFACTORDESCRIPT = "Determines health bonuses acquired in most ways. High health factor can greatly increase survivability. ",
 	
+	STATHPMOMAX = "Max. Health",
+	
 	STATMP = "Mana",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilities.",
 	STATMPMAX = "Max. Mana",
