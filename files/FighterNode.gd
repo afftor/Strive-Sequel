@@ -52,7 +52,7 @@ func update_hp():
 	if hp == null:
 		hp = fighter.hp
 	if hp != null && hp != fighter.hp:
-		var args = {damage = 0, type = '', color = Color(), newhp = fighter.hp, newhpp = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax'))}
+		var args = {damage = 0, type = '', color = Color(), newhp = fighter.hp, newhpp = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')), damage_float = true}
 		args.damage = fighter.hp - hp
 		if args.damage < 0:
 			args.color = Color(1,0.2,0.2)
@@ -63,6 +63,7 @@ func update_hp():
 		else:
 			args.type = 'heal'
 			args.color = Color(0.2,1,0.2)
+		if hp <= 0: args.damage_float = false
 		hp = fighter.hp
 		#damageeffectsarray.append(data)
 		var data = {node = self, time = globals.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
@@ -103,8 +104,12 @@ func process_sound(sound):
 	var data = {node = self, time = globals.combat_node.turns, type = 'sound', slot = 'sound', params = {sound = sound}}
 	animation_node.add_new_data(data)
 
-#control visuals
 func rebuildbuffs():
+	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = {}}
+	animation_node.add_new_data(data)
+
+#control visuals
+func noq_rebuildbuffs():
 	globals.ClearContainer($Buffs)
 	for i in fighter.get_all_buffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)

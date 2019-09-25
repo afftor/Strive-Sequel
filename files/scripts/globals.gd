@@ -628,7 +628,8 @@ func _ready():
 		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
 	
 	for i in Skilldata.Skilllist.values():
-		i.name = tr("SKILL" + i.code.to_upper())
+		if !i.has('name'):
+			i.name = tr("SKILL" + i.code.to_upper())
 		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
 		if i.has('dialogue_text'):
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")

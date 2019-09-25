@@ -107,6 +107,7 @@ var hitrate = 100
 var evasion = 0
 var resists = {} setget ,get_res
 var status_resists = {} setget ,get_res_s
+var damage_mods = {} setget ,get_mods
 var armor = 0
 var mdef = 0
 var armorpenetration = 0
@@ -261,6 +262,10 @@ func add_stat_bonuses(ls:Dictionary):
 		for rec in ls:
 			if (rec as String).begins_with('resist') :
 				add_bonus(rec + '_add', ls[rec])
+				continue
+			if (rec as String).ends_with('mod') :
+				add_bonus(rec.replace('mod','_mul'), ls[rec])
+				continue
 			if get(rec) == null:
 				#safe variant
 				#add_bonus(rec, ls[rec])
@@ -273,7 +278,12 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist'): add_bonus(rec + '_add', ls[rec], true)
+			if (rec as String).begins_with('resist'): 
+				add_bonus(rec + '_add', ls[rec], true)
+				continue
+			if (rec as String).ends_with('mod') :
+				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+				continue
 			if get(rec) == null: continue
 			add_stat(rec, ls[rec], true)
 
@@ -356,6 +366,18 @@ func get_res_s():
 	for r in variables.status_list:
 		if bonuses.has('resist' + r + '_add'): res[r] += bonuses['resist' + r + '_add']
 		if bonuses.has('resist' + r + '_mul'): res[r] *= bonuses['resist' + r + '_mul']
+	return res
+
+func get_mods():
+	var res = damage_mods.duplicate()
+	for r in variables.mods_list:
+		if bonuses.has('mod' + r + '_add'): res[r] += bonuses['mod' + r + '_add']
+		if bonuses.has('mod' + r + '_mul'): res[r] *= bonuses['mod' + r + '_mul']
+	return res
+
+func get_damage_mod(skill:Dictionary):
+	#stub. needs filling
+	var res = self.damage_mods['all']
 	return res
 
 #some AI-related functions
@@ -506,6 +528,12 @@ func generate_simple_fighter(tempname):
 		resists[i] = 0
 	for i in variables.status_list:
 		status_resists[i] = 0
+	for i in variables.mods_list:
+		damage_mods[i] = 1.0
+	if data.has('effects'):
+		for e in data.effects:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+			apply_effect(effects_pool.add_effect(eff))
 	ai = ai_base.new()
 	if data.has('full_ai'):
 		ai.set_simple_ai(data.ai)
@@ -544,6 +572,8 @@ func create(temp_race, temp_gender, temp_age):
 		resists[i] = 0
 	for i in variables.status_list:
 		status_resists[i] = 0
+	for i in variables.mods_list:
+		damage_mods[i] = 1.0
 	
 	get_sex_features()
 	
@@ -1168,7 +1198,7 @@ var last_escape_day_check = 0
 
 func hp_set(value):
 	hp = min(value, self.hpmax)
-	hp = max(hp, 0)
+	#hp = max(hp, 0)
 	if displaynode != null:
         displaynode.update_hp()
 	if hp <= 0:
