@@ -16,11 +16,13 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['+damage_hp', '+restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'energy']
-#list for values modified bu random_mod
+var dmg_mod_list = ['+damage_hp', '+restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'energy', 'no_stat']
+#list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
+#list for various types of damage mods
+var mods_list = ['all', 'melee','ranged']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']

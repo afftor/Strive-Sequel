@@ -26,7 +26,7 @@ var Skilllist = {
 	},
 	praise = { #+25 obedience, +5 loyal
 		code = 'praise',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -48,7 +48,7 @@ var Skilllist = {
 	},
 	warn = {#
 		code = 'warn',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -70,7 +70,7 @@ var Skilllist = {
 	},
 	reward = {#
 		code = 'reward',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -92,7 +92,7 @@ var Skilllist = {
 	},
 	rewardsex = {
 		code = 'rewardsex',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -114,7 +114,7 @@ var Skilllist = {
 	},
 	punish = {
 		code = 'punish',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -136,7 +136,7 @@ var Skilllist = {
 	},
 	abuse = {
 		code = 'abuse',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -159,7 +159,7 @@ var Skilllist = {
 	},
 	publichumiliation = {
 		code = 'publichumiliation',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -183,7 +183,7 @@ var Skilllist = {
 	},
 	publicsexhumiliation = {
 		code = 'publicsexhumiliation',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -207,7 +207,7 @@ var Skilllist = {
 	},
 	publicexecution = {
 		code = 'publicexecution',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -232,7 +232,7 @@ var Skilllist = {
 	
 	charm = {#
 		code = 'charm',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -256,7 +256,7 @@ var Skilllist = {
 	seduce = {#prevents escape and obedience decay
 		#temp version
 		code = 'seduce',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -279,7 +279,7 @@ var Skilllist = {
 	},
 	greatseduce = {#prevents escape and obedience decay, maximizes obedience, increases lust growth
 		code = 'greatseduce',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -302,7 +302,7 @@ var Skilllist = {
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
 		code = 'drain',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -324,7 +324,7 @@ var Skilllist = {
 	},
 	drain_mana = {#target -20% mana | caster takes all of it.
 		code = 'drain',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -344,7 +344,7 @@ var Skilllist = {
 	},
 	serve = {
 		code = 'serve',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -367,7 +367,7 @@ var Skilllist = {
 	},
 	sedate = {
 		code = 'sedate',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -389,7 +389,7 @@ var Skilllist = {
 	},
 	fear = {
 		code = 'fear',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -411,7 +411,7 @@ var Skilllist = {
 	},
 	innervate = {#target +50 energy
 		code = 'innervate',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -430,7 +430,7 @@ var Skilllist = {
 	},
 	shackles = {#When attempting to escape, makes a check to break shackles instead: chance is max(0,(target.magic_factor - caster.magic_factor+1)) * 10 + 5 %. If chance successful -> remove debuff and make system message
 		code = 'shackles',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -452,7 +452,7 @@ var Skilllist = {
 	},
 	greatshackles = {#When attempting to escape, makes a check to break shackles instead: chance is (target.magic_factor - caster.magic_factor+2) * 10 - 10%. If chance successful -> remove debuff and make system message
 		code = 'greatshackles',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -474,7 +474,7 @@ var Skilllist = {
 	},
 	mindcontrol = {
 		code = 'mindcontrol',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -496,7 +496,7 @@ var Skilllist = {
 	},
 	stopmindcontrol = {#fix to target self and all other params
 		code = 'stopmindcontrol',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -518,7 +518,7 @@ var Skilllist = {
 	},
 	hardwork = {#+50% productivity for the day
 		code = 'hardwork',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -537,7 +537,7 @@ var Skilllist = {
 	},
 	discipline = {
 		code = 'discipline',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -556,7 +556,7 @@ var Skilllist = {
 	},
 	authority = {
 		code = 'authority',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -576,7 +576,7 @@ var Skilllist = {
 	},
 	consume_soul = {#kills target, gain its experience
 		code = 'consume_soul',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -599,7 +599,7 @@ var Skilllist = {
 	},
 	make_undead = {#turns target into undead (trait)
 		code = 'make_undead',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -623,7 +623,7 @@ var Skilllist = {
 	#ranged_attack
 	inspire = {# buffs all team for 20% damage, 20% def/mdef for 1 combat
 		code = 'inspire',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Inspire.png"),
 		type = 'combat',
@@ -648,7 +648,7 @@ var Skilllist = {
 	},
 	command = {# single target buff: +25% damage for 3 turns
 		code = 'command',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Command.png"),
 		type = 'combat',
@@ -673,7 +673,7 @@ var Skilllist = {
 	},
 	trap = {#enemy debuff: after using skill stun target for 2 turns and remove debuff. Requires trap
 		code = 'trap',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Trap.png"),
 		type = 'combat', 
@@ -699,7 +699,7 @@ var Skilllist = {
 	},
 	weapon_refine = {#buffs ally: all skill damage increased by 30% until the end of combat. Only 3 times per day
 		code = 'weapon_refine',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/WeaponRefine.png"),
 		type = 'combat', 
@@ -725,7 +725,7 @@ var Skilllist = {
 	},
 	distract = {#debuff: enemy evasion -30 (-20 for nonhumanoids), lasts 4 turns
 		code = 'distract',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/distract.png"),
 		type = 'combat', 
@@ -751,7 +751,7 @@ var Skilllist = {
 	},
 	attract = {#debuff: enemy damage -30% for 3 turns
 		code = 'attract',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attract.png"),
 		type = 'combat', 
@@ -777,7 +777,7 @@ var Skilllist = {
 	},
 	enthral = {#stun target and self for 3 turns or until one is damaged, only humanoids
 		code = 'enthral',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attract.png"),
 		type = 'combat', 
@@ -803,7 +803,7 @@ var Skilllist = {
 	},
 	attack = {#melee attack
 		code = 'attack',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
 		type = 'combat', 
@@ -832,7 +832,7 @@ var Skilllist = {
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
 		code = 'fire_attack',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/strongattack.png"),
 		type = 'combat', 
@@ -860,7 +860,7 @@ var Skilllist = {
 	},
 	ranged_attack = {#melee attack
 		code = 'ranged_attack',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/heavyshot.png"),
 		type = 'combat', 
@@ -889,7 +889,7 @@ var Skilllist = {
 	
 	double_attack = {#double melee attack, must have melee weapon
 		code = 'double_attack',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/comboattack.png"),
 		type = 'combat', 
@@ -915,7 +915,7 @@ var Skilllist = {
 	},
 	slash = {#melee attack vs all enemeis in row
 		code = 'slash',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/slash.png"),
 		type = 'combat', 
@@ -940,7 +940,7 @@ var Skilllist = {
 	},
 	protect = {# buff ally: takes skill damage from ally for 2 turns (damage is reduced by caster's def and resists), +20 def on self
 		code = 'protect',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Protect.png"),
 		type = 'combat', 
@@ -965,7 +965,7 @@ var Skilllist = {
 	},
 	dragonmight = {#increases damage and armor by 25% until end of battle. Once in 2 days
 		code = 'dragonmight',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Drain.png"),
 		type = 'combat', 
@@ -983,6 +983,7 @@ var Skilllist = {
 		target = 'self',
 		target_number = 'single',
 		target_range = 'any',
+		damage_type = 'fire',
 		value = ['0'],
 		damagestat = 'no_stat',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
@@ -1069,7 +1070,7 @@ var Skilllist = {
 #	},
 	lesser_heal = {#heals target for 1x damage
 		code = 'lesser_heal',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Heal.png"),
 		type = 'combat', 
@@ -1097,7 +1098,7 @@ var Skilllist = {
 	#i understand this as bonus damage over time
 	#should it be generic bleed status?
 		code = 'serrated_shot',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/heavyshot.png"),
 		type = 'combat', 
@@ -1147,7 +1148,7 @@ var Skilllist = {
 #	},
 	mass_lesser_heal = {#heals all allies for 1x damage
 		code = 'mass_lesser_heal',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/lesserheal.png"),
 		type = 'combat', 
@@ -1172,7 +1173,7 @@ var Skilllist = {
 	},
 	barrier = {#buff: protect from 100 damage for 3 turns
 		code = 'barrier',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Barrier.png"),
 		type = 'combat', 
@@ -1198,7 +1199,7 @@ var Skilllist = {
 	},
 	blizzard = {#water damage to all enemies, 50% to reduce speed by 20 for 2 turns
 		code = 'blizzard',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Innervate.png"),
 		type = 'combat', 
@@ -1226,7 +1227,7 @@ var Skilllist = {
 	},
 	bless = {#buff: increase damage, armor, mdef, evasion, hitrate by 10 for 3 turns 
 		code = 'bless',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/meditate.png"),
 		type = 'combat', 
@@ -1253,7 +1254,7 @@ var Skilllist = {
 	},
 	blood_magic = {#sacrifice 10% health to get 3x mana from it, 3 charges per day 
 		code = 'blood_magic',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Blood_Mage.png"),
 		type = 'combat', 
@@ -1279,7 +1280,7 @@ var Skilllist = {
 	},
 	blood_explosion = { #sacrifice 75% health to deal 2x weapon spell damage to all enemies, usable once a day, can't use if health <= 75% 
 		code = 'blood_explosion',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firestorm.png"),
 		type = 'combat', 
@@ -1304,7 +1305,7 @@ var Skilllist = {
 	},
 	fly_evasion = {#buff on self: +25 evasion for 4 turns
 		code = 'fly_evasion',
-		name = '',
+		
 		descript = '',
 		icon = load('res://assets/images/iconsskills/Fear.png'),
 		type = 'combat', 
@@ -1332,7 +1333,7 @@ var Skilllist = {
 	#so additional effect is the same as of serrated shot
 	#the sama as serrated shot - should it be simple bleed?
 		code = 'bleeding_strike',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Lich-strike.png"),
 		type = 'combat', 
@@ -1357,7 +1358,7 @@ var Skilllist = {
 	},
 	hide = {#buff on self: hiding breaks on spell cast, can't be targeted by non-aoe hits; if only possible target on the row for melee -> backrow can be attacked. If only target left, hide is canceled. 
 		code = 'hide',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Sedation.png"),
 		type = 'combat', 
@@ -1383,7 +1384,7 @@ var Skilllist = {
 	},
 	assassinate = {#must be in hide, deals 400% damage, only once per day
 		code = 'assassinate',
-		name = '',
+		
 		descript = '',
 		icon = load('res://assets/images/iconsclasses/assassin.png'),
 		type = 'combat', 
@@ -1408,7 +1409,7 @@ var Skilllist = {
 	},
 	earth_atk = {
 		code = 'earth_atk',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1433,7 +1434,7 @@ var Skilllist = {
 	},
 	wind_atk = {
 		code = 'wind_atk',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1485,7 +1486,7 @@ var Skilllist = {
 	},
 	water_atk = {
 		code = 'water_atk',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1512,7 +1513,7 @@ var Skilllist = {
 	},
 	holy_atk = {
 		code = 'holy_atk',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1537,7 +1538,7 @@ var Skilllist = {
 	},
 	fire_cleave = {
 		code = 'fire_cleave',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1564,7 +1565,7 @@ var Skilllist = {
 	},
 	earth_shatter = {
 		code = 'earth_shatter',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1589,7 +1590,7 @@ var Skilllist = {
 	},
 	revenge = {
 		code = 'revenge',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1614,7 +1615,7 @@ var Skilllist = {
 	},
 	fire_burst = {
 		code = 'fire_burst',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firebolt.png"),
 		type = 'combat', 
@@ -1639,7 +1640,7 @@ var Skilllist = {
 	},
 	air_cutter = {
 		code = 'air_cutter',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1696,7 +1697,7 @@ var Skilllist = {
 	},
 	holy_lance = {
 		code = 'holy_lance',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1721,7 +1722,7 @@ var Skilllist = {
 	},
 	swipe = {
 		code = 'swipe',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1746,7 +1747,7 @@ var Skilllist = {
 	},
 	arrowrain = {
 		code = 'arrowrain',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/arrowshower.png"),
 		type = 'combat', 
@@ -1771,7 +1772,7 @@ var Skilllist = {
 	},
 	explosivearr = {
 		code = 'explosivearr',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firebolt.png"),
 		type = 'combat', 
@@ -1798,7 +1799,7 @@ var Skilllist = {
 	},
 	shadowstrike = {
 		code = 'shadowstrike',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1823,7 +1824,7 @@ var Skilllist = {
 	},
 	firearr = {
 		code = 'firearr',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firebolt.png"),
 		type = 'combat', 
@@ -1850,7 +1851,7 @@ var Skilllist = {
 	},
 	lightning = {
 		code = 'lightning',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Drain.png"),
 		type = 'combat', 
@@ -1875,7 +1876,7 @@ var Skilllist = {
 	},
 	mindblast = {
 		code = 'mindblast',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Mindblast.png"),
 		type = 'combat', 
@@ -1901,7 +1902,7 @@ var Skilllist = {
 	},
 	resurrect = {
 		code = 'resurrect',
-		name = '',
+		
 		descript = '',
 		icon = load('res://assets/images/iconsskills/Innervate.png'),
 		type = 'combat', 
@@ -1927,7 +1928,7 @@ var Skilllist = {
 	},
 	decay = {
 		code = 'decay',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Acid-spit.png"),
 		type = 'combat', 
@@ -1952,7 +1953,7 @@ var Skilllist = {
 	},
 	overgrowth = {
 		code = 'overgrowth',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Heal.png"),
 		type = 'combat', 
@@ -1977,7 +1978,7 @@ var Skilllist = {
 	},
 	firebomb = {
 		code = 'firebomb',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firebolt.png"),
 		type = 'combat', 
@@ -2004,7 +2005,7 @@ var Skilllist = {
 	},
 	acidbomb = {
 		code = 'acidbomb',
-		name = '',
+		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Acid-spit.png"),
 		type = 'combat', 
@@ -2031,7 +2032,7 @@ var Skilllist = {
 #dummyskills
 	master_lust_skill ={
 		code = 'master_lust_skill',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2056,7 +2057,7 @@ var Skilllist = {
 	
 	master_lust_exp = {#consume all target lust, give 1xp per 1lust to target
 		code = 'master_lust_exp',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2077,7 +2078,7 @@ var Skilllist = {
 	},
 	master_lust_hp = {#consume all target lust, give 1hp 0.5mp per lust
 		code = 'master_lust_hp',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2098,7 +2099,7 @@ var Skilllist = {
 	},
 	master_lust_obed = {#consume all target lust, gives 2 obedience and 2 fear per 1 lust
 		code = 'master_lust_obed',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2119,7 +2120,7 @@ var Skilllist = {
 	},
 	master_lust_buff = {#consume 50 target lust, gives +20% productivity for 3 days buff
 		code = 'master_lust_buff',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2140,7 +2141,7 @@ var Skilllist = {
 	},
 	master_lust_combat_buff = {
 		code = 'master_lust_combat_buff',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2161,7 +2162,7 @@ var Skilllist = {
 	},
 	succubus_lust_skill = {
 		code = 'succubus_lust_skill',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2185,7 +2186,7 @@ var Skilllist = {
 	},
 	succubus_lust_xp_convert = {#consume target lust, receive base exp based on lust consumed
 		code = 'succubus_lust_xp_convert',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2208,7 +2209,7 @@ var Skilllist = {
 	},
 	succubus_lust_hp_convert = {#consume target lust, recover 1x hp and 0.75x mana 
 		code = 'succubus_lust_hp_convert',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2231,7 +2232,7 @@ var Skilllist = {
 	},
 	succubus_lust_obed_convert = {#consume 50 target lust, receive full obedience and "Loyal" buff for 3 days
 		code = 'succubus_lust_obed_convert',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2254,7 +2255,7 @@ var Skilllist = {
 	},
 	succubus_lust_combat_buff = {#consume 50 target lust, gives +25% atk/matk buff for 2 days
 		code = 'succubus_lust_combat_buff',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2279,7 +2280,7 @@ var Skilllist = {
 	
 	aphrodisiac = {
 		code = 'aphrodisiac',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2308,7 +2309,7 @@ var Skilllist = {
 	},
 	alcohol = {
 		code = 'alcohol',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2337,7 +2338,7 @@ var Skilllist = {
 	},
 	tamedrug = {
 		code = 'tamedrug',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2366,7 +2367,7 @@ var Skilllist = {
 	},
 	ragedrug = {
 		code = 'ragedrug',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2395,7 +2396,7 @@ var Skilllist = {
 	},
 	sexdrug = {
 		code = 'sexdrug',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2425,7 +2426,7 @@ var Skilllist = {
 	
 	hairdye = {
 		code = 'hairdye',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2443,7 +2444,7 @@ var Skilllist = {
 	},
 	minorus_potion = {
 		code = 'minorus_potion',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2461,7 +2462,7 @@ var Skilllist = {
 	},
 	majorus_potion = {
 		code = 'majorus_potion',
-		name = '',
+		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2479,7 +2480,7 @@ var Skilllist = {
 	},
 	i_lifeshard = {
 		code = 'i_lifeshard',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2507,7 +2508,7 @@ var Skilllist = {
 	},
 	i_lifegem = {
 		code = 'i_lifegem',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2535,7 +2536,7 @@ var Skilllist = {
 	},
 	i_energyshard = {
 		code = 'i_energyshard',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2563,7 +2564,7 @@ var Skilllist = {
 	},
 	i_energygem = {
 		code = 'i_energygem',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2591,7 +2592,7 @@ var Skilllist = {
 	},
 	i_powder = {
 		code = 'i_powder',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2619,7 +2620,7 @@ var Skilllist = {
 	},
 	i_res = {#
 		code = 'i_res',
-		name = '',
+		
 		descript = '',
 		icon = null,
 		type = 'combat', 

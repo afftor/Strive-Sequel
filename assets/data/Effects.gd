@@ -1854,37 +1854,6 @@ var effect_table = {
 	
 	
 	
-	
-	
-	e_s_taunt = {
-		type = 'trigger',
-		req_skill = true,
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		sub_effects = ['e_taunt'],
-		buffs = []
-	},
-	e_taunt = {
-		type = 'temp_s',
-		target = 'target',
-		stack = 1,
-		rem_event = [variables.TR_COMBAT_F, variables.TR_TURN_F],
-		name = 'taunt',
-		disable = true,
-		tags = ['afflict'],
-		sub_effects = [],
-		atomic = [{type = 'stat_add', stat = 'damagemod', value = -0.25}],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/taunt.png", 
-				description = "This unit is taunted and must attack next turn",
-				limit = 1,
-				t_name = 'taunt'
-			}
-		]
-	},
-	
-	
 	master_combat_1 = {
 		type = 'temp_s',
 		target = 'target',
@@ -2176,7 +2145,7 @@ func rebuild_template(args):
 	if args.has('duration'): #for this to work effect should have its duration set to 'parent'
 		res.duration = args.duration
 	if args.has('push_value'):
-		res.args = [{obj = 'parent', param = 'process_value' }]
+		res.args = [{obj = 'parent', param = 'process_value'}]
 	
 	res.sub_effects.push_back(args.effect)
 	

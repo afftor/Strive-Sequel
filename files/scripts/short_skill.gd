@@ -34,6 +34,7 @@ var effects = []
 var process_value
 var random_factor
 var random_factor_p
+var tempdur
 
 func _init():
 	caster = null
@@ -152,10 +153,7 @@ func setup_final():
 	if target == null or caster.combatgroup == target.combatgroup:
 		critchance = 0
 	if template.has('custom_duration'):
-		var tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
-		for e in effects:
-			var eff = effects_pool.get_effect_by_id(e)
-			eff.set_args('duration', tempdur)
+		tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
 
 
 func hit_roll():#not implemented various chance stat rolls due to not having formulaes
@@ -177,22 +175,28 @@ func apply_atomic(tmp):
 		'stat_add':
 			if tmp.stat == 'value':
 				for i in range(value.size()): 
-					if damagestat[i] in variables.dmg_mod_list:
-						value[i] += tmp.value
+					if !(damagestat[i] in variables.dmg_mod_list): continue
+					if (tmp.has('stats') && !tmp.stats.has(damagestat[i])): continue
+					if (tmp.has('statignore') && tmp.statignore.has(damagestat[i])): continue
+					value[i] += tmp.value
 				pass
 			else: set(tmp.stat, get(tmp.stat) + tmp.value)
 		'stat_mul':
 			if tmp.stat == 'value':
 				for i in range(value.size()): 
-					if damagestat[i] in variables.dmg_mod_list:
-						value[i] *= tmp.value
+					if !(damagestat[i] in variables.dmg_mod_list): continue
+					if (tmp.has('stats') && !tmp.stats.has(damagestat[i])): continue
+					if (tmp.has('statignore') && tmp.statignore.has(damagestat[i])): continue
+					value[i] *= tmp.value
 				pass
 			else: set(tmp.stat, get(tmp.stat) * tmp.value)
 		'stat_set':
 			if tmp.stat == 'value':
 				for i in range(value.size()): 
-					if damagestat[i] in variables.dmg_mod_list:
-						value[i] = tmp.value
+					if !(damagestat[i] in variables.dmg_mod_list): continue
+					if (tmp.has('stats') && !tmp.stats.has(damagestat[i])): continue
+					if (tmp.has('statignore') && tmp.statignore.has(damagestat[i])): continue
+					value[i] = tmp.value
 				pass
 			else: set(tmp.stat, tmp.value)
 		'add_tag':
@@ -226,6 +230,7 @@ func process_event(ev):
 
 func resolve_value(check_m):
 	value.resize(long_value.size())
+	var dmgmod = caster.get_damage_mod(template)
 	for i in range(long_value.size()):
 		var endvalue
 		if typeof(long_value[i]) != TYPE_ARRAY:#value as dmg multiplier, combat only
@@ -243,7 +248,7 @@ func resolve_value(check_m):
 				return
 			endvalue = long_value[i] * atk * (1 + stat/100.0)
 		else: endvalue = input_handler.calculate_number_from_string_array(long_value[i], caster, target)
-		#modify melee atk from backrow
+		#modify melee atk from backrow and apply dmgmod
 		if variables.dmg_mod_list.has(damagestat[i]): 
 			var rangetype = target_range
 			if target_range == 'weapon':
@@ -254,9 +259,15 @@ func resolve_value(check_m):
 					rangetype = weapon.weaponrange
 			if rangetype == 'melee' && globals.combat_node.FindFighterRow(caster) == 'backrow' && check_m:
 				endvalue /= 2
-		
+			endvalue *= dmgmod
 		value[i] = endvalue
+
+func setup_effects_final():
 	process_value = value[0]
+	if template.has('custom_duration'):
+		for e in effects:
+			var eff = effects_pool.get_effect_by_id(e)
+			eff.set_args('duration', tempdur)
 
 func calculate_dmg():
 	apply_random() 

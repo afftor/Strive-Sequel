@@ -176,6 +176,7 @@ func checkdeaths():
 			#tchar.displaynode.defeat()
 			#tchar.death()
 			tchar.defeated = true
+			tchar.hp = 0
 			combatlogadd("\n" + tchar.name + " has been defeated.\n")
 			for j in range(turnorder.size()):
 				if turnorder[j].pos == i:
@@ -377,7 +378,7 @@ func player_turn(pos):
 		return
 	if selected_character.has_status('confuse'):
 		activeaction = selected_character.get_skill_by_tag('default')
-		UpdateSkillTargets(true)
+		UpdateSkillTargets(selected_character, true)
 		var targ = get_random_target()
 		use_skill(selected_character.get_skill_by_tag('default'), selected_character, targ)
 		return
@@ -398,9 +399,9 @@ func player_turn(pos):
 
 #rangetypes melee, any, backmelee
 
-func UpdateSkillTargets(glow_skip = false): 
+func UpdateSkillTargets(caster, glow_skip = false): 
 	var skill = Skilldata.Skilllist[activeaction]
-	var fighter = activecharacter
+	var fighter = caster
 	var targetgroups = skill.target
 	var rangetype = skill.target_range
 	ClearSkillTargets()
@@ -523,7 +524,7 @@ func enemy_turn(pos):
 	if fighter.has_status('confuse'):
 		castskill = fighter.get_skil_by_tag('default')
 		activeaction = castskill
-		UpdateSkillTargets(true)
+		UpdateSkillTargets(fighter, true)
 		target = get_random_target()
 	if fighter.has_status('taunt'):
 		var targ = characters_pool.get_char_by_id(fighter.taunt)
@@ -621,7 +622,7 @@ func make_fighter_panel(fighter, spot):
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
 	panel.visible = true
-	panel.rebuildbuffs()
+	panel.noq_rebuildbuffs()
 
 var fighterhighlighted = false
 
@@ -777,7 +778,8 @@ func use_skill(skill_code, caster, target):
 	allowaction = false
 	
 	var skill = Skilldata.Skilllist[skill_code]
-	if caster != null:
+
+	if caster != null && skill.name != "":
 		combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 	
 		caster.mp -= skill.manacost
@@ -822,8 +824,10 @@ func use_skill(skill_code, caster, target):
 	for n in range(s_skill1.repeat):
 		#get all affected targets
 		if skill.has('random_target') or (target != null and target.hp <= 0) :
-			if checkwinlose(): return
-			UpdateSkillTargets();
+			if checkwinlose(): 
+				eot = false
+				return
+			UpdateSkillTargets(caster, true);
 			target = get_random_target()
 		targets = CalculateTargets(skill, target, true) 
 		#preparing real_target processing, predamage animations
@@ -872,6 +876,7 @@ func use_skill(skill_code, caster, target):
 					eff.set_args('skill', null)
 				else:
 					eff.process_event(variables.TR_DEF)
+			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
 		for s_skill2 in s_skill2_list:
@@ -1264,7 +1269,7 @@ func SelectSkill(skill):
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
-	UpdateSkillTargets()
+	UpdateSkillTargets(activecharacter)
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
 		checkwinlose();
 	
@@ -1330,4 +1335,8 @@ func calculate_hit_sound(skill, caster, target):
 	return rval
 
 func combatlogadd(text):
+	var data = {node = self, time = turns, type = 'c_log', slot = 'c_log', params = {text = text}}
+	CombatAnimations.add_new_data(data)
+
+func combatlogadd_q(text):
 	$Combatlog/RichTextLabel.append_bbcode(text)

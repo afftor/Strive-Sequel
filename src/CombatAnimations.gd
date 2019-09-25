@@ -18,6 +18,8 @@ var animations_queue = {}
 
 #delays for playing animations in zones
 var hp_update_delays = {}
+var buffs_update_delays = {}
+var log_update_delay = 0
 
 #main timer
 var animation_delays = {}
@@ -141,6 +143,8 @@ func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
 	hp_update_delays[node] = 0.4 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.4)
+	buffs_update_delays[node] = 0.5
 	input_handler.gfx(node, 'slash')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -153,6 +157,8 @@ func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.3)
+	buffs_update_delays[node] = 0.5
 	input_handler.gfx(node, 'fire')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -175,6 +181,25 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	return playtime * 2 + delaytime
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
+func buffs(node, args = null):
+	var delay = 0
+	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
+	buffs_update_delays.erase(node)
+	var delaytime = 0.1
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs')
+	tween.start()
+	return delaytime + delay
+
+func c_log(node, args):
+	var delay = log_update_delay
+	log_update_delay = 0
+	var delaytime = 0.1
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_callback(node, delay, 'combatlogadd_q', args.text)
+	tween.start()
+	return delaytime + delay
+
 func hp_update(node, args):
 	var delay = 0
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
@@ -184,7 +209,8 @@ func hp_update(node, args):
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage
-	tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(args.damage), type = args.type, size = 125, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+	if args.damage_float:
+		tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(args.damage), type = args.type, size = 125, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
 	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
