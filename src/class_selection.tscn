@@ -16,7 +16,6 @@ margin_bottom = 889.537
 script = ExtResource( 1 )
 
 [node name="categories" type="VBoxContainer" parent="."]
-visible = false
 margin_left = 23.4036
 margin_top = 27.161
 margin_right = 100.404

@@ -228,8 +228,8 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
 		type = 'misc',
 	},
-	hpmod = {
-		code = 'hpmod',
+	hpmaxmod = {
+		code = 'hpmaxmod',
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
@@ -252,6 +252,13 @@ var statdata = {
 	},
 	mpmax = {
 		code = 'mpmax',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),
+		type = 'misc',
+	},
+	mpmaxmod = {
+		code = 'mpmaxmod',
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/food_love.png"),

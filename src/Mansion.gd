@@ -61,7 +61,7 @@ func _ready():
 		character = Slave.new()
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
-		character.unlock_class("pet")
+		character.unlock_class("fighter")
 		character.get_trait('core_trait')
 		character.obedience = 100
 		character.lust = 50
@@ -95,7 +95,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
 		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+		globals.AddItemToInventory(globals.CreateGearItem("sword", {ToolHandle = 'wood', Blade = 'stone'}))
 		$SlaveList.rebuild()
 	elif globals.start_new_game == true:
 		globals.start_new_game = false

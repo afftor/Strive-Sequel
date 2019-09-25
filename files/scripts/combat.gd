@@ -778,12 +778,12 @@ func use_skill(skill_code, caster, target):
 	
 	var skill = Skilldata.Skilllist[skill_code]
 	if caster != null:
-		combatlogadd(caster.name + ' uses ' + skill.name + ". ")
+		combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 	
 		caster.mp -= skill.manacost
 
-		if skill.cooldown > 0:
-			caster.combat_cooldowns[skill_code] = skill.cooldown
+		if skill.combatcooldown > 0:
+			caster.combat_cooldowns[skill_code] = skill.combatcooldown
 	
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
@@ -878,7 +878,7 @@ func use_skill(skill_code, caster, target):
 			#check miss
 			if s_skill2.hit_res == variables.RES_MISS:
 				s_skill2.target.play_sfx('miss')
-				combatlogadd(target.name + " evades the damage.\n")
+				combatlogadd(target.name + " evades the damage.")
 				Off_Target_Glow()
 			else:
 				#hit landed animation
@@ -1105,22 +1105,22 @@ func execute_skill(s_skill2):
 			elif s_skill2.is_drain:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 				var rval2 = s_skill2.caster.heal(rval)
-				text += "%s drained %d health from %s and gained %d health\n" %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
+				text += "%s drained %d health from %s and gained %d health" %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
 			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
 			else:
 				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
-				text += "%s is hit for %d damage\n" %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
+				text += "%s is hit for %d damage" %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
 		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(s_skill2.value[i])
 			else:
 				var rval = s_skill2.target.heal(s_skill2.value[i])
-				text += "%s is healed for %d health\n" %[s_skill2.target.name, rval]
+				text += "%s is healed for %d health" %[s_skill2.target.name, rval]
 		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
 			if !s_skill2.tags.has('no log'):
 				var rval = s_skill2.target.mana_update(s_skill2.value[i])
-				text += "%s restored %d mana\n" %[s_skill2.target.name, rval] 
+				text += "%s restored %d mana" %[s_skill2.target.name, rval] 
 			else:
 				s_skill2.target.mana_update(s_skill2.value[i])
 		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
@@ -1128,22 +1128,22 @@ func execute_skill(s_skill2):
 			if s_skill2.is_drain:
 				var rval2 = s_skill2.caster.mana_update(rval)
 				if !s_skill2.tags.has('no log'):
-					text += "%s drained %d mana from %s and gained %d mana\n" %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
+					text += "%s drained %d mana from %s and gained %d mana" %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
 			if !s_skill2.tags.has('no log'):
-				text += "%s lost %d mana\n" %[s_skill2.target.name, rval] 
+				text += "%s lost %d mana" %[s_skill2.target.name, rval] 
 		else: 
 			var mod = s_skill2.damagestat[i][0]
 			var stat = s_skill2.damagestat[i].right(1) 
 			if mod == '+':
 				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i])
 				if !s_skill2.tags.has('no log'):
-					text += "%s restored %d %s\n" %[s_skill2.target.name, rval, tr(stat)] 
+					text += "%s restored %d %s" %[s_skill2.target.name, rval, tr(stat)] 
 			elif mod == '-':
 				var rval = s_skill2.target.stat_update(stat, -s_skill2.value[i])
 				if s_skill2.is_drain:
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s\n" %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+						text += "%s drained %d %s from %s" %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
 					text += "%s loses %d %s" %[s_skill2.target.name, -rval, tr(stat)]
 			elif mod == '=':
@@ -1151,9 +1151,9 @@ func execute_skill(s_skill2):
 				if s_skill2.is_drain:# use this on your own risk
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s\n" %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+						text += "%s drained %d %s from %s" %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
-					text += "%s's %s is now %d\n" %[s_skill2.target.name, tr(stat), s_skill2.value[i]] 
+					text += "%s's %s is now %d" %[s_skill2.target.name, tr(stat), s_skill2.value[i]] 
 			else: print('error in damagestat %s' % s_skill2.damagestat[i])
 	combatlogadd(text)
 
@@ -1242,7 +1242,7 @@ func RebuildSkillPanel():
 			newbutton.get_node("manacost").hide()
 		if skill.manacost > activecharacter.mp:
 			newbutton.get_node("Icon").modulate = Color(0,0,1)
-		if activecharacter.combat_cooldowns.has(i):
+		if activecharacter.combat_cooldowns.has(skill.code):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		if !activecharacter.checkreqs(skill.reqs):

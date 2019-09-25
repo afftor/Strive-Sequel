@@ -915,7 +915,7 @@ var dungeons = {
 			stages_per_level = [4,6]
 			},
 			hard = {code = 'hard', 
-			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+			enemyarray =  [], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 			eventarray = [], 
 			levels = [4,6], 

@@ -493,6 +493,8 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 	text += "\n"
 	for i in classdata.traits:
 		var trait = Traitdata.traits[i]
+		if trait.name.to_upper() != trait.name:
+			text += "[color=yellow]" + trait.name + "[/color]: "
 		text += trait.descript + "\n"
 	
 	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:

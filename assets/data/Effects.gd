@@ -548,7 +548,7 @@ var effect_table = {
 		tags = ['debuff'],
 		sub_effects = [],
 		stat = 'evasion',
-		args = [{obj = 'template', param = 'stat'}, {type = 'parent_args', param = 0}],
+		args = [{obj = 'template', param = 'stat'}, {obj = 'parent_args', param = 0}],
 		atomic = ['a_stat_add'],
 		buffs = ['b_distract'],
 	},
@@ -563,7 +563,8 @@ var effect_table = {
 		tags = ['debuff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_mul', stat = 'damage', value = 0.7},
+			{type = 'stat_add_p', stat = 'atk', value = -0.3},
+			{type = 'stat_add_p', stat = 'matk', value = -0.3},
 		],
 		buffs = [
 			{

@@ -25,6 +25,7 @@ var surname = ''
 var nickname = ''
 var bonus_description = ''
 var race = ''
+var racegroup = 'humanoid'
 var age = ''
 var sex = ''
 
@@ -506,6 +507,7 @@ func generate_simple_fighter(tempname):
 	xpreward = data.xpreward
 	loottable = data.loot
 	name = data.name
+	racegroup = data.race
 	for i in variables.resists_list:
 		resists[i] = 0
 		if data.resists.has(i):
@@ -722,8 +724,8 @@ func check_gear_equipped(gearname):
 	return false
 
 func equip(item):
-	if false:#add checks for gear traits
-		input_handler.SystemMessage(tr("INVALIDCLASS"))
+	if checkreqs(item.reqs) == false:
+		input_handler.SystemMessage(tr("INVALIDREQS"))
 		return
 	for i in item.multislots:
 		if gear[i] != null:
@@ -885,6 +887,8 @@ func decipher_reqs(reqs, colorcode = false):
 				for k in i.value:
 					text += races.racelist[k].name + ', '
 				text = text.substr(0, text.length()-2) + '. '
+			'trait':
+				text += "Requires: " + Traitdata.traits[i.value].name
 		if colorcode == true:
 			if checkreqs([i]):
 				text = '[color=yellow]' + text + '[/color]'
@@ -1895,8 +1899,11 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 		'race': 
 			result = (req.value == race);
 		'race_group':
-			#stub to implement humanoid and non-humanoid checks
-			pass
+			match req.value:
+				'humanoid':
+					result = racegroup == 'humanoid'
+				'non-humanoid':
+					result = racegroup != 'humanoid'
 		'trait':
 			result = traits.has(req.value) or sex_traits.has(req.value)
 		'not_trait':

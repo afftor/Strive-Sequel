@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/food.png-0774f4e320d2077f4cff70aece854a77.stex"
+path="res://.import/Serve2.png-06b4aa12b23b6e9b9a05b7dd2f924fce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://files/images/items/food.png"
-dest_files=[ "res://.import/food.png-0774f4e320d2077f4cff70aece854a77.stex" ]
+source_file="res://assets/images/iconsskills/Serve2.png"
+dest_files=[ "res://.import/Serve2.png-06b4aa12b23b6e9b9a05b7dd2f924fce.stex" ]
 
 [params]
 

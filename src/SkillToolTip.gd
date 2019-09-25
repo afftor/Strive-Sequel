@@ -25,6 +25,9 @@ func showup(node, skillcode):
 	
 	if skill.charges > 0:
 		text += "\n\nMax Charges: [color=yellow]" + str(skill.charges) + "[/color]. Cooldown: " + str(skill.cooldown) + " day(s)."
+	if skill.has('combatcooldown') && skill.combatcooldown > 0:
+		text += "\n\nCooldown: [color=yellow]" + str(skill.combatcooldown) + "[/color]"
+	
 	$descript.bbcode_text = text
 	
 	text = "Usage Cost: "
