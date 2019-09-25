@@ -68,7 +68,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	show()
 	
 	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
+	pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
 	
 	$RichTextLabel.rect_size.y = 125
@@ -81,9 +81,9 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	
 	
 	if get_rect().end.x > screen.size.x:
-		rect_global_position.x -= get_rect().end.x - screen.size.x
+		rect_global_position.x -= screen.size.x - get_rect().end.x
 	if get_rect().end.y > screen.size.y:
-		rect_global_position.y = node.get_global_rect().position.y - rect_size.y
+		rect_global_position.y -= get_rect().end.y - screen.size.y#node.get_global_rect().position.y - rect_size.y
 	
 	set_process(true)
 

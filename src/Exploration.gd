@@ -41,10 +41,10 @@ func _ready():
 		active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 		var test_slave = Slave.new()
 		test_slave.create('BeastkinWolf', 'male', 'random')
-		test_slave.unlock_class("fighter")
+		test_slave.unlock_class("apprentice")
 		state.add_slave(test_slave)
 		test_slave.speed = 100
-		test_slave.atk = 15
+		test_slave.wits = 100.0
 		active_location.group = {1:test_slave.id}
 		StartCombat()
 
@@ -372,10 +372,15 @@ func open_quest_list():
 			var newbutton = globals.DuplicateContainerTemplate($QuestPanel/VBoxContainer)
 			newbutton.text = i.name
 			newbutton.connect("pressed",self,"see_quest_info", [i])
+			newbutton.set_meta("quest", i)
 
 var selectedquest
 
 func see_quest_info(quest):
+	for i in $QuestPanel/VBoxContainer.get_children():
+		if i.name == 'Button':
+			continue
+		i.pressed = i.get_meta('quest') == quest
 	input_handler.ghost_items.clear()
 	selectedquest = quest
 	$QuestPanel/Label.show()
@@ -560,7 +565,11 @@ func build_area_description():
 func enter_location(data):
 	active_location = data
 	input_handler.active_location = active_location
+	if active_location.has('progress'):
+		current_level = active_location.progress.level
+		current_stage = active_location.progress.stage
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	print(active_location.stagedenemies)
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
@@ -665,8 +674,7 @@ func check_location_group():
 	var counter = 0
 	var cleararray = []
 	for i in active_location.group:
-		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].location == active_location.id && state.characters[active_location.group[i]].travel_time == 0:
-			
+		if state.characters.has(active_location.group[i]): #&& state.characters[active_location.group[i]].location == active_location.id && state.characters[active_location.group[i]].travel_time == 0:
 			counter += 1
 		else:
 			cleararray.append(i)
@@ -734,6 +742,7 @@ var pos
 func selectfighter(position):
 	pos = 'pos'+str(position)
 	var reqs = [{code = 'is_at_location', type = active_location.id}]
+	if variables.allow_remote_intereaction == true: reqs = []
 	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
 func slave_position_selected(character):
@@ -797,8 +806,13 @@ var action_type
 var current_level = 1
 var current_stage = 0
 
-func enter_level(level):
+func enter_level(level, skip_to_end = false):
 	current_level = level
+	if skip_to_end == true:
+		current_level = active_location.levels.size()
+		active_location.progress.level = current_level
+		current_stage = active_location.levels[active_location.levels.size()].stages-1
+		active_location.progress.stage = current_stage
 	if active_location.progress.level < level:
 		active_location.progress.level = level
 		active_location.progress.stage = 0
@@ -822,6 +836,10 @@ func enter_level(level):
 			newbutton.text = 'Complete location'
 			newbutton.connect("pressed",self,"clear_dungeon")
 	
+	if variables.allow_skip_fights:
+		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = 'Skip to last room'
+		newbutton.connect("pressed",self,"enter_level", [level, true])
 	
 	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	newbutton.text = 'Roam'
@@ -966,7 +984,7 @@ func StartCombat():
 	else:
 		enemies = makespecificgroup(enemydata)
 	
-	var enemy_stats_mod = 0.95 + 0.05 * current_level
+	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
 #		for i in enemies:
 #			for k in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
 #				i.set(i.get(k), i.get(k) * enemy_stats_mod)
@@ -1038,3 +1056,10 @@ func makerandomgroup(enemygroup):
 	
 	return combatparty
 
+func combat_defeat():
+	for i in active_location.group:
+		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].hp <= 0:
+			state.characters[active_location.group[i]].hp = 1
+	enter_level(current_level)
+	print(true)
+	

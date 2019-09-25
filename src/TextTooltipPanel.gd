@@ -14,10 +14,13 @@ func _process(delta):
 func _init():
 	set_process(false)
 
+
 func showup(node, text):
 	parentnode = node
 	if shutoff == true && prevnode == parentnode:
 		return
+	if parentnode.is_connected("tree_exiting", self, "turnoff") == false:
+		parentnode.connect("tree_exiting", self, "turnoff")
 	show()
 	set_process(true)
 	
@@ -41,3 +44,5 @@ func showup(node, text):
 		rect_global_position.y = node.get_global_rect().position.y - (get_rect().size.y+10)
 	prevnode = parentnode
 
+func turnoff():
+	set_process(false)

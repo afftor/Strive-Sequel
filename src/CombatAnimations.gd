@@ -61,7 +61,7 @@ func advance_timer():
 	hp_update_delays.clear()
 	if animations_queue.empty(): return
 	cur_timer = animations_queue.keys().min()
-	print (cur_timer)
+	#print (cur_timer)
 	for node in animations_queue[cur_timer]:
 		start_animation(node)
 
@@ -84,7 +84,7 @@ func start_animation(node):
 	var f_anim = animations_queue[cur_timer][node].front()
 	var delay = 0
 	for data in f_anim:
-		print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
+		#print("%d - %d %s"%[OS.get_ticks_msec(),cur_timer, data.type])
 		delay = max(delay, call(data.type, data.node, data.params))
 	animation_delays[node] = delay
 
@@ -205,7 +205,7 @@ func hp_update(node, args):
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
 	hp_update_delays.erase(node)
 	
-	var delaytime = 1.5
+	var delaytime = 0.3
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage

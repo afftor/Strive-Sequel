@@ -27,6 +27,7 @@ var price
 var bonusstats = {} #bonus stats apply to chars
 var parts = {}
 var effects = []
+var reqs = []
 var task
 var owner = null
 var partcolororder
@@ -110,7 +111,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		for e in itemtemplate.effects:
 			effects.push_back(e)
 	
-	
+	reqs = itemtemplate.reqs
 	tags = itemtemplate.tags
 	if itemtemplate.has('multislots'):
 		multislots = itemtemplate.multislots
@@ -170,7 +171,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		else:
 			name = tempname
 	if bonusstats.has('atk') && bonusstats.has('damagemod'):
-		bonusstats.atk = ceil(bonusstats.atk * bonusstats.damagemod)
+		bonusstats.atk = ceil(bonusstats.atk + (bonusstats.atk*bonusstats.damagemod))
 		bonusstats.erase('damagemod')
 	
 	if mode == 'simple':
@@ -228,6 +229,9 @@ func tooltiptext():
 		text += tr("TOOLWORKCATEGORY") + ": " + globals.worktoolnames[toolcategory]
 	if description != null:
 		text += description
+	if !reqs.empty():
+		var tempslave = Slave.new()
+		text += "\n" + tempslave.decipher_reqs(reqs)
 	if itemtype in ['armor','weapon','tool']:
 		text += "\n\n"
 		for i in bonusstats:

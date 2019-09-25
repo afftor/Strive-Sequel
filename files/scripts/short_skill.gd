@@ -250,14 +250,14 @@ func resolve_value(check_m):
 		else: endvalue = input_handler.calculate_number_from_string_array(long_value[i], caster, target)
 		#modify melee atk from backrow and apply dmgmod
 		if variables.dmg_mod_list.has(damagestat[i]): 
-			var rangetype
+			var rangetype = target_range
 			if target_range == 'weapon':
 				if caster.gear.rhand == null:
 					rangetype = 'melee'
 				else:
 					var weapon = state.items[caster.gear.rhand]
 					rangetype = weapon.weaponrange
-			if rangetype == 'melee' && globals.combat_node.FindFighterRow(caster) == 'backrow' && !check_m:
+			if rangetype == 'melee' && globals.combat_node.FindFighterRow(caster) == 'backrow' && check_m:
 				endvalue /= 2
 			endvalue *= dmgmod
 		value[i] = endvalue

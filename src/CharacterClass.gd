@@ -25,6 +25,7 @@ var surname = ''
 var nickname = ''
 var bonus_description = ''
 var race = ''
+var racegroup = 'humanoid'
 var age = ''
 var sex = ''
 
@@ -100,8 +101,8 @@ var mod_pros = 1.0
 #also adding mods requires to add those mods to discipline effect 
 #var mod_pros_energy = 1.0
 
-var atk = 10 #maybe needs setget
-var matk = 10
+var atk = variables.basic_character_atk #maybe needs setget
+var matk = variables.basic_character_matk
 
 var hitrate = 100
 var evasion = 0
@@ -267,8 +268,8 @@ func add_stat_bonuses(ls:Dictionary):
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
 			if get(rec) == null:
-				#safe variant
-				#add_bonus(rec, ls[rec])
+			#safe variant
+			#add_bonus(rec, ls[rec])
 				continue
 			add_stat(rec, ls[rec])
 
@@ -524,8 +525,11 @@ func generate_simple_fighter(tempname):
 	xpreward = data.xpreward
 	loottable = data.loot
 	name = data.name
+	racegroup = data.race
 	for i in variables.resists_list:
 		resists[i] = 0
+		if data.resists.has(i):
+			resists[i] = data.resists[i]
 	for i in variables.status_list:
 		status_resists[i] = 0
 	for i in variables.mods_list:
@@ -746,8 +750,8 @@ func check_gear_equipped(gearname):
 	return false
 
 func equip(item):
-	if false:#add checks for gear traits
-		input_handler.SystemMessage(tr("INVALIDCLASS"))
+	if checkreqs(item.reqs) == false:
+		input_handler.SystemMessage(tr("INVALIDREQS"))
 		return
 	for i in item.multislots:
 		if gear[i] != null:
@@ -909,6 +913,8 @@ func decipher_reqs(reqs, colorcode = false):
 				for k in i.value:
 					text += races.racelist[k].name + ', '
 				text = text.substr(0, text.length()-2) + '. '
+			'trait':
+				text += "Requires: " + Traitdata.traits[i.value].name
 		if colorcode == true:
 			if checkreqs([i]):
 				text = '[color=yellow]' + text + '[/color]'
@@ -1082,13 +1088,13 @@ func get_obed_reduction():
 	var value = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 	if location != 'mansion':
 		value = value/4
-	return value
+	return value*variables.obedience_modifier
 
 func get_fear_reduction():
 	var value = 100.0 * get_stat('fear_degrade_mod')/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
 	if location != 'mansion':
 		value = value/4
-	return value
+	return value*variables.fear_modifier
 
 
 var prepared_act = []
@@ -1919,8 +1925,11 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 		'race': 
 			result = (req.value == race);
 		'race_group':
-			#stub to implement humanoid and non-humanoid checks
-			pass
+			match req.value:
+				'humanoid':
+					result = racegroup == 'humanoid'
+				'non-humanoid':
+					result = racegroup != 'humanoid'
 		'trait':
 			result = traits.has(req.value) or sex_traits.has(req.value)
 		'not_trait':

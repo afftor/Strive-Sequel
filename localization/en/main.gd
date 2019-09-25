@@ -364,7 +364,7 @@ var TranslationDict = {
 	MAINQUESTUPDATED = "Main Quest Updated",
 	QUESTLOG = "Quest Log",
 	NOACTIVEQUESTS = "You have no active quests.",
-	INVALIDCLASS = "Invalid class for this gear.",
+	INVALIDCLASS = "Requirements are unmet.",
 	NOTENOUGHGOLD = "Not enough gold",
 	PURCHASETHISTRAIT = "Purchase this trait",
 	TRAITPOINTSCOST = "Trait Points",
@@ -663,6 +663,8 @@ var TranslationDict = {
 	STATHPMAX = "Max. Health",
 	STATHPFACTOR = "Health Factor",
 	STATHPFACTORDESCRIPT = "Determines health bonuses acquired in most ways. High health factor can greatly increase survivability. ",
+	
+	STATHPMOMAX = "Max. Health",
 	
 	STATMP = "Mana",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilities.",
@@ -1016,11 +1018,17 @@ var TranslationDict = {
 	TRAITPETDESCRIPT = "Protitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	
+	
+	TRAITWEAPON_MASTERY = "Weapon Mastery",
+	TRAITMEDIUM_ARMOR = "Medium Armor",
+	TRAITHEAVY_ARMOR = "Heavy Armor",
+	TRAITRANGED_WEAPON_MASTERY = "Ranged Weapon Mastery",
+	TRAITMAGIC_TOOLS = "Magic Tools",
 	TRAITMEDIUM_ARMORDESCRIPT = "Allows the usage of Medium Armor.",
 	TRAITHEAVY_ARMORDESCRIPT = "Allows the usage of Heavy Armor.",
 	TRAITLOCKPICKINGDESCRIPT = "Allows lockpicking.",
-	TRAITWEAPON_MASTERYDESCRIPT = "Allows melee weapons",
-	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Allows ranged weapons.",
+	TRAITWEAPON_MASTERYDESCRIPT = "Allows the usage of Melee Weapons",
+	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Allows the usage of Ranged Weapons.",
 	TRAITMAGIC_TOOLSDESCRIPT = "Allows to use magic tools like staves.",
 	
 	
