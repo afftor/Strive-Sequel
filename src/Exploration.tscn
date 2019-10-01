@@ -1,24 +1,26 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
 [ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=3]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleft.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/combat/combat_frame.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/combat/cross.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/iconsitems/lockpick.png" type="Texture" id=8]
-[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=9]
-[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=17]
-[ext_resource path="res://src/NumberSelection.gd" type="Script" id=18]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=10]
+[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=11]
+[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=19]
+[ext_resource path="res://src/NumberSelection.gd" type="Script" id=20]
+[ext_resource path="res://files/combat.tscn" type="PackedScene" id=21]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
@@ -101,60 +103,113 @@ margin_bottom = 38.2509
 rect_min_size = Vector2( 150, 0 )
 text = "Quests"
 
+[node name="PresentedSlavesPanel" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = 1395.0
+margin_top = 37.0
+margin_right = 1885.0
+margin_bottom = 256.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PresentedSlavesPanel"]
+margin_left = 30.0
+margin_top = 24.0
+margin_right = 462.0
+margin_bottom = 189.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PresentedSlavesPanel/ScrollContainer"]
+margin_right = 432.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 381.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="icon" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 50 )
+expand = true
+
+[node name="name" type="Label" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 68.0
+margin_top = 7.0
+margin_right = 376.0
+margin_bottom = 48.0
+align = 1
+
+[node name="Label" type="Label" parent="PresentedSlavesPanel"]
+margin_left = 67.8389
+margin_top = -27.5489
+margin_right = 430.839
+margin_bottom = 2.45111
+text = "Presented Characters"
+align = 1
+
 [node name="Positions" type="TextureRect" parent="."]
 editor/display_folded = true
 visible = false
-margin_left = 1506.0
-margin_top = 560.0
-margin_right = 1952.0
-margin_bottom = 1273.0
-rect_scale = Vector2( 0.7, 0.7 )
+margin_left = 1363.92
+margin_top = 277.507
+margin_right = 1902.92
+margin_bottom = 1065.51
 texture = ExtResource( 4 )
-expand = true
 stretch_mode = 6
 
+[node name="Label3" type="Label" parent="Positions"]
+margin_left = 56.8715
+margin_top = -13.5998
+margin_right = 470.872
+margin_bottom = 10.4002
+text = "Combat Party"
+align = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Positions"]
-margin_left = 45.0
-margin_top = 19.0
-margin_right = 422.0
-margin_bottom = 694.0
-custom_constants/separation = 19
+margin_left = 56.329
+margin_top = 56.327
+margin_right = 460.329
+margin_bottom = 731.327
+custom_constants/separation = 14
 
 [node name="frontrow" type="VBoxContainer" parent="Positions/HBoxContainer"]
-margin_right = 175.0
+margin_right = 210.0
 margin_bottom = 675.0
-custom_constants/separation = 15
+custom_constants/separation = 21
 
 [node name="1" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
-margin_right = 175.0
-margin_bottom = 215.0
-rect_min_size = Vector2( 175, 215 )
+margin_right = 210.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 210, 210 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/1"]
-margin_right = 174.0
-margin_bottom = 216.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="hp" type="Label" parent="Positions/HBoxContainer/frontrow/1/Image"]
-margin_left = 78.0
-margin_top = 170.0
-margin_right = 173.0
-margin_bottom = 194.0
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
 custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
 [node name="mp" type="Label" parent="Positions/HBoxContainer/frontrow/1/Image"]
-margin_left = 78.0
-margin_top = 190.0
-margin_right = 173.0
-margin_bottom = 214.0
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
 custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -162,36 +217,38 @@ text = "50/50"
 align = 2
 
 [node name="2" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
-margin_top = 230.0
-margin_right = 175.0
-margin_bottom = 445.0
-rect_min_size = Vector2( 175, 215 )
+margin_top = 231.0
+margin_right = 210.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 210, 210 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/2"]
-margin_right = 174.0
-margin_bottom = 216.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="hp" type="Label" parent="Positions/HBoxContainer/frontrow/2/Image"]
-margin_left = 78.0
-margin_top = 170.0
-margin_right = 173.0
-margin_bottom = 194.0
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
 custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
 [node name="mp" type="Label" parent="Positions/HBoxContainer/frontrow/2/Image"]
-margin_left = 78.0
-margin_top = 190.0
-margin_right = 173.0
-margin_bottom = 214.0
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
 custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -199,36 +256,38 @@ text = "50/50"
 align = 2
 
 [node name="3" type="TextureButton" parent="Positions/HBoxContainer/frontrow"]
-margin_top = 460.0
-margin_right = 175.0
-margin_bottom = 675.0
-rect_min_size = Vector2( 175, 215 )
+margin_top = 462.0
+margin_right = 210.0
+margin_bottom = 672.0
+rect_min_size = Vector2( 210, 210 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/frontrow/3"]
-margin_right = 174.0
-margin_bottom = 216.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="hp" type="Label" parent="Positions/HBoxContainer/frontrow/3/Image"]
-margin_left = 78.0
-margin_top = 170.0
-margin_right = 173.0
-margin_bottom = 194.0
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
 custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
 [node name="mp" type="Label" parent="Positions/HBoxContainer/frontrow/3/Image"]
-margin_left = 78.0
-margin_top = 190.0
-margin_right = 173.0
-margin_bottom = 214.0
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
 custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -236,41 +295,43 @@ text = "50/50"
 align = 2
 
 [node name="backrow" type="VBoxContainer" parent="Positions/HBoxContainer"]
-margin_left = 194.0
-margin_right = 369.0
+margin_left = 224.0
+margin_right = 434.0
 margin_bottom = 675.0
-custom_constants/separation = 15
+custom_constants/separation = 21
 
 [node name="4" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
-margin_right = 175.0
-margin_bottom = 215.0
-rect_min_size = Vector2( 175, 215 )
+margin_right = 210.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 210, 210 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/4"]
-margin_right = 174.0
-margin_bottom = 216.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="hp" type="Label" parent="Positions/HBoxContainer/backrow/4/Image"]
-margin_left = 78.0
-margin_top = 170.0
-margin_right = 173.0
-margin_bottom = 194.0
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
 custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
 [node name="mp" type="Label" parent="Positions/HBoxContainer/backrow/4/Image"]
-margin_left = 78.0
-margin_top = 190.0
-margin_right = 173.0
-margin_bottom = 214.0
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
 custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -278,36 +339,38 @@ text = "50/50"
 align = 2
 
 [node name="5" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
-margin_top = 230.0
-margin_right = 175.0
-margin_bottom = 445.0
-rect_min_size = Vector2( 175, 215 )
+margin_top = 231.0
+margin_right = 210.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 210, 210 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/5"]
-margin_right = 174.0
-margin_bottom = 216.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="hp" type="Label" parent="Positions/HBoxContainer/backrow/5/Image"]
-margin_left = 78.0
-margin_top = 170.0
-margin_right = 173.0
-margin_bottom = 194.0
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
 custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
 [node name="mp" type="Label" parent="Positions/HBoxContainer/backrow/5/Image"]
-margin_left = 78.0
-margin_top = 190.0
-margin_right = 173.0
-margin_bottom = 214.0
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
 custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -315,36 +378,38 @@ text = "50/50"
 align = 2
 
 [node name="6" type="TextureButton" parent="Positions/HBoxContainer/backrow"]
-margin_top = 460.0
-margin_right = 175.0
-margin_bottom = 675.0
-rect_min_size = Vector2( 175, 215 )
+margin_top = 462.0
+margin_right = 210.0
+margin_bottom = 672.0
+rect_min_size = Vector2( 210, 210 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 3
 
 [node name="Image" type="TextureRect" parent="Positions/HBoxContainer/backrow/6"]
-margin_right = 174.0
-margin_bottom = 216.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
 mouse_filter = 2
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="hp" type="Label" parent="Positions/HBoxContainer/backrow/6/Image"]
-margin_left = 78.0
-margin_top = 170.0
-margin_right = 173.0
-margin_bottom = 194.0
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
 custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
 [node name="mp" type="Label" parent="Positions/HBoxContainer/backrow/6/Image"]
-margin_left = 78.0
-margin_top = 190.0
-margin_right = 173.0
-margin_bottom = 214.0
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
 custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -352,6 +417,7 @@ text = "50/50"
 align = 2
 
 [node name="TextureRect" type="TextureRect" parent="Positions"]
+visible = false
 margin_top = 5.0
 margin_right = 445.0
 margin_bottom = 708.0
@@ -361,19 +427,19 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Positions"]
-margin_left = 40.0857
-margin_top = 701.736
-margin_right = 210.086
-margin_bottom = 725.736
+margin_left = 84.0564
+margin_top = 26.7055
+margin_right = 254.057
+margin_bottom = 50.7055
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "FRONT"
 align = 1
 
 [node name="Label2" type="Label" parent="Positions"]
-margin_left = 247.754
-margin_top = 700.958
-margin_right = 405.754
-margin_bottom = 724.958
+margin_left = 291.725
+margin_top = 25.9274
+margin_right = 449.725
+margin_bottom = 49.9274
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "BACK"
 align = 1
@@ -410,61 +476,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10"
 align = 2
 
-[node name="Label3" type="Label" parent="Positions"]
-margin_left = 20.6855
-margin_top = -25.231
-margin_right = 434.686
-margin_bottom = -1.23102
-text = "Combat Party"
-align = 1
-
-[node name="PresentedSlavesPanel" type="Panel" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = 1439.0
-margin_top = 37.0
-margin_right = 1885.0
-margin_bottom = 529.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PresentedSlavesPanel"]
-margin_left = 30.0
-margin_top = 43.0
-margin_right = 411.0
-margin_bottom = 460.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PresentedSlavesPanel/ScrollContainer"]
-margin_right = 381.0
-size_flags_horizontal = 3
-
-[node name="Button" type="TextureButton" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer"]
-visible = false
-margin_right = 381.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-
-[node name="icon" type="TextureRect" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 50, 50 )
-expand = true
-
-[node name="name" type="Label" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
-margin_left = 68.0
-margin_top = 7.0
-margin_right = 376.0
-margin_bottom = 48.0
-align = 1
-
-[node name="Label" type="Label" parent="PresentedSlavesPanel"]
-margin_left = 42.8402
-margin_top = 4.76003
-margin_right = 405.84
-margin_bottom = 34.76
-text = "Presented Characters"
-align = 1
-
 [node name="HirePanel" type="Panel" parent="."]
-visible = false
 margin_left = 37.42
 margin_top = 97.1246
 margin_right = 1072.42
@@ -478,11 +490,13 @@ margin_bottom = 810.0
 
 [node name="Button" type="TextureButton" parent="HirePanel/VBoxContainer"]
 visible = false
-margin_right = 404.0
-margin_bottom = 50.0
+margin_right = 590.0
+margin_bottom = 51.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
-script = ExtResource( 9 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="name" type="Label" parent="HirePanel/VBoxContainer/Button"]
 margin_left = 53.0526
@@ -555,7 +569,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
@@ -580,7 +594,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
@@ -615,7 +629,7 @@ margin_left = 670.813
 margin_top = 693.075
 margin_right = 710.813
 margin_bottom = 745.075
-texture = ExtResource( 11 )
+texture = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="QuestPanel/time"]
 margin_left = 41.0
@@ -801,9 +815,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
@@ -812,9 +826,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
 expand = true
 stretch_mode = 5
 
@@ -845,9 +859,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
@@ -856,9 +870,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
 expand = true
 stretch_mode = 5
 
@@ -889,9 +903,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
@@ -900,9 +914,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
 expand = true
 stretch_mode = 5
 
@@ -963,7 +977,7 @@ margin_left = 602.0
 margin_top = 305.0
 margin_right = 1199.0
 margin_bottom = 547.0
-script = ExtResource( 18 )
+script = ExtResource( 20 )
 
 [node name="HSlider" type="HSlider" parent="NumberSelection"]
 margin_left = 54.0
@@ -986,7 +1000,7 @@ margin_right = 420.538
 margin_bottom = 214.415
 text = "Confirm"
 
-[node name="combat" parent="." instance=ExtResource( 19 )]
+[node name="combat" parent="." instance=ExtResource( 21 )]
 visible = false
 
 [node name="Gold" type="Label" parent="."]

@@ -67,7 +67,7 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('Gnome', 'random', 'random')
+		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
 		character.fear = 25
@@ -95,8 +95,12 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
 		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-		globals.AddItemToInventory(globals.CreateGearItem("sword", {ToolHandle = 'wood', Blade = 'stone'}))
+		globals.AddItemToInventory(globals.CreateGearItem("bow", {ToolHandle = 'wood', Blade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
+		yield(get_tree(), 'idle_frame')
+		input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
+		#input_handler.interactive_message('event_good_loot_small', 'loot', {})
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
@@ -109,7 +113,6 @@ func _ready():
 	
 	input_handler.SetMusicRandom("mansion")
 	
-	$LootWindow.open(world_gen.make_chest_loot('easy_chest_gear'), 'Teh Loot')
 	input_handler.SystemMessageNode = $SysMessage
 	
 	
@@ -153,6 +156,10 @@ func _process(delta):
 		if gametime >= variables.SecondsPerHour:
 			gametime -= variables.SecondsPerHour
 			state.hour += 1
+			if state.hour == 6:
+				world_gen.update_locations()
+			
+			
 			if state.hour >= variables.HoursPerDay:
 				state.update_global_cooldowns()
 				state.hour = 0

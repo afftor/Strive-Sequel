@@ -22,7 +22,7 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience'
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
 #list for various types of damage mods
-var mods_list = ['all', 'melee','ranged']
+var mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']
@@ -128,6 +128,10 @@ var basic_energy_per_work_tick = 8.35
 
 var obedience_modifier = 1.0
 var fear_modifier = 1.0
+
+
+#World settings
+var dungeon_encounter_chance = 0.08
 
 #Cheats
 var instant_travel = true

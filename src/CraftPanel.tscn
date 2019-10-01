@@ -232,10 +232,10 @@ margin_right = 550.0
 margin_bottom = 637.0
 
 [node name="EndItem" type="TextureRect" parent="NumberSelect/MaterialSetupPanel"]
-margin_left = 715.0
-margin_top = 28.0
-margin_right = 841.0
-margin_bottom = 163.0
+margin_left = 684.853
+margin_top = 16.8932
+margin_right = 884.853
+margin_bottom = 216.893
 texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6

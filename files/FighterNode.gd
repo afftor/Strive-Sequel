@@ -125,7 +125,8 @@ func noq_rebuildbuffs():
 				'barrier':
 					newbuff.get_node("Label").show()
 					newbuff.get_node("Label").text = str(fighter.shield)
-		globals.connecttexttooltip(newbuff, text)
+		newbuff.hint_tooltip = text
+		#globals.connecttexttooltip(newbuff, text)
 
 
 func update_hp_label(newhp, newhpp):

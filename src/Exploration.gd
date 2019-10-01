@@ -41,7 +41,8 @@ func _ready():
 		active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 		var test_slave = Slave.new()
 		test_slave.create('BeastkinWolf', 'male', 'random')
-		test_slave.unlock_class("apprentice")
+		test_slave.unlock_class("dragonknight")
+		test_slave.unlock_class("harlot")
 		state.add_slave(test_slave)
 		test_slave.speed = 100
 		test_slave.wits = 100.0
@@ -328,12 +329,19 @@ func open_slave_list():
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
 		newbutton.connect('signal_RMB',self,'open_slave_info', [tchar])
 		newbutton.connect("pressed", self, "select_slave_in_guild", [tchar])
+		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
 
 var selectedperson
 
 func select_slave_in_guild(person):
 	selectedperson = person
+	for i in $HirePanel/VBoxContainer.get_children():
+		if i.name == "Button":
+			continue
+		i.pressed = i.get_meta("person") == person
+	var text = ''
+	$HirePanel/RichTextLabel.bbcode_text = text
 	$HirePanel/Button.show()
 	$HirePanel/Button.disabled = (state.money < person.calculate_price())
 
@@ -569,7 +577,6 @@ func enter_location(data):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	print(active_location.stagedenemies)
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
@@ -657,7 +664,7 @@ func open_location_actions():
 		'settlement':
 			for i in active_location.actions:
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-				newbutton.text = i
+				newbutton.text = tr(i.to_upper())
 				newbutton.connect("pressed", self, i)
 		'skirmish':
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -668,7 +675,12 @@ func local_shop():
 	open_shop('location')
 
 func local_events_search():
-	input_handler.interactive_message('location_event_search', 'event_selection', {})
+	
+	if input_handler.active_location.events.has('search') && input_handler.active_location.events.search > 0:
+		input_handler.SystemMessage("Already searched this location today")
+	else:
+		input_handler.active_location.events.search = state.date
+		input_handler.interactive_message('location_event_search', 'event_selection', {})
 
 func check_location_group():
 	var counter = 0
@@ -862,8 +874,6 @@ func area_advance(mode):
 			current_stage = 0
 	if check_events(mode) == true:
 		yield(input_handler, 'EventFinished')
-	if check_random_event() == true:
-		yield(input_handler, 'EventFinished')
 	
 	action_type = mode
 	
@@ -873,6 +883,8 @@ func area_advance(mode):
 
 func finish_combat():
 	if check_events("finish_combat") == true:
+		yield(input_handler, 'EventFinished')
+	if check_random_event() == true:
 		yield(input_handler, 'EventFinished')
 	if action_type == 'advance':
 		active_location.progress.stage += 1
@@ -954,10 +966,28 @@ func check_event_reqs(reqs):
 	return check
 
 func check_random_event():
+	if randf() > variables.dungeon_encounter_chance:
+		return false
 	var eventarray = active_location.randomevents
 	var eventtriggered = false
+	var active_array = []
 	for i in eventarray:
-		pass
+		var event = scenedata.scenedict[i[0]]
+		if event.has('reqs'):
+			if state.checkreqs(event.reqs):
+				active_array.append(i)
+		else:
+			active_array.append(i)
+	if active_array.size() > 0:
+		active_array = input_handler.weightedrandom(active_array)
+		var eventtype = "event_selection"
+		var dict = {}
+		if scenedata.scenedict[active_array].has("default_event_type"):
+			eventtype = scenedata.scenedict[active_array].default_event_type
+		if scenedata.scenedict[active_array].has('bonus_args'):
+			dict = scenedata.scenedict[active_array].bonus_args
+		input_handler.interactive_message(active_array, eventtype, dict)
+		eventtriggered = true
 	return eventtriggered
 
 func StartCombat():

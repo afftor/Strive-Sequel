@@ -318,3 +318,12 @@ margin_top = 105.0
 margin_right = 40.0
 margin_bottom = 130.0
 texture = ExtResource( 17 )
+
+[node name="rightclick" type="Label" parent="."]
+margin_left = 31.5847
+margin_top = 212.724
+margin_right = 193.585
+margin_bottom = 396.724
+custom_colors/font_color = Color( 0.909804, 0.815686, 0.32549, 1 )
+text = "Right click to see details"
+autowrap = true

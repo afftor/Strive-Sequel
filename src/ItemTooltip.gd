@@ -127,7 +127,7 @@ func gear_detailed_tooltip(data, item = null):
 	var text = '[center]'+data.item.name+'[/center]'
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += "\n" + Items.Parts[i].name + ": " + material.name 
+		text += "\n\n" + Items.Parts[i].name + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]
@@ -143,7 +143,7 @@ func gear_detailed_tooltip(data, item = null):
 				value = str(value)
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value + '%'
-				text += value + '}\n'
+				text += value + '}'
 #		for k in material.parts[i]:
 #			text += "\n" + Items.stats[k] + " " + str(material.parts[i][k])
 	textnode.bbcode_text = globals.TextEncoder(text)
@@ -189,7 +189,7 @@ func geartemplete_tooltip(data):
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
 		
-		text += "\n\n[color=yellow]Hold shift for details[/color]"
+		text += "\n\n{color=yellow|Hold shift for details}"
 	textnode.bbcode_text = globals.TextEncoder(text)
 	
 

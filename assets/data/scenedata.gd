@@ -1,5 +1,6 @@
 extends Node
 
+
 var scenedict = {
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = '', tags = ['scene_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	
@@ -27,13 +28,15 @@ var scenedict = {
 	},
 	
 	dungeon_find_chest_easy = {
-		text = tr("DIALOGUEDUNGEONFINDCHEST"), 
-		image = 'chest',
+		text = tr("DIALOGUEDUNGEONCHEST"), 
 		tags = [],
+		default_event_type = "loot",
+		image = 'chest', 
+		bonus_args = {loot_data = {type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}},
 		options = [
-		{code = 'open_chest_easy', reqs = [], text = tr("DIALOGUECHESTOPEN")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUECHESTLEAVE")},
-		],
+		{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		]
 	},
 	
 	purchase_dungeon_location = {
@@ -61,9 +64,9 @@ var scenedict = {
 	tags = ['good'],
 	default_event_type = "loot",
 	image = 'chest', 
-	bonus_args = {loot_data = {type = 'function', function = 'make_location_chest_loot', args = {subtype = 'small'}}},
+	bonus_args = {loot_data = {type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}},
 	options = [
-	{code = 'get_loot', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
+	{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
@@ -74,7 +77,6 @@ var scenedict = {
 	image = 'noevent', 
 	bonus_args = {},
 	options = [
-	{code = 'get_loot', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
