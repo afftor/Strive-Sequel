@@ -184,7 +184,7 @@ var TranslationDict = {
 	ITEMSPARKLINGPOWDER = "Sparkling Powder",
 	ITEMSPARKLINGPOWDERDESCRIPT = "A pinch of dust composed mainly of life shards. Heals 25-35 life to all party members.",
 	ITEMREVITALIZER = "Revitalizer",
-	ITEMREVITALIZERDESCRIPT = "A heavy stone possessing a large amount of life energy. Resurrects fallen characters with 20% of their maximum health.",
+	ITEMREVITALIZERDESCRIPT = "A strong essence possessing a large amount of life energy. Resurrects fallen characters with 20% of their maximum health.",
 	
 	
 	
@@ -364,7 +364,7 @@ var TranslationDict = {
 	MAINQUESTUPDATED = "Main Quest Updated",
 	QUESTLOG = "Quest Log",
 	NOACTIVEQUESTS = "You have no active quests.",
-	INVALIDCLASS = "Requirements are unmet.",
+	INVALIDREQS = "Rquirements are unmet.",
 	NOTENOUGHGOLD = "Not enough gold",
 	PURCHASETHISTRAIT = "Purchase this trait",
 	TRAITPOINTSCOST = "Trait Points",
@@ -664,7 +664,7 @@ var TranslationDict = {
 	STATHPFACTOR = "Health Factor",
 	STATHPFACTORDESCRIPT = "Determines health bonuses acquired in most ways. High health factor can greatly increase survivability. ",
 	
-	STATHPMOMAX = "Max. Health",
+	STATHPMAXMOD = "Max. Health",
 	
 	STATMP = "Mana",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilities.",
@@ -1531,6 +1531,13 @@ var TranslationDict = {
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVEOPTION = "Leave",
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
+	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
+	DIALOGUEFORCECHESTOPEN = "Open it",
+	
+	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
+	
+	LOCAL_SHOP = "Shop",
+	LOCAL_EVENTS_SEARCH = "Search",
 	
 	RETURNTOMANSIONBUTTON = "Send character back to the Mansion",
 	RETURNCHARACTERCONFIRM = "Order [name] return to mansion immediately?",

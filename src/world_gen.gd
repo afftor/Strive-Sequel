@@ -303,6 +303,7 @@ func make_settlement(code, area):
 		food_types -= 1
 	var resource_types = round(rand_range(settlement.resources_type_number[0], settlement.resources_type_number[1]))
 	resource_array.clear()
+	settlement.events = {}
 	for i in resourcedata:
 		if Items.materiallist[i].type != 'food':
 			resource_array.append(i)
@@ -349,7 +350,7 @@ var locations = {
 		approval = 0,
 		leader = '',
 		actions = ['local_shop','local_events_search'],
-		events = [['event_good_recruit', 0.01], ['event_good_loot_small', 1], ['event_nothing_found', 0.01]],
+		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
 		strength = [1,10],
 		food_type_number = [1,2],
 		food_type_amount = [100,200],
@@ -377,7 +378,7 @@ func make_location(code, area, difficulty = 'easy'):
 		levelnumber -= 1
 	location.group = {}
 	location.resources = location.difficulties[difficulty].resources
-	location.randomevents = []
+	location.randomevents = location.difficulties[difficulty].eventarray
 	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
 	location.stagedenemies = []
@@ -410,6 +411,12 @@ func update_guilds(area):
 					if randf() >= 0.7 || quest.state == 'complete':
 						area.quests.factions[faction].erase(quest)
 					fill_faction_quests(faction, area.code)
+
+func update_locations():
+	for i in state.areas.values():
+		for j in i.locations.values():
+			for k in j.events:
+				j.events[k] -= 1
 
 func fill_faction_quests(faction, area):
 	var areadata = state.areas[area]
@@ -718,12 +725,9 @@ func make_chest_loot(chest):
 	var data
 	if typeof(chest) == TYPE_STRING:
 		data = Enemydata.loot_chests_data[chest]
-	else:
-		data = chest
 	var dict = {materials = {}, items = []}
 	var location = input_handler.active_location
 	for i in data:
-		var difficulty = location.difficulty
 		match i.code:
 			'material':
 				var tempdict 
@@ -740,7 +744,8 @@ func make_chest_loot(chest):
 				var array = []
 				for k in Items.itemlist.values():
 					if i.grade.has(k.tier) && k.type == 'usable':
-						dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], round(rand_range(i.min, i.max))))
+						array.append(k.code)
+				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], round(rand_range(i.min, i.max))))
 			'static_gear':
 				var number = round(rand_range(i.min, i.max))
 				var array = []
@@ -907,7 +912,7 @@ var dungeons = {
 			stages_per_level = [3,5]
 			},
 			medium = {code = 'medium', 
-			enemyarray =  [['bandits_medium', 2],['bandits_assassin', 1], ['bandits_assassin2', 1], ['bandits_medium_bear', 1], ['bandits_golem', 1]], 
+			enemyarray =  [['bandits_easy3', 1],['bandits_medium', 2],['bandits_assassin', 1], ['bandits_medium_bear', 1], ['bandits_golem', 1]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 			eventarray = [], 
 			levels = [3,5], 
@@ -915,7 +920,7 @@ var dungeons = {
 			stages_per_level = [4,6]
 			},
 			hard = {code = 'hard', 
-			enemyarray =  [], 
+			enemyarray =  [['bandits_raptors', 2],['bandits_ballista', 1], ['bandits_assassin2', 1],['bandits_medium_bear', 1], ['bandits_golem', 1]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 			eventarray = [], 
 			levels = [4,6], 

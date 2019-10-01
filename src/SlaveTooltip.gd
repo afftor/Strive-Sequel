@@ -59,6 +59,7 @@ func showup(node, person):
 	
 	
 	$VBoxContainer.visible = person.is_players_character
+	$rightclick.visible = !person.is_players_character
 	if person.professions.has('master') || person.is_players_character == false:
 		if person.is_players_character == false:
 			$VBoxContainer/lust.hide()

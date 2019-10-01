@@ -119,10 +119,11 @@ func set_baby_name(text):
 	close()
 
 func open_chest():
-	var chest = world_gen.make_chest_loot(input_handler.active_location)
+	input_handler.get_loot_node().open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+	close()
 
 func good_event():
-	var eventlist = input_handler.active_location.events
+	var eventlist = input_handler.active_location.event_pool
 	var array = []
 	for i in eventlist:
 		if scenedata.scenedict[i[0]].has('tags') && scenedata.scenedict[i[0]].tags.has('good'):
@@ -133,15 +134,15 @@ func good_event():
 		return
 	var event = input_handler.weightedrandom(array)
 	var eventtype = "event_selection"
+	var dict = {}
 	if scenedata.scenedict[event].has("default_event_type"):
 		eventtype = scenedata.scenedict[event].default_event_type
-	var dict = {}
 	if scenedata.scenedict[event].has('bonus_args'):
 		dict = scenedata.scenedict[event].bonus_args
 	input_handler.interactive_message(event, eventtype, dict)
 
 func evil_event():
-	pass
+	input_handler.SystemMessage("This feature is not implemented yet")
 
 func leave():
 	close()

@@ -142,7 +142,7 @@ func casterattack(node, args = null):
 func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
-	hp_update_delays[node] = 0.4 #delay for hp updating during this animation
+	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.4)
 	buffs_update_delays[node] = 0.5
 	input_handler.gfx(node, 'slash')
@@ -205,7 +205,7 @@ func hp_update(node, args):
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
 	hp_update_delays.erase(node)
 	
-	var delaytime = 0.3
+	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage

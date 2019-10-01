@@ -290,20 +290,18 @@ func victory():
 #					var newitem = globals.CreateUsableItem(j.code, round(rand_range(j.min, j.max)))
 #					rewardsdict.items.append(newitem)
 	
-	globals.ClearContainerForced($Rewards/HBoxContainer/first)
-	globals.ClearContainerForced($Rewards/HBoxContainer/second)
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
 	for i in playergroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
-		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
-		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
-			$Rewards/HBoxContainer/first.remove_child(newbutton)
-			$Rewards/HBoxContainer/second.add_child(newbutton)
-		#newbutton.get_node('icon').texture = tchar.portrait_circle()
-		newbutton.get_node("xpbar").value = tchar.base_exp
 		tchar.base_exp += ceil(rewardsdict.xp*tchar.exp_mod/playergroup.size())
+#		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
+#		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
+#			$Rewards/HBoxContainer/first.remove_child(newbutton)
+#			$Rewards/HBoxContainer/second.add_child(newbutton)
+#		#newbutton.get_node('icon').texture = tchar.portrait_circle()
+#		newbutton.get_node("xpbar").value = tchar.base_exp
 		#var level = tchar.level
-		var subtween = input_handler.GetTweenNode(newbutton)
+#		var subtween = input_handler.GetTweenNode(newbutton)
 #		if tchar.level > level:
 #			subtween.interpolate_property(newbutton.get_node("xpbar"), 'value', newbutton.get_node("xpbar").value, 100, 0.8, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
 #			subtween.interpolate_property(newbutton.get_node("xpbar"), 'modulate', newbutton.get_node("xpbar").modulate, Color("fffb00"), 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT, 1)
@@ -318,38 +316,41 @@ func victory():
 #			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*tchar.xpmod)))
 #		subtween.start()
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
-	$Rewards.visible = true
+	#$Rewards.visible = true
+	input_handler.UnfadeAnimation($Rewards)
 	$Rewards.set_meta("result", 'victory')
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		newbutton.hide()
 		newbutton.texture = item.icon
-		newbutton.get_node("Label").text = str(rewardsdict.materials[i])
+		newbutton.get_node("name").text = item.name
+		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
 		state.materials[i] += rewardsdict.materials[i]
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
 		var newnode = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newnode.hide()
+		#newnode.hide()
 		newnode.texture = load(i.icon)
 		globals.AddItemToInventory(i)
+		newnode.get_node("name").text = i.name
 		globals.connectitemtooltip(newnode, state.items[globals.get_item_id_by_code(i.itembase)])
 		if i.amount == null:
-			newnode.get_node("Label").visible = false
+			newnode.get_node("amount").visible = false
 		else:
-			newnode.get_node("Label").text = str(i.amount)
+			newnode.get_node("amount").text = str(i.amount)
 	
-	yield(get_tree().create_timer(1.7), 'timeout')
+	#yield(get_tree().create_timer(1.7), 'timeout')
 	
-	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
-		if i.name == 'Button':
-			continue
-		tween = input_handler.GetTweenNode(i)
-		yield(get_tree().create_timer(1), 'timeout')
-		i.show()
-		input_handler.PlaySound("itemget")
-		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+#	for i in $Rewards/ScrollContainer/HBoxContainer.get_children():
+#		if i.name == 'Button':
+#			continue
+#		tween = input_handler.GetTweenNode(i)
+#		yield(get_tree().create_timer(1), 'timeout')
+#		i.show()
+#		input_handler.PlaySound("itemget")
+#		tween.interpolate_property(i,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#		tween.start()
 	
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
@@ -585,7 +586,8 @@ func make_fighter_panel(fighter, spot):
 	spot = int(spot)
 	var container = battlefieldpositions[int(spot)]
 	var panel = $Panel/PlayerGroup/Back/left/Template.duplicate()
-	panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
+	panel.material = load("res://files/SFX/BarrierShader.tres").duplicate()
+	#panel.material = $Panel/PlayerGroup/Back/left/Template.material.duplicate()
 	panel.get_node('border').material = $Panel/PlayerGroup/Back/left/Template.get_node('border').material.duplicate()
 	fighter.displaynode = panel
 	panel.name = 'Character'

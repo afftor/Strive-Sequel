@@ -454,12 +454,12 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'labor':
 					array = ['physics', 'wits']
 		array = array[randi()%array.size()]
-		self.set(array, self.get(array) + rand_range(10,20))#initial setup direct access
+		self.set(array, self.get(array) + rand_range(1,15))#initial setup direct access
 		difficulty -= 1
 	
 	#assign classes
 	while classcounter > 0:
-		if randf() > 0.85:
+		if randf() > 0.65:
 			classcounter -= 1
 			continue
 		var classarray = []
@@ -736,6 +736,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = globals.globalsettings[i.type] == i.check
 			'bodypart':
 				check = input_handler.operate(i.operant, get(i.name), i.value)
+			'trait':
+				check = traits.has(i.value)
 		if check == false:
 			return false
 	return true

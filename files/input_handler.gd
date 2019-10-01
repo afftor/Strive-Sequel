@@ -253,7 +253,7 @@ func FloatTextArgs(args):
 	#print('ftchecked')
 	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
-func FloatText(node, text, type = '', size = 150, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
+func FloatText(node, text, type = '', size = 120, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
 	node.add_child(textnode)
 	var newfont = floatfont.duplicate()
@@ -697,7 +697,9 @@ func SystemMessage(text, time = 4):
 	text = '[center]' + tr(text) + '[/center]'
 	SystemMessageNode.show()
 	SystemMessageNode.modulate.a = 1
-	SystemMessageNode.bbcode_text = text
+	SystemMessageNode.get_node('Text').bbcode_text = text
+	SystemMessageNode.get_parent().remove_child(SystemMessageNode)
+	get_tree().get_root().add_child(SystemMessageNode)
 	FadeAnimation(SystemMessageNode, 1, basetime)
 
 func GetTutorialNode():
@@ -841,11 +843,9 @@ func interactive_message(code, type, args):
 		'event_selection':
 			data.location = active_location
 		'loot':
-			var loot
 			match args.loot_data.type:
-				'function':
-					loot = call(args.loot_data.function, args.loot_data.args)
-			scene_loot = world_gen.make_chest_loot(loot)
+				'tableloot':
+					scene_loot = world_gen.make_chest_loot(weightedrandom(args.loot_data.pool))
 		'area_oneshot_event':
 			for i in active_area.events:
 				if i.code == code:
@@ -859,11 +859,18 @@ func interactive_message_custom(data):
 	var scene = get_dialogue_node()
 	scene.open(data)
 
-
-func make_location_chest_loot(args):
-	var lootdict = {}
-	
-	return lootdict
+func get_loot_node():
+	var window
+	var node = get_tree().get_root()
+	if node.has_node('lootwindow'):
+		window = node.get_node('lootwindow')
+		node.remove_child(window)
+	else:
+		window = load("res://src/scenes/LootWindow.tscn").instance()
+		window.name = 'lootwindow'
+	node.add_child(window)
+	#node.call_deferred('add_child', window)
+	return window
 
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
