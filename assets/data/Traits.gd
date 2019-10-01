@@ -10,7 +10,7 @@ var traits = {
 		effects = ['e_core_ex', 'e_core_ex_rem', 'e_core_fat', 'e_core_fat_rem', 'test_combat_start'],
 	}, 
 	
-	master = {#150% effect from social skills
+	'master' : {#150% effect from social skills
 		code = 'master',
 		name = '',
 		descript = '',
@@ -18,7 +18,30 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
 	}, 
-	
+	small = {
+		code = 'small',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_small']
+	},
+	'slave' : {
+		code = 'slave',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_slave']
+	},
+	halfslave = {
+		code = 'halfslave',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = []
+	},
 	worker = {
 		code = 'worker',
 		name = '',

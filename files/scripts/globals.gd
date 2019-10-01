@@ -903,6 +903,11 @@ func showskilltooltip(skill, node, character):
 	skilltooltip.character = character
 	skilltooltip.showup(node, skill)
 
+func closeskilltooltip():
+	var skilltooltip = input_handler.GetSkillTooltip()
+	skilltooltip.set_process(false)
+	skilltooltip.hide()
+
 #func disconnectitemtooltip(node, item):
 #	if node.is_connected("mouse_entered",item,'tooltip'):
 #		node.disconnect("mouse_entered",item,'tooltip')
