@@ -1794,20 +1794,27 @@ func set_position(new_pos):
 
 
 func apply_effect(eff_id):
+	
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
 		'static', 'c_static': 
+			if hp <= 0 or defeated or !is_active: return
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
 		'trigger': 
+			if hp <= 0 or defeated or !is_active: return
 			triggered_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
-		'temp_s','temp_p','temp_u': apply_temp_effect(eff_id)
-		'area': add_area_effect(eff_id)
+		'temp_s','temp_p','temp_u': 
+			if hp <= 0 or defeated or !is_active: return
+			apply_temp_effect(eff_id)
+		'area':
+			if hp <= 0 or defeated or !is_active: return
+			add_area_effect(eff_id)
 		'oneshot': 
 			obj.applied_obj = self
 			obj.apply()

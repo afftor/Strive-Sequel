@@ -9,7 +9,7 @@ signal alleffectsfinished
 var cast_timer = 0
 var aftereffecttimer = 0
 var postdamagetimer = 0
-var aftereffectdelay = 0.3
+var aftereffectdelay = 0.1
 
 var cur_timer
 var animations_queue = {}
@@ -143,8 +143,8 @@ func targetattack(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.4
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.4)
-	buffs_update_delays[node] = 0.5
+	log_update_delay = max(log_update_delay, 0.3)
+	buffs_update_delays[node] = 0.4
 	input_handler.gfx(node, 'slash')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -156,9 +156,9 @@ func targetattack(node, args = null):
 func targetfire(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
-	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
-	log_update_delay = max(log_update_delay, 0.3)
-	buffs_update_delays[node] = 0.5
+	hp_update_delays[node] = 0.1 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.1)
+	buffs_update_delays[node] = 0.2
 	input_handler.gfx(node, 'fire')
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
@@ -171,7 +171,7 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	var tween = input_handler.GetTweenNode(node)
 	var playtime = 0.1
 	var nextanimationtime = 0.0
-	var delaytime = 0.8
+	var delaytime = 0.4
 	input_handler.PlaySound("combatmiss")
 	input_handler.FloatText(node, tr("MISS"), 'miss', 75, Color(1,1,1), 1, 0.2)#, node.get_node('Icon').rect_size/2-Vector2(80,20))
 	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
@@ -185,7 +185,7 @@ func buffs(node, args = null):
 	var delay = 0
 	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
 	buffs_update_delays.erase(node)
-	var delaytime = 0.1
+	var delaytime = 0.01
 	var tween = input_handler.GetTweenNode(node)
 	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs')
 	tween.start()
@@ -194,7 +194,7 @@ func buffs(node, args = null):
 func c_log(node, args):
 	var delay = log_update_delay
 	log_update_delay = 0
-	var delaytime = 0.1
+	var delaytime = 0.01
 	var tween = input_handler.GetTweenNode(node)
 	tween.interpolate_callback(node, delay, 'combatlogadd_q', args.text)
 	tween.start()
@@ -221,7 +221,7 @@ func hp_update(node, args):
 	return delaytime + delay
 
 func mp_update(node, args):
-	var delaytime = 0.3
+	var delaytime = 0.1
 	var tween = input_handler.GetTweenNode(node)
 	var mpnode = node.get_node("MP")
 	#update mp bar

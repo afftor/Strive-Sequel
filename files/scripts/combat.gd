@@ -788,6 +788,9 @@ func use_skill(skill_code, caster, target):
 
 		if skill.combatcooldown > 0:
 			caster.combat_cooldowns[skill_code] = skill.combatcooldown
+		if skill.cooldown > 0:
+			#bugged usage of daily restrictions onto skills
+			pass
 	
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
@@ -1265,7 +1268,8 @@ func RebuildSkillPanel():
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(cursors.default)
 	skill = Skilldata.Skilllist[skill]
-	if activecharacter.mp < skill.manacost || activecharacter.combat_cooldowns.has(skill.code):
+	#need to add daily restriction check
+	if activecharacter.mp < skill.manacost || activecharacter.combat_cooldowns.has(skill.code) :
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack');
 		return
@@ -1274,6 +1278,9 @@ func SelectSkill(skill):
 	UpdateSkillTargets(activecharacter)
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
 		checkwinlose();
+	if skill.target == 'self':
+		globals.closeskilltooltip()
+		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
 	
 
 func RebuildItemPanel():
