@@ -65,6 +65,10 @@ func update_hp():
 			args.color = Color(0.2,1,0.2)
 		if hp <= 0: args.damage_float = false
 		hp = fighter.hp
+		if hp < 0:
+			args.newhp = 0
+			args.newhpp = 0
+			hp = 0
 		#damageeffectsarray.append(data)
 		var data = {node = self, time = globals.combat_node.turns,type = 'hp_update',slot = 'HP', params = args}
 		animation_node.add_new_data(data)
