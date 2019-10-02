@@ -777,6 +777,7 @@ func summon(montype, limit):
 
 
 func use_skill(skill_code, caster, target):
+	if activeaction != skill_code: activeaction = skill_code
 	#to add code for different costs
 	#and various limits and cooldowns
 	allowaction = false
@@ -1282,6 +1283,7 @@ func SelectSkill(skill):
 		checkwinlose();
 	if skill.target == 'self':
 		globals.closeskilltooltip()
+		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
 	
 
