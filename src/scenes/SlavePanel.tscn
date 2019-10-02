@@ -616,15 +616,15 @@ texture = ExtResource( 31 )
 
 [node name="effectlabel" type="Label" parent="."]
 margin_left = 907.997
-margin_top = 646.136
+margin_top = 649.136
 margin_right = 1125.0
-margin_bottom = 670.136
+margin_bottom = 673.136
 text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 522.0
 margin_top = 15.0
@@ -635,8 +635,8 @@ text = "Obedience"
 align = 1
 
 [node name="fearlabel" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.0
 margin_top = 15.0
@@ -646,9 +646,21 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Fear"
 align = 1
 
-[node name="mentality" type="HBoxContainer" parent="." groups=[
-"hide_stranger",
+[node name="character_class" type="Label" parent="." groups=[
 "hide_master",
+]]
+margin_left = 950.0
+margin_top = 15.0
+margin_right = 1129.0
+margin_bottom = 40.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.027451, 0.976471, 1, 1 )
+text = "Slave"
+align = 1
+
+[node name="mentality" type="HBoxContainer" parent="." groups=[
+"hide_master",
+"hide_stranger",
 ]]
 editor/display_folded = true
 margin_left = 510.1
@@ -705,11 +717,10 @@ align = 1
 [node name="job" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
-editor/display_folded = true
 margin_left = 937.0
-margin_top = 16.0
+margin_top = 46.0
 margin_right = 1137.0
-margin_bottom = 81.0
+margin_bottom = 111.0
 custom_constants/separation = 9
 
 [node name="fatigue" type="Label" parent="job"]
@@ -729,9 +740,9 @@ align = 1
 
 [node name="traitslabel" type="Label" parent="."]
 margin_left = 279.189
-margin_top = 654.431
+margin_top = 648.431
 margin_right = 441.189
-margin_bottom = 679.431
+margin_bottom = 673.431
 text = "Sex Traits"
 align = 1
 

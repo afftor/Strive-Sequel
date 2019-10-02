@@ -58,21 +58,21 @@ func applyeffect(effect, caster, target):
 	
 
 var Parts = {
-	ToolHandle = {name = tr("TOOLHANDLE"), code = 'ToolHandle', icon = null},
-	ToolBlade = {name = tr("TOOLBLADE"), code = "ToolBlade", icon = null},
-	ToolClothwork = {name = tr("TOOLCLOTHWORK"), code = "ToolClothwork", icon = null},
-	WeaponHandle = {name = tr("WEAPONHANDLE"), code = 'WeaponHandle', icon = null},
-	Blade = {name = tr("BLADE"), code = 'Blade', icon = null},
-	Blunt = {name = tr("BLUNT"), code = 'Blunt', icon = null},
-	Rod = {name = tr("ROD"), code = 'Rod', icon = null},
-	BowBase = {name = tr("BOWBASE"), code = 'BowBase', icon = null},
-	BowTrim = {name = tr("BOWTRIM"), code = 'BowTrim', icon = null},
+	ToolHandle = {name = tr("TOOLHANDLE"), code = 'ToolHandle', icon = load("res://assets/images/iconsitems/parts/handle.png")},
+	ToolBlade = {name = tr("TOOLBLADE"), code = "ToolBlade", icon = load("res://assets/images/iconsitems/parts/blade.png")},
+	ToolClothwork = {name = tr("TOOLCLOTHWORK"), code = "ToolClothwork", icon = load("res://assets/images/iconsitems/parts/cloth.png")},
+	WeaponHandle = {name = tr("WEAPONHANDLE"), code = 'WeaponHandle', icon = load("res://assets/images/iconsitems/parts/handle.png")},
+	Blade = {name = tr("BLADE"), code = 'Blade', icon = load('res://assets/images/iconsitems/parts/blade.png')},
+	Blunt = {name = tr("BLUNT"), code = 'Blunt', icon = load('res://assets/images/iconsitems/parts/head.png')},
+	Rod = {name = tr("ROD"), code = 'Rod', icon = load("res://assets/images/iconsitems/parts/rod.png")},
+	BowBase = {name = tr("BOWBASE"), code = 'BowBase', icon = load("res://assets/images/iconsitems/parts/bow_base.png")},
+	BowTrim = {name = tr("BOWTRIM"), code = 'BowTrim', icon = load("res://assets/images/iconsitems/parts/trim.png")},
 	ArmorBaseCloth = {name = tr("ARMORBASE"), code = 'ArmorBaseCloth', icon = null},
 	ArmorBaseMed = {name = tr("ARMORBASE"), code = 'ArmorBaseMed', icon = null},
 	ArmorBaseHeavy = {name = tr("ARMORBASE"), code = 'ArmorBaseHeavy', icon = null},
-	ArmorTrim = {name = tr("ARMORTRIM"), code = 'ArmorTrim', icon = null},
+	ArmorTrim = {name = tr("ARMORTRIM"), code = 'ArmorTrim', icon = load("res://assets/images/iconsitems/parts/trim.png")},
 	ArmorCloth = {name = tr("ARMORCLOTH"), code = 'ArmorCloth', icon = null},
-	JewelryGem = {name = tr("JEWELRYGEM"), code = 'JewelryGem', icon = null},
+	JewelryGem = {name = tr("JEWELRYGEM"), code = 'JewelryGem', icon = load("res://assets/images/iconsitems/parts/rod.png")},
 }
 
 

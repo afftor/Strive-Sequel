@@ -626,7 +626,10 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 	
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",
+	SERVANTCLASSDESCRIPT = "Servants are generally purchased to be taken care of but otherwise have similar rights to others. Many folks end up as servants as a mean to pay their, or their family debt, or otherwise gain a secured life conditions. However, when escaped, servants can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They are also can't be forced to have sex with.",
 	
+	SLAVETYPE = "Type",
 	
 	SLAVEBODYHUMANOID = "Humanoid",
 	SLAVEBODYBESTIAL = "Bestial",

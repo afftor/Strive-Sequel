@@ -253,13 +253,12 @@ margin_right = 456.041
 margin_bottom = 402.253
 text = "Sexuals"
 
-[node name="job" type="Label" parent="."]
-margin_left = 256.0
-margin_top = 192.0
-margin_right = 436.0
-margin_bottom = 243.0
-text = "State
-Job"
+[node name="job" type="RichTextLabel" parent="."]
+margin_left = 249.682
+margin_top = 148.78
+margin_right = 554.682
+margin_bottom = 235.78
+bbcode_enabled = true
 
 [node name="buffs" type="VBoxContainer" parent="."]
 editor/display_folded = true

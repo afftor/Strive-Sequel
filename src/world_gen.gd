@@ -168,6 +168,7 @@ var guildsdata = {
 		name = 'Fighters',
 		description = '',
 		preference = ['combat'],
+		character_types = [['servant',1]],
 		quests_easy = ['warriors_dungeon_basic'],#'warriors_threat_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
@@ -179,6 +180,7 @@ var guildsdata = {
 		name = 'Mages',
 		description = '',
 		preference = ['magic'],
+		character_types = [['servant',1]],
 		quests_easy = ['mages_materials_basic','mages_craft_potions_basic','mages_threat_basic','mages_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
@@ -190,6 +192,7 @@ var guildsdata = {
 		name = 'Workers',
 		description = '',
 		preference = ['labor'],
+		character_types = [['servant',1]],
 		quests_easy = ['workers_resources_basic','workers_food_basic','workers_craft_tools_basic','workers_threat_basic'],
 		quests_medium = [],
 		quests_hard = [],
@@ -201,11 +204,24 @@ var guildsdata = {
 		name = 'Servants',
 		description = '',
 		preference = ['sexual','social'],
+		character_types = [['servant',1]],
 		quests_easy = ['servants_craft_items_basic','servants_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,3],
 		questnumber = [2,2],
+	},
+	slavemarket = {
+		code = 'slavemarket',
+		name = 'Slave Market',
+		description = '',
+		preference = [],
+		character_types = [['slave',1]],
+		quests_easy = [],
+		quests_medium = [],
+		quests_hard = [],
+		slavenumber = [3,5],
+		questnumber = [],
 	},
 }
 
@@ -216,6 +232,7 @@ func make_guild(code, area):
 		code = factiondata.code,
 		name = factiondata.name,
 		area = area.code,
+		chartype = factiondata.character_types,
 		preferences = factiondata.preference,
 		description = factiondata.description,
 		questpool = {easy = factiondata.quests_easy, medium = factiondata.quests_medium, hard = factiondata.quests_hard},
@@ -250,7 +267,8 @@ func make_slave_for_guild(guild):
 	if globals.globalsettings.guilds_any_race:
 		race = 'random'
 	newslave.generate_random_character_from_data(race, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
-
+	var char_class = input_handler.weightedrandom(guild.chartype)
+	newslave.set_slave_category(char_class)
 	guild.slaves.append(newslave.id)
 	newslave.is_known_to_player = true
 

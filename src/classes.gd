@@ -222,7 +222,7 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/Breeder.png"),
 		tags = [],
 		categories = ['sexual'],
-		showupreqs = [],
+		showupreqs = [{code = 'disabled', value = true}],
 		reqs = [{code = 'has_profession', value = 'cattle', check = true}],
 		statchanges = {sexuals_bonus = 20, hpmax = 15},
 		traits = ['breeder'],

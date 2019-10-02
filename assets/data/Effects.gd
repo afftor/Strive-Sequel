@@ -9,7 +9,7 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'modmelee', value = -0.2},
 			{type = 'stat_add', stat = 'evasion', value = 25},
-			{type = 'stat_add_p', stat = 'mod_collect', value = -0.25}#add all physical tasks modifiers
+			{type = 'stat_add_p', stat = 'mod_collect', value = -0.25}
 			],
 		buffs = [],
 		sub_effects = [],
@@ -18,7 +18,7 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add', stat = 'modall', value = -0.1},
-			{type = 'stat_add_p', stat = 'productivity', value = -0.1},# or simply add -10?
+			{type = 'stat_add_p', stat = 'productivity', value = -0.1},
 			{type = 'stat_add_p', stat = 'fear_degrade_mod', value = -0.5}
 			],
 		buffs = [],

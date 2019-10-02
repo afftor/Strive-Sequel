@@ -56,6 +56,10 @@ func _ready():
 	
 	$bodyparts2/class.connect("pressed", self, "open_class_list")
 	
+	for i in ['slave','servant']:
+		$bodyparts2/slave_class.add_item(i.capitalize())
+	$bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
+	
 	open()
 
 func open_class_list():
@@ -103,6 +107,9 @@ func select_sexbodypart(value, bodypart, node):
 	
 	apply_preserved_settings()
 	$descript.bbcode_text = person.make_description()
+
+func select_type(value, node):
+	preservedsettings.slave_class = node.get_item_text(value)
 
 func select_checkbox(bodypart, node):
 	preservedsettings[bodypart] = node.pressed
@@ -173,6 +180,10 @@ func open(type = 'slave'):
 			person.race = 'Human'
 			total_stat_points = variables.slave_starting_stats
 	
+	$bodyparts2/type_label.visible = mode == 'slave'
+	$bodyparts2/slave_class.visible = mode == 'slave'
+	globals.connecttexttooltip($bodyparts2/type_label, "Slave&Servant:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
+	
 	rebuild_slave()
 
 func rebuild_slave():
@@ -184,7 +195,6 @@ func rebuild_slave():
 	person.is_known_to_player = true
 	if mode == 'master':
 		person.unlock_class('master')
-	
 	
 	$VBoxContainer/race.text = races.racelist[person.race].name
 	$VBoxContainer/sex.select(sexarray.find(person.sex))
@@ -464,6 +474,8 @@ func build_bodyparts():
 		'futa':
 			$bodyparts2/penis_virgin.visible = true
 			$bodyparts2/vaginal_virgin.visible = true
+	
+	
 
 func apply_preserved_settings():
 	for i in preservedsettings:
@@ -479,6 +491,12 @@ func finish_character():
 	person.food_consumption = 3
 	person.hp = person.get_stat('hpmax')
 	person.mp = person.get_stat('mpmax')
+	if mode != 'master':
+		if preservedsettings.has('slave_class') == false:
+			preservedsettings.slave_class = 'Slave'
+		person.set_slave_category(preservedsettings.slave_class.to_lower())
+	else:
+		person.slave_class = 'master'
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
 

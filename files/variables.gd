@@ -139,7 +139,7 @@ var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
 var unlock_all_upgrades = true
-var invincible_player = false
+var invincible_player = true
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
 var allow_skip_fights = true
@@ -150,7 +150,7 @@ var no_event_wait_time = false
 var ignore_quest_requirements = true
 
 var generate_test_chars = true
-var combat_tests = false #for combat testing
+var combat_tests = true #for combat testing
 var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 
 

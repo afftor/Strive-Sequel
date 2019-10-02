@@ -73,6 +73,8 @@ func _ready():
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
 	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
 
+
+
 func run_test():
 	person.apply_custom_bodychange('sex', 'female')
 	open(person)
@@ -126,6 +128,7 @@ func open(tempperson):
 	$BodyPanel/Body.texture = person.get_body_image()
 	$BodyPanel.visible = $BodyPanel/Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
+	globals.connecttexttooltip($character_class, tr(person.slave_class.to_upper()+"CLASSDESCRIPT"))
 	if person.location == 'travel':
 		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	if person.work != '':
@@ -172,6 +175,7 @@ func open(tempperson):
 	$base_stats/lust.max_value = person.lustmax
 	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
+	$character_class.text = person.slave_class.capitalize()
 	
 	if person.obedience > 50:
 		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)

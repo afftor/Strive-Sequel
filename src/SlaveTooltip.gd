@@ -41,14 +41,14 @@ func showup(node, person):
 		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
 		get_node("VBoxContainer/"+ i ).value = person.get_stat(i)
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
-	text = ''
+	text = "Type: [color=yellow]" +person.slave_class.capitalize() + "[/color]\n"
 	if person.is_players_character == true:
 		if person.work != '':
-			text = "Occupation: " + races.tasklist[person.work].name
+			text += "Occupation: " + races.tasklist[person.work].name
 		else:
-			text = "Occupation: None"
+			text += "Occupation: None"
 		text += '\nCurrent State: ' + person.last_tick_assignement
-	$job.text = text 
+	$job.bbcode_text = text 
 	
 	
 	globals.ClearContainer($GridContainer)
