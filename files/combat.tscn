@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/cave.png" type="Texture" id=2]
@@ -60,6 +60,11 @@ size = 32
 use_filter = true
 font_data = ExtResource( 9 )
 
+[sub_resource type="DynamicFont" id=13]
+size = 50
+use_filter = true
+font_data = ExtResource( 9 )
+
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 17 )
 region_rect = Rect2( 16.2279, 15.9965, 1126.96, 148.925 )
@@ -96,6 +101,7 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="Panel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 82.0
 margin_top = 81.0
 margin_right = 621.0
@@ -265,6 +271,7 @@ margin_bottom = 678.0
 rect_min_size = Vector2( 218, 219 )
 
 [node name="Panel2" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 1302.0
 margin_top = 81.0
 margin_right = 1841.0
@@ -326,7 +333,6 @@ rect_min_size = Vector2( 218, 219 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SkillPanel" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 743.0
 margin_top = 431.868
 margin_right = 1167.0
@@ -376,7 +382,20 @@ texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
 
+[node name="cooldown" type="Label" parent="SkillPanel/ScrollContainer/GridContainer/Button"]
+visible = false
+modulate = Color( 1, 1, 1, 0.831373 )
+margin_right = 76.0
+margin_bottom = 77.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.843137, 1, 0.172549, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+valign = 1
+
 [node name="ItemPanel" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 743.0
 margin_top = 38.0
 margin_right = 1167.0

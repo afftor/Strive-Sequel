@@ -792,8 +792,7 @@ func use_skill(skill_code, caster, target):
 		if skill.combatcooldown > 0:
 			caster.combat_cooldowns[skill_code] = skill.combatcooldown
 		if skill.cooldown > 0:
-			#bugged usage of daily restrictions onto skills
-			pass
+			caster.daily_cooldowns[skill_code] = skill.cooldown
 	
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
@@ -1258,6 +1257,15 @@ func RebuildSkillPanel():
 		if activecharacter.combat_cooldowns.has(skill.code):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.get_node("cooldown").visible = true
+			newbutton.get_node("cooldown").text = str(activecharacter.combat_cooldowns[skill.code])
+			newbutton.get_node("cooldown").set("custom_colors/font_color", globals.hexcolordict.yellow)
+		if activecharacter.daily_cooldowns.has(skill.code):
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.get_node("cooldown").visible = true
+			newbutton.get_node("cooldown").text = str(activecharacter.daily_cooldowns[skill.code])
+			newbutton.get_node("cooldown").set("custom_colors/font_color", globals.hexcolordict.red)
 		if !activecharacter.checkreqs(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -1285,7 +1293,6 @@ func SelectSkill(skill):
 		globals.closeskilltooltip()
 		activecharacter.selectedskill = activecharacter.get_skill_by_tag('default')
 		call_deferred('use_skill', activeaction, activecharacter, activecharacter)
-	
 
 func RebuildItemPanel():
 	var array = []
@@ -1308,7 +1315,7 @@ func ClearItemPanel():
 	globals.ClearContainer($ItemPanel/ScrollContainer/GridContainer)
 
 func ActivateItem(item):
-	activeaction = item.useskill
+	activeaction = Items.itemlist[item.code].combat_effect
 	activeitem = item
 	SelectSkill(activeaction)
 	#UpdateSkillTargets()

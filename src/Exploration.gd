@@ -43,6 +43,9 @@ func _ready():
 		test_slave.create('BeastkinWolf', 'male', 'random')
 		test_slave.unlock_class("dragonknight")
 		test_slave.unlock_class("harlot")
+		test_slave.unlock_class("attendant")
+		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 		state.add_slave(test_slave)
 		test_slave.speed = 100
 		test_slave.wits = 100.0

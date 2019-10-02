@@ -87,7 +87,7 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 0], ['ads', 100]],
+		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 10,
 	},

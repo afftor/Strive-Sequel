@@ -253,7 +253,7 @@ func FloatTextArgs(args):
 	#print('ftchecked')
 	FloatText(args.node, args.text, args.type, args.size, args.color, args.time, args.fadetime, args.offset)
 
-func FloatText(node, text, type = '', size = 120, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
+func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3, fadetime = 0.5, positionoffset = Vector2(0,0)):
 	var textnode = Label.new()
 	node.add_child(textnode)
 	var newfont = floatfont.duplicate()

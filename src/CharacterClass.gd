@@ -17,7 +17,7 @@ var npc_reference
 var combatgroup 
 var displaynode
 var defeated = false
-var cooldowns = []
+var daily_cooldowns = {}
 #####
 
 var name = ''
@@ -1016,6 +1016,9 @@ func unlearn_skill(skill):
 
 
 func cooldown_tick():
+	
+	items_used_today.clear()
+	
 	var cleararray = []
 	for i in social_cooldowns:
 		social_cooldowns[i] -= 1
@@ -1023,10 +1026,17 @@ func cooldown_tick():
 			social_skills_charges.erase(i)
 			cleararray.append(i)
 	
-	items_used_today.clear()
-	
 	for i in cleararray:
 		social_cooldowns.erase(i)
+	
+	
+	for i in daily_cooldowns:
+		daily_cooldowns[i] -= 1
+		if daily_cooldowns[i] <= 0:
+			cleararray.append(i)
+	
+	for i in cleararray:
+		daily_cooldowns.erase(i)
 
 func skill_tooltip(skillcode):
 	var text = ''
