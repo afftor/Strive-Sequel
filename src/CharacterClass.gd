@@ -28,6 +28,7 @@ var race = ''
 var racegroup = 'humanoid'
 var age = ''
 var sex = ''
+var slave_class = ''
 
 var professions = []
 var social_skills = []
@@ -611,7 +612,7 @@ func create(temp_race, temp_gender, temp_age):
 						break
 				if check == false:
 					food_filter.med.append(i.code)
-	get_trait('core_trait')
+	add_trait('core_trait')
 	learn_c_skill('attack')
 	hp = get_stat('hpmax')
 	mp = get_stat('mpmax')
@@ -738,6 +739,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = input_handler.operate(i.operant, get(i.name), i.value)
 			'trait':
 				check = traits.has(i.value)
+			'disabled':
+				check = !i.value
 		if check == false:
 			return false
 	return true
@@ -959,10 +962,10 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	for i in prof.combatskills:
 		learn_c_skill(i)
 	for i in prof.traits:
-		get_trait(i)
+		add_trait(i)
 	recheck_effect_tag('recheck_class')
 
-func get_trait(tr_code):
+func add_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if traits.has(tr_code): return
 	traits.push_back(tr_code)
@@ -1633,7 +1636,7 @@ func apply_atomic(template):
 		'remove_effect': 
 			remove_temp_effect_tag(template.value)
 		'add_trait':
-			get_trait(template.trait)
+			add_trait(template.trait)
 		'add_sex_trait':
 			sex_traits.push_back(template.trait)
 			var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[template.trait].name
@@ -2306,6 +2309,12 @@ func use_mansion_item(item):
 			items_used_global[itembase.code] = 1
 	item.amount -= 1
 	use_social_skill(skill, self)
+
+func set_slave_category(new_class):
+	if slave_class != '':
+		remove_trait(slave_class)
+	add_trait(new_class)
+	slave_class = new_class
 
 func phy_f_set(value):
 	physics_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)

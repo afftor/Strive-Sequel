@@ -1,7 +1,7 @@
 extends Node
 
 var predeterminatedgroups = {
-	rats_easy = {group = {1 : 'bandit_melee', 4 : 'bandit_archer',5 : 'rat'}},
+	rats_easy = {group = {4:'bandit_archer'}}#1 : 'bandit_melee', 4 : 'bandit_archer',5 : 'rat'}},
 } 
 
 var enemygroups = {
@@ -87,7 +87,7 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 66], ['ads', 33]],
+		ai = [['basic', 0], ['ads', 100]],
 		ai_position = ['ranged'],
 		xpreward = 10,
 	},
@@ -114,7 +114,7 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai =  [['ads', 100]],
+		ai =  [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
 		xpreward = 20,
 	},

@@ -44,7 +44,7 @@ func _ready():
 		character.create('random', 'random', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
-		character.get_trait('core_trait')
+		character.add_trait('core_trait')
 		character.unlock_class("master")
 		character.charm_factor = 1
 		#character.unlock_class("worker")
@@ -62,7 +62,7 @@ func _ready():
 		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.unlock_class("fighter")
-		character.get_trait('core_trait')
+		character.add_trait('core_trait')
 		character.obedience = 100
 		character.lust = 50
 		character.is_players_character = true
@@ -75,8 +75,9 @@ func _ready():
 		character.lust = 50
 		character.base_exp += 500
 		#character.exhaustion = 1000
-		character.get_trait('core_trait')
+		character.add_trait('core_trait')
 		character.unlock_class("succubus")
+		character.set_slave_category('slave')
 		character.is_players_character = true
 		
 		#state.revert()

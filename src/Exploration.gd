@@ -334,13 +334,13 @@ func open_slave_list():
 
 var selectedperson
 
-func select_slave_in_guild(person):
+func select_slave_in_guild(person = Slave):
 	selectedperson = person
 	for i in $HirePanel/VBoxContainer.get_children():
 		if i.name == "Button":
 			continue
 		i.pressed = i.get_meta("person") == person
-	var text = ''
+	var text = 'Hire ' + person.name + " for " + str(person.calculate_price()) + " gold? "
 	$HirePanel/RichTextLabel.bbcode_text = text
 	$HirePanel/Button.show()
 	$HirePanel/Button.disabled = (state.money < person.calculate_price())
@@ -1091,5 +1091,3 @@ func combat_defeat():
 		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].hp <= 0:
 			state.characters[active_location.group[i]].hp = 1
 	enter_level(current_level)
-	print(true)
-	

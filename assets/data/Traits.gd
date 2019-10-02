@@ -26,7 +26,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_small']
 	},
-	'slave' : {
+	'slave' : {#slave class trait
 		code = 'slave',
 		name = '',
 		descript = '',
@@ -34,8 +34,8 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_slave']
 	},
-	halfslave = {
-		code = 'halfslave',
+	servant = {#servant class trait
+		code = 'servant',
 		name = '',
 		descript = '',
 		visible = false,

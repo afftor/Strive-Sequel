@@ -26,7 +26,6 @@ var Skilllist = {
 	},
 	praise = { #+25 obedience, +5 loyal
 		code = 'praise',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -48,7 +47,6 @@ var Skilllist = {
 	},
 	warn = {#
 		code = 'warn',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -70,7 +68,6 @@ var Skilllist = {
 	},
 	reward = {#
 		code = 'reward',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -92,7 +89,6 @@ var Skilllist = {
 	},
 	rewardsex = {
 		code = 'rewardsex',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -114,7 +110,6 @@ var Skilllist = {
 	},
 	punish = {
 		code = 'punish',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -136,7 +131,6 @@ var Skilllist = {
 	},
 	abuse = {
 		code = 'abuse',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -159,7 +153,6 @@ var Skilllist = {
 	},
 	publichumiliation = {
 		code = 'publichumiliation',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -172,7 +165,7 @@ var Skilllist = {
 		cooldown = 2,
 		receiverdaylimit = 1,
 		globallimit = 1, 
-		icon = load("res://assets/images/scenes/public_punish.png"),
+		icon = load("res://assets/images/iconsskills/PublicPunish.png"),
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'public_punish',
@@ -183,7 +176,6 @@ var Skilllist = {
 	},
 	publicsexhumiliation = {
 		code = 'publicsexhumiliation',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -196,7 +188,7 @@ var Skilllist = {
 		cooldown = 3,
 		receiverdaylimit = 1,
 		globallimit = 1, #limits you can use the skill per day regardless of users
-		icon = load('res://assets/images/scenes/public_sex.png'),
+		icon = load('res://assets/images/iconsskills/PublicSex.png'),
 		tags = ['discipline'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
@@ -207,7 +199,6 @@ var Skilllist = {
 	},
 	publicexecution = {
 		code = 'publicexecution',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -232,7 +223,6 @@ var Skilllist = {
 	
 	charm = {#
 		code = 'charm',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -256,7 +246,6 @@ var Skilllist = {
 	seduce = {#prevents escape and obedience decay
 		#temp version
 		code = 'seduce',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -279,7 +268,6 @@ var Skilllist = {
 	},
 	greatseduce = {#prevents escape and obedience decay, maximizes obedience, increases lust growth
 		code = 'greatseduce',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -302,7 +290,6 @@ var Skilllist = {
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
 		code = 'drain',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -324,7 +311,6 @@ var Skilllist = {
 	},
 	drain_mana = {#target -20% mana | caster takes all of it.
 		code = 'drain',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -344,7 +330,6 @@ var Skilllist = {
 	},
 	serve = {
 		code = 'serve',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -367,7 +352,6 @@ var Skilllist = {
 	},
 	sedate = {
 		code = 'sedate',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -389,7 +373,6 @@ var Skilllist = {
 	},
 	fear = {
 		code = 'fear',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -411,7 +394,6 @@ var Skilllist = {
 	},
 	innervate = {#target +50 energy
 		code = 'innervate',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -430,7 +412,6 @@ var Skilllist = {
 	},
 	shackles = {#When attempting to escape, makes a check to break shackles instead: chance is max(0,(target.magic_factor - caster.magic_factor+1)) * 10 + 5 %. If chance successful -> remove debuff and make system message
 		code = 'shackles',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -452,7 +433,6 @@ var Skilllist = {
 	},
 	greatshackles = {#When attempting to escape, makes a check to break shackles instead: chance is (target.magic_factor - caster.magic_factor+2) * 10 - 10%. If chance successful -> remove debuff and make system message
 		code = 'greatshackles',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -474,7 +454,6 @@ var Skilllist = {
 	},
 	mindcontrol = {
 		code = 'mindcontrol',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -496,7 +475,6 @@ var Skilllist = {
 	},
 	stopmindcontrol = {#fix to target self and all other params
 		code = 'stopmindcontrol',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -518,7 +496,6 @@ var Skilllist = {
 	},
 	hardwork = {#+50% productivity for the day
 		code = 'hardwork',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -537,7 +514,6 @@ var Skilllist = {
 	},
 	discipline = {
 		code = 'discipline',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -556,7 +532,6 @@ var Skilllist = {
 	},
 	authority = {
 		code = 'authority',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -576,7 +551,6 @@ var Skilllist = {
 	},
 	consume_soul = {#kills target, gain its experience
 		code = 'consume_soul',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -599,7 +573,6 @@ var Skilllist = {
 	},
 	make_undead = {#turns target into undead (trait)
 		code = 'make_undead',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -623,7 +596,6 @@ var Skilllist = {
 	#ranged_attack
 	inspire = {# buffs all team for 20% damage, 20% def/mdef for 1 combat
 		code = 'inspire',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Inspire.png"),
 		type = 'combat',
@@ -648,7 +620,6 @@ var Skilllist = {
 	},
 	command = {# single target buff: +25% damage for 3 turns
 		code = 'command',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Command.png"),
 		type = 'combat',
@@ -673,7 +644,6 @@ var Skilllist = {
 	},
 	trap = {#enemy debuff: after using skill stun target for 2 turns and remove debuff. Requires trap
 		code = 'trap',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Trap.png"),
 		type = 'combat', 
@@ -699,7 +669,6 @@ var Skilllist = {
 	},
 	weapon_refine = {#buffs ally: all skill damage increased by 30% until the end of combat. Only 3 times per day
 		code = 'weapon_refine',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/WeaponRefine.png"),
 		type = 'combat', 
@@ -725,7 +694,6 @@ var Skilllist = {
 	},
 	distract = {#debuff: enemy evasion -30 (-20 for nonhumanoids), lasts 4 turns
 		code = 'distract',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/distract.png"),
 		type = 'combat', 
@@ -751,7 +719,6 @@ var Skilllist = {
 	},
 	attract = {#debuff: enemy damage -30% for 3 turns
 		code = 'attract',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attract.png"),
 		type = 'combat', 
@@ -777,7 +744,6 @@ var Skilllist = {
 	},
 	enthral = {#stun target and self for 3 turns or until one is damaged, only humanoids
 		code = 'enthral',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attract.png"),
 		type = 'combat', 
@@ -803,7 +769,6 @@ var Skilllist = {
 	},
 	attack = {#melee attack
 		code = 'attack',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/defaultattack.png"),
 		type = 'combat', 
@@ -832,7 +797,6 @@ var Skilllist = {
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
 		code = 'fire_attack',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/strongattack.png"),
 		type = 'combat', 
@@ -860,7 +824,6 @@ var Skilllist = {
 	},
 	ranged_attack = {#melee attack
 		code = 'ranged_attack',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/heavyshot.png"),
 		type = 'combat', 
@@ -889,7 +852,6 @@ var Skilllist = {
 	
 	double_attack = {#double melee attack, must have melee weapon
 		code = 'double_attack',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/comboattack.png"),
 		type = 'combat', 
@@ -915,7 +877,6 @@ var Skilllist = {
 	},
 	slash = {#melee attack vs all enemeis in row
 		code = 'slash',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/slash.png"),
 		type = 'combat', 
@@ -940,7 +901,6 @@ var Skilllist = {
 	},
 	protect = {# buff ally: takes skill damage from ally for 2 turns (damage is reduced by caster's def and resists), +20 def on self
 		code = 'protect',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Protect.png"),
 		type = 'combat', 
@@ -965,7 +925,6 @@ var Skilllist = {
 	},
 	dragonmight = {#increases damage and armor by 25% until end of battle. Once in 2 days
 		code = 'dragonmight',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Drain.png"),
 		type = 'combat', 

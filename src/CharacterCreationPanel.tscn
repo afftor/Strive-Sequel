@@ -419,6 +419,21 @@ margin_right = 278.0
 margin_bottom = 652.0
 rect_min_size = Vector2( 0, 50 )
 
+[node name="type_label" type="Label" parent="bodyparts2"]
+margin_top = 656.0
+margin_right = 278.0
+margin_bottom = 680.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.141176, 1, 0.858824, 1 )
+text = "SLAVETYPE"
+align = 1
+
+[node name="slave_class" type="OptionButton" parent="bodyparts2"]
+margin_top = 684.0
+margin_right = 278.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 0, 40 )
+
 [node name="StatsContainer" type="HBoxContainer" parent="."]
 editor/display_folded = true
 margin_left = 25.0
@@ -565,7 +580,6 @@ margin_bottom = 968.67
 text = "CONFIRM"
 
 [node name="DietPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 755.0
 margin_top = 301.0
@@ -617,13 +631,13 @@ text = "Like"
 items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
 selected = 1
 
-[node name="veges" type="Label" parent="DietPanel/VBoxContainer"]
+[node name="vege" type="Label" parent="DietPanel/VBoxContainer"]
 margin_top = 70.0
 margin_right = 289.0
 margin_bottom = 94.0
 text = "Vegetables"
 
-[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/veges"]
+[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/vege"]
 margin_left = 195.822
 margin_top = -3.095
 margin_right = 293.822
@@ -633,13 +647,13 @@ text = "Like"
 items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate", null, false, 2, null ]
 selected = 1
 
-[node name="grains" type="Label" parent="DietPanel/VBoxContainer"]
+[node name="grain" type="Label" parent="DietPanel/VBoxContainer"]
 margin_top = 105.0
 margin_right = 289.0
 margin_bottom = 129.0
 text = "Grains"
 
-[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/grains"]
+[node name="OptionButton" type="OptionButton" parent="DietPanel/VBoxContainer/grain"]
 margin_left = 195.822
 margin_top = -3.095
 margin_right = 293.822

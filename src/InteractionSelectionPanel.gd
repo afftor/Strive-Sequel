@@ -29,7 +29,7 @@ func open():
 		else:
 			globals.connectslavetooltip(newbutton,i)
 	update_description()
-	
+	$StartButton.disabled = true
 
 
 func select_participant(person):

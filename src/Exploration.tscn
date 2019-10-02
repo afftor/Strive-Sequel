@@ -485,17 +485,18 @@ margin_bottom = 971.125
 [node name="VBoxContainer" type="VBoxContainer" parent="HirePanel"]
 margin_left = 41.0
 margin_top = 59.0
-margin_right = 445.0
+margin_right = 464.0
 margin_bottom = 810.0
 
 [node name="Button" type="TextureButton" parent="HirePanel/VBoxContainer"]
 visible = false
-margin_right = 590.0
-margin_bottom = 51.0
+margin_right = 423.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
+expand = true
 script = ExtResource( 11 )
 
 [node name="name" type="Label" parent="HirePanel/VBoxContainer/Button"]
@@ -512,10 +513,10 @@ margin_bottom = 37.0
 align = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HirePanel"]
-margin_left = 510.909
-margin_top = 52.3602
-margin_right = 969.909
-margin_bottom = 812.36
+margin_left = 511.0
+margin_top = 52.0
+margin_right = 970.0
+margin_bottom = 668.0
 
 [node name="Button" type="Button" parent="HirePanel"]
 margin_left = 641.016

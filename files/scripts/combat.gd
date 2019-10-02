@@ -316,7 +316,9 @@ func victory():
 #			subtween.interpolate_callback(input_handler, 2, 'DelayedText', newbutton.get_node("xpbar/Label"), '+' + str(ceil(rewardsdict.xp*tchar.xpmod)))
 #		subtween.start()
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
-	#$Rewards.visible = true
+	
+	$Rewards.visible = true
+	$Rewards.modulate.a = 0
 	input_handler.UnfadeAnimation($Rewards)
 	$Rewards.set_meta("result", 'victory')
 	for i in rewardsdict.materials:

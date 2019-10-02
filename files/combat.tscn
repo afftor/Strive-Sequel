@@ -472,6 +472,7 @@ margin_top = 821.54
 margin_right = 489.756
 margin_bottom = 893.54
 theme = ExtResource( 20 )
+toggle_mode = true
 text = "CLOSE"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Rewards"]
