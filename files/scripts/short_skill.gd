@@ -115,8 +115,8 @@ func process_check(check:Array):
 	var op2 = check[2]
 	if typeof(op1) == TYPE_STRING:
 		op1 = get(op1)
-	if typeof(op2) == TYPE_STRING && check[1] != 'has':
-		op2 = get(op2)
+#	if typeof(op2) == TYPE_STRING && check[1] != 'has':
+#		op2 = get(op2)
 	return input_handler.operate(check[1], op1, op2)
 
 func setup_caster(c):
