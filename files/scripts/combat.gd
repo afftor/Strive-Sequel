@@ -782,7 +782,10 @@ func use_skill(skill_code, caster, target):
 	var skill = Skilldata.Skilllist[skill_code]
 
 	if caster != null && skill.name != "":
-		combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
+		if activeitem:
+			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
+		else:
+			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
 	
 		caster.mp -= skill.manacost
 
@@ -825,7 +828,7 @@ func use_skill(skill_code, caster, target):
 		sfxtarget.process_sfx(i.code)
 	#skill's repeat cycle of predamage-damage-postdamage
 	var targets
-	var endturn = !skill.tags.has('instant');
+	var endturn = !s_skill1.tags.has('instant');
 	for n in range(s_skill1.repeat):
 		#get all affected targets
 		if skill.has('random_target') or (target != null and target.hp <= 0) :
@@ -1104,6 +1107,7 @@ func execute_skill(s_skill2):
 	var text = ''
 	if s_skill2.hit_res == variables.RES_CRIT:
 		text += "[color=yellow]Critical!![/color] "
+		s_skill2.target.displaynode.process_critical()
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE
 	for i in range(s_skill2.value.size()):

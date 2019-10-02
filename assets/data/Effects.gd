@@ -119,6 +119,24 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_attendant = { #first variant
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		reset = [variables.TR_TURN_GET],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [{type = 'add_tag', value = 'instant'}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	#skills
 	e_target_kill = {
 		type = 'trigger',

@@ -112,6 +112,9 @@ func rebuildbuffs():
 	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = {}}
 	animation_node.add_new_data(data)
 
+func process_critical():
+	var data = {node = self, time = globals.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
+	animation_node.add_new_data(data)
 #control visuals
 func noq_rebuildbuffs():
 	globals.ClearContainer($Buffs)
