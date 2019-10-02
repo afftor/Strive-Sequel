@@ -970,6 +970,9 @@ func use_skill(skill_code, caster, target):
 		call_deferred('select_actor')
 		eot = false
 	else:
+		if activecharacter.combatgroup == 'ally':
+			CombatAnimations.check_start()
+			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		allowaction = true
 		RebuildSkillPanel()
 		RebuildItemPanel()
