@@ -19,6 +19,7 @@ var animations_queue = {}
 #delays for playing animations in zones
 var hp_update_delays = {}
 var buffs_update_delays = {}
+var crit_display = []
 var log_update_delay = 0
 
 #main timer
@@ -200,6 +201,12 @@ func c_log(node, args):
 	tween.start()
 	return delaytime + delay
 
+func critical(node, args = null):
+	var delay = 0.01
+	if !crit_display.has(node):
+		crit_display.push_back(node)
+	return delay
+
 func hp_update(node, args):
 	var delay = 0
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
@@ -210,7 +217,10 @@ func hp_update(node, args):
 	var hpnode = node.get_node("HP")
 	#float damage
 	if args.damage_float:
-		tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+		if crit_display.has(node):
+			crit_display.erase(node)
+			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+		else: tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar
 	tween.interpolate_property(hpnode, 'value', hpnode.value, args.newhpp, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)

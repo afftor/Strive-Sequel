@@ -88,7 +88,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = [],
+		effects = ['e_tr_attendant'],
 	}, 
 	alchemist = {#+100% alchemy production, potions restore 25% more
 		code = 'alchemist',
