@@ -347,6 +347,7 @@ func serialize():
 func deserialize(tmp:Dictionary):
 	effects_pool.deserialize(tmp['effects'])
 	characters_pool.deserialize(tmp['characters'])
+	tmp.state['@path'] = tmp.state['@path'].replace(".gdc", '.gd')
 	var tempstate = dict2inst(tmp['state'])
 	var prlist = tempstate.get_property_list()
 	for v in prlist:
@@ -357,6 +358,7 @@ func deserialize(tmp:Dictionary):
 		items[i] = dict2inst(tmp['items'][i])
 	characters.clear()
 	for h in tmp['heroes']:
+		tmp.heroes[h]['@path'] = tmp.heroes[h]['@path'].replace(".gdc", '.gd')
 		characters[h] = dict2inst(tmp['heroes'][h])
 		#fixing saved skill shortcuts
 		var ssp = characters[h].social_skill_panel.duplicate()

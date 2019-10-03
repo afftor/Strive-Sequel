@@ -38,8 +38,8 @@ func open():
 		i.editable = !i.get_node("CheckBox").pressed
 
 func togglefullscreen():
-	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
 	OS.window_fullscreen = globals.globalsettings.fullscreen
+	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
 	if globals.globalsettings.fullscreen == false:
 		OS.window_position = Vector2(0,0)
 
@@ -79,7 +79,7 @@ func male_rate_change(value):
 
 func futa_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
-	globals.globalsettings.futarate = value
+	globals.globalsettings.futachance = value
 	var text = 'Futa generation chance: ' + str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
 

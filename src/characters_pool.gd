@@ -59,5 +59,8 @@ func serialize():
 
 func deserialize(tmp):
 	characters.clear()
+	for i in tmp.keys():
+		if tmp[i]['@path'].ends_with('.gdc'):
+			tmp[i]["@path"] = tmp[i]['@path'].replace('.gdc', '.gd')
 	for hid in tmp.keys():
 		characters[hid] = dict2inst(tmp[hid])

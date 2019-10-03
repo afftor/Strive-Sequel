@@ -945,8 +945,8 @@ var Skilllist = {
 		damage_type = 'fire',
 		value = ['0'],
 		damagestat = 'no_stat',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
 	},
 #	charge = {#deals 2.5 times damage with 25 extra armor penetration. Only once per battle
 #		code = 'charge',
@@ -1048,8 +1048,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = 1.2,
 		damagestat = ['-damage_hp']
 	},
@@ -1126,9 +1126,10 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1
+		sfx = [], 
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = 1,
+		damagestat = ['-damage_hp']
 	},
 	barrier = {#buff: protect from 100 damage for 3 turns
 		code = 'barrier',
@@ -1182,7 +1183,7 @@ var Skilllist = {
 		damage_type = 'water',
 		value = 0.7,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = null, hit = null},
 	},
 	bless = {#buff: increase damage, armor, mdef, evasion, hitrate by 10 for 3 turns 
 		code = 'bless',
@@ -1195,7 +1196,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_bless'})], 
-		manacost = 5,
+		manacost = 0,
 		energycost = 0,
 		charges = 0,
 		combatcooldown = 1,
@@ -1206,8 +1207,8 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',
 		damage = 0,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -1232,8 +1233,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
 		damagestat = ['-hp', '+mp']
 	},
@@ -1283,8 +1284,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -1336,8 +1337,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'weapon',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
@@ -1368,7 +1369,6 @@ var Skilllist = {
 	},
 	earth_atk = {
 		code = 'earth_atk',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
@@ -1388,7 +1388,7 @@ var Skilllist = {
 		target_range = 'weapon',
 		damage_type = 'earth',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = 'blade', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.0
 	},
 	wind_atk = {
@@ -1594,8 +1594,8 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}], 
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1.1
 	},
 	air_cutter = {
@@ -1805,8 +1805,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}], 
+		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = [['caster.matk','*0.2'],1],
 		damagestat = ['no_stat', '+damage_hp']
 	},
@@ -1882,8 +1882,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'dead',
 		damage_type = 'light',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = ['40'],
 		damagestat = 'no_stat'
 	},
@@ -2453,7 +2453,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
-		combatcooldown = 2,
+		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = [],
 		target = 'ally', #or ally, not sure
@@ -2462,8 +2462,8 @@ var Skilllist = {
 		damage_type = 'weapon',#not sure but not matters
 		
 		sfx = [], 
-		sound = [],
-		value = ['10'],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = ['15'],
 		random_factor = 5,
 		damagestat = 'hp'
 	},
@@ -2481,7 +2481,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
-		combatcooldown = 2,
+		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = [],
 		target = 'ally',
@@ -2490,7 +2490,7 @@ var Skilllist = {
 		damage_type = 'weapon',#not sure but not matters
 		
 		sfx = [], 
-		sound = [],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['35'],
 		random_factor = 10,
 		damagestat = 'hp'
@@ -2509,7 +2509,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
-		combatcooldown = 2,
+		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = [],
 		target = 'ally',
@@ -2518,7 +2518,7 @@ var Skilllist = {
 		damage_type = 'weapon',#not sure but not matters
 		
 		sfx = [], 
-		sound = [],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['20'],
 		random_factor = 5,
 		damagestat = 'mp'
@@ -2537,7 +2537,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
-		combatcooldown = 2,
+		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = [],
 		target = 'ally',
@@ -2546,7 +2546,7 @@ var Skilllist = {
 		damage_type = 'weapon',#not sure but not matters
 		
 		sfx = [], 
-		sound = [],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['50'],
 		random_factor = 15,
 		damagestat = 'mp'
@@ -2565,7 +2565,7 @@ var Skilllist = {
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
-		combatcooldown = 2,
+		combatcooldown = 0,
 		cooldown = 0,
 		catalysts = [],
 		target = 'ally',
@@ -2574,7 +2574,7 @@ var Skilllist = {
 		damage_type = 'weapon',#not sure but not matters
 		
 		sfx = [], 
-		sound = [],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['25'],
 		random_factor = 10,
 		damagestat = 'hp'
@@ -2594,13 +2594,13 @@ var Skilllist = {
 		energycost = 0,
 		charges = 0,
 		combatcooldown = 0,
-		cooldown = 2,
+		cooldown = 0,
 		catalysts = [],
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'dead',
 		sfx = [], 
-		sound = [],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['20'],
 		damagestat = 'no_stat'
 	},

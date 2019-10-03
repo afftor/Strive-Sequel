@@ -106,8 +106,10 @@ func _ready():
 		globals.start_new_game = false
 		self.visible = false
 		input_handler.StartCharacterCreation("master")
-		input_handler.connect("CharacterCreated", self, "show", [], 4)
 		input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
+		yield(input_handler, "CharacterCreated")
+		yield(input_handler, "CharacterCreated")
+		show()
 	
 	build_task_bar()
 	$SlaveList.rebuild()

@@ -758,9 +758,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'modall', value = 0.25},
-			#{type = 'bonus', bonusname = 'modall_add', value = 0.25},
-#			{type = 'stat_add_p', stat = 'atk', value = 0.25},
-#			{type = 'stat_add_p', stat = 'matk', value = 0.25},
 			{type = 'stat_mul', stat = 'armor', value = 1.25},
 		],
 		buffs = [
@@ -979,7 +976,7 @@ var effect_table = {
 		duration = 'parent',
 		tags = ['debuff'],
 		atomic = [
-			{type = 'stat_add', stat = 'hitchance', value = -20},
+			{type = 'stat_add', stat = 'hitrate', value = -20},
 		],
 		buffs = [
 			{

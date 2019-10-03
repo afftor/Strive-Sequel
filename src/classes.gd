@@ -373,7 +373,7 @@ var professions = {
 		statchanges = {physics_bonus = 10, hpmax = 20},
 		traits = ['weapon_mastery','medium_armor'],
 		skills = [],
-		combatskills = ['double_attack','earth_atk'], 
+		combatskills = ['earth_atk'], 
 	},
 	knight = {
 		code = 'knight',

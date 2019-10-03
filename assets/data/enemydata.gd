@@ -1,7 +1,7 @@
 extends Node
 
 var predeterminatedgroups = {
-	rats_easy = {group = {4:'bandit_archer'}}#1 : 'bandit_melee', 4 : 'bandit_archer',5 : 'rat'}},
+	rats_easy = {group = {1 : 'bandit_melee', 4 : 'bandit_melee',5 : 'bandit_melee'}},
 } 
 
 var enemygroups = {

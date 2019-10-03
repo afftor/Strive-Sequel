@@ -134,23 +134,23 @@ var fear_modifier = 1.0
 var dungeon_encounter_chance = 0.08
 
 #Cheats
-var instant_travel = true
+var instant_travel = false
 var skip_combat = false
-var free_upgrades = true
-var instant_upgrades = true
-var unlock_all_upgrades = true
-var invincible_player = true
+var free_upgrades = false
+var instant_upgrades = false
+var unlock_all_upgrades = false
+var invincible_player = false
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
-var allow_skip_fights = true
+var allow_skip_fights = false
 
 #debug_only
 var allow_remote_intereaction = true
 var no_event_wait_time = false
-var ignore_quest_requirements = true
+var ignore_quest_requirements = false
 
-var generate_test_chars = true
-var combat_tests = true #for combat testing
+var generate_test_chars = false
+var combat_tests = false #for combat testing
 var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 
 

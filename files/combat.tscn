@@ -101,7 +101,6 @@ margin_bottom = 1080.0
 texture = ExtResource( 2 )
 
 [node name="Panel" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 82.0
 margin_top = 81.0
 margin_right = 621.0
@@ -164,6 +163,7 @@ mouse_filter = 2
 value = 100.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
+fill_mode = 3
 
 [node name="Label" type="Label" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 25.584
@@ -395,7 +395,6 @@ align = 1
 valign = 1
 
 [node name="ItemPanel" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 743.0
 margin_top = 38.0
 margin_right = 1167.0
@@ -443,6 +442,7 @@ expand = true
 stretch_mode = 6
 
 [node name="debugvictory" type="Button" parent="ItemPanel"]
+visible = false
 margin_left = 18.0
 margin_top = 14.0
 margin_right = 392.0

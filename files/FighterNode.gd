@@ -55,14 +55,14 @@ func update_hp():
 		var args = {damage = 0, type = '', color = Color(), newhp = fighter.hp, newhpp = globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')), damage_float = true}
 		args.damage = fighter.hp - hp
 		if args.damage < 0:
-			args.color = Color(1,0.2,0.2)
+			args.color = Color(0.8,0.2,0.2)
 			if fighter.combatgroup == 'ally':
 				args.type = 'damageally'
 			else:
 				args.type = 'damageenemy' 
 		else:
 			args.type = 'heal'
-			args.color = Color(0.2,1,0.2)
+			args.color = Color(0.2,0.8,0.2)
 		if hp <= 0: args.damage_float = false
 		hp = fighter.hp
 		if hp < 0:
@@ -122,6 +122,7 @@ func noq_rebuildbuffs():
 		var newbuff = globals.DuplicateContainerTemplate($Buffs)
 		#var buff = Effectdata.buffs[i]
 		var text = i.description
+		if i.get_duration() > 0:text += "\nDuration: "+ str(i.get_duration())
 		newbuff.texture = i.icon
 		if i.template.has('bonuseffect'):
 			match i.template.bonuseffect:

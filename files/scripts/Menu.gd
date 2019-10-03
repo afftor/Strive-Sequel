@@ -10,7 +10,7 @@ func _ready():
 	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
-	input_handler.StopMusic()
+	#input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,5):
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])

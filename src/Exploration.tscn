@@ -477,6 +477,7 @@ text = "10"
 align = 2
 
 [node name="HirePanel" type="Panel" parent="."]
+visible = false
 margin_left = 37.42
 margin_top = 97.1246
 margin_right = 1072.42

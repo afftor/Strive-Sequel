@@ -555,6 +555,21 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	
 	if wr.get_ref(): x.queue_free()
 
+var sprites = {strike = 'res://assets/sfx/hit_animation/strike.tscn'}
+
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+	var x = load(sprites[effect]).instance()
+	node.add_child(x)
+	x.position = node.rect_size/2
+	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+	x.play()
+	
+	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
+	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+
+	if wr.get_ref(): x.queue_free()
+
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	var tweennode = GetTweenNode(node)

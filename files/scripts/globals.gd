@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.0'
+const gameversion = 'pre-demo-test 0.1'
 
 #const worker = preload("res://files/scripts/worker.gd");
 #const Item = preload("res://src/ItemClass.gd")
