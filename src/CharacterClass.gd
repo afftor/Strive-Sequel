@@ -2322,7 +2322,7 @@ func use_mansion_item(item):
 
 func set_slave_category(new_class):
 	if slave_class != '':
-		remove_trait(slave_class)
+		remove_trait(slave_class.to_lower())
 	add_trait(new_class)
 	slave_class = new_class
 

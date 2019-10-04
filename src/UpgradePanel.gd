@@ -51,7 +51,7 @@ func open():
 		if state.upgrade_progresses.has(i.code):
 			newbutton.get_node("progress").visible = true
 			newbutton.get_node("progress").value = state.upgrade_progresses[i.code].progress
-			newbutton.get_node("progress").max_value = i.levels[currentupgradelevel].taskprogress
+			newbutton.get_node("progress").max_value = i.levels[currentupgradelevel+1].taskprogress
 		if state.selected_upgrade.code == i.code:
 			text += " - Current Upgrade"
 		newbutton.get_node("name").text = text
@@ -87,6 +87,8 @@ func selectupgrade(upgrade):
 	$UpgradeDescript/Label.text = upgrade.name
 	
 	for i in $ScrollContainer/VBoxContainer.get_children():
+		if i.name == 'Button':
+			continue
 		i.pressed = i.get_meta("upgrade") == selectedupgrade
 	
 	globals.ClearContainer($UpgradeDescript/HBoxContainer)
@@ -108,7 +110,10 @@ func selectupgrade(upgrade):
 			var item = Items.materiallist[i]
 			var newnode = globals.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
 			newnode.get_node("icon").texture = item.icon
-			newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(upgrade.levels[currentupgradelevel].cost[i])
+			var value1 = upgrade.levels[currentupgradelevel].cost[i]
+			if state.upgrade_progresses.has(upgrade.code):
+				value1 = 0
+			newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(value1)
 			globals.connectmaterialtooltip(newnode, item)
 			if state.materials[i] >= upgrade.levels[currentupgradelevel].cost[i]:
 				newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
@@ -119,7 +124,7 @@ func selectupgrade(upgrade):
 		$UpgradeDescript/Time.hide()
 		canpurchase = false
 	
-	if state.upgrade_progresses.has(upgrade.code):
+	if state.upgrade_progresses.has(upgrade.code) && state.selected_upgrade.code == upgrade.code:
 		canpurchase = false
 	if variables.free_upgrades == true:
 		canpurchase = true
@@ -136,23 +141,24 @@ func findupgradelevel(upgrade):
 
 func unlockupgrade():
 	var upgrade = selectedupgrade
-	var currentupgradelevel = findupgradelevel(upgrade)
-	if variables.free_upgrades == false:
-		for i in upgrade.levels[currentupgradelevel].cost:
-			state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
-	var upgradecode = upgrade.code
+	var currentupgradelevel = findupgradelevel(upgrade) + 1
 	
-	if variables.instant_upgrades == false:
-		
-		state.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
-		state.selected_upgrade = {code = upgradecode, level = currentupgradelevel}
-		
+	if state.upgrade_progresses.has(upgrade.code):
+		state.selected_upgrade = {code = upgrade.code, level = currentupgradelevel}
 	else:
+		if variables.free_upgrades == false:
+			for i in upgrade.levels[currentupgradelevel].cost:
+				state.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
+		var upgradecode = upgrade.code
 		
-		if state.upgrades.has(upgrade.code):
-			state.upgrades[upgrade.code] += 1
+		if variables.instant_upgrades == false:
+			state.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
+			state.selected_upgrade = {code = upgradecode, level = currentupgradelevel}
 		else:
-			state.upgrades[upgrade.code] = 1
+			if state.upgrades.has(upgrade.code):
+				state.upgrades[upgrade.code] += 1
+			else:
+				state.upgrades[upgrade.code] = 1
 	
 	open()
 	#input_handler.emit_signal("UpgradeUnlocked", upgrade)

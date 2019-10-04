@@ -82,7 +82,7 @@ func _ready():
 		
 		#state.revert()
 		for i in Items.materiallist:
-			state.materials[i] = 100
+			state.materials[i] = 200
 		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
@@ -109,6 +109,7 @@ func _ready():
 		input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
 		yield(input_handler, "CharacterCreated")
 		yield(input_handler, "CharacterCreated")
+		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
 	
 	build_task_bar()
@@ -282,12 +283,15 @@ func update_task_bar():
 				else:
 					i.show()
 					i.get_node("icon").texture = races.tasklist[task.code].production[task.product].icon
-					i.get_node("ProgressBar").max_value = globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress
+					i.get_node("ProgressBar").max_value = globals.upgradelist[state.selected_upgrade.code].levels[int(state.selected_upgrade.level)].taskprogress
 					i.get_node("ProgressBar").value = state.upgrade_progresses[state.selected_upgrade.code].progress
 			else:
 				i.visible = task.workers.size() != 0
 				i.get_node("ProgressBar").value = task.progress
-				i.get_node("icon/Label").text = str(state.materials[races.tasklist[task.code].production[task.product].item])
+				if task.product == 'prostitutegold':
+					i.get_node("icon/Label").text = str(state.money)
+				else:
+					i.get_node("icon/Label").text = str(state.materials[races.tasklist[task.code].production[task.product].item])
 	
 
 func show_task_workers(newnode):

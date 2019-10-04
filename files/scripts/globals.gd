@@ -1373,6 +1373,8 @@ func getrelativename(person, person2):
 	return result
 
 func impregnate(father, mother):
+	if mother.has_womb == false:
+		return
 	var check = true
 	if father.race != mother.race:
 		for i in [father, mother]:

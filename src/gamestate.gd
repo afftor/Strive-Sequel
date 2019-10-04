@@ -82,6 +82,7 @@ func revert():
 	materials.clear()
 	globals._ready()
 	global_skills_used.clear()
+	active_tasks.clear()
 	for i in variables.starting_resources:
 		materials[i] = variables.starting_resources[i]
 	world_gen.build_world()
@@ -353,8 +354,10 @@ func deserialize(tmp:Dictionary):
 	for v in prlist:
 		if !(v.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) : continue
 		set(v.name, tempstate.get(v.name))
+	selected_upgrade.level = int(selected_upgrade.level)
 	items.clear()
 	for i in tmp['items']:
+		tmp.items[i]['@path'] = tmp.items[i]['@path'].replace(".gdc", '.gd')
 		items[i] = dict2inst(tmp['items'][i])
 	characters.clear()
 	for h in tmp['heroes']:

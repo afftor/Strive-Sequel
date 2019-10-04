@@ -95,8 +95,8 @@ func open_class(classcode):
 func unlock_class():
 	$ClassPanel.visible = false
 	self.visible = false
-	person.unlock_class(current_class)
 	person.base_exp -= person.get_next_class_exp()
+	person.unlock_class(current_class)
 	input_handler.ShowSlavePanel(person)
 	state.text_log_add("class", person.translate("[name] has acquired new Class: " + Skilldata.professions[current_class].name))
 	

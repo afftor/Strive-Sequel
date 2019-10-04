@@ -35,6 +35,7 @@ func _ready():
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
+	$CancelButton.connect("pressed", self, "confirm_return")
 	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
 	
 	for i in ['name','surname','nickname']:
@@ -484,6 +485,14 @@ func apply_preserved_settings():
 func confirm_character():
 	input_handler.ShowConfirmPanel(self, 'finish_character', 'Create this character?')
 
+func confirm_return():
+	input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
+
+func cancel_creation():
+	globals.CurrentScene.queue_free()
+	globals.ChangeScene('menu')
+	#get_parent().queue_free()
+
 func finish_character():
 	apply_preserved_settings()
 	state.add_slave(person)
@@ -520,5 +529,6 @@ func select_sex_trait(trait):
 		person.sex_traits.clear()
 		person.sex_traits.append(trait.code)
 	$TraitSelection.hide()
+	input_handler.GetTextTooltip().hide()
 	RebuildStatsContainer()
 

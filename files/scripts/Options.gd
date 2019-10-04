@@ -38,8 +38,8 @@ func open():
 		i.editable = !i.get_node("CheckBox").pressed
 
 func togglefullscreen():
-	OS.window_fullscreen = globals.globalsettings.fullscreen
 	globals.globalsettings.fullscreen = $TabContainer/Graphics/fullscreen.pressed
+	OS.window_fullscreen = globals.globalsettings.fullscreen
 	if globals.globalsettings.fullscreen == false:
 		OS.window_position = Vector2(0,0)
 
