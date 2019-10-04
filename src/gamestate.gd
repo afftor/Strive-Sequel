@@ -9,7 +9,7 @@ signal slave_added
 signal slave_arrived
 signal hour_tick
 
-var date := 1
+var date = 1
 var hour = 6
 
 var log_node

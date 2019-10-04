@@ -1532,6 +1532,7 @@ func escape():
 	input_handler.scene_character = self
 	input_handler.interactive_message('slave_escape', '', {})
 	characters_pool.cleanup()
+	state.character_order.erase(id)
 	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 

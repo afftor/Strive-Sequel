@@ -253,8 +253,10 @@ func update_task_bar():
 		if i.has_meta("dict"):
 			var task = i.get_meta('dict')
 			var text = 'Active workers: '
-			for i in i.workers:
-				text += "\n" + state.characters[i].name
+			for k in task.workers:
+				if !state.characters.has(k):
+					continue
+				text += "\n" + state.characters[k].name
 			globals.connecttexttooltip(i, text)
 			if task.code in ['alchemy','tailor','cook','smith','cooking']:
 				if state.craftinglists[task.code].size() <= 0:

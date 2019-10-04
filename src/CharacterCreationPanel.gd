@@ -193,6 +193,7 @@ func rebuild_slave():
 	var age = person.age
 	person = Slave.new()
 	person.create(race, sex, age)
+	person.is_active = false
 	person.is_known_to_player = true
 	if mode == 'master':
 		person.unlock_class('master')
@@ -495,6 +496,7 @@ func cancel_creation():
 
 func finish_character():
 	apply_preserved_settings()
+	person.is_active = true
 	state.add_slave(person)
 	person.unlock_class(selected_class)
 	person.food_consumption = 3
