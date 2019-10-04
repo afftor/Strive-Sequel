@@ -23,7 +23,7 @@ func get_effect_by_id(id):
 	return effects[id]
 
 func cleanup():
-	for id in effects:
+	for id in effects.keys():
 		if !effects[id].is_applied:
 			remove_id(id)
 

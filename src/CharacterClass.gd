@@ -1531,6 +1531,7 @@ func escape():
 			unequip(state.items[gear[i]])
 	input_handler.scene_character = self
 	input_handler.interactive_message('slave_escape', '', {})
+	is_active = false #for now, until moving to charpool be implemented
 	characters_pool.cleanup()
 	
 	#state.text_log_add(get_short_name() + " has escaped. ")
