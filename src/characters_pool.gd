@@ -26,14 +26,14 @@ func get_char_by_id(id):
 	return characters[id]
 
 func cleanup():
-	for id in characters:
+	for id in characters.keys():
 		if !characters[id].is_active:
 			characters[id].clean_effects()
 #			if state.characters.has(id):
 #				state.character_order.erase(id)
 #				input_handler.slave_list_node.rebuild()
 			remove_id(id)
-	for id in state.characters:
+	for id in state.characters.keys():
 		if !state.characters[id].is_active:
 			state.characters[id].clean_effects()
 			state.character_order.erase(id)

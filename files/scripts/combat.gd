@@ -598,6 +598,8 @@ func make_fighter_panel(fighter, spot):
 	panel.animation_node = CombatAnimations
 	fighter.position = int(spot)
 	panel.fighter = fighter
+	panel.hp = fighter.hp
+	panel.mp = fighter.mp
 	panel.connect("signal_RMB", self, "ShowFighterStats")
 	panel.connect("signal_RMB_release", self, 'HideFighterStats')
 	panel.connect("signal_LMB", self, 'FighterPress')
