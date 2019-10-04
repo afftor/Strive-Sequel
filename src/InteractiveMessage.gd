@@ -75,14 +75,14 @@ func recruit():
 			input_handler.SystemMessage("Population limit reached")
 		return
 	var person = input_handler.scene_character
-	state.add_slave(person)
 	if variables.instant_travel == false:
 		person.travel_target = {area = '', location = 'mansion'}
 		person.travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time
+		person.work = 'travel'
 		person.location = 'travel'
 	else:
 		person.location = 'mansion'
-	
+	state.add_slave(person)
 	close()
 
 func create_location_recruit(args):

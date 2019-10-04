@@ -71,9 +71,9 @@ var scenedict = {
 	]
 	},
 	
-	event_nothing_found = {text = tr("DIALOGUEEVENTGOODRECRUIT"), 
+	event_nothing_found = {text = tr("DIALOGUEEVENTNOTHING"), 
 	tags = ['good'],
-	default_event_type = "loot",
+	default_event_type = "location",
 	image = 'noevent', 
 	bonus_args = {},
 	options = [

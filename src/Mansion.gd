@@ -40,6 +40,7 @@ func _ready():
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
 	if variables.generate_test_chars:
+		state.make_world()
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
 		character.penis_virgin = true

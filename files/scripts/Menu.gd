@@ -43,8 +43,9 @@ func continueb():
 
 func newgame():
 	#state = load("res://src/gamestate.gd").new()
+	state.make_world()
+	$VBoxContainer/newgamebutton.disabled = true
 	globals.start_new_game = true
-	state.revert()
 	state.newgame = true
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('mansion')

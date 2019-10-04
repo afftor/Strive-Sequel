@@ -1520,7 +1520,7 @@ var TranslationDict = {
 	DIALOGUEINSPECTBABY = "Inspect future baby",
 	DIALOGUEREMOVEBABY = "Leave it at an orphanage",
 	
-	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. It's up to you what to do with [him]. ",
+	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",
 	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
@@ -1533,6 +1533,7 @@ var TranslationDict = {
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVEOPTION = "Leave",
+	DIALOGUEEVENTNOTHING = "After searching around you weren't able to find anything of interest...",
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUEFORCECHESTOPEN = "Open it",

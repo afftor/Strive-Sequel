@@ -373,7 +373,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.2}],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsskills/Charm.png", 
 				description = "charmed",
 				limit = 1,
 				t_name = ''
@@ -1809,7 +1809,7 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
 		req_skill = false,
-		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 0} }],
+		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 30} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_t_fat1']
@@ -1818,7 +1818,7 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_TICK],
 		req_skill = false,
-		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 0} }],
+		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 30} }],
 		atomic = [],
 		buffs = [],
 		sub_effects = ['e_fire_custom1']
@@ -2080,7 +2080,7 @@ var buffs = {
 		t_name = 'shackles'
 	},
 	b_charm = {
-		icon = "res://assets/images/iconsitems/Charm.png", 
+		icon = "res://assets/images/iconsskills/Charm.png", 
 		description = "Is charmed. %d hours remains",
 		args = [{obj = 'parent', param = 'remains'}],
 		limit = 1,

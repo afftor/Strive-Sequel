@@ -106,7 +106,7 @@ var lands = {
 
 
 func make_area(code):
-	var areadata = lands[code].duplicate()
+	var areadata = lands[code].duplicate(true)
 	state.areas[areadata.code] = areadata
 	areadata.population = round(rand_range(areadata.population[0],areadata.population[1]))
 	areadata.quests = {global = {}}
@@ -392,7 +392,7 @@ func make_location(code, area, difficulty = 'easy'):
 	var levelnumber = round(rand_range(location.difficulties[difficulty].levels[0], location.difficulties[difficulty].levels[1]))
 	location.levels = {}
 	while levelnumber > 0:
-		location.levels[int(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
+		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
 		levelnumber -= 1
 	location.group = {}
 	location.resources = location.difficulties[difficulty].resources
@@ -404,9 +404,9 @@ func make_location(code, area, difficulty = 'easy'):
 	location.enemies = location.difficulties[difficulty].enemyarray.duplicate(true)
 	if location.difficulties[difficulty].has("final_enemy"):
 		var bossenemy = input_handler.weightedrandom(location.difficulties[difficulty].final_enemy)
-		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels[location.levels.size()].stages-1})
+		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
 		if location.difficulties[difficulty].final_enemy_type == 'character':
-			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages-1, operant = 'gte'}]})
+			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 	state.locationcounter += 1
 	location.erase('difficulties')
 	return location
@@ -1141,6 +1141,7 @@ var pregen_characters = {
 		race = 'HalfkinBunny',
 		sex = 'female',
 		age = 'teen',
+		slave_class = 'slave',
 		height = 'short',
 		hair_color = 'blond',
 		hair_length = 'waist',

@@ -134,7 +134,7 @@ var fear_modifier = 1.0
 var dungeon_encounter_chance = 0.08
 
 #Cheats
-var instant_travel = false
+var instant_travel = true
 var skip_combat = false
 var free_upgrades = false
 var instant_upgrades = false
@@ -149,7 +149,7 @@ var allow_remote_intereaction = false
 var no_event_wait_time = false
 var ignore_quest_requirements = false
 
-var generate_test_chars = false
+var generate_test_chars = true
 var combat_tests = false #for combat testing
 var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 

@@ -83,8 +83,14 @@ func revert():
 	globals._ready()
 	global_skills_used.clear()
 	active_tasks.clear()
+	completed_locations.clear()
+	completedquests.clear()
 	for i in variables.starting_resources:
 		materials[i] = variables.starting_resources[i]
+	state.areas.clear()
+	state.location_links.clear()
+
+func make_world():
 	world_gen.build_world()
 
 func _ready():
@@ -135,6 +141,7 @@ func get_unique_slave(code):
 func add_slave(person):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
+	person.is_active = true
 	text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 
@@ -373,6 +380,8 @@ func deserialize(tmp:Dictionary):
 	#fastfix for broken saves
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	
+	
 
 func common_effects(effects):
 	for i in effects:
@@ -383,6 +392,7 @@ func common_effects(effects):
 			'make_story_character':
 				var newslave = Slave.new()
 				newslave.generate_predescribed_character(world_gen.pregen_characters[i.value])
+				newslave.set_slave_category(newslave.slave_class)
 				state.add_slave(newslave)
 			'add_timed_event':
 				var newevent = {reqs = [], code = i.value}

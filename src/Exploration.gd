@@ -679,11 +679,10 @@ func local_shop():
 	open_shop('location')
 
 func local_events_search():
-	
 	if input_handler.active_location.events.has('search') && input_handler.active_location.events.search > 0:
 		input_handler.SystemMessage("Already searched this location today")
 	else:
-		input_handler.active_location.events.search = state.date
+		input_handler.active_location.events.search = 1
 		input_handler.interactive_message('location_event_search', 'event_selection', {})
 
 func check_location_group():
@@ -809,7 +808,7 @@ func enter_dungeon():
 	while completed_floors > 0:
 		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = 'Level: ' + str(completed_floors)
-		if active_location.progress.level > completed_floors || (active_location.progress.level == completed_floors && active_location.progress.stage >= active_location.levels[int(active_location.progress.level)].stages):
+		if active_location.progress.level > completed_floors || (active_location.progress.level == completed_floors && active_location.progress.stage >= active_location.levels["L"+str(active_location.progress.level)].stages):
 			newbutton.text += "(completed)"
 		newbutton.connect("pressed",self,"enter_level", [completed_floors])
 		completed_floors -= 1
@@ -827,7 +826,7 @@ func enter_level(level, skip_to_end = false):
 	if skip_to_end == true:
 		current_level = active_location.levels.size()
 		active_location.progress.level = current_level
-		current_stage = active_location.levels[active_location.levels.size()].stages-1
+		current_stage = active_location.levels["L" + str(active_location.levels.size())].stages-1
 		active_location.progress.stage = current_stage
 	if active_location.progress.level < level:
 		active_location.progress.level = level
@@ -838,12 +837,12 @@ func enter_level(level, skip_to_end = false):
 	
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	var newbutton
-	if active_location.progress.level == level && active_location.progress.stage < active_location.levels[level].stages:
+	if active_location.progress.level == level && active_location.progress.stage < active_location.levels["L"+str(level)].stages:
 		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = 'Advance'
 		newbutton.connect("pressed",self,"area_advance",['advance'])
-	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels[level].stages:
-		if active_location.levels.has(level + 1) == true:
+	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
+		if active_location.levels.has("L"+str(level + 1)) == true:
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.text = 'Move to the next level'
 			newbutton.connect("pressed",self,"enter_level",[level+1])
@@ -952,7 +951,7 @@ func character_boss_defeat():
 	character_class = input_handler.weightedrandom(character_class)
 	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
 	difficulty = rand_range(difficulty[0], difficulty[1])
-	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty}})
+	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty, slave_type = 'slave'}})
 
 
 func check_event_reqs(reqs):

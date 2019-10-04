@@ -415,7 +415,7 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	
 	#not sure if this is correct
 	if rangetype == 'weapon':
-		if activecharacter.gear.rhand == null:
+		if caster.gear.rhand == null:
 			rangetype = 'melee'
 		else:
 			var weapon = state.items[activecharacter.gear.rhand]

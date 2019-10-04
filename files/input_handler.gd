@@ -843,7 +843,9 @@ func interactive_message(code, type, args):
 			match args.characterdata.type:
 				'raw':
 					newcharacter = Slave.new()
+					newcharacter.is_active = false
 					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+					newcharacter.set_slave_category(args.slave_type) 
 				'function':
 					newcharacter = call(args.characterdata.function, args.characterdata.args)
 			scene_character = newcharacter
@@ -894,6 +896,7 @@ func repeat_social_skill():
 func make_local_recruit(args):
 	var newchar = Slave.new()
 	newchar.generate_random_character_from_data(active_location.races)
+	newchar.set_slave_category('servant')
 	return newchar
 
 func update_slave_list():
