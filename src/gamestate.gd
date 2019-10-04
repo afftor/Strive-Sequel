@@ -9,7 +9,7 @@ signal slave_added
 signal slave_arrived
 signal hour_tick
 
-var date := 1
+var date = 1
 var hour = 6
 
 var log_node
@@ -349,6 +349,7 @@ func deserialize(tmp:Dictionary):
 	characters_pool.deserialize(tmp['characters'])
 	var tempstate = dict2inst(tmp['state'])
 	var prlist = tempstate.get_property_list()
+	#set('date', tempstate.get('date'))
 	for v in prlist:
 		if !(v.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) : continue
 		set(v.name, tempstate.get(v.name))
@@ -364,6 +365,9 @@ func deserialize(tmp:Dictionary):
 		for i in ssp:
 			characters[h].social_skill_panel[int(i)] = ssp[i]
 	tempstate.free()
+	#fastfix for broken saves
+	characters_pool.cleanup()
+	effects_pool.cleanup()
 
 func common_effects(effects):
 	for i in effects:
