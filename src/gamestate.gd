@@ -339,8 +339,8 @@ func text_log_add(label, text):
 func serialize():
 	var tmp = {}
 	#to add serializing
-	tmp['effects'] = effects_pool.serialize()
 	tmp['characters'] = characters_pool.serialize()
+	tmp['effects'] = effects_pool.serialize()
 	tmp['state'] = inst2dict(self)
 	#tmp['state']['items'].clear()
 	#tmp['state']['characters'].clear()
