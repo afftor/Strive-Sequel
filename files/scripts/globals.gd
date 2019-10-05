@@ -710,8 +710,6 @@ func _ready():
 
 	#====================================
 	
-	for i in Items.materiallist.keys():
-		state.materials[i] = 0
 	
 	for i in upgradelist.keys():
 		state.upgrades[i] = 0

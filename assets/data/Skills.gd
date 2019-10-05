@@ -253,7 +253,7 @@ var Skilllist = {
 		targetreqs = [{code = 'is_master', check = false}],
 		custom_duration = ['caster.charm','*0.35','+48'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_seduce'})],
-		manacost = 10,
+		manacost = 25,
 		energycost = 0,
 		charges = 2,
 		cooldown = 3,
@@ -275,7 +275,7 @@ var Skilllist = {
 		targetreqs = [{code = 'is_master', check = false}],
 		custom_duration = ['caster.charm','*0.4','+48'],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_greatseduce'})],
-		manacost = 20,
+		manacost = 35,
 		energycost = 0,
 		charges = 1,
 		cooldown = 4,
@@ -2006,7 +2006,7 @@ var Skilllist = {
 		energycost = 0,
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsskills/Reward_with_sex 3.png"),
-		tags = ['dialogue_skill'],
+		tags = ['dialogue_skill','no_usage_stat_increase'],
 		dialogue_text = '',
 		dialogue_image = null,
 		dialogue_options = [{code = "master_lust_exp", reqs = [], text = '1'},
@@ -2136,7 +2136,7 @@ var Skilllist = {
 		energycost = 0,
 		receiverdaylimit = 0,
 		icon = load("res://assets/images/iconsskills/Reward_with_sex 3.png"),
-		tags = ['dialogue_skill'],
+		tags = ['dialogue_skill','no_usage_stat_increase'],
 		dialogue_text = '',
 		dialogue_image = 'succubuslust',
 		dialogue_options = [{code = "succubus_lust_xp_convert", reqs = [], text = '1'},
@@ -2463,7 +2463,7 @@ var Skilllist = {
 		
 		sfx = [], 
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = ['15'],
+		value = ['20'],
 		random_factor = 5,
 		damagestat = 'hp'
 	},
@@ -2491,7 +2491,7 @@ var Skilllist = {
 		
 		sfx = [], 
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = ['35'],
+		value = ['45'],
 		random_factor = 10,
 		damagestat = 'hp'
 	},

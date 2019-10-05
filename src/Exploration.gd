@@ -50,7 +50,10 @@ func _ready():
 		state.add_slave(test_slave)
 		test_slave.speed = 100
 		test_slave.wits = 100.0
-		active_location.group = {1:test_slave.id}
+		var test_slave2 = Slave.new()
+		test_slave2.create('BeastkinWolf', 'male', 'random')
+		state.add_slave(test_slave2)
+		active_location.group = {1:test_slave.id, 4:test_slave2.id}
 		StartCombat()
 
 func show_heal_items(position):
@@ -65,11 +68,14 @@ func show_heal_items(position):
 			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
 			newbutton.get_node("Label").text = str(i.amount)
 			i.set_icon(newbutton)
-			globals.connectitemtooltip(newbutton, i)
+			newbutton.hint_tooltip = i.description
+			#globals.connectitemtooltip(newbutton, i)
 			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
 
 func use_item_on_character(position, item):
 	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	item.amount -= 1
+	show_heal_items(position)
 	build_location_group()
 
 func hide_heal_items():
@@ -1093,4 +1099,5 @@ func combat_defeat():
 	for i in active_location.group:
 		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].hp <= 0:
 			state.characters[active_location.group[i]].hp = 1
+			state.characters[active_location.group[i]].is_active = true
 	enter_level(current_level)

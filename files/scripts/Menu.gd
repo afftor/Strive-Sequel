@@ -24,6 +24,10 @@ func _ready():
 		OS.window_size = globals.globalsettings.window_size
 		OS.window_position = globals.globalsettings.window_pos
 	
+	if OS.window_position.y < 0:
+		OS.window_position.y = 50
+	
+	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
 	if globals.globalsettings.warnseen == true:

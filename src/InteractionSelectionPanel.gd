@@ -19,6 +19,8 @@ func open():
 	$StartButton.disabled = state.daily_interactions_left < 1
 	for id in state.character_order:
 		var i = state.characters[id]
+		if i.location != 'mansion':
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_short_name()

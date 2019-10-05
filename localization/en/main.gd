@@ -174,9 +174,9 @@ var TranslationDict = {
 	ITEMMANAPOTDESCRIPT = "Restores some mana. Can be used in combat.",
 	
 	ITEMLIFESHARD = "Shard of Life",
-	ITEMLIFESHARDDESCRIPT = "A stone possessing healing properties. Heals 15-20 life on use.",
+	ITEMLIFESHARDDESCRIPT = "A stone possessing healing properties. Heals 20-25 life on use.",
 	ITEMLIFEGEM = "Gem of Life",
-	ITEMLIFEGEMDESCRIPT = "A valuable stone possessing healing properties. Heals 35-45 life on use.",
+	ITEMLIFEGEMDESCRIPT = "A valuable stone possessing healing properties. Heals 45-55 life on use.",
 	ITEMENERGYSHARD = "Shard of Energy",
 	ITEMENERGYSHARDDESCRIPT = "A piece of stone imbued with magical energies. Restores 20-25 mana on use.",
 	ITEMENERGYGEM = "Gem of Energy",

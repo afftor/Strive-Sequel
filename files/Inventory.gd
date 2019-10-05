@@ -196,6 +196,8 @@ func rebuildinventory():
 					$HiddenContainer/GridContainer.add_child(i)
 				else:
 					itemcontainer.add_child(i)
+				if typeof(item) == TYPE_OBJECT && item.amount != null && (item.amount > 1 || item.type == 'usable'):
+					i.get_node("Number").text = str(item.amount)
 	if mode == 'character':
 		$GearPanel/BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.gear:
@@ -224,6 +226,9 @@ func useitem(item, type):
 	if mode == null:
 		return
 	elif mode == 'character' && selectedhero != null:
+		if selectedhero.location != 'mansion':
+			input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
+			return
 		if type == 'gear':
 			selectedhero.equip(item)
 			input_handler.GetItemTooltip().hide()
@@ -305,6 +310,9 @@ func show_equip_tooltip(slot):
 		item.tooltip($GearPanel.get_node(slot))
 
 func unequip(slot):
+	if selectedhero.location != 'mansion':
+		input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
+		return
 	if selectedhero.gear[slot] != null:
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
 		input_handler.GetItemTooltip().hide()

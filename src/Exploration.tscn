@@ -149,7 +149,6 @@ text = "Presented Characters"
 align = 1
 
 [node name="Positions" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 1363.92
 margin_top = 277.507

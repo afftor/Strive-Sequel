@@ -345,4 +345,5 @@ func calculateprice():
 	return price
 
 func use_explore(character):
-	pass
+	var itemskill = Items.itemlist[itembase].explor_effect
+	character.use_social_skill(itemskill, character)

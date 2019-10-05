@@ -120,7 +120,7 @@ var taunt
 
 var manacost_mod = 1.0
 
-var speed = 0
+var speed = 30
 
 var items_used_global = {}
 var items_used_today = {}
@@ -1143,14 +1143,12 @@ func tick():
 	var obed_reduce = get_obed_reduction()
 	var fear_reduce = get_fear_reduction()
 	
-	
-	
 	if !has_status('no_obed_reduce'):
 		self.obedience -= obed_reduce
 	if !has_status('no_fear_reduce'):
 		self.fear -= fear_reduce
-	
 	if work == 'travel':
+		fatigue -= 1
 		if travel_time > 0:
 			travel_time -= travel_tick()
 			if travel_time <= 0:
@@ -1387,7 +1385,7 @@ func work_tick_values(currenttask):
 	
 	self.energy -= energyvalue
 	var workstat = races.tasklist[currenttask.code].workstat
-	set(workstat, get(workstat) + 0.1)
+	set(workstat, min(get(workstat) + 0.1, get(workstat+"_factor")*20))
 	base_exp += 2.1
 
 func make_item_sequence(currenttask, craftingitem):
@@ -1493,7 +1491,7 @@ func fear_set(value):
 	fear = clamp(value, 0, 100)
 
 func fear_get():
-	return floor(fear)
+	return fear
 
 func lust_set(value):
 	lustmax = 25 + sexuals_factor * 25
@@ -2098,6 +2096,9 @@ func use_social_skill(s_code, target):#add logging if needed
 			state.text_log_add('skill',check.descript)
 			return
 	
+	social_cooldowns[s_code] = template.cooldown
+	if template.tags.has('no_usage_stat_increase') == false:
+		set('charm', min(get('charm') + rand_range(0.2,0.5), get("charm_factor")*20))
 	if template.tags.has("dialogue_skill"):
 		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
 		var text = translate(template.dialogue_text)
@@ -2147,7 +2148,6 @@ func use_social_skill(s_code, target):#add logging if needed
 			else:
 				state.global_skills_used[template.code] = 1
 	
-	social_cooldowns[s_code] = template.cooldown
 	
 	#calcuate 'all' receviers
 	var targ_targ = [target]
@@ -2169,6 +2169,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	s_skill.hit_roll()
 	s_skill.resolve_value(true)
 	s_skill.apply_random()
+	s_skill.setup_effects_final()
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill:

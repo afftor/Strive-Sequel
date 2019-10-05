@@ -77,7 +77,7 @@ func _ready():
 		character.base_exp += 500
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("succubus")
+		character.unlock_class("trainer")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -163,8 +163,6 @@ func _process(delta):
 			state.hour += 1
 			if state.hour == 6:
 				world_gen.update_locations()
-			
-			
 			if state.hour >= variables.HoursPerDay:
 				state.update_global_cooldowns()
 				state.hour = 0

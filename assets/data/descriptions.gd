@@ -248,7 +248,7 @@ var tattoooptions = {
 var bodypartsdata = {
 	sex = {
 		male = {code = 'male', name = '', chardescript = '', bodychanges = [
-			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoudler',0.5]], reqs = []},
+			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoulder',0.5]], reqs = []},
 			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['masculine',1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['masculine', 1]], reqs = []},

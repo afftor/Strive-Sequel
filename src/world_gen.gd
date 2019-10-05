@@ -368,7 +368,7 @@ var locations = {
 		approval = 0,
 		leader = '',
 		actions = ['local_shop','local_events_search'],
-		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
+		event_pool = [['event_good_recruit', 50], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
 		strength = [1,10],
 		food_type_number = [1,2],
 		food_type_amount = [100,200],
@@ -416,6 +416,7 @@ func update_guilds(area):
 	for i in area.factions.values():
 		for k in i.slaves:
 			if randf() >= 0.7:
+				characters_pool.get_char_by_id(k).is_active = false
 				i.slaves.erase(k)
 		while i.slaves.size() < i.slavenumber:
 			make_slave_for_guild(i)

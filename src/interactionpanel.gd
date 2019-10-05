@@ -28,12 +28,12 @@ var statuseffects = ['tied', 'subdued', 'drunk', 'resist', 'sexcrazed']
 var statsicons = {
 lub1 = load("res://assets/images/sexicons/lub1.png"),
 lub2 = load("res://assets/images/sexicons/lub2.png"),
-lub3 = load("res://assets/images/sexicons//lub3.png"),
+lub3 = load("res://assets/images/sexicons/lub3.png"),
 lub4 = load("res://assets/images/sexicons/lub4.png"),
 lub5 = load("res://assets/images/sexicons/lub5.png"),
 lust1 = load("res://assets/images/sexicons/lust1.png"),
 lust2 = load("res://assets/images/sexicons/lust2.png"),
-lust3 = load("res://assets/images/sexicons//lust3.png"),
+lust3 = load("res://assets/images/sexicons/lust3.png"),
 lust4 = load("res://assets/images/sexicons/lust4.png"),
 lust5 = load("res://assets/images/sexicons/lust5.png"),
 sens1 = load("res://assets/images/sexicons/sens1.png"),
@@ -1966,6 +1966,7 @@ func askslaveforaction(chosen):
 			value = min(value, 120)
 			if value > 0:
 				targets.append([i, value])
+	
 	target = input_handler.weightedrandom(targets)
 	debug += 'final target - ' + target.name
 	

@@ -80,6 +80,8 @@ func revert():
 	character_order.clear()
 	items.clear()
 	materials.clear()
+	for i in Items.materiallist:
+		materials[i] = 0
 	globals._ready()
 	global_skills_used.clear()
 	active_tasks.clear()
@@ -355,7 +357,6 @@ func serialize():
 func deserialize(tmp:Dictionary):
 	effects_pool.deserialize(tmp['effects'])
 	characters_pool.deserialize(tmp['characters'])
-	tmp.state['@path'] = tmp.state['@path'].replace(".gdc", '.gd')
 	var tempstate = dict2inst(tmp['state'])
 	var prlist = tempstate.get_property_list()
 	#set('date', tempstate.get('date'))
@@ -365,11 +366,10 @@ func deserialize(tmp:Dictionary):
 	selected_upgrade.level = int(selected_upgrade.level)
 	items.clear()
 	for i in tmp['items']:
-		tmp.items[i]['@path'] = tmp.items[i]['@path'].replace(".gdc", '.gd')
 		items[i] = dict2inst(tmp['items'][i])
+		items[i].inventory = items
 	characters.clear()
 	for h in tmp['heroes']:
-		tmp.heroes[h]['@path'] = tmp.heroes[h]['@path'].replace(".gdc", '.gd')
 		characters[h] = dict2inst(tmp['heroes'][h])
 		#fixing saved skill shortcuts
 		var ssp = characters[h].social_skill_panel.duplicate()
@@ -381,6 +381,9 @@ func deserialize(tmp:Dictionary):
 	characters_pool.cleanup()
 	effects_pool.cleanup()
 	
+	for i in Items.materiallist:
+		if materials.has(i) == false:
+			materials[i] = 0
 	
 
 func common_effects(effects):
