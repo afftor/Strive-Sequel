@@ -38,7 +38,7 @@ func mining_stone(character):
 	return 1 + (1*(character.get_stat('physics')/66))
 
 func whoring_gold(character):
-	return (3 + character.get_stat('sexuals')/10 + character.get_stat('charm')/20)
+	return (1 + character.get_stat('sexuals')/25 + character.get_stat('charm')/50)
 
 func cooking_progress(character):
 	return 1 + (1*(character.get_stat('wits')/50))

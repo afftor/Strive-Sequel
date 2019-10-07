@@ -43,7 +43,7 @@ func _ready():
 		test_slave.create('BeastkinWolf', 'male', 'random')
 		test_slave.unlock_class("dragonknight")
 		test_slave.unlock_class("harlot")
-		test_slave.unlock_class("apprentice")
+		test_slave.unlock_class("alchemist")
 		test_slave.unlock_class("fighter")
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
@@ -82,9 +82,13 @@ func hide_heal_items():
 	$Positions/itemusepanel.hide()
 
 func open():
+	for i in state.characters.values():
+		i.tags.erase("selected")
 	input_handler.PlaySound("door_open")
 	input_handler.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), 'timeout')
+	
+	
 	
 	show()
 	globals.ClearContainer($AreaSelection)

@@ -1036,7 +1036,7 @@ func get_enemy_targets_melee(fighter):#to complete
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
 			if tchar.has_status('hide'): continue
-			if CheckMeleeRange('player') and tchar.position > 3: continue
+			if CheckMeleeRange('ally') and tchar.position > 3: continue
 			res.push_back(tchar)
 	return res
 

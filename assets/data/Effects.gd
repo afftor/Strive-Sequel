@@ -106,14 +106,14 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		reset = [variables.TR_TURN_GET],
 		req_skill = true,
-		conditions = [{type = 'skill', value = ['skilltype', 'eq', 'potion']}],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}, {type = 'skill', value = ['tags', 'has', 'heal']}],
 		atomic = [],
 		buffs = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.25}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 5}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -213,6 +213,7 @@ var effect_table = {
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
+		target = 'target',
 		name = 'hardwork',
 		tick_event = variables.TR_TICK,
 		duration = 'parent', 

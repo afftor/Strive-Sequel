@@ -164,7 +164,6 @@ margin_bottom = 566.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="bodyparts" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 447.0
 margin_top = 21.0
 margin_right = 749.0

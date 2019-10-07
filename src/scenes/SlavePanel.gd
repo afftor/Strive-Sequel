@@ -18,6 +18,7 @@ func _input(event):
 
 func _ready():
 	#setting tooltips
+	
 	for i in $progress.get_children():
 		#i.connect("mouse_entered", self, "show_progress_tooltip", [i])
 		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
@@ -136,7 +137,7 @@ func open(tempperson):
 	else:
 		$currentwork.text = ''
 	for i in $progress.get_children():
-		i.text = str(floor(person.get(i.name))) + '/' + str(person.get(i.name +"_factor")*20)
+		i.text = str(floor(person.get(i.name)))
 		if person.get(i.name+'_bonus') > 0:
 			i.set("custom_colors/font_color", globals.hexcolordict.green) 
 			i.text +=  "+"+ str(person.get(i.name+'_bonus'))
@@ -145,7 +146,7 @@ func open(tempperson):
 			i.text += str(person.get(i.name+'_bonus'))
 		else:
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
-	
+		i.text +=  '/' + str(person.get(i.name +"_factor")*20)
 	for i in $factors.get_children():
 		if i.name in ['base_exp','food_consumption']:
 			i.get_node("Label").text = str(floor(person.get(i.name)))

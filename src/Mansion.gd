@@ -68,7 +68,7 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('Kobold', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
 		character.fear = 25
@@ -77,7 +77,7 @@ func _ready():
 		character.base_exp += 500
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("trainer")
+		character.unlock_class("foreman")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
