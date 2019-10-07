@@ -137,6 +137,25 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_witcrit = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [{obj = 'app_obj', param = 'wits_factor'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [{type = 'stat_add', stat = 'critchance', value = [['parent_args', 0],'*',3]}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	#skills
 	e_target_kill = {
 		type = 'trigger',

@@ -98,6 +98,14 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_alchemist','e_tr_potion'],
 	}, 
+	witcrit = {#+100% alchemy production, potions restore 25% more
+		code = 'witcrit',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_witcrit'],
+	},
 	cattle = {#+50% farm production
 		code = 'cattle',
 		name = '',
