@@ -35,6 +35,10 @@ func showup(node, skillcode):
 		text += "Mana: " + str(skill.manacost) + ". "
 	if skill.energycost > 0:
 		text += "Energy: " + str(skill.energycost) + ". "
+	if skill.has('catalysts') && skill.catalysts.size() > 0:
+		for i in skill.catalysts:
+			text += Items.materiallist[i].name + " - " + str(skill.catalysts[i]) + ", "
+		text = text.substr(0, text.length() - 2) + ". "
 	if text == "Usage Cost: ":
 		text += "None"
 	$cost.text = text

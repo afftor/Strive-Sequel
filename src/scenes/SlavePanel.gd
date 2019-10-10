@@ -33,8 +33,6 @@ func _ready():
 
 		get_node("job_panel/job_details/WorkDetailsPanel/"+i).connect("pressed", self, "change_hours", [i])
 	
-	for i in $job.get_children():
-		globals.connecttexttooltip(i, globals.statdata[i.name].descript)
 	
 	globals.connecttexttooltip($food_love,"[center]" +globals.statdata.food_love.name + "[/center]\n"+  globals.statdata.food_love.descript)
 	globals.connecttexttooltip($food_hate,"[center]" +globals.statdata.food_hate.name + "[/center]\n"+ globals.statdata.food_hate.descript)
@@ -157,8 +155,6 @@ func open(tempperson):
 		else:
 			i.get_node("Label").text = str(floor(person.get(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
-	for i in $job.get_children():
-		i.text = globals.statdata[i.name].name + ": " + str(floor(person.get(i.name)))
 	for i in $base_stats.get_children():
 		i.max_value = person.get(i.name+'max')
 		i.value = person.get(i.name)
@@ -225,6 +221,12 @@ func open(tempperson):
 		newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
 	
 	globals.ClearContainer($professions)
+	if person.professions.size() > 5:
+		$professions/Button.rect_min_size = Vector2(50,50)
+		$professions/Button/Label.hide()
+	else:
+		$professions/Button.rect_min_size = Vector2(100,100)
+		$professions/Button/Label.show()
 	for i in person.professions:
 		var newnode = globals.DuplicateContainerTemplate($professions)
 		var prof = Skilldata.professions[i]
@@ -276,6 +278,7 @@ func open(tempperson):
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
+	$class_learn.hide()
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
 

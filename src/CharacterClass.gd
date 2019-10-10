@@ -219,7 +219,7 @@ var workhours = 12
 var resthours = 8
 var joyhours = 4
 var current_day_spent = {workhours = 0, resthours = 0, joyhours = 0}
-var rules = []
+var work_rules = {ration = false, shifts = false, constrain = false}
 
 var shackles_chance = null
 
@@ -265,7 +265,7 @@ func add_stat_bonuses(ls:Dictionary):
 			if (rec as String).begins_with('resist') :
 				add_bonus(rec + '_add', ls[rec])
 				continue
-			if (rec as String).ends_with('mod') :
+			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
 			if get(rec) == null:
@@ -741,6 +741,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = traits.has(i.value)
 			'disabled':
 				check = !i.value
+			'has_status':
+				check = has_status(i.value)
 		if check == false:
 			return false
 	return true
@@ -916,7 +918,7 @@ func decipher_reqs(reqs, colorcode = false):
 			'one_of_races':
 				text += "Only for: "
 				for k in i.value:
-					text += races.racelist[k].name + ', '
+					text += races.racelist[k.replace(" ","")].name + ', '
 				text = text.substr(0, text.length()-2) + '. '
 			'trait':
 				text += "Requires: " + Traitdata.traits[i.value].name
@@ -935,13 +937,13 @@ func get_next_class_exp():
 	var value = 0
 	if currentclassnumber < growth_factor*variables.class_cap_per_growth+variables.class_cap_basic:
 		exparray = variables.soft_level_reqs
-		if exparray.size() < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic):
+		if exparray.size()-1 < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic):
 			value = exparray[exparray.size()-1]
 		else:
 			value = exparray[currentclassnumber]
 	else:
 		exparray = variables.hard_level_reqs
-		if exparray.size() < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber):
+		if exparray.size()-1 < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber):
 			value = exparray[exparray.size()-1]
 		else:
 			value = exparray[abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber)]
@@ -1136,7 +1138,7 @@ func tick():
 	self.hp += variables.basic_hp_regen
 	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
 	
-	self.fatigue += 1
+	#self.fatigue += 1
 	self.lust += get_stat('lusttick')
 	
 	
@@ -1148,7 +1150,7 @@ func tick():
 	if !has_status('no_fear_reduce'):
 		self.fear -= fear_reduce
 	if work == 'travel':
-		fatigue -= 1
+		#fatigue -= 1
 		if travel_time > 0:
 			travel_time -= travel_tick()
 			if travel_time <= 0:

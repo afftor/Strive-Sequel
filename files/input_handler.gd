@@ -51,7 +51,7 @@ func _input(event):
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
-			if globals.CurrentScene.name == 'MainScreen':
+			if globals.CurrentScene.name == 'mansion':
 				globals.CurrentScene.openmenu()
 	if event.is_action("F9") && event.is_pressed():
 		OS.window_fullscreen = !OS.window_fullscreen

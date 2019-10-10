@@ -95,7 +95,6 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
-	
 	if itemtemplate.tags.has('tool'):
 		toolcategory = itemtemplate.tool_category
 		

@@ -130,6 +130,7 @@ text = "task"
 align = 1
 
 [node name="productivity" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 1002.24
 margin_top = 129.731
 margin_right = 1068.24
@@ -231,6 +232,7 @@ text = "1.100"
 align = 1
 
 [node name="energy" type="TextureProgress" parent="base_stats"]
+visible = false
 margin_top = 34.0
 margin_right = 200.0
 margin_bottom = 59.0
@@ -249,9 +251,9 @@ text = "1.100"
 align = 1
 
 [node name="mp" type="TextureProgress" parent="base_stats"]
-margin_top = 68.0
+margin_top = 34.0
 margin_right = 200.0
-margin_bottom = 93.0
+margin_bottom = 59.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 11 )
@@ -267,9 +269,9 @@ text = "1.100"
 align = 1
 
 [node name="lust" type="TextureProgress" parent="base_stats"]
-margin_top = 102.0
+margin_top = 68.0
 margin_right = 200.0
-margin_bottom = 127.0
+margin_bottom = 93.0
 rect_min_size = Vector2( 200, 25 )
 value = 50.0
 texture_under = ExtResource( 11 )
@@ -623,8 +625,8 @@ text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 522.0
 margin_top = 15.0
@@ -635,8 +637,8 @@ text = "Obedience"
 align = 1
 
 [node name="fearlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.0
 margin_top = 15.0
@@ -650,17 +652,17 @@ align = 1
 "hide_master",
 ]]
 margin_left = 950.0
-margin_top = 15.0
+margin_top = 47.0975
 margin_right = 1129.0
-margin_bottom = 40.0
+margin_bottom = 72.0975
 mouse_filter = 1
 custom_colors/font_color = Color( 0.027451, 0.976471, 1, 1 )
 text = "Slave"
 align = 1
 
 [node name="mentality" type="HBoxContainer" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 editor/display_folded = true
 margin_left = 510.1
@@ -711,30 +713,6 @@ margin_top = 30.0
 margin_right = 199.0
 margin_bottom = 54.0
 custom_colors/font_color = Color( 1, 0.894118, 0.337255, 1 )
-text = "1.100"
-align = 1
-
-[node name="job" type="VBoxContainer" parent="." groups=[
-"hide_stranger",
-]]
-margin_left = 937.0
-margin_top = 46.0
-margin_right = 1137.0
-margin_bottom = 111.0
-custom_constants/separation = 9
-
-[node name="fatigue" type="Label" parent="job"]
-margin_right = 200.0
-margin_bottom = 24.0
-mouse_filter = 0
-text = "1.100"
-align = 1
-
-[node name="exhaustion" type="Label" parent="job"]
-margin_top = 33.0
-margin_right = 200.0
-margin_bottom = 57.0
-mouse_filter = 0
 text = "1.100"
 align = 1
 
@@ -975,11 +953,9 @@ toggle_mode = true
 text = "Test text"
 
 [node name="job_details" type="Panel" parent="job_panel"]
-editor/display_folded = true
-visible = false
 margin_left = 373.0
 margin_right = 1018.0
-margin_bottom = 799.0
+margin_bottom = 551.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="job_panel/job_details"]
 margin_left = 79.952
@@ -1051,6 +1027,7 @@ text = "1"
 align = 1
 
 [node name="SimpleBehaviorCheck" type="CheckBox" parent="job_panel/job_details"]
+visible = false
 margin_left = 202.575
 margin_top = 533.144
 margin_right = 419.575
@@ -1060,6 +1037,7 @@ text = "Simple Behavior"
 
 [node name="WorkDetailsPanel" type="Panel" parent="job_panel/job_details"]
 editor/display_folded = true
+visible = false
 margin_top = 575.0
 margin_right = 644.0
 margin_bottom = 798.0
@@ -1180,6 +1158,31 @@ margin_bottom = 37.296
 text = "Joy Hours"
 align = 1
 
+[node name="Container" type="VBoxContainer" parent="job_panel/job_details"]
+editor/display_folded = true
+margin_left = 176.586
+margin_top = 587.366
+margin_right = 489.586
+margin_bottom = 740.366
+custom_constants/separation = 11
+
+[node name="CheckBox" type="CheckBox" parent="job_panel/job_details/Container"]
+margin_right = 313.0
+margin_bottom = 30.0
+text = "Extra rations"
+
+[node name="CheckBox2" type="CheckBox" parent="job_panel/job_details/Container"]
+margin_top = 41.0
+margin_right = 313.0
+margin_bottom = 71.0
+text = "Longer shifts"
+
+[node name="CheckBox3" type="CheckBox" parent="job_panel/job_details/Container"]
+margin_top = 82.0
+margin_right = 313.0
+margin_bottom = 112.0
+text = "Constraint Work"
+
 [node name="DetailsPanel" type="Panel" parent="."]
 editor/display_folded = true
 visible = false
@@ -1196,33 +1199,34 @@ margin_bottom = 195.207
 custom_constants/separation = 9
 
 [node name="descript" type="Button" parent="DetailsPanel/VBoxContainer"]
-margin_right = 291.0
+margin_right = 294.838
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 text = "Add Custom Description"
 
 [node name="nickname" type="Button" parent="DetailsPanel/VBoxContainer"]
 margin_top = 59.0
-margin_right = 291.0
+margin_right = 294.0
 margin_bottom = 109.0
 rect_min_size = Vector2( 0, 50 )
 text = "Set Nickname"
 
 [node name="icon" type="Button" parent="DetailsPanel/VBoxContainer"]
 margin_top = 118.0
-margin_right = 291.0
+margin_right = 294.0
 margin_bottom = 168.0
 rect_min_size = Vector2( 0, 50 )
 text = "Select Custom Portrait"
 
 [node name="body" type="Button" parent="DetailsPanel/VBoxContainer"]
 margin_top = 177.0
-margin_right = 291.0
+margin_right = 294.0
 margin_bottom = 227.0
 rect_min_size = Vector2( 0, 50 )
 text = "Select Custom Body"
 
 [node name="DietPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 539.638
 margin_top = 65.0147
@@ -1277,15 +1281,14 @@ margin_top = -786.834
 margin_right = 346.031
 margin_bottom = 133.166
 
-[node name="professions" type="HBoxContainer" parent="."]
-editor/display_folded = true
-margin_left = 1216.57
-margin_top = 905.417
-margin_right = 1756.57
-margin_bottom = 1005.42
+[node name="professions" type="GridContainer" parent="."]
+margin_left = 1217.0
+margin_top = 902.0
+margin_right = 1837.0
+margin_bottom = 1005.0
 grow_horizontal = 0
-grow_vertical = 0
 mouse_filter = 2
+columns = 11
 
 [node name="Button" type="TextureRect" parent="professions"]
 visible = false

@@ -52,6 +52,12 @@ func showup(node, person):
 	
 	
 	globals.ClearContainer($GridContainer)
+	if person.professions.size() > 5:
+		$GridContainer/Button.rect_min_size = Vector2(50,50)
+		$GridContainer/Button/Label.hide()
+	else:
+		$GridContainer/Button.rect_min_size = Vector2(100,100)
+		$GridContainer/Button/Label.show()
 	for i in person.professions:
 		var newnode = globals.DuplicateContainerTemplate($GridContainer)
 		newnode.texture = Skilldata.professions[i].icon

@@ -113,7 +113,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 5}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.25}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -458,8 +458,7 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.2},
-			{type = 'stat_add_p', stat = 'matk', value = 0.2},
+			{type = 'stat_add', stat = 'modall', value = 0.2},
 			{type = 'stat_add_p', stat = 'armor', value = 0.2},
 			{type = 'stat_add_p', stat = 'mdef', value = 0.2},
 		],
@@ -1079,7 +1078,7 @@ var effect_table = {
 		stack = 1,
 		name = 'hide',
 		tags = ['buff', 'hide'],
-		atomic = [{type = 'stat_set_revert', stat = 'hide', value = true}],
+		atomic = [],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mindread.png", 

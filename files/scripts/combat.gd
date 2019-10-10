@@ -297,6 +297,7 @@ func victory():
 		if tchar.hp <= 0:
 			tchar.hp = 1
 			tchar.is_active = true
+			tchar.defeated = false
 #		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 #		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)
@@ -423,7 +424,6 @@ func UpdateSkillTargets(caster, glow_skip = false):
 		else:
 			var weapon = state.items[activecharacter.gear.rhand]
 			rangetype = weapon.weaponrange
-	
 	highlightargets = true
 	allowedtargets.clear()
 	allowedtargets = {ally = [], enemy = []}
@@ -570,12 +570,12 @@ func calculateorder():
 		var tchar = characters_pool.get_char_by_id(playergroup[pos])
 		if tchar.defeated == true:
 			continue
-		turnorder.append({speed = tchar.speed + randf() * 5, pos = pos})
+		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
 	for pos in enemygroup:
 		var tchar = characters_pool.get_char_by_id(enemygroup[pos])
 		if tchar.defeated == true:
 			continue
-		turnorder.append({speed = tchar.speed + randf() * 5, pos = pos})
+		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
 	
 	turnorder.sort_custom(self, 'speedsort')
 
@@ -802,6 +802,9 @@ func use_skill(skill_code, caster, target):
 		if skill.cooldown > 0:
 			caster.daily_cooldowns[skill_code] = skill.cooldown
 	
+	if caster.combatgroup == 'ally':
+		for i in skill.catalysts:
+			state.materials[i] -= skill.catalysts[i]
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
 	s_skill1.createfromskill(skill_code)
@@ -1296,6 +1299,11 @@ func SelectSkill(skill):
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack');
 		return
+	for i in skill.catalysts:
+		if state.materials[i] < skill.catalysts[i]:
+			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
+			call_deferred('SelectSkill', 'attack');
+			break
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)

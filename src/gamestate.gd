@@ -26,32 +26,32 @@ var location_links = {}
 var completed_locations = {}
 
 #resources
-var itemcounter := 0
-var slavecounter := 0
-var locationcounter := 0
-var questcounter := 0
+var itemcounter = 0
+var slavecounter = 0
+var locationcounter = 0
+var questcounter = 0
 var money = 0
-var upgrades := {}
+var upgrades = {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}
-var characters := {} 
+var characters = {} 
 var babies = {}
-var items := {}
-var active_tasks := []
+var items = {}
+var active_tasks = []
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
-var materials := {} setget materials_set
-var oldmaterials := {}
-var unlocks := []
+var materials = {} setget materials_set
+var oldmaterials = {}
+var unlocks = []
 var relativesdata = {}
 var global_skills_used = {}
 
-var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
+var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
 var character_order = []
 
 var CurrentTextScene
 var CurrentScreen
-var CurrentLine := 0
+var CurrentLine = 0
 
 var stored_events = {
 	timed_events = [],
@@ -61,13 +61,13 @@ var stored_events = {
 
 #Progress
 var mainprogress = 0
-var decisions := []
-var activequests := []
-var completedquests := []
-var areaprogress := {}
+var decisions = []
+var activequests = []
+var completedquests = []
+var areaprogress = {}
 var currentarea
 var currenttutorial = 'tutorial1'
-var viewed_tips := []
+var viewed_tips = []
 
 var daily_interactions_left = 1
 
@@ -87,6 +87,8 @@ func revert():
 	active_tasks.clear()
 	completed_locations.clear()
 	completedquests.clear()
+	craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
+	stored_events = {timed_events = []}
 	for i in variables.starting_resources:
 		materials[i] = variables.starting_resources[i]
 	state.areas.clear()

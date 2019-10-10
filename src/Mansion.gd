@@ -29,6 +29,7 @@ func _ready():
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
+	$TimeNode/finish_turn.connect("pressed", self, "advance_hour" )
 	
 	globals.connecttexttooltip($gold/TextureRect, tr("TOOLTIPGOLD"))
 	globals.connecttexttooltip($food/TextureRect, tr("TOOLTIPFOOD"))
@@ -47,6 +48,7 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
+		character.sex_traits = ['bisexual', 'anal']
 		character.charm_factor = 1
 		#character.unlock_class("worker")
 		character.mp = 50
@@ -68,16 +70,22 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('Kobold', 'random', 'random')
+		character.create('random', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
 		character.fear = 25
-		character.tame_factor = 6
 		character.lust = 50
 		character.base_exp += 500
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("foreman")
+		character.unlock_class("assassin")
+		character.unlock_class("fighter")
+		character.unlock_class("archer")
+		character.unlock_class("rogue")
+		character.unlock_class("apprentice")
+		character.unlock_class("caster")
+		character.unlock_class("druid")
+		character.unlock_class("knight")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -97,7 +105,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
 		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-		globals.AddItemToInventory(globals.CreateGearItem("bow", {ToolHandle = 'wood', Blade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("bow", {ToolHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
 		yield(get_tree(), 'idle_frame')
@@ -120,8 +128,7 @@ func _ready():
 	
 	input_handler.SystemMessageNode = $SysMessage
 	
-	
-	
+	set_time_buttons()
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):
@@ -160,32 +167,56 @@ func _process(delta):
 		$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
 		if gametime >= variables.SecondsPerHour:
 			gametime -= variables.SecondsPerHour
-			state.hour += 1
-			if state.hour == 6:
-				world_gen.update_locations()
-			if state.hour >= variables.HoursPerDay:
-				state.update_global_cooldowns()
-				state.hour = 0
-				state.date += 1
-				state.daily_interactions_left = 1
-				for i in state.characters.values():
-					i.cooldown_tick()
-					i.process_event(variables.TR_DAY)
-				for i in state.areas.values():
-					world_gen.update_guilds(i)
-			for i in state.characters.values():
-				i.pretick()
-			for i in state.characters.values():
-				i.act_prepared()
-			for i in state.characters.values():
-				i.tick()
-			
-			$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-			state.emit_signal("hour_tick")
+			advance_hour()
 
+func advance_hour():
+	state.hour += 1
+	update_task_bar()
+	if state.hour >= variables.HoursPerDay:
+		advance_day()
+	for i in state.characters.values():
+		i.pretick()
+	for i in state.characters.values():
+		i.act_prepared()
+	for i in state.characters.values():
+		i.tick()
+	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
+	if globals.globalsettings.turn_based_time_flow:
+		$TimeNode/dayprogress.value = state.hour
+	state.emit_signal("hour_tick")
 
+func advance_day():
+	state.update_global_cooldowns()
+	state.hour = 0
+	state.date += 1
+	state.daily_interactions_left = 1
+	for i in state.characters.values():
+		i.cooldown_tick()
+		i.process_event(variables.TR_DAY)
+	for i in state.areas.values():
+		world_gen.update_guilds(i)
+
+func set_time_buttons():
+	match globals.globalsettings.turn_based_time_flow:
+		true:
+			$"TimeNode/0speed".visible = false
+			$"TimeNode/1speed".visible = false
+			$"TimeNode/2speed".visible = false
+			$TimeNode/finish_turn.visible = true
+			set_process(false)
+			$TimeNode/dayprogress.max_value = variables.HoursPerDay
+			$TimeNode/dayprogress.value = state.hour
+			$TimeNode/HidePanel.hide()
+		false:
+			$"TimeNode/0speed".visible = true
+			$"TimeNode/1speed".visible = true
+			$"TimeNode/2speed".visible = true
+			$TimeNode/finish_turn.visible = false
+			set_process(true)
 
 func changespeed(button, playsound = true):
+	if globals.globalsettings.turn_based_time_flow == true:
+		return
 	var oldvalue = gamespeed
 	var newvalue = button.get_meta('value')
 	for i in timebuttons:

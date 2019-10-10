@@ -45,6 +45,7 @@ func _ready():
 		test_slave.unlock_class("harlot")
 		test_slave.unlock_class("alchemist")
 		test_slave.unlock_class("fighter")
+		state.materials.unstable_concoction = 5
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 		state.add_slave(test_slave)
@@ -313,26 +314,34 @@ func item_sell_confirm(value):
 	$Gold.text = str(state.money)
 	update_shop_list()
 
+var faction_actions = {
+	hire = 'Hire',
+	quests = 'Quests',
+	upgrade = "Upgrades",
+	
+}
 
 func enter_guild(guild):
 	active_area = state.areas[guild.area]
 	active_faction = guild
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	
-	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = "Hire"
-	newbutton.connect("pressed", self, "open_slave_list")
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = "Quests"
-	newbutton.connect("pressed", self, "open_quest_list")
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = "Details"
-	newbutton.connect("pressed", self, "open_details")
+	var newbutton
+	for i in guild.actions:
+		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton.text = faction_actions[i]
+		newbutton.connect("pressed", self, "faction_"+i)
+		#newbutton.connect("pressed", self, "open_slave_list")
+#	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#	newbutton.text = "Quests"
+#	newbutton.connect("pressed", self, "open_quest_list")
+#	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#	newbutton.text = "Details"
+#	newbutton.connect("pressed", self, "open_details")
 	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	newbutton.text = "Leave"
 	newbutton.connect("pressed", self, "select_category", [selectedcategory])
 
-func open_slave_list():
+func faction_hire():
 	$HirePanel.show()
 	$HirePanel/Button.hide()
 	globals.ClearContainer($HirePanel/VBoxContainer)
@@ -373,12 +382,12 @@ func guild_hire_slave():
 	selectedperson.area = active_area.code
 	selectedperson.location = 'mansion'
 	selectedperson.is_players_character = true
-	open_slave_list()
+	faction_hire()
 
 func open_slave_info(character):
 	input_handler.ShowSlavePanel(character)
 
-func open_quest_list():
+func faction_quests():
 	$QuestPanel.show()
 	selectedquest = null
 	$QuestPanel/Label.hide()
@@ -471,11 +480,11 @@ func accept_quest():
 			input_handler.ShowPopupPanel("You've received a new quest location.")
 			update_categories()
 			break
-	open_quest_list()
+	faction_quests()
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
 
-func open_details():
+func faction_upgrade():
 	var text = ''
 	$FactionDetailsPanel.show()
 	globals.ClearContainer($FactionDetailsPanel/VBoxContainer)
@@ -511,12 +520,12 @@ func open_details():
 func details_quest_up(difficulty):
 	if active_faction.questsetting.total - (active_faction.questsetting.easy + active_faction.questsetting.medium + active_faction.questsetting.hard) > 0:
 		active_faction.questsetting[difficulty] += 1
-	open_details()
+	faction_upgrade()
 
 func details_quest_down(difficulty):
 	if active_faction.questsetting[difficulty] > 0:
 		active_faction.questsetting[difficulty] -= 1
-	open_details()
+	faction_upgrade()
 
 
 func unlock_upgrade(upgrade, level):
@@ -531,7 +540,7 @@ func unlock_upgrade(upgrade, level):
 		value = input_handler.math(i.operant, value, i.value)
 		set_indexed('active_faction:' + i.code, value)
 		#print(active_faction)
-	open_details()
+	faction_upgrade()
 
 var purch_location_list = {
 	easy = {code = 'easy',price = 100, name = 'Easy Dungeon'},
@@ -724,8 +733,8 @@ func build_location_group():
 			var character = state.characters[active_location.group['pos'+str(i)]]
 			get_node(positiondict[i]+"/Image").texture = character.get_icon()
 			get_node(positiondict[i]+"/Image").show()
-			get_node(positiondict[i]+"/Image/hp").text = str(character.hp) + '/' + str(character.hpmax)
-			get_node(positiondict[i]+"/Image/mp").text = str(character.mp) + '/' + str(character.mpmax)
+			get_node(positiondict[i]+"/Image/hp").text = str(floor(character.hp)) + '/' + str(floor(character.hpmax))
+			get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.mpmax))
 		else:
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
@@ -1103,5 +1112,6 @@ func combat_defeat():
 	for i in active_location.group:
 		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].hp <= 0:
 			state.characters[active_location.group[i]].hp = 1
+			state.characters[active_location.group[i]].defeated = false
 			state.characters[active_location.group[i]].is_active = true
 	enter_level(current_level)

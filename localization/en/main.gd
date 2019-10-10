@@ -218,7 +218,7 @@ var TranslationDict = {
 	ITEMBOWDESCRIPT = "Simple weapon for ranged fighters.",
 	ITEMSTAFFDESCRIPT = "A simple tool for magic users.",
 	ITEMSICKLEDESCRIPT = "A tool, used for crop harvest.",
-	ITEMFISHINTOOLSDESCRIPT = "A set of tools used by fishermen.",
+	ITEMFISHINGTOOLSDESCRIPT = "A set of tools used by fishermen.",
 	ITEMHAMMERDESCRIPT = "A handy tool for smiths and builders.",
 	
 	ITEMBASICCHEST = "Chestplate",
@@ -481,8 +481,6 @@ var TranslationDict = {
 	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
 	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to all ally targets.",
-	SKILLBARRIER = "Barrier",
-	SKILLBARRIERDESCRIPT = "",
 	SKILLBLIZZARD = "Blizzard",
 	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
@@ -947,6 +945,17 @@ var TranslationDict = {
 	SKILLPUBLICEXECUTIONDESCRIPT = "Executes selected character. All presented characters have fear maximized. Target character must have obedience below 25. Can only be used once a day by all characters.",
 	SKILLCHARM = "Charm",
 	SKILLCHARMDESCRIPT = "Entices the target, increasing their obedience and providing increased lust growth. ",
+	SKILLAUTHORITY = "Authority",
+	SKILLAUTHORITYDESCRIPT = "Instigates fear and obedeince into a person.",
+	SKILLINSPIRE = "Inspire",
+	SKILLINSPIREDESCRIPT = "Buffs whole team, increasing damage, DEF and MDEF by 20% for 1 combat.",
+	SKILLHIDE = "Hide",
+	SKILLHIDEDESCRIPT = "Makes untargetable.",
+	SKILLBARRIER = "Barrier",
+	SKILLBARRIERDESCRIPT = "Shields from 100 damage for 3 turns.",
+	SKILLASSASSINATE = "Assassinate",
+	SKILLASSASSINATEDESCRIPT = "Assaults target for 400% damage. Must be in hide to execute. ",
+	
 	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
 	
@@ -1020,7 +1029,7 @@ var TranslationDict = {
 	TRAITSUCCUBUSDESCRIPT = "Prostitution uses 30% less energy.",
 	TRAITPETDESCRIPT = "Protitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
-	
+	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
 	TRAITMEDIUM_ARMOR = "Medium Armor",
