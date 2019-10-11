@@ -182,13 +182,13 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	return playtime * 2 + delaytime
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
-func buffs(node, args = null):
+func buffs(node, args):
 	var delay = 0
 	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
 	buffs_update_delays.erase(node)
 	var delaytime = 0.01
 	var tween = input_handler.GetTweenNode(node)
-	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs')
+	tween.interpolate_callback(node, delay, 'noq_rebuildbuffs', args)
 	tween.start()
 	return delaytime + delay
 

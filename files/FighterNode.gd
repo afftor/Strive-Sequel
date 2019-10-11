@@ -14,6 +14,7 @@ var RMBpressed = false
 
 var hp
 var mp
+var buffs = []
 
 #data format: node, time, type, slot, params
 
@@ -109,28 +110,52 @@ func process_sound(sound):
 	animation_node.add_new_data(data)
 
 func rebuildbuffs():
-	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = {}}
+	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
 	animation_node.add_new_data(data)
 
 func process_critical():
 	var data = {node = self, time = globals.combat_node.turns, type = 'critical', slot = 'crit', params = {}}
 	animation_node.add_new_data(data)
-#control visuals
-func noq_rebuildbuffs():
-	globals.ClearContainer($Buffs)
-	for i in fighter.get_all_buffs():
-		var newbuff = globals.DuplicateContainerTemplate($Buffs)
-		#var buff = Effectdata.buffs[i]
-		var text = i.description
-		newbuff.texture = i.icon
-		if i.template.has('bonuseffect'):
-			match i.template.bonuseffect:
-				'barrier':
-					newbuff.get_node("Label").show()
-					newbuff.get_node("Label").text = str(fighter.shield)
-		newbuff.hint_tooltip = text
-		#globals.connecttexttooltip(newbuff, text)
 
+#control visuals
+func noq_rebuildbuffs(newbuffs):
+	var oldbuff = 0
+	for b in newbuffs:
+		if buffs.has(b.template_name): oldbuff += 1
+	if oldbuff == buffs.size():
+		for i in newbuffs:
+			if buffs.has(i.template_name): update_buff(i)
+			else: add_buff(i)
+	else:
+		globals.ClearContainer($Buffs)
+		buffs.clear()
+		for i in newbuffs:
+			add_buff(i)
+
+func add_buff(i):
+	var newbuff = globals.DuplicateContainerTemplate($Buffs)
+	var text = i.description
+	newbuff.texture = i.icon
+	buffs.push_back(i.template_name)
+	if i.template.has('bonuseffect'):
+		match i.template.bonuseffect:
+			'barrier':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.shield)
+	newbuff.hint_tooltip = text
+
+func update_buff(i):
+	var pos = buffs.find(i.template_name)
+	var newbuff = $Buffs.get_child(pos)
+	var text = i.description
+	newbuff.texture = i.icon
+	buffs.push_back(i.template_name)
+	if i.template.has('bonuseffect'):
+		match i.template.bonuseffect:
+			'barrier':
+				newbuff.get_node("Label").show()
+				newbuff.get_node("Label").text = str(fighter.shield)
+	newbuff.hint_tooltip = text
 
 func update_hp_label(newhp, newhpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:

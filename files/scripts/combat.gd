@@ -61,7 +61,10 @@ onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Pane
 10: $Panel2/EnemyGroup/Back/left, 11 : $Panel2/EnemyGroup/Back/mid, 12 : $Panel2/EnemyGroup/Back/right}
 
 
-var dummy
+var dummy = {
+	triggered_effects = []
+}
+
 signal skill_use_finshed
 var eot = true
 
@@ -522,7 +525,14 @@ func enemy_turn(pos):
 	
 	turns += 1
 	var castskill = fighter.ai._get_action()
-	var target = get_char_by_pos(fighter.ai._get_target(castskill))
+	var target = fighter.ai._get_target(castskill)
+	if target == null:
+		castskill = fighter.ai._get_action(true)
+		target = fighter.ai._get_target(castskill)
+	if target == null:
+		checkwinlose()
+		return
+	target = get_char_by_pos(target)
 	
 	if fighter.has_status('confuse'):
 		castskill = fighter.get_skil_by_tag('default')
@@ -628,7 +638,7 @@ func make_fighter_panel(fighter, spot):
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
 	panel.visible = true
-	panel.noq_rebuildbuffs()
+	panel.noq_rebuildbuffs(fighter.get_all_buffs())
 
 var fighterhighlighted = false
 
@@ -808,14 +818,14 @@ func use_skill(skill_code, caster, target):
 	
 	if caster == null: caster = dummy
 	
+	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST)
 	for e in caster.triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill:
 			eff.set_args('skill', s_skill1)
 			eff.process_event(variables.TR_CAST)
 			eff.set_args('skill', null)
-		else:
-			eff.process_event(variables.TR_CAST)
+
 	turns += 1
 	#preparing animations
 	var animations = skill.sfx
@@ -872,22 +882,20 @@ func use_skill(skill_code, caster, target):
 		#predamage triggers
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_HIT)
-			for e in caster.triggered_effects:
+			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_HIT)
+			for e in s_skill2.caster.triggered_effects:
 				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 				if eff.req_skill:
 					eff.set_args('skill', s_skill2)
 					eff.process_event(variables.TR_HIT)
 					eff.set_args('skill', null)
-				else:
-					eff.process_event(variables.TR_HIT)
-			for e in target.triggered_effects:
+			s_skill2.target.process_event(variables.TR_DEF)
+			for e in s_skill2.target.triggered_effects:
 				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 				if eff.req_skill:
 					eff.set_args('skill', s_skill2)
 					eff.process_event(variables.TR_DEF) 
 					eff.set_args('skill', null)
-				else:
-					eff.process_event(variables.TR_DEF)
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
@@ -915,24 +923,22 @@ func use_skill(skill_code, caster, target):
 		#postdamage triggers and cleanup real_target s_skills
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_POSTDAMAGE)
+			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_POSTDAMAGE)
 			for e in s_skill2.caster.triggered_effects:
 				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 				if eff.req_skill:
 					eff.set_args('skill', s_skill2)
 					eff.process_event(variables.TR_POSTDAMAGE)
 					eff.set_args('skill', null)
-				else:
-					eff.process_event(variables.TR_POSTDAMAGE)
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL)
 				for e in s_skill2.caster.triggered_effects:
 					var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 					if eff.req_skill:
 						eff.set_args('skill', s_skill2)
 						eff.process_event(variables.TR_KILL)
 						eff.set_args('skill', null)
-					else:
-						eff.process_event(variables.TR_KILL)
 			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
@@ -941,14 +947,13 @@ func use_skill(skill_code, caster, target):
 			s_skill2.remove_effects()
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
+	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH)
 	for e in caster.triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill:
 			eff.set_args('skill', s_skill1)
 			eff.process_event(variables.TR_SKILL_FINISH)
 			eff.set_args('skill', null)
-		else:
-			eff.process_event(variables.TR_SKILL_FINISH)
 	s_skill1.remove_effects()
 	#follow-up
 	if skill.has('follow_up'):
@@ -1003,36 +1008,36 @@ func get_allied_targets(fighter):
 			if !characters_pool.get_char_by_id(p).defeated: res.push_back(characters_pool.get_char_by_id(p))
 	return res
 
-func get_enemy_targets_all(fighter):
+func get_enemy_targets_all(fighter, hide_ignore = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide'): continue
+			if tchar.has_status('hide') and !hide_ignore: continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide'): continue
+			if tchar.has_status('hide') and !hide_ignore: continue
 			res.push_back(tchar)
 	return res
 
-func get_enemy_targets_melee(fighter):#to complete
+func get_enemy_targets_melee(fighter, hide_ignore = false):
 	var res = []
 	if fighter.position in range(1, 7):
 		for p in enemygroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide'): continue
+			if tchar.has_status('hide') and !hide_ignore: continue
 			if CheckMeleeRange('enemy') and tchar.position > 9: continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
-			if tchar.has_status('hide'): continue
+			if tchar.has_status('hide') and !hide_ignore: continue
 			if CheckMeleeRange('player') and tchar.position > 3: continue
 			res.push_back(tchar)
 	return res

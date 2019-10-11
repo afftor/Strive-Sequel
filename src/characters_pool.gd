@@ -51,6 +51,15 @@ func move_to_state(id):
 	state.characters[id] = tmp
 	state.character_order.append(id)
 
+func move_to_pool(id):
+	if !state.characters.has(id): return
+	var tmp = state.characters[id]
+	state.characters.erase(id)
+	characters[id] = tmp
+	state.character_order.erase(id) #not sure about placing this here and not onto a higher level
+
+
+
 func serialize():
 	var tmp = {}
 	for hid in characters.keys():

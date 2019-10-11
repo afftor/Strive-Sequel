@@ -26,10 +26,10 @@ var location_links = {}
 var completed_locations = {}
 
 #resources
-var itemcounter := 0
-var slavecounter := 0
-var locationcounter := 0
-var questcounter := 0
+var itemcounter = 0
+var slavecounter = 0
+var locationcounter = 0
+var questcounter = 0
 var money = 0
 var upgrades := {}
 var upgrade_progresses = {}
@@ -310,8 +310,10 @@ func set_material(material, operant, value):
 		'=':
 			materials[material] = value
 
-func remove_slave(tempslave):
-	characters.erase(tempslave)
+func remove_slave(tempslave, permanent = false):
+	characters_pool.move_to_pool(tempslave.id)
+	tempslave.is_players_character = false
+	if permanent: tempslave.is_active = false
 
 func text_log_add(label, text):
 	log_storage.append({type = label, text = text, time = str(date) + ":" + str(round(hour))})

@@ -1387,8 +1387,9 @@ func work_tick_values(currenttask):
 	
 	self.energy -= energyvalue
 	var workstat = races.tasklist[currenttask.code].workstat
-	set(workstat, get(workstat) + 0.1)
-	base_exp += 2.1
+	if !has_status('no_working_bonuses'): 
+		set(workstat, get(workstat) + 0.1)
+		base_exp += 2.1
 
 func make_item_sequence(currenttask, craftingitem):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
@@ -1889,6 +1890,8 @@ func has_status(status):
 	for e in static_effects + temp_effects + triggered_effects:
 		var obj = effects_pool.get_effect_by_id(e)
 		if obj.template.has(status):
+			res = true
+		if obj.tags.has(status):
 			res = true
 	return res
 
