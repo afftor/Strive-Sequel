@@ -475,7 +475,7 @@ func FindFighterRow(fighter):
 		pos = 'frontrow'
 	return pos
 
-func CheckMeleeRange(group): #Check if group front row is still in place
+func CheckMeleeRange(group, hide_ignore = false): #Check if group front row is still in place
 	var rval = false
 	var counter = 0
 	#reqires adding hide checks
@@ -485,14 +485,14 @@ func CheckMeleeRange(group): #Check if group front row is still in place
 				if battlefield[pos] == null:continue
 				var tchar = characters_pool.get_char_by_id(battlefield[pos])
 				if tchar.defeated == true: continue
-				if tchar.has_status('hide'): continue
+				if tchar.has_status('hide') and !hide_ignore: continue
 				counter += 1
 		'ally':
 			for pos in range(1,4):
 				if battlefield[pos] == null:continue
 				var tchar = characters_pool.get_char_by_id(battlefield[pos])
 				if tchar.defeated == true: continue
-				if tchar.has_status('hide'): continue
+				if tchar.has_status('hide') and !hide_ignore: continue
 				counter += 1
 	if counter > 0: rval = true
 	return rval
@@ -1037,14 +1037,14 @@ func get_enemy_targets_melee(fighter, hide_ignore = false):
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
 			if tchar.has_status('hide') and !hide_ignore: continue
-			if CheckMeleeRange('enemy') and tchar.position > 9: continue
+			if CheckMeleeRange('enemy', hide_ignore) and tchar.position > 9: continue
 			res.push_back(tchar)
 	else:
 		for p in playergroup.values():
 			var tchar = characters_pool.get_char_by_id(p)
 			if tchar.defeated: continue
 			if tchar.has_status('hide') and !hide_ignore: continue
-			if CheckMeleeRange('ally') and tchar.position > 3: continue
+			if CheckMeleeRange('ally', hide_ignore) and tchar.position > 3: continue
 			res.push_back(tchar)
 	return res
 
