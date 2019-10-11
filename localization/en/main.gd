@@ -174,9 +174,9 @@ var TranslationDict = {
 	ITEMMANAPOTDESCRIPT = "Restores some mana. Can be used in combat.",
 	
 	ITEMLIFESHARD = "Shard of Life",
-	ITEMLIFESHARDDESCRIPT = "A stone possessing healing properties. Heals 15-20 life on use.",
+	ITEMLIFESHARDDESCRIPT = "A stone possessing healing properties. Heals 20-25 life on use.",
 	ITEMLIFEGEM = "Gem of Life",
-	ITEMLIFEGEMDESCRIPT = "A valuable stone possessing healing properties. Heals 35-45 life on use.",
+	ITEMLIFEGEMDESCRIPT = "A valuable stone possessing healing properties. Heals 45-55 life on use.",
 	ITEMENERGYSHARD = "Shard of Energy",
 	ITEMENERGYSHARDDESCRIPT = "A piece of stone imbued with magical energies. Restores 20-25 mana on use.",
 	ITEMENERGYGEM = "Gem of Energy",
@@ -218,7 +218,7 @@ var TranslationDict = {
 	ITEMBOWDESCRIPT = "Simple weapon for ranged fighters.",
 	ITEMSTAFFDESCRIPT = "A simple tool for magic users.",
 	ITEMSICKLEDESCRIPT = "A tool, used for crop harvest.",
-	ITEMFISHINTOOLSDESCRIPT = "A set of tools used by fishermen.",
+	ITEMFISHINGTOOLSDESCRIPT = "A set of tools used by fishermen.",
 	ITEMHAMMERDESCRIPT = "A handy tool for smiths and builders.",
 	
 	ITEMBASICCHEST = "Chestplate",
@@ -277,7 +277,7 @@ var TranslationDict = {
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
 	LEVELUPTEXT = " has just acquired a level. Select a new trait to unlock",
-	TASKENERGYTOOL = "Work Energy Bonus",
+	TASKCRITCHANCE = "Work Crit Chance",
 	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
 	TOOLWORKCATEGORY = "Tool",
 	
@@ -474,15 +474,13 @@ var TranslationDict = {
 	SKILLFIRE_ATTACK = "Fire Attack",
 	SKILLFIRE_ATTACKDESCRIPT = "Deal 120% physical Fire damage.",
 	SKILLDRAGONMIGHT = "Dragon's Might",
-	SKILLDRAGONMIGHTDESCRIPT = "Increases damage and armor by 25% until end of battle. Only usable once in 2 days.",
+	SKILLDRAGONMIGHTDESCRIPT = "Increases damage and DEF by 25% until end of battle. Only usable once in 2 days.",
 	SKILLLESSER_HEAL = "Lesser Heal",
-	SKILLLESSER_HEALDESCRIPT = "Heals ally target for a 100% of MATK.",
+	SKILLLESSER_HEALDESCRIPT = "Heals ally target for a 120% of MATK.",
 	SKILLSERRATED_SHOT = "Serrated Shot",
 	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
 	SKILLMASS_LESSER_HEALDESCRIPT = "Restores some health to all ally targets.",
-	SKILLBARRIER = "Barrier",
-	SKILLBARRIERDESCRIPT = "",
 	SKILLBLIZZARD = "Blizzard",
 	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
@@ -571,7 +569,7 @@ var TranslationDict = {
 	
 	JOBPROSTITUTEGOLDDESCRIPT = "Earn gold by prostitution.",
 	JOBCOOKINGCRAFTDESCRIPT = "Cook food at kitchen.",
-	JOBBUILDCRAFTDESCRIPT = "Work on active upgrade.",
+	JOBBUILDINGCRAFTDESCRIPT = "Work on active upgrade.",
 	JOBSMITHCRAFTDESCRIPT = "Craft item at forge.",
 	JOBTAILORCRAFTDESCRIPT = "Craft item at tailor workshop.",
 	JOBALCHEMYCRAFTDESCRIPT = "Craft item at alchemy workshop.",
@@ -885,7 +883,7 @@ var TranslationDict = {
 	RACELAMIADESCRIPT = "Lamias are easily recognized and tend to be timid in their interactions, rarely showing themselves to the majority of the population. Their population has been severely reduced by hunting and extermination expeditions launched by different races. Lamias are surprisingly intelligent, as the few captured and studied samples have shown.",
 	RACESCYLLADESCRIPT = "Scylla are rather unusual in appearance, possessing a number of tentacle-like appendages they use in the place of legs. They generally prefer damp and aquatic regions. In general, their behavior and capabilities are not much different from lamia. Their appearance is extremely rare, to the point of being treated as mere myth or drunken fancy by some.",
 	RACEARACHNADESCRIPT = "Arachna live in isolation and tend to choose caves and other underground locations as their homes. While not being especially aggressive, they are fearsome hunters and have been reported for rare night attacks on both cattle and humans.",
-	RACENEREIDESCRIPT = "Nereid are considered to be another subspecies of the humanoid races, yet they likely split from another race in the distant past. They adapted to an aquatic lifestyle. Nereids are often seen by sailors and fishermen, but they tend to be hesitant in making contact with humans, likely viewing them as a threat.",
+	RACENEREIDDESCRIPT = "Nereid are considered to be another subspecies of the humanoid races, yet they likely split from another race in the distant past. They adapted to an aquatic lifestyle. Nereids are often seen by sailors and fishermen, but they tend to be hesitant in making contact with humans, likely viewing them as a threat.",
 	RACEBEASTKINDESCRIPT = "Beastkin is a term referring to multiple humanoid-animal races usually of mammalian origins. They tend to be covered in fur, having a slightly more bestial body structure. However their height and behavior is that of a humans, somehow they are able to breed with humans and elves resulting in halfkin hybrids. ",
 	RACEHALFKINDESCRIPT = "Halfkin are Beastkin's hybrids which keep some of their parent's animalistic features but appear much more human, lacking fur and having a more human body. Halfkins are often rejected by their Beastkin parent's race, but often manage to fit into society of the other one. Despite that, they still tend to inherit some of their race's talents usually being rather different from normal members. ",
 	RACEBEASTKINCATDESCRIPT = "Cat folk are an unusually social breed of Beastkin, having no known settlements of their own, and living quite openly in populous towns and cities. They have a great deal of popularity among certain crowds for their lush appearance and lascivious nature.",
@@ -932,7 +930,7 @@ var TranslationDict = {
 	SKILLMINDCONTROL = "Mind Control",
 	SKILLMINDCONTROLDESCRIPT = "Overwhelms target's mind forcing a nearly complete submission.",
 	SKILLSTOPMINDCONTROL = "Remove Mind Control",
-	SKILLMSTOPMINDCONTROLDESCRIPT = "Removes Mind Control from the target, giving them back their free will.",
+	SKILLSTOPMINDCONTROLDESCRIPT = "Removes Mind Control from the target, giving them back their free will.",
 	SKILLABUSE = "Abuse",
 	SKILLABUSEDESCRIPT = "Take your anger out on someone else. \n\nImproves Obedience and removes some Fatigue for self. Target loses some Health and gain Fatigue, but also receive Fear.",
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
@@ -947,6 +945,17 @@ var TranslationDict = {
 	SKILLPUBLICEXECUTIONDESCRIPT = "Executes selected character. All presented characters have fear maximized. Target character must have obedience below 25. Can only be used once a day by all characters.",
 	SKILLCHARM = "Charm",
 	SKILLCHARMDESCRIPT = "Entices the target, increasing their obedience and providing increased lust growth. ",
+	SKILLAUTHORITY = "Authority",
+	SKILLAUTHORITYDESCRIPT = "Instigates fear and obedeince into a person.",
+	SKILLINSPIRE = "Inspire",
+	SKILLINSPIREDESCRIPT = "Buffs whole team, increasing damage, DEF and MDEF by 20% for 1 combat.",
+	SKILLHIDE = "Hide",
+	SKILLHIDEDESCRIPT = "Makes untargetable.",
+	SKILLBARRIER = "Barrier",
+	SKILLBARRIERDESCRIPT = "Shields from 100 damage for 3 turns.",
+	SKILLASSASSINATE = "Assassinate",
+	SKILLASSASSINATEDESCRIPT = "Assaults target for 400% damage. Must be in hide to execute. ",
+	
 	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
 	
@@ -999,9 +1008,11 @@ var TranslationDict = {
 	DIALOGUEAPHRODISIACREPORT = "[name] consumes an aphrodisiac, feeling the potent surge of lust.",
 	DIALOGUETAMEDRUGREPORT = "After consuming the drug, [name] seems to have become a lot more docile. ",
 	DIALOGUERAGEDRUGREPORT = "After consuming the drug, [name] seems to become more brutish.",
-	DIALOGUESEXDRGUREPORT = "After consuming the drug, [name]'s mind becomes fixated on the lewd things...",	
-
-
+	DIALOGUESEXDRGUREPORT = "After consuming the drug, [name]'s mind becomes fixated on the lewd things...",
+	
+	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it. ",
+	
+	
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with specific bonus. Requires at least 50 lust.",
 	DIALOGUEPET_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [name]'s accumulated Lust is going to be used for.\n\n1. Restore full Obedience for 50 Lust\n2. Convert it into Experience\n3. Restore Health and Mana",
@@ -1011,6 +1022,7 @@ var TranslationDict = {
 	TRAITFOREMANDESCRIPT = "Woodcutting and Mining are 33% more efficient",
 	TRAITHUNTERDESCRIPT = "Fishing and Hunting are 50% more efficient.",
 	TRAITSMITHDESCRIPT = "Smith and Tailor crafts are 100% faster.",
+	TRAITENGINEERDESCRIPT = "Upgrading is 100% faster.",
 	TRAITCHEFDESCRIPT = "Cooking crafts are 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once a combat turn can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Alchemical crafts are 100% faster.\nHealing items are 25% more effective in combat.",
@@ -1020,6 +1032,8 @@ var TranslationDict = {
 	TRAITSUCCUBUSDESCRIPT = "Prostitution uses 30% less energy.",
 	TRAITPETDESCRIPT = "Protitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
+	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
+	TRAITDIRECTORDESCRIPT = "Praises and punishments are 50% more effective.",
 	
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
@@ -1125,6 +1139,8 @@ var TranslationDict = {
 	PROFROGUEDESCRIPT = "A dirty fighter knowing how to move fast and camouflage [himself]",
 	PROFASSASSIN = "Assassin",
 	PROFASSASSINDESCRIPT = "A stealthy assassin is capable of bringing down even high armored targets.",
+	PROFENGINEER = "Engineer",
+	PROFENGINEERDESCRIPT = "A skilled professional often employed for building development and gadget inventions.",
 	
 	UPGRADEPREVBONUS = "Previous bonus: ",
 	UPGRADENEXTBONUS = "Upgrade bonus: ",
@@ -1520,7 +1536,7 @@ var TranslationDict = {
 	DIALOGUEINSPECTBABY = "Inspect future baby",
 	DIALOGUEREMOVEBABY = "Leave it at an orphanage",
 	
-	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. It's up to you what to do with [him]. ",
+	DIALOGUERANDOMBOSSDEFEAT = "The defeated [name] lies before you. Recruiting [him] does not seem very realistic, so you will have to enslave [him]...",
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",
 	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
@@ -1533,6 +1549,7 @@ var TranslationDict = {
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVEOPTION = "Leave",
+	DIALOGUEEVENTNOTHING = "After searching around you weren't able to find anything of interest...",
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUEFORCECHESTOPEN = "Open it",
@@ -1621,11 +1638,11 @@ var TranslationDict = {
 	TUTORIAL_CLASSES_AND_SKILLS = "Every character has access to multiple classes they can unlock. After a class is unlocked, a character receive its bonuses and can use its skills. Skills can be either social or combat, with socials skills helping to manage characters' behavior. Many skills have no other cost than daily charges, so feel free to use them as often as needed. ",
 
 
-ITEMHAIRDYE = "Hair Dye",
-ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
-
-
-ITEMMINORUS_POTION = "Minorus Potion",
+	ITEMHAIRDYE = "Hair Dye",
+	ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
+	
+	
+	ITEMMINORUS_POTION = "Minorus Potion",
 	ITEMMINORUS_POTIONDESCRIPT = "A special potion, which can be used to reduce a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMMAJORUS_POTION = "Majorus Potion",
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to expand a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
@@ -1647,7 +1664,16 @@ ITEMMINORUS_POTION = "Minorus Potion",
 	DIALOGUEASSSELECT = "Rear",
 	DIALOGUEBALLSSELECT = "Balls",
 	DIALOGUEPENISSELECT = "Penis",
-
+	
+	WORKRULERATION = "Extra Rations",
+	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
+	WORKRULESHIFTS = "Longer Shifts",
+	WORKRULESHIFTSDESCRIPT = "Character overperforms at their finest capability at the cost of future improvements. \nBoosts Productivity by 25%. Character won't gain Experience or Work Stats(Physical, etc) while working. ",
+	WORKRULECONSTRAINT = "Coerced Labor",
+	WORKRULECONSTRAINTDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 25%. Obedience Decay is increased by 50%.",
+	
+	SERVICEENSLAVE = "Enslave",
+	SERVICEENSLAVEDESCRIPT = "Makes chosen character into Slave type.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",
 }
 
 

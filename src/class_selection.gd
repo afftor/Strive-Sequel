@@ -21,11 +21,17 @@ func open(tempperson, tempmode = 'normal'):
 	show()
 	globals.ClearContainer($ScrollContainer/GridContainer)
 	
+	var array = []
 	for i in Skilldata.professions.values():
 		if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs) || person.professions.has(i.code):
 			continue
 		if !$CheckBox.pressed && person.checkreqs(i.reqs) == false:
 			continue
+		array.append(i)
+	
+	array.sort_custom(self, 'sort_classes')
+	
+	for i in array:
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		newbutton.get_node('icon').texture = i.icon
 		var name = i.name
@@ -36,6 +42,7 @@ func open(tempperson, tempmode = 'normal'):
 			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
+		globals.connecttexttooltip(newbutton, globals.descriptions.get_class_details(person, i, true, true))
 
 func checkbox_locked():
 	open(person, mode)
@@ -46,7 +53,11 @@ func class_category(name):
 		i.pressed = i.name == category
 	open(person, mode)
 
-
+func sort_classes(first,second):
+	if first.name >= second.name:
+		return false
+	else:
+		return true
 
 func open_class(classcode):
 	var tempclass = Skilldata.professions[classcode]
@@ -95,8 +106,8 @@ func open_class(classcode):
 func unlock_class():
 	$ClassPanel.visible = false
 	self.visible = false
-	person.unlock_class(current_class)
 	person.base_exp -= person.get_next_class_exp()
+	person.unlock_class(current_class)
 	input_handler.ShowSlavePanel(person)
 	state.text_log_add("class", person.translate("[name] has acquired new Class: " + Skilldata.professions[current_class].name))
 	

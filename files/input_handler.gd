@@ -8,7 +8,7 @@ var CloseableWindowsArray = []
 var ShakingNodes = []
 var MousePositionScripts = []
 
-var CurrentScreen = 'Town'
+var CurrentScreen = 'menu'
 
 var BeingAnimated = []
 var SystemMessageNode
@@ -51,18 +51,21 @@ func _input(event):
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
-			if globals.CurrentScene.name == 'MainScreen':
-				globals.CurrentScene.openmenu()
+			if globals.CurrentScene.name == 'mansion':
+				globals.CurrentScene.get_node("MenuPanel").open()
 	if event.is_action("F9") && event.is_pressed():
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
-	
-	
-	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
+	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
 		if str(int(event.as_text())) in str(range(1,4)):
-			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
+			if globals.globalsettings.turn_based_time_flow == false:
+				globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
+			else:
+				globals.CurrentScene.timeflowhotkey(int(event.as_text()))
+	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
 
 var musicfading = false
 var musicraising = false
@@ -555,6 +558,21 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	
 	if wr.get_ref(): x.queue_free()
 
+var sprites = {strike = 'res://assets/sfx/hit_animation/strike.tscn'}
+
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+	var x = load(sprites[effect]).instance()
+	node.add_child(x)
+	x.position = node.rect_size/2
+	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+	x.play()
+	
+	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
+	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+
+	if wr.get_ref(): x.queue_free()
+
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	var tweennode = GetTweenNode(node)
@@ -828,7 +846,9 @@ func interactive_message(code, type, args):
 			match args.characterdata.type:
 				'raw':
 					newcharacter = Slave.new()
+					newcharacter.is_active = false
 					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+					newcharacter.set_slave_category(args.slave_type) 
 				'function':
 					newcharacter = call(args.characterdata.function, args.characterdata.args)
 			scene_character = newcharacter
@@ -879,6 +899,7 @@ func repeat_social_skill():
 func make_local_recruit(args):
 	var newchar = Slave.new()
 	newchar.generate_random_character_from_data(active_location.races)
+	newchar.set_slave_category('servant')
 	return newchar
 
 func update_slave_list():

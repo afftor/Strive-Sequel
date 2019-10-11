@@ -248,7 +248,7 @@ var tattoooptions = {
 var bodypartsdata = {
 	sex = {
 		male = {code = 'male', name = '', chardescript = '', bodychanges = [
-			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoudler',0.5]], reqs = []},
+			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoulder',0.5]], reqs = []},
 			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['masculine',1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['masculine', 1]], reqs = []},
@@ -507,6 +507,6 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			text += "\n[color=yellow]Combat Skills: "
 			for i in classdata.combatskills:
 				text += Skilldata.Skilllist[i].name + ", "
-		text = text.substr(0, text.length() - 2) + "[/color]"
+			text = text.substr(0, text.length() - 2) + "[/color]"
 	
 	return input_handler.text_cut_excessive_lines(text)

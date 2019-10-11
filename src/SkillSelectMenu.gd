@@ -9,13 +9,12 @@ func open(character, category, triggernode, triggerfunction):
 	trigger_node = triggernode
 	trigger_function = triggerfunction
 	var skillarray = []
-	match category:
-		variables.PANEL_SOC:
-			for i in person.social_skills:
-				skillarray.append(Skilldata.Skilllist[i])
-		variables.PANEL_COM:
-			for i in person.combat_skills:
-				skillarray.append(Skilldata.Skilllist[i])
+	if category == variables.PANEL_SOC:
+		for i in person.social_skills:
+			skillarray.append(Skilldata.Skilllist[i])
+	else:
+		for i in person.combat_skills:
+			skillarray.append(Skilldata.Skilllist[i])
 	
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)

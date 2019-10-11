@@ -95,7 +95,6 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 	if itemtemplate.has('weaponrange'):
 		weaponrange = itemtemplate.weaponrange
 	itemtype = itemtemplate.itemtype
-	
 	if itemtemplate.tags.has('tool'):
 		toolcategory = itemtemplate.tool_category
 		
@@ -345,4 +344,5 @@ func calculateprice():
 	return price
 
 func use_explore(character):
-	pass
+	var itemskill = Items.itemlist[itembase].explor_effect
+	character.use_social_skill(itemskill, character)

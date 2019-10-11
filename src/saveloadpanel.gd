@@ -75,6 +75,9 @@ func DeleteSave():
 func SaveGame():
 	globals.SaveGame($LineEdit.text)
 	ResetSavePanel()
+	hide()
+	get_parent().hide()
+	input_handler.SystemMessage("Game Saved")
 
 func LoadGame():
 	globals.LoadGame($LineEdit.text)

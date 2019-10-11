@@ -8,13 +8,13 @@ var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
 
-var unique 
+var unique
 
 var icon_image = '' #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 var body_image = 'default'
 var npc_reference
 #####required for combat
-var combatgroup 
+var combatgroup
 var displaynode
 var defeated = false
 var daily_cooldowns = {}
@@ -46,10 +46,10 @@ var effects = []
 var selectedskill = 'attack'
 
 var static_effects = []
-var temp_effects = []  
+var temp_effects = []
 var triggered_effects = []
-var area_effects = [] 
-var own_area_effects = [] 
+var area_effects = []
+var own_area_effects = []
 
 var obed_mods = []
 var fear_mods = []
@@ -73,9 +73,9 @@ var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
 var mpmax = 50 setget , get_mana_max
 
-var energy := 100.0 setget energy_set
-var energymax = 100
-var energybonus = 0
+#var energy := 100.0 setget energy_set
+#var energymax = 100
+#var energybonus = 0
 var base_exp = 0
 var exp_mod = 1
 
@@ -83,9 +83,7 @@ var exp_mod = 1
 var xpreward = 10
 var loottable
 
-var fatigue = 0 setget fatigue_set
-var exhaustion = 0 setget exhaustion_set
-var productivity := 100.0 setget ,productivity_get
+var productivity := 100.0 #setget ,productivity_get
 
 #productivity mods
 var mod_build = 1.0
@@ -120,7 +118,7 @@ var taunt
 
 var manacost_mod = 1.0
 
-var speed = 0
+var speed = 30
 
 var items_used_global = {}
 var items_used_today = {}
@@ -213,13 +211,7 @@ var mouth_virgin = true
 #tasks
 var sleep = ''
 var work = ''
-var work_simple = true
-var work_simple_state = 'work'
-var workhours = 12
-var resthours = 8
-var joyhours = 4
-var current_day_spent = {workhours = 0, resthours = 0, joyhours = 0}
-var rules = []
+var work_rules = {ration = false, shifts = false, constrain = false}
 
 var shackles_chance = null
 
@@ -232,7 +224,6 @@ var travel_time = 0
 var relatives = {}
 var tags = []
 
-var last_tick_assignement = 'rest'
 var messages = []
 
 var sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}}
@@ -265,7 +256,7 @@ func add_stat_bonuses(ls:Dictionary):
 			if (rec as String).begins_with('resist') :
 				add_bonus(rec + '_add', ls[rec])
 				continue
-			if (rec as String).ends_with('mod') :
+			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
 			if get(rec) == null:
@@ -280,7 +271,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist'): 
+			if (rec as String).begins_with('resist'):
 				add_bonus(rec + '_add', ls[rec], true)
 				continue
 			if (rec as String).ends_with('mod') :
@@ -292,14 +283,14 @@ func remove_stat_bonuses(ls:Dictionary):
 func add_bonus(b_rec:String, value, revert = false):
 	if value == 0: return
 	if bonuses.has(b_rec):
-		if revert: 
+		if revert:
 			bonuses[b_rec] -= value
 			if b_rec.ends_with('_add') and bonuses[b_rec] == 0.0: bonuses.erase(b_rec)
 			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
 		else: bonuses[b_rec] += value
 	else:
 		if revert: print('error bonus not found')
-		else: 
+		else:
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
 			else: bonuses[b_rec] = value
@@ -317,13 +308,13 @@ func mul_stat(statname, value, revert = false):
 		if revert: set(statname, get(statname) / value)
 		else: set(statname, get(statname) * value)
 	else:
-		if bonuses.has(statname + '_mul'): 
-			if revert: 
+		if bonuses.has(statname + '_mul'):
+			if revert:
 				bonuses[statname + '_mul'] /= value
 				if bonuses[statname + '_mul'] == 1:
 					bonuses.erase(statname + '_mul')
 			else: bonuses[statname + '_mul'] *= value
-		else: 
+		else:
 			if revert: print('error bonus not found')
 			else: bonuses[statname + '_mul'] = value
 
@@ -418,7 +409,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		magic_factor = 2
 	
 	var difficulty = int(round(adjust_difficulty))
-	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1])) 
+	var classcounter = round(rand_range(variables.slave_classes_per_difficulty[difficulty][0], variables.slave_classes_per_difficulty[difficulty][1]))
 	
 	
 	#Add extra stats for harder characters
@@ -477,7 +468,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	for i in Traitdata.sex_traits.values():
 		if i.starting == true && checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
-	var rolls = 1 
+	var rolls = 1
 	if randf() >= 0.8: rolls = 2
 	while rolls > 0:
 		var newtrait = traitarray[randi()%traitarray.size()]
@@ -605,7 +596,7 @@ func create(temp_race, temp_gender, temp_age):
 				food_filter.high.append(i.code)
 			else:
 				var check = false
-				for k in food_hate: 
+				for k in food_hate:
 					if i.tags.has(k):
 						food_filter.low.append(i.code)
 						check = true
@@ -741,6 +732,10 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = traits.has(i.value)
 			'disabled':
 				check = !i.value
+			'has_status':
+				check = has_status(i.value)
+			'slave_type':
+				check = input_handler.operate(i.operant, slave_class, i.value)
 		if check == false:
 			return false
 	return true
@@ -916,7 +911,7 @@ func decipher_reqs(reqs, colorcode = false):
 			'one_of_races':
 				text += "Only for: "
 				for k in i.value:
-					text += races.racelist[k].name + ', '
+					text += races.racelist[k.replace(" ","")].name + ', '
 				text = text.substr(0, text.length()-2) + '. '
 			'trait':
 				text += "Requires: " + Traitdata.traits[i.value].name
@@ -935,13 +930,13 @@ func get_next_class_exp():
 	var value = 0
 	if currentclassnumber < growth_factor*variables.class_cap_per_growth+variables.class_cap_basic:
 		exparray = variables.soft_level_reqs
-		if exparray.size() < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic):
+		if exparray.size()-1 < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic):
 			value = exparray[exparray.size()-1]
 		else:
 			value = exparray[currentclassnumber]
 	else:
 		exparray = variables.hard_level_reqs
-		if exparray.size() < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber):
+		if exparray.size()-1 < abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber):
 			value = exparray[exparray.size()-1]
 		else:
 			value = exparray[abs(growth_factor*variables.class_cap_per_growth + variables.class_cap_basic - currentclassnumber)]
@@ -953,8 +948,8 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		for i in prof.reqs:
 			if i.code == 'stat' && i.type in ['physics','wits','charm','sexuals']:
 				self.set(i.type, i.value)
-	if professions.has(prof.code): 
-		return "Already has this profession" 
+	if professions.has(prof.code):
+		return "Already has this profession"
 	professions.append(prof.code)
 	add_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
@@ -1074,8 +1069,6 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 			i.workers.append(self.id)
 			work = i.code
 	
-	for i in current_day_spent:
-		current_day_spent[i] = 0
 	
 	if taskexisted == true:
 		return
@@ -1136,21 +1129,19 @@ func tick():
 	self.hp += variables.basic_hp_regen
 	self.mp += variables.basic_mp_regen + magic_factor * variables.mp_regen_per_magic
 	
-	self.fatigue += 1
+	#self.fatigue += 1
 	self.lust += get_stat('lusttick')
 	
 	
 	var obed_reduce = get_obed_reduction()
 	var fear_reduce = get_fear_reduction()
 	
-	
-	
 	if !has_status('no_obed_reduce'):
 		self.obedience -= obed_reduce
 	if !has_status('no_fear_reduce'):
 		self.fear -= fear_reduce
-	
 	if work == 'travel':
+		#fatigue -= 1
 		if travel_time > 0:
 			travel_time -= travel_tick()
 			if travel_time <= 0:
@@ -1167,41 +1158,9 @@ func tick():
 		
 		return
 	
-	if skip_work == false:
-		if work_simple == true:
-			
-			call(work_simple_state + "_tick")
-			
-			match work_simple_state:
-				'work':
-					if energy <= 0:
-						work_simple_state = 'joy'
-				'joy':
-					if fatigue <= 0:
-						work_simple_state = 'rest' 
-				'rest':
-					if energy >= 100:
-						work_simple_state = 'work'
-			
-		else:
-			var totalday = 0
-			for i in current_day_spent.values():
-				totalday += i
-			if totalday >= 24:
-				for i in current_day_spent:
-					current_day_spent[i] = 0
-			
-			if current_day_spent.workhours < workhours:
-				work_tick()
-			elif current_day_spent.joyhours < joyhours:
-				joy_tick()
-			else:
-				rest_tick()
-	else:
-		if fatigue > 10:
-			joy_tick()
-		else:
-			rest_tick()
+	
+	work_tick()
+	
 	
 	if last_escape_day_check != state.date && randf() <= 0.2:
 		check_escape_possibility()
@@ -1221,7 +1180,7 @@ func hp_set(value):
 	hp = min(value, self.hpmax)
 	#hp = max(hp, 0)
 	if displaynode != null:
-        displaynode.update_hp()
+		displaynode.update_hp()
 	if hp <= 0:
 		death()
 
@@ -1244,24 +1203,24 @@ func death():
 	if globals.combat_node == null:
 		characters_pool.cleanup()
 
-func energy_set(value):
-	energymax = 100 + energybonus
-	if value < 0:
-		self.exhaustion += -value
-		energy = 0
-	else:
-		energy = min(value, energymax)
+#func energy_set(value):
+#	energymax = 100 + energybonus
+#	if value < 0:
+#		self.exhaustion += -value
+#		energy = 0
+#	else:
+#		energy = min(value, energymax)
 
-func fatigue_set(value):
-	if traits.has('undead'): return
-	fatigue = clamp(value, 0, 100)
+#func fatigue_set(value):
+#	if traits.has('undead'): return
+#	fatigue = clamp(value, 0, 100)
+#
+#func exhaustion_set(value):
+#	exhaustion = clamp(value, 0, 1000)
+#	set_productivity()
 
-func exhaustion_set(value):
-	exhaustion = clamp(value, 0, 1000)
-	set_productivity()
-
-func set_productivity():
-	productivity = ceil(100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1))
+#func set_productivity():
+#	productivity = 100
 
 func productivity_get():
 	return productivity
@@ -1306,9 +1265,11 @@ func get_food():
 		apply_effect(effects_pool.add_effect(eff))
 		state.text_log_add('food', get_short_name() + ": has no food.")
 
+func rest_tick():
+	return
+
 func work_tick():
 	var currenttask
-	last_tick_assignement = 'work'
 	for i in state.active_tasks:
 		if i.workers.has(self.id):
 			currenttask = i
@@ -1316,7 +1277,7 @@ func work_tick():
 	if currenttask == null:
 		work = ''
 		return
-
+	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
@@ -1338,7 +1299,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity*get(currenttask.mod)/100)
+			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(productivity*get(currenttask.mod)/100)
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1350,7 +1311,7 @@ func work_tick():
 		else:
 			messages.erase('noupgrade')
 			work_tick_values(currenttask)
-			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity/100)
+			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(productivity/100)
 			if state.upgrade_progresses[state.selected_upgrade.code].progress >= globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress:
 				if state.upgrades.has(state.selected_upgrade.code):
 					state.upgrades[state.selected_upgrade.code] += 1
@@ -1362,7 +1323,7 @@ func work_tick():
 				state.selected_upgrade.code = ''
 	else:
 		work_tick_values(currenttask)
-		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(get_stat('productivity')*get_stat(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(get_stat('productivity')*get_stat(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
@@ -1371,25 +1332,11 @@ func work_tick():
 				state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 
 func work_tick_values(currenttask):
-	var energyvalue = variables.basic_energy_per_work_tick
-	current_day_spent.workhours += 1
-	if traits.has('undead'):
-		energyvalue = 0
-	elif currenttask.code == 'prostitution' && traits.has('succubus_trait'): 
-		energyvalue *= 0.7
 	
-	if self.gear.rhand != null:
-		var task = races.tasklist[currenttask.code]
-		var item = state.items[self.gear.rhand]
-		if task.has('worktool') && item.toolcategory == task.worktool && item.bonusstats.has("task_efficiency_tool"):
-			energyvalue = energyvalue - energyvalue*item.bonusstats.task_energy_tool
-	
-	
-	self.energy -= energyvalue
 	var workstat = races.tasklist[currenttask.code].workstat
 	if !has_status('no_working_bonuses'): 
-		set(workstat, get(workstat) + 0.1)
-		base_exp += 2.1
+	  set(workstat, min(get(workstat) + 0.06, get(workstat+"_factor")*20))
+	  base_exp += 1
 
 func make_item_sequence(currenttask, craftingitem):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
@@ -1461,28 +1408,6 @@ func make_item(temprecipe):
 		if temprecipe.repeats == 0:
 			state.craftinglists[Items.recipes[temprecipe.code].worktype].erase(temprecipe)
 
-func joy_tick():
-	last_tick_assignement = 'joy'
-	current_day_spent.joyhours += 1
-	self.fatigue -= 4
-
-func rest_tick():
-	last_tick_assignement = 'rest'
-	current_day_spent.resthours += 1
-	if exhaustion > 0:
-		if starvation == false:
-			if exhaustion - float(energymax)/16 < 0:
-				var leftvalue = abs(exhaustion - float(energymax)/16)
-				self.exhaustion = 0
-				self.energy += leftvalue*1.5
-			else:
-				self.exhaustion -= float(energymax)/16
-				self.energy += float(energymax)/10
-		else:
-			self.energy += float(energymax)/10
-	else:
-		self.energy += float(energymax)/7.7
-	self.fatigue -= 1
 
 func obed_set(value):
 	obedience = clamp(float(value), 0, 100)
@@ -1494,7 +1419,7 @@ func fear_set(value):
 	fear = clamp(value, 0, 100)
 
 func fear_get():
-	return floor(fear)
+	return fear
 
 func lust_set(value):
 	lustmax = 25 + sexuals_factor * 25
@@ -1534,6 +1459,7 @@ func escape():
 	input_handler.interactive_message('slave_escape', '', {})
 	is_active = false #for now, until moving to charpool be implemented
 	characters_pool.cleanup()
+	state.character_order.erase(id)
 	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
@@ -1645,7 +1571,7 @@ func apply_atomic(template):
 		'signal':
 			#stub for signal emitting
 			globals.emit_signal(template.value)
-		'remove_effect': 
+		'remove_effect':
 			remove_temp_effect_tag(template.value)
 		'add_trait':
 			add_trait(template.trait)
@@ -1710,7 +1636,7 @@ func find_temp_effect(eff_code):
 		var eff = effects_pool.get_effect_by_id(temp_effects[i])
 		if eff.template.name != eff_code:continue
 		nm += 1
-		if eff.remains < tres: 
+		if eff.remains < tres:
 			tres = eff.remains
 			res = i
 	return {num = nm, index = res}
@@ -1812,25 +1738,25 @@ func apply_effect(eff_id):
 	
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static': 
+		'static', 'c_static':
 			if hp <= 0 or defeated or !is_active: return
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
-		'trigger': 
+		'trigger':
 			if hp <= 0 or defeated or !is_active: return
 			triggered_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = id
 			obj.apply()
-		'temp_s','temp_p','temp_u': 
+		'temp_s','temp_p','temp_u':
 			if hp <= 0 or defeated or !is_active: return
 			apply_temp_effect(eff_id)
 		'area':
 			if hp <= 0 or defeated or !is_active: return
 			add_area_effect(eff_id)
-		'oneshot': 
+		'oneshot':
 			obj.applied_obj = self
 			obj.apply()
 
@@ -1889,7 +1815,7 @@ func has_status(status):
 	var res = false
 	for e in static_effects + temp_effects + triggered_effects:
 		var obj = effects_pool.get_effect_by_id(e)
-		if obj.template.has(status):
+		if obj.tags.has(status):
 			res = true
 		if obj.tags.has(status):
 			res = true
@@ -1948,7 +1874,7 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 			result = input_handler.operate(req.operant, get_stat(req.name)[req.index], req.value)
 		'gear':
 			result = check_gear_equipped(req.name)
-		'race': 
+		'race':
 			result = (req.value == race);
 		'race_group':
 			match req.value:
@@ -2076,9 +2002,6 @@ func check_skill_availability(s_code, target):
 	if mp < template.manacost:
 		descript = get_short_name() + ": Not enough mana."
 		check = false
-	if energy < template.energycost:
-		descript = get_short_name() + ": Not enough energy."
-		check = false
 	if social_skills_charges.has(s_code) && social_skills_charges[s_code] >= template.charges:
 		descript = get_short_name() + ": " + template.name + " - No charges left."
 		check = false
@@ -2100,6 +2023,9 @@ func use_social_skill(s_code, target):#add logging if needed
 			state.text_log_add('skill',check.descript)
 			return
 	
+	social_cooldowns[s_code] = template.cooldown
+	if template.tags.has('no_usage_stat_increase') == false:
+		set('charm', min(get('charm') + rand_range(0.2,0.5), get("charm_factor")*20))
 	if template.tags.has("dialogue_skill"):
 		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
 		var text = translate(template.dialogue_text)
@@ -2135,7 +2061,6 @@ func use_social_skill(s_code, target):#add logging if needed
 	if template.has('goldcost'):
 		state.money -= template.goldcost
 	self.mp -= template.manacost
-	self.energy -= template.energycost
 	
 	if template.charges > 0 && variables.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
@@ -2144,12 +2069,11 @@ func use_social_skill(s_code, target):#add logging if needed
 			social_skills_charges[s_code] = 1
 	
 	if template.has("globallimit"):
-			if state.global_skills_used.has(template.code):
-				state.global_skills_used[template.code] += 1
-			else:
-				state.global_skills_used[template.code] = 1
+		if state.global_skills_used.has(template.code):
+			state.global_skills_used[template.code] += 1
+		else:
+			state.global_skills_used[template.code] = 1
 	
-	social_cooldowns[s_code] = template.cooldown
 	
 	#calcuate 'all' receviers
 	var targ_targ = [target]
@@ -2171,6 +2095,7 @@ func use_social_skill(s_code, target):#add logging if needed
 	s_skill.hit_roll()
 	s_skill.resolve_value(true)
 	s_skill.apply_random()
+	s_skill.setup_effects_final()
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 		if eff.req_skill:
@@ -2184,7 +2109,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 			if eff.req_skill:
 				eff.set_args('skill', s_skill)
-				eff.process_event(variables.TR_S_TARGET) 
+				eff.process_event(variables.TR_S_TARGET)
 				eff.set_args('skill', null)
 			else:
 				eff.process_event(variables.TR_S_TARGET)
@@ -2201,7 +2126,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			'caster': targ_fin = targ_cast
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
-		if s_skill.damagestat[i] == 'no_stat': 
+		if s_skill.damagestat[i] == 'no_stat':
 			if template.has('process_no_stat'):
 				for h in targ_fin:
 					for e in s_skill.effects:
@@ -2221,7 +2146,7 @@ func use_social_skill(s_code, target):#add logging if needed
 					tmp = h.stat_update(stat, -s_skill.value[i])
 					if s_skill.is_drain: self.stat_update(stat, -tmp)
 				'=':
-					tmp = h.stat_update(stat, s_skill.value[i], true) 
+					tmp = h.stat_update(stat, s_skill.value[i], true)
 					if s_skill.is_drain: self.stat_update(stat, -tmp)
 			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100
@@ -2274,7 +2199,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			var eff:triggered_effect = effects_pool.get_effect_by_id(e)
 			if eff.req_skill:
 				eff.set_args('skill', s_skill)
-				eff.process_event(variables.TR_POSTDAMAGE) 
+				eff.process_event(variables.TR_POSTDAMAGE)
 				eff.set_args('skill', null)
 			else:
 				eff.process_event(variables.TR_POSTDAMAGE)
@@ -2326,7 +2251,7 @@ func use_mansion_item(item):
 
 func set_slave_category(new_class):
 	if slave_class != '':
-		remove_trait(slave_class)
+		remove_trait(slave_class.to_lower())
 	add_trait(new_class)
 	slave_class = new_class
 

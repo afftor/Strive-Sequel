@@ -2,14 +2,17 @@ extends Node
 
 #warning-ignore-all:unused_class_variable
 
-func get_progress_task(character, temptask, tempsubtask):
+func get_progress_task(character, temptask, tempsubtask, count_crit = false):
 	var task = tasklist[temptask]
 	var subtask = task.production[tempsubtask]
 	var value = call(subtask.progress_function, character)
 	if character.gear.rhand != null:
 		var item = state.items[character.gear.rhand]
-		if task.has('worktool') && item.toolcategory == task.worktool && item.bonusstats.has("task_efficiency_tool"):
-			value = value + value*item.bonusstats.task_efficiency_tool
+		if task.has('worktool') && item.toolcategory == task.worktool:
+			if item.bonusstats.has("task_efficiency_tool"):
+				value = value + value*item.bonusstats.task_efficiency_tool
+			if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
+				value = value*2
 	
 	return value
 
@@ -38,7 +41,7 @@ func mining_stone(character):
 	return 1 + (1*(character.get_stat('physics')/66))
 
 func whoring_gold(character):
-	return (3 + character.get_stat('sexuals')/10 + character.get_stat('charm')/20)
+	return (1 + character.get_stat('sexuals')/25 + character.get_stat('charm')/50)
 
 func cooking_progress(character):
 	return 1 + (1*(character.get_stat('wits')/50))

@@ -48,8 +48,8 @@ align = 2
 
 [node name="energy" type="Label" parent="VBoxContainer"]
 visible = false
-margin_left = 396.0
-margin_right = 524.0
+margin_left = 264.0
+margin_right = 392.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "100/100"
@@ -83,7 +83,7 @@ margin_right = 175.0
 margin_bottom = 24.0
 mouse_filter = 1
 size_flags_horizontal = 3
-text = "Attack:"
+text = "ATK:"
 align = 2
 
 [node name="atk" type="Label" parent="base stats"]
@@ -99,7 +99,7 @@ margin_right = 378.0
 margin_bottom = 24.0
 mouse_filter = 1
 size_flags_horizontal = 3
-text = "M.Attack:"
+text = "MATK:"
 align = 2
 
 [node name="matk" type="Label" parent="base stats"]
@@ -115,7 +115,7 @@ margin_right = 175.0
 margin_bottom = 55.0
 mouse_filter = 1
 size_flags_horizontal = 3
-text = "Defence:"
+text = "DEF:"
 align = 2
 
 [node name="armor" type="Label" parent="base stats"]
@@ -133,7 +133,7 @@ margin_right = 378.0
 margin_bottom = 55.0
 mouse_filter = 1
 size_flags_horizontal = 3
-text = "M.Defence:"
+text = "MDEF:"
 align = 2
 
 [node name="mdef" type="Label" parent="base stats"]

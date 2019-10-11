@@ -10,7 +10,7 @@ func _ready():
 	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
-	input_handler.StopMusic()
+	#input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,5):
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
@@ -23,6 +23,10 @@ func _ready():
 	if OS.window_fullscreen == false:
 		OS.window_size = globals.globalsettings.window_size
 		OS.window_position = globals.globalsettings.window_pos
+	
+	if OS.window_position.y < 0:
+		OS.window_position.y = 50
+	
 	
 	for i in $Panel/VBoxContainer.get_children():
 		i.connect("pressed", input_handler, 'open_shell', [i.name])
@@ -43,8 +47,9 @@ func continueb():
 
 func newgame():
 	#state = load("res://src/gamestate.gd").new()
+	state.make_world()
+	$VBoxContainer/newgamebutton.disabled = true
 	globals.start_new_game = true
-	state.revert()
 	state.newgame = true
 	get_node("/root").remove_child(self)
 	globals.ChangeScene('mansion')

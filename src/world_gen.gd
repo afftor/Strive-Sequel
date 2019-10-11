@@ -23,7 +23,7 @@ var lands = {
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den'],#"dungeon_goblin_cave"], #array of allowed locations to generate
-		guilds = ['workers','servants','fighters','mages'],
+		guilds = ['workers','servants','fighters','mages','slavemarket'],
 		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
 		capital_shop_items = ['lifeshard'],
 		capital_locations = ['dungeon_tutorial'],
@@ -106,7 +106,7 @@ var lands = {
 
 
 func make_area(code):
-	var areadata = lands[code].duplicate()
+	var areadata = lands[code].duplicate(true)
 	state.areas[areadata.code] = areadata
 	areadata.population = round(rand_range(areadata.population[0],areadata.population[1]))
 	areadata.quests = {global = {}}
@@ -162,14 +162,15 @@ var guild_upgrades = {
 	
 }
 
-var guildsdata = {
+var factiondata = {
 	fighters = {
 		code = 'fighters',
 		name = 'Fighters',
 		description = '',
+		actions = ['hire','upgrade','quests'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
-		quests_easy = ['warriors_dungeon_basic'],#'warriors_threat_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
+		quests_easy = ['warriors_dungeon_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],#,'warriors_threat_basic'
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -179,9 +180,10 @@ var guildsdata = {
 		code = 'mages',
 		name = 'Mages',
 		description = '',
+		actions = ['hire','upgrade','quests'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
-		quests_easy = ['mages_materials_basic','mages_craft_potions_basic','mages_threat_basic','mages_slave_basic'],
+		quests_easy = ['mages_materials_basic','mages_craft_potions_basic','mages_slave_basic'],#'mages_threat_basic',
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -191,9 +193,10 @@ var guildsdata = {
 		code = 'workers',
 		name = 'Workers',
 		description = '',
+		actions = ['hire','upgrade','quests'],
 		preference = ['labor'],
 		character_types = [['servant',1]],
-		quests_easy = ['workers_resources_basic','workers_food_basic','workers_craft_tools_basic','workers_threat_basic'],
+		quests_easy = ['workers_resources_basic','workers_food_basic','workers_craft_tools_basic'],#,'workers_threat_basic'
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -203,6 +206,7 @@ var guildsdata = {
 		code = 'servants',
 		name = 'Servants',
 		description = '',
+		actions = ['hire','upgrade','quests'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
 		quests_easy = ['servants_craft_items_basic','servants_slave_basic'],
@@ -215,6 +219,7 @@ var guildsdata = {
 		code = 'slavemarket',
 		name = 'Slave Market',
 		description = '',
+		actions = ['hire','sellslaves','services'],
 		preference = [],
 		character_types = [['slave',1]],
 		quests_easy = [],
@@ -226,16 +231,17 @@ var guildsdata = {
 }
 
 func make_guild(code, area):
-	var factiondata = guildsdata[code].duplicate(true)
-	area.quests.factions[factiondata.code] = {}
+	var data = factiondata[code].duplicate(true)
+	area.quests.factions[data.code] = {}
 	var guilddatatemplate = {
-		code = factiondata.code,
-		name = factiondata.name,
+		code = data.code,
+		name = data.name,
 		area = area.code,
-		chartype = factiondata.character_types,
-		preferences = factiondata.preference,
-		description = factiondata.description,
-		questpool = {easy = factiondata.quests_easy, medium = factiondata.quests_medium, hard = factiondata.quests_hard},
+		actions = data.actions,
+		chartype = data.character_types,
+		preferences = data.preference,
+		description = data.description,
+		questpool = {easy = data.quests_easy, medium = data.quests_medium, hard = data.quests_hard},
 		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
 		reputation = 0,
@@ -245,19 +251,21 @@ func make_guild(code, area):
 		upgrades = {},
 		slavelevel = 0,
 	}
-	factiondata.slavenumber = round(rand_range(factiondata.slavenumber[0], factiondata.slavenumber[1]))
-	factiondata.questnumber = round(rand_range(factiondata.questnumber[0], factiondata.questnumber[1]))
-	guilddatatemplate.slavenumber = factiondata.slavenumber
-	while factiondata.slavenumber > 0:
+	if data.slavenumber.size() > 0:
+		data.slavenumber = round(rand_range(data.slavenumber[0], data.slavenumber[1]))
+	if data.questnumber.size() > 0:
+		data.questnumber = round(rand_range(data.questnumber[0], data.questnumber[1]))
+		area.quests.factions[data.code] = {}
+		while data.questnumber > 0:
+			for i in ['easy','medium','hard']:
+				while guilddatatemplate.questsetting[i] >= area.quests.factions[data.code].size():
+					make_quest_for_guild(guilddatatemplate, i)
+			data.questnumber -= 1
+	guilddatatemplate.slavenumber = data.slavenumber
+	while data.slavenumber > 0:
 		make_slave_for_guild(guilddatatemplate)
-		factiondata.slavenumber -= 1
-	if factiondata.questnumber > 0:
-		area.quests.factions[factiondata.code] = {}
-	while factiondata.questnumber > 0:
-		for i in ['easy','medium','hard']:
-			while guilddatatemplate.questsetting[i] >= area.quests.factions[factiondata.code].size():
-				make_quest_for_guild(guilddatatemplate, i)
-		factiondata.questnumber -= 1
+		data.slavenumber -= 1
+	
 	
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
@@ -266,7 +274,10 @@ func make_slave_for_guild(guild):
 	var race = guild.races
 	if globals.globalsettings.guilds_any_race:
 		race = 'random'
-	newslave.generate_random_character_from_data(race, guild.preferences[randi()%guild.preferences.size()], guild.difficulty + round(randf())-0.3)
+	var slaveclass = null
+	if guild.preferences.size() > 0:
+		slaveclass = guild.preferences[randi()%guild.preferences.size()]
+	newslave.generate_random_character_from_data(race, slaveclass, guild.difficulty + round(randf())-0.3)
 	var char_class = input_handler.weightedrandom(guild.chartype)
 	newslave.set_slave_category(char_class)
 	guild.slaves.append(newslave.id)
@@ -368,7 +379,7 @@ var locations = {
 		approval = 0,
 		leader = '',
 		actions = ['local_shop','local_events_search'],
-		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
+		event_pool = [['event_good_recruit', 50], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
 		strength = [1,10],
 		food_type_number = [1,2],
 		food_type_amount = [100,200],
@@ -392,7 +403,7 @@ func make_location(code, area, difficulty = 'easy'):
 	var levelnumber = round(rand_range(location.difficulties[difficulty].levels[0], location.difficulties[difficulty].levels[1]))
 	location.levels = {}
 	while levelnumber > 0:
-		location.levels[int(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
+		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
 		levelnumber -= 1
 	location.group = {}
 	location.resources = location.difficulties[difficulty].resources
@@ -404,9 +415,9 @@ func make_location(code, area, difficulty = 'easy'):
 	location.enemies = location.difficulties[difficulty].enemyarray.duplicate(true)
 	if location.difficulties[difficulty].has("final_enemy"):
 		var bossenemy = input_handler.weightedrandom(location.difficulties[difficulty].final_enemy)
-		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels[location.levels.size()].stages-1})
+		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
 		if location.difficulties[difficulty].final_enemy_type == 'character':
-			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels[location.levels.size()].stages-1, operant = 'gte'}]})
+			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 	state.locationcounter += 1
 	location.erase('difficulties')
 	return location
@@ -416,6 +427,7 @@ func update_guilds(area):
 	for i in area.factions.values():
 		for k in i.slaves:
 			if randf() >= 0.7:
+				characters_pool.get_char_by_id(k).is_active = false
 				i.slaves.erase(k)
 		while i.slaves.size() < i.slavenumber:
 			make_slave_for_guild(i)
@@ -1141,6 +1153,7 @@ var pregen_characters = {
 		race = 'HalfkinBunny',
 		sex = 'female',
 		age = 'teen',
+		slave_class = 'slave',
 		height = 'short',
 		hair_color = 'blond',
 		hair_length = 'waist',

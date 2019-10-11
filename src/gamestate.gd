@@ -12,6 +12,8 @@ signal hour_tick
 var date = 1
 var hour = 6
 
+var hour_turns_set = 1
+
 var log_node
 var log_storage = []
 
@@ -31,27 +33,27 @@ var slavecounter = 0
 var locationcounter = 0
 var questcounter = 0
 var money = 0
-var upgrades := {}
+var upgrades = {}
 var upgrade_progresses = {}
 var selected_upgrade = {code = '', level = 0}
-var characters := {} 
+var characters = {} 
 var babies = {}
-var items := {}
-var active_tasks := []
+var items = {}
+var active_tasks = []
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
-var materials := {} setget materials_set
-var oldmaterials := {}
-var unlocks := []
+var materials = {} setget materials_set
+var oldmaterials = {}
+var unlocks = []
 var relativesdata = {}
 var global_skills_used = {}
 
-var combatparty := {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
+var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null} setget pos_set
 
 var character_order = []
 
 var CurrentTextScene
 var CurrentScreen
-var CurrentLine := 0
+var CurrentLine = 0
 
 var stored_events = {
 	timed_events = [],
@@ -61,13 +63,13 @@ var stored_events = {
 
 #Progress
 var mainprogress = 0
-var decisions := []
-var activequests := []
-var completedquests := []
-var areaprogress := {}
+var decisions = []
+var activequests = []
+var completedquests = []
+var areaprogress = {}
 var currentarea
 var currenttutorial = 'tutorial1'
-var viewed_tips := []
+var viewed_tips = []
 
 var daily_interactions_left = 1
 
@@ -76,14 +78,28 @@ func revert():
 #to make
 	date = 1
 	hour = 6
+	itemcounter = 0
+	slavecounter = 0
+	locationcounter = 0
 	characters.clear()
 	character_order.clear()
 	items.clear()
 	materials.clear()
+	for i in Items.materiallist:
+		materials[i] = 0
 	globals._ready()
 	global_skills_used.clear()
+	active_tasks.clear()
+	completed_locations.clear()
+	completedquests.clear()
+	craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
+	stored_events = {timed_events = []}
 	for i in variables.starting_resources:
 		materials[i] = variables.starting_resources[i]
+	state.areas.clear()
+	state.location_links.clear()
+
+func make_world():
 	world_gen.build_world()
 
 func _ready():
@@ -134,6 +150,7 @@ func get_unique_slave(code):
 func add_slave(person):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
+	person.is_active = true
 	text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 
@@ -314,6 +331,8 @@ func remove_slave(tempslave, permanent = false):
 	characters_pool.move_to_pool(tempslave.id)
 	tempslave.is_players_character = false
 	if permanent: tempslave.is_active = false
+	character_order.erase(tempslave.id)
+	input_handler.update_slave_list()
 
 func text_log_add(label, text):
 	log_storage.append({type = label, text = text, time = str(date) + ":" + str(round(hour))})
@@ -355,9 +374,11 @@ func deserialize(tmp:Dictionary):
 	for v in prlist:
 		if !(v.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) : continue
 		set(v.name, tempstate.get(v.name))
+	selected_upgrade.level = int(selected_upgrade.level)
 	items.clear()
 	for i in tmp['items']:
 		items[i] = dict2inst(tmp['items'][i])
+		items[i].inventory = items
 	characters.clear()
 	for h in tmp['heroes']:
 		characters[h] = dict2inst(tmp['heroes'][h])
@@ -370,6 +391,11 @@ func deserialize(tmp:Dictionary):
 	#fastfix for broken saves
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	
+	for i in Items.materiallist:
+		if materials.has(i) == false:
+			materials[i] = 0
+	
 
 func common_effects(effects):
 	for i in effects:
@@ -380,6 +406,7 @@ func common_effects(effects):
 			'make_story_character':
 				var newslave = Slave.new()
 				newslave.generate_predescribed_character(world_gen.pregen_characters[i.value])
+				newslave.set_slave_category(newslave.slave_class)
 				state.add_slave(newslave)
 			'add_timed_event':
 				var newevent = {reqs = [], code = i.value}
@@ -406,16 +433,27 @@ func common_effects(effects):
 									text_log_add('char', text)
 								character.tags.erase(k.value)
 					else:
-						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
-						if k.value > 0:
-							text += " + "
-						else:
-							text += " - "
-						text += str(k.value)
-						text_log_add('char', text)
-						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
+						character_stat_change(character, k)
+#						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
+#						if k.value > 0:
+#							text += " + "
+#						else:
+#							text += " - "
+#						text += str(k.value)
+#						text_log_add('char', text)
+#						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
+
+func character_stat_change(character, data):
+	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 
+	if data.operant == '+':
+		text += " + "
+	else:
+		text += " - "
+	text += str(data.value)
+	text_log_add('char', text)
+	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
 func check_timed_events():
 	for i in stored_events.timed_events:

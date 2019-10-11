@@ -7,6 +7,8 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
+var hour_turn_limit = 8
+
 enum {PANEL_SOC, PANEL_COM}
 
 enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6}; 
@@ -16,7 +18,7 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['+damage_hp', '+restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'energy', 'no_stat']
+var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', 'lust', 'obedience', 'fear', 'loyal', 'energy', 'no_stat']
 #list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
@@ -30,11 +32,11 @@ var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate',
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','atk','matk','hitrate','evasion','armor','mdef','critrate','critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','fear_degrade_mod','obed_degrade_mod']
+var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','fear_degrade_mod','obed_degrade_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 
-'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor',
+'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
 'sexuals_factor','magic_factor','growth_factor']
 
 
@@ -88,6 +90,8 @@ var maximum_factor_value = 6
 var basic_character_atk = 25
 var basic_character_matk = 25
 
+var enslavement_price = 100
+
 var power_adjustments_per_difficulty = {
 	easy = [1,2],
 	medium = [2,4],
@@ -131,26 +135,26 @@ var fear_modifier = 1.0
 
 
 #World settings
-var dungeon_encounter_chance = 0.08
+var dungeon_encounter_chance = 0.2
 
 #Cheats
-var instant_travel = true
+var instant_travel = false
 var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
 var unlock_all_upgrades = true
-var invincible_player = true
+var invincible_player = false
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
-var allow_skip_fights = true
+var allow_skip_fights = false
 
 #debug_only
 var allow_remote_intereaction = true
 var no_event_wait_time = false
-var ignore_quest_requirements = true
+var ignore_quest_requirements = false
 
 var generate_test_chars = true
-var combat_tests = true #for combat testing
+var combat_tests = false #for combat testing
 var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 
 

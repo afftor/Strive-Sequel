@@ -23,6 +23,9 @@ var introduction_text = {master = "Create your Master Character", 'slave' : 'Cre
 
 func _ready():
 	globals.AddPanelOpenCloseAnimation($RaceSelection)
+	globals.AddPanelOpenCloseAnimation($TraitSelection)
+	globals.AddPanelOpenCloseAnimation($DietPanel)
+	globals.AddPanelOpenCloseAnimation($ClassPanel)
 	for i in agearray:
 		$VBoxContainer/age.add_item(i.capitalize())
 	for i in sexarray:
@@ -35,6 +38,7 @@ func _ready():
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
 	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
+	$CancelButton.connect("pressed", self, "confirm_return")
 	globals.connecttexttooltip($VBoxContainer/sextrait, tr("TOOLTIPSEXTRAITS"))
 	
 	for i in ['name','surname','nickname']:
@@ -192,6 +196,7 @@ func rebuild_slave():
 	var age = person.age
 	person = Slave.new()
 	person.create(race, sex, age)
+	person.is_active = false
 	person.is_known_to_player = true
 	if mode == 'master':
 		person.unlock_class('master')
@@ -484,8 +489,20 @@ func apply_preserved_settings():
 func confirm_character():
 	input_handler.ShowConfirmPanel(self, 'finish_character', 'Create this character?')
 
+func confirm_return():
+	input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
+
+func cancel_creation():
+	state.revert()
+	globals.CurrentScene.queue_free()
+	globals.ChangeScene('menu')
+	#get_parent().queue_free()
+
 func finish_character():
 	apply_preserved_settings()
+	$TraitSelection.hide()
+	$ClassPanel.hide()
+	person.is_active = true
 	state.add_slave(person)
 	person.unlock_class(selected_class)
 	person.food_consumption = 3
@@ -520,5 +537,6 @@ func select_sex_trait(trait):
 		person.sex_traits.clear()
 		person.sex_traits.append(trait.code)
 	$TraitSelection.hide()
+	input_handler.GetTextTooltip().hide()
 	RebuildStatsContainer()
 

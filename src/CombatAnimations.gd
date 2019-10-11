@@ -146,7 +146,7 @@ func targetattack(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
-	input_handler.gfx(node, 'slash')
+	input_handler.gfx_sprite(node, 'strike', 0.3, 0.1)
 	#tween.interpolate_callback(self, nextanimationtime, 'nextanimation')
 	tween.start()
 	
@@ -218,8 +218,9 @@ func hp_update(node, args):
 	#float damage
 	if args.damage_float:
 		if crit_display.has(node):
+			args.color = Color(1,0.8,0)
 			crit_display.erase(node)
-			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
+			tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)) + '!', type = args.type, size = 120, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 		else: tween.interpolate_callback(input_handler, delay, 'FloatTextArgs', {node = node, text = str(ceil(args.damage)), type = args.type, size = 80, color = args.color, time = 1, fadetime = 0.5, offset = Vector2(0,0)})
 	#input_handler.FloatText(node, str(args.damage), args.type, 150, args.color, 2, 0.2, Vector2(node.get_node('Icon').rect_position.x+25, node.get_node("Icon").rect_position.y+100))
 	#update hp bar

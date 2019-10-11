@@ -192,14 +192,12 @@ mouse_filter = 2
 text = "Name Race Age Sex"
 
 [node name="GridContainer" type="GridContainer" parent="."]
-editor/display_folded = true
-margin_left = 6.27222
-margin_top = 492.211
-margin_right = 560.272
-margin_bottom = 592.211
-grow_vertical = 0
+margin_left = 6.0
+margin_top = 492.0
+margin_right = 560.0
+margin_bottom = 592.0
 mouse_filter = 2
-columns = 5
+columns = 11
 
 [node name="Button" type="TextureRect" parent="GridContainer"]
 visible = false

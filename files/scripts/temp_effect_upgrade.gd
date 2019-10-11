@@ -139,7 +139,6 @@ func deserialize(tmp):
 	template_name = template.name
 	stage = int(tmp.stage)
 	stored_duration = int(tmp.s_dur)
-	pass
 
 func remove():
 	if !is_applied: return

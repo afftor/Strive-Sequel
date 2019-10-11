@@ -33,7 +33,7 @@ var stats = {
 	resistdark = tr('RESISTDARK'),
 	resistmind = tr('RESISTMIND'),
 	mdef = tr("MDEF"),
-	task_energy_tool = tr("TASKENERGYTOOL"),
+	task_crit_chance = tr("TASKCRITCHANCE"),
 	task_efficiency_tool = tr("TASKEFFICIENCYTOOL"),
 	
 	physics_bonus = '',
@@ -67,29 +67,29 @@ var Parts = {
 	Rod = {name = tr("ROD"), code = 'Rod', icon = load("res://assets/images/iconsitems/parts/rod.png")},
 	BowBase = {name = tr("BOWBASE"), code = 'BowBase', icon = load("res://assets/images/iconsitems/parts/bow_base.png")},
 	BowTrim = {name = tr("BOWTRIM"), code = 'BowTrim', icon = load("res://assets/images/iconsitems/parts/trim.png")},
-	ArmorBaseCloth = {name = tr("ARMORBASE"), code = 'ArmorBaseCloth', icon = null},
-	ArmorBaseMed = {name = tr("ARMORBASE"), code = 'ArmorBaseMed', icon = null},
-	ArmorBaseHeavy = {name = tr("ARMORBASE"), code = 'ArmorBaseHeavy', icon = null},
+	ArmorBaseCloth = {name = tr("ARMORBASE"), code = 'ArmorBaseCloth', icon = load("res://assets/images/iconsitems/parts/armorbase.png")},
+	ArmorBaseMed = {name = tr("ARMORBASE"), code = 'ArmorBaseMed', icon = load("res://assets/images/iconsitems/parts/armorbase.png")},
+	ArmorBaseHeavy = {name = tr("ARMORBASE"), code = 'ArmorBaseHeavy', icon = load("res://assets/images/iconsitems/parts/armorbase.png")},
 	ArmorTrim = {name = tr("ARMORTRIM"), code = 'ArmorTrim', icon = load("res://assets/images/iconsitems/parts/trim.png")},
-	ArmorCloth = {name = tr("ARMORCLOTH"), code = 'ArmorCloth', icon = null},
+	ArmorCloth = {name = tr("ARMORCLOTH"), code = 'ArmorCloth', icon = load("res://assets/images/iconsitems/parts/armorbase.png")},
 	JewelryGem = {name = tr("JEWELRYGEM"), code = 'JewelryGem', icon = load("res://assets/images/iconsitems/parts/rod.png")},
 }
 
 
 var partmaterials = {
 	ToolHandle = {
-		wood = {task_energy_tool = 0.05},
-		woodmagic = {task_energy_tool = 0.1},
-		woodancient = {task_energy_tool = 0.2},
-		woodiron = {task_energy_tool = 0.15},
-		iron = {task_energy_tool = 0.1},
-		steel = {task_energy_tool = 0.12},
-		mithril = {task_energy_tool = 0.15},
-		adamantine = {task_energy_tool = 0.2},
-		bone = {task_energy_tool = 0.1},
-		boneancient = {task_energy_tool = 0.15},
-		bonedragon = {task_energy_tool = 0.18},
-		obsidian = {task_energy_tool = 0.05},
+		wood = {task_crit_chance = 0.03},
+		woodmagic = {task_crit_chance = 0.06},
+		woodancient = {task_crit_chance = 0.1},
+		woodiron = {task_crit_chance = 0.1},
+		iron = {task_crit_chance = 0.05},
+		steel = {task_crit_chance = 0.08},
+		mithril = {task_crit_chance = 0.12},
+		adamantine = {task_crit_chance = 0.15},
+		bone = {task_crit_chance = 0.04},
+		boneancient = {task_crit_chance = 0.1},
+		bonedragon = {task_crit_chance = 0.18},
+		obsidian = {task_crit_chance = 0.11},
 	},
 	WeaponHandle = {
 		wood = {hitrate = 5},
@@ -553,7 +553,7 @@ var materiallist = {
 		code = 'fleawarts',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/Bone.png"),
+		icon = load("res://assets/images/iconsitems/BlueGrass.png"),
 		price = 5,
 		type = 'plant',
 		tier = 'easy',
@@ -563,7 +563,7 @@ var materiallist = {
 		code = 'salvia',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/BlueGrass.png"),
+		icon = load("res://assets/images/iconsitems/parts/trim.png"),
 		price = 15,
 		type = 'plant',
 		tier = 'easy',
@@ -1105,8 +1105,8 @@ var itemlist = {
 		geartype = 'sword',
 		weaponrange = 'melee',
 		reqs = [{code = 'trait', value = 'weapon_mastery'}],
-		parts = {Blade = 10, ToolHandle = 5},
-		partcolororder = {ToolHandle = 1, Blade = 2},
+		parts = {Blade = 10, WeaponHandle = 5},
+		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
 		tags = ['recipe'],
 		repairdifficulty = 'easy',
@@ -1127,11 +1127,11 @@ var itemlist = {
 		type = 'gear',
 		itemtype = 'weapon',
 		geartype = 'bow',
-		weaponrange = 'melee',
+		weaponrange = 'any',
 		reqs = [{code = 'trait', value = 'ranged_weapon_mastery'}],
-		parts = {Blade = 10, ToolHandle = 5},
-		partcolororder = {ToolHandle = 1, Blade = 2},
-		partmaterialname = "Blade",
+		parts = {BowBase = 10, WeaponHandle = 5},
+		partcolororder = {WeaponHandle = 1, BowBase = 2},
+		partmaterialname = "BowBase",
 		tags = ['recipe'],
 		repairdifficulty = 'easy',
 		slots = ['rhand'],
@@ -1145,7 +1145,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsgear/StaffBasic.png"),
 		tier = 'easy',
 		price = 0,
-		basestats = {atk = 20},
+		basestats = {atk = 10, matk = 10},
 		basemods = {},
 		crafttype = 'modular',
 		type = 'gear',
@@ -1153,9 +1153,9 @@ var itemlist = {
 		geartype = 'staff',
 		weaponrange = 'melee',
 		reqs = [{code = 'trait', value = 'magic_tools'}],
-		parts = {Blade = 10, ToolHandle = 5},
-		partcolororder = {ToolHandle = 1, Blade = 2},
-		partmaterialname = "Blade",
+		parts = {Rod = 10, WeaponHandle = 5},
+		partcolororder = {WeaponHandle = 1, Rod = 2},
+		partmaterialname = "Rod",
 		tags = ['recipe'],
 		repairdifficulty = 'easy',
 		slots = ['rhand'],
@@ -1346,7 +1346,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = [],
 		price = 25,
-		icon = load("res://assets/images/iconsitems/PotionLesser.png"),
+		icon = load("res://assets/images/iconsitems/alcohol.png"),
 		tier = 'easy',
 		reqs = [],
 		effects = [],
@@ -1595,7 +1595,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material', 
 		resultitem = 'bread', 
-		workunits = 15, 
+		workunits = 3, 
 		worktype = 'cooking'
 	},
 	meatsoup = {
@@ -1607,7 +1607,7 @@ var recipes = {
 		resultamount = 3,
 		resultitemtype = 'material', 
 		resultitem = 'meatsoup', 
-		workunits = 5, 
+		workunits = 1, 
 		worktype = 'cooking'
 	},
 	fishcakes = {
@@ -1619,7 +1619,7 @@ var recipes = {
 		resultamount = 3,
 		resultitemtype = 'material', 
 		resultitem = 'fishcakes', 
-		workunits = 5, 
+		workunits = 1, 
 		worktype = 'cooking'
 	},
 	#resources
@@ -1632,7 +1632,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material', 
 		resultitem = 'steel', 
-		workunits = 3, 
+		workunits = 2, 
 		worktype = 'smith'
 	},
 	ancientwood = {
@@ -1644,7 +1644,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material', 
 		resultitem = 'woodancient', 
-		workunits = 10, 
+		workunits = 5, 
 		worktype = 'alchemy'
 	},
 	adamantine = {
@@ -1656,7 +1656,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material', 
 		resultitem = 'adamantine', 
-		workunits = 25, 
+		workunits = 10, 
 		worktype = 'alchemy'
 	},
 	clothmagic = {
@@ -1668,7 +1668,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material', 
 		resultitem = 'clothmagic', 
-		workunits = 5, 
+		workunits = 3, 
 		worktype = 'tailor'
 	},
 	clothethereal = {
@@ -1680,7 +1680,7 @@ var recipes = {
 		resultamount = 2,
 		resultitemtype = 'material', 
 		resultitem = 'clothethereal', 
-		workunits = 20, 
+		workunits = 15, 
 		worktype = 'tailor'
 	},
 	
@@ -1694,7 +1694,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'material', 
 		resultitem = 'trap', 
-		workunits = 35, 
+		workunits = 2, 
 		worktype = 'smith'
 	},
 	unstable_concoction = {
@@ -1706,7 +1706,7 @@ var recipes = {
 		resultamount = 4,
 		resultitemtype = 'material', 
 		resultitem = 'unstable_concoction', 
-		workunits = 60, 
+		workunits = 5, 
 		worktype = 'alchemy'
 	},
 	aphrodisiac = {
@@ -1718,7 +1718,7 @@ var recipes = {
 		resultamount = 1,
 		resultitemtype = 'item', 
 		resultitem = 'aphrodisiac', 
-		workunits = 75, 
+		workunits = 15, 
 		worktype = 'alchemy'
 	},
 	alcohol = {
@@ -1730,7 +1730,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'alcohol', 
-		workunits = 25,
+		workunits = 10,
 		worktype = 'cooking'
 	},
 	lifegem = {
@@ -1742,7 +1742,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'lifegem', 
-		workunits = 10,
+		workunits = 2,
 		worktype = 'alchemy'
 	},
 	energygem = {
@@ -1754,7 +1754,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'energygem', 
-		workunits = 15,
+		workunits = 5,
 		worktype = 'alchemy'
 	},
 	revitalizer = {
@@ -1766,7 +1766,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'revitalizer', 
-		workunits = 20,
+		workunits = 15,
 		worktype = 'alchemy'
 	},
 	tamedrug = {
@@ -1778,7 +1778,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'tamedrug', 
-		workunits = 250, 
+		workunits = 50, 
 		worktype = 'alchemy'
 	},
 	ragedrug = {
@@ -1790,7 +1790,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'ragedrug', 
-		workunits = 300, 
+		workunits = 50, 
 		worktype = 'alchemy'
 	},
 	sexdrug = {
@@ -1802,7 +1802,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'sexdrug',
-		workunits = 300, 
+		workunits = 50, 
 		worktype = 'alchemy'
 	},
 	fishingtools = {
@@ -1814,7 +1814,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'fishingtools',
-		workunits = 150, 
+		workunits = 20, 
 		worktype = 'tailor'
 	},
 	leather_collar = {
@@ -1826,7 +1826,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'leather_collar',
-		workunits = 60, 
+		workunits = 10, 
 		worktype = 'tailor'
 	},
 	elegant_choker = {
@@ -1838,7 +1838,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'elegant_choker',
-		workunits = 300, 
+		workunits = 15, 
 		worktype = 'tailor'
 	},
 	steel_collar = {
@@ -1850,7 +1850,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'steel_collar',
-		workunits = 300, 
+		workunits = 15, 
 		worktype = 'smith'
 	},
 	animal_ears = {
@@ -1862,7 +1862,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'animal_ears',
-		workunits = 300, 
+		workunits = 8, 
 		worktype = 'tailor'
 	},
 	tail_plug = {
@@ -1874,7 +1874,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'tail_plug',
-		workunits = 300, 
+		workunits = 10, 
 		worktype = 'tailor'
 	},
 	animal_gloves= {
@@ -1886,7 +1886,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'animal_gloves',
-		workunits = 300, 
+		workunits = 10, 
 		worktype = 'tailor'
 	},
 	petsuit = {
@@ -1898,7 +1898,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'pet_suit',
-		workunits = 10, 
+		workunits = 1, 
 		worktype = 'tailor'
 	},
 	chastity_belt = {
@@ -1910,7 +1910,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'chastity_belt',
-		workunits = 300, 
+		workunits = 15, 
 		worktype = 'tailor'
 	},
 	stimulative_underwear = {
@@ -1922,7 +1922,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'stimulative_underwear',
-		workunits = 500, 
+		workunits = 25, 
 		worktype = 'tailor'
 	},
 	strapon = {
@@ -1934,7 +1934,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'strapon',
-		workunits = 300, 
+		workunits = 5, 
 		worktype = 'tailor'
 	},
 	handcuffs = {
@@ -1946,7 +1946,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'handcuffs',
-		workunits = 200, 
+		workunits = 10, 
 		worktype = 'tailor'
 	},
 	anal_beads = {
@@ -1958,7 +1958,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'anal_beads',
-		workunits = 200, 
+		workunits = 5, 
 		worktype = 'tailor'
 	},
 	anal_plug = {
@@ -1970,7 +1970,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'anal_plug',
-		workunits = 200, 
+		workunits = 8, 
 		worktype = 'tailor'
 	},
 	axe = {
@@ -1982,7 +1982,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'axe',
-		workunits = 75, 
+		workunits = 15, 
 		worktype = 'smith'
 	},
 	pickaxe = {
@@ -1994,7 +1994,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'pickaxe',
-		workunits = 100, 
+		workunits = 15, 
 		worktype = 'smith'
 	},
 	sickle = {
@@ -2006,7 +2006,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'sickle',
-		workunits = 150, 
+		workunits = 12, 
 		worktype = 'smith'
 	},
 	hammer = {
@@ -2018,8 +2018,44 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'hammer',
-		workunits = 250, 
+		workunits = 20, 
 		worktype = 'smith'
+	},
+	sword = {
+		code = 'sword',
+		materials = {},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'modular',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'sword',
+		workunits = 50, 
+		worktype = 'smith'
+	},
+	bow = {
+		code = 'bow',
+		materials = {},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'modular',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'bow',
+		workunits = 50, 
+		worktype = 'tailor'
+	},
+	staff = {
+		code = 'staff',
+		materials = {},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'modular',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'staff',
+		workunits = 50, 
+		worktype = 'alchemy'
 	},
 	chest_base_cloth = {
 		code = 'chest_base_cloth',
@@ -2030,7 +2066,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'chest_base_cloth',
-		workunits = 300, 
+		workunits = 15, 
 		worktype = 'tailor'
 	},
 	chest_base_leather = {
@@ -2042,7 +2078,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'chest_base_leather',
-		workunits = 300, 
+		workunits = 20, 
 		worktype = 'tailor'
 	},
 	chest_base_metal = {
@@ -2054,7 +2090,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'chest_base_metal',
-		workunits = 300, 
+		workunits = 25, 
 		worktype = 'smith'
 	},
 	legs_base_cloth = {
@@ -2066,7 +2102,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'legs_base_cloth',
-		workunits = 300, 
+		workunits = 15, 
 		worktype = 'tailor'
 	},
 	legs_base_leather = {
@@ -2078,7 +2114,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'legs_base_leather',
-		workunits = 300, 
+		workunits = 20, 
 		worktype = 'tailor'
 	},
 	legs_base_metal = {
@@ -2090,7 +2126,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'legs_base_metal',
-		workunits = 300, 
+		workunits = 25, 
 		worktype = 'smith'
 	},
 	maid_dress = {
@@ -2102,7 +2138,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'maid_dress',
-		workunits = 150, 
+		workunits = 20, 
 		worktype = 'tailor'
 	},
 	maid_headband = {
@@ -2114,7 +2150,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'maid_headband',
-		workunits = 50, 
+		workunits = 54, 
 		worktype = 'tailor'
 	},
 	lacy_underwear = {
@@ -2126,7 +2162,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'lacy_underwear',
-		workunits = 120, 
+		workunits = 15, 
 		worktype = 'tailor'
 	},
 	worker_outfit = {
@@ -2138,7 +2174,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'worker_outfit',
-		workunits = 200, 
+		workunits = 20, 
 		worktype = 'tailor'
 	},
 	craftsman_suit = {
@@ -2150,7 +2186,7 @@ var recipes = {
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'craftsman_suit',
-		workunits = 400, 
+		workunits = 30, 
 		worktype = 'tailor'
 	},
 }

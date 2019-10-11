@@ -16,7 +16,7 @@ func _ready():
 	
 	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
 	
-	for i in ['furry','furry_multiple_nipples', 'futa_balls']:
+	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'turn_based_time_flow']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
 		get_node("TabContainer/Gameplay/" + i).pressed = globals.globalsettings[i]
 	
@@ -79,7 +79,7 @@ func male_rate_change(value):
 
 func futa_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
-	globals.globalsettings.futarate = value
+	globals.globalsettings.futachance = value
 	var text = 'Futa generation chance: ' + str(value) + "%"
 	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
 

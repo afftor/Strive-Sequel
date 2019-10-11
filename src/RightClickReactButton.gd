@@ -1,4 +1,4 @@
-extends TextureButton
+extends Control
 
 signal signal_RMB
 signal signal_RMB_release

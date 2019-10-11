@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.0'
+const gameversion = 'pre-demo-test 0.1'
 
 #const worker = preload("res://files/scripts/worker.gd");
 #const Item = preload("res://src/ItemClass.gd")
@@ -21,21 +21,11 @@ var scenedict = {
 }
 var rng := RandomNumberGenerator.new()
 
-#var items
-#var TownData
 var workersdict
-#var enemydata
 var randomgroups
 
 var enemylist
 var upgradelist
-#var skillsdata
-#var effectdata
-
-#var combatantdata = load("res://files/CombatantClass.gd").new()
-
-#var classes = combatantdata.classlist
-#var characters = combatantdata.charlist
 var skills
 var effects
 var combateffects
@@ -548,6 +538,7 @@ var globalsettings = {
 	body_folder = 'user://bodies/',
 	mod_folder = 'user://mods/',
 	
+	turn_based_time_flow = false,
 	
 	guilds_any_race = true,
 	
@@ -578,6 +569,8 @@ func settings_save(value):
 	for i in globalsettings:
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
+	if CurrentScene.name == 'mansion' && weakref(CurrentScene) != null:
+		CurrentScene.set_time_buttons()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -710,8 +703,6 @@ func _ready():
 
 	#====================================
 	
-	for i in Items.materiallist.keys():
-		state.materials[i] = 0
 	
 	for i in upgradelist.keys():
 		state.upgrades[i] = 0
@@ -1162,54 +1153,6 @@ func LoadGame(filename):
 	ChangeScene('mansion');
 	yield(self, "scene_changed")
 
-	
-	#state = dict2inst(savedict.state)
-	#state.heroes.clear()
-	#state.items.clear()
-	#state.workers.clear()
-#	for i in savedict.heroes:
-#		var t = combatant.new()
-#		t = dict2inst(i)
-#		state.heroes[t.id] = t
-#	for i in savedict.items:
-#		var t = Item.new()
-#		t = dict2inst(i)
-#		t.inventory = state.items #no other inventories currently exist
-#		state.items[t.id] = t
-#	for i in savedict.workers:
-#		var t = worker.new()
-#		t = dict2inst(i)
-#		state.workers[t.id] = t
-	
-	#converting floats to ints
-	
-#	var tempdict = {}
-#	for i in state.combatparty.keys():
-#		tempdict[int(i)] = state.combatparty[i]
-#	state.combatparty = tempdict.duplicate()
-#	tempdict.clear()
-	
-#	for i in state.areaprogress.keys():
-#		tempdict[i] = int(state.areaprogress[i])
-#	state.areaprogress = tempdict.duplicate()
-#	tempdict.clear()
-	
-#	for i in state.townupgrades.keys():
-#		tempdict[i] = int(state.townupgrades[i])
-#	state.townupgrades = tempdict.duplicate()
-#	tempdict.clear()
-#	WE NEED BUILDSCREEN IN MANSION!!! (at least to rebuild slavelist)
-#	CurrentScene.buildscreen()
-#	for i in state.tasks:
-#		CurrentScene.buildcounter(i)
-#
-#	if state.CurBuild != '' and state.CurBuild != null:
-#		CurrentScene.get_node(state.CurBuild).show()
-#	#opentextscene
-#	if state.CurEvent != "":
-#		StartEventScene(state.CurEvent, false, state.CurrentLine);
-#	else:
-#		call_deferred('EventCheck');
 
 func datetime_comp(a, b):
 	if a.year > b.year: return true
@@ -1373,6 +1316,8 @@ func getrelativename(person, person2):
 	return result
 
 func impregnate(father, mother):
+	if mother.has_womb == false:
+		return
 	var check = true
 	if father.race != mother.race:
 		for i in [father, mother]:

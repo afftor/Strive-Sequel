@@ -13,10 +13,6 @@ func _ready():
 
 func open():
 	.show()
-#	if globals.CurrentScene.get_node("ExploreScreen/combat") != null && globals.CurrentScene.get_node("ExploreScreen/combat").visible:
-#		$VBoxContainer/Save.disabled = true
-#	else:
-#		$VBoxContainer/Save.disabled = false
 
 func OptionsOpen():
 	$Options.open()
@@ -29,7 +25,7 @@ func Exit():
 	input_handler.ShowConfirmPanel(self, 'MainMenu', tr('LEAVECONFIRM'))
 
 func MainMenu():
-	#state.revert()
 	globals.CurrentScene.queue_free()
 	globals.ChangeScene('menu')
 	get_parent().queue_free()
+	state.revert()

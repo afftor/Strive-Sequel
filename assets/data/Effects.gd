@@ -65,6 +65,12 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_tr_engi = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'mod_build', value = 1.0}],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_tr_chef = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'mod_cook', value = 1.0}],
@@ -138,7 +144,7 @@ var effect_table = {
 		trigger = [variables.TR_HIT],
 		reset = [variables.TR_TURN_GET],
 		req_skill = true,
-		conditions = [{type = 'skill', value = ['skilltype', 'eq', 'potion']}],
+		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}, {type = 'skill', value = ['tags', 'has', 'heal']}],
 		atomic = [],
 		buffs = [],
 		sub_effects = [
@@ -164,6 +170,25 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [{type = 'add_tag', value = 'instant'}],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
+	e_tr_witcrit = {
+		type = 'trigger',
+		trigger = [variables.TR_CAST],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		args = [{obj = 'app_obj', param = 'wits_factor'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [{obj = 'parent_args', param = 0}],
+				atomic = [{type = 'stat_add', stat = 'critchance', value = [['parent_args', 0],'*',3]}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -245,6 +270,7 @@ var effect_table = {
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
+		target = 'target',
 		name = 'hardwork',
 		tick_event = variables.TR_TICK,
 		duration = 'parent', 
@@ -405,7 +431,7 @@ var effect_table = {
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.2}],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsskills/Charm.png", 
 				description = "charmed",
 				limit = 1,
 				t_name = ''
@@ -428,7 +454,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "", 
+				icon = "res://assets/images/iconsskills/Mind_Control.png", 
 				description = "Mind controlled",
 				limit = 1,
 				t_name = ''
@@ -470,8 +496,7 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add_p', stat = 'atk', value = 0.2},
-			{type = 'stat_add_p', stat = 'matk', value = 0.2},
+			{type = 'stat_add', stat = 'modall', value = 0.2},
 			{type = 'stat_add_p', stat = 'armor', value = 0.2},
 			{type = 'stat_add_p', stat = 'mdef', value = 0.2},
 		],
@@ -790,9 +815,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'modall', value = 0.25},
-			#{type = 'bonus', bonusname = 'modall_add', value = 0.25},
-#			{type = 'stat_add_p', stat = 'atk', value = 0.25},
-#			{type = 'stat_add_p', stat = 'matk', value = 0.25},
 			{type = 'stat_mul', stat = 'armor', value = 1.25},
 		],
 		buffs = [
@@ -1011,7 +1033,7 @@ var effect_table = {
 		duration = 'parent',
 		tags = ['debuff'],
 		atomic = [
-			{type = 'stat_add', stat = 'hitchance', value = -20},
+			{type = 'stat_add', stat = 'hitrate', value = -20},
 		],
 		buffs = [
 			{
@@ -1094,6 +1116,7 @@ var effect_table = {
 		stack = 1,
 		name = 'hide',
 		tags = ['buff', 'hide'],
+		atomic = [],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Mindread.png", 
@@ -1509,7 +1532,7 @@ var effect_table = {
 	e_i_pet_suit = {
 		type = 'static',
 		conditions = [],
-		descript = "Obedience Decoy: -15%\nFear Decoy: -20%.",
+		descript = "Obedience Decay: -15%\nFear Decay: -20%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [
 		{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8},
@@ -1720,207 +1743,207 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_core_ex = {
-		type = 'trigger',
-		trigger = [variables.TR_TICK],
-		req_skill = false,
-		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'gt', value = 0} }],
-		atomic = [],
-		buffs = [],
-		sub_effects = ['e_t_ex1']
-	},
-	e_core_ex_rem = {
-		type = 'trigger',
-		trigger = [variables.TR_TICK],
-		req_skill = false,
-		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'lte', value = 0} }],
-		atomic = [],
-		buffs = [],
-		sub_effects = ['e_fire_custom']
-	},
-	e_t_ex1 = {
-		type = 'temp_u',
-		target = 'owner',
-		name = 'exhaustion',
-		tags = ['penalty', 'exhaustion'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM,
-		stages = 11,
-		next_level = 'e_t_ex2',
-		atomic = [],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_t_ex2 = {
-		type = 'temp_u',
-		name = 'exhaustion',
-		tags = ['penalty', 'exhaustion'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM,
-		stages = 24,
-		next_level = 'e_t_ex3',
-		prev_level = 'e_t_ex1',
-		atomic = [
-			{type = 'stat_mul', stat = 'hpmax', value = 0.8}
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/gui/panels/exhaust.png", 
-				description = "Exhausted - second phase",
-				t_name = 'exhaustion',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
-	e_t_ex3 = {
-		type = 'temp_u',
-		name = 'exhaustion',
-		tags = ['penalty', 'exhaustion'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM,
-		stages = 48,
-		next_level = 'e_t_ex4',
-		prev_level = 'e_t_ex2',
-		atomic = [
-			{type = 'stat_mul', stat = 'hpmax', value = 0.5},
-			{type = 'stat_add', stat = 'physic_bonus', value = -20},
-			{type = 'stat_add', stat = 'wits_bonus', value = -20},
-			{type = 'stat_add', stat = 'sexuals_bonus', value = -20},
-			{type = 'stat_add', stat = 'charm_bonus', value = -20},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/gui/panels/exhaust.png", 
-				description = "Exhausted - third phase",
-				t_name = 'exhaustion',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
-	e_t_ex4 = {
-		type = 'temp_u',
-		name = 'exhaustion',
-		tags = ['penalty', 'exhaustion'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM,
-		stages = 84,
-		next_level = 'e_t_ex5',
-		prev_level = 'e_t_ex3',
-		atomic = [
-			{type = 'stat_mul', stat = 'hpmax', value = 0.25},
-			{type = 'stat_add', stat = 'physic_bonus', value = -30},
-			{type = 'stat_add', stat = 'wits_bonus', value = -30},
-			{type = 'stat_add', stat = 'sexuals_bonus', value = -30},
-			{type = 'stat_add', stat = 'charm_bonus', value = -30},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/gui/panels/exhaust.png", 
-				description = "Exhausted - fourth phase",
-				t_name = 'exhaustion',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
-	e_t_ex5 = {
-		type = 'temp_u',
-		name = 'exhaustion',
-		tags = ['penalty', 'exhaustion'],
-		duration = 1,
-		stack = 1,
-		atomic = ['a_self_kill'],
-		buffs = [],
-		sub_effects = [],
-	},
-	e_core_fat = {
-		type = 'trigger',
-		trigger = [variables.TR_TICK],
-		req_skill = false,
-		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 0} }],
-		atomic = [],
-		buffs = [],
-		sub_effects = ['e_t_fat1']
-	},
-	e_core_fat_rem = {
-		type = 'trigger',
-		trigger = [variables.TR_TICK],
-		req_skill = false,
-		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 0} }],
-		atomic = [],
-		buffs = [],
-		sub_effects = ['e_fire_custom1']
-	},
-	e_t_fat1 = {
-		type = 'temp_u',
-		target = 'owner',
-		name = 'fatigue',
-		tags = ['penalty', 'fatigue'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM1,
-		stages = 24,
-		next_level = 'e_t_fat2',
-		atomic = [],
-		buffs = [
-		],
-		sub_effects = [],
-	},
-	e_t_fat2 = {
-		type = 'temp_u',
-		name = 'fatigue',
-		tags = ['penalty', 'fatigue'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM1,
-		stages = 24,
-		next_level = 'e_t_fat3',
-		prev_level = 'e_t_fat1',
-		atomic = [
-			{type = 'stat_mul', stat = 'obed_degrade_mod', value = 1.5},
-			{type = 'stat_add', stat = 'wits_bonus', value = -15},
-			{type = 'stat_add', stat = 'charm_bonus', value = -15},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsclasses/Cattle.png", 
-				description = "Fatigued - second phase",
-				t_name = 'fatigue',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
-	e_t_fat3 = {
-		type = 'temp_u',
-		name = 'fatigue',
-		tags = ['penalty', 'fatigue'],
-		duration = 1,
-		stack = 1,
-		tick_event = variables.TR_CUSTOM1,
-		prev_level = 'e_t_fat2',
-		atomic = [
-			{type = 'stat_mul', stat = 'obed_degrade_mod', value = 2.0},
-			{type = 'stat_mul', stat = 'energy_work_mod', value = 2.0},
-			{type = 'stat_add', stat = 'wits_bonus', value = -25},
-			{type = 'stat_add', stat = 'charm_bonus', value = -25},
-		],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsclasses/Cattle.png", 
-				description = "Fatigued - third phase",
-				t_name = 'fatigue',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
+#	e_core_ex = {
+#		type = 'trigger',
+#		trigger = [variables.TR_TICK],
+#		req_skill = false,
+#		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'gt', value = 0} }],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = ['e_t_ex1']
+#	},
+#	e_core_ex_rem = {
+#		type = 'trigger',
+#		trigger = [variables.TR_TICK],
+#		req_skill = false,
+#		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'lte', value = 0} }],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = ['e_fire_custom']
+#	},
+#	e_t_ex1 = {
+#		type = 'temp_u',
+#		target = 'owner',
+#		name = 'exhaustion',
+#		tags = ['penalty', 'exhaustion'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM,
+#		stages = 11,
+#		next_level = 'e_t_ex2',
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = [],
+#	},
+#	e_t_ex2 = {
+#		type = 'temp_u',
+#		name = 'exhaustion',
+#		tags = ['penalty', 'exhaustion'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM,
+#		stages = 24,
+#		next_level = 'e_t_ex3',
+#		prev_level = 'e_t_ex1',
+#		atomic = [
+#			{type = 'stat_mul', stat = 'hpmax', value = 0.8}
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/gui/panels/exhaust.png", 
+#				description = "Exhausted - second phase",
+#				t_name = 'exhaustion',
+#				limit = 1
+#			}
+#		],
+#		sub_effects = [],
+#	},
+#	e_t_ex3 = {
+#		type = 'temp_u',
+#		name = 'exhaustion',
+#		tags = ['penalty', 'exhaustion'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM,
+#		stages = 48,
+#		next_level = 'e_t_ex4',
+#		prev_level = 'e_t_ex2',
+#		atomic = [
+#			{type = 'stat_mul', stat = 'hpmax', value = 0.5},
+#			{type = 'stat_add', stat = 'physic_bonus', value = -20},
+#			{type = 'stat_add', stat = 'wits_bonus', value = -20},
+#			{type = 'stat_add', stat = 'sexuals_bonus', value = -20},
+#			{type = 'stat_add', stat = 'charm_bonus', value = -20},
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/gui/panels/exhaust.png", 
+#				description = "Exhausted - third phase",
+#				t_name = 'exhaustion',
+#				limit = 1
+#			}
+#		],
+#		sub_effects = [],
+#	},
+#	e_t_ex4 = {
+#		type = 'temp_u',
+#		name = 'exhaustion',
+#		tags = ['penalty', 'exhaustion'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM,
+#		stages = 84,
+#		next_level = 'e_t_ex5',
+#		prev_level = 'e_t_ex3',
+#		atomic = [
+#			{type = 'stat_mul', stat = 'hpmax', value = 0.25},
+#			{type = 'stat_add', stat = 'physic_bonus', value = -30},
+#			{type = 'stat_add', stat = 'wits_bonus', value = -30},
+#			{type = 'stat_add', stat = 'sexuals_bonus', value = -30},
+#			{type = 'stat_add', stat = 'charm_bonus', value = -30},
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/gui/panels/exhaust.png", 
+#				description = "Exhausted - fourth phase",
+#				t_name = 'exhaustion',
+#				limit = 1
+#			}
+#		],
+#		sub_effects = [],
+#	},
+#	e_t_ex5 = {
+#		type = 'temp_u',
+#		name = 'exhaustion',
+#		tags = ['penalty', 'exhaustion'],
+#		duration = 1,
+#		stack = 1,
+#		atomic = ['a_self_kill'],
+#		buffs = [],
+#		sub_effects = [],
+#	},
+#	e_core_fat = {
+#		type = 'trigger',
+#		trigger = [variables.TR_TICK],
+#		req_skill = false,
+#		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 30} }],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = ['e_t_fat1']
+#	},
+#	e_core_fat_rem = {
+#		type = 'trigger',
+#		trigger = [variables.TR_TICK],
+#		req_skill = false,
+#		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 30} }],
+#		atomic = [],
+#		buffs = [],
+#		sub_effects = ['e_fire_custom1']
+#	},
+#	e_t_fat1 = {
+#		type = 'temp_u',
+#		target = 'owner',
+#		name = 'fatigue',
+#		tags = ['penalty', 'fatigue'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM1,
+#		stages = 24,
+#		next_level = 'e_t_fat2',
+#		atomic = [],
+#		buffs = [
+#		],
+#		sub_effects = [],
+#	},
+#	e_t_fat2 = {
+#		type = 'temp_u',
+#		name = 'fatigue',
+#		tags = ['penalty', 'fatigue'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM1,
+#		stages = 24,
+#		next_level = 'e_t_fat3',
+#		prev_level = 'e_t_fat1',
+#		atomic = [
+#			{type = 'stat_mul', stat = 'obed_degrade_mod', value = 1.5},
+#			{type = 'stat_add', stat = 'wits_bonus', value = -15},
+#			{type = 'stat_add', stat = 'charm_bonus', value = -15},
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/iconsclasses/Cattle.png", 
+#				description = "Fatigued - second phase",
+#				t_name = 'fatigue',
+#				limit = 1
+#			}
+#		],
+#		sub_effects = [],
+#	},
+#	e_t_fat3 = {
+#		type = 'temp_u',
+#		name = 'fatigue',
+#		tags = ['penalty', 'fatigue'],
+#		duration = 1,
+#		stack = 1,
+#		tick_event = variables.TR_CUSTOM1,
+#		prev_level = 'e_t_fat2',
+#		atomic = [
+#			{type = 'stat_mul', stat = 'obed_degrade_mod', value = 2.0},
+#			{type = 'stat_mul', stat = 'energy_work_mod', value = 2.0},
+#			{type = 'stat_add', stat = 'wits_bonus', value = -25},
+#			{type = 'stat_add', stat = 'charm_bonus', value = -25},
+#		],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/iconsclasses/Cattle.png", 
+#				description = "Fatigued - third phase",
+#				t_name = 'fatigue',
+#				limit = 1
+#			}
+#		],
+#		sub_effects = [],
+#	},
 	
 	
 	
@@ -2114,7 +2137,7 @@ var buffs = {
 		t_name = 'shackles'
 	},
 	b_charm = {
-		icon = "res://assets/images/iconsitems/Charm.png", 
+		icon = "res://assets/images/iconsskills/Charm.png", 
 		description = "Is charmed. %d hours remains",
 		args = [{obj = 'parent', param = 'remains'}],
 		limit = 1,
