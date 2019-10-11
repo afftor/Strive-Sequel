@@ -1335,8 +1335,8 @@ func work_tick_values(currenttask):
 	
 	var workstat = races.tasklist[currenttask.code].workstat
 	if !has_status('no_working_bonuses'): 
-	  set(workstat, min(get(workstat) + 0.06, get(workstat+"_factor")*20))
-	  base_exp += 1
+		set(workstat, min(get(workstat) + 0.06, get(workstat+"_factor")*20))
+		base_exp += 1
 
 func make_item_sequence(currenttask, craftingitem):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
