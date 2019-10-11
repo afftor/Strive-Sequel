@@ -327,8 +327,10 @@ func set_material(material, operant, value):
 		'=':
 			materials[material] = value
 
-func remove_slave(tempslave):
-	characters.erase(tempslave.id)
+func remove_slave(tempslave, permanent = false):
+	characters_pool.move_to_pool(tempslave.id)
+	tempslave.is_players_character = false
+	if permanent: tempslave.is_active = false
 	character_order.erase(tempslave.id)
 	input_handler.update_slave_list()
 

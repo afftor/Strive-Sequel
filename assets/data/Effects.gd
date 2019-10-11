@@ -107,6 +107,38 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_tr_food = {
+		type = 'static',
+		atomic = [{type = 'stat_add', stat = 'food_consumption', value = 3}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_prod1 = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_prod2 = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.25},
+			{type = 'stat_add_p', stat = 'obed_degrade_mod', value = 0.5},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tr_prod3 = {
+		type = 'static',
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.25},
+		],
+		tags = ['no_working_bonuses'],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_tr_potion = {
 		type = 'trigger',
 		trigger = [variables.TR_HIT],
@@ -132,7 +164,7 @@ var effect_table = {
 		req_skill = true,
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
-		buffs = [],
+		buffs = ['b_stun'],#buff for indicating free item use, obviosly not b_stun
 		sub_effects = [
 			{
 				type = 'oneshot',

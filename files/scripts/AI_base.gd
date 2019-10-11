@@ -37,7 +37,7 @@ func _set_next_state():
 			current_state = line.next_state
 			return
 
-func calculate_target_list(): #utility checks and targets calculating 
+func calculate_target_list(hide_ignore = false): #utility checks and targets calculating 
 	#for most of the cases reimplementing this function in inherited classes is not reqired
 	#works worser for skills with repeat and random targets
 	for s_n in app_obj.combat_skills:
@@ -90,8 +90,8 @@ func calculate_target_list(): #utility checks and targets calculating
 			'enemy':
 				var pos_targets
 				match t_skill.target_range:
-					'melee', 'weapon': pos_targets = globals.combat_node.get_enemy_targets_melee(app_obj)
-					'any': pos_targets = globals.combat_node.get_enemy_targets_all(app_obj)
+					'melee', 'weapon': pos_targets = globals.combat_node.get_enemy_targets_melee(app_obj, hide_ignore)
+					'any': pos_targets = globals.combat_node.get_enemy_targets_all(app_obj, hide_ignore)
 				for target in pos_targets:
 					var target_dir = {target = target.position, quality = 1.0}
 					var act_targets = globals.combat_node.CalculateTargets(t_skill, target)
@@ -133,15 +133,16 @@ func _get_weight_for_skill(s_name):
 	res *= tmp
 	return res
 
-func _get_action():
-	calculate_target_list()
-	_set_next_state()
+func _get_action(hide_ignore = false):
+	calculate_target_list(hide_ignore)
+	if !hide_ignore: _set_next_state()
 	var actions = []
 	for s_n in app_obj.combat_skills:
 		actions.push_back([s_n, _get_weight_for_skill(s_n)])
 	if actions.size() == 0:
 		print ('ERROR IN AI TEMPLATE')
-	return input_handler.weightedrandom(actions)
+	var res = input_handler.weightedrandom(actions)
+	return res
 
 func _get_target(s_name):#for chosen with _get_action() func
 	var targets = []
