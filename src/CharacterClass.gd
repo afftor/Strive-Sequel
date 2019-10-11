@@ -73,9 +73,9 @@ var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
 var mpmax = 50 setget , get_mana_max
 
-var energy := 100.0 setget energy_set
-var energymax = 100
-var energybonus = 0
+#var energy := 100.0 setget energy_set
+#var energymax = 100
+#var energybonus = 0
 var base_exp = 0
 var exp_mod = 1
 
@@ -83,9 +83,7 @@ var exp_mod = 1
 var xpreward = 10
 var loottable
 
-var fatigue = 0 setget fatigue_set
-var exhaustion = 0 setget exhaustion_set
-var productivity := 100.0 setget ,productivity_get
+var productivity := 100.0 #setget ,productivity_get
 
 #productivity mods
 var mod_build = 1.0
@@ -213,12 +211,6 @@ var mouth_virgin = true
 #tasks
 var sleep = ''
 var work = ''
-var work_simple = true
-var work_simple_state = 'work'
-var workhours = 12
-var resthours = 8
-var joyhours = 4
-var current_day_spent = {workhours = 0, resthours = 0, joyhours = 0}
 var work_rules = {ration = false, shifts = false, constrain = false}
 
 var shackles_chance = null
@@ -232,7 +224,6 @@ var travel_time = 0
 var relatives = {}
 var tags = []
 
-var last_tick_assignement = 'rest'
 var messages = []
 
 var sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}}
@@ -1078,8 +1069,6 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 			i.workers.append(self.id)
 			work = i.code
 	
-	for i in current_day_spent:
-		current_day_spent[i] = 0
 	
 	if taskexisted == true:
 		return
@@ -1169,41 +1158,9 @@ func tick():
 		
 		return
 	
-	if skip_work == false:
-		if work_simple == true:
-			
-			call(work_simple_state + "_tick")
-			
-			match work_simple_state:
-				'work':
-					if energy <= 0:
-						work_simple_state = 'joy'
-				'joy':
-					if fatigue <= 0:
-						work_simple_state = 'rest'
-				'rest':
-					if energy >= 100:
-						work_simple_state = 'work'
-			
-		else:
-			var totalday = 0
-			for i in current_day_spent.values():
-				totalday += i
-			if totalday >= 24:
-				for i in current_day_spent:
-					current_day_spent[i] = 0
-			
-			if current_day_spent.workhours < workhours:
-				work_tick()
-			elif current_day_spent.joyhours < joyhours:
-				joy_tick()
-			else:
-				rest_tick()
-	else:
-		if fatigue > 10:
-			joy_tick()
-		else:
-			rest_tick()
+	
+	work_tick()
+	
 	
 	if last_escape_day_check != state.date && randf() <= 0.2:
 		check_escape_possibility()
@@ -1246,24 +1203,24 @@ func death():
 	if globals.combat_node == null:
 		characters_pool.cleanup()
 
-func energy_set(value):
-	energymax = 100 + energybonus
-	if value < 0:
-		self.exhaustion += -value
-		energy = 0
-	else:
-		energy = min(value, energymax)
+#func energy_set(value):
+#	energymax = 100 + energybonus
+#	if value < 0:
+#		self.exhaustion += -value
+#		energy = 0
+#	else:
+#		energy = min(value, energymax)
 
-func fatigue_set(value):
-	if traits.has('undead'): return
-	fatigue = clamp(value, 0, 100)
+#func fatigue_set(value):
+#	if traits.has('undead'): return
+#	fatigue = clamp(value, 0, 100)
+#
+#func exhaustion_set(value):
+#	exhaustion = clamp(value, 0, 1000)
+#	set_productivity()
 
-func exhaustion_set(value):
-	exhaustion = clamp(value, 0, 1000)
-	set_productivity()
-
-func set_productivity():
-	productivity = ceil(100 - min(25,fatigue*0.25) - min(25,exhaustion*0.1))
+#func set_productivity():
+#	productivity = 100
 
 func productivity_get():
 	return productivity
@@ -1308,9 +1265,11 @@ func get_food():
 		apply_effect(effects_pool.add_effect(eff))
 		state.text_log_add('food', get_short_name() + ": has no food.")
 
+func rest_tick():
+	return
+
 func work_tick():
 	var currenttask
-	last_tick_assignement = 'work'
 	for i in state.active_tasks:
 		if i.workers.has(self.id):
 			currenttask = i
@@ -1318,7 +1277,7 @@ func work_tick():
 	if currenttask == null:
 		work = ''
 		return
-
+	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
@@ -1340,7 +1299,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity*get(currenttask.mod)/100)
+			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(productivity*get(currenttask.mod)/100)
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1352,7 +1311,7 @@ func work_tick():
 		else:
 			messages.erase('noupgrade')
 			work_tick_values(currenttask)
-			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(productivity/100)
+			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(productivity/100)
 			if state.upgrade_progresses[state.selected_upgrade.code].progress >= globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress:
 				if state.upgrades.has(state.selected_upgrade.code):
 					state.upgrades[state.selected_upgrade.code] += 1
@@ -1364,7 +1323,7 @@ func work_tick():
 				state.selected_upgrade.code = ''
 	else:
 		work_tick_values(currenttask)
-		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product)*(get_stat('productivity')*get_stat(currenttask.mod)/100)#races.call(races.tasklist[currenttask.code].production[currenttask.product].progress_function, self)*(productivity*get(currenttask.mod)/100)
+		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(get_stat('productivity')*get_stat(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
@@ -1373,24 +1332,10 @@ func work_tick():
 				state.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 
 func work_tick_values(currenttask):
-	var energyvalue = variables.basic_energy_per_work_tick
-	current_day_spent.workhours += 1
-	if traits.has('undead'):
-		energyvalue = 0
-	elif currenttask.code == 'prostitution' && traits.has('succubus_trait'):
-		energyvalue *= 0.7
 	
-	if self.gear.rhand != null:
-		var task = races.tasklist[currenttask.code]
-		var item = state.items[self.gear.rhand]
-		if task.has('worktool') && item.toolcategory == task.worktool && item.bonusstats.has("task_efficiency_tool"):
-			energyvalue = energyvalue - energyvalue*item.bonusstats.task_energy_tool
-	
-	
-	self.energy -= energyvalue
 	var workstat = races.tasklist[currenttask.code].workstat
-	set(workstat, min(get(workstat) + 0.1, get(workstat+"_factor")*20))
-	base_exp += 2.1
+	set(workstat, min(get(workstat) + 0.06, get(workstat+"_factor")*20))
+	base_exp += 1
 
 func make_item_sequence(currenttask, craftingitem):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
@@ -1462,28 +1407,6 @@ func make_item(temprecipe):
 		if temprecipe.repeats == 0:
 			state.craftinglists[Items.recipes[temprecipe.code].worktype].erase(temprecipe)
 
-func joy_tick():
-	last_tick_assignement = 'joy'
-	current_day_spent.joyhours += 1
-	self.fatigue -= 4
-
-func rest_tick():
-	last_tick_assignement = 'rest'
-	current_day_spent.resthours += 1
-	if exhaustion > 0:
-		if starvation == false:
-			if exhaustion - float(energymax)/16 < 0:
-				var leftvalue = abs(exhaustion - float(energymax)/16)
-				self.exhaustion = 0
-				self.energy += leftvalue*1.5
-			else:
-				self.exhaustion -= float(energymax)/16
-				self.energy += float(energymax)/10
-		else:
-			self.energy += float(energymax)/10
-	else:
-		self.energy += float(energymax)/7.7
-	self.fatigue -= 1
 
 func obed_set(value):
 	obedience = clamp(float(value), 0, 100)
@@ -2076,9 +1999,6 @@ func check_skill_availability(s_code, target):
 	if mp < template.manacost:
 		descript = get_short_name() + ": Not enough mana."
 		check = false
-	if energy < template.energycost:
-		descript = get_short_name() + ": Not enough energy."
-		check = false
 	if social_skills_charges.has(s_code) && social_skills_charges[s_code] >= template.charges:
 		descript = get_short_name() + ": " + template.name + " - No charges left."
 		check = false
@@ -2138,7 +2058,6 @@ func use_social_skill(s_code, target):#add logging if needed
 	if template.has('goldcost'):
 		state.money -= template.goldcost
 	self.mp -= template.manacost
-	self.energy -= template.energycost
 	
 	if template.charges > 0 && variables.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):

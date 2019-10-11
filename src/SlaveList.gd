@@ -20,7 +20,7 @@ func rebuild():
 		newbutton.get_node("state").texture = get_state_texture(person)
 		newbutton.get_node("obed/Label").text = str(round(person.obedience))
 		newbutton.get_node("fear/Label").text = str(round(person.fear))
-		newbutton.get_node("en/Label").text = str(round(person.energy))
+		#newbutton.get_node("en/Label").text = str(round(person.energy))
 		newbutton.get_node("mp/Label").text = str(round(person.mp))
 		newbutton.set_meta('slave', person)
 		
@@ -54,7 +54,7 @@ func update():
 		newbutton.get_node("state").texture = get_state_texture(i)
 		newbutton.get_node("obed/Label").text = str(round(i.obedience))
 		newbutton.get_node("fear/Label").text = str(round(i.fear))
-		newbutton.get_node("en/Label").text = str(round(i.energy))
+		#newbutton.get_node("en/Label").text = str(round(i.energy))
 		newbutton.get_node("mp/Label").text = str(round(i.mp))
 		if i.location != 'mansion':
 			if i.location == 'travel':
@@ -62,7 +62,7 @@ func update():
 			else:
 				newbutton.get_node('name').text = i.get_full_name() + ' - Positioned: ' + state.areas[state.location_links[i.location].area][state.location_links[i.location].category][i.location].name
 		newbutton.get_node("state").visible = i.location == 'mansion'
-		newbutton.get_node("en").visible = i.location == 'mansion'
+		#newbutton.get_node("en").visible = i.location == 'mansion'
 		newbutton.get_node("mp").visible = i.location == 'mansion'
 		newbutton.get_node("obed").visible = i.location == 'mansion'
 		newbutton.get_node("fear").visible = i.location == 'mansion'
@@ -102,6 +102,7 @@ var stateicons = {
 	joy = load('res://assets/images/gui/gui icons/joyicon.png'),
 }
 func get_state_texture(tempchar):
+	return
 	var rval = tempchar.last_tick_assignement
 	
 	rval = stateicons[rval]

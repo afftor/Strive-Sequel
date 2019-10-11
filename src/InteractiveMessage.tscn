@@ -28,6 +28,12 @@ theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
+[node name="Control" type="Control" parent="."]
+margin_left = -689.0
+margin_top = -430.0
+margin_right = 1370.0
+margin_bottom = 741.0
+
 [node name="image" type="TextureRect" parent="."]
 margin_left = 3.0
 margin_top = -379.0
@@ -74,5 +80,16 @@ margin_top = 6.3241
 margin_right = 670.108
 margin_bottom = 44.3241
 text = "Text"
+align = 1
+valign = 1
+
+[node name="hotkey" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 2.15601
+margin_top = 5.86237
+margin_right = 41.156
+margin_bottom = 43.8624
+custom_colors/font_color = Color( 1, 0.980392, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
 align = 1
 valign = 1

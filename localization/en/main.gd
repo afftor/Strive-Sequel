@@ -277,7 +277,7 @@ var TranslationDict = {
 	LEVELUP = "Level up",
 	MAXLEVEL =  "Maximum Level",
 	LEVELUPTEXT = " has just acquired a level. Select a new trait to unlock",
-	TASKENERGYTOOL = "Work Energy Bonus",
+	TASKCRITCHANCE = "Work Crit Chance",
 	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
 	TOOLWORKCATEGORY = "Tool",
 	
@@ -930,7 +930,7 @@ var TranslationDict = {
 	SKILLMINDCONTROL = "Mind Control",
 	SKILLMINDCONTROLDESCRIPT = "Overwhelms target's mind forcing a nearly complete submission.",
 	SKILLSTOPMINDCONTROL = "Remove Mind Control",
-	SKILLMSTOPMINDCONTROLDESCRIPT = "Removes Mind Control from the target, giving them back their free will.",
+	SKILLSTOPMINDCONTROLDESCRIPT = "Removes Mind Control from the target, giving them back their free will.",
 	SKILLABUSE = "Abuse",
 	SKILLABUSEDESCRIPT = "Take your anger out on someone else. \n\nImproves Obedience and removes some Fatigue for self. Target loses some Health and gain Fatigue, but also receive Fear.",
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
@@ -1022,6 +1022,7 @@ var TranslationDict = {
 	TRAITFOREMANDESCRIPT = "Woodcutting and Mining are 33% more efficient",
 	TRAITHUNTERDESCRIPT = "Fishing and Hunting are 50% more efficient.",
 	TRAITSMITHDESCRIPT = "Smith and Tailor crafts are 100% faster.",
+	TRAITENGINEERDESCRIPT = "Upgrading is 100% faster.",
 	TRAITCHEFDESCRIPT = "Cooking crafts are 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once a combat turn can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Alchemical crafts are 100% faster.\nHealing items are 25% more effective in combat.",
@@ -1032,6 +1033,8 @@ var TranslationDict = {
 	TRAITPETDESCRIPT = "Protitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
+	TRAITDIRECTORDESCRIPT = "Praises and punishments are 50% more effective.",
+	
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
 	TRAITMEDIUM_ARMOR = "Medium Armor",
@@ -1136,6 +1139,8 @@ var TranslationDict = {
 	PROFROGUEDESCRIPT = "A dirty fighter knowing how to move fast and camouflage [himself]",
 	PROFASSASSIN = "Assassin",
 	PROFASSASSINDESCRIPT = "A stealthy assassin is capable of bringing down even high armored targets.",
+	PROFENGINEER = "Engineer",
+	PROFENGINEERDESCRIPT = "A skilled professional often employed for building development and gadget inventions.",
 	
 	UPGRADEPREVBONUS = "Previous bonus: ",
 	UPGRADENEXTBONUS = "Upgrade bonus: ",

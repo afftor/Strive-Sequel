@@ -267,7 +267,7 @@ func open(tempperson):
 			newnode.get_node("Label").text = str(i.get_duration())
 		else:
 			newnode.get_node("Label").hide()
-		globals.connecttexttooltip(newnode, person.translate(i.description))
+		newnode.hint_tooltip = person.translate(i.description)
 	
 	text = "[center]" + globals.statdata.productivity.name + "[/center]\n" + globals.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity'))) 
 	for i in variables.productivity_mods:
@@ -370,8 +370,6 @@ func show_job_details(job):
 	$job_panel/job_details/RichTextLabel.bbcode_text = text
 	
 
-	$job_panel/job_details/WorkDetailsPanel.visible = !person.work_simple
-	$job_panel/job_details/SimpleBehaviorCheck.pressed = person.work_simple
 	
 
 	for i in job.production.values():
@@ -380,24 +378,22 @@ func show_job_details(job):
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/job_details/ResourceOptions)
 		if Items.materiallist.has(i.item):
 			var number
-			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
-			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
+			number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
+			text = "\n[color=yellow]Expected gain per day: " + str(number*24) + "[/color]"
+#			else:
+#				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
+#				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
-			newbutton.get_node("number").text = str(number)
+			newbutton.get_node("number").text = str(number*24)
 			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
 		else:
 			var number
-			if person.work_simple == true:
-				number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-				text = "\n[color=yellow]Expected gain per hour: " + str(number) + "[/color]"
-			else:
-				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
-			newbutton.get_node("number").text = str(number)
+			number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
+			text = "\n[color=yellow]Expected gain per day: " + str(number*24) + "[/color]"
+#			else:
+#				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
+#				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
+			newbutton.get_node("number").text = str(number*24)
 			newbutton.get_node("icon").texture = i.icon
 			globals.connecttexttooltip(newbutton, i.descript + text)
 			
@@ -411,8 +407,6 @@ func set_rest():
 
 func select_job(job, production):
 	person.assign_to_task(job.code, production)
-	for i in person.current_day_spent.values():
-		i = 0
 	$job_panel.hide()
 	open(person)
 

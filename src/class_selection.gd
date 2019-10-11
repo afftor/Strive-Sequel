@@ -42,6 +42,7 @@ func open(tempperson, tempmode = 'normal'):
 			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
+		globals.connecttexttooltip(newbutton, globals.descriptions.get_class_details(person, i, true, true))
 
 func checkbox_locked():
 	open(person, mode)

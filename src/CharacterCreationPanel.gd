@@ -500,6 +500,8 @@ func cancel_creation():
 
 func finish_character():
 	apply_preserved_settings()
+	$TraitSelection.hide()
+	$ClassPanel.hide()
 	person.is_active = true
 	state.add_slave(person)
 	person.unlock_class(selected_class)

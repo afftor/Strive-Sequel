@@ -7,11 +7,19 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_core_ex', 'e_core_ex_rem', 'e_core_fat', 'e_core_fat_rem', 'test_combat_start'],
+		effects = ['test_combat_start'],
 	}, 
 	
 	'master' : {#150% effect from social skills
 		code = 'master',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_master']#,'test_recast'],
+	}, 
+	'director' : {#150% effect from social skills
+		code = 'director',
 		name = '',
 		descript = '',
 		visible = false,
@@ -73,6 +81,14 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = ['e_tr_smith'],
+	}, 
+	engineer = {
+		code = 'engineer',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_engi'],
 	}, 
 	chef = {
 		code = 'chef',
@@ -213,7 +229,7 @@ var traits = {
 		icon = null,
 		effects = [],
 	}, 
-	undead = {#trait - no fatigue, no energy drain from tasks, charm & wit = 0, lust never grows
+	undead = {#REDO
 		code = 'undead',
 		name = '',
 		descript = '',

@@ -48,8 +48,8 @@ align = 2
 
 [node name="energy" type="Label" parent="VBoxContainer"]
 visible = false
-margin_left = 396.0
-margin_right = 524.0
+margin_left = 264.0
+margin_right = 392.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "100/100"

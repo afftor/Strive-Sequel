@@ -85,7 +85,7 @@ var professions = {
 		showupreqs = [{code = 'has_profession', value = 'master', check = false}],
 		reqs = [{code = 'stat', type = 'wits', operant = 'gte', value = 70},{code = 'has_profession', value = 'headgirl', check = true}],
 		statchanges = {charm_factor = 1, wits_bonus = 10},
-		traits = ['master'],
+		traits = ['director'],
 		skills = ['publichumiliation','publicsexhumiliation','publicexecution'],
 		combatskills = [],
 	},
@@ -599,7 +599,20 @@ var professions = {
 		skills = [],
 		combatskills = ['shadowstrike','assassinate'], 
 	},
-	
+	engineer = {
+		code = 'engineer',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Engineer_.png"),
+		tags = [],
+		categories = ['labor'],
+		showupreqs = [],
+		reqs = [{code = 'stat', type = 'wits_factor', operant = 'gte', value = 3}],
+		statchanges = {},
+		traits = [],
+		skills = [],
+		combatskills = [], 
+	},
 	
 	
 }

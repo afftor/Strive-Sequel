@@ -8,7 +8,7 @@ var CloseableWindowsArray = []
 var ShakingNodes = []
 var MousePositionScripts = []
 
-var CurrentScreen = 'Town'
+var CurrentScreen = 'menu'
 
 var BeingAnimated = []
 var SystemMessageNode
@@ -52,17 +52,20 @@ func _input(event):
 			CloseTopWindow()
 		else:
 			if globals.CurrentScene.name == 'mansion':
-				globals.CurrentScene.openmenu()
+				globals.CurrentScene.get_node("MenuPanel").open()
 	if event.is_action("F9") && event.is_pressed():
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
-	
-	
-	if CurrentScreen == 'Town' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
+	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
 		if str(int(event.as_text())) in str(range(1,4)):
-			globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
+			if globals.globalsettings.turn_based_time_flow == false:
+				globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
+			else:
+				globals.CurrentScene.timeflowhotkey(int(event.as_text()))
+	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
 
 var musicfading = false
 var musicraising = false

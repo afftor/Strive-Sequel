@@ -8,15 +8,39 @@ var gametime = 0
 var previouspeed = 0
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
+func timeflowhotkey(hotkey):
+	match hotkey:
+		1: advance_turn()
+		2: decrease_turns()
+		3: increase_turns()
+
+func advance_turn():
+	input_handler.PlaySound("button_click")
+	var number = state.hour_turns_set
+	while number > 0:
+		advance_hour()
+		number -= 1
+
+func decrease_turns():
+	state.hour_turns_set = max(state.hour_turns_set - 1, 1)
+	update_turns_label()
+
+func increase_turns():
+	state.hour_turns_set = min(state.hour_turns_set + 1, variables.hour_turn_limit)
+	update_turns_label()
+
+func update_turns_label():
+	$TimeNode/turns.text = str(state.hour_turns_set)
 
 func _ready():
 	globals.CurrentScene = self
+	input_handler.CurrentScreen = 'mansion'
 	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
 	for i in timebuttons:
-		globals.connecttexttooltip(i, tooltips[counter])
+		i.hint_tooltip = tooltips[counter]
 		i.connect("pressed",self,'changespeed',[i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
@@ -29,7 +53,9 @@ func _ready():
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
-	$TimeNode/finish_turn.connect("pressed", self, "advance_hour" )
+	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
+	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
+	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
 	
 	globals.connecttexttooltip($gold/TextureRect, tr("TOOLTIPGOLD"))
 	globals.connecttexttooltip($food/TextureRect, tr("TOOLTIPFOOD"))
@@ -76,6 +102,7 @@ func _ready():
 		character.fear = 25
 		character.lust = 50
 		character.base_exp += 500
+		character.mp = 100
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.unlock_class("assassin")
@@ -85,7 +112,7 @@ func _ready():
 		character.unlock_class("apprentice")
 		character.unlock_class("caster")
 		character.unlock_class("druid")
-		character.unlock_class("knight")
+		character.unlock_class("dominator")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -105,7 +132,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
 		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-		globals.AddItemToInventory(globals.CreateGearItem("bow", {ToolHandle = 'wood', BowBase = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
 		yield(get_tree(), 'idle_frame')
@@ -127,51 +154,49 @@ func _ready():
 	input_handler.SetMusicRandom("mansion")
 	
 	input_handler.SystemMessageNode = $SysMessage
-	
 	set_time_buttons()
 	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
 
 func _process(delta):
 	if self.visible == false:
 		return
-	$TimeNode/HidePanel.visible = gamepaused_nonplayer
 	$gold.text = str(state.money)
 	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	$population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
 	#buildscreen()
 	update_task_bar()
-	
-	if gamepaused == false:
-		for i in get_tree().get_nodes_in_group("pauseprocess"):
-			if i.visible == true:
-				previouspeed = gamespeed
-				changespeed(timebuttons[0], false)
-				gamepaused = true
-				gamepaused_nonplayer = true
-	else:
-		var allnodeshidden = true
-		for i in get_tree().get_nodes_in_group("pauseprocess"):
-			if i.visible == true:
-				allnodeshidden = false
-				break
+	if globals.globalsettings.turn_based_time_flow == false:
+		$TimeNode/HidePanel.visible = gamepaused_nonplayer
+		if gamepaused == false:
+			for i in get_tree().get_nodes_in_group("pauseprocess"):
+				if i.visible == true:
+					previouspeed = gamespeed
+					changespeed(timebuttons[0], false)
+					gamepaused = true
+					gamepaused_nonplayer = true
+		else:
+			var allnodeshidden = true
+			for i in get_tree().get_nodes_in_group("pauseprocess"):
+				if i.visible == true:
+					allnodeshidden = false
+					break
+			
+			
+			
+			if allnodeshidden == true && gamepaused_nonplayer == true:
+				restoreoldspeed(previouspeed)
+				gamepaused_nonplayer = false
+				gamepaused = false
 		
-		
-		
-		if allnodeshidden == true && gamepaused_nonplayer == true:
-			restoreoldspeed(previouspeed)
-			gamepaused_nonplayer = false
-			gamepaused = false
-	
-	if gamespeed != 0:
-		gametime += delta * gamespeed
-		$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
-		if gametime >= variables.SecondsPerHour:
-			gametime -= variables.SecondsPerHour
-			advance_hour()
+		if gamespeed != 0:
+			gametime += delta * gamespeed
+			$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
+			if gametime >= variables.SecondsPerHour:
+				gametime -= variables.SecondsPerHour
+				advance_hour()
 
 func advance_hour():
 	state.hour += 1
-	update_task_bar()
 	if state.hour >= variables.HoursPerDay:
 		advance_day()
 	for i in state.characters.values():
@@ -183,6 +208,10 @@ func advance_hour():
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	if globals.globalsettings.turn_based_time_flow:
 		$TimeNode/dayprogress.value = state.hour
+	
+	$gold.text = str(state.money)
+	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
+	$population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
 	state.emit_signal("hour_tick")
 
 func advance_day():
@@ -203,16 +232,21 @@ func set_time_buttons():
 			$"TimeNode/1speed".visible = false
 			$"TimeNode/2speed".visible = false
 			$TimeNode/finish_turn.visible = true
-			set_process(false)
 			$TimeNode/dayprogress.max_value = variables.HoursPerDay
 			$TimeNode/dayprogress.value = state.hour
 			$TimeNode/HidePanel.hide()
+			$TimeNode/turns.show()
+			$TimeNode/lessturn.show()
+			$TimeNode/moreturn.show()
 		false:
 			$"TimeNode/0speed".visible = true
 			$"TimeNode/1speed".visible = true
 			$"TimeNode/2speed".visible = true
 			$TimeNode/finish_turn.visible = false
-			set_process(true)
+			$TimeNode/dayprogress.max_value = 100
+			$TimeNode/turns.hide()
+			$TimeNode/lessturn.hide()
+			$TimeNode/moreturn.hide()
 
 func changespeed(button, playsound = true):
 	if globals.globalsettings.turn_based_time_flow == true:

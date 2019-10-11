@@ -12,6 +12,8 @@ signal hour_tick
 var date = 1
 var hour = 6
 
+var hour_turns_set = 1
+
 var log_node
 var log_storage = []
 
@@ -76,6 +78,9 @@ func revert():
 #to make
 	date = 1
 	hour = 6
+	itemcounter = 0
+	slavecounter = 0
+	locationcounter = 0
 	characters.clear()
 	character_order.clear()
 	items.clear()

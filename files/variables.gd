@@ -7,6 +7,8 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
+var hour_turn_limit = 8
+
 enum {PANEL_SOC, PANEL_COM}
 
 enum {RES_MISS = 1, RES_HIT = 2, RES_CRIT = 4, RES_HITCRIT = 6}; 

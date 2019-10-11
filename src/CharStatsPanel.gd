@@ -16,7 +16,7 @@ func _ready():
 
 func open(character = Slave.new()):
 	$name.text = character.get_short_name()
-	for i in ['hp','mp','energy']:
+	for i in ['hp','mp']:
 		$VBoxContainer.get_node(i).text = str(character.get_stat(i)) + "/" + str(floor(character.get_stat(i+"max")))
 	
 	for i in variables.fighter_stats_list:

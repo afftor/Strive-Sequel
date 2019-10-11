@@ -1,6 +1,7 @@
 extends Panel
 
 var operation_data
+var previousscene
 
 func open(scene):
 	if scene.has("variations"):
@@ -10,7 +11,9 @@ func open(scene):
 				break
 		
 		return
-	
+	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
+	input_handler.CurrentScreen = 'scene'
+	hold_selection = true
 	if self.visible == false:
 		input_handler.UnfadeAnimation(self, 0.2)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -36,11 +39,13 @@ func open(scene):
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	if scene.has("common_effects"):
 		state.common_effects(scene.common_effects)
+	var counter = 1
 	for i in scene.options:
 		if state.checkreqs(i.reqs) == false:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.text
+		newbutton.get_node("hotkey").text = str(counter)
 		if scene.tags.has('linked_event'):
 			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
 		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':
@@ -51,11 +56,27 @@ func open(scene):
 			newbutton.connect("pressed", self, i.code)
 		if i.has('disabled') && i.disabled == true:
 			newbutton.disabled = true
+		counter += 1
+	yield(get_tree().create_timer(0.7), "timeout")
+	hold_selection = false
+
+var hold_selection = false
+
+func select_option(number):
+	if $ScrollContainer/VBoxContainer.get_children().size() >= number && hold_selection == false:
+		var button = $ScrollContainer/VBoxContainer.get_child(number-1)
+		if button.disabled == false && button.visible == true:
+			button.toggle_mode = true
+			button.pressed = true
+			hold_selection = true
+			yield(get_tree().create_timer(0.2), "timeout")
+			button.emit_signal("pressed")
 
 func close():
 	input_handler.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
+	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
 
 func cancel_skill_usage():

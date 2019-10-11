@@ -507,6 +507,6 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			text += "\n[color=yellow]Combat Skills: "
 			for i in classdata.combatskills:
 				text += Skilldata.Skilllist[i].name + ", "
-		text = text.substr(0, text.length() - 2) + "[/color]"
+			text = text.substr(0, text.length() - 2) + "[/color]"
 	
 	return input_handler.text_cut_excessive_lines(text)

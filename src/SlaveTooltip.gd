@@ -37,7 +37,7 @@ func showup(node, person):
 			get_node("VBoxContainer/"+ i + '/bar').max_value = person.lustmax
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(get_node("VBoxContainer/"+ i + '/bar').max_value)
 	
-	for i in ['hp','energy','mp','lust']:
+	for i in ['hp','mp','lust']:
 		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
 		get_node("VBoxContainer/"+ i ).value = person.get_stat(i)
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
@@ -47,7 +47,6 @@ func showup(node, person):
 			text += "Occupation: " + races.tasklist[person.work].name
 		else:
 			text += "Occupation: None"
-		text += '\nCurrent State: ' + person.last_tick_assignement
 	$job.bbcode_text = text 
 	
 	

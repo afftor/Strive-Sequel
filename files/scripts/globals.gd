@@ -570,7 +570,7 @@ func settings_save(value):
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
 	if CurrentScene.name == 'mansion' && weakref(CurrentScene) != null:
-		get_tree().get_current_scene().set_time_buttons()
+		CurrentScene.set_time_buttons()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
