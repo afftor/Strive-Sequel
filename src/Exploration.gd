@@ -14,6 +14,7 @@ func _ready():
 	globals.AddPanelOpenCloseAnimation($QuestPanel)
 	globals.AddPanelOpenCloseAnimation($HirePanel)
 	globals.AddPanelOpenCloseAnimation($ShopPanel)
+	globals.AddPanelOpenCloseAnimation($ServicePanel)
 	$HirePanel/Button.connect("pressed", self, "guild_hire_slave")
 	$QuestPanel/AcceptQuest.connect("pressed", self, "accept_quest")
 	$SlaveSelectionPanel/ConfirmButton.connect("pressed", self, "confirm_party_selection")
@@ -316,9 +317,10 @@ func item_sell_confirm(value):
 
 var faction_actions = {
 	hire = 'Hire',
+	sellslaves = "Sell Characters",
 	quests = 'Quests',
 	upgrade = "Upgrades",
-	
+	services = "Service",
 }
 
 func enter_guild(guild):
@@ -330,20 +332,17 @@ func enter_guild(guild):
 		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.text = faction_actions[i]
 		newbutton.connect("pressed", self, "faction_"+i)
-		#newbutton.connect("pressed", self, "open_slave_list")
-#	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-#	newbutton.text = "Quests"
-#	newbutton.connect("pressed", self, "open_quest_list")
-#	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-#	newbutton.text = "Details"
-#	newbutton.connect("pressed", self, "open_details")
 	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 	newbutton.text = "Leave"
 	newbutton.connect("pressed", self, "select_category", [selectedcategory])
 
+
+
 func faction_hire():
+	hiremode = 'hire'
 	$HirePanel.show()
 	$HirePanel/Button.hide()
+	$HirePanel/RichTextLabel.bbcode_text = ""
 	globals.ClearContainer($HirePanel/VBoxContainer)
 	for i in active_faction.slaves:
 		var tchar = characters_pool.get_char_by_id(i)
@@ -356,33 +355,72 @@ func faction_hire():
 		globals.connectslavetooltip(newbutton, tchar)
 
 var selectedperson
+var hiremode = ''
+
+func faction_sellslaves():
+	hiremode = 'sell'
+	$HirePanel.show()
+	$HirePanel/Button.hide()
+	$HirePanel/RichTextLabel.bbcode_text = ""
+	globals.ClearContainer($HirePanel/VBoxContainer)
+	for i in state.characters:
+		var tchar = characters_pool.get_char_by_id(i)
+		if tchar == state.get_master():
+			continue
+		var newbutton = globals.DuplicateContainerTemplate($HirePanel/VBoxContainer)
+		newbutton.get_node("name").text = tchar.name
+		newbutton.get_node("Price").text = str(round(tchar.calculate_price()/3))
+		newbutton.connect("pressed", self, "select_slave_in_guild", [tchar])
+		newbutton.set_meta("person", tchar)
+		globals.connectslavetooltip(newbutton, tchar)
+
+
 
 func select_slave_in_guild(person = Slave):
 	selectedperson = person
-	for i in $HirePanel/VBoxContainer.get_children():
-		if i.name == "Button":
-			continue
-		i.pressed = i.get_meta("person") == person
-	var text = 'Hire ' + person.name + " for " + str(person.calculate_price()) + " gold? "
-	$HirePanel/RichTextLabel.bbcode_text = text
-	$HirePanel/Button.show()
-	$HirePanel/Button.disabled = (state.money < person.calculate_price())
+	match hiremode:
+		'hire':
+			for i in $HirePanel/VBoxContainer.get_children():
+				if i.name == "Button":
+					continue
+				i.pressed = i.get_meta("person") == person
+			var text = 'Hire ' + person.name + " for " + str(person.calculate_price()) + " gold? "
+			$HirePanel/RichTextLabel.bbcode_text = text
+			$HirePanel/Button.show()
+			$HirePanel/Button.disabled = (state.money < person.calculate_price())
+		'sell':
+			for i in $HirePanel/VBoxContainer.get_children():
+				if i.name == "Button":
+					continue
+				i.pressed = i.get_meta("person") == person
+			var text = 'Sell ' + person.name + " for " + str(round(person.calculate_price()/3)) + " gold? "
+			$HirePanel/RichTextLabel.bbcode_text = text
+			$HirePanel/Button.show()
+			$HirePanel/Button.disabled = false
 
 func guild_hire_slave():
-	if state.characters.size() >= state.get_pop_cap():
-		if state.get_pop_cap() < variables.max_population_cap:
-			input_handler.SystemMessage("You don't have enough rooms")
-		else:
-			input_handler.SystemMessage("Population limit reached")
-		return
-		
-	state.money -= selectedperson.calculate_price()
-	state.add_slave(selectedperson)
-	active_faction.slaves.erase(selectedperson.id)
-	selectedperson.area = active_area.code
-	selectedperson.location = 'mansion'
-	selectedperson.is_players_character = true
-	faction_hire()
+	match hiremode:
+		'hire':
+			if state.characters.size() >= state.get_pop_cap():
+				if state.get_pop_cap() < variables.max_population_cap:
+					input_handler.SystemMessage("You don't have enough rooms")
+				else:
+					input_handler.SystemMessage("Population limit reached")
+				return
+				
+			state.money -= selectedperson.calculate_price()
+			state.add_slave(selectedperson)
+			active_faction.slaves.erase(selectedperson.id)
+			selectedperson.area = active_area.code
+			selectedperson.location = 'mansion'
+			selectedperson.is_players_character = true
+			faction_hire()
+		'sell':
+			state.money += round(selectedperson.calculate_price()/3)
+			state.remove_slave(selectedperson)
+			active_faction.slaves.append(selectedperson.id)
+			selectedperson.is_players_character = false
+			faction_sellslaves()
 
 func open_slave_info(character):
 	input_handler.ShowSlavePanel(character)
@@ -404,6 +442,8 @@ func faction_quests():
 			newbutton.text = i.name
 			newbutton.connect("pressed",self,"see_quest_info", [i])
 			newbutton.set_meta("quest", i)
+
+
 
 var selectedquest
 
@@ -547,6 +587,41 @@ var purch_location_list = {
 	medium = {code = 'medium',price = 200, name = 'Medium Dungeon'},
 	hard = {code = 'hard',price = 300, name = 'Hard Dungeon'},
 }
+
+var service_actions = {
+	enslave = {code = 'enslave', text = 'SERVICEENSLAVE', descript = 'SERVICEENSLAVEDESCRIPT', function = 'enslave', reqs = [{type = 'has_money', value = variables.enslavement_price}], costvalue = variables.enslavement_price},
+	#free = {code = 'free', text = "Make Free", descript = '', function = 'free'}
+	
+}
+
+func faction_services():
+	$ServicePanel.show()
+	globals.ClearContainer($ServicePanel/VBoxContainer)
+	for i in service_actions.values():
+		var newbutton = globals.DuplicateContainerTemplate($ServicePanel/VBoxContainer)
+		newbutton.text = tr(i.text)
+		newbutton.connect("pressed", self, i.function)
+		newbutton.get_node("Label").text = str(i.costvalue)
+		globals.connecttexttooltip(newbutton, tr(i.descript))
+
+func enslave():
+	var reqs = [{code = 'slave_type', value = 'slave', operant = 'neq'}, {code = "is_master", check = false}]
+	input_handler.ShowSlaveSelectPanel(self, 'enslave_select', reqs)
+
+func enslave_select(character:Slave):
+	character.set_slave_category("slave")
+	input_handler.scene_character = character
+	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
+	state.common_effects(changes)
+	state.text_log_add('char',character.translate("[name] has been demoted to Slave."))
+	state.character_stat_change(character, {code = 'obedience', operant = '-', value = 100})
+	state.character_stat_change(character, {code = 'fear', operant = '-', value = 75})
+	input_handler.interactive_message('enslave', '', {})
+	input_handler.update_slave_list()
+
+func free():
+	pass
+
 
 func purchase_location_list():
 	globals.ClearContainer($ScrollContainer/VBoxContainer)

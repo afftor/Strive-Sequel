@@ -88,6 +88,8 @@ var maximum_factor_value = 6
 var basic_character_atk = 25
 var basic_character_matk = 25
 
+var enslavement_price = 100
+
 var power_adjustments_per_difficulty = {
 	easy = [1,2],
 	medium = [2,4],

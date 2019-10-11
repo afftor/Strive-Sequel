@@ -21,21 +21,11 @@ var scenedict = {
 }
 var rng := RandomNumberGenerator.new()
 
-#var items
-#var TownData
 var workersdict
-#var enemydata
 var randomgroups
 
 var enemylist
 var upgradelist
-#var skillsdata
-#var effectdata
-
-#var combatantdata = load("res://files/CombatantClass.gd").new()
-
-#var classes = combatantdata.classlist
-#var characters = combatantdata.charlist
 var skills
 var effects
 var combateffects

@@ -1494,7 +1494,7 @@ var effect_table = {
 	e_i_pet_suit = {
 		type = 'static',
 		conditions = [],
-		descript = "Obedience Decoy: -15%\nFear Decoy: -20%.",
+		descript = "Obedience Decay: -15%\nFear Decay: -20%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [
 		{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8},

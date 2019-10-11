@@ -23,6 +23,9 @@ var introduction_text = {master = "Create your Master Character", 'slave' : 'Cre
 
 func _ready():
 	globals.AddPanelOpenCloseAnimation($RaceSelection)
+	globals.AddPanelOpenCloseAnimation($TraitSelection)
+	globals.AddPanelOpenCloseAnimation($DietPanel)
+	globals.AddPanelOpenCloseAnimation($ClassPanel)
 	for i in agearray:
 		$VBoxContainer/age.add_item(i.capitalize())
 	for i in sexarray:

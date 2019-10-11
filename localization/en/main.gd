@@ -1008,9 +1008,11 @@ var TranslationDict = {
 	DIALOGUEAPHRODISIACREPORT = "[name] consumes an aphrodisiac, feeling the potent surge of lust.",
 	DIALOGUETAMEDRUGREPORT = "After consuming the drug, [name] seems to have become a lot more docile. ",
 	DIALOGUERAGEDRUGREPORT = "After consuming the drug, [name] seems to become more brutish.",
-	DIALOGUESEXDRGUREPORT = "After consuming the drug, [name]'s mind becomes fixated on the lewd things...",	
-
-
+	DIALOGUESEXDRGUREPORT = "After consuming the drug, [name]'s mind becomes fixated on the lewd things...",
+	
+	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it. ",
+	
+	
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with specific bonus. Requires at least 50 lust.",
 	DIALOGUEPET_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [name]'s accumulated Lust is going to be used for.\n\n1. Restore full Obedience for 50 Lust\n2. Convert it into Experience\n3. Restore Health and Mana",
@@ -1631,11 +1633,11 @@ var TranslationDict = {
 	TUTORIAL_CLASSES_AND_SKILLS = "Every character has access to multiple classes they can unlock. After a class is unlocked, a character receive its bonuses and can use its skills. Skills can be either social or combat, with socials skills helping to manage characters' behavior. Many skills have no other cost than daily charges, so feel free to use them as often as needed. ",
 
 
-ITEMHAIRDYE = "Hair Dye",
-ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
-
-
-ITEMMINORUS_POTION = "Minorus Potion",
+	ITEMHAIRDYE = "Hair Dye",
+	ITEMHAIRDYEDESCRIPT = "Allow you to change a person's hair color.",
+	
+	
+	ITEMMINORUS_POTION = "Minorus Potion",
 	ITEMMINORUS_POTIONDESCRIPT = "A special potion, which can be used to reduce a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMMAJORUS_POTION = "Majorus Potion",
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to expand a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
@@ -1657,7 +1659,16 @@ ITEMMINORUS_POTION = "Minorus Potion",
 	DIALOGUEASSSELECT = "Rear",
 	DIALOGUEBALLSSELECT = "Balls",
 	DIALOGUEPENISSELECT = "Penis",
-
+	
+	WORKRULERATION = "Extra Rations",
+	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
+	WORKRULESHIFTS = "Longer Shifts",
+	WORKRULESHIFTSDESCRIPT = "Character overperforms at their finest capability at the cost of future improvements. \nBoosts Productivity by 25%. Character won't gain Experience or Work Stats(Physical, etc) while working. ",
+	WORKRULECONSTRAINT = "Coerced Labor",
+	WORKRULECONSTRAINTDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 25%. Obedience Decay is increased by 50%.",
+	
+	SERVICEENSLAVE = "Enslave",
+	SERVICEENSLAVEDESCRIPT = "Makes chosen character into Slave type.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",
 }
 
 

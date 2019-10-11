@@ -323,7 +323,9 @@ func set_material(material, operant, value):
 			materials[material] = value
 
 func remove_slave(tempslave):
-	characters.erase(tempslave)
+	characters.erase(tempslave.id)
+	character_order.erase(tempslave.id)
+	input_handler.update_slave_list()
 
 func text_log_add(label, text):
 	log_storage.append({type = label, text = text, time = str(date) + ":" + str(round(hour))})
@@ -424,16 +426,27 @@ func common_effects(effects):
 									text_log_add('char', text)
 								character.tags.erase(k.value)
 					else:
-						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
-						if k.value > 0:
-							text += " + "
-						else:
-							text += " - "
-						text += str(k.value)
-						text_log_add('char', text)
-						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
+						character_stat_change(character, k)
+#						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
+#						if k.value > 0:
+#							text += " + "
+#						else:
+#							text += " - "
+#						text += str(k.value)
+#						text_log_add('char', text)
+#						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
+
+func character_stat_change(character, data):
+	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 
+	if data.operant == '+':
+		text += " + "
+	else:
+		text += " - "
+	text += str(data.value)
+	text_log_add('char', text)
+	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))
 
 func check_timed_events():
 	for i in stored_events.timed_events:

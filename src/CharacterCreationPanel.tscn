@@ -60,6 +60,7 @@ custom_colors/default_color = Color( 0.886275, 0.745098, 0.0156863, 1 )
 text = "Create your Master Character"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 38.3467
 margin_top = 160.828
 margin_right = 382.347
@@ -164,6 +165,7 @@ margin_bottom = 566.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="bodyparts" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 447.0
 margin_top = 21.0
 margin_right = 749.0
@@ -299,6 +301,7 @@ margin_bottom = 716.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="bodyparts2" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 827.0
 margin_top = 21.0
 margin_right = 1105.0
@@ -502,11 +505,10 @@ margin_bottom = 984.445
 
 [node name="RaceSelection" type="Panel" parent="."]
 visible = false
-self_modulate = Color( 0.741176, 0, 0, 1 )
-margin_left = 533.186
-margin_top = 38.3706
-margin_right = 1363.19
-margin_bottom = 834.371
+margin_left = 533.0
+margin_top = 38.0
+margin_right = 1363.0
+margin_bottom = 739.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RaceSelection"]
 margin_left = 27.7925
@@ -536,9 +538,9 @@ stretch_mode = 7
 
 [node name="RichTextLabel" type="RichTextLabel" parent="RaceSelection"]
 margin_left = 420.0
-margin_top = 45.4481
+margin_top = 68.0
 margin_right = 797.0
-margin_bottom = 729.448
+margin_bottom = 671.0
 text = "This
 Is
 A 
@@ -548,7 +550,6 @@ Text
 
 [node name="TraitSelection" type="Panel" parent="."]
 visible = false
-self_modulate = Color( 0.741176, 0, 0, 1 )
 margin_left = 715.0
 margin_top = 32.0
 margin_right = 1127.0
@@ -556,7 +557,7 @@ margin_bottom = 828.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TraitSelection"]
 margin_left = 28.0
-margin_top = 27.0
+margin_top = 72.0
 margin_right = 377.0
 margin_bottom = 755.0
 
@@ -588,22 +589,22 @@ text = "CANCEL"
 [node name="DietPanel" type="Panel" parent="."]
 visible = false
 margin_left = 755.0
-margin_top = 301.0
+margin_top = 308.0
 margin_right = 1189.0
 margin_bottom = 687.0
 
 [node name="Button" type="Button" parent="DietPanel"]
 margin_left = 82.6316
-margin_top = 315.053
+margin_top = 313.053
 margin_right = 355.632
-margin_bottom = 360.053
+margin_bottom = 358.053
 text = "Close"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DietPanel"]
 margin_left = 78.0
-margin_top = 141.0
+margin_top = 139.0
 margin_right = 367.0
-margin_bottom = 296.0
+margin_bottom = 294.0
 custom_constants/separation = 11
 
 [node name="meat" type="Label" parent="DietPanel/VBoxContainer"]
@@ -671,9 +672,9 @@ selected = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DietPanel"]
 margin_left = 49.0
-margin_top = 28.0
-margin_right = 396.0
-margin_bottom = 120.0
+margin_top = 26.0
+margin_right = 353.0
+margin_bottom = 118.0
 text = "Select 1 Liked and at least 1 Hated food types."
 
 [node name="ClassPanel" type="Panel" parent="."]

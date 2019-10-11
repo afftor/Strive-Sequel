@@ -60,6 +60,7 @@ rect_min_size = Vector2( 200, 100 )
 toggle_mode = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+editor/display_folded = true
 margin_left = 726.0
 margin_top = 188.81
 margin_right = 1249.0
@@ -77,6 +78,7 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="AreaCategories" type="HBoxContainer" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 760.0
 margin_top = 149.0
@@ -149,6 +151,7 @@ text = "Presented Characters"
 align = 1
 
 [node name="Positions" type="TextureRect" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 1363.92
 margin_top = 277.507
@@ -525,7 +528,38 @@ margin_right = 889.016
 margin_bottom = 782.11
 text = "Hire"
 
+[node name="ServicePanel" type="Panel" parent="."]
+visible = false
+margin_left = 538.0
+margin_top = 97.0
+margin_right = 1294.0
+margin_bottom = 971.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ServicePanel"]
+margin_left = 110.0
+margin_top = 59.0
+margin_right = 646.0
+margin_bottom = 724.0
+
+[node name="Button" type="Button" parent="ServicePanel/VBoxContainer"]
+visible = false
+margin_right = 536.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+text = "Button"
+
+[node name="Label" type="Label" parent="ServicePanel/VBoxContainer/Button"]
+margin_left = 478.671
+margin_top = 13.2964
+margin_right = 520.671
+margin_bottom = 37.2964
+custom_colors/font_color = Color( 0.960784, 1, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+
 [node name="QuestPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 40.7423
 margin_top = 91.4415
@@ -640,6 +674,7 @@ margin_bottom = 38.0
 text = "Days:"
 
 [node name="ShopPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 40.7423
 margin_top = 91.4415
@@ -727,6 +762,7 @@ margin_right = 969.909
 margin_bottom = 812.36
 
 [node name="FactionDetailsPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 202.991
 margin_top = 70.3418
@@ -973,6 +1009,7 @@ margin_right = 676.366
 margin_bottom = 170.0
 
 [node name="NumberSelection" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 602.0
 margin_top = 305.0

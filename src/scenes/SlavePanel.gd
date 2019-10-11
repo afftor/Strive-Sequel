@@ -71,6 +71,10 @@ func _ready():
 	
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
 	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
+	
+	for i in $job_panel/work_rules.get_children():
+		i.connect('pressed', self, 'set_work_rule', [i.name])
+		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 
 
 
@@ -278,6 +282,7 @@ func open(tempperson):
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
+	$job_panel.hide()
 	$class_learn.hide()
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
@@ -328,7 +333,6 @@ func open_jobs_window():
 	$job_panel/job_details.hide()
 	globals.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 	currentjob = null
-	update_hours()
 	var restbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 	restbutton.text = "Rest"
 	restbutton.connect("pressed", self, 'set_rest')
@@ -342,6 +346,10 @@ func open_jobs_window():
 		if person.tags.has('no_sex') && i.tags.has("sex"):
 			newbutton.disabled = true
 			globals.connecttexttooltip(newbutton, person.translate(tr("INTERACTIONSNOSEXTAG")))
+	
+	for i in person.work_rules:
+		get_node("job_panel/work_rules/"+ i).pressed = person.work_rules[i]
+	$job_panel/work_rules/constrain.visible = person != state.get_master()
 
 var currentjob
 
@@ -408,36 +416,39 @@ func select_job(job, production):
 	$job_panel.hide()
 	open(person)
 
-func check_simple_behavior():
-	person.work_simple = $job_panel/job_details/SimpleBehaviorCheck.pressed
-	show_job_details(currentjob)
+func set_work_rule(rule):
+	person.work_rules[rule] = get_node("job_panel/work_rules/"+rule).pressed
 
-func change_hours(stat):
-	var freepoints = 24 - (person.workhours + person.resthours + person.joyhours)
-	if stat.find('up') >= 0:
-		if freepoints <= 0:
-			return
-		else:
-			var statcode = stat.substr(0,stat.length()-2) + "hours"
-			person.set(statcode, person.get(statcode) + 1)
-	else:
-		var statcode = stat.substr(0,stat.length()-4) + "hours"
-		if person.get(statcode) == 0:
-			return
-		person.set(statcode, person.get(statcode) - 1)
-	
-	
-	update_hours()
-
-func update_hours():
-
-	$job_panel/job_details/WorkDetailsPanel/worklabel.text = str(person.workhours)
-	$job_panel/job_details/WorkDetailsPanel/restlabel.text = str(person.resthours)
-	$job_panel/job_details/WorkDetailsPanel/joylabel.text = str(person.joyhours)
-	$job_panel/job_details/WorkDetailsPanel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
-
-	if currentjob != null:
-		show_job_details(currentjob)
+#func check_simple_behavior():
+#	person.work_simple = $job_panel/job_details/SimpleBehaviorCheck.pressed
+#	show_job_details(currentjob)
+#
+#func change_hours(stat):
+#	var freepoints = 24 - (person.workhours + person.resthours + person.joyhours)
+#	if stat.find('up') >= 0:
+#		if freepoints <= 0:
+#			return
+#		else:
+#			var statcode = stat.substr(0,stat.length()-2) + "hours"
+#			person.set(statcode, person.get(statcode) + 1)
+#	else:
+#		var statcode = stat.substr(0,stat.length()-4) + "hours"
+#		if person.get(statcode) == 0:
+#			return
+#		person.set(statcode, person.get(statcode) - 1)
+#
+#
+#	update_hours()
+#
+#func update_hours():
+#
+#	$job_panel/job_details/WorkDetailsPanel/worklabel.text = str(person.workhours)
+#	$job_panel/job_details/WorkDetailsPanel/restlabel.text = str(person.resthours)
+#	$job_panel/job_details/WorkDetailsPanel/joylabel.text = str(person.joyhours)
+#	$job_panel/job_details/WorkDetailsPanel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
+#
+#	if currentjob != null:
+#		show_job_details(currentjob)
 
 func build_skill_panel():
 	globals.ClearContainer($SkillPanel)
