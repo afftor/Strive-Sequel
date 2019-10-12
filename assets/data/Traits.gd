@@ -122,8 +122,8 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_witcrit'],
 	},
-	cattle = {#+50% farm production
-		code = 'cattle',
+	farmer = {#+50% farm production
+		code = 'farmer',
 		name = '',
 		descript = '',
 		visible = false,

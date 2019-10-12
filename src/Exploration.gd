@@ -342,6 +342,7 @@ func faction_hire():
 	hiremode = 'hire'
 	$HirePanel.show()
 	$HirePanel/Button.hide()
+	$HirePanel/Button.text = "Hire"
 	$HirePanel/RichTextLabel.bbcode_text = ""
 	globals.ClearContainer($HirePanel/VBoxContainer)
 	for i in active_faction.slaves:
@@ -361,6 +362,7 @@ func faction_sellslaves():
 	hiremode = 'sell'
 	$HirePanel.show()
 	$HirePanel/Button.hide()
+	$HirePanel/Button.text = "Sell"
 	$HirePanel/RichTextLabel.bbcode_text = ""
 	globals.ClearContainer($HirePanel/VBoxContainer)
 	for i in state.characters:

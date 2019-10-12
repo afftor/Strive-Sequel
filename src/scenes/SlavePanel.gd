@@ -411,7 +411,18 @@ func select_job(job, production):
 	open(person)
 
 func set_work_rule(rule):
-	person.work_rules[rule] = get_node("job_panel/work_rules/"+rule).pressed
+	var setting = get_node("job_panel/work_rules/"+rule).pressed
+	person.work_rules[rule] = setting
+	match setting:
+		true:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
+			person.apply_effect(effects_pool.add_effect(eff))
+		false:
+			person.remove_static_effect_by_code("work_rule_" + rule)
+	
+	
+	open_jobs_window()
+	
 
 #func check_simple_behavior():
 #	person.work_simple = $job_panel/job_details/SimpleBehaviorCheck.pressed

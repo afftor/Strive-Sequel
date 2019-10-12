@@ -1214,7 +1214,6 @@ var Skilllist = {
 	},
 	blood_magic = {#sacrifice 10% health to get 3x mana from it, 3 charges per day 
 		code = 'blood_magic',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Blood_Mage.png"),
 		type = 'combat', 
@@ -1240,7 +1239,6 @@ var Skilllist = {
 	},
 	blood_explosion = { #sacrifice 75% health to deal 2x weapon spell damage to all enemies, usable once a day, can't use if health <= 75% 
 		code = 'blood_explosion',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firestorm.png"),
 		type = 'combat', 
@@ -2322,7 +2320,6 @@ var Skilllist = {
 	},
 	ragedrug = {
 		code = 'ragedrug',
-		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2351,7 +2348,6 @@ var Skilllist = {
 	},
 	sexdrug = {
 		code = 'sexdrug',
-		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2381,7 +2377,6 @@ var Skilllist = {
 	
 	hairdye = {
 		code = 'hairdye',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2399,7 +2394,6 @@ var Skilllist = {
 	},
 	minorus_potion = {
 		code = 'minorus_potion',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',

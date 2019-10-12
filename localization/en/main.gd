@@ -485,7 +485,10 @@ var TranslationDict = {
 	SKILLBLIZZARDDESCRIPT = "Deals 70% water magic damage to all enemies. Reduces speed by 20. 50% chance to Freeze target for 2 turns.",
 	SKILLBLESS = "Bless",
 	SKILLBLESSDESCRIPT = "Increase Damage, DEF, MDEF, Evasion, and Hitrate by 10 for 3 turns.",
-	
+	SKILLBLOOD_MAGIC = "Blood Magic",
+	SKILLBLOOD_MAGICDESCRIPT = "Sacrifice 10% of your health to convert it into mana.",
+	SKILLBLOOD_EXPLOSION = "Blood Explosion",
+	SKILLBLOOD_EXPLOSIONDESCRIPT = "Sacrifice 75% of your health to deal 2x weapon type magic damage to all enemies. ",
 	
 	SKILLEARTH_ATK = "Earth Attack",
 	SKILLEARTH_ATKDESCRIPT = "Deals Earth physical damage and has 30% chance to Stun target for 1 turn",
@@ -790,7 +793,7 @@ var TranslationDict = {
 	STATFOOD_HATEDESCRIPT = "When hated food is eaten, it will increase fatigue and reduce productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
 	
 	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
-	STATTASK_ENERGY_TOOL = "Task Energy Bonus",
+	STATTASK_CRIT_CHANCE = "Task Crit Chance",
 	
 	
 	
@@ -998,7 +1001,7 @@ var TranslationDict = {
 	DIALOGUESHACKLESREPORT = "[name] conjures magical shackles on [targetname] which will prevent [targethim] from escaping.",
 	DIALOGUEGREATSHACKLESREPORT = "[name] conjures strong magical shackles on [targetname] which will prevent [targethim] from escaping.",
 	DIALOGUEMINDCONTROLREPORT = "[name] dominates [targetname] mind with a powerful magic, turning [targethim] into obedient puppet. ",
-	DIALOGUEMINDCONTROLCANCELREPORT = "[name] removes the spell from [targetname] returning [targethim] [targethis] independency of thoughts.",
+	DIALOGUESTOPMINDCONTROLREPORT = "[name] removes the spell from [targetname] returning [targethim] [targethis] independency of thoughts.",
 	DIALOGUEHARDWORKREPORT = "[name] inspires [targetname] for harder work.",
 	DIALOGUEDISCIPLINEREPORT = "[name] inspires [targetname] to work harder.",
 	DIALOGUEAUTHORITYREPORT = "[name] uses his authority, making [targetname] work harder.",
@@ -1026,7 +1029,7 @@ var TranslationDict = {
 	TRAITCHEFDESCRIPT = "Cooking crafts are 100% faster.",
 	TRAITATTENDANTDESCRIPT = "Once a combat turn can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Alchemical crafts are 100% faster.\nHealing items are 25% more effective in combat.",
-	TRAITCATTLEDESCRIPT = "Farming is 50% more efficient. ",
+	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
 	TRAITBREEDERDESCRIPT = "Farming is 50% more efficient.\nAllows breeding with any race.\nPregnancy progresses 30% faster.\nOffspring will inherit only this character's stats.",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITSUCCUBUSDESCRIPT = "Prostitution uses 30% less energy.",
@@ -1079,8 +1082,8 @@ var TranslationDict = {
 	PROFATTENDANTDESCRIPT = "Attendants help out other characters while in the battlefield and learn to serve with high efficiency.",
 	PROFALCHEMIST = "Alchemist",
 	PROFALCHEMISTDESCRIPT = "Alchemists specialize in brewing processes which is invaluable for a steady supply of potion.",
-	PROFCATTLE = "Farmer",
-	PROFCATTLEDESCRIPT = "Farmers are trained to work with crops and not much else...",
+	PROFFARMER = "Farmer",
+	PROFFARMERDESCRIPT = "Farmers are trained to work with crops and not much else...",
 	PROFBREEDER = "Breeder",
 	PROFBREEDERDESCRIPT = "",
 	PROFHARLOT = "Harlot",
@@ -1130,7 +1133,7 @@ var TranslationDict = {
 	PROFSOULEATER = "Soul Eater",
 	PROFSOULEATERDESCRIPT = "Sometimes magic proficiency can get you so far you are able to not only control others, but consume their souls to obtain their knowledge.",
 	PROFNECROMANCER = "Necromancer",
-	PROFNECROMANCERDESCRIPT = "",
+	PROFNECROMANCERDESCRIPT = "A vile sorceror with a power over the dead. ",
 	PROFARCHER = "Archer",
 	PROFARCHERDESCRIPT = "Archers specialize in bow usage for ranged combat.",
 	PROFSNIPER = "Sniper",
@@ -1523,7 +1526,7 @@ var TranslationDict = {
 	SEXTRAITBISEXUALDESCRIPT = "[name] has fully accepted drowning in sexual pleasure with any gender. Removes penalty from same-sex actions.", 
 	SEXTRAITDEVIANTDESCRIPT = "[name] is ready to go to the lengths normal people wouldn't usually go. Removes penalty from actions with animals and undead. ", 
 	
-	SEXTRAITBREASTS = "Sensetive Chest",
+	SEXTRAITBREASTS = "Sensitive Chest",
 	SEXTRAITBREASTSDESCRIPT = "[name]'s breasts are unusually responsive to stimulation. Lust and Arousal from actions involving breasts: +50%. ",
 	
 	DIALOGUEESCAPETEXT = "[name] has escaped from your custody. Perhaps you should have focused on their loyalty or behavior more.",
@@ -1669,8 +1672,8 @@ var TranslationDict = {
 	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
 	WORKRULESHIFTS = "Longer Shifts",
 	WORKRULESHIFTSDESCRIPT = "Character overperforms at their finest capability at the cost of future improvements. \nBoosts Productivity by 25%. Character won't gain Experience or Work Stats(Physical, etc) while working. ",
-	WORKRULECONSTRAINT = "Coerced Labor",
-	WORKRULECONSTRAINTDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 25%. Obedience Decay is increased by 50%.",
+	WORKRULECONSTRAIN = "Coerced Labor",
+	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 25%. Obedience Decay is increased by 50%.",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into Slave type.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",

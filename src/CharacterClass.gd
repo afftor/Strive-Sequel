@@ -149,6 +149,7 @@ var sexuals_factor = 1 setget sex_f_set
 #food
 var food_counter = 23
 var food_consumption = 1
+var food_consumption_rations = false
 var food_love = ''
 var food_hate = []
 var food_filter = {high = [], med = [], low = [], disable = []}
@@ -736,6 +737,8 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 				check = has_status(i.value)
 			'slave_type':
 				check = input_handler.operate(i.operant, slave_class, i.value)
+			'population':
+				check = input_handler.operate(i.operant, state.characters.size(), i.value)
 		if check == false:
 			return false
 	return true
@@ -915,6 +918,12 @@ func decipher_reqs(reqs, colorcode = false):
 				text = text.substr(0, text.length()-2) + '. '
 			'trait':
 				text += "Requires: " + Traitdata.traits[i.value].name
+			'population':
+				text += "Must have Population: " + str(i.value)
+			'sex':
+				match i.operant:
+					'neq':
+						text += "Not allowed for " + i.value + "s."
 		if colorcode == true:
 			if checkreqs([i]):
 				text = '[color=yellow]' + text + '[/color]'
@@ -1227,6 +1236,8 @@ func productivity_get():
 
 func get_food():
 	var eaten = false
+	if food_consumption_rations == true && get_static_effect_by_code('work_rule_ration') == null:
+		food_consumption += 3
 	for j in ['high','med','low']:
 		for i in food_filter[j]:
 			var food = Items.materiallist[i]
@@ -1257,12 +1268,14 @@ func get_food():
 			starvation = false
 			break
 	
+	if food_consumption_rations == true:
+		food_consumption_rations = false
+		food_consumption -= 3
+	
 	if eaten == false:
 		starvation = true
-		self.exhaustion += 40
-		self.obedience -= 25
-		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_starve)
-		apply_effect(effects_pool.add_effect(eff))
+		self.obedience -= 75
+		self.hp -= 25
 		state.text_log_add('food', get_short_name() + ": has no food.")
 
 func rest_tick():
@@ -1277,6 +1290,9 @@ func work_tick():
 	if currenttask == null:
 		work = ''
 		return
+	
+	if get_static_effect_by_code("work_rule_ration") != null:
+		food_consumption_rations = true
 	
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
 		if state.craftinglists[currenttask.product].size() <= 0:
@@ -1760,6 +1776,17 @@ func apply_effect(eff_id):
 			obj.applied_obj = self
 			obj.apply()
 
+func get_static_effect_by_code(code):
+	for i in static_effects:
+		var eff = effects_pool.get_effect_by_id(i)
+		if eff.template.has('code') == false:
+			continue
+		if eff.template.code == code:
+			return eff
+
+func remove_static_effect_by_code(code):
+	var eff = get_static_effect_by_code(code)
+	eff.remove()
 
 func remove_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
