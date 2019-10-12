@@ -1815,7 +1815,7 @@ func has_status(status):
 	var res = false
 	for e in static_effects + temp_effects + triggered_effects:
 		var obj = effects_pool.get_effect_by_id(e)
-		if obj.tags.has(status):
+		if obj.template.has(status):
 			res = true
 		if obj.tags.has(status):
 			res = true
