@@ -105,7 +105,7 @@ func _ready():
 		character.mp = 100
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("trainer")
+		character.unlock_class("succubus")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
