@@ -110,7 +110,7 @@ func process_sound(sound):
 	animation_node.add_new_data(data)
 
 func rebuildbuffs():
-	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_all_buffs()}
+	var data = {node = self, time = globals.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_combat_buffs()}
 	animation_node.add_new_data(data)
 
 func process_critical():

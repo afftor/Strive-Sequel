@@ -98,7 +98,7 @@ func showup(node, person):
 	
 	globals.ClearContainer($buffs)
 	
-	for i in person.get_all_buffs():
+	for i in person.get_mansion_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffs)
 		newnode.texture = i.icon
 		if i.get_duration() != null and i.get_duration() >= 0:

@@ -28,14 +28,14 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],
 		req_skill = true,
-		conditions = [{type = 'skill', value = ['tags', 'has', 'discipline']}],
+		conditions = [],#{type = 'skill', value = ['tags', 'has', 'discipline']}],
 		atomic = [],
 		buffs = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['+fear','+obedience', '-fear','-obedience']}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -152,7 +152,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [{type = 'stat_mul', stat = 'value', value = 1.25}],
-				buffs = [],
+				buffs = ['b_power_pot'],
 				sub_effects = []
 			}
 		]
@@ -170,7 +170,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'skill',
 				atomic = [{type = 'add_tag', value = 'instant'}],
-				buffs = [],
+				buffs = ['b_free_use'],
 				sub_effects = []
 			}
 		]
@@ -463,7 +463,7 @@ var effect_table = {
 	},
 	e_t_stopcontrol = {
 		type = 'oneshot',
-		target = 'caster',
+		target = 'target',
 		atomic = [{type = 'remove_effect', value = 'mindcontrol'}],
 		buffs = [],
 		sub_effects = [],
@@ -2215,6 +2215,18 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Sedate.png", 
 		description = "Confusion",
 		t_name = 'confuse'
+	},
+	b_free_use = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Confusion",
+		t_name = 'freuse',
+		combat_only = true
+	},
+	b_power_pot = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Confusion",
+		t_name = 'powerpot',
+		combat_only = true
 	},
 };
 

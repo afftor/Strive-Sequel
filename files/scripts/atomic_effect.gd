@@ -60,6 +60,7 @@ func calculate_property(prop): #updated version. copy this to displaced
 
 func resolve_template():
 	for e in template.keys():
+		if e == 'stats': continue
 		if typeof(template[e]) == TYPE_ARRAY:
 			template[e] = calculate_property(template[e])
 

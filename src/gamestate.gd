@@ -353,7 +353,6 @@ func serialize():
 	var tmp = {}
 	#to add serializing
 	tmp['characters'] = characters_pool.serialize()
-	tmp['effects'] = effects_pool.serialize()
 	tmp['state'] = inst2dict(self)
 	#tmp['state']['items'].clear()
 	#tmp['state']['characters'].clear()
@@ -363,10 +362,10 @@ func serialize():
 		tmp['items'][i] = inst2dict(items[i])
 	for h in characters:
 		tmp['heroes'][h] = inst2dict(characters[h])
+	tmp['effects'] = effects_pool.serialize()
 	return tmp
 
 func deserialize(tmp:Dictionary):
-	effects_pool.deserialize(tmp['effects'])
 	characters_pool.deserialize(tmp['characters'])
 	var tempstate = dict2inst(tmp['state'])
 	var prlist = tempstate.get_property_list()
@@ -388,6 +387,7 @@ func deserialize(tmp:Dictionary):
 		for i in ssp:
 			characters[h].social_skill_panel[int(i)] = ssp[i]
 	tempstate.free()
+	effects_pool.deserialize(tmp['effects'])
 	#fastfix for broken saves
 	characters_pool.cleanup()
 	effects_pool.cleanup()
