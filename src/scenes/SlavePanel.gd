@@ -272,7 +272,7 @@ func update():
 		globals.connecttexttooltip(newnode, person.translate(trait.descript))
 	
 	globals.ClearContainer($buffscontainer)
-	for i in person.get_all_buffs():
+	for i in person.get_mansion_buffs():
 		var newnode = globals.DuplicateContainerTemplate($buffscontainer)
 		newnode.texture = i.icon
 		if i.get_duration() != null and i.get_duration() >= 0:

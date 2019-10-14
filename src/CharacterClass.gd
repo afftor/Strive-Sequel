@@ -2028,6 +2028,22 @@ func get_all_buffs():
 		for b in b_a: tmp.push_back(b)
 	return tmp
 
+func get_combat_buffs():
+	var tres = get_all_buffs()
+	var res = []
+	for b in tres:
+		if b.template.has('mansion_only'): continue
+		res.push_front(b)
+	return res
+
+func get_mansion_buffs():
+	var tres = get_all_buffs()
+	var res = []
+	for b in tres:
+		if b.template.has('combat_only'): continue
+		res.push_front(b)
+	return res
+
 func check_skill_availability(s_code, target):
 	var check = true
 	

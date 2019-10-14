@@ -641,7 +641,7 @@ func make_fighter_panel(fighter, spot):
 		g_color = Color(1.0, 0.0, 0.0, 0.0);
 	panel.material.set_shader_param('modulate', g_color);
 	panel.visible = true
-	panel.noq_rebuildbuffs(fighter.get_all_buffs())
+	panel.noq_rebuildbuffs(fighter.get_combat_buffs())
 
 var fighterhighlighted = false
 
