@@ -240,17 +240,18 @@ margin_bottom = 235.78
 bbcode_enabled = true
 
 [node name="buffs" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 585.507
 margin_top = 1.0
 margin_right = 660.507
 margin_bottom = 487.0
+mouse_filter = 2
 
 [node name="Button" type="TextureRect" parent="buffs"]
 visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
+mouse_filter = 2
 texture = ExtResource( 11 )
 expand = true
 stretch_mode = 6

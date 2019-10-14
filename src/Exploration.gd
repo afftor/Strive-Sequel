@@ -1103,7 +1103,7 @@ func StartCombat():
 	
 	for i in active_location.stagedenemies:
 		if i.stage == current_stage && i.level == current_level:
-			enemydata = i.enemy
+			enemydata = [i.enemy,1]
 	if enemydata == null:
 		enemydata = active_location.enemies
 	

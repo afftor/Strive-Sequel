@@ -720,24 +720,6 @@ func SystemMessage(text, time = 4):
 	get_tree().get_root().add_child(SystemMessageNode)
 	FadeAnimation(SystemMessageNode, 1, basetime)
 
-func GetTutorialNode():
-	var node = get_tree().get_root()
-	if node.has_node("MainScreen"):
-		node = node.get_node("MainScreen")
-	var tutnode
-	if node.has_node('TutorialNode'):
-		tutnode = node.get_node('TutorialNode')
-		node.remove_child(tutnode)
-	else:
-		tutnode = load("res://src/Tutorial.tscn").instance()
-		tutnode.name = 'TutorialNode'
-	node.add_child(tutnode)
-	return tutnode
-
-func ActivateTutorial(stage = 'tutorial1'):
-	var node = GetTutorialNode()
-	node.activatetutorial(stage)
-
 func ShowGameTip(tip):
 	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
 		return
@@ -889,7 +871,23 @@ func get_loot_node():
 		window = load("res://src/scenes/LootWindow.tscn").instance()
 		window.name = 'lootwindow'
 	node.add_child(window)
-	#node.call_deferred('add_child', window)
+	return window
+
+func ActivateTutorial(code):
+	if state.show_tutorial == true && state.active_tutorials.has(code) == false && state.seen_tutorials.has(code) == false:
+		state.active_tutorials.append(code)
+		get_tutorial_node().rebuild()
+
+func get_tutorial_node():
+	var window
+	var node = get_tree().get_root()
+	if node.has_node('tutorial_node'):
+		window = node.get_node('tutorial_node')
+		node.remove_child(window)
+	else:
+		window = load("res://src/scenes/TutorialNode.tscn").instance()
+		window.name = 'tutorial_node'
+	node.add_child(window)
 	return window
 
 func repeat_social_skill():
@@ -907,7 +905,7 @@ func update_slave_list():
 
 func update_slave_panel():
 	if slave_panel_node.visible == true:
-		slave_panel_node.open(null)
+		slave_panel_node.update()
 
 func check_mouse_in_nodes(nodes):
 	var check = false

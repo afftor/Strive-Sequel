@@ -6,13 +6,16 @@ func get_progress_task(character, temptask, tempsubtask, count_crit = false):
 	var task = tasklist[temptask]
 	var subtask = task.production[tempsubtask]
 	var value = call(subtask.progress_function, character)
+	var item
 	if character.gear.rhand != null:
-		var item = state.items[character.gear.rhand]
-		if task.has('worktool') && item.toolcategory == task.worktool:
-			if item.bonusstats.has("task_efficiency_tool"):
-				value = value + value*item.bonusstats.task_efficiency_tool
-			if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
-				value = value*2
+		item = state.items[character.gear.rhand]
+	if item != null && task.has('worktool') && item.toolcategory == task.worktool:
+		if item.bonusstats.has("task_efficiency_tool"):
+			value = value + value*item.bonusstats.task_efficiency_tool
+	value = value * (character.get_stat('productivity')*character.get(task.mod)/100)#*(productivity*get(currenttask.mod)/100)
+	if item != null && task.has('worktool') && item.toolcategory == task.worktool:
+		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
+			value = value*2
 	
 	return value
 

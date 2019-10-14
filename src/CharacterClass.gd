@@ -73,9 +73,6 @@ var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
 var mpmax = 50 setget , get_mana_max
 
-#var energy := 100.0 setget energy_set
-#var energymax = 100
-#var energybonus = 0
 var base_exp = 0
 var exp_mod = 1
 
@@ -126,15 +123,16 @@ var items_used_today = {}
 #enemy AI. do not forget to set to null at end of combat
 var ai = null
 
+
 #progress stats
 #maybe bonus stats are to remove
-var physics := 0.0
+var physics := 0.0 setget physics_set
 var physics_bonus := 0.0
-var wits := 0.0
+var wits := 0.0 setget wits_set
 var wits_bonus := 0.0
-var sexuals := 0.0
+var sexuals := 0.0 setget sexuals_set
 var sexuals_bonus := 0.0
-var charm := 0.0
+var charm := 0.0 setget charm_set
 var charm_bonus := 0.0
 #constant stats
 var dirtiness = 1
@@ -237,6 +235,16 @@ var asser = 0
 var starvation = false
 
 var masternoun = 'Master'
+
+
+func physics_set(value):
+	physics = min(value, physics_factor*20)
+func wits_set(value):
+	wits = min(value, wits_factor*20)
+func charm_set(value):
+	charm = min(value, charm_factor*20)
+func sexuals_set(value):
+	sexuals = min(value, sexuals_factor*20)
 
 #stub for bonus system
 func get_stat(statname):
@@ -477,8 +485,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 		traitarray.erase(newtrait)
 		rolls -= 1
 	
-	for i in ['physics', 'wits','sexuals', 'charm']:
-		set(i, min(self.get(i), self.get(i+'_factor')*20)) #initial setup direct access
+#	for i in ['physics', 'wits','sexuals', 'charm']:
+#		set(i, min(self.get(i), self.get(i+'_factor')*20)) #initial setup direct access
 
 func get_class_list(category, person):
 	var array = []
@@ -1268,7 +1276,7 @@ func get_food():
 			starvation = false
 			break
 	
-	if food_consumption_rations == true:
+	if food_consumption_rations == true && get_static_effect_by_code('work_rule_ration') == null:
 		food_consumption_rations = false
 		food_consumption -= 3
 	
@@ -1315,7 +1323,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(productivity*get(currenttask.mod)/100)
+			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product, true)#
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1327,7 +1335,7 @@ func work_tick():
 		else:
 			messages.erase('noupgrade')
 			work_tick_values(currenttask)
-			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(productivity/100)
+			state.upgrade_progresses[state.selected_upgrade.code].progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)#*(productivity/100)
 			if state.upgrade_progresses[state.selected_upgrade.code].progress >= globals.upgradelist[state.selected_upgrade.code].levels[state.selected_upgrade.level].taskprogress:
 				if state.upgrades.has(state.selected_upgrade.code):
 					state.upgrades[state.selected_upgrade.code] += 1
@@ -1339,7 +1347,7 @@ func work_tick():
 				state.selected_upgrade.code = ''
 	else:
 		work_tick_values(currenttask)
-		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)*(get_stat('productivity')*get_stat(currenttask.mod)/100)
+		currenttask.progress += races.get_progress_task(self, currenttask.code, currenttask.product, true)#*(get_stat('productivity')*get_stat(currenttask.mod)/100)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
@@ -1351,7 +1359,7 @@ func work_tick_values(currenttask):
 	
 	var workstat = races.tasklist[currenttask.code].workstat
 	if !has_status('no_working_bonuses'): 
-		set(workstat, min(get(workstat) + 0.06, get(workstat+"_factor")*20))
+		set(workstat, get(workstat) + 0.06)
 		base_exp += 1
 
 func make_item_sequence(currenttask, craftingitem):

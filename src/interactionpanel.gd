@@ -812,7 +812,7 @@ func rebuildparticipantslist():
 	
 	#globals.state.actionblacklist = filter
 	
-	if turns == 0:
+	if turns <= 0:
 		endencounter()
 
 var itemusemember
@@ -1876,6 +1876,13 @@ func endencounter():
 		
 		text += "; Lust gained: " +  str(20 + i.orgasms*5*i.person.sexuals_factor)
 		i.person.sexuals += i.orgasms
+		var expgain = round(i.orgasms * 10 + i.sens/200)
+		var bonus = 1
+		if i.person.professions.has("succubus"):
+			bonus += 0.5
+		expgain = expgain*bonus
+		i.person.base_exp += expgain
+		text += "; Experience gained: " + str(expgain)
 		if i.orgasms > 0:
 			var effect = 'satisfaction_1'
 			if i.orgasms >= 3:

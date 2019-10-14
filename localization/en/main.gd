@@ -1032,7 +1032,7 @@ var TranslationDict = {
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
 	TRAITBREEDERDESCRIPT = "Farming is 50% more efficient.\nAllows breeding with any race.\nPregnancy progresses 30% faster.\nOffspring will inherit only this character's stats.",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
-	TRAITSUCCUBUSDESCRIPT = "Prostitution uses 30% less energy.",
+	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.",
 	TRAITPETDESCRIPT = "Protitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
@@ -1144,6 +1144,8 @@ var TranslationDict = {
 	PROFASSASSINDESCRIPT = "A stealthy assassin is capable of bringing down even high armored targets.",
 	PROFENGINEER = "Engineer",
 	PROFENGINEERDESCRIPT = "A skilled professional often employed for building development and gadget inventions.",
+	
+	NEXTCLASSEXP = "Experience required for next class: ",
 	
 	UPGRADEPREVBONUS = "Previous bonus: ",
 	UPGRADENEXTBONUS = "Upgrade bonus: ",

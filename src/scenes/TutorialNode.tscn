@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/TutorialNode.gd" type="Script" id=2]
+
+[node name="TutorialNode" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1719.16
+margin_top = 638.844
+margin_right = 1912.16
+margin_bottom = 662.844
+text = "Tutorials"
+align = 1
+
+[node name="Container" type="VBoxContainer" parent="."]
+margin_left = 1711.35
+margin_top = 661.67
+margin_right = 1920.35
+margin_bottom = 914.67
+
+[node name="Button" type="Button" parent="Container"]
+visible = false
+margin_right = 209.0
+margin_bottom = 38.2509
+text = "Introduction"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+margin_left = 645.475
+margin_top = 83.866
+margin_right = 1323.47
+margin_bottom = 489.866
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+margin_left = 31.478
+margin_top = 32.4927
+margin_right = 649.478
+margin_bottom = 292.493
+bbcode_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+margin_left = 89.9299
+margin_top = 331.866
+margin_right = 597.93
+margin_bottom = 381.866
+custom_constants/separation = 29
+
+[node name="Dismiss" type="Button" parent="Panel/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 50 )
+text = "Dismiss"
+
+[node name="Hide" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 179.0
+margin_right = 329.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 50 )
+text = "Hide"
+
+[node name="Stop" type="Button" parent="Panel/HBoxContainer"]
+margin_left = 358.0
+margin_right = 508.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 50 )
+text = "Stop"

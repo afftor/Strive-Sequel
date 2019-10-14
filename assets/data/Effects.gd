@@ -168,7 +168,7 @@ var effect_table = {
 		req_skill = true,
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
-		buffs = ['b_stun'],#buff for indicating free item use, obviosly not b_stun
+		buffs = [],#buff for indicating free item use, obviosly not b_stun
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -356,7 +356,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'discipline',
-		tick_event = variables.TR_DAY,
+		tick_event = variables.TR_TICK,
 		duration = 'parent', 
 		stack = 1,
 		tags = ['s_dur_add'],

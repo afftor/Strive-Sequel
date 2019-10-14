@@ -1053,6 +1053,31 @@ var Skilllist = {
 		value = 1.2,
 		damagestat = ['-damage_hp']
 	},
+	first_aid = {#heals target for 33%
+		code = 'first_aid',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/HealBandage.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['heal', 'noreduce', 'noevade','support'],
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		manacost = 0,
+		energycost = 0,
+		charges = 3,
+		combatcooldown = 0,
+		cooldown = 1,
+		catalysts = {cloth = 1},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'light',
+		sfx = [], 
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = 1.2,
+		damagestat = ['-damage_hp']
+	},
 	serrated_shot = {#applies debuff: deal 25% bonus damage every turn for 4 turns
 	#i understand this as bonus damage over time
 	#should it be generic bleed status?
@@ -1159,7 +1184,6 @@ var Skilllist = {
 	},
 	blizzard = {#water damage to all enemies, 50% to reduce speed by 20 for 2 turns
 		code = 'blizzard',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Innervate.png"),
 		type = 'combat', 
@@ -1187,7 +1211,6 @@ var Skilllist = {
 	},
 	bless = {#buff: increase damage, armor, mdef, evasion, hitrate by 10 for 3 turns 
 		code = 'bless',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/meditate.png"),
 		type = 'combat', 
@@ -1249,9 +1272,9 @@ var Skilllist = {
 		effects = ['e_s_bloodex'], 
 		manacost = 0,
 		energycost = 0,
-		charges = 3,
-		combatcooldown = 0,
-		cooldown = 1,
+		charges = 0,
+		combatcooldown = 3,
+		cooldown = 0,
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'all',

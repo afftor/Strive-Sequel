@@ -153,7 +153,7 @@ var professions = {
 		tags = [],
 		categories = ['labor'],
 		showupreqs = [],
-		reqs = [{code = 'stat', type = 'physics_factor', operant = 'gte', value = 2}],
+		reqs = [{code = 'stat', type = 'physics', operant = 'gte', value = 25}],
 		statchanges = {physics_bonus = 10, hpmax = 15},
 		traits = ['smith'],
 		skills = [],
@@ -185,7 +185,7 @@ var professions = {
 		statchanges = {hpmax = 10, physics_bonus = 5},
 		traits = ['attendant'],
 		skills = [],
-		combatskills = [],
+		combatskills = ['first_aid'],
 	},
 	alchemist = {
 		code = 'alchemist',

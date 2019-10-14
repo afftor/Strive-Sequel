@@ -233,7 +233,7 @@ func useitem(item, type):
 			selectedhero.equip(item)
 			input_handler.GetItemTooltip().hide()
 			emit_signal("item_equipped")
-			rebuildinventory()
+			buildinventory()
 		elif type == 'usable' && Items.itemlist[item.itembase].has("mansion_effect"):
 			input_handler.GetItemTooltip().hide()
 			emit_signal("item_used")
