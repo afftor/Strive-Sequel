@@ -67,6 +67,7 @@ func open():
 		$ActiveUpgrade/ProgressBar.max_value = tempupgrade.levels[tempupgradelevel].taskprogress
 	else:
 		$ActiveUpgrade.hide()
+	input_handler.ActivateTutorial('crafting')
 
 
 func sortupgrades(first, second):
@@ -116,9 +117,9 @@ func selectupgrade(upgrade):
 			newnode.get_node("Label").text = str(state.materials[i]) + "/"+ str(value1)
 			globals.connectmaterialtooltip(newnode, item)
 			if state.materials[i] >= upgrade.levels[currentupgradelevel].cost[i]:
-				newnode.get_node('Label').set("custom_colors/font_color", Color(0,0.6,0))
+				newnode.get_node('Label').set("custom_colors/font_color", Color(0.2,0.8,0.2))
 			else:
-				newnode.get_node('Label').set("custom_colors/font_color", Color(0.6,0,0))
+				newnode.get_node('Label').set("custom_colors/font_color", Color(0.8,0.2,0.2))
 				canpurchase = false
 	else:
 		$UpgradeDescript/Time.hide()
@@ -126,8 +127,9 @@ func selectupgrade(upgrade):
 	
 	if state.upgrade_progresses.has(upgrade.code) && state.selected_upgrade.code == upgrade.code:
 		canpurchase = false
-	if variables.free_upgrades == true:
+	if variables.free_upgrades == true || state.upgrade_progresses.has(upgrade.code):
 		canpurchase = true
+	
 	
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
@@ -159,7 +161,6 @@ func unlockupgrade():
 				state.upgrades[upgrade.code] += 1
 			else:
 				state.upgrades[upgrade.code] = 1
-	
 	open()
 	#input_handler.emit_signal("UpgradeUnlocked", upgrade)
 	#animation

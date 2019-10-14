@@ -365,12 +365,12 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/base_exp"]
-margin_left = 44.0
+margin_left = 69.0
 margin_top = 7.0
-margin_right = 121.0
+margin_right = 118.0
 margin_bottom = 31.0
+mouse_filter = 1
 text = "0"
-align = 1
 
 [node name="growth_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",

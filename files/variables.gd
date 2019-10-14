@@ -37,7 +37,7 @@ var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitr
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 
 'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
-'sexuals_factor','magic_factor','growth_factor']
+'sexuals_factor','magic_factor','growth_factor', 'food_consumption']
 
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']
@@ -78,8 +78,8 @@ var ItemEffectNaturalMultiplier = 0.15
 var all_races_array = []
 var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
 
-var master_starting_classes = ['fighter','archer','worker','smith','apprentice','hunter']
-var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'smith', 'apprentice','hunter']
+var master_starting_classes = ['fighter','archer','worker','harlot','apprentice','hunter']
+var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter']
 
 var master_starting_stats = 10
 var slave_starting_stats = 15
@@ -128,7 +128,6 @@ var mp_regen_per_magic = 0.1
 var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
-var basic_energy_per_work_tick = 8.35
 
 var obedience_modifier = 1.0
 var fear_modifier = 1.0
@@ -142,14 +141,14 @@ var instant_travel = false
 var skip_combat = false
 var free_upgrades = true
 var instant_upgrades = true
-var unlock_all_upgrades = true
+var unlock_all_upgrades = false
 var invincible_player = false
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
 var allow_skip_fights = false
 
 #debug_only
-var allow_remote_intereaction = true
+var allow_remote_intereaction = false
 var no_event_wait_time = false
 var ignore_quest_requirements = false
 

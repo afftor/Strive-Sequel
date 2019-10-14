@@ -158,6 +158,7 @@ theme = ExtResource( 4 )
 text = "Sex"
 
 [node name="TimeNode" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 6.91928
 margin_top = 3.509
 margin_right = 295.919
@@ -415,6 +416,8 @@ rect_min_size = Vector2( 120, 0 )
 bbcode_enabled = true
 
 [node name="SlaveList" type="Panel" parent="."]
+editor/display_folded = true
+self_modulate = Color( 1, 1, 1, 0.843137 )
 margin_left = 1221.0
 margin_top = 64.0
 margin_right = 1905.0

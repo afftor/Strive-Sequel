@@ -29,6 +29,12 @@ func showup(node, person):
 	$icon.texture = person.get_icon()
 	$RichTextLabel.bbcode_text = text
 	$exp.text = str(floor(person.base_exp))
+	
+	var exp_color = Color(1,1,1)
+	if person.get_next_class_exp() <= person.base_exp:
+		exp_color = Color(0.2,1,0.2)
+	$exp.set("custom_colors/font_color", exp_color)
+	
 	for i in ['physics','wits','charm','sexuals']:
 		get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) + '/' + str(person[i+'_factor']*20) 
 	for i in ['obedience','fear']:

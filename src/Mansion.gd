@@ -96,7 +96,7 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('Seraph', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
 		character.fear = 25
@@ -105,14 +105,7 @@ func _ready():
 		character.mp = 100
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("assassin")
-		character.unlock_class("fighter")
-		character.unlock_class("archer")
-		character.unlock_class("rogue")
-		character.unlock_class("apprentice")
-		character.unlock_class("caster")
-		character.unlock_class("druid")
-		character.unlock_class("dominator")
+		character.unlock_class("succubus")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -133,10 +126,12 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
 		yield(get_tree(), 'idle_frame')
 		input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
+		input_handler.ActivateTutorial("introduction")
 		#input_handler.interactive_message('event_good_loot_small', 'loot', {})
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -147,6 +142,7 @@ func _ready():
 		yield(input_handler, "CharacterCreated")
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
+		input_handler.ActivateTutorial("introduction")
 	
 	build_task_bar()
 	$SlaveList.rebuild()

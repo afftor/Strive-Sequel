@@ -107,21 +107,24 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tr_food = {
+	rations_food = {
 		type = 'static',
 		atomic = [{type = 'stat_add', stat = 'food_consumption', value = 3}],
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tr_prod1 = {
+	work_rule_ration = {
+		code = 'work_rule_ration',
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
+			{type = 'stat_add', stat = 'food_consumption', value = 3},
 		],
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tr_prod2 = {
+	work_rule_constrain = {
+		code = 'work_rule_constrain',
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.25},
@@ -130,7 +133,8 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-	e_tr_prod3 = {
+	work_rule_shifts = {
+		code = 'work_rule_shifts',
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.25},
@@ -164,7 +168,7 @@ var effect_table = {
 		req_skill = true,
 		conditions = [{type = 'skill', value = ['ability_type', 'eq', 'item']}],
 		atomic = [],
-		buffs = ['b_stun'],#buff for indicating free item use, obviosly not b_stun
+		buffs = [],#buff for indicating free item use, obviosly not b_stun
 		sub_effects = [
 			{
 				type = 'oneshot',
@@ -352,7 +356,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'discipline',
-		tick_event = variables.TR_DAY,
+		tick_event = variables.TR_TICK,
 		duration = 'parent', 
 		stack = 1,
 		tags = ['s_dur_add'],

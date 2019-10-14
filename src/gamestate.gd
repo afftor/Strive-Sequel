@@ -43,7 +43,6 @@ var active_tasks = []
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials = {} setget materials_set
 var oldmaterials = {}
-var unlocks = []
 var relativesdata = {}
 var global_skills_used = {}
 
@@ -68,8 +67,9 @@ var activequests = []
 var completedquests = []
 var areaprogress = {}
 var currentarea
-var currenttutorial = 'tutorial1'
-var viewed_tips = []
+var active_tutorials = []
+var seen_tutorials = []
+var show_tutorial = true
 
 var daily_interactions_left = 1
 
@@ -81,8 +81,15 @@ func revert():
 	itemcounter = 0
 	slavecounter = 0
 	locationcounter = 0
+	daily_interactions_left = 1
+	mainprogress = 0
+	decisions.clear()
+	activequests.clear()
+	completedquests.clear()
 	characters.clear()
 	character_order.clear()
+	areaprogress.clear()
+	currentarea = null
 	items.clear()
 	materials.clear()
 	for i in Items.materiallist:
@@ -98,6 +105,9 @@ func revert():
 		materials[i] = variables.starting_resources[i]
 	state.areas.clear()
 	state.location_links.clear()
+	show_tutorial = true
+	active_tutorials.clear()
+	seen_tutorials.clear()
 
 func make_world():
 	world_gen.build_world()
@@ -174,6 +184,7 @@ func if_has_material(mat, operant, val):
 	return input_handler.operate(operant, materials[mat], val)
 
 func checkreqs(array):
+	if array.size() != 0: print(array)
 	var check = true
 	for i in array:
 		if i.has('orflag'):

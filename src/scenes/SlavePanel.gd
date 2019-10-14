@@ -75,7 +75,7 @@ func _ready():
 	for i in $job_panel/work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
-
+	
 
 
 func run_test():
@@ -102,11 +102,18 @@ func open(tempperson):
 	if tempperson == null:
 		tempperson = person
 	person = tempperson
+	$job_panel.hide()
+	$class_learn.hide()
+	input_handler.ActivateTutorial('slavetab')
+	show()
+	update()
+
+func update():
 	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler"):
 		i.visible = true
-	if state.characters.has(tempperson.id):
+	if state.characters.has(person.id):
 		type = 'slave'
-		if tempperson.professions.has("master"):
+		if state.get_master() == person:
 			type = 'master'
 			for i in get_tree().get_nodes_in_group("hide_master"):
 				i.visible = false
@@ -121,7 +128,6 @@ func open(tempperson):
 	for i in get_tree().get_nodes_in_group("show_traveler"):
 		i.visible = type == 'traveler' && person.travel_target.location != 'mansion'
 	var text = ''
-	show()
 	$name.text = person.get_short_name()
 	$name/sex.texture = globals.sexicons[person.sex]
 	if person.icon_image == null:
@@ -163,6 +169,12 @@ func open(tempperson):
 		i.max_value = person.get(i.name+'max')
 		i.value = person.get(i.name)
 		i.get_node("Label").text = str(floor(person.get(i.name))) + "/" + str(floor(person.get(i.name+'max')))
+	
+	var exp_color = Color(1,1,1)
+	if person.get_next_class_exp() <= person.base_exp:
+		exp_color = Color(0.2,1,0.2)
+	$factors/base_exp/Label.set("custom_colors/font_color", exp_color)
+	$factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp()) 
 	
 #	$mentality/loyal.value = person.loyal
 #	$mentality/loyal/Label.text = str(floor(person.loyal)) + '/' + '100'
@@ -282,8 +294,6 @@ func open(tempperson):
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
-	$job_panel.hide()
-	$class_learn.hide()
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
 
@@ -378,22 +388,22 @@ func show_job_details(job):
 		var newbutton = globals.DuplicateContainerTemplate($job_panel/job_details/ResourceOptions)
 		if Items.materiallist.has(i.item):
 			var number
-			number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-			text = "\n[color=yellow]Expected gain per day: " + str(number*24) + "[/color]"
+			number = races.get_progress_task(person, job.code, i.code)/i.progress_per_item
+			text = "\n[color=yellow]Expected gain per day: " + str(stepify(number*24,0.1)) + "[/color]"
 #			else:
 #				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
 #				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
-			newbutton.get_node("number").text = str(number*24)
+			newbutton.get_node("number").text = str(stepify(number*24,0.1))
 			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
 		else:
 			var number
-			number = stepify(races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-			text = "\n[color=yellow]Expected gain per day: " + str(number*24) + "[/color]"
+			number = races.get_progress_task(person, job.code, i.code)/i.progress_per_item
+			text = "\n[color=yellow]Expected gain per day: " + str(stepify(number*24,0.1)) + "[/color]"
 #			else:
 #				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
 #				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
-			newbutton.get_node("number").text = str(number*24)
+			newbutton.get_node("number").text = str(stepify(number*24,0.1))
 			newbutton.get_node("icon").texture = i.icon
 			globals.connecttexttooltip(newbutton, i.descript + text)
 			
@@ -411,38 +421,20 @@ func select_job(job, production):
 	open(person)
 
 func set_work_rule(rule):
-	person.work_rules[rule] = get_node("job_panel/work_rules/"+rule).pressed
+	var setting = get_node("job_panel/work_rules/"+rule).pressed
+	person.work_rules[rule] = setting
+	match setting:
+		true:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
+			person.apply_effect(effects_pool.add_effect(eff))
+		false:
+			person.remove_static_effect_by_code("work_rule_" + rule)
+	
+	
+	if currentjob != null:
+		show_job_details(currentjob)
+	update()
 
-#func check_simple_behavior():
-#	person.work_simple = $job_panel/job_details/SimpleBehaviorCheck.pressed
-#	show_job_details(currentjob)
-#
-#func change_hours(stat):
-#	var freepoints = 24 - (person.workhours + person.resthours + person.joyhours)
-#	if stat.find('up') >= 0:
-#		if freepoints <= 0:
-#			return
-#		else:
-#			var statcode = stat.substr(0,stat.length()-2) + "hours"
-#			person.set(statcode, person.get(statcode) + 1)
-#	else:
-#		var statcode = stat.substr(0,stat.length()-4) + "hours"
-#		if person.get(statcode) == 0:
-#			return
-#		person.set(statcode, person.get(statcode) - 1)
-#
-#
-#	update_hours()
-#
-#func update_hours():
-#
-#	$job_panel/job_details/WorkDetailsPanel/worklabel.text = str(person.workhours)
-#	$job_panel/job_details/WorkDetailsPanel/restlabel.text = str(person.resthours)
-#	$job_panel/job_details/WorkDetailsPanel/joylabel.text = str(person.joyhours)
-#	$job_panel/job_details/WorkDetailsPanel/totallabel.text = "Free hours left: " + str(24 - (person.workhours + person.resthours + person.joyhours))
-#
-#	if currentjob != null:
-#		show_job_details(currentjob)
 
 func build_skill_panel():
 	globals.ClearContainer($SkillPanel)
@@ -610,7 +602,7 @@ func return_to_mansion():
 		active_location = state.areas[state.location_links[person.travel_target.location].area][state.location_links[person.travel_target.location].category][person.travel_target.location]
 	else:
 		active_area = state.areas[state.location_links[person.location].area]
-		active_location = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.travel_target.location]
+		active_location = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.location]
 	
 	if variables.instant_travel == false:
 		person.location = 'travel'

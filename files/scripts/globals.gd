@@ -440,8 +440,8 @@ var statdata = {
 		percent = true,
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
-	task_energy_tool = {
-		code = 'task_energy_tool',
+	task_crit_chance = {
+		code = 'task_crit_chance',
 		name = '',
 		descript = '',
 		percent = true,
@@ -609,7 +609,6 @@ func _ready():
 	rng.randomize()
 	#Settings and folders
 	settings_load()
-	explorationares = load("res://assets/data/explorationareasdata.gd").new().areas
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 	

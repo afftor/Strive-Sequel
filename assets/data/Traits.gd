@@ -122,8 +122,8 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_witcrit'],
 	},
-	cattle = {#+50% farm production
-		code = 'cattle',
+	farmer = {#+50% farm production
+		code = 'farmer',
 		name = '',
 		descript = '',
 		visible = false,
@@ -146,7 +146,7 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_harlot'],
 	}, 
-	succubus = {#-30% energy consumption on prostitution
+	succubus = {#+100% exp from prostitution
 		code = 'succubus',
 		name = '',
 		descript = '',
