@@ -139,8 +139,8 @@ var dungeon_encounter_chance = 0.2
 #Cheats
 var instant_travel = false
 var skip_combat = false
-var free_upgrades = false
-var instant_upgrades = false
+var free_upgrades = true
+var instant_upgrades = true
 var unlock_all_upgrades = false
 var invincible_player = false
 var show_enemy_hp = true

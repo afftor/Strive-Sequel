@@ -161,7 +161,7 @@ func unlockupgrade():
 				state.upgrades[upgrade.code] += 1
 			else:
 				state.upgrades[upgrade.code] = 1
-	
+	print(true)
 	open()
 	#input_handler.emit_signal("UpgradeUnlocked", upgrade)
 	#animation

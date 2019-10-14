@@ -40,6 +40,7 @@ func open(tempperson, tempmode = 'normal'):
 		if person.checkreqs(i.reqs) == false:
 			newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+			newbutton.disabled = true
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		globals.connecttexttooltip(newbutton, globals.descriptions.get_class_details(person, i, true, true))
