@@ -985,6 +985,15 @@ func add_trait(tr_code):
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tr_code)
+	if tr_code == 'undead':
+		food_consumption = 0
+		charm -= 100
+		sexuals -= 50
+		resists['dark'] += 50
+		resists['light'] -= 50
+		food_consumption_rations = false
+		if get_static_effect_by_code("work_rule_ration") != null:
+			remove_static_effect_by_code('work_rule_ration')
 	recheck_effect_tag('recheck_trait')
 
 func remove_trait(tr_code):
@@ -1243,6 +1252,7 @@ func productivity_get():
 	return productivity
 
 func get_food():
+	if traits.has('undead'): return
 	var eaten = false
 	if food_consumption_rations == true && get_static_effect_by_code('work_rule_ration') == null:
 		food_consumption += 3
@@ -2083,7 +2093,8 @@ func use_social_skill(s_code, target):#add logging if needed
 		text = target.translate(text.replace("[target", "["))
 		data.text = text
 		
-		if template.charges > 0 && variables.social_skill_unlimited_charges == false:
+		var charges = Skilldata.get_charges(template, self)
+		if charges > 0 && variables.social_skill_unlimited_charges == false && !template.has('custom_used_charges'):
 			if social_skills_charges.has(s_code):
 				social_skills_charges[s_code] += 1
 			else:
@@ -2113,7 +2124,7 @@ func use_social_skill(s_code, target):#add logging if needed
 		state.money -= template.goldcost
 	self.mp -= template.manacost
 	
-	if template.charges > 0 && variables.social_skill_unlimited_charges == false:
+	if typeof(template.charges) == TYPE_INT && template.charges > 0 && variables.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
 			social_skills_charges[s_code] += 1
 		else:
@@ -2257,6 +2268,10 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
+
+func calculate_linked_chars_by_effect(e_name):
+	return effects_pool.get_n_effects_linked_to(id, e_name).size()
+
 
 func get_weapon_element():
 	#for testing

@@ -23,8 +23,9 @@ func showup(node, skillcode):
 	set_process(true)
 	var text = '[center]'+skill.name+'[/center]\n' + skill.descript
 	
-	if skill.charges > 0:
-		text += "\n\nMax Charges: [color=yellow]" + str(skill.charges) + "[/color]. Cooldown: " + str(skill.cooldown) + " day(s)."
+	var charges = Skilldata.get_charges(skill, character)
+	if charges > 0 and skill.cooldown > 0:
+		text += "\n\nMax Charges: [color=yellow]" + str(charges) + "[/color]. Cooldown: " + str(skill.cooldown) + " day(s)."
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:
 		text += "\n\nCooldown: [color=yellow]" + str(skill.combatcooldown) + "[/color]"
 	

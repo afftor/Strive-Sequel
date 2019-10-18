@@ -442,28 +442,52 @@ var effect_table = {
 			}
 		],
 	},
-	e_t_mindcontrol = {
+	e_s_mindcontrol = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+		req_skill = true,
+		sub_effects = ['e_t_mindcontrol_t', 'e_t_mindcontrol_c'],
+		buffs = []
+	},
+	e_t_mindcontrol_t = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'mindcontrol', 
-		stack = 1,
+		name = 'mindcontrol',
+		stack = 0,#stacks unlimitely, control this by casting checks
 		no_obed_reduce = true,
 		no_escape = true,
 		tags = ['mindcontrol'],
-		sub_effects = [],
+		sub_effects = ['e_t_mindcontrol'],
 		atomic = [
 			{type = 'stat_add', stat = 'wits_bonus', value = -100},
 			{type = 'stat_add', stat = 'charm_bonus', value = -50},
-			{type = 'add_soc_skill', skill = 'stopmindcontrol'},
 		],
-		buffs = [
+		buffs = ['b_stun'],
+	},
+	e_t_mindcontrol_c = {
+		type = 'temp_s',
+		target = 'caster',
+		name = 'mindcontrol_caster',
+		stack = 0,
+		tags = [],
+		sub_effects = ['e_t_mindcontrol'],
+		atomic = [],
+		buffs = [],
+	},
+	e_t_mindcontrol = {
+		type = 'trigger',
+		conditions = [],
+		trigger = [variables.TR_MOVE, variables.TR_DEATH, variables.TR_REMOVE],
+		req_skill = false,
+		sub_effects = [
 			{
-				icon = "res://assets/images/iconsskills/Mind_Control.png", 
-				description = "Mind controlled",
-				limit = 1,
-				t_name = ''
-			}
+				type = 'oneshot',
+				target = 'self',
+				execute = 'remove_siblings'
+			},
 		],
+		buffs = []
 	},
 	e_t_stopcontrol = {
 		type = 'oneshot',
@@ -483,7 +507,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'target',
-				atomic = [{type = 'add_trait', value = 'undead'}],
+				atomic = [{type = 'add_trait', trait = 'undead'}],
 				buffs = [],
 				sub_effects = []
 			}

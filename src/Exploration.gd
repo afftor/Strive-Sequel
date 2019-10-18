@@ -739,6 +739,7 @@ func remove_slave_selection(character):
 func confirm_party_selection():
 	for i in active_slave_list:
 		i.remove_from_task()
+		i.process_event(variables.TR_MOVE)
 		if variables.instant_travel == false:
 			i.work = 'travel'
 			i.location = 'travel'

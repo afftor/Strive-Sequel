@@ -458,12 +458,13 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'spell',
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false}],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_mindcontrol'})],
+		targetreqs = [{code = 'is_master', check = false}], #add check to not having mindcontrol
+		effects = ['e_s_mindcontrol'],#Effectdata.rebuild_template({effect = 'e_t_mindcontrol'})],
 		manacost = 50,
 		energycost = 0,
-		charges = 1,
-		cooldown = 3,
+		charges = ['caster.magic_factor'],
+		custom_used_charges = ['call', 'calculate_linked_chars_by_effect', 'mindcontrol'],
+		cooldown = 0,
 		receiverdaylimit = 1,
 		dialogue_report = '',
 		dialogue_show_repeat = false,
@@ -479,7 +480,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'spell',
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false}],
+		targetreqs = [{code = 'is_master', check = false}],#add check to having mindcontrol
 		effects = [Effectdata.rebuild_template({effect = 'e_t_stopcontrol'})],
 		manacost = 10,
 		energycost = 0,
@@ -2615,41 +2616,11 @@ var Skilllist = {
 	},
 }
 
-
-
-var effects = {
-	
-	lightarmorencumb = {#Every light armor piece weared without light armor trait increases spell mana cost by 15% to 60% total 
-		code = 'lightarmorencumb',
-		name = '',
-		descript = '',
-		icon = null,
-		visible = true,
-	},
-	heavyarmorencumb = {#Every heavy armor piece weared without heavy armor trait increases spell mana cost by 20% to 80% total and reduces evasion by 10 (can go negative)
-		code = 'lightarmorencumb',
-		name = '',
-		descript = '',
-		icon = null,
-		visible = true,
-	},
-	exhaustion = {#when exhaustion > 0, apply debuf. Every tick while exhaustion > 0 increases magnitude by 1, othewise decrease magnitude by 1. When it reaches 12, add debuff: reduce maxhp by 20%, when it reaches 36: reduce maxhp by 50% and all bonuses by 20 (physics, wits, charm, sex), when it reaches 84: reduce maxhp by 75% and all bonuses by 30, when it reaches 168: character dies. If magnitude reduced to 0 - remove debuff. 
-		code = 'exhaustion',
-		name = '',
-		descript = '',
-		icon = null,
-		visible = true,
-	},
-	fatigue = {#when fatigue >= 30, apply debuf: every tick while fatigue >= 30 increase magnitude by 1, otherwise decrease magnitude by 1. If magnitude > 24: obedience drops by 50% faster, wit_bonus -15, charm_bonus -15, if magnitude > 48: obedience drops by 100% faster, wit_bonus -25, charm_bonus -25, energy task consumption increased by 100%.
-		code = 'fatigue',
-		name = '',
-		descript = '',
-		icon = null,
-		visible = true,
-	},
-	
-	
-	#Trait: Small - given to short races: goblins, gnomes, fairies. physical tasks -25%, melee damage -20%, evasion +25
-	
-	
-}
+func get_charges(skill, caster):#template, object
+	if !skill.has('charges'): return 0
+	if typeof(skill.charges) == TYPE_ARRAY:
+		return caster.calculate_number_from_string_array(skill.charges)
+	elif typeof(skill.charges) == TYPE_INT:
+		return skill.charges
+	else:
+		print('error in skill template %s' % [skill.code])
