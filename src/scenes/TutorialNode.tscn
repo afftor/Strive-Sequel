@@ -12,9 +12,9 @@ script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 1719.16
-margin_top = 638.844
+margin_top = 632.844
 margin_right = 1912.16
-margin_bottom = 662.844
+margin_bottom = 656.844
 text = "Tutorials"
 align = 1
 
@@ -69,4 +69,5 @@ margin_left = 358.0
 margin_right = 508.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 50 )
+hint_tooltip = "Turn off all tutorial tips"
 text = "Stop"

@@ -479,7 +479,7 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 	var name = classdata.name
 	if classdata.has('altname') && person.checkreqs(classdata.altnamereqs):
 		name = classdata.altname
-	text += "[center]" + name + '[/center]\n' + person.translate(classdata.descript) 
+	
 	
 	if person.decipher_reqs(classdata.reqs, true) != '' && showreqs == true:
 		text += '\n\nRequirements:\n' + person.decipher_reqs(classdata.reqs, true)
@@ -497,6 +497,8 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			text += "[color=yellow]" + trait.name + "[/color]: "
 		text += trait.descript + "\n"
 	
+	text += "\n" + person.translate(classdata.descript) #"[center]" + name + '[/center]\n' + 
+	
 	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:
 		if classdata.skills.size() > 0:
 			text += "\n[color=yellow]Skills: "
@@ -508,5 +510,7 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 			for i in classdata.combatskills:
 				text += Skilldata.Skilllist[i].name + ", "
 			text = text.substr(0, text.length() - 2) + "[/color]"
+	
+	
 	
 	return input_handler.text_cut_excessive_lines(text)

@@ -139,8 +139,8 @@ var dungeon_encounter_chance = 0.2
 #Cheats
 var instant_travel = false
 var skip_combat = false
-var free_upgrades = true
-var instant_upgrades = true
+var free_upgrades = false
+var instant_upgrades = false
 var unlock_all_upgrades = false
 var invincible_player = false
 var show_enemy_hp = true
@@ -148,7 +148,7 @@ var social_skill_unlimited_charges = false
 var allow_skip_fights = false
 
 #debug_only
-var allow_remote_intereaction = false
+var allow_remote_intereaction = true
 var no_event_wait_time = false
 var ignore_quest_requirements = false
 
@@ -186,4 +186,5 @@ var starting_resources = {
 	vegetables = 25,
 }
 
+var personality_array = ['shy','bold','serious','kind']
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']

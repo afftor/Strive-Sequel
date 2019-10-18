@@ -68,6 +68,7 @@ func open_class(classcode):
 	
 	$ClassPanel/TextureRect.texture = tempclass.icon
 	$ClassPanel/RichTextLabel.bbcode_text = text
+	$ClassPanel/TextureRect/name.text = tempclass.name
 	
 	globals.ClearContainer($ClassPanel/SocialSkills/HBoxContainer)
 	globals.ClearContainer($ClassPanel/CombatSkills/HBoxContainer)

@@ -288,14 +288,14 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])
 	newquest.source = guilddatatemplate.code
 	newquest.area = guilddatatemplate.area
-	newquest.travel_time = state.areas[guilddatatemplate.area].travel_time + round(randf()*12)
+	newquest.travel_time = state.areas[guilddatatemplate.area].travel_time + round(randf()*6)
 	newquest.difficulty = difficulty
 	state.areas[newquest.area].quests.factions[newquest.source][newquest.id] = newquest
 
 func make_settlement(code, area):
 	var settlement = locations[code].duplicate(true)
 	settlement.population = round(rand_range(settlement.population[0],settlement.population[1]))
-	settlement.travel_time = round(rand_range(6,24))
+	settlement.travel_time = round(rand_range(3,8))
 	var text = locationnames[settlement.name+"1"][randi()%locationnames[settlement.name + "1"].size()] + locationnames[settlement.name+"2"][randi()%locationnames[settlement.name + "2"].size()]
 	settlement.name = text
 	settlement.id = "L" + str(state.locationcounter)
@@ -398,7 +398,7 @@ func make_location(code, area, difficulty = 'easy'):
 		text = location.singlename
 	location.name = text
 	location.id = "L" + str(state.locationcounter)
-	location.travel_time = round(rand_range(6,24))
+	location.travel_time = round(rand_range(6,12))
 	location.code = code
 	var levelnumber = round(rand_range(location.difficulties[difficulty].levels[0], location.difficulties[difficulty].levels[1]))
 	location.levels = {}
@@ -439,7 +439,7 @@ func update_guilds(area):
 						fail_quest(quest)
 				else:
 					if randf() >= 0.7 || quest.state == 'complete':
-						area.quests.factions[faction].erase(quest)
+						area.quests.factions[faction].erase(quest.id)
 					fill_faction_quests(faction, area.code)
 
 func update_locations():
@@ -766,7 +766,7 @@ func make_chest_loot(chest):
 				else:
 					var array = []
 					for k in Items.materiallist.values():
-						if k.type != 'food' && i.grade.has(k.tier):
+						if k.type != 'food' && i.grade.has(k.tier) && !k.tags.has('no_random'):
 							array.append(k.code)
 					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
 				globals.AddOrIncrementDict(dict.materials, tempdict)
@@ -1184,6 +1184,7 @@ var pregen_characters = {
 		ass_size = 'small',
 		tits_size = 'average',
 		tags = ['no_sex'],
+		personality = 'shy'
 	},
 }
 

@@ -28,6 +28,7 @@ func _ready():
 		i.connect("pressed",self,"select_category", [i.name])
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
+		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
 		get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
 	
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
@@ -42,11 +43,12 @@ func _ready():
 		active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 		var test_slave = Slave.new()
 		test_slave.create('BeastkinWolf', 'male', 'random')
-		test_slave.unlock_class("dragonknight")
+		test_slave.unlock_class("smith")
 		test_slave.unlock_class("harlot")
-		test_slave.unlock_class("alchemist")
+		test_slave.unlock_class("attendant")
 		test_slave.unlock_class("fighter")
 		state.materials.unstable_concoction = 5
+		state.materials.bandage = 2
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 		state.add_slave(test_slave)
@@ -73,6 +75,52 @@ func show_heal_items(position):
 			newbutton.hint_tooltip = i.description
 			#globals.connectitemtooltip(newbutton, i)
 			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
+		var character = state.characters[active_location.group['pos'+str(position)]]
+		for i in character.combat_skills:
+			var skill = Skilldata.Skilllist[i]
+			if skill.tags.has('exploration') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+			#newbutton.get_node("Label").text = str(i.amount)
+			newbutton.texture_normal = skill.icon
+			var text = skill.descript
+			if skill.manacost >= 1:
+				text += "\nMana cost: " + str(skill.manacost)
+				if character.mp < skill.manacost:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					text += "(not enough mana)"
+			if skill.catalysts.size() > 0:
+				text += "\nCatalysts required: "
+				for k in skill.catalysts:
+					text += "\n" + Items.materiallist[k].name + " - " +  str(skill.catalysts[k]) + ", "
+					if state.materials[k] < skill.catalysts[k]:
+						newbutton.disabled = true
+						text += "(not enough items)"
+				text = text.substr(0, text.length()-2)
+			if skill.charges > 0:
+				pass #add charge check/etc
+			newbutton.hint_tooltip = text
+			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+			newbutton.get_node("Label").text = str(skill.manacost)
+			newbutton.get_node("Label").set("custom_colors/font_color",Color(0.4,0.4,1))
+
+func show_explore_spells(position):
+	if get_node(positiondict[position] + "/Image").visible == true:
+		input_handler.MousePositionScripts.append({nodes = [$Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
+		$Positions/itemusepanel.show()
+		$Positions/itemusepanel.rect_global_position.y = get_node(positiondict[position] + "/Image").rect_global_position.y - $Positions/itemusepanel.rect_size.y
+		globals.ClearContainer($Positions/itemusepanel/GridContainer)
+		var character = state.characters[active_location.group['pos'+str(position)]]
+		for i in character.combat_skills:
+			var skill = Skilldata.Skilllist[i]
+			if skill.tags.has('exploration') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+			#newbutton.get_node("Label").text = str(i.amount)
+			newbutton.texture_normal = skill.icon
+			newbutton.hint_tooltip = skill.descript
+			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
 
 func use_item_on_character(position, item):
 	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
@@ -82,6 +130,18 @@ func use_item_on_character(position, item):
 
 func hide_heal_items():
 	$Positions/itemusepanel.hide()
+
+var active_character
+var active_skill
+
+func use_skill_explore(character, skill):
+	var reqs = [{code = 'is_at_location', value = active_location.id}]
+	active_character = character
+	active_skill = skill
+	input_handler.ShowSlaveSelectPanel(self, 'use_skill_confirm', reqs)
+
+func use_skill_confirm(target):
+	active_character.use_social_skill(active_skill.code, target)
 
 func open():
 	for i in state.characters.values():
@@ -264,6 +324,17 @@ func update_shop_list():
 				newbutton.get_node("amount").text = str(state.materials[i])
 				newbutton.connect("pressed",self,"item_sell", [item])
 				globals.connectmaterialtooltip(newbutton, item)
+			for item in state.items.values():
+				if item.owner != null:
+					continue
+				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
+				newbutton.get_node("name").text = item.name
+				item.set_icon(newbutton.get_node("icon"))#.texture = item.get_icon()
+				newbutton.get_node("price").text = str(item.calculateprice()/3)
+				newbutton.get_node("amount").visible = true
+				newbutton.get_node("amount").text = str(item.amount)
+				newbutton.connect("pressed",self,"item_sell", [item])
+				globals.connectitemtooltip(newbutton, item)
 
 var purchase_item
 
@@ -273,14 +344,21 @@ func item_purchase(item, amount):#(targetnode = null, targetfunction = null, tex
 		amount = 100
 	var price = 0
 	if typeof(item) == TYPE_OBJECT:
-		price = item.calculateprice()
+		price = item.calculateprice()/3
 	else:
 		price = item.price
 	$NumberSelection.open(self, 'item_puchase_confirm', "Purchase $n " + item.name + "? Total cost: $m", price, 0, amount, true)
 
 func item_sell(item):
 	purchase_item = item
-	$NumberSelection.open(self, 'item_sell_confirm', "Sell $n " + item.name + "? Gained gold: $m", item.price, 0, state.materials[item.code], false)
+	var price = item.price
+	var sellingamount
+	if Items.materiallist.has(item.code) == false:
+		price = item.calculateprice()/3
+		sellingamount = item.amount
+	else:
+		sellingamount = state.materials[item.code]
+	$NumberSelection.open(self, 'item_sell_confirm', "Sell $n " + item.name + "? Gained gold: $m", price, 0, sellingamount, false)
 
 func item_puchase_confirm(value):
 	if typeof(purchase_item) == TYPE_OBJECT:
@@ -310,8 +388,13 @@ func item_puchase_confirm(value):
 		update_shop_list()
 
 func item_sell_confirm(value):
-	state.set_material(purchase_item.code, '-', value)
-	state.money += purchase_item.price*value
+	var price = purchase_item.price
+	if Items.materiallist.has(purchase_item.code):
+		state.set_material(purchase_item.code, '-', value)
+	else:
+		price = purchase_item.calculateprice()
+		purchase_item.amount -= value
+	state.money += price*value
 	$Gold.text = str(state.money)
 	update_shop_list()
 
@@ -853,7 +936,7 @@ var pos
 
 func selectfighter(position):
 	pos = 'pos'+str(position)
-	var reqs = [{code = 'is_at_location', type = active_location.id}]
+	var reqs = [{code = 'is_at_location', value = active_location.id}]
 	if variables.allow_remote_intereaction == true: reqs = []
 	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
@@ -1104,7 +1187,7 @@ func StartCombat():
 	
 	for i in active_location.stagedenemies:
 		if i.stage == current_stage && i.level == current_level:
-			enemydata = [i.enemy,1]
+			enemydata = i.enemy#[i.enemy,1]
 	if enemydata == null:
 		enemydata = active_location.enemies
 	
@@ -1115,9 +1198,6 @@ func StartCombat():
 		enemies = makespecificgroup(enemydata)
 	
 	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
-#		for i in enemies:
-#			for k in ['hpmax', 'atk', 'matk', 'hitrate', 'armor']:
-#				i.set(i.get(k), i.get(k) * enemy_stats_mod)
 	
 	input_handler.emit_signal("CombatStarted", enemydata)
 	if variables.combat_tests == false:

@@ -67,7 +67,7 @@ func open():
 		$ActiveUpgrade/ProgressBar.max_value = tempupgrade.levels[tempupgradelevel].taskprogress
 	else:
 		$ActiveUpgrade.hide()
-	input_handler.ActivateTutorial('crafting')
+	input_handler.ActivateTutorial('upgrades')
 
 
 func sortupgrades(first, second):

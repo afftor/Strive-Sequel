@@ -114,6 +114,9 @@ var TranslationDict = {
 	MATERIALTRAPDESCRIPT = "A mechanical trap to hold targets in place. Required for certain skills. ",
 	MATERIALUNSTABLE_CONCOCTION = "Unstable Concoction",
 	MATERIALUNSTABLE_CONCOCTIONDESCRIPT = "A potent alchemical mixture. Required for certain skills.",
+	MATERIALBANDAGE = "Bandages",
+	MATERIALBANDAGEDESCRIPT = "A pack of bandages which are required for healing with First Aid skill.",
+	
 	
 	ITEMSLOTHEAD = "Head",
 	ITEMSLOTCHEST = "Chest",
@@ -530,6 +533,8 @@ var TranslationDict = {
 	SKILLDECAYDESCRIPT = "Deals dark magic damage to all enemies.",
 	SKILLOVERGROWTH = "Ovegrowth",
 	SKILLOVERGROWTHDESCRIPT = "Deals earth magic damage to all enemies.",
+	SKILLFIRST_AID = "First Aid",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally target for 25% of maximum health.",
 	
 	WORKTOOL = "Work Tool",
 	WORKTOOLAXE = "Lumber Axe",
@@ -712,10 +717,10 @@ var TranslationDict = {
 	STATCHARM = "Charm",
 	STATSEXUALS = "Sexuals",
 	
-	STATPHYSICSDESCRIPT = "Physical representation character's muscles and reflexes. The higher it is, the more effective combat and manual labor tasks are. Grows with physical labor. ",
-	STATWITSDESCRIPT = "Wits represent character's quickness of mind and intelligence. High Wits are mandatory for stronger Mage classes and crafters. ",
-	STATCHARMDESCRIPT = "Charm represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. ",
-	STATSEXUALSDESCRIPT = "Sexuals represent character's skills in body pleasures. High Sexuals make sexual skill and tasks a lot more effective. Sexuals also increase Lust cap. ",
+	STATPHYSICSDESCRIPT = "Physical representation character's muscles and reflexes. The higher it is, the more effective combat and manual labor tasks are. Grows with physical labor and by using Skill type abilities in combat.",
+	STATWITSDESCRIPT = "Wits represent character's quickness of mind and intelligence. High Wits are mandatory for stronger Mage classes and crafters. Grows with some crafting labors and by using Spell type abilities in combat.",
+	STATCHARMDESCRIPT = "Charm represents character's appeal and appearance. High Charm makes social oriented works and skills a lot more effective. Grows from using social abilities.",
+	STATSEXUALSDESCRIPT = "Sexuals represent character's skills in body pleasures. High Sexuals make sexual skill and tasks a lot more effective. Sexuals also increase Lust cap. Grows from sexual encounters.",
 	
 	STATGROWTH_FACTOR = "Growth",
 	STATMAGIC_FACTOR = "Magic Affinity",
@@ -789,8 +794,8 @@ var TranslationDict = {
 	
 	STATFOOD_LOVE = "Loved Food",
 	STATFOOD_HATE = "Hated Food",
-	STATFOOD_LOVEDESCRIPT = "When a favorite food is eaten, it gives a minor boost to productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
-	STATFOOD_HATEDESCRIPT = "When hated food is eaten, it will increase fatigue and reduce productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
+	STATFOOD_LOVEDESCRIPT = "When a favorite food is eaten, it gives a minor boost to Productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty. ",
+	STATFOOD_HATEDESCRIPT = "When hated food is eaten, it will reduce Obedience and lower Productivity for the next day. Food made of both loved and hated ingredients will be considered as neutral and give no bonus or penalty.",
 	
 	STATTASK_EFFICIENCY_TOOL = "Task Efficiency Bonus",
 	STATTASK_CRIT_CHANCE = "Task Crit Chance",
@@ -1012,6 +1017,7 @@ var TranslationDict = {
 	DIALOGUETAMEDRUGREPORT = "After consuming the drug, [name] seems to have become a lot more docile. ",
 	DIALOGUERAGEDRUGREPORT = "After consuming the drug, [name] seems to become more brutish.",
 	DIALOGUESEXDRGUREPORT = "After consuming the drug, [name]'s mind becomes fixated on the lewd things...",
+	DIALOGUEEXP_SCROLLREPORT = "[name] reads the scrool. New knowledge fill [his] mind...",
 	
 	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it. ",
 	
@@ -1559,6 +1565,7 @@ var TranslationDict = {
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUEFORCECHESTOPEN = "Open it",
 	
+	
 	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
 	
 	LOCAL_SHOP = "Shop",
@@ -1651,6 +1658,9 @@ var TranslationDict = {
 	ITEMMINORUS_POTIONDESCRIPT = "A special potion, which can be used to reduce a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
 	ITEMMAJORUS_POTION = "Majorus Potion",
 	ITEMMAJORUS_POTIONDESCRIPT = "A special potion, which can be used to expand a person's specific body part size. Can be used on Breasts, Butts, Penises and Balls.",
+	ITEMEXP_SCROLL = "Scroll of Knowledge",
+	ITEMEXP_SCROLLDESCRIPT = "Grants 100 experience to the user.",
+	
 	
 	DIALOGUEEVENTMINORUSSELECT = "Select which body part of [name] should be reduced.",
 	DIALOGUEEVENTMAJORUSSELECT = "Select which body part of [name] should be expanded.",

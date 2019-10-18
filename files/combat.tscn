@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=15]
-[ext_resource path="res://icon.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/iconsskills/WeaponRefine.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/gui/combat/combat_log.png" type="Texture" id=17]
 [ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/images/gui/combat/victory_frame.png" type="Texture" id=19]
@@ -24,12 +24,12 @@
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/combat/combat_screen_frame.png" type="Texture" id=23]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -51,35 +51,35 @@ void fragment() {
 	COLOR = col;
 	}"
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/modulate = Color( 0, 0.320313, 1, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=5]
 size = 50
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 17 )
 region_rect = Rect2( 16.2279, 15.9965, 1126.96, 148.925 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=7]
 size = 36
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 55
 use_filter = true
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 size = 100
 use_filter = true
 font_data = ExtResource( 9 )
@@ -181,7 +181,7 @@ margin_left = -75.0659
 margin_top = -17.6523
 margin_right = 104.934
 margin_bottom = 6.34769
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10/100"
 align = 1
@@ -191,7 +191,7 @@ margin_left = 101.202
 margin_top = -17.5913
 margin_right = 281.202
 margin_bottom = 6.40869
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10/100"
 align = 1
@@ -199,7 +199,7 @@ align = 1
 [node name="border" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template"]
 visible = false
 modulate = Color( 1, 1, 1, 0.640863 )
-material = SubResource( 5 )
+material = SubResource( 3 )
 margin_left = -4.0
 margin_top = -4.0
 margin_right = 219.0
@@ -229,7 +229,7 @@ margin_left = -10.0
 margin_top = 15.0
 margin_right = 62.0
 margin_bottom = 47.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "555"
@@ -372,6 +372,16 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10"
 align = 1
 
+[node name="charge" type="Label" parent="SkillPanel/ScrollContainer/GridContainer/Button"]
+visible = false
+margin_left = 7.0
+margin_top = 53.0
+margin_right = 32.0
+margin_bottom = 77.0
+custom_colors/font_color = Color( 0.945098, 1, 0.341176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+
 [node name="Icon" type="TextureRect" parent="SkillPanel/ScrollContainer/GridContainer/Button"]
 show_behind_parent = true
 margin_left = 1.0
@@ -387,7 +397,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0.831373 )
 margin_right = 76.0
 margin_bottom = 77.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.843137, 1, 0.172549, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
@@ -454,7 +464,7 @@ margin_left = 461.0
 margin_top = 859.0
 margin_right = 1501.0
 margin_bottom = 1043.0
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 6 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Combatlog"]
 margin_left = 12.864
@@ -519,7 +529,7 @@ margin_left = 480.415
 margin_top = 20.0
 margin_right = 511.415
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
@@ -546,7 +556,7 @@ margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "VICTORY"
 align = 1
 
@@ -555,7 +565,7 @@ margin_left = 100.246
 margin_top = 53.5847
 margin_right = 571.246
 margin_bottom = 153.585
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 0.858824, 0.529412, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "VICTORY"

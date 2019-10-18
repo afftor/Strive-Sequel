@@ -605,8 +605,8 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsclasses/Blacksmith.png", 
-				description = "Skill damage increased",
+				icon = "res://assets/images/iconsskills/WeaponRefine.png", 
+				description = "ATK increased",
 				limit = 1,
 				t_name = 'refine'
 			}

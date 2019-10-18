@@ -1408,7 +1408,7 @@ func characterspeech(scene):
 		dict.rough = [speechdict.rough, 1]
 #	if character.person.rules.silence == true:
 #		dict.silence = [speechdict.silence, 1]
-	if character.horny < 100:
+	if character.person.is_player_character == false:
 		dict.resist = [speechdict.resist, 1]
 		if scene.scene.code in ['missionaryanal', 'doggyanal', 'lotusanal','revlotusanal', 'inserttaila', 'insertinturnsass']  && partnerside == 'givers':
 			dict.analrape = [speechdict.analrape, 1]

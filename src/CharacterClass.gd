@@ -29,12 +29,14 @@ var racegroup = 'humanoid'
 var age = ''
 var sex = ''
 var slave_class = ''
+var personality = ''
 
 var professions = []
 var social_skills = []
 var social_cooldowns = {}
 var social_skills_charges = {}
 var combat_skills = []
+var combat_skill_charges = {}
 var combat_cooldowns = {}
 var social_skill_panel = {}
 var combat_skill_panel = {}
@@ -592,6 +594,8 @@ func create(temp_race, temp_gender, temp_age):
 	random_icon()
 	
 	
+	personality = variables.personality_array[randi()%variables.personality_array.size()]
+	
 	for i in globals.descriptions.bodypartsdata:
 		if globals.descriptions.bodypartsdata[i].has(get(i)):
 			if globals.descriptions.bodypartsdata[i][get(i)].bodychanges.size() > 0:
@@ -675,7 +679,6 @@ func get_racial_features():
 func get_sex_features():
 	match sex:
 		'female':
-			
 			if randf()*100 >= variables.female_vagina_virgin_default_chance:
 				vaginal_virgin = false
 			if randf()*100 >= variables.female_ass_virgin_default_chance:
@@ -722,7 +725,7 @@ func checkreqs(array, ignore_npc_stats_gear = false):
 			'is_free':
 				check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
 			'is_at_location':
-				check = travel_time == 0 && location == i.type
+				check = travel_time == 0 && location == i.value
 			'is_id':
 				check = input_handler.operate(i.operant, id, i.value)
 			'long_tail':

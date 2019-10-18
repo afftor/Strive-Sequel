@@ -1,19 +1,22 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://src/class_selection.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/class_selection.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=6]
 [ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/slavepanel/portrait_frame.png" type="Texture" id=9]
 
 [node name="class_learn" type="Panel"]
 margin_left = 266.829
 margin_top = 42.537
 margin_right = 1499.83
 margin_bottom = 889.537
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="categories" type="VBoxContainer" parent="."]
 margin_left = 23.4036
@@ -23,47 +26,47 @@ margin_bottom = 441.161
 
 [node name="all" type="Button" parent="categories"]
 margin_right = 77.0
-margin_bottom = 30.0
+margin_bottom = 38.2509
 hint_tooltip = "Hint"
 toggle_mode = true
 text = "All"
 
 [node name="social" type="Button" parent="categories"]
-margin_top = 34.0
+margin_top = 42.0
 margin_right = 77.0
-margin_bottom = 64.0
+margin_bottom = 80.2509
 hint_tooltip = "Social"
 toggle_mode = true
 text = "Soc"
 
 [node name="labor" type="Button" parent="categories"]
-margin_top = 68.0
+margin_top = 84.0
 margin_right = 77.0
-margin_bottom = 98.0
+margin_bottom = 122.251
 hint_tooltip = "Labor"
 toggle_mode = true
 text = "Lab"
 
 [node name="sexual" type="Button" parent="categories"]
-margin_top = 102.0
+margin_top = 126.0
 margin_right = 77.0
-margin_bottom = 132.0
+margin_bottom = 164.251
 hint_tooltip = "Sexuals"
 toggle_mode = true
 text = "Sex"
 
 [node name="combat" type="Button" parent="categories"]
-margin_top = 136.0
+margin_top = 168.0
 margin_right = 77.0
-margin_bottom = 166.0
+margin_bottom = 206.251
 hint_tooltip = "Combat"
 toggle_mode = true
 text = "Com"
 
 [node name="magic" type="Button" parent="categories"]
-margin_top = 170.0
+margin_top = 210.0
 margin_right = 77.0
-margin_bottom = 200.0
+margin_bottom = 248.251
 hint_tooltip = "Magic"
 toggle_mode = true
 text = "Mag"
@@ -84,9 +87,9 @@ self_modulate = Color( 1, 1, 1, 0.635294 )
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
 expand = true
 
 [node name="icon" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
@@ -94,7 +97,7 @@ show_behind_parent = true
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 150, 150 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="name" type="Label" parent="ScrollContainer/GridContainer/Button"]
@@ -113,42 +116,61 @@ margin_bottom = 37.4618
 text = "Classes"
 align = 1
 
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 509.0
+margin_top = 800.0
+margin_right = 709.0
+margin_bottom = 841.0
+theme = ExtResource( 7 )
+text = "Show Locked"
+
 [node name="ClassPanel" type="Panel" parent="."]
 visible = false
-margin_left = 242.143
-margin_top = 86.8286
-margin_right = 1137.14
-margin_bottom = 779.828
+margin_left = 242.704
+margin_top = 4.0
+margin_right = 1137.7
+margin_bottom = 836.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel"]
-margin_left = 182.0
-margin_top = 23.0076
-margin_right = 826.0
-margin_bottom = 277.008
+margin_left = 40.0
+margin_top = 476.0
+margin_right = 856.0
+margin_bottom = 749.0
 bbcode_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel"]
-margin_left = 22.2074
-margin_top = 16.6556
-margin_right = 172.207
-margin_bottom = 166.656
-texture = ExtResource( 6 )
+margin_left = 377.337
+margin_top = 23.0739
+margin_right = 527.336
+margin_bottom = 173.074
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
 
-[node name="Unlock" type="Button" parent="ClassPanel"]
-margin_left = 379.409
-margin_top = 623.347
-margin_right = 510.409
-margin_bottom = 678.347
-text = "Unlock"
+[node name="TextureRect" type="TextureRect" parent="ClassPanel/TextureRect"]
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 149.0
+margin_bottom = 154.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="name" type="Label" parent="ClassPanel/TextureRect"]
+margin_left = 0.663452
+margin_top = 1.74249
+margin_right = 143.663
+margin_bottom = 25.7425
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "name"
+align = 1
+valign = 1
 
 [node name="SocialSkills" type="ScrollContainer" parent="ClassPanel"]
 editor/display_folded = true
 margin_left = 33.0
-margin_top = 362.0
+margin_top = 212.0
 margin_right = 872.0
-margin_bottom = 462.0
+margin_bottom = 312.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/SocialSkills"]
@@ -162,15 +184,15 @@ margin_left = 369.0
 margin_right = 469.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="CombatSkills" type="ScrollContainer" parent="ClassPanel"]
 editor/display_folded = true
 margin_left = 33.0
-margin_top = 505.0
+margin_top = 355.0
 margin_right = 872.0
-margin_bottom = 605.0
+margin_bottom = 455.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/CombatSkills"]
@@ -184,34 +206,33 @@ margin_left = 369.0
 margin_right = 469.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="SocialLabel" type="Label" parent="ClassPanel"]
 margin_left = 390.0
-margin_top = 330.0
-margin_right = 513.0
-margin_bottom = 355.0
+margin_top = 180.0
+margin_right = 519.0
+margin_bottom = 205.0
 text = "Social Skills"
 
 [node name="CombatLabel" type="Label" parent="ClassPanel"]
 margin_left = 380.0
-margin_top = 476.0
-margin_right = 525.0
-margin_bottom = 501.0
+margin_top = 326.0
+margin_right = 533.0
+margin_bottom = 351.0
 text = "Combat Skills"
+
+[node name="Unlock" type="Button" parent="ClassPanel"]
+margin_left = 379.409
+margin_top = 761.347
+margin_right = 510.409
+margin_bottom = 816.347
+text = "Unlock"
 
 [node name="ExpLabel" type="Label" parent="ClassPanel"]
 margin_left = 28.0
-margin_top = 634.0
+margin_top = 772.0
 margin_right = 322.0
-margin_bottom = 658.0
+margin_bottom = 796.0
 text = "Exp : "
-
-[node name="CheckBox" type="CheckBox" parent="."]
-margin_left = 509.0
-margin_top = 800.0
-margin_right = 709.0
-margin_bottom = 841.0
-theme = ExtResource( 7 )
-text = "Show Locked"

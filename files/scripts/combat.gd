@@ -804,17 +804,25 @@ func use_skill(skill_code, caster, target):
 			combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
 		else:
 			combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
-	
+		
 		caster.mp -= skill.manacost
-
+		
 		if skill.combatcooldown > 0:
 			caster.combat_cooldowns[skill_code] = skill.combatcooldown
-		if skill.cooldown > 0:
-			caster.daily_cooldowns[skill_code] = skill.cooldown
 	
 	if caster.combatgroup == 'ally':
 		for i in skill.catalysts:
 			state.materials[i] -= skill.catalysts[i]
+		if skill.charges > 0:
+			if caster.combat_skill_charges.has(skill.code):
+				caster.combat_skill_charges[skill.code] += 1
+			else:
+				caster.combat_skill_charges[skill.code] = 1
+			caster.daily_cooldowns[skill_code] = skill.cooldown
+		if skill.ability_type == 'skill':
+			caster.physics += rand_range(0.3,0.5)
+		elif skill.ability_type == 'spell':
+			caster.wits += rand_range(0.3,0.5)
 	#caster part of setup
 	var s_skill1 = S_Skill.new()
 	s_skill1.createfromskill(skill_code)
@@ -1280,12 +1288,18 @@ func RebuildSkillPanel():
 			newbutton.get_node("cooldown").visible = true
 			newbutton.get_node("cooldown").text = str(activecharacter.combat_cooldowns[skill.code])
 			newbutton.get_node("cooldown").set("custom_colors/font_color", globals.hexcolordict.yellow)
-		if activecharacter.daily_cooldowns.has(skill.code):
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-			newbutton.get_node("cooldown").visible = true
-			newbutton.get_node("cooldown").text = str(activecharacter.daily_cooldowns[skill.code])
-			newbutton.get_node("cooldown").set("custom_colors/font_color", globals.hexcolordict.red)
+		if skill.charges > 0:
+			var leftcharges = skill.charges
+			if activecharacter.combat_skill_charges.has(skill.code):
+				leftcharges -= activecharacter.combat_skill_charges[skill.code]
+			newbutton.get_node("charge").visible = true
+			newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+			if leftcharges <= 0:
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+				newbutton.get_node("cooldown").visible = true
+				newbutton.get_node("cooldown").text = str(activecharacter.daily_cooldowns[skill.code])
+				newbutton.get_node("cooldown").set("custom_colors/font_color", globals.hexcolordict.red)
 		if !activecharacter.checkreqs(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -1302,13 +1316,17 @@ func SelectSkill(skill):
 	#need to add daily restriction check
 	if activecharacter.mp < skill.manacost || activecharacter.combat_cooldowns.has(skill.code) :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', 'attack');
+		call_deferred('SelectSkill', 'attack')
 		return
 	for i in skill.catalysts:
 		if state.materials[i] < skill.catalysts[i]:
 			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
 			call_deferred('SelectSkill', 'attack');
 			break
+	if skill.charges > 0 && activecharacter.combat_skill_charges.has(skill.code) && activecharacter.combat_skill_charges[skill.code] >= skill.charges:
+		#input_handler.SystemMessage("No charges left: " + skill.name)
+		call_deferred('SelectSkill', 'attack')
+		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)

@@ -105,8 +105,14 @@ func open(tempperson):
 	$job_panel.hide()
 	$class_learn.hide()
 	input_handler.ActivateTutorial('slavetab')
+	input_handler.ActivateTutorial('skills')
 	show()
 	update()
+
+func hide():
+	.hide()
+	if state.active_tasks.size() > 0:
+		input_handler.ActivateTutorial('tasklist')
 
 func update():
 	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler"):
@@ -251,7 +257,7 @@ func update():
 			name = prof.altname
 		newnode.get_node("Label").text = name
 		newnode.texture = prof.icon
-		globals.connecttexttooltip(newnode, globals.descriptions.get_class_details(person, prof, false))
+		globals.connecttexttooltip(newnode, "[center]"+prof.name + "[/center]"+globals.descriptions.get_class_details(person, prof, false))
 	
 	if $SkillPanel.visible == true:
 		build_skill_panel()

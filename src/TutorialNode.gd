@@ -4,12 +4,13 @@ extends Control
 var current_tutorial
 
 var tutorial_themes = {
-	introduction = {name = "Introduction", text = "This is your Mansion Screen. At the right side you can see your character list. At the left side is your Task list. Make yourself familiar with your characters by clicking on them."},
-	slavetab = {name = "Character Tab", text = "This is the character panel. It contains most of the character's information and allows you to control it. Your characters are your main possessions.\nCharacters consume food every day, which is represented by Food Consumption stat on the left. Different characters require different amount of it, which, similar to other stats, often tied to race. Characters can be assigned to work by selecting Job menu. This way you can start utilize them. "},
-	tasklist = {name = "Task List", text = "Task list shows up ongoing tasks. Once progress bar is filled, you receive an item to your storage. You can hover over the task to see what workers are assigned to it."},
+	introduction = {name = "Introduction", text = "This is your Mansion Screen. At the right side you can see your {color=yellow|Character List}. At the left side is your {color=yellow|Task list}. Make yourself familiar with your characters by clicking on them."},
+	slavetab = {name = "Character Tab", text = "This is the character panel. It contains most of the character's information and allows you to control it. Your characters are your main possessions.\nCharacters consume food every day, which is represented by Food Consumption stat on the left. Different characters require different amount of it, which, similar to other stats, often tied to race. Characters can be assigned to work by selecting Job menu. This way you can start utilizing them. "},
+	tasklist = {name = "Task List", text = "Task list shows up ongoing tasks. Once progress bar is filled, you receive an item to your storage. You can hover over the task to see what workers are assigned to it. Progress speed can be increased by {color=yellow|Productivity}, some stats, classes and tools related to the task."},
 	outside = {name = 'Exploration', text = ''},
 	crafting = {name = "Crafting", text = "To craft an item, select the number of desired items, then assign a worker to task, responsible for production. Resources will be consumed when each new item starts its production. You can unlock more crafts by making upgrades and finding new recipes."},
-	upgrades = {name = "Upgrades", text = "After selecting an upgrade, make sure to assign a character to work on it. Physics and Wits, as well as certain classes can improve upgrading speed."},
+	upgrades = {name = "Upgrades", text = "After selecting an upgrade, make sure to assign a character to work on it. Physics and Wits, as well as certain classes can improve upgrading speed. It is recommended to start with either {color=yellow|Tailor Workshop or Forge} as those buildings will unlock more crafting recipes. "},
+	skills = {name = 'Skills', text = "At the bottom of Character's Tab you can see their {color=yellow|Ability Panel}. Social abilities can be used in mansion and most importantly, provide tools to control your chacters. You most important stats to look at are: {color=green|Fear and Obedience}. Try to keep either of them high or your characters will attempt to leave you. Their decay depends greatly and characters, so if you have problems with it, try to aim for characters with higher {color=yellow|Tame Factor} or lower {color=yellow|Brave factor}, or consider getting decay reducing items. "},
 }
 
 func _ready():
@@ -48,7 +49,7 @@ func show_tutorial_window(data):
 	current_tutorial = data
 	
 	$Panel.show()
-	$Panel/RichTextLabel.bbcode_text = tutorial_themes[data].text
+	$Panel/RichTextLabel.bbcode_text = globals.TextEncoder(tutorial_themes[data].text)
 
 func hide_node():
 	input_handler.FadeAnimation(self, 0.3)
@@ -59,7 +60,7 @@ func hide_text_window():
 func confirm_message():
 	hide_text_window()
 	state.seen_tutorials.append(current_tutorial)
-	state.active_tutorials.remove(current_tutorial)
+	state.active_tutorials.erase(current_tutorial)
 	rebuild()
 
 func stop_tutorial():
