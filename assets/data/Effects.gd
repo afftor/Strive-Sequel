@@ -447,6 +447,7 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
 		req_skill = true,
+		args = [{obj = 'parent', param = 'caster'}],
 		sub_effects = ['e_t_mindcontrol_t', 'e_t_mindcontrol_c'],
 		buffs = []
 	},
@@ -458,6 +459,7 @@ var effect_table = {
 		no_obed_reduce = true,
 		no_escape = true,
 		tags = ['mindcontrol'],
+		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
 		sub_effects = ['e_t_mindcontrol'],
 		atomic = [
 			{type = 'stat_add', stat = 'wits_bonus', value = -100},
