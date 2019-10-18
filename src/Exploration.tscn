@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/gui/combat/cross.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/iconsitems/lockpick.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/iconsskills/lesserheal.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=10]
 [ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=11]
@@ -151,7 +151,6 @@ text = "Presented Characters"
 align = 1
 
 [node name="Positions" type="TextureRect" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 1363.92
 margin_top = 277.507
@@ -169,6 +168,7 @@ text = "Combat Party"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Positions"]
+editor/display_folded = true
 margin_left = 56.329
 margin_top = 56.327
 margin_right = 460.329
@@ -878,8 +878,7 @@ text = "0"
 align = 1
 
 [node name="medium" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-margin_left = 104.0
-margin_right = 204.0
+margin_right = 100.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 
@@ -922,8 +921,8 @@ text = "0"
 align = 1
 
 [node name="hard" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-margin_left = 208.0
-margin_right = 308.0
+margin_left = 104.0
+margin_right = 204.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 

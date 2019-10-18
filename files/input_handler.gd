@@ -890,6 +890,22 @@ func get_tutorial_node():
 	node.add_child(window)
 	return window
 
+func get_chat_node():
+	var window
+	var node = get_tree().get_root()
+	if node.has_node('chatwindow'):
+		window = node.get_node('chatwindow')
+		node.remove_child(window)
+	else:
+		window = load("res://src/scenes/ChatNode.tscn").instance()
+		window.name = 'chatwindow'
+	node.add_child(window)
+	return window
+
+func add_random_chat_message(person, event):
+	var node = get_chat_node()
+	node.select_chat_line(person, event)
+
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)

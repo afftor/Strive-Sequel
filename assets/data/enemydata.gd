@@ -62,7 +62,7 @@ var enemies = {
 		ai = [['basic', 66], ['ads', 33]],
 		ai_hard = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 20,
 	},
 	bandit_archer = {
 		code = 'bandit_archer',
@@ -89,7 +89,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 10,
+		xpreward = 20,
 	},
 	bandit_assassin = {
 		code = 'bandit_assassin',
@@ -116,7 +116,7 @@ var enemies = {
 		gear = [],
 		ai =  [['basic', 66], ['ads', 33]],
 		ai_position = ['ranged'],
-		xpreward = 20,
+		xpreward = 25,
 	},
 	bandit_boss = {
 		code = 'bandit_boss',
@@ -173,7 +173,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 15,
 	},
 	trained_bear = {
 		code = 'trained_bear',
@@ -200,7 +200,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 10,
+		xpreward = 25,
 	},
 	trained_raptor = {
 		code = 'trained_raptor',
@@ -227,7 +227,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['melee'],
-		xpreward = 25,
+		xpreward = 35,
 	},
 	guardian_golem = {
 		code = 'guardian_golem',
@@ -255,7 +255,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 100],['ads', 0]],
 		ai_position = ['melee'],
-		xpreward = 25,
+		xpreward = 40,
 	},
 	ballista = {
 		code = 'ballista',
@@ -283,7 +283,7 @@ var enemies = {
 		gear = [],
 		ai = [['basic', 50],['ads', 50]],
 		ai_position = ['ranged'],
-		xpreward = 25,
+		xpreward = 30,
 	},
 	bandit_mage = {
 		code = 'bandit_mage',
@@ -310,7 +310,7 @@ var enemies = {
 		gear = [],
 		ai = [['ads', 45], ['aoe', 45], ['support', 10]], #add healing on self when hp < 50 with 75% chance
 		ai_position = ['ranged'],
-		xpreward = 20,
+		xpreward = 30,
 	},
 	cave_goblin_melee = {
 		code = 'cave_goblin_melee',
@@ -337,7 +337,7 @@ var enemies = {
 		gear = [],
 		ai = ['melee'],
 		ai_position = ['melee'],
-		xpreward = 8,
+		xpreward = 15,
 	},
 	cave_goblin_archer = {
 		code = 'cave_goblin_archer',
@@ -364,7 +364,7 @@ var enemies = {
 		gear = [],
 		ai = ['ranged'],
 		ai_position = ['ranged'],
-		xpreward = 8,
+		xpreward = 15,
 	},
 	cave_goblin_mage = {
 		code = 'cave_goblin_mage',
@@ -391,7 +391,7 @@ var enemies = {
 		gear = [],
 		ai = ['ranged'],
 		ai_position = ['ranged'],
-		xpreward = 10,
+		xpreward = 20,
 	},
 	ogre_melee = {
 		code = 'ogre_melee',
@@ -445,7 +445,7 @@ var enemies = {
 		gear = [],
 		ai = ['ranged'],
 		ai_position = ['ranged'],
-		xpreward = 40,
+		xpreward = 55,
 	},
 	troll = {
 		code = 'troll',
@@ -622,7 +622,7 @@ var enemies = {
 		atk = 12,
 		matk = 1,
 		speed = 30,
-		resists = {earth = 50, water = 50},
+		resists = {earth = 50, water = 50, fire = -50},
 		race = 'beast',
 		loot = 'rat_loot',
 		icon = "res://assets/images/enemies/RatIcon.png",
@@ -634,7 +634,7 @@ var enemies = {
 		gear = [],
 		ai = ['melee'],
 		ai_position = ['melee'],
-		xpreward = 5,
+		xpreward = 10,
 	},
 	gryphon = {
 		code = 'gryphon',
@@ -649,7 +649,7 @@ var enemies = {
 		atk = 90,
 		matk = 30,
 		speed = 50,
-		resists = {air = 100, water = 35},
+		resists = {air = 100, water = 35, fire = -50},
 		race = 'beast',
 		loot = 'gryphon_loot',
 		icon = null,

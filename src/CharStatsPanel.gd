@@ -21,7 +21,7 @@ func open(character = Slave.new()):
 	
 	for i in variables.fighter_stats_list:
 		if !i in ['hpmax', 'mpmax']:
-			$"base stats".get_node(i).text = str(character.get_stat(i))
+			$"base stats".get_node(i).text = str(floor(character.get_stat(i)))
 	
 	for i in $resists.get_children():
 		if variables.resists_list.has(i.name):

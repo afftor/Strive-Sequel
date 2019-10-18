@@ -184,7 +184,6 @@ func if_has_material(mat, operant, val):
 	return input_handler.operate(operant, materials[mat], val)
 
 func checkreqs(array):
-	if array.size() != 0: print(array)
 	var check = true
 	for i in array:
 		if i.has('orflag'):

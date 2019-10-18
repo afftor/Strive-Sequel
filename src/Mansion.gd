@@ -105,7 +105,8 @@ func _ready():
 		character.mp = 100
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("succubus")
+		character.unlock_class("apprentice")
+		character.unlock_class("attendant")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -119,11 +120,11 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("anal_plug", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("shackles", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("elegant_choker", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
-		globals.AddItemToInventory(globals.CreateUsableItem("minorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
@@ -220,6 +221,7 @@ func advance_day():
 		i.process_event(variables.TR_DAY)
 	for i in state.areas.values():
 		world_gen.update_guilds(i)
+	world_gen.update_locations()
 
 func set_time_buttons():
 	match globals.globalsettings.turn_based_time_flow:

@@ -335,7 +335,7 @@ func counterepairmaterials():
 
 func calculateprice():
 	var price = 0
-	if itemtype == 'usable':
+	if itemtype == 'usable' || Items.itemlist[itembase].crafttype == 'basic':
 		price = Items.itemlist[itembase].price
 	else:
 		var materialsdict = calculatematerials()
