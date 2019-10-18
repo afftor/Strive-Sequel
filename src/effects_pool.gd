@@ -35,6 +35,20 @@ func remove_id(id):
 			eff.sub_effects.erase(id)
 	effects.erase(id)
 
+func get_effects_linked_to(char_id):
+	var res = []
+	for e in effects.values():
+		if !e.is_applied: continue
+		if e.args.has(char_id): res.push_back(e)
+	return res
+
+func get_n_effects_linked_to(char_id, eff_n):
+	var res = []
+	for e in get_effects_linked_to(char_id):
+		if e.template.has('name') && e.template.name == eff_n:
+			res.push_back(e)
+	return res
+
 func serialize():
 	cleanup()
 	var tmp = {}

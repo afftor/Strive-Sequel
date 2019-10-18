@@ -229,7 +229,7 @@ var traits = {
 		icon = null,
 		effects = [],
 	}, 
-	undead = {#REDO
+	undead = {
 		code = 'undead',
 		name = '',
 		descript = '',

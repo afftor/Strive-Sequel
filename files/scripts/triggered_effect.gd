@@ -94,6 +94,7 @@ func e_apply():
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	
+	setup_siblings()
 	for e in sub_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		var t1 = eff.template.target
@@ -105,7 +106,7 @@ func e_apply():
 					'remove_parent':
 						var obj = effects_pool.get_effect_by_id(parent)
 						obj.remove()
-					'remove_sibling':
+					'remove_siblings':
 						var obj = effects_pool.get_effect_by_id(parent)
 						obj.remove_siblings()
 						obj.remove()

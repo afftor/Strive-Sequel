@@ -338,6 +338,7 @@ func set_material(material, operant, value):
 			materials[material] = value
 
 func remove_slave(tempslave, permanent = false):
+	tempslave.process_event(variables.TR_REMOVE)
 	characters_pool.move_to_pool(tempslave.id)
 	tempslave.is_players_character = false
 	if permanent: tempslave.is_active = false

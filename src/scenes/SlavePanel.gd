@@ -468,17 +468,23 @@ func build_skill_panel():
 				if person.energy < skill.energycost:
 					newbutton.disabled = true
 					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
+			var charges = Skilldata.get_charges(skill, person)
+			var used_charges = 0
 			if person.social_skills_charges.has(skill.code):
-				text = str(skill.charges - person.social_skills_charges[skill.code]) + "/" + str(skill.charges)
-			else:
-				text = str(skill.charges) + "/" + str(skill.charges)
+				used_charges = person.social_skills_charges[skill.code]
+			if skill.has('custom_used_charges'):
+				#stub - for i'm haiting to use injections and functors this way
+				#additional functional can be added here
+				if skill.custom_used_charges[0] == 'call':
+					used_charges = person.call(skill.custom_used_charges[1], skill.custom_used_charges[2])
+			text = str(charges - used_charges) + "/" + str(charges)
 			
 			if person.checkreqs(skill.reqs) == false:
 				newbutton.disabled = true
 				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
 			newbutton.get_node("charges").text = text
 			newbutton.get_node("charges").show()
-			if person.social_skills_charges.has(skill.code) && skill.charges - person.social_skills_charges[skill.code] <= 0:
+			if charges - used_charges <= 0:
 				newbutton.disabled = true
 			if person.active_panel == variables.PANEL_COM: newbutton.disabled = true
 			
