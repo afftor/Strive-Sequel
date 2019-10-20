@@ -84,8 +84,8 @@ func _ready():
 				continue
 			character.social_skills.append(i)
 		character.is_players_character = true
-#		globals.impregnate(character, character)
-#		character.pregnancy.duration = 1
+		#globals.impregnate(character, character)
+		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
 		character.create('random', 'random', 'random')
@@ -129,6 +129,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
+		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
 		yield(get_tree(), 'idle_frame')
 		input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')

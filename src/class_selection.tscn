@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/class_selection.gd" type="Script" id=2]
@@ -7,14 +7,17 @@
 [ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=6]
 [ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/slavepanel/portrait_frame.png" type="Texture" id=9]
+[ext_resource path="res://src/ClassInformationPanel.gd" type="Script" id=8]
+[ext_resource path="res://assets/fonts/CursiveFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/slavepanel/portrait_frame.png" type="Texture" id=11]
+[ext_resource path="res://icon.png" type="Texture" id=12]
 
 [node name="class_learn" type="Panel"]
-margin_left = 266.829
-margin_top = 42.537
-margin_right = 1499.83
-margin_bottom = 889.537
+margin_left = 267.0
+margin_top = 43.0
+margin_right = 1519.0
+margin_bottom = 890.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
@@ -72,9 +75,9 @@ toggle_mode = true
 text = "Mag"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 118.0
+margin_left = 108.0
 margin_top = 50.0
-margin_right = 1192.0
+margin_right = 1160.0
 margin_bottom = 752.0
 scroll_horizontal_enabled = false
 
@@ -82,6 +85,7 @@ scroll_horizontal_enabled = false
 columns = 7
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+editor/display_folded = true
 visible = false
 self_modulate = Color( 1, 1, 1, 0.635294 )
 margin_right = 150.0
@@ -126,113 +130,156 @@ text = "Show Locked"
 
 [node name="ClassPanel" type="Panel" parent="."]
 visible = false
-margin_left = 242.704
-margin_top = 4.0
-margin_right = 1137.7
-margin_bottom = 836.0
+margin_left = 249.0
+margin_top = -9.0
+margin_right = 1004.0
+margin_bottom = 924.0
+theme = ExtResource( 1 )
+script = ExtResource( 8 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel"]
-margin_left = 40.0
-margin_top = 476.0
-margin_right = 856.0
-margin_bottom = 749.0
+[node name="Control" type="Control" parent="ClassPanel"]
+margin_left = -586.0
+margin_top = -134.052
+margin_right = 1363.0
+margin_bottom = 970.948
+
+[node name="Panel" type="Panel" parent="ClassPanel"]
+margin_top = 588.0
+margin_right = 755.0
+margin_bottom = 853.0
+
+[node name="descript" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 24.0
+margin_top = 611.0
+margin_right = 732.0
+margin_bottom = 833.0
+custom_fonts/normal_font = ExtResource( 9 )
+custom_colors/default_color = Color( 0.764706, 0.745098, 0.745098, 1 )
 bbcode_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel"]
-margin_left = 377.337
-margin_top = 23.0739
-margin_right = 527.336
-margin_bottom = 173.074
-texture = ExtResource( 8 )
+margin_left = 11.0
+margin_top = 5.08066
+margin_right = 261.0
+margin_bottom = 255.081
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel/TextureRect"]
 margin_left = -5.0
 margin_top = -1.0
-margin_right = 149.0
-margin_bottom = 154.0
-texture = ExtResource( 9 )
+margin_right = 252.0
+margin_bottom = 252.0
+texture = ExtResource( 11 )
 expand = true
 
 [node name="name" type="Label" parent="ClassPanel/TextureRect"]
-margin_left = 0.663452
-margin_top = 1.74249
-margin_right = 143.663
-margin_bottom = 25.7425
+margin_left = 362.424
+margin_top = 12.3781
+margin_right = 570.424
+margin_bottom = 36.3781
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "name"
 align = 1
 valign = 1
 
+[node name="reqs" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 13.0
+margin_top = 278.0
+margin_right = 326.0
+margin_bottom = 567.0
+bbcode_enabled = true
+
+[node name="bonus" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 272.0
+margin_top = 57.0
+margin_right = 687.0
+margin_bottom = 295.0
+bbcode_enabled = true
+
 [node name="SocialSkills" type="ScrollContainer" parent="ClassPanel"]
-editor/display_folded = true
-margin_left = 33.0
-margin_top = 212.0
-margin_right = 872.0
-margin_bottom = 312.0
+margin_left = 339.622
+margin_top = 340.904
+margin_right = 737.622
+margin_bottom = 440.904
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/SocialSkills"]
-margin_right = 839.0
+margin_right = 398.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Button" type="TextureRect" parent="ClassPanel/SocialSkills/HBoxContainer"]
 visible = false
-margin_left = 369.0
-margin_right = 469.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 8 )
+margin_left = 161.0
+margin_right = 236.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 12 )
 expand = true
 
+[node name="TextureRect" type="TextureRect" parent="ClassPanel/SocialSkills/HBoxContainer/Button"]
+margin_right = 76.0
+margin_bottom = 75.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
 [node name="CombatSkills" type="ScrollContainer" parent="ClassPanel"]
-editor/display_folded = true
-margin_left = 33.0
-margin_top = 355.0
-margin_right = 872.0
-margin_bottom = 455.0
+margin_left = 336.622
+margin_top = 483.904
+margin_right = 734.622
+margin_bottom = 583.904
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/CombatSkills"]
-margin_right = 839.0
+margin_right = 398.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Button" type="TextureRect" parent="ClassPanel/CombatSkills/HBoxContainer"]
 visible = false
-margin_left = 369.0
-margin_right = 469.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 8 )
+margin_left = 161.0
+margin_right = 236.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 12 )
 expand = true
 
+[node name="TextureRect" type="TextureRect" parent="ClassPanel/CombatSkills/HBoxContainer/Button"]
+margin_right = 76.0
+margin_bottom = 75.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
 [node name="SocialLabel" type="Label" parent="ClassPanel"]
-margin_left = 390.0
-margin_top = 180.0
-margin_right = 519.0
-margin_bottom = 205.0
+margin_left = 474.57
+margin_top = 309.418
+margin_right = 603.57
+margin_bottom = 334.418
 text = "Social Skills"
 
 [node name="CombatLabel" type="Label" parent="ClassPanel"]
-margin_left = 380.0
-margin_top = 326.0
-margin_right = 533.0
-margin_bottom = 351.0
+margin_left = 458.782
+margin_top = 450.144
+margin_right = 611.782
+margin_bottom = 475.144
 text = "Combat Skills"
 
 [node name="Unlock" type="Button" parent="ClassPanel"]
-margin_left = 379.409
-margin_top = 761.347
-margin_right = 510.409
-margin_bottom = 816.347
+margin_left = 429.306
+margin_top = 862.288
+margin_right = 635.306
+margin_bottom = 915.288
 text = "Unlock"
 
 [node name="ExpLabel" type="Label" parent="ClassPanel"]
-margin_left = 28.0
-margin_top = 772.0
-margin_right = 322.0
-margin_bottom = 796.0
-text = "Exp : "
+margin_left = 64.0
+margin_top = 875.0
+margin_right = 351.0
+margin_bottom = 899.0
+text = "Experience: "

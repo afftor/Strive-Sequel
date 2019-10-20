@@ -150,7 +150,19 @@ func gear_detailed_tooltip(data, item = null):
 
 func geartemplete_tooltip(data):
 	var item = data.item
-	var text = '[center]' + item.name + '[/center]\n' + item.descript
+	var text = '[center]' + item.name + '[/center]\n'
+	
+	if item.has('geartype'):
+		text += 'Type: ' + item.geartype + "\n"
+		if item.slots.size() > 0:
+			text += "Slots: "
+			for i in item.slots:
+				text += tr("ITEMSLOT"+i.to_upper()) + ", "
+			text = text.substr(0, text.length() -2) + ". \n"
+	else:
+		text += "Type: Usable\n"
+	
+	text += item.descript
 	
 	if item.itemtype in ['armor','weapon','tool']:
 		text += "\n\n"

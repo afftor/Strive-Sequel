@@ -164,3 +164,21 @@ margin_left = 3.01477
 margin_top = 9.04404
 margin_right = 1923.01
 margin_bottom = 1089.04
+
+[node name="changelog" type="RichTextLabel" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+bbcode_enabled = true
+bbcode_text = "0.1.0a
+Added class information panel
+Fixed tutorial window issues
+Fixed interaction menu bug
+0.1.0
+Release"
+text = "0.1.0a
+Added class information panel
+Fixed tutorial window issues
+Fixed interaction menu bug
+0.1.0
+Release"

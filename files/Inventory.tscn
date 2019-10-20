@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/inventory/Group 5.png" type="Texture" id=2]
@@ -40,11 +40,10 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=38]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=39]
 [ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=40]
-[ext_resource path="res://files/ItemShader.tres" type="Material" id=41]
-[ext_resource path="res://assets/images/iconsgear/PickaxeBasic.png" type="Texture" id=42]
-[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=43]
-[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=44]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=45]
+[ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=42]
+[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=44]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -57,7 +56,7 @@ margin_bottom = 85.6616
 [sub_resource type="DynamicFont" id=2]
 size = 46
 use_filter = true
-font_data = ExtResource( 45 )
+font_data = ExtResource( 44 )
 
 [node name="Panel" type="Panel" groups=[
 "pauseprocess",
@@ -149,7 +148,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0000"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 50.1578
 margin_top = 171.947
 margin_right = 606.158
@@ -229,7 +227,7 @@ texture_hover = ExtResource( 28 )
 margin_left = 490.0
 margin_right = 556.0
 margin_bottom = 66.0
-hint_tooltip = "INVENTORYARMOR"
+hint_tooltip = "INVENTORYCOSTUME"
 toggle_mode = true
 texture_normal = ExtResource( 29 )
 texture_pressed = ExtResource( 30 )
@@ -334,7 +332,6 @@ expand = true
 stretch_mode = 6
 
 [node name="GearPanel" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 657.0
 margin_top = 70.0
 margin_right = 1313.0
@@ -359,12 +356,11 @@ expand = true
 
 [node name="icon" type="TextureRect" parent="GearPanel/chest"]
 show_behind_parent = true
-material = ExtResource( 41 )
 margin_top = -0.546295
 margin_right = 100.0
 margin_bottom = 99.4537
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 42 )
+texture = ExtResource( 41 )
 expand = true
 stretch_mode = 6
 
@@ -384,7 +380,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -405,7 +401,7 @@ margin_top = -1.22778
 margin_right = 100.0
 margin_bottom = 98.7722
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -425,7 +421,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -445,7 +441,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -465,7 +461,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -485,7 +481,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -505,7 +501,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -525,7 +521,7 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
@@ -545,11 +541,11 @@ show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
-[node name="StatsPanel" parent="." instance=ExtResource( 44 )]
+[node name="StatsPanel" parent="." instance=ExtResource( 43 )]
 visible = false
 margin_left = 1339.0
 margin_top = 70.0

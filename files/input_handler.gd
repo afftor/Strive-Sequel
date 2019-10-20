@@ -720,20 +720,6 @@ func SystemMessage(text, time = 4):
 	get_tree().get_root().add_child(SystemMessageNode)
 	FadeAnimation(SystemMessageNode, 1, basetime)
 
-func ShowGameTip(tip):
-	if globals.globalsettings.disabletips == true || state.viewed_tips.has(tip):
-		return
-	var node = get_tree().get_root()
-	var tipnode
-	if node.has_node("GameTips"):
-		tipnode = node.get_node("GameTips")
-		node.remove_child(tipnode)
-	else:
-		tipnode = load("res://src/GameplayTips.tscn").instance()
-		tipnode.name = "GameTips"
-	node.add_child(tipnode) # possibly error
-	tipnode.showtip(tip)
-
 func ShowOutline(node):
 	node.material = load('res://files/portret_shader.tres').duplicate()
 	node.material.set_shader_param('opacity', 1)
@@ -900,6 +886,26 @@ func get_chat_node():
 		window = load("res://src/scenes/ChatNode.tscn").instance()
 		window.name = 'chatwindow'
 	node.add_child(window)
+	return window
+
+func show_class_info(classcode, person = null):
+	if person == null:
+		person = scene_character
+	var node = get_class_info_panel()
+	node.open(classcode, person)
+
+func get_class_info_panel():
+	var window
+	var node = get_tree().get_root()
+	if node.has_node('classinfo'):
+		window = node.get_node('classinfo')
+		#node.remove_child(window)
+	else:
+		window = load("res://src/scenes/ClassInformationPanel.tscn").instance()
+		window.name = 'classinfo'
+		node.add_child(window)
+	#node.add_child(window)
+	window.raise()
 	return window
 
 func add_random_chat_message(person, event):

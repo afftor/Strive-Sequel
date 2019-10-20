@@ -890,58 +890,64 @@ func get_random_name():
 func decipher_reqs(reqs, colorcode = false):
 	var text = ''
 	for i in reqs:
+		var text2 = ''
 		if i.has('orflag'):
 			continue
 		match i.code:
 			'stat':
 				if i.type.find("factor") > 0:
-					text += globals.statdata[i.type].name + ': ' + globals.descriptions.factor_descripts[i.value] + " "
+					text2 += globals.statdata[i.type].name + ': ' + globals.descriptions.factor_descripts[i.value] + " "
 				else:
-					text += globals.statdata[i.type].name + ': ' + str(i.value) + " "
+					text2 += globals.statdata[i.type].name + ': ' + str(i.value) + " "
 				match i.operant:
 					'gte':
-						text += "or higher"
+						text2 += "or higher"
 					'lte':
-						text += "or lower"
+						text2 += "or lower"
 			'has_profession':
 				if i.check == true:
-					text += 'Has Class: ' + Skilldata.professions[i.value].name
+					text2 += 'Has Class: ' + Skilldata.professions[i.value].name
 				else:
-					text += 'Has NO Class: ' + Skilldata.professions[i.value].name
+					text2 += 'Has NO Class: ' + Skilldata.professions[i.value].name
+			'has_any_profession':
+				text2 += "Has any of Classes: "
+				for k in i.value:
+					text2 += Skilldata.professions[k].name + ", "
+				text2 = text2.substr(0, text2.length()-2)
 			'race':
 				if i.operant == 'eq':
-					text += 'Race: ' + races.racelist[i.value].name
+					text2 += 'Race: ' + races.racelist[i.value].name
 				else:
 					continue
 			'race_is_beast':
 				if i.value == true:
-					text += 'Only for bestial races.'
+					text2 += 'Only for bestial races.'
 				else:
 					continue
 			'gear_equiped':
-				text += 'Must have ' + Items.itemlist[i.value].name + "."
+				text2 += 'Must have ' + Items.itemlist[i.value].name + "."
 			'global_profession_limit':
-				text += 'Only ' + str(i.value) + " " + Skilldata.professions[i.name].name + " allowed."
+				text2 += 'Only ' + str(i.value) + " " + Skilldata.professions[i.name].name + " allowed."
 			'one_of_races':
-				text += "Only for: "
+				text2 += "Only for: "
 				for k in i.value:
 					text += races.racelist[k.replace(" ","")].name + ', '
-				text = text.substr(0, text.length()-2) + '. '
+				text2 = text2.substr(0, text2.length()-2) + '. '
 			'trait':
-				text += "Requires: " + Traitdata.traits[i.value].name
+				text2 += "Requires: " + Traitdata.traits[i.value].name
 			'population':
-				text += "Must have Population: " + str(i.value)
+				text2 += "Must have Population: " + str(i.value)
 			'sex':
 				match i.operant:
 					'neq':
 						text += "Not allowed for " + i.value + "s."
 		if colorcode == true:
 			if checkreqs([i]):
-				text = '[color=yellow]' + text + '[/color]'
+				text2 = '{color=green|' + text2 + '}'
 			else:
-				text = '[color=aqua]' + text + '[/color]'
-		text += '\n'
-	return text.substr(0, text.length()-1)
+				text2 = '{color=red|' + text2 + '}'
+		text += text2 + '\n'
+	return globals.TextEncoder(text.substr(0, text.length()-1))
 
 func get_next_class_exp():
 	var currentclassnumber = professions.size()
@@ -1207,11 +1213,13 @@ var last_escape_day_check = 0
 
 func hp_set(value):
 	hp = min(value, self.hpmax)
-	#hp = max(hp, 0)
 	if displaynode != null:
 		displaynode.update_hp()
 	if hp <= 0:
 		death()
+	else:
+		defeated = false
+		is_active = true
 
 func mp_set(value):
 	mp = clamp(value, 0, self.mpmax)
@@ -1231,25 +1239,6 @@ func death():
 	#clean_effects()
 	if globals.combat_node == null:
 		characters_pool.cleanup()
-
-#func energy_set(value):
-#	energymax = 100 + energybonus
-#	if value < 0:
-#		self.exhaustion += -value
-#		energy = 0
-#	else:
-#		energy = min(value, energymax)
-
-#func fatigue_set(value):
-#	if traits.has('undead'): return
-#	fatigue = clamp(value, 0, 100)
-#
-#func exhaustion_set(value):
-#	exhaustion = clamp(value, 0, 1000)
-#	set_productivity()
-
-#func set_productivity():
-#	productivity = 100
 
 func productivity_get():
 	return productivity

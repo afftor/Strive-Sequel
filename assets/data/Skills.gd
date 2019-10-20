@@ -462,7 +462,7 @@ var Skilllist = {
 		effects = ['e_s_mindcontrol'],#Effectdata.rebuild_template({effect = 'e_t_mindcontrol'})],
 		manacost = 50,
 		energycost = 0,
-		charges = ['caster.magic_factor'],
+		charges = ['caster.magic_factor', '/2.0', '+1.5'],
 		custom_used_charges = ['call', 'calculate_linked_chars_by_effect', 'mindcontrol'],
 		cooldown = 0,
 		receiverdaylimit = 1,
@@ -2646,7 +2646,7 @@ var Skilllist = {
 func get_charges(skill, caster):#template, object
 	if !skill.has('charges'): return 0
 	if typeof(skill.charges) == TYPE_ARRAY:
-		return caster.calculate_number_from_string_array(skill.charges)
+		return round(caster.calculate_number_from_string_array(skill.charges))
 	elif typeof(skill.charges) == TYPE_INT:
 		return skill.charges
 	else:

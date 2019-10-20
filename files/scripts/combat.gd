@@ -109,7 +109,6 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_COMBAT_S)
 		tchar.displaynode.rebuildbuffs()
-	input_handler.ShowGameTip('aftercombat')
 	select_actor()
 
 func FinishCombat():
@@ -130,7 +129,6 @@ func FinishCombat():
 		tchar.is_active = false
 	hide()
 	globals.combat_node = null
-	input_handler.ShowGameTip('explore')
 	input_handler.emit_signal("CombatEnded", encountercode)
 	input_handler.SetMusic("exploration")
 	get_parent().finish_combat()

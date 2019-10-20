@@ -24,6 +24,7 @@ var scenes = {
 	bosscapturemale = load("res://assets/images/scenes/bosscapturemale.png"),
 	charm = load("res://assets/images/scenes/charm.png"),
 	chest = load("res://assets/images/scenes/chest.png"),
+	childbirth = load("res://assets/images/scenes/childbirth.png"),
 	daisyconfess = load("res://assets/images/scenes/daisyconfession.png"),
 	daisyevent = load("res://assets/images/scenes/daisyevent.png"),
 	daisystart = load("res://assets/images/scenes/daisystart.png"),
@@ -96,6 +97,15 @@ var gui = {
 var GFX = {
 	slash = load("res://assets/images/gfx/slash-effect.png"),
 	fire = load("res://assets/sfx/fire_effect.png"),
+}
+
+var icons = {
+	quest_dungeon = load('res://assets/images/gui/quest_dungeon.png'),
+	quest_char = load("res://assets/images/gui/quest_char.png"),
+	quest_encounter = load("res://assets/images/gui/quest_encounter.png"),
+	quest_enemy = load("res://assets/images/gui/quest_enemy.png"),
+	quest_reputation = load("res://assets/images/gui/quest_reputation.png"),
+	
 }
 
 var shades = {

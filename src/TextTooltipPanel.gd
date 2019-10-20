@@ -25,7 +25,7 @@ func showup(node, text):
 	set_process(true)
 	
 	$RichTextLabel.rect_size.y = 10
-	$RichTextLabel.bbcode_text = text
+	$RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	
 	yield(get_tree(), 'idle_frame')
 	

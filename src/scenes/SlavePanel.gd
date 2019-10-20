@@ -252,13 +252,14 @@ func update():
 	for i in person.professions:
 		var newnode = globals.DuplicateContainerTemplate($professions)
 		var prof = Skilldata.professions[i]
-		var name = prof.name
-		if prof.has('altname') && person.checkreqs(prof.altnamereqs):
-			name = prof.altname
+		var name = globals.descriptions.get_class_name(prof, person)
 		newnode.get_node("Label").text = name
 		newnode.texture = prof.icon
-		globals.connecttexttooltip(newnode, "[center]"+prof.name + "[/center]"+globals.descriptions.get_class_details(person, prof, false))
-	
+		newnode.connect('signal_RMB',input_handler, 'show_class_info', [prof.code])
+		var temptext = "[center]"+globals.descriptions.get_class_name(prof,person) + "[/center]\n"+globals.descriptions.get_class_bonuses(person, prof) + globals.descriptions.get_class_traits(person, prof)
+		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+		globals.connecttexttooltip(newnode, temptext)
+	input_handler.scene_character = person
 	if $SkillPanel.visible == true:
 		build_skill_panel()
 	
@@ -301,7 +302,6 @@ func update():
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
-
 
 
 func make_location_description():

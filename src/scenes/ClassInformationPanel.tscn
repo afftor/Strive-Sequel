@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/ClassInformationPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/CursiveFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/slavepanel/portrait_frame.png" type="Texture" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=7]
+
+[node name="ClassPanel" type="Panel"]
+margin_left = 569.0
+margin_top = 121.0
+margin_right = 1324.0
+margin_bottom = 974.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = -586.0
+margin_top = -134.052
+margin_right = 1363.0
+margin_bottom = 970.948
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 588.0
+margin_right = 755.0
+margin_bottom = 853.0
+
+[node name="descript" type="RichTextLabel" parent="."]
+margin_left = 24.0
+margin_top = 611.0
+margin_right = 732.0
+margin_bottom = 833.0
+custom_fonts/normal_font = ExtResource( 3 )
+custom_colors/default_color = Color( 0.764706, 0.745098, 0.745098, 1 )
+bbcode_enabled = true
+bbcode_text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
+text = "Apprenticeship is the first step of any mage aspirant. Capable of both combat, healing and social magic, but their strength is not the highest. Casting some spells also heavily relies no mana. "
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 11.0
+margin_top = 5.08066
+margin_right = 261.0
+margin_bottom = 255.081
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+margin_left = -5.0
+margin_top = -1.0
+margin_right = 252.0
+margin_bottom = 252.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="name" type="Label" parent="TextureRect"]
+margin_left = 362.424
+margin_top = 12.3781
+margin_right = 570.424
+margin_bottom = 36.3781
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "name"
+align = 1
+valign = 1
+
+[node name="reqs" type="RichTextLabel" parent="."]
+margin_left = 13.0
+margin_top = 278.0
+margin_right = 326.0
+margin_bottom = 567.0
+bbcode_enabled = true
+
+[node name="bonus" type="RichTextLabel" parent="."]
+margin_left = 272.0
+margin_top = 57.0
+margin_right = 687.0
+margin_bottom = 295.0
+bbcode_enabled = true
+
+[node name="SocialSkills" type="ScrollContainer" parent="."]
+margin_left = 339.622
+margin_top = 340.904
+margin_right = 737.622
+margin_bottom = 440.904
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SocialSkills"]
+margin_top = 1.0
+margin_right = 398.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Button" type="TextureRect" parent="SocialSkills/HBoxContainer"]
+visible = false
+margin_left = 161.0
+margin_right = 236.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="SocialSkills/HBoxContainer/Button"]
+margin_right = 76.0
+margin_bottom = 75.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="CombatSkills" type="ScrollContainer" parent="."]
+margin_left = 336.622
+margin_top = 483.904
+margin_right = 734.622
+margin_bottom = 583.904
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CombatSkills"]
+margin_right = 398.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Button" type="TextureRect" parent="CombatSkills/HBoxContainer"]
+visible = false
+margin_left = 161.0
+margin_right = 236.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="CombatSkills/HBoxContainer/Button"]
+margin_right = 76.0
+margin_bottom = 75.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="SocialLabel" type="Label" parent="."]
+margin_left = 474.57
+margin_top = 309.418
+margin_right = 603.57
+margin_bottom = 334.418
+text = "Social Skills"
+
+[node name="CombatLabel" type="Label" parent="."]
+margin_left = 458.782
+margin_top = 450.144
+margin_right = 611.782
+margin_bottom = 475.144
+text = "Combat Skills"

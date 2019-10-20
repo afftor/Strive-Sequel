@@ -133,8 +133,8 @@ var TranslationDict = {
 	ITEMBEDDESCRIPT = "",
 	ITEMLEATHER_COLLAR = "Leather Collar",
 	ITEMLEATHER_COLLARDESCRIPT = "A sign of ownership.",
-	ITEMELEGANT_CHOCKER = "Elegant Choker",
-	ITEMELEGANT_CHOCKERDESCRIPT = "A good sign of your ownership.",
+	ITEMELEGANT_CHOKER = "Elegant Choker",
+	ITEMELEGANT_CHOKERDESCRIPT = "A good sign of your ownership.",
 	ITEMSTEEL_COLLAR = "Steel Collar",
 	ITEMSTEEL_COLLARDESCRIPT = "A sign of ownership.",
 	ITEMANIMAL_EARS = "Animal Ears",
@@ -367,12 +367,16 @@ var TranslationDict = {
 	MAINQUESTUPDATED = "Main Quest Updated",
 	QUESTLOG = "Quest Log",
 	NOACTIVEQUESTS = "You have no active quests.",
+	CLASSREQS = "Requirements",
 	INVALIDREQS = "Rquirements are unmet.",
+	REQSNONE = "None",
 	NOTENOUGHGOLD = "Not enough gold",
 	PURCHASETHISTRAIT = "Purchase this trait",
 	TRAITPOINTSCOST = "Trait Points",
 	TRAITPOINTS = "Trait Points used",
 	GOLDPRICE = "Gold Cost",
+	CLASSBONUS = "Bonuses",
+	EXPREQUIRED = "Experience required",
 	
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
@@ -399,6 +403,7 @@ var TranslationDict = {
 	INVENTORYWEAPON = "Weapons",
 	INVENTORYARMOR = "Armor",
 	INVENTORYMATERIAL = "Materials",
+	INVENTORYCOSTUME = "Costumes",
 	INVENTORYUSE = "Usables",
 	INVENTORYQUEST = "Misc",
 	SELLCONFIRM = "Sell",
@@ -635,6 +640,7 @@ var TranslationDict = {
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",
 	SERVANTCLASSDESCRIPT = "Servants are generally purchased to be taken care of but otherwise have similar rights to others. Many folks end up as servants as a mean to pay their, or their family debt, or otherwise gain a secured life conditions. However, when escaped, servants can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They are also can't be forced to have sex with.",
 	
+	
 	SLAVETYPE = "Type",
 	
 	SLAVEBODYHUMANOID = "Humanoid",
@@ -662,6 +668,7 @@ var TranslationDict = {
 	
 	
 	
+	CLASSRIGHTCLICKDETAILS = "Right click for details",
 	
 	TOOLTIPSEXTRAITS = "Sexual traits are a special bonuses which provide benefits during the interaction sequence. ",
 	
@@ -763,7 +770,7 @@ var TranslationDict = {
 	STATRESISTAIR = "Air Resist",
 	STATRESISTEARTH = "Earth Resist", 
 	STATRESISTWATER = "Water Resist",
-	STATRESISTHOLY = "Holy Resist",
+	STATRESISTLIGHT = "Light Resist",
 	STATRESISTDARK = "Dark Resist",
 	STATRESISTMIND = "Mind Resist",
 	
@@ -991,7 +998,7 @@ var TranslationDict = {
 	DIALOGUEPURCHASEDUNGEONLOCATION = "You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] - [locationtypename].",
 	
 	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.",
-	DIALOGUEWARNREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of his behavior.",
+	DIALOGUEWARNREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of [targethis] behavior.",
 	DIALOGUESERVEREPORT = "[name] has approached [targetname] and provided [targethim] with [his] sincerest affection.",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly been enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making him quite docile.",
@@ -1020,7 +1027,7 @@ var TranslationDict = {
 	DIALOGUEEXP_SCROLLREPORT = "[name] reads the scrool. New knowledge fill [his] mind...",
 	
 	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it. ",
-	
+	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you. \n\n- Pleased to meet you, [master]. Please, take care of me. ",
 	
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with specific bonus. Requires at least 50 lust.",
@@ -1053,6 +1060,7 @@ var TranslationDict = {
 	TRAITMEDIUM_ARMORDESCRIPT = "Allows the usage of Medium Armor.",
 	TRAITHEAVY_ARMORDESCRIPT = "Allows the usage of Heavy Armor.",
 	TRAITLOCKPICKINGDESCRIPT = "Allows lockpicking.",
+	TRAITTRAP_DETECTIONDESCRIPT = "Allows trap detection.",
 	TRAITWEAPON_MASTERYDESCRIPT = "Allows the usage of Melee Weapons",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Allows the usage of Ranged Weapons.",
 	TRAITMAGIC_TOOLSDESCRIPT = "Allows to use magic tools like staves.",
@@ -1358,7 +1366,7 @@ var TranslationDict = {
 	BODYPARTVAGINAL_VIRGINTRUE_FALSE = "is not a virgin",
 	
 	
-	BODYPARTANAL_VIRGINTRUEDESCRIPT = "[His] asshole has not been [color=aqua]claimed[/color] by anyone.",
+	BODYPARTANAL_VIRGINTRUEDESCRIPT = "[His] asshole has not been [color=yellow]claimed[/color] by anyone.",
 	BODYPARTANAL_VIRGINFALSEDESCRIPT = "[His] asshole is trained enough for penetration.",
 	
 	BODYPARTPENIS_SIZEHUMAN_SMALLDESCRIPT = 'Below [his] waist dangles a [color=yellow]tiny humanish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} dick[/color], small enough that it could be called cute.',

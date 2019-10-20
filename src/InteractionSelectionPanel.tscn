@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/InteractionSelectionPanel.gd" type="Script" id=1]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/InteractionSelectionPanel.gd" type="Script" id=2]
 
 [node name="Panel" type="Panel"]
 margin_left = 592.851
 margin_top = 25.8506
 margin_right = 1449.85
 margin_bottom = 1024.85
-script = ExtResource( 1 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 41.0

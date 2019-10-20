@@ -197,6 +197,7 @@ func set_icon(node):
 		node.texture_normal = icon_texture
 	else:
 		node.texture = icon_texture
+	node.material = null
 	if parts.size() > 0:
 		var shader = load("res://files/ItemShader.tres").duplicate()
 		if node.material != shader:
