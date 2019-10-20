@@ -93,7 +93,7 @@ func downgrade():
 	createfromtemplate(template.prev_level)
 	if template.has('stages'):
 		stage = template.stages
-	apply()
+	get_applied_obj().apply_effect(id)
 	return variables.TE_RES_DGRADE
 
 func process_event(ev):

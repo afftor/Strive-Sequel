@@ -26,6 +26,9 @@ func cleanup():
 	for id in effects.keys():
 		if !effects[id].is_applied:
 			remove_id(id)
+			continue
+		if effects[id].applied_char == null:
+			remove_id(id)
 
 func remove_id(id):
 	for eff in effects.values():

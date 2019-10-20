@@ -63,7 +63,7 @@ func apply():
 func upgrade():
 	remove()
 	createfromtemplate(template.next_level)
-	apply()
+	get_applied_obj().apply_effect(id)
 	pass
 
 func process_event(ev):
