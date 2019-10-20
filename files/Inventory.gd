@@ -234,11 +234,14 @@ func useitem(item, type):
 			input_handler.GetItemTooltip().hide()
 			emit_signal("item_equipped")
 			buildinventory()
-		elif type == 'usable' && Items.itemlist[item.itembase].has("mansion_effect"):
-			input_handler.GetItemTooltip().hide()
-			emit_signal("item_used")
-			selectedhero.use_mansion_item(item)
-			rebuildinventory()
+		elif type == 'usable':
+			if Items.itemlist[item.itembase].has("mansion_effect"):
+				input_handler.GetItemTooltip().hide()
+				emit_signal("item_used")
+				selectedhero.use_mansion_item(item)
+				rebuildinventory()
+			else:
+				input_handler.SystemMessage("Can't use this item from here.")
 		input_handler.update_slave_panel()
 	elif mode == 'shop':
 		sellwindow(item, type)
@@ -263,7 +266,7 @@ func sellwindow(item, type):
 		amount = 1
 		text = tr("SELLCONFIRM") + " " + material.name + "?" 
 	else:
-		itemprice = item.calculateprice()
+		itemprice = item.calculateprice()/3
 		amount = 1
 		maxamount = item.amount
 		text = tr("SELLCONFIRM") + " " + item.name + "?" 

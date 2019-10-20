@@ -75,35 +75,36 @@ func show_heal_items(position):
 			newbutton.hint_tooltip = i.description
 			#globals.connectitemtooltip(newbutton, i)
 			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
-		var character = state.characters[active_location.group['pos'+str(position)]]
-		for i in character.combat_skills:
-			var skill = Skilldata.Skilllist[i]
-			if skill.tags.has('exploration') == false:
-				continue
-			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
-			#newbutton.get_node("Label").text = str(i.amount)
-			newbutton.texture_normal = skill.icon
-			var text = skill.descript
-			if skill.manacost >= 1:
-				text += "\nMana cost: " + str(skill.manacost)
-				if character.mp < skill.manacost:
-					newbutton.disabled = true
-					newbutton.material = load("res://assets/sfx/bw_shader.tres")
-					text += "(not enough mana)"
-			if skill.catalysts.size() > 0:
-				text += "\nCatalysts required: "
-				for k in skill.catalysts:
-					text += "\n" + Items.materiallist[k].name + " - " +  str(skill.catalysts[k]) + ", "
-					if state.materials[k] < skill.catalysts[k]:
+		
+		if false:# TODO spell usage
+			var character = state.characters[active_location.group['pos'+str(position)]]
+			for i in character.combat_skills:
+				var skill = Skilldata.Skilllist[i]
+				if skill.tags.has('exploration') == false:
+					continue
+				var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+				newbutton.texture_normal = skill.icon
+				var text = skill.descript
+				if skill.manacost >= 1:
+					text += "\nMana cost: " + str(skill.manacost)
+					if character.mp < skill.manacost:
 						newbutton.disabled = true
-						text += "(not enough items)"
-				text = text.substr(0, text.length()-2)
-			if skill.charges > 0:
-				pass #add charge check/etc
-			newbutton.hint_tooltip = text
-			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
-			newbutton.get_node("Label").text = str(skill.manacost)
-			newbutton.get_node("Label").set("custom_colors/font_color",Color(0.4,0.4,1))
+						newbutton.material = load("res://assets/sfx/bw_shader.tres")
+						text += "(not enough mana)"
+				if skill.catalysts.size() > 0:
+					text += "\nCatalysts required: "
+					for k in skill.catalysts:
+						text += "\n" + Items.materiallist[k].name + " - " +  str(skill.catalysts[k]) + ", "
+						if state.materials[k] < skill.catalysts[k]:
+							newbutton.disabled = true
+							text += "(not enough items)"
+					text = text.substr(0, text.length()-2)
+				if skill.charges > 0:
+					pass #add charge check/etc
+				newbutton.hint_tooltip = text
+				newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+				newbutton.get_node("Label").text = str(skill.manacost)
+				newbutton.get_node("Label").set("custom_colors/font_color",Color(0.4,0.4,1))
 
 func show_explore_spells(position):
 	if get_node(positiondict[position] + "/Image").visible == true:
@@ -382,7 +383,12 @@ func item_puchase_confirm(value):
 			if typeof(active_shop.items) == TYPE_DICTIONARY:
 				active_shop.items[purchase_item.code] -= value
 			while value > 0:
-				globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
+				match purchase_item.type:
+					'usable':
+						globals.AddItemToInventory(globals.CreateUsableItem(purchase_item.code))
+					'gear':
+						globals.AddItemToInventory(globals.CreateGearItem(purchase_item.code, {}))
+				
 				value -= 1
 			$Gold.text = str(state.money)
 		update_shop_list()
@@ -392,7 +398,7 @@ func item_sell_confirm(value):
 	if Items.materiallist.has(purchase_item.code):
 		state.set_material(purchase_item.code, '-', value)
 	else:
-		price = purchase_item.calculateprice()
+		price = round(purchase_item.calculateprice()/3)
 		purchase_item.amount -= value
 	state.money += price*value
 	$Gold.text = str(state.money)
@@ -499,6 +505,8 @@ func guild_hire_slave():
 			selectedperson.area = active_area.code
 			selectedperson.location = 'mansion'
 			selectedperson.is_players_character = true
+			input_handler.scene_character = selectedperson
+			input_handler.interactive_message('hire', '', {})
 			faction_hire()
 		'sell':
 			state.money += round(selectedperson.calculate_price()/3)
@@ -552,9 +560,10 @@ func see_quest_info(quest):
 		var newbutton = globals.DuplicateContainerTemplate($QuestPanel/questreqs)
 		match i.code:
 			'monsters':
-				newbutton.texture = Enemydata.enemies[i.type].icon
+				newbutton.texture = images.icons.quest_enemy
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
+				newbutton.texture = images.icons.quest_enemy
 				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.value)
 			'item':
 				var itemtemplate = Items.itemlist[i.type]
@@ -565,10 +574,10 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
 			'eventlocation':
-				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.texture = images.icons.quest_encounter
 				newbutton.hint_tooltip = "Complete quest event"
 			'dungeon':
-				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.texture = images.icons.quest_dungeon
 				newbutton.hint_tooltip = "Complete quest dungeon"
 			'material':
 				newbutton.texture = Items.materiallist[i.type].icon
@@ -591,7 +600,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Gold: " + str(i.value)
 			'reputation':
-				newbutton.texture = globals.quest_icons[i.code]
+				newbutton.texture = images.icons.quest_reputation
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Reputation (" + quest.source + "): +" + str(i.value)

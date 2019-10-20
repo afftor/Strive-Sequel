@@ -486,6 +486,7 @@ var hexcolordict = {
 	gray = "#4B4B4B",
 	green = '#00b700',
 	white = '#ffffff',
+	aqua = '#24ffdb',
 	factor1 = '#ff5e5e',
 	factor2 = '#f6922a',
 	factor3 = '#4dff83',
@@ -1014,7 +1015,7 @@ func TextEncoder(text, node = null):
 				node.connect("meta_hover_started", self, "BBCodeTooltip", [node])
 				node.connect("meta_hover_ended",self, 'hidetooltip')
 	else:
-		return text
+		return input_handler.text_cut_excessive_lines(text)
 
 func BBCodeTooltip(meta, node):
 	var text = node.get_meta('tooltips')[int(meta)]

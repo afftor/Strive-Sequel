@@ -34,7 +34,7 @@ func create_character_description(character):
 
 var descriptionorder = [
 'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'horns', 'ears', 'skin', 'skin_coverage','wings', 'tail', 'height',
-'[newline]','tits_size','multiple_tits','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]', 'piercing','[newline]','tattoo'
+'[newline]','tits_size','multiple_tits','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
 func new_charcter_description(character):
@@ -50,10 +50,14 @@ func new_charcter_description(character):
 				text += temptext
 			continue
 		elif i == '[newline]':
-			text += "\n\n"
+			if text.ends_with("\n\n") == false:
+				text += "\n\n"
 			continue
 		elif i == '[allowed_sex]':
 			check_allowed_sex = true
+			continue
+		elif i == '[bonus]':
+			text += character.bonus_description
 			continue
 		elif check_allowed_sex == true && (person.tags.has("no_sex") || (person.is_players_character == false && person.is_known_to_player == false)):
 			check_allowed_sex = false
@@ -473,44 +477,68 @@ var factor_descripts = {
 	6:"Excellent"
 }
 
-func get_class_details(newperson, classdata, showreqs = true, showskills = false):
-	var text = ''
+func get_class_name(prof, newperson):
 	person = newperson
-	var name = classdata.name
-	if classdata.has('altname') && person.checkreqs(classdata.altnamereqs):
-		name = classdata.altname
+	var name = prof.name
+	if prof.has('altname') && person.checkreqs(prof.altnamereqs):
+		name = prof.altname
+	return name
+
+func get_class_details(newperson, classdata, showreqs = true, showskills = false):
+	person = newperson
+	var text = '[center]'+get_class_name(classdata, person)+'[/center]\n'
 	
 	
-	if person.decipher_reqs(classdata.reqs, true) != '' && showreqs == true:
-		text += '\n\nRequirements:\n' + person.decipher_reqs(classdata.reqs, true)
+	if showreqs == true:
+		text += 'Requirements: '
+		if classdata.reqs.size() > 0:
+			text += '\n' + get_class_reqs(person, classdata)
+		else:
+			text +=  tr("REQSNONE")
 	if classdata.statchanges.size() > 0:
-		text += '\n\n' + tr("Bonus:") + "\n"
-		for i in classdata.statchanges:
-			text += globals.statdata[i].name + ": "
-			if classdata.statchanges[i]  > 0:
-				text += "+"
-			text += str(classdata.statchanges[i]) + "\n"
-	text += "\n"
-	for i in classdata.traits:
-		var trait = Traitdata.traits[i]
-		if trait.name.to_upper() != trait.name:
-			text += "[color=yellow]" + trait.name + "[/color]: "
-		text += trait.descript + "\n"
+		text += '\n\n' + tr("CLASSBONUS") + ":\n"
+		text += get_class_bonuses(person,classdata)
 	
-	text += "\n" + person.translate(classdata.descript) #"[center]" + name + '[/center]\n' + 
+	text += "\n" + get_class_traits(person,classdata)
+	
+	
+	#text += "\n" + person.translate(classdata.descript) #"[center]" + name + '[/center]\n' + 
 	
 	if showskills == true && (classdata.skills + classdata.combatskills).size() > 0:
 		if classdata.skills.size() > 0:
-			text += "\n[color=yellow]Skills: "
+			text += "\n{color=yellow|Skills: "
 			for i in classdata.skills:
 				text += Skilldata.Skilllist[i].name + ", "
-			text = text.substr(0, text.length() - 2) + "[/color]"
+			text = text.substr(0, text.length() - 2) + "}"
 		if classdata.combatskills.size() > 0:
-			text += "\n[color=yellow]Combat Skills: "
+			text += "\n{color=yellow|Combat Skills: "
 			for i in classdata.combatskills:
 				text += Skilldata.Skilllist[i].name + ", "
-			text = text.substr(0, text.length() - 2) + "[/color]"
+			text = text.substr(0, text.length() - 2) + "}"
 	
 	
-	
-	return input_handler.text_cut_excessive_lines(text)
+	return globals.TextEncoder(text)
+
+func get_class_reqs(newperson, classdata):
+	var text = ''
+	if newperson.decipher_reqs(classdata.reqs, true):
+		text += newperson.decipher_reqs(classdata.reqs, true)
+	return text
+
+func get_class_bonuses(newperson, classdata):
+	var text = ''
+	for i in classdata.statchanges:
+		text += globals.statdata[i].name + ": "
+		if classdata.statchanges[i]  > 0:
+			text += "+"
+		text += str(classdata.statchanges[i]) + "\n"
+	return text
+
+func get_class_traits(newperson, classdata):
+	var text = ''
+	for i in classdata.traits:
+		var trait = Traitdata.traits[i]
+		if trait.name.to_upper() != trait.name:
+			text += "{color=brown|" + trait.name + "}: "
+		text += trait.descript + "\n"
+	return globals.TextEncoder(text)

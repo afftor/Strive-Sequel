@@ -25,8 +25,6 @@ func rebuild():
 	if state.show_tutorial == false:
 		hide_node()
 		return
-	if self.visible == false:
-		input_handler.UnfadeAnimation(self, 0.3)
 	globals.ClearContainer($Container)
 	
 	for i in state.active_tutorials:
@@ -40,6 +38,12 @@ func rebuild():
 	yield(get_tree(), 'idle_frame')
 	if $Container.get_child_count() <= 1:
 		hide_node()
+	else:
+		if self.visible == false:
+			input_handler.UnfadeAnimation(self, 0.3)
+			yield(get_tree().create_timer(0.3), 'timeout')
+			show()
+
 
 func activate_tutorial(code):
 	state.active_tutorials.append(code)
@@ -53,6 +57,8 @@ func show_tutorial_window(data):
 
 func hide_node():
 	input_handler.FadeAnimation(self, 0.3)
+	yield(get_tree().create_timer(0.3), 'timeout')
+	hide()
 
 func hide_text_window():
 	$Panel.hide()

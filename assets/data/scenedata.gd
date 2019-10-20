@@ -2,7 +2,7 @@ extends Node
 
 
 var scenedict = {
-	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = '', tags = ['scene_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['scene_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
 	
@@ -113,6 +113,10 @@ var scenedict = {
 	majorus_potion_penis = {text = tr("DIALOGUEMAJORUSPOTPENIS"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	majorus_potion_balls = {text = tr("DIALOGUEMAJORUSPOTBALLS"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	potion_no_effect = {text = tr("DIALOGUEPOTIONNOEFFECT"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	
+	#Action events
+	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	hire = {text = tr("DIALOGUEHIRETEXT"), image = 'praise', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
 	#Story Events
 	daisy_meet = {
@@ -301,7 +305,6 @@ var scenedict = {
 		],
 	},
 	
-	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
 	
 }

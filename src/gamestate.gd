@@ -397,6 +397,10 @@ func deserialize(tmp:Dictionary):
 		characters[h].social_skill_panel.clear()
 		for i in ssp:
 			characters[h].social_skill_panel[int(i)] = ssp[i]
+		ssp = characters[h].combat_skill_panel.duplicate()
+		characters[h].combat_skill_panel.clear()
+		for i in ssp:
+			characters[h].combat_skill_panel[int(i)] = ssp[i]
 	tempstate.free()
 	effects_pool.deserialize(tmp['effects'])
 	#fastfix for broken saves

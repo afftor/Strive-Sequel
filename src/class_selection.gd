@@ -64,52 +64,30 @@ func open_class(classcode):
 	var tempclass = Skilldata.professions[classcode]
 	var text = globals.descriptions.get_class_details(person, tempclass)
 	current_class = classcode
-	$ClassPanel.show()
-	
-	$ClassPanel/TextureRect.texture = tempclass.icon
-	$ClassPanel/RichTextLabel.bbcode_text = text
-	$ClassPanel/TextureRect/name.text = tempclass.name
-	
-	globals.ClearContainer($ClassPanel/SocialSkills/HBoxContainer)
-	globals.ClearContainer($ClassPanel/CombatSkills/HBoxContainer)
-	
-	$ClassPanel/SocialSkills.visible = tempclass.skills.size() > 0
-	$ClassPanel/SocialLabel.visible = $ClassPanel/SocialSkills.visible
-	$ClassPanel/CombatSkills.visible = tempclass.combatskills.size() > 0
-	$ClassPanel/CombatLabel.visible = $ClassPanel/CombatLabel.visible
-	
-	for i in tempclass.skills:
-		var skill = Skilldata.Skilllist[i]
-		var newnode = globals.DuplicateContainerTemplate($ClassPanel/SocialSkills/HBoxContainer)
-		newnode.texture = skill.icon
-		globals.connectskilltooltip(newnode, skill.code, person)
-		if skill.icon == null:
-			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
-	for i in tempclass.combatskills:
-		var skill = Skilldata.Skilllist[i]
-		var newnode = globals.DuplicateContainerTemplate($ClassPanel/CombatSkills/HBoxContainer)
-		newnode.texture = skill.icon
-		if skill.icon == null:
-			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
-		globals.connectskilltooltip(newnode, skill.code, person)
-	$ClassPanel/CombatLabel.visible = tempclass.combatskills.size() > 0
-	
+	$ClassPanel.open(classcode,person)
 	if person.professions.has(tempclass.code):
 		text = person.translate('[name] has already acquired this class.')
 		$ClassPanel/Unlock.hide()
+		$ClassPanel/ExpLabel.set("custom_colors/font_color", Color(1,1,1))
 	else:
-		text = "Experience required: " + str(floor(person.base_exp)) + "/" + str(person.get_next_class_exp()) 
+		text = tr("EXPREQUIRED")+": " + str(person.get_next_class_exp()) + "/" +  str(floor(person.base_exp)) 
 		$ClassPanel/Unlock.disabled = person.base_exp < person.get_next_class_exp()
 		$ClassPanel/Unlock.show()
+		if person.base_exp < person.get_next_class_exp():
+			$ClassPanel/ExpLabel.set("custom_colors/font_color", globals.hexcolordict.red)
+		else:
+			$ClassPanel/ExpLabel.set("custom_colors/font_color", globals.hexcolordict.green)
 	
 	$ClassPanel/ExpLabel.text = text
 
 
 func unlock_class():
-	$ClassPanel.visible = false
-	self.visible = false
+	$ClassPanel.hide()
+	yield(get_tree().create_timer(0.2),"timeout")
+	.hide()
 	person.base_exp -= person.get_next_class_exp()
 	person.unlock_class(current_class)
+	yield(get_tree().create_timer(0.2),"timeout")
 	input_handler.ShowSlavePanel(person)
 	state.text_log_add("class", person.translate("[name] has acquired new Class: " + Skilldata.professions[current_class].name))
-	
+	input_handler.PlaySound("ding")

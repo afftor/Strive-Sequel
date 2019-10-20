@@ -8,9 +8,9 @@ margin_bottom = 1080.0
 script = ExtResource( 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 584.988
+margin_left = 583.137
 margin_top = 150.104
-margin_right = 1333.99
+margin_right = 1332.14
 margin_bottom = 544.104
 bbcode_enabled = true
 bbcode_text = "[color=#ff4949][center]This game is strictly for those above the age of 18 and contains some content which could offend some people. However if the age of consent for your country is higher, refer to that instead. By proceeding on you agree that you are over the age of 18(or regional equivalent), and you’re not going to complain. All characters described or depicted are either 18 or older. This work is one of pure fiction, and applying content depicted in this game to real life may break the law, and I hold no responsibility for your actions.  [/center][/color]"

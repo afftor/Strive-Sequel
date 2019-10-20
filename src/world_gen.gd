@@ -25,9 +25,11 @@ var lands = {
 		locationpool = ['dungeon_bandit_den'],#"dungeon_goblin_cave"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
 		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
-		capital_shop_items = ['lifeshard'],
+		capital_shop_items = ['lifeshard','leather_collar','maid_dress','worker_outfit'],
 		capital_locations = ['dungeon_tutorial'],
 		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
+		
+		location_shop_items = {meat = {min = 5, max = 50, chance = 0.9}, sword = {min = 1, max = 3, chance = 0.5, matier = 'easy'}},
 	},
 	forests = {
 		code = 'forests',
@@ -42,7 +44,7 @@ var lands = {
 		start_settlements_number = {settlement_small = [1,1]},
 		start_locations_number = 3, 
 		locations = {},
-		locationpool = ['dungeon_grove'],
+		locationpool = ['dungeon_bandit_den'],
 		guilds = [],
 		capital_shop_resources = ['grain','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
 		capital_shop_items = [],
@@ -183,7 +185,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
-		quests_easy = ['mages_materials_basic','mages_craft_potions_basic','mages_slave_basic'],#'mages_threat_basic',
+		quests_easy = ['mages_materials_basic','mages_craft_potions_basic'],#'mages_threat_basic','mages_slave_basic'
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -209,7 +211,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
-		quests_easy = ['servants_craft_items_basic','servants_slave_basic'],
+		quests_easy = ['servants_craft_items_basic'],#,'servants_slave_basic'
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,3],

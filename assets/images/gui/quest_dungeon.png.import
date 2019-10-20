@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quest-dungeon.png-303553a73d6c6d66d008b1d74abfbcb1.stex"
+path="res://.import/quest_dungeon.png-ea05afc507b6ebb82178b14e3a3f7c23.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/gui/quest-dungeon.png"
-dest_files=[ "res://.import/quest-dungeon.png-303553a73d6c6d66d008b1d74abfbcb1.stex" ]
+source_file="res://assets/images/gui/quest_dungeon.png"
+dest_files=[ "res://.import/quest_dungeon.png-ea05afc507b6ebb82178b14e3a3f7c23.stex" ]
 
 [params]
 
