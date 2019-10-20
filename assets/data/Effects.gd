@@ -2125,7 +2125,7 @@ var atomic = {
 	a_stat_mul = {type = 'stat_mul', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_poison_arg025 = {type = 'damage', source = variables.S_PHYS, value = [['parent_args', 0],'*',0.25]},
 	a_remove_buff = {type = 'remove_effect', value = 'buff'},
-	a_self_kill = {type = 'stat_set', stat = 'hp', value = 0},
+	a_self_kill = {type = 'kill'},
 	a_fire_custom = {type = 'event', value = variables.TR_CUSTOM},
 	a_fire_custom1 = {type = 'event', value = variables.TR_CUSTOM1},
 	
