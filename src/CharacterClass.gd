@@ -1803,11 +1803,11 @@ func get_static_effect_by_code(code):
 		if eff.template.has('code') == false:
 			continue
 		if eff.template.code == code:
-			return i
+			return eff
 
 func remove_static_effect_by_code(code):
-	var ie = get_static_effect_by_code(code)
-	remove_effect(ie)
+	var eff = get_static_effect_by_code(code)
+	eff.remove()
 
 func remove_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
