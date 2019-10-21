@@ -93,9 +93,7 @@ func remove():
 	var obj = get_applied_obj()
 	if obj != null:
 		obj.remove_effect(id)
-	for a in atomic:
-		if obj != null: 
-			#tmp.remove_template(obj)
+		for a in atomic:
 			obj.remove_atomic(a)
 	atomic.clear()
 	buffs.clear()

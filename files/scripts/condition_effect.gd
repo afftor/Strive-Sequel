@@ -22,6 +22,8 @@ func remove():
 			var t = effects_pool.get_effect_by_id(e)
 			t.remove()
 		sub_effects.clear()
+	else:
+		get_applied_obj().remove_effect(id)
 	is_applied = false
 
 func serialize():
@@ -35,6 +37,7 @@ func deserialize(tmp):
 	cond_true = tmp['cond']
 
 func recheck():
+	if !is_applied: return
 	var tres = true
 	var obj = get_applied_obj()
 	for cond in template.conditions:
