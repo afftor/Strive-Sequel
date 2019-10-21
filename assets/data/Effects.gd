@@ -289,7 +289,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsclasses/Worker.png", 
 				description = "Productivity increased",
 				limit = 1,
-				t_name = 'hardwork'
+				t_name = 'hardwork',
+				mansion_only = true,
 			}
 		],
 	},
@@ -309,7 +310,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsclasses/Worker.png", 
 				description = "Favorite Food: Productivity increased by 10%%.",
 				limit = 1,
-				t_name = 'food_like'
+				t_name = 'food_like',
+				mansion_only = true,
 			}
 		],
 	},
@@ -329,7 +331,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsclasses/Worker.png", 
 				description = "Hated Food: Productivity reduced by 10%%.",
 				limit = 1,
-				t_name = 'food_hate'
+				t_name = 'food_hate',
+				mansion_only = true,
 			}
 		],
 	},
@@ -348,7 +351,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsitems/food_old.png", 
 				description = "No food has been eaten: Exhaustion does not restore while resting.",
 				limit = 1,
-				t_name = 'starvation'
+				t_name = 'starvation',
+				mansion_only = true,
 			}
 		],
 	},
@@ -377,7 +381,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Efficiency increased",
 				limit = 1,
-				t_name = 'discipline'
+				t_name = 'discipline',
+				mansion_only = true,
 			}
 		],
 	},
@@ -398,7 +403,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
 				description = tr("BUFFSEDUCE"),
 				limit = 1,
-				t_name = ''
+				t_name = '',
+				mansion_only = true,
 			}
 		],
 	},
@@ -419,7 +425,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
 				description = tr("BUFFGREATSEDUCE"),
 				limit = 1,
-				t_name = ''
+				t_name = '',
+				mansion_only = true,
 			}
 		],
 	},
@@ -438,7 +445,8 @@ var effect_table = {
 				icon = "res://assets/images/iconsskills/Charm.png", 
 				description = "charmed",
 				limit = 1,
-				t_name = ''
+				t_name = '',
+				mansion_only = true,
 			}
 		],
 	},
@@ -465,7 +473,14 @@ var effect_table = {
 			{type = 'stat_add', stat = 'wits_bonus', value = -100},
 			{type = 'stat_add', stat = 'charm_bonus', value = -50},
 		],
-		buffs = ['b_stun'],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Mind_Control.png", 
+				description = "Mind Controlled",
+				limit = 1,
+				t_name = '',
+				mansion_only = true,
+			}],
 	},
 	e_t_mindcontrol_c = {
 		type = 'temp_s',
@@ -1659,7 +1674,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				index = 1,
-				value = 8,# X from item description
+				value = 10,# X from item description
 				args = [{obj = 'template', param = 'index'},{obj = 'template', param = 'value'}],
 				atomic = ['a_add_counter_args'],
 			},
@@ -1686,7 +1701,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'owner',
-				X = 2,
+				X = 12,
 				args = [{obj = 'parent_args', param = 0}, {obj = 'template', param = 'X'}],
 				atomic = [
 					{type = 'add_counter', index = 2, value = [['parent_args', 0],'*',['parent_args',1]]} 
@@ -2038,6 +2053,7 @@ var effect_table = {
 				description = "Productivity increased by 10%%",
 				limit = 1,
 				t_name = "Satisfaction",
+				mansion_only = true,
 			}
 		],
 	},
@@ -2059,6 +2075,7 @@ var effect_table = {
 				description = "Productivity increased by 20%%",
 				limit = 1,
 				t_name = "Satisfaction",
+				mansion_only = true,
 			}
 		],
 	},
@@ -2158,20 +2175,23 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Magic Shackles.png", 
 		description = "Shackles",
 		limit = 1,
-		t_name = 'shackles'
+		t_name = 'shackles',
+		mansion_only = true,
 	},
 	b_great_shackles = {
 		icon = "res://assets/images/iconsskills/Strong Magic Shackles.png", 
 		description = "Great Shackles",
 		limit = 1,
-		t_name = 'shackles'
+		t_name = 'shackles',
+		mansion_only = true,
 	},
 	b_charm = {
 		icon = "res://assets/images/iconsskills/Charm.png", 
 		description = "Is charmed. %d hours remains",
 		args = [{obj = 'parent', param = 'remains'}],
 		limit = 1,
-		t_name = 'charmed'
+		t_name = 'charmed',
+		mansion_only = true,
 	},
 	b_stun = {
 		icon = "res://assets/images/traits/experience.png", #?? mb to fix

@@ -970,6 +970,8 @@ var TranslationDict = {
 	SKILLBARRIERDESCRIPT = "Shields from 100 damage for 3 turns.",
 	SKILLASSASSINATE = "Assassinate",
 	SKILLASSASSINATEDESCRIPT = "Assaults target for 400% damage. Must be in hide to execute. ",
+	SKILLPROTECT = "Protect",
+	SKILLPROTECTDESCRIPT = "Protects target from damage.",
 	
 	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
@@ -980,7 +982,7 @@ var TranslationDict = {
 	DIALOGUEMASTER_LUST_OBEDREPORT = "You use [targetname]'s lust to restore [targethis] obedience.",
 	DIALOGUEMASTER_LUST_COMBAT_BUFFREPORT = "You use [targetname]'s lust to enhance [targethis] combat proficiency.",
 	
-	DIALOGUESUCCUBUS_LUST_EXPREPORT = "[name] consumes [targetname]'s lust and receive experience from it. ",
+	DIALOGUESUCCUBUS_LUST_XP_CONVERTREPORT = "[name] consumes [targetname]'s lust and receive experience from it. ",
 	DIALOGUESUCCUBUS_LUST_HP_CONVERTREPORT = "[name] consumes [targetname]'s lust and recovers [his] health and mana from it. ",
 	DIALOGUESUCCUBUS_LUST_OBED_CONVERTREPORT = "[name] consumes [targetname]'s lust and becomes quite content from it. ",
 	DIALOGUESUCCUBUS_LUST_COMBAT_BUFFREPORT = "[name] consumes [targetname]'s lust and enhance [his] combat proficiency. ",
@@ -1134,7 +1136,7 @@ var TranslationDict = {
 	PROFBLOODMAGEDESCRIPT = "Practitioners of arcane arts sometimes go a long way to gain more power. Blood Mages can tap into their own health to restore some of their mana.",
 	
 	PROFMAID = "Maid",
-	PROFMAIDALT = "Servant",
+	PROFMAIDALT = "Lackey",
 	PROFMAIDDESCRIPT = "A trained servant not only knows their place but is also better to the eye.",
 	PROFDRAGONKNIGHT = "Dragon Knight",
 	PROFDRAGONKNIGHTDESCRIPT = "The dragon blood flowing in their veins allow them become a fearsome warriors resistant to fire.",

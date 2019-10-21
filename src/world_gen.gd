@@ -24,12 +24,29 @@ var lands = {
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den'],#"dungeon_goblin_cave"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
-		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
-		capital_shop_items = ['lifeshard','leather_collar','maid_dress','worker_outfit'],
-		capital_locations = ['dungeon_tutorial'],
+#		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
+#		capital_shop_items = ['lifeshard','leather_collar','maid_dress','worker_outfit'],
+#		capital_locations = ['dungeon_tutorial'],
 		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
-		
-		location_shop_items = {meat = {min = 5, max = 50, chance = 0.9}, sword = {min = 1, max = 3, chance = 0.5, matier = 'easy'}},
+		area_shop_items = {
+			meat = {min = 40, max = 80, chance = 1},
+			fish = {min = 40, max = 80, chance = 0.9},
+			vegetables = {min = 40, max = 80, chance = 0.9},
+			grain = {min = 60, max = 150, chance = 1},
+			bread = {min = 30, max = 60, chance = 1},
+			wood = {min = 40, max = 50, chance = 1},
+			stone = {min = 40, max = 50, chance = 1},
+			leather = {min = 3, max = 15, chance = 0.7},
+			iron = {min = 10, max = 20, chance = 0.8},
+			cloth = {min = 5, max = 20, chance = 0.9},
+			bone = {min = 5, max = 20, chance = 0.7},
+			lifeshard = {min = 4, max = 8, chance = 1},
+			energyshard = {min = 2, max = 5, chance = 1},
+			itempool1 = {items = ['sword','axe','pickaxe','hammer','fishingtools','sickle','bow','staff'], min = 3, max = 6, chance = 0.8},
+			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
+			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},		
+			itempool4 = {items = ['alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
+			},
 	},
 	forests = {
 		code = 'forests',
@@ -124,14 +141,25 @@ func make_area(code):
 		areadata.start_locations_number -= 1
 		areadata.locations[location.id] = location
 		state.location_links[location.id] = {area = code, category = 'locations'} 
-		
-		
 		input_handler.active_location = location
 	areadata.factions = {}
 	areadata.quests.factions = {}
+	areadata.shop = []
+	update_area_shop(areadata)
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
+
+func update_area_shop(area):
+	area.shop.clear()
+	var resource_array = []
+	for i in area.area_shop_items:
+		if Items.materiallist.has(i):
+			resource_array.append(i)
+			var amount = round(rand_range(area.area_shop_items.min, area.area_shop_items.max))
+			area.shop.append({i = amount})
+			
+		
 
 var guild_upgrades = {
 	slavenumberupgrade = {

@@ -106,7 +106,7 @@ func _ready():
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.unlock_class("apprentice")
-		character.unlock_class("attendant")
+		character.unlock_class("dominator")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
