@@ -297,7 +297,6 @@ func victory():
 		tchar.base_exp += ceil(rewardsdict.xp*tchar.exp_mod/playergroup.size())
 		if tchar.hp <= 0:
 			tchar.hp = 1
-			tchar.is_active = true
 			tchar.defeated = false
 #		var newbutton = globals.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 #		if $Rewards/HBoxContainer/first.get_children().size() >= 5:

@@ -1244,17 +1244,26 @@ func mp_set(value):
 
 func death():
 	process_event(variables.TR_DEATH)
-	is_active = false
-	#defeated = true
-#	if state.characters.has(id):
-#		state.character_order.erase(id)
-#		input_handler.slave_list_node.rebuild()
 	process_event(variables.TR_COMBAT_F)
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
 	if globals.combat_node == null:
-		characters_pool.cleanup()
+		is_active = false
+		print('warning! char died outside combat')
+		characters_pool.call_deferred('cleanup')
+
+func killed():
+	process_event(variables.TR_DEATH)
+	for i in gear:
+		if gear[i] != null:
+			unequip(state.items[gear[i]])
+#	input_handler.scene_character = self
+#	input_handler.interactive_message('slave_escape', '', {})
+	is_active = false 
+	state.character_order.erase(id)
+	characters_pool.call_deferred('cleanup')
+	
 
 func productivity_get():
 	return productivity
@@ -1494,14 +1503,15 @@ func check_escape_possibility():
 		escape()
 
 func escape():
+	process_event(variables.TR_REMOVE)
 	for i in gear:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
 	input_handler.scene_character = self
 	input_handler.interactive_message('slave_escape', '', {})
-	is_active = false #for now, until moving to charpool be implemented
-	characters_pool.cleanup()
+	is_active = false #for now, to replace with corresponding mechanic
 	state.character_order.erase(id)
+	characters_pool.call_deferred('cleanup')
 	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
@@ -1624,11 +1634,12 @@ func apply_atomic(template):
 		'event':
 			process_event(template.value)
 		'resurrect':
-			if is_active: return
+			if !defeated: return
 			self.hp = template.value
-			is_active = true
 			defeated = false
 			process_event(variables.TR_RES)
+		'kill':
+			killed()
 		'use_combat_skill':
 			if globals.combat_node == null: return
 			globals.combat_node.use_skill(template.value, self, null)
@@ -2012,7 +2023,6 @@ func get_stat_data():
 func resurrect(hp_per):
 	if !defeated: return
 	defeated = false
-	is_active = true
 	hp = int(hpmax * hp_per /100)
 
 func get_all_buffs():
