@@ -6,8 +6,11 @@ func _init():
 	for i in partmaterials:
 		for k in partmaterials[i]:
 			materiallist[k].parts[i] = partmaterials[i][k].duplicate()
+	for i in materiallist.values():
+		if i.has('tier'):
+			materials_by_tiers[i.tier].append(i.code)
 
-
+var materials_by_tiers = {easy = [], medium = [], hard = []}
 
 var stats = {
 	atk = tr('DAMAGE'),
@@ -17,7 +20,7 @@ var stats = {
 	evasion = tr('EVASION'),
 	hitrate = tr('HITRATE'),
 	hpmaxmod = tr("HEALTHPERCENT"),
-	mpmod = tr("MANAPERCENT"),
+	mpmaxmod = tr("MANAPERCENT"),
 	critchance = tr("CRITCHANCE"),
 	critmod = tr("CRITMOD"),
 	hpmax = tr("HEALTH"),
@@ -135,7 +138,7 @@ var partmaterials = {
 	},
 	BowBase = {
 		wood = {atk = 6},
-		woodmagic = {atk = 8, mpmod = 0.1, matk = 5},
+		woodmagic = {atk = 8, mpmaxmod = 0.1, matk = 5},
 		woodiron = {atk = 10},
 		woodancient = {atk = 15},
 		obsidian = {atk = 10, armorpenetration = 10},
@@ -149,7 +152,7 @@ var partmaterials = {
 	},
 	Rod = {
 		wood = {atk = 3, matk = 7},
-		woodmagic = {atk = 4, mpmod = 0.1, matk = 12},
+		woodmagic = {atk = 4, mpmaxmod = 0.1, matk = 12},
 		woodiron = {atk = 6, matk = 10},
 		woodancient = {atk = 5, matk = 15},
 		obsidian = {atk = 3, matk = 13},

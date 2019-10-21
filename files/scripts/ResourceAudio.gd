@@ -60,6 +60,7 @@ var sounds = {
 	itemget = load("res://assets/sounds/sounds/itemget.wav"),
 	itemcreate = load("res://assets/sounds/sounds/itemcraft.wav"),
 	building = load("res://assets/sounds/sounds/building.wav"),
+	money_spend = load("res://assets/sounds/sounds/money_spend.wav"),
 	
 	#combat
 	victory = load("res://assets/sounds/sounds/victory.wav"),

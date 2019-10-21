@@ -499,7 +499,7 @@ var professions = {
 		statchanges = {wits_bonus = 15, hpmax = 10, speed = 3, resistearth = 25},
 		traits = [],
 		skills = [],
-		combatskills = ['mass_lesser_heal','entangle','overgrowth'],
+		combatskills = ['mass_lesser_heal','overgrowth'],
 	},
 	bloodmage = {
 		code = 'bloodmage',

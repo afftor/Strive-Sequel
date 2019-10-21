@@ -222,6 +222,11 @@ func advance_day():
 		i.process_event(variables.TR_DAY)
 	for i in state.areas.values():
 		world_gen.update_guilds(i)
+		if int(state.date) % variables.shop_restock_days == 0:
+			world_gen.update_area_shop(i)
+			for k in i.locations.values():
+				if k.has('shop'):
+					world_gen.update_area_shop(k)
 	world_gen.update_locations()
 
 func set_time_buttons():

@@ -239,7 +239,7 @@ func select_category(category):
 					newbutton.text += ' ('+str(presented_characters.size())+')'
 				newbutton.connect("pressed", self, "enter_location", [i])
 
-var active_shop = {}
+var active_shop
 var shopcategory
 
 func select_shop_category(category):
@@ -253,11 +253,9 @@ func open_shop(shop):
 	$ShopPanel.show()
 	match shop:
 		'area':
-			active_shop.materials = active_area.capital_shop_resources
-			active_shop.items = active_area.capital_shop_items
+			active_shop = active_area.shop
 		'location':
-			active_shop.materials = active_location.shop_resources
-			active_shop.items = active_location.shop_items
+			active_shop = active_location.shop
 	shopcategory = 'buy'
 	update_shop_list()
 
@@ -268,50 +266,50 @@ func update_shop_list():
 	tempitems.clear()
 	match shopcategory:
 		'buy':
-			for i in active_shop.materials:
-				var item = Items.materiallist[i]
-				var amount = -1
-				if typeof(active_shop.materials) == TYPE_DICTIONARY:
-					amount = active_shop.materials[i]
-				if amount == 0:
-					continue
-				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
-				newbutton.get_node("name").text = item.name
-				newbutton.get_node("icon").texture = item.icon
-				newbutton.get_node("price").text = str(item.price)
-				newbutton.connect("pressed",self,"item_purchase", [item, amount])
-				globals.connectmaterialtooltip(newbutton, item, 'material')
-				if amount > 0:
-					newbutton.get_node("amount").text = str(amount)
-					newbutton.get_node("amount").show()
-			for i in active_shop.items:
-				var item = Items.itemlist[i]
-				var amount = -1
-				if item.has('parts'):
-					amount = 1
-				else:
-					if typeof(active_shop.items) == TYPE_DICTIONARY:
-						amount = active_shop.items[i]
+			for i in active_shop:
+				if Items.materiallist.has(i):
+					var item = Items.materiallist[i]
+					var amount = -1
+					if typeof(active_shop) == TYPE_DICTIONARY:
+						amount = active_shop[i]
 					if amount == 0:
 						continue
-				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
-				newbutton.get_node("name").text = item.name
-				newbutton.get_node("icon").texture = item.icon
-				newbutton.get_node("price").text = str(item.price)
-				if item.has('parts'):
-					var newitem = globals.CreateGearItem(i, active_shop.items[i])
-					newitem.set_icon(newbutton.get_node('icon'))
-					newbutton.get_node("name").text = newitem.name
-					tempitems.append(newitem)
-					globals.connectitemtooltip(newbutton, newitem)
-					newbutton.get_node("price").text = str(newitem.calculateprice())
-					newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
-				else:
-					globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
-					newbutton.connect('pressed', self, "item_purchase", [item, amount])
-				if amount > 0:
-					newbutton.get_node("amount").text = str(amount)
-					newbutton.get_node("amount").show()
+					var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
+					newbutton.get_node("name").text = item.name
+					newbutton.get_node("icon").texture = item.icon
+					newbutton.get_node("price").text = str(item.price)
+					newbutton.connect("pressed",self,"item_purchase", [item, amount])
+					globals.connectmaterialtooltip(newbutton, item, 'material')
+					if amount > 0:
+						newbutton.get_node("amount").text = str(amount)
+						newbutton.get_node("amount").show()
+				elif Items.itemlist.has(i):
+					var item = Items.itemlist[i]
+					var amount = -1
+					if item.has('parts'):
+						amount = 1
+					else:
+						amount = active_shop[i]
+						if amount == 0:
+							continue
+					var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
+					newbutton.get_node("name").text = item.name
+					newbutton.get_node("icon").texture = item.icon
+					newbutton.get_node("price").text = str(item.price)
+					if item.has('parts'):
+						var newitem = globals.CreateGearItem(i, active_shop[i])
+						newitem.set_icon(newbutton.get_node('icon'))
+						newbutton.get_node("name").text = newitem.name
+						tempitems.append(newitem)
+						globals.connectitemtooltip(newbutton, newitem)
+						newbutton.get_node("price").text = str(newitem.calculateprice())
+						newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
+					else:
+						globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
+						newbutton.connect('pressed', self, "item_purchase", [item, amount])
+					if amount > 0:
+						newbutton.get_node("amount").text = str(amount)
+						newbutton.get_node("amount").show()
 		'sell':
 			for i in state.materials:
 				if state.materials[i] <= 0:
@@ -362,13 +360,14 @@ func item_sell(item):
 	$NumberSelection.open(self, 'item_sell_confirm', "Sell $n " + item.name + "? Gained gold: $m", price, 0, sellingamount, false)
 
 func item_puchase_confirm(value):
+	input_handler.PlaySound("money_spend")
 	if typeof(purchase_item) == TYPE_OBJECT:
 		globals.AddItemToInventory(purchase_item)
 		state.money -= purchase_item.calculateprice()
 		$Gold.text = str(state.money)
-		for i in active_shop.items:
-			if purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop.items[i]):
-				active_shop.items.erase(i)
+		for i in active_shop:
+			if purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop[i]):
+				active_shop.erase(i)
 				break
 		update_shop_list()
 	else:
@@ -376,12 +375,12 @@ func item_puchase_confirm(value):
 			state.set_material(purchase_item.code, '+', value)
 			state.money -= purchase_item.price*value
 			$Gold.text = str(state.money)
-			if typeof(active_shop.materials) == TYPE_DICTIONARY:
-				active_shop.materials[purchase_item.code] -= value
+			if typeof(active_shop) == TYPE_DICTIONARY:
+				active_shop[purchase_item.code] -= value
 		elif Items.itemlist.has(purchase_item.code):
 			state.money -= purchase_item.price*value
-			if typeof(active_shop.items) == TYPE_DICTIONARY:
-				active_shop.items[purchase_item.code] -= value
+			if typeof(active_shop) == TYPE_DICTIONARY:
+				active_shop[purchase_item.code] -= value
 			while value > 0:
 				match purchase_item.type:
 					'usable':
@@ -394,6 +393,7 @@ func item_puchase_confirm(value):
 		update_shop_list()
 
 func item_sell_confirm(value):
+	input_handler.PlaySound("money_spend")
 	var price = purchase_item.price
 	if Items.materiallist.has(purchase_item.code):
 		state.set_material(purchase_item.code, '-', value)
@@ -507,12 +507,14 @@ func guild_hire_slave():
 			selectedperson.is_players_character = true
 			input_handler.scene_character = selectedperson
 			input_handler.interactive_message('hire', '', {})
+			input_handler.PlaySound("money_spend")
 			faction_hire()
 		'sell':
 			state.money += round(selectedperson.calculate_price()/3)
 			state.remove_slave(selectedperson)
 			active_faction.slaves.append(selectedperson.id)
 			selectedperson.is_players_character = false
+			input_handler.PlaySound("money_spend")
 			faction_sellslaves()
 
 func open_slave_info(character):

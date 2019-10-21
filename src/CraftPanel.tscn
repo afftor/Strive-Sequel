@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=14]
 [ext_resource path="res://assets/textures/solid_panel.tres" type="StyleBox" id=15]
 [ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/ui_slot_cross.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/combat/cross.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=20]
@@ -241,7 +241,6 @@ expand = true
 stretch_mode = 6
 
 [node name="Part1" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
-editor/display_folded = true
 margin_left = 37.0
 margin_top = 51.0
 margin_right = 158.0
@@ -265,7 +264,6 @@ texture = ExtResource( 17 )
 stretch_mode = 4
 
 [node name="Part2" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
-editor/display_folded = true
 margin_left = 36.0
 margin_top = 269.0
 margin_right = 158.0
@@ -289,7 +287,6 @@ texture = ExtResource( 17 )
 stretch_mode = 4
 
 [node name="Part3" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
-editor/display_folded = true
 margin_left = 35.0
 margin_top = 498.0
 margin_right = 157.0

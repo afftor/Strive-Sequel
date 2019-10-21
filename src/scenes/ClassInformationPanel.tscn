@@ -87,7 +87,6 @@ margin_bottom = 440.904
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SocialSkills"]
-margin_top = 1.0
 margin_right = 398.0
 size_flags_horizontal = 3
 alignment = 1

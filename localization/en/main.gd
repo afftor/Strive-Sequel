@@ -684,7 +684,7 @@ var TranslationDict = {
 	
 	STATMP = "Mana",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilities.",
-	STATMPMAX = "Max. Mana",
+	STATMPMAXMOD = "Max. Mana",
 	STATHITRATE = "Hit chance",
 	STATHITRATEDESCRIPT = "Chance to hit enemy. Reduced by target's evasion.",
 	STATEVASION = "Evasion",

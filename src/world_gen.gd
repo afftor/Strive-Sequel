@@ -24,10 +24,8 @@ var lands = {
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den'],#"dungeon_goblin_cave"], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
-#		capital_shop_resources = ['meat','fish','grain','vegetables','stone', 'wood','leather','bone','cloth','iron','fleawarts'],
-#		capital_shop_items = ['lifeshard','leather_collar','maid_dress','worker_outfit'],
-#		capital_locations = ['dungeon_tutorial'],
 		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
+		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
 			fish = {min = 40, max = 80, chance = 0.9},
@@ -66,6 +64,7 @@ var lands = {
 		capital_shop_resources = ['grain','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
 		capital_shop_items = [],
 		events = [],
+		area_shop_items = {},
 	},
 #	mountains = {
 #		code = 'mountains',
@@ -144,7 +143,7 @@ func make_area(code):
 		input_handler.active_location = location
 	areadata.factions = {}
 	areadata.quests.factions = {}
-	areadata.shop = []
+	areadata.shop = {}
 	update_area_shop(areadata)
 	for i in areadata.guilds:
 		make_guild(i, areadata)
@@ -154,12 +153,52 @@ func update_area_shop(area):
 	area.shop.clear()
 	var resource_array = []
 	for i in area.area_shop_items:
+		if randf() >= area.area_shop_items[i].chance:
+			continue
 		if Items.materiallist.has(i):
 			resource_array.append(i)
-			var amount = round(rand_range(area.area_shop_items.min, area.area_shop_items.max))
-			area.shop.append({i = amount})
-			
-		
+			var amount = round(rand_range(area.area_shop_items[i].min, area.area_shop_items[i].max))
+			area.shop[i] = amount
+		elif Items.itemlist.has(i):
+			var itemtemplate = Items.itemlist[i]
+			match itemtemplate.type:
+				'gear':
+					if !itemtemplate.tags.has('recipe'): #either shouldn't happen yet
+						area.shop[i] = round(rand_range(area.area_shop_items[i].min, area.area_shop_items[i].max))
+				'usable':
+					area.shop[i] = round(rand_range(area.area_shop_items[i].min, area.area_shop_items[i].max))
+		else:
+			if area.area_shop_items[i].has('items'):
+				var data = area.area_shop_items[i]
+				var amount = round(rand_range(data.min, data.max))
+				while amount > 0:
+					amount -= 1
+					var item = Items.itemlist[data.items[randi()%data.items.size()]]
+					if item.has('parts'):
+						var parts = {}
+						for i in item.parts:
+							var tiers = []
+							for i in area.material_tiers:
+								tiers.append([i, area.material_tiers[i]])
+							var materialtier = input_handler.weightedrandom(tiers)
+							var materialarray = []
+							for k in Items.materials_by_tiers[materialtier]:
+								if Items.materiallist[k].has('parts') && Items.materiallist[k].parts.has(i):
+									materialarray.append(k)
+							if materialarray.size() == 0:
+								for k in Items.materiallist.values():
+									if k.has('parts') && k.parts.has(i):
+										materialarray.append([k.code, 1.0/k.price])
+								materialarray = [input_handler.weightedrandom(materialarray)]
+							parts[i] = materialarray[randi()%materialarray.size()]
+						area.shop[item.code] = parts
+					else:
+						if area.shop.has(item.code):
+							area.shop[item.code] += 1
+						else:
+							area.shop[item.code] = 1
+
+
 
 var guild_upgrades = {
 	slavenumberupgrade = {
@@ -332,8 +371,7 @@ func make_settlement(code, area):
 	settlement.group = {}
 	settlement.type = 'settlement'
 	settlement.levels = {}
-	settlement.shop_resources = {}
-	settlement.shop_items = {}
+	settlement.shop = {}
 	state.locationcounter += 1
 	if randf() <= 0.8 || area.secondary_races.size() == 0:
 		settlement.races.append(area.lead_race)
@@ -344,54 +382,57 @@ func make_settlement(code, area):
 		added_races.erase(another_race)
 		if randf() >= 0.5 && added_races.size() > 0:
 			settlement.races.append(added_races[randi()%added_races.size()])
-	
-	
-	#adding resource types the settlement is going to have
-	var resourcedata = settlement.resources.duplicate()
-	settlement.resources.clear()
-	var food_types = round(rand_range(settlement.food_type_number[0], settlement.food_type_number[1]))
-	var resource_array = []
-	for i in resourcedata:
-		if Items.materiallist[i].type == 'food':
-			resource_array.append(i)
-	while food_types > 0:
-		var resource = resource_array[randi()%resource_array.size()]
-		settlement.resources.append(resource)
-		settlement.shop_resources[resource] = round(rand_range(settlement.food_type_amount[0], settlement.food_type_amount[1]))
-		resource_array.erase(resource)
-		food_types -= 1
-	var resource_types = round(rand_range(settlement.resources_type_number[0], settlement.resources_type_number[1]))
-	resource_array.clear()
 	settlement.events = {}
-	for i in resourcedata:
-		if Items.materiallist[i].type != 'food':
-			resource_array.append(i)
-	while resource_types > 0:
-		var resource = resource_array[randi()%resource_array.size()]
-		settlement.resources.append(resource)
-		settlement.shop_resources[resource] = round(rand_range(settlement.resource_type_amount[0], settlement.resource_type_amount[1]))
-		resource_array.erase(resource)
-		resource_types -= 1
-	var item_types = round(rand_range(settlement.item_type_number[0], settlement.item_type_number[1]))
-	while item_types > 0:
-		var itemdata = settlement.items[randi()%settlement.items.size()]
-		if Items.itemlist[itemdata[0]].has("parts"):
-			var parts = {}
-			for i in Items.itemlist[itemdata[0]].parts:
-				var materialarray = []
-				for k in settlement.resources:
-					if Items.materiallist[k].has('parts') && Items.materiallist[k].parts.has(i):
-						materialarray.append(k)
-				if materialarray.size() == 0:
-					for k in Items.materiallist.values():
-						if k.has('parts') && k.parts.has(i):
-							materialarray.append([k.code, 1.0/k.price])
-					materialarray = [input_handler.weightedrandom(materialarray)]
-				parts[i] = materialarray[randi()%materialarray.size()]
-			settlement.shop_items[itemdata[0]] = parts
-		else:
-			settlement.shop_items[itemdata[0]] = round(rand_range(itemdata[1], itemdata[2]))
-			item_types -= 1
+	
+	update_area_shop(settlement)
+	
+	#adding resource types the settlement is going to have ========== Unused
+#	var resourcedata = settlement.resources.duplicate()
+#	settlement.resources.clear()
+#	var food_types = round(rand_range(settlement.food_type_number[0], settlement.food_type_number[1]))
+#	var resource_array = []
+#	for i in resourcedata:
+#		if Items.materiallist[i].type == 'food':
+#			resource_array.append(i)
+#	while food_types > 0:
+#		var resource = resource_array[randi()%resource_array.size()]
+#		settlement.resources.append(resource)
+#		settlement.shop_resources[resource] = round(rand_range(settlement.food_type_amount[0], settlement.food_type_amount[1]))
+#		resource_array.erase(resource)
+#		food_types -= 1
+#	var resource_types = round(rand_range(settlement.resources_type_number[0], settlement.resources_type_number[1]))
+#	resource_array.clear()
+#	for i in resourcedata:
+#		if Items.materiallist[i].type != 'food':
+#			resource_array.append(i)
+#	while resource_types > 0:
+#		var resource = resource_array[randi()%resource_array.size()]
+#		settlement.resources.append(resource)
+#		settlement.shop_resources[resource] = round(rand_range(settlement.resource_type_amount[0], settlement.resource_type_amount[1]))
+#		resource_array.erase(resource)
+#		resource_types -= 1
+#	var item_types = round(rand_range(settlement.item_type_number[0], settlement.item_type_number[1]))
+#	while item_types > 0:
+#		var itemdata = settlement.items[randi()%settlement.items.size()]
+#		if Items.itemlist[itemdata[0]].has("parts"):
+#			var parts = {}
+#			for i in Items.itemlist[itemdata[0]].parts:
+#				var materialarray = []
+#				for k in settlement.resources:
+#					if Items.materiallist[k].has('parts') && Items.materiallist[k].parts.has(i):
+#						materialarray.append(k)
+#				if materialarray.size() == 0:
+#					for k in Items.materiallist.values():
+#						if k.has('parts') && k.parts.has(i):
+#							materialarray.append([k.code, 1.0/k.price])
+#					materialarray = [input_handler.weightedrandom(materialarray)]
+#				parts[i] = materialarray[randi()%materialarray.size()]
+#			settlement.shop_items[itemdata[0]] = parts
+#		else:
+#			settlement.shop_items[itemdata[0]] = round(rand_range(itemdata[1], itemdata[2]))
+#			item_types -= 1
+	
+	
 	area.locations[settlement.id] = settlement
 	state.location_links[settlement.id] = {area = area.code, category = 'locations'} 
 
@@ -403,19 +444,34 @@ var locations = {
 		name = 'village_human',
 		races = [],
 		population = [100,500],
-		resources = ['stone', 'wood', 'iron', 'leather', 'cloth', 'fish','meat','grain', 'vegetables'],
-		items = [['lifeshard', 3, 7],['energyshard', 3,7],['alcohol',4,10], ['pickaxe',1,2], ['axe',2,3], ['sickle',1,2]],
 		fear = 0,
 		approval = 0,
 		leader = '',
 		actions = ['local_shop','local_events_search'],
 		event_pool = [['event_good_recruit', 50], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
 		strength = [1,10],
-		food_type_number = [1,2],
-		food_type_amount = [100,200],
-		resources_type_number = [2,3],
-		resource_type_amount = [30,50],
-		item_type_number = [3,5],
+		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
+		area_shop_items = {
+			meat = {min = 20, max = 50, chance = 0.8},
+			fish = {min = 15, max = 45, chance = 0.6},
+			vegetables = {min = 20, max = 40, chance = 0.9},
+			grain = {min = 40, max = 60, chance = 0.9},
+			wood = {min = 10, max = 30, chance = 0.75},
+			stone = {min = 10, max = 20, chance = 0.5},
+			leather = {min = 5, max = 10, chance = 0.3},
+			iron = {min = 10, max = 20, chance = 0.8},
+			cloth = {min = 5, max = 15, chance = 0.5},
+			lifeshard = {min = 3, max = 6, chance = 0.9},
+			itempool1 = {items = ['axe','pickaxe','hammer','fishingtools','sickle'], min = 1, max = 3, chance = 0.8},
+			itempool2 = {items = ['worker_outfit','craftsman_suit','steel_collar'], min = 1, max = 4, chance = 0.8},
+			},
+#		food_type_number = [1,2],
+#		food_type_amount = [100,200],
+#		resources_type_number = [2,3],
+#		resource_type_amount = [30,50],
+#		item_type_number = [3,5],
+#		resources = ['stone', 'wood', 'iron', 'leather', 'cloth', 'fish','meat','grain', 'vegetables'],
+#		items = [['lifeshard', 3, 7],['energyshard', 3,7],['alcohol',4,10], ['pickaxe',1,2], ['axe',2,3], ['sickle',1,2]],
 	},
 }
 
