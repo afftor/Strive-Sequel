@@ -701,58 +701,135 @@ func get_sex_features():
 		mouth_virgin = false
 
 func checkreqs(array, ignore_npc_stats_gear = false):
+	var check = true
 	for i in array:
-		var check = true
-		match i.code:
-			'stat':
-				if ignore_npc_stats_gear == false || !i.type in ['physics','wits','charm','sexuals']:
-					check = input_handler.operate(i.operant, self.get_stat(i.type), i.value)
-			'has_profession':
-				check = professions.has(i.value) == i.check
-			'race_is_beast':
-				check = races.racelist[race].tags.has('beast') == i.value
-			'is_shortstack':
-				check = height in ['tiny','petite']
-			'gear_equiped':
-				if ignore_npc_stats_gear == false:
-					check = check_gear_equipped(i.value)
-			'global_profession_limit':
-				check = check_profession_limit(i.name, i.value)
-			'race':
-				check = input_handler.operate(i.operant, race, i.value)
-			'one_of_races':
-				check = race in i.value
-			'is_free':
-				check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
-			'is_at_location':
-				check = travel_time == 0 && location == i.value
-			'is_id':
-				check = input_handler.operate(i.operant, id, i.value)
-			'long_tail':
-				check = globals.longtails.has(tail)
-			'cant_spawn_naturally':
-				check = !ignore_npc_stats_gear
-			'sex':
-				check = input_handler.operate(i.operant, sex, i.value)
-			'is_master':
-				check = (state.get_master() == self) == i.check
-			'rules':
-				check = globals.globalsettings[i.type] == i.check
-			'bodypart':
-				check = input_handler.operate(i.operant, get(i.name), i.value)
-			'trait':
-				check = traits.has(i.value)
-			'disabled':
-				check = !i.value
-			'has_status':
-				check = has_status(i.value)
-			'slave_type':
-				check = input_handler.operate(i.operant, slave_class, i.value)
-			'population':
-				check = input_handler.operate(i.operant, state.characters.size(), i.value)
-		if check == false:
-			return false
-	return true
+		if i.has('orflag'):
+			check = check or valuecheck(i, ignore_npc_stats_gear)
+		else:
+			check = check and valuecheck(i, ignore_npc_stats_gear)
+	return check
+
+func valuecheck(i, ignore_npc_stats_gear = false):
+	var check = true
+	match i.code:
+		'stat':
+			if ignore_npc_stats_gear == false || !i.type in ['physics','wits','charm','sexuals']:
+				check = input_handler.operate(i.operant, self.get_stat(i.type), i.value)
+		'has_profession':
+			check = professions.has(i.value) == i.check
+		'race_is_beast':
+			check = races.racelist[race].tags.has('beast') == i.value
+		'is_shortstack':
+			check = height in ['tiny','petite']
+		'gear_equiped':
+			if ignore_npc_stats_gear == false:
+				check = check_gear_equipped(i.value)
+		'global_profession_limit':
+			check = check_profession_limit(i.name, i.value)
+		'race':
+			check = input_handler.operate(i.operant, race, i.value)
+		'one_of_races':
+			check = race in i.value
+		'is_free':
+			check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
+		'is_at_location':
+			check = travel_time == 0 && location == i.value
+		'is_id':
+			check = input_handler.operate(i.operant, id, i.value)
+		'long_tail':
+			check = globals.longtails.has(tail)
+		'cant_spawn_naturally':
+			check = !ignore_npc_stats_gear
+		'sex':
+			check = input_handler.operate(i.operant, sex, i.value)
+		'is_master':
+			check = (state.get_master() == self) == i.check
+		'rules':
+			check = globals.globalsettings[i.type] == i.check
+		'bodypart':
+			check = input_handler.operate(i.operant, get(i.name), i.value)
+		'trait':
+			check = traits.has(i.value)
+		'disabled':
+			check = !i.value
+		'has_status':
+			check = has_status(i.value)
+		'slave_type':
+			check = input_handler.operate(i.operant, slave_class, i.value)
+		'population':
+			check = input_handler.operate(i.operant, state.characters.size(), i.value)
+	return check
+
+func decipher_reqs(reqs, colorcode = false):
+	var text = ''
+	for i in reqs:
+		var text2 = ''
+#		if i.has('orflag'):
+#			check = check or valuecheck(i)
+#		else:
+#			check = check and valuecheck(i)
+#		if i.has('orflag'):
+#			continue
+		text2 = decipher_single(i)
+		if colorcode == true:
+			if checkreqs([i]):
+				text2 = '{color=green|' + text2 + '}'
+			else:
+				text2 = '{color=red|' + text2 + '}'
+			text += text2 + '\n'
+	return globals.TextEncoder(text.substr(0, text.length()-1))
+
+func decipher_single(i):
+	var text2 = ''
+	match i.code:
+		'stat':
+			if i.type.find("factor") > 0:
+				text2 += globals.statdata[i.type].name + ': ' + globals.descriptions.factor_descripts[i.value] + " "
+			else:
+				text2 += globals.statdata[i.type].name + ': ' + str(i.value) + " "
+			match i.operant:
+				'gte':
+					text2 += "or higher"
+				'lte':
+					text2 += "or lower"
+		'has_profession':
+			if i.check == true:
+				text2 += 'Has Class: ' + Skilldata.professions[i.value].name
+			else:
+				text2 += 'Has NO Class: ' + Skilldata.professions[i.value].name
+		'has_any_profession':
+			text2 += "Has any of Classes: "
+			for k in i.value:
+				text2 += Skilldata.professions[k].name + ", "
+			text2 = text2.substr(0, text2.length()-2)
+		'race':
+			if i.operant == 'eq':
+				text2 += 'Race: ' + races.racelist[i.value].name
+			else:
+				continue
+		'race_is_beast':
+			if i.value == true:
+				text2 += 'Only for bestial races.'
+			else:
+				continue
+		'gear_equiped':
+			text2 += 'Must have ' + Items.itemlist[i.value].name + "."
+		'global_profession_limit':
+			text2 += 'Only ' + str(i.value) + " " + Skilldata.professions[i.name].name + " allowed."
+		'one_of_races':
+			text2 += "Only for: "
+			for k in i.value:
+				text2 += races.racelist[k.replace(" ","")].name + ', '
+			text2 = text2.substr(0, text2.length()-2) + '. '
+		'trait':
+			text2 += "Requires: " + Traitdata.traits[i.value].name
+		'population':
+			text2 += "Must have Population: " + str(i.value)
+		'sex':
+			match i.operant:
+				'neq':
+					text2 += "Not allowed for " + i.value + "s."
+	return text2
 
 func check_gear_equipped(gearname):
 	for i in gear.values():
@@ -887,67 +964,6 @@ func get_random_name():
 		surname = names.getRandomFurrySurname()
 	
 
-func decipher_reqs(reqs, colorcode = false):
-	var text = ''
-	for i in reqs:
-		var text2 = ''
-		if i.has('orflag'):
-			continue
-		match i.code:
-			'stat':
-				if i.type.find("factor") > 0:
-					text2 += globals.statdata[i.type].name + ': ' + globals.descriptions.factor_descripts[i.value] + " "
-				else:
-					text2 += globals.statdata[i.type].name + ': ' + str(i.value) + " "
-				match i.operant:
-					'gte':
-						text2 += "or higher"
-					'lte':
-						text2 += "or lower"
-			'has_profession':
-				if i.check == true:
-					text2 += 'Has Class: ' + Skilldata.professions[i.value].name
-				else:
-					text2 += 'Has NO Class: ' + Skilldata.professions[i.value].name
-			'has_any_profession':
-				text2 += "Has any of Classes: "
-				for k in i.value:
-					text2 += Skilldata.professions[k].name + ", "
-				text2 = text2.substr(0, text2.length()-2)
-			'race':
-				if i.operant == 'eq':
-					text2 += 'Race: ' + races.racelist[i.value].name
-				else:
-					continue
-			'race_is_beast':
-				if i.value == true:
-					text2 += 'Only for bestial races.'
-				else:
-					continue
-			'gear_equiped':
-				text2 += 'Must have ' + Items.itemlist[i.value].name + "."
-			'global_profession_limit':
-				text2 += 'Only ' + str(i.value) + " " + Skilldata.professions[i.name].name + " allowed."
-			'one_of_races':
-				text2 += "Only for: "
-				for k in i.value:
-					text += races.racelist[k.replace(" ","")].name + ', '
-				text2 = text2.substr(0, text2.length()-2) + '. '
-			'trait':
-				text2 += "Requires: " + Traitdata.traits[i.value].name
-			'population':
-				text2 += "Must have Population: " + str(i.value)
-			'sex':
-				match i.operant:
-					'neq':
-						text += "Not allowed for " + i.value + "s."
-		if colorcode == true:
-			if checkreqs([i]):
-				text2 = '{color=green|' + text2 + '}'
-			else:
-				text2 = '{color=red|' + text2 + '}'
-		text += text2 + '\n'
-	return globals.TextEncoder(text.substr(0, text.length()-1))
 
 func get_next_class_exp():
 	var currentclassnumber = professions.size()

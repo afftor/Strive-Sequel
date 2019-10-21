@@ -337,7 +337,7 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [],
 		manacost = 0,
-		charges = 1,
+		charges = 2,
 		cooldown = 1,
 		energycost = 0,
 		receiverdaylimit = 1,
@@ -346,7 +346,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'serve',
-		value = [['20'],['caster.charm','*0.2','+30']],
+		value = [['20'],['caster.charm','*0.2','+40']],
 		damagestat = ['lust','obedience'],
 		receiver = ['caster','target','target']
 	},
@@ -2165,7 +2165,6 @@ var Skilllist = {
 	},
 	succubus_lust_xp_convert = {#consume target lust, receive base exp based on lust consumed
 		code = 'succubus_lust_xp_convert',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2188,7 +2187,6 @@ var Skilllist = {
 	},
 	succubus_lust_hp_convert = {#consume target lust, recover 1x hp and 0.75x mana 
 		code = 'succubus_lust_hp_convert',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',

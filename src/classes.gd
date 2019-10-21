@@ -266,7 +266,7 @@ var professions = {
 		categories = ['social', 'sexual'],
 		showupreqs = [],
 		reqs = [{code = 'stat', type = 'sexuals', operant = 'gte', value = 20}, {code = 'stat', type = 'charm', operant = 'gte', value = 40},{code = 'has_profession', value = 'harlot', check = true}],
-		statchanges = {charm_factor = 1},
+		statchanges = {sexuals_factor = 1},
 		traits = [],
 		skills = ['rewardsex'],
 		combatskills = [],
