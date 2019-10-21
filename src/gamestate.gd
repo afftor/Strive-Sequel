@@ -396,11 +396,24 @@ func deserialize(tmp:Dictionary):
 		var ssp = characters[h].social_skill_panel.duplicate()
 		characters[h].social_skill_panel.clear()
 		for i in ssp:
-			characters[h].social_skill_panel[int(i)] = ssp[i]
+			if Skilldata.Skilllist.has(ssp[i]):
+				characters[h].social_skill_panel[int(i)] = ssp[i]
 		ssp = characters[h].combat_skill_panel.duplicate()
 		characters[h].combat_skill_panel.clear()
 		for i in ssp:
-			characters[h].combat_skill_panel[int(i)] = ssp[i]
+			if Skilldata.Skilllist.has(ssp[i]):
+				characters[h].combat_skill_panel[int(i)] = ssp[i]
+		
+		var cleararray = []
+		for i in [characters[h].social_skills, characters[h].combat_skills]:
+			for k in i:
+				if Skilldata.Skilllist.has(k) == false:
+					cleararray.append(k)
+		for i in cleararray:
+			for k in [characters[h].social_skills, characters[h].combat_skills]:
+				k.erase(i)
+		
+		
 	tempstate.free()
 	effects_pool.deserialize(tmp['effects'])
 	#fastfix for broken saves

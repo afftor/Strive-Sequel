@@ -1263,7 +1263,7 @@ func killed():
 	is_active = false 
 	state.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
-	
+	input_handler.update_slave_list()
 
 func productivity_get():
 	return productivity
@@ -1512,6 +1512,7 @@ func escape():
 	is_active = false #for now, to replace with corresponding mechanic
 	state.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
+	input_handler.update_slave_list()
 	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 

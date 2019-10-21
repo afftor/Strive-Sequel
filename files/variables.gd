@@ -7,6 +7,8 @@ var CombatAllyHpAlwaysVisible = true
 
 var timeforinteraction = 20
 
+var shop_restock_days = 1
+
 var hour_turn_limit = 8
 
 enum {PANEL_SOC, PANEL_COM}

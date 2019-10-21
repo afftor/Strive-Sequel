@@ -674,17 +674,16 @@ margin_bottom = 38.0
 text = "Days:"
 
 [node name="ShopPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
-margin_left = 40.7423
-margin_top = 91.4415
-margin_right = 1075.74
-margin_bottom = 965.442
+margin_left = 500.0
+margin_top = 81.0
+margin_right = 1373.0
+margin_bottom = 955.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopPanel"]
-margin_left = 40.0
+margin_left = 230.0
 margin_top = 20.0
-margin_right = 444.0
+margin_right = 634.0
 margin_bottom = 70.0
 
 [node name="buy" type="Button" parent="ShopPanel/HBoxContainer"]
@@ -703,18 +702,18 @@ toggle_mode = true
 text = "Sell"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopPanel"]
-margin_left = 41.0
-margin_top = 79.0
-margin_right = 445.0
+margin_left = 111.0
+margin_top = 120.0
+margin_right = 763.0
 margin_bottom = 830.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopPanel/ScrollContainer"]
-margin_right = 404.0
+margin_right = 652.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="ShopPanel/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 404.0
+margin_right = 652.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
@@ -725,11 +724,13 @@ mouse_filter = 2
 expand = true
 
 [node name="name" type="Label" parent="ShopPanel/ScrollContainer/VBoxContainer/Button"]
-margin_left = 54.0
+margin_left = 68.5753
 margin_top = 13.0
-margin_right = 353.0
+margin_right = 511.575
 margin_bottom = 45.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Test"
+clip_text = true
 
 [node name="price" type="Label" parent="ShopPanel/ScrollContainer/VBoxContainer/Button"]
 anchor_left = 1.0
@@ -737,29 +738,44 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -68.0
-margin_top = -16.0
+margin_top = -11.7131
 margin_right = -11.0
-margin_bottom = 8.0
+margin_bottom = 12.2869
 custom_colors/font_color = Color( 1, 0.827451, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10"
 align = 2
 
 [node name="amount" type="Label" parent="ShopPanel/ScrollContainer/VBoxContainer/Button"]
-visible = false
-margin_left = 6.48608
-margin_top = 26.4076
-margin_right = 46.4861
-margin_bottom = 50.4076
+margin_left = 515.287
+margin_top = 13.8574
+margin_right = 563.287
+margin_bottom = 42.8574
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ShopPanel"]
-margin_left = 510.909
-margin_top = 52.3602
-margin_right = 969.909
-margin_bottom = 812.36
+[node name="Label" type="Label" parent="ShopPanel"]
+margin_left = 713.337
+margin_top = 84.8802
+margin_right = 766.337
+margin_bottom = 108.88
+text = "Cost"
+
+[node name="Label2" type="Label" parent="ShopPanel"]
+margin_left = 610.043
+margin_top = 84.8802
+margin_right = 703.043
+margin_bottom = 108.88
+text = "Number"
+
+[node name="Label3" type="Label" parent="ShopPanel"]
+margin_left = 161.043
+margin_top = 84.8802
+margin_right = 254.043
+margin_bottom = 108.88
+text = "Item"
+align = 1
 
 [node name="FactionDetailsPanel" type="Panel" parent="."]
 editor/display_folded = true
