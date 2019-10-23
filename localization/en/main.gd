@@ -684,6 +684,7 @@ var TranslationDict = {
 	
 	STATMP = "Mana",
 	STATMPDESCRIPT = "Mana is used for casting spells and using some abilities.",
+	STATMPMAX = "Max. Mana",
 	STATMPMAXMOD = "Max. Mana",
 	STATHITRATE = "Hit chance",
 	STATHITRATEDESCRIPT = "Chance to hit enemy. Reduced by target's evasion.",
@@ -1606,6 +1607,7 @@ var TranslationDict = {
 	ENEMYBANDIT_MELEE = "Bandit",
 	ENEMYBANDIT_ARCHER = "Ranged Bandit",
 	ENEMYBANDIT_MAGE = "Bandit Mage",
+	ENEMYBANDIT_BOSS = "Bandit Boss",
 	ENEMYCAVE_GOBLIN_MELEE = "Cave Goblin",
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
 	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",

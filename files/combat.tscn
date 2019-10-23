@@ -452,7 +452,6 @@ expand = true
 stretch_mode = 6
 
 [node name="debugvictory" type="Button" parent="ItemPanel"]
-visible = false
 margin_left = 18.0
 margin_top = 14.0
 margin_right = 392.0

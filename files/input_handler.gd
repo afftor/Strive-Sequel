@@ -29,6 +29,7 @@ signal EventFinished
 signal QuestStarted
 signal QuestCompleted
 signal CharacterCreated
+signal EnemyKilled
 
 var last_action_data = {}
 
@@ -816,7 +817,7 @@ func interactive_message(code, type, args):
 					newcharacter = Slave.new()
 					newcharacter.is_active = false
 					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
-					newcharacter.set_slave_category(args.slave_type) 
+					newcharacter.set_slave_category(args.characterdata.slave_type) 
 				'function':
 					newcharacter = call(args.characterdata.function, args.characterdata.args)
 			scene_character = newcharacter

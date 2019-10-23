@@ -7,6 +7,7 @@ extends Node
 func build_world():
 	for i in lands:
 		make_area(i)
+		state.area_order.append(lands[i].code)
 
 var lands = {
 	plains = {
@@ -36,6 +37,7 @@ var lands = {
 			stone = {min = 40, max = 50, chance = 1},
 			leather = {min = 3, max = 15, chance = 0.7},
 			iron = {min = 10, max = 20, chance = 0.8},
+			steel = {min = 5, max = 15, chance = 0.3},
 			cloth = {min = 5, max = 20, chance = 0.9},
 			bone = {min = 5, max = 20, chance = 0.7},
 			lifeshard = {min = 4, max = 8, chance = 1},
@@ -61,10 +63,20 @@ var lands = {
 		locations = {},
 		locationpool = ['dungeon_bandit_den'],
 		guilds = [],
-		capital_shop_resources = ['grain','vegetables', 'wood','woodmagic','leather','cloth','fleawarts','salvia'],
-		capital_shop_items = [],
 		events = [],
-		area_shop_items = {},
+		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		area_shop_items = {
+			vegetables = {min = 40, max = 80, chance = 1},
+			grain = {min = 60, max = 150, chance = 1},
+			bread = {min = 30, max = 60, chance = 1},
+			cloth = {min = 10, max = 25, chance = 0.9},
+			clothsilk = {min = 10, max = 15, chance = 0.9},
+			bone = {min = 5, max = 20, chance = 0.7},
+			lifeshard = {min = 4, max = 8, chance = 1},
+			energyshard = {min = 3, max = 5, chance = 1},
+			itempool1 = {items = ['sword','bow','staff'], min = 2, max = 4, chance = 0.8},
+			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
+			},
 	},
 #	mountains = {
 #		code = 'mountains',
@@ -744,6 +756,8 @@ func make_quest(questcode):
 		tempdata.type = tempdata.type[randi()%tempdata.type.size()]
 		tempdata.erase('function')
 		tempdata.erase('use_once')
+		if tempdata.code == 'monsters':
+			tempdata.curvalue = 0
 		requirements_number -= 1
 	for i in template.rewards.duplicate():
 		i.value = round(rand_range(i.range[0],i.range[1]))
@@ -767,7 +781,6 @@ func make_quest(questcode):
 						reward.item = reward.item[randi()%reward.item.size()]
 					reward.value = round(rand_range(i.value[0], i.value[1]))
 			data.rewards.append(reward)
-	
 	return data
 
 func take_quest(quest, area):
@@ -780,12 +793,6 @@ func take_quest(quest, area):
 			i.location = location.id
 			i.area = area.code
 			state.location_links[location.id] = {area = area.code, category = 'questlocations'}
-#	if quest.type in ['eventlocationquest','dungeonquest']:
-#		var location = make_quest_location(quest, area)
-#		area.questlocations[location.id] = location
-#		location.questid = quest.id
-#		quest.location = location.id
-#		state.location_links[location.id] = {area = area.code, category = 'questlocations'} 
 
 func find_location_from_req(req):
 	var location = null

@@ -155,10 +155,11 @@ func open():
 	
 	show()
 	globals.ClearContainer($AreaSelection)
-	for i in state.areas.values():
+	for i in state.area_order:
+		var area = state.areas[i]
 		var newbutton = globals.DuplicateContainerTemplate($AreaSelection)
-		newbutton.text = i.name
-		newbutton.connect("pressed",self,"select_area",[i])
+		newbutton.text = area.name
+		newbutton.connect("pressed",self,"select_area",[area])
 
 var selectedcategory
 
@@ -1205,6 +1206,8 @@ func StartCombat():
 	if typeof(enemydata) == TYPE_ARRAY:
 		enemies = input_handler.weightedrandom(enemydata)
 		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
+	elif Enemydata.enemygroups.has(enemydata):
+		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
 	else:
 		enemies = makespecificgroup(enemydata)
 	
