@@ -373,6 +373,7 @@ func serialize():
 		tmp['items'][i] = inst2dict(items[i])
 	for h in characters:
 		tmp['heroes'][h] = inst2dict(characters[h])
+		characters[h].fix_serialize(tmp['heroes'][h])
 	tmp['effects'] = effects_pool.serialize()
 	return tmp
 

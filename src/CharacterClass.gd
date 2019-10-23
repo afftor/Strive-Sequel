@@ -238,6 +238,13 @@ var starvation = false
 
 var masternoun = 'Master'
 
+func fix_serialize(data):
+	data.resists = resists.duplicate()
+	data.status_resists = status_resists.duplicate()
+	data.damage_mods = damage_mods.duplicate()
+	data.hpmax = hpmax
+	data.mpmax = mpmax
+
 
 func physics_set(value):
 	physics = min(value, physics_factor*20)
@@ -1235,7 +1242,7 @@ func hp_set(value):
 		death()
 	else:
 		defeated = false
-		is_active = true
+		#is_active = true
 
 func mp_set(value):
 	mp = clamp(value, 0, self.mpmax)
