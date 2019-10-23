@@ -64,6 +64,7 @@ func serialize():
 	var tmp = {}
 	for hid in characters.keys():
 		tmp[hid] = inst2dict(characters[hid])
+		characters[hid].fix_serialize(tmp[hid])
 	return tmp
 
 func deserialize(tmp):
