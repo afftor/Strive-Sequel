@@ -124,7 +124,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
-		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
@@ -153,7 +153,10 @@ func _ready():
 	
 	input_handler.SystemMessageNode = $SysMessage
 	set_time_buttons()
-	#$TestButton.connect("pressed",$imageselect, "chooseimage", [state.characters[state.characters.keys()[0]]])
+	$TestButton.connect("pressed", self, "quest_test")
+
+func quest_test():
+	input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):
 	if self.visible == false:

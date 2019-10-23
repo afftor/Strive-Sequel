@@ -341,6 +341,7 @@ margin_bottom = 1007.0
 margin_right = 649.0
 margin_bottom = 913.0
 texture = ExtResource( 37 )
+expand = true
 stretch_mode = 7
 
 [node name="chest" type="TextureButton" parent="GearPanel"]

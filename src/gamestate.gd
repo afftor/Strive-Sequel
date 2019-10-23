@@ -23,6 +23,7 @@ var votelinksseen = false
 
 #world
 var areas = {}
+var area_order = []
 var starting_area = 'Plains'
 var location_links = {}
 var completed_locations = {}
@@ -82,6 +83,7 @@ func revert():
 	slavecounter = 0
 	locationcounter = 0
 	daily_interactions_left = 1
+	area_order.clear()
 	mainprogress = 0
 	decisions.clear()
 	activequests.clear()
@@ -114,6 +116,7 @@ func make_world():
 
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')
+	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
 	revert()
 
 func update_global_cooldowns():
@@ -274,7 +277,7 @@ func if_has_free_items(name, operant, value):
 	var counter = 0
 	for i in items.values():
 		if i.itembase == name && i.owner == null:
-			counter += 1
+			counter += i.amount
 	return input_handler.operate(operant, counter, value)
 
 func if_quest_stage(name, value, operant):
@@ -513,3 +516,17 @@ func get_food_consumption():
 	for i in characters.values():
 		counter += i.food_consumption
 	return counter
+
+func quest_kill_receiver(monstercode):
+	for i in areas.values():
+		for guild in i.quests.factions:
+			for quest in i.quests.factions[guild].values():
+				if quest.state == 'taken':
+					for cond in quest.requirements:
+						if cond.code == 'monsters' && cond.type == monstercode && cond.value > cond.curvalue:
+							cond.curvalue += 1
+		for quest in i.quests.global.values():
+			if quest.state == 'taken':
+				for cond in quest.requirements:
+					if cond.code == 'monsters' && cond.type == monstercode && cond.value > cond.curvalue:
+						cond.curvalue += 1

@@ -11,7 +11,7 @@ var enemygroups = {
 	bandits_easy2 = {reqs = [], units = {bandit_melee = [1,3], bandit_archer = [1,2]}},
 	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}},
 	
-	bandits_easy_boss = {maxunits = 3, reqs = [], units = {bandit_boss = [0,2], bandit_melee = [0,2], bandit_archer = [0,1]}},
+	bandits_easy_boss = {maxunits = 3, reqs = [], units = {bandit_boss = [1,1], bandit_melee = [0,2], bandit_archer = [0,2]}},
 	
 	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}},
 	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}},

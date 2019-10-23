@@ -24,10 +24,10 @@ func show():
 #		input_handler.PlaySound(open_sound)
 	close_played = false
 	input_handler.Open(self)
-	get_viewport().set_disable_input(true)
-	yield(get_tree().create_timer(0.15),"timeout")
-	get_viewport().set_disable_input(false)
-	self.visible = true
+#	get_viewport().set_disable_input(true)
+#	yield(get_tree().create_timer(0.15),"timeout")
+#	get_viewport().set_disable_input(false)
+#	self.visible = true
 
 func hide():
 	if is_visible_in_tree() && close_played == false:

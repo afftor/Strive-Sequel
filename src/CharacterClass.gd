@@ -73,7 +73,7 @@ var hp = 100 setget hp_set
 
 var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
-var mpmax = 50 setget , get_mana_max
+var mpmax = 50 setget ,get_mana_max
 
 var base_exp = 0
 var exp_mod = 1
@@ -1234,8 +1234,7 @@ func hp_set(value):
 	if hp <= 0:
 		death()
 	else:
-		defeated = false
-		is_active = true
+		defeated = false 
 
 func mp_set(value):
 	mp = clamp(value, 0, self.mpmax)
@@ -1245,6 +1244,8 @@ func mp_set(value):
 func death():
 	process_event(variables.TR_DEATH)
 	process_event(variables.TR_COMBAT_F)
+	if npc_reference != null:
+		input_handler.emit_signal("EnemyKilled", npc_reference)
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
@@ -1512,7 +1513,7 @@ func escape():
 	is_active = false #for now, to replace with corresponding mechanic
 	state.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
-	input_handler.update_slave_list()
+	input_handler.slave_list_node.rebuild()
 	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 

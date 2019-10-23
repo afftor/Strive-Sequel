@@ -1857,7 +1857,6 @@ var Skilllist = {
 	},
 	mindblast = {
 		code = 'mindblast',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Mindblast.png"),
 		type = 'combat', 
@@ -1883,7 +1882,6 @@ var Skilllist = {
 	},
 	resurrect = {
 		code = 'resurrect',
-		
 		descript = '',
 		icon = load('res://assets/images/iconsskills/Innervate.png'),
 		type = 'combat', 
@@ -1909,7 +1907,6 @@ var Skilllist = {
 	},
 	decay = {
 		code = 'decay',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Acid-spit.png"),
 		type = 'combat', 
