@@ -11,6 +11,7 @@ var positiondict = {
 }
 
 func _ready():
+	input_handler.exploration_node = self
 	globals.AddPanelOpenCloseAnimation($QuestPanel)
 	globals.AddPanelOpenCloseAnimation($HirePanel)
 	globals.AddPanelOpenCloseAnimation($ShopPanel)
@@ -558,17 +559,18 @@ func see_quest_info(quest):
 	$QuestPanel/time.show()
 	globals.ClearContainer($QuestPanel/questreqs)
 	globals.ClearContainer($QuestPanel/questrewards)
+	var text = '[center]' + quest.name + '[/center]\n' + quest.descript
 	#print(quest.requirements)
 	for i in quest.requirements:
 		var newbutton = globals.DuplicateContainerTemplate($QuestPanel/questreqs)
 		match i.code:
-			'monsters':
+			'kill_monsters':
 				newbutton.texture = images.icons.quest_enemy
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				newbutton.texture = images.icons.quest_enemy
 				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.value)
-			'item':
+			'random_item':
 				var itemtemplate = Items.itemlist[i.type]
 				newbutton.texture = itemtemplate.icon
 				if itemtemplate.has('parts'):
@@ -576,13 +578,14 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(i.value) 
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
-			'eventlocation':
+			'complete_location':
 				newbutton.texture = images.icons.quest_encounter
-				newbutton.hint_tooltip = "Complete quest event"
-			'dungeon':
+				newbutton.hint_tooltip = "Complete quest location: " + world_gen.dungeons[i.type].name
+				text += "\n" + world_gen.dungeons[i.type].name + ": " + world_gen.dungeons[i.type].descript
+			'complete_dungeon':
 				newbutton.texture = images.icons.quest_dungeon
-				newbutton.hint_tooltip = "Complete quest dungeon"
-			'material':
+				newbutton.hint_tooltip = "Complete quest dungeon: "
+			'random_material':
 				newbutton.texture = Items.materiallist[i.type].icon
 				newbutton.get_node("amount").show()
 				newbutton.get_node("amount").text = str(i.value)
@@ -607,13 +610,13 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Reputation (" + quest.source + "): +" + str(i.value)
-	$QuestPanel/RichTextLabel.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
+	$QuestPanel/RichTextLabel.bbcode_text = text
 	$QuestPanel/time/Label.text = "Limit: " + str(quest.time_limit) + " days."
 
 func accept_quest():
 	world_gen.take_quest(selectedquest, active_area)
 	for i in selectedquest.requirements:
-		if i.code in ['dungeon','eventlocation']:
+		if i.code in ['complete_dungeon','complete_location']:
 			input_handler.ShowPopupPanel("You've received a new quest location.")
 			update_categories()
 			break
@@ -771,6 +774,7 @@ func enter_location(data):
 	if active_location.has('progress'):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
+		
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	#check if anyone is present
 	build_location_group()
@@ -862,13 +866,14 @@ func open_location_actions():
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("pressed", self, i)
-		'skirmish':
+		'encounter':
 			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.text = 'Explore'
-			newbutton.connect("pressed",self,"enter_dungeon")
+			newbutton.text = 'Initiate'
+			newbutton.connect("pressed",self,"start_skirmish")
 
 func local_shop():
 	open_shop('location')
+
 
 func local_events_search():
 	if input_handler.active_location.events.has('search') && input_handler.active_location.events.search > 0:
@@ -990,6 +995,13 @@ func UpdatePositions():
 
 #Combat/explore functions
 
+func start_skirmish():
+	if check_location_group() == false:
+		input_handler.SystemMessage("Select at least 1 character before proceeding.")
+		return
+	check_events('skirmish_initiate')
+	
+
 func enter_dungeon():
 	check_events('enter')
 	var completed_floors = active_location.progress.level
@@ -1077,10 +1089,6 @@ func area_advance(mode):
 
 
 func finish_combat():
-	if check_events("finish_combat") == true:
-		yield(input_handler, 'EventFinished')
-	if check_random_event() == true:
-		yield(input_handler, 'EventFinished')
 	if action_type == 'advance':
 		active_location.progress.stage += 1
 		enter_level(active_location.progress.level)
@@ -1107,22 +1115,26 @@ func leave_location():
 	select_category(selectedcategory)
 
 func check_events(action):
-	var eventarray = active_location.scriptedevents
-	var erasearray = []
-	var eventtriggered = false
-	for i in eventarray:
-		if i.trigger == action && check_event_reqs(i.reqs) == true:
-			if i.has('args'):
-				call(i.event, i.args)
-			else:
-				call(i.event)
-			eventtriggered = true
-			if i.has('oneshot') && i.oneshot == true:
-				erasearray.append(i)
-			break
-	for i in erasearray:
-		eventarray.erase(i)
-	return eventtriggered
+	return input_handler.check_events(action)
+#	var eventarray = active_location.scriptedevents
+#	var erasearray = []
+#	var eventtriggered = false
+#	for i in eventarray:
+#		if i.trigger == action && check_event_reqs(i.reqs) == true:
+#			if i.has('args'):
+#				call(i.event, i.args)
+#			else:
+#				call(i.event)
+#			eventtriggered = true
+#			if i.has('oneshot') && i.oneshot == true:
+#				erasearray.append(i)
+#			break
+#	for i in erasearray:
+#		eventarray.erase(i)
+#	return eventtriggered
+
+func start_scene(scene):
+	input_handler.interactive_message(scene.code, 'event_selection', scene.args)
 
 func finish_quest_dungeon(args):
 	input_handler.interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
@@ -1147,138 +1159,143 @@ func character_boss_defeat():
 
 
 func check_event_reqs(reqs):
-	var check = true
-	for i in reqs:
-		match i.code:
-			'level':
-				check = input_handler.operate(i.operant, current_level, i.value)
-			'stage':
-				check = input_handler.operate(i.operant, current_stage, i.value)
-		if check == false:
-			break
-	
-	
-	return check
+	return input_handler.check_event_reqs(reqs)
+#	var check = true
+#	for i in reqs:
+#		match i.code:
+#			'level':
+#				check = input_handler.operate(i.operant, current_level, i.value)
+#			'stage':
+#				check = input_handler.operate(i.operant, current_stage, i.value)
+#		if check == false:
+#			break
+#
+#
+#	return check
 
 func check_random_event():
-	if randf() > variables.dungeon_encounter_chance:
-		return false
-	var eventarray = active_location.randomevents
-	var eventtriggered = false
-	var active_array = []
-	for i in eventarray:
-		var event = scenedata.scenedict[i[0]]
-		if event.has('reqs'):
-			if state.checkreqs(event.reqs):
-				active_array.append(i)
-		else:
-			active_array.append(i)
-	if active_array.size() > 0:
-		active_array = input_handler.weightedrandom(active_array)
-		var eventtype = "event_selection"
-		var dict = {}
-		if scenedata.scenedict[active_array].has("default_event_type"):
-			eventtype = scenedata.scenedict[active_array].default_event_type
-		if scenedata.scenedict[active_array].has('bonus_args'):
-			dict = scenedata.scenedict[active_array].bonus_args
-		input_handler.interactive_message(active_array, eventtype, dict)
-		eventtriggered = true
-	return eventtriggered
+	return input_handler.check_random_event()
+#	if randf() > variables.dungeon_encounter_chance:
+#		return false
+#	var eventarray = active_location.randomevents
+#	var eventtriggered = false
+#	var active_array = []
+#	for i in eventarray:
+#		var event = scenedata.scenedict[i[0]]
+#		if event.has('reqs'):
+#			if state.checkreqs(event.reqs):
+#				active_array.append(i)
+#		else:
+#			active_array.append(i)
+#	if active_array.size() > 0:
+#		active_array = input_handler.weightedrandom(active_array)
+#		var eventtype = "event_selection"
+#		var dict = {}
+#		if scenedata.scenedict[active_array].has("default_event_type"):
+#			eventtype = scenedata.scenedict[active_array].default_event_type
+#		if scenedata.scenedict[active_array].has('bonus_args'):
+#			dict = scenedata.scenedict[active_array].bonus_args
+#		input_handler.interactive_message(active_array, eventtype, dict)
+#		eventtriggered = true
+#	return eventtriggered
 
 func StartCombat():
-	var enemydata
-	var enemygroup = {}
-	var enemies = []
-	var music = 'combattheme'
-	
-	
-	
-	if variables.skip_combat == true:
-		finish_combat()
-		return
-	
-	for i in active_location.stagedenemies:
-		if i.stage == current_stage && i.level == current_level:
-			enemydata = i.enemy#[i.enemy,1]
-	if enemydata == null:
-		enemydata = active_location.enemies
-	
-	if typeof(enemydata) == TYPE_ARRAY:
-		enemies = input_handler.weightedrandom(enemydata)
-		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
-	elif Enemydata.enemygroups.has(enemydata):
-		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
-	else:
-		enemies = makespecificgroup(enemydata)
-	
-	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
-	
-	input_handler.emit_signal("CombatStarted", enemydata)
-	if variables.combat_tests == false:
-		input_handler.BlackScreenTransition(0.5)
-		yield(get_tree().create_timer(0.5), 'timeout')
-	$combat.encountercode = enemydata
-	$combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
-	$combat.show()
+	input_handler.current_level = current_level
+	input_handler.current_stage = current_stage
+	input_handler.StartCombat()
+#	var enemydata
+#	var enemygroup = {}
+#	var enemies = []
+#	var music = 'combattheme'
+#
+#
+#
+#	if variables.skip_combat == true:
+#		finish_combat()
+#		return
+#
+#	for i in active_location.stagedenemies:
+#		if i.stage == current_stage && i.level == current_level:
+#			enemydata = i.enemy#[i.enemy,1]
+#	if enemydata == null:
+#		enemydata = active_location.enemies
+#
+#	if typeof(enemydata) == TYPE_ARRAY:
+#		enemies = input_handler.weightedrandom(enemydata)
+#		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
+#	elif Enemydata.enemygroups.has(enemydata):
+#		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
+#	else:
+#		enemies = makespecificgroup(enemydata)
+#
+#	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
+#
+#	input_handler.emit_signal("CombatStarted", enemydata)
+#	if variables.combat_tests == false:
+#		input_handler.BlackScreenTransition(0.5)
+#		yield(get_tree().create_timer(0.5), 'timeout')
+#	$combat.encountercode = enemydata
+#	$combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
+#	$combat.show()
 
-func makespecificgroup(group):
-	var enemies = Enemydata.predeterminatedgroups[group]
-	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
-	for i in enemies.group:
-		combatparty[i] = enemies.group[i]
-	
-	return combatparty
-
-func makerandomgroup(enemygroup):
-	var array = []
-	for i in enemygroup.units:
-		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
-		if size != 0:
-			array.append({units = i, number = size})
-	var countunits = 0
-	for i in array:
-		countunits += i.number
-	if countunits > 6:
-		#potential error
-		#array[randi()%array.size()].size - (countunits-6)
-		array[randi()%array.size()].number -= (countunits-6)
-	
-	#Assign units to rows
-	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
-	for i in array:
-		var unit = Enemydata.enemies[i.units]
-		while i.number > 0:
-			var temparray = []
-			
-			
-			if true:
-				#smart way
-				for i in combatparty:
-					if combatparty[i] != null:
-						continue
-					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
-					if aiposition == 'melee' && i in [1,2,3]:
-						temparray.append(i)
-					if aiposition == 'ranged' && i in [4,5,6]:
-						temparray.append(i)
-				
-				if temparray.size() <= 0:
-					for i in combatparty:
-						if combatparty[i] == null:
-							temparray.append(i)
-			else:
-				#stupid way
-				for i in combatparty:
-					if combatparty[i] != null:
-						temparray.append(i)
-			
-			
-			
-			combatparty[temparray[randi()%temparray.size()]] = i.units
-			i.number -= 1
-	
-	
-	return combatparty
+#func makespecificgroup(group):
+#	var enemies = Enemydata.predeterminatedgroups[group]
+#	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+#	for i in enemies.group:
+#		combatparty[i] = enemies.group[i]
+#
+#	return combatparty
+#
+#func makerandomgroup(enemygroup):
+#	var array = []
+#	for i in enemygroup.units:
+#		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
+#		if size != 0:
+#			array.append({units = i, number = size})
+#	var countunits = 0
+#	for i in array:
+#		countunits += i.number
+#	if countunits > 6:
+#		#potential error
+#		#array[randi()%array.size()].size - (countunits-6)
+#		array[randi()%array.size()].number -= (countunits-6)
+#
+#	#Assign units to rows
+#	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+#	for i in array:
+#		var unit = Enemydata.enemies[i.units]
+#		while i.number > 0:
+#			var temparray = []
+#
+#
+#			if true:
+#				#smart way
+#				for i in combatparty:
+#					if combatparty[i] != null:
+#						continue
+#					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
+#					if aiposition == 'melee' && i in [1,2,3]:
+#						temparray.append(i)
+#					if aiposition == 'ranged' && i in [4,5,6]:
+#						temparray.append(i)
+#
+#				if temparray.size() <= 0:
+#					for i in combatparty:
+#						if combatparty[i] == null:
+#							temparray.append(i)
+#			else:
+#				#stupid way
+#				for i in combatparty:
+#					if combatparty[i] != null:
+#						temparray.append(i)
+#
+#
+#
+#			combatparty[temparray[randi()%temparray.size()]] = i.units
+#			i.number -= 1
+#
+#
+#	return combatparty
 
 func combat_defeat():
 	for i in active_location.group:

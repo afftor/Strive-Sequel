@@ -4,6 +4,11 @@ var predeterminatedgroups = {
 	rats_easy = {group = {1 : 'rat', 4 : 'rat',5 : 'rat'}},
 } 
 
+var encounters = {
+	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []}
+	
+}
+
 var enemygroups = {
 	rats_easy = {reqs = [], units = {rat = [2,6]}},
 	rats_goblins_easy = {reqs = [], units = {rat = [1,4], cave_goblin_melee = [1,3]}},
@@ -559,7 +564,7 @@ var enemies = {
 		code = 'wolf',
 		name = '',
 		descript = '',
-		hpmax = 90,
+		hpmax = 65,
 		armor = 0,
 		mdef = 0,
 		hitrate = 85,
@@ -568,7 +573,7 @@ var enemies = {
 		atk = 15,
 		matk = 2,
 		speed = 30,
-		resists = {earth = 50, water = 50},
+		resists = {earth = 50, water = 50, fire = -50},
 		race = 'beast',
 		loot = 'wolf_loot',
 		icon = null,

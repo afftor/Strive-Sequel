@@ -35,6 +35,7 @@ var last_action_data = {}
 
 var slave_panel_node = preload("res://src/scenes/SlavePanel.tscn")
 var slave_list_node
+var exploration_node
 var scene_character
 var scene_loot
 var active_area
@@ -44,6 +45,10 @@ var activated_skill
 var target_character
 
 var ghost_items = []
+
+
+var encounter_win_scripts = []
+var encounter_lose_scripts = []
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -322,6 +327,7 @@ func SetMusicRandom(category):
 	SetMusic(track)
 
 func SetMusic(name, delay = 0):
+	if audio.music.has(name) == false: return 
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = GetMusicNode()
@@ -909,6 +915,20 @@ func get_class_info_panel():
 	window.raise()
 	return window
 
+func get_combat_node():
+	var window
+	var node = get_tree().get_root()
+	if node.has_node('combat'):
+		window = node.get_node('combat')
+		#node.remove_child(window)
+	else:
+		window = load("res://files/combat.tscn").instance()
+		window.name = 'combat'
+		node.add_child(window)
+	#node.add_child(window)
+	window.raise()
+	return window
+
 func add_random_chat_message(person, event):
 	var node = get_chat_node()
 	node.select_chat_line(person, event)
@@ -941,3 +961,220 @@ func text_cut_excessive_lines(text:String):
 	while text.ends_with(" ") || text.ends_with("\n"):
 		text.erase(text.length()-1, text.length())
 	return text
+
+var current_level
+var current_stage
+
+func check_events(action):
+	var eventarray = active_location.scriptedevents
+	var erasearray = []
+	var eventtriggered = false
+	for i in eventarray:
+		if i.trigger == action && check_event_reqs(i.reqs) == true:
+			if i.has('args'):
+				call(i.event, i.args)
+			else:
+				call(i.event)
+			eventtriggered = true
+			if i.has('oneshot') && i.oneshot == true:
+				erasearray.append(i)
+			break
+	for i in erasearray:
+		eventarray.erase(i)
+	return eventtriggered
+
+func check_random_event():
+	if randf() > variables.dungeon_encounter_chance:
+		return false
+	var eventarray = active_location.randomevents
+	var eventtriggered = false
+	var active_array = []
+	for i in eventarray:
+		var event = scenedata.scenedict[i[0]]
+		if event.has('reqs'):
+			if state.checkreqs(event.reqs):
+				active_array.append(i)
+		else:
+			active_array.append(i)
+	if active_array.size() > 0:
+		active_array = input_handler.weightedrandom(active_array)
+		var eventtype = "event_selection"
+		var dict = {}
+		if scenedata.scenedict[active_array].has("default_event_type"):
+			eventtype = scenedata.scenedict[active_array].default_event_type
+		if scenedata.scenedict[active_array].has('bonus_args'):
+			dict = scenedata.scenedict[active_array].bonus_args
+		input_handler.interactive_message(active_array, eventtype, dict)
+		eventtriggered = true
+	return eventtriggered
+
+func check_event_reqs(reqs):
+	var check = true
+	for i in reqs:
+		match i.code:
+			'level':
+				check = input_handler.operate(i.operant, current_level, i.value)
+			'stage':
+				check = input_handler.operate(i.operant, current_stage, i.value)
+		if check == false:
+			break
+	
+	
+	return check
+
+
+func StartCombat(encounter = null):
+	encounter_lose_scripts.clear()
+	encounter_win_scripts.clear()
+	var data
+	if encounter != null:
+		data = Enemydata.encounters[encounter]
+		encounter_win_scripts = data.win_scripts.duplicate(true)
+		encounter_lose_scripts = data.lose_scripts.duplicate(true)
+	if variables.skip_combat == true:
+		finish_combat()
+		return
+	
+	if encounter == null:
+		StartAreaCombat()
+		return
+	
+	var enemies
+	var enemy_stats_mod = 1
+	match data.unittype:
+		'randomgroup':
+			 enemies = make_enemies(data.unitcode)
+	
+	
+	var combat = get_combat_node()
+	combat.encountercode = data.unitcode
+	
+	combat.start_combat(active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
+
+
+func StartAreaCombat():
+	
+	var enemydata
+	var enemygroup = {}
+	var enemies = []
+	var music = 'combattheme'
+	
+	
+	
+	
+	
+	for i in active_location.stagedenemies:
+		if i.stage == current_stage && i.level == current_level:
+			enemydata = i.enemy#[i.enemy,1]
+	if enemydata == null:
+		enemydata = active_location.enemies
+	
+	enemies = make_enemies(enemydata)
+	
+	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
+	
+	var combat = get_combat_node()
+	combat.encountercode = enemydata
+	combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
+
+func make_enemies(enemydata):
+	var enemies
+	if typeof(enemydata) == TYPE_ARRAY:
+		enemies = input_handler.weightedrandom(enemydata)
+		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
+	elif Enemydata.enemygroups.has(enemydata):
+		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
+	else:
+		enemies = makespecificgroup(enemydata)
+	
+	return enemies
+
+func makespecificgroup(group):
+	var enemies = Enemydata.predeterminatedgroups[group]
+	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+	for i in enemies.group:
+		combatparty[i] = enemies.group[i]
+	
+	return combatparty
+
+func makerandomgroup(enemygroup):
+	var array = []
+	for i in enemygroup.units:
+		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
+		if size != 0:
+			array.append({units = i, number = size})
+	var countunits = 0
+	for i in array:
+		countunits += i.number
+	if countunits > 6:
+		array[randi()%array.size()].number -= (countunits-6)
+	
+	#Assign units to rows
+	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+	for i in array:
+		var unit = Enemydata.enemies[i.units]
+		while i.number > 0:
+			var temparray = []
+			
+			
+			if true:
+				#smart way
+				for i in combatparty:
+					if combatparty[i] != null:
+						continue
+					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
+					if aiposition == 'melee' && i in [1,2,3]:
+						temparray.append(i)
+					if aiposition == 'ranged' && i in [4,5,6]:
+						temparray.append(i)
+				
+				if temparray.size() <= 0:
+					for i in combatparty:
+						if combatparty[i] == null:
+							temparray.append(i)
+			else:
+				#stupid way
+				for i in combatparty:
+					if combatparty[i] != null:
+						temparray.append(i)
+			
+			
+			
+			combatparty[temparray[randi()%temparray.size()]] = i.units
+			i.number -= 1
+	
+	
+	return combatparty
+
+func finish_combat():
+	input_handler.emit_signal("CombatEnded", get_combat_node().encountercode)
+	input_handler.SetMusic("exploration")
+	if check_events("finish_combat") == true:
+		yield(input_handler, 'EventFinished')
+	if check_random_event() == true:
+		yield(input_handler, 'EventFinished')
+	
+	if encounter_win_scripts.size() == 0:
+		exploration_node.finish_combat()
+
+
+func combat_defeat():
+	for i in active_location.group:
+		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].hp <= 0:
+			state.characters[active_location.group[i]].hp = 1
+			state.characters[active_location.group[i]].defeated = false
+			state.characters[active_location.group[i]].is_active = true
+	if exploration_node != null:
+		exploration_node.enter_level(current_level)
+
+
+func finish_quest_dungeon(args):
+	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+
+func finish_quest_location(args):
+	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
+	exploration_node.clear_dungeon_confirm()
+
+
+func start_scene(scene):
+	interactive_message(scene.code, 'event_selection', scene.args)

@@ -1,7 +1,7 @@
 extends Panel
 
-var operation_data
 var previousscene
+var dialogue_enemy
 
 func open(scene):
 	if scene.has("variations"):
@@ -39,6 +39,8 @@ func open(scene):
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	if scene.has("common_effects"):
 		state.common_effects(scene.common_effects)
+	if scene.has("set_enemy"):
+		dialogue_enemy = scene.set_enemy
 	var counter = 1
 	for i in scene.options:
 		if state.checkreqs(i.reqs) == false:
@@ -166,4 +168,9 @@ func evil_event():
 	input_handler.SystemMessage("This feature is not implemented yet")
 
 func leave():
+	close()
+
+func fight_skirmish():
+	if dialogue_enemy != null:
+		input_handler.StartCombat(dialogue_enemy)
 	close()

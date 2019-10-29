@@ -1562,6 +1562,7 @@ var TranslationDict = {
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",
 	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
+	DIALOGUELOCATIONQUESTCOMPLETE = "You have solved the requested issue. Claim your reward at Mansion Quest Panel. ",
 	
 	DIALOGUELOCATIONEVENT = "You can scout settlement for opportunities. This action can only be done once a day. Your reputation will change depending on your actions and can alter the outcome. ",
 	
@@ -1575,6 +1576,9 @@ var TranslationDict = {
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUEFORCECHESTOPEN = "Open it",
+	
+	DIALOGUEWOLVES_SKIRMISH_START = "You find the location of wolves which were reported by locals. ",
+	DIALOGUEFIGHTOPTION = "Fight",
 	
 	
 	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
@@ -1595,6 +1599,7 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave",
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
+	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish",
 	
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",

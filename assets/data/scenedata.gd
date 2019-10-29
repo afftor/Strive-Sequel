@@ -1,6 +1,6 @@
 extends Node
 
-
+#wolves_skirmish_start
 var scenedict = {
 	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['scene_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	
@@ -11,6 +11,9 @@ var scenedict = {
 	
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
+	wolves_skirmish_start = {text = tr("DIALOGUEWOLVES_SKIRMISH_START"), set_enemy = 'wolves_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
+	
+	
 	character_boss_defeat = {text = tr("DIALOGUERANDOMBOSSDEFEAT"), 
 	image = 'bosscapturefemale', 
 	tags = [],
@@ -20,6 +23,13 @@ var scenedict = {
 	]
 	},
 	finish_quest_dungeon = {text = tr("DIALOGUEDUNGEONQUESTCOMPLETE"), 
+	image = 'dungeonclear',
+	tags = [], 
+	options = [
+	{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+	]
+	},
+	finish_quest_location = {text = tr("DIALOGUELOCATIONQUESTCOMPLETE"), 
 	image = 'dungeonclear',
 	tags = [], 
 	options = [

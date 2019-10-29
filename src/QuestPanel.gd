@@ -50,12 +50,12 @@ func show_quest_info(quest):
 	for i in quest.requirements:
 		var newbutton = globals.DuplicateContainerTemplate($reqs)
 		match i.code:
-			'monsters':
+			'kill_monsters':
 				newbutton.texture = load('res://assets/images/gui/quest_enemy.png')
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.curvalue) + "/" + str(i.value)
-			'item':
+			'random_item':
 				var itemtemplate = Items.itemlist[i.type]
 				newbutton.texture = itemtemplate.icon
 				if itemtemplate.has('parts'):
@@ -63,14 +63,14 @@ func show_quest_info(quest):
 				newbutton.get_node("amount").text = str(i.value) 
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
-			'eventlocation':
+			'complete_location':
 				newbutton.texture = globals.quest_icons[i.code]
 				newbutton.hint_tooltip = "Complete quest event"
 				#print(i.location)
-			'dungeon':
+			'complete_dungeon':
 				newbutton.texture = globals.quest_icons[i.code]
 				globals.connecttexttooltip(newbutton, "Complete quest dungeon at [color=aqua]" + state.areas[i.area].name + "[/color]: [color=yellow]" + i.locationname + "[/color]")
-			'material':
+			'random_material':
 				newbutton.texture = Items.materiallist[i.type].icon
 				newbutton.get_node("amount").show()
 				newbutton.get_node("amount").text = str(i.value)
@@ -118,18 +118,18 @@ func CompleteQuest():
 		return
 	if selectedquest.state == 'taken':
 		for i in selectedquest.requirements:
-			match selectedquest.type:
-				'monsterhuntquest':
+			match i.code:
+				'kill_monsters':
 					check = i.value <= i.curvalue
-				"materialsquest":
+				"random_material":
 					check = state.if_has_material(i.type, 'gte', i.value)
-				"itemsquest":
+				"random_item":
 					check = state.if_has_items(i.type, 'gte', i.value)
 				"slavegetquest":
 					select_character_for_quest()
 					check = false
-				'dungeonquest':
-					check = state.completed_locations.has(i.value)
+				'complete_dungeon','complete_location':
+					check = state.completed_locations.has(i.location)
 			if check == false:
 				break
 		if check == false:
@@ -148,10 +148,10 @@ func character_selected(character):
 
 func CompleteReqs():
 	for i in selectedquest.requirements:
-		match selectedquest.type:
-			"materialsquest":
+		match i.code:
+			"random_material":
 				state.set_material(i.type, '-', i.value)
-			"itemsquest":
+			"random_item":
 				state.remove_item(i.type, i.value)
 			"slavegetquest":
 				state.remove_slave(selectedslave)
