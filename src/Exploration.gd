@@ -28,8 +28,8 @@ func _ready():
 		i.connect("pressed",self,"select_category", [i.name])
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
-		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
-		get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
+		get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
+		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
 	
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
 		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
@@ -46,7 +46,7 @@ func _ready():
 		test_slave.unlock_class("smith")
 		test_slave.unlock_class("harlot")
 		test_slave.unlock_class("attendant")
-		test_slave.unlock_class("fighter")
+		test_slave.unlock_class("dragonknight")
 		state.materials.unstable_concoction = 5
 		state.materials.bandage = 2
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
@@ -121,7 +121,8 @@ func show_explore_spells(position):
 			#newbutton.get_node("Label").text = str(i.amount)
 			newbutton.texture_normal = skill.icon
 			newbutton.hint_tooltip = skill.descript
-			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+			#newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+			newbutton.connect("pressed", self, "use_e_combat_skill", [skill, character, character])
 
 func use_item_on_character(position, item):
 	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
@@ -1284,3 +1285,239 @@ func combat_defeat():
 			state.characters[active_location.group[i]].defeated = false
 			state.characters[active_location.group[i]].is_active = true
 	enter_level(current_level)
+
+func get_party():
+	var res = []
+	for ch in active_location.group.values():
+		if state.characters[ch] != null: res.push_back(state.characters[ch])
+	return res
+
+func use_e_combat_skill(skill, caster, target):
+	#allowaction = false
+
+#	if activeitem:
+#		combatlogadd("\n" + caster.name + ' uses ' + activeitem.name + ". ")
+#	else:
+#		combatlogadd("\n" + caster.name + ' uses ' + skill.name + ". ")
+	caster.mp -= skill.manacost
+	
+#	if skill.combatcooldown > 0:
+#		caster.combat_cooldowns[skill_code] = skill.combatcooldown
+	
+	for i in skill.catalysts:
+		state.materials[i] -= skill.catalysts[i]
+#	if skill.charges > 0:
+#		if caster.combat_skill_charges.has(skill.code):
+#			caster.combat_skill_charges[skill.code] += 1
+#		else:
+#			caster.combat_skill_charges[skill.code] = 1
+#		caster.daily_cooldowns[skill_code] = skill.cooldown
+#not sure about potential of those in explore
+#	if skill.ability_type == 'skill':
+#		caster.physics += rand_range(0.3,0.5)
+#	elif skill.ability_type == 'spell':
+#		caster.wits += rand_range(0.3,0.5)
+	#caster part of setup
+	var s_skill1 = S_Skill.new()
+	s_skill1.createfromskill(skill.code)
+	s_skill1.setup_caster(caster)
+	#s_skill1.setup_target(target)
+	s_skill1.process_event(variables.TR_CAST)
+	caster.process_event(variables.TR_CAST)
+	for e in caster.triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill1)
+			eff.process_event(variables.TR_CAST)
+			eff.set_args('skill', null)
+
+	#preparing animations
+#	var animations = skill.sfx
+#	var animationdict = {windup = [], predamage = [], postdamage = []}
+	#sort animations
+#	for i in animations:
+#		animationdict[i.period].append(i)
+	#casteranimations
+	#for sure at windup there should not be real_target-related animations
+#	if skill.has('sounddata') and skill.sounddata.initiate != null:
+#		caster.displaynode.process_sound(skill.sounddata.initiate)
+#	for i in animationdict.windup:
+#		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
+#		sfxtarget.process_sfx(i.code)
+	#skill's repeat cycle of predamage-damage-postdamage
+	var targets
+	for n in range(s_skill1.repeat):
+		#get all affected targets
+		#simplified version
+		match skill.target_number:
+			'single':
+				targets = [target]
+			'all':
+				targets = get_party()
+		#targets = CalculateTargets(skill, target) 
+		#preparing real_target processing, predamage animations
+		var s_skill2_list = []
+		for i in targets:
+#			if skill.has('sounddata') and skill.sounddata.strike != null:
+#				if skill.sounddata.strike == 'weapon':
+#					caster.displaynode.process_sound(get_weapon_sound(caster))
+#				else:
+#					caster.displaynode.process_sound(skill.sounddata.strike)
+#			for j in animationdict.predamage:
+#				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
+#				sfxtarget.process_sfx(j.code)
+#			#special results
+#			if skill.damage_type == 'summon':
+#				summon(skill.value[0], skill.value[1]);
+			if skill.damage_type == 'resurrect':
+				i.resurrect(skill.value[0]) #not sure
+			else: 
+				#default skill result
+				var s_skill2:S_Skill = s_skill1.clone()
+				s_skill2.setup_target(i)
+				#place for non-existing another trigger
+				s_skill2.setup_final()
+				s_skill2.hit_roll()
+				s_skill2.resolve_value(true)
+				s_skill2_list.push_back(s_skill2)
+		#predamage triggers
+		for s_skill2 in s_skill2_list:
+			s_skill2.process_event(variables.TR_HIT)
+			s_skill2.caster.process_event(variables.TR_HIT)
+			for e in s_skill2.caster.triggered_effects:
+				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+				if eff.req_skill:
+					eff.set_args('skill', s_skill2)
+					eff.process_event(variables.TR_HIT)
+					eff.set_args('skill', null)
+			s_skill2.target.process_event(variables.TR_DEF)
+			for e in s_skill2.target.triggered_effects:
+				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+				if eff.req_skill:
+					eff.set_args('skill', s_skill2)
+					eff.process_event(variables.TR_DEF) 
+					eff.set_args('skill', null)
+			s_skill2.setup_effects_final()
+		#damage
+		for s_skill2 in s_skill2_list:
+			#check miss
+			if s_skill2.hit_res == variables.RES_MISS:
+#				s_skill2.target.play_sfx('miss')
+#				combatlogadd(target.name + " evades the damage.")
+				pass
+			else:
+				#hit landed animation
+#				if skill.has('sounddata') and skill.sounddata.hit != null:
+#					if skill.sounddata.hittype == 'absolute':
+#						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
+#					elif skill.sounddata.hittype == 'bodyarmor':
+#						s_skill2.target.displaynode.process_sound(calculate_hit_sound(skill, caster, s_skill2.target))
+#				for j in animationdict.postdamage:
+#					var sfxtarget = ProcessSfxTarget(j.target, caster, s_skill2.target)
+#					sfxtarget.process_sfx(j.code)
+				#applying resists
+				s_skill2.calculate_dmg()
+				#logging result & dealing damage
+				execute_skill(s_skill2)
+		#postdamage triggers and cleanup real_target s_skills
+		for s_skill2 in s_skill2_list:
+			s_skill2.process_event(variables.TR_POSTDAMAGE)
+			s_skill2.caster.process_event(variables.TR_POSTDAMAGE)
+			for e in s_skill2.caster.triggered_effects:
+				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+				if eff.req_skill:
+					eff.set_args('skill', s_skill2)
+					eff.process_event(variables.TR_POSTDAMAGE)
+					eff.set_args('skill', null)
+			if s_skill2.target.hp <= 0:
+				s_skill2.process_event(variables.TR_KILL)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL)
+				for e in s_skill2.caster.triggered_effects:
+					var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+					if eff.req_skill:
+						eff.set_args('skill', s_skill2)
+						eff.process_event(variables.TR_KILL)
+						eff.set_args('skill', null)
+			#s_skill2.target.displaynode.rebuildbuffs()
+#			checkdeaths()
+#			if s_skill2.target.displaynode != null:
+#				s_skill2.target.displaynode.rebuildbuffs()
+			s_skill2.remove_effects()
+	s_skill1.process_event(variables.TR_SKILL_FINISH)
+	caster.process_event(variables.TR_SKILL_FINISH)
+	for e in caster.triggered_effects:
+		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
+		if eff.req_skill:
+			eff.set_args('skill', s_skill1)
+			eff.process_event(variables.TR_SKILL_FINISH)
+			eff.set_args('skill', null)
+	s_skill1.remove_effects()
+	#follow-up
+	if skill.has('follow_up'):
+		use_e_combat_skill(skill.follow_up, caster, target)
+
+
+func execute_skill(s_skill2): #to update to exploration version
+	var text = ''
+	if s_skill2.hit_res == variables.RES_CRIT:
+		text += "[color=yellow]Critical!![/color] "
+		#s_skill2.target.displaynode.process_critical()
+	for i in range(s_skill2.value.size()):
+		if s_skill2.damagestat[i] == 'no_stat': continue #for skill values that directly process into effects
+		if s_skill2.damagestat[i] == '+damage_hp': #drain, damage, damage no log, drain no log
+			if s_skill2.is_drain && s_skill2.tags.has('no_log'):
+				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+				var rval2 = s_skill2.caster.heal(rval)
+			elif s_skill2.is_drain:
+				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+				var rval2 = s_skill2.caster.heal(rval)
+				text += "%s drained %d health from %s and gained %d health." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
+			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
+				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+			else:
+				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+				text += "%s is hit for %d damage. " %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
+		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
+			if s_skill2.tags.has('no_log'):
+				var rval = s_skill2.target.heal(s_skill2.value[i])
+			else:
+				var rval = s_skill2.target.heal(s_skill2.value[i])
+				text += "%s is healed for %d health." %[s_skill2.target.name, rval]
+		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
+			if !s_skill2.tags.has('no log'):
+				var rval = s_skill2.target.mana_update(s_skill2.value[i])
+				text += "%s restored %d mana." %[s_skill2.target.name, rval] 
+			else:
+				s_skill2.target.mana_update(s_skill2.value[i])
+		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
+			var rval = s_skill2.target.mana_update(-s_skill2.value[i])
+			if s_skill2.is_drain:
+				var rval2 = s_skill2.caster.mana_update(rval)
+				if !s_skill2.tags.has('no log'):
+					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
+			if !s_skill2.tags.has('no log'):
+				text += "%s lost %d mana." %[s_skill2.target.name, rval] 
+		else: 
+			var mod = s_skill2.damagestat[i][0]
+			var stat = s_skill2.damagestat[i].right(1) 
+			if mod == '+':
+				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i])
+				if !s_skill2.tags.has('no log'):
+					text += "%s restored %d %s." %[s_skill2.target.name, rval, tr(stat)] 
+			elif mod == '-':
+				var rval = s_skill2.target.stat_update(stat, -s_skill2.value[i])
+				if s_skill2.is_drain:
+					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+					if !s_skill2.tags.has('no log'):
+						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+				elif !s_skill2.tags.has('no log'):
+					text += "%s loses %d %s." %[s_skill2.target.name, -rval, tr(stat)]
+			elif mod == '=':
+				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i], true)
+				if s_skill2.is_drain:# use this on your own risk
+					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+					if !s_skill2.tags.has('no log'):
+						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+				elif !s_skill2.tags.has('no log'):
+					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), s_skill2.value[i]] 
+			else: print('error in damagestat %s' % s_skill2.damagestat[i])
