@@ -51,10 +51,10 @@ func show_quest_info(quest):
 		var newbutton = globals.DuplicateContainerTemplate($reqs)
 		match i.code:
 			'monsters':
-				newbutton.texture = Enemydata.enemies[i.type].icon
+				newbutton.texture = load('res://assets/images/gui/quest_enemy.png')
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.value)
+				newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.curvalue) + "/" + str(i.value)
 			'item':
 				var itemtemplate = Items.itemlist[i.type]
 				newbutton.texture = itemtemplate.icon
@@ -119,6 +119,8 @@ func CompleteQuest():
 	if selectedquest.state == 'taken':
 		for i in selectedquest.requirements:
 			match selectedquest.type:
+				'monsterhuntquest':
+					check = i.value <= i.curvalue
 				"materialsquest":
 					check = state.if_has_material(i.type, 'gte', i.value)
 				"itemsquest":

@@ -500,9 +500,9 @@ var textcodedict = {
 }
 
 var quest_icons = {
-	eventlocation = load("res://assets/images/gui/panels/noimage.png"),
-	dungeon = load("res://assets/images/gui/panels/noimage.png"),
-	reputation = load("res://assets/images/gui/panels/noimage.png"),
+	eventlocation = load("res://assets/images/gui/quest_encounter.png"),
+	dungeon = load("res://assets/images/gui/quest_dungeon.png"),
+	reputation = load("res://assets/images/gui/quest_reputation.png"),
 	
 }
 
