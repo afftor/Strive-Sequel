@@ -959,7 +959,7 @@ var node_data = {
 	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
 	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextScene/TextSystem.tscn")},
 	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
-	NODE_SOUND : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
 	#NODE_TWEEN : {name = 'tween', mode = 'node', node = Tween},
 	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
@@ -973,7 +973,7 @@ var node_data = {
 func get_spec_node(type, args = null):
 	var window
 	var node = get_tree().get_root()
-	if node.has_node(node_data[type].name):
+	if node.has_node(node_data[type].name) and !node_data[type].has('no_return'):
 		window = node.get_node(node_data[type].name)
 		#node.remove_child(window)
 	else:
