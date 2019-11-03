@@ -33,7 +33,6 @@ signal EnemyKilled
 
 var last_action_data = {}
 
-var slave_panel_node
 var slave_list_node
 var exploration_node
 var active_character
@@ -741,12 +740,10 @@ func ConnectSound(node, sound, action):
 
 #Slave Panel
 
-func ShowSlavePanel(person): #get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
-	if slave_panel_node == null:
-		slave_panel_node = load("res://src/scenes/SlavePanel.tscn").instance()
-		get_tree().get_root().add_child(slave_panel_node)
-	slave_panel_node.raise()
-	slave_panel_node.open(person)
+func ShowSlavePanel(person): #not fully node getter
+	var node = get_spec_node(input_handler.NODE_SLAVEPANEL)
+	node.raise()
+	node.open(person)
 
 #Inventory
 
@@ -980,8 +977,9 @@ func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
-	if slave_panel_node.visible == true:
-		slave_panel_node.update()
+	var node = get_spec_node(input_handler.NODE_SLAVEPANEL)
+	if node.visible == true:
+		node.update()
 
 func check_mouse_in_nodes(nodes):
 	var check = false
@@ -1020,7 +1018,7 @@ var node_data = {
 	NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://files/Simple Tooltip/Imagetooltip.tscn")},
 	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
 	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
-	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn"), calls = 'open'},
+	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
 }
 
 func get_spec_node(type, args = null):
