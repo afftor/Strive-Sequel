@@ -33,9 +33,11 @@ signal EnemyKilled
 
 var last_action_data = {}
 
-var slave_panel_node = preload("res://src/scenes/SlavePanel.tscn")
+var slave_panel_node
 var slave_list_node
-var scene_character
+var exploration_node
+var active_character
+var scene_characters = []
 var scene_loot
 var active_area
 var active_location
@@ -44,6 +46,10 @@ var activated_skill
 var target_character
 
 var ghost_items = []
+
+
+var encounter_win_scripts = []
+var encounter_lose_scripts = []
 
 func _input(event):
 	if event.is_echo() == true || event.is_pressed() == false :
@@ -322,6 +328,7 @@ func SetMusicRandom(category):
 	SetMusic(track)
 
 func SetMusic(name, delay = 0):
+	if audio.music.has(name) == false: return
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = get_spec_node(input_handler.NODE_MUSIC) #GetMusicNode()
@@ -478,6 +485,7 @@ func OpenAnimation(node):
 	tweennode.start()
 	yield(get_tree().create_timer(0.15), 'timeout')
 	BeingAnimated.erase(node)
+	node.raise()
 
 func CloseAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -624,7 +632,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
 								result = false
 								break
-		'race': 
+		'race':
 			result = (req.value == combatant.race);
 	return result
 
@@ -733,10 +741,10 @@ func ConnectSound(node, sound, action):
 
 #Slave Panel
 
-func ShowSlavePanel(person): #not compat with get_spec_node but can be turn into its call for sure, TO FIX IN NEXT FIX
-	var node = get_tree().get_root()
-	#slave_panel_node.get_parent().remove_child(slave_panel_node)
-	#node.add_child(slave_panel_node)
+func ShowSlavePanel(person):
+	if slave_panel_node == null:
+		slave_panel_node = load("res://src/scenes/SlavePanel.tscn").instance()
+		get_tree().get_root().add_child(slave_panel_node)
 	slave_panel_node.raise()
 	slave_panel_node.open(person)
 
@@ -797,6 +805,11 @@ func get_dialogue_node():#get_spec_node(input_handler.NODE_DIALOGUE)
 func interactive_message(code, type, args):
 	var data = scenedata.scenedict[code].duplicate(true)
 	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
+	if data.has('opp_characters'):
+		for i in data.opp_characters:
+			match i.type:
+				'pregen':
+					scene_characters.append(input_handler.make_story_character(i.value))
 	match type:
 		'social_skill':
 			for i in variables.dynamic_text_vars:
@@ -805,6 +818,7 @@ func interactive_message(code, type, args):
 			for i in variables.dynamic_text_vars:
 				data.text = data.text.replace("[" + i + '2' + ']', "[" + i + "]")
 			data.text = args.name2.translate(data.text)
+			scene_characters.append(args.name1)
 			if args.has("bonustext"):
 				data.text += args.bonustext
 			if args.has('repeat'):
@@ -818,18 +832,21 @@ func interactive_message(code, type, args):
 					newcharacter = Slave.new()
 					newcharacter.is_active = false
 					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
-					newcharacter.set_slave_category(args.characterdata.slave_type) 
+					newcharacter.set_slave_category(args.characterdata.slave_type)
 				'function':
 					newcharacter = call(args.characterdata.function, args.characterdata.args)
-			scene_character = newcharacter
+			active_character = newcharacter
+			scene_characters.append(newcharacter)
 			data.text = newcharacter.translate(data.text)
-			data.options.push_front({code = 'inspect_scene_character', reqs = [], text = tr("DIALOGUECHARINSPECT")})
+		'scene_character_event':
+			for i in range(0, scene_characters.size()):
+				data.text = scene_characters[i].translate(data.text)
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
-			scene_character = args.pregchar
-			var baby = state.babies[scene_character.pregnancy.baby]
-			data.options.append({code = 'inspect_character_child', reqs = [], text = tr("DIALOGUEINSPECTBABY")})
+			active_character = args.pregchar
+			var baby = state.babies[active_character.pregnancy.baby]
+			scene_characters.append(baby)
 		'event_selection':
 			data.location = active_location
 		'loot':
@@ -843,6 +860,7 @@ func interactive_message(code, type, args):
 					break
 		'location_purchase_event':
 			data.text = data.text.replace("[areaname]", active_area.name).replace('[locationname]', active_location.name).replace('[locationdescript]',active_location.descript).replace("[locationtypename]", active_location.classname)
+	
 	scene.open(data)
 
 func interactive_message_custom(data):
@@ -893,7 +911,7 @@ func get_chat_node(): #get_spec_node(input_handler.NODE_CHAT)
 
 func show_class_info(classcode, person = null):
 	if person == null:
-		person = scene_character
+		person = active_character
 	var node = get_spec_node(input_handler.NODE_CLASSINFO) #get_class_info_panel()
 	node.open(classcode, person)
 
@@ -911,6 +929,20 @@ func get_class_info_panel(): #get_spec_node(input_handler.NODE_CLASSINFO)
 	window.raise()
 	return window
 
+func get_combat_node():
+	var window
+	var node = get_tree().get_root()
+	if node.has_node('combat'):
+		window = node.get_node('combat')
+		#node.remove_child(window)
+	else:
+		window = load("res://files/combat.tscn").instance()
+		window.name = 'combat'
+		node.add_child(window)
+	#node.add_child(window)
+	window.raise()
+	return window
+
 func add_random_chat_message(person, event):
 	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
 	node.select_chat_line(person, event)
@@ -921,8 +953,27 @@ func repeat_social_skill():
 
 func make_local_recruit(args):
 	var newchar = Slave.new()
-	newchar.generate_random_character_from_data(active_location.races)
-	newchar.set_slave_category('servant')
+	if args == null:
+		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
+	else:
+		var race = 'random'
+		var des_class = null
+		var difficulty = 0
+		if args.has('races'):
+			race = weightedrandom(args.races)
+		if args.has('difficulty'):
+			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
+		newchar.generate_random_character_from_data(race, des_class, difficulty)
+		if args.has("bonuses"):
+			newchar.add_stat_bonuses(args.bonuses)
+		if args.has("type"):
+			newchar.set_slave_category(args.type)
+	if newchar.slave_class == null: newchar.set_slave_category('servant')
+	return newchar
+
+func make_story_character(args):
+	var newchar = Slave.new()
+	newchar.generate_predescribed_character(world_gen.pregen_characters[args])
 	return newchar
 
 func update_slave_list():
@@ -943,6 +994,7 @@ func text_cut_excessive_lines(text:String):
 	while text.ends_with(" ") || text.ends_with("\n"):
 		text.erase(text.length()-1, text.length())
 	return text
+
 
 enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE}#, NODE_SLAVEPANEL, NODE_TWEEN, NODE_REPEATTWEEN}
 
@@ -995,3 +1047,220 @@ func get_spec_node(type, args = null):
 		for param in args:
 			window.set(param, args[param])
 	return window
+
+var current_level
+var current_stage
+
+func check_events(action):
+	var eventarray = active_location.scriptedevents
+	var erasearray = []
+	var eventtriggered = false
+	for i in eventarray:
+		if i.trigger == action && check_event_reqs(i.reqs) == true:
+			if i.has('args'):
+				call(i.event, i.args)
+			else:
+				call(i.event)
+			eventtriggered = true
+			if i.has('oneshot') && i.oneshot == true:
+				erasearray.append(i)
+			break
+	for i in erasearray:
+		eventarray.erase(i)
+	return eventtriggered
+
+func check_random_event():
+	if randf() > variables.dungeon_encounter_chance:
+		return false
+	var eventarray = active_location.randomevents
+	var eventtriggered = false
+	var active_array = []
+	for i in eventarray:
+		var event = scenedata.scenedict[i[0]]
+		if event.has('reqs'):
+			if state.checkreqs(event.reqs):
+				active_array.append(i)
+		else:
+			active_array.append(i)
+	if active_array.size() > 0:
+		active_array = input_handler.weightedrandom(active_array)
+		var eventtype = "event_selection"
+		var dict = {}
+		if scenedata.scenedict[active_array].has("default_event_type"):
+			eventtype = scenedata.scenedict[active_array].default_event_type
+		if scenedata.scenedict[active_array].has('bonus_args'):
+			dict = scenedata.scenedict[active_array].bonus_args
+		input_handler.interactive_message(active_array, eventtype, dict)
+		eventtriggered = true
+	return eventtriggered
+
+func check_event_reqs(reqs):
+	var check = true
+	for i in reqs:
+		match i.code:
+			'level':
+				check = input_handler.operate(i.operant, current_level, i.value)
+			'stage':
+				check = input_handler.operate(i.operant, current_stage, i.value)
+		if check == false:
+			break
+	
+	
+	return check
+
+
+func StartCombat(encounter = null):
+	encounter_lose_scripts.clear()
+	encounter_win_scripts.clear()
+	var data
+	if encounter != null:
+		data = Enemydata.encounters[encounter]
+		encounter_win_scripts = data.win_scripts.duplicate(true)
+		encounter_lose_scripts = data.lose_scripts.duplicate(true)
+	if variables.skip_combat == true:
+		finish_combat()
+		return
+	
+	if encounter == null:
+		StartAreaCombat()
+		return
+	
+	var enemies
+	var enemy_stats_mod = 1
+	match data.unittype:
+		'randomgroup':
+			enemies = make_enemies(data.unitcode)
+	
+	
+	var combat = get_combat_node()
+	combat.encountercode = data.unitcode
+	
+	combat.start_combat(active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
+
+
+func StartAreaCombat():
+	
+	var enemydata
+	var enemygroup = {}
+	var enemies = []
+	var music = 'combattheme'
+	
+	
+	
+	
+	
+	for i in active_location.stagedenemies:
+		if i.stage == current_stage && i.level == current_level:
+			enemydata = i.enemy#[i.enemy,1]
+	if enemydata == null:
+		enemydata = active_location.enemies
+	
+	enemies = make_enemies(enemydata)
+	
+	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
+	
+	var combat = get_combat_node()
+	combat.encountercode = enemydata
+	combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
+
+func make_enemies(enemydata):
+	var enemies
+	if typeof(enemydata) == TYPE_ARRAY:
+		enemies = input_handler.weightedrandom(enemydata)
+		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
+	elif Enemydata.enemygroups.has(enemydata):
+		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
+	else:
+		enemies = makespecificgroup(enemydata)
+	
+	return enemies
+
+func makespecificgroup(group):
+	var enemies = Enemydata.predeterminatedgroups[group]
+	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+	for i in enemies.group:
+		combatparty[i] = enemies.group[i]
+	
+	return combatparty
+
+func makerandomgroup(enemygroup):
+	var array = []
+	for i in enemygroup.units:
+		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
+		if size != 0:
+			array.append({units = i, number = size})
+	var countunits = 0
+	for i in array:
+		countunits += i.number
+	if countunits > 6:
+		array[randi()%array.size()].number -= (countunits-6)
+	
+	#Assign units to rows
+	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
+	for i in array:
+		var unit = Enemydata.enemies[i.units]
+		while i.number > 0:
+			var temparray = []
+			
+			
+			if true:
+				#smart way
+				for i in combatparty:
+					if combatparty[i] != null:
+						continue
+					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
+					if aiposition == 'melee' && i in [1,2,3]:
+						temparray.append(i)
+					if aiposition == 'ranged' && i in [4,5,6]:
+						temparray.append(i)
+				
+				if temparray.size() <= 0:
+					for i in combatparty:
+						if combatparty[i] == null:
+							temparray.append(i)
+			else:
+				#stupid way
+				for i in combatparty:
+					if combatparty[i] != null:
+						temparray.append(i)
+			
+			
+			
+			combatparty[temparray[randi()%temparray.size()]] = i.units
+			i.number -= 1
+	
+	
+	return combatparty
+
+func finish_combat():
+	input_handler.emit_signal("CombatEnded", get_combat_node().encountercode)
+	input_handler.SetMusic("exploration")
+	if check_events("finish_combat") == true:
+		yield(input_handler, 'EventFinished')
+	if check_random_event() == true:
+		yield(input_handler, 'EventFinished')
+	
+	if encounter_win_scripts.size() == 0:
+		exploration_node.finish_combat()
+
+
+func combat_defeat():
+	for i in active_location.group:
+		if state.characters.has(active_location.group[i]) && state.characters[active_location.group[i]].hp <= 0:
+			state.characters[active_location.group[i]].hp = 1
+			state.characters[active_location.group[i]].defeated = false
+			state.characters[active_location.group[i]].is_active = true
+	if exploration_node != null:
+		exploration_node.enter_level(current_level)
+
+
+func finish_quest_dungeon(args):
+	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
+
+func finish_quest_location(args):
+	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
+	exploration_node.clear_dungeon_confirm()
+
+
+func start_scene(scene):
+	interactive_message(scene.code, 'event_selection', scene.args)

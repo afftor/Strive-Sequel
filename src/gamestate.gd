@@ -249,10 +249,12 @@ func valuecheck(dict):
 			var character = get_unique_slave(dict.value)
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free'}])
-		'scene_character_checks':
-			var character = input_handler.scene_character
+		'active_character_checks':
+			var character = input_handler.active_character
 			if character == null:return false
 			return character.checkreqs(dict.charreqs)
+		'has_money_for_scene_slave':
+			return money >= input_handler.scene_characters[dict.value].calculate_price()
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -476,6 +478,17 @@ func common_effects(effects):
 #						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
+			'spend_money_for_scene_character':
+				money -= input_handler.scene_characters[i.value].calculate_price()
+				text_log_add('money',"Gold used: " + str(i.value))
+			'mod_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.add_stat_bonuses(i.value)
+			'bool_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.set(i.name, i.value)
 
 func character_stat_change(character, data):
 	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 
@@ -524,10 +537,10 @@ func quest_kill_receiver(monstercode):
 			for quest in i.quests.factions[guild].values():
 				if quest.state == 'taken':
 					for cond in quest.requirements:
-						if cond.code == 'monsters' && cond.type == monstercode && cond.value > cond.curvalue:
+						if cond.code == 'kill_monsters' && cond.type == monstercode && cond.value > cond.curvalue:
 							cond.curvalue += 1
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
 				for cond in quest.requirements:
-					if cond.code == 'monsters' && cond.type == monstercode && cond.value > cond.curvalue:
+					if cond.code == 'kill_monsters' && cond.type == monstercode && cond.value > cond.curvalue:
 						cond.curvalue += 1

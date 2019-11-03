@@ -172,19 +172,18 @@ margin_bottom = 40.0
 bbcode_enabled = true
 bbcode_text = "0.1.0a
 Added class information panel
+Redisigned repeatable quest structure and added more repeatable quests
+Multiple combat and exploration fixes
+Fixed a severe issue with saving
 Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "New:
-Each location now have limited updating resources
-Revamped class information panel
-Fixed a number of combat and skills bugs
-Fixed items, requiring multiple usables not crafting properly
-
-
-0.1.0a
+text = "0.1.0a
 Added class information panel
+Redisigned repeatable quest structure and added more repeatable quests
+Multiple combat and exploration fixes
+Fixed a severe issue with saving
 Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0

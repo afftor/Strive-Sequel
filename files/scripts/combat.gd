@@ -75,8 +75,6 @@ func _ready():
 	add_child(CombatAnimations)
 	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
-	
-	
 
 
 func cheatvictory():
@@ -89,6 +87,12 @@ func cheatvictory():
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
+	hide()
+	if variables.combat_tests == false:
+		input_handler.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+	input_handler.emit_signal("CombatStarted", encountercode)
+	show()
 	globals.combat_node = self
 	turns = 0
 	$Combatlog/RichTextLabel.clear()
@@ -129,9 +133,7 @@ func FinishCombat():
 		tchar.is_active = false
 	hide()
 	globals.combat_node = null
-	input_handler.emit_signal("CombatEnded", encountercode)
-	input_handler.SetMusic("exploration")
-	get_parent().finish_combat()
+	input_handler.finish_combat()
 
 
 func select_actor():
@@ -367,7 +369,7 @@ func defeat():
 	set_process(false)
 	set_process_input(false)
 	self.hide()
-	get_parent().combat_defeat()
+	input_handler.combat_defeat()
 
 func player_turn(pos):
 	turns += 1

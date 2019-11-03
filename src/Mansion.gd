@@ -36,6 +36,8 @@ func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	
+	
+	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
@@ -131,11 +133,14 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
+		state.show_tutorial = false
 		yield(get_tree(), 'idle_frame')
-		input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
+		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
-		input_handler.ActivateTutorial("introduction")
-		#input_handler.interactive_message('event_good_loot_small', 'loot', {})
+		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[randi()%state.areas.plains.locations.size()]]
+		input_handler.active_area = state.areas.plains
+		input_handler.interactive_message('event_good_slavers', 'character_event', scenedata.scenedict.event_good_slavers.bonus_args)
+		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false

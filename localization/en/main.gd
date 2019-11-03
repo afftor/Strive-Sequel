@@ -1562,6 +1562,7 @@ var TranslationDict = {
 	DIALOGUERECRUITBOSSOPTION = "Take into custody",
 	DIALOGUEEXECUTEOPTION = "Execute",
 	DIALOGUEDUNGEONQUESTCOMPLETE = "You have completed your mission on clearing [dungeonname]. Claim your reward at Mansion Quest Panel. ",
+	DIALOGUELOCATIONQUESTCOMPLETE = "You have solved the requested issue. Claim your reward at Mansion Quest Panel. ",
 	
 	DIALOGUELOCATIONEVENT = "You can scout settlement for opportunities. This action can only be done once a day. Your reputation will change depending on your actions and can alter the outcome. ",
 	
@@ -1575,6 +1576,16 @@ var TranslationDict = {
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUEFORCECHESTOPEN = "Open it",
+	
+	DIALOGUEWOLVES_SKIRMISH_START = "You find the location of wolves which were reported by locals. ",
+	DIALOGUEFIGHTOPTION = "Fight",
+	
+	DIALOGUESLAVERPURCHASE = "Purchase",
+	DIALOGUEEVENTGOODSLAVERS = "You come across the group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] later to be sold to at local market. \n\nThey are ready to part with [him] for a reasonable price of [price] gold. \n\nThe [race] gives you a desperate look. ",
+	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you've left alone with the [race]. Still uncertain about [his] future, [he] pleads for your mercy. ",
+	DIALOGUESLAVERSPURCHASE = "Purchase",
+	DIALOGUEKEEPPERSON = "Keep to self",
+	DIALOGUESETFREEPERSON = "Set free",
 	
 	
 	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
@@ -1595,6 +1606,7 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave",
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
+	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish",
 	
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",
@@ -1608,6 +1620,10 @@ var TranslationDict = {
 	ENEMYBANDIT_ARCHER = "Ranged Bandit",
 	ENEMYBANDIT_MAGE = "Bandit Mage",
 	ENEMYBANDIT_BOSS = "Bandit Boss",
+	ENEMYREBEL_RECRUIT = "Rebel Recruit",
+	ENEMYREBEL_KNIGHT = "Rebel Knight",
+	ENEMYREBEL_MAGE = "Rebel Mage",
+	ENEMYREBEL_HEALER = "Rebel Healer",
 	ENEMYCAVE_GOBLIN_MELEE = "Cave Goblin",
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
 	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",

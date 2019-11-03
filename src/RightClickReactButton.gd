@@ -11,7 +11,7 @@ func _input(event):
 	if !self.is_visible_in_tree():
 		return
 	if get_global_rect().has_point(get_global_mouse_position()):
-		if event.is_pressed():
+		if event.is_pressed() && event.is_echo() == false:
 			if event.is_action("RMB"):
 				emit_signal("signal_RMB")
 				RMBpressed = true

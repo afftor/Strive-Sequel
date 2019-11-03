@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://src/Mansion.gd" type="Script" id=1]
 [ext_resource path="res://assets/sfx/loadshader.shader" type="Shader" id=2]
@@ -32,16 +32,15 @@
 [ext_resource path="res://assets/images/gui/fear_good.png" type="Texture" id=30]
 [ext_resource path="res://src/CraftPanel.tscn" type="PackedScene" id=31]
 [ext_resource path="res://src/Exploration.tscn" type="PackedScene" id=32]
-[ext_resource path="res://src/scenes/SlavePanel.tscn" type="PackedScene" id=33]
-[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=34]
-[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=35]
-[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=36]
-[ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=37]
-[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=38]
-[ext_resource path="res://assets/images/gui/craftgui/progress_frame.png" type="Texture" id=39]
-[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=40]
-[ext_resource path="res://files/ItemShader.tres" type="Material" id=41]
-[ext_resource path="res://assets/images/iconsgear/ArmorLowerMedium.png" type="Texture" id=42]
+[ext_resource path="res://src/QuestPanel.tscn" type="PackedScene" id=33]
+[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=34]
+[ext_resource path="res://src/UpgradePanel.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=36]
+[ext_resource path="res://src/MenuPanel.tscn" type="PackedScene" id=37]
+[ext_resource path="res://assets/images/gui/craftgui/progress_frame.png" type="Texture" id=38]
+[ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=39]
+[ext_resource path="res://files/ItemShader.tres" type="Material" id=40]
+[ext_resource path="res://assets/images/iconsgear/ArmorLowerMedium.png" type="Texture" id=41]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -77,7 +76,7 @@ texture = ExtResource( 22 )
 region_rect = Rect2( 0, 0, 500, 500 )
 
 [sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 39 )
+texture = ExtResource( 38 )
 region_rect = Rect2( 0, 0, 287.5, 40 )
 margin_left = 2.57212
 margin_right = 6.6342
@@ -564,28 +563,24 @@ visible = false
 ] instance=ExtResource( 32 )]
 visible = false
 
-[node name="SlavePanel" parent="." groups=[
-"pauseprocess",
-] instance=ExtResource( 33 )]
-visible = false
-
 [node name="QuestPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 34 )]
+] instance=ExtResource( 33 )]
 visible = false
 theme = ExtResource( 5 )
 
 [node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 35 )]
+] instance=ExtResource( 34 )]
 visible = false
 
 [node name="UpgradeList" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 36 )]
+] instance=ExtResource( 35 )]
 visible = false
 
 [node name="TestButton" type="Button" parent="."]
+visible = false
 margin_left = 731.847
 margin_top = 801.205
 margin_right = 858.847
@@ -594,11 +589,11 @@ text = "Test"
 
 [node name="lootwindow" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 37 )]
+] instance=ExtResource( 36 )]
 
 [node name="MenuPanel" parent="." groups=[
 "pauseprocess",
-] instance=ExtResource( 38 )]
+] instance=ExtResource( 37 )]
 margin_left = 713.369
 margin_top = 143.537
 margin_right = 1284.37
@@ -620,16 +615,16 @@ margin_top = 20.0
 margin_right = 1671.0
 margin_bottom = 72.0
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 40 )
+custom_fonts/normal_font = ExtResource( 39 )
 bbcode_enabled = true
 text = "TESTTEXTAHSHH"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-material = ExtResource( 41 )
+material = ExtResource( 40 )
 margin_left = -300.232
 margin_top = 37.0121
 margin_right = -100.232
 margin_bottom = 237.012
-texture = ExtResource( 42 )
+texture = ExtResource( 41 )
 expand = true
