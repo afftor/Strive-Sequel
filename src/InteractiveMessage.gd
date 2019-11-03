@@ -24,8 +24,8 @@ func open(scene):
 		newbutton.get_node('icon').texture = i.get_icon()
 		globals.connectslavetooltip(newbutton, i)
 		if i.is_players_character == false:
-			#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [i])
-			newbutton.connect('signal_RMB_release',input_handler,'get_spec_node', [input_handler.NODE_SLAVEPANEL, [i]])
+			newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [i])
+		
 	if self.visible == false:
 		input_handler.UnfadeAnimation(self, 0.2)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -104,13 +104,13 @@ func close():
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
-	#input_handler.ShowSlavePanel(input_handler.active_character)
-	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
+	input_handler.ShowSlavePanel(input_handler.active_character)
+	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
 	close()
 
 func repeat():
 	input_handler.repeat_social_skill()
-	input_handler.slave_panel_node.open(null)
+	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL).open(null)
 
 func recruit():
 	if state.characters.size() >= state.get_pop_cap():
@@ -140,12 +140,12 @@ func execute():
 	close()
 
 func inspect_active_character():
-	#input_handler.ShowSlavePanel(input_handler.active_character)
-	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
+	input_handler.ShowSlavePanel(input_handler.active_character)
+	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
 
 func inspect_character_child():
-	#input_handler.ShowSlavePanel(state.babies[input_handler.active_character.pregnancy.baby])
-	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [state.babies[input_handler.active_character.pregnancy.baby]])
+	input_handler.ShowSlavePanel(state.babies[input_handler.active_character.pregnancy.baby])
+	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [state.babies[input_handler.active_character.pregnancy.baby]])
 
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
