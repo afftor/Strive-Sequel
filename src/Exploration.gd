@@ -615,7 +615,8 @@ func accept_quest():
 	world_gen.take_quest(selectedquest, active_area)
 	for i in selectedquest.requirements:
 		if i.code in ['dungeon','eventlocation']:
-			input_handler.ShowPopupPanel("You've received a new quest location.")
+			input_handler.get_spec_node(input_handler.NODE_POPUP, ["You've received a new quest location.", 'Confirm'])
+			#input_handler.ShowPopupPanel("You've received a new quest location.")
 			update_categories()
 			break
 	faction_quests()
@@ -931,7 +932,8 @@ func build_location_group():
 
 func return_character(character):
 	selectedperson = character
-	input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+	#input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
 
 func return_character_confirm():
 	if variables.instant_travel == false:
@@ -1089,7 +1091,8 @@ func finish_combat():
 		enter_level(current_level)
 
 func clear_dungeon():
-	input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'clear_dungeon_confirm', "Finish exploring this location? Your party will be sent back and the location will be removed from the list. "])
+	#input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
 
 func clear_dungeon_confirm():
 	for id in state.character_order:

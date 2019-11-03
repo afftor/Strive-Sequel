@@ -267,7 +267,7 @@ func tooltipeffects():
 	return text
 
 func tooltip(targetnode):
-	var node = input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {text = tooltiptext(), icon = load(icon), item = self, price = str(calculateprice())}
 	node.showup(targetnode, data, 'gear')
 

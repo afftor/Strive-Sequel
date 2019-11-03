@@ -132,14 +132,17 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		$SlaveList.rebuild()
 		yield(get_tree(), 'idle_frame')
-		input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
+		input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
+		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		input_handler.ActivateTutorial("introduction")
 		#input_handler.interactive_message('event_good_loot_small', 'loot', {})
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
-		input_handler.StartCharacterCreation("master")
-		input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
+		#input_handler.StartCharacterCreation("master")
+		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
+		#input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
+		input_handler.connect("CharacterCreated", input_handler, "get_spec_node", [input_handler.NODE_CHARCREATE, ['slave']], 4)
 		yield(input_handler, "CharacterCreated")
 		yield(input_handler, "CharacterCreated")
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
@@ -375,7 +378,8 @@ func hide_task_workers():
 	pass
 
 func open_inventory():
-	input_handler.ShowInentory({mode = 'all'})
+	input_handler.get_spec_node(input_handler.NODE_INVENTORY, [{mode = 'all'}])
+	#input_handler.ShowInentory({mode = 'all'})
 
 func open_craft():
 	$CraftPanel.open()

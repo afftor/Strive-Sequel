@@ -132,7 +132,7 @@ func Open(node):
 	OpenAnimation(node)
 	CloseableWindowsArray.append(node)
 
-func StartCharacterCreation(mode):
+func StartCharacterCreation(mode):  #get_spec_node(input_handler.NODE_CHARCREATE, [mode])
 	var charnode
 	var node = get_tree().get_root()
 	if node.has_node('charcreationpanel'):
@@ -144,7 +144,7 @@ func StartCharacterCreation(mode):
 	node.add_child(charnode)
 	charnode.open(mode)
 
-func GetTextTooltip():
+func GetTextTooltip():  #get_spec_node(input_handler.NODE_TEXTTOOLTIP)
 	var tooltipnode
 	var node = get_tree().get_root()
 	if node.has_node('texttooltip'):
@@ -156,7 +156,7 @@ func GetTextTooltip():
 	node.add_child(tooltipnode)
 	return tooltipnode
 
-func GetItemTooltip():
+func GetItemTooltip():  #get_spec_node(input_handler.NODE_ITEMTOOLTIP)
 	var tooltipnode
 	var node = get_tree().get_root()
 	if node.has_node('itemtooltip'):
@@ -168,7 +168,7 @@ func GetItemTooltip():
 	node.add_child(tooltipnode)
 	return tooltipnode
 
-func GetSkillTooltip():
+func GetSkillTooltip(): #get_spec_node(input_handler.NODE_SKILLTOOLTIP)
 	var tooltipnode
 	var node = get_tree().get_root()
 	if node.has_node('skilltooltip'):
@@ -180,7 +180,7 @@ func GetSkillTooltip():
 	node.add_child(tooltipnode)
 	return tooltipnode
 
-func GetSlaveTooltip():
+func GetSlaveTooltip(): #get_spec_node(input_handler.NODE_SLAVETOOLTIP)
 	var tooltipnode
 	var node = get_tree().get_root()
 	if node.has_node('slavetooltip'):
@@ -192,7 +192,7 @@ func GetSlaveTooltip():
 	node.add_child(tooltipnode)
 	return tooltipnode
 
-func GetTextEditNode():
+func GetTextEditNode(): #get_spec_node(input_handler.NODE_TEXTEDIT)
 	var editnode
 	var node = get_tree().get_root()
 	if node.has_node('texteditnode'):
@@ -204,7 +204,7 @@ func GetTextEditNode():
 	node.add_child(editnode)
 	return editnode
 
-func GetTweenNode(node):
+func GetTweenNode(node): #not compartible with get_spec_node due to not linking new node to root
 	var tweennode
 	if node.has_node('tween'):
 		tweennode = node.get_node('tween')
@@ -214,7 +214,7 @@ func GetTweenNode(node):
 		node.add_child(tweennode)
 	return tweennode
 
-func GetRepeatTweenNode(node):
+func GetRepeatTweenNode(node): #not compartible with get_spec_node due to not linking new node to root
 	var pos = node.rect_position
 	var tweennode
 	if node.has_node('repeatingtween'):
@@ -324,7 +324,7 @@ func SetMusicRandom(category):
 func SetMusic(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
-	var musicnode = GetMusicNode()
+	var musicnode = get_spec_node(input_handler.NODE_MUSIC) #GetMusicNode()
 	if musicnode.stream == audio.music[name]:
 		return
 	musicnode.stream = audio.music[name]
@@ -333,7 +333,7 @@ func SetMusic(name, delay = 0):
 func StopMusic(instant = false):
 	musicfading = true
 
-func GetMusicNode():
+func GetMusicNode(): #get_spec_node(input_handler.NODE_MUSIC)
 	var node = get_tree().get_root()
 	var musicnode
 	if node.has_node('music'):
@@ -349,7 +349,7 @@ func GetMusicNode():
 
 func PlaySound(name, delay = 0):
 	yield(get_tree().create_timer(delay), 'timeout')
-	var soundnode = GetSoundNode()
+	var soundnode = get_spec_node(input_handler.NODE_SOUND) #GetSoundNode()
 	soundnode.stream = audio.sounds[name]
 	soundnode.seek(0)
 	soundnode.play(0)
@@ -364,14 +364,14 @@ func PlaySoundIsolated(sound, cooldown):
 	PlaySound(sound)
 	soundcooldown = cooldown
 
-func GetSoundNode():
+func GetSoundNode(): #get_spec_node(input_handler.NODE_SOUND)
 	var node = get_tree().get_root()
 	var soudnnode = AudioStreamPlayer.new()
 	soudnnode.bus = 'Sound'
 	node.add_child(soudnnode)
 	return soudnnode
 
-func GetEventNode():
+func GetEventNode(): #get_spec_node(input_handler.NODE_EVENT)
 	var node
 	if get_tree().get_root().has_node('EventNode') == false:
 		node = load("res://files/TextScene/TextSystem.tscn").instance()
@@ -384,7 +384,7 @@ func GetEventNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func GetSkillSelectNode():
+func GetSkillSelectNode(): #get_spec_node(input_handler.NODE_SKILLSELECT)
 	var node
 	if get_tree().get_root().has_node('SelectSkillMenu') == false:
 		node = load("res://src/SkillSelectMenu.tscn").instance()
@@ -396,11 +396,11 @@ func GetSkillSelectNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func ShowSkillSelectPanel(person, type, TargetNode, TargetFunction):
-	var node = GetSkillSelectNode()
+func ShowSkillSelectPanel(person, type, TargetNode, TargetFunction): #very strange container method
+	var node = get_spec_node(input_handler.NODE_SKILLSELECT) #GetSkillSelectNode()
 	node.open(person, type, TargetNode, TargetFunction)
 
-func GetSlaveSelectNode():
+func GetSlaveSelectNode():#get_spec_node(input_handler.NODE_SLAVESELECT)
 	var node
 	if get_tree().get_root().has_node('SelectSlaveMenu') == false:
 		node = load("res://src/SlaveSelectMenu.tscn").instance()
@@ -413,11 +413,11 @@ func GetSlaveSelectNode():
 		get_tree().get_root().add_child(node)
 	return node
 
-func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false):
-	var node = GetSlaveSelectNode()
+func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false): #just a strange container method
+	var node = get_spec_node(input_handler.NODE_SLAVESELECT) #GetSlaveSelectNode()
 	node.open(TargetNode, TargetFunction, reqs, allowcancel)
 
-func ShowConfirmPanel(TargetNode, TargetFunction, Text):
+func ShowConfirmPanel(TargetNode, TargetFunction, Text): #get_spec_node(input_handler.NODE_CONFIRMPANEL, [TargetNode, TargetFunction, Text])
 	var node
 	if get_tree().get_root().has_node('ConfirmPanel') == false:
 		node = load("res://src/ConfirmPanel.tscn").instance()
@@ -429,7 +429,7 @@ func ShowConfirmPanel(TargetNode, TargetFunction, Text):
 		get_tree().get_root().add_child(node)
 	node.Show(TargetNode, TargetFunction, Text)
 
-func ShowPopupPanel(Text, ButtonText = 'Confirm'):
+func ShowPopupPanel(Text, ButtonText = 'Confirm'): #get_spec_node(input_handler.NODE_POPUP, [Text, ButtonText])
 	var node
 	if get_tree().get_root().has_node('PopupPanel') == false:
 		node = load("res://src/scenes/PopupPanel.tscn").instance()
@@ -733,15 +733,16 @@ func ConnectSound(node, sound, action):
 
 #Slave Panel
 
-func ShowSlavePanel(person):
+func ShowSlavePanel(person): #not compat with get_spec_node but can be turn into its call for sure, TO FIX IN NEXT FIX
 	var node = get_tree().get_root()
-	slave_panel_node.get_parent().remove_child(slave_panel_node)
-	node.add_child(slave_panel_node)
+	#slave_panel_node.get_parent().remove_child(slave_panel_node)
+	#node.add_child(slave_panel_node)
+	slave_panel_node.raise()
 	slave_panel_node.open(person)
 
 #Inventory
 
-func ShowInentory(args):
+func ShowInentory(args): #get_spec_node(input_handler.NODE_INVENTORY, [args])
 	var inventory
 	var node = get_tree().get_root()
 	if node.has_node('inventory'):
@@ -781,7 +782,7 @@ func calculate_number_from_string_array(array, caster, target):
 		firstrun = false
 	return endvalue
 
-func get_dialogue_node():
+func get_dialogue_node():#get_spec_node(input_handler.NODE_DIALOGUE)
 	var dialogue
 	var node = get_tree().get_root()
 	if node.has_node('dialogue'):
@@ -795,7 +796,7 @@ func get_dialogue_node():
 
 func interactive_message(code, type, args):
 	var data = scenedata.scenedict[code].duplicate(true)
-	var scene = get_dialogue_node()
+	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
 	match type:
 		'social_skill':
 			for i in variables.dynamic_text_vars:
@@ -845,10 +846,10 @@ func interactive_message(code, type, args):
 	scene.open(data)
 
 func interactive_message_custom(data):
-	var scene = get_dialogue_node()
+	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
 	scene.open(data)
 
-func get_loot_node():
+func get_loot_node(): #get_spec_node(input_handler.NODE_LOOTTABLE)
 	var window
 	var node = get_tree().get_root()
 	if node.has_node('lootwindow'):
@@ -863,9 +864,10 @@ func get_loot_node():
 func ActivateTutorial(code):
 	if state.show_tutorial == true && state.active_tutorials.has(code) == false && state.seen_tutorials.has(code) == false:
 		state.active_tutorials.append(code)
-		get_tutorial_node().rebuild()
+		get_spec_node(input_handler.NODE_TUTORIAL).rebuild()
+		#get_tutorial_node().rebuild()
 
-func get_tutorial_node():
+func get_tutorial_node(): #get_spec_node(input_handler.NODE_TUTORIAL)
 	var window
 	var node = get_tree().get_root()
 	if node.has_node('tutorial_node'):
@@ -877,7 +879,7 @@ func get_tutorial_node():
 	node.add_child(window)
 	return window
 
-func get_chat_node():
+func get_chat_node(): #get_spec_node(input_handler.NODE_CHAT)
 	var window
 	var node = get_tree().get_root()
 	if node.has_node('chatwindow'):
@@ -892,10 +894,10 @@ func get_chat_node():
 func show_class_info(classcode, person = null):
 	if person == null:
 		person = scene_character
-	var node = get_class_info_panel()
+	var node = get_spec_node(input_handler.NODE_CLASSINFO) #get_class_info_panel()
 	node.open(classcode, person)
 
-func get_class_info_panel():
+func get_class_info_panel(): #get_spec_node(input_handler.NODE_CLASSINFO)
 	var window
 	var node = get_tree().get_root()
 	if node.has_node('classinfo'):
@@ -910,7 +912,7 @@ func get_class_info_panel():
 	return window
 
 func add_random_chat_message(person, event):
-	var node = get_chat_node()
+	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
 	node.select_chat_line(person, event)
 
 func repeat_social_skill():
@@ -941,3 +943,55 @@ func text_cut_excessive_lines(text:String):
 	while text.ends_with(" ") || text.ends_with("\n"):
 		text.erase(text.length()-1, text.length())
 	return text
+
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE}#, NODE_SLAVEPANEL, NODE_TWEEN, NODE_REPEATTWEEN}
+
+var node_data = {
+	NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
+	NODE_CHAT : {name = 'chatwindow', mode = 'scene', scene = preload("res://src/scenes/ChatNode.tscn")},
+	NODE_TUTORIAL : {name = 'tutorial_node', mode = 'scene', scene = preload("res://src/scenes/TutorialNode.tscn")},
+	NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
+	NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/InteractiveMessage.tscn")},
+	NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://files/Inventory.tscn"), calls = 'open'},
+	NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},
+	NODE_CONFIRMPANEL : {name = 'ConfirmPanel', mode = 'scene', scene = preload("res://src/ConfirmPanel.tscn"), calls = 'Show'},
+	NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/SlaveSelectMenu.tscn")},
+	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
+	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextScene/TextSystem.tscn")},
+	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
+	NODE_SOUND : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
+	#NODE_TWEEN : {name = 'tween', mode = 'node', node = Tween},
+	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
+	NODE_SLAVETOOLTIP : {name = 'slavetooltip', mode = 'scene', scene = preload("res://src/SlaveTooltip.tscn")},
+	NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://src/SkillToolTip.tscn")},
+	NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://files/Simple Tooltip/Imagetooltip.tscn")},
+	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
+	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
+}
+
+func get_spec_node(type, args = null):
+	var window
+	var node = get_tree().get_root()
+	if node.has_node(node_data[type].name):
+		window = node.get_node(node_data[type].name)
+		#node.remove_child(window)
+	else:
+		match node_data[type].mode:
+			'scene':
+				window = node_data[type].scene.instance()
+			'node':
+				window = node_data[type].node.new()
+		window.name = node_data[type].name
+		node.add_child(window)
+	window.raise()
+	if node_data[type].has('args'): 
+		for param in node_data[type].args:
+			window.set(param, node_data[type].args[param])
+	if node_data[type].has('calls'): 
+		if args == null: args = []
+		window.callv(node_data[type].calls, args)
+	elif args != null: 
+		for param in args:
+			window.set(param, args[param])
+	return window

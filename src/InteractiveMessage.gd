@@ -122,7 +122,7 @@ func inspect_character_child():
 	input_handler.ShowSlavePanel(state.babies[input_handler.scene_character.pregnancy.baby])
 
 func keepbaby():
-	var node = input_handler.GetTextEditNode()
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	var person = state.babies[input_handler.scene_character.pregnancy.baby]
 	person.get_random_name()
 	node.open(self, 'set_baby_name', person.name)
@@ -140,7 +140,8 @@ func set_baby_name(text):
 	close()
 
 func open_chest():
-	input_handler.get_loot_node().open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+	input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+	#input_handler.get_loot_node().open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 	close()
 
 func good_event():

@@ -70,7 +70,8 @@ func confirm_message():
 	rebuild()
 
 func stop_tutorial():
-	input_handler.ShowConfirmPanel(self, 'stop_tutorial_confirm', "Disable Tutorial Tips?")
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'stop_tutorial_confirm', "Disable Tutorial Tips?"])
+	#input_handler.ShowConfirmPanel(self, 'stop_tutorial_confirm', "Disable Tutorial Tips?")
 
 func stop_tutorial_confirm():
 	state.show_tutorial = false

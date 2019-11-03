@@ -329,7 +329,7 @@ func make_location_description():
 func text_url_hover(meta):
 	match meta:
 		'race':
-			var texttooltip = input_handler.GetTextTooltip()
+			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.showup($RichTextLabel, person.show_race_description())
 			yield(get_tree(), 'idle_frame')
 			texttooltip.rect_global_position = get_global_mouse_position()
@@ -338,7 +338,7 @@ func text_url_hover(meta):
 func text_url_hover_hide(meta = null):
 	match meta:
 		'race':
-			var texttooltip = input_handler.GetTextTooltip()
+			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 			texttooltip.hide()
 
 func open_class_selection():
@@ -535,7 +535,7 @@ func use_skill(target):
 	open(person)
 
 func custom_description_open():
-	var node = input_handler.GetTextEditNode()
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	node.open(self, 'custom_description_set', person.bonus_description)
 
 func custom_description_set(text):
@@ -543,7 +543,7 @@ func custom_description_set(text):
 	open(person)
 
 func custom_nickname_open():
-	var node = input_handler.GetTextEditNode()
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	node.open(self, 'custom_nickname_set', person.nickname)
 
 func custom_nickname_set(text):
@@ -554,7 +554,7 @@ func open_customize_button():
 	$DetailsPanel.show()
 
 func show_gear_gui():
-	var inventory = input_handler.ShowInentory({mode = 'character', person = person})
+	var inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY, [{mode = 'character', person = person}]) #input_handler.ShowInentory({mode = 'character', person = person})
 
 
 func open_diet_window():
@@ -590,7 +590,8 @@ func change_food_category(foodcode):
 	else:
 		newcategory = category_order[0]
 	person.food_filter[newcategory].append(foodcode)
-	input_handler.GetItemTooltip().hide()
+	#input_handler.GetItemTooltip().hide()
+	input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 	open_diet_window()
 
 var category_order = ['high','med','low','disable']
@@ -604,7 +605,8 @@ func sort_food(first, second):
 
 
 func return_to_mansion_confirm():
-	input_handler.ShowConfirmPanel(self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM")))
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM"))])
+	#input_handler.ShowConfirmPanel(self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM")))
 
 func return_to_mansion():
 	var active_area
