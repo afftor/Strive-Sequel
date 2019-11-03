@@ -80,12 +80,12 @@ func open_class_list():
 		newbutton.get_node("icon").texture = tempclass.icon
 		newbutton.get_node("name").text = tempclass.name
 		newbutton.connect('pressed', self, "select_class", [tempclass.code])
-		newbutton.connect('signal_RMB',input_handler,'show_class_info', [tempclass.code])
+		newbutton.connect('signal_RMB_release',input_handler,'show_class_info', [tempclass.code])
 		var text = globals.descriptions.get_class_details(person, tempclass, true, true) + "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newbutton, text)
 		if person.checkreqs(tempclass.reqs) == false:
 			newbutton.disabled = true
-	input_handler.scene_character = person
+	input_handler.active_character = person
 
 func select_class(tempclass):
 	selected_class = tempclass

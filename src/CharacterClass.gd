@@ -413,7 +413,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	else:
 		gendata.race = races[randi()%races.size()]
 	#figuring out the race
-
+	
 	create(gendata.race, gendata.sex, gendata.age)
 	
 	if randf() <= 0.003:
@@ -910,7 +910,7 @@ func assign_gender():
 
 
 func make_description():
-	input_handler.scene_character = self
+	input_handler.active_character = self
 	return globals.TextEncoder(translate(globals.descriptions.create_character_description(self)))
 
 func show_race_description():
@@ -1267,7 +1267,7 @@ func killed():
 	for i in gear:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
-#	input_handler.scene_character = self
+#	input_handler.active_character = self
 #	input_handler.interactive_message('slave_escape', '', {})
 	is_active = false 
 	state.character_order.erase(id)
@@ -1516,7 +1516,7 @@ func escape():
 	for i in gear:
 		if gear[i] != null:
 			unequip(state.items[gear[i]])
-	input_handler.scene_character = self
+	input_handler.active_character = self
 	input_handler.interactive_message('slave_escape', '', {})
 	is_active = false #for now, to replace with corresponding mechanic
 	state.character_order.erase(id)
@@ -1553,6 +1553,7 @@ func translate(text):
 		'futa':
 			rtext = 'futanari'
 	text = text.replace("[boy]", rtext)
+	text = text.replace("[price]", str(calculate_price()))
 	
 	return text
 
@@ -1561,7 +1562,7 @@ func calculate_price():
 	value += (physics + wits + charm + sexuals)*2.5
 	value += (physics_factor + wits_factor + charm_factor + sexuals_factor + tame_factor + brave_factor)*8 + growth_factor*25 + magic_factor*15
 	value += professions.size()*40
-	
+	if bonuses.has("price_mul"): value *= bonuses.price_mul
 	return max(100,round(value))
 
 func get_icon():
@@ -2134,13 +2135,13 @@ func use_social_skill(s_code, target):#add logging if needed
 			else:
 				state.global_skills_used[template.code] = 1
 		
-		input_handler.scene_character = self
+		input_handler.active_character = self
 		input_handler.target_character = target
 		input_handler.activated_skill = s_code
 		for i in template.dialogue_options:
 			data.options.append(i)
 		data.options.append({code = 'cancel_skill_usage', text = "Cancel", reqs = []})
-		
+		input_handler.scene_characters.append(target)
 		input_handler.interactive_message_custom(data)
 		return
 	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = self, target = target}
@@ -2266,9 +2267,10 @@ func use_social_skill(s_code, target):#add logging if needed
 			if check_skill_availability(s_code, target).check == true:
 				data.options[0].disabled = false
 		
-		input_handler.scene_character = self
+		input_handler.active_character = self
 		input_handler.target_character = target
 		input_handler.activated_skill = s_code
+		input_handler.scene_characters.append(target)
 		
 		data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
 		

@@ -13,9 +13,8 @@ var lands = {
 	plains = {
 		code = 'plains',
 		name = "Plains",
-		lead_race = 'Human', #lead race has 80% chance to be presented in all settlements
-		secondary_races = ['Halfbreeds'], #secondary races have 30% chance to be presented in all settlements (or guaranteed if lead race is not) and 50% for another additional race. If secondary races are empty, all settlements will belong to lead race
-		policies = [], #not used as of now
+		races = [['Human', 80], ['Halfbreeds', 15], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local racces
+		policies = [], #not used yet
 		travel_time = [0,0], #how long it gonna take to travel to region
 		difficulty = 0, #growing number defining quests and individuals
 		disposition = 100, #reputation, not currently used
@@ -51,8 +50,7 @@ var lands = {
 	forests = {
 		code = 'forests',
 		name = "Forests",
-		lead_race = 'Elf',
-		secondary_races = ['DarkElf','Fairy','Dryad','Halfbreeds'],
+		races = [['Elf', 100], ['DarkElf',10],['Halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
 		travel_time = [12,28],
 		difficulty = 1,
@@ -328,7 +326,7 @@ func make_guild(code, area):
 		reputation = 0,
 		totalreputation = 0,
 		difficulty = area.difficulty,
-		races = [area.lead_race] + area.secondary_races,
+		races = area.races,
 		upgrades = {},
 		slavelevel = 0,
 	}
@@ -352,9 +350,9 @@ func make_guild(code, area):
 
 func make_slave_for_guild(guild):
 	var newslave = Slave.new()
-	var race = guild.races
-	if globals.globalsettings.guilds_any_race:
-		race = 'random'
+	var race = input_handler.weightedrandom(guild.races)
+#	if globals.globalsettings.guilds_any_race:
+#		race = 'random'
 	var slaveclass = null
 	if guild.preferences.size() > 0:
 		slaveclass = guild.preferences[randi()%guild.preferences.size()]
@@ -385,15 +383,15 @@ func make_settlement(code, area):
 	settlement.levels = {}
 	settlement.shop = {}
 	state.locationcounter += 1
-	if randf() <= 0.8 || area.secondary_races.size() == 0:
-		settlement.races.append(area.lead_race)
-	if (randf() >= 0.7 || settlement.races.size() == 0) && area.secondary_races.size() != 0:
-		var added_races = area.secondary_races.duplicate()
-		var another_race = added_races[randi()%added_races.size()]
-		settlement.races.append(another_race)
-		added_races.erase(another_race)
-		if randf() >= 0.5 && added_races.size() > 0:
-			settlement.races.append(added_races[randi()%added_races.size()])
+#	if randf() <= 0.8 || area.secondary_races.size() == 0:
+#		settlement.races.append(area.lead_race)
+#	if (randf() >= 0.7 || settlement.races.size() == 0) && area.secondary_races.size() != 0:
+#		var added_races = area.secondary_races.duplicate()
+#		var another_race = added_races[randi()%added_races.size()]
+#		settlement.races.append(another_race)
+#		added_races.erase(another_race)
+#		if randf() >= 0.5 && added_races.size() > 0:
+#			settlement.races.append(added_races[randi()%added_races.size()])
 	settlement.events = {}
 	
 	update_area_shop(settlement)
@@ -629,16 +627,6 @@ var questdata = {
 		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [8,12],
 	},
-#	warriors_fighter_slave_basic = {
-#		code = 'warriors_fighter_slave_basic',
-#		type = 'slavegetquest',
-#		name = 'Slave Request',
-#		descript = 'The guild is in need of specific trained individual.',
-#		randomconditions = [{code = 'stat', operant = 'gte', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['physics'], range = [20,40]}]
-#		unlockreqs = [],
-#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-#		time_limit = [8,12],
-#	},
 	mages_materials_basic = {
 		code = 'mages_materials_basic',
 		name = 'Resource gathering',
@@ -666,16 +654,6 @@ var questdata = {
 		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
 		time_limit = [8,12],
 	},
-#	mages_slave_basic = {
-#		code = 'mages_slave_basic',
-#		type = 'slavegetquest',
-#		name = 'Slave Request',
-#		descript = 'The guild is in need of specific trained individual.',
-#		randomconditions =  [{code = 'stat',operant = 'gte', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['wits'], range = [20,40]}]},
-#		unlockreqs = [],
-#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-#		time_limit = [8,12],
-#	},
 	servants_craft_items_basic = {
 		code = 'servants_craft_items_basic',
 		name = 'Items Request',
@@ -690,6 +668,26 @@ var questdata = {
 #		name = 'Slave Request',
 #		descript = 'The guild is in need of specific trained individual.',
 #		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
+#		unlockreqs = [],
+#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+#		time_limit = [8,12],
+#	},
+#	warriors_fighter_slave_basic = {
+#		code = 'warriors_fighter_slave_basic',
+#		type = 'slavegetquest',
+#		name = 'Slave Request',
+#		descript = 'The guild is in need of specific trained individual.',
+#		randomconditions = [{code = 'stat', operant = 'gte', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['physics'], range = [20,40]}]
+#		unlockreqs = [],
+#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+#		time_limit = [8,12],
+#	},
+#	mages_slave_basic = {
+#		code = 'mages_slave_basic',
+#		type = 'slavegetquest',
+#		name = 'Slave Request',
+#		descript = 'The guild is in need of specific trained individual.',
+#		randomconditions =  [{code = 'stat',operant = 'gte', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['wits'], range = [20,40]}]},
 #		unlockreqs = [],
 #		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 #		time_limit = [8,12],
@@ -1040,7 +1038,7 @@ var dungeons = {
 			eventarray = [['dungeon_find_chest_easy', 1]], 
 			levels = [2,3], 
 			resources = ['cloth','leather','iron','wood','clothsilk'],
-			stages_per_level = [3,5]
+			stages_per_level = [2,3]
 			},
 			medium = {code = 'medium', 
 			enemyarray =  [['bandits_easy3', 1],['bandits_medium', 2],['bandits_assassin', 1], ['bandits_medium_bear', 1], ['bandits_golem', 1]], 
@@ -1048,7 +1046,7 @@ var dungeons = {
 			eventarray = [], 
 			levels = [3,5], 
 			resources = ['cloth','leather','iron','wood','clothsilk'],
-			stages_per_level = [4,6]
+			stages_per_level = [3,4]
 			},
 			hard = {code = 'hard', 
 			enemyarray =  [['bandits_raptors', 2],['bandits_ballista', 1], ['bandits_assassin2', 1],['bandits_medium_bear', 1], ['bandits_golem', 1]], 
@@ -1056,7 +1054,7 @@ var dungeons = {
 			eventarray = [], 
 			levels = [4,6], 
 			resources = ['cloth','leather','iron','wood','clothsilk'],
-			stages_per_level = [5,6]
+			stages_per_level = [4,5]
 			},
 		},
 		affiliation = 'local', #defines character races and events
@@ -1074,17 +1072,17 @@ var dungeons = {
 			enemyarray =  [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [], 
-			levels = [2,4], 
-			resources = ['cloth','leather','iron','wood'],
-			stages_per_level = [3,5]
+			levels = [2,3], 
+			resources = ['bone','leather','stone','wood'],
+			stages_per_level = [2,3]
 			},
 			medium = {code = 'medium', 
-			enemyarray =  [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			enemyarray =  [['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [], 
-			levels = [4,6], 
-			resources = ['cloth','leather','iron','wood'],
-			stages_per_level = [3,5]
+			levels = [3,4], 
+			resources = ['leatherthick','iron','woodiron','bone','boneancient'],
+			stages_per_level = [2,4]
 			},
 		},
 		affiliation = 'local', #defines character races and events

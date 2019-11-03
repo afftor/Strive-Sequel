@@ -14,6 +14,17 @@ func open(scene):
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
 	hold_selection = true
+	globals.ClearContainer($EventCharacters/VBoxContainer)
+	globals.ClearContainer($PlayerCharacters/VBoxContainer)
+	if scene.has("common_effects"): 
+		state.common_effects(scene.common_effects)
+	for i in input_handler.scene_characters:
+		var newbutton = globals.DuplicateContainerTemplate($EventCharacters/VBoxContainer)
+		newbutton.get_node("Label").text = i.get_short_name()
+		newbutton.get_node('icon').texture = i.get_icon()
+		globals.connectslavetooltip(newbutton, i)
+		if i.is_players_character == false:
+			newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [i])
 	if self.visible == false:
 		input_handler.UnfadeAnimation(self, 0.2)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -31,33 +42,41 @@ func open(scene):
 			print("master_not_found")
 			return
 		scene.text = state.get_master().translate(scene.text)
-	if scene.tags.has("scene_character_translate"):
-		scene.text = input_handler.scene_character.translate(scene.text)
+	if scene.tags.has("active_character_translate"):
+		scene.text = input_handler.active_character.translate(scene.text)
 	$RichTextLabel.bbcode_text = scene.text
 	input_handler.UnfadeAnimation($RichTextLabel,1)
 	input_handler.UnfadeAnimation($ScrollContainer,1)
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	if scene.has("common_effects"):
-		state.common_effects(scene.common_effects)
 	if scene.has("set_enemy"):
 		dialogue_enemy = scene.set_enemy
 	var counter = 1
 	for i in scene.options:
+		var disable = false
 		if state.checkreqs(i.reqs) == false:
-			continue
+			if i.has('not_hide') == true:
+				disable = true
+			else:
+				continue
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.text
 		newbutton.get_node("hotkey").text = str(counter)
-		if scene.tags.has('linked_event'):
-			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, 'story_event', {}])
+		if scene.tags.has('linked_event') && i.code != 'leave':
+			var event_type = 'story_event'
+			if scenedata.scenedict[i.code].has('default_event_type'):
+				event_type = scenedata.scenedict[i.code].default_event_type
+			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, event_type, {}])
 		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':
-			newbutton.connect("pressed", input_handler.scene_character, 'use_social_skill', [i.code, input_handler.target_character])
+			newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
 		elif scene.tags.has("custom_effect"):
 			newbutton.connect('pressed', globals.custom_effects, i.code)
 		else:
 			newbutton.connect("pressed", self, i.code)
 		if i.has('disabled') && i.disabled == true:
-			newbutton.disabled = true
+			disable = true
+		if i.has('bonus_effects'):
+			newbutton.connect('pressed', state, "common_effects", [i.bonus_effects])
+		newbutton.disabled = disable
 		counter += 1
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
@@ -78,13 +97,14 @@ func close():
 	input_handler.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
+	input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
 
 func cancel_skill_usage():
-	hide()
-	input_handler.scene_character.restore_skill_charge(input_handler.activated_skill)
-	input_handler.ShowSlavePanel(input_handler.scene_character)
+	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
+	input_handler.ShowSlavePanel(input_handler.active_character)
+	close()
 
 func repeat():
 	input_handler.repeat_social_skill()
@@ -97,7 +117,7 @@ func recruit():
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
-	var person = input_handler.scene_character
+	var person = input_handler.active_character
 	if variables.instant_travel == false:
 		person.travel_target = {area = '', location = 'mansion'}
 		person.travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time
@@ -110,34 +130,34 @@ func recruit():
 
 func create_location_recruit(args):
 	var newchar = Slave.new()
-	input_handler.scene_character = newchar
+	input_handler.active_character = newchar
 	newchar.generate_random_character_from_data(input_handler.active_location.races)
 	$RichTextLabel.bbcode_text = newchar.translate($RichTextLabel.bbcode_text)
 
 func execute():
 	close()
 
-func inspect_scene_character():
-	input_handler.ShowSlavePanel(input_handler.scene_character)
+func inspect_active_character():
+	input_handler.ShowSlavePanel(input_handler.active_character)
 
 func inspect_character_child():
-	input_handler.ShowSlavePanel(state.babies[input_handler.scene_character.pregnancy.baby])
+	input_handler.ShowSlavePanel(state.babies[input_handler.active_character.pregnancy.baby])
 
 func keepbaby():
 	var node = input_handler.GetTextEditNode()
-	var person = state.babies[input_handler.scene_character.pregnancy.baby]
+	var person = state.babies[input_handler.active_character.pregnancy.baby]
 	person.get_random_name()
 	node.open(self, 'set_baby_name', person.name)
 
 func removebaby():
 	close()
-	state.babies.erase(input_handler.scene_character.pregnancy.baby)
-	input_handler.scene_character.pregnancy.baby = null
+	state.babies.erase(input_handler.active_character.pregnancy.baby)
+	input_handler.active_character.pregnancy.baby = null
 
 func set_baby_name(text):
-	var person = state.babies[input_handler.scene_character.pregnancy.baby]
+	var person = state.babies[input_handler.active_character.pregnancy.baby]
 	person.name = text
-	person.surname = input_handler.scene_character.surname
+	person.surname = input_handler.active_character.surname
 	state.add_slave(person)
 	close()
 

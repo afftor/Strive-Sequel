@@ -121,7 +121,7 @@ func showup(node, person):
 	show()
 	
 	var pos = node.get_global_rect()
-	pos = Vector2(pos.position.x, pos.end.y + 10)
+	pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
 	
 	

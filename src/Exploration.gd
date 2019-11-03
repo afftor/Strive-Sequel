@@ -442,7 +442,7 @@ func faction_hire():
 		var newbutton = globals.DuplicateContainerTemplate($HirePanel/VBoxContainer)
 		newbutton.get_node("name").text = tchar.name
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
-		newbutton.connect('signal_RMB',self,'open_slave_info', [tchar])
+		newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, "select_slave_in_guild", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
@@ -508,7 +508,7 @@ func guild_hire_slave():
 			selectedperson.area = active_area.code
 			selectedperson.location = 'mansion'
 			selectedperson.is_players_character = true
-			input_handler.scene_character = selectedperson
+			input_handler.active_character = selectedperson
 			input_handler.interactive_message('hire', '', {})
 			input_handler.PlaySound("money_spend")
 			faction_hire()
@@ -520,8 +520,6 @@ func guild_hire_slave():
 			input_handler.PlaySound("money_spend")
 			faction_sellslaves()
 
-func open_slave_info(character):
-	input_handler.ShowSlavePanel(character)
 
 func faction_quests():
 	$QuestPanel.show()
@@ -711,7 +709,7 @@ func enslave():
 
 func enslave_select(character:Slave):
 	character.set_slave_category("slave")
-	input_handler.scene_character = character
+	input_handler.active_character = character
 	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
 	state.common_effects(changes)
 	state.text_log_add('char',character.translate("[name] has been demoted to Slave."))
@@ -765,7 +763,7 @@ func build_location_description():
 func build_area_description():
 	var text = ''
 	text += active_area.name
-	text += "\nDominant Race: " + active_area.lead_race
+	#text += "\nLocal Races: " + str(active_area.races)
 	text += "\nPopulation: " + str(active_area.population)
 	$AreaDescription.bbcode_text = text
 

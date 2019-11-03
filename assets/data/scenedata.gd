@@ -2,10 +2,9 @@ extends Node
 
 #wolves_skirmish_start
 var scenedict = {
-	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['scene_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
+	childbirth = {text = tr("DIALOGUECHILDBIRTHTEXT"), image = 'childbirth', tags = ['active_character_translate'], options = [{code = 'keepbaby', reqs = [], text = tr("DIALOGUEKEEPBABY")}, {code = 'removebaby', reqs = [], text = tr("DIALOGUEREMOVEBABY")}]},
 	
-	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
-	
+	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
 	
 	#dialogue_praise = {text = tr('DIALOGUEPRAISETEXT'),tags = [], image = null, options = [{code = 'close', reqs = [], text = tr('DIALOGUECLOSE')}]},
 	
@@ -37,6 +36,8 @@ var scenedict = {
 	]
 	},
 	
+	
+	
 	dungeon_find_chest_easy = {
 		text = tr("DIALOGUEDUNGEONCHEST"), 
 		tags = [],
@@ -46,6 +47,18 @@ var scenedict = {
 		options = [
 		{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		]
+	},
+	dungeon_find_trap = {
+		text = tr("DIALOGUEDUNGEONTRAP"), 
+		tags = [],
+		default_event_type = "loot",
+		image = '', 
+		bonus_args = {},
+		options = [
+		{code = 'disarm_trap', reqs = [], text = tr("DIALOGUEDISARMTRAP")},
+		{code = 'force_trap', reqs = [], text = tr("DIALOGUEFORCETRAP")},
+		{code = 'reroute', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 		]
 	},
 	
@@ -81,6 +94,33 @@ var scenedict = {
 	]
 	},
 	
+	event_good_slavers = {text = tr("DIALOGUEEVENTGOODSLAVERS"), 
+	args = {},
+	tags = ['good','linked_event'],
+	default_event_type = "character_event",
+	image = 'recruit', 
+	bonus_args = {characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = 0.3}, type = 'slave'}}},
+	options = [
+#	{code = 'attack', reqs = [], text = tr("DIALOGUESLAVERSATTACK")},
+	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
+#	{code = 'intimidate', reqs = [], text = tr("DIALOGUESLAVERSINTIMIDATE")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	]
+	},
+	
+	event_person_acquired = {
+	text = tr("DIALOGUEEVENTGOODSLAVERSACQUIRED"),
+	args = {},
+	tags = [],
+	default_event_type = 'scene_character_event',
+	image = 'recruit',
+	common_effects = [{code = 'mod_scene_characters', type = 'all', value = {pricemod = 10000}}],
+	options = [
+	{code = 'keep_recruit', reqs = [], text = tr("DIALOGUEKEEPPERSON")},
+	{code = 'free_recruit', reqs = [], text = tr("DIALOGUESETFREEPERSON")}
+	],
+	},
+	
 	event_nothing_found = {text = tr("DIALOGUEEVENTNOTHING"), 
 	tags = ['good'],
 	default_event_type = "location",
@@ -94,23 +134,23 @@ var scenedict = {
 	#items with options
 	
 	minorus_potion_select = {text = tr("DIALOGUEEVENTMINORUSSELECT"), 
-	tags = ['custom_effect','scene_character_translate'],
+	tags = ['custom_effect','active_character_translate'],
 	image = 'pot', 
 	options = [
 	{code = 'minorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
 	{code = 'minorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'minorus_balls', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'minorus_penis', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
 	]
 	},
 	majorus_potion_select = {text = tr("DIALOGUEEVENTMAJORUSSELECT"), 
-	tags = ['custom_effect','scene_character_translate'],
+	tags = ['custom_effect','active_character_translate'],
 	image = 'pot', 
 	options = [
 	{code = 'majorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
 	{code = 'majorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'majorus_balls', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'majorus_penis', reqs = [{type = 'scene_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'majorus_balls', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'majorus_penis', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
 	]
 	},
 	
@@ -125,15 +165,16 @@ var scenedict = {
 	potion_no_effect = {text = tr("DIALOGUEPOTIONNOEFFECT"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
 	#Action events
-	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
-	hire = {text = tr("DIALOGUEHIRETEXT"), image = 'praise', tags = ['scene_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	hire = {text = tr("DIALOGUEHIRETEXT"), image = 'praise', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
 	#Story Events
 	daisy_meet = {
 		text = tr('SCENEDAISY_MEET_TEXT'),
 		tags = ['linked_event'],#linked_event means that all options will trigger other events by name instead of generic options like 'close' or 'inspect'
 		receiver = 'master', #not used yet but supposed to represent a group of characters involved into event
-		image = 'daisystart', 
+		image = 'daisystart',
+		opp_characters = [{type = 'pregen', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_purchase', text = tr("SCENEDAISY_MEET_OPTION1"), reqs = []},
 		{code = 'daisy_claim_kinship', text =  tr("SCENEDAISY_MEET_OPTION2"), reqs = [{type = 'master_is_beast', value = true}]},

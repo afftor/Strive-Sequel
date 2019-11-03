@@ -64,7 +64,6 @@ func _ready():
 	$DetailsPanel/VBoxContainer/body.connect("pressed", self, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 	
-	input_handler.slave_panel_node = self
 	
 	
 	$testbutton.connect('pressed', self, "run_test")
@@ -108,6 +107,10 @@ func open(tempperson):
 	input_handler.ActivateTutorial('skills')
 	show()
 	update()
+	
+#	yield(get_tree().create_timer(0.5), "timeout")
+#	var temp = get_tree().get_root().get_child(get_tree().get_root().get_children().size()-1)
+#	print(temp)
 
 func hide():
 	.hide()
@@ -259,7 +262,7 @@ func update():
 		var temptext = "[center]"+globals.descriptions.get_class_name(prof,person) + "[/center]\n"+globals.descriptions.get_class_bonuses(person, prof) + globals.descriptions.get_class_traits(person, prof)
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newnode, temptext)
-	input_handler.scene_character = person
+	input_handler.active_character = person
 	if $SkillPanel.visible == true:
 		build_skill_panel()
 	

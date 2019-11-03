@@ -33,10 +33,11 @@ signal EnemyKilled
 
 var last_action_data = {}
 
-var slave_panel_node = preload("res://src/scenes/SlavePanel.tscn")
+var slave_panel_node
 var slave_list_node
 var exploration_node
-var scene_character
+var active_character
+var scene_characters = []
 var scene_loot
 var active_area
 var active_location
@@ -327,7 +328,7 @@ func SetMusicRandom(category):
 	SetMusic(track)
 
 func SetMusic(name, delay = 0):
-	if audio.music.has(name) == false: return 
+	if audio.music.has(name) == false: return
 	yield(get_tree().create_timer(delay), 'timeout')
 	musicraising = true
 	var musicnode = GetMusicNode()
@@ -484,6 +485,7 @@ func OpenAnimation(node):
 	tweennode.start()
 	yield(get_tree().create_timer(0.15), 'timeout')
 	BeingAnimated.erase(node)
+	node.raise()
 
 func CloseAnimation(node):
 	if BeingAnimated.has(node) == true:
@@ -630,7 +632,7 @@ func requirementcombatantcheck(req, combatant):#Gear, Race, Types, Resists, stat
 							if input_handler.operate(req.operant, state.items[i][req.name], state.items[i][req.value]) == false:
 								result = false
 								break
-		'race': 
+		'race':
 			result = (req.value == combatant.race);
 	return result
 
@@ -740,9 +742,10 @@ func ConnectSound(node, sound, action):
 #Slave Panel
 
 func ShowSlavePanel(person):
-	var node = get_tree().get_root()
-	slave_panel_node.get_parent().remove_child(slave_panel_node)
-	node.add_child(slave_panel_node)
+	if slave_panel_node == null:
+		slave_panel_node = load("res://src/scenes/SlavePanel.tscn").instance()
+		get_tree().get_root().add_child(slave_panel_node)
+	slave_panel_node.raise()
 	slave_panel_node.open(person)
 
 #Inventory
@@ -802,6 +805,11 @@ func get_dialogue_node():
 func interactive_message(code, type, args):
 	var data = scenedata.scenedict[code].duplicate(true)
 	var scene = get_dialogue_node()
+	if data.has('opp_characters'):
+		for i in data.opp_characters:
+			match i.type:
+				'pregen':
+					scene_characters.append(input_handler.make_story_character(i.value))
 	match type:
 		'social_skill':
 			for i in variables.dynamic_text_vars:
@@ -810,6 +818,7 @@ func interactive_message(code, type, args):
 			for i in variables.dynamic_text_vars:
 				data.text = data.text.replace("[" + i + '2' + ']', "[" + i + "]")
 			data.text = args.name2.translate(data.text)
+			scene_characters.append(args.name1)
 			if args.has("bonustext"):
 				data.text += args.bonustext
 			if args.has('repeat'):
@@ -823,18 +832,21 @@ func interactive_message(code, type, args):
 					newcharacter = Slave.new()
 					newcharacter.is_active = false
 					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
-					newcharacter.set_slave_category(args.characterdata.slave_type) 
+					newcharacter.set_slave_category(args.characterdata.slave_type)
 				'function':
 					newcharacter = call(args.characterdata.function, args.characterdata.args)
-			scene_character = newcharacter
+			active_character = newcharacter
+			scene_characters.append(newcharacter)
 			data.text = newcharacter.translate(data.text)
-			data.options.push_front({code = 'inspect_scene_character', reqs = [], text = tr("DIALOGUECHARINSPECT")})
+		'scene_character_event':
+			for i in range(0, scene_characters.size()):
+				data.text = scene_characters[i].translate(data.text)
 		'quest_finish_event':
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
-			scene_character = args.pregchar
-			var baby = state.babies[scene_character.pregnancy.baby]
-			data.options.append({code = 'inspect_character_child', reqs = [], text = tr("DIALOGUEINSPECTBABY")})
+			active_character = args.pregchar
+			var baby = state.babies[active_character.pregnancy.baby]
+			scene_characters.append(baby)
 		'event_selection':
 			data.location = active_location
 		'loot':
@@ -848,6 +860,7 @@ func interactive_message(code, type, args):
 					break
 		'location_purchase_event':
 			data.text = data.text.replace("[areaname]", active_area.name).replace('[locationname]', active_location.name).replace('[locationdescript]',active_location.descript).replace("[locationtypename]", active_location.classname)
+	
 	scene.open(data)
 
 func interactive_message_custom(data):
@@ -897,7 +910,7 @@ func get_chat_node():
 
 func show_class_info(classcode, person = null):
 	if person == null:
-		person = scene_character
+		person = active_character
 	var node = get_class_info_panel()
 	node.open(classcode, person)
 
@@ -939,8 +952,27 @@ func repeat_social_skill():
 
 func make_local_recruit(args):
 	var newchar = Slave.new()
-	newchar.generate_random_character_from_data(active_location.races)
-	newchar.set_slave_category('servant')
+	if args == null:
+		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
+	else:
+		var race = 'random'
+		var des_class = null
+		var difficulty = 0
+		if args.has('races'):
+			race = weightedrandom(args.races)
+		if args.has('difficulty'):
+			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
+		newchar.generate_random_character_from_data(race, des_class, difficulty)
+		if args.has("bonuses"):
+			newchar.add_stat_bonuses(args.bonuses)
+		if args.has("type"):
+			newchar.set_slave_category(args.type)
+	if newchar.slave_class == null: newchar.set_slave_category('servant')
+	return newchar
+
+func make_story_character(args):
+	var newchar = Slave.new()
+	newchar.generate_predescribed_character(world_gen.pregen_characters[args])
 	return newchar
 
 func update_slave_list():
@@ -1043,7 +1075,7 @@ func StartCombat(encounter = null):
 	var enemy_stats_mod = 1
 	match data.unittype:
 		'randomgroup':
-			 enemies = make_enemies(data.unitcode)
+			enemies = make_enemies(data.unitcode)
 	
 	
 	var combat = get_combat_node()

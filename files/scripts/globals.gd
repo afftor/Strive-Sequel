@@ -541,7 +541,7 @@ var globalsettings = {
 	
 	turn_based_time_flow = false,
 	
-	guilds_any_race = true,
+	guilds_any_race = false, #unused
 	
 	
 } setget settings_save
@@ -833,7 +833,7 @@ func evaluate(input): #used to read strings as conditions when needed
 	script.reload()
 	var obj = Reference.new()
 	obj.set_script(script)
-	obj.active_slave = input_handler.scene_character
+	obj.active_slave = input_handler.active_character
 	return obj.eval()
 
 
