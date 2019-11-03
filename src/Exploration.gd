@@ -442,7 +442,8 @@ func faction_hire():
 		var newbutton = globals.DuplicateContainerTemplate($HirePanel/VBoxContainer)
 		newbutton.get_node("name").text = tchar.name
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
-		newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
+		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
+		newbutton.connect('signal_RMB_release',input_handler,'get_spec_node', [input_handler.NODE_SLAVEPANEL, [tchar]])
 		newbutton.connect("pressed", self, "select_slave_in_guild", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)

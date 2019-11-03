@@ -71,7 +71,8 @@ func update():
 			newbutton.get_node("fear").hide()
 
 func open_slave_tab(character):
-	input_handler.ShowSlavePanel(character)
+	#input_handler.ShowSlavePanel(character)
+	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [character])
 
 var obed_textures = {high = load("res://assets/images/gui/gui icons/obedience1.png"), med = load("res://assets/images/gui/gui icons/obedience2.png"), low = load("res://assets/images/gui/gui icons/obedience3.png")}
 var fear_textures = {high = load('res://assets/images/gui/gui icons/fear1.png'), med = load("res://assets/images/gui/gui icons/fear2.png"), low = load("res://assets/images/gui/gui icons/fear3.png")}
