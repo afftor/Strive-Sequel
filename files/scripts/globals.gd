@@ -772,7 +772,7 @@ func LoadEvent(name):
 func StartEventScene(name, debug = false, line = 0):
 	state.CurEvent = name;
 	scenes[name] = LoadEvent(name)
-	var scene = input_handler.GetEventNode()
+	var scene = input_handler.get_spec_node(input_handler.NODE_EVENT) #input_handler.GetEventNode()
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
@@ -863,7 +863,7 @@ func connecttexttooltip(node, text):
 	node.connect("mouse_entered",self,'showtexttooltip', [node, text])
 
 func showtexttooltip(node, text):
-	var texttooltip = input_handler.GetTextTooltip()
+	var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
 	texttooltip.showup(node, text)
 
 func connectitemtooltip(node, item):
@@ -877,7 +877,7 @@ func connecttempitemtooltip(node, item, mode):
 	node.connect("mouse_entered",self,'tempitemtooltip', [node, item, mode])
 
 func tempitemtooltip(targetnode, item, mode):
-	var node = input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + item.name + '[/center]\n' + item.descript
 	data.text = text
@@ -892,12 +892,12 @@ func connectskilltooltip(node, skill, character):
 	node.connect("mouse_entered",self,'showskilltooltip', [skill,node,character])
 
 func showskilltooltip(skill, node, character):
-	var skilltooltip = input_handler.GetSkillTooltip()
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) #input_handler.GetSkillTooltip()
 	skilltooltip.character = character
 	skilltooltip.showup(node, skill)
 
 func closeskilltooltip():
-	var skilltooltip = input_handler.GetSkillTooltip()
+	var skilltooltip = input_handler.get_spec_node(input_handler.NODE_SKILLTOOLTIP) #input_handler.GetSkillTooltip()
 	skilltooltip.set_process(false)
 	skilltooltip.hide()
 
@@ -916,12 +916,12 @@ func connectslavetooltip(node, person):
 	node.connect("mouse_entered",self,'slavetooltip', [node, person])
 
 func slavetooltip(targetnode, person):
-	var node = input_handler.GetSlaveTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP) #input_handler.GetSlaveTooltip()
 	node.showup(targetnode, person)
 
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
-	var node = input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + material.name + '[/center]\n' + material.descript
 	data.text = text + bonustext

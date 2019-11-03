@@ -231,12 +231,14 @@ func useitem(item, type):
 			return
 		if type == 'gear':
 			selectedhero.equip(item)
-			input_handler.GetItemTooltip().hide()
+			#input_handler.GetItemTooltip().hide()
+			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 			emit_signal("item_equipped")
 			buildinventory()
 		elif type == 'usable':
 			if Items.itemlist[item.itembase].has("mansion_effect"):
-				input_handler.GetItemTooltip().hide()
+				#input_handler.GetItemTooltip().hide()
+				input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 				emit_signal("item_used")
 				selectedhero.use_mansion_item(item)
 				rebuildinventory()
@@ -318,7 +320,8 @@ func unequip(slot):
 		return
 	if selectedhero.gear[slot] != null:
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
-		input_handler.GetItemTooltip().hide()
+		#input_handler.GetItemTooltip().hide()
+		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		buildinventory()
 		input_handler.update_slave_panel()
 

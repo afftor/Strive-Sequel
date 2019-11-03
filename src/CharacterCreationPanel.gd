@@ -486,10 +486,12 @@ func apply_preserved_settings():
 		person.set(i, preservedsettings[i])
 
 func confirm_character():
-	input_handler.ShowConfirmPanel(self, 'finish_character', 'Create this character?')
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'finish_character', 'Create this character?'])
+	#input_handler.ShowConfirmPanel(self, 'finish_character', 'Create this character?')
 
 func confirm_return():
-	input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'cancel_creation', "Return to Main Menu?"])
+	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
 func cancel_creation():
 	state.revert()
@@ -536,6 +538,7 @@ func select_sex_trait(trait):
 		person.sex_traits.clear()
 		person.sex_traits.append(trait.code)
 	$TraitSelection.hide()
-	input_handler.GetTextTooltip().hide()
+	#input_handler.GetTextTooltip().hide()
+	input_handler.input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	RebuildStatsContainer()
 

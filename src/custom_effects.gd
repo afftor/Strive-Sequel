@@ -4,7 +4,7 @@ var person
 
 func hairdye(character):
 	person = character
-	var node = input_handler.GetTextEditNode()
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	node.open(self, 'set_hair_color', person.hair_color, person.translate("Select new hair color for [name]"))
 
 func set_hair_color(text):
