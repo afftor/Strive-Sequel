@@ -741,7 +741,7 @@ func ConnectSound(node, sound, action):
 
 #Slave Panel
 
-func ShowSlavePanel(person):
+func ShowSlavePanel(person): #get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
 	if slave_panel_node == null:
 		slave_panel_node = load("res://src/scenes/SlavePanel.tscn").instance()
 		get_tree().get_root().add_child(slave_panel_node)
@@ -996,7 +996,7 @@ func text_cut_excessive_lines(text:String):
 	return text
 
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE}#, NODE_SLAVEPANEL, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
@@ -1020,6 +1020,7 @@ var node_data = {
 	NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://files/Simple Tooltip/Imagetooltip.tscn")},
 	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
 	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
+	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn"), calls = 'open'},
 }
 
 func get_spec_node(type, args = null):
