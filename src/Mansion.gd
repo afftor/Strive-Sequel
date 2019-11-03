@@ -137,6 +137,8 @@ func _ready():
 		yield(get_tree(), 'idle_frame')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.ActivateTutorial("introduction")
+		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[randi()%state.areas.plains.locations.size()]]
+		input_handler.active_area = state.areas.plains
 		input_handler.interactive_message('event_good_slavers', 'character_event', scenedata.scenedict.event_good_slavers.bonus_args)
 		
 	elif globals.start_new_game == true:

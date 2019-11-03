@@ -99,9 +99,12 @@ var scenedict = {
 	tags = ['good','linked_event'],
 	default_event_type = "character_event",
 	image = 'recruit', 
-	bonus_args = {characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = 0.3}, type = 'slave'}}},
+	bonus_args = {
+		characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3}, type = 'slave'}},
+		enemydata = {},
+	},
 	options = [
-#	{code = 'attack', reqs = [], text = tr("DIALOGUESLAVERSATTACK")},
+	{code = 'attack', reqs = [], text = tr("DIALOGUESLAVERSATTACK")},
 	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
 #	{code = 'intimidate', reqs = [], text = tr("DIALOGUESLAVERSINTIMIDATE")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
@@ -114,9 +117,9 @@ var scenedict = {
 	tags = [],
 	default_event_type = 'scene_character_event',
 	image = 'recruit',
-	common_effects = [{code = 'mod_scene_characters', type = 'all', value = {pricemod = 10000}}],
+	common_effects = [{code = 'bool_scene_characters', type = 'all', name = 'is_known_to_player', value = true}],
 	options = [
-	{code = 'keep_recruit', reqs = [], text = tr("DIALOGUEKEEPPERSON")},
+	{code = 'recruit', reqs = [], text = tr("DIALOGUEKEEPPERSON")},
 	{code = 'free_recruit', reqs = [], text = tr("DIALOGUESETFREEPERSON")}
 	],
 	},

@@ -485,6 +485,10 @@ func common_effects(effects):
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
 						k.add_stat_bonuses(i.value)
+			'bool_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.set(i.name, i.value)
 
 func character_stat_change(character, data):
 	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 
