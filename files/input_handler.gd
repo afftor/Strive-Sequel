@@ -47,7 +47,7 @@ var target_character
 var ghost_items = []
 
 
-var encounter_win_scripts = []
+var encounter_win_script = null
 var encounter_lose_scripts = []
 
 func _input(event):
@@ -566,7 +566,12 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	
 	if wr.get_ref(): x.queue_free()
 
-var sprites = {strike = 'res://assets/sfx/hit_animation/strike.tscn'}
+var sprites = {
+	strike = 'res://assets/sfx/hit_animation/strike.tscn',
+	}
+var particles = {
+	heal = "res://assets/sfx/HealEffect.tscn",
+}
 
 func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	var x = load(sprites[effect]).instance()
@@ -581,6 +586,18 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 
 	if wr.get_ref(): x.queue_free()
 
+func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+	var x = load(sprites[effect]).instance()
+	node.add_child(x)
+	x.position = node.rect_size/2
+	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+	x.play()
+	
+	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
+	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+
+	if wr.get_ref(): x.queue_free()
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	var tweennode = GetTweenNode(node)
@@ -931,12 +948,11 @@ func get_combat_node():
 	var node = get_tree().get_root()
 	if node.has_node('combat'):
 		window = node.get_node('combat')
-		#node.remove_child(window)
 	else:
 		window = load("res://files/combat.tscn").instance()
 		window.name = 'combat'
 		node.add_child(window)
-	#node.add_child(window)
+		#node.call_deferred('add_child',window)
 	window.raise()
 	return window
 
@@ -948,6 +964,7 @@ func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
+
 func make_local_recruit(args):
 	var newchar = Slave.new()
 	if args == null:
@@ -958,6 +975,14 @@ func make_local_recruit(args):
 		var difficulty = 0
 		if args.has('races'):
 			race = weightedrandom(args.races)
+			if race == 'local':
+				race = weightedrandom(active_area.races)
+			elif race == 'beast':
+				var racearray = []
+				for i in races.racelist.values():
+					if i.tags.has('beast') == true:
+						racearray.append(i.code)
+				race = racearray[randi()%racearray.size()]
 		if args.has('difficulty'):
 			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
 		newchar.generate_random_character_from_data(race, des_class, difficulty)
@@ -994,7 +1019,7 @@ func text_cut_excessive_lines(text:String):
 	return text
 
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
@@ -1019,6 +1044,7 @@ var node_data = {
 	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
 	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
 	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
+	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
 }
 
 func get_spec_node(type, args = null):
@@ -1049,6 +1075,7 @@ func get_spec_node(type, args = null):
 
 var current_level
 var current_stage
+var current_enemy_group
 
 func check_events(action):
 	var eventarray = active_location.scriptedevents
@@ -1107,15 +1134,27 @@ func check_event_reqs(reqs):
 	
 	return check
 
+func check_location_group():
+	var counter = 0
+	var cleararray = []
+	for i in active_location.group:
+		if state.characters.has(active_location.group[i]): 
+			counter += 1
+		else:
+			cleararray.append(i)
+	
+	for i in cleararray:
+		active_location.erase(i)
+	
+	if counter == 0:
+		return false
+	else:
+		return true
 
 func StartCombat(encounter = null):
-	encounter_lose_scripts.clear()
-	encounter_win_scripts.clear()
 	var data
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
-		encounter_win_scripts = data.win_scripts.duplicate(true)
-		encounter_lose_scripts = data.lose_scripts.duplicate(true)
 	if variables.skip_combat == true:
 		finish_combat()
 		return
@@ -1171,7 +1210,6 @@ func make_enemies(enemydata):
 		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
 	else:
 		enemies = makespecificgroup(enemydata)
-	
 	return enemies
 
 func makespecificgroup(group):
@@ -1234,13 +1272,18 @@ func makerandomgroup(enemygroup):
 func finish_combat():
 	input_handler.emit_signal("CombatEnded", get_combat_node().encountercode)
 	input_handler.SetMusic("exploration")
+	
+	if encounter_win_script != null:
+		var data = scenedata.scenedict[encounter_win_script]
+		interactive_message(encounter_win_script, data.default_event_type, {})
+		return
 	if check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished')
 	if check_random_event() == true:
 		yield(input_handler, 'EventFinished')
 	
-	if encounter_win_scripts.size() == 0:
-		exploration_node.finish_combat()
+	
+	exploration_node.finish_combat()
 
 
 func combat_defeat():

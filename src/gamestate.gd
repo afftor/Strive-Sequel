@@ -241,20 +241,26 @@ func valuecheck(dict):
 			return if_has_free_items(dict.name, dict.operant, dict.value)
 		'disabled':
 			return false
-		'master_stat':
-			return if_master_has_stat(dict.name, dict.operant, dict.value)
+		'master_check':
+			var master_char = get_master()
+			if master_char == null:
+				return false
+			else:
+				return master_char.checkreqs(dict.value)
+		'active_character_checks':
+			var character = input_handler.active_character
+			if character == null:return false
+			return character.checkreqs(dict.value)
 		'master_is_beast':
 			return if_master_is_beast(dict.value)
 		'unique_character_at_mansion':
 			var character = get_unique_slave(dict.value)
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free'}])
-		'active_character_checks':
-			var character = input_handler.active_character
-			if character == null:return false
-			return character.checkreqs(dict.charreqs)
 		'has_money_for_scene_slave':
 			return money >= input_handler.scene_characters[dict.value].calculate_price()
+		'random':
+			return globals.rng.randf()*100 <= dict.value
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -480,7 +486,7 @@ func common_effects(effects):
 				input_handler.interactive_message(i.data, 'start_event', i.args)
 			'spend_money_for_scene_character':
 				money -= input_handler.scene_characters[i.value].calculate_price()
-				text_log_add('money',"Gold used: " + str(i.value))
+				text_log_add('money',"Gold used: " + str(input_handler.scene_characters[i.value].calculate_price()))
 			'mod_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
@@ -489,6 +495,24 @@ func common_effects(effects):
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
 						k.set(i.name, i.value)
+			'affect_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.set(i.name, i.value)
+			'change_type_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.set_slave_category(i.value)
+			'active_character_switch':
+				input_handler.active_character = input_handler.scene_characters[i.value]
+			'affect_active_character':
+				match i.type:
+					'damage':
+						input_handler.active_character.hp -= i.value
+					'stat':
+						input_handler.active_character.set(i.name, i.value)
+			'make_loot':
+				input_handler.scene_loot = world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
 
 func character_stat_change(character, data):
 	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 

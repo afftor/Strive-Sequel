@@ -2,6 +2,8 @@ extends Panel
 
 var previousscene
 var dialogue_enemy
+var current_scene
+var hold_selection = false #pause for scene to laod
 
 func open(scene):
 	if scene.has("variations"):
@@ -13,6 +15,7 @@ func open(scene):
 		return
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
+	current_scene = scene
 	hold_selection = true
 	globals.ClearContainer($EventCharacters/VBoxContainer)
 	globals.ClearContainer($PlayerCharacters/VBoxContainer)
@@ -45,7 +48,9 @@ func open(scene):
 		scene.text = state.get_master().translate(scene.text)
 	if scene.tags.has("active_character_translate"):
 		scene.text = input_handler.active_character.translate(scene.text)
-	$RichTextLabel.bbcode_text = scene.text
+	if scene.tags.has("scene_character_translate"):
+		scene.text = input_handler.scene_characters[0].translate(scene.text.replace("[scnchar","["))
+	$RichTextLabel.bbcode_text = globals.TextEncoder(scene.text)
 	input_handler.UnfadeAnimation($RichTextLabel,1)
 	input_handler.UnfadeAnimation($ScrollContainer,1)
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
@@ -62,7 +67,10 @@ func open(scene):
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.get_node("Label").text = i.text
 		newbutton.get_node("hotkey").text = str(counter)
-		if scene.tags.has('linked_event') && i.code != 'leave':
+		
+		if i.has('select_person'):
+			newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+		elif scene.tags.has('linked_event') && !i.code in ['leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
 			var event_type = 'story_event'
 			if scenedata.scenedict[i.code].has('default_event_type'):
 				event_type = scenedata.scenedict[i.code].default_event_type
@@ -73,6 +81,8 @@ func open(scene):
 			newbutton.connect('pressed', globals.custom_effects, i.code)
 		else:
 			newbutton.connect("pressed", self, i.code)
+		
+		
 		if i.has('disabled') && i.disabled == true:
 			disable = true
 		if i.has('bonus_effects'):
@@ -82,7 +92,22 @@ func open(scene):
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
 
-var hold_selection = false
+
+var stored_scene
+
+func select_person_for_next_event(code):
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id}]
+	stored_scene = code
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
+	
+
+func event_person_selected(person):
+	var data = scenedata.scenedict[stored_scene]
+	var event_type = 'story_event'
+	if scenedata.scenedict[stored_scene].has('default_event_type'):
+		event_type = scenedata.scenedict[stored_scene].default_event_type
+	input_handler.active_character = person
+	input_handler.interactive_message(stored_scene, event_type, {})
 
 func select_option(number):
 	if $ScrollContainer/VBoxContainer.get_children().size() >= number && hold_selection == false:
@@ -111,6 +136,10 @@ func cancel_skill_usage():
 func repeat():
 	input_handler.repeat_social_skill()
 	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL).open(null)
+
+func recruit_from_scene(order = 0):
+	input_handler.active_character = input_handler.scene_characters[order]
+	recruit()
 
 func recruit():
 	if state.characters.size() >= state.get_pop_cap():
@@ -196,6 +225,10 @@ func leave():
 	close()
 
 func fight_skirmish():
-	if dialogue_enemy != null:
-		input_handler.StartCombat(dialogue_enemy)
-	close()
+#	if dialogue_enemy != null:
+#		input_handler.StartCombat(dialogue_enemy)
+	input_handler.current_enemy_group = dialogue_enemy
+	if current_scene.has("winscene"):
+		input_handler.encounter_win_script = current_scene.winscene
+	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
+	#close()

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sfx/heal_effect.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.8003 ), 0.0, 0.690078, 0, 0, Vector2( 0.996712, 0.4846 ), -0.22482, 0.0, 0, 0 ]
+
+[node name="HealEffect" type="CPUParticles2D"]
+position = Vector2( 218.695, 214.221 )
+rotation = -1.5708
+amount = 15
+lifetime = 2.5
+speed_scale = 2.5
+explosiveness = 0.3
+fixed_fps = 100
+fract_delta = false
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 75.0
+scale_amount = 0.85
+scale_amount_curve = SubResource( 1 )

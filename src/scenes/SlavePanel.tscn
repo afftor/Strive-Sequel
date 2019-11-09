@@ -601,8 +601,8 @@ text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 522.0
 margin_top = 15.0
@@ -613,8 +613,8 @@ text = "Obedience"
 align = 1
 
 [node name="fearlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.0
 margin_top = 15.0
@@ -637,8 +637,8 @@ text = "Slave"
 align = 1
 
 [node name="mentality" type="HBoxContainer" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 editor/display_folded = true
 margin_left = 510.1
@@ -719,6 +719,7 @@ align = 1
 [node name="controls" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
+editor/display_folded = true
 margin_left = 963.0
 margin_top = 232.0
 margin_right = 1173.0
@@ -925,6 +926,7 @@ align = 1
 visible = false
 
 [node name="job_panel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 294.382
 margin_top = 41.197

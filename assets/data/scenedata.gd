@@ -6,7 +6,6 @@ var scenedict = {
 	
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
 	
-	#dialogue_praise = {text = tr('DIALOGUEPRAISETEXT'),tags = [], image = null, options = [{code = 'close', reqs = [], text = tr('DIALOGUECLOSE')}]},
 	
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
@@ -41,24 +40,11 @@ var scenedict = {
 	dungeon_find_chest_easy = {
 		text = tr("DIALOGUEDUNGEONCHEST"), 
 		tags = [],
-		default_event_type = "loot",
 		image = 'chest', 
 		bonus_args = {loot_data = {type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}},
 		options = [
 		{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
-		]
-	},
-	dungeon_find_trap = {
-		text = tr("DIALOGUEDUNGEONTRAP"), 
-		tags = [],
-		default_event_type = "loot",
-		image = '', 
-		bonus_args = {},
-		options = [
-		{code = 'disarm_trap', reqs = [], text = tr("DIALOGUEDISARMTRAP")},
-		{code = 'force_trap', reqs = [], text = tr("DIALOGUEFORCETRAP")},
-		{code = 'reroute', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 		]
 	},
 	
@@ -93,35 +79,224 @@ var scenedict = {
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
+	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"), 
+	tags = ['linked_event'],
+	default_event_type = "trap",
+	image = '', 
+	bonus_args = {},
+	options = [
+	{code = 'activate_trap_easy', select_person = true, reqs = [], text = tr("DIALOGUEACTIVATETRAP")},
+	]
+	},
+	activate_trap_easy = {
+		variations = [
+			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', value = 'trap_detection'}]},
+			],
+			text = tr("DIALOGUEEVENTTRAPSUCCESS"),
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'wits', value = 3}],
+			tags = ['active_character_translate'],
+			image = '',
+			options = [
+				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
+				]
+			},
+			{reqs = [],
+			text = tr("DIALOGUEEVENTTRAPFAILURE"),
+			image = '',
+			common_effects = [{code = "affect_active_character", type = 'damage', value = 25}],
+			tags = ['active_character_translate'],
+			options = [
+				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
+				],
+				
+			}
+		],
+	},
 	
-	event_good_slavers = {text = tr("DIALOGUEEVENTGOODSLAVERS"), 
-	args = {},
-	tags = ['good','linked_event'],
+	event_dungeon_prisoner = {text = tr("DIALOGUEEVENTDUNGEONPRISONER"), 
+	tags = ['linked_event'],
 	default_event_type = "character_event",
-	image = 'recruit', 
+	image = '', 
 	bonus_args = {
-		characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3}, type = 'slave'}},
-		enemydata = {},
+		characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['local', 5],['random', 1]], difficulty = [0,2], type = 'servant'}},
 	},
 	options = [
-	{code = 'attack', reqs = [], text = tr("DIALOGUESLAVERSATTACK")},
-	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
-#	{code = 'intimidate', reqs = [], text = tr("DIALOGUESLAVERSINTIMIDATE")},
+	{code = 'event_dungeon_prisoner_enslave', reqs = [], text = ("DIALOGUETAKESLAVE")},
+	{code = 'event_dungeon_prisoner_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
-	
-	event_person_acquired = {
-	text = tr("DIALOGUEEVENTGOODSLAVERSACQUIRED"),
-	args = {},
-	tags = [],
-	default_event_type = 'scene_character_event',
-	image = 'recruit',
-	common_effects = [{code = 'bool_scene_characters', type = 'all', name = 'is_known_to_player', value = true}],
+	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"), 
+	tags = ['active_character_translate'],
+	image = '', 
+	bonus_args = {},
+	common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'},{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 20}],
 	options = [
-	{code = 'recruit', reqs = [], text = tr("DIALOGUEKEEPPERSON")},
-	{code = 'free_recruit', reqs = [], text = tr("DIALOGUESETFREEPERSON")}
-	],
+	{code = 'recruit', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	]
+	},
+	event_dungeon_prisoner_free = {
+		variations = [
+			{reqs = [{type = 'random', value = 0}],
+			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE1"),
+			image = 'chest',
+			default_event_type = "loot",
+			bonus_args = {},
+			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
+			tags = ['active_character_translate'],
+			options = [
+				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = []},
+				]
+			},
+			{reqs = [],
+			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE2"),
+			image = 'chest',
+			default_event_type = "loot",
+			bonus_args = {},
+			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_item',1]] }],
+			tags = ['active_character_translate'],
+			options = [
+				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = []},
+				],
+				
+			}
+		],
+	},
+	
+	
+	event_good_slavers_woods = {text = tr("DIALOGUEEVENTGOODSLAVERS"), 
+	args = {},
+	tags = ['good','linked_event'],
+	default_event_type = "character_event",
+	image = '',
+	set_enemy = 'slavers_small',
+	winscene = 'event_person_acquired',
+	bonus_args = {
+		characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3}, type = 'slave'}},
+	},
+	common_effects = [{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 10},{code = 'affect_scene_characters', type = 'all', name = 'fear', value = 50}],
+	options = [
+	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
+	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
+	{code = 'event_good_slavers_request', select_person = true, reqs = [], text = tr("DIALOGUEREQUESTSLAVE")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	]
+	},
+	event_good_slavers_request = {
+		variations = [
+			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},
+			],
+			text = tr("DIALOGUEEVENTSLAVERSNEGOTIATESUCCESS"),
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 3}],
+			tags = ['linked_event','active_character_translate'],
+			image = '',
+			options = [
+				{code = 'event_person_acquired', text = tr("DIALOGUECONTINUEOPTION"), reqs = []},
+				]
+			},
+			{reqs = [],
+			text = tr("DIALOGUEEVENTSLAVERSNEGOTIATEFAILURE"),
+			image = '',
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 2}],
+			tags = ['linked_event','active_character_translate'],
+			options = [
+				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []},
+				],
+				
+			}
+		],
+	},
+	event_person_acquired = {
+		text = tr("DIALOGUEEVENTGOODSLAVERSACQUIRED"),
+		args = {},
+		tags = ['linked_event'],
+		default_event_type = 'scene_character_event',
+		image = 'recruit',
+		common_effects = [{code = 'bool_scene_characters', type = 'all', name = 'is_known_to_player', value = true}],
+		options = [
+		{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEKEEPSLAVEPERSON")},
+		{code = 'event_person_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")}
+		],
+	},
+	event_person_free = {
+		text = tr("DIALOGUEEVENTPERSONFREE"),
+		args = {},
+		tags = [],
+		default_event_type = 'scene_character_event',
+		image = '',
+		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'servant'}],
+		options = [
+		{code = 'event_person_recruit_attempt', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
+		{code = 'close', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		],
+	},
+	
+	event_person_recruit_attempt = {
+		variations = [
+			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},#type = 'charm_factor', operant = 'gte', value = 3}]}
+			],
+			text = tr("DIALOGUERECRUITSUCCESS"),
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 3},{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 90}],
+			tags = ['active_character_translate','scene_character_translate'],
+			image = '',
+			options = [
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUEOPTION"), reqs = []},
+				]
+			},
+			{reqs = [],
+			text = tr("DIALOGUERECRUITFAILURE"),
+			image = '',
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 2}],
+			tags = ['active_character_translate','scene_character_translate'],
+			options = [
+				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []},
+				],
+				
+			}
+		],
+	},
+	
+	event_good_rebels_beastkin = {text = tr("DIALOGUEEVENTGOODREBELSBEAST"), 
+	args = {},
+	tags = ['good'],
+	default_event_type = "character_event",
+	image = '',
+	set_enemy = 'rebels_small',
+	winscene = 'event_person_acquired',
+	bonus_args = {
+		characterdata = {type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'servant'}},
+	},
+	common_effects = [{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 50},{code = 'affect_scene_characters', type = 'all', name = 'fear', value = 50}],
+	options = [
+	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
+	{code = 'event_good_rebels_intimidate', select_person = true, reqs = [], text = tr("DIALOGUEINTIMIDATE")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	]
+	},
+	
+	event_good_rebels_intimidate = {
+		variations = [
+			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.physics_factor','*8'],"+", ['self.physics', '/3']]}]},
+			],
+			text = tr("DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES"),
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 3}],
+			tags = ['linked_event','active_character_translate'],
+			image = '',
+			options = [
+				{code = 'event_person_acquired', text = tr("DIALOGUECONTINUEOPTION"), reqs = []},
+				]
+			},
+			{reqs = [],
+			text = tr("DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE"),
+			image = '',
+			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 2}],
+			tags = ['linked_event','active_character_translate'],
+			options = [
+				{code = 'fight_skirmish', text = tr("DIALOGUEFIGHTOPTION"), reqs = []},
+				],
+				
+			}
+		],
 	},
 	
 	event_nothing_found = {text = tr("DIALOGUEEVENTNOTHING"), 
@@ -206,10 +381,9 @@ var scenedict = {
 	},
 	daisy_purchase_negotiate = {
 		variations = [ #variations are used if previous option can have multiple outcomes. If variation's requirements are passed it triggers and the rest is ignored. Priority is set by order. 
-			{reqs = [{type = 'master_stat', name = 'charm_factor', operant = 'gte', value = 3}, 
-			{type = 'master_stat', name = 'charm', operant = 'gte', value = 15, orflag = true}],
+			{reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 3}, {code = 'stat', type = 'charm', operant = 'gte', value = 15, orflag = true}]}],
 			text = tr("SCENEDAISY_PURCHASE_NEGOTIATE_TEXT1"),
-			sceneeffects = [],
+			common_effects = [],
 			tags = ['linked_event'],
 			image = 'daisystart',
 			options = [
@@ -220,7 +394,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("SCENEDAISY_PURCHASE_NEGOTIATE_TEXT2"),
 			image = 'daisystart',
-			sceneeffects = [],
+			common_effects = [],
 			tags = ['linked_event'],
 			options = [
 				{code = 'daisy_purchase_confirm', text = tr("SCENEDAISY_PURCHASE_OPTION2"), reqs = [{type = "has_money", value = 200}]},

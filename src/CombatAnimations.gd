@@ -167,6 +167,16 @@ func targetfire(node, args = null):
 	return nextanimationtime + aftereffectdelay
 	#postdamagetimer = nextanimationtime + aftereffectdelay
 
+func heal(node, args = null):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.4
+	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.3)
+	buffs_update_delays[node] = 0.4
+	input_handler.gfx_particles(node, 'heal', 0.3, 0.1)
+	tween.start()
+	
+	return nextanimationtime + aftereffectdelay
 
 func miss(node, args = null):#conflicting usage of tween node!!
 	var tween = input_handler.GetTweenNode(node)

@@ -54,10 +54,11 @@ margin_bottom = 2.35614
 texture = ExtResource( 5 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 62.0
-margin_top = 22.0
-margin_right = 733.0
-margin_bottom = 383.0
+margin_left = 59.6787
+margin_top = 25.869
+margin_right = 730.679
+margin_bottom = 386.869
+bbcode_enabled = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 63.0

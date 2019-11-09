@@ -5,8 +5,9 @@ var predeterminatedgroups = {
 } 
 
 var encounters = {
-	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []}
-	
+	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	rebels_small = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
 }
 
 var enemygroups = {
@@ -35,6 +36,9 @@ var enemygroups = {
 	
 	wolves_easy1 = {reqs = [], units = {wolf = [2,3]}},
 	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}},
+	
+	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}},
+	rebels_small = {reqs = [], units = {rebel_recruit = [3,4]}},
 	
 	rats = {reqs = [], units = {rat = [3,5]}},
 }
@@ -793,12 +797,19 @@ var loot_chests_data = {
 	easy_chest_gear = [
 	{code = 'material', min = 2, max = 5, grade = ['easy']}, 
 	{code = 'material', min = 1, max = 3, grade = ['location']}, 
-	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = ['easy']},
+	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3]]},
 	],
 	easy_chest_cosmetics = [
 	{code = 'material', min = 3, max = 8, grade = ['easy']}, 
 	{code = 'material', min = 1, max = 3, grade = ['location']}, 
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
+	],
+	easy_prisoner_reward_item = [
+	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 5]]},
+	],
+	easy_prisoner_reward_resource = [
+	{code = 'material', min = 5, max = 10, grade = ['easy']}, 
+	{code = 'material', min = 3, max = 6, grade = ['location']},
 	],
 }
 

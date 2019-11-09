@@ -740,7 +740,8 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'is_free':
 			check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
 		'is_at_location':
-			check = travel_time == 0 && location == i.value
+			if variables.allow_remote_intereaction == true: check = true
+			else: check = travel_time == 0 && location == i.value
 		'is_id':
 			check = input_handler.operate(i.operant, id, i.value)
 		'long_tail':
@@ -765,6 +766,8 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 			check = input_handler.operate(i.operant, slave_class, i.value)
 		'population':
 			check = input_handler.operate(i.operant, state.characters.size(), i.value)
+		'random':
+			check = globals.rng.randf()*100 <= calculate_number_from_string_array(i.value)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -1908,18 +1911,29 @@ func get_skill_by_tag(tg):
 		var s_f = Skilldata.Skilllist[s]
 		if s_f.tags.has(tg): return s
 
-func calculate_number_from_string_array(array):
+func calculate_number_from_string_array(arr):
+	var array = arr.duplicate()
 	var endvalue = 0
 	var firstrun = true
+	var singleop = ''
 	for i in array:
+		if typeof(i) == TYPE_ARRAY:
+			i = str(calculate_number_from_string_array(i))
+		if i in ['+','-','*','/']:
+			singleop = i
+			continue
 		var modvalue = i
-		if i.find('caster') >= 0:
+		if i.find('caster') >= 0 or i.find('self') >= 0:
 			i = i.split('.')
-			if i[0] == 'caster':
+			if i[0] == 'caster' or i[0] == 'self':
 				#modvalue = str(self[i[1]])
 				modvalue = str(get_stat(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
+		if singleop != '':
+			endvalue = input_handler.string_to_math(endvalue, singleop+modvalue)
+			singleop = ''
+			continue
 		if !modvalue[0].is_valid_float():
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
@@ -1929,6 +1943,28 @@ func calculate_number_from_string_array(array):
 			endvalue += float(modvalue)
 		firstrun = false
 	return endvalue
+
+#func calculate_number_from_string_array(array):
+#	var endvalue = 0
+#	var firstrun = true
+#	for i in array:
+#		var modvalue = i
+#		if i.find('caster') >= 0 || i.find('self') >= 0:
+#			i = i.split('.')
+#			if i[0] in ['caster', 'self']:
+#				#modvalue = str(self[i[1]])
+#				modvalue = str(get_stat(i[1]))
+#			elif i[0] == 'target':
+#				return ""; #nonexistent yet case of skill value being based completely on target
+#		if !modvalue[0].is_valid_float():
+#			if modvalue[0] == '-' && firstrun == true:
+#				endvalue += float(modvalue)
+#			else:
+#				endvalue = input_handler.string_to_math(endvalue, modvalue)
+#		else:
+#			endvalue += float(modvalue)
+#		firstrun = false
+#	return endvalue
 
 func process_check(check):
 	if typeof(check) == TYPE_ARRAY:

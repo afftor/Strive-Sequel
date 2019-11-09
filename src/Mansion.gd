@@ -104,11 +104,13 @@ func _ready():
 		character.fear = 25
 		character.lust = 50
 		character.base_exp += 500
+		character.charm_factor = 5
+		character.charm = 100
 		character.mp = 100
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.unlock_class("apprentice")
-		character.unlock_class("dominator")
+		character.unlock_class("rogue")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -137,9 +139,9 @@ func _ready():
 		yield(get_tree(), 'idle_frame')
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
-		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[randi()%state.areas.plains.locations.size()]]
+		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
-		input_handler.interactive_message('event_good_slavers', 'character_event', scenedata.scenedict.event_good_slavers.bonus_args)
+		input_handler.interactive_message('event_good_rebels_beastkin', 'character_event', scenedata.scenedict.event_good_rebels_beastkin.bonus_args)
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false

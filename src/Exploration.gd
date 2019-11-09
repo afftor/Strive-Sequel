@@ -40,8 +40,8 @@ func _ready():
 	if variables.combat_tests == true:
 		current_level = 1
 		current_stage = 1
-		active_location = {}
-		active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
+		input_handler.active_location = {stagedenemies = []}
+		input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 		var test_slave = Slave.new()
 		test_slave.create('BeastkinWolf', 'male', 'random')
 		test_slave.unlock_class("smith")
@@ -58,8 +58,8 @@ func _ready():
 		var test_slave2 = Slave.new()
 		test_slave2.create('BeastkinWolf', 'male', 'random')
 		state.add_slave(test_slave2)
-		active_location.group = {1:test_slave.id, 4:test_slave2.id}
-		StartCombat()
+		input_handler.active_location.group = {1:test_slave.id, 4:test_slave2.id}
+		input_handler.StartCombat('wolves_skirmish')
 
 func show_heal_items(position):
 	if get_node(positiondict[position] + "/Image").visible == true:
@@ -882,22 +882,7 @@ func local_events_search():
 		input_handler.active_location.events.search = 1
 		input_handler.interactive_message('location_event_search', 'event_selection', {})
 
-func check_location_group():
-	var counter = 0
-	var cleararray = []
-	for i in active_location.group:
-		if state.characters.has(active_location.group[i]): #&& state.characters[active_location.group[i]].location == active_location.id && state.characters[active_location.group[i]].travel_time == 0:
-			counter += 1
-		else:
-			cleararray.append(i)
-	
-	for i in cleararray:
-		active_location.erase(i)
-	
-	if counter == 0:
-		return false
-	else:
-		return true
+
 
 func clear_groups():
 	globals.ClearContainer($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
@@ -997,7 +982,7 @@ func UpdatePositions():
 #Combat/explore functions
 
 func start_skirmish():
-	if check_location_group() == false:
+	if input_handler.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before proceeding.")
 		return
 	check_events('skirmish_initiate')
@@ -1072,7 +1057,7 @@ func enter_level(level, skip_to_end = false):
 	build_location_description()
 
 func area_advance(mode):
-	if check_location_group() == false:
+	if input_handler.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
 	match mode:

@@ -1063,7 +1063,7 @@ var TranslationDict = {
 	TRAITMEDIUM_ARMORDESCRIPT = "Allows the usage of Medium Armor.",
 	TRAITHEAVY_ARMORDESCRIPT = "Allows the usage of Heavy Armor.",
 	TRAITLOCKPICKINGDESCRIPT = "Allows lockpicking.",
-	TRAITTRAP_DETECTIONDESCRIPT = "Allows trap detection.",
+	TRAITTRAP_DETECTIONDESCRIPT = "Allows trap disarming.",
 	TRAITWEAPON_MASTERYDESCRIPT = "Allows the usage of Melee Weapons",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Allows the usage of Ranged Weapons.",
 	TRAITMAGIC_TOOLSDESCRIPT = "Allows to use magic tools like staves.",
@@ -1576,6 +1576,7 @@ var TranslationDict = {
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUEFORCECHESTOPEN = "Open it",
+	DIALOGUEEVENTTRAP = "You come across a trapped hallway. Someone will have to disarm it, by skill or their well-being...",
 	
 	DIALOGUEWOLVES_SKIRMISH_START = "You find the location of wolves which were reported by locals. ",
 	DIALOGUEFIGHTOPTION = "Fight",
@@ -1584,11 +1585,33 @@ var TranslationDict = {
 	DIALOGUEEVENTGOODSLAVERS = "You come across the group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] later to be sold to at local market. \n\nThey are ready to part with [him] for a reasonable price of [price] gold. \n\nThe [race] gives you a desperate look. ",
 	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you've left alone with the [race]. Still uncertain about [his] future, [he] pleads for your mercy. ",
 	DIALOGUESLAVERSPURCHASE = "Purchase",
-	DIALOGUEKEEPPERSON = "Keep to self",
+	DIALOGUEREQUESTSLAVE = "Lie into forfeiting slave to you",
+	DIALOGUEEVENTSLAVERSNEGOTIATESUCCESS = "[center]{color=green|Success!}[/center]\n[name] tells that slave trafficking from Elven lands is outlawed and they will have to be arrested for it. After small pause slavers leave the capturee behind and quickly retreat. ",
+	DIALOGUEEVENTSLAVERSNEGOTIATEFAILURE = "[center]{color=red|Failure!}[/center]\n[name] wasn't able to trick slavers into leaving the slave to you. They leave in hurry.",
+	DIALOGUEKEEPSLAVEPERSON = "Keep as slave",
 	DIALOGUESETFREEPERSON = "Set free",
+	DIALOGUEEVENTPERSONFREE = "You've set [name] free. [He] expresses [his] gratitude and wishes to repay you one day. ",
 	
+	DIALOGUEPERSONASKTOJOIN = "Offer to join",
+	DIALOGUERECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n[name] was able to convience [scncharname] to join you.",
+	DIALOGUERECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n[name] wasn't able to convience [scncharname] to join you.",
+	
+	DIALOGUEEVENTTRAPSUCCESS = "[name] skillfully disarms the trap.",
+	DIALOGUEEVENTTRAPFAILURE = "[name] has disarmed the trap in a rough manner, suffering damage in the process.",
+	DIALOGUEACTIVATETRAP = "Deactivate Trap",
 	
 	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
+	
+	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by bandits for ramson or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
+	DIALOGUETAKESLAVE = "Capture and enslave",
+	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from cell, only to turn [him] into your slave. As [he]'s escorted back to your mansion, your team continues on. ",
+	
+	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] reassurance. As [he] thanks you, [he] shows a small cache of resources near [his] cell as a thanks for [his] rescue. After explaining [him] how to get out, you are ready to continue on your way.",
+	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] reassurance. As [he] thanks you, [he] shows a secret item [he] has hidden in [his] cell as a thanks for [his] rescue. After explaining [him] how to get out, you are ready to continue on your way.",
+	
+	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who caught a [race] [male], likely strayed from homelands. Given rebels' attitude towards [him] its easy to see they are up to no good...",
+	DIALOGUEINTIMIDATE = "Intimidate",
+	
 	
 	LOCAL_SHOP = "Shop",
 	LOCAL_EVENTS_SEARCH = "Search",

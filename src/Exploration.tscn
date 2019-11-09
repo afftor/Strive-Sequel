@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
@@ -20,7 +20,6 @@
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=19]
 [ext_resource path="res://src/NumberSelection.gd" type="Script" id=20]
-[ext_resource path="res://files/combat.tscn" type="PackedScene" id=21]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 7 )
@@ -1052,9 +1051,6 @@ margin_top = 170.415
 margin_right = 420.538
 margin_bottom = 214.415
 text = "Confirm"
-
-[node name="combat" parent="." instance=ExtResource( 21 )]
-visible = false
 
 [node name="Gold" type="Label" parent="."]
 visible = false
