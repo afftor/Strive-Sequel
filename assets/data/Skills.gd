@@ -793,7 +793,7 @@ var Skilllist = {
 		allowedtargets = ['enemy'],
 		value = 1,
 		random_factor_p = 0.1,
-		sfx = [{code = 'targetattack', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	fire_attack = {#melee attack with fire element, deals 1.2 dmg. Needs alternatives for all elements
@@ -820,7 +820,7 @@ var Skilllist = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = 1.2,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	ranged_attack = {#melee attack
@@ -1049,7 +1049,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [], 
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = 1.2,
 		damagestat = ['-damage_hp']
@@ -1074,7 +1074,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'light',
-		sfx = [], 
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = [['target.hpmax','*0.35']],
 		damagestat = ['-damage_hp']
@@ -1152,7 +1152,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'light',#not sure but not matters
-		sfx = [], 
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = 1,
 		damagestat = ['-damage_hp']
@@ -1281,7 +1281,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = ['caster.matk','*2']
 	},
@@ -1407,8 +1407,8 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'earth',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
-		sounddata = {initiate = 'blade', strike = null, hit = null, hittype = 'bodyarmor'},
+		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.0
 	},
 	wind_atk = {
@@ -1538,7 +1538,7 @@ var Skilllist = {
 		target_number = 'line',
 		target_range = 'weapon',
 		damage_type = 'fire',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'], 0.75],
 		damagestat = ['no_stat', '+damage_hp']
@@ -1614,7 +1614,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'firebolt', target = 'target', period = 'predamage'},{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = 1.1
 	},
@@ -1825,7 +1825,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'any',
 		damage_type = 'fire',
-		sfx = [{code = 'targetfire', target = 'target', period = 'postdamage'}], 
+		sfx = [{code = 'firebolt', target = 'target', period = 'predamage'},{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = 'firebolt', strike = null, hit = 'firehit', hittype = 'absolute'},
 		value = [['caster.matk','*0.2'],1],
 		damagestat = ['no_stat', '+damage_hp']
@@ -2254,7 +2254,6 @@ var Skilllist = {
 	
 	aphrodisiac = {
 		code = 'aphrodisiac',
-		
 		descript = '',
 		icon = null,
 		type = 'social', 
@@ -2457,7 +2456,6 @@ var Skilllist = {
 	},
 	majorus_potion = {
 		code = 'majorus_potion',
-		
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
@@ -2475,7 +2473,6 @@ var Skilllist = {
 	},
 	i_lifeshard = {
 		code = 'i_lifeshard',
-		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2495,7 +2492,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',#not sure but not matters
 		
-		sfx = [], 
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['20'],
 		random_factor = 5,
@@ -2523,7 +2520,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'weapon',#not sure but not matters
 		
-		sfx = [], 
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
 		value = ['45'],
 		random_factor = 10,

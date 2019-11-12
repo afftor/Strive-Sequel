@@ -1580,6 +1580,7 @@ var TranslationDict = {
 	
 	DIALOGUEWOLVES_SKIRMISH_START = "You find the location of wolves which were reported by locals. ",
 	DIALOGUEFIGHTOPTION = "Fight",
+	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight with you.",
 	
 	DIALOGUESLAVERPURCHASE = "Purchase",
 	DIALOGUEEVENTGOODSLAVERS = "You come across the group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] later to be sold to at local market. \n\nThey are ready to part with [him] for a reasonable price of [price] gold. \n\nThe [race] gives you a desperate look. ",

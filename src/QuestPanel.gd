@@ -101,6 +101,12 @@ func show_quest_info(quest):
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				globals.connectmaterialtooltip(newbutton, material)
+			'usable':
+				var item = Items.itemlist[i.item]
+				newbutton.texture = item.icon
+				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
 	$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
 	$Time/Label.text = "Limit: " + str(quest.time_limit) + " days."
 	
@@ -172,6 +178,8 @@ func Reward():
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
 			'material':
 				state.materials[i.item] += i.value
+			'usable':
+				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
 	open()
 
 func CancelQuest():

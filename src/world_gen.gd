@@ -249,7 +249,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
-		quests_easy = ['warriors_threat_basic','warriors_dungeon_basic'],#['warriors_dungeon_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
+		quests_easy = ['warriors_threat_basic'],#,'warriors_dungeon_basic'],#['warriors_dungeon_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -567,18 +567,27 @@ var questdata = {
 		code = 'workers_resources_basic',
 		name = 'Resource gathering',
 		descript = 'The guild requires additional resources for its needs. ',
-		randomconditions = [{code = 'random_material', function = 'range', type = ['wood','stone','cloth','bone','leather'], range = [20,40]}],
+		randomconditions = [{code = 'random_material', function = 'range', type = ['wood','stone','cloth','bone','leather'], range = [10,20]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1,{code = 'gold', range = [100,150]}], #first value is a weight of reward
+		[0.3,{code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['axe','pickaxe','sickle']}],
+		],
 		time_limit = [8,12],
 	},
 	workers_food_basic = {
 		code = 'workers_food_basic',
 		name = 'Food supply',
 		descript = 'The guild requires additional food supplies.',
-		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [35,50]}],
+		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [25,50]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1,{code = 'gold', range = [100,150]}],
+		[1,{code = 'metarials', type = ['wood', 'stone','leather','cloth', 'iron'], range = [20,25]}],
+		[0.5,{code = 'gold', range = [50,75]},{code = 'metarials', type = ['steel', 'woodmagic','woodiron','clothsilk',''], range = [8,14]}],
+		],
 		time_limit = [8,12],
 	},
 	workers_craft_tools_basic = {
@@ -587,7 +596,10 @@ var questdata = {
 		descript = 'The guild requires specific instruments. ',
 		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [2,2]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [150,200],
+		rewards = [
+		[1, {code = 'gold', range = [150,200]}],
+		],
 		time_limit = [8,12],
 	},
 	workers_threat_basic = {
@@ -596,16 +608,26 @@ var questdata = {
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['axe','pickaxe','sickle']}],
+		[0.5, {code = 'gear_static', name = ['worker_outfit']}],
+		],
 		time_limit = [8,12],
 	},
 	warriors_threat_basic = {
 		code = 'warriors_threat_basic',
 		name = 'Trouble solving',
 		descript = 'The guild requires a help with a certain issue.',
-		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
+		randomconditions = [{code = 'complete_location', type = ['basic_threat_rebels'], difficulty = 'easy'}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','bow']}],
+		[100, {code = 'usable', name = ['exp_scroll'], value = [1,1]}]
+		],
 		time_limit = [8,12],
 	},
 	warriors_dungeon_basic = {
@@ -614,8 +636,12 @@ var questdata = {
 		descript = 'The guild requires a local dungeon to be cleared.',
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave'], difficulty = 'easy'}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-		randomrewards = [[{code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['axe','sword','bow']}]],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','bow']}, {code = 'gold', range = [25,50]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
+		],
 		time_limit = [8,12],
 	},
 	warriors_monster_hunt_basic = {
@@ -624,25 +650,36 @@ var questdata = {
 		descript = 'The guild has a task for hunting certain amount of enemies.',
 		randomconditions = [{code = 'kill_monsters', type = ['rat'], range = [6,9]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','bow']}, {code = 'gold', range = [10,30]}],
+		],
 		time_limit = [8,12],
 	},
 	mages_materials_basic = {
 		code = 'mages_materials_basic',
 		name = 'Resource gathering',
 		descript = 'The guild requires additional resources for its needs. ',
-		randomconditions = [{code = 'random_material', type = ['salvia','fleawarts','cloth'], range = [15,25]}],
+		randomconditions = [{code = 'random_material', type = ['salvia','fleawarts','cloth'], range = [10,15]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff']}, {code = 'gold', range = [25,50]}],
+		],
 		time_limit = [8,12],
 	},
 	mages_craft_potions_basic = {
 		code = 'mages_craft_potions_basic',
 		name = 'Potion Making',
 		descript = 'The guild requires a certain number of created items.',
-		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol'], range = [3,5]}],
+		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol'], range = [2,4]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		],
 		time_limit = [8,12],
 	},
 	mages_threat_basic = {
@@ -651,16 +688,25 @@ var questdata = {
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [100,150]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff']}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_cloth','legs_base_cloth']}],
+		
+		],
 		time_limit = [8,12],
 	},
 	servants_craft_items_basic = {
 		code = 'servants_craft_items_basic',
 		name = 'Items Request',
 		descript = 'The guild needs a specific crafter items',
-		randomconditions = [{code = 'random_item', type = ['leather_collar'], range = [2,2]}],
+		randomconditions = [{code = 'random_item', type = ['leather_collar','tail_plug','anal_plug'], range = [2,2]}],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		],
 		time_limit = [8,12],
 	},
 #	servants_slave_basic = {
@@ -733,28 +779,37 @@ func make_quest(questcode):
 		if tempdata.code == 'kill_monsters':
 			tempdata.curvalue = 0
 		requirements_number -= 1
+	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
+	var rewardarray = []
 	for i in template.rewards.duplicate():
-		i.value = round(rand_range(i.range[0],i.range[1]))
-		i.erase('range')
-		data.rewards.append(i)
-	if template.has('randomrewards'):
-		var bonus_reward = template.randomrewards[randi()%template.randomrewards.size()].duplicate(true)
-		for i in bonus_reward:
-			var reward
-			match i.code:#{code = 'gear', materialgrade = 'medium', name = ['axe','sword','bow']
-				'gear':
-					var dict = {item = i.name[randi()%i.name.size()], material_grade = i.material_grade}
-					reward = generate_random_gear(dict)
-					reward.item = reward.code
-					reward.code = 'gear'
-				'material':
-					reward.code = 'material'
-					reward.item = i.name[randi()%i.name.size()]
-					if reward.item in ['low','medium','high']:
-						reward.item = get_materials_by_grade(reward.item)
-						reward.item = reward.item[randi()%reward.item.size()]
-					reward.value = round(rand_range(i.value[0], i.value[1]))
-			data.rewards.append(reward)
+		rewardarray.append([i, i[0]])
+	rewardarray = input_handler.weightedrandom(rewardarray)
+	
+	for i in rewardarray:
+		var reward = {}
+		if typeof(i) != TYPE_DICTIONARY: continue #ignoring weight value
+		match i.code:
+			'gold':
+				reward.code = 'gold'
+				reward.value = round(rand_range(i.range[0], i.range[1]))
+			'gear':
+				var dict = {item = i.name[randi()%i.name.size()], material_grade = i.material_grade}
+				reward = generate_random_gear(dict)
+				reward.item = reward.code
+				reward.code = 'gear'
+			'material':
+				reward.code = 'material'
+				reward.item = i.name[randi()%i.name.size()]
+				if reward.item in ['low','medium','high']:
+					reward.item = get_materials_by_grade(reward.item)
+					reward.item = reward.item[randi()%reward.item.size()]
+				reward.value = round(rand_range(i.value[0], i.value[1]))
+			'usable':
+				reward.code = 'usable'
+				reward.item = i.name[randi()%i.name.size()]
+				reward.value = round(rand_range(i.value[0], i.value[1]))
+		
+		data.rewards.append(reward)
 	return data
 
 func take_quest(quest, area):
@@ -934,11 +989,11 @@ var dungeons = {
 		type = 'encounter',
 		name = 'Threat - Rebels',
 		classname = '',
-		descript = '.',
+		descript = "A group of rebels terrorize local villagers.",
 		background = '',
 		difficulties = {
 			easy = {code = 'easy', 
-			enemyarray =  [["wolves_easy1", 1]], 
+			enemyarray =  [["rebels_small", 1]], 
 			eventarray = [], 
 			levels = [1,1], 
 			resources = [],
@@ -946,7 +1001,7 @@ var dungeons = {
 			},
 		},
 		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'wolves_skirmish_start', args = {}}},
+		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'rebels_skirmish_start', args = {}}},
 		],
 	},
 #	dungeon_tutorial = {
@@ -1022,7 +1077,7 @@ var dungeons = {
 			easy = {code = 'easy', 
 			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [['dungeon_find_chest_easy', 1]], 
+			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 			levels = [2,3], 
 			resources = ['cloth','leather','iron','wood','clothsilk'],
 			stages_per_level = [2,3]
@@ -1030,7 +1085,7 @@ var dungeons = {
 			medium = {code = 'medium', 
 			enemyarray =  [['bandits_easy3', 1],['bandits_medium', 2],['bandits_assassin', 1], ['bandits_medium_bear', 1], ['bandits_golem', 1]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [], 
+			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 			levels = [3,5], 
 			resources = ['cloth','leather','iron','wood','clothsilk'],
 			stages_per_level = [3,4]
@@ -1038,7 +1093,7 @@ var dungeons = {
 			hard = {code = 'hard', 
 			enemyarray =  [['bandits_raptors', 2],['bandits_ballista', 1], ['bandits_assassin2', 1],['bandits_medium_bear', 1], ['bandits_golem', 1]], 
 			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [], 
+			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 			levels = [4,6], 
 			resources = ['cloth','leather','iron','wood','clothsilk'],
 			stages_per_level = [4,5]
@@ -1058,7 +1113,7 @@ var dungeons = {
 			easy = {code = 'easy', 
 			enemyarray =  [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [], 
+			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 			levels = [2,3], 
 			resources = ['bone','leather','stone','wood'],
 			stages_per_level = [2,3]
@@ -1066,7 +1121,7 @@ var dungeons = {
 			medium = {code = 'medium', 
 			enemyarray =  [['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [], 
+			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 			levels = [3,4], 
 			resources = ['leatherthick','iron','woodiron','bone','boneancient'],
 			stages_per_level = [2,4]
@@ -1086,7 +1141,7 @@ var dungeons = {
 			easy = {code = 'easy', 
 			enemyarray = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [], 
+			eventarray = [['dungeon_find_chest_easy', 1]],
 			levels = [2,3],
 			resources = ['cloth','leather','iron','wood'],
 			stages_per_level = [2,4],

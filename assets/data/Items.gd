@@ -1594,7 +1594,7 @@ var itemlist = {
 		explor_effect = 'i_res',
 		combat_effect = 'i_res',
 	},
-	exp_scroll = {#heals 10-15 hp
+	exp_scroll = {#gives 100xp
 		code = 'exp_scroll',
 		name = "",
 		descript = "",

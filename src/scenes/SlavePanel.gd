@@ -422,12 +422,12 @@ func set_rest():
 	person.remove_from_task()
 	person.work = ''
 	$job_panel.hide()
-	open(person)
+	update()
 
 func select_job(job, production):
 	person.assign_to_task(job.code, production)
 	$job_panel.hide()
-	open(person)
+	update()
 
 func set_work_rule(rule):
 	var setting = get_node("job_panel/work_rules/"+rule).pressed
@@ -535,7 +535,7 @@ func select_skill_target(skillcode):
 
 func use_skill(target):
 	person.use_social_skill(active_skill, target)
-	open(person)
+	update()
 
 func custom_description_open():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
@@ -543,7 +543,7 @@ func custom_description_open():
 
 func custom_description_set(text):
 	person.bonus_description = text
-	open(person)
+	update()
 
 func custom_nickname_open():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
@@ -551,7 +551,7 @@ func custom_nickname_open():
 
 func custom_nickname_set(text):
 	person.nickname = text
-	open(person)
+	update()
 
 func open_customize_button():
 	$DetailsPanel.show()
@@ -627,7 +627,7 @@ func return_to_mansion():
 		person.travel_time = max(1, round(active_area.travel_time + active_location.travel_time - person.travel_time))
 	else:
 		person.location = 'mansion'
-	open(person)
+	update()
 	input_handler.update_slave_list()
 
 

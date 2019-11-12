@@ -129,7 +129,7 @@ func close():
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
-	input_handler.ShowSlavePanel(input_handler.active_character)
+	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL).update()
 	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
 	close()
 

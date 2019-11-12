@@ -283,7 +283,8 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 		'miss':
 			FadeAnimation(textnode, fadetime, time)
 		"heal":
-			HealTextFly(textnode)
+			DamageTextFly(textnode, false)
+#			HealTextFly(textnode)
 	#FadeAnimation(textnode, fadetime, time)
 #	node.remove_child(textnode)
 #	get_tree().get_current_scene().add_child(textnode)
@@ -568,6 +569,9 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 
 var sprites = {
 	strike = 'res://assets/sfx/hit_animation/strike.tscn',
+	firebolt = 'res://assets/sfx/hit_animation/firebolt.tscn',
+	flame = 'res://assets/sfx/hit_animation/flame.tscn',
+	earth_spike = "res://assets/sfx/hit_animation/earth_spike.tscn",
 	}
 var particles = {
 	heal = "res://assets/sfx/HealEffect.tscn",
@@ -582,16 +586,16 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
-	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+	yield(get_tree().create_timer(delayuntilfade+fadeduration), 'timeout')
 
 	if wr.get_ref(): x.queue_free()
 
 func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
-	var x = load(sprites[effect]).instance()
+	var x = load(particles[effect]).instance()
 	node.add_child(x)
 	x.position = node.rect_size/2
 	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
-	x.play()
+	x.emitting = true
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
@@ -702,25 +706,16 @@ func string_to_math(value = 0, string = ''):
 		'/':value /= modvalue
 	return value
 	
-func weightedrandom(array): #array must be made out of dictionaries with {value = name, weight = number} Number is relative to other elements which may appear
-#alternative option is to use array of arrays of format [value, weight]
+func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
 	var total = 0
 	var counter = 0
 	for i in array:
-		if typeof(i) == TYPE_DICTIONARY:
-			total += i.weight
-		else:
-			total += i[1]
+		total += i[1]
 	var random = rand_range(0,total)
 	for i in array:
-		if typeof(i) == TYPE_DICTIONARY:
-			if counter + i.weight >= random:
-				return i #!!
-			counter += i.weight
-		else:
-			if counter + i[1] >= random:
-				return i[0] # strangely, array version returns value directly, while dict version returnt full dictionary
-			counter += i[1]
+		if counter + i[1] >= random:
+			return i[0] 
+		counter += i[1]
 
 func open_shell(string):
 	var path = string
@@ -1002,9 +997,10 @@ func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
-	var node = get_spec_node(input_handler.NODE_SLAVEPANEL)
+	var node = get_spec_node(input_handler.NODE_SLAVEPANEL, null, false)
 	if node.visible == true:
 		node.update()
+
 
 func check_mouse_in_nodes(nodes):
 	var check = false
@@ -1047,7 +1043,7 @@ var node_data = {
 	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
 }
 
-func get_spec_node(type, args = null):
+func get_spec_node(type, args = null, raise = true):
 	var window
 	var node = get_tree().get_root()
 	if node.has_node(node_data[type].name) and !node_data[type].has('no_return'):
@@ -1061,7 +1057,7 @@ func get_spec_node(type, args = null):
 				window = node_data[type].node.new()
 		window.name = node_data[type].name
 		node.add_child(window)
-	window.raise()
+	if raise: window.raise()
 	if node_data[type].has('args'): 
 		for param in node_data[type].args:
 			window.set(param, node_data[type].args[param])

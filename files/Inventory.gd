@@ -322,8 +322,8 @@ func unequip(slot):
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
 		#input_handler.GetItemTooltip().hide()
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-		buildinventory()
 		input_handler.update_slave_panel()
+		buildinventory()
 
 func rebuild_characters():
 	globals.ClearContainer($CharacterPanel/ScrollContainer/VBoxContainer)

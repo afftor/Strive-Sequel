@@ -61,6 +61,30 @@ func _ready():
 		input_handler.active_location.group = {1:test_slave.id, 4:test_slave2.id}
 		input_handler.StartCombat('wolves_skirmish')
 
+func testcombat():
+	current_level = 1
+	current_stage = 1
+	input_handler.active_location = {stagedenemies = []}
+	input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
+	var test_slave = Slave.new()
+	test_slave.create('BeastkinWolf', 'male', 'random')
+	test_slave.unlock_class("smith")
+	test_slave.unlock_class("apprentice")
+	test_slave.unlock_class("fighter")
+	test_slave.unlock_class("dragonknight")
+	state.materials.unstable_concoction = 5
+	state.materials.bandage = 2
+	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
+	globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
+	state.add_slave(test_slave)
+	test_slave.speed = 100
+	test_slave.wits = 100.0
+	var test_slave2 = Slave.new()
+	test_slave2.create('BeastkinWolf', 'male', 'random')
+	state.add_slave(test_slave2)
+	input_handler.active_location.group = {1:test_slave.id, 4:test_slave2.id}
+	input_handler.StartCombat('wolves_skirmish')
+
 func show_heal_items(position):
 	if get_node(positiondict[position] + "/Image").visible == true:
 		input_handler.MousePositionScripts.append({nodes = [$Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
@@ -599,6 +623,12 @@ func see_quest_info(quest):
 				item.set_icon(newbutton)
 				input_handler.ghost_items.append(item)
 				globals.connectitemtooltip(newbutton, item)
+			'usable':
+				var item = Items.itemlist[i.item]
+				newbutton.texture = item.icon
+				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
 			'gold':
 				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
 				newbutton.get_node("amount").text = str(i.value)
@@ -1078,6 +1108,10 @@ func finish_combat():
 	if action_type == 'advance':
 		active_location.progress.stage += 1
 		enter_level(active_location.progress.level)
+	elif action_type == 'location_finish':
+		leave_location()
+		update_categories()
+		select_category('locations')
 	else:
 		enter_level(current_level)
 
@@ -1095,8 +1129,8 @@ func clear_dungeon_confirm():
 	active_area.locations.erase(active_location.id)
 	active_area.questlocations.erase(active_location.id)
 	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
-	leave_location()
-	update_categories()
+	action_type = 'location_finish'
+	
 
 func leave_location():
 	select_category(selectedcategory)

@@ -368,7 +368,6 @@ text = "1"
 align = 2
 
 [node name="Log" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 464.0
 margin_top = 62.0
 margin_right = 1192.0
@@ -580,7 +579,6 @@ visible = false
 visible = false
 
 [node name="TestButton" type="Button" parent="."]
-visible = false
 margin_left = 731.847
 margin_top = 801.205
 margin_right = 858.847

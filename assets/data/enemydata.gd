@@ -6,6 +6,7 @@ var predeterminatedgroups = {
 
 var encounters = {
 	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	rebels_skirmish = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
 	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
 	rebels_small = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
 }
@@ -211,9 +212,9 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 66], ['ads', 33]],
-		ai_hard = [['basic', 50], ['ads', 50]],
-		ai_position = ['melee'],
+		ai = [['basic', 75], ['aoe', 25]],
+		ai_hard = [['basic', 50], ['aoe', 50]],
+		ai_position = ['melee','fire_cleave'],
 		xpreward = 20,
 	},
 	rebel_mage = {
@@ -234,12 +235,12 @@ var enemies = {
 		loot = 'bandit_loot',
 		icon = null,
 		body = null,
-		skills = ['firearr','ranged_attack'],
+		skills = ['firearr','ranged_attack','blizzard'],
 		traits = [],
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 33], ['ads', 66]],
+		ai = [['aoe', 33], ['ads', 66]],
 		ai_position = ['ranged'],
 		xpreward = 25,
 	},

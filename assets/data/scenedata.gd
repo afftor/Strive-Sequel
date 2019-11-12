@@ -10,6 +10,7 @@ var scenedict = {
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
 	wolves_skirmish_start = {text = tr("DIALOGUEWOLVES_SKIRMISH_START"), set_enemy = 'wolves_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
+	rebels_skirmish_start = {text = tr("DIALOGUEREBELS_SKIRMISH_START"), set_enemy = 'rebels_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
 	
 	character_boss_defeat = {text = tr("DIALOGUERANDOMBOSSDEFEAT"), 
@@ -317,8 +318,8 @@ var scenedict = {
 	options = [
 	{code = 'minorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
 	{code = 'minorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
 	]
 	},
 	majorus_potion_select = {text = tr("DIALOGUEEVENTMAJORUSSELECT"), 
@@ -327,8 +328,8 @@ var scenedict = {
 	options = [
 	{code = 'majorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
 	{code = 'majorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'majorus_balls', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'majorus_penis', reqs = [{type = 'active_character_checks', charreqs = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'majorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'majorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
 	]
 	},
 	

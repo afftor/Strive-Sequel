@@ -674,8 +674,8 @@ func get_racial_features():
 	
 	var array = []
 	for i in race_template.diet_love:
-		array.append({name = i, weight = race_template.diet_love[i]})
-	food_love = input_handler.weightedrandom(array).name
+		array.append([i, race_template.diet_love[i]])
+	food_love = input_handler.weightedrandom(array)
 	for i in race_template.diet_hate:
 		if race_template.diet_hate[i] >= randf()*100 && i != food_love:
 			food_hate.append(i)
@@ -943,8 +943,8 @@ var stat_description = {
 func get_random_race():
 	var array = []
 	for i in races.racelist.values():
-		array.append({name = i.code, weight = i.global_weight})
-	return input_handler.weightedrandom(array).name
+		array.append([i.code, i.global_weight])
+	return input_handler.weightedrandom(array)
 
 func get_random_sex():
 	if randf()*100 <= globals.globalsettings.malechance:
@@ -957,8 +957,8 @@ func get_random_sex():
 func get_random_age():
 	var array = []
 	for i in ['teen','adult','mature']:
-		array.append({name = i, weight = variables.get(i+"_age_weight")})
-	return input_handler.weightedrandom(array).name
+		array.append([i, variables.get(i+"_age_weight")])
+	return input_handler.weightedrandom(array)
 
 
 
@@ -2288,7 +2288,6 @@ func use_social_skill(s_code, target):#add logging if needed
 			if maxstat != 0:
 				effect_text += "/" + str(floor(maxstat))
 			effect_text += " (" + change + "" + str(floor(tmp)) + ")"
-
 	if template.has("dialogue_report"):
 		var data = {text = '', tags = ['skill_report_event'], options = []}
 		var text = translate(template.dialogue_report)
@@ -2306,7 +2305,7 @@ func use_social_skill(s_code, target):#add logging if needed
 		input_handler.active_character = self
 		input_handler.target_character = target
 		input_handler.activated_skill = s_code
-		input_handler.scene_characters.append(target)
+		if input_handler.scene_characters.has(target) == false: input_handler.scene_characters.append(target)
 		
 		data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
 		

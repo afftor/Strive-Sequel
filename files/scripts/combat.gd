@@ -233,7 +233,7 @@ func victory():
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	
-	input_handler.PlaySound("victory")
+	input_handler.PlaySound("questcomplete")
 	
 	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():

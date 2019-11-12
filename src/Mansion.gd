@@ -127,7 +127,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("elegant_choker", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
+		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll"))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
@@ -166,7 +166,8 @@ func _ready():
 	$TestButton.connect("pressed", self, "quest_test")
 
 func quest_test():
-	input_handler.emit_signal('EnemyKilled', 'rat')
+	$Exploration.testcombat()
+	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):
 	if self.visible == false:
