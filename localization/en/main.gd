@@ -616,6 +616,9 @@ var TranslationDict = {
 	SLAVEPARTANAL_VIRGIN = "Anal Virgin",
 	SLAVEPARTPENIS_VIRGIN = "Penis Virgin",
 	SLAVEPARTSEXTRAIT = "Sexual Trait",
+	SLAVEPARTPERSONALITY = "Personality",
+	
+	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and has no gameplay effects.",
 	
 	SLAVEDIET = "Food Preferences",
 	SLAVESTARTINGCLASS = "Starting Class",
@@ -1030,7 +1033,7 @@ var TranslationDict = {
 	DIALOGUEEXP_SCROLLREPORT = "[name] reads the scrool. New knowledge fill [his] mind...",
 	
 	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it. ",
-	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you. \n\n- Pleased to meet you, [master]. Please, take care of me. ",
+	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you. ",#\n\n- Pleased to meet you, [master]. Please, take care of me.
 	
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with specific bonus. Requires at least 50 lust.",

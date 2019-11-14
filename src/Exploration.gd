@@ -536,6 +536,8 @@ func guild_hire_slave():
 			input_handler.interactive_message('hire', '', {})
 			input_handler.PlaySound("money_spend")
 			faction_hire()
+			yield(get_tree().create_timer(1),"timeout")
+			input_handler.add_random_chat_message(selectedperson, 'hire')
 		'sell':
 			state.money += round(selectedperson.calculate_price()/3)
 			state.remove_slave(selectedperson)
@@ -737,6 +739,7 @@ func faction_services():
 func enslave():
 	var reqs = [{code = 'slave_type', value = 'slave', operant = 'neq'}, {code = "is_master", check = false}]
 	input_handler.ShowSlaveSelectPanel(self, 'enslave_select', reqs)
+	
 
 func enslave_select(character:Slave):
 	character.set_slave_category("slave")
@@ -748,6 +751,8 @@ func enslave_select(character:Slave):
 	state.character_stat_change(character, {code = 'fear', operant = '-', value = 75})
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
+	yield(get_tree().create_timer(1), "timeout")
+	input_handler.add_random_chat_message(character, 'enslave')
 
 func free():
 	pass

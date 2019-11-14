@@ -31,6 +31,8 @@ var sex = ''
 var slave_class = ''
 var personality = ''
 
+var chat_settings = {}
+
 var professions = []
 var social_skills = []
 var social_cooldowns = {}
@@ -75,8 +77,13 @@ var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
 var mpmax = 50 setget ,get_mana_max
 
-var base_exp = 0
+var base_exp = 0 setget base_exp_set
 var exp_mod = 1
+
+func base_exp_set(value):
+	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
+		input_handler.add_random_chat_message(self, 'exp_for_level')
+	base_exp = value
 
 #enemy combat/reward data
 var xpreward = 10
@@ -1404,6 +1411,8 @@ func work_tick_values(currenttask):
 func make_item_sequence(currenttask, craftingitem):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
 		make_item(craftingitem)
+		if Items.recipes[craftingitem.code] != 'material' && randf() < 0.25:
+			input_handler.get_person_for_chat(currenttask.workers, 'item_created')
 		craftingitem.workunits -= craftingitem.workunits_needed
 		if craftingitem.repeats != 0:
 			if check_recipe_resources(craftingitem) == true:

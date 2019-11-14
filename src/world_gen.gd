@@ -249,7 +249,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
-		quests_easy = ['warriors_threat_basic'],#,'warriors_dungeon_basic'],#['warriors_dungeon_basic','warriors_monster_hunt_basic','warriors_fighter_slave_basic'],
+		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],#['warriors_dungeon_easy','warriors_monster_hunt_easy','warriors_fighter_slave_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -262,7 +262,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
-		quests_easy = ['mages_materials_basic','mages_craft_potions_basic'],#'mages_threat_basic','mages_slave_basic'
+		quests_easy = ['mages_materials_easy','mages_craft_potions_easy','mages_threat_easy'],#,'mages_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -275,7 +275,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['labor'],
 		character_types = [['servant',1]],
-		quests_easy = ['workers_resources_basic','workers_food_basic','workers_craft_tools_basic'],#,'workers_threat_basic'
+		quests_easy = ['workers_resources_easy','workers_food_easy','workers_craft_tools_easy','workers_threat_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -288,7 +288,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
-		quests_easy = ['servants_craft_items_basic'],#,'servants_slave_basic'
+		quests_easy = ['servants_craft_items_easy'],#,'servants_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,3],
@@ -563,8 +563,8 @@ func fail_quest(quest):
 
 
 var questdata = {
-	workers_resources_basic = {
-		code = 'workers_resources_basic',
+	workers_resources_easy = {
+		code = 'workers_resources_easy',
 		name = 'Resource gathering',
 		descript = 'The guild requires additional resources for its needs. ',
 		randomconditions = [{code = 'random_material', function = 'range', type = ['wood','stone','cloth','bone','leather'], range = [10,20]}],
@@ -576,8 +576,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	workers_food_basic = {
-		code = 'workers_food_basic',
+	workers_food_easy = {
+		code = 'workers_food_easy',
 		name = 'Food supply',
 		descript = 'The guild requires additional food supplies.',
 		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [25,50]}],
@@ -590,8 +590,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	workers_craft_tools_basic = {
-		code = 'workers_craft_tools_basic',
+	workers_craft_tools_easy = {
+		code = 'workers_craft_tools_easy',
 		name = 'Tool making',
 		descript = 'The guild requires specific instruments. ',
 		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [2,2]}],
@@ -602,8 +602,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	workers_threat_basic = {
-		code = 'workers_threat_basic',
+	workers_threat_easy = {
+		code = 'workers_threat_easy',
 		name = 'Trouble solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
@@ -616,8 +616,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	warriors_threat_basic = {
-		code = 'warriors_threat_basic',
+	warriors_threat_easy = {
+		code = 'warriors_threat_easy',
 		name = 'Trouble solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_rebels'], difficulty = 'easy'}],
@@ -626,12 +626,11 @@ var questdata = {
 		rewards = [
 		[1, {code = 'gold', range = [100,150]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','bow']}],
-		[100, {code = 'usable', name = ['exp_scroll'], value = [1,1]}]
 		],
 		time_limit = [8,12],
 	},
-	warriors_dungeon_basic = {
-		code = 'warriors_dungeon_basic',
+	warriors_dungeon_easy = {
+		code = 'warriors_dungeon_easy',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave'], difficulty = 'easy'}],
@@ -644,11 +643,11 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	warriors_monster_hunt_basic = {
-		code = 'warriors_monster_hunt_basic',
+	warriors_monster_hunt_easy = {
+		code = 'warriors_monster_hunt_easy',
 		name = 'Monster Hunt',
 		descript = 'The guild has a task for hunting certain amount of enemies.',
-		randomconditions = [{code = 'kill_monsters', type = ['rat'], range = [6,9]}],
+		randomconditions = [{code = 'kill_monsters', type = ['rat','wolf'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
@@ -657,8 +656,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	mages_materials_basic = {
-		code = 'mages_materials_basic',
+	mages_materials_easy = {
+		code = 'mages_materials_easy',
 		name = 'Resource gathering',
 		descript = 'The guild requires additional resources for its needs. ',
 		randomconditions = [{code = 'random_material', type = ['salvia','fleawarts','cloth'], range = [10,15]}],
@@ -670,8 +669,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	mages_craft_potions_basic = {
-		code = 'mages_craft_potions_basic',
+	mages_craft_potions_easy = {
+		code = 'mages_craft_potions_easy',
 		name = 'Potion Making',
 		descript = 'The guild requires a certain number of created items.',
 		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol'], range = [2,4]}],
@@ -682,8 +681,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	mages_threat_basic = {
-		code = 'mages_threat_basic',
+	mages_threat_easy = {
+		code = 'mages_threat_easy',
 		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
@@ -691,14 +690,13 @@ var questdata = {
 		reputation = [100,150],
 		rewards = [
 		[1, {code = 'gold', range = [100,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff']}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_cloth','legs_base_cloth']}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['staff','chest_base_cloth','legs_base_cloth']}],
 		
 		],
 		time_limit = [8,12],
 	},
-	servants_craft_items_basic = {
-		code = 'servants_craft_items_basic',
+	servants_craft_items_easy = {
+		code = 'servants_craft_items_easy',
 		name = 'Items Request',
 		descript = 'The guild needs a specific crafter items',
 		randomconditions = [{code = 'random_item', type = ['leather_collar','tail_plug','anal_plug'], range = [2,2]}],
@@ -709,8 +707,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-#	servants_slave_basic = {
-#		code = 'servants_slave_basic',
+#	servants_slave_easy = {
+#		code = 'servants_slave_easy',
 #		name = 'Slave Request',
 #		descript = 'The guild is in need of specific trained individual.',
 #		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
@@ -718,8 +716,8 @@ var questdata = {
 #		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 #		time_limit = [8,12],
 #	},
-#	warriors_fighter_slave_basic = {
-#		code = 'warriors_fighter_slave_basic',
+#	warriors_fighter_slave_easy = {
+#		code = 'warriors_fighter_slave_easy',
 #		type = 'slavegetquest',
 #		name = 'Slave Request',
 #		descript = 'The guild is in need of specific trained individual.',
@@ -728,8 +726,8 @@ var questdata = {
 #		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
 #		time_limit = [8,12],
 #	},
-#	mages_slave_basic = {
-#		code = 'mages_slave_basic',
+#	mages_slave_easy = {
+#		code = 'mages_slave_easy',
 #		type = 'slavegetquest',
 #		name = 'Slave Request',
 #		descript = 'The guild is in need of specific trained individual.',
@@ -766,7 +764,6 @@ func make_quest(questcode):
 	data.time_limit = round(rand_range(template.time_limit[0], template.time_limit[1]))
 	data.state = 'free'
 	
-	#location = location - add quest placement
 	var requirements_number = 1
 	var reqsarray = template.randomconditions.duplicate()
 	while requirements_number > 0:
@@ -779,7 +776,6 @@ func make_quest(questcode):
 		if tempdata.code == 'kill_monsters':
 			tempdata.curvalue = 0
 		requirements_number -= 1
-	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
 	var rewardarray = []
 	for i in template.rewards.duplicate():
 		rewardarray.append([i, i[0]])
@@ -810,6 +806,9 @@ func make_quest(questcode):
 				reward.value = round(rand_range(i.value[0], i.value[1]))
 		
 		data.rewards.append(reward)
+	
+	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
+	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})
 	return data
 
 func take_quest(quest, area):

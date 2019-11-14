@@ -135,7 +135,7 @@ func cancel_skill_usage():
 
 func repeat():
 	input_handler.repeat_social_skill()
-	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL).open(null)
+	input_handler.update_slave_panel()
 
 func recruit_from_scene(order = 0):
 	input_handler.active_character = input_handler.scene_characters[order]
@@ -157,6 +157,7 @@ func recruit():
 	else:
 		person.location = 'mansion'
 	state.add_slave(person)
+	input_handler.add_random_chat_message(person, 'hire')
 	close()
 
 func create_location_recruit(args):

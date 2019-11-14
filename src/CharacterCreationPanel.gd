@@ -36,6 +36,10 @@ func _ready():
 	$VBoxContainer/age.connect("item_selected", self, "select_age")
 	$VBoxContainer/sex.connect("item_selected", self, "select_sex")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
+	for i in variables.personality_array:
+		$VBoxContainer/personality.add_item(i.capitalize())
+	$VBoxContainer/personality.connect("item_selected", self, "select_personality")
+	globals.connecttexttooltip($VBoxContainer/personality, tr("SLAVEPARTPERSONALITYDESCRIPT"))
 	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
 	$CancelButton.connect("pressed", self, "confirm_return")
@@ -203,6 +207,8 @@ func rebuild_slave():
 	$VBoxContainer/race.text = races.racelist[person.race].name
 	$VBoxContainer/sex.select(sexarray.find(person.sex))
 	$VBoxContainer/age.select(agearray.find(person.age))
+	$VBoxContainer/personality.visible = mode != 'master'
+	$VBoxContainer/personality.select(variables.personality_array.find(person.personality))
 	person.food_love = ''
 	person.food_hate.clear()
 	
@@ -247,6 +253,9 @@ func select_age(value):
 func select_sex(value):
 	person.sex = sexarray[value]
 	rebuild_slave()
+
+func select_personality(value):
+	preservedsettings.personality = variables.personality_array[value]
 
 func select_race():
 	$RaceSelection.show()
@@ -539,6 +548,6 @@ func select_sex_trait(trait):
 		person.sex_traits.append(trait.code)
 	$TraitSelection.hide()
 	#input_handler.GetTextTooltip().hide()
-	input_handler.input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	RebuildStatsContainer()
 

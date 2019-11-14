@@ -137,6 +137,7 @@ var fear_modifier = 1.0
 
 #World settings
 var dungeon_encounter_chance = 0.2
+var exp_scroll_quest_reward = true
 
 #Cheats
 var instant_travel = false
@@ -188,5 +189,5 @@ var starting_resources = {
 	vegetables = 25,
 }
 
-var personality_array = ['shy','bold','serious','kind']
+var personality_array = ['kind','bold','shy','serious']
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']

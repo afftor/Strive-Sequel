@@ -951,6 +951,20 @@ func get_combat_node():
 	window.raise()
 	return window
 
+func get_person_for_chat(array, event, bonus_args = {}):
+	var allowed_array = []
+	var weight = 0
+	for i in array:
+		var person = characters_pool.get_char_by_id(i)
+		if state.get_master() == person:
+			continue
+		weight = 1
+		allowed_array.append([person, weight])
+	
+	var person = weightedrandom(allowed_array)
+	
+	add_random_chat_message(person, event)
+
 func add_random_chat_message(person, event):
 	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
 	node.select_chat_line(person, event)

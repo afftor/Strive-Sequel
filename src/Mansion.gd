@@ -103,7 +103,7 @@ func _ready():
 		character.obedience = 0
 		character.fear = 25
 		character.lust = 50
-		character.base_exp += 500
+		#character.base_exp += 500
 		character.charm_factor = 5
 		character.charm = 100
 		character.mp = 100
@@ -127,7 +127,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("elegant_choker", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll"))
+		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
@@ -141,7 +141,10 @@ func _ready():
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
-		input_handler.interactive_message('event_good_rebels_beastkin', 'character_event', scenedata.scenedict.event_good_rebels_beastkin.bonus_args)
+		var newchar = input_handler.make_story_character('Daisy')
+		state.add_slave(newchar)
+		input_handler.add_random_chat_message(newchar, 'hire')
+	#	input_handler.interactive_message('event_good_rebels_beastkin', 'character_event', scenedata.scenedict.event_good_rebels_beastkin.bonus_args)
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -166,7 +169,8 @@ func _ready():
 	$TestButton.connect("pressed", self, "quest_test")
 
 func quest_test():
-	$Exploration.testcombat()
+	input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
+	#$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):

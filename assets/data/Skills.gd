@@ -1315,7 +1315,6 @@ var Skilllist = {
 	#so additional effect is the same as of serrated shot
 	#the sama as serrated shot - should it be simple bleed?
 		code = 'bleeding_strike',
-		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Lich-strike.png"),
 		type = 'combat', 
@@ -2500,7 +2499,6 @@ var Skilllist = {
 	},
 	i_lifegem = {
 		code = 'i_lifegem',
-		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2528,7 +2526,6 @@ var Skilllist = {
 	},
 	i_energyshard = {
 		code = 'i_energyshard',
-		
 		descript = '',
 		icon = null,
 		type = 'combat', 
@@ -2556,7 +2553,6 @@ var Skilllist = {
 	},
 	i_energygem = {
 		code = 'i_energygem',
-		
 		descript = '',
 		icon = null,
 		type = 'combat', 
