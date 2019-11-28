@@ -421,10 +421,10 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	
 	#not sure if this is correct
 	if rangetype == 'weapon':
-		if caster.gear.rhand == null:
+		if fighter.gear.rhand == null:
 			rangetype = 'melee'
 		else:
-			var weapon = state.items[activecharacter.gear.rhand]
+			var weapon = state.items[fighter.gear.rhand]
 			rangetype = weapon.weaponrange
 	highlightargets = true
 	allowedtargets.clear()
@@ -831,13 +831,7 @@ func use_skill(skill_code, caster, target):
 	
 	if caster == null: caster = dummy
 	
-	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST)
-	for e in caster.triggered_effects:
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill:
-			eff.set_args('skill', s_skill1)
-			eff.process_event(variables.TR_CAST)
-			eff.set_args('skill', null)
+	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST, s_skill1)
 
 	turns += 1
 	#preparing animations
@@ -895,20 +889,8 @@ func use_skill(skill_code, caster, target):
 		#predamage triggers
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_HIT)
-			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_HIT)
-			for e in s_skill2.caster.triggered_effects:
-				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-				if eff.req_skill:
-					eff.set_args('skill', s_skill2)
-					eff.process_event(variables.TR_HIT)
-					eff.set_args('skill', null)
-			s_skill2.target.process_event(variables.TR_DEF)
-			for e in s_skill2.target.triggered_effects:
-				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-				if eff.req_skill:
-					eff.set_args('skill', s_skill2)
-					eff.process_event(variables.TR_DEF) 
-					eff.set_args('skill', null)
+			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
+			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
@@ -936,22 +918,10 @@ func use_skill(skill_code, caster, target):
 		#postdamage triggers and cleanup real_target s_skills
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_POSTDAMAGE)
-			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_POSTDAMAGE)
-			for e in s_skill2.caster.triggered_effects:
-				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-				if eff.req_skill:
-					eff.set_args('skill', s_skill2)
-					eff.process_event(variables.TR_POSTDAMAGE)
-					eff.set_args('skill', null)
+			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
-				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL)
-				for e in s_skill2.caster.triggered_effects:
-					var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-					if eff.req_skill:
-						eff.set_args('skill', s_skill2)
-						eff.process_event(variables.TR_KILL)
-						eff.set_args('skill', null)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
 			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
@@ -960,13 +930,7 @@ func use_skill(skill_code, caster, target):
 			s_skill2.remove_effects()
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
-	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH)
-	for e in caster.triggered_effects:
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill:
-			eff.set_args('skill', s_skill1)
-			eff.process_event(variables.TR_SKILL_FINISH)
-			eff.set_args('skill', null)
+	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 	s_skill1.remove_effects()
 	#follow-up
 	if skill.has('follow_up'):

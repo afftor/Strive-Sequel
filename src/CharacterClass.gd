@@ -393,9 +393,20 @@ func get_mods():
 		if bonuses.has('mod' + r + '_mul'): res[r] *= bonuses['mod' + r + '_mul']
 	return res
 
+func get_weapon_range():
+	if gear.rhand == null:
+		return 'melee'
+	else:
+		var weapon = state.items[gear.rhand]
+		return weapon.weaponrange
+
 func get_damage_mod(skill:Dictionary):
 	#stub. needs filling
 	var res = self.damage_mods['all']
+	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= self.damage_mods['melee']
+	if skill.target_range == 'weapon' and get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= self.damage_mods['melee']
+	if skill.target_range == 'any' and damage_mods.has('ranged'): res *= self.damage_mods['ranged']
+	if skill.target_range == 'weapon' and get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= self.damage_mods['ranged']
 	return res
 
 #some AI-related functions
@@ -1876,14 +1887,19 @@ func clean_effects():#clean effects before deleting character
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 
-func process_event(ev):
+func process_event(ev, skill = null):
 	for e in temp_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(ev)
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill: continue
-		var tr = eff.process_event(ev) #stub for more direct controling of temps removal
+		if skill != null and eff.req_skill:
+			eff.set_args('skill', skill)
+			eff.process_event(ev)
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(ev)
+
 
 func can_act():
 	var res = true
