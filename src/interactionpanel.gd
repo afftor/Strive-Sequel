@@ -393,16 +393,17 @@ class member:
 					for i in scenedict.givers:
 						globals.addrelations(person, i.person, -rand_range(5,10))
 					person.obedience += values.obed
-					person.stress += values.stress
+#					person.stress += values.stress
 					if person.effects.has("captured") && randf() >= values.obed/2:
 						person.effects.captured.duration -= 1
 				else:
 					if person.asser < 35 && randf() < 0.1:
 						actionshad.addtraits.append('Likes it rough')
 					if !person.traits.has('Masochist') && !person.traits.has('Sex-crazed'):
-						if values.has('stress') == false:
-							values.stress = rand_range(2,6)
-						person.stress += values.stress
+						pass #leftover checks, to fill in later
+#						if values.has('stress') == false:
+#							values.stress = rand_range(2,6)
+#						person.stress += values.stress
 			if values.tags.has('group'):
 				actionshad.group += 1
 		
@@ -627,6 +628,14 @@ func startsequence(actors):
 	changecategory('caress')
 	clearstate()
 	rebuildparticipantslist()
+	var array = []
+	var has_master = true
+	var args = []
+	for i in participants:
+		array.append(i.person.id)
+		if i.person == state.get_master():
+			args.append("partner_is_master")
+	input_handler.get_person_for_chat(array, 'sex_start', args)
 
 
 func clearstate():
@@ -1126,19 +1135,37 @@ func startscene(scenescript, cont = false, pretext = ''):
 				i.person.vaginal_virgin = false
 				virgin.type = 'vaginal'
 				virgin.character = i
+				if takers.size() == 1 && takers[0].person == state.get_master():
+					i.person.authority += 25
+					i.person.loyalty += 30
 			elif scenescript.giverpart == 'anus' && i.person.anal_virgin == true:
 				i.person.anal_virgin = false
 				virgin.type = 'anal'
 				virgin.character = i
+				if takers.size() == 1 && takers[0].person == state.get_master():
+					i.person.authority += 10
+					i.person.loyalty += 15
 		for i in takers:
 			if scenescript.takerpart == 'vagina' && i.person.vaginal_virgin == true:
 				i.person.vaginal_virgin = false
 				virgin.type = 'vaginal'
 				virgin.character = i
+				if givers.size() == 1 && givers[0].person == state.get_master():
+					i.person.authority += 25
+					i.person.loyalty += 30
 			elif scenescript.takerpart == 'anus' && i.person.anal_virgin == true:
 				i.person.anal_virgin = false
 				virgin.type = 'anal'
 				virgin.character = i
+				if givers.size() == 1 && givers[0].person == state.get_master():
+					i.person.authority += 10
+					i.person.loyalty += 15
+		if scenescript.giverpart == 'penis':
+			for i in givers:
+				i.person.penis_virgin = false
+		elif scenescript.takerpart == 'penis':
+			for i in takers:
+				i.person.penis_virgin = false
 	
 	
 	
@@ -1299,7 +1326,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	var x = (givers.size()+takers.size())/2
 	
-	if virgin.type != null && virgin.character.person.professions.has("master") == false:
+	if virgin.type != null && virgin.character != state.get_master():
 		mandatoryspeech = true
 		mandatoryspeechdict = {character = virgin.character, line = "virgin_" + virgin.type}
 	
@@ -1918,6 +1945,15 @@ func endencounter():
 	
 	
 	ongoingactions.clear()
+	
+	var array = []
+	var has_master = true
+	var args = []
+	for i in participants:
+		array.append(i.person.id)
+		if i.person == state.get_master():
+			args.append("partner_is_master")
+	input_handler.get_person_for_chat(array, 'sex_finish', args)
 	
 	get_node("Control").show()
 	get_node("Control/Panel/RichTextLabel").set_bbcode(text)

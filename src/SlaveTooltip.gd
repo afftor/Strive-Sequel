@@ -37,11 +37,11 @@ func showup(node, person):
 	
 	for i in ['physics','wits','charm','sexuals']:
 		get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) + '/' + str(person[i+'_factor']*20) 
-	for i in ['obedience','fear']:
-		get_node("VBoxContainer/"+ i + '/bar').value = person[i]
-		if i == 'lust':
-			get_node("VBoxContainer/"+ i + '/bar').max_value = person.lustmax
-		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(get_node("VBoxContainer/"+ i + '/bar').max_value)
+#	for i in ['loyalty','submission']:
+#		get_node("VBoxContainer/"+ i + '/bar').value = person[i]
+#		if i == 'lust':
+#			get_node("VBoxContainer/"+ i + '/bar').max_value = person.lustmax
+#		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person[i])) + "/" + str(get_node("VBoxContainer/"+ i + '/bar').max_value)
 	
 	for i in ['hp','mp','lust']:
 		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
@@ -53,7 +53,14 @@ func showup(node, person):
 			text += "Occupation: " + races.tasklist[person.work].name
 		else:
 			text += "Occupation: None"
-	$job.bbcode_text = text 
+		text += "\n"
+		if state.get_master() != person:
+			if person.obedience > 0:
+				text += "{color=green|Obedience: " 
+			else:
+				text += "{color=red|Obedience: " 
+			text += str(person.obedience) + "}"
+	$job.bbcode_text = globals.TextEncoder(text) 
 	
 	
 	globals.ClearContainer($GridContainer)
@@ -74,33 +81,39 @@ func showup(node, person):
 	if person.professions.has('master') || person.is_players_character == false:
 		if person.is_players_character == false:
 			$VBoxContainer/lust.hide()
-		$VBoxContainer/fear.hide()
-		$VBoxContainer/obedience.hide()
+		#$VBoxContainer/fear.hide()
+		#$obedience.hide()
 	else:
 		$VBoxContainer/lust.show()
-		$VBoxContainer/fear.show()
-		$VBoxContainer/obedience.show()
+		#$VBoxContainer/fear.show()
+		#$obedience.show()
 	
 	
-	if $VBoxContainer/obedience.visible:
-		if person.obedience > 50:
-			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-		elif person.obedience > person.brave_factor*7:
-			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-		else:
-			if person.check_escape_chance() == true:
-				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-			else:
-				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
-		if person.fear > 50:
-			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-		elif person.fear > person.brave_factor*7:
-			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-		else:
-			if person.check_escape_chance() == true:
-				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-			else:
-				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+#	if $obedience.visible:
+#		$obedience/Label.text = str(person.obedience)
+#		if person.obedience > 0:
+#			$obedience.texture = load("res://assets/images/gui/gui icons/obedience1.png")
+#		else:
+#			$obedience.texture = load("res://assets/images/gui/gui icons/obedience3.png")
+			
+#		if person.obedience > 50:
+#			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+#		elif person.obedience > person.timid_factor*7:
+#			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+#		else:
+#			if person.check_escape_chance() == true:
+#				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+#			else:
+#				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
+#		if person.fear > 50:
+#			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
+#		elif person.fear > person.timid_factor*7:
+#			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
+#		else:
+#			if person.check_escape_chance() == true:
+#				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
+#			else:
+#				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
 	
 	globals.ClearContainer($buffs)
 	

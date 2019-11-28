@@ -10,7 +10,8 @@ var tutorial_themes = {
 	outside = {name = 'Exploration', text = ''},
 	crafting = {name = "Crafting", text = "To craft an item, select the number of desired items, then assign a worker to task, responsible for production. Resources will be consumed when each new item starts its production. You can unlock more crafts by making upgrades and finding new recipes."},
 	upgrades = {name = "Upgrades", text = "After selecting an upgrade, make sure to assign a character to work on it. Physics and Wits, as well as certain classes can improve upgrading speed. It is recommended to start with either {color=yellow|Tailor Workshop or Forge} as those buildings will unlock more crafting recipes. "},
-	skills = {name = 'Skills', text = "At the bottom of Character's Tab you can see their {color=yellow|Ability Panel}. Social abilities can be used in mansion and most importantly, provide tools to control your chacters. You most important stats to look at are: {color=green|Fear and Obedience}. Try to keep either of them high or your characters will attempt to leave you. Their decay depends greatly and characters, so if you have problems with it, try to aim for characters with higher {color=yellow|Tame Factor} or lower {color=yellow|Brave factor}, or consider getting decay reducing items. "},
+	skills = {name = 'Skills & Obedience', text = "At the bottom of Character's Tab you can see their {color=yellow|Ability Panel}. Social abilities can be used in mansion and most importantly, provide tools to make your chacters Obedient. {color=green|Obedience} is required for characters to work and consumed every work hour. {color=green|Loyal or Submission}, once maxed out, will allow character to work indefinitely. "},
+	
 }
 
 func _ready():

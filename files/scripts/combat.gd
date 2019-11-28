@@ -68,6 +68,10 @@ var dummy = {
 signal skill_use_finshed
 var eot = true
 
+func _init():
+	pass
+	
+
 func _ready():
 	battlefield.resize(14)
 	for i in range(1,13):
@@ -118,8 +122,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 func FinishCombat():
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
-		#to replace for sure - disp part
-		#i.cooldowns.clear() 
+		tchar.combat_cooldowns.clear()
 	for i in range(battlefield.size()):
 		if battlefield[i] != null:
 			var tchar = characters_pool.get_char_by_id(battlefield[i])
@@ -362,6 +365,10 @@ func victory():
 	
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
+	var array = []
+	for i in playergroup.values():
+		array.append(i)
+	input_handler.get_person_for_chat(array, 'combat_won')
 
 func defeat():
 	CombatAnimations.check_start()
@@ -537,7 +544,7 @@ func enemy_turn(pos):
 	target = get_char_by_pos(target)
 	
 	if fighter.has_status('confuse'):
-		castskill = fighter.get_skil_by_tag('default')
+		castskill = fighter.get_skill_by_tag('default')
 		activeaction = castskill
 		UpdateSkillTargets(fighter, true)
 		target = get_random_target()
@@ -546,7 +553,7 @@ func enemy_turn(pos):
 		fighter.taunt = null
 		if can_be_taunted(fighter, targ):
 			target = targ;
-			castskill = fighter.get_skil_by_tag('default')
+			castskill = fighter.get_skill_by_tag('default')
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
@@ -682,43 +689,6 @@ func ShowFighterStats(fighter):
 		return
 	$StatsPanel.show()
 	$StatsPanel.open(fighter)
-#	var text = ''
-#	if fighter.combatgroup == 'ally':
-#
-#		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.get_stat('hpmax'))
-#		if fighter.mpmax > 0:
-#			$StatsPanel/mana.text = "Mana: " + str(fighter.mp) + '/' + str(fighter.get_stat('mpmax'))
-#		else:
-#			$StatsPanel/mana.text = ''
-#	else:
-#		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')))) + "%%"
-#		if fighter.mpmax > 0:
-#			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.get_stat('mpmax')))) + "%%"
-#		else:
-#			$StatsPanel/mana.text = ''
-#	#TO REBUILD NEW STATS
-##	$StatsPanel/damage.text = "Attack: " + str(round(fighter.atk)) 
-##	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%%/" + str(fighter.critmod*100) + '%%' 
-##	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
-##	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
-##
-##	$StatsPanel/armor.text = "Armor: " + str(fighter.armor) 
-##	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
-##	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
-##	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
-##
-##	for i in ['fire','water','earth','air']:
-##		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.resists[i]) + " "
-#
-#	$StatsPanel.show()
-#	$StatsPanel/name.text = tr(fighter.name)
-#	#$StatsPanel/descript.text = fighter.flavor
-#	#$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
-##	for i in fighter.buffs:
-##		text += i + "\n"
-#	for b in fighter.get_all_buffs():
-#		text += b.name + '\n'
-#	$StatsPanel/effects.bbcode_text = text
 
 func HideFighterStats():
 	$StatsPanel.hide()

@@ -186,8 +186,8 @@ var upgradelist = {
 			},
 		}
 	},
-	resource_gather_clothsilk = {
-		code = 'resource_gather_clothsilk',
+	resource_gather_cloth = {
+		code = 'resource_gather_cloth',
 		name = '',
 		positionorder = 1,
 		descript = '',
@@ -196,8 +196,8 @@ var upgradelist = {
 			1:{
 				unlockreqs = [],
 				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-				bonusdescript = tr("UPGRADEGATHERSILKBONUS"),
-				taskprogress = 250,
+				bonusdescript = tr("UPGRADEGATHERCLOTHBONUS"),
+				taskprogress = 150,
 				#townnode = "farm",
 				cost = {wood = 30, leather = 20},
 			},
@@ -278,22 +278,22 @@ var upgradelist = {
 				#townnode = "farm",
 				cost = {wood = 50, leather = 25},
 			},
-			2:{
-				unlockreqs = [],
-				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-				bonusdescript = tr("UPGRADESTABLESBONUS2"),
-				taskprogress = 200,
-				#townnode = "farm",
-				cost = {woodiron = 50, leatherthick = 50},
-			},
-			3:{
-				unlockreqs = [],
-				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-				bonusdescript = tr("UPGRADESTABLESBONUS3"),
-				taskprogress = 300,
-				#townnode = "farm",
-				cost = {woodiron = 100, wood = 200, leather = 100, leatherthick = 50},
-			}
+#			2:{
+#				unlockreqs = [],
+#				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+#				bonusdescript = tr("UPGRADESTABLESBONUS2"),
+#				taskprogress = 200,
+#				#townnode = "farm",
+#				cost = {woodiron = 50, leatherthick = 50},
+#			},
+#			3:{
+#				unlockreqs = [],
+#				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+#				bonusdescript = tr("UPGRADESTABLESBONUS3"),
+#				taskprogress = 300,
+#				#townnode = "farm",
+#				cost = {woodiron = 100, wood = 200, leather = 100, leatherthick = 50},
+#			}
 		}
 	},
 	

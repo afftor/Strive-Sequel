@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/ChatNode.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 617, 136 )
+margin_left = 15.0
+margin_right = 14.0
+margin_top = 15.0
+margin_bottom = 13.0
 
 [node name="Panel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -24,38 +33,39 @@ margin_right = 488.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/Button"]
-margin_left = 385.364
-margin_top = 1.80498
-margin_right = 485.364
-margin_bottom = 101.805
+margin_left = 375.413
+margin_top = 20.044
+margin_right = 475.413
+margin_bottom = 120.044
 mouse_filter = 2
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
 [node name="Text" type="Label" parent="VBoxContainer/Button"]
 margin_left = 14.0
-margin_top = 14.0
+margin_top = 13.3366
 margin_right = 372.0
-margin_bottom = 113.0
+margin_bottom = 112.337
 text = "I think I've learned a lot... or have I?"
 valign = 1
 autowrap = true
 clip_text = true
 
 [node name="Name" type="Label" parent="VBoxContainer/Button"]
-margin_left = 385.364
-margin_top = 103.079
-margin_right = 485.364
-margin_bottom = 127.079
-text = "Name"
+margin_left = 376.74
+margin_top = 8.87409
+margin_right = 476.74
+margin_bottom = 32.8741
+text = "Gondubaga"
 align = 1
 autowrap = true
-clip_text = true
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 239.096
 margin_top = -28.6297
 margin_right = 501.096

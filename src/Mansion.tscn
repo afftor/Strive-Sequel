@@ -414,7 +414,6 @@ rect_min_size = Vector2( 120, 0 )
 bbcode_enabled = true
 
 [node name="SlaveList" type="Panel" parent="."]
-editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0.843137 )
 margin_left = 1221.0
 margin_top = 64.0
@@ -435,6 +434,7 @@ margin_right = 623.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="SlaveList/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
 visible = false
 margin_right = 623.0
 margin_bottom = 50.0
@@ -504,7 +504,6 @@ text = "100"
 align = 1
 
 [node name="obed" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
-editor/display_folded = true
 margin_left = 522.0
 margin_right = 572.0
 margin_bottom = 50.0
@@ -515,10 +514,9 @@ texture = ExtResource( 29 )
 expand = true
 
 [node name="Label" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/obed"]
-visible = false
-margin_left = 1.39673
+margin_left = 51.3967
 margin_top = 13.7767
-margin_right = 43.3967
+margin_right = 93.3967
 margin_bottom = 37.7767
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
@@ -526,6 +524,7 @@ align = 1
 
 [node name="fear" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
 editor/display_folded = true
+visible = false
 margin_left = 572.0
 margin_right = 622.0
 margin_bottom = 50.0
@@ -579,6 +578,7 @@ visible = false
 visible = false
 
 [node name="TestButton" type="Button" parent="."]
+visible = false
 margin_left = 731.847
 margin_top = 801.205
 margin_right = 858.847

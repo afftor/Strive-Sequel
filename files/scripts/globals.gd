@@ -1,10 +1,6 @@
 extends Node
 
-const gameversion = 'pre-demo-test 0.1'
-
-#const worker = preload("res://files/scripts/worker.gd");
-#const Item = preload("res://src/ItemClass.gd")
-#const combatant = preload ('res://src/combatant.gd')
+const gameversion = 'pre-demo-test 0.2b'
 
 var start_new_game = false
 
@@ -40,6 +36,7 @@ var system_messages = {
 }
 
 var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
+var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','tanuki']
 
 var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
@@ -114,14 +111,34 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/tame_factor.png"),
 		type = 'factor',
 	},
-	brave_factor = {
-		code = 'brave_factor',
+	timid_factor = {
+		code = 'timid_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
 		type = 'factor',
 	},
-	
+	authority = {
+		code = 'authority',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
+		type = 'factor',
+	},
+	loyalty = {
+		code = 'loyalty',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
+		type = 'factor',
+	},
+	submission = {
+		code = 'submission',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
+		type = 'factor',
+	},
 	physics = { 
 		code = 'physics',
 		name = '',
@@ -534,6 +551,7 @@ var globalsettings = {
 	futa_balls = true,
 	futachance = 10,
 	malechance = 50,
+	meowing = true,
 	#user_folders_settings
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
@@ -704,8 +722,6 @@ func _ready():
 	#====================================
 	
 	
-	for i in upgradelist.keys():
-		state.upgrades[i] = 0
 	
 	#randomgroups = Enemydata.randomgroups
 	#enemylist = Enemydata.enemylist
@@ -1004,7 +1020,9 @@ func TextEncoder(text, node = null):
 				'check':
 					if evaluate(data[1]) == false:
 						originaltext = ''
-		
+				'random_chat':
+					var character = input_handler.scene_characters[int(data[1])]
+					originaltext = character.translate(input_handler.get_random_chat_line(character, originaltext))
 		
 		text = text.replace(newtext, startcode + originaltext + endcode)
 	if node != null:

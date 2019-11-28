@@ -50,10 +50,17 @@ func open(scene):
 		scene.text = input_handler.active_character.translate(scene.text)
 	if scene.tags.has("scene_character_translate"):
 		scene.text = input_handler.scene_characters[0].translate(scene.text.replace("[scnchar","["))
-	$RichTextLabel.bbcode_text = globals.TextEncoder(scene.text)
 	input_handler.UnfadeAnimation($RichTextLabel,1)
 	input_handler.UnfadeAnimation($ScrollContainer,1)
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	if scene.tags.has("scene_characters_sell"):#
+		var counter = 0
+		var text = ''
+		for i in input_handler.scene_characters:
+			text += i.get_short_name() + " " + i.sex + " - " + races.racelist[i.race].name + ": " + str(i.calculate_price()) + " gold\n"
+			scene.options.append({code = 'recruit_from_scene', args = counter, reqs = [{type = "has_money_for_scene_slave", value = counter}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE") + " - " + i.get_short_name() + ": " + str(i.calculate_price()) + " Gold", bonus_effects = [{code = 'spend_money_for_scene_character', value = counter}]})
+			counter += 1
+		scene.text += "\n\n" + text
 	if scene.has("set_enemy"):
 		dialogue_enemy = scene.set_enemy
 	var counter = 1
@@ -80,7 +87,12 @@ func open(scene):
 		elif scene.tags.has("custom_effect"):
 			newbutton.connect('pressed', globals.custom_effects, i.code)
 		else:
-			newbutton.connect("pressed", self, i.code)
+			var args
+			if i.has('args') == true: args = i.args
+			if args != null:
+				newbutton.connect("pressed", self, i.code, [args])
+			else:
+				newbutton.connect("pressed", self, i.code)
 		
 		
 		if i.has('disabled') && i.disabled == true:
@@ -89,11 +101,15 @@ func open(scene):
 			newbutton.connect('pressed', state, "common_effects", [i.bonus_effects])
 		newbutton.disabled = disable
 		counter += 1
+	$RichTextLabel.bbcode_text = globals.TextEncoder(scene.text)
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
 
 
 var stored_scene
+
+func slave_sold():
+	pass
 
 func select_person_for_next_event(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id}]
@@ -157,7 +173,6 @@ func recruit():
 	else:
 		person.location = 'mansion'
 	state.add_slave(person)
-	input_handler.add_random_chat_message(person, 'hire')
 	close()
 
 func create_location_recruit(args):

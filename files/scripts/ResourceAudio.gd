@@ -68,6 +68,7 @@ var sounds = {
 	combatmiss = load('res://assets/sounds/sounds/dodge.wav'),
 	dodge = load("res://assets/sounds/sounds/dodge.wav"),
 	levelup = load("res://assets/sounds/sounds/levelup.wav"),
+	chat_click = load("res://assets/sounds/sounds/click.wav"),
 	
 	questcomplete = load("res://assets/sounds/sounds/win.wav"),
 	

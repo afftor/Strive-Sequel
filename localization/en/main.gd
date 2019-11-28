@@ -640,7 +640,7 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 	
-	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their submission decay 50% slower and they are not required to consent to sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
 	SERVANTCLASSDESCRIPT = "Servants are generally purchased to be taken care of but otherwise have similar rights to others. Many folks end up as servants as a mean to pay their, or their family debt, or otherwise gain a secured life conditions. However, when escaped, servants can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They are also can't be forced to have sex with.",
 	
 	
@@ -740,7 +740,7 @@ var TranslationDict = {
 	STATCHARM_FACTOR = "Charm Factor",
 	STATSEXUALS_FACTOR = "Sexuals Factor",
 	STATTAME_FACTOR = "Tame Factor",
-	STATBRAVE_FACTOR = "Brave Factor",
+	STATTIMID_FACTOR = "Timid Factor",
 	
 	STATPHYSICS_BONUS = "Physics",
 	STATWITS_BONUS = "Wits",
@@ -748,11 +748,13 @@ var TranslationDict = {
 	STATSEXUALS_BONUS = "Sexuals",
 	
 	STATOBEDIENCE = "Obedience",
-	STATOBEDIENCEDESCRIPT = "Obedience represents the character's willingness to work for you. If both obedience and fear drop too low, the character might stop following orders or even escape. Obedience is gained by praises and rewards. ",
-	STATFEAR = "Fear",
-	STATFEARDESCRIPT = "Fear represents the character's awe towards you and your orders. If both obedience and fear drop too low, the character might stop following orders or even escape. Fear is gained from punishments and abusive behavior. ",
-	STATLOYAL = "Loyalty",
-	STATLOYALDESCRIPT = "Loyalty represents character's willingness to follow master's orders even though they neither obedient, nor fearful. It grows with time and stops servants from escaping. ",
+	STATOBEDIENCEDESCRIPT = "Obedience is required for character to work for you. When at zero, the character might attempt an escape. Obedience is gained by using social skills and lost while performing tasks. ",
+	STATLOYALTY = "Loyalty",
+	STATLOYALTYDESCRIPT = "Loyalty is built with positive skills and behavior once Authority is established. It will decrease with time until maxed out. Maxed out Loyalty will no longer require Obedeince for work and stops escapes.",
+	STATSUBMISSION = "Submission",
+	STATSUBMISSIONDESCRIPT = "Submission is built with punishing skills. It will decrease with time until maxed out. Maxed out Submission will no longer require Obedeince for work and stops escapes.",
+	STATAUTHORITY = "Authority",
+	STATAUTHORITYDESCRIPT = "Authority represents character's respect for you. Authority is built by punishments and determines how quickly loyalty is built. Low Authority will prevent character from building Loyalty.",
 	STATLUST = "Lust",
 	STATLUSTDESCRIPT =  "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when approached correctly.",
 	STATPRODUCTIVITY = "Productivity",
@@ -796,8 +798,8 @@ var TranslationDict = {
 	STATGROWTH_FACTORDESCRIPT = "Growth factor represents how easy it is for the character to acquire a new class. The higher it is, the less experience unlocking new class will take until soft cap limit.",
 	STATPHYSICS_FACTORDESCRIPT = "Physics factor represents physical potential of the character. It limits [color=aqua]Physical[/color] growth and influences melee combat.",
 	STATMAGIC_FACTORDESCRIPT = "Magic factor represents character's magic affinity. The higher it is, the more mana you have and the stronger magic classes you can unlock. Also affects mana regeneration. ",
-	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy is to befriend the character. The higher it is, the slower Obedience decays. ", 
-	STATBRAVE_FACTORDESCRIPT = "Brave factor represents how hard is to keep character in Fear. The higher it is, the quicker Fear decays. It also determines how likely the character will attempt to escape. ",
+	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy is to befriend the character. The higher it is, the slower Loyalty decays and the more effective positive skills are. ", 
+	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily character can be influenced by punishments and abuse. The higher it is, the slower Submission decays. It also determines how quickly Authority grows. ",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It limits [color=aqua]Wits[/color] growth.",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth.",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It limits [color=aqua]Sexuals[/color] growth.",
@@ -917,29 +919,29 @@ var TranslationDict = {
 	RACEHALFKINTANUKIDESCRIPT = "The Tanuki are a rare beast race possessing raccoon features. It's hard to pinpoint any specific mental differences between them and the majority of the humanoid races. Some say that their behavior and attitudes are much like that of the average human.",
 	
 	SKILLPRAISE = "Praise",
-	SKILLPRAISEDESCRIPT = "A basic tool for obedience improval. Increases obedience slightly. Effect grows with Charm.",
+	SKILLPRAISEDESCRIPT = "A basic tool for inspiring your workers. Improved by Charm. \nBasic Effects: \nObedience: 24, Loyalty: 5",
 	SKILLWARN = "Warn",
-	SKILLWARNDESCRIPT = "A basic tool for fear instigation. Increases fear slightly. Effect grows with Physics.",
+	SKILLWARNDESCRIPT = "A basic tool for fear instigation. Improved by Charm.\nBasic Effects: \nObedience: 36, Submission: 5, Authority: 4",
 	SKILLPUNISH = "Punish",
-	SKILLPUNISHDESCRIPT = "Physically punishes target. Increases fear. Effect grows with Physics.",
+	SKILLPUNISHDESCRIPT = "Physically punishes target. Improved by Physics.\nBasic Effects: \nObedience: 24, Submission: 12, Authority: 10",
 	SKILLREWARD = "Reward",
 	SKILLREWARDDESCRIPT = "Buying their respect might seem line an easy solution... as long as you have enough coin. Increases obedience greatly.",
 	SKILLREWARDSEX = "Reward with sex",
-	SKILLREWARDSEXDESCRIPT = "Relieves character to improve their behavior. Target must have at least 25 Lust. Increases Obedience, effect grows with Sexuals. ",
+	SKILLREWARDSEXDESCRIPT = "Relieves character to improve their behavior. Target must have at least 25 Lust. Improved by Sexuals.\nBasic Effects: \nObedience: 36, Loyalty: 8.",
 	SKILLSEDUCE = "Seduce",
-	SKILLSEDUCEDESCRIPT = "Stops obedience decay and escape attempts for a number of days. Duration increases with Charm. ",
+	SKILLSEDUCEDESCRIPT = "Stops Loyalty from decay for 2 days. Improved by Charm. \nBasic Effects: \nObedience: 36, Loyalty: 10.",
 	SKILLGREATSEDUCE = "Great Seduce",
-	SKILLGREATSEDUCEDESCRIPT = "Stops obedience decay and escape attempts for a number of days. Maximizes obedience and increases Lust growth by 50%. Duration increases with Charm.",
+	SKILLGREATSEDUCEDESCRIPT = "Stops Loyalty from decay and increases Lust growth by 50% for 2 days. Improved by Charm. \nBasic Effects: \nObedience: 48, Loyalty: 7.",
 	SKILLDRAIN = "Drain",
 	SKILLDRAINDESCRIPT = "Restores some fatigue, mana and energy by draining it from target.",
 	SKILLSERVE = "Serve",
-	SKILLSERVEDESCRIPT = "Help out another character to relieve them. Slightly reduces fatigue, Exhaustion and improves Obedience. Effect grows with Charm. Requires 20 lust. ",
+	SKILLSERVEDESCRIPT = "Requires 20 lust. Improved by Charm. \nBasic Effects: \nObedience: 40, Loyalty: 5. ",
 	SKILLDISCIPLINE = "Discipline",
 	SKILLDISCIPLINEDESCRIPT = "Boosts target's manual labor performance. ",
 	SKILLSEDATE = "Sedate",
-	SKILLSEDATEDESCRIPT = "Puts target's mind at ease. Improves Obedience. Effect grows with Wits.",
+	SKILLSEDATEDESCRIPT = "Puts target's mind at ease and makes them more cooperative. Improved by Wits.\nBasic Effects: \nObedience: 48, Loyalty: 8.",
 	SKILLFEAR = "Fear",
-	SKILLFEARDESCRIPT = "Strikes fear into target's mind. Effect grows with Wits. ",
+	SKILLFEARDESCRIPT = "Strikes fear into target's mind. Improved by Wits.\nBasic Effects: \nObedience: 48, Submission: 10, Authority: 10.",
 	SKILLINNERVATE = "Innervate",
 	SKILLINNERVATEDESCRIPT = "Restores target's energy. Effect grows with Wits. ",
 	SKILLSHACKLES = "Shackle",
@@ -947,25 +949,25 @@ var TranslationDict = {
 	SKILLGREATSHACKLES = "Great Shackle",
 	SKILLGREATSHACKLESDESCRIPT = "Creates a stronger version of magical shackles which are a lot harder to break.",
 	SKILLMINDCONTROL = "Mind Control",
-	SKILLMINDCONTROLDESCRIPT = "Overwhelms target's mind forcing a nearly complete submission.",
+	SKILLMINDCONTROLDESCRIPT = "Overwhelms target's mind forcing a nearly complete submission.\nBasic Effects: \nAuthority: 150, Loyalty: 100",
 	SKILLSTOPMINDCONTROL = "Remove Mind Control",
 	SKILLSTOPMINDCONTROLDESCRIPT = "Removes Mind Control from the target, giving them back their free will.",
 	SKILLABUSE = "Abuse",
-	SKILLABUSEDESCRIPT = "Take your anger out on someone else. \n\nImproves Obedience and removes some Fatigue for self. Target loses some Health and gain Fatigue, but also receive Fear.",
+	SKILLABUSEDESCRIPT = "Take your anger out on someone else. Improves Caster's and Target's obedience at the cost of target's Loyalty. \nBasic Effects: \nObedience: 24, Submission: 12, Authority: 5.",
 	SKILLMASTER_LUST_SKILL = "Lust Relief",
 	SKILLMASTER_LUST_SKILLDESCRIPT = "Uses up target's Lust to provide them with specific benefits. Target must have at least 50 Lust.",
 	SKILLHARDWORK = "Hard Work",
 	SKILLHARDWORKDESCRIPT = "Increases target's productivity for 50% for 1 day. ",
 	SKILLPUBLICHUMILIATION = "Public Humiliation",
-	SKILLPUBLICHUMILIATIONDESCRIPT = "Set up a public humiliation for selected target, increasing fear for all observants and making target take exhaustion damage. Can only be used once a day by all characters.",
+	SKILLPUBLICHUMILIATIONDESCRIPT = "Set up a public humiliation for selected target. Greatly improves target's behavior and slightly affects audience. ",
 	SKILLPUBLICSEXHUMILIATION = "Public Sex Humiliation",
-	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "Set up a public sex humiliation for the selected target, increasing fear and a bit of lust for all observants and making target take fatigue damage. Can only be used once a day by all characters.",
+	SKILLPUBLICSEXHUMILIATIONDESCRIPT = "Set up a public sex humiliation for the selected target, increasing Submission and a bit of Lust for all observants. ",
 	SKILLPUBLICEXECUTION = "Public Execution",
-	SKILLPUBLICEXECUTIONDESCRIPT = "Executes selected character. All presented characters have fear maximized. Target character must have obedience below 25. Can only be used once a day by all characters.",
+	SKILLPUBLICEXECUTIONDESCRIPT = "Executes selected character. Greatly improves everyone's Obedience, Submission and Authority, but reduces Loyalty. ",
 	SKILLCHARM = "Charm",
-	SKILLCHARMDESCRIPT = "Entices the target, increasing their obedience and providing increased lust growth. ",
+	SKILLCHARMDESCRIPT = "Entices the target, increasing their obedience and providing increased lust growth.\nBasic Effects: \nObedience: 36, Loyalty: 10.",
 	SKILLAUTHORITY = "Authority",
-	SKILLAUTHORITYDESCRIPT = "Instigates fear and obedeince into a person.",
+	SKILLAUTHORITYDESCRIPT = "Overwhelms target with awe and respect for caster.\nBasic Effects: \nObedience: 48, Authority: 75, Loyalty: 20.",
 	SKILLINSPIRE = "Inspire",
 	SKILLINSPIREDESCRIPT = "Buffs whole team, increasing damage, DEF and MDEF by 20% for 1 combat.",
 	SKILLHIDE = "Hide",
@@ -978,7 +980,7 @@ var TranslationDict = {
 	SKILLPROTECTDESCRIPT = "Protects target from damage.",
 	
 	
-	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase Atk and Matk by 15% for 2 days for 50 Lust.",
+	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana, Improve Authority and Obedience\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase ATK and MATK by 15% for 2 days for 50 Lust.",
 	
 	DIALOGUEMASTER_LUST_EXPREPORT = "You use [targetname]'s lust to provide [targethim] with experience.",
 	DIALOGUEMASTER_LUST_BUFFREPORT = "You use [targetname]'s lust to provide [targethim] with a productivity boost.",
@@ -993,7 +995,7 @@ var TranslationDict = {
 	
 	SKILLSUCCUBUS_LUST_SKILL = "Lust Drain",
 	SKILLSUCCUBUS_LUST_SKILLDESCRIPT = "Utilizes target's Lust for self benefit. Target must have at least 50 lust.",
-	DIALOGUESUCCUBUS_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Restore Obedience\n4. Increase Atk and Matk by 25% for 2 days for 50 lust.",
+	DIALOGUESUCCUBUS_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Gain Obedience and Loyalty\n4. Increase Atk and Matk by 25% for 2 days for 50 lust.",
 	
 	DIALOGUEPUBLICHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. For the next long moments [targethe]'s being punished as the audience hears [targethis] cries. By the end of it not only [targetname] learned [targethis] lesson, but the observers have seemed to get more docile. ",
 	DIALOGUEPUBLICSEXHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. For the next long moments [targethe]'s being sexually punished clearly exposed to the audience. By the end of it not only observers get more docile, but they also have shown some hints of excitement. ",
@@ -1003,16 +1005,16 @@ var TranslationDict = {
 	
 	DIALOGUEPURCHASEDUNGEONLOCATION = "You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] - [locationtypename].",
 	
-	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.",
+	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.\n\n{color=aqua|[targetname]} - {random_chat=0|master_praise}",
 	DIALOGUEWARNREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of [targethis] behavior.",
 	DIALOGUESERVEREPORT = "[name] has approached [targetname] and provided [targethim] with [his] sincerest affection.",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly been enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making him quite docile.",
 	DIALOGUECHARMREPORT = "[name] has given [targetname] a small private encouragement.",
-	DIALOGUEABUSEREPORT = "[name] has pushed [targetname] into a corner and took out some of [his] anger on [targethim].",
+	DIALOGUEABUSEREPORT = "[name] has pushed [targetname] into a corner and took out some of [his] anger on [targethim].\n\n{color=aqua|[targetname]} - {random_chat=0|abuse}",
 	DIALOGUEREWARDREPORT = "[name] has provided [targetname] with a small amount of gold for [targethis] good behavior.",
 	DIALOGUEREWARDSEXREPORT = "[name] has taken care of [targetname]'s needs as a reward for [targethis] good deeds.",
-	DIALOGUEPUNISHREPORT = "[name] has taken [targetname] into a private torture room and gave [targethim] a good lesson of discipline [targethe] won't forget for a while. ",
+	DIALOGUEPUNISHREPORT = "[name] has taken [targetname] into a private torture room and gave [targethim] a good lesson of discipline [targethe] won't forget for a while. \n\n{color=aqua|[targetname]} - {random_chat=0|master_punish}",
 	DIALOGUESEDATEREPORT = "[name] puts a Sedation spell on [targetname], calming [targethis] mind and making more docile.",
 	DIALOGUEFEARREPORT = "[name] puts a Fear spell on [targetname] as a serious warning. After coming to his senses, [targetname] seems to be much more respectful towards others and especially you.",
 	DIALOGUEINNERVATEREPORT = "[name] uses an Innervate spell on [targetname] restoring some of [targethis] energy.",
@@ -1032,14 +1034,14 @@ var TranslationDict = {
 	DIALOGUESEXDRGUREPORT = "After consuming the drug, [name]'s mind becomes fixated on the lewd things...",
 	DIALOGUEEXP_SCROLLREPORT = "[name] reads the scrool. New knowledge fill [his] mind...",
 	
-	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it. ",
-	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you. ",#\n\n- Pleased to meet you, [master]. Please, take care of me.
+	DIALOGUEENSLAVETEXT = "You find an official, who is ready to help with your task. After payment you receive a paper of ownership over [name], who reacts quite disturbingly to it.\n\n{color=aqua|[name]} - {random_chat=0|enslave}",
+	DIALOGUEHIRETEXT = "After signing the papers and parting with your money, [name] comes bowing before you.\n\n{color=aqua|[name]} - {random_chat=0|hire}",#\n\n- Pleased to meet you, [master]. Please, take care of me.
 	
 	SKILLPET_LUST_SKILL = "Lust Serve",
 	SKILLPET_LUST_SKILLDESCRIPT = "Utilizes personal Lust to provide target with specific bonus. Requires at least 50 lust.",
 	DIALOGUEPET_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [name]'s accumulated Lust is going to be used for.\n\n1. Restore full Obedience for 50 Lust\n2. Convert it into Experience\n3. Restore Health and Mana",
 	
-	TRAITMASTERDESCRIPT = "Praises and punishments are 50% more effective.\nIsn't affected by Obedience and Fear.\nCan’t be target of Rewarding, Punishing and Control social skills.",
+	TRAITMASTERDESCRIPT = "Social skills build target Authority 50% faster. \nIsn't affected by Authority, Obedience, Loyalty and Submission. Will not resist work or attempt escapes.",
 	TRAITWORKERDESCRIPT = "Woodcutting and Mining are 50% more efficient.",
 	TRAITFOREMANDESCRIPT = "Woodcutting and Mining are 33% more efficient",
 	TRAITHUNTERDESCRIPT = "Fishing and Hunting are 50% more efficient.",
@@ -1055,7 +1057,7 @@ var TranslationDict = {
 	TRAITPETDESCRIPT = "Protitution is 25% more efficient.",
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
-	TRAITDIRECTORDESCRIPT = "Praises and punishments are 50% more effective.",
+	TRAITDIRECTORDESCRIPT = "Social skills build target Authority 50% faster. ",
 	
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",
@@ -1175,8 +1177,8 @@ var TranslationDict = {
 	UPGRADEFARMVEGEBONUS = "Allows gathering of Vegetables",
 	UPGRADERESOURCE_GATHER_GRAINS = "Farm: Grains",
 	UPGRADERESOURCE_GATHER_GRAINSDESCRIPT = "Farm task upgrade",
-	UPGRADERESOURCE_GATHER_CLOTHSILK = "Farm: Silk",
-	UPGRADERESOURCE_GATHER_CLOTHSILKDESCRIPT = "Farm task upgrade",
+	UPGRADERESOURCE_GATHER_CLOTH = "Farm: Cloth",
+	UPGRADERESOURCE_GATHER_CLOTHDESCRIPT = "Farm task upgrade",
 	UPGRADERESOURCE_GATHER_WOODMAGIC = "Woodcutting: Magic Wood",
 	UPGRADERESOURCE_GATHER_WOODMAGICDESCRIPT = "Woodcutting task upgrade",
 	UPGRADERESOURCE_GATHER_WOODIRON = "Woodcutting: Iron Wood",
@@ -1202,7 +1204,7 @@ var TranslationDict = {
 	UPGRADERESOURCE_GATHER_LEATHERDESCRIPT = "Hunting task upgrade",
 	UPGRADELEATHERBONUS1 = "Allows gathering of Thick Leather",
 	UPGRADELEATHERBONUS2 = "Allows gathering of Mythic Leather",
-	UPGRADEGATHERSILKBONUS = "Allows gathering of Silk",
+	UPGRADEGATHERCLOTHBONUS = "Allows gathering of Cloth",
 	UPGRADEGATHERWOODIRONBONUS = "Allows gathering of Iron Wood",
 	UPGRADEGATHERWOODMAGICBONUS = "Allows gathering of Magic Wood",
 	UPGRADEGATHERIRONBONUS = "Allows gathering of Iron",
@@ -1555,6 +1557,7 @@ var TranslationDict = {
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
 	
 	DIALOGUECLOSE = "Close",
+	DIALOGUECONTINUE = "Continue",
 	
 	DIALOGUECHILDBIRTHTEXT = "[name] has given birth to a healthy child. Do you wish to keep it?",
 	DIALOGUEKEEPBABY = "Keep baby",
@@ -1585,6 +1588,8 @@ var TranslationDict = {
 	DIALOGUEFIGHTOPTION = "Fight",
 	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight with you.",
 	
+	
+	
 	DIALOGUESLAVERPURCHASE = "Purchase",
 	DIALOGUEEVENTGOODSLAVERS = "You come across the group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] later to be sold to at local market. \n\nThey are ready to part with [him] for a reasonable price of [price] gold. \n\nThe [race] gives you a desperate look. ",
 	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you've left alone with the [race]. Still uncertain about [his] future, [he] pleads for your mercy. ",
@@ -1595,16 +1600,18 @@ var TranslationDict = {
 	DIALOGUEKEEPSLAVEPERSON = "Keep as slave",
 	DIALOGUESETFREEPERSON = "Set free",
 	DIALOGUEEVENTPERSONFREE = "You've set [name] free. [He] expresses [his] gratitude and wishes to repay you one day. ",
+	DIALOGUEEVENTEXOTICTRADER = "You find an exotic slave trader with the large group of guards. Exotic race slaves are rare and expensive, so you should consider yourself lucky. After greetings he presents you his belongings.",
 	
 	DIALOGUEPERSONASKTOJOIN = "Offer to join",
 	DIALOGUERECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n[name] was able to convience [scncharname] to join you.",
 	DIALOGUERECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n[name] wasn't able to convience [scncharname] to join you.",
 	
-	DIALOGUEEVENTTRAPSUCCESS = "[name] skillfully disarms the trap.",
-	DIALOGUEEVENTTRAPFAILURE = "[name] has disarmed the trap in a rough manner, suffering damage in the process.",
+	DIALOGUEEVENTTRAPSUCCESS = "[center]{color=green|Success!}[/center]\n[name] skillfully disarms the trap.",
+	DIALOGUEEVENTTRAPFAILURE = "[center]{color=red|Failure!}[/center]\n[name] has disarmed the trap in a rough manner, suffering damage in the process.",
 	DIALOGUEACTIVATETRAP = "Deactivate Trap",
 	
 	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
+	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
 	
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by bandits for ramson or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
 	DIALOGUETAKESLAVE = "Capture and enslave",
@@ -1614,6 +1621,9 @@ var TranslationDict = {
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] reassurance. As [he] thanks you, [he] shows a secret item [he] has hidden in [his] cell as a thanks for [his] rescue. After explaining [him] how to get out, you are ready to continue on your way.",
 	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who caught a [race] [male], likely strayed from homelands. Given rebels' attitude towards [him] its easy to see they are up to no good...",
+	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = "[center]{color=green|Success!}[/center]\n[name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.", #to rework
+	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = "[center]{color=red|Failure!}[/center]\n[name] hasn't managed to intimidate rebels and they are preparing to attack you. ",
+	
 	DIALOGUEINTIMIDATE = "Intimidate",
 	
 	
@@ -1654,6 +1664,7 @@ var TranslationDict = {
 	ENEMYCAVE_GOBLIN_MELEE = "Cave Goblin",
 	ENEMYCAVE_GOBLIN_ARCHER = "Cave Goblin Archer",
 	ENEMYCAVE_GOBLIN_MAGE = "Cave Goblin Mage",
+	ENEMYCAVE_GOBLIN_BOSS = "Cave Goblin Boss",
 	ENEMYOGRE_MELEE = "Ogre",
 	ENEMYOGRE_MAGE = "Ogre Mage",
 	ENEMYGRYPHON = "Gryphon",
@@ -1661,6 +1672,8 @@ var TranslationDict = {
 	ENEMYRAT = "Rat",
 	ENEMYSPIDER = "Spider",
 	ENEMYTRAINED_DOG = "Trained Dog",
+	ENEMYTRAINED_BEAR = "Trained Bear",
+	ENEMYTRAINED_RAPTOR = "Trained Raptor",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -1740,7 +1753,7 @@ var TranslationDict = {
 	WORKRULESHIFTS = "Longer Shifts",
 	WORKRULESHIFTSDESCRIPT = "Character overperforms at their finest capability at the cost of future improvements. \nBoosts Productivity by 25%. Character won't gain Experience or Work Stats(Physical, etc) while working. ",
 	WORKRULECONSTRAIN = "Coerced Labor",
-	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 25%. Obedience Decay is increased by 50%.",
+	WORKRULECONSTRAINDESCRIPT = "Character is forced to work at their best via strict regulations. Boosts productivity by 15%. Loyalty Decay is increased by 50%.",
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into Slave type.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",

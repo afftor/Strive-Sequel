@@ -78,6 +78,9 @@ var musicraising = false
 var musicvalue
 
 func _process(delta):
+	if OS.window_position.y < 0:
+		OS.window_position.y = 0
+	
 	for i in CloseableWindowsArray:
 		if typeof(i) == TYPE_STRING: continue
 		if i.is_visible_in_tree() == false:
@@ -835,18 +838,20 @@ func interactive_message(code, type, args):
 		'char_translate':
 			data.text = args.translate(data.text)
 		'character_event':
-			var newcharacter
-			match args.characterdata.type:
-				'raw':
-					newcharacter = Slave.new()
-					newcharacter.is_active = false
-					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
-					newcharacter.set_slave_category(args.characterdata.slave_type)
-				'function':
-					newcharacter = call(args.characterdata.function, args.characterdata.args)
-			active_character = newcharacter
-			scene_characters.append(newcharacter)
-			data.text = newcharacter.translate(data.text)
+			pass
+#			for i in args.characterdata:
+#				var newcharacter
+#				match i.type:
+#					'raw':
+#						newcharacter = Slave.new()
+#						newcharacter.is_active = false
+#						newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+#						newcharacter.set_slave_category(args.characterdata.slave_type)
+#					'function':
+#						newcharacter = call(args.characterdata.function, args.characterdata.args)
+#				active_character = newcharacter
+#				scene_characters.append(newcharacter)
+#				data.text = newcharacter.translate(data.text)
 		'scene_character_event':
 			for i in range(0, scene_characters.size()):
 				data.text = scene_characters[i].translate(data.text)
@@ -951,7 +956,7 @@ func get_combat_node():
 	window.raise()
 	return window
 
-func get_person_for_chat(array, event, bonus_args = {}):
+func get_person_for_chat(array, event, bonus_args = []):
 	var allowed_array = []
 	var weight = 0
 	for i in array:
@@ -962,12 +967,16 @@ func get_person_for_chat(array, event, bonus_args = {}):
 		allowed_array.append([person, weight])
 	
 	var person = weightedrandom(allowed_array)
-	
-	add_random_chat_message(person, event)
+	if person != null:
+		add_random_chat_message(person, event, bonus_args)
 
-func add_random_chat_message(person, event):
+func add_random_chat_message(person, event, bonus_args = []):
 	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
-	node.select_chat_line(person, event)
+	node.select_chat_line(person, event, bonus_args)
+
+func get_random_chat_line(person, event):
+	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
+	return node.return_chat_line(person, event)
 
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
@@ -1093,7 +1102,9 @@ func check_events(action):
 	var eventtriggered = false
 	for i in eventarray:
 		if i.trigger == action && check_event_reqs(i.reqs) == true:
-			if i.has('args'):
+			if i.event == 'custom_event':
+				interactive_message_custom(scenedata.scenedict[i.args])
+			elif i.has('args'):
 				call(i.event, i.args)
 			else:
 				call(i.event)
@@ -1302,8 +1313,26 @@ func combat_defeat():
 			state.characters[active_location.group[i]].hp = 1
 			state.characters[active_location.group[i]].defeated = false
 			state.characters[active_location.group[i]].is_active = true
-	if exploration_node != null:
+	
+	get_dialogue_node().close()
+	if exploration_node != null && active_location.has('progress'):
 		exploration_node.enter_level(current_level)
+
+func character_boss_defeat():
+	var character_race = []
+	var character_class = []
+	var difficulty
+	if active_location.affiliation == 'local':
+		character_race.append([input_handler.weightedrandom(active_area.races), 1])
+	if active_location.has("final_enemy_class"):
+		for i in active_location.final_enemy_class:
+			character_class.append([i, 1])
+	
+	character_race = input_handler.weightedrandom(character_race)
+	character_class = input_handler.weightedrandom(character_class)
+	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
+	difficulty = rand_range(difficulty[0], difficulty[1])
+	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty, slave_type = 'slave'}})
 
 
 func finish_quest_dungeon(args):
@@ -1313,6 +1342,11 @@ func finish_quest_location(args):
 	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
 	exploration_node.clear_dungeon_confirm()
 
-
 func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
+
+func meowingcondition(character):
+	var allow = false
+	if globals.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]):
+		allow = true
+	return allow

@@ -27,11 +27,12 @@ var enemygroups = {
 	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}},
 	
 	bandits_raptors = {reqs = [], units = {bandit_melee = [1,2], trained_raptor = [1,2]}},
-	bandits_balista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
+	bandits_ballista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
 	
 	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
 	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	goblins_easy3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
+	goblins_easy_boss = {maxunits = 3, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2], cave_goblin_archer = [0,2]}},
 	ogre_med1 = {reqs = [], units = {ogre_melee = [1,1], cave_goblin_melee = [0,1], cave_goblin_archer = [0,1]}},
 	ogre_med2 = {reqs = [], units = {ogre_melee = [0,1], ogre_mage = [1,1]}},
 	
@@ -344,7 +345,7 @@ var enemies = {
 		loot = 'raptor_loot',
 		icon = null,
 		body = null,
-		skills = ['attack','stun_attack'],
+		skills = ['attack','bleeding_strike'],
 		traits = [],
 		tags = [],
 		is_character = false,
@@ -516,6 +517,33 @@ var enemies = {
 		ai = ['ranged'],
 		ai_position = ['ranged'],
 		xpreward = 20,
+	},
+	cave_goblin_boss = {
+		code = 'cave_goblin_boss',
+		name = '',
+		descript = '',
+		hpmax = 150,
+		armor = 5,
+		mdef = 20,
+		hitrate = 85,
+		evasion = 10,
+		armorpenetration = 0,
+		atk = 20,
+		matk = 5,
+		speed = 40,
+		resists = {earth = 50, water = -50},
+		race = 'humanoid',
+		loot = 'goblin_loot',
+		icon = null,
+		body = null,
+		skills = ['attack'],
+		traits = [],
+		tags = [],
+		is_character = false,
+		gear = [],
+		ai = ['melee'],
+		ai_position = ['melee'],
+		xpreward = 25,
 	},
 	ogre_melee = {
 		code = 'ogre_melee',
@@ -812,6 +840,12 @@ var loot_chests_data = {
 	{code = 'material', min = 5, max = 10, grade = ['easy']}, 
 	{code = 'material', min = 3, max = 6, grade = ['location']},
 	],
+	easy_boss_chest = [
+	{code = 'static_gear', min = 1, max = 1, grade = ['easy']},
+	{code = 'gear', min = 1, max = 2, grade = ['easy'], material_grade = [['easy',10], ['medium', 4]]},
+	{code = 'defined', name = 'exp_scroll', min = 1, max = 2}, 
+	],
+	
 }
 
 

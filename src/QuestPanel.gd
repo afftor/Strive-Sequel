@@ -130,7 +130,7 @@ func CompleteQuest():
 				"random_material":
 					check = state.if_has_material(i.type, 'gte', i.value)
 				"random_item":
-					check = state.if_has_items(i.type, 'gte', i.value)
+					check = state.if_has_free_items(i.type, 'gte', i.value)
 				"slavegetquest":
 					select_character_for_quest()
 					check = false

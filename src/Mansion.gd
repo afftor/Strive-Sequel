@@ -35,7 +35,13 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.1.1-stable_win64.exe":# && false:#:
+		variables.generate_test_chars = true
+		variables.allow_remote_intereaction = true
+		variables.combat_tests = true
+		variables.unlock_all_upgrades = true
+		#$UpgradeList._ready()
+		$TestButton.show()
 	
 	
 	var speedvalues = [0,1,5]
@@ -68,7 +74,7 @@ func _ready():
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
-	if variables.generate_test_chars:
+	if variables.generate_test_chars :
 		state.make_world()
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
@@ -76,6 +82,7 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
+		character.unlock_class("dominator")
 		character.sex_traits = ['bisexual', 'anal']
 		character.charm_factor = 1
 		#character.unlock_class("worker")
@@ -98,34 +105,39 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('Seraph', 'random', 'random')
+		character.create('BeastkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.obedience = 0
-		character.fear = 25
+		#character.fear = 25
 		character.lust = 50
 		#character.base_exp += 500
 		character.charm_factor = 5
 		character.charm = 100
+		character.loyalty = 95
+		character.authority = 100
+		character.submission = 95
 		character.mp = 100
+		character.hp = 1
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.unlock_class("apprentice")
-		character.unlock_class("rogue")
+		character.unlock_class("ruler")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
 		#state.revert()
 		for i in Items.materiallist:
 			state.materials[i] = 200
-		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
+		state.materials.bandage = 0
+		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("anal_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("elegant_choker", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
@@ -139,12 +151,10 @@ func _ready():
 		yield(get_tree(), 'idle_frame')
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
-		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[state.areas.plains.locations.size()-1]]
+		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
-		var newchar = input_handler.make_story_character('Daisy')
-		state.add_slave(newchar)
-		input_handler.add_random_chat_message(newchar, 'hire')
-	#	input_handler.interactive_message('event_good_rebels_beastkin', 'character_event', scenedata.scenedict.event_good_rebels_beastkin.bonus_args)
+		#input_handler.add_random_chat_message(newchar, 'hire')
+		input_handler.interactive_message('event_good_slavers_woods', 'character_event', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -169,8 +179,8 @@ func _ready():
 	$TestButton.connect("pressed", self, "quest_test")
 
 func quest_test():
-	input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
-	#$Exploration.testcombat()
+	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
+	$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):
