@@ -243,6 +243,9 @@ func resolve_value(check_m):
 			elif ability_type == 'spell':
 				stat = caster.get_stat(data['spell_stat'])
 				atk = caster.get_stat(data['spell_atk'])
+			elif ability_type == 'item':
+				stat = 0
+				atk = 0
 			else: 
 				print('ERROR IN SKILL TEMPLATE %s' % code)
 				return
@@ -298,6 +301,8 @@ func calculate_dmg():
 	elif ability_type == 'spell':
 		reduction = max(0, target.get_stat('mdef'))
 		reduction = min(100, reduction)
+	elif ability_type == 'item':
+		reduction = 0
 	else: 
 		print('ERROR IN SKILL TEMPLATE %s' % code)
 		return
