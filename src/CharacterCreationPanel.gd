@@ -244,7 +244,12 @@ func check_confirm_possibility():
 	else:
 		$bodyparts2/class.text = Skilldata.professions[selected_class].name
 	
-	$ConfirmButton.disabled = !can_confirm
+	if !can_confirm:
+		$ConfirmButton.disabled = true
+		$ConfirmButton.hint_tooltip = 'Select starting Class and Diet'
+	else:
+		$ConfirmButton.disabled = false
+		$ConfirmButton.hint_tooltip = ""
 
 func select_age(value):
 	person.age = agearray[value]
@@ -318,7 +323,7 @@ func RebuildStatsContainer():
 				preservedsettings[i.code] = 1
 			else:
 				person[i.code] = preservedsettings[i.code]
-			if i.code in ['growth_factor','brave_factor','tame_factor'] && mode == 'master':
+			if i.code in ['growth_factor','timid_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
 			
 	
@@ -331,7 +336,7 @@ func RebuildStatsContainer():
 	
 	
 	for i in array:
-		if mode == 'master' && i.code in ["growth_factor",'brave_factor','tame_factor']:
+		if mode == 'master' && i.code in ["growth_factor",'timid_factor','tame_factor']:
 			continue
 		var newnode = globals.DuplicateContainerTemplate($StatsContainer)
 		newnode.get_node("up").connect("pressed", self, 'stat_up', [i])
@@ -522,6 +527,8 @@ func finish_character():
 		if preservedsettings.has('slave_class') == false:
 			preservedsettings.slave_class = 'Slave'
 		person.set_slave_category(preservedsettings.slave_class.to_lower())
+		person.authority = person.authority_threshold()/1.5
+		person.obedience = 48
 	else:
 		person.slave_class = 'master'
 	self.hide()

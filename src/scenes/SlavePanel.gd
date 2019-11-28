@@ -64,7 +64,11 @@ func _ready():
 	$DetailsPanel/VBoxContainer/body.connect("pressed", self, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 	
+	globals.connecttexttooltip($obedlabel/icon, globals.statdata.obedience.descript)
 	
+	globals.connecttexttooltip($loyaltylabel, globals.statdata.loyalty.descript)
+	globals.connecttexttooltip($authoritylabel, globals.statdata.authority.descript)
+	globals.connecttexttooltip($submissionlabel, globals.statdata.submission.descript)
 	
 	$testbutton.connect('pressed', self, "run_test")
 	
@@ -116,6 +120,12 @@ func hide():
 	.hide()
 	if state.active_tasks.size() > 0:
 		input_handler.ActivateTutorial('tasklist')
+
+var authority_lines = {
+	low = "Defiance",
+	medium = "Respect",
+	high = 'Reverence',
+}
 
 func update():
 	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler"):
@@ -185,54 +195,37 @@ func update():
 	$factors/base_exp/Label.set("custom_colors/font_color", exp_color)
 	$factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp()) 
 	
-#	$mentality/loyal.value = person.loyal
-#	$mentality/loyal/Label.text = str(floor(person.loyal)) + '/' + '100'
-	$mentality/obedience.value = person.obedience
-	$mentality/obedience/Label.text = str(floor(person.obedience)) + '/' + '100'
-	$mentality/obedience/decay.text = 'Daily Decay: ' + str(round(person.get_obed_reduction()*24))
-	$mentality/fear.value = person.fear
-	$mentality/fear/Label.text = str(floor(person.fear)) + '/' + '100'
-	$mentality/fear/decay.text = 'Daily Decay: ' + str(round(person.get_fear_reduction()*24))
+	$obedlabel.text = str(person.obedience)
+	if person.obedience > 0:
+		$obedlabel/icon.texture = load("res://assets/images/gui/obed_good.png")
+	else:
+		$obedlabel/icon.texture = load("res://assets/images/gui/obed_bad.png")
+	
+	#$loyaltylabel.text = str(person.loyalty) + "/100"
+	#$submissionlabel.text = str(person.submission) + "/100"
+	$loyaltylabel.value = person.loyalty
+	$submissionlabel.value = person.submission
+	var authority
+	if person.authority < person.authority_threshold()/2:
+		authority = 'low'
+	elif person.authority < person.authority_threshold():
+		authority = 'medium'
+	else:
+		authority = 'high'
+	text = authority_lines[authority]
+	
+	$authoritylabel.text = 'Authority: ' + text
+	
+	
+	
 	$base_stats/lust.value = person.lust
 	$base_stats/lust.max_value = person.lustmax
 	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
 	$character_class.text = person.slave_class.capitalize()
 	
-	if person.obedience > 50:
-		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-	elif person.obedience > person.brave_factor*7:
-		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-	else:
-		if person.check_escape_chance() == true:
-			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-		else:
-			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
-	$obedlabel.set("custom_colors/font_color", $mentality/obedience/Label.get("custom_colors/font_color"))
-	if person.fear > 50:
-		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-	elif person.fear > person.brave_factor*7:
-		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-	else:
-		if person.check_escape_chance() == true:
-			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-		else:
-			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
-	$fearlabel.set("custom_colors/font_color", $mentality/fear/Label.get("custom_colors/font_color"))
-	
 	
 	text = globals.statdata.obedience.descript
-	if person.has_status('no_obed_reduce'):
-		text += "\n\n[color=green]No decay[/color]"
-	else:
-		text += '\n\n[color=yellow]Expected daily decay: ' + str(round(person.get_obed_reduction()*24)) + "[/color]"
-	globals.connecttexttooltip($mentality/obedience, text)
-	text = globals.statdata.fear.descript
-	if person.has_status('no_fear_reduce'):
-		text += "\n\n[color=green]No decay[/color]"
-	else:
-		text += '\n\n[color=yellow]Expected daily decay: ' + str(round(person.get_fear_reduction()*24)) + "[/color]"
-	globals.connecttexttooltip($mentality/fear, text)
 	
 	text = ''
 	$factors/food_consumption/Label.text = str(person.food_consumption)

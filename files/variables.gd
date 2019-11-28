@@ -20,11 +20,11 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+fear', '+loyal', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-fear', '-loyal', '-energy','no_stat']
+var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+loyalty', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-loyalty', '-energy','no_stat', '+authority']
 #list for values modified by random_mod
-var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy']
+var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'loyalty', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
-var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','brave_factor','growth_factor']
+var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'fatigue', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','timid_factor','brave_factor','growth_factor']
 #list for various types of damage mods
 var mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell']
 
@@ -34,11 +34,11 @@ var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate',
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','fear_degrade_mod','obed_degrade_mod']
+var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','submission_degrade_mod','authority_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
-var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 
-'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
+var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 
+'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor',
 'sexuals_factor','magic_factor','growth_factor', 'food_consumption']
 
 
@@ -131,8 +131,6 @@ var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
 
-var obedience_modifier = 1.0
-var fear_modifier = 1.0
 
 
 #World settings
@@ -144,18 +142,18 @@ var instant_travel = false
 var skip_combat = false
 var free_upgrades = false
 var instant_upgrades = false
-var unlock_all_upgrades = true
+var unlock_all_upgrades = false
 var invincible_player = false
 var show_enemy_hp = true
 var social_skill_unlimited_charges = false
 var allow_skip_fights = false
 
 #debug_only
-var allow_remote_intereaction = true
+var allow_remote_intereaction = false
 var no_event_wait_time = false
 var ignore_quest_requirements = false
 
-var generate_test_chars = true
+var generate_test_chars = false
 var combat_tests = false #for combat testing
 var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 

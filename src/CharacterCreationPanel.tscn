@@ -450,7 +450,6 @@ margin_bottom = 724.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="StatsContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 25.0
 margin_top = 776.0
 margin_right = 877.0

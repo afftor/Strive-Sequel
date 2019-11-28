@@ -16,10 +16,13 @@ func rebuild():
 		newbutton.get_node("icon").texture = person.get_icon()
 		newbutton.get_node("name").text = person.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(person)
-		newbutton.get_node("fear").texture = get_fear_texture(person)
 		newbutton.get_node("state").texture = get_state_texture(person)
 		newbutton.get_node("obed/Label").text = str(round(person.obedience))
-		newbutton.get_node("fear/Label").text = str(round(person.fear))
+		if person.obedience > 0:
+			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_good.png")
+		else:
+			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_bad.png")
+		#newbutton.get_node("fear/Label").text = str(round(person.fear))
 		#newbutton.get_node("en/Label").text = str(round(person.energy))
 		newbutton.get_node("mp/Label").text = str(round(person.mp))
 		newbutton.set_meta('slave', person)
@@ -30,11 +33,9 @@ func rebuild():
 			newbutton.get_node("en").visible = person.location == 'mansion'
 			newbutton.get_node("mp").visible = person.location == 'mansion'
 			newbutton.get_node("obed").visible = person.location == 'mansion'
-			newbutton.get_node("fear").visible = person.location == 'mansion'
 		
 		if person.professions.has("master") == true:
 			newbutton.get_node("obed").hide()
-			newbutton.get_node("fear").hide()
 		newbutton.connect('pressed', self, 'open_slave_tab', [person])
 		globals.connectslavetooltip(newbutton, person)
 
@@ -45,15 +46,19 @@ func update():
 		var i = newbutton.get_meta('slave')
 		newbutton.get_node("icon").texture = i.get_icon()
 		newbutton.get_node("name").text = i.get_full_name()
-		newbutton.get_node("obed").texture = get_obed_texture(i)
-		if newbutton.get_node('obed').texture == obed_textures.low && i.check_escape_chance() == false:
-			newbutton.get_node("obed").texture = null
-		newbutton.get_node("fear").texture = get_fear_texture(i)
-		if newbutton.get_node('fear').texture == fear_textures.low && i.check_escape_chance() == false:
-			newbutton.get_node("fear").texture = null
+#		newbutton.get_node("obed").texture = get_obed_texture(i)
+#		if newbutton.get_node('obed').texture == obed_textures.low && i.check_escape_chance() == false:
+#			newbutton.get_node("obed").texture = null
+#		newbutton.get_node("fear").texture = get_fear_texture(i)
+#		if newbutton.get_node('fear').texture == fear_textures.low && i.check_escape_chance() == false:
+#			newbutton.get_node("fear").texture = null
 		newbutton.get_node("state").texture = get_state_texture(i)
+		if i.obedience > 0:
+			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_good.png")
+		else:
+			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_bad.png")
 		newbutton.get_node("obed/Label").text = str(round(i.obedience))
-		newbutton.get_node("fear/Label").text = str(round(i.fear))
+		#newbutton.get_node("fear/Label").text = str(round(i.fear))
 		#newbutton.get_node("en/Label").text = str(round(i.energy))
 		newbutton.get_node("mp/Label").text = str(round(i.mp))
 		if i.location != 'mansion':
@@ -65,10 +70,9 @@ func update():
 		#newbutton.get_node("en").visible = i.location == 'mansion'
 		newbutton.get_node("mp").visible = i.location == 'mansion'
 		newbutton.get_node("obed").visible = i.location == 'mansion'
-		newbutton.get_node("fear").visible = i.location == 'mansion'
+		#newbutton.get_node("fear").visible = i.location == 'mansion'
 		if i.professions.has("master") == true:
 			newbutton.get_node("obed").hide()
-			newbutton.get_node("fear").hide()
 
 func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)
@@ -81,7 +85,7 @@ func get_obed_texture(tempchar):
 	var rval 
 	if tempchar.obedience >= 50:
 		rval = 'high'
-	elif tempchar.obedience < tempchar.brave_factor*7:
+	elif tempchar.obedience < tempchar.timid_factor*7:
 		rval = 'low'
 	else:
 		rval = 'med'
@@ -89,9 +93,9 @@ func get_obed_texture(tempchar):
 
 func get_fear_texture(tempchar):
 	var rval
-	if tempchar.fear >= 50:
+	if tempchar.submission >= 50:
 		rval = 'high'
-	elif tempchar.fear < tempchar.brave_factor*7:
+	elif tempchar.submission < tempchar.timid_factor*7:
 		rval = 'low'
 	else:
 		rval = 'med'

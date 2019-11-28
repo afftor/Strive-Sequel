@@ -170,18 +170,74 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 bbcode_enabled = true
-bbcode_text = "0.1.0a
+bbcode_text = "Reworked social skill system and work mechanics
+Silk farm upgrade remade into Cloth upgrade
+Traps made cheaper and added to market
+Fairies can also learn Druid class now
+'Slave' type has been slightly reworked
+Fixed some skills from bugging the combat
+Fixed some skills not restoring charges
+Fixed locations not being deleted on quest failing
+Fixed characters not losing penis virginity during sex
+Fixed some dungeon events not working correctly
+Fixed social skills diplaying wrong names for speech lines
+Fixed event options causing stats to be set instead of increased
+0.2b
+Fixed bug with quests not generating correct reward sometimes
+Fixed bug causing quests for usable items not being completable
+Fixed quests taking items worn by characters
+0.2.0a
+Increased charm growth from using social skills
+Fixed an issue when on game start window might have spawned too high on screen
+Fixed weared items being consumed by crafting
+Fixed bugs with captured slave from elven lands
+Fixed skill cooldowns not refreshing after combat
+Fixed stats panel showing incorrect critical mod
+Fixed soft lock on defeat in events
+0.2.0
 Added class information panel
-Redisigned repeatable quest structure and added more repeatable quests
+Added more settlement and dungeon events
+Redesigned repeatable quest structure and added more repeatable quests
+Added slave personalities and random chat
+Redesigned shops to have limited amount of items
+Restricted races to regions with other races being available in events for now
 Multiple combat and exploration fixes
 Fixed a severe issue with saving
 Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.1.0a
+text = "Reworked social skill system and work mechanics
+Silk farm upgrade remade into Cloth upgrade
+Traps made cheaper and added to market
+Fairies can also learn Druid class now
+'Slave' type has been slightly reworked
+Fixed some skills from bugging the combat
+Fixed some skills not restoring charges
+Fixed locations not being deleted on quest failing
+Fixed characters not losing penis virginity during sex
+Fixed some dungeon events not working correctly
+Fixed social skills diplaying wrong names for speech lines
+Fixed event options causing stats to be set instead of increased
+0.2b
+Fixed bug with quests not generating correct reward sometimes
+Fixed bug causing quests for usable items not being completable
+Fixed quests taking items worn by characters
+0.2.0a
+Increased charm growth from using social skills
+Fixed an issue when on game start window might have spawned too high on screen
+Fixed weared items being consumed by crafting
+Fixed bugs with captured slave from elven lands
+Fixed skill cooldowns not refreshing after combat
+Fixed stats panel showing incorrect critical mod
+Fixed soft lock on defeat in events
+0.2.0
 Added class information panel
-Redisigned repeatable quest structure and added more repeatable quests
+Added more settlement and dungeon events
+Redesigned repeatable quest structure and added more repeatable quests
+Added slave personalities and random chat
+Redesigned shops to have limited amount of items
+Restricted races to regions with other races being available in events for now
 Multiple combat and exploration fixes
 Fixed a severe issue with saving
 Fixed tutorial window issues

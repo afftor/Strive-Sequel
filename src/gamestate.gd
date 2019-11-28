@@ -94,6 +94,9 @@ func revert():
 	currentarea = null
 	items.clear()
 	materials.clear()
+	upgrade_progresses.clear()
+	for i in globals.upgradelist.keys():
+		upgrades[i] = 0
 	for i in Items.materiallist:
 		materials[i] = 0
 	globals._ready()
@@ -278,7 +281,7 @@ func if_has_items(name, operant, value):
 	var counter = 0
 	for i in items.values():
 		if i.itembase == name:
-			counter += 1
+			counter += i.amount
 	return input_handler.operate(operant, counter, value)
 
 func if_has_free_items(name, operant, value):
@@ -328,7 +331,7 @@ func remove_item(itemcode, number):
 	while number > 0:
 		var item
 		for i in items.values():
-			if i.itembase == itemcode:
+			if i.itembase == itemcode && i.owner == null:
 				item = i
 				break
 		if item != null:
@@ -474,14 +477,6 @@ func common_effects(effects):
 								character.tags.erase(k.value)
 					else:
 						character_stat_change(character, k)
-#						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
-#						if k.value > 0:
-#							text += " + "
-#						else:
-#							text += " - "
-#						text += str(k.value)
-#						text_log_add('char', text)
-#						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
 			'spend_money_for_scene_character':
@@ -510,9 +505,58 @@ func common_effects(effects):
 					'damage':
 						input_handler.active_character.hp -= i.value
 					'stat':
-						input_handler.active_character.set(i.name, i.value)
+						input_handler.active_character.set(i.name, input_handler.active_character.get(i.name) + i.value)
 			'make_loot':
 				input_handler.scene_loot = world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
+			'make_scene_character':
+				for k in i.value:
+					var newcharacter
+					var number = 1
+					if k.has("number"):
+						number = round(rand_range(k.number[0], k.number[1]))
+					while number > 0:
+						match k.type:
+							'raw':
+								newcharacter = Slave.new()
+								newcharacter.is_active = false
+								newcharacter.generate_random_character_from_data(k.race, k.class, k.difficulty)
+								newcharacter.set_slave_category(k.slave_type)
+							'function':
+								newcharacter = call(k.function, k.args)
+						input_handler.active_character = newcharacter
+						input_handler.scene_characters.append(newcharacter)
+						
+						number -= 1
+					
+					#data.text = newcharacter.translate(data.text)
+
+func make_local_recruit(args):
+	var newchar = Slave.new()
+	if args == null:
+		newchar.generate_random_character_from_data(input_handler.weightedrandom(input_handler.active_location.races))
+	else:
+		var race = 'random'
+		var des_class = null
+		var difficulty = 0
+		if args.has('races'):
+			race = input_handler.weightedrandom(args.races)
+			if race == 'local':
+				race = input_handler.weightedrandom(input_handler.active_area.races)
+			elif race == 'beast':
+				var racearray = []
+				for i in races.racelist.values():
+					if i.tags.has('beast') == true:
+						racearray.append(i.code)
+				race = racearray[randi()%racearray.size()]
+		if args.has('difficulty'):
+			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
+		newchar.generate_random_character_from_data(race, des_class, difficulty)
+		if args.has("bonuses"):
+			newchar.add_stat_bonuses(args.bonuses)
+		if args.has("type"):
+			newchar.set_slave_category(args.type)
+	if newchar.slave_class == '': newchar.set_slave_category('servant')
+	return newchar
 
 func character_stat_change(character, data):
 	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 

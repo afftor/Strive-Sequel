@@ -13,7 +13,7 @@ var lands = {
 	plains = {
 		code = 'plains',
 		name = "Plains",
-		races = [['Human', 80], ['Halfbreeds', 15], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local racces
+		races = [['Human', 50], ['Halfbreeds', 15], ['Elf', 3]], #races define chance of the race appearing in location, when selected randomly from local racces
 		policies = [], #not used yet
 		travel_time = [0,0], #how long it gonna take to travel to region
 		difficulty = 0, #growing number defining quests and individuals
@@ -22,7 +22,7 @@ var lands = {
 		start_settlements_number = {settlement_small = [2,2]}, #will generate said locations on first generation
 		start_locations_number = 3, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
-		locationpool = ['dungeon_bandit_den'],#"dungeon_goblin_cave"], #array of allowed locations to generate
+		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
 		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -41,6 +41,7 @@ var lands = {
 			bone = {min = 5, max = 20, chance = 0.7},
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 2, max = 5, chance = 1},
+			trap = {min = 5, max = 10, chance = 1},
 			itempool1 = {items = ['sword','axe','pickaxe','hammer','fishingtools','sickle','bow','staff'], min = 3, max = 6, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},		
@@ -52,14 +53,14 @@ var lands = {
 		name = "Forests",
 		races = [['Elf', 100], ['DarkElf',10],['Halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
-		travel_time = [12,28],
+		travel_time = [6,10],
 		difficulty = 1,
 		disposition = 25,
 		population = [20000, 50000],
 		start_settlements_number = {settlement_small = [1,1]},
 		start_locations_number = 3, 
 		locations = {},
-		locationpool = ['dungeon_bandit_den'],
+		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		guilds = [],
 		events = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
@@ -249,6 +250,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
+		character_bonuses = {authority = [50,80], obedience = [48,48]},
 		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],#['warriors_dungeon_easy','warriors_monster_hunt_easy','warriors_fighter_slave_easy'],
 		quests_medium = [],
 		quests_hard = [],
@@ -262,6 +264,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
+		character_bonuses = {submission = [5,10], authority = [30,65], obedience = [48,48]},
 		quests_easy = ['mages_materials_easy','mages_craft_potions_easy','mages_threat_easy'],#,'mages_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
@@ -275,6 +278,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['labor'],
 		character_types = [['servant',1]],
+		character_bonuses = {submission = [5,15], authority = [40,75], obedience = [48,48]},
 		quests_easy = ['workers_resources_easy','workers_food_easy','workers_craft_tools_easy','workers_threat_easy'],
 		quests_medium = [],
 		quests_hard = [],
@@ -288,6 +292,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
+		character_bonuses = {submission = [10,20], authority = [45,80], obedience = [48,48]},
 		quests_easy = ['servants_craft_items_easy'],#,'servants_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
@@ -301,6 +306,8 @@ var factiondata = {
 		actions = ['hire','sellslaves','services'],
 		preference = [],
 		character_types = [['slave',1]],
+		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
+		slave_races = [['rare',3]],
 		quests_easy = [],
 		quests_medium = [],
 		quests_hard = [],
@@ -318,6 +325,7 @@ func make_guild(code, area):
 		area = area.code,
 		actions = data.actions,
 		chartype = data.character_types,
+		charbonus = data.character_bonuses,
 		preferences = data.preference,
 		description = data.description,
 		questpool = {easy = data.quests_easy, medium = data.quests_medium, hard = data.quests_hard},
@@ -326,10 +334,13 @@ func make_guild(code, area):
 		reputation = 0,
 		totalreputation = 0,
 		difficulty = area.difficulty,
-		races = area.races,
+		races = area.races.duplicate(true),
 		upgrades = {},
 		slavelevel = 0,
 	}
+	if data.has('slave_races'):
+		for i in data.slave_races:
+			guilddatatemplate.races.append(i)
 	if data.slavenumber.size() > 0:
 		data.slavenumber = round(rand_range(data.slavenumber[0], data.slavenumber[1]))
 	if data.questnumber.size() > 0:
@@ -359,6 +370,8 @@ func make_slave_for_guild(guild):
 	newslave.generate_random_character_from_data(race, slaveclass, guild.difficulty + round(randf())-0.3)
 	var char_class = input_handler.weightedrandom(guild.chartype)
 	newslave.set_slave_category(char_class)
+	for i in guild.charbonus:
+		newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
 	guild.slaves.append(newslave.id)
 	newslave.is_known_to_player = true
 
@@ -458,7 +471,7 @@ var locations = {
 		approval = 0,
 		leader = '',
 		actions = ['local_shop','local_events_search'],
-		event_pool = [['event_good_recruit', 50], ['event_good_loot_small', 1], ['event_nothing_found', 2]],
+		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2],['exotic_slave_trader',0.5], ['event_good_slavers_woods',1], ['event_good_rebels_beastkin',1]],
 		strength = [1,10],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		area_shop_items = {
@@ -474,6 +487,7 @@ var locations = {
 			lifeshard = {min = 3, max = 6, chance = 0.9},
 			itempool1 = {items = ['axe','pickaxe','hammer','fishingtools','sickle'], min = 1, max = 3, chance = 0.8},
 			itempool2 = {items = ['worker_outfit','craftsman_suit','steel_collar'], min = 1, max = 4, chance = 0.8},
+			itempool3 = {items = ['chest_base_leather','chest_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			},
 #		food_type_number = [1,2],
 #		food_type_amount = [100,200],
@@ -494,7 +508,7 @@ func make_location(code, area, difficulty = 'easy'):
 		text = location.singlename
 	location.name = text
 	location.id = "L" + str(state.locationcounter)
-	location.travel_time = round(rand_range(6,12))
+	location.travel_time = round(rand_range(1,4))
 	location.code = code
 	var levelnumber = round(rand_range(location.difficulties[difficulty].levels[0], location.difficulties[difficulty].levels[1]))
 	location.levels = {}
@@ -514,6 +528,8 @@ func make_location(code, area, difficulty = 'easy'):
 		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
 		if location.difficulties[difficulty].final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
+		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
+	
 	state.locationcounter += 1
 	location.erase('difficulties')
 	return location
@@ -560,6 +576,11 @@ func fill_faction_quests(faction, area):
 
 func fail_quest(quest):
 	quest.state = 'failed'
+	for i in quest.requirements:
+		if i.code in ['complete_location','complete_dungeon']:
+			state.areas[i.area].locations.erase(i.location)
+			state.areas[i.area].questlocations.erase(i.location)
+		
 
 
 var questdata = {
@@ -585,7 +606,7 @@ var questdata = {
 		reputation = [100,150],
 		rewards = [
 		[1,{code = 'gold', range = [100,150]}],
-		[1,{code = 'metarials', type = ['wood', 'stone','leather','cloth', 'iron'], range = [20,25]}],
+		[1,{code = 'metarial', type = ['wood', 'stone','leather','cloth', 'iron'], range = [20,25]}],
 		[0.5,{code = 'gold', range = [50,75]},{code = 'metarials', type = ['steel', 'woodmagic','woodiron','clothsilk',''], range = [8,14]}],
 		],
 		time_limit = [8,12],
@@ -872,6 +893,14 @@ func make_chest_loot(chest):
 	var location = input_handler.active_location
 	for i in data:
 		match i.code:
+			'defined':
+				var tempitem = i.name
+				var amount = round(rand_range(i.min, i.max))
+				if Items.materiallist.has(tempitem):
+					globals.AddOrIncrementDict(dict.materials, {tempitem : amount})
+				if Items.itemlist.has(tempitem):
+					dict.items.append(globals.CreateUsableItem(tempitem, amount))
+				
 			'material':
 				var tempdict 
 				if i.grade[0] == 'location':
@@ -1294,7 +1323,7 @@ var pregen_characters = {
 		magic_factor = 2,
 		growth_factor = 3,
 		tame_factor = 4,
-		brave_factor = 1,
+		timid_factor = 5,
 		food_consumption = 2,
 		icon_image = 'res://assets/images/portraits/daisy.png',
 		body = null,
@@ -1302,8 +1331,9 @@ var pregen_characters = {
 		wits = 2.0,
 		charm = 0.0,
 		sexuals = 0.0,
-		fear = 40,
-		obedience = 65,
+		obedience = 48,
+		authority = 50,
+		submission = 10,
 		vaginal_virgin = true,
 		anal_virgin = true,
 		mouth_virgin = true,
@@ -1353,7 +1383,7 @@ var easter_egg_characters = {
 		hair_length = 'shoulder',
 		icon = null,
 		body = null,
-		brave_factor = 4,
+		timid_factor = 2,
 		class_category = 'combat',
 	},
 	Ember = {

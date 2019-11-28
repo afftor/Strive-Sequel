@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/action.wav-f12d4ca6a54a4d24c7273afe76caaf7b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/action.wav"
+dest_files=[ "res://.import/action.wav-f12d4ca6a54a4d24c7273afe76caaf7b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -29,37 +29,14 @@ func _ready():
 		i.connect("pressed",self,"select_category", [i.name])
 	for i in positiondict:
 		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
-		get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
-		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
+		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
+		get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
 	
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
 		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
 		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
 	
 	
-	if variables.combat_tests == true:
-		current_level = 1
-		current_stage = 1
-		input_handler.active_location = {stagedenemies = []}
-		input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
-		var test_slave = Slave.new()
-		test_slave.create('BeastkinWolf', 'male', 'random')
-		test_slave.unlock_class("smith")
-		test_slave.unlock_class("harlot")
-		test_slave.unlock_class("attendant")
-		test_slave.unlock_class("dragonknight")
-		state.materials.unstable_concoction = 5
-		state.materials.bandage = 2
-		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
-		state.add_slave(test_slave)
-		test_slave.speed = 100
-		test_slave.wits = 100.0
-		var test_slave2 = Slave.new()
-		test_slave2.create('BeastkinWolf', 'male', 'random')
-		state.add_slave(test_slave2)
-		input_handler.active_location.group = {1:test_slave.id, 4:test_slave2.id}
-		input_handler.StartCombat('wolves_skirmish')
 
 func testcombat():
 	current_level = 1
@@ -70,8 +47,9 @@ func testcombat():
 	test_slave.create('BeastkinWolf', 'male', 'random')
 	test_slave.unlock_class("smith")
 	test_slave.unlock_class("apprentice")
+	test_slave.unlock_class("attendant")
 	test_slave.unlock_class("fighter")
-	test_slave.unlock_class("dragonknight")
+	test_slave.unlock_class("ruler")
 	state.materials.unstable_concoction = 5
 	state.materials.bandage = 2
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
@@ -101,35 +79,57 @@ func show_heal_items(position):
 			#globals.connectitemtooltip(newbutton, i)
 			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
 		
-		if false:# TODO spell usage
-			var character = state.characters[active_location.group['pos'+str(position)]]
-			for i in character.combat_skills:
-				var skill = Skilldata.Skilllist[i]
-				if skill.tags.has('exploration') == false:
-					continue
-				var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
-				newbutton.texture_normal = skill.icon
-				var text = skill.descript
-				if skill.manacost >= 1:
-					text += "\nMana cost: " + str(skill.manacost)
-					if character.mp < skill.manacost:
-						newbutton.disabled = true
-						newbutton.material = load("res://assets/sfx/bw_shader.tres")
-						text += "(not enough mana)"
-				if skill.catalysts.size() > 0:
-					text += "\nCatalysts required: "
-					for k in skill.catalysts:
-						text += "\n" + Items.materiallist[k].name + " - " +  str(skill.catalysts[k]) + ", "
-						if state.materials[k] < skill.catalysts[k]:
-							newbutton.disabled = true
-							text += "(not enough items)"
-					text = text.substr(0, text.length()-2)
-				if skill.charges > 0:
-					pass #add charge check/etc
-				newbutton.hint_tooltip = text
-				newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
-				newbutton.get_node("Label").text = str(skill.manacost)
-				newbutton.get_node("Label").set("custom_colors/font_color",Color(0.4,0.4,1))
+		var character = state.characters[active_location.group['pos'+str(position)]]
+		for i in character.combat_skills:
+			var skill = Skilldata.Skilllist[i]
+			if skill.tags.has('exploration') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+			#newbutton.get_node("Label").text = str(i.amount)
+			newbutton.texture_normal = skill.icon
+			newbutton.hint_tooltip = skill.descript
+			if skill.manacost > 0:
+				newbutton.hint_tooltip += "\nMana Cost: " + str(skill.manacost)
+			for k in skill.catalysts:
+				if state.materials[k] < skill.catalysts[k]:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.hint_tooltip += "\nMissing catalyst: " + Items.materiallist[k].name
+				elif i.mp < skill.manacost:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.hint_tooltip += "\nNot enough mana: " + Items.materiallist[k].name
+			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+		
+#		if false:# TODO spell usage
+#			var character = state.characters[active_location.group['pos'+str(position)]]
+#			for i in character.combat_skills:
+#				var skill = Skilldata.Skilllist[i]
+#				if skill.tags.has('exploration') == false:
+#					continue
+#				var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+#				newbutton.texture_normal = skill.icon
+#				var text = skill.descript
+#				if skill.manacost >= 1:
+#					text += "\nMana cost: " + str(skill.manacost)
+#					if character.mp < skill.manacost:
+#						newbutton.disabled = true
+#						newbutton.material = load("res://assets/sfx/bw_shader.tres")
+#						text += "(not enough mana)"
+#				if skill.catalysts.size() > 0:
+#					text += "\nCatalysts required: "
+#					for k in skill.catalysts:
+#						text += "\n" + Items.materiallist[k].name + " - " +  str(skill.catalysts[k]) + ", "
+#						if state.materials[k] < skill.catalysts[k]:
+#							newbutton.disabled = true
+#							text += "(not enough items)"
+#					text = text.substr(0, text.length()-2)
+#				if skill.charges > 0:
+#					pass #add charge check/etc
+#				newbutton.hint_tooltip = text
+#				newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+#				newbutton.get_node("Label").text = str(skill.manacost)
+#				newbutton.get_node("Label").set("custom_colors/font_color",Color(0.4,0.4,1))
 
 func show_explore_spells(position):
 	if get_node(positiondict[position] + "/Image").visible == true:
@@ -146,8 +146,19 @@ func show_explore_spells(position):
 			#newbutton.get_node("Label").text = str(i.amount)
 			newbutton.texture_normal = skill.icon
 			newbutton.hint_tooltip = skill.descript
-			#newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
-			newbutton.connect("pressed", self, "use_e_combat_skill", [skill, character, character])
+			if skill.manacost > 0:
+				newbutton.hint_tooltip += "\nMana Cost: " + str(skill.manacost)
+			for k in skill.catalysts:
+				if state.materials[k] < skill.catalysts[k]:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.hint_tooltip += "\nMissing catalyst: " + Items.materiallist[k].name
+				elif i.mp < skill.manacost:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.hint_tooltip += "\nNot enough mana: " + Items.materiallist[k].name
+			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+			#newbutton.connect("pressed", self, "use_e_combat_skill", [skill, character, character])
 
 func use_item_on_character(position, item):
 	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
@@ -165,7 +176,7 @@ func use_skill_explore(character, skill):
 	var reqs = [{code = 'is_at_location', value = active_location.id}]
 	active_character = character
 	active_skill = skill
-	input_handler.ShowSlaveSelectPanel(self, 'use_skill_confirm', reqs)
+	input_handler.ShowSlaveSelectPanel(self, 'use_e_combat_skill', reqs)
 
 func use_skill_confirm(target):
 	active_character.use_social_skill(active_skill.code, target)
@@ -370,7 +381,7 @@ func item_purchase(item, amount):#(targetnode = null, targetfunction = null, tex
 		amount = 100
 	var price = 0
 	if typeof(item) == TYPE_OBJECT:
-		price = item.calculateprice()/3
+		price = item.calculateprice()
 	else:
 		price = item.price
 	$NumberSelection.open(self, 'item_puchase_confirm', "Purchase $n " + item.name + "? Total cost: $m", price, 0, amount, true)
@@ -533,17 +544,17 @@ func guild_hire_slave():
 			selectedperson.location = 'mansion'
 			selectedperson.is_players_character = true
 			input_handler.active_character = selectedperson
+			input_handler.scene_characters.append(selectedperson)
 			input_handler.interactive_message('hire', '', {})
 			input_handler.PlaySound("money_spend")
 			faction_hire()
-			yield(get_tree().create_timer(1),"timeout")
-			input_handler.add_random_chat_message(selectedperson, 'hire')
 		'sell':
 			state.money += round(selectedperson.calculate_price()/3)
 			state.remove_slave(selectedperson)
 			active_faction.slaves.append(selectedperson.id)
 			selectedperson.is_players_character = false
 			input_handler.PlaySound("money_spend")
+			input_handler.slave_list_node.rebuild()
 			faction_sellslaves()
 
 
@@ -747,12 +758,11 @@ func enslave_select(character:Slave):
 	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
 	state.common_effects(changes)
 	state.text_log_add('char',character.translate("[name] has been demoted to Slave."))
-	state.character_stat_change(character, {code = 'obedience', operant = '-', value = 100})
-	state.character_stat_change(character, {code = 'fear', operant = '-', value = 75})
+	state.character_stat_change(character, {code = 'loyalty', operant = '-', value = 50})
+	state.character_stat_change(character, {code = 'submission', operant = '-', value = 25})
+	input_handler.scene_characters.append(character)
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
-	yield(get_tree().create_timer(1), "timeout")
-	input_handler.add_random_chat_message(character, 'enslave')
 
 func free():
 	pass
@@ -833,7 +843,7 @@ func enter_location(data):
 var active_slave_list = []
 
 func open_slave_selection_list():
-	var text = 'Select characters to send to ' + active_location.name + '. Base travel time: ' + str(round(active_location.travel_time + active_area.travel_time))
+	var text = 'Select characters to send to ' + active_location.name + '. Base travel time: ' + str(round((active_location.travel_time + active_area.travel_time)/state.get_master().travel_tick()))
 	$SlaveSelectionPanel.show()
 	active_slave_list.clear()
 	$SlaveSelectionPanel/RichTextLabel.bbcode_text = text
@@ -872,7 +882,7 @@ func remove_slave_selection(character):
 
 func confirm_party_selection():
 	for i in active_slave_list:
-		i.remove_from_task()
+		i.remove_from_task(true)
 		i.process_event(variables.TR_MOVE)
 		if variables.instant_travel == false:
 			i.work = 'travel'
@@ -965,6 +975,8 @@ func return_character_confirm():
 		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
 	else:
 		selectedperson.location = 'mansion'
+		selectedperson.work = selectedperson.previous_work
+		selectedperson.previous_work = null
 	for i in active_location.group:
 		if active_location.group[i] == selectedperson.id:
 			active_location.group.erase(i)
@@ -1135,6 +1147,7 @@ func clear_dungeon_confirm():
 	active_area.questlocations.erase(active_location.id)
 	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
 	action_type = 'location_finish'
+	leave_location()
 	
 
 func leave_location():
@@ -1142,22 +1155,6 @@ func leave_location():
 
 func check_events(action):
 	return input_handler.check_events(action)
-#	var eventarray = active_location.scriptedevents
-#	var erasearray = []
-#	var eventtriggered = false
-#	for i in eventarray:
-#		if i.trigger == action && check_event_reqs(i.reqs) == true:
-#			if i.has('args'):
-#				call(i.event, i.args)
-#			else:
-#				call(i.event)
-#			eventtriggered = true
-#			if i.has('oneshot') && i.oneshot == true:
-#				erasearray.append(i)
-#			break
-#	for i in erasearray:
-#		eventarray.erase(i)
-#	return eventtriggered
 
 func start_scene(scene):
 	input_handler.interactive_message(scene.code, 'event_selection', scene.args)
@@ -1165,163 +1162,16 @@ func start_scene(scene):
 func finish_quest_dungeon(args):
 	input_handler.interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
 
-func character_boss_defeat():
-	var character_race = []
-	var character_class = []
-	var difficulty
-	if active_location.affiliation == 'local':
-		character_race.append([active_area.lead_race, 1])
-		for i in active_area.secondary_races:
-			character_race.append([i, 0.15])
-	if active_location.has("final_enemy_class"):
-		for i in active_location.final_enemy_class:
-			character_class.append([i, 1])
-	
-	character_race = input_handler.weightedrandom(character_race)
-	character_class = input_handler.weightedrandom(character_class)
-	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
-	difficulty = rand_range(difficulty[0], difficulty[1])
-	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty, slave_type = 'slave'}})
-
-
 func check_event_reqs(reqs):
 	return input_handler.check_event_reqs(reqs)
-#	var check = true
-#	for i in reqs:
-#		match i.code:
-#			'level':
-#				check = input_handler.operate(i.operant, current_level, i.value)
-#			'stage':
-#				check = input_handler.operate(i.operant, current_stage, i.value)
-#		if check == false:
-#			break
-#
-#
-#	return check
 
 func check_random_event():
 	return input_handler.check_random_event()
-#	if randf() > variables.dungeon_encounter_chance:
-#		return false
-#	var eventarray = active_location.randomevents
-#	var eventtriggered = false
-#	var active_array = []
-#	for i in eventarray:
-#		var event = scenedata.scenedict[i[0]]
-#		if event.has('reqs'):
-#			if state.checkreqs(event.reqs):
-#				active_array.append(i)
-#		else:
-#			active_array.append(i)
-#	if active_array.size() > 0:
-#		active_array = input_handler.weightedrandom(active_array)
-#		var eventtype = "event_selection"
-#		var dict = {}
-#		if scenedata.scenedict[active_array].has("default_event_type"):
-#			eventtype = scenedata.scenedict[active_array].default_event_type
-#		if scenedata.scenedict[active_array].has('bonus_args'):
-#			dict = scenedata.scenedict[active_array].bonus_args
-#		input_handler.interactive_message(active_array, eventtype, dict)
-#		eventtriggered = true
-#	return eventtriggered
 
 func StartCombat():
 	input_handler.current_level = current_level
 	input_handler.current_stage = current_stage
 	input_handler.StartCombat()
-#	var enemydata
-#	var enemygroup = {}
-#	var enemies = []
-#	var music = 'combattheme'
-#
-#
-#
-#	if variables.skip_combat == true:
-#		finish_combat()
-#		return
-#
-#	for i in active_location.stagedenemies:
-#		if i.stage == current_stage && i.level == current_level:
-#			enemydata = i.enemy#[i.enemy,1]
-#	if enemydata == null:
-#		enemydata = active_location.enemies
-#
-#	if typeof(enemydata) == TYPE_ARRAY:
-#		enemies = input_handler.weightedrandom(enemydata)
-#		enemies = makerandomgroup(Enemydata.enemygroups[enemies])
-#	elif Enemydata.enemygroups.has(enemydata):
-#		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
-#	else:
-#		enemies = makespecificgroup(enemydata)
-#
-#	var enemy_stats_mod = (1 - variables.difficulty_per_level) + variables.difficulty_per_level * current_level
-#
-#	input_handler.emit_signal("CombatStarted", enemydata)
-#	if variables.combat_tests == false:
-#		input_handler.BlackScreenTransition(0.5)
-#		yield(get_tree().create_timer(0.5), 'timeout')
-#	$combat.encountercode = enemydata
-#	$combat.start_combat(active_location.group, enemies, 'background', music, enemy_stats_mod)
-#	$combat.show()
-
-#func makespecificgroup(group):
-#	var enemies = Enemydata.predeterminatedgroups[group]
-#	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
-#	for i in enemies.group:
-#		combatparty[i] = enemies.group[i]
-#
-#	return combatparty
-#
-#func makerandomgroup(enemygroup):
-#	var array = []
-#	for i in enemygroup.units:
-#		var size = round(rand_range(enemygroup.units[i][0],enemygroup.units[i][1]))
-#		if size != 0:
-#			array.append({units = i, number = size})
-#	var countunits = 0
-#	for i in array:
-#		countunits += i.number
-#	if countunits > 6:
-#		#potential error
-#		#array[randi()%array.size()].size - (countunits-6)
-#		array[randi()%array.size()].number -= (countunits-6)
-#
-#	#Assign units to rows
-#	var combatparty = {1 : null, 2 : null, 3 : null, 4 : null, 5 : null, 6 : null}
-#	for i in array:
-#		var unit = Enemydata.enemies[i.units]
-#		while i.number > 0:
-#			var temparray = []
-#
-#
-#			if true:
-#				#smart way
-#				for i in combatparty:
-#					if combatparty[i] != null:
-#						continue
-#					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
-#					if aiposition == 'melee' && i in [1,2,3]:
-#						temparray.append(i)
-#					if aiposition == 'ranged' && i in [4,5,6]:
-#						temparray.append(i)
-#
-#				if temparray.size() <= 0:
-#					for i in combatparty:
-#						if combatparty[i] == null:
-#							temparray.append(i)
-#			else:
-#				#stupid way
-#				for i in combatparty:
-#					if combatparty[i] != null:
-#						temparray.append(i)
-#
-#
-#
-#			combatparty[temparray[randi()%temparray.size()]] = i.units
-#			i.number -= 1
-#
-#
-#	return combatparty
 
 func combat_defeat():
 	for i in active_location.group:
@@ -1337,7 +1187,9 @@ func get_party():
 		if state.characters[ch] != null: res.push_back(state.characters[ch])
 	return res
 
-func use_e_combat_skill(skill, caster, target):
+func use_e_combat_skill(target):
+	var skill = active_skill
+	var caster = active_character
 	#allowaction = false
 
 #	if activeitem:
@@ -1497,9 +1349,13 @@ func use_e_combat_skill(skill, caster, target):
 			eff.process_event(variables.TR_SKILL_FINISH)
 			eff.set_args('skill', null)
 	s_skill1.remove_effects()
+	for i in skill.sounddata.values():
+		if i != null: input_handler.PlaySound(i)
 	#follow-up
 	if skill.has('follow_up'):
-		use_e_combat_skill(skill.follow_up, caster, target)
+		active_skill = skill.followup
+		use_e_combat_skill(target)
+	build_location_group()
 
 
 func execute_skill(s_skill2): #to update to exploration version
