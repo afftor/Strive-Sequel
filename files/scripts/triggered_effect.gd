@@ -66,21 +66,19 @@ func process_event(ev):
 						res = res and obj.process_check(cond.value)
 			if res:
 				ready = false
+				.clear_buffs()
 				#apply trigger
 				e_apply()
 	if reset_event.has(ev) or reset_event.size() == 0:
 		ready = true
+		.rebuild_buffs()
 	pass
 
 func apply():
 	setup_siblings()
 	calculate_args()
-	buffs.clear()
-	for e in template.buffs:
-		var tmp = Buff.new(id)
-		tmp.createfromtemplate(e)
-		tmp.calculate_args()
-		buffs.push_back(tmp)
+	if ready: .rebuild_buffs()
+	else: .clear_buffs()
 
 func e_apply():
 	sub_effects.clear()
