@@ -383,6 +383,7 @@ func player_turn(pos):
 	var selected_character = characters_pool.get_char_by_id(playergroup[pos])
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
+	selected_character.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
@@ -520,6 +521,7 @@ func enemy_turn(pos):
 	var fighter = characters_pool.get_char_by_id(enemygroup[pos])
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
+	fighter.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if !fighter.can_act():
