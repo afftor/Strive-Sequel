@@ -12,7 +12,7 @@ func get_progress_task(character, temptask, tempsubtask, count_crit = false):
 	if item != null && task.has('worktool') && item.toolcategory == task.worktool:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
-	value = value * (character.get_stat('productivity')*character.get(task.mod)/100)#*(productivity*get(currenttask.mod)/100)
+	value = value * (character.get_stat('productivity')*character.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
 	if item != null && task.has('worktool') && item.toolcategory == task.worktool:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
@@ -394,7 +394,7 @@ var racelist = {
 		personality = {kind = 0.7, bold = 0.7, shy = 1, serious = 0.5},
 		diet_love = {vege = 0.4, meat = 2, fish = 1, grain = 0.7},
 		diet_hate = {vege = 55, meat = 1, fish = 10, grain = 25},
-		tags = [],
+		tags = ['small_size'],
 		bodyparts = {
 			ears = ['orcish'],
 			skin = ['green','grey','brown'],
@@ -425,7 +425,7 @@ var racelist = {
 		personality = {kind = 0.5, bold = 1, shy = 0.3, serious = 0.5},
 		diet_love = {vege = 0.1, meat = 2, fish = 1, grain = 0.2},
 		diet_hate = {vege = 55, meat = 0, fish = 1, grain = 25},
-		tags = [],
+		tags = ['small_size'],
 		bodyparts = {
 			skin = ['green','grey','brown'],
 			height = ['tiny','petite'],
@@ -458,7 +458,7 @@ var racelist = {
 		personality = {kind = 1, bold = 0.5, shy = 1, serious = 0.2},
 		diet_love = {vege = 1, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 10, meat = 25, fish = 10, grain = 15},
-		tags = [],
+		tags = ['small_size'],
 		bodyparts = {
 			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
@@ -487,7 +487,7 @@ var racelist = {
 		personality = {kind = 0.5, bold = 1, shy = 0.2, serious = 0.8},
 		diet_love = {vege = 0.3, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 10, fish = 15, grain = 15},
-		tags = [],
+		tags = ['small_size'],
 		bodyparts = {
 			height = ['tiny','petite'],
 			body_shape = ['shortstack'],
@@ -512,11 +512,11 @@ var racelist = {
 			charm_factor = [4,5],
 			wits_factor = [1,3],
 		},
-		race_bonus = {hpfactor = 0.5, matk = 10},
+		race_bonus = {hpfactor = 0.65, matk = 10},
 		personality = {kind = 1, bold = 0.7, shy = 1, serious = 0.2},
 		diet_love = {vege = 1, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
-		tags = [],
+		tags = ['small_size'],
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],

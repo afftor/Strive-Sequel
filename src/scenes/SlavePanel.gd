@@ -195,7 +195,11 @@ func update():
 	$factors/base_exp/Label.set("custom_colors/font_color", exp_color)
 	$factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp()) 
 	
-	$obedlabel.text = str(person.obedience)
+	
+	if person.loyalty < 100 && person.submission < 100:
+		$obedlabel.text = str(ceil(person.obedience))
+	else:
+		$obedlabel.text = "∞"
 	if person.obedience > 0:
 		$obedlabel/icon.texture = load("res://assets/images/gui/obed_good.png")
 	else:
@@ -296,6 +300,7 @@ func update():
 	
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
+	
 	
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
@@ -413,7 +418,6 @@ func show_job_details(job):
 
 func set_rest():
 	person.remove_from_task()
-	person.work = ''
 	$job_panel.hide()
 	update()
 

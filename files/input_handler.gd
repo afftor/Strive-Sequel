@@ -971,6 +971,7 @@ func get_person_for_chat(array, event, bonus_args = []):
 		add_random_chat_message(person, event, bonus_args)
 
 func add_random_chat_message(person, event, bonus_args = []):
+	if person == state.get_master(): return
 	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
 	node.select_chat_line(person, event, bonus_args)
 
@@ -1294,15 +1295,17 @@ func finish_combat():
 	input_handler.emit_signal("CombatEnded", get_combat_node().encountercode)
 	input_handler.SetMusic("exploration")
 	
+	encounter_lose_scripts.clear()
+	
 	if encounter_win_script != null:
 		var data = scenedata.scenedict[encounter_win_script]
 		interactive_message(encounter_win_script, data.default_event_type, {})
+		encounter_win_script = null
 		return
 	if check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished')
 	if check_random_event() == true:
 		yield(input_handler, 'EventFinished')
-	
 	
 	exploration_node.finish_combat()
 

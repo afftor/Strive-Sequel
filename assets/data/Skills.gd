@@ -908,6 +908,7 @@ var Skilllist = {
 		target = 'ally',
 		target_number = 'single',
 		target_range = 'any',
+		damage_type = 'weapon',
 		value = ['0'],
 		damagestat = 'no_stat',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 

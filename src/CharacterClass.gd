@@ -230,6 +230,7 @@ var mouth_virgin = true
 var sleep = ''
 var work = ''
 var previous_work = ''
+var workproduct
 var work_rules = {ration = false, shifts = false, constrain = false}
 
 var shackles_chance = null
@@ -413,6 +414,7 @@ func get_weapon_range():
 
 func get_damage_mod(skill:Dictionary):
 	#stub. needs filling
+	if skill.type == 'social':return 1
 	var res = self.damage_mods['all']
 	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= self.damage_mods['melee']
 	if skill.target_range == 'weapon' and get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= self.damage_mods['melee']
@@ -725,6 +727,9 @@ func get_racial_features():
 		for i in race_template.personality:
 			array.append([i, race_template.personality[i]])
 		personality = input_handler.weightedrandom(array)
+	
+	if body_shape == 'shortstack':
+		add_trait('small')
 
 func get_sex_features():
 	match sex:
@@ -767,6 +772,11 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 				check = input_handler.operate(i.operant, self.get_stat(i.type), i.value)
 		'has_profession':
 			check = professions.has(i.value) == i.check
+		'has_any_profession':
+			check = false
+			for k in professions:
+				if i.value.has(k):
+					check = true
 		'race_is_beast':
 			check = races.racelist[race].tags.has('beast') == i.value
 		'is_shortstack':
@@ -978,6 +988,7 @@ func show_race_description():
 			text += globals.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
+	
 	return text
 
 var stat_description = {
@@ -1160,7 +1171,6 @@ func skill_tooltip(skillcode):
 #	else:
 #		return false
 
-var workproduct
 
 func assign_to_task(taskcode, taskproduct, iterations = -1):
 	var task = races.tasklist[taskcode]
@@ -1174,13 +1184,13 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 			i.workers.append(self.id)
 			work = i.code
 	
+	workproduct = taskproduct
 	if taskexisted == true:
 		return
 	#make new task if it didn't exist
 	var dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = [], mod = task.mod}
 	dict.workers.append(self.id)
 	work = taskcode
-	workproduct = taskproduct
 	state.active_tasks.append(dict)
 	state.emit_signal("task_added")
 
@@ -1195,6 +1205,7 @@ func remove_from_task(remember = false):
 
 func return_to_task():
 	assign_to_task(previous_work, workproduct)
+	previous_work = ''
 
 func travel_tick():
 	var value = 1
@@ -1264,8 +1275,7 @@ func tick():
 				state.emit_signal("slave_arrived", self)
 				input_handler.PlaySound("ding")
 				if location == 'mansion':
-					work = previous_work
-					previous_work = ''
+					return_to_task()
 					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
 				else:
 					state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.location_links[location].area][state.location_links[location].category][location].name)
@@ -1291,6 +1301,8 @@ func tick():
 var last_escape_day_check = 0
 
 func hp_set(value):
+	if hp <= 0 && value <= 0:
+		return
 	hp = min(value, self.hpmax)
 	if displaynode != null:
 		displaynode.update_hp()
@@ -1587,7 +1599,6 @@ func escape():
 	state.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
 	input_handler.slave_list_node.rebuild()
-	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
 
@@ -2342,20 +2353,20 @@ func use_social_skill(s_code, target):#add logging if needed
 			match stat:
 				'loyalty':
 					if mod == '+':
-						if authority_threshold()/2 > target.authority:
+						if target.authority_threshold()/2 > target.authority:
 							s_skill.value[i] = 0
 							detail_tags.append('noauthority')
-						elif loyalty >= 100:
+						elif target.loyalty >= 100:
 							s_skill.value[i] = 0
 							detail_tags.append('loyaltymaxed')
 						else:
 							if template.tags.has("repeated_effect_reduce_loyalty") && target.skills_received_today.has(s_code):
 								s_skill.value[i] /= 2.5
 								detail_tags.append("loyalty_repeat")
-							s_skill.value[i] = (s_skill.value[i] * (0.75 + target.tame_factor*0.25)) * (1 - (authority_threshold() - target.authority)/100)
+							s_skill.value[i] = (s_skill.value[i] * (0.75 + target.tame_factor*0.25)) * (1 - (target.authority_threshold() - target.authority)/100)
 				
 				'submission':
-					if submission >= 100:
+					if target.submission >= 100:
 						s_skill.value[i] = 0
 						detail_tags.append('submissionmaxed')
 					else:
@@ -2400,7 +2411,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			else:
 				effect_text += change + str(floor(tmp))
 			if detail_tags.has("noauthority") && stat == 'loyalty':
-				effect_text += " - Not enough authority"
+				effect_text += " - Not enough Authority"
 			if detail_tags.has("loyalty_repeat") && !detail_tags.has("noauthority") && stat == 'loyalty':
 				effect_text += "(lowered effect)"
 			if detail_tags.has("submission_repeat") && stat == 'submission':
@@ -2465,7 +2476,7 @@ func calculate_linked_chars_by_effect(e_name):
 	return effects_pool.get_n_effects_linked_to(id, e_name).size()
 
 func authority_threshold():
-	return 225-timid_factor*25
+	return 200-timid_factor*25
 
 func get_weapon_element():
 	#for testing

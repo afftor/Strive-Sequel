@@ -42,14 +42,17 @@ func testcombat():
 	current_level = 1
 	current_stage = 1
 	input_handler.active_location = {stagedenemies = []}
-	input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
+	#input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 	var test_slave = Slave.new()
 	test_slave.create('BeastkinWolf', 'male', 'random')
 	test_slave.unlock_class("smith")
 	test_slave.unlock_class("apprentice")
 	test_slave.unlock_class("attendant")
-	test_slave.unlock_class("fighter")
+	test_slave.unlock_class("archer")
 	test_slave.unlock_class("ruler")
+	var newitem = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
+	globals.AddItemToInventory(newitem)
+	test_slave.equip(newitem)
 	state.materials.unstable_concoction = 5
 	state.materials.bandage = 2
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
@@ -403,6 +406,7 @@ func item_puchase_confirm(value):
 		globals.AddItemToInventory(purchase_item)
 		state.money -= purchase_item.calculateprice()
 		$Gold.text = str(state.money)
+		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		for i in active_shop:
 			if purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop[i]):
 				active_shop.erase(i)
@@ -975,8 +979,7 @@ func return_character_confirm():
 		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
 	else:
 		selectedperson.location = 'mansion'
-		selectedperson.work = selectedperson.previous_work
-		selectedperson.previous_work = null
+		selectedperson.return_to_task()
 	for i in active_location.group:
 		if active_location.group[i] == selectedperson.id:
 			active_location.group.erase(i)

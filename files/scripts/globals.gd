@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = 'pre-demo-test 0.2b'
+const gameversion = 'pre-demo-test 0.3b'
 
 var start_new_game = false
 
@@ -123,21 +123,21 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
-		type = 'factor',
+		type = '',
 	},
 	loyalty = {
 		code = 'loyalty',
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
-		type = 'factor',
+		type = '',
 	},
 	submission = {
 		code = 'submission',
 		name = '',
 		descript = '',
 		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
-		type = 'factor',
+		type = '',
 	},
 	physics = { 
 		code = 'physics',

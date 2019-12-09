@@ -17,7 +17,10 @@ func rebuild():
 		newbutton.get_node("name").text = person.get_full_name()
 		newbutton.get_node("obed").texture = get_obed_texture(person)
 		newbutton.get_node("state").texture = get_state_texture(person)
-		newbutton.get_node("obed/Label").text = str(round(person.obedience))
+		if person.loyalty < 100 && person.submission < 100:
+			newbutton.get_node("obed/Label").text = str(round(person.obedience))
+		else:
+			newbutton.get_node("obed/Label").text = "∞"
 		if person.obedience > 0:
 			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_good.png")
 		else:
@@ -57,7 +60,10 @@ func update():
 			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_good.png")
 		else:
 			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_bad.png")
-		newbutton.get_node("obed/Label").text = str(round(i.obedience))
+		if i.loyalty < 100 && i.submission < 100:
+			newbutton.get_node("obed/Label").text = str(ceil(i.obedience))
+		else:
+			newbutton.get_node("obed/Label").text = "∞"
 		#newbutton.get_node("fear/Label").text = str(round(i.fear))
 		#newbutton.get_node("en/Label").text = str(round(i.energy))
 		newbutton.get_node("mp/Label").text = str(round(i.mp))

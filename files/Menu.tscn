@@ -170,11 +170,31 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 bbcode_enabled = true
-bbcode_text = "Reworked social skill system and work mechanics
+bbcode_text = "Fixed skill 'Protect' causing soft lock
+Fixed sometimes a quest generating with bugged reward
+Fixed staff using wrong colors for handle/knub
+
+0.3b
+Fixed Fairies not being able to actually unlock druid class
+Fixed quests timing out 5 times as quick
+Fixed master commenting on getting enough experience (and possible other events)
+Fixed productivity mods not actually affecting productivity
+Fixed 'has_any_profession' requirement not being checked correctly for some classes
+Fixed enemies not droping gold and some loot table crashes
+Fixed materials not showing in the loot after combat
+Fixed monster hunt quest type counting enemy for two 
+0.3a
+Fixed slavers fight win event not clearing properly
+Fixed small console error regarding tooltip on item purchase
+Fixed obedience not being rounded in some places
+Fixed a bug causing characters to not return to their assignment on return
+0.3
+Reworked social skill system and work mechanics
 Silk farm upgrade remade into Cloth upgrade
-Traps made cheaper and added to market
-Fairies can also learn Druid class now
+Fairies have increased hp factor and can also learn Druid class now
+Added more resource types and parts to shops
 'Slave' type has been slightly reworked
+Characters will remember their job assignement when return to mansion
 Fixed some skills from bugging the combat
 Fixed some skills not restoring charges
 Fixed locations not being deleted on quest failing
@@ -207,11 +227,31 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Reworked social skill system and work mechanics
+text = "Fixed skill 'Protect' causing soft lock
+Fixed sometimes a quest generating with bugged reward
+Fixed staff using wrong colors for handle/knub
+
+0.3b
+Fixed Fairies not being able to actually unlock druid class
+Fixed quests timing out 5 times as quick
+Fixed master commenting on getting enough experience (and possible other events)
+Fixed productivity mods not actually affecting productivity
+Fixed 'has_any_profession' requirement not being checked correctly for some classes
+Fixed enemies not droping gold and some loot table crashes
+Fixed materials not showing in the loot after combat
+Fixed monster hunt quest type counting enemy for two 
+0.3a
+Fixed slavers fight win event not clearing properly
+Fixed small console error regarding tooltip on item purchase
+Fixed obedience not being rounded in some places
+Fixed a bug causing characters to not return to their assignment on return
+0.3
+Reworked social skill system and work mechanics
 Silk farm upgrade remade into Cloth upgrade
-Traps made cheaper and added to market
-Fairies can also learn Druid class now
+Fairies have increased hp factor and can also learn Druid class now
+Added more resource types and parts to shops
 'Slave' type has been slightly reworked
+Characters will remember their job assignement when return to mansion
 Fixed some skills from bugging the combat
 Fixed some skills not restoring charges
 Fixed locations not being deleted on quest failing

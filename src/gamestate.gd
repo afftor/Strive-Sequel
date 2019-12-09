@@ -113,6 +113,8 @@ func revert():
 	show_tutorial = true
 	active_tutorials.clear()
 	seen_tutorials.clear()
+	input_handler.encounter_win_script = null
+	input_handler.encounter_lose_scripts.clear()
 
 func make_world():
 	world_gen.build_world()

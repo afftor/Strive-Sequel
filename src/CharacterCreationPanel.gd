@@ -287,13 +287,13 @@ func show_race_info(temprace):
 			text += globals.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
 		else:
 			text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
-#	for i in race.race_bonus:
-#		text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
+	if race.tags.has('small_size'):
+		text += "\n\n{color=aqua|Small Sized: " + "Melee Skill damage reduced by 20%. Evasion increased by 30. Collection tasks efficiency -25%.}"
 	
 	
-	$RaceSelection/RichTextLabel.bbcode_text = text
+	$RaceSelection/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	text = race.code.to_lower().replace('halfkin','beastkin')
 	if person.sex != null:
 		if person.sex == 'male':

@@ -36,7 +36,7 @@ var enemygroups = {
 	ogre_med1 = {reqs = [], units = {ogre_melee = [1,1], cave_goblin_melee = [0,1], cave_goblin_archer = [0,1]}},
 	ogre_med2 = {reqs = [], units = {ogre_melee = [0,1], ogre_mage = [1,1]}},
 	
-	wolves_easy1 = {reqs = [], units = {wolf = [2,3]}},
+	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}},
 	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}},
 	
 	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}},
@@ -851,13 +851,12 @@ var loot_chests_data = {
 
 
 
-#		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
 var loottables = {
 	rat_loot = [['leather', 0.1], ['lifeshard', 0.2]],
-	spider_loot = [['clothsilk', 0.5],['clothsilk', 0.5], ['lifeshard', 0.20]],
-	bandit_loot = [['cloth', 0.5, 2], ['lifeshard', 0.3], ['gold', 75, 3]],
-	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 1, 30], ['gold', 0.5, 5]],
-	skeleton_loot = [['bone', 0.75, 4], ['energyshard', 0.3], ['gold', 25, 3]],
+	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.20]],
+	bandit_loot = [['cloth', 0.5, 2], ['lifeshard', 0.3], ['gold', 0.75, 3]],
+	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 0.9, 30], ['gold', 0.5, 5]],
+	skeleton_loot = [['bone', 0.75, 4], ['energyshard', 0.3], ['gold', 0.25, 3]],
 	wolf_loot = [['leather', 0.5, 3]],
 	gryphon_loot = [['leathermythic', 1, 5], ['leathermythic', 0.5, 3]],
 	goblin_loot = [['stone', 0.2, 1], ['gold', 0.25, 2]],
@@ -868,4 +867,5 @@ var loottables = {
 	guardian_golem_loot = [['stone',0.9,5]],
 	troll_loot = [],
 	ogre_loot = [],
+	raptor_loot = [['leatherthick', 0.7, 2]],
 }

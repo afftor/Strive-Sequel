@@ -330,10 +330,11 @@ func victory():
 	$Rewards.modulate.a = 0
 	input_handler.UnfadeAnimation($Rewards)
 	$Rewards.set_meta("result", 'victory')
+	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.hide()
+		#newbutton.hide()
 		newbutton.texture = item.icon
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("amount").text = str(rewardsdict.materials[i])

@@ -74,7 +74,7 @@ func _ready():
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	
-	if variables.generate_test_chars :
+	if variables.generate_test_chars:
 		state.make_world()
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
@@ -82,7 +82,7 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
-		character.unlock_class("dominator")
+		character.unlock_class("archer")
 		character.sex_traits = ['bisexual', 'anal']
 		character.charm_factor = 1
 		#character.unlock_class("worker")
@@ -97,7 +97,7 @@ func _ready():
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('Fairy', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		character.unlock_class("fighter")
 		character.add_trait('core_trait')
@@ -110,7 +110,7 @@ func _ready():
 		character.obedience = 0
 		#character.fear = 25
 		character.lust = 50
-		#character.base_exp += 500
+		#character.base_exp = 99
 		character.charm_factor = 5
 		character.charm = 100
 		character.loyalty = 95
@@ -120,8 +120,6 @@ func _ready():
 		character.hp = 1
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("apprentice")
-		character.unlock_class("ruler")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
@@ -154,7 +152,7 @@ func _ready():
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('event_good_slavers_woods', 'character_event', {})
+		input_handler.interactive_message('event_dungeon_prisoner', 'character_event', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -179,6 +177,8 @@ func _ready():
 	$TestButton.connect("pressed", self, "quest_test")
 
 func quest_test():
+#	for i in state.characters.values():
+#		i.base_exp += 100
 	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
 	$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')

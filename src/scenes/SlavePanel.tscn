@@ -67,27 +67,27 @@ size = 40
 use_filter = true
 font_data = ExtResource( 32 )
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/neutralbar.png-24a2b5a672096b179c2d013f4ecb3d8e.stex"
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = SubResource( 5 )
+[sub_resource type="StyleBoxTexture" id=4]
+texture = SubResource( 3 )
 region_rect = Rect2( 0, 0, 196, 26 )
 margin_left = 7.0
 modulate_color = Color( 0.372549, 1, 0.811765, 1 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 196, 26 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-texture = SubResource( 5 )
+[sub_resource type="StyleBoxTexture" id=6]
+texture = SubResource( 3 )
 region_rect = Rect2( 0, 0, 196, 26 )
 margin_left = 7.0
 modulate_color = Color( 0.666667, 0.333333, 1, 1 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 46 )
 region_rect = Rect2( 0, 0, 548, 47 )
 margin_left = 9.0
@@ -95,7 +95,7 @@ margin_right = 8.0
 margin_top = 9.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 47 )
 region_rect = Rect2( 0, 0, 548, 45 )
 margin_left = 10.0
@@ -640,21 +640,21 @@ margin_bottom = 95.833
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "25"
-align = 2
+align = 1
 
 [node name="icon" type="TextureRect" parent="obedlabel"]
-margin_left = -61.5829
+margin_left = -70.5829
 margin_top = -21.6899
-margin_right = 14.4171
+margin_right = 5.4171
 margin_bottom = 49.3101
 texture = ExtResource( 33 )
 expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="obedlabel"]
-margin_left = -81.3057
+margin_left = -90.3057
 margin_top = -41.3566
-margin_right = 105.694
+margin_right = 96.694
 margin_bottom = -17.3566
 custom_colors/font_color = Color( 1, 0.976471, 0.00392157, 1 )
 text = "Obedience"
@@ -708,8 +708,8 @@ margin_left = 730.0
 margin_top = 31.0
 margin_right = 909.0
 margin_bottom = 55.0
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 7 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 value = 100.0
 percent_visible = false
 
@@ -721,8 +721,8 @@ margin_left = 730.0
 margin_top = 78.0
 margin_right = 909.0
 margin_bottom = 102.0
-custom_styles/fg = SubResource( 8 )
-custom_styles/bg = SubResource( 7 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 5 )
 value = 100.0
 percent_visible = false
 
@@ -995,9 +995,9 @@ visible = false
 margin_right = 350.0
 margin_bottom = 41.0
 rect_min_size = Vector2( 0, 40 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 toggle_mode = true
 text = "Test text"

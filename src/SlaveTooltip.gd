@@ -59,7 +59,10 @@ func showup(node, person):
 				text += "{color=green|Obedience: " 
 			else:
 				text += "{color=red|Obedience: " 
-			text += str(person.obedience) + "}"
+			if person.loyalty < 100 && person.submission < 100:
+				text += str(ceil(person.obedience)) + "}"
+			else:
+				text += "∞}"
 	$job.bbcode_text = globals.TextEncoder(text) 
 	
 	

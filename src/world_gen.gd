@@ -38,6 +38,8 @@ var lands = {
 			iron = {min = 10, max = 20, chance = 0.8},
 			steel = {min = 5, max = 15, chance = 0.3},
 			cloth = {min = 5, max = 20, chance = 0.9},
+			clothsilk = {min = 5, max = 10, chance = 0.8},
+			fleawarts = {min = 10, max = 20, chance = 0.8},
 			bone = {min = 5, max = 20, chance = 0.7},
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 2, max = 5, chance = 1},
@@ -70,6 +72,7 @@ var lands = {
 			bread = {min = 30, max = 60, chance = 1},
 			cloth = {min = 10, max = 25, chance = 0.9},
 			clothsilk = {min = 10, max = 15, chance = 0.9},
+			salvia = {min = 10, max = 20, chance = 0.7},
 			bone = {min = 5, max = 20, chance = 0.7},
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 3, max = 5, chance = 1},
@@ -250,7 +253,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
-		character_bonuses = {authority = [50,80], obedience = [48,48]},
+		character_bonuses = {authority = [75,100], obedience = [48,48]},
 		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],#['warriors_dungeon_easy','warriors_monster_hunt_easy','warriors_fighter_slave_easy'],
 		quests_medium = [],
 		quests_hard = [],
@@ -264,7 +267,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
-		character_bonuses = {submission = [5,10], authority = [30,65], obedience = [48,48]},
+		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
 		quests_easy = ['mages_materials_easy','mages_craft_potions_easy','mages_threat_easy'],#,'mages_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
@@ -278,7 +281,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['labor'],
 		character_types = [['servant',1]],
-		character_bonuses = {submission = [5,15], authority = [40,75], obedience = [48,48]},
+		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
 		quests_easy = ['workers_resources_easy','workers_food_easy','workers_craft_tools_easy','workers_threat_easy'],
 		quests_medium = [],
 		quests_hard = [],
@@ -292,7 +295,7 @@ var factiondata = {
 		actions = ['hire','upgrade','quests'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
-		character_bonuses = {submission = [10,20], authority = [45,80], obedience = [48,48]},
+		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
 		quests_easy = ['servants_craft_items_easy'],#,'servants_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
@@ -543,16 +546,16 @@ func update_guilds(area):
 				i.slaves.erase(k)
 		while i.slaves.size() < i.slavenumber:
 			make_slave_for_guild(i)
-		for faction in area.quests.factions:
-			for quest in area.quests.factions[faction].values():
-				if quest.state == 'taken':
-					quest.time_limit -= 1
-					if quest.time_limit < 0:
-						fail_quest(quest)
-				else:
-					if randf() >= 0.7 || quest.state == 'complete':
-						area.quests.factions[faction].erase(quest.id)
-					fill_faction_quests(faction, area.code)
+	for faction in area.quests.factions:
+		for quest in area.quests.factions[faction].values():
+			if quest.state == 'taken':
+				quest.time_limit -= 1
+				if quest.time_limit < 0:
+					fail_quest(quest)
+			else:
+				if randf() >= 0.7 || quest.state == 'complete':
+					area.quests.factions[faction].erase(quest.id)
+				fill_faction_quests(faction, area.code)
 
 func update_locations():
 	for i in state.areas.values():
@@ -607,7 +610,7 @@ var questdata = {
 		rewards = [
 		[1,{code = 'gold', range = [100,150]}],
 		[1,{code = 'metarial', type = ['wood', 'stone','leather','cloth', 'iron'], range = [20,25]}],
-		[0.5,{code = 'gold', range = [50,75]},{code = 'metarials', type = ['steel', 'woodmagic','woodiron','clothsilk',''], range = [8,14]}],
+		[0.5,{code = 'gold', range = [50,75]},{code = 'metarials', type = ['steel', 'woodmagic','woodiron','clothsilk'], range = [8,14]}],
 		],
 		time_limit = [8,12],
 	},
@@ -625,7 +628,7 @@ var questdata = {
 	},
 	workers_threat_easy = {
 		code = 'workers_threat_easy',
-		name = 'Trouble solving',
+		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_wolves'], difficulty = 'easy'}],
 		unlockreqs = [],
@@ -639,7 +642,7 @@ var questdata = {
 	},
 	warriors_threat_easy = {
 		code = 'warriors_threat_easy',
-		name = 'Trouble solving',
+		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_rebels'], difficulty = 'easy'}],
 		unlockreqs = [],
@@ -789,7 +792,7 @@ func make_quest(questcode):
 	var reqsarray = template.randomconditions.duplicate()
 	while requirements_number > 0:
 		var tempdata = reqsarray[randi()%reqsarray.size()].duplicate(true)
-		var reqsarrayposition = reqsarray.find(tempdata) #Bug - stat req can repeat itself
+		var reqsarrayposition = reqsarray.find(tempdata)
 		data.requirements.append(tempdata)
 		tempdata.type = tempdata.type[randi()%tempdata.type.size()] #what random things are going there
 		if tempdata.has('range'):
@@ -814,7 +817,7 @@ func make_quest(questcode):
 				reward = generate_random_gear(dict)
 				reward.item = reward.code
 				reward.code = 'gear'
-			'material':
+			'materials':
 				reward.code = 'material'
 				reward.item = i.name[randi()%i.name.size()]
 				if reward.item in ['low','medium','high']:
@@ -1332,7 +1335,7 @@ var pregen_characters = {
 		charm = 0.0,
 		sexuals = 0.0,
 		obedience = 48,
-		authority = 50,
+		authority = 20,
 		submission = 10,
 		vaginal_virgin = true,
 		anal_virgin = true,
