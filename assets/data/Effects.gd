@@ -9,12 +9,12 @@ var effect_table = {
 		atomic = [
 			{type = 'stat_add', stat = 'modmelee', value = -0.2},
 			{type = 'stat_add', stat = 'evasion', value = 30},
-			{type = 'stat_add_p', stat = 'mod_collect', value = -0.25}
+			{type = 'stat_add_p', stat = 'mod_collect', value = -0.15}
 			],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/small_size.png", 
-				description = "Small Size: \nMelee Skill damage reduced by 20%%\nEvasion increased by 30\nCollection tasks efficiency -25%%",
+				description = "Small Size: \nMelee Skill damage reduced by 20%%\nEvasion increased by 30\nCollection tasks efficiency -15%%",
 				limit = 1,
 				t_name = 'small',
 				mansion_only = true,

@@ -15,6 +15,7 @@ var SystemMessageNode
 
 var text_field_input = false
 
+signal StartingSequenceComplete
 signal ScreenChanged
 signal BuildingEntered
 signal ItemObtained
@@ -40,6 +41,7 @@ var scene_characters = []
 var scene_loot
 var active_area
 var active_location
+var active_faction = {}
 
 var activated_skill
 var target_character
@@ -72,6 +74,9 @@ func _input(event):
 				globals.CurrentScene.timeflowhotkey(int(event.as_text()))
 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+	if event.is_action('full_screen'):
+		OS.window_fullscreen = !OS.window_fullscreen
+		globals.globalsettings.fullscren = OS.window_fullscreen
 
 var musicfading = false
 var musicraising = false
@@ -984,33 +989,34 @@ func repeat_social_skill():
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
 
-func make_local_recruit(args):
-	var newchar = Slave.new()
-	if args == null:
-		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
-	else:
-		var race = 'random'
-		var des_class = null
-		var difficulty = 0
-		if args.has('races'):
-			race = weightedrandom(args.races)
-			if race == 'local':
-				race = weightedrandom(active_area.races)
-			elif race == 'beast':
-				var racearray = []
-				for i in races.racelist.values():
-					if i.tags.has('beast') == true:
-						racearray.append(i.code)
-				race = racearray[randi()%racearray.size()]
-		if args.has('difficulty'):
-			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
-		newchar.generate_random_character_from_data(race, des_class, difficulty)
-		if args.has("bonuses"):
-			newchar.add_stat_bonuses(args.bonuses)
-		if args.has("type"):
-			newchar.set_slave_category(args.type)
-	if newchar.slave_class == null: newchar.set_slave_category('servant')
-	return newchar
+#func make_local_recruit(args):
+#	var newchar = Slave.new()
+#	if args == null:
+#		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
+#	else:
+#		var race = 'random'
+#		var des_class = null
+#		var difficulty = 0
+#		if args.has('races'):
+#			race = weightedrandom(args.races)
+#			if race == 'local':
+#				race = weightedrandom(active_area.races)
+#			elif race == 'beast':
+#				var racearray = []
+#				for i in races.racelist.values():
+#					if i.tags.has('beast') == true:
+#						racearray.append(i.code)
+#				race = racearray[randi()%racearray.size()]
+#		if args.has('difficulty'):
+#			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
+#		newchar.generate_random_character_from_data(race, des_class, difficulty)
+#		if args.has("bonuses"):
+#			newchar.add_stat_bonuses(args.bonuses)
+#		if args.has("type"):
+#			newchar.set_slave_category(args.type)
+#	if newchar.slave_class == null: newchar.set_slave_category('servant')
+#	if newchar.has("is_hirable"): newchar.is_hirable = true
+#	return newchar
 
 func make_story_character(args):
 	var newchar = Slave.new()

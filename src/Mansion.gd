@@ -107,9 +107,15 @@ func _ready():
 		character = Slave.new()
 		character.create('BeastkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		
+#		for i in range(1,20):
+#
+#			character = Slave.new()
+#			character.create('BeastkinCat', 'random', 'random')
+#			characters_pool.move_to_state(character.id)
+		
 		character.obedience = 0
 		#character.fear = 25
-		character.lust = 50
 		#character.base_exp = 99
 		character.charm_factor = 5
 		character.charm = 100
@@ -124,6 +130,7 @@ func _ready():
 		character.is_players_character = true
 		
 		#state.revert()
+		state.money = 1000
 		for i in Items.materiallist:
 			state.materials[i] = 200
 		state.materials.bandage = 0
@@ -152,18 +159,21 @@ func _ready():
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('event_dungeon_prisoner', 'character_event', {})
+		input_handler.interactive_message('exotic_slave_trader', 'character_event', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
-		#input_handler.StartCharacterCreation("master")
-		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
-		#input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
-		input_handler.connect("CharacterCreated", input_handler, "get_spec_node", [input_handler.NODE_CHARCREATE, ['slave']], 4)
-		yield(input_handler, "CharacterCreated")
-		yield(input_handler, "CharacterCreated")
-		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+#		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
+#		input_handler.connect("CharacterCreated", input_handler, "get_spec_node", [input_handler.NODE_CHARCREATE, ['slave']], 4)
+#		yield(input_handler, "CharacterCreated")
+#		yield(input_handler, "CharacterCreated")
+		var newgame_node = Node.new()
+		newgame_node.set_script(load("res://src/GameStart.gd"))
+		newgame_node.start()
+		yield(input_handler, "StartingSequenceComplete")
+		
+		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
 		input_handler.ActivateTutorial("introduction")
 	
@@ -256,6 +266,7 @@ func advance_day():
 				if k.has('shop'):
 					world_gen.update_area_shop(k)
 	world_gen.update_locations()
+	globals.autosave()
 
 func set_time_buttons():
 	match globals.globalsettings.turn_based_time_flow:

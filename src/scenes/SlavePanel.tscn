@@ -113,6 +113,7 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="name" type="Label" parent="."]
+editor/display_folded = true
 margin_left = 46.0
 margin_top = 230.0
 margin_right = 154.0
@@ -234,6 +235,7 @@ stretch_mode = 5
 [node name="base_stats" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
+editor/display_folded = true
 margin_left = 15.0
 margin_top = 265.0
 margin_right = 215.0
@@ -580,6 +582,7 @@ margin_bottom = 31.0
 text = "25"
 
 [node name="food_love" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 45.0
 margin_top = 748.0
 margin_right = 80.0
@@ -853,8 +856,8 @@ text = "5"
 align = 1
 
 [node name="SkillPanelBG" type="TextureRect" parent="." groups=[
-"hide_stranger",
 "hide_traveler",
+"hide_stranger",
 ]]
 margin_left = -1.0
 margin_top = 856.0
@@ -869,8 +872,8 @@ margin_right = 1.0
 margin_bottom = 1018.0
 
 [node name="SkillPanel" type="HBoxContainer" parent="." groups=[
-"hide_stranger",
 "hide_traveler",
+"hide_stranger",
 ]]
 editor/display_folded = true
 margin_left = 6.67316
@@ -932,6 +935,29 @@ margin_bottom = 112.514
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
+
+[node name="HirePanel" type="Panel" parent="." groups=[
+"hide_master",
+"hide_servant",
+]]
+margin_left = 164.0
+margin_top = 865.0
+margin_right = 1052.0
+margin_bottom = 1028.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HirePanel"]
+margin_left = 49.0
+margin_top = 21.0
+margin_right = 831.0
+margin_bottom = 100.0
+bbcode_enabled = true
+
+[node name="HireButton" type="Button" parent="HirePanel"]
+margin_left = 344.453
+margin_top = 103.648
+margin_right = 524.453
+margin_bottom = 141.899
+text = "Hire"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 1203.0
@@ -1233,7 +1259,6 @@ text = "Joy Hours"
 align = 1
 
 [node name="DetailsPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 306.132
 margin_top = 62.1831
@@ -1260,17 +1285,26 @@ margin_bottom = 109.0
 rect_min_size = Vector2( 0, 50 )
 text = "Set Nickname"
 
-[node name="icon" type="Button" parent="DetailsPanel/VBoxContainer"]
+[node name="masternoun" type="Button" parent="DetailsPanel/VBoxContainer" groups=[
+"hide_master",
+]]
 margin_top = 118.0
 margin_right = 294.0
 margin_bottom = 168.0
 rect_min_size = Vector2( 0, 50 )
-text = "Select Custom Portrait"
+text = "Set Master Noun"
 
-[node name="body" type="Button" parent="DetailsPanel/VBoxContainer"]
+[node name="icon" type="Button" parent="DetailsPanel/VBoxContainer"]
 margin_top = 177.0
 margin_right = 294.0
 margin_bottom = 227.0
+rect_min_size = Vector2( 0, 50 )
+text = "Select Custom Portrait"
+
+[node name="body" type="Button" parent="DetailsPanel/VBoxContainer"]
+margin_top = 236.0
+margin_right = 294.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 0, 50 )
 text = "Select Custom Body"
 

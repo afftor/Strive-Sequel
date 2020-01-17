@@ -510,6 +510,7 @@ var hexcolordict = {
 	factor4 = '#13a40d',
 	factor5 = '#25b8ff',
 	factor6 = '#bc53ff',
+	levelup_text_color = "#10ff10",
 }
 var textcodedict = {
 	color = {start = '[color=', end = '[/color]'},
@@ -560,6 +561,10 @@ var globalsettings = {
 	turn_based_time_flow = false,
 	
 	guilds_any_race = false, #unused
+	
+	autosave = true,
+	autosave_number = 3,
+	autosave_frequency = 24,
 	
 	
 } setget settings_save
@@ -1128,20 +1133,34 @@ func scanfolder(path): #makes an array of all folders in modfolder
 func QuickSave():
 	SaveGame('QuickSave')
 
-
-
+func autosave():
+#	var maxcounter = globalsettings.autosave_number
+#	var counter = 1
+#	var savegame = File.new()
+#	var dir = Directory.new()
+#	var savesdir = dir_contents(userfolder + 'saves')
+	
+	
+	
+#	var filearray = globals.dir_contents()
+#	var path = 'user://saves/'
+#	if filearray.has(path+"autosave2"):
+#		dir.rename(path+'autosave2',path+'autosave3')
+#		if globals.savelist.has(path + 'autosave2'):
+#			globals.savelist[path+'autosave3'] = globals.savelist[path + 'autosave2']
+#		else:
+#			globals.savelist[path+'autosave3'] = globals.savelistentry(path+'autosave3')
+#	if filearray.has(path+"autosave1"):
+#		dir.rename(path+'autosave1',path+'autosave2')
+#		if globals.savelist.has(path + 'autosave1'):
+#			globals.savelist[path+'autosave2'] = globals.savelist[path + 'autosave1']
+#		else:
+#			globals.savelist[path+'autosave2'] = globals.savelistentry(path+'autosave2')
+	#var thread = 
+# warning-ignore:return_value_discarded
+	Thread.new().start(globals,"SaveGame",'autosave')
 
 func SaveGame(name):
-#	approach 1, not compatrible with sigletones + still  need reworking
-#	var savedict = {state = null, heroes = [], items = [], workers = []}
-#	savedict.state = inst2dict(state)
-#	for i in state.heroes.values():
-#		savedict.heroes.append(inst2dict(i))
-#	for i in state.items.values():
-#		savedict.items.append(inst2dict(i))
-#	for i in state.workers.values():
-#		savedict.workers.append(inst2dict(i))
-	#approach 2
 	var savedict = state.serialize(); 
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
@@ -1155,9 +1174,6 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
-	#approach 1
-	#state = load("res://src/gamestate.gd").new()
-	#state._ready()
 	
 	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)

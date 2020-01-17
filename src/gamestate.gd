@@ -9,6 +9,8 @@ signal slave_added
 signal slave_arrived
 signal hour_tick
 
+var starting_preset = ''
+
 var date = 1
 var hour = 6
 
@@ -77,6 +79,7 @@ var daily_interactions_left = 1
 
 func revert():
 #to make
+	starting_preset = ''
 	date = 1
 	hour = 6
 	itemcounter = 0
@@ -106,8 +109,6 @@ func revert():
 	completedquests.clear()
 	craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 	stored_events = {timed_events = []}
-	for i in variables.starting_resources:
-		materials[i] = variables.starting_resources[i]
 	state.areas.clear()
 	state.location_links.clear()
 	show_tutorial = true
@@ -165,10 +166,14 @@ func get_unique_slave(code):
 		if i.unique == code:
 			return i
 
-func add_slave(person):
+func add_slave(person:Slave):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
+	if state.get_master().sex == 'male':
+		person.masternoun = tr('PROFMASTER').to_lower()
+	else:
+		person.masternoun = tr('PROFMASTERALT').to_lower()
 	text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 
@@ -558,6 +563,7 @@ func make_local_recruit(args):
 		if args.has("type"):
 			newchar.set_slave_category(args.type)
 	if newchar.slave_class == '': newchar.set_slave_category('servant')
+	if args.has("is_hirable"): newchar.is_hirable = args.is_hirable
 	return newchar
 
 func character_stat_change(character, data):

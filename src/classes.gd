@@ -623,7 +623,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', type = 'wits_factor', operant = 'gte', value = 3}],
 		statchanges = {wits_bonus = 5, hpmax = 5, hitrate = 10},
-		traits = [],
+		traits = ['engineer'],
 		skills = [],
 		combatskills = [], 
 	},

@@ -171,6 +171,8 @@ func open(type = 'slave'):
 	show()
 	
 	$introduction.bbcode_text = introduction_text[type]
+	if type == 'slave':
+		$introduction.bbcode_text += " " + str(state.characters.size())
 	selected_class = ''
 	
 	person = Slave.new()

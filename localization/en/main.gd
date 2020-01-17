@@ -576,6 +576,7 @@ var TranslationDict = {
 	TASKBUILDING = "Upgrading",
 	TASKBUILDINGDESCRIPT = "Work on the currently active upgrade. ",
 	TASKTRAVEL = "Travel",
+	TASKREST = "Rest",
 	
 	TASKMAINSTAT = "Main characteristic",
 	
@@ -1757,6 +1758,25 @@ var TranslationDict = {
 	
 	SERVICEENSLAVE = "Enslave",
 	SERVICEENSLAVEDESCRIPT = "Makes chosen character into Slave type.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their fear decay 50% slower and they are not required to consent to sexual interactions.[/color]",
+	
+	NEWGAMESETTINGINFO = "These settings can be changed in Options at any point in future",
+	
+	SETTINGFUTA_NAME = "Futa",
+	SETTINGFUTA_DESCRIPT = "Allows random generation of futanari (dickgirl) characters.",
+	SETTINGFURRY_NAME = "Furry",
+	SETTINGFURRY_DESCRIPT = "Allows random generation of beastkin characters (replaced with halfkin otherwise if appliable).",
+	SETTINGFUTA_BALLS_NAME = "Futa Balls",
+	SETTINGFUTA_BALLS_DESCRIPT = "Defines if futa characters will have testicles when generated.",
+	SETTINGFURRY_MULTIPLE_NIPPLES_NAME = "Extra Nipples for beastkin",
+	SETTINGFURRY_MULTIPLE_NIPPLES_DESCRIPT = "Defines if furry characters will have extra non-developed breasts.",
+	SETTINGFUTACHANCE_NAME = "Futa Chance",
+	SETTINGFUTACHANCE_DESCRIPT = "Sets a chance that randomly generated female will be a futanari.",
+	SETTINGMALECHANCE_NAME = "Male Chance",
+	SETTINGMALECHANCE_DESCRIPT = "Sets a chance that character with no preset gender will become a male instead of female.",
+	SETTINGMEOWING_NAME = "Meowing",
+	SETTINGMEOWING_DESCRIPT = "Beastkin and Halfkin Cat characters will have a slightly different speech patterns.",
+	SETTINGTURN_BASED_TIME_FLOW_NAME = "Turn Based Time Flow",
+	SETTINGTURN_BASED_TIME_FLOW_DESCRIPT = "Makes time flow into a turn based.",
 }
 
 

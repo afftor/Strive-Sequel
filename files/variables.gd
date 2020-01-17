@@ -180,12 +180,10 @@ var slave_classes_per_difficulty = {
 	10 : [6, 10],
 }
 
-var starting_resources = {
-	meat = 25,
-	fish = 25,
-	bread = 25,
-	vegetables = 25,
-}
+var autosave_number_min = 0
+var autosave_number_max = 10
+var autosave_frequency_min = 1
+var autosave_frequency_max = 100
 
 var personality_array = ['kind','bold','shy','serious']
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']

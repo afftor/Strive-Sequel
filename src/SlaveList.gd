@@ -5,80 +5,88 @@ extends Panel
 func _ready():
 	state.connect("slave_added",self,"rebuild")
 	state.connect("hour_tick", self, "update")
+	$SetOrder.connect("pressed", self, "change_order")
 	input_handler.slave_list_node = self
+	rebuild()
+	globals.AddPanelOpenCloseAnimation($OrderPanel)
+
+
+func change_order():
+	$OrderPanel.show()
+	globals.ClearContainer($OrderPanel/ScrollContainer/VBoxContainer)
+	for i in state.character_order:
+		var newbutton = globals.DuplicateContainerTemplate($OrderPanel/ScrollContainer/VBoxContainer)
+		newbutton.get_node("Label").text = state.characters[i].get_full_name()
+		newbutton.arraydata = i
+		newbutton.parentnodearray = state.character_order
 	rebuild()
 
 func rebuild():
+	input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP).hide()
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in state.character_order:
 		var person = state.characters[i]
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.get_node("icon").texture = person.get_icon()
-		newbutton.get_node("name").text = person.get_full_name()
-		newbutton.get_node("obed").texture = get_obed_texture(person)
-		newbutton.get_node("state").texture = get_state_texture(person)
-		if person.loyalty < 100 && person.submission < 100:
-			newbutton.get_node("obed/Label").text = str(round(person.obedience))
-		else:
-			newbutton.get_node("obed/Label").text = "∞"
-		if person.obedience > 0:
-			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_good.png")
-		else:
-			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_bad.png")
-		#newbutton.get_node("fear/Label").text = str(round(person.fear))
-		#newbutton.get_node("en/Label").text = str(round(person.energy))
-		newbutton.get_node("mp/Label").text = str(round(person.mp))
 		newbutton.set_meta('slave', person)
-		
-		if person.location != 'mansion':
-			newbutton.get_node('name').text = person.get_full_name() + ' - Traveling'
-			newbutton.get_node("state").visible = person.location == 'mansion'
-			newbutton.get_node("en").visible = person.location == 'mansion'
-			newbutton.get_node("mp").visible = person.location == 'mansion'
-			newbutton.get_node("obed").visible = person.location == 'mansion'
-		
-		if person.professions.has("master") == true:
-			newbutton.get_node("obed").hide()
 		newbutton.connect('pressed', self, 'open_slave_tab', [person])
 		globals.connectslavetooltip(newbutton, person)
+		update_button(newbutton)
 
 func update():
-	for newbutton in $ScrollContainer/VBoxContainer.get_children():
-		if newbutton.name == 'Button':
-			continue
-		var i = newbutton.get_meta('slave')
-		newbutton.get_node("icon").texture = i.get_icon()
-		newbutton.get_node("name").text = i.get_full_name()
-#		newbutton.get_node("obed").texture = get_obed_texture(i)
-#		if newbutton.get_node('obed').texture == obed_textures.low && i.check_escape_chance() == false:
-#			newbutton.get_node("obed").texture = null
-#		newbutton.get_node("fear").texture = get_fear_texture(i)
-#		if newbutton.get_node('fear').texture == fear_textures.low && i.check_escape_chance() == false:
-#			newbutton.get_node("fear").texture = null
-		newbutton.get_node("state").texture = get_state_texture(i)
-		if i.obedience > 0:
-			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_good.png")
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		update_button(i)
+
+func update_button(newbutton):
+	if newbutton.name == 'Button':
+		return
+	var person = newbutton.get_meta('slave')
+	newbutton.get_node("HBoxContainer/icon").texture = person.get_icon()
+	newbutton.get_node("HBoxContainer/name").text = person.get_full_name()
+	newbutton.get_node("HBoxContainer/sex").texture = globals.sexicons[person.sex]
+	
+	
+	newbutton.get_node("HBoxContainer/stats/hp").value = person.hp
+	newbutton.get_node("HBoxContainer/stats/hp").max_value = person.hpmax
+	newbutton.get_node("HBoxContainer/stats/mp").value = person.mp
+	newbutton.get_node("HBoxContainer/stats/mp").max_value = person.mpmax
+	newbutton.get_node("HBoxContainer/stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.hpmax)) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.mpmax))
+	#newbutton.get_node("HBoxContainer/stats/hplabel").text = str(round(person.hp)) + "/" + str(round(person.hpmax))
+	#newbutton.get_node("HBoxContainer/stats/mplabel").text = str(round(person.mp)) + "/" + str(round(person.mpmax))
+	newbutton.get_node("HBoxContainer/explabel").text = str(round(person.base_exp))
+	if person.work == '':
+		newbutton.get_node("HBoxContainer/job").text = tr("TASKREST")
+	else:
+		newbutton.get_node("HBoxContainer/job").text = races.tasklist[person.work].name
+	
+	if person.loyalty < 100 && person.submission < 100 && state.get_master() != person:
+		newbutton.get_node("HBoxContainer/obed").text = str(ceil(person.obedience))
+		if person.obedience <= 0:
+			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(globals.hexcolordict.red))
+		elif person.obedience <= 10:
+			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(globals.hexcolordict.yellow))
 		else:
-			newbutton.get_node("obed").texture = load("res://assets/images/gui/obed_bad.png")
-		if i.loyalty < 100 && i.submission < 100:
-			newbutton.get_node("obed/Label").text = str(ceil(i.obedience))
+			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(globals.hexcolordict.green))
+	else:
+		newbutton.get_node("HBoxContainer/obed").text = "∞"
+	
+	if person.get_next_class_exp() <= person.base_exp:
+		newbutton.get_node("HBoxContainer/explabel").set("custom_colors/font_color", Color(globals.hexcolordict.levelup_text_color))
+	if person.location != 'mansion':
+		if person.location == 'travel':
+			newbutton.get_node('HBoxContainer/job').text = 'Relocating: in ' + str(round(person.travel_time / person.travel_tick())) + " hours. " 
 		else:
-			newbutton.get_node("obed/Label").text = "∞"
-		#newbutton.get_node("fear/Label").text = str(round(i.fear))
-		#newbutton.get_node("en/Label").text = str(round(i.energy))
-		newbutton.get_node("mp/Label").text = str(round(i.mp))
-		if i.location != 'mansion':
-			if i.location == 'travel':
-				newbutton.get_node('name').text = i.get_full_name() + ' - Relocating: ' + str(round(i.travel_time / i.travel_tick())) + " hours until arrival. " 
-			else:
-				newbutton.get_node('name').text = i.get_full_name() + ' - Positioned: ' + state.areas[state.location_links[i.location].area][state.location_links[i.location].category][i.location].name
-		newbutton.get_node("state").visible = i.location == 'mansion'
-		#newbutton.get_node("en").visible = i.location == 'mansion'
-		newbutton.get_node("mp").visible = i.location == 'mansion'
-		newbutton.get_node("obed").visible = i.location == 'mansion'
-		#newbutton.get_node("fear").visible = i.location == 'mansion'
-		if i.professions.has("master") == true:
-			newbutton.get_node("obed").hide()
+			newbutton.get_node('HBoxContainer/job').text = 'Positioned: ' + state.areas[state.location_links[person.location].area].name # state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.location].name
+	#newbutton.get_node("HBoxContainer/obed").visible = person.location == 'mansion'
+	var icon
+	if person.professions.has("master"):
+		icon = load("res://assets/images/iconsclasses/Master.png")
+	elif person.slave_class == 'servant':
+		icon = load("res://assets/images/iconsclasses/Worker.png")
+	else:
+		icon = load("res://assets/images/iconsgear/steelcollar.png")
+	newbutton.get_node("HBoxContainer/state").texture = icon
+
+		
 
 func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)

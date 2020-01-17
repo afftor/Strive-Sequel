@@ -199,7 +199,7 @@ var scenedict = {
 	},
 	exotic_slave_trader = {text = tr("DIALOGUEEVENTEXOTICTRADER"), 
 	args = {},
-	tags = ['good','scene_characters_sell'],
+	tags = ['good'],
 	default_event_type = "character_event",
 	image = 'exotic_slaver',
 	common_effects = [
@@ -212,7 +212,8 @@ var scenedict = {
 			races = [['monster', 1],['rare', 4]], 
 			difficulty = [0,2], 
 			type = 'slave',
-			bonuses = {pricemod = 0.5, obedience = 48, submission = 10}
+			bonuses = {pricemod = 0.5, obedience = 48, submission = 10},
+			is_hirable = true
 			}
 		},
 		],

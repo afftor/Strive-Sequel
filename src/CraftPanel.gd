@@ -1,6 +1,7 @@
 extends "res://files/Close Panel Button/ClosingPanel.gd"
 
 var craft_category
+var item_filter = 'all'
 var selected_item
 var recipes = []
 #warning-ignore-all:return_value_discarded
@@ -16,6 +17,15 @@ func _ready():
 	
 	for i in $categories.get_children():
 		i.connect("pressed", self, 'select_category', [i.name])
+	for i in $filter.get_children():
+		i.connect('pressed',self, 'set_filter', [i.name])
+		i.hint_tooltip = filtercategories[i.name]
+
+func set_filter(type):
+	item_filter = type
+	for i in $filter.get_children():
+		i.pressed = i.name == type
+	rebuild_recipe_list()
 
 var craftcategories = {
 	cooking = {reqs = []},
@@ -23,6 +33,14 @@ var craftcategories = {
 	alchemy = {reqs = [{type = "has_upgrade", name = 'alchemy', value = 1}]},
 	smith = {reqs = [{type = "has_upgrade", name = 'forge', value = 1}]},
 }
+var filtercategories = {
+	all = "All",
+	materials = "Food&Materials",
+	gear = "Gear",
+	costume = "Costume",
+	usables = "Usables",
+}
+
 
 func open():
 	show()
@@ -41,11 +59,67 @@ func select_category(category):
 	craft_category = category
 	for i in $categories.get_children():
 		i.pressed = i.name == category
+	
+	for i in $filter.get_children():
+		i.pressed = false
+	item_filter = 'all'
+	$filter/all.pressed = true
+	rebuild_recipe_list()
 	globals.ClearContainer($CraftScheldue/VBoxContainer)
+	
+	for i in state.craftinglists[category]:
+		var newnode = globals.DuplicateContainerTemplate($CraftScheldue/VBoxContainer)
+		var recipe = Items.recipes[i.code]
+		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
+		newnode.get_node("icon").texture = item.icon
+		if item.type == 'gear':
+			newnode.get_node("icon").material = load("res://files/ItemShader.tres").duplicate()
+		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
+		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
+		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
+	
+
+func rebuild_recipe_list():
+	var array = []
 	globals.ClearContainer($CraftSelect/VBoxContainer)
+	
+	for i in $filter.get_children():
+		i.hide()
+	
+	$filter/all.show()
+	
 	for i in Items.recipes.values():
-		if i.worktype != category || state.checkreqs(i.unlockreqs) == false:
+		if i.worktype != craft_category || state.checkreqs(i.unlockreqs) == false:
 			continue
+		if item_filter == 'all':
+			array.append(i)
+		else:
+			if i.resultitemtype == 'material' && item_filter == 'materials':
+				array.append(i)
+			else:
+				if i.resultitemtype == 'item':
+					var enditem = Items.itemlist[i.resultitem]
+					if enditem.type == 'usable' && item_filter == 'usables':
+						array.append(i)
+					elif enditem.has('geartype') && enditem.geartype == 'costume' && item_filter == 'costume':
+						array.append(i)
+					elif enditem.type == 'gear' && enditem.geartype != 'costume' && item_filter == 'gear':
+						array.append(i)
+		if i.resultitemtype == 'material':
+			$filter/materials.show()
+		else:
+			if i.resultitemtype == 'item':
+				var enditem = Items.itemlist[i.resultitem]
+				if enditem.type == 'usable':
+					$filter/usables.show()
+				elif enditem.has('geartype') && enditem.geartype == 'costume':
+					$filter/costume.show()
+				elif enditem.type == 'gear' && enditem.geartype != 'costume':
+					$filter/gear.show()
+	
+	array.sort_custom(self, 'sort_craft_list')
+	
+	for i in array:
 		var newbutton = globals.DuplicateContainerTemplate($CraftSelect/VBoxContainer)
 		var item
 		if i.resultitemtype == 'item':
@@ -86,18 +160,24 @@ func select_category(category):
 		progressnode.texture = load("res://assets/images/gui/craftgui/Time.png")
 		progressnode.get_node("Label").text = str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
+
+func sort_craft_list(first, second):
+	var enditem 
+	var enditem2 
 	
+	if first.resultitemtype == 'item':
+		enditem = Items.itemlist[first.resultitem]
+	else:
+		enditem = Items.materiallist[first.resultitem]
+	if second.resultitemtype == 'item':
+		enditem2 = Items.itemlist[second.resultitem]
+	else:
+		enditem2 = Items.materiallist[second.resultitem]
 	
-	for i in state.craftinglists[category]:
-		var newnode = globals.DuplicateContainerTemplate($CraftScheldue/VBoxContainer)
-		var recipe = Items.recipes[i.code]
-		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
-		newnode.get_node("icon").texture = item.icon
-		if item.type == 'gear':
-			newnode.get_node("icon").material = load("res://files/ItemShader.tres").duplicate()
-		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
-		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
-		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
+	if enditem.name > enditem2.name:
+		return false
+	else:
+		return true
 
 var repeats = 1
 

@@ -7,6 +7,9 @@ var is_person = true
 var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
+var is_hirable = false #allows character to be hired from its tab
+
+var hire_scene = ''
 
 var unique
 
@@ -1616,14 +1619,18 @@ func translate(text):
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
 	text = text.replace("[hair_color]", hair_color)
-	var masternoun = 'master'
-	if input_handler.meowingcondition(self) == true:masternoun = 'myaster'
-	if state.get_master() != null && state.get_master().sex != 'male':
-		masternoun = 'mistress'
-		if input_handler.meowingcondition(self) == true:masternoun = 'mewstress'
-		
-	text = text.replace("[master]", masternoun)
-	text = text.replace("[Master]", masternoun.capitalize())
+	
+#	var masternoun = 'master'
+	
+	var tempmasternoun = masternoun
+	if tempmasternoun in ['master','mistress']:
+		if input_handler.meowingcondition(self) == true:tempmasternoun = 'myaster'
+		if state.get_master() != null && state.get_master().sex != 'male':
+			if input_handler.meowingcondition(self) == true:tempmasternoun = 'mewstress'
+	
+	text = text.replace("[master]", tempmasternoun)
+	text = text.replace("[Master]", tempmasternoun.capitalize())
+	
 	match sex:
 		'male':
 			rtext = 'boy'

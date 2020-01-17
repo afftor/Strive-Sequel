@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/intro.png" type="Texture" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://files/Options.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=19]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=20]
 
 [node name="Menu" type="Node"]
 script = ExtResource( 1 )
@@ -137,6 +139,7 @@ margin_bottom = 1067.2
 text = "ver. 0.1.0"
 
 [node name="DemoPanel" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 716.0
 margin_top = 347.0
 margin_right = 1336.0
@@ -170,10 +173,22 @@ visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 bbcode_enabled = true
-bbcode_text = "Fixed skill 'Protect' causing soft lock
+bbcode_text = "Added daily autosave
+Added starting presets
+Added option to set a master noun for slaves
+Revamped main slave list
+Added category search to crafting panel
+Crafting panel now lists recipes in alphabetic order
+
+Small Sized trait collection task penalty reduced from 25% to 15%
+Fixed Engineer class not having building bonus
+Character hiring is now done in character tab
+Fixed inventory item search not working correctly
+Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
+
+Fixed skill 'Protect' causing soft lock
 Fixed sometimes a quest generating with bugged reward
 Fixed staff using wrong colors for handle/knub
-
 0.3b
 Fixed Fairies not being able to actually unlock druid class
 Fixed quests timing out 5 times as quick
@@ -227,10 +242,23 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed skill 'Protect' causing soft lock
+text = "Added daily autosave
+Added starting presets
+Added option to set a master noun for slaves
+Revamped main slave list
+Added category search to crafting panel
+Crafting panel now lists recipes in alphabetic order
+
+Small Sized trait collection task penalty reduced from 25% to 15%
+Fixed Engineer class not having building bonus
+Character hiring is now done in character tab
+Fixed inventory item search not working correctly
+Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
+
+Fixed skill 'Protect' causing soft lock
 Fixed sometimes a quest generating with bugged reward
 Fixed staff using wrong colors for handle/knub
-
+Fixed slave selling list not using scroll when there's too many slaves 
 0.3b
 Fixed Fairies not being able to actually unlock druid class
 Fixed quests timing out 5 times as quick
@@ -284,3 +312,82 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
+
+[node name="NewGamePanel" type="Panel" parent="."]
+visible = false
+margin_left = 520.29
+margin_top = 143.903
+margin_right = 1456.29
+margin_bottom = 884.903
+theme = ExtResource( 19 )
+
+[node name="PresetContainer" type="ScrollContainer" parent="NewGamePanel"]
+margin_left = 24.2455
+margin_top = 110.772
+margin_right = 278.245
+margin_bottom = 638.772
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/PresetContainer"]
+margin_right = 253.999
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="NewGamePanel/PresetContainer/VBoxContainer"]
+visible = false
+margin_right = 254.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+toggle_mode = true
+
+[node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
+margin_left = 654.346
+margin_top = 143.404
+margin_right = 910.346
+margin_bottom = 575.404
+
+[node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
+visible = false
+margin_right = 256.0
+margin_bottom = 32.0
+text = "Test"
+
+[node name="tip" type="TextureRect" parent="NewGamePanel"]
+margin_left = 751.0
+margin_top = 85.0
+margin_right = 814.0
+margin_bottom = 141.0
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
+margin_left = 310.0
+margin_top = 119.0
+margin_right = 629.0
+margin_bottom = 627.0
+bbcode_enabled = true
+
+[node name="Label" type="Label" parent="NewGamePanel"]
+margin_left = 736.036
+margin_top = 42.9593
+margin_right = 831.036
+margin_bottom = 66.9593
+text = "Settings"
+
+[node name="HSplitContainer" type="VSeparator" parent="NewGamePanel"]
+margin_left = 561.0
+margin_top = 5.0
+margin_right = 711.0
+margin_bottom = 732.0
+
+[node name="HSplitContainer2" type="VSeparator" parent="NewGamePanel"]
+margin_left = 226.0
+margin_top = 5.0
+margin_right = 376.0
+margin_bottom = 732.0
+
+[node name="StartButton" type="Button" parent="NewGamePanel"]
+margin_left = 370.023
+margin_top = 636.657
+margin_right = 571.023
+margin_bottom = 699.657
+text = "Start Game"

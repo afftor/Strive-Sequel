@@ -6,7 +6,7 @@ var id
 var itembase
 var code
 var icon
-var description
+var description = ''
 var stackable = false
 var inventory
 

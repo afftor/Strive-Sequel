@@ -7,10 +7,10 @@ func _ready():
 	globals.AddPanelOpenCloseAnimation($UpgradeDescript)
 	$UpgradeDescript/UnlockButton.connect("pressed", self, "unlockupgrade")
 	
+	yield(get_tree().create_timer(0.3), "timeout")
 	if variables.unlock_all_upgrades == true:
 		for i in globals.upgradelist.values():
 			state.upgrades[i.code] = i.levels.keys().back()
-	yield(get_tree().create_timer(0.3), "timeout")
 	hide()
 	
 

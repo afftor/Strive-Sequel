@@ -63,6 +63,7 @@ func _ready():
 	$DetailsPanel/VBoxContainer/icon.connect("pressed", self, "chooseimage",['portrait'])
 	$DetailsPanel/VBoxContainer/body.connect("pressed", self, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
+	$DetailsPanel/VBoxContainer/masternoun.connect("pressed", self, "custom_masternoun_open")
 	
 	globals.connecttexttooltip($obedlabel/icon, globals.statdata.obedience.descript)
 	
@@ -78,6 +79,37 @@ func _ready():
 	for i in $job_panel/work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
+	
+	$HirePanel/HireButton.connect("pressed", self, "hire_character")
+
+func hire_character():
+	if state.characters.size() >= state.get_pop_cap():
+		if state.get_pop_cap() < variables.max_population_cap:
+			input_handler.SystemMessage("You don't have enough rooms")
+		else:
+			input_handler.SystemMessage("Population limit reached")
+		return
+	state.money -= person.calculate_price()
+	input_handler.PlaySound("money_spend")
+	person.is_hirable = false
+	state.add_slave(person)
+	hide()
+	
+	if input_handler.scene_characters.has(person):
+		input_handler.scene_characters.erase(person)
+		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).update_scene_characters()
+	
+	if input_handler.active_faction.has('slaves'):
+		input_handler.active_faction.slaves.erase(person.id)
+	
+	if input_handler.exploration_node.get_node("HirePanel").is_visible_in_tree() == true:
+		input_handler.exploration_node.faction_hire()
+	
+	if person.hire_scene != '':
+		input_handler.active_character = person
+		input_handler.scene_characters.append(person)
+		input_handler.interactive_message(person.hire_scene, '', {})
+	
 	
 
 
@@ -128,7 +160,7 @@ var authority_lines = {
 }
 
 func update():
-	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler"):
+	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler")+ get_tree().get_nodes_in_group("hide_servant"):
 		i.visible = true
 	if state.characters.has(person.id):
 		type = 'slave'
@@ -140,6 +172,8 @@ func update():
 			type = 'traveler'
 			for i in get_tree().get_nodes_in_group("hide_traveler"):
 				i.hide()
+		for i in get_tree().get_nodes_in_group("hide_servant"):
+			i.hide()
 	else:
 		type = 'stranger'
 		for i in get_tree().get_nodes_in_group("hide_stranger"):
@@ -162,7 +196,7 @@ func update():
 	if person.work != '':
 		$currentwork.text = races.tasklist[person.work].name
 	else:
-		$currentwork.text = ''
+		$currentwork.text = tr('TASKREST')
 	for i in $progress.get_children():
 		i.text = str(floor(person.get(i.name)))
 		if person.get(i.name+'_bonus') > 0:
@@ -301,6 +335,10 @@ func update():
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
+	$HirePanel/RichTextLabel.bbcode_text = person.translate("You can hire [name] for [price] gold.")
+	$HirePanel/HireButton.disabled = person.calculate_price() > state.money
+	$HirePanel.visible = person.is_hirable
+	
 	
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
@@ -351,7 +389,7 @@ func open_jobs_window():
 	globals.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 	currentjob = null
 	var restbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
-	restbutton.text = "Rest"
+	restbutton.text = tr("TASKREST")
 	restbutton.connect("pressed", self, 'set_rest')
 	
 	for i in races.tasklist.values():
@@ -425,6 +463,7 @@ func select_job(job, production):
 	person.assign_to_task(job.code, production)
 	$job_panel.hide()
 	update()
+	input_handler.slave_list_node.update()
 
 func set_work_rule(rule):
 	var setting = get_node("job_panel/work_rules/"+rule).pressed
@@ -548,6 +587,14 @@ func custom_nickname_open():
 
 func custom_nickname_set(text):
 	person.nickname = text
+	update()
+
+func custom_masternoun_open():
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
+	node.open(self, 'custom_masternoun_set', person.masternoun)
+
+func custom_masternoun_set(text):
+	person.masternoun = text
 	update()
 
 func open_customize_button():

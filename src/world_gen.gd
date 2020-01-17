@@ -376,6 +376,8 @@ func make_slave_for_guild(guild):
 	for i in guild.charbonus:
 		newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
 	guild.slaves.append(newslave.id)
+	newslave.is_hirable = true
+	newslave.hire_scene = 'hire'
 	newslave.is_known_to_player = true
 
 

@@ -3,7 +3,6 @@ extends Panel
 var parentnode
 var shutoff = false
 var prevnode
-onready var textnode = $RichTextLabel
 
 
 func _process(delta):
@@ -84,39 +83,10 @@ func showup(node, person):
 	if person.professions.has('master') || person.is_players_character == false:
 		if person.is_players_character == false:
 			$VBoxContainer/lust.hide()
-		#$VBoxContainer/fear.hide()
-		#$obedience.hide()
 	else:
 		$VBoxContainer/lust.show()
-		#$VBoxContainer/fear.show()
-		#$obedience.show()
 	
 	
-#	if $obedience.visible:
-#		$obedience/Label.text = str(person.obedience)
-#		if person.obedience > 0:
-#			$obedience.texture = load("res://assets/images/gui/gui icons/obedience1.png")
-#		else:
-#			$obedience.texture = load("res://assets/images/gui/gui icons/obedience3.png")
-			
-#		if person.obedience > 50:
-#			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-#		elif person.obedience > person.timid_factor*7:
-#			$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-#		else:
-#			if person.check_escape_chance() == true:
-#				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-#			else:
-#				$VBoxContainer/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
-#		if person.fear > 50:
-#			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-#		elif person.fear > person.timid_factor*7:
-#			$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-#		else:
-#			if person.check_escape_chance() == true:
-#				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-#			else:
-#				$VBoxContainer/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
 	
 	globals.ClearContainer($buffs)
 	
@@ -141,9 +111,9 @@ func showup(node, person):
 	self.set_global_position(pos)
 	
 	
-	if get_rect().end.x > screen.size.x:
-		rect_global_position.x -= get_rect().end.x - screen.size.x
-	if get_rect().end.y > screen.size.y:
+	if get_rect().end.x+100 > screen.size.x:
+		rect_global_position.x -= get_rect().end.x+100 - screen.size.x
+	if get_rect().end.y+125 > screen.size.y:
 		rect_global_position.y -= get_rect().end.y+125 - screen.size.y
 	
 	set_process(true)

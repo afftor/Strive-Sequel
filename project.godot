@@ -130,6 +130,7 @@ world_gen="*res://src/world_gen.gd"
 characters_pool="*res://src/characters_pool.gd"
 effects_pool="*res://src/effects_pool.gd"
 AI_data="*res://assets/data/ai_data.gd"
+starting_presets="*res://assets/data/starting_presets.gd"
 
 [debug]
 
@@ -274,6 +275,11 @@ F9={
 shift={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
+full_screen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
  ]
 }
 

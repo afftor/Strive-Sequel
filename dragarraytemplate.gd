@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 var arraydata
 var parentnodearray 
@@ -19,4 +19,4 @@ func drop_data(position, data):
 	
 	parentnodearray.erase(data)
 	parentnodearray.insert(order2, data)
-	get_parent().get_parent().get_parent().rebuild_container()
+	get_parent().get_parent().get_parent().get_parent().change_order()

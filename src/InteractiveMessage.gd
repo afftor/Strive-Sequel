@@ -5,6 +5,7 @@ var dialogue_enemy
 var current_scene
 var hold_selection = false #pause for scene to laod
 
+
 func open(scene):
 	if scene.has("variations"):
 		for i in scene.variations:
@@ -17,18 +18,11 @@ func open(scene):
 	input_handler.CurrentScreen = 'scene'
 	current_scene = scene
 	hold_selection = true
-	globals.ClearContainer($EventCharacters/VBoxContainer)
-	globals.ClearContainer($PlayerCharacters/VBoxContainer)
 	if scene.has("common_effects"): 
 		state.common_effects(scene.common_effects)
-	for i in input_handler.scene_characters:
-		var newbutton = globals.DuplicateContainerTemplate($EventCharacters/VBoxContainer)
-		newbutton.get_node("Label").text = i.get_short_name()
-		newbutton.get_node('icon').texture = i.get_icon()
-		globals.connectslavetooltip(newbutton, i)
-		if i.is_players_character == false:
-			newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [i])
-		
+	
+	update_scene_characters()
+	
 	if self.visible == false:
 		input_handler.UnfadeAnimation(self, 0.2)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -105,6 +99,16 @@ func open(scene):
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
 
+func update_scene_characters():
+	globals.ClearContainer($EventCharacters/VBoxContainer)
+	globals.ClearContainer($PlayerCharacters/VBoxContainer)
+	for i in input_handler.scene_characters:
+		var newbutton = globals.DuplicateContainerTemplate($EventCharacters/VBoxContainer)
+		newbutton.get_node("Label").text = i.get_short_name()
+		newbutton.get_node('icon').texture = i.get_icon()
+		globals.connectslavetooltip(newbutton, i)
+		if i.is_players_character == false:
+			newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [i])
 
 var stored_scene
 
@@ -115,7 +119,6 @@ func select_person_for_next_event(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id}]
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
-	
 
 func event_person_selected(person):
 	var data = scenedata.scenedict[stored_scene]
