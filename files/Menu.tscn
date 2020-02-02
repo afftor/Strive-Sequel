@@ -258,7 +258,6 @@ Hopefully fixed the issue with window displacement on startup and added alt+ente
 Fixed skill 'Protect' causing soft lock
 Fixed sometimes a quest generating with bugged reward
 Fixed staff using wrong colors for handle/knub
-Fixed slave selling list not using scroll when there's too many slaves 
 0.3b
 Fixed Fairies not being able to actually unlock druid class
 Fixed quests timing out 5 times as quick

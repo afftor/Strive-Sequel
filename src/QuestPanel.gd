@@ -85,6 +85,11 @@ func show_quest_info(quest):
 				item.set_icon(newbutton)
 				input_handler.ghost_items.append(item)
 				globals.connectitemtooltip(newbutton, item)
+			'gear_static':
+				newbutton.texture = Items.itemlist[i.item].icon
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
 			'gold':
 				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
 				newbutton.get_node("amount").text = str(i.value)

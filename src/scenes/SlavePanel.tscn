@@ -104,6 +104,7 @@ margin_top = 8.0
 margin_bottom = 9.0
 
 [node name="SlavePanel" type="Panel"]
+visible = false
 margin_left = 30.0
 margin_top = 6.0
 margin_right = 1219.0
@@ -856,8 +857,8 @@ text = "5"
 align = 1
 
 [node name="SkillPanelBG" type="TextureRect" parent="." groups=[
-"hide_traveler",
 "hide_stranger",
+"hide_traveler",
 ]]
 margin_left = -1.0
 margin_top = 856.0
@@ -872,8 +873,8 @@ margin_right = 1.0
 margin_bottom = 1018.0
 
 [node name="SkillPanel" type="HBoxContainer" parent="." groups=[
-"hide_traveler",
 "hide_stranger",
+"hide_traveler",
 ]]
 editor/display_folded = true
 margin_left = 6.67316

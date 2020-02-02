@@ -575,12 +575,13 @@ size_flags_horizontal = 3
 visible = false
 margin_right = 493.0
 margin_bottom = 38.2509
+toggle_mode = true
 
 [node name="Label" type="Label" parent="CharacterPanel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 7.0
-margin_top = 4.0
+margin_top = 7.0
 margin_right = 254.0
-margin_bottom = 28.0
+margin_bottom = 31.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Name"
 

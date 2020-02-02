@@ -2,11 +2,15 @@ extends Node
 
 var TranslationDict = {
 	#Buildings
+	MANSION = "Mansion",
+	RETURNTOMANSION = "Return to Mansion",
 	WORKERMARKET = "Market",
 	PURCHASE = "Purchase",
 	SELL = "Sell",
 	TASKS = "Tasks",
 	
+	LABELDISLOCATION = "Dislocation",
+	LABELDESTINATION = "Destination",
 	#Materials
 	STARTINGADJ = "Starting",
 	

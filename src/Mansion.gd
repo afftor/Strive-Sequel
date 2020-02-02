@@ -40,6 +40,7 @@ func _ready():
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
 		variables.unlock_all_upgrades = true
+		variables.skip_combat = true
 		#$UpgradeList._ready()
 		$TestButton.show()
 	
@@ -59,6 +60,7 @@ func _ready():
 	$ExploreButton.connect("pressed",$Exploration,"open")
 	$QuestlogButton.connect("pressed", self, "open_questlog")
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
+	$TravelButton.connect("pressed", self, "open_travels")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
@@ -87,6 +89,7 @@ func _ready():
 		character.charm_factor = 1
 		#character.unlock_class("worker")
 		character.mp = 50
+		character.unlock_class("apprentice")
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -99,7 +102,7 @@ func _ready():
 		character = Slave.new()
 		character.create('Fairy', 'random', 'random')
 		characters_pool.move_to_state(character.id)
-		character.unlock_class("fighter")
+		character.unlock_class("attendant")
 		character.add_trait('core_trait')
 		character.obedience = 100
 		character.lust = 50
@@ -146,12 +149,14 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
+		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
-		$SlaveList.rebuild()
+		#$SlaveList.rebuild()
 		state.show_tutorial = false
 		yield(get_tree(), 'idle_frame')
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
@@ -159,7 +164,7 @@ func _ready():
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('exotic_slave_trader', 'character_event', {})
+		#input_handler.interactive_message('exotic_slave_trader', 'character_event', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -186,11 +191,15 @@ func _ready():
 	set_time_buttons()
 	$TestButton.connect("pressed", self, "quest_test")
 
+func open_travels():
+	$CharacterDislocationPanel.open_character_dislocation()
+
 func quest_test():
+	print(input_handler.CloseableWindowsArray)
 #	for i in state.characters.values():
 #		i.base_exp += 100
 	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
-	$Exploration.testcombat()
+	#$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):

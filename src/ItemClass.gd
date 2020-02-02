@@ -177,7 +177,11 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		name = itemtemplate.name
 		description = itemtemplate.descript
 	else:
-		name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
+		if parts.has(itemtemplate.partmaterialname):
+			
+			name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
+		else:
+			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
 

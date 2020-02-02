@@ -80,60 +80,61 @@ var lands = {
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			},
 	},
-#	mountains = {
-#		code = 'mountains',
-#		name = "Mountains",
-#		lead_race = 'Dwarf',
-#		secondary_races = [],
-#		policies = [],
-#		travel_time = [12,28],
-#		difficulty = 1,
-#		disposition = 15,
-#		population = [10000, 30000],
-#		start_settlements_number = {settlement_small = [1,1]},
-#		start_locations_number = 1, 
-#		locations = {},
-#		locationpool = ['dungeon_goblin_cave'],
-#		guilds = [],
-#		capital_shop_resources = ['meat','vegetables','iron','steel','leather','bone','mithril','stone','obsidian'],
-#		capital_shop_items = [],
-#	},
-#	steppe = {
-#		code = 'steppe',
-#		name = "Steppe",
-#		lead_race = 'Orc',
-#		secondary_races = ['Goblin','Centaur'],
-#		policies = [],
-#		travel_time = [15,36],
-#		difficulty = 1,
-#		disposition = 15,
-#		population = [10000, 30000],
-#		start_settlements_number = {settlement_small = [1,1]},
-#		start_locations_number = 2, 
-#		locations = {},
-#		locationpool = ['dungeon_goblin_cave'],
-#		guilds = [],
-#		capital_shop_resources = ['meat','fish','iron','leather','leatherthick','bone','boneancient','stone'],
-#		capital_shop_items = [],
-#	},
-#	seas = {
-#		code = 'seas',
-#		name = "Seas",
-#		lead_race = 'Nereid',
-#		secondary_races = ['Lamia','Scylla'],
-#		policies = [],
-#		travel_time = [15,36],
-#		difficulty = 1,
-#		disposition = 15,
-#		population = [10000, 30000],
-#		start_settlements_number = {},
-#		start_locations_number = 0, 
-#		locations = {},
-#		locationpool = ['dungeon_bandit_den'],
-#		guilds = [],
-#		capital_shop_resources = ['fish','leather','leatherthick','bone'],
-#		capital_shop_items = [],
-#	},
+	mountains = {
+		code = 'mountains',
+		name = "Mountains",
+		lead_race = 'Dwarf',
+		secondary_races = [],
+		policies = [],
+		travel_time = [12,28],
+		difficulty = 1,
+		disposition = 15,
+		population = [10000, 30000],
+		start_settlements_number = {settlement_small = [1,1]},
+		start_locations_number = 1, 
+		locations = {},
+		locationpool = ['dungeon_goblin_cave'],
+		guilds = [],
+		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		area_shop_items = {},
+	},
+	steppe = {
+		code = 'steppe',
+		name = "Steppe",
+		lead_race = 'Orc',
+		secondary_races = ['Goblin','Centaur'],
+		policies = [],
+		travel_time = [15,36],
+		difficulty = 1,
+		disposition = 15,
+		population = [10000, 30000],
+		start_settlements_number = {settlement_small = [1,1]},
+		start_locations_number = 2, 
+		locations = {},
+		locationpool = ['dungeon_goblin_cave'],
+		guilds = [],
+		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		area_shop_items = {},
+	},
+	seas = {
+		code = 'seas',
+		name = "Seas",
+		lead_race = 'Nereid',
+		secondary_races = ['Lamia','Scylla'],
+		policies = [],
+		travel_time = [15,36],
+		difficulty = 1,
+		disposition = 15,
+		population = [10000, 30000],
+		start_settlements_number = {},
+		start_locations_number = 0, 
+		locations = {},
+		locationpool = ['dungeon_bandit_den'],
+		guilds = [],
+		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
+		area_shop_items = {
+			},
+	},
 }
 
 
@@ -144,6 +145,7 @@ func make_area(code):
 	areadata.quests = {global = {}}
 	areadata.questlocations = {}
 	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
+	areadata.unlocked = false
 	for i in areadata.start_settlements_number:
 		var number = round(rand_range(areadata.start_settlements_number[i][0], areadata.start_settlements_number[i][1]))
 		while number > 0:
@@ -162,6 +164,15 @@ func make_area(code):
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
+
+func get_area_from_location_code(code):
+	var data = state.location_links[code]
+	return state.areas[data.area]
+
+func get_location_from_code(code):
+	var data = state.location_links[code]
+	return state.areas[data.area][data.category][code]
+	
 
 func update_area_shop(area):
 	area.shop.clear()
@@ -535,6 +546,7 @@ func make_location(code, area, difficulty = 'easy'):
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 	
+	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	state.locationcounter += 1
 	location.erase('difficulties')
 	return location
@@ -611,8 +623,8 @@ var questdata = {
 		reputation = [100,150],
 		rewards = [
 		[1,{code = 'gold', range = [100,150]}],
-		[1,{code = 'metarial', type = ['wood', 'stone','leather','cloth', 'iron'], range = [20,25]}],
-		[0.5,{code = 'gold', range = [50,75]},{code = 'metarials', type = ['steel', 'woodmagic','woodiron','clothsilk'], range = [8,14]}],
+		[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [20,25]}],
+		[0.5,{code = 'gold', range = [50,75]},{code = 'metarial', type = ['steel', 'woodmagic','woodiron','clothsilk'], range = [8,14]}],
 		],
 		time_limit = [8,12],
 	},
@@ -638,7 +650,7 @@ var questdata = {
 		rewards = [
 		[1, {code = 'gold', range = [100,150]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['axe','pickaxe','sickle']}],
-		[0.5, {code = 'gear_static', name = ['worker_outfit']}],
+		[0.5, {code = 'gear_static', name = ['worker_outfit'], value = [1,1]}],
 		],
 		time_limit = [8,12],
 	},
@@ -819,7 +831,11 @@ func make_quest(questcode):
 				reward = generate_random_gear(dict)
 				reward.item = reward.code
 				reward.code = 'gear'
-			'materials':
+			'gear_static':
+				reward.item = i.name[randi()%i.name.size()]
+				reward.code = 'gear_static'
+				reward.value = round(rand_range(i.value[0], i.value[1]))
+			'material':
 				reward.code = 'material'
 				reward.item = i.name[randi()%i.name.size()]
 				if reward.item in ['low','medium','high']:
@@ -830,8 +846,8 @@ func make_quest(questcode):
 				reward.code = 'usable'
 				reward.item = i.name[randi()%i.name.size()]
 				reward.value = round(rand_range(i.value[0], i.value[1]))
-		
-		data.rewards.append(reward)
+		if reward.empty() == false:
+			data.rewards.append(reward)
 	
 	if variables.exp_scroll_quest_reward: data.rewards.append({code = 'usable', item = 'exp_scroll', value = 1})
 	data.rewards.append({code = 'reputation', value = round(rand_range(template.reputation[0],template.reputation[1]))})

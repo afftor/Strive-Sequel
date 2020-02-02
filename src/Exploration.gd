@@ -1,13 +1,13 @@
-extends "res://files/Close Panel Button/ClosingPanel.gd"
+extends Control#"res://files/Close Panel Button/ClosingPanel.gd"
 #warning-ignore-all:return_value_discarded
 
 var positiondict = {
-	1 : "Positions/HBoxContainer/frontrow/1",
-	2 : "Positions/HBoxContainer/frontrow/2",
-	3 : "Positions/HBoxContainer/frontrow/3",
-	4 : "Positions/HBoxContainer/backrow/4",
-	5 : "Positions/HBoxContainer/backrow/5",
-	6 : "Positions/HBoxContainer/backrow/6",
+	1 : "LocationGui/Positions/HBoxContainer/frontrow/1",
+	2 : "LocationGui/Positions/HBoxContainer/frontrow/2",
+	3 : "LocationGui/Positions/HBoxContainer/frontrow/3",
+	4 : "LocationGui/Positions/HBoxContainer/backrow/4",
+	5 : "LocationGui/Positions/HBoxContainer/backrow/5",
+	6 : "LocationGui/Positions/HBoxContainer/backrow/6",
 }
 
 func _ready():
@@ -24,18 +24,30 @@ func _ready():
 	
 	globals.AddPanelOpenCloseAnimation($FactionDetailsPanel)
 	globals.AddPanelOpenCloseAnimation($SlaveSelectionPanel)
-	for i in $AreaCategories.get_children():
-		i.connect("pressed",self,"select_category", [i.name])
 	for i in positiondict:
-		get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
+		#get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
 		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
-		get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
+		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
+		get_node(positiondict[i]).metadata = i
+		get_node(positiondict[i]).target_node = self
+		get_node(positiondict[i]).target_function = 'slave_position_selected'
 	
 	for i in $FactionDetailsPanel/HBoxContainer.get_children():
 		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
 		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
-	$TravelButton.connect("pressed",self, "open_character_dislocation")
-	globals.AddPanelOpenCloseAnimation($CharacterDislocationPanel)
+	$NavigationPanel/MansionButton.connect("pressed", self, "return_to_mansion")
+	$LocationGui.target_node = self
+	$LocationGui.target_function = 'slave_position_deselect'
+	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_node = self
+	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_function = 'slave_position_deselect'
+	$LocationGui/ItemUsePanel/Button.connect("pressed", self, "switch_panel")
+
+func return_to_mansion():
+	input_handler.PlaySound("door_open")
+	input_handler.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
+	hide()
+	input_handler.CurrentScreen = 'mansion'
 
 func testcombat():
 	current_level = 1
@@ -65,86 +77,20 @@ func testcombat():
 	input_handler.active_location.group = {1:test_slave.id, 4:test_slave2.id}
 	input_handler.StartCombat('wolves_skirmish')
 
-func show_heal_items(position):
-	if get_node(positiondict[position] + "/Image").visible == true:
-		input_handler.MousePositionScripts.append({nodes = [$Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
-		$Positions/itemusepanel.show()
-		$Positions/itemusepanel.rect_global_position.y = get_node(positiondict[position] + "/Image").rect_global_position.y - $Positions/itemusepanel.rect_size.y
-		globals.ClearContainer($Positions/itemusepanel/GridContainer)
-		for i in state.items.values():
-			if Items.itemlist[i.itembase].has('explor_effect') == false:
-				continue
-			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
-			newbutton.get_node("Label").text = str(i.amount)
-			i.set_icon(newbutton)
-			newbutton.hint_tooltip = i.description
-			#globals.connectitemtooltip(newbutton, i)
-			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
-		
-		var character = state.characters[active_location.group['pos'+str(position)]]
-		for i in character.combat_skills:
-			var skill = Skilldata.Skilllist[i]
-			if skill.tags.has('exploration') == false:
-				continue
-			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
-			#newbutton.get_node("Label").text = str(i.amount)
-			newbutton.texture_normal = skill.icon
-			newbutton.hint_tooltip = skill.descript
-			if skill.manacost > 0:
-				newbutton.hint_tooltip += "\nMana Cost: " + str(skill.manacost)
-			for k in skill.catalysts:
-				if state.materials[k] < skill.catalysts[k]:
-					newbutton.disabled = true
-					newbutton.material = load("res://assets/sfx/bw_shader.tres")
-					newbutton.hint_tooltip += "\nMissing catalyst: " + Items.materiallist[k].name
-				elif i.mp < skill.manacost:
-					newbutton.disabled = true
-					newbutton.material = load("res://assets/sfx/bw_shader.tres")
-					newbutton.hint_tooltip += "\nNot enough mana: " + Items.materiallist[k].name
-			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
-		
-#		if false:# TODO spell usage
-#			var character = state.characters[active_location.group['pos'+str(position)]]
-#			for i in character.combat_skills:
-#				var skill = Skilldata.Skilllist[i]
-#				if skill.tags.has('exploration') == false:
-#					continue
-#				var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
-#				newbutton.texture_normal = skill.icon
-#				var text = skill.descript
-#				if skill.manacost >= 1:
-#					text += "\nMana cost: " + str(skill.manacost)
-#					if character.mp < skill.manacost:
-#						newbutton.disabled = true
-#						newbutton.material = load("res://assets/sfx/bw_shader.tres")
-#						text += "(not enough mana)"
-#				if skill.catalysts.size() > 0:
-#					text += "\nCatalysts required: "
-#					for k in skill.catalysts:
-#						text += "\n" + Items.materiallist[k].name + " - " +  str(skill.catalysts[k]) + ", "
-#						if state.materials[k] < skill.catalysts[k]:
-#							newbutton.disabled = true
-#							text += "(not enough items)"
-#					text = text.substr(0, text.length()-2)
-#				if skill.charges > 0:
-#					pass #add charge check/etc
-#				newbutton.hint_tooltip = text
-#				newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
-#				newbutton.get_node("Label").text = str(skill.manacost)
-#				newbutton.get_node("Label").set("custom_colors/font_color",Color(0.4,0.4,1))
+
 
 func show_explore_spells(position):
 	if get_node(positiondict[position] + "/Image").visible == true:
 		input_handler.MousePositionScripts.append({nodes = [$Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
 		$Positions/itemusepanel.show()
 		$Positions/itemusepanel.rect_global_position.y = get_node(positiondict[position] + "/Image").rect_global_position.y - $Positions/itemusepanel.rect_size.y
-		globals.ClearContainer($Positions/itemusepanel/GridContainer)
+		globals.ClearContainer($LocationGui/Positions/itemusepanel/GridContainer)
 		var character = state.characters[active_location.group['pos'+str(position)]]
 		for i in character.combat_skills:
 			var skill = Skilldata.Skilllist[i]
 			if skill.tags.has('exploration') == false:
 				continue
-			var newbutton = globals.DuplicateContainerTemplate($Positions/itemusepanel/GridContainer)
+			var newbutton = globals.DuplicateContainerTemplate($LocationGui/Positions/itemusepanel/GridContainer)
 			#newbutton.get_node("Label").text = str(i.amount)
 			newbutton.texture_normal = skill.icon
 			newbutton.hint_tooltip = skill.descript
@@ -162,14 +108,14 @@ func show_explore_spells(position):
 			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
 			#newbutton.connect("pressed", self, "use_e_combat_skill", [skill, character, character])
 
-func use_item_on_character(position, item):
-	item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+func use_item_on_character(character, item):
+	item.use_explore(character)#item.use_explore(state.characters[active_location.group['pos'+str(position)]])
 	item.amount -= 1
-	show_heal_items(position)
+	#show_heal_items(position)
 	build_location_group()
 
 func hide_heal_items():
-	$Positions/itemusepanel.hide()
+	$LocationGui/Positions/itemusepanel.hide()
 
 var active_character
 var active_skill
@@ -189,49 +135,151 @@ func open():
 	input_handler.PlaySound("door_open")
 	input_handler.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), 'timeout')
-	
-	
-	
+	input_handler.CurrentScreen = 'exploration'
 	show()
-	globals.ClearContainer($AreaSelection)
-	for i in state.area_order:
-		var area = state.areas[i]
-		var newbutton = globals.DuplicateContainerTemplate($AreaSelection)
-		newbutton.text = area.name
-		newbutton.connect("pressed",self,"select_area",[area])
+	build_accessible_locations()
+	
+	if active_area == null || selected_location == 'capital_plains':
+		select_location('capital_plains')
 
-var selectedcategory
+var selected_location
 
 var active_area
 var active_faction
 var active_location
 
 
-func select_area(area):
-	clear_groups()
-	active_area = area
-	input_handler.active_area = active_area
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	$AreaCategories.show()
-	if selectedcategory == null:
-		selectedcategory = 'capital'
-	select_category(selectedcategory)
-	update_categories()
-	for i in $AreaSelection.get_children():
-		i.pressed = i.text == area.name
+func build_accessible_locations():
+	globals.ClearContainer($NavigationPanel/NavigationContainer/AreaSelection)
 	
 	
-	build_area_description()
+	var location_array = []
+	var travelers = []
+	for i in state.character_order:
+		var person = state.characters[i]
+		if !person.location in ['mansion','travel'] && location_array.has(person.location) == false:
+			location_array.append(person.location)
+	
+	var newbutton = globals.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
+	newbutton.text = "Capital"
+	newbutton.connect("pressed",self,"select_location",['capital_plains'])
+	newbutton.set_meta("data", 'capital_plains')
+	
+	for i in location_array:
+		newbutton = globals.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
+		newbutton.text = world_gen.get_location_from_code(i).name
+		newbutton.connect("pressed",self,"select_location",[i])
+		newbutton.set_meta("data", i)
+	
+	if selected_location != null:
+		for i in $NavigationPanel/NavigationContainer/AreaSelection.get_children():
+			if i.has_meta("data"):
+				i.pressed = i.get_meta('data') == selected_location
+#		for i in state.area_order:
+#		var area = state.areas[i]
+#		if area.unlocked == false:
+#			continue
+#		var newbutton = globals.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
+#		newbutton.text = area.name
+#		newbutton.connect("pressed",self,"select_area",[area])
+
+func select_location(location):
+	$CityGui.hide()
+	$LocationGui.hide()
+	selected_location = location
+	for i in $NavigationPanel/NavigationContainer/AreaSelection.get_children():
+		if i.has_meta("data"):
+			i.pressed = i.get_meta('data') == location
+	if location == 'capital_plains':
+		open_city(location)
+	else:
+		var data = world_gen.get_location_from_code(location)
+		open_location(data)
+	
+
+func open_city(city):
+	match city:
+		'capital_plains':
+			active_area = state.areas.plains
+	selected_location = city
+	$LocationGui.hide()
+	$CityGui.show()
+	$HirePanel.hide()
+	$ServicePanel.hide()
+	$QuestPanel.hide()
+	$ShopPanel.hide()
+	$FactionDetailsPanel.hide()
+	$SlaveSelectionPanel.hide()
+	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
+	var newbutton
+	
+	for i in active_area.factions.values():
+		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+		newbutton.text = i.name
+		newbutton.connect("pressed", self, "enter_guild", [i])
+	newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+	newbutton.text = "Shop"
+	newbutton.connect("pressed", self, "open_shop", ['area'])
+	
+	newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+	newbutton.text = "Buy Dungeon Location"
+	newbutton.connect("pressed", self, "purchase_location_list")
+	
+	for i in active_area.events:
+		if state.checkreqs(i.reqs) == false:
+			continue
+		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+		newbutton.text = i.text
+		newbutton.connect("pressed", input_handler, "interactive_message", [i.code,'area_oneshot_event',i.args])
+		newbutton.connect("pressed", self, "open_city", [city])
+
+var faction_actions = {
+	hire = 'Hire',
+	sellslaves = "Sell Characters",
+	quests = 'Quests',
+	upgrade = "Upgrades",
+	services = "Service",
+}
+
+func enter_guild(guild):
+	active_area = state.areas[guild.area]
+	active_faction = guild
+	input_handler.active_faction = guild
+	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
+	var newbutton
+	for i in guild.actions:
+		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+		newbutton.text = faction_actions[i]
+		newbutton.connect("pressed", self, "faction_"+i)
+	newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+	newbutton.text = "Leave"
+	newbutton.connect("pressed", self, "open_city", [selected_location])
+
+#func select_area(area):
+#	clear_groups()
+#	active_area = area
+#	input_handler.active_area = active_area
+#	globals.ClearContainer($ScrollContainer/VBoxContainer)
+#	$AreaCategories.show()
+##	if selectedcategory == null:
+##		selectedcategory = 'capital'
+##	select_category(selectedcategory)
+#	update_categories()
+#	for i in $AreaSelection.get_children():
+#		i.pressed = i.text == area.name
+#
+#
+#	build_area_description()
 
 func update_categories():
 	$AreaCategories/quests.disabled = active_area.questlocations.size() <= 0
 
 func select_category(category):
 	var newbutton
-	selectedcategory = category
+#	selectedcategory = category
 	globals.ClearContainer($ScrollContainer/VBoxContainer)
 	build_area_description()
-	clear_groups()
+	#clear_groups()
 	if active_area == null:
 		return
 	match category:
@@ -254,7 +302,7 @@ func select_category(category):
 				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.text = i.text
 				newbutton.connect("pressed", input_handler, "interactive_message", [i.code,'area_oneshot_event',i.args])
-				newbutton.connect("pressed", self, "select_category", [selectedcategory])
+				#newbutton.connect("pressed", self, "select_category", [selectedcategory])
 			
 		"locations":
 			for i in active_area.locations.values():
@@ -445,30 +493,6 @@ func item_sell_confirm(value):
 	$Gold.text = str(state.money)
 	update_shop_list()
 
-var faction_actions = {
-	hire = 'Hire',
-	sellslaves = "Sell Characters",
-	quests = 'Quests',
-	upgrade = "Upgrades",
-	services = "Service",
-}
-
-func enter_guild(guild):
-	active_area = state.areas[guild.area]
-	active_faction = guild
-	input_handler.active_faction = guild
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
-	var newbutton
-	for i in guild.actions:
-		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.text = faction_actions[i]
-		newbutton.connect("pressed", self, "faction_"+i)
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = "Leave"
-	newbutton.connect("pressed", self, "select_category", [selectedcategory])
-
-
-
 func faction_hire():
 	hiremode = 'hire'
 	$HirePanel.show()
@@ -479,7 +503,7 @@ func faction_hire():
 		var newbutton = globals.DuplicateContainerTemplate($HirePanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.name
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
-		newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
+		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed",input_handler,'ShowSlavePanel', [tchar])#, self, "select_slave_in_guild", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
@@ -502,8 +526,6 @@ func faction_sellslaves():
 		newbutton.connect("pressed", self, "sell_slave", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
-
-
 
 func select_slave_in_guild(person = Slave):
 	selectedperson = person
@@ -648,6 +670,11 @@ func see_quest_info(quest):
 				item.set_icon(newbutton)
 				input_handler.ghost_items.append(item)
 				globals.connectitemtooltip(newbutton, item)
+			'gear_static':
+				newbutton.texture = Items.itemlist[i.item].icon
+				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
 			'usable':
 				var item = Items.itemlist[i.item]
 				newbutton.texture = item.icon
@@ -673,7 +700,7 @@ func accept_quest():
 		if i.code in ['complete_dungeon','complete_location']:
 			input_handler.get_spec_node(input_handler.NODE_POPUP, ["You've received a new quest location.", 'Confirm'])
 			#input_handler.ShowPopupPanel("You've received a new quest location.")
-			update_categories()
+			#update_categories()
 			break
 	faction_quests()
 
@@ -816,7 +843,7 @@ func build_location_description():
 			text = active_location.classname + ": " + active_location.name
 		'skirmish':
 			pass
-	$AreaDescription.bbcode_text = text
+	$LocationGui/Image/RichTextLabel.bbcode_text = '[center]' + text + "[/center]"
 
 func build_area_description():
 	var text = ''
@@ -825,14 +852,23 @@ func build_area_description():
 	text += "\nPopulation: " + str(active_area.population)
 	$AreaDescription.bbcode_text = text
 
-func enter_location(data):
+func open_location(data):
+	$LocationGui.show()
+	$CityGui.hide()
+	$HirePanel.hide()
+	$ServicePanel.hide()
+	$QuestPanel.hide()
+	$ShopPanel.hide()
+	$FactionDetailsPanel.hide()
+	$SlaveSelectionPanel.hide()
 	active_location = data
 	input_handler.active_location = active_location
 	if active_location.has('progress'):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
-		
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	
+	input_handler.ActivateTutorial("exploration")
+	
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
@@ -842,89 +878,33 @@ func enter_location(data):
 			presented_characters.append(i)
 	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
 		open_location_actions()
-	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = "Send characters here"
-	newbutton.connect("pressed",self,"open_slave_selection_list")
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = 'Leave'
-	newbutton.connect("pressed",self,"select_category", [selectedcategory])
+#	var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#	newbutton.text = "Send characters here"
+#	newbutton.connect("pressed",self,"open_slave_selection_list")
+#	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+#	newbutton.text = 'Leave'
+	#newbutton.connect("pressed",self,"select_category", [selectedcategory])
 	build_location_description()
 
 
 
-var active_slave_list = []
-
-func open_slave_selection_list():
-	var text = 'Select characters to send to ' + active_location.name + '. Base travel time: ' + str(round((active_location.travel_time + active_area.travel_time)/state.get_master().travel_tick()))
-	$SlaveSelectionPanel.show()
-	active_slave_list.clear()
-	$SlaveSelectionPanel/RichTextLabel.bbcode_text = text
-	for id in state.character_order:
-		var i = state.characters[id]
-		i.tags.erase('selected')
-	update_slave_list()
-
-func update_slave_list():
-	globals.ClearContainer($SlaveSelectionPanel/ScrollContainer/VBoxContainer)
-	var newbutton
-	newbutton = globals.DuplicateContainerTemplate($SlaveSelectionPanel/ScrollContainer/VBoxContainer)
-	newbutton.text = "Add character"
-	newbutton.connect("pressed", self, "select_slave_for_group")
-	for i in active_slave_list:
-		newbutton = globals.DuplicateContainerTemplate($SlaveSelectionPanel/ScrollContainer/VBoxContainer)
-		newbutton.text = i.get_short_name()
-		newbutton.get_node('icon').texture = i.get_icon()
-		newbutton.connect("pressed",self,"remove_slave_selection", [i])
-	
-
-func select_slave_for_group():
-	var reqs = [{code = 'is_free'}]
-	input_handler.ShowSlaveSelectPanel(self, 'slave_selected', reqs)
-
-func slave_selected(character):
-	active_slave_list.append(character)
-	character.tags.append("selected")
-	update_slave_list()
-
-func remove_slave_selection(character):
-	active_slave_list.erase(character)
-	character.tags.erase("selected")
-	update_slave_list()
-
-
-func confirm_party_selection():
-	for i in active_slave_list:
-		i.remove_from_task(true)
-		i.process_event(variables.TR_MOVE)
-		if variables.instant_travel == false:
-			i.work = 'travel'
-			i.location = 'travel'
-			i.travel_target = {area = active_area.code, location = active_location.id}
-			i.travel_time = active_area.travel_time + active_location.travel_time
-		else:
-			i.work = 'travel'
-			i.location = active_location.id
-			i.area = active_area.code
-	input_handler.update_slave_list()
-	$SlaveSelectionPanel.hide()
-	active_slave_list.clear()
-	enter_location(active_location)
 
 func open_location_actions():
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	globals.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
 	var newbutton
 	match active_location.type:
 		'dungeon':
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-			newbutton.text = 'Explore'
-			newbutton.connect("pressed",self,"enter_dungeon")
+			enter_dungeon()
+#			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Explore'
+#			newbutton.connect("pressed",self,"enter_dungeon")
 		'settlement':
 			for i in active_location.actions:
-				newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+				newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("pressed", self, i)
 		'encounter':
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Initiate'
 			newbutton.connect("pressed",self,"start_skirmish")
 
@@ -939,69 +919,200 @@ func local_events_search():
 		input_handler.active_location.events.search = 1
 		input_handler.interactive_message('location_event_search', 'event_selection', {})
 
-
-
-func clear_groups():
-	globals.ClearContainer($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-	$Positions.hide()
-	$PresentedSlavesPanel.hide()
-
+var icons = {
+	'master' : load("res://assets/images/gui/gui icons/icon_master.png"),
+	servant = load("res://assets/images/gui/gui icons/icon_servant.png"),
+	'slave' : load("res://assets/images/gui/gui icons/icon_slave.png"),
+	}
 func build_location_group():
-	clear_groups()
+	#clear_groups()
 	for i in positiondict:
 		if active_location.group.has('pos'+str(i)) && state.characters[active_location.group['pos'+str(i)]] != null:
 			var character = state.characters[active_location.group['pos'+str(i)]]
 			get_node(positiondict[i]+"/Image").texture = character.get_icon()
+			if get_node(positiondict[i]+"/Image").texture == null:
+				if character.professions.has('master'):
+					get_node(positiondict[i]+"/Image").texture = icons.master
+				elif character.slave_class == 'servant':
+					get_node(positiondict[i]+"/Image").texture = icons.servant
+				else:
+					get_node(positiondict[i]+"/Image").texture = icons['slave']
 			get_node(positiondict[i]+"/Image").show()
 			get_node(positiondict[i]+"/Image/hp").text = str(floor(character.hp)) + '/' + str(floor(character.hpmax))
 			get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.mpmax))
+			get_node(positiondict[i]+"/Image").dragdata = character
+			get_node(positiondict[i]+"/Image/Label").text = character.get_short_name()
+			get_node(positiondict[i]).self_modulate.a = 0
+			get_node(positiondict[i]).character = character
 		else:
+			get_node(positiondict[i]+"/Image").dragdata = null
 			get_node(positiondict[i]+"/Image").texture = null
 			get_node(positiondict[i]+"/Image").hide()
-	$PresentedSlavesPanel.show()
-	$Positions.show()
+			get_node(positiondict[i]).self_modulate.a = 1
+			get_node(positiondict[i]).character = null
 	var newbutton
+	globals.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 	for id in state.character_order:
 		var i = state.characters[id]
 		if i.location == active_location.id && i.travel_time == 0:
-			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+			newbutton = globals.DuplicateContainerTemplate($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+			newbutton.dragdata = i
 			newbutton.get_node("icon").texture = i.get_icon()
-			newbutton.get_node("name").text = i.get_short_name()
+			if newbutton.get_node('icon').texture == null:
+				if i.professions.has('master'):
+					newbutton.get_node('icon').texture = icons.master
+				elif i.slave_class == 'servant':
+					newbutton.get_node('icon').texture = icons.servant
+				else:
+					newbutton.get_node('icon').texture = icons['slave']
+			newbutton.get_node("Label").text = i.get_short_name()
 			newbutton.connect("pressed", self, "return_character", [i])
+			if active_location.group.values().has(i.id):
+				newbutton.get_node("icon").modulate = Color(0.3,0.3,0.3)
 			globals.connectslavetooltip(newbutton, i)
-		elif i.travel_target.location == active_location.id:
-			newbutton = globals.DuplicateContainerTemplate($PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("icon").texture = i.get_icon()
-			newbutton.get_node("name").text = i.get_short_name() + ": Arriving in " + str(round(i.travel_time / i.travel_tick())) + " hours."
-			newbutton.disabled = true
+	
+	build_item_panel()
+	build_spell_panel()
 
-func return_character(character):
-	selectedperson = character
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+var panelmode = 'items'
+var panelmodes = {item = {name = "Items", code = 'items'}, spells = {name = 'Spells', code = 'spells'}}
+var panelmodesarray = ['items','spells']
+
+func switch_panel():
+	match panelmode:
+		'spells':
+			$LocationGui/ItemUsePanel/Button.text = panelmodes.item.name
+			$LocationGui/ItemUsePanel/ScrollContainer.show()
+			$LocationGui/ItemUsePanel/SpellContainer.hide()
+			panelmode = 'items'
+		'items':
+			$LocationGui/ItemUsePanel/Button.text = panelmodes.spells.name
+			$LocationGui/ItemUsePanel/ScrollContainer.hide()
+			$LocationGui/ItemUsePanel/SpellContainer.show()
+			panelmode = 'spells'
+
+func build_item_panel():
+	globals.ClearContainer($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
+	var tutorial_items = false
+	for i in state.items.values():
+		if Items.itemlist[i.itembase].has('explor_effect') == false:
+			continue
+		var newnode = globals.DuplicateContainerTemplate($LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer)
+		i.set_icon(newnode.get_node("Icon"))
+		#newnode.get_node("Label").text = i.name
+		newnode.get_node("amount").text = str(i.amount)
+		newnode.dragdata = i
+		globals.connectitemtooltip(newnode, i)
+		tutorial_items = true
+	if tutorial_items == true:
+		input_handler.ActivateTutorial("exploration_items")
+
+func build_spell_panel():
+	globals.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
+	for id in state.character_order:
+		var person = state.characters[id]
+		if person.location == active_location.id && person.travel_time == 0:
+			for i in person.combat_skills:
+				var skill = Skilldata.Skilllist[i]
+				if skill.tags.has('exploration') == false:
+					continue
+				var newnode = globals.DuplicateContainerTemplate($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
+				newnode.get_node('Icon').texture = skill.icon
+				newnode.get_node("name").text = skill.name
+				newnode.get_node("castername").text = person.get_short_name()
+				var text = skill.descript
+				var disabled = false
+				if skill.manacost > 0:
+					text += "\n\nMana cost: " + str(skill.manacost) + " (" + str(floor(person.mp)) + ")"
+				if skill.catalysts.empty() == false:
+					text += '\n\nRequired Catalysts: '
+					for k in skill.catalysts:
+						text += "\n"+ Items.materiallist[k].name + ": " + str(skill.catalysts[k]) + " (" + str(state.materials[k]) + ")"
+						if state.materials[k] < skill.catalysts[k]:
+							disabled = true
+				globals.connecttexttooltip(newnode, text)
+				newnode.dragdata = {skill = skill, caster = person}
+				if person.mp < skill.manacost:
+					disabled = true
+					
+				if disabled == true:
+					#newnode.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+					newnode.get_node("name").set("custom_colors/font_color", Color(1,0.5,0.5))
+					newnode.script = null
+				#globals.connectskilltooltip(newnode, skill.code, person)
+
+
+func show_heal_items(position):
+	if get_node(positiondict[position] + "/Image").visible == true:
+		input_handler.MousePositionScripts.append({nodes = [$LocationGui/Positions/itemusepanel, get_node(positiondict[position] + "/Image")], targetnode = self, script = 'hide_heal_items'})
+		$LocationGui/Positions/itemusepanel.show()
+		$LocationGui/Positions/itemusepanel.rect_global_position.y = get_node(positiondict[position] + "/Image").rect_global_position.y - $LocationGui/Positions/itemusepanel.rect_size.y
+		globals.ClearContainer($LocationGui/Positions/itemusepanel/GridContainer)
+		for i in state.items.values():
+			if Items.itemlist[i.itembase].has('explor_effect') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($LocationGui/Positions/itemusepanel/GridContainer)
+			newbutton.get_node("Label").text = str(i.amount)
+			i.set_icon(newbutton)
+			newbutton.hint_tooltip = i.description
+			#globals.connectitemtooltip(newbutton, i)
+			newbutton.connect("pressed", self, "use_item_on_character", [position, i])
+		
+		var character = state.characters[active_location.group['pos'+str(position)]]
+		for i in character.combat_skills:
+			var skill = Skilldata.Skilllist[i]
+			if skill.tags.has('exploration') == false:
+				continue
+			var newbutton = globals.DuplicateContainerTemplate($LocationGui/LocationGui/Positions/itemusepanel/GridContainer)
+			#newbutton.get_node("Label").text = str(i.amount)
+			newbutton.texture_normal = skill.icon
+			newbutton.hint_tooltip = skill.descript
+			if skill.manacost > 0:
+				newbutton.hint_tooltip += "\nMana Cost: " + str(skill.manacost)
+			for k in skill.catalysts:
+				if state.materials[k] < skill.catalysts[k]:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.hint_tooltip += "\nMissing catalyst: " + Items.materiallist[k].name
+				elif i.mp < skill.manacost:
+					newbutton.disabled = true
+					newbutton.material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.hint_tooltip += "\nNot enough mana: " + Items.materiallist[k].name
+			newbutton.connect("pressed", self, "use_skill_explore", [character, skill])
+
+#		elif i.travel_target.location == active_location.id:
+#			newbutton = globals.DuplicateContainerTemplate($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
+#			newbutton.get_node("icon").texture = i.get_icon()
+#			newbutton.get_node("Label").text = i.get_short_name() + ": Arriving in " + str(round(i.travel_time / i.travel_tick())) + " hours."
+#			newbutton.disabled = true
+
+#func return_character(character):
+#	selectedperson = character
+#	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
 	#input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
 
-func return_character_confirm():
-	if variables.instant_travel == false:
-		selectedperson.location = 'travel'
-		selectedperson.travel_target = {area = '', location = 'mansion'}
-		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
-	else:
-		selectedperson.location = 'mansion'
-		selectedperson.return_to_task()
-	for i in active_location.group:
-		if active_location.group[i] == selectedperson.id:
-			active_location.group.erase(i)
-	build_location_group()
+#func return_character_confirm():
+#	if variables.instant_travel == false:
+#		selectedperson.location = 'travel'
+#		selectedperson.travel_target = {area = '', location = 'mansion'}
+#		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
+#	else:
+#		selectedperson.location = 'mansion'
+#		selectedperson.return_to_task()
+#	for i in active_location.group:
+#		if active_location.group[i] == selectedperson.id:
+#			active_location.group.erase(i)
+#	build_location_group()
 
-var pos
 
-func selectfighter(position):
-	pos = 'pos'+str(position)
-	var reqs = [{code = 'is_at_location', value = active_location.id}]
-	if variables.allow_remote_intereaction == true: reqs = []
-	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
+#func selectfighter(position):
+#	pos = 'pos'+str(position)
+#	var reqs = [{code = 'is_at_location', value = active_location.id}]
+#	if variables.allow_remote_intereaction == true: reqs = []
+#	input_handler.ShowSlaveSelectPanel(self, 'slave_position_selected', reqs, true)
 
-func slave_position_selected(character):
+func slave_position_selected(pos, character):
+	pos = 'pos'+str(pos)
 	if character == null:
 		active_location.group.erase(pos)
 		build_location_group()
@@ -1021,6 +1132,13 @@ func slave_position_selected(character):
 		active_location.group[oldheroposition] = active_location.group[pos]
 	
 	active_location.group[pos] = character
+	build_location_group()
+
+func slave_position_deselect(character):
+	for i in active_location.group:
+		if active_location.group[i] == character.id:
+			active_location.group.erase(i)
+			break
 	build_location_group()
 
 func UpdatePositions():
@@ -1049,21 +1167,25 @@ func start_skirmish():
 func enter_dungeon():
 	check_events('enter')
 	var completed_floors = active_location.progress.level
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	globals.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
 	
 	var newbutton
 	
 	while completed_floors > 0:
-		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Level: ' + str(completed_floors)
 		if active_location.progress.level > completed_floors || (active_location.progress.level == completed_floors && active_location.progress.stage >= active_location.levels["L"+str(active_location.progress.level)].stages):
 			newbutton.text += "(completed)"
 		newbutton.connect("pressed",self,"enter_level", [completed_floors])
 		completed_floors -= 1
 	
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	newbutton.text = 'Exit'
-	newbutton.connect("pressed",self,"leave_location")
+#	newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+#	newbutton.text = 'Test'
+#	newbutton.connect("pressed",self,"testshow")
+
+func testshow():
+	print(active_location.group)
+	build_location_group()
 
 var action_type
 var current_level = 1
@@ -1083,32 +1205,32 @@ func enter_level(level, skip_to_end = false):
 	if check_events('enter_level') == true:
 		yield(input_handler, 'EventFinished')
 	
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	globals.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
 	var newbutton
 	if active_location.progress.level == level && active_location.progress.stage < active_location.levels["L"+str(level)].stages:
-		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Advance'
 		newbutton.connect("pressed",self,"area_advance",['advance'])
 	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
 		if active_location.levels.has("L"+str(level + 1)) == true:
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Move to the next level'
 			newbutton.connect("pressed",self,"enter_level",[level+1])
 		else:
-			newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Complete location'
 			newbutton.connect("pressed",self,"clear_dungeon")
 	
 	if variables.allow_skip_fights:
-		newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Skip to last room'
 		newbutton.connect("pressed",self,"enter_level", [level, true])
 	
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 	newbutton.text = 'Roam'
 	newbutton.connect("pressed",self,"area_advance",['roam'])
 	
-	newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+	newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 	newbutton.text = 'Return'
 	newbutton.connect("pressed",self,"enter_dungeon")
 	build_location_group()
@@ -1137,7 +1259,7 @@ func finish_combat():
 		active_location.progress.stage += 1
 		enter_level(active_location.progress.level)
 	elif action_type == 'location_finish':
-		leave_location()
+#		leave_location()
 		update_categories()
 		select_category('locations')
 	else:
@@ -1149,20 +1271,29 @@ func clear_dungeon():
 
 func clear_dungeon_confirm():
 	for id in state.character_order:
-		var i = state.characters[id]
-		if (i.location == active_location.id && i.travel_time == 0) || i.travel_target.location == active_location.id:
-			selectedperson = i
-			return_character_confirm()
+		var person = state.characters[id]
+		if (person.location == active_location.id && person.travel_time == 0) || person.travel_target.location == active_location.id:
+			if variables.instant_travel == false:
+				person.location = 'travel'
+				person.travel_target = {area = '', location = 'mansion'}
+				person.travel_time = active_area.travel_time + active_location.travel_time
+			else:
+				person.location = 'mansion'
+				person.return_to_task()
+			#return_character_confirm()
 	check_events('complete_location')
 	active_area.locations.erase(active_location.id)
 	active_area.questlocations.erase(active_location.id)
 	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
 	action_type = 'location_finish'
-	leave_location()
+	open_city('capital_plains')
+	build_accessible_locations()
+	input_handler.update_slave_list()
+#	leave_location()
 	
 
-func leave_location():
-	select_category(selectedcategory)
+#func leave_location():
+#	select_category(selectedcategory)
 
 func check_events(action):
 	return input_handler.check_events(action)
@@ -1198,39 +1329,11 @@ func get_party():
 		if state.characters[ch] != null: res.push_back(state.characters[ch])
 	return res
 
-var dislocation_area = 'mansion'
-var selected_travel_characters = []
 
-func open_character_dislocation():
-	$CharacterDislocationPanel.show()
-	selected_travel_characters.clear()
-	
-	update_character_dislocation()
 
-func update_character_dislocation():
-	var char_array = []
-	globals.ClearContainer($CharacterDislocationPanel/ScrollContainer/VBoxContainer)
-	for i in state.character_order:
-		char_array.append(i)
-	for i in char_array:
-		var newbutton = globals.DuplicateContainerTemplate($CharacterDislocationPanel/ScrollContainer/VBoxContainer)
-		var person = state.characters[i]
-		newbutton.get_node("Label").text = person.get_full_name()
-		globals.connectslavetooltip(newbutton, person)
-		if selected_travel_characters.has(i):
-			newbutton.pressed = true
-		newbutton.connect('pressed', self, 'set_travel_character', [i])
-
-func set_travel_character(id):
-	if !selected_travel_characters.has(id):
-		selected_travel_characters.append(id)
-	else:
-		selected_travel_characters.erase(id)
-	update_character_dislocation()
-
-func use_e_combat_skill(target):
-	var skill = active_skill
-	var caster = active_character
+func use_e_combat_skill(caster, target, skill):
+#	var skill = active_skill
+#	var caster = active_character
 	#allowaction = false
 
 #	if activeitem:
@@ -1395,7 +1498,7 @@ func use_e_combat_skill(target):
 	#follow-up
 	if skill.has('follow_up'):
 		active_skill = skill.followup
-		use_e_combat_skill(target)
+		use_e_combat_skill(caster, target, skill)
 	build_location_group()
 
 

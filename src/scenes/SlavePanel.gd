@@ -191,7 +191,7 @@ func update():
 	$BodyPanel.visible = $BodyPanel/Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
 	globals.connecttexttooltip($character_class, tr(person.slave_class.to_upper()+"CLASSDESCRIPT"))
-	if person.location == 'travel':
+	if person.location != 'mansion':
 		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	if person.work != '':
 		$currentwork.text = races.tasklist[person.work].name
@@ -668,7 +668,7 @@ func return_to_mansion():
 	if variables.instant_travel == false:
 		person.location = 'travel'
 		person.travel_target = {area = '', location = 'mansion'}
-		person.travel_time = max(1, round(active_area.travel_time + active_location.travel_time - person.travel_time))
+		person.travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - person.travel_time)))
 	else:
 		person.location = 'mansion'
 	update()

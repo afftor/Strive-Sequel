@@ -7,11 +7,11 @@ var tutorial_themes = {
 	introduction = {name = "Introduction", text = "This is your Mansion Screen. At the right side you can see your {color=yellow|Character List}. At the left side is your {color=yellow|Task list}. Make yourself familiar with your characters by clicking on them."},
 	slavetab = {name = "Character Tab", text = "This is the character panel. It contains most of the character's information and allows you to control it. Your characters are your main possessions.\nCharacters consume food every day, which is represented by Food Consumption stat on the left. Different characters require different amount of it, which, similar to other stats, often tied to race. Characters can be assigned to work by selecting Job menu. This way you can start utilizing them. "},
 	tasklist = {name = "Task List", text = "Task list shows up ongoing tasks. Once progress bar is filled, you receive an item to your storage. You can hover over the task to see what workers are assigned to it. Progress speed can be increased by {color=yellow|Productivity}, some stats, classes and tools related to the task."},
-	outside = {name = 'Exploration', text = ''},
 	crafting = {name = "Crafting", text = "To craft an item, select the number of desired items, then assign a worker to task, responsible for production. Resources will be consumed when each new item starts its production. You can unlock more crafts by making upgrades and finding new recipes."},
 	upgrades = {name = "Upgrades", text = "After selecting an upgrade, make sure to assign a character to work on it. Physics and Wits, as well as certain classes can improve upgrading speed. It is recommended to start with either {color=yellow|Tailor Workshop or Forge} as those buildings will unlock more crafting recipes. "},
 	skills = {name = 'Skills & Obedience', text = "At the bottom of Character's Tab you can see their {color=yellow|Ability Panel}. Social abilities can be used in mansion and most importantly, provide tools to make your chacters Obedient. {color=green|Obedience} is required for characters to work and consumed every work hour. {color=green|Loyal or Submission}, once maxed out, will allow character to work indefinitely. "},
-	
+	exploration = {name = 'Exploration Group', text = "To assign characters to active combat party, drag and drop them to corresponding slots. Melee attacks can't target back row until front row is defeated and only do half of the damage when performed from back row normally. "},
+	exploration_items = {name = 'Healing Items', text = "Healing items can be used in and out of combat. To use them out of combat drag and drop them on characters. Managing your health and resources is essential to successful exploration.  "}
 }
 
 func _ready():

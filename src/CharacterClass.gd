@@ -241,7 +241,9 @@ var shackles_chance = null
 var area = ''
 var location = 'mansion'
 var travel_target = {area = '', location = ''}
-var travel_time = 0
+var travel_time = 0 setget set_travel_time
+var initial_travel_time = 0
+
 
 #communications
 var relatives = {}
@@ -1176,9 +1178,12 @@ func skill_tooltip(skillcode):
 
 
 func assign_to_task(taskcode, taskproduct, iterations = -1):
-	var task = races.tasklist[taskcode]
 	#remove existing work
 	remove_from_task()
+	if taskcode == '':
+		work = ''
+		return
+	var task = races.tasklist[taskcode]
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
 	for i in state.active_tasks:
@@ -1202,7 +1207,7 @@ func remove_from_task(remember = false):
 		for i in state.active_tasks:
 			if i.code == work:
 				i.workers.erase(self.id)
-	if remember == true:
+	if remember == true && work != 'travel':
 		previous_work = work
 	work = ''
 
@@ -1215,7 +1220,22 @@ func travel_tick():
 	if state.upgrades.has('stables'):
 		value = 1 + variables.stable_boost_per_level * state.upgrades.stables
 	return value
-#
+
+func calculate_travel_time(location1, location2):
+	var travel_value1 = 0 #time to travel to location from mansion
+	var travel_value2 = 0 #time to return to mansion from location
+	if location1 != 'mansion':
+		travel_value1 = world_gen.get_area_from_location_code(location1).travel_time + world_gen.get_location_from_code(location1).travel_time
+	if location2 != 'mansion':
+		travel_value2 = world_gen.get_area_from_location_code(location2).travel_time + world_gen.get_location_from_code(location2).travel_time
+	
+	return travel_value1 + travel_value2
+
+
+func set_travel_time(value):
+	travel_time = value
+	initial_travel_time = value
+
 #func get_obed_reduction():
 #	var value = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
 #	if location != 'mansion':
@@ -1328,7 +1348,7 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	if globals.combat_node == null:
+	if globals.combat_node == null && location == 'mansion':
 		is_active = false
 		print('warning! char died outside combat')
 		characters_pool.call_deferred('cleanup')
@@ -1652,7 +1672,7 @@ func calculate_price():
 	return max(100,round(value))
 
 func get_icon():
-	if icon_image == null:
+	if icon_image in ['', null]:
 		return null
 	if ResourcePreloader.new().has_resource(icon_image) == false:
 		return globals.loadimage(icon_image)

@@ -65,9 +65,12 @@ func select_category(category):
 	item_filter = 'all'
 	$filter/all.pressed = true
 	rebuild_recipe_list()
+	rebuild_scheldue()
+
+func rebuild_scheldue():
 	globals.ClearContainer($CraftScheldue/VBoxContainer)
 	
-	for i in state.craftinglists[category]:
+	for i in state.craftinglists[craft_category]:
 		var newnode = globals.DuplicateContainerTemplate($CraftScheldue/VBoxContainer)
 		var recipe = Items.recipes[i.code]
 		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
@@ -77,6 +80,10 @@ func select_category(category):
 		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
 		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
+		newnode.arraydata = i
+		newnode.parentnodearray = state.craftinglists[craft_category]
+		newnode.target_node = self
+		newnode.target_function = 'rebuild_scheldue'
 	
 
 func rebuild_recipe_list():
@@ -253,6 +260,7 @@ func selectcraftitem(item):
 			get_node("NumberSelect/MaterialSetupPanel/" + i).texture_normal = null
 			get_node("NumberSelect/MaterialSetupPanel/" + i + '/number').hide()
 			get_node("NumberSelect/MaterialSetupPanel/" + i + 'Descript').bbcode_text = ''
+			get_node("NumberSelect/MaterialSetupPanel/" + i + "/TextureRect").show()
 		$NumberSelect/MaterialSetupPanel/EndItem.texture = null
 		
 		$NumberSelect/MaterialSetupPanel/Part1.set_meta('part',array[0])
@@ -295,6 +303,7 @@ func choosematerial(button):
 func selectmaterial(material, part, cost):
 	itemparts[part] = {material = material.code, price = cost}
 	chosenpartbutton.texture_normal = material.icon
+	chosenpartbutton.get_node('TextureRect').hide()
 	chosenpartbutton.get_node("number").text = str(cost)
 	chosenpartbutton.get_node("number").show()
 	var text = Items.Parts[part].name + "\n" 

@@ -54,14 +54,14 @@ expand = true
 stretch_mode = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 10.4114
-margin_top = 213.863
-margin_right = 210.411
-margin_bottom = 620.863
+margin_left = 10.0
+margin_top = 214.0
+margin_right = 210.0
+margin_bottom = 437.0
 mouse_filter = 2
 
 [node name="hp" type="TextureProgress" parent="VBoxContainer"]
-margin_right = 199.0
+margin_right = 200.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2
@@ -78,7 +78,7 @@ align = 1
 
 [node name="mp" type="TextureProgress" parent="VBoxContainer"]
 margin_top = 29.0
-margin_right = 199.0
+margin_right = 200.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2
@@ -95,7 +95,7 @@ align = 1
 
 [node name="lust" type="TextureProgress" parent="VBoxContainer"]
 margin_top = 58.0
-margin_right = 199.0
+margin_right = 200.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 0, 25 )
 mouse_filter = 2

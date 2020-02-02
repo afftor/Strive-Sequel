@@ -119,6 +119,8 @@ func revert():
 
 func make_world():
 	world_gen.build_world()
+	state.areas.plains.unlocked = true
+	state.areas.forests.unlocked = true
 
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')

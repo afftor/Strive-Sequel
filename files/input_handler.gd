@@ -53,21 +53,22 @@ var encounter_win_script = null
 var encounter_lose_scripts = []
 
 func _input(event):
-	if event.is_echo() == true || event.is_pressed() == false :
+	if event.is_echo() == true && !event.is_action_type(): 
 		return
-	if event.is_action("ESC") && event.is_pressed():
+	#print(var2str(event))
+	if (event.is_action("ESC") || event.is_action_released("RMB")):
 		if CloseableWindowsArray.size() != 0:
 			CloseTopWindow()
 		else:
-			if globals.CurrentScene.name == 'mansion':
+			if globals.CurrentScene.name == 'mansion' && event.is_action("ESC"):
 				globals.CurrentScene.get_node("MenuPanel").open()
-	if event.is_action("F9") && event.is_pressed():
+	if event.is_action_released("F9"):
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
 	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
-		if str(int(event.as_text())) in str(range(1,4)):
+		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
 			if globals.globalsettings.turn_based_time_flow == false:
 				globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 			else:
@@ -118,9 +119,11 @@ func _process(delta):
 func CloseTopWindow():
 	var node = CloseableWindowsArray.back()
 	if typeof(node) == TYPE_STRING:
-		return;
+		return
+	elif BeingAnimated.has(node):
+		return
 	node.hide()
-	CloseableWindowsArray.pop_back(); #i think this is required
+	#CloseableWindowsArray.pop_back(); #i think this is required #It's not, breaks multiple windows order
 
 func LockOpenWindow():
 	CloseableWindowsArray.append('lock')
@@ -1035,8 +1038,9 @@ func update_slave_panel():
 func check_mouse_in_nodes(nodes):
 	var check = false
 	for i in nodes:
-		if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
-			check = true
+		if weakref(i) != null:
+			if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
+				check = true
 	return check
 
 func text_cut_excessive_lines(text:String):

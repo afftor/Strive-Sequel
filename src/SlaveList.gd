@@ -5,21 +5,9 @@ extends Panel
 func _ready():
 	state.connect("slave_added",self,"rebuild")
 	state.connect("hour_tick", self, "update")
-	$SetOrder.connect("pressed", self, "change_order")
 	input_handler.slave_list_node = self
-	rebuild()
-	globals.AddPanelOpenCloseAnimation($OrderPanel)
+	#rebuild()
 
-
-func change_order():
-	$OrderPanel.show()
-	globals.ClearContainer($OrderPanel/ScrollContainer/VBoxContainer)
-	for i in state.character_order:
-		var newbutton = globals.DuplicateContainerTemplate($OrderPanel/ScrollContainer/VBoxContainer)
-		newbutton.get_node("Label").text = state.characters[i].get_full_name()
-		newbutton.arraydata = i
-		newbutton.parentnodearray = state.character_order
-	rebuild()
 
 func rebuild():
 	input_handler.get_spec_node(input_handler.NODE_SLAVETOOLTIP).hide()
@@ -31,6 +19,10 @@ func rebuild():
 		newbutton.connect('pressed', self, 'open_slave_tab', [person])
 		globals.connectslavetooltip(newbutton, person)
 		update_button(newbutton)
+		newbutton.target_node = self
+		newbutton.target_function = 'rebuild'
+		newbutton.arraydata = i
+		newbutton.parentnodearray = state.character_order
 
 func update():
 	for i in $ScrollContainer/VBoxContainer.get_children():
@@ -79,11 +71,11 @@ func update_button(newbutton):
 	#newbutton.get_node("HBoxContainer/obed").visible = person.location == 'mansion'
 	var icon
 	if person.professions.has("master"):
-		icon = load("res://assets/images/iconsclasses/Master.png")
+		icon = load("res://assets/images/gui/gui icons/icon_master.png")
 	elif person.slave_class == 'servant':
-		icon = load("res://assets/images/iconsclasses/Worker.png")
+		icon = load("res://assets/images/gui/gui icons/icon_servant.png")
 	else:
-		icon = load("res://assets/images/iconsgear/steelcollar.png")
+		icon = load("res://assets/images/gui/gui icons/icon_slave.png")
 	newbutton.get_node("HBoxContainer/state").texture = icon
 
 		

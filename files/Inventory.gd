@@ -331,4 +331,5 @@ func rebuild_characters():
 		var i = state.characters[id]
 		var newnode = globals.DuplicateContainerTemplate($CharacterPanel/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = i.get_full_name()
+		if i == selectedhero: newnode.pressed = true
 		newnode.connect("pressed", self, "open", [{mode = 'character', person = i}])
