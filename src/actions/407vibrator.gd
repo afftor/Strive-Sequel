@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'vagina'
 const virginloss = true
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['pet', 'noorgasm', 'toys']
 const takertags = ['pet', 'vagina', 'toys']
+const giver_skill = []
+const taker_skill = ['pussy']
+const consent_level = 15
 
 func getname(state = null):
 	return "Vibrator"

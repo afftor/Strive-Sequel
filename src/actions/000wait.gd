@@ -9,11 +9,11 @@ const canlast = false
 const giverpart = ''
 const takerpart = ''
 const virginloss = false
-const giverconsent = 'any'
-const takerconsent = 'any'
 const givertags = []
 const takertags = []
-
+const giver_skill = []
+const taker_skill = []
+const consent_level = 0
 
 func getname(state = null):
 	return "Wait"

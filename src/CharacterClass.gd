@@ -252,6 +252,8 @@ var tags = []
 var messages = []
 
 var sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}}
+var sex_skills = {petting = 0, penetration = 0, pussy = 0, oral = 0, anal = 0, tail = 0}
+var consent = 0
 var relations = {}
 var metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0}
 var lastsexday
@@ -278,6 +280,12 @@ func charm_set(value):
 	charm = min(value, charm_factor*20)
 func sexuals_set(value):
 	sexuals = min(value, sexuals_factor*20)
+
+func get_sexuals():
+	var array = sex_skills.values()
+	array.sort()
+	
+	return (array[0] + array[1] + array[2])/3
 
 #stub for bonus system
 func get_stat(statname):
@@ -520,10 +528,19 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	var traitarray = []
 	#assign traits
 	for i in Traitdata.sex_traits.values():
-		if i.starting == true && checkreqs(i.acquire_reqs) == true:
+		if i.negative == true && i.random_generation == true && checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
-	var rolls = 1
-	if randf() >= 0.8: rolls = 2
+	var rolls = 2
+	while rolls > 0:
+		var newtrait = traitarray[randi()%traitarray.size()]
+		sex_traits.append(newtrait.code)
+		traitarray.erase(newtrait)
+		rolls -= 1
+	traitarray.clear()
+	rolls = 1
+	for i in Traitdata.sex_traits.values():
+		if i.negative == false && i.random_generation == true && checkreqs(i.acquire_reqs) == true:
+			traitarray.append(i)
 	while rolls > 0:
 		var newtrait = traitarray[randi()%traitarray.size()]
 		sex_traits.append(newtrait.code)

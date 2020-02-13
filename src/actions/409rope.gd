@@ -8,10 +8,11 @@ const canlast = false
 const giverpart = ''
 const takerpart = 'acc4'#body extra to change some getname into restrained getname
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = []
 const takertags = ['punish']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
 	return "Rope"

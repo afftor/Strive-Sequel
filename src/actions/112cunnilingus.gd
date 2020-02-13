@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'mouth'
 const takerpart = 'clit'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['oral','noorgasm']
 const takertags = ['vagina']
+const giver_skill = ['oral']
+const taker_skill = ['pussy']
+const consent_level = 15
 
 func getname(state = null):
 	return "Cunnilingus"

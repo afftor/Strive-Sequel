@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'vagina'
 const takerpart = 'vagina'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'basic'
 const givertags = ['vagina', 'pet']
 const takertags = ['vagina', 'pet']
+const giver_skill = ['pussy']
+const taker_skill = ['pussy']
+const consent_level = 25
 
 func getname(state = null):
 	return "Tribadism"

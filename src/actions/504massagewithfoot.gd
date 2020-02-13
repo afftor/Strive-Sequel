@@ -8,10 +8,11 @@ const canlast = true
 const giverpart = 'feet'
 const takerpart = ''
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['pet','noorgasm']
 const takertags = ['pet','shame', 'punish']
+const giver_skill = ['petting']
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
 	return "Massage with foot"

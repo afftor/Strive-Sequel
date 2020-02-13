@@ -11,7 +11,7 @@ var tutorial_themes = {
 	upgrades = {name = "Upgrades", text = "After selecting an upgrade, make sure to assign a character to work on it. Physics and Wits, as well as certain classes can improve upgrading speed. It is recommended to start with either {color=yellow|Tailor Workshop or Forge} as those buildings will unlock more crafting recipes. "},
 	skills = {name = 'Skills & Obedience', text = "At the bottom of Character's Tab you can see their {color=yellow|Ability Panel}. Social abilities can be used in mansion and most importantly, provide tools to make your chacters Obedient. {color=green|Obedience} is required for characters to work and consumed every work hour. {color=green|Loyal or Submission}, once maxed out, will allow character to work indefinitely. "},
 	exploration = {name = 'Exploration Group', text = "To assign characters to active combat party, drag and drop them to corresponding slots. Melee attacks can't target back row until front row is defeated and only do half of the damage when performed from back row normally. "},
-	exploration_items = {name = 'Healing Items', text = "Healing items can be used in and out of combat. To use them out of combat drag and drop them on characters. Managing your health and resources is essential to successful exploration.  "}
+	exploration_items = {name = 'Exploration Items&Spells', text = "Healing items and spells can be used in and out of combat. To use them out of combat drag and drop them on characters. Spells will require caster to have sufficient resources and catalysts. Managing your health and resources is essential to successful exploration.  "}
 }
 
 func _ready():

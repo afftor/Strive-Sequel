@@ -10,10 +10,11 @@ const giverpart = 'penis'
 const takerpart = 'anus'
 const takerpart2 = 'mouth'
 const virginloss = true
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['penis', 'group']
 const takertags = ['anal', 'mouth', 'penetration','group']
+const giver_skill = ['penetration']
+const taker_skill = ['anal','oral']
+const consent_level = 40
 
 func requirements():
 	var valid = true

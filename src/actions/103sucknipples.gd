@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'mouth'
 const takerpart = ''
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['oral','noorgasm']
 const takertags = ['tits']
+const giver_skill = ['oral']
+const taker_skill = []
+const consent_level = 20
 
 func getname(state = null):
 	return "Nipple Sucking"

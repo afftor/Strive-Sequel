@@ -1,8 +1,8 @@
 extends Node
 
 const category = 'fucking'
-const code = 'missionaryanal'
-const order = 5
+const code = 'ontopanal'
+const order = 7
 var givers
 var takers
 const canlast = true
@@ -13,7 +13,7 @@ const givertags = ['penis']
 const takertags = ['anal', 'penetration']
 const giver_skill = ['penetration']
 const taker_skill = ['anal']
-const consent_level = 30
+const consent_level = 35
 
 func requirements():
 	var valid = true
@@ -26,53 +26,44 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	
-	return "Missionary Anal"
+	return "On Top Anal"
 
 func getongoingname(givers, takers):
-	return "[name1] fuck[s/1] [names2] ass[/es2] in the missionary position."
+	return "[name1] has [name2] anally riding on top of [him1]."
 
 func givereffect(member):
-	var effects = {sens = 200, horny = 20}
+	var effects = {sens = 230, horny = 25}
 	if member.person.penis_size == '':
 		effects.sens /= 1.2
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 190, horny = 5}
+	var effects = {sens = 210, horny = 5}
 	member.person.metrics.anal += 1
 	return effects
 
 #orientation of givers/takers
-const rotation1 = Quat(0.5,0.0,0.0,0.0)
-const rotation2 = Quat(0.5,0.0,0.0,0.0)
+const rotation1 = Quat(0.0,0.0,0.0,0.0)
+const rotation2 = Quat(0.0,0.0,0.0,1.0)
 
-const initiate = ['start_1_missionary','start_2_sexa']
+const initiate = ['start_1_lotus','start_2_sexa']
 
-const ongoing = ['main_1_sexa','main_2_sexa','main_3_sex']
+const ongoing = ['main_1_sexv','main_2_sexv','main_3_sex']
 
-const reaction = ['react_1_sex','react_2_sex','react_3_sexa']
+const reaction = ['react_1_sex','react_2_sex','react_3_sexv']
 
 const linkset = "sex"
 
 const act_lines = {
 
-start_2_sexa = {
+start_2_sexv = {
 	
 	shift = {
 	conditions = {
 		orifice = ["shift"],
 	},
 	lines = [
-		", {^enjoying:relishing in} the closeness of [partners2] [body2]. ",
-	]},
-	
-	insert = {
-	conditions = {
-		orifice = ["insert"],
-	},
-	lines = [
-		", {^spreading:parting:pulling apart:holding apart} [his2] thighs to expose [his2] [anus2]. ",
+		", {^enjoying:finding glee in} putting [partner2] in such an embarassing position. ",
 	]},
 	
 },
@@ -84,18 +75,18 @@ main_3_sex = {
 	},
 	lines = [
 		". ",
-		" from above. ",
+		" from below. ",
 	]},
 	
 },
 
-react_3_sexa = {
+react_3_sexv = {
 	
 	default = {
 	conditions = {
 	},
 	lines = [
-		" as [name1] [fucks1] [partners2] [anus2].",
+		" as [name1] make[s/1] a show of [him2].",
 	]},
 	
 },

@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'penis'
 const takerpart = 'penis'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'basic'
 const givertags = ['penis', 'pet']
 const takertags = ['penis', 'pet']
+const giver_skill = ['petting']
+const taker_skill = ['petting']
+const consent_level = 20
 
 func getname(state = null):
 	return "Frottage"

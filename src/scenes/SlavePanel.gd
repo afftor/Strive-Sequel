@@ -310,7 +310,15 @@ func update():
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
 		newnode.text = trait.name
-		globals.connecttexttooltip(newnode, person.translate(trait.descript))
+		var traittext = person.translate(trait.descript)
+		for j in trait.reqs:
+			if j.has('code') && j.code == 'action_type':
+				traittext += "\n\nDisliked actions:[color=aqua] "
+				for k in j.value:
+					#print(globals.sex_actions_dict[k].getname())
+					traittext += globals.sex_actions_dict[k].getname() + ", "
+				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+		globals.connecttexttooltip(newnode, traittext)
 	
 	globals.ClearContainer($buffscontainer)
 	for i in person.get_mansion_buffs():

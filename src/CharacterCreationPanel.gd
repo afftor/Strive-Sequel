@@ -533,6 +533,7 @@ func finish_character():
 		person.obedience = 48
 	else:
 		person.slave_class = 'master'
+		person.consent = 1000
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
 

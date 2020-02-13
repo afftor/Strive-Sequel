@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'acc6'#clit
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['noorgasm']
 const takertags = ['punish','pain', 'vagina']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 30
 
 func getname(state = null):
 	return "Clit Clap"

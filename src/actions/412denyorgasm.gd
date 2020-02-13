@@ -1,31 +1,31 @@
 extends Node
 
 const category = 'SM'
-const code = 'subdue'
+const code = 'deny_orgasm'
 var givers
 var takers
 const canlast = false
 const giverpart = ''
 const takerpart = ''
 const virginloss = false
-const givertags = []
-const takertags = ['punish']
+const givertags = ['noorgasm']
+const takertags = ['nooragsm']
 const giver_skill = []
 const taker_skill = []
-const consent_level = 25
+const consent_level = 10
 
 func getname(state = null):
-	return "Subdue"
+	return "Orgasm Denial"
 
 func getongoingname(givers, takers):
-	return "[name1] [is1] holding down [name2]."
+	return ""
 
 func getongoingdescription(givers, takers):
 	return ""
 
 func requirements():
 	var valid = true
-	if givers.size() < 1 || takers.size() != 1:
+	if givers.size() != 1 || takers.size() != 1 || takers[0].sens < 900:
 		valid = false
 	for i in givers:
 		if i.subduing != null:
@@ -42,12 +42,4 @@ func takereffect(member):
 	
 
 func initiate():
-	for i in takers:
-		for k in givers:
-			i.subduedby.append(k)
-			k.subduing = i
-	
-	if givers.size() < 2:
-		return "[name1] tries to hold down [name2] with all [his1] might."
-	else:
-		return "[name1] try to hold down [name2] with all [his1] might."
+	return "[name1] approaches edging [name2] as [he2] is about to climax."

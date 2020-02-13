@@ -524,6 +524,8 @@ var quest_icons = {
 	
 }
 
+var sex_actions_dict = {}
+
 var globalsettings = { 
 	ActiveLocalization = 'en',
 	mastervol = -15,
@@ -539,6 +541,7 @@ var globalsettings = {
 	window_pos = Vector2(0,0),
 	
 	factors_as_words = true,
+	show_full_consent = false,
 	
 	textspeed = 60,
 	skipread = false,
@@ -607,6 +610,11 @@ func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
 		dir.make_dir(userfolder + 'saves')
 	
+	for i in dir_contents('res://src/actions'):
+		if i.find('.remap') >= 0:
+			continue
+		var newaction = load(i).new()
+		sex_actions_dict[newaction.code] = newaction
 	
 	#Storing available translations
 	for i in scanfolder(LocalizationFolder):

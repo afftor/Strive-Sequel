@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'tail'
 const takerpart = 'anus'
 const virginloss = true
-const giverconsent = 'advanced'
-const takerconsent = 'any'
 const givertags = ['tail', 'noorgasm']
 const takertags = ['anal', 'penetration']
+const giver_skill = ['tail']
+const taker_skill = ['anal']
+const consent_level = 40
 
 func getname(state = null):
 	return "Insert Tail Ass"

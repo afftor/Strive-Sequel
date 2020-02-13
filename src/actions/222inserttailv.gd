@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'tail'
 const takerpart = 'vagina'
 const virginloss = true
-const giverconsent = 'advanced'
-const takerconsent = 'any'
 const givertags = ['tail', 'noorgasm']
 const takertags = ['vagina', 'penetration']
+const giver_skill = ['tail']
+const taker_skill = ['pussy']
+const consent_level = 35
 
 func getname(state = null):
 	return "Insert Tail Pussy"

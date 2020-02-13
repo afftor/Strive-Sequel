@@ -65,6 +65,15 @@ const lines = {
 	4 : [10,11,12],
 }
 
+var sex_factor_skill_multiplier = {
+	1 : 0.5,
+	2 : 0.75,
+	3 : 1.0,
+	4 : 1.33,
+	5 : 1.75,
+	6 : 2.2,
+}
+
 #mansion & ugprades
 var base_population_cap = 5
 var population_cap_per_room_upgrade = 5

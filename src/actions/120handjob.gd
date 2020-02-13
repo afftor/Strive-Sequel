@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'penis'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['pet','noorgasm']
 const takertags = ['pet','penis']
+const giver_skill = ['petting']
+const taker_skill = []
+const consent_level = 10
 
 func getname(state = null):
 	if givers.size() + takers.size() == 2:

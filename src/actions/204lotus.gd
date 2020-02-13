@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'penis'
 const takerpart = 'vagina'
 const virginloss = true
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['penis']
 const takertags = ['vagina', 'penetration']
+const giver_skill = ['penetration']
+const taker_skill = ['pussy']
+const consent_level = 25
 
 func requirements():
 	var valid = true
