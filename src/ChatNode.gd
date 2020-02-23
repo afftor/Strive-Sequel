@@ -111,6 +111,11 @@ var individual_lines = {
 	submission_line1 = {text = "I yield, [Master]. Please, I'll do anything...", events = ['submission'], personalities = ['shy','bold','serious','kind'], reqs = [], weight = 1, tags = []},
 	submission_line2 = {text = "N-no, please, no more punishments... *sob*", events = ['submission'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	submission_line3 = {text = "I give up... You win... [Master]...", events = ['submission'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
+	
+	
+	loyalty_submission_line1 = {text = "[Master]... I understand, I will do as you want.", events = ['submission_loyalty'], personalities = ['shy','bold','serious','kind'], reqs = [], weight = 1, tags = []},
+	loyalty_submission_line2 = {text = "This feels crazy, but I'm ready to do anything for you.", events = ['submission_loyalty'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
+	loyalty_submission_line3 = {text = "...I-I understand, I will do everything for you.", events = ['submission_loyalty'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 }
 
 func build_lines():

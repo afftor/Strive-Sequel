@@ -64,12 +64,12 @@ func _ready():
 	
 	$bodyparts2/class.connect("pressed", self, "open_class_list")
 	
-	for i in ['slave','servant']:
-		$bodyparts2/slave_class.add_item(i.capitalize())
+	for i in slave_classes:
+		$bodyparts2/slave_class.add_item(globals.slave_class_names[i])
 	$bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
 	
 	open()
-
+var slave_classes = ['slave','servant']
 func open_class_list():
 	$ClassPanel.show()
 	globals.ClearContainer($ClassPanel/ScrollContainer/VBoxContainer)
@@ -116,7 +116,7 @@ func select_sexbodypart(value, bodypart, node):
 	$descript.bbcode_text = person.make_description()
 
 func select_type(value, node):
-	preservedsettings.slave_class = node.get_item_text(value)
+	preservedsettings.slave_class = slave_classes[value]
 
 func select_checkbox(bodypart, node):
 	preservedsettings[bodypart] = node.pressed
@@ -169,7 +169,7 @@ func finish_diet_selection():
 func open(type = 'slave'):
 	preservedsettings.clear()
 	show()
-	
+	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
 	$introduction.bbcode_text = introduction_text[type]
 	if type == 'slave':
 		$introduction.bbcode_text += " " + str(state.characters.size())
@@ -191,7 +191,7 @@ func open(type = 'slave'):
 	
 	$bodyparts2/type_label.visible = mode == 'slave'
 	$bodyparts2/slave_class.visible = mode == 'slave'
-	globals.connecttexttooltip($bodyparts2/type_label, "Slave&Servant:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
+	globals.connecttexttooltip($bodyparts2/type_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	
 	rebuild_slave()
 

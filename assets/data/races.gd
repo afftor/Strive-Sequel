@@ -23,25 +23,43 @@ func hunt_meat(character):
 	return 1 + (1*(character.get_stat('physics')/66))
 
 func fishing(character):
-	return 1 + (1*(character.get_stat('physics')/100+character.get_stat('wits')/57))
+	return 1 + (1*(character.get_stat('physics')/150+character.get_stat('wits')/100))
 
-func farming(character):
-	return 1 + (1*(character.get_stat('physics')/57+character.get_stat('wits')/100))
+func farming_veges(character):
+	return 1 + (1*(character.get_stat('physics')/50+character.get_stat('wits')/66))
+
+func farming_wheat(character):
+	return 1 + (1*(character.get_stat('physics')/40+character.get_stat('wits')/66))
+
+func farming_cloth(character):
+	return 1 + (1*(character.get_stat('physics')/75+character.get_stat('wits')/100))
 
 func hunt_leather(character):
 	return 1 + (1*(character.get_stat('physics')/66))
+
+func hunt_leather_hard(character):
+	return 1 + (1*(character.get_stat('physics')/33))
+
+func hunt_leather_mythic(character):
+	return 1 + (1*(character.get_stat('physics')/25))
 
 func woodcutting_lumber(character):
 	return 1 + (1*(character.get_stat('physics')/66))
 
 func woodmagiccutting_lumber(character):
-	return 1 + (1*(character.get_stat('physics')/66))
+	return 1 + (1*(character.get_stat('physics')/30))
 
 func woodironcutting_lumber(character):
-	return 1 + (1*(character.get_stat('physics')/66))
+	return 1 + (1*(character.get_stat('physics')/25))
 
 func mining_stone(character):
 	return 1 + (1*(character.get_stat('physics')/66))
+	
+func mining_iron(character):
+	return 1 + (1*(character.get_stat('physics')/33))
+	
+func mining_mythril(character):
+	return 1 + (1*(character.get_stat('physics')/30))
 
 func whoring_gold(character):
 	return (1 + character.get_stat('sexuals')/25 + character.get_stat('charm')/50)
@@ -73,9 +91,9 @@ var tasklist = {
 		worktool = 'bow',
 		production = {
 			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
-			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 6, reqs = [], progress_function = 'hunt_leather'},
-			leatherthickgather = {code = 'leatherthickgather', item = 'leatherthick', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 1}], progress_function = 'hunt_leather'},
-			leathermythicgather = {code = 'leathermythicgather', item = 'leathermythic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 2}], progress_function = 'hunt_leather'}},
+			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 5, reqs = [], progress_function = 'hunt_leather'},
+			leatherthickgather = {code = 'leatherthickgather', item = 'leatherthick', progress_per_item = 20, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 1}], progress_function = 'hunt_leather_hard'},
+			leathermythicgather = {code = 'leathermythicgather', item = 'leathermythic', progress_per_item = 35, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 2}], progress_function = 'hunt_leather_mythic'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_hunt'
@@ -87,7 +105,7 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'rod',
-		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1, reqs = [], progress_function = 'fishing'}},
+		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_fish'
@@ -99,9 +117,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'sickle',
-		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 1.5, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming'},
-		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 1.2, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming'},
-		farming_cotton = {code = 'farming_cotton',item = 'cloth', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_cloth', value = 1}], progress_function = 'farming'}},
+		production = {farming_vege = {code = 'farming_vege',item = 'vegetables', progress_per_item = 1.4, reqs = [{type = "has_upgrade", name = 'resource_gather_veges', value = 1}], progress_function = 'farming_veges'},
+		farming_grain = {code = 'farming_grain',item = 'grain', progress_per_item = 1.2, reqs = [{type = "has_upgrade", name = 'resource_gather_grains', value = 1}], progress_function = 'farming_wheat'},
+		farming_cotton = {code = 'farming_cotton',item = 'cloth', progress_per_item = 4, reqs = [{type = "has_upgrade", name = 'resource_gather_cloth', value = 1}], progress_function = 'farming_cloth'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_farm'
@@ -113,7 +131,7 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'axe',
-		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 6, reqs = [], progress_function = 'woodcutting_lumber'},
+		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 4.5, reqs = [], progress_function = 'woodcutting_lumber'},
 		woodmagicgather = {code = 'woodmagicgather', item = 'woodmagic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_woodmagic', value = 1}], progress_function = 'woodmagiccutting_lumber'},
 		woodirongather = {code = 'woodirongather', item = 'woodiron', progress_per_item = 18, reqs = [{type = "has_upgrade", name = 'resource_gather_woodiron', value = 1}], progress_function = 'woodmagiccutting_lumber'}},
 		icon = null,
@@ -127,9 +145,9 @@ var tasklist = {
 		descript = '',
 		workstat = 'physics',
 		worktool = 'pickaxe',
-		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 7, reqs = [], progress_function = 'mining_stone'},
-		gatheriron = {code = 'gatheriron', item = 'iron', progress_per_item = 10, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 1}], progress_function = 'mining_stone'},
-		gathermithril = {code = 'gathermithril', item = 'mithril', progress_per_item = 25, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 2}], progress_function = 'mining_stone'}},
+		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 3, reqs = [], progress_function = 'mining_stone'},
+		gatheriron = {code = 'gatheriron', item = 'iron', progress_per_item = 6, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 1}], progress_function = 'mining_iron'},
+		gathermithril = {code = 'gathermithril', item = 'mithril', progress_per_item = 35, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 2}], progress_function = 'mining_mythril'}},
 		icon = null,
 		tags = [],
 		mod = 'mod_collect'

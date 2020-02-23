@@ -416,7 +416,7 @@ class member:
 						if j.trigger == 'skill_exp_gain' && j.effect == 'skill_exp':
 							bonus = input_handler.math(j.operant, bonus, j.value)
 				
-				i.person.sex_skills[k] += value*bonus
+				i.person.sex_skills[k] = min(100,i.person.sex_skills[k] + value*bonus)
 #			if i.person.sexuals + i.person.sexuals_bonus > partner_skill:
 #				partner_skill = i.person.sexuals + i.person.sexuals_bonus
 			if i.person.traits.has("undead") && sex_traits.has('omnisexual') == false:
@@ -835,9 +835,9 @@ func rebuildparticipantslist():
 		for k in i.effects:
 			newnode.get_node('container/' + k).visible = true
 		
-#		if ai.has(i):
-#			newnode.get_node('name').set('custom_colors/font_color', Color(1,0.2,0.8))
-#			newnode.get_node('name').hint_tooltip = 'Leads'
+		if ai.has(i):
+			newnode.get_node('name').set('custom_colors/font_color', Color(1,0.2,0.8))
+			newnode.get_node('name').hint_tooltip = 'Leads'
 		
 		newnode = get_node("Panel/givetakepanel/givercontainer/Button").duplicate()
 		get_node("Panel/givetakepanel/givercontainer").add_child(newnode)
@@ -1216,24 +1216,23 @@ func count_action_consent(action, giver, taker):
 	if giver.person == state.get_master():
 		giver_consent = 100
 		giver_text = "Maximum"
-		if taker.person.slave_class == 'slave':
-			taker_consent += 10
-			taker_text += "Partner is " + taker.person.translate("[master]") + ": +10\n"
-		elif taker.person.slave_class == 'servant':
-			taker_consent += 5
-			taker_text += "Partner is " + taker.person.translate("[master]") + ": +5\n"
+		taker_consent += 5
+		taker_text += "Partner is " + taker.person.translate("[master]") + ": +5\n"
 	if taker.person == state.get_master():
 		taker_consent = 100
 		taker_text = "Maximum"
-		if giver.person.slave_class == 'slave':
-			giver_consent += 10
-			giver_text += "Partner is " + giver.person.translate("[master]") + ": +10\n"
-		elif giver.person.slave_class == 'servant':
-			giver_consent += 5
-			giver_text += "Partner is " + giver.person.translate("[master]") + ": +5\n"
+		giver_consent += 5
+		giver_text += "Partner is " + giver.person.translate("[master]") + ": +5\n"
+	if giver.person.slave_class == 'slave':
+		giver_consent += 10
+		giver_text += "Is a Slave: +10\n"
+	if taker.person.slave_class == 'slave':
+		taker_consent += 10
+		taker_text += "Is a Slave: +10\n"
 	if action.code == 'subdue':
 		taker_consent = 25
 		taker_text = "Subdue: Receiver's consent ignored. "
+	
 	
 	
 	return {value = value, giver_consent = giver_consent, taker_consent = taker_consent, giver_text = giver_text, taker_text = taker_text}
@@ -1367,10 +1366,10 @@ var ai = []
 
 func activateai():
 	for i in givers:
-		if i.submission < 10 || i.consent == false:
-			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate('[name] refuses to participate. ')
-			return
-		elif i.effects.has('tied') || i.subduedby.size() > 0:
+#		if i.submission < 10 || i.consent == false:
+#			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate('[name] refuses to participate. ')
+#			return
+		if i.effects.has('tied') || i.subduedby.size() > 0:
 			$Control/Panel/RichTextLabel.bbcode_text = i.person.translate("[name] is immobile and can't do anything. ")
 	ai.clear()
 	if selectmode != 'ai':
@@ -2263,7 +2262,7 @@ func endencounter():
 	get_node("Control/Panel/RichTextLabel").set_bbcode(text)
 
 func mformula(gain, mana):
-    return mana + gain * max(0, mana/(mana-300)+1)
+	return mana + gain * max(0, mana/(mana-300)+1)
 
 
 
@@ -2575,13 +2574,16 @@ func alcohol(member):
 		member.effects.append('drunk')
 		text += "It made [him] slightly more horny and sensitive. "
 	else:
-		text += "But it seems [he] is already tipsy. "
+		text += "But it seems [he] is already drunk. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	_on_passbutton_pressed()
+	
 
 func aphrodisiac(member):
 	member.horny += 100
 	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	_on_passbutton_pressed()
 	
 
 func sensetivity_pot(member):
@@ -2589,3 +2591,4 @@ func sensetivity_pot(member):
 	member.lewdmod += 0.2
 	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	_on_passbutton_pressed()

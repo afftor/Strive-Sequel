@@ -423,6 +423,7 @@ rect_min_size = Vector2( 120, 0 )
 bbcode_enabled = true
 
 [node name="SlaveList" type="Panel" parent="."]
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0.843137 )
 margin_left = 435.0
 margin_top = 76.0
@@ -671,7 +672,6 @@ visible = false
 "pauseprocess",
 ] instance=ExtResource( 34 )]
 visible = false
-theme = ExtResource( 5 )
 
 [node name="InteractionSelectPanel" parent="." groups=[
 "pauseprocess",
@@ -704,7 +704,6 @@ margin_right = 1284.37
 margin_bottom = 868.537
 
 [node name="SysMessage" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 161.0
 margin_top = 107.0
@@ -721,7 +720,7 @@ margin_bottom = 72.0
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 40 )
 bbcode_enabled = true
-text = "TESTTEXTAHSHH"
+text = "TESTTEXT"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/panel.png" type="Texture" id=2]
 [ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/scene/answer_blocked.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/scene/answer_blocked.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/scene/hersoframe.png" type="Texture" id=9]
 [ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=10]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=11]
@@ -19,6 +19,38 @@ margin_left = 71.7497
 margin_right = 64.5747
 margin_top = 71.09
 margin_bottom = 64.5747
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
 
 [node name="InteractiveMessage" type="Panel" groups=[
 "pauseprocess",
@@ -68,34 +100,37 @@ margin_bottom = 606.0
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 671.0
 margin_bottom = 207.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
-[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
 visible = false
-margin_top = 159.0
-margin_right = 672.0
+margin_top = 168.0
+margin_right = 671.0
 margin_bottom = 207.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 7 )
-texture_disabled = ExtResource( 8 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 1.10803
-margin_top = 6.3241
-margin_right = 670.108
-margin_bottom = 44.3241
-text = "Text"
-align = 1
-valign = 1
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 36.0
+margin_top = 9.0
+margin_right = 662.0
+margin_bottom = 31.0
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[color=#72a887]Test Text[/color]"
+text = "Test Text"
 
 [node name="hotkey" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 2.15601
-margin_top = 5.86237
-margin_right = 41.156
-margin_bottom = 43.8624
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 34.0
+margin_bottom = 41.0
 custom_colors/font_color = Color( 1, 0.980392, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"

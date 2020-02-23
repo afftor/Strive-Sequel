@@ -29,7 +29,7 @@ func goto_scene(path): # game requests to switch to this scene
 
 func _process(delta):
 	if loader == null:
-	    # no need to process anymore
+		# no need to process anymore
 		set_process(false)
 		return
 	if wait_frames > 0: # wait for frames to let the "loading" animation show up

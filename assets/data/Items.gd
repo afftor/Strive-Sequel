@@ -265,7 +265,7 @@ var materiallist = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_soup.png"),
-		price = 3,
+		price = 3, #6->9 gold profit per craft
 		type = 'food',
 		tags = ['vege', 'meat'],
 	},
@@ -274,7 +274,7 @@ var materiallist = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_cake.png"),
-		price = 3,
+		price = 3, #7->9 gold profit per craft
 		type = 'food',
 		tags = ['grain', 'fish'],
 	},
@@ -336,7 +336,7 @@ var materiallist = {
 		descript = '',
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_woodiron.png"),
-		price = 25,
+		price = 40,
 		type = 'wood',
 		tier = 'medium',
 		tags = [],
@@ -362,7 +362,7 @@ var materiallist = {
 		descript = '',
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/Leather.png"),
-		price = 10,
+		price = 12,
 		type = 'leather',
 		tier = 'easy',
 		tags = [],
@@ -375,7 +375,7 @@ var materiallist = {
 		descript = '',
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_leatherthick.png"),
-		price = 50,
+		price = 40,
 		type = 'leather',
 		tier = 'medium',
 		tags = [],
@@ -388,7 +388,7 @@ var materiallist = {
 		descript = '',
 		adjective = '',
 		icon = load("res://assets/images/iconsitems/item_leathermythic.png"),
-		price = 50,
+		price = 75,
 		type = 'leather',
 		tier = 'hard',
 		tags = [],
@@ -600,7 +600,7 @@ var materiallist = {
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/bandage.png"),
-		price = 1,
+		price = 5,
 		type = 'component',
 		tier = 'easy',
 		tags = ['no_random'],
@@ -1357,7 +1357,7 @@ var itemlist = {
 		itemtype = 'potion',
 		crafttype = 'basic',
 		slots = [],
-		price = 20,
+		price = 20, #12->20 gold profit
 		icon = load("res://assets/images/iconsitems/icon_alcohol.png"),
 		tier = 'easy',
 		reqs = [],
@@ -1640,7 +1640,7 @@ var recipes = {
 	},
 	fishcakes = {
 		code = 'fishcakes',
-		materials = {fish = 1, grain = 1},
+		materials = {fish = 1, grain = 2},
 		items = {},
 		unlockreqs = [],
 		crafttype = 'basic',
@@ -1751,7 +1751,7 @@ var recipes = {
 	},
 	alcohol = {
 		code = 'alcohol',
-		materials = {grain = 6, salvia = 1},
+		materials = {grain = 6},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
@@ -1761,7 +1761,7 @@ var recipes = {
 		workunits = 10,
 		worktype = 'cooking'
 	},
-	bandage = {
+	bandage = { #profits: 5 gold per 3 units of work
 		code = 'bandage',
 		materials = {cloth = 1},
 		items = {},

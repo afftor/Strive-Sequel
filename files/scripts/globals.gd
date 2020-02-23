@@ -471,7 +471,22 @@ var statdata = {
 		percent = true,
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
+	consent = {
+		code = 'consent',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 }
+
+var slave_class_names = {
+	'slave' : 'Slave',
+	servant = 'Peon',
+	'master' : '[Master]',
+	hireling = 'Hireling',
+}
+
 
 var worktoolnames = {
 	bow = '',
@@ -501,6 +516,7 @@ var hexcolordict = {
 	yellow = "#ffff00",
 	brown = "#8B572A",
 	gray = "#4B4B4B",
+	gray_text_dialogue = "#90d4aa",
 	green = '#00b700',
 	white = '#ffffff',
 	aqua = '#24ffdb',

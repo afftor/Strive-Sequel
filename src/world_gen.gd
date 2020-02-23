@@ -24,7 +24,7 @@ var lands = {
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
-		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [], args = {}}],
+		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}}],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
@@ -265,6 +265,9 @@ var factiondata = {
 		preference = ['combat'],
 		character_types = [['servant',1]],
 		character_bonuses = {authority = [75,100], obedience = [48,48]},
+		events = [
+			'fighters_init',
+			],
 		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],#['warriors_dungeon_easy','warriors_monster_hunt_easy','warriors_fighter_slave_easy'],
 		quests_medium = [],
 		quests_hard = [],
@@ -279,6 +282,7 @@ var factiondata = {
 		preference = ['magic'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
+		events = [],
 		quests_easy = ['mages_materials_easy','mages_craft_potions_easy','mages_threat_easy'],#,'mages_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
@@ -293,6 +297,9 @@ var factiondata = {
 		preference = ['labor'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
+		events = [
+			'workers_init',
+			],
 		quests_easy = ['workers_resources_easy','workers_food_easy','workers_craft_tools_easy','workers_threat_easy'],
 		quests_medium = [],
 		quests_hard = [],
@@ -307,6 +314,9 @@ var factiondata = {
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
+		events = [
+			'servants_init',
+			],
 		quests_easy = ['servants_craft_items_easy'],#,'servants_slave_easy'
 		quests_medium = [],
 		quests_hard = [],
@@ -321,6 +331,7 @@ var factiondata = {
 		preference = [],
 		character_types = [['slave',1]],
 		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
+		
 		slave_races = [['rare',3]],
 		quests_easy = [],
 		quests_medium = [],
@@ -345,6 +356,7 @@ func make_guild(code, area):
 		questpool = {easy = data.quests_easy, medium = data.quests_medium, hard = data.quests_hard},
 		questsetting = {easy = 1, medium = 0, hard = 0, total = 1},
 		slaves = [],
+		events = [],
 		reputation = 0,
 		totalreputation = 0,
 		difficulty = area.difficulty,
@@ -355,6 +367,8 @@ func make_guild(code, area):
 	if data.has('slave_races'):
 		for i in data.slave_races:
 			guilddatatemplate.races.append(i)
+	if data.has("events"):
+		guilddatatemplate.events = data.events.duplicate(true)
 	if data.slavenumber.size() > 0:
 		data.slavenumber = round(rand_range(data.slavenumber[0], data.slavenumber[1]))
 	if data.questnumber.size() > 0:

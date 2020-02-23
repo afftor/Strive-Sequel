@@ -16,15 +16,14 @@ func start():
 	
 	input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
 	yield(input_handler, 'CharacterCreated')
-	
-	while slave_number > 0:
-		slave_number -= 1
-		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
-		yield(input_handler, 'CharacterCreated')
+	if data.code != 'default':
+		while slave_number > 0:
+			slave_number -= 1
+			input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
+			yield(input_handler, 'CharacterCreated')
 	
 	finish()
 
 func finish():
 	input_handler.emit_signal("StartingSequenceComplete")
-	print("creation_finished")
 

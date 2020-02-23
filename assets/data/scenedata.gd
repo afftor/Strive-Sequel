@@ -597,5 +597,447 @@ var scenedict = {
 	},
 	
 	
+		
+	
+	starting_dialogue = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = "STARTINGDIALOGUE0",
+		options = [
+		{code = 'starting_dialogue1', text = "STARTINGDIALOGUE0REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'starting_dialogue1', text = "STARTINGDIALOGUE0REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		{code = 'starting_dialogue1', text = "STARTINGDIALOGUE0REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
+		]
+	},
+	starting_dialogue1 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "STARTINGDILOGUE1_1", reqs = [], previous_dialogue_option = 1},
+		{text = "STARTINGDILOGUE1_2", reqs = [], previous_dialogue_option = 2},
+		{text = "STARTINGDILOGUE1_3", reqs = [], previous_dialogue_option = 3},
+		{text = "STARTINGDILOGUE1_4", reqs = []},
+		],
+		options = [
+		{code = 'starting_dialogue2', text = "STARTINGDIALOGUE1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'starting_dialogue2', text = "STARTINGDIALOGUE1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'}
+		],
+		
+	},
+	starting_dialogue2 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "STARTINGDIALOGUE2_1", reqs = [], previous_dialogue_option = 1},
+		{text = "STARTINGDIALOGUE2_2", reqs = [], previous_dialogue_option = 2},
+		{text = "STARTINGDIALOGUE2_3", reqs = []},
+		],
+		options = [
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY1", reqs = [], dialogue_argument = 1},
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY2", reqs = [], dialogue_argument = 2},
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY3", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'STARTINGDIALOGUE3_1'}], dialogue_argument = 3},
+		{code = 'starting_dialogue4', text = "STARTINGDIALOGUE2REPLY4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
+		],
+		
+	},
+	starting_dialogue3 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "STARTINGDIALOGUE3_1", reqs = [], previous_dialogue_option = 1},
+		{text = "STARTINGDIALOGUE3_2", reqs = [], previous_dialogue_option = 2},
+		{text = "STARTINGDIALOGUE3_3", reqs = [], previous_dialogue_option = 3},
+		],
+		options = [
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY1", reqs = [], dialogue_argument = 1},
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY2", reqs = [], dialogue_argument = 2},
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY3", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'STARTINGDIALOGUE3_1'}], dialogue_argument = 3},
+		{code = 'starting_dialogue4', text = "STARTINGDIALOGUE2REPLY4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
+		],
+		
+	},
+	starting_dialogue4 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = "STARTINGDIALOGUE4_1",
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
+		],
+		
+	},
+	
+	
+	fighters_introduction1 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "FIGHTERSINTRODUCTION1", reqs = []},
+		],
+		options = [
+		{code = 'fighters_introduction2', text = "FIGHTERSINTRODUCTION1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'fighters_introduction2', text = "FIGHTERSINTRODUCTION1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+		
+	},
+	fighters_introduction2 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "FIGHTERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
+		{text = "FIGHTERSINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2},
+		{text = "FIGHTERSINTRODUCTION2_3", reqs = [], previous_dialogue_option = [1,2]},
+		{text = "FIGHTERSINTRODUCTION2_3_1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = [1,2]},
+		{text = "FIGHTERSINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
+		{text = "FIGHTERSINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
+		{text = "FIGHTERSINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
+		],
+		options = [
+		{code = 'fighters_questions', text = "FIGHTERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
+		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		],
+		
+	},
+	fighters_join = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "FIGHTERSJOIN", reqs = []},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [ {code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		]
+		
+	},
+	fighters_leader_close = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "FIGHTERSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
+		{text = "FIGHTERSCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},
+		]
+		
+	},
+	fighters_questions = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "FIGHTERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
+		{text = "FIGHTERSQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
+		{text = "FIGHTERSQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
+		{text = "FIGHTERSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
+		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
+		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'fighters_introduction2', text = "FIGHTERSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
+		],
+		
+	},
+	
+	servants_introduction = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "SERVANTSINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
+		{text = "SERVANTSINTRODUCTION1_1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = 1},
+		{text = "SERVANTSINTRODUCTION1_2", reqs = [], previous_dialogue_option = 2},
+		{text = "SERVANTSINTRODUCTION1_3", reqs = [], previous_dialogue_option = 3},
+		{text = "SERVANTSINTRODUCTION1_4", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+		{code = 'servants_questions', text = "SERVANTSASKQUESTIONS", reqs = [], dialogue_argument = 1},
+		{code = 'servants_join', text = "SERVANTSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		],
+	},
+	servants_join = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "SERVANTSJOIN", reqs = []},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		]
+	},
+	servants_leader_close = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "SERVANTSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
+		{text = "SERVANTSCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},
+		]
+	},
+	servants_questions = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "SERVANTSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
+		{text = "SERVANTSQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
+		{text = "SERVANTSQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
+		{text = "SERVANTSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
+		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
+		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'servants_introduction1', text = "SERVANTSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 4},
+		],
+		
+	},
+	workers_introduction1 = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "WORKERSINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
+		],
+		options = [
+		{code = 'workers_introduction2', text = "FIGHTERSINTRODUCTION1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'workers_introduction2', text = "FIGHTERSINTRODUCTION1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	workers_introduction2 = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "WORKERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
+		{text = "WORKERSINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2},
+		{text = "WORKERSINTRODUCTION2_3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = 1},
+		{text = "WORKERSINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
+		{text = "WORKERSINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
+		{text = "WORKERSINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
+		],
+		options = [
+		{code = 'workers_questions', text = "WORKERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
+		{code = 'workers_join', text = "WORKERSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		],
+	},
+	workers_join = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "WORKERSJOIN", reqs = []},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		]
+	},
+	workers_leader_close = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "WORKERSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
+		{text = "WORKERSCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},
+		]
+	},
+	workers_questions = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "WORKERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
+		{text = "WORKERSQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
+		#{text = "WORKERSQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
+		{text = "WORKERSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
+		#{code = 'workers_questions', text = "WORKERSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
+		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'workers_introduction2', text = "WORKERSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
+		],
+		
+	},
+	mages_introduction1 = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "MAGESINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
+		],
+		options = [
+		{code = 'mages_introduction2', text = "FIGHTERSINTRODUCTION1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'mages_introduction2', text = "FIGHTERSINTRODUCTION1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	mages_introduction2 = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "MAGESINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
+		{text = "MAGESINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2},
+		{text = "MAGESINTRODUCTION2_3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = 1},
+		{text = "MAGESINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
+		{text = "MAGESINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
+		{text = "MAGESINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
+		],
+		options = [
+		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
+		{code = 'mages_join', text = "MAGESINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'mages_leader_close', text = "MAGESINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		],
+	},
+	mages_join = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "MAGESJOIN", reqs = []},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		]
+	},
+	mages_leader_close = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "MAGESCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
+		{text = "MAGESCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},
+		]
+	},
+	mages_questions = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "MAGESQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
+		{text = "MAGESQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
+		#{text = "MAGESQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
+		{text = "MAGESQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
+		],
+		options = [
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
+		#{code = 'workers_questions', text = "MAGESQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'mages_introduction2', text = "MAGESASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
+		],
+		
+	},
+}
+
+var dialogue_inits = {
+	fighters_init = [
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSINTRODUCTION1'}], 
+			target = 'fighters_introduction1',
+			target_option = 1,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			target = 'fighters_introduction2',
+			target_option = 3,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [], 
+			target = 'fighters_introduction2',
+			target_option = 4,
+		},
+	],
+	servants_init = [
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'SERVANTSINTRODUCTION1'}], 
+			target = 'servants_introduction',
+			target_option = 1,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			target = 'servants_introduction',
+			target_option = 2,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [], 
+			target = 'servants_introduction',
+			target_option = 3,
+		},
+	],
+	workers_init = [
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'WORKERSINTRODUCTION1'}], 
+			target = 'workers_introduction1',
+			target_option = 1,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			target = 'workers_introduction2',
+			target_option = 3,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [], 
+			target = 'workers_introduction2',
+			target_option = 4,
+		},
+	],
+	mages_init = [
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'WORKERSINTRODUCTION1'}], 
+			target = 'mages_introduction1',
+			target_option = 1,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			target = 'mages_introduction3',
+			target_option = 3,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [], 
+			target = 'mages_introduction3',
+			target_option = 4,
+		},
+	],
+	
 	
 }
+
+var quests = {
+	main_quest = {
+		code = 'main_quest',
+		stages = {
+		start = {code = 'start', name = 'The Loan', descript = 'You must have over 1000 gold by 14th day.',}
+		},
+	},
+	guilds_introduction = {
+		code = 'guilds_introduction',
+		stages = {
+		start = {code = 'start', name = 'The Four Guilds', descript = 'Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.'}
+		},
+	},
+	
+	
+}
+

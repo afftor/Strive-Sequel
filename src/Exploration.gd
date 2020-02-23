@@ -161,7 +161,7 @@ func build_accessible_locations():
 			location_array.append(person.location)
 	
 	var newbutton = globals.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
-	newbutton.text = "Capital"
+	newbutton.text = "Aliron"
 	newbutton.connect("pressed",self,"select_location",['capital_plains'])
 	newbutton.set_meta("data", 'capital_plains')
 	
@@ -232,6 +232,7 @@ func open_city(city):
 		newbutton.text = i.text
 		newbutton.connect("pressed", input_handler, "interactive_message", [i.code,'area_oneshot_event',i.args])
 		newbutton.connect("pressed", self, "open_city", [city])
+		newbutton.modulate = Color(0.5,0.8,0.5)
 
 var faction_actions = {
 	hire = 'Hire',
@@ -247,6 +248,21 @@ func enter_guild(guild):
 	input_handler.active_faction = guild
 	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
 	var newbutton
+	if active_faction.has('events'):
+		for i in active_faction.events:
+			var events = scenedata.dialogue_inits[i]
+			var event
+			for k in events:
+				if state.checkreqs(k.reqs) == true:
+					event = k
+					break 
+			if event == null: 
+				continue
+			newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+			newbutton.text = event.name
+			
+			newbutton.connect("pressed", input_handler, "interactive_dialogue_start", [event.target, event.target_option])
+			newbutton.modulate = Color(0.5,0.8,0.5)
 	for i in guild.actions:
 		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 		newbutton.text = faction_actions[i]

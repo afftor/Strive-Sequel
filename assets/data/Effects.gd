@@ -1599,7 +1599,7 @@ var effect_table = {
 	e_i_pet_suit_bonus = {
 		type = 'c_static',
 		conditions = [{type = 'class', value = 'pet'}],
-		descript = "When wearer has Pet class and not of beast origins:\nCharm: +10\nSocial skills effect: +10%.",
+		descript = "When wearer has Pet class:\nCharm: +10\nSocial skills effect: +10%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		buffs = [],

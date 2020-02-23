@@ -135,8 +135,8 @@ starting_presets="*res://assets/data/starting_presets.gd"
 [debug]
 
 settings/fps/force_fps=60
+gdscript/warnings/enable=false
 gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unreachable_code=false
 

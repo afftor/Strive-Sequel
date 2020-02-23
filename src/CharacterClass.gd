@@ -293,8 +293,10 @@ func get_stat(statname):
 	if variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
-	elif statname in ['physics','wits','charm','sexuals']:
+	elif statname in ['physics','wits','charm']:
 		res = get(statname) + get(statname+"_bonus")
+	elif statname == 'sexuals':
+		res = get_sexuals() + get("sexuals_bonus")
 	return res
 
 func add_stat_bonuses(ls:Dictionary):
@@ -532,9 +534,10 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 			traitarray.append(i)
 	var rolls = 2
 	while rolls > 0:
-		var newtrait = traitarray[randi()%traitarray.size()]
+		var number = randi()%traitarray.size()
+		var newtrait = traitarray[number]
 		sex_traits.append(newtrait.code)
-		traitarray.erase(newtrait)
+		traitarray.remove(number)
 		rolls -= 1
 	traitarray.clear()
 	rolls = 1
@@ -1477,7 +1480,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product, true)#
+			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product)#
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1649,9 +1652,11 @@ func translate(text):
 	text = text.replace("[his]", globals.fastif(sex == 'male', 'his', 'her'))
 	text = text.replace("[him]", globals.fastif(sex == 'male', 'him', 'her'))
 	text = text.replace("[His]", globals.fastif(sex == 'male', 'His', 'Her'))
+	text = text.replace("[Sir]", globals.fastif(sex == 'male', 'Sir', 'Miss'))
 	text = text.replace("[raceadj]", races.racelist[race].adjective)
 	text = text.replace("[race]", races.racelist[race].name)
 	text = text.replace("[name]", get_short_name())
+	text = text.replace("[surname]",globals.fastif(surname != '', surname, get_short_name()))
 	text = text.replace("[age]", age.capitalize())
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
@@ -1675,7 +1680,8 @@ func translate(text):
 			rtext = 'girl'
 		'futa':
 			rtext = 'futanari'
-	text = text.replace("[boy]", rtext)
+	text = text.replace("[boy_]", rtext)
+	text = text.replace("[boy]", globals.fastif(sex == 'male', 'boy', 'girl'))
 	text = text.replace("[price]", str(calculate_price()))
 	
 	return text
@@ -2432,7 +2438,14 @@ func use_social_skill(s_code, target):#add logging if needed
 					if stat == 'loyalty' && h.get(stat) < 100 && h.get(stat) + s_skill.value[i] >= 100:
 						bonusspeech.append('loyalty')
 					elif stat == 'submission' && h.get(stat) < 100 && h.get(stat) + s_skill.value[i] >= 100:
-						bonusspeech.append("submission")
+						if h.get('loyalty') < 100:
+							bonusspeech.append("submission")
+							if growth_factor > sexuals_factor:
+								growth_factor -= 1
+							else:
+								sexuals_factor -= 1
+						else:
+							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, s_skill.value[i])
 				'-':
 					tmp = h.stat_update(stat, -s_skill.value[i])
@@ -2450,7 +2463,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			if tmp < 0:
 				change = ''
 			effect_text += ": "
-			if maxstat != 0 && !stat in ['obedience','loyalty','authority','submission']:
+			if maxstat != 0 && !stat in ['obedience','loyalty','authority','submission','consent']:
 				effect_text += str(floor(h.get(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ")"
 			else:
 				effect_text += change + str(floor(tmp))

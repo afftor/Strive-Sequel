@@ -2,7 +2,9 @@
 
 [ext_resource path="res://src/SkillSelectMenu.gd" type="Script" id=1]
 
-[node name="SkillSelectMenu" type="PopupPanel"]
+[node name="SkillSelectMenu" type="PopupPanel" groups=[
+"ignore_rightclicks",
+]]
 margin_left = 494.0
 margin_top = 341.0
 margin_right = 753.0

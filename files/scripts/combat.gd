@@ -736,7 +736,7 @@ func buildplayergroup(group):
 	for i in group:
 		if int(i) > 6: break
 		if group[i] == null:
-		    continue
+			continue
 		var fighter = state.characters[group[i]] 
 		fighter.combatgroup = 'ally'
 		battlefield[int(i)] = fighter.id

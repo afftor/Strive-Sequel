@@ -66,13 +66,16 @@ var stored_events = {
 #Progress
 var mainprogress = 0
 var decisions = []
-var activequests = []
-var completedquests = []
+var active_quests = []
+var completed_quests = []
 var areaprogress = {}
 var currentarea
 var active_tutorials = []
 var seen_tutorials = []
 var show_tutorial = true
+
+var seen_dialogues = []
+var selected_dialogues = []
 
 var daily_interactions_left = 1
 
@@ -89,8 +92,8 @@ func revert():
 	area_order.clear()
 	mainprogress = 0
 	decisions.clear()
-	activequests.clear()
-	completedquests.clear()
+	active_quests.clear()
+	completed_quests.clear()
 	characters.clear()
 	character_order.clear()
 	areaprogress.clear()
@@ -106,7 +109,7 @@ func revert():
 	global_skills_used.clear()
 	active_tasks.clear()
 	completed_locations.clear()
-	completedquests.clear()
+	completed_quests.clear()
 	craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 	stored_events = {timed_events = []}
 	state.areas.clear()
@@ -172,7 +175,12 @@ func add_slave(person:Slave):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
-	if state.get_master().sex == 'male':
+	if person.professions.has('master'):
+		if person.sex == 'male':
+			person.masternoun = tr('PROFMASTER').to_lower()
+		else:
+			person.masternoun = tr('PROFMASTERALT').to_lower()
+	elif state.get_master().sex == 'male':
 		person.masternoun = tr('PROFMASTER').to_lower()
 	else:
 		person.masternoun = tr('PROFMASTERALT').to_lower()
@@ -239,7 +247,7 @@ func valuecheck(dict):
 		"quest_stage":
 			return if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
-			return completedquests.has(dict.name)
+			return completed_quests.has(dict.name)
 		"party_level":
 			return if_party_level(dict.operant, dict.value)
 		"hero_level":
@@ -273,6 +281,12 @@ func valuecheck(dict):
 			return money >= input_handler.scene_characters[dict.value].calculate_price()
 		'random':
 			return globals.rng.randf()*100 <= dict.value
+		'dialogue_seen':
+			return input_handler.operate(dict.operant, seen_dialogues.has(dict.value), true)
+		'dialogue_selected':
+			return input_handler.operate(dict.operant, selected_dialogues.has(dict.value), true)
+		'date':
+			return input_handler.operate(dict.operant, date, dict.value)
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -536,8 +550,20 @@ func common_effects(effects):
 						input_handler.scene_characters.append(newcharacter)
 						
 						number -= 1
-					
-					#data.text = newcharacter.translate(data.text)
+			'update_guild':
+				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+			'create_character':
+				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
+			'main_progress':
+				mainprogress = input_handler.math(i.operant, mainprogress, i.value)
+			'complete_quest':
+				for k in active_quests:
+					if k.code == i.value:
+						active_quests.erase(k)
+						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						break
+				completed_quests.append(i.value)
+				
 
 func make_local_recruit(args):
 	var newchar = Slave.new()

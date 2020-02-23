@@ -33,6 +33,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_left = 29.4929
 margin_top = 95.0175
 margin_right = 477.493
@@ -83,6 +84,7 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 12 )
 
 [node name="Panel" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 1730.0
 margin_top = 40.0
 margin_right = 1916.0
@@ -139,7 +141,6 @@ margin_bottom = 1067.2
 text = "ver. 0.1.0"
 
 [node name="DemoPanel" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 716.0
 margin_top = 347.0
 margin_right = 1336.0
@@ -168,10 +169,104 @@ margin_top = 9.04404
 margin_right = 1923.01
 margin_bottom = 1089.04
 
-[node name="changelog" type="RichTextLabel" parent="."]
+[node name="NewGamePanel" type="Panel" parent="."]
 visible = false
-margin_right = 40.0
+margin_left = 520.29
+margin_top = 143.903
+margin_right = 1456.29
+margin_bottom = 884.903
+theme = ExtResource( 19 )
+
+[node name="PresetContainer" type="ScrollContainer" parent="NewGamePanel"]
+margin_left = 24.2455
+margin_top = 110.772
+margin_right = 278.245
+margin_bottom = 638.772
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/PresetContainer"]
+margin_right = 253.999
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="NewGamePanel/PresetContainer/VBoxContainer"]
+visible = false
+margin_right = 254.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+toggle_mode = true
+
+[node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
+margin_left = 654.346
+margin_top = 143.404
+margin_right = 910.346
+margin_bottom = 575.404
+
+[node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
+visible = false
+margin_right = 256.0
+margin_bottom = 32.0
+text = "Test"
+
+[node name="tip" type="TextureRect" parent="NewGamePanel"]
+margin_left = 751.0
+margin_top = 85.0
+margin_right = 814.0
+margin_bottom = 141.0
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
+margin_left = 310.0
+margin_top = 119.0
+margin_right = 629.0
+margin_bottom = 627.0
+bbcode_enabled = true
+
+[node name="Label" type="Label" parent="NewGamePanel"]
+margin_left = 736.036
+margin_top = 42.9593
+margin_right = 831.036
+margin_bottom = 66.9593
+text = "Settings"
+
+[node name="HSplitContainer" type="VSeparator" parent="NewGamePanel"]
+margin_left = 561.0
+margin_top = 5.0
+margin_right = 711.0
+margin_bottom = 732.0
+
+[node name="HSplitContainer2" type="VSeparator" parent="NewGamePanel"]
+margin_left = 226.0
+margin_top = 5.0
+margin_right = 376.0
+margin_bottom = 732.0
+
+[node name="StartButton" type="Button" parent="NewGamePanel"]
+margin_left = 370.023
+margin_top = 636.657
+margin_right = 571.023
+margin_bottom = 699.657
+text = "Start Game"
+
+[node name="ChangelogButton" type="Button" parent="."]
+margin_left = 138.728
+margin_top = 13.5204
+margin_right = 371.728
+margin_bottom = 68.5204
+text = "Change log"
+
+[node name="Changelogpanel" type="Panel" parent="."]
+visible = false
+margin_left = 529.445
+margin_top = 97.5106
+margin_right = 1458.44
+margin_bottom = 810.511
+
+[node name="changelogtext" type="RichTextLabel" parent="Changelogpanel"]
+margin_left = 19.0441
+margin_top = 49.6543
+margin_right = 918.044
+margin_bottom = 687.654
 bbcode_enabled = true
 bbcode_text = "Added daily autosave
 Added starting presets
@@ -254,6 +349,8 @@ Fixed Engineer class not having building bonus
 Character hiring is now done in character tab
 Fixed inventory item search not working correctly
 Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
+One time events now have different color in menu
+Daisy event only happens starting day 2
 
 Fixed skill 'Protect' causing soft lock
 Fixed sometimes a quest generating with bugged reward
@@ -311,82 +408,3 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-
-[node name="NewGamePanel" type="Panel" parent="."]
-visible = false
-margin_left = 520.29
-margin_top = 143.903
-margin_right = 1456.29
-margin_bottom = 884.903
-theme = ExtResource( 19 )
-
-[node name="PresetContainer" type="ScrollContainer" parent="NewGamePanel"]
-margin_left = 24.2455
-margin_top = 110.772
-margin_right = 278.245
-margin_bottom = 638.772
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePanel/PresetContainer"]
-margin_right = 253.999
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="NewGamePanel/PresetContainer/VBoxContainer"]
-visible = false
-margin_right = 254.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
-toggle_mode = true
-
-[node name="Settings" type="VBoxContainer" parent="NewGamePanel"]
-margin_left = 654.346
-margin_top = 143.404
-margin_right = 910.346
-margin_bottom = 575.404
-
-[node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
-visible = false
-margin_right = 256.0
-margin_bottom = 32.0
-text = "Test"
-
-[node name="tip" type="TextureRect" parent="NewGamePanel"]
-margin_left = 751.0
-margin_top = 85.0
-margin_right = 814.0
-margin_bottom = 141.0
-texture = ExtResource( 20 )
-expand = true
-stretch_mode = 6
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NewGamePanel"]
-margin_left = 310.0
-margin_top = 119.0
-margin_right = 629.0
-margin_bottom = 627.0
-bbcode_enabled = true
-
-[node name="Label" type="Label" parent="NewGamePanel"]
-margin_left = 736.036
-margin_top = 42.9593
-margin_right = 831.036
-margin_bottom = 66.9593
-text = "Settings"
-
-[node name="HSplitContainer" type="VSeparator" parent="NewGamePanel"]
-margin_left = 561.0
-margin_top = 5.0
-margin_right = 711.0
-margin_bottom = 732.0
-
-[node name="HSplitContainer2" type="VSeparator" parent="NewGamePanel"]
-margin_left = 226.0
-margin_top = 5.0
-margin_right = 376.0
-margin_bottom = 732.0
-
-[node name="StartButton" type="Button" parent="NewGamePanel"]
-margin_left = 370.023
-margin_top = 636.657
-margin_right = 571.023
-margin_bottom = 699.657
-text = "Start Game"

@@ -76,6 +76,8 @@ func _ready():
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
 	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
 	
+	globals.connecttexttooltip($DetailsPanel/ConsentLabel, tr("STATCONSENTDESCRIPT"))
+	
 	for i in $job_panel/work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
@@ -159,6 +161,7 @@ var authority_lines = {
 	high = 'Reverence',
 }
 
+
 func update():
 	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler")+ get_tree().get_nodes_in_group("hide_servant"):
 		i.visible = true
@@ -207,7 +210,10 @@ func update():
 			i.text += str(person.get(i.name+'_bonus'))
 		else:
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
-		i.text +=  '/' + str(person.get(i.name +"_factor")*20)
+		if i.name != 'sexuals':
+			i.text +=  '/' + str(person.get(i.name +"_factor")*20)
+		else:
+			i.text += "/100"
 	for i in $factors.get_children():
 		if i.name in ['base_exp','food_consumption']:
 			i.get_node("Label").text = str(floor(person.get(i.name)))
@@ -260,7 +266,7 @@ func update():
 	$base_stats/lust.max_value = person.lustmax
 	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-	$character_class.text = person.slave_class.capitalize()
+	$character_class.text = globals.slave_class_names[person.slave_class]
 	
 	
 	text = globals.statdata.obedience.descript
@@ -605,8 +611,20 @@ func custom_masternoun_set(text):
 	person.masternoun = text
 	update()
 
+var universal_skills = ['oral','anal','petting']
+
 func open_customize_button():
 	$DetailsPanel.show()
+	globals.ClearContainer($DetailsPanel/SexSkills)
+	$DetailsPanel/ConsentLabel.text = "Consent: " + str(floor(person.consent))
+	for i in person.sex_skills:
+		if person.sex_skills[i] == 0 && universal_skills.find(i) < 0:
+			continue
+		var newbutton = globals.DuplicateContainerTemplate($DetailsPanel/SexSkills)
+		newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
+		newbutton.get_node("ProgressBar").value = person.sex_skills[i]
+		newbutton.get_node("ProgressBar/Label").text = str(floor(person.sex_skills[i])) + '/100'
+		globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\nCurrent level:" + str(floor(person.sex_skills[i])))
 
 func show_gear_gui():
 	var inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY, [{mode = 'character', person = person}]) #input_handler.ShowInentory({mode = 'character', person = person})

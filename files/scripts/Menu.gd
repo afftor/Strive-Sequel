@@ -34,7 +34,9 @@ func _ready():
 		$WarnScreen.hide()
 		input_handler.SetMusic("intro")
 	globals.AddPanelOpenCloseAnimation($NewGamePanel)
+	globals.AddPanelOpenCloseAnimation($Changelogpanel)
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
+	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
 	$NewGamePanel/StartButton.connect("pressed", self, 'start_game')
 	
 	globals.ClearContainer($NewGamePanel/Settings)

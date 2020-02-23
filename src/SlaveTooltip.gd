@@ -35,7 +35,12 @@ func showup(node, person):
 	$exp.set("custom_colors/font_color", exp_color)
 	
 	for i in ['physics','wits','charm','sexuals']:
-		get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) + '/' + str(person[i+'_factor']*20) 
+		if i != 'sexuals':
+			get_node(i).text = str(floor(person[i] + person[i+'_bonus'])) 
+			get_node(i+'2').text = str(person[i+'_factor']*20)
+		else:
+			get_node(i).text = str(floor(person[i] + person[i+'_bonus']))
+			get_node(i+'2').text = '100'
 #	for i in ['loyalty','submission']:
 #		get_node("VBoxContainer/"+ i + '/bar').value = person[i]
 #		if i == 'lust':
@@ -46,7 +51,7 @@ func showup(node, person):
 		get_node("VBoxContainer/"+ i ).max_value = person.get_stat(i+'max')
 		get_node("VBoxContainer/"+ i ).value = person.get_stat(i)
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
-	text = "Type: [color=yellow]" +person.slave_class.capitalize() + "[/color]\n"
+	text = "Type: [color=yellow]" + person.translate(globals.slave_class_names[person.slave_class]) + "[/color]\n"
 	if person.is_players_character == true:
 		if person.work != '':
 			text += "Occupation: " + races.tasklist[person.work].name

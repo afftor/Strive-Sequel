@@ -85,6 +85,7 @@ func _ready():
 		character.add_trait('core_trait')
 		character.unlock_class("master")
 		character.unlock_class("archer")
+		character.set_slave_category('master')
 		character.sex_traits = ['bisexual', 'anal']
 		character.charm_factor = 1
 		#character.unlock_class("worker")
@@ -104,11 +105,12 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.unlock_class("attendant")
 		character.add_trait('core_trait')
+		character.set_slave_category('servant')
 		character.obedience = 100
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('BeastkinCat', 'random', 'random')
+		character.create('Human', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		
 #		for i in range(1,20):
@@ -121,7 +123,33 @@ func _ready():
 		#character.fear = 25
 		#character.base_exp = 99
 		character.charm_factor = 5
+		character.physics_factor = 5
+		character.wits_factor = 5
+		character.sexuals_factor = 5
 		character.charm = 100
+		character.physics = 100
+		character.wits = 100
+		character.sexuals = 100
+		
+		var character2 = Slave.new()
+		character2.create('Human', 'random', 'random')
+		character2.charm = 0
+		character2.physics = 0
+		character2.wits = 0
+		character2.sexuals = 0
+		var text = ''
+		for i in races.tasklist.values():
+			for k in i.production.values():
+				var value = races.get_progress_task(character, i.code, k.code, true)/k.progress_per_item
+				if Items.materiallist.has(k.item):
+					pass
+#					var item = Items.materiallist[k.item]
+#					text += item.name + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item*item.price,0.1)) 
+#					text += ", Max " + str(stepify(value*item.price,0.1)) + "\n"
+				else:
+					text += k.code + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item,0.1)) 
+					text += ", Max " + str(stepify(value,0.1)) + "\n"
+		print(text)
 		character.loyalty = 95
 		character.authority = 100
 		character.submission = 95
@@ -158,13 +186,15 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
 		state.show_tutorial = false
+		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
+		
 		yield(get_tree(), 'idle_frame')
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message('exotic_slave_trader', 'character_event', {})
+		#input_handler.interactive_message('starting_dialogue', '', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -181,7 +211,6 @@ func _ready():
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
 		input_handler.ActivateTutorial("introduction")
-	
 	build_task_bar()
 	$SlaveList.rebuild()
 	

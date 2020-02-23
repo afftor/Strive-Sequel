@@ -144,39 +144,85 @@ text = "name"
 align = 1
 
 [node name="exp" type="Label" parent="."]
-margin_left = 259.041
-margin_top = 266.253
-margin_right = 459.041
-margin_bottom = 290.253
+margin_left = 258.0
+margin_top = 266.0
+margin_right = 360.0
+margin_bottom = 290.0
 text = "Exp"
+align = 1
+clip_text = true
 
 [node name="physics" type="Label" parent="."]
-margin_left = 256.041
+margin_left = 258.041
 margin_top = 294.253
-margin_right = 456.041
+margin_right = 308.041
 margin_bottom = 318.253
 text = "Physics"
+align = 1
+clip_text = true
+
+[node name="physics2" type="Label" parent="."]
+margin_left = 318.041
+margin_top = 294.253
+margin_right = 368.041
+margin_bottom = 318.253
+text = "Physics"
+align = 1
+clip_text = true
 
 [node name="wits" type="Label" parent="."]
-margin_left = 256.041
+margin_left = 258.041
 margin_top = 322.253
-margin_right = 456.041
+margin_right = 308.041
 margin_bottom = 346.253
 text = "Wits"
+align = 1
+clip_text = true
+
+[node name="wits2" type="Label" parent="."]
+margin_left = 318.041
+margin_top = 322.253
+margin_right = 368.041
+margin_bottom = 346.253
+text = "Wits"
+align = 1
+clip_text = true
 
 [node name="charm" type="Label" parent="."]
-margin_left = 256.041
+margin_left = 258.041
 margin_top = 350.253
-margin_right = 456.041
+margin_right = 308.041
 margin_bottom = 374.253
 text = "Charm"
+align = 1
+clip_text = true
+
+[node name="charm2" type="Label" parent="."]
+margin_left = 318.041
+margin_top = 350.253
+margin_right = 368.041
+margin_bottom = 374.253
+text = "Charm"
+align = 1
+clip_text = true
 
 [node name="sexuals" type="Label" parent="."]
-margin_left = 256.041
+margin_left = 258.041
 margin_top = 378.253
-margin_right = 456.041
+margin_right = 308.041
 margin_bottom = 402.253
 text = "Sexuals"
+align = 1
+clip_text = true
+
+[node name="sexuals2" type="Label" parent="."]
+margin_left = 318.041
+margin_top = 378.253
+margin_right = 368.041
+margin_bottom = 402.253
+text = "Sexuals"
+align = 1
+clip_text = true
 
 [node name="job" type="RichTextLabel" parent="."]
 margin_left = 249.682

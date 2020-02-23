@@ -57,11 +57,17 @@ func _input(event):
 		return
 	#print(var2str(event))
 	if (event.is_action("ESC") || event.is_action_released("RMB")):
-		if CloseableWindowsArray.size() != 0:
-			CloseTopWindow()
-		else:
-			if globals.CurrentScene.name == 'mansion' && event.is_action("ESC"):
-				globals.CurrentScene.get_node("MenuPanel").open()
+		var ignore_rightclick = false
+		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+			if i.visible == true:
+				ignore_rightclick = true
+				continue
+		if ignore_rightclick == false:
+			if CloseableWindowsArray.size() != 0:
+				CloseTopWindow()
+			else:
+				if globals.CurrentScene.name == 'mansion' && event.is_action("ESC"):
+					globals.CurrentScene.get_node("MenuPanel").open()
 	if event.is_action_released("F9"):
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
@@ -704,6 +710,8 @@ func math(operation, value1, value2):
 			value1 *= value2
 		'/':
 			value1 /= value2
+		'=':
+			value1 = value2
 	return value1
 
 func string_to_math(value = 0, string = ''):
@@ -888,6 +896,10 @@ func interactive_message(code, type, args):
 func interactive_message_custom(data):
 	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
 	scene.open(data)
+
+func interactive_dialogue_start(code, stage):
+	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
+	scene.dialogue_next(code, stage)
 
 func get_loot_node(): #get_spec_node(input_handler.NODE_LOOTTABLE)
 	var window
