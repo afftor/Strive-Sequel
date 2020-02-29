@@ -725,7 +725,7 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'has_profession':
 			check = professions.has(i.value) == i.check
 		'race_is_beast':
-			check = races.racelist[race].tags.has('beast') == i.value
+			check = races.racelist[race].tags.has('beast') == i.check
 		'is_shortstack':
 			check = height in ['tiny','petite']
 		'gear_equiped':
@@ -756,15 +756,17 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'bodypart':
 			check = input_handler.operate(i.operant, get(i.name), i.value)
 		'trait':
-			check = traits.has(i.value)
+			check = traits.has(i.value) or sex_traits.has(i.value)
 		'disabled':
-			check = !i.value
+			check = !i.check
 		'has_status':
 			check = has_status(i.value)
 		'slave_type':
 			check = input_handler.operate(i.operant, slave_class, i.value)
 		'population':
 			check = input_handler.operate(i.operant, state.characters.size(), i.value)
+		'random':
+			check = globals.rng.randf() <= calculate_number_from_string_array(i.chance)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -815,7 +817,7 @@ func decipher_single(i):
 			else:
 				continue
 		'race_is_beast':
-			if i.value == true:
+			if i.check == true:
 				text2 += 'Only for bestial races.'
 			else:
 				continue
@@ -1653,11 +1655,11 @@ func apply_atomic(template):
 			killed()
 		'use_combat_skill':
 			if globals.combat_node == null: return
-			globals.combat_node.use_skill(template.value, self, null)
+			globals.combat_node.use_skill(template.skill, self, null)
 		'use_social_skill':
 			if location != 'mansion': return
 			#use_social_skill(template.value, null)
-			prepared_act.push_back(template.value)
+			prepared_act.push_back(template.skill)
 		'add_counter':
 			if counters.size() <= template.index + 1:
 				counters.resize(template.index + 1)
@@ -1908,18 +1910,29 @@ func get_skill_by_tag(tg):
 		var s_f = Skilldata.Skilllist[s]
 		if s_f.tags.has(tg): return s
 
-func calculate_number_from_string_array(array):
+func calculate_number_from_string_array(arr):
+	var array = arr.duplicate()
 	var endvalue = 0
 	var firstrun = true
+	var singleop = ''
 	for i in array:
+		if typeof(i) == TYPE_ARRAY:
+			i = str(calculate_number_from_string_array(i))
+		if i in ['+','-','*','/']:
+			singleop = i
+			continue
 		var modvalue = i
-		if i.find('caster') >= 0:
+		if i.find('caster') >= 0 or i.find('self') >= 0:
 			i = i.split('.')
-			if i[0] == 'caster':
+			if i[0] == 'caster' or i[0] == 'self':
 				#modvalue = str(self[i[1]])
 				modvalue = str(get_stat(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
+		if singleop != '':
+			endvalue = input_handler.string_to_math(endvalue, singleop+modvalue)
+			singleop = ''
+			continue
 		if !modvalue[0].is_valid_float():
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
@@ -2211,13 +2224,13 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	var effect_text = '\n'
 	#applying values
-	for i in range(s_skill.value.size()):
+	for i in s_skill.value:
 		var targ_fin
-		match s_skill.receiver[i]:
+		match i.receiver:
 			'caster': targ_fin = targ_cast
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
-		if s_skill.damagestat[i] == 'no_stat':
+		if i.damagestat == 'no_stat':
 			if template.has('process_no_stat'):
 				for h in targ_fin:
 					for e in s_skill.effects:
@@ -2227,23 +2240,23 @@ func use_social_skill(s_code, target):#add logging if needed
 						eff.set_args('receiver', null)
 			continue
 		for h in targ_fin:
-			var mod = s_skill.damagestat[i][0]
-			var stat = s_skill.damagestat[i].right(1)
+			var mod = i.dmgf
+			var stat = i.damagestat
 			var tmp
 			match mod:
-				'+':
-					tmp = h.stat_update(stat, s_skill.value[i])
-				'-':
-					tmp = h.stat_update(stat, -s_skill.value[i])
-					if s_skill.is_drain: self.stat_update(stat, -tmp)
-				'=':
-					tmp = h.stat_update(stat, s_skill.value[i], true)
-					if s_skill.is_drain: self.stat_update(stat, -tmp)
+				0:
+					tmp = h.stat_update(stat, i.value)
+				1:
+					tmp = h.stat_update(stat, -i.value)
+					if i.is_drain: self.stat_update(stat, -tmp)
+				2:
+					tmp = h.stat_update(stat, i.value, true)
+					if i.is_drain: self.stat_update(stat, -tmp)
 			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100
 			if h.get(stat+'max') != null:
 				maxstat = h.get_stat(stat + "max")
-			elif s_skill.damagestat[i].find("factor")>=0:
+			elif i.damagestat.find("factor")>=0:
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
@@ -2374,4 +2387,3 @@ func wit_f_set(value):
 
 func sex_f_set(value):
 	sexuals_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
-

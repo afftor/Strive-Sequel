@@ -2109,7 +2109,7 @@ var effect_table = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'owner',
-			atomic = [{type = 'use_social_skill', value = 'test_recast'}]
+			atomic = [{type = 'use_social_skill', skill = 'test_recast'}]
 		}],
 		buffs = ['b_stun']
 	},
@@ -2136,11 +2136,11 @@ var effect_table = {
 
 var atomic = {
 	#new part
-	a_shackles_1 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 5]},
+	a_shackles_1 = {type = 'stat_set_revert', comment = 'effect of shackles skill', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 5]},
 	a_shackles_2 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 30]},
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
 	a_stat_mul = {type = 'stat_mul', stat = ['parent_args', 0], value = ['parent_args', 1]},
-	a_poison_arg025 = {type = 'damage', source = variables.S_PHYS, value = [['parent_args', 0],'*',0.25]},
+	a_poison_arg025 = {type = 'damage', source = variables.S_PHYS, value = [['parent_args', 0],'*',0.25]},#bugged
 	a_remove_buff = {type = 'remove_effect', value = 'buff'},
 	a_self_kill = {type = 'kill'},
 	a_fire_custom = {type = 'event', value = variables.TR_CUSTOM},
@@ -2148,8 +2148,8 @@ var atomic = {
 	
 	a_caster_heal = {type = 'heal', value = [['parent_arg_get', 0, 'process_value'], '*', 0.5]},
 	a_magecrit = {type = 'mana', value = ['parent_arg_get', 0, 'manacost']},
-	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},
-	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},
+	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},#bugged
+	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},#bugged
 	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},
 	#not used new part (allows to setup stat changing with effect's template)
 
@@ -2157,7 +2157,7 @@ var atomic = {
 	a_mana_restore_ex = {type = 'mana', value = [['parent_args', 1], '*', 0.2]},
 	a_ward_shield = {type = 'stat_set_revert', stat = 'shield', value = ['parent_args', 1]},
 	a_sanctuary_heal = {type = 'heal', value = ['parent_args', 0]},
-	a_souls1 = {type = 'stat_add', stat = 'damage', value = [['parent_args', 0],'*',5]},
+	a_souls1 = {type = 'stat_add', stat = 'damage', value = [['parent_args', 0],'*',5]},#bugged
 	a_souls2 = {type = 'stat_add', stat = 'armor', value = [['parent_args', 0],'*',5]},
 	a_damage_arg = {type = 'damage', value = ['parent_args', 0]},
 	a_add_counter_args = {type = 'add_counter', index = ['parent_args', 0], value = ['parent_args', 1]},

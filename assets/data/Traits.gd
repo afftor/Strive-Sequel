@@ -355,9 +355,9 @@ var sex_traits = { #only for interaction tab
 		name = "",
 		descript = "",
 		starting = true,
-		acquire_reqs = [{code = 'race_is_beast', value = false}],
+		acquire_reqs = [{code = 'race_is_beast', check = false}],
 		trigger_side = 'self',
-		reqs = [{code = 'partner_check', value = [{code = 'race_is_beast', value = true}]}],
+		reqs = [{code = 'partner_check', value = [{code = 'race_is_beast', check = true}]}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.25},{effect = 'horny_bonus', operant = "+", value = 0.25}],
 	},
 	lewdness_aura = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/intro.png" type="Texture" id=2]
@@ -10,14 +10,24 @@
 [ext_resource path="res://assets/images/gui/MainScreen/LoadSelect.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/MainScreen/Options.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/MainScreen/OptionsSelect.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/MainScreen/Quit.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/MainScreen/QuitSelect.png" type="Texture" id=12]
-[ext_resource path="res://files/buttons/mainmenu/patreonlogo.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/Discord_Logo.png" type="Texture" id=14]
-[ext_resource path="res://files/buttons/mainmenu/itchio.jpg" type="Texture" id=15]
-[ext_resource path="res://files/Options.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=17]
-[ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=11]
+[ext_resource path="res://assets/images/gui/MainScreen/Quit.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/MainScreen/QuitSelect.png" type="Texture" id=13]
+[ext_resource path="res://files/buttons/mainmenu/patreonlogo.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/Discord_Logo.png" type="Texture" id=15]
+[ext_resource path="res://files/buttons/mainmenu/itchio.jpg" type="Texture" id=16]
+[ext_resource path="res://files/Options.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/SaveLoadPanel.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/WarnScreen.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/ModPanel.tscn" type="PackedScene" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [node name="Menu" type="Node"]
 script = ExtResource( 1 )
@@ -71,14 +81,26 @@ texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 10 )
 
-[node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
+[node name="modsbutton" type="Button" parent="VBoxContainer"]
 margin_top = 304.0
 margin_right = 448.0
-margin_bottom = 372.0
+margin_bottom = 354.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 12 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 11 )
+text = "Mods"
+
+[node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 362.0
+margin_right = 448.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 13 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 1730.0
@@ -97,7 +119,7 @@ margin_bottom = 359.0
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 
@@ -106,7 +128,7 @@ margin_top = 154.0
 margin_right = 150.0
 margin_bottom = 304.0
 rect_min_size = Vector2( 150, 150 )
-texture_normal = ExtResource( 14 )
+texture_normal = ExtResource( 15 )
 expand = true
 stretch_mode = 5
 
@@ -115,14 +137,14 @@ margin_top = 308.0
 margin_right = 150.0
 margin_bottom = 458.0
 rect_min_size = Vector2( 150, 150 )
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
-[node name="Options" parent="." instance=ExtResource( 16 )]
+[node name="Options" parent="." instance=ExtResource( 17 )]
 visible = false
 
-[node name="saveloadpanel" parent="." instance=ExtResource( 17 )]
+[node name="saveloadpanel" parent="." instance=ExtResource( 18 )]
 visible = false
 margin_left = 594.0
 margin_top = 212.0
@@ -146,7 +168,7 @@ margin_bottom = 712.0
 margin_left = 47.0
 margin_top = 47.0
 margin_right = 574.0
-margin_bottom = 267.0
+margin_bottom = 215.0
 bbcode_enabled = true
 bbcode_text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
 text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
@@ -158,33 +180,21 @@ margin_right = 431.0
 margin_bottom = 340.0
 text = "Confirm"
 
-[node name="WarnScreen" parent="." instance=ExtResource( 18 )]
+[node name="WarnScreen" parent="." instance=ExtResource( 19 )]
 visible = false
 margin_left = 3.01477
 margin_top = 9.04404
 margin_right = 1923.01
 margin_bottom = 1089.04
 
-[node name="changelog" type="RichTextLabel" parent="."]
+[node name="mod_panel" parent="." instance=ExtResource( 20 )]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-bbcode_enabled = true
-bbcode_text = "0.1.0a
-Added class information panel
-Redisigned repeatable quest structure and added more repeatable quests
-Multiple combat and exploration fixes
-Fixed a severe issue with saving
-Fixed tutorial window issues
-Fixed interaction menu bug
-0.1.0
-Release"
-text = "0.1.0a
-Added class information panel
-Redisigned repeatable quest structure and added more repeatable quests
-Multiple combat and exploration fixes
-Fixed a severe issue with saving
-Fixed tutorial window issues
-Fixed interaction menu bug
-0.1.0
-Release"
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -630.5
+margin_top = -401.5
+margin_right = 630.5
+margin_bottom = 401.5
+

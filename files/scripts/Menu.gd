@@ -7,12 +7,12 @@ func _ready():
 	
 	get_tree().set_auto_accept_quit(false)
 	
-	var buttonlist = ['continueb','newgame','loadwindow','options','quit']
+	var buttonlist = ['continueb','newgame','loadwindow','options','mods' ,'quit']
 	$version.text = "ver. " + globals.gameversion
 	globals.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()
-	for i in range(0,5):
+	for i in range(0,6):
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	
@@ -73,3 +73,6 @@ func quit():
 	globals.globalsettings.window_size = OS.window_size
 	globals.globalsettings.window_pos = OS.window_position
 	get_tree().quit()
+
+func mods():
+	$mod_panel.visible = true

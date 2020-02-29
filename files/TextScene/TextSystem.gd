@@ -278,8 +278,8 @@ func SpriteDo(node, value, args):
 
 func StateEffect(value, args):
 	match value:
-		'character_add':
-			combatantdata.MakeCharacterFromData(args)
+#		'character_add':
+#			combatantdata.MakeCharacterFromData(args)
 		'make_quest':
 			state.MakeQuest(args)
 		"advance_quest":
