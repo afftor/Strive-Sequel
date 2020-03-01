@@ -802,12 +802,19 @@ func ShowInentory(args): #get_spec_node(input_handler.NODE_INVENTORY, [args])
 	
 	return inventory
 
-func calculate_number_from_string_array(array, caster, target):
+func calculate_number_from_string_array(arr, caster, target):
+	if typeof(arr) != TYPE_ARRAY:
+		return float(arr)
+	var array = arr.duplicate()
 	var endvalue = 0
-	if typeof(array) != TYPE_ARRAY:
-		return float(array)
+	var singleop = ''
 	var firstrun = true
 	for i in array:
+		if typeof(i) == TYPE_ARRAY:
+			i = str(calculate_number_from_string_array(i, caster, target))
+		if i in ['+','-','*','/']:
+			singleop = i
+			continue
 		var modvalue = i
 		if (i.find('caster') >= 0) or (i.find('target') >= 0):
 			i = i.split('.')
@@ -818,6 +825,10 @@ func calculate_number_from_string_array(array, caster, target):
 		elif (i.find('random') >= 0):
 			i = i.split(' ')
 			modvalue = str(globals.rng.randi_range(0, int(i[1])))
+		if singleop != '':
+			endvalue = string_to_math(endvalue, singleop+modvalue)
+			singleop = ''
+			continue
 		if !modvalue[0].is_valid_float():
 			if modvalue[0] == '-' && firstrun == true:
 				endvalue += float(modvalue)
@@ -1382,8 +1393,69 @@ func finish_quest_location(args):
 func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
 
+func load_image_from_path(path:String):
+	if !(path.is_abs_path() or path.is_rel_path()): return null
+#	if path.is_rel_path() and path.begins_with("res"):
+#		return load(path)
+	if !File.new().file_exists(path): return null
+	var temp = Image.new()
+	temp.load(path)
+	var prew = ImageTexture.new()
+	prew.create_from_image(temp)
+	return prew
+
+func load_sound_from_path(path:String): #not sure if works, needs testing
+	if !(path.is_abs_path() or path.is_rel_path()): return null
+#	if path.is_rel_path() and path.begins_with("res"):
+#		return load(path)
+	if !File.new().file_exists(path): return null
+	
+	if path.to_lower().ends_with(".ogg"):
+		var temp = AudioStreamOGGVorbis.new()
+		temp.load(path)
+		return temp
+	elif path.to_lower().ends_with(".wav"):
+		var temp = AudioStreamSample.new()
+		temp.load(path)
+		return temp
+	else: return null
+
+
+func copy_dict(from:Dictionary, to:Dictionary):
+	to.clear()
+	for key in from: to[key] = from[key]
+
+func select_value_in_OB(node, value):
+	if !(node is OptionButton): return
+	for i in range(node.get_item_count()):
+		if node.get_item_text(i) == value:
+			node.select(i)
+			return
+	node.select(0)
+
+func get_value_node(node):
+	if node is OptionButton:
+		return node.get_item_text(node.selected)
+	if node is ItemList:
+		var tmp = node.get_selected_items()
+		if node.select_mode == ItemList.SELECT_SINGLE:
+			if tmp.size() == 0: return null
+			return node.get_item_text(tmp[0])
+		else:
+			var res = []
+			for i in tmp:
+				res.push_back(node.get_item_text(i))
+			return res
+	if node is CheckBox: return node.pressed
+	#node has text field
+	if node.name == 'number': return float(node.text)
+	if node.name == 'index': return int(node.text)
+	if node.name == 'formula': return parse_json(node.text)
+	return node.text
+
 func meowingcondition(character):
 	var allow = false
 	if globals.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]):
 		allow = true
 	return allow
+

@@ -299,7 +299,7 @@ func if_master_is_beast(boolean):
 	var character = get_master()
 	if character == null:
 		return false
-	return character.checkreqs([{code = 'race_is_beast', value = boolean}])
+	return character.checkreqs([{code = 'race_is_beast', check = boolean}])
 
 func if_master_has_stat(name, operant, value):
 	var character = get_master()

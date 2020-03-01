@@ -22,6 +22,11 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "S_Skill",
 "language": "GDScript",
+"path": "res://files/scripts/short_skill_new.gd"
+}, {
+"base": "Reference",
+"class": "S_Skill_legacy",
+"language": "GDScript",
 "path": "res://files/scripts/short_skill.gd"
 }, {
 "base": "Reference",
@@ -88,6 +93,7 @@ _global_script_class_icons={
 "Buff": "",
 "Item": "",
 "S_Skill": "",
+"S_Skill_legacy": "",
 "Slave": "",
 "ai_base": "",
 "area_effect": "",
@@ -113,6 +119,7 @@ config/icon="res://assets/images/iconsclasses/Master.png"
 
 [autoload]
 
+modding_core="*res://src/modding_core.gd"
 variables="*res://files/variables.gd"
 images="*res://files/scripts/ResourceImages.gd"
 audio="*res://files/scripts/ResourceAudio.gd"
@@ -120,12 +127,12 @@ Enemydata="*res://assets/data/enemydata.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Skilldata="*res://assets/data/Skills.gd"
 Traitdata="*res://assets/data/Traits.gd"
-globals="*res://files/scripts/globals.gd"
-state="*res://src/gamestate.gd"
+Items="*res://assets/data/Items.gd"
 scenedata="*res://assets/data/scenedata.gd"
+state="*res://src/gamestate.gd"
+globals="*res://files/scripts/globals.gd"
 input_handler="*res://files/input_handler.gd"
 races="*res://assets/data/races.gd"
-Items="*res://assets/data/Items.gd"
 world_gen="*res://src/world_gen.gd"
 characters_pool="*res://src/characters_pool.gd"
 effects_pool="*res://src/effects_pool.gd"
@@ -155,11 +162,6 @@ timers/tooltip_delay_sec=0.2
 
 [input]
 
-ui_accept={
-"deadzone": 0.5,
-"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
 LMB={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)

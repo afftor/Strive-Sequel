@@ -109,6 +109,7 @@ var power_adjustments_per_difficulty = {
 	hard = [3,6]
 }
 var difficulty_per_level = 0.05 #% enemy stat increase
+var slave_class_list = ['slave', 'servant']#incomplete
 #sex chances
 
 var teen_age_weight = 1
@@ -194,5 +195,35 @@ var autosave_number_max = 10
 var autosave_frequency_min = 1
 var autosave_frequency_max = 100
 
+
 var personality_array = ['kind','bold','shy','serious']
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']
+
+#editor data
+var atomic_types = ['kill','damage','heal','mana','stat_set','stat_set_revert','stat_add','stat_mul','stat_add_p','bonus','remove_effect','add_trait','add_sex_trait','event','resurrect','use_combat_skill','use_social_skill','add_counter','add_soc_skill','add_combat_skill','sfx', 'add_tag']
+var char_dmg_stats = ['no_stat//prev value', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
+'sexuals_factor','magic_factor','growth_factor', 'food_consumption']#incomplete
+var ss_dmg_stats = ['value']
+var damagestat_list = ['no_stat', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion',  'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana']#possibly incomplete
+var condtypes = ['conditional static//oneshot', 'random', 'skill', 'caster', 'target', 'owner(skill)', 'owner(character)']
+var char_condtypes = ['stats', 'stat_index', 'gear', 'race', 'trait', 'class', 'dead']
+var ops = ['==', '!=', '>=', '>', '<=', '<', 'has', '!has']
+var real_ops = ['eq', 'neq', 'gte', 'gt', 'lte', 'lt', 'has', 'hasno']
+var skill_condstats = ['name', 'type', 'ability_type', 'manacost', 'tags', 'damage_type']
+var char_condstats = ['hp', 'hpmax', 'mp', 'mpmax', 'is_players_character', 'age', 'sex', 'physics_factor', 'magic_factor', 'tame_factor', 'brave_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']#incomplete
+var char_indexstats = ['counters', 'bonuses']#possibly incomplete
+var eventlist = ['TR_CAST','TR_HIT', 'TR_DEF', 'TR_TURN_S', 'TR_TURN_GET', 'TR_TURN_F', 'TR_DEATH', 'TR_KILL', 'TR_DMG', 'TR_POSTDAMAGE', 'TR_SKILL_FINISH', 'TR_HEAL', 'TR_COMBAT_S', 'TR_COMBAT_F', 'TR_DAY', 'TR_S_CAST', 'TR_S_TARGET', 'TR_TICK', 'TR_MOVE', 'TR_REMOVE']
+var eventhelp = [self.TR_CAST, self.TR_HIT, self.TR_DEF, self.TR_TURN_S, self.TR_TURN_GET, self.TR_TURN_F, self.TR_DEATH, self.TR_KILL, self.TR_DMG, self.TR_POSTDAMAGE, self.TR_SKILL_FINISH, self.TR_HEAL, self.TR_COMBAT_S, self.TR_COMBAT_F, self.TR_DAY, self.TR_S_CAST, self.TR_S_TARGET, self.TR_TICK, self.TR_MOVE, self.TR_REMOVE]
+var short_res = [self.RES_HITCRIT, self.RES_CRIT, self.RES_MISS]
+var eventdesc = ['skill used by caster','before skill take effect per target', 'before skill take effect on target', 'beginning of combat turn', 'character get action', 'character ends action', 'character is dead', 'character kills opponent', 'character is damaged', 'after skill take effect per target', 'skill using is completed', 'character is healed', 'combat start', 'combat end', 'per day', 'social skill is used', 'social skill used on target', 'per hour', 'character changes location', 'character is removed from player']
+var targetlist = ['not a trigger child', 'self', 'skill', 'caster', 'target', 'receiver', 'owner', 'parent']
+var effecttypes = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static']
+var effectdesc = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static']
+var argtypes = ['self','parent','template','app_obj','parent_args','parent_arg_get']
+var argtypesdesc = ['outside assigned argument of effect instance',"parameter of effect's parent",'argument defined in effect template','parameter of object effect applied to','runtime argument of parent effect','parameter of runtime argument of parent effect']
+var receiver_list = ['target', 'caster', 'all']
+var bodypart_list = ['skin', 'height', 'hair_length', 'hair_color', 'hair_style', 'ears', 'eye_color', 'eye_shape', 'horns', 'wings', 'tail', 'arms', 'legs', 'lower_body', 'body_shape', 'skin_coverage', 'fur', 'facial_hair', 'penis_size', 'penis_type', 'balls_size', 'tits_size', 'vagina', 'ass_size', 'has_pussy', 'multiple_tits', 'multiple_tits_developed', 'has_womb','lactation', 'penis_virgin', 'vaginal_virgin', 'anal_virgin', 'mouth_virgin']
+var slots = ["chest","underwear", "legs", "hands", "rhand", "lhand", "neck", "head", "ass", "croach"]
+var interactioneffs = ['alcohol','aphrodisiac','sensetivity_pot']
+
+

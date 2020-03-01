@@ -582,7 +582,7 @@ var globalsettings = {
 	#user_folders_settings
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
-	mod_folder = 'user://mods/',
+	#mod_folder = 'user://mods/',
 	
 	turn_based_time_flow = false,
 	
@@ -619,7 +619,7 @@ func settings_save(value):
 	for i in globalsettings:
 		config.set_value('settings', i, globalsettings[i])
 	config.save(userfolder + "Settings.ini")
-	if CurrentScene.name == 'mansion' && weakref(CurrentScene) != null:
+	if CurrentScene != null and weakref(CurrentScene) != null and CurrentScene.name == 'mansion':
 		CurrentScene.set_time_buttons()
 
 func _notification(what):
@@ -667,31 +667,6 @@ func _ready():
 
 	upgradelist = load("res://assets/data/upgradedata.gd").new().upgradelist
 	
-	for i in Skilldata.professions.values():
-		i.name = tr("PROF" + i.code.to_upper())
-		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
-		if i.has('altname'):
-			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
-		
-	
-	for i in Items.materiallist.values():
-		i.name = tr("MATERIAL" + i.code.to_upper())
-		i.descript = tr("MATERIAL" + i.code.to_upper()+"DESCRIPT")
-		i.adjective = tr("MATERIAL" + i.code.to_upper() + "ADJ")
-	
-	for i in Items.itemlist.values():
-		i.name = tr("ITEM" + i.code.to_upper())
-		i.descript = tr("ITEM" + i.code.to_upper()+"DESCRIPT")
-	
-	for i in Skilldata.Skilllist.values():
-		if !i.has('name'):
-			i.name = tr("SKILL" + i.code.to_upper())
-		i.descript = tr("SKILL" + i.code.to_upper()+"DESCRIPT")
-		if i.has('dialogue_text'):
-			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
-		if i.has('dialogue_report'):
-			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
-	
 	for i in variables.resists_list:
 		statdata['resist'+i] = {code = "resist"+i}
 	
@@ -699,41 +674,12 @@ func _ready():
 		i.name = tr("STAT" + i.code.to_upper())
 		i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
 	
-	for i in races.racelist.values():
-		i.name = tr("RACE" + i.code.to_upper())
-		i.descript = tr("RACE" + i.code.to_upper() + 'DESCRIPT')
-		i.adjective = tr("RACE" + i.code.to_upper() + "ADJ")
-	
-	for i in races.tasklist.values():
-		i.name = tr("TASK" + i.code.to_upper())
-		i.descript = tr("TASK" + i.code.to_upper() + "DESCRIPT")
-	
 	for i in upgradelist.values():
 		i.name = tr("UPGRADE" + i.code.to_upper())
 		i.descript = tr("UPGRADE" + i.code.to_upper() + "DESCRIPT")
 	
-	for i in Traitdata.sex_traits.values():
-		i.name = tr("SEXTRAIT" + i.code.to_upper())
-		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
-	
-	for i in Traitdata.traits.values():
-		i.name = tr("TRAIT" + i.code.to_upper())
-		i.descript = tr("TRAIT" + i.code.to_upper() + "DESCRIPT")
-		
-	
 	for i in worktoolnames:
 		worktoolnames[i] = tr("WORKTOOL" + i.to_upper())
-	
-
-	for i in world_gen.dungeons.values():
-		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
-	
-	for i in world_gen.locations.values():
-		i.classname = tr(i.code.to_upper())
-	
-	for i in Enemydata.enemies.values():
-		i.name = tr("ENEMY" + i.code.to_upper())
-	
 	
 	for i in descriptions.bodypartsdata:
 		for k in descriptions.bodypartsdata[i].values():
@@ -741,6 +687,9 @@ func _ready():
 #			text += k.name + ' = "' + k.code + '",\n'
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 	
+
+	modding_core.fix_main_data()
+	modding_core.process_data_mods()
 	for i in world_gen.easter_egg_characters.values():
 		i.code = i.name.to_lower()
 	
@@ -761,16 +710,6 @@ func _ready():
 	
 	
 	
-	#randomgroups = Enemydata.randomgroups
-	#enemylist = Enemydata.enemylist
-	#effects = Effectdata.effects
-	#combateffects = Effectdata.combateffects
-	#skills = Skillsdata.skilllist
-	
-	#workersdict = TownData.workersdict
-	
-#	for i in Items.materiallist:
-#		state.materials[i] = 100
 	state.money = 500
 
 func logupdate(text):

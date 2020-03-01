@@ -109,6 +109,8 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	allowaction = false
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
+	for i in range(1,13):
+		battlefield[i] = null
 	buildenemygroup(enemygroup, enemy_stats_mod)
 	buildplayergroup(playergroup)
 	#victory()
@@ -847,7 +849,7 @@ func use_skill(skill_code, caster, target):
 			if skill.damage_type == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			elif skill.damage_type == 'resurrect':
-				i.resurrect(skill.value[0]) #not sure
+				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
 			else: 
 				#default skill result
 				#execute_skill(s_skill1, caster, i)
@@ -1072,65 +1074,65 @@ func execute_skill(s_skill2):
 		s_skill2.target.displaynode.process_critical()
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE
-	for i in range(s_skill2.value.size()):
-		if s_skill2.damagestat[i] == 'no_stat': continue #for skill values that directly process into effects
-		if s_skill2.damagestat[i] == '+damage_hp': #drain, damage, damage no log, drain no log
-			if s_skill2.is_drain && s_skill2.tags.has('no_log'):
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+	for i in s_skill2.value:
+		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
+		if i.damagestat == 'damage_hp' and i.dmtf == 0: #drain, damage, damage no log, drain no log
+			if i.is_drain && s_skill2.tags.has('no_log'):
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				var rval2 = s_skill2.caster.heal(rval)
-			elif s_skill2.is_drain:
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+			elif i.is_drain:
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				var rval2 = s_skill2.caster.heal(rval)
 				text += "%s drained %d health from %s and gained %d health." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
-			elif s_skill2.tags.has('no_log') && !s_skill2.is_drain:
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+			elif s_skill2.tags.has('no_log') && !i.is_drain:
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 			else:
-				var rval = s_skill2.target.deal_damage(s_skill2.value[i], s_skill2.damage_type)
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				text += "%s is hit for %d damage. " %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
-		elif s_skill2.damagestat[i] == '-damage_hp': #heal, heal no log
+		elif i.damagestat == 'damage_hp' and i.dmtf == 1: #heal, heal no log
 			if s_skill2.tags.has('no_log'):
-				var rval = s_skill2.target.heal(s_skill2.value[i])
+				var rval = s_skill2.target.heal(i.value)
 			else:
-				var rval = s_skill2.target.heal(s_skill2.value[i])
+				var rval = s_skill2.target.heal(i.value)
 				text += "%s is healed for %d health." %[s_skill2.target.name, rval]
-		elif s_skill2.damagestat[i] == '+restore_mana': #heal, heal no log
+		elif s_skill2.damagestat[i] == 'restore_mana' and i.dmtf == 0: #heal, heal no log
 			if !s_skill2.tags.has('no log'):
-				var rval = s_skill2.target.mana_update(s_skill2.value[i])
+				var rval = s_skill2.target.mana_update(i.value)
 				text += "%s restored %d mana." %[s_skill2.target.name, rval] 
 			else:
-				s_skill2.target.mana_update(s_skill2.value[i])
-		elif s_skill2.damagestat[i] == '-restore_mana': #drain, damage, damage no log, drain no log
-			var rval = s_skill2.target.mana_update(-s_skill2.value[i])
-			if s_skill2.is_drain:
+				s_skill2.target.mana_update(i.value)
+		elif s_skill2.damagestat[i] == 'restore_mana' and i.dmtf == 1: #drain, damage, damage no log, drain no log
+			var rval = s_skill2.target.mana_update(-i.value)
+			if i.is_drain:
 				var rval2 = s_skill2.caster.mana_update(rval)
 				if !s_skill2.tags.has('no log'):
 					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.name, rval, s_skill2.target.name, rval2]
 			if !s_skill2.tags.has('no log'):
 				text += "%s lost %d mana." %[s_skill2.target.name, rval] 
 		else: 
-			var mod = s_skill2.damagestat[i][0]
-			var stat = s_skill2.damagestat[i].right(1) 
-			if mod == '+':
-				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i])
+			var mod = i.dmgf
+			var stat = i.damagestat
+			if mod == 0:
+				var rval = s_skill2.target.stat_update(stat, i.value)
 				if !s_skill2.tags.has('no log'):
 					text += "%s restored %d %s." %[s_skill2.target.name, rval, tr(stat)] 
-			elif mod == '-':
-				var rval = s_skill2.target.stat_update(stat, -s_skill2.value[i])
+			elif mod == 1:
+				var rval = s_skill2.target.stat_update(stat, -i.value)
 				if s_skill2.is_drain:
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+						text += "%s drained %d %s from %s." %[s_skill2.caster.name, i.value, tr(stat),  s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
 					text += "%s loses %d %s." %[s_skill2.target.name, -rval, tr(stat)]
-			elif mod == '=':
-				var rval = s_skill2.target.stat_update(stat, s_skill2.value[i], true)
+			elif mod == 2:
+				var rval = s_skill2.target.stat_update(stat, i.value, true)
 				if s_skill2.is_drain:# use this on your own risk
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
-						text += "%s drained %d %s from %s." %[s_skill2.caster.name, s_skill2.value[i], tr(stat),  s_skill2.target.name]
+						text += "%s drained %d %s from %s." %[s_skill2.caster.name, i.value, tr(stat),  s_skill2.target.name]
 				elif !s_skill2.tags.has('no log'):
-					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), s_skill2.value[i]] 
-			else: print('error in damagestat %s' % s_skill2.damagestat[i])
+					text += "%s's %s is now %d." %[s_skill2.target.name, tr(stat), i.value] 
+			else: print('error in damagestat %s' % i.damagestat) #obsolete in new format
 	combatlogadd(text)
 
 

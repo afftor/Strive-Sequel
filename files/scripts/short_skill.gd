@@ -1,5 +1,5 @@
 extends Reference
-class_name S_Skill
+class_name S_Skill_legacy
 
 var code
 var template
@@ -49,14 +49,6 @@ func _init():
 	random_factor = 0
 	random_factor_p = 0.0
 
-func clone():
-	var res = dict2inst(inst2dict(self))
-	res.effects.clear()
-	for e in template.effects:
-		var eff = effects_pool.e_createfromtemplate(e, res)
-		res.apply_effect(effects_pool.add_effect(eff))
-	return res
-
 func get_from_template(attr, val_rel = false):
 	if template.has(attr): 
 		if typeof(template[attr]) == TYPE_ARRAY:
@@ -100,8 +92,9 @@ func createfromskill(s_code):
 	get_from_template('random_factor_p', true)
 	
 	for e in template.effects:
-		var eff = effects_pool.e_createfromtemplate(e, self)
-		apply_effect(effects_pool.add_effect(eff))
+#		var eff = effects_pool.e_createfromtemplate(e, self)
+#		apply_effect(effects_pool.add_effect(eff))
+		pass
 	if template.has('repeat'):
 		repeat = template.repeat
 	else:
@@ -109,231 +102,78 @@ func createfromskill(s_code):
 	if template.has('is_drain'):
 		is_drain = true
 
-
-func process_check(check:Array):
-	var op1 = check[0]
-	var op2 = check[2]
-	if typeof(op1) == TYPE_STRING:
-		op1 = get(op1)
-#	if typeof(op2) == TYPE_STRING && check[1] != 'has':
-#		op2 = get(op2)
-	return input_handler.operate(check[1], op1, op2)
-
-func setup_caster(c):
-	caster = c
-	if type == 'combat' and c!= null:
-		chance = caster.get_stat('hitrate')
-		critchance = caster.get_stat('critchance')
-		armor_p = caster.get_stat('armorpenetration')
-	else:
-		chance = 100
-		critchance = 0
-		armor_p = 0
-
-func setup_target(t):
-	target = t
-	if type == 'combat':
-		evade = target.get_stat('evasion')
-	else:
-		evade = 0
-
-func setup_final():
-	get_from_template('chance')
-	if typeof(chance) == TYPE_ARRAY:
-		chance = input_handler.calculate_number_from_string_array(chance, caster, target)
-	get_from_template('evade')
-	if typeof(evade) == TYPE_ARRAY:
-		evade = input_handler.calculate_number_from_string_array(evade, caster, target)
-	get_from_template('armor_p')
-	if typeof(armor_p) == TYPE_ARRAY:
-		armor_p = input_handler.calculate_number_from_string_array(armor_p, caster, target)
-	get_from_template('critchance')
-	if typeof(critchance) == TYPE_ARRAY:
-		critchance = input_handler.calculate_number_from_string_array(critchance, caster, target)
-	if target == null or caster.combatgroup == target.combatgroup:
-		critchance = 0
-	if template.has('custom_duration'):
-		tempdur = input_handler.calculate_number_from_string_array(template.custom_duration, caster, target)
-
-
-func hit_roll():#not implemented various chance stat rolls due to not having formulaes
-	if type == 'social':
-		hit_res = variables.RES_HIT
-		return
-	var prop = chance - evade
-	if (!target.can_evade()): prop = 100 #target can not evade
-	if (caster != null) and (caster.combatgroup == target.combatgroup): prop = 100 #targeting ally
-	if prop < randf()*100:
-		hit_res = variables.RES_MISS
-	elif critchance < randf()*100:
-		hit_res = variables.RES_HIT
-	else:
-		hit_res = variables.RES_CRIT
-
-func apply_atomic(tmp):
-	match tmp.type:
-		'stat_add':
-			if tmp.stat == 'value':
-				for i in range(value.size()): 
-					if !(damagestat[i] in variables.dmg_mod_list): continue
-					if (tmp.has('stats') && !tmp.stats.has(damagestat[i])): continue
-					if (tmp.has('statignore') && tmp.statignore.has(damagestat[i])): continue
-					value[i] += tmp.value
-				pass
-			else: set(tmp.stat, get(tmp.stat) + tmp.value)
-		'stat_mul':
-			if tmp.stat == 'value':
-				for i in range(value.size()): 
-					if !(damagestat[i] in variables.dmg_mod_list): continue
-					if (tmp.has('stats') && !tmp.stats.has(damagestat[i])): continue
-					if (tmp.has('statignore') && tmp.statignore.has(damagestat[i])): continue
-					value[i] *= tmp.value
-				pass
-			else: set(tmp.stat, get(tmp.stat) * tmp.value)
-		'stat_set':
-			if tmp.stat == 'value':
-				for i in range(value.size()): 
-					if !(damagestat[i] in variables.dmg_mod_list): continue
-					if (tmp.has('stats') && !tmp.stats.has(damagestat[i])): continue
-					if (tmp.has('statignore') && tmp.statignore.has(damagestat[i])): continue
-					value[i] = tmp.value
-				pass
-			else: set(tmp.stat, tmp.value)
-		'add_tag':
-			tags.push_back(tmp.value)
-
-
-func apply_effect(eff):
-	var obj = effects_pool.get_effect_by_id(eff)
-	match obj.template.type:
-		'trigger':
-			obj.set_args('skill', self)
-			effects.push_back(obj.id)
-			obj.apply()
-		'oneshot':
-			obj.applied_obj = self
-			obj.apply()
-
-
-func remove_effects():
-	for e in effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.remove()
-
-func process_event(ev):
-	for e in effects:
-		var eff = effects_pool.get_effect_by_id(e)
-		eff.set_args('skill', self)
-		eff.process_event(ev)
-
-
-
-func resolve_value(check_m):
-	value.resize(long_value.size())
-	var dmgmod = caster.get_damage_mod(template)
+func convert_to_new_template():
+	var res_res = {}
+	res_res.new_syntax = true
+	res_res.icon = template.icon
+	res_res.reqs = template.reqs.duplicate()
+	res_res.targetreqs = template.targetreqs.duplicate()
+	#res_res.value = res_values.duplicate()
+	res_res.value = []
 	for i in range(long_value.size()):
-		var endvalue
-		if typeof(long_value[i]) != TYPE_ARRAY:#value as dmg multiplier, combat only
-			var atk
-			var stat
-			var data = caster.get_stat_data()
-			if ability_type == 'skill':
-				stat = caster.get_stat(data['skill_stat'])
-				atk = caster.get_stat(data['skill_atk'])
-			elif ability_type == 'spell':
-				stat = caster.get_stat(data['spell_stat'])
-				atk = caster.get_stat(data['spell_atk'])
-			elif ability_type == 'item':
-				stat = 0
-				atk = 0
-			else: 
-				print('ERROR IN SKILL TEMPLATE %s' % code)
-				return
-			endvalue = long_value[i] * atk * (1 + stat/100.0)
-		else: endvalue = input_handler.calculate_number_from_string_array(long_value[i], caster, target)
-		#modify melee atk from backrow and apply dmgmod
-		if variables.dmg_mod_list.has(damagestat[i]): 
-			var rangetype = target_range
-			if target_range == 'weapon':
-				if caster.gear.rhand == null:
-					rangetype = 'melee'
-				else:
-					var weapon = state.items[caster.gear.rhand]
-					rangetype = weapon.weaponrange
-			if rangetype == 'melee' && globals.combat_node.FindFighterRow(caster) == 'backrow' && check_m:
-				endvalue /= 2
-			endvalue *= dmgmod
-		value[i] = endvalue
+		var tmp = {}
+		tmp.damagestat = damagestat[i]
+		if tmp.damagestat != "no_stat":
+			match tmp.damagestat[0]:
+				'+': tmp.dmgf = 0
+				'-': tmp.dmgf = 1
+				'=': tmp.dmgf = 2
+			tmp.damagestat = tmp.damagestat.right(1)
+		else: tmp.dmgf = 2
+		#res_res.dmgf = dmgf.selected
+		tmp.receiver = receiver[i]
+		tmp.source = damage_type
+		if typeof(long_value[i]) != TYPE_ARRAY:
+			tmp.value1 = [str(long_value[i])]
+			tmp.value2 = ['0']
+			tmp.value3 = ['0']
+		else: 
+			tmp.value1 = ['0']
+			tmp.value2 = ['0']
+			tmp.value3 = long_value[i].duplicate()
+		tmp.random_factor = random_factor[i]
+		tmp.random_factor_p = random_factor_p[i]
+		tmp.nomod = variables.dmg_mod_list.has(damagestat[i])
+		tmp.nocrit = variables.dmg_mod_list.has(damagestat[i])
+		tmp.nodef = tags.has('noreduce')
+		tmp.is_drain = is_drain
+		tmp.is_process = (i == 0)
+		res_res.value.push_back(tmp)
+	res_res.catalysts = {}
+	res_res.effects = template.effects.duplicate()
+	if template.has('catalysts'): res_res.catalysts = template.catalysts.duplicate()
+	else: res_res.catalysts = {}
+	res_res.code = template.code
+	if template.has('name'): res_res.name = template.name
+	else: res_res.name = ""
+	if template.has('description'): res_res.description = template.description
+	res_res.type = template.type
+	if template.has('ability_type'): res_res.ability_type = template.ability_type
+	else: res_res.ability_type = 'social'
+	res_res.manacost = manacost
+	res_res.goldcost = goldcost
+	if template.has('charges'): res_res.charges = template.charges
+	if template.has('cooldown'): res_res.cooldown = template.cooldown
+	if template.has('combatcooldown'): res_res.combatcooldown = template.combatcooldown
+	if template.has('receiverdaylimit'): res_res.receiverdaylimit = template.receiverdaylimit
+	if template.has('dialogue_report'): res_res.dialogue_report = template.dialogue_report
+	if template.has('dialogue_image'): res_res.dialogue_image = template.dialogue_image
+	if template.has('dialogue_show_repeat'): res_res.dialogue_show_repeat = template.dialogue_show_repeat
+	if template.has('target'): res_res.target = template.target
+	if template.has('target_number'): res_res.target_number = template.target_number
+	if template.has('target_range'): res_res.target_range = template.target_range
+	if template.has('sfx'): res_res.sfx = template.sfx.duplicate()
+	else: res_res.sfx = []
+	if template.has('sounddata'): res_res.sounddata = template.sounddata.duplicate()
+	else: res_res.sounddata = {}
+	res_res.repeat = repeat
+	if template.has('custom_duration'): res_res.custom_duration = template.custom_duration.duplicate()
+	if template.has('chance'): res_res.chance = template.chance
+	if template.has('evade'): res_res.evade = template.evade
+	if template.has('armor_p'): res_res.armor_p = template.armor_p
+	if template.has('critchance'): res_res.critchance = template.critchance
+	if template.has('process_no_stat'): res_res.process_no_stat = template.process_no_stat
+	if template.has('energycost'): res_res.energycost = template.energycost
+	res_res.tags = tags.duplicate()
+	return res_res
 
-func setup_effects_final():
-	process_value = value[0]
-	if template.has('custom_duration'):
-		for e in effects:
-			var eff = effects_pool.get_effect_by_id(e)
-			eff.set_args('duration', tempdur)
-
-func calculate_dmg():
-	apply_random() 
-	
-	if damage_type == 'weapon':
-		damage_type = caster.get_weapon_element()
-	#	damagesrc = variables.S_PHYS #maybe needs to get from weapon
-#	elif damage_type == 'fire':
-#		damagesrc = variables.S_FIRE
-#	elif damage_type == 'water':
-#		damagesrc = variables.S_WATER
-#	elif damage_type == 'air':
-#		damagesrc = variables.S_AIR
-#	elif damage_type == 'earth':
-#		damagesrc = variables.S_EARTH
-	
-	#crit modification
-	if hit_res == variables.RES_CRIT and !tags.has('nocritmod'):
-		for i in range(value.size()): 
-			if variables.dmg_mod_list.has(damagestat[i]):
-				value[i] *= caster.get_stat('critmod')
-	
-	#reduction
-	var reduction
-	if ability_type == 'skill':
-		reduction = max(0, target.get_stat('armor') - armor_p)
-		reduction = min(95, reduction)
-	elif ability_type == 'spell':
-		reduction = max(0, target.get_stat('mdef'))
-		reduction = min(100, reduction)
-	elif ability_type == 'item':
-		reduction = 0
-	else: 
-		print('ERROR IN SKILL TEMPLATE %s' % code)
-		return
-	
-	if !tags.has('noreduce'):#tag for all reduction-ignoring skills i.e heals and others
-		for i in range(value.size()): 
-			if variables.dmg_mod_list.has(damagestat[i]):
-				 value[i] *= (float(100 - reduction)/100.0)
-	
-	#resist
-#	if variables.resists_list.has(damage_type) and !tags.has('noresist'):
-#		for i in range(value.size()): 
-#			if variables.dmg_mod_list.has(damagestat[i]):
-#				 value[i] *= (float(100 - target.get_stat('resists')[damage_type])/100.0)
-	
-	for v in value: v = round(v)
-
-
-func apply_random():
-	for i in range(value.size()):
-		var rmin
-		var rmax
-		if variables.relative_random_add:
-			rmin = 0
-			rmax = random_factor[i]
-		else:
-			rmin = -random_factor[i]
-			rmax = random_factor[i]
-		var val_add = globals.rng.randi_range(rmin, rmax)
-		rmin = 1.0 - random_factor_p[i]
-		rmax = 1.0 + random_factor_p[i]
-		var val_mul = globals.rng.randf_range(rmin,rmax)
-		value[i] += val_add
-		value[i] *= val_mul

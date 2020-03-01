@@ -815,7 +815,7 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 				if i.value.has(k):
 					check = true
 		'race_is_beast':
-			check = races.racelist[race].tags.has('beast') == i.value
+			check = races.racelist[race].tags.has('beast') == i.check
 		'is_shortstack':
 			check = height in ['tiny','petite']
 		'gear_equiped':
@@ -849,9 +849,9 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'bodypart':
 			check = input_handler.operate(i.operant, get(i.name), i.value)
 		'trait':
-			check = traits.has(i.value)
+			check = traits.has(i.value) or sex_traits.has(i.value)
 		'disabled':
-			check = !i.value
+			check = !i.check
 		'has_status':
 			check = has_status(i.value)
 		'slave_type':
@@ -859,7 +859,7 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'population':
 			check = input_handler.operate(i.operant, state.characters.size(), i.value)
 		'random':
-			check = globals.rng.randf()*100 <= calculate_number_from_string_array(i.value)
+			check = globals.rng.randf()*100 <= calculate_number_from_string_array(i.chance)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -910,7 +910,7 @@ func decipher_single(i):
 			else:
 				continue
 		'race_is_beast':
-			if i.value == true:
+			if i.check == true:
 				text2 += 'Only for bestial races.'
 			else:
 				continue
@@ -1797,11 +1797,11 @@ func apply_atomic(template):
 			killed()
 		'use_combat_skill':
 			if globals.combat_node == null: return
-			globals.combat_node.use_skill(template.value, self, null)
+			globals.combat_node.use_skill(template.skill, self, null)
 		'use_social_skill':
 			if location != 'mansion': return
 			#use_social_skill(template.value, null)
-			prepared_act.push_back(template.value)
+			prepared_act.push_back(template.skill)
 		'add_counter':
 			if counters.size() <= template.index + 1:
 				counters.resize(template.index + 1)
@@ -2395,13 +2395,13 @@ func use_social_skill(s_code, target):#add logging if needed
 	
 	var effect_text = '\n'
 	#applying values
-	for i in range(s_skill.value.size()):
+	for i in s_skill.value:
 		var targ_fin
-		match s_skill.receiver[i]:
+		match i.receiver:
 			'caster': targ_fin = targ_cast
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
-		if s_skill.damagestat[i] == 'no_stat':
+		if i.damagestat == 'no_stat':
 			if template.has('process_no_stat'):
 				for h in targ_fin:
 					for e in s_skill.effects:
@@ -2412,33 +2412,33 @@ func use_social_skill(s_code, target):#add logging if needed
 			continue
 		var detail_tags = []
 		for h in targ_fin:
-			var mod = s_skill.damagestat[i][0]
-			var stat = s_skill.damagestat[i].right(1)
+			var mod = i.dmgf
+			var stat = i.damagestat
 			
 			match stat:
 				'loyalty':
-					if mod == '+':
+					if mod == 0:
 						if target.authority_threshold()/2 > target.authority:
-							s_skill.value[i] = 0
+							i.value = 0
 							detail_tags.append('noauthority')
 						elif target.loyalty >= 100:
-							s_skill.value[i] = 0
+							i.value = 0
 							detail_tags.append('loyaltymaxed')
 						else:
 							if template.tags.has("repeated_effect_reduce_loyalty") && target.skills_received_today.has(s_code):
-								s_skill.value[i] /= 2.5
+								i.value /= 2.5
 								detail_tags.append("loyalty_repeat")
-							s_skill.value[i] = (s_skill.value[i] * (0.75 + target.tame_factor*0.25)) * (1 - (target.authority_threshold() - target.authority)/100)
+							i.value = (i.value * (0.75 + target.tame_factor*0.25)) * (1 - (target.authority_threshold() - target.authority)/100)
 				
 				'submission':
 					if target.submission >= 100:
-						s_skill.value[i] = 0
+						i.value = 0
 						detail_tags.append('submissionmaxed')
 					else:
 						if template.tags.has("repeated_effect_reduce_submission") && target.skills_received_today.has(s_code):
-							s_skill.value[i] /= 2.5
+							i.value /= 2.5
 							detail_tags.append("submission_repeat")
-						s_skill.value[i] = (s_skill.value[i] * (0.75 + target.timid_factor*0.25))
+						i.value = (i.value * (0.75 + target.timid_factor*0.25))
 				
 				'obedience':
 					var skill_stat_type
@@ -2449,10 +2449,10 @@ func use_social_skill(s_code, target):#add logging if needed
 			var bonusspeech = []
 			var tmp
 			match mod:
-				'+':
-					if stat == 'loyalty' && h.get(stat) < 100 && h.get(stat) + s_skill.value[i] >= 100:
+				0:
+					if stat == 'loyalty' && h.get(stat) < 100 && h.get(stat) + i.value >= 100:
 						bonusspeech.append('loyalty')
-					elif stat == 'submission' && h.get(stat) < 100 && h.get(stat) + s_skill.value[i] >= 100:
+					elif stat == 'submission' && h.get(stat) < 100 && h.get(stat) + i.value >= 100:
 						if h.get('loyalty') < 100:
 							bonusspeech.append("submission")
 							if growth_factor > sexuals_factor:
@@ -2461,18 +2461,19 @@ func use_social_skill(s_code, target):#add logging if needed
 								sexuals_factor -= 1
 						else:
 							bonusspeech.append("submission_loyalty")
-					tmp = h.stat_update(stat, s_skill.value[i])
-				'-':
-					tmp = h.stat_update(stat, -s_skill.value[i])
+					tmp = h.stat_update(stat, i.value)
+				1:
+					tmp = h.stat_update(stat, -i.value)
 					if s_skill.is_drain: self.stat_update(stat, -tmp)
-				'=':
-					tmp = h.stat_update(stat, s_skill.value[i], true)
+				2:
+					tmp = h.stat_update(stat, i.value, true)
 					if s_skill.is_drain: self.stat_update(stat, -tmp)
+
 			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100
 			if h.get(stat+'max') != null:
 				maxstat = h.get_stat(stat + "max")
-			elif s_skill.damagestat[i].find("factor")>=0:
+			elif i.damagestat.find("factor")>=0:
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
@@ -2621,4 +2622,3 @@ func wit_f_set(value):
 
 func sex_f_set(value):
 	sexuals_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
-
