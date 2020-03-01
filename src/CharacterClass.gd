@@ -482,7 +482,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 			unique = chardata.code
 			for i in chardata:
 				if !i in ['code','class_category']:
-					self[i] = chardata[i]
+					set(i,  chardata[i])
 			desired_class = chardata.class_category
 	
 	var slaveclass = desired_class
