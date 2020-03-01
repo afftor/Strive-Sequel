@@ -2444,7 +2444,7 @@ func use_social_skill(s_code, target):#add logging if needed
 					var skill_stat_type
 					if template.tags.has('positive'): skill_stat_type = target.tame_factor
 					if template.tags.has('negative'): skill_stat_type = target.timid_factor
-					s_skill.value[i] = round(s_skill.value[i] * (0.9 + skill_stat_type*0.1))
+					i.value = round(i.value * (0.9 + skill_stat_type*0.1))
 			
 			var bonusspeech = []
 			var tmp

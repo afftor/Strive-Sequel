@@ -65,7 +65,7 @@ class sskill_value:
 				value = tmp.value
 	
 	func resolve_value(check_m):
-		var dmgmod = parent.caster.get_damage_mod(template)
+		var dmgmod = parent.caster.get_damage_mod(parent.template)
 		var endvalue
 		var atk
 		var stat
