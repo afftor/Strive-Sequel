@@ -105,6 +105,8 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	allowaction = false
 	enemygroup = newenemygroup
 	playergroup = newplayergroup
+	for i in range(1,13):
+		battlefield[i] = null
 	buildenemygroup(enemygroup, enemy_stats_mod)
 	buildplayergroup(playergroup)
 	#victory()
@@ -880,7 +882,7 @@ func use_skill(skill_code, caster, target):
 			if skill.damage_type == 'summon':
 				summon(skill.value[0], skill.value[1]);
 			elif skill.damage_type == 'resurrect':
-				i.resurrect(skill.value[0]) #not sure
+				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
 			else: 
 				#default skill result
 				#execute_skill(s_skill1, caster, i)

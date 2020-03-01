@@ -762,11 +762,11 @@ func ShowInentory(args): #get_spec_node(input_handler.NODE_INVENTORY, [args])
 	return inventory
 
 func calculate_number_from_string_array(arr, caster, target):
+	if typeof(arr) != TYPE_ARRAY:
+		return float(arr)
 	var array = arr.duplicate()
 	var endvalue = 0
 	var singleop = ''
-	if typeof(array) != TYPE_ARRAY:
-		return float(array)
 	var firstrun = true
 	for i in array:
 		if typeof(i) == TYPE_ARRAY:

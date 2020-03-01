@@ -1391,7 +1391,7 @@ func use_e_combat_skill(skill, caster, target):
 #			if skill.damage_type == 'summon':
 #				summon(skill.value[0], skill.value[1]);
 			if skill.damage_type == 'resurrect':
-				i.resurrect(skill.value[0]) #not sure
+				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
 			else: 
 				#default skill result
 				var s_skill2:S_Skill = s_skill1.clone()
