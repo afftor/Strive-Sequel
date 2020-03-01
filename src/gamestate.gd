@@ -25,6 +25,7 @@ var votelinksseen = false
 
 #world
 var areas = {}
+var capitals = []
 var area_order = []
 var starting_area = 'Plains'
 var location_links = {}
@@ -79,6 +80,9 @@ var selected_dialogues = []
 
 var daily_interactions_left = 1
 
+var easter_egg_characters_generated = []
+var easter_egg_characters_acquired = []
+
 
 func revert():
 #to make
@@ -119,6 +123,7 @@ func revert():
 	seen_tutorials.clear()
 	input_handler.encounter_win_script = null
 	input_handler.encounter_lose_scripts.clear()
+	
 
 func make_world():
 	world_gen.build_world()
@@ -175,6 +180,8 @@ func add_slave(person:Slave):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
+	if person.unique != null:
+		state.easter_egg_characters_acquired.append(person.unique)
 	if person.professions.has('master'):
 		if person.sex == 'male':
 			person.masternoun = tr('PROFMASTER').to_lower()

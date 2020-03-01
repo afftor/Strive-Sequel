@@ -47,6 +47,8 @@ func return_to_mansion():
 	input_handler.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), 'timeout')
 	hide()
+	input_handler.StopBackgroundSound()
+	input_handler.SetMusicRandom("mansion")
 	input_handler.CurrentScreen = 'mansion'
 
 func testcombat():
@@ -133,14 +135,16 @@ func open():
 	for i in state.characters.values():
 		i.tags.erase("selected")
 	input_handler.PlaySound("door_open")
-	input_handler.BlackScreenTransition()
-	yield(get_tree().create_timer(0.5), 'timeout')
 	input_handler.CurrentScreen = 'exploration'
-	show()
 	build_accessible_locations()
 	
-	if active_area == null || selected_location == 'capital_plains':
-		select_location('capital_plains')
+	if selected_location == null:
+		select_location('Aliron')
+	else:
+		select_location(selected_location)
+	
+	yield(get_tree().create_timer(0.5), 'timeout')
+	show()
 
 var selected_location
 
@@ -162,8 +166,8 @@ func build_accessible_locations():
 	
 	var newbutton = globals.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
 	newbutton.text = "Aliron"
-	newbutton.connect("pressed",self,"select_location",['capital_plains'])
-	newbutton.set_meta("data", 'capital_plains')
+	newbutton.connect("pressed",self,"select_location",['Aliron'])
+	newbutton.set_meta("data", 'Aliron')
 	
 	for i in location_array:
 		newbutton = globals.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
@@ -184,24 +188,37 @@ func build_accessible_locations():
 #		newbutton.connect("pressed",self,"select_area",[area])
 
 func select_location(location):
-	$CityGui.hide()
-	$LocationGui.hide()
 	selected_location = location
 	for i in $NavigationPanel/NavigationContainer/AreaSelection.get_children():
 		if i.has_meta("data"):
 			i.pressed = i.get_meta('data') == location
-	if location == 'capital_plains':
+	if location in state.capitals:
 		open_city(location)
 	else:
 		var data = world_gen.get_location_from_code(location)
-		open_location(data)
+		var presented_characters = []
+		for id in state.character_order:
+			var i = state.characters[id]
+			if i.location == data.id && i.travel_time == 0:
+				presented_characters.append(i)
+		if presented_characters.size() == 0:
+			select_location('Aliron')
+		else:
+			open_location(data)
 	
 
 func open_city(city):
-	match city:
-		'capital_plains':
-			active_area = state.areas.plains
+#	match city:
+#		'capital_plains':
+#			active_area = state.areas.plains
+
+	input_handler.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
+	active_area = state.areas[state.location_links[city].area]
+	active_location = {}
+	input_handler.active_area = active_area
 	selected_location = city
+	#active_location = active_area
 	$LocationGui.hide()
 	$CityGui.show()
 	$HirePanel.hide()
@@ -210,6 +227,11 @@ func open_city(city):
 	$ShopPanel.hide()
 	$FactionDetailsPanel.hide()
 	$SlaveSelectionPanel.hide()
+	$TextureRect.texture = world_gen.backgrounds[active_area.capital_background]
+	if active_area.has('capital_background_noise'):
+		input_handler.PlayBackgroundSound(active_area.capital_background_noise)
+	if active_area.has('capital_background_music'):
+		input_handler.SetMusic(active_area.capital_background_music)
 	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
 	var newbutton
 	
@@ -287,8 +309,8 @@ func enter_guild(guild):
 #
 #	build_area_description()
 
-func update_categories():
-	$AreaCategories/quests.disabled = active_area.questlocations.size() <= 0
+#func update_categories():
+#	$AreaCategories/quests.disabled = active_area.questlocations.size() <= 0
 
 func select_category(category):
 	var newbutton
@@ -433,7 +455,7 @@ func update_shop_list():
 				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
 				newbutton.get_node("name").text = item.name
 				item.set_icon(newbutton.get_node("icon"))#.texture = item.get_icon()
-				newbutton.get_node("price").text = str(item.calculateprice()/3)
+				newbutton.get_node("price").text = str(item.calculateprice()/2)
 				newbutton.get_node("amount").visible = true
 				newbutton.get_node("amount").text = str(item.amount)
 				newbutton.connect("pressed",self,"item_sell", [item])
@@ -457,7 +479,7 @@ func item_sell(item):
 	var price = item.price
 	var sellingamount
 	if Items.materiallist.has(item.code) == false:
-		price = item.calculateprice()/3
+		price = item.calculateprice()/2
 		sellingamount = item.amount
 	else:
 		sellingamount = state.materials[item.code]
@@ -503,7 +525,7 @@ func item_sell_confirm(value):
 	if Items.materiallist.has(purchase_item.code):
 		state.set_material(purchase_item.code, '-', value)
 	else:
-		price = round(purchase_item.calculateprice()/3)
+		price = round(purchase_item.calculateprice()/2)
 		purchase_item.amount -= value
 	state.money += price*value
 	$Gold.text = str(state.money)
@@ -538,7 +560,7 @@ func faction_sellslaves():
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($HirePanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.name
-		newbutton.get_node("Price").text = str(round(tchar.calculate_price()/3))
+		newbutton.get_node("Price").text = str(round(tchar.calculate_price()/2))
 		newbutton.connect("pressed", self, "sell_slave", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
@@ -560,7 +582,7 @@ func select_slave_in_guild(person = Slave):
 				if i.name == "Button":
 					continue
 				i.pressed = i.get_meta("person") == person
-			var text = 'Sell ' + person.name + " for " + str(round(person.calculate_price()/3)) + " gold? "
+			var text = 'Sell ' + person.name + " for " + str(round(person.calculate_price()/2)) + " gold? "
 			$HirePanel/RichTextLabel.bbcode_text = text
 			$HirePanel/Button.show()
 			$HirePanel/Button.disabled = false
@@ -587,7 +609,7 @@ func guild_hire_slave():
 #			input_handler.PlaySound("money_spend")
 #			faction_hire()
 		'sell':
-			state.money += round(selectedperson.calculate_price()/3)
+			state.money += round(selectedperson.calculate_price()/2)
 			state.remove_slave(selectedperson)
 			active_faction.slaves.append(selectedperson.id)
 			selectedperson.is_players_character = false
@@ -600,7 +622,7 @@ func sell_slave(person):
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'sell_slave_confirm', selectedperson.translate("Sell [name]?")])
 
 func sell_slave_confirm():
-	state.money += round(selectedperson.calculate_price()/3)
+	state.money += round(selectedperson.calculate_price()/2)
 	state.remove_slave(selectedperson)
 	active_faction.slaves.append(selectedperson.id)
 	selectedperson.is_players_character = false
@@ -824,13 +846,16 @@ func free():
 
 
 func purchase_location_list():
-	globals.ClearContainer($ScrollContainer/VBoxContainer)
+	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
 	for i in purch_location_list.values():
-		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 		newbutton.text = i.name + ": " + str(i.price) + " gold"
 		newbutton.connect("pressed", self, 'purchase_location', [i])
 		if state.money < i.price:
 			newbutton.disabled = true
+	var newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+	newbutton.text = "Leave"
+	newbutton.connect("pressed", self, "open_city", [selected_location])
 
 func purchase_location(purchasing_location):
 	if active_area.locations.size() < 8:
@@ -869,6 +894,10 @@ func build_area_description():
 	$AreaDescription.bbcode_text = text
 
 func open_location(data):
+	if active_location != data:
+		input_handler.BlackScreenTransition(0.7)
+		yield(get_tree().create_timer(0.7), 'timeout')
+	input_handler.StopBackgroundSound()
 	$LocationGui.show()
 	$CityGui.hide()
 	$HirePanel.hide()
@@ -878,10 +907,17 @@ func open_location(data):
 	$FactionDetailsPanel.hide()
 	$SlaveSelectionPanel.hide()
 	active_location = data
+	active_area = state.areas[state.location_links[data.id].area]
+	input_handler.active_area = active_area
 	input_handler.active_location = active_location
 	if active_location.has('progress'):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
+	
+	if active_location.has('background'):
+		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
+	if active_location.has('bgm'):
+		input_handler.SetMusic(active_location.bgm)
 	
 	input_handler.ActivateTutorial("exploration")
 	
@@ -954,8 +990,12 @@ func build_location_group():
 				else:
 					get_node(positiondict[i]+"/Image").texture = icons['slave']
 			get_node(positiondict[i]+"/Image").show()
-			get_node(positiondict[i]+"/Image/hp").text = str(floor(character.hp)) + '/' + str(floor(character.hpmax))
-			get_node(positiondict[i]+"/Image/mp").text = str(floor(character.mp)) + '/' + str(floor(character.mpmax))
+			get_node(positiondict[i]+"/Image/TextureRect").hint_tooltip = "HP: " + str(floor(character.hp)) + '/' + str(floor(character.hpmax))+ "\nMP: " +str(floor(character.mp)) + '/' + str(floor(character.mpmax))
+			get_node(positiondict[i]+"/Image/TextureRect/hp").value = character.hp
+			get_node(positiondict[i]+"/Image/TextureRect/hp").max_value = character.hpmax
+			get_node(positiondict[i]+"/Image/TextureRect/mp").value = character.mp
+			get_node(positiondict[i]+"/Image/TextureRect/mp").max_value = character.mpmax
+			
 			get_node(positiondict[i]+"/Image").dragdata = character
 			get_node(positiondict[i]+"/Image/Label").text = character.get_short_name()
 			get_node(positiondict[i]).self_modulate.a = 0
@@ -1276,8 +1316,9 @@ func finish_combat():
 		enter_level(active_location.progress.level)
 	elif action_type == 'location_finish':
 #		leave_location()
-		update_categories()
-		select_category('locations')
+		#update_categories()
+		build_accessible_locations()
+		select_location("Aliron")
 	else:
 		enter_level(current_level)
 
@@ -1302,7 +1343,7 @@ func clear_dungeon_confirm():
 	active_area.questlocations.erase(active_location.id)
 	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
 	action_type = 'location_finish'
-	open_city('capital_plains')
+	select_location('Aliron')
 	build_accessible_locations()
 	input_handler.update_slave_list()
 #	leave_location()

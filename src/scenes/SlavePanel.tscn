@@ -112,6 +112,7 @@ use_filter = true
 font_data = ExtResource( 32 )
 
 [node name="SlavePanel" type="Panel"]
+visible = false
 margin_left = 40.0
 margin_top = 6.0
 margin_right = 1229.0
@@ -641,8 +642,8 @@ text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 576.131
 margin_top = 55.833
@@ -672,8 +673,8 @@ text = "Obedience"
 align = 1
 
 [node name="authoritylabel" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 700.0
 margin_top = 102.0
@@ -686,8 +687,8 @@ text = "Authority: "
 align = 1
 
 [node name="authoritylabel2" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.513
 margin_top = 9.88072
@@ -699,8 +700,8 @@ text = "Loyalty"
 align = 1
 
 [node name="authoritylabel3" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.513
 margin_top = 55.8807
@@ -712,8 +713,8 @@ text = "Submission"
 align = 1
 
 [node name="loyaltylabel" type="ProgressBar" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.0
 margin_top = 31.0
@@ -725,8 +726,8 @@ value = 100.0
 percent_visible = false
 
 [node name="submissionlabel" type="ProgressBar" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.0
 margin_top = 78.0
@@ -951,8 +952,8 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 
 [node name="HirePanel" type="Panel" parent="." groups=[
-"hide_servant",
 "hide_master",
+"hide_servant",
 ]]
 editor/display_folded = true
 margin_left = 164.0

@@ -346,6 +346,7 @@ func calculateprice():
 		var materialsdict = calculatematerials()
 		for i in materialsdict:
 			price += Items.materiallist[i].price*materialsdict[i]
+		price += Items.recipes[itembase].workunits * 5
 	return price
 
 func use_explore(character):

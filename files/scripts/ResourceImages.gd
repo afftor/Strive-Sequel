@@ -15,10 +15,17 @@ var backgrounds = {
 	forge = load("res://assets/images/backgrounds/forge.png"),
 	market = load("res://assets/images/backgrounds/market.png"),
 	hall = load("res://assets/images/backgrounds/townhall.png"),
+	
+	cave_1 = load("res://assets/images/backgrounds/cave1.png"),
+	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
+	cave_3 = load("res://assets/images/backgrounds/cave3.png"),
+	
+	village = load("res://assets/images/backgrounds/village.png"),
 	#scenes
 	}
 
 var scenes = {
+	no_image = load("res://assets/images/scenes/image_wip.png"),
 	abuse = load("res://assets/images/scenes/abuse.png"),
 	bosscapturefemale = load("res://assets/images/scenes/bosscapturefemale.png"),
 	bosscapturemale = load("res://assets/images/scenes/bosscapturemale.png"),

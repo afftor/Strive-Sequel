@@ -597,7 +597,15 @@ var scenedict = {
 	},
 	
 	
-		
+	
+	intro = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = "INTRODIALOGUE",
+		options = [
+		{code = 'starting_dialogue', text = "Continue", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		]
+	},
 	
 	starting_dialogue = {
 		image = null,
@@ -789,7 +797,7 @@ var scenedict = {
 		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
 		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
 		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
-		{code = 'servants_introduction1', text = "SERVANTSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 4},
+		{code = 'servants_introduction', text = "SERVANTSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 4},
 		],
 		
 	},
@@ -848,12 +856,10 @@ var scenedict = {
 		text = [
 		{text = "WORKERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
 		{text = "WORKERSQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
-		#{text = "WORKERSQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
 		{text = "WORKERSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
 		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
-		#{code = 'workers_questions', text = "WORKERSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
 		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
 		{code = 'workers_introduction2', text = "WORKERSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
 		],
@@ -866,25 +872,31 @@ var scenedict = {
 		{text = "MAGESINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
 		],
 		options = [
-		{code = 'mages_introduction2', text = "FIGHTERSINTRODUCTION1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-		{code = 'mages_introduction2', text = "FIGHTERSINTRODUCTION1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		{code = 'mages_introduction2', text = "MAGESINTRODUCTION1REPLY", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		],
 	},
 	mages_introduction2 = {
 		image = null,
 		tags = ['dialogue_scene','master_translate'],
 		text = [
-		{text = "MAGESINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
-		{text = "MAGESINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2},
-		{text = "MAGESINTRODUCTION2_3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = 1},
-		{text = "MAGESINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
-		{text = "MAGESINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
-		{text = "MAGESINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
+		{text = "MAGESINTRODUCTION2", reqs = [], previous_dialogue_option = 1},
+		],
+		options = [
+		{code = 'mages_introduction3', text = "MAGESINTRODUCTION2REPLY", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		],
+	},
+	mages_introduction3 = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "MAGESINTRODUCTION3_1", reqs = [], previous_dialogue_option = 1},
+		{text = "MAGESINTRODUCTION3_2", reqs = [], previous_dialogue_option = 2},
+		{text = "MAGESINTRODUCTION3_3", reqs = [], previous_dialogue_option = 3},
 		],
 		options = [
 		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'mages_join', text = "MAGESINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'mages_leader_close', text = "MAGESINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	mages_join = {
@@ -914,14 +926,16 @@ var scenedict = {
 		text = [
 		{text = "MAGESQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
 		{text = "MAGESQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
-		#{text = "MAGESQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
+		{text = "MAGESQUESTIONS_3", reqs = [], previous_dialogue_option = 3},
 		{text = "MAGESQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
+		{text = "MAGESQUESTIONS_5", reqs = [], previous_dialogue_option = 5},
 		],
 		options = [
 		{code = 'mages_questions', text = "MAGESQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
-		#{code = 'workers_questions', text = "MAGESQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
 		{code = 'mages_questions', text = "MAGESQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
-		{code = 'mages_introduction2', text = "MAGESASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY4", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'MAGESQUESTIONS_4'}], dialogue_argument = 5},
+		{code = 'mages_introduction3', text = "MAGESASKQUESTIONSRETURN", reqs = [], dialogue_argument = 3},
 		],
 		
 	},
@@ -1001,7 +1015,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'WORKERSINTRODUCTION1'}], 
+			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'MAGESINTRODUCTION1'}], 
 			target = 'mages_introduction1',
 			target_option = 1,
 		},
@@ -1010,14 +1024,14 @@ var dialogue_inits = {
 			name = "Meet Leader", 
 			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
 			target = 'mages_introduction3',
-			target_option = 3,
+			target_option = 2,
 		},
 		{
 			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [], 
 			target = 'mages_introduction3',
-			target_option = 4,
+			target_option = 2,
 		},
 	],
 	

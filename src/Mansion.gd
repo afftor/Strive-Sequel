@@ -35,12 +35,12 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.1.1-stable_win64.exe":# && false:#:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.1.2-stable_win64.exe": #&& false:#:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
 		variables.unlock_all_upgrades = true
-		variables.skip_combat = true
+		variables.skip_combat = false
 		#$UpgradeList._ready()
 		$TestButton.show()
 	
@@ -75,8 +75,8 @@ func _ready():
 	state.connect("task_added", self, 'build_task_bar')
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	
 	if variables.generate_test_chars:
+		state.mainprogress = 1
 		state.make_world()
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
@@ -103,7 +103,7 @@ func _ready():
 		character = Slave.new()
 		character.create('Fairy', 'random', 'random')
 		characters_pool.move_to_state(character.id)
-		character.unlock_class("attendant")
+		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
 		character.set_slave_category('servant')
 		character.obedience = 100
@@ -129,7 +129,6 @@ func _ready():
 		character.charm = 100
 		character.physics = 100
 		character.wits = 100
-		character.sexuals = 100
 		
 		var character2 = Slave.new()
 		character2.create('Human', 'random', 'random')
@@ -147,9 +146,30 @@ func _ready():
 #					text += item.name + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item*item.price,0.1)) 
 #					text += ", Max " + str(stepify(value*item.price,0.1)) + "\n"
 				else:
-					text += k.code + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item,0.1)) 
-					text += ", Max " + str(stepify(value,0.1)) + "\n"
-		print(text)
+					pass
+#					text += k.code + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item,0.1)) 
+#					text += ", Max " + str(stepify(value,0.1)) + "\n"
+#
+		var base_price = 0 
+		var output_price = 0
+		for i in Items.recipes.values():
+			base_price = 0
+			output_price = 0
+			for k in i.materials:
+				base_price += Items.materiallist[k].price * i.materials[k]
+			for k in i.items:
+				base_price += Items.itemlist[k].price * i.items[k]
+
+			if Items.materiallist.has(i.resultitem):
+				output_price = Items.materiallist[i.resultitem].price*i.resultamount
+				if base_price != 0:
+					text += Items.materiallist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
+			else:
+				output_price = Items.itemlist[i.resultitem].price*i.resultamount
+				if base_price != 0:
+					text += Items.itemlist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
+				
+		#print(text)
 		character.loyalty = 95
 		character.authority = 100
 		character.submission = 95
@@ -189,12 +209,18 @@ func _ready():
 		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
 		
 		yield(get_tree(), 'idle_frame')
+		character.unlock_class("pet")
+		character.unlock_class("harlot")
+		character.sex_skills.oral = 70
+		character.sex_skills.anal = 90
+		character.sex_skills.petting = 100
+		character.base_exp = 500
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message('starting_dialogue', '', {})
+		#input_handler.interactive_message('event_good_rebels_beastkin', '', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
@@ -210,7 +236,10 @@ func _ready():
 		
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
+		
 		input_handler.ActivateTutorial("introduction")
+		input_handler.interactive_message('intro', '', {})
+		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
 	build_task_bar()
 	$SlaveList.rebuild()
 	

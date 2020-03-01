@@ -39,6 +39,8 @@ func showup(node, text):
 		$RichTextLabel.rect_size.x = Text_x
 		self.rect_size.x = Panel_x
 	yield(get_tree(), 'idle_frame')
+	if !weakref(node).get_ref():
+		return
 	rect_size.y = $RichTextLabel.get_v_scroll().get_max() + 50
 	$RichTextLabel.rect_size.y = rect_size.y
 	

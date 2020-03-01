@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = 'pre-demo-test 0.3b'
+const gameversion = '0.1.2'
 
 var start_new_game = false
 
@@ -33,6 +33,13 @@ var system_messages = {
 	no_resources = "MESSAGE_NORESOURCE",
 	no_crafting_item = "MESSAGE_NOCRAFTINGITEM",
 	
+}
+
+var race_groups = {
+	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
+	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
+	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
+	rare = ['DarkElf','Drow','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
 }
 
 var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
@@ -734,7 +741,9 @@ func _ready():
 #			text += k.name + ' = "' + k.code + '",\n'
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 	
-
+	for i in world_gen.easter_egg_characters.values():
+		i.code = i.name.to_lower()
+	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:
 #		OS.window_fullscreen = true

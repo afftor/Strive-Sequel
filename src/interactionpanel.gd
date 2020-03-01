@@ -699,7 +699,7 @@ func createtestdummy(type = 'normal'):
 	person.vaginal_virgin = true
 	person.is_players_character = true
 	person.mods['hollownipples'] = 'hollownipples'
-	person.sex_traits = ['sadist']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
+	person.sex_traits = ['irresistible']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
 	person.consent = 30
 	for i in person.sex_skills:
 		person.sex_skills[i] += 100
@@ -758,8 +758,8 @@ func startsequence(actors):
 		newmember.lewd = 100
 		for i in person.sex_traits:
 			var trait = Traitdata.sex_traits[i]
-			if trait.trigger == 'start':
-				for k in trait.effects:
+			for k in trait.effects:
+				if k.trigger == 'start':
 					match k.effect:
 						'maximize_hornyness':
 							newmember.horny = 100
@@ -2188,6 +2188,8 @@ func endencounter():
 				if j.trigger == 'encounter_end':
 					if j.effect == 'exp_bonus':
 						bonus = input_handler.math(j.operant, bonus, j.value)
+					elif j.effect == 'consent_gain':
+						bonus = input_handler.math(j.operant, i.consentgain, j.value)
 					else: call(j.effect, i)
 		
 		expgain = expgain*bonus
@@ -2480,6 +2482,7 @@ func _on_finishbutton_pressed():
 					i.person.sexexp.orgasms.erase(k.person.id)
 	selectmode = 'normal'
 	hide()
+	input_handler.update_slave_list()
 
 
 func _on_blacklist_pressed():
@@ -2567,10 +2570,10 @@ func resistattempt(member):
 
 func alcohol(member):
 	var text = "\n" + member.name + " has drank an alcoholic bevarage. "
-	if member.effects.has("drunk") == false:
+	if member.effects.has("drunk") == false && member.effects.has('tipsy') == false:
 		member.sensmod += 0.2
 		member.hornymod += 0.5
-		member.horny += 10
+		member.horny += 25
 		member.effects.append('drunk')
 		text += "It made [him] slightly more horny and sensitive. "
 	else:
@@ -2578,6 +2581,18 @@ func alcohol(member):
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 	_on_passbutton_pressed()
 	
+func beer(member):
+	var text = "\n" + member.name + " has drank a beer. "
+	if member.effects.has("drunk") == false && member.effects.has("tipsy") == false:
+		member.sensmod += 0.1
+		member.hornymod += 0.3
+		member.horny += 10
+		member.effects.append('tipsy')
+		text += "It made [him] slightly more horny and sensitive. "
+	else:
+		text += "But it seems [he] is already drunk. "
+	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	_on_passbutton_pressed()
 
 func aphrodisiac(member):
 	member.horny += 100

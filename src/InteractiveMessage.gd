@@ -5,7 +5,7 @@ var dialogue_enemy
 var current_scene
 var hold_selection = false #pause for scene to load
 var previous_dialogue_option = 0
-
+var previous_text = ''
 
 func open(scene):
 	if scene.has("variations"):
@@ -26,13 +26,15 @@ func open(scene):
 	
 	if self.visible == false:
 		input_handler.UnfadeAnimation(self, 0.2)
+		$RichTextLabel.bbcode_text = ''
+		previous_text = ''
 		yield(get_tree().create_timer(0.2), "timeout")
 	$RichTextLabel.modulate.a = 0
 	$ScrollContainer.modulate.a = 0
 	if scene.image != '' && scene.image != null:
 		$image.texture = images.scenes[scene.image]
 	else:
-		$image.texture = load("res://assets/images/scenes/noevent.png")
+		$image.texture = load("res://assets/images/scenes/image_wip.png")
 	show()
 	var scenetext = scene.text
 	
@@ -127,11 +129,15 @@ func open(scene):
 			newbutton.connect('pressed', state, "common_effects", [i.bonus_effects])
 		newbutton.disabled = disable
 		counter += 1
-	$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
+	if $RichTextLabel.bbcode_text != '':
+		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
+	else:
+		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
 
 func option_selected(option):
+	previous_text = tr(option)
 	if !state.selected_dialogues.has(option):
 		state.selected_dialogues.append(option)
 

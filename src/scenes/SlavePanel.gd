@@ -163,6 +163,7 @@ var authority_lines = {
 
 
 func update():
+	if person == null:return
 	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler")+ get_tree().get_nodes_in_group("hide_servant"):
 		i.visible = true
 	if state.characters.has(person.id):
@@ -373,7 +374,7 @@ func make_location_description():
 		active_location_name = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.travel_target.location].name
 	
 	if person.location == 'travel':
-		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(round(person.travel_time / person.travel_tick())) + ' hours.'
+		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(ceil(person.travel_time / person.travel_tick())) + ' hours.'
 	else:
 		text = '[name] currently positioned at [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]"
 	return text

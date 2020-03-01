@@ -25,8 +25,8 @@ func getongoingdescription(givers, takers):
 	
 func requirements():
 	var valid = true
-#	if globals.state.getCountStackableItem('rope') <= 0:
-#		valid = false
+	if state.materials.rope < takers.size():
+		valid = false
 	if takers.size() < 1 || givers.size() < 1:
 		valid = false
 	elif givers.size() > 2:
@@ -50,7 +50,7 @@ func initiate():
 	temparray += ["[name1] {^wrap:tie}[s/1] a rope around [names2] body to restrict [his2] movements."]
 	text += temparray[randi()%temparray.size()]
 	for i in takers:
-		#globals.state.removeStackableItem('rope')
+		state.materials.rope -= 1
 		i.effects.append('tied')
 	temparray.clear()
 	return text

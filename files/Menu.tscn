@@ -268,19 +268,33 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "Added daily autosave
+bbcode_text = "Fixed some screen transition bugs
+Slave list should correctly update after sex and class unlock
+0.1.2
+Added F hotkey functionality to sex interactions
+Fixed multiple event and exploration related crashes
+0.1.1
+Fixed servants dialogue having no exit
+Fxied default start not working correctly
+Fixed interaction menu not working 
+0.1 Release
+Added daily autosave
 Added starting presets
 Added option to set a master noun for slaves
 Revamped main slave list
 Added category search to crafting panel
 Crafting panel now lists recipes in alphabetic order
-
+Added consent factor to the sex system
+Added some lore events and sequences
+Revamped exploration screen
 Small Sized trait collection task penalty reduced from 25% to 15%
 Fixed Engineer class not having building bonus
 Character hiring is now done in character tab
 Fixed inventory item search not working correctly
 Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
-
+Sell item and slave price changed to 1/2 from 1/3
+Rebalanced most items and some recipes costs
+Daisy event is now available from Day 2
 Fixed skill 'Protect' causing soft lock
 Fixed sometimes a quest generating with bugged reward
 Fixed staff using wrong colors for handle/knub
@@ -337,21 +351,33 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added daily autosave
+text = "Fixed some screen transition bugs
+Slave list should correctly update after sex and class unlock
+0.1.2
+Added F hotkey functionality to sex interactions
+Fixed multiple event and exploration related crashes
+0.1.1
+Fixed servants dialogue having no exit
+Fxied default start not working correctly
+Fixed interaction menu not working 
+0.1 Release
+Added daily autosave
 Added starting presets
 Added option to set a master noun for slaves
 Revamped main slave list
 Added category search to crafting panel
 Crafting panel now lists recipes in alphabetic order
-
+Added consent factor to the sex system
+Added some lore events and sequences
+Revamped exploration screen
 Small Sized trait collection task penalty reduced from 25% to 15%
 Fixed Engineer class not having building bonus
 Character hiring is now done in character tab
 Fixed inventory item search not working correctly
 Hopefully fixed the issue with window displacement on startup and added alt+enter hotkey to switch full screen mode
-One time events now have different color in menu
-Daisy event only happens starting day 2
-
+Sell item and slave price changed to 1/2 from 1/3
+Rebalanced most items and some recipes costs
+Daisy event is now available from Day 2
 Fixed skill 'Protect' causing soft lock
 Fixed sometimes a quest generating with bugged reward
 Fixed staff using wrong colors for handle/knub

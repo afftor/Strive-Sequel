@@ -17,10 +17,13 @@ func start():
 	input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
 	yield(input_handler, 'CharacterCreated')
 	if data.code != 'default':
+		state.mainprogress = 1
 		while slave_number > 0:
 			slave_number -= 1
 			input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
 			yield(input_handler, 'CharacterCreated')
+	else:
+		state.mainprogress = 0
 	
 	finish()
 

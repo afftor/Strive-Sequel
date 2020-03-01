@@ -380,6 +380,16 @@ func PlaySound(name, delay = 0):
 	yield(soundnode, 'finished')
 	soundnode.queue_free()
 
+func PlayBackgroundSound(name):
+	var soundnode = get_spec_node(input_handler.NODE_BACKGROUND_SOUND) #GetSoundNode()
+	soundnode.stream = audio.background_noise[name]
+	soundnode.seek(0)
+	soundnode.play(0)
+
+func StopBackgroundSound():
+	var soundnode = get_spec_node(input_handler.NODE_BACKGROUND_SOUND) #GetSoundNode()
+	soundnode.stop()
+
 var soundcooldown = 0
 
 func PlaySoundIsolated(sound, cooldown):
@@ -1042,7 +1052,7 @@ func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
-	var node = get_spec_node(input_handler.NODE_SLAVEPANEL, null, false)
+	var node = get_spec_node(input_handler.NODE_SLAVEPANEL, null, false)#, false)
 	if node.visible == true:
 		node.update()
 
@@ -1061,7 +1071,7 @@ func text_cut_excessive_lines(text:String):
 	return text
 
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
@@ -1076,7 +1086,8 @@ var node_data = {
 	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
 	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextScene/TextSystem.tscn")},
 	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
-	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	NODE_SOUND : {name = 'sound', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	NODE_BACKGROUND_SOUND : {name = 'BGSound', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
 	#NODE_TWEEN : {name = 'tween', mode = 'node', node = Tween},
 	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
@@ -1089,7 +1100,7 @@ var node_data = {
 	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
 }
 
-func get_spec_node(type, args = null, raise = true):
+func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
 	var node = get_tree().get_root()
 	if node.has_node(node_data[type].name) and !node_data[type].has('no_return'):
@@ -1320,13 +1331,14 @@ func finish_combat():
 	encounter_lose_scripts.clear()
 	
 	if encounter_win_script != null:
+		print(true)
 		var data = scenedata.scenedict[encounter_win_script]
 		interactive_message(encounter_win_script, data.default_event_type, {})
 		encounter_win_script = null
 		return
-	if check_events("finish_combat") == true:
+	if active_location.has('scriptedevents') && check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished')
-	if check_random_event() == true:
+	if active_location.has('randomevents') && check_random_event() == true:
 		yield(input_handler, 'EventFinished')
 	
 	exploration_node.finish_combat()

@@ -65,10 +65,9 @@ func update_button(newbutton):
 		newbutton.get_node("HBoxContainer/explabel").set("custom_colors/font_color", Color(globals.hexcolordict.levelup_text_color))
 	if person.location != 'mansion':
 		if person.location == 'travel':
-			newbutton.get_node('HBoxContainer/job').text = 'Relocating: in ' + str(round(person.travel_time / person.travel_tick())) + " hours. " 
+			newbutton.get_node('HBoxContainer/job').text = 'Relocating: in ' + str(ceil(person.travel_time / person.travel_tick())) + " hours. " 
 		else:
-			newbutton.get_node('HBoxContainer/job').text = 'Positioned: ' + state.areas[state.location_links[person.location].area].name # state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.location].name
-	#newbutton.get_node("HBoxContainer/obed").visible = person.location == 'mansion'
+			newbutton.get_node('HBoxContainer/job').text = 'Positioned: ' + state.areas[state.location_links[person.location].area].name
 	var icon
 	if person.professions.has("master"):
 		icon = load("res://assets/images/gui/gui icons/icon_master.png")

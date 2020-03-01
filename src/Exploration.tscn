@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
@@ -9,21 +9,24 @@
 [ext_resource path="res://assets/images/gui/combat/cross.png" type="Texture" id=7]
 [ext_resource path="res://char_drop_node.gd" type="Script" id=8]
 [ext_resource path="res://drag_node.gd" type="Script" id=9]
-[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/iconsgear/lifeshard.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/iconsskills/Heal.png" type="Texture" id=12]
-[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=13]
-[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=23]
-[ext_resource path="res://src/NumberSelection.gd" type="Script" id=24]
+[ext_resource path="res://assets/images/gui/Heart_empty.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/Heart_r.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/Heart_b.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/iconsgear/lifeshard.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/iconsskills/Heal.png" type="Texture" id=15]
+[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=16]
+[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=26]
+[ext_resource path="res://src/NumberSelection.gd" type="Script" id=27]
 
 [node name="Exploration" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -38,18 +41,18 @@ margin_bottom = 1080.0
 texture = ExtResource( 3 )
 
 [node name="CityGui" type="Panel" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0.854902 )
 margin_left = 75.7191
-margin_top = 137.189
+margin_top = 145.189
 margin_right = 478.719
-margin_bottom = 995.189
+margin_bottom = 1003.19
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CityGui"]
 margin_left = 34.0
 margin_top = 28.0
 margin_right = 366.0
 margin_bottom = 818.0
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CityGui/ScrollContainer"]
 margin_right = 332.0
@@ -63,6 +66,7 @@ rect_min_size = Vector2( 0, 50 )
 text = "Slave Guild"
 
 [node name="LocationGui" type="Panel" parent="."]
+visible = false
 margin_right = 1920.0
 margin_bottom = 1079.0
 script = ExtResource( 4 )
@@ -81,11 +85,18 @@ margin_bottom = 601.149
 texture = ExtResource( 5 )
 expand = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LocationGui/Image"]
-margin_left = 256.0
-margin_top = 477.0
+[node name="Panel" type="Panel" parent="LocationGui/Image"]
+self_modulate = Color( 1, 1, 1, 0.552941 )
+margin_left = 275.0
+margin_top = 426.0
 margin_right = 743.0
-margin_bottom = 588.0
+margin_bottom = 587.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LocationGui/Image"]
+margin_left = 298.0
+margin_top = 456.0
+margin_right = 723.0
+margin_bottom = 567.0
 bbcode_enabled = true
 bbcode_text = "[center]Level: 5/7
 Stage: 1/3[/center]"
@@ -109,7 +120,6 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="Positions" type="TextureRect" parent="LocationGui"]
-editor/display_folded = true
 margin_left = 262.682
 margin_top = 429.593
 margin_right = 801.682
@@ -127,7 +137,6 @@ text = "Combat Party"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LocationGui/Positions"]
-editor/display_folded = true
 margin_left = 56.329
 margin_top = 56.327
 margin_right = 460.329
@@ -135,7 +144,6 @@ margin_bottom = 731.327
 custom_constants/separation = 14
 
 [node name="backrow" type="VBoxContainer" parent="LocationGui/Positions/HBoxContainer"]
-editor/display_folded = true
 margin_right = 210.0
 margin_bottom = 675.0
 custom_constants/separation = 21
@@ -159,33 +167,36 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 9 )
 
-[node name="hp" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image"]
 margin_left = 2.5
 margin_right = 198.5
 margin_bottom = 24.0
 text = "Name"
 align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 12 )
+fill_mode = 3
 
 [node name="5" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/backrow"]
 margin_top = 231.0
@@ -207,33 +218,36 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 9 )
 
-[node name="hp" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image"]
 margin_left = 2.5
 margin_right = 198.5
 margin_bottom = 24.0
 text = "Name"
 align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 12 )
+fill_mode = 3
 
 [node name="6" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/backrow"]
 margin_top = 462.0
@@ -255,27 +269,6 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 9 )
 
-[node name="hp" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image"]
 margin_left = 2.5
 margin_right = 198.5
@@ -283,8 +276,31 @@ margin_bottom = 24.0
 text = "Name"
 align = 1
 
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 12 )
+fill_mode = 3
+
 [node name="frontrow" type="VBoxContainer" parent="LocationGui/Positions/HBoxContainer"]
-editor/display_folded = true
 margin_left = 224.0
 margin_right = 434.0
 margin_bottom = 675.0
@@ -309,33 +325,36 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 9 )
 
-[node name="hp" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image"]
 margin_left = 2.5
 margin_right = 198.5
 margin_bottom = 24.0
 text = "Name"
 align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 12 )
+fill_mode = 3
 
 [node name="2" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/frontrow"]
 margin_top = 231.0
@@ -357,33 +376,36 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 9 )
 
-[node name="hp" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image"]
 margin_left = 2.5
 margin_right = 198.5
 margin_bottom = 24.0
 text = "Name"
 align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 12 )
+fill_mode = 3
 
 [node name="3" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/frontrow"]
 margin_top = 462.0
@@ -405,27 +427,6 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 9 )
 
-[node name="hp" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image"]
 margin_left = 2.5
 margin_right = 198.5
@@ -433,13 +434,37 @@ margin_bottom = 24.0
 text = "Name"
 align = 1
 
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 11 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 12 )
+fill_mode = 3
+
 [node name="TextureRect" type="TextureRect" parent="LocationGui/Positions"]
 visible = false
 margin_top = 5.0
 margin_right = 445.0
 margin_bottom = 708.0
 mouse_filter = 2
-texture = ExtResource( 10 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 5
 
@@ -531,7 +556,6 @@ text = "Presented Characters"
 align = 1
 
 [node name="ItemUsePanel" type="Panel" parent="LocationGui"]
-editor/display_folded = true
 margin_left = 52.0
 margin_top = 442.0
 margin_right = 272.0
@@ -553,12 +577,13 @@ visible = false
 margin_right = 87.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
 script = ExtResource( 9 )
 
 [node name="Icon" type="TextureRect" parent="LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 11 )
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
@@ -588,12 +613,13 @@ visible = false
 margin_right = 190.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
 script = ExtResource( 9 )
 
 [node name="Icon" type="TextureRect" parent="LocationGui/ItemUsePanel/SpellContainer/VBoxContainer/Button"]
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 12 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 6
 
@@ -638,7 +664,7 @@ margin_bottom = 107.0
 scroll_vertical_enabled = false
 
 [node name="AreaSelection" type="HBoxContainer" parent="NavigationPanel/NavigationContainer"]
-theme = ExtResource( 13 )
+theme = ExtResource( 16 )
 
 [node name="Button" type="Button" parent="NavigationPanel/NavigationContainer/AreaSelection"]
 visible = false
@@ -652,7 +678,7 @@ margin_left = 16.0
 margin_top = 23.0
 margin_right = 253.0
 margin_bottom = 92.0
-theme = ExtResource( 13 )
+theme = ExtResource( 16 )
 text = "Mansion"
 
 [node name="VSeparator" type="VSeparator" parent="NavigationPanel"]
@@ -670,7 +696,6 @@ margin_bottom = 964.392
 bbcode_enabled = true
 
 [node name="HirePanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 516.0
 margin_top = 137.0
@@ -678,23 +703,23 @@ margin_right = 1046.0
 margin_bottom = 995.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HirePanel"]
-editor/display_folded = true
 margin_left = 63.0
 margin_top = 43.0
 margin_right = 471.0
 margin_bottom = 796.0
+scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HirePanel/ScrollContainer"]
-margin_right = 408.0
-size_flags_horizontal = 3
+margin_right = 405.0
+rect_min_size = Vector2( 405, 0 )
 
 [node name="Button" type="TextureButton" parent="HirePanel/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 408.0
+margin_right = 405.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 15 )
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
 expand = true
 
 [node name="name" type="Label" parent="HirePanel/ScrollContainer/VBoxContainer/Button"]
@@ -750,7 +775,6 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 
 [node name="QuestPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 519.0
 margin_top = 138.0
@@ -795,7 +819,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 16 )
+texture = ExtResource( 19 )
 expand = true
 stretch_mode = 6
 
@@ -820,7 +844,7 @@ visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 16 )
+texture = ExtResource( 19 )
 expand = true
 stretch_mode = 6
 
@@ -855,7 +879,7 @@ margin_left = 670.813
 margin_top = 693.075
 margin_right = 710.813
 margin_bottom = 745.075
-texture = ExtResource( 17 )
+texture = ExtResource( 20 )
 
 [node name="Label" type="Label" parent="QuestPanel/time"]
 margin_left = 41.0
@@ -970,7 +994,6 @@ text = "Item"
 align = 1
 
 [node name="FactionDetailsPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 287.0
 margin_top = 138.0
@@ -1021,14 +1044,16 @@ margin_bottom = 136.0
 text = "Purchase"
 
 [node name="Label2" type="Label" parent="FactionDetailsPanel"]
-margin_left = 80.9163
-margin_top = 374.273
-margin_right = 308.916
-margin_bottom = 401.273
+visible = false
+margin_left = 81.0
+margin_top = 374.0
+margin_right = 332.0
+margin_bottom = 401.0
 text = "Quest settings: "
 align = 1
 
 [node name="totalquestpoints" type="Label" parent="FactionDetailsPanel"]
+visible = false
 margin_left = 124.415
 margin_top = 686.0
 margin_right = 276.415
@@ -1036,13 +1061,13 @@ margin_bottom = 710.0
 text = "Unspent: "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FactionDetailsPanel"]
+visible = false
 margin_left = 50.0
 margin_top = 439.0
 margin_right = 358.0
 margin_bottom = 697.0
 
 [node name="easy" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-visible = false
 margin_right = 100.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
@@ -1060,9 +1085,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 20 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 23 )
 expand = true
 stretch_mode = 5
 
@@ -1071,9 +1096,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -1086,7 +1111,8 @@ text = "0"
 align = 1
 
 [node name="medium" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-margin_right = 100.0
+margin_left = 104.0
+margin_right = 204.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 
@@ -1103,9 +1129,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 20 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 23 )
 expand = true
 stretch_mode = 5
 
@@ -1114,9 +1140,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -1129,8 +1155,8 @@ text = "0"
 align = 1
 
 [node name="hard" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-margin_left = 104.0
-margin_right = 204.0
+margin_left = 208.0
+margin_right = 308.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 
@@ -1147,9 +1173,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 19 )
-texture_hover = ExtResource( 20 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 23 )
 expand = true
 stretch_mode = 5
 
@@ -1158,9 +1184,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -1222,7 +1248,7 @@ margin_left = 602.0
 margin_top = 305.0
 margin_right = 1199.0
 margin_bottom = 547.0
-script = ExtResource( 24 )
+script = ExtResource( 27 )
 
 [node name="HSlider" type="HSlider" parent="NumberSelection"]
 margin_left = 54.0

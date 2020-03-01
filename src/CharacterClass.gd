@@ -153,7 +153,7 @@ var physics := 0.0 setget physics_set
 var physics_bonus := 0.0
 var wits := 0.0 setget wits_set
 var wits_bonus := 0.0
-var sexuals := 0.0 setget sexuals_set
+var sexuals := 0.0 setget sexuals_set, get_sexuals
 var sexuals_bonus := 0.0
 var charm := 0.0 setget charm_set
 var charm_bonus := 0.0
@@ -284,7 +284,7 @@ func sexuals_set(value):
 func get_sexuals():
 	var array = sex_skills.values()
 	array.sort()
-	
+	array.invert()
 	return (array[0] + array[1] + array[2])/3
 
 #stub for bonus system
@@ -463,7 +463,27 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	create(gendata.race, gendata.sex, gendata.age)
 	
 	if randf() <= 0.003:
-		pass #make check for easter egg character
+		var array = []
+		for i in world_gen.easter_egg_characters.values():
+			var temprace = gendata.race
+			if globals.race_groups.has(temprace):
+				temprace = globals.race_groups[temprace][randi()%globals.race_groups[temprace].size()]
+			if state.easter_egg_characters_acquired.has(i.name) == false && (temprace == 'random' || gendata.race == i.race):
+				var char_exists = false
+				for k in characters_pool.characters.values():
+					if k.unique == i.code:
+						char_exists = true
+						break
+				if char_exists == false:
+					array.append(i)
+		if array.size() != 0:
+			var chardata = array[randi()%array.size()]
+			create(chardata.race, chardata.sex, chardata.age)
+			unique = chardata.code
+			for i in chardata:
+				if !i in ['code','class_category']:
+					self[i] = chardata[i]
+			desired_class = chardata.class_category
 	
 	var slaveclass = desired_class
 	if slaveclass == null:
@@ -628,20 +648,12 @@ func create(temp_race, temp_gender, temp_age):
 	sex = temp_gender
 	age = temp_age
 	
+	
+	
 	if temp_race == 'random':
 		race = get_random_race()
-	elif temp_race == 'Halfbreeds':
-		race = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki']
-		race = race[randi()%race.size()]
-	elif temp_race == 'beast':
-		race = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki']
-		race = race[randi()%race.size()]
-	elif temp_race == 'monster':
-		race = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin']
-		race = race[randi()%race.size()]
-	elif temp_race == 'rare':
-		race = ['DarkElf','Drow','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon']
-		race = race[randi()%race.size()]
+	elif globals.race_groups.has(temp_race):
+		race = globals.race_groups[temp_race][randi()%globals.race_groups[temp_race].size()]
 	if temp_gender == 'random':
 		sex = get_random_sex()
 	if temp_age == 'random':
@@ -1321,6 +1333,9 @@ func tick():
 					return_to_task()
 					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
 				else:
+#					if state.capitals.has(location):
+#						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
+#					else:
 					state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.location_links[location].area][state.location_links[location].category][location].name)
 		
 		return

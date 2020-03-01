@@ -7,7 +7,7 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 214, 50 )
+region_rect = Rect2( 0, 0, 210, 51 )
 margin_left = 25.0
 margin_right = 25.0
 margin_top = 10.0
@@ -18,7 +18,7 @@ region_rect = Rect2( 1264, 79, 3, 1 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 214, 50 )
+region_rect = Rect2( 0, 0, 210, 51 )
 margin_left = 25.0
 margin_right = 25.0
 margin_top = 10.0
@@ -26,7 +26,7 @@ margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 214, 50 )
+region_rect = Rect2( 0, 0, 210, 51 )
 margin_left = 25.0
 margin_right = 25.0
 margin_top = 10.0
@@ -35,10 +35,10 @@ margin_bottom = 10.0
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 210, 51 )
-margin_left = 23.3192
-margin_right = 23.3192
-margin_top = 9.45374
-margin_bottom = 8.82349
+margin_left = 24.2045
+margin_right = 24.211
+margin_top = 11.1601
+margin_bottom = 11.0987
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )

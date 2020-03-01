@@ -43,7 +43,7 @@ func open_character_dislocation():
 			newbutton.text += " - " + tr("MANSION")
 		newbutton.get_node("Progress").value = i.initial_travel_time - i.travel_time
 		newbutton.get_node("Progress").max_value = i.initial_travel_time
-		newbutton.get_node("Progress/Label").text = 'Until arrival: ' + str(round(i.travel_time/i.travel_tick())) + " hours"
+		newbutton.get_node("Progress/Label").text = 'Until arrival: ' + str(ceil(i.travel_time/i.travel_tick())) + " hours"
 		globals.connectslavetooltip(newbutton, i)
 		newbutton.connect('pressed',self,'cancel_travel', [i])
 	
@@ -116,6 +116,7 @@ func update_location_list():
 	array.clear()
 	
 	
+	
 	for i in state.areas[destination_area].locations.values() + state.areas[destination_area].questlocations.values():
 		array.append(i)
 	
@@ -125,6 +126,13 @@ func update_location_list():
 		newbutton.get_node("Label").text = text
 		newbutton.connect('pressed', self, 'select_destination', ['mansion'])
 		newbutton.name = 'mansion'
+	
+	if destination_area != 'plains':
+		var newbutton = globals.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
+		var text = tr(state.areas[destination_area].capital_name)
+		newbutton.get_node("Label").text = text
+		newbutton.connect('pressed', self, 'select_destination', [state.areas[destination_area].capital_name])
+		newbutton.name = state.areas[destination_area].capital_name
 	
 	
 	for i in array:
@@ -171,7 +179,7 @@ func update_character_dislocation():
 	elif destination == 'mansion':
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
-			text += "\nTravel Time: " + str(round(state.characters[selected_travel_characters[0]].calculate_travel_time(dislocation_area, 'mansion') / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
+			text += "\nTravel Time: " + str(ceil(state.characters[selected_travel_characters[0]].calculate_travel_time(dislocation_area, 'mansion') / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
 		
 	else:
 		var location = world_gen.get_location_from_code(destination)
