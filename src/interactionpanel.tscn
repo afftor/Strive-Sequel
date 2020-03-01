@@ -125,6 +125,7 @@ bbcode_text = "Text2"
 text = "Text2"
 
 [node name="GridContainer" type="ScrollContainer" parent="Panel"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 582.0
@@ -218,6 +219,7 @@ custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -1900.56
@@ -679,6 +681,56 @@ margin_top = 680.0
 margin_right = 510.0
 margin_bottom = 719.0
 text = "Debug"
+
+[node name="OrgasmDenial" type="Panel" parent="." groups=[
+"pauseprocess",
+]]
+visible = false
+margin_left = 571.84
+margin_top = 153.601
+margin_right = 1312.84
+margin_bottom = 724.601
+
+[node name="Control" type="Control" parent="OrgasmDenial"]
+margin_left = -574.0
+margin_top = -152.0
+margin_right = 1350.0
+margin_bottom = 919.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OrgasmDenial"]
+margin_left = 85.3445
+margin_top = 40.5518
+margin_right = 672.344
+margin_bottom = 408.552
+bbcode_enabled = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OrgasmDenial"]
+margin_left = 133.0
+margin_top = 418.0
+margin_right = 604.0
+margin_bottom = 553.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OrgasmDenial/ScrollContainer"]
+margin_right = 471.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+
+[node name="Cum" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
+margin_right = 471.0
+margin_bottom = 38.2509
+text = "Make [him] cum"
+
+[node name="Beg" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 471.0
+margin_bottom = 80.2509
+text = "Make [him] cum"
+
+[node name="Deny" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
+margin_top = 84.0
+margin_right = 471.0
+margin_bottom = 122.251
+text = "Make [him] cum"
 [connection signal="meta_clicked" from="Panel/sceneeffects1" to="." method="_on_sceneeffects1_meta_clicked"]
 [connection signal="pressed" from="Panel/stopbutton" to="." method="_on_stopbutton_pressed"]
 [connection signal="pressed" from="Panel/passbutton" to="." method="_on_passbutton_pressed"]

@@ -15,6 +15,7 @@ var SystemMessageNode
 
 var text_field_input = false
 
+signal StartingSequenceComplete
 signal ScreenChanged
 signal BuildingEntered
 signal ItemObtained
@@ -40,6 +41,7 @@ var scene_characters = []
 var scene_loot
 var active_area
 var active_location
+var active_faction = {}
 
 var activated_skill
 var target_character
@@ -47,37 +49,50 @@ var target_character
 var ghost_items = []
 
 
-var encounter_win_scripts = []
+var encounter_win_script = null
 var encounter_lose_scripts = []
 
 func _input(event):
-	if event.is_echo() == true || event.is_pressed() == false :
+	if event.is_echo() == true && !event.is_action_type(): 
 		return
-	if event.is_action("ESC") && event.is_pressed():
-		if CloseableWindowsArray.size() != 0:
-			CloseTopWindow()
-		else:
-			if globals.CurrentScene.name == 'mansion':
-				globals.CurrentScene.get_node("MenuPanel").open()
-	if event.is_action("F9") && event.is_pressed():
+	#print(var2str(event))
+	if (event.is_action("ESC") || event.is_action_released("RMB")):
+		var ignore_rightclick = false
+		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+			if i.visible == true:
+				ignore_rightclick = true
+				continue
+		if ignore_rightclick == false:
+			if CloseableWindowsArray.size() != 0:
+				CloseTopWindow()
+			else:
+				if globals.CurrentScene.name == 'mansion' && event.is_action("ESC"):
+					globals.CurrentScene.get_node("MenuPanel").open()
+	if event.is_action_released("F9"):
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscreen = OS.window_fullscreen
 		if globals.globalsettings.fullscreen == false:
 			OS.window_position = Vector2(0,0)
 	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
-		if str(int(event.as_text())) in str(range(1,4)):
+		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
 			if globals.globalsettings.turn_based_time_flow == false:
 				globals.CurrentScene.changespeed(globals.CurrentScene.timebuttons[int(event.as_text())-1])
 			else:
 				globals.CurrentScene.timeflowhotkey(int(event.as_text()))
 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+	if event.is_action('full_screen'):
+		OS.window_fullscreen = !OS.window_fullscreen
+		globals.globalsettings.fullscren = OS.window_fullscreen
 
 var musicfading = false
 var musicraising = false
 var musicvalue
 
 func _process(delta):
+	if OS.window_position.y < 0:
+		OS.window_position.y = 0
+	
 	for i in CloseableWindowsArray:
 		if typeof(i) == TYPE_STRING: continue
 		if i.is_visible_in_tree() == false:
@@ -110,9 +125,11 @@ func _process(delta):
 func CloseTopWindow():
 	var node = CloseableWindowsArray.back()
 	if typeof(node) == TYPE_STRING:
-		return;
+		return
+	elif BeingAnimated.has(node):
+		return
 	node.hide()
-	CloseableWindowsArray.pop_back(); #i think this is required
+	#CloseableWindowsArray.pop_back(); #i think this is required #It's not, breaks multiple windows order
 
 func LockOpenWindow():
 	CloseableWindowsArray.append('lock')
@@ -283,7 +300,8 @@ func FloatText(node, text, type = '', size = 80, color = Color(1,1,1), time = 3,
 		'miss':
 			FadeAnimation(textnode, fadetime, time)
 		"heal":
-			HealTextFly(textnode)
+			DamageTextFly(textnode, false)
+#			HealTextFly(textnode)
 	#FadeAnimation(textnode, fadetime, time)
 #	node.remove_child(textnode)
 #	get_tree().get_current_scene().add_child(textnode)
@@ -361,6 +379,16 @@ func PlaySound(name, delay = 0):
 	soundnode.play(0)
 	yield(soundnode, 'finished')
 	soundnode.queue_free()
+
+func PlayBackgroundSound(name):
+	var soundnode = get_spec_node(input_handler.NODE_BACKGROUND_SOUND) #GetSoundNode()
+	soundnode.stream = audio.background_noise[name]
+	soundnode.seek(0)
+	soundnode.play(0)
+
+func StopBackgroundSound():
+	var soundnode = get_spec_node(input_handler.NODE_BACKGROUND_SOUND) #GetSoundNode()
+	soundnode.stop()
 
 var soundcooldown = 0
 
@@ -566,7 +594,15 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	
 	if wr.get_ref(): x.queue_free()
 
-var sprites = {strike = 'res://assets/sfx/hit_animation/strike.tscn'}
+var sprites = {
+	strike = 'res://assets/sfx/hit_animation/strike.tscn',
+	firebolt = 'res://assets/sfx/hit_animation/firebolt.tscn',
+	flame = 'res://assets/sfx/hit_animation/flame.tscn',
+	earth_spike = "res://assets/sfx/hit_animation/earth_spike.tscn",
+	}
+var particles = {
+	heal = "res://assets/sfx/HealEffect.tscn",
+}
 
 func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	var x = load(sprites[effect]).instance()
@@ -577,10 +613,22 @@ func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
-	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+	yield(get_tree().create_timer(delayuntilfade+fadeduration), 'timeout')
 
 	if wr.get_ref(): x.queue_free()
 
+func gfx_particles(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+	var x = load(particles[effect]).instance()
+	node.add_child(x)
+	x.position = node.rect_size/2
+	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+	x.emitting = true
+	
+	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
+	var wr = weakref(x)
+	yield(get_tree().create_timer(fadeduration*2), 'timeout')
+
+	if wr.get_ref(): x.queue_free()
 
 func ResourceGetAnimation(node, startpoint, endpoint, time = 0.5, delay = 0.2):
 	var tweennode = GetTweenNode(node)
@@ -672,6 +720,8 @@ func math(operation, value1, value2):
 			value1 *= value2
 		'/':
 			value1 /= value2
+		'=':
+			value1 = value2
 	return value1
 
 func string_to_math(value = 0, string = ''):
@@ -685,25 +735,16 @@ func string_to_math(value = 0, string = ''):
 		'/':value /= modvalue
 	return value
 	
-func weightedrandom(array): #array must be made out of dictionaries with {value = name, weight = number} Number is relative to other elements which may appear
-#alternative option is to use array of arrays of format [value, weight]
+func weightedrandom(array): #uses an array of [value, weight] with value being returned according to weight change
 	var total = 0
 	var counter = 0
 	for i in array:
-		if typeof(i) == TYPE_DICTIONARY:
-			total += i.weight
-		else:
-			total += i[1]
+		total += i[1]
 	var random = rand_range(0,total)
 	for i in array:
-		if typeof(i) == TYPE_DICTIONARY:
-			if counter + i.weight >= random:
-				return i #!!
-			counter += i.weight
-		else:
-			if counter + i[1] >= random:
-				return i[0] # strangely, array version returns value directly, while dict version returnt full dictionary
-			counter += i[1]
+		if counter + i[1] >= random:
+			return i[0] 
+		counter += i[1]
 
 func open_shell(string):
 	var path = string
@@ -834,18 +875,20 @@ func interactive_message(code, type, args):
 		'char_translate':
 			data.text = args.translate(data.text)
 		'character_event':
-			var newcharacter
-			match args.characterdata.type:
-				'raw':
-					newcharacter = Slave.new()
-					newcharacter.is_active = false
-					newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
-					newcharacter.set_slave_category(args.characterdata.slave_type)
-				'function':
-					newcharacter = call(args.characterdata.function, args.characterdata.args)
-			active_character = newcharacter
-			scene_characters.append(newcharacter)
-			data.text = newcharacter.translate(data.text)
+			pass
+#			for i in args.characterdata:
+#				var newcharacter
+#				match i.type:
+#					'raw':
+#						newcharacter = Slave.new()
+#						newcharacter.is_active = false
+#						newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
+#						newcharacter.set_slave_category(args.characterdata.slave_type)
+#					'function':
+#						newcharacter = call(args.characterdata.function, args.characterdata.args)
+#				active_character = newcharacter
+#				scene_characters.append(newcharacter)
+#				data.text = newcharacter.translate(data.text)
 		'scene_character_event':
 			for i in range(0, scene_characters.size()):
 				data.text = scene_characters[i].translate(data.text)
@@ -874,6 +917,10 @@ func interactive_message(code, type, args):
 func interactive_message_custom(data):
 	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
 	scene.open(data)
+
+func interactive_dialogue_start(code, stage):
+	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
+	scene.dialogue_next(code, stage)
 
 func get_loot_node(): #get_spec_node(input_handler.NODE_LOOTTABLE)
 	var window
@@ -942,42 +989,70 @@ func get_combat_node():
 	var node = get_tree().get_root()
 	if node.has_node('combat'):
 		window = node.get_node('combat')
-		#node.remove_child(window)
 	else:
 		window = load("res://files/combat.tscn").instance()
 		window.name = 'combat'
 		node.add_child(window)
-	#node.add_child(window)
+		#node.call_deferred('add_child',window)
 	window.raise()
 	return window
 
-func add_random_chat_message(person, event):
+func get_person_for_chat(array, event, bonus_args = []):
+	var allowed_array = []
+	var weight = 0
+	for i in array:
+		var person = characters_pool.get_char_by_id(i)
+		if state.get_master() == person:
+			continue
+		weight = 1
+		allowed_array.append([person, weight])
+	
+	var person = weightedrandom(allowed_array)
+	if person != null:
+		add_random_chat_message(person, event, bonus_args)
+
+func add_random_chat_message(person, event, bonus_args = []):
+	if person == state.get_master(): return
 	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
-	node.select_chat_line(person, event)
+	node.select_chat_line(person, event, bonus_args)
+
+func get_random_chat_line(person, event):
+	var node = get_spec_node(input_handler.NODE_CHAT) #get_chat_node()
+	return node.return_chat_line(person, event)
 
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
-func make_local_recruit(args):
-	var newchar = Slave.new()
-	if args == null:
-		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
-	else:
-		var race = 'random'
-		var des_class = null
-		var difficulty = 0
-		if args.has('races'):
-			race = weightedrandom(args.races)
-		if args.has('difficulty'):
-			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
-		newchar.generate_random_character_from_data(race, des_class, difficulty)
-		if args.has("bonuses"):
-			newchar.add_stat_bonuses(args.bonuses)
-		if args.has("type"):
-			newchar.set_slave_category(args.type)
-	if newchar.slave_class == null: newchar.set_slave_category('servant')
-	return newchar
+
+#func make_local_recruit(args):
+#	var newchar = Slave.new()
+#	if args == null:
+#		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
+#	else:
+#		var race = 'random'
+#		var des_class = null
+#		var difficulty = 0
+#		if args.has('races'):
+#			race = weightedrandom(args.races)
+#			if race == 'local':
+#				race = weightedrandom(active_area.races)
+#			elif race == 'beast':
+#				var racearray = []
+#				for i in races.racelist.values():
+#					if i.tags.has('beast') == true:
+#						racearray.append(i.code)
+#				race = racearray[randi()%racearray.size()]
+#		if args.has('difficulty'):
+#			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
+#		newchar.generate_random_character_from_data(race, des_class, difficulty)
+#		if args.has("bonuses"):
+#			newchar.add_stat_bonuses(args.bonuses)
+#		if args.has("type"):
+#			newchar.set_slave_category(args.type)
+#	if newchar.slave_class == null: newchar.set_slave_category('servant')
+#	if newchar.has("is_hirable"): newchar.is_hirable = true
+#	return newchar
 
 func make_story_character(args):
 	var newchar = Slave.new()
@@ -988,15 +1063,17 @@ func update_slave_list():
 	slave_list_node.update()
 
 func update_slave_panel():
-	var node = get_spec_node(input_handler.NODE_SLAVEPANEL)
+	var node = get_spec_node(input_handler.NODE_SLAVEPANEL, null, false)#, false)
 	if node.visible == true:
 		node.update()
+
 
 func check_mouse_in_nodes(nodes):
 	var check = false
 	for i in nodes:
-		if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
-			check = true
+		if weakref(i) != null:
+			if i.get_global_rect().has_point(globals.CurrentScene.get_global_mouse_position()):
+				check = true
 	return check
 
 func text_cut_excessive_lines(text:String):
@@ -1005,7 +1082,7 @@ func text_cut_excessive_lines(text:String):
 	return text
 
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
@@ -1020,7 +1097,8 @@ var node_data = {
 	NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/SkillSelectMenu.tscn")},
 	NODE_EVENT : {name = 'EventNode', mode = 'scene', scene = preload("res://files/TextScene/TextSystem.tscn")},
 	NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
-	NODE_SOUND : {name = 'music', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	NODE_SOUND : {name = 'sound', mode = 'node', no_return = true, node = AudioStreamPlayer, args = {'bus':"Sound"}},
+	NODE_BACKGROUND_SOUND : {name = 'BGSound', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Sound"}},
 	#NODE_REPEATTWEEN : {name = 'repeatingtween', mode = 'node', node = Tween, args = {'repeat':true}},
 	#NODE_TWEEN : {name = 'tween', mode = 'node', node = Tween},
 	NODE_TEXTEDIT : {name = 'texteditnode', mode = 'scene', scene = preload("res://src/TextEditField.tscn")},
@@ -1030,9 +1108,10 @@ var node_data = {
 	NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/TextTooltipPanel.tscn")},
 	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
 	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
+	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
 }
 
-func get_spec_node(type, args = null):
+func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
 	var node = get_tree().get_root()
 	if node.has_node(node_data[type].name) and !node_data[type].has('no_return'):
@@ -1046,7 +1125,7 @@ func get_spec_node(type, args = null):
 				window = node_data[type].node.new()
 		window.name = node_data[type].name
 		node.add_child(window)
-	window.raise()
+	if raise: window.raise()
 	if node_data[type].has('args'): 
 		for param in node_data[type].args:
 			window.set(param, node_data[type].args[param])
@@ -1060,6 +1139,7 @@ func get_spec_node(type, args = null):
 
 var current_level
 var current_stage
+var current_enemy_group
 
 func check_events(action):
 	var eventarray = active_location.scriptedevents
@@ -1067,7 +1147,9 @@ func check_events(action):
 	var eventtriggered = false
 	for i in eventarray:
 		if i.trigger == action && check_event_reqs(i.reqs) == true:
-			if i.has('args'):
+			if i.event == 'custom_event':
+				interactive_message_custom(scenedata.scenedict[i.args])
+			elif i.has('args'):
 				call(i.event, i.args)
 			else:
 				call(i.event)
@@ -1118,15 +1200,27 @@ func check_event_reqs(reqs):
 	
 	return check
 
+func check_location_group():
+	var counter = 0
+	var cleararray = []
+	for i in active_location.group:
+		if state.characters.has(active_location.group[i]): 
+			counter += 1
+		else:
+			cleararray.append(i)
+	
+	for i in cleararray:
+		active_location.erase(i)
+	
+	if counter == 0:
+		return false
+	else:
+		return true
 
 func StartCombat(encounter = null):
-	encounter_lose_scripts.clear()
-	encounter_win_scripts.clear()
 	var data
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
-		encounter_win_scripts = data.win_scripts.duplicate(true)
-		encounter_lose_scripts = data.lose_scripts.duplicate(true)
 	if variables.skip_combat == true:
 		finish_combat()
 		return
@@ -1182,7 +1276,6 @@ func make_enemies(enemydata):
 		enemies = makerandomgroup(Enemydata.enemygroups[enemydata])
 	else:
 		enemies = makespecificgroup(enemydata)
-	
 	return enemies
 
 func makespecificgroup(group):
@@ -1245,13 +1338,21 @@ func makerandomgroup(enemygroup):
 func finish_combat():
 	input_handler.emit_signal("CombatEnded", get_combat_node().encountercode)
 	input_handler.SetMusic("exploration")
-	if check_events("finish_combat") == true:
+	
+	encounter_lose_scripts.clear()
+	
+	if encounter_win_script != null:
+		print(true)
+		var data = scenedata.scenedict[encounter_win_script]
+		interactive_message(encounter_win_script, data.default_event_type, {})
+		encounter_win_script = null
+		return
+	if active_location.has('scriptedevents') && check_events("finish_combat") == true:
 		yield(input_handler, 'EventFinished')
-	if check_random_event() == true:
+	if active_location.has('randomevents') && check_random_event() == true:
 		yield(input_handler, 'EventFinished')
 	
-	if encounter_win_scripts.size() == 0:
-		exploration_node.finish_combat()
+	exploration_node.finish_combat()
 
 
 func combat_defeat():
@@ -1260,8 +1361,26 @@ func combat_defeat():
 			state.characters[active_location.group[i]].hp = 1
 			state.characters[active_location.group[i]].defeated = false
 			state.characters[active_location.group[i]].is_active = true
-	if exploration_node != null:
+	
+	get_dialogue_node().close()
+	if exploration_node != null && active_location.has('progress'):
 		exploration_node.enter_level(current_level)
+
+func character_boss_defeat():
+	var character_race = []
+	var character_class = []
+	var difficulty
+	if active_location.affiliation == 'local':
+		character_race.append([input_handler.weightedrandom(active_area.races), 1])
+	if active_location.has("final_enemy_class"):
+		for i in active_location.final_enemy_class:
+			character_class.append([i, 1])
+	
+	character_race = input_handler.weightedrandom(character_race)
+	character_class = input_handler.weightedrandom(character_class)
+	difficulty = variables.power_adjustments_per_difficulty[active_location.difficulty]
+	difficulty = rand_range(difficulty[0], difficulty[1])
+	input_handler.interactive_message('character_boss_defeat', 'character_event', {characterdata = {type = 'raw',race = character_race, class = character_class, difficulty = difficulty, slave_type = 'slave'}})
 
 
 func finish_quest_dungeon(args):
@@ -1270,7 +1389,6 @@ func finish_quest_dungeon(args):
 func finish_quest_location(args):
 	interactive_message('finish_quest_location', 'quest_finish_event', {locationname = active_location.name})
 	exploration_node.clear_dungeon_confirm()
-
 
 func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
@@ -1334,3 +1452,10 @@ func get_value_node(node):
 	if node.name == 'index': return int(node.text)
 	if node.name == 'formula': return parse_json(node.text)
 	return node.text
+
+func meowingcondition(character):
+	var allow = false
+	if globals.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]):
+		allow = true
+	return allow
+

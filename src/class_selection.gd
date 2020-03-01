@@ -92,3 +92,4 @@ func unlock_class():
 	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
 	state.text_log_add("class", person.translate("[name] has acquired new Class: " + Skilldata.professions[current_class].name))
 	input_handler.PlaySound("ding")
+	input_handler.update_slave_list()

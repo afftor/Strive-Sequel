@@ -9,10 +9,11 @@ const canlast = false
 const giverpart = ''
 const takerpart = ''
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['pet','noorgasm']
 const takertags = ['pet', 'punish', 'pain']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
 	return "Spanking"

@@ -9,13 +9,16 @@ const canlast = true
 const giverpart = 'mouth'
 const takerpart = 'mouth'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'basic'
 const givertags = ['oral','noorgasm']
 const takertags = ['oral','noorgasm']
+const giver_skill = ['oral']
+const taker_skill = ['oral']
+const consent_level = 15
 
 func getname(state = null):
-	if givers.size() > 1 || takers.size() > 1:
+	if givers == null || takers == null:
+		return 'Kiss'
+	elif givers.size() > 1 || takers.size() > 1:
 		return "Double Kiss"
 	else:
 		return "Kiss"

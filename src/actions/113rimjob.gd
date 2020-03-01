@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'mouth'
 const takerpart = 'anus'
 const virginloss = false
-const giverconsent = 'advanced'
-const takerconsent = 'any'
 const givertags = ['oral','noorgasm']
 const takertags = ['anal']
+const giver_skill = ['oral']
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
 	return "Rimjob"

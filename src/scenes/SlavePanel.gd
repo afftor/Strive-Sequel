@@ -63,17 +63,55 @@ func _ready():
 	$DetailsPanel/VBoxContainer/icon.connect("pressed", self, "chooseimage",['portrait'])
 	$DetailsPanel/VBoxContainer/body.connect("pressed", self, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
+	$DetailsPanel/VBoxContainer/masternoun.connect("pressed", self, "custom_masternoun_open")
 	
+	globals.connecttexttooltip($obedlabel/icon, globals.statdata.obedience.descript)
 	
+	globals.connecttexttooltip($loyaltylabel, globals.statdata.loyalty.descript)
+	globals.connecttexttooltip($authoritylabel, globals.statdata.authority.descript)
+	globals.connecttexttooltip($submissionlabel, globals.statdata.submission.descript)
 	
 	$testbutton.connect('pressed', self, "run_test")
 	
 	$BodyPanel/opacity.connect("value_changed", self, "set_body_opacity")
 	$BodyPanel/StatsButton.connect("pressed", self, "stats_panel")
 	
+	globals.connecttexttooltip($DetailsPanel/ConsentLabel, tr("STATCONSENTDESCRIPT"))
+	
 	for i in $job_panel/work_rules.get_children():
 		i.connect('pressed', self, 'set_work_rule', [i.name])
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
+	
+	$HirePanel/HireButton.connect("pressed", self, "hire_character")
+
+func hire_character():
+	if state.characters.size() >= state.get_pop_cap():
+		if state.get_pop_cap() < variables.max_population_cap:
+			input_handler.SystemMessage("You don't have enough rooms")
+		else:
+			input_handler.SystemMessage("Population limit reached")
+		return
+	state.money -= person.calculate_price()
+	input_handler.PlaySound("money_spend")
+	person.is_hirable = false
+	state.add_slave(person)
+	hide()
+	
+	if input_handler.scene_characters.has(person):
+		input_handler.scene_characters.erase(person)
+		input_handler.get_spec_node(input_handler.NODE_DIALOGUE).update_scene_characters()
+	
+	if input_handler.active_faction.has('slaves'):
+		input_handler.active_faction.slaves.erase(person.id)
+	
+	if input_handler.exploration_node.get_node("HirePanel").is_visible_in_tree() == true:
+		input_handler.exploration_node.faction_hire()
+	
+	if person.hire_scene != '':
+		input_handler.active_character = person
+		input_handler.scene_characters.append(person)
+		input_handler.interactive_message(person.hire_scene, '', {})
+	
 	
 
 
@@ -117,8 +155,16 @@ func hide():
 	if state.active_tasks.size() > 0:
 		input_handler.ActivateTutorial('tasklist')
 
+var authority_lines = {
+	low = "Defiance",
+	medium = "Respect",
+	high = 'Reverence',
+}
+
+
 func update():
-	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler"):
+	if person == null:return
+	for i in get_tree().get_nodes_in_group("hide_master") + get_tree().get_nodes_in_group("hide_stranger") + get_tree().get_nodes_in_group("hide_traveler")+ get_tree().get_nodes_in_group("hide_servant"):
 		i.visible = true
 	if state.characters.has(person.id):
 		type = 'slave'
@@ -130,6 +176,8 @@ func update():
 			type = 'traveler'
 			for i in get_tree().get_nodes_in_group("hide_traveler"):
 				i.hide()
+		for i in get_tree().get_nodes_in_group("hide_servant"):
+			i.hide()
 	else:
 		type = 'stranger'
 		for i in get_tree().get_nodes_in_group("hide_stranger"):
@@ -147,12 +195,12 @@ func update():
 	$BodyPanel.visible = $BodyPanel/Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
 	globals.connecttexttooltip($character_class, tr(person.slave_class.to_upper()+"CLASSDESCRIPT"))
-	if person.location == 'travel':
+	if person.location != 'mansion':
 		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	if person.work != '':
 		$currentwork.text = races.tasklist[person.work].name
 	else:
-		$currentwork.text = ''
+		$currentwork.text = tr('TASKREST')
 	for i in $progress.get_children():
 		i.text = str(floor(person.get(i.name)))
 		if person.get(i.name+'_bonus') > 0:
@@ -163,7 +211,10 @@ func update():
 			i.text += str(person.get(i.name+'_bonus'))
 		else:
 			i.set("custom_colors/font_color", globals.hexcolordict.white) 
-		i.text +=  '/' + str(person.get(i.name +"_factor")*20)
+		if i.name != 'sexuals':
+			i.text +=  '/' + str(person.get(i.name +"_factor")*20)
+		else:
+			i.text += "/100"
 	for i in $factors.get_children():
 		if i.name in ['base_exp','food_consumption']:
 			i.get_node("Label").text = str(floor(person.get(i.name)))
@@ -185,54 +236,41 @@ func update():
 	$factors/base_exp/Label.set("custom_colors/font_color", exp_color)
 	$factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp()) 
 	
-#	$mentality/loyal.value = person.loyal
-#	$mentality/loyal/Label.text = str(floor(person.loyal)) + '/' + '100'
-	$mentality/obedience.value = person.obedience
-	$mentality/obedience/Label.text = str(floor(person.obedience)) + '/' + '100'
-	$mentality/obedience/decay.text = 'Daily Decay: ' + str(round(person.get_obed_reduction()*24))
-	$mentality/fear.value = person.fear
-	$mentality/fear/Label.text = str(floor(person.fear)) + '/' + '100'
-	$mentality/fear/decay.text = 'Daily Decay: ' + str(round(person.get_fear_reduction()*24))
+	
+	if person.loyalty < 100 && person.submission < 100:
+		$obedlabel.text = str(ceil(person.obedience))
+	else:
+		$obedlabel.text = "∞"
+	if person.obedience > 0:
+		$obedlabel/icon.texture = load("res://assets/images/gui/obed_good.png")
+	else:
+		$obedlabel/icon.texture = load("res://assets/images/gui/obed_bad.png")
+	
+	#$loyaltylabel.text = str(person.loyalty) + "/100"
+	#$submissionlabel.text = str(person.submission) + "/100"
+	$loyaltylabel.value = person.loyalty
+	$submissionlabel.value = person.submission
+	var authority
+	if person.authority < person.authority_threshold()/2:
+		authority = 'low'
+	elif person.authority < person.authority_threshold():
+		authority = 'medium'
+	else:
+		authority = 'high'
+	text = authority_lines[authority]
+	
+	$authoritylabel.text = 'Authority: ' + text
+	
+	
+	
 	$base_stats/lust.value = person.lust
 	$base_stats/lust.max_value = person.lustmax
 	$base_stats/lust/Label.text = str(floor(person.lust)) + '/' + str(person.lustmax)
 	$productivity/Label.text = str(person.get_stat('productivity')) + "%"
-	$character_class.text = person.slave_class.capitalize()
-	
-	if person.obedience > 50:
-		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-	elif person.obedience > person.brave_factor*7:
-		$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-	else:
-		if person.check_escape_chance() == true:
-			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-		else:
-			$mentality/obedience/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
-	$obedlabel.set("custom_colors/font_color", $mentality/obedience/Label.get("custom_colors/font_color"))
-	if person.fear > 50:
-		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.green)
-	elif person.fear > person.brave_factor*7:
-		$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.yellow)
-	else:
-		if person.check_escape_chance() == true:
-			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.red)
-		else:
-			$mentality/fear/Label.set("custom_colors/font_color",globals.hexcolordict.gray)
-	$fearlabel.set("custom_colors/font_color", $mentality/fear/Label.get("custom_colors/font_color"))
+	$character_class.text = globals.slave_class_names[person.slave_class]
 	
 	
 	text = globals.statdata.obedience.descript
-	if person.has_status('no_obed_reduce'):
-		text += "\n\n[color=green]No decay[/color]"
-	else:
-		text += '\n\n[color=yellow]Expected daily decay: ' + str(round(person.get_obed_reduction()*24)) + "[/color]"
-	globals.connecttexttooltip($mentality/obedience, text)
-	text = globals.statdata.fear.descript
-	if person.has_status('no_fear_reduce'):
-		text += "\n\n[color=green]No decay[/color]"
-	else:
-		text += '\n\n[color=yellow]Expected daily decay: ' + str(round(person.get_fear_reduction()*24)) + "[/color]"
-	globals.connecttexttooltip($mentality/fear, text)
 	
 	text = ''
 	$factors/food_consumption/Label.text = str(person.food_consumption)
@@ -279,7 +317,15 @@ func update():
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($traits)
 		newnode.text = trait.name
-		globals.connecttexttooltip(newnode, person.translate(trait.descript))
+		var traittext = person.translate(trait.descript)
+		for j in trait.reqs:
+			if j.has('code') && j.code == 'action_type':
+				traittext += "\n\nDisliked actions:[color=aqua] "
+				for k in j.value:
+					#print(globals.sex_actions_dict[k].getname())
+					traittext += globals.sex_actions_dict[k].getname() + ", "
+				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+		globals.connecttexttooltip(newnode, traittext)
 	
 	globals.ClearContainer($buffscontainer)
 	for i in person.get_mansion_buffs():
@@ -304,6 +350,11 @@ func update():
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
+	$HirePanel/RichTextLabel.bbcode_text = person.translate("You can hire [name] for [price] gold.")
+	$HirePanel/HireButton.disabled = person.calculate_price() > state.money
+	$HirePanel.visible = person.is_hirable
+	
+	
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
 
@@ -323,7 +374,7 @@ func make_location_description():
 		active_location_name = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.travel_target.location].name
 	
 	if person.location == 'travel':
-		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(round(person.travel_time / person.travel_tick())) + ' hours.'
+		text = '[name] currently relocating to [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]. [He] will be there in " + str(ceil(person.travel_time / person.travel_tick())) + ' hours.'
 	else:
 		text = '[name] currently positioned at [color=yellow]' + active_location_name + "[/color], which is located at [color=aqua]" + active_area_name + "[/color]"
 	return text
@@ -353,7 +404,7 @@ func open_jobs_window():
 	globals.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 	currentjob = null
 	var restbutton = globals.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
-	restbutton.text = "Rest"
+	restbutton.text = tr("TASKREST")
 	restbutton.connect("pressed", self, 'set_rest')
 	
 	for i in races.tasklist.values():
@@ -420,14 +471,14 @@ func show_job_details(job):
 
 func set_rest():
 	person.remove_from_task()
-	person.work = ''
 	$job_panel.hide()
-	open(person)
+	update()
 
 func select_job(job, production):
 	person.assign_to_task(job.code, production)
 	$job_panel.hide()
-	open(person)
+	update()
+	input_handler.slave_list_node.update()
 
 func set_work_rule(rule):
 	var setting = get_node("job_panel/work_rules/"+rule).pressed
@@ -535,7 +586,7 @@ func select_skill_target(skillcode):
 
 func use_skill(target):
 	person.use_social_skill(active_skill, target)
-	open(person)
+	update()
 
 func custom_description_open():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
@@ -543,7 +594,7 @@ func custom_description_open():
 
 func custom_description_set(text):
 	person.bonus_description = text
-	open(person)
+	update()
 
 func custom_nickname_open():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
@@ -551,10 +602,30 @@ func custom_nickname_open():
 
 func custom_nickname_set(text):
 	person.nickname = text
-	open(person)
+	update()
+
+func custom_masternoun_open():
+	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
+	node.open(self, 'custom_masternoun_set', person.masternoun)
+
+func custom_masternoun_set(text):
+	person.masternoun = text
+	update()
+
+var universal_skills = ['oral','anal','petting']
 
 func open_customize_button():
 	$DetailsPanel.show()
+	globals.ClearContainer($DetailsPanel/SexSkills)
+	$DetailsPanel/ConsentLabel.text = "Consent: " + str(floor(person.consent))
+	for i in person.sex_skills:
+		if person.sex_skills[i] == 0 && universal_skills.find(i) < 0:
+			continue
+		var newbutton = globals.DuplicateContainerTemplate($DetailsPanel/SexSkills)
+		newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
+		newbutton.get_node("ProgressBar").value = person.sex_skills[i]
+		newbutton.get_node("ProgressBar/Label").text = str(floor(person.sex_skills[i])) + '/100'
+		globals.connecttexttooltip(newbutton,  person.translate(tr("SEXSKILL"+i.to_upper()+"DESCRIPT")) + "\nCurrent level:" + str(floor(person.sex_skills[i])))
 
 func show_gear_gui():
 	var inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY, [{mode = 'character', person = person}]) #input_handler.ShowInentory({mode = 'character', person = person})
@@ -624,10 +695,10 @@ func return_to_mansion():
 	if variables.instant_travel == false:
 		person.location = 'travel'
 		person.travel_target = {area = '', location = 'mansion'}
-		person.travel_time = max(1, round(active_area.travel_time + active_location.travel_time - person.travel_time))
+		person.travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - person.travel_time)))
 	else:
 		person.location = 'mansion'
-	open(person)
+	update()
 	input_handler.update_slave_list()
 
 

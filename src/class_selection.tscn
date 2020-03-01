@@ -154,7 +154,7 @@ margin_top = 611.0
 margin_right = 732.0
 margin_bottom = 833.0
 custom_fonts/normal_font = ExtResource( 9 )
-custom_colors/default_color = Color( 0.764706, 0.745098, 0.745098, 1 )
+custom_colors/default_color = Color( 1, 0.721569, 0.196078, 1 )
 bbcode_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel"]

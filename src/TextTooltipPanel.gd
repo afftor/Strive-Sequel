@@ -6,6 +6,9 @@ var prevnode
 
 var character = Reference
 
+var Panel_x = 598
+var Text_x = 565
+
 func _process(delta):
 	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
@@ -27,11 +30,19 @@ func showup(node, text):
 	$RichTextLabel.rect_size.y = 10
 	$RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	
-	yield(get_tree(), 'idle_frame')
 	
+	if $RichTextLabel.bbcode_text.length() < 30:
+		$RichTextLabel.rect_size.x = Text_x/2
+		self.rect_size.x = Panel_x/2
+		$RichTextLabel.bbcode_text = '[center]'+$RichTextLabel.bbcode_text+'[/center]'
+	else:
+		$RichTextLabel.rect_size.x = Text_x
+		self.rect_size.x = Panel_x
+	yield(get_tree(), 'idle_frame')
+	if !weakref(node).get_ref():
+		return
 	rect_size.y = $RichTextLabel.get_v_scroll().get_max() + 50
 	$RichTextLabel.rect_size.y = rect_size.y
-	
 	
 	
 	var pos = node.get_global_rect()

@@ -346,8 +346,8 @@ func names(group):
 				text += ', '
 			elif takers.find(i) == takers.size()-2:
 				text += ' and '
-		if i.person.professions.has("master") == false:
-			text += "'s"
+#		if i.person.professions.has("master") == false:
+#			text += "'s"
 	return text
 
 #no recursive functions allowed in godot so this looks semi-horrible, but whatever
@@ -1154,6 +1154,9 @@ func ass(group):
 		array2 = ["ass","butt","backside","rear"] if group.size() == 1 else ["asses","butts","backsides","rears"]
 		var mp = i.person
 		#size/age descriptors
+		
+		if mp.skin_coverage.find('fur') >= 0:
+			array1 += ['fuzzy','fluffy','furry']
 		if mp.ass_size == 'flat':
 			array1 += ["flat","compact"]
 			if mp.age == 'teen':
@@ -1235,6 +1238,8 @@ func hips(group):
 		array2 = ["hips"]
 		var mp = i.person
 		#size/age descriptors
+		if mp.skin_coverage.find('fur') >= 0:
+			array1 += ['fuzzy','fluffy','furry']
 		if mp.sex == 'male' && mp.ass_size in ['flat','small']:
 			array1 += ["trim","slim"]
 		elif mp.ass_size == 'flat':
@@ -1296,6 +1301,8 @@ func tits(group):
 		array2 = ["tits","boobs","breasts","chest"] if group.size() == 1 else ["tits","boobs","breasts","chests"]
 		var mp = i.person
 		#size/age descriptors
+		if mp.skin_coverage.find('fur') >= 0:
+			array1 += ['fuzzy','fluffy','furry']
 		if mp.tits_size == 'masculine':
 			array1 += ["muscular","strong","toned"]
 			array2 = ["chest","pecs"] if group.size() == 1 else ["chests","pecs"]

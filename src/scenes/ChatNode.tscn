@@ -1,37 +1,73 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/ChatNode.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0013_class-panel.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
 
-[node name="ChatNode" type="VBoxContainer"]
-margin_left = 1409.0
-margin_top = 59.0
-margin_right = 1911.0
-margin_bottom = 491.0
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 617, 136 )
+margin_left = 15.0
+margin_right = 14.0
+margin_top = 15.0
+margin_bottom = 13.0
+
+[node name="Panel" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 1396.0
+margin_top = 33.0
+margin_right = 1898.0
+margin_bottom = 548.0
 mouse_filter = 2
 script = ExtResource( 1 )
 
-[node name="Button" type="TextureRect" parent="."]
-visible = false
-margin_left = 402.0
-margin_right = 502.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 488.0
+margin_bottom = 351.0
 mouse_filter = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture = ExtResource( 2 )
+
+[node name="Button" type="Panel" parent="VBoxContainer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.678431 )
+margin_right = 488.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 130 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Button"]
+margin_left = 375.413
+margin_top = 20.044
+margin_right = 475.413
+margin_bottom = 120.044
+mouse_filter = 2
+texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
-[node name="Text" type="Label" parent="Button"]
-margin_left = -353.0
-margin_top = 14.0
-margin_right = 10.0
-margin_bottom = 99.0
-grow_horizontal = 0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Hello Master!"
-align = 2
+[node name="Text" type="Label" parent="VBoxContainer/Button"]
+margin_left = 14.0
+margin_top = 13.3366
+margin_right = 372.0
+margin_bottom = 112.337
+text = "I think I've learned a lot... or have I?"
 valign = 1
 autowrap = true
+clip_text = true
+
+[node name="Name" type="Label" parent="VBoxContainer/Button"]
+margin_left = 376.74
+margin_top = 8.87409
+margin_right = 476.74
+margin_bottom = 32.8741
+text = "Gondubaga"
+align = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_left = 239.096
+margin_top = -28.6297
+margin_right = 501.096
+margin_bottom = 1.37035
+text = "Log"

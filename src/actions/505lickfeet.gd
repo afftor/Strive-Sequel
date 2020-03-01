@@ -8,10 +8,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'mouth'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['noorgasm']
 const takertags = ['shame', 'punish', 'mouth','noorgasm']
+const giver_skill = []
+const taker_skill = ['oral']
+const consent_level = 30
 
 func getname(state = null):
 	return "Order Lick feet"

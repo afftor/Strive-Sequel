@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'anus'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['pet', 'noorgasm']
 const takertags = ['pet', 'anal']
+const giver_skill = ['petting']
+const taker_skill = ['anal']
+const consent_level = 25
 
 func getname(state = null):
 	return "Ass Fingering"

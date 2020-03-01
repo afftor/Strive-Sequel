@@ -15,13 +15,21 @@ var backgrounds = {
 	forge = load("res://assets/images/backgrounds/forge.png"),
 	market = load("res://assets/images/backgrounds/market.png"),
 	hall = load("res://assets/images/backgrounds/townhall.png"),
+	
+	cave_1 = load("res://assets/images/backgrounds/cave1.png"),
+	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
+	cave_3 = load("res://assets/images/backgrounds/cave3.png"),
+	
+	village = load("res://assets/images/backgrounds/village.png"),
 	#scenes
 	}
 
 var scenes = {
+	no_image = load("res://assets/images/scenes/image_wip.png"),
 	abuse = load("res://assets/images/scenes/abuse.png"),
 	bosscapturefemale = load("res://assets/images/scenes/bosscapturefemale.png"),
 	bosscapturemale = load("res://assets/images/scenes/bosscapturemale.png"),
+	cell = load("res://assets/images/scenes/cell.png"),
 	charm = load("res://assets/images/scenes/charm.png"),
 	chest = load("res://assets/images/scenes/chest.png"),
 	childbirth = load("res://assets/images/scenes/childbirth.png"),
@@ -30,6 +38,7 @@ var scenes = {
 	daisystart = load("res://assets/images/scenes/daisystart.png"),
 	dungeonclear = load("res://assets/images/scenes/dungeonclear.png"),
 	execution = load("res://assets/images/scenes/execution.png"),
+	exotic_slaver = load("res://assets/images/scenes/exotic_slaver.png"),
 	fear = load("res://assets/images/scenes/fear.png"),
 	locationpurchase = load("res://assets/images/scenes/locationpurchase.png"),
 	mindcontrol = load("res://assets/images/scenes/mindcontrol.png"),
@@ -42,6 +51,7 @@ var scenes = {
 	public_punish = load("res://assets/images/scenes/public_punish.png"),
 	public_sex = load("res://assets/images/scenes/public_sex.png"),
 	punish = load("res://assets/images/scenes/punish.png"),
+	rebels_furry = load("res://assets/images/scenes/rebels_furry.png"),
 	recruit = load("res://assets/images/scenes/recruit.png"),
 	sedation = load("res://assets/images/scenes/sedation.png"),
 	seduce = load("res://assets/images/scenes/seduce.png"),
@@ -49,9 +59,13 @@ var scenes = {
 	sexreward = load("res://assets/images/scenes/sexreward.png"),
 	shackles = load("res://assets/images/scenes/shackles.png"),
 	slaveescape = load("res://assets/images/scenes/slaveescape.png"),
+	slavers_elf = load("res://assets/images/scenes/slavers_elf.png"),
+	slave_decision = load("res://assets/images/scenes/slave_decision.png"),
 	souleat = load("res://assets/images/scenes/souleat.png"),
 	succubuslust = load("res://assets/images/scenes/succubuslust.png"),
+	trap = load("res://assets/images/scenes/trap.png"),
 	warn = load("res://assets/images/scenes/warn.png"),
+	wolves_skirmish = load("res://assets/images/scenes/wolves_skirmish.png"),
 }
 
 var sprites = {

@@ -7,6 +7,9 @@ var is_person = true
 var is_active = true
 var is_players_character = false
 var is_known_to_player = false #for purpose of private parts
+var is_hirable = false #allows character to be hired from its tab
+
+var hire_scene = ''
 
 var unique
 
@@ -31,6 +34,8 @@ var sex = ''
 var slave_class = ''
 var personality = ''
 
+var chat_settings = {}
+
 var professions = []
 var social_skills = []
 var social_cooldowns = {}
@@ -47,6 +52,8 @@ var effects = []
 
 var selectedskill = 'attack'
 
+var skills_received_today = []
+
 var static_effects = []
 var temp_effects = []
 var triggered_effects = []
@@ -60,13 +67,16 @@ var lust_mods = []
 var bonuses = {}
 var counters = []
 
-var obedience = 100.0 setget obed_set, obed_get
-var fear = 100.0 setget fear_set, fear_get
+var authority = 0.0
+var authority_mod = 1.0
+var obedience = 0.0
+var loyalty = 0.0 setget loyalty_set
+var submission = 0.0 setget submission_set
 var lust = 0.0 setget lust_set, lust_get
-var loyal = 0.0
+var loyal = 0.0 #unused except for interactions: to be removed
 var lustmax = 50
-var obed_degrade_mod = 1.0
-var fear_degrade_mod = 1.0
+var loyalty_degrade_mod = 1.0
+var submission_degrade_mod = 1.0
 var lusttick = variables.basic_lust_per_tick
 
 var hp = 100 setget hp_set
@@ -75,8 +85,19 @@ var hpmax = 100 setget ,get_hp_max
 var mp = 50 setget mp_set
 var mpmax = 50 setget ,get_mana_max
 
-var base_exp = 0
+var base_exp = 0 setget base_exp_set
 var exp_mod = 1
+
+func loyalty_set(value):
+	loyalty = clamp(value, 0, 100)
+
+func submission_set(value):
+	submission = clamp(value, 0, 100)
+
+func base_exp_set(value):
+	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
+		input_handler.add_random_chat_message(self, 'exp_for_level')
+	base_exp = value
 
 #enemy combat/reward data
 var xpreward = 10
@@ -132,16 +153,15 @@ var physics := 0.0 setget physics_set
 var physics_bonus := 0.0
 var wits := 0.0 setget wits_set
 var wits_bonus := 0.0
-var sexuals := 0.0 setget sexuals_set
+var sexuals := 0.0 setget sexuals_set, get_sexuals
 var sexuals_bonus := 0.0
 var charm := 0.0 setget charm_set
 var charm_bonus := 0.0
 #constant stats
-var dirtiness = 1
 var physics_factor = 1 setget phy_f_set
 var magic_factor = 1 setget mag_f_set
 var tame_factor = 1 setget tam_f_set
-var brave_factor = 1 setget brv_f_set
+var timid_factor = 1 setget tim_f_set
 var growth_factor = 1 setget gro_f_set
 var charm_factor = 1 setget cha_f_set
 var wits_factor = 1 setget wit_f_set
@@ -212,6 +232,8 @@ var mouth_virgin = true
 #tasks
 var sleep = ''
 var work = ''
+var previous_work = ''
+var workproduct
 var work_rules = {ration = false, shifts = false, constrain = false}
 
 var shackles_chance = null
@@ -219,7 +241,9 @@ var shackles_chance = null
 var area = ''
 var location = 'mansion'
 var travel_target = {area = '', location = ''}
-var travel_time = 0
+var travel_time = 0 setget set_travel_time
+var initial_travel_time = 0
+
 
 #communications
 var relatives = {}
@@ -228,6 +252,8 @@ var tags = []
 var messages = []
 
 var sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}}
+var sex_skills = {petting = 0, penetration = 0, pussy = 0, oral = 0, anal = 0, tail = 0}
+var consent = 0
 var relations = {}
 var metrics = {ownership = 0, jail = 0, mods = 0, brothel = 0, sex = 0, partners = [], randompartners = 0, item = 0, spell = 0, orgy = 0, threesome = 0, win = 0, capture = 0, goldearn = 0, foodearn = 0, manaearn = 0, birth = 0, preg = 0, vag = 0, anal = 0, oral = 0, roughsex = 0, roughsexlike = 0, orgasm = 0}
 var lastsexday
@@ -255,14 +281,22 @@ func charm_set(value):
 func sexuals_set(value):
 	sexuals = min(value, sexuals_factor*20)
 
+func get_sexuals():
+	var array = sex_skills.values()
+	array.sort()
+	array.invert()
+	return (array[0] + array[1] + array[2])/3
+
 #stub for bonus system
 func get_stat(statname):
 	var res = get(statname)
 	if variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
-	elif statname in ['physics','wits','charm','sexuals']:
+	elif statname in ['physics','wits','charm']:
 		res = get(statname) + get(statname+"_bonus")
+	elif statname == 'sexuals':
+		res = get_sexuals() + get("sexuals_bonus")
 	return res
 
 func add_stat_bonuses(ls:Dictionary):
@@ -386,9 +420,21 @@ func get_mods():
 		if bonuses.has('mod' + r + '_mul'): res[r] *= bonuses['mod' + r + '_mul']
 	return res
 
+func get_weapon_range():
+	if gear.rhand == null:
+		return 'melee'
+	else:
+		var weapon = state.items[gear.rhand]
+		return weapon.weaponrange
+
 func get_damage_mod(skill:Dictionary):
 	#stub. needs filling
+	if skill.type == 'social':return 1
 	var res = self.damage_mods['all']
+	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= self.damage_mods['melee']
+	if skill.target_range == 'weapon' and get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= self.damage_mods['melee']
+	if skill.target_range == 'any' and damage_mods.has('ranged'): res *= self.damage_mods['ranged']
+	if skill.target_range == 'weapon' and get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= self.damage_mods['ranged']
 	return res
 
 #some AI-related functions
@@ -417,7 +463,27 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	create(gendata.race, gendata.sex, gendata.age)
 	
 	if randf() <= 0.003:
-		pass #make check for easter egg character
+		var array = []
+		for i in world_gen.easter_egg_characters.values():
+			var temprace = gendata.race
+			if globals.race_groups.has(temprace):
+				temprace = globals.race_groups[temprace][randi()%globals.race_groups[temprace].size()]
+			if state.easter_egg_characters_acquired.has(i.name) == false && (temprace == 'random' || gendata.race == i.race):
+				var char_exists = false
+				for k in characters_pool.characters.values():
+					if k.unique == i.code:
+						char_exists = true
+						break
+				if char_exists == false:
+					array.append(i)
+		if array.size() != 0:
+			var chardata = array[randi()%array.size()]
+			create(chardata.race, chardata.sex, chardata.age)
+			unique = chardata.code
+			for i in chardata:
+				if !i in ['code','class_category']:
+					self[i] = chardata[i]
+			desired_class = chardata.class_category
 	
 	var slaveclass = desired_class
 	if slaveclass == null:
@@ -434,11 +500,11 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	while difficulty > 1:
 		var array = []
 		if randf() >= 0.75:
-			array = ['physics_factor', 'magic_factor', 'wits_factor', 'brave_factor', 'sexuals_factor', 'charm_factor']
+			array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'sexuals_factor', 'charm_factor']
 		else:
 			match slaveclass:
 				'combat':
-					array = ['physics_factor', 'brave_factor']
+					array = ['physics_factor']
 				'magic':
 					array = ['wits_factor', 'magic_factor']
 				'social', 'sexual':
@@ -484,10 +550,20 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	var traitarray = []
 	#assign traits
 	for i in Traitdata.sex_traits.values():
-		if i.starting == true && checkreqs(i.acquire_reqs) == true:
+		if i.negative == true && i.random_generation == true && checkreqs(i.acquire_reqs) == true:
 			traitarray.append(i)
-	var rolls = 1
-	if randf() >= 0.8: rolls = 2
+	var rolls = 2
+	while rolls > 0:
+		var number = randi()%traitarray.size()
+		var newtrait = traitarray[number]
+		sex_traits.append(newtrait.code)
+		traitarray.remove(number)
+		rolls -= 1
+	traitarray.clear()
+	rolls = 1
+	for i in Traitdata.sex_traits.values():
+		if i.negative == false && i.random_generation == true && checkreqs(i.acquire_reqs) == true:
+			traitarray.append(i)
 	while rolls > 0:
 		var newtrait = traitarray[randi()%traitarray.size()]
 		sex_traits.append(newtrait.code)
@@ -572,11 +648,12 @@ func create(temp_race, temp_gender, temp_age):
 	sex = temp_gender
 	age = temp_age
 	
+	
+	
 	if temp_race == 'random':
 		race = get_random_race()
-	elif temp_race == 'Halfbreeds':
-		race = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki']
-		race = race[randi()%race.size()]
+	elif globals.race_groups.has(temp_race):
+		race = globals.race_groups[temp_race][randi()%globals.race_groups[temp_race].size()]
 	if temp_gender == 'random':
 		sex = get_random_sex()
 	if temp_age == 'random':
@@ -674,14 +751,22 @@ func get_racial_features():
 	
 	var array = []
 	for i in race_template.diet_love:
-		array.append({name = i, weight = race_template.diet_love[i]})
-	food_love = input_handler.weightedrandom(array).name
+		array.append([i, race_template.diet_love[i]])
+	food_love = input_handler.weightedrandom(array)
 	for i in race_template.diet_hate:
 		if race_template.diet_hate[i] >= randf()*100 && i != food_love:
 			food_hate.append(i)
 	if race_template.tags.has("multibreasts") && globals.globalsettings.furry_multiple_nipples == true:
 		multiple_tits = variables.furry_multiple_nipples_number
-
+	
+	if race_template.has('personality'):
+		array.clear()
+		for i in race_template.personality:
+			array.append([i, race_template.personality[i]])
+		personality = input_handler.weightedrandom(array)
+	
+	if body_shape == 'shortstack':
+		add_trait('small')
 
 func get_sex_features():
 	match sex:
@@ -724,6 +809,11 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 				check = input_handler.operate(i.operant, self.get_stat(i.type), i.value)
 		'has_profession':
 			check = professions.has(i.value) == i.check
+		'has_any_profession':
+			check = false
+			for k in professions:
+				if i.value.has(k):
+					check = true
 		'race_is_beast':
 			check = races.racelist[race].tags.has('beast') == i.check
 		'is_shortstack':
@@ -740,11 +830,14 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'is_free':
 			check = travel_time == 0 && location == 'mansion' && tags.has('selected') == false
 		'is_at_location':
-			check = travel_time == 0 && location == i.value
+			if variables.allow_remote_intereaction == true: check = true
+			else: check = travel_time == 0 && location == i.value
 		'is_id':
 			check = input_handler.operate(i.operant, id, i.value)
 		'long_tail':
 			check = globals.longtails.has(tail)
+		'long_ears':
+			check = globals.longears.has(ears)
 		'cant_spawn_naturally':
 			check = !ignore_npc_stats_gear
 		'sex':
@@ -766,7 +859,7 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'population':
 			check = input_handler.operate(i.operant, state.characters.size(), i.value)
 		'random':
-			check = globals.rng.randf() <= calculate_number_from_string_array(i.chance)
+			check = globals.rng.randf()*100 <= calculate_number_from_string_array(i.chance)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -932,6 +1025,7 @@ func show_race_description():
 			text += globals.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
+	
 	return text
 
 var stat_description = {
@@ -942,8 +1036,8 @@ var stat_description = {
 func get_random_race():
 	var array = []
 	for i in races.racelist.values():
-		array.append({name = i.code, weight = i.global_weight})
-	return input_handler.weightedrandom(array).name
+		array.append([i.code, i.global_weight])
+	return input_handler.weightedrandom(array)
 
 func get_random_sex():
 	if randf()*100 <= globals.globalsettings.malechance:
@@ -956,8 +1050,8 @@ func get_random_sex():
 func get_random_age():
 	var array = []
 	for i in ['teen','adult','mature']:
-		array.append({name = i, weight = variables.get(i+"_age_weight")})
-	return input_handler.weightedrandom(array).name
+		array.append([i, variables.get(i+"_age_weight")])
+	return input_handler.weightedrandom(array)
 
 
 
@@ -1072,7 +1166,9 @@ func unlearn_skill(skill):
 
 func cooldown_tick():
 	
+	
 	items_used_today.clear()
+	skills_received_today.clear()
 	
 	var cleararray = []
 	for i in social_cooldowns:
@@ -1089,6 +1185,7 @@ func cooldown_tick():
 		daily_cooldowns[i] -= 1
 		if daily_cooldowns[i] <= 0:
 			cleararray.append(i)
+			combat_skill_charges.erase(i)
 	
 	for i in cleararray:
 		daily_cooldowns.erase(i)
@@ -1103,24 +1200,22 @@ func skill_tooltip(skillcode):
 	
 	return text
 
-var stat_connections = {
-	physics = 'physics_factor',
-	wits = 'wits_factor',
-	sexuals = 'sexuals_factor',
-	charm = 'charm_factor'
-}
 
-func raise_stat(stat, value):
-	var cap = self.get(stat_connections[stat])*20
-	if self.get(stat) + value <= cap:
-		self.set(stat, self.get(stat) + value)
-	else:
-		return false
+#func raise_stat(stat, value):
+#	var cap = self.get(stat_connections[stat])*20
+#	if self.get(stat) + value <= cap:
+#		self.set(stat, self.get(stat) + value)
+#	else:
+#		return false
+
 
 func assign_to_task(taskcode, taskproduct, iterations = -1):
-	var task = races.tasklist[taskcode]
 	#remove existing work
 	remove_from_task()
+	if taskcode == '':
+		work = ''
+		return
+	var task = races.tasklist[taskcode]
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
 	for i in state.active_tasks:
@@ -1129,7 +1224,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 			i.workers.append(self.id)
 			work = i.code
 	
-	
+	workproduct = taskproduct
 	if taskexisted == true:
 		return
 	#make new task if it didn't exist
@@ -1139,12 +1234,18 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	state.active_tasks.append(dict)
 	state.emit_signal("task_added")
 
-func remove_from_task():
+func remove_from_task(remember = false):
 	if work != '':
 		for i in state.active_tasks:
 			if i.code == work:
 				i.workers.erase(self.id)
+	if remember == true && work != 'travel':
+		previous_work = work
 	work = ''
+
+func return_to_task():
+	assign_to_task(previous_work, workproduct)
+	previous_work = ''
 
 func travel_tick():
 	var value = 1
@@ -1152,17 +1253,32 @@ func travel_tick():
 		value = 1 + variables.stable_boost_per_level * state.upgrades.stables
 	return value
 
-func get_obed_reduction():
-	var value = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
-	if location != 'mansion':
-		value = value/4
-	return value*variables.obedience_modifier
+func calculate_travel_time(location1, location2):
+	var travel_value1 = 0 #time to travel to location from mansion
+	var travel_value2 = 0 #time to return to mansion from location
+	if location1 != 'mansion':
+		travel_value1 = world_gen.get_area_from_location_code(location1).travel_time + world_gen.get_location_from_code(location1).travel_time
+	if location2 != 'mansion':
+		travel_value2 = world_gen.get_area_from_location_code(location2).travel_time + world_gen.get_location_from_code(location2).travel_time
+	
+	return travel_value1 + travel_value2
 
-func get_fear_reduction():
-	var value = 100.0 * get_stat('fear_degrade_mod')/max((168 - 24*brave_factor), 24)#0.35 + 0.35*brave_factor #2 days min, 6 days max
-	if location != 'mansion':
-		value = value/4
-	return value*variables.fear_modifier
+
+func set_travel_time(value):
+	travel_time = value
+	initial_travel_time = value
+
+#func get_obed_reduction():
+#	var value = 100.0 * get_stat('obed_degrade_mod')/(24 + 24*tame_factor) #2.43 - 0.35*tame_factor #2 days min, 6 days max
+#	if location != 'mansion':
+#		value = value/4
+#	return value*variables.obedience_modifier
+#
+#func get_fear_reduction():
+#	var value = 100.0 * get_stat('fear_degrade_mod')/max((168 - 24*timid_factor), 24)#0.35 + 0.35*timid_factor #2 days min, 6 days max
+#	if location != 'mansion':
+#		value = value/4
+#	return value*variables.fear_modifier
 
 
 var prepared_act = []
@@ -1193,13 +1309,16 @@ func tick():
 	self.lust += get_stat('lusttick')
 	
 	
-	var obed_reduce = get_obed_reduction()
-	var fear_reduce = get_fear_reduction()
 	
-	if !has_status('no_obed_reduce'):
-		self.obedience -= obed_reduce
-	if !has_status('no_fear_reduce'):
-		self.fear -= fear_reduce
+	if loyalty < 100.0 && !has_status('no_loyal_reduction'):
+		self.loyalty -= ((12.0-1*tame_factor)/24)*loyalty_degrade_mod
+	if submission < 100.0:
+		self.submission -= ((12.0-1*timid_factor)/24)*submission_degrade_mod
+	
+#	if !has_status('no_obed_reduce'):
+#		self.obedience -= obed_reduce
+#	if !has_status('no_fear_reduce'):
+#		self.fear -= fear_reduce
 	if work == 'travel':
 		#fatigue -= 1
 		if travel_time > 0:
@@ -1211,9 +1330,12 @@ func tick():
 				state.emit_signal("slave_arrived", self)
 				input_handler.PlaySound("ding")
 				if location == 'mansion':
-					work = ''
+					return_to_task()
 					state.text_log_add("travel", get_short_name() + " returned to mansion. ")
 				else:
+#					if state.capitals.has(location):
+#						state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.capitals[location].area].capital_name)
+#					else:
 					state.text_log_add("travel", get_short_name() + " arrived at location: " + state.areas[state.location_links[location].area][state.location_links[location].category][location].name)
 		
 		return
@@ -1237,6 +1359,8 @@ func tick():
 var last_escape_day_check = 0
 
 func hp_set(value):
+	if hp <= 0 && value <= 0:
+		return
 	hp = min(value, self.hpmax)
 	if displaynode != null:
 		displaynode.update_hp()
@@ -1259,7 +1383,7 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	if globals.combat_node == null:
+	if globals.combat_node == null && location == 'mansion':
 		is_active = false
 		print('warning! char died outside combat')
 		characters_pool.call_deferred('cleanup')
@@ -1308,7 +1432,6 @@ func get_food():
 						if food.tags.size() <= 1:
 							var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_food_dislike)
 							apply_effect(effects_pool.add_effect(eff))
-							self.obedience -= 10
 				break
 		if eaten == true:
 			starvation = false
@@ -1328,6 +1451,7 @@ func rest_tick():
 	return
 
 func work_tick():
+	
 	var currenttask
 	for i in state.active_tasks:
 		if i.workers.has(self.id):
@@ -1336,6 +1460,16 @@ func work_tick():
 	if currenttask == null:
 		work = ''
 		return
+	
+	
+	if obedience <= 0 && loyalty < 100 && submission < 100 && state.get_master() != self:
+		if !messages.has("refusedwork"):
+			state.text_log_add('work', get_short_name() + ": Refused to work")
+			messages.append("refusedwork")
+		return
+	if obedience > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
+		self.obedience -= 1
+		messages.erase("refusedwork")
 	
 	if get_static_effect_by_code("work_rule_ration") != null:
 		food_consumption_rations = true
@@ -1361,7 +1495,7 @@ func work_tick():
 					spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product, true)#
+			craftingitem.workunits += races.get_progress_task(self, currenttask.code, currenttask.product)#
 			make_item_sequence(currenttask, craftingitem)
 	elif currenttask.product == 'building':
 		if state.selected_upgrade.code == '':
@@ -1403,6 +1537,8 @@ func work_tick_values(currenttask):
 func make_item_sequence(currenttask, craftingitem):
 	if craftingitem.workunits >= craftingitem.workunits_needed:
 		make_item(craftingitem)
+		if Items.recipes[craftingitem.code].resultitemtype != 'material' && randf() < 0.25:
+			input_handler.get_person_for_chat(currenttask.workers, 'item_created')
 		craftingitem.workunits -= craftingitem.workunits_needed
 		if craftingitem.repeats != 0:
 			if check_recipe_resources(craftingitem) == true:
@@ -1470,18 +1606,15 @@ func make_item(temprecipe):
 		if temprecipe.repeats == 0:
 			state.craftinglists[Items.recipes[temprecipe.code].worktype].erase(temprecipe)
 
+func authority_set(value):
+	var difference = value - authority
+	var authority_threshold = authority_threshold()
+	
+	if difference > 0:
+		difference *= authority_mod
+	
+	authority = clamp(authority + difference, 0, authority_threshold*1.5)
 
-func obed_set(value):
-	obedience = clamp(float(value), 0, 100)
-
-func obed_get():
-	return obedience
-
-func fear_set(value):
-	fear = clamp(value, 0, 100)
-
-func fear_get():
-	return fear
 
 func lust_set(value):
 	lustmax = 25 + sexuals_factor * 25
@@ -1493,14 +1626,14 @@ func lust_get():
 
 func check_escape_chance():
 	var check = false
-	var base_chance = get_stat('brave_factor') * 7
-	if obedience < base_chance && fear < base_chance:
-		check = true
+	var base_chance = 45 - get_stat('timid_factor') * 7
+#	if obedience < base_chance && fear < base_chance:
+#		check = true
 	return check
 
 func check_escape_possibility():
 	last_escape_day_check = state.date
-	if check_escape_chance() == false || sleep == 'jail' || professions.has("master") || has_status('no_escape') || randf() < get_stat('brave_factor') * 0.1:
+	if check_escape_chance() == false || sleep == 'jail' || professions.has("master") || has_status('no_escape') || randf() < get_stat('timid_factor') * 0.1:
 		return false
 	if shackles_chance != null:
 		var tmpchance = max(0, shackles_chance)
@@ -1509,7 +1642,7 @@ func check_escape_possibility():
 			#shackles_chance = null
 			input_handler.emit_signal('shackles_off') #stub
 		return
-	var minchance = 50-min(obedience, fear)
+	var minchance = 50#-min(obedience, fear)
 	if randf()*100 <= minchance:
 		escape()
 
@@ -1524,7 +1657,6 @@ func escape():
 	state.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
 	input_handler.slave_list_node.rebuild()
-	
 	#state.text_log_add(get_short_name() + " has escaped. ")
 
 
@@ -1535,18 +1667,27 @@ func translate(text):
 	text = text.replace("[his]", globals.fastif(sex == 'male', 'his', 'her'))
 	text = text.replace("[him]", globals.fastif(sex == 'male', 'him', 'her'))
 	text = text.replace("[His]", globals.fastif(sex == 'male', 'His', 'Her'))
+	text = text.replace("[Sir]", globals.fastif(sex == 'male', 'Sir', 'Miss'))
 	text = text.replace("[raceadj]", races.racelist[race].adjective)
 	text = text.replace("[race]", races.racelist[race].name)
 	text = text.replace("[name]", get_short_name())
+	text = text.replace("[surname]",globals.fastif(surname != '', surname, get_short_name()))
 	text = text.replace("[age]", age.capitalize())
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
 	text = text.replace("[hair_color]", hair_color)
-	var masternoun = 'master'
-	if state.get_master() != null && state.get_master().sex != 'male':
-		masternoun = 'mistress'
-	text = text.replace("[master]", masternoun)
-	text = text.replace("[Master]", masternoun.capitalize())
+	
+#	var masternoun = 'master'
+	
+	var tempmasternoun = masternoun
+	if tempmasternoun in ['master','mistress']:
+		if input_handler.meowingcondition(self) == true:tempmasternoun = 'myaster'
+		if state.get_master() != null && state.get_master().sex != 'male':
+			if input_handler.meowingcondition(self) == true:tempmasternoun = 'mewstress'
+	
+	text = text.replace("[master]", tempmasternoun)
+	text = text.replace("[Master]", tempmasternoun.capitalize())
+	
 	match sex:
 		'male':
 			rtext = 'boy'
@@ -1554,7 +1695,8 @@ func translate(text):
 			rtext = 'girl'
 		'futa':
 			rtext = 'futanari'
-	text = text.replace("[boy]", rtext)
+	text = text.replace("[boy_]", rtext)
+	text = text.replace("[boy]", globals.fastif(sex == 'male', 'boy', 'girl'))
 	text = text.replace("[price]", str(calculate_price()))
 	
 	return text
@@ -1562,13 +1704,13 @@ func translate(text):
 func calculate_price():
 	var value = 0
 	value += (physics + wits + charm + sexuals)*2.5
-	value += (physics_factor + wits_factor + charm_factor + sexuals_factor + tame_factor + brave_factor)*8 + growth_factor*25 + magic_factor*15
+	value += (physics_factor + wits_factor + charm_factor + sexuals_factor + tame_factor + timid_factor)*8 + growth_factor*25 + magic_factor*15
 	value += professions.size()*40
 	if bonuses.has("price_mul"): value *= bonuses.price_mul
 	return max(100,round(value))
 
 func get_icon():
-	if icon_image == null:
+	if icon_image in ['', null]:
 		return null
 	if ResourcePreloader.new().has_resource(icon_image) == false:
 		return globals.loadimage(icon_image)
@@ -1866,14 +2008,19 @@ func clean_effects():#clean effects before deleting character
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 
-func process_event(ev):
+func process_event(ev, skill = null):
 	for e in temp_effects:
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(ev)
 	for e in triggered_effects:
 		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill: continue
-		var tr = eff.process_event(ev) #stub for more direct controling of temps removal
+		if skill != null and eff.req_skill:
+			eff.set_args('skill', skill)
+			eff.process_event(ev)
+			eff.set_args('skill', null)
+		else:
+			eff.process_event(ev)
+
 
 func can_act():
 	var res = true
@@ -1942,6 +2089,28 @@ func calculate_number_from_string_array(arr):
 			endvalue += float(modvalue)
 		firstrun = false
 	return endvalue
+
+#func calculate_number_from_string_array(array):
+#	var endvalue = 0
+#	var firstrun = true
+#	for i in array:
+#		var modvalue = i
+#		if i.find('caster') >= 0 || i.find('self') >= 0:
+#			i = i.split('.')
+#			if i[0] in ['caster', 'self']:
+#				#modvalue = str(self[i[1]])
+#				modvalue = str(get_stat(i[1]))
+#			elif i[0] == 'target':
+#				return ""; #nonexistent yet case of skill value being based completely on target
+#		if !modvalue[0].is_valid_float():
+#			if modvalue[0] == '-' && firstrun == true:
+#				endvalue += float(modvalue)
+#			else:
+#				endvalue = input_handler.string_to_math(endvalue, modvalue)
+#		else:
+#			endvalue += float(modvalue)
+#		firstrun = false
+#	return endvalue
 
 func process_check(check):
 	if typeof(check) == TYPE_ARRAY:
@@ -2127,8 +2296,10 @@ func use_social_skill(s_code, target):#add logging if needed
 			return
 	
 	social_cooldowns[s_code] = template.cooldown
-	if template.tags.has('no_usage_stat_increase') == false:
-		set('charm', min(get('charm') + rand_range(0.2,0.5), get("charm_factor")*20))
+	
+	if template.has('social_skill_stats'):
+		for i in template.social_skill_stats:
+			set(i, min(get(i) + rand_range(0.4,0.8), get(i+ "_factor")*20))
 	if template.tags.has("dialogue_skill"):
 		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
 		var text = translate(template.dialogue_text)
@@ -2239,19 +2410,65 @@ func use_social_skill(s_code, target):#add logging if needed
 						eff.process_event(variables.TR_SOC_SPEC)
 						eff.set_args('receiver', null)
 			continue
+		var detail_tags = []
 		for h in targ_fin:
 			var mod = i.dmgf
 			var stat = i.damagestat
+			
+			match stat:
+				'loyalty':
+					if mod == 0:
+						if target.authority_threshold()/2 > target.authority:
+							i.value = 0
+							detail_tags.append('noauthority')
+						elif target.loyalty >= 100:
+							i.value = 0
+							detail_tags.append('loyaltymaxed')
+						else:
+							if template.tags.has("repeated_effect_reduce_loyalty") && target.skills_received_today.has(s_code):
+								i.value /= 2.5
+								detail_tags.append("loyalty_repeat")
+							i.value = (i.value * (0.75 + target.tame_factor*0.25)) * (1 - (target.authority_threshold() - target.authority)/100)
+				
+				'submission':
+					if target.submission >= 100:
+						i.value = 0
+						detail_tags.append('submissionmaxed')
+					else:
+						if template.tags.has("repeated_effect_reduce_submission") && target.skills_received_today.has(s_code):
+							i.value /= 2.5
+							detail_tags.append("submission_repeat")
+						i.value = (i.value * (0.75 + target.timid_factor*0.25))
+				
+				'obedience':
+					var skill_stat_type
+					if template.tags.has('positive'): skill_stat_type = target.tame_factor
+					if template.tags.has('negative'): skill_stat_type = target.timid_factor
+					s_skill.value[i] = round(s_skill.value[i] * (0.9 + skill_stat_type*0.1))
+			
+			var bonusspeech = []
 			var tmp
 			match mod:
 				0:
+					if stat == 'loyalty' && h.get(stat) < 100 && h.get(stat) + i.value >= 100:
+						bonusspeech.append('loyalty')
+					elif stat == 'submission' && h.get(stat) < 100 && h.get(stat) + i.value >= 100:
+						if h.get('loyalty') < 100:
+							bonusspeech.append("submission")
+							if growth_factor > sexuals_factor:
+								growth_factor -= 1
+							else:
+								sexuals_factor -= 1
+						else:
+							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, i.value)
 				1:
 					tmp = h.stat_update(stat, -i.value)
-					if i.is_drain: self.stat_update(stat, -tmp)
+					if s_skill.is_drain: self.stat_update(stat, -tmp)
 				2:
 					tmp = h.stat_update(stat, i.value, true)
-					if i.is_drain: self.stat_update(stat, -tmp)
+					if s_skill.is_drain: self.stat_update(stat, -tmp)
+
 			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100
 			if h.get(stat+'max') != null:
@@ -2261,11 +2478,26 @@ func use_social_skill(s_code, target):#add logging if needed
 			var change = '+'
 			if tmp < 0:
 				change = ''
-			effect_text += ": " +  str(floor(h.get(stat)))
-			if maxstat != 0:
-				effect_text += "/" + str(floor(maxstat))
-			effect_text += " (" + change + "" + str(floor(tmp)) + ")"
-
+			effect_text += ": "
+			if maxstat != 0 && !stat in ['obedience','loyalty','authority','submission','consent']:
+				effect_text += str(floor(h.get(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ")"
+			else:
+				effect_text += change + str(floor(tmp))
+			if detail_tags.has("noauthority") && stat == 'loyalty':
+				effect_text += " - Not enough Authority"
+			if detail_tags.has("loyalty_repeat") && !detail_tags.has("noauthority") && stat == 'loyalty':
+				effect_text += "(lowered effect)"
+			if detail_tags.has("submission_repeat") && stat == 'submission':
+				effect_text += "(lowered effect)"
+			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
+				effect_text += " - Maxed"
+			if detail_tags.has("submissionmaxed") && stat == 'submission':
+				effect_text += ' - Maxed'
+			for i in bonusspeech:
+				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
+	
+	if target.skills_received_today.has(s_code) == false:target.skills_received_today.append(s_code)
+	
 	if template.has("dialogue_report"):
 		var data = {text = '', tags = ['skill_report_event'], options = []}
 		var text = translate(template.dialogue_report)
@@ -2275,6 +2507,7 @@ func use_social_skill(s_code, target):#add logging if needed
 			data.image = 'noevent'
 		text = target.translate(text.replace("[target", "["))
 		data.text = text + effect_text
+		
 		if template.dialogue_show_repeat == true:
 			data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = true, reqs = []})
 			if check_skill_availability(s_code, target).check == true:
@@ -2283,7 +2516,7 @@ func use_social_skill(s_code, target):#add logging if needed
 		input_handler.active_character = self
 		input_handler.target_character = target
 		input_handler.activated_skill = s_code
-		input_handler.scene_characters.append(target)
+		if input_handler.scene_characters.has(target) == false: input_handler.scene_characters.append(target)
 		
 		data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
 		
@@ -2315,6 +2548,8 @@ func use_social_skill(s_code, target):#add logging if needed
 func calculate_linked_chars_by_effect(e_name):
 	return effects_pool.get_n_effects_linked_to(id, e_name).size()
 
+func authority_threshold():
+	return 200-timid_factor*25
 
 func get_weapon_element():
 	#for testing
@@ -2373,8 +2608,8 @@ func mag_f_set(value):
 func tam_f_set(value):
 	tame_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
 
-func brv_f_set(value):
-	brave_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+func tim_f_set(value):
+	timid_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
 
 func gro_f_set(value):
 	growth_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)

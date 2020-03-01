@@ -20,8 +20,10 @@ func open(character = Slave.new()):
 		$VBoxContainer.get_node(i).text = str(floor(character.get_stat(i))) + "/" + str(floor(character.get_stat(i+"max")))
 	
 	for i in variables.fighter_stats_list:
-		if !i in ['hpmax', 'mpmax']:
+		if !i in ['hpmax', 'mpmax','critmod']:
 			$"base stats".get_node(i).text = str(floor(character.get_stat(i)))
+		elif i == 'critmod':
+			$"base stats".get_node(i).text = str(floor(character.get_stat(i)*100))
 	
 	for i in $resists.get_children():
 		if variables.resists_list.has(i.name):

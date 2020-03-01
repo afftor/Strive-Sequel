@@ -176,3 +176,4 @@ func convert_to_new_template():
 	if template.has('energycost'): res_res.energycost = template.energycost
 	res_res.tags = tags.duplicate()
 	return res_res
+

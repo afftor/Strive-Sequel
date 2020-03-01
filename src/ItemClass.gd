@@ -6,7 +6,7 @@ var id
 var itembase
 var code
 var icon
-var description
+var description = ''
 var stackable = false
 var inventory
 
@@ -177,7 +177,11 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 		name = itemtemplate.name
 		description = itemtemplate.descript
 	else:
-		name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
+		if parts.has(itemtemplate.partmaterialname):
+			
+			name = Items.materiallist[parts[itemtemplate.partmaterialname]].adjective + " " +itemtemplate.name
+		else:
+			name = itemtemplate.name
 		#name = itemtemplate.partmaterialname
 	
 
@@ -342,6 +346,7 @@ func calculateprice():
 		var materialsdict = calculatematerials()
 		for i in materialsdict:
 			price += Items.materiallist[i].price*materialsdict[i]
+		price += Items.recipes[itembase].workunits * 5
 	return price
 
 func use_explore(character):

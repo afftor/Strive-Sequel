@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = ''
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['pet','noorgasm']
 const takertags = ['pet', 'tits']
+const giver_skill = ['petting']
+const taker_skill = []
+const consent_level = 15
 
 func getname(state = null):
 	return "Fondle Chest"

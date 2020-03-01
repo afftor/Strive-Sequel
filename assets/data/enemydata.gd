@@ -5,8 +5,10 @@ var predeterminatedgroups = {
 } 
 
 var encounters = {
-	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []}
-	
+	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	rebels_skirmish = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	rebels_small = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
 }
 
 var enemygroups = {
@@ -25,16 +27,20 @@ var enemygroups = {
 	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}},
 	
 	bandits_raptors = {reqs = [], units = {bandit_melee = [1,2], trained_raptor = [1,2]}},
-	bandits_balista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
+	bandits_ballista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
 	
 	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
 	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	goblins_easy3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
+	goblins_easy_boss = {maxunits = 3, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2], cave_goblin_archer = [0,2]}},
 	ogre_med1 = {reqs = [], units = {ogre_melee = [1,1], cave_goblin_melee = [0,1], cave_goblin_archer = [0,1]}},
 	ogre_med2 = {reqs = [], units = {ogre_melee = [0,1], ogre_mage = [1,1]}},
 	
-	wolves_easy1 = {reqs = [], units = {wolf = [2,3]}},
+	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}},
 	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}},
+	
+	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}},
+	rebels_small = {reqs = [], units = {rebel_recruit = [3,4]}},
 	
 	rats = {reqs = [], units = {rat = [3,5]}},
 }
@@ -207,9 +213,9 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 66], ['ads', 33]],
-		ai_hard = [['basic', 50], ['ads', 50]],
-		ai_position = ['melee'],
+		ai = [['basic', 75], ['aoe', 25]],
+		ai_hard = [['basic', 50], ['aoe', 50]],
+		ai_position = ['melee','fire_cleave'],
 		xpreward = 20,
 	},
 	rebel_mage = {
@@ -230,12 +236,12 @@ var enemies = {
 		loot = 'bandit_loot',
 		icon = null,
 		body = null,
-		skills = ['firearr','ranged_attack'],
+		skills = ['firearr','ranged_attack','blizzard'],
 		traits = [],
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 33], ['ads', 66]],
+		ai = [['aoe', 33], ['ads', 66]],
 		ai_position = ['ranged'],
 		xpreward = 25,
 	},
@@ -339,7 +345,7 @@ var enemies = {
 		loot = 'raptor_loot',
 		icon = null,
 		body = null,
-		skills = ['attack','stun_attack'],
+		skills = ['attack','bleeding_strike'],
 		traits = [],
 		tags = [],
 		is_character = false,
@@ -511,6 +517,33 @@ var enemies = {
 		ai = ['ranged'],
 		ai_position = ['ranged'],
 		xpreward = 20,
+	},
+	cave_goblin_boss = {
+		code = 'cave_goblin_boss',
+		name = '',
+		descript = '',
+		hpmax = 150,
+		armor = 5,
+		mdef = 20,
+		hitrate = 85,
+		evasion = 10,
+		armorpenetration = 0,
+		atk = 20,
+		matk = 5,
+		speed = 40,
+		resists = {earth = 50, water = -50},
+		race = 'humanoid',
+		loot = 'goblin_loot',
+		icon = null,
+		body = null,
+		skills = ['attack'],
+		traits = [],
+		tags = [],
+		is_character = false,
+		gear = [],
+		ai = ['melee'],
+		ai_position = ['melee'],
+		xpreward = 25,
 	},
 	ogre_melee = {
 		code = 'ogre_melee',
@@ -793,25 +826,37 @@ var loot_chests_data = {
 	easy_chest_gear = [
 	{code = 'material', min = 2, max = 5, grade = ['easy']}, 
 	{code = 'material', min = 1, max = 3, grade = ['location']}, 
-	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = ['easy']},
+	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3]]},
 	],
 	easy_chest_cosmetics = [
 	{code = 'material', min = 3, max = 8, grade = ['easy']}, 
 	{code = 'material', min = 1, max = 3, grade = ['location']}, 
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
 	],
+	easy_prisoner_reward_item = [
+	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 5]]},
+	],
+	easy_prisoner_reward_resource = [
+	{code = 'material', min = 5, max = 10, grade = ['easy']}, 
+	{code = 'material', min = 3, max = 6, grade = ['location']},
+	],
+	easy_boss_chest = [
+	{code = 'static_gear', min = 1, max = 1, grade = ['easy']},
+	{code = 'gear', min = 1, max = 2, grade = ['easy'], material_grade = [['easy',10], ['medium', 4]]},
+	{code = 'defined', name = 'exp_scroll', min = 1, max = 2}, 
+	],
+	
 }
 
 
 
 
-#		usables = [{code = 'morsel', min = 1, max = 1, chance = 25}],
 var loottables = {
 	rat_loot = [['leather', 0.1], ['lifeshard', 0.2]],
-	spider_loot = [['clothsilk', 0.5],['clothsilk', 0.5], ['lifeshard', 0.20]],
-	bandit_loot = [['cloth', 0.5, 2], ['lifeshard', 0.3], ['gold', 75, 3]],
-	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 1, 30], ['gold', 0.5, 5]],
-	skeleton_loot = [['bone', 0.75, 4], ['energyshard', 0.3], ['gold', 25, 3]],
+	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.20]],
+	bandit_loot = [['cloth', 0.5, 2], ['lifeshard', 0.3], ['gold', 0.75, 3]],
+	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 0.9, 30], ['gold', 0.5, 5]],
+	skeleton_loot = [['bone', 0.75, 4], ['energyshard', 0.3], ['gold', 0.25, 3]],
 	wolf_loot = [['leather', 0.5, 3]],
 	gryphon_loot = [['leathermythic', 1, 5], ['leathermythic', 0.5, 3]],
 	goblin_loot = [['stone', 0.2, 1], ['gold', 0.25, 2]],
@@ -822,4 +867,5 @@ var loottables = {
 	guardian_golem_loot = [['stone',0.9,5]],
 	troll_loot = [],
 	ogre_loot = [],
+	raptor_loot = [['leatherthick', 0.7, 2]],
 }

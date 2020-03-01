@@ -8,10 +8,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'vagina'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['noorgasm']
 const takertags = ['vagina','shame']
+const giver_skill = []
+const taker_skill = ['petting']
+const consent_level = 10
 
 func getname(state = null):
 	return "Order Masturbation"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/aliron_background.ogg-a44167a283d40f49753b36162d829d27.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/sounds/aliron_background.ogg"
+dest_files=[ "res://.import/aliron_background.ogg-a44167a283d40f49753b36162d829d27.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

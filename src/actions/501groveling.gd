@@ -8,10 +8,11 @@ const canlast = false
 const giverpart = ''
 const takerpart = 'posh1'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = []
 const takertags = ['shame']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 30
 
 func getname(state = null):
 	return "Order Grovelling"

@@ -68,6 +68,10 @@ var dummy = {
 signal skill_use_finshed
 var eot = true
 
+func _init():
+	pass
+	
+
 func _ready():
 	battlefield.resize(14)
 	for i in range(1,13):
@@ -120,8 +124,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 func FinishCombat():
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
-		#to replace for sure - disp part
-		#i.cooldowns.clear() 
+		tchar.combat_cooldowns.clear()
 	for i in range(battlefield.size()):
 		if battlefield[i] != null:
 			var tchar = characters_pool.get_char_by_id(battlefield[i])
@@ -235,7 +238,7 @@ func victory():
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 	
-	input_handler.PlaySound("victory")
+	input_handler.PlaySound("questcomplete")
 	
 	rewardsdict = {gold = 0, materials = {}, items = [], xp = 0}
 	for i in enemygroup.values():
@@ -329,10 +332,11 @@ func victory():
 	$Rewards.modulate.a = 0
 	input_handler.UnfadeAnimation($Rewards)
 	$Rewards.set_meta("result", 'victory')
+	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		newbutton.hide()
+		#newbutton.hide()
 		newbutton.texture = item.icon
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
@@ -364,6 +368,10 @@ func victory():
 	
 	#yield(get_tree().create_timer(1), 'timeout')
 	$Rewards/CloseButton.disabled = false
+	var array = []
+	for i in playergroup.values():
+		array.append(i)
+	input_handler.get_person_for_chat(array, 'combat_won')
 
 func defeat():
 	CombatAnimations.check_start()
@@ -378,6 +386,7 @@ func player_turn(pos):
 	var selected_character = characters_pool.get_char_by_id(playergroup[pos])
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
+	selected_character.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	turns += 1
@@ -423,10 +432,10 @@ func UpdateSkillTargets(caster, glow_skip = false):
 	
 	#not sure if this is correct
 	if rangetype == 'weapon':
-		if caster.gear.rhand == null:
+		if fighter.gear.rhand == null:
 			rangetype = 'melee'
 		else:
-			var weapon = state.items[activecharacter.gear.rhand]
+			var weapon = state.items[fighter.gear.rhand]
 			rangetype = weapon.weaponrange
 	highlightargets = true
 	allowedtargets.clear()
@@ -515,6 +524,7 @@ func enemy_turn(pos):
 	var fighter = characters_pool.get_char_by_id(enemygroup[pos])
 	#fighter.update_timers()
 	fighter.process_event(variables.TR_TURN_GET)
+	fighter.displaynode.rebuildbuffs()
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	if !fighter.can_act():
@@ -539,7 +549,7 @@ func enemy_turn(pos):
 	target = get_char_by_pos(target)
 	
 	if fighter.has_status('confuse'):
-		castskill = fighter.get_skil_by_tag('default')
+		castskill = fighter.get_skill_by_tag('default')
 		activeaction = castskill
 		UpdateSkillTargets(fighter, true)
 		target = get_random_target()
@@ -548,7 +558,7 @@ func enemy_turn(pos):
 		fighter.taunt = null
 		if can_be_taunted(fighter, targ):
 			target = targ;
-			castskill = fighter.get_skil_by_tag('default')
+			castskill = fighter.get_skill_by_tag('default')
 	if target == null:
 		print(fighter.name, ' no target found')
 		return
@@ -684,43 +694,6 @@ func ShowFighterStats(fighter):
 		return
 	$StatsPanel.show()
 	$StatsPanel.open(fighter)
-#	var text = ''
-#	if fighter.combatgroup == 'ally':
-#
-#		$StatsPanel/hp.text = 'Health: ' + str(fighter.hp) + '/' + str(fighter.get_stat('hpmax'))
-#		if fighter.mpmax > 0:
-#			$StatsPanel/mana.text = "Mana: " + str(fighter.mp) + '/' + str(fighter.get_stat('mpmax'))
-#		else:
-#			$StatsPanel/mana.text = ''
-#	else:
-#		$StatsPanel/hp.text = 'Health: ' + str(round(globals.calculatepercent(fighter.hp, fighter.get_stat('hpmax')))) + "%%"
-#		if fighter.mpmax > 0:
-#			$StatsPanel/mana.text = "Mana: " + str(round(globals.calculatepercent(fighter.mp, fighter.get_stat('mpmax')))) + "%%"
-#		else:
-#			$StatsPanel/mana.text = ''
-#	#TO REBUILD NEW STATS
-##	$StatsPanel/damage.text = "Attack: " + str(round(fighter.atk)) 
-##	$StatsPanel/crit.text = tr("CRITICAL") + ": " + str(fighter.get_stat('critchance')) + "%%/" + str(fighter.critmod*100) + '%%' 
-##	$StatsPanel/hitrate.text = "Hit Rate: " + str(fighter.hitrate)
-##	$StatsPanel/armorpen.text = "Armor Penetration: " + str(fighter.armorpenetration)
-##
-##	$StatsPanel/armor.text = "Armor: " + str(fighter.armor) 
-##	$StatsPanel/mdef.text = "M. Armor: " + str(fighter.mdef)
-##	$StatsPanel/evasion.text =  "Evasion: " + str(fighter.evasion) 
-##	$StatsPanel/speed.text = "Speed: " + str(fighter.speed)
-##
-##	for i in ['fire','water','earth','air']:
-##		get_node("StatsPanel/resist"+i).text = "Resist " + i.capitalize() + ": " + str(fighter.resists[i]) + " "
-#
-#	$StatsPanel.show()
-#	$StatsPanel/name.text = tr(fighter.name)
-#	#$StatsPanel/descript.text = fighter.flavor
-#	#$StatsPanel/TextureRect.texture = fighter.combat_full_portrait()
-##	for i in fighter.buffs:
-##		text += i + "\n"
-#	for b in fighter.get_all_buffs():
-#		text += b.name + '\n'
-#	$StatsPanel/effects.bbcode_text = text
 
 func HideFighterStats():
 	$StatsPanel.hide()
@@ -765,7 +738,7 @@ func buildplayergroup(group):
 	for i in group:
 		if int(i) > 6: break
 		if group[i] == null:
-		    continue
+			continue
 		var fighter = state.characters[group[i]] 
 		fighter.combatgroup = 'ally'
 		battlefield[int(i)] = fighter.id
@@ -833,13 +806,7 @@ func use_skill(skill_code, caster, target):
 	
 	if caster == null: caster = dummy
 	
-	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST)
-	for e in caster.triggered_effects:
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill:
-			eff.set_args('skill', s_skill1)
-			eff.process_event(variables.TR_CAST)
-			eff.set_args('skill', null)
+	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_CAST, s_skill1)
 
 	turns += 1
 	#preparing animations
@@ -897,20 +864,8 @@ func use_skill(skill_code, caster, target):
 		#predamage triggers
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_HIT)
-			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_HIT)
-			for e in s_skill2.caster.triggered_effects:
-				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-				if eff.req_skill:
-					eff.set_args('skill', s_skill2)
-					eff.process_event(variables.TR_HIT)
-					eff.set_args('skill', null)
-			s_skill2.target.process_event(variables.TR_DEF)
-			for e in s_skill2.target.triggered_effects:
-				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-				if eff.req_skill:
-					eff.set_args('skill', s_skill2)
-					eff.process_event(variables.TR_DEF) 
-					eff.set_args('skill', null)
+			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
+			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
 			s_skill2.setup_effects_final()
 		turns += 1
 		#damage
@@ -938,22 +893,10 @@ func use_skill(skill_code, caster, target):
 		#postdamage triggers and cleanup real_target s_skills
 		for s_skill2 in s_skill2_list:
 			s_skill2.process_event(variables.TR_POSTDAMAGE)
-			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_POSTDAMAGE)
-			for e in s_skill2.caster.triggered_effects:
-				var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-				if eff.req_skill:
-					eff.set_args('skill', s_skill2)
-					eff.process_event(variables.TR_POSTDAMAGE)
-					eff.set_args('skill', null)
+			if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
-				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL)
-				for e in s_skill2.caster.triggered_effects:
-					var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-					if eff.req_skill:
-						eff.set_args('skill', s_skill2)
-						eff.process_event(variables.TR_KILL)
-						eff.set_args('skill', null)
+				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
 			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
@@ -962,13 +905,7 @@ func use_skill(skill_code, caster, target):
 			s_skill2.remove_effects()
 	turns += 1
 	s_skill1.process_event(variables.TR_SKILL_FINISH)
-	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH)
-	for e in caster.triggered_effects:
-		var eff:triggered_effect = effects_pool.get_effect_by_id(e)
-		if eff.req_skill:
-			eff.set_args('skill', s_skill1)
-			eff.process_event(variables.TR_SKILL_FINISH)
-			eff.set_args('skill', null)
+	if typeof(caster) != TYPE_DICTIONARY: caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
 	s_skill1.remove_effects()
 	#follow-up
 	if skill.has('follow_up'):

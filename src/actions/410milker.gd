@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = ''
 const takerpart = 'acc5'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['noorgasm']
 const takertags = ['tits']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 30
 
 func getname(state = null):
 	return "Milker"

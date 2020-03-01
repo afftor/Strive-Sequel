@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://files/scripts/combat.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/backgrounds/cave.png" type="Texture" id=2]
@@ -22,7 +22,8 @@
 [ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=20]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/combat/victorine.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/combat/combat_screen_frame.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/combat/combat_screen_frame.png" type="Texture" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -481,7 +482,6 @@ margin_left = 709.561
 margin_right = 1254.56
 
 [node name="Rewards" type="TextureRect" parent="."]
-visible = false
 margin_left = 617.0
 margin_top = 57.0
 margin_right = 1297.0
@@ -571,11 +571,27 @@ text = "VICTORY"
 align = 1
 valign = 1
 
+[node name="gold" type="TextureRect" parent="Rewards"]
+margin_left = 12.4633
+margin_top = 803.059
+margin_right = 94.4633
+margin_bottom = 907.059
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Rewards/gold"]
+margin_left = 78.85
+margin_top = 45.0412
+margin_right = 121.85
+margin_bottom = 69.0412
+text = "+50"
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }

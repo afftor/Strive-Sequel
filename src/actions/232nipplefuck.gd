@@ -13,6 +13,10 @@ const giverconsent = 'basic'
 const takerconsent = 'any'
 const givertags = ['penis']
 const takertags = ['tits', 'penetration']
+const giver_skill = ['penetration']
+const taker_skill = []
+const consent_level = 25
+const consent_level_max = 50
 
 func getname(state = null):
 	return "Nipple fuck"

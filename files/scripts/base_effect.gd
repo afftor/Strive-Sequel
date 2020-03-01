@@ -36,12 +36,7 @@ func apply():
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	setup_siblings()
-	buffs.clear()
-	for e in template.buffs:
-		var tmp = Buff.new(id)
-		tmp.createfromtemplate(e)
-		tmp.calculate_args()
-		buffs.push_back(tmp)
+	rebuild_buffs()
 
 func reapply():
 	var obj = get_applied_obj()
@@ -62,13 +57,7 @@ func reapply():
 		sub_effects.push_back(effects_pool.add_effect(tmp))
 		pass
 	setup_siblings()
-	
-	buffs.clear()
-	for e in template.buffs:
-		var tmp = Buff.new(id)
-		tmp.createfromtemplate(e)
-		tmp.calculate_args()
-		buffs.push_back(tmp)
+	rebuild_buffs()
 	
 
 func setup_siblings():
@@ -243,3 +232,14 @@ func deserialize(tmp):
 		t.deserialize(b)
 		buffs.push_back(t)
 	pass
+
+func rebuild_buffs():
+	buffs.clear()
+	for e in template.buffs:
+		var tmp = Buff.new(id)
+		tmp.createfromtemplate(e)
+		tmp.calculate_args()
+		buffs.push_back(tmp)
+
+func clear_buffs():
+	buffs.clear()

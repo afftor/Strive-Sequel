@@ -8,10 +8,11 @@ const canlast = false
 const giverpart = ''
 const takerpart = 'acc4'#body extra to change some getname into restrained getname
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = []
 const takertags = ['punish']
+const giver_skill = []
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
 	return "Rope"
@@ -24,8 +25,8 @@ func getongoingdescription(givers, takers):
 	
 func requirements():
 	var valid = true
-#	if globals.state.getCountStackableItem('rope') <= 0:
-#		valid = false
+	if state.materials.rope < takers.size():
+		valid = false
 	if takers.size() < 1 || givers.size() < 1:
 		valid = false
 	elif givers.size() > 2:
@@ -49,7 +50,7 @@ func initiate():
 	temparray += ["[name1] {^wrap:tie}[s/1] a rope around [names2] body to restrict [his2] movements."]
 	text += temparray[randi()%temparray.size()]
 	for i in takers:
-		#globals.state.removeStackableItem('rope')
+		state.materials.rope -= 1
 		i.effects.append('tied')
 	temparray.clear()
 	return text

@@ -322,8 +322,8 @@ func unequip(slot):
 		selectedhero.unequip(state.items[selectedhero.gear[slot]])
 		#input_handler.GetItemTooltip().hide()
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-		buildinventory()
 		input_handler.update_slave_panel()
+		buildinventory()
 
 func rebuild_characters():
 	globals.ClearContainer($CharacterPanel/ScrollContainer/VBoxContainer)
@@ -331,4 +331,5 @@ func rebuild_characters():
 		var i = state.characters[id]
 		var newnode = globals.DuplicateContainerTemplate($CharacterPanel/ScrollContainer/VBoxContainer)
 		newnode.get_node("Label").text = i.get_full_name()
+		if i == selectedhero: newnode.pressed = true
 		newnode.connect("pressed", self, "open", [{mode = 'character', person = i}])

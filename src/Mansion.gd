@@ -35,7 +35,14 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.1.2-stable_win64.exe": #&& false:#:
+		variables.generate_test_chars = true
+		variables.allow_remote_intereaction = true
+		variables.combat_tests = true
+		variables.unlock_all_upgrades = true
+		variables.skip_combat = false
+		#$UpgradeList._ready()
+		$TestButton.show()
 	
 	
 	var speedvalues = [0,1,5]
@@ -53,6 +60,7 @@ func _ready():
 	$ExploreButton.connect("pressed",$Exploration,"open")
 	$QuestlogButton.connect("pressed", self, "open_questlog")
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
+	$TravelButton.connect("pressed", self, "open_travels")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
@@ -67,8 +75,8 @@ func _ready():
 	state.connect("task_added", self, 'build_task_bar')
 	
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	
 	if variables.generate_test_chars:
+		state.mainprogress = 1
 		state.make_world()
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
@@ -76,10 +84,13 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
+		character.unlock_class("archer")
+		character.set_slave_category('master')
 		character.sex_traits = ['bisexual', 'anal']
 		character.charm_factor = 1
 		#character.unlock_class("worker")
 		character.mp = 50
+		character.unlock_class("apprentice")
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -90,70 +101,145 @@ func _ready():
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('Fairy', 'random', 'random')
 		characters_pool.move_to_state(character.id)
-		character.unlock_class("fighter")
+		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
+		character.set_slave_category('servant')
 		character.obedience = 100
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('Seraph', 'random', 'random')
+		character.create('Human', 'random', 'random')
 		characters_pool.move_to_state(character.id)
+		
+#		for i in range(1,20):
+#
+#			character = Slave.new()
+#			character.create('BeastkinCat', 'random', 'random')
+#			characters_pool.move_to_state(character.id)
+		
 		character.obedience = 0
-		character.fear = 25
-		character.lust = 50
-		character.base_exp += 500
+		#character.fear = 25
+		#character.base_exp = 99
+		character.charm_factor = 5
+		character.physics_factor = 5
+		character.wits_factor = 5
+		character.sexuals_factor = 5
+		character.charm = 100
+		character.physics = 100
+		character.wits = 100
+		
+		var character2 = Slave.new()
+		character2.create('Human', 'random', 'random')
+		character2.charm = 0
+		character2.physics = 0
+		character2.wits = 0
+		character2.sexuals = 0
+		var text = ''
+		for i in races.tasklist.values():
+			for k in i.production.values():
+				var value = races.get_progress_task(character, i.code, k.code, true)/k.progress_per_item
+				if Items.materiallist.has(k.item):
+					pass
+#					var item = Items.materiallist[k.item]
+#					text += item.name + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item*item.price,0.1)) 
+#					text += ", Max " + str(stepify(value*item.price,0.1)) + "\n"
+				else:
+					pass
+#					text += k.code + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item,0.1)) 
+#					text += ", Max " + str(stepify(value,0.1)) + "\n"
+#
+		var base_price = 0 
+		var output_price = 0
+		for i in Items.recipes.values():
+			base_price = 0
+			output_price = 0
+			for k in i.materials:
+				base_price += Items.materiallist[k].price * i.materials[k]
+			for k in i.items:
+				base_price += Items.itemlist[k].price * i.items[k]
+
+			if Items.materiallist.has(i.resultitem):
+				output_price = Items.materiallist[i.resultitem].price*i.resultamount
+				if base_price != 0:
+					text += Items.materiallist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
+			else:
+				output_price = Items.itemlist[i.resultitem].price*i.resultamount
+				if base_price != 0:
+					text += Items.itemlist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
+				
+		#print(text)
+		character.loyalty = 95
+		character.authority = 100
+		character.submission = 95
 		character.mp = 100
+		character.hp = 1
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
-		character.unlock_class("apprentice")
-		character.unlock_class("dominator")
 		character.set_slave_category('slave')
 		character.is_players_character = true
 		
 		#state.revert()
+		state.money = 1000
 		for i in Items.materiallist:
 			state.materials[i] = 200
-		globals.AddItemToInventory(globals.CreateGearItem("strapon", {}))
+		state.materials.bandage = 0
+		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("anal_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("elegant_choker", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-		globals.AddItemToInventory(globals.CreateUsableItem("hairdye"))
+		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
+		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
-		$SlaveList.rebuild()
+		#$SlaveList.rebuild()
 		state.show_tutorial = false
+		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
+		
 		yield(get_tree(), 'idle_frame')
+		character.unlock_class("pet")
+		character.unlock_class("harlot")
+		character.sex_skills.oral = 70
+		character.sex_skills.anal = 90
+		character.sex_skills.petting = 100
+		character.base_exp = 500
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
-		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[randi()%state.areas.plains.locations.size()]]
+		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
-		input_handler.interactive_message('event_good_slavers', 'character_event', scenedata.scenedict.event_good_slavers.bonus_args)
+		#input_handler.add_random_chat_message(newchar, 'hire')
+		#input_handler.interactive_message('event_good_rebels_beastkin', '', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
-		#input_handler.StartCharacterCreation("master")
-		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
-		#input_handler.connect("CharacterCreated", input_handler, "StartCharacterCreation", ['slave'], 4)
-		input_handler.connect("CharacterCreated", input_handler, "get_spec_node", [input_handler.NODE_CHARCREATE, ['slave']], 4)
-		yield(input_handler, "CharacterCreated")
-		yield(input_handler, "CharacterCreated")
-		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+#		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
+#		input_handler.connect("CharacterCreated", input_handler, "get_spec_node", [input_handler.NODE_CHARCREATE, ['slave']], 4)
+#		yield(input_handler, "CharacterCreated")
+#		yield(input_handler, "CharacterCreated")
+		var newgame_node = Node.new()
+		newgame_node.set_script(load("res://src/GameStart.gd"))
+		newgame_node.start()
+		yield(input_handler, "StartingSequenceComplete")
+		
+		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
+		
 		input_handler.ActivateTutorial("introduction")
-	
+		input_handler.interactive_message('intro', '', {})
+		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
 	build_task_bar()
 	$SlaveList.rebuild()
 	
@@ -163,8 +249,16 @@ func _ready():
 	set_time_buttons()
 	$TestButton.connect("pressed", self, "quest_test")
 
+func open_travels():
+	$CharacterDislocationPanel.open_character_dislocation()
+
 func quest_test():
-	input_handler.emit_signal('EnemyKilled', 'rat')
+	print(input_handler.CloseableWindowsArray)
+#	for i in state.characters.values():
+#		i.base_exp += 100
+	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
+	#$Exploration.testcombat()
+	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):
 	if self.visible == false:
@@ -239,6 +333,7 @@ func advance_day():
 				if k.has('shop'):
 					world_gen.update_area_shop(k)
 	world_gen.update_locations()
+	globals.autosave()
 
 func set_time_buttons():
 	match globals.globalsettings.turn_based_time_flow:

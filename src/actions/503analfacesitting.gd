@@ -8,10 +8,11 @@ const canlast = true
 const giverpart = 'anus'
 const takerpart = 'mouth'
 const virginloss = false
-const giverconsent = 'advanced'
-const takerconsent = 'any'
 const givertags = ['anal']
 const takertags = ['shame', 'punish', 'mouth','noorgasm']
+const giver_skill = []
+const taker_skill = ['oral']
+const consent_level = 40
 
 func getname(state = null):
 	return "Anal face sitting"

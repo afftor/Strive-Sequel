@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'vagina'
 const takerpart = 'vagina'
 const virginloss = true
-const giverconsent = 'advanced'
-const takerconsent = 'advanced'
 const givertags = ['vagina', 'penetration']
 const takertags = ['vagina', 'penetration']
+const giver_skill = ['penetration','pussy']
+const taker_skill = ['penetration','pussy']
+const consent_level = 30
 
 func getname(state = null):
 	return "Double Dildo"

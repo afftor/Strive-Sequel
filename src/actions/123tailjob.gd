@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'tail'
 const takerpart = 'penis'
 const virginloss = false
-const giverconsent = 'advanced'
-const takerconsent = 'any'
 const givertags = ['pet', 'tail', 'noorgasm']
 const takertags = ['pet','penis']
+const giver_skill = ['tail']
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
 	return "Tailjob"

@@ -9,6 +9,8 @@ signal slave_added
 signal slave_arrived
 signal hour_tick
 
+var starting_preset = ''
+
 var date = 1
 var hour = 6
 
@@ -23,6 +25,7 @@ var votelinksseen = false
 
 #world
 var areas = {}
+var capitals = []
 var area_order = []
 var starting_area = 'Plains'
 var location_links = {}
@@ -64,19 +67,26 @@ var stored_events = {
 #Progress
 var mainprogress = 0
 var decisions = []
-var activequests = []
-var completedquests = []
+var active_quests = []
+var completed_quests = []
 var areaprogress = {}
 var currentarea
 var active_tutorials = []
 var seen_tutorials = []
 var show_tutorial = true
 
+var seen_dialogues = []
+var selected_dialogues = []
+
 var daily_interactions_left = 1
+
+var easter_egg_characters_generated = []
+var easter_egg_characters_acquired = []
 
 
 func revert():
 #to make
+	starting_preset = ''
 	date = 1
 	hour = 6
 	itemcounter = 0
@@ -86,33 +96,39 @@ func revert():
 	area_order.clear()
 	mainprogress = 0
 	decisions.clear()
-	activequests.clear()
-	completedquests.clear()
+	active_quests.clear()
+	completed_quests.clear()
 	characters.clear()
 	character_order.clear()
 	areaprogress.clear()
 	currentarea = null
 	items.clear()
 	materials.clear()
+	upgrade_progresses.clear()
+	for i in globals.upgradelist.keys():
+		upgrades[i] = 0
 	for i in Items.materiallist:
 		materials[i] = 0
 	globals._ready()
 	global_skills_used.clear()
 	active_tasks.clear()
 	completed_locations.clear()
-	completedquests.clear()
+	completed_quests.clear()
 	craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 	stored_events = {timed_events = []}
-	for i in variables.starting_resources:
-		materials[i] = variables.starting_resources[i]
 	state.areas.clear()
 	state.location_links.clear()
 	show_tutorial = true
 	active_tutorials.clear()
 	seen_tutorials.clear()
+	input_handler.encounter_win_script = null
+	input_handler.encounter_lose_scripts.clear()
+	
 
 func make_world():
 	world_gen.build_world()
+	state.areas.plains.unlocked = true
+	state.areas.forests.unlocked = true
 
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')
@@ -160,10 +176,21 @@ func get_unique_slave(code):
 		if i.unique == code:
 			return i
 
-func add_slave(person):
+func add_slave(person:Slave):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
+	if person.unique != null:
+		state.easter_egg_characters_acquired.append(person.unique)
+	if person.professions.has('master'):
+		if person.sex == 'male':
+			person.masternoun = tr('PROFMASTER').to_lower()
+		else:
+			person.masternoun = tr('PROFMASTERALT').to_lower()
+	elif state.get_master().sex == 'male':
+		person.masternoun = tr('PROFMASTER').to_lower()
+	else:
+		person.masternoun = tr('PROFMASTERALT').to_lower()
 	text_log_add("slaves","New character acquired: " + person.get_short_name() + ". ")
 	emit_signal("slave_added")
 
@@ -227,7 +254,7 @@ func valuecheck(dict):
 		"quest_stage":
 			return if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
-			return completedquests.has(dict.name)
+			return completed_quests.has(dict.name)
 		"party_level":
 			return if_party_level(dict.operant, dict.value)
 		"hero_level":
@@ -241,20 +268,32 @@ func valuecheck(dict):
 			return if_has_free_items(dict.name, dict.operant, dict.value)
 		'disabled':
 			return false
-		'master_stat':
-			return if_master_has_stat(dict.name, dict.operant, dict.value)
+		'master_check':
+			var master_char = get_master()
+			if master_char == null:
+				return false
+			else:
+				return master_char.checkreqs(dict.value)
+		'active_character_checks':
+			var character = input_handler.active_character
+			if character == null:return false
+			return character.checkreqs(dict.value)
 		'master_is_beast':
 			return if_master_is_beast(dict.value)
 		'unique_character_at_mansion':
 			var character = get_unique_slave(dict.value)
 			if character == null:return false
 			return character.checkreqs([{code = 'is_free'}])
-		'active_character_checks':
-			var character = input_handler.active_character
-			if character == null:return false
-			return character.checkreqs(dict.charreqs)
 		'has_money_for_scene_slave':
 			return money >= input_handler.scene_characters[dict.value].calculate_price()
+		'random':
+			return globals.rng.randf()*100 <= dict.value
+		'dialogue_seen':
+			return input_handler.operate(dict.operant, seen_dialogues.has(dict.value), true)
+		'dialogue_selected':
+			return input_handler.operate(dict.operant, selected_dialogues.has(dict.value), true)
+		'date':
+			return input_handler.operate(dict.operant, date, dict.value)
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -272,7 +311,7 @@ func if_has_items(name, operant, value):
 	var counter = 0
 	for i in items.values():
 		if i.itembase == name:
-			counter += 1
+			counter += i.amount
 	return input_handler.operate(operant, counter, value)
 
 func if_has_free_items(name, operant, value):
@@ -322,7 +361,7 @@ func remove_item(itemcode, number):
 	while number > 0:
 		var item
 		for i in items.values():
-			if i.itembase == itemcode:
+			if i.itembase == itemcode && i.owner == null:
 				item = i
 				break
 		if item != null:
@@ -468,19 +507,11 @@ func common_effects(effects):
 								character.tags.erase(k.value)
 					else:
 						character_stat_change(character, k)
-#						var text = character.get_short_name() + ": " + globals.statdata[k.code].name 
-#						if k.value > 0:
-#							text += " + "
-#						else:
-#							text += " - "
-#						text += str(k.value)
-#						text_log_add('char', text)
-#						character.set(k.code, input_handler.math(k.operant, character.get(k.code), k.value))
 			'start_event':
 				input_handler.interactive_message(i.data, 'start_event', i.args)
 			'spend_money_for_scene_character':
 				money -= input_handler.scene_characters[i.value].calculate_price()
-				text_log_add('money',"Gold used: " + str(i.value))
+				text_log_add('money',"Gold used: " + str(input_handler.scene_characters[i.value].calculate_price()))
 			'mod_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
@@ -489,6 +520,86 @@ func common_effects(effects):
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
 						k.set(i.name, i.value)
+			'affect_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.set(i.name, i.value)
+			'change_type_scene_characters':
+				if i.type == 'all':
+					for k in input_handler.scene_characters:
+						k.set_slave_category(i.value)
+			'active_character_switch':
+				input_handler.active_character = input_handler.scene_characters[i.value]
+			'affect_active_character':
+				match i.type:
+					'damage':
+						input_handler.active_character.hp -= i.value
+					'stat':
+						input_handler.active_character.set(i.name, input_handler.active_character.get(i.name) + i.value)
+			'make_loot':
+				input_handler.scene_loot = world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
+			'make_scene_character':
+				for k in i.value:
+					var newcharacter
+					var number = 1
+					if k.has("number"):
+						number = round(rand_range(k.number[0], k.number[1]))
+					while number > 0:
+						match k.type:
+							'raw':
+								newcharacter = Slave.new()
+								newcharacter.is_active = false
+								newcharacter.generate_random_character_from_data(k.race, k.class, k.difficulty)
+								newcharacter.set_slave_category(k.slave_type)
+							'function':
+								newcharacter = call(k.function, k.args)
+						input_handler.active_character = newcharacter
+						input_handler.scene_characters.append(newcharacter)
+						
+						number -= 1
+			'update_guild':
+				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+			'create_character':
+				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
+			'main_progress':
+				mainprogress = input_handler.math(i.operant, mainprogress, i.value)
+			'complete_quest':
+				for k in active_quests:
+					if k.code == i.value:
+						active_quests.erase(k)
+						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						break
+				completed_quests.append(i.value)
+				
+
+func make_local_recruit(args):
+	var newchar = Slave.new()
+	if args == null:
+		newchar.generate_random_character_from_data(input_handler.weightedrandom(input_handler.active_location.races))
+	else:
+		var race = 'random'
+		var des_class = null
+		var difficulty = 0
+		if args.has('races'):
+			race = input_handler.weightedrandom(args.races)
+			if race == 'local':
+				race = input_handler.weightedrandom(input_handler.active_area.races)
+			elif race == 'beast':
+				var racearray = []
+				for i in races.racelist.values():
+					if i.tags.has('beast') == true:
+						racearray.append(i.code)
+				race = racearray[randi()%racearray.size()]
+		if args.has('difficulty'):
+			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
+		newchar.generate_random_character_from_data(race, des_class, difficulty)
+		if args.has("bonuses"):
+			newchar.add_stat_bonuses(args.bonuses)
+		if args.has("type"):
+			newchar.set_slave_category(args.type)
+	if newchar.slave_class == '': newchar.set_slave_category('servant')
+	if args.has("is_hirable"): newchar.is_hirable = args.is_hirable
+	return newchar
 
 func character_stat_change(character, data):
 	var text = character.get_short_name() + ": " + globals.statdata[data.code].name 

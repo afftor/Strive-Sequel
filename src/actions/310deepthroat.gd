@@ -9,10 +9,11 @@ const canlast = true
 const giverpart = 'penis'
 const takerpart = 'mouth'
 const virginloss = false
-const giverconsent = 'basic'
-const takerconsent = 'any'
 const givertags = ['penis']
 const takertags = ['mouth','penetration','pain']
+const giver_skill = ['penetration']
+const taker_skill = ['oral']
+const consent_level = 30
 
 func getname(state = null):
 	return "Deepthroat"

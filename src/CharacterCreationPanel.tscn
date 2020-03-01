@@ -55,17 +55,16 @@ script = ExtResource( 2 )
 margin_left = 37.0
 margin_top = 32.0
 margin_right = 385.0
-margin_bottom = 141.0
+margin_bottom = 117.0
 custom_fonts/normal_font = ExtResource( 3 )
 custom_colors/default_color = Color( 0.886275, 0.745098, 0.0156863, 1 )
 text = "Create your Master Character"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 38.3467
-margin_top = 160.828
+margin_top = 120.828
 margin_right = 382.347
-margin_bottom = 726.828
+margin_bottom = 686.828
 custom_constants/separation = 6
 
 [node name="Label" type="Label" parent="VBoxContainer"]
@@ -163,6 +162,20 @@ align = 1
 margin_top = 516.0
 margin_right = 344.0
 margin_bottom = 566.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+margin_top = 572.0
+margin_right = 344.0
+margin_bottom = 596.0
+mouse_filter = 0
+text = "SLAVEPARTPERSONALITY"
+align = 1
+
+[node name="personality" type="OptionButton" parent="VBoxContainer"]
+margin_top = 602.0
+margin_right = 344.0
+margin_bottom = 652.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="bodyparts" type="VBoxContainer" parent="."]
@@ -437,11 +450,10 @@ margin_bottom = 724.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="StatsContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 25.0
-margin_top = 743.0
+margin_top = 776.0
 margin_right = 877.0
-margin_bottom = 933.0
+margin_bottom = 966.0
 
 [node name="Button" type="Panel" parent="StatsContainer"]
 visible = false
@@ -498,9 +510,9 @@ margin_bottom = 724.759
 bbcode_enabled = true
 
 [node name="totalstatlabel" type="Label" parent="."]
-margin_left = 191.988
+margin_left = 253.864
 margin_top = 954.445
-margin_right = 620.988
+margin_right = 682.864
 margin_bottom = 984.445
 
 [node name="RaceSelection" type="Panel" parent="."]
@@ -541,12 +553,7 @@ margin_left = 420.0
 margin_top = 68.0
 margin_right = 797.0
 margin_bottom = 671.0
-text = "This
-Is
-A 
-Test
-Text 
-"
+bbcode_enabled = true
 
 [node name="TraitSelection" type="Panel" parent="."]
 visible = false

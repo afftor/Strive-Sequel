@@ -36,6 +36,10 @@ func _ready():
 	$VBoxContainer/age.connect("item_selected", self, "select_age")
 	$VBoxContainer/sex.connect("item_selected", self, "select_sex")
 	$VBoxContainer/sextrait.connect('pressed', self, "open_sex_traits")
+	for i in variables.personality_array:
+		$VBoxContainer/personality.add_item(i.capitalize())
+	$VBoxContainer/personality.connect("item_selected", self, "select_personality")
+	globals.connecttexttooltip($VBoxContainer/personality, tr("SLAVEPARTPERSONALITYDESCRIPT"))
 	
 	$ConfirmButton.connect("pressed", self, 'confirm_character')
 	$CancelButton.connect("pressed", self, "confirm_return")
@@ -60,12 +64,12 @@ func _ready():
 	
 	$bodyparts2/class.connect("pressed", self, "open_class_list")
 	
-	for i in ['slave','servant']:
-		$bodyparts2/slave_class.add_item(i.capitalize())
+	for i in slave_classes:
+		$bodyparts2/slave_class.add_item(globals.slave_class_names[i])
 	$bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
 	
 	open()
-
+var slave_classes = ['slave','servant']
 func open_class_list():
 	$ClassPanel.show()
 	globals.ClearContainer($ClassPanel/ScrollContainer/VBoxContainer)
@@ -112,7 +116,7 @@ func select_sexbodypart(value, bodypart, node):
 	$descript.bbcode_text = person.make_description()
 
 func select_type(value, node):
-	preservedsettings.slave_class = node.get_item_text(value)
+	preservedsettings.slave_class = slave_classes[value]
 
 func select_checkbox(bodypart, node):
 	preservedsettings[bodypart] = node.pressed
@@ -165,8 +169,10 @@ func finish_diet_selection():
 func open(type = 'slave'):
 	preservedsettings.clear()
 	show()
-	
+	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
 	$introduction.bbcode_text = introduction_text[type]
+	if type == 'slave':
+		$introduction.bbcode_text += " " + str(state.characters.size())
 	selected_class = ''
 	
 	person = Slave.new()
@@ -185,7 +191,7 @@ func open(type = 'slave'):
 	
 	$bodyparts2/type_label.visible = mode == 'slave'
 	$bodyparts2/slave_class.visible = mode == 'slave'
-	globals.connecttexttooltip($bodyparts2/type_label, "Slave&Servant:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
+	globals.connecttexttooltip($bodyparts2/type_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	
 	rebuild_slave()
 
@@ -203,6 +209,8 @@ func rebuild_slave():
 	$VBoxContainer/race.text = races.racelist[person.race].name
 	$VBoxContainer/sex.select(sexarray.find(person.sex))
 	$VBoxContainer/age.select(agearray.find(person.age))
+	$VBoxContainer/personality.visible = mode != 'master'
+	$VBoxContainer/personality.select(variables.personality_array.find(person.personality))
 	person.food_love = ''
 	person.food_hate.clear()
 	
@@ -238,7 +246,12 @@ func check_confirm_possibility():
 	else:
 		$bodyparts2/class.text = Skilldata.professions[selected_class].name
 	
-	$ConfirmButton.disabled = !can_confirm
+	if !can_confirm:
+		$ConfirmButton.disabled = true
+		$ConfirmButton.hint_tooltip = 'Select starting Class and Diet'
+	else:
+		$ConfirmButton.disabled = false
+		$ConfirmButton.hint_tooltip = ""
 
 func select_age(value):
 	person.age = agearray[value]
@@ -247,6 +260,9 @@ func select_age(value):
 func select_sex(value):
 	person.sex = sexarray[value]
 	rebuild_slave()
+
+func select_personality(value):
+	preservedsettings.personality = variables.personality_array[value]
 
 func select_race():
 	$RaceSelection.show()
@@ -273,13 +289,13 @@ func show_race_info(temprace):
 			text += globals.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
 		else:
 			text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
-#	for i in race.race_bonus:
-#		text += globals.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
 	text = text.substr(0, text.length() - 2) + "."
 	
+	if race.tags.has('small_size'):
+		text += "\n\n{color=aqua|Small Sized: " + "Melee Skill damage reduced by 20%. Evasion increased by 30. Collection tasks efficiency -25%.}"
 	
 	
-	$RaceSelection/RichTextLabel.bbcode_text = text
+	$RaceSelection/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	text = race.code.to_lower().replace('halfkin','beastkin')
 	if person.sex != null:
 		if person.sex == 'male':
@@ -309,7 +325,7 @@ func RebuildStatsContainer():
 				preservedsettings[i.code] = 1
 			else:
 				person[i.code] = preservedsettings[i.code]
-			if i.code in ['growth_factor','brave_factor','tame_factor'] && mode == 'master':
+			if i.code in ['growth_factor','timid_factor','tame_factor'] && mode == 'master':
 				preservedsettings[i.code] = 5
 			
 	
@@ -322,7 +338,7 @@ func RebuildStatsContainer():
 	
 	
 	for i in array:
-		if mode == 'master' && i.code in ["growth_factor",'brave_factor','tame_factor']:
+		if mode == 'master' && i.code in ["growth_factor",'timid_factor','tame_factor']:
 			continue
 		var newnode = globals.DuplicateContainerTemplate($StatsContainer)
 		newnode.get_node("up").connect("pressed", self, 'stat_up', [i])
@@ -513,8 +529,11 @@ func finish_character():
 		if preservedsettings.has('slave_class') == false:
 			preservedsettings.slave_class = 'Slave'
 		person.set_slave_category(preservedsettings.slave_class.to_lower())
+		person.authority = person.authority_threshold()/1.5
+		person.obedience = 48
 	else:
 		person.slave_class = 'master'
+		person.consent = 1000
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
 
@@ -539,6 +558,6 @@ func select_sex_trait(trait):
 		person.sex_traits.append(trait.code)
 	$TraitSelection.hide()
 	#input_handler.GetTextTooltip().hide()
-	input_handler.input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	RebuildStatsContainer()
 

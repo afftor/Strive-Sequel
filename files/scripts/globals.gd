@@ -1,10 +1,6 @@
 extends Node
 
-const gameversion = 'pre-demo-test 0.1'
-
-#const worker = preload("res://files/scripts/worker.gd");
-#const Item = preload("res://src/ItemClass.gd")
-#const combatant = preload ('res://src/combatant.gd')
+const gameversion = '0.1.2'
 
 var start_new_game = false
 
@@ -39,7 +35,15 @@ var system_messages = {
 	
 }
 
+var race_groups = {
+	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
+	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
+	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
+	rare = ['DarkElf','Drow','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
+}
+
 var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
+var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','tanuki']
 
 var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
@@ -114,14 +118,34 @@ var statdata = {
 		baseicon = load("res://assets/images/gui/gui icons/tame_factor.png"),
 		type = 'factor',
 	},
-	brave_factor = {
-		code = 'brave_factor',
+	timid_factor = {
+		code = 'timid_factor',
 		name = '',
 		descript = '',
-		baseicon = load("res://assets/images/gui/gui icons/brave_factor.png"),
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
 		type = 'factor',
 	},
-	
+	authority = {
+		code = 'authority',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
+		type = '',
+	},
+	loyalty = {
+		code = 'loyalty',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
+		type = '',
+	},
+	submission = {
+		code = 'submission',
+		name = '',
+		descript = '',
+		baseicon = load("res://assets/images/gui/gui icons/timid_factor.png"),
+		type = '',
+	},
 	physics = { 
 		code = 'physics',
 		name = '',
@@ -454,7 +478,22 @@ var statdata = {
 		percent = true,
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
+	consent = {
+		code = 'consent',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 }
+
+var slave_class_names = {
+	'slave' : 'Slave',
+	servant = 'Peon',
+	'master' : '[Master]',
+	hireling = 'Hireling',
+}
+
 
 var worktoolnames = {
 	bow = '',
@@ -484,6 +523,7 @@ var hexcolordict = {
 	yellow = "#ffff00",
 	brown = "#8B572A",
 	gray = "#4B4B4B",
+	gray_text_dialogue = "#90d4aa",
 	green = '#00b700',
 	white = '#ffffff',
 	aqua = '#24ffdb',
@@ -493,6 +533,7 @@ var hexcolordict = {
 	factor4 = '#13a40d',
 	factor5 = '#25b8ff',
 	factor6 = '#bc53ff',
+	levelup_text_color = "#10ff10",
 }
 var textcodedict = {
 	color = {start = '[color=', end = '[/color]'},
@@ -505,6 +546,8 @@ var quest_icons = {
 	reputation = load("res://assets/images/gui/quest_reputation.png"),
 	
 }
+
+var sex_actions_dict = {}
 
 var globalsettings = { 
 	ActiveLocalization = 'en',
@@ -521,6 +564,7 @@ var globalsettings = {
 	window_pos = Vector2(0,0),
 	
 	factors_as_words = true,
+	show_full_consent = false,
 	
 	textspeed = 60,
 	skipread = false,
@@ -534,6 +578,7 @@ var globalsettings = {
 	futa_balls = true,
 	futachance = 10,
 	malechance = 50,
+	meowing = true,
 	#user_folders_settings
 	portrait_folder = 'user://portraits/',
 	body_folder = 'user://bodies/',
@@ -542,6 +587,10 @@ var globalsettings = {
 	turn_based_time_flow = false,
 	
 	guilds_any_race = false, #unused
+	
+	autosave = true,
+	autosave_number = 3,
+	autosave_frequency = 24,
 	
 	
 } setget settings_save
@@ -584,6 +633,11 @@ func _init():
 	if dir.dir_exists(userfolder + 'saves') == false:
 		dir.make_dir(userfolder + 'saves')
 	
+	for i in dir_contents('res://src/actions'):
+		if i.find('.remap') >= 0:
+			continue
+		var newaction = load(i).new()
+		sex_actions_dict[newaction.code] = newaction
 	
 	#Storing available translations
 	for i in scanfolder(LocalizationFolder):
@@ -633,11 +687,28 @@ func _ready():
 #			text += k.name + ' = "' + k.code + '",\n'
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 	
+
 	modding_core.fix_main_data()
 	modding_core.process_data_mods()
+	for i in world_gen.easter_egg_characters.values():
+		i.code = i.name.to_lower()
 	
-	for i in upgradelist.keys():
-		state.upgrades[i] = 0
+	#LoadEventData()
+#	if globalsettings.fullscreen == true:
+#		OS.window_fullscreen = true
+	#===Necessary to apply translation===
+
+	#Items = load("res://files/Items.gd").new()
+	#Enemydata = load("res://assets/data/enemydata.gd").new()
+	#Skillsdata = load("res://assets/data/Skills.gd").new()
+	#Effectdata = load("res://assets/data/Effects.gd").new()
+	#TownData = load("res://files/TownData.gd").new()
+	#Traitdata = load("res://assets/data/Traits.gd").new()
+	#combatantdata = load("res://files/CombatantClass.gd").new()
+
+	#====================================
+	
+	
 	
 	state.money = 500
 
@@ -926,7 +997,9 @@ func TextEncoder(text, node = null):
 				'check':
 					if evaluate(data[1]) == false:
 						originaltext = ''
-		
+				'random_chat':
+					var character = input_handler.scene_characters[int(data[1])]
+					originaltext = character.translate(input_handler.get_random_chat_line(character, originaltext))
 		
 		text = text.replace(newtext, startcode + originaltext + endcode)
 	if node != null:
@@ -1032,20 +1105,34 @@ func scanfolder(path): #makes an array of all folders in modfolder
 func QuickSave():
 	SaveGame('QuickSave')
 
-
-
+func autosave():
+#	var maxcounter = globalsettings.autosave_number
+#	var counter = 1
+#	var savegame = File.new()
+#	var dir = Directory.new()
+#	var savesdir = dir_contents(userfolder + 'saves')
+	
+	
+	
+#	var filearray = globals.dir_contents()
+#	var path = 'user://saves/'
+#	if filearray.has(path+"autosave2"):
+#		dir.rename(path+'autosave2',path+'autosave3')
+#		if globals.savelist.has(path + 'autosave2'):
+#			globals.savelist[path+'autosave3'] = globals.savelist[path + 'autosave2']
+#		else:
+#			globals.savelist[path+'autosave3'] = globals.savelistentry(path+'autosave3')
+#	if filearray.has(path+"autosave1"):
+#		dir.rename(path+'autosave1',path+'autosave2')
+#		if globals.savelist.has(path + 'autosave1'):
+#			globals.savelist[path+'autosave2'] = globals.savelist[path + 'autosave1']
+#		else:
+#			globals.savelist[path+'autosave2'] = globals.savelistentry(path+'autosave2')
+	#var thread = 
+# warning-ignore:return_value_discarded
+	Thread.new().start(globals,"SaveGame",'autosave')
 
 func SaveGame(name):
-#	approach 1, not compatrible with sigletones + still  need reworking
-#	var savedict = {state = null, heroes = [], items = [], workers = []}
-#	savedict.state = inst2dict(state)
-#	for i in state.heroes.values():
-#		savedict.heroes.append(inst2dict(i))
-#	for i in state.items.values():
-#		savedict.items.append(inst2dict(i))
-#	for i in state.workers.values():
-#		savedict.workers.append(inst2dict(i))
-	#approach 2
 	var savedict = state.serialize(); 
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
@@ -1059,9 +1146,6 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
-	#approach 1
-	#state = load("res://src/gamestate.gd").new()
-	#state._ready()
 	
 	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)

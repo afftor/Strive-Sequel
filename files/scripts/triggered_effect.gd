@@ -45,46 +45,40 @@ func deserialize(tmp):
 
 func process_event(ev):
 	if triggered_event.has(ev) and ready:
-		#check conditions
-		var res = true
-		for cond in template.conditions:
-			match cond.type:
-				'random': 
-					res = res and (globals.rng.randf() < cond.value)
-				'skill':
-					var obj = self_args['skill']
-					res = res and obj.process_check(cond.value)
-					pass
-				'caster':
-					var obj = self_args['skill']
-					res = res and obj.caster.process_check(cond.value)
-					pass
-				'target':
-					var obj = self_args['skill']
-					res = res and obj.target.process_check(cond.value)
-					pass
-				'owner':
-					var obj = get_applied_obj()
-					res = res and obj.process_check(cond.value)
-					pass
-			pass
-		if res:
-			ready = false
-			#apply trigger
-			e_apply()
+		if !req_skill or (self_args.has('skill') and self_args['skill'] != null):
+			#check conditions
+			var res = true
+			for cond in template.conditions:
+				match cond.type:
+					'random': 
+						res = res and (globals.rng.randf() < cond.value)
+					'skill':
+						var obj = self_args['skill']
+						res = res and obj.process_check(cond.value)
+					'caster':
+						var obj = self_args['skill']
+						res = res and obj.caster.process_check(cond.value)
+					'target':
+						var obj = self_args['skill']
+						res = res and obj.target.process_check(cond.value)
+					'owner':
+						var obj = get_applied_obj()
+						res = res and obj.process_check(cond.value)
+			if res:
+				ready = false
+				.clear_buffs()
+				#apply trigger
+				e_apply()
 	if reset_event.has(ev) or reset_event.size() == 0:
 		ready = true
+		.rebuild_buffs()
 	pass
 
 func apply():
 	setup_siblings()
 	calculate_args()
-	buffs.clear()
-	for e in template.buffs:
-		var tmp = Buff.new(id)
-		tmp.createfromtemplate(e)
-		tmp.calculate_args()
-		buffs.push_back(tmp)
+	if ready: .rebuild_buffs()
+	else: .clear_buffs()
 
 func e_apply():
 	sub_effects.clear()

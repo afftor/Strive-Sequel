@@ -8,18 +8,30 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add', stat = 'modmelee', value = -0.2},
-			{type = 'stat_add', stat = 'evasion', value = 25},
-			{type = 'stat_add_p', stat = 'mod_collect', value = -0.25}
+			{type = 'stat_add', stat = 'evasion', value = 30},
+			{type = 'stat_add_p', stat = 'mod_collect', value = -0.15}
 			],
-		buffs = [],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/small_size.png", 
+				description = "Small Size: \nMelee Skill damage reduced by 20%%\nEvasion increased by 30\nCollection tasks efficiency -15%%",
+				limit = 1,
+				t_name = 'small',
+				mansion_only = true,
+			}],
 		sub_effects = [],
 	},
 	e_tr_slave = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add', stat = 'modall', value = -0.1},
-			{type = 'stat_add_p', stat = 'productivity', value = -0.1},
-			{type = 'stat_add_p', stat = 'fear_degrade_mod', value = -0.5}
+			{type = 'stat_add_p', stat = 'mod_collect', value = 0.1},
+			{type = 'stat_add_p', stat = 'mod_pros', value = 0.1},
+			{type = 'stat_add_p', stat = 'mod_farm', value = 0.1},
+			{type = 'stat_add_p', stat = 'mod_smith', value = -0.15},
+			{type = 'stat_add_p', stat = 'mod_alchemy', value = -0.15},
+			{type = 'stat_add_p', stat = 'mod_tailor', value = -0.15},
+			{type = 'stat_add_p', stat = 'submission_degrade_mod', value = -0.5}
 			],
 		buffs = [],
 		sub_effects = [],
@@ -28,14 +40,14 @@ var effect_table = {
 		type = 'trigger',
 		trigger = [variables.TR_S_CAST],
 		req_skill = true,
-		conditions = [],#{type = 'skill', value = ['tags', 'has', 'discipline']}],
+		conditions = [],
 		atomic = [],
 		buffs = [],
 		sub_effects = [
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['+fear','+obedience', '-fear','-obedience']}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['+authority']}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -127,8 +139,8 @@ var effect_table = {
 		code = 'work_rule_constrain',
 		type = 'static',
 		atomic = [
-			{type = 'stat_add_p', stat = 'productivity', value = 0.25},
-			{type = 'stat_add_p', stat = 'obed_degrade_mod', value = 0.5},
+			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
+			{type = 'stat_add_p', stat = 'loyalty_degrade_mod', value = 0.5},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -225,7 +237,7 @@ var effect_table = {
 		tags = ['magic', 's_dur_add'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add_p', stat = 'lusttick', value = 0.5},
+			{type = 'stat_add_p', stat = 'lusttick', value = 0.25},
 		],
 		buffs = ['b_charm'],
 	},
@@ -393,8 +405,8 @@ var effect_table = {
 		tick_event = variables.TR_TICK,
 		duration = 'parent_arg', 
 		stack = 1,
-		no_obed_reduce = true,
 		no_escape = true,
+		no_loyal_reduction = true,
 		tags = ['s_dur_add'],
 		sub_effects = [],
 		atomic = [],
@@ -415,8 +427,8 @@ var effect_table = {
 		tick_event = variables.TR_TICK,
 		duration = 'parent_arg', 
 		stack = 1,
-		no_obed_reduce = true,
 		no_escape = true,
+		no_loyal_reduction = true,
 		tags = ['s_dur_add'],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.5}],
@@ -464,7 +476,6 @@ var effect_table = {
 		target = 'target',
 		name = 'mindcontrol',
 		stack = 0,#stacks unlimitely, control this by casting checks
-		no_obed_reduce = true,
 		no_escape = true,
 		tags = ['mindcontrol'],
 		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
@@ -536,7 +547,6 @@ var effect_table = {
 		name = 'inspire',
 		tick_event = variables.TR_TURN_F,
 		rem_event = variables.TR_COMBAT_F,
-		duration = 1, 
 		stack = 1,
 		tags = ['buff'],
 		sub_effects = [],
@@ -1577,11 +1587,11 @@ var effect_table = {
 	e_i_pet_suit = {
 		type = 'static',
 		conditions = [],
-		descript = "Obedience Decay: -15%\nFear Decay: -20%.",
+		descript = "Loyalty Decay: -35%\nSubmission Decay: -65%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [
-		{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8},
-		{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85},
+		{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.65},
+		{type = 'stat_mul', stat = 'submission_degrade_mod', value = 0.35},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -1589,7 +1599,7 @@ var effect_table = {
 	e_i_pet_suit_bonus = {
 		type = 'c_static',
 		conditions = [{type = 'class', value = 'pet'}],
-		descript = "When wearer has Pet class and not of beast origins:\nCharm: +10\nSocial skills effect: +10%.",
+		descript = "When wearer has Pet class:\nCharm: +10\nSocial skills effect: +10%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		buffs = [],
@@ -1598,10 +1608,10 @@ var effect_table = {
 	e_maid_dress_effect = {
 		type = 'static',
 		conditions = [],
-		descript = "Obedience Decay: -25%",
+		descript = "Loyalty Decay: -50%",
 		tags = [],
 		atomic = [
-		{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.75},
+		{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.5},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -1722,22 +1732,22 @@ var effect_table = {
 	#temp items
 	e_leather_collar_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.8}],
-		descript = 'Reduces Fear decay by 20%.',
+		atomic = [{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.7},{type = 'stat_mul', stat = 'submission_degrade_mod', value = 0.7},{type = 'stat_add_p', stat = 'authority_mod', value = 0.25}],
+		descript = 'Reduces Loyalty and Submission decay by 30%. Increases Authority gain by 25%. ',
 		buffs = [],
 		sub_effects = [],
 	},
 	e_chocker_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.9},{type = 'stat_mul', stat = 'obed_degrade_mod', value = 0.85}],
-		descript = "Reduces Fear decay by 10%.\nReduces Obedience decay by 15%.",
+		atomic = [{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.4}],
+		descript = "Reduces Loyalty decay by 60%.",
 		buffs = [],
 		sub_effects = [],
 	},
 	e_steel_collar_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'fear_degrade_mod', value = 0.75}],
-		descript = 'Reduces Fear decay by 25%.',
+		atomic = [{type = 'stat_mul', stat = 'submission_degrade_mod', value = 0.75},{type = 'stat_add_p', stat = 'authority_mod', value = 0.35}],
+		descript = 'Reduces Submission decay by 50%. Increases Authority gain by 35%.',
 		buffs = [],
 		sub_effects = [],
 	},
@@ -1788,207 +1798,6 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
-#	e_core_ex = {
-#		type = 'trigger',
-#		trigger = [variables.TR_TICK],
-#		req_skill = false,
-#		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'gt', value = 0} }],
-#		atomic = [],
-#		buffs = [],
-#		sub_effects = ['e_t_ex1']
-#	},
-#	e_core_ex_rem = {
-#		type = 'trigger',
-#		trigger = [variables.TR_TICK],
-#		req_skill = false,
-#		conditions = [{type = 'owner', value = {type = 'stats', name = 'exhaustion', operant = 'lte', value = 0} }],
-#		atomic = [],
-#		buffs = [],
-#		sub_effects = ['e_fire_custom']
-#	},
-#	e_t_ex1 = {
-#		type = 'temp_u',
-#		target = 'owner',
-#		name = 'exhaustion',
-#		tags = ['penalty', 'exhaustion'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM,
-#		stages = 11,
-#		next_level = 'e_t_ex2',
-#		atomic = [],
-#		buffs = [],
-#		sub_effects = [],
-#	},
-#	e_t_ex2 = {
-#		type = 'temp_u',
-#		name = 'exhaustion',
-#		tags = ['penalty', 'exhaustion'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM,
-#		stages = 24,
-#		next_level = 'e_t_ex3',
-#		prev_level = 'e_t_ex1',
-#		atomic = [
-#			{type = 'stat_mul', stat = 'hpmax', value = 0.8}
-#		],
-#		buffs = [
-#			{
-#				icon = "res://assets/images/gui/panels/exhaust.png", 
-#				description = "Exhausted - second phase",
-#				t_name = 'exhaustion',
-#				limit = 1
-#			}
-#		],
-#		sub_effects = [],
-#	},
-#	e_t_ex3 = {
-#		type = 'temp_u',
-#		name = 'exhaustion',
-#		tags = ['penalty', 'exhaustion'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM,
-#		stages = 48,
-#		next_level = 'e_t_ex4',
-#		prev_level = 'e_t_ex2',
-#		atomic = [
-#			{type = 'stat_mul', stat = 'hpmax', value = 0.5},
-#			{type = 'stat_add', stat = 'physic_bonus', value = -20},
-#			{type = 'stat_add', stat = 'wits_bonus', value = -20},
-#			{type = 'stat_add', stat = 'sexuals_bonus', value = -20},
-#			{type = 'stat_add', stat = 'charm_bonus', value = -20},
-#		],
-#		buffs = [
-#			{
-#				icon = "res://assets/images/gui/panels/exhaust.png", 
-#				description = "Exhausted - third phase",
-#				t_name = 'exhaustion',
-#				limit = 1
-#			}
-#		],
-#		sub_effects = [],
-#	},
-#	e_t_ex4 = {
-#		type = 'temp_u',
-#		name = 'exhaustion',
-#		tags = ['penalty', 'exhaustion'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM,
-#		stages = 84,
-#		next_level = 'e_t_ex5',
-#		prev_level = 'e_t_ex3',
-#		atomic = [
-#			{type = 'stat_mul', stat = 'hpmax', value = 0.25},
-#			{type = 'stat_add', stat = 'physic_bonus', value = -30},
-#			{type = 'stat_add', stat = 'wits_bonus', value = -30},
-#			{type = 'stat_add', stat = 'sexuals_bonus', value = -30},
-#			{type = 'stat_add', stat = 'charm_bonus', value = -30},
-#		],
-#		buffs = [
-#			{
-#				icon = "res://assets/images/gui/panels/exhaust.png", 
-#				description = "Exhausted - fourth phase",
-#				t_name = 'exhaustion',
-#				limit = 1
-#			}
-#		],
-#		sub_effects = [],
-#	},
-#	e_t_ex5 = {
-#		type = 'temp_u',
-#		name = 'exhaustion',
-#		tags = ['penalty', 'exhaustion'],
-#		duration = 1,
-#		stack = 1,
-#		atomic = ['a_self_kill'],
-#		buffs = [],
-#		sub_effects = [],
-#	},
-#	e_core_fat = {
-#		type = 'trigger',
-#		trigger = [variables.TR_TICK],
-#		req_skill = false,
-#		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'gte', value = 30} }],
-#		atomic = [],
-#		buffs = [],
-#		sub_effects = ['e_t_fat1']
-#	},
-#	e_core_fat_rem = {
-#		type = 'trigger',
-#		trigger = [variables.TR_TICK],
-#		req_skill = false,
-#		conditions = [{type = 'owner', value = {type = 'stats', name = 'fatigue', operant = 'lt', value = 30} }],
-#		atomic = [],
-#		buffs = [],
-#		sub_effects = ['e_fire_custom1']
-#	},
-#	e_t_fat1 = {
-#		type = 'temp_u',
-#		target = 'owner',
-#		name = 'fatigue',
-#		tags = ['penalty', 'fatigue'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM1,
-#		stages = 24,
-#		next_level = 'e_t_fat2',
-#		atomic = [],
-#		buffs = [
-#		],
-#		sub_effects = [],
-#	},
-#	e_t_fat2 = {
-#		type = 'temp_u',
-#		name = 'fatigue',
-#		tags = ['penalty', 'fatigue'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM1,
-#		stages = 24,
-#		next_level = 'e_t_fat3',
-#		prev_level = 'e_t_fat1',
-#		atomic = [
-#			{type = 'stat_mul', stat = 'obed_degrade_mod', value = 1.5},
-#			{type = 'stat_add', stat = 'wits_bonus', value = -15},
-#			{type = 'stat_add', stat = 'charm_bonus', value = -15},
-#		],
-#		buffs = [
-#			{
-#				icon = "res://assets/images/iconsclasses/Cattle.png", 
-#				description = "Fatigued - second phase",
-#				t_name = 'fatigue',
-#				limit = 1
-#			}
-#		],
-#		sub_effects = [],
-#	},
-#	e_t_fat3 = {
-#		type = 'temp_u',
-#		name = 'fatigue',
-#		tags = ['penalty', 'fatigue'],
-#		duration = 1,
-#		stack = 1,
-#		tick_event = variables.TR_CUSTOM1,
-#		prev_level = 'e_t_fat2',
-#		atomic = [
-#			{type = 'stat_mul', stat = 'obed_degrade_mod', value = 2.0},
-#			{type = 'stat_mul', stat = 'energy_work_mod', value = 2.0},
-#			{type = 'stat_add', stat = 'wits_bonus', value = -25},
-#			{type = 'stat_add', stat = 'charm_bonus', value = -25},
-#		],
-#		buffs = [
-#			{
-#				icon = "res://assets/images/iconsclasses/Cattle.png", 
-#				description = "Fatigued - third phase",
-#				t_name = 'fatigue',
-#				limit = 1
-#			}
-#		],
-#		sub_effects = [],
-#	},
 	
 	
 	
