@@ -40,6 +40,7 @@ class sskill_value:
 	var receiver
 	var damagestat
 	var damage_type
+	var is_drain
 	
 	func _init(caller, tmp):
 		parent = caller
@@ -48,6 +49,7 @@ class sskill_value:
 		receiver = template.receiver
 		damagestat = template.damagestat
 		damage_type = template.source
+		is_drain = template.is_drain
 	
 	func clone():
 		return dict2inst(inst2dict(self))
