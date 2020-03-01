@@ -2464,10 +2464,10 @@ func use_social_skill(s_code, target):#add logging if needed
 					tmp = h.stat_update(stat, i.value)
 				1:
 					tmp = h.stat_update(stat, -i.value)
-					if s_skill.is_drain: self.stat_update(stat, -tmp)
+					if i.is_drain: self.stat_update(stat, -tmp)
 				2:
 					tmp = h.stat_update(stat, i.value, true)
-					if s_skill.is_drain: self.stat_update(stat, -tmp)
+					if i.is_drain: self.stat_update(stat, -tmp)
 
 			effect_text += "\n" + h.name + ", " + globals.statdata[stat].name
 			var maxstat = 100

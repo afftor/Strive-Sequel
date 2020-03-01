@@ -670,7 +670,7 @@ func _ready():
 	for i in variables.resists_list:
 		statdata['resist'+i] = {code = "resist"+i}
 	
-	for i in globals.statdata.values():
+	for i in statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())
 		i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
 	
@@ -690,8 +690,6 @@ func _ready():
 
 	modding_core.fix_main_data()
 	modding_core.process_data_mods()
-	for i in world_gen.easter_egg_characters.values():
-		i.code = i.name.to_lower()
 	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:

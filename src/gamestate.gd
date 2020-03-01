@@ -133,7 +133,7 @@ func make_world():
 func _ready():
 	connect("hour_tick", self, 'check_timed_events')
 	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
-	revert()
+	call_deferred('revert')
 
 func update_global_cooldowns():
 	for i in global_skills_used.duplicate():
@@ -176,7 +176,7 @@ func get_unique_slave(code):
 		if i.unique == code:
 			return i
 
-func add_slave(person:Slave):
+func add_slave(person):
 	characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true

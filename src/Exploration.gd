@@ -1608,7 +1608,7 @@ func execute_skill(s_skill2): #to update to exploration version
 					text += "%s restored %d %s." %[s_skill2.target.name, rval, tr(stat)] 
 			elif mod == 1:
 				var rval = s_skill2.target.stat_update(stat, -i.value)
-				if s_skill2.is_drain:
+				if i.is_drain:
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
 						text += "%s drained %d %s from %s." %[s_skill2.caster.name, i.value, tr(stat),  s_skill2.target.name]
@@ -1616,7 +1616,7 @@ func execute_skill(s_skill2): #to update to exploration version
 					text += "%s loses %d %s." %[s_skill2.target.name, -rval, tr(stat)]
 			elif mod == 2:
 				var rval = s_skill2.target.stat_update(stat, i.value, true)
-				if s_skill2.is_drain:# use this on your own risk
+				if i.is_drain:# use this on your own risk
 					var rval2 = s_skill2.caster.stat_update(stat, -rval)
 					if !s_skill2.tags.has('no log'):
 						text += "%s drained %d %s from %s." %[s_skill2.caster.name, i.value, tr(stat),  s_skill2.target.name]

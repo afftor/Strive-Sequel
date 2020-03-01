@@ -1,8 +1,9 @@
 extends Node
 
-#
-#func _ready():
-#	build_world()
+
+func _ready():
+	for i in easter_egg_characters.values():
+		i.code = i.name.to_lower()
 
 func build_world():
 	for i in lands:
