@@ -136,6 +136,7 @@ func FinishCombat():
 		#mb to change this part when dealing with captured enemies  
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.is_active = false
+	CombatAnimations.force_end()
 	hide()
 	globals.combat_node = null
 	input_handler.finish_combat()

@@ -27,6 +27,14 @@ var animation_delays = {}
 
 var is_busy = false
 
+func force_end():
+	animation_delays.clear()
+	animations_queue.clear()
+	hp_update_delays.clear()
+	buffs_update_delays.clear()
+	crit_display.clear()
+	log_update_delay = 0
+	is_busy = false
 
 func _process(delta):
 	for node in animation_delays:
