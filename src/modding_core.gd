@@ -10,7 +10,7 @@ var mod_tables = {} #table, mod
 var tables = {} #table, parsed content 
 
 var current_mod = ""
-
+var data_loaded = false
 
 #never really filled, only format
 var avaliable_modes_list = [] #name, data_file, desc
@@ -20,9 +20,11 @@ func _ready():
 	process_script_mods()
 
 func process_data_mods():
+	if data_loaded: return
 	for m in mods_list:
 		current_mod = m.name
 		process_mod(m.path)
+	data_loaded = true
 
 func process_script_mods():
 	for m in mods_list:
@@ -82,6 +84,8 @@ func get_avail_mods():
 func process_mod(path: String):
 	var mconf := ConfigFile.new()
 	mconf.load(path)
+	print("processing data tables from mod %s" % mconf.get_value('General','Name'))
+	if !mconf.has_section('Data'): return
 	var datafiles = mconf.get_section_keys('Data')
 	var dir = path.get_base_dir()
 	for table in datafiles:
@@ -91,17 +95,22 @@ func process_mod(path: String):
 func process_pack(path: String):
 	var mconf := ConfigFile.new()
 	mconf.load(path)
+	print("processing packages from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('Packages')
 	var dir = path.get_base_dir()
 	for table in datafiles:
+		print("processing package %s" % table)
 		ProjectSettings.load_resource_pack(dir + '/' + mconf.get_value('Packages', table))
 
 func process_data_file(path : String, file: String, tablename : String):
-	if mod_tables.has(tablename): return #the same table in different mods do not load
+	if mod_tables.has(tablename): 
+		print("table %s has been already loaded" % tablename)
+		return #the same table in different mods do not load
 	var f := File.new()
 	if !f.file_exists(path + "/" + file):
 		print('ERROR in %s table path' % tablename)
 		return
+	print("processing table %s" % tablename)
 	f.open(path + "/" + file, File.READ)
 	var tmp = f.get_as_text()
 	f.close()
