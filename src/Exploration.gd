@@ -719,6 +719,12 @@ func see_quest_info(quest):
 				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
+			'material':
+				var material = Items.materiallist[i.item]
+				newbutton.texture = material.icon
+				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").show()
+				globals.connectmaterialtooltip(newbutton, material)
 			'gold':
 				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
 				newbutton.get_node("amount").text = str(i.value)

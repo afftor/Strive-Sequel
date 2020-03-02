@@ -74,9 +74,10 @@ func _ready():
 	
 	state.connect("task_added", self, 'build_task_bar')
 	
+	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	if variables.generate_test_chars:
-		state.mainprogress = 1
+		state.mainprogress = 0
 		state.make_world()
 		var character = Slave.new()
 		character.create('random', 'random', 'random')
@@ -208,19 +209,18 @@ func _ready():
 		state.show_tutorial = false
 		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
 		
-		yield(get_tree(), 'idle_frame')
 		character.unlock_class("pet")
 		character.unlock_class("harlot")
 		character.sex_skills.oral = 70
 		character.sex_skills.anal = 90
 		character.sex_skills.petting = 100
 		character.base_exp = 500
-		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
-		#input_handler.get_loot_node().open(world_gen.make_chest_loot('easy_chest_usable'), 'Teh Loot')
+		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('mages_join_reward'), 'Teh Loot')
+		#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message('event_good_rebels_beastkin', '', {})
+		input_handler.interactive_message('event_good_rebels_beastkin', '', {})
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false

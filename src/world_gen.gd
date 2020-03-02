@@ -197,7 +197,9 @@ func get_area_from_location_code(code):
 func get_location_from_code(code):
 	var data = state.location_links[code]
 	return state.areas[data.area][data.category][code]
-	
+
+func get_faction_from_code(code):
+	return state.factions[code]
 
 func update_area_shop(area):
 	area.shop.clear()
@@ -327,11 +329,11 @@ var factiondata = {
 		events = [
 			'workers_init',
 			],
-		quests_easy = ['workers_resources_easy','workers_food_easy','workers_craft_tools_easy','workers_threat_easy'],
+		quests_easy = ['workers_food_easy', 'workers_resources_easy','workers_craft_tools_easy','workers_threat_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
-		questnumber = [2,2],
+		questnumber = [30,30],
 	},
 	servants = {
 		code = 'servants',
@@ -411,6 +413,7 @@ func make_guild(code, area):
 		make_slave_for_guild(guilddatatemplate)
 		data.slavenumber -= 1
 	
+	state.factions[guilddatatemplate.code] = {code = guilddatatemplate.code, name = guilddatatemplate.name, area = guilddatatemplate.area}
 	
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
@@ -670,7 +673,7 @@ var questdata = {
 		code = 'workers_food_easy',
 		name = 'Food supply',
 		descript = 'The guild requires additional food supplies.',
-		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [25,50]}],
+		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [35,55]}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
@@ -972,8 +975,15 @@ func make_chest_loot(chest):
 				if Items.materiallist.has(tempitem):
 					globals.AddOrIncrementDict(dict.materials, {tempitem : amount})
 				if Items.itemlist.has(tempitem):
-					dict.items.append(globals.CreateUsableItem(tempitem, amount))
-				
+					var item = Items.itemlist[tempitem]
+					match item.type:
+						'usable':
+							dict.items.append(globals.CreateUsableItem(tempitem, amount))
+						'gear':
+							if i.has('parts'):
+								dict.items.append(globals.CreateGearItem(tempitem, i.parts))
+							else:
+								dict.items.append(globals.CreateGearItem(tempitem, {}))
 			'material':
 				var tempdict 
 				if i.grade[0] == 'location':

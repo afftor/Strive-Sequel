@@ -846,6 +846,24 @@ var loot_chests_data = {
 	{code = 'defined', name = 'exp_scroll', min = 1, max = 2}, 
 	],
 	
+	fighters_join_reward = [
+	{code = 'defined', name = 'sword', min = 1, max = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
+	{code = 'defined', name = 'chest_base_leather', min = 1, max = 1, parts = {ArmorBaseMed = 'leather', ArmorTrim = 'wood'}},
+	],
+	workers_join_reward = [
+	{code = 'defined', name = 'axe', min = 1, max = 1, parts = {ToolHandle = 'wood', ToolBlade = 'iron'}},
+	{code = 'defined', name = 'worker_outfit', min = 1, max = 1},
+	],
+	servants_join_reward = [
+	{code = 'defined', name = 'elegant_choker', min = 1, max = 1},
+	{code = 'defined', name = 'maid_dress', min = 1, max = 1},
+	{code = 'defined', name = 'beer', min = 4, max = 4}
+	],
+	mages_join_reward = [
+	{code = 'defined', name = 'staff', min = 1, max = 1, parts = {WeaponHandle = 'wood', Rod = 'woodmagic'}},
+	{code = 'defined', name = 'lifeshard', min = 3, max = 3},
+	{code = 'defined', name = 'energyshard', min = 2, max = 2},
+	],
 }
 
 

@@ -56,7 +56,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"), 
 		tags = [],
 		image = 'chest', 
-		common_effects = [{code = 'make_loot', type = 'tableloot',pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 		options = [
 		{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
@@ -712,6 +712,10 @@ var scenedict = {
 		text = [
 		{text = "FIGHTERSJOIN", reqs = []},
 		],
+		common_effects = [
+		{code = 'reputation', name = 'fighters', operant = '+', value = 100}, 
+		{code = 'make_loot', pool = [['fighters_join_reward',1]]}, 
+		{code = 'open_loot'}],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [ {code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
 		]
@@ -768,6 +772,10 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "SERVANTSJOIN", reqs = []},
+		],
+		common_effects = [{code = 'reputation', name = 'servants', operant = '+', value = 100},
+		{code = 'make_loot', pool = [['servants_join_reward',1]]}, 
+		{code = 'open_loot'}
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
@@ -834,6 +842,10 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "WORKERSJOIN", reqs = []},
+		],
+		common_effects = [{code = 'reputation', name = 'workers', operant = '+', value = 100},
+		{code = 'make_loot', pool = [['workers_join_reward',1]]}, 
+		{code = 'open_loot'}
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
@@ -904,6 +916,10 @@ var scenedict = {
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "MAGESJOIN", reqs = []},
+		],
+		common_effects = [{code = 'reputation', name = 'mages', operant = '+', value = 100},
+		{code = 'make_loot', pool = [['mages_join_reward',1]]}, 
+		{code = 'open_loot'}
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},

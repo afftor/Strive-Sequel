@@ -109,7 +109,7 @@ func show_quest_info(quest):
 					newbutton.get_node("amount").show()
 					newbutton.hint_tooltip = "Reputation (" + quest.source + "): +" + str(i.value)
 				'material':
-					var material = Items.materiallist[i.type]
+					var material = Items.materiallist[i.item]
 					newbutton.texture = material.icon
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()

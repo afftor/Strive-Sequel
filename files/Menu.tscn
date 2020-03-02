@@ -1,4 +1,3 @@
-
 [gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
@@ -32,7 +31,6 @@
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
-
 [node name="Menu" type="Node"]
 script = ExtResource( 1 )
 
@@ -45,7 +43,6 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 29.4929
 margin_top = 95.0175
 margin_right = 477.493
@@ -386,7 +383,11 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed some screen transition bugs
+text = "Added bonus items and reputation when joining a guild
+Fixed material reward quests not working correctly
+Fixed some screen transition bugs
+Fixed Right Click functionality ignoring active event
+Fixed Sexuals not calculating properly (therefore some classes can be properly unlocked now)
 Slave list should correctly update after sex and class unlock
 0.1.2
 Added F hotkey functionality to sex interactions

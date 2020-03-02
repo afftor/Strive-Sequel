@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.2'
+const gameversion = '0.1.3'
 
 var start_new_game = false
 
@@ -708,7 +708,6 @@ func _ready():
 	
 	
 	
-	state.money = 500
 
 func logupdate(text):
 	state.logupdate(text)
