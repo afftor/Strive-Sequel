@@ -29,6 +29,7 @@ var capitals = []
 var area_order = []
 var starting_area = 'Plains'
 var location_links = {}
+var factions = {}
 var completed_locations = {}
 
 #resources
@@ -538,6 +539,8 @@ func common_effects(effects):
 						input_handler.active_character.set(i.name, input_handler.active_character.get(i.name) + i.value)
 			'make_loot':
 				input_handler.scene_loot = world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
+			'open_loot':
+				input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 			'make_scene_character':
 				for k in i.value:
 					var newcharacter
@@ -570,7 +573,11 @@ func common_effects(effects):
 						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
 						break
 				completed_quests.append(i.value)
-				
+			'reputation':
+				var data = world_gen.get_faction_from_code(i.name)
+				var guild = areas[data.area].factions[data.code]
+				guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
+				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
 
 func make_local_recruit(args):
 	var newchar = Slave.new()
