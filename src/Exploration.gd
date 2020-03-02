@@ -1566,7 +1566,7 @@ func execute_skill(s_skill2): #to update to exploration version
 		#s_skill2.target.displaynode.process_critical()
 	for i in s_skill2.value:
 		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
-		if i.damagestat == 'damage_hp' and i.dmtf == 0: #drain, damage, damage no log, drain no log
+		if i.damagestat == 'damage_hp' and i.dmgf == 0: #drain, damage, damage no log, drain no log
 			if i.is_drain && s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				var rval2 = s_skill2.caster.heal(rval)
@@ -1579,19 +1579,19 @@ func execute_skill(s_skill2): #to update to exploration version
 			else:
 				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
 				text += "%s is hit for %d damage. " %[s_skill2.target.name, rval]#, s_skill2.value[i]] 
-		elif i.damagestat == 'damage_hp' and i.dmtf == 1: #heal, heal no log
+		elif i.damagestat == 'damage_hp' and i.dmgf == 1: #heal, heal no log
 			if s_skill2.tags.has('no_log'):
 				var rval = s_skill2.target.heal(i.value)
 			else:
 				var rval = s_skill2.target.heal(i.value)
 				text += "%s is healed for %d health." %[s_skill2.target.name, rval]
-		elif s_skill2.damagestat[i] == 'restore_mana' and i.dmtf == 0: #heal, heal no log
+		elif i.damagestat == 'restore_mana' and i.dmgf == 0: #heal, heal no log
 			if !s_skill2.tags.has('no log'):
 				var rval = s_skill2.target.mana_update(i.value)
 				text += "%s restored %d mana." %[s_skill2.target.name, rval] 
 			else:
 				s_skill2.target.mana_update(i.value)
-		elif s_skill2.damagestat[i] == 'restore_mana' and i.dmtf == 1: #drain, damage, damage no log, drain no log
+		elif i.damagestat == 'restore_mana' and i.dmgf == 1: #drain, damage, damage no log, drain no log
 			var rval = s_skill2.target.mana_update(-i.value)
 			if i.is_drain:
 				var rval2 = s_skill2.caster.mana_update(rval)

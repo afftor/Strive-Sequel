@@ -174,6 +174,8 @@ func convert_to_new_template():
 	if template.has('critchance'): res_res.critchance = template.critchance
 	if template.has('process_no_stat'): res_res.process_no_stat = template.process_no_stat
 	if template.has('energycost'): res_res.energycost = template.energycost
+	if template.has('follow_up'): res_res.follow_up = template.follow_up
+	if template.has('social_skill_stats'): res_res.social_skill_stats = template.social_skill_stats
 	res_res.tags = tags.duplicate()
 	return res_res
 

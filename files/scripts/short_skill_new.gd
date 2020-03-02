@@ -79,8 +79,8 @@ class sskill_value:
 			stat = parent.caster.get_stat(data['spell_stat'])
 			atk = parent.caster.get_stat(data['spell_atk'])
 		else:
-			print('ERROR IN SKILL TEMPLATE %s' % parent.code)
-			return
+			stat = 0
+			atk = 0
 		var t1 = input_handler.calculate_number_from_string_array(template.value1, parent.caster, parent.target)
 		var t2 = input_handler.calculate_number_from_string_array(template.value2, parent.caster, parent.target)
 		var t3 = input_handler.calculate_number_from_string_array(template.value3, parent.caster, parent.target)
@@ -117,8 +117,8 @@ class sskill_value:
 	
 	func calculate_dmg():
 		apply_random()
-		if template.source == 'weapon':
-			template.source = parent.caster.get_weapon_element()
+		if damage_type == 'weapon':
+			damage_type = parent.caster.get_weapon_element()
 		#crit modification
 		if parent.hit_res == variables.RES_CRIT and !template.nocrit and !template.nomod:
 			value *= parent.caster.get_stat('critmod')
@@ -131,7 +131,7 @@ class sskill_value:
 			reduction = max(0, parent.target.get_stat('mdef'))
 			reduction = min(100, reduction)
 	
-		if !template.noreduce and !template.nomod:
+		if !template.nodef and !template.nomod:
 			value *= (float(100 - reduction)/100.0)
 		
 		value = round(value)
@@ -296,7 +296,7 @@ func resolve_value(check_m):
 	process_value = value[pval_i].value
 
 func setup_effects_final():
-	process_value = value[0]
+	process_value = value[pval_i].value
 	if template.has('custom_duration'):
 		for e in effects:
 			var eff = effects_pool.get_effect_by_id(e)
