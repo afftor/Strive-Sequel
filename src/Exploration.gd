@@ -1473,7 +1473,7 @@ func use_e_combat_skill(caster, target, skill):
 #			#special results
 #			if skill.damage_type == 'summon':
 #				summon(skill.value[0], skill.value[1]);
-			if skill.damage_type == 'resurrect':
+			if skill.has('damage_type') and skill.damage_type == 'resurrect':
 				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
 			else: 
 				#default skill result
