@@ -115,6 +115,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	buildplayergroup(playergroup)
 	#victory()
 	#start combat triggers
+	CombatAnimations.force_end()
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.process_event(variables.TR_COMBAT_S)
@@ -411,7 +412,7 @@ func player_turn(pos):
 			return
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	allowaction = true
+	#allowaction = true
 	activecharacter = selected_character
 	RebuildSkillPanel()
 	RebuildItemPanel()
@@ -828,7 +829,7 @@ func use_skill(skill_code, caster, target):
 	var endturn = !s_skill1.tags.has('instant');
 	for n in range(s_skill1.repeat):
 		#get all affected targets
-		if skill.has('random_target') or (target != null and target.hp <= 0) :
+		if skill.tags.has('random_target') or (target != null and target.hp <= 0) :
 			if checkwinlose(): 
 				eot = false
 				return
@@ -911,7 +912,7 @@ func use_skill(skill_code, caster, target):
 	#follow-up
 	if skill.has('follow_up'):
 		use_skill(skill.follow_up, caster, target)
-	if skill.has('not_final'): return
+	if skill.tags.has('not_final'): return
 	
 	#final
 	turns += 1
@@ -933,7 +934,7 @@ func use_skill(skill_code, caster, target):
 		if activecharacter.combatgroup == 'ally':
 			CombatAnimations.check_start()
 			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-		allowaction = true
+		#allowaction = true
 		RebuildSkillPanel()
 		RebuildItemPanel()
 		SelectSkill(activeaction)
@@ -1051,7 +1052,7 @@ func CalculateTargets(skill, target, finale = false):
 					if tchar.defeated: continue
 					if !tchar.can_be_damaged(skill.code) and !finale: continue
 					array.append(tchar)
-	if (!finale) and skill.has('random_target'):
+	if (!finale) and skill.tags.has('random_target'):
 		array.clear()
 		for pos in allowedtargets.enemy + allowedtargets.ally:
 			var tchar = characters_pool.get_char_by_id(battlefield[pos])
@@ -1269,6 +1270,7 @@ func SelectSkill(skill):
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
 	UpdateSkillTargets(activecharacter)
+	allowaction = true
 	if allowedtargets.ally.size() == 0 and allowedtargets.enemy.size() == 0:
 		checkwinlose();
 	if skill.target == 'self':
