@@ -146,7 +146,7 @@ func convert_to_new_template():
 	res_res.code = template.code
 	if template.has('name'): res_res.name = template.name
 	else: res_res.name = ""
-	if template.has('description'): res_res.description = template.description
+	if template.has('descript'): res_res.descript = template.descript
 	res_res.type = template.type
 	if template.has('ability_type'): res_res.ability_type = template.ability_type
 	else: res_res.ability_type = 'social'
