@@ -1443,7 +1443,7 @@ func use_e_combat_skill(caster, target, skill):
 #		animationdict[i.period].append(i)
 	#casteranimations
 	#for sure at windup there should not be real_target-related animations
-#	if skill.has('sounddata') and skill.sounddata.initiate != null:
+#	if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.initiate != null:
 #		caster.displaynode.process_sound(skill.sounddata.initiate)
 #	for i in animationdict.windup:
 #		var sfxtarget = ProcessSfxTarget(i.target, caster, target)
@@ -1462,7 +1462,7 @@ func use_e_combat_skill(caster, target, skill):
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
 		for i in targets:
-#			if skill.has('sounddata') and skill.sounddata.strike != null:
+#			if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.strike != null:
 #				if skill.sounddata.strike == 'weapon':
 #					caster.displaynode.process_sound(get_weapon_sound(caster))
 #				else:
@@ -1511,7 +1511,7 @@ func use_e_combat_skill(caster, target, skill):
 				pass
 			else:
 				#hit landed animation
-#				if skill.has('sounddata') and skill.sounddata.hit != null:
+#				if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.hit != null:
 #					if skill.sounddata.hittype == 'absolute':
 #						s_skill2.target.displaynode.process_sound(skill.sounddata.hit)
 #					elif skill.sounddata.hittype == 'bodyarmor':
