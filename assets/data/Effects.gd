@@ -847,7 +847,7 @@ var effect_table = {
 	},
 	e_t_protect_ttr = {
 		type = 'trigger',
-		conditions = [],
+		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
 		trigger = [variables.TR_DEF],
 		req_skill = true,
 		args = [{obj = 'parent_args', param = 0}],
@@ -855,6 +855,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
+				args = [{obj = 'parent_args', param = 0}],
 				atomic = [{type = 'stat_set', stat = 'target', value = ['parent_args', 0]}],
 			},
 		],
