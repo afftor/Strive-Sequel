@@ -62,7 +62,7 @@ var upgradelist = {
 			3:{
 				unlockreqs = [],
 				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-				bonusdescript = tr("UPGRADETAILORBONUS2"),
+				bonusdescript = tr("UPGRADETAILORBONUS3"),
 				taskprogress = 500,
 				#townnode = "farm",
 				cost = {woodiron = 50, stone = 50, clothsilk = 25},

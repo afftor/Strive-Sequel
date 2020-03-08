@@ -547,6 +547,26 @@ texture = ExtResource( 42 )
 expand = true
 stretch_mode = 6
 
+[node name="tool" type="TextureButton" parent="GearPanel"]
+margin_left = 527.0
+margin_top = 353.0
+margin_right = 627.0
+margin_bottom = 453.0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 38 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 40 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="GearPanel/tool"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 42 )
+expand = true
+stretch_mode = 6
+
 [node name="StatsPanel" parent="." instance=ExtResource( 43 )]
 visible = false
 margin_left = 1339.0

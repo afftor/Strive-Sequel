@@ -127,14 +127,14 @@ func gear_detailed_tooltip(data, item = null):
 	var text = '[center]'+data.item.name+'[/center]'
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += "\n\n" + Items.Parts[i].name + ": {color=yellow|" + material.name +"}"
+		text += "\n\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]
 				var change = ''
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value*100
-				text += '\n' + Items.stats[k] + ': {color='
+				text += '\n' + tr(Items.stats[k]) + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|' + change

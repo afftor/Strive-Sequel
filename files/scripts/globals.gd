@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.3'
+const gameversion = '0.1.5'
 
 var start_new_game = false
 
@@ -480,6 +480,14 @@ var statdata = {
 	},
 	consent = {
 		code = 'consent',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
+	
+	damagemod = {
+		code = 'damagemod',
 		name = '',
 		descript = '',
 		percent = true,

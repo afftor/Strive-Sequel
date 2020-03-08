@@ -134,6 +134,7 @@ var TranslationDict = {
 	ITEMSLOTLHAND = "Left Hand",
 	ITEMSLOTRHAND = "Right Hand",
 	ITEMSLOTNECK = "Neck",
+	ITEMSLOTTOOL = "Tool",
 	
 	ITEMBED = "Bed",
 	ITEMBEDDESCRIPT = "",
@@ -1749,6 +1750,7 @@ var TranslationDict = {
 	ENEMYTRAINED_DOG = "Trained Dog",
 	ENEMYTRAINED_BEAR = "Trained Bear",
 	ENEMYTRAINED_RAPTOR = "Trained Raptor",
+	ENEMYGUARDIAN_GOLEM = "Guardian Golem",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -1910,7 +1912,7 @@ var TranslationDict = {
 	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions.\n\n— Welcome, [Sir] [name]. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a land owner and are looking for our future cooperation. Here we are at the Servants Guild ready to provide you with finest and prettiest toys in all of the Republic. We also are in tie with many rich and powerful people of the city. ",
 	SERVANTSINTRODUCTION1_1 = "As a newcomer we would be happy to provide you with one free servant of your choice if you side with us.",
 	SERVANTSQUESTIONREPLY1 = "So basically all you do is operate an elaborated sex service?",
-	SERVANTSQUESTIONREPLY2 = "How exactly I'm useful to you?",
+	SERVANTSQUESTIONREPLY2 = "How exactly am I useful to you?",
 	SERVANTSQUESTIONREPLY3 = "Can you give me some tips?",
 	SERVANTSINTRODUCTION1REPLY3 = "I'll side with you",
 	SERVANTSINTRODUCTION1REPLY4 = "I'll come back later",

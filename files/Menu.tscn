@@ -300,7 +300,24 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "Fixed some screen transition bugs
+bbcode_text = "Added tutorial entry for leveling
+Correct character portrait resolution at slave panel
+Fixed protect skill crashing the game
+Fixed quests not generating static gear rewards
+0.1.5
+Fixed some more combat skill related bugs, including: Distract, Wind Attack
+Fixed exploration skills usage
+Fixed Druid class not being unlockable for Tribal Elves
+Added console logging (at appdata/roaming)
+0.1.4
+Fixed combat and skill usage
+0.1.3
+Added bonus items and reputation when joining a guild
+Fixed material reward quests not working correctly
+Fixed some screen transition bugs
+Fixed Right Click functionality ignoring active event
+Fixed Sexuals not calculating properly (therefore some classes can be properly unlocked now)
+Fixed combat defeat and Resurrection bugs.
 Slave list should correctly update after sex and class unlock
 0.1.2
 Added F hotkey functionality to sex interactions
@@ -383,11 +400,24 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added bonus items and reputation when joining a guild
+text = "Added tutorial entry for leveling
+Correct character portrait resolution at slave panel
+Fixed protect skill crashing the game
+Fixed quests not generating static gear rewards
+0.1.5
+Fixed some more combat skill related bugs, including: Distract, Wind Attack
+Fixed exploration skills usage
+Fixed Druid class not being unlockable for Tribal Elves
+Added console logging (at appdata/roaming)
+0.1.4
+Fixed combat and skill usage
+0.1.3
+Added bonus items and reputation when joining a guild
 Fixed material reward quests not working correctly
 Fixed some screen transition bugs
 Fixed Right Click functionality ignoring active event
 Fixed Sexuals not calculating properly (therefore some classes can be properly unlocked now)
+Fixed combat defeat and Resurrection bugs.
 Slave list should correctly update after sex and class unlock
 0.1.2
 Added F hotkey functionality to sex interactions

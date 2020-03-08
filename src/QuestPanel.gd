@@ -198,6 +198,8 @@ func Reward():
 				state.areas[selectedquest.area].factions[selectedquest.source].totalreputation += i.value
 			'gear':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
+			'gear_static':
+				globals.AddItemToInventory(globals.CreateGearItem(i.item, {}))
 			'material':
 				state.materials[i.item] += i.value
 			'usable':

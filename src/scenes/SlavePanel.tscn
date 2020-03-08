@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=5]
 [ext_resource path="res://assets/images/gui/inventory/icon_craft1.png" type="Texture" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/raceshades/Beastkin-Cat_F.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/raceshades/Arachna_M.png" type="Texture" id=8]
 [ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/images/gui/panels/noimagesmall.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/slavepanel/statbar.png" type="Texture" id=11]
@@ -112,10 +112,9 @@ use_filter = true
 font_data = ExtResource( 32 )
 
 [node name="SlavePanel" type="Panel"]
-visible = false
-margin_left = 40.0
+margin_left = 10.0
 margin_top = 6.0
-margin_right = 1229.0
+margin_right = 1199.0
 margin_bottom = 863.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
@@ -197,22 +196,21 @@ expand = true
 stretch_mode = 6
 
 [node name="BodyPanel" type="Panel" parent="."]
-editor/display_folded = true
-margin_left = 1202.66
-margin_top = 0.0238342
-margin_right = 1826.66
-margin_bottom = 857.024
+show_behind_parent = true
+margin_left = 1192.0
+margin_right = 1907.0
+margin_bottom = 857.0
 mouse_filter = 2
 
 [node name="Body" type="TextureRect" parent="BodyPanel"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 613.0
-margin_bottom = 845.0
+margin_left = -19.6702
+margin_top = 9.0
+margin_right = 707.33
+margin_bottom = 846.0
 mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="StatsPanel" parent="BodyPanel" instance=ExtResource( 9 )]
 visible = false
@@ -222,10 +220,10 @@ margin_right = 587.0
 margin_bottom = 850.0
 
 [node name="opacity" type="HSlider" parent="BodyPanel"]
-margin_left = 68.3441
-margin_top = 20.6201
-margin_right = 683.344
-margin_bottom = 45.6201
+margin_left = 68.0
+margin_top = 21.0
+margin_right = 767.0
+margin_bottom = 46.0
 rect_scale = Vector2( 0.8, 0.8 )
 hint_tooltip = "Image Opacity"
 min_value = 10.0
@@ -642,8 +640,8 @@ text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 576.131
 margin_top = 55.833
@@ -673,8 +671,8 @@ text = "Obedience"
 align = 1
 
 [node name="authoritylabel" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 700.0
 margin_top = 102.0
@@ -687,8 +685,8 @@ text = "Authority: "
 align = 1
 
 [node name="authoritylabel2" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.513
 margin_top = 9.88072
@@ -700,8 +698,8 @@ text = "Loyalty"
 align = 1
 
 [node name="authoritylabel3" type="Label" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.513
 margin_top = 55.8807
@@ -713,8 +711,8 @@ text = "Submission"
 align = 1
 
 [node name="loyaltylabel" type="ProgressBar" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.0
 margin_top = 31.0
@@ -726,8 +724,8 @@ value = 100.0
 percent_visible = false
 
 [node name="submissionlabel" type="ProgressBar" parent="." groups=[
-"hide_master",
 "hide_stranger",
+"hide_master",
 ]]
 margin_left = 730.0
 margin_top = 78.0
