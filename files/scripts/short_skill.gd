@@ -133,8 +133,8 @@ func convert_to_new_template():
 			tmp.value3 = long_value[i].duplicate()
 		tmp.random_factor = random_factor[i]
 		tmp.random_factor_p = random_factor_p[i]
-		tmp.nomod = variables.dmg_mod_list.has(damagestat[i])
-		tmp.nocrit = variables.dmg_mod_list.has(damagestat[i])
+		tmp.nomod = !variables.dmg_mod_list.has(damagestat[i])
+		tmp.nocrit = !variables.dmg_mod_list.has(damagestat[i])
 		tmp.nodef = tags.has('noreduce')
 		tmp.is_drain = is_drain
 		tmp.is_process = (i == 0)
