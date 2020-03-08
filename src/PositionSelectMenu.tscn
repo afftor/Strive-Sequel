@@ -41,137 +41,14 @@ text = "Combat Party"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 117.329
 margin_top = 126.327
 margin_right = 551.329
 margin_bottom = 801.327
 custom_constants/separation = 14
 
-[node name="frontrow" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 210.0
-margin_bottom = 675.0
-custom_constants/separation = 21
-
-[node name="1" type="TextureButton" parent="HBoxContainer/frontrow"]
-margin_right = 210.0
-margin_bottom = 210.0
-rect_min_size = Vector2( 210, 210 )
-texture_normal = ExtResource( 4 )
-expand = true
-stretch_mode = 3
-
-[node name="Image" type="TextureRect" parent="HBoxContainer/frontrow/1"]
-margin_left = 1.0
-margin_top = 6.0
-margin_right = 201.0
-margin_bottom = 206.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="hp" type="Label" parent="HBoxContainer/frontrow/1/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="HBoxContainer/frontrow/1/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="2" type="TextureButton" parent="HBoxContainer/frontrow"]
-margin_top = 231.0
-margin_right = 210.0
-margin_bottom = 441.0
-rect_min_size = Vector2( 210, 210 )
-texture_normal = ExtResource( 4 )
-expand = true
-stretch_mode = 3
-
-[node name="Image" type="TextureRect" parent="HBoxContainer/frontrow/2"]
-margin_left = 1.0
-margin_top = 6.0
-margin_right = 201.0
-margin_bottom = 206.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="hp" type="Label" parent="HBoxContainer/frontrow/2/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="HBoxContainer/frontrow/2/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="3" type="TextureButton" parent="HBoxContainer/frontrow"]
-margin_top = 462.0
-margin_right = 210.0
-margin_bottom = 672.0
-rect_min_size = Vector2( 210, 210 )
-texture_normal = ExtResource( 4 )
-expand = true
-stretch_mode = 3
-
-[node name="Image" type="TextureRect" parent="HBoxContainer/frontrow/3"]
-margin_left = 1.0
-margin_top = 6.0
-margin_right = 201.0
-margin_bottom = 206.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-
-[node name="hp" type="Label" parent="HBoxContainer/frontrow/3/Image"]
-margin_left = 99.0
-margin_top = 157.0
-margin_right = 194.0
-margin_bottom = 181.0
-custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
-[node name="mp" type="Label" parent="HBoxContainer/frontrow/3/Image"]
-margin_left = 99.0
-margin_top = 177.0
-margin_right = 194.0
-margin_bottom = 201.0
-custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "50/50"
-align = 2
-
 [node name="backrow" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 224.0
-margin_right = 434.0
+margin_right = 210.0
 margin_bottom = 675.0
 custom_constants/separation = 21
 
@@ -291,6 +168,128 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "50/50"
 align = 2
 
+[node name="frontrow" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 224.0
+margin_right = 434.0
+margin_bottom = 675.0
+custom_constants/separation = 21
+
+[node name="1" type="TextureButton" parent="HBoxContainer/frontrow"]
+margin_right = 210.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="Image" type="TextureRect" parent="HBoxContainer/frontrow/1"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="hp" type="Label" parent="HBoxContainer/frontrow/1/Image"]
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
+custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "50/50"
+align = 2
+
+[node name="mp" type="Label" parent="HBoxContainer/frontrow/1/Image"]
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
+custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "50/50"
+align = 2
+
+[node name="2" type="TextureButton" parent="HBoxContainer/frontrow"]
+margin_top = 231.0
+margin_right = 210.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="Image" type="TextureRect" parent="HBoxContainer/frontrow/2"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="hp" type="Label" parent="HBoxContainer/frontrow/2/Image"]
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
+custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "50/50"
+align = 2
+
+[node name="mp" type="Label" parent="HBoxContainer/frontrow/2/Image"]
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
+custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "50/50"
+align = 2
+
+[node name="3" type="TextureButton" parent="HBoxContainer/frontrow"]
+margin_top = 462.0
+margin_right = 210.0
+margin_bottom = 672.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="Image" type="TextureRect" parent="HBoxContainer/frontrow/3"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="hp" type="Label" parent="HBoxContainer/frontrow/3/Image"]
+margin_left = 99.0
+margin_top = 157.0
+margin_right = 194.0
+margin_bottom = 181.0
+custom_colors/font_color = Color( 1, 0.0823529, 0.0823529, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "50/50"
+align = 2
+
+[node name="mp" type="Label" parent="HBoxContainer/frontrow/3/Image"]
+margin_left = 99.0
+margin_top = 177.0
+margin_right = 194.0
+margin_bottom = 201.0
+custom_colors/font_color = Color( 0, 0.545098, 0.992157, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "50/50"
+align = 2
+
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 margin_top = 5.0
@@ -302,18 +301,18 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
-margin_left = 145.056
+margin_left = 354.056
 margin_top = 96.7055
-margin_right = 315.057
+margin_right = 524.057
 margin_bottom = 120.706
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "FRONT"
 align = 1
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 352.725
+margin_left = 134.725
 margin_top = 95.9274
-margin_right = 510.725
+margin_right = 292.725
 margin_bottom = 119.927
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "BACK"

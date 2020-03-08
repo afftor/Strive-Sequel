@@ -296,7 +296,7 @@ func update():
 		var name = globals.descriptions.get_class_name(prof, person)
 		newnode.get_node("Label").text = name
 		newnode.texture = prof.icon
-		newnode.connect('signal_RMB',input_handler, 'show_class_info', [prof.code])
+		newnode.connect('signal_RMB_release',input_handler, 'show_class_info', [prof.code])
 		var temptext = "[center]"+globals.descriptions.get_class_name(prof,person) + "[/center]\n"+globals.descriptions.get_class_bonuses(person, prof) + globals.descriptions.get_class_traits(person, prof)
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newnode, temptext)
@@ -499,8 +499,12 @@ func set_work_rule(rule):
 func build_skill_panel():
 	globals.ClearContainer($SkillPanel)
 	var src
-	if person.active_panel == variables.PANEL_SOC: src = person.social_skill_panel
-	else: src = person.combat_skill_panel
+	if person.active_panel == variables.PANEL_SOC:
+		src = person.social_skill_panel
+		$skillpanelswitch.pressed = false
+	else:
+		src = person.combat_skill_panel
+		$skillpanelswitch.pressed = true
 	for i in range(1,10):
 		var text = ''
 		var newbutton = globals.DuplicateContainerTemplate($SkillPanel)
@@ -548,7 +552,7 @@ func build_skill_panel():
 			newbutton.connect('pressed',self,'select_skill_for_position', [i])
 		
 		newbutton.set_script(load("res://src/RightClickReactButton.gd"))
-		newbutton.connect('signal_RMB',self,'select_skill_for_position', [i])
+		newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 		if person.active_panel == variables.PANEL_COM:
 			newbutton.texture_disabled = load("res://assets/images/gui/universal/skill_frame.png")
 			newbutton.get_node("charges").hide()

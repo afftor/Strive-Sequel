@@ -167,6 +167,7 @@ theme = ExtResource( 4 )
 text = "Travels"
 
 [node name="TimeNode" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = 6.91928
 margin_top = 3.509
 margin_right = 295.919
@@ -377,6 +378,7 @@ text = "1"
 align = 2
 
 [node name="Log" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 1375.0
 margin_top = 72.0
 margin_right = 1912.0

@@ -97,6 +97,7 @@ func submission_set(value):
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(self, 'exp_for_level')
+		input_handler.ActivateTutorial("levelup")
 	base_exp = value
 
 #enemy combat/reward data
@@ -180,6 +181,7 @@ var gear = {
 	lhand = null,
 	hands = null,
 	legs = null,
+	tool = null,
 	
 	#cosmetics&lewds
 	neck = null,

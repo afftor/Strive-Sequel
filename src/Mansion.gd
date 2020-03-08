@@ -80,7 +80,7 @@ func _ready():
 		state.mainprogress = 0
 		state.make_world()
 		var character = Slave.new()
-		character.create('random', 'random', 'random')
+		character.create('DarkElf', 'random', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
@@ -91,7 +91,7 @@ func _ready():
 		character.charm_factor = 1
 		#character.unlock_class("worker")
 		character.mp = 50
-		character.unlock_class("apprentice")
+		character.unlock_class("druid")
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -175,7 +175,7 @@ func _ready():
 		character.authority = 100
 		character.submission = 95
 		character.mp = 100
-		character.hp = 1
+		character.hp = 95
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.set_slave_category('slave')
@@ -206,11 +206,12 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
-		state.show_tutorial = false
+		state.show_tutorial = true
 		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
 		
 		character.unlock_class("pet")
-		character.unlock_class("harlot")
+		character.unlock_class("knight")
+		character.mp = 100
 		character.sex_skills.oral = 70
 		character.sex_skills.anal = 90
 		character.sex_skills.petting = 100
@@ -248,6 +249,7 @@ func _ready():
 	input_handler.SystemMessageNode = $SysMessage
 	set_time_buttons()
 	$TestButton.connect("pressed", self, "quest_test")
+	
 
 func open_travels():
 	$CharacterDislocationPanel.open_character_dislocation()

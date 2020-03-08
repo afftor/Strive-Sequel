@@ -129,8 +129,8 @@ Skilldata="*res://assets/data/Skills.gd"
 Traitdata="*res://assets/data/Traits.gd"
 Items="*res://assets/data/Items.gd"
 scenedata="*res://assets/data/scenedata.gd"
-state="*res://src/gamestate.gd"
 globals="*res://files/scripts/globals.gd"
+state="*res://src/gamestate.gd"
 input_handler="*res://files/input_handler.gd"
 races="*res://assets/data/races.gd"
 world_gen="*res://src/world_gen.gd"
@@ -294,6 +294,10 @@ F={
 
 test="en"
 translations=PoolStringArray( "res://localization/tr.en.translation" )
+
+[logging]
+
+file_logging/enable_file_logging=true
 
 [rendering]
 
