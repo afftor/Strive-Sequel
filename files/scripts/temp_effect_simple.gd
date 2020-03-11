@@ -43,10 +43,10 @@ func apply():
 					else:
 						par = parent
 					if par != null:
-						remains = int(par.template.duration)
+						template.duration = int(par.template.duration)
 					else:
 						print('error in template %s' % template_name)
-						remains = -1
+						template.duration = -1
 				'parent_arg':
 					var par
 					if typeof(parent) == TYPE_STRING:
@@ -54,12 +54,11 @@ func apply():
 					else:
 						par = parent
 					if par != null:
-						remains = int(par.self_args['duration'])
+						template.duration = int(par.self_args['duration'])
 					else:
 						print('error in template %s' % template_name)
-						remains = -1
-		else:
-			remains = template.duration
+						template.duration = -1
+		remains = template.duration
 	var obj = get_applied_obj()
 	for eff in sub_effects:
 		obj.apply_effect(eff)
@@ -81,8 +80,9 @@ func process_event(ev):
 	return res
 
 func reset_duration():
-	soft_remove()
-	apply()
+	remains = template.duration
+#	soft_remove()
+#	apply()
 
 func serialize():
 	var tmp = .serialize()
