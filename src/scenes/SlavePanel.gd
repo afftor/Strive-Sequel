@@ -323,6 +323,8 @@ func update():
 				traittext += "\n\nDisliked actions:[color=aqua] "
 				for k in j.value:
 					#print(globals.sex_actions_dict[k].getname())
+					globals.sex_actions_dict[k].givers = []
+					globals.sex_actions_dict[k].takers = []
 					traittext += globals.sex_actions_dict[k].getname() + ", "
 				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
 		globals.connecttexttooltip(newnode, traittext)

@@ -6,6 +6,9 @@ var selectedquest
 func _ready():
 	$CompleteButton.connect("pressed", self, "CompleteQuest")
 	$CancelButton.connect("pressed", self, "CancelQuest")
+	
+	$ItemSelectionPanel/CancelButton.connect("pressed",self, 'hide_item_selection')
+	$ItemSelectionPanel/ConfirmButton.connect("pressed", self, "turn_in_quest_items")
 
 func open():
 	show()
@@ -144,6 +147,11 @@ func CompleteQuest():
 	if variables.ignore_quest_requirements:
 		CompleteReqs()
 		return
+	
+	for i in selectedquest.requirements:
+		if i.code == 'random_item' && i.completed == false:
+			select_items_for_quest(i)
+			return
 	if selectedquest.state == 'taken':
 		for i in selectedquest.requirements:
 			match i.code:
@@ -152,7 +160,7 @@ func CompleteQuest():
 				"random_material":
 					check = state.if_has_material(i.type, 'gte', i.value)
 				"random_item":
-					check = state.if_has_free_items(i.type, 'gte', i.value)
+					check = i.completed
 				"slavegetquest":
 					select_character_for_quest()
 					check = false
@@ -179,8 +187,6 @@ func CompleteReqs():
 		match i.code:
 			"random_material":
 				state.set_material(i.type, '-', i.value)
-			"random_item":
-				state.remove_item(i.type, i.value)
 			"slavegetquest":
 				state.remove_slave(selectedslave)
 	selectedquest.state = 'complete'
@@ -213,3 +219,67 @@ func CancelQuest():
 func cancel_quest_confirm():
 	world_gen.fail_quest(selectedquest)
 	open()
+
+var selected_items = []
+var selected_req
+
+func select_items_for_quest(quest_req):
+	$ItemSelectionPanel.show()
+	selected_items.clear()
+	selected_req = quest_req
+	$ItemSelectionPanel/ConfirmButton.disabled = true
+	globals.ClearContainer($ItemSelectionPanel/ScrollContainer/GridContainer)
+	var array = []
+	for i in state.items.values():
+		if !i.itembase == quest_req.type:
+			continue
+		array.append(i)
+	$ItemSelectionPanel/noitems.visible = array.size() == 0
+	for i in array:
+		var newbutton = globals.DuplicateContainerTemplate($ItemSelectionPanel/ScrollContainer/GridContainer)
+		newbutton.connect('pressed', self, 'item_pressed', [i])
+		i.set_icon(newbutton.get_node("TextureRect"))
+		globals.connectitemtooltip(newbutton, i)
+		if i.amount > 1:
+			newbutton.get_node("Amount").text = str(i.amount)
+			newbutton.get_node("Amount").show()
+	item_selection_update()
+
+func item_pressed(item):
+	if selected_items.has(item):
+		selected_items.erase(item)
+	else:
+		selected_items.append(item)
+	item_selection_update()
+
+func item_selection_update():
+	var existing_items = {}
+	for i in selected_items:
+		globals.AddOrIncrementDict(existing_items, {i.itembase : i.amount})
+	var amount = 0
+	if existing_items.has(selected_req.type):
+		amount = existing_items[selected_req.type]
+	#print(existing_items, selected_items)
+	var text = 'Required Items: ' + Items.itemlist[selected_req.type].name + ": " + str(amount) + "/"+ str(selected_req.value) + '.'
+	$ItemSelectionPanel/RichTextLabel.bbcode_text = text
+	
+	
+	$ItemSelectionPanel/ConfirmButton.disabled = amount < selected_req.value
+
+
+
+func hide_item_selection():
+	$ItemSelectionPanel.hide()
+
+func turn_in_quest_items():
+	var amount = selected_req.value
+	for i in selected_items:
+		if i.amount < amount:
+			amount -= i.amount
+			i.amount = 0
+		else:
+			i.amount -= amount
+		
+	selected_req.completed = true
+	$ItemSelectionPanel.hide()
+	CompleteQuest()

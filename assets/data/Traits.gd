@@ -462,6 +462,17 @@ var sex_traits = { #only for interaction tab
 		reqs = [{code = "action_partner_tag", value = "punish"}],
 		effects = [{effect = 'sens_bonus', operant = "+", value = 0.5, trigger = 'action_self'}],
 	},
+	dominant = {
+		code = "dominant",
+		name = "",
+		descript = "",
+		acquire_reqs = [],
+		starting = true,
+		random_generation = true,
+		negative = false,
+		reqs = [{code = "action_tag", value = "dom"}],
+		effects = [{effect = 'sens_bonus', operant = "+", value = 0.2, trigger = 'action_self'}],
+	},
 	submissive = {
 		code = "submissive",
 		name = "",
@@ -470,8 +481,8 @@ var sex_traits = { #only for interaction tab
 		starting = true,
 		random_generation = true,
 		negative = false,
-		reqs = [],
-		effects = [],
+		reqs = [{code = "action_tag", value = "sub"}],
+		effects = [{effect = 'sens_bonus', operant = "+", value = 0.2, trigger = 'action_self'}],
 	},
 	nymphomania = {
 		code = "nymphomania",

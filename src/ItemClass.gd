@@ -230,7 +230,10 @@ func tooltiptext():
 		text = text.substr(0, text.length() -2) + ". \n"
 	
 	if toolcategory != null:
-		text += tr("TOOLWORKCATEGORY") + ": " + globals.worktoolnames[toolcategory]
+		text += tr("TOOLWORKCATEGORY") + ": " 
+		for i in toolcategory:
+			text += globals.worktoolnames[i] +", "
+		text = text.substr(0, text.length()-2) 
 	if description != null:
 		text += description
 	if !reqs.empty():

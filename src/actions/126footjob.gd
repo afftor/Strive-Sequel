@@ -1,29 +1,29 @@
 extends Node
 
 const category = 'caress'
-const code = 'earjob'
+const code = 'footjob'
 const order = 10
 var givers
 var takers
 const canlast = true
-const giverpart = 'penis'
-const takerpart = ''
+const giverpart = ''
+const takerpart = 'penis'
 const virginloss = false
-const givertags = ['pet','penis','noorgasm']
-const takertags = ['pet','noorgasm']
-const giver_skill = []
-const taker_skill = ['petting']
-const consent_level = 30
+const givertags = ['pet','noorgasm','dom']
+const takertags = ['pet','penis','sub']
+const giver_skill = ['petting']
+const taker_skill = []
+const consent_level = 25
 
 func getname(state = null):
-	return "Earjob"
+	return "Footjob"
 
 func getongoingname(givers, takers):
-	return "[name1] rub[s/1] [his1] penis[/s1] on [name2]'s ears."
+	return "[name1] give[s/1] [a /2]footjob[/s2] to [name2]."
 
 func getongoingdescription(givers, takers):
 	var temparray = []
-	temparray += ["[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1]."]
+	temparray += ["[name1] {^steadily :aggressively :}{^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] feet."]
 	return temparray[randi()%temparray.size()]
 
 func requirements():
@@ -31,28 +31,30 @@ func requirements():
 	if takers.size() < 1 || givers.size() < 1 || givers.size() + takers.size() > 3:
 		valid = false
 	else:
-		for i in givers:
+		for i in takers:
 #			if i.penis != null || i.person.penis_size == '':
 #				valid = false
 			if i.person.penis_size == '':
 				valid = false
-		for i in takers:
-			if i.person.ears in ['normal','orcish']:
+		for i in givers:
+			if i.person.legs in ['horse','spider', 'snake']:
+				valid = false
+			if i.limbs == false:
 				valid = false
 	return valid
 
 func givereffect(member):
-	var effects = {sens = 125, horny = 15}
+	var effects = {sens = 50, horny = 10}
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 50, horny = 5}
+	var effects = {sens = 125, horny = 15}
 	return effects
 
 
 func initiate():
 	var temparray = []
-	temparray += ["[name1] {^steadily :rhythmically :} {^massage:stroke:rub:jerk}[s/1] [names2] ears with [his1] [penis1]."]
+	temparray += ["[name1] {^steadily :rhythmically :} {^massage:stroke:rub:jerk}[s/1] [names2] [penis2] with [his1] feet."]
 	return temparray[randi()%temparray.size()]
 
 func reaction(member):

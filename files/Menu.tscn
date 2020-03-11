@@ -301,9 +301,24 @@ margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
 bbcode_text = "Added tutorial entry for leveling
-Correct character portrait resolution at slave panel
+Added item selection when completing non-material turn in quests
+Added dynamic gold generation for items quests
+Tools no longer have ATK stat
+Added Tool slot
+All guild quests are now accessed from main city  menu
+Corrected character portrait resolution at slave panel
+Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
+Old submissive effect now is called 'Doormat' 
+Subdue is made easier (now only requires same physics factor as victim)
 Fixed protect skill crashing the game
+Fixed some recruit events softlocking player when your character pool is full
 Fixed quests not generating static gear rewards
+Fixed crits having normal damage
+Fixed a bug causing caster to drop in stats instead of target when submission was maxed before loyalty
+Fixed abuse skill not working
+Fixed some items not being craftable
+Fixed charm effect breaking the game on reload
+Fixed multi
 0.1.5
 Fixed some more combat skill related bugs, including: Distract, Wind Attack
 Fixed exploration skills usage
@@ -401,9 +416,24 @@ Fixed interaction menu bug
 0.1.0
 Release"
 text = "Added tutorial entry for leveling
-Correct character portrait resolution at slave panel
+Added item selection when completing non-material turn in quests
+Added dynamic gold generation for items quests
+Tools no longer have ATK stat
+Added Tool slot
+All guild quests are now accessed from main city  menu
+Corrected character portrait resolution at slave panel
+Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
+Old submissive effect now is called 'Doormat' 
+Subdue is made easier (now only requires same physics factor as victim)
 Fixed protect skill crashing the game
+Fixed some recruit events softlocking player when your character pool is full
 Fixed quests not generating static gear rewards
+Fixed crits having normal damage
+Fixed a bug causing caster to drop in stats instead of target when submission was maxed before loyalty
+Fixed abuse skill not working
+Fixed some items not being craftable
+Fixed charm effect breaking the game on reload
+Fixed multi
 0.1.5
 Fixed some more combat skill related bugs, including: Distract, Wind Attack
 Fixed exploration skills usage

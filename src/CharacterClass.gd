@@ -2457,10 +2457,10 @@ func use_social_skill(s_code, target):#add logging if needed
 					elif stat == 'submission' && h.get(stat) < 100 && h.get(stat) + i.value >= 100:
 						if h.get('loyalty') < 100:
 							bonusspeech.append("submission")
-							if growth_factor > sexuals_factor:
-								growth_factor -= 1
+							if h.growth_factor > h.sexuals_factor:
+								h.growth_factor -= 1
 							else:
-								sexuals_factor -= 1
+								h.sexuals_factor -= 1
 						else:
 							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, i.value)

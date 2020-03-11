@@ -1135,7 +1135,10 @@ func autosave():
 #			globals.savelist[path+'autosave2'] = globals.savelistentry(path+'autosave2')
 	#var thread = 
 # warning-ignore:return_value_discarded
-	Thread.new().start(globals,"SaveGame",'autosave')
+	globals.SaveGame('autosave')
+#	var thread = Thread.new()
+#	thread.start(globals,"SaveGame",'autosave')
+#	thread.wait_to_finish()
 
 func SaveGame(name):
 	var savedict = state.serialize(); 

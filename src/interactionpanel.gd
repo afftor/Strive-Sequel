@@ -2532,7 +2532,7 @@ func resistattempt(member):
 	var subdue = 0
 	var resist_chance = 0
 	
-	if member.sex_traits.has('submissive') == false:
+	if member.sex_traits.has('doormat') == false:
 		member.person.obedience -= 1
 	
 	match member.person.personality:
@@ -2544,7 +2544,8 @@ func resistattempt(member):
 			resist_chance = 0.05
 		'serious':
 			resist_chance = 0.5
-	
+	if member.sex_traits.has("doormat"):
+		resist_chance = 0
 	
 	if member.effects.has('tied'):
 		resiststrength = 0
@@ -2554,7 +2555,7 @@ func resistattempt(member):
 	for i in member.subduedby:
 		subdue += i.person.physics_factor
 	
-	if resiststrength >= subdue && resiststrength != 0:
+	if resiststrength > subdue && resiststrength != 0:
 		result.consent = false
 		result.text += '[name1] resists the attempt with brute force.\n'
 	else:
