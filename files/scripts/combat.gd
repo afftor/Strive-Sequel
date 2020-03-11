@@ -122,7 +122,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		tchar.displaynode.rebuildbuffs()
 	select_actor()
 
-func FinishCombat():
+func FinishCombat(victory = true):
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.combat_cooldowns.clear()
@@ -140,7 +140,8 @@ func FinishCombat():
 	CombatAnimations.force_end()
 	hide()
 	globals.combat_node = null
-	input_handler.finish_combat()
+	if victory: input_handler.finish_combat()
+	else: input_handler.combat_defeat()
 
 
 func select_actor():
@@ -378,10 +379,9 @@ func victory():
 func defeat():
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	set_process(false)
-	set_process_input(false)
-	self.hide()
-	input_handler.combat_defeat()
+	Input.set_custom_mouse_cursor(cursors.default)
+	fightover = true
+	FinishCombat(false)
 
 func player_turn(pos):
 	turns += 1
