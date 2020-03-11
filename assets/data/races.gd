@@ -9,11 +9,11 @@ func get_progress_task(character, temptask, tempsubtask, count_crit = false):
 	var item
 	if character.gear.rhand != null:
 		item = state.items[character.gear.rhand]
-	if item != null && task.has('worktool') && item.toolcategory == task.worktool:
+	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
 	value = value * (character.get_stat('productivity')*character.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
-	if item != null && task.has('worktool') && item.toolcategory == task.worktool:
+	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
 	

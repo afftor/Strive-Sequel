@@ -35,7 +35,11 @@ var lands = {
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
-		events = [{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}}],
+		events = [
+			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}}
+			
+			],
+		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
@@ -80,6 +84,7 @@ var lands = {
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		guilds = [],
 		events = [],
+		capital_options = [],
 		material_tiers = {easy = 1, medium = 0.7, hard = 0.1},
 		area_shop_items = {
 			vegetables = {min = 40, max = 80, chance = 1},
@@ -288,7 +293,7 @@ var factiondata = {
 		code = 'fighters',
 		name = 'Fighters Guild',
 		description = '',
-		actions = ['hire','upgrade','quests'],
+		actions = ['hire','upgrade'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
 		character_bonuses = {authority = [75,100], obedience = [48,48]},
@@ -305,7 +310,7 @@ var factiondata = {
 		code = 'mages',
 		name = 'Mages Guild',
 		description = '',
-		actions = ['hire','upgrade','quests'],
+		actions = ['hire','upgrade'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
@@ -322,7 +327,7 @@ var factiondata = {
 		code = 'workers',
 		name = 'Workers Guild',
 		description = '',
-		actions = ['hire','upgrade','quests'],
+		actions = ['hire','upgrade'],
 		preference = ['labor'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
@@ -339,7 +344,7 @@ var factiondata = {
 		code = 'servants',
 		name = 'Servants Guild',
 		description = '',
-		actions = ['hire','upgrade','quests'],
+		actions = ['hire','upgrade'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
@@ -686,12 +691,12 @@ var questdata = {
 	workers_craft_tools_easy = {
 		code = 'workers_craft_tools_easy',
 		name = 'Tool making',
-		descript = 'The guild requires specific instruments. ',
-		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [2,2]}],
+		descript = 'The guild requires some instruments crafted in a specific way ',
+		randomconditions = [{code = 'random_item', function = 'range', type = ['axe','pickaxe','sickle'], range = [1,2], parts = {ToolBlade = ['iron','bone']}}],
 		unlockreqs = [],
 		reputation = [150,200],
 		rewards = [
-		[1, {code = 'gold', range = [150,200]}],
+		[1, {code = 'gold', item_based = true, range = [1.5,1.8]}],
 		],
 		time_limit = [8,12],
 	},
@@ -796,19 +801,23 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1, {code = 'gold', range = [125,170]}],
+		[1, {code = 'gold', item_based = true, range = [1.5,1.8]}],
 		],
 		time_limit = [8,12],
 	},
-#	servants_slave_easy = {
-#		code = 'servants_slave_easy',
-#		name = 'Slave Request',
-#		descript = 'The guild is in need of specific trained individual.',
-#		randomconditions = {number = [2,2], variances = [{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
-#		unlockreqs = [],
-#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-#		time_limit = [8,12],
-#	},
+	servants_slave_easy = {
+		code = 'servants_slave_easy',
+		name = 'Slave Request',
+		descript = 'The guild is in need of specific trained individual.',
+		randomconditions = {
+			number = [2,2], 
+			variances = [
+			{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},
+			{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
+		unlockreqs = [],
+		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		time_limit = [8,12],
+	},
 #	warriors_fighter_slave_easy = {
 #		code = 'warriors_fighter_slave_easy',
 #		type = 'slavegetquest',
@@ -864,10 +873,15 @@ func make_quest(questcode):
 		var reqsarrayposition = reqsarray.find(tempdata)
 		data.requirements.append(tempdata)
 		tempdata.type = tempdata.type[randi()%tempdata.type.size()] #what random things are going there
+		if tempdata.code in ['random_item','random_slave']:
+			tempdata.completed = false
 		if tempdata.has('range'):
 			tempdata.value = round(rand_range(tempdata.range[0], tempdata.range[1]))
 		if tempdata.code == 'kill_monsters':
 			tempdata.curvalue = 0
+		if tempdata.has('parts'):
+			for i in tempdata.parts:
+				tempdata.parts[i] = tempdata.parts[i][randi()%tempdata.parts[i].size()]
 		requirements_number -= 1
 	var rewardarray = []
 	for i in template.rewards.duplicate():
@@ -880,7 +894,18 @@ func make_quest(questcode):
 		match i.code:
 			'gold':
 				reward.code = 'gold'
-				reward.value = round(rand_range(i.range[0], i.range[1]))
+				if i.has('item_based') == true:
+					var item_price = 0
+					for k in data.requirements:
+						if k.code == 'random_item':
+							if Items.itemlist[k.type].has('parts'):
+								for j in k.parts:
+									item_price += Items.materiallist[k.parts[j]].price * Items.itemlist[k.type].parts[j] * k.value
+							else:
+								item_price += Items.itemlist[k.type].price * k.value
+					reward.value = round(item_price*rand_range(i.range[0], i.range[1]))
+				else:
+					reward.value = round(rand_range(i.range[0], i.range[1]))
 			'gear':
 				var dict = {item = i.name[randi()%i.name.size()], material_grade = i.material_grade}
 				reward = generate_random_gear(dict)
@@ -1240,6 +1265,14 @@ var dungeons = {
 			levels = [3,4], 
 			resources = ['leatherthick','iron','woodiron','bone','boneancient'],
 			stages_per_level = [2,4]
+			},
+			hard = {code = 'hard', 
+			enemyarray =  [['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
+			levels = [5,6], 
+			resources = ['leatherthick','iron','woodiron','bone','boneancient'],
+			stages_per_level = [4,6]
 			},
 		},
 		affiliation = 'local', #defines character races and events

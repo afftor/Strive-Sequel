@@ -118,7 +118,7 @@ var Skilllist = {
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',
-		social_skill_stats = ['physics','repeated_effect_reduce_submission'],
+		social_skill_stats = ['physics'],
 		reqs = [],
 		targetreqs = [{code = 'is_master', check = false}],
 		effects = [],

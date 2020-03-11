@@ -205,13 +205,13 @@ func select_location(location):
 			select_location('Aliron')
 		else:
 			open_location(data)
-	
+
+var city_options = {
+	location_purchase = "Buy Dungeon Location",
+	quest_board = "Notice Board",
+}
 
 func open_city(city):
-#	match city:
-#		'capital_plains':
-#			active_area = state.areas.plains
-
 	input_handler.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), 'timeout')
 	active_area = state.areas[state.location_links[city].area]
@@ -242,10 +242,10 @@ func open_city(city):
 	newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 	newbutton.text = "Shop"
 	newbutton.connect("pressed", self, "open_shop", ['area'])
-	
-	newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
-	newbutton.text = "Buy Dungeon Location"
-	newbutton.connect("pressed", self, "purchase_location_list")
+	for i in active_area.capital_options:
+		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
+		newbutton.text = city_options[i]
+		newbutton.connect("pressed", self, i)#"purchase_location_list")
 	
 	for i in active_area.events:
 		if state.checkreqs(i.reqs) == false:
@@ -630,7 +630,7 @@ func sell_slave_confirm():
 	input_handler.slave_list_node.rebuild()
 	faction_sellslaves()
 
-func faction_quests():
+func quest_board():
 	$QuestPanel.show()
 	selectedquest = null
 	$QuestPanel/Label.hide()
@@ -640,20 +640,21 @@ func faction_quests():
 	$QuestPanel/RichTextLabel.clear()
 	$QuestPanel/AcceptQuest.hide()
 	$QuestPanel/time.hide()
-	globals.ClearContainer($QuestPanel/VBoxContainer)
-	for i in active_area.quests.factions[active_faction.code].values():
-		if i.state == 'free':
-			var newbutton = globals.DuplicateContainerTemplate($QuestPanel/VBoxContainer)
-			newbutton.text = i.name
-			newbutton.connect("pressed",self,"see_quest_info", [i])
-			newbutton.set_meta("quest", i)
+	globals.ClearContainer($QuestPanel/ScrollContainer/VBoxContainer)
+	for i in active_area.quests.factions:
+		for k in active_area.quests.factions[i].values():
+			if k.state == 'free':
+				var newbutton = globals.DuplicateContainerTemplate($QuestPanel/ScrollContainer/VBoxContainer)
+				newbutton.text = k.name
+				newbutton.connect("pressed",self,"see_quest_info", [k])
+				newbutton.set_meta("quest", k)
 
 
 
 var selectedquest
 
 func see_quest_info(quest):
-	for i in $QuestPanel/VBoxContainer.get_children():
+	for i in $QuestPanel/ScrollContainer/VBoxContainer.get_children():
 		if i.name == 'Button':
 			continue
 		i.pressed = i.get_meta('quest') == quest
@@ -681,11 +682,18 @@ func see_quest_info(quest):
 			'random_item':
 				var itemtemplate = Items.itemlist[i.type]
 				newbutton.texture = itemtemplate.icon
+				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
 				if itemtemplate.has('parts'):
-					newbutton.material = load("res://files/ItemShader.tres").duplicate()
+					#newbutton.material = load("res://files/ItemShader.tres").duplicate()
+					var showcase_item = globals.CreateGearItem(i.type, i.parts)
+					input_handler.itemshadeimage(newbutton, showcase_item)
+					globals.connectitemtooltip(newbutton, showcase_item)
+					if i.has('parts'):
+						newbutton.hint_tooltip += "\nPart Requirements: "
+						for k in i.parts:
+							newbutton.hint_tooltip += "\n"+ tr(Items.Parts[k].name)  + ": " +str(Items.materiallist[i.parts[k]].name)
 				newbutton.get_node("amount").text = str(i.value) 
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
 			'complete_location':
 				newbutton.texture = images.icons.quest_encounter
 				newbutton.hint_tooltip = "Complete quest location: " + world_gen.dungeons[i.type].name
@@ -734,8 +742,11 @@ func see_quest_info(quest):
 				newbutton.texture = images.icons.quest_reputation
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = "Reputation (" + quest.source + "): +" + str(i.value)
-	$QuestPanel/RichTextLabel.bbcode_text = text
+				newbutton.hint_tooltip = "Reputation (" + active_area.factions[quest.source].name + "): +" + str(i.value)
+	
+	text += "\n\n{color=yellow|Requester: " + active_area.factions[quest.source].name + "}"
+	
+	$QuestPanel/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$QuestPanel/time/Label.text = "Limit: " + str(quest.time_limit) + " days."
 
 func accept_quest():
@@ -746,7 +757,7 @@ func accept_quest():
 			#input_handler.ShowPopupPanel("You've received a new quest location.")
 			#update_categories()
 			break
-	faction_quests()
+	quest_board()
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
 
@@ -851,7 +862,7 @@ func free():
 	pass
 
 
-func purchase_location_list():
+func location_purchase():
 	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
 	for i in purch_location_list.values():
 		var newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
@@ -877,7 +888,7 @@ func purchase_location(purchasing_location):
 		input_handler.interactive_message('purchase_dungeon_location', 'location_purchase_event', {})
 	else:
 		input_handler.SystemMessage("Can't purchase anymore")
-	purchase_location_list()
+	location_purchase()
 
 func build_location_description():
 	var text = ''

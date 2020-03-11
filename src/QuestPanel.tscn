@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/QuestPanel.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=7]
 
 [node name="QuestPanel" type="Panel"]
 margin_left = 295.71
@@ -139,3 +142,76 @@ margin_top = 17.499
 margin_right = 140.671
 margin_bottom = 41.499
 text = "Time"
+
+[node name="ItemSelectionPanel" type="Panel" parent="."]
+visible = false
+margin_left = 293.816
+margin_top = 44.136
+margin_right = 931.816
+margin_bottom = 741.136
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ItemSelectionPanel"]
+margin_left = 27.6803
+margin_top = 114.136
+margin_right = 600.68
+margin_bottom = 499.136
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ItemSelectionPanel/ScrollContainer"]
+columns = 7
+
+[node name="Button" type="TextureButton" parent="ItemSelectionPanel/ScrollContainer/GridContainer"]
+editor/display_folded = true
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ItemSelectionPanel/ScrollContainer/GridContainer/Button"]
+show_behind_parent = true
+margin_right = 75.0
+margin_bottom = 75.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Amount" type="Label" parent="ItemSelectionPanel/ScrollContainer/GridContainer/Button"]
+visible = false
+margin_left = 25.731
+margin_top = 46.3779
+margin_right = 65.731
+margin_bottom = 70.3779
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="noitems" type="Label" parent="ItemSelectionPanel"]
+margin_left = 217.01
+margin_top = 139.171
+margin_right = 414.01
+margin_bottom = 163.171
+text = "NOFITTINGITEMS"
+
+[node name="ConfirmButton" type="Button" parent="ItemSelectionPanel"]
+margin_left = 188.214
+margin_top = 542.812
+margin_right = 433.214
+margin_bottom = 602.812
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="ItemSelectionPanel"]
+margin_left = 188.214
+margin_top = 612.812
+margin_right = 433.214
+margin_bottom = 672.812
+text = "Cancel"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ItemSelectionPanel"]
+margin_left = 40.0
+margin_top = 32.0
+margin_right = 572.0
+margin_bottom = 90.0

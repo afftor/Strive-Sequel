@@ -76,7 +76,7 @@ func _ready():
 	
 	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	if variables.generate_test_chars:
+	if variables.generate_test_chars: #&& false:
 		state.mainprogress = 0
 		state.make_world()
 		var character = Slave.new()
@@ -87,11 +87,11 @@ func _ready():
 		character.unlock_class("master")
 		character.unlock_class("archer")
 		character.set_slave_category('master')
-		character.sex_traits = ['bisexual', 'anal']
+		character.sex_traits = ['dislike_missionary', 'anal']
 		character.charm_factor = 1
 		#character.unlock_class("worker")
 		character.mp = 50
-		character.unlock_class("druid")
+		character.unlock_class("sadist")
 #		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
@@ -203,6 +203,11 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
@@ -443,11 +448,11 @@ func update_task_bar():
 					i.get_node("ProgressBar").max_value = state.craftinglists[task.code][0].workunits_needed
 					i.get_node("ProgressBar").value = state.craftinglists[task.code][0].workunits
 					if recipe.resultitemtype == 'material':
-						i.get_node("icon").texture = Items.materiallist[state.craftinglists[task.code][0].code].icon
+						i.get_node("icon").texture = Items.materiallist[Items.recipes[state.craftinglists[task.code][0].code].resultitem].icon
 						i.get_node("icon/Label").show()
 						i.get_node("icon/Label").text = str(state.materials[state.craftinglists[task.code][0].code])
 					else:
-						i.get_node("icon").texture = Items.itemlist[state.craftinglists[task.code][0].code].icon
+						i.get_node("icon").texture = Items.itemlist[Items.recipes[state.craftinglists[task.code][0].code].resultitem].icon
 					if state.craftinglists[task.code][0].has('partdict'):
 						i.get_node('icon').material = load("res://files/ItemShader.tres").duplicate()
 						var itemtemplate = Items.itemlist[state.craftinglists[task.code][0].code]

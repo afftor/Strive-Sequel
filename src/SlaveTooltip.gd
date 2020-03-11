@@ -59,7 +59,7 @@ func showup(node, person):
 			text += "Occupation: None"
 		text += "\n"
 		if state.get_master() != person:
-			if person.obedience > 0:
+			if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
 				text += "{color=green|Obedience: " 
 			else:
 				text += "{color=red|Obedience: " 

@@ -169,7 +169,8 @@ var scenedict = {
 	image = '', 
 	common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'},{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 20}],
 	options = [
-	{code = 'recruit', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'recruit', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
 	event_dungeon_prisoner_free = {
@@ -305,6 +306,7 @@ var scenedict = {
 			image = 'slave_decision',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 				]
 			},
 			{reqs = [],

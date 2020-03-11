@@ -66,6 +66,7 @@ rect_min_size = Vector2( 0, 50 )
 text = "Slave Guild"
 
 [node name="LocationGui" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_right = 1920.0
 margin_bottom = 1079.0
@@ -775,19 +776,24 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 
 [node name="QuestPanel" type="Panel" parent="."]
-visible = false
 margin_left = 519.0
 margin_top = 138.0
 margin_right = 1553.0
 margin_bottom = 995.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="QuestPanel"]
 margin_left = 41.0
 margin_top = 59.0
-margin_right = 445.0
+margin_right = 406.0
 margin_bottom = 810.0
+rect_clip_content = false
+mouse_filter = 1
 
-[node name="Button" type="Button" parent="QuestPanel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestPanel/ScrollContainer"]
+margin_right = 365.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="QuestPanel/ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 404.0
 margin_bottom = 50.0
