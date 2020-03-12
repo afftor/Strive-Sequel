@@ -76,7 +76,7 @@ func _ready():
 	
 	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	if variables.generate_test_chars:#&&false: #&& false:
+	if variables.generate_test_chars && false:#&&false: #&& false:
 		state.mainprogress = 0
 		state.make_world()
 		var character = Slave.new()

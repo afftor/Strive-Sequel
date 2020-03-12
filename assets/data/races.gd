@@ -7,8 +7,8 @@ func get_progress_task(character, temptask, tempsubtask, count_crit = false):
 	var subtask = task.production[tempsubtask]
 	var value = call(subtask.progress_function, character)
 	var item
-	if character.gear.rhand != null:
-		item = state.items[character.gear.rhand]
+	if character.gear.tool != null:
+		item = state.items[character.gear.tool]
 	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool

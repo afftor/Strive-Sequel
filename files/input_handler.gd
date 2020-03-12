@@ -759,15 +759,15 @@ func open_shell(string):
 
 func SystemMessage(text, time = 4):
 	var basetime = time
-	if weakref(SystemMessageNode) == null:
-		return
-	text = '[center]' + tr(text) + '[/center]'
-	SystemMessageNode.show()
-	SystemMessageNode.modulate.a = 1
-	SystemMessageNode.get_node('Text').bbcode_text = text
-	SystemMessageNode.get_parent().remove_child(SystemMessageNode)
-	get_tree().get_root().add_child(SystemMessageNode)
-	FadeAnimation(SystemMessageNode, 1, basetime)
+	#yield(get_tree(), 'idle_frame')
+	if weakref(SystemMessageNode).get_ref():
+		text = '[center]' + tr(text) + '[/center]'
+		SystemMessageNode.show()
+		SystemMessageNode.modulate.a = 1
+		SystemMessageNode.get_node('Text').bbcode_text = text
+		SystemMessageNode.get_parent().remove_child(SystemMessageNode)
+		get_tree().get_root().add_child(SystemMessageNode)
+		FadeAnimation(SystemMessageNode, 1, basetime)
 
 func ShowOutline(node):
 	node.material = load('res://files/portret_shader.tres').duplicate()
