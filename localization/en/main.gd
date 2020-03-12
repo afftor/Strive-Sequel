@@ -174,11 +174,11 @@ var TranslationDict = {
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = "A nectar of the gods. \n\nImproves obedience and reduce submission when consumed normally. Improves horniness and sensitivity during sex interactions.",
 	ITEMTAMEDRUG = "Tame Drug",
-	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Brave Factor -1-2. Wits Factor -1.",
+	ITEMTAMEDRUGDESCRIPT = "Tame Factor +1-2. Timid Factor +1-2. Wits Factor -1.",
 	ITEMRAGEDRUG = "Rage Drug",
-	ITEMRAGEDRUGDESCRIPT = "Brave Factor +1-2. Tame Factor -1-2. Physics Factor +1.",
+	ITEMRAGEDRUGDESCRIPT = "Tame Factor -1-2. Wits Factor -1-2. Physics Factor +1.",
 	ITEMSEXDRUG = "Sex Drug",
-	ITEMSEXDRUGDESCRIPT = "Physics Factor -1. Wits Factor -2. Sex Factor set to 6. Lust Maximized.",
+	ITEMSEXDRUGDESCRIPT = "Physics Factor -1. Wits Factor -1. Sex Factor set to 6. Lust Maximized.",
 	
 	ITEMHEALPOT = "Health Potion",
 	ITEMHEALPOTDESCRIPT = "Restores some health. Can be used in combat.",
@@ -217,15 +217,18 @@ var TranslationDict = {
 	ITEMAXE = "Axe",
 	ITEMPICKAXE = "Pickaxe",
 	ITEMSWORD = 'Sword',
+	ITEMDAGGER = 'Dagger',
 	ITEMBOW = "Bow",
 	ITEMSTAFF = "Staff",
 	ITEMSICKLE = "Sickle",
 	ITEMFISHINGTOOLS = "Fishing Tools",
 	ITEMHAMMER = "Forge Hammer",
+	ITEMHUNT_KNIFE = "Hunting Knife",
 	
 	
 	ITEMAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
 	ITEMSWORDDESCRIPT = "Good damage vs unarmored enemies.",
+	ITEMDAGGERDESCRIPT = "Easily hidden, cheap weapon which can be used by anyone.",
 	ITEMPICKAXEDESCRIPT = "Allows workers to harvest ore, but also can be used in combat.",
 	ITEMBOWDESCRIPT = "Simple weapon for ranged fighters.",
 	ITEMSTAFFDESCRIPT = "A simple tool for magic users.",
@@ -558,6 +561,7 @@ var TranslationDict = {
 	WORKTOOLHAMMER = "Hammer",
 	WORKTOOLBOW = "Hunting Bow",
 	WORKTOOLSICKLE = "Sickle",
+	WORKTOOLHUNT_KNIFE = "Hunting Knife",
 	
 	
 	CORRECTTOOLEQUIPPED = "Correct Tool equipped: its bonus will apply. ",
@@ -816,7 +820,7 @@ var TranslationDict = {
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily character can be influenced by punishments and abuse. The higher it is, the slower Submission decays. It also determines how quickly Authority grows. ",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It limits [color=aqua]Wits[/color] growth.",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth.",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It makes sexual skills acquirement faster.",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It makes sexual skills acquirement faster and occasionally boosts sexual options in events.",
 	
 	
 	STATFOOD_LOVE = "Loved Food",

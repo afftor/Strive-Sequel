@@ -28,7 +28,7 @@ func rebuild():
 	if state.show_tutorial == false:
 		hide_node()
 		return
-	globals.ClearContainer($Container)
+	globals.ClearContainerForced($Container)
 	for i in state.active_tutorials:
 		if !tutorial_themes.has(i):
 			continue
@@ -36,7 +36,6 @@ func rebuild():
 		var newbutton = globals.DuplicateContainerTemplate($Container)
 		newbutton.text = tut_data.name
 		newbutton.connect('pressed', self, 'show_tutorial_window', [i])
-	
 	if $Container.get_child_count() <= 1:
 		hide_node()
 	else:
@@ -48,14 +47,8 @@ func rebuild():
 	yield(get_tree().create_timer(0.3), 'timeout')
 	raise()
 
-
-func activate_tutorial(code):
-	state.active_tutorials.append(code)
-	rebuild()
-
 func show_tutorial_window(data):
 	current_tutorial = data
-	print(get_parent().get_children().back().name)
 	
 	$Panel.show()
 	$Panel/RichTextLabel.bbcode_text = globals.TextEncoder(tutorial_themes[data].text)

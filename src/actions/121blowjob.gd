@@ -16,7 +16,7 @@ const taker_skill = []
 const consent_level = 15
 
 func getname(state = null):
-	if givers == null || takers == null || givers.size() + takers.size() == 2:
+	if givers.size() == 0 || takers.size() == 0 || givers.size() + takers.size() == 2:
 		return "Blowjob"
 	else:
 		return "Smlt. Blowjob"

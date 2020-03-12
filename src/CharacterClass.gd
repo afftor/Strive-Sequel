@@ -328,7 +328,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			if (rec as String).begins_with('resist'):
 				add_bonus(rec + '_add', ls[rec], true)
 				continue
-			if (rec as String).ends_with('mod') :
+			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
 				continue
 			if get(rec) == null: continue
@@ -343,7 +343,8 @@ func add_bonus(b_rec:String, value, revert = false):
 			if b_rec.ends_with('_mul') and bonuses[b_rec] == 1.0: bonuses.erase(b_rec)
 		else: bonuses[b_rec] += value
 	else:
-		if revert: print('error bonus not found')
+		if revert:
+			print('error bonus not found')
 		else:
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
@@ -2459,7 +2460,7 @@ func use_social_skill(s_code, target):#add logging if needed
 							bonusspeech.append("submission")
 							if h.growth_factor > h.sexuals_factor:
 								h.growth_factor -= 1
-							else:
+							elif h.sexuals_factor > 1:
 								h.sexuals_factor -= 1
 						else:
 							bonusspeech.append("submission_loyalty")

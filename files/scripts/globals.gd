@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.5'
+const gameversion = '0.1.6'
 
 var start_new_game = false
 
@@ -358,6 +358,7 @@ var statdata = {
 	},
 	critmod = {
 		code = 'critmod',
+		percent = true,
 		name = '',
 		descript = '',
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
@@ -510,6 +511,7 @@ var worktoolnames = {
 	rod = '',
 	sickle = '',
 	hammer = '',
+	hunt_knife = '',
 }
 
 var gearlist = ['chest', 'gloves', 'boots', 'rhand', 'lhand', 'neck', 'ring1', 'ring2']
@@ -1145,6 +1147,7 @@ func SaveGame(name):
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
+	input_handler.SystemMessage("Game saved as " + name + ".sav")
 
 func LoadGame(filename):
 	if !file.file_exists(userfolder+'saves/'+ filename + '.sav') :
@@ -1166,6 +1169,7 @@ func LoadGame(filename):
 	CurrentScene.queue_free()
 	ChangeScene('mansion');
 	yield(self, "scene_changed")
+	input_handler.SystemMessage("Game Loaded")
 
 
 func datetime_comp(a, b):

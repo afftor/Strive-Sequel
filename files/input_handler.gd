@@ -1342,7 +1342,6 @@ func finish_combat():
 	encounter_lose_scripts.clear()
 	
 	if encounter_win_script != null:
-		print(true)
 		var data = scenedata.scenedict[encounter_win_script]
 		interactive_message(encounter_win_script, data.default_event_type, {})
 		encounter_win_script = null

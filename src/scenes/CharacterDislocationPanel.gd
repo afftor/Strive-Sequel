@@ -77,7 +77,11 @@ func return_character():
 	else:
 		active_area = state.areas[state.location_links[person.location].area]
 		active_location = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.location]
-	
+	var location = world_gen.get_location_from_code(active_location)
+	for i in active_location.group:
+		if active_location.group[i] == person.id:
+			active_location.group.erase(i)
+			break
 	if variables.instant_travel == false:
 		person.location = 'travel'
 		person.travel_target = {area = '', location = 'mansion'}

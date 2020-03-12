@@ -28,3 +28,8 @@ func open(character = Slave.new()):
 	for i in $resists.get_children():
 		if variables.resists_list.has(i.name):
 			i.text = str(character.resists.get(i.name))
+			if character.resists.get(i.name) > 0:
+				i.set("custom_colors/font_color", globals.hexcolordict.yellow)
+			elif character.resists.get(i.name) < 0:
+				i.set("custom_colors/font_color", globals.hexcolordict.green)
+				

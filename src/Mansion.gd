@@ -76,7 +76,7 @@ func _ready():
 	
 	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	if variables.generate_test_chars: #&& false:
+	if variables.generate_test_chars:#&&false: #&& false:
 		state.mainprogress = 0
 		state.make_world()
 		var character = Slave.new()
@@ -85,9 +85,12 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
-		character.unlock_class("archer")
+		character.unlock_class("knight")
 		character.set_slave_category('master')
 		character.sex_traits = ['dislike_missionary', 'anal']
+		character.equip(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'mithril'}))
+		#character.armor = 135
+		character.wits = 20
 		character.charm_factor = 1
 		#character.unlock_class("worker")
 		character.mp = 50
@@ -207,7 +210,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
@@ -227,6 +230,8 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
 		input_handler.interactive_message('event_good_rebels_beastkin', '', {})
+		for i in state.areas.plains.factions.values():
+			i.reputation = 500
 		
 	elif globals.start_new_game == true:
 		globals.start_new_game = false

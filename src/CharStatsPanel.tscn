@@ -260,7 +260,7 @@ columns = 4
 
 [node name="Label" type="Label" parent="resists"]
 visible = false
-margin_right = 344.0
+margin_right = 372.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "Attack:"

@@ -88,7 +88,7 @@ var tasklist = {
 		name = '',
 		descript = '',
 		workstat = 'physics',
-		worktool = 'bow',
+		worktool = 'hunt_knife',
 		production = {
 			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
 			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 5, reqs = [], progress_function = 'hunt_leather'},

@@ -13,7 +13,7 @@ var effect_table = {
 			],
 		buffs = [
 			{
-				icon = "res://assets/images/traits/small_size.png", 
+				icon = "res://assets/images/iconsskills/icon_tiny.png", 
 				description = "Small Size: \nMelee Skill damage reduced by 20%%\nEvasion increased by 30\nCollection tasks efficiency -15%%",
 				limit = 1,
 				t_name = 'small',

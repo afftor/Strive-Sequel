@@ -1333,7 +1333,7 @@ var Skilllist = {
 	hide = {#buff on self: hiding breaks on spell cast, can't be targeted by non-aoe hits; if only possible target on the row for melee -> backrow can be attacked. If only target left, hide is canceled. 
 		code = 'hide',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Sedation.png"),
+		icon = load("res://assets/images/iconsskills/icon_eyes.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['buff','support'],
@@ -1382,7 +1382,7 @@ var Skilllist = {
 	earth_atk = {
 		code = 'earth_atk',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/icon_earth.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -1407,7 +1407,7 @@ var Skilllist = {
 		code = 'wind_atk',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/Inspire.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -1487,7 +1487,7 @@ var Skilllist = {
 		code = 'holy_atk',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/icon_light.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -1539,7 +1539,7 @@ var Skilllist = {
 		code = 'earth_shatter',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/icon_earth.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage', 'aoe'],
@@ -1665,7 +1665,7 @@ var Skilllist = {
 		not_final = true,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.atk','*0.2'],0.85],
+		value = [['caster.atk','*0.2'],0.4],
 		damagestat = ['no_stat', '+damage_hp'],
 	},
 	holy_lance = {
@@ -1747,7 +1747,7 @@ var Skilllist = {
 		code = 'explosivearr',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/firebolt.png"),
+		icon = load("res://assets/images/iconsskills/icon_arrow_explode.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -1774,7 +1774,7 @@ var Skilllist = {
 		code = 'shadowstrike',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/icon_dark.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -1826,7 +1826,7 @@ var Skilllist = {
 		code = 'lightning',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Drain.png"),
+		icon = load("res://assets/images/iconsskills/icon_lightning.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['damage','ads'],
@@ -1926,7 +1926,7 @@ var Skilllist = {
 		code = 'overgrowth',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Heal.png"),
+		icon = load("res://assets/images/iconsskills/icon_plant.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['damage','aoe'],
@@ -2366,7 +2366,7 @@ var Skilllist = {
 		sound = [],
 		value = [['1'], ['1'], ['1']],
 		random_factor = [2,1,0],
-		damagestat = ['tame_factor','-timid_factor','-wits_factor']
+		damagestat = ['tame_factor','timid_factor','-wits_factor']
 	},
 	ragedrug = {
 		code = 'ragedrug',
@@ -2393,8 +2393,8 @@ var Skilllist = {
 		sfx = [], 
 		sound = [],
 		value = [['1'], ['1'], ['1']],
-		random_factor = [1,2,0],
-		damagestat = ['-tame_factor','timid_factor','physics_factor']
+		random_factor = [1,1,0],
+		damagestat = ['-wits_factor','-tame_factor','physics_factor']
 	},
 	sexdrug = {
 		code = 'sexdrug',
@@ -2421,7 +2421,7 @@ var Skilllist = {
 		sfx = [], 
 		sound = [],
 		value = [['1'], ['6'], ['1']],
-		random_factor = [1,0,0],
+		random_factor = [0,0,0],
 		damagestat = ['-wits_factor','+sexuals_factor','-physics_factor']
 	},
 	

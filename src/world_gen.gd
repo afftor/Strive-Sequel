@@ -59,7 +59,8 @@ var lands = {
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 2, max = 5, chance = 1},
 			trap = {min = 5, max = 10, chance = 1},
-			itempool1 = {items = ['sword','axe','pickaxe','hammer','fishingtools','sickle','bow','staff'], min = 3, max = 6, chance = 0.8},
+			itempool0 = {items = ['dagger'], min = 1, max = 2, chance = 1},
+			itempool1 = {items = ['sword','axe','pickaxe','hammer','fishingtools','sickle','bow','staff','hunt_knife'], min = 3, max = 6, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
@@ -304,7 +305,7 @@ var factiondata = {
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
-		questnumber = [2,2],
+		questnumber = [1,1],
 	},
 	mages = {
 		code = 'mages',
@@ -321,7 +322,7 @@ var factiondata = {
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
-		questnumber = [2,2],
+		questnumber = [1,1],
 	},
 	workers = {
 		code = 'workers',
@@ -338,7 +339,7 @@ var factiondata = {
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
-		questnumber = [30,30],
+		questnumber = [1,1],
 	},
 	servants = {
 		code = 'servants',
@@ -442,6 +443,7 @@ func make_slave_for_guild(guild):
 
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
+	
 	var newquest = make_quest(guilddatatemplate.questpool[difficulty][randi()%guilddatatemplate.questpool[difficulty].size()])
 	newquest.source = guilddatatemplate.code
 	newquest.area = guilddatatemplate.area
@@ -557,7 +559,7 @@ var locations = {
 			fleawarts = {min = 5, max = 10, chance = 0.8},
 			salvia = {min = 2, max = 6, chance = 0.6},
 			lifeshard = {min = 3, max = 6, chance = 0.9},
-			itempool1 = {items = ['axe','pickaxe','hammer','fishingtools','sickle'], min = 1, max = 3, chance = 0.8},
+			itempool1 = {items = ['axe','pickaxe','hammer','fishingtools','sickle','hunt_knife'], min = 1, max = 3, chance = 0.8},
 			itempool2 = {items = ['worker_outfit','craftsman_suit','steel_collar'], min = 1, max = 4, chance = 0.5},
 			itempool3 = {items = ['chest_base_leather','chest_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			itempool4 = {items = ['beer','lifegem'], min = 2, max = 6, chance = 0.6},
@@ -611,7 +613,7 @@ func make_location(code, area, difficulty = 'easy'):
 	location.erase('difficulties')
 	return location
 
-func update_guilds(area):
+func update_guilds_old(area):
 	#rebuild quests and slaves in guild
 	for i in area.factions.values():
 		for k in i.slaves:
@@ -631,6 +633,31 @@ func update_guilds(area):
 					area.quests.factions[faction].erase(quest.id)
 				fill_faction_quests(faction, area.code)
 
+func update_guilds(area):
+	for faction in area.quests.factions:
+		var cleararray = []
+		for quest in area.quests.factions[faction].values():
+			if quest.state == 'taken':
+				quest.time_limit -= 1
+				if quest.time_limit < 0:
+					fail_quest(quest)
+			else:
+				if quest.state == 'complete' || state.date % 7 == 0:
+					cleararray.append(quest.id)
+					#area.quests.factions[faction].erase(quest.id)
+		for i in cleararray:
+			area.quests.factions[faction].erase(i)
+	
+	if state.date % 7 == 0:
+		for i in area.factions.values():
+			for k in i.slaves:
+				characters_pool.get_char_by_id(k).is_active = false
+			i.slaves.clear()
+			while i.slaves.size() < i.slavenumber:
+				make_slave_for_guild(i)
+		for faction in area.quests.factions:
+			fill_faction_quests(faction, area.code)
+
 func update_locations():
 	for i in state.areas.values():
 		for j in i.locations.values():
@@ -647,7 +674,7 @@ func fill_faction_quests(faction, area):
 	for i in areadata.quests.factions[faction].values():
 		difficulty[i.difficulty] += 1
 	for i in difficulty:
-		while factiondata.questsetting[i] > difficulty[i]:
+		while factiondata.questsetting[i] > difficulty[i] && factiondata.questpool[i].size() > 0:
 			make_quest_for_guild(factiondata, i)
 			difficulty[i] += 1
 
@@ -1251,7 +1278,7 @@ var dungeons = {
 		bgm = "dungeon",
 		difficulties = {
 			easy = {code = 'easy', 
-			enemyarray =  [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			enemyarray =  [["rats_easy", 1],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 			levels = [2,3], 
@@ -1259,7 +1286,7 @@ var dungeons = {
 			stages_per_level = [2,3]
 			},
 			medium = {code = 'medium', 
-			enemyarray =  [['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			enemyarray =  [['goblins_easy', 1],['spiders_many', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 			levels = [3,4], 
@@ -1267,7 +1294,7 @@ var dungeons = {
 			stages_per_level = [2,4]
 			},
 			hard = {code = 'hard', 
-			enemyarray =  [['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+			enemyarray =  [['goblins_easy', 1],['spiders_many', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 			levels = [5,6], 

@@ -235,7 +235,7 @@ margin_bottom = 575.404
 [node name="Button" type="CheckBox" parent="NewGamePanel/Settings"]
 visible = false
 margin_right = 256.0
-margin_bottom = 32.0
+margin_bottom = 30.0
 text = "Test"
 
 [node name="tip" type="TextureRect" parent="NewGamePanel"]
@@ -266,12 +266,14 @@ margin_left = 561.0
 margin_top = 5.0
 margin_right = 711.0
 margin_bottom = 732.0
+mouse_filter = 2
 
 [node name="HSplitContainer2" type="VSeparator" parent="NewGamePanel"]
 margin_left = 226.0
 margin_top = 5.0
 margin_right = 376.0
 margin_bottom = 732.0
+mouse_filter = 2
 
 [node name="StartButton" type="Button" parent="NewGamePanel"]
 margin_left = 370.023
@@ -302,10 +304,15 @@ margin_bottom = 687.654
 bbcode_enabled = true
 bbcode_text = "Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests
-Added dynamic gold generation for items quests
+Added spider enemies to goblin caves
+Added 2 new drugs to alchemy level 3 and slightly improved sex drug
+Added Dagger and Hunting Knife items
+Guild quests now start at 1 quest per guild
+Guild quests and slaves update every 7 days
+Added dynamic gold reward for items quests
+All guild quests are now accessed from main city menu
 Tools no longer have ATK stat
 Added Tool slot
-All guild quests are now accessed from main city  menu
 Corrected character portrait resolution at slave panel
 Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
 Old submissive effect now is called 'Doormat' 
@@ -316,9 +323,9 @@ Fixed quests not generating static gear rewards
 Fixed crits having normal damage
 Fixed a bug causing caster to drop in stats instead of target when submission was maxed before loyalty
 Fixed abuse skill not working
-Fixed some items not being craftable
+Fixed some items not crafting properly
 Fixed charm effect breaking the game on reload
-Fixed multi
+Fixed characters recalled to mansion still being in location group
 0.1.5
 Fixed some more combat skill related bugs, including: Distract, Wind Attack
 Fixed exploration skills usage
@@ -417,10 +424,15 @@ Fixed interaction menu bug
 Release"
 text = "Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests
-Added dynamic gold generation for items quests
+Added spider enemies to goblin caves
+Added 2 new drugs to alchemy level 3 and slightly improved sex drug
+Added Dagger and Hunting Knife items
+Guild quests now start at 1 quest per guild
+Guild quests and slaves update every 7 days
+Added dynamic gold reward for items quests
+All guild quests are now accessed from main city menu
 Tools no longer have ATK stat
 Added Tool slot
-All guild quests are now accessed from main city  menu
 Corrected character portrait resolution at slave panel
 Revamped Submissive trait and added Dominant trait, also added categorization for some actions to be clarified as dom/sub actions
 Old submissive effect now is called 'Doormat' 
@@ -431,9 +443,9 @@ Fixed quests not generating static gear rewards
 Fixed crits having normal damage
 Fixed a bug causing caster to drop in stats instead of target when submission was maxed before loyalty
 Fixed abuse skill not working
-Fixed some items not being craftable
+Fixed some items not crafting properly
 Fixed charm effect breaking the game on reload
-Fixed multi
+Fixed characters recalled to mansion still being in location group
 0.1.5
 Fixed some more combat skill related bugs, including: Distract, Wind Attack
 Fixed exploration skills usage

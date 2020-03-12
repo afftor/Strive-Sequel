@@ -776,6 +776,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 
 [node name="QuestPanel" type="Panel" parent="."]
+visible = false
 margin_left = 519.0
 margin_top = 138.0
 margin_right = 1553.0
@@ -795,7 +796,7 @@ size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="QuestPanel/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 404.0
+margin_right = 365.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
@@ -1050,7 +1051,6 @@ margin_bottom = 136.0
 text = "Purchase"
 
 [node name="Label2" type="Label" parent="FactionDetailsPanel"]
-visible = false
 margin_left = 81.0
 margin_top = 374.0
 margin_right = 332.0
@@ -1059,7 +1059,6 @@ text = "Quest settings: "
 align = 1
 
 [node name="totalquestpoints" type="Label" parent="FactionDetailsPanel"]
-visible = false
 margin_left = 124.415
 margin_top = 686.0
 margin_right = 276.415
@@ -1067,7 +1066,6 @@ margin_bottom = 710.0
 text = "Unspent: "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FactionDetailsPanel"]
-visible = false
 margin_left = 50.0
 margin_top = 439.0
 margin_right = 358.0
@@ -1117,6 +1115,7 @@ text = "0"
 align = 1
 
 [node name="medium" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
+visible = false
 margin_left = 104.0
 margin_right = 204.0
 margin_bottom = 258.0
@@ -1161,8 +1160,9 @@ text = "0"
 align = 1
 
 [node name="hard" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-margin_left = 208.0
-margin_right = 308.0
+visible = false
+margin_left = 104.0
+margin_right = 204.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 

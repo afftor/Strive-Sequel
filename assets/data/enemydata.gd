@@ -41,6 +41,8 @@ var enemygroups = {
 	
 	slavers_small = {reqs = [], units = {bandit_melee = [2,3]}},
 	rebels_small = {reqs = [], units = {rebel_recruit = [3,4]}},
+	spiders = {reqs = [], units = {spider = [2,3]}},
+	spiders_many = {reqs = [], units = {spider = [4,6]}},
 	
 	rats = {reqs = [], units = {rat = [3,5]}},
 }

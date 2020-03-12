@@ -33,9 +33,9 @@ func requirements():
 	return valid
 
 func getname(state = null):
-	if givers == null && takers == null:
+	if givers.size() == 0 || takers.size() == 0:
 		return "Lotus Anal"
-	elif givers[0].strapon == true && takers[0].person.penis_size != '':
+	elif givers[0].strapon == true && givers[0].person.penis_size != '':
 		return "Lotus Pegging"
 	else:
 		return "Lotus Anal"
