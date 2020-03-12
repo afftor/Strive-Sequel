@@ -760,14 +760,20 @@ func open_shell(string):
 func SystemMessage(text, time = 4):
 	var basetime = time
 	#yield(get_tree(), 'idle_frame')
-	if weakref(SystemMessageNode).get_ref():
-		text = '[center]' + tr(text) + '[/center]'
-		SystemMessageNode.show()
-		SystemMessageNode.modulate.a = 1
-		SystemMessageNode.get_node('Text').bbcode_text = text
-		SystemMessageNode.get_parent().remove_child(SystemMessageNode)
-		get_tree().get_root().add_child(SystemMessageNode)
-		FadeAnimation(SystemMessageNode, 1, basetime)
+#	if weakref(SystemMessageNode).get_ref():
+#		text = '[center]' + tr(text) + '[/center]'
+#		SystemMessageNode.show()
+#		SystemMessageNode.modulate.a = 1
+#		SystemMessageNode.get_node('Text').bbcode_text = text
+#		SystemMessageNode.get_parent().remove_child(SystemMessageNode)
+#		get_tree().get_root().add_child(SystemMessageNode)
+#		FadeAnimation(SystemMessageNode, 1, basetime)
+	SystemMessageNode = get_spec_node(self.NODE_SYSMESSAGE)
+	text = '[center]' + tr(text) + '[/center]'
+	SystemMessageNode.get_node('Text').bbcode_text = text
+	SystemMessageNode.show()
+	SystemMessageNode.modulate.a = 1
+	FadeAnimation(SystemMessageNode, 1, basetime)
 
 func ShowOutline(node):
 	node.material = load('res://files/portret_shader.tres').duplicate()
@@ -1082,7 +1088,7 @@ func text_cut_excessive_lines(text:String):
 	return text
 
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_SYSMESSAGE} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 var node_data = {
 	NODE_CLASSINFO : {name = 'classinfo', mode = 'scene', scene = preload("res://src/scenes/ClassInformationPanel.tscn")},
@@ -1109,6 +1115,7 @@ var node_data = {
 	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
 	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
 	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
+	NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = null }, #add path here
 }
 
 func get_spec_node(type, args = null, raise = true, unhide = true):
