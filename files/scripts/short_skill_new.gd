@@ -52,7 +52,8 @@ class sskill_value:
 		is_drain = template.is_drain
 	
 	func clone():
-		return dict2inst(inst2dict(self))
+		var tmp = sskill_value.new(null, template)
+		return tmp
 	
 	func apply_atomic(tmp):
 		if template.nomod: return
@@ -151,7 +152,11 @@ func clone():
 	for e in template.effects:
 		var eff = effects_pool.e_createfromtemplate(e, res)
 		res.apply_effect(effects_pool.add_effect(eff))
-	for v in res.value: v.parent = res
+	res.value = []
+	for v in value:
+		res.value.push_back(v.clone())
+	for v in res.value: 
+		v.parent = res
 	return res
 
 func get_from_template(attr):
