@@ -173,6 +173,9 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
 		if i.has('altname'):
 			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
 	
 	for i in Items.materiallist.values():
 		i.name = tr("MATERIAL" + i.code.to_upper())
@@ -191,11 +194,18 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 		if i.has('dialogue_report'):
 			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
+		if i.has('charges') and typeof(i.charges) == TYPE_REAL: i.charges = int(i.charges)
 	
 	for i in races.racelist.values():
 		i.name = tr("RACE" + i.code.to_upper())
 		i.descript = tr("RACE" + i.code.to_upper() + 'DESCRIPT')
 		i.adjective = tr("RACE" + i.code.to_upper() + "ADJ")
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
 	
 	for i in races.tasklist.values():
 		i.name = tr("TASK" + i.code.to_upper())
@@ -204,10 +214,16 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 	for i in Traitdata.sex_traits.values():
 		i.name = tr("SEXTRAIT" + i.code.to_upper())
 		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
+#		if typeof(i.icon) == TYPE_STRING:
+#			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+#			else: i.icon = images.icons[i.icon]
 	
 	for i in Traitdata.traits.values():
 		i.name = tr("TRAIT" + i.code.to_upper())
 		i.descript = tr("TRAIT" + i.code.to_upper() + "DESCRIPT")
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
 		
 	for i in world_gen.dungeons.values():
 		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
@@ -229,10 +245,10 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 
 func fix_indexes_array(arr: Array):
 	if arr.size() == 0: return
-	if arr[0] == 'parent_args' or arr[0] == 'parent_arg_get': 
+	if typeof(arr[0])== TYPE_STRING and (arr[0] == 'parent_args' or arr[0] == 'parent_arg_get'): 
 		arr[1] = int(arr[1])
 		return
-	if arr.size() > 2 and arr[1] == 'mask': 
+	if arr.size() > 2 and typeof(arr[1])== TYPE_STRING and arr[1] == 'mask': 
 		arr[2] = int(arr[2])
 		return
 	for item in arr:
@@ -245,6 +261,7 @@ func fix_indexes_dict(dict: Dictionary):
 	for val in dict.values():
 		if typeof(val) == TYPE_ARRAY: fix_indexes_array(val)
 		if typeof(val) == TYPE_DICTIONARY: fix_indexes_dict(val)
+
 
 
 func process_dir(table_name, dir_name, location_dir):

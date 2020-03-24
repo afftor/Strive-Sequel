@@ -262,7 +262,7 @@ func hp_update(node, args):
 	if hp_update_delays.has(node): delay = hp_update_delays[node]
 	hp_update_delays.erase(node)
 	
-	var delaytime = 0.1
+	var delaytime = 0.2
 	var tween = input_handler.GetTweenNode(node)
 	var hpnode = node.get_node("HP")
 	#float damage
