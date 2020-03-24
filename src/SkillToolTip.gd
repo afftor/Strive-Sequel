@@ -7,7 +7,7 @@ var prevnode
 var character = Reference
 
 func _process(delta):
-	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
+	if weakref(parentnode).get_ref() != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
 		hide()
 

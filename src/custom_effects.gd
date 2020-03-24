@@ -83,3 +83,28 @@ func majorus_penis():
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
 	input_handler.update_slave_panel()
+
+func writ_of_exemption(character):
+	person = character
+	input_handler.interactive_message("writ_of_exemption",'custom_effect', {})
+
+func writ_of_exemption_use():
+	var character = person
+	var acceptance_req = 100
+	var acceptance_chance = 0
+	state.remove_item("writ_of_exemption", 1)
+	input_handler.get_spec_node(input_handler.NODE_INVENTORY, [{mode = 'character', person = person}]).hide()
+	input_handler.scene_characters = [person]
+	if character.loyalty == 100 && character.submission == 100:
+		acceptance_chance = 100
+	else:
+		acceptance_chance = (character.loyalty + character.submission) / 2
+		acceptance_chance = acceptance_chance - acceptance_chance*variables.personality_conversion_rates[character.personality]
+	if acceptance_chance >= randf()*acceptance_req:
+		input_handler.interactive_message("writ_of_exemption_success",'char_translate',character)
+		character.set_slave_category('servant')
+		character.loyalty += 25
+	else:
+		input_handler.interactive_message("writ_of_exemption_failure",'char_translate',character)
+		state.remove_slave(character)
+	input_handler.update_slave_panel()

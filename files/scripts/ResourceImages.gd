@@ -70,6 +70,8 @@ var scenes = {
 
 var sprites = {
 	empty = null,
+	amelia = load("res://assets/images/sprites/amelia.png"),
+	duncan = load("res://assets/images/sprites/duncan.png"),
 	}
 
 var portraits = {

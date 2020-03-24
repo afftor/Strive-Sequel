@@ -23,7 +23,7 @@ func add_stored_char(id, ch):
 
 func get_char_by_id(id):
 	if state.characters.has(id): return state.characters[id]
-	return characters[id]
+	if characters.has(id): return characters[id]
 
 func cleanup():
 	for id in characters.keys():

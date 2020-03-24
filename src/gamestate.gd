@@ -86,7 +86,6 @@ var easter_egg_characters_acquired = []
 
 
 func revert():
-#to make
 	starting_preset = ''
 	date = 1
 	hour = 6
@@ -132,9 +131,13 @@ func make_world():
 	state.areas.forests.unlocked = true
 
 func _ready():
+	for i in globals.upgradelist.keys():
+		upgrades[i] = 0
+	for i in Items.materiallist:
+		materials[i] = 0
 	connect("hour_tick", self, 'check_timed_events')
 	input_handler.connect("EnemyKilled", self, "quest_kill_receiver")
-	call_deferred('revert')
+	#call_deferred('revert')
 
 func update_global_cooldowns():
 	for i in global_skills_used.duplicate():
@@ -251,7 +254,7 @@ func valuecheck(dict):
 		"area_progress":
 			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
-			return decisions.has(dict.name)
+			return decisions.has(dict.name) == dict.value
 		"quest_stage":
 			return if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
@@ -295,6 +298,12 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant, selected_dialogues.has(dict.value), true)
 		'date':
 			return input_handler.operate(dict.operant, date, dict.value)
+		'active_quest_stage':
+			return get_active_quest(dict.value).stage == dict.stage
+		'faction_reputation':
+			var data = world_gen.get_faction_from_code(dict.code)
+			var guild = areas[data.area].factions[data.code]
+			return input_handler.operate(dict.operant, guild.totalreputation, dict.value)
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -566,6 +575,16 @@ func common_effects(effects):
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
 			'main_progress':
 				mainprogress = input_handler.math(i.operant, mainprogress, i.value)
+			'progress_quest':
+				var quest_exists = false
+				for k in active_quests:
+					if k.code == i.value:
+						quest_exists = true
+						k.stage = i.stage
+						text_log_add("quests", "Quest Updated: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+				if quest_exists == false:
+					active_quests.append({code = i.value, stage = i.stage})
+					text_log_add("quests", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
 			'complete_quest':
 				for k in active_quests:
 					if k.code == i.value:
@@ -578,6 +597,15 @@ func common_effects(effects):
 				var guild = areas[data.area].factions[data.code]
 				guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
 				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
+			'decision':
+				if !decisions.has(i.value):
+					decisions.append(i.value)
+
+func get_active_quest(code):
+	for i in active_quests:
+		if i.code == code:
+			return i
+	return 
 
 func make_local_recruit(args):
 	var newchar = Slave.new()

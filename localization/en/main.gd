@@ -122,7 +122,8 @@ var TranslationDict = {
 	MATERIALUNSTABLE_CONCOCTIONDESCRIPT = "A potent alchemical mixture. Required for certain skills.",
 	MATERIALBANDAGE = "Bandages",
 	MATERIALBANDAGEDESCRIPT = "A pack of bandages which are required for healing with First Aid skill.",
-	
+	MATERIALLICH_SKULL = "Lich's Skull",
+	MATERIALLICH_SKULLDESCRIPT = "Once belonged to a Lich, still holds faint traces of powerful magic in it. ",
 	
 	ITEMSLOTHEAD = "Head",
 	ITEMSLOTCHEST = "Chest",
@@ -197,8 +198,10 @@ var TranslationDict = {
 	ITEMSPARKLINGPOWDERDESCRIPT = "A pinch of dust composed mainly of life shards. Heals 25-35 life to all party members.",
 	ITEMREVITALIZER = "Revitalizer",
 	ITEMREVITALIZERDESCRIPT = "A strong essence possessing a large amount of life energy. Resurrects fallen characters with 20% of their maximum health.",
-	
-	
+	ITEMWRIT_OF_EXEMPTION = "Writ Of Exemption",
+	ITEMWRIT_OF_EXEMPTIONDESCRIPT = "An official paper holding all necesseties to grant a person freedom from slavery. It has all required seals and only missing a name to fill...",
+	ITEMSTRONG_PHEROMONES = "Strong Pheromones",
+	ITEMSTRONG_PHEROMONESDESCRIPT = "A popular drug, which is used on bestial races. Inhaling causes a great surge of euphoria and lust in individual, making them accept just about any treatment they usually would be to shy to consider. Ineffective for non-bestial species and often banned in affected communities. ",
 	
 	ITEMMAID_DRESS = "Maid Dress",
 	ITEMMAID_DRESSDESCRIPT = "A common servant dress for females. Inspires obedience and is appealing to the eye.",
@@ -418,6 +421,7 @@ var TranslationDict = {
 	INVENTORYMATERIAL = "Materials",
 	INVENTORYCOSTUME = "Costumes",
 	INVENTORYUSE = "Usables",
+	INVENTORYTOOL = "Tools",
 	INVENTORYQUEST = "Misc",
 	SELLCONFIRM = "Sell",
 	RAWPRICE = "Raw Price",
@@ -728,6 +732,9 @@ var TranslationDict = {
 	STATDAMAGEMODDESCRIPT = "Increases all damage by value",
 	STATARMORPENETRATION = "Armor Pen.",
 	STATARMORPENETRATIONDESCRIPT = "Ignores value of enemy's armor. ",
+	STATMODMELEE = "Melee Dam.",
+	STATMODRANGED = "Ranged Dam.",
+	
 	
 	STATFATIGUE = "Fatigue",
 	STATEXHAUSTION = "Exhaustion",
@@ -789,7 +796,7 @@ var TranslationDict = {
 	STATMOD_FARM = "Farm Task Efficiency",
 	STATMOD_PROS = "Prostitution Task Efficiency",
 	
-	STATRESISTNORMAL = "Neutral Resist",
+	STATRESISTNORMAL = "Normal Resist",
 	STATRESISTFIRE = "Fire Resist",
 	STATRESISTAIR = "Air Resist",
 	STATRESISTEARTH = "Earth Resist", 
@@ -952,6 +959,10 @@ var TranslationDict = {
 	SKILLGREATSEDUCEDESCRIPT = "Stops Loyalty from decay and increases Lust growth by 50% for 2 days. Improved by Charm. \nBasic Effects: \nObedience: 48, Loyalty: 7.",
 	SKILLDRAIN = "Drain",
 	SKILLDRAINDESCRIPT = "Restores some fatigue, mana and energy by draining it from target.",
+	SKILLDRAIN_MANA = "Drain Mana",
+	SKILLDRAIN_MANADESCRIPT = "Steal up to 35% of mana from target. ",
+	SKILLCONSUME_SOUL = "Consume Soul",
+	SKILLCONSUME_SOULDESCRIPT = "Kills target and receive their experience.",
 	SKILLSERVE = "Serve",
 	SKILLSERVEDESCRIPT = "Requires 20 lust. Improved by Charm. \nBasic Effects: \nObedience: 40, Loyalty: 5. ",
 	SKILLDISCIPLINE = "Discipline",
@@ -1022,6 +1033,8 @@ var TranslationDict = {
 	DIALOGUEPUBLICEXECUTIONREPORT = "You put [targetname] as an example to everyone in your mansion by ending [targethis] life in front of their eyes. This seems to be rather effective, albeit unnecessarily cruel for some.",
 	
 	DIALOGUEPURCHASEDUNGEONLOCATION = "You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] - [locationtypename].",
+	
+	DIALOGUEQUESTACCEPT = "You take a quest note from the board and put it into your pocket. Once you are able to meet its conditions, you can complete it from your Mansion. ",
 	
 	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.\n\n{color=aqua|[targetname]} - {random_chat=0|master_praise}",
 	DIALOGUEWARNREPORT = "[name] has given a serious warning to [targetname] making [targethim] more aware of [targethis] behavior.",
@@ -1642,7 +1655,9 @@ var TranslationDict = {
 	DIALOGUEESCAPECLOSE = "This is unfortunate",
 	
 	DIALOGUECLOSE = "Close",
+	DIALOGUECONFIRM = "Confirm",
 	DIALOGUECONTINUE = "Continue",
+	DIALOGUECANCEL = "Cancel",
 	
 	DIALOGUECHILDBIRTHTEXT = "[name] has given birth to a healthy child. Do you wish to keep it?",
 	DIALOGUEKEEPBABY = "Keep baby",
@@ -1829,6 +1844,10 @@ var TranslationDict = {
 	DIALOGUEMAJORUSPOTPENIS = "After [name]'s penis has been applied with Majorus Potion, it increased in size.",
 	DIALOGUEMAJORUSPOTBALLS = "After [name]'s balls have been applied with Majorus Potion, it increased in size.",
 	
+	DIALOGUEWRIT_CONFIRM = "Using Writ will alleviate [name] from slavery, making [him] a peon. This, however, will allow [him] to leave your posession, if [he] wishes so.",
+	DIALOGUEWRIT_SUCCESS = "[name] can't believe [his] eyes as [he] receive a proof of [his] freedom from you. After a pause, [he] declares [his] willingness to continue to serve under your rule. \n\n{color=aqua|[name]} - {random_chat=0|writ_success}",
+	DIALOGUEWRIT_FAILURE = "[name] can't believe [his] eyes as [he] receive a proof of [his] freedom from you. However, after a long pause [he] takes this chance and decides to leave your regime. \n\n{color=aqua|[name]} - {random_chat=0|writ_failure}",
+	
 	DIALOGUETITSSELECT = "Breasts",
 	DIALOGUEASSSELECT = "Rear",
 	DIALOGUEBALLSSELECT = "Balls",
@@ -1897,7 +1916,7 @@ var TranslationDict = {
 	FIGHTERSINTRODUCTION1REPLY2 = "I'm a new land owner, show some respect",
 	FIGHTERSINTRODUCTION2_1 = "— Oh, excuse me then. Land owners usually look... Not quite like this.\n\n",
 	FIGHTERSINTRODUCTION2_2 = "— Hmph, is that so?.. Fine, pardon my rudeness.\n\n",
-	FIGHTERSINTRODUCTION2_3 = "— So you are new one? You must be interested in fighting along with us then. That's a smart decision. Our core has been formed from the mightiest of the Black Knights, there is no one better suited for combat. \n\nCombat, guard duty, peacekeeping, dealing with monsters or rebels, we do it all. ",
+	FIGHTERSINTRODUCTION2_3 = "— So you are new one? Name's Duncan. You must be interested in fighting along with us then. That's a smart decision. Our core has been formed from the mightiest of the Black Knights, there is no one better suited for combat. \n\nCombat, guard duty, peacekeeping, dealing with monsters or rebels, we do it all. ",
 	FIGHTERSINTRODUCTION2_3_1 = "And naturally we offer our best fighters for hire. Since you are a new landowner, we offer you a free recruit if you side with us first.",
 	FIGHTERSINTRODUCTION2_4 = "— You are back. So, what have you decided?",
 	FIGHTERSINTRODUCTION2_5 = "— You are back. Has something happened?",
@@ -1918,7 +1937,7 @@ var TranslationDict = {
 	FIGHTERSASKQUESTIONSRETURN = "That's all",
 	
 	
-	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions.\n\n— Welcome, [Sir] [name]. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a land owner and are looking for our future cooperation. Here we are at the Servants Guild ready to provide you with finest and prettiest toys in all of the Republic. We also are in tie with many rich and powerful people of the city. ",
+	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions.\n\n— Welcome, [Sir] [name]. My name is Amelia. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a land owner and are looking for our future cooperation. Here we are at the Servants Guild ready to provide you with finest and prettiest toys in all of the Republic. We also are in tie with many rich and powerful people of the city. ",
 	SERVANTSINTRODUCTION1_1 = "As a newcomer we would be happy to provide you with one free servant of your choice if you side with us.",
 	SERVANTSQUESTIONREPLY1 = "So basically all you do is operate an elaborated sex service?",
 	SERVANTSQUESTIONREPLY2 = "How exactly am I useful to you?",
@@ -1986,4 +2005,49 @@ var TranslationDict = {
 	MAGESCLOSE2 = "— See ya, I guess.",
 	MAGESASKQUESTIONS = "Can I ask some questions?",
 	MAGESASKQUESTIONSRETURN = "That's all.",
+	
+	DIALOGUEINTRODUCTIONLETTER = 'Early in the morning your mansion is visited by messanger, who passes you an officially sealed letter. After quick examination you figure out that it is sent by Servants Guild. \n\n"Dear [name], your recent activity has caught our interest and we would like to invite you for a private meeting." \n\nDespite rather short message, the letter itself looks rather fancy and uses a high quality paper and ink. ',
+	
+	ELECTIONSTART1 = "- [Sir] [name], it's wonderful you came! So you must be curious why we invited you. Not to sound suspicious, but we know about your monetary situtation and relationship with the bank. \n\n- This is a situtation, I'd never prefer to be in. To tell the truth, it's almost guaranteed you won't be able to pay them back in time. But, that's not exactly what I summoned you for. Say, do you know about Mayor's position in here?",
+	ELECTIONSTARTREPLY1_1 = "Not really",
+	ELECTIONSTARTREPLY1_2 = "It had something to do with being a land owner?",
+	ELECTIONSTART2 = "- The city's Mayor is elected by the guilds majority every few years, but the catch is only land owner can become one. The catch is, Mayor can't have his property overtaken even in case of loans, so that will let you get off the hook, as long as you manage to get elected. ",
+	ELECTIONSTARTREPLY2_1 = "Are you proposing me to become a mayor?",
+	ELECTIONSTARTREPLY2_2 = "That seems nice, but it can't be that easy",
+	ELECTIONSTART3 = "- Yes, as I said, you will need support of the majority of guilds, which means at least 3. We aren't exactly good at cooperating with each other when it comes to power, so every guild has usually their own supported candidates. Good news is, as a new land owner, everyone is curious about your performance, so as long as you make good impression, it's very possible to request our support. ",
+	ELECTIONSTARTREPLY3_1 = "Why are you telling me all this?",
+	ELECTIONSTARTREPLY3_2 = "You are not sharing those?",
+	ELECTIONSTARTREPLY3_3 = "So what should I do",
+	ELECTIONPERSUADE1 = "- We have our reasons. \n\nAmelia slyly smiled showing her attempt to not elaborate on the subject.",
+	ELECTIONPERSUADESUCCESS = "- Oh, I assure, it's nothing for you to worry about. Let's say we can benefit from the bank losing some of its posessions. I guess you can say we have mutual intrests. ",
+	ELECTIONPERSUADEFAILURE = "- Sorry, we aren't quite sure we can share such information to you yet. Have no worries, you won't be losing anything anyway.",
+	ELECTIONSTART4 = "- You gonna have to build reputation with at least three guilds, but this should be done in two weeks, as after that election period starts and you will have to register as candidate. Don't let that scare you though, I'm sure you will manage. \n\n- After perform enough tasks for them, you will have to request elective support from their leaders. ",
+	ELECTIONSTART4_1 = "\n\n- And since you've been favoring us, I'll happily give you my approval right now. ",
+	ELECTIONSTART4_2 = "\n\n- After you get enough support, visit me and we will settle on your public image. ",
+	ELECTIONSTARTREPLY4_1 = "This seems a bit suspicious, but I guess there's no harm in trying",
+	ELECTIONSTARTREPLY4_2 = "Thank you, Amelia, I'll return once I do that",
+	ELECTIONSTART5_1 = "- There surely is not. We'll hope for your success.",
+	ELECTIONSTART5_2 = "- My pleasure. We'll hope for your success.",
+	
+	FIGHTERSREQUESTELECTIONSUPPORT = "I want your support for Mayor Election",
+	WORKERSREQUESTELECTIONSUPPORT = "I want your support for Mayor Election",
+	SERVANTSREQUESTELECTIONSUPPORT = "I want your support for Mayor Election",
+	MAGESREQUESTELECTIONSUPPORT = "I want your support for Mayor Election",
+	
+	SERVANTSELECTIONCONFIRM = "- Oh, you've completed our requests? Nice work! With this I'll be able to convince others this is a good idea. Return to me once you have support from two other guilds.",
+	
+	FIGHTERSELECTIONSTART1 = "- Hmh... You've certainly done a lot for a newbie. So you want to become a next Mayor? Admirable, but we do not provide our support lightly. ",
+	FIGHTERSELECTIONSTARTREPLY1_1 = "Why not?",
+	FIGHTERSELECTIONSTARTREPLY1_2 = "Haven't I dont enough?",
+	FIGHTERSELECTIONSTART2 = "- The guild's most important members are honorable warriors. We would not agree to give our votes for a mere commoner. In other words, you would have to prove yourself worthy. For that matter, we use an old Black Knights tradition of slaying a mage. However, at this age, you won't find those for slaying easily available, as they aren't persecuted for practicing anymore.",
+	FIGHTERSELECTIONSTARTREPLY2_1 = "This doesn't sound very nice to mages",
+	FIGHTERSELECTIONSTARTREPLY2_2 = "But what do you want then?",
+	FIGHTERSELECTIONSTART2_1 = "- Back in the old days only few King approved mages and their subbordinates were allowed to practice any serious magic. We used to hunt them down regularly, so it was a bit like a sport, since their skills proved a nice challenge.",
+	FIGHTERSELECTIONSTART3 = "- With no better option, we settled down on taking down a Lich. Thankfully, those aren't protected by law, so you will have to get us a skull of one, as prove of your strength.",
+	FIGHTERSELECTIONSTARTREPLY3_1 = "What's a Lich",
+	FIGHTERSELECTIONSTARTREPLY3_2 = "Where do I find one?",
+	FIGHTERSELECTIONSTART4_1 = "- Lich is a mage, who managed to become undead. Many are quite stupid compare to normal mages. I guess transition does something to their brains. Yet, their powers are enough to stand on their own, and they generally utilize other undeads as their minions. ",
+	FIGHTERSELECTIONSTART4_2 = "- There's actually no shortage of sneaky bastards. We've recently received report of one not very far from city. I'll mark the location on your map. Return once you have a skull, then we'll give you our support. ",
+	FIGHTERSELECTIONSTART5 = "- Huh, you did it? Must say, I'm surprised. Fine, we will give you our support for next election. I believe this will be beneficial to both our sides.",
+	
 }

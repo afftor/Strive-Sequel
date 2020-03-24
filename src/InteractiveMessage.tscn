@@ -1,16 +1,18 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/panel.png" type="Texture" id=2]
 [ext_resource path="res://src/InteractiveMessage.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/scene/answer_blocked.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/scene/hersoframe.png" type="Texture" id=9]
 [ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=10]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/backgrounds/Aliron.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/sprites/duncan.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -56,9 +58,9 @@ margin_bottom = 7.0
 "ignore_rightclicks",
 "pauseprocess",
 ]]
-margin_left = 644.0
+margin_left = 584.0
 margin_top = 395.0
-margin_right = 1428.0
+margin_right = 1368.0
 margin_bottom = 1051.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
@@ -70,21 +72,23 @@ margin_top = -430.0
 margin_right = 1370.0
 margin_bottom = 741.0
 
-[node name="image" type="TextureRect" parent="."]
-margin_left = 3.0
+[node name="ImagePanel" type="TextureRect" parent="."]
+visible = false
+margin_left = 1.0
 margin_top = -379.0
-margin_right = 787.0
-margin_bottom = 1.0
+margin_right = 786.0
+margin_bottom = 2.0
 texture = ExtResource( 4 )
+
+[node name="SceneImage" type="TextureRect" parent="ImagePanel"]
+show_behind_parent = true
+margin_left = -0.340271
+margin_top = -0.355988
+margin_right = 783.66
+margin_bottom = 379.644
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 3.34027
-margin_top = -378.644
-margin_right = 788.34
-margin_bottom = 2.35614
-texture = ExtResource( 5 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 16.0
@@ -203,4 +207,22 @@ margin_right = 154.0
 margin_bottom = 158.0
 texture = ExtResource( 11 )
 expand = true
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+margin_left = -242.094
+margin_top = -396.556
+margin_right = 1677.91
+margin_bottom = 683.444
+texture = ExtResource( 12 )
+
+[node name="CharacterImage" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+margin_left = 687.0
+margin_top = -394.0
+margin_right = 1418.0
+margin_bottom = 686.0
+texture = ExtResource( 13 )
 stretch_mode = 6

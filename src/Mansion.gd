@@ -67,8 +67,8 @@ func _ready():
 	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
 	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
 	
-	globals.connecttexttooltip($gold/TextureRect, tr("TOOLTIPGOLD"))
-	globals.connecttexttooltip($food/TextureRect, tr("TOOLTIPFOOD"))
+	globals.connecttexttooltip($gold/TextureRect/Control, tr("TOOLTIPGOLD"))
+	globals.connecttexttooltip($food/TextureRect/Control, tr("TOOLTIPFOOD"))
 
 	state.log_node = $Log
 	
@@ -76,11 +76,11 @@ func _ready():
 	
 	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	if variables.generate_test_chars && false:#&&false: #&& false:
-		state.mainprogress = 0
+	if variables.generate_test_chars:# && false:
+		state.revert()
 		state.make_world()
 		var character = Slave.new()
-		character.create('DarkElf', 'random', 'random')
+		character.create('Elf', 'random', 'random')
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
@@ -88,10 +88,10 @@ func _ready():
 		character.unlock_class("knight")
 		character.set_slave_category('master')
 		character.sex_traits = ['dislike_missionary', 'anal']
-		character.equip(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'mithril'}))
+		#character.equip(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'mithril'}))
 		#character.armor = 135
 		character.wits = 20
-		character.charm_factor = 1
+		character.charm_factor = 3
 		#character.unlock_class("worker")
 		character.mp = 50
 		character.unlock_class("sadist")
@@ -105,7 +105,7 @@ func _ready():
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
-		character.create('Fairy', 'random', 'random')
+		character.create('Slime', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -200,25 +200,29 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
-		globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
-		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
+		globals.AddItemToInventory(globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
 		state.show_tutorial = true
-		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
-		
+		state.active_quests.append({code = "guilds_introduction", stage = 'stage3'})
+		state.mainprogress = 1
+		for i in state.areas.plains.factions.values():
+			i.totalreputation += 500
 		character.unlock_class("pet")
-		character.unlock_class("knight")
+		character.unlock_class("souleater")
+		character.critchance = 100
 		character.mp = 100
 		character.sex_skills.oral = 70
 		character.sex_skills.anal = 90
@@ -229,7 +233,7 @@ func _ready():
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('event_good_rebels_beastkin', '', {})
+		#input_handler.interactive_message('event_good_rebels_beastkin', '', {})
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
 		
@@ -265,7 +269,8 @@ func open_travels():
 	$CharacterDislocationPanel.open_character_dislocation()
 
 func quest_test():
-	print(input_handler.CloseableWindowsArray)
+	state.areas.plains.factions.servants.totalreputation = 500
+	#print(input_handler.CloseableWindowsArray)
 #	for i in state.characters.values():
 #		i.base_exp += 100
 	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
@@ -412,6 +417,8 @@ func build_task_bar():
 					newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
 				if state.craftinglists[i.code][0].has('partdict'):
 					newnode.get_node('icon').material = load("res://files/ItemShader.tres")
+				else:
+					newnode.get_node('icon').material = null
 		elif i.product in ['prostitutegold']:
 			newnode.get_node("icon").texture = races.tasklist[i.code].production[i.product].icon
 			newnode.get_node("ProgressBar").max_value = i.threshhold

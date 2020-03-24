@@ -81,7 +81,7 @@ func _input(event):
 				globals.CurrentScene.timeflowhotkey(int(event.as_text()))
 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-	if event.is_action('full_screen'):
+	if event.is_action_pressed('full_screen'):
 		OS.window_fullscreen = !OS.window_fullscreen
 		globals.globalsettings.fullscren = OS.window_fullscreen
 
@@ -709,6 +709,14 @@ func operate(operation, value1, value2):
 			result = (int(value1) & int(value2)) != 0
 	return result
 
+func operant_translation(operant):
+	var text = ''
+	match operant:
+		'gte':
+			text = 'At least'
+		'lte':
+			text = 'At most'
+	return text
 
 func math(operation, value1, value2):
 	match operation:
@@ -857,6 +865,12 @@ func get_dialogue_node():#get_spec_node(input_handler.NODE_DIALOGUE)
 	node.add_child(dialogue)
 	return dialogue
 
+
+func dialogue_option_selected(option):
+	get_spec_node(input_handler.NODE_DIALOGUE).previous_text = tr(option)
+	if !state.selected_dialogues.has(option):
+		state.selected_dialogues.append(option)
+
 func interactive_message(code, type, args):
 	var data = scenedata.scenedict[code].duplicate(true)
 	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
@@ -878,23 +892,6 @@ func interactive_message(code, type, args):
 				data.text += args.bonustext
 			if args.has('repeat'):
 				data.options.append({code ='repeat', text = tr('DIALOGUEREPEATACTION'), disabled = !args.repeat})
-		'char_translate':
-			data.text = args.translate(data.text)
-		'character_event':
-			pass
-#			for i in args.characterdata:
-#				var newcharacter
-#				match i.type:
-#					'raw':
-#						newcharacter = Slave.new()
-#						newcharacter.is_active = false
-#						newcharacter.generate_random_character_from_data(args.characterdata.race, args.characterdata.class, args.characterdata.difficulty)
-#						newcharacter.set_slave_category(args.characterdata.slave_type)
-#					'function':
-#						newcharacter = call(args.characterdata.function, args.characterdata.args)
-#				active_character = newcharacter
-#				scene_characters.append(newcharacter)
-#				data.text = newcharacter.translate(data.text)
 		'scene_character_event':
 			for i in range(0, scene_characters.size()):
 				data.text = scene_characters[i].translate(data.text)
@@ -1031,6 +1028,20 @@ func repeat_social_skill():
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
 
+func return_characters_from_location(locationid):
+	var location = world_gen.get_location_from_code(locationid)
+	var area = world_gen.get_area_from_location_code(locationid)
+	for id in state.character_order:
+		var person = state.characters[id]
+		if (person.location == location.id && person.travel_time == 0) || person.travel_target.location == location.id:
+			if variables.instant_travel == false:
+				person.location = 'travel'
+				person.travel_target = {area = '', location = 'mansion'}
+				person.travel_time = area.travel_time + location.travel_time
+			else:
+				person.location = 'mansion'
+				person.return_to_task()
+
 #func make_local_recruit(args):
 #	var newchar = Slave.new()
 #	if args == null:
@@ -1067,6 +1078,8 @@ func make_story_character(args):
 
 func update_slave_list():
 	slave_list_node.update()
+func rebuild_slave_list():
+	slave_list_node.rebuild()
 
 func update_slave_panel():
 	var node = get_spec_node(input_handler.NODE_SLAVEPANEL, null, false)#, false)
@@ -1115,7 +1128,7 @@ var node_data = {
 	NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/CharacterCreationPanel.tscn"), calls = 'open'},
 	NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
 	NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/PositionSelectMenu.tscn"), calls = 'open'},
-	NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = null }, #add path here
+	NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/SysMessage.tscn") }, #add path here
 }
 
 func get_spec_node(type, args = null, raise = true, unhide = true):
@@ -1465,3 +1478,25 @@ func meowingcondition(character):
 		allow = true
 	return allow
 
+func get_custom_text(data):
+	return call(data)
+
+var elect_support_dict = {
+	servants_election_support = "You have support of Servants Guild",
+	fighters_election_support = "You have support of Fighters Guild",
+	workers_election_support = "You have support of Workers Guild",
+	mages_election_support = "You have support of Mages Guild",
+	
+}
+
+func election_quest_text():
+	var text = ''
+	var counter = 0
+	for i in ['servants_election_support','fighters_election_support','workers_election_support','mages_election_support']:
+		if state.decisions.has(i):
+			counter += 1
+			text += elect_support_dict[i] + "\n"
+	
+	text += "\nTotal support: " + str(counter) + "/3"
+	
+	return text

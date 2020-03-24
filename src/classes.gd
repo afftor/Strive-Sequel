@@ -398,7 +398,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'stat', type = 'physics', operant = 'gte', value = 60},{code = 'has_profession', value = 'fighter', check = true}],
-		statchanges = {hpmax = 35, armor = 10, speed = 3},
+		statchanges = {hpmax = 35, armor = 5, speed = 3},
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = ['holy_atk','fire_cleave', 'protect'],
@@ -540,8 +540,8 @@ var professions = {
 		reqs = [{code = 'has_profession', value = 'dominator', check = true},{code = 'stat', type = 'magic_factor', operant = 'gte', value = 5}],
 		statchanges = {magic_factor = 1},
 		traits = [],
-		skills = ['consume_soul'],
-		combatskills = ['drain_mana'],#steals some mana from enemy
+		skills = ['consume_soul','drain_mana'],
+		combatskills = [],
 	},
 	necromancer = {
 		code = 'necromancer',

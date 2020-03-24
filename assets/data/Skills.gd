@@ -298,8 +298,8 @@ var Skilllist = {
 		value = [['target.hp','*-0.2'],['target.mp','*-0.2']],
 		damagestat = ['hp','mp'],
 	},
-	drain_mana = {#target -20% mana | caster takes all of it.
-		code = 'drain',
+	drain_mana = {
+		code = 'drain_mana',
 		descript = '',
 		type = 'social',
 		ability_type = 'spell',
@@ -314,7 +314,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/ManaDrain.png"),
 		tags = ['drain'],
 		is_drain = true,
-		value = [['target.mp','*-0.2']],
+		value = [['target.mp','*-0.35']],
 		damagestat = ['mp'],
 	},
 	serve = {
@@ -1997,7 +1997,6 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.2
 	},
-
 #dummyskills
 	master_lust_skill ={
 		code = 'master_lust_skill',
@@ -2476,6 +2475,25 @@ var Skilllist = {
 		tags = [],
 		special = 'majorus_potion',
 	},
+	writ_of_exemption = {
+		new_syntax = true,
+		code = 'writ_of_exemption',
+		descript = '',
+		type = 'social',
+		ability_type = 'skill',
+		reqs = [],
+		targetreqs = [],
+		effects = [],
+		manacost = 0,
+		charges = 0,
+		cooldown = 0,
+		energycost = 0,
+		icon = null,
+		tags = [],
+		special = 'writ_of_exemption',
+	},
+	
+	
 	i_lifeshard = {
 		code = 'i_lifeshard',
 		descript = '',

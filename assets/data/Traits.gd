@@ -26,14 +26,6 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_master']#,'test_recast'],
 	}, 
-	small = {
-		code = 'small',
-		name = '',
-		descript = '',
-		visible = false,
-		icon = null,
-		effects = ['e_tr_small']
-	},
 	'slave' : {#slave class trait
 		code = 'slave',
 		name = '',

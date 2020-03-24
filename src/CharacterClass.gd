@@ -307,7 +307,7 @@ func add_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec])
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') :
+			if (rec as String).begins_with('resist') or (rec as String).begins_with('mod'):
 				add_bonus(rec + '_add', ls[rec])
 				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
@@ -325,7 +325,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist'):
+			if (rec as String).begins_with('resist') or (rec as String).begins_with('mod'):
 				add_bonus(rec + '_add', ls[rec], true)
 				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
@@ -768,8 +768,6 @@ func get_racial_features():
 			array.append([i, race_template.personality[i]])
 		personality = input_handler.weightedrandom(array)
 	
-	if body_shape == 'shortstack':
-		add_trait('small')
 
 func get_sex_features():
 	match sex:
@@ -1265,6 +1263,9 @@ func calculate_travel_time(location1, location2):
 		travel_value2 = world_gen.get_area_from_location_code(location2).travel_time + world_gen.get_location_from_code(location2).travel_time
 	
 	return travel_value1 + travel_value2
+
+func calculate_estimated_travel_time(t_time):
+	return ceil(t_time/travel_tick())
 
 
 func set_travel_time(value):
@@ -2585,6 +2586,9 @@ func baby_transform():
 func use_mansion_item(item):
 	var itembase = Items.itemlist[item.itembase]
 	var skill = itembase.mansion_effect
+	if checkreqs(itembase.reqs) == false:
+		input_handler.SystemMessage(itembase.reqs_fail_message)
+		return
 	if itembase.has("uses_per_target") && items_used_global.has(itembase.code) && items_used_global[itembase.code] >= itembase.uses_per_target:
 		input_handler.SystemMessage(translate("[name] can't use this item anymore."))
 		return
@@ -2593,7 +2597,8 @@ func use_mansion_item(item):
 			items_used_global[itembase.code] += 1
 		else:
 			items_used_global[itembase.code] = 1
-	item.amount -= 1
+	if itembase.tags.has("save_on_use") == false:
+		item.amount -= 1
 	use_social_skill(skill, self)
 
 func set_slave_category(new_class):

@@ -494,6 +494,14 @@ var statdata = {
 		percent = true,
 		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
 	},
+	
+	modmelee = {
+		code = 'modmelee',
+		name = '',
+		descript = '',
+		percent = true,
+		basicon = load("res://assets/images/gui/gui icons/food_love.png"),
+	},
 }
 
 var slave_class_names = {
@@ -991,7 +999,6 @@ func TextEncoder(text, node = null):
 		var endcode = ''
 		for data in newtextarray:
 			data = data.replace('{','').split("=")
-			
 			match data[0]:
 				'color':
 					startcode += '[color=' + hexcolordict[data[1]] + ']'
@@ -1007,6 +1014,8 @@ func TextEncoder(text, node = null):
 				'random_chat':
 					var character = input_handler.scene_characters[int(data[1])]
 					originaltext = character.translate(input_handler.get_random_chat_line(character, originaltext))
+				'custom_text_function':
+					originaltext = originaltext + input_handler.get_custom_text(data[1])
 		
 		text = text.replace(newtext, startcode + originaltext + endcode)
 	if node != null:
@@ -1039,7 +1048,6 @@ func ItemSelect(targetscript, type, function, requirements = true):
 	node.show()
 	
 	ClearContainer(node.get_node("ScrollContainer/GridContainer"))
-	
 	var array = []
 	if type == 'gear':
 		for i in state.items.values():
@@ -1147,6 +1155,11 @@ func SaveGame(name):
 	file.open(userfolder + 'saves/' + name + '.sav', File.WRITE)
 	file.store_line(to_json(savedict))
 	file.close()
+	var metadata = ConfigFile.new()
+	var config_data = {version = gameversion, time = OS.get_datetime(), master_name = state.get_master().name, day = state.date, hour = state.hour, population = state.characters.size(), gold = state.money, master_icon = state.get_master().icon_image, preset = state.starting_preset}
+	for i in config_data:
+		metadata.set_value('details', i, config_data[i])
+	metadata.save(userfolder + "saves/" + name + ".dat")
 	input_handler.SystemMessage("Game saved as " + name + ".sav")
 
 func LoadGame(filename):
@@ -1157,6 +1170,7 @@ func LoadGame(filename):
 	input_handler.BlackScreenTransition(1)
 	yield(get_tree().create_timer(1), 'timeout')
 	input_handler.CloseableWindowsArray.clear()
+	state.revert()
 	
 	
 	file.open(userfolder+'saves/'+ filename + '.sav', File.READ)

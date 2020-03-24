@@ -22,7 +22,7 @@ var penetratecategories = ['missionary','missionaryanal','doggy','doggyanal','lo
 
 var filter = ['nosehook','relaxinginsense','facesit','afacesit','grovel','enemaplug']
 
-var statuseffects = ['tied', 'subdued', 'drunk', 'resist', 'sexcrazed']
+var statuseffects = ['tied', 'subdued', 'drunk', 'tipsy', 'resist', 'sexcrazed','pheromones']
 
 
 var statsicons = {
@@ -585,6 +585,8 @@ func _ready():
 	if globals.CurrentScene == null:
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("aphrodisiac"))
+		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 10))
+		state.materials.rope = 1
 		while i > 0:
 			i -= 1
 			createtestdummy()
@@ -700,7 +702,7 @@ func createtestdummy(type = 'normal'):
 	person.is_players_character = true
 	person.mods['hollownipples'] = 'hollownipples'
 	person.sex_traits = ['irresistible']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.consent = 30
+	person.consent = 10
 	for i in person.sex_skills:
 		person.sex_skills[i] += 100
 	#person.sex = 'male'
@@ -711,7 +713,6 @@ func createtestdummy(type = 'normal'):
 #		globals.connectrelatives(participants[0].person, person, 'father')
 	
 #	newmember.loyalty = person.loyal
-	newmember.consent = 30
 	newmember.submission = person.obedience
 	newmember.person = person
 	newmember.sex = person.sex
@@ -833,7 +834,8 @@ func rebuildparticipantslist():
 			newnode.get_node("container/horny").show()
 		
 		for k in i.effects:
-			newnode.get_node('container/' + k).visible = true
+			if newnode.has_node('container/' + k) == true:
+				newnode.get_node('container/' + k).visible = true
 		
 		if ai.has(i):
 			newnode.get_node('name').set('custom_colors/font_color', Color(1,0.2,0.8))
@@ -2174,6 +2176,10 @@ func endencounter():
 		if floor(i.consented_actions.keys().size()/3) > 0:
 			i.consentgain += floor(i.consented_actions.keys().size())/3
 			consenttext[i.person.id] += "\nAccepted Variety: +" + str(floor(i.consented_actions.keys().size())/3)
+		
+		if i.effects.has("pheromones"):
+			consenttext[i.person.id] += "\nWas drugged with pheromones: -" + str(floor(i.consentgain/2)) 
+			i.consentgain = floor(i.consentgain/2)
 		text += i.person.translate("[name]: Orgasms - ") + str(i.orgasms) 
 		text += "; Lust gained: " +  str(20 + i.orgasms*5*i.person.sexuals_factor)
 		i.person.sexuals += i.orgasms
@@ -2597,14 +2603,36 @@ func beer(member):
 
 func aphrodisiac(member):
 	member.horny += 100
-	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier. "
-	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"
+	
+	input_handler.scene_characters = [member.person]
+	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
 	_on_passbutton_pressed()
 	
 
 func sensetivity_pot(member):
 	member.sensmod += 1
 	member.lewdmod += 0.2
-	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive. "
+	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"
+	
+	input_handler.scene_characters = [member.person]
+	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
+	_on_passbutton_pressed()
+
+func pheromones(member):
+	var text = ''
+	if member.effects.has('pheromones'):
+		text = "\n" + member.name +" is already under effect of pheromones."
+	else:
+		if member.person.race in globals.race_groups.halfbreeds + globals.race_groups.beast:
+			member.effects.append("pheromones")
+			member.lewdmod += 1
+			member.consent = 100
+			input_handler.scene_characters = [member.person]
+			text = "\nPheromones were used on " + member.name + globals.TextEncoder("... [His] mind became engulfed in unquenchable thirst.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}")
+		else:
+			text = "\nPheromones were used on " + member.name + ", but they had no effect on [him]. "
+			
+	givers = [member]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 	_on_passbutton_pressed()

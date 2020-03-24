@@ -61,10 +61,10 @@ font_data = ExtResource( 44 )
 [node name="Panel" type="Panel" groups=[
 "pauseprocess",
 ]]
-margin_left = 16.0
-margin_top = 11.0
-margin_right = 665.0
-margin_bottom = 1073.0
+margin_left = 5.0
+margin_top = 22.0
+margin_right = 654.0
+margin_bottom = 1084.0
 rect_min_size = Vector2( 649, 788 )
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
@@ -72,9 +72,9 @@ script = ExtResource( 3 )
 
 [node name="Blockout" type="Panel" parent="."]
 show_behind_parent = true
-margin_left = 40.8799
+margin_left = -5.1201
 margin_top = -21.7773
-margin_right = 1960.88
+margin_right = 1914.88
 margin_bottom = 1058.22
 
 [node name="HiddenContainer" type="ScrollContainer" parent="."]
@@ -198,7 +198,7 @@ texture_hover = ExtResource( 19 )
 margin_left = 280.0
 margin_right = 346.0
 margin_bottom = 66.0
-hint_tooltip = "INVENTORYQUEST"
+hint_tooltip = "INVENTORYTOOL"
 toggle_mode = true
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )

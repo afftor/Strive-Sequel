@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
@@ -20,13 +20,14 @@
 [ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=19]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=26]
-[ext_resource path="res://src/NumberSelection.gd" type="Script" id=27]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=27]
+[ext_resource path="res://src/NumberSelection.gd" type="Script" id=28]
 
 [node name="Exploration" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -660,7 +661,7 @@ margin_bottom = 141.0
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationPanel"]
 margin_left = 279.0
 margin_top = 20.0
-margin_right = 1040.0
+margin_right = 1304.0
 margin_bottom = 107.0
 scroll_vertical_enabled = false
 
@@ -896,8 +897,6 @@ margin_bottom = 38.0
 text = "Days:"
 
 [node name="ShopPanel" type="Panel" parent="."]
-editor/display_folded = true
-visible = false
 margin_left = 519.0
 margin_top = 137.0
 margin_right = 1391.0
@@ -1000,7 +999,25 @@ margin_bottom = 108.88
 text = "Item"
 align = 1
 
+[node name="Gold" type="Label" parent="ShopPanel"]
+margin_left = 77.7272
+margin_top = 29.9127
+margin_right = 207.727
+margin_bottom = 62.9127
+text = "Gold"
+
+[node name="TextureRect" type="TextureRect" parent="ShopPanel"]
+margin_left = 16.3289
+margin_top = 5.83176
+margin_right = 85.3289
+margin_bottom = 71.8318
+hint_tooltip = "Your Gold"
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
 [node name="FactionDetailsPanel" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 287.0
 margin_top = 138.0
@@ -1089,9 +1106,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -1100,9 +1117,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 25 )
-texture_hover = ExtResource( 26 )
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
 expand = true
 stretch_mode = 5
 
@@ -1134,9 +1151,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -1145,9 +1162,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 25 )
-texture_hover = ExtResource( 26 )
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
 expand = true
 stretch_mode = 5
 
@@ -1179,9 +1196,9 @@ margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
 margin_bottom = 105.823
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -1190,9 +1207,9 @@ margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
 margin_bottom = 205.823
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 25 )
-texture_hover = ExtResource( 26 )
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
 expand = true
 stretch_mode = 5
 
@@ -1254,7 +1271,7 @@ margin_left = 602.0
 margin_top = 305.0
 margin_right = 1199.0
 margin_bottom = 547.0
-script = ExtResource( 27 )
+script = ExtResource( 28 )
 
 [node name="HSlider" type="HSlider" parent="NumberSelection"]
 margin_left = 54.0
@@ -1276,11 +1293,3 @@ margin_top = 170.415
 margin_right = 420.538
 margin_bottom = 214.415
 text = "Confirm"
-
-[node name="Gold" type="Label" parent="."]
-visible = false
-margin_left = 17.2678
-margin_top = 12.9508
-margin_right = 69.2678
-margin_bottom = 36.9508
-text = "Gold"

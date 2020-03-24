@@ -151,11 +151,14 @@ func get_item_category(item):
 		else:
 			type = 'material'
 	else:
-		if item.itemtype == 'weapon':
-			if item.toolcategory != null:
-				type = 'tool'
-			else:
-				type = 'weapon'
+		if item.itemtype == 'tool':
+			type = 'tool'
+#			if item.toolcategory != null:
+#				type = 'tool'
+#			else:
+#				type = 'weapon'
+		elif item.itemtype == 'weapon':
+			type = 'weapon'
 		elif item.itemtype == 'armor':
 			if item.geartype == 'costume':
 				type = 'costume'

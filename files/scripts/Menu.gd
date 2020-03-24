@@ -49,6 +49,8 @@ func _ready():
 		newbutton.connect('pressed', self, 'gameplay_setting', [newbutton])
 	globals.ClearContainer($NewGamePanel/PresetContainer/VBoxContainer)
 	for i in starting_presets.preset_data.values():
+		if !i.has("code"):
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($NewGamePanel/PresetContainer/VBoxContainer)
 		newbutton.text = i.name
 		newbutton.name = i.code
