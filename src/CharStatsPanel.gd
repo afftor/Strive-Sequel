@@ -32,4 +32,5 @@ func open(character = Slave.new()):
 				i.set("custom_colors/font_color", globals.hexcolordict.yellow)
 			elif character.resists.get(i.name) < 0:
 				i.set("custom_colors/font_color", globals.hexcolordict.green)
-				
+			else:
+				i.set("custom_colors/font_color", globals.hexcolordict.white)

@@ -266,30 +266,35 @@ mouse_filter = 2
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
 margin_right = 40.0
 margin_bottom = 14.0
+mouse_filter = 2
 texture = ExtResource( 10 )
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect"]
 margin_top = 18.0
 margin_right = 40.0
 margin_bottom = 43.0
+mouse_filter = 2
 texture = ExtResource( 11 )
 
 [node name="TextureRect3" type="TextureRect" parent="TextureRect"]
 margin_top = 47.0
 margin_right = 40.0
 margin_bottom = 72.0
+mouse_filter = 2
 texture = ExtResource( 12 )
 
 [node name="TextureRect4" type="TextureRect" parent="TextureRect"]
 margin_top = 76.0
 margin_right = 40.0
 margin_bottom = 101.0
+mouse_filter = 2
 texture = ExtResource( 13 )
 
 [node name="TextureRect5" type="TextureRect" parent="TextureRect"]
 margin_top = 105.0
 margin_right = 40.0
 margin_bottom = 130.0
+mouse_filter = 2
 texture = ExtResource( 14 )
 
 [node name="rightclick" type="Label" parent="."]

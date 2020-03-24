@@ -302,7 +302,23 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "Added tutorial entry for leveling
+bbcode_text = "Added save info
+Added slave delivery quests
+Added new item which changes slave status to peon
+Slightly revamped some racial bonuses
+Lowered Knight's DEF bonus to 5
+Revamped def stats on gear and fixed incorrect calculations
+Seen questions won't be showing as options anymore
+Fixed quests allowing to turn in equipped items
+Fixed critical strike for aoe spells upscaling damage
+Fixed non-group locations having issues when returning characters 
+Fixed failed quests with active locations not returning characters from those
+Fixed a number of small visual issues
+Fixed slaves during character creation having wrong type
+Fixed blindfold action causing issues in interaction sequence
+Fixed born slaves not having assigned class  correctly
+0.1.6
+Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests
 Added spider enemies to goblin caves
 Added 2 new drugs to alchemy level 3 and slightly improved sex drug
@@ -422,7 +438,23 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added tutorial entry for leveling
+text = "Added save info
+Added slave delivery quests
+Added new item which changes slave status to peon
+Slightly revamped some racial bonuses
+Lowered Knight's DEF bonus to 5
+Revamped def stats on gear and fixed incorrect calculations
+Seen questions won't be showing as options anymore
+Fixed quests allowing to turn in equipped items
+Fixed critical strike for aoe spells upscaling damage
+Fixed non-group locations having issues when returning characters 
+Fixed failed quests with active locations not returning characters from those
+Fixed a number of small visual issues
+Fixed slaves during character creation having wrong type
+Fixed blindfold action causing issues in interaction sequence
+Fixed born slaves not having assigned class  correctly
+0.1.6
+Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests
 Added spider enemies to goblin caves
 Added 2 new drugs to alchemy level 3 and slightly improved sex drug

@@ -2,7 +2,7 @@ extends Node
 
 
 var preset_data = {
-	
+	"": {name = 'debug'},
 	default = {
 		code = 'default',
 		name = 'default',

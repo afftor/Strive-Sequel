@@ -388,6 +388,7 @@ func open_shop(shop):
 var tempitems = []
 
 func update_shop_list():
+	$ShopPanel/Gold.text = str(state.money)
 	globals.ClearContainer($ShopPanel/ScrollContainer/VBoxContainer)
 	tempitems.clear()
 	match shopcategory:
@@ -706,7 +707,18 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				newbutton.get_node("amount").text = str(i.value)
 				globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]Required: ' + str(i.value) + "[/color]")
-	
+			'slave_delivery':
+				newbutton.texture = load("res://assets/images/gui/slavepanel/charm.png")
+				var tooltiptext = "Slave Required:\n"
+				for k in i.statreqs:
+					if k.code in ['is_master', 'is_free']:
+						continue
+					match k.code:
+						'stat':
+							tooltiptext += globals.statdata[k.type].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
+						'sex':
+							tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
+				globals.connecttexttooltip(newbutton,tooltiptext)
 	
 	for i in quest.rewards:
 		var newbutton = globals.DuplicateContainerTemplate($QuestPanel/questrewards)
@@ -757,6 +769,7 @@ func accept_quest():
 			#input_handler.ShowPopupPanel("You've received a new quest location.")
 			#update_categories()
 			break
+	input_handler.interactive_message('quest_accept','',{})
 	quest_board()
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
@@ -1344,16 +1357,17 @@ func clear_dungeon():
 	#input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
 
 func clear_dungeon_confirm():
-	for id in state.character_order:
-		var person = state.characters[id]
-		if (person.location == active_location.id && person.travel_time == 0) || person.travel_target.location == active_location.id:
-			if variables.instant_travel == false:
-				person.location = 'travel'
-				person.travel_target = {area = '', location = 'mansion'}
-				person.travel_time = active_area.travel_time + active_location.travel_time
-			else:
-				person.location = 'mansion'
-				person.return_to_task()
+	input_handler.return_characters_from_location(active_location.id)
+#	for id in state.character_order:
+#		var person = state.characters[id]
+#		if (person.location == active_location.id && person.travel_time == 0) || person.travel_target.location == active_location.id:
+#			if variables.instant_travel == false:
+#				person.location = 'travel'
+#				person.travel_target = {area = '', location = 'mansion'}
+#				person.travel_time = active_area.travel_time + active_location.travel_time
+#			else:
+#				person.location = 'mansion'
+#				person.return_to_task()
 			#return_character_confirm()
 	check_events('complete_location')
 	active_area.locations.erase(active_location.id)

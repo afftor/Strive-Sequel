@@ -24,17 +24,26 @@ func open(scene):
 	
 	update_scene_characters()
 	
+	$RichTextLabel.modulate.a = 0
+	$ScrollContainer.modulate.a = 0
 	if self.visible == false:
+		self.visible = true
 		input_handler.UnfadeAnimation(self, 0.2)
 		$RichTextLabel.bbcode_text = ''
 		previous_text = ''
 		yield(get_tree().create_timer(0.2), "timeout")
-	$RichTextLabel.modulate.a = 0
-	$ScrollContainer.modulate.a = 0
-	if scene.image != '' && scene.image != null:
-		$image.texture = images.scenes[scene.image]
+	if scene.has("character") == false:
+		$ImagePanel.show()
+		$CharacterImage.hide()
+		if scene.image != '' && scene.image != null:
+			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
+		else:
+			$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
 	else:
-		$image.texture = load("res://assets/images/scenes/image_wip.png")
+		$ImagePanel.hide()
+		$CharacterImage.texture = images.sprites[scene.character]
+		$CharacterImage.show()
+		#input_handler.UnfadeAnimation($CharacterImage,1)
 	show()
 	var scenetext = scene.text
 	
@@ -47,6 +56,8 @@ func open(scene):
 				continue
 			if state.seen_dialogues.has(i.text) == false:
 				state.seen_dialogues.append(i.text)
+			if i.has("bonus_effects"):
+				state.common_effects(i.bonus_effects)
 			newtext += tr(i.text)
 			if i.has('common_effects'):
 				state.common_effects(i.common_effects)
@@ -80,6 +91,9 @@ func open(scene):
 	var counter = 1
 	var options = scene.options
 	for i in options:
+		yield(get_tree(), 'idle_frame')
+		if i.has('remove_after_first_use') && state.selected_dialogues.has(i.text):
+			continue
 		var disable = false
 		if state.checkreqs(i.reqs) == false:
 			if i.has('not_hide') == true:
@@ -93,11 +107,11 @@ func open(scene):
 		if newbutton.get_node("Label").get_v_scroll().is_visible():
 			newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
 		newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
-		newbutton.connect("pressed",self,'option_selected',[i.text])
+		newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i.text])
 		
 		if i.has('select_person'):
 			newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
-		elif scene.tags.has('linked_event') && !i.code in ['leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
+		elif scene.tags.has('linked_event') && !i.code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
 			var event_type = 'story_event'
 			if scenedata.scenedict[i.code].has('default_event_type'):
 				event_type = scenedata.scenedict[i.code].default_event_type
@@ -135,11 +149,6 @@ func open(scene):
 		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
-
-func option_selected(option):
-	previous_text = tr(option)
-	if !state.selected_dialogues.has(option):
-		state.selected_dialogues.append(option)
 
 func update_scene_characters():
 	globals.ClearContainer($EventCharacters/VBoxContainer)
@@ -257,6 +266,13 @@ func set_baby_name(text):
 	person.name = text
 	person.surname = input_handler.active_character.surname
 	state.add_slave(person)
+	var mother = characters_pool.get_char_by_id(person.relatives.mother)
+	if mother == null:
+		person.set_slave_category('slave')
+	elif mother.slave_class != 'master':
+		person.set_slave_category(mother.slave_class)
+	else:
+		person.set_slave_category("servant")
 	close()
 
 func open_chest():

@@ -62,6 +62,14 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 		]
 	},
+	quest_accept = {
+		text = tr("DIALOGUEQUESTACCEPT"), 
+		image = '',
+		tags = [], 
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
 	
 	purchase_dungeon_location = {
 		text = tr("DIALOGUEPURCHASEDUNGEONLOCATION"), 
@@ -169,7 +177,7 @@ var scenedict = {
 	image = '', 
 	common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'},{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 20}],
 	options = [
-	{code = 'recruit', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	{code = 'recruit', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
@@ -406,6 +414,41 @@ var scenedict = {
 	majorus_potion_penis = {text = tr("DIALOGUEMAJORUSPOTPENIS"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	majorus_potion_balls = {text = tr("DIALOGUEMAJORUSPOTBALLS"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	potion_no_effect = {text = tr("DIALOGUEPOTIONNOEFFECT"), image = 'potmaj', tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	
+	writ_of_exemption = {
+		text = tr("DIALOGUEWRIT_CONFIRM"),
+		image = null,
+		tags = ['custom_effect','active_character_translate'],
+		options = [
+		{code = 'writ_of_exemption_use', reqs = [], text = tr("DIALOGUECONFIRM")},
+		{code = 'close', reqs = [], text = tr("DIALOGUECANCEL")},
+		
+		],
+	},
+	writ_of_exemption_success = {
+		text = tr("DIALOGUEWRIT_SUCCESS"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+	writ_of_exemption_failure = {
+		text = tr("DIALOGUEWRIT_FAILURE"),
+		image = null,
+		tags = ['active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
+#	writ_confirm = {
+#		text = tr("DIALOGUEWRITSELECT"),
+#		image = null,
+#		options = [
+#		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+#
+#		],
+#	},
 	
 	#Action events
 	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
@@ -679,6 +722,7 @@ var scenedict = {
 	
 	fighters_introduction1 = {
 		image = null,
+		character = 'duncan',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "FIGHTERSINTRODUCTION1", reqs = []},
@@ -691,6 +735,7 @@ var scenedict = {
 	},
 	fighters_introduction2 = {
 		image = null,
+		character = 'duncan',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "FIGHTERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
@@ -704,12 +749,14 @@ var scenedict = {
 		options = [
 		{code = 'fighters_questions', text = "FIGHTERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'}, {type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500}, {type = 'decision', name = 'fighters_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 		
 	},
 	fighters_join = {
 		image = null,
+		character = 'duncan',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "FIGHTERSJOIN", reqs = []},
@@ -719,12 +766,13 @@ var scenedict = {
 		{code = 'make_loot', pool = [['fighters_join_reward',1]]}, 
 		{code = 'open_loot'}],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [ {code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [ {code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 		
 	},
 	fighters_leader_close = {
 		image = null,
+		character = 'duncan',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "FIGHTERSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
@@ -737,6 +785,7 @@ var scenedict = {
 	},
 	fighters_questions = {
 		image = null,
+		character = 'duncan',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "FIGHTERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
@@ -745,9 +794,9 @@ var scenedict = {
 		{text = "FIGHTERSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
-		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
-		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
-		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
+		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY2", reqs = [], dialogue_argument = 3, remove_after_first_use = true},
+		{code = 'fighters_questions', text = "FIGHTERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
 		{code = 'fighters_introduction2', text = "FIGHTERSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
 		],
 		
@@ -755,6 +804,7 @@ var scenedict = {
 	
 	servants_introduction = {
 		image = null,
+		character = 'amelia',
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "SERVANTSINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
@@ -766,11 +816,13 @@ var scenedict = {
 		options = [
 		{code = 'servants_questions', text = "SERVANTSASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'servants_join', text = "SERVANTSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'servants_election', text = "SERVANTSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'}, {type = 'faction_reputation', code = 'servants', operant = 'gte', value = 500}, {type = 'decision', name = 'servants_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	servants_join = {
 		image = null,
+		character = 'amelia',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "SERVANTSJOIN", reqs = []},
@@ -780,11 +832,12 @@ var scenedict = {
 		{code = 'open_loot'}
 		],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 	},
 	servants_leader_close = {
 		image = null,
+		character = 'amelia',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "SERVANTSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
@@ -796,6 +849,7 @@ var scenedict = {
 	},
 	servants_questions = {
 		image = null,
+		character = 'amelia',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "SERVANTSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
@@ -804,9 +858,9 @@ var scenedict = {
 		{text = "SERVANTSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
-		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
-		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
-		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY1", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
+		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY2", reqs = [], dialogue_argument = 3, remove_after_first_use = true},
+		{code = 'servants_questions', text = "SERVANTSQUESTIONREPLY3", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
 		{code = 'servants_introduction', text = "SERVANTSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 4},
 		],
 		
@@ -836,6 +890,7 @@ var scenedict = {
 		options = [
 		{code = 'workers_questions', text = "WORKERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'workers_join', text = "WORKERSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'workers_election', text = "WORKERSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},{type = 'faction_reputation', code = 'workers', operant = 'gte', value = 500}, {type = 'decision', name = 'workers_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -850,7 +905,7 @@ var scenedict = {
 		{code = 'open_loot'}
 		],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 	},
 	workers_leader_close = {
@@ -868,13 +923,13 @@ var scenedict = {
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "WORKERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
-		{text = "WORKERSQUESTIONS_2", reqs = [], previous_dialogue_option = 2},
-		{text = "WORKERSQUESTIONS_4", reqs = [], previous_dialogue_option = 4},
+		{text = "WORKERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1, remove_after_first_use = true},
+		{text = "WORKERSQUESTIONS_2", reqs = [], previous_dialogue_option = 2, remove_after_first_use = true},
+		{text = "WORKERSQUESTIONS_4", reqs = [], previous_dialogue_option = 4, remove_after_first_use = true},
 		],
 		options = [
-		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
-		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
+		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY1", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
+		{code = 'workers_questions', text = "WORKERSQUESTIONREPLY3", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
 		{code = 'workers_introduction2', text = "WORKERSASKQUESTIONSRETURN", reqs = [], dialogue_argument = 5},
 		],
 		
@@ -903,13 +958,14 @@ var scenedict = {
 		image = null,
 		tags = ['dialogue_scene','master_translate'],
 		text = [
-		{text = "MAGESINTRODUCTION3_1", reqs = [], previous_dialogue_option = 1},
-		{text = "MAGESINTRODUCTION3_2", reqs = [], previous_dialogue_option = 2},
-		{text = "MAGESINTRODUCTION3_3", reqs = [], previous_dialogue_option = 3},
+		{text = "MAGESINTRODUCTION3_1", reqs = [], previous_dialogue_option = 1, remove_after_first_use = true},
+		{text = "MAGESINTRODUCTION3_2", reqs = [], previous_dialogue_option = 2, remove_after_first_use = true},
+		{text = "MAGESINTRODUCTION3_3", reqs = [], previous_dialogue_option = 3, remove_after_first_use = true},
 		],
 		options = [
 		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'mages_election', text = "MAGESREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, {type = 'decision', name = 'mages_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -924,7 +980,7 @@ var scenedict = {
 		{code = 'open_loot'}
 		],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'complete_quest', value = 'guilds_introduction'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 	},
 	mages_leader_close = {
@@ -949,13 +1005,174 @@ var scenedict = {
 		{text = "MAGESQUESTIONS_5", reqs = [], previous_dialogue_option = 5},
 		],
 		options = [
-		{code = 'mages_questions', text = "MAGESQUESTIONREPLY1", reqs = [], dialogue_argument = 2},
-		{code = 'mages_questions', text = "MAGESQUESTIONREPLY2", reqs = [], dialogue_argument = 3},
-		{code = 'mages_questions', text = "MAGESQUESTIONREPLY3", reqs = [], dialogue_argument = 4},
-		{code = 'mages_questions', text = "MAGESQUESTIONREPLY4", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'MAGESQUESTIONS_4'}], dialogue_argument = 5},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY1", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY2", reqs = [], dialogue_argument = 3, remove_after_first_use = true},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY3", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY4", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'MAGESQUESTIONS_4'}], dialogue_argument = 5, remove_after_first_use = true},
 		{code = 'mages_introduction3', text = "MAGESASKQUESTIONSRETURN", reqs = [], dialogue_argument = 3},
 		],
 		
+	},
+	
+	guilds_introduction_stage1 = {
+		text = tr("DIALOGUEINTRODUCTIONLETTER"), 
+		tags = [],
+		image = null, 
+		common_effects = [{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage2'}],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}
+		]
+	},
+	
+	elections_start1 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "ELECTIONSTART1", reqs = [], previous_dialogue_option = 1},
+		],
+		options = [
+		{code = 'elections_start2', text = "ELECTIONSTARTREPLY1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'elections_start2', text = "ELECTIONSTARTREPLY1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	elections_start2 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "ELECTIONSTART2", reqs = []},
+		],
+		options = [
+		{code = 'elections_start3', text = "ELECTIONSTARTREPLY2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'elections_start3', text = "ELECTIONSTARTREPLY2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	elections_start3 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "ELECTIONSTART3", reqs = []},
+		],
+		options = [
+		{code = 'elections_persuade', text = "ELECTIONSTARTREPLY3_1", reqs = [], dialogue_argument = 1},
+		{code = 'elections_start4', text = "ELECTIONSTARTREPLY3_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		],
+	},
+	elections_persuade = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "ELECTIONPERSUADE1", reqs = [], previous_dialogue_option = 1},
+		{text = "ELECTIONPERSUADESUCCESS", reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 3}]}], previous_dialogue_option = 2},
+		{text = "ELECTIONPERSUADEFAILURE", reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'lte', value = 2}]}], previous_dialogue_option = 2},
+		],
+		options = [
+		{code = 'elections_persuade', text = "ELECTIONSTARTREPLY3_2", reqs = [{type = 'dialogue_selected', operant = 'neq', value = 'ELECTIONSTARTREPLY3_2'}], dialogue_argument = 2},
+		{code = 'elections_start4', text = "ELECTIONSTARTREPLY3_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		],
+	},
+	elections_start4 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "ELECTIONSTART4", reqs = []},
+		{text = "ELECTIONSTART4_1", reqs = [{type = "faction_reputation", code = 'servants', operant = 'gte', value = 300}], bonus_effects = [{code = 'decision', value = 'servants_election_support'}]},
+		{text = "ELECTIONSTART4_2", reqs = []},
+		],
+		options = [
+		{code = 'elections_start5', text = "ELECTIONSTARTREPLY4_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'elections_start5', text = "ELECTIONSTARTREPLY4_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	elections_start5 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "ELECTIONSTART5_1", reqs = [], previous_dialogue_option = 1},
+		{text = "ELECTIONSTART5_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+		{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage3'},{code = "update_guild"}]},
+		],
+	},
+	
+	
+	
+	servants_election = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "SERVANTSELECTIONCONFIRM", reqs = []},
+		],
+		options = [
+		{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'decision', value = 'servants_election_support'}]},
+		],
+	},
+	
+	fighters_election1 = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "FIGHTERSELECTIONSTART1", reqs = []},
+		],
+		options = [
+		{code = 'fighters_election2', text = "FIGHTERSELECTIONSTARTREPLY1_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'fighters_election2', text = "FIGHTERSELECTIONSTARTREPLY1_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	fighters_election2 = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "FIGHTERSELECTIONSTART2", reqs = []},
+		],
+		options = [
+		{code = 'fighters_election3', text = "FIGHTERSELECTIONSTARTREPLY2_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+		{code = 'fighters_election3', text = "FIGHTERSELECTIONSTARTREPLY2_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	fighters_election3 = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "FIGHTERSELECTIONSTART3", reqs = []},
+		],
+		options = [
+		{code = 'fighters_election_details', text = "FIGHTERSELECTIONSTARTREPLY3_1", reqs = [], dialogue_argument = 1},
+		{code = 'fighters_election4', text = "FIGHTERSELECTIONSTARTREPLY3_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	fighters_election_details = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "FIGHTERSELECTIONSTART4_1", reqs = []},
+		],
+		options = [
+		#{code = 'fighters_election_details', text = "FIGHTERSELECTIONSTARTREPLY3_1", reqs = [], dialogue_argument = 1},
+		{code = 'fighters_election4', text = "FIGHTERSELECTIONSTARTREPLY3_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	fighters_election4 = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "FIGHTERSELECTIONSTART4_2", reqs = []},
+		],
+		options = [
+		{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'fighters_election_quest', stage = 'start'}]},
+		],
 	},
 }
 
@@ -1001,10 +1218,18 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = "active_quest_stage", value = "guilds_introduction", stage = "stage2"}], 
+			target = 'elections_start1',
+			target_option = 1,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [], 
 			target = 'servants_introduction',
 			target_option = 3,
 		},
+		
 	],
 	workers_init = [
 		{
@@ -1066,10 +1291,21 @@ var quests = {
 	guilds_introduction = {
 		code = 'guilds_introduction',
 		stages = {
-		start = {code = 'start', name = 'The Four Guilds', descript = 'Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.'}
+		start = {code = 'start', name = 'The Four Guilds', descript = 'Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.'},
+		stage1 = {code = 'stage1', name = 'First Step', descript = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds."},
+		stage1_5 = {code = 'stage1_5', name = 'First Step', descript = "You've earned enough reputation with one of the factions. Wait for a few days."},
+
+		stage2 = {code = 'stage2', name = 'New Friends', descript = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader. "},
+		stage3 = {code = 'stage3', name = 'Community', descript = "According to City's electon process, any land owner is capable of becoming a mayor, as long as they are supported by the Guilds. Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
 		},
 	},
-	
+	fighters_election_quest = {
+		code = 'fighters_election_quest',
+		stages = {
+			start = {code = 'start', name = "Rite of Passage", descript = "Obtain and deliver Lich's skull to Fighters Guild to make them support you for Mayor Elections. Duncan gave me a location where I can find one."}
+		},
+		
+	}
 	
 }
 

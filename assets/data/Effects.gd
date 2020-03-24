@@ -4,23 +4,6 @@ var effects = {
 
 var effect_table = {
 	#traits
-	e_tr_small = {
-		type = 'static',
-		atomic = [
-			{type = 'stat_add', stat = 'modmelee', value = -0.2},
-			{type = 'stat_add', stat = 'evasion', value = 30},
-			{type = 'stat_add_p', stat = 'mod_collect', value = -0.15}
-			],
-		buffs = [
-			{
-				icon = "res://assets/images/iconsskills/icon_tiny.png", 
-				description = "Small Size: \nMelee Skill damage reduced by 20%%\nEvasion increased by 30\nCollection tasks efficiency -15%%",
-				limit = 1,
-				t_name = 'small',
-				mansion_only = true,
-			}],
-		sub_effects = [],
-	},
 	e_tr_slave = {
 		type = 'static',
 		atomic = [

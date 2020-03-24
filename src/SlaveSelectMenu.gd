@@ -22,6 +22,7 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false):
 		newnode.get_node('text').text = i.get_short_name()
 		newnode.connect('pressed', self, 'select', [i])
 		globals.connectslavetooltip(newnode, i)
+	$Label.visible = $ScrollContainer/VBoxContainer.get_child_count() <= 1
 
 func select(character):
 	target_node.call(target_func, character)

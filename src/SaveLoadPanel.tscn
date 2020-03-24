@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/saveloadpanel.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=5]
 
 [node name="saveloadpanel" type="Panel"]
 margin_left = 4.0
 margin_top = 7.0
-margin_right = 631.0
+margin_right = 640.0
 margin_bottom = 530.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -16,7 +17,7 @@ script = ExtResource( 2 )
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 18.0
 margin_top = 68.0
-margin_right = 608.0
+margin_right = 583.0
 margin_bottom = 428.0
 scroll_horizontal_enabled = false
 
@@ -34,11 +35,20 @@ texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 22.6754
-margin_top = 11.4702
-margin_right = 511.675
-margin_bottom = 35.4702
+margin_left = 23.0
+margin_top = 11.0
+margin_right = 330.0
+margin_bottom = 35.0
 text = "Savename"
+
+[node name="Date" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+visible = false
+margin_left = 340.0
+margin_top = 11.0
+margin_right = 522.0
+margin_bottom = 35.0
+text = "Savename"
+align = 2
 
 [node name="Delete" type="Button" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 537.0
@@ -56,3 +66,24 @@ margin_right = 577.0
 margin_bottom = 486.0
 placeholder_text = "savename"
 caret_blink = true
+
+[node name="DetailsPanel" type="Panel" parent="."]
+margin_left = 635.0
+margin_top = 1.0
+margin_right = 1068.0
+margin_bottom = 519.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DetailsPanel"]
+margin_left = 58.0
+margin_top = 169.0
+margin_right = 401.0
+margin_bottom = 446.0
+bbcode_enabled = true
+
+[node name="MasterIcon" type="TextureRect" parent="DetailsPanel"]
+margin_left = 164.063
+margin_top = 46.0059
+margin_right = 264.063
+margin_bottom = 146.006
+texture = ExtResource( 5 )
+expand = true

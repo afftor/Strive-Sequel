@@ -241,7 +241,7 @@ func update():
 		$obedlabel.text = str(ceil(person.obedience))
 	else:
 		$obedlabel.text = "∞"
-	if person.obedience > 0:
+	if person.obedience > 0 || person.loyalty >= 100 || person.submission >= 100:
 		$obedlabel/icon.texture = load("res://assets/images/gui/obed_good.png")
 	else:
 		$obedlabel/icon.texture = load("res://assets/images/gui/obed_bad.png")
@@ -352,9 +352,10 @@ func update():
 	$masterlabel.visible = person.professions.has('master')
 	$masterlabel.text = person.translate('[master]').capitalize()
 	
-	$HirePanel/RichTextLabel.bbcode_text = person.translate("You can hire [name] for [price] gold.")
+	$HirePanel/RichTextLabel.bbcode_text = person.translate("[center]You can hire [name] for [price] gold.[/center]") 
 	$HirePanel/HireButton.disabled = person.calculate_price() > state.money
 	$HirePanel.visible = person.is_hirable
+	$HirePanel/Gold/Label.text = str(state.money)
 	
 	
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
@@ -434,9 +435,9 @@ func show_job_details(job):
 	var text =  "[center]" + job.name + '[/center]\n' + job.descript + "\n\n" + tr("TASKMAINSTAT") + ": [color=yellow]" + globals.statdata[job.workstat].name + "[/color]"
 	if job.has("worktool"):
 		text += "\n" + tr("WORKTOOL") + ": [color=aqua]" + globals.worktoolnames[job.worktool] + "[/color]. \n"
-		if person.gear.rhand != null:
-			var item = state.items[person.gear.rhand]
-			if item.toolcategory == job.worktool:
+		if person.gear.tool != null:
+			var item = state.items[person.gear.tool]
+			if item.toolcategory.has(job.worktool):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") +"[/color]"
 	
 	$job_panel/job_details/RichTextLabel.bbcode_text = text
@@ -698,10 +699,11 @@ func return_to_mansion():
 		active_area = state.areas[state.location_links[person.location].area]
 		active_location = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.location]
 	
-	for i in active_location.group:
-		if active_location.group[i] == person.id:
-			active_location.group.erase(i)
-			break
+	if active_location.has("group"):
+		for i in active_location.group:
+			if active_location.group[i] == person.id:
+				active_location.group.erase(i)
+				break
 	if variables.instant_travel == false:
 		person.location = 'travel'
 		person.travel_target = {area = '', location = 'mansion'}

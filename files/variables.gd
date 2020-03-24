@@ -227,3 +227,9 @@ var slots = ["chest","underwear", "legs", "hands", "rhand", "lhand", "neck", "he
 var interactioneffs = ['alcohol','aphrodisiac','sensetivity_pot']
 
 
+var personality_conversion_rates = {
+	bold = 0.65,
+	shy = 0.1,
+	kind = 0.2,
+	serious = 0.5
+}

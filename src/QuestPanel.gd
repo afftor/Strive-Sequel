@@ -71,9 +71,9 @@ func show_quest_info(quest):
 					newbutton.texture = itemtemplate.icon
 					if itemtemplate.has('parts'):
 						newbutton.material = load("res://files/ItemShader.tres").duplicate()
-					newbutton.get_node("amount").text = str(i.value) 
+					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
+					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value)
 				'complete_location':
 					newbutton.texture = globals.quest_icons[i.code]
 					newbutton.hint_tooltip = "Complete quest event"
@@ -86,6 +86,18 @@ func show_quest_info(quest):
 					newbutton.get_node("amount").show()
 					newbutton.get_node("amount").text = str(i.value)
 					globals.connectmaterialtooltip(newbutton, Items.materiallist[i.type], '\n\n[color=yellow]Required: ' + str(i.value) + "[/color]")
+				'slave_delivery':
+					newbutton.texture = load("res://assets/images/gui/slavepanel/charm.png")
+					var tooltiptext = "Slave Required:\n"
+					for k in i.statreqs:
+						if k.code in ['is_master', 'is_free']:
+							continue
+						match k.code:
+							'stat':
+								tooltiptext += globals.statdata[k.type].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
+							'sex':
+								tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
+					globals.connecttexttooltip(newbutton,tooltiptext)
 		
 		
 		for i in quest.rewards:
@@ -136,7 +148,7 @@ func show_quest_info(quest):
 		$CancelButton.visible = false
 		$CompleteButton.visible = false
 		quest = scenedata.quests[quest.code].stages[quest.stage]
-		$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
+		$QuestDescript.bbcode_text = globals.TextEncoder('[center]' + quest.name + '[/center]\n' + quest.descript)
 
 
 var selectedslave
@@ -152,6 +164,9 @@ func CompleteQuest():
 		if i.code == 'random_item' && i.completed == false:
 			select_items_for_quest(i)
 			return
+		elif i.code == 'slave_delivery' && i.completed == false:
+			select_character_for_quest(i)
+			return
 	if selectedquest.state == 'taken':
 		for i in selectedquest.requirements:
 			match i.code:
@@ -161,9 +176,8 @@ func CompleteQuest():
 					check = state.if_has_material(i.type, 'gte', i.value)
 				"random_item":
 					check = i.completed
-				"slavegetquest":
-					select_character_for_quest()
-					check = false
+				"slave_delivery":
+					check = i.completed
 				'complete_dungeon','complete_location':
 					check = state.completed_locations.has(i.location)
 			if check == false:
@@ -175,20 +189,21 @@ func CompleteQuest():
 		else:
 			CompleteReqs()
 
-func select_character_for_quest():
-	input_handler.ShowSlaveSelectPanel(self, 'character_selected', selectedquest.reqs)
+func select_character_for_quest(reqs):
+	selected_req = reqs
+	input_handler.ShowSlaveSelectPanel(self, 'character_selected', reqs.statreqs)
 
 func character_selected(character):
-	selectedslave = character
-	CompleteReqs()
+	state.remove_slave(character)
+	selected_req.completed = true
+	CompleteQuest()
+	input_handler.rebuild_slave_list()
 
 func CompleteReqs():
 	for i in selectedquest.requirements:
 		match i.code:
 			"random_material":
 				state.set_material(i.type, '-', i.value)
-			"slavegetquest":
-				state.remove_slave(selectedslave)
 	selectedquest.state = 'complete'
 	state.text_log_add("quest", "Quest Complete: " + selectedquest.name)
 	Reward()
@@ -210,6 +225,14 @@ func Reward():
 				state.materials[i.item] += i.value
 			'usable':
 				globals.AddItemToInventory(globals.CreateUsableItem(i.item, i.value))
+	
+	#remake into data system
+	if selectedquest.area == 'plains':
+		for i in state.areas[selectedquest.area].factions.values():
+			if i.totalreputation >= 300 && state.get_active_quest("guilds_introduction") != null && state.get_active_quest("guilds_introduction").stage == 'stage1':
+				state.get_active_quest("guilds_introduction").stage = 'stage1_5'
+				state.common_effects([{code = 'add_timed_event', value = "guilds_introduction_stage1", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
+	
 	open()
 
 func CancelQuest():
@@ -231,7 +254,7 @@ func select_items_for_quest(quest_req):
 	globals.ClearContainer($ItemSelectionPanel/ScrollContainer/GridContainer)
 	var array = []
 	for i in state.items.values():
-		if !i.itembase == quest_req.type:
+		if !i.itembase == quest_req.type || i.owner != null:
 			continue
 		array.append(i)
 	$ItemSelectionPanel/noitems.visible = array.size() == 0

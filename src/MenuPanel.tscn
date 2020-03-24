@@ -102,6 +102,8 @@ align = 1
 
 [node name="saveloadpanel" parent="." instance=ExtResource( 7 )]
 visible = false
+margin_left = -216.0
+margin_right = 411.0
 
 [node name="Options" parent="." instance=ExtResource( 8 )]
 visible = false

@@ -116,6 +116,20 @@ var individual_lines = {
 	loyalty_submission_line1 = {text = "[Master]... I understand, I will do as you want.", events = ['submission_loyalty'], personalities = ['shy','bold','serious','kind'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line2 = {text = "This feels crazy, but I'm ready to do anything for you.", events = ['submission_loyalty'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line3 = {text = "...I-I understand, I will do everything for you.", events = ['submission_loyalty'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	
+	writ_success1 = {text = "...This is very kind of you, [master], but please allow me to stay by your side.", events = ['writ_success'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	writ_success2 = {text = "Wow, are you serious about this? But I can't leave you alone, can I. ", events = ['writ_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	writ_success3 = {text = "I appreciate this gesture, but my place is at your side, [master]. ", events = ['writ_success'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	
+	writ_fail1 = {text = "I... Thank you, but I must go.", events = ['writ_failure'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	writ_fail2 = {text = "Thanks, I guess... I must go now.", events = ['writ_failure'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	writ_fail3 = {text = "This is unexpected... You have my gratitude, but I'm afraid, it won't include my service.", events = ['writ_failure'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	writ_fail4 = {text = "...I'm sorry. ", events = ['writ_failure'], personalities = ['shy','bold','kind','serious'], reqs = [], weight = 1, tags = []},
+	
+	aphrodisiac1 = {text = "Ah... What's going on... It feels so hot...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
+	aphrodisiac2 = {text = "My body... is getting hotter...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
+	aphrodisiac3 = {text = "AAhhh... What is this... Feeling...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
+	
 }
 
 func build_lines():

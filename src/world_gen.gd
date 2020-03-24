@@ -58,12 +58,14 @@ var lands = {
 			bone = {min = 5, max = 20, chance = 0.7},
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 2, max = 5, chance = 1},
+			writ_of_exemption = {min = 1, max = 1, chance = 1},
 			trap = {min = 5, max = 10, chance = 1},
 			itempool0 = {items = ['dagger'], min = 1, max = 2, chance = 1},
 			itempool1 = {items = ['sword','axe','pickaxe','hammer','fishingtools','sickle','bow','staff','hunt_knife'], min = 3, max = 6, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
+			
 			},
 		capital_background = 'aliron',
 		capital_background_noise = 'aliron_noise',
@@ -352,7 +354,7 @@ var factiondata = {
 		events = [
 			'servants_init',
 			],
-		quests_easy = ['servants_craft_items_easy'],#,'servants_slave_easy'
+		quests_easy = ['servants_craft_items_easy','servants_slave_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,3],
@@ -642,13 +644,13 @@ func update_guilds(area):
 				if quest.time_limit < 0:
 					fail_quest(quest)
 			else:
-				if quest.state == 'complete' || state.date % 7 == 0:
+				if quest.state == 'complete' || int(state.date) % 7 == 0:
 					cleararray.append(quest.id)
 					#area.quests.factions[faction].erase(quest.id)
 		for i in cleararray:
 			area.quests.factions[faction].erase(i)
 	
-	if state.date % 7 == 0:
+	if int(state.date) % 7 == 0:
 		for i in area.factions.values():
 			for k in i.slaves:
 				characters_pool.get_char_by_id(k).is_active = false
@@ -682,9 +684,9 @@ func fail_quest(quest):
 	quest.state = 'failed'
 	for i in quest.requirements:
 		if i.code in ['complete_location','complete_dungeon']:
+			input_handler.return_characters_from_location(i.location)
 			state.areas[i.area].locations.erase(i.location)
 			state.areas[i.area].questlocations.erase(i.location)
-		
 
 
 var questdata = {
@@ -836,13 +838,21 @@ var questdata = {
 		code = 'servants_slave_easy',
 		name = 'Slave Request',
 		descript = 'The guild is in need of specific trained individual.',
-		randomconditions = {
-			number = [2,2], 
-			variances = [
-			{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor'], range = [2,3]},
-			{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [20,40]}]},
+		 
+		randomconditions = [
+			{code = 'slave_delivery', 
+			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
+			condition_number = [1,1],
+			conditions = [
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor'], range = [3,4]},
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [25,35]}
+			],},
+		],
 		unlockreqs = [],
-		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [100,150]}],
+		],
 		time_limit = [8,12],
 	},
 #	warriors_fighter_slave_easy = {
@@ -895,12 +905,13 @@ func make_quest(questcode):
 	
 	var requirements_number = 1
 	var reqsarray = template.randomconditions.duplicate()
+	
+	
 	while requirements_number > 0:
 		var tempdata = reqsarray[randi()%reqsarray.size()].duplicate(true)
 		var reqsarrayposition = reqsarray.find(tempdata)
 		data.requirements.append(tempdata)
-		tempdata.type = tempdata.type[randi()%tempdata.type.size()] #what random things are going there
-		if tempdata.code in ['random_item','random_slave']:
+		if tempdata.code in ['random_item','slave_delivery']:
 			tempdata.completed = false
 		if tempdata.has('range'):
 			tempdata.value = round(rand_range(tempdata.range[0], tempdata.range[1]))
@@ -909,6 +920,29 @@ func make_quest(questcode):
 		if tempdata.has('parts'):
 			for i in tempdata.parts:
 				tempdata.parts[i] = tempdata.parts[i][randi()%tempdata.parts[i].size()]
+		if tempdata.code == 'slave_delivery':
+			tempdata.statreqs = []
+			for i in tempdata.mandatory_conditions:
+				if typeof(i.value) == TYPE_ARRAY:
+					i.value = i.value[randi()%i.value.size()] 
+				tempdata.statreqs.append(i)
+			var statreq = round(rand_range(tempdata.condition_number[0],tempdata.condition_number[1]))
+			while statreq > 0:
+				var statdata = tempdata.conditions[randi()%tempdata.conditions.size()]
+				var req = {operant = statdata.operant, code = statdata.code, type = statdata.type[randi()%statdata.type.size()], value = round(rand_range(statdata.range[0], statdata.range[1]))}
+				
+				statdata.type.erase(req.code)
+				tempdata.statreqs.append(req)
+				statreq -= 1
+				if statdata.use_once == true:
+					tempdata.conditions.erase(statdata)
+			tempdata.erase('condition_number')
+			tempdata.erase('conditions')
+			tempdata.erase('mandatory_conditions')
+			tempdata.statreqs.append({code = 'is_master', check = false})
+			tempdata.statreqs.append({code = 'is_free'})
+		else:
+			tempdata.type = tempdata.type[randi()%tempdata.type.size()] 
 		requirements_number -= 1
 	var rewardarray = []
 	for i in template.rewards.duplicate():

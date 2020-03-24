@@ -78,10 +78,11 @@ func return_character():
 		active_area = state.areas[state.location_links[person.location].area]
 		active_location = state.areas[state.location_links[person.location].area][state.location_links[person.location].category][person.location]
 	var location = world_gen.get_location_from_code(active_location)
-	for i in active_location.group:
-		if active_location.group[i] == person.id:
-			active_location.group.erase(i)
-			break
+	if active_location.has("group"):
+		for i in active_location.group:
+			if active_location.group[i] == person.id:
+				active_location.group.erase(i)
+				break
 	if variables.instant_travel == false:
 		person.location = 'travel'
 		person.travel_target = {area = '', location = 'mansion'}
@@ -167,7 +168,7 @@ func update_character_dislocation():
 		var person = state.characters[i]
 		if person.location == dislocation_area:
 			char_array.append(i)
-	char_array.sort_custom(self, 'sort_dislocation')
+	#char_array.sort_custom(self, 'sort_dislocation')
 	for i in char_array:
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var person = state.characters[i]
@@ -198,7 +199,7 @@ func update_character_dislocation():
 			'skirmish':
 				pass
 		if selected_travel_characters.size() > 0 :
-			text += "\n\nTravel Time: " + str(round(state.characters[selected_travel_characters[0]].calculate_travel_time(destination, dislocation_area) / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
+			text += "\n\nTravel Time: " + str(ceil(state.characters[selected_travel_characters[0]].calculate_travel_time(destination, dislocation_area) / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
 		
 		
 	$DescriptText.bbcode_text = text
