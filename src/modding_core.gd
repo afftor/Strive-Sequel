@@ -157,13 +157,13 @@ func process_data_file(path : String, file: String, tablename : String):
 	process_dir(tablename, 'statdata', globals.statdata)
 	#tutorial data is not avaliable for now
 	#process_dir(tablename, 'effects', .effect_table)
-	process_dir(tablename, 'effects', world_gen.factiondata)
-	process_dir(tablename, 'effects', world_gen.guild_upgrades)
-	process_dir(tablename, 'effects', world_gen.lands)
-	process_dir(tablename, 'effects', world_gen.locations)
-	process_dir(tablename, 'effects', world_gen.locationnames)
-	process_dir(tablename, 'effects', world_gen.questdata)
-	process_dir(tablename, 'effects', world_gen.dungeons)
+	process_dir(tablename, 'w_factions', world_gen.factiondata)
+	process_dir(tablename, 'w_guilds', world_gen.guild_upgrades)
+	process_dir(tablename, 'w_lands', world_gen.lands)
+	process_dir(tablename, 'w_locations', world_gen.locations)
+	process_dir(tablename, 'w_locationnames', world_gen.locationnames)
+	process_dir(tablename, 'w_quests', world_gen.questdata)
+	process_dir(tablename, 'w_dungeons', world_gen.dungeons)
 	
 	#incomplete
 
