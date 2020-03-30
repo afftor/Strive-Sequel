@@ -2135,7 +2135,8 @@ func simple_check(req):#Gear, Race, Types, Resists, stats, trait
 		'stat_index':
 			result = input_handler.operate(req.operant, get_stat(req.name)[req.index], req.value)
 		'gear':
-			result = check_gear_equipped(req.name)
+			if req.has('param'): result = check_gear_equipped(req.value, req.param)
+			else: result = check_gear_equipped(req.value)
 		'race':
 			result = (req.value == race);
 		'race_group':

@@ -1927,7 +1927,7 @@ var effect_table = {
 	},
 	valkyrie_spear_bonus = {
 		type = 'c_static',
-		conditions = [{type = 'gear_equiped', param = 'geartype', value = 'spear'}],
+		conditions = [{type = 'gear', param = 'geartype', value = 'spear'}],
 		tags = ['recheck_item'],
 		atomic = [
 			{type = 'stat_add', stat = 'speed', value = 10},
