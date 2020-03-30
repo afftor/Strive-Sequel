@@ -13,10 +13,12 @@ var sexarray = ['male','female','futa']
 var malesizes = ['masculine','flat']
 var sizes = ['flat','small','average','big','huge']
 var short_sizes = ['small','average','big']
+var guild = 'none'
 
 var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
 var sexbodypartsarray = ['penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
+var slave_classes = ['slave','servant']
 var selected_class = ''
 
 var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
@@ -69,7 +71,7 @@ func _ready():
 	$bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
 	
 	open()
-var slave_classes = ['slave','servant']
+
 func open_class_list():
 	$ClassPanel.show()
 	globals.ClearContainer($ClassPanel/ScrollContainer/VBoxContainer)
@@ -77,9 +79,14 @@ func open_class_list():
 	if mode == 'master':
 		array = variables.master_starting_classes
 	elif mode == 'slave':
-		array = variables.slave_starting_classes
+		if guild == 'none':
+			array = variables.slave_starting_classes
+		else:
+			array = variables[guild+'_starting_classes']
 	for i in array:
 		var tempclass = Skilldata.professions[i]
+		if person.checkreqs(tempclass.showupreqs) == false:
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($ClassPanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("icon").texture = tempclass.icon
 		newbutton.get_node("name").text = tempclass.name
@@ -166,9 +173,10 @@ func finish_diet_selection():
 	$bodyparts2/diet.text = text
 	check_confirm_possibility()
 
-func open(type = 'slave'):
+func open(type = 'slave', newguild = 'none'):
 	preservedsettings.clear()
 	show()
+	guild = newguild
 	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
 	$introduction.bbcode_text = introduction_text[type]
 	if type == 'slave':
@@ -374,7 +382,6 @@ func stat_down(stat):
 
 func build_bodyparts():
 	var racedata = races.racelist[person.race].bodyparts
-	#print(person.skin)
 	for i in bodypartsarray:
 		$bodyparts.get_node(i).clear()
 		var current_bodypart = person.get(i)

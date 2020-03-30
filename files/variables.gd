@@ -89,8 +89,13 @@ var ItemEffectNaturalMultiplier = 0.15
 var all_races_array = []
 var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
 
-var master_starting_classes = ['fighter','archer','worker','harlot','apprentice','hunter']
+var master_starting_classes = ['fighter','archer','worker','rogue','apprentice','hunter']
 var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter']
+
+var fighters_starting_classes = ['fighter','archer','rogue']
+var mages_starting_classes = ['apprentice','scholar','attendant']
+var servants_starting_classes = ['harlot','pet','petbeast','thief']
+var workers_starting_classes = ['worker','hunter','farmer']
 
 var master_starting_stats = 10
 var slave_starting_stats = 15

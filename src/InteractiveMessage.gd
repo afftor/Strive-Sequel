@@ -21,6 +21,8 @@ func open(scene):
 	hold_selection = true
 	if scene.has("common_effects"): 
 		state.common_effects(scene.common_effects)
+	if typeof(scene.text) == TYPE_STRING:
+		scene.text = [{text = scene.text, reqs = []}]
 	
 	update_scene_characters()
 	
@@ -45,23 +47,22 @@ func open(scene):
 		$CharacterImage.show()
 		#input_handler.UnfadeAnimation($CharacterImage,1)
 	show()
-	var scenetext = scene.text
+	if scene.tags.has('locked_chest'):
+		add_chest_options(scene)
 	
-	if typeof(scenetext) == TYPE_ARRAY:
-		var newtext = ''
-		for i in scenetext:
-			if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
-				i.previous_dialogue_option = [i.previous_dialogue_option]
-			if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !state.checkreqs(i.reqs):
-				continue
-			if state.seen_dialogues.has(i.text) == false:
-				state.seen_dialogues.append(i.text)
-			if i.has("bonus_effects"):
-				state.common_effects(i.bonus_effects)
-			newtext += tr(i.text)
-			if i.has('common_effects'):
-				state.common_effects(i.common_effects)
-		scenetext = newtext
+	var scenetext = scene.text
+	var newtext = ''
+	for i in scenetext:
+		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
+			i.previous_dialogue_option = [i.previous_dialogue_option]
+		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !state.checkreqs(i.reqs):
+			continue
+		if state.seen_dialogues.has(i.text) == false:
+			state.seen_dialogues.append(i.text)
+		if i.has("bonus_effects"):
+			state.common_effects(i.bonus_effects)
+		newtext += tr(i.text)
+	scenetext = newtext
 	scenetext = tr(scenetext)
 	
 	if scenetext.find("[locationname]") >= 0:
@@ -86,6 +87,8 @@ func open(scene):
 			scene.options.append({code = 'recruit_from_scene', args = counter, reqs = [{type = "has_money_for_scene_slave", value = counter}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE") + " - " + i.get_short_name() + ": " + str(i.calculate_price()) + " Gold", bonus_effects = [{code = 'spend_money_for_scene_character', value = counter}]})
 			counter += 1
 		scenetext += "\n\n" + text
+	
+	
 	if scene.has("set_enemy"):
 		dialogue_enemy = scene.set_enemy
 	var counter = 1
@@ -167,8 +170,31 @@ func dialogue_next(code, argument):
 	previous_dialogue_option = argument
 	input_handler.interactive_message(code, '', '')
 
-func slave_sold():
-	pass
+
+
+func add_chest_options(scene):
+	var chest_data = input_handler.scene_loot
+	var text = "\n\nChest Lock: " +  str(chest_data.lock.type) 
+	if chest_data.lock.type != 'none':
+		text += "\nDifficulty: " + input_handler.lock_difficulty(chest_data.lock.difficulty)
+	scene.text.append({text = text, reqs = []})
+	if chest_data.lock.type == 'none':
+		scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUECHESTOPEN"})
+	else:
+		scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+	
+
+func lockpick_attempt(person):
+	var lock = input_handler.scene_loot.lock.difficulty
+	var lockpickskill = person.lockpick_chance()
+	var open = lockpickskill >= lock
+	
+	if open == true:
+		input_handler.interactive_message("lockpick_chest_success", "story_event", {})
+		input_handler.add_random_chat_message(person, 'lockpick_success')
+	else:
+		input_handler.interactive_message("lockpick_chest_failure", "story_event", {})
+		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
 func select_person_for_next_event(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id}]
@@ -176,11 +202,14 @@ func select_person_for_next_event(code):
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
 
 func event_person_selected(person):
+	input_handler.active_character = person
+	if stored_scene == 'lockpick_attempt':
+		lockpick_attempt(person)
+		return
 	var data = scenedata.scenedict[stored_scene]
 	var event_type = 'story_event'
 	if scenedata.scenedict[stored_scene].has('default_event_type'):
 		event_type = scenedata.scenedict[stored_scene].default_event_type
-	input_handler.active_character = person
 	input_handler.interactive_message(stored_scene, event_type, {})
 
 func select_option(number):

@@ -35,10 +35,6 @@ var personalities = {
 }
 
 var lines = {
-#	hire = [],
-#	sell = [],
-#	fight_win = [],
-#	fight_lose = [],
 }
 
 var individual_lines = {
@@ -81,7 +77,6 @@ var individual_lines = {
 	
 	
 	sex_finish_line1 = {text = "...I-I'm not against doing it again.", events = ['sex_finish'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	#sex_finish_line2 = {text = "♥", events = ['sex_finish'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
 	sex_finish_line3 = {text = "Ahh, it feels like a waste to work after this.", events = ['sex_finish'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	sex_finish_line4 = {text = "Uh, my body is all sweaty now... Can I take a bath, [Master]?", events = ['sex_finish'], personalities = ['serious','shy','kind'], reqs = [], weight = 1, tags = []},
 	
@@ -130,6 +125,17 @@ var individual_lines = {
 	aphrodisiac2 = {text = "My body... is getting hotter...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
 	aphrodisiac3 = {text = "AAhhh... What is this... Feeling...", events = ['aphrodisiac'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
 	
+	lockpick_success1 = {text = "I did it, [Master]. Let's see what's inside.", events = ['lockpick_success'], personalities = ['bold','serious','kind','shy'], reqs = [], weight = 1, tags = []},
+	lockpick_success2 = {text = "Hmph, piece of cake.", events = ['lockpick_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	lockpick_success3 = {text = "I-I did it.", events = ['lockpick_success'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
+	lockpick_success4 = {text = "It's done.", events = ['lockpick_success'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	lockpick_success5 = {text = "This lock is no match for me.", events = ['lockpick_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	
+	lockpick_failure1 = {text = "Oh, uh... I'm sorry.", events = ['lockpick_failure'], personalities = ['bold','serious','kind','shy'], reqs = [], weight = 1, tags = []},
+	lockpick_failure2 = {text = "T-this can't be my fault.", events = ['lockpick_failure'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	lockpick_failure3 = {text = "I'm sorry!", events = ['lockpick_failure'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
+	lockpick_failure4 = {text = "...This can't be helped.", events = ['lockpick_failure'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	lockpick_failure5 = {text = "This stupid lock... I'll get it next time", events = ['lockpick_failure'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 }
 
 func build_lines():

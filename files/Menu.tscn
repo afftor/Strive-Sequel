@@ -162,6 +162,7 @@ margin_bottom = 1067.2
 text = "ver. 0.1.0"
 
 [node name="DemoPanel" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 716.0
 margin_top = 347.0
 margin_right = 1336.0
@@ -308,7 +309,12 @@ Added new item which changes slave status to peon
 Slightly revamped some racial bonuses
 Lowered Knight's DEF bonus to 5
 Revamped def stats on gear and fixed incorrect calculations
+Dungeon chests now feature lockpicking mechanic
+Engineer class gets Trap disarming trait
+Master can now start with Rogue class instead of Harlot
 Seen questions won't be showing as options anymore
+Starting slave classes in story mode are now restricted to selected guild
+High tier enemies have more elemental resists
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells upscaling damage
 Fixed non-group locations having issues when returning characters 
@@ -444,7 +450,12 @@ Added new item which changes slave status to peon
 Slightly revamped some racial bonuses
 Lowered Knight's DEF bonus to 5
 Revamped def stats on gear and fixed incorrect calculations
+Dungeon chests now feature lockpicking mechanic
+Engineer class gets Trap disarming trait
+Master can now start with Rogue class instead of Harlot
 Seen questions won't be showing as options anymore
+Starting slave classes in story mode are now restricted to selected guild
+High tier enemies have more elemental resists
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells upscaling damage
 Fixed non-group locations having issues when returning characters 
