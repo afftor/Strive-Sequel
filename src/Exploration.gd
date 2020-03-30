@@ -225,11 +225,14 @@ func open_city(city):
 	$ShopPanel.hide()
 	$FactionDetailsPanel.hide()
 	$SlaveSelectionPanel.hide()
+	$VideoPlayer.hide()
 	$TextureRect.texture = world_gen.backgrounds[active_area.capital_background]
 	if active_area.has('capital_background_noise'):
 		input_handler.PlayBackgroundSound(active_area.capital_background_noise)
 	if active_area.has('capital_background_music'):
 		input_handler.SetMusic(active_area.capital_background_music)
+	if active_area.has("capital_dynamic_background"):
+		$VideoPlayer.open(active_area.capital_dynamic_background)
 	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
 	var array = []
 	for i in active_area.factions.values():

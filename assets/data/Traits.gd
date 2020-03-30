@@ -114,6 +114,14 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_witcrit'],
 	},
+	valkyrie_spear = {
+		code = 'valkyrie_spear',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['valkyrie_spear_bonus'],
+	},
 	farmer = {#+50% farm production
 		code = 'farmer',
 		name = '',

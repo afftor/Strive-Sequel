@@ -150,7 +150,7 @@ var basic_lust_per_tick = 0.57
 
 #World settings
 var dungeon_encounter_chance = 0.2
-var exp_scroll_quest_reward = true
+var exp_scroll_quest_reward = false
 
 #Cheats
 var instant_travel = false

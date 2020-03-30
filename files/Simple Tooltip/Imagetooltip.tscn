@@ -10,10 +10,10 @@
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 669, 841 )
-margin_left = 15.9002
-margin_right = 23.8503
-margin_top = 21.2003
-margin_bottom = 35.9505
+margin_left = 14.0
+margin_right = 13.0
+margin_top = 14.3197
+margin_bottom = 14.3635
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
@@ -27,6 +27,9 @@ margin_bottom = 362.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

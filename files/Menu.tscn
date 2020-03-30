@@ -105,7 +105,6 @@ texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 13 )
 
 [node name="Panel" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 1730.0
 margin_top = 40.0
 margin_right = 1916.0
@@ -162,7 +161,6 @@ margin_bottom = 1067.2
 text = "ver. 0.1.0"
 
 [node name="DemoPanel" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 716.0
 margin_top = 347.0
 margin_right = 1336.0
@@ -303,7 +301,8 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "Added save info
+bbcode_text = "0.2.0 (requires new save)
+Added save info
 Added slave delivery quests
 Added new item which changes slave status to peon
 Slightly revamped some racial bonuses
@@ -444,7 +443,8 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added save info
+text = "0.2.0 (requires new save)
+Added save info
 Added slave delivery quests
 Added new item which changes slave status to peon
 Slightly revamped some racial bonuses

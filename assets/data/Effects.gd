@@ -1925,6 +1925,16 @@ var effect_table = {
 			atomic = [{type = 'sfx', value = 'test_combat_start'}]
 		}],
 	},
+	valkyrie_spear_bonus = {
+		type = 'c_static',
+		conditions = [{type = 'gear_equiped', param = 'geartype', value = 'spear'}],
+		tags = ['recheck_item'],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = 10},
+		],
+		buffs = [], 
+		sub_effects = [],
+	},
 };
 
 var atomic = {

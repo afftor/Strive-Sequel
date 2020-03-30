@@ -1298,8 +1298,8 @@ var scenedict = {
 			tags  = ['dialogue_scene'],
 			text = [{text = "LICHENCTALK6_1", reqs = []}],
 			options = [
-			    {code = 'start_lich_fight_normal', text = "LICHENCTALK6REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-			    {code = 'lich_enc_conclusion', text = "LICHENCTALK6REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+				{code = 'start_lich_fight_normal', text = "LICHENCTALK6REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+				{code = 'lich_enc_conclusion', text = "LICHENCTALK6REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			],
 		},
 	],

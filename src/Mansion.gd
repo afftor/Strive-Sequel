@@ -35,7 +35,7 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.1.2-stable_win64.exe": #&& false:#:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe": #&& false:#:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -85,7 +85,8 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
-		character.unlock_class("knight")
+		character.unlock_class("fighter")
+		character.unlock_class("valkyrie")
 		character.set_slave_category('master')
 		character.sex_traits = ['dislike_missionary', 'anal']
 		#character.equip(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'mithril'}))
@@ -208,7 +209,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("spear", {WeaponHandle = 'wood', Blade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
@@ -234,7 +235,7 @@ func _ready():
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('lich_enc_initiate', '', {})
+		#input_handler.interactive_message('lich_enc_initiate', '', {})
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
 		
