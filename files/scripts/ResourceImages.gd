@@ -74,6 +74,13 @@ var sprites = {
 	duncan = load("res://assets/images/sprites/duncan.png"),
 	}
 
+var dynamic_backgrounds = {
+	aliron = load("res://assets/dynamic_backgrounds/aliron.ogv"),
+	elf_capital = load("res://assets/dynamic_backgrounds/elf_capital.ogv"),
+	furry_capital = load("res://assets/dynamic_backgrounds/furry_camp.ogv"),
+	
+}
+
 var portraits = {
 }
 

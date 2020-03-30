@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/Exploration.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=27]
 [ext_resource path="res://src/NumberSelection.gd" type="Script" id=28]
+[ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=29]
 
 [node name="Exploration" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -41,12 +42,17 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 3 )
 
+[node name="VideoPlayer" parent="." instance=ExtResource( 29 )]
+
 [node name="CityGui" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0.854902 )
 margin_left = 75.7191
 margin_top = 145.189
 margin_right = 478.719
 margin_bottom = 1003.19
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CityGui"]
 margin_left = 34.0
@@ -54,6 +60,9 @@ margin_top = 28.0
 margin_right = 366.0
 margin_bottom = 818.0
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CityGui/ScrollContainer"]
 margin_right = 332.0
@@ -67,7 +76,6 @@ rect_min_size = Vector2( 0, 50 )
 text = "Slave Guild"
 
 [node name="LocationGui" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_right = 1920.0
 margin_bottom = 1079.0
@@ -491,7 +499,6 @@ text = "BACK"
 align = 1
 
 [node name="PresentedSlavesPanel" type="Panel" parent="LocationGui"]
-editor/display_folded = true
 margin_left = 123.006
 margin_top = 173.123
 margin_right = 613.006
@@ -746,7 +753,6 @@ margin_right = 970.0
 margin_bottom = 668.0
 
 [node name="ServicePanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 519.0
 margin_top = 137.0
@@ -1017,7 +1023,6 @@ expand = true
 stretch_mode = 6
 
 [node name="FactionDetailsPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 287.0
 margin_top = 138.0
@@ -1222,7 +1227,6 @@ text = "0"
 align = 1
 
 [node name="SlaveSelectionPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 519.0
 margin_top = 137.0
@@ -1265,7 +1269,6 @@ margin_right = 676.366
 margin_bottom = 170.0
 
 [node name="NumberSelection" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 602.0
 margin_top = 305.0

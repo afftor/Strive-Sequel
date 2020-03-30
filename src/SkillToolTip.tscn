@@ -7,7 +7,7 @@
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 669, 841 )
 margin_left = 19.9725
-margin_right = 27.9615
+margin_right = 18.9615
 margin_top = 19.9725
 margin_bottom = 23.967
 
@@ -39,3 +39,6 @@ margin_right = 421.0
 margin_bottom = -6.0
 text = "Cost"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

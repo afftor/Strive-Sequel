@@ -446,7 +446,7 @@ var professions = {
 		combatskills = [],
 	},
 	scholar = {
-		code = 'apprentice',
+		code = 'scholar',
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsclasses/Apprentice.png"),
@@ -539,7 +539,7 @@ var professions = {
 		showupreqs = [{code = 'race', operant = 'eq', value = 'Seraph'}, {code = 'sex', operant = 'neq', value = 'male'}],
 		reqs = [{code = 'has_profession', value = 'fighter', check = true},{code = 'stat', type = 'physics', operant = 'gte', value = 75},{code = 'race', operant = 'eq', value = 'Seraph'}],
 		statchanges = {hpmax = 20, physics_bonus = 15, speed = 5, resistair = 25},
-		traits = ['medium_armor'],
+		traits = ['medium_armor','valkyrie_spear'],
 		skills = [],
 		combatskills = ['holy_lance','swipe','fly_evasion'],
 	},

@@ -1094,6 +1094,7 @@ var TranslationDict = {
 	TRAITSEXTOYDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITWITCRITDESCRIPT = "Increases critical strike chance by 3% per Wits Factor.",
 	TRAITDIRECTORDESCRIPT = "Social skills build target Authority 50% faster. ",
+	TRAITVALKYRIE_SPEARDESCRIPT = "+10 Speed while equipped with Spear.",
 	
 	
 	TRAITWEAPON_MASTERY = "Weapon Mastery",

@@ -69,6 +69,7 @@ var lands = {
 			
 			},
 		capital_background = 'aliron',
+		capital_dynamic_background = 'aliron',
 		capital_background_noise = 'aliron_noise',
 		capital_background_music = 'wimborn',
 		capital_name = "Aliron",
@@ -106,6 +107,7 @@ var lands = {
 			},
 		capital_background = 'elf_capital',
 		capital_name = "Elven Capital",
+		capital_dynamic_background = 'elf_capital',
 		capital_background_noise = 'elf_noise',
 		capital_background_music = 'frostford',
 	},
@@ -338,7 +340,7 @@ var factiondata = {
 		events = [
 			'workers_init',
 			],
-		quests_easy = ['workers_food_easy', 'workers_resources_easy','workers_craft_tools_easy','workers_threat_easy'],
+		quests_easy = ['workers_resources_easy'],#,'workers_craft_tools_easy','workers_threat_easy','workers_food_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -698,8 +700,34 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1,{code = 'gold', range = [150,200]}], #first value is a weight of reward
+		[1,{code = 'gold',  item_based = true, range = [1.4,1.5]}], #first value is a weight of reward
 		[0.3,{code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['axe','pickaxe','sickle']}],
+		],
+		time_limit = [8,12],
+	},
+	workers_resources_medium = {
+		code = 'workers_resources_medium',
+		name = 'Resource gathering',
+		descript = 'The guild requires additional resources for its needs. ',
+		randomconditions = [{code = 'random_material', function = 'range', type = ['woodiron','iron','steel','clothmagic'], range = [8,15]}],
+		unlockreqs = [],
+		reputation = [150,250],
+		rewards = [
+		[1,{code = 'gold', item_based = true, range = [1.5,1.8]}],
+		[0.3,{code = 'gear', material_grade = [['easy', 1], ['medium',4],['hard',1]], name = ['axe','pickaxe','sickle','hammer','fishingtools']}],
+		],
+		time_limit = [8,12],
+	},
+	workers_resources_hard = {
+		code = 'workers_resources_hard',
+		name = 'Resource gathering',
+		descript = 'The guild requires additional resources for its needs. ',
+		randomconditions = [{code = 'random_material', function = 'range', type = ['woodmagic','boneancinet','leathermythic','mithril'], range = [8,15]}],
+		unlockreqs = [],
+		reputation = [250,400],
+		rewards = [
+		[1,{code = 'gold', item_based = true, range = [1.7,1.95]}], 
+		[0.3,{code = 'gear', material_grade = [['easy', 1], ['medium',3],['hard',3]], name = ['axe','pickaxe','sickle','hammer','fishingtools']}],
 		],
 		time_limit = [8,12],
 	},
@@ -711,9 +739,37 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1,{code = 'gold', range = [150,200]}],
+		[1,{code = 'gold', item_based = true, range = [1.5,1.7]}],
 		[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [15,20]}],
-		[0.5,{code = 'gold', range = [60,100]},{code = 'metarial', type = ['steel', 'woodmagic','woodiron','clothsilk'], range = [5,10]}],
+		[0.5,{code = 'gold', item_based = true, range = [0.5,0.6]},{code = 'metarial', type = ['steel', 'woodmagic','woodiron','clothsilk'], range = [5,10]}],
+		],
+		time_limit = [8,12],
+	},
+	workers_food_medium = {
+		code = 'workers_food_medium',
+		name = 'Food supply',
+		descript = 'The guild requires additional food supplies.',
+		randomconditions = [{code = 'random_material', function = 'range', type =  ['meat','fish','vegetables','bread'], range = [75,120]}],
+		unlockreqs = [],
+		reputation = [150,250],
+		rewards = [
+		[1,{code = 'gold', item_based = true, range = [1.7,1.9]}],
+		#[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [15,20]}],
+		[0.5,{code = 'gold', item_based = true, range = [0.6,0.7]},{code = 'metarial', type = ['steel', 'obsidian','woodiron','clothmagic'], range = [10,15]}],
+		],
+		time_limit = [8,12],
+	},
+	workers_food_hard = {
+		code = 'workers_food_hard',
+		name = 'Food supply',
+		descript = 'The guild requires additional food supplies.',
+		randomconditions = [{code = 'random_material', function = 'range', type =  ['bread','fishcakes','meatsoup'], range = [75,120]}],
+		unlockreqs = [],
+		reputation = [250,450],
+		rewards = [
+		[1,{code = 'gold', item_based = true, range = [1.8,2.1]}],
+		#[1,{code = 'material', name = ['wood', 'stone','leather','cloth', 'iron'], value = [15,20]}],
+		[0.5,{code = 'gold', item_based = true, range = [0.7,0.8]},{code = 'metarial', type = ['mithril', 'obsidian','woodancient','clothmagic'], range = [5,10]}],
 		],
 		time_limit = [8,12],
 	},
@@ -958,12 +1014,15 @@ func make_quest(questcode):
 				if i.has('item_based') == true:
 					var item_price = 0
 					for k in data.requirements:
-						if k.code == 'random_item':
-							if Items.itemlist[k.type].has('parts'):
-								for j in k.parts:
-									item_price += Items.materiallist[k.parts[j]].price * Items.itemlist[k.type].parts[j] * k.value
-							else:
-								item_price += Items.itemlist[k.type].price * k.value
+						match k.code:
+							'random_item':
+								if Items.itemlist[k.type].has('parts'):
+									for j in k.parts:
+										item_price += Items.materiallist[k.parts[j]].price * Items.itemlist[k.type].parts[j] * k.value
+								else:
+									item_price += Items.itemlist[k.type].price * k.value
+							'random_material':
+								item_price = Items.materiallist[k.type].price * k.value
 					reward.value = round(item_price*rand_range(i.range[0], i.range[1]))
 				else:
 					reward.value = round(rand_range(i.range[0], i.range[1]))

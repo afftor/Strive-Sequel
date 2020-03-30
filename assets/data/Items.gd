@@ -1241,7 +1241,7 @@ var itemlist = {
 		crafttype = 'modular',
 		type = 'gear',
 		itemtype = 'weapon',
-		geartype = 'sword',
+		geartype = 'spear',
 		weaponrange = 'melee',
 		reqs = [{code = 'trait', value = 'weapon_mastery'}],
 		parts = {Blade = 10, WeaponHandle = 5},
