@@ -706,9 +706,9 @@ func _ready():
 			k.chardescript = tr("BODYPART" + i.to_upper() + k.code.to_upper() + "DESCRIPT")
 	
 
-	
+	modding_core.fix_main_data_preload()
 	modding_core.process_data_mods()
-	modding_core.fix_main_data()
+	modding_core.fix_main_data_postload()
 	
 	#LoadEventData()
 #	if globalsettings.fullscreen == true:

@@ -167,15 +167,12 @@ func process_data_file(path : String, file: String, tablename : String):
 	
 	#incomplete
 
-func fix_main_data():#fixing incomplete data in core files, mostly moved from globals
+func fix_main_data_preload():#fixing incomplete data in core files, mostly moved from globals
 	for i in Skilldata.professions.values():
 		i.name = tr("PROF" + i.code.to_upper())
 		i.descript = tr("PROF" + i.code.to_upper()+"DESCRIPT")
 		if i.has('altname'):
 			i.altname = tr("PROF"+i.code.to_upper()+"ALT")
-		if typeof(i.icon) == TYPE_STRING:
-			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
-			else: i.icon = images.icons[i.icon]
 	
 	for i in Items.materiallist.values():
 		i.name = tr("MATERIAL" + i.code.to_upper())
@@ -194,18 +191,11 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 			i.dialogue_text = tr("DIALOGUE" +i.code.to_upper() + "TEXT")
 		if i.has('dialogue_report'):
 			i.dialogue_report = tr("DIALOGUE" + i.code.to_upper() + "REPORT")
-		if typeof(i.icon) == TYPE_STRING:
-			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
-			else: i.icon = images.icons[i.icon]
-		if i.has('charges') and typeof(i.charges) == TYPE_REAL: i.charges = int(i.charges)
 	
 	for i in races.racelist.values():
 		i.name = tr("RACE" + i.code.to_upper())
 		i.descript = tr("RACE" + i.code.to_upper() + 'DESCRIPT')
 		i.adjective = tr("RACE" + i.code.to_upper() + "ADJ")
-		if typeof(i.icon) == TYPE_STRING:
-			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
-			else: i.icon = images.icons[i.icon]
 	
 	for i in races.tasklist.values():
 		i.name = tr("TASK" + i.code.to_upper())
@@ -214,17 +204,11 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 	for i in Traitdata.sex_traits.values():
 		i.name = tr("SEXTRAIT" + i.code.to_upper())
 		i.descript = tr("SEXTRAIT" + i.code.to_upper() + "DESCRIPT")
-#		if typeof(i.icon) == TYPE_STRING:
-#			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
-#			else: i.icon = images.icons[i.icon]
 	
 	for i in Traitdata.traits.values():
 		i.name = tr("TRAIT" + i.code.to_upper())
 		i.descript = tr("TRAIT" + i.code.to_upper() + "DESCRIPT")
-		if typeof(i.icon) == TYPE_STRING:
-			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
-			else: i.icon = images.icons[i.icon]
-		
+	
 	for i in world_gen.dungeons.values():
 		i.classname = tr("LOCATIONNAME" + i.code.to_upper())
 	
@@ -241,6 +225,30 @@ func fix_main_data():#fixing incomplete data in core files, mostly moved from gl
 		var ss = S_Skill_legacy.new()
 		ss.createfromskill(s)
 		Skilldata.Skilllist[s] = ss.convert_to_new_template()
+
+func fix_main_data_postload():#fixing incomplete data in core files, mostly moved from globals
+	for i in Skilldata.professions.values():
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
+	
+	
+	for i in Skilldata.Skilllist.values():
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
+		if i.has('charges') and typeof(i.charges) == TYPE_REAL: i.charges = int(i.charges)
+	
+	for i in races.racelist.values():
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
+	
+	for i in Traitdata.traits.values():
+		if typeof(i.icon) == TYPE_STRING:
+			if i.icon.is_abs_path(): i.icon = input_handler.load_image_from_path(i.icon)
+			else: i.icon = images.icons[i.icon]
+	
 
 
 func fix_indexes_array(arr: Array):
@@ -268,7 +276,9 @@ func process_dir(table_name, dir_name, location_dir):
 	var table = tables[table_name]
 	if !table.has(dir_name): return
 	var dir = table[dir_name]
-	for key in dir.keys(): location_dir[key] = dir[key]
+	for key in dir.keys(): 
+		var patch = dir[key]
+		for k in patch: location_dir[key][k] = patch[k]
 
 func process_images_dir(table_name, dir_name, location_dir):
 	var table = tables[table_name]
