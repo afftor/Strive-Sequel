@@ -282,6 +282,7 @@ margin_bottom = 259.935
 custom_styles/panel = ExtResource( 32 )
 
 [node name="MaterialSetupPanel" type="Panel" parent="NumberSelect"]
+editor/display_folded = true
 margin_left = 53.0
 margin_top = 216.0
 margin_right = 1082.0
@@ -479,17 +480,16 @@ margin_top = 100.0
 margin_right = 120.0
 margin_bottom = 124.0
 custom_fonts/font = ExtResource( 41 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 2
 
-[node name="Label" type="Label" parent="NumberSelect/MaterialSelect/Container/VBoxContainer/Button"]
+[node name="Label" type="RichTextLabel" parent="NumberSelect/MaterialSelect/Container/VBoxContainer/Button"]
 margin_left = 164.0
-margin_top = 30.0
-margin_right = 512.0
-margin_bottom = 97.0
-text = "Material"
-align = 1
-valign = 1
+margin_top = 10.0
+margin_right = 548.0
+margin_bottom = 115.0
+bbcode_enabled = true
 
 [node name="PartLabel" type="Label" parent="NumberSelect/MaterialSelect"]
 margin_left = 151.0

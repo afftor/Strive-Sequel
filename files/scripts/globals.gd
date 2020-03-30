@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.1.6'
+const gameversion = '0.2.0'
 
 var start_new_game = false
 

@@ -10,6 +10,7 @@ var positiondict = {
 	6 : "LocationGui/Positions/HBoxContainer/backrow/6",
 }
 
+
 func _ready():
 	input_handler.exploration_node = self
 	globals.AddPanelOpenCloseAnimation($QuestPanel)
@@ -25,9 +26,6 @@ func _ready():
 	globals.AddPanelOpenCloseAnimation($FactionDetailsPanel)
 	globals.AddPanelOpenCloseAnimation($SlaveSelectionPanel)
 	for i in positiondict:
-		#get_node(positiondict[i]).connect('pressed', self, 'selectfighter', [i])
-		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_explore_spells', [i])
-		#get_node(positiondict[i]).connect('mouse_entered', self, 'show_heal_items', [i])
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
 		get_node(positiondict[i]).target_function = 'slave_position_selected'
@@ -207,7 +205,7 @@ func select_location(location):
 			open_location(data)
 
 var city_options = {
-	location_purchase = "Buy Dungeon Location",
+	#location_purchase = "Buy Dungeon Location",
 	quest_board = "Notice Board",
 }
 
@@ -233,9 +231,15 @@ func open_city(city):
 	if active_area.has('capital_background_music'):
 		input_handler.SetMusic(active_area.capital_background_music)
 	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
-	var newbutton
-	
+	var array = []
 	for i in active_area.factions.values():
+		array.append(i)
+	
+	array.sort_custom(self, 'sort_factions')
+	
+	
+	var newbutton
+	for i in array:
 		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 		newbutton.text = i.name
 		newbutton.connect("pressed", self, "enter_guild", [i])
@@ -245,7 +249,7 @@ func open_city(city):
 	for i in active_area.capital_options:
 		newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 		newbutton.text = city_options[i]
-		newbutton.connect("pressed", self, i)#"purchase_location_list")
+		newbutton.connect("pressed", self, i)
 	
 	for i in active_area.events:
 		if state.checkreqs(i.reqs) == false:
@@ -255,6 +259,18 @@ func open_city(city):
 		newbutton.connect("pressed", input_handler, "interactive_message", [i.code,'area_oneshot_event',i.args])
 		newbutton.connect("pressed", self, "open_city", [city])
 		newbutton.modulate = Color(0.5,0.8,0.5)
+
+var guild_order = ['fighters','workers','servants','mages','slavemarket']
+
+func sort_factions(first, second):
+	if guild_order.has(first.code):
+		if guild_order.has(second.code):
+			if guild_order.find(first.code) < guild_order.find(second.code):
+				return true
+			else:
+				return false
+		else:
+			return true
 
 var faction_actions = {
 	hire = 'Hire',
@@ -893,7 +909,7 @@ func purchase_location(purchasing_location):
 		for i in active_area.locationpool:
 			randomlocation.append(world_gen.dungeons[i].code)
 		randomlocation = randomlocation[randi()%randomlocation.size()]
-		randomlocation = world_gen.make_location(randomlocation, active_area, purchasing_location.code)
+		randomlocation = world_gen.make_location(randomlocation, active_area)
 		input_handler.active_location = randomlocation
 		active_area.locations[randomlocation.id] = randomlocation
 		state.location_links[randomlocation.id] = {area = active_area.code, category = 'locations'} 

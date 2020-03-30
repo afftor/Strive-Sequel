@@ -92,6 +92,7 @@ func _ready():
 		#character.armor = 135
 		character.wits = 20
 		character.charm_factor = 3
+		character.physics_factor = 5
 		#character.unlock_class("worker")
 		character.mp = 50
 		character.unlock_class("sadist")
@@ -217,7 +218,7 @@ func _ready():
 		#$SlaveList.rebuild()
 		state.show_tutorial = true
 		state.active_quests.append({code = "guilds_introduction", stage = 'stage3'})
-		state.mainprogress = 1
+		state.mainprogress = 0
 		for i in state.areas.plains.factions.values():
 			i.totalreputation += 500
 		character.unlock_class("pet")
@@ -230,10 +231,10 @@ func _ready():
 		character.base_exp = 500
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('mages_join_reward'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
-		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
+		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message('event_good_rebels_beastkin', '', {})
+		input_handler.interactive_message('lich_enc_initiate', '', {})
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
 		

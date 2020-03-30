@@ -225,7 +225,6 @@ Etiam sodales, turpis id finibus tincidunt, urna augue cursus magna, quis rutrum
 In aliquam augue tellus, ut aliquam nisi condimentum id. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc eros enim, semper ut condimentum ultrices, placerat et turpis. Proin at felis sed ex malesuada congue. Ut quis feugiat urna, nec sodales arcu. Morbi dignissim massa felis, in varius massa faucibus vitae. Proin ut eleifend felis. Etiam imperdiet velit non dictum consectetur. Maecenas id mattis risus. Cras quis ante mollis, pulvinar eros eu, dapibus dui. Integer massa est, scelerisque at placerat eu, interdum eget urna. Vestibulum nunc justo, tristique vitae eros non, efficitur auctor lorem. Praesent porttitor nibh vitae purus aliquet, quis dignissim lorem laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in arcu sollicitudin, bibendum arcu sed, fringilla nibh. Quisque pulvinar convallis elit quis aliquam."
 
 [node name="MenuPanel" parent="." instance=ExtResource( 18 )]
-visible = false
 margin_left = 740.0
 margin_top = 160.0
 margin_right = 1106.0

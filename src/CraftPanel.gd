@@ -75,7 +75,7 @@ func rebuild_scheldue():
 		var recipe = Items.recipes[i.code]
 		var item = Items[recipe.resultitemtype + 'list'][recipe.resultitem]
 		newnode.get_node("icon").texture = item.icon
-		if item.type == 'gear':
+		if item.type == 'gear' && item.crafttype == 'modular':
 			newnode.get_node("icon").material = load("res://files/ItemShader.tres").duplicate()
 		newnode.get_node("Label").text = item.name + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
@@ -159,7 +159,7 @@ func rebuild_recipe_list():
 				var newnode = globals.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var partdata = Items.Parts[k]
 				newnode.texture = partdata.icon
-				newnode.hint_tooltip = "Materials required for: " + partdata.name
+				newnode.hint_tooltip = "Materials required for: " + tr(partdata.name)
 				newnode.get_node("Label").text = str(item.parts[k])
 		
 		
@@ -265,14 +265,20 @@ func selectcraftitem(item):
 		
 		$NumberSelect/MaterialSetupPanel/Part1.set_meta('part',array[0])
 		$NumberSelect/MaterialSetupPanel/Part1.set_meta('cost',item.parts[array[0]])
-		$NumberSelect/MaterialSetupPanel/Part2.set_meta('part',array[1])
-		$NumberSelect/MaterialSetupPanel/Part2.set_meta('cost',item.parts[array[1]])
-		if array.size() < 3:
-			$NumberSelect/MaterialSetupPanel/Part3.hide()
-		else:
-			$NumberSelect/MaterialSetupPanel/Part3.show()
-			$NumberSelect/MaterialSetupPanel/Part3.set_meta('part',array[2])
-			$NumberSelect/MaterialSetupPanel/Part3.set_meta('cost',item.parts[array[3]])
+		$NumberSelect/MaterialSetupPanel/Part2.hide()
+		$NumberSelect/MaterialSetupPanel/Part3.hide()
+		match array.size():
+			2:
+				$NumberSelect/MaterialSetupPanel/Part2.show()
+				$NumberSelect/MaterialSetupPanel/Part2.set_meta('part',array[1])
+				$NumberSelect/MaterialSetupPanel/Part2.set_meta('cost',item.parts[array[1]])
+			3:
+				$NumberSelect/MaterialSetupPanel/Part2.show()
+				$NumberSelect/MaterialSetupPanel/Part2.set_meta('part',array[1])
+				$NumberSelect/MaterialSetupPanel/Part2.set_meta('cost',item.parts[array[1]])
+				$NumberSelect/MaterialSetupPanel/Part3.show()
+				$NumberSelect/MaterialSetupPanel/Part3.set_meta('part',array[2])
+				$NumberSelect/MaterialSetupPanel/Part3.set_meta('cost',item.parts[array[3]])
 
 
 func choosematerial(button):
@@ -282,7 +288,7 @@ func choosematerial(button):
 	var part = button.get_meta('part')
 	var cost = button.get_meta('cost')
 	
-	var text = Items.Parts[part].name + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
+	var text = tr(Items.Parts[part].name) + ' - ' + tr('REQUIREDMATERIAL') + ': ' + str(cost)
 	$NumberSelect/MaterialSelect/PartLabel.text = text
 	
 	for i in Items.materiallist.values():
@@ -295,7 +301,14 @@ func choosematerial(button):
 			$NumberSelect/MaterialSelect/Container/VBoxContainer.add_child(newbutton)
 			newbutton.get_node('Icon').texture = i.icon
 			newbutton.get_node("amount").text = str(tempmaterial)
-			newbutton.get_node("Label").text = i.name
+			var parttext = '[center]' + tr(i.name) + '[/center]\n'
+			for k in i.parts[part]:
+				if Items.itemlist[itemtemplate].itemtype == 'armor':
+					parttext += globals.statdata[k].name + ": " +  str(float(i.parts[part][k])/2) + ", "
+				else:
+					parttext += globals.statdata[k].name + ": " +  str(i.parts[part][k]) + ", "
+			parttext = parttext.substr(0, parttext.length()-2)
+			newbutton.get_node("Label").bbcode_text = parttext
 			globals.connecttexttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
 			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
 			
@@ -306,7 +319,7 @@ func selectmaterial(material, part, cost):
 	chosenpartbutton.get_node('TextureRect').hide()
 	chosenpartbutton.get_node("number").text = str(cost)
 	chosenpartbutton.get_node("number").show()
-	var text = Items.Parts[part].name + "\n" 
+	var text = tr(Items.Parts[part].name) + "\n" 
 	$NumberSelect/MaterialSelect.hide()
 	checkcreatingitem(itemtemplate)
 	for i in material.parts[part]:
@@ -314,8 +327,10 @@ func selectmaterial(material, part, cost):
 			var endvalue = material.parts[part][i]
 			if Items.itemlist[itemtemplate].basemods.has(i):
 				endvalue = material.parts[part][i]*float(Items.itemlist[itemtemplate].basemods[i])
+			if Items.itemlist[itemtemplate].itemtype == 'armor':
+				endvalue = float(endvalue) / 2
 			if endvalue != 0:
-				text += '\n' + Items.stats[i] + ': ' + str(endvalue)
+				text += '\n' + tr(Items.stats[i]) + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
 				text += '\n' + Effectdata.effects[k].descript

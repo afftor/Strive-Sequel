@@ -2631,3 +2631,11 @@ func wit_f_set(value):
 
 func sex_f_set(value):
 	sexuals_factor = clamp(value, variables.minimum_factor_value, variables.maximum_factor_value)
+
+func lockpick_chance(): #used for chest opening
+	var base_chance = randf()*5+5
+	var secondary_chance = get_stat('wits')/5
+	if traits.has('lockpicking'):
+		secondary_chance = secondary_chance*4 + (randf()*5+5)
+	
+	return base_chance + secondary_chance

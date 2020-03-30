@@ -304,6 +304,12 @@ func valuecheck(dict):
 			var data = world_gen.get_faction_from_code(dict.code)
 			var guild = areas[data.area].factions[data.code]
 			return input_handler.operate(dict.operant, guild.totalreputation, dict.value)
+		'group_size':
+			var counter = 0
+			for i in characters.values():
+				if i.location == input_handler.active_location.id:
+					counter += 1
+			return input_handler.operate(dict.operant, counter, dict.value)
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -572,7 +578,7 @@ func common_effects(effects):
 			'update_guild':
 				input_handler.exploration_node.enter_guild(input_handler.active_faction)
 			'create_character':
-				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave'])
+				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':
 				mainprogress = input_handler.math(i.operant, mainprogress, i.value)
 			'progress_quest':

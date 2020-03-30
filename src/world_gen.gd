@@ -31,15 +31,16 @@ var lands = {
 		disposition = 100, #reputation, not currently used
 		population = [100000, 200000], #population, not currently used, but planned to be possible to affect its numbers
 		start_settlements_number = {settlement_small = [2,2]}, #will generate said locations on first generation
-		start_locations_number = 3, #will generate this number of smaller locations like dungeons
+		start_locations_number = 2, #will generate this number of smaller locations like dungeons
 		locations = {}, #array to fill up with settlements and dungeons
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'], #array of allowed locations to generate
+		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
 		events = [
 			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}}
 			
 			],
-		capital_options = ['quest_board','location_purchase'],
+		capital_options = ['quest_board'],#,'location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
@@ -60,8 +61,8 @@ var lands = {
 			energyshard = {min = 2, max = 5, chance = 1},
 			writ_of_exemption = {min = 1, max = 1, chance = 1},
 			trap = {min = 5, max = 10, chance = 1},
-			itempool0 = {items = ['dagger'], min = 1, max = 2, chance = 1},
-			itempool1 = {items = ['sword','axe','pickaxe','hammer','fishingtools','sickle','bow','staff','hunt_knife'], min = 3, max = 6, chance = 0.8},
+			itempool0 = {items = ['dagger','club'], min = 1, max = 2, chance = 1},
+			itempool1 = {items = ['sword','axe','spear','pickaxe','hammer','fishingtools','sickle','bow','staff','hunt_knife'], min = 3, max = 6, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','chest_base_metal','legs_base_cloth','legs_base_leather','legs_base_metal'], min = 1, max = 3, chance = 0.8},
 			itempool3 = {items = ['leather_collar','animal_ears','animal_gloves','maid_dress','worker_outfit','lacy_underwear','handcuffs','strapon','anal_beads'], min = 3, max = 6, chance = 0.8},
 			itempool4 = {items = ['beer','alcohol','aphrodisiac','hairdye'], min = 4, max = 8, chance = 0.8},
@@ -82,9 +83,9 @@ var lands = {
 		disposition = 25,
 		population = [20000, 50000],
 		start_settlements_number = {settlement_small = [1,1]},
-		start_locations_number = 3, 
 		locations = {},
 		locationpool = ['dungeon_bandit_den','dungeon_goblin_cave'],
+		starting_locations = [],
 		guilds = [],
 		events = [],
 		capital_options = [],
@@ -100,7 +101,7 @@ var lands = {
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 3, max = 5, chance = 1},
 			obsidian = {min = 3, max = 5, chance = 0.7},
-			itempool1 = {items = ['sword','bow','staff'], min = 2, max = 4, chance = 0.8},
+			itempool1 = {items = ['sword','bow','dagger','spear','staff'], min = 2, max = 4, chance = 0.8},
 			itempool2 = {items = ['chest_base_cloth','chest_base_leather','legs_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			},
 		capital_background = 'elf_capital',
@@ -119,7 +120,7 @@ var lands = {
 		disposition = 15,
 		population = [10000, 30000],
 		start_settlements_number = {settlement_small = [1,1]},
-		start_locations_number = 1, 
+		starting_locations = [],
 		locations = {},
 		locationpool = ['dungeon_goblin_cave'],
 		guilds = [],
@@ -137,7 +138,7 @@ var lands = {
 		disposition = 15,
 		population = [10000, 30000],
 		start_settlements_number = {settlement_small = [1,1]},
-		start_locations_number = 2, 
+		starting_locations = [],
 		locations = {},
 		locationpool = ['dungeon_goblin_cave'],
 		guilds = [],
@@ -155,7 +156,7 @@ var lands = {
 		disposition = 15,
 		population = [10000, 30000],
 		start_settlements_number = {},
-		start_locations_number = 0, 
+		starting_locations = [],
 		locations = {},
 		locationpool = ['dungeon_bandit_den'],
 		guilds = [],
@@ -179,9 +180,9 @@ func make_area(code):
 		while number > 0:
 			make_settlement(i, areadata)
 			number -= 1
-	while areadata.start_locations_number > 0:
-		var location = make_location(areadata.locationpool[randi()%areadata.locationpool.size()], areadata)
-		areadata.start_locations_number -= 1
+	#while areadata.start_locations_number > 0:
+	for i in areadata.starting_locations:
+		var location = make_location(i, areadata)
 		areadata.locations[location.id] = location
 		state.location_links[location.id] = {area = code, category = 'locations'} 
 		input_handler.active_location = location
@@ -303,7 +304,7 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],#['warriors_dungeon_easy','warriors_monster_hunt_easy','warriors_fighter_slave_easy'],
+		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -561,7 +562,7 @@ var locations = {
 			fleawarts = {min = 5, max = 10, chance = 0.8},
 			salvia = {min = 2, max = 6, chance = 0.6},
 			lifeshard = {min = 3, max = 6, chance = 0.9},
-			itempool1 = {items = ['axe','pickaxe','hammer','fishingtools','sickle','hunt_knife'], min = 1, max = 3, chance = 0.8},
+			itempool1 = {items = ['axe','pickaxe','hammer','fishingtools','sickle','hunt_knife','dagger','club'], min = 1, max = 3, chance = 0.8},
 			itempool2 = {items = ['worker_outfit','craftsman_suit','steel_collar'], min = 1, max = 4, chance = 0.5},
 			itempool3 = {items = ['chest_base_leather','chest_base_cloth','legs_base_leather'], min = 1, max = 2, chance = 0.8},
 			itempool4 = {items = ['beer','lifegem'], min = 2, max = 6, chance = 0.6},
@@ -576,7 +577,7 @@ var locations = {
 	},
 }
 
-func make_location(code, area, difficulty = 'easy'):
+func make_location(code, area):
 	var location = dungeons[code].duplicate(true)
 	var text = location.name
 	if locationnames.has(location.name+'_adjs'):
@@ -587,26 +588,25 @@ func make_location(code, area, difficulty = 'easy'):
 	location.id = "L" + str(state.locationcounter)
 	location.travel_time = round(rand_range(1,4))
 	location.code = code
-	var levelnumber = round(rand_range(location.difficulties[difficulty].levels[0], location.difficulties[difficulty].levels[1]))
+	var levelnumber = round(rand_range(location.levels[0], location.levels[1]))
 	location.levels = {}
 	while levelnumber > 0:
-		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.difficulties[difficulty].stages_per_level[0], location.difficulties[difficulty].stages_per_level[1]))}
+		location.levels["L"+str(levelnumber)] = {stages = round(rand_range(location.stages_per_level[0], location.stages_per_level[1]))}
 		levelnumber -= 1
 	location.group = {}
-	location.resources = location.difficulties[difficulty].resources
-	location.randomevents = location.difficulties[difficulty].eventarray
+	location.resources = location.resources
+	location.randomevents = location.eventarray
 	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
 	location.stagedenemies = []
-	location.difficulty = difficulty
-	location.enemies = location.difficulties[difficulty].enemyarray.duplicate(true)
+	location.enemies = location.enemyarray.duplicate(true)
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
 		location.erase("background_pool")
-	if location.difficulties[difficulty].has("final_enemy"):
-		var bossenemy = input_handler.weightedrandom(location.difficulties[difficulty].final_enemy)
+	if location.has("final_enemy"):
+		var bossenemy = input_handler.weightedrandom(location.final_enemy)
 		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
-		if location.difficulties[difficulty].final_enemy_type == 'character':
+		if location.final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 	
@@ -747,12 +747,12 @@ var questdata = {
 		code = 'warriors_threat_easy',
 		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
-		randomconditions = [{code = 'complete_location', type = ['basic_threat_rebels'], difficulty = 'easy'}],
+		randomconditions = [{code = 'complete_location', type = ['basic_threat_rebels']}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
 		[1, {code = 'gold', range = [125,175]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','bow']}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow']}],
 		],
 		time_limit = [8,12],
 	},
@@ -760,12 +760,12 @@ var questdata = {
 		code = 'warriors_dungeon_easy',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
-		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave'], difficulty = 'easy'}],
+		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave']}],
 		unlockreqs = [],
 		reputation = [150,250],
 		rewards = [
 		[1, {code = 'gold', range = [200,300]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','bow']}, {code = 'gold', range = [25,50]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [25,50]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
 		],
 		time_limit = [12,16],
@@ -779,7 +779,7 @@ var questdata = {
 		reputation = [100,150],
 		rewards = [
 		[1, {code = 'gold', range = [125,150]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','bow']}, {code = 'gold', range = [10,30]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',1]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [10,30]}],
 		],
 		time_limit = [8,12],
 	},
@@ -1015,7 +1015,7 @@ func make_quest_location(quest,area,req):
 	var locationdata = {}
 	locationdata.id = "L" + str(state.locationcounter)
 	state.locationcounter += 1
-	locationdata = make_location(req.type, area, req.difficulty)
+	locationdata = make_location(req.type, area)
 	req.locationname = locationdata.name
 	match req.code:
 		'complete_dungeon':
@@ -1051,8 +1051,14 @@ func make_chest_loot(chest):
 	var data
 	if typeof(chest) == TYPE_STRING:
 		data = Enemydata.loot_chests_data[chest]
-	var dict = {materials = {}, items = []}
+	var dict = {materials = {}, items = [], lock = {difficulty = 0, type = 'none'}}
 	var location = input_handler.active_location
+	
+	if Enemydata.locks_data.has(chest):
+		dict.lock.type = input_handler.weightedrandom(Enemydata.locks_data[chest].locks)
+		if dict.lock.type != 'none':
+			dict.lock.difficulty = rand_range(Enemydata.locks_data[chest].difficulty[0], Enemydata.locks_data[chest].difficulty[1])
+	
 	for i in data:
 		match i.code:
 			'defined':
@@ -1169,16 +1175,13 @@ var dungeons = {
 		name = 'Threat - Wild wolves',
 		classname = '',
 		descript = 'Farmers report a pack of wild wolves attacking their flock.',
+		difficulty = 'easy',
 		background = 'cave_1',
-		difficulties = {
-			easy = {code = 'easy', 
-			enemyarray =  [["wolves_easy1", 1]], 
-			eventarray = [], 
-			levels = [1,1], 
-			resources = [],
-			stages_per_level = [1,1]
-			},
-		},
+		enemyarray =  [["wolves_easy1", 1]], 
+		eventarray = [], 
+		levels = [1,1], 
+		resources = [],
+		stages_per_level = [1,1],
 		events = [
 		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'wolves_skirmish_start', args = {}}},
 		],
@@ -1189,80 +1192,17 @@ var dungeons = {
 		name = 'Threat - Rebels',
 		classname = '',
 		descript = "A group of rebels terrorize local villagers.",
+		difficulty = 'easy',
 		background = 'cave_1',
-		difficulties = {
-			easy = {code = 'easy', 
-			enemyarray =  [["rebels_small", 1]], 
-			eventarray = [], 
-			levels = [1,1], 
-			resources = [],
-			stages_per_level = [1,1]
-			},
-		},
+		enemyarray =  [["rebels_small", 1]], 
+		eventarray = [], 
+		levels = [1,1], 
+		resources = [],
+		stages_per_level = [1,1],
 		events = [
 		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'rebels_skirmish_start', args = {}}},
 		],
 	},
-#	dungeon_tutorial = {
-#		code = 'dungeon_tutorial',
-#		type = 'dungeon',
-#		name = '',
-#		singlename = 'Sewers',
-#		classname = '',
-#		descript = '',
-#		background = '',
-#		default_difficulty = 'easy',
-#		difficulties = {
-#			easy = {code = 'easy', 
-#			enemyarray =  [["rats_easy", 1]], 
-#			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-#			eventarray = [], 
-#			levels = [1,1], 
-#			resources = [],
-#			stages_per_level = [3,3]
-#			}
-#		},
-#		affiliation = 'local', #defines character races and events
-#		events = [],
-#	},
-	
-#	skirmish_bandit_camp = {
-#		code = 'skirmish_bandit_camp',
-#		type = 'skirmish',
-#		name = '',
-#		classname = '',
-#		descript = '',
-#		background = '',
-#		levels = [1,1],
-#		stages_per_level = [1,1],
-#		difficulty = 'easy',
-#		enemies = [["rats_easy", 1]],
-#		final_enemy = [['bandits_easy_boss',1]],
-#		final_enemy_type = 'character',
-#		final_enemy_class = ['combat'],
-#		affiliation = 'local', #defines character races and events
-#		events = [],
-#	},
-#	skirmish_forest_wolves = {
-#		code = 'skirmish_forest_wolves',
-#		type = 'skirmish',
-#		name = '',
-#		classname = '',
-#		descript = '',
-#		background = '',
-#		levels = [1,1],
-#		stages_per_level = [1,1],
-#		difficulty = 'easy',
-#		enemies = [["wolves_easy1", 1]],
-#		final_enemy = [['bandits_easy_boss',1]],
-#		final_enemy_type = 'monster',
-#		affiliation = 'local', #defines character races and events
-#		events = [],
-#
-#
-#
-#
-#	},
 	
 	
 	dungeon_bandit_den = {
@@ -1271,34 +1211,54 @@ var dungeons = {
 		name = 'bandit_den',
 		classname = '',
 		descript = '',
+		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
+		enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
+		levels = [2,3], 
+		resources = ['cloth','leather','iron','wood','clothsilk'],
+		stages_per_level = [2,3],
 		bgm = "dungeon",
-		difficulties = {
-			easy = {code = 'easy', 
-			enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
-			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
-			levels = [2,3], 
-			resources = ['cloth','leather','iron','wood','clothsilk'],
-			stages_per_level = [2,3]
-			},
-			medium = {code = 'medium', 
-			enemyarray =  [['bandits_easy3', 1],['bandits_medium', 2],['bandits_assassin', 1], ['bandits_medium_bear', 1], ['bandits_golem', 1]], 
-			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
-			levels = [3,5], 
-			resources = ['cloth','leather','iron','wood','clothsilk'],
-			stages_per_level = [3,4]
-			},
-			hard = {code = 'hard', 
-			enemyarray =  [['bandits_raptors', 2],['bandits_ballista', 1], ['bandits_assassin2', 1],['bandits_medium_bear', 1], ['bandits_golem', 1]], 
-			final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
-			levels = [4,6], 
-			resources = ['cloth','leather','iron','wood','clothsilk'],
-			stages_per_level = [4,5]
-			},
-		},
+		puchase_price = 100,
+		affiliation = 'local', #defines character races and events
+		events = [],
+	},
+	dungeon_bandit_fort = {
+		code = 'dungeon_bandit_fort',
+		type = 'dungeon',
+		name = 'bandit_den',
+		classname = '',
+		descript = '',
+		difficulty = 'medium',
+		background_pool = ['cave_1', 'cave_2', 'cave_3'],
+		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]], 
+		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
+		levels = [2,3], 
+		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
+		stages_per_level = [2,3],
+		bgm = "dungeon",
+		puchase_price = 100,
+		affiliation = 'local', #defines character races and events
+		events = [],
+	},
+	dungeon_undead_crypt = {
+		code = 'dungeon_undead_crypt',
+		type = 'dungeon',
+		name = 'crypt',
+		classname = '',
+		difficulty = 'medium',
+		descript = '',
+		background_pool = ['cave_1', 'cave_2', 'cave_3'],
+		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]], 
+		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
+		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
+		levels = [2,3], 
+		resources = ['bone','leather','boneancient','woodmagic','clothsilk','iron','mithril'],
+		stages_per_level = [2,3],
+		bgm = "dungeon",
+		puchase_price = 200,
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
@@ -1310,32 +1270,14 @@ var dungeons = {
 		descript = '',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		bgm = "dungeon",
-		difficulties = {
-			easy = {code = 'easy', 
-			enemyarray =  [["rats_easy", 1],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
-			levels = [2,3], 
-			resources = ['bone','leather','stone','wood'],
-			stages_per_level = [2,3]
-			},
-			medium = {code = 'medium', 
-			enemyarray =  [['goblins_easy', 1],['spiders_many', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
-			levels = [3,4], 
-			resources = ['leatherthick','iron','woodiron','bone','boneancient'],
-			stages_per_level = [2,4]
-			},
-			hard = {code = 'hard', 
-			enemyarray =  [['goblins_easy', 1],['spiders_many', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
-			levels = [5,6], 
-			resources = ['leatherthick','iron','woodiron','bone','boneancient'],
-			stages_per_level = [4,6]
-			},
-		},
+		enemyarray =  [["rats_easy", 1],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
+		levels = [2,3], 
+		resources = ['bone','leather','stone','wood'],
+		stages_per_level = [2,3],
+		difficulty = 'easy',
+		puchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
@@ -1345,34 +1287,16 @@ var dungeons = {
 		name = 'grove',
 		classname = '',
 		descript = '',
+		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		bgm = "dungeon",
-		difficulties = {
-			easy = {code = 'easy', 
-			enemyarray = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1]],
-			final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
-			eventarray = [['dungeon_find_chest_easy', 1]],
-			levels = [2,3],
-			resources = ['cloth','leather','iron','wood'],
-			stages_per_level = [2,4],
-			},
-		},
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
-	dungeon_crypt = {
-		code = 'dungeon_crypt',
-		type = 'dungeon',
-		name = 'crypt',
-		classname = '',
-		descript = '',
-		background = '',
+		enemyarray = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+		eventarray = [['dungeon_find_chest_easy', 1]],
 		levels = [2,3],
+		resources = ['cloth','leather','iron','wood'],
 		stages_per_level = [2,4],
-		difficulty = 'easy',
-		enemies = [["rats_easy", 1]],
-		final_enemy = [['goblins_easy_boss',1]],
-		final_enemy_type = 'monster',
+		puchase_price = 100,
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},

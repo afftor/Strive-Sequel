@@ -989,7 +989,7 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'caster',
 				args = [{obj = 'app_obj', param = 'hpmax'}],
-				atomic = [{type = 'stat_add', stat = 'hp', value = [['parent_args', 0],'*',-0.75]}],
+				atomic = [{type = 'stat_add', stat = 'hp', value = [['parent_args', 0],'*',-0.20]}],
 				buffs = [],
 				sub_effects = []
 			}

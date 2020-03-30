@@ -1500,3 +1500,18 @@ func election_quest_text():
 	text += "\nTotal support: " + str(counter) + "/3"
 	
 	return text
+
+func lock_difficulty(value):
+	var text = ''
+	if value < 25:
+		text = 'Very Easy'
+	elif value < 45:
+		text = 'Easy'
+	elif value < 65:
+		text = 'Medium'
+	elif value < 85:
+		text = "Hard"
+	else:
+		text = "Very Hard"
+		
+	return text

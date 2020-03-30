@@ -62,7 +62,7 @@ func mining_mythril(character):
 	return 1 + (1*(character.get_stat('physics')/30))
 
 func whoring_gold(character):
-	return (1 + character.get_stat('sexuals')/25 + character.get_stat('charm')/50)
+	return (1 + character.get_stat('sexuals')/40 + character.get_stat('charm')/80)
 
 func cooking_progress(character):
 	return 1 + (1*(character.get_stat('wits')/50))
@@ -501,7 +501,7 @@ var racelist = {
 			charm_factor = [1,3],
 			wits_factor = [2,4],
 		},
-		race_bonus = {hpfactor = 1.3, mod_smith = 0.15},
+		race_bonus = {hpfactor = 1.25, mod_smith = 0.15},
 		personality = {kind = 0.5, bold = 1, shy = 0.2, serious = 0.8},
 		diet_love = {vege = 0.3, meat = 1, fish = 1, grain = 1},
 		diet_hate = {vege = 35, meat = 10, fish = 15, grain = 15},

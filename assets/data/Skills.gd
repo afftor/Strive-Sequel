@@ -1276,7 +1276,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = ['caster.matk','*2']
+		value = ['caster.matk','*3']
 	},
 	fly_evasion = {#buff on self: +25 evasion for 4 turns
 		code = 'fly_evasion',
