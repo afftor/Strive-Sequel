@@ -821,7 +821,8 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 			check = height in ['tiny','petite']
 		'gear_equiped':
 			if ignore_npc_stats_gear == false:
-				check = check_gear_equipped(i.value)
+				if i.has('param'): check = check_gear_equipped(i.value, i.param)
+				else: check = check_gear_equipped(i.value)
 		'global_profession_limit':
 			check = check_profession_limit(i.name, i.value)
 		'race':
@@ -934,12 +935,12 @@ func decipher_single(i):
 					text2 += "Not allowed for " + i.value + "s."
 	return text2
 
-func check_gear_equipped(gearname):
+func check_gear_equipped(gearname, param = 'itembase'):
 	for i in gear.values():
 		if i == null:
 			continue
 		var tempgear = state.items[i]
-		if tempgear.itembase == gearname:
+		if tempgear.get(param)== gearname:
 			return true
 	return false
 
