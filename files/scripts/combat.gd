@@ -96,6 +96,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		input_handler.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
 	input_handler.emit_signal("CombatStarted", encountercode)
+	input_handler.ActivateTutorial("combat")
 	show()
 	globals.combat_node = self
 	turns = 0

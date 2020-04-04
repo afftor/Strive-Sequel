@@ -701,8 +701,9 @@ func createtestdummy(type = 'normal'):
 	person.vaginal_virgin = true
 	person.is_players_character = true
 	person.mods['hollownipples'] = 'hollownipples'
-	person.sex_traits = ['irresistible']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.consent = 10
+	person.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
+	person.consent = 500
+	newmember.consent = 500
 	for i in person.sex_skills:
 		person.sex_skills[i] += 100
 	#person.sex = 'male'
@@ -2195,19 +2196,12 @@ func endencounter():
 					if j.effect == 'exp_bonus':
 						bonus = input_handler.math(j.operant, bonus, j.value)
 					elif j.effect == 'consent_gain':
-						bonus = input_handler.math(j.operant, i.consentgain, j.value)
+						i.consentgain = input_handler.math(j.operant, i.consentgain, j.value)
 					else: call(j.effect, i)
 		
 		expgain = expgain*bonus
 		
 		
-		for k in i.sex_traits:
-			var trait = Traitdata.sex_traits[k]
-			for j in trait.effects:
-				if j.trigger == 'encounter_end':
-					match j.effect:
-						'consent_gain':
-							i.consentgain = input_handler.math(j.operant, i.consentgain, j.value)
 		
 		i.person.base_exp += expgain
 		text += "; Experience gained: " + str(expgain)

@@ -26,14 +26,6 @@ func open(scene):
 	
 	update_scene_characters()
 	
-	$RichTextLabel.modulate.a = 0
-	$ScrollContainer.modulate.a = 0
-	if self.visible == false:
-		self.visible = true
-		input_handler.UnfadeAnimation(self, 0.2)
-		$RichTextLabel.bbcode_text = ''
-		previous_text = ''
-		yield(get_tree().create_timer(0.2), "timeout")
 	if scene.has("character") == false:
 		$ImagePanel.show()
 		$CharacterImage.hide()
@@ -46,6 +38,14 @@ func open(scene):
 		$CharacterImage.texture = images.sprites[scene.character]
 		$CharacterImage.show()
 		#input_handler.UnfadeAnimation($CharacterImage,1)
+	$RichTextLabel.modulate.a = 0
+	$ScrollContainer.modulate.a = 0
+	if self.visible == false:
+		self.visible = true
+		input_handler.UnfadeAnimation(self, 0.2)
+		$RichTextLabel.bbcode_text = ''
+		previous_text = ''
+		yield(get_tree().create_timer(0.2), "timeout")
 	show()
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
@@ -94,7 +94,7 @@ func open(scene):
 	var counter = 1
 	var options = scene.options
 	for i in options:
-		yield(get_tree(), 'idle_frame')
+		#yield(get_tree(), 'idle_frame')
 		if i.has('remove_after_first_use') && state.selected_dialogues.has(i.text):
 			continue
 		var disable = false

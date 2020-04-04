@@ -173,14 +173,17 @@ texture = ExtResource( 6 )
 
 [node name="Date" type="Label" parent="TimeNode"]
 margin_left = 17.0
-margin_top = 70.0
+margin_top = 72.0
 margin_right = 275.0
-margin_bottom = 106.0
+margin_bottom = 108.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Date"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="2speed" type="TextureButton" parent="TimeNode"]
 visible = false

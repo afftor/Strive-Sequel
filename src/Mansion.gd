@@ -76,7 +76,7 @@ func _ready():
 	
 	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
-	if variables.generate_test_chars:# && false:
+	if variables.generate_test_chars:
 		state.revert()
 		state.make_world()
 		var character = Slave.new()
@@ -208,7 +208,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
+		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
 		globals.AddItemToInventory(globals.CreateGearItem("spear", {WeaponHandle = 'wood', Blade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
@@ -242,15 +242,12 @@ func _ready():
 	elif globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
-#		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
-#		input_handler.connect("CharacterCreated", input_handler, "get_spec_node", [input_handler.NODE_CHARCREATE, ['slave']], 4)
-#		yield(input_handler, "CharacterCreated")
-#		yield(input_handler, "CharacterCreated")
 		var newgame_node = Node.new()
 		newgame_node.set_script(load("res://src/GameStart.gd"))
 		newgame_node.start()
+		input_handler.GameStartNode = newgame_node
 		yield(input_handler, "StartingSequenceComplete")
-		
+		input_handler.GameStartNode.queue_free()
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
 		

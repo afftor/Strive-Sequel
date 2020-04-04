@@ -516,8 +516,9 @@ func confirm_return():
 	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
 func cancel_creation():
-	state.revert()
 	globals.CurrentScene.queue_free()
+	input_handler.GameStartNode.queue_free()
+	state.revert()
 	globals.ChangeScene('menu')
 	#get_parent().queue_free()
 

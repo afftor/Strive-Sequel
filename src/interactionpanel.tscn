@@ -125,7 +125,6 @@ bbcode_text = "Text2"
 text = "Text2"
 
 [node name="GridContainer" type="ScrollContainer" parent="Panel"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 582.0
@@ -219,7 +218,6 @@ custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -1900.56
@@ -471,7 +469,6 @@ size_flags_vertical = 2
 text = "Pass"
 
 [node name="bodyimage" type="TextureRect" parent="Panel"]
-editor/display_folded = true
 visible = false
 margin_left = 156.0
 margin_top = 21.0
@@ -625,7 +622,6 @@ size_flags_vertical = 2
 text = "Finish"
 
 [node name="blacklist" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 420.0
 margin_top = 34.0

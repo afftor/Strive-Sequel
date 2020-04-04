@@ -310,6 +310,12 @@ func valuecheck(dict):
 				if i.location == input_handler.active_location.id:
 					counter += 1
 			return input_handler.operate(dict.operant, counter, dict.value)
+		'location_has_specific_slaves': 
+			var counter = 0
+			for i in characters.values():
+				if i.location == dict.locaiton && i.checkreqs(dict.reqs) == true && get_master() != i:
+					counter += 1
+			return counter >= dict.value
 
 func if_master_is_beast(boolean):
 	var character = get_master()
@@ -606,6 +612,8 @@ func common_effects(effects):
 			'decision':
 				if !decisions.has(i.value):
 					decisions.append(i.value)
+			'screen_black_transition':
+				input_handler.BlackScreenTransition(i.value)
 
 func get_active_quest(code):
 	for i in active_quests:

@@ -9,6 +9,7 @@ var ShakingNodes = []
 var MousePositionScripts = []
 
 var CurrentScreen = 'menu'
+var GameStartNode
 
 var BeingAnimated = []
 var SystemMessageNode

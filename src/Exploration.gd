@@ -765,15 +765,21 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				globals.connectmaterialtooltip(newbutton, material)
 			'gold':
+				var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])
 				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
-				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = "Gold: " + str(i.value)
+				newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])) + "(Master Charm Bonus)"
 			'reputation':
-				newbutton.texture = images.icons.quest_reputation
+				var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor])
+				newbutton.texture = globals.quest_icons[i.code]
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = "Reputation (" + active_area.factions[quest.source].name + "): +" + str(i.value)
+				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor]))+ "(Master Charm Bonus)"
+#				newbutton.texture = images.icons.quest_reputation
+#				newbutton.get_node("amount").text = str(i.value)
+#				newbutton.get_node("amount").show()
+#				newbutton.hint_tooltip = "Reputation (" + active_area.factions[quest.source].name + "): +" + str(i.value)
 	
 	text += "\n\n{color=yellow|Requester: " + active_area.factions[quest.source].name + "}"
 	

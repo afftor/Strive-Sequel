@@ -305,6 +305,8 @@ bbcode_text = "0.2.0 (requires new save)
 Added save info
 Added slave delivery quests
 Added new item which changes slave status to peon
+Added Guilds leaders sprites
+Added background animations
 Slightly revamped some racial bonuses
 Lowered Knight's DEF bonus to 5
 Revamped def stats on gear and fixed incorrect calculations
@@ -314,6 +316,7 @@ Master can now start with Rogue class instead of Harlot
 Seen questions won't be showing as options anymore
 Starting slave classes in story mode are now restricted to selected guild
 High tier enemies have more elemental resists
+Master's charm now increase repeatable quests gold and reputation rewards
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells upscaling damage
 Fixed non-group locations having issues when returning characters 
@@ -321,7 +324,9 @@ Fixed failed quests with active locations not returning characters from those
 Fixed a number of small visual issues
 Fixed slaves during character creation having wrong type
 Fixed blindfold action causing issues in interaction sequence
-Fixed born slaves not having assigned class  correctly
+Fixed born slaves not having assigned class correctly
+Fixed some sex traits giving extra XP when they shouldn't
+Fixed game allowing to create more characters on new game after cancelling it 
 0.1.6
 Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests
@@ -447,6 +452,8 @@ text = "0.2.0 (requires new save)
 Added save info
 Added slave delivery quests
 Added new item which changes slave status to peon
+Added Guilds leaders sprites
+Added background animations
 Slightly revamped some racial bonuses
 Lowered Knight's DEF bonus to 5
 Revamped def stats on gear and fixed incorrect calculations
@@ -456,6 +463,7 @@ Master can now start with Rogue class instead of Harlot
 Seen questions won't be showing as options anymore
 Starting slave classes in story mode are now restricted to selected guild
 High tier enemies have more elemental resists
+Master's charm now increase repeatable quests gold and reputation rewards
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells upscaling damage
 Fixed non-group locations having issues when returning characters 
@@ -463,7 +471,9 @@ Fixed failed quests with active locations not returning characters from those
 Fixed a number of small visual issues
 Fixed slaves during character creation having wrong type
 Fixed blindfold action causing issues in interaction sequence
-Fixed born slaves not having assigned class  correctly
+Fixed born slaves not having assigned class correctly
+Fixed some sex traits giving extra XP when they shouldn't
+Fixed game allowing to create more characters on new game after cancelling it 
 0.1.6
 Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests

@@ -72,6 +72,8 @@ var sprites = {
 	empty = null,
 	amelia = load("res://assets/images/sprites/amelia.png"),
 	duncan = load("res://assets/images/sprites/duncan.png"),
+	sigmund = load("res://assets/images/sprites/sigmund.png"),
+	myr = load("res://assets/images/sprites/myr.png"),
 	}
 
 var dynamic_backgrounds = {

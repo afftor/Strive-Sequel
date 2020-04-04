@@ -146,6 +146,22 @@ var max_mp_per_magic_factor = 10
 
 var basic_lust_per_tick = 0.57
 
+var master_charm_quests_gold_bonus = {
+	1 : 0,
+	2 : 0.05,
+	3 : 0.1,
+	4 : 0.2,
+	5 : 0.3,
+	6 : 0.4,
+}
+var master_charm_quests_rep_bonus = {
+	1 : 0,
+	2 : 0.05,
+	3 : 0.1,
+	4 : 0.15,
+	5 : 0.2,
+	6 : 0.25,
+}
 
 
 #World settings

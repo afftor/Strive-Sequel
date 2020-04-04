@@ -1596,7 +1596,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_fireburst', duration = 3})], 
-		manacost = 5,
+		manacost = 8,
 		energycost = 0,
 		charges = 0,
 		combatcooldown = 0,
@@ -1945,7 +1945,7 @@ var Skilllist = {
 		damage_type = 'earth',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.65
+		value = 0.60
 	},
 	firebomb = {
 		code = 'firebomb',

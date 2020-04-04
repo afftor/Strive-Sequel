@@ -884,6 +884,7 @@ var scenedict = {
 	},
 	workers_introduction1 = {
 		image = null,
+		character = 'sigmund',
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "WORKERSINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
@@ -895,6 +896,7 @@ var scenedict = {
 	},
 	workers_introduction2 = {
 		image = null,
+		character = 'sigmund',
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "WORKERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
@@ -913,6 +915,7 @@ var scenedict = {
 	},
 	workers_join = {
 		image = null,
+		character = 'sigmund',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "WORKERSJOIN", reqs = []},
@@ -927,6 +930,7 @@ var scenedict = {
 	},
 	workers_leader_close = {
 		image = null,
+		character = 'sigmund',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "WORKERSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
@@ -938,6 +942,7 @@ var scenedict = {
 	},
 	workers_questions = {
 		image = null,
+		character = 'sigmund',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "WORKERSQUESTIONS_1", reqs = [], previous_dialogue_option = 1, remove_after_first_use = true},
@@ -953,6 +958,7 @@ var scenedict = {
 	},
 	mages_introduction1 = {
 		image = null,
+		character = 'myr',
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "MAGESINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
@@ -963,6 +969,7 @@ var scenedict = {
 	},
 	mages_introduction2 = {
 		image = null,
+		character = 'myr',
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "MAGESINTRODUCTION2", reqs = [], previous_dialogue_option = 1},
@@ -973,6 +980,7 @@ var scenedict = {
 	},
 	mages_introduction3 = {
 		image = null,
+		character = 'myr',
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "MAGESINTRODUCTION3_1", reqs = [], previous_dialogue_option = 1, remove_after_first_use = true},
@@ -988,6 +996,7 @@ var scenedict = {
 	},
 	mages_join = {
 		image = null,
+		character = 'myr',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "MAGESJOIN", reqs = []},
@@ -1002,6 +1011,7 @@ var scenedict = {
 	},
 	mages_leader_close = {
 		image = null,
+		character = 'myr',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "MAGESCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
@@ -1013,6 +1023,7 @@ var scenedict = {
 	},
 	mages_questions = {
 		image = null,
+		character = 'myr',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "MAGESQUESTIONS_1", reqs = [], previous_dialogue_option = 1},
@@ -1192,7 +1203,7 @@ var scenedict = {
 	},
 	
 	
-		lich_enc_initiate = {
+	lich_enc_initiate = {
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [
@@ -1202,7 +1213,7 @@ var scenedict = {
 			{code = 'lich_enc_fight', text = "LICHENCINITIATEREPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 			{code = 'lich_enc_talk1', text = "LICHENCINITIATEREPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 		],
-		},
+	},
 
 	lich_enc_fight = {
 		image = null,
@@ -1212,7 +1223,7 @@ var scenedict = {
 		],
 		options = [
 			{code = 'lich_start_fight_easy', text = tr("DIALOGUEFIGHTOPTION"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'}], dialogue_argument = 1, type = 'next_dialogue'},
-	],
+		],
 	},
 
 	lich_start_fight_easy = {
@@ -1223,7 +1234,7 @@ var scenedict = {
 		],
 		options = [
 			{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
-	],
+		],
 	},
 
 
@@ -1235,7 +1246,7 @@ var scenedict = {
 			{code = 'start_lich_fight_normal', text = "LICHENCTALK1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 			{code = 'lich_enc_talk2', text = "LICHENCTALK1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			{code = 'lich_enc_talk2', text = "LICHENCTALK1REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
-	],
+		],
 	},
 
 	lich_enc_talk2 = {
@@ -1246,7 +1257,7 @@ var scenedict = {
 			{code = 'start_lich_fight_normal', text = "LICHENCTALK2REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 			{code = 'lich_enc_talk3', text = "LICHENCTALK2REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			{code = 'start_lich_fight_normal', text = "LICHENCTALK2REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
-	],
+		],
 	},
 
 	lich_enc_talk3 = {
@@ -1258,7 +1269,7 @@ var scenedict = {
 			{code = 'lich_enc_talk4', text = "LICHENCTALK3REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			{code = 'lich_enc_conclusion', text = "LICHENCTALK3REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
 			{code = 'lich_enc_talk5', text = "LICHENCTALK3REPLY4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
-	],
+		],
 	},
 
 	lich_enc_talk4 = {
@@ -1269,7 +1280,7 @@ var scenedict = {
 		{code = 'start_lich_fight_normal', text = "LICHENCTALK4REPLY1", reqs = [], bonus_effects = [{code = 'decision', value = 'lich_extra_reward'}], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'lich_enc_conclusion', text = "LICHENCTALK4REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'lich_enc_talk5', text = "LICHENCTALK4REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
-	],
+		],
 	},
 
 	lich_enc_talk5 = {
@@ -1280,7 +1291,7 @@ var scenedict = {
 		{code = 'start_lich_fight_normal', text = "LICHENCILLKILLYOU", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'lich_enc_conclusion', text = "LICHENCFINE", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'lich_enc_talk6', text = "LICHENCTALK5REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
-	],
+		],
 	},
 
 	lich_enc_talk6 ={
@@ -1291,8 +1302,8 @@ var scenedict = {
 			text = [{text = "LICHENCTALK6", reqs = []}],
 			options = [
 				{code = 'lich_aire_talk1', text = "DIALOGUECONTINUE", reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_saved'}, {code = 'decision', value = 'deal_with_lich'}], dialogue_argument = 1, type = 'next_dialogue'},
-	],
-	},
+			],
+		},
 			{reqs = [],
 			image = null,
 			tags  = ['dialogue_scene'],
@@ -1302,10 +1313,8 @@ var scenedict = {
 				{code = 'lich_enc_conclusion', text = "LICHENCTALK6REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			],
 		},
-	],
+		],
 	},
-
-
 	lich_enc_conclusion = {
 		image = null,
 		tags = [],
@@ -1314,32 +1323,32 @@ var scenedict = {
 		],
 		options = [
 			{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), bonus_effects = [{code = 'decision', value = 'aire_is_dead'}, {code = 'decision', value = 'deal_with_lich'}]},
-	],
+		],
 	},
 
 	lich_enc_win = {
 		variations = [
-		{reqs = [{type = 'decision', name = 'aire_is_dead', value = false}],
-		image = null,
-		tags = ['dialogue_scene'],
-		text = [
-			{text = "", reqs = []},
-		],
-		options = [
-			{code = 'lich_aire_talk1', reqs = [], text = "LICHENCWINAIRENOTDEAD", dialogue_argument = 1},
-		],
+			{reqs = [{type = 'decision', name = 'aire_is_dead', value = false}],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "", reqs = []},
+			],
+			options = [
+				{code = 'lich_aire_talk1', reqs = [], text = "LICHENCWINAIRENOTDEAD", dialogue_argument = 1},
+			],
+			},
+			{reqs = [],
+			image = null,
+			tags  = [],
+			text = [
+				{text = "LICHENCWINELSE", reqs = []},
+			],
+			options = [
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+			],
 		},
-		{reqs = [],
-		image = null,
-		tags  = [],
-		text = [
-			{text = "LICHENCWINELSE", reqs = []},
 		],
-		options = [
-			{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
-		],
-		},
-	],
 	},
 
 	start_lich_fight_normal = {
@@ -1595,10 +1604,35 @@ var quests = {
 	fighters_election_quest = {
 		code = 'fighters_election_quest',
 		stages = {
-			start = {code = 'start', name = "Rite of Passage", descript = "Obtain and deliver Lich's skull to Fighters Guild to make them support you for Mayor Elections. Duncan gave me a location where I can find one."}
+			start = {code = 'start', name = "Rite of Passage", descript = "Obtain and deliver Lich's skull to Fighters Guild to make them support you for Mayor Elections. Duncan gave me a location where I can find one."},
+			stage2 = {code = 'stage2', name = "Rite of Passage", descript = "I've obtained a Lich's skull. With this Fighters Guild will provide their support to me. I should return to Duncan."}
 		},
 		
-	}
+	},
+	mages_election_quest = {
+		code = 'mages_election_quest',
+		stages = {
+			start = {code = 'start', name = "Drow Witch", descript = "Myr asked me to visit her sister Xari nearby Aliron and retrieve her books."},
+			stage1 = {code = 'stage1', name = "Drow Witch", descript = "To get Myr's books, Xari asked me to find her an elven boy and bring him to her."},
+			stage2 = {code = 'stage2', name = "Drow Witch", descript = "I've got the books Myr asked me to bring. It's time to get back to her."},
+		},
+	},
+	workers_election_quest = {
+		code = 'workers_election_quest',
+		stages = {
+			start = {code = 'start', name = "Missing Payment", descript = "Sigmund, from Worker's Guild asked me to visit Duncan from Fighters Guild and retrieve the payment from previous shipment."},
+			stage1 = {code = 'stage1', name = "Missing Payment", descript = "Duncan told me, that Reim was the courier, who should've brough Workers their payment. I should search for him at Aliron and figure out what happened."},
+			stage2 = {code = 'stage2', name = "Missing Payment", descript = "Reim refused to complete his duty and asked me to pay for him. I should return to Duncan."},
+			stage3 = {code = 'stage3', name = "Missing Payment", descript = "I've resolved the payment issue with Fighters Guild and it's time to return to Sigmund now.."},
+		},
+	},
 	
+	election_global_quest = {
+		code = 'election_global_quest',
+		stages = {
+			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "Amelia, from Servants Guild proposed me to become a next city Mayor. To do this I'll have to acquire the support of at least 3 of 4 city guilds. "}
+		},
+	
+	}
 }
 
