@@ -1954,6 +1954,11 @@ var TranslationDict = {
 	FIGHTERSCLOSE2 = "— ...Tread carefully. ",
 	FIGHTERSASKQUESTIONS = "Can I ask some questions?",
 	FIGHTERSASKQUESTIONSRETURN = "That's all",
+	FIGHTERSINTRODUCTION2REPLY5 = "*Present Skull to Duncan*",
+	FIGHTERSINTRODUCTION2REPLY6 = "About Reim...",
+	FIGHTERSINTRODUCTION2REPLY7 = "Sigmund sent me...",
+	WORKERSINTRODUCTION1REPLY6 = "Duncan promised to provide the payment asap",
+	SERVANTSINTRODUCTION1REPLY5 = "I’m ready for elections",
 	
 	
 	SERVANTSINTRODUCTION1 = "A lithe young-looking catgirl approaches you as if she figured your intentions.\n\n— Welcome, [Sir] [name]. My name is Amelia. How do you enjoy our institution? Please, don't be so surprised, we are well aware that you've just become a land owner and are looking for our future cooperation. Here we are at the Servants Guild ready to provide you with finest and prettiest toys in all of the Republic. We also are in tie with many rich and powerful people of the city. ",
@@ -2009,6 +2014,8 @@ var TranslationDict = {
 	MAGESINTRODUCTION3_3 = "— Okay then.",
 	MAGESINTRODUCTION3REPLY2 = "I'll side with you",
 	MAGESINTRODUCTION3REPLY3 = "I'll come back later",
+	MAGESINTRODUCTION2REPLY2 = "I want to request your support for Mayor election",
+	MAGESINTRODUCTION2REPLY3 = "I've got the books you asked for",
 	MAGESQUESTIONS_1 = "— Go on.",
 	MAGESQUESTIONS_2 = "— With all due respect I've nearly lost, you don't seem to possess any real wealth or power. And I'm afraid nothing is going to change for us if you'd join us or not. So I'm a bit unenthusiastic. \n\nBut I guess we can spare a recruit in case you'd actually want to stick around.",
 	MAGESQUESTIONS_3 = "— Imagine that. You see, to become a sorcerer you will need two things: magic affinity and enough patience to learn. Both are somewhat uncommon and especially so when you are looking for both in the same person. We aren't scared, though. You can't get any far without sorcery anyway. There's just no alternative to us in case of emergency.",

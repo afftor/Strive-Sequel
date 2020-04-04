@@ -37,8 +37,8 @@ var lands = {
 		starting_locations = ['dungeon_bandit_den','dungeon_goblin_cave'],
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
 		events = [
-			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}}
-			
+			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}},
+			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'WORKERSELECTIONINITIATE4'}], args = {}},
 			],
 		capital_options = ['quest_board'],#,'location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},

@@ -299,6 +299,8 @@ func valuecheck(dict):
 		'date':
 			return input_handler.operate(dict.operant, date, dict.value)
 		'active_quest_stage':
+			if get_active_quest(dict.value) == null:
+				return false
 			return get_active_quest(dict.value).stage == dict.stage
 		'faction_reputation':
 			var data = world_gen.get_faction_from_code(dict.code)

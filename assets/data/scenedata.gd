@@ -767,6 +767,12 @@ var scenedict = {
 		{code = 'fighters_questions', text = "FIGHTERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'}, {type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500}, {type = 'decision', name = 'fighters_election_support', value = false},{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', name = 'fighters_election_support', value = false}, {type = 'has_material', material = 'lich_skull', operant = 'gte', value = 1}, {type = 'dialogue_seen', operant = 'eq',value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 5}, 
+		
+		
+		
+		{code = 'workers_elections_continue1', text = "FIGHTERSINTRODUCTION2REPLY6", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'REIMENCOUNTER4'}], type = 'next_dialogue', dialogue_argument = 6},
+		{code = 'workers_election_initiate3', text = "FIGHTERSINTRODUCTION2REPLY7", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 7}, 
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 		
@@ -909,7 +915,14 @@ var scenedict = {
 		options = [
 		{code = 'workers_questions', text = "WORKERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'workers_join', text = "WORKERSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'workers_election', text = "WORKERSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},{type = 'faction_reputation', code = 'workers', operant = 'gte', value = 500}, {type = 'decision', name = 'workers_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'workers_election_initiate1', text = "WORKERSREQUESTELECTIONSUPPORT", 
+			reqs = [
+			{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},
+			{type = 'faction_reputation', code = 'workers', operant = 'gte', value = 500}, 
+			{type = 'dialogue_seen', operant = 'neq', value = 'WORKERSELECTIONINITIATE1'}, 
+			{type = 'decision', name = 'workers_election_support', value = false}], 
+			type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'workers_election_initiate5', text = "WORKERSINTRODUCTION1REPLY6", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'WORKERSELECTIONCONTINUE1'}], dialogue_argument = 6, type = 'next_dialogue'},
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -990,7 +1003,9 @@ var scenedict = {
 		options = [
 		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'mages_election', text = "MAGESREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, {type = 'decision', name = 'mages_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
+		#{code = 'mages_election', text = "MAGESREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, {type = 'decision', name = 'mages_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'mages_election1', text = "MAGESINTRODUCTION2REPLY2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'}, {type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, {type = 'decision', name = 'mages_election_support', value = false}], dialogue_argument = 2, type = 'next_dialogue'},
+		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage3'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -1129,7 +1144,544 @@ var scenedict = {
 		],
 	},
 	
+	# Fighters Election
+	fighters_election5 = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "FIGHTERSELECTION5", reqs = [], bonus_effects = [{code = 'decision', value = 'fighters_election_support'}]}, ### <remove: lich_skull (materials)>
+		],
+		options = [
+			{code = 'close', reqs = [], text = "FIGHTERSELECTIONTHANKS"},
+			{code = 'close', reqs = [], text = "FIGHTERSELECTIONREPLY1"},
+		],
+	},
 	
+	workers_election_initiate1 = {
+		image = null,
+		character = 'sigmund',
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "WORKERSELECTIONINITIATE1", reqs = []},
+		],
+		options = [
+			{code = 'workers_election_initiate2', text = "WORKERSELECTIONINITIATE1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'workers_election_initiate2', text = "WORKERSELECTIONINITIATE1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+	
+	workers_election_initiate2 = {
+			image = null,
+			character = 'sigmund',
+			tags = ['dialogue_scene'],
+			text = [
+			{text = "WORKERSELECTIONINITIATE2_1", reqs = []},
+			],
+			common_effects = [{code = 'progress_quest', value = 'workers_election_quest', stage = 'start'}],
+			options = [
+				{code = 'close', text = "WORKERSELECTIONINITIATE2_1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			],
+	},
+
+	workers_election_initiate3 = {
+		image = null,
+		character = 'duncan',
+		tags = ['dialogue_scene'],
+		text = [
+		{text = "WORKERSELECTIONINITIATE3", reqs = []},
+		],
+		options = [
+			{code = 'workers_election_initiate4', text = "WORKERSELECTIONINITIATE3REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'workers_election_initiate4', text = "WORKERSELECTIONINITIATE3REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+
+	workers_election_initiate4 = {
+		image = null,
+		character = 'duncan',
+		tags = [],
+		text = [
+		{text = "WORKERSELECTIONINITIATE4", reqs = []},
+		],
+		options = [
+			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []},
+		],
+	},
+
+	reim_encounter = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "REIMENCOUNTER", reqs = []}
+		],
+		options = [
+			{code = 'reim_encounter2', text = "REIMENCOUNTERREPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'reim_encounter2', text = "REIMENCOUNTERREPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'reim_encounter2', text = "REIMENCOUNTERREPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
+		],
+	},
+
+	reim_encounter2 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "REIMENCOUNTER2", reqs = []}
+		],
+		options = [
+			{code = 'reim_encounter5', text = "REIMENCOUNTER2REPLY1", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
+			{code = 'reim_encounter3', text = "REIMENCOUNTER2REPLY2", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
+			{code = 'reim_encounter4', text = "REIMENCOUNTERTOVAR1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'reim_encounter4', text = "REIMENCOUNTERTOVAR2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+
+	reim_encounter3 = {
+		variations = [
+			{reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 1}]}],
+			image = null,
+			tags = [],
+			text = [
+				{text = "REIMENCOUNTER3_1", reqs = []}
+			],
+			options = [
+				{code = 'close', text = "REIMENCOUNTER3_1REPLY1", reqs = [], bonus_effects = [{code = 'decision', value = 'rein_persuaded'}]},
+			]},
+			{reqs = [],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "REIMENCOUNTER3_2", reqs = []}
+			],
+			options = [
+				{code = 'reim_encounter4', text = "REIMENCOUNTERTOVAR1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+				{code = 'reim_encounter4', text = "REIMENCOUNTERTOVAR2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			]
+		}
+		],
+	},
+
+	reim_encounter4 = {
+		image = null,
+		tags = [],
+		text = [
+		{text = "REIMENCOUNTER4_1", reqs = [], previous_dialogue_option = 1},
+		{text = "REIMENCOUNTER4_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []},
+		],
+	},
+
+	reim_encounter5 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "REIMENCOUNTER5", reqs = []}
+		],
+		options = [
+			{code = 'reim_encounter4', text = "REIMENCOUNTERTOVAR1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'reim_encounter4', text = "REIMENCOUNTERTOVAR2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+		],
+	},
+
+	workers_elections_continue1 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		character = 'duncan',
+		text = [
+			{text = "WORKERSELECTIONCONTINUE1", reqs = []},
+		],
+		options = [
+			{code = 'workers_elections_continue2', text = "WORKERSELECTIONCONTINUE1REPLY1", reqs = [{type = "has_money", value = 150}], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'workers_elections_continue2', text = "WORKERSELECTIONCONTINUE1REPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			{code = 'close', text = "WORKERSELECTIONCONTINUE1REPLY3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'},
+		],
+	},
+
+	workers_elections_continue2 = {
+		image = null,
+		character = 'duncan',
+		tags = [],
+		text = [
+			{text = "WORKERSELECTIONCONTINUE2_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = 'money_change', operant = '-', value = 150}, {code = 'decision', value = 'helped_reim'}]},
+			{text = "WORKERSELECTIONCONTINUE2_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []},
+		],
+	},
+
+	workers_election_initiate5 = {
+		image = null,
+		character = 'sigmund',
+		tags = [],
+		text = [
+			{text = "WORKERSELECTIONINITIATE5", reqs = [], bonus_effects = [{code = 'decision', value = 'fighters_election_support'}]},
+		],
+		options = [
+			{code = 'close', text = "WORKERSELECTIONINITIATE5REPLY1", reqs = [],},
+			{code = 'close', text = "WORKERSELECTIONINITIATE5REPLY2", reqs = [],},
+		],
+	},
+	
+	
+	# Mages Election
+	mages_election1 = { 
+		image = null,
+		character = 'myr',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "MAGESELECTION1", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]},
+		],
+		options = [
+			{code = 'mages_election2', text = "MAGESELECTION1REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'mages_election2', text = "MAGESELECTION1REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2}
+		],
+	},
+
+	mages_election2 = { 
+		image = null,
+		character = 'myr',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "MAGESELECTION2_1", reqs = [], previous_dialogue_option = 1},
+			{text = "MAGESELECTION2_2", reqs = [], previous_dialogue_option = 2},
+			{text = "MAGESELECTION2_ANY", reqs = []}
+		],
+		options = [
+			{code = 'mages_election3', text = "MAGESELECTION2REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'mages_election3', text = "MAGESELECTION2REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2}
+		],
+	},
+
+	mages_election3 = { 
+		image = null,
+		character = 'myr',
+		tags = [],
+		text = [
+			{text = "MAGESELECTION3_1", reqs = [], previous_dialogue_option = 1},
+			{text = "MAGESELECTION3_2", reqs = [], previous_dialogue_option = 2},
+			{text = "MAGESELECTION3_ANY", reqs = [],}
+		],
+		common_effects = [{code = 'progress_quest', value = 'workers_election_quest', stage = 'start'}],
+		options = [
+			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []}
+		],
+	},
+
+	mages_election4 = {
+		variations = [
+			{reqs = [{type = 'decision', name = 'slept_with_xari', value = true}],
+			common_effects = [{code = 'complete_quest', value = 'mages_election_quest'}],
+			image = null,
+			character = 'myr',
+			tags = ['dialogue_scene'],
+			text = [{text = "MAGESELECTION4_1", reqs = []}],
+			options = [
+				{code = 'mages_election5', text = "MAGESELECTION4_1REPLY1", reqs = [], bonus_effects = [{code = 'decicsion', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 1},
+				{code = 'mages_election5', text = "MAGESELECTION4_1REPLY2", reqs = [], bonus_effects = [{code = 'decicsion', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 2},
+				{code = 'mages_election5', text = "MAGESELECTION4_1REPLY3", reqs = [], bonus_effects = [{code = 'decicsion', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 3},
+			],
+		},
+			{reqs = [],
+			image = null,
+			character = 'myr',
+			common_effects = [{code = 'complete_quest', value = 'mages_election_quest'}],
+			tags = [],
+			text = "MAGESELECTION4_2",
+			options = [
+				{code = 'close', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [{code = 'decicsion', value = 'mages_election_support'}],}
+			],
+			},
+		],
+	},
+
+	mages_election5 = {
+		image = null,
+		tags = [],
+		character = 'myr',
+		text = [
+			{text = "MAGESELECTION5", reqs = []}
+		],
+		options = [
+			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []}
+		],
+	},
+	
+	# Servants Election Finish
+	servants_election_finish1 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH1", reqs = []}
+		],
+		options = [
+			{code = 'servants_election_finish2', text = "SERVANTSELECTIONFINISH1REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'servants_election_finish2', text = "SERVANTSELECTIONFINISH1REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+		]
+	},
+
+	servants_election_finish2 = { 
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH2_1", reqs = [], previous_dialogue_option = 1},
+			{text = "SERVANTSELECTIONFINISH2_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{code = 'servants_election_finish3', text = "SERVANTSELECTIONFINISH2REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 3},
+			{code = 'servants_election_finish4', text = "SERVANTSELECTIONFINISH2REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'servants_election_finish4', text = "SERVANTSELECTIONFINISH2REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+		],
+	},
+
+	servants_election_finish3 = { 
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH3", reqs = []},
+		],
+		options = [
+			{code = 'servants_election_finish4', text = "SERVANTSELECTIONFINISH2REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'servants_election_finish4', text = "SERVANTSELECTIONFINISH2REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+		],
+	},
+
+	servants_election_finish4 = { 
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH4_1", reqs = [], previous_dialogue_option = 1},
+			{text = "SERVANTSELECTIONFINISH4_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{code = 'servants_election_finish5', text = "SERVANTSELECTIONFINISH4REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'servants_election_finish5', text = "SERVANTSELECTIONFINISH4REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+		],
+	},
+
+	servants_election_finish5 = { 
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH5_1", reqs = [], previous_dialogue_option = 1},
+			{text = "SERVANTSELECTIONFINISH5_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{code = 'servants_election_finish6', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+		],
+	},
+
+	servants_election_finish6 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH6", reqs = []},
+		],
+		options = [
+			{code = 'servants_election_finish7', text = "SERVANTSELECTIONFINISH6REPLY1", reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 0.5}], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'servants_election_finish7', text = "SERVANTSELECTIONFINISH6REPLY2", reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 0.5}], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'servants_election_finish7', text = "SERVANTSELECTIONFINISH6REPLY3", reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 0.5}], type = 'next_dialogue', dialogue_argument = 3},
+		],
+	},
+
+	servants_election_finish7 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH7_1", reqs = [], previous_dialogue_option = 1},
+			{text = "SERVANTSELECTIONFINISH7_2", reqs = [], previous_dialogue_option = 2},
+			{text = "SERVANTSELECTIONFINISH7_3", reqs = [], previous_dialogue_option = 3},
+			{text = "SERVANTSELECTIONFINISH7_ANY", reqs = []},
+		],
+		options = [
+			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+		],
+	},
+
+	servants_election_finish8 = {
+		image = null,
+		character = 'amelia',
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH8", reqs = []}
+		],
+		options = [
+			{code = 'start_finale', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
+		]
+	},
+
+	start_finale = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "STARTFINALE", reqs = []}
+		],
+		options = [
+			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []}
+		]
+	},
+	
+	# Xari Encounter
+	xari_encounter1 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER1", reqs = []}
+		],
+		options = [
+			{code = 'xari_encounter2', text = "XARIENCOUNTER1REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_encounter2', text = "XARIENCOUNTER1REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+		]
+	},
+
+	xari_encounter2 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER2_1", reqs = [], previous_dialogue_option = 1},
+			{text = "XARIENCOUNTER2_2", reqs = [], previous_dialogue_option = 2},
+		],
+		options = [
+			{code = 'xari_encounter3', text = "XARIENCOUNTER2REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_encounter3', text = "XARIENCOUNTER2REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'xari_encounter3', text = "XARIENCOUNTER2REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 3},
+		]
+	},
+
+	xari_encounter3 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER3_1", reqs = [], previous_dialogue_option = 1},
+			{text = "XARIENCOUNTER3_2", reqs = [], previous_dialogue_option = 2},
+			{text = "XARIENCOUNTER3_3", reqs = [], previous_dialogue_option = 3},
+		],
+		options = [
+			{code = 'xari_encounter4', text = "XARIENCOUNTER3REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_encounter4', text = "XARIENCOUNTER3REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'xari_encounter4', text = "XARIENCOUNTER3REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 3},
+		]
+	},
+
+	xari_encounter4 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER4_1", reqs = [], previous_dialogue_option = 1},
+			{text = "XARIENCOUNTER4_2", reqs = [], previous_dialogue_option = 2},
+			{text = "XARIENCOUNTER4_3", reqs = [], previous_dialogue_option = 3},
+		],
+		options = [
+			{code = 'xari_encounter5', text = "XARIENCOUNTER4REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_encounter5', text = "XARIENCOUNTER4REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'xari_encounter5', text = "XARIENCOUNTER4REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 3},
+		]
+	},
+
+	xari_encounter5 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER5_1", reqs = [], previous_dialogue_option = 1},
+			{text = "XARIENCOUNTER5_2", reqs = [], previous_dialogue_option = 2},
+			{text = "XARIENCOUNTER5_3", reqs = [], previous_dialogue_option = 3},
+			{text = "XARIENCOUNTER5_ANY", reqs = []},
+		],
+		options = [
+			{code = 'xari_encounter6', text = "XARIENCOUNTER5REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_encounter7', text = "XARIENCOUNTER5REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'close', text = "XARIENCOUNTER5REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 3},
+		]
+	},
+
+	xari_encounter6 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER6", reqs = []},
+		],
+		options = [
+			{code = 'xari_encounter7', text = "XARIENCOUNTER5REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'close', text = "XARIENCOUNTER5REPLY3", reqs = []},
+		]
+	},
+
+	xari_encounter7 = {
+		variations = [
+			{image = null,
+			tags = ['dialogue_scene'],
+			text = "XARIENCOUNTER7_1", reqs = [{type = 'master_check', value = [{code = 'one_of_races', value = ['Elf', 'DarkElf', 'Drow']}, {code = 'sex', operant = 'neq', value = 'female'}]}],
+			options = [
+				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			]
+		},
+			{image = null,
+			tags = ['dialogue_scene'],
+			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'charm_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
+			options = [
+				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			]
+		},
+			{image = null,
+			tags = [],
+			text = "XARIENCOUNTER7_3", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}]}],
+			options = [
+				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []},
+			]
+		},
+			{image = null,
+			tags = ['dialogue_scene'],
+			text = "XARIENCOUNTER7_4", reqs = [],
+			options = [
+				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []},
+			]},
+		],
+	},
+
+	xari_encounter8 = {
+		image = null,
+		tags = [],
+		text = [
+			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', type = 'sexuals_factor', operant = 'gte', value = 3}]}]},
+			{text = "XARIENCOUNTER8_2", reqs = []},
+			{text = "XARIENCOUNTER8_3", reqs = []},
+		],
+		options = [
+			{code = 'close' , text = 'test', reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 0.5}]}
+		]
+	},
+
+	xari_encounter9 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "XARIENCOUNTER9", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}]},
+		],
+		options = [# Fix Reqs
+			{code = 'xari_encounter10', text = "XARIENCOUNTER9REPLY1", reqs = [{type = "location_has_specific_slaves", value = 1, reqs = [{code = 'one_of_races', value = ['Elf','DarkElf','Drow']}, {code = 'sex', operant = 'neq', value = 'female'}]} ], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'close', text = "XARIENCOUNTER9REPLY2", reqs = []},
+		]
+	},
+
+	xari_encounter10 = {
+		image = null,
+		tags = [],
+		text = [
+			{text = "XARIENCOUNTER10", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]}
+		],
+		options = [
+			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []}
+		]
+	},
 	
 	servants_election = {
 		image = null,
