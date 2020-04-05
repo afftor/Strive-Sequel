@@ -616,6 +616,17 @@ func common_effects(effects):
 					decisions.append(i.value)
 			'screen_black_transition':
 				input_handler.BlackScreenTransition(i.value)
+			'start_combat':
+				
+				input_handler.current_enemy_group = i.value
+				input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
+#				input_handler.StartCombat(i.value)
+			'start_quest_combat':
+				input_handler.StartQuestCombat(i.value)
+			'make_quest_location':
+				world_gen.make_quest_location(i.value)
+			'remove_quest_location':
+				input_handler.remove_location(i.value)
 
 func get_active_quest(code):
 	for i in active_quests:

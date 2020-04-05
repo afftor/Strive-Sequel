@@ -1028,6 +1028,17 @@ func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
 
+func remove_location(locationid):
+	var location = world_gen.get_location_from_code(locationid)
+	var area = world_gen.get_area_from_location_code(locationid)
+	return_characters_from_location(locationid)
+	area.locations.erase(location.id)
+	area.questlocations.erase(location.id)
+	state.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
+	update_slave_list()
+	if active_location == location && globals.CurrentScene.get_node("Exploration").is_visible_in_tree():
+		globals.CurrentScene.get_node("Exploration").select_location('Aliron')
+		globals.CurrentScene.get_node("Exploration").build_accessible_locations()
 
 func return_characters_from_location(locationid):
 	var location = world_gen.get_location_from_code(locationid)
@@ -1042,35 +1053,6 @@ func return_characters_from_location(locationid):
 			else:
 				person.location = 'mansion'
 				person.return_to_task()
-
-#func make_local_recruit(args):
-#	var newchar = Slave.new()
-#	if args == null:
-#		newchar.generate_random_character_from_data(weightedrandom(active_location.races))
-#	else:
-#		var race = 'random'
-#		var des_class = null
-#		var difficulty = 0
-#		if args.has('races'):
-#			race = weightedrandom(args.races)
-#			if race == 'local':
-#				race = weightedrandom(active_area.races)
-#			elif race == 'beast':
-#				var racearray = []
-#				for i in races.racelist.values():
-#					if i.tags.has('beast') == true:
-#						racearray.append(i.code)
-#				race = racearray[randi()%racearray.size()]
-#		if args.has('difficulty'):
-#			difficulty = round(rand_range(args.difficulty[0], args.difficulty[1]))
-#		newchar.generate_random_character_from_data(race, des_class, difficulty)
-#		if args.has("bonuses"):
-#			newchar.add_stat_bonuses(args.bonuses)
-#		if args.has("type"):
-#			newchar.set_slave_category(args.type)
-#	if newchar.slave_class == null: newchar.set_slave_category('servant')
-#	if newchar.has("is_hirable"): newchar.is_hirable = true
-#	return newchar
 
 func make_story_character(args):
 	var newchar = Slave.new()
@@ -1242,6 +1224,8 @@ func StartCombat(encounter = null):
 	var data
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
+		encounter_win_script = Enemydata.encounters[encounter].win_effects
+		
 	if variables.skip_combat == true:
 		finish_combat()
 		return
@@ -1262,6 +1246,8 @@ func StartCombat(encounter = null):
 	
 	combat.start_combat(active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
 
+func StartQuestCombat(encounter):
+	pass
 
 func StartAreaCombat():
 	
@@ -1363,8 +1349,9 @@ func finish_combat():
 	encounter_lose_scripts.clear()
 	
 	if encounter_win_script != null:
-		var data = scenedata.scenedict[encounter_win_script]
-		interactive_message(encounter_win_script, data.default_event_type, {})
+		state.common_effects(encounter_win_script)
+#		var data = scenedata.scenedict[encounter_win_script]
+#		interactive_message(encounter_win_script, data.default_event_type, {})
 		encounter_win_script = null
 		return
 	if active_location.has('scriptedevents') && check_events("finish_combat") == true:

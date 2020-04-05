@@ -5,13 +5,13 @@ var predeterminatedgroups = {
 } 
 
 var encounters = {
-	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
-	rebels_skirmish = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
-	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
-	rebels_small = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	wolves_skirmish = {unittype = 'randomgroup', unitcode = 'wolves_easy1', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
+	rebels_skirmish = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
+	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
+	rebels_small = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
 	
-	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
-	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_scripts = [], lose_scripts = []},
+	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
+	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 }
 
 var enemygroups = {
@@ -765,7 +765,7 @@ var enemies = {
 		speed = 40,
 		resists = {earth = 50, water = 50, dark = 75, light = -100, fire = -50},
 		race = 'undead',
-		loot = 'lich_loot',
+		loot = 'quest_lich_loot',
 		icon = null,
 		body = null,
 		skills = ['decay'],

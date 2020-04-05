@@ -123,7 +123,7 @@ func open(scene):
 			newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
 		elif scene.tags.has("custom_effect"):
 			newbutton.connect('pressed', globals.custom_effects, i.code)
-		elif scene.tags.has("dialogue_scene") && !i.code in ['close']:
+		elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight']:
 			newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])
 		else:
 			var args
@@ -335,10 +335,13 @@ func leave():
 	close()
 
 func fight_skirmish():
-#	if dialogue_enemy != null:
-#		input_handler.StartCombat(dialogue_enemy)
-	input_handler.current_enemy_group = dialogue_enemy
 	if current_scene.has("winscene"):
 		input_handler.encounter_win_script = current_scene.winscene
+	input_handler.current_enemy_group = dialogue_enemy
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 	#close()
+
+func quest_fight(code):
+	input_handler.current_enemy_group = code
+	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
+

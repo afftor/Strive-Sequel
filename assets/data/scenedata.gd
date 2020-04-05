@@ -1774,7 +1774,7 @@ var scenedict = {
 			{text = "LICHENCFIGHT", reqs = []}
 		],
 		options = [
-			{code = 'lich_start_fight_easy', text = tr("DIALOGUEFIGHTOPTION"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'}], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'quest_fight', text = tr("DIALOGUEFIGHTOPTION"), reqs = [], args = 'lich_fight_easy', bonus_effects = [{code = 'decision', value = 'aire_is_dead'}], dialogue_argument = 1, type = 'next_dialogue'},
 		],
 	},
 
@@ -1894,7 +1894,7 @@ var scenedict = {
 			image = null,
 			tags  = [],
 			text = [
-				{text = "LICHENCWINELSE", reqs = []},
+				{text = "LICHENCWINELSE", reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 			],
 			options = [
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},

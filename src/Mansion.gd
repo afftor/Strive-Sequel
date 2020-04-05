@@ -217,6 +217,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
+		state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
 		state.show_tutorial = true
 		state.active_quests.append({code = "guilds_introduction", stage = 'stage3'})
 		state.mainprogress = 0

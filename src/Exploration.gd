@@ -939,6 +939,8 @@ func build_location_description():
 			text = active_location.classname + ": " + active_location.name
 		'skirmish':
 			pass
+		'quest_location':
+			text = active_location.name +"\n" + active_location.descript
 	$LocationGui/Image/RichTextLabel.bbcode_text = '[center]' + text + "[/center]"
 
 func build_area_description():
@@ -973,6 +975,7 @@ func open_location(data):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
+	
 	
 	input_handler.ActivateTutorial("exploration")
 	
@@ -1014,6 +1017,12 @@ func open_location_actions():
 			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Initiate'
 			newbutton.connect("pressed",self,"start_skirmish")
+		'quest_location':
+			for i in active_location.options:
+				if state.checkreqs(i.reqs) == true:
+					newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+					newbutton.text = tr(i.text)
+					newbutton.connect("pressed", state, 'common_effects', [i.args])
 
 func local_shop():
 	open_shop('location')
@@ -1382,26 +1391,11 @@ func clear_dungeon():
 	#input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
 
 func clear_dungeon_confirm():
-	input_handler.return_characters_from_location(active_location.id)
-#	for id in state.character_order:
-#		var person = state.characters[id]
-#		if (person.location == active_location.id && person.travel_time == 0) || person.travel_target.location == active_location.id:
-#			if variables.instant_travel == false:
-#				person.location = 'travel'
-#				person.travel_target = {area = '', location = 'mansion'}
-#				person.travel_time = active_area.travel_time + active_location.travel_time
-#			else:
-#				person.location = 'mansion'
-#				person.return_to_task()
-			#return_character_confirm()
+	input_handler.remove_location(active_location.id)
 	check_events('complete_location')
-	active_area.locations.erase(active_location.id)
-	active_area.questlocations.erase(active_location.id)
-	state.completed_locations[active_location.id] = {name = active_location.name, id = active_location.id, area = active_area.code}
 	action_type = 'location_finish'
 	select_location('Aliron')
 	build_accessible_locations()
-	input_handler.update_slave_list()
 #	leave_location()
 	
 

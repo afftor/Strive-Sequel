@@ -1072,7 +1072,7 @@ func take_quest(quest, area):
 	quest.state = 'taken'
 	for i in quest.requirements:
 		if i.code in ['complete_dungeon', 'complete_location']:
-			var location = make_quest_location(quest, area, i)
+			var location = make_repeatable_quest_location(quest, area, i)
 			area.questlocations[location.id] = location
 			location.questid = quest.id
 			i.location = location.id
@@ -1085,7 +1085,17 @@ func find_location_from_req(req):
 		location = req.location
 	return location
 
-func make_quest_location(quest,area,req):
+func make_quest_location(code):
+	var data = dungeons[code]
+	var locationdata = make_location(code, data.area)
+	locationdata.id = code
+	locationdata.travel_time = round(rand_range(data.travel_time[0], data.travel_time[1]))
+	var area = state.areas[data.area]
+	area.questlocations[locationdata.id] = locationdata
+	state.location_links[locationdata.id] = {area = data.area, category = 'questlocations'} 
+	input_handler.active_location = locationdata
+
+func make_repeatable_quest_location(quest,area,req):
 	var locationdata = {}
 	locationdata.id = "L" + str(state.locationcounter)
 	state.locationcounter += 1
@@ -1242,13 +1252,13 @@ var dungeonadj = ['Dark','White','Red','Black','Molten','Distant','Eternal','Glo
 
 
 var dungeons = {
-	
 	quest_fighters_lich = {
 		code = 'quest_fighters_lich',
-		type = 'encounter',
-		name = "Lich's Hideout (Quest)",
+		type = 'quest_location',
+		name = "Lich's Hideout",
+		area = 'plains',
 		classname = '',
-		descript = '',
+		descript = "By following Duncan's instructions, you find a small hideout which has a traces of undead monsters.",
 		difficulty = 'easy',
 		background = 'cave_1',
 		enemyarray =  [], 
@@ -1256,8 +1266,10 @@ var dungeons = {
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'wolves_skirmish_start', args = {}}},
+		events = [],
+		travel_time = [2,2],
+		options = [
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]} #text = button text, args = state.common_effects values
 		],
 	},
 	quest_mages_xira = {
@@ -1273,9 +1285,8 @@ var dungeons = {
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'wolves_skirmish_start', args = {}}},
-		],
+		travel_time = [3,3],
+		events = [],
 	},
 	
 	basic_threat_wolves = {
