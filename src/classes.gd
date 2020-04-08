@@ -443,7 +443,7 @@ var professions = {
 		statchanges = {wits_bonus = 10},
 		traits = ['magic_tools'],
 		skills = ['sedate','fear'],
-		combatskills = [],
+		combatskills = ['mindblast'],
 	},
 	scholar = {
 		code = 'scholar',
@@ -496,10 +496,10 @@ var professions = {
 		categories = ['social','magic'],
 		showupreqs = [],
 		reqs = [{code = 'has_profession', value = 'caster', check = true},{code = 'stat', type = 'wits', operant = 'gte', value = 80}],
-		statchanges = {charm_bonus = 20, wits_factor = 1, mpmax = 10, resistmind = 25},
+		statchanges = {charm_bonus = 15, wits_factor = 1, mpmax = 10, resistmind = 20},
 		traits = [],
 		skills = ['greatshackles','mindcontrol'],
-		combatskills = ['mindblast'],
+		combatskills = ['psychicblast'],
 	},
 	druid = {
 		code = 'druid',

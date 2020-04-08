@@ -38,7 +38,7 @@ var lands = {
 		guilds = ['workers','servants','fighters','mages','slavemarket'],
 		events = [
 			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'main_progress', operant = 'eq', value = 1}, {type = "date", operant = 'gte', value = 2}], args = {}},
-			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'WORKERSELECTIONINITIATE4'}], args = {}},
+			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {}},
 			],
 		capital_options = ['quest_board'],#,'location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -306,7 +306,7 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],
+		quests_easy = ['warriors_threat_easy'],#,'warriors_dungeon_easy','warriors_monster_hunt_easy'],
 		quests_medium = [],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -546,7 +546,7 @@ var locations = {
 		approval = 0,
 		leader = '',
 		actions = ['local_shop','local_events_search'],
-		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2],['exotic_slave_trader',0.5], ['event_good_slavers_woods',1], ['event_good_rebels_beastkin',1]],
+		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2],['exotic_slave_trader',0.5], ['event_good_slavers_woods',100], ['event_good_rebels_beastkin',1]],
 		strength = [1,10],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['village'],
@@ -818,7 +818,7 @@ var questdata = {
 		code = 'warriors_threat_easy',
 		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
-		randomconditions = [{code = 'complete_location', type = ['basic_threat_rebels']}],
+		randomconditions = [{code = 'complete_location', type = ['basic_threat_goblins']}],#,'basic_threat_rebels'
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
@@ -1269,13 +1269,14 @@ var dungeons = {
 		events = [],
 		travel_time = [2,2],
 		options = [
-			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]} #text = button text, args = state.common_effects values
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'lich_enc_initiate', args = []}]}
 		],
 	},
-	quest_mages_xira = {
-		code = 'quest_mages_xira',
+	quest_mages_xari = {
+		code = 'quest_mages_xari',
 		type = 'encounter',
-		name = "Xira's Hideout (Quest)",
+		name = "Xari's Location",
+		area = 'plains',
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -1287,6 +1288,14 @@ var dungeons = {
 		stages_per_level = [1,1],
 		travel_time = [3,3],
 		events = [],
+		options = [
+			{text = 'Search for Xari', reqs = [
+				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'start'}], 
+				args = [{code = 'start_event', data = 'xari_encounter1', args = []}]},
+			{text = 'See Xari', reqs = [
+				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}], 
+				args = [{code = 'start_event', data = 'xari_encounter9', args = []}]},
+		],
 	},
 	
 	basic_threat_wolves = {
@@ -1297,14 +1306,15 @@ var dungeons = {
 		descript = 'Farmers report a pack of wild wolves attacking their flock.',
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [["wolves_easy1", 1]], 
+		enemyarray =  [], 
 		eventarray = [], 
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'wolves_skirmish_start', args = {}}},
+		options = [
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'wolves_skirmish_start', args = []}]}
 		],
+		events = [],
 	},
 	basic_threat_rebels = {
 		code = 'basic_threat_rebels',
@@ -1314,14 +1324,15 @@ var dungeons = {
 		descript = "A group of rebels terrorize local villagers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [["rebels_small", 1]], 
+		enemyarray =  [], 
 		eventarray = [], 
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'rebels_skirmish_start', args = {}}},
+		options = [
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'rebels_skirmish_start', args = []}]}
 		],
+		events = [],
 	},
 	basic_threat_goblins = {
 		code = 'basic_threat_goblins',
@@ -1331,14 +1342,15 @@ var dungeons = {
 		descript = "A group of wild goblins attacking passing travelers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [["rebels_small", 1]], 
+		enemyarray =  [], 
 		eventarray = [], 
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'rebels_skirmish_start', args = {}}},
-		],
+		events = [],
+		options = [
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'goblins_skirmish_start', args = []}]}
+		]
 	},
 	basic_threat_ogre = {
 		code = 'basic_threat_ogre',
@@ -1348,7 +1360,7 @@ var dungeons = {
 		descript = "An angry ogre attacking passing travelers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [["rebels_small", 1]], 
+		enemyarray =  [], 
 		eventarray = [], 
 		levels = [1,1], 
 		resources = [],
@@ -1365,7 +1377,7 @@ var dungeons = {
 		descript = "An angry troll attacking passing travelers.",
 		difficulty = 'easy',
 		background = 'cave_1',
-		enemyarray =  [["rebels_small", 1]], 
+		enemyarray =  [], 
 		eventarray = [], 
 		levels = [1,1], 
 		resources = [],

@@ -255,6 +255,12 @@ func valuecheck(dict):
 			return if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
 			return decisions.has(dict.name) == dict.value
+		"has_multiple_decisions": 
+			var counter = 0
+			for i in dict.decisions:
+				if decisions.has(i):
+					counter += 1
+			return input_handler.operate(dict.operant, counter, dict.value)
 		"quest_stage":
 			return if_quest_stage(dict.name, dict.value, dict.operant)
 		"quest_completed":
@@ -315,7 +321,7 @@ func valuecheck(dict):
 		'location_has_specific_slaves': 
 			var counter = 0
 			for i in characters.values():
-				if i.location == dict.locaiton && i.checkreqs(dict.reqs) == true && get_master() != i:
+				if i.location == dict.location && i.checkreqs(dict.reqs) == true && get_master() != i:
 					counter += 1
 			return counter >= dict.value
 
@@ -500,6 +506,8 @@ func common_effects(effects):
 			'money_change':
 				money = input_handler.math(i.operant, money, i.value)
 				text_log_add('money',"Gold used: " + str(i.value))
+			'material_change':
+				materials[i.name] = input_handler.math(i.operant, materials[i.name], i.value)
 			'make_story_character':
 				var newslave = Slave.new()
 				newslave.generate_predescribed_character(world_gen.pregen_characters[i.value])
@@ -606,6 +614,10 @@ func common_effects(effects):
 						text_log_add("quests","Quest Completed: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
 						break
 				completed_quests.append(i.value)
+			'complete_active_location':
+				input_handler.remove_location(input_handler.active_location.id)
+			'complete_event':
+				pass
 			'reputation':
 				var data = world_gen.get_faction_from_code(i.name)
 				var guild = areas[data.area].factions[data.code]
@@ -617,16 +629,16 @@ func common_effects(effects):
 			'screen_black_transition':
 				input_handler.BlackScreenTransition(i.value)
 			'start_combat':
-				
 				input_handler.current_enemy_group = i.value
 				input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
-#				input_handler.StartCombat(i.value)
 			'start_quest_combat':
 				input_handler.StartQuestCombat(i.value)
 			'make_quest_location':
 				world_gen.make_quest_location(i.value)
 			'remove_quest_location':
 				input_handler.remove_location(i.value)
+			'set_music':
+				input_handler.SetMusic(i.value)
 
 func get_active_quest(code):
 	for i in active_quests:

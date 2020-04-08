@@ -317,6 +317,9 @@ Seen questions won't be showing as options anymore
 Starting slave classes in story mode are now restricted to selected guild
 High tier enemies have more elemental resists
 Master's charm now increase repeatable quests gold and reputation rewards
+Corrected item drop chances (previously chances were reversed so less common items appeared more often and more common items were rare)
+Somewhat rebalanced damage and enemy hp values
+Made enemies overall slower
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells upscaling damage
 Fixed non-group locations having issues when returning characters 
@@ -464,6 +467,9 @@ Seen questions won't be showing as options anymore
 Starting slave classes in story mode are now restricted to selected guild
 High tier enemies have more elemental resists
 Master's charm now increase repeatable quests gold and reputation rewards
+Corrected item drop chances (previously chances were reversed so less common items appeared more often and more common items were rare)
+Somewhat rebalanced damage and enemy hp values
+Made enemies overall slower
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells upscaling damage
 Fixed non-group locations having issues when returning characters 

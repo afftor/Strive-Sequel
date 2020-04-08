@@ -608,7 +608,9 @@ func generate_simple_fighter(tempname):
 			set(i, data[i])
 	icon_image = data.icon
 	body_image = data.body
-	combat_skills = data.skills + ['attack']
+	combat_skills = data.skills 
+	if !data.skills.has("ranged_attack"):
+		combat_skills += ['attack']
 	npc_reference = data.code
 	is_person = false
 	xpreward = data.xpreward
@@ -861,7 +863,7 @@ func valuecheck(i, ignore_npc_stats_gear = false):
 		'population':
 			check = input_handler.operate(i.operant, state.characters.size(), i.value)
 		'random':
-			check = globals.rng.randf()*100 <= calculate_number_from_string_array(i.chance)
+			check = globals.rng.randf()*100 <= calculate_number_from_string_array(i.value)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):

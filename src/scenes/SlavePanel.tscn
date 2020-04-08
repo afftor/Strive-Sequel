@@ -113,6 +113,7 @@ use_filter = true
 font_data = ExtResource( 32 )
 
 [node name="SlavePanel" type="Panel"]
+visible = false
 margin_left = 10.0
 margin_top = 6.0
 margin_right = 1199.0
@@ -122,7 +123,6 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="name" type="Label" parent="."]
-editor/display_folded = true
 margin_left = 46.0
 margin_top = 230.0
 margin_right = 154.0
@@ -167,7 +167,6 @@ text = "task"
 align = 1
 
 [node name="productivity" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 1002.24
 margin_top = 129.731
 margin_right = 1068.24
@@ -243,7 +242,6 @@ stretch_mode = 5
 [node name="base_stats" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
-editor/display_folded = true
 margin_left = 15.0
 margin_top = 265.0
 margin_right = 215.0
@@ -382,7 +380,6 @@ expand = true
 stretch_mode = 6
 
 [node name="factors" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 39.255
 margin_top = 392.251
 margin_right = 160.255
@@ -589,7 +586,6 @@ margin_bottom = 31.0
 text = "25"
 
 [node name="food_love" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 45.0
 margin_top = 748.0
 margin_right = 80.0
@@ -609,7 +605,6 @@ margin_bottom = 34.0986
 texture = ExtResource( 30 )
 
 [node name="food_hate" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 45.0
 margin_top = 792.0
 margin_right = 80.0
@@ -641,8 +636,8 @@ text = "Effects"
 align = 1
 
 [node name="obedlabel" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 576.131
 margin_top = 55.833
@@ -672,8 +667,8 @@ text = "Obedience"
 align = 1
 
 [node name="authoritylabel" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 700.0
 margin_top = 102.0
@@ -686,8 +681,8 @@ text = "Authority: "
 align = 1
 
 [node name="authoritylabel2" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.513
 margin_top = 9.88072
@@ -699,8 +694,8 @@ text = "Loyalty"
 align = 1
 
 [node name="authoritylabel3" type="Label" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.513
 margin_top = 55.8807
@@ -712,8 +707,8 @@ text = "Submission"
 align = 1
 
 [node name="loyaltylabel" type="ProgressBar" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.0
 margin_top = 31.0
@@ -725,8 +720,8 @@ value = 100.0
 percent_visible = false
 
 [node name="submissionlabel" type="ProgressBar" parent="." groups=[
-"hide_stranger",
 "hide_master",
+"hide_stranger",
 ]]
 margin_left = 730.0
 margin_top = 78.0
@@ -758,7 +753,6 @@ text = "Sex Traits"
 align = 1
 
 [node name="traits" type="VBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 263.0
 margin_top = 682.0
 margin_right = 463.0
@@ -838,7 +832,6 @@ hint_tooltip = "RETURNTOMANSIONBUTTON"
 text = "Return"
 
 [node name="buffscontainer" type="GridContainer" parent="."]
-editor/display_folded = true
 margin_left = 858.0
 margin_top = 678.0
 margin_right = 1178.0
@@ -889,7 +882,6 @@ stretch_mode = 5
 "hide_stranger",
 "hide_traveler",
 ]]
-editor/display_folded = true
 margin_left = 36.6732
 margin_top = 900.02
 margin_right = 806.673
@@ -1029,7 +1021,6 @@ align = 1
 visible = false
 
 [node name="job_panel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 294.382
 margin_top = 41.197
@@ -1121,7 +1112,6 @@ text = "Select Desired Resources"
 align = 1
 
 [node name="ResourceOptions" type="HBoxContainer" parent="job_panel/job_details"]
-editor/display_folded = true
 margin_left = 89.0021
 margin_top = 385.23
 margin_right = 583.002
@@ -1167,7 +1157,6 @@ hint_tooltip = "TOOLTIPSIMPLEBEHAVIOR"
 text = "Simple Behavior"
 
 [node name="WorkDetailsPanel" type="Panel" parent="job_panel/job_details"]
-editor/display_folded = true
 visible = false
 margin_top = 575.0
 margin_right = 644.0
@@ -1392,7 +1381,6 @@ text = "Consent: "
 align = 1
 
 [node name="DietPanel" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 539.638
 margin_top = 65.0147

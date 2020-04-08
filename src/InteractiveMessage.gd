@@ -26,20 +26,34 @@ func open(scene):
 	
 	update_scene_characters()
 	
+	
+	$CharacterImage.hide()
+	$ImagePanel.hide()
+	$RichTextLabel.modulate.a = 0
+	$ScrollContainer.modulate.a = 0
+	if scene.tags.has("blackscreen_transition_common"):
+		input_handler.BlackScreenTransition(1)
+		yield(get_tree().create_timer(1), "timeout")
+	elif scene.tags.has("blackscreen_transition_slow"):
+		input_handler.BlackScreenTransition(2)
+		yield(get_tree().create_timer(2), "timeout")
+	
 	if scene.has("character") == false:
 		$ImagePanel.show()
 		$CharacterImage.hide()
 		if scene.image != '' && scene.image != null:
 			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
 		else:
-			$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
+			$ImagePanel.hide()
+			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
 	else:
+		if $CharacterImage.texture == images.sprites[scene.character] == false:
+			input_handler.UnfadeAnimation($CharacterImage,0.5)
 		$ImagePanel.hide()
 		$CharacterImage.texture = images.sprites[scene.character]
 		$CharacterImage.show()
-		#input_handler.UnfadeAnimation($CharacterImage,1)
-	$RichTextLabel.modulate.a = 0
-	$ScrollContainer.modulate.a = 0
+	
+	
 	if self.visible == false:
 		self.visible = true
 		input_handler.UnfadeAnimation(self, 0.2)
@@ -47,6 +61,7 @@ func open(scene):
 		previous_text = ''
 		yield(get_tree().create_timer(0.2), "timeout")
 	show()
+	
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
 	
@@ -153,6 +168,10 @@ func open(scene):
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
 
+func complete_skirmish():
+	input_handler.remove_location(input_handler.active_location.id)
+	close()
+
 func update_scene_characters():
 	globals.ClearContainer($EventCharacters/VBoxContainer)
 	globals.ClearContainer($PlayerCharacters/VBoxContainer)
@@ -222,11 +241,12 @@ func select_option(number):
 			yield(get_tree().create_timer(0.2), "timeout")
 			button.emit_signal("pressed")
 
-func close():
+func close(transition = false):
 	input_handler.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
-	input_handler.scene_characters.clear()
+	if transition == false:
+		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
 
@@ -339,7 +359,7 @@ func fight_skirmish():
 		input_handler.encounter_win_script = current_scene.winscene
 	input_handler.current_enemy_group = dialogue_enemy
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
-	#close()
+	close(true)
 
 func quest_fight(code):
 	input_handler.current_enemy_group = code

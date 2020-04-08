@@ -87,6 +87,7 @@ var individual_lines = {
 	master_punish_line2 = {text = "Ugh... it really hurts, [Master].", events = ['master_punish'], personalities = ['bold','serious','shy','kind'], reqs = [], weight = 1, tags = []},
 	master_punish_line3 = {text = "I understand... this is for the order.", events = ['master_punish'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_punish_line4 = {text = "Hmh! Just so you know, it didn't hurt at all!", events = ['master_punish'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	master_punish_line5 = {text = "No... Take pity of a kitty!", events = ['master_punish'], personalities = ['bold','kind','serious','shy'], reqs = [{code = 'one_of_races', value = ['HalfkinCat','BeastkinCat']}], weight = 0.01, tags = []},
 	
 	master_abuse_line1 = {text = "Why... *sob*", events = ['abuse'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	master_abuse_line2 = {text = "This is horrible... You are horrible!", events = ['abuse'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},

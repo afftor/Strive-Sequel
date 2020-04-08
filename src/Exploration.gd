@@ -299,6 +299,7 @@ func enter_guild(guild):
 					break 
 			if event == null: 
 				continue
+			print(event)
 			newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 			newbutton.text = event.name
 			
@@ -790,7 +791,7 @@ func accept_quest():
 	world_gen.take_quest(selectedquest, active_area)
 	for i in selectedquest.requirements:
 		if i.code in ['complete_dungeon','complete_location']:
-			input_handler.get_spec_node(input_handler.NODE_POPUP, ["You've received a new quest location.", 'Confirm'])
+			#input_handler.get_spec_node(input_handler.NODE_POPUP, ["You've received a new quest location.", 'Confirm'])
 			#input_handler.ShowPopupPanel("You've received a new quest location.")
 			#update_categories()
 			break
@@ -1014,9 +1015,14 @@ func open_location_actions():
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("pressed", self, i)
 		'encounter':
-			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-			newbutton.text = 'Initiate'
-			newbutton.connect("pressed",self,"start_skirmish")
+#			newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Initiate'
+#			newbutton.connect("pressed",self,"start_skirmish")
+			for i in active_location.options:
+				if state.checkreqs(i.reqs) == true:
+					newbutton = globals.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+					newbutton.text = tr(i.text)
+					newbutton.connect("pressed", state, 'common_effects', [i.args])
 		'quest_location':
 			for i in active_location.options:
 				if state.checkreqs(i.reqs) == true:

@@ -600,6 +600,7 @@ var sprites = {
 	firebolt = 'res://assets/sfx/hit_animation/firebolt.tscn',
 	flame = 'res://assets/sfx/hit_animation/flame.tscn',
 	earth_spike = "res://assets/sfx/hit_animation/earth_spike.tscn",
+	decay = "res://assets/sfx/hit_animation/DecayEffect.tscn",
 	}
 var particles = {
 	heal = "res://assets/sfx/HealEffect.tscn",
@@ -1220,12 +1221,14 @@ func check_location_group():
 	else:
 		return true
 
+
 func StartCombat(encounter = null):
 	var data
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
 		encounter_win_script = Enemydata.encounters[encounter].win_effects
-		
+	
+	
 	if variables.skip_combat == true:
 		finish_combat()
 		return

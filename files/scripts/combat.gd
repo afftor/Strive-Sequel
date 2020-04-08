@@ -260,7 +260,7 @@ func victory():
 					rewardsdict.gold += i[2]
 				else:
 					while counter > 0:
-						if randf() >= i[1]:
+						if randf() <= i[1]:
 							rewardsdict.gold += 1
 						counter -= 1
 			elif Items.materiallist.has(i[0]):
@@ -268,7 +268,7 @@ func victory():
 				if i.size() > 2:
 					counter = i[2]
 				while counter > 0:
-					if randf() >= i[1]:
+					if randf() <= i[1]:
 						globals.AddOrIncrementDict(loot, {i[0] : 1})
 					counter -= 1
 				globals.AddOrIncrementDict(rewardsdict.materials, loot)
@@ -278,7 +278,7 @@ func victory():
 				if i.size() > 2:
 					counter = i[2]
 				while counter > 0:
-					if randf() >= i[1]:
+					if randf() <= i[1]:
 						if itemtemp.type == 'usable':
 							var itemfound = false
 							for k in rewardsdict.items:
@@ -679,18 +679,18 @@ func FighterMouseOver(fighter):
 
 
 func FighterMouseOverFinish(fighter):
-	if !allowaction: return;
 	var panel = fighter.displaynode
 	fighterhighlighted = false
 	if variables.CombatAllyHpAlwaysVisible == false || fighter.combatgroup == 'enemy':
 		panel.get_node("hplabel").hide()
 		panel.get_node("mplabel").hide()
 	Input.set_custom_mouse_cursor(cursors.default)
-	Stop_Target_Glow();
+	if !allowaction: return
+	Stop_Target_Glow()
 	for f in allowedtargets.enemy:
-		Target_Glow(f);
+		Target_Glow(f)
 	for f in allowedtargets.ally:
-		Target_Glow(f);
+		Target_Glow(f)
 
 func ShowFighterStats(fighter):
 	if fightover == true:
@@ -839,6 +839,12 @@ func use_skill(skill_code, caster, target):
 		targets = CalculateTargets(skill, target, true) 
 		#preparing real_target processing, predamage animations
 		var s_skill2_list = []
+		for i in animationdict.predamage:
+			if i.target in ['target_frame']:
+				if caster.combatgroup == 'ally':
+					input_handler.gfx_sprite($Panel2, i.code)
+				else:
+					input_handler.gfx_sprite($Panel, i.code)
 		for i in targets:
 			if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
@@ -846,8 +852,9 @@ func use_skill(skill_code, caster, target):
 				else:
 					caster.displaynode.process_sound(skill.sounddata.strike)
 			for j in animationdict.predamage:
-				var sfxtarget = ProcessSfxTarget(j.target, caster, i)
-				sfxtarget.process_sfx(j.code)
+				if j.target in ['caster','target']:
+					var sfxtarget = ProcessSfxTarget(j.target, caster, i)
+					sfxtarget.process_sfx(j.code)
 			#special results
 			if skill.has('damage_type') and skill.damage_type == 'summon':
 				summon(skill.value[0], skill.value[1]);

@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/sfx/hit_animation/DecayEffect.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/decay/plague7.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float width = 0.2;
+uniform float mval = 1.0;
+uniform float angle = 0.3;
+uniform float bordmval = 1.0;
+uniform float bordmwidth = 0.5;
+uniform float crop = 1.0;
+
+float dist(vec2 pos){
+    float res = pos.x;
+    res = min(res, 1.0 - pos.x);
+    res = min(res, 1.0 - pos.y);
+    res = min(res, pos.y);
+    return res;
+}
+
+float dist2(vec2 pos){
+    pos -= vec2(0.5, 0.5);
+    mat2 rot = mat2(vec2(cos(angle), sin(angle)), vec2(-sin(angle), -cos(angle)));
+    pos = pos * rot;
+    return abs(pos.y);
+}
+
+void fragment(){
+    vec4 color = texture(TEXTURE, UV);
+    float ta = color.a;
+    float mask = 1.0;
+    mask *= clamp(mval*(dist2(UV) - width), 0, 1);
+    float border = clamp((bordmwidth - dist(UV)) * bordmval, 0, 1);
+    mask = max(border, mask);
+    ta *= mask;
+    ta *= crop;
+    color.a = ta;
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/width = 0.2
+shader_param/mval = 1.0
+shader_param/angle = 0.3
+shader_param/bordmval = 0.5
+shader_param/bordmwidth = 0.5
+shader_param/crop = 1.0
+
+[node name="DecayEffect" type="Sprite"]
+material = SubResource( 2 )
+position = Vector2( 1548.16, 510.476 )
+texture = ExtResource( 3 )
+script = ExtResource( 2 )

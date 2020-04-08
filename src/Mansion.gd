@@ -86,7 +86,7 @@ func _ready():
 		character.add_trait('core_trait')
 		character.unlock_class("master")
 		character.unlock_class("fighter")
-		character.unlock_class("valkyrie")
+		character.unlock_class("necromancer")
 		character.set_slave_category('master')
 		character.sex_traits = ['dislike_missionary', 'anal']
 		#character.equip(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'mithril'}))
@@ -116,7 +116,7 @@ func _ready():
 		character.lust = 50
 		character.is_players_character = true
 		character = Slave.new()
-		character.create('Human', 'random', 'random')
+		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 		
 #		for i in range(1,20):
@@ -198,7 +198,13 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("elegant_choker", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
@@ -219,13 +225,12 @@ func _ready():
 		#$SlaveList.rebuild()
 		state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
 		state.show_tutorial = true
-		state.active_quests.append({code = "guilds_introduction", stage = 'stage3'})
+		state.active_quests.append({code = "guilds_introduction", stage = 'stage2'})
 		state.mainprogress = 0
 		for i in state.areas.plains.factions.values():
 			i.totalreputation += 500
 		character.unlock_class("pet")
 		character.unlock_class("souleater")
-		character.critchance = 100
 		character.mp = 100
 		character.sex_skills.oral = 70
 		character.sex_skills.anal = 90
@@ -235,8 +240,10 @@ func _ready():
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
 		input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = state.areas.plains
+		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message('lich_enc_initiate', '', {})
+		input_handler.interactive_message('goblins_skirmish_start', '', {})
+		
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
 		

@@ -20,7 +20,7 @@ self_modulate = Color( 1, 1, 1, 0.466667 )
 margin_left = 1611.0
 margin_top = 616.0
 margin_right = 1921.0
-margin_bottom = 1013.0
+margin_bottom = 983.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

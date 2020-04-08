@@ -74,6 +74,7 @@ var sprites = {
 	duncan = load("res://assets/images/sprites/duncan.png"),
 	sigmund = load("res://assets/images/sprites/sigmund.png"),
 	myr = load("res://assets/images/sprites/myr.png"),
+	anastasia = load("res://assets/images/sprites/anastasia.png"),
 	}
 
 var dynamic_backgrounds = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/panel.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=10]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/backgrounds/Aliron.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/sprites/duncan.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -71,6 +70,9 @@ margin_left = -689.0
 margin_top = -430.0
 margin_right = 1370.0
 margin_bottom = 741.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ImagePanel" type="TextureRect" parent="."]
 visible = false
@@ -224,5 +226,4 @@ margin_left = 687.0
 margin_top = -394.0
 margin_right = 1418.0
 margin_bottom = 686.0
-texture = ExtResource( 13 )
 stretch_mode = 6

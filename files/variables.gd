@@ -103,8 +103,8 @@ var slave_starting_stats = 15
 var minimum_factor_value = 1
 var maximum_factor_value = 6
 
-var basic_character_atk = 25
-var basic_character_matk = 25
+var basic_character_atk = 15
+var basic_character_matk = 15
 
 var enslavement_price = 100
 

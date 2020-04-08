@@ -657,6 +657,16 @@ func _init():
 		var newaction = load(i).new()
 		sex_actions_dict[newaction.code] = newaction
 	
+	for i in dir_contents("res://assets/data/events/"):
+		if i.find('.remap') >= 0:
+			continue
+		var newscript  = load(i).new()
+		for k in newscript.data:
+			if scenedata.scenedict.has(k) == false:
+				scenedata.scenedict[k] = newscript.data[k]
+			else:
+				print("Error: Scene data key already exists: " + k)
+	
 	#Storing available translations
 	for i in scanfolder(LocalizationFolder):
 		for ifile in dir_contents(i):
