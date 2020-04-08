@@ -165,7 +165,7 @@ func firebolt(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
-	input_handler.gfx_sprite(node, 'firebolt', 0.3, 0.4)
+	input_handler.gfx_sprite(node, 'firebolt', 0.3, 0.4, node.get_flip())
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay
