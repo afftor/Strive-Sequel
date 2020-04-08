@@ -49,6 +49,9 @@ func get_attack_vector():
 	if fighter.combatgroup == 'ally': return Vector2(100, 0)
 	elif fighter.combatgroup == 'enemy': return Vector2(-100, 0)
 
+func get_flip():
+	return (fighter.combatgroup == 'ally')
+
 func update_hp():
 	if hp == null:
 		hp = fighter.hp

@@ -841,10 +841,11 @@ func use_skill(skill_code, caster, target):
 		var s_skill2_list = []
 		for i in animationdict.predamage:
 			if i.target in ['target_frame']:
-				if caster.combatgroup == 'ally':
-					input_handler.gfx_sprite($Panel2, i.code)
-				else:
-					input_handler.gfx_sprite($Panel, i.code)
+				target.displaynode.process_sfx(i.code)
+#				if caster.combatgroup == 'ally':
+#					input_handler.gfx_sprite($Panel2, i.code)
+#				else:
+#					input_handler.gfx_sprite($Panel, i.code)
 		for i in targets:
 			if skill.has('sounddata') and !skill.sounddata.empty() and skill.sounddata.strike != null:
 				if skill.sounddata.strike == 'weapon':
