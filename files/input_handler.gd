@@ -585,9 +585,9 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false)
 	
 	x.rect_size = node.rect_size
 	
-	if rotate == true:
-		x.rect_pivot_offset = images.GFX[effect].get_size()/2
-		x.rect_rotation = rand_range(0,360)
+	if rotate == true: x.set_flip_h(true)
+#		x.rect_pivot_offset = images.GFX[effect].get_size()/2
+#		x.rect_rotation = rand_range(0,360)
 	
 	input_handler.FadeAnimation(x, fadeduration, delayuntilfade)
 	var wr = weakref(x)
@@ -606,10 +606,11 @@ var particles = {
 	heal = "res://assets/sfx/HealEffect.tscn",
 }
 
-func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3):
+func gfx_sprite(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, rotate = false):
 	var x = load(sprites[effect]).instance()
 	node.add_child(x)
 	x.position = node.rect_size/2
+	if rotate == true: x.set_flip_h(true)
 	#x.set_anchors_and_margins_preset(Control.PRESET_CENTER)
 	x.play()
 	
