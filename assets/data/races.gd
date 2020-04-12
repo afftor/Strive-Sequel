@@ -538,6 +538,7 @@ var racelist = {
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],
+			eye_color = ['red', 'amber', 'blue', 'green', 'purple'],
 			height = ['tiny','petite'],
 			wings = ['fairy'],
 			body_shape = ['shortstack'],

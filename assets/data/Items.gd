@@ -1593,7 +1593,6 @@ var itemlist = {
 		tags = [],
 		uses_per_target = 1,
 		mansion_effect = 'tamedrug',
-		interaction_effect = '',
 	},
 	ragedrug = {# - 1-2 tame factor, + 1-2 brave factor, +1 body factor (permanent)
 		code = 'ragedrug',
@@ -1611,7 +1610,6 @@ var itemlist = {
 		tags = [],
 		uses_per_target = 1,
 		mansion_effect = 'ragedrug',
-		interaction_effect = '',
 	},
 	sexdrug = {# -1 body factor, -2 wit factor, 6 sex factor (permanent)
 		code = 'sexdrug',
@@ -1663,7 +1661,6 @@ var itemlist = {
 		effects = [],
 		tags = ['save_on_use'], #saved on use in case of cancel, consumed during scene
 		mansion_effect = 'writ_of_exemption',
-		interaction_effect = '',
 	},
 	strong_pheromones = {
 		code = 'strong_pheromones',
@@ -1679,7 +1676,6 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [], 
-		mansion_effect = '',
 		interaction_effect = 'pheromones',
 	},
 	
@@ -1802,7 +1798,7 @@ var itemlist = {
 		slots = [],
 		price = 50,
 		icon = load("res://assets/images/iconsitems/icon_scroll2.png"),
-		tier = 'easy',
+		tier = 'medium',
 		reqs = [],
 		effects = [],
 		tags = [],

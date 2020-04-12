@@ -306,8 +306,14 @@ func valuecheck(dict):
 			return input_handler.operate(dict.operant, date, dict.value)
 		'active_quest_stage':
 			if get_active_quest(dict.value) == null:
-				return false
-			return get_active_quest(dict.value).stage == dict.stage
+				if dict.has('state') && dict.state == false:
+					return true
+				else:
+					return false
+			if dict.has('state') && dict.state == false:
+				return get_active_quest(dict.value).stage != dict.stage
+			else:
+				return get_active_quest(dict.value).stage == dict.stage
 		'faction_reputation':
 			var data = world_gen.get_faction_from_code(dict.code)
 			var guild = areas[data.area].factions[data.code]
@@ -520,6 +526,9 @@ func common_effects(effects):
 						'add_to_date':
 							var newreq = [{type = 'date', operant = 'eq', value = state.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
 							newevent.reqs += newreq
+						'fixed_date':
+							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
+							newevent.reqs += newreq
 				stored_events.timed_events.append(newevent)
 			'unique_character_changes':
 				var character = get_unique_slave(i.value)
@@ -639,6 +648,9 @@ func common_effects(effects):
 				input_handler.remove_location(i.value)
 			'set_music':
 				input_handler.SetMusic(i.value)
+			'lose_game':
+				input_handler.PlaySound('transition_sound')
+				globals.return_to_main_menu()
 
 func get_active_quest(code):
 	for i in active_quests:

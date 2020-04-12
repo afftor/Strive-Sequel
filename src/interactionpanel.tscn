@@ -82,6 +82,9 @@ margin_bottom = -64.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sceneeffects" type="RichTextLabel" parent="Panel"]
 anchor_top = 1.0

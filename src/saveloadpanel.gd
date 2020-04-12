@@ -119,16 +119,14 @@ func show_save_details(save):
 		$DetailsPanel.hide()
 		return
 	var text = '[center]Mode: ' + starting_presets.preset_data[save.preset].name + "\nMaster: " + save.master_name + "\nDay: " + str(save.day) + " Hour: " + str(save.hour)+ "\nGold: " + str(save.gold) + "\nPopulation: " + str(save.population)
-	text += "\n\n\nVersion: "
+	text += "\n\n\nVersion: " + save.version
 	if save.version != globals.gameversion:
-		text += "{color=red|" + save.version + "}"
-	else: 
-		text += save.version
+		text += "{color=red| (Outdated)}"
 	text += "[/center]\n\n" 
 	text += get_date_time(save)
 #	text += add_zeros(save.time.hour) + ":" + add_zeros(save.time.minute) 
 #	text += " - " + str(save.time.month) + "/" + str(save.time.day) + "/" + str(save.time.year).substr(2, 4)
-	$DetailsPanel/RichTextLabel.bbcode_text = text
+	$DetailsPanel/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$DetailsPanel.show()
 	$DetailsPanel/MasterIcon.texture = globals.loadimage(save.master_icon)
 

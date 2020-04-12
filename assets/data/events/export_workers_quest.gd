@@ -19,14 +19,14 @@ var data = {
 		text = [
 		{text = "WORKERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "WORKERSINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2},
-		{text = "WORKERSINTRODUCTION2_3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = 1},
+		{text = "WORKERSINTRODUCTION2_3", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], previous_dialogue_option = 1},
 		{text = "WORKERSINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
 		{text = "WORKERSINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
 		{text = "WORKERSINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
 		],
 		options = [
 		{code = 'workers_questions', text = "WORKERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'workers_join', text = "WORKERSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'workers_join', text = "WORKERSINTRODUCTION1REPLY3", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'workers_election_initiate1', text = "WORKERSREQUESTELECTIONSUPPORT", 
 			reqs = [
 			{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},
@@ -50,7 +50,7 @@ var data = {
 		{code = 'open_loot'}
 		],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character', type = 'workers'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character', type = 'workers'},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 	},
 	workers_leader_close = {
@@ -58,8 +58,8 @@ var data = {
 		character = 'sigmund',
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "WORKERSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
-		{text = "WORKERSCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		{text = "WORKERSCLOSE1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}]},
+		{text = "WORKERSCLOSE2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}]},
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},

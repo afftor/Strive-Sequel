@@ -646,7 +646,7 @@ var TranslationDict = {
 	SLAVEPARTSEXTRAIT = "Sexual Trait",
 	SLAVEPARTPERSONALITY = "Personality",
 	
-	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and has no gameplay effects.",
+	SLAVEPARTPERSONALITYDESCRIPT = "Personality defines character's speech patterns and might affect some minor actions.",
 	
 	SLAVEDIET = "Food Preferences",
 	SLAVESTARTINGCLASS = "Starting Class",
@@ -797,7 +797,7 @@ var TranslationDict = {
 	STATMOD_BUILD = "Upgrading Task Efficiency",
 	STATMOD_COLLECT = "Collection Task Efficiency",
 	STATMOD_HUNT = "Hunt Task Efficiency",
-	STATMOD_FISH = "Fish Task Efficiency",
+	STATMOD_FISH = "Fishing Task Efficiency",
 	STATMOD_COOK = "Cook Task Efficiency",
 	STATMOD_SMITH = "Smith Task Efficiency",
 	STATMOD_TAILOR = "Tailor Task Efficiency",
@@ -1916,7 +1916,7 @@ var TranslationDict = {
 	STARTINGDILOGUE1_1 = "— I'm glad you like it.\n\n",
 	STARTINGDILOGUE1_2 = "— It surely is.\n\n",
 	STARTINGDILOGUE1_3 = "— Oh, a [man] of business? I like it.\n\n",
-	STARTINGDILOGUE1_4 = "— I'm here to deliver the plan, by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next sixth months. As a handicap, your first payment will be consisting of 1.000 gold and is due  in 2 weeks.",
+	STARTINGDILOGUE1_4 = "— I'm here to deliver the plan, by which you will be paying your loan. In total, you owe the bank 100.000 gold which you will be required to pay in the next 100 days. As a handicap, your first payment will be consisting of 1.000 gold and is due in 2 weeks.",
 	STARTINGDIALOGUE1REPLY1 = "Understood",
 	STARTINGDIALOGUE1REPLY2 = "Are you seriously expecting me to make this much?",
 	STARTINGDIALOGUE2_1 = "— Good. ",
@@ -2280,6 +2280,10 @@ var TranslationDict = {
 
 
 
-
+	LOAN_EVENT = "By the morning the bank loaners has visited the mansion. ",
+	LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
+	LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
+	LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
+	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
 
 }

@@ -527,7 +527,6 @@ func finish_character():
 	$TraitSelection.hide()
 	$ClassPanel.hide()
 	person.is_active = true
-	state.add_slave(person)
 	person.unlock_class(selected_class)
 	person.food_consumption = 3
 	person.hp = person.get_stat('hpmax')
@@ -541,6 +540,7 @@ func finish_character():
 	else:
 		person.slave_class = 'master'
 		person.consent = 1000
+	state.add_slave(person)
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
 

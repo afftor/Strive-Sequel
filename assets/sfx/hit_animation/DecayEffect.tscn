@@ -53,6 +53,7 @@ shader_param/crop = 1.0
 
 [node name="DecayEffect" type="Sprite"]
 material = SubResource( 2 )
-position = Vector2( 1548.16, 510.476 )
+position = Vector2( 1600.47, 546.08 )
+scale = Vector2( 1.26552, 1.10534 )
 texture = ExtResource( 3 )
 script = ExtResource( 2 )

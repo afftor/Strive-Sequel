@@ -8,7 +8,7 @@ var SpriteDict = {}
 var TranslationData = {}
 var CurrentScene #holds reference to instanced scene
 
-var EventList #= events.checks
+var EventList 
 
 var scenedict = {
 	menu = "res://files/Menu.tscn",
@@ -795,19 +795,27 @@ func StartEventScene(name, debug = false, line = 0):
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
-func CreateGearItem(item, parts, bonus = {}, newname = null):
+
+func check_duplicates(item, parts):
+	for i in state.items.values():
+		if i.itembase == item && i.parts.hash() == parts.hash():
+			return i.id
+
+func CreateGearItem(item, parts, bonus = {}, newname = null, dont_duplicate = true):
+	if dont_duplicate:
+		var duplicate = check_duplicates(item, parts)
+		if duplicate != null:
+			state.items[duplicate].amount += 1
+			return
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, bonus)
 	if newname != null:
 		newitem.name = newname
 	return newitem
-
-func CreateUsableItem(item, amount = 1):
-	var newitem = Item.new()
-	newitem.CreateUsable(item, amount)
-	return newitem
-
+	
 func AddItemToInventory(item):
+	if item == null:
+		return
 	item.inventory = state.items
 	if item.stackable == false:
 		item.id = "i" + str(state.itemcounter)
@@ -821,7 +829,13 @@ func AddItemToInventory(item):
 			item.id = "i" + str(state.itemcounter)
 			state.items[item.id] = item
 			state.itemcounter += 1
-		
+
+
+
+func CreateUsableItem(item, amount = 1):
+	var newitem = Item.new()
+	newitem.CreateUsable(item, amount)
+	return newitem
 
 func get_item_id_by_code(itembase):
 	for item in state.items.values():
@@ -956,7 +970,7 @@ func loadimage(path):
 	#var file = File.new()
 	if typeof(path) == TYPE_OBJECT:
 		return path
-	if path == null:
+	if path == null || path == '':
 		return
 	if path.find('res:') >= 0:
 		return load(path)
@@ -1228,7 +1242,10 @@ func fastif(value, result1, result2):
 	else:
 		return result2
 
-
+func return_to_main_menu():
+	CurrentScene.queue_free()
+	ChangeScene('menu')
+	state.revert()
 
 func addrelations(person, person2, value):
 	if person.professions.has("master") || person2.professions.has("master") || person == person2:

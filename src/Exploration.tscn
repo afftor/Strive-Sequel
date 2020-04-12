@@ -664,6 +664,9 @@ margin_left = 321.0
 margin_top = 13.0
 margin_right = 1649.0
 margin_bottom = 141.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationPanel"]
 margin_left = 279.0
@@ -1011,6 +1014,9 @@ margin_top = 29.9127
 margin_right = 207.727
 margin_bottom = 62.9127
 text = "Gold"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="ShopPanel"]
 margin_left = 16.3289

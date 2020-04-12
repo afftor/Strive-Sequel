@@ -26,7 +26,4 @@ func Exit():
 	#input_handler.ShowConfirmPanel(self, 'MainMenu', tr('LEAVECONFIRM'))
 
 func MainMenu():
-	globals.CurrentScene.queue_free()
-	globals.ChangeScene('menu')
-	get_parent().queue_free()
-	state.revert()
+	globals.return_to_main_menu()

@@ -80,7 +80,7 @@ func process_event(ev):
 	return res
 
 func reset_duration():
-	remains = template.duration
+	if template.has('duration'): remains = template.duration
 #	soft_remove()
 #	apply()
 

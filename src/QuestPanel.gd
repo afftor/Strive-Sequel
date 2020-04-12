@@ -114,17 +114,17 @@ func show_quest_info(quest):
 					newbutton.get_node("amount").show()
 					globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
 				'gold':
-					var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])
+					var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(state.get_master().charm_factor)])
 					newbutton.texture = load('res://assets/images/iconsitems/gold.png')
 					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])) + "(Master Charm Bonus)"
+					newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(state.get_master().charm_factor)])) + "(Master Charm Bonus)"
 				'reputation':
-					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor])
+					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)])
 					newbutton.texture = globals.quest_icons[i.code]
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor]))+ "(Master Charm Bonus)"
+					newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)]))+ "(Master Charm Bonus)"
 				'material':
 					var material = Items.materiallist[i.item]
 					newbutton.texture = material.icon
@@ -215,10 +215,10 @@ func Reward():
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
-				state.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])
+				state.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(state.get_master().charm_factor)])
 			'reputation':
-				state.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor])
-				state.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor])
+				state.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)])
+				state.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)])
 			'gear':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
 			'gear_static':

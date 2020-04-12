@@ -100,6 +100,9 @@ __meta__ = {
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="TextureRect" parent="."]
 margin_left = 82.0
@@ -117,6 +120,9 @@ margin_top = 60.0
 margin_right = 497.0
 margin_bottom = 739.0
 custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Back" type="VBoxContainer" parent="Panel/PlayerGroup"]
 margin_right = 218.0
@@ -157,6 +163,9 @@ value = 50.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
 fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MP" type="TextureProgress" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 183.0

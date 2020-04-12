@@ -113,7 +113,7 @@ func buildinventory():
 		if i.durability != null:
 			newnode.get_node("Number").show()
 			newnode.get_node("Number").text = str(globals.calculatepercent(i.durability, i.maxdurability)) + '%'
-		if i.amount != null && (i.amount > 1 || i.type == 'usable') :
+		if i.amount != null:
 			newnode.get_node("Number").show()
 			newnode.get_node("Number").text = str(i.amount)
 		else:
@@ -128,6 +128,7 @@ func buildinventory():
 		newnode.connect("pressed",self,'useitem', [i, i.type])
 		itemarray.append(newnode)
 	rebuildinventory()
+
 
 var icondict = {
 	food = "res://assets/images/gui/inventory/icon_food1.png",
@@ -210,11 +211,7 @@ func rebuildinventory():
 				var item = state.items[selectedhero.gear[i]]
 				item.set_icon($GearPanel.get_node(i + "/icon"))
 		$StatsPanel.open(selectedhero)
-#		var text = globals.statdata.hp.name + ": " + str(selectedhero.hp) + "/" + str(selectedhero.hpmax) + "\n" + globals.statdata.mp.name + ": " + str(selectedhero.mp) + '/' + str(selectedhero.mpmax)
-#		var statsarray = ['atk','matk','armor','mdef','hitrate','evasion']
-#		for i in statsarray:
-#			text += '\n' + globals.statdata[i].name + ": " + str(selectedhero[i])
-#		$StatsPanel/RichTextLabel.bbcode_text = text
+
 
 func selectcategory(button):
 	var type = button.name
@@ -225,7 +222,6 @@ func selectcategory(button):
 	rebuildinventory()
 
 func useitem(item, type):
-	activeitem = item
 	if mode == null:
 		return
 	elif mode == 'character' && selectedhero != null:
@@ -233,7 +229,18 @@ func useitem(item, type):
 			input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
 			return
 		if type == 'gear':
-			selectedhero.equip(item)
+			var item_prev_id = item.id
+			if item.amount == 1:
+				selectedhero.equip(item)
+				#input_handler.GetItemTooltip().hide()
+				input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+				emit_signal("item_equipped")
+				buildinventory()
+				return
+			var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null, false)
+			globals.AddItemToInventory(equiped_item)
+			selectedhero.equip(equiped_item, item_prev_id)
+			item.amount -= 1	
 			#input_handler.GetItemTooltip().hide()
 			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 			emit_signal("item_equipped")
@@ -250,6 +257,7 @@ func useitem(item, type):
 		input_handler.update_slave_panel()
 	elif mode == 'shop':
 		sellwindow(item, type)
+
 
 var numbermode
 var operatingitem

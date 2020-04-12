@@ -89,4 +89,6 @@ var sounds = {
 	firebolt = load("res://assets/sounds/sounds/firebolt.wav"),
 	firehit = load("res://assets/sounds/sounds/firedamage.wav"),
 	avalanche = load("res://assets/sounds/sounds/avalanche.wav"),
+	
+	transition_sound = load("res://assets/sounds/sounds/magic1.wav"),
 }

@@ -21,14 +21,14 @@ var data = {
 		{text = "FIGHTERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = "update_guild"}]},
 		{text = "FIGHTERSINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = "update_guild"}]},
 		{text = "FIGHTERSINTRODUCTION2_3", reqs = [], previous_dialogue_option = [1,2]},
-		{text = "FIGHTERSINTRODUCTION2_3_1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = [1,2]},
+		{text = "FIGHTERSINTRODUCTION2_3_1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], previous_dialogue_option = [1,2]},
 		{text = "FIGHTERSINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
 		{text = "FIGHTERSINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
 		{text = "FIGHTERSINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
 		],
 		options = [
 		{code = 'fighters_questions', text = "FIGHTERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		
 		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, {type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500}, {type = 'decision', name = 'fighters_election_support', value = false},{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', name = 'fighters_election_support', value = false}, {type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'stage2'}, {type = 'dialogue_seen', operant = 'eq',value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7}, 
@@ -62,8 +62,8 @@ var data = {
 		character = 'duncan',
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "FIGHTERSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
-		{text = "FIGHTERSCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		{text = "FIGHTERSCLOSE1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}]},
+		{text = "FIGHTERSCLOSE2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}]},
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},

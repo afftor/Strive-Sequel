@@ -946,9 +946,13 @@ func check_gear_equipped(gearname, param = 'itembase'):
 			return true
 	return false
 
-func equip(item):
+func equip(item, item_prev_id = null):
 	if checkreqs(item.reqs) == false:
 		input_handler.SystemMessage(tr("INVALIDREQS"))
+		if item_prev_id == null:
+			return
+		state.items[item_prev_id].amount += 1
+		item.amount = 0
 		return
 	for i in item.multislots:
 		if gear[i] != null:
@@ -972,6 +976,11 @@ func equip(item):
 
 
 func unequip(item):#NEEDS REMAKING!!!!
+	var duplicate = globals.check_duplicates(item.itembase, item.parts)
+	if duplicate != null:
+		if item.id != duplicate:
+			state.items[duplicate].amount += 1
+			item.amount = 0
 	#removing links
 	item.owner = null
 	for i in gear:
@@ -989,7 +998,6 @@ func unequip(item):#NEEDS REMAKING!!!!
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 	recheck_effect_tag('recheck_item')
-	#checkequipmenteffects()
 
 func check_profession_limit(name, value):
 	var counter = 0
@@ -2030,6 +2038,8 @@ func process_event(ev, skill = null):
 
 
 func can_act():
+	if hp <= 0:
+		return false
 	var res = true
 	for e in static_effects + temp_effects + triggered_effects:
 		var obj = effects_pool.get_effect_by_id(e)

@@ -35,7 +35,7 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe": #&& false:#:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:#:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -187,7 +187,7 @@ func _ready():
 		character.is_players_character = true
 		
 		#state.revert()
-		state.money = 1000
+		state.money = 500000
 		for i in Items.materiallist:
 			state.materials[i] = 200
 		state.materials.bandage = 0
@@ -223,10 +223,10 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
 		globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 		#$SlaveList.rebuild()
-		state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
+		#state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
 		state.show_tutorial = true
-		state.active_quests.append({code = "guilds_introduction", stage = 'stage2'})
-		state.mainprogress = 0
+		#state.active_quests.append({code = "guilds_introduction", stage = 'stage2'})
+	#	state.mainprogress = 0
 		for i in state.areas.plains.factions.values():
 			i.totalreputation += 500
 		character.unlock_class("pet")
@@ -242,7 +242,7 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('goblins_skirmish_start', '', {})
+		input_handler.interactive_message('starting_dialogue4', '', {})
 		
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
@@ -261,7 +261,6 @@ func _ready():
 		
 		input_handler.ActivateTutorial("introduction")
 		input_handler.interactive_message('intro', '', {})
-		state.active_quests.append({code = "guilds_introduction", stage = 'start'})
 	build_task_bar()
 	$SlaveList.rebuild()
 	

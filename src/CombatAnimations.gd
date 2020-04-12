@@ -154,7 +154,7 @@ func targetattack(node, args = null):
 	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.4
-	input_handler.gfx_sprite(node, 'strike', 0.3, 0.1)
+	input_handler.gfx_sprite(node, 'strike', 0.3, 0.1, node.get_flip())
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay

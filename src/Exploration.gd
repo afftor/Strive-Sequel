@@ -130,8 +130,8 @@ func use_skill_confirm(target):
 	active_character.use_social_skill(active_skill.code, target)
 
 func open():
-	for i in state.characters.values():
-		i.tags.erase("selected")
+	input_handler.CloseAllCloseableWindows()
+	
 	input_handler.PlaySound("door_open")
 	input_handler.CurrentScreen = 'exploration'
 	build_accessible_locations()
@@ -299,7 +299,6 @@ func enter_guild(guild):
 					break 
 			if event == null: 
 				continue
-			print(event)
 			newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 			newbutton.text = event.name
 			
@@ -444,7 +443,7 @@ func update_shop_list():
 					newbutton.get_node("icon").texture = item.icon
 					newbutton.get_node("price").text = str(item.price)
 					if item.has('parts'):
-						var newitem = globals.CreateGearItem(i, active_shop[i])
+						var newitem = globals.CreateGearItem(i, active_shop[i], {}, null, false)
 						newitem.set_icon(newbutton.get_node('icon'))
 						newbutton.get_node("name").text = newitem.name
 						tempitems.append(newitem)
@@ -511,7 +510,7 @@ func item_puchase_confirm(value):
 	if typeof(purchase_item) == TYPE_OBJECT:
 		globals.AddItemToInventory(purchase_item)
 		state.money -= purchase_item.calculateprice()
-		$Gold.text = str(state.money)
+		$ShopPanel/Gold.text = str(state.money)
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 		for i in active_shop:
 			if purchase_item.itembase == i && str(purchase_item.parts) == str(active_shop[i]):
@@ -522,7 +521,7 @@ func item_puchase_confirm(value):
 		if Items.materiallist.has(purchase_item.code):
 			state.set_material(purchase_item.code, '+', value)
 			state.money -= purchase_item.price*value
-			$Gold.text = str(state.money)
+			$ShopPanel/Gold.text = str(state.money)
 			if typeof(active_shop) == TYPE_DICTIONARY:
 				active_shop[purchase_item.code] -= value
 		elif Items.itemlist.has(purchase_item.code):
@@ -537,7 +536,7 @@ func item_puchase_confirm(value):
 						globals.AddItemToInventory(globals.CreateGearItem(purchase_item.code, {}))
 				
 				value -= 1
-			$Gold.text = str(state.money)
+			$ShopPanel/Gold.text = str(state.money)
 		update_shop_list()
 
 func item_sell_confirm(value):
@@ -549,7 +548,7 @@ func item_sell_confirm(value):
 		price = round(purchase_item.calculateprice()/2)
 		purchase_item.amount -= value
 	state.money += price*value
-	$Gold.text = str(state.money)
+	$ShopPanel/Gold.text = str(state.money)
 	update_shop_list()
 
 func faction_hire():
@@ -766,17 +765,17 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				globals.connectmaterialtooltip(newbutton, material)
 			'gold':
-				var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])
+				var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(state.get_master().charm_factor)])
 				newbutton.texture = load('res://assets/images/iconsitems/gold.png')
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[state.get_master().charm_factor])) + "(Master Charm Bonus)"
+				newbutton.hint_tooltip = "Gold: " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_gold_bonus[int(state.get_master().charm_factor)])) + "(Master Charm Bonus)"
 			'reputation':
-				var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor])
+				var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)])
 				newbutton.texture = globals.quest_icons[i.code]
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
-				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[state.get_master().charm_factor]))+ "(Master Charm Bonus)"
+				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)]))+ "(Master Charm Bonus)"
 #				newbutton.texture = images.icons.quest_reputation
 #				newbutton.get_node("amount").text = str(i.value)
 #				newbutton.get_node("amount").show()
@@ -1261,6 +1260,8 @@ func slave_position_selected(pos, character):
 	build_location_group()
 
 func slave_position_deselect(character):
+	if !character is Slave:
+		return
 	for i in active_location.group:
 		if active_location.group[i] == character.id:
 			active_location.group.erase(i)

@@ -5,14 +5,14 @@ var data = {
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "SERVANTSINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
-		{text = "SERVANTSINTRODUCTION1_1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], previous_dialogue_option = 1},
+		{text = "SERVANTSINTRODUCTION1_1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], previous_dialogue_option = 1},
 		{text = "SERVANTSINTRODUCTION1_2", reqs = [], previous_dialogue_option = 2},
 		{text = "SERVANTSINTRODUCTION1_3", reqs = [], previous_dialogue_option = 3},
 		{text = "SERVANTSINTRODUCTION1_4", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
 		{code = 'servants_questions', text = "SERVANTSASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'servants_join', text = "SERVANTSINTRODUCTION1REPLY3", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'servants_join', text = "SERVANTSINTRODUCTION1REPLY3", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'servants_election', text = "SERVANTSREQUESTELECTIONSUPPORT", reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, 
 			{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 500},
@@ -33,7 +33,7 @@ var data = {
 		{code = 'open_loot'}
 		],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character', type = 'servants'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character', type = 'servants'}, {code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 	},
 	servants_leader_close = {
@@ -41,8 +41,8 @@ var data = {
 		character = 'amelia',
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "SERVANTSCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
-		{text = "SERVANTSCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		{text = "SERVANTSCLOSE1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}]},
+		{text = "SERVANTSCLOSE2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}]},
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},
@@ -166,7 +166,7 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH1_2", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 4}], bonus_effects = [{code = 'make_loot', pool = [['servants_election_bonus',1]]}, {code = 'open_loot'}]},
 			{text = "SERVANTSELECTIONFINISH1_3", reqs = []},
 		],
-		common_effects = [{code = 'progress_quest', value = 'election_global_quest', stage = 'stage2'}],
+		common_effects = [{code = 'progress_quest', value = 'election_global_quest', stage = 'stage2'}, {code = 'complete_quest', value = 'main_quest_loan'}],
 		options = [
 			{code = 'servants_election_finish2', text = "SERVANTSELECTIONFINISH1REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
 			{code = 'servants_election_finish2', text = "SERVANTSELECTIONFINISH1REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},

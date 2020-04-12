@@ -460,6 +460,9 @@ margin_top = 26.0
 margin_right = 897.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="TextureButton" parent="SlaveList/Categories"]
 margin_right = 871.0
@@ -555,6 +558,9 @@ margin_top = 86.0
 margin_right = 897.0
 margin_bottom = 891.0
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SlaveList/ScrollContainer"]
 margin_right = 871.0

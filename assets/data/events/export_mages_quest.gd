@@ -33,7 +33,7 @@ var data = {
 		],
 		options = [
 		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'main_progress', operant = 'eq', value = 0}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'mages_election1', text = "MAGESINTRODUCTION2REPLY2", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, {type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, {type = 'decision', name = 'mages_election_support', value = false}], bonus_effects = [{code = 'decision', value = 'mages_election_support'}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
@@ -51,7 +51,7 @@ var data = {
 		{code = 'open_loot'}
 		],
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character', type = 'mages'}, {code = 'main_progress', operant = '+', value = 1},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue',bonus_effects = [{code = 'create_character', type = 'mages'}, {code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage1'},{code = "update_guild"}]},
 		]
 	},
 	mages_leader_close = {
@@ -59,8 +59,8 @@ var data = {
 		character = 'myr',
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "MAGESCLOSE1", reqs = [{type = 'main_progress', operant = 'eq', value = 0}]},
-		{text = "MAGESCLOSE2", reqs = [{type = 'main_progress', operant = 'neq', value = 0}]},
+		{text = "MAGESCLOSE1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}]},
+		{text = "MAGESCLOSE2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}]},
 		],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = "update_guild"}]},

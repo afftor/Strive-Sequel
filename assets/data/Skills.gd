@@ -1943,7 +1943,7 @@ var Skilllist = {
 		target_range = 'any',
 		damage_type = 'dark',
 		sfx = [{code = 'decay', target = 'target_frame', period = 'predamage'}], 
-		sounddata = {initiate = null, strike = 'blade', hit = null},
+		sounddata = {initiate = null, strike = null, hit = null},
 		value = 0.9
 	},
 	overgrowth = {

@@ -122,6 +122,9 @@ func _process(delta):
 			AudioServer.set_bus_volume_db(1, globals.globalsettings.musicvol)
 			musicraising = false
 
+func CloseAllCloseableWindows():
+	while CloseableWindowsArray.size() > 0:
+		CloseTopWindow()
 
 func CloseTopWindow():
 	var node = CloseableWindowsArray.back()

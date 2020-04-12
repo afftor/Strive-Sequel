@@ -741,13 +741,140 @@ var scenedict = {
 		image = null,
 		tags = ['dialogue_scene'],
 		text = "STARTINGDIALOGUE4_1",
+		common_effects = [
+			{code = 'add_timed_event', value = "loan_event1", 
+				args = [
+					{type = 'fixed_date', 
+					date = 14, 
+					hour = 8}
+					]
+			},
+			{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage0'},
+			{code = 'progress_quest', value = 'guilds_introduction', stage = 'start'},
+			],
 		options = [
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue'},
 		],
 		
 	},
-	
-	
+	loan_event1 = {
+		variations = [{
+			reqs = [{type = 'has_money', value = 1000}],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS1", reqs = []}],
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', 
+			bonus_effects = [
+				{code = 'money_change', operant = '-', value = 1000}, 
+				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage1'}, 
+				{code = 'add_timed_event', value = "loan_event2", 
+					args = [
+						{type = 'fixed_date', 
+						date = 28, 
+						hour = 8}
+						]
+					}
+				]
+			}],
+			},
+			
+			{
+			reqs = [],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = "LOAN_FAILURE",
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
+			],
+			},
+		]
+	},
+	loan_event2 = {
+		variations = [{
+			reqs = [{type = 'has_money', value = 3000}],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS2", reqs = []}],
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', 
+			bonus_effects = [
+				{code = 'money_change', operant = '-', value = 3000}, 
+				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage2'}, 
+				{code = 'add_timed_event', value = "loan_event3", 
+					args = [
+						{type = 'fixed_date', 
+						date = 50, 
+						hour = 8}
+						]
+					}
+				]
+			}],
+			},
+			{
+			reqs = [],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = "LOAN_FAILURE",
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
+			],
+			},
+		]
+	},
+	loan_event3 = {
+		variations = [{
+			reqs = [{type = 'has_money', value = 10000}],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS3", reqs = []}],
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', 
+			bonus_effects = [
+				{code = 'money_change', operant = '-', value = 10000}, 
+				{code = 'progress_quest', value = 'main_quest_loan', stage = 'stage3'}, 
+				{code = 'add_timed_event', value = "loan_event4", 
+					args = [
+						{type = 'fixed_date', 
+						date = 100, 
+						hour = 8}
+						]
+					}
+				]
+			}],
+			},
+			{
+			reqs = [],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = "LOAN_FAILURE",
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
+			],
+			},
+		]
+	},
+	loan_event4 = {
+		variations = [{
+			reqs = [{type = 'has_money', value = 86000}],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = "loan_event_success",
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 86000}, {code = 'complete_quest', value = 'main_quest_loan'}]},
+			],
+			},
+			{
+			reqs = [],
+			image = null,
+			tags = ['dialogue_scene'],
+			text = "loan_event_fail",
+			options = [
+			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
+			],
+			},
+		]
+	},
 	
 }
 
@@ -763,7 +890,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], 
 			target = 'fighters_introduction2',
 			target_option = 3,
 		},
@@ -817,7 +944,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], 
 			target = 'workers_introduction2',
 			target_option = 3,
 		},
@@ -840,7 +967,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'main_progress', operant = 'eq', value = 0}], 
+			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], 
 			target = 'mages_introduction3',
 			target_option = 2,
 		},
@@ -857,10 +984,13 @@ var dialogue_inits = {
 }
 
 var quests = {
-	main_quest = {
-		code = 'main_quest',
+	main_quest_loan = {
+		code = 'main_quest_loan',
 		stages = {
-		start = {code = 'start', name = 'The Loan', descript = 'You must have over 1000 gold by 14th day.',}
+		stage0 = {code = 'start', name = 'The Loan', descript = 'You must have over 1000 gold by 14th day.'},
+		stage1 = {code = 'stage1', name = 'The Loan', descript = 'By 28th day have at least 3000 gold.'},
+		stage2 = {code = 'stage2', name = 'The Loan', descript = 'By 50th day have at least 10000 gold.'},
+		stage3 = {code = 'stage3', name = 'The Loan', descript = 'By 100th day have at least 86000 gold.'},
 		},
 	},
 	guilds_introduction = {
