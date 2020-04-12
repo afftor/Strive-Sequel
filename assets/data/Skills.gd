@@ -1388,7 +1388,7 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_stun', chance = 0.3})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_stun', chance = 0.3, checkres = 'stun'})], 
 		manacost = 0,
 		energycost = 0,
 		charges = 0,

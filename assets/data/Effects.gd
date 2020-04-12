@@ -1172,7 +1172,7 @@ var effect_table = {
 		stack = 1,
 		name = 'stun',
 		disable = true,
-		tags = ['debuff', 'stun'],
+		tags = ['debuff', 'stun_prechecked'],
 		buffs = ['b_stun'],
 	},
 	e_s_stun1 = {#duration version
@@ -2098,7 +2098,10 @@ func rebuild_template(args):
 	if args.has('res_condition'): res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', args.res_condition]})
 	else: res.conditions.push_back({type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]})
 	
-	if args.has('chance'): res.conditions.push_back({type = 'random', value = args.chance})
+	if args.has('checkres'):
+		res.conditions.push_back({type = 'checkres', value = args.chance, resist = args.checkres})
+	elif args.has('chance'): 
+		res.conditions.push_back({type = 'random', value = args.chance})
 	
 	if args.has('duration'): #for this to work effect should have its duration set to 'parent'
 		res.duration = args.duration

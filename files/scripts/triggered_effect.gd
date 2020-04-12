@@ -52,6 +52,10 @@ func process_event(ev):
 				match cond.type:
 					'random': 
 						res = res and (globals.rng.randf() < cond.value)
+					'checkres':
+						var obj = self_args['skill']
+						var mod = obj.target.get_stat('status_resists')[cond.resist]/100.0
+						res = res and (globals.rng.randf() < cond.value - mod)
 					'skill':
 						var obj = self_args['skill']
 						res = res and obj.process_check(cond.value)
