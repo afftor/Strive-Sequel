@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=2]
@@ -23,7 +23,6 @@
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=21]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=22]
 [ext_resource path="res://assets/fonts/BLKCHCRY.TTF" type="DynamicFontData" id=23]
-[ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=24]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -57,7 +56,6 @@ margin_left = 1008.17
 margin_top = -0.513306
 margin_right = 1921.17
 margin_bottom = 1079.49
-texture = ExtResource( 24 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false

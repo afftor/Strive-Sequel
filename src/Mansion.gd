@@ -35,7 +35,7 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe":# && false:#:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:#:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -245,7 +245,7 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('lich_enc_initiate', '', {})
+		input_handler.interactive_message("event_good_slavers_woods", '',{}) #input_handler.interactive_message('lich_enc_initiate', '', {})
 		
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500

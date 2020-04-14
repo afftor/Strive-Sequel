@@ -1097,7 +1097,7 @@ var Skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.5'],0.5],
-		damage_stat = ['no_stat','+damage_hp'],
+		damagestat = ['no_stat','+damage_hp'],
 	},
 #	disruption_shot = {#Removes 1 buff from target (before damage hit), silences target for 2 turns (can't use spell type abilities)
 #		code = 'disruption_shot',

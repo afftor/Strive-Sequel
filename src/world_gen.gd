@@ -1497,12 +1497,12 @@ var dungeons = {
 		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]], 
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
-		levels = [2,3], 
+		levels = [3,5], 
 		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
-		stages_per_level = [2,3],
+		stages_per_level = [3,5],
 		bgm = "dungeon",
-		puchase_price = 100,
-		affiliation = 'local', #defines character races and events
+		puchase_price = 200,
+		affiliation = 'local',
 		events = [],
 	},
 	dungeon_undead_crypt = {
@@ -1521,7 +1521,7 @@ var dungeons = {
 		stages_per_level = [2,3],
 		bgm = "dungeon",
 		puchase_price = 200,
-		affiliation = 'local', #defines character races and events
+		affiliation = 'local',
 		events = [],
 	},
 	dungeon_goblin_cave = {
@@ -1540,7 +1540,7 @@ var dungeons = {
 		stages_per_level = [2,3],
 		difficulty = 'easy',
 		puchase_price = 100,
-		affiliation = 'local', #defines character races and events
+		affiliation = 'local',
 		events = [],
 	},
 	dungeon_grove = {
@@ -1549,17 +1549,17 @@ var dungeons = {
 		name = 'grove',
 		classname = '',
 		descript = '',
-		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		bgm = "dungeon",
 		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
 		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1]],
-		levels = [2,3],
-		resources = ['cloth','leather','iron','wood'],
+		levels = [2,4],
+		resources = ['cloth','leather','woodmagic','wood'],
 		stages_per_level = [2,4],
+		difficulty = 'easy',
 		puchase_price = 100,
-		affiliation = 'local', #defines character races and events
+		affiliation = 'local',
 		events = [],
 	},
 	

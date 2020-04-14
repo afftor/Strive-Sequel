@@ -1035,6 +1035,9 @@ margin_left = 287.0
 margin_top = 138.0
 margin_right = 1690.0
 margin_bottom = 995.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FactionDetailsPanel"]
 margin_left = 59.0
@@ -1144,7 +1147,6 @@ text = "0"
 align = 1
 
 [node name="medium" type="Control" parent="FactionDetailsPanel/HBoxContainer"]
-visible = false
 margin_left = 104.0
 margin_right = 204.0
 margin_bottom = 258.0

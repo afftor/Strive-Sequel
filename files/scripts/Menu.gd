@@ -1,5 +1,10 @@
 extends Node
-#warning-ignore-all:return_value_discarded
+
+#
+#Writers: Barrus
+#Artists:
+#Coders:
+#
 
 var lastsave = null
 
