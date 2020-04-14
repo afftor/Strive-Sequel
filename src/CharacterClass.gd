@@ -623,6 +623,8 @@ func generate_simple_fighter(tempname):
 			resists[i] = data.resists[i]
 	for i in variables.status_list:
 		status_resists[i] = 0
+		if data.has('status_resists') && data.status_resists.has(i):
+			status_resists[i] = data.status_resists[i]
 	for i in variables.mods_list:
 		damage_mods[i] = 1.0
 	if data.has('effects'):
