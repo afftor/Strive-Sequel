@@ -1490,23 +1490,15 @@ var effect_table = {
 			}
 		]
 	},
-#	e_s_bleed = {
-#		type = 'trigger',
-#		trigger = [variables.TR_POSTDAMAGE],
-#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-#		req_skill = true,
-#		args = [{obj = 'parent', param = 'process_value' }],
-#		sub_effects = ['e_t_bleed'],
-#	},
 	e_s_bleed = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'bleed',
-		stack = 1,
+		stack = 0,
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent_arg',
-		tags = ['affliction'],
+		tags = ['affliction', 'bleed_prechecked'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_bleed'],
 		atomic = [],
