@@ -15,7 +15,7 @@ func _ready():
 	for i in range(0,6):
 		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
-	
+	$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	yield(get_tree().create_timer(0.1), "timeout")
 	OS.window_fullscreen = globals.globalsettings.fullscreen

@@ -947,6 +947,8 @@ func check_gear_equipped(gearname, param = 'itembase'):
 	return false
 
 func equip(item, item_prev_id = null):
+	var duplicate = globals.check_duplicates(item.itembase, item.parts)
+	#if duplicate != null:
 	if checkreqs(item.reqs) == false:
 		input_handler.SystemMessage(tr("INVALIDREQS"))
 		if item_prev_id == null:
@@ -977,12 +979,16 @@ func equip(item, item_prev_id = null):
 
 func unequip(item):#NEEDS REMAKING!!!!
 	var duplicate = globals.check_duplicates(item.itembase, item.parts)
+	var duplicate_item = state.items[duplicate]
 	if duplicate != null:
-		if item.id != duplicate:
-			state.items[duplicate].amount += 1
-			item.amount = 0
-	#removing links
-	item.owner = null
+		if duplicate_item.owner == null:
+			if duplicate != item.id:
+				duplicate_item.amount += 1
+				item.amount = 0
+				item.owner = null
+			else:
+				item.amount += 1
+		duplicate_item.owner = null
 	for i in gear:
 		if gear[i] == item.id:
 			gear[i] = null
@@ -998,6 +1004,60 @@ func unequip(item):#NEEDS REMAKING!!!!
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.remove()
 	recheck_effect_tag('recheck_item')
+	#checkequipmenteffects
+
+#func equip(item, item_prev_id = null):
+#	if checkreqs(item.reqs) == false:
+#		input_handler.SystemMessage(tr("INVALIDREQS"))
+#		if item_prev_id == null:
+#			return
+#		state.items[item_prev_id].amount += 1
+#		item.amount = 0
+#		return
+#	for i in item.multislots:
+#		if gear[i] != null:
+#			unequip(state.items[gear[i]])
+#	for i in item.slots:
+#		if gear[i] != null:
+#			unequip(state.items[gear[i]])
+#		gear[i] = item.id
+#	item.owner = id
+#	#adding bonuses
+#	add_stat_bonuses(item.bonusstats)
+##	for i in item.bonusstats:
+##		#self[i] += item.bonusstats[i]
+##		set(i, get(i) + item.bonusstats[i])
+#	for e in item.effects:
+#		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+#		apply_effect(effects_pool.add_effect(eff))
+#		eff.set_args('item', item.id)
+#	recheck_effect_tag('recheck_item')
+#	#checkequipmenteffects()
+#
+#
+#func unequip(item):#NEEDS REMAKING!!!!
+#	var duplicate = globals.check_duplicates(item.itembase, item.parts)
+#	if duplicate != null:
+#		if item.id != duplicate:
+#			state.items[duplicate].amount += 1
+#			item.amount = 0
+#	#removing links
+#	item.owner = null
+#	for i in gear:
+#		if gear[i] == item.id:
+#			gear[i] = null
+#	#removing bonuses
+#	remove_stat_bonuses(item.bonusstats)
+#
+##	for i in item.bonusstats:
+##		#self[i] -= item.bonusstats[i]
+##		set(i, get(i) - item.bonusstats[i])
+#
+#	var arr = find_eff_by_item(item.id)
+#	for e in arr:
+#		var eff = effects_pool.get_effect_by_id(e)
+#		eff.remove()
+#	recheck_effect_tag('recheck_item')
 
 func check_profession_limit(name, value):
 	var counter = 0
@@ -1273,11 +1333,10 @@ func calculate_travel_time(location1, location2):
 	if location2 != 'mansion':
 		travel_value2 = world_gen.get_area_from_location_code(location2).travel_time + world_gen.get_location_from_code(location2).travel_time
 	
-	return travel_value1 + travel_value2
+	return {time = travel_value1 + travel_value2, obed_cost = travel_value1*1.5}
 
 func calculate_estimated_travel_time(t_time):
 	return ceil(t_time/travel_tick())
-
 
 func set_travel_time(value):
 	travel_time = value
@@ -1463,7 +1522,8 @@ func get_food():
 		state.text_log_add('food', get_short_name() + ": has no food.")
 
 func rest_tick():
-	return
+	self.hp += variables.basic_hp_regen*2
+	self.mp += variables.basic_mp_regen*2 + variables.mp_regen_per_magic*magic_factor*2
 
 func work_tick():
 	
@@ -1474,6 +1534,7 @@ func work_tick():
 	
 	if currenttask == null:
 		work = ''
+		rest_tick()
 		return
 	
 	

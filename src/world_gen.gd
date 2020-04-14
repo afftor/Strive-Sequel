@@ -200,6 +200,7 @@ func make_area(code):
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')
+	#update_guilds(areadata)
 
 func get_area_from_location_code(code):
 	var data = state.location_links[code]
@@ -416,7 +417,7 @@ func make_guild(code, area):
 		area.quests.factions[data.code] = {}
 		while data.questnumber > 0:
 			for i in ['easy']:#'medium','hard']:
-				while guilddatatemplate.questsetting[i] >= area.quests.factions[data.code].size():
+				while guilddatatemplate.questsetting[i] > area.quests.factions[data.code].size():
 					make_quest_for_guild(guilddatatemplate, i)
 			data.questnumber -= 1
 	guilddatatemplate.slavenumber = data.slavenumber
@@ -1474,7 +1475,7 @@ var dungeons = {
 		descript = '',
 		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
-		enemyarray =  [["rats_easy", 1],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		enemyarray =  [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 		levels = [2,3], 
@@ -1531,7 +1532,7 @@ var dungeons = {
 		descript = '',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		bgm = "dungeon",
-		enemyarray =  [["rats_easy", 1],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
+		enemyarray =  [["rats_easy", 0.5],['spiders', 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
 		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 		levels = [2,3], 
@@ -1551,7 +1552,7 @@ var dungeons = {
 		difficulty = 'easy',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		bgm = "dungeon",
-		enemyarray = [["rats_easy", 1],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
+		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
 		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1]],
 		levels = [2,3],
@@ -1561,54 +1562,7 @@ var dungeons = {
 		affiliation = 'local', #defines character races and events
 		events = [],
 	},
-	dungeon_mountains = {
-		code = 'dungeon_mountains',
-		type = 'dungeon',
-		name = 'mountains',
-		classname = '',
-		descript = '',
-		background = '',
-		levels = [2,3],
-		stages_per_level = [2,4],
-		difficulty = 'medium',
-		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-		final_enemy = [['goblins_easy_boss',1]],
-		final_enemy_type = 'monster',
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
-	dungeon_volcano = {
-		code = 'dungeon_volcano',
-		type = 'dungeon',
-		name = 'volcano',
-		classname = '',
-		descript = '',
-		background = '',
-		levels = [2,3],
-		stages_per_level = [2,4],
-		difficulty = 'easy',
-		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-		final_enemy = [['goblins_easy_boss',1]],
-		final_enemy_type = 'monster',
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
-	dungeon_city = {
-		code = 'dungeon_city',
-		type = 'dungeon',
-		name = 'city',
-		classname = '',
-		descript = '',
-		background = '',
-		levels = [2,3],
-		stages_per_level = [2,4],
-		difficulty = 'easy',
-		enemies = [["rats_easy", 1],['goblins_easy', 1],['goblins_easy2', 1],['goblins_easy3', 0.5]],
-		final_enemy = [['goblins_easy_boss',1]],
-		final_enemy_type = 'monster',
-		affiliation = 'local', #defines character races and events
-		events = [],
-	},
+	
 }
 
 

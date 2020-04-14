@@ -230,20 +230,13 @@ func useitem(item, type):
 			return
 		if type == 'gear':
 			var item_prev_id = item.id
-			if item.amount == 1:
-				selectedhero.equip(item)
-				#input_handler.GetItemTooltip().hide()
-				input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-				emit_signal("item_equipped")
-				buildinventory()
-				return
-			var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null, false)
-			globals.AddItemToInventory(equiped_item)
+			var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null)
+			globals.AddItemToInventory(equiped_item, false)
 			selectedhero.equip(equiped_item, item_prev_id)
-			item.amount -= 1	
 			#input_handler.GetItemTooltip().hide()
 			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 			emit_signal("item_equipped")
+			item.amount -= 1
 			buildinventory()
 		elif type == 'usable':
 			if Items.itemlist[item.itembase].has("mansion_effect"):
@@ -257,6 +250,43 @@ func useitem(item, type):
 		input_handler.update_slave_panel()
 	elif mode == 'shop':
 		sellwindow(item, type)
+
+#func useitem(item, type):
+#	if mode == null:
+#		return
+#	elif mode == 'character' && selectedhero != null:
+#		if selectedhero.location != 'mansion':
+#			input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
+#			return
+#		if type == 'gear':
+#			var item_prev_id = item.id
+#			if item.amount == 1:
+#				selectedhero.equip(item)
+#				#input_handler.GetItemTooltip().hide()
+#				input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+#				emit_signal("item_equipped")
+#				buildinventory()
+#				return
+#			var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null, false)
+#			globals.AddItemToInventory(equiped_item)
+#			selectedhero.equip(equiped_item, item_prev_id)
+#			item.amount -= 1	
+#			#input_handler.GetItemTooltip().hide()
+#			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+#			emit_signal("item_equipped")
+#			buildinventory()
+#		elif type == 'usable':
+#			if Items.itemlist[item.itembase].has("mansion_effect"):
+#				#input_handler.GetItemTooltip().hide()
+#				input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+#				emit_signal("item_used")
+#				selectedhero.use_mansion_item(item)
+#				rebuildinventory()
+#			else:
+#				input_handler.SystemMessage("Can't use this item from here.")
+#		input_handler.update_slave_panel()
+#	elif mode == 'shop':
+#		sellwindow(item, type)
 
 
 var numbermode

@@ -443,7 +443,7 @@ func update_shop_list():
 					newbutton.get_node("icon").texture = item.icon
 					newbutton.get_node("price").text = str(item.price)
 					if item.has('parts'):
-						var newitem = globals.CreateGearItem(i, active_shop[i], {}, null, false)
+						var newitem = globals.CreateGearItem(i, active_shop[i], {}, null)
 						newitem.set_icon(newbutton.get_node('icon'))
 						newbutton.get_node("name").text = newitem.name
 						tempitems.append(newitem)
@@ -1060,10 +1060,10 @@ func build_location_group():
 					get_node(positiondict[i]+"/Image").texture = icons['slave']
 			get_node(positiondict[i]+"/Image").show()
 			get_node(positiondict[i]+"/Image/TextureRect").hint_tooltip = "HP: " + str(floor(character.hp)) + '/' + str(floor(character.hpmax))+ "\nMP: " +str(floor(character.mp)) + '/' + str(floor(character.mpmax))
-			get_node(positiondict[i]+"/Image/TextureRect/hp").value = character.hp
 			get_node(positiondict[i]+"/Image/TextureRect/hp").max_value = character.hpmax
-			get_node(positiondict[i]+"/Image/TextureRect/mp").value = character.mp
+			get_node(positiondict[i]+"/Image/TextureRect/hp").value = character.hp
 			get_node(positiondict[i]+"/Image/TextureRect/mp").max_value = character.mpmax
+			get_node(positiondict[i]+"/Image/TextureRect/mp").value = character.mp
 			
 			get_node(positiondict[i]+"/Image").dragdata = character
 			get_node(positiondict[i]+"/Image/Label").text = character.get_short_name()

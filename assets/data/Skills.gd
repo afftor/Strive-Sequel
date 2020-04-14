@@ -839,7 +839,7 @@ var Skilllist = {
 		aipatterns = ['attack'],
 		allowedtargets = ['enemy'],
 		value = 1,
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'ranged_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 	},
 	
@@ -1021,7 +1021,7 @@ var Skilllist = {
 #		sound = [],
 #		value = 1
 #	},
-	lesser_heal = {#heals target for 1x damage
+	lesser_heal = {#heals target for 1.3 damage
 		code = 'lesser_heal',
 		
 		descript = '',
@@ -1032,7 +1032,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [], 
-		manacost = 5,
+		manacost = 8,
 		energycost = 0,
 		charges = 0,
 		combatcooldown = 2,
@@ -1044,7 +1044,7 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = 1.2,
+		value = 1.3,
 		damagestat = ['-damage_hp']
 	},
 	first_aid = {#heals target for 35%
@@ -1073,18 +1073,17 @@ var Skilllist = {
 		damagestat = ['-damage_hp']
 	},
 	serrated_shot = {#applies debuff: deal 25% bonus damage every turn for 4 turns
-	#i understand this as bonus damage over time
-	#should it be generic bleed status?
 		code = 'serrated_shot',
 		
 		descript = '',
 		icon = load("res://assets/images/iconsskills/heavyshot.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','debuff','ads'],
+		tags = ['damage','ads'],
 		reqs = [{code = 'ranged_weapon'}],
 		targetreqs = [],
-		effects = ['e_s_bleed'], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_bleed', chance = 1, push_value = true, checkres = 'bleed'})],
+		custom_duration = ['3'],
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
@@ -1097,7 +1096,8 @@ var Skilllist = {
 		damage_type = 'weapon',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1
+		value = [['caster.atk','*0.5'],0.5],
+		damage_stat = ['no_stat','+damage_hp'],
 	},
 #	disruption_shot = {#Removes 1 buff from target (before damage hit), silences target for 2 turns (can't use spell type abilities)
 #		code = 'disruption_shot',
@@ -1305,8 +1305,6 @@ var Skilllist = {
 		damagestat = 'no_stat'
 	},
 	bleeding_strike = {#applies debuff: deal 25% bonus damage every turn for 4 turns
-	#so additional effect is the same as of serrated shot
-	#the sama as serrated shot - should it be simple bleed?
 		code = 'bleeding_strike',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Lich-strike.png"),
@@ -1316,7 +1314,7 @@ var Skilllist = {
 		reqs = [{code = 'bladed_weapon'}],
 		targetreqs = [],
 		effects = ['e_s_bleed'], 
-		manacost = 5,
+		manacost = 0,
 		energycost = 0,
 		charges = 0,
 		combatcooldown = 2,
@@ -1478,7 +1476,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'weapon',
 		damage_type = 'water',
-		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = [['caster.atk','*0.2'],0.9],
 		damagestat = ['no_stat', '+damage_hp']

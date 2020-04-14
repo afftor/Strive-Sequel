@@ -82,9 +82,10 @@ func _ready():
 
 
 func cheatvictory():
-	for i in enemygroup:
-		var tchar = characters_pool.get_char_by_id(enemygroup[i])
-		tchar.hp = 0
+	victory()
+#	for i in enemygroup:
+#		var tchar = characters_pool.get_char_by_id(enemygroup[i])
+#		tchar.hp = 0
 	#checkwinlose()
 
 
@@ -303,9 +304,16 @@ func victory():
 #					rewardsdict.items.append(newitem)
 	
 	globals.ClearContainer($Rewards/ScrollContainer/HBoxContainer)
+	globals.ClearContainer($Rewards/ScrollContainer2/HBoxContainer)
+	var exp_per_character = ceil(rewardsdict.xp/playergroup.size())
 	for i in playergroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
-		tchar.base_exp += ceil(rewardsdict.xp*tchar.exp_mod/playergroup.size())
+		var gained_exp = exp_per_character * tchar.exp_mod
+		tchar.base_exp += gained_exp
+		var newbutton = globals.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
+		newbutton.texture = tchar.get_icon()
+		newbutton.get_node("name").text = tchar.get_short_name()
+		newbutton.get_node("amount").text = str(gained_exp)
 		if tchar.hp <= 0:
 			tchar.hp = 1
 			tchar.defeated = false
@@ -353,10 +361,11 @@ func victory():
 		globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
 		globals.connectitemtooltip(newnode, state.items[globals.get_item_id_by_code(i.itembase)])
-		if i.amount == null:
+		if i.amount == null || i.amount == 0:
 			newnode.get_node("amount").visible = false
 		else:
 			newnode.get_node("amount").text = str(i.amount)
+	
 	
 	#yield(get_tree().create_timer(1.7), 'timeout')
 	
@@ -644,7 +653,9 @@ func make_fighter_panel(fighter, spot):
 	panel.update_mp_label(fighter.mp, 100.0)
 	if fighter.get_stat('mpmax') == 0:
 		panel.get_node("MP").value = 0
-	panel.get_node("Label").text = fighter.name
+	panel.get_node("Label").text = fighter.get_short_name()
+	if fighter.get_short_name().length() > 10:
+		panel.get_node('Label').set("custom_fonts/font",load("res://MainFont_Small.tres"))
 	container.add_child(panel)
 	panel.rect_position = Vector2(0,0)
 	#setuping target glowing

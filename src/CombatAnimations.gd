@@ -159,6 +159,17 @@ func targetattack(node, args = null):
 	
 	return nextanimationtime + aftereffectdelay
 
+func ranged_attack(node, args = null):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.2
+	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.3)
+	buffs_update_delays[node] = 0.2
+	input_handler.gfx_sprite(node, 'arrow', 0.3, 0.4, node.get_flip())
+	tween.start()
+	
+	return nextanimationtime + aftereffectdelay
+
 func firebolt(node, args = null):
 	var tween = input_handler.GetTweenNode(node)
 	var nextanimationtime = 0.2
@@ -166,6 +177,17 @@ func firebolt(node, args = null):
 	log_update_delay = max(log_update_delay, 0.3)
 	buffs_update_delays[node] = 0.2
 	input_handler.gfx_sprite(node, 'firebolt', 0.3, 0.4, node.get_flip())
+	tween.start()
+	
+	return nextanimationtime + aftereffectdelay
+
+func water_attack(node, args = null):
+	var tween = input_handler.GetTweenNode(node)
+	var nextanimationtime = 0.2
+	hp_update_delays[node] = 0.3 #delay for hp updating during this animation
+	log_update_delay = max(log_update_delay, 0.3)
+	buffs_update_delays[node] = 0.2
+	input_handler.gfx_sprite(node, 'water_attack', 0.3, 0.4, node.get_flip())
 	tween.start()
 	
 	return nextanimationtime + aftereffectdelay

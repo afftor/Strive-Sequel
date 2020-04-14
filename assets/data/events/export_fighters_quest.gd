@@ -169,6 +169,7 @@ var data = {
 
 	lich_enc_initiate = {
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = tr("LICHENCINITIATE"), reqs = []}
@@ -330,6 +331,7 @@ var data = {
 
 	lich_aire_talk1 = {
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK1", reqs = []},
@@ -345,6 +347,7 @@ var data = {
 
 	lich_aire_talk2 = {
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK2", reqs = []},
@@ -358,6 +361,7 @@ var data = {
 
 	lich_aire_talk3 = {
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK3", reqs = []},
@@ -374,6 +378,7 @@ var data = {
 		{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 4}]},
 		],
 		image = null,
+		character = 'aire',
 		tags = [],
 		text = [
 		{text = "LICHAIRETALK4", reqs = []},
@@ -384,6 +389,7 @@ var data = {
 		},
 		{reqs = [],
 		image = null,
+		character = 'aire',
 		tags  = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK4_1", reqs = []},
@@ -398,6 +404,7 @@ var data = {
 
 	lich_aire_talk5 = {
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK5", reqs = []},
@@ -411,6 +418,7 @@ var data = {
 
 	lich_aire_talk6 = {
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
 		{text = "LICHAIRETALK6", reqs = []},
@@ -435,6 +443,7 @@ var data = {
 
 	lich_aire_leave = {
 		image = null,
+		character = 'aire',
 		tags = [],
 		text = [
 		{text = "LICHAIRELEAVE", reqs = [], },

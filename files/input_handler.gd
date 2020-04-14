@@ -602,6 +602,8 @@ func gfx(node, effect, fadeduration = 0.5, delayuntilfade = 0.3, flip = false,  
 
 var sprites = {
 	strike = 'res://assets/sfx/hit_animation/strike.tscn',
+	arrow = 'res://assets/sfx/arrow.tscn',
+	water_attack = 'res://assets/sfx/water_attack.tscn',
 	firebolt = 'res://assets/sfx/hit_animation/firebolt.tscn',
 	flame = 'res://assets/sfx/hit_animation/flame.tscn',
 	earth_spike = "res://assets/sfx/hit_animation/earth_spike.tscn",

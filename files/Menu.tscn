@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://files/scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://files/SFX/black.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://src/ModPanel.tscn" type="PackedScene" id=20]
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=21]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=22]
+[ext_resource path="res://assets/fonts/BLKCHCRY.TTF" type="DynamicFontData" id=23]
+[ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=24]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -30,6 +32,13 @@
 [sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -10
+font_data = ExtResource( 23 )
 
 [node name="Menu" type="Node"]
 script = ExtResource( 1 )
@@ -43,12 +52,26 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="char_sprite" type="TextureRect" parent="."]
+margin_left = 1008.17
+margin_top = -0.513306
+margin_right = 1921.17
+margin_bottom = 1079.49
+texture = ExtResource( 24 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 29.4929
-margin_top = 95.0175
-margin_right = 477.493
-margin_bottom = 755.017
+margin_left = 39.013
+margin_top = 185.458
+margin_right = 487.013
+margin_bottom = 845.458
 custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
 margin_right = 448.0
@@ -111,6 +134,9 @@ margin_top = 40.0
 margin_right = 1916.0
 margin_bottom = 534.0
 rect_scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 margin_left = 17.0
@@ -144,6 +170,19 @@ texture_normal = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
+[node name="MainLabel" type="Label" parent="."]
+margin_left = 612.0
+margin_top = 52.0
+margin_right = 1218.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.682353, 0.321569, 0.768627, 1 )
+text = "Strive: Conquest"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Options" parent="." instance=ExtResource( 17 )]
 visible = false
 
@@ -175,6 +214,9 @@ margin_bottom = 215.0
 bbcode_enabled = true
 bbcode_text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
 text = "This is an early demo version. Everything you see is a subject to change and should be treated as a representation of general idea and quality level of the future product. Thank you for trying out this game."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="DemoPanel"]
 margin_left = 170.0
@@ -283,10 +325,10 @@ margin_bottom = 699.657
 text = "Start Game"
 
 [node name="ChangelogButton" type="Button" parent="."]
-margin_left = 138.728
-margin_top = 13.5204
-margin_right = 371.728
-margin_bottom = 68.5204
+margin_left = 145.075
+margin_top = 935.382
+margin_right = 378.075
+margin_bottom = 990.382
 text = "Change log"
 
 [node name="Changelogpanel" type="Panel" parent="."]
@@ -311,6 +353,7 @@ Added Guilds leaders sprites
 Added background animations
 Added prologue election quest lines
 Added a few new tutorial entries
+Added experience gain display on victory screen
 Slightly revamped some racial and class bonuses
 Rebalanced many enemy damage hp and resists, also made enemies generally slower
 Revamped def stats on gear and fixed incorrect calculations
@@ -322,7 +365,10 @@ Seen questions won't be showing as options anymore
 High tier enemies have more elemental resists
 Master's charm now increase repeatable quests gold and reputation rewards
 Corrected item drop chances (previously chances were reversed so less common items appeared more often and more common items were rare)
+Travelling now costs obedience for characters
 Same equippable items now stack
+Resting characters regenerate hp/mp 3 times faster
+Made enemy names more readable
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells multiplying damage
 Fixed non-group locations having issues when returning characters 
@@ -333,6 +379,8 @@ Fixed blindfold action causing issues in interaction sequence
 Fixed born slaves not having assigned class correctly
 Fixed some sex traits giving extra XP when they shouldn't
 Fixed game allowing to create more characters on new game after cancelling it 
+Fixed guilds having 2 quests instead of 1 on world generation
+Fixed visual errors when hp gauges weren't initially full
 0.1.6
 Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests
@@ -463,6 +511,7 @@ Added Guilds leaders sprites
 Added background animations
 Added prologue election quest lines
 Added a few new tutorial entries
+Added experience gain display on victory screen
 Slightly revamped some racial and class bonuses
 Rebalanced many enemy damage hp and resists, also made enemies generally slower
 Revamped def stats on gear and fixed incorrect calculations
@@ -474,7 +523,10 @@ Seen questions won't be showing as options anymore
 High tier enemies have more elemental resists
 Master's charm now increase repeatable quests gold and reputation rewards
 Corrected item drop chances (previously chances were reversed so less common items appeared more often and more common items were rare)
+Travelling now costs obedience for characters
 Same equippable items now stack
+Resting characters regenerate hp/mp 3 times faster
+Made enemy names more readable
 Fixed quests allowing to turn in equipped items
 Fixed critical strike for aoe spells multiplying damage
 Fixed non-group locations having issues when returning characters 
@@ -485,6 +537,8 @@ Fixed blindfold action causing issues in interaction sequence
 Fixed born slaves not having assigned class correctly
 Fixed some sex traits giving extra XP when they shouldn't
 Fixed game allowing to create more characters on new game after cancelling it 
+Fixed guilds having 2 quests instead of 1 on world generation
+Fixed visual errors when hp gauges weren't initially full
 0.1.6
 Added tutorial entry for leveling
 Added item selection when completing non-material turn in quests

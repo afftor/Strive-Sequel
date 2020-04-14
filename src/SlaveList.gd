@@ -37,10 +37,10 @@ func update_button(newbutton):
 	newbutton.get_node("HBoxContainer/sex").texture = globals.sexicons[person.sex]
 	
 	
-	newbutton.get_node("HBoxContainer/stats/hp").value = person.hp
 	newbutton.get_node("HBoxContainer/stats/hp").max_value = person.hpmax
-	newbutton.get_node("HBoxContainer/stats/mp").value = person.mp
+	newbutton.get_node("HBoxContainer/stats/hp").value = person.hp
 	newbutton.get_node("HBoxContainer/stats/mp").max_value = person.mpmax
+	newbutton.get_node("HBoxContainer/stats/mp").value = person.mp
 	newbutton.get_node("HBoxContainer/stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.hpmax)) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.mpmax))
 	#newbutton.get_node("HBoxContainer/stats/hplabel").text = str(round(person.hp)) + "/" + str(round(person.hpmax))
 	#newbutton.get_node("HBoxContainer/stats/mplabel").text = str(round(person.mp)) + "/" + str(round(person.mpmax))

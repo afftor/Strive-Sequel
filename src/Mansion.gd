@@ -35,7 +35,7 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:#:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe":# && false:#:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -85,11 +85,14 @@ func _ready():
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
-		character.unlock_class("fighter")
+		character.unlock_class("archer")
 		character.unlock_class("necromancer")
+		character.unlock_class("rogue")
+		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
+		globals.AddItemToInventory(bow)
+		character.equip(bow)
 		character.set_slave_category('master')
 		character.sex_traits = ['dislike_missionary', 'anal']
-		#character.equip(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'mithril'}))
 		#character.armor = 135
 		character.wits = 20
 		character.charm_factor = 3
@@ -242,7 +245,7 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message('starting_dialogue4', '', {})
+		input_handler.interactive_message('lich_enc_initiate', '', {})
 		
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
@@ -275,7 +278,8 @@ func open_travels():
 	$CharacterDislocationPanel.open_character_dislocation()
 
 func quest_test():
-	state.areas.plains.factions.servants.totalreputation = 500
+	$SlaveList.update()
+	#state.areas.plains.factions.servants.totalreputation = 500
 	#print(input_handler.CloseableWindowsArray)
 #	for i in state.characters.values():
 #		i.base_exp += 100

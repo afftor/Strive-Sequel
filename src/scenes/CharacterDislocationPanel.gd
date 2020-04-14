@@ -173,25 +173,35 @@ func update_character_dislocation():
 		var newbutton = globals.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var person = state.characters[i]
 		newbutton.get_node("Label").text = person.get_full_name()
+		var obed_text = str(person.obedience)
+		var obed_color
+		if person.obedience <= 0:
+			obed_color = globals.hexcolordict.red
+		else:
+			obed_color = globals.hexcolordict.green
+		if person.loyalty >= 100 || person.submission >= 100 || state.get_master() == person:
+			obed_text = "∞"
+			obed_color = globals.hexcolordict.green
+		newbutton.get_node("obed").text = obed_text
+		newbutton.get_node("obed").set("custom_colors/font_color", obed_color)
 		globals.connectslavetooltip(newbutton, person)
 		if selected_travel_characters.has(i):
 			newbutton.pressed = true
 		newbutton.connect('pressed', self, 'set_travel_character', [i])
-	
+	var obed_cost = 0
 	var text = "Characters selected: " + str(selected_travel_characters.size())
 	if destination == null:
 		text += "\n\nPlease select location to proceed"
 	elif destination == 'mansion':
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
-			text += "\nTravel Time: " + str(ceil(state.characters[selected_travel_characters[0]].calculate_travel_time(dislocation_area, 'mansion') / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
-		
+			text += "\nTravel Time: " + str(ceil(state.characters[selected_travel_characters[0]].calculate_travel_time(dislocation_area, 'mansion').time / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
 	else:
 		var location = world_gen.get_location_from_code(destination)
 		text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
 		match location.type:
 			'dungeon':
-				text += "\nType: " + location.classname + "\n"  + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())
+				text += "\nType: " + location.classname + "\n" + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())
 				#ext += "\nProgress: Levels - " + str(current_level) + "/" + str(active_location.levels.size()) + ", "
 				#text += "Stage - " + str(active_location.progress.stage) 
 			'settlement':
@@ -199,11 +209,25 @@ func update_character_dislocation():
 			'skirmish':
 				pass
 		if selected_travel_characters.size() > 0 :
-			text += "\n\nTravel Time: " + str(ceil(state.characters[selected_travel_characters[0]].calculate_travel_time(destination, dislocation_area) / state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
-		
-		
+			var travel_time = state.characters[selected_travel_characters[0]].calculate_travel_time(destination, dislocation_area) 
+			text += "\n\nTravel Time: " + str(ceil(travel_time.time/ state.characters[selected_travel_characters[0]].travel_tick())) + " hours."
+			obed_cost = ceil(travel_time.obed_cost/state.characters[selected_travel_characters[0]].travel_tick())
+			text += "\nObedience Cost: " + str(obed_cost)
+	
+	var can_travel = true
+	
+	if selected_travel_characters.size() < 1 || destination == null:
+		can_travel = false
+	else:
+		for i in selected_travel_characters:
+			var person = state.characters[i]
+			if person.loyalty >= 100 || person.submission >= 100 || state.get_master() == person:
+				continue
+			if person.obedience < obed_cost:
+				can_travel = false
+	
 	$DescriptText.bbcode_text = text
-	$TravelConfirmButton.disabled = selected_travel_characters.size() < 1 || destination == null
+	$TravelConfirmButton.disabled = !can_travel
 
 
 func set_travel_character(id):
@@ -219,11 +243,14 @@ func travel_confirm():
 		var person = state.characters[i]
 		person.remove_from_task(true)
 		person.process_event(variables.TR_MOVE)
+		var travel_cost = person.calculate_travel_time(destination,dislocation_area)
+		if person.loyalty < 100 && person.submission < 100 && state.get_master() != person:
+			person.obedience -= ceil((travel_cost.obed_cost/person.travel_tick()))
 		if variables.instant_travel == false:
 			person.work = 'travel'
 			person.location = 'travel'
 			person.travel_target = {area = destination_area, location = destination}
-			person.travel_time = person.calculate_travel_time(dislocation_area, destination)
+			person.travel_time = travel_cost.time
 		else:
 			person.work = 'travel'
 			person.location = destination

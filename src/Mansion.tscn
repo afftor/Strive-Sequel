@@ -351,6 +351,9 @@ margin_left = 10.0
 margin_top = 235.0
 margin_right = 423.0
 margin_bottom = 675.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TaskProgress"]
 margin_left = 4.0

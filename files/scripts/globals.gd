@@ -795,28 +795,31 @@ func StartEventScene(name, debug = false, line = 0):
 	scene.visible = true
 	scene.Start(scenes[name], debug, line)
 
-
 func check_duplicates(item, parts):
 	for i in state.items.values():
-		if i.itembase == item && i.parts.hash() == parts.hash():
+		if str(i.itembase) == str(item) && str(i.parts) == str(parts):
 			return i.id
 
-func CreateGearItem(item, parts, bonus = {}, newname = null, dont_duplicate = true):
-	if dont_duplicate:
-		var duplicate = check_duplicates(item, parts)
-		if duplicate != null:
-			state.items[duplicate].amount += 1
-			return
+func CreateGearItem(item, parts, bonus = {}, newname = null):
 	var newitem = Item.new()
 	newitem.CreateGear(item, parts, bonus)
 	if newname != null:
 		newitem.name = newname
 	return newitem
-	
-func AddItemToInventory(item):
-	if item == null:
-		return
+
+func CreateUsableItem(item, amount = 1):
+	var newitem = Item.new()
+	newitem.CreateUsable(item, amount)
+	return newitem
+
+func AddItemToInventory(item, dont_duplicate = true):
 	item.inventory = state.items
+	if dont_duplicate && item.stackable == false:
+		var duplicate = check_duplicates(item.itembase, item.parts)
+		if duplicate != null:
+			state.items[duplicate].amount += 1
+			item.amount = 0
+			return
 	if item.stackable == false:
 		item.id = "i" + str(state.itemcounter)
 		state.items[item.id] = item
@@ -830,12 +833,41 @@ func AddItemToInventory(item):
 			state.items[item.id] = item
 			state.itemcounter += 1
 
+#func CreateUsableItem(item, amount = 1):
+#	var newitem = Item.new()
+#	newitem.CreateUsable(item, amount)
+#	return newitem
+#func CreateGearItem(item, parts, bonus = {}, newname = null, dont_duplicate = true):
+#	if dont_duplicate:
+#		var duplicate = check_duplicates(item, parts)
+#		if duplicate != null:
+#			state.items[duplicate].amount += 1
+#			return
+#	var newitem = Item.new()
+#	newitem.CreateGear(item, parts, bonus)
+#	if newname != null:
+#		newitem.name = newname
+#	return newitem
+	
+#func AddItemToInventory(item):
+#	if item == null:
+#		return
+#	item.inventory = state.items
+#	if item.stackable == false:
+#		item.id = "i" + str(state.itemcounter)
+#		state.items[item.id] = item
+#		state.itemcounter += 1
+#	else:
+#		var id = get_item_id_by_code(item.itembase)
+#		if id != null:
+#			state.items[id].amount += item.amount
+#		else:
+#			item.id = "i" + str(state.itemcounter)
+#			state.items[item.id] = item
+#			state.itemcounter += 1
 
 
-func CreateUsableItem(item, amount = 1):
-	var newitem = Item.new()
-	newitem.CreateUsable(item, amount)
-	return newitem
+
 
 func get_item_id_by_code(itembase):
 	for item in state.items.values():

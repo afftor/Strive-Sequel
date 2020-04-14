@@ -69,12 +69,12 @@ var scenes = {
 }
 
 var sprites = {
-	empty = null,
 	amelia = load("res://assets/images/sprites/amelia.png"),
 	duncan = load("res://assets/images/sprites/duncan.png"),
 	sigmund = load("res://assets/images/sprites/sigmund.png"),
 	myr = load("res://assets/images/sprites/myr.png"),
 	anastasia = load("res://assets/images/sprites/anastasia.png"),
+	aire = load("res://assets/images/sprites/aire.png"),
 	}
 
 var dynamic_backgrounds = {
@@ -96,8 +96,6 @@ var combatportraits = {
 	golem = load("res://assets/images/enemies/GolemIcon.png"),
 	golemalt = load("res://assets/images/enemies/GolemAltIcon.png"),
 	spider = load("res://assets/images/enemies/SpiderIcon.png"),
-	dwarf = load("res://assets/images/enemies/AngryDwarfIcon.png"),
-	fairies = load("res://assets/images/enemies/FairiesIcon.png"),
 	}
 
 var combatfullpictures = {
@@ -107,8 +105,6 @@ var combatfullpictures = {
 	golem = load("res://assets/images/enemies/Golem.png"),
 	golemalt = load("res://assets/images/enemies/GolemAlt.png"),
 	spider = load("res://assets/images/enemies/Spider.png"),
-	dwarf = load("res://assets/images/enemies/AngryDwarf.png"),
-	fairies = load("res://assets/images/enemies/Fairies.png"),
 }
 
 var circleportraits = {

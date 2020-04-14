@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sfx/water_attack/water_Frame-2.png" type="Texture" id=1]
+[ext_resource path="res://assets/sfx/water_attack/water_Frame-6.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/water_attack/water_Frame-1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/water_attack/water_Frame-3.png" type="Texture" id=4]
+[ext_resource path="res://assets/sfx/water_attack/water_Frame-4.png" type="Texture" id=5]
+[ext_resource path="res://assets/sfx/water_attack/water_Frame-5.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="AnimatedSprite"]
+position = Vector2( 137.83, 74.8469 )
+scale = Vector2( 0.460805, 0.691588 )
+frames = SubResource( 1 )
+speed_scale = 2.0

@@ -906,6 +906,7 @@ margin_bottom = 38.0
 text = "Days:"
 
 [node name="ShopPanel" type="Panel" parent="."]
+visible = false
 margin_left = 519.0
 margin_top = 137.0
 margin_right = 1391.0
