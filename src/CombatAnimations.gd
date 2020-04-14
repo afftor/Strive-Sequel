@@ -267,6 +267,20 @@ func miss(node, args = null):#conflicting usage of tween node!!
 	return playtime * 2 + delaytime
 	#aftereffecttimer = nextanimationtime + aftereffectdelay
 
+func resist(node, args = null):#conflicting usage of tween node!!
+	var tween = input_handler.GetTweenNode(node)
+	var playtime = 0.1
+	var nextanimationtime = 0.0
+	var delaytime = 0.4
+	input_handler.PlaySound("combatmiss")
+	input_handler.FloatText(node, 'RESIST', 'miss', 75, Color(1,1,1), 1, 0.2) #stub
+	#, node.get_node('Icon').rect_size/2-Vector2(80,20))
+	tween.interpolate_property(node, 'modulate', Color(1,1,1), Color(1,1,0), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
+	tween.interpolate_property(node, 'modulate', Color(1,1,0), Color(1,1,1), playtime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delaytime)
+	tween.start()
+	
+	return playtime * 2 + delaytime
+
 func buffs(node, args):
 	var delay = 0
 	if buffs_update_delays.has(node): delay = buffs_update_delays[node]
@@ -335,9 +349,13 @@ func shield_update(node, args):
 	return 0.1
 
 func defeat(node, args = null):#stub, for this was not correct in FighterNode
-	node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
-	input_handler.FadeAnimation(node, 0.5, 0.3)
-	return 0.1
+	var delaytime = 0.3
+	var tween = input_handler.GetTweenNode(node)
+	tween.interpolate_callback(node, delaytime, 'noq_defeat')
+	tween.start()
+	#node.get_node('Icon').material = load("res://assets/sfx/bw_shader.tres")
+	#input_handler.FadeAnimation(node, 0.5, 0.3)
+	return delaytime
 
 
 func death_animation(node):

@@ -1833,8 +1833,9 @@ func play_sfx(code):
 func apply_atomic(template):
 	match template.type:
 		'damage':
-			deal_damage(template.value, template.source)
-			pass
+			var tval = deal_damage(template.value, template.source)
+			if globals.combat_node != null:
+				globals.combat_node.combatlogadd("\n%s loses %d hp." % [name, int(tval)])
 		'heal':
 			heal(template.value)
 			pass
@@ -1964,8 +1965,14 @@ func check_status_resist(eff):
 
 func apply_temp_effect(eff_id):
 	var eff = effects_pool.get_effect_by_id(eff_id)
-	if check_status_resist(eff): return
 	var eff_n = eff.template.name
+	if check_status_resist(eff): 
+		if globals.combat_node != null:
+			globals.combat_node.combatlogadd("\n%s resists %s." % [name, eff_n]) #maybe need to add translation for effect's template name
+		return
+	if globals.combat_node != null:
+		globals.combat_node.combatlogadd("\n%s is afflicted by %s." % [name, eff_n]) #maybe need to add translation for effect's template name
+		play_sfx('resist')
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)

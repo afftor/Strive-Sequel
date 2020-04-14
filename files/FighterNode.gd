@@ -87,10 +87,9 @@ func update_mana():
 		var data = {node = self, time = globals.combat_node.turns,type = 'mp_update',slot = 'MP', params = args}
 		animation_node.add_new_data(data)
 
-func defeat():#not working correctly at all
-	$Icon.material = load("res://assets/sfx/bw_shader.tres")
-	#input_handler.FadeAnimation(self, 0.5, 0.3)
-	set_process_input(false)
+func defeat():
+	var data = {node = self, time = globals.combat_node.turns, type = 'defeat', slot = 'SFX', params = {}}
+	animation_node.add_new_data(data)
 
 func update_shield(): 
 	var args = {}
@@ -171,3 +170,7 @@ func update_mp_label(newmp, newmpp):
 		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
 	else:
 		$mplabel.text = str(round(newmpp)) + '%%'
+
+func noq_defeat():
+	$Icon.material = load("res://assets/sfx/bw_shader.tres")
+	set_process_input(false)
