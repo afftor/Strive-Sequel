@@ -2553,6 +2553,7 @@ func use_social_skill(s_code, target):#add logging if needed
 						else:
 							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, i.value)
+					if i.is_drain: self.stat_update(stat, -tmp)
 				1:
 					tmp = h.stat_update(stat, -i.value)
 					if i.is_drain: self.stat_update(stat, -tmp)

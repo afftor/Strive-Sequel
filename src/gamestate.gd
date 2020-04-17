@@ -181,8 +181,9 @@ func get_unique_slave(code):
 		if i.unique == code:
 			return i
 
-func add_slave(person):
-	characters_pool.move_to_state(person.id)
+func add_slave(person, child = false):
+	if child: characters_pool.move_baby_to_state(person.id) 
+	else: characters_pool.move_to_state(person.id)
 	person.is_players_character = true
 	person.is_active = true
 	if person.unique != null:

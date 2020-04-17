@@ -51,6 +51,13 @@ func move_to_state(id):
 	state.characters[id] = tmp
 	state.character_order.append(id)
 
+func move_baby_to_state(id):
+	if !state.babies.has(id): return
+	var tmp = state.babies[id]
+	state.babies.erase(id)
+	state.characters[id] = tmp
+	state.character_order.append(id)
+
 func move_to_pool(id):
 	if !state.characters.has(id): return
 	var tmp = state.characters[id]

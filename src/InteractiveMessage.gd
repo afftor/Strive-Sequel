@@ -317,7 +317,7 @@ func set_baby_name(text):
 	var person = state.babies[input_handler.active_character.pregnancy.baby]
 	person.name = text
 	person.surname = input_handler.active_character.surname
-	state.add_slave(person)
+	state.add_slave(person, true)
 	var mother = characters_pool.get_char_by_id(person.relatives.mother)
 	if mother == null:
 		person.set_slave_category('slave')
