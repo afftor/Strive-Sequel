@@ -489,6 +489,15 @@ func deserialize(tmp:Dictionary):
 		for i in ssp:
 			if Skilldata.Skilllist.has(ssp[i]):
 				characters[h].combat_skill_panel[int(i)] = ssp[i]
+		var cleararray = []
+		for i in [characters[h].social_skills, characters[h].combat_skills]:
+			for k in i:
+				if Skilldata.Skilllist.has(k) == false:
+					cleararray.append(k)
+		for i in cleararray:
+			for k in [characters[h].social_skills, characters[h].combat_skills]:
+				k.erase(i)
+	
 	for h in tmp['babies']:
 		babies[h] = dict2inst(tmp['babies'][h])
 		#fixing saved skill shortcuts
@@ -502,16 +511,15 @@ func deserialize(tmp:Dictionary):
 		for i in ssp:
 			if Skilldata.Skilllist.has(ssp[i]):
 				babies[h].combat_skill_panel[int(i)] = ssp[i]
-	
 		var cleararray = []
-		for i in [characters[h].social_skills, characters[h].combat_skills]:
+		for i in [babies[h].social_skills, babies[h].combat_skills]:
 			for k in i:
 				if Skilldata.Skilllist.has(k) == false:
 					cleararray.append(k)
 		for i in cleararray:
-			for k in [characters[h].social_skills, characters[h].combat_skills]:
+			for k in [babies[h].social_skills, babies[h].combat_skills]:
 				k.erase(i)
-		
+	
 		
 	tempstate.free()
 	effects_pool.deserialize(tmp['effects'])
