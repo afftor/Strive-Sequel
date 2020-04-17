@@ -29,12 +29,12 @@ var data = {
 		{code = 'workers_join', text = "WORKERSINTRODUCTION1REPLY3", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'workers_election_initiate1', text = "WORKERSREQUESTELECTIONSUPPORT", 
 			reqs = [
-			{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'stage3'},
+			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
 			{type = 'faction_reputation', code = 'workers', operant = 'gte', value = 500}, 
 			{type = 'dialogue_seen', operant = 'neq', value = 'WORKERSELECTIONINITIATE1'}, 
 			{type = 'decision', name = 'workers_election_support', value = false}], 
 			type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'workers_election_initiate5', text = "WORKERSINTRODUCTION1REPLY6", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], bonus_effects = [{code = 'complete_quest', value = 'workers_election_quest'}], dialogue_argument = 6, type = 'next_dialogue'},
+		{code = 'workers_election_initiate5', text = "WORKERSINTRODUCTION1REPLY6", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage3'}], bonus_effects = [{code = 'complete_quest', value = 'workers_election_quest'}], dialogue_argument = 6, type = 'next_dialogue'},
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -254,9 +254,11 @@ var data = {
 			{text = "WORKERSELECTIONCONTINUE2_1", reqs = [], previous_dialogue_option = 1,
 			bonus_effects = [
 				{code = 'money_change', operant = '-', value = 150},
-				{code = 'decision', value = 'helped_reim'},
-				{code = 'progress_quest', value = 'workers_election_quest', stage = 'stage3'}]},
-			{text = "WORKERSELECTIONCONTINUE2_2", reqs = [], previous_dialogue_option = 2},
+				{code = 'decision', value = 'helped_reim'}]},
+			{text = "WORKERSELECTIONCONTINUE2_2", reqs = [], previous_dialogue_option = 2,
+			bonus_effects = [
+				{code = 'decision', value = 'turned_in_reim'}]},
+			
 		],
 		options = [
 			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [],

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.2.0'
+const gameversion = '0.2.0a'
 
 var start_new_game = false
 
@@ -658,7 +658,7 @@ func _init():
 		sex_actions_dict[newaction.code] = newaction
 	
 	for i in dir_contents("res://assets/data/events/"):
-		if i.find('.remap') >= 0:
+		if i.find('.gd') < 0:
 			continue
 		var newscript  = load(i).new()
 		for k in newscript.data:
@@ -675,7 +675,6 @@ func _init():
 #			var data = file.get_as_text()
 #	for i in dir_contents(LocalizationFolder):
 #		TranslationData[i.replace(LocalizationFolder + '/', '').replace('.gd','')] = i
-	
 	
 	#Applying active translation
 	var activetranslation = Translation.new()
@@ -797,7 +796,7 @@ func StartEventScene(name, debug = false, line = 0):
 
 func check_duplicates(item, parts):
 	for i in state.items.values():
-		if str(i.itembase) == str(item) && str(i.parts) == str(parts):
+		if str(i.itembase) == str(item) && str(i.parts) == str(parts) && i.owner == null:
 			return i.id
 
 func CreateGearItem(item, parts, bonus = {}, newname = null):

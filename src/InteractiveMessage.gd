@@ -82,6 +82,8 @@ func open(scene):
 	
 	if scenetext.find("[locationname]") >= 0:
 		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
+		scenetext = scenetext.replace("[areaname]", input_handler.active_area.name)
+		scenetext = scenetext.replace("[locationtypename]", input_handler.active_location.classname)
 	if scene.tags.has("master_translate"):
 		if state.get_master() == null:
 			print("master_not_found")
@@ -176,6 +178,7 @@ func update_scene_characters():
 	globals.ClearContainer($EventCharacters/VBoxContainer)
 	globals.ClearContainer($PlayerCharacters/VBoxContainer)
 	for i in input_handler.scene_characters:
+		print(i.name)
 		var newbutton = globals.DuplicateContainerTemplate($EventCharacters/VBoxContainer)
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.get_node('icon').texture = i.get_icon()

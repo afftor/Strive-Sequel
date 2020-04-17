@@ -205,7 +205,7 @@ func select_location(location):
 			open_location(data)
 
 var city_options = {
-	#location_purchase = "Buy Dungeon Location",
+	location_purchase = "Buy Dungeon Location",
 	quest_board = "Notice Board",
 }
 
@@ -773,13 +773,9 @@ func see_quest_info(quest):
 			'reputation':
 				var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)])
 				newbutton.texture = globals.quest_icons[i.code]
-				newbutton.get_node("amount").text = str(i.value)
+				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)]))+ "(Master Charm Bonus)"
-#				newbutton.texture = images.icons.quest_reputation
-#				newbutton.get_node("amount").text = str(i.value)
-#				newbutton.get_node("amount").show()
-#				newbutton.hint_tooltip = "Reputation (" + active_area.factions[quest.source].name + "): +" + str(i.value)
 	
 	text += "\n\n{color=yellow|Requester: " + active_area.factions[quest.source].name + "}"
 	
@@ -857,11 +853,6 @@ func unlock_upgrade(upgrade, level):
 		#print(active_faction)
 	faction_upgrade()
 
-var purch_location_list = {
-	easy = {code = 'easy',price = 100, name = 'Easy Dungeon'},
-	medium = {code = 'medium',price = 200, name = 'Medium Dungeon'},
-	hard = {code = 'hard',price = 300, name = 'Hard Dungeon'},
-}
 
 var service_actions = {
 	enslave = {code = 'enslave', text = 'SERVICEENSLAVE', descript = 'SERVICEENSLAVEDESCRIPT', function = 'enslave', reqs = [{type = 'has_money', value = variables.enslavement_price}], costvalue = variables.enslavement_price},
@@ -900,29 +891,36 @@ func free():
 	pass
 
 
+
 func location_purchase():
 	globals.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
-	for i in purch_location_list.values():
+	for i in world_gen.dungeons.values():
+		if i.type != 'dungeon':
+			continue
+	#for i in purch_location_list.values():
 		var newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
-		newbutton.text = i.name + ": " + str(i.price) + " gold"
+		newbutton.text = i.classname + ": " + str(i.puchase_price) + " gold"
 		newbutton.connect("pressed", self, 'purchase_location', [i])
-		if state.money < i.price:
+		if state.money < i.puchase_price:
 			newbutton.disabled = true
 	var newbutton = globals.DuplicateContainerTemplate($CityGui/ScrollContainer/VBoxContainer)
 	newbutton.text = "Leave"
 	newbutton.connect("pressed", self, "open_city", [selected_location])
 
 func purchase_location(purchasing_location):
+	if purchasing_location.has('purchase_area'):
+		active_area = state.areas[purchasing_location.purchase_area]
 	if active_area.locations.size() < 8:
 		var randomlocation = []
 		for i in active_area.locationpool:
 			randomlocation.append(world_gen.dungeons[i].code)
-		randomlocation = randomlocation[randi()%randomlocation.size()]
-		randomlocation = world_gen.make_location(randomlocation, active_area)
+		#randomlocation = randomlocation[randi()%randomlocation.size()]
+		randomlocation = world_gen.make_location(purchasing_location.code, active_area)
 		input_handler.active_location = randomlocation
+		input_handler.active_area = active_area
 		active_area.locations[randomlocation.id] = randomlocation
 		state.location_links[randomlocation.id] = {area = active_area.code, category = 'locations'} 
-		state.money -= purchasing_location.price
+		state.money -= purchasing_location.puchase_price
 		input_handler.interactive_message('purchase_dungeon_location', 'location_purchase_event', {})
 	else:
 		input_handler.SystemMessage("Can't purchase anymore")

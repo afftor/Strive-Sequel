@@ -981,8 +981,8 @@ func equip(item, item_prev_id = null):
 
 func unequip(item):#NEEDS REMAKING!!!!
 	var duplicate = globals.check_duplicates(item.itembase, item.parts)
-	var duplicate_item = state.items[duplicate]
 	if duplicate != null:
+		var duplicate_item = state.items[duplicate]
 		if duplicate_item.owner == null:
 			if duplicate != item.id:
 				duplicate_item.amount += 1
@@ -991,6 +991,8 @@ func unequip(item):#NEEDS REMAKING!!!!
 			else:
 				item.amount += 1
 		duplicate_item.owner = null
+	else:
+		item.owner = null
 	for i in gear:
 		if gear[i] == item.id:
 			gear[i] = null
@@ -1754,6 +1756,7 @@ func translate(text):
 	text = text.replace("[male]", sex)
 	text = text.replace("[eye_color]", eye_color)
 	text = text.replace("[hair_color]", hair_color)
+	text = text.replace("[man]", globals.fastif(sex == 'male', 'man', 'woman'))
 	
 #	var masternoun = 'master'
 	
@@ -1969,10 +1972,10 @@ func apply_temp_effect(eff_id):
 	if check_status_resist(eff): 
 		if globals.combat_node != null:
 			globals.combat_node.combatlogadd("\n%s resists %s." % [name, eff_n]) #maybe need to add translation for effect's template name
+			play_sfx('resist')
 		return
 	if globals.combat_node != null:
 		globals.combat_node.combatlogadd("\n%s is afflicted by %s." % [name, eff_n]) #maybe need to add translation for effect's template name
-		play_sfx('resist')
 	var tmp = find_temp_effect(eff_n)
 	if (tmp.num < eff.template.stack) or (eff.template.stack == 0):
 		temp_effects.push_back(eff_id)

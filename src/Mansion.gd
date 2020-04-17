@@ -228,7 +228,7 @@ func _ready():
 		#$SlaveList.rebuild()
 		#state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
 		state.show_tutorial = true
-		#state.active_quests.append({code = "guilds_introduction", stage = 'stage2'})
+		state.active_quests.append({code = "guilds_introduction", stage = 'stage1'})
 	#	state.mainprogress = 0
 		for i in state.areas.plains.factions.values():
 			i.totalreputation += 500
@@ -245,7 +245,8 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message("event_good_slavers_woods", '',{}) #input_handler.interactive_message('lich_enc_initiate', '', {})
+		#input_handler.interactive_message("event_good_slavers_woods", '',{})
+		#input_handler.interactive_message('intro', '', {})
 		
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500

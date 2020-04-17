@@ -284,7 +284,7 @@ var TranslationDict = {
 	DAMAGEMOD = "ATK Mult.",
 	ARMOR = 'DEF',
 	MDEF = "MDEF",
-	EVASION = 'Ecasion',
+	EVASION = 'Evasion',
 	HITRATE = 'Hit Chance',
 	HEALTH = 'Health',
 	DURABILITY = "Durability",
@@ -597,7 +597,7 @@ var TranslationDict = {
 	TASKTAILOR = "Tailor",
 	TASKTAILORDESCRIPT = "Craft cloth and leather items and gear. Must have crafting items selected. ",
 	TASKSMITH = "Smith",
-	TASKSMITHDESCRIPT = "Skilled Blacksmith is a valuable person at any productive household. \n\nForge and Tailor craftings are 100% faster. ",
+	TASKSMITHDESCRIPT = "Skilled Blacksmith is a valuable person at any productive household.",
 	TASKALCHEMY = "Alchemy",
 	TASKALCHEMYDESCRIPT = "Craft alchemical potions and items. Must have crafting items selected. ",
 	TASKBUILDING = "Upgrading",
@@ -781,9 +781,9 @@ var TranslationDict = {
 	STATOBEDIENCE = "Obedience",
 	STATOBEDIENCEDESCRIPT = "Obedience is required for character to work for you. When at zero, the character might attempt an escape. Obedience is gained by using social skills and lost while performing tasks. ",
 	STATLOYALTY = "Loyalty",
-	STATLOYALTYDESCRIPT = "Loyalty is built with positive skills and behavior once Authority is established. It will decrease with time until maxed out. Maxed out Loyalty will no longer require Obedeince for work and stops escapes.",
+	STATLOYALTYDESCRIPT = "Loyalty is built with positive skills and behavior once Authority is established. It will decrease with time until maxed out. Maxed out Loyalty will no longer require Obedience for work and stops escapes.",
 	STATSUBMISSION = "Submission",
-	STATSUBMISSIONDESCRIPT = "Submission is built with punishing skills. It will decrease with time until maxed out. Maxed out Submission will no longer require Obedeince for work and stops escapes.",
+	STATSUBMISSIONDESCRIPT = "Submission is built with punishing skills. It will decrease with time until maxed out. Maxed out Submission will no longer require Obedience for work and stops escapes.",
 	STATAUTHORITY = "Authority",
 	STATAUTHORITYDESCRIPT = "Authority represents character's respect for you. Authority is built by punishments and determines how quickly loyalty is built. Low Authority will prevent character from building Loyalty.",
 	STATLUST = "Lust",
@@ -815,7 +815,7 @@ var TranslationDict = {
 	STATRESISTMIND = "Mind Resist",
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
-	STATFOOD_CONSUMPTIONDESCRIPT = "Ammount of food items person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
+	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
 	
 	TOOLTIPENERGY = "Energy is restored during sleep and is required for tasks. When a character is forced to work with no energy left, they increase Exhaustion. ",
 	TOOLTIPFATIGUE = "Fatigue increases with time and dissipates with entertaining activities. When unmanaged may cause a performance penalty.",
@@ -835,7 +835,7 @@ var TranslationDict = {
 	STATTAME_FACTORDESCRIPT = "Tame factor represents how easy is to befriend the character. The higher it is, the slower Loyalty decays and the more effective positive skills are. ", 
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily character can be influenced by punishments and abuse. The higher it is, the slower Submission decays. It also determines how quickly Authority grows. ",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It limits [color=aqua]Wits[/color] growth.",
-	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth. Master's charm also increase gold and reputaiton rewards from repeatble quests.",
+	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth. Master's charm also increase gold and reputation rewards from repeatable quests.",
 	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It makes sexual skills acquirement faster and occasionally boosts sexual options in events.",
 	
 	
@@ -1705,8 +1705,9 @@ var TranslationDict = {
 	DIALOGUEWOLVES_SKIRMISH_START = "You find the location of wolves which were reported by locals. ",
 	DIALOGUEFIGHTOPTION = "Fight",
 	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight with you.",
-	
-	
+	DIALOGUEGOBLINS_SKIRMISH_START = "You find the group of goblins which has been reported by locals. It seems they are ready to fight with you.",
+	DIALOGUEOGRE_SKIRMISH_START = "You find the ogre with a couple of goblins which has been reported by locals. It seems they are ready to fight with you.",
+	DIALOGUETROLL_SKIRMISH_START = "You find the troll with a couple of goblins which has been reported by locals. It seems they are ready to fight with you.",
 	
 	DIALOGUESLAVERPURCHASE = "Purchase",
 	DIALOGUEEVENTGOODSLAVERS = "You come across the group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] later to be sold to at local market. \n\nThey are ready to part with [him] for a reasonable price of [price] gold. \n\nThe [race] gives you a desperate look. ",
@@ -1757,7 +1758,9 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_BANDIT_DEN = "Bandit Den",
 	LOCATIONNAMEDUNGEON_GROVE = "Grove",
 	LOCATIONNAMEDUNGEON_GOBLIN_CAVE = "Goblin Cave",
-	LOCATIONNAMEDUNGEON_CRYPT = "Crypt",
+	LOCATIONNAMEDUNGEON_BANDIT_FORT = "Bandit Fort",
+	
+	LOCATIONNAMEDUNGEON_UNDEAD_CRYPT = "Crypt",
 	LOCATIONNAMEDUNGEON_MOUNTAINS = "Mountain Cave",
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
@@ -2282,6 +2285,7 @@ var TranslationDict = {
 	LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
 	LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
 	LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
+	LOAN_SUCCESS4 = "They took 86000 gold and departed quickly. This was your last payment and now you are free to do what you want...",
 	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
 
 }

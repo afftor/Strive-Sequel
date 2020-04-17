@@ -11,8 +11,9 @@ var scenedict = {
 	
 	wolves_skirmish_start = {text = tr("DIALOGUEWOLVES_SKIRMISH_START"), set_enemy = 'wolves_skirmish',tags = [], image = 'wolves_skirmish', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	rebels_skirmish_start = {text = tr("DIALOGUEREBELS_SKIRMISH_START"), set_enemy = 'rebels_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
-	goblins_skirmish_start = {text = tr("DIALOGUEREBELS_SKIRMISH_START"), set_enemy = 'goblins_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
-	
+	goblins_skirmish_start = {text = tr("DIALOGUEGOBLINS_SKIRMISH_START"), set_enemy = 'goblins_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
+	ogre_skirmish_start = {text = tr("DIALOGUEOGRE_SKIRMISH_START"), set_enemy = 'ogre_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
+	troll_skirmish_start = {text = tr("DIALOGUETROLL_SKIRMISH_START"), set_enemy = 'troll_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
 	skirmish_complete = {
 		text = [{text = "Your group have completed the task and returns to mansion. ", reqs = []}], 
@@ -692,7 +693,7 @@ var scenedict = {
 	},
 	starting_dialogue1 = {
 		image = null,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "STARTINGDILOGUE1_1", reqs = [], previous_dialogue_option = 1},
 		{text = "STARTINGDILOGUE1_2", reqs = [], previous_dialogue_option = 2},
@@ -707,7 +708,7 @@ var scenedict = {
 	},
 	starting_dialogue2 = {
 		image = null,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "STARTINGDIALOGUE2_1", reqs = [], previous_dialogue_option = 1},
 		{text = "STARTINGDIALOGUE2_2", reqs = [], previous_dialogue_option = 2},
@@ -783,7 +784,7 @@ var scenedict = {
 			reqs = [],
 			image = null,
 			tags = ['dialogue_scene'],
-			text = "LOAN_FAILURE",
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_FAILURE", reqs = []}],
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
 			],
@@ -815,7 +816,7 @@ var scenedict = {
 			reqs = [],
 			image = null,
 			tags = ['dialogue_scene'],
-			text = "LOAN_FAILURE",
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_FAILURE", reqs = []}],
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
 			],
@@ -847,7 +848,7 @@ var scenedict = {
 			reqs = [],
 			image = null,
 			tags = ['dialogue_scene'],
-			text = "LOAN_FAILURE",
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_FAILURE", reqs = []}],
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
 			],
@@ -859,7 +860,7 @@ var scenedict = {
 			reqs = [{type = 'has_money', value = 86000}],
 			image = null,
 			tags = ['dialogue_scene'],
-			text = "loan_event_success",
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_SUCCESS4", reqs = []}],
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'money_change', operant = '-', value = 86000}, {code = 'complete_quest', value = 'main_quest_loan'}]},
 			],
@@ -868,14 +869,24 @@ var scenedict = {
 			reqs = [],
 			image = null,
 			tags = ['dialogue_scene'],
-			text = "loan_event_fail",
+			text = [{text = "LOAN_EVENT", reqs = []}, {text = "LOAN_FAILURE", reqs = []}],
 			options = [
 			{code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]},
 			],
 			},
 		]
 	},
-	
+	guilds_elections_switch = {
+		image = null,
+		tags = ['dialogue_scene','master_translate'],
+		text = [
+		{text = "DIALOGUEINTRODUCTIONLETTER", reqs = []},
+		],
+		common_effects = [{code = 'progress_quest', value = 'guilds_introduction', stage = 'stage2'}],
+		options = [
+		{code = 'close', text = "DIALOGUECLOSE", reqs = []},
+		],
+	},
 }
 
 var dialogue_inits = {
@@ -997,7 +1008,7 @@ var quests = {
 		code = 'guilds_introduction',
 		stages = {
 		start = {code = 'start', name = 'The Four Guilds', descript = 'Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.'},
-		stage1 = {code = 'stage1', name = 'First Step', descript = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds."},
+		stage1 = {code = 'stage1', name = 'First Step', descript = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board."},
 		stage1_5 = {code = 'stage1_5', name = 'First Step', descript = "You've earned enough reputation with one of the factions. Wait for a few days."},
 
 		stage2 = {code = 'stage2', name = 'New Friends', descript = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader. "},

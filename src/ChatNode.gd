@@ -237,8 +237,8 @@ var individual_lines = {
 	master_praise_line16 = {text = "Ahh... it was nothing. ", events = ['master_praise'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_praise_line17 = {text = "Honeyed words won't sway me, [Master]... But thank you.", events = ['master_praise'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	master_praise_line18 = {text = "I'm glad to be of service!", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	master_praise_line19 = {text = "Thank you, {Master]! I won't disappoint you!", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	master_praise_line20 = {text = "Stop it , [Master}. You're making me blush.", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	master_praise_line19 = {text = "Thank you, [Master]! I won't disappoint you!", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	master_praise_line20 = {text = "Stop it , [Master]. You're making me blush.", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	master_praise_line21 = {text = "Wow! I didn't think you thought so highly of me!", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	master_praise_line22 = {text = "I'll make sure to keep this up! Just for you, [Master].", events = ['master_praise'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	

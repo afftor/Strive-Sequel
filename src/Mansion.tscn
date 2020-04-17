@@ -149,6 +149,9 @@ margin_right = 710.0
 margin_bottom = 1068.0
 theme = ExtResource( 4 )
 text = "Upgrades"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InteractButton" type="Button" parent="."]
 margin_left = 263.235

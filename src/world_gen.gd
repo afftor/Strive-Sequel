@@ -40,7 +40,7 @@ var lands = {
 			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {}},
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {}},
 			],
-		capital_options = ['quest_board'],#,'location_purchase'],
+		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
 		area_shop_items = {
 			meat = {min = 40, max = 80, chance = 1},
@@ -359,7 +359,7 @@ var factiondata = {
 			'servants_init',
 			],
 		quests_easy = ['servants_craft_items_easy','servants_slave_easy'],
-		quests_medium = [],
+		quests_medium = ['servants_craft_items_medium','servants_slave_medium'],
 		quests_hard = [],
 		slavenumber = [2,3],
 		questnumber = [2,2],
@@ -416,7 +416,7 @@ func make_guild(code, area):
 		data.questnumber = round(rand_range(data.questnumber[0], data.questnumber[1]))
 		area.quests.factions[data.code] = {}
 		while data.questnumber > 0:
-			for i in ['easy']:#'medium','hard']:
+			for i in ['easy','medium']:#'medium','hard']:
 				while guilddatatemplate.questsetting[i] > area.quests.factions[data.code].size():
 					make_quest_for_guild(guilddatatemplate, i)
 			data.questnumber -= 1
@@ -845,7 +845,7 @@ var questdata = {
 		code = 'warriors_threat_medium',
 		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
-		randomconditions = [{code = 'complete_location', type = ['basic_threat_ogres']}],#,
+		randomconditions = [{code = 'complete_location', type = ['basic_threat_ogre']}],#,
 		unlockreqs = [],
 		reputation = [150,250],
 		rewards = [
@@ -872,7 +872,7 @@ var questdata = {
 		code = 'warriors_dungeon_medium',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
-		randomconditions = [{code = 'complete_dungeon', type = []}],
+		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_fort','dungeon_undead_crypt']}],
 		unlockreqs = [],
 		reputation = [200,350],
 		rewards = [
@@ -975,12 +975,24 @@ var questdata = {
 	servants_craft_items_easy = {
 		code = 'servants_craft_items_easy',
 		name = 'Items Request',
-		descript = 'The guild needs a specific crafter items',
-		randomconditions = [{code = 'random_item', type = ['leather_collar','tail_plug','anal_plug'], range = [1,2]}],
+		descript = 'The guild needs a specific crafted items',
+		randomconditions = [{code = 'random_item', type = ['leather_collar','tail_plug','anal_plug','anal_beads','animal_gloves','strapon','handcuffs'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
 		[1, {code = 'gold', item_based = true, range = [1.5,1.8]}],
+		],
+		time_limit = [8,12],
+	},
+	servants_craft_items_medium = {
+		code = 'servants_craft_items_medium',
+		name = 'Items Request',
+		descript = 'The guild needs a specific crafted items',
+		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_chocker','chastity_belt','stimulative_underwear'], range = [1,2]}],
+		unlockreqs = [],
+		reputation = [250,350],
+		rewards = [
+		[1, {code = 'gold', item_based = true, range = [1.8,2]}],
 		],
 		time_limit = [8,12],
 	},
@@ -1001,7 +1013,29 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1, {code = 'gold', range = [100,150]}],
+		[1, {code = 'gold', range = [150,300]}],
+		],
+		time_limit = [8,12],
+	},
+	servants_slave_medium = {
+		code = 'servants_slave_medium',
+		name = 'Slave Request',
+		descript = 'The guild is in need of specific trained individual.',
+		 
+		randomconditions = [
+			{code = 'slave_delivery', 
+			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
+			condition_number = [2,2],
+			conditions = [
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['tame_factor','timid_factor'], range = [3,4]},
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['wits_factor','charm_factor','sexuals_factor'], range = [3,4]},
+			{use_once = false, code = 'stat', function = 'range',operant = 'gte', type = ['charm','sexuals'], range = [50,60]}
+			],},
+		],
+		unlockreqs = [],
+		reputation = [250,350],
+		rewards = [
+		[1, {code = 'gold', range = [350,500]}],
 		],
 		time_limit = [8,12],
 	},
@@ -1308,7 +1342,8 @@ func generate_random_gear(dict):#dict = {item = code, material_grade = 'location
 var locationnames = {
 	village_human1 = ['Green','Black','Gold',"Stone","Great","Rain",'Storm','Red','River','Oaken','Ashen'],
 	village_human2 = ['wood','ford','vale','burg','wind','ridge','minster','moor','meadow'],
-	
+	bandit_fort_nouns = ['Fort'],
+	bandit_fort_adjs = ['Bandit'],
 	goblin_cave_nouns = ['Cave','Tunnel','Burrow','Cavern','Den'],
 	goblin_cave_adjs = ['Dirty', 'Murky', 'Distant', 'Red', 'Blue', 'Black', 'Lower'],
 	bandit_den_nouns = ['Hideout', 'Cave', 'Den', 'Pit'],
@@ -1445,7 +1480,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'rebels_skirmish_start', args = {}}},
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'ogre_skirmish_start', args = []}]}
 		],
 	},
 	basic_threat_troll = {
@@ -1462,7 +1497,7 @@ var dungeons = {
 		resources = [],
 		stages_per_level = [1,1],
 		events = [
-		{trigger = 'skirmish_initiate', event = 'start_scene', reqs = [], args = {code = 'rebels_skirmish_start', args = {}}},
+			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]}
 		],
 	},
 	
@@ -1489,13 +1524,13 @@ var dungeons = {
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
 		type = 'dungeon',
-		name = 'bandit_den',
+		name = 'bandit_fort',
 		classname = '',
 		descript = '',
 		difficulty = 'medium',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
-		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]], 
-		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
+		enemyarray =  [["bandits_assassin", 1],['bandits_medium', 1],['bandits_medium2', 1],['bandits_golem', 0.5],['bandits_ballista', 0.5]], 
+		final_enemy = [['bandits_medium_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 		levels = [3,5], 
 		resources = ['woodiron','leatherthick','iron','steel','clothsilk','mithril'],
@@ -1504,6 +1539,7 @@ var dungeons = {
 		puchase_price = 200,
 		affiliation = 'local',
 		events = [],
+		travel_time = [4,6],
 	},
 	dungeon_undead_crypt = {
 		code = 'dungeon_undead_crypt',
@@ -1514,10 +1550,10 @@ var dungeons = {
 		descript = '',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		enemyarray =  [["skeletons_easy", 1],['skeletons_easy2', 1],['skeletons_zombies', 1],['skeletons_zombies2', 1],['skeletons_lich', 0.5]], 
-		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1]], 
 		levels = [2,3], 
-		resources = ['bone','leather','boneancient','woodmagic','clothsilk','iron','mithril'],
+		resources = ['bone','leather','boneancient','woodmagic','clothsilk','iron','mithril','bonedragon'],
 		stages_per_level = [2,3],
 		bgm = "dungeon",
 		puchase_price = 200,
@@ -1549,10 +1585,11 @@ var dungeons = {
 		name = 'grove',
 		classname = '',
 		descript = '',
+		purchase_area = 'forests',
 		background_pool = ['cave_1', 'cave_2', 'cave_3'],
 		bgm = "dungeon",
 		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
-		final_enemy = [['goblins_easy_boss',1]], final_enemy_type = 'monster',
+		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_easy', 1]],
 		levels = [2,4],
 		resources = ['cloth','leather','woodmagic','wood'],

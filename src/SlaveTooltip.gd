@@ -6,7 +6,7 @@ var prevnode
 
 
 func _process(delta):
-	if parentnode != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
+	if parentnode != null && weakref(parentnode) != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
 		hide()
 

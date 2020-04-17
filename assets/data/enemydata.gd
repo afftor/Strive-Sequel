@@ -10,7 +10,8 @@ var encounters = {
 	slavers_small = {unittype = 'randomgroup', unitcode = 'slavers_small', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'event_person_acquired', args = []}], lose_effects = []},
 	rebels_small = {unittype = 'randomgroup', unitcode = 'rebels_small', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'event_person_acquired', args = []}], lose_effects = []},
 	goblins_skirmish = {unittype = 'randomgroup', unitcode = 'goblins_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
-	
+	ogre_skirmish = {unittype = 'randomgroup', unitcode = 'ogre_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
+	troll_skirmish = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	
 	
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
@@ -25,10 +26,12 @@ var enemygroups = {
 	bandits_easy3 = {reqs = [], units = {trained_dog = [1,2], bandit_archer = [0,3]}},
 	
 	bandits_easy_boss = {maxunits = 3, reqs = [], units = {bandit_boss = [1,1], bandit_melee = [0,2], bandit_archer = [0,2]}},
+	bandits_medium_boss = {maxunits = 6, reqs = [], units = {bandit_boss = [1,1], bandit_melee = [1,2], bandit_archer = [1,2], bandit_mage = [1,1]}},
 	
 	bandits_assassin = {reqs = [], units = {bandit_melee = [1,2], bandit_assassin = [1,2]}},
 	bandits_assassin2 = {reqs = [], units = {bandit_melee = [0,3], bandit_assassin = [0,2], bandit_archer = [0,2]}},
 	bandits_medium = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}},
+	bandits_medium2 = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [1,2], bandit_mage = [1,2]}},
 	bandits_medium_bear = {reqs = [], units = {trained_bear = [1,2], bandit_archer = [1,2]}},
 	bandits_golem = {reqs = [], units = {bandit_melee = [0,2], bandit_archer = [0,2], guardian_golem = [1,1]}},
 	
@@ -36,13 +39,17 @@ var enemygroups = {
 	bandits_ballista = {reqs = [], units = {bandit_melee = [1,2], ballista = [1,2]}},
 	
 	goblins_skirmish = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
+	ogre_skirmish = {reqs = [], units = {cave_goblin_melee = [2,2], ogre_melee = [1,1]}},
+	troll_skirmish = {reqs = [], units = {cave_goblin_melee = [1,1], troll = [1,1], cave_goblin_archer = [1,1]}},
 	
 	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
 	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
 	goblins_easy3 = {reqs = [], units = {cave_goblin_melee = [1,2], cave_goblin_archer = [1,3]}},
 	goblins_easy_boss = {maxunits = 3, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2], cave_goblin_archer = [0,2]}},
+	grove_easy_boss = {maxunits = 5, reqs = [], units = {troll = [1,1], wolf = [2,4]}},
 	ogre_med1 = {reqs = [], units = {ogre_melee = [1,1], cave_goblin_melee = [0,1], cave_goblin_archer = [0,1]}},
 	ogre_med2 = {reqs = [], units = {ogre_melee = [0,1], ogre_mage = [1,1]}},
+	troll_boss = {maxunits = 4, reqs = [], units = {cave_goblin_boss = [1,1], cave_goblin_melee = [0,2]}},
 	
 	wolves_easy1 = {reqs = [], units = {wolf = [4,6]}},
 	wolves_easy2 = {reqs = [], units = {wolf = [3,5]}},
@@ -59,6 +66,7 @@ var enemygroups = {
 	skeletons_zombies = {reqs = [], units = {skeleton_melee = [1,2], zombie = [1,2]}},
 	skeletons_zombies2 = {reqs = [], units = {skeleton_archer = [1,2], zombie = [2,3]}},
 	skeletons_lich = {reqs = [], units = {skeleton_melee = [2,3], skeleton_archer = [1,2], undead_lich = [1,1]}},
+	skeletons_lich_boss = {maxunits = 6, reqs = [], units = {undead_lich = [1,1], skeleton_archer = [2,2], zombie = [3,3]}},
 	
 	
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
@@ -448,7 +456,7 @@ var enemies = {
 		loot = 'bandit_loot',
 		icon = null,
 		body = null,
-		skills = ['firearr'],
+		skills = ['firearr', 'mindblast'],
 		traits = [],
 		tags = [],
 		is_character = false,
@@ -542,8 +550,8 @@ var enemies = {
 		code = 'cave_goblin_boss',
 		name = '',
 		descript = '',
-		hpmax = 125,
-		armor = 5,
+		hpmax = 150,
+		armor = 15,
 		mdef = 20,
 		hitrate = 85,
 		evasion = 10,

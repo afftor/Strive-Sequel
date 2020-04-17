@@ -21,6 +21,7 @@ func open():
 	$Label.hide()
 	$Label2.hide()
 	$Time.hide()
+	hide_item_selection()
 	for i in state.active_quests:
 		make_active_quest_button(i)
 	for i in state.areas.values():
@@ -69,11 +70,18 @@ func show_quest_info(quest):
 				'random_item':
 					var itemtemplate = Items.itemlist[i.type]
 					newbutton.texture = itemtemplate.icon
-					if itemtemplate.has('parts'):
-						newbutton.material = load("res://files/ItemShader.tres").duplicate()
+					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value)
+					if itemtemplate.has('parts'):
+						#newbutton.material = load("res://files/ItemShader.tres").duplicate()
+						var showcase_item = globals.CreateGearItem(i.type, i.parts)
+						input_handler.itemshadeimage(newbutton, showcase_item)
+						globals.connectitemtooltip(newbutton, showcase_item)
+						if i.has('parts'):
+							newbutton.hint_tooltip += "\nPart Requirements: "
+							for k in i.parts:
+								newbutton.hint_tooltip += "\n"+ tr(Items.Parts[k].name)  + ": " +str(Items.materiallist[i.parts[k]].name)
 				'complete_location':
 					newbutton.texture = globals.quest_icons[i.code]
 					newbutton.hint_tooltip = "Complete quest event"
@@ -122,7 +130,7 @@ func show_quest_info(quest):
 				'reputation':
 					var value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)])
 					newbutton.texture = globals.quest_icons[i.code]
-					newbutton.get_node("amount").text = str(i.value)
+					newbutton.get_node("amount").text = str(value)
 					newbutton.get_node("amount").show()
 					newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(state.get_master().charm_factor)]))+ "(Master Charm Bonus)"
 				'material':
@@ -233,7 +241,14 @@ func Reward():
 		for i in state.areas[selectedquest.area].factions.values():
 			if i.totalreputation >= 300 && state.get_active_quest("guilds_introduction") != null && state.get_active_quest("guilds_introduction").stage == 'stage1':
 				state.get_active_quest("guilds_introduction").stage = 'stage1_5'
-				state.common_effects([{code = 'add_timed_event', value = "guilds_introduction_stage1", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
+				state.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
+	if state.get_active_quest("guilds_introduction") != null && state.get_active_quest("guilds_introduction").stage == 'stage1_5':
+		var counter = false
+		for i in state.stored_events.timed_events:
+			if i.code == 'guilds_elections_switch':
+				counter = true
+		if counter == false:
+			state.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
 	
 	open()
 
