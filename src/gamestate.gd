@@ -114,6 +114,7 @@ func revert():
 	active_tasks.clear()
 	completed_locations.clear()
 	completed_quests.clear()
+	babies.clear()
 	craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 	stored_events = {timed_events = []}
 	state.areas.clear()
@@ -449,11 +450,15 @@ func serialize():
 	#tmp['state']['characters'].clear()
 	tmp['items'] = {}
 	tmp['heroes'] = {}
+	tmp['babies'] = {}
 	for i in items:
 		tmp['items'][i] = inst2dict(items[i])
 	for h in characters:
 		tmp['heroes'][h] = inst2dict(characters[h])
 		characters[h].fix_serialize(tmp['heroes'][h])
+	for h in babies:
+		tmp['babies'][h] = inst2dict(babies[h])
+		babies[h].fix_serialize(tmp['babies'][h])
 	tmp['effects'] = effects_pool.serialize()
 	return tmp
 
@@ -484,7 +489,20 @@ func deserialize(tmp:Dictionary):
 		for i in ssp:
 			if Skilldata.Skilllist.has(ssp[i]):
 				characters[h].combat_skill_panel[int(i)] = ssp[i]
-		
+	for h in tmp['babies']:
+		babies[h] = dict2inst(tmp['babies'][h])
+		#fixing saved skill shortcuts
+		var ssp = babies[h].social_skill_panel.duplicate()
+		babies[h].social_skill_panel.clear()
+		for i in ssp:
+			if Skilldata.Skilllist.has(ssp[i]):
+				babies[h].social_skill_panel[int(i)] = ssp[i]
+		ssp = babies[h].combat_skill_panel.duplicate()
+		babies[h].combat_skill_panel.clear()
+		for i in ssp:
+			if Skilldata.Skilllist.has(ssp[i]):
+				babies[h].combat_skill_panel[int(i)] = ssp[i]
+	
 		var cleararray = []
 		for i in [characters[h].social_skills, characters[h].combat_skills]:
 			for k in i:
