@@ -35,6 +35,7 @@ func update_turns_label():
 func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
+	update_turns_label()
 	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:#:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
@@ -73,7 +74,6 @@ func _ready():
 	state.log_node = $Log
 	
 	state.connect("task_added", self, 'build_task_bar')
-	
 	yield(get_tree(), 'idle_frame')
 	$TimeNode/Date.text = "Day: " + str(state.date) + ", Hour: " + str(state.hour) + ":00"
 	if variables.generate_test_chars:
@@ -106,7 +106,7 @@ func _ready():
 				continue
 			character.social_skills.append(i)
 		character.is_players_character = true
-		#globals.impregnate(character, character)
+		globals.impregnate(character, character)
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
@@ -182,7 +182,7 @@ func _ready():
 		character.loyalty = 95
 		character.authority = 100
 		character.submission = 95
-		character.mp = 100
+		character.mp = 10
 		character.hp = 95
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
@@ -228,13 +228,13 @@ func _ready():
 		#$SlaveList.rebuild()
 		#state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
 		state.show_tutorial = true
-		state.active_quests.append({code = "guilds_introduction", stage = 'stage1'})
+		state.active_quests.append({code = "guilds_introduction", stage = 'stage2'})
 	#	state.mainprogress = 0
 		for i in state.areas.plains.factions.values():
 			i.totalreputation += 500
 		character.unlock_class("pet")
 		character.unlock_class("souleater")
-		character.mp = 100
+		character.mp = 10
 		character.sex_skills.oral = 70
 		character.sex_skills.anal = 90
 		character.sex_skills.petting = 100

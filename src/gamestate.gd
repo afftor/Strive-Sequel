@@ -499,27 +499,28 @@ func deserialize(tmp:Dictionary):
 			for k in [characters[h].social_skills, characters[h].combat_skills]:
 				k.erase(i)
 	
-	for h in tmp['babies']:
-		babies[h] = dict2inst(tmp['babies'][h])
-		#fixing saved skill shortcuts
-		var ssp = babies[h].social_skill_panel.duplicate()
-		babies[h].social_skill_panel.clear()
-		for i in ssp:
-			if Skilldata.Skilllist.has(ssp[i]):
-				babies[h].social_skill_panel[int(i)] = ssp[i]
-		ssp = babies[h].combat_skill_panel.duplicate()
-		babies[h].combat_skill_panel.clear()
-		for i in ssp:
-			if Skilldata.Skilllist.has(ssp[i]):
-				babies[h].combat_skill_panel[int(i)] = ssp[i]
-		var cleararray = []
-		for i in [babies[h].social_skills, babies[h].combat_skills]:
-			for k in i:
-				if Skilldata.Skilllist.has(k) == false:
-					cleararray.append(k)
-		for i in cleararray:
-			for k in [babies[h].social_skills, babies[h].combat_skills]:
-				k.erase(i)
+	if tmp.has('babies'):
+		for h in tmp['babies']:
+			babies[h] = dict2inst(tmp['babies'][h])
+			#fixing saved skill shortcuts
+			var ssp = babies[h].social_skill_panel.duplicate()
+			babies[h].social_skill_panel.clear()
+			for i in ssp:
+				if Skilldata.Skilllist.has(ssp[i]):
+					babies[h].social_skill_panel[int(i)] = ssp[i]
+			ssp = babies[h].combat_skill_panel.duplicate()
+			babies[h].combat_skill_panel.clear()
+			for i in ssp:
+				if Skilldata.Skilllist.has(ssp[i]):
+					babies[h].combat_skill_panel[int(i)] = ssp[i]
+			var cleararray = []
+			for i in [babies[h].social_skills, babies[h].combat_skills]:
+				for k in i:
+					if Skilldata.Skilllist.has(k) == false:
+						cleararray.append(k)
+			for i in cleararray:
+				for k in [babies[h].social_skills, babies[h].combat_skills]:
+					k.erase(i)
 	
 		
 	tempstate.free()

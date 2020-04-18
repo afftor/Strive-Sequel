@@ -342,7 +342,14 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "Fixed some issues related to workers guild election quest
+bbcode_text = "0.2.0c
+Fixed some text related issues
+0.2.0b
+Fixed some issues related to workers guild election quest
+Fixed multiple quests and encounters not working
+Fixed babies not saving correctly
+Fixed mana drain skill not restoring mana to caster
+Fixed Writ of Exemption not being cancelable and not updating list properly
 0.2.0a
 Fixed main story line not progressing correctly
 Fixed a couple of missing and broken quests
@@ -508,7 +515,14 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed some issues related to workers guild election quest
+text = "0.2.0c
+Fixed some text related issues
+0.2.0b
+Fixed some issues related to workers guild election quest
+Fixed multiple quests and encounters not working
+Fixed babies not saving correctly
+Fixed mana drain skill not restoring mana to caster
+Fixed Writ of Exemption not being cancelable and not updating list properly
 0.2.0a
 Fixed main story line not progressing correctly
 Fixed a couple of missing and broken quests

@@ -144,7 +144,7 @@ var data = {
 		tags = [],
 		text = [
 			{text = "WORKERSELECTIONINITIATE5", reqs = [],
-			bonus_effects = [{code = 'decision', value = 'fighters_election_support'}]},
+			bonus_effects = [{code = 'decision', value = 'workers_election_support'}]},
 		],
 		options = [
 			{code = 'close', text = "WORKERSELECTIONINITIATE5REPLY1", reqs = [],},

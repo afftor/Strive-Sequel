@@ -86,6 +86,7 @@ func majorus_penis():
 
 func writ_of_exemption(character):
 	person = character
+	input_handler.active_character = person
 	input_handler.interactive_message("writ_of_exemption",'custom_effect', {})
 
 func writ_of_exemption_use():
@@ -108,3 +109,7 @@ func writ_of_exemption_use():
 		input_handler.interactive_message("writ_of_exemption_failure",'char_translate',character)
 		state.remove_slave(character)
 	input_handler.update_slave_panel()
+	input_handler.rebuild_slave_list()
+
+func close():#for the cancel function
+	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()

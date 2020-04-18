@@ -7,12 +7,12 @@
 [ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 33
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 548, 45 )
 margin_left = 5.0
@@ -20,7 +20,7 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 548, 47 )
 margin_left = 5.0
@@ -28,7 +28,7 @@ margin_right = 5.0
 margin_top = 5.0
 margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 548, 45 )
 margin_left = 5.0
@@ -45,13 +45,16 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 72.8875
 margin_top = 59.4515
 margin_right = 686.888
 margin_bottom = 93.4515
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "You have no suitable characters"
 align = 1
 
@@ -72,9 +75,9 @@ visible = false
 margin_right = 614.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 0, 70 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 
 [node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 8.83295

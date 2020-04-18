@@ -1346,8 +1346,8 @@ func makerandomgroup(enemygroup):
 						temparray.append(i)
 			
 			
-			
-			combatparty[temparray[randi()%temparray.size()]] = i.units
+			if temparray.size() > 0:
+				combatparty[temparray[randi()%temparray.size()]] = i.units
 			i.number -= 1
 	
 	

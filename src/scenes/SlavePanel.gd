@@ -300,7 +300,7 @@ func update():
 		var temptext = "[center]"+globals.descriptions.get_class_name(prof,person) + "[/center]\n"+globals.descriptions.get_class_bonuses(person, prof) + globals.descriptions.get_class_traits(person, prof)
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newnode, temptext)
-	input_handler.active_character = person
+	#input_handler.active_character = person
 	if $SkillPanel.visible == true:
 		build_skill_panel()
 	

@@ -11,7 +11,7 @@ var currenttype
 var mode = 'default'
 
 func _process(delta):
-	if weakref(parentnode) == null:
+	if weakref(parentnode).get_ref() == null || weakref(parentnode) == null:
 		hide()
 		return
 	if parentnode != null && (parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):

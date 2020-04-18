@@ -1081,7 +1081,9 @@ func assign_gender():
 
 
 func make_description():
-	input_handler.active_character = self
+	globals.text_characters.clear()
+	globals.text_characters.append(self)
+	#input_handler.active_character = self
 	return globals.TextEncoder(translate(globals.descriptions.create_character_description(self)))
 
 func show_race_description():
@@ -2665,6 +2667,10 @@ func baby_transform():
 	name = 'Child of ' + mother.name
 	if mother.surname != '':
 		name += " " + mother.surname
+	if mother.slave_class != 'master':
+		slave_class = mother.slave_class
+	else:
+		slave_class = 'slave'
 	surname = ''
 	anal_virgin = true
 	mouth_virgin = true

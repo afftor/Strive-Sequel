@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.2.0a'
+const gameversion = '0.2.0c'
 
 var start_new_game = false
 
@@ -897,7 +897,7 @@ func evaluate(input): #used to read strings as conditions when needed
 	script.reload()
 	var obj = Reference.new()
 	obj.set_script(script)
-	obj.active_slave = input_handler.active_character
+	obj.active_slave = text_characters[0]
 	return obj.eval()
 
 
@@ -1001,7 +1001,7 @@ func loadimage(path):
 	#var file = File.new()
 	if typeof(path) == TYPE_OBJECT:
 		return path
-	if path == null || path == '':
+	if path == null || path == '' || !File.new().file_exists(path):
 		return
 	if path.find('res:') >= 0:
 		return load(path)
@@ -1042,6 +1042,8 @@ func AddPanelOpenCloseAnimation(node):
 	if node.get_script() == null:
 		node.set_script(load("res://files/Close Panel Button/ClosingPanel.gd"))
 	node._ready()
+
+var text_characters = []
 
 func TextEncoder(text, node = null):
 	var tooltiparray = []

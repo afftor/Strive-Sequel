@@ -314,7 +314,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/ManaDrain.png"),
 		tags = ['drain'],
 		is_drain = true,
-		value = [['target.mp','*-0.35']],
+		value = [['target.mpmax','*-0.35']],
 		damagestat = ['mp'],
 	},
 	serve = {

@@ -178,7 +178,6 @@ func update_scene_characters():
 	globals.ClearContainer($EventCharacters/VBoxContainer)
 	globals.ClearContainer($PlayerCharacters/VBoxContainer)
 	for i in input_handler.scene_characters:
-		print(i.name)
 		var newbutton = globals.DuplicateContainerTemplate($EventCharacters/VBoxContainer)
 		newbutton.get_node("Label").text = i.get_short_name()
 		newbutton.get_node('icon').texture = i.get_icon()
@@ -310,6 +309,7 @@ func keepbaby():
 
 func removebaby():
 	close()
+	state.babies[input_handler.active_character.pregnancy.baby].is_active = false
 	state.babies.erase(input_handler.active_character.pregnancy.baby)
 	input_handler.active_character.pregnancy.baby = null
 
