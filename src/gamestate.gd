@@ -122,6 +122,8 @@ func revert():
 	show_tutorial = true
 	active_tutorials.clear()
 	seen_tutorials.clear()
+	seen_dialogues.clear()
+	selected_dialogues.clear()
 	input_handler.encounter_win_script = null
 	input_handler.encounter_lose_scripts.clear()
 	
@@ -558,6 +560,13 @@ func common_effects(effects):
 							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
 							newevent.reqs += newreq
 				stored_events.timed_events.append(newevent)
+			'remove_timed_events':
+				var array = []
+				for k in stored_events.timed_events:
+					if k.code in i.value:
+						array.append(k)
+				for k in array:
+					stored_events.timed_events.erase(k)
 			'unique_character_changes':
 				var character = get_unique_slave(i.value)
 				for k in i.args:

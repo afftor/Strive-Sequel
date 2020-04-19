@@ -268,8 +268,8 @@ class member:
 							temptext = scene.scene.takerpart.replace('anus', '[anus2]').replace('vagina','[pussy2]')
 							if scene.scene.takerpart == 'vagina':
 								for i in scene.takers:
-									if sceneref.impregnationcheck(i.person, person) == true:
-										globals.impregnate(i.person, person)
+									if sceneref.impregnationcheck(person,i.person) == true:
+										globals.impregnate(person, i.person)
 						penistext += " {^semen:seed:cum} {^pours:shoots:pumps:sprays} into [names2] " + temptext + " as [he1] ejaculate[s/1]."
 					elif scene.scene.takerpart == 'nipples':
 						penistext += " {^semen:seed:cum} fills [names2] hollow nipples. "

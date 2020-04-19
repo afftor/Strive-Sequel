@@ -166,7 +166,7 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH1_2", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 4}], bonus_effects = [{code = 'make_loot', pool = [['servants_election_bonus',1]]}, {code = 'open_loot'}]},
 			{text = "SERVANTSELECTIONFINISH1_3", reqs = []},
 		],
-		common_effects = [{code = 'progress_quest', value = 'election_global_quest', stage = 'stage2'}, {code = 'complete_quest', value = 'main_quest_loan'}],
+		common_effects = [{code = 'progress_quest', value = 'election_global_quest', stage = 'stage2'}, {code = 'complete_quest', value = 'main_quest_loan'}, {code = 'remove_timed_events', value = ['loan_event1','loan_event2','loan_event3','loan_event4']}],
 		options = [
 			{code = 'servants_election_finish2', text = "SERVANTSELECTIONFINISH1REPLY1", reqs = [], type = 'next_dialogue', dialogue_argument = 1},
 			{code = 'servants_election_finish2', text = "SERVANTSELECTIONFINISH1REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},

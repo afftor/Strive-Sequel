@@ -237,7 +237,7 @@ var professions = {
 		tags = [],
 		categories = ['sexual'],
 		showupreqs = [{code = 'disabled', check = true}],
-		reqs = [{code = 'has_profession', value = 'cattle', check = true}],
+		reqs = [],
 		statchanges = {sexuals_bonus = 20, hpmax = 15},
 		traits = ['breeder'],
 		skills = [],

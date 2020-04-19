@@ -342,7 +342,12 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "0.2.0c
+bbcode_text = "0.2.0d
+Fixed saves storing social skill texts they didn't need
+Fixed impregnation overwriting previous pregnancy
+Fixed election quest not removing loan events
+Fixed seen dialogues not reverting on restart
+0.2.0c
 Fixed some text related issues
 0.2.0b
 Fixed some issues related to workers guild election quest
@@ -515,7 +520,13 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.2.0c
+text = "0.2.0d
+Fixed saves storing social skill texts they didn't need
+Fixed impregnation overwriting previous pregnancy
+Fixed election quest not removing loan events
+Fixed seen dialogues not reverting on restart
+Fixed inability of males to impregnate
+0.2.0c
 Fixed some text related issues
 0.2.0b
 Fixed some issues related to workers guild election quest

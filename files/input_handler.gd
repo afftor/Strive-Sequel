@@ -929,7 +929,7 @@ func interactive_message(code, type, args):
 
 func interactive_message_custom(data):
 	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()
-	scene.open(data)
+	scene.open(data, true)
 
 func interactive_dialogue_start(code, stage):
 	var scene = get_spec_node(input_handler.NODE_DIALOGUE) #get_dialogue_node()

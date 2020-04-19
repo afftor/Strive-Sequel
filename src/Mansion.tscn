@@ -717,7 +717,6 @@ visible = false
 visible = false
 
 [node name="TestButton" type="Button" parent="."]
-visible = false
 margin_left = 731.847
 margin_top = 861.205
 margin_right = 858.847

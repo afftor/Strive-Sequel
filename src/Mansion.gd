@@ -36,7 +36,7 @@ func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	update_turns_label()
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:#:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -80,7 +80,8 @@ func _ready():
 		state.revert()
 		state.make_world()
 		var character = Slave.new()
-		character.create('Elf', 'random', 'random')
+		character.create('Human', 'random', 'random')
+		character.consent = 100
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
@@ -110,7 +111,8 @@ func _ready():
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
-		character.create('Slime', 'random', 'random')
+		character.create('Human', 'random', 'random')
+		character.consent = 100
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -245,7 +247,8 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message("event_good_slavers_woods", '',{})
+		input_handler.interactive_message("starting_dialogue4", '',{})
+		
 		#input_handler.interactive_message('intro', '', {})
 		
 		for i in state.areas.plains.factions.values():
@@ -280,6 +283,7 @@ func open_travels():
 
 func quest_test():
 	$SlaveList.update()
+	for i in state.characters.values():print(i.name, i.has_womb)
 	#state.areas.plains.factions.servants.totalreputation = 500
 	#print(input_handler.CloseableWindowsArray)
 #	for i in state.characters.values():

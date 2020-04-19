@@ -1001,13 +1001,15 @@ func loadimage(path):
 	#var file = File.new()
 	if typeof(path) == TYPE_OBJECT:
 		return path
-	if path == null || path == '' || !File.new().file_exists(path):
+	if path == null || path == '':
 		return
-	if path.find('res:') >= 0:
+	if path.find('res:') >= 0 :#&& File.new().file_exists(path):
 		return load(path)
 	var image = Image.new()
 	if File.new().file_exists(path):
 		image.load(path)
+	else:
+		return null
 	var temptexture = ImageTexture.new()
 	temptexture.create_from_image(image)
 	return temptexture
@@ -1409,7 +1411,8 @@ func getrelativename(person, person2):
 	return result
 
 func impregnate(father, mother):
-	if mother.has_womb == false:
+	
+	if mother.has_womb == false || mother.pregnancy.duration != 0:
 		return
 	var check = true
 	if father.race != mother.race:
@@ -1421,11 +1424,13 @@ func impregnate(father, mother):
 				race = "Halfkin"
 			
 			if impregnation_compatibility.has(race) == false:
+				print("Impregnation incompatibility")
 				check = false
 	if check == false && mother.professions.has('breeder') == false:
+		print("Impregnation check failed")
 		return #incompatible races
-	
 	var baby = Slave.new()
+	print("Impregnation success")
 	if randf() >= 0.5:
 		baby.race = mother.race
 	else:

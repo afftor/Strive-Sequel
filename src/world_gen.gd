@@ -1480,7 +1480,8 @@ var dungeons = {
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
+		events = [],
+		options = [
 			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'ogre_skirmish_start', args = []}]}
 		],
 	},
@@ -1497,7 +1498,8 @@ var dungeons = {
 		levels = [1,1], 
 		resources = [],
 		stages_per_level = [1,1],
-		events = [
+		events = [],
+		options = [
 			{text = 'Proceed', reqs = [], args = [{code = 'start_event', data = 'troll_skirmish_start', args = []}]}
 		],
 	},

@@ -7,7 +7,7 @@ var hold_selection = false #pause for scene to load
 var previous_dialogue_option = 0
 var previous_text = ''
 
-func open(scene):
+func open(scene, not_save = false):
 	if scene.has("variations"):
 		for i in scene.variations:
 			if state.checkreqs(i.reqs):
@@ -72,7 +72,7 @@ func open(scene):
 			i.previous_dialogue_option = [i.previous_dialogue_option]
 		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !state.checkreqs(i.reqs):
 			continue
-		if state.seen_dialogues.has(i.text) == false:
+		if state.seen_dialogues.has(i.text) == false && not_save == false:
 			state.seen_dialogues.append(i.text)
 		if i.has("bonus_effects"):
 			state.common_effects(i.bonus_effects)
