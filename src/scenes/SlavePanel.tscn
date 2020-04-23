@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/slavepanel/slavepanel.png" type="Texture" id=2]
@@ -61,6 +61,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=59]
 [ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=60]
 [ext_resource path="res://src/imageselect.tscn" type="PackedScene" id=61]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=62]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -211,6 +212,9 @@ mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StatsPanel" parent="BodyPanel" instance=ExtResource( 9 )]
 visible = false
@@ -745,23 +749,32 @@ text = "Slave"
 align = 1
 
 [node name="traitslabel" type="Label" parent="."]
-margin_left = 279.189
-margin_top = 648.431
-margin_right = 441.189
-margin_bottom = 673.431
+margin_left = 274.0
+margin_top = 648.0
+margin_right = 555.0
+margin_bottom = 673.0
 text = "Sex Traits"
 align = 1
 
-[node name="traits" type="VBoxContainer" parent="."]
-margin_left = 263.0
-margin_top = 682.0
-margin_right = 463.0
-margin_bottom = 830.0
-custom_constants/separation = 9
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 245.0
+margin_top = 674.0
+margin_right = 563.0
+margin_bottom = 839.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Button" type="Label" parent="traits"]
+[node name="traits" type="VBoxContainer" parent="ScrollContainer"]
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Label" parent="ScrollContainer/traits"]
 visible = false
-margin_right = 200.0
+margin_right = 55.0
 margin_bottom = 24.0
 mouse_filter = 0
 text = "1.100"
@@ -1284,6 +1297,9 @@ margin_left = 306.132
 margin_top = 62.1831
 margin_right = 1324.13
 margin_bottom = 817.183
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DetailsPanel"]
 margin_left = 24.3436
@@ -1327,6 +1343,13 @@ margin_right = 294.0
 margin_bottom = 286.0
 rect_min_size = Vector2( 0, 50 )
 text = "Select Custom Body"
+
+[node name="traits" type="Button" parent="DetailsPanel/VBoxContainer"]
+margin_top = 295.0
+margin_right = 294.0
+margin_bottom = 345.0
+rect_min_size = Vector2( 0, 50 )
+text = "Manage Sex Traits"
 
 [node name="SexSkills" type="VBoxContainer" parent="DetailsPanel"]
 margin_left = 628.704
@@ -1428,6 +1451,71 @@ margin_top = 38.06
 margin_right = 669.952
 margin_bottom = 146.06
 bbcode_enabled = true
+
+[node name="SexTraitsPanel" type="Panel" parent="."]
+visible = false
+margin_left = 554.0
+margin_top = 41.0
+margin_right = 1063.0
+margin_bottom = 729.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SexTraitsPanel"]
+margin_left = 65.0
+margin_top = 96.0
+margin_right = 431.0
+margin_bottom = 613.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
+margin_right = 366.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="Button" type="CheckBox" parent="SexTraitsPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 366.0
+margin_bottom = 30.0
+text = "Trait"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SexTraitsPanel"]
+margin_left = 66.1755
+margin_top = 29.9647
+margin_right = 440.176
+margin_bottom = 53.9647
+text = "Unlocked Traits"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TraitCapacity" type="Label" parent="SexTraitsPanel"]
+margin_left = 64.8832
+margin_top = 637.719
+margin_right = 438.883
+margin_bottom = 661.719
+text = "Trait Capacity: 3/5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TraitHelp" type="TextureRect" parent="SexTraitsPanel"]
+margin_left = 387.0
+margin_top = 19.1694
+margin_right = 438.0
+margin_bottom = 58.1694
+texture = ExtResource( 62 )
+expand = true
+stretch_mode = 6
 
 [node name="ImageSelect" parent="." instance=ExtResource( 61 )]
 margin_left = -1237.97

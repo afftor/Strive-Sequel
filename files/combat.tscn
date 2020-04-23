@@ -500,6 +500,7 @@ margin_left = 709.561
 margin_right = 1254.56
 
 [node name="Rewards" type="TextureRect" parent="."]
+visible = false
 margin_left = 617.0
 margin_top = 57.0
 margin_right = 1297.0

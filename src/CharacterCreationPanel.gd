@@ -91,7 +91,7 @@ func open_class_list():
 		newbutton.get_node("icon").texture = tempclass.icon
 		newbutton.get_node("name").text = tempclass.name
 		newbutton.connect('pressed', self, "select_class", [tempclass.code])
-		newbutton.connect('signal_RMB_release',input_handler,'show_class_info', [tempclass.code])
+		newbutton.connect('signal_RMB_release',input_handler,'show_class_info', [tempclass.code, person])
 		var text = globals.descriptions.get_class_details(person, tempclass, true, true) + "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newbutton, text)
 		if person.checkreqs(tempclass.reqs) == false:
@@ -560,8 +560,10 @@ func open_sex_traits():
 func select_sex_trait(trait):
 	if person.sex_traits.has(trait.code):
 		person.sex_traits.erase(trait.code)
+		person.unlocked_sex_traits.erase(trait.code)
 	else:
 		person.sex_traits.clear()
+		person.unlocked_sex_traits.clear()
 		person.sex_traits.append(trait.code)
 	$TraitSelection.hide()
 	#input_handler.GetTextTooltip().hide()

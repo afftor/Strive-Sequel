@@ -122,6 +122,9 @@ margin_right = 241.376
 margin_bottom = 1068.33
 theme = ExtResource( 4 )
 text = "Craft"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ExploreButton" type="Button" parent="."]
 margin_left = 1673.38
@@ -178,15 +181,16 @@ theme = ExtResource( 5 )
 texture = ExtResource( 6 )
 
 [node name="Date" type="Label" parent="TimeNode"]
-margin_left = 17.0
+margin_left = 8.0
 margin_top = 72.0
-margin_right = 275.0
-margin_bottom = 108.0
+margin_right = 280.0
+margin_bottom = 103.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Date"
 align = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -717,6 +721,7 @@ visible = false
 visible = false
 
 [node name="TestButton" type="Button" parent="."]
+visible = false
 margin_left = 731.847
 margin_top = 861.205
 margin_right = 858.847

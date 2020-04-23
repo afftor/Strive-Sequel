@@ -14,6 +14,8 @@ var starting_preset = ''
 var date = 1
 var hour = 6
 
+var original_version
+
 var hour_turns_set = 1
 
 var log_node
@@ -86,6 +88,7 @@ var easter_egg_characters_acquired = []
 
 
 func revert():
+	original_version = globals.gameversion
 	starting_preset = ''
 	date = 1
 	hour = 6
@@ -309,7 +312,7 @@ func valuecheck(dict):
 		'date':
 			return input_handler.operate(dict.operant, date, dict.value)
 		'active_quest_stage':
-			if get_active_quest(dict.value) == null:
+			if get_active_quest(dict.value) == null || dict.has('stage') == false:
 				if dict.has('state') && dict.state == false:
 					return true
 				else:

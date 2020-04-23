@@ -139,8 +139,9 @@ func update_location_list():
 		newbutton.connect('pressed', self, 'select_destination', [state.areas[destination_area].capital_name])
 		newbutton.name = state.areas[destination_area].capital_name
 	
-	
 	for i in array:
+		if i.id == dislocation_area:
+			continue
 		var newbutton = globals.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
 		var text = i.name
 		if state.areas[destination_area].questlocations.has(i.id):

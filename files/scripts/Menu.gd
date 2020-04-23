@@ -122,7 +122,7 @@ func start_preset_set(button):
 	for i in $NewGamePanel/PresetContainer/VBoxContainer.get_children():
 		i.pressed = i == button
 	if data.story == false:
-		text += "\n[color=yellow]Skips some of the main story introduction.[/color]"
+		text += "\n[color=yellow]Disables main story quests and events.[/color]"
 	text += "\n\n"
 	text += 'Starting Gold: ' + str(data.gold) + "\n"
 	text += 'Additional Characters: ' + str(data.free_slave_number) + "\n"

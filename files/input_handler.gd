@@ -1514,3 +1514,12 @@ func lock_difficulty(value):
 		text = "Very Hard"
 		
 	return text
+
+func transform_number(number):
+	var magnitude = 0
+	var array = ['', 'K', 'M']
+	while abs(number) >= 1000:
+		magnitude += 1
+		number /= 1000.0
+	
+	return str(stepify(number, 0.1)) + array[magnitude]# % (num,[magnitude])

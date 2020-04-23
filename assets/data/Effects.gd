@@ -1737,7 +1737,7 @@ var effect_table = {
 	e_tail_plug_bonus = {
 		type = 'c_static',
 		tags = ['recheck_item'],
-		conditions = [{type = 'gear', name = 'pet_suit', check = true}],
+		conditions = [{type = 'gear', value = 'pet_suit', check = true}],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		descript = 'Increases Charm by 10 if Pet Suit equipped.',
 		buffs = [],

@@ -36,7 +36,7 @@ func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	update_turns_label()
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe":# && false:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -80,7 +80,7 @@ func _ready():
 		state.revert()
 		state.make_world()
 		var character = Slave.new()
-		character.create('Human', 'random', 'random')
+		character.create('HalfkinCat', 'male', 'random')
 		character.consent = 100
 		character.penis_virgin = true
 		characters_pool.move_to_state(character.id)
@@ -93,10 +93,12 @@ func _ready():
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
 		character.set_slave_category('master')
-		character.sex_traits = ['dislike_missionary', 'anal']
+		character.negative_sex_traits = ['dislike_missionary']
+		character.unlocked_sex_traits = ['submissive', 'pushover','bottle_fairy','dominant','sadist','desired','curious','life_power']
 		#character.armor = 135
 		character.wits = 20
-		character.charm_factor = 3
+		character.consent = 100
+		character.charm_factor = 5
 		character.physics_factor = 5
 		#character.unlock_class("worker")
 		character.mp = 50
@@ -111,8 +113,9 @@ func _ready():
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
-		character.create('Human', 'random', 'random')
+		character.create('HalfkinCat', 'random', 'random')
 		character.consent = 100
+		character.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -142,7 +145,7 @@ func _ready():
 		character.wits = 100
 		
 		var character2 = Slave.new()
-		character2.create('Human', 'random', 'random')
+		character2.create('HalfkinCat', 'random', 'random')
 		character2.charm = 0
 		character2.physics = 0
 		character2.wits = 0
@@ -192,25 +195,19 @@ func _ready():
 		character.is_players_character = true
 		
 		#state.revert()
-		state.money = 500000
+		state.money = 505590
 		for i in Items.materiallist:
 			state.materials[i] = 200
 		state.materials.bandage = 0
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
@@ -230,8 +227,10 @@ func _ready():
 		#$SlaveList.rebuild()
 		#state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
 		state.show_tutorial = true
-		state.active_quests.append({code = "guilds_introduction", stage = 'stage2'})
+	#	state.active_quests.append({code = "lich_enc_initiate", stage = 'stage1'})
+		#state.decisions = ["fighters_election_support",'mages_election_support','workers_election_support']
 	#	state.mainprogress = 0
+		state.active_quests.append({code = 'election_global_quest', stage = 'stage1'})
 		for i in state.areas.plains.factions.values():
 			i.totalreputation += 500
 		character.unlock_class("pet")
@@ -247,7 +246,7 @@ func _ready():
 		input_handler.active_area = state.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message("starting_dialogue4", '',{})
+		#input_handler.interactive_message("starting_dialogue4", '',{})
 		
 		#input_handler.interactive_message('intro', '', {})
 		
@@ -267,7 +266,8 @@ func _ready():
 		show()
 		
 		input_handler.ActivateTutorial("introduction")
-		input_handler.interactive_message('intro', '', {})
+		if starting_presets.preset_data[state.starting_preset].story == true:
+			input_handler.interactive_message('intro', '', {})
 	build_task_bar()
 	$SlaveList.rebuild()
 	
@@ -295,8 +295,11 @@ func quest_test():
 func _process(delta):
 	if self.visible == false:
 		return
-	$gold.text = str(state.money)
-	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
+	$gold.text = input_handler.transform_number(state.money)#str(state.money)
+	$food.text = input_handler.transform_number(state.get_food()) + " - " + str(state.get_food_consumption())
+	
+	
+	
 	$population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
 	#buildscreen()
 	update_task_bar()
@@ -344,8 +347,8 @@ func advance_hour():
 	if globals.globalsettings.turn_based_time_flow:
 		$TimeNode/dayprogress.value = state.hour
 	
-	$gold.text = str(state.money)
-	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
+#	$gold.text = str(state.money)
+#	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	$population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
 	state.emit_signal("hour_tick")
 
@@ -429,7 +432,7 @@ func build_task_bar():
 					newnode.get_node("icon/Label").show()
 					newnode.get_node("icon/Label").text = str(state.materials[state.craftinglists[i.code][0].code])
 				else:
-					newnode.get_node("icon").texture = Items.itemlist[state.craftinglists[i.code][0].code].icon
+					newnode.get_node("icon").texture = Items.itemlist[Items.recipes[state.craftinglists[i.code][0].code].resultitem].icon
 				if state.craftinglists[i.code][0].has('partdict'):
 					newnode.get_node('icon').material = load("res://files/ItemShader.tres")
 				else:

@@ -576,7 +576,7 @@ func faction_sellslaves():
 	globals.ClearContainer($HirePanel/ScrollContainer/VBoxContainer)
 	for i in state.characters:
 		var tchar = characters_pool.get_char_by_id(i)
-		if tchar == state.get_master():
+		if tchar == state.get_master() || tchar.valuecheck({code = 'is_free'}) == false:
 			continue
 		var newbutton = globals.DuplicateContainerTemplate($HirePanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.name
@@ -1046,7 +1046,15 @@ var icons = {
 func build_location_group():
 	#clear_groups()
 	for i in positiondict:
-		if active_location.group.has('pos'+str(i)) && state.characters[active_location.group['pos'+str(i)]] != null:
+		if active_location.group.has('pos'+str(i)) && state.characters.has(active_location.group['pos'+str(i)]) == false:
+			active_location.group.erase('pos'+str(i))
+			get_node(positiondict[i]+"/Image").dragdata = null
+			get_node(positiondict[i]+"/Image").texture = null
+			get_node(positiondict[i]+"/Image").hide()
+			get_node(positiondict[i]).self_modulate.a = 1
+			get_node(positiondict[i]).character = null
+			continue
+		if active_location.group.has('pos'+str(i)) && state.characters[active_location.group['pos'+str(i)]] != null &&  state.characters[active_location.group['pos'+str(i)]].location == active_location.id:
 			var character = state.characters[active_location.group['pos'+str(i)]]
 			get_node(positiondict[i]+"/Image").texture = character.get_icon()
 			if get_node(positiondict[i]+"/Image").texture == null:

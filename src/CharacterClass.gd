@@ -48,6 +48,8 @@ var combat_skill_panel = {}
 var active_panel = variables.PANEL_SOC
 var traits = []
 var sex_traits = []
+var negative_sex_traits = []
+var unlocked_sex_traits = []
 var effects = []
 
 var selectedskill = 'attack'
@@ -559,7 +561,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	while rolls > 0:
 		var number = randi()%traitarray.size()
 		var newtrait = traitarray[number]
-		sex_traits.append(newtrait.code)
+		negative_sex_traits.append(newtrait.code)
 		traitarray.remove(number)
 		rolls -= 1
 	traitarray.clear()
@@ -570,6 +572,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	while rolls > 0:
 		var newtrait = traitarray[randi()%traitarray.size()]
 		sex_traits.append(newtrait.code)
+		unlocked_sex_traits.append(newtrait.code)
 		traitarray.erase(newtrait)
 		rolls -= 1
 	
@@ -750,6 +753,11 @@ func get_racial_features():
 		self.set(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
 	
 	add_stat_bonuses(race_template.race_bonus)
+	for i in races.racelist.Human.bodyparts:
+		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
+			self.set(i, races.racelist.Human.bodyparts[i][randi()%races.racelist.Human.bodyparts[i].size()])
+		else:
+			self.set(i, input_handler.weightedrandom(races.racelist.Human.bodyparts[i]))
 	for i in race_template.bodyparts:
 		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
 			self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])

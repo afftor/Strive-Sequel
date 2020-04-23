@@ -342,7 +342,19 @@ margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
 bbcode_enabled = true
-bbcode_text = "0.2.0d
+bbcode_text = "0.2.1
+Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
+Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)
+Fixed crafting list not updating correctly in somecases
+Fixed tail plug/pet suit combo not working
+Fixed some errors in election quest finish
+Fixed characters not properly clearning in other areas in some cases
+Fixed same location appearing on the list of possible locations when it was selected
+Fixed default slave bodyparts for non-human races always being the same
+Fixed fighter quest encounter not finishing properly in some cases
+Fixed mage election quest completing right on acquiring 
+Fixed non-story modes not disabling story event
+0.2.0d
 Fixed saves storing social skill texts they didn't need
 Fixed impregnation overwriting previous pregnancy
 Fixed election quest not removing loan events
@@ -520,12 +532,23 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.2.0d
+text = "0.2.1
+Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
+Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)
+Fixed crafting list not updating correctly in somecases
+Fixed tail plug/pet suit combo not working
+Fixed some errors in election quest finish
+Fixed characters not properly clearning in other areas in some cases
+Fixed same location appearing on the list of possible locations when it was selected
+Fixed default slave bodyparts for non-human races always being the same
+Fixed fighter quest encounter not finishing properly in some cases
+Fixed mage election quest completing right on acquiring 
+Fixed non-story modes not disabling story event
+0.2.0d
 Fixed saves storing social skill texts they didn't need
 Fixed impregnation overwriting previous pregnancy
 Fixed election quest not removing loan events
 Fixed seen dialogues not reverting on restart
-Fixed inability of males to impregnate
 0.2.0c
 Fixed some text related issues
 0.2.0b

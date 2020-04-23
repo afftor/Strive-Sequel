@@ -34,7 +34,11 @@ var data = {
 		options = [
 		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'mages_election1', text = "MAGESINTRODUCTION2REPLY2", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, {type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, {type = 'decision', name = 'mages_election_support', value = false}], bonus_effects = [{code = 'decision', value = 'mages_election_support'}], dialogue_argument = 2, type = 'next_dialogue'},
+		{code = 'mages_election1', text = "MAGESINTRODUCTION2REPLY2", reqs = [
+			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
+			{type = 'dialogue_seen', operant = 'neq', value = 'MAGESELECTION1'},
+			{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, 
+			{type = 'decision', name = 'mages_election_support', value = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],

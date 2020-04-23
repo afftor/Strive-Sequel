@@ -335,7 +335,7 @@ var individual_lines = {
 	loyalty_line16 = {text = "Please don't let this be a dream. I really like you, [Master]!", events = ['loyalty'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	loyalty_line17 = {text = "I get to stay with [Master], and serve them!", events = ['loyalty'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	loyalty_line18 = {text = "I'm so glad I can serve you, [Master]!", events = ['loyalty'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
-	loyalty_line19 = {text = "No way... Could it be that I've fallen for you, [Master}?", events = ['loyalty'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	loyalty_line19 = {text = "No way... Could it be that I've fallen for you, [Master]?", events = ['loyalty'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
 	loyalty_line20 = {text = "Please don't ever make me leave... I really want to stay here, [Master]...", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	loyalty_line21 = {text = "I-I want to do the best I can to serve [Master]...", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	loyalty_line22 = {text = "O-oh... I just feel so safe around you, [Master]...", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},

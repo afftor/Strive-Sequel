@@ -44,6 +44,7 @@ func _ready():
 	globals.AddPanelOpenCloseAnimation($job_panel)
 
 	globals.AddPanelOpenCloseAnimation($DietPanel)
+	globals.AddPanelOpenCloseAnimation($SexTraitsPanel)
 
 	$job_panel.move_child($job_panel/CloseButton, 3)
 	
@@ -64,12 +65,13 @@ func _ready():
 	$DetailsPanel/VBoxContainer/body.connect("pressed", self, "chooseimage",['body'])
 	$DetailsPanel/VBoxContainer/nickname.connect("pressed", self, "custom_nickname_open")
 	$DetailsPanel/VBoxContainer/masternoun.connect("pressed", self, "custom_masternoun_open")
+	$DetailsPanel/VBoxContainer/traits.connect("pressed", self, "sex_traits_open")
 	
 	globals.connecttexttooltip($obedlabel/icon, globals.statdata.obedience.descript)
-	
 	globals.connecttexttooltip($loyaltylabel, globals.statdata.loyalty.descript)
 	globals.connecttexttooltip($authoritylabel, globals.statdata.authority.descript)
 	globals.connecttexttooltip($submissionlabel, globals.statdata.submission.descript)
+	globals.connecttexttooltip($SexTraitsPanel/TraitHelp, tr("SEXTRAITHELP") + tr("SEXTRAITDISLIKES"))
 	
 	$testbutton.connect('pressed', self, "run_test")
 	
@@ -296,7 +298,7 @@ func update():
 		var name = globals.descriptions.get_class_name(prof, person)
 		newnode.get_node("Label").text = name
 		newnode.texture = prof.icon
-		newnode.connect('signal_RMB_release',input_handler, 'show_class_info', [prof.code])
+		newnode.connect('signal_RMB_release',input_handler, 'show_class_info', [prof.code, person])
 		var temptext = "[center]"+globals.descriptions.get_class_name(prof,person) + "[/center]\n"+globals.descriptions.get_class_bonuses(person, prof) + globals.descriptions.get_class_traits(person, prof)
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		globals.connecttexttooltip(newnode, temptext)
@@ -304,30 +306,7 @@ func update():
 	if $SkillPanel.visible == true:
 		build_skill_panel()
 	
-	globals.ClearContainer($traits)
-	for i in person.traits:
-		var trait = Traitdata.traits[i]
-		if trait.visible == false:
-			continue
-		var newnode = globals.DuplicateContainerTemplate($traits)
-		newnode.text = trait.name
-	
-	
-	for i in person.sex_traits:
-		var trait = Traitdata.sex_traits[i]
-		var newnode = globals.DuplicateContainerTemplate($traits)
-		newnode.text = trait.name
-		var traittext = person.translate(trait.descript)
-		for j in trait.reqs:
-			if j.has('code') && j.code == 'action_type':
-				traittext += "\n\nDisliked actions:[color=aqua] "
-				for k in j.value:
-					#print(globals.sex_actions_dict[k].getname())
-					globals.sex_actions_dict[k].givers = []
-					globals.sex_actions_dict[k].takers = []
-					traittext += globals.sex_actions_dict[k].getname() + ", "
-				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
-		globals.connecttexttooltip(newnode, traittext)
+	rebuild_traits()
 	
 	globals.ClearContainer($buffscontainer)
 	for i in person.get_mansion_buffs():
@@ -360,6 +339,33 @@ func update():
 	
 	globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 
+
+
+func rebuild_traits():
+	
+	globals.ClearContainer($ScrollContainer/traits)
+	for i in person.traits:
+		var trait = Traitdata.traits[i]
+		if trait.visible == false:
+			continue
+		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/traits)
+		newnode.text = trait.name
+	
+	for i in person.sex_traits + person.negative_sex_traits:
+		var trait = Traitdata.sex_traits[i]
+		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/traits)
+		newnode.text = trait.name
+		var traittext = person.translate(trait.descript)
+		for j in trait.reqs:
+			if j.has('code') && j.code == 'action_type':
+				traittext += "\n\nDisliked actions:[color=aqua] "
+				for k in j.value:
+					#print(globals.sex_actions_dict[k].getname())
+					globals.sex_actions_dict[k].givers = []
+					globals.sex_actions_dict[k].takers = []
+					traittext += globals.sex_actions_dict[k].getname() + ", "
+				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+		globals.connecttexttooltip(newnode, traittext)
 
 func make_location_description():
 	var text = ''
@@ -717,4 +723,30 @@ func return_to_mansion():
 func chooseimage(type):
 	$ImageSelect.chooseimage(person, type)
 
+func sex_traits_open():
+	$SexTraitsPanel.show()
+	globals.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
+	for i in person.unlocked_sex_traits:
+		var newbutton = globals.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+		newbutton.pressed = person.sex_traits.has(i)
+		newbutton.text = Traitdata.sex_traits[i].name
+		globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
+		newbutton.connect("toggled", self, 'toggle_trait', [i])
+	update_trait_capacity()
 
+func update_trait_capacity():
+	var text = 'Current Capacity: ' + str(person.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
+	$SexTraitsPanel/TraitCapacity.text = text
+	for i in $SexTraitsPanel/ScrollContainer/VBoxContainer.get_children():
+		i.disabled = person.get_stat('sexuals_factor')+1 - person.sex_traits.size() <= 0 && i.pressed == false
+
+func toggle_trait(trait_status, trait):
+	match trait_status:
+		true:
+			if !person.sex_traits.has(trait):
+				person.sex_traits.append(trait)
+		false:
+			if person.sex_traits.has(trait):
+				person.sex_traits.erase(trait)
+	update_trait_capacity()
+	rebuild_traits()

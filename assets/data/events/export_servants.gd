@@ -17,7 +17,7 @@ var data = {
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, 
 			{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 500},
 			{type = 'decision', name = 'servants_election_support', value = false}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}, {type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},

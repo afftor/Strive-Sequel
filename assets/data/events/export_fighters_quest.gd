@@ -30,8 +30,15 @@ var data = {
 		{code = 'fighters_questions', text = "FIGHTERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
 		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		
-		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, {type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500}, {type = 'decision', name = 'fighters_election_support', value = false},{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', name = 'fighters_election_support', value = false}, {type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'stage2'}, {type = 'dialogue_seen', operant = 'eq',value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7}, 
+		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [
+			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, 
+			{type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500},
+			{type = 'decision', name = 'fighters_election_support', value = false},
+			{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', name = 'fighters_election_support', value = false}, 
+		{type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'stage2'}, 
+		#{type = 'has_material', operant = 'gte', value = 1, material = 'lich_skull'},
+		{type = 'dialogue_seen', operant = 'eq',value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7, type = 'next_dialogue'}, 
 		
 		
 		
@@ -384,7 +391,11 @@ var data = {
 		{text = "LICHAIRETALK4", reqs = []},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), dialogue_argument = 1},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), dialogue_argument = 1, bonus_effects = [{code = 'decision', value = 'aire_had_sex'},
+			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
+			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]
+		
+		},
 		],
 		},
 		{reqs = [],
@@ -437,7 +448,9 @@ var data = {
 		{text = "LICHAIRETALK7", reqs = []},
 		],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'}]},
+		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'},
+			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
+			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],
 	},
 
@@ -448,9 +461,11 @@ var data = {
 		text = [
 		{text = "LICHAIRELEAVE", reqs = [], },
 		],
-		common_effects = [{code = 'remove_quest_location', value = 'quest_fighters_lich'}],
+		common_effects = [],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []},
+		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [
+			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
+			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],
 		},
 }

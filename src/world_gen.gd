@@ -989,7 +989,7 @@ var questdata = {
 		code = 'servants_craft_items_medium',
 		name = 'Items Request',
 		descript = 'The guild needs a specific crafted items',
-		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_chocker','chastity_belt','stimulative_underwear'], range = [1,2]}],
+		randomconditions = [{code = 'random_item', type = ['pet_suit','elegant_choker','chastity_belt','stimulative_underwear'], range = [1,2]}],
 		unlockreqs = [],
 		reputation = [250,350],
 		rewards = [
@@ -1108,6 +1108,11 @@ func make_quest(questcode):
 		if tempdata.code == 'slave_delivery':
 			tempdata.statreqs = []
 			for i in tempdata.mandatory_conditions:
+				if i.code == 'sex':
+					if i.value.has('male') && globals.globalsettings.malechance <= 10:
+						i.value.erase("male")
+					if i.value.has("female") && globals.globalsettings.malechance + globals.globalsettings.futachance >= 90:
+						i.value.rase("female")
 				if typeof(i.value) == TYPE_ARRAY:
 					i.value = i.value[randi()%i.value.size()] 
 				tempdata.statreqs.append(i)

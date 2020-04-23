@@ -128,6 +128,24 @@ class member:
 	var npc = false
 	
 	
+	var unique_consented_takers = []
+	var givers_with_my_consent = {}
+	var bedroom_prodigy = []
+	var single_partner_consents = []
+	var diff_partners_orgasms = []
+	var unconsented_orgasm = 0
+	var shame_amount = 0
+	var satisfied_partners = []
+	var seen_orgasms = []
+	var orgasm_with_watcher = 0
+	var orgasm_effects = []
+	var orgasm_tags = []
+	var orgasm_actions = []
+	var orgasm_partners = []
+	var diff_body_orgasm = 0
+	var aphrodisiac_orgasms = []
+	var drunk_orgasm = 0
+	
 	var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms = 0, oppositesex = 0, oppositesexorgasms = 0, punishments = 0, group = 0}
 	
 	func lust_set(value):
@@ -139,7 +157,7 @@ class member:
 		if sens >= 1000:
 			if lastaction == null || ((lastaction.givers.has(self) && lastaction.scene.givertags.has('noorgasm')) || (lastaction.takers.has(self) && lastaction.scene.takertags.has('noorgasm'))):
 				var can_orgasm = false
-				for i in person.sex_traits:
+				for i in sex_traits:
 					var trait = Traitdata.sex_traits[i]
 					for k in trait.effects:
 						if k.trigger == 'orgasm':
@@ -720,7 +738,7 @@ func createtestdummy(type = 'normal'):
 	newmember.name = person.get_short_name()
 	newmember.lewd = 100
 	newmember.number = dummycounter
-	newmember.sex_traits = person.sex_traits
+	newmember.sex_traits = person.sex_traits + person.negative_sex_traits
 	dummycounter += 1
 	
 #	if person.consent == false && person.professions.has("master"):
@@ -754,11 +772,11 @@ func startsequence(actors):
 		newmember.sens = 0
 		newmember.consent = person.consent
 		newmember.name = person.get_short_name()
-		newmember.sex_traits = person.sex_traits
+		newmember.sex_traits = person.sex_traits + person.negative_sex_traits
 		if person.gear.crotch != null && state.items[person.gear.crotch].itembase == 'strapon':
 			newmember.strapon = true
 		newmember.lewd = 100
-		for i in person.sex_traits:
+		for i in newmember.sex_traits:
 			var trait = Traitdata.sex_traits[i]
 			for k in trait.effects:
 				if k.trigger == 'start':
@@ -1495,6 +1513,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 			if result.consent == false:
 				get_node("Panel/sceneeffects").bbcode_text += (textdict.mainevent + "\n" + textdict.repeats)
 				rebuildparticipantslist()
+				
 				return
 	
 	for i in givers + takers:
@@ -1782,6 +1801,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 	if randf() < 0.15 && temparray.size() > 0:
 		generaterequest(temparray[randi()%temparray.size()])
 	
+	record_actions(scenescript, dict.consents)
 	rebuildparticipantslist()
 
 func lewdness_aura(caster):
@@ -2221,31 +2241,6 @@ func endencounter():
 			consenttext[i.person.id] += '-'
 		consenttext[i.person.id] += str(i.consentgain) + temptext
 		i.person.consent += i.consentgain
-#		if i.orgasms > 0:
-#			text += "; Obedience gained: " + str(i.orgasms*10)
-			#Add 10% all productivity bonus
-			#i.person.add_effect()
-		
-#		for trait in i.actionshad.addtraits:
-#			i.person.add_trait(trait)
-#
-#		if i.actionshad.samesex > i.actionshad.oppositesex && i.actionshad.samesexorgasms > 0:
-#			if !i.person.traits.has("Bisexual") && !i.person.traits.has("Homosexual") && (randf() >= 0.5 || i.person.effects.has('entranced')):
-#				i.person.add_trait("Bisexual")
-#			elif i.person.traits.has("Bisexual") && (randf() >= 0.5 || i.person.effects.has('entranced')) && max(0.2,i.actionshad.samesex)/max(0.2, i.actionshad.oppositesex) > 4 :
-#				i.person.trait_remove("Bisexual")
-#				i.person.add_trait('Homosexual')
-#		if i.actionshad.samesex < i.actionshad.oppositesex && i.actionshad.oppositesexorgasms > 0:
-#			if (i.person.traits.has("Bisexual") || i.person.traits.has("Homosexual")) && (randf() >= 0.5 || i.person.effects.has('entranced')):
-#				if i.person.traits.has("Bisexual") && (randf() >= 0.5 || i.person.effects.has('entranced')) && max(0.2,i.actionshad.oppositesex)/max(0.2, i.actionshad.samesex) > 4:
-#					i.person.trait_remove("Bisexual")
-#				else:
-#					i.person.trait_remove("Homosexual")
-#					i.person.add_trait("Bisexual")
-#		if i.actionshad.group*0.01 > randf():
-#			i.person.trait_remove("Monogamous")
-#			i.person.add_trait("Fickle")
-		
 		text += "\n"
 	
 	
@@ -2259,6 +2254,38 @@ func endencounter():
 		if i.person == state.get_master():
 			args.append("partner_is_master")
 	input_handler.get_person_for_chat(array, 'sex_finish', args)
+	
+	var sex_traits = Traitdata.sex_traits
+	var check = false
+	var chance = false
+	### Adding traits
+	text += "\n"
+	for p in participants:
+		for i in sex_traits:
+			check = check_acquire_reqs(p, sex_traits[i].acquire_reqs)
+			chance = (randf()*100 < (5 + 5 * p.person.sexuals_factor))
+			if chance && check && !p.sex_traits.has(i):# || (true && check):
+				p.person.unlocked_sex_traits.append(i)
+				text += p.name + " learned trait: " + Traitdata.sex_traits[i].name + "\n"
+	### Removing Dislikes
+	var dislikes = []
+	for p in participants:
+		for diz in p.person.negative_sex_traits:
+			if diz.begins_with("dislike"):
+				dislikes.append(diz)
+			if dislikes.size() != 0:
+				for i in sex_traits:
+					if !i.begins_with("dislike"):
+						continue
+					if !i in dislikes:
+						continue
+					check = check_acquire_reqs(p, sex_traits[i].reqs)
+					chance = (randf()*100 < (5 + 5 * p.person.sexuals_factor))
+					if (chance && check) :#|| (true && check):
+						#print("Trait Removed: " + i)
+						p.person.negative_sex_traits.erase(i)
+						text += p.name + " lost trait: " + Traitdata.sex_traits[i].name + "\n"
+	
 	
 	get_node("Control").show()
 	get_node("Control/Panel/RichTextLabel").set_bbcode(text)
@@ -2598,7 +2625,7 @@ func beer(member):
 func aphrodisiac(member):
 	member.horny += 100
 	var text = "\n" + member.name + " has used an aphrodisiac. [His] breath grew slower and heavier.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"
-	
+	member.effects.append("aphrodisiac")
 	input_handler.scene_characters = [member.person]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
 	_on_passbutton_pressed()
@@ -2630,3 +2657,112 @@ func pheromones(member):
 	givers = [member]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
 	_on_passbutton_pressed()
+
+
+func record_actions(scenescript, consents):
+	scenescript.givers = givers
+	scenescript.takers = takers
+	for p in participants:
+		if p.orgasm:
+			p.orgasm_actions.append(scenescript.code)
+		if p.orgasm && !scenescript.code in p.aphrodisiac_orgasms && p.effects.has("aphrodisiac"):
+			p.aphrodisiac_orgasms.append(scenescript.code)
+		if p.role == null or p.role == 'none':
+			for i in takers + givers:
+				if i.orgasm:
+					i.orgasm_with_watcher += 1
+				if i.orgasm && !i in p.seen_orgasms:
+					p.seen_orgasms.append(i)
+		if p.role == "give":
+			for t in takers:
+				if t.orgasm:
+					if t.person.body_shape != p.person.body_shape:
+						t.diff_body_orgasm += 1
+					for tag in scenescript.takertags:
+						if !tag in t.orgasm_tags:
+							t.orgasm_tags.append(tag)
+					for e in t.effects:
+						if e in ["tipsy", "drunk"]:
+							t.drunk_orgasm += 1
+						if !e in t.orgasm_effects:
+							t.orgasm_effects.append(e)
+					if !p in t.orgasm_partners:
+						t.orgasm_partners.append(p)
+				if t.orgasm && !p in t.diff_partners_orgasms:
+					t.diff_partners_orgasms.append(p)
+				if t.orgasm && !t in p.satisfied_partners:
+					p.satisfied_partners.append(t)
+				if consents[t.person.id] < scenescript.consent_level:
+					if t.orgasm:
+						t.unconsented_orgasm += 1
+				else:
+					if !scenescript.code in p.single_partner_consents:
+						p.single_partner_consents.append(scenescript.code)
+					if p.person.sexuals >= 100 && !scenescript.code in t.bedroom_prodigy:
+						t.bedroom_prodigy.append(scenescript.code)
+		if p.role == "take":
+			for g in givers:
+				if g.orgasm:
+					if g.person.body_shape != p.person.body_shape:
+						g.diff_body_orgasm += 1
+					for tag in scenescript.givertags:
+						if !tag in g.orgasm_tags:
+							g.orgasm_tags.append(tag)
+					for e in g.effects:
+						if e in ["tipsy", "drunk"]:
+							g.drunk_orgasm += 1
+						if !e in g.orgasm_effects:
+							g.orgasm_effects.append(e)
+
+func operate_flag(flag, input1, input2, actor):
+	var check = true
+	match flag:
+		"any":
+			for i in input2:
+				if i in actor[input1]:
+					return check
+		"only":
+			check = actor[input1].has(input2)
+			return check
+
+
+
+func check_acquire_reqs(actor, arr):
+	if arr == []:
+		var check = false
+		return check
+	var check = true
+	for i in arr:
+		if i.has('flag'):
+			check =	operate_flag(i.flag, i.type, i.value, actor)
+			return check
+		if i.has('orflag'):
+			check = check or acquire_valuecheck(i, actor)
+		else:
+			check = check and acquire_valuecheck(i, actor)
+	return check
+
+func acquire_valuecheck(r, actor):
+	var check = true
+	var actor_value
+	match r.code:
+		'stat':
+			if typeof(actor[r.type]) == TYPE_ARRAY:
+				actor_value = len(actor[r.type])
+			else:
+				actor_value = actor[r.type]
+			check = input_handler.operate(r.operant, actor_value, r.value)
+		'actor_check':
+			check = check_acquire_reqs(actor, r.value)
+		'same_sex_orgasms':
+			actor_value = actor.actionshad.samesexorgasms
+			check = input_handler.operate(r.operant, actor_value, r.value)
+		'action_type':
+			var condition = 0
+			for action in actor.orgasm_actions:
+				if action in r.value:
+					condition += 1
+			if condition < 3:
+				check = false
+	return check
+

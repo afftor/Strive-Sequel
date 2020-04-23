@@ -17,7 +17,7 @@ var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false
 
 var CombatAnimations = preload("res://src/CombatAnimations.gd").new()
 
-var debug = true
+var debug = false
 
 var allowaction = false
 var highlightargets = false
@@ -93,6 +93,7 @@ func cheatvictory():
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
 	hide()
+	$ItemPanel/debugvictory.visible = debug
 	if variables.combat_tests == false:
 		input_handler.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')

@@ -836,7 +836,7 @@ var TranslationDict = {
 	STATTIMID_FACTORDESCRIPT = "Timid factor represents how easily character can be influenced by punishments and abuse. The higher it is, the slower Submission decays. It also determines how quickly Authority grows. ",
 	STATWITS_FACTORDESCRIPT = "Wits factor represents the character's mind potential. It limits [color=aqua]Wits[/color] growth.",
 	STATCHARM_FACTORDESCRIPT = "Charm factor represents character's appeal potential. It limits [color=aqua]Charm[/color] growth. Master's charm also increase gold and reputation rewards from repeatable quests.",
-	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It makes sexual skills acquirement faster and occasionally boosts sexual options in events.",
+	STATSEXUALS_FACTORDESCRIPT = "Sex factor represents character's sex development potential. It makes sexual skills acquirement faster and occasionally boosts sexual options in events. It also increases odds of unlocking sex traits and number of active sex traits.",
 	
 	
 	STATFOOD_LOVE = "Loved Food",
@@ -2247,7 +2247,9 @@ var TranslationDict = {
 	MAGESELECTION4_1REPLY3 = "I hope you aren't jealous",
 	MAGESELECTION4_2 = "— Finally. So how was she doing? Don't tell me. she must be fine, since you got them without saying anything... Alright, thanks for the favor. You can tell Amelia you have our support or whatever. Have fun.",
 	MAGESELECTION5 = "— Oh, Gods... Can't believe she would... \n\n — Ah, whatever, why do I care. You got the books intact. Tell Amelia it's fine. We will support you. Oh, yeah, I'd keep this information secret if I were you. ",
-	SERVANTSELECTIONFINISH1 = "— Ah, you've got the support? Wonderful! Now all that is left is to prepare for the dispute. But don't worry, I have the best image makers in the city to help you out.",
+	SERVANTSELECTIONFINISH1 = "— Ah, you've got the support? Wonderful! ",
+	SERVANTSELECTIONFINISH1_2 = "And since you really went for it and got them all, I've prepared a reward for you. *Amelia passes you a shiny necklace*\n— ",
+	SERVANTSELECTIONFINISH1_3 = "Now all that is left is to prepare for the debate. But don't worry, I have the best image makers in the city to help you out.",
 	SERVANTSELECTIONFINISH1REPLY1 = "I will need to debate? I thought I'd already got the support",
 	SERVANTSELECTIONFINISH1REPLY2 = "I don’t quite get the point of this.",
 	SERVANTSELECTIONFINISH2_1 = "— Yes, but it's more complicated than that.",
@@ -2278,14 +2280,14 @@ var TranslationDict = {
 	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
 	
 
-
-
-
 	LOAN_EVENT = "By the morning the bank loaners has visited the mansion. ",
 	LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
 	LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
 	LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
 	LOAN_SUCCESS4 = "They took 86000 gold and departed quickly. This was your last payment and now you are free to do what you want...",
 	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
-
+	
+	
+	SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sexuals Factor}. It also increase chance to unlock a trait. ",
+	SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
 }

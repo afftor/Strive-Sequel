@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.2.0c'
+const gameversion = '0.2.1'
 
 var start_new_game = false
 
@@ -648,6 +648,12 @@ func _notification(what):
 		get_tree().quit()
 
 func _init():
+	
+	#for logging purposes
+	print("Game Version: " + str(gameversion))
+	print("OS: " +  OS.get_name()) 
+	
+	
 	if dir.dir_exists(userfolder + 'saves') == false:
 		dir.make_dir(userfolder + 'saves')
 	
@@ -657,7 +663,7 @@ func _init():
 		var newaction = load(i).new()
 		sex_actions_dict[newaction.code] = newaction
 	
-	for i in dir_contents("res://assets/data/events/"):
+	for i in dir_contents("res://assets/data/events"):
 		if i.find('.gd') < 0:
 			continue
 		var newscript  = load(i).new()
@@ -1430,7 +1436,6 @@ func impregnate(father, mother):
 		print("Impregnation check failed")
 		return #incompatible races
 	var baby = Slave.new()
-	print("Impregnation success")
 	if randf() >= 0.5:
 		baby.race = mother.race
 	else:
