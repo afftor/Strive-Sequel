@@ -19,7 +19,7 @@ func mode_set(value):
 		portaitsbuilt = false
 
 func chooseimage(character, tempmod):
-	mode = tempmod
+	self.mode = tempmod
 	person = character
 	if get_node("racelock").is_pressed() == false:
 		get_node("search").visible = true
@@ -39,6 +39,7 @@ func _on_reloadlist_pressed():
 var currentpath 
 
 func buildimagelist(type = mode):
+	print('building_image_list')
 	var dir = Directory.new()
 	var filecheck = File.new()
 	if type == 'portrait':
@@ -51,10 +52,6 @@ func buildimagelist(type = mode):
 			i.free()
 	if dir.dir_exists(currentpath) == false:
 		dir.make_dir(currentpath)
-#	if dir.dir_exists(thumbnailpath) == false:
-#		dir.make_dir(thumbnailpath)
-#	if dir.dir_exists(thumbnailpath + type) == false:
-#		dir.make_dir(thumbnailpath + type)
 	for i in globals.dir_contents(currentpath):
 		if filecheck.file_exists(i) && (i.find('.png') >= 0 || i.find('.jpg') >= 0):
 			var node = get_node("ScrollContainer/GridContainer/Button").duplicate()
@@ -101,7 +98,7 @@ func resort():
 	if gender == 'futanari':
 		gender = 'female'
 	race = race.replace("Beastkin ", "").replace("Halfkin ", "")
-
+	
 	
 	
 	

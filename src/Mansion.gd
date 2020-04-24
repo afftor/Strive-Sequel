@@ -79,6 +79,7 @@ func _ready():
 	if variables.generate_test_chars:
 		state.revert()
 		state.make_world()
+		state.date = 555
 		var character = Slave.new()
 		character.create('HalfkinCat', 'male', 'random')
 		character.consent = 100
@@ -113,7 +114,7 @@ func _ready():
 		#character.pregnancy.duration = 2
 		
 		character = Slave.new()
-		character.create('HalfkinCat', 'random', 'random')
+		character.create('HalfkinCat', 'female', 'random')
 		character.consent = 100
 		character.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
@@ -193,7 +194,13 @@ func _ready():
 		character.add_trait('core_trait')
 		character.set_slave_category('slave')
 		character.is_players_character = true
-		
+		state.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
+			{code = 'sexuals_factor', value = 1, operant = "+"},
+			{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
+			{code = 'submission', operant = '+', value = 50},
+			{code = 'obedience', operant = '+', value = 30},
+			{code = 'tag', operant = 'remove', value = 'no_sex'},
+			]}])
 		#state.revert()
 		state.money = 505590
 		for i in Items.materiallist:

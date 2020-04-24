@@ -3,7 +3,7 @@ extends Node
 #script modding to be added in 3.2 version 
 
 var modconfig_pass = "user://mods.ini"
-var modfolder_pass = "user://mods/"
+var modfolder_pass = "user://mods"
 
 var mods_list = [] #name, data_file
 var mod_tables = {} #table, mod

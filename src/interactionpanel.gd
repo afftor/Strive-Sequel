@@ -2264,7 +2264,7 @@ func endencounter():
 		for i in sex_traits:
 			check = check_acquire_reqs(p, sex_traits[i].acquire_reqs)
 			chance = (randf()*100 < (5 + 5 * p.person.sexuals_factor))
-			if chance && check && !p.sex_traits.has(i):# || (true && check):
+			if chance && check && !p.sex_traits.has(i):
 				p.person.unlocked_sex_traits.append(i)
 				text += p.name + " learned trait: " + Traitdata.sex_traits[i].name + "\n"
 	### Removing Dislikes
@@ -2281,8 +2281,7 @@ func endencounter():
 						continue
 					check = check_acquire_reqs(p, sex_traits[i].reqs)
 					chance = (randf()*100 < (5 + 5 * p.person.sexuals_factor))
-					if (chance && check) :#|| (true && check):
-						#print("Trait Removed: " + i)
+					if (chance && check) :
 						p.person.negative_sex_traits.erase(i)
 						text += p.name + " lost trait: " + Traitdata.sex_traits[i].name + "\n"
 	

@@ -194,20 +194,20 @@ autowrap = true
 clip_text = true
 
 [node name="hplabel" type="Label" parent="Panel/PlayerGroup/Back/left/Template"]
-margin_left = -75.0659
-margin_top = -17.6523
-margin_right = 104.934
-margin_bottom = 6.34769
+margin_left = -44.5525
+margin_top = -20.6523
+margin_right = 135.447
+margin_bottom = 3.34768
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10/100"
 align = 1
 
 [node name="mplabel" type="Label" parent="Panel/PlayerGroup/Back/left/Template"]
-margin_left = 101.202
-margin_top = -17.5913
-margin_right = 281.202
-margin_bottom = 6.40869
+margin_left = 73.2019
+margin_top = -20.5913
+margin_right = 253.202
+margin_bottom = 3.40867
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10/100"
@@ -476,6 +476,9 @@ margin_top = 14.0
 margin_right = 392.0
 margin_bottom = 44.0
 text = "Victory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Combatlog" type="Panel" parent="."]
 margin_left = 461.0

@@ -354,6 +354,7 @@ Fixed default slave bodyparts for non-human races always being the same
 Fixed fighter quest encounter not finishing properly in some cases
 Fixed mage election quest completing right on acquiring 
 Fixed non-story modes not disabling story event
+Fixed portrait/body selection menu not updating properly
 0.2.0d
 Fixed saves storing social skill texts they didn't need
 Fixed impregnation overwriting previous pregnancy
@@ -544,6 +545,7 @@ Fixed default slave bodyparts for non-human races always being the same
 Fixed fighter quest encounter not finishing properly in some cases
 Fixed mage election quest completing right on acquiring 
 Fixed non-story modes not disabling story event
+Fixed portrait/body selection menu not updating properly
 0.2.0d
 Fixed saves storing social skill texts they didn't need
 Fixed impregnation overwriting previous pregnancy

@@ -350,8 +350,12 @@ func rebuild_traits():
 			continue
 		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/traits)
 		newnode.text = trait.name
+	var array = []
+	
+	
 	
 	for i in person.sex_traits + person.negative_sex_traits:
+		
 		var trait = Traitdata.sex_traits[i]
 		var newnode = globals.DuplicateContainerTemplate($ScrollContainer/traits)
 		newnode.text = trait.name
@@ -366,6 +370,7 @@ func rebuild_traits():
 					traittext += globals.sex_actions_dict[k].getname() + ", "
 				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
 		globals.connecttexttooltip(newnode, traittext)
+
 
 func make_location_description():
 	var text = ''
@@ -726,13 +731,26 @@ func chooseimage(type):
 func sex_traits_open():
 	$SexTraitsPanel.show()
 	globals.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
+	
+	var array = []
 	for i in person.unlocked_sex_traits:
+		array.append(i)
+	
+	array.sort_custom(self, 'sort_traits')
+	
+	for i in array:
 		var newbutton = globals.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
 		newbutton.pressed = person.sex_traits.has(i)
 		newbutton.text = Traitdata.sex_traits[i].name
 		globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
 		newbutton.connect("toggled", self, 'toggle_trait', [i])
 	update_trait_capacity()
+
+func sort_traits(first,second):
+	if Traitdata.sex_traits[first].name >= Traitdata.sex_traits[second].name:
+		return false
+	else:
+		return true
 
 func update_trait_capacity():
 	var text = 'Current Capacity: ' + str(person.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
