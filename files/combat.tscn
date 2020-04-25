@@ -128,7 +128,7 @@ __meta__ = {
 [node name="Back" type="VBoxContainer" parent="Panel/PlayerGroup"]
 margin_right = 218.0
 margin_bottom = 693.0
-custom_constants/separation = 18
+custom_constants/separation = 11
 
 [node name="left" type="Container" parent="Panel/PlayerGroup/Back"]
 margin_right = 218.0
@@ -253,15 +253,15 @@ text = "555"
 align = 1
 
 [node name="mid" type="Container" parent="Panel/PlayerGroup/Back"]
-margin_top = 237.0
+margin_top = 230.0
 margin_right = 218.0
-margin_bottom = 456.0
+margin_bottom = 449.0
 rect_min_size = Vector2( 218, 219 )
 
 [node name="right" type="Container" parent="Panel/PlayerGroup/Back"]
-margin_top = 474.0
+margin_top = 460.0
 margin_right = 218.0
-margin_bottom = 693.0
+margin_bottom = 679.0
 rect_min_size = Vector2( 218, 219 )
 
 [node name="Front" type="VBoxContainer" parent="Panel/PlayerGroup"]
@@ -429,6 +429,9 @@ margin_top = 38.0
 margin_right = 1167.0
 margin_bottom = 420.0
 texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemPanel"]
 margin_left = 27.0

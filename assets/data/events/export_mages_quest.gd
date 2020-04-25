@@ -142,11 +142,11 @@ var data = {
 		text = [{text = "MAGESELECTION4_1", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'mages_election_quest'}]}],
 		options = [
 		{code = 'mages_election5', text = "MAGESELECTION4_1REPLY1", reqs = [], bonus_effects = [
-			{code = 'decicsion', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'decision', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'mages_election5', text = "MAGESELECTION4_1REPLY2", reqs = [], bonus_effects = [
-			{code = 'decicsion', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 2},
+			{code = 'decision', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 2},
 		{code = 'mages_election5', text = "MAGESELECTION4_1REPLY3", reqs = [], bonus_effects = [
-			{code = 'decicsion', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 3},
+			{code = 'decision', value = 'mages_election_support'}], type = 'next_dialogue', dialogue_argument = 3},
 		],
 		},
 		{reqs = [],
@@ -156,7 +156,7 @@ var data = {
 		text = [{text = "MAGESELECTION4_2", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'mages_election_quest'}]}],
 		options = [
 		{code = 'close', text = tr("DIALOGUELEAVEOPTION"), reqs = [], 
-		bonus_effects = [{code = 'decicsion', value = 'mages_election_support'}],}
+		bonus_effects = [{code = 'decision', value = 'mages_election_support'}],}
 		],
 		},
 		],
