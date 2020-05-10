@@ -1,0 +1,253 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/Heart_b.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/Heart_r.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/Heart_empty.png" type="Texture" id=8]
+[ext_resource path="res://GUI_New/Mansion/MansionSlaveListModule.gd" type="Script" id=9]
+[ext_resource path="res://dragarraytemplate.gd" type="Script" id=10]
+
+[node name="SlaveListModule" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.843137 )
+margin_right = 1100.0
+margin_bottom = 580.0
+theme = ExtResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Categories" type="VBoxContainer" parent="."]
+margin_left = 26.0
+margin_top = 26.0
+margin_right = 897.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="Categories"]
+margin_right = 871.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Categories/Button"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 654.0
+margin_bottom = 46.0
+
+[node name="icon" type="TextureRect" parent="Categories/Button/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="sex" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 104.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 50, 0 )
+text = "Sex"
+
+[node name="name" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 108.0
+margin_top = 13.0
+margin_right = 308.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 200, 0 )
+text = "Name "
+clip_text = true
+
+[node name="stats" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 312.0
+margin_right = 377.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 65, 0 )
+hint_tooltip = "TOOLTIPENERGY"
+size_flags_horizontal = 0
+text = "HP
+MP"
+align = 1
+
+[node name="job" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 381.0
+margin_top = 13.0
+margin_right = 631.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 250, 0 )
+hint_tooltip = "TOOLTIPOBEDIENCE"
+size_flags_horizontal = 0
+text = "Occupation"
+align = 1
+
+[node name="obed" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 635.0
+margin_top = 13.0
+margin_right = 670.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 35, 0 )
+hint_tooltip = "STATOBEDIENCE"
+mouse_filter = 0
+size_flags_horizontal = 0
+text = "O"
+
+[node name="explabel" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 674.0
+margin_top = 13.0
+margin_right = 739.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 65, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Exp"
+align = 1
+
+[node name="state2" type="Label" parent="Categories/Button/HBoxContainer"]
+margin_left = 743.0
+margin_top = 13.0
+margin_right = 817.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 50, 0 )
+text = "Status"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 24.2418
+margin_top = 86.0
+margin_right = 895.242
+margin_bottom = 891.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 871.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
+margin_right = 871.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+expand = true
+script = ExtResource( 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 654.0
+margin_bottom = 46.0
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="sex" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+
+[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 108.0
+margin_top = 10.0
+margin_right = 318.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 210, 0 )
+text = "Name "
+clip_text = true
+
+[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 322.0
+margin_right = 367.0
+margin_bottom = 45.0
+texture = ExtResource( 8 )
+
+[node name="hp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer/stats"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 75.0
+texture_progress = ExtResource( 7 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer/stats"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 25.0
+texture_progress = ExtResource( 6 )
+fill_mode = 3
+
+[node name="job" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 371.0
+margin_top = 7.0
+margin_right = 621.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 250, 30 )
+size_flags_horizontal = 0
+text = "Text"
+align = 1
+clip_text = true
+
+[node name="obed" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 625.0
+margin_top = 10.0
+margin_right = 670.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 45, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+clip_text = true
+
+[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 674.0
+margin_top = 10.0
+margin_right = 749.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 75, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+
+[node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 753.0
+margin_right = 803.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 30.0
+margin_top = 34.0
+margin_right = 893.0
+margin_bottom = 74.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 8.0
+margin_right = 41.0
+margin_bottom = 32.0
+text = "Sex"

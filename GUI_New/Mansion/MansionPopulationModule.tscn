@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI_New/Mansion/MansionPopulationModule.gd" type="Script" id=1]
+
+[node name="MansionPopulationModule" type="Panel"]
+margin_right = 1450.0
+margin_bottom = 55.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="population" type="Label" parent="."]
+margin_right = 1450.0
+margin_bottom = 55.0
+text = "Population"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

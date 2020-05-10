@@ -467,7 +467,7 @@ func update_shop_list():
 				var newbutton = globals.DuplicateContainerTemplate($ShopPanel/ScrollContainer/VBoxContainer)
 				newbutton.get_node("name").text = item.name
 				newbutton.get_node("icon").texture = item.icon
-				newbutton.get_node("price").text = str(item.price)
+				newbutton.get_node("price").text = str(item.price/2)
 				newbutton.get_node("amount").visible = true
 				newbutton.get_node("amount").text = str(state.materials[i])
 				newbutton.connect("pressed",self,"item_sell", [item])
@@ -505,6 +505,7 @@ func item_sell(item):
 		price = item.calculateprice()/2
 		sellingamount = item.amount
 	else:
+		price = price/2
 		sellingamount = state.materials[item.code]
 	$NumberSelection.open(self, 'item_sell_confirm', "Sell $n " + item.name + "? Gained gold: $m", price, 0, sellingamount, false)
 

@@ -48,9 +48,9 @@ const rotation2 = Quat(0.0,0.0,0.0,1.0)
 
 const initiate = ['start_1_lotus','start_2_sexa']
 
-const ongoing = ['main_1_sexv','main_2_sexv','main_3_sex']
+const ongoing = ['main_1_sexa','main_2_sexa','main_3_sex']
 
-const reaction = ['react_1_sex','react_2_sex','react_3_sexv']
+const reaction = ['react_1_sex','react_2_sex','react_3_sexa']
 
 const linkset = "sex"
 

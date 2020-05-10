@@ -728,6 +728,12 @@ margin_right = 858.847
 margin_bottom = 915.205
 text = "Test"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="TestButton"]
+margin_left = -268.0
+margin_top = -537.0
+margin_right = 600.0
+margin_bottom = -30.0
+
 [node name="lootwindow" parent="." groups=[
 "pauseprocess",
 ] instance=ExtResource( 38 )]

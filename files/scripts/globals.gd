@@ -1465,3 +1465,4 @@ func impregnate(father, mother):
 
 
 var punishcategories = ['spanking','whipping','nippleclap','clitclap','nosehook','mashshow','facesit','afacesit','grovel']
+

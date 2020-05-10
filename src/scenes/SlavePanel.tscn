@@ -114,7 +114,6 @@ use_filter = true
 font_data = ExtResource( 32 )
 
 [node name="SlavePanel" type="Panel"]
-visible = false
 margin_left = 10.0
 margin_top = 6.0
 margin_right = 1199.0

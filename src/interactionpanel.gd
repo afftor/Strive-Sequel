@@ -145,6 +145,12 @@ class member:
 	var diff_body_orgasm = 0
 	var aphrodisiac_orgasms = []
 	var drunk_orgasm = 0
+	var dominant = 0
+	var punish_actions = []
+	var mazo_actions = []
+	var deviant_orgasms = 0
+	var max_ongoing_actions = 0
+
 	
 	var actionshad = {addtraits = [], removetraits = [], samesex = 0, samesexorgasms = 0, oppositesex = 0, oppositesexorgasms = 0, punishments = 0, group = 0}
 	
@@ -1317,7 +1323,7 @@ func generaterequest(member):
 		rval.erase('penis')
 	if member.person.penis_size == '' && member.strapon == false:
 		rval.erase('fuckgive')
-	if member.person.vagina == 'none':
+	if member.person.vagina == '':
 		rval.erase('pussy')
 	if member.person.traits.has('Dominant'):
 		rval.erase('humiliate')
@@ -2264,7 +2270,7 @@ func endencounter():
 		for i in sex_traits:
 			check = check_acquire_reqs(p, sex_traits[i].acquire_reqs)
 			chance = (randf()*100 < (5 + 5 * p.person.sexuals_factor))
-			if chance && check && !p.unlocked_sex_traits.has(i):
+			if chance && check && !p.person.unlocked_sex_traits.has(i):
 				p.person.unlocked_sex_traits.append(i)
 				text += p.name + " learned trait: " + Traitdata.sex_traits[i].name + "\n"
 	### Removing Dislikes
@@ -2662,6 +2668,7 @@ func record_actions(scenescript, consents):
 	scenescript.givers = givers
 	scenescript.takers = takers
 	for p in participants:
+		p.max_ongoing_actions = max(p.max_ongoing_actions, ongoingactions.size())
 		if p.orgasm:
 			p.orgasm_actions.append(scenescript.code)
 		if p.orgasm && !scenescript.code in p.aphrodisiac_orgasms && p.effects.has("aphrodisiac"):
@@ -2673,8 +2680,12 @@ func record_actions(scenescript, consents):
 				if i.orgasm && !i in p.seen_orgasms:
 					p.seen_orgasms.append(i)
 		if p.role == "give":
+			if scenescript.takertags.has("punish"):
+				p.punish_actions.append(scenescript.code)
 			for t in takers:
 				if t.orgasm:
+					if p.person.traits.has("undead") || p.person.traits.has("animal"):
+						t.deviant_orgasms += 1
 					if t.person.body_shape != p.person.body_shape:
 						t.diff_body_orgasm += 1
 					for tag in scenescript.takertags:
@@ -2695,13 +2706,20 @@ func record_actions(scenescript, consents):
 					if t.orgasm:
 						t.unconsented_orgasm += 1
 				else:
+					if scenescript.takertags.has("punish"):
+						t.mazo_actions.append(scenescript.code)
 					if !scenescript.code in p.single_partner_consents:
 						p.single_partner_consents.append(scenescript.code)
 					if p.person.sexuals >= 100 && !scenescript.code in t.bedroom_prodigy:
 						t.bedroom_prodigy.append(scenescript.code)
+					
 		if p.role == "take":
 			for g in givers:
 				if g.orgasm:
+					if scenescript.givertags.has("dom"):
+						g.dominant += 1
+					if p.person.traits.has("undead") || p.person.traits.has("animal"):
+						g.deviant_orgasms += 1
 					if g.person.body_shape != p.person.body_shape:
 						g.diff_body_orgasm += 1
 					for tag in scenescript.givertags:

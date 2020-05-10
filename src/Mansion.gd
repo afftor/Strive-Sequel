@@ -36,7 +36,7 @@ func _ready():
 	globals.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	update_turns_label()
-	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe" && false:
+	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe":
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
@@ -194,13 +194,13 @@ func _ready():
 		character.add_trait('core_trait')
 		character.set_slave_category('slave')
 		character.is_players_character = true
-		state.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
-			{code = 'sexuals_factor', value = 1, operant = "+"},
-			{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
-			{code = 'submission', operant = '+', value = 50},
-			{code = 'obedience', operant = '+', value = 30},
-			{code = 'tag', operant = 'remove', value = 'no_sex'},
-			]}])
+#		state.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
+#			{code = 'sexuals_factor', value = 1, operant = "+"},
+#			{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
+#			{code = 'submission', operant = '+', value = 50},
+#			{code = 'obedience', operant = '+', value = 30},
+#			{code = 'tag', operant = 'remove', value = 'no_sex'},
+#			]}])
 		#state.revert()
 		state.money = 505590
 		for i in Items.materiallist:
@@ -257,6 +257,7 @@ func _ready():
 		
 		#input_handler.interactive_message('intro', '', {})
 		
+		
 		for i in state.areas.plains.factions.values():
 			i.reputation = 500
 		
@@ -288,16 +289,95 @@ func _ready():
 func open_travels():
 	$CharacterDislocationPanel.open_character_dislocation()
 
+var heroes = {
+arron = {hp = 100, atk = 30},
+rose = {hp = 80, atk = 35},
+ember = {hp = 120, atk = 29},
+erika = {hp = 90, atk = 32},
+rilu = {hp = 110, atk = 28},
+iola = {hp = 85, atk = 25},
+} #average damage: 25-30% of max hp. Effective hp for enemies: hp+60%+40%
+var enemies = {
+	rat = {hp = 50, atk = 30, element = 'pierce'},
+	treant = {hp = 80, atk = 40, element = 'blunt'},
+	faerie = {hp = 80, atk = 125, element = 'air'},
+	dwarf = {hp = 150, atk = 100, element = 'slash'},
+	dwarf_soldier = {hp = 180, atk = 120, element = 'slash'},
+	golem = {hp = 250, atk = 100, element = 'blunt'},
+	
+	dwarf_king = {},
+	
+	skeleton = {},
+	skeleton_arher = {},
+	zombie = {},
+	
+	wyvern = {},
+	drake_hatchling = {},
+	
+	
+}
+
 func quest_test():
 	$SlaveList.update()
-	for i in state.characters.values():print(i.name, i.has_womb)
-	#state.areas.plains.factions.servants.totalreputation = 500
-	#print(input_handler.CloseableWindowsArray)
-#	for i in state.characters.values():
-#		i.base_exp += 100
-	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
-	#$Exploration.testcombat()
-	#input_handler.emit_signal('EnemyKilled', 'rat')
+	var text = ''
+	#var names = ['Arron', 'Rose', "Ember", "Erika", "Rilu","Iola"]
+	var counter = 0
+	for i in enemies:
+		text += i +"\n"
+		counter += 1
+		var arr = [enemies[i].hp]
+		var arr2 = [enemies[i].atk]
+		for i in range(14):
+			arr.push_back(arr.back() * 1.25)
+			arr2.push_back(arr2.back() * 1.15)
+		for i in range(5):
+			arr.push_back(arr.back() * 1.1)
+			arr2.push_back(arr2.back() * 1.15)
+		for i in range(26):
+			arr.push_back(arr.back() * 1.02)
+			arr2.push_back(arr2.back() * 1.05)
+		for k in range(41):
+			if k % 10 == 0:
+				text += "Level: " + str(k) + " - HP: " + str(round(arr[k])) + " ATK:" + str(round(arr2[k])) + "\n"
+		
+	for i in heroes:
+		text += i +"\n"
+		counter += 1
+		var arr = [heroes[i].hp]
+		var arr2 = [heroes[i].atk]
+		for i in range(14):
+			arr.push_back(arr.back() * 1.25)
+			arr2.push_back(arr2.back() * 1.25)
+		for i in range(5):
+			arr.push_back(arr.back() * 1.1)
+			arr2.push_back(arr2.back() * 1.1)
+		for i in range(26):
+			arr.push_back(arr.back() * 1.02)
+			arr2.push_back(arr2.back() * 1.02)
+		for k in range(41):
+			if k % 10 == 0:
+				text += "Level: " + str(k) + " - HP: " + str(round(arr[k])) + "("+str(round(arr[k]*1.6))+")" + " ATK:" + str(round(arr2[k])) + "("+str(round(arr2[k]*1.6))+")" + "\n"
+		
+		#text += "Level: " + str(40-y) + ", ATK: " + str(round(x+z))  + " With upgrades: "+ str(round((x+z)*1.6)) + "\n"
+		
+	counter = 0
+#	for i in [arron, rose, ember, erika, rilu, iola]:
+#		text += names[counter] +"\n"
+#		counter += 1
+#		var z = i.z
+#		var x = i.x
+#		var y = 40
+#		while y > 0:
+#			y -= 1
+#			if y > 25:
+#				x = x*1.25
+#			elif y > 20:
+#				x = x*1.1
+#			else:
+#				x = x*1.02
+#			#if y%10 == 0:
+#			text += "Level: " + str(40-y) + ", HP: " + str(round(x+z))  + " With upgrades: "+ str(round((x+z)*1.6)) + "\n"
+	$TestButton/RichTextLabel.bbcode_text = text
 
 func _process(delta):
 	if self.visible == false:

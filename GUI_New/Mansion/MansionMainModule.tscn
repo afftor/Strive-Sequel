@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI_New/Mansion/MansionPopulationModule.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI_New/Mansion/MansionSlaveListModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI_New/Mansion/MansionJobModule.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI_New/Mansion/MansionLogModule.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GUI_New/Mansion/MansionSlaveModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GUI_New/Mansion/MansionMainModule.gd" type="Script" id=8]
+[ext_resource path="res://GUI_New/Mansion/MansionSkillsModule.tscn" type="PackedScene" id=9]
+
+[node name="MansionMainModule" type="Control"]
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MansionClockModule" parent="." instance=ExtResource( 2 )]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 305.0
+margin_bottom = 195.0
+
+[node name="MansionPopulationModule" parent="." instance=ExtResource( 3 )]
+margin_left = 320.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 1585, 55 )
+
+[node name="MansionBottomLeftModule" parent="." instance=ExtResource( 1 )]
+margin_left = 15.0
+margin_top = 680.0
+margin_right = 305.0
+margin_bottom = 1065.0
+rect_min_size = Vector2( 290, 385 )
+
+[node name="MansionSlaveListModule" parent="." instance=ExtResource( 4 )]
+margin_left = 320.0
+margin_top = 85.0
+margin_right = 1420.0
+margin_bottom = 915.0
+rect_min_size = Vector2( 1100, 580 )
+script = null
+
+[node name="MansionJobModule" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_left = 320.0
+margin_top = 15.0
+margin_right = 1420.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 1100, 385 )
+
+[node name="MansionLogModule" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 1435.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 315.0
+rect_min_size = Vector2( 470, 300 )
+
+[node name="MansionSlaveModule" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 1435.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 680.0
+
+[node name="MansionSkillsModule" parent="." instance=ExtResource( 9 )]
+margin_left = 320.0
+margin_top = 930.0
+margin_right = 320.0
+margin_bottom = 930.0

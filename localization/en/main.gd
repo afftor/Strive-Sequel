@@ -233,7 +233,7 @@ var TranslationDict = {
 	ITEMHUNT_KNIFE = "Hunting Knife",
 	
 	
-	ITEMAXEDESCRIPT = 'Axe can be used for cutting wood and combat.',
+	ITEMAXEDESCRIPT = 'Axe can be used for cutting wood.',
 	ITEMSWORDDESCRIPT = "Good damage vs unarmored enemies.",
 	ITEMDAGGERDESCRIPT = "Easily hidden, cheap weapon which can be used by anyone.",
 	ITEMCLUBDESCRIPT = "A weapon of your ancestors. Not outstanding, but easy to make and can be held by anyone.",

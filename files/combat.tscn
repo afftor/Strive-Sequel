@@ -127,7 +127,7 @@ __meta__ = {
 
 [node name="Back" type="VBoxContainer" parent="Panel/PlayerGroup"]
 margin_right = 218.0
-margin_bottom = 693.0
+margin_bottom = 679.0
 custom_constants/separation = 11
 
 [node name="left" type="Container" parent="Panel/PlayerGroup/Back"]
@@ -267,7 +267,7 @@ rect_min_size = Vector2( 218, 219 )
 [node name="Front" type="VBoxContainer" parent="Panel/PlayerGroup"]
 margin_left = 222.0
 margin_right = 441.0
-margin_bottom = 693.0
+margin_bottom = 679.0
 custom_constants/separation = 11
 
 [node name="left" type="Container" parent="Panel/PlayerGroup/Front"]

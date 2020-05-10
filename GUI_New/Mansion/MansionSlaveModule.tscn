@@ -1,0 +1,231 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/slavepanel/hp_bar.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/slavepanel/mp_bar.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/slavepanel/statbar.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=6]
+[ext_resource path="res://assets/images/gui/slavepanel/class_panel.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/slavepanel/lust_bar.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/iconsclasses/Worker.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/inventory/icon_craft1.png" type="Texture" id=13]
+
+[node name="MansionSlaveModule" type="Panel"]
+rect_min_size = Vector2( 470, 665 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 9.25311
+margin_top = 5.55186
+margin_right = 464.253
+margin_bottom = 140.552
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="professions" type="GridContainer" parent="TextureRect"]
+margin_left = 14.0
+margin_top = 16.0
+margin_right = 446.0
+margin_bottom = 119.0
+grow_horizontal = 0
+mouse_filter = 2
+columns = 11
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="TextureRect/professions"]
+margin_right = 100.0
+margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="TextureRect/professions/Button"]
+margin_left = -1.0
+margin_top = 76.0
+margin_right = 100.0
+margin_bottom = 100.0
+align = 1
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_top = 135.0
+margin_right = 100.0
+margin_bottom = 235.0
+rect_min_size = Vector2( 120, 150 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="base_stats" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
+margin_left = 128.529
+margin_top = 177.161
+margin_right = 328.529
+margin_bottom = 304.161
+custom_constants/separation = 9
+
+[node name="hp" type="TextureProgress" parent="base_stats"]
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/hp"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="mp" type="TextureProgress" parent="base_stats"]
+margin_top = 34.0
+margin_right = 200.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/mp"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="lust" type="TextureProgress" parent="base_stats"]
+margin_top = 68.0
+margin_right = 200.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/lust"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="progress" type="VBoxContainer" parent="."]
+margin_left = 0.211853
+margin_top = 286.191
+margin_right = 253.212
+margin_bottom = 392.191
+custom_constants/separation = 2
+
+[node name="physics" type="Label" parent="progress"]
+margin_right = 253.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 100, 25 )
+mouse_filter = 0
+text = "physics"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="progress/physics"]
+margin_left = 14.8167
+margin_top = 0.309868
+margin_right = 39.8167
+margin_bottom = 25.3099
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="wits" type="Label" parent="progress"]
+margin_top = 27.0
+margin_right = 253.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 100, 25 )
+mouse_filter = 0
+text = "physics"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="progress/wits"]
+margin_left = 14.8167
+margin_top = 0.309868
+margin_right = 39.8167
+margin_bottom = 25.3099
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="charm" type="Label" parent="progress"]
+margin_top = 54.0
+margin_right = 253.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 100, 25 )
+mouse_filter = 0
+text = "physics"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="progress/charm"]
+margin_left = 14.8167
+margin_top = 0.309868
+margin_right = 39.8167
+margin_bottom = 25.3099
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="sexuals" type="Label" parent="progress"]
+margin_top = 81.0
+margin_right = 253.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 100, 25 )
+mouse_filter = 0
+text = "physics"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="progress/sexuals"]
+margin_left = 14.8167
+margin_top = 0.309868
+margin_right = 39.8167
+margin_bottom = 25.3099
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="productivity" type="TextureRect" parent="."]
+margin_left = 29.6099
+margin_top = 401.585
+margin_right = 95.6099
+margin_bottom = 467.585
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="productivity"]
+margin_left = 58.6627
+margin_top = 23.465
+margin_right = 98.6627
+margin_bottom = 47.465
+
+[node name="CharacterInfoButton" type="Button" parent="."]
+margin_left = 138.797
+margin_top = 575.543
+margin_right = 318.634
+margin_bottom = 613.794
+text = "Character Info"
+__meta__ = {
+"_edit_use_anchors_": false
+}
