@@ -394,7 +394,7 @@ func build_bodyparts():
 		var preserved_option_exists = false
 		for k in workarray:
 			$bodyparts.get_node(i).add_item(k)
-			if preservedsettings[i] == k:
+			if preservedsettings.has(i) and preservedsettings[i] == k:
 				preserved_option_exists = true
 				$bodyparts.get_node(i).select($bodyparts.get_node(i).get_item_count()-1)
 		
@@ -420,10 +420,10 @@ func build_bodyparts():
 		
 		if i == 'penis_type' && racedata.has(i) && !racedata[i].has(preservedsettings[i]):
 			person.set_stat(i, racedata[i][randi()%racedata[i].size()])
-			preservedsettings[i] = person[i]
+			preservedsettings[i] = person.get_stat(i)
 		elif i == 'penis_type' && racedata.has(i) == false && preservedsettings[i] != 'human':
 			person.set_stat(i, 'human')
-			preservedsettings[i] = person[i]
+			preservedsettings[i] = person.get_stat(i)
 		
 		
 		match person.get_stat('sex'):
@@ -434,7 +434,7 @@ func build_bodyparts():
 				if i in ['penis_size', 'penis_type', 'balls_size']:
 					$bodyparts2.get_node(i).visible = false
 					$bodyparts2.get_node(i + "_label").visible = false
-					person[i] = ''
+					person.set_stat(i, '')
 					preservedsettings.erase(i)
 			'futa':
 				if i == 'balls_size':
@@ -521,7 +521,7 @@ func finish_character():
 	$ClassPanel.hide()
 	person.is_active = true
 	person.unlock_class(selected_class)
-	person.food_consumption = 3
+	person.set_stat('food_consumption', 3)
 	person.hp = person.get_stat('hpmax')
 	person.mp = person.get_stat('mpmax')
 	if mode != 'master':
@@ -545,7 +545,7 @@ func open_sex_traits():
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($TraitSelection/ScrollContainer/VBoxContainer)
 		newbutton.text = i.name
-		if person.sex_traits.has(i.code):
+		if person.check_trait(i.code):
 			newbutton.pressed = true
 		newbutton.connect("pressed", self, "select_sex_trait", [i])
 		globals.connecttexttooltip(newbutton, person.translate(i.descript))

@@ -351,11 +351,11 @@ func leave():
 func fight_skirmish():
 	if current_scene.has("winscene"):
 		input_handler.encounter_win_script = current_scene.winscene
-	input_handler.current_enemy_group = dialogue_enemy
+	globals.current_enemy_group = dialogue_enemy
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 	close(true)
 
 func quest_fight(code):
-	input_handler.current_enemy_group = code
+	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 

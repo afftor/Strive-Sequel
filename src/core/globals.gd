@@ -1099,7 +1099,7 @@ func common_effects(effects):
 			'screen_black_transition':
 				ResourceScripts.core_animations.BlackScreenTransition(i.value)
 			'start_combat':
-				input_handler.current_enemy_group = i.value
+				current_enemy_group = i.value
 				input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 			'start_quest_combat':
 				globals.StartQuestCombat(i.value)

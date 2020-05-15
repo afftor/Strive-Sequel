@@ -16,7 +16,7 @@ func timeflowhotkey(hotkey):
 
 func advance_turn():
 	input_handler.PlaySound("button_click")
-	var number = ResourceScripts.game_globals.hour_turns_set
+	var number = globals.hour_turns_set
 	while number > 0:
 		advance_hour()
 		number -= 1
@@ -36,7 +36,7 @@ func _ready():
 	input_handler.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	update_turns_label()
-	if OS.get_executable_path() == "D:\\Program Files2\\godot_bin\\Godot_v3.2-stable_win64.exe":# && false:
+	if OS.get_executable_path() == "D:\\Program Files2\\godot_bin\\Godot_v3.2-stable_win64.exe" && false:
 		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true

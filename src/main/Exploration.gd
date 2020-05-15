@@ -45,7 +45,7 @@ func return_to_mansion():
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), 'timeout')
 	hide()
-	ResourceScripts.core_animations.StopBackgroundSound()
+	input_handler.StopBackgroundSound()
 	input_handler.SetMusicRandom("mansion")
 	input_handler.CurrentScreen = 'mansion'
 
@@ -718,8 +718,8 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 			'complete_location':
 				newbutton.texture = images.icons.quest_encounter
-				newbutton.hint_tooltip = "Complete quest location: " + ResourceScripts.world_gen.dungeons[i.type].name
-				text += "\n" + ResourceScripts.world_gen.dungeons[i.type].name + ": " + ResourceScripts.world_gen.dungeons[i.type].descript
+				newbutton.hint_tooltip = "Complete quest location: " + worlddata.dungeons[i.type].name
+				text += "\n" + worlddata.dungeons[i.type].name + ": " + worlddata.dungeons[i.type].descript
 			'complete_dungeon':
 				newbutton.texture = images.icons.quest_dungeon
 				newbutton.hint_tooltip = "Complete quest dungeon: "
@@ -896,7 +896,7 @@ func free():
 
 func location_purchase():
 	input_handler.ClearContainer($CityGui/ScrollContainer/VBoxContainer)
-	for i in ResourceScripts.world_gen.dungeons.values():
+	for i in worlddata.dungeons.values():
 		if i.type != 'dungeon':
 			continue
 	#for i in purch_location_list.values():
@@ -915,7 +915,7 @@ func purchase_location(purchasing_location):
 	if active_area.locations.size() < 8:
 		var randomlocation = []
 		for i in active_area.locationpool:
-			randomlocation.append(ResourceScripts.world_gen.dungeons[i].code)
+			randomlocation.append(worlddata.dungeons[i].code)
 		#randomlocation = randomlocation[randi()%randomlocation.size()]
 		randomlocation = ResourceScripts.world_gen.make_location(purchasing_location.code, active_area)
 		input_handler.active_location = randomlocation

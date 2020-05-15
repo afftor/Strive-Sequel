@@ -208,7 +208,7 @@ func add_trait(tr_code):
 		parent.apply_effect(effects_pool.add_effect(eff))
 		eff.set_args('trait', tr_code)
 	if tr_code == 'undead':
-		parent.food.food_consumption = 0
+		statlist.food_consumption = 0
 		statlist.charm -= 100
 #		statlist.sexuals -= 50 
 		statlist.resists['dark'] += 50
@@ -511,7 +511,7 @@ func create(temp_race, temp_gender, temp_age):
 func get_racial_features():
 	var race_template = races.racelist[statlist.race]
 	for i in race_template.basestats:
-		self.set(i, round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1]))) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
+		statlist[i] = round(rand_range(race_template.basestats[i][0], race_template.basestats[i][1])) #1 - terrible, 2 - bad, 3 - average, 4 - good, 5 - great, 6 - superb
 	
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
