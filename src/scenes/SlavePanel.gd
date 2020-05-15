@@ -87,8 +87,8 @@ func _ready():
 	$HirePanel/HireButton.connect("pressed", self, "hire_character")
 
 func hire_character():
-	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_party.get_pop_cap():
-		if ResourceScripts.game_party.get_pop_cap() < variables.max_population_cap:
+	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
+		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 			input_handler.SystemMessage("You don't have enough rooms")
 		else:
 			input_handler.SystemMessage("Population limit reached")
