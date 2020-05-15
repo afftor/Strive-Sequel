@@ -349,6 +349,7 @@ func use_social_skill(s_code, target):
 	
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
+	print("9 - %d" % OS.get_ticks_msec())
 
 func use_mansion_item(item):
 	var itembase = Items.itemlist[item.itembase]
