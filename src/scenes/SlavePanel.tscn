@@ -63,11 +63,6 @@
 [ext_resource path="res://src/scenes/imageselect.tscn" type="PackedScene" id=61]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=62]
 
-
-
-
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1178, 860 )
@@ -170,6 +165,9 @@ margin_right = 1142.78
 margin_bottom = 219.549
 text = "task"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="productivity" type="TextureRect" parent="."]
 margin_left = 1002.24
