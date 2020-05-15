@@ -578,7 +578,7 @@ func faction_sellslaves():
 	input_handler.ClearContainer($HirePanel/ScrollContainer/VBoxContainer)
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
-		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free'}) == false:
+		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($HirePanel/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_stat('name')

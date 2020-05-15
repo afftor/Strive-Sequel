@@ -180,6 +180,7 @@ func make_slave_for_guild(guild):
 	newslave.set_stat('is_hirable', true)
 	newslave.set_stat('hire_scene', 'hire')
 	newslave.is_known_to_player = true
+#	print ("%s - %d" % [newslave.get_stat('race'), newslave.get_stat('hpmax')])
 
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
@@ -363,7 +364,7 @@ func make_quest(questcode):
 			var statreq = round(rand_range(tempdata.condition_number[0],tempdata.condition_number[1]))
 			while statreq > 0:
 				var statdata = tempdata.conditions[randi()%tempdata.conditions.size()]
-				var req = {operant = statdata.operant, code = statdata.code, type = statdata.type[randi()%statdata.type.size()], value = round(rand_range(statdata.range[0], statdata.range[1]))}
+				var req = {operant = statdata.operant, code = statdata.code, stat = statdata.type[randi()%statdata.type.size()], value = round(rand_range(statdata.range[0], statdata.range[1]))}
 				
 				statdata.type.erase(req.code)
 				tempdata.statreqs.append(req)

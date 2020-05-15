@@ -50,7 +50,7 @@ func custom_stats_get():
 					if races.racelist[race].race_bonus.has('hpfactor'):tres *= races.racelist[race].race_bonus.hpfactor
 			if bonuses.has('hp_flat_bonus'): tres += bonuses.hp_flat_bonus
 			if bonuses.has('hpmax_mul'): tres *= bonuses.hpmax_mul
-			res['hp_max'] = tres
+			res['hpmax'] = tres
 	if res.has('mpmax'):
 		var tres = variables.basic_max_mp + variables.max_mp_per_magic_factor * statlist.magic_factor
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
