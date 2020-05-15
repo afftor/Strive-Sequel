@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/interactionpanel.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/panels/paneltransperent.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=4]

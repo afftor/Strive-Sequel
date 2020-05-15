@@ -34,7 +34,7 @@ func requirements():
 		for i in givers:
 			if i.limbs == false:
 				valid = false
-			if !globals.longtails.has(i.person.tail):
+			if !variables.longtails.has(i.person.get_stat('tail')):
 				valid = false
 	return valid
 

@@ -182,7 +182,7 @@ var data = {
 
 	reim_encounter3 = {
 		variations = [
-			{reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 1}]}],
+			{reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 1}]}],
 			image = null,
 			tags = [],
 			text = [

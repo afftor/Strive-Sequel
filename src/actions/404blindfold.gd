@@ -39,9 +39,9 @@ func requirements():
 func givereffect(member):
 	var result
 	var effects = {}
-	if  (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 10):
+	if  (member.person.check_trait("Likes it rough") && member.lewd >= 10):
 		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
+	elif member.person.check_trait("Likes it rough"):
 		result = 'average'
 	else:
 		result = 'bad'
@@ -51,9 +51,9 @@ func givereffect(member):
 func takereffect(member):
 	var result
 	var effects = {}
-	if (member.person.traits.find("Likes it rough") >= 0 && member.lewd >= 10):
+	if (member.person.check_trait("Likes it rough") && member.lewd >= 10):
 		result = 'good'
-	elif member.person.traits.find("Likes it rough") >= 0:
+	elif member.person.check_trait("Likes it rough"):
 		result = 'average'
 	else:
 		result = 'bad'

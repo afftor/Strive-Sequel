@@ -46,7 +46,7 @@ func takereffect(member):
 
 func initiate():
 	var text = ''
-	if takers[0].person.lust > 30:
+	if takers[0].person.get_stat('lust') > 30:
 		text += "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [anus2]"
 	else:
 		text += "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [anus2]"

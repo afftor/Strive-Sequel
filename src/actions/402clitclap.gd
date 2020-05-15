@@ -29,7 +29,7 @@ func requirements():
 	for i in takers:
 #		if i.acc6 != null:
 #			valid = false
-		if i.person.sex == 'male':
+		if i.person.get_stat('sex') == 'male':
 			valid = false
 	if takers.size() != 1 || givers.size() != 1:
 		valid = false
@@ -41,7 +41,7 @@ func givereffect(member):
 
 func takereffect(member):
 	var effects = {sens = 120, horny = 10}
-	if member.person.sex == 'male':
+	if member.person.get_stat('sex') == 'male':
 		effects.sens /= 1.3
 	return effects
 

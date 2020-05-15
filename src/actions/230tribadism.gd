@@ -30,10 +30,10 @@ func requirements():
 		valid = false
 	else:
 		for i in givers:
-			if i.person.has_pussy == false:
+			if i.person.get_stat('has_pussy') == false:
 				valid = false
 		for i in takers:
-			if i.person.has_pussy == false:
+			if i.person.get_stat('has_pussy') == false:
 				valid = false
 	return valid
 

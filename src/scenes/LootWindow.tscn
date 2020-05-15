@@ -1,8 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://src/LootWindow.gd" type="Script" id=2]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/LootWindow.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=3]
+
+
+
 
 [node name="LootWindow" type="PopupPanel"]
 margin_left = 694.986

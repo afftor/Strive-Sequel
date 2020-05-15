@@ -1,85 +1,14 @@
 extends Node
 
 #warning-ignore-all:unused_class_variable
+var race_groups = {
+	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
+	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
+	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
+	rare = ['DarkElf','Drow','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
+}
 
-func get_progress_task(character, temptask, tempsubtask, count_crit = false):
-	var task = tasklist[temptask]
-	var subtask = task.production[tempsubtask]
-	var value = call(subtask.progress_function, character)
-	var item
-	if character.gear.tool != null:
-		item = state.items[character.gear.tool]
-	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
-		if item.bonusstats.has("task_efficiency_tool"):
-			value = value + value*item.bonusstats.task_efficiency_tool
-	value = value * (character.get_stat('productivity')*character.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
-	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
-		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
-			value = value*2
-	
-	return value
 
-func hunt_meat(character):
-	return 1 + (1*(character.get_stat('physics')/66))
-
-func fishing(character):
-	return 1 + (1*(character.get_stat('physics')/150+character.get_stat('wits')/100))
-
-func farming_veges(character):
-	return 1 + (1*(character.get_stat('physics')/50+character.get_stat('wits')/66))
-
-func farming_wheat(character):
-	return 1 + (1*(character.get_stat('physics')/40+character.get_stat('wits')/66))
-
-func farming_cloth(character):
-	return 1 + (1*(character.get_stat('physics')/75+character.get_stat('wits')/100))
-
-func hunt_leather(character):
-	return 1 + (1*(character.get_stat('physics')/66))
-
-func hunt_leather_hard(character):
-	return 1 + (1*(character.get_stat('physics')/33))
-
-func hunt_leather_mythic(character):
-	return 1 + (1*(character.get_stat('physics')/25))
-
-func woodcutting_lumber(character):
-	return 1 + (1*(character.get_stat('physics')/66))
-
-func woodmagiccutting_lumber(character):
-	return 1 + (1*(character.get_stat('physics')/30))
-
-func woodironcutting_lumber(character):
-	return 1 + (1*(character.get_stat('physics')/25))
-
-func mining_stone(character):
-	return 1 + (1*(character.get_stat('physics')/66))
-	
-func mining_iron(character):
-	return 1 + (1*(character.get_stat('physics')/33))
-	
-func mining_mythril(character):
-	return 1 + (1*(character.get_stat('physics')/30))
-
-func whoring_gold(character):
-	return (1 + character.get_stat('sexuals')/40 + character.get_stat('charm')/80)
-
-func cooking_progress(character):
-	return 1 + (1*(character.get_stat('wits')/50))
-
-func tailor_progress(character):
-	return 1 + (1*(character.get_stat('wits')/66+character.get_stat('physics')/150))
-
-func forge_progress(character):
-	return 1 + (1*(character.get_stat('wits')/66+character.get_stat('physics')/150)) * (1+0.25*state.upgrades.forgeworkshop)
-
-func alchemy_progress(character):
-	return 1 + (1*(character.get_stat('wits')/50))
-
-func building_progress(character):
-	return (1 + character.get_stat('wits')/100 + character.get_stat('physics')/50) * (1+0.25*state.upgrades.forgeworkshop)
-
-#i added to task tamplates link to a corresponding productivity modifier. rewiev these values and fix them if needed 
 #also tried to fix cooking but not sure if all was made
 var tasklist = {
 	hunting = {

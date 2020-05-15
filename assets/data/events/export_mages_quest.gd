@@ -295,7 +295,7 @@ var data = {
 		image = null,
 		tags = [],
 		text = [
-			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', type = 'sexuals_factor', operant = 'gte', value = 3}]}]},
+			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}]}]},
 			{text = "XARIENCOUNTER8_2", reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]},
 			{text = "XARIENCOUNTER8_3", reqs = []},
 		],

@@ -30,10 +30,10 @@ func requirements():
 		valid = false
 	else:
 		for i in givers:
-			if i.person.has_pussy == false :
+			if i.person.get_stat('has_pussy') == false :
 				valid = false
 		for i in takers:
-			if i.person.has_pussy == false :
+			if i.person.get_stat('has_pussy') == false :
 				valid = false
 #			elif i.vagina != null:
 #				valid = false
@@ -41,12 +41,12 @@ func requirements():
 
 func givereffect(member):
 	var effects = {sens = 200, horny = 10}
-	member.person.metrics.vag += 1
+	member.person_metrics.vag += 1
 	return effects
 
 func takereffect(member):
 	var effects = {sens = 200, horny = 10}
-	member.person.metrics.vag += 1
+	member.person_metrics.vag += 1
 	return effects
 
 func initiate():

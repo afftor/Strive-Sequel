@@ -34,10 +34,10 @@ func requirements():
 		for i in givers:
 			if i.limbs == false:
 				valid = false
-			if !globals.longtails.has(i.person.tail):
+			if !variables.longtails.has(i.person.get_stat('tail')):
 				valid = false
 		for i in takers:
-			if i.person.has_pussy == false:
+			if i.person.get_stat('has_pussy') == false:
 				valid = false
 	return valid
 

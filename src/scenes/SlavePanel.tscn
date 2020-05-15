@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/slavepanel/slavepanel.png" type="Texture" id=2]
 [ext_resource path="res://src/scenes/SlavePanel.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=4]
@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/images/gui/inventory/icon_craft1.png" type="Texture" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/raceshades/Arachna_M.png" type="Texture" id=8]
-[ext_resource path="res://src/CharStatsPanel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/scenes/CharStatsPanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/images/gui/panels/noimagesmall.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/gui/slavepanel/statbar.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/slavepanel/hp_bar.png" type="Texture" id=12]
@@ -43,12 +43,12 @@
 [ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=41]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=42]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=43]
-[ext_resource path="res://src/RightClickReactButton.gd" type="Script" id=44]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=44]
 [ext_resource path="res://assets/images/gui/charpanel/CharScreen_0007_add-skill.png" type="Texture" id=45]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=46]
 [ext_resource path="res://assets/images/gui/slavepanel/class_panel.png" type="Texture" id=47]
 [ext_resource path="res://assets/images/iconsclasses/Worker.png" type="Texture" id=48]
-[ext_resource path="res://src/class_selection.tscn" type="PackedScene" id=49]
+[ext_resource path="res://src/scenes/class_selection.tscn" type="PackedScene" id=49]
 [ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=50]
 [ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=51]
 [ext_resource path="res://assets/images/gui/inventory/itemicon3.png" type="Texture" id=52]
@@ -60,8 +60,13 @@
 [ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=58]
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=59]
 [ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=60]
-[ext_resource path="res://src/imageselect.tscn" type="PackedScene" id=61]
+[ext_resource path="res://src/scenes/imageselect.tscn" type="PackedScene" id=61]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=62]
+
+
+
+
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )

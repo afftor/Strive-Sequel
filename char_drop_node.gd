@@ -7,7 +7,7 @@ var character
 var position
 
 func can_drop_data(position, data):
-	if data is Slave:
+	if data is ResourceScripts.scriptdict.class_slave:
 		return true
 	elif data is Item || data is Dictionary:
 		if character != null:
@@ -16,7 +16,7 @@ func can_drop_data(position, data):
 			return false
 
 func drop_data(position, data):
-	if data is Slave:
+	if data is ResourceScripts.scriptdict.class_slave:
 		if target_node != null && target_function != null:
 			if metadata != null:
 				target_node.call(target_function, metadata, data)

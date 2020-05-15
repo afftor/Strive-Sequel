@@ -10,6 +10,7 @@ const takerpart = ''
 const virginloss = false
 const giverconsent = 'basic'
 const takerconsent = 'any'
+const consent_level = 0 #added due to testing, i think this script is broken overall
 
 func getname(state = null):
 	return "Wear Strap-on"
@@ -25,7 +26,7 @@ func requirements():
 	if givers.size() < 1:
 		valid = false
 	for i in givers:
-		if i.person.penis_size != '' || i.strapon != null:
+		if i.person.get_stat('penis_size') != '' || i.strapon:
 			valid = false
 	return valid
 

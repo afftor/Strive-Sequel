@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://src/PopupPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/PopupPanel.gd" type="Script" id=2]
+
+
 
 [node name="PopupPanel" type="Panel"]
 margin_left = 569.987

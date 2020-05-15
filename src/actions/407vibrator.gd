@@ -34,7 +34,7 @@ func requirements():
 	elif givers.size() > 2:
 		valid = false
 	for i in takers:
-		if i.person.has_pussy == false:
+		if i.person.get_stat('has_pussy') == false:
 			valid = false
 	return valid
 

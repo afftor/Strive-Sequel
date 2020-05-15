@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/WarnScreen.gd" type="Script" id=1]
+
+
+[node name="WarnScreen" type="Panel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+script = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 583.137
+margin_top = 150.104
+margin_right = 1332.14
+margin_bottom = 544.104
+bbcode_enabled = true
+bbcode_text = "[color=#ff4949][center]This game is strictly for those above the age of 18 and contains some content which could offend some people. However if the age of consent for your country is higher, refer to that instead. By proceeding on you agree that you are over the age of 18(or regional equivalent), and you’re not going to complain. All characters described or depicted are either 18 or older. This work is one of pure fiction, and applying content depicted in this game to real life may break the law, and I hold no responsibility for your actions.  [/center][/color]"
+text = "This game is strictly for those above the age of 18 and contains some content which could offend some people. However if the age of consent for your country is higher, refer to that instead. By proceeding on you agree that you are over the age of 18(or regional equivalent), and you’re not going to complain. All characters described or depicted are either 18 or older. This work is one of pure fiction, and applying content depicted in this game to real life may break the law, and I hold no responsibility for your actions.  "
+
+[node name="Accept" type="Button" parent="."]
+margin_left = 771.0
+margin_top = 469.0
+margin_right = 1146.0
+margin_bottom = 540.0
+text = "Accept"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 771.0
+margin_top = 569.0
+margin_right = 1146.0
+margin_bottom = 640.0
+text = "Quit"

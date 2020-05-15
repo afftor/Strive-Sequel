@@ -20,10 +20,10 @@ func requirements():
 	if takers.size() != 1 || givers.size() != 1:
 		valid = false
 	for i in givers:
-		if i.person.penis_size == '' && i.strapon == false:
+		if i.person.get_stat('penis_size') == '' && i.strapon == false:
 			valid = false
 	for i in takers:
-		if i.person.has_pussy == false:
+		if i.person.get_stat('has_pussy') == false:
 			valid = false
 	
 	return valid
@@ -36,13 +36,13 @@ func getongoingname(givers, takers):
 
 func givereffect(member):
 	var effects = {sens = 220, horny = 25}
-	if member.person.penis_size == '':
+	if member.person.get_stat('penis_size') == '':
 		effects.sens /= 1.2
 	return effects
 
 func takereffect(member):
 	var effects = {sens = 220, horny = 15}
-	member.person.metrics.vag += 1
+	member.person_metrics.vag += 1
 	return effects
 
 #orientation of givers/takers

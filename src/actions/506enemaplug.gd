@@ -42,7 +42,7 @@ func givereffect(member):
 #Disabling until something is decided about tools
 func takereffect(member):
 	var effects = {sens = 120, horny = 20}
-	if member.person.sex == 'male':
+	if member.person.get_stat('sex') == 'male':
 		effects.sens /= 1.3
 	return effects
 

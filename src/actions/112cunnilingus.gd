@@ -35,11 +35,11 @@ func requirements():
 		for i in takers:
 #			if i.vagina != null || i.person.has_pussy == false:
 #				valid = false
-			if i.person.has_pussy == false:
+			if i.person.get_stat('has_pussy') == false:
 				valid = false
 #			elif i.clit != null:
 #				valid = false
-			elif i.person.sex == 'male':
+			elif i.person.get_stat('sex') == 'male':
 				valid = false
 	return valid
 

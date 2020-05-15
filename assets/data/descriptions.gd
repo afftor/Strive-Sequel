@@ -57,7 +57,7 @@ func new_charcter_description(character):
 			check_allowed_sex = true
 			continue
 		elif i == '[bonus]':
-			text += character.bonus_description
+			text += character.get_stat('bonus_description')
 			continue
 		elif check_allowed_sex == true && (person.tags.has("no_sex") || (person.is_players_character == false && person.is_known_to_player == false)):
 			check_allowed_sex = false
@@ -65,14 +65,14 @@ func new_charcter_description(character):
 				text += tr("NOSEXDETAILSDESCRIPT")
 				add_no_sex_descript = true
 			continue
-		var charpart = character.get(i)
+		var charpart = character.get_stat(i)
 		if str(charpart) != '':
 			var newtext = ''
 			if bodypartsdata[i].has(charpart):
 				newtext = bodypartsdata[i][charpart].chardescript
-				if bodypartsdata[i][charpart].has('combine') && str(character.get(bodypartsdata[i][charpart].combine)) != '':
-					newtext = bodypartsdata[bodypartsdata[i][charpart].combine][str(charpart) + "_" + str(character.get(bodypartsdata[i][charpart].combine))].chardescript
-				elif bodypartsdata[i][charpart].has('combine') && character.get(bodypartsdata[i][charpart].combine) == '':
+				if bodypartsdata[i][charpart].has('combine') && str(character.get_stat(bodypartsdata[i][charpart].combine)) != '':
+					newtext = bodypartsdata[bodypartsdata[i][charpart].combine][str(charpart) + "_" + str(character.get_stat(bodypartsdata[i][charpart].combine))].chardescript
+				elif bodypartsdata[i][charpart].has('combine') && character.get_stat(bodypartsdata[i][charpart].combine) == '':
 					newtext = ''
 			elif bodypartsdata[i].has('default'):
 				newtext = bodypartsdata[i].default.chardescript
@@ -85,14 +85,8 @@ func new_charcter_description(character):
 
 func entry():
 	var text = ''
-	text += person.name
-	if person.nickname != '':
-		text += ' "' + person.nickname + '" '
-	if person.surname != '':
-		text += " " + person.surname + ". "
-	else:
-		text += ". "
-	if person.professions.has('master'):
+	text += person.get_full_name()
+	if person.has_profession('master'):
 		text =  "[color=green]Mansion's [Master][/color] - " + text
 	return text
 
@@ -100,11 +94,11 @@ var showmode = 'default'
 
 func multiple_tits():
 	var text
-	if person.multiple_tits >= 1:
-		if person.multiple_tits_developed == false:
-			text = 'Below [his] chest you can spot [color=yellow]' + str(person.multiple_tits) + ' additional '+ globals.fastif(person.multiple_tits == 1, 'pair', 'pairs') +'[/color] of [color=yellow]rudimentary nipples[/color]. '
+	if person.get_stat('multiple_tits') >= 1:
+		if person.get_stat('multiple_tits_developed') == false:
+			text = 'Below [his] chest you can spot [color=yellow]' + str(person.get_stat('multiple_tits')) + ' additional '+ globals.fastif(person.get_stat('multiple_tits') == 1, 'pair', 'pairs') +'[/color] of [color=yellow]rudimentary nipples[/color]. '
 		else:
-			text = 'Below [his] chest [he] possesses [color=yellow]' + str(person.multiple_tits) + globals.fastif(person.multiple_tits == 1, ' row', ' rows')+ '[/color] of slightly smaller [color=yellow]ripe tits[/color]. '
+			text = 'Below [his] chest [he] possesses [color=yellow]' + str(person.multiple_tits) + globals.fastif(person.get_stat('multiple_tits') == 1, ' row', ' rows')+ '[/color] of slightly smaller [color=yellow]ripe tits[/color]. '
 	else:
 		text = ''
 	return text
@@ -131,45 +125,47 @@ func multiple_tits():
 func piercing():
 	var text = ""
 	#add later
-	if person.piercing.earlobes == 'earrings':
+	var tmp = person.get_stat('piercing')
+	if tmp.earlobes == 'earrings':
 		text += '[His] ears are decorated with a pair of [color=aqua]fancy earrings[/color]. '
-	elif person.piercing.earlobes == 'stud':
+	elif tmp.earlobes == 'stud':
 		text += '[His] ears have a pair of [color=aqua]small studs[/color] in them. '
-	if person.piercing.eyebrow == 'stud':
+	if tmp.eyebrow == 'stud':
 		text += '[His] eyebrow is decorated with a [color=aqua]small stud[/color]. '
-	if person.piercing.nose == 'ring':
+	if tmp.nose == 'ring':
 		text += '[His] nose bears a [color=aqua]large nose ring[/color] in it. '
-	elif person.piercing.nose == 'stud':
+	elif tmp.nose == 'stud':
 		text += '[His] nose has a [color=aqua]small stud[/color] in it. '
-	if person.piercing.lips == 'ring':
+	if tmp.lips == 'ring':
 		text += '[His] lip is pierced with a [color=aqua]small ring[/color]. '
-	elif person.piercing.lips == 'stud':
+	elif tmp.lips == 'stud':
 		text += '[His] lip has a [color=aqua]small stud[/color] in it. '
-	if person.piercing.tongue == 'stud':
+	if tmp.tongue == 'stud':
 		text += '[His] tongue has a shiny [color=aqua]stud[/color], visible when [he] talks. '
-	if person.piercing.navel == 'stud':
+	if tmp.navel == 'stud':
 		text += "[His] navel is pierced with a [color=aqua]small stud[/color]."
 
-	if person.piercing.nipples == 'stud':
+	if tmp.nipples == 'stud':
 		text += '[His] pierced nipples are decorated with [color=aqua]a pair of small studs[/color]. '
-	elif person.piercing.nipples == 'ring':
+	elif tmp.nipples == 'ring':
 		text += '[His] pierced nipples contain a [color=aqua]pair of rings[/color]. '
-	elif person.piercing.nipples == 'chain':
+	elif tmp.nipples == 'chain':
 		text += 'Her pierced nipples are connected by a [color=aqua]small chain[/color]. '
-	if person.piercing.clit == 'ring':
+	if tmp.clit == 'ring':
 		text += '[His] clit is pierced with a [color=aqua]ring[/color]. '
-	elif person.piercing.clit == 'stud':
+	elif tmp.clit == 'stud':
 		text += '[His] clit has a [color=aqua]small stud[/color] in it. '
-	if person.piercing.labia == 'ring':
+	if tmp.labia == 'ring':
 		text += '[His] pierced labia is decorated with [color=aqua]a pair of rings[/color]. '
-	elif person.piercing.labia == 'stud':
+	elif tmp.labia == 'stud':
 		text += '[His] pierced labia is decorated with a [color=aqua]small stud[/color]. '
-	if person.piercing.penis == 'ring':
+	if tmp.penis == 'ring':
 		text += '[His] cock has a considerable [color=aqua]ring[/color] on the tip. '
-	elif person.piercing.penis == 'stud':
+	elif tmp.penis == 'stud':
 		text += '[His] cock has a [color=aqua]stud[/color] in it. '
 
 	if text != '':
+		#posible bug
 		if globals.state.descriptsettings.piercing == true || showmode != 'default':
 			text = "\n\n[url=piercing][color=#d1b970]Piercing:[/color][/url] " + text
 		else:
@@ -179,28 +175,30 @@ func piercing():
 func tattoo():
 	var text = ''
 	#Fix later
-
+	var tmp = person.get_stat('tattoo')
+	var tmp1 = person.get_stat('tattooshow')
 	var sametattoo = true
-	for i in person.tattoo.values():
-		if person.tattoo.face != i || person.tattoo.face == 'none':
+	for i in tmp.values():
+		if tmp.face != i || tmp.face == 'none':
 			sametattoo = false
 			break
 	if sametattoo == true:
-		text += "[name]'s entire body is tattooed with [color=yellow]" + tattoooptions[person.tattoo.face].name + '[/color] pattern, featuring complex ' + tattoooptions[person.tattoo.face].descript + '. '
+		text += "[name]'s entire body is tattooed with [color=yellow]" + tattoooptions[tmp.face].name + '[/color] pattern, featuring complex ' + tattoooptions[tmp.face].descript + '. '
 	else:
-		if person.tattoo.face != 'none' && person.tattooshow.face == true:
-			text += tattoosdescript.face.start + '[color=yellow]' + tattoooptions[person.tattoo.face].name + '[/color]' + tattoosdescript.face.end + tattoooptions[person.tattoo.face].descript + '. '
-		if person.tattoo.chest != 'none' && person.tattooshow.chest == true:
-			text += tattoosdescript.chest.start + '[color=yellow]' + tattoooptions[person.tattoo.chest].name + '[/color]' + tattoosdescript.chest.end + tattoooptions[person.tattoo.chest].descript + '. '
-		if person.tattoo.arms != 'none' && person.tattooshow.arms == true:
-			text += tattoosdescript.arms.start + '[color=yellow]' + tattoooptions[person.tattoo.arms].name + '[/color]' + tattoosdescript.arms.end + tattoooptions[person.tattoo.arms].descript + '. '
-		if person.tattoo.waist != 'none' && person.tattooshow.waist == true:
-			text += tattoosdescript.waist.start + '[color=yellow]' + tattoooptions[person.tattoo.waist].name + '[/color]' + tattoosdescript.waist.end + tattoooptions[person.tattoo.waist].descript + '. '
-		if person.tattoo.legs != 'none' && person.tattooshow.legs == true:
-			text += tattoosdescript.legs.start + '[color=yellow]' + tattoooptions[person.tattoo.legs].name + '[/color]' + tattoosdescript.legs.end + tattoooptions[person.tattoo.legs].descript + '. '
-		if person.tattoo.ass != 'none' && person.tattooshow.ass == true:
-			text += tattoosdescript.ass.start + '[color=yellow]' + tattoooptions[person.tattoo.ass].name + '[/color]' + tattoosdescript.ass.end + tattoooptions[person.tattoo.ass].descript + '. '
+		if tmp.face != 'none' && tmp1.face == true:
+			text += tattoosdescript.face.start + '[color=yellow]' + tattoooptions[tmp.face].name + '[/color]' + tattoosdescript.face.end + tattoooptions[tmp.face].descript + '. '
+		if tmp.chest != 'none' && tmp1.chest == true:
+			text += tattoosdescript.chest.start + '[color=yellow]' + tattoooptions[tmp.chest].name + '[/color]' + tattoosdescript.chest.end + tattoooptions[tmp.chest].descript + '. '
+		if tmp.arms != 'none' && tmp1.arms == true:
+			text += tattoosdescript.arms.start + '[color=yellow]' + tattoooptions[tmp.arms].name + '[/color]' + tattoosdescript.arms.end + tattoooptions[tmp.arms].descript + '. '
+		if tmp.waist != 'none' && tmp1.waist == true:
+			text += tattoosdescript.waist.start + '[color=yellow]' + tattoooptions[tmp.waist].name + '[/color]' + tattoosdescript.waist.end + tattoooptions[tmp.waist].descript + '. '
+		if tmp.legs != 'none' && tmp1.legs == true:
+			text += tattoosdescript.legs.start + '[color=yellow]' + tattoooptions[tmp.legs].name + '[/color]' + tattoosdescript.legs.end + tattoooptions[tmp.legs].descript + '. '
+		if tmp.ass != 'none' && tmp1.ass == true:
+			text += tattoosdescript.ass.start + '[color=yellow]' + tattoooptions[tmp.ass].name + '[/color]' + tattoosdescript.ass.end + tattoooptions[tmp.ass].descript + '. '
 	if text != '':
+		#possible bug
 		if globals.state.descriptsettings.tattoo == true || showmode != 'default': 
 			text = "\n\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] " + text
 		else:
@@ -354,7 +352,7 @@ var bodypartsdata = {
 		grey = {code = 'grey', name = '', chardescript = '', bodychanges = []},
 		fair = {code = 'fair', name = '', chardescript = '', bodychanges = []},
 		olive = {code = 'olive', name = '', chardescript = '', bodychanges = []},
-		tan = {code = 'tan', name = '', chardescript = '', bodychanges = []},
+		'tan' : {code = 'tan', name = '', chardescript = '', bodychanges = []},
 		brown = {code = 'brown', name = '', chardescript = '', bodychanges = []},
 		dark = {code = 'dark', name = '', chardescript = '', bodychanges = []},
 		slime = {code = 'slime', name = '', chardescript = '', bodychanges = []},
@@ -528,7 +526,7 @@ func get_class_reqs(newperson, classdata):
 func get_class_bonuses(newperson, classdata):
 	var text = ''
 	for i in classdata.statchanges:
-		text += globals.statdata[i].name + ": "
+		text += statdata.statdata[i].name + ": "
 		if classdata.statchanges[i]  > 0:
 			text += "+"
 		text += str(classdata.statchanges[i]) + "\n"

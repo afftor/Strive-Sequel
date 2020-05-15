@@ -41,7 +41,7 @@ func requirements():
 		for i in takers:
 #			if i.penis != null || i.person.penis_size == '':
 #				valid = false
-			if i.person.penis_size == '':
+			if i.person.get_stat('penis_size') == '':
 				valid = false
 	return valid
 

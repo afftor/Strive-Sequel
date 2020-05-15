@@ -35,12 +35,12 @@ func requirements():
 		valid = false
 	else:
 		for i in givers:
-			if i.person.tits_size in ['masculine','flat']:
+			if i.person.get_stat('tits_size') in ['masculine','flat']:
 				valid = false
 			if i.limbs == false:
 				valid = false
 		for i in takers:
-			if i.person.penis_size == '':
+			if i.person.get_stat('penis_size') == '':
 				valid = false
 	return valid
 

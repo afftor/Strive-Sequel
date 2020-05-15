@@ -21,7 +21,7 @@ func requirements():
 	if takers.size() != 1 || givers.size() != 2:
 		valid = false
 	for i in givers:
-		if i.person.penis_size == '' && i.strapon == false:
+		if i.person.get_stat('penis_size') == '' && i.strapon == false:
 			valid = false
 	
 	return valid
@@ -41,7 +41,7 @@ func getongoingdescription(givers, takers):
 
 func givereffect(member):
 	var effects = {sens = 210, horny = 15}
-	if member.person.penis_size == '':
+	if member.person.get_stat('penis_size') == '':
 		effects.sens /= 1.2
 	return effects
 

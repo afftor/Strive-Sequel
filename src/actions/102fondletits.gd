@@ -41,7 +41,7 @@ func givereffect(member):
 
 func takereffect(member):
 	var effects = {sens = 125, horny = 25}
-	if member.person.sex == 'male':
+	if member.person.get_stat('sex') == 'male':
 		effects.sens /= 2
 	return effects
 

@@ -1,6 +1,6 @@
 extends Node
 
-var professions = load("res://src/classes.gd").new().professions
+#var professions = load("res://assets/data/classes.gd").new().professions
 
 var Skilllist = {
 	praise = { 
@@ -76,7 +76,7 @@ var Skilllist = {
 		ability_type = 'skill',
 		social_skill_stats = ['sexuals'],
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false},{code = 'stat', type = 'lust', operant = 'gte', value = 25}],
+		targetreqs = [{code = 'is_master', check = false},{code = 'stat', stat = 'lust', operant = 'gte', value = 25}],
 		effects = [],
 		manacost = 0,
 		charges = 2,
@@ -190,7 +190,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'is_master', check = false},{code = 'stat', type = 'obedience',operant = 'lte', value = 25}],
+		targetreqs = [{code = 'is_master', check = false},{code = 'stat', stat = 'obedience',operant = 'lte', value = 25}],
 		effects = ['e_target_kill'],
 		manacost = 0,
 		energycost = 0,
@@ -323,7 +323,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		social_skill_stats = ['charm'],
-		reqs = [{code = 'stat', type ='lust', operant = 'gte', value = 20}],
+		reqs = [{code = 'stat', stat ='lust', operant = 'gte', value = 20}],
 		targetreqs = [],
 		effects = [],
 		manacost = 0,
@@ -1360,7 +1360,7 @@ var Skilllist = {
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
-		reqs = [{code = 'has_status', value = 'hide'}],
+		reqs = [{code = 'has_status', status = 'hide', check = true}],
 		targetreqs = [],
 		effects = [], 
 		manacost = 5,
@@ -2027,7 +2027,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'stat', type = 'lust', operant = 'gte', value = 50}],
+		targetreqs = [{code = 'stat', stat = 'lust', operant = 'gte', value = 50}],
 		effects = [],
 		manacost = 0,
 		charges = 1,
@@ -2051,7 +2051,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'stat', name = 'lust'}],
+		targetreqs = [{code = 'stat', name = 'lust'}], #TOCHECK
 		effects = [],
 		manacost = 0,
 		charges = 0,
@@ -2148,7 +2148,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'stat', type = 'lust', operant = 'gte', value = 50}],
+		targetreqs = [{code = 'stat', stat = 'lust', operant = 'gte', value = 50}],
 		effects = [],
 		manacost = 10,
 		charges = 1,
@@ -2653,7 +2653,7 @@ var Skilllist = {
 	},
 	i_res = {#
 		code = 'i_res',
-		new_syntax = true,
+#		new_syntax = true,
 		descript = '',
 		icon = null,
 		type = 'combat', 

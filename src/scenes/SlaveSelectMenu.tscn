@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/menu/linebuttonhl.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/menu/menupanel.png" type="Texture" id=5]
+[ext_resource path="res://src/scenes/SlaveSelectMenu.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 33
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 548, 47 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[node name="SlaveSelectMenu" type="TextureRect"]
+margin_left = 645.0
+margin_top = 39.0
+margin_right = 1392.0
+margin_bottom = 969.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 72.8875
+margin_top = 59.4515
+margin_right = 686.888
+margin_bottom = 93.4515
+custom_fonts/font = SubResource( 1 )
+text = "You have no suitable characters"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 72.8875
+margin_top = 45.4515
+margin_right = 687.887
+margin_bottom = 876.451
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 615.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 614.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 8.83295
+margin_top = 8.73781
+margin_right = 58.8329
+margin_bottom = 58.7378
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="text" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 84.928
+margin_top = 20.5116
+margin_right = 489.928
+margin_bottom = 48.5116
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Name"

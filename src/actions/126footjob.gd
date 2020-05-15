@@ -34,10 +34,10 @@ func requirements():
 		for i in takers:
 #			if i.penis != null || i.person.penis_size == '':
 #				valid = false
-			if i.person.penis_size == '':
+			if i.person.get_stat('penis_size') == '':
 				valid = false
 		for i in givers:
-			if i.person.legs in ['horse','spider', 'snake']:
+			if i.person.get_stat('legs') in ['horse','spider', 'snake']:
 				valid = false
 			if i.limbs == false:
 				valid = false

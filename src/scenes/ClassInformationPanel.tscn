@@ -1,12 +1,14 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://src/ClassInformationPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/ClassInformationPanel.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/CursiveFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/gui/slavepanel/portrait_frame.png" type="Texture" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=7]
+
+
 
 [node name="ClassPanel" type="Panel"]
 margin_left = 569.0

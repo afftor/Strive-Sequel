@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/glow_shader.shader" type="Shader" id=1]
+
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/outline_width = 2.0
+shader_param/outline_color = Color( 0.922986, 0.996094, 0.27626, 1 )
+shader_param/opacity = 1.0
+

@@ -1,7 +1,5 @@
 extends Node
 
-
-
 func _init():
 	for i in partmaterials:
 		for k in partmaterials[i]:
@@ -46,19 +44,18 @@ var stats = {
 }
 
 
-
-func applyeffect(effect, caster, target):
-	
-	var value = effect.value
-	
-	if effect.has('casterreq'):
-		if globals.evaluate(effect.casterreq) == false:
-			return
-	if effect.has('targetreq'):
-		if globals.evaluate(effect.targetreq) == false:
-			return
-	
-	
+#not used
+#func applyeffect(effect, caster, target):
+#
+#	var value = effect.value
+#
+#	if effect.has('casterreq'):
+#		if globals.evaluate(effect.casterreq) == false:
+#			return
+#	if effect.has('targetreq'):
+#		if globals.evaluate(effect.targetreq) == false:
+#			return
+#
 
 var Parts = {
 	ToolHandle = {name = tr("TOOLHANDLE"), code = 'ToolHandle', icon = load("res://assets/images/iconsitems/parts/handle.png")},
@@ -1212,7 +1209,7 @@ var itemlist = {
 		itemtype = 'weapon',
 		geartype = 'sword',
 		weaponrange = 'melee',
-		reqs = [{code = 'trait', value = 'weapon_mastery'}],
+		reqs = [{code = 'trait', trait = 'weapon_mastery', check = true}],
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
@@ -1260,7 +1257,7 @@ var itemlist = {
 		itemtype = 'weapon',
 		geartype = 'spear',
 		weaponrange = 'melee',
-		reqs = [{code = 'trait', value = 'weapon_mastery'}],
+		reqs = [{code = 'trait', trait = 'weapon_mastery', check = true}],
 		parts = {Blade = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, Blade = 2},
 		partmaterialname = "Blade",
@@ -1284,7 +1281,7 @@ var itemlist = {
 		itemtype = 'weapon',
 		geartype = 'bow',
 		weaponrange = 'any',
-		reqs = [{code = 'trait', value = 'ranged_weapon_mastery'}],
+		reqs = [{code = 'trait', trait = 'ranged_weapon_mastery', check = true}],
 		parts = {BowBase = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 1, BowBase = 2},
 		partmaterialname = "BowBase",
@@ -1308,7 +1305,7 @@ var itemlist = {
 		itemtype = 'weapon',
 		geartype = 'staff',
 		weaponrange = 'melee',
-		reqs = [{code = 'trait', value = 'magic_tools'}],
+		reqs = [{code = 'trait', trait = 'magic_tools', check = true}],
 		parts = {Rod = 10, WeaponHandle = 5},
 		partcolororder = {WeaponHandle = 2, Rod = 1},
 		partmaterialname = "Rod",
@@ -1355,7 +1352,7 @@ var itemlist = {
 		type = 'gear',
 		itemtype = 'armor',
 		geartype = 'medium',
-		reqs = [{code = 'trait', value = 'medium_armor'}],
+		reqs = [{code = 'trait', trait = 'medium_armor', check = true}],
 		parts = {ArmorBaseMed = 6, ArmorTrim = 3},
 		partcolororder = {ArmorBaseMed = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseMed",
@@ -1378,7 +1375,7 @@ var itemlist = {
 		type = 'gear',
 		itemtype = 'armor',
 		geartype = 'heavy',
-		reqs = [{code = 'trait', value = 'heavy_armor'}],
+		reqs = [{code = 'trait', trait = 'heavy_armor', check = true}],
 		parts = {ArmorBaseHeavy = 8, ArmorTrim = 3},
 		partcolororder = {ArmorBaseHeavy = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseHeavy",
@@ -1425,7 +1422,7 @@ var itemlist = {
 		type = 'gear',
 		itemtype = 'armor',
 		geartype = 'medium',
-		reqs = [{code = 'trait', value = 'medium_armor'}],
+		reqs = [{code = 'trait', trait = 'medium_armor', check = true}],
 		parts = {ArmorBaseMed = 6, ArmorTrim = 3},
 		partcolororder = {ArmorBaseMed = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseMed",
@@ -1448,7 +1445,7 @@ var itemlist = {
 		type = 'gear',
 		itemtype = 'armor',
 		geartype = 'heavy',
-		reqs = [{code = 'trait', value = 'heavy_armor'}],
+		reqs = [{code = 'trait', trait = 'heavy_armor', check = true}],
 		parts = {ArmorBaseHeavy = 8, ArmorTrim = 3},
 		partcolororder = {ArmorBaseHeavy = 1, ArmorTrim = 2},
 		partmaterialname = "ArmorBaseHeavy",
@@ -2519,3 +2516,10 @@ var recipes = {
 		worktype = 'tailor'
 	},
 }
+
+
+func get_materials_by_grade(grade):
+	var array = []
+	for i in materiallist.values():
+		array.append(i.code)
+	return array

@@ -34,7 +34,7 @@ func requirements():
 	for i in takers:
 #		if i.vagina != null || i.person.has_pussy == false:
 #			valid = false
-		if i.person.sex == 'male':
+		if i.person.get_stat('sex') == 'male':
 			valid = false
 	return valid
 
@@ -48,11 +48,11 @@ func takereffect(member):
 
 func initiate():
 	var text = ''
-	if takers[0].person.lust > 30:
+	if takers[0].person.get_stat('lust') > 30:
 		text += "[name1] {^easily:effortlessly} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]"
 	else:
 		text += "[name1] {^slowly:carefully} {^get:work:slip:slide}[s/1] [his1] {^hand:fist} into [names2] [pussy2]"
-	if takers[0].person.vaginal_virgin == true:
+	if takers[0].person.get_stat('vaginal_virgin') == true:
 		text += ", claiming [his2] virginity as it rips through [his2] hymen."
 	else:
 		text += ", {^driving:pumping:pushing} [his1] it in and out."

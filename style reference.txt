@@ -1,0 +1,79 @@
+style reference for data syntax
+
+1) character conditions (checkreqs())
+	code:
+		'stat':
+			stat - statname (changed from type)
+			operant - as described in operate()
+			value - number or char-related string array (not avail in editor)
+		'stat_index': (do not have decipher_simple)
+			stat - statname (changed from name)
+			index
+			operant
+			value
+		'has_profession':
+			profession - profname (changed from value)
+			check
+		'has_any_profession':
+			value - professions array
+			check
+		'race':
+			race - (changed from value)
+			check - (changed from operant)
+		'one_of_races':
+			value - races array
+		'race_is_beast':
+			check
+		'is_shortstack': (not used now)
+			check (added)
+		'gear_equiped':
+			value - name of req param (or itembase)
+			param - optional (not in editor!)
+		'global_profession_limit':
+			profession - profname (changed from name)
+			value - limit (number)
+		'is_free':
+			check (added)
+		'is_at_location':
+			value - location name
+			check (added)
+		'is_id': (obsolete/internal)
+			operant
+			value
+		'long_tail': (not used now)
+			check (added)
+		'long_ears': (not used now)
+			check (added)
+		'is_humanoid' (new)
+			check
+		'cant_spawn_naturally': (obsolete/internal)
+		'sex': (obsolete)
+			operant
+			value
+		'is_master':
+			check
+		'is_dead': (new)
+			check
+		'rules': (not used now)(obsolete/internal)
+			type
+			check
+		'bodypart': (obsolete)
+			operant
+			value
+			part (changed from name)
+		'trait':
+			trait (changed from value)
+			check
+		'disabled': (obsolete/internal)
+			check = !i.check
+		'has_status':
+			status (changed from value)
+			check
+		'slave_type': (obsolete)
+			operant
+			value
+		'population':
+			operant
+			value - number
+		'random':
+			value - number or char-related string array (not avail in editor)

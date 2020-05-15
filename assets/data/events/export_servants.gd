@@ -122,8 +122,8 @@ var data = {
 		tags = ['dialogue_scene','master_translate'],
 		text = [
 		{text = "ELECTIONPERSUADE1", reqs = [], previous_dialogue_option = 1},
-		{text = "ELECTIONPERSUADESUCCESS", reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 3}]}], previous_dialogue_option = 2},
-		{text = "ELECTIONPERSUADEFAILURE", reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'lte', value = 2}]}], previous_dialogue_option = 2},
+		{text = "ELECTIONPERSUADESUCCESS", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3}]}], previous_dialogue_option = 2},
+		{text = "ELECTIONPERSUADEFAILURE", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'lte', value = 2}]}], previous_dialogue_option = 2},
 		],
 		options = [
 		{code = 'elections_persuade', text = "ELECTIONSTARTREPLY3_2", reqs = [{type = 'dialogue_selected', operant = 'neq', value = 'ELECTIONSTARTREPLY3_2'}], dialogue_argument = 2},

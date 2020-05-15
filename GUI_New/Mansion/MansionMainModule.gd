@@ -5,7 +5,7 @@ signal population_changed
 
 # Preloads
 # const PopulationModule = preload("res://GUI_New/Mansion/MansionPopulationModule.gd")
-const SlaveListModule = preload("res://GUI_New/Mansion/MansionSlaveListModule.gd")
+var SlaveListModule = ResourceScripts.scriptdict.slavelistmodule
 
 # Variables
 onready var slavelist_module = SlaveListModule.new() 
@@ -15,13 +15,11 @@ onready var slavelist_module = SlaveListModule.new()
 
 func test_mode():
 	print("Test Mode Enabled")
-	state.revert()
-	state.make_world()
-	state.date = 555
-	var character = Slave.new()
+	ResourceScripts.game_world.make_world()
+	var character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'male', 'random')
-	character.consent = 100
-	character.penis_virgin = true
+	character.set_stat('consent', 100)
+	character.set_stat('penis_virgin', true)
 	characters_pool.move_to_state(character.id)
 	character.add_trait('core_trait')
 	character.unlock_class("master")
@@ -32,13 +30,13 @@ func test_mode():
 	globals.AddItemToInventory(bow)
 	character.equip(bow)
 	character.set_slave_category('master')
-	character.negative_sex_traits = ['dislike_missionary']
-	character.unlocked_sex_traits = ['submissive', 'pushover','bottle_fairy','dominant','sadist','desired','curious','life_power']
+	character.statlist.negative_sex_traits = ['dislike_missionary']
+	character.statlist.unlocked_sex_traits = ['submissive', 'pushover','bottle_fairy','dominant','sadist','desired','curious','life_power']
 	#character.armor = 135
-	character.wits = 20
-	character.consent = 100
-	character.charm_factor = 5
-	character.physics_factor = 5
+	character.set_stat('wits',20)
+	character.set_stat('consent',100)
+	character.set_stat('charm_factor',5)
+	character.set_stat('physics_factor',5)
 	#character.unlock_class("worker")
 	character.mp = 50
 	character.unlock_class("sadist")
@@ -46,53 +44,53 @@ func test_mode():
 	for i in Skilldata.Skilllist:
 		if Skilldata.Skilllist[i].type != 'social':
 			continue
-		character.social_skills.append(i)
+		character.skills.social_skills.append(i)
 	character.is_players_character = true
 	globals.impregnate(character, character)
 	#character.pregnancy.duration = 2
 	
-	character = Slave.new()
-	character.create('HalfkinCat', 'female', 'random')
-	character.consent = 100
-	character.negative_sex_traits = ['dislike_missionary']
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	character.set_stat('consent',100)
+	character.statlist.negative_sex_traits = ['dislike_missionary']
 	characters_pool.move_to_state(character.id)
 	#character.unlock_class("attendant")
 	character.add_trait('core_trait')
 	character.set_slave_category('servant')
-	character.obedience = 100
-	character.lust = 50
+	character.set_stat('obedience', 100)
+	character.set_stat('lust',50)
 	character.is_players_character = true
-	character = Slave.new()
+	character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'random', 'random')
 	characters_pool.move_to_state(character.id)
 	
 #		for i in range(1,20):
 #
-#			character = Slave.new()
+#			character = ResourceScripts.scriptdict.class_slave.new()
 #			character.create('BeastkinCat', 'random', 'random')
 #			characters_pool.move_to_state(character.id)
 	
-	character.obedience = 0
+	character.set_stat('obedience', 0)
 	#character.fear = 25
 	#character.base_exp = 99
-	character.charm_factor = 5
-	character.physics_factor = 5
-	character.wits_factor = 5
-	character.sexuals_factor = 5
-	character.charm = 100
-	character.physics = 100
-	character.wits = 100
+	character.set_stat('charm_factor' ,5)
+	character.set_stat('physics_factor' ,5)
+	character.set_stat('wits_factor' ,5)
+	character.set_stat('sexuals_factor' , 5)
+	character.set_stat('charm' , 100)
+	character.set_stat('physics' ,100)
+	character.set_stat('wits' , 100)
 	
-	var character2 = Slave.new()
+	var character2 = ResourceScripts.scriptdict.class_slave.new()
 	character2.create('HalfkinCat', 'random', 'random')
-	character2.charm = 0
-	character2.physics = 0
-	character2.wits = 0
-	character2.sexuals = 0
+	character2.set_stat('charm' , 0)
+	character2.set_stat('physics' ,0)
+	character2.set_stat('wits' , 0)
+	character2.set_stat('sexuals' , 0)
 	var text = ''
 	for i in races.tasklist.values():
 		for k in i.production.values():
-			var value = races.get_progress_task(character, i.code, k.code, true)/k.progress_per_item
+			var value = character.get_progress_task(i.code, k.code, true)/k.progress_per_item
 			if Items.materiallist.has(k.item):
 				pass
 #					var item = Items.materiallist[k.item]
@@ -123,16 +121,17 @@ func test_mode():
 				text += Items.itemlist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
 			
 	#print(text)
-	character.loyalty = 95
-	character.authority = 100
-	character.submission = 95
+	character.set_stat('loyalty' , 95)
+	character.set_stat('authority' ,100)
+	character.set_stat('submission' , 95)
 	character.mp = 10
 	character.hp = 95
 	#character.exhaustion = 1000
 	character.add_trait('core_trait')
 	character.set_slave_category('slave')
 	character.is_players_character = true
-	state.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
+	
+	globals.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
 		{code = 'sexuals_factor', value = 1, operant = "+"},
 		{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
 		{code = 'submission', operant = '+', value = 50},
@@ -140,10 +139,10 @@ func test_mode():
 		{code = 'tag', operant = 'remove', value = 'no_sex'},
 		]}])
 	#state.revert()
-	state.money = 505590
+	ResourceScripts.game_res.money = 505590
 	for i in Items.materiallist:
-		state.materials[i] = 200
-	state.materials.bandage = 0
+		ResourceScripts.game_res.materials[i] = 200
+	ResourceScripts.game_res.materials.bandage = 0
 	globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 	globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 	globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
@@ -159,6 +158,7 @@ func test_mode():
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
+	globals.AddItemToInventory(globals.CreateUsableItem("revitalizer", 3))
 	globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 	globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 	globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
@@ -171,32 +171,35 @@ func test_mode():
 	globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
 	#$SlaveList.rebuild()
 	#state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
-	state.show_tutorial = true
-#	state.active_quests.append({code = "lich_enc_initiate", stage = 'stage1'})
+	ResourceScripts.game_progress.show_tutorial = true
+#		state.active_quests.append({code = "lich_enc_initiate", stage = 'stage1'})
 	#state.decisions = ["fighters_election_support",'mages_election_support','workers_election_support']
 #	state.mainprogress = 0
-	state.active_quests.append({code = 'election_global_quest', stage = 'stage1'})
-	for i in state.areas.plains.factions.values():
+	ResourceScripts.game_progress.active_quests.append({code = 'election_global_quest', stage = 'stage1'})
+	for i in ResourceScripts.game_world.areas.plains.factions.values():
 		i.totalreputation += 500
 	character.unlock_class("pet")
 	character.unlock_class("souleater")
 	character.mp = 10
-	character.sex_skills.oral = 70
-	character.sex_skills.anal = 90
-	character.sex_skills.petting = 100
+	var tmp = {}
+	tmp.oral = 70
+	tmp.anal = 90
+	tmp.petting = 100
+	character.set_stat('sex_skills', tmp)
+	character.set_stat('base_exp', 500)
 	#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('mages_join_reward'), 'Teh Loot')
 	#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
-	input_handler.active_location = state.areas.plains.locations[state.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
-	input_handler.active_area = state.areas.plains
+	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
+	input_handler.active_area = ResourceScripts.game_world.areas.plains
 	#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 	#input_handler.add_random_chat_message(newchar, 'hire')
 	#input_handler.interactive_message("starting_dialogue4", '',{})
 	
 	#input_handler.interactive_message('intro', '', {})
 	
-	for i in state.areas.plains.factions.values():
+	for i in ResourceScripts.game_world.areas.plains.factions.values():
 		i.reputation = 500
-	
+
 
 func _ready():
 	# connect("population_changed", self, "test")

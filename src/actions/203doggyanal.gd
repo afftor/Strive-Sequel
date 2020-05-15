@@ -22,7 +22,7 @@ func requirements():
 #	elif givers.size() + takers.size() == 2 && (!givers[0].penis in [takers[0].vagina, takers[0].anus] ):
 #		valid = false
 	for i in givers:
-		if i.person.penis_size == '' && i.strapon == false:
+		if i.person.get_stat('penis_size') == '' && i.strapon == false:
 			valid = false
 #		elif i.penis != null && givers.size() > 1:
 #			valid = false
@@ -35,7 +35,7 @@ func requirements():
 func getname(state = null):
 	if givers.size() == 0 || takers.size() == 0:
 		return "Doggy Anal"
-	elif givers[0].strapon == true && takers[0].person.penis_size != '':
+	elif givers[0].strapon == true && takers[0].person.get_stat('penis_size') != '':
 		return "Doggy Pegging"
 	else:
 		return "Doggy Anal"
@@ -49,8 +49,8 @@ func givereffect(member):
 
 func takereffect(member):
 	var effects = {sens = 190, horny = 5}
-	member.person.metrics.anal += 1
-	if member.person.penis_size == '':
+	member.person_metrics.anal += 1
+	if member.person_penis_size == '':
 		effects.sens /= 1.2
 	return effects
 

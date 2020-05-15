@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 
 var givers
 var takers
@@ -23,20 +23,20 @@ func decoder(text, tempgivers = null, temptakers = null):
 	#dictionary of replacements
 	var replacements = {
 		#state verbs
-		'[their]' : 'your' if givers[0].person.professions.has("master") || takers[0].person.professions.has("master") else 'their',
-		'[is1]' : 'are' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'is',
-		'[is2]' : 'are' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'is',
-		'[has1]' : 'have' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'has',
-		'[has2]' : 'have' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'has',
-		'[was1]' : 'were' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'was',
-		'[was2]' : 'were' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'was',
+		'[their]' : 'your' if givers[0].person.has_profession("master") || takers[0].person.has_profession("master") else 'their',
+		'[is1]' : 'are' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'is',
+		'[is2]' : 'are' if takers.size() >= 2 or takers[0].person.has_profession("master") else 'is',
+		'[has1]' : 'have' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'has',
+		'[has2]' : 'have' if takers.size() >= 2 or takers[0].person.has_profession("master") else 'has',
+		'[was1]' : 'were' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'was',
+		'[was2]' : 'were' if takers.size() >= 2 or takers[0].person.has_profession("master") else 'was',
 		#verb endings
-		'[ies/y1]' : 'y' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'ies',
-		'[ies/y2]' : 'y' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'ies',
-		'[s/1]' : '' if givers.size() >= 2 or givers[0].person.professions.has("master") else 's',
-		'[s/2]' : '' if takers.size() >= 2 or takers[0].person.professions.has("master") else 's',
-		'[es/1]' : '' if givers.size() >= 2 or givers[0].person.professions.has("master") else 'es',
-		'[es/2]' : '' if takers.size() >= 2 or takers[0].person.professions.has("master") else 'es',
+		'[ies/y1]' : 'y' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'ies',
+		'[ies/y2]' : 'y' if takers.size() >= 2 or takers[0].person.has_profession("master") else 'ies',
+		'[s/1]' : '' if givers.size() >= 2 or givers[0].person.has_profession("master") else 's',
+		'[s/2]' : '' if takers.size() >= 2 or takers[0].person.has_profession("master") else 's',
+		'[es/1]' : '' if givers.size() >= 2 or givers[0].person.has_profession("master") else 'es',
+		'[es/2]' : '' if takers.size() >= 2 or takers[0].person.has_profession("master") else 'es',
 		#verb endings involving objects and body actions
 		#same as above, but only takes number into account
 		'[ies/y#1]' : 'y' if givers.size() >= 2 else 'ies',
@@ -185,20 +185,20 @@ func capitallogic(text):
 
 
 func dictionary(member, text):
-	if member.person.professions.has("master"):
+	if member.person.has_profession("master"):
 		text = text.replace('[name]', '[color=yellow]' + 'you' + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + 'you' + '[/color]')
 	else:
 		text = text.replace('[name]', '[color=yellow]' + member.name + '[/color]' if givers.find(member) >= 0 else '[color=aqua]' + member.name + '[/color]')
-	if member.person.professions.has("master"):
+	if member.person.has_profession("master"):
 		text = text.replace('[his]', 'you')
 	else:
-		text = text.replace('[his]', 'his' if member.person.sex == 'male' else 'her')
+		text = text.replace('[his]', 'his' if member.person.get_stat('sex') == 'male' else 'her')
 	text = text.replace('[body]', body(member))
 	return text
 
 func he(group):
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			if group.size() == 1:
 				return 'you'
 			elif group.size() == 2:
@@ -217,7 +217,7 @@ func he(group):
 
 func himself(group):
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			if group.size() == 1:
 				return 'yourself'
 			else:
@@ -232,7 +232,7 @@ func himself(group):
 
 func his(group):
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			if group.size() == 1:
 				return 'your'
 			elif group.size() == 2:
@@ -249,7 +249,7 @@ func his(group):
 
 func his_(group):
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			return 'yours'
 	if group.size() == 1:
 		if group[0].sex == 'male':
@@ -261,7 +261,7 @@ func his_(group):
 
 func him(group):
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			if group.size() == 1:
 				return 'you'
 			elif group.size() == 2:
@@ -285,7 +285,7 @@ func name(group):
 		
 		if group == givers:
 			text += '[color=yellow]'
-			if i.person.professions.has("master"):
+			if i.person.has_profession("master"):
 				text += 'you'
 			else:
 				text += i.name
@@ -296,11 +296,11 @@ func name(group):
 				text += ' and '
 		else:
 			text += '[color=aqua]'
-			if i.person.professions.has("master"):
+			if i.person.has_profession("master"):
 				text += 'you'
 			else:
 				if globals.getrelativename(givers[0].person, i.person) != null && randf() >= 0.5:
-					if givers[0].person.professions.has("master"):
+					if givers[0].person.has_profession("master"):
 						text += givers[0].person.dictionary('your ') 
 					else:
 						text += givers[0].person.dictionary('$his ') 
@@ -320,7 +320,7 @@ func names(group):
 		#text += "%" + str(i.number)
 		if group == givers:
 			text += '[color=yellow]'
-			if i.person.professions.has("master"):
+			if i.person.has_profession("master"):
 				if group.size() == 1:
 					text += 'your'
 				else:
@@ -334,7 +334,7 @@ func names(group):
 				text += ' and '
 		else:
 			text += '[color=aqua]'
-			if i.person.professions.has("master"):
+			if i.person.has_profession("master"):
 				if group.size() == 1:
 					text += 'your'
 				else:
@@ -346,7 +346,7 @@ func names(group):
 				text += ', '
 			elif takers.find(i) == takers.size()-2:
 				text += ' and '
-#		if i.person.professions.has("master") == false:
+#		if i.person.has_profession("master") == false:
 #			text += "'s"
 	return text
 
@@ -375,7 +375,7 @@ func fucks(group):
 	if group.size() >= 2:
 		return fuck(group)
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			return fuck(group)
 	var outputs = []
 	var temp = ''
@@ -435,7 +435,7 @@ func vfucks(group):
 	if group.size() >= 2:
 		return vfuck(group)
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			return vfuck(group)
 	var outputs = []
 	var temp = ''
@@ -503,7 +503,7 @@ func afucks(group):
 	if group.size() >= 2:
 		return afuck(group)
 	for i in group:
-		if i.person.professions.has("master"):
+		if i.person.has_profession("master"):
 			return afuck(group)
 	var outputs = []
 	var temp = ''
@@ -739,9 +739,9 @@ func partner(group):
 	var tarray = []
 	var boygirl = ''
 	for i in group:
-		if i.person.professions.has("master") && group.size() == 1:
+		if i.person.has_profession("master") && group.size() == 1:
 			return "you"
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		array1 = []
 		array2 = []
 		var thick = thickness(mp)
@@ -853,9 +853,9 @@ func partners(group):
 	var tarray = []
 	var boygirl = ''
 	for i in group:
-		if i.person.professions.has("master") && group.size() == 1:
+		if i.person.has_profession("master") && group.size() == 1:
 			return "your"
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		array1 = []
 		array2 = []
 		var thick = thickness(mp)
@@ -969,7 +969,7 @@ func body(group):
 	for i in group:
 		array1 = []
 		array2 = ["body"] if group.size() == 1 else ["bodies"]
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		var thick = thickness(mp)
 		#feminity
 		if mp.tits_size == 'masculine':
@@ -1037,7 +1037,7 @@ func penis(group):
 	for i in group:
 		array1 = []
 		array2 = ['cock','dick','penis','shaft'] if group.size() == 1 else ['cocks','dicks','penises','shafts']
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		#size/age descriptors
 		if mp.penis_size== 'small':
 			array1 += ["tiny","small","petite"]
@@ -1095,7 +1095,7 @@ func pussy(group):
 	for i in group:
 		array1 = []
 		array2 = ["vagina","pussy","cunt"] if group.size() == 1 else ["vaginas","pussies","cunts"]
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		#body
 		if i.horny >= 100:
 			array1 += ["wet","slick","dripping"]
@@ -1152,7 +1152,7 @@ func ass(group):
 	for i in group:
 		array1 = []
 		array2 = ["ass","butt","backside","rear"] if group.size() == 1 else ["asses","butts","backsides","rears"]
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		#size/age descriptors
 		
 		if mp.skin_coverage.find('fur') >= 0:
@@ -1236,7 +1236,7 @@ func hips(group):
 	for i in group:
 		array1 = []
 		array2 = ["hips"]
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		#size/age descriptors
 		if mp.skin_coverage.find('fur') >= 0:
 			array1 += ['fuzzy','fluffy','furry']
@@ -1299,7 +1299,7 @@ func tits(group):
 	for i in group:
 		array1 = []
 		array2 = ["tits","boobs","breasts","chest"] if group.size() == 1 else ["tits","boobs","breasts","chests"]
-		var mp = i.person
+		var mp = i.person.statlist.statlist
 		#size/age descriptors
 		if mp.skin_coverage.find('fur') >= 0:
 			array1 += ['fuzzy','fluffy','furry']
@@ -1371,9 +1371,9 @@ func tits(group):
 func anus(member):
 	var array = []
 	var array2 = ["anus","asshole","butthole","rectum"]
-	if member.person.anal_virgin == true:
+	if member.person.get_stat('anal_virgin') == true:
 		array += ["virgin","virginal","unused"]
-	if member.person.age != 'adult':
+	if member.person.get_stat('age') != 'adult':
 		array += ["pink","youthful"]
 	else:
 		array += ["rosy","mature"]

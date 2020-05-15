@@ -30,7 +30,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'skill',
-				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['+authority']}],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['authority']}],
 				buffs = [],
 				sub_effects = []
 			}
@@ -649,7 +649,7 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'target', value = {type = 'race_group', value = 'humanoid' } }
+			{type = 'target', value = {code = 'is_humanoid', check = true} }
 		],
 		req_skill = true,
 		value = -30,
@@ -662,7 +662,7 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'target', value = {type = 'race_group', value = 'non-humanoid' } }
+			{type = 'target', value = {code = 'is_humanoid', check = false} }
 		],
 		req_skill = true,
 		value = -20,
@@ -1553,7 +1553,7 @@ var effect_table = {
 	e_i_shackles = {
 		type = 'c_static',
 		descript = 'Prevents escape if Physics Factor less than 4',
-		conditions = [{type = 'stats', name = 'physics_factor', operant = 'lt', value = 4}],
+		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 4}],
 		tags = ['recheck_stats', 'recheck_item'],
 		no_escape = true,
 		atomic = [],
@@ -1574,7 +1574,7 @@ var effect_table = {
 	},
 	e_i_pet_suit_bonus = {
 		type = 'c_static',
-		conditions = [{type = 'class', value = 'pet'}],
+		conditions = [{code = 'has_profession', profession = 'pet', check = true}],
 		descript = "When wearer has Pet class:\nCharm: +10\nSocial skills effect: +10%.",
 		tags = ['recheck_class', 'recheck_item'],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
@@ -1625,7 +1625,7 @@ var effect_table = {
 	},
 	e_i_anal = {
 		type = 'c_static',
-		conditions = [{type = 'trait', value = 'anal'}],
+		conditions = [{code = 'trait', trait = 'anal', check = true}],
 		tags = ['recheck_trait', 'recheck_item'],
 		descript = 'If wearer has "Likes Anal" trait: Lust growth + 15%.',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.15}],
@@ -1668,8 +1668,8 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				conditions = [
-					{type = 'stat_index', name = 'counters', index = 1, operant = 'gte', value = 100},
-					{type = 'not_trait', value = 'submissive'},
+					{code = 'stat_index', stat = 'counters', index = 1, operant = 'gte', value = 100},
+					{code = 'trait', trait = 'submissive', check = false},
 				],
 				atomic = [{type = 'add_sex_trait', trait = 'submissive'}],
 			},
@@ -1697,13 +1697,21 @@ var effect_table = {
 				type = 'oneshot',
 				target = 'owner',
 				conditions = [
-					{type = 'stat_index', name = 'counters', index = 2, operant = 'gte', value = 100},
-					{type = 'not_trait', value = 'anal'},
+					{code = 'stat_index', stat = 'counters', index = 2, operant = 'gte', value = 100},
+					{code = 'trait', trait = 'anal', check = false},
 				],
 				atomic = [{type = 'add_sex_trait', trait = 'anal'}],
 			},
 		],
 		buffs = []
+	},
+	e_res = {
+		type = 'oneshot',
+		target = 'target',
+		args = [{obj = 'parent_args', param = 0}],
+		atomic = ['a_res'],
+		buffs = [],
+		sub_effects = []
 	},
 	#temp items
 	e_leather_collar_effect = {
@@ -1737,7 +1745,7 @@ var effect_table = {
 	e_tail_plug_bonus = {
 		type = 'c_static',
 		tags = ['recheck_item'],
-		conditions = [{type = 'gear', value = 'pet_suit', check = true}],
+		conditions = [{code = 'gear_eqiped', value = 'pet_suit'}],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		descript = 'Increases Charm by 10 if Pet Suit equipped.',
 		buffs = [],
@@ -1919,7 +1927,7 @@ var effect_table = {
 	},
 	valkyrie_spear_bonus = {
 		type = 'c_static',
-		conditions = [{type = 'gear', param = 'geartype', value = 'spear'}],
+		conditions = [{code = 'gear_eqiped', param = 'geartype', value = 'spear'}],
 		tags = ['recheck_item'],
 		atomic = [
 			{type = 'stat_add', stat = 'speed', value = 10},

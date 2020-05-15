@@ -12,90 +12,66 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Buff",
 "language": "GDScript",
-"path": "res://files/scripts/buff.gd"
+"path": "res://src/classes/buff.gd"
 }, {
 "base": "Reference",
 "class": "Item",
 "language": "GDScript",
-"path": "res://src/ItemClass.gd"
-}, {
-"base": "Reference",
-"class": "S_Skill",
-"language": "GDScript",
-"path": "res://files/scripts/short_skill_new.gd"
-}, {
-"base": "Reference",
-"class": "S_Skill_legacy",
-"language": "GDScript",
-"path": "res://files/scripts/short_skill.gd"
-}, {
-"base": "Reference",
-"class": "Slave",
-"language": "GDScript",
-"path": "res://src/CharacterClass.gd"
-}, {
-"base": "Reference",
-"class": "ai_base",
-"language": "GDScript",
-"path": "res://files/scripts/AI_base.gd"
+"path": "res://src/classes/ItemClass.gd"
 }, {
 "base": "base_effect",
 "class": "area_effect",
 "language": "GDScript",
-"path": "res://files/scripts/area_effect.gd"
+"path": "res://src/classes/area_effect.gd"
 }, {
 "base": "Reference",
 "class": "atomic_effect",
 "language": "GDScript",
-"path": "res://files/scripts/atomic_effect.gd"
+"path": "res://src/classes/atomic_effect.gd"
 }, {
 "base": "Reference",
 "class": "base_effect",
 "language": "GDScript",
-"path": "res://files/scripts/base_effect.gd"
+"path": "res://src/classes/base_effect.gd"
 }, {
 "base": "base_effect",
 "class": "condition_effect",
 "language": "GDScript",
-"path": "res://files/scripts/condition_effect.gd"
+"path": "res://src/classes/condition_effect.gd"
 }, {
 "base": "base_effect",
 "class": "oneshot_effect",
 "language": "GDScript",
-"path": "res://files/scripts/oneshot_effect.gd"
+"path": "res://src/classes/oneshot_effect.gd"
 }, {
 "base": "base_effect",
 "class": "static_effect",
 "language": "GDScript",
-"path": "res://files/scripts/static_effect.gd"
+"path": "res://src/classes/static_effect.gd"
 }, {
 "base": "base_effect",
 "class": "temp_e_progress",
 "language": "GDScript",
-"path": "res://files/scripts/temp_effect_progress.gd"
+"path": "res://src/classes/temp_effect_progress.gd"
 }, {
 "base": "base_effect",
 "class": "temp_e_simple",
 "language": "GDScript",
-"path": "res://files/scripts/temp_effect_simple.gd"
+"path": "res://src/classes/temp_effect_simple.gd"
 }, {
 "base": "base_effect",
 "class": "temp_e_upgrade",
 "language": "GDScript",
-"path": "res://files/scripts/temp_effect_upgrade.gd"
+"path": "res://src/classes/temp_effect_upgrade.gd"
 }, {
 "base": "base_effect",
 "class": "triggered_effect",
 "language": "GDScript",
-"path": "res://files/scripts/triggered_effect.gd"
+"path": "res://src/classes/triggered_effect.gd"
 } ]
 _global_script_class_icons={
 "Buff": "",
 "Item": "",
-"S_Skill": "",
-"S_Skill_legacy": "",
-"Slave": "",
-"ai_base": "",
 "area_effect": "",
 "atomic_effect": "",
 "base_effect": "",
@@ -111,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Strive for Power 2"
-run/main_scene="res://files/Menu.tscn"
+run/main_scene="res://src/Menu.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://assets/images/backgrounds/loading.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -119,25 +95,30 @@ config/icon="res://assets/images/iconsclasses/Master.png"
 
 [autoload]
 
-modding_core="*res://src/modding_core.gd"
-variables="*res://files/variables.gd"
-images="*res://files/scripts/ResourceImages.gd"
-audio="*res://files/scripts/ResourceAudio.gd"
+ResourceScripts="*res://assets/data/ResourceScripts.gd"
+modding_core="*res://src/core/modding_core.gd"
+variables="*res://src/core/variables.gd"
+images="*res://assets/data/ResourceImages.gd"
+audio="*res://assets/data/ResourceAudio.gd"
 Enemydata="*res://assets/data/enemydata.gd"
 Effectdata="*res://assets/data/Effects.gd"
 Skilldata="*res://assets/data/Skills.gd"
+classesdata="*res://assets/data/classes.gd"
 Traitdata="*res://assets/data/Traits.gd"
 Items="*res://assets/data/Items.gd"
 scenedata="*res://assets/data/scenedata.gd"
-globals="*res://files/scripts/globals.gd"
-state="*res://src/gamestate.gd"
-input_handler="*res://files/input_handler.gd"
+statdata="*res://assets/data/statdata.gd"
+upgradedata="*res://assets/data/upgradedata.gd"
+worlddata="*res://assets/data/worlddata.gd"
+Statlist_init="*res://src/character/statlist.gd"
 races="*res://assets/data/races.gd"
-world_gen="*res://src/world_gen.gd"
-characters_pool="*res://src/characters_pool.gd"
-effects_pool="*res://src/effects_pool.gd"
-AI_data="*res://assets/data/ai_data.gd"
+Namedata="*res://assets/data/names.gd"
 starting_presets="*res://assets/data/starting_presets.gd"
+AI_data="*res://assets/data/ai_data.gd"
+input_handler="*res://src/core/input_handler.gd"
+globals="*res://src/core/globals.gd"
+characters_pool="*res://src/core/characters_pool.gd"
+effects_pool="*res://src/core/effects_pool.gd"
 
 [debug]
 

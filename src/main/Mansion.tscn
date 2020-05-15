@@ -1,0 +1,775 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://src/main/Mansion.gd" type="Script" id=1]
+[ext_resource path="res://assets/sfx/loadshader.shader" type="Shader" id=2]
+[ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/generic_button.tres" type="Theme" id=4]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/images/buttons/main screen/timer_panel.png" type="Texture" id=6]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/images/buttons/main screen/speedfast0.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/buttons/main screen/speedfast2.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/buttons/main screen/speedfast1.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/buttons/main screen/speednorm0.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/buttons/main screen/speednorm2.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/buttons/main screen/speednorm1.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/buttons/main screen/speedstop0.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/buttons/main screen/speedstop2.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/buttons/main screen/speedstop1.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/buttons/main screen/hourprogress.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/panels/paneltransperent.png" type="Texture" id=23]
+[ext_resource path="res://src/scenes/SlaveList.gd" type="Script" id=24]
+[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=26]
+[ext_resource path="res://dragarraytemplate.gd" type="Script" id=27]
+[ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/Heart_empty.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/gui/Heart_r.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/Heart_b.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=32]
+[ext_resource path="res://src/scenes/CraftPanel.tscn" type="PackedScene" id=33]
+[ext_resource path="res://src/main/Exploration.tscn" type="PackedScene" id=34]
+[ext_resource path="res://src/scenes/QuestPanel.tscn" type="PackedScene" id=35]
+[ext_resource path="res://src/InteractionSelectionPanel.tscn" type="PackedScene" id=36]
+[ext_resource path="res://src/scenes/UpgradePanel.tscn" type="PackedScene" id=37]
+[ext_resource path="res://src/scenes/LootWindow.tscn" type="PackedScene" id=38]
+[ext_resource path="res://src/scenes/MenuPanel.tscn" type="PackedScene" id=39]
+[ext_resource path="res://src/scenes/SysMessage.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/ItemShader.tres" type="Material" id=41]
+[ext_resource path="res://assets/images/iconsgear/ArmorLowerMedium.png" type="Texture" id=42]
+[ext_resource path="res://src/scenes/CharacterDislocationPanel.tscn" type="PackedScene" id=43]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/dist = 1.3
+shader_param/width = 0.35
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 162, 47 )
+margin_left = 8.0
+margin_right = 7.0
+margin_top = 8.46303
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 162, 47 )
+margin_left = 8.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 162, 47 )
+margin_left = 8.95957
+margin_right = 7.98422
+margin_top = 10.5886
+margin_bottom = 8.7913
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 23 )
+region_rect = Rect2( 0, 0, 500, 500 )
+
+[node name="mansion" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource( 1 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MenuButton" type="Button" parent="."]
+margin_left = 1774.15
+margin_top = 13.5203
+margin_right = 1906.15
+margin_bottom = 57.5203
+theme = ExtResource( 4 )
+text = "Menu"
+
+[node name="InventoryButton" type="Button" parent="."]
+margin_left = 23.3762
+margin_top = 927.333
+margin_right = 241.376
+margin_bottom = 996.33
+theme = ExtResource( 4 )
+text = "Inventory"
+
+[node name="CraftButton" type="Button" parent="."]
+margin_left = 23.376
+margin_top = 999.333
+margin_right = 241.376
+margin_bottom = 1068.33
+theme = ExtResource( 4 )
+text = "Craft"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExploreButton" type="Button" parent="."]
+margin_left = 1673.38
+margin_top = 999.333
+margin_right = 1891.38
+margin_bottom = 1068.33
+theme = ExtResource( 4 )
+text = "Outside"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestlogButton" type="Button" parent="."]
+margin_left = 1450.38
+margin_top = 999.333
+margin_right = 1668.38
+margin_bottom = 1068.33
+theme = ExtResource( 4 )
+text = "Quest Menu"
+
+[node name="UpgradeButton" type="Button" parent="."]
+margin_left = 492.0
+margin_top = 999.0
+margin_right = 710.0
+margin_bottom = 1068.0
+theme = ExtResource( 4 )
+text = "Upgrades"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InteractButton" type="Button" parent="."]
+margin_left = 263.235
+margin_top = 999.346
+margin_right = 481.235
+margin_bottom = 1068.34
+theme = ExtResource( 4 )
+text = "Sex"
+
+[node name="TravelButton" type="Button" parent="."]
+margin_left = 722.0
+margin_top = 999.0
+margin_right = 940.0
+margin_bottom = 1068.0
+theme = ExtResource( 4 )
+text = "Travels"
+
+[node name="TimeNode" type="TextureRect" parent="."]
+margin_left = 6.91928
+margin_top = 3.509
+margin_right = 295.919
+margin_bottom = 225.509
+theme = ExtResource( 5 )
+texture = ExtResource( 6 )
+
+[node name="Date" type="Label" parent="TimeNode"]
+margin_left = 8.0
+margin_top = 72.0
+margin_right = 280.0
+margin_bottom = 103.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Date"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2speed" type="TextureButton" parent="TimeNode"]
+visible = false
+margin_left = 190.133
+margin_top = 116.735
+margin_right = 286.133
+margin_bottom = 177.735
+toggle_mode = true
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="1speed" type="TextureButton" parent="TimeNode"]
+visible = false
+margin_left = 96.7619
+margin_top = 116.746
+margin_right = 191.762
+margin_bottom = 177.746
+toggle_mode = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+
+[node name="0speed" type="TextureButton" parent="TimeNode"]
+visible = false
+margin_left = 3.09059
+margin_top = 117.45
+margin_right = 99.0906
+margin_bottom = 178.45
+toggle_mode = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+
+[node name="finish_turn" type="Button" parent="TimeNode"]
+margin_left = 1.0
+margin_top = 117.0
+margin_right = 189.0
+margin_bottom = 178.0
+hint_tooltip = "Increase hours advanced per turn
+Hotkey: 1"
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Finish Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lessturn" type="Button" parent="TimeNode"]
+margin_left = 185.0
+margin_top = 119.0
+margin_right = 218.0
+margin_bottom = 176.0
+hint_tooltip = "Decrease hours advanced  per turn
+Hotkey: 2"
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="turns" type="Label" parent="TimeNode"]
+margin_left = 222.0
+margin_top = 124.0
+margin_right = 251.0
+margin_bottom = 172.0
+text = "1"
+align = 1
+valign = 1
+
+[node name="moreturn" type="Button" parent="TimeNode"]
+margin_left = 255.0
+margin_top = 119.0
+margin_right = 285.0
+margin_bottom = 176.0
+hint_tooltip = "Increase hours advanced per turn
+Hotkey: 3"
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HidePanel" type="Panel" parent="TimeNode"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.77898 )
+margin_left = -1.0
+margin_right = 285.0
+margin_bottom = 168.0
+
+[node name="dayprogress" type="TextureProgress" parent="TimeNode"]
+show_behind_parent = true
+margin_left = 5.0
+margin_top = 181.0
+margin_right = 285.0
+margin_bottom = 218.0
+texture_progress = ExtResource( 20 )
+
+[node name="gold" type="Label" parent="."]
+margin_left = 53.0
+margin_top = 21.0
+margin_right = 146.0
+margin_bottom = 49.0
+text = "500"
+valign = 2
+
+[node name="TextureRect" type="TextureRect" parent="gold"]
+margin_left = -40.1611
+margin_top = -7.62443
+margin_right = 1.83887
+margin_bottom = 33.3756
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="Control" type="Control" parent="gold/TextureRect"]
+margin_right = 132.0
+margin_bottom = 40.0
+mouse_filter = 1
+
+[node name="food" type="Label" parent="."]
+margin_left = 196.0
+margin_top = 20.0
+margin_right = 285.0
+margin_bottom = 48.0
+text = "500"
+valign = 2
+
+[node name="TextureRect" type="TextureRect" parent="food"]
+margin_left = -40.1611
+margin_top = -7.62443
+margin_right = 1.83887
+margin_bottom = 33.3756
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="Control" type="Control" parent="food/TextureRect"]
+margin_right = 129.0
+margin_bottom = 40.0
+mouse_filter = 1
+
+[node name="population" type="Label" parent="."]
+margin_left = 657.123
+margin_top = 32.3894
+margin_right = 1149.12
+margin_bottom = 56.3894
+text = "Population"
+align = 1
+
+[node name="TaskProgress" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.635294 )
+margin_left = 10.0
+margin_top = 235.0
+margin_right = 423.0
+margin_bottom = 675.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TaskProgress"]
+margin_left = 4.0
+margin_top = 10.0
+margin_right = 425.0
+margin_bottom = 429.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskProgress/ScrollContainer"]
+margin_right = 421.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Panel" parent="TaskProgress/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 396.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="TaskProgress/ScrollContainer/VBoxContainer/Button"]
+margin_left = 3.06094
+margin_top = 11.9723
+margin_right = 135.061
+margin_bottom = 35.9723
+text = "Task Name"
+
+[node name="ProgressBar" type="ProgressBar" parent="TaskProgress/ScrollContainer/VBoxContainer/Button"]
+margin_left = 139.325
+margin_top = 11.0
+margin_right = 328.325
+margin_bottom = 35.0
+percent_visible = false
+
+[node name="icon" type="TextureRect" parent="TaskProgress/ScrollContainer/VBoxContainer/Button"]
+margin_left = 334.539
+margin_top = -5.56581
+margin_right = 399.539
+margin_bottom = 54.4342
+expand = true
+
+[node name="Label" type="Label" parent="TaskProgress/ScrollContainer/VBoxContainer/Button/icon"]
+visible = false
+margin_left = 18.4276
+margin_top = 32.8968
+margin_right = 58.4276
+margin_bottom = 56.8968
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="Log" type="Panel" parent="."]
+margin_left = 1375.0
+margin_top = 72.0
+margin_right = 1912.0
+margin_bottom = 923.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Log"]
+margin_left = 22.0
+margin_top = 18.0
+margin_right = 522.0
+margin_bottom = 832.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Log/ScrollContainer"]
+margin_right = 500.0
+margin_bottom = 814.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="field" type="HBoxContainer" parent="Log/ScrollContainer/VBoxContainer"]
+margin_top = 784.0
+margin_right = 500.0
+margin_bottom = 814.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="label" type="RichTextLabel" parent="Log/ScrollContainer/VBoxContainer/field"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+bbcode_enabled = true
+
+[node name="text" type="RichTextLabel" parent="Log/ScrollContainer/VBoxContainer/field"]
+margin_left = 104.0
+margin_right = 376.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+
+[node name="date" type="RichTextLabel" parent="Log/ScrollContainer/VBoxContainer/field"]
+margin_left = 380.0
+margin_right = 500.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 120, 0 )
+bbcode_enabled = true
+
+[node name="SlaveList" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.843137 )
+margin_left = 435.0
+margin_top = 76.0
+margin_right = 1360.0
+margin_bottom = 994.0
+theme = ExtResource( 5 )
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Categories" type="VBoxContainer" parent="SlaveList"]
+margin_left = 26.0
+margin_top = 26.0
+margin_right = 897.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="SlaveList/Categories"]
+margin_right = 871.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+expand = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SlaveList/Categories/Button"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 654.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="sex" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 104.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 50, 0 )
+text = "Sex"
+
+[node name="name" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 108.0
+margin_top = 13.0
+margin_right = 308.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 200, 0 )
+text = "Name "
+clip_text = true
+
+[node name="stats" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 312.0
+margin_right = 377.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 65, 0 )
+hint_tooltip = "TOOLTIPENERGY"
+size_flags_horizontal = 0
+text = "HP
+MP"
+align = 1
+
+[node name="job" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 381.0
+margin_top = 13.0
+margin_right = 631.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 250, 0 )
+hint_tooltip = "TOOLTIPOBEDIENCE"
+size_flags_horizontal = 0
+text = "Occupation"
+align = 1
+
+[node name="obed" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 635.0
+margin_top = 13.0
+margin_right = 670.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 35, 0 )
+hint_tooltip = "STATOBEDIENCE"
+mouse_filter = 0
+size_flags_horizontal = 0
+text = "O"
+
+[node name="explabel" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 674.0
+margin_top = 13.0
+margin_right = 739.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 65, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Exp"
+align = 1
+
+[node name="state2" type="Label" parent="SlaveList/Categories/Button/HBoxContainer"]
+margin_left = 743.0
+margin_top = 13.0
+margin_right = 817.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 50, 0 )
+text = "Status"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SlaveList"]
+margin_left = 26.0
+margin_top = 86.0
+margin_right = 897.0
+margin_bottom = 891.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SlaveList/ScrollContainer"]
+margin_right = 871.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="SlaveList/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 871.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 26 )
+expand = true
+script = ExtResource( 27 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 654.0
+margin_bottom = 46.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="sex" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 28 )
+expand = true
+
+[node name="name" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 108.0
+margin_top = 10.0
+margin_right = 318.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 210, 0 )
+text = "Name "
+clip_text = true
+
+[node name="stats" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 322.0
+margin_right = 367.0
+margin_bottom = 45.0
+texture = ExtResource( 29 )
+
+[node name="hp" type="TextureProgress" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer/stats"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 75.0
+texture_progress = ExtResource( 30 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="TextureProgress" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer/stats"]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 25.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="job" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 371.0
+margin_top = 7.0
+margin_right = 621.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 250, 30 )
+size_flags_horizontal = 0
+text = "Text"
+align = 1
+clip_text = true
+
+[node name="obed" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 625.0
+margin_top = 10.0
+margin_right = 670.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 45, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+clip_text = true
+
+[node name="explabel" type="Label" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 674.0
+margin_top = 10.0
+margin_right = 749.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 75, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "100"
+align = 1
+
+[node name="state" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+margin_left = 753.0
+margin_right = 803.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="HBoxContainer" parent="SlaveList"]
+visible = false
+margin_left = 30.0
+margin_top = 34.0
+margin_right = 893.0
+margin_bottom = 74.0
+
+[node name="Label" type="Label" parent="SlaveList/VBoxContainer"]
+margin_top = 8.0
+margin_right = 41.0
+margin_bottom = 32.0
+text = "Sex"
+
+[node name="CraftPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 33 )]
+visible = false
+
+[node name="Exploration" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 34 )]
+visible = false
+
+[node name="QuestPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 35 )]
+visible = false
+
+[node name="InteractionSelectPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 36 )]
+visible = false
+
+[node name="UpgradeList" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 37 )]
+visible = false
+
+[node name="TestButton" type="Button" parent="."]
+margin_left = 731.847
+margin_top = 861.205
+margin_right = 858.847
+margin_bottom = 915.205
+text = "Test"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TestButton"]
+margin_left = -268.0
+margin_top = -537.0
+margin_right = 600.0
+margin_bottom = -30.0
+mouse_filter = 2
+
+[node name="lootwindow" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 38 )]
+
+[node name="MenuPanel" parent="." groups=[
+"pauseprocess",
+] instance=ExtResource( 39 )]
+margin_left = 713.369
+margin_top = 143.537
+margin_right = 1284.37
+margin_bottom = 868.537
+
+[node name="SysMessage" parent="." instance=ExtResource( 40 )]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = ExtResource( 41 )
+margin_left = -300.232
+margin_top = 37.0121
+margin_right = -100.232
+margin_bottom = 237.012
+texture = ExtResource( 42 )
+expand = true
+
+[node name="CharacterDislocationPanel" parent="." instance=ExtResource( 43 )]
+visible = false

@@ -1,0 +1,502 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/CraftPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/craftgui/Group 3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/craftgui/cooking_p.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/craftgui/tailor.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/craftgui/tailor_p.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/craftgui/alchemy.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/craftgui/Group 3 copy 2.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/craftgui/smithing.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/craftgui/smithing_p.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/inventory/icon_all.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/inventory/icon_p_all.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/inventory/icon_s_all.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/inventory/icon_res.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/inventory/icon_p_res.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/inventory/icon_s_res.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/inventory/icon_armor.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/inventory/icon_p_armor.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/inventory/icon_s_arm.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/inventory/icon_cosm.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/inventory/icon_p_cosm.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/inventory/icon_s_cosm.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/gui/inventory/icon_potion.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/inventory/icon_p_potion.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/inventory/icon_s_potion.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/iconsitems/ElvenWood.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=29]
+[ext_resource path="res://dragarraytemplate.gd" type="Script" id=30]
+[ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=31]
+[ext_resource path="res://assets/textures/solid_panel.tres" type="StyleBox" id=32]
+[ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/gui/combat/cross.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/gui/slavepanel/text_panel.png" type="Texture" id=39]
+[ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=40]
+[ext_resource path="res://MainFont.tres" type="DynamicFont" id=41]
+
+
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 0, 716, 512 )
+margin_left = 70.9508
+margin_right = 71.2509
+margin_top = 59.0
+margin_bottom = 60.9508
+
+[node name="CraftPanel" type="Panel"]
+margin_left = 187.0
+margin_top = 30.0
+margin_right = 1611.0
+margin_bottom = 1029.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="categories" type="HBoxContainer" parent="."]
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 793.0
+margin_bottom = 218.0
+
+[node name="cooking" type="TextureButton" parent="categories"]
+margin_right = 186.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+
+[node name="tailor" type="TextureButton" parent="categories"]
+margin_left = 190.0
+margin_right = 376.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[node name="alchemy" type="TextureButton" parent="categories"]
+margin_left = 380.0
+margin_right = 566.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+
+[node name="smith" type="TextureButton" parent="categories"]
+margin_left = 570.0
+margin_right = 756.0
+margin_bottom = 186.0
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+
+[node name="filter" type="HBoxContainer" parent="."]
+margin_left = 37.0901
+margin_top = 225.971
+margin_right = 422.09
+margin_bottom = 291.971
+
+[node name="all" type="TextureButton" parent="filter"]
+margin_right = 66.0
+margin_bottom = 66.0
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
+
+[node name="materials" type="TextureButton" parent="filter"]
+margin_left = 70.0
+margin_right = 136.0
+margin_bottom = 66.0
+toggle_mode = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+
+[node name="gear" type="TextureButton" parent="filter"]
+margin_left = 140.0
+margin_right = 206.0
+margin_bottom = 66.0
+toggle_mode = true
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
+
+[node name="costume" type="TextureButton" parent="filter"]
+margin_left = 210.0
+margin_right = 276.0
+margin_bottom = 66.0
+toggle_mode = true
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
+
+[node name="usables" type="TextureButton" parent="filter"]
+margin_left = 280.0
+margin_right = 346.0
+margin_bottom = 66.0
+toggle_mode = true
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 25 )
+
+[node name="CraftSelect" type="ScrollContainer" parent="."]
+margin_left = 105.0
+margin_top = 319.0
+margin_right = 725.0
+margin_bottom = 898.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftSelect"]
+margin_right = 620.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="CraftSelect/VBoxContainer"]
+visible = false
+margin_right = 620.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="CraftSelect/VBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 26 )
+expand = true
+
+[node name="Label" type="Label" parent="CraftSelect/VBoxContainer/Button"]
+margin_left = 123.0
+margin_top = 39.0
+margin_right = 328.0
+margin_bottom = 63.0
+text = "Item Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftSelect/VBoxContainer/Button"]
+margin_left = 547.644
+margin_top = 29.1095
+margin_right = 587.644
+margin_bottom = 69.1095
+grow_horizontal = 0
+alignment = 2
+
+[node name="Button" type="TextureRect" parent="CraftSelect/VBoxContainer/Button/HBoxContainer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 27 )
+expand = true
+
+[node name="Label" type="Label" parent="CraftSelect/VBoxContainer/Button/HBoxContainer/Button"]
+margin_left = 0.698303
+margin_top = 45.3919
+margin_right = 40.6983
+margin_bottom = 69.3919
+text = "1"
+align = 1
+
+[node name="number" type="Label" parent="CraftSelect/VBoxContainer/Button"]
+margin_left = 43.7807
+margin_top = 68.5699
+margin_right = 83.7807
+margin_bottom = 92.5699
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="CraftScheldue" type="ScrollContainer" parent="."]
+margin_left = 920.994
+margin_top = 124.908
+margin_right = 1339.99
+margin_bottom = 727.908
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftScheldue"]
+margin_right = 416.0
+rect_min_size = Vector2( 416, 0 )
+
+[node name="Button" type="TextureButton" parent="CraftScheldue/VBoxContainer"]
+visible = false
+margin_right = 416.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Left click to cancel
+Drag to change order"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 29 )
+expand = true
+script = ExtResource( 30 )
+
+[node name="icon" type="TextureRect" parent="CraftScheldue/VBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 31 )
+expand = true
+
+[node name="Label" type="Label" parent="CraftScheldue/VBoxContainer/Button"]
+margin_left = 58.6794
+margin_top = 13.5051
+margin_right = 231.679
+margin_bottom = 37.5051
+text = "Item Name"
+
+[node name="progress" type="Label" parent="CraftScheldue/VBoxContainer/Button"]
+margin_left = 309.157
+margin_top = 13.1459
+margin_right = 410.157
+margin_bottom = 37.1459
+text = "100/500"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 557.002
+margin_top = 294.834
+margin_right = 701.002
+margin_bottom = 318.834
+text = "Cost per 1"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 139.0
+margin_top = 290.0
+margin_right = 395.0
+margin_bottom = 314.0
+text = "Item produced"
+align = 1
+
+[node name="NumberSelect" type="Panel" parent="."]
+visible = false
+margin_left = 225.032
+margin_top = 48.9353
+margin_right = 1379.03
+margin_bottom = 259.935
+custom_styles/panel = ExtResource( 32 )
+
+[node name="MaterialSetupPanel" type="Panel" parent="NumberSelect"]
+editor/display_folded = true
+margin_left = 53.0
+margin_top = 216.0
+margin_right = 1082.0
+margin_bottom = 875.0
+
+[node name="Part1Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 205.0
+margin_top = 26.0
+margin_right = 550.0
+margin_bottom = 192.0
+
+[node name="Part2Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 209.0
+margin_top = 246.0
+margin_right = 549.0
+margin_bottom = 413.0
+
+[node name="Part3Descript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 206.0
+margin_top = 481.0
+margin_right = 550.0
+margin_bottom = 637.0
+
+[node name="EndItem" type="TextureRect" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 684.853
+margin_top = 16.8932
+margin_right = 884.853
+margin_bottom = 216.893
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 6
+
+[node name="Part1" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 37.0
+margin_top = 51.0
+margin_right = 158.0
+margin_bottom = 168.0
+expand = true
+stretch_mode = 5
+
+[node name="number" type="Label" parent="NumberSelect/MaterialSetupPanel/Part1"]
+margin_left = 83.0
+margin_top = 96.0
+margin_right = 121.0
+margin_bottom = 120.0
+text = "1"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="NumberSelect/MaterialSetupPanel/Part1"]
+show_behind_parent = true
+margin_right = 121.0
+margin_bottom = 117.0
+texture = ExtResource( 34 )
+stretch_mode = 4
+
+[node name="Part2" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 36.0
+margin_top = 269.0
+margin_right = 158.0
+margin_bottom = 391.0
+expand = true
+stretch_mode = 5
+
+[node name="number" type="Label" parent="NumberSelect/MaterialSetupPanel/Part2"]
+margin_left = 83.0
+margin_top = 96.0
+margin_right = 121.0
+margin_bottom = 120.0
+text = "1"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="NumberSelect/MaterialSetupPanel/Part2"]
+show_behind_parent = true
+margin_right = 121.0
+margin_bottom = 117.0
+texture = ExtResource( 34 )
+stretch_mode = 4
+
+[node name="Part3" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 35.0
+margin_top = 498.0
+margin_right = 157.0
+margin_bottom = 618.0
+expand = true
+stretch_mode = 5
+
+[node name="number" type="Label" parent="NumberSelect/MaterialSetupPanel/Part3"]
+margin_left = 83.0
+margin_top = 96.0
+margin_right = 121.0
+margin_bottom = 120.0
+text = "1"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="NumberSelect/MaterialSetupPanel/Part3"]
+show_behind_parent = true
+margin_right = 121.0
+margin_bottom = 117.0
+texture = ExtResource( 34 )
+stretch_mode = 4
+
+[node name="CreateItem" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
+editor/display_folded = true
+visible = false
+margin_left = 463.0
+margin_top = 672.0
+margin_right = 601.0
+margin_bottom = 740.0
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 36 )
+texture_hover = ExtResource( 37 )
+texture_disabled = ExtResource( 38 )
+
+[node name="Label" type="Label" parent="NumberSelect/MaterialSetupPanel/CreateItem"]
+margin_left = 14.0
+margin_top = 21.0
+margin_right = 126.0
+margin_bottom = 45.0
+text = "CRAFT"
+align = 1
+
+[node name="EndItemDescript" type="RichTextLabel" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 552.0
+margin_top = 220.0
+margin_right = 1005.0
+margin_bottom = 644.0
+bbcode_enabled = true
+
+[node name="Label" type="Label" parent="NumberSelect/MaterialSetupPanel"]
+margin_left = 28.6832
+margin_top = 14.9109
+margin_right = 174.683
+margin_bottom = 38.9109
+text = "Parts"
+align = 1
+
+[node name="NumberConfirm" type="Button" parent="NumberSelect"]
+margin_left = 448.219
+margin_top = 111.015
+margin_right = 722.219
+margin_bottom = 165.015
+text = "Confirm"
+
+[node name="HSlider" type="HSlider" parent="NumberSelect"]
+margin_left = 286.339
+margin_top = 69.7233
+margin_right = 901.339
+margin_bottom = 94.7233
+theme = ExtResource( 1 )
+min_value = 1.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
+margin_left = 351.356
+margin_top = 35.5544
+margin_right = 847.356
+margin_bottom = 67.5544
+text = "Repeat: 1 time"
+
+[node name="MaterialSelect" type="Panel" parent="NumberSelect"]
+visible = false
+margin_left = 250.0
+margin_top = 20.0
+margin_right = 899.0
+margin_bottom = 808.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Container" type="ScrollContainer" parent="NumberSelect/MaterialSelect"]
+margin_left = 38.0
+margin_top = 117.0
+margin_right = 596.0
+margin_bottom = 729.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NumberSelect/MaterialSelect/Container"]
+
+[node name="Button" type="TextureButton" parent="NumberSelect/MaterialSelect/Container/VBoxContainer"]
+visible = false
+margin_right = 550.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 550, 128 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="NumberSelect/MaterialSelect/Container/VBoxContainer/Button"]
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 6
+
+[node name="amount" type="Label" parent="NumberSelect/MaterialSelect/Container/VBoxContainer/Button"]
+margin_left = 88.0
+margin_top = 100.0
+margin_right = 120.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 41 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 2
+
+[node name="Label" type="RichTextLabel" parent="NumberSelect/MaterialSelect/Container/VBoxContainer/Button"]
+margin_left = 164.0
+margin_top = 10.0
+margin_right = 548.0
+margin_bottom = 115.0
+bbcode_enabled = true
+
+[node name="PartLabel" type="Label" parent="NumberSelect/MaterialSelect"]
+margin_left = 151.0
+margin_top = 44.0
+margin_right = 456.0
+margin_bottom = 68.0
+text = "SELECTMATERIAL"
+align = 1

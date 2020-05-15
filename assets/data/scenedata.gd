@@ -153,7 +153,7 @@ var scenedict = {
 	},
 	activate_trap_easy = {
 		variations = [
-			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', value = 'trap_detection'}]},
+			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', trait = 'trap_detection', check = true}]},
 			],
 			text = tr("DIALOGUEEVENTTRAPSUCCESS"),
 			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'wits', value = 3}],
@@ -419,8 +419,8 @@ var scenedict = {
 	options = [
 	{code = 'minorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
 	{code = 'minorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
 	]
 	},
 	majorus_potion_select = {text = tr("DIALOGUEEVENTMAJORUSSELECT"), 
@@ -429,8 +429,8 @@ var scenedict = {
 	options = [
 	{code = 'majorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
 	{code = 'majorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'majorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'majorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', name = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'majorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
+	{code = 'majorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
 	]
 	},
 	
@@ -518,7 +518,7 @@ var scenedict = {
 	},
 	daisy_purchase_negotiate = {
 		variations = [ #variations are used if previous option can have multiple outcomes. If variation's requirements are passed it triggers and the rest is ignored. Priority is set by order. 
-			{reqs = [{type = 'master_check', value = [{code = 'stat', type = 'charm_factor', operant = 'gte', value = 3}, {code = 'stat', type = 'charm', operant = 'gte', value = 15, orflag = true}]}],
+			{reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3}, {code = 'stat', stat = 'charm', operant = 'gte', value = 15, orflag = true}]}],
 			text = tr("SCENEDAISY_PURCHASE_NEGOTIATE_TEXT1"),
 			common_effects = [],
 			tags = ['linked_event'],

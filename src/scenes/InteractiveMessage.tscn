@@ -1,0 +1,451 @@
+[gd_scene load_steps=54 format=2]
+
+[ext_resource path="res://src/scenes/InteractiveMessage.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/craftgui/craft_slider.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/universal/scrollbar presed.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/panel.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/universal/scrollbar.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/universal/input.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/universal/checkbox-.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/universal/spinbox.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/panels/arrows.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/universal/input blocked.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/universal/scrollbar2.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/gui/universal/checkbox+.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/slavepanel/CharScreen_0012_character-panel.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/menu/linebuttonhl.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/barv.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/craftgui/craft_slider1.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/gui/scene/answer_presed.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/gui/scene/pic_frame.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/scene/answer_blocked.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/scene/answer.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/backgrounds/Aliron.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/gui/scene/hersoframe.png" type="Texture" id=27]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 8.1225
+margin_right = 7.71504
+margin_top = 6.3175
+margin_bottom = 7.93337
+modulate_color = Color( 0.431373, 0.172549, 0.172549, 1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 8.1225
+margin_right = 7.71504
+margin_top = 6.3175
+margin_bottom = 7.93337
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 8.1225
+margin_right = 7.71504
+margin_top = 6.3175
+margin_bottom = 7.93337
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 548, 47 )
+margin_left = 8.1225
+margin_right = 7.71504
+margin_top = 6.3175
+margin_bottom = 7.93337
+
+[sub_resource type="StyleBoxTexture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 615, 25 )
+margin_left = 9.43112
+margin_right = 11.1734
+margin_top = 4.19002
+margin_bottom = 2.79335
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 35.876, 30 )
+margin_left = 3.9409
+margin_right = 4.07989
+margin_top = 5.28295
+margin_bottom = 3.77354
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 36.2431, 30 )
+margin_left = 3.49201
+margin_right = 6.59175
+margin_top = 2.64148
+margin_bottom = 1.80748
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 6 )
+region_rect = Rect2( -0.0170555, -0.928366, 501.52, 502.371 )
+margin_left = 66.0
+margin_right = 67.4645
+margin_top = 66.728
+margin_bottom = 62.8257
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 669, 841 )
+margin_left = 28.772
+margin_right = 31.5303
+margin_top = 25.1661
+margin_bottom = 26.3892
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 15, 50 )
+margin_top = 10.0
+margin_bottom = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 15, 50 )
+margin_top = 10.0
+margin_bottom = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 15, 50 )
+margin_top = 10.0
+margin_bottom = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=19]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 21, 266 )
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 16, 84 )
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="Theme" id=21]
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 0.607843 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = SubResource( 2 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
+CheckBox/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = ExtResource( 16 )
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = ExtResource( 10 )
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = SubResource( 6 )
+CheckBox/styles/hover_pressed = SubResource( 7 )
+CheckBox/styles/normal = SubResource( 8 )
+CheckBox/styles/pressed = SubResource( 9 )
+HSlider/icons/grabber = ExtResource( 20 )
+HSlider/icons/grabber_disabled = ExtResource( 20 )
+HSlider/icons/grabber_highlight = ExtResource( 20 )
+HSlider/icons/tick = null
+HSlider/styles/focus = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_disabled = null
+HSlider/styles/grabber_highlight = null
+HSlider/styles/slider = SubResource( 10 )
+LineEdit/colors/clear_button_color = Color( 1, 1, 1, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 0.419608, 0.360784, 0.360784, 1 )
+LineEdit/colors/selection_color = Color( 0.988235, 0.509804, 0.509804, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 11 )
+LineEdit/styles/normal = SubResource( 12 )
+LineEdit/styles/read_only = SubResource( 13 )
+OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+OptionButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+OptionButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+OptionButton/constants/arrow_margin = 2
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = null
+OptionButton/icons/arrow = ExtResource( 12 )
+OptionButton/styles/disabled = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = null
+OptionButton/styles/normal = null
+OptionButton/styles/pressed = null
+Panel/styles/panel = SubResource( 14 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+SpinBox/icons/updown = ExtResource( 11 )
+TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = null
+TooltipPanel/styles/panel = SubResource( 15 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 16 )
+VScrollBar/styles/grabber_highlight = SubResource( 17 )
+VScrollBar/styles/grabber_pressed = SubResource( 18 )
+VScrollBar/styles/scroll = SubResource( 19 )
+VScrollBar/styles/scroll_focus = null
+VSeparator/constants/separation = 4
+VSeparator/styles/separator = SubResource( 20 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 500, 500 )
+margin_left = 71.7497
+margin_right = 64.5747
+margin_top = 71.09
+margin_bottom = 64.5747
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 25 )
+region_rect = Rect2( 0, 0, 672, 48 )
+margin_left = 5.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 7.0
+
+[node name="InteractiveMessage" type="Panel" groups=[
+"ignore_rightclicks",
+"pauseprocess",
+]]
+margin_left = 584.0
+margin_top = 395.0
+margin_right = 1368.0
+margin_bottom = 1051.0
+theme = SubResource( 21 )
+custom_styles/panel = SubResource( 22 )
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = -689.0
+margin_top = -430.0
+margin_right = 1370.0
+margin_bottom = 741.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImagePanel" type="TextureRect" parent="."]
+visible = false
+margin_left = 1.0
+margin_top = -379.0
+margin_right = 786.0
+margin_bottom = 2.0
+texture = ExtResource( 22 )
+
+[node name="SceneImage" type="TextureRect" parent="ImagePanel"]
+show_behind_parent = true
+margin_left = -0.340271
+margin_top = -0.355988
+margin_right = 783.66
+margin_bottom = 379.644
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 16.0
+margin_top = 46.0
+margin_right = 774.0
+margin_bottom = 407.0
+bbcode_enabled = true
+scroll_following = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 63.0
+margin_top = 413.0
+margin_right = 734.0
+margin_bottom = 632.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 671.0
+margin_bottom = 219.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_top = 168.0
+margin_right = 671.0
+margin_bottom = 207.0
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 36.0
+margin_top = 9.0
+margin_right = 662.0
+margin_bottom = 31.0
+mouse_filter = 2
+bbcode_enabled = true
+bbcode_text = "[color=#72a887]Test Text[/color]"
+text = "Test Text"
+
+[node name="hotkey" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 34.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 1, 0.980392, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="EventCharacters" type="ScrollContainer" parent="."]
+margin_left = -161.0
+margin_top = -297.0
+margin_right = 2.0
+margin_bottom = 559.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EventCharacters"]
+margin_bottom = 856.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="EventCharacters/VBoxContainer"]
+visible = false
+margin_top = 345.0
+margin_right = 163.0
+margin_bottom = 511.0
+texture_normal = ExtResource( 27 )
+script = ExtResource( 2 )
+
+[node name="icon" type="TextureRect" parent="EventCharacters/VBoxContainer/Button"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 154.0
+margin_bottom = 158.0
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="EventCharacters/VBoxContainer/Button"]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 154.0
+margin_bottom = 37.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Elf"
+align = 1
+valign = 1
+
+[node name="PlayerCharacters" type="ScrollContainer" parent="."]
+margin_left = 789.0
+margin_top = -297.0
+margin_right = 952.0
+margin_bottom = 559.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerCharacters"]
+margin_bottom = 856.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="TextureButton" parent="PlayerCharacters/VBoxContainer"]
+visible = false
+margin_top = 345.0
+margin_right = 163.0
+margin_bottom = 511.0
+texture_normal = ExtResource( 27 )
+
+[node name="TextureRect" type="TextureRect" parent="PlayerCharacters/VBoxContainer/Button"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 154.0
+margin_bottom = 158.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+margin_left = -242.094
+margin_top = -396.556
+margin_right = 1677.91
+margin_bottom = 683.444
+texture = ExtResource( 26 )
+
+[node name="CharacterImage" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+margin_left = 687.0
+margin_top = -394.0
+margin_right = 1418.0
+margin_bottom = 686.0
+stretch_mode = 6
