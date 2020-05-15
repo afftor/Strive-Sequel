@@ -117,7 +117,6 @@ func restore_skill_charge(code):
 			ResourceScripts.game_party.global_skills_used.erase(code)
 
 func use_social_skill(s_code, target):
-	print("1 - %d" % OS.get_ticks_msec())
 	var template = Skilldata.Skilllist[s_code]
 	if template.has('special'):
 		ResourceScripts.custom_effects.call(template.special, parent)
@@ -130,7 +129,6 @@ func use_social_skill(s_code, target):
 			return
 	
 	social_cooldowns[s_code] = template.cooldown
-	print("2 - %d" % OS.get_ticks_msec())
 	if template.has('social_skill_stats'):
 		for i in template.social_skill_stats:
 			parent.set_stat(i, min(parent.get_stat(i) + rand_range(0.4,0.8), parent.get_stat(i+ "_factor")*20))
@@ -165,7 +163,6 @@ func use_social_skill(s_code, target):
 	input_handler.last_action_data = {code = 'social_skill', skill = s_code, caster = parent, target = target}
 	
 	input_handler.PlaySound('page')
-	print("3 - %d" % OS.get_ticks_msec())
 	#paying costs
 	if template.has('goldcost'):
 		ResourceScripts.game_res.money -= template.goldcost
@@ -182,7 +179,6 @@ func use_social_skill(s_code, target):
 			ResourceScripts.game_party.global_skills_used[template.code] += 1
 		else:
 			ResourceScripts.game_party.global_skills_used[template.code] = 1
-	print("4 - %d" % OS.get_ticks_msec())
 	#calcuate 'all' receviers
 	var targ_targ = [target]
 	var targ_cast = [parent]
@@ -192,7 +188,6 @@ func use_social_skill(s_code, target):
 		if ResourceScripts.game_party.characters[h_id].get_work() == 'travel':continue
 		if !parent.same_location_with(ResourceScripts.game_party.characters[h_id]): continue
 		targ_all.push_back(ResourceScripts.game_party.characters[h_id])
-	print("5 - %d" % OS.get_ticks_msec())
 	#create s_skill and process triggers
 	var s_skill = ResourceScripts.scriptdict.class_sskill.new()
 	s_skill.createfromskill(s_code)
@@ -210,7 +205,6 @@ func use_social_skill(s_code, target):
 	#assumption that no social skill will have more than 1 repeat or target_number 
 	#s_skill.calculate_dmg() not really needed
 	#to implement not fully described social chance-to-success system 
-	print("6 - %d" % OS.get_ticks_msec())
 	var effect_text = '\n'
 	#applying values
 	for i in s_skill.value:
@@ -314,7 +308,6 @@ func use_social_skill(s_code, target):
 				effect_text += ' - Maxed'
 			for i in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
-	print("7 - %d" % OS.get_ticks_msec())
 	if target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
 	
 	if template.has("dialogue_report"):
@@ -340,7 +333,6 @@ func use_social_skill(s_code, target):
 		data.options.append({code = 'close', text = tr("DIALOGUECLOSE"), reqs = []})
 		
 		input_handler.interactive_message_custom(data)
-	print("8 - %d" % OS.get_ticks_msec())
 	#postdamage triggers
 	s_skill.process_event(variables.TR_POSTDAMAGE)
 	parent.process_event(variables.TR_POSTDAMAGE, s_skill)
@@ -349,7 +341,6 @@ func use_social_skill(s_code, target):
 	
 	input_handler.update_slave_list()
 	input_handler.update_slave_panel()
-	print("9 - %d" % OS.get_ticks_msec())
 
 func use_mansion_item(item):
 	var itembase = Items.itemlist[item.itembase]
