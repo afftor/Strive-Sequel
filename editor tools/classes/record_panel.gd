@@ -119,14 +119,14 @@ func build_panels():
 				panel_nodes.push_back(tmp)
 				col_containers[rec.container].add_child(tmp)
 		for gr in rec.groups: tmp.add_to_group(gr)
-	rect_size[0] = 100
-	print(rect_size)
-	var tmp = 0
-	for con in col_containers:
-		tmp = max(tmp, con.rect_size[0])
-		print(tmp)
-	rect_size[0] = tmp + 20
-	print(rect_size)
+#	rect_size[0] = 100
+#	print(rect_size)
+#	var tmp = 0
+#	for con in col_containers:
+#		tmp = max(tmp, con.rect_size[0])
+#		print(tmp)
+#	rect_size[0] = tmp + 20
+#	print(rect_size)
 
 func get_data(data):
 	tres = data
