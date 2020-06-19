@@ -18,7 +18,7 @@ var guild = 'none'
 var bodypartsarray = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height']
 var sexbodypartsarray = ['penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size']
 
-var slave_classes = ['slave','servant']
+
 var selected_class = ''
 
 var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
@@ -66,7 +66,7 @@ func _ready():
 	
 	$bodyparts2/class.connect("pressed", self, "open_class_list")
 	
-	for i in slave_classes:
+	for i in variables.slave_class_list:
 		$bodyparts2/slave_class.add_item(statdata.slave_class_names[i])
 	$bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
 	
@@ -123,7 +123,7 @@ func select_sexbodypart(value, bodypart, node):
 	$descript.bbcode_text = person.make_description()
 
 func select_type(value, node):
-	preservedsettings.slave_class = slave_classes[value]
+	preservedsettings.slave_class = variables.slave_class_list[value]
 
 func select_checkbox(bodypart, node):
 	preservedsettings[bodypart] = node.pressed

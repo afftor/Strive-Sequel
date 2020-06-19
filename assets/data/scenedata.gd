@@ -66,7 +66,7 @@ var scenedict = {
 		text = 'DIALOGUECHESTLOCKPICKFAILURE',
 		tags = ['active_character_translate'], 
 		image = 'chest',
-		bonus_effects = [{code = 'affect_active_character', type = 'stat', name = 'wits', value = 2}],
+		bonus_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 2}],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 		],
@@ -75,7 +75,7 @@ var scenedict = {
 		text = 'DIALOGUECHESTLOCKPICKSUCCESS',
 		tags = ['active_character_translate'], 
 		image = 'chest',
-		bonus_effects = [{code = 'affect_active_character', type = 'stat', name = 'wits', value = 2}],
+		bonus_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 2}],
 		options = [
 		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN")}
 		],
@@ -156,7 +156,7 @@ var scenedict = {
 			{reqs = [{type = 'active_character_checks', value = [{code = 'trait', trait = 'trap_detection', check = true}]},
 			],
 			text = tr("DIALOGUEEVENTTRAPSUCCESS"),
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'wits', value = 3}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 3}],
 			tags = ['active_character_translate'],
 			image = '',
 			options = [
@@ -204,7 +204,7 @@ var scenedict = {
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"), 
 	tags = ['active_character_translate'],
 	image = '', 
-	common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'},{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 20}],
+	common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 20}],
 	options = [
 	{code = 'recruit', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
@@ -276,7 +276,7 @@ var scenedict = {
 			value = [
 			{type = 'function', function = 'make_local_recruit', args = {races = [['Elf', 10], ['Fairy', 2], ['Dryad', 1]], difficulty = [0,1], bonuses = {pricemod = -0.3, obedience = 24, submission = 10}, type = 'slave'}}],
 		},
-		{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 10},{code = 'affect_scene_characters', type = 'all', name = 'submission', value = 20}],
+		{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 10},{code = 'affect_scene_characters', type = 'all', stat = 'submission', value = 20}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
@@ -289,7 +289,7 @@ var scenedict = {
 			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},
 			],
 			text = tr("DIALOGUEEVENTSLAVERSNEGOTIATESUCCESS"),
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 3}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['linked_event','active_character_translate'],
 			image = 'slavers_elf',
 			options = [
@@ -299,7 +299,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUEEVENTSLAVERSNEGOTIATEFAILURE"),
 			image = 'slavers_elf',
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 2}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
 			tags = ['linked_event','active_character_translate'],
 			options = [
 				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
@@ -314,7 +314,7 @@ var scenedict = {
 		tags = ['linked_event','scene_character_translate'],
 		default_event_type = 'scene_character_event',
 		image = 'slave_decision',
-		common_effects = [{code = 'bool_scene_characters', type = 'all', name = 'is_known_to_player', value = true}],
+		common_effects = [{code = 'bool_scene_characters', type = 'all', stat = 'is_known_to_player', value = true}],
 		options = [
 		{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEKEEPSLAVEPERSON")},
 		{code = 'event_person_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")}
@@ -326,7 +326,7 @@ var scenedict = {
 		tags = ['scene_character_translate'],
 		default_event_type = 'scene_character_event',
 		image = 'slave_decision',
-		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'servant'},{code = 'affect_scene_characters', type = 'stat', name = 'authority', value = 55}],
+		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'servant'},{code = 'affect_scene_characters', type = 'stat', stat = 'authority', value = 55}],
 		options = [
 		{code = 'event_person_recruit_attempt', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
 		{code = 'close', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
@@ -338,7 +338,7 @@ var scenedict = {
 			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.charm_factor','*5'],"+", ['self.charm', '/4']]}]},#type = 'charm_factor', operant = 'gte', value = 3}]}
 			],
 			text = tr("DIALOGUERECRUITSUCCESS"),
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 3},{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 78},{code = 'affect_scene_characters', type = 'all', name = 'authority', value = 65},{code = 'affect_scene_characters', type = 'all', name = 'loyalty', value = 20}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 78},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 65},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 20}],
 			tags = ['active_character_translate','scene_character_translate'],
 			image = 'slave_decision',
 			options = [
@@ -349,7 +349,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUERECRUITFAILURE"),
 			image = 'slave_decision',
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 2}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
 			tags = ['active_character_translate','scene_character_translate'],
 			options = [
 				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
@@ -368,7 +368,7 @@ var scenedict = {
 	winscene = 'event_person_acquired',
 	common_effects = [
 	{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {races = [['beast', 1]], difficulty = [0,1], type = 'servant',bonuses = {authority = 35, submission = 5}}}],},
-	{code = 'affect_scene_characters', type = 'all', name = 'obedience', value = 24}],
+	{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 24}],
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_good_rebels_intimidate', select_person = true, reqs = [], text = tr("DIALOGUEINTIMIDATE")},
@@ -381,7 +381,7 @@ var scenedict = {
 			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.physics_factor','*8'],"+", ['self.physics', '/3']]}]},
 			],
 			text = tr("DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES"),
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 3}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['linked_event','active_character_translate'],
 			image = 'rebels_furry',
 			options = [
@@ -392,7 +392,7 @@ var scenedict = {
 			text = tr("DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE"),
 			image = 'rebels_furry',
 			winscene = 'event_person_acquired',
-			common_effects = [{code = 'affect_active_character', type = 'stat', name = 'charm', value = 2}],
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
 			tags = ['linked_event','active_character_translate'],
 			options = [
 				{code = 'fight_skirmish', text = tr("DIALOGUEFIGHTOPTION"), reqs = []},
@@ -492,7 +492,7 @@ var scenedict = {
 		opp_characters = [{type = 'pregen', value = 'Daisy'}],
 		options = [
 		{code = 'daisy_purchase', text = tr("SCENEDAISY_MEET_OPTION1"), reqs = []},
-		{code = 'daisy_claim_kinship', text =  tr("SCENEDAISY_MEET_OPTION2"), reqs = [{type = 'master_is_beast', value = true}]},
+		{code = 'daisy_claim_kinship', text =  tr("SCENEDAISY_MEET_OPTION2"), reqs = [{type = 'master_is_beast', check = true}]},
 		{code = 'daisy_ignore_purchase', text = tr("SCENEDAISY_MEET_OPTION3"), reqs = []},
 		],
 	},
@@ -588,7 +588,7 @@ var scenedict = {
 		text = tr("SCENEDAISY_FIRST_EVENT_TEXT"),
 		tags = ['linked_event'],
 		receiver = 'master',
-		reqs = [{type = 'unique_character_at_mansion', value = 'daisy', negative = 'repeat_next_day'}],#this requirement only applies when checking timed_events. 'negative' means what resolution should apply when requirement is not met.
+		reqs = [{type = 'unique_character_at_mansion', name = 'daisy', check = true, negative = 'repeat_next_day'}],#this requirement only applies when checking timed_events. 'negative' means what resolution should apply when requirement is not met.
 		image = 'daisyevent',
 		options = [
 		{code = 'daisy_first_event_reassure', text = tr("SCENEDAISY_FIRST_EVENT_OPTION1"), reqs = []},
@@ -630,7 +630,7 @@ var scenedict = {
 	daisy_confess_event = {
 		text = tr("SCENEDAISY_CONFESS_EVENT_TEXT"),
 		tags = ['linked_event','master_translate'],
-		reqs = [{type = 'unique_character_at_mansion', value = 'daisy', negative = 'repeat_next_day'}],
+		reqs = [{type = 'unique_character_at_mansion', name = 'daisy', check = true, negative = 'repeat_next_day'}],
 		receiver = 'master',
 		image = 'daisyconfess',
 		options = [
@@ -717,7 +717,7 @@ var scenedict = {
 		options = [
 		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY1", reqs = [], dialogue_argument = 1},
 		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY2", reqs = [], dialogue_argument = 2},
-		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY3", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'STARTINGDIALOGUE3_1'}], dialogue_argument = 3},
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY3", reqs = [{type = 'dialogue_seen', check = true, value = 'STARTINGDIALOGUE3_1'}], dialogue_argument = 3},
 		{code = 'starting_dialogue4', text = "STARTINGDIALOGUE2REPLY4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
 		],
 		
@@ -733,7 +733,7 @@ var scenedict = {
 		options = [
 		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY1", reqs = [], dialogue_argument = 1},
 		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY2", reqs = [], dialogue_argument = 2},
-		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY3", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'STARTINGDIALOGUE3_1'}], dialogue_argument = 3},
+		{code = 'starting_dialogue3', text = "STARTINGDIALOGUE2REPLY3", reqs = [{type = 'dialogue_seen', check = true, value = 'STARTINGDIALOGUE3_1'}], dialogue_argument = 3},
 		{code = 'starting_dialogue4', text = "STARTINGDIALOGUE2REPLY4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'},
 		],
 		
@@ -894,7 +894,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSINTRODUCTION1'}], 
+			reqs = [{type = 'dialogue_seen', check = false, value = 'FIGHTERSINTRODUCTION1'}], 
 			target = 'fighters_introduction1',
 			target_option = 1,
 		},
@@ -917,7 +917,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'SERVANTSINTRODUCTION1'}], 
+			reqs = [{type = 'dialogue_seen', check = false, value = 'SERVANTSINTRODUCTION1'}], 
 			target = 'servants_introduction',
 			target_option = 1,
 		},
@@ -948,7 +948,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'WORKERSINTRODUCTION1'}], 
+			reqs = [{type = 'dialogue_seen', check = false, value = 'WORKERSINTRODUCTION1'}], 
 			target = 'workers_introduction1',
 			target_option = 1,
 		},
@@ -971,7 +971,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'dialogue_seen', operant = 'neq', value = 'MAGESINTRODUCTION1'}], 
+			reqs = [{type = 'dialogue_seen', check = false, value = 'MAGESINTRODUCTION1'}], 
 			target = 'mages_introduction1',
 			target_option = 1,
 		},

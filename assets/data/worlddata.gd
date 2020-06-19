@@ -953,17 +953,17 @@ var dungeons = {
 	},
 }
 
-
-var scripteventdata = {
-	dungeon_entrance_tutorial = {
-		code = 'dungeon_entrance_tutorial',
-		trigger = 'enter',
-		oneshot = true,
-		action = 'startevent',
-		arg = 'dungeon_enter_tutorial',
-	},
-	
-}
+#
+#var scripteventdata = {
+#	dungeon_entrance_tutorial = {
+#		code = 'dungeon_entrance_tutorial',
+#		trigger = 'enter',
+#		oneshot = true,
+#		action = 'startevent',
+#		arg = 'dungeon_enter_tutorial',
+#	},
+#
+#}
 
 var eventscrits = {
 	
@@ -1322,7 +1322,7 @@ var easter_egg_characters = {
 		sex = 'female',
 		age = 'adult',
 		height = 'average',
-		hair_color = 'blonde',
+		hair_color = 'blond',
 		eye_color = 'green',
 		tits_size = 'small',
 		ass_size = 'small',

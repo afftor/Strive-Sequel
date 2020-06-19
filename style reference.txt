@@ -1,6 +1,6 @@
 style reference for data syntax
 
-1) character conditions (checkreqs())
+1) character conditions (Charclass.checkreqs())
 	code:
 		'stat':
 			stat - statname (changed from type)
@@ -34,8 +34,8 @@ style reference for data syntax
 			value - limit (number)
 		'is_free':
 			check (added)
-		'is_at_location':
-			value - location name
+		'is_at_location': (internal because of location id usage)
+			value - location id
 			check (added)
 		'is_id': (obsolete/internal)
 			operant
@@ -77,3 +77,188 @@ style reference for data syntax
 			value - number
 		'random':
 			value - number or char-related string array (not avail in editor)
+2) global conditions (globals.checkreqs())
+	type:
+		'no_check': (internal. obsolete)
+		'has_money':
+			value - number
+		'has_hero':
+			name - string
+		'has_material':
+			material - material code
+			operant
+			value
+		'date':
+			operant
+			value - number
+		'hour':
+			operant
+			value - number
+		'gamestart': (internal)
+		'has_upgrade':
+			name - upgrade code
+			value - level
+		'main_progress':
+			operant
+			value - number
+		'area_progress': (internal due to usage of id)
+			operant
+			value - number
+			area - area.id
+		'decision': (not avail in editor due to argument being an element of never-stored set, to fix in future)
+			value - (changed from name) - string
+			check - (changed from value)
+		'has_multiple_decisions': (not avail in editor due to argument being a subset of never-stored set, to fix in future) 
+			decisions - array
+			operant
+			value
+		'quest_stage': (never used, possibly internal)
+			name - quest id - string
+			value
+			operant
+		'quest_completed': (never used, internal)
+			name - quest id - string
+		'party_level':
+			operant
+			value - number
+		'hero_level':
+			name - unique hero code
+			operant
+			value - number
+		'has_items': (not avail in editor due to argument being an element of never-stored set, to fix in future) 
+			name - itembase
+			operant
+			value - number
+		'has_free_items': (not avail in editor due to argument being an element of never-stored set, to fix in future) 
+			name - itembase
+			operant
+			value - number
+		'disabled': (obsolete)
+		'master_check': (obsolete)
+		'active_character_checks':
+			value - char check array
+		'master_is_beast':
+			check - (changed from value)
+		'unique_character_at_mansion':
+			name - (changed from value!) - unique hero code
+			check - added
+		'has_money_for_scene_slave':(internal)
+		'random':
+			value - number only
+		'dialogue_seen':(not avail. in editor due to unability to collect and properly represent all dialogue ids)
+			value - dialog id
+			check - (instead of operant, not simple renaming)
+		'dialogue_selected': (same as previous)
+			value - dialog id
+			check - (instead of operant, not simple renaming)
+		'active_quest_stage': (not avail in editor due to optional argument and overall uncleareness)
+			value
+			state
+			stage (optional)
+		'faction_reputation':
+			operant
+			code - (not a good decision) - faction code
+			value - number
+		'group_size':#not sure about this implementation instead of area - party approach
+			operant
+			value - number
+		'location_has_specific_slaves': (uses location id)
+			location
+			reqs - list of char reqs
+3) common effects
+	code:
+		'money_change':
+			operant
+			value
+		'material_change':
+			material
+			operant
+			value
+		'make_story_character':
+			value - char code
+		'add_timed_event':
+			value - event code (scenedata.scenedict)
+			args:
+				type:
+					'add_to_date':
+						date - minmax
+						hour
+					'fixed_date':
+						date
+						hour
+		'remove_timed_events':
+			value - events array
+		'unique_character_changes':
+			value - uniq char code
+			args:
+				code:
+					'sextrait':
+						operant (add only)
+						value
+					'tag':
+						operant (remove only)
+						value
+					statname
+						operant (+ -)
+						value
+		'start_event': (not fully avail in editor due to unability to collect args format (args = []))
+			data
+			args
+		'spend_money_for_scene_character':
+			value - index
+		'mod_scene_characters': (not used, should be permitted due to different syntax)
+			type (all only)
+			value - dict of stat changes
+		'bool_scene_characters' (obsolete but used), 'affect_scene_characters':
+			type (all only)
+			stat (changed from name)
+			value
+		'change_type_scene_characters': (obsolete)
+			type (all only)
+			value - slave type
+		'active_character_switch':
+			value - index
+		'affect_active_character':
+			type:
+				'damage':
+					value
+				'stat', 'stat_set', 'stat_add':
+					same as other stat setting effects (with obvious logic behind)
+		'make_loot':
+			pool - array of weighted lootboxes (enemydata.loot_chest_data)
+		'open_loot':
+		'make_scene_character': (not avail in editor due to unability to collect all formats)
+			value
+		'update_guild':
+		'create_character':
+			type
+		'main_progress':
+			operant
+			value
+		'progress_quest':
+			value - quest code
+			stage
+		'complete_quest':
+			value - quest code
+		'complete_active_location':
+		'complete_event':
+		'reputation':
+			name - faction
+			operant
+			value
+		'decision':
+			value
+		'screen_black_transition':
+			value - time
+		'start_combat':
+			value - enemy group
+		'start_quest_combat': (not used)
+			value
+		'make_quest_location':
+			value - dungeon
+		'remove_quest_location':
+			value
+		'set_music':
+			value
+		'lose_game':
+	

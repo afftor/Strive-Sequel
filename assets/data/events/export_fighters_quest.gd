@@ -33,12 +33,12 @@ var data = {
 		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, 
 			{type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500},
-			{type = 'decision', name = 'fighters_election_support', value = false},
-			{type = 'dialogue_seen', operant = 'neq', value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', name = 'fighters_election_support', value = false}, 
+			{type = 'decision', value = 'fighters_election_support', check = false},
+			{type = 'dialogue_seen', check = false, value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', value = 'fighters_election_support', check = false}, 
 		{type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'stage2'}, 
 		#{type = 'has_material', operant = 'gte', value = 1, material = 'lich_skull'},
-		{type = 'dialogue_seen', operant = 'eq',value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7, type = 'next_dialogue'}, 
+		{type = 'dialogue_seen', check = true, value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7, type = 'next_dialogue'}, 
 		
 		
 		
@@ -307,7 +307,7 @@ var data = {
 
 	lich_enc_win = {
 		variations = [
-		{reqs = [{type = 'decision', name = 'aire_is_dead', value = false}],
+		{reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
 		tags = ['dialogue_scene'],
 		text = [

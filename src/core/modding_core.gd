@@ -206,7 +206,7 @@ func process_data_file(path : String, file: String, tablename : String):
 	process_dir(tablename, 'w_guilds', worlddata.guild_upgrades)
 	process_dir(tablename, 'w_lands', worlddata.lands)
 	process_dir(tablename, 'w_locations', worlddata.locations)
-	process_dir(tablename, 'w_locationnames', worlddata.locationnames)
+#	process_dir(tablename, 'w_locationnames', worlddata.locationnames)
 	process_dir(tablename, 'w_quests', worlddata.questdata)
 	process_dir(tablename, 'w_dungeons', worlddata.dungeons)
 	process_dir(tablename, 'w_characters', worlddata.pregen_characters)
@@ -342,17 +342,32 @@ func process_images_dir(table_name, dir_name, location_dir):
 	var dir = table[dir_name]
 	for key in dir.keys(): location_dir[key] = input_handler.load_image_from_path(dir[key])
 
-func save_mod(mod_name):
-	var path = mod_tables[mod_name]
-	var mconf := ConfigFile.new()
-	mconf.load(path)
-	var datafiles = mconf.get_section_keys('Data')
-	var dir = path.get_base_dir()
-	for table in datafiles:
-		var f := File.new()
-		f.open(dir + "/" + datafiles.get_value('Data', table), File.WRITE)
-		f.store_line(to_json(tables[table]))
-		f.close()
+#func save_mod(mod_name):
+#	var path = mod_tables[mod_name]
+#	var mconf := ConfigFile.new()
+#	mconf.load(path)
+#	var datafiles = mconf.get_section_keys('Data')
+#	var dir = path.get_base_dir()
+#	for table in datafiles:
+#		var f := File.new()
+#		f.open(dir + "/" + datafiles.get_value('Data', table), File.WRITE)
+#		f.store_line(to_json(tables[table]))
+#		f.close()
+
+func save_table(t_name):
+	var m_name = mod_tables[t_name]
+	var cfg
+	var path
+	for i in mods_list:
+		if i.name == m_name: 
+			cfg = i.config
+			path = i.path.get_base_dir()
+	path += '/'
+	path += cfg.get_value('Data', t_name)
+	var file = File.new()
+	file.open(path, File.WRITE)
+	file.store_line(to_json(tables[t_name]))
+	file.close()
 
 func process_script_extend(name, path):
 	var file = File.new()

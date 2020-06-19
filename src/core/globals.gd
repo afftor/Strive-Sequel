@@ -1021,11 +1021,11 @@ func common_effects(effects):
 			'bool_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
-						k.set_stat(i.name, i.value)
+						k.set_stat(i.stat, i.value)
 			'affect_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
-						k.set_stat(i.name, i.value)
+						k.set_stat(i.stat, i.value)
 			'change_type_scene_characters':
 				if i.type == 'all':
 					for k in input_handler.scene_characters:
@@ -1036,8 +1036,10 @@ func common_effects(effects):
 				match i.type:
 					'damage':
 						input_handler.active_character.deal_damage(i.value)
-					'stat':
-						input_handler.active_character.add_stat(i.name, i.value)
+					'stat', 'stat_add':
+						input_handler.active_character.add_stat(i.stat, i.value)
+					'stat_set':
+						input_handler.active_character.set_stat(i.stat, i.value)
 			'make_loot':
 				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
 			'open_loot':
@@ -1051,7 +1053,7 @@ func common_effects(effects):
 					while number > 0:
 						match k.type:
 							'raw':
-								newcharacter #= Slave.new()
+								newcharacter = ResourceScripts.scriptdict.class_slave.new()
 								newcharacter.is_active = false
 								newcharacter.generate_random_character_from_data(k.race, k.class, k.difficulty)
 								newcharacter.set_slave_category(k.slave_type)
@@ -1150,7 +1152,7 @@ func valuecheck(dict):
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":
-			return ResourceScripts.game_progress.decisions.has(dict.name) == dict.value
+			return ResourceScripts.game_progress.decisions.has(dict.value) == dict.check
 		"has_multiple_decisions": 
 			var counter = 0
 			for i in dict.decisions:
@@ -1185,19 +1187,19 @@ func valuecheck(dict):
 			if character == null:return false
 			return character.checkreqs(dict.value)
 		'master_is_beast':
-			return ResourceScripts.game_party.if_master_is_beast(dict.value)
+			return ResourceScripts.game_party.if_master_is_beast(dict.check)
 		'unique_character_at_mansion':
-			var character = ResourceScripts.game_party.get_unique_slave(dict.value)
+			var character = ResourceScripts.game_party.get_unique_slave(dict.name)
 			if character == null:return false
-			return character.checkreqs([{code = 'is_free', check = true}])
+			return character.checkreqs([{code = 'is_free', check = dict.check}])
 		'has_money_for_scene_slave':
 			return ResourceScripts.game_res.money >= input_handler.scene_characters[dict.value].calculate_price()
 		'random':
 			return globals.rng.randf()*100 <= dict.value
 		'dialogue_seen':
-			return input_handler.operate(dict.operant, ResourceScripts.game_progress.seen_dialogues.has(dict.value), true)
+			return ResourceScripts.game_progress.seen_dialogues.has(dict.value) == dict.check
 		'dialogue_selected':
-			return input_handler.operate(dict.operant, ResourceScripts.game_progress.selected_dialogues.has(dict.value), true)
+			return ResourceScripts.game_progress.selected_dialogues.has(dict.value) == dict.check
 		'active_quest_stage':
 			if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
 				if dict.has('state') && dict.state == false:
