@@ -61,7 +61,14 @@ func setid(pid = null):
 func commit():
 	if path == "": return
 	if $VBoxContainer/idedit.text == "": return
-	images[dir][$VBoxContainer/idedit.text] = input_handler.loadimage(path) #temp, to add mode eiting here
+	images[dir][$VBoxContainer/idedit.text] = input_handler.loadimage(path) #temp, to add mode editing here
+	#more editing, but still temp solution
+	var tname = dir
+	if tname == 'shades': tname = 'bodyportraits'
+	tname = 'i_' + tname
+	if !modding_core.tables[editor_core.current_table].has(tname): modding_core.tables[editor_core.current_table][tname] = {}
+	modding_core.tables[editor_core.current_table][tname][$VBoxContainer/idedit.text] = path
+	
 	if parent != null: parent.update_res()
 	get_parent().hide()
 
@@ -76,9 +83,7 @@ func addrec():
 	tmp.dir = dir
 	$buf/addrecdiag.add_child(tmp)
 	$buf/addrecdiag.popup()
-	print($buf/addrecdiag.rect_size)
 	$buf/addrecdiag.set_size(Vector2(285, 405))
-	print($buf/addrecdiag.rect_size)
 
 func editpath():
 	$buf/FileDialog.popup()
