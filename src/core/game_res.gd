@@ -61,19 +61,19 @@ func remove_item(itemcode, number):
 		if item != null:
 			item.amount -= 1
 		number -= 1
-
-func set_material(material, operant, value):
-	match operant:
-		'+':
-			materials[material] += value
-		'-':
-			materials[material] -= value
-		'*':
-			materials[material] *= value
-		"/":
-			materials[material] /= value
-		'=':
-			materials[material] = value
+#
+#func set_material(material, operant, value):
+#	match operant:
+#		'+':
+#			materials[material] += value
+#		'-':
+#			materials[material] -= value
+#		'*':
+#			materials[material] *= value
+#		"/":
+#			materials[material] /= value
+#		'=':
+#			materials[material] = value
 
 func get_food():
 	var counter = 0

@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/classes/static_effect.gd"
 }, {
+"base": "ItemList",
+"class": "table_display",
+"language": "GDScript",
+"path": "res://editor tools/classes/table_display.gd"
+}, {
 "base": "base_effect",
 "class": "temp_e_progress",
 "language": "GDScript",
@@ -78,6 +83,7 @@ _global_script_class_icons={
 "condition_effect": "",
 "oneshot_effect": "",
 "static_effect": "",
+"table_display": "",
 "temp_e_progress": "",
 "temp_e_simple": "",
 "temp_e_upgrade": "",
@@ -119,6 +125,7 @@ input_handler="*res://src/core/input_handler.gd"
 globals="*res://src/core/globals.gd"
 characters_pool="*res://src/core/characters_pool.gd"
 effects_pool="*res://src/core/effects_pool.gd"
+editor_core="*res://editor tools/editor_core.gd"
 
 [debug]
 

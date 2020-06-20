@@ -262,12 +262,12 @@ func open_city(city):
 		newbutton.connect("pressed", self, "open_city", [city])
 		newbutton.modulate = Color(0.5,0.8,0.5)
 
-var guild_order = ['fighters','workers','servants','mages','slavemarket']
+
 
 func sort_factions(first, second):
-	if guild_order.has(first.code):
-		if guild_order.has(second.code):
-			if guild_order.find(first.code) < guild_order.find(second.code):
+	if variables.guild_order.has(first.code):
+		if variables.guild_order.has(second.code):
+			if variables.guild_order.find(first.code) < variables.guild_order.find(second.code):
 				return true
 			else:
 				return false
@@ -521,7 +521,7 @@ func item_puchase_confirm(value):
 		update_shop_list()
 	else:
 		if Items.materiallist.has(purchase_item.code):
-			ResourceScripts.game_res.set_material(purchase_item.code, '+', value)
+			ResourceScripts.game_res.update_materials(purchase_item.code, '+', value)
 			ResourceScripts.game_res.money -= purchase_item.price*value
 			$ShopPanel/Gold.text = str(ResourceScripts.game_res.money)
 			if typeof(active_shop) == TYPE_DICTIONARY:
@@ -545,7 +545,7 @@ func item_sell_confirm(value):
 	input_handler.PlaySound("money_spend")
 	var price = purchase_item.price
 	if Items.materiallist.has(purchase_item.code):
-		ResourceScripts.game_res.set_material(purchase_item.code, '-', value)
+		ResourceScripts.game_res.update_materials(purchase_item.code, '-', value)
 	else:
 		price = round(purchase_item.calculateprice()/2)
 		purchase_item.amount -= value

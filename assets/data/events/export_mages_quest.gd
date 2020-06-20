@@ -36,9 +36,9 @@ var data = {
 		{code = 'mages_join', text = "MAGESINTRODUCTION3REPLY2", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'mages_election1', text = "MAGESINTRODUCTION2REPLY2", reqs = [
 			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},
-			{type = 'dialogue_seen', operant = 'neq', value = 'MAGESELECTION1'},
+			{type = 'dialogue_seen', check = false, value = 'MAGESELECTION1'},
 			{type = 'faction_reputation', code = 'mages', operant = 'gte', value = 500}, 
-			{type = 'decision', name = 'mages_election_support', value = false}], dialogue_argument = 2, type = 'next_dialogue'},
+			{type = 'decision', value = 'mages_election_support', check = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -85,7 +85,7 @@ var data = {
 		{code = 'mages_questions', text = "MAGESQUESTIONREPLY1", reqs = [], dialogue_argument = 2, remove_after_first_use = true},
 		{code = 'mages_questions', text = "MAGESQUESTIONREPLY2", reqs = [], dialogue_argument = 3, remove_after_first_use = true},
 		{code = 'mages_questions', text = "MAGESQUESTIONREPLY3", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
-		{code = 'mages_questions', text = "MAGESQUESTIONREPLY4", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'MAGESQUESTIONS_4'}], dialogue_argument = 5, remove_after_first_use = true},
+		{code = 'mages_questions', text = "MAGESQUESTIONREPLY4", reqs = [{type = 'dialogue_seen', check = true, value = 'MAGESQUESTIONS_4'}], dialogue_argument = 5, remove_after_first_use = true},
 		{code = 'mages_introduction3', text = "MAGESASKQUESTIONSRETURN", reqs = [], dialogue_argument = 3},
 		],
 		
@@ -135,7 +135,7 @@ var data = {
 	
 	mages_election4 = {
 		variations = [
-		{reqs = [{type = 'decision', name = 'slept_with_xari', value = true}],
+		{reqs = [{type = 'decision', value = 'slept_with_xari', check = true}],
 		image = null,
 		character = 'myr',
 		tags = ['dialogue_scene'],
@@ -241,7 +241,7 @@ var data = {
 			{text = "XARIENCOUNTER5_ANY", reqs = []},
 		],
 		options = [
-			{code = 'xari_encounter6', text = "XARIENCOUNTER5REPLY1", reqs = [{type = 'dialogue_seen', operant = 'eq', value = 'XARIENCOUNTER4_3'}], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'xari_encounter6', text = "XARIENCOUNTER5REPLY1", reqs = [{type = 'dialogue_seen', check = true, value = 'XARIENCOUNTER4_3'}], type = 'next_dialogue', dialogue_argument = 1},
 			{code = 'xari_encounter7', text = "XARIENCOUNTER5REPLY2", reqs = [], type = 'next_dialogue', dialogue_argument = 2},
 			{code = 'close', text = "XARIENCOUNTER5REPLY3", reqs = [], type = 'next_dialogue', dialogue_argument = 3, bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}]},
 		]
