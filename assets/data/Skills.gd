@@ -1204,7 +1204,7 @@ var Skilllist = {
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
-	bless = {#buff: increase damage, armor, mdef, evasion, hitrate by 10 for 3 turns 
+	bless = {#buff: increase ATK by 25%
 		code = 'bless',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/meditate.png"),
@@ -1214,6 +1214,32 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_t_bless'})], 
+		manacost = 0,
+		energycost = 0,
+		charges = 0,
+		combatcooldown = 1,
+		cooldown = 0,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'weapon',
+		damage = 0,
+		sfx = [], 
+		sounddata = {initiate = null, strike = null, hit = null},
+		value = ['0'],
+		damagestat = 'no_stat'
+	},
+	mental_bless = {#buff: increase MATK by 25% (think of better name)
+		code = 'bless',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/meditate.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['buff','support'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_t_mental_bless'})], 
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
@@ -1255,7 +1281,7 @@ var Skilllist = {
 		value = [['caster.hp','*0.1'],['caster.hp','*0.03']],
 		damagestat = ['-hp', '+mp']
 	},
-	blood_explosion = { #sacrifice 75% health to deal 2x weapon spell damage to all enemies, usable once a day, can't use if health <= 75% 
+	blood_explosion = {
 		code = 'blood_explosion',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/firestorm.png"),
@@ -1980,7 +2006,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_burn', push_value = true})], 
-		custom_duration = ['4'],
+		custom_duration = ['2'],
 		manacost = 0,
 		energycost = 0,
 		charges = 0,
@@ -1993,7 +2019,7 @@ var Skilllist = {
 		damage_type = 'fire',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = [['caster.matk','*0.2'],2.5],
+		value = [['caster.matk','*0.2'],1.1],
 		damagestat = ['no_stat', '+damage_hp']
 	},
 	acidbomb = {

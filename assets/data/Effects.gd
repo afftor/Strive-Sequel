@@ -369,7 +369,6 @@ var effect_table = {
 			{type = 'stat_add_p', stat = 'mod_alchemy', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_tailor', value = 0.5},
 			{type = 'stat_add_p', stat = 'mod_farm', value = 0.5},
-			#{type = 'stat_mul', stat = 'mod_collect', value = 1.5},
 		],
 		buffs = [
 			{
@@ -961,19 +960,46 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'atk', value = 10},
-			{type = 'stat_add', stat = 'matk', value = 10},
-			{type = 'stat_add', stat = 'armor', value = 10},
-			{type = 'stat_add', stat = 'mdef', value = 10},
-			{type = 'stat_add', stat = 'evasion', value = 10},
-			{type = 'stat_add', stat = 'hitrate', value = 10},
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+#			{type = 'stat_add', stat = 'matk', value = 10},
+#			{type = 'stat_add', stat = 'armor', value = 10},
+#			{type = 'stat_add', stat = 'mdef', value = 10},
+#			{type = 'stat_add', stat = 'evasion', value = 10},
+#			{type = 'stat_add', stat = 'hitrate', value = 10},
 		],
 		buffs = [
 			{
 				icon = "res://assets/images/traits/dodgedebuff.png", 
-				description = "Is blesed - various stats increased",
+				description = "ATK Increased",
 				limit = 1,
 				t_name = 'bless'
+			}
+		],
+	},
+	e_t_mental_bless = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'Mental Enhancement',
+		tick_event = variables.TR_TURN_F,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 3, 
+		stack = 1,#or not
+		tags = ['buff'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'matk', value = 0.25},
+#			{type = 'stat_add', stat = 'matk', value = 10},
+#			{type = 'stat_add', stat = 'armor', value = 10},
+#			{type = 'stat_add', stat = 'mdef', value = 10},
+#			{type = 'stat_add', stat = 'evasion', value = 10},
+#			{type = 'stat_add', stat = 'hitrate', value = 10},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/traits/dodgedebuff.png", 
+				description = "MATK Increased",
+				limit = 1,
+				t_name = 'mental_bless'
 			}
 		],
 	},

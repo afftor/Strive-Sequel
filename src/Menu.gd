@@ -2,7 +2,7 @@ extends Node
 
 #
 #Writers: Barrus
-#Proofreaders:
+#Proofreaders: Dorant
 #Artists:
 #Coders: ykoc
 #
