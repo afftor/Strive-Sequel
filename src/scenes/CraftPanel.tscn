@@ -42,8 +42,6 @@
 [ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=40]
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=41]
 
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 39 )
 region_rect = Rect2( 0, 0, 716, 512 )
@@ -65,6 +63,9 @@ margin_left = 37.0
 margin_top = 32.0
 margin_right = 793.0
 margin_bottom = 218.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="cooking" type="TextureButton" parent="categories"]
 margin_right = 186.0
@@ -284,7 +285,6 @@ margin_bottom = 259.935
 custom_styles/panel = ExtResource( 32 )
 
 [node name="MaterialSetupPanel" type="Panel" parent="NumberSelect"]
-editor/display_folded = true
 margin_left = 53.0
 margin_top = 216.0
 margin_right = 1082.0
@@ -387,7 +387,6 @@ texture = ExtResource( 34 )
 stretch_mode = 4
 
 [node name="CreateItem" type="TextureButton" parent="NumberSelect/MaterialSetupPanel"]
-editor/display_folded = true
 visible = false
 margin_left = 463.0
 margin_top = 672.0

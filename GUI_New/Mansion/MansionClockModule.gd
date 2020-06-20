@@ -7,13 +7,14 @@ var gametime = 0
 var previouspeed = 0
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
+
 func _ready():
-	var speedvalues = [0,1,5]
-	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
+	var speedvalues = [0, 1, 5]
+	var tooltips = [tr('PAUSEBUTTONTOOLTIP'), tr('NORMALBUTTONTOOLTIP'), tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
 	for i in timebuttons:
 		i.hint_tooltip = tooltips[counter]
-		i.connect("pressed",self,'changespeed',[i])
+		i.connect("pressed", self, 'changespeed', [i])
 		i.set_meta('value', speedvalues[counter])
 		counter += 1
 	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
@@ -22,14 +23,20 @@ func _ready():
 
 	globals.connecttexttooltip($TimeNode/gold/TextureRect/Control, tr("TOOLTIPGOLD"))
 	globals.connecttexttooltip($TimeNode/food/TextureRect/Control, tr("TOOLTIPFOOD"))
+	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date) + ", Hour: " + str(ResourceScripts.game_globals.hour) + ":00"
 
 	set_time_buttons()
+
 
 func _process(delta):
 	if self.visible == false:
 		return
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
-	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food()) + " - " + str(ResourceScripts.game_party.get_food_consumption())
+	$TimeNode/food.text = (
+		ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
+		+ " - "
+		+ str(ResourceScripts.game_party.get_food_consumption())
+	)
 
 	if input_handler.globalsettings.turn_based_time_flow == false:
 		$TimeNode/HidePanel.visible = gamepaused_nonplayer
@@ -46,15 +53,17 @@ func _process(delta):
 				if i.visible == true:
 					allnodeshidden = false
 					break
-			
+
 			if allnodeshidden == true && gamepaused_nonplayer == true:
 				restoreoldspeed(previouspeed)
 				gamepaused_nonplayer = false
 				gamepaused = false
-		
+
 		if gamespeed != 0:
 			gametime += delta * gamespeed
-			$TimeNode/dayprogress.value = globals.calculatepercent(gametime, variables.SecondsPerHour)
+			$TimeNode/dayprogress.value = input_handler.calculatepercent(
+				gametime, variables.SecondsPerHour
+			)
 			if gametime >= variables.SecondsPerHour:
 				gametime -= variables.SecondsPerHour
 				advance_hour()
@@ -62,9 +71,13 @@ func _process(delta):
 
 func timeflowhotkey(hotkey):
 	match hotkey:
-		1: advance_turn()
-		2: decrease_turns()
-		3: increase_turns()
+		1:
+			advance_turn()
+		2:
+			decrease_turns()
+		3:
+			increase_turns()
+
 
 func advance_turn():
 	input_handler.PlaySound("button_click")
@@ -72,6 +85,7 @@ func advance_turn():
 	while number > 0:
 		advance_hour()
 		number -= 1
+
 
 func decrease_turns():
 	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
@@ -81,8 +95,10 @@ func increase_turns():
 	globals.hour_turns_set = min(globals.hour_turns_set + 1, variables.hour_turn_limit)
 	update_turns_label()
 
+
 func update_turns_label():
 	$TimeNode/turns.text = str(globals.hour_turns_set)
+
 
 func advance_hour():
 	ResourceScripts.game_globals.hour += 1
@@ -98,19 +114,33 @@ func advance_hour():
 	if input_handler.globalsettings.turn_based_time_flow:
 		$TimeNode/dayprogress.value = ResourceScripts.game_globals.hour
 	
-	# $population.text = "Population: "+ str(state.characters.size()) +"/" + str(state.get_pop_cap())
-	### Should emit some signal for population node here
-	get_parent().emit_signal("population_changed")
+#	$gold.text = str(state.money)
+#	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
 
+
 func advance_day():
-	ResourceScripts.game_globals.advance_day()
-	ResourceScripts.game_party.advance_day()
-	ResourceScripts.game_world.advance_day()
+	ResourceScripts.game_party.update_global_cooldowns()
+	ResourceScripts.game_globals.hour = 0
+	ResourceScripts.game_globals.date += 1
+	ResourceScripts.game_globals.daily_interactions_left = 1
+	for i in ResourceScripts.game_party.characters.values():
+		i.cooldown_tick()
+		i.process_event(variables.TR_DAY)
+	for i in ResourceScripts.game_world.areas.values():
+		ResourceScripts.game_world.update_guilds(i)
+		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 0:
+			ResourceScripts.world_gen.update_area_shop(i)
+			for k in i.locations.values():
+				if k.has('shop'):
+					ResourceScripts.world_gen.update_area_shop(k)
+	ResourceScripts.game_world.update_locations()
 	globals.autosave()
+	get_parent().rebuild_mansion()
+
 
 func set_time_buttons():
-	match globals.globalsettings.turn_based_time_flow:
+	match input_handler.globalsettings.turn_based_time_flow:
 		true:
 			$"TimeNode/0speed".visible = false
 			$"TimeNode/1speed".visible = false
@@ -132,6 +162,7 @@ func set_time_buttons():
 			$TimeNode/lessturn.hide()
 			$TimeNode/moreturn.hide()
 
+
 func changespeed(button, playsound = true):
 	if input_handler.globalsettings.turn_based_time_flow == true:
 		return
@@ -143,9 +174,10 @@ func changespeed(button, playsound = true):
 	var soundarray = ['time_stop', 'time_start', 'time_up']
 	if oldvalue != newvalue && playsound:
 		input_handler.PlaySound(soundarray[int(button.name[0])])
-	
+
 	gamepaused = newvalue == 0
 	input_handler.emit_signal("SpeedChanged", gamespeed)
+
 
 func restoreoldspeed(value):
 	for i in timebuttons:

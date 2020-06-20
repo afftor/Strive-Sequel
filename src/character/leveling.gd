@@ -102,11 +102,20 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	if taskexisted == true:
 		return
 	#make new task if it didn't exist
-	var dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = [], mod = task.mod}
+	
+	### Changes Start
+	var dict
+	if taskcode == "building":
+		dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskcode].progress_per_item, workers = [], iterations = iterations, messages = [], mod = task.mod}
+	else:
+		dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = [], mod = task.mod}
+	### Changes End
+	
 	dict.workers.append(parent.id)
 	work = taskcode
 	ResourceScripts.game_party.active_tasks.append(dict)
 	globals.emit_signal("task_added")
+
 
 func remove_from_task(remember = false):
 	if work != '':
@@ -147,7 +156,7 @@ func work_tick():
 	if parent.get_static_effect_by_code("work_rule_ration") != null:
 		parent.food.food_consumption_rations = true
 	
-	if ['smith','alchemy','tailor','cooking'].has(currenttask.product):
+	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
 		if ResourceScripts.game_res.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
 				globals.text_log_add('crafting', parent.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
@@ -170,26 +179,40 @@ func work_tick():
 			work_tick_values(currenttask)
 			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product)#
 			make_item_sequence(currenttask, craftingitem)
-	elif currenttask.product == 'building':
-		if ResourceScripts.game_res.selected_upgrade.code == '':
+	
+	elif currenttask.code == 'building':
+		var upgrades_queue = ResourceScripts.game_res.upgrades_queue
+		if upgrades_queue.size() == 0:
+			self.assign_to_task('', '')
 			parent.rest_tick()
 			if messages.has("noupgrade") == false:
-				globals.text_log_add('upgrades', parent.get_short_name() + ": No task or upgrade selected for building. ")
+				globals.text_log_add('upgrades',parent.get_short_name() + ": No task or upgrade selected for building. ")
 				messages.append("noupgrade")
 			return
 		else:
+			if !currenttask.product in ResourceScripts.game_res.upgrade_progresses.keys():
+				self.assign_to_task('building', upgrades_queue[0])
+				if !ResourceScripts.game_res.upgrade_progresses.has(upgrades_queue[0]):
+					var currentupgradelevel
+					if ResourceScripts.game_res.upgrades.has(upgrades_queue[0]):
+						currentupgradelevel = ResourceScripts.game_res.upgrades[upgrades_queue[0]] + 1
+					ResourceScripts.game_res.upgrade_progresses[upgrades_queue[0]] = {level = currentupgradelevel, progress = 0}
 			messages.erase('noupgrade')
 			work_tick_values(currenttask)
-			ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.selected_upgrade.code].progress += get_progress_task(currenttask.code, currenttask.product, true)#*(productivity/100)
-			if ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.selected_upgrade.code].progress >= upgradedata.upgradelist[ResourceScripts.game_res.selected_upgrade.code].levels[ResourceScripts.game_res.selected_upgrade.level].taskprogress:
-				if ResourceScripts.game_res.upgrades.has(ResourceScripts.game_res.selected_upgrade.code):
-					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.selected_upgrade.code] += 1
-				else:
-					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.selected_upgrade.code] = 1
-				input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[ResourceScripts.game_res.selected_upgrade.code])
-				globals.text_log_add('upgrades',"Upgrade finished: " + upgradedata.upgradelist[ResourceScripts.game_res.selected_upgrade.code].name)
-				ResourceScripts.game_res.upgrade_progresses.erase(ResourceScripts.game_res.selected_upgrade.code)
-				ResourceScripts.game_res.selected_upgrade.code = ''
+			var upgrade_progresses = ResourceScripts.game_res.upgrade_progresses
+			var upgradelist = upgradedata.upgradelist
+			if upgrade_progresses.has(currenttask.product):
+				upgrade_progresses[currenttask.product].progress += get_progress_task(currenttask.code, currenttask.code, true)#*(productivity/100)
+				if upgrade_progresses[currenttask.product].progress >= upgradelist[currenttask.product].levels[upgrade_progresses[currenttask.product].level].taskprogress:
+					if ResourceScripts.game_res.upgrades.has(currenttask.product):
+						ResourceScripts.game_res.upgrades[currenttask.product] += 1
+					else:
+						ResourceScripts.game_res.upgrades[currenttask.product] = 1
+					input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[currenttask.product])
+					globals.text_log_add('upgrades',"Upgrade finished: " + upgradedata.upgradelist[currenttask.product].name)
+					ResourceScripts.game_res.upgrade_progresses.erase(currenttask.product)
+					ResourceScripts.game_res.upgrades_queue.erase(currenttask.product)
+				# ResourceScripts.game_res.selected_upgrade.code = ''
 	else:
 		work_tick_values(currenttask)
 		currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)#*(get_stat('productivity')*get_stat(currenttask.mod)/100)
@@ -199,6 +222,7 @@ func work_tick():
 				ResourceScripts.game_res.money += 1
 			else:
 				ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
+				
 
 func work_tick_values(currenttask):
 	var workstat = races.tasklist[currenttask.code].workstat

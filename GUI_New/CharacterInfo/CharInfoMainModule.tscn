@@ -1,0 +1,86 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://GUI_New/CharacterInfo/CharInfoMainModule.gd" type="Script" id=1]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveSummaryModule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveSummaryModule.gd" type="Script" id=3]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.gd" type="Script" id=5]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.gd" type="Script" id=6]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveClassesModule.gd" type="Script" id=8]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveClassesModule.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=10]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveDetailsModule.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveDietModule.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveDietModule.gd" type="Script" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="CharInfoMainModule" type="Panel"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlaveBodyModule" parent="." instance=ExtResource( 7 )]
+show_behind_parent = false
+margin_left = 1205.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 1065.0
+script = ExtResource( 6 )
+
+[node name="SlaveSummaryModule" parent="." instance=ExtResource( 2 )]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 235.0
+margin_bottom = 1065.0
+script = ExtResource( 3 )
+
+[node name="SlaveInfoModule" parent="." instance=ExtResource( 4 )]
+margin_left = 235.0
+margin_top = 145.0
+margin_right = 1205.0
+margin_bottom = 1065.0
+script = ExtResource( 5 )
+
+[node name="SlaveClassesModule" parent="." instance=ExtResource( 9 )]
+visible = false
+margin_left = 235.0
+margin_top = 145.0
+margin_right = 1205.0
+margin_bottom = 1065.0
+script = ExtResource( 8 )
+
+[node name="SlaveDetailsModule" parent="." instance=ExtResource( 11 )]
+visible = false
+margin_left = 235.0
+margin_top = 145.0
+margin_right = 1205.0
+margin_bottom = 1065.0
+script = ExtResource( 10 )
+
+[node name="SlaveDietModule" parent="." instance=ExtResource( 12 )]
+visible = false
+margin_left = 535.0
+margin_top = 365.0
+margin_right = 1205.0
+margin_bottom = 1065.0
+script = ExtResource( 13 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1466.0
+margin_top = 56.0
+margin_right = 1535.0
+margin_bottom = 86.0
+text = "TEST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

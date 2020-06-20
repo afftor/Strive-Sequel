@@ -867,7 +867,8 @@ var dungeons = {
 		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 		levels = [2,3], 
 		resources = ['cloth','leather','iron','wood','clothsilk'],
-		stages_per_level = [2,3],
+		gatherable_resources = {number = [1,2], pool = {wood = [25,40], stone = [30,50], iron = [20,30]}},
+		stages_per_level = [2,4],
 		bgm = "dungeon",
 		puchase_price = 100,
 		affiliation = 'local', #defines character races and events

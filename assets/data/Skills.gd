@@ -87,8 +87,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'sexreward',
-		value = [['caster.sexuals', '*0.08','+8'], ['36'], ['25'], ['1']],
-		damagestat = ['+loyalty', '+obedience', '-lust', '+consent'],
+		value = [['caster.sexuals', '*0.08','+8'], ['36'], ['25'], ['1'], ['10'],['20']],
+		damagestat = ['+loyalty', '+obedience', '-lust', '+consent','base_exp','base_exp'],
+		receiver = ['target','target','target','target','target','caster'],
 	},
 	punish = {
 		code = 'punish',
@@ -335,9 +336,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'serve',
-		value = [['20'], ['40'], ['caster.charm*0.03','+5']],
-		damagestat = ['-lust','obedience','loyalty'],
-		receiver = ['caster','target','target']
+		value = [['20'], ['40'], ['caster.charm*0.03','+5'],['20'],['10']],
+		damagestat = ['-lust','obedience','loyalty','base_exp','base_exp'],
+		receiver = ['caster','target','target','target','caster']
 	},
 	sedate = {
 		code = 'sedate',
@@ -685,7 +686,7 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
-	distract = {#debuff: enemy evasion -30 (-20 for nonhumanoids), lasts 4 turns
+	distract = {
 		code = 'distract',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/distract.png"),
@@ -710,7 +711,7 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
-	attract = {#debuff: enemy damage -30% for 3 turns
+	attract = {
 		code = 'attract',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/Attract.png"),
@@ -1452,7 +1453,7 @@ var Skilllist = {
 		not_final = true,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 1.0,
+		value = 0.8,
 	},
 	water_atk = {
 		code = 'water_atk',
@@ -1723,7 +1724,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/arrowshower.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['damage','aie'],
+		tags = ['damage','aoe'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_arrowrain', chance = 0.3, duration = 2})], 
@@ -1734,7 +1735,7 @@ var Skilllist = {
 		cooldown = 0,
 		catalysts = {},
 		target = 'enemy',
-		target_number = 'all',
+		target_number = 'line',
 		target_range = 'any',
 		damage_type = 'water',
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
@@ -2061,7 +2062,7 @@ var Skilllist = {
 		tags = ['positive'],
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['target.lust','*-1.0'],['target.lust']],
+		value = [['target.lust','*-1.0'],['target.lust',"*0.5"]],
 		damagestat = ['lust','base_exp'],
 	},
 	master_lust_hp = {#consume all target lust, give 1hp 0.5mp per lust

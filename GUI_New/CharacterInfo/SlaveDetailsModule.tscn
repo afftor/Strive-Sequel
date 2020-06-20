@@ -1,0 +1,400 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GUI_New/CharacterInfo/ImageSelect.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=5]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 970, 920 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="SlaveDetailsModule" type="Panel"]
+margin_right = 970.0
+margin_bottom = 920.0
+theme = ExtResource( 5 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 970.0
+margin_bottom = 920.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 64.0
+margin_top = 73.4729
+margin_right = 394.0
+margin_bottom = 818.473
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descript" type="Button" parent="VBoxContainer"]
+margin_right = 330.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+text = "Add Custom Description"
+
+[node name="nickname" type="Button" parent="VBoxContainer"]
+margin_top = 59.0
+margin_right = 330.0
+margin_bottom = 109.0
+rect_min_size = Vector2( 0, 50 )
+text = "Set Nickname"
+
+[node name="masternoun" type="Button" parent="VBoxContainer" groups=[
+"hide_master",
+]]
+margin_top = 118.0
+margin_right = 330.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 0, 50 )
+text = "Set Master Noun"
+
+[node name="icon" type="Button" parent="VBoxContainer"]
+margin_top = 177.0
+margin_right = 330.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 0, 50 )
+text = "Select Custom Portrait"
+
+[node name="body" type="Button" parent="VBoxContainer"]
+margin_top = 236.0
+margin_right = 330.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 0, 50 )
+text = "Select Custom Body"
+
+[node name="traits" type="Button" parent="VBoxContainer"]
+visible = false
+margin_top = 295.0
+margin_right = 291.0
+margin_bottom = 345.0
+rect_min_size = Vector2( 0, 50 )
+text = "Manage Sex Traits"
+
+[node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 295.0
+margin_right = 330.0
+margin_bottom = 525.0
+
+[node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]
+visible = false
+margin_right = 89.0
+margin_bottom = 30.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Cancel"
+
+[node name="search" type="LineEdit" parent="VBoxContainer/IconBlock"]
+margin_right = 330.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+placeholder_text = "Search"
+
+[node name="addcustom" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 38.0
+margin_right = 330.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Add custom image"
+
+[node name="openfolder" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 66.0
+margin_right = 330.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Open system folder"
+
+[node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 94.0
+margin_right = 330.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Reload portraits"
+
+[node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 122.0
+margin_right = 330.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Reset the image"
+
+[node name="reverseportrait" type="Button" parent="VBoxContainer/IconBlock"]
+visible = false
+margin_left = 706.0
+margin_top = 286.0
+margin_right = 1177.0
+margin_bottom = 326.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Reverse to default"
+
+[node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 150.0
+margin_right = 330.0
+margin_bottom = 174.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Select Folders"
+
+[node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
+margin_top = 178.0
+margin_right = 330.0
+margin_bottom = 202.0
+rect_min_size = Vector2( 330, 0 )
+hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
+text = "Assign Both"
+
+[node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock"]
+margin_top = 206.0
+margin_right = 330.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 330, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Race Locked"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+margin_left = 380.0
+margin_top = 190.0
+margin_right = 910.0
+margin_bottom = 760.0
+text = "Text Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 380.0
+margin_top = 150.0
+margin_right = 441.0
+margin_bottom = 174.0
+text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="Button" parent="."]
+margin_left = 792.0
+margin_top = 832.0
+margin_right = 898.0
+margin_bottom = 862.0
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 416.0
+margin_top = 109.0
+margin_right = 940.0
+margin_bottom = 761.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 5
+columns = 3
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+visible = false
+margin_right = 150.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 150, 175 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Button"]
+margin_top = 150.0
+margin_right = 170.0
+margin_bottom = 174.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "nagsjfgsjldgfjsdgfl"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="PopUp" type="WindowDialog" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 10.0
+margin_bottom = 10.0
+script = ExtResource( 1 )
+
+[node name="FileDialog" type="FileDialog" parent="PopUp"]
+margin_left = 110.949
+margin_top = 149.229
+margin_right = 889.947
+margin_bottom = 741.229
+size_flags_horizontal = 2
+size_flags_vertical = 2
+window_title = "Open a File"
+dialog_text = "Select New Portait"
+dialog_hide_on_ok = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.jpg", "*.png" )
+current_dir = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master"
+current_path = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="selectfolders" type="WindowDialog" parent="PopUp"]
+margin_left = 145.518
+margin_top = 306.394
+margin_right = 854.514
+margin_bottom = 666.394
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="portratislabel" type="Label" parent="PopUp/selectfolders"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 267.0
+margin_bottom = 32.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Portrait folder: "
+
+[node name="spritelabel" type="Label" parent="PopUp/selectfolders"]
+margin_left = 11.6673
+margin_top = 79.1626
+margin_right = 266.667
+margin_bottom = 103.163
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Body folder: "
+
+[node name="closefolderselect" type="Button" parent="PopUp/selectfolders"]
+margin_left = 250.578
+margin_top = 312.84
+margin_right = 412.578
+margin_bottom = 343.84
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Close"
+
+[node name="chooseportraitolder" type="Button" parent="PopUp/selectfolders"]
+margin_left = 19.5274
+margin_top = 42.3252
+margin_right = 539.527
+margin_bottom = 72.3252
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Close"
+align = 0
+
+[node name="choosebodyfolder" type="Button" parent="PopUp/selectfolders"]
+margin_left = 19.86
+margin_top = 107.488
+margin_right = 538.86
+margin_bottom = 137.488
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Close"
+align = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopUp/selectfolders"]
+margin_left = 56.4991
+margin_top = 155.159
+margin_right = 662.499
+margin_bottom = 255.159
+size_flags_horizontal = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+bbcode_text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
+text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
+
+[node name="folderdialogue" type="FileDialog" parent="PopUp"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 63.5165
+margin_top = 214.272
+margin_right = 850.515
+margin_bottom = 618.271
+size_flags_horizontal = 2
+size_flags_vertical = 2
+window_title = "Open a Directory"
+dialog_text = "Select default path folder"
+mode = 2
+access = 2
+current_dir = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master"
+current_path = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master/"
+
+[node name="noimagestext" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.235
+margin_top = 33.0
+margin_right = 963.235
+margin_bottom = 172.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+bbcode_text = "[center]You have no images with fitting criterias available.[/center]
+[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]"
+text = "You have no images with fitting criterias available.
+Put your images into portrait folder and hit 'Reload Portraits' button"
+[connection signal="text_changed" from="VBoxContainer/IconBlock/search" to="PopUp" method="_on_search_text_changed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/reloadlist" to="PopUp" method="_on_reloadlist_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/removeportrait" to="PopUp" method="_on_removeportrait_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/reverseportrait" to="PopUp" method="_on_reverseportrait_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/selectfolder" to="PopUp" method="_on_selectfolder_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/racelock" to="PopUp" method="_on_racelock_pressed"]
+[connection signal="file_selected" from="PopUp/FileDialog" to="PopUp" method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="PopUp/selectfolders/closefolderselect" to="PopUp" method="_on_closefolderselect_pressed"]
+[connection signal="pressed" from="PopUp/selectfolders/chooseportraitolder" to="PopUp" method="_on_chooseportraitolder_pressed"]
+[connection signal="pressed" from="PopUp/selectfolders/choosebodyfolder" to="PopUp" method="_on_choosebodyfolder_pressed"]
+[connection signal="dir_selected" from="PopUp/folderdialogue" to="PopUp" method="_on_folderdialogue_dir_selected"]

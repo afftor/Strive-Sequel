@@ -10,6 +10,7 @@ var items = {}
 var craftinglists = {alchemy = [], smith = [], cooking = [], tailor = []}
 var materials = {} setget materials_set
 var oldmaterials = {}
+var upgrades_queue = []
 
 func _init():
 	for i in upgradedata.upgradelist.keys():
