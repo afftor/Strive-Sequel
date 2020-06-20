@@ -292,6 +292,22 @@ func make_location(code, area):
 	location.progress = {level = 1, stage = 0}
 	location.stagedenemies = []
 	location.enemies = location.enemyarray.duplicate(true)
+	location.tasks = []
+	if location.has('gatherable_resources'):
+		location.gather_resources = {}
+		var number = round(rand_range(location.gatherable_resources.number[0],location.gatherable_resources.number[1]))
+		var array = []
+		for i in location.gatherable_resources.pool:
+			array.append({i : location.gatherable_resources.pool[i]})
+		while number > 0:
+			number -= 1
+			var data = array[randi()%array.size()]
+			var resource_number = data.values()[0]
+			data[data.keys()[0]] = round(rand_range(resource_number[0],resource_number[1]))
+			location.gather_resources[data.keys()[0]] = data.values()[0]
+			array.erase(data)
+		location.tasks.append("gather")
+	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
 		location.erase("background_pool")
@@ -301,6 +317,8 @@ func make_location(code, area):
 		if location.final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
+	
+	
 	
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	ResourceScripts.game_world.locationcounter += 1

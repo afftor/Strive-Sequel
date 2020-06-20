@@ -1,24 +1,24 @@
 [gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://files/buttons/main screen/speedstop1.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/buttons/main screen/speedstop1.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=3]
-[ext_resource path="res://files/buttons/main screen/speedstop0.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/buttons/main screen/speedstop0.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=5]
-[ext_resource path="res://files/buttons/main screen/timer_panel.png" type="Texture" id=6]
-[ext_resource path="res://files/buttons/main screen/speedfast2.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/buttons/main screen/timer_panel.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/buttons/main screen/speedfast2.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=9]
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=10]
-[ext_resource path="res://files/buttons/main screen/speedfast1.png" type="Texture" id=11]
-[ext_resource path="res://files/buttons/main screen/speedfast0.png" type="Texture" id=12]
-[ext_resource path="res://files/buttons/main screen/speednorm1.png" type="Texture" id=13]
-[ext_resource path="res://files/buttons/main screen/speednorm0.png" type="Texture" id=14]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=10]
+[ext_resource path="res://assets/images/buttons/main screen/speedfast1.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/buttons/main screen/speedfast0.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/buttons/main screen/speednorm1.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/buttons/main screen/speednorm0.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=15]
-[ext_resource path="res://files/buttons/main screen/speednorm2.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/buttons/main screen/speednorm2.png" type="Texture" id=16]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.gd" type="Script" id=17]
-[ext_resource path="res://files/buttons/main screen/speedstop2.png" type="Texture" id=18]
-[ext_resource path="res://files/buttons/main screen/hourprogress.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/buttons/main screen/speedstop2.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/buttons/main screen/hourprogress.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -186,9 +186,9 @@ margin_bottom = 177.0
 [node name="dayprogress" type="TextureProgress" parent="TimeNode"]
 show_behind_parent = true
 margin_left = 5.0
-margin_top = 181.0
+margin_top = 138.0
 margin_right = 285.0
-margin_bottom = 218.0
+margin_bottom = 175.0
 texture_progress = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false

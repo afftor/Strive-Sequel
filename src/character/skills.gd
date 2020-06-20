@@ -340,7 +340,7 @@ func use_social_skill(s_code, target):
 		target.process_event(variables.TR_POSTDAMAGE, s_skill)
 	
 	input_handler.update_slave_list()
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func use_mansion_item(item):
 	var itembase = Items.itemlist[item.itembase]

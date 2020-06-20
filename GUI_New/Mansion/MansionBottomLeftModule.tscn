@@ -1,42 +1,111 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
 
-[node name="MansionBottomLeftModule" type="Control"]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu_Panel.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_travel_small.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrades_small.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_craft_small.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_inventory_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/icon_sex_small.png" type="Texture" id=7]
+
+[node name="MansionBottomLeftModule" type="Panel"]
 margin_right = 290.0
-margin_bottom = 385.0
+margin_bottom = 392.0
+theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 11.0
+margin_right = 282.0
+margin_bottom = 339.0
+custom_constants/separation = 12
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 290.0
-margin_bottom = 385.0
-custom_constants/separation = 12
-
 [node name="TravelsButton" type="Button" parent="VBoxContainer"]
-margin_right = 290.0
-margin_bottom = 67.4
-rect_min_size = Vector2( 0, 67.4 )
+margin_right = 274.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 64 )
+toggle_mode = true
+text = "            Travels"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TravelsButton"]
+margin_left = 6.94936
+margin_top = 10.1924
+margin_right = 50.9494
+margin_bottom = 54.1924
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UpgradesButton" type="Button" parent="VBoxContainer"]
-margin_top = 79.0
-margin_right = 290.0
-margin_bottom = 146.4
-rect_min_size = Vector2( 0, 67.4 )
+margin_top = 76.0
+margin_right = 274.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 64 )
+toggle_mode = true
+text = "             Upgrades"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/UpgradesButton"]
+margin_left = 7.37041
+margin_top = 11.1374
+margin_right = 51.3704
+margin_bottom = 55.1374
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SexButton" type="Button" parent="VBoxContainer"]
-margin_top = 158.0
-margin_right = 290.0
-margin_bottom = 225.4
-rect_min_size = Vector2( 0, 67.4 )
+margin_top = 152.0
+margin_right = 274.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 64 )
+text = "             Sex"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SexButton"]
+margin_left = 6.81122
+margin_top = 11.3961
+margin_right = 50.8112
+margin_bottom = 55.3961
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="InventoryButton" type="Button" parent="VBoxContainer"]
-margin_top = 237.0
-margin_right = 290.0
-margin_bottom = 304.4
-rect_min_size = Vector2( 0, 67.4 )
+margin_top = 228.0
+margin_right = 274.0
+margin_bottom = 292.0
+rect_min_size = Vector2( 0, 64 )
+text = "            Inventory"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/InventoryButton"]
+margin_left = 7.00399
+margin_top = 9.39304
+margin_right = 51.004
+margin_bottom = 53.393
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CraftButton" type="Button" parent="VBoxContainer"]
-margin_top = 316.0
-margin_right = 290.0
-margin_bottom = 383.4
-rect_min_size = Vector2( 0, 67.4 )
+margin_top = 304.0
+margin_right = 274.0
+margin_bottom = 368.0
+rect_min_size = Vector2( 0, 64 )
+text = "Craft"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/CraftButton"]
+margin_left = 6.88074
+margin_top = 10.086
+margin_right = 50.8807
+margin_bottom = 54.086
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

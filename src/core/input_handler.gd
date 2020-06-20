@@ -55,6 +55,14 @@ var target_character
 
 var ghost_items = []
 
+var skill_list_node
+var Mansion
+var SlaveModule
+var PreviousScene
+
+func rebuild_skill_list():
+	skill_list_node.build_skill_panel()
+
 
 var encounter_win_script = null
 var encounter_lose_scripts = []
@@ -63,7 +71,7 @@ var musicfading = false
 var musicraising = false
 var musicvalue
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_SYSMESSAGE} #, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_SYSMESSAGE, NODE_SLAVEMODULE, NODE_INVENTORY_NEW, NODE_MANSION_NEW,NODE_GUI_WORLD}#, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
 var globalsettings = { 
@@ -167,9 +175,8 @@ func _ready():
 	settings_load()
 
 func _input(event):
-	if event.is_echo() == true && !event.is_action_type(): 
+	if event.is_echo() == true && !event.is_action_type():
 		return
-	#print(var2str(event))
 	if (event.is_action("ESC") || event.is_action_released("RMB")):
 		var ignore_rightclick = false
 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
@@ -177,11 +184,15 @@ func _input(event):
 				ignore_rightclick = true
 				continue
 		if ignore_rightclick == false:
-			if CloseableWindowsArray.size() != 0:
+
+			if CloseableWindowsArray.size() != 0 && !CurrentScene.name == "MansionMainModule":
 				CloseTopWindow()
 			else:
-				if CurrentScene.name == 'mansion' && event.is_action("ESC"):
-					CurrentScene.get_node("MenuPanel").open()
+				# if CurrentScene.name == 'mansion' && event.is_action("ESC"):
+				# 	CurrentScene.get_node("MenuPanel").open()
+				if CurrentScene.name == "MansionMainModule":
+					Mansion.mansion_state = "default"
+
 	if event.is_action_released("F9"):
 		OS.window_fullscreen = !OS.window_fullscreen
 		input_handler.globalsettings.fullscreen = OS.window_fullscreen

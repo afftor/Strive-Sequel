@@ -144,6 +144,9 @@ margin_right = 1668.38
 margin_bottom = 1068.33
 theme = ExtResource( 4 )
 text = "Quest Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UpgradeButton" type="Button" parent="."]
 margin_left = 492.0

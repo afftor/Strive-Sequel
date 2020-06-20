@@ -240,7 +240,7 @@ func _ready():
 			i.totalreputation += 500
 		character.unlock_class("pet")
 		character.unlock_class("souleater")
-		character.mp = 10
+		character.set_stat('lust', 25)
 		var tmp = {}
 		tmp.oral = 70
 		tmp.anal = 90

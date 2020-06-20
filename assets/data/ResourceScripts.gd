@@ -69,6 +69,11 @@ onready var node_data = {
 	input_handler.NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
 	input_handler.NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open'},
 	input_handler.NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/scenes/SysMessage.tscn") }, 
+	input_handler.NODE_SLAVEMODULE : {name = 'slavemodule', mode = 'scene', scene = preload("res://GUI_New/CharacterInfo/CharInfoMainModule.tscn") },
+	input_handler.NODE_INVENTORY_NEW : {name = 'inventory_new', mode = 'scene', scene = preload("res://GUI_New/Inventory/InventoryMainModule.tscn") },
+	input_handler.NODE_MANSION_NEW : {name = 'mansion', mode = 'scene', scene = preload("res://GUI_New/Mansion/MansionMainModule.tscn") },
+	input_handler.NODE_GUI_WORLD : {name = 'GUIWorld', mode = 'scene', scene = preload("res://GUI_New/GUIWorld.tscn") },
+	input_handler.NODE_GUI_WORLD : {name = 'GUIWorld', mode = 'scene', scene = preload("res://GUI_New/GUIWorld.tscn") },
 }
 
 var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text"]

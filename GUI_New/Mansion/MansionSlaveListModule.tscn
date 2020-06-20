@@ -1,22 +1,55 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://files/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Textures_v2/MANSION/panel_char.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/panel_char_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/Heart_b.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/Heart_r.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/Heart_empty.png" type="Texture" id=8]
-[ext_resource path="res://GUI_New/Mansion/MansionSlaveListModule.gd" type="Script" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/hpmp_icon_hp.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/hpmp_icon_mp.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/hpmp_icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/panel_big.png" type="Texture" id=9]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=10]
+[ext_resource path="res://assets/Textures_v2/MANSION/panel_char_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/MANSION/panel_char_unavailable.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList_Button.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList_Categories.tres" type="Theme" id=14]
+[ext_resource path="res://assets/Textures_v2/MANSION/button_occupation_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/MANSION/button_occupation.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/MANSION/button_occupation_pressed.png" type="Texture" id=17]
 
-[node name="SlaveListModule" type="Panel"]
-self_modulate = Color( 1, 1, 1, 0.843137 )
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 256, 256 )
+margin_left = 80.0
+margin_right = 80.0
+margin_top = 80.0
+margin_bottom = 40.0
+
+[node name="MansionSlaveListModule" type="Panel"]
 margin_right = 1100.0
 margin_bottom = 580.0
 theme = ExtResource( 1 )
-script = ExtResource( 9 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.588235 )
+show_behind_parent = true
+margin_right = 1075.0
+margin_bottom = 499.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoverArea" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_top = 86.0
+margin_right = 895.0
+margin_bottom = 186.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,15 +57,16 @@ __meta__ = {
 [node name="Categories" type="VBoxContainer" parent="."]
 margin_left = 26.0
 margin_top = 26.0
-margin_right = 897.0
+margin_right = 1064.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
+theme = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="TextureButton" parent="Categories"]
-margin_right = 871.0
+margin_right = 1038.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 expand = true
@@ -40,12 +74,15 @@ expand = true
 [node name="HBoxContainer" type="HBoxContainer" parent="Categories/Button"]
 margin_left = 4.0
 margin_top = 3.0
-margin_right = 654.0
-margin_bottom = 46.0
+margin_right = 995.0
+margin_bottom = 54.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="icon" type="TextureRect" parent="Categories/Button/HBoxContainer"]
 margin_right = 50.0
-margin_bottom = 51.0
+margin_bottom = 57.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 expand = true
@@ -53,17 +90,17 @@ stretch_mode = 6
 
 [node name="sex" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 54.0
-margin_top = 13.0
+margin_top = 15.0
 margin_right = 104.0
-margin_bottom = 37.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 50, 0 )
 text = "Sex"
 
 [node name="name" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 108.0
-margin_top = 13.0
+margin_top = 15.0
 margin_right = 308.0
-margin_bottom = 37.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 200, 0 )
 text = "Name "
 clip_text = true
@@ -71,7 +108,7 @@ clip_text = true
 [node name="stats" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 312.0
 margin_right = 377.0
-margin_bottom = 51.0
+margin_bottom = 57.0
 rect_min_size = Vector2( 65, 0 )
 hint_tooltip = "TOOLTIPENERGY"
 size_flags_horizontal = 0
@@ -81,163 +118,213 @@ align = 1
 
 [node name="job" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 381.0
-margin_top = 13.0
-margin_right = 631.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 250, 0 )
+margin_top = 15.0
+margin_right = 621.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 240, 0 )
 hint_tooltip = "TOOLTIPOBEDIENCE"
 size_flags_horizontal = 0
 text = "Occupation"
 align = 1
 
 [node name="obed" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 635.0
-margin_top = 13.0
-margin_right = 670.0
-margin_bottom = 37.0
+margin_left = 625.0
+margin_top = 15.0
+margin_right = 660.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 35, 0 )
 hint_tooltip = "STATOBEDIENCE"
 mouse_filter = 0
 size_flags_horizontal = 0
-text = "O"
+text = "   O"
 
 [node name="explabel" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 674.0
-margin_top = 13.0
-margin_right = 739.0
-margin_bottom = 37.0
+margin_left = 664.0
+margin_top = 15.0
+margin_right = 729.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 65, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Exp"
+text = "   Exp"
 align = 1
 
 [node name="state2" type="Label" parent="Categories/Button/HBoxContainer"]
-margin_left = 743.0
-margin_top = 13.0
-margin_right = 817.0
-margin_bottom = 37.0
+margin_left = 733.0
+margin_top = 15.0
+margin_right = 802.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 50, 0 )
-text = "Status"
+text = "   Status"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 24.2418
+margin_left = 24.0
 margin_top = 86.0
-margin_right = 895.242
-margin_bottom = 891.0
+margin_right = 1056.0
+margin_bottom = 418.0
+rect_min_size = Vector2( 996, 0 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 871.0
-margin_bottom = 50.0
+margin_right = 1032.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
+custom_constants/separation = 15
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
-margin_right = 871.0
+visible = false
+margin_right = 1032.0
 margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+rect_min_size = Vector2( 996, 50 )
 mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 13 )
+toggle_mode = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 3 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 12 )
 expand = true
+stretch_mode = 6
 script = ExtResource( 10 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 4.0
-margin_top = 3.0
-margin_right = 654.0
-margin_bottom = 46.0
-
-[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_right = 50.0
+[node name="icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 7.0
+margin_top = 5.0
+margin_right = 47.0
 margin_bottom = 45.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 39, 39 )
 mouse_filter = 2
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="sex" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
+[node name="sex" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 54.0
-margin_right = 104.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 50, 0 )
+margin_top = 5.0
+margin_right = 93.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 39, 39 )
 mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 108.0
-margin_top = 10.0
-margin_right = 318.0
-margin_bottom = 34.0
+[node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 117.292
+margin_top = 8.1931
+margin_right = 327.292
+margin_bottom = 38.1931
 rect_min_size = Vector2( 210, 0 )
 text = "Name "
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 322.0
-margin_right = 367.0
-margin_bottom = 45.0
+[node name="stats" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 331.322
+margin_top = 6.0
+margin_right = 371.322
+margin_bottom = 46.0
 texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="hp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer/stats"]
-margin_right = 40.0
-margin_bottom = 40.0
-value = 75.0
+[node name="hp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/stats"]
+show_behind_parent = true
+margin_left = 2.44171
+margin_top = 2.07547
+margin_right = 42.4417
+margin_bottom = 42.0755
+value = 100.0
+texture_progress = ExtResource( 6 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/stats"]
+show_behind_parent = true
+margin_left = 22.4639
+margin_top = 1.83129
+margin_right = 62.4639
+margin_bottom = 41.8313
+value = 100.0
 texture_progress = ExtResource( 7 )
 fill_mode = 3
 
-[node name="mp" type="TextureProgress" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer/stats"]
-margin_right = 40.0
+[node name="job" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 414.0
+margin_top = 8.0
+margin_right = 598.0
 margin_bottom = 40.0
-value = 25.0
-texture_progress = ExtResource( 6 )
-fill_mode = 3
-
-[node name="job" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 371.0
-margin_top = 7.0
-margin_right = 621.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 250, 30 )
 size_flags_horizontal = 0
-text = "Text"
-align = 1
-clip_text = true
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 15 )
+expand = true
 
-[node name="obed" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 625.0
-margin_top = 10.0
-margin_right = 670.0
-margin_bottom = 34.0
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button/job"]
+margin_left = 2.0
+margin_right = 184.0
+margin_bottom = 30.0
+text = "Rest"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="obed" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 634.364
+margin_top = 10.8264
+margin_right = 679.364
+margin_bottom = 37.8264
 rect_min_size = Vector2( 45, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 1
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 674.0
-margin_top = 10.0
-margin_right = 749.0
-margin_bottom = 34.0
+[node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 680.0
+margin_top = 10.8264
+margin_right = 755.0
+margin_bottom = 37.8264
 rect_min_size = Vector2( 75, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button/HBoxContainer"]
-margin_left = 753.0
-margin_right = 803.0
-margin_bottom = 45.0
+[node name="state" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 760.0
+margin_top = 2.0
+margin_right = 810.0
+margin_bottom = 47.0
 rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 visible = false
@@ -245,9 +332,58 @@ margin_left = 30.0
 margin_top = 34.0
 margin_right = 893.0
 margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_top = 8.0
 margin_right = 41.0
 margin_bottom = 32.0
 text = "Sex"
+
+[node name="population" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -194.672
+margin_top = -49.5067
+margin_right = -69.672
+margin_bottom = -25.5067
+text = "Population"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_consumption" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -341.0
+margin_top = -48.0
+margin_right = -204.0
+margin_bottom = -24.0
+text = "FC"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TravelsContainer" type="ScrollContainer" parent="."]
+margin_left = 37.0
+margin_top = 451.0
+margin_right = 1073.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TravelsContainer"]
+
+[node name="Button" type="Button" parent="TravelsContainer/HBoxContainer"]
+visible = false
+margin_right = 134.838
+margin_bottom = 38.2509
+toggle_mode = true
+text = "  Show All  "

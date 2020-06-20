@@ -1,214 +1,232 @@
 extends Control
 
-# Signals
-signal population_changed
+# VARIABLES
+# Modules
+onready var TravelsModule = $MansionTravelsModule
+onready var SlaveListModule = $MansionSlaveListModule
+onready var SkillModule = $MansionSkillsModule
+onready var UpgradesModule = $MansionUpgradesModule
+onready var SlaveModule = $MansionSlaveModule
+onready var TaskModule = $MansionTaskInfoModule
+onready var MenuModule = $MansionBottomLeftModule
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var submodules = []
 
-# Preloads
-# const PopulationModule = preload("res://GUI_New/Mansion/MansionPopulationModule.gd")
-var SlaveListModule = ResourceScripts.scriptdict.slavelistmodule
+#Skills
+var skill_source
+var skill_target
 
-# Variables
-onready var slavelist_module = SlaveListModule.new() 
+# Travels
+var travels_defaults = {code = 'default'}
+var selected_travel_characters = []
+var is_travel_selected
+var selected_destination
 
-# Temporary Testing Variables
+
+# Upgrades
+var is_upgrade_selected
+var selected_upgrade
+
+onready var active_person = ResourceScripts.game_party.get_master()
+var hovered_person = null
+var is_entered = false
+var chars_for_skill = []
+
+var mansion_state = "default" setget mansion_state_set
+var mansion_prev_state
 
 
-func test_mode():
-	print("Test Mode Enabled")
-	ResourceScripts.game_world.make_world()
-	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'male', 'random')
-	character.set_stat('consent', 100)
-	character.set_stat('penis_virgin', true)
-	characters_pool.move_to_state(character.id)
-	character.add_trait('core_trait')
-	character.unlock_class("master")
-	character.unlock_class("archer")
-	character.unlock_class("necromancer")
-	character.unlock_class("rogue")
-	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
-	globals.AddItemToInventory(bow)
-	character.equip(bow)
-	character.set_slave_category('master')
-	character.statlist.negative_sex_traits = ['dislike_missionary']
-	character.statlist.unlocked_sex_traits = ['submissive', 'pushover','bottle_fairy','dominant','sadist','desired','curious','life_power']
-	#character.armor = 135
-	character.set_stat('wits',20)
-	character.set_stat('consent',100)
-	character.set_stat('charm_factor',5)
-	character.set_stat('physics_factor',5)
-	#character.unlock_class("worker")
-	character.mp = 50
-	character.unlock_class("sadist")
-#		character.unlock_class("caster")
-	for i in Skilldata.Skilllist:
-		if Skilldata.Skilllist[i].type != 'social':
-			continue
-		character.skills.social_skills.append(i)
-	character.is_players_character = true
-	globals.impregnate(character, character)
-	#character.pregnancy.duration = 2
-	
-	character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'random', 'random')
-	character.set_stat('consent',100)
-	character.statlist.negative_sex_traits = ['dislike_missionary']
-	characters_pool.move_to_state(character.id)
-	#character.unlock_class("attendant")
-	character.add_trait('core_trait')
-	character.set_slave_category('servant')
-	character.set_stat('obedience', 100)
-	character.set_stat('lust',50)
-	character.is_players_character = true
-	character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'random', 'random')
-	characters_pool.move_to_state(character.id)
-	
-#		for i in range(1,20):
-#
-#			character = ResourceScripts.scriptdict.class_slave.new()
-#			character.create('BeastkinCat', 'random', 'random')
-#			characters_pool.move_to_state(character.id)
-	
-	character.set_stat('obedience', 0)
-	#character.fear = 25
-	#character.base_exp = 99
-	character.set_stat('charm_factor' ,5)
-	character.set_stat('physics_factor' ,5)
-	character.set_stat('wits_factor' ,5)
-	character.set_stat('sexuals_factor' , 5)
-	character.set_stat('charm' , 100)
-	character.set_stat('physics' ,100)
-	character.set_stat('wits' , 100)
-	
-	var character2 = ResourceScripts.scriptdict.class_slave.new()
-	character2.create('HalfkinCat', 'random', 'random')
-	character2.set_stat('charm' , 0)
-	character2.set_stat('physics' ,0)
-	character2.set_stat('wits' , 0)
-	character2.set_stat('sexuals' , 0)
-	var text = ''
-	for i in races.tasklist.values():
-		for k in i.production.values():
-			var value = character.get_progress_task(i.code, k.code, true)/k.progress_per_item
-			if Items.materiallist.has(k.item):
-				pass
-#					var item = Items.materiallist[k.item]
-#					text += item.name + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item*item.price,0.1)) 
-#					text += ", Max " + str(stepify(value*item.price,0.1)) + "\n"
-			else:
-				pass
-#					text += k.code + ": Min " + str(stepify(races.get_progress_task(character2, i.code, k.code, true)/k.progress_per_item,0.1)) 
-#					text += ", Max " + str(stepify(value,0.1)) + "\n"
-#
-	var base_price = 0 
-	var output_price = 0
-	for i in Items.recipes.values():
-		base_price = 0
-		output_price = 0
-		for k in i.materials:
-			base_price += Items.materiallist[k].price * i.materials[k]
-		for k in i.items:
-			base_price += Items.itemlist[k].price * i.items[k]
+var prev_selected_travel
 
-		if Items.materiallist.has(i.resultitem):
-			output_price = Items.materiallist[i.resultitem].price*i.resultamount
-			if base_price != 0:
-				text += Items.materiallist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
-		else:
-			output_price = Items.itemlist[i.resultitem].price*i.resultamount
-			if base_price != 0:
-				text += Items.itemlist[i.resultitem].name + ": Cost - " + str(base_price) + ", Return - " + str(output_price) + "\n"
-			
-	#print(text)
-	character.set_stat('loyalty' , 95)
-	character.set_stat('authority' ,100)
-	character.set_stat('submission' , 95)
-	character.mp = 10
-	character.hp = 95
-	#character.exhaustion = 1000
-	character.add_trait('core_trait')
-	character.set_slave_category('slave')
-	character.is_players_character = true
-	
-	globals.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
-		{code = 'sexuals_factor', value = 1, operant = "+"},
-		{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
-		{code = 'submission', operant = '+', value = 50},
-		{code = 'obedience', operant = '+', value = 30},
-		{code = 'tag', operant = 'remove', value = 'no_sex'},
-		]}])
-	#state.revert()
-	ResourceScripts.game_res.money = 505590
-	for i in Items.materiallist:
-		ResourceScripts.game_res.materials[i] = 200
-	ResourceScripts.game_res.materials.bandage = 0
-	globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
-	globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll",4))
-	globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
-	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
-	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("revitalizer", 3))
-	globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
-	globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-	globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
-	globals.AddItemToInventory(globals.CreateGearItem("spear", {WeaponHandle = 'wood', Blade = 'obsidian'}))
-	globals.AddItemToInventory(globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-	globals.AddItemToInventory(globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-	globals.AddItemToInventory(globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
-	globals.AddItemToInventory(globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
-	globals.AddItemToInventory(globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'}))
-	globals.AddItemToInventory(globals.CreateGearItem("chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}))
-	#$SlaveList.rebuild()
-	#state.common_effects([{code = 'make_quest_location', value = 'quest_fighters_lich'}])
-	ResourceScripts.game_progress.show_tutorial = true
-#		state.active_quests.append({code = "lich_enc_initiate", stage = 'stage1'})
-	#state.decisions = ["fighters_election_support",'mages_election_support','workers_election_support']
-#	state.mainprogress = 0
-	ResourceScripts.game_progress.active_quests.append({code = 'election_global_quest', stage = 'stage1'})
-	for i in ResourceScripts.game_world.areas.plains.factions.values():
-		i.totalreputation += 500
-	character.unlock_class("pet")
-	character.unlock_class("souleater")
-	character.mp = 10
-	var tmp = {}
-	tmp.oral = 70
-	tmp.anal = 90
-	tmp.petting = 100
-	character.set_stat('sex_skills', tmp)
-	character.set_stat('base_exp', 500)
-	#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('mages_join_reward'), 'Teh Loot')
-	#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
-	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
-	input_handler.active_area = ResourceScripts.game_world.areas.plains
-	#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
-	#input_handler.add_random_chat_message(newchar, 'hire')
-	#input_handler.interactive_message("starting_dialogue4", '',{})
-	
-	#input_handler.interactive_message('intro', '', {})
-	
-	for i in ResourceScripts.game_world.areas.plains.factions.values():
-		i.reputation = 500
+var always_show = [
+	"TestButton",
+	"MansionTaskInfoModule",
+	"MansionClockModule",
+	"MansionBottomLeftModule",
+	"MansionSlaveModule",
+	"MansionSlaveListModule",
+	"MansionLogModule"
+]
 
 
 func _ready():
-	# connect("population_changed", self, "test")
-	# connect("population_changed", population_module, "_on_population_changed")
-	test_mode()
-	yield(get_tree(), "idle_frame")
+	slave_list_manager()
+	match_state()
+	globals.log_node = $MansionLogModule
+
+
+func set_active_person(person):
+	active_person = person
+	slave_list_manager()
+
+func mansion_state_set(state):
+	input_handler.CurrentScene = self
+	mansion_prev_state = mansion_state
+	mansion_state = state
+	match_state()
+	slave_list_manager()
+
+func reset_vars():
+	if mansion_state != mansion_prev_state:
+		is_upgrade_selected = false
+		selected_upgrade = null
+
+# Handles Resizing and visibility
+func match_state():
+	for node in get_children():
+		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
+			node.hide()
+	reset_vars()
+	var menu_buttons = MenuModule.get_node("VBoxContainer")
+	for button in menu_buttons.get_children():
+		button.pressed = false
+	match mansion_state:
+		"default":
+			SlaveListModule.show()
+			$MansionSlaveListModule.set_size(Vector2(1100, 845))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 480))
+			$MansionSkillsModule.show()
+		"skill":
+			$MansionSlaveListModule.show()
+			$MansionSlaveListModule.rebuild()
+		"travels":
+			$MansionTravelsModule.show()
+			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 480))  # Needs to be checked with new assets
+			travels_manager(travels_defaults)
+			menu_buttons.get_node("TravelsButton").pressed = true
+		"upgrades":
+			$MansionUpgradesModule.show()
+			$MansionUpgradesModule.open()
+			SlaveListModule.rebuild()
+			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 480))  # Needs to be checked with new assets
+			menu_buttons.get_node("UpgradesButton").pressed = true
+		"occupation":
+			$MansionSlaveListModule.rebuild()
+			$MansionJobModule.show()
+			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			$MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size())  # Needs to be checked with new assets
+			SlaveListModule.set_hover_area()
+		"char_info":
+			input_handler.PreviousScene = self
+			open_char_info()
+	SlaveListModule.set_hover_area()
+
+func open_char_info():
+	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
+	GUIWorld.set_current_scene(slave_info)
+
+
+func rebuild_mansion():
 	$MansionSlaveListModule.rebuild()
+	$MansionSkillsModule.build_skill_panel()
 
-func test():
-	# population_module._on_population_changed()
-	pass
+func rebuild_task_info():
+	TaskModule.show_task_info()
 
+### State Managers ###
+# Action Handlers for Modules
+
+func travels_manager(params):
+	TravelsModule.open_character_dislocation()
+	match params.code:
+		'default':
+			is_travel_selected = false
+			selected_destination = null
+			selected_travel_characters.clear()
+			TravelsModule.update_location_list()
+			TravelsModule.update_character_dislocation() 
+			SlaveListModule.rebuild()
+		'destination_selected':
+			is_travel_selected = true
+			selected_travel_characters.clear()
+			selected_destination = params.destination
+			TravelsModule.update_character_dislocation() 
+			SlaveListModule.rebuild()
+
+func upgrades_manager():
+	SlaveListModule.rebuild()
+
+func skill_manager():
+	mansion_state = "skill"
+	SlaveListModule.rebuild()			
+
+func slave_list_manager():
+	match mansion_state:
+		'default':
+			if mansion_prev_state == "skill":
+				mansion_prev_state = null
+				active_person = skill_source
+				hovered_person = null
+			else:
+				skill_source = active_person
+			SkillModule.build_skill_panel()
+			SlaveListModule.rebuild()
+			SlaveModule.show_slave_info()
+		'skill':
+			if active_person in chars_for_skill:
+				SkillModule.use_skill(active_person)
+			set_active_person(skill_source)
+			print("ACTIVE:" +str(active_person.get_short_name()))
+			print("SOURCE:" +str(skill_source.get_short_name()))
+			SkillModule.build_skill_panel()
+			SlaveListModule.rebuild()
+		'travels':
+			if is_travel_selected:
+				if (active_person.get_stat('obedience') <= 0) && !active_person.is_controllable():
+					return
+				elif active_person in selected_travel_characters:
+					self.selected_travel_characters.erase(active_person)
+				else:
+					self.selected_travel_characters.append(active_person)
+				TravelsModule.update_character_dislocation()
+			SlaveListModule.rebuild()
+		'upgrades':
+			if !is_upgrade_selected:
+				SlaveModule.show_slave_info()
+				return
+			var upgrade = selected_upgrade
+			if !ResourceScripts.game_res.upgrades_queue.has(upgrade.code):
+				ResourceScripts.game_res.upgrades_queue.append(upgrade.code)
+			active_person.assign_to_task("building", upgrade.code)
+			UpgradesModule.start_upgrade()
+			SlaveListModule.rebuild()
+		'occupation':
+			$MansionSlaveListModule.rebuild()
+			$MansionJobModule.open_jobs_window()			
+	SlaveModule.show_slave_info()
+	
+func set_hovered_person(node, person):
+	hovered_person = person
+	SlaveModule.show_slave_info()
+
+func remove_hovered_person():
+	if SlaveListModule.is_in_area():
+		return
+	hovered_person = null
+	SlaveModule.show_slave_info()
+
+func _on_TestButton_pressed():
+	var current_scene = GUIWorld.CurrentScene.name
+	print("Current Scene:" + str(current_scene))
+	var previous_scene = GUIWorld.BaseScene.name
+	print("Previous Scene:" + str(previous_scene))
+	print("Subs:" + str(submodules))
+	# for i in ResourceScripts.game_party.active_tasks:
+	# 	print(i)
+	# print("----------------------------------")
+	print("Mansion State:" + str(mansion_state))
+	# # print("Upgrade list:" + str(globals.upgradelist["tailor"]))
+	# # print("upgrades: " + str(ResourceScripts.game_res.upgrades))
+	# print("upgrades_queue: " + str(ResourceScripts.game_res.upgrades_queue))
+	# print("upgrade_progresses: " + str(ResourceScripts.game_res.upgrade_progresses))
+	# # print("persons_for_travel: " + str(persons_for_travel))
+	# print("Active person: " + str(active_person))
+	# # print("active_tasks: " + str(ResourceScripts.game_res.active_tasks))
+	# print("Selected Travel: " + str(selected_destination))
+	# print("Mansion Prev Travel:" + str(prev_selected_travel))
+	# print("Travelers:" + str(selected_travel_characters))
+	# print("Current Scene:" + str(input_handler.CurrentScene.name))
+	# print("-----------------------------------")
