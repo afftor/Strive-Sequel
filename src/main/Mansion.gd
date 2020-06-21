@@ -84,7 +84,7 @@ func _ready():
 		character.add_trait('core_trait')
 		character.unlock_class("master")
 		character.unlock_class("archer")
-		character.unlock_class("necromancer")
+		character.unlock_class("foreman")
 		character.unlock_class("rogue")
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)

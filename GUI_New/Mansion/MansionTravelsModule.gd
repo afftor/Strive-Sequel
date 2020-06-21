@@ -191,6 +191,7 @@ func update_character_dislocation():
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
 			text += "\nObedience Cost: " + str(obed_cost)
 	
+	
 	var can_travel = true
 	
 	if selected_travel_characters.size() < 1 || destination == null:

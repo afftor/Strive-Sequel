@@ -112,6 +112,7 @@ func apply_patch(data, external = false):
 		if !modding_core.tables[current_table].has(current_table_mod):
 			modding_core.tables[current_table][current_table_mod] = {}
 		modding_core.tables[current_table][current_table_mod][key] = tmp
+		if !current_base_table.has(key): current_base_table[key] = {}
 		for t in tmp:
 			current_base_table[key][t] = tmp[t]
 	if external: emit_signal("editor_save")
