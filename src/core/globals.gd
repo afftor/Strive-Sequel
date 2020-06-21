@@ -950,11 +950,11 @@ func return_characters_from_location(locationid):
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
 			if variables.instant_travel == false:
-				person.trave.location = 'travel'
-				person.trave.travel_target = {area = '', location = 'mansion'}
-				person.trave.travel_time = area.travel_time + location.travel_time
+				person.travel.location = 'travel'
+				person.travel.travel_target = {area = '', location = 'mansion'}
+				person.travel.travel_time = area.travel_time + location.travel_time
 			else:
-				person.trave.location = 'mansion'
+				person.travel.location = 'mansion'
 				person.return_to_task()
 
 func make_story_character(args):

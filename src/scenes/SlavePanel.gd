@@ -177,7 +177,7 @@ func update():
 		for i in get_tree().get_nodes_in_group("hide_stranger"):
 			i.visible = false
 	for i in get_tree().get_nodes_in_group("show_traveler"):
-		i.visible = type == 'traveler' && person.travel_target.location != 'mansion'
+		i.visible = type == 'traveler' && person.travel.travel_target.location != 'mansion'
 	var text = ''
 	$name.text = person.get_short_name()
 	$name/sex.texture = images.icons[person.get_stat('sex')]
