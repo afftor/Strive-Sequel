@@ -229,7 +229,7 @@ func travel_confirm():
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = destination_area, location = destination}
-			person.travel.travel_time = travel_cost.time
+			person.travel.set_travel_time(travel_cost.time)
 		else:
 			person.xp_module.work = 'travel'
 			person.travel.location = destination

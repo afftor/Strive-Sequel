@@ -55,7 +55,7 @@ func make_location_description():
 			active_area_name = ResourceScripts.game_world.starting_area
 		else:
 			active_area_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area].name
-			active_location_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area][ResourceScripts.game_world.location_links[location].category][travel_target.location].name
+			active_location_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area][ResourceScripts.game_world.location_links[travel_target.location].category][travel_target.location].name
 	else:
 		active_area_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area].name
 		active_location_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[location].area][ResourceScripts.game_world.location_links[location].category][travel_target.location].name
