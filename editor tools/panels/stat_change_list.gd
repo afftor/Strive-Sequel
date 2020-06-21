@@ -40,6 +40,6 @@ func fill_list():
 	stat_node.unselect_all()
 	stat_node.clear()
 	for c in tres:
-		stat_node.add_item("%s : %f" % [c, tres[c]])
+		stat_node.add_item("%s : %s" % [c, str(tres[c])])
 		stat_node.set_item_metadata(stat_node.get_item_count() -1, c)
 

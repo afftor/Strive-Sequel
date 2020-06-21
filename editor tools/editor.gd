@@ -66,7 +66,6 @@ func add_record():
 	add_child(tmp)
 	tmp.popup()
 
-
 func edit_record():
 	var tab = inspector.get_current_tab_control()
 	var key = tab.get_selected_text()
@@ -78,3 +77,11 @@ func edit_record():
 	add_child(tmp)
 	tmp.get_data()
 	tmp.popup()
+
+func create_mod():
+	modding_core.create_empty_mod()
+	for t in modding_core.tables:
+		tablesel.add_item(t)
+	actions.visible = true
+	core_setup()
+	select_table(0)

@@ -62,11 +62,12 @@ func get_mods_list():
 
 func save_mod_list():
 	check_avail()
-	for f in mods_list:
+	var tlist = mods_list.duplicate()
+	for f in tlist:
 		f.erase('config')
 	var f:= File.new()
 	f.open(modconfig_path, File.WRITE)
-	f.store_line(to_json(mods_list))
+	f.store_line(to_json(tlist))
 	f.close()
 
 func check_avail():
@@ -386,3 +387,38 @@ func process_script_extend(name, path):
 		file.store_line(s)
 	file.close()
 	ResourceScripts.scriptdict[name] = path
+
+func create_empty_mod():
+	#create mod location
+	var dir := Directory.new()
+	dir.open(modfolder_path)
+	var n = globals.rng.randi_range(0, 100000)
+	while dir.dir_exists( "emptymod_%d" % n) :
+		n = globals.rng.randi_range(0, 100000)
+	var modname = "emptymod_%d" % n
+	dir.make_dir(modname)
+	dir.change_dir(modname)
+	#create empty table
+	var t = globals.rng.randi_range(0, 100000)
+	while tables.has("table_%d" % t): 
+		t = globals.rng.randi_range(0, 100000)
+	var temp = {}
+	var tablename = "table_%d" % t
+	tables[tablename] = temp
+	mod_tables[tablename] = modname
+	var tfile = File.new()
+	tfile.open("%s/%s.json" % [dir.get_current_dir(), tablename], File.WRITE)
+	tfile.store_line('{}')
+	tfile.close()
+	#create mod config
+	var tempcfg = ConfigFile.new()
+	tempcfg.set_value('General', 'Name', modname)
+	tempcfg.set_value('Data', tablename, '%s.json' % tablename)
+	tempcfg.save('%s/mod_config.ini' % dir.get_current_dir())
+	#store mod in mod_table
+	var record = {}
+	record.name = modname
+	record.path = '%s/mod_config.ini' % dir.get_current_dir()
+	record.config = tempcfg
+	mods_list.push_back(record)
+#	save_mod_list()

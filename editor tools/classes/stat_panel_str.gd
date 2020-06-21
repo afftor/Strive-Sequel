@@ -17,6 +17,6 @@ func get_data():
 	if !visible: return
 	if parent.tres.has(stat):
 		var tmp = parent.tres[stat]
-		stat_node.text = tmp
+		stat_node.text = str(tmp)
 	else:
 		stat_node.text = ""
