@@ -126,7 +126,7 @@ var professions = {
 		categories = ['labor'],
 		showupreqs = [],
 		reqs = [{code = 'has_profession', profession = 'worker', check = true}, {code = 'stat', stat = 'physics', operant = 'gte', value = 50}],
-		statchanges = {wits_bonus = 10, hpmax = 10},
+		statchanges = {wits_bonus = 5, hpmax = 10},
 		traits = ['foreman'],
 		skills = ['hardwork'],
 		combatskills = [],
@@ -301,7 +301,7 @@ var professions = {
 		statchanges = {charm_factor = 1, sexuals_bonus = 10, magic_factor = 1},
 		traits = ['succubus'],
 		skills = ['seduce','greatseduce','succubus_lust_skill'],
-		combatskills = ['attract'],#debuff: enemy damage -30%, enemy hitrate -20 for 3 turns
+		combatskills = ['attract'],
 	},
 	pet = {
 		code = 'pet',
@@ -343,7 +343,7 @@ var professions = {
 		statchanges = {sexuals_bonus = 25, sexuals_factor = 1, timid_factor = 1},
 		traits = ['sextoy'],
 		skills = [],
-		combatskills = ['enthral'], 
+		combatskills = [], 
 	},
 	dancer = {
 		code = 'dancer',
@@ -470,8 +470,8 @@ var professions = {
 		reqs = [{code = 'stat', stat = 'wits', operant = 'gte', value = 40},{code = 'has_any_profession', value = ['apprentice', 'scholar']}],
 		statchanges = {magic_factor = 1, mpmax = 15},
 		traits = [],
-		skills = ['shackles'],
-		combatskills = ['blizzard','lightning','barrier'],
+		skills = [],
+		combatskills = ['blizzard','lightning','mindblast'],
 	},
 	healer = {
 		code = 'healer',
@@ -498,8 +498,8 @@ var professions = {
 		reqs = [{code = 'has_profession', profession = 'caster', check = true},{code = 'stat', stat = 'wits', operant = 'gte', value = 80}],
 		statchanges = {charm_bonus = 15, wits_factor = 1, mpmax = 10, resistmind = 20},
 		traits = [],
-		skills = ['greatshackles','mindcontrol'],
-		combatskills = ['psychicblast'],
+		skills = ['shackles','mindcontrol'],
+		combatskills = ['psychicblast','mental_bless'],
 	},
 	druid = {
 		code = 'druid',
@@ -527,7 +527,7 @@ var professions = {
 		statchanges = {hpmax = 20},
 		traits = [],
 		skills = [],
-		combatskills = ['blood_magic', 'blood_explosion'],#sacrifice 10% health to get 3x mana from it, 3 charges per day | sacrifice 75% health to deal 2x weapon spell damage to all enemies, usable once a day, can't use if health <= 75%
+		combatskills = ['blood_magic', 'blood_explosion'],
 	},
 	valkyrie = {
 		code = 'valkyrie',
