@@ -101,6 +101,7 @@ func get_avail_mods():
 
 func process_mod(data):
 	var mconf = data.config
+	if !mconf.has_section('Data'): return
 #	mconf.load(path)
 	print("processing data tables from mod %s" % mconf.get_value('General','Name'))
 	if !mconf.has_section('Data'): return
@@ -111,6 +112,7 @@ func process_mod(data):
 
 func process_pathes(data):
 	var mconf = data.config
+	if !mconf.has_section('Pathes'): return
 #	mconf.load(path)
 	print("processing pathes from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('Pathes')
@@ -123,6 +125,7 @@ func process_pathes(data):
 
 func process_extensions(data):
 	var mconf = data.config
+	if !mconf.has_section('CEScripts'): return
 #	mconf.load(path)
 	print("processing parametrized extension scripts from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('CEScripts')
@@ -131,6 +134,7 @@ func process_extensions(data):
 
 func process_pack(data):
 	var mconf = data.config
+	if !mconf.has_section('Packages'): return
 #	mconf.load(path)
 	print("processing packages from mod %s" % mconf.get_value('General','Name'))
 	var datafiles = mconf.get_section_keys('Packages')
