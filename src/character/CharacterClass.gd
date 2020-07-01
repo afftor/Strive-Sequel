@@ -301,6 +301,9 @@ func remove_all_temp_effects():
 func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
 	effects.remove_temp_effect_tag(eff_tag)
 
+func remove_all_temp_effects_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
+	effects.remove_all_temp_effects_tag(eff_tag)
+
 func clean_effects():#clean effects before deleting character
 	effects.clean_effects()
 
@@ -352,6 +355,7 @@ func use_social_skill(s_code, target):
 #	effects.process_skill_cast_event(s_skill, event)
 
 func check_location(loc, completed = false):
+	if loc == 'mansion': loc = ResourceScripts.game_world.mansion_location
 	return travel.check_location(loc, completed)
 
 func same_location_with(ch):
@@ -443,7 +447,11 @@ func hp_set(value):
 	if displaynode != null:
 		displaynode.update_hp()
 	if hp <= 0:
-		death()
+		if has_status('reincarnate'): 
+			hp = get_stat('hpmax')
+			remove_temp_effect_tag('reincarnate')
+#			play_sfx('reborn')
+		else: death()
 	else:
 		defeated = false 
 
@@ -460,7 +468,7 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	if input_handler.combat_node == null && travel.location == 'mansion':
+	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
 		is_active = false
 		print('warning! char died outside combat')
 		characters_pool.call_deferred('cleanup')
@@ -512,8 +520,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'is_shortstack':
 			check = (get_stat('height') in ['tiny','petite']) == i.check
 		'gear_equiped':
-			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param)
-			else: check = equipment.check_gear_equipped(i.value)
+			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param) == i.check
+			else: check = equipment.check_gear_equipped(i.value) == i.check
 		'global_profession_limit':
 			check = ResourceScripts.game_party.check_profession_limit(i.profession, i.value)
 		'race':
@@ -792,6 +800,8 @@ func apply_atomic(template):
 			globals.emit_signal(template.value)
 		'remove_effect':
 			remove_temp_effect_tag(template.value)
+		'remove_all_effects':
+			remove_all_temp_effects_tag(template.value)
 		'add_trait':
 			add_trait(template.trait)
 		'add_sex_trait':

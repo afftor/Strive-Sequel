@@ -158,7 +158,7 @@ func build_accessible_locations():
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
-		if !person.travel.location in ['mansion','travel'] && location_array.has(person.travel.location) == false:
+		if !person.travel.location in [ResourceScripts.game_world.mansion_location,'travel'] && location_array.has(person.travel.location) == false:
 			location_array.append(person.travel.location)
 	
 	var newbutton = input_handler.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
@@ -623,7 +623,7 @@ func guild_hire_slave():
 #			state.add_slave(selectedperson)
 #			active_faction.slaves.erase(selectedperson.id)
 #			selectedperson.area = active_area.code
-#			selectedperson.location = 'mansion'
+#			selectedperson.location = ResourceScripts.game_world.mansion_location
 #			selectedperson.is_players_character = true
 #			input_handler.active_character = selectedperson
 #			input_handler.scene_characters.append(selectedperson)
@@ -1222,10 +1222,10 @@ func show_heal_items(position):
 #func return_character_confirm():
 #	if variables.instant_travel == false:
 #		selectedperson.location = 'travel'
-#		selectedperson.travel_target = {area = '', location = 'mansion'}
+#		selectedperson.travel_target = {area = '', location = ResourceScripts.game_world.mansion_location}
 #		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
 #	else:
-#		selectedperson.location = 'mansion'
+#		selectedperson.location = ResourceScripts.game_world.mansion_location
 #		selectedperson.return_to_task()
 #	for i in active_location.group:
 #		if active_location.group[i] == selectedperson.id:

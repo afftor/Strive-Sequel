@@ -5,7 +5,8 @@ extends Reference
 var areas = {}
 var capitals = []
 var area_order = []
-var starting_area = 'Plains'
+var starting_area = 'plains'
+var mansion_location
 var location_links = {}
 var factions = {}
 
@@ -25,6 +26,14 @@ func make_world():
 	ResourceScripts.world_gen.build_world()
 	areas.plains.unlocked = true
 	areas.forests.unlocked = true
+	mansion_location = areas[starting_area].capital_name
+
+func get_area_name(area_id):
+	return areas[area_id].name
+
+func get_default_area_name():
+	return get_area_name(starting_area)
+
 
 func advance_day():
 	for i in areas.values():

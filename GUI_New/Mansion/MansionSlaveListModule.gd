@@ -83,7 +83,7 @@ func update_dislocations():
 	var temparray = []
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
-		if !person.travel.location in ['mansion','travel'] && !temparray.has(person.travel.location):
+		if !person.travel.location in [ResourceScripts.game_world.mansion_location,'travel'] && !temparray.has(person.travel.location):
 			temparray.append(person.travel.location)
 	temparray.sort()
 	populatedlocations = temparray

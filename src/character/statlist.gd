@@ -184,7 +184,7 @@ var template = {
 	shackles_chance = null,
 	last_escape_day_check = 0,
 #	area = '',
-#	location = 'mansion',
+#	location = ResourceScripts.game_world.mansion_location,
 #	travel_target = {area = '', location = ''},
 #	travel_time = 0,
 #	initial_travel_time = 0,

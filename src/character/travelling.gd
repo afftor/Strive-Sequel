@@ -2,7 +2,7 @@ extends Reference
 
 var parent
 var area = ''
-var location = 'mansion'
+var location = ResourceScripts.game_world.mansion_location
 var travel_target = {area = '', location = ''}
 var travel_time = 0
 var initial_travel_time = 0 setget set_travel_time
@@ -36,7 +36,7 @@ func tick():
 			location = travel_target.location
 			globals.emit_signal("slave_arrived", parent)
 			input_handler.PlaySound("ding")
-			if location == 'mansion':
+			if location == ResourceScripts.game_world.mansion_location:
 				parent.return_to_task()
 				globals.text_log_add("travel", parent.get_short_name() + " returned to mansion. ")
 			else:
@@ -50,9 +50,9 @@ func make_location_description():
 	var active_area_name
 	var active_location_name
 	if location == 'travel':
-		if travel_target.location == 'mansion':
+		if travel_target.location == ResourceScripts.game_world.mansion_location:
 			active_location_name = 'Mansion'
-			active_area_name = ResourceScripts.game_world.starting_area
+			active_area_name = ResourceScripts.game_world.get_default_area_name()
 		else:
 			active_area_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area].name
 			active_location_name = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[travel_target.location].area][ResourceScripts.game_world.location_links[travel_target.location].category][travel_target.location].name
@@ -83,16 +83,16 @@ func return_to_mansion():
 				break
 	if variables.instant_travel == false:
 		location = 'travel'
-		travel_target = {area = '', location = 'mansion'}
+		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - travel_time)))
 	else:
-		location = 'mansion'
+		location = ResourceScripts.game_world.mansion_location
 
 func recruit():
 	if variables.instant_travel == false:
-		travel_target = {area = '', location = 'mansion'}
+		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time
 		parent.set_work('travel')
 		location = 'travel'
 	else:
-		location = 'mansion'
+		location = ResourceScripts.game_world.mansion_location

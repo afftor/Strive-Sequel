@@ -624,9 +624,9 @@ func impregnate(father, mother):
 func calculate_travel_time(location1, location2):
 	var travel_value1 = 0 #time to travel to location from mansion
 	var travel_value2 = 0 #time to return to mansion from location
-	if location1 != 'mansion':
+	if location1 != ResourceScripts.game_world.mansion_location:
 		travel_value1 = ResourceScripts.world_gen.get_area_from_location_code(location1).travel_time + ResourceScripts.world_gen.get_location_from_code(location1).travel_time
-	if location2 != 'mansion':
+	if location2 != ResourceScripts.game_world.mansion_location:
 		travel_value2 = ResourceScripts.world_gen.get_area_from_location_code(location2).travel_time + ResourceScripts.world_gen.get_location_from_code(location2).travel_time
 	
 	return {time = travel_value1 + travel_value2, obed_cost = travel_value1*1.5}
@@ -951,10 +951,10 @@ func return_characters_from_location(locationid):
 		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
 			if variables.instant_travel == false:
 				person.travel.location = 'travel'
-				person.travel.travel_target = {area = '', location = 'mansion'}
+				person.travel.travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 				person.travel.travel_time = area.travel_time + location.travel_time
 			else:
-				person.travel.location = 'mansion'
+				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
 
 func make_story_character(args):

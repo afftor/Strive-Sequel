@@ -244,7 +244,7 @@ func useitem(item, type):
 #	if mode == null:
 #		return
 #	elif mode == 'character' && selectedhero != null:
-#		if selectedhero.location != 'mansion':
+#		if selectedhero.location != ResourceScripts.game_world.mansion_location:
 #			input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
 #			return
 #		if type == 'gear':

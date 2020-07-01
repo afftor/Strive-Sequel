@@ -25,7 +25,7 @@ func open_character_dislocation():
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
-		if !person.travel.location in ['mansion','travel'] && populatedlocations.has(person.travel.location) == false:
+		if !person.travel.location in [ResourceScripts.game_world.mansion_location,'travel'] && populatedlocations.has(person.travel.location) == false:
 			populatedlocations.append(person.travel.location)
 		elif person.travel.location == 'travel':
 			travelers.append(person)
@@ -35,7 +35,7 @@ func open_character_dislocation():
 	for i in travelers:
 		var newlabel = input_handler.DuplicateContainerTemplate($TravelersContainer/VBoxContainer)
 		newlabel.text = i.get_short_name()
-		if i.travel.travel_target.location != 'mansion':
+		if i.travel.travel_target.location != ResourceScripts.game_world.mansion_location:
 			newlabel.text += " - " + ResourceScripts.world_gen.get_location_from_code(i.travel.travel_target.location).name
 		else:
 			newlabel.text += " - " + tr("MANSION")
@@ -51,7 +51,7 @@ func open_character_dislocation():
 
 
 func cancel_travel(person):
-	if person.travel.travel_target.location != 'mansion':
+	if person.travel.travel_target.location != ResourceScripts.game_world.mansion_location:
 		return_confirm(person)
 	else:
 		input_handler.SystemMessage(person.translate("[name] is already heading back to Mansion."))
@@ -103,7 +103,7 @@ func update_location_list():
 		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
 		var text = tr("RETURNTOMANSION")
 		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', ['mansion'])
+		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.mansion_location])
 		newbutton.name = 'mansion'
 	
 	if destination_area != 'plains':
@@ -169,10 +169,10 @@ func update_character_dislocation():
 	var text = "Characters selected: " + str(selected_travel_characters.size())
 	if destination == null:
 		text += "\n\nPlease select location to proceed"
-	elif destination == 'mansion':
+	elif destination == ResourceScripts.game_world.mansion_location:
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
-			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0]].travel_per_tick())) + " hours."
+			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, ResourceScripts.game_world.mansion_location).time / ResourceScripts.game_party.characters[selected_travel_characters[0]].travel_per_tick())) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
 		text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
