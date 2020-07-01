@@ -529,10 +529,10 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'one_of_races':
 			check = get_stat('race') in i.value
 		'is_free':
-			check = (travel.check_location('mansion', true) && tags.has('selected') == false) == i.check
+			check = (check_location('mansion', true) && tags.has('selected') == false) == i.check
 		'is_at_location':
 			if variables.allow_remote_intereaction == true and i.check: check = true
-			else: check = travel.check_location(i.value, true) == i.check
+			else: check = check_location(i.value, true) == i.check
 		'is_id':
 			check = input_handler.operate(i.operant, id, i.value)
 		'long_tail':
