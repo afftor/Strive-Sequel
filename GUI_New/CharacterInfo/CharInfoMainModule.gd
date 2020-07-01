@@ -25,6 +25,7 @@ func update():
 
 
 func set_state(state):
+	print("Set State:" + str(state))
 	var inventory_scene = GUIWorld.gui_data["INVENTORY"].main_module
 	if state == char_module_state:
 		submodules.clear()
@@ -35,6 +36,7 @@ func set_state(state):
 	match_state()
 
 func match_state():
+	print("Match State:" + str(char_module_state))
 	GUIWorld.CurrentScene = self
 	match char_module_state:
 		"default":

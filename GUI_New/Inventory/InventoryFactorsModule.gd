@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 onready var base_stats_container = $VBoxContainer2/TextureRect2
 

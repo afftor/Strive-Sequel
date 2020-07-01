@@ -3,22 +3,20 @@ extends Panel
 var active_person
 onready var SlaveModule = get_parent().SlaveModule
 onready var SlaveContainer = $ScrollContainer/VBoxContainer
-onready var LocationsList = $TravelsContainer/HBoxContainer
+onready var LocationsList = $TravelsContainerPanel/TravelsContainer/HBoxContainer
 var populatedlocations = []
 var default_locations = ["show_all", "mansion"]
 var selected_location = "show_all"
 
 
 func _ready():
-	globals.connect("slave_added", self, "rebuild")
-	globals.connect("hour_tick", self, "rebuild")
 	input_handler.slave_list_node = self
-	#rebuild()
+	globals.connect("slave_added", self, "rebuild")
+	globals.connect("hour_tick", self, "update")
 
 func rebuild():
-	
-	$population.text = "P: "+ str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
-	$food_consumption.text = "F:" + str(ResourceScripts.game_party.get_food_consumption())
+	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
+	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/day"
 	input_handler.ClearContainer(SlaveContainer)
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
@@ -39,18 +37,24 @@ func rebuild():
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited', get_parent(), 'remove_hovered_person')
 		newbutton.get_node("job").connect("pressed", self, "open_job_panel", [person])
+		newbutton.get_node("job").set_disabled(false)
 		match get_parent().mansion_state:
 			"travels":
+				newbutton.get_node("job").set_disabled(true)
 				build_for_travel(person, newbutton)
 			"skill":
+				newbutton.get_node("job").set_disabled(true)
 				build_for_skills(person, newbutton)		
 			"upgrades":
 				build_for_upgrades(person, newbutton)
 			"occupation", "default":
 				continue
-
-		update_dislocations()
-		show_location_characters()
+			"craft":
+				build_for_craft(person, newbutton)
+	var pos = self.rect_size
+	$TravelsContainerPanel.rect_position.y = pos.y - 100
+	
+	# show_location_characters()
 		
 		
 		
@@ -71,13 +75,30 @@ func double_clicked(event):
 
 func build_for_travel(person, newbutton):
 	var selected_travel_characters = get_parent().selected_travel_characters
+
 	if person.get_work() == "travel":
-		newbutton.modulate = Color(1,0,0,1)
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
+		newbutton.disabled = true
 	elif (person.get_stat('obedience') <= 0) && !person.is_controllable():
-		newbutton.modulate = Color(1,0,0,1)
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
+		newbutton.disabled = true
 	else:
-		if person in selected_travel_characters:
-			newbutton.modulate = Color(0,1,0,1)
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
+		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+	for button in SlaveContainer.get_children():
+		if newbutton.get_meta("slave") in selected_travel_characters:
+			newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+
+
+func build_for_craft(person, newbutton):
+	newbutton.pressed = false
+	if person in get_parent().persons_for_craft:
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_available.png")
+	else:
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char.png")
+
+
 
 func update_dislocations():
 	var temparray = []
@@ -107,6 +128,8 @@ func show_location_characters(button = null):
 		selected_location = button.get_meta("location")
 	update_location_buttons()
 	for person in SlaveContainer.get_children():
+		if person == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
+			continue
 		var person_reference = person.get_meta("slave")
 		if person_reference == null:
 			continue
@@ -119,36 +142,47 @@ func show_location_characters(button = null):
 
 func update_location_buttons():
 	for i in LocationsList.get_children():
+		if i == LocationsList.get_child(LocationsList.get_children().size()-1):
+			continue
 		var pressed = (selected_location == i.get_meta("location"))
 		i.pressed = pressed
 
 
 
 func build_for_upgrades(person, newbutton):
-	if get_parent().is_upgrade_selected:
-		if person.get_work() == "building" || !person.check_location('mansion'):
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_unavailable.png")
-			newbutton.disabled = true
-		else:
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_available.png")
-			newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/panel_char_available_hover.png")
+	# if get_parent().select_chars_mode:
+	if person.get_work() == "building" || !person.check_location('mansion'):
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
+		newbutton.disabled = true
+	else:
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
+		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+		newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+	for button in SlaveContainer.get_children():
+		if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
+			continue
+		button.pressed = get_parent().chars_for_upgrades.has(button.get_meta("slave"))
+	# else:
+	# 	newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
+
 
 
 func build_for_skills(person, newbutton):
 	if get_parent().skill_source == person:
 		return
 	if !person in get_parent().chars_for_skill:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_unavailable.png")
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
 	else:
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_available.png")
-		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/panel_char_available_hover.png")
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
+		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
 
 func remove_from_travel(person):
 	get_parent().persons_for_travel.erase(person)
 	rebuild()
 
 func update():
+	update_dislocations()
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		update_button(i)
 
@@ -244,6 +278,3 @@ func get_state_texture(tempchar):
 func open_job_panel(person):
 	get_parent().set_active_person(person)
 	get_parent().mansion_state_set("occupation")
-
-
-

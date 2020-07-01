@@ -1,6 +1,6 @@
 extends Panel
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 var person
 var authority_lines = {

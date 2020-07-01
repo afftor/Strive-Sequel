@@ -1,7 +1,7 @@
 extends Panel
 #warning-ignore-all:return_value_discarded
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 var category = 'all'
 var person
@@ -85,6 +85,7 @@ func open(tempperson, tempmode = 'normal'):
 			newbutton.disabled = true
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
+		newbutton.set_meta('class_code', i.code)
 		newbutton.connect('mouse_entered', self, 'show_tooltip', [newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true)])
 		newbutton.connect('mouse_exited', self, 'close_tooltip')
 		# globals.connecttexttooltip(newbutton, ResourceScripts.descriptions.get_class_details(person, i, true, true))
@@ -109,8 +110,9 @@ func sort_classes(first,second):
 		return true
 
 func open_class(classcode):
-	print("Open Class")
-	GUIWorld.gui_data.SLAVE_INFO.main_module.submodules.append($ClassPanel)
+	var sub_modules = GUIWorld.gui_data.SLAVE_INFO.main_module.submodules
+	if !sub_modules.has($ClassPanel):
+		GUIWorld.gui_data.SLAVE_INFO.main_module.submodules.append($ClassPanel)
 	var tempclass = classesdata.professions[classcode]
 	var text = ResourceScripts.descriptions.get_class_details(person, tempclass)
 	current_class = classcode
@@ -129,6 +131,13 @@ func open_class(classcode):
 			$ClassPanel/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.green)
 	
 	$ClassPanel/ExpLabel.text = text
+	update_class_buttons(classcode)
+
+func update_class_buttons(classcode):
+	for button in $ScrollContainer/GridContainer.get_children():
+		if button == $ScrollContainer/GridContainer.get_child($ScrollContainer/GridContainer.get_children().size()-1):
+			continue
+		button.pressed = (button.get_meta("class_code") == classcode)
 
 
 func unlock_class():

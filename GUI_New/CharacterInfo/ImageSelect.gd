@@ -3,7 +3,7 @@ extends WindowDialog
 var mode = 'portrait' setget mode_set
 var person
 onready var IconBlock = get_parent().get_node("VBoxContainer/IconBlock")
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 #warning-ignore-all:return_value_discarded
 

@@ -11,7 +11,8 @@ var close_played = false
 onready var MAIN_MODULES = {
 	MANSION = preload("res://GUI_New/Mansion/MansionMainModule.tscn"),
 	SLAVE_INFO = load("res://GUI_New/CharacterInfo/CharInfoMainModule.tscn"),
-	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn")
+	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn"),
+	EXPLORATION = preload("res://GUI_New/Exploration/ExplorationMainModule.tscn"),
 }
 
 
@@ -23,9 +24,11 @@ var CurrentScene
 var PreviousScene
 var BaseScene
 
-func _ready():
-	test_mode()
 
+func _ready():
+	# hide()
+	# return
+	test_mode()
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
 		add_child(main_module)

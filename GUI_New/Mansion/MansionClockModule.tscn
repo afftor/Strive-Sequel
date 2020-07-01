@@ -1,49 +1,67 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/images/buttons/main screen/speedstop1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_timer_pause.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/buttons/main screen/speedstop0.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/buttons/main screen/timer_panel.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/buttons/main screen/speedfast2.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/gui/menu/buttonnorm.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/menu/buttonpressed.png" type="Texture" id=9]
-[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=10]
-[ext_resource path="res://assets/images/buttons/main screen/speedfast1.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/buttons/main screen/speedfast0.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/buttons/main screen/speednorm1.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/buttons/main screen/speednorm0.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/menu/buttonhl.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/buttons/main screen/speednorm2.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_speedup.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timersmall_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_timer_play.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig_pressed.png" type="Texture" id=15]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.gd" type="Script" id=17]
-[ext_resource path="res://assets/images/buttons/main screen/speedstop2.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/buttons/main screen/hourprogress.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/mask_timersky.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timersmall.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timersmall_pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/timer_move.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/MANSION/Timer/timer_sky.png" type="Texture" id=24]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxTexture" id=1]
+region_rect = Rect2( 0, 0, 290, 222 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 30
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 162, 47 )
+[sub_resource type="StyleBoxTexture" id=3]
+region_rect = Rect2( 0, 0, 180, 58 )
 margin_left = 8.0
 margin_right = 7.0
 margin_top = 8.46303
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 162, 47 )
+[sub_resource type="StyleBoxTexture" id=4]
+region_rect = Rect2( 0, 0, 180, 58 )
 margin_left = 8.0
 margin_right = 7.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 8 )
-region_rect = Rect2( 0, 0, 162, 47 )
+[sub_resource type="StyleBoxTexture" id=5]
+region_rect = Rect2( 0, 0, 180, 58 )
+margin_left = 8.95957
+margin_right = 7.98422
+margin_top = 10.5886
+margin_bottom = 8.7913
+
+[sub_resource type="StyleBoxTexture" id=6]
+region_rect = Rect2( 0, 0, 61, 56 )
+margin_left = 8.0
+margin_right = 7.0
+margin_top = 8.46303
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+region_rect = Rect2( 0, 0, 61, 56 )
+margin_left = 8.0
+margin_right = 7.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+region_rect = Rect2( 0, 0, 61, 56 )
 margin_left = 8.95957
 margin_right = 7.98422
 margin_top = 10.5886
@@ -58,123 +76,209 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeNode" type="TextureRect" parent="."]
-margin_right = 290.0
-margin_bottom = 180.0
-theme = ExtResource( 10 )
-texture = ExtResource( 6 )
-expand = true
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 145, 164 )
+texture = ExtResource( 19 )
+mode = 3
+range_z_min = -1022
+range_z_max = 1021
+range_item_cull_mask = 2
+
+[node name="Sky" type="TextureRect" parent="."]
+show_behind_parent = true
+light_mask = 2
+margin_left = 35.0
+margin_top = 53.0
+margin_right = 255.0
+margin_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 110, 110 )
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Date" type="Label" parent="TimeNode"]
-margin_left = 8.0
+[node name="TimeNode" type="Panel" parent="."]
+margin_right = 290.0
+margin_bottom = 222.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="TimeNode"]
+margin_left = 180.0
 margin_top = 53.0
-margin_right = 280.0
-margin_bottom = 84.0
-custom_fonts/font = SubResource( 1 )
+margin_right = 283.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Date"
-align = 1
+text = "Time"
+align = 2
+valign = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="2speed" type="TextureButton" parent="TimeNode"]
-visible = false
-margin_left = 190.133
-margin_top = 94.735
-margin_right = 286.133
-margin_bottom = 144.735
-toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 11 )
-expand = true
-
-[node name="1speed" type="TextureButton" parent="TimeNode"]
-visible = false
-margin_left = 96.7619
-margin_top = 94.746
-margin_right = 191.762
-margin_bottom = 144.746
-toggle_mode = true
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 13 )
-expand = true
-
-[node name="0speed" type="TextureButton" parent="TimeNode"]
-visible = false
-margin_left = 3.09059
-margin_top = 95.45
-margin_right = 99.0906
-margin_bottom = 145.45
-toggle_mode = true
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 18 )
-texture_hover = ExtResource( 2 )
-expand = true
+[node name="Date" type="Label" parent="TimeNode"]
+margin_left = 5.0
+margin_top = 53.0
+margin_right = 116.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Date"
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="finish_turn" type="Button" parent="TimeNode"]
-margin_left = 2.0
-margin_top = 95.0
-margin_right = 185.0
-margin_bottom = 145.0
+visible = false
+margin_left = 55.0
+margin_top = 165.0
+margin_right = 235.0
+margin_bottom = 223.0
 hint_tooltip = "Increase hours advanced per turn
 Hotkey: 1"
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Finish Turn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lessturn" type="Button" parent="TimeNode"]
-margin_left = 185.0
-margin_top = 95.3235
-margin_right = 218.0
-margin_bottom = 145.324
-hint_tooltip = "Decrease hours advanced  per turn
-Hotkey: 2"
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "-"
+[node name="0speed" type="TextureButton" parent="TimeNode"]
+margin_left = 55.0
+margin_top = 165.0
+margin_right = 235.0
+margin_bottom = 223.0
+hint_tooltip = "Increase hours advanced per turn
+Hotkey: 1"
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="TimeNode/0speed"]
+margin_left = 56.0
+margin_top = 16.0
+margin_right = 126.0
+margin_bottom = 56.0
+texture = ExtResource( 11 )
+
+[node name="1speed" type="TextureButton" parent="TimeNode"]
+visible = false
+margin_left = 55.0
+margin_top = 165.0
+margin_right = 235.0
+margin_bottom = 223.0
+hint_tooltip = "Increase hours advanced per turn
+Hotkey: 1"
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TimeNode/1speed"]
+margin_left = 56.0
+margin_top = 16.0
+margin_right = 126.0
+margin_bottom = 56.0
+texture = ExtResource( 2 )
+
+[node name="2speed" type="TextureButton" parent="TimeNode"]
+margin_left = 174.0
+margin_top = 108.0
+margin_right = 235.0
+margin_bottom = 164.0
+hint_tooltip = "Decrease hours advanced  per turn
+Hotkey: 2"
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="TextureRect" parent="TimeNode/2speed"]
+margin_left = 38.0
+margin_top = 26.0
+margin_right = 53.0
+margin_bottom = 36.0
+texture = ExtResource( 7 )
+
+[node name="lessturn" type="Button" parent="TimeNode"]
+visible = false
+margin_left = 116.0
+margin_top = 108.0
+margin_right = 177.0
+margin_bottom = 164.0
+rect_scale = Vector2( -1, 1 )
+hint_tooltip = "Decrease hours advanced  per turn
+Hotkey: 2"
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TimeNode/lessturn"]
+margin_left = 41.0
+margin_top = 25.0
+margin_right = 48.0
+margin_bottom = 49.0
+text = "-"
+
+[node name="moreturn" type="Button" parent="TimeNode"]
+visible = false
+margin_left = 174.0
+margin_top = 108.0
+margin_right = 235.0
+margin_bottom = 164.0
+hint_tooltip = "Decrease hours advanced  per turn
+Hotkey: 2"
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TimeNode/moreturn"]
+margin_left = 38.0
+margin_top = 26.0
+margin_right = 50.0
+margin_bottom = 50.0
+text = "+"
+
 [node name="turns" type="Label" parent="TimeNode"]
-margin_left = 222.0
-margin_top = 94.0
-margin_right = 251.0
-margin_bottom = 144.0
+margin_left = 125.0
+margin_top = 127.0
+margin_right = 166.0
+margin_bottom = 159.0
 text = "1"
 align = 1
 valign = 1
 
-[node name="moreturn" type="Button" parent="TimeNode"]
-margin_left = 255.0
-margin_top = 95.0
-margin_right = 285.0
-margin_bottom = 145.0
-hint_tooltip = "Increase hours advanced per turn
-Hotkey: 3"
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect" type="TextureRect" parent="TimeNode/turns"]
+show_behind_parent = true
+margin_right = 41.0
+margin_bottom = 32.0
+texture = ExtResource( 22 )
 
 [node name="HidePanel" type="Panel" parent="TimeNode"]
 visible = false
@@ -183,22 +287,11 @@ margin_left = -1.0
 margin_right = 285.0
 margin_bottom = 177.0
 
-[node name="dayprogress" type="TextureProgress" parent="TimeNode"]
-show_behind_parent = true
-margin_left = 5.0
-margin_top = 138.0
-margin_right = 285.0
-margin_bottom = 175.0
-texture_progress = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="gold" type="Label" parent="TimeNode"]
-margin_left = 35.9243
-margin_top = 12.9748
-margin_right = 128.924
-margin_bottom = 40.9748
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 53.0
 text = "500"
 align = 1
 valign = 1
@@ -207,6 +300,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="TimeNode/gold"]
+visible = false
 margin_left = -31.7394
 margin_top = -10.3761
 margin_right = 9.2606
@@ -219,14 +313,15 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="TimeNode/gold/TextureRect"]
+visible = false
 margin_right = 138.0
 margin_bottom = 42.0
 
 [node name="food" type="Label" parent="TimeNode"]
-margin_left = 186.0
-margin_top = 14.0
-margin_right = 275.0
-margin_bottom = 42.0
+margin_left = 192.0
+margin_top = 8.0
+margin_right = 264.0
+margin_bottom = 53.0
 text = "500"
 align = 1
 valign = 1
@@ -235,6 +330,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="TimeNode/food"]
+visible = false
 margin_left = -38.3779
 margin_top = -10.1385
 margin_right = 3.62199
@@ -247,5 +343,6 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="TimeNode/food/TextureRect"]
+visible = false
 margin_right = 138.0
 margin_bottom = 41.0

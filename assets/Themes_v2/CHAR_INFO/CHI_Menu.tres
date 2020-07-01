@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
+size = 15
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxTexture" id=2]

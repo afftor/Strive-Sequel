@@ -1,26 +1,31 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/raceshades/Human_F.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_hover.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavebody.png" type="Texture" id=8]
+
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 700, 1050 )
 
 [node name="InventoryGearModule" type="Panel"]
-margin_left = 1225.69
-margin_top = 57.2022
-margin_right = 1881.69
-margin_bottom = 994.202
+margin_right = 705.0
+margin_bottom = 1050.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BodyImage" type="TextureRect" parent="."]
 margin_left = 9.0
-margin_right = 649.0
-margin_bottom = 927.0
+margin_right = 695.0
+margin_bottom = 1041.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 7
@@ -29,14 +34,14 @@ __meta__ = {
 }
 
 [node name="chest" type="TextureButton" parent="."]
-margin_left = 267.0
-margin_top = 338.0
-margin_right = 367.0
-margin_bottom = 438.0
+margin_left = 295.568
+margin_top = 377.451
+margin_right = 395.568
+margin_bottom = 477.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,14 +61,14 @@ __meta__ = {
 }
 
 [node name="underwear" type="TextureButton" parent="."]
-margin_left = 267.0
-margin_top = 523.0
-margin_right = 367.0
-margin_bottom = 623.0
+margin_left = 295.568
+margin_top = 562.451
+margin_right = 395.568
+margin_bottom = 662.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,14 +87,14 @@ __meta__ = {
 }
 
 [node name="legs" type="TextureButton" parent="."]
-margin_left = 267.0
-margin_top = 773.0
-margin_right = 367.0
-margin_bottom = 873.0
+margin_left = 295.568
+margin_top = 812.451
+margin_right = 395.568
+margin_bottom = 912.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -109,14 +114,14 @@ __meta__ = {
 }
 
 [node name="hands" type="TextureButton" parent="."]
-margin_left = 27.0
-margin_top = 353.0
-margin_right = 127.0
-margin_bottom = 453.0
+margin_left = 55.5678
+margin_top = 392.451
+margin_right = 155.568
+margin_bottom = 492.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -135,14 +140,14 @@ __meta__ = {
 }
 
 [node name="rhand" type="TextureButton" parent="."]
-margin_left = 27.0
-margin_top = 473.0
-margin_right = 127.0
-margin_bottom = 573.0
+margin_left = 55.5678
+margin_top = 512.451
+margin_right = 155.568
+margin_bottom = 612.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -161,14 +166,14 @@ __meta__ = {
 }
 
 [node name="lhand" type="TextureButton" parent="."]
-margin_left = 527.0
-margin_top = 473.0
-margin_right = 627.0
-margin_bottom = 573.0
+margin_left = 555.568
+margin_top = 512.451
+margin_right = 655.568
+margin_bottom = 612.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -187,14 +192,14 @@ __meta__ = {
 }
 
 [node name="neck" type="TextureButton" parent="."]
-margin_left = 267.0
-margin_top = 223.0
-margin_right = 367.0
-margin_bottom = 323.0
+margin_left = 295.568
+margin_top = 262.451
+margin_right = 395.568
+margin_bottom = 362.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -213,14 +218,14 @@ __meta__ = {
 }
 
 [node name="head" type="TextureButton" parent="."]
-margin_left = 267.0
-margin_top = 43.0
-margin_right = 367.0
-margin_bottom = 143.0
+margin_left = 295.568
+margin_top = 82.4508
+margin_right = 395.568
+margin_bottom = 182.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -239,14 +244,14 @@ __meta__ = {
 }
 
 [node name="ass" type="TextureButton" parent="."]
-margin_left = 327.0
-margin_top = 633.0
-margin_right = 427.0
-margin_bottom = 733.0
+margin_left = 355.568
+margin_top = 672.451
+margin_right = 455.568
+margin_bottom = 772.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -265,14 +270,14 @@ __meta__ = {
 }
 
 [node name="crotch" type="TextureButton" parent="."]
-margin_left = 217.0
-margin_top = 633.0
-margin_right = 317.0
-margin_bottom = 733.0
+margin_left = 245.568
+margin_top = 672.451
+margin_right = 345.568
+margin_bottom = 772.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -291,14 +296,14 @@ __meta__ = {
 }
 
 [node name="tool" type="TextureButton" parent="."]
-margin_left = 527.0
-margin_top = 353.0
-margin_right = 627.0
-margin_bottom = 453.0
+margin_left = 555.568
+margin_top = 392.451
+margin_right = 655.568
+margin_bottom = 492.451
 rect_min_size = Vector2( 100, 100 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -317,10 +322,10 @@ __meta__ = {
 }
 
 [node name="buffscontainer" type="HBoxContainer" parent="."]
-margin_left = -9.04968
-margin_top = 908.851
-margin_right = 686.95
-margin_bottom = 1013.85
+margin_left = 9.0
+margin_top = 950.0
+margin_right = 676.0
+margin_bottom = 1028.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

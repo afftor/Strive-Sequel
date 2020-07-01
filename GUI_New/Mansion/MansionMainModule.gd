@@ -9,12 +9,17 @@ onready var UpgradesModule = $MansionUpgradesModule
 onready var SlaveModule = $MansionSlaveModule
 onready var TaskModule = $MansionTaskInfoModule
 onready var MenuModule = $MansionBottomLeftModule
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var NavModule = $MansionNavigationModule
+onready var CraftModule = $MansionCraftModule
+onready var CraftSmallModule = $MansionCraftSmallModule
+onready var JobModule = $MansionJobModule
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var submodules = []
 
 #Skills
 var skill_source
 var skill_target
+var chars_for_skill = []
 
 # Travels
 var travels_defaults = {code = 'default'}
@@ -24,13 +29,20 @@ var selected_destination
 
 
 # Upgrades
-var is_upgrade_selected
+var select_chars_mode = false
 var selected_upgrade
+var chars_for_upgrades = []
+
+# Craft
+var is_craft_selected = false
+var selected_craft_task
+var persons_for_craft = []
+var craft_state = "default"
 
 onready var active_person = ResourceScripts.game_party.get_master()
 var hovered_person = null
 var is_entered = false
-var chars_for_skill = []
+
 
 var mansion_state = "default" setget mansion_state_set
 var mansion_prev_state
@@ -45,11 +57,13 @@ var always_show = [
 	"MansionBottomLeftModule",
 	"MansionSlaveModule",
 	"MansionSlaveListModule",
-	"MansionLogModule"
+	"MansionLogModule",
+	"MansionNavigationModule",
 ]
 
 
 func _ready():
+	variables.unlock_all_upgrades = true
 	slave_list_manager()
 	match_state()
 	globals.log_node = $MansionLogModule
@@ -60,7 +74,7 @@ func set_active_person(person):
 	slave_list_manager()
 
 func mansion_state_set(state):
-	input_handler.CurrentScene = self
+	# input_handler.CurrentScene = self
 	mansion_prev_state = mansion_state
 	mansion_state = state
 	match_state()
@@ -68,20 +82,24 @@ func mansion_state_set(state):
 
 func reset_vars():
 	if mansion_state != mansion_prev_state:
-		is_upgrade_selected = false
+		select_chars_mode = false
 		selected_upgrade = null
+		chars_for_upgrades.clear()
+		submodules.clear()
 
 # Handles Resizing and visibility
 func match_state():
+	NavModule.build_accessible_locations()
 	for node in get_children():
 		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
 			node.hide()
-	reset_vars()
+	
 	var menu_buttons = MenuModule.get_node("VBoxContainer")
 	for button in menu_buttons.get_children():
 		button.pressed = false
 	match mansion_state:
 		"default":
+			reset_vars()
 			SlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
@@ -93,26 +111,34 @@ func match_state():
 		"travels":
 			$MansionTravelsModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 480))  # Needs to be checked with new assets
 			travels_manager(travels_defaults)
 			menu_buttons.get_node("TravelsButton").pressed = true
 		"upgrades":
 			$MansionUpgradesModule.show()
 			$MansionUpgradesModule.open()
-			SlaveListModule.rebuild()
+			$MansionUpgradesModule.open_queue()
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 480))  # Needs to be checked with new assets
 			menu_buttons.get_node("UpgradesButton").pressed = true
+			SlaveListModule.rebuild()
 		"occupation":
 			$MansionSlaveListModule.rebuild()
 			$MansionJobModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
 			$MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size())  # Needs to be checked with new assets
 			SlaveListModule.set_hover_area()
+			$MansionJobModule.cancel_job_choice()
 		"char_info":
-			input_handler.PreviousScene = self
 			open_char_info()
+		"craft":
+			craft_handler()
+			menu_buttons.get_node("CraftButton").pressed = true
 	SlaveListModule.set_hover_area()
+	rebuild_task_info()
 
 func open_char_info():
 	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
@@ -120,14 +146,38 @@ func open_char_info():
 
 
 func rebuild_mansion():
-	$MansionSlaveListModule.rebuild()
+	$MansionSlaveListModule.update()
 	$MansionSkillsModule.build_skill_panel()
 
 func rebuild_task_info():
+	if ResourceScripts.game_party.active_tasks == []:
+		TaskModule.visible = false
+		return
+	for i in ResourceScripts.game_party.active_tasks:
+		if i.workers != []:
+			TaskModule.visible = true
+			break
+		else:
+			TaskModule.visible = false
 	TaskModule.show_task_info()
 
 ### State Managers ###
 # Action Handlers for Modules
+func craft_handler():
+	match craft_state:
+		"default":
+			selected_craft_task = null
+			is_craft_selected = false
+			CraftModule.show()
+			CraftModule.get_node("MaterialSetupPanel").hide()
+			CraftModule.update()
+			# CraftModule.get_node("filter").hide()
+		"confirm":
+			CraftModule.hide()
+			CraftSmallModule.update()
+			CraftSmallModule.show()
+			SlaveListModule.rebuild()
+
 
 func travels_manager(params):
 	TravelsModule.open_character_dislocation()
@@ -169,33 +219,38 @@ func slave_list_manager():
 			if active_person in chars_for_skill:
 				SkillModule.use_skill(active_person)
 			set_active_person(skill_source)
-			print("ACTIVE:" +str(active_person.get_short_name()))
-			print("SOURCE:" +str(skill_source.get_short_name()))
 			SkillModule.build_skill_panel()
 			SlaveListModule.rebuild()
 		'travels':
 			if is_travel_selected:
-				if (active_person.get_stat('obedience') <= 0) && !active_person.is_controllable():
-					return
-				elif active_person in selected_travel_characters:
+				if active_person in selected_travel_characters:
 					self.selected_travel_characters.erase(active_person)
 				else:
 					self.selected_travel_characters.append(active_person)
 				TravelsModule.update_character_dislocation()
 			SlaveListModule.rebuild()
 		'upgrades':
-			if !is_upgrade_selected:
+			if !select_chars_mode:
 				SlaveModule.show_slave_info()
 				return
-			var upgrade = selected_upgrade
-			if !ResourceScripts.game_res.upgrades_queue.has(upgrade.code):
-				ResourceScripts.game_res.upgrades_queue.append(upgrade.code)
-			active_person.assign_to_task("building", upgrade.code)
-			UpgradesModule.start_upgrade()
+			if chars_for_upgrades.has(active_person):
+				chars_for_upgrades.erase(active_person)
+			else:
+				chars_for_upgrades.append(active_person)
 			SlaveListModule.rebuild()
+			UpgradesModule.open_queue()
 		'occupation':
 			$MansionSlaveListModule.rebuild()
-			$MansionJobModule.open_jobs_window()			
+			$MansionJobModule.open_jobs_window()
+		'craft':
+			if !is_craft_selected:
+				return
+			if !active_person in persons_for_craft:
+				persons_for_craft.append(active_person)
+			else:
+				persons_for_craft.erase(active_person)
+			SlaveListModule.rebuild()
+			CraftSmallModule.update()
 	SlaveModule.show_slave_info()
 	
 func set_hovered_person(node, person):
@@ -208,25 +263,15 @@ func remove_hovered_person():
 	hovered_person = null
 	SlaveModule.show_slave_info()
 
+
 func _on_TestButton_pressed():
-	var current_scene = GUIWorld.CurrentScene.name
-	print("Current Scene:" + str(current_scene))
-	var previous_scene = GUIWorld.BaseScene.name
-	print("Previous Scene:" + str(previous_scene))
-	print("Subs:" + str(submodules))
-	# for i in ResourceScripts.game_party.active_tasks:
-	# 	print(i)
-	# print("----------------------------------")
-	print("Mansion State:" + str(mansion_state))
-	# # print("Upgrade list:" + str(globals.upgradelist["tailor"]))
-	# # print("upgrades: " + str(ResourceScripts.game_res.upgrades))
-	# print("upgrades_queue: " + str(ResourceScripts.game_res.upgrades_queue))
-	# print("upgrade_progresses: " + str(ResourceScripts.game_res.upgrade_progresses))
-	# # print("persons_for_travel: " + str(persons_for_travel))
-	# print("Active person: " + str(active_person))
-	# # print("active_tasks: " + str(ResourceScripts.game_res.active_tasks))
-	# print("Selected Travel: " + str(selected_destination))
-	# print("Mansion Prev Travel:" + str(prev_selected_travel))
-	# print("Travelers:" + str(selected_travel_characters))
-	# print("Current Scene:" + str(input_handler.CurrentScene.name))
-	# print("-----------------------------------")
+	# GUIWorld.set_current_scene(GUIWorld.gui_data["EXPLORATION"].main_module)
+	# GUIWorld.gui_data["EXPLORATION"].main_module.open()
+	# print(ResourceScripts.game_party.active_tasks)
+	# print("Craft State:" + str(craft_state))
+	# print("Mansion State:" + str(mansion_state))
+	print("Active Task")
+	print(ResourceScripts.game_party.active_tasks)
+	print("Upgrade Progresses")
+	print(ResourceScripts.game_res.upgrade_progresses)
+	# print(selected_travel_characters)
