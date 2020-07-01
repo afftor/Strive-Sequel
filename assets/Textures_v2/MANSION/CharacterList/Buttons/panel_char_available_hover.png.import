@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Engineer_.png-9cf4f89b5addc04f81e34be0dfd3b36f.stex"
+path="res://.import/panel_char_available_hover.png-219eb619b3d7802dd5e0e2f7e94852f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsclasses/Engineer_.png"
-dest_files=[ "res://.import/Engineer_.png-9cf4f89b5addc04f81e34be0dfd3b36f.stex" ]
+source_file="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png"
+dest_files=[ "res://.import/panel_char_available_hover.png-219eb619b3d7802dd5e0e2f7e94852f1.stex" ]
 
 [params]
 

@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[sub_resource type="StyleBoxTexture" id=1]
+region_rect = Rect2( 0, 0, 12, 48 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+region_rect = Rect2( 0, 0, 12, 48 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+region_rect = Rect2( 0, 0, 12, 48 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+region_rect = Rect2( 0, 0, 12, 256 )
+
+[resource]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 1 )
+VScrollBar/styles/grabber_highlight = SubResource( 2 )
+VScrollBar/styles/grabber_pressed = SubResource( 3 )
+VScrollBar/styles/scroll = SubResource( 4 )
+VScrollBar/styles/scroll_focus = null

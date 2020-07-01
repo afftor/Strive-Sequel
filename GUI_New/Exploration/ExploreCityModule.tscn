@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreCity.tres" type="Theme" id=1]
+
+[node name="ExploreCityModule" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.854902 )
+margin_top = 200.0
+margin_right = 290.0
+margin_bottom = 712.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="Control" parent="."]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 278.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 266.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 266, 0 )
+custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 266.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 266, 50 )
+rect_clip_content = true
+size_flags_horizontal = 2
+size_flags_vertical = 8
+toggle_mode = true
+text = "Text"
+clip_text = true
+
+[node name="GuildMenuBG" type="Panel" parent="."]
+margin_top = -200.0
+margin_right = 290.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GuildMenu" type="ScrollContainer" parent="."]
+margin_left = 6.0
+margin_top = -189.0
+margin_right = 284.0
+margin_bottom = -12.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuildMenu"]
+margin_right = 278.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="Button" type="Button" parent="GuildMenu/VBoxContainer"]
+visible = false
+margin_right = 290.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+text = "GuildMenu"

@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI_New/Exploration/ExplorationMainModule.gd" type="Script" id=3]
+[ext_resource path="res://GUI_New/Exploration/ExploreCityModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI_New/Exploration/ExploreNavigationModule.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/images/backgrounds/elf_capital.png" type="Texture" id=6]
+[ext_resource path="res://GUI_New/Exploration/ExploreNavigationModule.gd" type="Script" id=7]
+[ext_resource path="res://GUI_New/Exploration/ExploreCityModule.gd" type="Script" id=8]
+[ext_resource path="res://GUI_New/Exploration/ExploreHireModule.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI_New/Exploration/ExploreHireModule.gd" type="Script" id=10]
+
+[node name="ExplorationMainModule" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.74902 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 6 )
+
+[node name="VideoPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="ExploreCityModule" parent="." instance=ExtResource( 4 )]
+margin_left = 15.0
+margin_top = 553.0
+margin_right = 305.0
+margin_bottom = 1065.0
+script = ExtResource( 8 )
+
+[node name="ExploreNavigationModule" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 7 )
+
+[node name="ExploreHireModule" parent="." instance=ExtResource( 9 )]
+script = ExtResource( 10 )

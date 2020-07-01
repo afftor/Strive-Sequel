@@ -1,10 +1,11 @@
 extends Control
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 func _ready():
 	$VBoxContainer/TravelsButton.connect("pressed", self, "_button_clicked", ["travels", $VBoxContainer/TravelsButton])
 	$VBoxContainer/UpgradesButton.connect("pressed", self, "_button_clicked", ["upgrades", $VBoxContainer/UpgradesButton])
+	$VBoxContainer/CraftButton.connect("pressed", self, "_button_clicked", ["craft", $VBoxContainer/CraftButton])
 	$VBoxContainer/InventoryButton.connect("pressed", self, "open_inventory")
 
 func _button_clicked(state, button):

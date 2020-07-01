@@ -11,7 +11,10 @@ var backgrounds = {
 	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
 	cave_3 = load("res://assets/images/backgrounds/cave3.png"),
 	
-	village = load("res://assets/images/backgrounds/village.png"),
+	village1 = load("res://assets/images/backgrounds/village.png"),
+	village2 = load("res://assets/images/backgrounds/village1.png"),
+	village3 = load("res://assets/images/backgrounds/village2.png"),
+	village4 = load("res://assets/images/backgrounds/village3.png"),
 	#scenes
 	}
 

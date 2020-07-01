@@ -11,34 +11,32 @@ var race_groups = {
 
 #also tried to fix cooking but not sure if all was made
 var tasklist = {
-	hunting = {
-		code = 'hunting',
-		reqs = [],
-		name = '',
-		descript = '',
-		workstat = 'physics',
-		worktool = 'hunt_knife',
-		production = {
-			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
-			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 5, reqs = [], progress_function = 'hunt_leather'},
-			leatherthickgather = {code = 'leatherthickgather', item = 'leatherthick', progress_per_item = 20, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 1}], progress_function = 'hunt_leather_hard'},
-			leathermythicgather = {code = 'leathermythicgather', item = 'leathermythic', progress_per_item = 35, reqs = [{type = "has_upgrade", name = 'resource_gather_leather', value = 2}], progress_function = 'hunt_leather_mythic'}},
-		icon = null,
-		tags = [],
-		mod = 'mod_hunt'
-	},
-	fishing = {
-		code = 'fishing',
-		reqs = [],
-		name = '',
-		descript = '',
-		workstat = 'physics',
-		worktool = 'rod',
-		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
-		icon = null,
-		tags = [],
-		mod = 'mod_fish'
-	},
+#	hunting = {
+#		code = 'hunting',
+#		reqs = [],
+#		name = '',
+#		descript = '',
+#		workstat = 'physics',
+#		worktool = 'hunt_knife',
+#		production = {
+#			meatgather = {code = 'meatgather', item = 'meat', progress_per_item = 1.2, reqs = [], progress_function = 'hunt_meat'},
+#			leathergather = {code = 'leathergather', item = 'leather', progress_per_item = 5, reqs = [], progress_function = 'hunt_leather'}},
+#		icon = null,
+#		tags = [],
+#		mod = 'mod_hunt'
+#	},
+#	fishing = {
+#		code = 'fishing',
+#		reqs = [],
+#		name = '',
+#		descript = '',
+#		workstat = 'physics',
+#		worktool = 'rod',
+#		production = {fishing = {code = 'fishing',item = 'fish', progress_per_item = 1.1, reqs = [], progress_function = 'fishing'}},
+#		icon = null,
+#		tags = [],
+#		mod = 'mod_fish'
+#	},
 	farming = {
 		code = 'farming',
 		reqs = [{type = 'has_upgrade', name = 'resource_gather_grains', value = 1},{type = "has_upgrade", name = 'resource_gather_veges', value = 1, orflag = true}, {type = "has_upgrade", name = 'resource_gather_cloth', value = 1, orflag = true}],
@@ -53,34 +51,30 @@ var tasklist = {
 		tags = [],
 		mod = 'mod_farm'
 	},
-	woodcutting = {
-		code = 'woodcutting',
-		reqs = [],
-		name = '',
-		descript = '',
-		workstat = 'physics',
-		worktool = 'axe',
-		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 4.5, reqs = [], progress_function = 'woodcutting_lumber'},
-		woodmagicgather = {code = 'woodmagicgather', item = 'woodmagic', progress_per_item = 15, reqs = [{type = "has_upgrade", name = 'resource_gather_woodmagic', value = 1}], progress_function = 'woodmagiccutting_lumber'},
-		woodirongather = {code = 'woodirongather', item = 'woodiron', progress_per_item = 18, reqs = [{type = "has_upgrade", name = 'resource_gather_woodiron', value = 1}], progress_function = 'woodmagiccutting_lumber'}},
-		icon = null,
-		tags = [],
-		mod = 'mod_collect'
-	},
-	mining = {
-		code = 'mining',
-		reqs = [],
-		name = '',
-		descript = '',
-		workstat = 'physics',
-		worktool = 'pickaxe',
-		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 3, reqs = [], progress_function = 'mining_stone'},
-		gatheriron = {code = 'gatheriron', item = 'iron', progress_per_item = 6, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 1}], progress_function = 'mining_iron'},
-		gathermithril = {code = 'gathermithril', item = 'mithril', progress_per_item = 35, reqs = [{type = "has_upgrade", name = 'mine_resource', value = 2}], progress_function = 'mining_mythril'}},
-		icon = null,
-		tags = [],
-		mod = 'mod_collect'
-	},
+#	woodcutting = {
+#		code = 'woodcutting',
+#		reqs = [],
+#		name = '',
+#		descript = '',
+#		workstat = 'physics',
+#		worktool = 'axe',
+#		production = {woodgather  = {code = 'woodgather', item = 'wood', progress_per_item = 4.5, reqs = [], progress_function = 'woodcutting_lumber'}},
+#		icon = null,
+#		tags = [],
+#		mod = 'mod_collect'
+#	},
+#	mining = {
+#		code = 'mining',
+#		reqs = [],
+#		name = '',
+#		descript = '',
+#		workstat = 'physics',
+#		worktool = 'pickaxe',
+#		production = {gatherstone = {code = 'gatherstone', item = 'stone', progress_per_item = 3, reqs = [], progress_function = 'mining_stone'}},
+#		icon = null,
+#		tags = [],
+#		mod = 'mod_collect'
+#	},
 	prostitution = {
 		code = 'prostitution',
 		reqs = [],

@@ -224,6 +224,7 @@ func unlearn_c_skill(skill):
 func cooldown_tick():
 	skills.cooldown_tick()
 
+
 func assign_to_task(taskcode, taskproduct, iterations = -1):
 	xp_module.assign_to_task(taskcode, taskproduct, iterations)
 
@@ -598,7 +599,7 @@ func decipher_single(ch):
 			if i.check == true:
 				text2 += 'Has Class: ' + classesdata.professions[i.profession].name
 			else:
-				text2 += 'Has NO Class: ' + classesdata.professions[i.profession].name
+				text2 += 'Conflicting Class: ' + classesdata.professions[i.profession].name
 		'has_any_profession':
 			text2 += "Has any of Classes: "
 			for k in i.value:

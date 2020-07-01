@@ -1,22 +1,25 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList.tres" type="Theme" id=1]
-[ext_resource path="res://assets/Textures_v2/MANSION/panel_char.png" type="Texture" id=2]
-[ext_resource path="res://assets/Textures_v2/MANSION/panel_char_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/MANSION/hpmp_icon_hp.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/MANSION/hpmp_icon_mp.png" type="Texture" id=7]
-[ext_resource path="res://assets/Textures_v2/MANSION/hpmp_icon.png" type="Texture" id=8]
-[ext_resource path="res://assets/Textures_v2/MANSION/panel_big.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_hp.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/hpmp_icon.png" type="Texture" id=8]
+[ext_resource path="res://GUI_New/Mansion/panel_big.png" type="Texture" id=9]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=10]
-[ext_resource path="res://assets/Textures_v2/MANSION/panel_char_hover.png" type="Texture" id=11]
-[ext_resource path="res://assets/Textures_v2/MANSION/panel_char_unavailable.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png" type="Texture" id=12]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList_Button.tres" type="Theme" id=13]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList_Categories.tres" type="Theme" id=14]
-[ext_resource path="res://assets/Textures_v2/MANSION/button_occupation_hover.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/MANSION/button_occupation.png" type="Texture" id=16]
-[ext_resource path="res://assets/Textures_v2/MANSION/button_occupation_pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Nav.tres" type="Theme" id=18]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_population.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_foodperday.png" type="Texture" id=20]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
@@ -25,6 +28,16 @@ margin_left = 80.0
 margin_right = 80.0
 margin_top = 80.0
 margin_bottom = 40.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=6]
 
 [node name="MansionSlaveListModule" type="Panel"]
 margin_right = 1100.0
@@ -347,43 +360,73 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -194.672
-margin_top = -49.5067
-margin_right = -69.672
-margin_bottom = -25.5067
+margin_left = -205.0
+margin_top = -123.771
+margin_right = -137.0
+margin_bottom = -99.7706
 text = "Population"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="population"]
+margin_left = -26.1069
+margin_top = -5.77057
+margin_right = 5.89313
+margin_bottom = 26.2294
+texture = ExtResource( 19 )
 
 [node name="food_consumption" type="Label" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -341.0
-margin_top = -48.0
-margin_right = -204.0
-margin_bottom = -24.0
+margin_left = -89.0
+margin_top = -123.771
+margin_right = -42.0
+margin_bottom = -99.7706
 text = "FC"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TravelsContainer" type="ScrollContainer" parent="."]
-margin_left = 37.0
-margin_top = 451.0
-margin_right = 1073.0
-margin_bottom = 500.0
+[node name="TextureRect" type="TextureRect" parent="food_consumption"]
+margin_left = -45.9306
+margin_top = -5.77057
+margin_right = -3.9306
+margin_bottom = 34.2294
+texture = ExtResource( 20 )
+
+[node name="TravelsContainerPanel" type="Panel" parent="."]
+margin_left = 40.0
+margin_top = 504.0
+margin_right = 1070.0
+margin_bottom = 554.0
+theme = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TravelsContainer"]
+[node name="TravelsContainer" type="ScrollContainer" parent="TravelsContainerPanel"]
+margin_left = 16.0
+margin_top = 10.0561
+margin_right = 1046.0
+margin_bottom = 40.0561
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Button" type="Button" parent="TravelsContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TravelsContainerPanel/TravelsContainer"]
+
+[node name="Button" type="Button" parent="TravelsContainerPanel/TravelsContainer/HBoxContainer"]
 visible = false
-margin_right = 134.838
-margin_bottom = 38.2509
+margin_right = 118.0
+margin_bottom = 29.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 toggle_mode = true
 text = "  Show All  "
+flat = true

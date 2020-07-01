@@ -22,7 +22,7 @@ func build_skill_panel():
 	else:
 		src = person.skills.combat_skill_panel
 		$skillpanelswitch.pressed = true
-	for i in range(1,10):
+	for i in range(1,11):
 		var text = ''
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		if src.has(i):
@@ -92,6 +92,8 @@ func use_skill(target):
 
 
 func change_panel_type():
+	if get_parent().active_person == null:
+		get_parent().active_person = ResourceScripts.game_party.get_master()
 	if person.skills.active_panel == variables.PANEL_SOC:
 		person.skills.active_panel = variables.PANEL_COM
 	elif person.skills.active_panel == variables.PANEL_COM: #redundant check for the case of any of future changes

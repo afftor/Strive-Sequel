@@ -1,13 +1,13 @@
  extends Panel
 
-onready var itemcontainer = $ScrollContainer/GridContainer
+onready var itemcontainer = $Scroller/ScrollContainer/GridContainer
 var itemarray = []
 var mode
 var categories = ['all','weapon','gear','usable','material']
 var category = 'all'
 
 func _ready():
-	$ScrollContainer/GridContainer/Button.set_meta('type', 'none')
+	$Scroller/ScrollContainer/GridContainer/Button.set_meta('type', 'none')
 	for i in $HBoxContainer.get_children():
 		i.connect('pressed',self,'selectcategory', [i])
 

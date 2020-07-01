@@ -2,7 +2,7 @@ extends Panel
 
 
 onready var MansionMainModule = get_parent()
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 var person
 var authority_lines = {
 	low = "Defiance",
@@ -14,6 +14,7 @@ var authority_lines = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CharacterInfoButton.connect("pressed", get_parent(), "mansion_state_set", ["char_info"])
+	$TextureRect2/Exp.connect("pressed", self, "open_char_class_info")
 	for i in $base_stats.get_children():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	globals.connecttexttooltip(get_node("TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
@@ -21,6 +22,12 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+
+
+func open_char_class_info():
+	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
+	GUIWorld.set_current_scene(slave_info)
+	slave_info.set_state("class")
 
 
 func show_slave_info():

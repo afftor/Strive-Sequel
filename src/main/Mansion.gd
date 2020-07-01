@@ -249,7 +249,7 @@ func _ready():
 		character.set_stat('base_exp', 500)
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('mages_join_reward'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
-		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
+		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')

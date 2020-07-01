@@ -41,7 +41,7 @@ func mining_stone():
 func mining_iron():
 	return 1 + (1*(parent.get_stat('physics')/33))
 	
-func mining_mythril():
+func mining_mithril():
 	return 1 + (1*(parent.get_stat('physics')/30))
 
 func whoring_gold():

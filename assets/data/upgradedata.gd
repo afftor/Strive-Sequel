@@ -15,7 +15,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEFARMVEGEBONUS"),
 				taskprogress = 200,
 				#townnode = "farm",
-				cost = {wood = 50, stone = 20},
+				cost = {wood = 50, vegetables = 250},
 			}
 		}
 	},
@@ -32,8 +32,25 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEFARMGRAINSBONUS"),
 				taskprogress = 200,
 				#townnode = "farm",
-				cost = {woodiron = 50, stone = 100},
+				cost = {stone = 100, grain = 250},
 			}
+		}
+	},
+	resource_gather_cloth = {
+		code = 'resource_gather_cloth',
+		name = '',
+		positionorder = 5,
+		descript = '',
+		category = 'facilitiy',
+		levels = {
+			1:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADEGATHERCLOTHBONUS"),
+				taskprogress = 250,
+				#townnode = "farm",
+				cost = {wood = 100, iron = 30},
+			},
 		}
 	},
 	tailor = {
@@ -65,14 +82,14 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADETAILORBONUS3"),
 				taskprogress = 500,
 				#townnode = "farm",
-				cost = {woodiron = 50, stone = 50, clothsilk = 25},
+				cost = {woodiron = 50, mithril = 25, clothmagic = 25},
 			}
 		}
 	},
 	forge = {
 		code = 'forge',
 		name = '',
-		positionorder = 1,
+		positionorder = 2,
 		descript = '',
 		category = 'facilitiy',
 		levels = {
@@ -105,7 +122,7 @@ var upgradelist = {
 	alchemy = {
 		code = 'alchemy',
 		name = '',
-		positionorder = 1,
+		positionorder = 2,
 		descript = '',
 		category = 'facilitiy',
 		levels = {
@@ -127,112 +144,96 @@ var upgradelist = {
 			}
 		}
 	},
-	mine_resource = {
-		code = 'mine_resource',
-		name = '',
-		positionorder = 2,
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADEGATHERIRONBONUS"),
-				taskprogress = 100,
-				#townnode = "farm",
-				cost = {stone = 25, wood = 25},
-			},
-			2:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADEGATHERMITHRILBONUS"),
-				taskprogress = 300,
-				#townnode = "farm",
-				cost = {steel = 50, woodiron = 25, stone = 100},
-			},
-		}
-	},
-	resource_gather_woodmagic = {
-		code = 'resource_gather_woodmagic',
-		name = '',
-		positionorder = 1,
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADEGATHERWOODMAGICBONUS"),
-				taskprogress = 300,
-				#townnode = "farm",
-				cost = {wood = 50, iron = 20},
-			},
-		}
-	},
-	resource_gather_woodiron = {
-		code = 'resource_gather_woodiron',
-		name = '',
-		positionorder = 1,
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADEGATHERWOODIRONBONUS"),
-				taskprogress = 300,
-				#townnode = "farm",
-				cost = {steel = 30, clothsilk = 20},
-			},
-		}
-	},
-	resource_gather_cloth = {
-		code = 'resource_gather_cloth',
-		name = '',
-		positionorder = 1,
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADEGATHERCLOTHBONUS"),
-				taskprogress = 150,
-				#townnode = "farm",
-				cost = {wood = 30, leather = 20},
-			},
-		}
-	},
-	resource_gather_leather = {
-		code = 'resource_gather_leather',
-		name = '',
-		positionorder = 1,
-		descript = '',
-		category = 'facilitiy',
-		levels = {
-			1:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADELEATHERBONUS1"),
-				taskprogress = 200,
-				#townnode = "farm",
-				cost = {wood = 30, leather = 20},
-			},
-			2:{
-				unlockreqs = [],
-				icon = 'upgrade_farm', 
-				bonusdescript = tr("UPGRADELEATHERBONUS2"),
-				taskprogress = 350,
-				#townnode = "farm",
-				cost = {wood = 30, leather = 20},
-			},
-		}
-	},
+#	mine_resource = {
+#		code = 'mine_resource',
+#		name = '',
+#		positionorder = 2,
+#		descript = '',
+#		category = 'facilitiy',
+#		levels = {
+#			1:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADEGATHERIRONBONUS"),
+#				taskprogress = 100,
+#				#townnode = "farm",
+#				cost = {stone = 25, wood = 25},
+#			},
+#			2:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADEGATHERMITHRILBONUS"),
+#				taskprogress = 300,
+#				#townnode = "farm",
+#				cost = {steel = 50, woodiron = 25, stone = 100},
+#			},
+#		}
+#	},
+#	resource_gather_woodmagic = {
+#		code = 'resource_gather_woodmagic',
+#		name = '',
+#		positionorder = 1,
+#		descript = '',
+#		category = 'facilitiy',
+#		levels = {
+#			1:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADEGATHERWOODMAGICBONUS"),
+#				taskprogress = 300,
+#				#townnode = "farm",
+#				cost = {wood = 50, iron = 20},
+#			},
+#		}
+#	},
+#	resource_gather_woodiron = {
+#		code = 'resource_gather_woodiron',
+#		name = '',
+#		positionorder = 1,
+#		descript = '',
+#		category = 'facilitiy',
+#		levels = {
+#			1:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADEGATHERWOODIRONBONUS"),
+#				taskprogress = 300,
+#				#townnode = "farm",
+#				cost = {steel = 30, clothsilk = 20},
+#			},
+#		}
+#	},
+
+#	resource_gather_leather = {
+#		code = 'resource_gather_leather',
+#		name = '',
+#		positionorder = 1,
+#		descript = '',
+#		category = 'facilitiy',
+#		levels = {
+#			1:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADELEATHERBONUS1"),
+#				taskprogress = 200,
+#				#townnode = "farm",
+#				cost = {wood = 30, leather = 20},
+#			},
+#			2:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADELEATHERBONUS2"),
+#				taskprogress = 350,
+#				#townnode = "farm",
+#				cost = {wood = 30, leather = 20},
+#			},
+#		}
+#	},
 	
 	master_bedroom = {
 		code = 'master_bedroom',
 		name = '',
-		positionorder = 3,
+		positionorder = 6,
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -266,7 +267,7 @@ var upgradelist = {
 	stables = {
 		code = 'stables',
 		name = '',
-		positionorder = 4,
+		positionorder = 5,
 		descript = '',
 		category = 'upgrade',
 		levels = {
@@ -278,22 +279,22 @@ var upgradelist = {
 				#townnode = "farm",
 				cost = {wood = 50, leather = 25},
 			},
-#			2:{
-#				unlockreqs = [],
-#				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-#				bonusdescript = tr("UPGRADESTABLESBONUS2"),
-#				taskprogress = 200,
-#				#townnode = "farm",
-#				cost = {woodiron = 50, leatherthick = 50},
-#			},
-#			3:{
-#				unlockreqs = [],
-#				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
-#				bonusdescript = tr("UPGRADESTABLESBONUS3"),
-#				taskprogress = 300,
-#				#townnode = "farm",
-#				cost = {woodiron = 100, wood = 200, leather = 100, leatherthick = 50},
-#			}
+			2:{
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+				bonusdescript = tr("UPGRADESTABLESBONUS2"),
+				taskprogress = 200,
+				#townnode = "farm",
+				cost = {woodiron = 50, leatherthick = 50},
+			},
+			3:{
+				unlockreqs = [],
+				icon = load('res://assets/images/buildings/upgrade_farm.png'), 
+				bonusdescript = tr("UPGRADESTABLESBONUS3"),
+				taskprogress = 300,
+				#townnode = "farm",
+				cost = {woodiron = 100, wood = 200, leather = 100, leathermythic = 50},
+			}
 		}
 	},
 	
@@ -344,7 +345,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEROOMSBONUS2"),
 				taskprogress = 200,
 				#townnode = "farm",
-				cost = {wood = 50, cloth = 25},
+				cost = {wood = 100, stone = 50, cloth = 25},
 			},
 			3:{
 				unlockreqs = [],
@@ -352,7 +353,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEROOMSBONUS3"),
 				taskprogress = 300,
 				#townnode = "farm",
-				cost = {woodiron = 50, clothsilk = 25},
+				cost = {woodiron = 50, stone = 100, clothsilk = 25},
 			},
 			4:{
 				unlockreqs = [],
@@ -360,7 +361,7 @@ var upgradelist = {
 				bonusdescript = tr("UPGRADEROOMSBONUS4"),
 				taskprogress = 400,
 				#townnode = "farm",
-				cost = {woodiron = 100, clothsilk = 50, leatherthick = 50},
+				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
 			},
 			5:{
 				unlockreqs = [],

@@ -1,6 +1,6 @@
 extends Control
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var CharMainModule = get_parent()
 
 func _ready():
@@ -20,6 +20,7 @@ func _ready():
 	$VBoxContainer/GearButton.set_meta("state", "gear")
 	$VBoxContainer/ClassButton.connect("pressed", get_parent(), "set_state", ["class"])
 	$VBoxContainer/ClassButton.set_meta("state", "class")
+	$VBoxContainer2/TextureRect2/Exp.connect("pressed", get_parent(), "set_state", ["class"])
 	$VBoxContainer/DetailsButton.connect("pressed", get_parent(), "set_state", ["details"])
 	$VBoxContainer/DetailsButton.set_meta("state", "details")
 

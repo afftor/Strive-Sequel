@@ -1,28 +1,94 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=2]
-[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=3]
-[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_hover2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_pressed2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=7]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=8]
+[ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/panel_travel.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_hover.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_pressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=14]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=19]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 1100, 387 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 230, 40 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 230, 40 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 230, 40 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 230, 40 )
+
 [node name="MansionUpgradesModule" type="Panel"]
 rect_min_size = Vector2( 1100, 385 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradesBG" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 1100.0
+margin_bottom = 385.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="QueueList" type="Panel" parent="."]
-margin_right = 660.0
+margin_left = 388.0
+margin_right = 707.0
 margin_bottom = 385.0
-theme = ExtResource( 3 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="QueueList"]
+margin_left = 15.3016
+margin_top = 90.0
+margin_right = 27.3016
+margin_bottom = 302.0
+theme = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,36 +96,35 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="QueueList"]
 margin_left = 45.0
 margin_top = 90.0
-margin_right = 625.0
-margin_bottom = 360.0
+margin_right = 305.0
+margin_bottom = 314.0
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="QueueList/ScrollContainer"]
-margin_right = 580.0
-rect_min_size = Vector2( 580, 0 )
 
 [node name="Button" type="TextureButton" parent="QueueList/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 580.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_right = 260.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 260, 46 )
 mouse_default_cursor_shape = 2
 toggle_mode = true
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
 expand = true
 script = ExtResource( 8 )
 
 [node name="name" type="Label" parent="QueueList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 26.0
-margin_top = 13.0
-margin_right = 358.0
-margin_bottom = 37.0
+margin_left = 12.0
+margin_top = 5.0
+margin_right = 245.0
+margin_bottom = 41.0
 text = "Name"
-align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,49 +142,56 @@ __meta__ = {
 }
 
 [node name="UpgradeList" type="Panel" parent="."]
-rect_min_size = Vector2( 660, 385 )
-theme = ExtResource( 3 )
+margin_right = 388.0
+margin_bottom = 385.0
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VScrollBar" type="VScrollBar" parent="UpgradeList"]
+margin_left = 18.0
+margin_top = 90.0
+margin_right = 30.0
+margin_bottom = 360.0
+theme = ExtResource( 14 )
+
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeList"]
 margin_left = 45.0
 margin_top = 90.0
-margin_right = 625.0
+margin_right = 364.0
 margin_bottom = 360.0
-rect_min_size = Vector2( 580, 20 )
+rect_min_size = Vector2( 319, 0 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpgradeList/ScrollContainer"]
-margin_right = 580.0
+margin_right = 319.0
 margin_bottom = 270.0
-rect_min_size = Vector2( 580, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
 
 [node name="Button" type="TextureButton" parent="UpgradeList/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 580.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_right = 319.0
+margin_bottom = 46.0
+rect_min_size = Vector2( 0, 46 )
 toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 4 )
-expand = true
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
 
 [node name="name" type="Label" parent="UpgradeList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 26.0
-margin_top = 13.0
-margin_right = 358.0
-margin_bottom = 37.0
+margin_left = 14.0
+margin_top = 5.0
+margin_right = 312.0
+margin_bottom = 41.0
 text = "Name"
-align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -138,56 +210,50 @@ __meta__ = {
 
 [node name="UpgradeDescript" type="Panel" parent="."]
 visible = false
-margin_left = 660.0
+margin_left = 712.0
 margin_right = 1100.0
 margin_bottom = 385.0
+custom_styles/panel = SubResource( 5 )
 
 [node name="Label" type="Label" parent="UpgradeDescript"]
-margin_left = 47.1077
-margin_top = 55.8879
-margin_right = 267.108
-margin_bottom = 79.8879
+margin_left = 19.0
+margin_top = 72.0
+margin_right = 373.0
+margin_bottom = 96.0
 text = "Name"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UpgradeDescript"]
-margin_left = 52.0
-margin_top = 91.0
-margin_right = 379.0
-margin_bottom = 286.0
+margin_left = 19.0
+margin_top = 127.0
+margin_right = 373.0
+margin_bottom = 238.0
+custom_fonts/normal_font = SubResource( 6 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UnlockButton" type="Button" parent="UpgradeDescript"]
-margin_left = 92.3104
-margin_top = 322.053
-margin_right = 372.31
-margin_bottom = 375.053
-text = "Add to Queue"
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeDescript"]
+margin_left = 19.0
+margin_top = 251.615
+margin_right = 276.0
+margin_bottom = 321.615
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeDescript"]
-margin_left = 34.5382
-margin_top = 237.615
-margin_right = 291.538
-margin_bottom = 319.615
-
 [node name="Button" type="TextureRect" parent="UpgradeDescript/HBoxContainer"]
-visible = false
-margin_right = 80.0
-margin_bottom = 82.0
+margin_right = 70.0
+margin_bottom = 70.0
 texture = ExtResource( 6 )
 stretch_mode = 6
 
 [node name="icon" type="TextureRect" parent="UpgradeDescript/HBoxContainer/Button"]
-show_behind_parent = true
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 76.0
-margin_bottom = 76.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 68.0
+margin_bottom = 68.0
 mouse_filter = 2
 texture = ExtResource( 7 )
 expand = true
@@ -198,33 +264,48 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="UpgradeDescript/HBoxContainer/Button"]
 margin_left = 2.0
-margin_top = 84.0
-margin_right = 80.0
-margin_bottom = 108.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_top = 46.4537
+margin_right = 68.0
+margin_bottom = 68.4537
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "5/10"
 align = 1
 valign = 1
 
 [node name="Time" type="TextureRect" parent="UpgradeDescript"]
-margin_left = 315.39
-margin_top = 250.014
-margin_right = 351.39
-margin_bottom = 303.014
+margin_left = 295.288
+margin_top = 335.0
+margin_right = 313.288
+margin_bottom = 365.0
 hint_tooltip = "Build progress required"
 texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="UpgradeDescript/Time"]
-margin_left = 57.2263
-margin_top = 18.0
-margin_right = 113.226
-margin_bottom = 42.0
+margin_left = 18.0
+margin_top = 4.0
+margin_right = 40.0
+margin_bottom = 28.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "15"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnlockButton" type="Button" parent="UpgradeDescript"]
+margin_left = 19.0
+margin_top = 327.0
+margin_right = 295.0
+margin_bottom = 365.0
+theme = ExtResource( 19 )
+text = "Add to Queue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -250,9 +331,40 @@ margin_top = 162.334
 margin_right = 488.552
 margin_bottom = 186.334
 
-[node name="StateButton" type="Button" parent="."]
-margin_left = 35.1617
-margin_top = 21.097
-margin_right = 245.162
-margin_bottom = 72.097
-text = "State"
+[node name="SelectChars" type="Button" parent="."]
+margin_left = 445.0
+margin_top = 335.0
+margin_right = 655.0
+margin_bottom = 365.0
+theme = ExtResource( 19 )
+text = "Select Characters"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="."]
+visible = false
+margin_left = 549.0
+margin_top = 335.0
+margin_right = 655.0
+margin_bottom = 365.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="."]
+visible = false
+margin_left = 445.0
+margin_top = 335.0
+margin_right = 534.0
+margin_bottom = 365.0
+theme = ExtResource( 19 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}

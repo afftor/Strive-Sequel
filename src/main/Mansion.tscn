@@ -114,6 +114,9 @@ margin_right = 241.376
 margin_bottom = 996.33
 theme = ExtResource( 4 )
 text = "Inventory"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CraftButton" type="Button" parent="."]
 margin_left = 23.376
