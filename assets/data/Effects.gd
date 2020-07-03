@@ -961,11 +961,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add_p', stat = 'atk', value = 0.25},
-#			{type = 'stat_add', stat = 'matk', value = 10},
-#			{type = 'stat_add', stat = 'armor', value = 10},
-#			{type = 'stat_add', stat = 'mdef', value = 10},
-#			{type = 'stat_add', stat = 'evasion', value = 10},
-#			{type = 'stat_add', stat = 'hitrate', value = 10},
 		],
 		buffs = [
 			{
