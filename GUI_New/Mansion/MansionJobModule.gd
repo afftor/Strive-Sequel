@@ -40,13 +40,19 @@ func open_jobs_window():
 		restbutton.get_child(0).text = tr("TASKREST")
 		restbutton.toggle_mode = false
 		restbutton.connect("pressed", self, 'set_rest')
-		if person.get_location() != 'mansion':
+		if person.get_location() != 'Aliron':
 			var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
-			for i in location.tasks:
-				if i == 'gather':
-					for k in location.gatherable_resources.keys():
-						if location.gatherable_resources[k] <= 0:
-							pass
+#			for i in location.tasks:
+#				if i == 'gather':
+#					var check = false
+#					for k in location.gather_limit_resources.keys():
+#						if location.gather_limit_resources[k] > 0:
+#							check = true
+#							break
+#					if check == true:
+#						var newbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
+#						newbutton.get_child(0).text = "Collect Materials"
+#						newbutton.connect('pressed', self, 'show_collect_details', [location])
 		else:
 			for i in races.tasklist.values():
 				if globals.checkreqs(i.reqs) == false:
@@ -62,8 +68,36 @@ func open_jobs_window():
 			get_node("work_rules/" + i).pressed = person.xp_module.work_rules[i]
 		$work_rules/constrain.visible = person != ResourceScripts.game_party.get_master()
 
-
-
+#func show_collect_details(location):
+#	$ConfirmButton.show()
+#	$ConfirmButton.disabled = true
+#	$CancelButton.show()
+#	$job_details.show()
+#	input_handler.ClearContainer($job_details/ResourceOptions)
+#	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
+#		i.pressed = i.get_child(0).text == "Collect Materials"
+#
+#	$job_details/JobName.text = "Collect Materials"
+#	var text = ('')
+#
+#	$job_details/RichTextLabel.bbcode_text = text
+#	for i in location.gather_limit_resources:
+#		if location.gather_limit_resources[i] > 0:
+#			var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
+#			var item = Items.materiallist[i]
+#			var number
+#			var numberleft = location.gather_limit_resources[i]
+#			var progress_speed = person.get_progress_task
+##			number = person.get_progress_task(job.code, i.code)/i.progress_per_item
+#			text = (
+#				"\n[color=yellow]Expected gain per day: "
+#				+ str(stepify(number * 24, 0.1))
+#				+ "[/color]"
+#			)
+#
+#			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
+#			newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
+#			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
 
 func show_job_details(job):
 	$ConfirmButton.show()
@@ -76,9 +110,7 @@ func show_job_details(job):
 		i.pressed = i.get_child(0).text == job.name
 	$job_details/JobName.text = job.name
 	var text = (
-		"[center]"
-		+ '[/center]\n'
-		+ job.descript
+		job.descript
 		+ "\n\n"
 		+ tr("TASKMAINSTAT")
 		+ ": [color=yellow]"

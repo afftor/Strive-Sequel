@@ -13,7 +13,7 @@ func _ready():
 
 func open_character_dislocation():
 	show()
-	dislocation_area = 'mansion'
+	dislocation_area = ResourceScripts.game_world.mansion_location
 	destination_area = 'plains'
 	
 	$HomeButton.clear()
@@ -33,7 +33,7 @@ func open_character_dislocation():
 		var newlabel = input_handler.DuplicateContainerTemplate($TravelersContainer/VBoxContainer)
 		newlabel.get_node("Label").text = i.get_short_name()
 		if i.travel.travel_target.location != ResourceScripts.game_world.mansion_location:
-			newlabel.get_node("Label").tex += " - " + ResourceScripts.world_gen.get_location_from_code(i.travel.travel_target.location).name
+			newlabel.get_node("Label").text += " - " + ResourceScripts.world_gen.get_location_from_code(i.travel.travel_target.location).name
 		else:
 			newlabel.get_node("Label").text += " - " + tr("MANSION")
 		newlabel.get_node("Progress").value = i.travel.initial_travel_time - i.travel.travel_time
@@ -95,7 +95,7 @@ func update_location_list():
 	for i in ResourceScripts.game_world.areas[destination_area].locations.values() + ResourceScripts.game_world.areas[destination_area].questlocations.values():
 		array.append(i)
 	
-	if dislocation_area != 'mansion':
+	if dislocation_area != ResourceScripts.game_world.mansion_location:
 		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
 		var text = tr("RETURNTOMANSION")
 		newbutton.get_node("Label").text = text

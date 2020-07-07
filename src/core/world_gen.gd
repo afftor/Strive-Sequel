@@ -255,6 +255,7 @@ func make_location(code, area):
 			location.gather_limit_resources[data.keys()[0]] = data.values()[0]
 			array.erase(data)
 		location.tasks.append("gather")
+		location.gather_mod = rand_range(1.5,1.75)
 	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
