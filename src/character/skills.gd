@@ -32,6 +32,8 @@ func get_damage_mod(skill:Dictionary):
 	if skill.target_range == 'weapon' and parent.get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
 	if skill.target_range == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
 	if skill.target_range == 'weapon' and parent.get_weapon_range() == 'any' and damage_mods.has('ranged'): res *= damage_mods['ranged']
+	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']
+	if skill.ability_type == 'spell' and damage_mods.has('spell'): res *= damage_mods['spell']
 	return res
 
 func learn_skill(skill):
@@ -308,7 +310,7 @@ func use_social_skill(s_code, target):
 				effect_text += ' - Maxed'
 			for i in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
-	if target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
+	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
 	
 	if template.has("dialogue_report"):
 		var data = {text = '', tags = ['skill_report_event'], options = []}
@@ -338,6 +340,8 @@ func use_social_skill(s_code, target):
 	parent.process_event(variables.TR_POSTDAMAGE, s_skill)
 	if target != null:
 		target.process_event(variables.TR_POSTDAMAGE, s_skill)
+	else:
+		for t in targ_all: t.process_event(variables.TR_POSTDAMAGE, s_skill)
 	
 	input_handler.update_slave_list()
 	#input_handler.update_slave_panel()

@@ -163,8 +163,11 @@ func convert_to_new_template():
 	if template.has('dialogue_image'): res_res.dialogue_image = template.dialogue_image
 	if template.has('dialogue_show_repeat'): res_res.dialogue_show_repeat = template.dialogue_show_repeat
 	if template.has('target'): res_res.target = template.target
+	else: res_res.target = 'ally'
 	if template.has('target_number'): res_res.target_number = template.target_number
+	else: res_res.target_number = 'single'
 	if template.has('target_range'): res_res.target_range = template.target_range
+	else: res_res.target_range = 'any'
 	if template.has('sfx'): res_res.sfx = template.sfx.duplicate()
 	else: res_res.sfx = []
 	if template.has('sounddata'): res_res.sounddata = template.sounddata.duplicate()

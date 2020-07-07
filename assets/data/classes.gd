@@ -1,6 +1,22 @@
 extends Node
 
 var professions = {
+	test = {
+		code = 'test',
+		name = '',
+		altname = '',
+		altnamereqs = [],
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Master.png"),
+		tags = [],
+		categories = [],
+		showupreqs = [],
+		reqs = [],
+		statchanges = {},
+		traits = [],
+		skills = [],
+		combatskills = [],
+	},
 	master = {
 		code = 'master',
 		name = '',
@@ -609,7 +625,7 @@ var professions = {
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 2}],
 		statchanges = {evasion = 5, critchance = 3, speed = 10},
-		traits = ['medium_armor','weapon_mastery'], 
+		traits = ['medium_armor','weapon_mastery', 'autohide'], 
 		skills = [],
 		combatskills = ['water_atk','hide'],
 	},

@@ -566,7 +566,14 @@ func skill_selected(skill):
 
 func select_skill_target(skillcode):
 	active_skill = skillcode
-	input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
+	var data = Skilldata.Skilllist[skillcode]
+	var f = true
+	if data.has('value'):
+		f = false
+		for val in data.value:
+			if val.receiver != 'all': f = true
+	if f: input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + data.targetreqs)
+	else: person.use_social_skill(active_skill, null)
 
 func use_skill(target):
 	person.use_social_skill(active_skill, target)

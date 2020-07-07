@@ -180,10 +180,12 @@ func get_arg(index):
 				else:
 					par = parent
 				if par != null:
-					args[index] = par.get_arg(int(arg.index)).get(arg.param)
+					var obj = par.get_arg(int(arg.index))
+					if obj is ResourceScripts.scriptdict.class_slave: args[index] = obj.get_stat(arg.param)
+					else: args[index] = obj.get(arg.param)
 			'app_obj':
 				var par = get_applied_obj()
-				args[index] = par.get(arg.param)
+				args[index] = par.get_stat(arg.param)
 	return args[index]
 
 func set_args(arg, value):

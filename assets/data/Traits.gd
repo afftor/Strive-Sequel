@@ -122,6 +122,14 @@ var traits = {
 		icon = null,
 		effects = ['valkyrie_spear_bonus'],
 	},
+	autohide = {
+		code = 'autohide',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_hide'],
+	},
 	farmer = {#+50% farm production
 		code = 'farmer',
 		name = '',
@@ -236,6 +244,14 @@ var traits = {
 		icon = null,
 		visible = true,
 		effects = [],
+	},
+	stealth = {
+		code = 'staelth',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_tr_hide'],
 	},
 }
 

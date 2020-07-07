@@ -203,6 +203,9 @@ func unequip(item):
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)
 
+func remove_class(prof):
+	xp_module.remove_class(prof)
+
 func add_trait(tr_code):
 	statlist.add_trait(tr_code)
 
@@ -820,7 +823,7 @@ func apply_atomic(template):
 			killed()
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
-			input_handler.combat_node.use_skill(template.skill, self, null)
+			input_handler.combat_node.use_skill(template.skill, self, template.target)
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)

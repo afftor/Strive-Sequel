@@ -75,6 +75,20 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 		parent.add_trait(i)
 	parent.recheck_effect_tag('recheck_class')
 
+func remove_class(prof):
+	prof = classesdata.professions[prof]
+	if !professions.has(prof.code):
+		return "Nothing to remove"
+	professions.erase(prof.code)
+	parent.remove_stat_bonuses(prof.statchanges)
+	for i in prof.skills:
+		parent.unlearn_skill(i)
+	for i in prof.combatskills:
+		parent.inlearn_c_skill(i)
+	for i in prof.traits:
+		parent.remove_trait(i)
+	parent.recheck_effect_tag('recheck_class')
+
 func check_skill_prof(skill):
 	for i in professions:
 		var tempprof = classesdata.professions[i]

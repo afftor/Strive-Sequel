@@ -141,6 +141,13 @@ func remove_all_temp_effects():
 		var obj = effects_pool.get_effect_by_id(e)
 		obj.call_deferred('remove')
 
+func remove_all_temp_effects_tag(eff_tag):
+	var tmp = find_temp_effect_tag(eff_tag)
+	if tmp.size() == 0: return
+	for e in tmp:
+		var obj = effects_pool.get_effect_by_id(e)
+		obj.call_deferred('remove')
+
 func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
 	var tmp = find_temp_effect_tag(eff_tag)
 	if tmp.size() == 0: return
