@@ -1,4 +1,4 @@
-extends "res://src/character/jobs.gd"
+extends "res://src/character/ch_jobs.gd"
 
 var base_exp = 0 setget base_exp_set
 var professions = []
