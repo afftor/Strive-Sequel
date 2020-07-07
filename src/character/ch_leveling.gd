@@ -2,6 +2,7 @@ extends "res://src/character/ch_jobs.gd"
 
 var base_exp = 0 setget base_exp_set
 var professions = []
+var prof_links = {}
 
 var sleep = ''
 var work = ''
@@ -68,11 +69,23 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 	professions.append(prof.code)
 	parent.add_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
-		parent.learn_skill(i)
+		if prof_links.has('s_'+i):
+			prof_links['s_'+ i].push_back(prof.code)
+		else: 
+			prof_links['s_'+ i] = [prof.code]
+			parent.learn_skill(i)
 	for i in prof.combatskills:
-		parent.learn_c_skill(i)
+		if prof_links.has('s_'+i):
+			prof_links['s_'+ i].push_back(prof.code)
+		else: 
+			prof_links['s_'+ i] = [prof.code]
+			parent.learn_c_skill(i)
 	for i in prof.traits:
-		parent.add_trait(i)
+		if prof_links.has('t_'+i):
+			prof_links['t_'+ i].push_back(prof.code)
+		else: 
+			prof_links['t_'+ i] = [prof.code]
+			parent.add_trait(i)
 	parent.recheck_effect_tag('recheck_class')
 
 func remove_class(prof):
@@ -82,11 +95,29 @@ func remove_class(prof):
 	professions.erase(prof.code)
 	parent.remove_stat_bonuses(prof.statchanges)
 	for i in prof.skills:
-		parent.unlearn_skill(i)
+		if prof_links['s_' + i].size() == 1:
+			if prof_links['s_' + i][0] == prof.code:
+				parent.unlearn_skill(i)
+			else:
+				print('WARNING! error in prof dependancy')
+		else:
+			prof_links['s_' + i].erase(prof.code)
 	for i in prof.combatskills:
-		parent.inlearn_c_skill(i)
+		if prof_links['s_' + i].size() == 1:
+			if prof_links['s_' + i][0] == prof.code:
+				parent.unlearn_c_skill(i)
+			else:
+				print('WARNING! error in prof dependancy')
+		else:
+			prof_links['s_' + i].erase(prof.code)
 	for i in prof.traits:
-		parent.remove_trait(i)
+		if prof_links['t_' + i].size() == 1:
+			if prof_links['t_' + i][0] == prof.code:
+				parent.remove_trait(i)
+			else:
+				print('WARNING! error in prof dependancy')
+		else:
+			prof_links['t_' + i].erase(prof.code)
 	parent.recheck_effect_tag('recheck_class')
 
 func check_skill_prof(skill):
