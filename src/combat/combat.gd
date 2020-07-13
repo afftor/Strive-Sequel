@@ -831,10 +831,10 @@ func use_skill(skill_code, caster, target):
 		for i in skill.catalysts:
 			ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
 		if skill.charges > 0:
-			if caster.combat_skill_charges.has(skill.code):
-				caster.combat_skill_charges[skill.code] += 1
+			if caster.skills.combat_skill_charges.has(skill.code):
+				caster.skills.combat_skill_charges[skill.code] += 1
 			else:
-				caster.combat_skill_charges[skill.code] = 1
+				caster.skills.combat_skill_charges[skill.code] = 1
 			caster.skills.daily_cooldowns[skill_code] = skill.cooldown
 		if skill.ability_type == 'skill':
 			caster.add_stat('physics', rand_range(0.3,0.5))
@@ -1352,8 +1352,8 @@ func RebuildSkillPanel():
 			newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		if skill.charges > 0:
 			var leftcharges = skill.charges
-			if activecharacter.combat_skill_charges.has(skill.code):
-				leftcharges -= activecharacter.combat_skill_charges[skill.code]
+			if activecharacter.skills.combat_skill_charges.has(skill.code):
+				leftcharges -= activecharacter.skills.combat_skill_charges[skill.code]
 			newbutton.get_node("charge").visible = true
 			newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
 			if leftcharges <= 0:
@@ -1388,7 +1388,7 @@ func SelectSkill(skill):
 			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
 			call_deferred('SelectSkill', 'attack');
 			break
-	if skill.charges > 0 && activecharacter.combat_skill_charges.has(skill.code) && activecharacter.combat_skill_charges[skill.code] >= skill.charges:
+	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
 		call_deferred('SelectSkill', 'attack')
 		return
