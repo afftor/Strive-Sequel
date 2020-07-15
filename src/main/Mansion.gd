@@ -77,15 +77,22 @@ func _ready():
 	if variables.generate_test_chars:
 		ResourceScripts.game_world.make_world()
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'male', 'random')
+		character.create('HalfkinCat', 'female', 'random')
 		character.set_stat('consent', 100)
 		character.set_stat('penis_virgin', true)
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
-		character.unlock_class("archer")
-		character.unlock_class("foreman")
 		character.unlock_class("rogue")
+		character.unlock_class("ranger")
+		character.unlock_class("paladin")
+		character.unlock_class("templar")
+		character.unlock_class("archmage")
+		character.unlock_class("bard")
+		character.unlock_class("battlesmith")
+		character.unlock_class("shaman")
+		character.unlock_class("technomancer")
+		character.unlock_class("sextoy")
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
@@ -97,10 +104,7 @@ func _ready():
 		character.set_stat('consent',100)
 		character.set_stat('charm_factor',5)
 		character.set_stat('physics_factor',5)
-		#character.unlock_class("worker")
 		character.mp = 50
-		character.unlock_class("sadist")
-#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
 				continue
@@ -114,7 +118,6 @@ func _ready():
 		character.set_stat('consent',100)
 		character.statlist.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
-		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
 		character.set_slave_category('servant')
 		character.set_stat('obedience', 100)
@@ -290,13 +293,13 @@ func open_travels():
 
 func quest_test():
 	$SlaveList.update()
-	for i in ResourceScripts.game_party.characters.values():print(i.get_stat('name'), i.get_stat('has_womb'))
+	#for i in ResourceScripts.game_party.characters.values():print(i.get_stat('name'), i.get_stat('has_womb'))
 	#state.areas.plains.factions.servants.totalreputation = 500
 	#print(input_handler.CloseableWindowsArray)
 #	for i in state.characters.values():
 #		i.base_exp += 100
 	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
-	#$Exploration.testcombat()
+	$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):

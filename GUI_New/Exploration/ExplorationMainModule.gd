@@ -458,6 +458,14 @@ var service_actions = {
 		reqs = [{type = 'has_money', value = variables.enslavement_price}],
 		costvalue = variables.enslavement_price
 	},
+	clearclasses = {
+		code = 'clearclasses',
+		text = 'SERVICECLEARCLASSES',
+		descript = 'SERVICEENSLAVEDESCRIPT',
+		function = 'clearprices',
+		reqs = [{type = 'has_money', value = variables.enslavement_price}],
+		costvalue = variables.enslavement_price
+	},
 }
 
 

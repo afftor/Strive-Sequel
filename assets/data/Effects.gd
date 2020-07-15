@@ -1,7 +1,7 @@
 extends Node
 var effects = {
 }
-#TO FIX EFFECT TAGS TO TEMPLATE
+#to fix EFFECT TAGS TO TEMPLATE
 #'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
 #'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
 #any other - for additional customisation
@@ -718,7 +718,7 @@ var effect_table = {
 		tick_event = variables.TR_TURN_GET,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,
-		duration = 4,
+		duration = 2,
 		tags = ['debuff'],
 		sub_effects = [],
 		atomic = [
@@ -1230,7 +1230,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'resistdark', value = 20},
 			{type = 'stat_add', stat = 'resistmind', value = 20}
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Resistes increased",
@@ -1273,6 +1273,7 @@ var effect_table = {
 		name = 'bard1',
 		rem_event = [variables.TR_COMBAT_F], 
 		stack = 1,
+		duration = 4, 
 		tags = ['buff', 'positive', 'bard'],
 		sub_effects = [],
 		atomic = [
@@ -1280,7 +1281,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'evasion', value = 20},
 			{type = 'stat_add', stat = 'speed', value = 20},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Bard - faster",
@@ -1296,13 +1297,14 @@ var effect_table = {
 		name = 'bard3',
 		rem_event = [variables.TR_COMBAT_F],
 		stack = 1,
+		duration = 4, 
 		tags = ['buff', 'positive', 'bard'],
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add_p', stat = 'atk', value = 0.2},
 			{type = 'stat_add_p', stat = 'matk', value = 0.2},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Bard - stronger",
@@ -1318,13 +1320,14 @@ var effect_table = {
 		name = 'bard2',
 		rem_event = [variables.TR_COMBAT_F],
 		stack = 1,
+		duration = 4, 
 		tags = ['buff', 'positive', 'bard'],
 		sub_effects = ['e_bards_clean'],
 		atomic = [
 			{type = 'stat_add', stat = 'def', value = 15},
 			{type = 'stat_add', stat = 'mdef', value = 15},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Bard - resilent",
@@ -1381,6 +1384,7 @@ var effect_table = {
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
 			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['damage_type', 'neq', 'mind'] },
 			{type = 'random', value = 0.25}
 		],
 		req_skill = true,
@@ -1499,7 +1503,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'resistwater', value = -40},
 			{type = 'stat_add', stat = 'resistair', value = -40},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Resistes decreased",
@@ -1525,7 +1529,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'resistwater', value = 25},
 			{type = 'stat_add', stat = 'resistair', value = 25},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Resistes increased",
@@ -1566,7 +1570,7 @@ var effect_table = {
 		tags = ['debuff'],
 		sub_effects = ['e_t_hmark'],
 		atomic = [],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "REceives more damage",
@@ -1624,7 +1628,7 @@ var effect_table = {
 		stack = 1,
 		rem_event = [variables.TR_COMBAT_F],
 		buffs = [{
-				icon = "res://assets/images/iconsskills/Discipline.png", #to fix
+				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "Spirit devoured",
 				limit = 1,
 				t_name = 'devour',
@@ -1725,7 +1729,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'evasion', value = 25},
 			{type = 'stat_add', stat = 'speed', value = 30},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "spirit - hare",
@@ -1747,7 +1751,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'hitrate', value = 30},
 			{type = 'stat_add', stat = 'modskill', value = 0.2},
 		],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "spirit - eagle",
@@ -1766,7 +1770,7 @@ var effect_table = {
 		tags = ['spirit'],
 		sub_effects = ['e_t_turtle1', 'e_t_turtle2'],
 		atomic = [],
-		buffs = [#to fix
+		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
 				description = "spirit - turtle",
@@ -1821,7 +1825,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Mindread.png", 
+				icon = "res://assets/images/iconsskills/icon_eyes.png", 
 				description = "Hidden",
 				t_name = 'hide'
 			}
@@ -1838,7 +1842,7 @@ var effect_table = {
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Mindread.png", 
+				icon = "res://assets/images/iconsskills/Innervate.png", 
 				description = "Will be reborn at death",
 				t_name = 'reincarnate'
 			}
@@ -1852,7 +1856,7 @@ var effect_table = {
 		stack = 1,
 		name = 'stun',
 		disable = true,
-		tags = ['debuff', 'stun_prechecked'],
+		tags = ['debuff', 'stun'],
 		buffs = ['b_stun'],
 	},
 	e_s_stun1 = {#duration version
@@ -2204,7 +2208,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent_arg',
-		tags = ['affliction', 'bleed_prechecked'],
+		tags = ['affliction', 'bleed'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_bleed'],
 		atomic = [],
@@ -2721,25 +2725,25 @@ var buffs = {
 		limit = 1,
 		t_name = 'trap'
 	},
-	b_mirror = { #to fix
+	b_mirror = { 
 		icon = "res://assets/images/traits/hitrate.png", 
 		description = "Mirror image - chance to evade damage from skills",
 		limit = 1,
 		t_name = 'mirror'
 	},
-	b_field= { #to fix
+	b_field= { 
 		icon = "res://assets/images/traits/hitrate.png", 
 		description = "Energy field - chance to reflect damage",
 		limit = 1,
 		t_name = 'field'
 	},
-	b_shell= { #to fix
+	b_shell= { 
 		icon = "res://assets/images/traits/hitrate.png", 
 		description = "Protective shell",
 		limit = 1,
 		t_name = 'shell'
 	},
-	b_taunt= { #to fix
+	b_taunt= { 
 		icon = "res://assets/images/traits/hitrate.png", 
 		description = "Taunted",
 		limit = 1,

@@ -206,6 +206,9 @@ func unlock_class(prof, satisfy_progress_reqs = false):
 func remove_class(prof):
 	xp_module.remove_class(prof)
 
+func remove_all_classes():
+	xp_module.remove_all_classes()
+
 func add_trait(tr_code):
 	statlist.add_trait(tr_code)
 

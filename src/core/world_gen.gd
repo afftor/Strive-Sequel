@@ -19,13 +19,13 @@ func _ready():
 
 func build_world():
 	for i in worlddata.lands:
-		make_area(i)
-		ResourceScripts.game_world.area_order.append(worlddata.lands[i].code)
+		if worlddata.lands[i].enabled == true:
+			make_area(i)
+			ResourceScripts.game_world.area_order.append(worlddata.lands[i].code)
 
 func make_area(code):
 	var areadata = worlddata.lands[code].duplicate(true)
 	ResourceScripts.game_world.areas[areadata.code] = areadata
-	areadata.population = round(rand_range(areadata.population[0],areadata.population[1]))
 	areadata.quests = {global = {}}
 	areadata.questlocations = {}
 	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
@@ -135,7 +135,7 @@ func make_guild(code, area):
 		events = [],
 		reputation = 0,
 		totalreputation = 0,
-		difficulty = area.difficulty,
+		difficulty = 1,
 		races = area.races.duplicate(true),
 		upgrades = {},
 		slavelevel = 0,

@@ -120,6 +120,11 @@ func remove_class(prof):
 			prof_links['t_' + i].erase(prof.code)
 	parent.recheck_effect_tag('recheck_class')
 
+func remove_all_classes():
+	for i in classesdata.professions:
+		if i != 'master':
+			remove_class(i)
+
 func check_skill_prof(skill):
 	for i in professions:
 		var tempprof = classesdata.professions[i]

@@ -159,7 +159,7 @@ var professions = {
 		statchanges = {hpmax = 15},
 		traits = ['hunter', 'ranged_weapon_mastery'],
 		skills = [],
-		combatskills = ['hunter_mark'], 
+		combatskills = ['huntersmark'], 
 	},
 	smith = {
 		code = 'smith',
@@ -359,7 +359,7 @@ var professions = {
 		statchanges = {sexuals_bonus = 25, sexuals_factor = 1, timid_factor = 1},
 		traits = ['sextoy'],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['endure'], 
 	},
 	dancer = {
 		code = 'dancer',
@@ -417,7 +417,7 @@ var professions = {
 		statchanges = {hpmax = 30, armor = 5, speed = 3},
 		traits = ['heavy_armor'],
 		skills = [],
-		combatskills = ['holy_atk','fire_cleave', 'protect'],
+		combatskills = ['fire_cleave', 'protect'],
 	},
 	dragonknight = {
 		code = 'dragonknight',
@@ -501,7 +501,7 @@ var professions = {
 		statchanges = {physics_bonus = 10, hpmax = 10},
 		traits = [],
 		skills = [],
-		combatskills = ['mass_lesser_heal','bless','resurrect'],
+		combatskills = ['mass_lesser_heal','bless','resurrect','elemental_protection'],
 	},
 	dominator = {
 		code = 'dominator',
@@ -571,7 +571,7 @@ var professions = {
 		statchanges = {magic_factor = 1},
 		traits = [],
 		skills = ['consume_soul','drain_mana'],
-		combatskills = [],
+		combatskills = ['devour'],
 	},
 	necromancer = {
 		code = 'necromancer',
@@ -585,7 +585,7 @@ var professions = {
 		statchanges = {mpmax = 15, wits_bonus = 10, resistdark = 25},
 		traits = [],
 		skills = ['make_undead'],
-		combatskills = ['decay'],
+		combatskills = ['decay','elemental_weakness'],
 	},
 	archer = {
 		code = 'archer',
@@ -624,7 +624,7 @@ var professions = {
 		categories = ['combat'],
 		showupreqs = [],
 		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 2}],
-		statchanges = {evasion = 5, critchance = 3, speed = 10},
+		statchanges = {critchance = 3, speed = 10},
 		traits = ['medium_armor','weapon_mastery', 'autohide'], 
 		skills = [],
 		combatskills = ['water_atk','hide'],
@@ -687,7 +687,7 @@ var professions = {
 		statchanges = {wits_bonus = 5, hpmax = 10, resistmind = 15},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['purge','righteous_fire'], 
 	},
 	paladin = {
 		code = 'paladin',
@@ -701,7 +701,7 @@ var professions = {
 		statchanges = {armor = 8, hpmax = 20, resistdark = 10, resistlight = 10},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['holy_atk','taunt'], 
 	},
 	shaman = {
 		code = 'shaman',
@@ -715,7 +715,7 @@ var professions = {
 		statchanges = {hpmax = 10, wits_bonus = 5, mpmax = 12},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['reincarnate','spirit1','spirit2','spirit3'], 
 	},
 	ranger = {
 		code = 'ranger',
@@ -729,7 +729,7 @@ var professions = {
 		statchanges = {hpmax = 10, physics_factor = 1},
 		traits = ['ranged_weapon_mastery','medium_armor'],
 		skills = [],
-		combatskills = ['trap'], 
+		combatskills = ['trap','camouflage'], 
 	},
 	bard = {
 		code = 'bard',
@@ -743,7 +743,7 @@ var professions = {
 		statchanges = {charm_bonus = 15, speed = 3},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['bard1','bard2','bard3'], 
 	},
 	archmage = {
 		code = 'archmage',
@@ -757,7 +757,7 @@ var professions = {
 		statchanges = {wits_bonus = 10, mdef = 5},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['earthquake','l_orb'], 
 	},
 	battlesmith = {
 		code = 'battlesmith',
@@ -771,7 +771,7 @@ var professions = {
 		statchanges = {hpmax = 20, physics_factor = 1, physics_bonus = 10},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['protective_shell','hammerfall'], 
 	},
 	technomancer = {
 		code = 'technomancer',
@@ -785,7 +785,7 @@ var professions = {
 		statchanges = {mpmax = 10, resistair = 10, wits_bonus = 10},
 		traits = [],
 		skills = [],
-		combatskills = [], 
+		combatskills = ['mirror_image','energy_field'], 
 	},
 }
 

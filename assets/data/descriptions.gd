@@ -85,7 +85,7 @@ func new_charcter_description(character):
 
 func entry():
 	var text = ''
-	text += person.get_full_name()
+	text += person.get_full_name() + ". "
 	if person.has_profession('master'):
 		text =  "[color=green]Mansion's [Master][/color] - " + text
 	return text

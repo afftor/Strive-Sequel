@@ -341,7 +341,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'labor':
 					array = ['physics_factor', 'wits_factor']
 		array = array[randi()%array.size()]
-		statlist.statlist[array] += 1#initial setup direct access
+		statlist[array] += 1#initial setup direct access
 		difficulty -= 1
 	difficulty = adjust_difficulty
 	while difficulty > -1:
@@ -463,7 +463,7 @@ func setup_baby(mother, father):
 	var pregdata = {}
 	pregdata.baby = parent.id
 	pregdata.duration = variables.pregduration
-	mother.set_stat('', pregdata.duplicate())
+	mother.set_stat('pregnancy', pregdata.duplicate())
 	ResourceScripts.game_party.babies[parent.id] = parent
 
 func create(temp_race, temp_gender, temp_age):
