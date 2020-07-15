@@ -617,6 +617,7 @@ var effect_table = {
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_SKILL_FINISH],
 		atomic = [],
+		name = 'trap_debuff',
 		buffs = ['b_trap'],
 		sub_effects = ['e_tr_trap']
 	},
@@ -974,7 +975,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'blizz',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 2,
 		stack = 1,
@@ -1094,7 +1095,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'eshatter',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1130,7 +1131,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'fireburst',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1151,7 +1152,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'swipe',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1172,7 +1173,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'arrowrain',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1448,14 +1449,14 @@ var effect_table = {
 		type = 'temp_s',
 		tags = ['buff', 'positive'],
 		target = 'target',
-		duration = 3,
+		duration = 4,
 		name = 'protective_shell',
 		stack = 1,
 		tick_event = variables.TR_POST_TARG,
 		rem_event = [variables.TR_COMBAT_F],
 		buffs = ['b_shell'],
 		args = [],
-		sub_effects = ['e_t_shell']
+		sub_effects = ['e_t_shell1']
 	},
 	e_t_shell1 = {
 		type = 'trigger',
@@ -1469,7 +1470,7 @@ var effect_table = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'skill',
-			atomic = [{type = 'stat_mul', value = 0.65}]
+			atomic = [{type = 'stat_mul', stat = 'value', value = 0.65}]
 		}],
 		buffs = []
 	},
@@ -1679,7 +1680,7 @@ var effect_table = {
 			{
 				type = 'oneshot',
 				target = 'self',
-				execute = 'remove_parent'
+				execute = 'remove'
 			}
 		],
 		buffs = []
@@ -1910,7 +1911,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_POSTDAMAGE],
-		tick_event = [variables.TR_TURN_GET],
+		tick_event = [variables.TR_TURN_S],
 		duration = 'parent',
 		stack = 1,
 		name = 'freeze',
@@ -2004,7 +2005,6 @@ var effect_table = {
 		duration = 2,
 		stack = 1,
 		name = 'taunt',
-		disable = true,
 		tags = ['debuff', 'taunt', 'negative'],
 		buffs = ['b_taunt'],
 		args = [{obj = 'parent_args', param = 0}],

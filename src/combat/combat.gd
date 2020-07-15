@@ -75,6 +75,8 @@ func _ready():
 	autoskill_dummy.position = 0
 	autoskill_dummy.displaynode = ResourceScripts.scriptdict.fighternode.new()
 	autoskill_dummy.displaynode.animation_node = CombatAnimations
+	autoskill_dummy.displaynode.fighter = autoskill_dummy
+	autoskill_dummy.npc_reference = 'combat_global'
 	battlefield.resize(14)
 	for i in range(1,13):
 		battlefield[i] = null
@@ -118,6 +120,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		battlefield[i] = null
 	buildenemygroup(enemygroup, enemy_stats_mod)
 	buildplayergroup(playergroup)
+	autoskill_dummy.is_active = true
 	#victory()
 	#start combat triggers
 	CombatAnimations.force_end()
@@ -128,6 +131,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	select_actor()
 
 func FinishCombat(victory = true):
+	autoskill_dummy.is_active = false
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.skills.combat_cooldowns.clear()
@@ -232,6 +236,7 @@ var rewardsdict
 
 #to check next functions
 func victory():
+	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(images.cursors.default)
@@ -574,7 +579,8 @@ func enemy_turn(pos):
 		if can_be_taunted(fighter, targ):
 			target = targ;
 			castskill = fighter.get_skill_by_tag('default')
-		else: fighter.process_event(variables.TR_TAUNT_FAIL)
+		else: 
+			fighter.process_event(variables.TR_TAUNT_FAIL)
 	if target == null:
 		print(fighter.get_stat('name'), ' no target found')
 		return
@@ -812,7 +818,7 @@ func use_skill(skill_code, caster, target):
 	allowaction = false
 	
 	var skill = Skilldata.Skilllist[skill_code]
-
+	
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.get_stat('name') + ' uses ' + activeitem.name + ". ")

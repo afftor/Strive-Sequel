@@ -119,12 +119,12 @@ func convert_to_new_template():
 				'-': tmp.dmgf = 1
 				'=': tmp.dmgf = 2
 			tmp.damagestat = tmp.damagestat.right(1)
-			tmp.nocrit = true
-			tmp.nodef = true
-		else: 
-			tmp.dmgf = 2
 			tmp.nocrit = !variables.dmg_mod_list.has(damagestat[i])
 			tmp.nodef = tags.has('noreduce')
+		else: 
+			tmp.dmgf = 2
+			tmp.nocrit = true
+			tmp.nodef = true
 		#res_res.dmgf = dmgf.selected
 		tmp.receiver = receiver[i]
 		tmp.source = damage_type

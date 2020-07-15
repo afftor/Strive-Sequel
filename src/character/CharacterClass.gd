@@ -288,6 +288,7 @@ func recheck_effect_tag(tg):
 	effects.recheck_effect_tag(tg)
 
 func apply_effect(eff_id):
+	if npc_reference == 'combat_global': return
 	effects.apply_effect(eff_id)
 
 func get_static_effect_by_code(code):
@@ -448,6 +449,7 @@ func need_heal():
 
 #core functions
 func hp_set(value):
+	if npc_reference == 'combat_global': return
 	if hp <= 0 && value <= 0:
 		return
 	hp = min(value, get_stat('hpmax'))
@@ -463,6 +465,7 @@ func hp_set(value):
 		defeated = false 
 
 func mp_set(value):
+	if npc_reference == 'combat_global': return
 	mp = clamp(value, 0, get_stat('mpmax'))
 	if displaynode != null:
 		displaynode.update_mana()
@@ -943,6 +946,7 @@ func set_shield(value):
 	shield = max(0, value)
 
 func deal_damage(value, source = 'normal'):
+	if npc_reference == 'combat_global': return null
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && variables.invincible_player:
 		return 0
