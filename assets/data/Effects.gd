@@ -692,12 +692,11 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-#			{type = 'target', value = {code = 'is_humanoid', check = true} }
 		],
 		req_skill = true,
-		args = [{obj = 'template', param = 'value'}],
+		args = [],
 		sub_effects = ['e_t_distract'],
-		buffs = []
+		buffs = [],
 	},
 #	e_s_distract1 = {
 #		type = 'trigger',
@@ -727,6 +726,7 @@ var effect_table = {
 			{type = 'stat_add', stat = 'hitrate', value = -30}
 		],
 		buffs = ['b_distract'],
+		args = [],
 	},
 	e_t_attract = {
 		type = 'temp_s',
@@ -1223,6 +1223,7 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
+			{type = 'stat_add', stat = 'resistnormal', value = 20},
 			{type = 'stat_add', stat = 'resistfire', value = 20},
 			{type = 'stat_add', stat = 'resistearth', value = 20},
 			{type = 'stat_add', stat = 'resistwater', value = 20},
@@ -1233,7 +1234,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png", 
+				icon = "res://assets/images/iconsskills/Authority.png", 
 				description = "Resistes increased",
 				limit = 1,
 				t_name = 'endure',
@@ -1284,7 +1285,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png", 
+				icon = "res://assets/images/iconsclasses/Bard.png", 
 				description = "Bard - faster",
 				limit = 1,
 				t_name = 'bard',
@@ -1307,7 +1308,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png", 
+				icon = "res://assets/images/iconsclasses/Bard.png", 
 				description = "Bard - stronger",
 				limit = 1,
 				t_name = 'bard',
@@ -1330,7 +1331,7 @@ var effect_table = {
 		],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Discipline.png", 
+				icon = "res://assets/images/iconsclasses/Bard.png", 
 				description = "Bard - resilent",
 				limit = 1,
 				t_name = 'bard',
@@ -2714,7 +2715,7 @@ var buffs = {
 		t_name = 'stun'
 	},
 	b_charm_c = {
-		icon = "res://assets/images/traits/experience.png", #?? mb to fix
+		icon = "res://assets/images/iconsskills/Charm.png", #?? mb to fix
 		description = "Charmed",
 		limit = 1,
 		t_name = 'charm'
@@ -2732,8 +2733,8 @@ var buffs = {
 		t_name = 'mirror'
 	},
 	b_field= { 
-		icon = "res://assets/images/traits/hitrate.png", 
-		description = "Energy field - chance to reflect damage",
+		icon = "res://assets/images/iconsskills/Barrier.png", 
+		description = "Energy field - chance to deal Air Spell damage to attacker",
 		limit = 1,
 		t_name = 'field'
 	},
@@ -2750,8 +2751,8 @@ var buffs = {
 		t_name = 'taunt'
 	},
 	b_distract = {
-		icon = "res://assets/images/traits/dodge.png", 
-		description = "Evasion reduced",
+		icon = "res://assets/images/iconsskills/distract.png", 
+		description = "Hitrate and Evasion reduced",
 		limit = 1,
 		t_name = 'distract'
 	},

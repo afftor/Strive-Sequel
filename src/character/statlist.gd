@@ -2,21 +2,11 @@ extends Node
 
 var template = {
 	is_person = true,
-#	is_active = true,
-#	is_players_character = false,
-#	is_known_to_player = false, #for purpose of private parts
 	is_hirable = false, #allows character to be hired from its tab
 	hire_scene = '',
 	unique = null,
 	icon_image = '', #images.portraits[images.portraits.keys()[randi()%images.portraits.size()]].load_path
 	body_image = 'default',
-#	npc_reference = null,
-	#####required for combat
-#	combatgroup = '',
-#	displaynode = null,
-#	defeated = false,
-#	daily_cooldowns = {},
-	#####
 	name = '',
 	surname = '',
 	nickname = '',
@@ -27,33 +17,6 @@ var template = {
 	sex = '',
 	slave_class = 'slave',
 	personality = '',
-#	chat_settings = {},#not used
-#	professions = [],
-#	social_skills = [],
-#	social_cooldowns = {},
-#	social_skills_charges = {},
-#	combat_skills = [],
-#	combat_skill_charges = {},
-#	combat_cooldowns = {},
-#	social_skill_panel = {},
-#	combat_skill_panel = {},
-#	active_panel = variables.PANEL_SOC,
-#	traits = [],
-#	sex_traits = [],
-#	negative_sex_traits = [],
-#	unlocked_sex_traits = [],
-#	effects = [],
-#	selectedskill = 'attack',
-#	skills_received_today = [],
-#	static_effects = [],
-#	temp_effects = [],
-#	triggered_effects = [],
-#	area_effects = [],
-#	own_area_effects = [],
-#	obed_mods = [],#not used
-#	fear_mods = [],#not used
-#	lust_mods = [],#not used
-#	counters = [],
 	authority = 0.0,
 	authority_mod = 1.0,#for some reason never applied
 	obedience = 0.0,
@@ -97,15 +60,10 @@ var template = {
 	armorpenetration = 0,
 	critchance = 10,
 	critmod = 1.5,
-#	position = 0,
-#	taunt,
 	manacost_mod = 1.0, #not used 
 	speed = 30,
 	shield = 0,
-#	items_used_global = {},
-#	items_used_today = {},
 	#enemy AI. do not forget to set to null at end of combat
-#	ai = null,
 	#progress stats
 	#maybe bonus stats are to remove
 	physics = 0.0,
@@ -126,12 +84,7 @@ var template = {
 	wits_factor = 1,
 	sexuals_factor = 1,
 #	#food
-#	food_counter = 23,
 	food_consumption = 1,
-#	food_consumption_rations = false,
-#	food_love = '',
-#	food_hate = [],
-#	food_filter = {high = [], med = [], low = [], disable = []},
 	
 	piercing = {earlobes = null, eyebrow = null, nose = null, lips = null, tongue = null, navel = null, nipples = null, clit = null, labia = null, penis = null},
 	tattoo = {chest = 'none', face = 'none', ass = 'none', arms = 'none', legs = 'none', waist = 'none'},
@@ -175,23 +128,11 @@ var template = {
 	anal_virgin = true,
 	mouth_virgin = true,
 	#tasks
-#	sleep = '',
-#	work = '',
-#	previous_work = '',
-#	workproduct = null,
-#	work_rules = {ration = false, shifts = false, constrain = false},
 	
 	shackles_chance = null,
 	last_escape_day_check = 0,
-#	area = '',
-#	location = ResourceScripts.game_world.mansion_location,
-#	travel_target = {area = '', location = ''},
-#	travel_time = 0,
-#	initial_travel_time = 0,
 	#communications
 	relatives = {},
-	#tags = [],
-#	messages = [],
 	sexexp = {partners = {}, watchers = {}, actions = {}, seenactions = {}, orgasms = {}, orgasmpartners = {}},
 	sex_skills = {petting = 0, penetration = 0, pussy = 0, oral = 0, anal = 0, tail = 0},
 	consent = 0,
@@ -201,8 +142,5 @@ var template = {
 	
 	asser = 0,
 	
-#	starvation = false,
-	
 	masternoun = 'Master',
-#	prepared_act = [],
 }

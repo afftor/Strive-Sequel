@@ -305,7 +305,7 @@ func quest_test():
 func _process(delta):
 	if self.visible == false:
 		return
-	$gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)#str(state.money)
+	$gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
 	$food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food()) + " - " + str(ResourceScripts.game_party.get_food_consumption())
 	
 	$population.text = "Population: "+ str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())

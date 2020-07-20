@@ -56,7 +56,10 @@ func testcombat():
 	#input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 	var test_slave = ResourceScripts.scriptdict.class_slave.new()
 	test_slave.create('BeastkinWolf', 'male', 'random')
+	test_slave.unlock_class("archmage")
+	test_slave.unlock_class("alchemist")
 	test_slave.unlock_class("technomancer")
+	test_slave.unlock_class("harlot")
 	test_slave.unlock_class("sextoy")
 	test_slave.unlock_class("bard")
 	test_slave.unlock_class("battlesmith")
@@ -65,7 +68,6 @@ func testcombat():
 	test_slave.unlock_class("ranger")
 	test_slave.unlock_class("paladin")
 	test_slave.unlock_class("templar")
-	test_slave.unlock_class("archmage")
 	var newitem = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(newitem)
 	test_slave.equip(newitem)

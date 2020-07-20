@@ -653,14 +653,14 @@ func decipher_single(ch):
 
 
 #never used
-#func assign_gender():
-#	if has_pussy == true:
-#		if penis_size != '' || balls_size != '':
-#			sex = 'futa'
-#		else:
-#			sex = 'female'
-#	else:
-#		sex = 'male'
+func assign_gender():
+	if get_stat('has_pussy') == true:
+		if get_stat('penis_size') != '' || get_stat('balls_size') != '':
+			set_stat('sex', 'futa')
+		else:
+			set_stat('sex', 'female')
+	else:
+		set_stat('sex', 'male')
 
 func make_description():
 	input_handler.text_characters.clear()
@@ -753,20 +753,10 @@ func tick():
 		if ResourceScripts.game_party.characters.has(self.id):
 			return
 
-#func productivity_get():
-#	return productivity
-
 func rest_tick():
 	self.hp += variables.basic_hp_regen*2
 	self.mp += variables.basic_mp_regen*2 + variables.mp_regen_per_magic * get_stat('magic_factor') * 2
 
-
-#func authority_set(value):
-#	var difference = value - authority
-#	var authority_threshold = authority_threshold()
-#	if difference > 0:
-#		difference *= authority_mod
-#	authority = clamp(authority + difference, 0, authority_threshold*1.5)
 
 func translate(text):
 	text = statlist.translate(text)
@@ -869,39 +859,6 @@ func remove_atomic(template):
 			remove_trait(template.trait)
 		'add_sex_trait', 'unlock_sex_trait':
 			remove_sex_trait(template.trait)
-
-#func add_area_effect(eff_id):
-#	var eff = effects_pool.get_effect_by_id(eff_id)
-#	own_area_effects.push_back(eff_id)
-#	eff.apply()
-#
-#func remove_area_effect(eff_id):
-#	own_area_effects.erase(eff_id)
-#
-#func add_ext_area_effect(eff_id):
-#	if own_area_effects.has(eff_id): return
-#	area_effects.push_back(eff_id)
-#
-#func remove_ext_area_effect(eff_id):
-#	if own_area_effects.has(eff_id): return
-#	area_effects.erase(eff_id)
-#
-#func set_position(new_pos):
-#	if new_pos == position: return
-#	#remove ext area effects
-#	for e in area_effects:
-#		var eff = effects_pool.get_effect_by_id(e)
-#		eff.remove_pos(position)
-#
-#	position = new_pos
-#	#reapply own area effects
-#	for e in own_area_effects:
-#		var eff = effects_pool.get_effect_by_id(e)
-#		eff.apply()
-#	#reapply ext area effects
-#	for e in area_effects:
-#		var eff = effects_pool.get_effect_by_id(e)
-#		eff.apply_pos(position)
 
 func is_koed():
 	return (hp <= 0) or defeated or !is_active

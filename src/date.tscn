@@ -1,0 +1,402 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/dating.gd" type="Script" id=1]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=5]
+[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=14]
+
+[sub_resource type="StyleBoxTexture" id=2]
+region_rect = Rect2( 0, 0, 1353, 607 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+region_rect = Rect2( 0, 0, 1353, 383 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+use_filter = true
+extra_spacing_top = 1
+font_data = ExtResource( 14 )
+
+[node name="date" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1378.0
+margin_bottom = 774.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fullbody" type="TextureRect" parent="."]
+margin_left = 803.0
+margin_top = 52.0
+margin_right = 1525.0
+margin_bottom = 767.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="textfield" type="Panel" parent="."]
+margin_left = 5.0
+margin_top = 362.0
+margin_right = 969.0
+margin_bottom = 765.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="textfield"]
+margin_left = 45.0
+margin_top = 24.0
+margin_right = 738.0
+margin_bottom = 303.0
+bbcode_enabled = true
+text = "test text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slaveportrait" type="TextureRect" parent="textfield"]
+margin_left = 755.0
+margin_top = 8.0
+margin_right = 945.0
+margin_bottom = 198.0
+expand = true
+stretch_mode = 7
+
+[node name="TextureRect" type="TextureRect" parent="textfield/slaveportrait"]
+margin_right = 190.0
+margin_bottom = 190.0
+expand = true
+
+[node name="masterportrait" type="TextureRect" parent="textfield"]
+margin_left = 756.0
+margin_top = 203.0
+margin_right = 946.0
+margin_bottom = 393.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="textfield/masterportrait"]
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 189.0
+margin_bottom = 191.0
+expand = true
+
+[node name="Label" type="Label" parent="textfield"]
+margin_left = 317.0
+margin_top = -356.0
+margin_right = 629.0
+margin_bottom = -302.0
+text = "Test"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="textfield/Label"]
+margin_left = -20.0
+margin_top = -2.0
+margin_right = 332.0
+margin_bottom = 56.0
+expand = true
+
+[node name="panel" type="Panel" parent="."]
+margin_left = 4.0
+margin_top = 58.0
+margin_right = 968.0
+margin_bottom = 361.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="categories" type="HBoxContainer" parent="panel"]
+margin_left = 16.0
+margin_top = 12.0
+margin_right = 216.0
+margin_bottom = 57.0
+
+[node name="Actions" type="Button" parent="panel/categories"]
+margin_right = 200.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 45 )
+toggle_mode = true
+text = "Actions"
+
+[node name="P&P" type="Button" parent="panel/categories"]
+margin_left = 204.0
+margin_right = 404.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 45 )
+toggle_mode = true
+text = "Discipline"
+
+[node name="Items" type="Button" parent="panel/categories"]
+margin_left = 408.0
+margin_right = 608.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 45 )
+toggle_mode = true
+text = "Items"
+
+[node name="Location" type="Button" parent="panel/categories"]
+margin_left = 612.0
+margin_right = 812.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 45 )
+toggle_mode = true
+text = "Location"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="panel"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 920.0
+margin_bottom = 269.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="panel/ScrollContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+columns = 3
+
+[node name="Button" type="Button" parent="panel/ScrollContainer/GridContainer"]
+visible = false
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Test"
+
+[node name="consent" type="Label" parent="panel"]
+margin_left = 21.0
+margin_top = 275.0
+margin_right = 181.0
+margin_bottom = 295.0
+custom_colors/font_color = Color( 0.910156, 0.359085, 0.88863, 1 )
+text = "Intimacy Unlocked"
+
+[node name="mood" type="TextureProgress" parent="."]
+margin_left = 843.0
+margin_top = 41.8932
+margin_right = 1103.0
+margin_bottom = 69.8932
+value = 50.0
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="mood"]
+margin_top = 227.0
+margin_right = 33.0
+margin_bottom = 259.0
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="mood"]
+margin_left = 1.0
+margin_top = -26.0
+margin_right = 31.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
+text = "+"
+align = 1
+valign = 1
+
+[node name="fear" type="TextureProgress" parent="."]
+margin_left = 844.022
+margin_top = 108.709
+margin_right = 1104.02
+margin_bottom = 136.709
+value = 50.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="fear"]
+margin_top = 227.0
+margin_right = 33.0
+margin_bottom = 259.0
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="fear"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 1.0
+margin_top = -26.0
+margin_right = 31.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
+text = "+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stress" type="TextureProgress" parent="."]
+visible = false
+margin_left = 913.0
+margin_top = 81.0
+margin_right = 945.0
+margin_bottom = 303.0
+value = 50.0
+fill_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="stress"]
+margin_top = 227.0
+margin_right = 33.0
+margin_bottom = 259.0
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="stress"]
+margin_left = 1.0
+margin_top = -26.0
+margin_right = 31.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
+text = "+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mana" type="TextureRect" parent="."]
+visible = false
+margin_left = 537.0
+margin_top = 702.0
+margin_right = 585.0
+margin_bottom = 752.0
+hint_tooltip = "Mana"
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="mana"]
+margin_left = 50.0
+margin_top = 15.0
+margin_right = 90.0
+margin_bottom = 35.0
+text = "x10"
+
+[node name="supply" type="TextureRect" parent="."]
+visible = false
+margin_left = 158.0
+margin_top = 702.0
+margin_right = 206.0
+margin_bottom = 752.0
+hint_tooltip = "Supply"
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="supply"]
+margin_left = 50.0
+margin_top = 15.0
+margin_right = 90.0
+margin_bottom = 35.0
+text = "x10"
+
+[node name="gold" type="TextureRect" parent="."]
+margin_left = 28.0
+margin_top = 702.0
+margin_right = 76.0
+margin_bottom = 752.0
+hint_tooltip = "Gold"
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="gold"]
+margin_left = 50.0
+margin_top = 15.0
+margin_right = 90.0
+margin_bottom = 35.0
+text = "x10"
+
+[node name="end" type="Panel" parent="."]
+visible = false
+margin_left = 410.0
+margin_top = 80.0
+margin_right = 1019.0
+margin_bottom = 642.0
+
+[node name="Control" type="Control" parent="end"]
+margin_left = -407.0
+margin_top = -77.0
+margin_right = 956.0
+margin_bottom = 693.0
+
+[node name="finishbutton" type="Button" parent="end"]
+margin_left = 195.0
+margin_top = 506.0
+margin_right = 420.0
+margin_bottom = 545.0
+text = "Confirm"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="end"]
+margin_left = 93.0
+margin_top = 67.0
+margin_right = 540.0
+margin_bottom = 361.0
+bbcode_enabled = true
+
+[node name="sexswitch" type="Panel" parent="."]
+visible = false
+margin_left = 410.0
+margin_top = 80.0
+margin_right = 1019.0
+margin_bottom = 642.0
+
+[node name="Control" type="Control" parent="sexswitch"]
+margin_left = -407.0
+margin_top = -77.0
+margin_right = 956.0
+margin_bottom = 693.0
+
+[node name="confirmsex" type="Button" parent="sexswitch"]
+margin_left = 195.0
+margin_top = 456.0
+margin_right = 420.0
+margin_bottom = 495.0
+text = "Proceed"
+
+[node name="cancelsex" type="Button" parent="sexswitch"]
+margin_left = 195.0
+margin_top = 506.0
+margin_right = 420.0
+margin_bottom = 545.0
+text = "Cancel"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="sexswitch"]
+margin_left = 93.0
+margin_top = 67.0
+margin_right = 540.0
+margin_bottom = 361.0
+bbcode_enabled = true
+
+[node name="authconslabel" type="Label" parent="."]
+margin_left = 39.8639
+margin_top = 973.819
+margin_right = 388.864
+margin_bottom = 997.819
+[connection signal="pressed" from="panel/categories/Actions" to="." method="selectcategory" binds= [ "Actions" ]]
+[connection signal="pressed" from="panel/categories/P&P" to="." method="selectcategory" binds= [ "P&P" ]]
+[connection signal="pressed" from="panel/categories/Items" to="." method="selectcategory" binds= [ "Items" ]]
+[connection signal="pressed" from="panel/categories/Location" to="." method="selectcategory" binds= [ "Location" ]]
+[connection signal="pressed" from="end/finishbutton" to="." method="_on_finishbutton_pressed"]
+[connection signal="pressed" from="sexswitch/confirmsex" to="." method="_on_confirmsex_pressed"]
+[connection signal="pressed" from="sexswitch/cancelsex" to="." method="_on_cancelsex_pressed"]

@@ -254,7 +254,7 @@ func update():
 		authority = 'medium'
 	else:
 		authority = 'high'
-	text = authority_lines[authority]
+	text = authority_lines[authority] + "(" + str(person.get_stat('authority'))+ ")"
 	
 	$authoritylabel.text = 'Authority: ' + text
 #	$base_stats/lust.value = person.get_stat('lust')
