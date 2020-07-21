@@ -19,6 +19,7 @@ var actionhistory = []
 var categories = ['Actions','P&P','Location','Items']
 var locationarray = ['livingroom','town','dungeon','garden','bedroom']
 var location_changed = false
+var finish_encounter = false
 var turn = 0
 onready var showntext = '' setget showtext_set,showtext_get
 
@@ -61,17 +62,6 @@ func mood_set(value):
 func mood_get():
 	return mood
 
-onready var nakedspritesdict = {
-	Cali = {cons = 'calinakedhappy', rape = 'calinakedsad', clothcons = 'calineutral', clothrape = 'calisad'},
-	Tisha = {cons = 'tishanakedhappy', rape = 'tishanakedneutral', clothcons = 'tishahappy', clothrape = 'tishaneutral'},
-	Emily = {cons = 'emilynakedhappy', rape = 'emilynakedneutral', clothcons = 'emily2happy', clothrape = 'emily2worried'},
-	Chloe = {cons = 'chloenakedhappy', rape = 'chloenakedneutral', clothcons = 'chloehappy2', clothrape = 'chloeneutral2'},
-	Maple = {cons = 'fairynaked', rape = 'fairynaked', clothcons = 'fairy', clothrape = 'fairy'},
-	Yris = {cons = 'yrisnormalnaked', rape = 'yrisshocknaked', clothcons = 'yrisnormal', clothrape = 'yrisshock'},
-	Ayneris = {cons = 'aynerisneutralnaked', rape = 'aynerisangrynaked', clothcons = 'aynerisneutral', clothrape = 'aynerisangry'},
-	Zoe = {cons = "zoehappynaked", rape = 'zoesadnaked', clothcons = 'zoehappy', clothrape = 'zoesad'},
-	Melissa = {cons = "melissanakedfriendly", rape = 'melissanakedneutral', clothcons = 'melissafriendly', clothrape = 'melissaneutral'},
-	}
 
 var locationdicts = {
 	livingroom = {code = 'livingroom',name = 'Living Room', background = 'mansion'},
@@ -105,6 +95,7 @@ func _ready():
 	for i in helpdescript:
 		globals.connecttexttooltip(get_node(i),helpdescript[i])
 	globals.connecttexttooltip($panel/categories/Location,"You can only change location once.")
+	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	initiate(person)
 
 func initiate(tempperson):
@@ -115,6 +106,7 @@ func initiate(tempperson):
 	self.turn = 0
 	self.authStart = tempperson.get_stat('authority')
 	self.consStart = tempperson.get_stat('consent')
+	self.finish_encounter = false
 	date = false
 	public = false
 	$sexswitch.visible = false
@@ -223,6 +215,7 @@ func selectcategory(button):
 	updatelist()
 
 func endencounter():
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
 	if $sexswitch.visible == false && $end.visible == false:
 		var text = calculateresults()
 		$end/RichTextLabel.bbcode_text = text
@@ -234,6 +227,7 @@ func check_location(array):
 	else:
 		return array.has(location)
 
+
 func updatelist():
 	for i in $panel/ScrollContainer/GridContainer.get_children():
 		if i.name != 'Button':
@@ -241,20 +235,7 @@ func updatelist():
 			i.queue_free()
 	$textfield/Label.text = locationdicts[location].name
 	$panel/categories/Location.visible = !location_changed
-	for i in actionsdict.values():
-		if person.checkreqs(i.reqs) == true && check_location(i.location) && i.group == category:
-			if i.has('onetime') && checkhistory(i.effect) > 0:
-				continue
-			var newnode = $panel/ScrollContainer/GridContainer/Button.duplicate()
-			$panel/ScrollContainer/GridContainer.add_child(newnode)
-			newnode.visible = true
-			newnode.text = person.translate(i.name)
-			newnode.connect("pressed",self,'doaction', [i.effect])
-			globals.connecttexttooltip(newnode, person.translate(i.descript))
-#			newnode.connect("mouse_entered",self,'actiontooltip', [i.descript])
-#			newnode.connect("mouse_exited",globals,'hidetooltip')
-			if i.has('disablereqs'):
-				newnode.disabled = true
+	
 	if category == 'Location':
 		for i in locationdicts.values():
 			if i.code == location:
@@ -264,6 +245,19 @@ func updatelist():
 			newnode.visible = true
 			newnode.text = "Move to "+ i.name
 			newnode.connect("pressed",self,'moveto', [i.code])
+	
+	for i in actionsdict.values():
+		if person.checkreqs(i.reqs) == true && check_location(i.location) && (i.group == category || i.group == 'any'):
+			if i.has('onetime') && checkhistory(i.effect) > 0 || (finish_encounter == true && i.effect != 'stop'):
+				continue
+			var newnode = $panel/ScrollContainer/GridContainer/Button.duplicate()
+			$panel/ScrollContainer/GridContainer.add_child(newnode)
+			newnode.visible = true
+			newnode.text = person.translate(i.name)
+			newnode.connect("pressed",self,'doaction', [i.effect])
+			globals.connecttexttooltip(newnode, person.translate(i.descript))
+			if i.has('disablereqs'):
+				newnode.disabled = true
 	
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
 	var text = "Authority: " + str(floor(person.get_stat('authority'))) + "("  + str(person.authority_threshold()) + ")" + ", Consent: " + str(floor(person.get_stat("consent"))) 
@@ -345,7 +339,7 @@ func intimate(person, counter):
 	var text = ''
 	text += "You talk to [name2] about personal matters. "
 	
-	if randf() >= counter/10.0 && self.mood >= 7:
+	if randf() >= counter/15.0 && self.mood >= 10:
 		text += "[he2] opens to you"
 		self.mood += 3
 		person.add_stat('consent', rand_range(2,3))
@@ -648,26 +642,52 @@ func wax(person, counter):
 	
 	return text
 
-#func teach(person, counter):
-#	var text = ''
-#	var value = round(3 + person.wit/12) - drunkness*2
-#	if person.traits.has("Clever"):
-#		value += value*0.25
-#	text += "You spend some time with [name2], teaching [him2]. "
-#
-#	if stress < 10+person.wit/2 || counter < 4:
-#		self.mood -= 1
-#		self.stress += 10 - person.wit/15
-#		text += "[name2] learns new things under your watch. " 
-#		if person.traits.has("Clever"):
-#			text += "\n[Clever]Bonus points"
-#	else:
-#		text += "[name2] looks heavily bored, not taking the lesson seriously. " 
-#
-#	if drunkness > 0:
-#		text += "\nLesson was less effective due to [name2]'s alcohol intoxication. "
-#
-#	return text
+func train(person, counter):
+	var text = ''
+	var value = person.get_stat('physics_factor') * rand_range(2,3)
+	var value2 = master.get_stat('physics_factor') * rand_range(2,3)
+	text += ("You spend some time training with [name2], improving your Physics. \n" 
+	+ master.get_short_name() + ": +" + str(floor(value2)) + ";"
+	+ person.get_short_name() + ": +" + str(floor(value)))
+	
+	person.add_stat('physics', value)
+	master.add_stat('physics', value2)
+	
+	self.mood += 20
+	finish_encounter = true
+	
+	return text
+
+func study(person, counter):
+	var text = ''
+	var value = person.get_stat('wits_factor') * rand_range(2,3)
+	var value2 = master.get_stat('wits_factor') * rand_range(2,3)
+	text += ("You spend some time studying with [name2], improving your Wits. \n" 
+	+ master.get_short_name() + ": +" + str(floor(value2)) + ";"
+	+ person.get_short_name() + ": +" + str(floor(value)))
+	
+	person.add_stat('wits', value)
+	master.add_stat('wits', value2)
+	self.mood += 20
+	finish_encounter = true
+	
+	return text
+
+func charm(person, counter):
+	var text = ''
+	var value = person.get_stat('charm_factor') * rand_range(2,3)
+	var value2 = master.get_stat('charm_factor') * rand_range(2,3)
+	text += ("You spend some time practicing with [name2], improving your Charm. \n" 
+	+ master.get_short_name() + ": +" + str(floor(value2)) + ";"
+	+ person.get_short_name() + ": +" + str(floor(value)))
+	
+	person.add_stat('charm', value)
+	master.add_stat('charm', value2)
+	self.mood += rand_range(20,30)
+	finish_encounter = true
+	
+	return text
+
 
 func gift(person, counter):
 	var text = ''
@@ -794,21 +814,26 @@ func strChange(value):
 		return str(round(value))
 
 func calculateresults():
-	var text = ''
+	var text = ('Encounter Complete!'
+	+ "\nConsent Gained: " + str(round(person.get_stat('consent')-self.consStart))
+	+ "\nAuthority Gained: " + str(round(person.get_stat("authority") - self.authStart))
 	
-	text += "\nMood Bonus: "
-	text += "\n\nFinal results: "
-	var dict = {}
 	
-	for i in dict:
-		person[i] += dict[i]
+	)
+	
+	
+	
+	var loyal_bonus = self.mood * 1.5
+	var subm_bonus = self.fear * 1.5
+	
+	
+	
+	
+	
 	return text
 
 
 func _on_finishbutton_pressed():
-	get_parent()._on_mansion_pressed()
-	if OS.get_name() != 'HTML5':
-		yield(get_parent(),'animfinished')
 	self.visible = false
 
 func _on_cancelsex_pressed():
@@ -1005,15 +1030,6 @@ var actionsdict = {
 #		effect = 'castsedate',
 #	},
 	
-#
-#	teach = {
-#		group = "Actions",
-#		name = 'Teach',
-#		descript = "Teach [name] to accumulate learning points",
-#		reqs = "location in ['livingroom','garden']",
-#		effect = 'teach',
-#	},
-	
 	gift = {
 		group = "Items",
 		name = "Make Gift",
@@ -1056,8 +1072,34 @@ var actionsdict = {
 		disablereqs = 'globals.itemdict.supply.amount >= 2',
 		effect = 'wine',
 	},
+	
+	train = {
+		group = 'Training',
+		name = 'Train',
+		reqs = [],
+		location = [],
+		descript = 'Do a paired training. Improves Physics for both based on Physics Factor. Ends encounter.',
+		effect = 'train',
+	},
+	study = {
+		group = 'Training',
+		name = 'Study',
+		reqs = [],
+		location = [],
+		descript = 'Do a paired study. Improves Wits for both based on Wits Factor. Ends encounter.',
+		effect = 'study',
+	},
+	practice_charm = {
+		group = 'Training',
+		name = 'Practice Charm',
+		reqs = [],
+		location = [],
+		descript = 'Practice Charm with [name]. Improves Charm for both based on Charm Factor. Ends encounter.',
+		effect = 'charm',
+	},
+	
 	stop = {
-		group = "Actions",
+		group = "any",
 		name = "Stop",
 		descript = "Stop interaction and let [name] return to work.",
 		reqs = [],

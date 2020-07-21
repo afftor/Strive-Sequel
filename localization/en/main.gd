@@ -1271,7 +1271,7 @@ var TranslationDict = {
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.", 
 	
-	NEXTCLASSEXP = "Experience required for next class: ",
+	NEXTCLASSEXP = "Experience required for next class.",
 	
 	UPGRADEPREVBONUS = "Previous bonus: ",
 	UPGRADENEXTBONUS = "Upgrade bonus: ",

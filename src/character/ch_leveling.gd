@@ -139,21 +139,31 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	if taskcode == '':
 		work = ''
 		return
-	var task = races.tasklist[taskcode]
+	var gatherable = Items.materiallist.has(taskcode)
+	var task
+	if !gatherable:
+		task = races.tasklist[taskcode]
+	else:
+		task = Items.materiallist[taskcode]
 	#check if task is existing and add slave to it if it does
 	var taskexisted = false
+	var task_location = parent.get_location()
 	for i in ResourceScripts.game_party.active_tasks:
 		if i.code == taskcode && i.product == taskproduct:
 			taskexisted = true
 			i.workers.append(parent.id)
+			i.workers_count += 1
 			work = i.code
 	
 	workproduct = taskproduct
-	if taskexisted == true:
+	if taskexisted:
 		return
 	#make new task if it didn't exist
 	var dict
-	dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], iterations = iterations, messages = [], mod = task.mod}
+	if !gatherable:
+		dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], workers_count = 1, task_location = task_location, iterations = iterations, messages = [], mod = task.mod}
+	else:
+		dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.progress_per_item, workers = [], workers_count = 1, task_location = task_location, iterations = iterations, messages = [], mod = ""}
 	dict.workers.append(parent.id)
 	work = taskcode
 	ResourceScripts.game_party.active_tasks.append(dict)
@@ -165,7 +175,8 @@ func remove_from_task(remember = false):
 		for i in ResourceScripts.game_party.active_tasks:
 			if i.code == work:
 				i.workers.erase(parent.id)
-	if remember == true && work != 'travel':
+				i.workers_count -= 1
+	if remember && work != 'travel':
 		previous_work = work
 	work = ''
 
@@ -251,18 +262,42 @@ func work_tick():
 				ResourceScripts.game_res.upgrade_progresses.erase(ResourceScripts.game_res.upgrades_queue[0])
 				ResourceScripts.game_res.upgrades_queue.erase(ResourceScripts.game_res.upgrades_queue[0])
 	else:
-		work_tick_values(currenttask)
-		currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)#*(get_stat('productivity')*get_stat(currenttask.mod)/100)
+		var gatherable = Items.materiallist.has(currenttask.code)
+		work_tick_values(currenttask, gatherable)
+		if !gatherable:
+			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)#*(get_stat('productivity')*get_stat(currenttask.mod)/100)
+		else:
+			currenttask.progress += get_progress_resource(currenttask.code, true)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
-			if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
-				ResourceScripts.game_res.money += 1
+			if !gatherable:
+				if races.tasklist[currenttask.code].production[currenttask.product].item == 'gold':
+					ResourceScripts.game_res.money += 1
+				else:
+					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 			else:
-				ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
-				
+				ResourceScripts.game_res.materials[currenttask.code] += 1
+				var person_location = parent.get_location()
+				var location = ResourceScripts.world_gen.get_location_from_code(person_location)
+				if person_location != "Aliron" && location.type == "dungeon":
+					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
+						remove_from_task()
+						if ResourceScripts.game_party.active_tasks != []:
+							print("I'm here")
+							for task in ResourceScripts.game_party.active_tasks:
+								if task.code == currenttask.code && task.task_location == location.id:
+									ResourceScripts.game_party.active_tasks.erase(task)
+					else:
+						ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] -= 1
 
-func work_tick_values(currenttask):
-	var workstat = races.tasklist[currenttask.code].workstat
+
+
+func work_tick_values(currenttask, gatherable = false):
+	var workstat
+	if !gatherable:
+		workstat = races.tasklist[currenttask.code].workstat
+	else:
+		workstat = Items.materiallist[currenttask.code].workstat
 	if !parent.has_status('no_working_bonuses'): 
 		parent.add_stat(workstat, 0.06)
 		self.base_exp += 1
@@ -295,6 +330,23 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 			value = value + value*item.bonusstats.task_efficiency_tool
 	value = value * (parent.get_stat('productivity') * parent.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
 	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
+		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
+			value = value*2
+	
+	return value
+
+func get_progress_resource(tempresource, count_crit = false):
+	var resource = Items.materiallist[tempresource]
+	# var subtask = task.production[tempsubtask]
+	var value = call(resource.progress_formula)
+	var item
+	if parent.equipment.gear.tool != null:
+		item = ResourceScripts.game_res.items[parent.equipment.gear.tool]
+	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
+		if item.bonusstats.has("task_efficiency_tool"):
+			value = value + value*item.bonusstats.task_efficiency_tool
+	# value = value * (parent.get_stat('productivity') * parent.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
+	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
 	

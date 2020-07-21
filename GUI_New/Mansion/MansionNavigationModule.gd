@@ -26,11 +26,11 @@ func build_accessible_locations():
 		if (!person.travel.location in ['mansion', 'travel'] && !location_array.has(person.travel.location)):
 			location_array.append(person.travel.location)
 
-	var newbutton = input_handler.DuplicateContainerTemplate(Navigation)
-	newbutton.text = "Aliron"
-	newbutton.connect("pressed", self, "go_outside", ['Aliron'])
-	newbutton.set_meta("data", 'Aliron')
-
+	# var newbutton = input_handler.DuplicateContainerTemplate(Navigation)
+	# newbutton.text = "Aliron"
+	# newbutton.connect("pressed", self, "go_outside", ['Aliron'])
+	# newbutton.set_meta("data", 'Aliron')
+	var newbutton
 	for i in location_array:
 		newbutton = input_handler.DuplicateContainerTemplate(Navigation)
 		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name

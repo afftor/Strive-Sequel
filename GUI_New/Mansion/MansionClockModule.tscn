@@ -3,6 +3,7 @@
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_timer_pause.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/MANSION/MansionClockBG.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_speedup.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig_hover.png" type="Texture" id=8]
@@ -16,9 +17,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timersmall_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/timer_move.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/timer_sky.png" type="Texture" id=24]
-
-[sub_resource type="StyleBoxTexture" id=1]
-region_rect = Rect2( 0, 0, 290, 222 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -102,7 +100,7 @@ __meta__ = {
 [node name="TimeNode" type="Panel" parent="."]
 margin_right = 290.0
 margin_bottom = 222.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -288,12 +286,12 @@ margin_right = 285.0
 margin_bottom = 177.0
 
 [node name="gold" type="Label" parent="TimeNode"]
-margin_left = 56.0
+margin_left = 6.0
 margin_top = 8.0
 margin_right = 128.0
 margin_bottom = 53.0
 text = "500"
-align = 1
+align = 2
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -312,18 +310,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="TimeNode/gold/TextureRect"]
-visible = false
+[node name="Control" type="Control" parent="TimeNode/gold"]
 margin_right = 138.0
 margin_bottom = 42.0
 
 [node name="food" type="Label" parent="TimeNode"]
-margin_left = 192.0
+margin_left = 151.0
 margin_top = 8.0
-margin_right = 264.0
+margin_right = 275.0
 margin_bottom = 53.0
 text = "500"
-align = 1
+align = 2
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -342,7 +339,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="TimeNode/food/TextureRect"]
-visible = false
-margin_right = 138.0
-margin_bottom = 41.0
+[node name="Control" type="Control" parent="TimeNode/food"]
+margin_left = -1.25623
+margin_top = -0.558712
+margin_right = 136.744
+margin_bottom = 40.4413
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -9,6 +9,8 @@ const DEGREES_PER_HOUR = 15
 onready var sky = $Sky
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
+
 
 func _ready():
 	var speedvalues = [0, 1, 5]
@@ -23,8 +25,8 @@ func _ready():
 	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
 	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
 
-	globals.connecttexttooltip($TimeNode/gold/TextureRect/Control, tr("TOOLTIPGOLD"))
-	globals.connecttexttooltip($TimeNode/food/TextureRect/Control, tr("TOOLTIPFOOD"))
+	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD"))
+	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD"))
 	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
@@ -119,12 +121,14 @@ func advance_hour():
 		i.tick()
 	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
-#	if input_handler.globalsettings.turn_based_time_flow:
-#		$TimeNode/dayprogress.value = ResourceScripts.game_globals.hour
+	if input_handler.globalsettings.turn_based_time_flow:
+		pass
 	
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
+	if GUIWorld.CurrentScene.name == "MansionMainModule":
+		get_parent().rebuild_mansion()
 
 
 func advance_day():
@@ -144,7 +148,8 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	ResourceScripts.game_world.update_locations()
 	globals.autosave()
-	get_parent().rebuild_mansion()
+	if GUIWorld.CurrentScene.name == "MansionMainModule":
+		get_parent().rebuild_mansion()
 
 
 func set_time_buttons():
@@ -154,8 +159,6 @@ func set_time_buttons():
 			$"TimeNode/1speed".visible = false
 			$"TimeNode/2speed".visible = false
 			$TimeNode/finish_turn.visible = true
-#			$TimeNode/dayprogress.max_value = variables.HoursPerDay
-#			$TimeNode/dayprogress.value = ResourceScripts.game_globals.hour
 			$TimeNode/HidePanel.hide()
 			$TimeNode/turns.show()
 			$TimeNode/lessturn.show()

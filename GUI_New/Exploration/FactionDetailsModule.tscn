@@ -1,0 +1,306 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 256, 256 )
+margin_left = 80.0
+margin_right = 80.0
+margin_top = 80.0
+margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 700, 180 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 230, 40 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[node name="FactionDetailsModule" type="Panel"]
+margin_left = 778.0
+margin_top = 138.0
+margin_right = 1690.0
+margin_bottom = 995.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FactionBG" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.803922 )
+show_behind_parent = true
+margin_right = 912.0
+margin_bottom = 857.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 40.0
+margin_top = 754.0
+margin_right = 869.0
+margin_bottom = 842.0
+text = "Reputation Earned : 10000
+Reputation Unspent : 5000
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 912.0
+margin_bottom = 65.0
+text = "Upgrades"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 121.0
+margin_top = 65.0
+margin_right = 821.0
+margin_bottom = 754.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Panel" parent="VBoxContainer"]
+visible = false
+margin_right = 700.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+custom_styles/panel = SubResource( 3 )
+
+[node name="FactionBG2" type="Panel" parent="VBoxContainer/Button"]
+self_modulate = Color( 1, 1, 1, 0.803922 )
+show_behind_parent = true
+margin_left = 3.0
+margin_right = 700.0
+margin_bottom = 200.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="RichTextLabel" parent="VBoxContainer/Button"]
+margin_left = 25.0
+margin_top = 29.0
+margin_right = 444.0
+margin_bottom = 166.0
+text = "Upgrade Description
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confirm" type="Button" parent="VBoxContainer/Button"]
+margin_left = 460.0
+margin_top = 52.0
+margin_right = 665.0
+margin_bottom = 136.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Purchase"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+margin_left = 81.0
+margin_top = 374.0
+margin_right = 332.0
+margin_bottom = 401.0
+text = "Quest settings: "
+align = 1
+
+[node name="totalquestpoints" type="Label" parent="."]
+visible = false
+margin_left = 124.415
+margin_top = 686.0
+margin_right = 276.415
+margin_bottom = 710.0
+text = "Unspent: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+margin_left = 50.0
+margin_top = 439.0
+margin_right = 358.0
+margin_bottom = 697.0
+
+[node name="easy" type="Control" parent="HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 100, 200 )
+
+[node name="Label" type="Label" parent="HBoxContainer/easy"]
+margin_left = 1.0
+margin_top = 20.0
+margin_right = 96.0
+margin_bottom = 44.0
+text = "Easy"
+align = 1
+
+[node name="up" type="TextureButton" parent="HBoxContainer/easy"]
+margin_left = 21.7253
+margin_top = 56.8229
+margin_right = 70.7253
+margin_bottom = 105.823
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="down" type="TextureButton" parent="HBoxContainer/easy"]
+margin_left = 21.7253
+margin_top = 156.823
+margin_right = 70.7253
+margin_bottom = 205.823
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="counter" type="Label" parent="HBoxContainer/easy"]
+margin_left = 25.2283
+margin_top = 118.69
+margin_right = 65.2283
+margin_bottom = 142.69
+text = "0"
+align = 1
+
+[node name="medium" type="Control" parent="HBoxContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 100, 200 )
+
+[node name="Label" type="Label" parent="HBoxContainer/medium"]
+margin_left = 0.975006
+margin_top = 20.0975
+margin_right = 95.975
+margin_bottom = 44.0975
+text = "Medium"
+align = 1
+
+[node name="up" type="TextureButton" parent="HBoxContainer/medium"]
+margin_left = 21.7253
+margin_top = 56.8229
+margin_right = 70.7253
+margin_bottom = 105.823
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="down" type="TextureButton" parent="HBoxContainer/medium"]
+margin_left = 21.7253
+margin_top = 156.823
+margin_right = 70.7253
+margin_bottom = 205.823
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="counter" type="Label" parent="HBoxContainer/medium"]
+margin_left = 25.2283
+margin_top = 118.69
+margin_right = 65.2283
+margin_bottom = 142.69
+text = "0"
+align = 1
+
+[node name="hard" type="Control" parent="HBoxContainer"]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 100, 200 )
+
+[node name="Label" type="Label" parent="HBoxContainer/hard"]
+margin_left = 0.975006
+margin_top = 20.0975
+margin_right = 95.975
+margin_bottom = 44.0975
+text = "Hard"
+align = 1
+
+[node name="up" type="TextureButton" parent="HBoxContainer/hard"]
+margin_left = 21.7253
+margin_top = 56.8229
+margin_right = 70.7253
+margin_bottom = 105.823
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="down" type="TextureButton" parent="HBoxContainer/hard"]
+margin_left = 21.7253
+margin_top = 156.823
+margin_right = 70.7253
+margin_bottom = 205.823
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="counter" type="Label" parent="HBoxContainer/hard"]
+margin_left = 25.2283
+margin_top = 118.69
+margin_right = 65.2283
+margin_bottom = 142.69
+text = "0"
+align = 1

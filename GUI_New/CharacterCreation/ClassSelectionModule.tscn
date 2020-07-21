@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/images/gui/menu/linebuttonpressed.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/gui/menu/linebutton.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=4]
+[ext_resource path="res://GUI_New/CharacterCreation/ClassSelectionModule.gd" type="Script" id=5]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Panels/panel_description.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 780, 830 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 548, 47 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+modulate_color = Color( 0.662745, 0.333333, 0.333333, 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 548, 45 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[node name="ClassSelectionModule" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1140.0
+margin_bottom = -250.0
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0.180392, 0.054902, 0.713726, 1 )
+show_behind_parent = true
+margin_right = 780.0
+margin_bottom = 830.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassPanel" type="Panel" parent="."]
+margin_left = 64.4923
+margin_top = 19.8971
+margin_right = 710.494
+margin_bottom = 811.897
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ClassPanel"]
+margin_left = 25.0
+margin_top = 172.0
+margin_right = 304.0
+margin_bottom = 748.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClassPanel/ScrollContainer"]
+margin_right = 279.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ClassPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 279.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 0, 110 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+script = ExtResource( 3 )
+
+[node name="icon" type="TextureRect" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 4.6731
+margin_top = 5.0
+margin_right = 104.673
+margin_bottom = 105.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 156.146
+margin_top = 40.0016
+margin_right = 490.146
+margin_bottom = 64.0016
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Class Name"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 36.0
+margin_top = 32.0
+margin_right = 625.0
+margin_bottom = 122.0
+text = "Select starting character class. Other classes can be learned later. "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassDescript" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 330.0
+margin_top = 132.0
+margin_right = 624.0
+margin_bottom = 738.0
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="Button" parent="."]
+margin_left = 444.796
+margin_top = 782.349
+margin_right = 550.796
+margin_bottom = 812.349
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="."]
+margin_left = 196.906
+margin_top = 787.623
+margin_right = 285.906
+margin_bottom = 817.623
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -3,16 +3,25 @@ extends Control
 onready var City = $ExploreCityModule
 onready var Navigation = $ExploreNavigationModule
 onready var Hire = $ExploreHireModule
+onready var QuestBoard = $QuestBoardModule
+onready var Shop = $ExploreShopModule
+onready var Upgrades = $StatUpgradeModule
+onready var FullSlaveInfo = $ExploreFullSlaveModule
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 var selected_location
+var shopcategory
+var active_shop
+var selectedquest
 var active_area
 var active_faction
 var active_location
 var action_type
+var person_to_hire
 var current_level = 1
 var current_stage = 0
 var submodules = []
+var dialogue_opened = false
 var city_options = {
 	location_purchase = "Buy Dungeon",
 	quest_board = "Notice Board",
@@ -37,7 +46,26 @@ var faction_actions = {
 
 func _ready():
 	input_handler.exploration_node = self
-	pass
+	$Stat.connect("ready", $StatUpgradeModule, "show")
+
+func clear_submodules():
+	for module in submodules:
+		module.hide()
+	submodules.clear()
+
+func ShowSlavePanel(person):
+	var dialogue = get_tree().get_root().get_node("dialogue")
+	if dialogue.is_visible():
+		dialogue_opened = true
+		dialogue.hide()
+	FullSlaveInfo.show()
+	FullSlaveInfo.show_summary(person)
+
+func update():
+	var dialogue = get_tree().get_root().get_node("dialogue")
+	if dialogue_opened && !FullSlaveInfo.is_visible():
+		dialogue.show()
+		dialogue_opened = false
 
 
 func return_to_mansion():
@@ -51,11 +79,12 @@ func return_to_mansion():
 	GUIWorld.CurrentScene = GUIWorld.gui_data["MANSION"].main_module
 
 
+
 func open():
 	# input_handler.CloseAllCloseableWindows()
 
 	input_handler.PlaySound("door_open")
-	input_handler.CurrentScreen = 'exploration'
+	GUIWorld.BaseScene = GUIWorld.gui_data["EXPLORATION"].main_module
 	Navigation.build_accessible_locations()
 
 	if selected_location == null:
@@ -65,6 +94,20 @@ func open():
 
 	yield(get_tree().create_timer(0.5), 'timeout')
 	show()
+
+# func visibility_handler(state):
+# 	Hire.hide()
+# 	QuestBoard.hide()
+# 	Shop.hide()
+# 	Upgrades.hide()
+# 	# City.get_node("GuildMenu").hide()
+# 	# City.get_node("GuildMenuBG").hide()
+# 	for button in City.get_node("ScrollContainer/VBoxContainer").get_children():
+# 		button.pressed = false
+# 	match state:
+# 		"shop":
+# 			Shop.show()
+
 
 
 func open_location(data):
@@ -363,56 +406,46 @@ var hiremode = ''
 
 
 func faction_hire():
+	submodules.append(Hire)
 	Hire.hire()
 
 
 func faction_sellslaves():
-	hiremode = 'sell'
-	$HirePanel.show()
-	$HirePanel/RichTextLabel.bbcode_text = ""
-	input_handler.ClearContainer($HirePanel/ScrollContainer/VBoxContainer)
-	for i in ResourceScripts.game_party.characters:
-		var tchar = characters_pool.get_char_by_id(i)
-		if (
-			tchar.has_profession('master')
-			|| tchar.valuecheck({code = 'is_free', check = true}) == false
-		):
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate(
-			$HirePanel/ScrollContainer/VBoxContainer
-		)
-		newbutton.get_node("name").text = tchar.get_stat('name')
-		newbutton.get_node("Price").text = str(round(tchar.calculate_price() / 2))
-		newbutton.connect("pressed", self, "sell_slave", [tchar])
-		newbutton.set_meta("person", tchar)
-		globals.connectslavetooltip(newbutton, tchar)
+	Hire.sell_slave()
 
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
 
 
 func faction_upgrade():
+	submodules.append($FactionDetailsModule)
+	var guild_buttons = City.get_node("GuildMenu/VBoxContainer").get_children()
+	for button in guild_buttons:
+		if button.get_meta("action") != "Upgrades":
+			continue
+		else:
+			$FactionDetailsModule.visible = button.is_pressed()
 	var text = ''
-	$FactionDetailsPanel.show()
-	input_handler.ClearContainer($FactionDetailsPanel/VBoxContainer)
+	# $FactionDetailsModule.show()
+	input_handler.ClearContainer($FactionDetailsModule/VBoxContainer)
 	text = (
 		"Faction points: "
 		+ str(active_faction.totalreputation)
 		+ "\nUnspent points: "
 		+ str(active_faction.reputation)
-		+ '\n\n'
+		+ '\n'
 		+ infotext
 	)
-	$FactionDetailsPanel/RichTextLabel.bbcode_text = text
+	$FactionDetailsModule/RichTextLabel.bbcode_text = text
 
 	for i in active_faction.questsetting:
 		if i == 'total':
 			continue
-		$FactionDetailsPanel/HBoxContainer.get_node(i + "/counter").text = str(
+		$FactionDetailsModule/HBoxContainer.get_node(i + "/counter").text = str(
 			active_faction.questsetting[i]
 		)
 
-	$FactionDetailsPanel/totalquestpoints.text = (
+	$FactionDetailsModule/totalquestpoints.text = (
 		"Total quests: "
 		+ str(
 			(
@@ -429,7 +462,7 @@ func faction_upgrade():
 	)
 
 	for i in worlddata.guild_upgrades.values():
-		var newnode = input_handler.DuplicateContainerTemplate($FactionDetailsPanel/VBoxContainer)
+		var newnode = input_handler.DuplicateContainerTemplate($FactionDetailsModule/VBoxContainer)
 		text = i.name + ": " + i.descript
 		var currentupgradelevel
 		if active_faction.upgrades.has(i.code):
@@ -458,14 +491,6 @@ var service_actions = {
 		reqs = [{type = 'has_money', value = variables.enslavement_price}],
 		costvalue = variables.enslavement_price
 	},
-	clearclasses = {
-		code = 'clearclasses',
-		text = 'SERVICECLEARCLASSES',
-		descript = 'SERVICEENSLAVEDESCRIPT',
-		function = 'clearprices',
-		reqs = [{type = 'has_money', value = variables.enslavement_price}],
-		costvalue = variables.enslavement_price
-	},
 }
 
 
@@ -478,3 +503,23 @@ func faction_services():
 		newbutton.connect("pressed", self, i.function)
 		newbutton.get_node("Label").text = str(i.costvalue)
 		globals.connecttexttooltip(newbutton, tr(i.descript))
+
+
+func unlock_upgrade(upgrade, level):
+	if active_faction.upgrades.has(upgrade.code):
+		active_faction.upgrades[upgrade.code] += 1
+	else:
+		active_faction.upgrades[upgrade.code] = 1
+	active_faction.reputation -= upgrade.cost[level]
+	var effect = upgrade.effects
+	for i in effect:
+		var value = get_indexed('active_faction:' + i.code)
+		value = input_handler.math(i.operant, value, i.value)
+		set_indexed('active_faction:' + i.code, value)
+		#print(active_faction)
+	faction_upgrade()
+
+
+
+
+

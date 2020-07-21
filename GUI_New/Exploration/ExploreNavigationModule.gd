@@ -24,9 +24,9 @@ func build_accessible_locations():
 			location_array.append(person.travel.location)
 
 	var newbutton = input_handler.DuplicateContainerTemplate(Navigation)
-	newbutton.text = "Aliron"
-	newbutton.connect("pressed", self, "select_location", ['Aliron'])
-	newbutton.set_meta("data", 'Aliron')
+#	newbutton.text = "Aliron"
+#	newbutton.connect("pressed", self, "select_location", ['Aliron'])
+#	newbutton.set_meta("data", 'Aliron')
 
 	for i in location_array:
 		newbutton = input_handler.DuplicateContainerTemplate(Navigation)
@@ -61,4 +61,5 @@ func select_location(location):
 
 func return_to_mansion():
 	GUIWorld.set_current_scene(GUIWorld.gui_data["MANSION"].main_module)
+	GUIWorld.BaseScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.gui_data["MANSION"].main_module.mansion_state_set("default")

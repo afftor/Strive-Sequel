@@ -13,6 +13,9 @@ func _ready():
 		)
 	$ConfirmButton.connect('pressed', self, 'select_job')
 	$CancelButton.connect('pressed', self, 'cancel_job_choice')
+	for i in $work_rules.get_children():
+		i.connect('pressed', self, 'set_work_rule', [i.name])
+		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 
 
 func change_hours(i):
@@ -40,20 +43,22 @@ func open_jobs_window():
 		restbutton.get_child(0).text = tr("TASKREST")
 		restbutton.toggle_mode = false
 		restbutton.connect("pressed", self, 'set_rest')
-		if person.get_location() != 'Aliron':
-			var location = ResourceScripts.world_gen.get_location_from_code(person.get_location())
-#			for i in location.tasks:
-#				if i == 'gather':
-#					var check = false
-#					for k in location.gather_limit_resources.keys():
-#						if location.gather_limit_resources[k] > 0:
-#							check = true
-#							break
-#					if check == true:
-#						var newbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
-#						newbutton.get_child(0).text = "Collect Materials"
-#						newbutton.connect('pressed', self, 'show_collect_details', [location])
+
+		### Temporary Patch
+		if person.travel.location == "mansion": person.travel.location = "Aliron"
+
+		var gatherable_resources
+		var person_location = person.get_location()
+		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
+		var location_type
+		if person_location != 'Aliron':
+			location_type = location.type
+			if location_type == "dungeon":
+				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
+			else:
+				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 		else:
+			gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 			for i in races.tasklist.values():
 				if globals.checkreqs(i.reqs) == false:
 					continue
@@ -63,108 +68,125 @@ func open_jobs_window():
 				if person.tags.has('no_sex') && i.tags.has("sex"):
 					newbutton.disabled = true
 					globals.connecttexttooltip(newbutton, person.translate(tr("INTERACTIONSNOSEXTAG")))
+		
+		for resource in gatherable_resources:
+			var text = ""
+			var max_workers_count = 0
+			var current_workers_count = 0
+			var item_dict = Items.materiallist[resource]
+			var progress_formula = Items.materiallist[resource].progress_formula
+			text = progress_formula.capitalize()
+			var newbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
+			newbutton.set_meta("resource", resource)
+			if person_location != 'Aliron' && location_type != "dungeon":
+				max_workers_count = gatherable_resources[resource]
+				var active_tasks = ResourceScripts.game_party.active_tasks
+				for task in active_tasks:
+					if (task.code == resource) && (task.task_location == person_location):
+						current_workers_count = task.workers_count
+				text += " " + str(current_workers_count) + "/" + str(max_workers_count)
+				newbutton.disabled = current_workers_count == max_workers_count
+			elif location_type == "dungeon":
+				if gatherable_resources[resource] == 0:
+					for button in $job_panel/ScrollContainer/VBoxContainer.get_children():
+						if button.name == "Button": continue
+						if button.get_meta("resource") == resource: button.queue_free()
+					continue
+				text += " " + str(gatherable_resources[resource])
+			newbutton.get_child(0).text = text
+			newbutton.connect('pressed', self, 'show_job_details', [item_dict, true])
 
-		for i in person.xp_module.work_rules:
-			get_node("work_rules/" + i).pressed = person.xp_module.work_rules[i]
-		$work_rules/constrain.visible = person != ResourceScripts.game_party.get_master()
 
-#func show_collect_details(location):
-#	$ConfirmButton.show()
-#	$ConfirmButton.disabled = true
-#	$CancelButton.show()
-#	$job_details.show()
-#	input_handler.ClearContainer($job_details/ResourceOptions)
-#	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
-#		i.pressed = i.get_child(0).text == "Collect Materials"
-#
-#	$job_details/JobName.text = "Collect Materials"
-#	var text = ('')
-#
-#	$job_details/RichTextLabel.bbcode_text = text
-#	for i in location.gather_limit_resources:
-#		if location.gather_limit_resources[i] > 0:
-#			var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
-#			var item = Items.materiallist[i]
-#			var number
-#			var numberleft = location.gather_limit_resources[i]
-#			var progress_speed = person.get_progress_task
-##			number = person.get_progress_task(job.code, i.code)/i.progress_per_item
-#			text = (
-#				"\n[color=yellow]Expected gain per day: "
-#				+ str(stepify(number * 24, 0.1))
-#				+ "[/color]"
-#			)
-#
-#			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
-#			newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
-#			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
 
-func show_job_details(job):
+func show_job_details(job, gatherable = false):
+	print("Job:" +str(job))
 	$ConfirmButton.show()
-	$ConfirmButton.disabled = true
+	$ConfirmButton.disabled = !gatherable
 	$CancelButton.show()
 	currentjob = job
 	$job_details.show()
+	var job_name
+	var job_descript = job.descript
+	var work_stat = statdata.statdata[job.workstat].name
+	var work_tools
 	input_handler.ClearContainer($job_details/ResourceOptions)
-	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
-		i.pressed = i.get_child(0).text == job.name
-	$job_details/JobName.text = job.name
-	var text = (
-		job.descript
+	if gatherable:
+		job_name = job.progress_formula.capitalize()
+		if job.tool_type != "":
+			work_tools = statdata.worktoolnames[job.tool_type]
+	else:
+		job_name = job.name
+		if job.has("worktool"):
+			work_tools = statdata.worktoolnames[job.worktool]
+	$job_details/JobName.text = job_name
+	var text = (job_descript
 		+ "\n\n"
 		+ tr("TASKMAINSTAT")
 		+ ": [color=yellow]"
-		+ statdata.statdata[job.workstat].name
+		+ work_stat
 		+ "[/color]"
 	)
-	if job.has("worktool"):
+	if (job.has("tool_type") || job.has("worktool")):# && job.tool_type != "":
 		text += (
 			"\n"
 			+ tr("WORKTOOL")
 			+ ": [color=aqua]"
-			+ statdata.worktoolnames[job.worktool]
+			+ work_tools
 			+ "[/color]. \n"
 		)
+		## Work tools checking
 		if person.equipment.gear.tool != null:
+			var worktool
 			var item = ResourceScripts.game_res.items[person.equipment.gear.tool]
-			if item.toolcategory.has(job.worktool):
+			if job.has("worktool"):
+				worktool = "worktool"
+			if job.has("tool_type"):
+				worktool = "tool_type"
+			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
+				print("Text:" + str(text))
 
 	$job_details/RichTextLabel.bbcode_text = text
+	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
+		i.pressed = i.get_child(0).text == job_name
 
-	for i in job.production.values():
-		if globals.checkreqs(i.reqs) == false:
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
-		if Items.materiallist.has(i.item):
+	# 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
+	# 		i.pressed = i.get_child(0).text == job.name
+	# 	$job_details/JobName.text = job.name
+	if !gatherable:
+		for i in job.production.values():
+			print("Production:" + str(i))
+			if globals.checkreqs(i.reqs) == false:
+				continue
+			var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
+			# if Items.materiallist.has(i.item):
+			# 	print("Meterials if")
+			# 	var number
+			# 	number = person.get_progress_task(job.code, i.code)/i.progress_per_item
+			# 	text = (
+			# 		"\n[color=yellow]Expected gain per day: "
+			# 		+ str(stepify(number * 24, 0.1))
+			# 		+ "[/color]"
+			# 	)
+			# 	newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
+			# 	newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
+			# 	globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
+			# else:
 			var number
 			number = person.get_progress_task(job.code, i.code)/i.progress_per_item
-			text = (
-				"\n[color=yellow]Expected gain per day: "
-				+ str(stepify(number * 24, 0.1))
-				+ "[/color]"
-			)
-#			else:
-#				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-#				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
-			newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
-			newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
-			globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
-		else:
-			var number
-			number = person.get_progress_task(job.code, i.code)/i.progress_per_item
-			text = (
-				"\n[color=yellow]Expected gain per day: "
-				+ str(stepify(number * 24, 0.1))
-				+ "[/color]"
-			)
-#			else:
-#				number = stepify(person.workhours*races.get_progress_task(person, job.code, i.code)/i.progress_per_item*(person.productivity*person.get_stat(job.mod)/100),0.1)
-#				text = "\n[color=yellow]Expected gain per work day: " + str(number) + "[/color]"
 			newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 			newbutton.get_node("icon").texture = i.icon
-			globals.connecttexttooltip(newbutton, i.descript + text)
-		newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
+			globals.connecttexttooltip(newbutton, tr(i.descript) + text)
+			newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
+	else:
+		var number
+		number = person.get_progress_resource(job.code)/job.progress_per_item
+		print("Number:" +str(number))
+		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
+		newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
+		newbutton.get_node("icon").texture = job.icon
+		selected_job = job
+
 
 func select_resource(job, resource, newbutton):
 	for button in $job_details/ResourceOptions.get_children():
@@ -175,10 +197,17 @@ func select_resource(job, resource, newbutton):
 
 
 func select_job():
+	var gatherable = Items.materiallist.has(selected_job.code)
 	person = get_parent().active_person
-	person.assign_to_task(selected_job.code, selected_resource)
+	if !gatherable:
+		person.assign_to_task(selected_job.code, selected_resource)
+	else:
+		person.assign_to_task(selected_job.code, selected_job.code)
 	get_parent().SlaveListModule.update()
-	get_parent().TaskModule.task_index = 1
+	if selected_job.code in ["building"]:
+		get_parent().TaskModule.task_index = 0
+	else:
+		get_parent().TaskModule.task_index = 1
 	get_parent().TaskModule.change_button()
 	get_parent().rebuild_task_info()
 	open_jobs_window()
@@ -189,3 +218,4 @@ func set_rest():
 	person.remove_from_task()
 	get_parent().SlaveListModule.update()
 	get_parent().rebuild_task_info()
+	open_jobs_window()

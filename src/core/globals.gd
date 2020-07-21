@@ -48,12 +48,17 @@ var sex_actions_dict = {}
 signal scene_changed
 
 func _init():
+	
+	
 	#for logging purposes
 	print("Game Version: " + str(gameversion))
 	print("OS: " +  OS.get_name()) 
 	
 	if dir.dir_exists(variables.userfolder + 'saves') == false:
 		dir.make_dir(variables.userfolder + 'saves')
+	
+	if !dir.dir_exists(variables.userfolder + 'savedcharacters'):
+		dir.make_dir(variables.userfolder + 'savedcharacters')
 	
 	for i in input_handler.dir_contents('res://src/actions'):
 		if i.find('.remap') >= 0:
@@ -1064,7 +1069,8 @@ func common_effects(effects):
 
 						number -= 1
 			'update_guild':
-				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				input_handler.exploration_node.City.enter_guild(input_handler.active_faction)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':

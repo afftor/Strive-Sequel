@@ -1,0 +1,579 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/gui icons/growth_factor.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/gui/gui icons/sex.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/gui/gui icons/timid_factor.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/gui icons/food.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/gui/gui icons/physics_factor.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/gui icons/magic_factor.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/gui/gui icons/wit.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/gui/gui icons/charm.png" type="Texture" id=20]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=21]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=22]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=23]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_professions.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavesummary.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_hover.png" type="Texture" id=28]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 25 )
+region_rect = Rect2( 0, 0, 220, 1050 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 970, 130 )
+
+[node name="ExploreSlaveSummaryModule" type="Panel"]
+rect_min_size = Vector2( 220, 1050 )
+theme = ExtResource( 23 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 11.0
+margin_top = 11.0
+margin_right = 208.0
+margin_bottom = 206.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="."]
+margin_left = 56.0
+margin_top = 176.0
+margin_right = 164.0
+margin_bottom = 201.0
+grow_horizontal = 0
+text = "Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sex" type="TextureRect" parent="name"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = -177.5
+margin_right = -111.0
+margin_bottom = -140.5
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="base_stats" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
+margin_left = 8.0
+margin_top = 232.0
+margin_right = 208.0
+margin_bottom = 333.0
+custom_constants/separation = 13
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="TextureProgress" parent="base_stats"]
+margin_right = 200.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+value = 100.0
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/hp"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="mp" type="TextureProgress" parent="base_stats"]
+margin_top = 38.0
+margin_right = 200.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 5 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/mp"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="lust" type="TextureProgress" parent="base_stats"]
+margin_top = 76.0
+margin_right = 200.0
+margin_bottom = 101.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/lust"]
+margin_top = 2.0
+margin_right = 199.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1.100"
+align = 1
+
+[node name="factors" type="VBoxContainer" parent="."]
+margin_left = 23.0
+margin_top = 548.0
+margin_right = 144.0
+margin_bottom = 828.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="base_exp" type="TextureRect" parent="factors"]
+visible = false
+margin_right = 50.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/base_exp"]
+margin_left = 69.0
+margin_top = 7.0
+margin_right = 118.0
+margin_bottom = 31.0
+mouse_filter = 1
+text = "0"
+
+[node name="growth_factor" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+margin_right = 50.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/growth_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Excellent"
+
+[node name="physics_factor" type="TextureRect" parent="factors"]
+margin_top = 35.0
+margin_right = 50.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/physics_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="magic_factor" type="TextureRect" parent="factors"]
+margin_top = 70.0
+margin_right = 50.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/magic_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="wits_factor" type="TextureRect" parent="factors"]
+margin_top = 105.0
+margin_right = 50.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/wits_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="charm_factor" type="TextureRect" parent="factors"]
+margin_top = 140.0
+margin_right = 50.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/charm_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="sexuals_factor" type="TextureRect" parent="factors"]
+margin_top = 175.0
+margin_right = 50.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/sexuals_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="tame_factor" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+margin_top = 210.0
+margin_right = 50.0
+margin_bottom = 245.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/tame_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="timid_factor" type="TextureRect" parent="factors" groups=[
+"hide_master",
+]]
+margin_top = 245.0
+margin_right = 50.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/timid_factor"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="food_consumption" type="TextureRect" parent="factors"]
+visible = false
+margin_top = 315.0
+margin_right = 50.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="factors/food_consumption"]
+margin_left = 69.2385
+margin_top = 7.0
+margin_right = 229.239
+margin_bottom = 31.0
+text = "25"
+
+[node name="VBoxContainer2" type="Control" parent="."]
+margin_left = 8.0
+margin_top = 352.0
+margin_right = 213.0
+margin_bottom = 519.0
+
+[node name="TextureRect2" type="Control" parent="VBoxContainer2"]
+margin_bottom = 167.0
+mouse_filter = 2
+
+[node name="Exp" type="TextureButton" parent="VBoxContainer2/TextureRect2"]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 50.0
+margin_bottom = 30.0
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+
+[node name="Label" type="Label" parent="VBoxContainer2/TextureRect2/Exp"]
+margin_right = 52.0
+margin_bottom = 32.0
+text = "EXP"
+align = 1
+valign = 1
+
+[node name="physics" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+margin_left = 13.0
+margin_top = 44.0
+margin_right = 42.0
+margin_bottom = 69.0
+mouse_filter = 0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wits" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+margin_left = 13.0
+margin_top = 80.0
+margin_right = 41.0
+margin_bottom = 105.0
+mouse_filter = 0
+texture = ExtResource( 6 )
+
+[node name="charm" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+margin_left = 13.0
+margin_top = 111.0
+margin_right = 41.0
+margin_bottom = 136.0
+mouse_filter = 0
+texture = ExtResource( 7 )
+
+[node name="sexuals" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+margin_left = 13.0
+margin_top = 147.0
+margin_right = 41.0
+margin_bottom = 172.0
+mouse_filter = 0
+texture = ExtResource( 4 )
+
+[node name="TextureRect3" type="Control" parent="VBoxContainer2"]
+margin_left = 56.0
+margin_right = 106.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 50, 0 )
+mouse_filter = 2
+
+[node name="BaseExp" type="Label" parent="VBoxContainer2/TextureRect3"]
+margin_left = 6.0
+margin_top = 3.0
+margin_right = 56.0
+margin_bottom = 27.0
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="physics" type="Label" parent="VBoxContainer2/TextureRect3"]
+margin_left = 6.0
+margin_top = 44.0
+margin_right = 56.0
+margin_bottom = 68.0
+text = "Physics"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wits" type="Label" parent="VBoxContainer2/TextureRect3"]
+margin_left = 6.0
+margin_top = 80.0
+margin_right = 56.0
+margin_bottom = 104.0
+text = "Wits"
+align = 1
+clip_text = true
+
+[node name="charm" type="Label" parent="VBoxContainer2/TextureRect3"]
+margin_left = 6.0
+margin_top = 111.0
+margin_right = 56.0
+margin_bottom = 135.0
+text = "Charm"
+align = 1
+clip_text = true
+
+[node name="sexuals" type="Label" parent="VBoxContainer2/TextureRect3"]
+margin_left = 6.0
+margin_top = 147.0
+margin_right = 56.0
+margin_bottom = 171.0
+text = "Sexuals"
+align = 1
+clip_text = true
+
+[node name="TextureRect4" type="Control" parent="VBoxContainer2"]
+margin_left = 128.0
+margin_right = 178.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="NextClassExp" type="Label" parent="VBoxContainer2/TextureRect4"]
+margin_top = 3.0
+margin_right = 50.0
+margin_bottom = 27.0
+mouse_filter = 0
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="physics2" type="Label" parent="VBoxContainer2/TextureRect4"]
+margin_top = 44.0
+margin_right = 50.0
+margin_bottom = 68.0
+text = "Physics"
+align = 1
+clip_text = true
+
+[node name="wits2" type="Label" parent="VBoxContainer2/TextureRect4"]
+margin_top = 80.0
+margin_right = 50.0
+margin_bottom = 104.0
+text = "Wits"
+align = 1
+clip_text = true
+
+[node name="charm2" type="Label" parent="VBoxContainer2/TextureRect4"]
+margin_top = 111.0
+margin_right = 50.0
+margin_bottom = 135.0
+text = "Charm"
+align = 1
+clip_text = true
+
+[node name="sexuals2" type="Label" parent="VBoxContainer2/TextureRect4"]
+margin_top = 147.0
+margin_right = 50.0
+margin_bottom = 171.0
+text = "Sexuals"
+align = 1
+clip_text = true
+
+[node name="professions" type="GridContainer" parent="."]
+margin_left = 236.0
+margin_top = 14.0
+margin_right = 1176.0
+margin_bottom = 114.0
+grow_horizontal = 0
+mouse_filter = 2
+custom_constants/hseparation = 19
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="professions" groups=[
+"ignore_rightclicks",
+]]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 21 )
+
+[node name="TextureRect" type="TextureRect" parent="professions/Button"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 93.0
+margin_bottom = 93.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="professions/Button"]
+margin_left = 7.0
+margin_top = 69.0
+margin_right = 93.0
+margin_bottom = 93.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfessionsBG" type="Panel" parent="."]
+margin_left = 220.0
+margin_right = 1190.0
+margin_bottom = 130.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

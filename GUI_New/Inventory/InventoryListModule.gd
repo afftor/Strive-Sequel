@@ -153,9 +153,9 @@ func useitem(item, type):
 	# if mode == null:
 	# 	return
 	# elif mode == 'character' && selectedhero != null:
-	if !selectedhero.check_location('mansion', true):
-		input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
-		return
+	# if !selectedhero.check_location('mansion', true):
+	# 	input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
+	# 	return
 	if type == 'gear':
 		var item_prev_id = item.id
 		var equiped_item = globals.CreateGearItem(item.itembase, item.parts, item.bonusstats, null)

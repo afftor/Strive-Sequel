@@ -2,7 +2,8 @@ extends Node
 
 var scenedict = {
 	menu = "res://src/Menu.tscn",
-	mansion = "res://src/main/Mansion.tscn",
+#	mansion = "res://src/main/Mansion.tscn",
+	mansion = "res://GUI_New/GUIWorld.tscn",
 	loadscreen = "res://src/LoadScreen.tscn",
 	combat = "res://src/combat/combat.tscn",
 	itemselect = "res://ItemSelect.tscn",
@@ -50,7 +51,8 @@ onready var node_data = {
 	input_handler.NODE_CHAT : {name = 'chatwindow', mode = 'scene', scene = preload("res://src/scenes/ChatNode.tscn")},
 	input_handler.NODE_TUTORIAL : {name = 'tutorial_node', mode = 'scene', scene = preload("res://src/scenes/TutorialNode.tscn")},
 	input_handler.NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
-	input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/scenes/InteractiveMessage.tscn")},
+	input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://GUI_New/Universal/InteractiveMessageModule.tscn")},
+	# input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/scenes/InteractiveMessage.tscn")},
 	input_handler.NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://src/main/Inventory.tscn"), calls = 'open'},
 	input_handler.NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},
 	input_handler.NODE_CONFIRMPANEL : {name = 'ConfirmPanel', mode = 'scene', scene = preload("res://src/scenes/ConfirmPanel.tscn"), calls = 'Show'},
@@ -65,16 +67,17 @@ onready var node_data = {
 	input_handler.NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://src/scenes/SkillToolTip.tscn")},
 	input_handler.NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://src/scenes/Imagetooltip.tscn")},
 	input_handler.NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/scenes/TextTooltipPanel.tscn")},
-	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/scenes/CharacterCreationPanel.tscn"), calls = 'open'},
+	# input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/scenes/CharacterCreationPanel.tscn"), calls = 'open'},
+	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://GUI_New/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},
 	input_handler.NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
 	input_handler.NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open'},
-	input_handler.NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/scenes/SysMessage.tscn") }, 
+	input_handler.NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/scenes/SysMessage.tscn") },
 	input_handler.NODE_SLAVEMODULE : {name = 'slavemodule', mode = 'scene', scene = preload("res://GUI_New/CharacterInfo/CharInfoMainModule.tscn") },
 	input_handler.NODE_INVENTORY_NEW : {name = 'inventory_new', mode = 'scene', scene = preload("res://GUI_New/Inventory/InventoryMainModule.tscn") },
 	input_handler.NODE_MANSION_NEW : {name = 'mansion', mode = 'scene', scene = preload("res://GUI_New/Mansion/MansionMainModule.tscn") },
 	input_handler.NODE_GUI_WORLD : {name = 'GUIWorld', mode = 'scene', scene = preload("res://GUI_New/GUIWorld.tscn") },
-	input_handler.NODE_GUI_WORLD : {name = 'GUIWorld', mode = 'scene', scene = preload("res://GUI_New/GUIWorld.tscn") },
 }
+
 
 var singletones = ['descriptions','custom_effects', "core_animations", "world_gen", "custom_text"]
 #singletones

@@ -1,65 +1,37 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_hover2.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_pressed2.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=5]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Upgrades_panel.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=7]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=8]
 [ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=9]
-[ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/panel_travel.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Upgrades_BG.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_pressed.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=14]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=16]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_disabled.png" type="Texture" id=18]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=19]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 1100, 387 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 
-[sub_resource type="StyleBoxTexture" id=4]
-
-[sub_resource type="StyleBoxTexture" id=5]
-
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 17 )
-region_rect = Rect2( 0, 0, 230, 40 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 230, 40 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 230, 40 )
-
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 16 )
-region_rect = Rect2( 0, 0, 230, 40 )
-
 [node name="MansionUpgradesModule" type="Panel"]
 rect_min_size = Vector2( 1100, 385 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,7 +40,7 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 1100.0
 margin_bottom = 385.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -77,7 +49,7 @@ __meta__ = {
 margin_left = 388.0
 margin_right = 707.0
 margin_bottom = 385.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -144,7 +116,7 @@ __meta__ = {
 [node name="UpgradeList" type="Panel" parent="."]
 margin_right = 388.0
 margin_bottom = 385.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 2 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -213,7 +185,7 @@ visible = false
 margin_left = 712.0
 margin_right = 1100.0
 margin_bottom = 385.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Label" type="Label" parent="UpgradeDescript"]
 margin_left = 19.0
@@ -227,7 +199,7 @@ margin_left = 19.0
 margin_top = 127.0
 margin_right = 373.0
 margin_bottom = 238.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 __meta__ = {
@@ -267,7 +239,7 @@ margin_left = 2.0
 margin_top = 46.4537
 margin_right = 68.0
 margin_bottom = 68.4537
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "5/10"
 align = 1
@@ -348,10 +320,7 @@ margin_left = 549.0
 margin_top = 335.0
 margin_right = 655.0
 margin_bottom = 365.0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+theme = ExtResource( 19 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false

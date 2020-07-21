@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_marketplace.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 1123, 980 )
+
+[resource]
+Panel/styles/panel = SubResource( 1 )

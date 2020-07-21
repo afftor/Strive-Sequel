@@ -1,22 +1,45 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreCity.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 128, 55 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 128, 55 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
 
 [node name="ExploreCityModule" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.854902 )
-margin_top = 200.0
 margin_right = 290.0
-margin_bottom = 712.0
+margin_bottom = 503.0
 theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="Control" parent="."]
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 278.0
-margin_bottom = 500.0
+margin_left = 8.60236
+margin_top = 10.1365
+margin_right = 280.602
+margin_bottom = 498.136
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,29 +53,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 266.0
-margin_bottom = 71.0
+margin_right = 272.0
+margin_bottom = 58.0
 rect_min_size = Vector2( 266, 50 )
 rect_clip_content = true
 size_flags_horizontal = 2
 size_flags_vertical = 8
 toggle_mode = true
-text = "Text"
-clip_text = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 57.0
+margin_right = 272.0
+margin_bottom = 58.0
+text = "Guild"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GuildMenuBG" type="Panel" parent="."]
+visible = false
 margin_top = -200.0
 margin_right = 290.0
+margin_bottom = 1.52588e-05
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GuildMenu" type="ScrollContainer" parent="."]
-margin_left = 6.0
+margin_left = 8.60236
 margin_top = -189.0
-margin_right = 284.0
+margin_right = 280.602
 margin_bottom = -12.0
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -60,13 +98,26 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GuildMenu"]
-margin_right = 278.0
+margin_right = 272.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
-[node name="Button" type="Button" parent="GuildMenu/VBoxContainer"]
+[node name="Button" type="TextureButton" parent="GuildMenu/VBoxContainer"]
 visible = false
-margin_right = 290.0
-margin_bottom = 50.0
+margin_right = 272.0
+margin_bottom = 58.0
 rect_min_size = Vector2( 0, 50 )
-text = "GuildMenu"
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="GuildMenu/VBoxContainer/Button"]
+margin_right = 272.0
+margin_bottom = 58.0
+text = "Guild Menu"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

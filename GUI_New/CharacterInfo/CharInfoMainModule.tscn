@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://GUI_New/CharacterInfo/CharInfoMainModule.gd" type="Script" id=1]
-[ext_resource path="res://GUI_New/CharacterInfo/SlaveSummaryModule.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI_New/Exploration/SlaveSummaryModule.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveSummaryModule.gd" type="Script" id=3]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.gd" type="Script" id=5]
@@ -13,16 +13,12 @@
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveDetailsModule.tscn" type="PackedScene" id=11]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveDietModule.tscn" type="PackedScene" id=12]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveDietModule.gd" type="Script" id=13]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=14]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
+[ext_resource path="res://assets/Themes_v2/MANSION/CharInfoMainPanel.tres" type="StyleBox" id=14]
 
 [node name="CharInfoMainModule" type="Panel"]
 margin_right = 1920.0
 margin_bottom = 1080.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 14 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

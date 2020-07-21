@@ -7,6 +7,7 @@ func _ready():
 	$VBoxContainer/UpgradesButton.connect("pressed", self, "_button_clicked", ["upgrades", $VBoxContainer/UpgradesButton])
 	$VBoxContainer/CraftButton.connect("pressed", self, "_button_clicked", ["craft", $VBoxContainer/CraftButton])
 	$VBoxContainer/InventoryButton.connect("pressed", self, "open_inventory")
+	$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
 
 func _button_clicked(state, button):
 	if button.is_pressed():
@@ -17,3 +18,9 @@ func _button_clicked(state, button):
 func open_inventory():
 	GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.set_current_scene(GUIWorld.gui_data["INVENTORY"].main_module)
+	
+func open_interaction():
+	get_parent().InteractSelection.show()
+	get_parent().InteractSelection.open()
+	# GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
+	# GUIWorld.set_current_scene(GUIWorld.gui_data["INTERACTION"].main_module)

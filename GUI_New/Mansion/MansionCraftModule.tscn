@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=2]
@@ -6,20 +6,24 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_all.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_potion.png" type="Texture" id=6]
-[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=7]
+[ext_resource path="res://src/scenes/HScrollBar.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_pressed.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_cosm.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_armor.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Craft_BG.tres" type="StyleBox" id=13]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Craft_One_Side.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=17]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=19]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_placeholder.png" type="Texture" id=21]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=22]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftModule.gd" type="Script" id=23]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=24]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=24]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_active.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_inactive.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_cooking_inactive.png" type="Texture" id=27]
@@ -28,7 +32,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_inactive.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_inactive.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=36]
@@ -37,8 +40,6 @@
 [ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=39]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_active.png" type="Texture" id=40]
 [ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=41]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craftbig_oneside.png" type="Texture" id=42]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=43]
 [ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=44]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=45]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=46]
@@ -47,33 +48,12 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose.png" type="Texture" id=49]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_hover.png" type="Texture" id=50]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_pressed.png" type="Texture" id=51]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_detail.png" type="Texture" id=52]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=53]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=54]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=55]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=56]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=57]
-
-
-
-
-
-
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 42 )
-region_rect = Rect2( 0, 0, 1100, 980 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 43 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 52 )
 region_rect = Rect2( 0, 0, 12, 48 )
 
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 33 )
+[sub_resource type="StyleBoxTexture" id=2]
 region_rect = Rect2( 0, 0, 12, 256 )
 margin_left = 5.0
 margin_right = 5.0
@@ -81,70 +61,17 @@ margin_top = 5.0
 
 [sub_resource type="StyleBoxTexture" id=3]
 
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 55 )
-region_rect = Rect2( 0, 0, 230, 40 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id=15]
-texture = ExtResource( 56 )
-region_rect = Rect2( 0, 0, 230, 40 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 54 )
-region_rect = Rect2( 0, 0, 230, 40 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 54 )
-region_rect = Rect2( 0, 0, 230, 40 )
-margin_left = 5.0
-margin_right = 5.0
-margin_top = 5.0
-margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 52 )
-region_rect = Rect2( 0, 0, 12, 48 )
-
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 33 )
-region_rect = Rect2( 0, 0, 12, 256 )
-
 [sub_resource type="StyleBoxTexture" id=4]
 
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 45 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-
-[sub_resource type="StyleBoxTexture" id=17]
-texture = ExtResource( 57 )
-region_rect = Rect2( 0, 0, 210, 58 )
-margin_left = 55.0
-margin_right = 55.0
-margin_top = 18.0
-margin_bottom = 18.0
-modulate_color = Color( 1, 0.431373, 0.431373, 1 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 24 )
-region_rect = Rect2( 0, 0, 210, 58 )
+[sub_resource type="StyleBoxTexture" id=6]
 
 [node name="MansionCraftModule" type="Panel"]
 margin_right = 1100.0
 margin_bottom = 980.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 14 )
 script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -154,7 +81,7 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 1100.0
 margin_bottom = 980.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -342,6 +269,9 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 44 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CraftScheldue"]
 margin_left = 585.0
@@ -359,7 +289,7 @@ rect_min_size = Vector2( 416, 0 )
 
 [node name="Button" type="TextureButton" parent="CraftScheldue/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 440.0
+margin_right = 480.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 440, 75 )
 hint_tooltip = "Left click to cancel
@@ -393,6 +323,7 @@ __meta__ = {
 }
 
 [node name="progress" type="Label" parent="CraftScheldue/ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_left = 253.0
 margin_top = 8.0
 margin_right = 377.0
@@ -405,6 +336,7 @@ __meta__ = {
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="CraftScheldue/ScrollContainer/VBoxContainer/Button"]
+visible = false
 margin_top = 52.0
 margin_right = 440.0
 margin_bottom = 76.0
@@ -426,14 +358,13 @@ margin_left = 1055.0
 margin_top = 338.0
 margin_right = 1067.0
 margin_bottom = 916.0
-custom_styles/grabber = SubResource( 9 )
-custom_styles/scroll = SubResource( 10 )
+custom_styles/grabber = SubResource( 1 )
+custom_styles/scroll = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NumberSelect" type="Panel" parent="."]
-visible = false
 margin_left = 552.0
 margin_top = 784.0
 margin_right = 1100.0
@@ -448,9 +379,7 @@ margin_left = 282.0
 margin_top = 132.0
 margin_right = 507.0
 margin_bottom = 166.0
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+theme = ExtResource( 18 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -461,7 +390,7 @@ margin_left = 43.0
 margin_top = 132.0
 margin_right = 268.0
 margin_bottom = 166.0
-custom_styles/normal = SubResource( 13 )
+theme = ExtResource( 18 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -472,13 +401,16 @@ margin_left = 33.0
 margin_top = 82.0
 margin_right = 508.0
 margin_bottom = 98.0
-theme = ExtResource( 7 )
 custom_icons/tick = ExtResource( 53 )
 custom_icons/grabber_highlight = ExtResource( 53 )
 custom_icons/grabber = ExtResource( 53 )
+custom_styles/slider = ExtResource( 7 )
 min_value = 1.0
 value = 1.0
 ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
 margin_top = 36.0
@@ -506,8 +438,7 @@ margin_left = 17.0
 margin_top = 338.0
 margin_right = 29.0
 margin_bottom = 916.0
-custom_styles/grabber = SubResource( 11 )
-custom_styles/scroll = SubResource( 12 )
+theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -621,11 +552,10 @@ margin_left = 148.0
 margin_top = 916.0
 margin_right = 373.0
 margin_bottom = 950.0
-custom_styles/normal = SubResource( 13 )
+theme = ExtResource( 18 )
 text = "Back"
 
 [node name="MaterialSetupPanel" type="Panel" parent="."]
-visible = false
 margin_left = 552.0
 margin_top = 232.0
 margin_right = 1096.0
@@ -798,11 +728,12 @@ margin_bottom = 221.0
 text = "Parts"
 
 [node name="MaterialSelect" type="Panel" parent="."]
+visible = false
 margin_left = 33.0
 margin_top = 328.0
 margin_right = 528.0
 margin_bottom = 916.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 6 )
 script = ExtResource( 44 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -811,7 +742,7 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialSelect"]
 margin_left = 32.0
 margin_top = 56.0
-margin_right = 504.0
+margin_right = 433.0
 margin_bottom = 600.0
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -826,7 +757,6 @@ margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 texture_normal = ExtResource( 47 )
-expand = true
 
 [node name="Icon" type="TextureRect" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button"]
 margin_left = 3.0
@@ -859,6 +789,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ButtonOverlay" type="TextureButton" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button"]
+margin_right = 399.0
+margin_bottom = 97.0
+
 [node name="PartLabel" type="Label" parent="MaterialSelect"]
 margin_left = 84.0
 margin_top = 16.0
@@ -881,12 +815,8 @@ margin_left = 660.0
 margin_top = 243.0
 margin_right = 995.0
 margin_bottom = 301.0
-custom_styles/disabled = SubResource( 17 )
-custom_styles/normal = SubResource( 7 )
+theme = ExtResource( 24 )
 text = "Select Characters"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CraftOrder" type="Label" parent="."]
 visible = false

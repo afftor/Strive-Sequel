@@ -1,0 +1,367 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Middle_Panel.tres" type="StyleBox" id=1]
+[ext_resource path="res://GUI_New/CharacterCreation/SlaveCreationModule.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=4]
+
+[node name="SlaveCreationModule" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1140.0
+margin_bottom = -250.0
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0.180392, 0.054902, 0.713726, 1 )
+show_behind_parent = true
+margin_right = 780.0
+margin_bottom = 830.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descript" type="RichTextLabel" parent="."]
+margin_left = 34.0
+margin_top = 55.0
+margin_right = 738.0
+margin_bottom = 385.0
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 64.0
+margin_top = 380.0
+margin_right = 748.0
+margin_bottom = 778.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 625.0
+margin_bottom = 724.0
+custom_constants/separation = 20
+
+[node name="bodyparts" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
+margin_right = 302.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 302, 724 )
+
+[node name="skin_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_right = 302.0
+margin_bottom = 24.0
+text = "SLAVEPARTSKIN"
+align = 1
+
+[node name="skin" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 28.0
+margin_right = 302.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="hair_length_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 72.0
+margin_right = 302.0
+margin_bottom = 96.0
+text = "SLAVEPARTHAIR_LENGTH"
+align = 1
+
+[node name="hair_length" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 100.0
+margin_right = 302.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="hair_color_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 144.0
+margin_right = 302.0
+margin_bottom = 168.0
+text = "SLAVEPARTHAIR_COLOR"
+align = 1
+
+[node name="hair_color" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 172.0
+margin_right = 302.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="eye_color_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 216.0
+margin_right = 302.0
+margin_bottom = 240.0
+text = "SLAVEPARTEYE_COLOR"
+align = 1
+
+[node name="eye_color" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 244.0
+margin_right = 302.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="eye_shape_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 288.0
+margin_right = 302.0
+margin_bottom = 312.0
+text = "SLAVEPARTEYE_SHAPE"
+align = 1
+
+[node name="eye_shape" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 316.0
+margin_right = 302.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="ears_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 360.0
+margin_right = 302.0
+margin_bottom = 384.0
+text = "SLAVEPARTEARS"
+align = 1
+
+[node name="ears" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 388.0
+margin_right = 302.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="horns_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 432.0
+margin_right = 302.0
+margin_bottom = 456.0
+text = "SLAVEPARTHORNS"
+align = 1
+
+[node name="horns" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 460.0
+margin_right = 302.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="tail_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 504.0
+margin_right = 302.0
+margin_bottom = 528.0
+text = "SLAVEPARTTAIL"
+align = 1
+
+[node name="tail" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 532.0
+margin_right = 302.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="wings_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 576.0
+margin_right = 302.0
+margin_bottom = 600.0
+text = "SLAVEPARTWINGS"
+align = 1
+
+[node name="wings" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 604.0
+margin_right = 302.0
+margin_bottom = 644.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="height_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 648.0
+margin_right = 302.0
+margin_bottom = 672.0
+text = "SLAVEPARTHEIGHT"
+align = 1
+
+[node name="height" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts"]
+margin_top = 676.0
+margin_right = 302.0
+margin_bottom = 716.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="bodyparts2" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
+margin_left = 322.0
+margin_right = 625.0
+margin_bottom = 724.0
+rect_min_size = Vector2( 302, 0 )
+
+[node name="type_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_right = 303.0
+margin_bottom = 24.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.141176, 1, 0.858824, 1 )
+text = "SLAVETYPE"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer/bodyparts2/type_label"]
+margin_left = 218.0
+margin_top = -5.0
+margin_right = 254.0
+margin_bottom = 29.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slave_class" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 28.0
+margin_right = 303.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label8" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 72.0
+margin_right = 303.0
+margin_bottom = 96.0
+mouse_filter = 0
+text = "SLAVEPARTPERSONALITY"
+align = 1
+
+[node name="personality" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 100.0
+margin_right = 303.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="penis_size_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 144.0
+margin_right = 303.0
+margin_bottom = 168.0
+text = "SLAVEPARTPENIS_SIZE"
+align = 1
+
+[node name="penis_size" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 172.0
+margin_right = 303.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="penis_type_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 216.0
+margin_right = 303.0
+margin_bottom = 240.0
+text = "SLAVEPARTPENIS_TYPE"
+align = 1
+
+[node name="penis_type" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 244.0
+margin_right = 303.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="balls_size_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 288.0
+margin_right = 303.0
+margin_bottom = 312.0
+text = "SLAVEPARTBALLS_SIZE"
+align = 1
+
+[node name="balls_size" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 316.0
+margin_right = 303.0
+margin_bottom = 356.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="tits_size_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 360.0
+margin_right = 303.0
+margin_bottom = 384.0
+text = "SLAVEPARTTITS_SIZE"
+align = 1
+
+[node name="tits_size" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 388.0
+margin_right = 303.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="ass_size_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 432.0
+margin_right = 303.0
+margin_bottom = 456.0
+text = "SLAVEPARTASS_SIZE"
+align = 1
+
+[node name="ass_size" type="OptionButton" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 460.0
+margin_right = 303.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="vaginal_virgin" type="CheckBox" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 504.0
+margin_right = 303.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 0, 40 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "SLAVEPARTVAGINAL_VIRGIN"
+clip_text = true
+
+[node name="penis_virgin" type="CheckBox" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 548.0
+margin_right = 303.0
+margin_bottom = 588.0
+rect_min_size = Vector2( 0, 40 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "SLAVEPARTPENIS_VIRGIN"
+clip_text = true
+
+[node name="anal_virgin" type="CheckBox" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+margin_top = 592.0
+margin_right = 303.0
+margin_bottom = 632.0
+rect_min_size = Vector2( 0, 40 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/hover_pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "SLAVEPARTANAL_VIRGIN"
+clip_text = true
+
+[node name="diet_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+visible = false
+margin_top = 492.0
+margin_right = 278.0
+margin_bottom = 516.0
+text = "SLAVEDIET"
+align = 1
+
+[node name="diet" type="Button" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+visible = false
+margin_top = 520.0
+margin_right = 278.0
+margin_bottom = 570.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="class_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+visible = false
+margin_top = 574.0
+margin_right = 278.0
+margin_bottom = 598.0
+text = "SLAVESTARTINGCLASS"
+align = 1
+
+[node name="class" type="Button" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+visible = false
+margin_top = 602.0
+margin_right = 278.0
+margin_bottom = 652.0
+rect_min_size = Vector2( 0, 50 )

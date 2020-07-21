@@ -1,27 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_simple.png" type="Texture" id=1]
+[ext_resource path="res://assets/Themes_v2/MANSION/TaskInfoPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/taskinfo_header.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/bar_taskinfo_progress.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/bar_taskinfo.png" type="Texture" id=5]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_FG.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_BG.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo_hover.png" type="Texture" id=6]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 128, 128 )
-margin_left = 8.0
-margin_right = 8.0
-margin_top = 8.0
-margin_bottom = 8.0
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 256, 16 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 256, 16 )
 
 [node name="MansionTaskInfoModule" type="Control"]
 margin_right = 290.0
@@ -66,7 +50,7 @@ margin_bottom = 46.0
 margin_top = 52.0
 margin_right = 290.0
 margin_bottom = 425.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -124,8 +108,8 @@ margin_top = 34.0
 margin_right = 276.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 16 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = ExtResource( 4 )
+custom_styles/bg = ExtResource( 5 )
 value = 50.0
 percent_visible = false
 __meta__ = {

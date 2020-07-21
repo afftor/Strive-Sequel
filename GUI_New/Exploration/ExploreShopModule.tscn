@@ -1,0 +1,655 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_potion.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/NumberSelection.gd" type="Script" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_cosm.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_all.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_armor.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_food.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_weapon.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_craft.png" type="Texture" id=13]
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/MarketButtons.tres" type="Theme" id=14]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=15]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=16]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=17]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=18]
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreMarketPanel.tres" type="Theme" id=27]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 128, 55 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="ExploreShopModule" type="Panel"]
+margin_right = 1123.0
+margin_bottom = 980.0
+theme = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+margin_right = 1123.0
+margin_bottom = 83.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background2" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.615686 )
+show_behind_parent = true
+margin_top = 83.0
+margin_right = 1123.0
+margin_bottom = 980.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1123.0
+margin_bottom = 83.0
+text = "Marketplace"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellFilter" type="HBoxContainer" parent="."]
+margin_left = 53.97
+margin_top = 204.765
+margin_right = 513.97
+margin_bottom = 258.765
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="TextureButton" parent="SellFilter"]
+margin_right = 54.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYALL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/all"]
+margin_right = 54.0
+margin_bottom = 54.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="TextureButton" parent="SellFilter"]
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/food"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usable" type="TextureButton" parent="SellFilter"]
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYUSE"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/usable"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="material" type="TextureButton" parent="SellFilter"]
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/material"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tool" type="TextureButton" parent="SellFilter"]
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYTOOL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/tool"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weapon" type="TextureButton" parent="SellFilter"]
+margin_left = 290.0
+margin_right = 344.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYWEAPON"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/weapon"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armor" type="TextureButton" parent="SellFilter"]
+margin_left = 348.0
+margin_right = 402.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYARMOR"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/armor"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costume" type="TextureButton" parent="SellFilter"]
+margin_left = 406.0
+margin_right = 460.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYCOSTUME"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="SellFilter/costume"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyFilter" type="HBoxContainer" parent="."]
+margin_left = 602.043
+margin_top = 204.765
+margin_right = 1062.04
+margin_bottom = 258.765
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="TextureButton" parent="BuyFilter"]
+margin_right = 54.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYALL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/all"]
+margin_right = 54.0
+margin_bottom = 54.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="TextureButton" parent="BuyFilter"]
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/food"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="usable" type="TextureButton" parent="BuyFilter"]
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYUSE"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/usable"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="material" type="TextureButton" parent="BuyFilter"]
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/material"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tool" type="TextureButton" parent="BuyFilter"]
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYTOOL"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/tool"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="weapon" type="TextureButton" parent="BuyFilter"]
+margin_left = 290.0
+margin_right = 344.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYWEAPON"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/weapon"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="armor" type="TextureButton" parent="BuyFilter"]
+margin_left = 348.0
+margin_right = 402.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYARMOR"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/armor"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="costume" type="TextureButton" parent="BuyFilter"]
+margin_left = 406.0
+margin_right = 460.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYCOSTUME"
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="BuyFilter/costume"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellBlock" type="Control" parent="."]
+margin_top = 204.765
+margin_right = 40.0
+margin_bottom = 244.765
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SellBlock"]
+margin_left = 48.0
+margin_top = 144.0
+margin_right = 541.0
+margin_bottom = 494.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SellBlock/ScrollContainer"]
+margin_right = 493.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="SellBlock/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 493.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 464, 50 )
+theme = ExtResource( 14 )
+
+[node name="icon" type="TextureRect" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.0
+margin_top = 13.0
+margin_right = 279.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Test"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -11.7131
+margin_right = -11.0
+margin_bottom = 12.2869
+custom_colors/font_color = Color( 1, 0.827451, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+
+[node name="amount" type="Label" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 340.97
+margin_top = 13.0
+margin_right = 388.97
+margin_bottom = 42.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="SellBlock"]
+margin_left = 483.337
+margin_top = 108.88
+margin_right = 536.337
+margin_bottom = 132.88
+text = "Cost"
+
+[node name="Label2" type="Label" parent="SellBlock"]
+margin_left = 372.443
+margin_top = 108.88
+margin_right = 465.443
+margin_bottom = 132.88
+text = "Number"
+
+[node name="Label3" type="Label" parent="SellBlock"]
+margin_left = 80.97
+margin_top = 108.88
+margin_right = 173.97
+margin_bottom = 132.88
+text = "Item"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyBlock" type="Control" parent="."]
+margin_left = 521.97
+margin_top = 204.765
+margin_right = 561.97
+margin_bottom = 244.765
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BuyBlock"]
+margin_left = 48.0
+margin_top = 144.0
+margin_right = 541.0
+margin_bottom = 494.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuyBlock/ScrollContainer"]
+margin_right = 493.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="BuyBlock/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 493.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 464, 50 )
+theme = ExtResource( 14 )
+
+[node name="icon" type="TextureRect" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.0
+margin_top = 13.0
+margin_right = 279.0
+margin_bottom = 45.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Test"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -11.7131
+margin_right = -11.0
+margin_bottom = 12.2869
+custom_colors/font_color = Color( 1, 0.827451, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+
+[node name="amount" type="Label" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 340.97
+margin_top = 13.0
+margin_right = 388.97
+margin_bottom = 42.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="BuyBlock"]
+margin_left = 483.337
+margin_top = 108.88
+margin_right = 536.337
+margin_bottom = 132.88
+text = "Cost"
+
+[node name="Label2" type="Label" parent="BuyBlock"]
+margin_left = 372.443
+margin_top = 108.88
+margin_right = 465.443
+margin_bottom = 132.88
+text = "Number"
+
+[node name="Label3" type="Label" parent="BuyBlock"]
+margin_left = 80.97
+margin_top = 108.88
+margin_right = 173.97
+margin_bottom = 132.88
+text = "Item"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumberSelection" type="Panel" parent="."]
+visible = false
+margin_left = 257.0
+margin_top = 729.0
+margin_right = 854.0
+margin_bottom = 931.0
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="NumberSelection"]
+self_modulate = Color( 0, 0, 0, 0.686275 )
+show_behind_parent = true
+margin_right = 592.0
+margin_bottom = 202.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NumberSelection"]
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 565.0
+margin_bottom = 98.0
+
+[node name="HSlider" type="HSlider" parent="NumberSelection"]
+margin_left = 54.0
+margin_top = 113.886
+margin_right = 669.0
+margin_bottom = 139.886
+rect_scale = Vector2( 0.8, 0.8 )
+custom_icons/grabber_disabled = ExtResource( 17 )
+custom_icons/grabber_highlight = ExtResource( 17 )
+custom_icons/grabber = ExtResource( 17 )
+custom_styles/slider = ExtResource( 18 )
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="NumberSelection"]
+margin_left = 166.538
+margin_top = 141.994
+margin_right = 420.538
+margin_bottom = 185.994
+theme = ExtResource( 16 )
+text = "Confirm"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 62.0
+margin_top = 113.765
+margin_right = 520.0
+margin_bottom = 172.765
+text = "Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 610.043
+margin_top = 113.765
+margin_right = 1068.04
+margin_bottom = 172.765
+text = "Traider"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

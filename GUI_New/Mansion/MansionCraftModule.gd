@@ -36,6 +36,8 @@ func cancel_choise():
 	$NumberSelect.hide()
 	$MaterialSetupPanel.hide()
 	$CraftScheldue.show()
+	$SelectCharacters.visible = $CraftScheldue/ScrollContainer/VBoxContainer.get_child_count() > 1
+
 
 func set_filter(type):
 	item_filter = type
@@ -301,7 +303,10 @@ func selectcraftitem(item):
 		else:
 			baseitem = Items.itemlist[item.resultitem]
 		$NumberSelect/NumberConfirm.disabled = false
+		$MaterialSetupPanel/EndItemFrame/EndItem.material = null
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = baseitem.icon
+		print("Base Item:" + str(baseitem))
+		$MaterialSetupPanel/EndItemDescript.bbcode_text = "[center]" + str(baseitem.name) + "[/center]\n" + str(baseitem.descript)
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = ''
@@ -371,7 +376,7 @@ func choosematerial(button):
 			parttext = parttext.substr(0, parttext.length()-2)
 			newbutton.get_node("Label").bbcode_text = parttext
 			globals.connecttexttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
-			newbutton.connect("pressed",self,'selectmaterial',[i, part, cost])
+			newbutton.get_node("ButtonOverlay").connect("pressed",self,'selectmaterial',[i, part, cost])
 			
 
 func selectmaterial(material, part, cost):

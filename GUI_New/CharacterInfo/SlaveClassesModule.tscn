@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=2]
@@ -7,13 +7,15 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/CursiveFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://GUI_New/CharacterInfo/ClassInformationPanel.gd" type="Script" id=7]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=8]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_CLASSES.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavebody.png" type="Texture" id=10]
-[ext_resource path="res://assets/themes/Checkbox&Tabs.tres" type="Theme" id=24]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=11]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_List_Buttons.tres" type="Theme" id=12]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=27]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -73,14 +75,15 @@ __meta__ = {
 [node name="categories" type="VBoxContainer" parent="."]
 margin_left = 50.0
 margin_top = 64.0
-margin_right = 306.0
+margin_right = 214.0
 margin_bottom = 478.0
+theme = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="all" type="Button" parent="categories"]
-margin_right = 256.0
+margin_right = 164.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Hint"
@@ -89,7 +92,7 @@ text = "All"
 
 [node name="social" type="Button" parent="categories"]
 margin_top = 44.0
-margin_right = 256.0
+margin_right = 164.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Social"
@@ -98,7 +101,7 @@ text = "Soc"
 
 [node name="labor" type="Button" parent="categories"]
 margin_top = 88.0
-margin_right = 256.0
+margin_right = 164.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Labor"
@@ -107,7 +110,7 @@ text = "Lab"
 
 [node name="sexual" type="Button" parent="categories"]
 margin_top = 132.0
-margin_right = 256.0
+margin_right = 164.0
 margin_bottom = 172.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Sexuals"
@@ -116,7 +119,7 @@ text = "Sex"
 
 [node name="combat" type="Button" parent="categories"]
 margin_top = 176.0
-margin_right = 256.0
+margin_right = 164.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Combat"
@@ -125,7 +128,7 @@ text = "Com"
 
 [node name="magic" type="Button" parent="categories"]
 margin_top = 220.0
-margin_right = 256.0
+margin_right = 164.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 0, 40 )
 hint_tooltip = "Magic"
@@ -189,7 +192,7 @@ margin_left = 64.0
 margin_top = 832.0
 margin_right = 306.0
 margin_bottom = 873.0
-theme = ExtResource( 24 )
+theme = ExtResource( 11 )
 text = "Show Locked"
 align = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=2]
@@ -6,33 +6,7 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 128, 42 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 128, 42 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 128, 42 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 128, 42 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 128, 42 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 128, 42 )
+[sub_resource type="MeshTexture" id=2]
 
 [node name="InventoryStatsModule" type="Panel"]
 margin_right = 375.0
@@ -50,10 +24,11 @@ margin_right = 543.0
 margin_bottom = 898.0
 
 [node name="base_stats" type="GridContainer" parent="."]
-margin_left = -57.6746
-margin_top = 16.6981
-margin_right = 351.326
-margin_bottom = 164.698
+visible = false
+margin_left = -37.6731
+margin_top = 26.1333
+margin_right = 337.327
+margin_bottom = 174.133
 custom_constants/vseparation = 7
 custom_constants/hseparation = 0
 columns = 4
@@ -62,7 +37,7 @@ __meta__ = {
 }
 
 [node name="label_atk" type="Label" parent="base_stats"]
-margin_right = 175.0
+margin_right = 158.0
 margin_bottom = 24.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -70,15 +45,15 @@ text = "ATK:"
 align = 2
 
 [node name="atk" type="Label" parent="base_stats"]
-margin_left = 175.0
-margin_right = 203.0
+margin_left = 158.0
+margin_right = 186.0
 margin_bottom = 24.0
 mouse_filter = 1
 text = "25"
 
 [node name="label_matk" type="Label" parent="base_stats"]
-margin_left = 203.0
-margin_right = 378.0
+margin_left = 186.0
+margin_right = 344.0
 margin_bottom = 24.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -86,15 +61,15 @@ text = "MATK:"
 align = 2
 
 [node name="matk" type="Label" parent="base_stats"]
-margin_left = 378.0
-margin_right = 409.0
+margin_left = 344.0
+margin_right = 375.0
 margin_bottom = 24.0
 mouse_filter = 1
 text = "20"
 
 [node name="label_armor" type="Label" parent="base_stats"]
 margin_top = 31.0
-margin_right = 175.0
+margin_right = 158.0
 margin_bottom = 55.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -102,17 +77,17 @@ text = "DEF:"
 align = 2
 
 [node name="armor" type="Label" parent="base_stats"]
-margin_left = 175.0
+margin_left = 158.0
 margin_top = 31.0
-margin_right = 203.0
+margin_right = 186.0
 margin_bottom = 55.0
 mouse_filter = 1
 text = "15"
 
 [node name="label_mdef" type="Label" parent="base_stats"]
-margin_left = 203.0
+margin_left = 186.0
 margin_top = 31.0
-margin_right = 378.0
+margin_right = 344.0
 margin_bottom = 55.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -120,16 +95,16 @@ text = "MDEF:"
 align = 2
 
 [node name="mdef" type="Label" parent="base_stats"]
-margin_left = 378.0
+margin_left = 344.0
 margin_top = 31.0
-margin_right = 409.0
+margin_right = 375.0
 margin_bottom = 55.0
 mouse_filter = 1
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="base_stats"]
 margin_top = 62.0
-margin_right = 175.0
+margin_right = 158.0
 margin_bottom = 86.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -137,17 +112,17 @@ text = "Hit Rate:"
 align = 2
 
 [node name="hitrate" type="Label" parent="base_stats"]
-margin_left = 175.0
+margin_left = 158.0
 margin_top = 62.0
-margin_right = 203.0
+margin_right = 186.0
 margin_bottom = 86.0
 mouse_filter = 1
 text = "15"
 
 [node name="label_evasion" type="Label" parent="base_stats"]
-margin_left = 203.0
+margin_left = 186.0
 margin_top = 62.0
-margin_right = 378.0
+margin_right = 344.0
 margin_bottom = 86.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -155,16 +130,16 @@ text = "Evasion:"
 align = 2
 
 [node name="evasion" type="Label" parent="base_stats"]
-margin_left = 378.0
+margin_left = 344.0
 margin_top = 62.0
-margin_right = 409.0
+margin_right = 375.0
 margin_bottom = 86.0
 mouse_filter = 1
 text = "20"
 
 [node name="label_speed" type="Label" parent="base_stats"]
 margin_top = 93.0
-margin_right = 175.0
+margin_right = 158.0
 margin_bottom = 117.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -172,17 +147,17 @@ text = "Speed:"
 align = 2
 
 [node name="speed" type="Label" parent="base_stats"]
-margin_left = 175.0
+margin_left = 158.0
 margin_top = 93.0
-margin_right = 203.0
+margin_right = 186.0
 margin_bottom = 117.0
 mouse_filter = 1
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="base_stats"]
-margin_left = 203.0
+margin_left = 186.0
 margin_top = 93.0
-margin_right = 378.0
+margin_right = 344.0
 margin_bottom = 117.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -190,16 +165,16 @@ text = "Armor Pen.:"
 align = 2
 
 [node name="armorpenetration" type="Label" parent="base_stats"]
-margin_left = 378.0
+margin_left = 344.0
 margin_top = 93.0
-margin_right = 409.0
+margin_right = 375.0
 margin_bottom = 117.0
 mouse_filter = 1
 text = "20"
 
 [node name="label_critchance" type="Label" parent="base_stats"]
 margin_top = 124.0
-margin_right = 175.0
+margin_right = 158.0
 margin_bottom = 148.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -207,17 +182,17 @@ text = "Critical:"
 align = 2
 
 [node name="critchance" type="Label" parent="base_stats"]
-margin_left = 175.0
+margin_left = 158.0
 margin_top = 124.0
-margin_right = 203.0
+margin_right = 186.0
 margin_bottom = 148.0
 mouse_filter = 1
 text = "15"
 
 [node name="label_critmod" type="Label" parent="base_stats"]
-margin_left = 203.0
+margin_left = 186.0
 margin_top = 124.0
-margin_right = 378.0
+margin_right = 344.0
 margin_bottom = 148.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -225,18 +200,16 @@ text = "Critical Mod:"
 align = 2
 
 [node name="critmod" type="Label" parent="base_stats"]
-margin_left = 378.0
+margin_left = 344.0
 margin_top = 124.0
-margin_right = 409.0
+margin_right = 375.0
 margin_bottom = 148.0
 mouse_filter = 1
 text = "20"
 
 [node name="resists" type="GridContainer" parent="."]
-visible = false
-margin_left = 12.76
 margin_top = 27.9333
-margin_right = 360.76
+margin_right = 348.0
 margin_bottom = 175.933
 custom_constants/vseparation = 7
 custom_constants/hseparation = 0
@@ -258,7 +231,7 @@ margin_right = 134.0
 margin_bottom = 24.0
 text = "25"
 
-[node name="StatsButton" type="Button" parent="."]
+[node name="StatsButton" type="TextureButton" parent="."]
 anchor_left = 0.08
 anchor_top = -0.084
 anchor_right = 0.08
@@ -268,22 +241,19 @@ margin_top = 0.0933008
 margin_right = 328.0
 margin_bottom = 30.0933
 rect_scale = Vector2( -1, 1 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
 toggle_mode = true
 shortcut_in_tooltip = false
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+texture_focused = SubResource( 2 )
 
 [node name="Label" type="Label" parent="StatsButton"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_right = 164.0
-margin_bottom = 30.0
+margin_left = -59.0
+margin_right = 46.0
+margin_bottom = 42.0
 rect_scale = Vector2( -1, 1 )
 text = "Stats"
 align = 1
@@ -292,17 +262,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResistsButton" type="Button" parent="."]
+[node name="ResistsButton" type="TextureButton" parent="."]
 margin_left = 194.0
 margin_top = -15.8667
 margin_right = 358.0
 margin_bottom = 14.1333
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
 toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ResistsButton"]
+margin_right = 108.0
+margin_bottom = 42.0
 text = "Resists"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -135,9 +135,9 @@ var icons = {
 	obed2 = "res://assets/images/gui/gui icons/obedience2.png",
 	obed3 = "res://assets/images/gui/gui icons/obedience3.png",
 	
-	class_master = "res://assets/images/gui/gui icons/icon_master.png",
+	class_master = "res://assets/Textures_v2/MANSION/icon_master.png",
 	class_servant = "res://assets/images/gui/gui icons/icon_servant.png",
-	class_slave = "res://assets/images/gui/gui icons/icon_slave.png",
+	class_slave = "res://assets/Textures_v2/MANSION/icon_slave.png",
 	
 	quest_slave_delivery = "res://assets/images/gui/slavepanel/charm.png",
 	quest_gold = 'res://assets/images/iconsitems/gold.png',
@@ -151,8 +151,8 @@ var icons = {
 	rest = 'res://assets/images/gui/gui icons/sleepicon.png',
 	joy = 'res://assets/images/gui/gui icons/joyicon.png',
 	
-	male = load("res://assets/images/sexicons/male.png"),
-	female = load("res://assets/images/sexicons/female.png"),
+	male = load("res://assets/Textures_v2/Universal/Icons/icon_male.png"),
+	female = load("res://assets/Textures_v2//Universal/Icons/icon_female.png"),
 	futa = load("res://assets/images/sexicons/futa.png"),
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS

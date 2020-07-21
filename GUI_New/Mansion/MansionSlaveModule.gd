@@ -72,9 +72,13 @@ func show_slave_info():
 			get_node("base_stats/"+ i ).value = person.get_stat(i)
 			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
 		text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
+		var gatherable = Items.materiallist.has(person.get_work())
 		if person.is_players_character == true:
 			if person.get_work() != '':
-				text += "Occupation: " + races.tasklist[person.get_work()].name
+				if !gatherable:
+					text = races.tasklist[person.get_work()].name
+				else:
+					text = Items.materiallist[person.get_work()].progress_formula.capitalize()
 			else:
 				text += "Occupation: None"
 			text += "\n"

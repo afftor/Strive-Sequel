@@ -76,11 +76,12 @@ func build_skill_panel():
 
 func select_skill_target(skillcode):
 	get_parent().chars_for_skill.clear()
+	var skill_source = get_parent().skill_source
 	active_skill = skillcode
 	# input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
-	var reqs = [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs
+	var reqs = [{code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs
 	for i in ResourceScripts.game_party.characters.values():
-		if i.checkreqs(reqs) == false:
+		if !i.checkreqs(reqs) || !i.same_location_with(skill_source):
 			continue
 		get_parent().chars_for_skill.append(i)
 	get_parent().skill_manager()

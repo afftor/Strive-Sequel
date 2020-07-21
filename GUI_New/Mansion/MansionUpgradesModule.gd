@@ -15,7 +15,7 @@ func _ready():
 #	$StateButton.text = str(state_list[state_id]).capitalize()
 	yield(get_tree().create_timer(0.3), "timeout")
 	if variables.unlock_all_upgrades == true:
-		for i in upgradedata.upgradelist.values():
+		for i in globals.upgradelist.values():
 			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	globals.connect("hour_tick", self, "update_buttons")
 	$SelectChars.connect("pressed", self, "select_chars_for_upgrade")
@@ -93,7 +93,7 @@ func open_queue():
 
 		update_progress(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
 		# newbutton.set_meta('upgrade', upgrade)
-		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgrade])
+		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgradedata.upgradelist[upgrade]])
 		get_parent().TaskModule.task_index = 1
 		get_parent().TaskModule.show_task_info()
 
@@ -136,9 +136,16 @@ func update_buttons():
 		newbutton.set_meta('upgrade', i)
 		newbutton.connect("pressed", self, "selectupgrade", [i])
 		# newbutton.connect("pressed", self, "add_to_upgrades_queue", [i])
+	for i in UpgradesContainer.get_children():
+		if i.name == 'Button':
+			continue
+		i.pressed = i.get_meta("upgrade") == get_parent().selected_upgrade
 
 func remove_from_upgrades_queue(upgrade):
-	ResourceScripts.game_res.upgrades_queue.erase(upgrade)
+	ResourceScripts.game_res.upgrades_queue.erase(upgrade.code)
+	if upgrade == get_parent().selected_upgrade:
+		selectupgrade(upgrade)
+	open()
 	open_queue()
 
 
@@ -166,22 +173,19 @@ func selectupgrade(upgrade):
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
 
-	for i in UpgradesContainer.get_children():
-		if i.name == 'Button':
-			continue
-		i.pressed = i.get_meta("upgrade") == get_parent().selected_upgrade
+
 
 	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)
 
 	var currentupgradelevel = findupgradelevel(upgrade) + 1
 
 	if currentupgradelevel > 1:
-		text += ('\n\n' + tr("UPGRADEPREVBONUS") + ': ' + tr(upgrade.levels[currentupgradelevel - 1].bonusdescript))
+		text += ('\n\n' + tr("UPGRADEPREVBONUS") + ': '	+ upgrade.levels[currentupgradelevel - 1].bonusdescript)
 
 	var canpurchase = true
 
 	if upgrade.levels.has(currentupgradelevel):
-		text += ('\n\n'	+ tr("UPGRADENEXTBONUS") + ': ' + tr(upgrade.levels[currentupgradelevel].bonusdescript))
+		text += ('\n\n'	+ tr("UPGRADENEXTBONUS") + ': '	+ tr(upgrade.levels[currentupgradelevel].bonusdescript))
 
 		$UpgradeDescript/Time.show()
 		$UpgradeDescript/Time/Label.text = str(upgrade.levels[currentupgradelevel].taskprogress)
@@ -210,6 +214,7 @@ func selectupgrade(upgrade):
 
 	$UpgradeDescript/RichTextLabel.bbcode_text = text
 	$UpgradeDescript/UnlockButton.visible = canpurchase
+	update_buttons()
 	
 
 

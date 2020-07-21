@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=4 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=3]
 
@@ -7,13 +7,6 @@ size = 20
 font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-region_rect = Rect2( 0, 0, 210, 58 )
-margin_left = 55.0
-margin_right = 55.0
-margin_top = 18.0
-margin_bottom = 18.0
-
-[sub_resource type="StyleBoxTexture" id=3]
 region_rect = Rect2( 0, 0, 128, 55 )
 margin_left = 12.0
 margin_right = 12.0
@@ -30,6 +23,6 @@ Button/fonts/font = SubResource( 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
-Button/styles/normal = SubResource( 2 )
+Button/styles/normal = null
 Button/styles/pressed = null
-Panel/styles/panel = SubResource( 3 )
+Panel/styles/panel = SubResource( 2 )

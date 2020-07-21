@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI_New/Inventory/InventoryFactorsModule.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/tame_factor.png" type="Texture" id=15]
 [ext_resource path="res://assets/Themes_v2/INVENTORY/I_SlaveList.tres" type="Theme" id=16]
 [ext_resource path="res://assets/Themes_v2/INVENTORY/I_SL_Buttons.tres" type="Theme" id=17]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -48,17 +49,17 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
 visible = false
 margin_right = 520.0
-margin_bottom = 38.0
+margin_bottom = 32.0
+theme = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 toggle_mode = true
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 44.7101
-margin_top = 7.0
-margin_right = 291.71
-margin_bottom = 31.0
+margin_left = 13.0
+margin_right = 260.0
+margin_bottom = 22.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Name"
 __meta__ = {

@@ -70,7 +70,8 @@ func show_workers(task, button):
 		var newworker = input_handler.DuplicateContainerTemplate(WorkersContainer)
 		newworker.text = ResourceScripts.game_party.characters[worker].get_short_name()
 	$Tooltip.rect_position.y = button.rect_position.y + button.rect_size.y * 2
-	$Tooltip.rect_size.y = int(WorkersContainer.get_child(WorkersContainer.get_child_count() - 1).rect_size.y) * WorkersContainer.get_child_count()
+	yield(get_tree(), 'idle_frame')
+	$Tooltip.rect_size.y = int(WorkersContainer.get_child(WorkersContainer.get_child_count() - 1).rect_size.y) * WorkersContainer.get_child_count() + 20
 	$Tooltip.show()
 
 func show_resources_info():
@@ -83,7 +84,7 @@ func show_resources_info():
 			newtask.hide()
 			continue
 
-		if task_name in ['alchemy','tailor','cooking','smith','cooking']:
+		if task_name in ['alchemy','tailor','cooking','smith']:
 			if ResourceScripts.game_res.craftinglists[task_name].size() <= 0:
 				newtask.hide()
 			else:
@@ -106,7 +107,8 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress
 		else:
-			newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
+			# newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
+			newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=2]
@@ -29,6 +29,10 @@
 [ext_resource path="res://GUI_New/Mansion/MansionCraftModule.tscn" type="PackedScene" id=27]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.tscn" type="PackedScene" id=28]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.gd" type="Script" id=29]
+[ext_resource path="res://GUI_New/Mansion/InteractionMainModule.tscn" type="PackedScene" id=30]
+[ext_resource path="res://GUI_New/Mansion/InteractSelectionModule.tscn" type="PackedScene" id=31]
+[ext_resource path="res://GUI_New/Mansion/MansionSexSelectionModule.tscn" type="PackedScene" id=32]
+[ext_resource path="res://GUI_New/Mansion/MansionSexSelectionModule.gd" type="Script" id=33]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 22 )
@@ -134,7 +138,7 @@ script = ExtResource( 20 )
 [node name="MansionNavigationModule" parent="." instance=ExtResource( 25 )]
 margin_left = 320.0
 margin_top = 15.0
-margin_right = -150.0
+margin_right = -15.0
 margin_bottom = -1010.0
 theme = ExtResource( 21 )
 script = ExtResource( 26 )
@@ -155,6 +159,7 @@ margin_bottom = 1063.0
 script = ExtResource( 29 )
 
 [node name="TestButton" type="Button" parent="."]
+visible = false
 margin_left = 320.0
 margin_top = 58.0
 margin_right = 382.0
@@ -163,4 +168,17 @@ text = "Test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]
+
+[node name="InteractionMainModule" parent="." instance=ExtResource( 30 )]
+visible = false
+
+[node name="InteractSelectionModule" parent="." instance=ExtResource( 31 )]
+visible = false
+
+[node name="MansionSexSelectionModule" parent="." instance=ExtResource( 32 )]
+visible = false
+margin_left = 320.0
+margin_top = 948.0
+margin_right = -500.0
+margin_bottom = -12.0
+script = ExtResource( 33 )

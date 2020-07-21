@@ -109,6 +109,9 @@ margin_top = -2.0
 margin_right = 332.0
 margin_bottom = 56.0
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="panel" type="Panel" parent="."]
 margin_left = 4.0
@@ -154,6 +157,14 @@ rect_min_size = Vector2( 200, 45 )
 toggle_mode = true
 text = "Location"
 
+[node name="Training" type="Button" parent="panel/categories"]
+margin_left = 816.0
+margin_right = 1016.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 45 )
+toggle_mode = true
+text = "Training"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="panel"]
 margin_left = 16.0
 margin_top = 64.0
@@ -185,14 +196,18 @@ custom_colors/font_color = Color( 0.910156, 0.359085, 0.88863, 1 )
 text = "Intimacy Unlocked"
 
 [node name="mood" type="TextureProgress" parent="."]
-margin_left = 843.0
-margin_top = 41.8932
-margin_right = 1103.0
-margin_bottom = 69.8932
+margin_left = 171.931
+margin_top = 25.139
+margin_right = 431.931
+margin_bottom = 53.139
+max_value = 50.0
 value = 50.0
 texture_under = ExtResource( 3 )
 texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="mood"]
 margin_top = 227.0
@@ -213,10 +228,10 @@ align = 1
 valign = 1
 
 [node name="fear" type="TextureProgress" parent="."]
-margin_left = 844.022
-margin_top = 108.709
-margin_right = 1104.02
-margin_bottom = 136.709
+margin_left = 648.876
+margin_top = 24.7062
+margin_right = 908.876
+margin_bottom = 52.7062
 value = 50.0
 texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
@@ -397,6 +412,7 @@ margin_bottom = 997.819
 [connection signal="pressed" from="panel/categories/P&P" to="." method="selectcategory" binds= [ "P&P" ]]
 [connection signal="pressed" from="panel/categories/Items" to="." method="selectcategory" binds= [ "Items" ]]
 [connection signal="pressed" from="panel/categories/Location" to="." method="selectcategory" binds= [ "Location" ]]
+[connection signal="pressed" from="panel/categories/Training" to="." method="selectcategory" binds= [ "Training" ]]
 [connection signal="pressed" from="end/finishbutton" to="." method="_on_finishbutton_pressed"]
 [connection signal="pressed" from="sexswitch/confirmsex" to="." method="_on_confirmsex_pressed"]
 [connection signal="pressed" from="sexswitch/cancelsex" to="." method="_on_cancelsex_pressed"]
