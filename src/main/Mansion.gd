@@ -77,15 +77,22 @@ func _ready():
 	if variables.generate_test_chars:
 		ResourceScripts.game_world.make_world()
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'male', 'random')
+		character.create('Demon', 'female', 'random')
 		character.set_stat('consent', 100)
 		character.set_stat('penis_virgin', true)
 		characters_pool.move_to_state(character.id)
 		character.add_trait('core_trait')
 		character.unlock_class("master")
-		character.unlock_class("archer")
-		character.unlock_class("foreman")
 		character.unlock_class("rogue")
+		character.unlock_class("ranger")
+		character.unlock_class("paladin")
+		character.unlock_class("templar")
+		character.unlock_class("archmage")
+		character.unlock_class("bard")
+		character.unlock_class("battlesmith")
+		character.unlock_class("shaman")
+		character.unlock_class("technomancer")
+		character.unlock_class("sextoy")
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
@@ -97,10 +104,7 @@ func _ready():
 		character.set_stat('consent',100)
 		character.set_stat('charm_factor',5)
 		character.set_stat('physics_factor',5)
-		#character.unlock_class("worker")
 		character.mp = 50
-		character.unlock_class("sadist")
-#		character.unlock_class("caster")
 		for i in Skilldata.Skilllist:
 			if Skilldata.Skilllist[i].type != 'social':
 				continue
@@ -114,7 +118,6 @@ func _ready():
 		character.set_stat('consent',100)
 		character.statlist.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
-		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
 		character.set_slave_category('servant')
 		character.set_stat('obedience', 100)
@@ -218,7 +221,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("revitalizer", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
@@ -249,11 +252,11 @@ func _ready():
 		character.set_stat('base_exp', 500)
 		#input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(world_gen.make_chest_loot('mages_join_reward'), 'Teh Loot')
 		#input_handler.get_loot_node().open(world_gen.make_chest_loot('warriors_join_reward'), ' Loot')
-		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]#[state.areas.plains.locations.size()-1]]
+		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[0]]#[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message("starting_dialogue4", '',{})
+		input_handler.interactive_message("xari_encounter1", '',{})
 		
 		#input_handler.interactive_message('intro', '', {})
 		
@@ -290,19 +293,19 @@ func open_travels():
 
 func quest_test():
 	$SlaveList.update()
-	for i in ResourceScripts.game_party.characters.values():print(i.get_stat('name'), i.get_stat('has_womb'))
+	#for i in ResourceScripts.game_party.characters.values():print(i.get_stat('name'), i.get_stat('has_womb'))
 	#state.areas.plains.factions.servants.totalreputation = 500
 	#print(input_handler.CloseableWindowsArray)
 #	for i in state.characters.values():
 #		i.base_exp += 100
 	#input_handler.add_random_chat_message(state.get_unique_slave('daisy'), 'hire')
-	#$Exploration.testcombat()
+	$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')
 
 func _process(delta):
 	if self.visible == false:
 		return
-	$gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)#str(state.money)
+	$gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
 	$food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food()) + " - " + str(ResourceScripts.game_party.get_food_consumption())
 	
 	$population.text = "Population: "+ str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())

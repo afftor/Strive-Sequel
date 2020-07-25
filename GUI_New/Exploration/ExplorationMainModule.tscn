@@ -1,0 +1,95 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI_New/Exploration/ExplorationMainModule.gd" type="Script" id=3]
+[ext_resource path="res://GUI_New/Exploration/ExploreCityModule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI_New/Exploration/ExploreNavigationModule.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/images/backgrounds/elf_capital.png" type="Texture" id=6]
+[ext_resource path="res://GUI_New/Exploration/ExploreNavigationModule.gd" type="Script" id=7]
+[ext_resource path="res://GUI_New/Exploration/ExploreCityModule.gd" type="Script" id=8]
+[ext_resource path="res://GUI_New/Exploration/ExploreHireModule.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI_New/Exploration/ExploreHireModule.gd" type="Script" id=10]
+[ext_resource path="res://GUI_New/Exploration/FactionDetailsModule.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GUI_New/Exploration/QuestBoardModule.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GUI_New/Exploration/QuestBoardModule.gd" type="Script" id=13]
+[ext_resource path="res://GUI_New/Exploration/ExploreShopModule.tscn" type="PackedScene" id=14]
+[ext_resource path="res://GUI_New/Exploration/ExploreShopModule.gd" type="Script" id=15]
+[ext_resource path="res://GUI_New/Exploration/ExploreFullSlaveInfo.tscn" type="PackedScene" id=16]
+[ext_resource path="res://GUI_New/Exploration/ExploreFullSlaveInfo.gd" type="Script" id=17]
+[ext_resource path="res://StatsTrading.tscn" type="PackedScene" id=18]
+[ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=19]
+
+[node name="ExplorationMainModule" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.74902 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 6 )
+
+[node name="VideoPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="MansionClockModule" parent="." instance=ExtResource( 19 )]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 305.0
+margin_bottom = 195.0
+
+[node name="ExploreCityModule" parent="." instance=ExtResource( 4 )]
+margin_left = 15.0
+margin_top = 555.0
+margin_right = 305.0
+margin_bottom = 1067.0
+script = ExtResource( 8 )
+
+[node name="ExploreNavigationModule" parent="." instance=ExtResource( 5 )]
+margin_left = 327.0
+margin_top = 15.0
+margin_right = 1903.0
+margin_bottom = 68.0
+script = ExtResource( 7 )
+
+[node name="ExploreHireModule" parent="." instance=ExtResource( 9 )]
+visible = false
+script = ExtResource( 10 )
+
+[node name="FactionDetailsModule" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="QuestBoardModule" parent="." instance=ExtResource( 12 )]
+visible = false
+script = ExtResource( 13 )
+
+[node name="ExploreShopModule" parent="." instance=ExtResource( 14 )]
+visible = false
+margin_left = 414.0
+margin_top = 56.0
+margin_right = 1537.0
+margin_bottom = 1036.0
+script = ExtResource( 15 )
+
+[node name="StatUpgradeModule" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[node name="ExploreFullSlaveModule" parent="." instance=ExtResource( 16 )]
+visible = false
+script = ExtResource( 17 )
+
+[node name="Stat" type="Button" parent="."]
+visible = false
+margin_left = 1486.0
+margin_top = 928.0
+margin_right = 1814.0
+margin_bottom = 1031.0
+text = "Stat"
+__meta__ = {
+"_edit_use_anchors_": false
+}

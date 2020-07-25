@@ -127,9 +127,14 @@ func e_apply():
 			'parent':
 				var obj = effects_pool.get_effect_by_id(parent).get_applied_obj
 				obj.apply_effect(e)
-		pass
+			'arg':
+				if args.size() == 0: continue
+				var obj = args[0]
+				if obj == null or !(obj is ResourceScripts.scriptdict.class_slave):
+					print('template error: arg0 is not character') 
+					continue
+				obj.apply_effect(e)
 	sub_effects.clear()
-	pass
 
 func remove():
 	var obj = get_applied_obj()

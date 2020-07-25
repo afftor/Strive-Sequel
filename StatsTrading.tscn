@@ -1,0 +1,210 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://stat_upgrade_panel.gd" type="Script" id=1]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/images/gui/menu/textfieldactive.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 230, 40 )
+
+[node name="CharactersPanel" type="Panel"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 896.0
+margin_bottom = 960.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsPanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.564706 )
+margin_left = 704.0
+margin_right = 1352.0
+margin_bottom = 896.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatInfo" type="Label" parent="StatsPanel"]
+margin_left = 64.0
+margin_top = 104.0
+margin_right = 161.0
+margin_bottom = 128.0
+text = "Stat Info"
+
+[node name="StatInfoName" type="Label" parent="StatsPanel"]
+margin_left = 64.0
+margin_top = 160.0
+margin_right = 136.0
+margin_bottom = 184.0
+text = "Name:"
+
+[node name="StatInfoNameValue" type="Label" parent="StatsPanel"]
+margin_left = 328.0
+margin_top = 160.0
+margin_right = 447.0
+margin_bottom = 184.0
+text = "Stat Name"
+
+[node name="StatInfoCurrent" type="Label" parent="StatsPanel"]
+margin_left = 64.0
+margin_top = 216.0
+margin_right = 214.0
+margin_bottom = 240.0
+text = "Curent Value"
+
+[node name="StatInfoCurrentValue" type="Label" parent="StatsPanel"]
+margin_left = 328.0
+margin_top = 216.0
+margin_right = 488.0
+margin_bottom = 240.0
+text = "Current Value"
+
+[node name="StatInfoUpgrade" type="Label" parent="StatsPanel"]
+margin_left = 64.0
+margin_top = 273.0
+margin_right = 224.0
+margin_bottom = 297.0
+text = "Upgrade Price"
+
+[node name="StatInfoUpgradeValue" type="Label" parent="StatsPanel"]
+margin_left = 328.0
+margin_top = 273.0
+margin_right = 387.0
+margin_bottom = 297.0
+text = "Price"
+
+[node name="ConfirmButton" type="Button" parent="StatsPanel"]
+margin_left = 264.0
+margin_top = 816.0
+margin_right = 373.838
+margin_bottom = 854.251
+custom_styles/normal = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Upgrade"
+
+[node name="Testing" type="Label" parent="StatsPanel"]
+visible = false
+margin_left = 280.0
+margin_top = 552.0
+margin_right = 365.0
+margin_bottom = 576.0
+text = "Testing"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 40.0
+margin_right = 252.0
+margin_bottom = 64.0
+text = "ChooseCharcter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharactersOptionButton" type="OptionButton" parent="."]
+margin_left = 64.0
+margin_top = 80.0
+margin_right = 320.0
+margin_bottom = 118.251
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharactersScroll" type="ScrollContainer" parent="."]
+visible = false
+margin_left = 752.0
+margin_top = 64.0
+margin_right = 1328.0
+margin_bottom = 816.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharactersVBox" type="VBoxContainer" parent="CharactersScroll"]
+margin_right = 300.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 300, 51 )
+
+[node name="Button" type="TextureButton" parent="CharactersScroll/CharactersVBox"]
+visible = false
+margin_right = 538.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 300, 51 )
+theme = ExtResource( 2 )
+texture_normal = ExtResource( 3 )
+
+[node name="CharacterName" type="Label" parent="CharactersScroll/CharactersVBox/Button"]
+margin_left = 10.0
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 24.0
+text = "Character Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsScroll" type="ScrollContainer" parent="."]
+margin_left = 56.0
+margin_top = 265.758
+margin_right = 640.0
+margin_bottom = 833.758
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsVBox" type="VBoxContainer" parent="StatsScroll"]
+margin_right = 300.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 300, 51 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="StatsScroll/StatsVBox"]
+margin_right = 300.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 0, 51 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+expand = true
+
+[node name="StatName" type="Label" parent="StatsScroll/StatsVBox/Button"]
+margin_left = 10.0
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 24.0
+text = "Stat Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NothingToUpgrade" type="Label" parent="."]
+visible = false
+margin_left = 64.0
+margin_top = 152.0
+margin_right = 287.0
+margin_bottom = 176.0
+text = "Nothing to Upgrade"

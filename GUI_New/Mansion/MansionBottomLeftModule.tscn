@@ -1,111 +1,174 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=1]
-[ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu_Panel.tres" type="StyleBox" id=2]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_travel_small.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrades_small.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_craft_small.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_inventory_small.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/MANSION/icon_sex_small.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_hover.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_travel_small.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_upgrades_small.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_craft_small.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_inventory_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_sex_small.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_pressed.png" type="Texture" id=8]
 
 [node name="MansionBottomLeftModule" type="Panel"]
 margin_right = 290.0
 margin_bottom = 392.0
-theme = ExtResource( 1 )
-custom_styles/panel = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 8.0
 margin_top = 11.0
 margin_right = 282.0
 margin_bottom = 339.0
-custom_constants/separation = 12
+custom_constants/separation = 19
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TravelsButton" type="Button" parent="VBoxContainer"]
+[node name="TravelsButton" type="TextureButton" parent="VBoxContainer"]
 margin_right = 274.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 0, 64 )
+margin_bottom = 58.0
 toggle_mode = true
-text = "            Travels"
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/TravelsButton"]
-margin_left = 6.94936
-margin_top = 10.1924
-margin_right = 50.9494
-margin_bottom = 54.1924
+margin_left = 7.37041
+margin_top = 7.18747
+margin_right = 51.3705
+margin_bottom = 51.1875
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpgradesButton" type="Button" parent="VBoxContainer"]
-margin_top = 76.0
+[node name="Label" type="Label" parent="VBoxContainer/TravelsButton"]
+margin_left = 58.0
+margin_right = 271.0
+margin_bottom = 59.0
+text = "Travels"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradesButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 77.0
 margin_right = 274.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 0, 64 )
+margin_bottom = 135.0
 toggle_mode = true
-text = "             Upgrades"
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/UpgradesButton"]
-margin_left = 7.37041
-margin_top = 11.1374
-margin_right = 51.3704
-margin_bottom = 55.1374
+margin_left = 6.88074
+margin_top = 7.05927
+margin_right = 50.8807
+margin_bottom = 51.0593
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SexButton" type="Button" parent="VBoxContainer"]
-margin_top = 152.0
+[node name="Label2" type="Label" parent="VBoxContainer/UpgradesButton"]
+margin_left = 58.0
+margin_right = 271.0
+margin_bottom = 59.0
+text = "Upgrades"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SexButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 154.0
 margin_right = 274.0
-margin_bottom = 216.0
-rect_min_size = Vector2( 0, 64 )
-text = "             Sex"
+margin_bottom = 212.0
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/SexButton"]
-margin_left = 6.81122
-margin_top = 11.3961
-margin_right = 50.8112
-margin_bottom = 55.3961
+margin_left = 7.00399
+margin_top = 7.30937
+margin_right = 51.004
+margin_bottom = 51.3094
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InventoryButton" type="Button" parent="VBoxContainer"]
-margin_top = 228.0
+[node name="Label3" type="Label" parent="VBoxContainer/SexButton"]
+margin_left = 58.0
+margin_right = 271.0
+margin_bottom = 59.0
+text = "Date"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 231.0
 margin_right = 274.0
-margin_bottom = 292.0
+margin_bottom = 295.0
 rect_min_size = Vector2( 0, 64 )
-text = "            Inventory"
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/InventoryButton"]
-margin_left = 7.00399
-margin_top = 9.39304
-margin_right = 51.004
-margin_bottom = 53.393
+margin_left = 7.37041
+margin_top = 7.00071
+margin_right = 51.3704
+margin_bottom = 51.0007
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CraftButton" type="Button" parent="VBoxContainer"]
-margin_top = 304.0
+[node name="Label4" type="Label" parent="VBoxContainer/InventoryButton"]
+margin_left = 58.0
+margin_right = 271.0
+margin_bottom = 59.0
+text = "Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CraftButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 314.0
 margin_right = 274.0
-margin_bottom = 368.0
+margin_bottom = 378.0
 rect_min_size = Vector2( 0, 64 )
-text = "Craft"
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CraftButton"]
 margin_left = 6.88074
-margin_top = 10.086
+margin_top = 7.58948
 margin_right = 50.8807
-margin_bottom = 54.086
+margin_bottom = 51.5895
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="VBoxContainer/CraftButton"]
+margin_left = 58.0
+margin_right = 271.0
+margin_bottom = 59.0
+text = "Craft"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

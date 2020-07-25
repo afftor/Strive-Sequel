@@ -19,13 +19,13 @@ func _ready():
 
 func build_world():
 	for i in worlddata.lands:
-		make_area(i)
-		ResourceScripts.game_world.area_order.append(worlddata.lands[i].code)
+		if worlddata.lands[i].enabled == true:
+			make_area(i)
+			ResourceScripts.game_world.area_order.append(worlddata.lands[i].code)
 
 func make_area(code):
 	var areadata = worlddata.lands[code].duplicate(true)
 	ResourceScripts.game_world.areas[areadata.code] = areadata
-	areadata.population = round(rand_range(areadata.population[0],areadata.population[1]))
 	areadata.quests = {global = {}}
 	areadata.questlocations = {}
 	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
@@ -61,6 +61,7 @@ func get_area_from_location_code(code):
 
 func get_location_from_code(code):
 	var data = ResourceScripts.game_world.location_links[code]
+	print(code, data)
 	return ResourceScripts.game_world.areas[data.area][data.category][code]
 
 func get_faction_from_code(code):
@@ -134,7 +135,7 @@ func make_guild(code, area):
 		events = [],
 		reputation = 0,
 		totalreputation = 0,
-		difficulty = area.difficulty,
+		difficulty = 1,
 		races = area.races.duplicate(true),
 		upgrades = {},
 		slavelevel = 0,
@@ -194,7 +195,6 @@ func make_quest_for_guild(guilddatatemplate, difficulty):
 
 func make_settlement(code, area):
 	var settlement = worlddata.locations[code].duplicate(true)
-	settlement.population = round(rand_range(settlement.population[0],settlement.population[1]))
 	settlement.travel_time = round(rand_range(3,8))
 	var text = worlddata.locationnames[settlement.name+"1"][randi() % worlddata.locationnames[settlement.name + "1"].size()] + worlddata.locationnames[settlement.name+"2"][randi() % worlddata.locationnames[settlement.name + "2"].size()]
 	settlement.name = text
@@ -207,64 +207,12 @@ func make_settlement(code, area):
 	if settlement.has('background_pool'):
 		settlement.background = settlement.background_pool[randi()%settlement.background_pool.size()]
 		settlement.erase("background_pool")
-#	if randf() <= 0.8 || area.secondary_races.size() == 0:
-#		settlement.races.append(area.lead_race)
-#	if (randf() >= 0.7 || settlement.races.size() == 0) && area.secondary_races.size() != 0:
-#		var added_races = area.secondary_races.duplicate()
-#		var another_race = added_races[randi()%added_races.size()]
-#		settlement.races.append(another_race)
-#		added_races.erase(another_race)
-#		if randf() >= 0.5 && added_races.size() > 0:
-#			settlement.races.append(added_races[randi()%added_races.size()])
 	settlement.events = {}
-	
 	update_area_shop(settlement)
 	
-	#adding resource types the settlement is going to have ========== Unused
-#	var resourcedata = settlement.resources.duplicate()
-#	settlement.resources.clear()
-#	var food_types = round(rand_range(settlement.food_type_number[0], settlement.food_type_number[1]))
-#	var resource_array = []
-#	for i in resourcedata:
-#		if Items.materiallist[i].type == 'food':
-#			resource_array.append(i)
-#	while food_types > 0:
-#		var resource = resource_array[randi()%resource_array.size()]
-#		settlement.resources.append(resource)
-#		settlement.shop_resources[resource] = round(rand_range(settlement.food_type_amount[0], settlement.food_type_amount[1]))
-#		resource_array.erase(resource)
-#		food_types -= 1
-#	var resource_types = round(rand_range(settlement.resources_type_number[0], settlement.resources_type_number[1]))
-#	resource_array.clear()
-#	for i in resourcedata:
-#		if Items.materiallist[i].type != 'food':
-#			resource_array.append(i)
-#	while resource_types > 0:
-#		var resource = resource_array[randi()%resource_array.size()]
-#		settlement.resources.append(resource)
-#		settlement.shop_resources[resource] = round(rand_range(settlement.resource_type_amount[0], settlement.resource_type_amount[1]))
-#		resource_array.erase(resource)
-#		resource_types -= 1
-#	var item_types = round(rand_range(settlement.item_type_number[0], settlement.item_type_number[1]))
-#	while item_types > 0:
-#		var itemdata = settlement.items[randi()%settlement.items.size()]
-#		if Items.itemlist[itemdata[0]].has("parts"):
-#			var parts = {}
-#			for i in Items.itemlist[itemdata[0]].parts:
-#				var materialarray = []
-#				for k in settlement.resources:
-#					if Items.materiallist[k].has('parts') && Items.materiallist[k].parts.has(i):
-#						materialarray.append(k)
-#				if materialarray.size() == 0:
-#					for k in Items.materiallist.values():
-#						if k.has('parts') && k.parts.has(i):
-#							materialarray.append([k.code, 1.0/k.price])
-#					materialarray = [input_handler.weightedrandom(materialarray)]
-#				parts[i] = materialarray[randi()%materialarray.size()]
-#			settlement.shop_items[itemdata[0]] = parts
-#		else:
-#			settlement.shop_items[itemdata[0]] = round(rand_range(itemdata[1], itemdata[2]))
-#			item_types -= 1
+	if settlement.has('gather_resources'):
+		for i in settlement.gather_resources.keys():
+			settlement.gather_resources[i] = round(rand_range(settlement.gather_resources[i][0],settlement.gather_resources[i][1]))
 	
 	area.locations[settlement.id] = settlement
 	ResourceScripts.game_world.location_links[settlement.id] = {area = area.code, category = 'locations'} 
@@ -294,7 +242,7 @@ func make_location(code, area):
 	location.enemies = location.enemyarray.duplicate(true)
 	location.tasks = []
 	if location.has('gatherable_resources'):
-		location.gather_resources = {}
+		location.gather_limit_resources = {}
 		var number = round(rand_range(location.gatherable_resources.number[0],location.gatherable_resources.number[1]))
 		var array = []
 		for i in location.gatherable_resources.pool:
@@ -304,9 +252,10 @@ func make_location(code, area):
 			var data = array[randi()%array.size()]
 			var resource_number = data.values()[0]
 			data[data.keys()[0]] = round(rand_range(resource_number[0],resource_number[1]))
-			location.gather_resources[data.keys()[0]] = data.values()[0]
+			location.gather_limit_resources[data.keys()[0]] = data.values()[0]
 			array.erase(data)
 		location.tasks.append("gather")
+		location.gather_mod = rand_range(1.5,1.75)
 	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
@@ -317,7 +266,6 @@ func make_location(code, area):
 		if location.final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
 		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
-	
 	
 	
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})

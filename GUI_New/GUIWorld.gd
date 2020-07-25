@@ -11,9 +11,10 @@ var close_played = false
 onready var MAIN_MODULES = {
 	MANSION = preload("res://GUI_New/Mansion/MansionMainModule.tscn"),
 	SLAVE_INFO = load("res://GUI_New/CharacterInfo/CharInfoMainModule.tscn"),
-	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn")
+	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn"),
+	EXPLORATION = preload("res://GUI_New/Exploration/ExplorationMainModule.tscn"),
+	INTERACTION = preload("res://GUI_New/Mansion/InteractionMainModule.tscn"),
 }
-
 
 # GUI Dict
 onready var gui_data = {}
@@ -23,8 +24,28 @@ var CurrentScene
 var PreviousScene
 var BaseScene
 
+
 func _ready():
+	# OS.window_fullscreen = true
+	# queue_free()
+	# return
 	test_mode()
+
+	# if globals.start_new_game == true:
+	# 	globals.start_new_game = false
+	# 	self.visible = false
+	# 	var newgame_node = Node.new()
+	# 	newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
+	# 	newgame_node.start()
+	# 	input_handler.GameStartNode = newgame_node
+	# 	yield(input_handler, "StartingSequenceComplete")
+	# 	input_handler.GameStartNode.queue_free()
+	# 	#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+	# 	show()
+		
+	# 	input_handler.ActivateTutorial("introduction")
+	# 	if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
+	# 		input_handler.interactive_message('intro', '', {})
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
@@ -37,7 +58,7 @@ func _ready():
 
 
 func _input(event):
-	if (event.is_action_released("ESC") || event.is_action_released("RMB")):
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name != "InteractionMainModule":
 		var ignore_rightclick = false
 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
 			if i.get_global_rect().has_point(get_global_mouse_position()):
@@ -48,6 +69,7 @@ func _input(event):
 
 
 func visibility_handler():
+	print("Visib:" + str(CurrentScene.name))
 	var has_submodules_opened = (CurrentScene.submodules.size() > 0)
 	if has_submodules_opened:
 		submodules_handler()
@@ -344,3 +366,6 @@ func test_mode():
 
 	for i in ResourceScripts.game_world.areas.plains.factions.values():
 		i.reputation = 500
+
+	for c in ResourceScripts.game_party.characters.values():
+		if c.get_location() == "mansion": c.travel.location = "Aliron"

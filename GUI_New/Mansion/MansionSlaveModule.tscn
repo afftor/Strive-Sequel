@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=2]
@@ -6,86 +6,53 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=6]
-[ext_resource path="res://assets/Textures_v2/MANSION/buttonskill.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=9]
-[ext_resource path="res://assets/Textures_v2/MANSION/panel_slaveinfo_mansion.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/MANSION/MansionSlaveInfoPanele.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/inventory/icon_craft1.png" type="Texture" id=13]
 [ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp.png" type="Texture" id=15]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Slave_Module.tres" type="Theme" id=17]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=19]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=21]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=26]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_hover.png" type="Texture" id=29]
 
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 470, 665 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 14
+size = 30
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 30
-font_data = ExtResource( 18 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 20 )
-region_rect = Rect2( 0, 0, 210, 58 )
-margin_left = 55.0
-margin_right = 55.0
-margin_top = 18.0
-margin_bottom = 18.0
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 27 )
-region_rect = Rect2( 0, 0, 210, 58 )
-margin_left = 55.0
-margin_right = 55.0
-margin_top = 18.0
-margin_bottom = 18.0
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 19 )
-region_rect = Rect2( 0, 0, 210, 58 )
-margin_left = 55.0
-margin_right = 55.0
-margin_top = 18.0
-margin_bottom = 18.0
-
-[sub_resource type="DynamicFont" id=7]
-size = 30
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 size = 40
 use_filter = true
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=5]
 size = 22
 font_data = ExtResource( 18 )
 
 [node name="MansionSlaveModule" type="Panel"]
 rect_min_size = Vector2( 470, 665 )
 theme = ExtResource( 17 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -153,7 +120,7 @@ margin_left = 6.0
 margin_top = 64.0
 margin_right = 84.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Label"
 align = 1
 __meta__ = {
@@ -292,13 +259,16 @@ margin_top = 458.016
 margin_right = 66.0
 margin_bottom = 524.016
 texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="productivity"]
 margin_left = 80.0
 margin_top = 13.9836
 margin_right = 176.0
 margin_bottom = 53.9836
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 
@@ -307,9 +277,7 @@ margin_left = 16.0
 margin_top = 591.0
 margin_right = 456.0
 margin_bottom = 654.0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,7 +286,7 @@ __meta__ = {
 margin_left = 8.0
 margin_right = 432.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = "Character Info"
 align = 1
 valign = 1
@@ -426,13 +394,28 @@ margin_right = 56.0126
 margin_bottom = 458.016
 mouse_filter = 2
 
-[node name="Exp" type="TextureRect" parent="TextureRect2"]
-margin_left = 2.20064
-margin_top = -6.6019
-margin_right = 42.2006
-margin_bottom = 7.3981
-mouse_filter = 0
-texture = ExtResource( 15 )
+[node name="Exp" type="TextureButton" parent="TextureRect2"]
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 48.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 28 )
+texture_hover = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureRect2/Exp"]
+margin_left = -1.0
+margin_right = 52.0
+margin_bottom = 34.0
+text = "EXP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="physics" type="TextureRect" parent="TextureRect2"]
 margin_left = 2.20064
@@ -492,7 +475,7 @@ margin_top = -1.52588e-05
 margin_right = 198.711
 margin_bottom = 40.0
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "25"
 align = 1
@@ -518,7 +501,7 @@ margin_top = 152.0
 margin_right = 238.0
 margin_bottom = 179.0
 mouse_filter = 0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.937255, 1, 0.364706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Authority: "

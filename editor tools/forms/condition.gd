@@ -49,7 +49,7 @@ func _init():
 			type = editor_core.PANEL_BOOL,
 			stat = 'check',
 			container = 0,
-			groups = ['has_profession', 'has_any_profession', 'race', 'race_is_beast', 'is_free', 'long_tail', 'long_ears', 'is_humanoid', 'is_master', 'is_dead', 'trait', 'has_status'],
+			groups = ['has_profession', 'has_any_profession', 'race', 'race_is_beast', 'is_free', 'long_tail', 'long_ears', 'is_humanoid', 'is_master', 'is_dead', 'trait', 'has_status', 'gear_equiped'],
 		},
 		{
 			type = editor_core.PANEL_OPTION,

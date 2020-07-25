@@ -4,8 +4,8 @@ var stat_index = 0
 var stats = ["base_stats", "resists"]
 
 func _ready():
-	$SwitchButton.connect("pressed", self, "switch_stats")
-	$SwitchButton.text = "Stats"
+	$StatsButton.connect("pressed", self, "open_base_stats")
+	$ResistsButton.connect("pressed", self, "open_resists")
 	for i in variables.resists_list:
 		var newlabel = $resists/Label.duplicate()
 		var newvalue = $resists/Value.duplicate()
@@ -20,9 +20,10 @@ func _ready():
 			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 
 func open_base_stats():
-	$SwitchButton.text = "Stats"
 	$resists.hide()
 	$base_stats.show()
+	$StatsButton.pressed = true
+	$ResistsButton.pressed = false
 	var character = get_parent().selectedhero
 #	$name.text = character.get_short_name()
 #	for i in ['hp','mp']:
@@ -37,9 +38,11 @@ func open_base_stats():
 
 
 func open_resists():
-	$SwitchButton.text = "Resists"
+	print("Resists")
 	$resists.show()
 	$base_stats.hide()
+	$StatsButton.pressed = false
+	$ResistsButton.pressed = true
 	var character = get_parent().selectedhero
 	for i in $resists.get_children():
 		var tmp = character.get_stat('resists')

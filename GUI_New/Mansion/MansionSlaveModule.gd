@@ -2,7 +2,7 @@ extends Panel
 
 
 onready var MansionMainModule = get_parent()
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 var person
 var authority_lines = {
 	low = "Defiance",
@@ -14,6 +14,7 @@ var authority_lines = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CharacterInfoButton.connect("pressed", get_parent(), "mansion_state_set", ["char_info"])
+	$TextureRect2/Exp.connect("pressed", self, "open_char_class_info")
 	for i in $base_stats.get_children():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 	globals.connecttexttooltip(get_node("TextureRect2/Exp"), statdata.statdata["base_exp"].descript)
@@ -21,6 +22,12 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+
+
+func open_char_class_info():
+	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
+	GUIWorld.set_current_scene(slave_info)
+	slave_info.set_state("class")
 
 
 func show_slave_info():
@@ -65,9 +72,13 @@ func show_slave_info():
 			get_node("base_stats/"+ i ).value = person.get_stat(i)
 			get_node("base_stats/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
 		text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
+		var gatherable = Items.materiallist.has(person.get_work())
 		if person.is_players_character == true:
 			if person.get_work() != '':
-				text += "Occupation: " + races.tasklist[person.get_work()].name
+				if !gatherable:
+					text = races.tasklist[person.get_work()].name
+				else:
+					text = Items.materiallist[person.get_work()].progress_formula.capitalize()
 			else:
 				text += "Occupation: None"
 			text += "\n"

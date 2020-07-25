@@ -203,6 +203,12 @@ func unequip(item):
 func unlock_class(prof, satisfy_progress_reqs = false):
 	xp_module.unlock_class(prof, satisfy_progress_reqs)
 
+func remove_class(prof):
+	xp_module.remove_class(prof)
+
+func remove_all_classes():
+	xp_module.remove_all_classes()
+
 func add_trait(tr_code):
 	statlist.add_trait(tr_code)
 
@@ -223,6 +229,7 @@ func unlearn_c_skill(skill):
 
 func cooldown_tick():
 	skills.cooldown_tick()
+
 
 func assign_to_task(taskcode, taskproduct, iterations = -1):
 	xp_module.assign_to_task(taskcode, taskproduct, iterations)
@@ -281,6 +288,7 @@ func recheck_effect_tag(tg):
 	effects.recheck_effect_tag(tg)
 
 func apply_effect(eff_id):
+	if npc_reference == 'combat_global': return
 	effects.apply_effect(eff_id)
 
 func get_static_effect_by_code(code):
@@ -300,6 +308,9 @@ func remove_all_temp_effects():
 
 func remove_temp_effect_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
 	effects.remove_temp_effect_tag(eff_tag)
+
+func remove_all_temp_effects_tag(eff_tag):#function for non-direct temps removing, like heal or dispel
+	effects.remove_all_temp_effects_tag(eff_tag)
 
 func clean_effects():#clean effects before deleting character
 	effects.clean_effects()
@@ -352,6 +363,7 @@ func use_social_skill(s_code, target):
 #	effects.process_skill_cast_event(s_skill, event)
 
 func check_location(loc, completed = false):
+	if loc == 'mansion': loc = ResourceScripts.game_world.mansion_location
 	return travel.check_location(loc, completed)
 
 func same_location_with(ch):
@@ -437,17 +449,23 @@ func need_heal():
 
 #core functions
 func hp_set(value):
+	if npc_reference == 'combat_global': return
 	if hp <= 0 && value <= 0:
 		return
 	hp = min(value, get_stat('hpmax'))
 	if displaynode != null:
 		displaynode.update_hp()
 	if hp <= 0:
-		death()
+		if has_status('reincarnate'): 
+			hp = get_stat('hpmax')
+			remove_temp_effect_tag('reincarnate')
+#			play_sfx('reborn')
+		else: death()
 	else:
 		defeated = false 
 
 func mp_set(value):
+	if npc_reference == 'combat_global': return
 	mp = clamp(value, 0, get_stat('mpmax'))
 	if displaynode != null:
 		displaynode.update_mana()
@@ -460,7 +478,7 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	if input_handler.combat_node == null && travel.location == 'mansion':
+	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
 		is_active = false
 		print('warning! char died outside combat')
 		characters_pool.call_deferred('cleanup')
@@ -512,8 +530,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'is_shortstack':
 			check = (get_stat('height') in ['tiny','petite']) == i.check
 		'gear_equiped':
-			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param)
-			else: check = equipment.check_gear_equipped(i.value)
+			if i.has('param'): check = equipment.check_gear_equipped(i.value, i.param) == i.check
+			else: check = equipment.check_gear_equipped(i.value) == i.check
 		'global_profession_limit':
 			check = ResourceScripts.game_party.check_profession_limit(i.profession, i.value)
 		'race':
@@ -521,16 +539,16 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'one_of_races':
 			check = get_stat('race') in i.value
 		'is_free':
-			check = (travel.check_location('mansion', true) && tags.has('selected') == false) == i.check
+			check = (check_location('mansion', true) && tags.has('selected') == false) == i.check
 		'is_at_location':
 			if variables.allow_remote_intereaction == true and i.check: check = true
-			else: check = travel.check_location(i.value, true) == i.check
+			else: check = check_location(i.value, true) == i.check
 		'is_id':
 			check = input_handler.operate(i.operant, id, i.value)
 		'long_tail':
-			check = globals.longtails.has(get_stat('tail')) == i.check
+			check = variables.longtails.has(get_stat('tail')) == i.check
 		'long_ears':
-			check = globals.longears.has(get_stat('ears')) == i.check
+			check = variables.longears.has(get_stat('ears')) == i.check
 		'is_humanoid':
 			check = (get_stat('racegroup') == 'humanoid') == i.check
 		'is_dead':
@@ -544,7 +562,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'rules':
 			check = input_handler.globalsettings[i.type] == i.check
 		'bodypart':
-			check = input_handler.operate(i.operant, get(i.part), i.value)
+			check = input_handler.operate(i.operant, get_stat(i.part), i.value)
 		'trait':
 			check = check_trait(i.trait) == i.check
 		'disabled':
@@ -598,7 +616,7 @@ func decipher_single(ch):
 			if i.check == true:
 				text2 += 'Has Class: ' + classesdata.professions[i.profession].name
 			else:
-				text2 += 'Has NO Class: ' + classesdata.professions[i.profession].name
+				text2 += 'Conflicting Class: ' + classesdata.professions[i.profession].name
 		'has_any_profession':
 			text2 += "Has any of Classes: "
 			for k in i.value:
@@ -635,14 +653,14 @@ func decipher_single(ch):
 
 
 #never used
-#func assign_gender():
-#	if has_pussy == true:
-#		if penis_size != '' || balls_size != '':
-#			sex = 'futa'
-#		else:
-#			sex = 'female'
-#	else:
-#		sex = 'male'
+func assign_gender():
+	if get_stat('has_pussy') == true:
+		if get_stat('penis_size') != '' || get_stat('balls_size') != '':
+			set_stat('sex', 'futa')
+		else:
+			set_stat('sex', 'female')
+	else:
+		set_stat('sex', 'male')
 
 func make_description():
 	input_handler.text_characters.clear()
@@ -735,20 +753,10 @@ func tick():
 		if ResourceScripts.game_party.characters.has(self.id):
 			return
 
-#func productivity_get():
-#	return productivity
-
 func rest_tick():
 	self.hp += variables.basic_hp_regen*2
 	self.mp += variables.basic_mp_regen*2 + variables.mp_regen_per_magic * get_stat('magic_factor') * 2
 
-
-#func authority_set(value):
-#	var difference = value - authority
-#	var authority_threshold = authority_threshold()
-#	if difference > 0:
-#		difference *= authority_mod
-#	authority = clamp(authority + difference, 0, authority_threshold*1.5)
 
 func translate(text):
 	text = statlist.translate(text)
@@ -792,6 +800,8 @@ func apply_atomic(template):
 			globals.emit_signal(template.value)
 		'remove_effect':
 			remove_temp_effect_tag(template.value)
+		'remove_all_effects':
+			remove_all_temp_effects_tag(template.value)
 		'add_trait':
 			add_trait(template.trait)
 		'add_sex_trait':
@@ -809,7 +819,7 @@ func apply_atomic(template):
 			killed()
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
-			input_handler.combat_node.use_skill(template.skill, self, null)
+			input_handler.combat_node.use_skill(template.skill, self, template.target)
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
@@ -849,39 +859,6 @@ func remove_atomic(template):
 			remove_trait(template.trait)
 		'add_sex_trait', 'unlock_sex_trait':
 			remove_sex_trait(template.trait)
-
-#func add_area_effect(eff_id):
-#	var eff = effects_pool.get_effect_by_id(eff_id)
-#	own_area_effects.push_back(eff_id)
-#	eff.apply()
-#
-#func remove_area_effect(eff_id):
-#	own_area_effects.erase(eff_id)
-#
-#func add_ext_area_effect(eff_id):
-#	if own_area_effects.has(eff_id): return
-#	area_effects.push_back(eff_id)
-#
-#func remove_ext_area_effect(eff_id):
-#	if own_area_effects.has(eff_id): return
-#	area_effects.erase(eff_id)
-#
-#func set_position(new_pos):
-#	if new_pos == position: return
-#	#remove ext area effects
-#	for e in area_effects:
-#		var eff = effects_pool.get_effect_by_id(e)
-#		eff.remove_pos(position)
-#
-#	position = new_pos
-#	#reapply own area effects
-#	for e in own_area_effects:
-#		var eff = effects_pool.get_effect_by_id(e)
-#		eff.apply()
-#	#reapply ext area effects
-#	for e in area_effects:
-#		var eff = effects_pool.get_effect_by_id(e)
-#		eff.apply_pos(position)
 
 func is_koed():
 	return (hp <= 0) or defeated or !is_active
@@ -926,6 +903,7 @@ func set_shield(value):
 	shield = max(0, value)
 
 func deal_damage(value, source = 'normal'):
+	if npc_reference == 'combat_global': return null
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && variables.invincible_player:
 		return 0

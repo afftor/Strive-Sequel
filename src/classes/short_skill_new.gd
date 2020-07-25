@@ -43,10 +43,11 @@ func _init():
 	goldcost = 0
 	random_factor = 0
 	random_factor_p = 0.0
+	repeat = 1
 
 func clone():
 	var res = dict2inst(inst2dict(self))
-	res.effects.clear()
+	res.effects = []
 	for e in template.effects:
 		var eff = effects_pool.e_createfromtemplate(e, res)
 		res.apply_effect(effects_pool.add_effect(eff))
@@ -76,16 +77,17 @@ func createfromskill(s_code):
 	get_from_template('target_range')
 	get_from_template('target_number')
 	
-	pval_i = 0
-	for v in range(template.value.size()): 
-		value.push_back(sskill_value.new(self, template.value[v]))
-		if value[v].template.is_process: pval_i = v
-	
 	for e in template.effects:
 		var eff = effects_pool.e_createfromtemplate(e, self)
 		apply_effect(effects_pool.add_effect(eff))
 	
 	repeat = template.repeat
+	
+	pval_i = 0
+	if !template.has('value') or typeof(template.value) != TYPE_ARRAY: return
+	for v in range(template.value.size()): 
+		value.push_back(sskill_value.new(self, template.value[v]))
+		if value[v].template.is_process: pval_i = v
 
 
 func process_check(check:Array):
@@ -110,6 +112,7 @@ func setup_caster(c):
 
 func setup_target(t):
 	target = t
+	if t == null: return
 	if type == 'combat':
 		evade = target.get_stat('evasion')
 	else:

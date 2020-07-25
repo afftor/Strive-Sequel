@@ -22,7 +22,7 @@ func build_skill_panel():
 	else:
 		src = person.skills.combat_skill_panel
 		$skillpanelswitch.pressed = true
-	for i in range(1,10):
+	for i in range(1,11):
 		var text = ''
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		if src.has(i):
@@ -76,11 +76,12 @@ func build_skill_panel():
 
 func select_skill_target(skillcode):
 	get_parent().chars_for_skill.clear()
+	var skill_source = get_parent().skill_source
 	active_skill = skillcode
 	# input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
-	var reqs = [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs
+	var reqs = [{code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs
 	for i in ResourceScripts.game_party.characters.values():
-		if i.checkreqs(reqs) == false:
+		if !i.checkreqs(reqs) || !i.same_location_with(skill_source):
 			continue
 		get_parent().chars_for_skill.append(i)
 	get_parent().skill_manager()
@@ -92,6 +93,8 @@ func use_skill(target):
 
 
 func change_panel_type():
+	if get_parent().active_person == null:
+		get_parent().active_person = ResourceScripts.game_party.get_master()
 	if person.skills.active_panel == variables.PANEL_SOC:
 		person.skills.active_panel = variables.PANEL_COM
 	elif person.skills.active_panel == variables.PANEL_COM: #redundant check for the case of any of future changes

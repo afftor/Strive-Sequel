@@ -1,41 +1,82 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://assets/images/gui/inventory/icon_s_arm.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_craft.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/inventory/icon_potion.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_potion.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/inventory/icon_cosm.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_potion.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_cosm.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_all.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/gui/menu/menubuttonpressed.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_armor.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_potion.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_armor.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/menu/menubuttonhl.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_weap.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_craft.png" type="Texture" id=12]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_res.png" type="Texture" id=13]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_res.png" type="Texture" id=14]
-[ext_resource path="res://assets/images/gui/inventory/icon_armor.png" type="Texture" id=15]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_weap.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_cosm.png" type="Texture" id=17]
-[ext_resource path="res://assets/images/gui/inventory/icon_res.png" type="Texture" id=18]
-[ext_resource path="res://assets/images/gui/inventory/icon_craft.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/gui/inventory/icon_weap.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_cosm.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_food.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_weapon.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_craft.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/gui/menu/menubuttonnorm.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_inventory_pressed.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/iconsgear/ArmorBasic.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_inventory.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/gui/inventory/icon_food.png" type="Texture" id=28]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_all.png" type="Texture" id=29]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_all.png" type="Texture" id=30]
-[ext_resource path="res://assets/images/gui/inventory/icon_p_food.png" type="Texture" id=31]
-[ext_resource path="res://assets/images/gui/inventory/icon_s_food.png" type="Texture" id=32]
-[ext_resource path="res://assets/images/gui/inventory/icon_all.png" type="Texture" id=33]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=34]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_inventory_items.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_inventory_hover.png" type="Texture" id=36]
+[ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=37]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_detail.png" type="Texture" id=39]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 35 )
+region_rect = Rect2( 0, 0, 595, 1050 )
+margin_left = 68.0
+margin_right = 68.0
+margin_top = 68.0
+margin_bottom = 25.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 0, 12, 48 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 0, 12, 48 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 38 )
+region_rect = Rect2( 0, 0, 12, 256 )
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 0, 12, 48 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[sub_resource type="Theme" id=6]
+ScrollContainer/styles/bg = null
+VSlider/icons/grabber = null
+VSlider/icons/grabber_disabled = null
+VSlider/icons/grabber_highlight = null
+VSlider/icons/tick = null
+VSlider/styles/grabber_area = null
+VSlider/styles/slider = null
+
+[sub_resource type="DynamicFont" id=7]
 size = 46
 use_filter = true
 font_data = ExtResource( 34 )
@@ -43,9 +84,101 @@ font_data = ExtResource( 34 )
 [node name="InventoryListModule" type="Panel"]
 margin_right = 595.0
 margin_bottom = 1050.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Scroller" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 37 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="Scroller"]
+margin_left = 19.0
+margin_top = 251.0
+margin_right = 31.0
+margin_bottom = 1021.0
+rect_min_size = Vector2( 0, 300 )
+custom_styles/grabber_highlight = SubResource( 2 )
+custom_styles/grabber = SubResource( 3 )
+custom_styles/scroll = SubResource( 4 )
+custom_styles/grabber_pressed = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Scroller"]
+margin_left = 51.0
+margin_top = 251.0
+margin_right = 573.0
+margin_bottom = 1033.0
+theme = SubResource( 6 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="VBoxContainer" parent="Scroller/ScrollContainer"]
+margin_right = 510.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 0, 800 )
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="Scroller/ScrollContainer/GridContainer"]
+visible = false
+margin_right = 510.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 36 )
+expand = true
+
+[node name="Image" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
+show_behind_parent = true
+margin_left = 465.169
+margin_top = 5.96381
+margin_right = 504.169
+margin_bottom = 43.9638
+rect_min_size = Vector2( 5, 0 )
+mouse_filter = 2
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
+margin_left = 54.0
+margin_top = 12.0
+margin_right = 294.0
+margin_bottom = 36.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Item Name"
+clip_text = true
+
+[node name="Type" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 48.0
+margin_bottom = 49.0
+mouse_filter = 2
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 6
+
+[node name="Number" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
+margin_left = 342.804
+margin_top = 13.3669
+margin_right = 410.804
+margin_bottom = 37.3669
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0000"
 
 [node name="HiddenContainer" type="ScrollContainer" parent="."]
 visible = false
@@ -58,154 +191,158 @@ scroll_horizontal_enabled = false
 [node name="GridContainer" type="GridContainer" parent="HiddenContainer"]
 columns = 7
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 51.0
-margin_top = 251.0
-margin_right = 539.0
-margin_bottom = 1033.0
-scroll_horizontal_enabled = false
-
-[node name="GridContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 488.0
-size_flags_horizontal = 3
-
-[node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
-visible = false
-margin_right = 488.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 26 )
-texture_hover = ExtResource( 26 )
-expand = true
-
-[node name="Image" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
-show_behind_parent = true
-margin_left = 419.892
-margin_top = 0.0527039
-margin_right = 469.892
-margin_bottom = 50.0527
-rect_min_size = Vector2( 5, 0 )
-mouse_filter = 2
-texture = ExtResource( 25 )
-expand = true
-stretch_mode = 6
-
-[node name="Name" type="Label" parent="ScrollContainer/GridContainer/Button"]
-margin_left = 54.0
-margin_top = 12.0
-margin_right = 294.0
-margin_bottom = 36.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Item Name"
-clip_text = true
-
-[node name="Type" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 48.0
-margin_bottom = 49.0
-mouse_filter = 2
-texture = ExtResource( 27 )
-expand = true
-stretch_mode = 6
-
-[node name="Number" type="Label" parent="ScrollContainer/GridContainer/Button"]
-margin_left = 342.804
-margin_top = 13.3669
-margin_right = 410.804
-margin_bottom = 37.3669
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "0000"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 18.7074
-margin_top = 171.947
-margin_right = 574.708
-margin_bottom = 237.947
+margin_left = 65.1694
+margin_top = 172.0
+margin_right = 525.169
+margin_bottom = 226.0
 custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="all" type="TextureButton" parent="HBoxContainer"]
-margin_right = 66.0
-margin_bottom = 66.0
+margin_right = 54.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYALL"
 toggle_mode = true
-texture_normal = ExtResource( 33 )
-texture_pressed = ExtResource( 29 )
-texture_hover = ExtResource( 30 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/all"]
+margin_right = 54.0
+margin_bottom = 54.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="food" type="TextureButton" parent="HBoxContainer"]
-margin_left = 70.0
-margin_right = 136.0
-margin_bottom = 66.0
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 31 )
-texture_hover = ExtResource( 32 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/food"]
+margin_right = 54.0
+margin_bottom = 54.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="usable" type="TextureButton" parent="HBoxContainer"]
-margin_left = 140.0
-margin_right = 206.0
-margin_bottom = 66.0
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYUSE"
 toggle_mode = true
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 4 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/usable"]
+margin_right = 54.0
+margin_bottom = 54.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="material" type="TextureButton" parent="HBoxContainer"]
-margin_left = 210.0
-margin_right = 276.0
-margin_bottom = 66.0
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 18 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 14 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/material"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="tool" type="TextureButton" parent="HBoxContainer"]
-margin_left = 280.0
-margin_right = 346.0
-margin_bottom = 66.0
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYTOOL"
 toggle_mode = true
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 2 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/tool"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="weapon" type="TextureButton" parent="HBoxContainer"]
-margin_left = 350.0
-margin_right = 416.0
-margin_bottom = 66.0
+margin_left = 290.0
+margin_right = 344.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYWEAPON"
 toggle_mode = true
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 16 )
-texture_hover = ExtResource( 11 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/weapon"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="armor" type="TextureButton" parent="HBoxContainer"]
-margin_left = 420.0
-margin_right = 486.0
-margin_bottom = 66.0
+margin_left = 348.0
+margin_right = 402.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYARMOR"
 toggle_mode = true
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 1 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/armor"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="costume" type="TextureButton" parent="HBoxContainer"]
-margin_left = 490.0
-margin_right = 556.0
-margin_bottom = 66.0
+margin_left = 406.0
+margin_right = 460.0
+margin_bottom = 54.0
 hint_tooltip = "INVENTORYCOSTUME"
 toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/costume"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NumberSelectPanel" type="TextureRect" parent="."]
 visible = false
@@ -312,10 +449,9 @@ margin_bottom = 157.61
 placeholder_text = "Filter"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 92.5104
-margin_top = 34.8857
-margin_right = 467.51
-margin_bottom = 81.8857
-custom_fonts/font = SubResource( 1 )
+margin_right = 595.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 7 )
 text = "Inventory"
 align = 1
+valign = 1

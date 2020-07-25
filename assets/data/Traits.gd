@@ -122,6 +122,14 @@ var traits = {
 		icon = null,
 		effects = ['valkyrie_spear_bonus'],
 	},
+	autohide = {
+		code = 'autohide',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_hide'],
+	},
 	farmer = {#+50% farm production
 		code = 'farmer',
 		name = '',
@@ -237,6 +245,14 @@ var traits = {
 		visible = true,
 		effects = [],
 	},
+	stealth = {
+		code = 'staelth',
+		name = '',
+		descript = '',
+		icon = null,
+		visible = false,
+		effects = ['e_tr_hide'],
+	},
 }
 
 var sex_traits = { #only for interaction tab
@@ -270,7 +286,7 @@ var sex_traits = { #only for interaction tab
 		random_generation = true,
 		acquire_reqs = [],
 		negative = true,
-		reqs = [{code = "action_type", value = ["tijob","fondletits","sucknipple",'nipplefuck']}],
+		reqs = [{code = "action_type", value = ["titjob","fondletits","sucknipples",'nipplefuck']}],
 		effects = [{effect = 'consent', operant = '*', value = 1, trigger = 'consent_check'},{effect = 'horny_bonus', operant = "-", value = 0.33, trigger = 'action_self'}]
 	},
 	dislike_oral = {

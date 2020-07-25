@@ -48,12 +48,17 @@ var sex_actions_dict = {}
 signal scene_changed
 
 func _init():
+	
+	
 	#for logging purposes
 	print("Game Version: " + str(gameversion))
 	print("OS: " +  OS.get_name()) 
 	
 	if dir.dir_exists(variables.userfolder + 'saves') == false:
 		dir.make_dir(variables.userfolder + 'saves')
+	
+	if !dir.dir_exists(variables.userfolder + 'savedcharacters'):
+		dir.make_dir(variables.userfolder + 'savedcharacters')
 	
 	for i in input_handler.dir_contents('res://src/actions'):
 		if i.find('.remap') >= 0:
@@ -624,9 +629,9 @@ func impregnate(father, mother):
 func calculate_travel_time(location1, location2):
 	var travel_value1 = 0 #time to travel to location from mansion
 	var travel_value2 = 0 #time to return to mansion from location
-	if location1 != 'mansion':
+	if location1 != ResourceScripts.game_world.mansion_location:
 		travel_value1 = ResourceScripts.world_gen.get_area_from_location_code(location1).travel_time + ResourceScripts.world_gen.get_location_from_code(location1).travel_time
-	if location2 != 'mansion':
+	if location2 != ResourceScripts.game_world.mansion_location:
 		travel_value2 = ResourceScripts.world_gen.get_area_from_location_code(location2).travel_time + ResourceScripts.world_gen.get_location_from_code(location2).travel_time
 	
 	return {time = travel_value1 + travel_value2, obed_cost = travel_value1*1.5}
@@ -950,11 +955,11 @@ func return_characters_from_location(locationid):
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
 			if variables.instant_travel == false:
-				person.trave.location = 'travel'
-				person.trave.travel_target = {area = '', location = 'mansion'}
-				person.trave.travel_time = area.travel_time + location.travel_time
+				person.travel.location = 'travel'
+				person.travel.travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
+				person.travel.travel_time = area.travel_time + location.travel_time
 			else:
-				person.trave.location = 'mansion'
+				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
 
 func make_story_character(args):
@@ -1064,7 +1069,8 @@ func common_effects(effects):
 
 						number -= 1
 			'update_guild':
-				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				input_handler.exploration_node.City.enter_guild(input_handler.active_faction)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':

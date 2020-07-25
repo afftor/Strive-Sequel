@@ -1,9 +1,9 @@
 extends Control
 #warning-ignore-all:function_conflicts_variable
 
-var parser = ResourceScripts.scriptdict.sexinteraction_parser.new()
-var member = ResourceScripts.scriptdict.sexinteraction_member
-var sexdict = ResourceScripts.scriptdict.sexinteraction_sexdict.new()
+onready var parser = ResourceScripts.scriptdict.sexinteraction_parser.new()
+onready var member = ResourceScripts.scriptdict.sexinteraction_member
+onready var sexdict = ResourceScripts.scriptdict.sexinteraction_sexdict.new()
 
 var participants = [] #members
 var givers = [] #members
@@ -1031,7 +1031,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 				virgin.type = 'vaginal'
 				virgin.character = i
 				if takers.size() == 1 && takers[0].person.has_profession('master'):
-					i.person.add_stat('authority', 25)
+					i.person.add_stat('authority', 20)
 					i.person.add_stat('loyalty', 30)
 			elif scenescript.giverpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.set_stat('anal_virgin', false)
@@ -1046,7 +1046,7 @@ func startscene(scenescript, cont = false, pretext = ''):
 				virgin.type = 'vaginal'
 				virgin.character = i
 				if givers.size() == 1 && givers[0].person.has_profession('master'):
-					i.person.add_stat('authority', 25)
+					i.person.add_stat('authority', 20)
 					i.person.add_stat('loyalty', 30)
 			elif scenescript.takerpart == 'anus' && i.person.get_stat('anal_virgin') == true:
 				i.person.set_stat('anal_virgin', false)

@@ -442,7 +442,6 @@ margin_bottom = 683.444
 texture = ExtResource( 26 )
 
 [node name="CharacterImage" type="TextureRect" parent="."]
-visible = false
 show_behind_parent = true
 margin_left = 687.0
 margin_top = -394.0

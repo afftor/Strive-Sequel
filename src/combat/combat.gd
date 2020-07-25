@@ -37,6 +37,10 @@ var activecharacter
 var customcursor = null
 
 var autoskill = null
+var autoskill_delay = 0
+var autoskill_delay_rem = 0
+var autoskill_times = 0
+var autoskill_dummy
 
 var enemypaneltextures = {
 	normal = null,
@@ -67,6 +71,12 @@ func _init():
 	
 
 func _ready():
+	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new()
+	autoskill_dummy.position = 0
+	autoskill_dummy.displaynode = ResourceScripts.scriptdict.fighternode.new()
+	autoskill_dummy.displaynode.animation_node = CombatAnimations
+	autoskill_dummy.displaynode.fighter = autoskill_dummy
+	autoskill_dummy.npc_reference = 'combat_global'
 	battlefield.resize(14)
 	for i in range(1,13):
 		battlefield[i] = null
@@ -110,6 +120,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 		battlefield[i] = null
 	buildenemygroup(enemygroup, enemy_stats_mod)
 	buildplayergroup(playergroup)
+	autoskill_dummy.is_active = true
 	#victory()
 	#start combat triggers
 	CombatAnimations.force_end()
@@ -120,6 +131,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	select_actor()
 
 func FinishCombat(victory = true):
+	autoskill_dummy.is_active = false
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.skills.combat_cooldowns.clear()
@@ -155,7 +167,7 @@ func select_actor():
 	currentactor = turnorder[0].pos
 	turnorder.remove(0)
 	#currentactor.update_timers()
-	if currentactor < 0:
+	if currentactor <= 0:
 		env_turn()
 	elif currentactor < 7:
 		player_turn(currentactor)
@@ -170,6 +182,7 @@ func newturn():
 		#not sure about keeping all beyond - dis part, mb needs reworking
 		var cooldowncleararray = []
 		for k in tchar.skills.combat_cooldowns:
+			if tchar.skills.combat_cooldowns[k] < 0: continue
 			tchar.skills.combat_cooldowns[k] -= 1
 			if tchar.skills.combat_cooldowns[k] <= 0:
 				cooldowncleararray.append(k)
@@ -223,6 +236,7 @@ var rewardsdict
 
 #to check next functions
 func victory():
+	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(images.cursors.default)
@@ -411,10 +425,12 @@ func player_turn(pos):
 		return
 	if selected_character.has_status('taunt'):
 		var tchar = characters_pool.get_char_by_id(selected_character.taunt)
-		selected_character.taunt = null
+#		selected_character.taunt = null
 		if can_be_taunted(selected_character, tchar):
 			use_skill(selected_character.get_skill_by_tag('default'), selected_character, tchar)
 			return
+		else:
+			selected_character.process_event(variables.TR_TAUNT_FAIL)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	#allowaction = true
@@ -460,6 +476,7 @@ func UpdateSkillTargets(caster, glow_skip = false):
 					t_targets.push_back(tchar)
 			pass
 		for t in t_targets:
+			if rangetype == 'not_caster' and t.id == caster.id: continue
 			allowedtargets.ally.push_back(t.position)
 	if targetgroups == 'self':
 		allowedtargets.ally.append(int(fighter.position))
@@ -510,6 +527,7 @@ func CheckMeleeRange(group, hide_ignore = false): #Check if group front row is s
 	return rval
 
 func can_be_taunted(caster, target):
+	if target.defeated: return false
 	match target.combatgroup:
 		'ally':
 			if target.position < 4: return true
@@ -557,10 +575,12 @@ func enemy_turn(pos):
 		target = get_random_target()
 	if fighter.has_status('taunt'):
 		var targ = characters_pool.get_char_by_id(fighter.taunt)
-		fighter.taunt = null
+#		fighter.taunt = null
 		if can_be_taunted(fighter, targ):
 			target = targ;
 			castskill = fighter.get_skill_by_tag('default')
+		else: 
+			fighter.process_event(variables.TR_TAUNT_FAIL)
 	if target == null:
 		print(fighter.get_stat('name'), ' no target found')
 		return
@@ -576,19 +596,38 @@ func enemy_turn(pos):
 		CombatAnimations.check_start()
 		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 
+func setup_autoskill(data):
+	autoskill = data.skill
+	if data.has('delay'):
+		autoskill_delay = data.delay
+	else:
+		autoskill_delay = 0
+	autoskill_delay_rem = autoskill_delay
+	if data.has('number'):
+		autoskill_times = data.number
+	else: 
+		autoskill_times = -1
 
 
 func env_turn():
 	if autoskill == null: return
-	turns += 1
-	activecharacter = null
-	use_skill(autoskill, null, null)
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	if autoskill_delay_rem <= 0:
+		autoskill_delay_rem = autoskill_delay
+		turns += 1
+		activecharacter = autoskill_dummy
+		autoskill_times -= 1
+		use_skill(autoskill, autoskill_dummy, get_proper_target_for_autoskill())
+		if autoskill_times == 0: autoskill = null
+		CombatAnimations.check_start()
+		if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	else: 
+		autoskill_delay_rem -= 1
 
 
 func calculateorder():
 	turnorder.clear()
+	if autoskill != null:
+		turnorder.append({pos = 0, speed = 100})
 	for pos in playergroup:
 		var tchar = characters_pool.get_char_by_id(playergroup[pos])
 		if tchar.defeated == true:
@@ -601,6 +640,7 @@ func calculateorder():
 		turnorder.append({speed = tchar.get_stat('speed') + randf() * 5, pos = pos})
 	
 	turnorder.sort_custom(self, 'speedsort')
+	
 
 func speedsort(first, second):
 	if first.speed > second.speed:
@@ -778,26 +818,29 @@ func use_skill(skill_code, caster, target):
 	allowaction = false
 	
 	var skill = Skilldata.Skilllist[skill_code]
-
+	
 	if caster != null && skill.name != "":
 		if activeitem:
 			combatlogadd("\n" + caster.get_stat('name') + ' uses ' + activeitem.name + ". ")
 		else:
-			combatlogadd("\n" + caster.get_stat('name') + ' uses ' + skill.name + ". ")
+			if caster.position == 0:
+				combatlogadd("\n" + skill.name + "! ")
+			else:
+				combatlogadd("\n" + caster.get_stat('name') + ' uses ' + skill.name + ". ")
 		
 		caster.mp -= skill.manacost
 		
-		if skill.combatcooldown > 0:
+		if skill.combatcooldown != 0:
 			caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
 	
 	if caster.combatgroup == 'ally':
 		for i in skill.catalysts:
 			ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
 		if skill.charges > 0:
-			if caster.combat_skill_charges.has(skill.code):
-				caster.combat_skill_charges[skill.code] += 1
+			if caster.skills.combat_skill_charges.has(skill.code):
+				caster.skills.combat_skill_charges[skill.code] += 1
 			else:
-				caster.combat_skill_charges[skill.code] = 1
+				caster.skills.combat_skill_charges[skill.code] = 1
 			caster.skills.daily_cooldowns[skill_code] = skill.cooldown
 		if skill.ability_type == 'skill':
 			caster.add_stat('physics', rand_range(0.3,0.5))
@@ -864,6 +907,11 @@ func use_skill(skill_code, caster, target):
 				summon(skill.value[0], skill.value[1]);
 			elif skill.has('damage_type') and skill.damage_type == 'resurrect':
 				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target)) #not sure
+			if skill.has('damage_type') and skill.damage_type == 'setup_global':
+				autoskill_dummy.combatgroup = "_" + caster.combatgroup
+				autoskill_dummy.set_stat('atk', caster.get_stat('atk'))
+				autoskill_dummy.set_stat('matk', caster.get_stat('matk'))
+				setup_autoskill(skill.value)
 			else: 
 				#default skill result
 				#execute_skill(s_skill1, caster, i)
@@ -911,6 +959,8 @@ func use_skill(skill_code, caster, target):
 			if s_skill2.target.hp <= 0:
 				s_skill2.process_event(variables.TR_KILL)
 				if typeof(caster) != TYPE_DICTIONARY: s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
+			else:
+				s_skill2.target.process_event(variables.TR_POST_TARG)
 			s_skill2.target.displaynode.rebuildbuffs()
 			checkdeaths()
 			if s_skill2.target.displaynode != null:
@@ -964,6 +1014,34 @@ func ProcessSfxTarget(sfxtarget, caster, target):
 func get_char_by_pos(pos):
 	return characters_pool.get_char_by_id(battlefield[pos])
 
+
+func get_proper_target_for_autoskill():
+	var skill = Skilldata.Skilllist[autoskill]
+	var temp = []
+	match skill.target:
+		'ally':
+			if autoskill_dummy.combatgroup == '_ally':
+				for p in playergroup.values():
+					if !characters_pool.get_char_by_id(p).defeated: temp.push_back(characters_pool.get_char_by_id(p))
+			elif autoskill_dummy.combatgroup == '_enemy':
+				for p in enemygroup.values():
+					if !characters_pool.get_char_by_id(p).defeated: temp.push_back(characters_pool.get_char_by_id(p))
+		'enemy':
+			if autoskill_dummy.combatgroup == '_ally':
+				for p in enemygroup.values():
+					if !characters_pool.get_char_by_id(p).defeated: temp.push_back(characters_pool.get_char_by_id(p))
+			elif autoskill_dummy.combatgroup == '_enemy':
+				for p in playergroup.values():
+					if !characters_pool.get_char_by_id(p).defeated: temp.push_back(characters_pool.get_char_by_id(p))
+		'full':
+			for p in enemygroup.values():
+				if !characters_pool.get_char_by_id(p).defeated: temp.push_back(characters_pool.get_char_by_id(p))
+			for p in playergroup.values():
+				if !characters_pool.get_char_by_id(p).defeated: temp.push_back(characters_pool.get_char_by_id(p))
+	if !temp.empty():  
+		return temp[globals.rng.randi_range(0, temp.size()-1)]
+	else: return null
+
 func get_allied_targets(fighter):
 	var res = []
 	if fighter.position in range(1, 7):
@@ -1011,8 +1089,9 @@ func get_enemy_targets_melee(fighter, hide_ignore = false):
 
 
 func CalculateTargets(skill, target, finale = false):
-	if target == null: return 
 	var array = []
+	
+	if target == null: return array
 	
 	var targetgroup
 	
@@ -1022,7 +1101,8 @@ func CalculateTargets(skill, target, finale = false):
 		targetgroup = 'enemy'
 	if skill.target == 'full':
 		targetgroup = 'full'
-
+	
+	
 	match skill.target_number:
 		'single':
 			array = [target]
@@ -1064,6 +1144,52 @@ func CalculateTargets(skill, target, finale = false):
 					if tchar.defeated: continue
 					if !tchar.can_be_damaged(skill.code) and !finale: continue
 					array.append(tchar)
+		'nontarget':
+			for j in range(1, 13):
+				if target.position == j: continue
+				if j in range(1,7) && targetgroup == 'player':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif j in range(7, 13) && targetgroup == 'enemy':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif targetgroup == 'full':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+		'single_nontarget':
+			for j in range(1, 13):
+				if target.position == j: continue
+				if j in range(1,7) && targetgroup == 'player':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif j in range(7, 13) && targetgroup == 'enemy':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif targetgroup == 'full':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+			if !array.empty():  
+				var tmp = array[globals.rng.randi_range(0, array.size()-1)]
+				array.clear()
+				array = [tmp]
 	if (!finale) and skill.tags.has('random_target'):
 		array.clear()
 		for pos in allowedtargets.enemy + allowedtargets.ally:
@@ -1077,6 +1203,7 @@ func get_random_target():
 	for pos in allowedtargets.enemy + allowedtargets.ally:
 		var tchar = characters_pool.get_char_by_id(battlefield[pos])
 		tmparr.push_back(tchar)
+	if tmparr.empty(): return null
 	var i = globals.rng.randi_range(0, tmparr.size()-1)
 	return tmparr[i]
 
@@ -1220,7 +1347,9 @@ func RebuildSkillPanel():
 		if skill.manacost <= 0:
 			newbutton.get_node("manacost").hide()
 		if skill.manacost > activecharacter.mp:
-			newbutton.get_node("Icon").modulate = Color(0,0,1)
+#			newbutton.get_node("Icon").modulate = Color(0,0,1)
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		if activecharacter.skills.combat_cooldowns.has(skill.code):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -1229,8 +1358,8 @@ func RebuildSkillPanel():
 			newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.yellow)
 		if skill.charges > 0:
 			var leftcharges = skill.charges
-			if activecharacter.combat_skill_charges.has(skill.code):
-				leftcharges -= activecharacter.combat_skill_charges[skill.code]
+			if activecharacter.skills.combat_skill_charges.has(skill.code):
+				leftcharges -= activecharacter.skills.combat_skill_charges[skill.code]
 			newbutton.get_node("charge").visible = true
 			newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
 			if leftcharges <= 0:
@@ -1240,6 +1369,9 @@ func RebuildSkillPanel():
 				newbutton.get_node("cooldown").text = str(activecharacter.skills.daily_cooldowns[skill.code])
 				newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.red)
 		if !activecharacter.checkreqs(skill.reqs):
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+		if activecharacter.has_status('silence') and skill.ability_type == 'spell':
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
@@ -1262,7 +1394,7 @@ func SelectSkill(skill):
 			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
 			call_deferred('SelectSkill', 'attack');
 			break
-	if skill.charges > 0 && activecharacter.combat_skill_charges.has(skill.code) && activecharacter.combat_skill_charges[skill.code] >= skill.charges:
+	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
 		call_deferred('SelectSkill', 'attack')
 		return

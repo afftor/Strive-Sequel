@@ -61,6 +61,7 @@ func _ready():
 		newbutton.text = i.name
 		newbutton.name = i.code
 		newbutton.connect('pressed', self, 'start_preset_set', [newbutton])
+	#$Changelogpanel/changelogtext.bbcode_text = load("res://changelog.gd").text
 
 func check_last_save():
 	lastsave = globals.get_last_save();

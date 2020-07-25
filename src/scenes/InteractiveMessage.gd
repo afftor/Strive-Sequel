@@ -308,6 +308,7 @@ func set_baby_name(text):
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.pregnancy.baby]
 	person.set_stat('name', text)
 	person.surname = input_handler.active_character.surname
+	person.nickname = ''
 	ResourceScripts.game_party.add_slave(person, true)
 	var mother = characters_pool.get_char_by_id(person.relatives.mother)
 	if mother == null:

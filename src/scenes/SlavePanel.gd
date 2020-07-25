@@ -177,7 +177,7 @@ func update():
 		for i in get_tree().get_nodes_in_group("hide_stranger"):
 			i.visible = false
 	for i in get_tree().get_nodes_in_group("show_traveler"):
-		i.visible = type == 'traveler' && person.travel_target.location != 'mansion'
+		i.visible = type == 'traveler' && person.travel.travel_target.location != ResourceScripts.game_world.mansion_location
 	var text = ''
 	$name.text = person.get_short_name()
 	$name/sex.texture = images.icons[person.get_stat('sex')]
@@ -189,7 +189,7 @@ func update():
 	$BodyPanel.visible = $BodyPanel/Body.texture != null
 	$RichTextLabel.bbcode_text = person.make_description()
 	globals.connecttexttooltip($character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
-	if person.travel.location != 'mansion':
+	if person.travel.location != ResourceScripts.game_world.mansion_location:
 		$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	if person.get_work() != '':
 		$currentwork.text = races.tasklist[person.get_work()].name
@@ -254,7 +254,7 @@ func update():
 		authority = 'medium'
 	else:
 		authority = 'high'
-	text = authority_lines[authority]
+	text = authority_lines[authority] + "(" + str(person.get_stat('authority'))+ ")"
 	
 	$authoritylabel.text = 'Authority: ' + text
 #	$base_stats/lust.value = person.get_stat('lust')
@@ -566,7 +566,14 @@ func skill_selected(skill):
 
 func select_skill_target(skillcode):
 	active_skill = skillcode
-	input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
+	var data = Skilldata.Skilllist[skillcode]
+	var f = true
+	if data.has('value'):
+		f = false
+		for val in data.value:
+			if val.receiver != 'all': f = true
+	if f: input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + data.targetreqs)
+	else: person.use_social_skill(active_skill, null)
 
 func use_skill(target):
 	person.use_social_skill(active_skill, target)

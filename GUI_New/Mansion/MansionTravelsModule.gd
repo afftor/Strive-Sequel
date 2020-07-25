@@ -1,22 +1,23 @@
 extends Panel
 
-# extends "res://src/scenes/ClosingPanel.gd"
-# warning-ignore-all:return_value_discarded
 
 
 var dislocation_area = 'mansion'
 var destination_area = 'plains'
 
 func _ready():
-	
 	$HomeButton.connect("item_selected", self, 'select_dislocation_area')
 	$DestinationButton.connect("item_selected", self, 'select_destination_area')
 	$TravelConfirmButton.connect("pressed", self, "travel_confirm")
+	$TravelCancelButton.connect("pressed", self, "travel_cancel")
+	globals.connect("hour_tick", self, "open_character_dislocation")
 
 func open_character_dislocation():
-	show()
-	dislocation_area = 'mansion'
-	destination_area = 'plains'
+	if get_parent().mansion_state == "travels":
+		show()
+	print("Dislocation area:" + str(dislocation_area))
+	# dislocation_area = get_parent()
+	# destination_area = 'plains'
 	
 	$HomeButton.clear()
 	$HomeButton.add_item(tr("MANSION"))
@@ -31,15 +32,16 @@ func open_character_dislocation():
 			travelers.append(person)
 	
 	input_handler.ClearContainer($TravelersContainer/VBoxContainer)
-	
 	for i in travelers:
 		var newlabel = input_handler.DuplicateContainerTemplate($TravelersContainer/VBoxContainer)
-		newlabel.text = i.get_short_name()
+		newlabel.get_node("Label").text = i.get_short_name()
 		if i.travel.travel_target.location != 'mansion':
-			newlabel.text += " - " + ResourceScripts.world_gen.get_location_from_code(i.travel.travel_target.location).name
+			newlabel.get_node("Label").text += " - " + ResourceScripts.world_gen.get_location_from_code(i.travel.travel_target.location).name
 		else:
-			newlabel.text += " - " + tr("MANSION")
+			newlabel.get_node("Label").text += " - " + tr("MANSION")
 		newlabel.get_node("Progress").value = i.travel.initial_travel_time - i.travel.travel_time
+		print(i.travel.initial_travel_time)
+		print(i.travel.travel_time)
 		newlabel.get_node("Progress").max_value = i.travel.initial_travel_time
 		newlabel.get_node("Progress/Time").text = 'Until arrival: ' + str(ceil(i.travel.travel_time/i.travel_per_tick())) + " hours"
 		globals.connectslavetooltip(newlabel, i)
@@ -48,6 +50,8 @@ func open_character_dislocation():
 	for i in populatedlocations:
 		$HomeButton.add_item(ResourceScripts.world_gen.get_location_from_code(i).name)
 		$HomeButton.set_item_metadata($HomeButton.get_item_count()-1, i)
+
+
 
 
 func cancel_travel(person):
@@ -79,11 +83,10 @@ func select_destination_area(number):
 	update_location_list()
 
 func update_location_list():
-	input_handler.ClearContainerForced($DestinationContainer/VBoxContainer)
+	input_handler.ClearContainer($DestinationContainer/ScrollContainer/VBoxContainer)
 	var array = []
 	
 	$DestinationButton.clear()
-	
 	for i in ResourceScripts.game_world.areas.values():
 		if i.unlocked == true:
 			array.append(i)
@@ -99,15 +102,15 @@ func update_location_list():
 	for i in ResourceScripts.game_world.areas[destination_area].locations.values() + ResourceScripts.game_world.areas[destination_area].questlocations.values():
 		array.append(i)
 	
-	if dislocation_area != 'mansion':
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
-		var text = tr("RETURNTOMANSION")
-		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', ['mansion'])
-		newbutton.name = 'mansion'
+	# if dislocation_area != 'mansion':
+	# 	var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
+	# 	var text = tr("RETURNTOMANSION")
+	# 	newbutton.get_node("Label").text = text
+	# 	newbutton.connect('pressed', self, 'select_destination', ['mansion'])
+	# 	newbutton.name = 'mansion'
 	
 	if destination_area != 'plains':
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
 		var text = tr(ResourceScripts.game_world.areas[destination_area].capital_name)
 		newbutton.get_node("Label").text = text
 		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.areas[destination_area].capital_name])
@@ -116,7 +119,7 @@ func update_location_list():
 	for i in array:
 		if i.id == dislocation_area:
 			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
 		var text = i.name
 		if ResourceScripts.game_world.areas[destination_area].questlocations.has(i.id):
 			text = "Q:" + text
@@ -126,7 +129,7 @@ func update_location_list():
 
 func select_destination(code):
 	var params = {code = 'destination_selected', destination = code}
-	for i in $DestinationContainer/VBoxContainer.get_children():
+	for i in $DestinationContainer/ScrollContainer/VBoxContainer.get_children():
 		i.pressed = i.name == code
 	get_parent().travels_manager(params)
 	
@@ -140,31 +143,6 @@ func update_character_dislocation():
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	var char_array = []
-	# input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-	# for i in ResourceScripts.game_party.character_order:
-	# 	var person = ResourceScripts.game_party.characters[i]
-	# 	if person.check_location(dislocation_area):
-	# 		char_array.append(i)
-	#char_array.sort_custom(self, 'sort_dislocation')
-	# for i in char_array:
-	# 	var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-	# 	var person = i
-	# 	newbutton.get_node("Label").text = person.get_full_name()
-	# 	var obed_text = str(person.get_stat('obedience'))
-	# 	var obed_color
-	# 	if person.get_stat('obedience') <= 0:
-	# 		obed_color = variables.hexcolordict.red
-	# 	else:
-	# 		obed_color = variables.hexcolordict.green
-	# 	if person.is_controllable():
-	# 		obed_text = "∞"
-	# 		obed_color = variables.hexcolordict.green
-	# 	newbutton.get_node("obed").text = obed_text
-	# 	newbutton.get_node("obed").set("custom_colors/font_color", obed_color)
-	# 	globals.connectslavetooltip(newbutton, person)
-	# 	if selected_travel_characters.has(i):
-	# 		newbutton.pressed = true
-	# 	newbutton.connect('pressed', self, 'set_travel_character', [i])
 	var obed_cost = 0
 	var text = "Characters selected: " + str(selected_travel_characters.size())
 	if destination == null:
@@ -172,15 +150,13 @@ func update_character_dislocation():
 	elif destination == 'mansion':
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
-			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0]].travel_per_tick())) + " hours."
+			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0].id].travel_per_tick())) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
 		text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
 		match location.type:
 			'dungeon':
 				text += "\nType: " + location.classname + "\n" + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())
-				#ext += "\nProgress: Levels - " + str(current_level) + "/" + str(active_location.levels.size()) + ", "
-				#text += "Stage - " + str(active_location.progress.stage) 
 			'settlement':
 				text += "\nType: " + location.classname
 			'skirmish':
@@ -230,11 +206,21 @@ func travel_confirm():
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = destination_area, location = destination}
 			person.travel.travel_time = travel_cost.time
+			person.travel.initial_travel_time = travel_cost.time
 		else:
 			person.xp_module.work = 'travel'
 			person.travel.location = destination
 			person.travel.area  = destination_area
-	input_handler.update_slave_list()
+	get_parent().match_state()
 	update_location_list()
 	open_character_dislocation()
+	get_parent().SlaveListModule.show_location_characters()
+
+
+func travel_cancel():
+	get_parent().selected_travel_characters.clear()
+	get_parent().selected_destination = null
+	update_location_list()
+	open_character_dislocation()
+	get_parent().match_state()
 

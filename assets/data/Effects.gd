@@ -1,9 +1,22 @@
 extends Node
 var effects = {
 }
+#to fix EFFECT TAGS TO TEMPLATE
+#'positive'/'negative' - the widest classification (to most global cleaning like bard2 skill effect)
+#'buff'/'debuff' - additional markings for common effect removal effects (like purge) (and maybe add two more for a state effects)
+#any other - for additional customisation
 
 var effect_table = {
 	#traits
+	e_tr_hide = {
+		type = 'trigger',
+		trigger = [variables.TR_COMBAT_S],
+		conditions = [{type = 'owner', value = [{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false}, {code = 'gear_equiped', param = 'geartype', value = 'medium', check = false}]}],
+		atomic = [],
+		buffs = [],
+		req_skill = false,
+		sub_effects = ['e_t_hide']
+	},
 	e_tr_slave = {
 		type = 'static',
 		atomic = [
@@ -225,25 +238,37 @@ var effect_table = {
 		buffs = ['b_charm'],
 	},
 	#shackles effects for now have the same bug as shield effects in displaced and here - they don't remove all previous shackles effects before applying (so on breaking shackles removing the first effect reverts shackles_chance to null and removing the second effect reverts this chance to resulting chance of the first effect), this part needs to be fixed after testing before the final version. but for test purpose current version is ok, cause this bug have controlled appearance
-	e_s_shackles1 = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_shackles1'],
-		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],#[target, caster]
-		buffs = []
-	},
-	e_shackles1 = { 
+#	e_s_shackles1 = {
+#		type = 'trigger',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_shackles1'],
+#		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],#[target, caster]
+#		buffs = []
+#	},
+#	e_shackles1 = { 
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'shackles',
+#		rem_event = variables.TR_SHACKLES_OFF,
+#		stack = 1,
+#		tags = [],
+#		sub_effects = [],
+#		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
+#		atomic = ['a_shackles_1'],
+#		buffs = ['b_shackles'],
+#	},
+	e_shackles = {#to add duration for sure
 		type = 'temp_s',
 		target = 'target',
 		name = 'shackles',
 		rem_event = variables.TR_SHACKLES_OFF,
 		stack = 1,
-		tags = [],
+		tags = ['shackles'],
 		sub_effects = [],
-		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
-		atomic = ['a_shackles_1'],
+		args = [],
+		atomic = ['a_shackles'],
 		buffs = ['b_shackles'],
 	},
 	e_s_shackles2 = {
@@ -269,7 +294,7 @@ var effect_table = {
 	},
 	e_t_hardwork = {
 		type = 'temp_s',
-		target = 'target',
+		target = 'receiver',
 		name = 'hardwork',
 		tick_event = variables.TR_TICK,
 		duration = 'parent', 
@@ -570,22 +595,41 @@ var effect_table = {
 		],
 	},
 	#version for trap skill only usable by player
+#	e_t_trap = {
+#		type = 'trigger',
+#		target = 'target',
+#		trigger = [variables.TR_CAST],
+#		req_skill = false,
+#		conditions = [],
+#		atomic = [],
+#		buffs = ['b_trap'],
+#		sub_effects = [
+#			'e_trap',
+#			{
+#				type = 'oneshot',
+#				target = 'self',
+#				execute = 'remove'
+#			}
+#		]
+#	},
 	e_t_trap = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_SKILL_FINISH],
+		atomic = [],
+		name = 'trap_debuff',
+		buffs = ['b_trap'],
+		sub_effects = ['e_tr_trap']
+	},
+	e_tr_trap = {
 		type = 'trigger',
 		target = 'target',
 		trigger = [variables.TR_CAST],
 		req_skill = false,
-		conditions = [],
+		conditions = [{type = 'random', value = 0.5}],
 		atomic = [],
-		buffs = ['b_trap'],
-		sub_effects = [
-			'e_trap',
-			{
-				type = 'oneshot',
-				target = 'self',
-				execute = 'remove'
-			}
-		]
+		buffs = [],
+		sub_effects = ['e_trap']
 	},
 	e_trap = {
 		type = 'temp_s',
@@ -648,41 +692,41 @@ var effect_table = {
 		trigger = [variables.TR_POSTDAMAGE],
 		conditions = [
 			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'target', value = {code = 'is_humanoid', check = true} }
 		],
 		req_skill = true,
-		value = -30,
-		args = [{obj = 'template', param = 'value'}],
+		args = [],
 		sub_effects = ['e_t_distract'],
-		buffs = []
+		buffs = [],
 	},
-	e_s_distract1 = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [
-			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
-			{type = 'target', value = {code = 'is_humanoid', check = false} }
-		],
-		req_skill = true,
-		value = -20,
-		args = [{obj = 'template', param = 'value'}],
-		sub_effects = ['e_t_distract'],
-		buffs = []
-	},
+#	e_s_distract1 = {
+#		type = 'trigger',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [
+#			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+#			{type = 'target', value = {code = 'is_humanoid', check = false} }
+#		],
+#		req_skill = true,
+#		value = -20,
+#		args = [{obj = 'template', param = 'value'}],
+#		sub_effects = ['e_t_distract'],
+#		buffs = []
+#	},
 	e_t_distract = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'distract',
 		tick_event = variables.TR_TURN_GET,
 		rem_event = variables.TR_COMBAT_F,
-		stack = 1,#or not
-		duration = 4,
+		stack = 1,
+		duration = 2,
 		tags = ['debuff'],
 		sub_effects = [],
-		stat = 'evasion',
-		args = [{obj = 'template', param = 'stat'}, {obj = 'parent_args', param = 0}],
-		atomic = ['a_stat_add'],
+		atomic = [
+			{type = 'stat_add', stat = 'evasion', value = -30},
+			{type = 'stat_add', stat = 'hitrate', value = -30}
+		],
 		buffs = ['b_distract'],
+		args = [],
 	},
 	e_t_attract = {
 		type = 'temp_s',
@@ -931,7 +975,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'blizz',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		duration = 2,
 		stack = 1,
@@ -961,11 +1005,6 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add_p', stat = 'atk', value = 0.25},
-#			{type = 'stat_add', stat = 'matk', value = 10},
-#			{type = 'stat_add', stat = 'armor', value = 10},
-#			{type = 'stat_add', stat = 'mdef', value = 10},
-#			{type = 'stat_add', stat = 'evasion', value = 10},
-#			{type = 'stat_add', stat = 'hitrate', value = 10},
 		],
 		buffs = [
 			{
@@ -1056,7 +1095,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'eshatter',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1092,7 +1131,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'fireburst',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1113,7 +1152,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'swipe',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1134,7 +1173,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		name = 'arrowrain',
-		tick_event = variables.TR_TURN_GET,
+		tick_event = variables.TR_TURN_S,
 		rem_event = variables.TR_COMBAT_F,
 		stack = 1,#or not
 		duration = 'parent',
@@ -1173,20 +1212,641 @@ var effect_table = {
 			}
 		],
 	},
+	e_t_endure = {#mb to add status resists
+		type = 'temp_s',
+		target = 'target',
+		name = 'endure',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 2, 
+		stack = 1,
+		tags = ['buff'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'resistnormal', value = 20},
+			{type = 'stat_add', stat = 'resistfire', value = 20},
+			{type = 'stat_add', stat = 'resistearth', value = 20},
+			{type = 'stat_add', stat = 'resistwater', value = 20},
+			{type = 'stat_add', stat = 'resistair', value = 20},
+			{type = 'stat_add', stat = 'resistlight', value = 20},
+			{type = 'stat_add', stat = 'resistdark', value = 20},
+			{type = 'stat_add', stat = 'resistmind', value = 20}
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Authority.png", 
+				description = "Resistes increased",
+				limit = 1,
+				t_name = 'endure',
+				combat_only = true,
+			}
+		],
+	},
+	e_s_bard1 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_bards','e_t_bard1'],
+		buffs = []
+	},
+	e_s_bard2 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_bards','e_t_bard2'],
+		buffs = []
+	},
+	e_s_bard3 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_bards','e_t_bard3'],
+		buffs = []
+	},
+	e_t_bard1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'bard1',
+		rem_event = [variables.TR_COMBAT_F], 
+		stack = 1,
+		duration = 4, 
+		tags = ['buff', 'positive', 'bard'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'hitrate', value = 20},
+			{type = 'stat_add', stat = 'evasion', value = 20},
+			{type = 'stat_add', stat = 'speed', value = 20},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Bard.png", 
+				description = "Bard - faster",
+				limit = 1,
+				t_name = 'bard',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_bard3 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'bard3',
+		rem_event = [variables.TR_COMBAT_F],
+		stack = 1,
+		duration = 4, 
+		tags = ['buff', 'positive', 'bard'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.2},
+			{type = 'stat_add_p', stat = 'matk', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Bard.png", 
+				description = "Bard - stronger",
+				limit = 1,
+				t_name = 'bard',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_bard2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'bard2',
+		rem_event = [variables.TR_COMBAT_F],
+		stack = 1,
+		duration = 4, 
+		tags = ['buff', 'positive', 'bard'],
+		sub_effects = ['e_bards_clean'],
+		atomic = [
+			{type = 'stat_add', stat = 'def', value = 15},
+			{type = 'stat_add', stat = 'mdef', value = 15},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Bard.png", 
+				description = "Bard - resilent",
+				limit = 1,
+				t_name = 'bard',
+				combat_only = true,
+			}
+		],
+	},
+	e_bards_clean = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_GET],
+		conditions = [],
+		req_skill = false,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [],
+			atomic = [{type = 'remove_effect', value = 'negative'}]
+		}],
+		buffs = [],
+	},
+	e_clean_bards = {
+		type = 'oneshot',
+		target = 'target',
+		args = [],
+		atomic = [{type = 'remove_all_effects', value = 'bard'}],
+	},
+	e_s_mirror = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_reflections','e_t_mirror'],
+		buffs = []
+	},
+	e_t_mirror = {
+		type = 'temp_s',
+		tags = ['reflection', 'buff'],
+		target = 'target',
+		duration = 2,
+		name = 'mirror_image',
+		stack = 1,
+		tick_event = variables.TR_TURN_GET,
+		rem_event = [variables.TR_COMBAT_F],
+		buffs = ['b_mirror'],
+		sub_effects = ['e_t_mirror1']
+	},
+	e_t_mirror1 = {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['damage_type', 'neq', 'mind'] },
+			{type = 'random', value = 0.25}
+		],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'skill',
+			atomic = [{type = 'stat_set', stat = 'hit_res', value = variables.RES_MISS}]
+		}],
+		buffs = []
+	},
+	e_s_field = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [{obj = 'parent', param = 'process_value' }],
+		sub_effects = ['e_clean_reflections','e_t_field'],
+		buffs = []
+	},
+	e_t_field = {
+		type = 'temp_s',
+		tags = ['reflection', 'buff'],
+		target = 'target',
+		duration = 2,
+		name = 'energy_field',
+		stack = 1,
+		tick_event = variables.TR_TURN_GET,
+		rem_event = [variables.TR_COMBAT_F],
+		buffs = ['b_field'],
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = ['e_t_field1']
+	},
+	e_t_field1 = {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'random', value = 0.5}
+		],
+		req_skill = true,
+		args = [{obj = 'parent_args', param = 0}],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'caster',
+			args = [{obj = 'parent_args', param = 0}],
+			atomic = [
+				{type = 'sfx', value = 'targetattack'},
+				{type = 'damage', value = ['parent_args', 0], source = 'air'}]
+		}],
+		buffs = []
+	},
+	e_clean_reflections = {
+		type = 'oneshot',
+		target = 'target',
+		args = [],
+		atomic = [{type = 'remove_all_effects', value = 'reflection'}],
+	},
+	e_t_shell = {
+		type = 'temp_s',
+		tags = ['buff', 'positive'],
+		target = 'target',
+		duration = 4,
+		name = 'protective_shell',
+		stack = 1,
+		tick_event = variables.TR_POST_TARG,
+		rem_event = [variables.TR_COMBAT_F],
+		buffs = ['b_shell'],
+		args = [],
+		sub_effects = ['e_t_shell1']
+	},
+	e_t_shell1 = {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+		],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'skill',
+			atomic = [{type = 'stat_mul', stat = 'value', value = 0.65}]
+		}],
+		buffs = []
+	},
+	e_s_purge = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'target',
+			args = [],
+			atomic = [{type = 'remove_all_effects', value = 'debuff'}],#change debuff tag to another in natural-based debuff effects
+		}],
+		buffs = []
+	},
+	e_s_elweakness = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'elweakness',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 'parent', 
+		stack = 1,
+		tags = ['debuff'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'resistfire', value = -40},
+			{type = 'stat_add', stat = 'resistearth', value = -40},
+			{type = 'stat_add', stat = 'resistwater', value = -40},
+			{type = 'stat_add', stat = 'resistair', value = -40},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "Resistes decreased",
+				limit = 1,
+				t_name = 'elweak',
+				combat_only = true,
+			}
+		],
+	},
+	e_s_elprotect = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'elweakness',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 'parent', 
+		stack = 1,
+		tags = ['buff'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'resistfire', value = 25},
+			{type = 'stat_add', stat = 'resistearth', value = 25},
+			{type = 'stat_add', stat = 'resistwater', value = 25},
+			{type = 'stat_add', stat = 'resistair', value = 25},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "Resistes increased",
+				limit = 1,
+				t_name = 'elweak',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_camo = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'camo',
+		tick_event = variables.TR_TURN_GET,
+		rem_event = variables.TR_COMBAT_F,
+		duration = 2, 
+		stack = 1,
+		tags = ['buff'],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'evasion', value = 20}],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Fear.png", 
+				description = "Evasion increased",
+				limit = 1,
+				t_name = 'camo'
+			}
+		],
+	},
+	e_s_hmark = { #has troubles with protect effect
+		type = 'temp_s',
+		target = 'target',
+		name = 'huntersmark',
+		tick_event = variables.TR_TURN_F,
+		rem_event = [variables.TR_COMBAT_F],
+		duration = 'parent', 
+		stack = 1,
+		tags = ['debuff'],
+		sub_effects = ['e_t_hmark'],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "REceives more damage",
+				limit = 1,
+				t_name = 'huntersmark',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_hmark = {
+		type = 'trigger',
+		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
+		trigger = [variables.TR_DEF],
+		req_skill = true,
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				args = [],
+				atomic = [{type = 'stat_mul', stat = 'value', value = 1.15}],
+			},
+		],
+		buffs = []
+	},
+	e_clean_taunt = {
+		type = 'oneshot',
+		target = 'target',
+		args = [],
+		atomic = [{type = 'remove_all_effects', value = 'taunt'}],
+	},
+	e_t_taunt = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [{obj = 'parent', param = 'caster' }],
+		sub_effects = ['e_clean_taunt', 'e_s_taunt'],
+		buffs = []
+	},
+	e_s_devour = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [{obj = 'parent', param = 'caster'}],
+		sub_effects = ['e_t_devour'],
+		buffs = []
+	},
+	e_t_devour = {
+		type = 'temp_s',
+		tags = ['negative'],
+		target = 'target',
+		name = 'devour',
+		stack = 1,
+		rem_event = [variables.TR_COMBAT_F],
+		buffs = [{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "Spirit devoured",
+				limit = 1,
+				t_name = 'devour',
+			}],
+		args = [{obj = 'parent_args', param = 0, comment = 'caster'}, {obj = 'parent_arg_get', index = 0, param = 'mpmax', comment = 'casters mpmax' }],
+		sub_effects = ['e_tr_devour']
+	},
+	e_tr_devour = {
+		type = 'trigger',
+		trigger = [variables.TR_DEATH],
+		conditions = [],
+		req_skill = false,
+		args = [{obj = 'parent_args', param = 0, comment = 'caster'}, {obj = 'parent_args', param = 1, comment = 'casters mpmax'}],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'arg',
+			args = [{obj = 'parent_args', param = 0, comment = 'caster'}, {obj = 'parent_args', param = 1, comment = 'casters mpmax'}],
+			atomic = [
+				{type = 'mana', value = [['parent_args', 1], '*', 0.2]}
+				]
+		}],
+		buffs = []
+	},
+	e_s_l_orb = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [{type = 'target', value = [{code = 'stat', stat = 'hp', operant = 'gt', value = 0}]}],
+		req_skill = true,
+		args = [{obj = 'parent', param = 'target'}],
+		sub_effects = ['e_tr_l_orb'],
+		buffs = []
+	},
+	e_tr_l_orb = {
+		type = 'trigger',
+		trigger = [variables.TR_SKILL_FINISH],
+		reset = [variables.TR_TURN_GET],
+		target = 'caster',
+		conditions = [],
+		req_skill = true,
+		args = [{obj = 'parent_args', param = 0, comment = 'target'}],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'caster',
+				args = [{obj = 'parent_args', param = 0, comment = 'target'}],
+				atomic = [{type = 'use_combat_skill', skill = 'l_orb1', target = ['parent_args', 0]}]
+			},
+			{
+				type = 'oneshot',
+				target = 'self',
+				execute = 'remove'
+			}
+		],
+		buffs = []
+	},
+	e_clean_spirits = {
+		type = 'oneshot',
+		target = 'target',
+		args = [],
+		atomic = [{type = 'remove_all_effects', value = 'spirit'}],
+	},
+	e_s_spirit1 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_spirits','e_t_spirit1'],
+		buffs = []
+	},
+	e_s_spirit2 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_spirits','e_t_spirit2'],
+		buffs = []
+	},
+	e_s_spirit3 = {
+		type = 'trigger',
+		trigger = [variables.TR_POSTDAMAGE],
+		conditions = [],
+		req_skill = true,
+		args = [],
+		sub_effects = ['e_clean_spirits','e_t_spirit3'],
+		buffs = []
+	},
+	e_t_spirit1 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'spirit1',
+		rem_event = [variables.TR_COMBAT_F], 
+		stack = 1,
+		tags = ['spirit'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'evasion', value = 25},
+			{type = 'stat_add', stat = 'speed', value = 30},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "spirit - hare",
+				limit = 1,
+				t_name = 'spirit',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_spirit3 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'spirit3',
+		rem_event = [variables.TR_COMBAT_F],
+		stack = 1,
+		tags = ['spirit'],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'hitrate', value = 30},
+			{type = 'stat_add', stat = 'modskill', value = 0.2},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "spirit - eagle",
+				limit = 1,
+				t_name = 'spirit',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_spirit2 = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'spirit2',
+		rem_event = [variables.TR_COMBAT_F],
+		stack = 1,
+		tags = ['spirit'],
+		sub_effects = ['e_t_turtle1', 'e_t_turtle2'],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Discipline.png", 
+				description = "spirit - turtle",
+				limit = 1,
+				t_name = 'spirit',
+				combat_only = true,
+			}
+		],
+	},
+	e_t_turtle1 = {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['ability_type', 'eq', 'skill']}
+		],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'skill',
+			atomic = [{type = 'stat_mul', value = 0.75}]
+		}],
+		buffs = []
+	},
+	e_t_turtle2 = {
+		type = 'trigger',
+		trigger = [variables.TR_DEF],
+		conditions = [
+			{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]},
+			{type = 'skill', value = ['tags', 'has', 'damage'] },
+			{type = 'skill', value = ['ability_type', 'eq', 'spell']}
+		],
+		req_skill = true,
+		args = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'skill',
+			atomic = [{type = 'stat_mul', value = 0.85}]
+		}],
+		buffs = []
+	},
 	#statuses
 	e_t_hide = {
 		type = 'temp_s',
-		target = 'target',
-		rem_event = [variables.TR_CAST, variables.TR_COMBAT_F, variables.TR_DMG],
+		target = 'owner',
+		rem_event = [variables.TR_SKILL_FINISH, variables.TR_COMBAT_F, variables.TR_DMG],
 		stack = 1,
 		name = 'hide',
 		tags = ['buff', 'hide'],
 		atomic = [],
 		buffs = [
 			{
-				icon = "res://assets/images/iconsskills/Mindread.png", 
+				icon = "res://assets/images/iconsskills/icon_eyes.png", 
 				description = "Hidden",
 				t_name = 'hide'
+			}
+		],
+		sub_effects = [],
+	},
+	e_t_reincarnate = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F],
+		stack = 1,
+		name = 'reincarnate',
+		tags = ['reincarnate'], #and all other apopriaate
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Innervate.png", 
+				description = "Will be reborn at death",
+				t_name = 'reincarnate'
 			}
 		],
 		sub_effects = [],
@@ -1198,7 +1858,7 @@ var effect_table = {
 		stack = 1,
 		name = 'stun',
 		disable = true,
-		tags = ['debuff', 'stun_prechecked'],
+		tags = ['debuff', 'stun'],
 		buffs = ['b_stun'],
 	},
 	e_s_stun1 = {#duration version
@@ -1225,6 +1885,18 @@ var effect_table = {
 		tags = ['debuff', 'stun'],
 		buffs = ['b_stun'],
 	},
+	e_s_charm = {#parent duration
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DMG],
+		tick_event = [variables.TR_TURN_F],
+		stack = 1,
+		duration = 'parent',
+		name = 'charm',
+		disable = true,
+		tags = ['debuff', 'charm'],
+		buffs = ['b_charm_c'],
+	},
 	e_s_freeze = {#no-duration version
 		type = 'temp_s',
 		target = 'target',
@@ -1240,7 +1912,7 @@ var effect_table = {
 		type = 'temp_s',
 		target = 'target',
 		rem_event = [variables.TR_COMBAT_F, variables.TR_POSTDAMAGE],
-		tick_event = [variables.TR_TURN_GET],
+		tick_event = [variables.TR_TURN_S],
 		duration = 'parent',
 		stack = 1,
 		name = 'freeze',
@@ -1325,6 +1997,19 @@ var effect_table = {
 		name = 'silence',
 		tags = ['debuff', 'silence'],
 		buffs = ['b_silence'],
+	},
+	e_s_taunt = {
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_TAUNT_FAIL], #optional remove event
+		tick_event = [variables.TR_TURN_F],
+		duration = 2,
+		stack = 1,
+		name = 'taunt',
+		tags = ['debuff', 'taunt', 'negative'],
+		buffs = ['b_taunt'],
+		args = [{obj = 'parent_args', param = 0}],
+		atomic = [{type = 'stat_set_revert', stat = 'taunt', value = ['parent_args', 0]}]
 	},
 	e_s_void = {
 		type = 'temp_s',
@@ -1524,7 +2209,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F],
 		duration = 'parent_arg',
-		tags = ['affliction', 'bleed_prechecked'],
+		tags = ['affliction', 'bleed'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_bleed'],
 		atomic = [],
@@ -1771,7 +2456,7 @@ var effect_table = {
 	e_tail_plug_bonus = {
 		type = 'c_static',
 		tags = ['recheck_item'],
-		conditions = [{code = 'gear_eqiped', value = 'pet_suit'}],
+		conditions = [{code = 'gear_equiped', value = 'pet_suit', check = true}],
 		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
 		descript = 'Increases Charm by 10 if Pet Suit equipped.',
 		buffs = [],
@@ -1953,7 +2638,7 @@ var effect_table = {
 	},
 	valkyrie_spear_bonus = {
 		type = 'c_static',
-		conditions = [{code = 'gear_eqiped', param = 'geartype', value = 'spear'}],
+		conditions = [{code = 'gear_equiped', param = 'geartype', value = 'spear', check = true}],
 		tags = ['recheck_item'],
 		atomic = [
 			{type = 'stat_add', stat = 'speed', value = 10},
@@ -1998,6 +2683,7 @@ var effect_table = {
 
 var atomic = {
 	#new part
+	a_shackles = {type = 'stat_add', stat = 'timid_factor', value = 2},
 	a_shackles_1 = {type = 'stat_set_revert', comment = 'effect of shackles skill', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 5]},
 	a_shackles_2 = {type = 'stat_set_revert', stat = 'shackles_chance', value = [['parent_args', 0],'-',['parent_args', 1], '*', 10, '-', 30]},
 	a_stat_add = {type = 'stat_add', stat = ['parent_args', 0], value = ['parent_args', 1]},
@@ -2061,15 +2747,45 @@ var buffs = {
 		limit = 1,
 		t_name = 'stun'
 	},
+	b_charm_c = {
+		icon = "res://assets/images/iconsskills/Charm.png", #?? mb to fix
+		description = "Charmed",
+		limit = 1,
+		t_name = 'charm'
+	},
 	b_trap = {
 		icon = "res://assets/images/traits/hitrate.png", 
 		description = "Trapped",
 		limit = 1,
 		t_name = 'trap'
 	},
+	b_mirror = { 
+		icon = "res://assets/images/traits/hitrate.png", 
+		description = "Mirror image - chance to evade damage from skills",
+		limit = 1,
+		t_name = 'mirror'
+	},
+	b_field= { 
+		icon = "res://assets/images/iconsskills/Barrier.png", 
+		description = "Energy field - chance to deal Air Spell damage to attacker",
+		limit = 1,
+		t_name = 'field'
+	},
+	b_shell= { 
+		icon = "res://assets/images/traits/hitrate.png", 
+		description = "Protective shell",
+		limit = 1,
+		t_name = 'shell'
+	},
+	b_taunt= { 
+		icon = "res://assets/images/traits/hitrate.png", 
+		description = "Taunted",
+		limit = 1,
+		t_name = 'taunt'
+	},
 	b_distract = {
-		icon = "res://assets/images/traits/dodge.png", 
-		description = "Evasion reduced",
+		icon = "res://assets/images/iconsskills/distract.png", 
+		description = "Hitrate and Evasion reduced",
 		limit = 1,
 		t_name = 'distract'
 	},

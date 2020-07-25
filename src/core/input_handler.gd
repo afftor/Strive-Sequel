@@ -42,6 +42,12 @@ var last_action_data = {}
 var text_characters = []
 
 var slave_list_node
+#Added
+var skill_list_node
+var Mansion
+var SlaveModule
+var PreviousScene
+
 var exploration_node
 var active_character
 var scene_characters = []
@@ -55,14 +61,6 @@ var target_character
 
 var ghost_items = []
 
-var skill_list_node
-var Mansion
-var SlaveModule
-var PreviousScene
-
-func rebuild_skill_list():
-	skill_list_node.build_skill_panel()
-
 
 var encounter_win_script = null
 var encounter_lose_scripts = []
@@ -71,7 +69,7 @@ var musicfading = false
 var musicraising = false
 var musicvalue
 
-enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_SYSMESSAGE, NODE_SLAVEMODULE, NODE_INVENTORY_NEW, NODE_MANSION_NEW,NODE_GUI_WORLD}#, NODE_TWEEN, NODE_REPEATTWEEN}
+enum {NODE_CLASSINFO, NODE_CHAT, NODE_TUTORIAL, NODE_LOOTTABLE, NODE_DIALOGUE, NODE_INVENTORY, NODE_POPUP, NODE_CONFIRMPANEL, NODE_SLAVESELECT, NODE_SKILLSELECT, NODE_EVENT, NODE_MUSIC, NODE_SOUND, NODE_BACKGROUND_SOUND, NODE_TEXTEDIT, NODE_SLAVETOOLTIP, NODE_SKILLTOOLTIP, NODE_ITEMTOOLTIP, NODE_TEXTTOOLTIP, NODE_CHARCREATE, NODE_SLAVEPANEL, NODE_COMBATPOSITIONS, NODE_SYSMESSAGE, NODE_SLAVEMODULE, NODE_INVENTORY_NEW, NODE_MANSION_NEW, NODE_GUI_WORLD} #, NODE_TWEEN, NODE_REPEATTWEEN}
 
 
 var globalsettings = { 
@@ -109,7 +107,7 @@ var globalsettings = {
 	body_folder = 'user://bodies/',
 	#mod_folder = 'user://mods/',
 	
-	turn_based_time_flow = false,
+	turn_based_time_flow = true,
 	
 	guilds_any_race = false, #unused
 	
@@ -118,6 +116,9 @@ var globalsettings = {
 	autosave_frequency = 24,
 	
 } setget settings_save
+
+func set_previous_scene(scene):
+	PreviousScene = scene
 
 func settings_load():
 	var config = ConfigFile.new()
@@ -174,41 +175,79 @@ func _ready():
 	OS.window_position = globalsettings.window_pos
 	settings_load()
 
-func _input(event):
-	if event.is_echo() == true && !event.is_action_type():
-		return
-	if (event.is_action("ESC") || event.is_action_released("RMB")):
-		var ignore_rightclick = false
-		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-			if i.visible == true:
-				ignore_rightclick = true
-				continue
-		if ignore_rightclick == false:
 
-			if CloseableWindowsArray.size() != 0 && !CurrentScene.name == "MansionMainModule":
-				CloseTopWindow()
-			else:
-				# if CurrentScene.name == 'mansion' && event.is_action("ESC"):
-				# 	CurrentScene.get_node("MenuPanel").open()
-				if CurrentScene.name == "MansionMainModule":
-					Mansion.mansion_state = "default"
+# func _input(event):
+# 	if event.is_echo() == true && !event.is_action_type(): 
+# 		return
+# 	#print(var2str(event))
+# 	if (event.is_action("ESC") || event.is_action_released("RMB")):
+# 		var ignore_rightclick = false
+# 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+# 			if i.visible == true:
+# 				ignore_rightclick = true
+# 				continue
+# 		if ignore_rightclick == false:
+# 			if CloseableWindowsArray.size() != 0:
+# 				CloseTopWindow()
+# 			else:
+# 				if CurrentScene.name == 'mansion' && event.is_action("ESC"):
+# 					CurrentScene.get_node("MenuPanel").open()
+# 	if event.is_action_released("F9"):
+# 		OS.window_fullscreen = !OS.window_fullscreen
+# 		input_handler.globalsettings.fullscreen = OS.window_fullscreen
+# 		if input_handler.globalsettings.fullscreen == false:
+# 			OS.window_position = Vector2(0,0)
+# 	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
+# 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+# 			if input_handler.globalsettings.turn_based_time_flow == false:
+# 				CurrentScene.changespeed(CurrentScene.timebuttons[int(event.as_text())-1])
+# 			else:
+# 				CurrentScene.timeflowhotkey(int(event.as_text()))
+# 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+# 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+# 	if event.is_action_pressed('full_screen'):
+# 		OS.window_fullscreen = !OS.window_fullscreen
+# 		input_handler.globalsettings.fullscren = OS.window_fullscreen
 
-	if event.is_action_released("F9"):
-		OS.window_fullscreen = !OS.window_fullscreen
-		input_handler.globalsettings.fullscreen = OS.window_fullscreen
-		if input_handler.globalsettings.fullscreen == false:
-			OS.window_position = Vector2(0,0)
-	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
-		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-			if input_handler.globalsettings.turn_based_time_flow == false:
-				CurrentScene.changespeed(CurrentScene.timebuttons[int(event.as_text())-1])
-			else:
-				CurrentScene.timeflowhotkey(int(event.as_text()))
-	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
-		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-	if event.is_action_pressed('full_screen'):
-		OS.window_fullscreen = !OS.window_fullscreen
-		input_handler.globalsettings.fullscren = OS.window_fullscreen
+
+# func _input(event):
+# 	if event.is_echo() == true && !event.is_action_type(): 
+# 		return
+# 	#print(var2str(event))
+# 	if (event.is_action("ESC") || event.is_action_released("RMB")):
+# 		var ignore_rightclick = false
+# 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+# 			if i.visible == true:
+# 				ignore_rightclick = true
+# 				continue
+# 		if ignore_rightclick == false:
+
+# 			# Changes Start
+# 			if CloseableWindowsArray.size() != 0:# && !CurrentScene.name == "MansionMainModule":
+# 				CloseTopWindow()
+# #				Mansion.mansion_state = "default"
+# 			else:
+# 				if CurrentScene.name == 'mansion' && event.is_action("ESC"):
+# 					CurrentScene.get_node("MenuPanel").open()
+# #				if CurrentScene.name == "MansionMainModule":
+# #					Mansion.mansion_state = "default"
+# 			#Changes end
+# 	if event.is_action_released("F9"):
+# 		OS.window_fullscreen = !OS.window_fullscreen
+# 		input_handler.globalsettings.fullscreen = OS.window_fullscreen
+# 		if input_handler.globalsettings.fullscreen == false:
+# 			OS.window_position = Vector2(0,0)
+# 	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
+# 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+# 			if input_handler.globalsettings.turn_based_time_flow == false:
+# 				CurrentScene.changespeed(CurrentScene.timebuttons[int(event.as_text())-1])
+# 			else:
+# 				CurrentScene.timeflowhotkey(int(event.as_text()))
+# 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+# 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+# 	if event.is_action_pressed('full_screen'):
+# 		OS.window_fullscreen = !OS.window_fullscreen
+# 		input_handler.globalsettings.fullscren = OS.window_fullscreen
 
 func _process(delta):
 	if OS.window_position.y < 0:
@@ -262,6 +301,8 @@ func OpenClose(node):
 	CloseableWindowsArray.append(node)
 
 func Close(node):
+	for i in CloseableWindowsArray:
+		print("i:" + str(i.name))
 	CloseableWindowsArray.erase(node)
 	ResourceScripts.core_animations.CloseAnimation(node)
 
@@ -548,6 +589,7 @@ func calculate_number_from_string_array(arr, caster, target):
 	return endvalue
 
 func dialogue_option_selected(option):
+	print(option)
 	get_spec_node(self.NODE_DIALOGUE).previous_text = tr(option)
 	if !ResourceScripts.game_progress.selected_dialogues.has(option):
 		ResourceScripts.game_progress.selected_dialogues.append(option)
@@ -614,11 +656,11 @@ func ActivateTutorial(code):
 		get_spec_node(self.NODE_TUTORIAL).rebuild()
 		#get_tutorial_node().rebuild()
 
-func show_class_info(classcode, person = null):
-	if person == null:
-		person = active_character
-	var node = get_spec_node(self.NODE_CLASSINFO) #get_class_info_panel()
-	node.open(classcode, person)
+# func show_class_info(classcode, person = null):
+# 	if person == null:
+# 		person = active_character
+# 	var node = get_spec_node(self.NODE_CLASSINFO) #get_class_info_panel()
+# 	node.open(classcode, person)
 
 func get_combat_node():
 	var window
@@ -664,12 +706,16 @@ func get_random_chat_line(person, event):
 func repeat_social_skill():
 	if last_action_data.code == 'social_skill':
 		last_action_data.caster.use_social_skill(last_action_data.skill,last_action_data.target)
+		rebuild_skill_list()
 
 func update_slave_list():
 	slave_list_node.update()
 
 func rebuild_slave_list():
 	slave_list_node.rebuild()
+
+func rebuild_skill_list():
+	skill_list_node.build_skill_panel()
 
 func update_slave_panel():
 	var node = get_spec_node(self.NODE_SLAVEPANEL, null, false)#, false)
@@ -687,6 +733,22 @@ func check_mouse_in_nodes(nodes):
 func text_cut_excessive_lines(text:String):
 	while text.ends_with(" ") || text.ends_with("\n"):
 		text.erase(text.length()-1, text.length())
+	return text
+
+func text_form_recitation(string_array):
+	var text = ""
+	if string_array.size() == 1:
+		text = string_array[0]
+	else:
+		for i in string_array:
+			var last = false
+			if i == string_array.back():
+				text = text.substr(0,text.length()-2)
+				if string_array.size() > 1:
+					text += ' and ' + i
+			else:
+				text += i + ", "
+	
 	return text
 
 func get_spec_node(type, args = null, raise = true, unhide = true):
@@ -832,24 +894,20 @@ func select_value_in_OB(node, value):
 
 func get_value_node(node):
 	if node is OptionButton:
-		if node.get_selected_metadata() != null: return node.get_selected_metadata()
-		else: return node.get_item_text(node.selected)
+		return node.get_item_text(node.selected)
 	if node is ItemList:
 		var tmp = node.get_selected_items()
 		if node.select_mode == ItemList.SELECT_SINGLE:
 			if tmp.size() == 0: return null
-			if node.get_item_metadata(tmp[0]): return node.get_item_metadata(tmp[0])
-			else: return node.get_item_text(tmp[0])
+			return node.get_item_text(tmp[0])
 		else:
 			var res = []
 			for i in tmp:
-				if node.get_item_metadata(i) != null: res.push_back(node.get_item_metadata(i))
-				else: res.push_back(node.get_item_text(i))
+				res.push_back(node.get_item_text(i))
 			return res
 	if node is CheckBox: return node.pressed
 	#node has text field
-	if node.name == 'number': 
-		return float(node.text)
+	if node.name == 'number': return float(node.text)
 	if node.name == 'index': return int(node.text)
 	if node.name == 'formula': return parse_json(node.text)
 	return node.text
@@ -952,15 +1010,3 @@ func scanfolder(path): #makes an array of all folders in modfolder
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
-
-func swap_items(arr: Array, pos1, pos2):
-	if pos1 < 0 or pos2 < 0: return
-	if pos1 >= arr.size() or pos2 >= arr.size(): return
-	var tmp = arr[pos1]
-	arr[pos1] = arr[pos2]
-	arr[pos2] = tmp
-
-func repeat_string(ch, n):
-	var res = ""
-	for i in range(n): res += ch
-	return res

@@ -119,12 +119,12 @@ func convert_to_new_template():
 				'-': tmp.dmgf = 1
 				'=': tmp.dmgf = 2
 			tmp.damagestat = tmp.damagestat.right(1)
-			tmp.nocrit = true
-			tmp.nodef = true
-		else: 
-			tmp.dmgf = 2
 			tmp.nocrit = !variables.dmg_mod_list.has(damagestat[i])
 			tmp.nodef = tags.has('noreduce')
+		else: 
+			tmp.dmgf = 2
+			tmp.nocrit = true
+			tmp.nodef = true
 		#res_res.dmgf = dmgf.selected
 		tmp.receiver = receiver[i]
 		tmp.source = damage_type
@@ -163,8 +163,11 @@ func convert_to_new_template():
 	if template.has('dialogue_image'): res_res.dialogue_image = template.dialogue_image
 	if template.has('dialogue_show_repeat'): res_res.dialogue_show_repeat = template.dialogue_show_repeat
 	if template.has('target'): res_res.target = template.target
+	else: res_res.target = 'ally'
 	if template.has('target_number'): res_res.target_number = template.target_number
+	else: res_res.target_number = 'single'
 	if template.has('target_range'): res_res.target_range = template.target_range
+	else: res_res.target_range = 'any'
 	if template.has('sfx'): res_res.sfx = template.sfx.duplicate()
 	else: res_res.sfx = []
 	if template.has('sounddata'): res_res.sounddata = template.sounddata.duplicate()

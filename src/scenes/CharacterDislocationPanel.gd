@@ -2,7 +2,7 @@ extends "res://src/scenes/ClosingPanel.gd"
 # warning-ignore-all:return_value_discarded
 
 
-var dislocation_area = 'mansion'
+var dislocation_area
 var selected_travel_characters = []
 var destination_area = 'plains'
 var destination = null
@@ -16,18 +16,18 @@ func _ready():
 func open_character_dislocation():
 	show()
 	selected_travel_characters.clear()
-	dislocation_area = 'mansion'
+	dislocation_area = ResourceScripts.game_world.mansion_location
 	destination_area = 'plains'
 	destination = null
 	
 	$HomeButton.clear()
 	$HomeButton.add_item(tr("MANSION"))
-	$HomeButton.set_item_metadata($HomeButton.get_item_count()-1, 'mansion')
+	$HomeButton.set_item_metadata($HomeButton.get_item_count()-1, ResourceScripts.game_world.mansion_location)
 	var populatedlocations = []
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
-		if !person.travel.location in ['mansion','travel'] && populatedlocations.has(person.travel.location) == false:
+		if !person.travel.location in [ResourceScripts.game_world.mansion_location,'travel'] && populatedlocations.has(person.travel.location) == false:
 			populatedlocations.append(person.travel.location)
 		elif person.travel.location == 'travel':
 			travelers.append(person)
@@ -37,7 +37,7 @@ func open_character_dislocation():
 	for i in travelers:
 		var newbutton = input_handler.DuplicateContainerTemplate($TravelersContainer/VBoxContainer)
 		newbutton.text = i.get_short_name()
-		if i.travel.travel_target.location != 'mansion':
+		if i.travel.travel_target.location != ResourceScripts.game_world.mansion_location:
 			newbutton.text += " - " + ResourceScripts.world_gen.get_location_from_code(i.travel.travel_target.location).name
 		else:
 			newbutton.text += " - " + tr("MANSION")
@@ -56,7 +56,7 @@ func open_character_dislocation():
 	update_location_list()
 
 func cancel_travel(person):
-	if person.travel.travel_target.location != 'mansion':
+	if person.travel.travel_target.location != ResourceScripts.game_world.mansion_location:
 		return_confirm(person)
 	else:
 		input_handler.SystemMessage(person.translate("[name] is already heading back to Mansion."))
@@ -103,11 +103,11 @@ func update_location_list():
 	for i in ResourceScripts.game_world.areas[destination_area].locations.values() + ResourceScripts.game_world.areas[destination_area].questlocations.values():
 		array.append(i)
 	
-	if dislocation_area != 'mansion':
+	if dislocation_area != ResourceScripts.game_world.mansion_location:
 		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
 		var text = tr("RETURNTOMANSION")
 		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', ['mansion'])
+		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.mansion_location])
 		newbutton.name = 'mansion'
 	
 	if destination_area != 'plains':
@@ -174,7 +174,7 @@ func update_character_dislocation():
 	elif destination == 'mansion':
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
-			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0]].travel_per_tick())) + " hours."
+			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, ResourceScripts.game_world.mansion_location).time / ResourceScripts.game_party.characters[selected_travel_characters[0]].travel_per_tick())) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
 		text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
@@ -229,7 +229,7 @@ func travel_confirm():
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = destination_area, location = destination}
-			person.travel.travel_time = travel_cost.time
+			person.travel.set_travel_time(travel_cost.time)
 		else:
 			person.xp_module.work = 'travel'
 			person.travel.location = destination

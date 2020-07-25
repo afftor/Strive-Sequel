@@ -10,6 +10,8 @@ const takerpart = ''
 const virginloss = false
 const giverconsent = 'basic'
 const takerconsent = 'any'
+const givertags = []
+const takertags = []
 const consent_level = 0 #added due to testing, i think this script is broken overall
 
 func getname(state = null):

@@ -34,6 +34,7 @@ var buffs = []
 #			break
 
 func _input(event):
+	if fighter == null: return
 	if get_global_rect().has_point(get_global_mouse_position()):
 		if event.is_pressed():
 			if event.is_action("RMB"):
@@ -104,6 +105,7 @@ func update_shield():
 	animation_node.add_new_data(data)
 
 func process_sfx(code):
+	if fighter == null: return
 	var data = {node = self, time = input_handler.combat_node.turns,type = code, slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
 
@@ -112,6 +114,7 @@ func process_sound(sound):
 	animation_node.add_new_data(data)
 
 func rebuildbuffs():
+	if fighter == null: return
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'buffs', slot = 'buffs', params = fighter.get_combat_buffs()}
 	animation_node.add_new_data(data)
 

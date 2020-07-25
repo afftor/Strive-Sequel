@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GUI_New/CharacterInfo/ImageSelect.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/back_charinfo.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=4]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=6]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -37,6 +39,7 @@ margin_left = 64.0
 margin_top = 73.4729
 margin_right = 394.0
 margin_bottom = 818.473
+theme = ExtResource( 6 )
 custom_constants/separation = 9
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,7 +92,7 @@ text = "Manage Sex Traits"
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 295.0
 margin_right = 330.0
-margin_bottom = 525.0
+margin_bottom = 595.0
 
 [node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]
 visible = false
@@ -110,34 +113,34 @@ placeholder_text = "Search"
 [node name="addcustom" type="Button" parent="VBoxContainer/IconBlock"]
 margin_top = 38.0
 margin_right = 330.0
-margin_bottom = 62.0
+margin_bottom = 72.0
 rect_min_size = Vector2( 330, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Add custom image"
 
 [node name="openfolder" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 66.0
+margin_top = 76.0
 margin_right = 330.0
-margin_bottom = 90.0
+margin_bottom = 110.0
 rect_min_size = Vector2( 330, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Open system folder"
 
 [node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 94.0
+margin_top = 114.0
 margin_right = 330.0
-margin_bottom = 118.0
+margin_bottom = 148.0
 rect_min_size = Vector2( 330, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Reload portraits"
 
 [node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 122.0
+margin_top = 152.0
 margin_right = 330.0
-margin_bottom = 146.0
+margin_bottom = 186.0
 rect_min_size = Vector2( 330, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -155,26 +158,26 @@ size_flags_vertical = 2
 text = "Reverse to default"
 
 [node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 150.0
+margin_top = 190.0
 margin_right = 330.0
-margin_bottom = 174.0
+margin_bottom = 224.0
 rect_min_size = Vector2( 330, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Select Folders"
 
 [node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
-margin_top = 178.0
+margin_top = 228.0
 margin_right = 330.0
-margin_bottom = 202.0
+margin_bottom = 262.0
 rect_min_size = Vector2( 330, 0 )
 hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
 text = "Assign Both"
 
 [node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock"]
-margin_top = 206.0
+margin_top = 266.0
 margin_right = 330.0
-margin_bottom = 230.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 330, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2

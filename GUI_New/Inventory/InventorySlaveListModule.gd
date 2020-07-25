@@ -1,13 +1,13 @@
 extends Panel
 
-
+var selectedhero
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update()
 
 
 func update():
-	var selectedhero = get_parent().selectedhero
+	selectedhero = get_parent().selectedhero
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]

@@ -5,7 +5,11 @@ var gamepaused = false
 var gamespeed = 0
 var gametime = 0
 var previouspeed = 0
+const DEGREES_PER_HOUR = 15
+onready var sky = $Sky
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
+
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 
 func _ready():
@@ -21,10 +25,11 @@ func _ready():
 	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
 	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
 
-	globals.connecttexttooltip($TimeNode/gold/TextureRect/Control, tr("TOOLTIPGOLD"))
-	globals.connecttexttooltip($TimeNode/food/TextureRect/Control, tr("TOOLTIPFOOD"))
-	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date) + ", Hour: " + str(ResourceScripts.game_globals.hour) + ":00"
-
+	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD"))
+	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD"))
+	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
+	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
 	set_time_buttons()
 
 
@@ -61,9 +66,7 @@ func _process(delta):
 
 		if gamespeed != 0:
 			gametime += delta * gamespeed
-			$TimeNode/dayprogress.value = input_handler.calculatepercent(
-				gametime, variables.SecondsPerHour
-			)
+			rotate_sky(gametime)
 			if gametime >= variables.SecondsPerHour:
 				gametime -= variables.SecondsPerHour
 				advance_hour()
@@ -85,8 +88,14 @@ func advance_turn():
 	while number > 0:
 		advance_hour()
 		number -= 1
+	rotate_sky()
 
-
+func rotate_sky(gametime = 0):
+	if input_handler.globalsettings.turn_based_time_flow:
+		sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
+	else:
+		sky.rect_rotation = ((ResourceScripts.game_globals.hour - 1) * DEGREES_PER_HOUR) + (DEGREES_PER_HOUR / variables.SecondsPerHour * gametime)
+		
 func decrease_turns():
 	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
 	update_turns_label()
@@ -110,13 +119,16 @@ func advance_hour():
 		i.act_prepared()
 	for i in ResourceScripts.game_party.characters.values():
 		i.tick()
-	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date) + ", Hour: " + str(ResourceScripts.game_globals.hour) + ":00"
+	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
+	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	if input_handler.globalsettings.turn_based_time_flow:
-		$TimeNode/dayprogress.value = ResourceScripts.game_globals.hour
+		pass
 	
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
+	if GUIWorld.CurrentScene.name == "MansionMainModule":
+		get_parent().rebuild_mansion()
 
 
 func advance_day():
@@ -136,7 +148,8 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	ResourceScripts.game_world.update_locations()
 	globals.autosave()
-	get_parent().rebuild_mansion()
+	if GUIWorld.CurrentScene.name == "MansionMainModule":
+		get_parent().rebuild_mansion()
 
 
 func set_time_buttons():
@@ -146,8 +159,6 @@ func set_time_buttons():
 			$"TimeNode/1speed".visible = false
 			$"TimeNode/2speed".visible = false
 			$TimeNode/finish_turn.visible = true
-			$TimeNode/dayprogress.max_value = variables.HoursPerDay
-			$TimeNode/dayprogress.value = ResourceScripts.game_globals.hour
 			$TimeNode/HidePanel.hide()
 			$TimeNode/turns.show()
 			$TimeNode/lessturn.show()
@@ -157,7 +168,6 @@ func set_time_buttons():
 			$"TimeNode/1speed".visible = true
 			$"TimeNode/2speed".visible = true
 			$TimeNode/finish_turn.visible = false
-			$TimeNode/dayprogress.max_value = 100
 			$TimeNode/turns.hide()
 			$TimeNode/lessturn.hide()
 			$TimeNode/moreturn.hide()
@@ -168,8 +178,8 @@ func changespeed(button, playsound = true):
 		return
 	var oldvalue = gamespeed
 	var newvalue = button.get_meta('value')
-	for i in timebuttons:
-		i.pressed = i == button
+	for i in [$"TimeNode/0speed", $"TimeNode/1speed"]:
+		i.visible = i != button
 	gamespeed = newvalue
 	var soundarray = ['time_stop', 'time_start', 'time_up']
 	if oldvalue != newvalue && playsound:

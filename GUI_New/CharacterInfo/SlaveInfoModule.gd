@@ -1,6 +1,6 @@
 extends Panel
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 var person
 var authority_lines = {
@@ -60,8 +60,7 @@ func update():
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
 		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
-		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
-	
+		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)	
 
 		for i in $BaseStatsPanel/resists.get_children():
 			var tmp = person.get_stat('resists')
@@ -86,7 +85,7 @@ func update():
 				globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 	
 		$RichTextLabel.bbcode_text = person.make_description()
-		# globals.connecttexttooltip($character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
+		
 		# if person.travel.location != 'mansion':
 		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	
@@ -115,6 +114,11 @@ func update():
 		rebuild_traits()
 	
 		$ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
+		if person != ResourceScripts.game_party.get_master():
+			$Panel/character_class.text = statdata.slave_class_names[person.get_stat('slave_class')]
+			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
+		else:
+			$Panel/character_class.text = ""
 
 
 

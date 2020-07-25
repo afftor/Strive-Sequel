@@ -56,11 +56,18 @@ func testcombat():
 	#input_handler.active_location.stagedenemies = [{stage = 1, level = 1, enemy = 'rats_easy'}]
 	var test_slave = ResourceScripts.scriptdict.class_slave.new()
 	test_slave.create('BeastkinWolf', 'male', 'random')
-	test_slave.unlock_class("smith")
-	test_slave.unlock_class("apprentice")
-	test_slave.unlock_class("attendant")
-	test_slave.unlock_class("archer")
-	test_slave.unlock_class("ruler")
+	test_slave.unlock_class("archmage")
+	test_slave.unlock_class("alchemist")
+	test_slave.unlock_class("technomancer")
+	test_slave.unlock_class("harlot")
+	test_slave.unlock_class("sextoy")
+	test_slave.unlock_class("bard")
+	test_slave.unlock_class("battlesmith")
+	test_slave.unlock_class("shaman")
+	test_slave.unlock_class("rogue")
+	test_slave.unlock_class("ranger")
+	test_slave.unlock_class("paladin")
+	test_slave.unlock_class("templar")
 	var newitem = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(newitem)
 	test_slave.equip(newitem)
@@ -69,8 +76,8 @@ func testcombat():
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 3))
 	globals.AddItemToInventory(globals.CreateUsableItem("lifeshard", 3))
 	ResourceScripts.game_party.add_slave(test_slave)
-	test_slave.speed = 100
-	test_slave.wits = 100.0
+	test_slave.set_stat('speed',100)
+	test_slave.set_stat('wits',100)
 	var test_slave2 = ResourceScripts.scriptdict.class_slave.new()
 	test_slave2.create('BeastkinWolf', 'male', 'random')
 	ResourceScripts.game_party.add_slave(test_slave2)
@@ -158,7 +165,7 @@ func build_accessible_locations():
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
-		if !person.travel.location in ['mansion','travel'] && location_array.has(person.travel.location) == false:
+		if !person.travel.location in [ResourceScripts.game_world.mansion_location,'travel'] && location_array.has(person.travel.location) == false:
 			location_array.append(person.travel.location)
 	
 	var newbutton = input_handler.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
@@ -623,7 +630,7 @@ func guild_hire_slave():
 #			state.add_slave(selectedperson)
 #			active_faction.slaves.erase(selectedperson.id)
 #			selectedperson.area = active_area.code
-#			selectedperson.location = 'mansion'
+#			selectedperson.location = ResourceScripts.game_world.mansion_location
 #			selectedperson.is_players_character = true
 #			input_handler.active_character = selectedperson
 #			input_handler.scene_characters.append(selectedperson)
@@ -873,6 +880,10 @@ func faction_services():
 		globals.connecttexttooltip(newbutton, tr(i.descript))
 
 func enslave():
+	var reqs = [{code = 'slave_type', value = 'slave', operant = 'neq'}, {code = "is_master", check = false}]
+	input_handler.ShowSlaveSelectPanel(self, 'enslave_select', reqs)
+
+func clearclasses():
 	var reqs = [{code = 'slave_type', value = 'slave', operant = 'neq'}, {code = "is_master", check = false}]
 	input_handler.ShowSlaveSelectPanel(self, 'enslave_select', reqs)
 	
@@ -1222,10 +1233,10 @@ func show_heal_items(position):
 #func return_character_confirm():
 #	if variables.instant_travel == false:
 #		selectedperson.location = 'travel'
-#		selectedperson.travel_target = {area = '', location = 'mansion'}
+#		selectedperson.travel_target = {area = '', location = ResourceScripts.game_world.mansion_location}
 #		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
 #	else:
-#		selectedperson.location = 'mansion'
+#		selectedperson.location = ResourceScripts.game_world.mansion_location
 #		selectedperson.return_to_task()
 #	for i in active_location.group:
 #		if active_location.group[i] == selectedperson.id:
