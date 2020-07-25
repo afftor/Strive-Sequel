@@ -4,6 +4,7 @@ var person
 
 func hairdye(character):
 	person = character
+	input_handler.active_character = person
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	node.open(self, 'set_hair_color', person.get_stat('hair_color'), person.translate("Select new hair color for [name]"))
 
@@ -13,10 +14,12 @@ func set_hair_color(text):
 
 func minorus_potion(character):
 	person = character
+	input_handler.active_character = person
 	input_handler.interactive_message("minorus_potion_select",'custom_effect', {})
 
 func majorus_potion(character):
 	person = character
+	input_handler.active_character = person
 	input_handler.interactive_message("majorus_potion_select",'custom_effect', {})
 
 func minorus_tits():

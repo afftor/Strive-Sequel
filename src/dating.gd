@@ -16,11 +16,12 @@ var date = false
 var jail = false
 var drunkness = 0.0
 var actionhistory = []
-var categories = ['Actions','P&P','Location','Items']
+var categories = ['Affection','Discipline','Location','Items']
 var locationarray = ['livingroom','town','dungeon','garden','bedroom']
 var location_changed = false
 var finish_encounter = false
-var turn = 0
+var turn = 0 setget turn_set
+var observing_slaves = []
 onready var showntext = '' setget showtext_set,showtext_get
 
 var helpdescript = {
@@ -62,13 +63,16 @@ func mood_set(value):
 func mood_get():
 	return mood
 
+func turn_set(value):
+	turn = value
+	$turns/Label.text = str(turn)
 
 var locationdicts = {
 	livingroom = {code = 'livingroom',name = 'Living Room', background = 'mansion'},
 	bedroom = {code = 'bedroom',name = 'Bedroom', background = 'mansion'},
-	dungeon = {code = 'dungeon',name = 'Dungeon', background = 'jail'},
-	garden = {code = 'garden',name = 'Garden', background = 'crossroads'},
-	town = {code = 'town',name = 'Streets', background = 'localtown'},
+	dungeon = {code = 'dungeon',name = 'Torture Room', background = 'dungeon'},
+	garden = {code = 'garden',name = 'Garden', background = 'garden'},
+	town = {code = 'town',name = 'Streets', background = 'aliron'},
 }
 
 
@@ -85,16 +89,28 @@ class dateclass:
 
 
 func _ready():
+	ResourceScripts.game_world.make_world()
 	location = 'livingroom'
 	master = ResourceScripts.scriptdict.class_slave.new()
 	master.create('Human', 'male', 'random')
 	
 	person = ResourceScripts.scriptdict.class_slave.new()
-	person.create('HalfkinCat', 'female', 'random')
+	person.create('HalfkinFox', 'female', 'random')
 	person.set_stat('personality', 'shy')
+	ResourceScripts.game_res.upgrades.torture_room = 1
+	
+	var character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'female', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'female', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'female', 'random')
+	characters_pool.move_to_state(character.id)
 	for i in helpdescript:
 		globals.connecttexttooltip(get_node(i),helpdescript[i])
-	globals.connecttexttooltip($panel/categories/Location,"You can only change location once.")
+	globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
 	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	initiate(person)
 
@@ -103,16 +119,18 @@ func initiate(tempperson):
 	self.visible = true
 	self.mood = 0
 	self.drunkness = 0
-	self.turn = 0
+	self.turn = 10
 	self.authStart = tempperson.get_stat('authority')
 	self.consStart = tempperson.get_stat('consent')
 	self.finish_encounter = false
 	date = false
 	public = false
+	observing_slaves.clear()
 	$sexswitch.visible = false
 	$end.visible = false
 	$textfield/RichTextLabel.clear()
 	location_changed = false
+	$background.texture = images.backgrounds.mansion
 	
 	
 	
@@ -166,7 +184,6 @@ func initiate(tempperson):
 	
 	
 	if jail == true:
-		get_parent().background = 'jail'
 		location = 'dungeon'
 		text = "You visit [name2] in [his2] cell and decide to spend some time with [him2]. "
 		$panel/categories/Location.disabled = true
@@ -192,7 +209,7 @@ func initiate(tempperson):
 	
 	self.showntext = text
 	updatelist()
-	$panel/categories/Actions.emit_signal("pressed")
+	$panel/categories/Affection.emit_signal("pressed")
 
 var category
 
@@ -234,17 +251,17 @@ func updatelist():
 			i.visible = false
 			i.queue_free()
 	$textfield/Label.text = locationdicts[location].name
-	$panel/categories/Location.visible = !location_changed
-	
+	#$panel/categories/Location.visible = !location_changed
 	if category == 'Location':
 		for i in locationdicts.values():
-			if i.code == location:
+			if i.code == location || (i.code == 'dungeon' && ResourceScripts.game_res.upgrades.torture_room == 0):
 				continue
 			var newnode = $panel/ScrollContainer/GridContainer/Button.duplicate()
 			$panel/ScrollContainer/GridContainer.add_child(newnode)
 			newnode.visible = true
-			newnode.text = "Move to "+ i.name
+			newnode.text = i.name
 			newnode.connect("pressed",self,'moveto', [i.code])
+	
 	
 	for i in actionsdict.values():
 		if person.checkreqs(i.reqs) == true && check_location(i.location) && (i.group == category || i.group == 'any'):
@@ -269,12 +286,12 @@ func updatelist():
 func moveto(newloc):
 	location_changed = true
 	self.location = newloc
-	$panel/categories/Actions.emit_signal("pressed")
-#	if locationdicts[location].background != 'localtown':
-#		get_parent().background = locationdicts[location].background
-#	else:
-#		get_parent().background = globals.state.location
+	ResourceScripts.core_animations.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	$panel/categories/Affection.emit_signal("pressed")
+	$background.texture = images.backgrounds[locationdicts[newloc].background]
 	self.showntext = 'You lead [name2] to the [color=yellow]' + locationdicts[location].name + '[/color]. '
+	
 	
 	updatelist()
 
@@ -288,22 +305,34 @@ func decoder(text):
 	text = parser.decoder(text, [dateclassarray[0]], [dateclassarray[1]])
 	return text
 
+var stopactions = false
+
 func doaction(action):
-	self.showntext = decoder(call(action, person, checkhistory(action)))
+	if stopactions == true:
+		return
+	stopactions = true
+	if action in ['train', 'study','practice_charm', 'public']:
+		ResourceScripts.core_animations.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+	var text = call(action, person, checkhistory(action))
+	self.showntext = globals.TextEncoder(decoder(text))
 	actionhistory.append(action)
-	turn += 1
-	if turn%3 == 0:
-		if location == 'bedroom':
-			self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] seems to be getting more into intimate mood...")
-		elif location == 'garden' && person.get_stat('personality') == 'shy':
-			self.mood += 3
-			self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather peaceful...")
-		elif location == 'town' && person.get_stat('personality') == 'bold':
-			self.mood += 3
-			self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather joyful...")
-		elif location == 'dungeon':
-			self.fear += 4
-			self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather grim...")
+	stopactions = false
+	if !action in ['train', 'study','practice_charm', 'public']:
+		self.turn -= 1
+		if turn%2 == 0:
+			if location == 'garden' && person.get_stat('personality') == 'shy':
+				self.mood += 4
+				self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather peaceful, [his2] mood improves.")
+			elif location == 'town' && person.get_stat('personality') == 'bold':
+				self.mood += 4
+				self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather joyful, [his2] mood improves")
+			elif location == 'dungeon':
+				self.fear += 3
+				self.showntext += decoder("\n\n[color=yellow]Location influence:[/color] [name2] finds this place to be rather grim, [his2] fear grows.")
+	if turn <= 0:
+		finish_encounter = true
+		self.showntext += "\n\nYou have no more time left."
 	drunkness()
 	updatelist()
 
@@ -327,7 +356,7 @@ func chat(person, counter):
 	
 	if counter < 3 || randf() >= counter/10.0+0.1:
 		text += "[name2] spends some time engaging in a friendly chat with you. "
-		self.mood += 4
+		self.mood += 8
 	else:
 		self.mood -= 1
 		text += "[name2] replies, but does so reluctantly. "
@@ -337,21 +366,20 @@ func chat(person, counter):
 
 func intimate(person, counter):
 	var text = ''
-	text += "You talk to [name2] about personal matters. "
+	text += "You talk to [name2] about sexual things. "
 	
-	if randf() >= counter/15.0 && self.mood >= 10:
-		text += "[he2] opens to you"
-		self.mood += 3
+	if location == 'bedroom':
+		self.mood += rand_range(7,12)
+		text += "[he2] opens up to you."
 		person.add_stat('consent', rand_range(2,3))
-		if person.get_stat('loyalty') >= 30 && randf() >= 0.65:
-			text += ' and moves slightly closer'
-		text += '. '
-	elif counter >= 5 && randf() >= 0.5:
-		self.mood -= 1
-		text += "[he2] looks at you contemplatively, but fails to make a connection. "
+	elif person.check_trait("shameless"):
+		text += "Being {color=yellow|[Shameless]} [he2] does not mind discussing it in public and opens up to you."
+		self.mood += rand_range(7,12)
+		person.add_stat('consent', rand_range(2,3))
 	else:
-		self.mood -= 2
-		text += "[he2] gives you a stiff look. "
+		self.mood -= rand_range(2,3)
+		text += "[he2] seems to be reluctant to talk about such intimate matters in public and dodges the theme."
+	
 	
 	
 	return text
@@ -362,7 +390,7 @@ func touch(person, counter):
 	
 	if counter < 3 && fear < 20:
 		text += "[he2] reacts relaxingly to your touch"
-		self.mood += rand_range(5,6)
+		self.mood += rand_range(8,10)
 		if person.get_stat('loyalty') >= 10 && randf() >= 0.65:
 			text += ' and smiles at you'
 		text += '. '
@@ -379,7 +407,7 @@ func holdhands(person, counter):
 		text += "You take [name2]'s hand into yours and move closer. "
 	if (counter < 3 || randf() >= 0.4) && self.mood >= 4:
 		text += "[he2] holds your hand firmly. "
-		self.mood += 5
+		self.mood += rand_range(9,12)
 	else:
 		self.mood -= 1
 		text += "[he2] holds your hand, but looks reclusive. "
@@ -392,7 +420,7 @@ func combhair(person, counter):
 	
 	if (counter < 3 || randf() >= 0.8) && self.mood >= 12:
 		text += "[he2] smiles and looks pleased. "
-		self.mood += rand_range(4,6)
+		self.mood += rand_range(7,9)
 	else:
 		self.mood -= 2
 		text += "[he2] looks uncomfortable. "
@@ -406,11 +434,11 @@ func hug(person, counter):
 	
 	if (counter < 3 || randf() >= 0.7) && self.mood >= 6:
 		text += "[he2] embraces you back resting [his2] head on your chest. "
-		self.mood += rand_range(5,9)
+		self.mood += rand_range(10,12)
 		if person.get_stat("consent") < 12:
 			person.add_stat('consent', rand_range(3,5))
 	else:
-		self.mood -= 2
+		self.mood -= 3
 		text += "[he2] does not do anything waiting uncomfortably for you to finish. "
 	
 	return text
@@ -424,7 +452,7 @@ func kiss(person, counter):
 			text += "[he2] blushes and looks away. "
 		else:
 			text += "[he2] giggles looking at you. "
-		self.mood += (rand_range(4,8))
+		self.mood += (rand_range(10,13))
 		if person.get_stat("consent") < 15:
 			person.add_stat('consent', rand_range(3,5))
 	else:
@@ -437,14 +465,19 @@ func frenchkiss(person, counter):
 	var text = ''
 	text += "You invade [name2]'s mouth with your tongue. "
 	
-	if (self.mood >= 10 && person.consent >= 15) || person.get_stat('consent') >= 25:
-		text += "[he2] closes eyes passionately accepting your kiss. "
-		if !person.check_trait("Bisexual") && person.get_stat('sex') == master.get_stat('sex'):
-			self.mood += 5
+	if self.mood >= 20 && (location == 'bedroom' || person.check_trait("shameless")):
+		if person.check_trait("shameless"):
+			text += "Being {color=yellow|[Shameless]} [he2] does not mind doing it in public and passionately accepts your kiss."
 		else:
-			self.mood += 10
+			text += "[he2] closes eyes passionately accepting your kiss."
+		if !person.check_trait("Bisexual") && person.get_stat('sex') == master.get_stat('sex'):
+			self.mood += rand_range(5,8)
+		else:
+			self.mood += rand_range(12,15)
+		if person.get_stat("consent") < 25:
+			person.add_stat('consent', rand_range(3,5))
 	else:
-		self.mood -= 4
+		self.mood -= rand_range(2,3)
 		text += "[he2] abruptly stops you, showing [his2] disinterest. "
 	
 	return text
@@ -504,8 +537,6 @@ func propose(person, counter):
 			person.consent = true
 			
 			return text
-	
-	
 
 var sexmode
 
@@ -562,72 +593,119 @@ func pathead(person, counter):
 func scold(person, counter):
 	var text = ''
 	text += "You scold [name2] for [his2] recent faults. "
-	self.mood -= 2
-	self.fear += 7
 	
-	text += punishaddedeffect()
+	var value = {mood = -2, fear = 10, authority = 3}
+	
+	text += punish_process(value)
 	return text
 
+func rubears(person, counter):
+	var text = ''
+	text += "You affectionately rub [name2] behind [his2] ears. "
+	
+	if counter < 5 || randf() >= 0.4:
+		self.mood += 2
+		text = text + "[he2] seems pleased with it, as [his2] ears playfully twitch.  "
+	else:
+		text = text + "[he2] seems to be bored from repeated action. "
+		self.mood -= 1
+	return text
 
-func punishaddedeffect():
+func stroketail(person, counter):
+	var text = ''
+	text += "You gently stroke [name2]'s tail. "
+	
+	if counter < 5 || randf() >= 0.4:
+		self.mood += 2
+		text = text + "[he2] seems happy with your attention, as [his2] tail wags in response."
+	else:
+		text = text + "[he2] seems to be bored from repeated action. "
+		self.mood -= 1
+	return text
+
+func pullear(person, counter):
+	var text = ''
+	text += "You forcefully stretch [name2]'s ear making [him2] let out a pleading cry. "
+	
+	var value = {mood = -7, fear = 16, authority = 4}
+	
+	text += punish_process(value)
+	return text
+
+func pulltail(person, counter):
+	var text = ''
+	text += "You yank [name2]'s tail with force making [him2] whimper in pain. "
+	
+	var value = {mood = -5, fear = 18, authority = 4}
+	text += punish_process(value)
+	return text
+
+func punish_process(value):
 	var text = ''
 	if person.check_trait("Masochist") && randf() >= 0.5:
-		text += "[Masochist][name2] seems to take [his2] punishment with some unusual enthusiasm... "
-		person.lust += rand_range(2,4)
-		self.mood += 4
-	if public == true:
-		var slavearray = []
-		for i in globals.slaves:
-			if i.away.duration == 0 && i.sleep != 'farm' && i != person:
-				slavearray.append(i)
-		if slavearray.size() > 0:
-			text += "\n\n[color=yellow]Invited slaves watch over [name2] in awe. [/color] "
-			for i in slavearray:
-				i.fear += 3
-				#i.stress += 3
-				if actionhistory.back() in ['woodenhorse','flagellate']:
-					pass
-					#i.lust += 2
+		text += "[Masochist][name2] seems to take [his2] punishment with an uncommon enthusiasm... "
+		value.mood = -value.mood
+	
+	if observing_slaves.size() > 0:
+		text += "\n\n[color=yellow]"
+		var array = []
+		for i in observing_slaves:
+			array.append(i.get_short_name())
+			if i.get_stat('authority') < 20:
+				i.add_stat('authority',rand_range(2,4))
+		text += input_handler.text_form_recitation(array)
+		text += "[/color] watch over [name2]'s humiliation in awe. "
+		
+		value.mood *= 1.2
+		value.fear *= 1.3
+		value.authority *= 1.2
+	
+	
+	person.add_stat('authority', value.authority)
+	self.fear += value.fear
+	self.mood += value.mood
+	
 	return text
+
+func build_observing_slaves():
+	for i in ResourceScripts.game_party.character_order:
+		var character = ResourceScripts.game_party.characters[i]
+		if character.check_location('Aliron') && character != person && !character.has_profession('master'):
+			observing_slaves.append(character)
 
 func slap(person, counter):
 	var text = ''
 	text += "You slap [name2] across the face as punishment. [his2] cheek gets red. "
-	self.fear += 12
-	self.mood -= 2
-	person.add_stat("authority", 3)
-	text += punishaddedeffect()
+	
+	var value = {mood = -3, fear = 12, authority = 3}
+	text += punish_process(value)
 	return text
 
 func flag(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table, and after exposing [his2] rear, punish it with force. "
 	
-	self.fear += 9
-	self.mood -= 3
+	var value = {mood = -5, fear = 16, authority = 5}
 	
-	text += punishaddedeffect()
+	text += punish_process(value)
 	return text
 
 func whip(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table, and after exposing [his2] rear, whip it with force. "
 	
-	self.fear += 11
-	self.mood -= 3
 	
-	text += punishaddedeffect()
+	var value = {mood = -5, fear = 20, authority = 5}
+	text += punish_process(value)
 	return text
 
 func horse(person, counter):
 	var text = ''
 	text += "You tie [name2] securely to the wooden horse with [his2] legs spread wide. [he2] cries with pain under [his2] own weight. "
 	
-	self.fear += 12
-	self.mood -= 4
-	person.lust += rand_range(5,10)
 	
-	text += punishaddedeffect()
+	var value = {mood = -5, fear = 20, authority = 5}
+	text += punish_process(value)
 	
 	return text
 
@@ -635,35 +713,37 @@ func wax(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table and after exposing [his2] body you drip hot wax over it making [him2] cry with pain. "
 	
-	self.fear += 11
-	self.mood -= 3
+	var value = {mood = -5, fear = 18, authority = 6}
 	
-	text += punishaddedeffect()
+	text += punish_process(value)
 	
 	return text
 
 func train(person, counter):
 	var text = ''
-	var value = person.get_stat('physics_factor') * rand_range(2,3)
-	var value2 = master.get_stat('physics_factor') * rand_range(2,3)
+	var value = person.get_stat('physics_factor') * (turn/4.0)
+	var value2 = master.get_stat('physics_factor') * (turn/4.0)
+	
+	
 	text += ("You spend some time training with [name2], improving your Physics. \n" 
-	+ master.get_short_name() + ": +" + str(floor(value2)) + ";"
+	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 	
 	person.add_stat('physics', value)
 	master.add_stat('physics', value2)
 	
-	self.mood += 20
+	self.mood += 4
 	finish_encounter = true
 	
 	return text
 
 func study(person, counter):
 	var text = ''
-	var value = person.get_stat('wits_factor') * rand_range(2,3)
-	var value2 = master.get_stat('wits_factor') * rand_range(2,3)
+	var value = person.get_stat('wits_factor') * (turn/4.0)
+	var value2 = master.get_stat('wits_factor') * (turn/4.0)
+	
 	text += ("You spend some time studying with [name2], improving your Wits. \n" 
-	+ master.get_short_name() + ": +" + str(floor(value2)) + ";"
+	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 	
 	person.add_stat('wits', value)
@@ -675,10 +755,11 @@ func study(person, counter):
 
 func charm(person, counter):
 	var text = ''
-	var value = person.get_stat('charm_factor') * rand_range(2,3)
-	var value2 = master.get_stat('charm_factor') * rand_range(2,3)
+	var value = person.get_stat('charm_factor') * (turn/4.0)
+	var value2 = master.get_stat('charm_factor') * (turn/4.0)
+	
 	text += ("You spend some time practicing with [name2], improving your Charm. \n" 
-	+ master.get_short_name() + ": +" + str(floor(value2)) + ";"
+	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
 	
 	person.add_stat('charm', value)
@@ -789,8 +870,19 @@ func public(person, counter):
 	public = !public
 	if public == true:
 		text = "You order everyone into dungeon and make them watch over [name2]'s disgrace. "
+		build_observing_slaves()
+		if observing_slaves.size() > 0:
+			text += "\n\n[color=yellow]"
+			var array = []
+			for i in observing_slaves:
+				array.append(i.get_short_name())
+			text += input_handler.text_form_recitation(array)
+			text += "[/color] come over to observe [name2]'s punishment. "
+		else:
+			text += "\n\nHowever, there is nobody around the mansion at this time besides you two."
 	else:
 		text = "You order everyone to get back to their business leaving you and [name2] alone. "
+		observing_slaves.clear()
 	return text
 
 func updatebars():
@@ -815,8 +907,8 @@ func strChange(value):
 
 func calculateresults():
 	var text = ('Encounter Complete!'
-	+ "\nConsent Gained: " + str(round(person.get_stat('consent')-self.consStart))
-	+ "\nAuthority Gained: " + str(round(person.get_stat("authority") - self.authStart))
+	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
+	+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
 	
 	
 	)
@@ -834,7 +926,10 @@ func calculateresults():
 
 
 func _on_finishbutton_pressed():
-	self.visible = false
+	ResourceScripts.core_animations.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	hide()
+
 
 func _on_cancelsex_pressed():
 	$sexswitch.visible = false
@@ -852,7 +947,7 @@ func _on_confirmsex_pressed():
 
 var actionsdict = {
 	chat = {
-		group = 'Actions',
+		group = 'Affection',
 		name = 'Chat',
 		reqs = [],
 		location = [],#empty = any
@@ -861,7 +956,7 @@ var actionsdict = {
 		#disablereqs = "!person.traits.has('Mute')",
 	},
 	intimate = {
-		group = "Actions",
+		group = 'Affection',
 		name = 'Intimate Talk',
 		descript = 'Have an intimate talk. Slightly increases Consent if mood is above low.',
 		reqs = [],
@@ -870,7 +965,7 @@ var actionsdict = {
 		#disablereqs = "!person.traits.has('Mute')",
 	},
 	touch = {
-		group = "Actions",
+		group = 'Affection',
 		name = 'Touch',
 		reqs = [],
 		descript = 'Light physical contact',
@@ -878,63 +973,15 @@ var actionsdict = {
 		effect = 'touch',
 	},
 	holdhands = {
-		group = "Actions",
+		group = 'Affection',
 		name = 'Hold hands',
 		descript = "Take [name]'s hand into yours",
 		reqs = [],
 		location = ['garden','town','bedroom'],
 		effect = 'holdhands',
 	},
-	combhair = {
-		group = "Actions",
-		name = 'Comb Hair',
-		descript = "Comb [name]'s hair",
-		reqs = [],
-		location = [],
-		effect = 'combhair',
-	},
-	hug = {
-		group = "Actions",
-		name = 'Hug',
-		descript = "Prolonged close physical contact",
-		reqs = [],
-		location = [],
-		effect = 'hug',
-	},
-	kiss = {
-		group = "Actions",
-		name = 'Kiss',
-		descript = "Kiss [name] lightly",
-		reqs = [],
-		location = [],
-		effect = 'kiss',
-	},
-	frenchkiss = {
-		group = "Actions",
-		name = 'French Kiss',
-		descript = "Kiss [name] in an erotic manner",
-		reqs = [],
-		location = [],
-		effect = 'frenchkiss',
-	},
-	pushdown = {
-		group = "Actions",
-		name = 'Push down',
-		descript = "Force yourself on [name]",
-		reqs = [],
-		location = [],
-		effect = 'pushdown',
-	},
-	proposal = {
-		group = "Actions",
-		name = 'Request intimacy',
-		descript = "Ask [name] if they would like to be intimate",
-		reqs = [],
-		location = [],
-		effect = 'propose',
-	},
 	praise = {
-		group = "P&P",
+		group = 'Affection',
 		name = 'Praise',
 		descript = "Praise [name] for [his] previous success to encourage further good behavior",
 		reqs = [],
@@ -942,15 +989,81 @@ var actionsdict = {
 		effect = 'praise',
 	},
 	pathead = {
-		group = "P&P",
+		group = 'Affection',
 		name = 'Pat head',
 		descript = "Praise [name] and pat [his] head for [his] previous success to encourage further good behavior",
 		reqs = [],
 		location = [],
 		effect = 'pathead',
 	},
+	combhair = {
+		group = 'Affection',
+		name = 'Comb Hair',
+		descript = "Comb [name]'s hair",
+		reqs = [],
+		location = [],
+		effect = 'combhair',
+	},
+	hug = {
+		group = 'Affection',
+		name = 'Hug',
+		descript = "Prolonged close physical contact",
+		reqs = [],
+		location = [],
+		effect = 'hug',
+	},
+	kiss = {
+		group = 'Affection',
+		name = 'Kiss',
+		descript = "Kiss [name] lightly",
+		reqs = [],
+		location = [],
+		effect = 'kiss',
+	},
+	rub_ears = {
+		group = 'Affection',
+		name = 'Rub Ears',
+		descript = "Gently rub [name]'s long ears",
+		reqs = [{code = 'long_ears', check = true}],
+		location = [],
+		effect = 'rubears',
+	},
+	stroke_tail = {
+		group = 'Affection',
+		name = 'Stroke Tail',
+		descript = "Gently stroke [name]'s tail",
+		reqs = [{code = 'bodypart', part = 'tail', operant = 'neq', value = ''}],
+		location = [],
+		effect = 'stroketail',
+	},
+	
+	frenchkiss = {
+		group = 'Affection',
+		name = 'French Kiss',
+		descript = "Kiss [name] in an erotic manner",
+		reqs = [],
+		location = [],
+		effect = 'frenchkiss',
+	},
+	pushdown = {
+		group = 'Affection',
+		name = 'Push down',
+		descript = "Force yourself on [name]",
+		reqs = [],
+		location = [],
+		effect = 'pushdown',
+	},
+	proposal = {
+		group = 'Affection',
+		name = 'Request intimacy',
+		descript = "Ask [name] if they would like to be intimate",
+		reqs = [],
+		location = [],
+		effect = 'propose',
+	},
+	
 	scold = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Scold',
 		descript = "Scold [name] for [his] previous mistakes to re-enforce obedience",
 		reqs = [],
@@ -958,15 +1071,31 @@ var actionsdict = {
 		effect = 'scold',
 	},
 	slap = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Slap',
 		descript = "Slap [name] across the face to reprimand [him]. Slightly icnreases Authority.",
 		reqs = [],
 		location = [],
 		effect = 'slap',
 	},
+	pull_ear = {
+		group = 'Discipline',
+		name = 'Pull By Ear',
+		descript = "Forcefully pull [name] by ear as a mean of discipline. ",
+		reqs = [],
+		location = [],
+		effect = 'pullear',
+	},
+	pull_tail = {
+		group = 'Discipline',
+		name = 'Pull Tail',
+		descript = "Forcefully yank [name]'s tail to teach [him] [his] place .",
+		reqs = [{code = 'bodypart', part = 'tail', operant = 'neq', value = ''}],
+		location = [],
+		effect = 'pulltail',
+	},
 	flagellate = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Flagellate',
 		descript = "Spank [name] as punishment",
 		reqs = [],
@@ -974,7 +1103,7 @@ var actionsdict = {
 		effect = 'flag',
 	},
 	whip = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Whipping',
 		descript = "Whip [name] as punishment",
 		reqs = [],
@@ -982,7 +1111,7 @@ var actionsdict = {
 		effect = 'whip',
 	},
 	wax = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Hot Wax',
 		descript = "Torture with hot wax",
 		reqs = [],
@@ -990,7 +1119,7 @@ var actionsdict = {
 		effect = 'wax',
 	},
 	woodenhorse = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Wooden Horse',
 		descript = "Torture with a wooden horse",
 		reqs = [],
@@ -998,32 +1127,34 @@ var actionsdict = {
 		effect = 'horse',
 	},
 	publicpunish = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Invite others',
-		descript = "Invite other slaves to observe [name]'s punishments. Observing punishments builds fear and stress, although, at lower rate. However, it also gives punished more stress and lowers loyalty. ",
+		descript = "Invite other slaves to observe [name]'s punishments. It will slightly improve your autority among them and increase punishment effect. Does not cost Time. ",
 		reqs = [],
+		date_reqs = [],
 		location = ['dungeon'],
 		#reqs = "location == 'dungeon' && public == false",
 		effect = 'public',
 	},
 	publicpunishoff = {
-		group = "P&P",
+		group = 'Discipline',
 		name = 'Disperse others',
-		descript = "Make other slaves leave and not observe [name]'s punishments. ",
+		descript = "Make other slaves leave and not observe [name]'s punishments. Does not cost Time.",
 		reqs = [],
+		date_reqs = [],
 		location = ['dungeon'],
 		#reqs = "location == 'dungeon' && public == true",
 		effect = 'public',
 	},
 #	castfear = {
-#		group = "P&P",
+#		group = 'Discipline',
 #		name = 'Cast Fear',
 #		descript = "Punish [name] with Fear spell. \n[color=aqua]Costs " + str(globals.spells.spellcost(globals.spelldict.fear)) + " mana.[/color]",
 #		reqs = "globals.spelldict.fear.learned == true && globals.resources.mana >= globals.spells.spellcost(globals.spelldict.fear)",
 #		effect = 'castfear',
 #	},
 #	castsedate = {
-#		group = "P&P",
+#		group = 'Discipline',
 #		name = 'Cast Sedation',
 #		descript = "Use Sedation spell on [name]. \n[color=aqua]Costs " + str(globals.spells.spellcost(globals.spelldict.sedation)) + " mana.[/color]",
 #		reqs = "globals.spelldict.sedation.learned == true && globals.resources.mana >= globals.spells.spellcost(globals.spelldict.sedation)",
@@ -1078,7 +1209,7 @@ var actionsdict = {
 		name = 'Train',
 		reqs = [],
 		location = [],
-		descript = 'Do a paired training. Improves Physics for both based on Physics Factor. Ends encounter.',
+		descript = 'Do a paired training. Improves Physics for both based on Physics Factor and Time left. Ends encounter.',
 		effect = 'train',
 	},
 	study = {
@@ -1086,7 +1217,7 @@ var actionsdict = {
 		name = 'Study',
 		reqs = [],
 		location = [],
-		descript = 'Do a paired study. Improves Wits for both based on Wits Factor. Ends encounter.',
+		descript = 'Do a paired study. Improves Wits for both based on Wits Factor and Time left. Ends encounter.',
 		effect = 'study',
 	},
 	practice_charm = {
@@ -1094,7 +1225,7 @@ var actionsdict = {
 		name = 'Practice Charm',
 		reqs = [],
 		location = [],
-		descript = 'Practice Charm with [name]. Improves Charm for both based on Charm Factor. Ends encounter.',
+		descript = 'Practice Charm with [name]. Improves Charm for both based on Charm Factor and Time left. Ends encounter.',
 		effect = 'charm',
 	},
 	

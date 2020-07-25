@@ -3,18 +3,39 @@ extends Node
 var backgrounds = {
 	#backgrounds
 	Null = null,
+	mansion = load("res://assets/images/backgrounds/mansion.png"),
 	dungeon = load("res://assets/images/backgrounds/dungeon.png"),
+	garden = load("res://assets/images/backgrounds/garden.png"),
 	aliron = load("res://assets/images/backgrounds/Aliron.png"),
 	elf_capital = load("res://assets/images/backgrounds/elf_capital.png"),
 	
 	cave_1 = load("res://assets/images/backgrounds/cave1.png"),
 	cave_2 = load("res://assets/images/backgrounds/cave2.png"),
 	cave_3 = load("res://assets/images/backgrounds/cave3.png"),
+	cave_4 = load("res://assets/images/backgrounds/cave4.png"),
+	cave_5 = load("res://assets/images/backgrounds/cave5.png"),
 	
 	village1 = load("res://assets/images/backgrounds/village.png"),
 	village2 = load("res://assets/images/backgrounds/village1.png"),
 	village3 = load("res://assets/images/backgrounds/village2.png"),
 	village4 = load("res://assets/images/backgrounds/village3.png"),
+	
+	forest1 = load("res://assets/images/backgrounds/forest1.png"),
+	forest2 = load("res://assets/images/backgrounds/forest2.png"),
+	forest3 = load("res://assets/images/backgrounds/forest3.png"),
+	forest4 = load("res://assets/images/backgrounds/forest4.png"),
+	
+	crypt1 = load("res://assets/images/backgrounds/crypt1.png"),
+	crypt2 = load("res://assets/images/backgrounds/crypt2.png"),
+	crypt3 = load("res://assets/images/backgrounds/crypt3.png"),
+	crypt4 = load("res://assets/images/backgrounds/crypt4.png"),
+	crypt5 = load("res://assets/images/backgrounds/crypt5.png"),
+	
+	
+	fort1 = load("res://assets/images/backgrounds/fort1.png"),
+	fort2 = load("res://assets/images/backgrounds/fort2.png"),
+	fort3 = load("res://assets/images/backgrounds/fort3.png"),
+	
 	#scenes
 	}
 
@@ -69,6 +90,7 @@ var sprites = {
 	myr = load("res://assets/images/sprites/myr.png"),
 	anastasia = load("res://assets/images/sprites/anastasia.png"),
 	aire = load("res://assets/images/sprites/aire.png"),
+	xari = load("res://assets/images/sprites/xari.png"),
 	}
 
 var dynamic_backgrounds = {

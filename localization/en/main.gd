@@ -1298,6 +1298,11 @@ var TranslationDict = {
 	UPGRADEFORGEBONUS1 = "Unlocks basic metal tools and weapon recipes. Unlocks Steel production.",
 	UPGRADEFORGEBONUS2 = "Unlocks advanced metal tools and weapon recipes.",
 	UPGRADEFORGEBONUS3 = "Not currently used for anything",
+	
+	UPGRADETORTURE_ROOM = "Torture Room",
+	UPGRADETORTURE_ROOMDESCRIPT = "Adds torture options during Meeting activity.",
+	UPGRADETORTUREROOMBONUS = "Unlocks advanced Punishments during Meeting activity including bringing others to watch.",
+	
 	UPGRADEALCHEMY = "Alchemy",
 	UPGRADEALCHEMYDESCRIPT = "Allows production of potions and advanced resources",
 	UPGRADEALCHEMYBONUS1 = "Unlocks basic alchemical and healing item recipes.",
@@ -1695,7 +1700,7 @@ var TranslationDict = {
 	SEXTRAITOPEN_MINDEDDESCRIPT = "[name] is rather accepting of [his] partners, having no issues with them having different body structures. Removes consent penalty from different body shape partners.",
 	SEXTRAITDEVIANTDESCRIPT = "[name] has some deviant tastes, having no problem from engaging in lewd actions with animals and even undead. Removes consent penalty from animal and undead partners.",
 	SEXTRAITGROUPDESCRIPT = "[name] accepts having multiple partners at once as a natural thing. Removes consent penalty from group actions.",
-	SEXTRAITSHAMELESSDESCRIPT = "[name] does not mind being observed by others while having sex. Removes consent penalty from being observed. ",
+	SEXTRAITSHAMELESSDESCRIPT = "[name] does not mind being observed by others while having sex. Removes consent penalty from being observed. Makes intimate actions during dating acceptable outside of bedroom. ",
 	SEXTRAITANALDESCRIPT = "[name] does not experience prejudice or disgust from anal sex. Removes consent penalty from anal actions.",
 	SEXTRAITBREASTSDESCRIPT = "[name] experience additional pleasure from actions involving breasts. Breast related actions: +50% Lust and Arousal.",
 	SEXTRAITMASOCHISTDESCRIPT = "[name] experience unusual pleasure from being punished. Arousal from receiving punishments is increased by 50%. ",

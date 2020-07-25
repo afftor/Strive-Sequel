@@ -247,10 +247,10 @@ texture = ExtResource( 11 )
 
 [node name="CharacterImage" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_left = 687.0
-margin_top = -110.91
-margin_right = 1418.0
-margin_bottom = 969.09
+margin_left = 621.383
+margin_top = -340.571
+margin_right = 1352.38
+margin_bottom = 739.429
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false

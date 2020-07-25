@@ -546,9 +546,9 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'is_id':
 			check = input_handler.operate(i.operant, id, i.value)
 		'long_tail':
-			check = globals.longtails.has(get_stat('tail')) == i.check
+			check = variables.longtails.has(get_stat('tail')) == i.check
 		'long_ears':
-			check = globals.longears.has(get_stat('ears')) == i.check
+			check = variables.longears.has(get_stat('ears')) == i.check
 		'is_humanoid':
 			check = (get_stat('racegroup') == 'humanoid') == i.check
 		'is_dead':
@@ -562,7 +562,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'rules':
 			check = input_handler.globalsettings[i.type] == i.check
 		'bodypart':
-			check = input_handler.operate(i.operant, get(i.part), i.value)
+			check = input_handler.operate(i.operant, get_stat(i.part), i.value)
 		'trait':
 			check = check_trait(i.trait) == i.check
 		'disabled':

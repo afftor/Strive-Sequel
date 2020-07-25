@@ -735,6 +735,22 @@ func text_cut_excessive_lines(text:String):
 		text.erase(text.length()-1, text.length())
 	return text
 
+func text_form_recitation(string_array):
+	var text = ""
+	if string_array.size() == 1:
+		text = string_array[0]
+	else:
+		for i in string_array:
+			var last = false
+			if i == string_array.back():
+				text = text.substr(0,text.length()-2)
+				if string_array.size() > 1:
+					text += ' and ' + i
+			else:
+				text += i + ", "
+	
+	return text
+
 func get_spec_node(type, args = null, raise = true, unhide = true):
 	var window
 	var node = get_tree().get_root()

@@ -1,22 +1,6 @@
 extends Node
 
 var professions = {
-	test = {
-		code = 'test',
-		name = '',
-		altname = '',
-		altnamereqs = [],
-		descript = '',
-		icon = load("res://assets/images/iconsclasses/Master.png"),
-		tags = [],
-		categories = [],
-		showupreqs = [],
-		reqs = [],
-		statchanges = {},
-		traits = [],
-		skills = [],
-		combatskills = [],
-	},
 	master = {
 		code = 'master',
 		name = '',
@@ -312,7 +296,7 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/True_Succubus.png"),
 		tags = [],
 		categories = ['social', 'sexual'],
-		showupreqs = [{code = 'race', check = false, race = 'Demon'}],
+		showupreqs = [{code = 'race', check = true, race = 'Demon'}],
 		reqs = [{code = 'stat', stat = 'sexuals', operant = 'gte', value = 60},{code = 'stat', stat = 'charm', operant = 'gte', value = 60},{code = 'has_profession', profession = 'harlot', check = true},{code = 'race', check = true, race = 'Demon'}],
 		statchanges = {charm_factor = 1, sexuals_bonus = 10, magic_factor = 1},
 		traits = ['succubus'],

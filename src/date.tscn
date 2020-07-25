@@ -1,19 +1,33 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/panel.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=9]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=14]
 
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 500, 500 )
+margin_left = 68.5654
+margin_right = 59.775
+margin_top = 65.0
+margin_bottom = 68.5654
+
 [sub_resource type="StyleBoxTexture" id=2]
-region_rect = Rect2( 0, 0, 1353, 607 )
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 500, 500 )
+margin_left = 67.668
+margin_right = 57.4153
+margin_top = 64.8564
+margin_bottom = 67.668
 
-[sub_resource type="StyleBoxTexture" id=3]
-region_rect = Rect2( 0, 0, 1353, 383 )
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 36
 use_filter = true
 extra_spacing_top = 1
@@ -27,36 +41,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 margin_left = -1.0
 margin_top = -1.0
-margin_right = 1378.0
-margin_bottom = 774.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="fullbody" type="TextureRect" parent="."]
-margin_left = 803.0
-margin_top = 52.0
-margin_right = 1525.0
-margin_bottom = 767.0
+margin_left = 1005.0
+margin_top = 2.0
+margin_right = 1913.0
+margin_bottom = 1080.0
 mouse_filter = 2
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="textfield" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.72549 )
 margin_left = 5.0
 margin_top = 362.0
 margin_right = 969.0
 margin_bottom = 765.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="textfield"]
 margin_left = 45.0
 margin_top = 24.0
-margin_right = 738.0
+margin_right = 745.0
 margin_bottom = 303.0
 bbcode_enabled = true
 text = "test text"
@@ -114,11 +134,15 @@ __meta__ = {
 }
 
 [node name="panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.72549 )
 margin_left = 4.0
 margin_top = 58.0
 margin_right = 968.0
 margin_bottom = 361.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="categories" type="HBoxContainer" parent="panel"]
 margin_left = 16.0
@@ -126,14 +150,14 @@ margin_top = 12.0
 margin_right = 216.0
 margin_bottom = 57.0
 
-[node name="Actions" type="Button" parent="panel/categories"]
+[node name="Affection" type="Button" parent="panel/categories"]
 margin_right = 200.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 200, 45 )
 toggle_mode = true
-text = "Actions"
+text = "Affection"
 
-[node name="P&P" type="Button" parent="panel/categories"]
+[node name="Discipline" type="Button" parent="panel/categories"]
 margin_left = 204.0
 margin_right = 404.0
 margin_bottom = 45.0
@@ -141,13 +165,13 @@ rect_min_size = Vector2( 200, 45 )
 toggle_mode = true
 text = "Discipline"
 
-[node name="Items" type="Button" parent="panel/categories"]
+[node name="Training" type="Button" parent="panel/categories"]
 margin_left = 408.0
 margin_right = 608.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 200, 45 )
 toggle_mode = true
-text = "Items"
+text = "Training"
 
 [node name="Location" type="Button" parent="panel/categories"]
 margin_left = 612.0
@@ -157,13 +181,14 @@ rect_min_size = Vector2( 200, 45 )
 toggle_mode = true
 text = "Location"
 
-[node name="Training" type="Button" parent="panel/categories"]
+[node name="Items" type="Button" parent="panel/categories"]
+visible = false
 margin_left = 816.0
 margin_right = 1016.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 200, 45 )
 toggle_mode = true
-text = "Training"
+text = "Items"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="panel"]
 margin_left = 16.0
@@ -221,7 +246,7 @@ margin_left = 1.0
 margin_top = -26.0
 margin_right = 31.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
 text = "+"
 align = 1
@@ -235,6 +260,9 @@ margin_bottom = 52.7062
 value = 50.0
 texture_over = ExtResource( 3 )
 texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="fear"]
 margin_top = 227.0
@@ -242,6 +270,9 @@ margin_right = 33.0
 margin_bottom = 259.0
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="fear"]
 modulate = Color( 1, 1, 1, 0 )
@@ -249,37 +280,7 @@ margin_left = 1.0
 margin_top = -26.0
 margin_right = 31.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
-text = "+"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="stress" type="TextureProgress" parent="."]
-visible = false
-margin_left = 913.0
-margin_top = 81.0
-margin_right = 945.0
-margin_bottom = 303.0
-value = 50.0
-fill_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="stress"]
-margin_top = 227.0
-margin_right = 33.0
-margin_bottom = 259.0
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="stress"]
-margin_left = 1.0
-margin_top = -26.0
-margin_right = 31.0
-margin_bottom = 11.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
 text = "+"
 align = 1
@@ -308,23 +309,6 @@ margin_right = 90.0
 margin_bottom = 35.0
 text = "x10"
 
-[node name="supply" type="TextureRect" parent="."]
-visible = false
-margin_left = 158.0
-margin_top = 702.0
-margin_right = 206.0
-margin_bottom = 752.0
-hint_tooltip = "Supply"
-expand = true
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="supply"]
-margin_left = 50.0
-margin_top = 15.0
-margin_right = 90.0
-margin_bottom = 35.0
-text = "x10"
-
 [node name="gold" type="TextureRect" parent="."]
 margin_left = 28.0
 margin_top = 702.0
@@ -341,6 +325,29 @@ margin_top = 15.0
 margin_right = 90.0
 margin_bottom = 35.0
 text = "x10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="turns" type="TextureRect" parent="."]
+margin_left = 850.494
+margin_top = 697.792
+margin_right = 898.494
+margin_bottom = 747.792
+hint_tooltip = "Time Left"
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="turns"]
+margin_left = 50.0
+margin_top = 15.0
+margin_right = 90.0
+margin_bottom = 35.0
+text = "x10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="end" type="Panel" parent="."]
 visible = false
@@ -408,11 +415,14 @@ margin_left = 39.8639
 margin_top = 973.819
 margin_right = 388.864
 margin_bottom = 997.819
-[connection signal="pressed" from="panel/categories/Actions" to="." method="selectcategory" binds= [ "Actions" ]]
-[connection signal="pressed" from="panel/categories/P&P" to="." method="selectcategory" binds= [ "P&P" ]]
-[connection signal="pressed" from="panel/categories/Items" to="." method="selectcategory" binds= [ "Items" ]]
-[connection signal="pressed" from="panel/categories/Location" to="." method="selectcategory" binds= [ "Location" ]]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="panel/categories/Affection" to="." method="selectcategory" binds= [ "Affection" ]]
+[connection signal="pressed" from="panel/categories/Discipline" to="." method="selectcategory" binds= [ "Discipline" ]]
 [connection signal="pressed" from="panel/categories/Training" to="." method="selectcategory" binds= [ "Training" ]]
+[connection signal="pressed" from="panel/categories/Location" to="." method="selectcategory" binds= [ "Location" ]]
+[connection signal="pressed" from="panel/categories/Items" to="." method="selectcategory" binds= [ "Items" ]]
 [connection signal="pressed" from="end/finishbutton" to="." method="_on_finishbutton_pressed"]
 [connection signal="pressed" from="sexswitch/confirmsex" to="." method="_on_confirmsex_pressed"]
 [connection signal="pressed" from="sexswitch/cancelsex" to="." method="_on_cancelsex_pressed"]

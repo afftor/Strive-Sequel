@@ -404,9 +404,9 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 func generate_simple_fighter(data):
 	for i in variables.fighter_stats_list:
 		if data.has(i) == false:
-			set(i, 0)
+			statlist[i] = 0
 		else:
-			set(i, data[i])
+			statlist[i] = data[i]
 	statlist.icon_image = data.icon
 	statlist.body_image = data.body
 #	statlist.combat_skills = data.skills 
@@ -516,14 +516,14 @@ func get_racial_features():
 	add_stat_bonuses(race_template.race_bonus)
 	for i in races.racelist.Human.bodyparts:
 		if typeof(races.racelist.Human.bodyparts[i][0]) == TYPE_STRING:
-			self.set(i, races.racelist.Human.bodyparts[i][randi()%races.racelist.Human.bodyparts[i].size()])
+			statlist[i] = races.racelist.Human.bodyparts[i][randi()%races.racelist.Human.bodyparts[i].size()]
 		else:
-			self.set(i, input_handler.weightedrandom(races.racelist.Human.bodyparts[i]))
+			statlist[i] = input_handler.weightedrandom(races.racelist.Human.bodyparts[i])
 	for i in race_template.bodyparts:
 		if typeof(race_template.bodyparts[i][0]) == TYPE_STRING:
-			self.set(i, race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()])
+			statlist[i] = race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()]
 		else:
-			self.set(i, input_handler.weightedrandom(race_template.bodyparts[i]))
+			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number

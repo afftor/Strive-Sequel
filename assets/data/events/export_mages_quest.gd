@@ -178,6 +178,7 @@ var data = {
 	xari_encounter1 = {
 		image = null,
 		tags = ['dialogue_scene'],
+		character = 'xari',
 		text = [
 			{text = "XARIENCOUNTER1", reqs = []}
 		],
@@ -189,6 +190,7 @@ var data = {
 
 	xari_encounter2 = {
 		image = null,
+		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER2_1", reqs = [], previous_dialogue_option = 1},
@@ -203,6 +205,7 @@ var data = {
 
 	xari_encounter3 = {
 		image = null,
+		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER3_1", reqs = [], previous_dialogue_option = 1},
@@ -218,6 +221,7 @@ var data = {
 
 	xari_encounter4 = {
 		image = null,
+		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER4_1", reqs = [], previous_dialogue_option = 1},
@@ -233,6 +237,7 @@ var data = {
 
 	xari_encounter5 = {
 		image = null,
+		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER5_1", reqs = [], previous_dialogue_option = 1},
@@ -249,6 +254,7 @@ var data = {
 
 	xari_encounter6 = {
 		image = null,
+		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER6", reqs = []},
@@ -262,6 +268,7 @@ var data = {
 	xari_encounter7 = {
 		variations = [
 			{image = null,
+			character = 'xari',
 			tags = ['dialogue_scene'],
 			text = "XARIENCOUNTER7_1", reqs = [{type = 'master_check', value = [{code = 'one_of_races', value = ['Elf', 'DarkElf', 'Drow']}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
@@ -269,6 +276,7 @@ var data = {
 			]
 		},
 			{image = null,
+			character = 'xari',
 			tags = ['dialogue_scene'],
 			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'charm_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
@@ -276,6 +284,7 @@ var data = {
 			]
 		},
 			{image = null,
+			character = 'xari',
 			tags = [],
 			text = "XARIENCOUNTER7_3", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}]}],
 			options = [
@@ -283,6 +292,7 @@ var data = {
 			]
 		},
 			{image = null,
+			character = 'xari',
 			tags = ['dialogue_scene'],
 			text = "XARIENCOUNTER7_4", reqs = [],
 			options = [
@@ -293,6 +303,7 @@ var data = {
 
 	xari_encounter8 = {
 		image = null,
+		character = 'xari',
 		tags = [],
 		text = [
 			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}]}]},
@@ -306,6 +317,7 @@ var data = {
 
 	xari_encounter9 = {
 		image = null,
+		character = 'xari',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "XARIENCOUNTER9", reqs = []},
@@ -322,6 +334,7 @@ var data = {
 
 	xari_encounter10 = {
 		image = null,
+		character = 'xari',
 		tags = [],
 		text = [
 			{text = "XARIENCOUNTER10", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'remove_quest_location', value = 'quest_mages_xari'}]}

@@ -77,7 +77,7 @@ func _ready():
 	if variables.generate_test_chars:
 		ResourceScripts.game_world.make_world()
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'female', 'random')
+		character.create('Demon', 'female', 'random')
 		character.set_stat('consent', 100)
 		character.set_stat('penis_virgin', true)
 		characters_pool.move_to_state(character.id)
@@ -221,7 +221,7 @@ func _ready():
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("revitalizer", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'}))
 		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
@@ -256,7 +256,7 @@ func _ready():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		#input_handler.interactive_message("starting_dialogue4", '',{})
+		input_handler.interactive_message("xari_encounter1", '',{})
 		
 		#input_handler.interactive_message('intro', '', {})
 		
