@@ -17,7 +17,12 @@ func custom_stats_set(value):
 #		statlist[''] = 
 	for st in ['loyalty', 'submission']:
 		if value.has(st):
-			statlist[st] = clamp(value[st], 0, 100)
+			var delta = value[st] - statlist[st]
+			if delta != 0:
+				print(delta)
+				delta *= get_stat(st+'gain_mod')
+				print(delta)
+				statlist[st] = clamp(statlist[st] + delta, 0, 100)
 	for st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
 		if value.has(st):
 			statlist[st] = min(value[st], statlist[st + '_factor'] * 20)
@@ -524,6 +529,7 @@ func get_racial_features():
 			statlist[i] = race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()]
 		else:
 			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
+
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number

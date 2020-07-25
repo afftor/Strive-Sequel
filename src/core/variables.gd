@@ -34,7 +34,7 @@ var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate',
 
 #list for stats with stored bonuses that use generic getter (not custom getter!!)
 #to add them all :)
-var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','submission_degrade_mod','authority_mod']
+var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitrate','evasion','armor','mdef','critchance', 'critmod', 'lusttick','mod_build','mod_hunt','mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros','loyalty_degrade_mod','submission_degrade_mod','authority_mod', 'submission_gain_mod', 'loyalty_gain_mod']
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 'authority',
@@ -274,7 +274,7 @@ var personality_array = ['kind','bold','shy','serious']
 var dynamic_text_vars = ['name', 'He','he', 'his', 'him', "His", 'raceadj', 'race','age', 'male', 'eye_color','hair_color', 'boy']
 
 #editor data
-var atomic_types = ['kill','damage','heal','mana','stat_set','stat_set_revert','stat_add','stat_mul','stat_add_p','bonus','remove_effect','add_trait','add_sex_trait','event','resurrect','use_combat_skill','use_social_skill','add_counter','add_soc_skill','add_combat_skill','sfx', 'add_tag']
+var atomic_types = ['kill','damage','heal','mana','stat_set','stat_set_revert','stat_add','stat_mul','stat_add_p','bonus','remove_effect','remove_all_effects','add_trait','add_sex_trait','unlock_sex_trait','resurrect','use_combat_skill','use_social_skill','add_soc_skill','add_combat_skill','sfx', 'add_tag']
 var char_dmg_stats = ['no_stat//prev value', 'hp', 'mp', 'lust', 'obedience', 'fear', 'loyal', 'fatigue', 'exhaustion', 'energy', 'physics_bonus', 'taunt', 'shield', 'damage_hp', 'restore_mana', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor',
 'sexuals_factor','magic_factor','growth_factor', 'food_consumption']#incomplete
 var ss_dmg_stats = ['value']
@@ -291,8 +291,8 @@ var eventhelp = [self.TR_CAST, self.TR_HIT, self.TR_DEF, self.TR_TURN_S, self.TR
 var short_res = [self.RES_HITCRIT, self.RES_CRIT, self.RES_MISS]
 var eventdesc = ['skill used by caster','before skill take effect per target', 'before skill take effect on target', 'beginning of combat turn', 'character get action', 'character ends action', 'character is dead', 'character kills opponent', 'character is damaged', 'after skill take effect per target', 'skill using is completed', 'character is healed', 'combat start', 'combat end', 'per day', 'social skill is used', 'social skill used on target', 'per hour', 'character changes location', 'character is removed from player']
 var targetlist = ['not a trigger child', 'self', 'skill', 'caster', 'target', 'receiver', 'owner', 'parent']
-var effecttypes = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static']
-var effectdesc = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static']
+var effecttypes = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static', 'dynamic']
+var effectdesc = ['oneshot', 'static', 'trigger','temp_s','temp_p','temp_u','c_static', 'dynamic']
 var argtypes = ['self','parent','template','app_obj','parent_args','parent_arg_get']
 var argtypesdesc = ['outside assigned argument of effect instance',"parameter of effect's parent",'argument defined in effect template','parameter of object effect applied to','runtime argument of parent effect','parameter of runtime argument of parent effect']
 var receiver_list = ['target', 'caster', 'all']

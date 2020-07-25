@@ -90,7 +90,7 @@ func recheck_effect_tag(tg):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static':
+		'static', 'c_static', 'dynamic':
 			if parent.is_koed(): return
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
@@ -140,6 +140,7 @@ func remove_all_temp_effects():
 	for e in temp_effects:
 		var obj = effects_pool.get_effect_by_id(e)
 		obj.call_deferred('remove')
+
 
 func remove_all_temp_effects_tag(eff_tag):
 	var tmp = find_temp_effect_tag(eff_tag)
