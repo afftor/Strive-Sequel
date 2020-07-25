@@ -17,7 +17,12 @@ func custom_stats_set(value):
 #		statlist[''] = 
 	for st in ['loyalty', 'submission']:
 		if value.has(st):
-			statlist[st] = clamp(value[st], 0, 100)
+			var delta = value[st] - statlist[st]
+			if delta != 0:
+				print(delta)
+				delta *= get_stat(st+'gain_mod')
+				print(delta)
+				statlist[st] = clamp(statlist[st] + delta, 0, 100)
 	for st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
 		if value.has(st):
 			statlist[st] = min(value[st], statlist[st + '_factor'] * 20)
@@ -463,7 +468,7 @@ func setup_baby(mother, father):
 	var pregdata = {}
 	pregdata.baby = parent.id
 	pregdata.duration = variables.pregduration
-	mother.set_stat('', pregdata.duplicate())
+	mother.set_stat('pregnancy', pregdata.duplicate())
 	ResourceScripts.game_party.babies[parent.id] = parent
 
 func create(temp_race, temp_gender, temp_age):

@@ -90,7 +90,7 @@ func recheck_effect_tag(tg):
 func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
-		'static', 'c_static':
+		'static', 'c_static', 'dynamic':
 			if parent.is_koed(): return
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position

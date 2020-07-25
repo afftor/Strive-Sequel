@@ -150,7 +150,7 @@ func calculate_args():
 						args.push_back(par.get_arg(arg.index).get(arg.param))
 				'app_obj':
 					var par = get_applied_obj()
-					args.push_back(par.get(arg.param))
+					args.push_back(par.get_stat(arg.param))
 
 func get_arg(index):
 	var arg = template.args[index]
@@ -183,7 +183,7 @@ func get_arg(index):
 					args[index] = par.get_arg(int(arg.index)).get(arg.param)
 			'app_obj':
 				var par = get_applied_obj()
-				args[index] = par.get(arg.param)
+				args[index] = par.get_stat(arg.param)
 	return args[index]
 
 func set_args(arg, value):
