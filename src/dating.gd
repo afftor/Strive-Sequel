@@ -137,10 +137,9 @@ func initiate(tempperson):
 	actionhistory.clear()
 	dateclassarray.clear()
 	
-	
 	person = tempperson
 	
-	#master = ResourceScripts.game_party.get_master()
+	master = ResourceScripts.game_party.get_master()
 	
 	var newclass = dateclass.new()
 	newclass.sex = master.get_stat('sex')
@@ -915,11 +914,15 @@ func calculateresults():
 	
 	
 	
-	var loyal_bonus = self.mood * 1.5
-	var subm_bonus = self.fear * 1.5
+	var loyal_bonus = self.mood * 1.5 / 100
+	var subm_bonus = self.fear * 1.5 / 100
 	
-	
-	
+	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
+	eff.set_args('subm_bonus', subm_bonus)
+	eff.set_args('loyal_bonus', loyal_bonus)
+	person.apply_effect(effects_pool.add_effect(eff))
+	print(loyal_bonus, ' ', subm_bonus)
+	var bufftext = "Increases Loyalty gain by " + str(loyal_bonus) + " and Submission gain by " + str(subm_bonus) 
 	
 	
 	return text

@@ -61,6 +61,7 @@ func _ready():
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
 	$TravelButton.connect("pressed", self, "open_travels")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
+	$DateTestButton.connect("pressed", self, 'start_date')
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
 	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
@@ -256,7 +257,7 @@ func _ready():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message("xari_encounter1", '',{})
+		#input_handler.interactive_message("xari_encounter1", '',{})
 		
 		#input_handler.interactive_message('intro', '', {})
 		
@@ -286,7 +287,14 @@ func _ready():
 	input_handler.SystemMessageNode = $SysMessage
 	set_time_buttons()
 	$TestButton.connect("pressed", self, "quest_test")
-	
+
+func start_date():
+	input_handler.ShowSlaveSelectPanel(self, 'start_date_initiate')
+
+func start_date_initiate(person):
+	var newnode = load("res://src/date.tscn").instance()
+	add_child(newnode)
+	newnode.initiate(person)
 
 func open_travels():
 	$CharacterDislocationPanel.open_character_dislocation()

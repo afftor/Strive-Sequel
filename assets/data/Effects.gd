@@ -2646,34 +2646,31 @@ var effect_table = {
 		buffs = [], 
 		sub_effects = [],
 	},
-	# to apply next effect you should use:
-	#var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
-	#eff.set_args('fear_mod', 0.5)
-	#eff.set_args('mood_mod', 0.5)
-	#person.apply_effect(effects_pool.add_effect(eff))
-	date_bonus = {
+	
+		date_bonus = {
 		type = 'temp_s',
-		duration = 100, #edit it
+		duration = 36,
 		stack = 1,
+		name = 'date_bonus',
 		tick_event = [variables.TR_TICK],
-		args = [{obj = 'self', param = 'fear_mod'}, {obj = 'self', param = 'mood_mod'}],
+		args = [{obj = 'self', param = 'subm_bonus'}, {obj = 'self', param = 'loyal_bonus'}],
 		sub_effects = ['t_date_bonus'],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Charm.png", #2fix
-			description = "Loyalty and submission gain increased. %d hours remains",
-			args = [{obj = 'parent', param = 'remains'}],
+			description = "Loyalty gain increased by %d. Submission gain increased by %d. %d hours remains",
+			args = [{obj = 'parent_args', param = 1},{obj = 'parent_args', param = 0}, {obj = 'parent', param = 'remains'}],
 			limit = 1,
 			t_name = 'date_effect',
 			mansion_only = true,
 		}]
 	},
 	t_date_bonus = {
-		type = 'dynamic',
-		tags = ['recheck_stats'],
-		args = [{obj = 'parent_args', param = 0}, {obj = 'parent_args', param = 1}, {obj = 'app_obj', param = 'fear'}, {obj = 'app_obj', param = 'mood'} ],
+		type = 'static',
+		tags = [],
+		args = [{obj = 'parent_args', param = 0}, {obj = 'parent_args', param = 1}],
 		atomic = [
-			{type = 'stat_add_p', stat = 'submission_gain_mod', value = [['parent_args', 0], '*', ['parent_args', 2]]},
-			{type = 'stat_add_p', stat = 'loyalty_gain_mod', value = [['parent_args', 1], '*', ['parent_args', 3]]},
+			{type = 'stat_add_p', stat = 'submission_gain_mod', value = ['parent_args', 0]},
+			{type = 'stat_add_p', stat = 'loyalty_gain_mod', value = ['parent_args', 1]},
 		],
 		sub_effects = [],
 		buffs = []
