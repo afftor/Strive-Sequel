@@ -914,8 +914,8 @@ func calculateresults():
 	
 	
 	
-	var loyal_bonus = self.mood * 1.5 / 100
-	var subm_bonus = self.fear * 1.5 / 100
+	var loyal_bonus = self.mood * 1.5 
+	var subm_bonus = self.fear * 1.5 
 	
 	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
 	eff.set_args('subm_bonus', subm_bonus)
