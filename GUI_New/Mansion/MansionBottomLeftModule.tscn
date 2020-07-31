@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_hover.png" type="Texture" id=2]
@@ -8,17 +8,26 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Icons/icon_inventory_small.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_sex_small.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/Journal/icon_journal_small.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 9 )
 
 [node name="MansionBottomLeftModule" type="Panel"]
 margin_right = 290.0
 margin_bottom = 392.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 8.0
 margin_top = 11.0
 margin_right = 282.0
-margin_bottom = 339.0
-custom_constants/separation = 19
+margin_bottom = 387.0
+custom_constants/separation = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,6 +54,8 @@ __meta__ = {
 margin_left = 58.0
 margin_right = 271.0
 margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Travels"
 align = 1
 valign = 1
@@ -53,9 +64,9 @@ __meta__ = {
 }
 
 [node name="UpgradesButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 77.0
+margin_top = 60.0
 margin_right = 274.0
-margin_bottom = 135.0
+margin_bottom = 118.0
 toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 8 )
@@ -75,6 +86,8 @@ __meta__ = {
 margin_left = 58.0
 margin_right = 271.0
 margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Upgrades"
 align = 1
 valign = 1
@@ -83,9 +96,9 @@ __meta__ = {
 }
 
 [node name="SexButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 154.0
+margin_top = 120.0
 margin_right = 274.0
-margin_bottom = 212.0
+margin_bottom = 178.0
 toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 8 )
@@ -105,6 +118,8 @@ __meta__ = {
 margin_left = 58.0
 margin_right = 271.0
 margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Date"
 align = 1
 valign = 1
@@ -113,9 +128,9 @@ __meta__ = {
 }
 
 [node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 231.0
+margin_top = 180.0
 margin_right = 274.0
-margin_bottom = 295.0
+margin_bottom = 244.0
 rect_min_size = Vector2( 0, 64 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 8 )
@@ -135,6 +150,8 @@ __meta__ = {
 margin_left = 58.0
 margin_right = 271.0
 margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Inventory"
 align = 1
 valign = 1
@@ -143,9 +160,9 @@ __meta__ = {
 }
 
 [node name="CraftButton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 314.0
+margin_top = 246.0
 margin_right = 274.0
-margin_bottom = 378.0
+margin_bottom = 310.0
 rect_min_size = Vector2( 0, 64 )
 toggle_mode = true
 texture_normal = ExtResource( 1 )
@@ -166,7 +183,42 @@ __meta__ = {
 margin_left = 58.0
 margin_right = 271.0
 margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Craft"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Journal" type="TextureButton" parent="VBoxContainer"]
+margin_top = 312.0
+margin_right = 274.0
+margin_bottom = 376.0
+rect_min_size = Vector2( 0, 64 )
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Journal"]
+margin_left = 6.88074
+margin_top = 7.58948
+margin_right = 50.8807
+margin_bottom = 51.5895
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="VBoxContainer/Journal"]
+margin_left = 58.0
+margin_right = 271.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Journal"
 align = 1
 valign = 1
 __meta__ = {

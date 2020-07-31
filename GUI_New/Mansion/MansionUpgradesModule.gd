@@ -14,9 +14,9 @@ func _ready():
 #	$StateButton.connect("pressed", self, "change_state")
 #	$StateButton.text = str(state_list[state_id]).capitalize()
 	yield(get_tree().create_timer(0.3), "timeout")
-#	if variables.unlock_all_upgrades == true:
-#		for i in globals.upgradelist.values():
-#			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
+	if variables.unlock_all_upgrades == true:
+		for i in globals.upgradelist.values():
+			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	globals.connect("hour_tick", self, "update_buttons")
 	$SelectChars.connect("pressed", self, "select_chars_for_upgrade")
 	$Confirm.connect("pressed", self, "start_upgrade")
@@ -94,7 +94,8 @@ func open_queue():
 		update_progress(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
 		# newbutton.set_meta('upgrade', upgrade)
 		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgradedata.upgradelist[upgrade]])
-		get_parent().TaskModule.task_index = 1
+		if !get_parent().TaskModule.is_visible():
+			get_parent().TaskModule.task_index = 1
 		get_parent().TaskModule.show_task_info()
 
 func open():
@@ -180,15 +181,16 @@ func selectupgrade(upgrade):
 	var currentupgradelevel = findupgradelevel(upgrade) + 1
 
 	if currentupgradelevel > 1:
-		text += ('\n\n' + tr("UPGRADEPREVBONUS") + ': '	+ upgrade.levels[currentupgradelevel - 1].bonusdescript)
+		text += ('\n' + tr("UPGRADEPREVBONUS") + ' '	+ upgrade.levels[currentupgradelevel - 1].bonusdescript)
 
 	var canpurchase = true
 
 	if upgrade.levels.has(currentupgradelevel):
-		text += ('\n\n'	+ tr("UPGRADENEXTBONUS") + ': '	+ tr(upgrade.levels[currentupgradelevel].bonusdescript))
+		text += ('\n'	+ tr("UPGRADENEXTBONUS") + ' '	+ tr(upgrade.levels[currentupgradelevel].bonusdescript))
 
 		$UpgradeDescript/Time.show()
 		$UpgradeDescript/Time/Label.text = str(upgrade.levels[currentupgradelevel].taskprogress)
+		globals.connecttexttooltip($UpgradeDescript/Time/Panel, "TOOLTIP\n!!!CHANGE ME!!!")
 		for i in upgrade.levels[currentupgradelevel].cost:
 			var item = Items.materiallist[i]
 			var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)

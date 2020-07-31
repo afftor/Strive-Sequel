@@ -1,4 +1,4 @@
-extends "res://src/scenes/ClosingPanel.gd"
+extends Panel
 
 
 var saveloadmode
@@ -6,6 +6,7 @@ var saveloadmode
 func _ready():
 #warning-ignore:return_value_discarded
 	$LineEdit.connect("text_entered",self,'PressSaveGame')
+	$DetailsPanel/MasterIcon.hide()
 
 func ResetSavePanel():
 	match saveloadmode:
@@ -118,16 +119,18 @@ func show_save_details(save):
 	else:
 		$DetailsPanel.hide()
 		return
-	var text = '[center]Mode: ' + starting_presets.preset_data[save.preset].name + "\nMaster: " + save.master_name + "\tVersion: " + save.version + "\tGold: " + str(save.gold) + "\nDay: " + str(save.day) + " Hour: " + str(save.hour) + "\t" + get_date_time(save) + "\tPopulation: " + str(save.population)
+	# var text = 'Mode: ' + starting_presets.preset_data[save.preset].name + "\nMaster: " + save.master_name + "\tVersion: " + save.version + "\tGold: " + str(save.gold) + "\nDay: " + str(save.day) + " Hour: " + str(save.hour) + "\t" + get_date_time(save) + "\tPopulation: " + str(save.population)
+	var text = "Gold: " + str(save.gold) + "\tMode: " + starting_presets.preset_data[save.preset].name + "\nPopulation: " + str(save.population) + "\tVersion: " + save.version + "\nMaster: " + save.master_name + "\t" + get_date_time(save) +  "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
 	# text += "\n\n\nVersion: " + save.version
 	if save.version != globals.gameversion:
 		text += "{color=red| (Outdated)}"
-	text += "[/center]\n\n" 
+	text += "\n" 
 	# text += get_date_time(save)
 #	text += add_zeros(save.time.hour) + ":" + add_zeros(save.time.minute) 
 #	text += " - " + str(save.time.month) + "/" + str(save.time.day) + "/" + str(save.time.year).substr(2, 4)
 	$DetailsPanel/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$DetailsPanel.show()
+	$DetailsPanel/MasterIcon.visible = input_handler.loadimage(save.master_icon) != null
 	$DetailsPanel/MasterIcon.texture = input_handler.loadimage(save.master_icon)
 
 func add_zeros(number):

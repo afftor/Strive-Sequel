@@ -37,8 +37,8 @@ func show_summary():
 	input_handler.ClearContainer($professions)
 	var person = GUIWorld.gui_data["MANSION"].main_module.active_person
 	$Portrait.texture = person.get_icon()
-	$name/sex.texture = images.icons[person.get_stat('sex')]
-	$name.text = person.get_short_name()
+	$sex.texture = images.icons[person.get_stat('sex')]
+	$Name/name.text = person.get_full_name()
 	$VBoxContainer2/TextureRect3/BaseExp.text = str(floor(person.get_stat("base_exp")))
 	$VBoxContainer2/TextureRect4/NextClassExp.text = str(person.get_next_class_exp())
 	
@@ -69,17 +69,17 @@ func show_summary():
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
-	for i in person.xp_module.professions:
-		var newnode = input_handler.DuplicateContainerTemplate($professions)
-		var prof = classesdata.professions[i]
-		var name = ResourceScripts.descriptions.get_class_name(prof, person)
-		newnode.get_node("Label").text = name
-		newnode.get_node("TextureRect").rect_size = Vector2(86,86)
-		newnode.get_node("TextureRect").texture = prof.icon
-		newnode.connect('signal_RMB_release', GUIWorld, 'show_class_info', [prof.code, person])
-		var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-		globals.connecttexttooltip(newnode, temptext)
+	# for i in person.xp_module.professions:
+	# 	var newnode = input_handler.DuplicateContainerTemplate($professions)
+	# 	var prof = classesdata.professions[i]
+	# 	var name = ResourceScripts.descriptions.get_class_name(prof, person)
+	# 	newnode.get_node("Label").text = name
+	# 	newnode.get_node("TextureRect").rect_size = Vector2(86,86)
+	# 	newnode.get_node("TextureRect").texture = prof.icon
+	# 	newnode.connect('signal_RMB_release', GUIWorld, 'show_class_info', [prof.code, person])
+	# 	var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
+	# 	temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+	# 	globals.connecttexttooltip(newnode, temptext)
 
 
 

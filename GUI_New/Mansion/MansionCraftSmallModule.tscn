@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_active.png" type="Texture" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=11]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 1100, 318 )

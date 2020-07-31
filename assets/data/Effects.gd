@@ -2656,7 +2656,7 @@ var effect_table = {
 		args = [{obj = 'self', param = 'subm_bonus'}, {obj = 'self', param = 'loyal_bonus'}],
 		sub_effects = ['t_date_bonus'],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Charm.png", #2fix
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
 			description = "Loyalty gain increased by %d%%. Submission gain increased by %d%%. %d hours remains",
 			args = [{obj = 'parent_args', param = 1},{obj = 'parent_args', param = 0}, {obj = 'parent', param = 'remains'}],
 			limit = 1,
@@ -2675,7 +2675,7 @@ var effect_table = {
 		sub_effects = [],
 		buffs = []
 	},
-	#{obj = 'parent', param = 'remains'}
+	
 };
 
 var atomic = {

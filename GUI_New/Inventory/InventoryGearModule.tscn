@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavebody.png" type="Texture" id=8]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 700, 1050 )

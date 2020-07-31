@@ -19,7 +19,6 @@ func open():
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$StartButton.disabled = ResourceScripts.game_globals.daily_interactions_left < 1
 	for id in ResourceScripts.game_party.character_order:
-		print(id)
 		var i = ResourceScripts.game_party.characters[id]
 		# if !i.check_location('mansion'):
 		# 	continue

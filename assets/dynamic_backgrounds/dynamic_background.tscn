@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/images/backgrounds/Aliron.png" type="Texture" id=1]
 [ext_resource path="res://assets/dynamic_backgrounds/aliron.ogv" type="VideoStream" id=2]
 [ext_resource path="res://assets/dynamic_backgrounds/videoplayer.gd" type="Script" id=3]
 
@@ -15,9 +14,3 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )

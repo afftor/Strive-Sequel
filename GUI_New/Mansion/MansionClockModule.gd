@@ -37,11 +37,10 @@ func _process(delta):
 	if self.visible == false:
 		return
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
-	$TimeNode/food.text = (
-		ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
-		+ " - "
-		+ str(ResourceScripts.game_party.get_food_consumption())
-	)
+	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
+		# + " - "
+		# + str(ResourceScripts.game_party.get_food_consumption())
+	# )
 
 	if input_handler.globalsettings.turn_based_time_flow == false:
 		$TimeNode/HidePanel.visible = gamepaused_nonplayer

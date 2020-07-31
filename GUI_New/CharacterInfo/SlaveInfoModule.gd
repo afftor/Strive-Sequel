@@ -145,7 +145,6 @@ func rebuild_traits():
 			if j.has('code') && j.code == 'action_type':
 				traittext += "\n\nDisliked actions:[color=aqua] "
 				for k in j.value:
-					#print(globals.sex_actions_dict[k].getname())
 					globals.sex_actions_dict[k].givers = []
 					globals.sex_actions_dict[k].takers = []
 					traittext += globals.sex_actions_dict[k].getname() + ", "

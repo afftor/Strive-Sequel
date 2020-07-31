@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Middle_Panel.tres" type="StyleBox" id=1]
-[ext_resource path="res://assets/images/raceshades/Scylla_F.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/raceshades/Human_M.png" type="Texture" id=2]
 [ext_resource path="res://GUI_New/CharacterCreation/RaceSelectionModule.gd" type="Script" id=3]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=6]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Pressed.tres" type="StyleBox" id=10]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=11]
 
 [node name="RaceSelectionModule" type="Panel"]
 anchor_right = 1.0
@@ -25,16 +33,16 @@ __meta__ = {
 }
 
 [node name="RaceSelection" type="Panel" parent="."]
-margin_left = 43.0
-margin_top = 74.0
-margin_right = 735.0
-margin_bottom = 775.0
+margin_right = 780.0
+margin_bottom = 830.0
+custom_styles/panel = ExtResource( 4 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="RaceSelection"]
 margin_left = 28.0
 margin_top = 27.0
 margin_right = 314.0
-margin_bottom = 691.0
+margin_bottom = 804.0
+theme = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RaceSelection/ScrollContainer"]
 margin_right = 286.0
@@ -42,45 +50,66 @@ size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="RaceSelection/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 349.0
+margin_right = 286.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
+theme = ExtResource( 6 )
 toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="RaceSelection"]
 self_modulate = Color( 1, 1, 1, 0.407843 )
-margin_left = 297.413
-margin_top = 38.3066
-margin_right = 672.413
-margin_bottom = 675.307
+margin_left = 338.0
+margin_top = 6.0
+margin_right = 772.0
+margin_bottom = 740.0
 texture = ExtResource( 2 )
+expand = true
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="RaceSelection"]
-margin_left = 299.413
-margin_top = 55.3066
-margin_right = 676.413
-margin_bottom = 658.307
+margin_left = 353.0
+margin_top = 27.0
+margin_right = 753.0
+margin_bottom = 721.0
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ConfirmButton" type="Button" parent="."]
-margin_left = 403.015
-margin_top = 780.644
-margin_right = 509.015
-margin_bottom = 810.644
+margin_left = 558.137
+margin_top = 750.0
+margin_right = 753.137
+margin_bottom = 818.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CancelButton" type="Button" parent="."]
-margin_left = 249.108
-margin_top = 780.644
-margin_right = 338.108
-margin_bottom = 810.644
+margin_left = 344.0
+margin_top = 750.0
+margin_right = 539.0
+margin_bottom = 818.0
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Cancel"
 __meta__ = {
 "_edit_use_anchors_": false

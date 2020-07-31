@@ -12,7 +12,7 @@ func _ready():
 
 
 func build_gear_panel():
-	var selectedhero = GUIWorld.gui_data["MANSION"].main_module.active_person
+	var selectedhero = get_parent().selectedhero
 	if selectedhero != null:
 		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
@@ -26,9 +26,9 @@ func build_gear_panel():
 
 func unequip(slot):
 	var selectedhero = GUIWorld.gui_data["MANSION"].main_module.active_person
-	if !selectedhero.check_location('mansion', true):
-		input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
-		return
+	# if !selectedhero.check_location('Aliron', true):
+	# 	input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
+	# 	return
 	if selectedhero.equipment.gear[slot] != null:
 		selectedhero.unequip(ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]])
 	get_parent().set_active_hero(selectedhero)

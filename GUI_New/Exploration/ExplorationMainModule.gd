@@ -6,8 +6,11 @@ onready var Hire = $ExploreHireModule
 onready var QuestBoard = $QuestBoardModule
 onready var Shop = $ExploreShopModule
 onready var Upgrades = $StatUpgradeModule
+onready var FactionDetails = $FactionDetailsModule
 onready var FullSlaveInfo = $ExploreFullSlaveModule
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
+
+const BUTTON_HEIGHT = 58
 
 var selected_location
 var shopcategory
@@ -47,6 +50,25 @@ var faction_actions = {
 func _ready():
 	input_handler.exploration_node = self
 	$Stat.connect("ready", $StatUpgradeModule, "show")
+	FactionDetails.get_node("QuestGen").connect("pressed", self, "show_quest_gen")
+	FactionDetails.get_node("QuestGenPanel/Apply").connect("pressed", self, "show_quest_gen", ["hide"])
+	FactionDetails.get_node("QuestGenPanel").hide()
+
+	for i in FactionDetails.get_node("QuestGenPanel/HBoxContainer").get_children():
+		i.get_node("up").connect("pressed", self, "details_quest_up", [i.name])
+		i.get_node("down").connect("pressed", self, "details_quest_down", [i.name])
+		
+	for i in positiondict:
+		get_node(positiondict[i]).metadata = i
+		get_node(positiondict[i]).target_node = self
+		get_node(positiondict[i]).target_function = 'slave_position_selected'
+
+func show_quest_gen(action = "show"):
+	if action == "show":
+		FactionDetails.get_node("QuestGenPanel").visible = FactionDetails.get_node("QuestGen").is_pressed()
+	else:
+		FactionDetails.get_node("QuestGenPanel").hide()
+		FactionDetails.get_node("QuestGen").pressed = false
 
 func clear_submodules():
 	for module in submodules:
@@ -66,61 +88,30 @@ func update():
 	if dialogue_opened && !FullSlaveInfo.is_visible():
 		dialogue.show()
 		dialogue_opened = false
+	Navigation.visible = !FullSlaveInfo.is_visible()
 
-
-func return_to_mansion():
-	input_handler.PlaySound("door_open")
-	ResourceScripts.core_animations.BlackScreenTransition()
-	yield(get_tree().create_timer(0.5), 'timeout')
-	# hide()
-	input_handler.StopBackgroundSound()
-	input_handler.SetMusicRandom("mansion")
-	GUIWorld.BaseScene = GUIWorld.gui_data["MANSION"].main_module
-	GUIWorld.CurrentScene = GUIWorld.gui_data["MANSION"].main_module
 
 
 
 func open():
 	# input_handler.CloseAllCloseableWindows()
-
-	input_handler.PlaySound("door_open")
-	GUIWorld.BaseScene = GUIWorld.gui_data["EXPLORATION"].main_module
 	Navigation.build_accessible_locations()
-
-	if selected_location == null:
-		Navigation.select_location('Aliron')
-	else:
-		Navigation.select_location(selected_location)
-
-	yield(get_tree().create_timer(0.5), 'timeout')
-	show()
-
-# func visibility_handler(state):
-# 	Hire.hide()
-# 	QuestBoard.hide()
-# 	Shop.hide()
-# 	Upgrades.hide()
-# 	# City.get_node("GuildMenu").hide()
-# 	# City.get_node("GuildMenuBG").hide()
-# 	for button in City.get_node("ScrollContainer/VBoxContainer").get_children():
-# 		button.pressed = false
-# 	match state:
-# 		"shop":
-# 			Shop.show()
+	selected_location = GUIWorld.gui_data["MANSION"].main_module.selected_location
+	Navigation.select_location(selected_location)
+	
 
 
+func local_shop():
+	Shop.open_shop('location')
 
 func open_location(data):
-	if active_location != data:
-		ResourceScripts.core_animations.BlackScreenTransition(0.7)
-		yield(get_tree().create_timer(0.7), 'timeout')
 	input_handler.StopBackgroundSound()
-#	$LocationGui.show()
-#	$CityGui.hide()
-#	$HirePanel.hide()
+	$LocationGui.show()
+	City.hide()
+	Hire.hide()
 #	$ServicePanel.hide()
-#	$QuestPanel.hide()
-#	$ShopPanel.hide()
+	QuestBoard.hide()
+	Shop.hide()
 #	$FactionDetailsPanel.hide()
 #	$SlaveSelectionPanel.hide()
 	active_location = data
@@ -131,13 +122,14 @@ func open_location(data):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
 
-	if active_location.has('background'):
-		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
+#	if active_location.has('background'):
+#		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
 
 	input_handler.ActivateTutorial("exploration")
 
+	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
 	for id in ResourceScripts.game_party.character_order:
@@ -264,7 +256,7 @@ func build_location_description():
 			)
 			text += "Stage - " + str(active_location.progress.stage)
 		'settlement':
-			text = active_location.classname + ": " + active_location.name
+			text = tr(active_location.classname) + ": " + active_location.name
 		'skirmish':
 			pass
 		'quest_location':
@@ -421,6 +413,10 @@ func faction_upgrade():
 	submodules.append($FactionDetailsModule)
 	var guild_buttons = City.get_node("GuildMenu/VBoxContainer").get_children()
 	for button in guild_buttons:
+		if button.name == "Button":
+			continue
+		if !button.has_meta("action"):
+			continue
 		if button.get_meta("action") != "Upgrades":
 			continue
 		else:
@@ -428,24 +424,19 @@ func faction_upgrade():
 	var text = ''
 	# $FactionDetailsModule.show()
 	input_handler.ClearContainer($FactionDetailsModule/VBoxContainer)
-	text = (
-		"Faction points: "
-		+ str(active_faction.totalreputation)
-		+ "\nUnspent points: "
-		+ str(active_faction.reputation)
-		+ '\n'
-		+ infotext
-	)
-	$FactionDetailsModule/RichTextLabel.bbcode_text = text
+	text = infotext
+	$FactionDetailsModule/RichTextLabel.text = text
+	$FactionDetailsModule/FactionPoints.text = 	"Faction points: " + str(active_faction.totalreputation)
+	$FactionDetailsModule/UnspentPoints.text = 	"Unspent points: " + str(active_faction.reputation)
 
 	for i in active_faction.questsetting:
 		if i == 'total':
 			continue
-		$FactionDetailsModule/HBoxContainer.get_node(i + "/counter").text = str(
+		$FactionDetailsModule/QuestGenPanel/HBoxContainer.get_node(i + "/counter").text = str(
 			active_faction.questsetting[i]
 		)
 
-	$FactionDetailsModule/totalquestpoints.text = (
+	$FactionDetailsModule/QuestGenPanel/totalquestpoints.text = (
 		"Total quests: "
 		+ str(
 			(
@@ -470,13 +461,14 @@ func faction_upgrade():
 		else:
 			currentupgradelevel = 0
 		if currentupgradelevel < i.maxlevel:
-			text += "\n\nPrice: " + str(i.cost[currentupgradelevel]) + " faction points."
+			# text += "\n\nPrice: " + str(i.cost[currentupgradelevel]) + " faction points."
 			if active_faction.reputation < i.cost[currentupgradelevel]:
 				newnode.get_node("confirm").disabled = true
 		else:
 			newnode.get_node("confirm").hide()
 
 		newnode.get_node("text").bbcode_text = text
+		newnode.get_node("Price").text = "Price: " + str(i.cost[currentupgradelevel]) + " faction points."
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
@@ -516,10 +508,120 @@ func unlock_upgrade(upgrade, level):
 		var value = get_indexed('active_faction:' + i.code)
 		value = input_handler.math(i.operant, value, i.value)
 		set_indexed('active_faction:' + i.code, value)
-		#print(active_faction)
 	faction_upgrade()
 
 
+func enter_level(level, skip_to_end = false):
+	current_level = level
+	if skip_to_end == true:
+		current_level = active_location.levels.size()
+		active_location.progress.level = current_level
+		current_stage = active_location.levels["L" + str(active_location.levels.size())].stages-1
+		active_location.progress.stage = current_stage
+	if active_location.progress.level < level:
+		active_location.progress.level = level
+		active_location.progress.stage = 0
+	
+	if check_events('enter_level') == true:
+		yield(input_handler, 'EventFinished')
+	
+	input_handler.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
+	var newbutton
+	if active_location.progress.level == level && active_location.progress.stage < active_location.levels["L"+str(level)].stages:
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+		newbutton.text = 'Advance'
+		newbutton.connect("pressed",self,"area_advance",['advance'])
+	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
+		if active_location.levels.has("L"+str(level + 1)) == true:
+			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+			newbutton.text = 'Move to the next level'
+			newbutton.connect("pressed",self,"enter_level",[level+1])
+		else:
+			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+			newbutton.text = 'Complete location'
+			newbutton.connect("pressed",self,"clear_dungeon")
+	
+	if variables.allow_skip_fights:
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+		newbutton.text = 'Skip to last room'
+		newbutton.connect("pressed",self,"enter_level", [level, true])
+	
+	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+	newbutton.text = 'Roam'
+	newbutton.connect("pressed",self,"area_advance",['roam'])
+	
+	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+	newbutton.text = 'Return'
+	newbutton.connect("pressed",self,"enter_dungeon")
+	build_location_group()
+	build_location_description()
 
 
+func area_advance(mode):
+	if globals.check_location_group() == false:
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	match mode:
+		'advance':
+			current_stage = active_location.progress.stage
+		'roam':
+			current_stage = 0
+	if check_events(mode) == true:
+		yield(input_handler, 'EventFinished')
+	
+	action_type = mode
+	
+	StartCombat()
 
+
+func StartCombat():
+	globals.current_level = current_level
+	globals.current_stage = current_stage
+	globals.StartCombat()
+
+
+func slave_position_selected(pos, character):
+	pos = 'pos'+str(pos)
+	if character == null:
+		active_location.group.erase(pos)
+		build_location_group()
+		return
+	character = character.id
+	var positiontaken = false
+	var oldheroposition = null
+	if active_location.group.has(pos) && ResourceScripts.game_party.characters[active_location.group[pos]].check_location(active_location.id, true):
+		positiontaken = true
+	
+	for i in active_location.group:
+		if active_location.group[i] == character:
+			oldheroposition = i
+			active_location.group.erase(i)
+	
+	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
+		active_location.group[oldheroposition] = active_location.group[pos]
+	
+	active_location.group[pos] = character
+	build_location_group()
+
+func finish_combat():
+	if action_type == 'advance':
+		active_location.progress.stage += 1
+		enter_level(active_location.progress.level)
+	elif action_type == 'location_finish':
+#		leave_location()
+		#update_categories()
+		Navigation.build_accessible_locations()
+		Navigation.select_location("Aliron")
+	else:
+		enter_level(current_level)
+
+
+func details_quest_up(difficulty):
+	if active_faction.questsetting.total - (active_faction.questsetting.easy + active_faction.questsetting.medium + active_faction.questsetting.hard) > 0:
+		active_faction.questsetting[difficulty] += 1
+	faction_upgrade()
+
+func details_quest_down(difficulty):
+	if active_faction.questsetting[difficulty] > 0:
+		active_faction.questsetting[difficulty] -= 1
+	faction_upgrade()

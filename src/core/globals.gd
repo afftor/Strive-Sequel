@@ -270,6 +270,11 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 func TextEncoder(text, node = null):
 	var tooltiparray = []
 	var counter = 0
+	while text.find("{^") >= 0:
+		var temptext = text.substr(text.find("{^"), text.find("}")+1 - text.find("{^"))
+		text = text.replace(temptext, temptext.split(":")[randi()%temptext.split(":").size()].replace("{^", "").replace("}",""))
+	#return text
+	
 	while text.find("{") != -1:
 		var newtext = text.substr(text.find("{"), text.find("}") - text.find("{")+1)
 		var newtextarray = newtext.split("|")
@@ -340,6 +345,10 @@ func ItemSelect(targetscript, type, function, requirements = true):
 		for i in ResourceScripts.game_res.items.values():
 			if i.interaction_use == true:
 				array.append(i)
+	elif type == 'date_use':
+		for i in ResourceScripts.game_res.items.values():
+			if Items.itemlist[i.code].tags.has('date'):
+				array.append(i)
 	
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
@@ -349,7 +358,7 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				newnode.get_node("Percent").show()
 				newnode.get_node("Percent").text = str(input_handler.calculatepercent(i.durability, i.maxdurability)) + '%'
 				connectitemtooltip(newnode, i)
-			'sex_use':
+			'sex_use', 'date_use':
 				i.set_icon(newnode.get_node("icon"))
 				newnode.get_node("Percent").show()
 				newnode.get_node('name').text = i.name
@@ -984,7 +993,7 @@ func common_effects(effects):
 				for k in i.args:
 					match k.type:
 						'add_to_date':
-							var newreq = [{type = 'date', operant = 'eq', value = self.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
+							var newreq = [{type = 'date', operant = 'eq', value = ResourceScripts.game_globals.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
 							newevent.reqs += newreq
 						'fixed_date':
 							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]

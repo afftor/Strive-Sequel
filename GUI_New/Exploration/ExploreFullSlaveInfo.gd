@@ -36,14 +36,12 @@ func hire_sell():
 
 
 func show_summary(person):
-	get_parent().submodules.append(self)
 	$Price.text = str(person.calculate_price())
-	GUIWorld.CurrentScene = self
 	get_parent().submodules.append(self)
-	input_handler.ClearContainer(SummaryModule.get_node("professions"))
+	# input_handler.ClearContainer(BodyModule.get_node("professions"))
 	SummaryModule.get_node("Portrait").texture = person.get_icon()
-	SummaryModule.get_node("name/sex").texture = images.icons[person.get_stat('sex')]
-	SummaryModule.get_node("name").text = person.get_short_name()
+	SummaryModule.get_node("sex").texture = images.icons[person.get_stat('sex')]
+	SummaryModule.get_node("Name/name").text = person.get_short_name()
 	SummaryModule.get_node("VBoxContainer2/TextureRect3/BaseExp").text = str(floor(person.get_stat("base_exp")))
 	SummaryModule.get_node("VBoxContainer2/TextureRect4/NextClassExp").text = str(person.get_next_class_exp())
 	
@@ -74,29 +72,30 @@ func show_summary(person):
 			SummaryModule.get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
-	for i in person.xp_module.professions:
-		var newnode = input_handler.DuplicateContainerTemplate(SummaryModule.get_node("professions"))
-		var prof = classesdata.professions[i]
-		var name = ResourceScripts.descriptions.get_class_name(prof, person)
-		newnode.get_node("Label").text = name
-		newnode.get_node("TextureRect").rect_size = Vector2(86,86)
-		newnode.get_node("TextureRect").texture = prof.icon
-		newnode.connect('signal_RMB_release', GUIWorld, 'show_class_info', [prof.code, person])
-		var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-		globals.connecttexttooltip(newnode, temptext)
+	# for i in person.xp_module.professions:
+	# 	var newnode = input_handler.DuplicateContainerTemplate(BodyModule.get_node("professions"))
+	# 	var prof = classesdata.professions[i]
+	# 	var name = ResourceScripts.descriptions.get_class_name(prof, person)
+	# 	newnode.get_node("Label").text = name
+	# 	newnode.get_node("TextureRect").rect_size = Vector2(86,86)
+	# 	newnode.get_node("TextureRect").texture = prof.icon
+	# 	newnode.connect('signal_RMB_release', GUIWorld, 'show_class_info', [prof.code, person])
+	# 	var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
+	# 	temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+	# 	globals.connecttexttooltip(newnode, temptext)
 	Info.update()
+	BodyModule.update()
 
 
 func _on_Button_pressed():
-	var person = get_parent().person_to_hire
-	print(person)
-#	print("Current Scene:" + str(GUIWorld.CurrentScene.name))
+	# var person = get_parent().person_to_hire
+	for i in get_parent().submodules:
+		print(i.name)
+	print("Current Scene:" + str(GUIWorld.CurrentScene.name))
 #	print("Previous Scene:" + str(GUIWorld.PreviousScene.name))
 
 func hire_character():
 	var person = get_parent().person_to_hire
-	print("Person:" + str(person.get_short_name()))
 	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
 		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 			input_handler.SystemMessage("You don't have enough rooms")
@@ -125,6 +124,7 @@ func hire_character():
 		input_handler.interactive_message(person.get_stat('hire_scene'), '', {})
 	GUIWorld.set_current_scene(GUIWorld.gui_data["EXPLORATION"].main_module)
 	get_parent().Hire.hire()
+	get_parent().Navigation.show()
 
 func sell_slave():
 	var selectedperson = get_parent().person_to_hire
@@ -140,5 +140,6 @@ func sell_slave_confirm():
 	input_handler.PlaySound("money_spend")
 	input_handler.slave_list_node.rebuild()
 	get_parent().faction_sellslaves() ### TEMPORARY
+	get_parent().Navigation.show()
 	self.hide()
 

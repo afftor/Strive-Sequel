@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0012_character-panel.png" type="Texture" id=10]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -32,6 +33,10 @@ size = 36
 use_filter = true
 extra_spacing_top = 1
 font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 669, 841 )
 
 [node name="date" type="Control"]
 margin_right = 40.0
@@ -91,6 +96,9 @@ margin_right = 945.0
 margin_bottom = 198.0
 expand = true
 stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="textfield/slaveportrait"]
 margin_right = 190.0
@@ -194,9 +202,12 @@ text = "Items"
 margin_left = 16.0
 margin_top = 64.0
 margin_right = 920.0
-margin_bottom = 269.0
+margin_bottom = 286.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="panel/ScrollContainer"]
 size_flags_horizontal = 0
@@ -211,14 +222,6 @@ rect_min_size = Vector2( 200, 40 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Test"
-
-[node name="consent" type="Label" parent="panel"]
-margin_left = 21.0
-margin_top = 275.0
-margin_right = 181.0
-margin_bottom = 295.0
-custom_colors/font_color = Color( 0.910156, 0.359085, 0.88863, 1 )
-text = "Intimacy Unlocked"
 
 [node name="mood" type="TextureProgress" parent="."]
 margin_left = 171.931
@@ -351,29 +354,41 @@ __meta__ = {
 
 [node name="end" type="Panel" parent="."]
 visible = false
-margin_left = 410.0
-margin_top = 80.0
-margin_right = 1019.0
-margin_bottom = 642.0
+self_modulate = Color( 1, 1, 1, 0.890196 )
+margin_left = 618.0
+margin_top = 160.0
+margin_right = 1385.0
+margin_bottom = 886.0
+custom_styles/panel = SubResource( 4 )
 
 [node name="Control" type="Control" parent="end"]
-margin_left = -407.0
-margin_top = -77.0
-margin_right = 956.0
-margin_bottom = 693.0
+margin_left = -612.666
+margin_top = -159.63
+margin_right = 1302.33
+margin_bottom = 921.37
 
 [node name="finishbutton" type="Button" parent="end"]
-margin_left = 195.0
-margin_top = 506.0
-margin_right = 420.0
-margin_bottom = 545.0
-text = "Confirm"
+margin_left = 281.044
+margin_top = 646.004
+margin_right = 506.044
+margin_bottom = 685.004
+text = "Close"
+
+[node name="sexbutton" type="Button" parent="end"]
+margin_left = 281.46
+margin_top = 586.247
+margin_right = 506.46
+margin_bottom = 625.247
+text = "Sex"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="end"]
-margin_left = 93.0
-margin_top = 67.0
-margin_right = 540.0
-margin_bottom = 361.0
+margin_left = 81.6396
+margin_top = 64.728
+margin_right = 695.64
+margin_bottom = 529.728
 bbcode_enabled = true
 
 [node name="sexswitch" type="Panel" parent="."]

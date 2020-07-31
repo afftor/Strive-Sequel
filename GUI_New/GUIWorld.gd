@@ -1,7 +1,7 @@
 extends Control
 
 
-var closebuttonoffset = [15,15]
+var closebuttonoffset = [0,0]
 var closebutton
 var open_sound = 'menu_open'
 var close_sound = 'menu_close'
@@ -14,6 +14,7 @@ onready var MAIN_MODULES = {
 	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn"),
 	EXPLORATION = preload("res://GUI_New/Exploration/ExplorationMainModule.tscn"),
 	INTERACTION = preload("res://GUI_New/Mansion/InteractionMainModule.tscn"),
+	GAMEMENU = preload("res://GUI_New/GameMenuPanel.tscn"),
 }
 
 # GUI Dict
@@ -23,29 +24,30 @@ onready var gui_data = {}
 var CurrentScene
 var PreviousScene
 var BaseScene
+var menu_opened = false
 
 
 func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	test_mode()
+	# test_mode()
 
-	# if globals.start_new_game == true:
-	# 	globals.start_new_game = false
-	# 	self.visible = false
-	# 	var newgame_node = Node.new()
-	# 	newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
-	# 	newgame_node.start()
-	# 	input_handler.GameStartNode = newgame_node
-	# 	yield(input_handler, "StartingSequenceComplete")
-	# 	input_handler.GameStartNode.queue_free()
-	# 	#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
-	# 	show()
-		
-	# 	input_handler.ActivateTutorial("introduction")
-	# 	if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
-	# 		input_handler.interactive_message('intro', '', {})
+	if globals.start_new_game == true:
+		globals.start_new_game = false
+		self.visible = false
+		var newgame_node = Node.new()
+		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
+		newgame_node.start()
+		input_handler.GameStartNode = newgame_node
+		yield(input_handler, "StartingSequenceComplete")
+		input_handler.GameStartNode.queue_free()
+		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+		show()
+
+		input_handler.ActivateTutorial("introduction")
+		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
+			input_handler.interactive_message('intro', '', {})
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
@@ -58,24 +60,43 @@ func _ready():
 
 
 func _input(event):
-	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name != "InteractionMainModule":
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene != null && CurrentScene.name != "InteractionMainModule":
 		var ignore_rightclick = false
+		if menu_opened:
+			gui_data["GAMEMENU"].main_module.hide()
+			menu_opened = !menu_opened
+			return
 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-			if i.get_global_rect().has_point(get_global_mouse_position()):
+			if i.is_visible() && i.get_global_rect().has_point(get_global_mouse_position()):
 				ignore_rightclick = true
 				continue
+		if get_tree().get_root().get_node("classinfo") != null:
+			if (CurrentScene == gui_data["MANSION"].main_module 
+				&& CurrentScene.mansion_state in ["default", "skills"] 
+				&& !get_tree().get_root().get_node("classinfo").is_visible()):
+				if (get_tree().get_root().get_node("classinfo").is_visible()
+					|| CurrentScene.submodules != []):
+					return
+				else:
+					menu_opened = !menu_opened
+		elif (CurrentScene == gui_data["MANSION"].main_module 
+			&& CurrentScene.mansion_state in ["default", "skills"]
+			&& !CurrentScene.get_node("MansionJournalModule").is_visible()):	
+			menu_opened = !menu_opened
 		if !ignore_rightclick:
 			visibility_handler()
 
 
 func visibility_handler():
-	print("Visib:" + str(CurrentScene.name))
 	var has_submodules_opened = (CurrentScene.submodules.size() > 0)
 	if has_submodules_opened:
 		submodules_handler()
 	if CurrentScene == gui_data["INVENTORY"].main_module && PreviousScene == gui_data["SLAVE_INFO"].main_module && CurrentScene.is_visible():
 		CurrentScene.hide()
 		CurrentScene = PreviousScene
+	if menu_opened:
+		gui_data["GAMEMENU"].main_module.open()
+		return
 	if BaseScene == gui_data["MANSION"].main_module && !has_submodules_opened:
 		BaseScene.mansion_state = "default"
 	if !has_submodules_opened && CurrentScene.is_visible():
@@ -92,6 +113,7 @@ func submodules_handler():
 	var last_opened = CurrentScene.submodules[last_opened_id]
 	CurrentScene.submodules[last_opened_id].hide()
 	CurrentScene.submodules.erase(last_opened)
+
 
 
 func close_scene():
@@ -128,7 +150,8 @@ func show_class_info(classcode, person = null):
 		person = gui_data["MANSION"].main_module.active_person
 	var node = input_handler.get_spec_node(input_handler.NODE_CLASSINFO) #get_class_info_panel()
 	node.open(classcode, person)
-	CurrentScene.submodules.append(node)
+	if !CurrentScene.submodules.has(node):
+		CurrentScene.submodules.append(node)
 
 
 
@@ -195,7 +218,7 @@ func test_mode():
 		character.skills.social_skills.append(i)
 	character.is_players_character = true
 	globals.impregnate(character, character)
-	#character.pregnancy.duration = 2
+	#character.get_stat('pregnancy').duration = 2
 
 	character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'random', 'random')

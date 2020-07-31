@@ -2,7 +2,7 @@ extends Node
 
 var scenedict = {
 	menu = "res://src/Menu.tscn",
-#	mansion = "res://src/main/Mansion.tscn",
+	#mansion = "res://src/main/Mansion.tscn",
 	mansion = "res://GUI_New/GUIWorld.tscn",
 	loadscreen = "res://src/LoadScreen.tscn",
 	combat = "res://src/combat/combat.tscn",

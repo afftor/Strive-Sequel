@@ -1,11 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_diet.png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 673, 700 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
+font_data = ExtResource( 5 )
 
 [node name="SlaveDietModule" type="Panel"]
 margin_right = 670.0
@@ -15,23 +30,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 670.0
+margin_bottom = 700.0
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 135.0
-margin_top = 180.0
-margin_right = 535.0
-margin_bottom = 580.0
+margin_left = 36.0
+margin_top = 263.0
+margin_right = 632.0
+margin_bottom = 663.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 400.0
+margin_right = 596.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 400.0
-margin_bottom = 38.2509
+margin_right = 596.0
+margin_bottom = 37.0
 theme = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
@@ -39,23 +63,42 @@ anchor_top = 0.18
 anchor_right = 0.211
 anchor_bottom = 0.5
 margin_left = 18.2053
-margin_top = 1.00528
+margin_top = -6.99472
 margin_right = 110.459
-margin_bottom = 12.2053
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_bottom = 13.1653
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Food Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="filter" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 275.757
-margin_top = 8.0
-margin_right = 367.757
+margin_left = 487.703
+margin_right = 579.703
 margin_bottom = 32.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "High"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 36.0
-margin_top = 38.0
-margin_right = 624.0
-margin_bottom = 146.0
+margin_top = 78.0
+margin_right = 632.0
+margin_bottom = 220.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
+
+[node name="Label" type="Label" parent="."]
+margin_right = 670.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Diet"
+align = 1
+valign = 1

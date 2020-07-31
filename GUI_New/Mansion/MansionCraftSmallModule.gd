@@ -16,7 +16,7 @@ func assign_person_to_task():
 	get_parent().craft_state = "default"
 	get_parent().is_craft_selected = false
 	get_parent().match_state()
-	get_parent().CraftModule.get_node("SelectCharacters").disabled = true
+	# get_parent().CraftModule.get_node("SelectCharacters").disabled = true
 	get_parent().persons_for_craft.clear()
 	hide()
 

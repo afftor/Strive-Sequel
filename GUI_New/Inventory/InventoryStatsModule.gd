@@ -38,7 +38,6 @@ func open_base_stats():
 
 
 func open_resists():
-	print("Resists")
 	$resists.show()
 	$base_stats.hide()
 	$StatsButton.pressed = false

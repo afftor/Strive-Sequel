@@ -1,24 +1,42 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_potion.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=2]
 [ext_resource path="res://src/scenes/NumberSelection.gd" type="Script" id=3]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_resources.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_cosm.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_all.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_hover.png" type="Texture" id=7]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type_pressed.png" type="Texture" id=8]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_armor.png" type="Texture" id=9]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_type.png" type="Texture" id=10]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_food.png" type="Texture" id=11]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_weapon.png" type="Texture" id=12]
-[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_craft.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_craft.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion_pressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_craft_pressed.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_craft_hover.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon_hover.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/MarketButtons.tres" type="Theme" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=15]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=16]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=16]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=17]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=20]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_36.tres" type="DynamicFont" id=21]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon_pressed.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_cosm.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_cosm_hover.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_cosm_pressed.png" type="Texture" id=26]
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreMarketPanel.tres" type="Theme" id=27]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_food.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_food_hover.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_hover.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_pressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion_hover.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_food_pressed.png" type="Texture" id=35]
+[ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=36]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=37]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -55,7 +73,7 @@ __meta__ = {
 }
 
 [node name="Background2" type="Panel" parent="."]
-self_modulate = Color( 0, 0, 0, 0.615686 )
+self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_top = 83.0
 margin_right = 1123.0
@@ -68,6 +86,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_right = 1123.0
 margin_bottom = 83.0
+custom_fonts/font = ExtResource( 19 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Marketplace"
 align = 1
 valign = 1
@@ -77,9 +97,9 @@ __meta__ = {
 
 [node name="SellFilter" type="HBoxContainer" parent="."]
 margin_left = 53.97
-margin_top = 204.765
+margin_top = 141.765
 margin_right = 513.97
-margin_bottom = 258.765
+margin_bottom = 195.765
 custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false
@@ -90,17 +110,9 @@ margin_right = 54.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYALL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/all"]
-margin_right = 54.0
-margin_bottom = 54.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 30 )
 
 [node name="food" type="TextureButton" parent="SellFilter"]
 margin_left = 58.0
@@ -108,17 +120,9 @@ margin_right = 112.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/food"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 29 )
 
 [node name="usable" type="TextureButton" parent="SellFilter"]
 margin_left = 116.0
@@ -126,17 +130,9 @@ margin_right = 170.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYUSE"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/usable"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 34 )
 
 [node name="material" type="TextureButton" parent="SellFilter"]
 margin_left = 174.0
@@ -144,17 +140,9 @@ margin_right = 228.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/material"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 
 [node name="tool" type="TextureButton" parent="SellFilter"]
 margin_left = 232.0
@@ -162,17 +150,9 @@ margin_right = 286.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYTOOL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/tool"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_hover = ExtResource( 10 )
 
 [node name="weapon" type="TextureButton" parent="SellFilter"]
 margin_left = 290.0
@@ -180,17 +160,9 @@ margin_right = 344.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYWEAPON"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/weapon"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 12 )
 
 [node name="armor" type="TextureButton" parent="SellFilter"]
 margin_left = 348.0
@@ -198,17 +170,9 @@ margin_right = 402.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYARMOR"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/armor"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 13 )
 
 [node name="costume" type="TextureButton" parent="SellFilter"]
 margin_left = 406.0
@@ -216,23 +180,15 @@ margin_right = 460.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYCOSTUME"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="SellFilter/costume"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 25 )
 
 [node name="BuyFilter" type="HBoxContainer" parent="."]
 margin_left = 602.043
-margin_top = 204.765
+margin_top = 141.765
 margin_right = 1062.04
-margin_bottom = 258.765
+margin_bottom = 195.765
 custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false
@@ -243,17 +199,9 @@ margin_right = 54.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYALL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/all"]
-margin_right = 54.0
-margin_bottom = 54.0
-texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 30 )
 
 [node name="food" type="TextureButton" parent="BuyFilter"]
 margin_left = 58.0
@@ -261,17 +209,9 @@ margin_right = 112.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/food"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 29 )
 
 [node name="usable" type="TextureButton" parent="BuyFilter"]
 margin_left = 116.0
@@ -279,17 +219,9 @@ margin_right = 170.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYUSE"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/usable"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 34 )
 
 [node name="material" type="TextureButton" parent="BuyFilter"]
 margin_left = 174.0
@@ -297,17 +229,9 @@ margin_right = 228.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYMATERIAL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/material"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 
 [node name="tool" type="TextureButton" parent="BuyFilter"]
 margin_left = 232.0
@@ -315,17 +239,9 @@ margin_right = 286.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYTOOL"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/tool"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_hover = ExtResource( 10 )
 
 [node name="weapon" type="TextureButton" parent="BuyFilter"]
 margin_left = 290.0
@@ -333,17 +249,9 @@ margin_right = 344.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYWEAPON"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/weapon"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 12 )
 
 [node name="armor" type="TextureButton" parent="BuyFilter"]
 margin_left = 348.0
@@ -351,17 +259,9 @@ margin_right = 402.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYARMOR"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/armor"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 13 )
 
 [node name="costume" type="TextureButton" parent="BuyFilter"]
 margin_left = 406.0
@@ -369,37 +269,32 @@ margin_right = 460.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYCOSTUME"
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 7 )
-
-[node name="TextureRect" type="TextureRect" parent="BuyFilter/costume"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 25 )
 
 [node name="SellBlock" type="Control" parent="."]
-margin_top = 204.765
+margin_top = 104.765
 margin_right = 40.0
-margin_bottom = 244.765
+margin_bottom = 144.765
+script = ExtResource( 36 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SellBlock"]
-margin_left = 48.0
-margin_top = 144.0
-margin_right = 541.0
-margin_bottom = 494.0
+margin_left = 68.0
+margin_top = 150.0
+margin_right = 548.0
+margin_bottom = 630.0
+rect_min_size = Vector2( 480, 480 )
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SellBlock/ScrollContainer"]
-margin_right = 493.0
+margin_right = 480.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="SellBlock/ScrollContainer/VBoxContainer"]
@@ -408,6 +303,7 @@ margin_right = 493.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )
 theme = ExtResource( 14 )
+custom_fonts/font = ExtResource( 20 )
 
 [node name="icon" type="TextureRect" parent="SellBlock/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0
@@ -426,7 +322,8 @@ margin_left = 69.0
 margin_top = 13.0
 margin_right = 279.0
 margin_bottom = 45.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Test"
 clip_text = true
 __meta__ = {
@@ -442,8 +339,8 @@ margin_left = -68.0
 margin_top = -11.7131
 margin_right = -11.0
 margin_bottom = 12.2869
-custom_colors/font_color = Color( 1, 0.827451, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "10"
 align = 2
 
@@ -452,55 +349,70 @@ margin_left = 340.97
 margin_top = 13.0
 margin_right = 388.97
 margin_bottom = 42.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "1"
 align = 2
 
 [node name="Label" type="Label" parent="SellBlock"]
-margin_left = 483.337
+margin_left = 498.337
 margin_top = 108.88
-margin_right = 536.337
-margin_bottom = 132.88
+margin_right = 551.337
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Cost"
 
 [node name="Label2" type="Label" parent="SellBlock"]
-margin_left = 372.443
+margin_left = 387.443
 margin_top = 108.88
-margin_right = 465.443
-margin_bottom = 132.88
+margin_right = 480.443
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Number"
 
 [node name="Label3" type="Label" parent="SellBlock"]
-margin_left = 80.97
+margin_left = 113.97
 margin_top = 108.88
-margin_right = 173.97
-margin_bottom = 132.88
+margin_right = 206.97
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Item"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VScrollBar" type="VScrollBar" parent="SellBlock"]
+margin_left = 36.0
+margin_top = 141.0
+margin_right = 48.0
+margin_bottom = 630.0
+theme = ExtResource( 37 )
+
 [node name="BuyBlock" type="Control" parent="."]
 margin_left = 521.97
-margin_top = 204.765
+margin_top = 104.765
 margin_right = 561.97
-margin_bottom = 244.765
+margin_bottom = 144.765
+script = ExtResource( 36 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BuyBlock"]
-margin_left = 48.0
-margin_top = 144.0
-margin_right = 541.0
-margin_bottom = 494.0
+margin_left = 44.0
+margin_top = 150.0
+margin_right = 524.0
+margin_bottom = 630.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BuyBlock/ScrollContainer"]
-margin_right = 493.0
+margin_right = 480.0
 size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="BuyBlock/ScrollContainer/VBoxContainer"]
@@ -509,6 +421,7 @@ margin_right = 493.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )
 theme = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 
 [node name="icon" type="TextureRect" parent="BuyBlock/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0
@@ -527,7 +440,8 @@ margin_left = 69.0
 margin_top = 13.0
 margin_right = 279.0
 margin_bottom = 45.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Test"
 clip_text = true
 __meta__ = {
@@ -543,8 +457,8 @@ margin_left = -68.0
 margin_top = -11.7131
 margin_right = -11.0
 margin_bottom = 12.2869
-custom_colors/font_color = Color( 1, 0.827451, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "10"
 align = 2
 
@@ -553,41 +467,58 @@ margin_left = 340.97
 margin_top = 13.0
 margin_right = 388.97
 margin_bottom = 42.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "1"
 align = 2
 
 [node name="Label" type="Label" parent="BuyBlock"]
-margin_left = 483.337
+margin_left = 477.337
 margin_top = 108.88
-margin_right = 536.337
-margin_bottom = 132.88
+margin_right = 530.337
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Cost"
 
 [node name="Label2" type="Label" parent="BuyBlock"]
-margin_left = 372.443
+margin_left = 366.443
 margin_top = 108.88
-margin_right = 465.443
-margin_bottom = 132.88
+margin_right = 459.443
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Number"
 
 [node name="Label3" type="Label" parent="BuyBlock"]
-margin_left = 80.97
+margin_left = 88.97
 margin_top = 108.88
-margin_right = 173.97
-margin_bottom = 132.88
+margin_right = 181.97
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Item"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VScrollBar" type="VScrollBar" parent="BuyBlock"]
+margin_left = 552.07
+margin_top = 141.0
+margin_right = 564.07
+margin_bottom = 630.0
+theme = ExtResource( 37 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NumberSelection" type="Panel" parent="."]
 visible = false
-margin_left = 257.0
-margin_top = 729.0
-margin_right = 854.0
-margin_bottom = 931.0
+margin_left = 294.0
+margin_top = 761.0
+margin_right = 794.0
+margin_bottom = 951.0
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -597,21 +528,23 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="NumberSelection"]
 self_modulate = Color( 0, 0, 0, 0.686275 )
 show_behind_parent = true
-margin_right = 592.0
-margin_bottom = 202.0
+margin_right = 500.0
+margin_bottom = 190.0
 custom_styles/panel = SubResource( 3 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelection"]
 margin_left = 37.0
 margin_top = 32.0
-margin_right = 565.0
+margin_right = 461.0
 margin_bottom = 98.0
+custom_fonts/normal_font = ExtResource( 20 )
+bbcode_enabled = true
 
 [node name="HSlider" type="HSlider" parent="NumberSelection"]
-margin_left = 54.0
-margin_top = 113.886
-margin_right = 669.0
-margin_bottom = 139.886
+margin_left = 37.0
+margin_top = 111.0
+margin_right = 567.0
+margin_bottom = 137.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_icons/grabber_disabled = ExtResource( 17 )
 custom_icons/grabber_highlight = ExtResource( 17 )
@@ -623,18 +556,20 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="NumberSelection"]
-margin_left = 166.538
-margin_top = 141.994
-margin_right = 420.538
-margin_bottom = 185.994
+margin_left = 125.443
+margin_top = 136.8
+margin_right = 379.443
+margin_bottom = 180.8
 theme = ExtResource( 16 )
 text = "Confirm"
 
 [node name="Label4" type="Label" parent="."]
 margin_left = 62.0
-margin_top = 113.765
+margin_top = 83.765
 margin_right = 520.0
-margin_bottom = 172.765
+margin_bottom = 142.765
+custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Inventory"
 align = 1
 valign = 1
@@ -644,10 +579,12 @@ __meta__ = {
 
 [node name="Label5" type="Label" parent="."]
 margin_left = 610.043
-margin_top = 113.765
+margin_top = 83.765
 margin_right = 1068.04
-margin_bottom = 172.765
-text = "Traider"
+margin_bottom = 142.765
+custom_fonts/font = ExtResource( 21 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Trader"
 align = 1
 valign = 1
 __meta__ = {

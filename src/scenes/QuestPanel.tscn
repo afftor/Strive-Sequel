@@ -8,8 +8,6 @@
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=7]
 
-
-
 [node name="QuestPanel" type="Panel"]
 margin_left = 295.71
 margin_top = 135.984
@@ -163,7 +161,6 @@ scroll_horizontal_enabled = false
 columns = 7
 
 [node name="Button" type="TextureButton" parent="ItemSelectionPanel/ScrollContainer/GridContainer"]
-editor/display_folded = true
 visible = false
 margin_right = 75.0
 margin_bottom = 75.0

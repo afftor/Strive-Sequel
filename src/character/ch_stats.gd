@@ -23,9 +23,7 @@ func custom_stats_set(value):
 #			if value.has(st):
 			var delta = value[st] - statlist[st]
 			if delta != 0:
-				print(delta)
 				delta *= get_stat(st+'_gain_mod')
-				print(delta)
 				statlist[st] = clamp(statlist[st] + delta, 0, 100)
 		elif st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
 #			if value.has(st):

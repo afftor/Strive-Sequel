@@ -171,7 +171,7 @@ var TranslationDict = {
 	
 	ITEMAPHRODISIAC = "Aphrodisiac",
 	ITEMAPHRODISIACDESCRIPT = "A strong potion bringing out a person's inner lust. \n\nTurns character Horny during sex interactions. ",
-	ITEMALCOHOL = "Alcohol",
+	ITEMALCOHOL = "Whiskey",
 	ITEMALCOHOLDESCRIPT = "A common strong beverage to help people ease up. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.",
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = "A nectar of the gods. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions.",

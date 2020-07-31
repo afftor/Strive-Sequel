@@ -16,7 +16,6 @@ func _ready():
 	$EnslaveButton.connect("pressed", self, "enslave_select")
 
 func change_mode(mode):
-	print("Change Mode:" + str(mode))
 	get_parent().hiremode = mode
 	if mode == "hire":
 		hire()
@@ -27,6 +26,7 @@ func show_full_info():
 	FullSlaveInfo.show()
 	FullSlaveInfo.show_summary(get_parent().person_to_hire)
 	FullSlaveInfo.update_purchase_btn()
+	get_parent().Navigation.hide()
 
 func open_slave_market(guild):
 	get_parent().clear_submodules()
@@ -47,6 +47,7 @@ func open_slave_market(guild):
 	hire()
 
 func hire():
+	get_parent().get_node("GuildBG").visible = (mode != "slave_market")
 	var guild_buttons = get_parent().City.get_node("GuildMenu/VBoxContainer").get_children()
 	if mode == "guild_slaves":
 		for button in guild_buttons:
@@ -60,7 +61,7 @@ func hire():
 		show()
 	$HireMode.visible = mode != "guild_slaves"
 	$SellMode.visible = mode != "guild_slaves"
-	$PurchaseButton.get_node("Label").text = "Purchase"
+	# $PurchaseButton.get_node("Label").text = "Purchase"
 	get_parent().hiremode = 'hire'
 	$RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
@@ -75,7 +76,10 @@ func hire():
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
 		newbutton.set_meta("person", tchar)
 		# globals.connectslavetooltip(newbutton, tchar)
-	var person_id = get_parent().active_faction.slaves[0]
+	var person_id
+	if get_parent().active_faction.slaves != []:
+		person_id = get_parent().active_faction.slaves[0] 
+	else: return
 	var person = characters_pool.get_char_by_id(person_id)
 	show_slave_info(person)
 
@@ -139,6 +143,14 @@ func show_slave_info(person):
 
 
 func enslave_select():
+	var person = get_parent().person_to_hire
+	var price = person.calculate_price()
+	var text = "Do you want to enslave " + person.get_short_name() + "?\nPrice: " + str(price)
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'enslave', text])
+
+
+
+func enslave():
 	var character = get_parent().person_to_hire
 	character.set_slave_category("slave")
 	input_handler.active_character = character
@@ -153,7 +165,8 @@ func enslave_select():
 	show_slave_info(character)
 
 func sell_slave():
-	$PurchaseButton.get_node("Label").text = "Sell"
+	# $PurchaseButton.get_node("Label").text = "Sell"
+	get_parent().get_node("GuildBG").visible = (mode != "slave_market")
 	get_parent().hiremode = 'sell'
 	$HireMode.visible = mode != "guild_slaves"
 	$SellMode.visible = mode != "guild_slaves"
@@ -162,7 +175,6 @@ func sell_slave():
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	var char_list = []
 	for i in ResourceScripts.game_party.characters:
-		print(i)
 		var tchar = characters_pool.get_char_by_id(i)
 		if (tchar.has_profession('master')): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue

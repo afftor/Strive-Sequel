@@ -1,10 +1,10 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_timer_pause.png" type="Texture" id=2]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=3]
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionClockBG.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=5]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/icon_speedup.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig_hover.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig.png" type="Texture" id=9]
@@ -18,31 +18,34 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/timer_move.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/timer_sky.png" type="Texture" id=24]
 
-[sub_resource type="DynamicFont" id=2]
-size = 30
-use_filter = true
-font_data = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 region_rect = Rect2( 0, 0, 180, 58 )
 margin_left = 8.0
 margin_right = 7.0
 margin_top = 8.46303
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 region_rect = Rect2( 0, 0, 180, 58 )
 margin_left = 8.0
 margin_right = 7.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=4]
 region_rect = Rect2( 0, 0, 180, 58 )
 margin_left = 8.95957
 margin_right = 7.98422
 margin_top = 10.5886
 margin_bottom = 8.7913
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 region_rect = Rect2( 0, 0, 61, 56 )
@@ -64,6 +67,10 @@ margin_left = 8.95957
 margin_right = 7.98422
 margin_top = 10.5886
 margin_bottom = 8.7913
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 6 )
 
 [node name="MansionClockModule" type="Control"]
 margin_right = 290.0
@@ -106,15 +113,15 @@ __meta__ = {
 }
 
 [node name="Time" type="Label" parent="TimeNode"]
-margin_left = 180.0
+margin_left = 206.0
 margin_top = 53.0
 margin_right = 283.0
 margin_bottom = 108.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Time"
-align = 2
+align = 1
 valign = 1
 clip_text = true
 __meta__ = {
@@ -124,12 +131,13 @@ __meta__ = {
 [node name="Date" type="Label" parent="TimeNode"]
 margin_left = 5.0
 margin_top = 53.0
-margin_right = 116.0
+margin_right = 85.0
 margin_bottom = 108.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 0.72549, 0.0705882, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Date"
+align = 1
 valign = 1
 clip_text = true
 __meta__ = {
@@ -144,16 +152,18 @@ margin_right = 235.0
 margin_bottom = 223.0
 hint_tooltip = "Increase hours advanced per turn
 Hotkey: 1"
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Finish Turn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="0speed" type="TextureButton" parent="TimeNode"]
+visible = false
 margin_left = 55.0
 margin_top = 165.0
 margin_right = 235.0
@@ -175,7 +185,6 @@ margin_bottom = 56.0
 texture = ExtResource( 11 )
 
 [node name="1speed" type="TextureButton" parent="TimeNode"]
-visible = false
 margin_left = 55.0
 margin_top = 165.0
 margin_right = 235.0
@@ -237,6 +246,7 @@ margin_left = 41.0
 margin_top = 25.0
 margin_right = 48.0
 margin_bottom = 49.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "-"
 
 [node name="moreturn" type="Button" parent="TimeNode"]
@@ -261,6 +271,7 @@ margin_left = 38.0
 margin_top = 26.0
 margin_right = 50.0
 margin_bottom = 50.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "+"
 
 [node name="turns" type="Label" parent="TimeNode"]
@@ -268,9 +279,13 @@ margin_left = 125.0
 margin_top = 127.0
 margin_right = 166.0
 margin_bottom = 159.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "1"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="TimeNode/turns"]
 show_behind_parent = true
@@ -286,10 +301,13 @@ margin_right = 285.0
 margin_bottom = 177.0
 
 [node name="gold" type="Label" parent="TimeNode"]
-margin_left = 6.0
-margin_top = 8.0
-margin_right = 128.0
-margin_bottom = 53.0
+margin_left = 150.907
+margin_top = 6.88258
+margin_right = 272.907
+margin_bottom = 51.8826
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "500"
 align = 2
 valign = 1
@@ -315,12 +333,15 @@ margin_right = 138.0
 margin_bottom = 42.0
 
 [node name="food" type="Label" parent="TimeNode"]
-margin_left = 151.0
-margin_top = 8.0
-margin_right = 275.0
-margin_bottom = 53.0
+margin_left = 55.0
+margin_top = 7.0
+margin_right = 143.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "500"
-align = 2
+align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -340,10 +361,10 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="TimeNode/food"]
-margin_left = -1.25623
-margin_top = -0.558712
-margin_right = 136.744
-margin_bottom = 40.4413
+margin_left = -50.0
+margin_top = -0.11742
+margin_right = 88.0002
+margin_bottom = 40.8826
 __meta__ = {
 "_edit_use_anchors_": false
 }

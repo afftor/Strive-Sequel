@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonviolet_hover.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonviolet.png" type="Texture" id=2]
@@ -6,24 +6,43 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta_pressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_disabled.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonmagenta_disabled.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 7 )
 
 [node name="MansionSexSelectionModule" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -820.0
 margin_bottom = -960.0
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.705882 )
+show_behind_parent = true
+margin_right = 1100.0
+margin_bottom = 120.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DateButton" type="TextureButton" parent="."]
-margin_left = 210.602
+margin_left = 254.549
 margin_top = 32.8087
-margin_right = 482.602
+margin_right = 526.549
 margin_bottom = 90.8087
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 1 )
+texture_disabled = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,6 +51,8 @@ __meta__ = {
 margin_top = 2.0
 margin_right = 272.0
 margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Date"
 align = 1
 valign = 1
@@ -40,13 +61,14 @@ __meta__ = {
 }
 
 [node name="SexButton" type="TextureButton" parent="."]
-margin_left = 612.303
+margin_left = 568.882
 margin_top = 32.8087
-margin_right = 884.303
+margin_right = 840.882
 margin_bottom = 90.8087
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,6 +76,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="SexButton"]
 margin_right = 272.0
 margin_bottom = 62.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Start Sex"
 align = 1
 valign = 1

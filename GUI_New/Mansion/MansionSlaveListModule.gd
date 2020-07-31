@@ -7,8 +7,8 @@ onready var LocationsList = $TravelsContainerPanel/TravelsContainer/HBoxContaine
 onready var LocationsPanel = $TravelsContainerPanel
 
 var populatedlocations = []
-var default_locations = ["show_all"]
-var selected_location = "show_all"
+var default_locations = ["show_all", "mansion"]
+var selected_location = "mansion"
 var prev_selected_location = "show_all"
 var visible_persons = []
 var limit
@@ -19,6 +19,9 @@ func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
+	globals.connecttexttooltip($population/TextureRect, "POPULATION TOOLTIP TEXT\n !!!CHANGE ME!!!")
+	globals.connecttexttooltip($food_consumption/TextureRect, "FOOD CONSUMPTION TOOLTIP TEXT\n !!!CHANGE ME!!!")
+
 
 func rebuild():
 	LocationsPanel.visible = (get_parent().mansion_state != "sex")
@@ -27,6 +30,7 @@ func rebuild():
 	$BedroomLimit.visible = !LocationsPanel.is_visible()
 	$IterationsLimit.visible = !LocationsPanel.is_visible()
 	$population.text = str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
+	
 	$food_consumption.text = str(ResourceScripts.game_party.get_food_consumption()) + "/day"
 	input_handler.ClearContainer(SlaveContainer)
 	for i in ResourceScripts.game_party.character_order:
@@ -73,10 +77,8 @@ func rebuild():
 func count_visible_chars():
 	var char_counter = 0
 	for i in get_tree().get_root().get_node("GUIWorld/MansionMainModule/MansionSlaveListModule/ScrollContainer/VBoxContainer").get_children():
-		print("Button:", i.name)
 		if i.is_visible():
 			char_counter += 1
-	print("char counter:", char_counter)
 	return char_counter
 
 
@@ -85,7 +87,6 @@ func set_hover_area():
 	var chars = count_visible_chars()
 	var height
 	height = BUTTON_HEIGHT * chars
-	print("visible_persons:", visible_persons.size())
 	$HoverArea.rect_size = Vector2(1004, height) - Vector2(20, 20)
 	$HoverArea.rect_position.x = $ScrollContainer.rect_position.x + 10
 	$HoverArea.rect_position.y = $ScrollContainer.rect_position.y + 10
@@ -104,7 +105,7 @@ func double_clicked(event):
 
 func build_for_travel(person, newbutton):
 	var selected_travel_characters = get_parent().selected_travel_characters
-	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null:
+	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null || person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
 	elif (person.get_stat('obedience') <= 0) && !person.is_controllable():
@@ -148,11 +149,16 @@ func build_locations_list():
 		var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 		if loca in default_locations:
 			newbutton.text = loca.capitalize()
+		elif loca == "mansion":
+			newbutton.text = "Mansion"
+		elif loca == "Aliron":
+			newbutton.queue_free()
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
 		newbutton.set_meta("location", loca)
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 		newbutton.connect("pressed", self, "set_hover_area")
+	update_location_buttons()
 
 
 func build_sex_selection(person, newbutton):
@@ -168,7 +174,7 @@ func build_sex_selection(person, newbutton):
 
 func update_description():
 	var sex_participants = get_parent().sex_participants
-	$BedroomLimit.text = 'Bedroom limit: ' + str(sex_participants.size())
+	$BedroomLimit.text = 'Bedroom limit: '  +str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
 	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_interactions_left) + "/1"
 
 func calculate_sex_limits():
@@ -176,6 +182,7 @@ func calculate_sex_limits():
 	if ResourceScripts.game_res.upgrades.has('master_bedroom'):
 		slavelimit += ResourceScripts.game_res.upgrades.master_bedroom
 	limit = slavelimit
+	return limit
 
 
 func show_location_characters(button = null):
@@ -193,6 +200,9 @@ func show_location_characters(button = null):
 		var person_location = person_reference.travel.location
 		if selected_location == "show_all":
 			person.visible = true
+		elif selected_location == "mansion" || selected_location == "Aliron":
+			if person_location == "mansion": person_location = "Aliron"
+			person.visible = person_location == "Aliron"
 		else:
 			person.visible = (person_location == selected_location)
 		if person.is_visible():
@@ -206,9 +216,7 @@ func show_location_characters(button = null):
 		get_parent().TravelsModule.dislocation_area = selected_location
 	get_parent().TravelsModule.update_location_list()
 	if visible_persons.size() < 1:
-		selected_location = "show_all"
-	print("Show Location Characters")
-				
+		selected_location = "show_all"			
 
 
 
@@ -306,12 +314,18 @@ func update_button(newbutton):
 	# if !person.check_location('Aliron'):
 	if person.check_location('travel'):
 		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. " 
-	elif person.check_location('mansion'): # Temporary
-		person.travel.location = "Aliron"
-		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
+	elif person.check_location('Aliron') || person.get_location() == "mansion": # Temporary
+		# person.travel.location = "Aliron"
+		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 		
 	else:
-		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
+		### Temporary
+		var person_location
+		if person.get_location() == "mansion":
+			person_location = "Aliron"
+		else:
+			person_location = person.travel.location
+		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
 	# 		# newbutton.get_node('job/Label').text = 'Positioned: ' + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[person.travel.location].area].name
 	
 	newbutton.get_node("state").texture = person.get_class_icon()
@@ -323,7 +337,7 @@ var obed_textures = {
 }
 var fear_textures = {
 	high = load('res://assets/images/gui/gui icons/fear1.png'),
-	med = load("res://assets/images/gui/gui icons/fear2.png"),
+	med = load("res://assets/images/gui/gui icons/fear2.png"),	
 	low = load("res://assets/images/gui/gui icons/fear3.png")
 }
 
