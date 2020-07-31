@@ -166,6 +166,8 @@ func update_character_dislocation():
 			'skirmish':
 				pass
 		if selected_travel_characters.size() > 0 :
+			if dislocation_area == "mansion":
+				dislocation_area = "Aliron"
 			var travel_time = globals.calculate_travel_time(destination, dislocation_area) 
 			text += "\n\nTravel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
@@ -198,6 +200,8 @@ func set_travel_character(id):
 	update_character_dislocation()
 
 func travel_confirm():
+	if dislocation_area == "mansion":
+		dislocation_area = "Aliron"
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	for person in selected_travel_characters:

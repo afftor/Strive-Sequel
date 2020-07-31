@@ -7,7 +7,6 @@ extends Control
 #
 
 var lastsave = null
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)

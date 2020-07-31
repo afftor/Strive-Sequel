@@ -49,7 +49,9 @@ func open_city(city):
 			newbutton.get_node("Label").rect_position.x = 0
 			newbutton.get_node("Label").rect_size.x = 272
 			newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
+			newbutton.get_node("Icon").hide()
 		else:
+			newbutton.get_node("Icon").texture = worlddata.factiondata[i.code].icon
 			newbutton.connect("pressed", self, "enter_guild", [i])
 		newbutton.set_meta("guild", i)
 	newbutton = input_handler.DuplicateContainerTemplate(City)
@@ -62,6 +64,7 @@ func open_city(city):
 	newbutton.get_node("Label").rect_position.x = 0
 	newbutton.get_node("Label").rect_size.x = 272
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
+	newbutton.get_node("Icon").hide()
 	for i in get_parent().active_area.capital_options:
 		newbutton = input_handler.DuplicateContainerTemplate(City)
 		newbutton.get_node("Label").text = get_parent().city_options[i]
@@ -73,6 +76,7 @@ func open_city(city):
 		newbutton.get_node("Label").rect_position.x = 0
 		newbutton.get_node("Label").rect_size.x = 272
 		newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
+		newbutton.get_node("Icon").hide()
 
 	for i in get_parent().active_area.events:
 		if globals.checkreqs(i.reqs) == false:

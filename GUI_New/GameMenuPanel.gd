@@ -12,7 +12,6 @@ func _ready():
 		i.connect("pressed", self, "PlayClickSound")
 
 func open():
-	print("open")
 	show()
 
 func OptionsOpen():

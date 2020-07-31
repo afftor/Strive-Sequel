@@ -6,6 +6,7 @@ onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD,
 
 func _ready():
 	$SexButton.connect("pressed", self, "start_scene")
+	$DateButton.connect("pressed", self, "start_date")
 
 
 func start_scene():
@@ -17,3 +18,9 @@ func start_scene():
 	# get_parent().add_child(newscene)
 	# newscene.startsequence(sex_participants)
 	# hide()
+
+
+func start_date():
+	var person = get_parent().sex_participants[0]
+	get_parent().get_node("date").show()
+	get_parent().get_node("date").initiate(person)

@@ -175,7 +175,7 @@ func finish_diet_selection():
 
 func open(type = 'slave', newguild = 'none'):
 	preservedsettings.clear()
-	# show()
+	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
 	$introduction.bbcode_text = introduction_text[type]
