@@ -176,7 +176,7 @@ func show_job_details(job, gatherable = false):
 			newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
 	else:
 		var number
-		number = person.get_progress_resource(job.code)/job.progress_per_item
+		number = person.xp_module.get_progress_resource(job.code)/job.progress_per_item
 		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
 		newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 		newbutton.get_node("icon").texture = job.icon

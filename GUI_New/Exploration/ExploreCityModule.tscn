@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreCity.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_workers.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -66,6 +67,16 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Guild"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 7.37657
+margin_top = 7.37657
+margin_right = 51.3766
+margin_bottom = 51.3766
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

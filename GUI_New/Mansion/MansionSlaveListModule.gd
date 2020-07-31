@@ -271,6 +271,7 @@ func update():
 		update_button(i)
 
 func update_button(newbutton):
+	var person_location
 	if newbutton.name == 'Button':
 		return
 	var person = newbutton.get_meta('slave')
@@ -320,11 +321,11 @@ func update_button(newbutton):
 		
 	else:
 		### Temporary
-		var person_location
 		if person.get_location() == "mansion":
 			person_location = "Aliron"
 		else:
-			person_location = person.travel.location
+			person_location = person.get_location()
+	if person_location != null:
 		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
 	# 		# newbutton.get_node('job/Label').text = 'Positioned: ' + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[person.travel.location].area].name
 	

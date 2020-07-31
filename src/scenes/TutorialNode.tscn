@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://src/scenes/TutorialNode.gd" type="Script" id=2]
-
-
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 1289, 605 )
@@ -48,7 +49,8 @@ __meta__ = {
 [node name="Button" type="Button" parent="Container"]
 visible = false
 margin_right = 302.0
-margin_bottom = 38.2509
+margin_bottom = 32.0
+theme = ExtResource( 4 )
 text = "Test"
 
 [node name="Panel" type="Panel" parent="."]
@@ -57,13 +59,18 @@ margin_left = 645.475
 margin_top = 83.866
 margin_right = 1323.47
 margin_bottom = 489.866
+custom_styles/panel = ExtResource( 5 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 margin_left = 31.478
 margin_top = 32.4927
 margin_right = 649.478
 margin_bottom = 292.493
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 margin_left = 89.9299
@@ -76,6 +83,7 @@ custom_constants/separation = 29
 margin_right = 150.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 50 )
+theme = ExtResource( 4 )
 text = "Dismiss"
 
 [node name="Hide" type="Button" parent="Panel/HBoxContainer"]
@@ -83,6 +91,7 @@ margin_left = 179.0
 margin_right = 329.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 50 )
+theme = ExtResource( 4 )
 text = "Hide"
 
 [node name="Stop" type="Button" parent="Panel/HBoxContainer"]
@@ -91,4 +100,5 @@ margin_right = 508.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 50 )
 hint_tooltip = "Turn off all tutorial tips"
+theme = ExtResource( 4 )
 text = "Stop"

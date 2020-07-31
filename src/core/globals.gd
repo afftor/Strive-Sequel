@@ -703,7 +703,7 @@ func make_item(temprecipe):
 
 func text_log_add(label, text):
 	log_storage.append({type = label, text = text, time = str(ResourceScripts.game_globals.date) + ":" + str(round(ResourceScripts.game_globals.hour))})
-	if log_node != null && weakref(log_node) != null:
+	if log_node != null && weakref(log_node).get_ref():
 		var newfield = log_node.get_node("ScrollContainer/VBoxContainer/field").duplicate()
 		newfield.show()
 		newfield.get_node("label").bbcode_text = label

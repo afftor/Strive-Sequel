@@ -58,6 +58,7 @@ toggle_mode = true
 text = "Aliron"
 
 [node name="VSeparator" type="VSeparator" parent="NavigationContainer/AreaSelection/Button"]
+visible = false
 self_modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
 margin_left = -0.721939
 margin_top = 8.02464

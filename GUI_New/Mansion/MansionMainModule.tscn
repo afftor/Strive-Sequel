@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=36]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=37]
 [ext_resource path="res://GUI_New/Mansion/MansionJournalModule.tscn" type="PackedScene" id=38]
+[ext_resource path="res://src/date.tscn" type="PackedScene" id=39]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 22 )
@@ -213,4 +214,7 @@ margin_left = 530.0
 margin_top = 140.0
 margin_right = 1390.0
 margin_bottom = 940.0
+
+[node name="date" parent="." instance=ExtResource( 39 )]
+visible = false
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

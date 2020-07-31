@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/images/gui/Heart_r.png" type="Texture" id=31]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=32]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_guildbackground.png" type="Texture" id=33]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=34]
 
 [node name="ExplorationMainModule" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -102,8 +103,8 @@ visible = false
 visible = false
 margin_left = 15.0
 margin_top = 15.0
-margin_right = 1935.0
-margin_bottom = 1095.0
+margin_right = 1905.0
+margin_bottom = 1065.0
 script = ExtResource( 17 )
 
 [node name="LocationGui" type="Panel" parent="."]
@@ -121,6 +122,7 @@ margin_left = 732.0
 margin_top = 152.0
 margin_right = 1714.0
 margin_bottom = 764.0
+custom_styles/panel = ExtResource( 34 )
 
 [node name="TextureRect" type="TextureRect" parent="LocationGui/Image"]
 margin_left = 11.4241
@@ -136,6 +138,7 @@ margin_left = 275.0
 margin_top = 426.0
 margin_right = 743.0
 margin_bottom = 587.0
+custom_styles/panel = ExtResource( 34 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LocationGui/Image"]
 margin_left = 298.0
@@ -538,6 +541,7 @@ margin_left = 123.006
 margin_top = 173.123
 margin_right = 613.006
 margin_bottom = 436.123
+custom_styles/panel = ExtResource( 34 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LocationGui/PresentedSlavesPanel"]
 margin_left = 30.0
@@ -604,6 +608,7 @@ margin_left = 52.0
 margin_top = 442.0
 margin_right = 272.0
 margin_bottom = 1043.0
+custom_styles/panel = ExtResource( 34 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LocationGui/ItemUsePanel"]
 margin_left = 26.0

@@ -74,8 +74,6 @@ var always_show = [
 func _ready():
 	# input_handler.CurrentScene = self
 	# input_handler.CurrentScreen = 'mansion'
-	
-	ResourceScripts.game_world.make_world()
 	GUIWorld.BaseScene == self
 	$MenuButton.connect("pressed", self, "show_menu")
 	slave_list_manager()
@@ -308,10 +306,11 @@ func slave_list_manager():
 func update_sex_date_buttons():
 	if ResourceScripts.game_globals.daily_interactions_left > 0:
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
-		SexSelect.get_node("DateButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit #Temporary
 	else:
 		SexSelect.get_node("SexButton").disabled = true
 		SexSelect.get_node("DateButton").disabled = true
+	SexSelect.get_node("DateButton").disabled = sex_participants.size() > 1 || sex_participants.size() == 0 || sex_participants.has(ResourceScripts.game_party.get_master())
+
 
 	
 func set_hovered_person(node, person):

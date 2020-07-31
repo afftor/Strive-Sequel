@@ -55,15 +55,15 @@
 [ext_resource path="res://assets/Textures_v2/Universal/PanelItems.tres" type="StyleBox" id=53]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=54]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=11]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=12]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=13]
 size = 30
 font_data = ExtResource( 48 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=14]
 size = 30
 font_data = ExtResource( 48 )
 
@@ -425,7 +425,7 @@ margin_left = 5.0
 margin_top = 5.77391
 margin_right = 402.0
 margin_bottom = 45.7739
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -462,7 +462,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/normal = SubResource( 2 )
+custom_styles/normal = SubResource( 12 )
 custom_fonts/font = ExtResource( 44 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name"
@@ -778,7 +778,7 @@ margin_left = 7.0
 margin_top = 4.0
 margin_right = 239.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Actors"
 align = 1
@@ -792,7 +792,7 @@ margin_left = 250.0
 margin_top = 4.0
 margin_right = 497.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Receivers"
 align = 1
@@ -878,7 +878,7 @@ margin_left = 459.0
 margin_top = 19.0
 margin_right = 903.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Portrait"
 align = 1
@@ -1035,7 +1035,7 @@ margin_left = 15.0
 margin_top = 19.0
 margin_right = 459.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "List Of Characters"
 align = 1

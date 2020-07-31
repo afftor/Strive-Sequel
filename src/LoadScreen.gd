@@ -5,7 +5,7 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene
 
-var mainmenu = "res://src/Menu.tscn"
+var mainmenu = "res://GUI_New/Menu_v2.tscn"
 
 func _ready():
 	var root = get_tree().get_root()
