@@ -7,7 +7,7 @@ var newrec = true
 
 
 func _init():
-	tres = {description = ""}
+	tres = {}
 	panel_data = [
 		{
 			type = editor_core.PANEL_OPTION,

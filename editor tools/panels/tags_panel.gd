@@ -6,7 +6,9 @@ func _ready():
 
 func get_data():
 	if !visible: return
-	var tmp = parent.tres[stat]
+	var tmp
+	if parent.tres.has(stat): tmp = parent.tres[stat]
+	else: tmp = []
 	stat_node.text = ""
 	for t in tmp: stat_node.text += "%s " % t
 

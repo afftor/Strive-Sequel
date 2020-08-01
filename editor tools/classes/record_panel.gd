@@ -31,6 +31,7 @@ func build_panels():
 				tmp.stat = rec.stat
 				panel_nodes.push_back(tmp)
 				col_containers[rec.container].add_child(tmp)
+				if rec.has('default'): tmp.set_value(rec.default)
 			editor_core.PANEL_EDIT:
 				tmp = editor_core.panel_scene_list.instance()
 				tres[rec.stat] = []

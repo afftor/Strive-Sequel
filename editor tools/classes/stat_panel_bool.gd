@@ -18,3 +18,6 @@ func get_data():
 	if parent.tres.has(stat):
 		var tmp = parent.tres[stat]
 		stat_node.pressed = tmp
+
+func set_value(res:bool):
+	stat_node.pressed = res

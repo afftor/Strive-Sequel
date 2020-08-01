@@ -29,6 +29,7 @@ style reference for data syntax
 		'gear_equiped':
 			value - name of req param (or itembase)
 			param - optional (not in editor!)
+			check - bool (added!)
 		'global_profession_limit':
 			profession - profname (changed from name)
 			value - limit (number)
