@@ -172,7 +172,7 @@ func open(scene, not_save = false):
 	hold_selection = false
 
 func complete_skirmish():
-	input_handler.remove_location(input_handler.active_location.id)
+	globals.remove_location(input_handler.active_location.id)
 	close()
 
 func update_scene_characters():
@@ -252,6 +252,7 @@ func close(transition = false):
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
+	GUIWorld.CurrentScene = GUIWorld.BaseScene
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
@@ -291,23 +292,23 @@ func inspect_active_character():
 	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
 
 func inspect_character_child():
-	input_handler.ShowSlavePanel(ResourceScripts.game_party.babies[input_handler.active_character.pregnancy.baby])
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [state.babies[input_handler.active_character.pregnancy.baby]])
+	input_handler.ShowSlavePanel(ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby])
+	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [state.babies[input_handler.active_character.get_stat('pregnancy').baby]])
 
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
-	var person = ResourceScripts.game_party.babies[input_handler.active_character.pregnancy.baby]
+	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
 	person.get_random_name()
 	node.open(self, 'set_baby_name', person.get_stat('name'))
 
 func removebaby():
 	close()
-	ResourceScripts.game_party.babies[input_handler.active_character.pregnancy.baby].is_active = false
-	ResourceScripts.game_party.babies.erase(input_handler.active_character.pregnancy.baby)
-	input_handler.active_character.pregnancy.baby = null
+	ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby].is_active = false
+	ResourceScripts.game_party.babies.erase(input_handler.active_character.get_stat('pregnancy').baby)
+	input_handler.active_character.get_stat('pregnancy').baby = null
 
 func set_baby_name(text):
-	var person = ResourceScripts.game_party.babies[input_handler.active_character.pregnancy.baby]
+	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
 	person.set_stat('name', text)
 	person.surname = input_handler.active_character.surname
 	ResourceScripts.game_party.add_slave(person, true)

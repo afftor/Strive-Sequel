@@ -34,14 +34,17 @@ func showup(node, text):
 	if $RichTextLabel.bbcode_text.length() < 30:
 		$RichTextLabel.rect_size.x = Text_x/2
 		self.rect_size.x = Panel_x/2
+		$Panel.rect_size.x = Panel_x/2
 		$RichTextLabel.bbcode_text = '[center]'+$RichTextLabel.bbcode_text+'[/center]'
 	else:
 		$RichTextLabel.rect_size.x = Text_x
 		self.rect_size.x = Panel_x
+		$Panel.rect_size.x = Panel_x
 	yield(get_tree(), 'idle_frame')
 	if !weakref(node).get_ref():
 		return
 	rect_size.y = $RichTextLabel.get_v_scroll().get_max() + 50
+	$Panel.rect_size.y = $RichTextLabel.get_v_scroll().get_max() + 50
 	$RichTextLabel.rect_size.y = rect_size.y
 	
 	

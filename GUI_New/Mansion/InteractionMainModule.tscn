@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/sexicons/drunk.png" type="Texture" id=2]
@@ -13,90 +13,59 @@
 [ext_resource path="res://GUI_New/Mansion/InteractionMainModule.gd" type="Script" id=11]
 [ext_resource path="res://assets/images/sexicons/time.png" type="Texture" id=12]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Sex_Actors.tres" type="Theme" id=13]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Panels/panel_general.png" type="Texture" id=14]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Panels/panel_dialog_big.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/MANSION/mansion.png" type="Texture" id=16]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Panels/panel_dialog_medium.png" type="Texture" id=17]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_sexaction_pressed.png" type="Texture" id=18]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_sexaction.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_sexaction_hover.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_infinity_hover.png" type="Texture" id=21]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_infinity_pressed.png" type="Texture" id=22]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_infinity.png" type="Texture" id=23]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Panel_2.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Panel_3.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/Themes_v2/MANSION/Ongoing_Hover.tres" type="StyleBox" id=16]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Button_Pressed.tres" type="StyleBox" id=17]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Panel_1.tres" type="StyleBox" id=18]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Button_Normal.tres" type="StyleBox" id=19]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Button_Hover.tres" type="StyleBox" id=20]
+[ext_resource path="res://assets/Themes_v2/MANSION/SexBG.tres" type="StyleBox" id=21]
+[ext_resource path="res://assets/Themes_v2/MANSION/Ongoing_Pressed.tres" type="StyleBox" id=22]
+[ext_resource path="res://assets/Themes_v2/MANSION/Ongoing_Normal.tres" type="StyleBox" id=23]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_actors.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_actors_pressed.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_actors_hover.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=29]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_Normal_Texture.tres" type="StyleBox" id=30]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_Pressed_Texture.tres" type="StyleBox" id=31]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_Hover_Texture.tres" type="StyleBox" id=32]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_Disabled_Texture.tres" type="StyleBox" id=33]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 16 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 948, 730 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 1390, 320 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 17 )
-region_rect = Rect2( 0, 0, 500, 320 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 20 )
-region_rect = Rect2( 0, 0, 184, 46 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 184, 46 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 19 )
-region_rect = Rect2( 0, 0, 184, 46 )
-margin_left = 10.0
-margin_right = 10.0
-margin_top = 10.0
-margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 21 )
-region_rect = Rect2( 0, 0, 46, 46 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 22 )
-region_rect = Rect2( 0, 0, 46, 46 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 23 )
-region_rect = Rect2( 0, 0, 46, 46 )
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_penetration_pressed.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_petting.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_petting_hover.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_humiliation_pressed.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_inventory_hover.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_inventory_pressed.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_inventory.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_tools.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_humiliation_hover.png" type="Texture" id=38]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_humiliation.png" type="Texture" id=39]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_penetration.png" type="Texture" id=40]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_sm_hover.png" type="Texture" id=41]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_sm_pressed.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_tools_pressed.png" type="Texture" id=43]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=44]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=45]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_penetration_hover.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_sm.png" type="Texture" id=47]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=48]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_petting_pressed.png" type="Texture" id=49]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/icon_tools_hover.png" type="Texture" id=50]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=51]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=52]
+[ext_resource path="res://assets/Textures_v2/Universal/PanelItems.tres" type="StyleBox" id=53]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=54]
 
 [sub_resource type="StyleBoxTexture" id=11]
 
 [sub_resource type="StyleBoxTexture" id=12]
+
+[sub_resource type="DynamicFont" id=13]
+size = 30
+font_data = ExtResource( 48 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 30
+font_data = ExtResource( 48 )
 
 [node name="InteractionMainModule" type="Control"]
 anchor_right = 1.0
@@ -110,7 +79,7 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 1920.0
 margin_bottom = 1080.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -132,7 +101,7 @@ margin_left = 459.0
 margin_top = 15.0
 margin_right = 1405.0
 margin_bottom = 745.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -147,7 +116,7 @@ margin_right = -515.0
 margin_bottom = -15.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -162,7 +131,7 @@ margin_right = -18.0001
 margin_bottom = -15.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,6 +144,7 @@ margin_bottom = 1046.0
 rect_min_size = Vector2( 1200, 250 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/normal_font = ExtResource( 44 )
 bbcode_enabled = true
 meta_underlined = false
 scroll_following = true
@@ -193,6 +163,7 @@ margin_right = -32.0001
 margin_bottom = -98.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/normal_font = ExtResource( 44 )
 bbcode_enabled = true
 bbcode_text = "Text2"
 text = "Text2"
@@ -204,9 +175,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 922.0
-margin_top = 118.0
+margin_top = 115.0
 margin_right = -531.0
-margin_bottom = -564.0
+margin_bottom = -567.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
@@ -220,28 +191,33 @@ columns = 2
 
 [node name="Button" type="Button" parent="Panel/GridContainer/GridContainer"]
 visible = false
-margin_right = 150.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 150, 40 )
+margin_right = 184.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 184, 46 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/hover = ExtResource( 20 )
+custom_styles/pressed = ExtResource( 17 )
+custom_styles/normal = ExtResource( 19 )
+custom_fonts/font = ExtResource( 44 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.517647, 1 )
 text = "Caress"
 clip_text = true
 
 [node name="continue" type="Button" parent="Panel/GridContainer/GridContainer/Button"]
 visible = false
-margin_left = 150.336
-margin_right = 196.336
-margin_bottom = 46.0
+margin_left = 184.0
+margin_top = 3.0
+margin_right = 230.0
+margin_bottom = 49.0
 hint_tooltip = "Continue (continuing actions are only half as effective)"
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = ExtResource( 16 )
+custom_styles/pressed = ExtResource( 22 )
+custom_styles/normal = ExtResource( 23 )
 toggle_mode = true
 text = "∞"
 __meta__ = {
@@ -254,8 +230,12 @@ margin_left = 144.0
 margin_top = 11.0
 margin_right = 164.0
 margin_bottom = 33.0
+custom_fonts/font = ExtResource( 44 )
 custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer2" type="ScrollContainer" parent="Panel"]
 visible = false
@@ -285,6 +265,9 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 200, 40 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.517647, 1 )
 text = "Caress"
 clip_text = true
 align = 0
@@ -305,6 +288,7 @@ margin_left = 144.0
 margin_top = 11.0
 margin_right = 164.0
 margin_bottom = 33.0
+custom_fonts/font = ExtResource( 44 )
 custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
 
@@ -345,9 +329,95 @@ margin_bottom = 52.0
 rect_min_size = Vector2( 340, 52 )
 size_flags_horizontal = 3
 size_flags_vertical = 2
+toggle_mode = true
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 28 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
+margin_left = 174.0
+margin_top = 6.0
+margin_right = 334.0
+margin_bottom = 49.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desire" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "lust"
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="tied" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+visible = false
+margin_left = 120.0
+margin_right = 160.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Tied"
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+
+[node name="horny" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+visible = false
+margin_left = 120.0
+margin_right = 160.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Horny: Arousal gain is doubled"
+mouse_filter = 0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="drunk" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+visible = false
+margin_left = 332.033
+margin_top = 5.77391
+margin_right = 372.033
+margin_bottom = 45.7739
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Drunk"
+mouse_filter = 0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="forced" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+visible = false
+margin_left = 241.0
+margin_top = 5.77391
+margin_right = 281.0
+margin_bottom = 45.7739
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Forced"
+mouse_filter = 0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="arousal" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/HBoxContainer"]
+margin_left = 120.0
+margin_right = 160.0
+margin_bottom = 43.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "Arousal"
+max_value = 1000.0
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+nine_patch_stretch = true
 
 [node name="container" type="Panel" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
 visible = false
@@ -368,6 +438,9 @@ margin_bottom = 45.7739
 rect_min_size = Vector2( 40, 40 )
 expand = true
 stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sex" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
 margin_left = 53.5472
@@ -382,176 +455,125 @@ expand = true
 stretch_mode = 6
 
 [node name="name" type="Label" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 93.5472
-margin_top = 14.0
-margin_right = 193.547
-margin_bottom = 38.0
+margin_left = 94.0
+margin_top = 3.0
+margin_right = 194.0
+margin_bottom = 43.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_styles/normal = SubResource( 12 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 44 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name"
 align = 1
+valign = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="desire" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-visible = false
-margin_left = 197.0
-margin_top = 5.77391
-margin_right = 237.0
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "lust"
-size_flags_horizontal = 2
-size_flags_vertical = 2
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
-
-[node name="tied" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-visible = false
-margin_left = 231.689
-margin_top = 5.77391
-margin_right = 271.689
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Tied"
-texture_normal = ExtResource( 6 )
-expand = true
-stretch_mode = 4
-
-[node name="horny" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-visible = false
-margin_left = 271.689
-margin_top = 5.77391
-margin_right = 311.689
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Horny: Arousal gain is doubled"
-mouse_filter = 0
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 5
-
-[node name="drunk" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-visible = false
-margin_left = 332.033
-margin_top = 5.77391
-margin_right = 372.033
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Drunk"
-mouse_filter = 0
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 5
-
-[node name="forced" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-visible = false
-margin_left = 241.0
-margin_top = 5.77391
-margin_right = 281.0
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Forced"
-mouse_filter = 0
-texture = ExtResource( 9 )
-expand = true
-
-[node name="arousal" type="TextureProgress" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 306.0
-margin_top = 5.77391
-margin_right = 346.0
-margin_bottom = 45.7739
-rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Arousal"
-max_value = 1000.0
-value = 100.0
-texture_under = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
-fill_mode = 3
-nine_patch_stretch = true
-
 [node name="items" type="TextureButton" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel"]
-margin_left = 361.0
-margin_top = 5.77391
-margin_right = 401.0
-margin_bottom = 45.7739
+margin_left = 356.0
+margin_right = 408.0
+margin_bottom = 52.0
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureRect" parent="Panel/CharList/ScrollContainer/VBoxContainer/Panel/items"]
+margin_left = 6.29051
+margin_top = 5.42363
+margin_right = 46.2905
+margin_bottom = 45.4236
 rect_min_size = Vector2( 40, 0 )
-texture_normal = ExtResource( 10 )
+texture = ExtResource( 10 )
 expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-margin_left = 1072.34
+margin_left = 950.406
 margin_top = 34.0
-margin_right = 1288.34
-margin_bottom = 74.0
+margin_right = 1352.41
+margin_bottom = 88.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_constants/separation = 33
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="caress" type="Button" parent="Panel/HBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="caress" type="TextureButton" parent="Panel/HBoxContainer"]
+margin_right = 54.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Petting"
 size_flags_horizontal = 0
 size_flags_vertical = 2
 toggle_mode = true
-text = "P"
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 32 )
 
-[node name="fucking" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 44.0
-margin_right = 84.0
-margin_bottom = 40.0
+[node name="fucking" type="TextureButton" parent="Panel/HBoxContainer"]
+margin_left = 87.0
+margin_right = 141.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Penetration"
 size_flags_horizontal = 0
 size_flags_vertical = 2
 toggle_mode = true
-text = "F"
+texture_normal = ExtResource( 40 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 46 )
 
-[node name="tools" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 88.0
-margin_right = 128.0
-margin_bottom = 40.0
+[node name="tools" type="TextureButton" parent="Panel/HBoxContainer"]
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Tools"
 size_flags_horizontal = 0
 size_flags_vertical = 2
 toggle_mode = true
-text = "T"
+texture_normal = ExtResource( 37 )
+texture_pressed = ExtResource( 43 )
+texture_hover = ExtResource( 50 )
 
-[node name="SM" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 132.0
-margin_right = 172.0
-margin_bottom = 40.0
+[node name="SM" type="TextureButton" parent="Panel/HBoxContainer"]
+margin_left = 261.0
+margin_right = 315.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "S&M"
 size_flags_horizontal = 0
 size_flags_vertical = 2
 toggle_mode = true
-text = "S"
+texture_normal = ExtResource( 47 )
+texture_pressed = ExtResource( 42 )
+texture_hover = ExtResource( 41 )
 
-[node name="humiliation" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 176.0
-margin_right = 216.0
-margin_bottom = 40.0
+[node name="humiliation" type="TextureButton" parent="Panel/HBoxContainer"]
+margin_left = 348.0
+margin_right = 402.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "Humiliation"
 size_flags_horizontal = 0
 size_flags_vertical = 2
 toggle_mode = true
-text = "H"
+texture_normal = ExtResource( 39 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 38 )
 
 [node name="other" type="Button" parent="Panel/HBoxContainer"]
 visible = false
-margin_top = 215.0
-margin_right = 100.0
-margin_bottom = 254.0
+margin_left = 220.0
+margin_right = 320.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 2
@@ -569,10 +591,7 @@ margin_right = -47.8542
 margin_bottom = -28.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = ExtResource( 32 )
-custom_styles/pressed = ExtResource( 31 )
-custom_styles/disabled = ExtResource( 33 )
-custom_styles/normal = ExtResource( 30 )
+theme = ExtResource( 45 )
 text = "Stop"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -590,10 +609,7 @@ margin_bottom = -28.0
 hint_tooltip = "Hotkey: F"
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = ExtResource( 32 )
-custom_styles/pressed = ExtResource( 31 )
-custom_styles/disabled = ExtResource( 33 )
-custom_styles/normal = ExtResource( 30 )
+theme = ExtResource( 45 )
 text = "Pass"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -623,14 +639,12 @@ __meta__ = {
 [node name="blacklist" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 950.406
+margin_left = 937.406
 margin_top = -400.0
-margin_right = 1150.41
+margin_right = 1137.41
 margin_bottom = -355.0
 rect_min_size = Vector2( 200, 45 )
-custom_styles/hover = ExtResource( 32 )
-custom_styles/pressed = ExtResource( 31 )
-custom_styles/normal = ExtResource( 30 )
+theme = ExtResource( 45 )
 text = "Action visibility"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -639,15 +653,13 @@ __meta__ = {
 [node name="aiallow" type="Button" parent="Panel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 1170.41
+margin_left = 1157.41
 margin_top = -400.0
-margin_right = 1370.41
+margin_right = 1357.41
 margin_bottom = -355.0
 rect_min_size = Vector2( 200, 45 )
 hint_tooltip = "When toggled, main character won't be selected for actions by other participants."
-custom_styles/hover = ExtResource( 32 )
-custom_styles/pressed = ExtResource( 31 )
-custom_styles/normal = ExtResource( 30 )
+theme = ExtResource( 45 )
 toggle_mode = true
 text = "Only watch"
 __meta__ = {
@@ -685,6 +697,7 @@ margin_left = 98.0
 margin_top = 6.0
 margin_right = 213.0
 margin_bottom = 46.0
+custom_fonts/font = ExtResource( 44 )
 text = "Name"
 align = 1
 valign = 1
@@ -734,6 +747,7 @@ margin_left = 98.0
 margin_top = 6.0
 margin_right = 213.0
 margin_bottom = 46.0
+custom_fonts/font = ExtResource( 44 )
 text = "Name"
 align = 1
 valign = 1
@@ -764,6 +778,8 @@ margin_left = 7.0
 margin_top = 4.0
 margin_right = 239.0
 margin_bottom = 85.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Actors"
 align = 1
 valign = 1
@@ -776,9 +792,14 @@ margin_left = 250.0
 margin_top = 4.0
 margin_right = 497.0
 margin_bottom = 85.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Receivers"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureFrame" type="TextureRect" parent="."]
 anchor_left = 1.0
@@ -786,9 +807,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -473.796
-margin_top = -73.0
+margin_top = -68.0
 margin_right = -428.796
-margin_bottom = -35.0
+margin_bottom = -30.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 texture = ExtResource( 12 )
@@ -797,11 +818,12 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="TextureFrame"]
 margin_left = 39.0
-margin_top = 15.0
+margin_top = 3.0
 margin_right = 79.0
-margin_bottom = 31.0
+margin_bottom = 35.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 44 )
 text = "x20"
 
 [node name="Control" type="Control" parent="."]
@@ -822,15 +844,21 @@ margin_right = -611.0
 margin_bottom = -352.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_styles/panel = ExtResource( 54 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel"]
-margin_left = 53.0
+margin_left = 35.0
 margin_top = 33.0
 margin_right = 907.0
 margin_bottom = 605.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/normal_font = ExtResource( 44 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="finishbutton" type="Button" parent="Control/Panel"]
 margin_left = 395.044
@@ -839,20 +867,52 @@ margin_right = 548.044
 margin_bottom = 716.524
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 45 )
 text = "Finish"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 459.0
+margin_top = 19.0
+margin_right = 903.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+text = "Portrait"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="blacklist" type="Panel" parent="."]
 visible = false
-margin_left = 420.0
-margin_top = 34.0
-margin_right = 881.0
-margin_bottom = 654.0
+margin_left = 459.0
+margin_top = 15.0
+margin_right = 920.0
+margin_bottom = 745.0
+custom_styles/panel = ExtResource( 53 )
+
+[node name="Background" type="Panel" parent="blacklist"]
+self_modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+margin_right = 463.0
+margin_bottom = 721.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="blacklist"]
 margin_left = 21.0
-margin_top = 77.0
+margin_top = 112.0
 margin_right = 438.0
-margin_bottom = 543.0
+margin_bottom = 638.0
+theme = ExtResource( 52 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="blacklist/ScrollContainer"]
 
@@ -860,23 +920,33 @@ margin_bottom = 543.0
 visible = false
 margin_right = 59.0
 margin_bottom = 20.0
+theme = ExtResource( 51 )
 text = "test"
 
 [node name="closeblacklist" type="Button" parent="blacklist"]
-margin_left = 150.0
-margin_top = 566.0
-margin_right = 318.0
-margin_bottom = 605.0
+margin_left = 145.704
+margin_top = 658.0
+margin_right = 313.704
+margin_bottom = 697.0
+theme = ExtResource( 45 )
 text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="blacklist"]
-margin_left = 23.0
-margin_top = 23.0
-margin_right = 427.0
-margin_bottom = 70.0
+margin_left = 76.0
+margin_top = 19.0
+margin_right = 382.0
+margin_bottom = 85.0
+custom_fonts/normal_font = ExtResource( 44 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
 bbcode_text = "You can hide unwanted actions by unchecking them."
 text = "You can hide unwanted actions by unchecking them."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 margin_left = 204.0
@@ -909,6 +979,7 @@ margin_left = 571.84
 margin_top = 153.601
 margin_right = 1312.84
 margin_bottom = 724.601
+custom_styles/panel = ExtResource( 54 )
 
 [node name="Control" type="Control" parent="OrgasmDenial"]
 margin_left = -574.0
@@ -921,7 +992,12 @@ margin_left = 85.3445
 margin_top = 40.5518
 margin_right = 672.344
 margin_bottom = 408.552
+custom_fonts/normal_font = ExtResource( 44 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="OrgasmDenial"]
 margin_left = 133.0
@@ -931,24 +1007,44 @@ margin_bottom = 553.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OrgasmDenial/ScrollContainer"]
 margin_right = 471.0
-margin_bottom = 98.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
 
 [node name="Cum" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
 margin_right = 471.0
-margin_bottom = 38.2509
+margin_bottom = 32.0
+theme = ExtResource( 45 )
 text = "Make [him] cum"
 
 [node name="Beg" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_top = 42.0
+margin_top = 36.0
 margin_right = 471.0
-margin_bottom = 80.2509
+margin_bottom = 68.0
+theme = ExtResource( 45 )
 text = "Make [him] cum"
 
 [node name="Deny" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
-margin_top = 84.0
+margin_top = 72.0
 margin_right = 471.0
-margin_bottom = 122.251
+margin_bottom = 104.0
+theme = ExtResource( 45 )
 text = "Make [him] cum"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 15.0
+margin_top = 19.0
+margin_right = 459.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+text = "List Of Characters"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Panel/stopbutton" to="." method="_on_stopbutton_pressed"]
 [connection signal="pressed" from="Panel/passbutton" to="." method="_on_passbutton_pressed"]
+[connection signal="pressed" from="Panel/blacklist" to="." method="_on_blacklist_pressed"]
 [connection signal="pressed" from="Control/Panel/finishbutton" to="." method="_on_finishbutton_pressed"]
+[connection signal="pressed" from="blacklist/closeblacklist" to="." method="_on_closeblacklist_pressed"]

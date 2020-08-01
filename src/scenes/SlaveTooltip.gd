@@ -57,8 +57,11 @@ func showup(node, person):
 		get_node("VBoxContainer/"+ i + '/Label').text = str(floor(person.get_stat(i))) + "/" + str(floor(person.get_stat(i+'max')))
 	text = "Type: [color=yellow]" + person.translate(statdata.slave_class_names[person.get_stat('slave_class')]) + "[/color]\n"
 	if person.is_players_character == true:
-		if person.get_work() != '':
-			text += "Occupation: " + races.tasklist[person.get_work()].name
+		if person.get_work() != '' && person.get_work() != 'travel':
+			if person.travel.location == "Aliron":
+				text += "Occupation: " + races.tasklist[person.get_work()].name
+			else:
+				text += "Occupation: " + Items.materiallist[person.get_work()].name
 		else:
 			text += "Occupation: None"
 		text += "\n"

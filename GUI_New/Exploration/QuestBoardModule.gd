@@ -65,7 +65,6 @@ func see_quest_info(quest):
 	input_handler.ClearContainer($QuestDetails/questreqs)
 	input_handler.ClearContainer($QuestDetails/questrewards)
 	var text = '[center]' + quest.name + '[/center]\n' + quest.descript
-	#print(quest.requirements)
 	for i in quest.requirements:
 		var newbutton = input_handler.DuplicateContainerTemplate($QuestDetails/questreqs)
 		match i.code:
@@ -153,7 +152,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ "(Master Charm Bonus)"
 	
-	text += "\n\n{color=yellow|Requester: " + get_parent().active_area.factions[quest.source].name + "}"
+	$QuestDetails/Requester.text += get_parent().active_area.factions[quest.source].name + " "
 	
 	$QuestDetails/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	$QuestDetails/time/Label.text = "Limit: " + str(quest.time_limit) + " days."

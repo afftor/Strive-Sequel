@@ -2023,6 +2023,7 @@ func alcohol(member):
 	else:
 		text += "But it seems [he] is already drunk. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	givers = [member]
 	_on_passbutton_pressed()
 	
 func beer(member):
@@ -2036,6 +2037,7 @@ func beer(member):
 	else:
 		text += "But it seems [he] is already drunk. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	givers = [member]
 	_on_passbutton_pressed()
 
 func aphrodisiac(member):
@@ -2054,6 +2056,7 @@ func sensetivity_pot(member):
 	
 	input_handler.scene_characters = [member.person]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
+	givers = [member]
 	_on_passbutton_pressed()
 
 func pheromones(member):

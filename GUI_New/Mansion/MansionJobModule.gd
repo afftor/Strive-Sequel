@@ -99,7 +99,6 @@ func open_jobs_window():
 
 
 func show_job_details(job, gatherable = false):
-	print("Job:" +str(job))
 	$ConfirmButton.show()
 	$ConfirmButton.disabled = !gatherable
 	$CancelButton.show()
@@ -120,7 +119,7 @@ func show_job_details(job, gatherable = false):
 			work_tools = statdata.worktoolnames[job.worktool]
 	$job_details/JobName.text = job_name
 	var text = (job_descript
-		+ "\n\n"
+		+ "\n"
 		+ tr("TASKMAINSTAT")
 		+ ": [color=yellow]"
 		+ work_stat
@@ -144,7 +143,6 @@ func show_job_details(job, gatherable = false):
 				worktool = "tool_type"
 			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
-				print("Text:" + str(text))
 
 	$job_details/RichTextLabel.bbcode_text = text
 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
@@ -155,12 +153,10 @@ func show_job_details(job, gatherable = false):
 	# 	$job_details/JobName.text = job.name
 	if !gatherable:
 		for i in job.production.values():
-			print("Production:" + str(i))
 			if globals.checkreqs(i.reqs) == false:
 				continue
 			var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
 			# if Items.materiallist.has(i.item):
-			# 	print("Meterials if")
 			# 	var number
 			# 	number = person.get_progress_task(job.code, i.code)/i.progress_per_item
 			# 	text = (
@@ -180,8 +176,7 @@ func show_job_details(job, gatherable = false):
 			newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
 	else:
 		var number
-		number = person.get_progress_resource(job.code)/job.progress_per_item
-		print("Number:" +str(number))
+		number = person.xp_module.get_progress_resource(job.code)/job.progress_per_item
 		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
 		newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 		newbutton.get_node("icon").texture = job.icon
@@ -208,7 +203,8 @@ func select_job():
 		get_parent().TaskModule.task_index = 0
 	else:
 		get_parent().TaskModule.task_index = 1
-	get_parent().TaskModule.change_button()
+	if !get_parent().TaskModule.is_visible():
+		get_parent().TaskModule.change_button()
 	get_parent().rebuild_task_info()
 	open_jobs_window()
 	cancel_job_choice()

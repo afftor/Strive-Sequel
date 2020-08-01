@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=19]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_placeholder.png" type="Texture" id=21]
-[ext_resource path="res://dragarraytemplate.gd" type="Script" id=22]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_hover.png" type="Texture" id=22]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftModule.gd" type="Script" id=23]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=24]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_active.png" type="Texture" id=25]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_inactive.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_inactive.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_requiredmaterial.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=36]
@@ -50,23 +51,74 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_pressed.png" type="Texture" id=51]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=53]
 
-[sub_resource type="StyleBoxTexture" id=1]
-region_rect = Rect2( 0, 0, 12, 48 )
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 45 )
 
 [sub_resource type="StyleBoxTexture" id=2]
+region_rect = Rect2( 0, 0, 12, 48 )
+
+[sub_resource type="StyleBoxTexture" id=3]
 region_rect = Rect2( 0, 0, 12, 256 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
 
-[sub_resource type="StyleBoxTexture" id=3]
-
 [sub_resource type="StyleBoxTexture" id=4]
 
 [sub_resource type="DynamicFont" id=5]
+size = 30
 font_data = ExtResource( 45 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 20
+font_data = ExtResource( 45 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+size = 24
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 20
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 24
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 30
+font_data = ExtResource( 45 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 33 )
+region_rect = Rect2( 0, 0, 554, 754 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 24
+font_data = ExtResource( 45 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 30
+font_data = ExtResource( 45 )
 
 [node name="MansionCraftModule" type="Panel"]
 margin_right = 1100.0
@@ -108,6 +160,7 @@ margin_left = 18.0
 margin_top = 129.0
 margin_right = 145.0
 margin_bottom = 153.0
+custom_fonts/font = SubResource( 1 )
 text = "Blacksmith"
 align = 1
 __meta__ = {
@@ -122,11 +175,12 @@ toggle_mode = true
 texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 28 )
 
-[node name="Label2" type="Label" parent="categories/cooking"]
+[node name="Label" type="Label" parent="categories/cooking"]
 margin_left = 31.0
 margin_top = 129.0
 margin_right = 158.0
 margin_bottom = 153.0
+custom_fonts/font = SubResource( 1 )
 text = "Cooking"
 align = 1
 __meta__ = {
@@ -141,11 +195,12 @@ toggle_mode = true
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 25 )
 
-[node name="Label3" type="Label" parent="categories/tailor"]
+[node name="Label" type="Label" parent="categories/tailor"]
 margin_left = 33.0
 margin_top = 129.0
 margin_right = 160.0
 margin_bottom = 153.0
+custom_fonts/font = SubResource( 1 )
 text = "Tailoring"
 align = 1
 __meta__ = {
@@ -160,11 +215,12 @@ toggle_mode = true
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 40 )
 
-[node name="Label4" type="Label" parent="categories/alchemy"]
+[node name="Label" type="Label" parent="categories/alchemy"]
 margin_left = 28.0
 margin_top = 129.0
 margin_right = 155.0
 margin_bottom = 153.0
+custom_fonts/font = SubResource( 1 )
 text = "Alchemy"
 align = 1
 __meta__ = {
@@ -292,12 +348,11 @@ visible = false
 margin_right = 480.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 440, 75 )
-hint_tooltip = "Left click to cancel
-Drag to change order"
 mouse_default_cursor_shape = 2
+toggle_mode = true
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-script = ExtResource( 22 )
+texture_hover = ExtResource( 22 )
 
 [node name="icon" type="TextureRect" parent="CraftScheldue/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0
@@ -345,9 +400,9 @@ __meta__ = {
 }
 
 [node name="DeleteButton" type="TextureButton" parent="CraftScheldue/ScrollContainer/VBoxContainer/Button"]
-margin_left = 394.0
+margin_left = 437.0
 margin_top = 6.0
-margin_right = 434.0
+margin_right = 477.0
 margin_bottom = 46.0
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 9 )
@@ -358,8 +413,8 @@ margin_left = 1055.0
 margin_top = 338.0
 margin_right = 1067.0
 margin_bottom = 916.0
-custom_styles/grabber = SubResource( 1 )
-custom_styles/scroll = SubResource( 2 )
+custom_styles/grabber = SubResource( 2 )
+custom_styles/scroll = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -369,7 +424,7 @@ margin_left = 552.0
 margin_top = 784.0
 margin_right = 1100.0
 margin_bottom = 980.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -380,6 +435,10 @@ margin_top = 132.0
 margin_right = 507.0
 margin_bottom = 166.0
 theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -391,6 +450,10 @@ margin_top = 132.0
 margin_right = 268.0
 margin_bottom = 166.0
 theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -415,7 +478,10 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelect"]
 margin_top = 36.0
 margin_right = 544.0
-margin_bottom = 68.0
+margin_bottom = 82.0
+custom_fonts/normal_font = SubResource( 6 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Repeat 1 time.[/center]"
 text = "Repeat 1 time."
@@ -481,8 +547,11 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
 margin_left = 80.0
+margin_top = -5.0
 margin_right = 416.0
-margin_bottom = 24.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Item Name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -490,9 +559,9 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
 margin_left = 88.0
-margin_top = 32.0
+margin_top = 36.0
 margin_right = 128.0
-margin_bottom = 72.0
+margin_bottom = 76.0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -511,15 +580,20 @@ margin_left = 24.0
 margin_top = 15.0
 margin_right = 40.0
 margin_bottom = 39.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1"
 align = 1
 
 [node name="number" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
-margin_left = 38.0
-margin_top = 54.0
-margin_right = 68.0
-margin_bottom = 78.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+margin_left = 46.8235
+margin_top = 49.0
+margin_right = 76.8235
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1"
 align = 2
 __meta__ = {
@@ -540,10 +614,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button/WorkUnits"]
-margin_left = 2.0
-margin_top = 47.0
-margin_right = 58.0
-margin_bottom = 71.0
+margin_top = 42.0
+margin_right = 56.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1"
 align = 1
 
@@ -553,14 +629,21 @@ margin_top = 916.0
 margin_right = 373.0
 margin_bottom = 950.0
 theme = ExtResource( 18 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.6, 0.513726, 0.435294, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MaterialSetupPanel" type="Panel" parent="."]
 margin_left = 552.0
 margin_top = 232.0
 margin_right = 1096.0
 margin_bottom = 784.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -570,18 +653,30 @@ margin_left = 115.0
 margin_top = 221.0
 margin_right = 478.0
 margin_bottom = 321.0
+custom_fonts/normal_font = SubResource( 12 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+scroll_active = false
 
 [node name="Part2Descript" type="RichTextLabel" parent="MaterialSetupPanel"]
 margin_left = 115.0
 margin_top = 336.0
 margin_right = 478.0
 margin_bottom = 436.0
+custom_fonts/normal_font = SubResource( 12 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+scroll_active = false
 
 [node name="Part3Descript" type="RichTextLabel" parent="MaterialSetupPanel"]
 margin_left = 115.0
 margin_top = 448.0
 margin_right = 478.0
 margin_bottom = 552.0
+custom_fonts/normal_font = SubResource( 12 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EndItemFrame" type="TextureRect" parent="MaterialSetupPanel"]
 margin_left = 8.0
@@ -623,10 +718,12 @@ expand = true
 stretch_mode = 6
 
 [node name="number" type="Label" parent="MaterialSetupPanel/Part1"]
-margin_left = 59.6832
-margin_top = 73.9109
-margin_right = 97.6832
-margin_bottom = 97.9109
+margin_left = 56.8332
+margin_top = 64.4109
+margin_right = 94.8332
+margin_bottom = 91.4109
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1"
 align = 1
 
@@ -651,10 +748,12 @@ expand = true
 stretch_mode = 6
 
 [node name="number" type="Label" parent="MaterialSetupPanel/Part2"]
-margin_left = 59.6832
-margin_top = 73.9109
-margin_right = 97.6832
-margin_bottom = 97.9109
+margin_left = 56.8332
+margin_top = 64.4109
+margin_right = 94.8332
+margin_bottom = 91.4109
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1"
 align = 1
 __meta__ = {
@@ -682,10 +781,12 @@ expand = true
 stretch_mode = 6
 
 [node name="number" type="Label" parent="MaterialSetupPanel/Part3"]
-margin_left = 59.6832
-margin_top = 73.9109
-margin_right = 97.6832
-margin_bottom = 97.9109
+margin_left = 56.8332
+margin_top = 64.4109
+margin_right = 94.8332
+margin_bottom = 91.4109
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1"
 align = 1
 __meta__ = {
@@ -715,35 +816,38 @@ align = 1
 margin_left = 205.0
 margin_top = 8.0
 margin_right = 520.0
-margin_bottom = 188.0
-custom_fonts/normal_font = SubResource( 5 )
+margin_bottom = 174.0
+custom_fonts/normal_font = SubResource( 14 )
 bbcode_enabled = true
 scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="MaterialSetupPanel"]
 margin_left = 8.0
-margin_top = 197.0
+margin_top = 182.0
 margin_right = 188.0
-margin_bottom = 221.0
+margin_bottom = 222.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Parts"
 
 [node name="MaterialSelect" type="Panel" parent="."]
-visible = false
-margin_left = 33.0
-margin_top = 328.0
-margin_right = 528.0
-margin_bottom = 916.0
-custom_styles/panel = SubResource( 6 )
+margin_top = 225.0
+margin_right = 550.0
+margin_bottom = 980.0
+custom_styles/panel = SubResource( 16 )
 script = ExtResource( 44 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialSelect"]
-margin_left = 32.0
-margin_top = 56.0
-margin_right = 433.0
-margin_bottom = 600.0
+margin_left = 64.0
+margin_top = 96.0
+margin_right = 532.0
+margin_bottom = 721.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -755,7 +859,7 @@ __meta__ = {
 visible = false
 margin_right = 100.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 0, 100 )
 texture_normal = ExtResource( 47 )
 
 [node name="Icon" type="TextureRect" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button"]
@@ -771,19 +875,28 @@ __meta__ = {
 }
 
 [node name="amount" type="Label" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button"]
-margin_top = 73.0
-margin_right = 97.0
-margin_bottom = 97.0
+margin_left = 9.0
+margin_top = 69.0
+margin_right = 89.0
+margin_bottom = 96.0
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
 text = "5"
 align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="RichTextLabel" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button"]
 margin_left = 108.0
 margin_top = 15.0
 margin_right = 460.0
 margin_bottom = 100.0
+custom_fonts/normal_font = SubResource( 17 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -792,25 +905,34 @@ __meta__ = {
 [node name="ButtonOverlay" type="TextureButton" parent="MaterialSelect/ScrollContainer/VBoxContainer/Button"]
 margin_right = 399.0
 margin_bottom = 97.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PartLabel" type="Label" parent="MaterialSelect"]
-margin_left = 84.0
-margin_top = 16.0
-margin_right = 389.0
-margin_bottom = 40.0
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 537.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 18 )
 text = "SELECTMATERIAL"
 align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VScrollBar" type="VScrollBar" parent="MaterialSelect"]
-margin_top = 10.0
-margin_right = 12.0
-margin_bottom = 600.0
+margin_left = 33.0
+margin_top = 116.0
+margin_right = 45.0
+margin_bottom = 706.0
+theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SelectCharacters" type="Button" parent="."]
-visible = false
 margin_left = 660.0
 margin_top = 243.0
 margin_right = 995.0

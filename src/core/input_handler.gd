@@ -301,8 +301,8 @@ func OpenClose(node):
 	CloseableWindowsArray.append(node)
 
 func Close(node):
-	for i in CloseableWindowsArray:
-		print("i:" + str(i.name))
+	#or i in CloseableWindowsArray:
+		#print("i:" + str(i.name))
 	CloseableWindowsArray.erase(node)
 	ResourceScripts.core_animations.CloseAnimation(node)
 
@@ -589,7 +589,6 @@ func calculate_number_from_string_array(arr, caster, target):
 	return endvalue
 
 func dialogue_option_selected(option):
-	print(option)
 	get_spec_node(self.NODE_DIALOGUE).previous_text = tr(option)
 	if !ResourceScripts.game_progress.selected_dialogues.has(option):
 		ResourceScripts.game_progress.selected_dialogues.append(option)
@@ -622,7 +621,7 @@ func interactive_message(code, type, args):
 			data.text = data.text.replace("[dungeonname]", args.locationname)
 		'childbirth':
 			active_character = args.pregchar
-			var baby = ResourceScripts.game_party.babies[active_character.pregnancy.baby]
+			var baby = ResourceScripts.game_party.babies[active_character.get_stat('pregnancy').baby]
 			scene_characters.append(baby)
 		'event_selection':
 			data.location = active_location

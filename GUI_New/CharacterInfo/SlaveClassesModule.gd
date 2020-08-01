@@ -34,6 +34,7 @@ func _process(delta):
 func _init():
 	set_process(false)
 
+
 func show_tooltip(node, text):
 	$Tooltip.show()
 	$Tooltip/RichTextLabel.rect_size.y = 10
@@ -42,16 +43,16 @@ func show_tooltip(node, text):
 	
 	if $Tooltip/RichTextLabel.bbcode_text.length() < 30:
 		$Tooltip/RichTextLabel.rect_size.x = Text_x/2
-		# self.rect_size.x = Panel_x/2
+		$Tooltip.rect_size.x = Panel_x/2
 		$Tooltip/RichTextLabel.bbcode_text = '[center]'+$RichTextLabel.bbcode_text+'[/center]'
 	else:
 		$Tooltip/RichTextLabel.rect_size.x = Text_x
-		# self.rect_size.x = Panel_x
+		$Tooltip.rect_size.x = Panel_x
 	yield(get_tree(), 'idle_frame')
 	# if !weakref(node).get_ref():
 	# 	return
-	# rect_size.y = $RichTextLabel.get_v_scroll().get_max() + 50
-	$Tooltip/RichTextLabel.rect_size.y = rect_size.y
+	$Tooltip.rect_size.y = $Tooltip/RichTextLabel.get_v_scroll().get_max() + 100
+	$Tooltip/RichTextLabel.rect_size.y = $Tooltip.rect_size.y - 100
 
 func close_tooltip():
 	$Tooltip.hide()
@@ -147,7 +148,7 @@ func unlock_class():
 	person.add_stat('base_exp', -person.get_next_class_exp())
 	person.unlock_class(current_class)
 	yield(get_tree().create_timer(0.2),"timeout")
-	input_handler.ShowSlavePanel(person)
+#	input_handler.ShowSlavePanel(person)
 	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
 	globals.text_log_add("class", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
 	input_handler.PlaySound("ding")

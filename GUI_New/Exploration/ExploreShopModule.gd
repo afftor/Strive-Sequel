@@ -31,6 +31,7 @@ func selectcategory(button, list):
 
 
 func open_shop(shop):
+	get_parent().get_node("GuildBG").visible = false
 	get_parent().clear_submodules()
 	get_parent().submodules.append(self)
 	SlaveMarket.is_slave_market_opened = false

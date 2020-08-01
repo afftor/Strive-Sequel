@@ -51,7 +51,7 @@ func show_slave_info():
 			$TextureRect/professions.columns = 5
 			$TextureRect/professions/Button.rect_min_size = Vector2(90,90)
 			$TextureRect/professions/Button/ProfIcon.rect_size = Vector2(78,78)
-			$TextureRect/professions/Button/Label.show()
+#			$TextureRect/professions/Button/Label.show()
 			
 		for i in person.xp_module.professions:
 			var newnode = input_handler.DuplicateContainerTemplate($TextureRect/professions)

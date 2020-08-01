@@ -159,9 +159,15 @@ func decoder(text, tempgivers = null, temptakers = null):
 
 #choose randomly from str in {^str:str:str}
 #does not support nesting
+#func splitrand(text):
+#	while text.find("{^") >= 0:
+#		var temptext = text.substr(text.find("{^"), text.find("}")+1 - text.find("{^"))
+#		text = text.replace(temptext, temptext.split(":")[randi()%temptext.split(":").size()].replace("{^", "").replace("}",""))
+#	return text
+
 func splitrand(text):
 	while text.find("{^") >= 0:
-		var temptext = text.substr(text.find("{^"), text.find("}")+1 - text.find("{^"))
+		var temptext = text.substr(text.find("{^"), text.find("}", text.find("{^"))+1 - text.find("{^"))
 		text = text.replace(temptext, temptext.split(":")[randi()%temptext.split(":").size()].replace("{^", "").replace("}",""))
 	return text
 

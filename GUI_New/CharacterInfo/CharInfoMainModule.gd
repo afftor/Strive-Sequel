@@ -10,6 +10,7 @@ onready var DetailsModule = $SlaveDetailsModule
 onready var SummaryModule = $SlaveSummaryModule
 onready var DietModule = $SlaveDietModule
 onready var BodyModule = $SlaveBodyModule
+onready var SlaveInfo = $SlaveInfoModule
 onready var submodules = []
 var inventory_scene
 
@@ -25,7 +26,6 @@ func update():
 
 
 func set_state(state):
-	print("Set State:" + str(state))
 	var inventory_scene = GUIWorld.gui_data["INVENTORY"].main_module
 	if state == char_module_state:
 		submodules.clear()
@@ -36,7 +36,6 @@ func set_state(state):
 	match_state()
 
 func match_state():
-	print("Match State:" + str(char_module_state))
 	GUIWorld.CurrentScene = self
 	match char_module_state:
 		"default":
@@ -45,19 +44,23 @@ func match_state():
 			DietModule.hide()
 			ClassesModule.hide()
 			SummaryModule.update_buttons()
+			DetailsModule.get_node("SexTraitsPanel").hide()
 		"class":
 			DetailsModule.hide()
 			DietModule.hide()
 			ClassesModule.class_category("all")
 			ClassesModule.show()
+			DetailsModule.get_node("SexTraitsPanel").hide()
 			submodules.append(ClassesModule)
 		"details":
 			ClassesModule.hide() # Temporary
+			DetailsModule.get_node("SexTraitsPanel").hide()
 			submodules.append(DetailsModule)
 			DetailsModule.show()
 		"diet":
 			DetailsModule.hide()
 			ClassesModule.hide() # Temporary
+			DetailsModule.get_node("SexTraitsPanel").hide()
 			DietModule.open_diet_window()
 			DietModule.show()
 		"gear":

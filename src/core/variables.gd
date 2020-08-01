@@ -55,7 +55,6 @@ var system_messages = {
 	no_crafting_item = "MESSAGE_NOCRAFTINGITEM",
 	
 }
-
 var hexcolordict = {
 	red = '#ff5e5e',
 	yellow = "#ffff00",
@@ -72,7 +71,13 @@ var hexcolordict = {
 	factor5 = '#25b8ff',
 	factor6 = '#bc53ff',
 	levelup_text_color = "#10ff10",
+	k_yellow = "#f9e181",
+	k_yellow_dark = "#99836f",
+	k_gray = "#e0e0e0",
+	k_green = "#51fe84",
+	k_red = "#fe515d",
 }
+
 
 var textcodedict = { #not used for some reason...
 	color = {start = '[color=', end = '[/color]'},
@@ -180,6 +185,7 @@ var hard_level_reqs = [1000,1500,2000,3000,4000,5000]
 #Slave values
 var slave_basic_sizes = ['masculine','flat','small','average','big','huge']
 var slave_genital_sizes = ['small','average','big']
+var slave_heights = ['tiny','petite','short','average','tall','towering']
 
 var stat_description = {
 	1:"[color=white]Very Low[/color]",

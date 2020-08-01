@@ -211,13 +211,13 @@ func work_tick():
 		parent.food.food_consumption_rations = true
 
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
-		if ResourceScripts.game_res.craftinglists[currenttask.product].size() <= 0:
+		if ResourceScripts.game_res.craftinglists[currenttask.product].size() <= 0:		
 			if currenttask.messages.has('notask') == false:
 				globals.text_log_add('crafting', parent.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
 				currenttask.messages.append('notask')
 			parent.rest_tick()
 			return
-		else:
+		else:	
 			var craftingitem = ResourceScripts.game_res.craftinglists[currenttask.product][0]
 			currenttask.messages.erase("notask")
 			if craftingitem.resources_taken == false:
@@ -283,7 +283,6 @@ func work_tick():
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
 						remove_from_task()
 						if ResourceScripts.game_party.active_tasks != []:
-							print("I'm here")
 							for task in ResourceScripts.game_party.active_tasks:
 								if task.code == currenttask.code && task.task_location == location.id:
 									ResourceScripts.game_party.active_tasks.erase(task)

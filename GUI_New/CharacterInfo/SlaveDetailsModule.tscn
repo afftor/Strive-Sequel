@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://GUI_New/CharacterInfo/ImageSelect.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=2]
@@ -6,7 +6,17 @@
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=4]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=6]
-
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=7]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=11]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=14]
+[ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=15]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=16]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=17]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -16,9 +26,31 @@ region_rect = Rect2( 0, 0, 970, 920 )
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 42
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 9 )
+
 [node name="SlaveDetailsModule" type="Panel"]
-margin_right = 970.0
-margin_bottom = 920.0
+margin_left = 154.949
+margin_top = 137.0
+margin_right = 1124.95
+margin_bottom = 1057.0
 theme = ExtResource( 5 )
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
@@ -36,190 +68,246 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 64.0
-margin_top = 73.4729
-margin_right = 394.0
-margin_bottom = 818.473
-theme = ExtResource( 6 )
+margin_top = 109.0
+margin_right = 379.0
+margin_bottom = 854.0
+rect_min_size = Vector2( 315, 0 )
 custom_constants/separation = 9
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="descript" type="Button" parent="VBoxContainer"]
-margin_right = 330.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_right = 315.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Add Custom Description"
 
 [node name="nickname" type="Button" parent="VBoxContainer"]
-margin_top = 59.0
-margin_right = 330.0
-margin_bottom = 109.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 51.0
+margin_right = 315.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Set Nickname"
 
 [node name="masternoun" type="Button" parent="VBoxContainer" groups=[
 "hide_master",
 ]]
-margin_top = 118.0
-margin_right = 330.0
-margin_bottom = 168.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 102.0
+margin_right = 315.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Set Master Noun"
 
 [node name="icon" type="Button" parent="VBoxContainer"]
-margin_top = 177.0
-margin_right = 330.0
-margin_bottom = 227.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 153.0
+margin_right = 315.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select Custom Portrait"
 
 [node name="body" type="Button" parent="VBoxContainer"]
-margin_top = 236.0
-margin_right = 330.0
-margin_bottom = 286.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 204.0
+margin_right = 315.0
+margin_bottom = 246.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select Custom Body"
 
 [node name="traits" type="Button" parent="VBoxContainer"]
-visible = false
-margin_top = 295.0
-margin_right = 291.0
-margin_bottom = 345.0
-rect_min_size = Vector2( 0, 50 )
+margin_top = 255.0
+margin_right = 315.0
+margin_bottom = 295.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 14 )
 text = "Manage Sex Traits"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 295.0
-margin_right = 330.0
-margin_bottom = 595.0
+visible = false
+margin_top = 255.0
+margin_right = 315.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 315, 0 )
 
 [node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]
 visible = false
-margin_right = 89.0
+margin_right = 315.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Cancel"
 
 [node name="search" type="LineEdit" parent="VBoxContainer/IconBlock"]
-margin_right = 330.0
-margin_bottom = 34.0
-rect_min_size = Vector2( 330, 0 )
+margin_right = 315.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 placeholder_text = "Search"
 
 [node name="addcustom" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 38.0
-margin_right = 330.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 46.0
+margin_right = 315.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Add custom image"
 
 [node name="openfolder" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 76.0
-margin_right = 330.0
-margin_bottom = 110.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 92.0
+margin_right = 315.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Open system folder"
 
 [node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 114.0
-margin_right = 330.0
-margin_bottom = 148.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 138.0
+margin_right = 315.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reload portraits"
 
 [node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 152.0
-margin_right = 330.0
-margin_bottom = 186.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 184.0
+margin_right = 315.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reset the image"
 
 [node name="reverseportrait" type="Button" parent="VBoxContainer/IconBlock"]
 visible = false
 margin_left = 706.0
 margin_top = 286.0
-margin_right = 1177.0
+margin_right = 1036.0
 margin_bottom = 326.0
-rect_min_size = Vector2( 330, 0 )
+rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reverse to default"
 
 [node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock"]
-margin_top = 190.0
-margin_right = 330.0
-margin_bottom = 224.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 230.0
+margin_right = 315.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select Folders"
 
 [node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
-margin_top = 228.0
-margin_right = 330.0
-margin_bottom = 262.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 276.0
+margin_right = 315.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 315, 40 )
 hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Assign Both"
 
 [node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock"]
-margin_top = 266.0
-margin_right = 330.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 330, 0 )
+margin_top = 320.0
+margin_right = 315.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Race Locked"
 
 [node name="TextEdit" type="TextEdit" parent="."]
-visible = false
-margin_left = 380.0
+margin_left = 412.0
 margin_top = 190.0
 margin_right = 910.0
 margin_bottom = 760.0
+custom_styles/focus = ExtResource( 11 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Text Edit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-visible = false
-margin_left = 380.0
+margin_left = 412.518
 margin_top = 150.0
-margin_right = 441.0
-margin_bottom = 174.0
+margin_right = 473.518
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Label"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ConfirmButton" type="Button" parent="."]
-margin_left = 792.0
-margin_top = 832.0
-margin_right = 898.0
-margin_bottom = 862.0
+margin_left = 685.045
+margin_top = 815.52
+margin_right = 912.045
+margin_bottom = 881.52
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Confirm"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 416.0
-margin_top = 109.0
-margin_right = 940.0
-margin_bottom = 761.0
+margin_left = 396.096
+margin_top = 113.983
+margin_right = 920.096
+margin_bottom = 765.983
 size_flags_horizontal = 2
 size_flags_vertical = 2
 scroll_horizontal_enabled = false
@@ -388,6 +476,97 @@ bbcode_text = "[center]You have no images with fitting criterias available.[/cen
 [center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]"
 text = "You have no images with fitting criterias available.
 Put your images into portrait folder and hit 'Reload Portraits' button"
+
+[node name="Label2" type="Label" parent="."]
+margin_right = 970.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Details"
+align = 1
+valign = 1
+
+[node name="SexTraitsPanel" type="Panel" parent="."]
+margin_left = 30.0
+margin_top = 414.0
+margin_right = 379.0
+margin_bottom = 882.0
+custom_styles/panel = ExtResource( 17 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="SexTraitsPanel"]
+margin_top = 38.0
+margin_right = 12.0
+margin_bottom = 418.0
+theme = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_right = 349.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Traits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_top = 38.0
+margin_right = 349.0
+margin_bottom = 418.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
+margin_right = 315.0
+size_flags_horizontal = 3
+custom_constants/separation = 5
+
+[node name="Button" type="Button" parent="SexTraitsPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 315.0
+margin_bottom = 32.0
+theme = ExtResource( 14 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+toggle_mode = true
+text = "Trait"
+
+[node name="TraitHelp" type="TextureRect" parent="SexTraitsPanel"]
+visible = false
+margin_left = 387.0
+margin_top = 19.1694
+margin_right = 438.0
+margin_bottom = 58.1694
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="TraitCapacity" type="Label" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_top = 424.0
+margin_right = 349.0
+margin_bottom = 456.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TraitCapacity"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="text_changed" from="VBoxContainer/IconBlock/search" to="PopUp" method="_on_search_text_changed"]
 [connection signal="pressed" from="VBoxContainer/IconBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
 [connection signal="pressed" from="VBoxContainer/IconBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]

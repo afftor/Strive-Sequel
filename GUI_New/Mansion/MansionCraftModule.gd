@@ -36,7 +36,7 @@ func cancel_choise():
 	$NumberSelect.hide()
 	$MaterialSetupPanel.hide()
 	$CraftScheldue.show()
-	$SelectCharacters.visible = $CraftScheldue/ScrollContainer/VBoxContainer.get_child_count() > 1
+	$SelectCharacters.show()
 
 
 func set_filter(type):
@@ -62,6 +62,7 @@ var filtercategories = {
 func update():
 	for i in $categories.get_children():
 		i.pressed = false
+		# i.get_node("Label").add_color_override("font_color", Color(224,244,244,255))
 	select_category(craft_category)
 	$CraftScheldue.show()
 	# $CraftSelect.hide()
@@ -215,12 +216,13 @@ func rebuild_scheldue():
 			newnode.get_node("icon").material = load("res://assets/ItemShader.tres").duplicate()
 		newnode.get_node("Label").text = item.code.capitalize() + ": " + globals.fastif(i.repeats != -1,str(i.repeats),'∞')
 		newnode.connect("pressed",self,'confirm_cancel_craft', [i])
+		newnode.set_meta("selected_craft", i)
 		newnode.get_node("DeleteButton").connect("pressed",self,'delete_from_queue', [i])
 		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
-		newnode.arraydata = i
-		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
-		newnode.target_node = self
-		newnode.target_function = 'rebuild_scheldue'
+#		newnode.arraydata = i
+#		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
+#		newnode.target_node = self
+#		newnode.target_function = 'rebuild_scheldue'
 	
 
 var repeats = 1
@@ -271,7 +273,11 @@ func delete_from_queue(entry):
 
 func confirm_cancel_craft(entry):
 	get_parent().is_craft_selected = true
-	$SelectCharacters.disabled = false
+	# $SelectCharacters.disabled = false
+	for button in $CraftScheldue/ScrollContainer/VBoxContainer.get_children():
+		if button.name == "Button":
+			continue
+		button.pressed = button.get_meta("selected_craft") == entry
 	
 
 
@@ -289,7 +295,7 @@ func selectcraftitem(item):
 	self.get_stylebox("panel", "" ).set_texture(craft_one_side_panel)
 	$CraftScheldue.hide()
 	$SelectCharacters.hide()
-	$SelectCharacters.disabled = true
+	# $SelectCharacters.disabled = true
 	selected_item = item
 	itemtemplate = item.resultitem
 	$NumberSelect.show()
@@ -305,8 +311,11 @@ func selectcraftitem(item):
 		$NumberSelect/NumberConfirm.disabled = false
 		$MaterialSetupPanel/EndItemFrame/EndItem.material = null
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = baseitem.icon
-		print("Base Item:" + str(baseitem))
-		$MaterialSetupPanel/EndItemDescript.bbcode_text = "[center]" + str(baseitem.name) + "[/center]\n" + str(baseitem.descript)
+		var item_name = baseitem.name
+		var text = "{color=k_yellow|" + str(item_name) + "}"
+		var encoded_text = globals.TextEncoder(text)
+		encoded_text += "\n" + str(baseitem.descript)
+		$MaterialSetupPanel/EndItemDescript.bbcode_text = encoded_text
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = ''
@@ -367,7 +376,9 @@ func choosematerial(button):
 			$MaterialSelect/ScrollContainer/VBoxContainer.add_child(newbutton)
 			newbutton.get_node('Icon').texture = i.icon
 			newbutton.get_node("amount").text = str(tempmaterial)
-			var parttext = tr(i.name) + '\n\n'
+			var part_name = "{color=k_yellow|" + tr(i.name) + '}'
+			var name_encoded = globals.TextEncoder(part_name)
+			var parttext = str(name_encoded) + "\n"
 			for k in i.parts[part]:
 				if Items.itemlist[itemtemplate].itemtype == 'armor':
 					parttext += statdata.statdata[k].name + ": " +  str(float(i.parts[part][k])/2) + ", "
@@ -375,7 +386,7 @@ func choosematerial(button):
 					parttext += statdata.statdata[k].name + ": " +  str(i.parts[part][k]) + ", "
 			parttext = parttext.substr(0, parttext.length()-2)
 			newbutton.get_node("Label").bbcode_text = parttext
-			globals.connecttexttooltip(newbutton, '[center]' + i.name + "[/center]\n" + i.descript)
+			globals.connecttexttooltip(newbutton.get_node("ButtonOverlay"), '[center]' + i.name + "[/center]\n" + i.descript)
 			newbutton.get_node("ButtonOverlay").connect("pressed",self,'selectmaterial',[i, part, cost])
 			
 
@@ -385,7 +396,7 @@ func selectmaterial(material, part, cost):
 	# chosenpartbutton.get_node('TextureRect').hide()
 	chosenpartbutton.get_node("number").text = str(cost)
 	chosenpartbutton.get_node("number").show()
-	var text = tr(Items.Parts[part].name) + "\n" 
+	var text = tr(Items.Parts[part].name)
 	$MaterialSelect.hide()
 	$CraftSelect.show()
 	checkcreatingitem(itemtemplate)
@@ -435,9 +446,10 @@ func checkcreatingitem(item):
 	enditem = globals.CreateGearItem(item, temppartdict)
 	partdict = temppartdict
 	#enditem.CreateGear(item, partdict)
-	text = enditem.tooltiptext()
+	text = multipart_item_text(enditem)
+	globals.connecttexttooltip($MaterialSetupPanel/EndItemFrame, enditem.tooltiptext())
 	if fullrecipe == false:
-		text += '\n[color=red]' + tr('SELECTMATERIAL') + '[/color]\n'
+		text += '\n{color=k_red|' + tr('SELECTMATERIAL') + '}\n'
 		$NumberSelect/NumberConfirm.disabled = true
 	else:
 		text += '\n'
@@ -447,6 +459,34 @@ func checkcreatingitem(item):
 	#globals.connecttooltip($NumberSelect/EndItem, text)
 	$MaterialSetupPanel/EndItemFrame/EndItem.set_texture(baseitem.icon)
 	input_handler.itemshadeimage($MaterialSetupPanel/EndItemFrame/EndItem, enditem)
+
+
+func multipart_item_text(item):
+	var text = ''
+	text += '{color=k_yellow|' + name + '}\n'
+	if item.geartype != null:
+		text += 'Type: ' + item.geartype + "\n"
+	else:
+		text += "Type: Usable\n"
+	
+	if item.slots.size() > 0:
+		text += "Slots: "
+		for i in item.slots:
+			text += tr("ITEMSLOT"+i.to_upper()) + ", "
+		text = text.substr(0, text.length() -2)
+	
+	if item.toolcategory != null:
+		text += tr("TOOLWORKCATEGORY") + ": " 
+		for i in item.toolcategory:
+			text += statdata.worktoolnames[i] +", "
+		text = text.substr(0, text.length()-2) 
+	if item.description != null:
+		text += item.description
+	if !item.reqs.empty():
+		var tempslave = ResourceScripts.scriptdict.class_slave.new()
+		text += "\n" + tempslave.decipher_reqs(item.reqs)
+	text = globals.TextEncoder(text)
+	return text	
 
 
 func CreateItem():

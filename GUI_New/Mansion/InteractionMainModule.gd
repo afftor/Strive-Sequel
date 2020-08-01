@@ -240,7 +240,6 @@ func createtestdummy(type = 'normal'):
 
 
 func startsequence(actors):
-	print("actors:" + str(actors))
 	participants.clear()
 	show()
 	secondactorcounter.clear()
@@ -311,7 +310,7 @@ func rebuildparticipantslist():
 		newnode.set_meta("person", i)
 		newnode.get_node("sex").set_texture(images.icons[i.sex])
 		newnode.get_node("sex").set_tooltip(i.sex)
-		newnode.get_node('arousal').value = i.sens
+		newnode.get_node('HBoxContainer/arousal').value = i.sens
 		newnode.get_node("portrait").texture = i.person.get_icon()
 		# newnode.get_node("container/portrait").connect("mouse_entered",self,'showbody',[i])
 		# newnode.get_node("container/portrait").connect("mouse_exited",self,'hidebody')
@@ -319,11 +318,11 @@ func rebuildparticipantslist():
 		newnode.get_node("items").connect("pressed", self, "open_item_list", [i])
 		
 		if i.request != null:
-			newnode.get_node('desire').show()
-			newnode.get_node('desire').hint_tooltip = i.person.translate(requests[i.request])
+			newnode.get_node('HBoxContainer/desire').show()
+			newnode.get_node('HBoxContainer/desire').hint_tooltip = i.person.translate(requests[i.request])
 		
 		if i.horny >= 100:
-			newnode.get_node("horny").show()
+			newnode.get_node("HBoxContainer/horny").show()
 		
 		for k in i.effects:
 			if newnode.has_node('' + k) == true:
@@ -1072,7 +1071,6 @@ func startscene(scenescript, cont = false, pretext = ''):
 	
 	for i in givers:
 		if scenescript.giverpart != '':
-			#print(i.name + " " + str(i[scenescript.giverpart]) + str(scenescript.giverpart))
 			if i[scenescript.giverpart] != null:
 				stopongoingaction(i[scenescript.giverpart])
 			i[scenescript.giverpart] = dict
@@ -2032,6 +2030,7 @@ func alcohol(member):
 	else:
 		text += "But it seems [he] is already drunk. "
 	$Panel/sceneeffects.bbcode_text += member.person.translate(text)
+	givers = [member]
 	_on_passbutton_pressed()
 	
 func beer(member):
@@ -2053,6 +2052,7 @@ func aphrodisiac(member):
 	member.effects.append("aphrodisiac")
 	input_handler.scene_characters = [member.person]
 	$Panel/sceneeffects.bbcode_text += member.person.translate(globals.TextEncoder(text))
+	givers = [member]
 	_on_passbutton_pressed()
 	
 

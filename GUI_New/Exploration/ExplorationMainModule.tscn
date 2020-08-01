@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
@@ -19,6 +19,21 @@
 [ext_resource path="res://GUI_New/Exploration/ExploreFullSlaveInfo.gd" type="Script" id=17]
 [ext_resource path="res://StatsTrading.tscn" type="PackedScene" id=18]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=19]
+[ext_resource path="res://drop_node.gd" type="Script" id=20]
+[ext_resource path="res://char_drop_node.gd" type="Script" id=21]
+[ext_resource path="res://drag_node.gd" type="Script" id=22]
+[ext_resource path="res://assets/images/gui/combat/cross.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/gui/combat/combat_frame.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/iconsskills/Heal.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/iconsgear/lifeshard.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/gui/Heart_empty.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/gui/Heart_b.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/backgrounds/dungeon.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/gui/Heart_r.png" type="Texture" id=31]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=32]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_guildbackground.png" type="Texture" id=33]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=34]
 
 [node name="ExplorationMainModule" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -34,8 +49,28 @@ __meta__ = {
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VideoPlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="GuildBG" type="TextureRect" parent="."]
+visible = false
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 1065.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GuildBG"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 33 )
 
 [node name="MansionClockModule" parent="." instance=ExtResource( 19 )]
 margin_left = 15.0
@@ -44,18 +79,11 @@ margin_right = 305.0
 margin_bottom = 195.0
 
 [node name="ExploreCityModule" parent="." instance=ExtResource( 4 )]
-margin_left = 15.0
-margin_top = 555.0
-margin_right = 305.0
-margin_bottom = 1067.0
+margin_left = 34.0
+margin_top = 566.0
+margin_right = 324.0
+margin_bottom = 1078.0
 script = ExtResource( 8 )
-
-[node name="ExploreNavigationModule" parent="." instance=ExtResource( 5 )]
-margin_left = 327.0
-margin_top = 15.0
-margin_right = 1903.0
-margin_bottom = 68.0
-script = ExtResource( 7 )
 
 [node name="ExploreHireModule" parent="." instance=ExtResource( 9 )]
 visible = false
@@ -68,6 +96,616 @@ visible = false
 visible = false
 script = ExtResource( 13 )
 
+[node name="StatUpgradeModule" parent="." instance=ExtResource( 18 )]
+visible = false
+
+[node name="ExploreFullSlaveModule" parent="." instance=ExtResource( 16 )]
+visible = false
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 1065.0
+script = ExtResource( 17 )
+
+[node name="LocationGui" type="Panel" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1079.0
+custom_styles/panel = ExtResource( 32 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="Panel" parent="LocationGui"]
+margin_left = 732.0
+margin_top = 152.0
+margin_right = 1714.0
+margin_bottom = 764.0
+custom_styles/panel = ExtResource( 34 )
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Image"]
+margin_left = 11.4241
+margin_top = 11.1492
+margin_right = 971.424
+margin_bottom = 601.149
+texture = ExtResource( 30 )
+expand = true
+
+[node name="Panel" type="Panel" parent="LocationGui/Image"]
+self_modulate = Color( 1, 1, 1, 0.552941 )
+margin_left = 275.0
+margin_top = 426.0
+margin_right = 743.0
+margin_bottom = 587.0
+custom_styles/panel = ExtResource( 34 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LocationGui/Image"]
+margin_left = 298.0
+margin_top = 456.0
+margin_right = 723.0
+margin_bottom = 567.0
+bbcode_enabled = true
+bbcode_text = "[center]Level: 5/7
+Stage: 1/3[/center]"
+text = "Level: 5/7
+Stage: 1/3"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LocationGui"]
+margin_left = 846.167
+margin_top = 787.459
+margin_right = 1649.17
+margin_bottom = 1008.46
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LocationGui/ScrollContainer"]
+margin_right = 803.003
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="LocationGui/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 803.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Positions" type="TextureRect" parent="LocationGui"]
+margin_left = 262.682
+margin_top = 429.593
+margin_right = 801.682
+margin_bottom = 1217.6
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 25 )
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="LocationGui/Positions"]
+margin_left = 56.8715
+margin_top = -13.5998
+margin_right = 470.872
+margin_bottom = 10.4002
+text = "Combat Party"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LocationGui/Positions"]
+margin_left = 56.329
+margin_top = 56.327
+margin_right = 460.329
+margin_bottom = 731.327
+custom_constants/separation = 14
+
+[node name="backrow" type="VBoxContainer" parent="LocationGui/Positions/HBoxContainer"]
+margin_right = 210.0
+margin_bottom = 675.0
+custom_constants/separation = 21
+
+[node name="4" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/backrow"]
+margin_right = 210.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 21 )
+
+[node name="Image" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/4"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image"]
+margin_left = 2.5
+margin_right = 198.5
+margin_bottom = 24.0
+text = "Name"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/4/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 29 )
+fill_mode = 3
+
+[node name="5" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/backrow"]
+margin_top = 231.0
+margin_right = 210.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 21 )
+
+[node name="Image" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/5"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image"]
+margin_left = 2.5
+margin_right = 198.5
+margin_bottom = 24.0
+text = "Name"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/5/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 29 )
+fill_mode = 3
+
+[node name="6" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/backrow"]
+margin_top = 462.0
+margin_right = 210.0
+margin_bottom = 672.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 21 )
+
+[node name="Image" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/6"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image"]
+margin_left = 2.5
+margin_right = 198.5
+margin_bottom = 24.0
+text = "Name"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/backrow/6/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 29 )
+fill_mode = 3
+
+[node name="frontrow" type="VBoxContainer" parent="LocationGui/Positions/HBoxContainer"]
+margin_left = 224.0
+margin_right = 434.0
+margin_bottom = 675.0
+custom_constants/separation = 21
+
+[node name="1" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/frontrow"]
+margin_right = 210.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 21 )
+
+[node name="Image" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/1"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image"]
+margin_left = 2.5
+margin_right = 198.5
+margin_bottom = 24.0
+text = "Name"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 29 )
+fill_mode = 3
+
+[node name="2" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/frontrow"]
+margin_top = 231.0
+margin_right = 210.0
+margin_bottom = 441.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 21 )
+
+[node name="Image" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/2"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image"]
+margin_left = 2.5
+margin_right = 198.5
+margin_bottom = 24.0
+text = "Name"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 29 )
+fill_mode = 3
+
+[node name="3" type="TextureButton" parent="LocationGui/Positions/HBoxContainer/frontrow"]
+margin_top = 462.0
+margin_right = 210.0
+margin_bottom = 672.0
+rect_min_size = Vector2( 210, 210 )
+texture_normal = ExtResource( 23 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 21 )
+
+[node name="Image" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/3"]
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 201.0
+margin_bottom = 206.0
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 6
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image"]
+margin_left = 2.5
+margin_right = 198.5
+margin_bottom = 24.0
+text = "Name"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image"]
+margin_left = 131.323
+margin_top = 133.782
+margin_right = 176.323
+margin_bottom = 178.782
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 28 )
+
+[node name="hp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 31 )
+fill_mode = 3
+
+[node name="mp" type="TextureProgress" parent="LocationGui/Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
+margin_top = -0.25
+margin_right = 45.0
+margin_bottom = 44.75
+value = 50.0
+texture_progress = ExtResource( 29 )
+fill_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="LocationGui/Positions"]
+visible = false
+margin_top = 5.0
+margin_right = 445.0
+margin_bottom = 708.0
+mouse_filter = 2
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="LocationGui/Positions"]
+margin_left = 291.556
+margin_top = 26.7055
+margin_right = 461.557
+margin_bottom = 50.7055
+custom_colors/font_color = Color( 0.505882, 0.843137, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "FRONT"
+align = 1
+
+[node name="Label2" type="Label" parent="LocationGui/Positions"]
+margin_left = 75.475
+margin_top = 25.9274
+margin_right = 233.475
+margin_bottom = 49.9274
+custom_colors/font_color = Color( 0.505882, 0.843137, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "BACK"
+align = 1
+
+[node name="PresentedSlavesPanel" type="Panel" parent="LocationGui"]
+margin_left = 123.006
+margin_top = 173.123
+margin_right = 613.006
+margin_bottom = 436.123
+custom_styles/panel = ExtResource( 34 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LocationGui/PresentedSlavesPanel"]
+margin_left = 30.0
+margin_top = 16.0
+margin_right = 462.0
+margin_bottom = 254.0
+script = ExtResource( 20 )
+
+[node name="VBoxContainer" type="GridContainer" parent="LocationGui/PresentedSlavesPanel/ScrollContainer"]
+margin_right = 432.0
+mouse_filter = 2
+size_flags_horizontal = 3
+columns = 5
+
+[node name="Button" type="TextureButton" parent="LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+mouse_default_cursor_shape = 2
+expand = true
+stretch_mode = 5
+script = ExtResource( 22 )
+
+[node name="icon" type="TextureRect" parent="LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 13.0
+margin_right = 63.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+visible = false
+margin_left = 68.0
+margin_top = 7.0
+margin_right = 376.0
+margin_bottom = 48.0
+align = 1
+autowrap = true
+clip_text = true
+
+[node name="Label" type="Label" parent="LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = -3.0
+margin_top = 49.0
+margin_right = 81.0
+margin_bottom = 73.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Mave"
+align = 1
+autowrap = true
+clip_text = true
+
+[node name="Label" type="Label" parent="LocationGui/PresentedSlavesPanel"]
+margin_left = 67.8389
+margin_top = -27.5489
+margin_right = 430.839
+margin_bottom = 2.45111
+text = "Presented Characters"
+align = 1
+
+[node name="ItemUsePanel" type="Panel" parent="LocationGui"]
+margin_left = 52.0
+margin_top = 442.0
+margin_right = 272.0
+margin_bottom = 1043.0
+custom_styles/panel = ExtResource( 34 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LocationGui/ItemUsePanel"]
+margin_left = 26.0
+margin_top = 54.0
+margin_right = 113.0
+margin_bottom = 563.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LocationGui/ItemUsePanel/ScrollContainer"]
+margin_right = 87.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 87.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
+script = ExtResource( 22 )
+
+[node name="Icon" type="TextureRect" parent="LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 6
+
+[node name="amount" type="Label" parent="LocationGui/ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 44.0
+margin_top = 12.0
+margin_right = 71.0
+margin_bottom = 36.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+
+[node name="SpellContainer" type="ScrollContainer" parent="LocationGui/ItemUsePanel"]
+visible = false
+margin_left = 26.0
+margin_top = 54.0
+margin_right = 216.0
+margin_bottom = 563.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LocationGui/ItemUsePanel/SpellContainer"]
+margin_right = 190.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="LocationGui/ItemUsePanel/SpellContainer/VBoxContainer"]
+visible = false
+margin_right = 190.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+mouse_default_cursor_shape = 2
+script = ExtResource( 22 )
+
+[node name="Icon" type="TextureRect" parent="LocationGui/ItemUsePanel/SpellContainer/VBoxContainer/Button"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="LocationGui/ItemUsePanel/SpellContainer/VBoxContainer/Button"]
+margin_left = 44.0
+margin_top = 5.0
+margin_right = 177.0
+margin_bottom = 29.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Heal Spell"
+align = 1
+
+[node name="castername" type="Label" parent="LocationGui/ItemUsePanel/SpellContainer/VBoxContainer/Button"]
+margin_left = 44.0
+margin_top = 25.0
+margin_right = 212.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Master"
+align = 1
+clip_text = true
+
+[node name="Button" type="Button" parent="LocationGui/ItemUsePanel"]
+margin_left = 9.63123
+margin_top = 11.4618
+margin_right = 208.631
+margin_bottom = 49.7127
+text = "Items"
+
+[node name="ExploreNavigationModule" parent="." instance=ExtResource( 5 )]
+margin_left = 327.0
+margin_top = 15.0
+margin_right = 1903.0
+margin_bottom = 68.0
+script = ExtResource( 7 )
+
 [node name="ExploreShopModule" parent="." instance=ExtResource( 14 )]
 visible = false
 margin_left = 414.0
@@ -75,13 +713,6 @@ margin_top = 56.0
 margin_right = 1537.0
 margin_bottom = 1036.0
 script = ExtResource( 15 )
-
-[node name="StatUpgradeModule" parent="." instance=ExtResource( 18 )]
-visible = false
-
-[node name="ExploreFullSlaveModule" parent="." instance=ExtResource( 16 )]
-visible = false
-script = ExtResource( 17 )
 
 [node name="Stat" type="Button" parent="."]
 visible = false

@@ -61,7 +61,6 @@ func get_area_from_location_code(code):
 
 func get_location_from_code(code):
 	var data = ResourceScripts.game_world.location_links[code]
-	print(code, data)
 	return ResourceScripts.game_world.areas[data.area][data.category][code]
 
 func get_faction_from_code(code):

@@ -1,4 +1,4 @@
-extends "res://src/scenes/ClosingPanel.gd"
+extends Panel
 
 #warning-ignore-all:return_value_discarded
 

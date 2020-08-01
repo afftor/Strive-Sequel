@@ -1,6 +1,6 @@
 extends Reference
 
-var statlist = Statlist_init.template.duplicate() setget custom_stats_set#, custom_stats_get
+var statlist = Statlist_init.template.duplicate() setget custom_stats_set, default_stats_get
 var bonuses = {}
 var traits = []
 var sex_traits = []
@@ -11,21 +11,24 @@ var parent = null
 func _init():
 	pass
 
+func default_stats_get():
+	return statlist.duplicate()
+
 func custom_stats_set(value):
-	statlist = value.duplicate(true)
+#	statlist = value.duplicate(true)
 #	if value.has(''):
 #		statlist[''] = 
-	for st in ['loyalty', 'submission']:
-		if value.has(st):
+	for st in value:
+		if st in ['loyalty', 'submission']:
+#			if value.has(st):
 			var delta = value[st] - statlist[st]
 			if delta != 0:
-				print(delta)
-				delta *= get_stat(st+'gain_mod')
-				print(delta)
+				delta *= get_stat(st+'_gain_mod')
 				statlist[st] = clamp(statlist[st] + delta, 0, 100)
-	for st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
-		if value.has(st):
+		elif st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
+#			if value.has(st):
 			statlist[st] = min(value[st], statlist[st + '_factor'] * 20)
+		else: statlist[st] = value[st]
 	for st in ['physics', 'magic', 'tame', 'timid', 'growth', 'wits', 'charm', 'sexuals']:
 		if value.has(st+'_factor'):
 			statlist[st+'_factor'] = clamp(value[st+'_factor'], variables.minimum_factor_value, variables.maximum_factor_value)

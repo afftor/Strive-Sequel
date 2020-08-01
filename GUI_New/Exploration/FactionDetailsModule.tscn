@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=2]
@@ -12,6 +12,10 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=15]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmPanel.tres" type="Theme" id=16]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -34,6 +38,10 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 230, 40 )
 margin_left = 8.0
@@ -41,7 +49,7 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 230, 40 )
 margin_left = 8.0
@@ -49,7 +57,7 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 230, 40 )
 margin_left = 8.0
@@ -58,58 +66,57 @@ margin_top = 8.0
 margin_bottom = 8.0
 
 [node name="FactionDetailsModule" type="Panel"]
-margin_left = 778.0
+margin_left = 560.0
 margin_top = 138.0
-margin_right = 1690.0
-margin_bottom = 995.0
+margin_right = 1360.0
+margin_bottom = 938.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FactionBG" type="Panel" parent="."]
-self_modulate = Color( 1, 1, 1, 0.803922 )
+self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
-margin_right = 912.0
-margin_bottom = 857.0
+margin_right = 800.0
+margin_bottom = 800.0
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 40.0
-margin_top = 754.0
-margin_right = 869.0
-margin_bottom = 842.0
-text = "Reputation Earned : 10000
-Reputation Unspent : 5000
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RichTextLabel" type="Label" parent="."]
+margin_left = 50.0
+margin_top = 679.0
+margin_right = 750.0
+margin_bottom = 712.0
+text = "Reputation Earned : 10000"
+align = 1
+valign = 1
 
 [node name="Label" type="Label" parent="."]
-margin_right = 912.0
+margin_right = 800.0
 margin_bottom = 65.0
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Upgrades"
 align = 1
 valign = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 121.0
-margin_top = 65.0
-margin_right = 821.0
-margin_bottom = 754.0
+margin_left = 50.0
+margin_top = 106.0
+margin_right = 750.0
+margin_bottom = 686.0
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Panel" parent="VBoxContainer"]
-visible = false
 margin_right = 700.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 0, 200 )
+margin_bottom = 180.0
+rect_min_size = Vector2( 0, 180 )
 custom_styles/panel = SubResource( 3 )
 
 [node name="FactionBG2" type="Panel" parent="VBoxContainer/Button"]
@@ -118,7 +125,7 @@ show_behind_parent = true
 margin_left = 3.0
 margin_right = 700.0
 margin_bottom = 200.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -127,7 +134,8 @@ __meta__ = {
 margin_left = 25.0
 margin_top = 29.0
 margin_right = 444.0
-margin_bottom = 166.0
+margin_bottom = 136.0
+custom_fonts/normal_font = ExtResource( 14 )
 text = "Upgrade Description
 "
 __meta__ = {
@@ -139,47 +147,91 @@ margin_left = 460.0
 margin_top = 52.0
 margin_right = 665.0
 margin_bottom = 136.0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+theme = ExtResource( 15 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
 text = "Purchase"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="VBoxContainer/Button"]
+margin_left = 25.2283
+margin_top = 144.127
+margin_right = 67.2283
+margin_bottom = 171.127
+text = "Price"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
 visible = false
-margin_left = 81.0
-margin_top = 374.0
-margin_right = 332.0
-margin_bottom = 401.0
+margin_left = 75.2283
+margin_top = 1040.32
+margin_right = 326.228
+margin_bottom = 1067.32
 text = "Quest settings: "
 align = 1
 
-[node name="totalquestpoints" type="Label" parent="."]
+[node name="FactionPoints" type="Label" parent="."]
+margin_left = 632.0
+margin_top = 65.0001
+margin_right = 748.0
+margin_bottom = 92.0001
+grow_horizontal = 0
+text = "FactionPoints"
+align = 2
+
+[node name="UnspentPoints" type="Label" parent="."]
+margin_left = 50.0
+margin_top = 65.0001
+margin_right = 174.0
+margin_bottom = 92.0001
+text = "UnspentPoints"
+align = 2
+
+[node name="QuestGen" type="Button" parent="."]
+margin_left = 297.419
+margin_top = 744.526
+margin_right = 498.419
+margin_bottom = 777.526
+theme = ExtResource( 15 )
+toggle_mode = true
+text = "  Quest Generation  "
+
+[node name="QuestGenPanel" type="Panel" parent="."]
 visible = false
-margin_left = 124.415
-margin_top = 686.0
-margin_right = 276.415
-margin_bottom = 710.0
-text = "Unspent: "
+margin_left = 255.0
+margin_top = 242.0
+margin_right = 559.0
+margin_bottom = 548.0
+theme = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-visible = false
-margin_left = 50.0
-margin_top = 439.0
-margin_right = 358.0
-margin_bottom = 697.0
+[node name="Background" type="Panel" parent="QuestGenPanel"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="easy" type="Control" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestGenPanel"]
+margin_right = 308.0
+margin_bottom = 258.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="easy" type="Control" parent="QuestGenPanel/HBoxContainer"]
 margin_right = 100.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 
-[node name="Label" type="Label" parent="HBoxContainer/easy"]
+[node name="Label" type="Label" parent="QuestGenPanel/HBoxContainer/easy"]
 margin_left = 1.0
 margin_top = 20.0
 margin_right = 96.0
@@ -187,7 +239,7 @@ margin_bottom = 44.0
 text = "Easy"
 align = 1
 
-[node name="up" type="TextureButton" parent="HBoxContainer/easy"]
+[node name="up" type="TextureButton" parent="QuestGenPanel/HBoxContainer/easy"]
 margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
@@ -198,7 +250,7 @@ texture_hover = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
-[node name="down" type="TextureButton" parent="HBoxContainer/easy"]
+[node name="down" type="TextureButton" parent="QuestGenPanel/HBoxContainer/easy"]
 margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
@@ -209,7 +261,7 @@ texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 
-[node name="counter" type="Label" parent="HBoxContainer/easy"]
+[node name="counter" type="Label" parent="QuestGenPanel/HBoxContainer/easy"]
 margin_left = 25.2283
 margin_top = 118.69
 margin_right = 65.2283
@@ -217,13 +269,13 @@ margin_bottom = 142.69
 text = "0"
 align = 1
 
-[node name="medium" type="Control" parent="HBoxContainer"]
+[node name="medium" type="Control" parent="QuestGenPanel/HBoxContainer"]
 margin_left = 104.0
 margin_right = 204.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 
-[node name="Label" type="Label" parent="HBoxContainer/medium"]
+[node name="Label" type="Label" parent="QuestGenPanel/HBoxContainer/medium"]
 margin_left = 0.975006
 margin_top = 20.0975
 margin_right = 95.975
@@ -231,7 +283,7 @@ margin_bottom = 44.0975
 text = "Medium"
 align = 1
 
-[node name="up" type="TextureButton" parent="HBoxContainer/medium"]
+[node name="up" type="TextureButton" parent="QuestGenPanel/HBoxContainer/medium"]
 margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
@@ -242,7 +294,7 @@ texture_hover = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
-[node name="down" type="TextureButton" parent="HBoxContainer/medium"]
+[node name="down" type="TextureButton" parent="QuestGenPanel/HBoxContainer/medium"]
 margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
@@ -253,7 +305,7 @@ texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 
-[node name="counter" type="Label" parent="HBoxContainer/medium"]
+[node name="counter" type="Label" parent="QuestGenPanel/HBoxContainer/medium"]
 margin_left = 25.2283
 margin_top = 118.69
 margin_right = 65.2283
@@ -261,13 +313,13 @@ margin_bottom = 142.69
 text = "0"
 align = 1
 
-[node name="hard" type="Control" parent="HBoxContainer"]
+[node name="hard" type="Control" parent="QuestGenPanel/HBoxContainer"]
 margin_left = 208.0
 margin_right = 308.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 100, 200 )
 
-[node name="Label" type="Label" parent="HBoxContainer/hard"]
+[node name="Label" type="Label" parent="QuestGenPanel/HBoxContainer/hard"]
 margin_left = 0.975006
 margin_top = 20.0975
 margin_right = 95.975
@@ -275,7 +327,7 @@ margin_bottom = 44.0975
 text = "Hard"
 align = 1
 
-[node name="up" type="TextureButton" parent="HBoxContainer/hard"]
+[node name="up" type="TextureButton" parent="QuestGenPanel/HBoxContainer/hard"]
 margin_left = 21.7253
 margin_top = 56.8229
 margin_right = 70.7253
@@ -286,7 +338,7 @@ texture_hover = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
-[node name="down" type="TextureButton" parent="HBoxContainer/hard"]
+[node name="down" type="TextureButton" parent="QuestGenPanel/HBoxContainer/hard"]
 margin_left = 21.7253
 margin_top = 156.823
 margin_right = 70.7253
@@ -297,10 +349,31 @@ texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 
-[node name="counter" type="Label" parent="HBoxContainer/hard"]
+[node name="counter" type="Label" parent="QuestGenPanel/HBoxContainer/hard"]
 margin_left = 25.2283
 margin_top = 118.69
 margin_right = 65.2283
 margin_bottom = 142.69
 text = "0"
 align = 1
+
+[node name="Apply" type="Button" parent="QuestGenPanel"]
+margin_left = 111.975
+margin_top = 258.0
+margin_right = 193.975
+margin_bottom = 291.0
+theme = ExtResource( 15 )
+text = "  Apply  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="totalquestpoints" type="Label" parent="QuestGenPanel"]
+margin_left = 78.3107
+margin_top = 217.199
+margin_right = 230.311
+margin_bottom = 244.199
+text = "Unspent: "
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,4 +1,4 @@
-extends "res://src/scenes/ClosingPanel.gd"
+extends Panel
 
 #warning-ignore-all:return_value_discarded
 var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
@@ -69,7 +69,7 @@ func close():
 	hide()
 
 func cheat_toggle(i, button):
-	variables[i] = button.pressed
+	variables.set(i,button.pressed)
 
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value

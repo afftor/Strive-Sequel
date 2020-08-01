@@ -120,12 +120,12 @@ func _ready():
 func select_age(value):
 	person.set_stat('age', agearray[value])
 	preservedsettings['age'] = agearray[value]
-	# rebuild_slave()
+	rebuild_slave()
 
 func select_sex(value):
 	person.set_stat('sex', sexarray[value])
 	preservedsettings['sex'] = sexarray[value]
-	# rebuild_slave()
+	rebuild_slave()
 
 
 func select_food_pref(selected_id, type):
@@ -175,7 +175,7 @@ func finish_diet_selection():
 
 func open(type = 'slave', newguild = 'none'):
 	preservedsettings.clear()
-	# show()
+	show()
 	guild = newguild
 #	$CancelButton.visible = input_handler.CurrentScreen == 'mansion'
 	$introduction.bbcode_text = introduction_text[type]
@@ -198,7 +198,7 @@ func open(type = 'slave', newguild = 'none'):
 #	$bodyparts2/type_label.visible = mode == 'slave'
 #	$bodyparts2/slave_class.visible = mode == 'slave'
 #	$bodyparts2/slave_class.select(0)
-#	globals.connecttexttooltip($bodyparts2/type_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
+	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/type_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
 	rebuild_slave()
 
 
@@ -291,14 +291,11 @@ func check_confirm_possibility():
 	
 	$ConfirmButton.disabled = !can_confirm
 	$ConfirmButton.hint_tooltip = "" if can_confirm else 'Select starting Class and Diet'
-	print("Can Confirm:" + str(can_confirm))
-	print("Selected Class:" + str(selected_class))
 
 func set_savefilename(text):
 	savefilename = text + ".ch"
 
 func hideSaveLoadPanel():
-	print("I'm here")
 	$SaveLoadCharPanel.hide()
 	$SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressSaveCharacter")
 	$SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressLoadCharacter")
@@ -309,7 +306,7 @@ func SaveLoadCharPanel(saveloadmode):
 	saveloadstate = saveloadmode
 	$SaveLoadCharPanel.show()
 	$SaveLoadCharPanel/LineEdit.clear()
-	input_handler.ClearContainer($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainerForced($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
 	if saveloadmode == "save":
 		for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
 			var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
@@ -339,7 +336,6 @@ func PressSaveCharacter(savename = null):
 		return
 	
 	var file = File.new()
-	print("SaveFilename:" + str(savefilename))
 	if file.file_exists(variables.userfolder + 'savedcharacters/' + savefilename):
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveCharacter', tr("OVERWRITECONFIRM")])
 	else:
@@ -349,15 +345,11 @@ func PressSaveCharacter(savename = null):
 func SaveCharacter():
 	apply_preserved_settings()
 	var character_to_save = {}
-	print("Preserved Setiings:" + str(preservedsettings))
 	
 	for i in params_to_save:
 		character_to_save[i] = person.get_stat(i)
-		print(i, " : ", character_to_save[i])
 		if preservedsettings.has(i) && i != "professions": # && !preservedsettings in except_array:
 			character_to_save[i] = preservedsettings[i]
-	print("Character to save:" + str(character_to_save))
-	print("selected_class:" + str(selected_class))
 	character_to_save.professions = selected_class
 	character_to_save["tits_size"] = person.get_stat("tits_size")
 	character_to_save["ass_size"] = person.get_stat("ass_size")
@@ -406,7 +398,6 @@ func LoadCharacter():
 	for i in character_to_load:
 		# if i == "sex_traits":
 		# 	continue
-		print(i, ":", character_to_load[i])
 		person.set_stat(i, character_to_load[i])
 		preservedsettings[i] = character_to_load[i]
 	finish_diet_selection()
@@ -462,9 +453,10 @@ func LoadCharacter():
 func DeleteCharacter():
 	var deletename = $SaveLoadCharPanel/LineEdit.text + ".ch"
 	var dir = Directory.new()
-	dir.remove(globals.userfolder + 'savedcharacters/' + deletename)
+	dir.remove(variables.userfolder + 'savedcharacters/' + deletename)
 	input_handler.SystemMessage("Character Deleted")
-	# rebuildSaveLoadPanel()
+	SaveLoadCharPanel(saveloadstate)
+
 
 
 func RebuildStatsContainer():

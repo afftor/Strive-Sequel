@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 #
 #Writers: Barrus
@@ -9,9 +9,10 @@ extends Node
 var lastsave = null
 
 func _ready():
-	
 	get_tree().set_auto_accept_quit(false)
-	
+	add_close_button($NewGamePanel)
+	add_close_button($saveloadpanel)
+	add_close_button($Options)
 	var buttonlist = ['continueb','newgame','loadwindow','options','mods' ,'quit']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
@@ -38,7 +39,7 @@ func _ready():
 		$DemoPanel.hide()
 		$WarnScreen.hide()
 		input_handler.SetMusic("intro")
-	input_handler.AddPanelOpenCloseAnimation($NewGamePanel)
+	# input_handler.AddPanelOpenCloseAnimation($NewGamePanel)
 	input_handler.AddPanelOpenCloseAnimation($Changelogpanel)
 	globals.connecttexttooltip($NewGamePanel/tip, tr('NEWGAMESETTINGINFO'))
 	$ChangelogButton.connect("pressed", $Changelogpanel, 'show')
@@ -73,6 +74,7 @@ func continueb():
 
 
 func newgame():
+	update()
 	$VBoxContainer/newgamebutton/TextureRect.show()
 	$NewGamePanel.show()
 	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
@@ -100,9 +102,11 @@ func CloseDemoWarn():
 
 
 func loadwindow():
+	update()
 	$saveloadpanel.LoadPanelOpen()
 
 func options():
+	update()
 	$Options.open()
 
 func quit():
@@ -112,6 +116,7 @@ func quit():
 
 
 func mods():
+	update()
 	$mod_panel.visible = true
 
 var settingarray = ['futa','furry','turn_based_time_flow']
@@ -146,3 +151,25 @@ func start_preset_set(button):
 	$NewGamePanel/Gold/Label.text = str(data.gold)
 	ResourceScripts.game_globals.starting_preset = data.code
 
+
+
+func add_close_button(scene):
+	var pos_in_tree = scene.get_child_count()
+	scene.rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
+	var closebutton = load(ResourceScripts.scenedict.close).instance()
+	scene.add_child(closebutton)
+	scene.move_child(closebutton, pos_in_tree)
+	closebutton.connect("pressed", self, 'close_scene', [scene])
+	var rect = scene.get_global_rect()
+	var pos = Vector2(rect.end.x - closebutton.rect_size.x, rect.position.y)
+	closebutton.rect_global_position = pos
+
+
+func close_scene(scene):
+	scene.hide()
+
+
+func update():
+	var panels = [$DemoPanel, $mod_panel, $NewGamePanel, $Changelogpanel, $saveloadpanel, $Options]
+	for i in panels:
+		i.hide()

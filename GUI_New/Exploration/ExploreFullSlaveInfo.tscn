@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge.png" type="Texture" id=1]
 [ext_resource path="res://GUI_New/Exploration/ExploreSlaveSummaryModule.tscn" type="PackedScene" id=2]
@@ -6,32 +6,183 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_hover.png" type="Texture" id=5]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.gd" type="Script" id=6]
-[ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/images/raceshades/Arachna_M.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=8]
 [ext_resource path="res://GUI_New/Exploration/ExploreSlaveInfoModule.gd" type="Script" id=9]
-[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=14]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/panels/noimagesmall.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/SlaveBodyCity.tres" type="StyleBox" id=12]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=16]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=17]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=19]
 
 [node name="ExploreFullSlaveModule" type="Panel"]
-margin_right = 1920.0
-margin_bottom = 1080.0
-custom_styles/panel = SubResource( 1 )
+margin_right = 1890.0
+margin_bottom = 1050.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SlaveBodyModule" parent="." instance=ExtResource( 7 )]
-show_behind_parent = false
-margin_left = 1205.0
-margin_top = 15.0
-margin_right = 1905.0
-margin_bottom = 898.0
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1890.0
+margin_bottom = 1050.0
+custom_styles/panel = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlaveBodyModule" type="Panel" parent="."]
+margin_left = 1190.0
+margin_top = 130.0
+margin_right = 1890.0
+margin_bottom = 1050.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 12 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="TextureRect" parent="SlaveBodyModule"]
+show_behind_parent = true
+margin_left = 5.0
+margin_right = 698.0
+margin_bottom = 791.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buffscontainer" type="HBoxContainer" parent="SlaveBodyModule"]
+modulate = Color( 1, 1, 1, 0.823529 )
+self_modulate = Color( 1, 1, 1, 0.823529 )
+show_behind_parent = true
+margin_left = 2.0
+margin_top = 957.376
+margin_right = 698.0
+margin_bottom = 1062.38
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="SlaveBodyModule/buffscontainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="SlaveBodyModule/buffscontainer/Button"]
+margin_left = 28.5601
+margin_top = 81.947
+margin_right = 77.5601
+margin_bottom = 105.947
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="opacity" type="HSlider" parent="SlaveBodyModule"]
+visible = false
+margin_left = 68.0
+margin_top = 21.0
+margin_right = 767.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.8, 0.8 )
+hint_tooltip = "Image Opacity"
+min_value = 10.0
+value = 100.0
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsButton" type="TextureButton" parent="SlaveBodyModule"]
+visible = false
+margin_left = 5.21887
+margin_top = 47.5277
+margin_right = 45.2189
+margin_bottom = 87.5277
+texture_normal = ExtResource( 11 )
+expand = true
+stretch_mode = 5
+
+[node name="ProfessionsBG" type="Panel" parent="SlaveBodyModule"]
+margin_left = 1.0
+margin_top = -130.0
+margin_right = 700.0
+custom_styles/panel = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="professions" type="GridContainer" parent="SlaveBodyModule"]
+margin_left = 17.0
+margin_top = -116.0
+margin_right = 689.0
+margin_bottom = -16.0
+grow_horizontal = 0
+mouse_filter = 2
+custom_constants/hseparation = 19
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="SlaveBodyModule/professions" groups=[
+"ignore_rightclicks",
+]]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 100 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 15 )
+texture_disabled = ExtResource( 15 )
+texture_focused = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="SlaveBodyModule/professions/Button"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 93.0
+margin_bottom = 93.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SlaveBodyModule/professions/Button"]
+visible = false
+margin_left = 7.0
+margin_top = 69.0
+margin_right = 93.0
+margin_bottom = 93.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 1466.0
 margin_top = 56.0
 margin_right = 1535.0
@@ -51,10 +202,10 @@ margin_bottom = 1050.0
 script = ExtResource( 9 )
 
 [node name="PurchaseButton" type="TextureButton" parent="."]
-margin_left = 1380.4
-margin_top = 957.0
-margin_right = 1760.4
-margin_bottom = 1037.0
+margin_left = 1466.0
+margin_top = 945.0
+margin_right = 1846.0
+margin_bottom = 1025.0
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
@@ -65,25 +216,30 @@ __meta__ = {
 [node name="Label" type="Label" parent="PurchaseButton"]
 margin_right = 380.0
 margin_bottom = 83.0
+custom_fonts/font = ExtResource( 19 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Purchase"
 align = 1
 valign = 1
 
 [node name="Price" type="Label" parent="."]
-margin_left = 1616.45
-margin_top = 896.0
-margin_right = 1673.45
-margin_bottom = 920.0
+margin_left = 1317.0
+margin_top = 945.0
+margin_right = 1457.0
+margin_bottom = 1028.0
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "price"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 1466.0
-margin_top = 828.0
-margin_right = 1576.0
-margin_bottom = 938.0
+margin_left = 1207.0
+margin_top = 933.0
+margin_right = 1317.0
+margin_bottom = 1043.0
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 6

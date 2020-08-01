@@ -171,7 +171,7 @@ var TranslationDict = {
 	
 	ITEMAPHRODISIAC = "Aphrodisiac",
 	ITEMAPHRODISIACDESCRIPT = "A strong potion bringing out a person's inner lust. \n\nTurns character Horny during sex interactions. ",
-	ITEMALCOHOL = "Alcohol",
+	ITEMALCOHOL = "Whiskey",
 	ITEMALCOHOLDESCRIPT = "A common strong beverage to help people ease up. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.",
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = "A nectar of the gods. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions.",
@@ -1967,7 +1967,7 @@ var TranslationDict = {
 	SETTINGMALECHANCE_DESCRIPT = "Sets a chance that a character with no preset gender will become a male instead of female.",
 	SETTINGMEOWING_NAME = "Meowing",
 	SETTINGMEOWING_DESCRIPT = "Beastkin and Halfkin Cat characters will have slightly different speech patterns.",
-	SETTINGTURN_BASED_TIME_FLOW_NAME = "Turn Based Time Flow",
+	SETTINGTURN_BASED_TIME_FLOW_NAME = "Turn Based \nTime Flow",
 	SETTINGTURN_BASED_TIME_FLOW_DESCRIPT = "Makes time flow into hour long turns.",
 	
 	
@@ -2341,7 +2341,15 @@ var TranslationDict = {
 	SERVANTSELECTIONFINISH9 = "A few moments after she finished a bright flash covered the square to hide a magic portal that Anastasia used to escape. The magic barrier fell and people stood dumbstruck at what just happened.",
 	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
 	
-
+	LOAN_EVENT = "By the morning the bank loaners has visited the mansion. ",
+    LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
+    LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
+    LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
+    LOAN_SUCCESS4 = "They took 86000 gold and departed quickly. This was your last payment and now you are free to do what you want...",
+    LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
+    
+    SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sexuals Factor}. It also increase chance to unlock a trait. ",
+    SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
 
 
 

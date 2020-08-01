@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_loadaccept.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 500, 180 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[resource]
+default_font = ExtResource( 1 )
+Fonts/colors/ = Color( 0.976471, 0.882353, 0.505882, 1 )
+Panel/styles/panel = SubResource( 1 )

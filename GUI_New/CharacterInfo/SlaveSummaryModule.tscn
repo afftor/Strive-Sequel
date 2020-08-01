@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=2]
@@ -22,27 +22,38 @@
 [ext_resource path="res://assets/images/gui/gui icons/charm.png" type="Texture" id=20]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=21]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=22]
-[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=23]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_professions.png" type="Texture" id=24]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavesummary.png" type="Texture" id=25]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Summary_Panel.tres" type="StyleBox" id=23]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=24]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=25]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp.png" type="Texture" id=26]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_hover.png" type="Texture" id=28]
-[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Menu.tres" type="Theme" id=29]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=30]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=31]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=32]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/decorative_name.png" type="Texture" id=34]
 
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 31 )
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 25 )
-region_rect = Rect2( 0, 0, 220, 1050 )
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 31 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 24 )
-region_rect = Rect2( 0, 0, 970, 130 )
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 32 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+font_data = ExtResource( 32 )
 
 [node name="SlaveSummaryModule" type="Panel"]
 rect_min_size = Vector2( 220, 1050 )
-theme = ExtResource( 23 )
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = ExtResource( 23 )
 
 [node name="Portrait" type="TextureRect" parent="."]
 margin_left = 11.0
@@ -56,27 +67,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="."]
-margin_left = 56.0
-margin_top = 176.0
-margin_right = 164.0
-margin_bottom = 201.0
-grow_horizontal = 0
-text = "Name"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="sex" type="TextureRect" parent="name"]
+[node name="sex" type="TextureRect" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -153.0
-margin_top = -177.5
-margin_right = -111.0
-margin_bottom = -140.5
+margin_left = -209.0
+margin_top = -510.5
+margin_right = -167.0
+margin_bottom = -473.5
 texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
@@ -103,9 +102,10 @@ texture_progress = ExtResource( 2 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/hp"]
-margin_top = 2.0
+margin_top = -2.0
 margin_right = 199.0
-margin_bottom = 26.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
@@ -121,9 +121,10 @@ texture_progress = ExtResource( 5 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/mp"]
-margin_top = 2.0
+margin_top = -2.0
 margin_right = 199.0
-margin_bottom = 26.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
@@ -139,18 +140,22 @@ texture_progress = ExtResource( 8 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/lust"]
-margin_top = 2.0
+margin_top = -2.0
 margin_right = 199.0
-margin_bottom = 26.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="factors" type="VBoxContainer" parent="."]
-margin_left = 23.0
-margin_top = 548.0
-margin_right = 144.0
-margin_bottom = 828.0
+margin_left = 31.0
+margin_top = 555.0
+margin_right = 152.0
+margin_bottom = 835.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 0
@@ -193,11 +198,15 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/growth_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Excellent"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="physics_factor" type="TextureRect" parent="factors"]
 margin_top = 35.0
@@ -213,9 +222,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/physics_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
 
 [node name="magic_factor" type="TextureRect" parent="factors"]
@@ -232,9 +242,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/magic_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
 
 [node name="wits_factor" type="TextureRect" parent="factors"]
@@ -251,9 +262,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/wits_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
 
 [node name="charm_factor" type="TextureRect" parent="factors"]
@@ -270,9 +282,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/charm_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
 
 [node name="sexuals_factor" type="TextureRect" parent="factors"]
@@ -289,9 +302,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/sexuals_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
 
 [node name="tame_factor" type="TextureRect" parent="factors" groups=[
@@ -310,9 +324,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/tame_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
 
 [node name="timid_factor" type="TextureRect" parent="factors" groups=[
@@ -331,10 +346,14 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/timid_factor"]
 margin_left = 69.2385
-margin_top = 7.0
+margin_top = 1.0
 margin_right = 229.239
-margin_bottom = 31.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 text = "25"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="food_consumption" type="TextureRect" parent="factors"]
 visible = false
@@ -426,9 +445,11 @@ mouse_filter = 2
 
 [node name="BaseExp" type="Label" parent="VBoxContainer2/TextureRect3"]
 margin_left = 6.0
-margin_top = 3.0
+margin_top = -2.0
 margin_right = 56.0
-margin_bottom = 27.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "0"
 align = 1
 __meta__ = {
@@ -437,9 +458,11 @@ __meta__ = {
 
 [node name="physics" type="Label" parent="VBoxContainer2/TextureRect3"]
 margin_left = 6.0
-margin_top = 44.0
+margin_top = 39.0
 margin_right = 56.0
-margin_bottom = 68.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Physics"
 align = 1
 clip_text = true
@@ -449,27 +472,33 @@ __meta__ = {
 
 [node name="wits" type="Label" parent="VBoxContainer2/TextureRect3"]
 margin_left = 6.0
-margin_top = 80.0
+margin_top = 75.0
 margin_right = 56.0
-margin_bottom = 104.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Wits"
 align = 1
 clip_text = true
 
 [node name="charm" type="Label" parent="VBoxContainer2/TextureRect3"]
 margin_left = 6.0
-margin_top = 111.0
+margin_top = 106.0
 margin_right = 56.0
-margin_bottom = 135.0
+margin_bottom = 138.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Charm"
 align = 1
 clip_text = true
 
 [node name="sexuals" type="Label" parent="VBoxContainer2/TextureRect3"]
 margin_left = 6.0
-margin_top = 147.0
+margin_top = 142.0
 margin_right = 56.0
-margin_bottom = 171.0
+margin_bottom = 174.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sexuals"
 align = 1
 clip_text = true
@@ -481,10 +510,12 @@ margin_bottom = 167.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="NextClassExp" type="Label" parent="VBoxContainer2/TextureRect4"]
-margin_top = 3.0
+margin_top = -2.0
 margin_right = 50.0
-margin_bottom = 27.0
+margin_bottom = 30.0
 mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "0"
 align = 1
 __meta__ = {
@@ -492,38 +523,56 @@ __meta__ = {
 }
 
 [node name="physics2" type="Label" parent="VBoxContainer2/TextureRect4"]
-margin_top = 44.0
+margin_top = 39.0
 margin_right = 50.0
-margin_bottom = 68.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Physics"
 align = 1
 clip_text = true
 
 [node name="wits2" type="Label" parent="VBoxContainer2/TextureRect4"]
-margin_top = 80.0
+margin_top = 75.0
 margin_right = 50.0
-margin_bottom = 104.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Wits"
 align = 1
 clip_text = true
 
 [node name="charm2" type="Label" parent="VBoxContainer2/TextureRect4"]
-margin_top = 111.0
+margin_top = 106.0
 margin_right = 50.0
-margin_bottom = 135.0
+margin_bottom = 138.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Charm"
 align = 1
 clip_text = true
 
 [node name="sexuals2" type="Label" parent="VBoxContainer2/TextureRect4"]
-margin_top = 147.0
+margin_top = 142.0
 margin_right = 50.0
-margin_bottom = 171.0
+margin_bottom = 174.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sexuals"
 align = 1
 clip_text = true
 
+[node name="ProfessionsBG" type="Panel" parent="."]
+margin_left = 220.0
+margin_right = 1190.0
+margin_bottom = 130.0
+custom_styles/panel = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="professions" type="GridContainer" parent="."]
+visible = false
 margin_left = 236.0
 margin_top = 14.0
 margin_right = 1176.0
@@ -536,7 +585,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="professions" groups=[
+[node name="Button" type="TextureButton" parent="professions" groups=[
 "ignore_rightclicks",
 ]]
 visible = false
@@ -545,7 +594,11 @@ margin_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 100 )
-texture = ExtResource( 22 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 22 )
+texture_disabled = ExtResource( 22 )
+texture_focused = ExtResource( 22 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 21 )
@@ -555,6 +608,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 93.0
 margin_bottom = 93.0
+texture = ExtResource( 33 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -562,6 +616,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="professions/Button"]
+visible = false
 margin_left = 7.0
 margin_top = 69.0
 margin_right = 93.0
@@ -572,46 +627,121 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 11.0
-margin_top = 850.0
-margin_right = 209.0
-margin_bottom = 1038.0
-theme = ExtResource( 29 )
+margin_left = 4.99811
+margin_top = 852.933
+margin_right = 214.998
+margin_bottom = 1040.93
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GearButton" type="Button" parent="VBoxContainer"]
-margin_right = 198.0
+[node name="GearButton" type="TextureButton" parent="VBoxContainer"]
+margin_right = 210.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 toggle_mode = true
-text = "Gear"
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 25 )
 
-[node name="ClassButton" type="Button" parent="VBoxContainer"]
-margin_top = 64.0
-margin_right = 198.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 0, 60 )
-toggle_mode = true
-text = "Class"
+[node name="Label" type="Label" parent="VBoxContainer/GearButton"]
+margin_left = 8.0
+margin_right = 203.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Gear"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DetailsButton" type="Button" parent="VBoxContainer"]
+[node name="ClassButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 210.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 0, 60 )
+toggle_mode = true
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 25 )
+
+[node name="Label2" type="Label" parent="VBoxContainer/ClassButton"]
+margin_left = 8.0
+margin_right = 203.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Class"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetailsButton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 128.0
-margin_right = 198.0
+margin_right = 210.0
 margin_bottom = 188.0
 rect_min_size = Vector2( 0, 60 )
 toggle_mode = true
-text = "Details"
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 25 )
 
-[node name="ProfessionsBG" type="Panel" parent="."]
-margin_left = 220.0
-margin_right = 1190.0
-margin_bottom = 130.0
-custom_styles/panel = SubResource( 2 )
+[node name="Label3" type="Label" parent="VBoxContainer/DetailsButton"]
+margin_left = 8.0
+margin_right = 203.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Details"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="HBoxContainer" parent="."]
+margin_left = 602.82
+margin_right = 797.82
+margin_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Name"]
+margin_right = 64.0
+margin_bottom = 125.0
+texture = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Name"]
+margin_left = 79.0
+margin_top = 33.0
+margin_right = 208.0
+margin_bottom = 92.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Name"]
+margin_left = 223.0
+margin_right = 287.0
+margin_bottom = 125.0
+texture = ExtResource( 34 )
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

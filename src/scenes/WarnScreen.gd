@@ -3,8 +3,8 @@ extends Panel
 
 func _ready():
 	show()
-	$Accept.connect("pressed",self,"Accept")
-	$Quit.connect("pressed",self, "Quit")
+	$Panel/Accept.connect("pressed",self,"Accept")
+	$Panel/Quit.connect("pressed",self, "Quit")
 
 func Accept():
 	hide()

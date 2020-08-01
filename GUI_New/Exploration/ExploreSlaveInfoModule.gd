@@ -30,7 +30,6 @@ func _ready():
 func update():
 	# get_parent().get_parent().submodules.append(self)
 	var person = get_parent().get_parent().person_to_hire
-	print(person)
 	if person != null:
 		var text = ""
 		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
@@ -146,7 +145,6 @@ func rebuild_traits():
 			if j.has('code') && j.code == 'action_type':
 				traittext += "\n\nDisliked actions:[color=aqua] "
 				for k in j.value:
-					#print(globals.sex_actions_dict[k].getname())
 					globals.sex_actions_dict[k].givers = []
 					globals.sex_actions_dict[k].takers = []
 					traittext += globals.sex_actions_dict[k].getname() + ", "

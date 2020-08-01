@@ -44,7 +44,8 @@ func _ready():
 		variables.skip_combat = false
 		#$UpgradeList._ready()
 		$TestButton.show()
-
+	
+	
 	var speedvalues = [0,1,5]
 	var tooltips = [tr('PAUSEBUTTONTOOLTIP'),tr('NORMALBUTTONTOOLTIP'),tr('FASTBUTTONTOOLTIP')]
 	var counter = 0
@@ -61,6 +62,7 @@ func _ready():
 	$UpgradeButton.connect("pressed", self, "open_upgrades")
 	$TravelButton.connect("pressed", self, "open_travels")
 	$MenuButton.connect("pressed", $MenuPanel, "open")
+	$DateTestButton.connect("pressed", self, 'start_date')
 	$InteractButton.connect("pressed", $InteractionSelectPanel, 'open')
 	$TimeNode/finish_turn.connect("pressed", self, "advance_turn")
 	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
@@ -76,6 +78,7 @@ func _ready():
 	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date) + ", Hour: " + str(ResourceScripts.game_globals.hour) + ":00"
 	if variables.generate_test_chars:
 		ResourceScripts.game_world.make_world()
+		ResourceScripts.game_world.update_locations()
 		var character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Demon', 'female', 'random')
 		character.set_stat('consent', 100)
@@ -197,8 +200,9 @@ func _ready():
 		globals.common_effects([{code = 'make_story_character', value = 'Daisy'}, {code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'sexuals_factor', value = 1, operant = "+"},
 			{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
-			{code = 'submission', operant = '+', value = 50},
-			{code = 'obedience', operant = '+', value = 30},
+			{code = 'submission', operant = '+', value = 0},
+			{code = 'obedience', operant = '+', value = -30},
+			{code = 'authority', operant = '+', value = 100},
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}])
 		#state.revert()
@@ -256,7 +260,7 @@ func _ready():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message("xari_encounter1", '',{})
+		input_handler.interactive_message("daisy_meet", '',{})
 		
 		#input_handler.interactive_message('intro', '', {})
 		
@@ -286,7 +290,14 @@ func _ready():
 	input_handler.SystemMessageNode = $SysMessage
 	set_time_buttons()
 	$TestButton.connect("pressed", self, "quest_test")
-	
+
+func start_date():
+	input_handler.ShowSlaveSelectPanel(self, 'start_date_initiate')
+
+func start_date_initiate(person):
+	var newnode = load("res://src/date.tscn").instance()
+	add_child(newnode)
+	newnode.initiate(person)
 
 func open_travels():
 	$CharacterDislocationPanel.open_character_dislocation()

@@ -15,6 +15,7 @@ onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule
 onready var InteractSelection = $InteractSelectionModule
 onready var SexSelect = $MansionSexSelectionModule
+onready var Journal = $MansionJournalModule
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var submodules = []
 
@@ -28,6 +29,7 @@ var travels_defaults = {code = 'default'}
 var selected_travel_characters = []
 var is_travel_selected
 var selected_destination
+var selected_location
 
 
 # Upgrades
@@ -65,13 +67,22 @@ var always_show = [
 	"MansionSlaveListModule",
 	"MansionLogModule",
 	"MansionNavigationModule",
+	"MenuButton",
 ]
 
 
 func _ready():
+	# input_handler.CurrentScene = self
+	# input_handler.CurrentScreen = 'mansion'
+	GUIWorld.BaseScene == self
+	$MenuButton.connect("pressed", self, "show_menu")
 	slave_list_manager()
 	match_state()
 	globals.log_node = $MansionLogModule
+
+func show_menu():
+	GUIWorld.menu_opened = true
+	GUIWorld.gui_data["GAMEMENU"].main_module.open()
 
 
 func set_active_person(person):
@@ -92,11 +103,16 @@ func reset_vars():
 		selected_upgrade = null
 		chars_for_upgrades.clear()
 		submodules.clear()
+	if active_person == null:
+		active_person = ResourceScripts.game_party.get_master()
+	Journal.hide()
 		# sex_participants.clear()
 
 # Handles Resizing and visibility
 func match_state():
+	# input_handler.SetMusicRandom("mansion")
 	NavModule.build_accessible_locations()
+	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
 	for node in get_children():
 		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
 			node.hide()
@@ -152,7 +168,6 @@ func match_state():
 			sex_handler()
 			menu_buttons.get_node("SexButton").pressed = true
 	rebuild_task_info()
-	print("Match State")
 	SlaveListModule.set_hover_area()
 
 func open_char_info():
@@ -164,6 +179,8 @@ func rebuild_mansion():
 	$MansionSlaveListModule.update()
 	$MansionSkillsModule.build_skill_panel()
 	CraftModule.rebuild_scheldue()
+	UpgradesModule.open_queue()
+	SlaveModule.show_slave_info()
 
 func rebuild_task_info():
 	if ResourceScripts.game_party.active_tasks == []:
@@ -184,16 +201,13 @@ func sex_handler():
 		active_person = null
 		sex_participants.clear()
 		mansion_prev_state = mansion_state
-	print("Sex Handler")
-	print(mansion_prev_state)
-	print(mansion_state)
 
 
 func craft_handler():
 	match craft_state:
 		"default":
 			selected_craft_task = null
-			is_craft_selected = false
+			# is_craft_selected = false
 			CraftModule.show()
 			CraftModule.get_node("MaterialSetupPanel").hide()
 			CraftModule.update()
@@ -221,6 +235,7 @@ func travels_manager(params):
 			selected_destination = params.destination
 			TravelsModule.update_character_dislocation() 
 			SlaveListModule.rebuild()
+			TravelsModule.update_buttons()
 
 func upgrades_manager():
 	SlaveListModule.rebuild()
@@ -255,6 +270,7 @@ func slave_list_manager():
 					self.selected_travel_characters.append(active_person)
 				TravelsModule.update_character_dislocation()
 			SlaveListModule.rebuild()
+			TravelsModule.update_buttons()
 		'upgrades':
 			if !select_chars_mode:
 				SlaveModule.show_slave_info()
@@ -270,8 +286,8 @@ func slave_list_manager():
 			$MansionSlaveListModule.rebuild()
 			$MansionJobModule.open_jobs_window()
 		'craft':
-			if !is_craft_selected:
-				return
+			# if !is_craft_selected:
+			# 	return
 			if !active_person in persons_for_craft:
 				persons_for_craft.append(active_person)
 			else:
@@ -290,10 +306,11 @@ func slave_list_manager():
 func update_sex_date_buttons():
 	if ResourceScripts.game_globals.daily_interactions_left > 0:
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
-		SexSelect.get_node("DateButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit #Temporary
 	else:
 		SexSelect.get_node("SexButton").disabled = true
 		SexSelect.get_node("DateButton").disabled = true
+	SexSelect.get_node("DateButton").disabled = sex_participants.size() > 1 || sex_participants.size() == 0 || sex_participants.has(ResourceScripts.game_party.get_master())
+
 
 	
 func set_hovered_person(node, person):

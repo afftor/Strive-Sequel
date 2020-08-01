@@ -8,6 +8,7 @@ func _ready():
 	$VBoxContainer/CraftButton.connect("pressed", self, "_button_clicked", ["craft", $VBoxContainer/CraftButton])
 	$VBoxContainer/InventoryButton.connect("pressed", self, "open_inventory")
 	$VBoxContainer/SexButton.connect("pressed", self, "_button_clicked", ["sex", $VBoxContainer/SexButton])
+	$VBoxContainer/Journal.connect("toggled", self, "open_journal")
 
 func _button_clicked(state, button):
 	if button.is_pressed():
@@ -22,5 +23,14 @@ func open_inventory():
 func open_interaction():
 	get_parent().InteractSelection.show()
 	get_parent().InteractSelection.open()
-	# GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
-	# GUIWorld.set_current_scene(GUIWorld.gui_data["INTERACTION"].main_module)
+
+
+
+func open_journal(pressed):
+	get_parent().Journal.visible = pressed
+	get_parent().Journal.open()
+	get_parent().submodules.append(get_parent().Journal) if pressed else get_parent().submodules.erase(get_parent().Journal)
+
+
+func update():
+	$VBoxContainer/Journal.pressed = get_parent().Journal.is_visible()

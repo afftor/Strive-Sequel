@@ -213,7 +213,7 @@ func set_icon(node):
 
 func tooltiptext():
 	var text = ''
-	text += '[center]' + name + '[/center]\n'
+	text += '{color=k_yellow|' + name + '}\n'
 	if geartype != null:
 		text += 'Type: ' + geartype + "\n"
 	else:
@@ -223,7 +223,7 @@ func tooltiptext():
 		text += "Slots: "
 		for i in slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
-		text = text.substr(0, text.length() -2) + ". \n"
+		text = text.substr(0, text.length() -2)
 	
 	if toolcategory != null:
 		text += tr("TOOLWORKCATEGORY") + ": " 
@@ -236,7 +236,7 @@ func tooltiptext():
 		var tempslave = ResourceScripts.scriptdict.class_slave.new()
 		text += "\n" + tempslave.decipher_reqs(reqs)
 	if itemtype in ['armor','weapon','tool']:
-		text += "\n\n"
+		text += "\n"
 		for i in bonusstats:
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
@@ -246,16 +246,16 @@ func tooltiptext():
 				text += statdata.statdata[i].name + ': {color='
 				if value > 0:
 					change = '+'
-					text += 'green|' + change
+					text += 'k_green|' + change
 				else:
-					text += 'red|'
+					text += 'k_red|'
 				value = str(value)
 				if statdata.statdata[i].has('percent'):
 					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()
 	elif itemtype == 'usable':
-		text += '\n\n' + tr("INPOSESSION") + ': ' + str(amount)
+		text += '\n' + tr("INPOSESSION") + ': ' + str(amount)
 	
 	text = globals.TextEncoder(text)
 	return text

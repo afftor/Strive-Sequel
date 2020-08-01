@@ -430,7 +430,7 @@ var racelist = {
 		diet_hate = {vege = 35, meat = 10, fish = 15, grain = 15},
 		tags = [],
 		bodyparts = {
-			height = ['short','tiny'],
+			height = ['short','petite'],
 			body_shape = ['shortstack'],
 			},
 		global_weight = 60,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=2]
@@ -33,6 +33,12 @@
 [ext_resource path="res://GUI_New/Mansion/InteractSelectionModule.tscn" type="PackedScene" id=31]
 [ext_resource path="res://GUI_New/Mansion/MansionSexSelectionModule.tscn" type="PackedScene" id=32]
 [ext_resource path="res://GUI_New/Mansion/MansionSexSelectionModule.gd" type="Script" id=33]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=34]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_pressed.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=37]
+[ext_resource path="res://GUI_New/Mansion/MansionJournalModule.tscn" type="PackedScene" id=38]
+[ext_resource path="res://src/date.tscn" type="PackedScene" id=39]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 22 )
@@ -130,15 +136,15 @@ script = ExtResource( 16 )
 
 [node name="MansionTaskInfoModule" parent="." instance=ExtResource( 19 )]
 margin_left = 15.0
-margin_top = 238.0
+margin_top = 253.0
 margin_right = 305.0
-margin_bottom = 663.0
+margin_bottom = 678.0
 script = ExtResource( 20 )
 
 [node name="MansionNavigationModule" parent="." instance=ExtResource( 25 )]
 margin_left = 320.0
 margin_top = 15.0
-margin_right = -15.0
+margin_right = -150.0
 margin_bottom = -1010.0
 theme = ExtResource( 21 )
 script = ExtResource( 26 )
@@ -176,9 +182,39 @@ visible = false
 visible = false
 
 [node name="MansionSexSelectionModule" parent="." instance=ExtResource( 32 )]
-visible = false
 margin_left = 320.0
 margin_top = 948.0
 margin_right = -500.0
 margin_bottom = -12.0
 script = ExtResource( 33 )
+
+[node name="MenuButton" type="TextureButton" parent="."]
+margin_left = 1785.0
+margin_top = 15.0
+margin_right = 1901.0
+margin_bottom = 69.0
+texture_normal = ExtResource( 37 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenuButton"]
+margin_right = 116.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 34 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="MansionJournalModule" parent="." instance=ExtResource( 38 )]
+margin_left = 530.0
+margin_top = 140.0
+margin_right = 1390.0
+margin_bottom = 940.0
+
+[node name="date" parent="." instance=ExtResource( 39 )]
+visible = false
+[connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

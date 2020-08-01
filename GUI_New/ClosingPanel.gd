@@ -20,9 +20,6 @@ func RepositionCloseButton():
 	closebutton.rect_global_position = pos
 
 func show():
-
-	print("Show: " + str(self.name))
-	print("Show prev scene: " + str(input_handler.PreviousScene.name))
 #	if !is_visible_in_tree():
 #		input_handler.PlaySound(open_sound)
 	close_played = false

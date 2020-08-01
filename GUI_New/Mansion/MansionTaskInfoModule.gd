@@ -58,8 +58,12 @@ func show_upgrades_info():
 			for t in ResourceScripts.game_party.active_tasks:
 				if t.code == "building":
 					task = t
-			newupgrade.connect("mouse_entered", self, "show_workers", [task, newupgrade])
-			newupgrade.connect("mouse_exited", $Tooltip, "hide")
+			var text = "Workers:\n"
+			for worker in task.workers:
+				text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
+			globals.connecttexttooltip(newupgrade, text)
+			# newupgrade.connect("mouse_entered", self, "show_workers", [task, newupgrade])
+			# newupgrade.connect("mouse_exited", $Tooltip, "hide")
 		
 
 
@@ -113,8 +117,12 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()
 		newtask.get_node("Task").text = task_name.capitalize()
-		newtask.connect("mouse_entered", self, "show_workers", [task, newtask])
-		newtask.connect("mouse_exited", $Tooltip, "hide")
+		var text = "Workers:\n"
+		for worker in task.workers:
+			text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
+		globals.connecttexttooltip(newtask, text)
+		# newtask.connect("mouse_entered", self, "show_workers", [task, newtask])
+		# newtask.connect("mouse_exited", $Tooltip, "hide")
 		# newtask.get_node("Task").icon = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
 		# newtask.get_node("Task").text = task_name.capitalize()
 		# newtask.get_node("ProgressBar").max_value = task.threshhold

@@ -2,6 +2,8 @@ extends Panel
 
 
 func _ready():
+	$descript.connect("meta_hover_started", self, 'text_url_hover')
+	$descript.connect("meta_hover_ended", self, "text_url_hover_hide")
 	for i in get_parent().bodypartsarray:
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).connect("item_selected", self, "select_bodypart", [i, $ScrollContainer/HBoxContainer/bodyparts.get_node(i)])
 	
@@ -174,3 +176,20 @@ func select_checkbox(bodypart, node):
 
 func select_personality(value):
 	get_parent().preservedsettings.personality = variables.personality_array[value]
+
+
+func text_url_hover(meta):
+	var person = get_parent().person
+	match meta:
+		'race':
+			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
+			texttooltip.showup($descript, person.show_race_description())
+			yield(get_tree(), 'idle_frame')
+			texttooltip.rect_global_position = get_global_mouse_position()
+	#globals.connecttexttooltip($RichTextLabel, person.show_race_description())
+
+func text_url_hover_hide(meta = null):
+	match meta:
+		'race':
+			var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
+			texttooltip.hide()

@@ -25,11 +25,9 @@ func chooseimage(character, tempmod):
 	self.mode = tempmod
 	person = character
 	if IconBlock.get_node("racelock").is_pressed() == false:
-		print("1")
 		IconBlock.get_node("search").visible = true
 		IconBlock.get_node("search").set_text("")
 	else:
-		print("2")
 		IconBlock.get_node("search").visible = false
 	popup()
 	if portaitsbuilt == false:
@@ -50,7 +48,6 @@ func buildimagelist(type = mode):
 		currentpath = portraitspath
 	else:
 		currentpath = bodypath
-		print("currentpath:" + str(currentpath))
 	for i in get_parent().get_node("ScrollContainer/GridContainer").get_children():
 		if i.get_name() != "Button":
 			i.visible = false
@@ -58,7 +55,6 @@ func buildimagelist(type = mode):
 	if dir.dir_exists(currentpath) == false:
 		dir.make_dir(currentpath)
 	for i in input_handler.dir_contents(currentpath):
-		print("III:" + str(i))
 		if filecheck.file_exists(i) && (i.find('.png') >= 0 || i.find('.jpg') >= 0):
 			var node = get_parent().get_node("ScrollContainer/GridContainer/Button").duplicate()
 #			var iconpath = i.replace(currentpath, thumbnailpath + type)
