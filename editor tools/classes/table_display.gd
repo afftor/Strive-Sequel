@@ -1,10 +1,10 @@
 extends ItemList
 class_name table_display
 
-var tables_arr = [worlddata.lands, worlddata.locations, worlddata.factiondata, worlddata.questdata, worlddata.dungeons, races.racelist, classesdata.professions, worlddata.pregen_characters]
-var tables_mod_arr = ['w_lands', 'w_locations', 'w_factions', 'w_quests', 'w_dungeons', 'races', 'classes', 'w_characters']
-var editors_arr = [editor_core.land_scene, editor_core.location_scene, editor_core.factiondata_scene, editor_core.questdata_scene, editor_core.dungeons_scene, editor_core.race_scene, editor_core.professions_scene, editor_core.pregen_c_scene]
-enum Tables {Lands, Locations, FactionData, QuestData, Dundeons, Races, Professions, Character}
+var tables_arr = [worlddata.lands, worlddata.locations, worlddata.factiondata, worlddata.questdata, worlddata.dungeons, races.racelist, classesdata.professions, worlddata.pregen_characters, Skilldata.Skilllist, Effectdata.effect_table, Effectdata.atomic, Effectdata.buffs]
+var tables_mod_arr = ['w_lands', 'w_locations', 'w_factions', 'w_quests', 'w_dungeons', 'races', 'classes', 'w_characters', 'skills', 'effects', 'atomic_effects', 'buffs']
+var editors_arr = [editor_core.land_scene, editor_core.location_scene, editor_core.factiondata_scene, editor_core.questdata_scene, editor_core.dungeons_scene, editor_core.race_scene, editor_core.professions_scene, editor_core.pregen_c_scene, editor_core.skil_scene, editor_core.effect_scene, editor_core.atomic_scene, editor_core.buff_scene]
+enum Tables {Lands, Locations, FactionData, QuestData, Dundeons, Races, Professions, Character, Skills, Effects, AtomicEffects, EffectsVisuals}
 export(Tables) var type
 
 var table 

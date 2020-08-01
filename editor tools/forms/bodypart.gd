@@ -6,7 +6,7 @@ onready var typesel = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer
 var typelist = ['skin', 'hair_length', 'hair_color', 'eye_color', 'eye_shape', 'ears', 'horns', 'tail', 'wings', 'height'] + ['penis_size', 'penis_type', 'balls_size','tits_size', 'ass_size'] + ['skin_coverage', 'arms', 'legs', 'body_shape', 'body_lower']
 
 func _init():
-	tres = {description = ""}
+	tres = {}
 	panel_data = [
 		{
 			type = editor_core.PANEL_SELECT,

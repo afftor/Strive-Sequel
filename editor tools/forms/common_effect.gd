@@ -318,4 +318,5 @@ func select_type(id):
 
 func change_description(newtext):
 	tres.description = newtext
+	if newtext == "": tres.erase('description')
 	update_res()

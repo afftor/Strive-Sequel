@@ -177,6 +177,50 @@ margin_bottom = -4.0
 script = ExtResource( 1 )
 type = 7
 
+[node name="skills" type="ItemList" parent="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 42.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+type = 8
+
+[node name="effects" type="ItemList" parent="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 42.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+type = 9
+
+[node name="atomic" type="ItemList" parent="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 42.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+type = 10
+
+[node name="buffs" type="ItemList" parent="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 42.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+type = 11
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 954.0
 margin_right = 1905.0
@@ -259,6 +303,10 @@ Create and load empty mod?"
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/races" to="." method="show_data"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/professions" to="." method="show_data"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/unique characters" to="." method="show_data"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/skills" to="." method="show_data"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/effects" to="." method="show_data"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/atomic" to="." method="show_data"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/buffs" to="." method="show_data"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/Button" to="." method="add_record"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/Button2" to="." method="edit_record"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer/Button3" to="." method="save_changes"]

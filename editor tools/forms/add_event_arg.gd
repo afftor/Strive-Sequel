@@ -39,6 +39,7 @@ func _init():
 
 func change_description(newtext):
 	tres.description = newtext
+	if newtext == "": tres.erase('description')
 	update_res()
 
 func _ready():
