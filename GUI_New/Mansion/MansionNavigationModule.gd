@@ -45,6 +45,9 @@ func build_accessible_locations():
 	var newbutton = input_handler.DuplicateContainerTemplate(Navigation)
 	newbutton.text = "Mansion"
 	newbutton.connect("pressed", self, "highlight")
+	var newseparator = $VSeparator.duplicate()
+	Navigation.add_child(newseparator)
+	newseparator.visible = true
 	newbutton = input_handler.DuplicateContainerTemplate(Navigation)
 	newbutton.text = ResourceScripts.game_world.mansion_location
 	newbutton.connect("pressed", self, "go_outside", ['Aliron'])
@@ -53,6 +56,9 @@ func build_accessible_locations():
 	var sorted_locations = sort_locations(location_array)
 	for i in sorted_locations:
 		if i == "mansion": continue
+		newseparator = $VSeparator.duplicate()
+		Navigation.add_child(newseparator)
+		newseparator.visible = true
 		newbutton = input_handler.DuplicateContainerTemplate(Navigation)
 		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
 		newbutton.connect("pressed", self, "go_outside", [i])
@@ -64,14 +70,15 @@ func go_outside(location):
 	GUIWorld.PreviousScene = get_parent()
 	get_parent().selected_location = location
 	input_handler.PlaySound("door_open")
-	ResourceScripts.core_animations.BlackScreenTransition(1)
-	yield(get_tree().create_timer(1), 'timeout')
+	ResourceScripts.core_animations.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
 	GUIWorld.set_current_scene(GUIWorld.gui_data["EXPLORATION"].main_module)
 	GUIWorld.gui_data["EXPLORATION"].main_module.open()
 
 
 func highlight():
 	for i in Navigation.get_children():
-		i.pressed = false
+		if i.get_class() == 'Button':
+			i.pressed = false
 
 	Navigation.get_child(0).pressed = true

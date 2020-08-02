@@ -89,7 +89,7 @@ func open_jobs_window():
 			elif location_type == "dungeon":
 				if gatherable_resources[resource] == 0:
 					for button in $job_panel/ScrollContainer/VBoxContainer.get_children():
-						if button.name == "Button": continue
+						if button.name == "Button" || !button.has_meta('resource'): continue
 						if button.get_meta("resource") == resource: button.queue_free()
 					continue
 				text += " " + str(gatherable_resources[resource])

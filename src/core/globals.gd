@@ -61,10 +61,9 @@ func _init():
 		dir.make_dir(variables.userfolder + 'savedcharacters')
 	
 	for i in input_handler.dir_contents('res://src/actions'):
-		if i.find('.remap') >= 0:
-			continue
-		var newaction = load(i).new()
-		sex_actions_dict[newaction.code] = newaction
+		if i.ends_with('.gd'):
+			var newaction = load(i).new()
+			sex_actions_dict[newaction.code] = newaction
 	
 	for i in input_handler.dir_contents("res://assets/data/events"):
 		if i.find('.gd') < 0:
@@ -443,7 +442,8 @@ func LoadGame(filename):
 	effects_pool.cleanup()
 	
 	#current approach
-	input_handler.CurrentScene.queue_free()
+	if input_handler.CurrentScene != null:
+		input_handler.CurrentScene.queue_free()
 	input_handler.ChangeScene('mansion');
 	yield(self, "scene_changed")
 	input_handler.SystemMessage("Game Loaded")

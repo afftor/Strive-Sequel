@@ -48,6 +48,7 @@ var Mansion
 var SlaveModule
 var PreviousScene
 
+
 var exploration_node
 var active_character
 var scene_characters = []

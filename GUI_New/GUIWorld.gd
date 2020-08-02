@@ -31,7 +31,7 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	# test_mode()
+	test_mode()
 
 	if globals.start_new_game == true:
 		globals.start_new_game = false
@@ -70,7 +70,7 @@ func _input(event):
 			if i.is_visible() && i.get_global_rect().has_point(get_global_mouse_position()):
 				ignore_rightclick = true
 				continue
-		if get_tree().get_root().get_node("classinfo") != null:
+		if get_tree().get_root().has_node("classinfo"):
 			if (CurrentScene == gui_data["MANSION"].main_module 
 				&& CurrentScene.mansion_state in ["default", "skills"] 
 				&& !get_tree().get_root().get_node("classinfo").is_visible()):
@@ -155,29 +155,10 @@ func show_class_info(classcode, person = null):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 func test_mode():
 	ResourceScripts.game_world.make_world()
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'male', 'random')
+	character.create('HalfkinCat', 'futa', 'random')
 	character.set_stat('consent', 100)
 	character.set_stat('penis_virgin', true)
 	characters_pool.move_to_state(character.id)
@@ -234,6 +215,7 @@ func test_mode():
 	character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'random', 'random')
 	characters_pool.move_to_state(character.id)
+	#character.set_stat('base_exp', 1000)
 
 
 
@@ -342,7 +324,7 @@ func test_mode():
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("revitalizer", 3))
+	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 	globals.AddItemToInventory(
 		globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)
@@ -392,3 +374,5 @@ func test_mode():
 
 	for c in ResourceScripts.game_party.characters.values():
 		if c.get_location() == "mansion": c.travel.location = "Aliron"
+	yield(get_tree(), 'idle_frame')
+	input_handler.ActivateTutorial("introduction")

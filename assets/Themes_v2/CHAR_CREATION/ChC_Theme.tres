@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=32 format=2]
+[gd_resource type="Theme" load_steps=41 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/search_charcreation.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/triangles_selection.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button_pressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -37,6 +39,18 @@ margin_left = 10.0
 margin_right = 10.0
 margin_top = 10.0
 margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=20]
+
+[sub_resource type="StyleBoxTexture" id=21]
+
+[sub_resource type="StyleBoxTexture" id=22]
+
+[sub_resource type="StyleBoxTexture" id=23]
+
+[sub_resource type="StyleBoxTexture" id=24]
+
+[sub_resource type="StyleBoxTexture" id=25]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 9 )
@@ -77,6 +91,10 @@ region_rect = Rect2( 0, 0, 300, 40 )
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 300, 40 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 24
+font_data = ExtResource( 15 )
 
 [sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 6 )
@@ -122,12 +140,12 @@ CheckBox/icons/checked = ExtResource( 13 )
 CheckBox/icons/radio_checked = ExtResource( 13 )
 CheckBox/icons/radio_unchecked = ExtResource( 8 )
 CheckBox/icons/unchecked = ExtResource( 8 )
-CheckBox/styles/disabled = null
-CheckBox/styles/focus = null
-CheckBox/styles/hover = null
-CheckBox/styles/hover_pressed = null
-CheckBox/styles/normal = null
-CheckBox/styles/pressed = null
+CheckBox/styles/disabled = SubResource( 20 )
+CheckBox/styles/focus = SubResource( 21 )
+CheckBox/styles/hover = SubResource( 22 )
+CheckBox/styles/hover_pressed = SubResource( 23 )
+CheckBox/styles/normal = SubResource( 24 )
+CheckBox/styles/pressed = SubResource( 25 )
 CheckButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -172,6 +190,12 @@ OptionButton/styles/focus = SubResource( 10 )
 OptionButton/styles/hover = SubResource( 11 )
 OptionButton/styles/normal = SubResource( 12 )
 OptionButton/styles/pressed = SubResource( 13 )
+TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipLabel/fonts/font = SubResource( 19 )
+TooltipPanel/styles/panel = ExtResource( 14 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null

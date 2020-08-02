@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/workers.png-04114e17393bbeaa7c82697c40fcc0f1.stex"
+path="res://.import/icon_cooking_64.png-1da586d69ca4eeb826b35619ea7e3730.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/backgrounds/workers.png"
-dest_files=[ "res://.import/workers.png-04114e17393bbeaa7c82697c40fcc0f1.stex" ]
+source_file="res://assets/Textures_v2/MANSION/icon_cooking_64.png"
+dest_files=[ "res://.import/icon_cooking_64.png-1da586d69ca4eeb826b35619ea7e3730.stex" ]
 
 [params]
 

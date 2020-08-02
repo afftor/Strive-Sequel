@@ -60,6 +60,7 @@ margin_right = 293.0
 margin_bottom = 110.0
 rect_min_size = Vector2( 0, 110 )
 theme = ExtResource( 8 )
+toggle_mode = true
 script = ExtResource( 3 )
 
 [node name="icon" type="TextureRect" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]

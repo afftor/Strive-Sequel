@@ -7,31 +7,28 @@ var opened_guild = {code = ""}
 
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 
 func open_city(city):
-	get_parent().get_node("LocationGui").hide()
+	var expnode = get_parent()
+	expnode.get_node("LocationGui").hide()
 	show()
-	get_parent().active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[city].area]
-	get_parent().active_location = {}
-	input_handler.active_area = get_parent().active_area
-	get_parent().selected_location = city
-	get_parent().get_node("TextureRect").texture = images.backgrounds[get_parent().active_area.capital_background]
-	if get_parent().active_area.has('capital_background_noise'):
-		input_handler.PlayBackgroundSound(get_parent().active_area.capital_background_noise)
-	if get_parent().active_area.has('capital_background_music'):
-		input_handler.SetMusic(get_parent().active_area.capital_background_music)
-	if get_parent().active_area.has("capital_dynamic_background"):
-		get_parent().get_node("VideoPlayer").open(get_parent().active_area.capital_dynamic_background)
+	expnode.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[city].area]
+	expnode.active_location = {}
+	input_handler.active_area = expnode.active_area
+	expnode.selected_location = city
+	expnode.get_node("TextureRect").texture = images.backgrounds[expnode.active_area.capital_background]
+	if expnode.active_area.has('capital_background_noise'):
+		input_handler.PlayBackgroundSound(expnode.active_area.capital_background_noise)
+	if expnode.active_area.has('capital_background_music'):
+		input_handler.SetMusic(expnode.active_area.capital_background_music)
+	if expnode.active_area.has("capital_dynamic_background"):
+		expnode.get_node("VideoPlayer").open(expnode.active_area.capital_dynamic_background)
 	input_handler.ClearContainer(City)
 	input_handler.ClearContainer(Guild)
 	input_handler.ClearContainer($AreaEvents)
 	$GuildMenuBG.hide()
 	var array = []
-	for i in get_parent().active_area.factions.values():
+	for i in expnode.active_area.factions.values():
 		array.append(i)
 
 	array.sort_custom(self, 'sort_factions')
@@ -41,7 +38,7 @@ func open_city(city):
 		newbutton = input_handler.DuplicateContainerTemplate(City)
 		newbutton.get_node("Label").text = i.name
 		if i.code == "slavemarket":
-			newbutton.connect("pressed", get_parent().Hire, "open_slave_market", [i])
+			newbutton.connect("pressed", expnode.Hire, "open_slave_market", [i])
 			newbutton.set_meta("slavemarket", true)
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 			newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
@@ -56,7 +53,7 @@ func open_city(city):
 		newbutton.set_meta("guild", i)
 	newbutton = input_handler.DuplicateContainerTemplate(City)
 	newbutton.get_node("Label").text = "Shop"
-	newbutton.connect("pressed", get_parent().Shop, "open_shop", ['area'])
+	newbutton.connect("pressed", expnode.Shop, "open_shop", ['area'])
 	newbutton.set_meta("shop", true)
 	newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 	newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
@@ -65,9 +62,9 @@ func open_city(city):
 	newbutton.get_node("Label").rect_size.x = 272
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 	newbutton.get_node("Icon").hide()
-	for i in get_parent().active_area.capital_options:
+	for i in expnode.active_area.capital_options:
 		newbutton = input_handler.DuplicateContainerTemplate(City)
-		newbutton.get_node("Label").text = get_parent().city_options[i]
+		newbutton.get_node("Label").text = expnode.city_options[i]
 		newbutton.connect("pressed", self, i)
 		newbutton.set_meta(i, true)
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
@@ -78,7 +75,7 @@ func open_city(city):
 		newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 		newbutton.get_node("Icon").hide()
 
-	for i in get_parent().active_area.events:
+	for i in expnode.active_area.events:
 		if globals.checkreqs(i.reqs) == false:
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate($AreaEvents)
@@ -118,20 +115,6 @@ func update_buttons(meta):
 #			button.pressed = false
 
 
-###
-var temp_data = {
-	"workers": "res://assets/images/backgrounds/village.png",
-	"servants": "res://assets/images/backgrounds/village1.png",
-	"fighters": "res://assets/images/backgrounds/village2.png",
-	"mages": "res://assets/images/backgrounds/village3.png",
-}
-
-
-
-func set_guild_background(guild):
-	get_parent().get_node("GuildBG").texture = load(temp_data[guild.code])
-
-
 func update():
 	for button in Guild.get_children():
 		if button.has_meta("dialogue_event"):
@@ -157,8 +140,10 @@ func update():
 
 
 
-func enter_guild(guild):
-	set_guild_background(guild)
+func enter_guild(guild): #я не особо понял почему гильдбг лежит не в сити модуле
+	if get_parent().get_node("GuildBG").visible == false:
+		ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		get_parent().get_node("GuildBG").texture = images.backgrounds[guild.background]
 	update_buttons("guild")
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false

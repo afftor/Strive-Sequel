@@ -97,10 +97,12 @@ func rotate_sky(gametime = 0):
 		
 func decrease_turns():
 	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
+	input_handler.PlaySound("button_click")
 	update_turns_label()
 
 func increase_turns():
 	globals.hour_turns_set = min(globals.hour_turns_set + 1, variables.hour_turn_limit)
+	input_handler.PlaySound("button_click")
 	update_turns_label()
 
 

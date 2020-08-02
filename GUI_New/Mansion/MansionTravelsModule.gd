@@ -149,6 +149,7 @@ func update_character_dislocation():
 	var char_array = []
 	var obed_cost = 0
 	var text = "Characters selected: " + str(selected_travel_characters.size())
+	var text2 = ''
 	if destination == null:
 		text += "\n\nPlease select location to proceed"
 	elif destination == 'mansion':
@@ -162,16 +163,16 @@ func update_character_dislocation():
 			'dungeon':
 				text += "\nType: " + location.classname + "\n" + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())
 			'settlement':
-				text += "\nType: " + tr(location.classname)
+				text += "\nType: " + tr(location.type.to_upper())
 			'skirmish':
 				pass
 		if selected_travel_characters.size() > 0 :
 			if dislocation_area == "mansion":
 				dislocation_area = "Aliron"
 			var travel_time = globals.calculate_travel_time(destination, dislocation_area) 
-			text += "\n\nTravel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
+			text2 = "Travel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
-			text += "\nObedience Cost: " + str(obed_cost)
+			text2 += "\nObedience Cost: " + str(obed_cost)
 
 	
 	var can_travel = true
@@ -186,6 +187,7 @@ func update_character_dislocation():
 			if person.get_stat('obedience') < obed_cost:
 				can_travel = false
 	$DescriptText.bbcode_text = text
+	$DescriptText2.bbcode_text = text2
 	$TravelConfirmButton.disabled = !can_travel
 
 

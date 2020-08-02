@@ -98,6 +98,7 @@ func select_category(category):
 	rebuild_recipe_list()
 	rebuild_scheldue()
 
+
 func rebuild_recipe_list():
 	var array = []
 	input_handler.ClearContainer($CraftSelect/ScrollContainer/VBoxContainer)
@@ -176,7 +177,7 @@ func rebuild_recipe_list():
 		
 		
 		var progressnode = newbutton.get_node("WorkUnits")
-		progressnode.texture = images.icons.craft_time
+		progressnode.texture = images.icons[i.worktype]
 		progressnode.get_node("Label").text = str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
 

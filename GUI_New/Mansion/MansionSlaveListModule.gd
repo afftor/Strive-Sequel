@@ -19,8 +19,6 @@ func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
-	globals.connecttexttooltip($population/TextureRect, "POPULATION TOOLTIP TEXT\n !!!CHANGE ME!!!")
-	globals.connecttexttooltip($food_consumption/TextureRect, "FOOD CONSUMPTION TOOLTIP TEXT\n !!!CHANGE ME!!!")
 
 
 func rebuild():
@@ -146,18 +144,24 @@ func update_dislocations():
 func build_locations_list():
 	input_handler.ClearContainer(LocationsList)
 	for loca in default_locations + populatedlocations:
+		if loca in ['Aliron']:
+			continue
+		
 		var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 		if loca in default_locations:
 			newbutton.text = loca.capitalize()
 		elif loca == "mansion":
 			newbutton.text = "Mansion"
-		elif loca == "Aliron":
-			newbutton.queue_free()
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
 		newbutton.set_meta("location", loca)
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 		newbutton.connect("pressed", self, "set_hover_area")
+		
+		var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
+		LocationsList.add_child(newseparator)
+		newseparator.visible = true
+	LocationsList.get_children().back().queue_free()
 	update_location_buttons()
 
 
@@ -222,10 +226,9 @@ func show_location_characters(button = null):
 
 func update_location_buttons():
 	for i in LocationsList.get_children():
-		if i == LocationsList.get_child(LocationsList.get_children().size()-1):
+		if i == LocationsList.get_child(LocationsList.get_children().size()-1) || !i.has_meta('location'):
 			continue
-		var pressed = (selected_location == i.get_meta("location"))
-		i.pressed = pressed
+		i.pressed = selected_location == i.get_meta("location")
 
 
 

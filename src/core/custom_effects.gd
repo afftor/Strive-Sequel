@@ -29,7 +29,7 @@ func minorus_tits():
 		input_handler.interactive_message("minorus_potion_tits",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func minorus_ass():
 	var character = person
@@ -38,7 +38,7 @@ func minorus_ass():
 		input_handler.interactive_message("minorus_potion_ass",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func minorus_balls():
 	var character = person
@@ -47,16 +47,16 @@ func minorus_balls():
 		input_handler.interactive_message("minorus_potion_balls",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func minorus_penis():
 	var character = person
 	if !character.get_stat('penis_size') in ['small']:
 		character.set_stat('penis_size', variables.slave_genital_sizes[variables.slave_genital_sizes.find(character.get_stat('penis_size')) - 1])
-		input_handler.interactive_message("minorus_potion_balls",'char_translate',character)
+		input_handler.interactive_message("minorus_potion_penis",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func majorus_tits():
 	var character = person
@@ -65,7 +65,7 @@ func majorus_tits():
 		input_handler.interactive_message("majorus_potion_tits",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func majorus_ass():
 	var character = person
@@ -74,7 +74,7 @@ func majorus_ass():
 		input_handler.interactive_message("majorus_potion_ass",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func majorus_balls():
 	var character = person
@@ -83,16 +83,16 @@ func majorus_balls():
 		input_handler.interactive_message("majorus_potion_balls",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func majorus_penis():
 	var character = person
 	if !character.get_stat('penis_size') in ['big']:
 		character.set_stat('penis_size', variables.slave_genital_sizes[variables.slave_genital_sizes.find(character.get_stat('penis_size')) + 1])
-		input_handler.interactive_message("majorus_potion_balls",'char_translate',character)
+		input_handler.interactive_message("majorus_potion_penis",'char_translate',character)
 	else:
 		input_handler.interactive_message("potion_no_effect", '', {})
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 
 func writ_of_exemption(character):
 	person = character
@@ -118,7 +118,7 @@ func writ_of_exemption_use():
 	else:
 		input_handler.interactive_message("writ_of_exemption_failure",'char_translate',character)
 		ResourceScripts.game_party.remove_slave(character)
-	input_handler.update_slave_panel()
+	#input_handler.update_slave_panel()
 	input_handler.rebuild_slave_list()
 
 func close():#for the cancel function

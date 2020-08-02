@@ -138,7 +138,8 @@ func show_slave_info(person):
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 
 	$ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
-	$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
+	$PurchaseButton.disabled = false
+	#$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
 	rebuild_traits(person)
 
 

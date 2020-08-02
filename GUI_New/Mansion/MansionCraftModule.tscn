@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=2]
@@ -32,7 +32,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_inactive.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_inactive.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_requiredmaterial.png" type="Texture" id=33]
 [ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=36]
@@ -109,7 +108,6 @@ size = 30
 font_data = ExtResource( 45 )
 
 [sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 33 )
 region_rect = Rect2( 0, 0, 554, 754 )
 
 [sub_resource type="DynamicFont" id=17]
@@ -520,7 +518,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CraftSelect/ScrollContainer"]
-margin_right = 474.0
+margin_right = 476.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
@@ -582,9 +580,12 @@ margin_right = 40.0
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="number" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
 margin_left = 46.8235
@@ -622,6 +623,9 @@ custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BackButton" type="Button" parent="CraftSelect"]
 margin_left = 148.0

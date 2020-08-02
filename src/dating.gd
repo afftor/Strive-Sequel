@@ -991,7 +991,7 @@ func calculateresults():
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n"
 		sex_offer = true
 	
-	$end/sexbutton.visible = sex_offer
+	$end/sexbutton.visible = globals.TextEncoder(sex_offer)
 	
 	return text
 

@@ -27,18 +27,25 @@ func open_class_list():
 		newbutton.get_node("name").text = tempclass.name
 		var text = ResourceScripts.descriptions.get_class_details(person, tempclass, true, true)
 		newbutton.connect('pressed', self, "show_class_info", [text, tempclass, person])
+		newbutton.set_meta('class', tempclass.code)
 		# newbutton.connect('pressed', self, "select_class", [tempclass.code])
 		# newbutton.connect('signal_RMB_release',input_handler,'show_class_info', [tempclass.code, person])
 		# globals.connecttexttooltip(newbutton, text)
 		if person.checkreqs(tempclass.reqs) == false:
 			newbutton.disabled = true
 	input_handler.active_character = person
+	update_pressed_buttons()
 
+func update_pressed_buttons():
+	for i in $ClassPanel/ScrollContainer/VBoxContainer.get_children():
+		if i.has_meta('class'):
+			i.pressed = get_parent().selected_class == i.get_meta('class')
 
 func show_class_info(text, tempclass, person):
 	get_parent().selected_class = tempclass.code
 	# text += input_handler.show_class_info(tempclass.code, person)
-	$ClassPanel/ClassDescript.bbcode_text = text
+	$ClassPanel/ClassDescript.bbcode_text = person.translate(text)
+	update_pressed_buttons()
 
 
 func cancel_class_selection():

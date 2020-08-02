@@ -260,7 +260,7 @@ func _ready():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		#state.decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support']
 		#input_handler.add_random_chat_message(newchar, 'hire')
-		input_handler.interactive_message("daisy_meet", '',{})
+		#input_handler.interactive_message("daisy_meet", '',{})
 		
 		#input_handler.interactive_message('intro', '', {})
 		

@@ -36,7 +36,14 @@ var backgrounds = {
 	fort2 = load("res://assets/images/backgrounds/fort2.png"),
 	fort3 = load("res://assets/images/backgrounds/fort3.png"),
 	
-	#scenes
+	fighters_guild = load("res://assets/images/backgrounds/fighters_guild.png"),
+	mages_guild = load("res://assets/images/backgrounds/mage_guild.png"),
+	servants_guild = load("res://assets/images/backgrounds/servants_guild.png"),
+	workers_guild = load("res://assets/images/backgrounds/workers_guild.png"),
+	#events
+	anastasia_event1 = load("res://assets/images/backgrounds/anastasia_event.png"),
+	
+	
 	}
 
 var scenes = {
@@ -158,7 +165,7 @@ var icons = {
 	obed3 = "res://assets/images/gui/gui icons/obedience3.png",
 	
 	class_master = "res://assets/Textures_v2/MANSION/icon_master.png",
-	class_servant = "res://assets/images/gui/gui icons/icon_servant.png",
+	class_servant = "res://assets/Textures_v2/MANSION/icon_servant.png",
 	class_slave = "res://assets/Textures_v2/MANSION/icon_slave.png",
 	
 	quest_slave_delivery = "res://assets/images/gui/slavepanel/charm.png",
@@ -175,7 +182,13 @@ var icons = {
 	
 	male = load("res://assets/Textures_v2/Universal/Icons/icon_male.png"),
 	female = load("res://assets/Textures_v2//Universal/Icons/icon_female.png"),
-	futa = load("res://assets/images/sexicons/futa.png"),
+	futa = load("res://assets/Textures_v2/Universal/Icons/icon_futa.png"),
+	
+	alchemy = load("res://assets/Textures_v2/MANSION/icon_alchemy_64.png"),
+	cooking = load("res://assets/Textures_v2/MANSION/icon_cooking_64.png"),
+	smith = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"),
+	tailor = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"),
+	upgrade = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"),
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS
 #	skill_abuse = "res://assets/images/iconsskills/abuse.png",

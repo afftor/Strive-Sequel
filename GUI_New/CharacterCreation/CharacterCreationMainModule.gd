@@ -305,6 +305,7 @@ func hideSaveLoadPanel():
 func SaveLoadCharPanel(saveloadmode):
 	saveloadstate = saveloadmode
 	$SaveLoadCharPanel.show()
+	$SaveLoadCharPanel/RichTextLabel.bbcode_text = tr('SAVETEMPLATEDESCRIPT')
 	$SaveLoadCharPanel/LineEdit.clear()
 	input_handler.ClearContainerForced($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
 	if saveloadmode == "save":
@@ -337,7 +338,7 @@ func PressSaveCharacter(savename = null):
 	
 	var file = File.new()
 	if file.file_exists(variables.userfolder + 'savedcharacters/' + savefilename):
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveCharacter', tr("OVERWRITECONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveCharacter', tr("OVERWRITETEMPLATECONFIRM")])
 	else:
 		SaveCharacter()
 
@@ -360,21 +361,21 @@ func SaveCharacter():
 	var text = JSON.print(character_to_save)
 	file.store_string(text)
 	file.close()
-	input_handler.SystemMessage("Character Saved")
+	input_handler.SystemMessage("Character Template Saved")
 	hideSaveLoadPanel()
 
 
 
 func PressDeleteCharacter(savename):
 	$SaveLoadCharPanel/LineEdit.text = savename
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteCharacter', tr("DELETECONFIRM")])
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteCharacter', tr("DELETETEMPLATECONFIRM")])
 
 func PressLoadCharacter(savename = null):
 	if savename == null:
 		hideSaveLoadPanel()
 	else:
 		$SaveLoadCharPanel/LineEdit.text = savename
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadCharacter', tr("LOADCONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadCharacter', tr("LOADTEMPLATECONFIRM")])
 
 
 func LoadCharacter():
@@ -447,6 +448,7 @@ func LoadCharacter():
 	hideSaveLoadPanel()
 	RebuildStatsContainer()
 	rebuild_slave()
+	input_handler.SystemMessage("Character Template Loaded")
 	# person.create_s_trait_select(character_to_load.sex_traits)
 
 

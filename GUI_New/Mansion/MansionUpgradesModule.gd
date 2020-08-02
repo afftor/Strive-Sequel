@@ -190,7 +190,6 @@ func selectupgrade(upgrade):
 
 		$UpgradeDescript/Time.show()
 		$UpgradeDescript/Time/Label.text = str(upgrade.levels[currentupgradelevel].taskprogress)
-		globals.connecttexttooltip($UpgradeDescript/Time/Panel, "TOOLTIP\n!!!CHANGE ME!!!")
 		for i in upgrade.levels[currentupgradelevel].cost:
 			var item = Items.materiallist[i]
 			var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)

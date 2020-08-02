@@ -35,7 +35,7 @@ func show_race_info(temprace):
 	var image
 	var text = race.descript
 	
-	text += "\n\nRace bonuses: "
+	text += "\n\n{color=yellow|Race bonuses: "
 	for i in race.race_bonus:
 		if (i as String).begins_with('resist'):
 			text += i.replace("resist","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
@@ -44,7 +44,7 @@ func show_race_info(temprace):
 			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
 		else:
 			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '
-	text = text.substr(0, text.length() - 2) + "."
+	text = text.substr(0, text.length() - 2) + ".}"
 	
 	$RaceSelection/RichTextLabel.bbcode_text = globals.TextEncoder(text)
 	text = race.code.to_lower().replace('halfkin','beastkin')

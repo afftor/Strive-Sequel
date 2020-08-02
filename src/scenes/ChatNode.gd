@@ -667,3 +667,40 @@ func return_chat_line(character,event):
 			array.append([i.text, i.weight])
 	if array.size() > 0:
 		return input_handler.weightedrandom(array)
+
+func rebuild_text(words):
+	var res := ''
+	for w in words:
+		res = res + ' ' + w
+	if words.size() > 0:
+		res = res.substr(1)
+	return res
+
+func process_stutter(text:String, num = 1, mlen = 3, esc_list = []):
+	var words = text.split(' ')
+	
+	var buf = []
+	for i in range(words.size()):
+		var w = words[i]
+		if w in esc_list: continue
+		if w.length() < mlen: continue
+		buf.push_back(i)
+	
+	for i in range(num):
+		if buf.empty(): break
+		var tmp = randi() % buf.size()
+		words[tmp] = words[tmp][0] + '-' + words[tmp]
+	
+	return rebuild_text(words)
+
+func process_drunk(text: String, insert:Array, num = 1):
+	var res = ' ' + text + ' '
+	for i in range(num):
+		var count = res.count(' ')
+		var pos = randi() % count
+		var tpos = res.find(' ')
+		for ii in range(pos):
+			tpos = res.find(' ', tpos + 1)
+		var word = insert[randi() % insert.size()]
+		res = res.insert(tpos, ' ' + word)
+	return res.trim_prefix(' ').trim_suffix(' ')

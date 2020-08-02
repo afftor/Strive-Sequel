@@ -154,6 +154,7 @@ func make_guild(code, area):
 				while guilddatatemplate.questsetting[i] > area.quests.factions[data.code].size():
 					make_quest_for_guild(guilddatatemplate, i)
 			data.questnumber -= 1
+	if data.has('background'): guilddatatemplate.background = data.background
 	guilddatatemplate.slavenumber = data.slavenumber
 	while data.slavenumber > 0:
 		make_slave_for_guild(guilddatatemplate)
@@ -254,7 +255,7 @@ func make_location(code, area):
 			location.gather_limit_resources[data.keys()[0]] = data.values()[0]
 			array.erase(data)
 		location.tasks.append("gather")
-		location.gather_mod = rand_range(1.5,1.75)
+		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
 	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]

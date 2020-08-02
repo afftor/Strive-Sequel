@@ -131,6 +131,9 @@ margin_right = 971.424
 margin_bottom = 601.149
 texture = ExtResource( 30 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="LocationGui/Image"]
 self_modulate = Color( 1, 1, 1, 0.552941 )

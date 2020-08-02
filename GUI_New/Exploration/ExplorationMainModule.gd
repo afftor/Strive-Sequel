@@ -76,7 +76,7 @@ func clear_submodules():
 	submodules.clear()
 
 func ShowSlavePanel(person):
-	var dialogue = get_tree().get_root().get_node("dialogue")
+	var dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)#get_tree().get_root().get_node("dialogue")
 	if dialogue.is_visible():
 		dialogue_opened = true
 		dialogue.hide()
@@ -84,7 +84,7 @@ func ShowSlavePanel(person):
 	FullSlaveInfo.show_summary(person)
 
 func update():
-	var dialogue = get_tree().get_root().get_node("dialogue")
+	var dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)#get_tree().get_root().get_node("dialogue")
 	if dialogue_opened && !FullSlaveInfo.is_visible():
 		dialogue.show()
 		dialogue_opened = false
@@ -122,8 +122,8 @@ func open_location(data):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
 
-#	if active_location.has('background'):
-#		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
+	if active_location.has('background'):
+		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
 
@@ -546,9 +546,9 @@ func enter_level(level, skip_to_end = false):
 		newbutton.text = 'Skip to last room'
 		newbutton.connect("pressed",self,"enter_level", [level, true])
 	
-	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-	newbutton.text = 'Roam'
-	newbutton.connect("pressed",self,"area_advance",['roam'])
+#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+#	newbutton.text = 'Roam'
+#	newbutton.connect("pressed",self,"area_advance",['roam'])
 	
 	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 	newbutton.text = 'Return'

@@ -197,10 +197,24 @@ __meta__ = {
 }
 
 [node name="DescriptText" type="RichTextLabel" parent="."]
-margin_left = 397.0
+margin_left = 404.0
 margin_top = 80.0
 margin_right = 696.0
-margin_bottom = 264.0
+margin_bottom = 244.0
+theme = ExtResource( 9 )
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "Text"
+text = "Text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptText2" type="RichTextLabel" parent="."]
+margin_left = 403.0
+margin_top = 259.81
+margin_right = 702.0
+margin_bottom = 326.81
 theme = ExtResource( 9 )
 custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
@@ -211,10 +225,10 @@ __meta__ = {
 }
 
 [node name="TravelConfirmButton" type="Button" parent="."]
-margin_left = 584.0
+margin_left = 467.0
 margin_top = 329.0
 margin_right = 690.0
-margin_bottom = 369.0
+margin_bottom = 371.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 24 )
 custom_fonts/font = SubResource( 7 )
@@ -227,6 +241,7 @@ __meta__ = {
 }
 
 [node name="TravelCancelButton" type="Button" parent="."]
+visible = false
 margin_left = 472.0
 margin_top = 329.0
 margin_right = 579.0
@@ -248,6 +263,9 @@ rect_min_size = Vector2( 0, 40 )
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TravelersContainer" type="ScrollContainer" parent="."]
 margin_left = 728.0

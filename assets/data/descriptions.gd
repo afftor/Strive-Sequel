@@ -514,7 +514,6 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 				text += Skilldata.Skilllist[i].name + ", "
 			text = text.substr(0, text.length() - 2) + "}"
 	
-	
 	return globals.TextEncoder(text)
 
 func get_class_reqs(newperson, classdata):
