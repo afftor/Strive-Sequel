@@ -696,11 +696,11 @@ func get_person_for_chat(array, event, bonus_args = []):
 
 func add_random_chat_message(person, event, bonus_args = []):
 	if person.has_profession('master'): return
-	var node = get_spec_node(self.NODE_CHAT) #get_chat_node()
-	node.select_chat_line(person, event, bonus_args)
+	var node = get_spec_node(self.NODE_CHAT)
+	node.show_chat_line(person, event)
 
 func get_random_chat_line(person, event):
-	var node = get_spec_node(self.NODE_CHAT) #get_chat_node()
+	var node = get_spec_node(self.NODE_CHAT)
 	return node.return_chat_line(person, event)
 
 func repeat_social_skill():

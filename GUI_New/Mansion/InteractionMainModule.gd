@@ -2202,3 +2202,9 @@ func acquire_valuecheck(r, actor):
 				check = false
 	return check
 
+func has_master():
+	for i in participants:
+		if i.person.has_profession('master'):
+			return true
+	
+	return false

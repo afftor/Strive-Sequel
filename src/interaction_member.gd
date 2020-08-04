@@ -400,7 +400,7 @@ func actioneffect(values, scenedict):
 	var partner_skill_counter = 0
 	for i in scenedict[seek_group+'s']:
 		for k in scenedict.scene[seek_group+'_skill']:
-			partner_skill += i.person_sexskills[k] 
+			partner_skill += i.person_sexskills[k]
 			partner_skill_counter += 1
 			var value = (1.0/scenedict.scene[seek_group+"_skill"].size()) * variables.sex_factor_skill_multiplier[int(i.person.get_stat('sexuals_factor'))]
 			var bonus = 1
