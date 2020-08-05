@@ -9,10 +9,8 @@ func _ready():
 
 func open(classcode, person):
 	var tempclass = classesdata.professions[classcode]
-	
-	
 	$TextureRect.texture = tempclass.icon
-	$TextureRect/name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
+	$name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
 	
 	input_handler.ClearContainer($SocialSkills/HBoxContainer)
 	input_handler.ClearContainer($CombatSkills/HBoxContainer)
