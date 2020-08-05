@@ -205,21 +205,21 @@ func _input(event):
 	if event.is_action_pressed("F") && $Panel/passbutton.disabled == false:
 		_on_passbutton_pressed()
 
-# var dummycounter = 0
+var dummycounter = 0
 
-# func createtestdummy(type = 'normal'):
-# 	var person = ResourceScripts.scriptdict.class_slave.new()
-# 	person.create('BeastkinFox', 'random', 'random')
-# 	var newmember = member.new()
-# 	newmember.sceneref = self
-# 	#bad solution. need replacing
-# 	person.statlist.statlist.vaginal_virgin = true
-# 	person.is_players_character = true
-# 	person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
-# 	person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	# person.statlist.statlist.consent = 500
-	# for i in person.statlist.statlist.sex_skills:
-	# 	person.statlist.statlist.sex_skills[i] += 100
+func createtestdummy(type = 'normal'):
+	var person = ResourceScripts.scriptdict.class_slave.new()
+	person.create('BeastkinFox', 'random', 'random')
+	var newmember = member.new()
+	newmember.sceneref = self
+	#bad solution. need replacing
+	person.statlist.statlist.vaginal_virgin = true
+	person.is_players_character = true
+	person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
+	person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
+#	person.statlist.statlist.consent = 500
+#	for i in person.statlist.statlist.sex_skills:
+#		person.statlist.statlist.sex_skills[i] += 100
 	#person.sex = 'male'
 #	if type == 'resist':
 #		person.consent = false
@@ -2202,3 +2202,9 @@ func acquire_valuecheck(r, actor):
 				check = false
 	return check
 
+func has_master():
+	for i in participants:
+		if i.person.has_profession('master'):
+			return true
+	
+	return false

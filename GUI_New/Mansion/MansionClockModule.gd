@@ -136,7 +136,8 @@ func advance_day():
 	ResourceScripts.game_party.update_global_cooldowns()
 	ResourceScripts.game_globals.hour = 0
 	ResourceScripts.game_globals.date += 1
-	ResourceScripts.game_globals.daily_interactions_left = 1
+	ResourceScripts.game_globals.daily_sex_left = 1
+	ResourceScripts.game_globals.daily_dates_left = 1
 	for i in ResourceScripts.game_party.characters.values():
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)

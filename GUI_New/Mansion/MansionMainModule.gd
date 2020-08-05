@@ -342,15 +342,13 @@ func slave_list_manager():
 	SlaveModule.show_slave_info()
 
 func update_sex_date_buttons():
-	if ResourceScripts.game_globals.daily_interactions_left > 0:
+	if ResourceScripts.game_globals.daily_sex_left > 0:
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
 	else:
 		SexSelect.get_node("SexButton").disabled = true
-		SexSelect.get_node("DateButton").disabled = true
-	SexSelect.get_node("DateButton").disabled = sex_participants.size() > 1 || sex_participants.size() == 0 || sex_participants.has(ResourceScripts.game_party.get_master())
-
-
 	
+	SexSelect.get_node("DateButton").disabled = sex_participants.size() > 1 || sex_participants.size() == 0 || sex_participants.has(ResourceScripts.game_party.get_master()) || ResourceScripts.game_globals.daily_dates_left <= 0
+
 func set_hovered_person(node, person):
 	hovered_person = person
 	SlaveModule.show_slave_info()

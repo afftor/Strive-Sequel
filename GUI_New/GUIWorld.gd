@@ -266,7 +266,7 @@ func test_mode():
 	character.set_stat('sexuals_factor', 5)
 	character.set_stat('charm', 100)
 	character.set_stat('physics', 100)
-	character.set_stat('wits', 100)
+	character.set_stat('consent', 100)
 
 	var character2 = ResourceScripts.scriptdict.class_slave.new()
 	character2.create('HalfkinCat', 'random', 'random')
@@ -403,7 +403,7 @@ func test_mode():
 	tmp.oral = 70
 	tmp.anal = 90
 	tmp.petting = 100
-	character.set_stat('sex_skills', tmp)
+	#character.set_stat('sex_skills', tmp)
 	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]  #[state.areas.plains.locations.size()-1]]
 	input_handler.active_area = ResourceScripts.game_world.areas.plains
 
@@ -414,3 +414,4 @@ func test_mode():
 		if c.get_location() == "mansion": c.travel.location = "Aliron"
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
+	input_handler.add_random_chat_message(character2, 'hire')

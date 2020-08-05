@@ -10,7 +10,8 @@ var newgame = false
 var date = 1
 var hour = 6
 
-var daily_interactions_left = 1
+var daily_sex_left = 1
+var daily_dates_left = 1
 
 #not used
 #var votelinksseen = false
@@ -30,4 +31,5 @@ func serialize():
 func advance_day():
 	hour = 0
 	date += 1
-	daily_interactions_left = 1
+	daily_dates_left = 1
+	daily_sex_left = 1

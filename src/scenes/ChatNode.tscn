@@ -4,6 +4,14 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
 
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 617, 136 )
+margin_left = 15.0
+margin_right = 14.0
+margin_top = 15.0
+margin_bottom = 13.0
+
 [node name="Panel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 1396.0
