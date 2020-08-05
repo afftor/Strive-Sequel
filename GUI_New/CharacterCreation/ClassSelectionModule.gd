@@ -10,7 +10,8 @@ func _ready():
 func open_class_list():
 	var person = get_parent().person
 	show()
-	# $ClassPanel.show()
+	get_parent().TraitSelection.hide()
+	get_parent().RaceSelection.hide()
 	if get_parent().mode == 'master':
 		class_array = variables.master_starting_classes
 	elif get_parent().mode == 'slave':

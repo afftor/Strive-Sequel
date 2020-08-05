@@ -672,18 +672,26 @@ text = "Sell"
 align = 1
 valign = 1
 
-[node name="EnslaveButton" type="TextureButton" parent="."]
-visible = false
-margin_left = 161.0
-margin_top = 719.99
-margin_right = 355.0
-margin_bottom = 777.99
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 63.0
+margin_top = 720.0
+margin_right = 466.0
+margin_bottom = 778.0
+custom_constants/separation = 15
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnslaveButton" type="TextureButton" parent="HBoxContainer"]
+margin_right = 194.0
+margin_bottom = 58.0
 theme = ExtResource( 29 )
 texture_normal = ExtResource( 35 )
 texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 33 )
 
-[node name="Label" type="Label" parent="EnslaveButton"]
+[node name="Label" type="Label" parent="HBoxContainer/EnslaveButton"]
 margin_right = 194.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 36 )
@@ -691,3 +699,25 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Enslave"
 align = 1
 valign = 1
+
+[node name="UpgradeButton" type="TextureButton" parent="HBoxContainer"]
+self_modulate = Color( 0.301961, 0.584314, 0.917647, 1 )
+margin_left = 209.0
+margin_right = 403.0
+margin_bottom = 58.0
+theme = ExtResource( 29 )
+texture_normal = ExtResource( 35 )
+texture_pressed = ExtResource( 34 )
+texture_hover = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="HBoxContainer/UpgradeButton"]
+margin_right = 194.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 36 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Upgrade"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

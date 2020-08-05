@@ -1,12 +1,10 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI_New/Exploration/ExplorationMainModule.gd" type="Script" id=3]
 [ext_resource path="res://GUI_New/Exploration/ExploreCityModule.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GUI_New/Exploration/ExploreNavigationModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/backgrounds/elf_capital.png" type="Texture" id=6]
-[ext_resource path="res://GUI_New/Exploration/ExploreNavigationModule.gd" type="Script" id=7]
 [ext_resource path="res://GUI_New/Exploration/ExploreCityModule.gd" type="Script" id=8]
 [ext_resource path="res://GUI_New/Exploration/ExploreHireModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GUI_New/Exploration/ExploreHireModule.gd" type="Script" id=10]
@@ -34,8 +32,10 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=32]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_guildbackground.png" type="Texture" id=33]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=34]
+[ext_resource path="res://GUI_New/Universal/NavigationModule.tscn" type="PackedScene" id=35]
 
 [node name="ExplorationMainModule" type="Panel"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.74902 )
 margin_right = 1920.0
 margin_bottom = 1080.0
@@ -702,12 +702,11 @@ margin_right = 208.631
 margin_bottom = 49.7127
 text = "Items"
 
-[node name="ExploreNavigationModule" parent="." instance=ExtResource( 5 )]
+[node name="NavigationModule" parent="." instance=ExtResource( 35 )]
 margin_left = 327.0
 margin_top = 15.0
-margin_right = 1903.0
-margin_bottom = 68.0
-script = ExtResource( 7 )
+margin_right = -143.0
+margin_bottom = -1010.0
 
 [node name="ExploreShopModule" parent="." instance=ExtResource( 14 )]
 visible = false

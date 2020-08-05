@@ -10,6 +10,7 @@ func _ready():
 func select_race():
 	selected_race = ""
 	show()
+	get_parent().ClassSelection.hide()
 	var person = get_parent().person
 	input_handler.ClearContainer($RaceSelection/ScrollContainer/VBoxContainer)
 	for i in races.racelist.values():

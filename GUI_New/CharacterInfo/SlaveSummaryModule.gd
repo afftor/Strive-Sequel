@@ -25,6 +25,9 @@ func _ready():
 	$VBoxContainer/DetailsButton.set_meta("state", "details")
 
 	# show_summary()
+# func update():
+# 	update_buttons()
+
 
 func update_buttons():
 	for button in $VBoxContainer.get_children():

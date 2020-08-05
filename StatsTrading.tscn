@@ -107,6 +107,9 @@ margin_top = 552.0
 margin_right = 365.0
 margin_bottom = 576.0
 text = "Testing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 64.0
@@ -181,6 +184,7 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="StatsScroll/StatsVBox"]
+visible = false
 margin_right = 300.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 0, 51 )

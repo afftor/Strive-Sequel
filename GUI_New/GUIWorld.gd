@@ -14,6 +14,7 @@ onready var MAIN_MODULES = {
 	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn"),
 	EXPLORATION = preload("res://GUI_New/Exploration/ExplorationMainModule.tscn"),
 	INTERACTION = preload("res://GUI_New/Mansion/InteractionMainModule.tscn"),
+	DATE = preload("res://src/date.tscn"),
 	GAMEMENU = preload("res://GUI_New/GameMenuPanel.tscn"),
 }
 
@@ -31,7 +32,7 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	test_mode()
+	# test_mode()
 
 	if globals.start_new_game == true:
 		globals.start_new_game = false
@@ -60,13 +61,18 @@ func _ready():
 
 
 func _input(event):
-	if (event.is_action_released("ESC") && CurrentScene != null && CurrentScene.name != "InteractionMainModule"):
+	if CurrentScene == null:
+		return
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name == "date":
+		return
+	if (event.is_action_released("ESC") && CurrentScene != null && CurrentScene.name != "InteractionMainModule") && !get_tree().get_root().get_node("classinfo").is_visible():
 		if menu_opened:
 			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
 			if has_submodules_opened:
 				submodules_handler()
 				return
 			gui_data["GAMEMENU"].main_module.hide()
+			CurrentScene.get_node("MansionClockModule").set_time_buttons()
 			menu_opened = !menu_opened
 			return
 		if get_tree().get_root().has_node("classinfo"):
@@ -90,6 +96,12 @@ func _input(event):
 				continue
 		if !ignore_rightclick:
 			visibility_handler()
+	if CurrentScene == gui_data["MANSION"].main_module && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):# && !text_field_input: ### Find Solution
+		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+			if input_handler.globalsettings.turn_based_time_flow == false:
+				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
+			else:
+				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
 
 
 func visibility_handler():
@@ -97,6 +109,8 @@ func visibility_handler():
 	if has_submodules_opened:
 		submodules_handler()
 	if CurrentScene == gui_data["INVENTORY"].main_module && PreviousScene == gui_data["SLAVE_INFO"].main_module && CurrentScene.is_visible():
+		ResourceScripts.core_animations.BlackScreenTransition()
+		yield(get_tree().create_timer(0.5), "timeout")
 		CurrentScene.hide()
 		CurrentScene = PreviousScene
 	if menu_opened:
@@ -105,6 +119,8 @@ func visibility_handler():
 	if BaseScene == gui_data["MANSION"].main_module && !has_submodules_opened:
 		BaseScene.mansion_state = "default"
 	if !has_submodules_opened && CurrentScene.is_visible():
+		ResourceScripts.core_animations.BlackScreenTransition()
+		yield(get_tree().create_timer(0.5), "timeout")
 		CurrentScene = BaseScene
 	for scene in gui_data.values():
 		scene.main_module.visible = (scene.main_module == CurrentScene)
@@ -116,7 +132,7 @@ func visibility_handler():
 func submodules_handler():
 	var last_opened_id
 	var last_opened
-	if menu_opened:
+	if menu_opened && !get_tree().get_root().get_node("classinfo").is_visible():
 		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
 		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
 		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
@@ -132,10 +148,19 @@ func submodules_handler():
 func close_scene():
 	if BaseScene == gui_data["MANSION"].main_module:
 		BaseScene.mansion_state = "default"
+		for module in BaseScene.submodules:
+			ResourceScripts.core_animations.FadeAnimation(module, 0.3)
+			yield(get_tree().create_timer(0.3), "timeout")
+			module.hide()
+			set_current_scene(BaseScene)
+			return
 	for module in CurrentScene.submodules:
+		ResourceScripts.core_animations.FadeAnimation(module, 0.3)
+		yield(get_tree().create_timer(0.3), "timeout")
 		module.hide()
 	CurrentScene.submodules.clear()
-	set_current_scene(BaseScene)
+	# if CurrentScene == gui_data["SLAVE_INFO"].main_module:
+	# 	return
 
 
 func set_current_scene(scene):

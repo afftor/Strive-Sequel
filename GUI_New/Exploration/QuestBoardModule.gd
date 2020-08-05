@@ -12,13 +12,15 @@ func _ready():
 
 func quest_board():
 	get_parent().clear_submodules()
-	get_parent().submodules.append(self)
+	if !get_parent().submodules.has(self):
+		get_parent().submodules.append(self)
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false
 	get_parent().City.Guild.hide()
 	get_parent().City.get_node("GuildMenuBG").hide()
 	get_parent().City.opened_guild = {code = ""}
 	get_parent().City.update_buttons("quest_board")
+	$QuestDetails.hide()
 	is_quest_board_opened = !is_quest_board_opened
 	if !is_quest_board_opened:
 		hide()

@@ -75,17 +75,21 @@ var params_to_save = [
 	"charm_factor",
 	"wits_factor",
 	"sexuals_factor",
-	"professions"
+	"professions",
+	"type"
 ]
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
 onready var SlaveInfo = $SlaveCreationModule
+onready var TraitSelection = $TraitSelection
 
 func _ready():
 	$SaveButton.connect("pressed", self, "SaveLoadCharPanel", ["save"])
 	$LoadButton.connect("pressed", self, "SaveLoadCharPanel", ["load"])
 	$SaveLoadCharPanel/LineEdit.connect("text_changed",self,'set_savefilename')
+	$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressSaveLoadCharacter", [savefilename])
+	$SaveLoadCharPanel/SaveLoadCancel.connect("pressed", self, "hideSaveLoadPanel")
 	# input_handler.AddPanelOpenCloseAnimation($RaceSelection)
 	# input_handler.AddPanelOpenCloseAnimation($TraitSelection)
 	# input_handler.AddPanelOpenCloseAnimation($DietPanel)
@@ -297,8 +301,8 @@ func set_savefilename(text):
 
 func hideSaveLoadPanel():
 	$SaveLoadCharPanel.hide()
-	$SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressSaveCharacter")
-	$SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressLoadCharacter")
+	# $SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressSaveCharacter")
+	# $SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressLoadCharacter")
 	savefilename = null
 	saveloadstate = null
 
@@ -308,25 +312,24 @@ func SaveLoadCharPanel(saveloadmode):
 	$SaveLoadCharPanel/RichTextLabel.bbcode_text = tr('SAVETEMPLATEDESCRIPT')
 	$SaveLoadCharPanel/LineEdit.clear()
 	input_handler.ClearContainerForced($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-	if saveloadmode == "save":
-		for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
-			var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
-			var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
-			newbutton.get_node("Label").text = savename
-			newbutton.connect('pressed', self, 'PressSaveCharacter', [savename])
-		$SaveLoadCharPanel/SaveLoadButton.text = "Save"
-		$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressSaveCharacter")
+	# if saveloadmode == "save":
+	for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
+		var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
+		var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
+		if saveloadmode == "save":
+			$SaveLoadCharPanel/SaveLoadButton.text = "Save"
+		else:
+			$SaveLoadCharPanel/SaveLoadButton.text = "Load"	
+		newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
+		newbutton.get_node("Label").text = savename
+		newbutton.connect('pressed', self, 'PressSaveLoadCharacter', [savename])	
+
+
+func PressSaveLoadCharacter(savename):
+	if saveloadstate == "save":
+		PressSaveCharacter(savename)
 	else:
-		for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
-			var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
-			var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
-			newbutton.get_node("Label").text = savename
-			newbutton.connect('pressed', self, 'PressLoadCharacter', [savename])
-		$SaveLoadCharPanel/SaveLoadButton.text = "Load"
-		$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressLoadCharacter")
-	$SaveLoadCharPanel/SaveLoadCancel.connect("pressed", self, "hideSaveLoadPanel")
+		PressLoadCharacter(savename)
 
 
 func PressSaveCharacter(savename = null):
@@ -346,7 +349,6 @@ func PressSaveCharacter(savename = null):
 func SaveCharacter():
 	apply_preserved_settings()
 	var character_to_save = {}
-	
 	for i in params_to_save:
 		character_to_save[i] = person.get_stat(i)
 		if preservedsettings.has(i) && i != "professions": # && !preservedsettings in except_array:
@@ -355,6 +357,7 @@ func SaveCharacter():
 	character_to_save["tits_size"] = person.get_stat("tits_size")
 	character_to_save["ass_size"] = person.get_stat("ass_size")
 	character_to_save["balls_size"] = person.get_stat("balls_size")
+	character_to_save.type = str(mode)
 	var file = File.new()
 	file.open(variables.userfolder + 'savedcharacters/' + savefilename, file.WRITE)
 
@@ -386,6 +389,10 @@ func LoadCharacter():
 	var parse_result
 	parse_result = JSON.parse(text)
 	var character_to_load = parse_result.result
+	print("character_to_load:", character_to_load)
+	if character_to_load != null && character_to_load.type != mode:
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("Can't use this template. Types doesn't match.")])
+		return
 	var check_stats = 0
 	var stats_array = []
 	for i in character_to_load:
@@ -520,7 +527,9 @@ func stat_down(stat):
 		$ClassSelectionModule.update_class_buttons()
 
 func open_sex_traits():
-	$TraitSelection.show()
+	RaceSelection.hide()
+	ClassSelection.hide()
+	TraitSelection.show()
 	input_handler.ClearContainer($TraitSelection/ScrollContainer/VBoxContainer)
 	for i in Traitdata.sex_traits.values():
 		if i.starting == false || person.checkreqs(i.acquire_reqs) == false:

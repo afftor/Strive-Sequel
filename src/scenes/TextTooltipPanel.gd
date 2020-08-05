@@ -56,6 +56,9 @@ func showup(node, text):
 		rect_global_position.x -= get_rect().end.x - screen.size.x
 	if get_rect().end.y >= screen.size.y:
 		rect_global_position.y = node.get_global_rect().position.y - (get_rect().size.y+10)
+	if get_rect().position.y < 0:
+		rect_global_position.y = 0
+		rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
 	prevnode = parentnode
 
 func turnoff():

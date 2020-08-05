@@ -26,6 +26,10 @@ func _ready():
 		
 func update_purchase_btn():
 	$PurchaseButton/Label.text = get_parent().hiremode.capitalize()
+	if get_parent().hiremode == "sell":
+		$PurchaseButton.disabled = ((get_parent().person_to_hire.calculate_price() / 2) >= ResourceScripts.game_res.money)
+	else:
+		$PurchaseButton.disabled = ((get_parent().person_to_hire.calculate_price()) >= ResourceScripts.game_res.money)
 
 
 func hire_sell():
@@ -36,7 +40,10 @@ func hire_sell():
 
 
 func show_summary(person):
-	$Price.text = str(person.calculate_price())
+	if get_parent().hiremode == "sell":
+		$Price.text = str(person.calculate_price() / 2)
+	else:
+		$Price.text = str(person.calculate_price())
 	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
 	SummaryModule.get_node("Portrait").texture = person.get_icon()

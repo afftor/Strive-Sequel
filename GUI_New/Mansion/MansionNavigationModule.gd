@@ -1,9 +1,5 @@
 extends Panel
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var Navigation = $NavigationContainer/AreaSelection
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 

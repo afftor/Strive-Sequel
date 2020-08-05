@@ -28,6 +28,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VSeparator" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
+margin_left = 148.0
+margin_right = 154.0
+margin_bottom = 55.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="NavigationContainer" type="ScrollContainer" parent="."]
 margin_left = 148.0
 margin_right = 1327.0
@@ -62,9 +73,9 @@ toggle_mode = true
 text = "Aliron"
 
 [node name="MansionButton" type="Button" parent="."]
-margin_top = 4.0
+margin_top = -5.0
 margin_right = 149.0
-margin_bottom = 48.0
+margin_bottom = 55.0
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
 custom_styles/focus = ExtResource( 2 )
@@ -75,17 +86,6 @@ custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Mansion"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VSeparator" type="TextureRect" parent="."]
-visible = false
-self_modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
-margin_left = 148.0
-margin_right = 154.0
-margin_bottom = 55.0
-texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

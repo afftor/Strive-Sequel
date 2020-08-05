@@ -100,12 +100,12 @@ func update():
 			newnode.texture = images.icons[i]
 			newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
 
-		input_handler.ClearContainer($SexSkills/VBoxContainer)
+		input_handler.ClearContainer($SexSkillsControl/ScrollContainer/VBoxContainer)
 		var s_skills = person.get_stat('sex_skills')
 		for i in s_skills:
 			if s_skills[i] == 0 && universal_skills.find(i) < 0:
 				continue
-			var newbutton = input_handler.DuplicateContainerTemplate($SexSkills/VBoxContainer)
+			var newbutton = input_handler.DuplicateContainerTemplate($SexSkillsControl/ScrollContainer/VBoxContainer)
 			newbutton.get_node("Label").text = tr("SEXSKILL"+i.to_upper())
 			newbutton.get_node("ProgressBar").value = s_skills[i]
 			newbutton.get_node("ProgressBar/Label").text = str(floor(s_skills[i])) + '/100'

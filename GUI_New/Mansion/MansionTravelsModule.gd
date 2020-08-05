@@ -104,6 +104,7 @@ func update_location_list():
 		newbutton.get_node("Label").text = text
 		newbutton.connect('pressed', self, 'select_destination', ['Aliron'])
 		newbutton.name = 'mansion'
+		newbutton.set_meta("code", ResourceScripts.game_world.areas[destination_area].capital_name)
 		newbutton.visible = get_parent().SlaveListModule.selected_location != "mansion"
 	
 	if destination_area != 'plains':

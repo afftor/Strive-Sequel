@@ -8,6 +8,7 @@ func _ready():
 
 
 func open(classcode, person):
+	ResourceScripts.core_animations.UnfadeAnimation(self, 0.3)
 	var tempclass = classesdata.professions[classcode]
 	$TextureRect.texture = tempclass.icon
 	$name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)

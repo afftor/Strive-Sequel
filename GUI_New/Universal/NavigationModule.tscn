@@ -1,20 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=1]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=2]
-[ext_resource path="res://assets/Textures_v2/MANSION/divider_navigator.png" type="Texture" id=3]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/Textures_v2/MANSION/divider_navigator.png" type="Texture" id=4]
+[ext_resource path="res://GUI_New/Universal/NavigationModule.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 4 )
+font_data = ExtResource( 2 )
 
-[node name="MansionNavigationModule" type="Panel"]
+[node name="NavigationModule" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -470.0
 margin_bottom = -1025.0
-custom_styles/panel = ExtResource( 2 )
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,7 +36,7 @@ margin_left = 13.0
 margin_top = -1.0
 margin_right = 53.0
 margin_bottom = 54.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,8 +56,8 @@ custom_constants/separation = 14
 
 [node name="Button" type="Button" parent="NavigationContainer/AreaSelection"]
 visible = false
-margin_right = 128.0
-margin_bottom = 60.0
+margin_right = 108.0
+margin_bottom = 55.0
 rect_min_size = Vector2( 0, 55 )
 custom_styles/hover = ExtResource( 1 )
 custom_styles/pressed = ExtResource( 1 )
