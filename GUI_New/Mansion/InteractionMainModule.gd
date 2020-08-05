@@ -217,9 +217,9 @@ func createtestdummy(type = 'normal'):
 	person.is_players_character = true
 	person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
 	person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.statlist.statlist.consent = 500
-	for i in person.statlist.statlist.sex_skills:
-		person.statlist.statlist.sex_skills[i] += 100
+#	person.statlist.statlist.consent = 500
+#	for i in person.statlist.statlist.sex_skills:
+#		person.statlist.statlist.sex_skills[i] += 100
 	#person.sex = 'male'
 #	if type == 'resist':
 #		person.consent = false
