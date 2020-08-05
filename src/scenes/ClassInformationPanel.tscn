@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/Textures_v2/CLASS_INFO/Panels/panel_classinfo.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_class_rmb.png" type="Texture" id=1]
 [ext_resource path="res://GUI_New/CharacterInfo/ClassInformationPanel_v2.gd" type="Script" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_simpleclass.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/iconsclasses/Master.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/gui/universal/skill_frame.png" type="Texture" id=7]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
@@ -11,7 +12,7 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 700, 974 )
+region_rect = Rect2( 0, 0, 700, 820 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 36
@@ -25,7 +26,7 @@ font_data = ExtResource( 8 )
 margin_left = 569.0
 margin_top = 70.0154
 margin_right = 1269.0
-margin_bottom = 1044.02
+margin_bottom = 890.015
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -33,6 +34,7 @@ __meta__ = {
 }
 
 [node name="Background" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 0, 0, 0, 0.823529 )
 show_behind_parent = true
 margin_right = 700.0
@@ -62,6 +64,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="name" type="Label" parent="."]
+margin_left = 261.0
+margin_top = 12.0
+margin_right = 676.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
 margin_right = 250.0
@@ -71,6 +87,7 @@ expand = true
 stretch_mode = 6
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
+visible = false
 show_behind_parent = true
 margin_left = -3.0
 margin_top = 1.0
@@ -79,45 +96,43 @@ margin_bottom = 254.0
 texture = ExtResource( 3 )
 expand = true
 
-[node name="name" type="Label" parent="TextureRect"]
-margin_left = 261.0
-margin_top = 12.0
-margin_right = 676.0
-margin_bottom = 91.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "name"
-align = 1
-valign = 1
-
 [node name="reqs" type="RichTextLabel" parent="."]
-margin_left = 13.0
-margin_top = 278.0
-margin_right = 326.0
-margin_bottom = 567.0
+margin_left = 20.0
+margin_top = 263.0
+margin_right = 233.0
+margin_bottom = 533.0
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="bonus" type="RichTextLabel" parent="."]
-margin_left = 272.0
-margin_top = 91.0
-margin_right = 687.0
-margin_bottom = 295.0
+margin_left = 261.0
+margin_top = 59.0
+margin_right = 676.0
+margin_bottom = 250.0
+theme = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 9 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SocialSkills" type="ScrollContainer" parent="."]
-margin_left = 279.622
-margin_top = 340.904
-margin_right = 677.622
-margin_bottom = 440.904
+margin_left = 261.0
+margin_top = 447.633
+margin_right = 659.0
+margin_bottom = 547.633
 scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SocialSkills"]
 margin_right = 398.0
 size_flags_horizontal = 3
-alignment = 1
 
 [node name="Button" type="TextureRect" parent="SocialSkills/HBoxContainer"]
 visible = false
@@ -137,16 +152,18 @@ expand = true
 stretch_mode = 6
 
 [node name="CombatSkills" type="ScrollContainer" parent="."]
-margin_left = 276.622
-margin_top = 483.904
-margin_right = 674.622
-margin_bottom = 583.904
+margin_left = 261.0
+margin_top = 296.76
+margin_right = 659.0
+margin_bottom = 396.76
 scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CombatSkills"]
 margin_right = 398.0
 size_flags_horizontal = 3
-alignment = 1
 
 [node name="Button" type="TextureRect" parent="CombatSkills/HBoxContainer"]
 visible = false
@@ -166,19 +183,25 @@ expand = true
 stretch_mode = 6
 
 [node name="SocialLabel" type="Label" parent="."]
-margin_left = 414.57
-margin_top = 309.418
-margin_right = 543.57
-margin_bottom = 341.418
+margin_left = 261.0
+margin_top = 414.684
+margin_right = 390.0
+margin_bottom = 446.684
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Social Skills"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CombatLabel" type="Label" parent="."]
-margin_left = 398.782
-margin_top = 450.144
-margin_right = 551.782
-margin_bottom = 482.144
+margin_left = 261.0
+margin_top = 265.0
+margin_right = 414.0
+margin_bottom = 297.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Combat Skills"
+__meta__ = {
+"_edit_use_anchors_": false
+}

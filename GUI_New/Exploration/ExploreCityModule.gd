@@ -12,6 +12,7 @@ func open_city(city):
 	var expnode = get_parent()
 	expnode.get_node("LocationGui").hide()
 	show()
+
 	expnode.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[city].area]
 	expnode.active_location = {}
 	input_handler.active_area = expnode.active_area
@@ -63,6 +64,7 @@ func open_city(city):
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 	newbutton.get_node("Icon").hide()
 	for i in expnode.active_area.capital_options:
+		print("expnode:", i)
 		newbutton = input_handler.DuplicateContainerTemplate(City)
 		newbutton.get_node("Label").text = expnode.city_options[i]
 		newbutton.connect("pressed", self, i)
@@ -132,6 +134,9 @@ func update():
 		if button.has_meta("shop"):
 			button.pressed = get_parent().Shop.is_visible()
 			get_parent().Shop.is_shop_opened = get_parent().Shop.is_visible()
+		if button.has_meta("quest_board"):
+			button.pressed = get_parent().QuestBoard.is_visible()
+			get_parent().QuestBoard.is_quest_board_opened = get_parent().QuestBoard.is_visible()
 	var height = get_node("ScrollContainer/VBoxContainer").get_child(get_node("ScrollContainer/VBoxContainer").get_child_count() - 1).get_global_rect().end.y
 	self.rect_size.y = height
 	# get_node("ScrollContainer/VBoxContainer").rect_size.y = height - get_parent().BUTTON_HEIGHT * 2
@@ -140,13 +145,11 @@ func update():
 
 
 
-func enter_guild(guild): #я не особо понял почему гильдбг лежит не в сити модуле
-	if get_parent().get_node("GuildBG").visible == false:
-		ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
-		get_parent().get_node("GuildBG").texture = images.backgrounds[guild.background]
+func enter_guild(guild):
 	update_buttons("guild")
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false
+	get_parent().QuestBoard.is_quest_board_opened = false
 	get_parent().clear_submodules()
 	if opened_guild.code == guild.code && get_tree().get_root().get_node("dialogue") != null && !get_tree().get_root().get_node("dialogue").is_visible():
 		Guild.hide()
@@ -155,6 +158,9 @@ func enter_guild(guild): #я не особо понял почему гильд�
 		opened_guild = {code = ""}
 		return
 	else:
+		# if !get_parent().get_node("GuildBG").visible:
+		ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		get_parent().get_node("GuildBG").texture = images.backgrounds[guild.background]
 		get_parent().Hire.mode = "guild_slaves"
 		Guild.show()
 		$GuildMenuBG.show()
@@ -226,9 +232,11 @@ func location_purchase():
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
 		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
+		newbutton.texture_disabled = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png")
 		newbutton.get_node("Label").rect_position.x = 0
 		newbutton.get_node("Label").rect_size.x = 272
 		newbutton.get_node("Label").get("custom_fonts/font").set_size(20)
+		newbutton.get_node("Icon").hide()
 		if ResourceScripts.game_res.money < i.puchase_price:
 			newbutton.disabled = true
 	var newbutton = input_handler.DuplicateContainerTemplate(City)
@@ -239,6 +247,7 @@ func location_purchase():
 	newbutton.get_node("Label").rect_position.x = 0
 	newbutton.get_node("Label").rect_size.x = 272
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(20)
+	newbutton.get_node("Icon").hide()
 	newbutton.connect("pressed", self, "open_city", [get_parent().selected_location])
 
 

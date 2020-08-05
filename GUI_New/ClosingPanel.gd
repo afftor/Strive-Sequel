@@ -31,7 +31,8 @@ func show():
 #	self.visible = true
 
 func hide():
-	print("Hide: " + str(self.name))
+	pass
+	# print("Hide: " + str(self.name))
 	# var char_info = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
 	# if input_handler.PreviousScene.name == "slavemodule":
 	# 	char_info.show()

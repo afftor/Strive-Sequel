@@ -40,79 +40,79 @@ margin_right = 10.0
 margin_top = 10.0
 margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id=20]
-
-[sub_resource type="StyleBoxTexture" id=21]
-
-[sub_resource type="StyleBoxTexture" id=22]
-
-[sub_resource type="StyleBoxTexture" id=23]
-
-[sub_resource type="StyleBoxTexture" id=24]
-
-[sub_resource type="StyleBoxTexture" id=25]
-
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 40, 40 )
 
 [sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 40, 40 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 40, 40 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 40, 40 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 340, 40 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=18]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id=19]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=20]
 size = 24
 font_data = ExtResource( 15 )
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 12, 48 )
 
-[sub_resource type="StyleBoxTexture" id=15]
+[sub_resource type="StyleBoxTexture" id=22]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 12, 48 )
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 12, 48 )
 
-[sub_resource type="StyleBoxTexture" id=17]
+[sub_resource type="StyleBoxTexture" id=24]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 12, 256 )
 
-[sub_resource type="StyleBoxTexture" id=18]
+[sub_resource type="StyleBoxTexture" id=25]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 12, 256 )
 
@@ -140,12 +140,12 @@ CheckBox/icons/checked = ExtResource( 13 )
 CheckBox/icons/radio_checked = ExtResource( 13 )
 CheckBox/icons/radio_unchecked = ExtResource( 8 )
 CheckBox/icons/unchecked = ExtResource( 8 )
-CheckBox/styles/disabled = SubResource( 20 )
-CheckBox/styles/focus = SubResource( 21 )
-CheckBox/styles/hover = SubResource( 22 )
-CheckBox/styles/hover_pressed = SubResource( 23 )
-CheckBox/styles/normal = SubResource( 24 )
-CheckBox/styles/pressed = SubResource( 25 )
+CheckBox/styles/disabled = SubResource( 4 )
+CheckBox/styles/focus = SubResource( 5 )
+CheckBox/styles/hover = SubResource( 6 )
+CheckBox/styles/hover_pressed = SubResource( 7 )
+CheckBox/styles/normal = SubResource( 8 )
+CheckBox/styles/pressed = SubResource( 9 )
 CheckButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 CheckButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
@@ -160,10 +160,10 @@ CheckButton/icons/on = null
 CheckButton/icons/on_disabled = null
 CheckButton/styles/disabled = null
 CheckButton/styles/focus = null
-CheckButton/styles/hover = SubResource( 4 )
-CheckButton/styles/hover_pressed = SubResource( 5 )
-CheckButton/styles/normal = SubResource( 6 )
-CheckButton/styles/pressed = SubResource( 7 )
+CheckButton/styles/hover = SubResource( 10 )
+CheckButton/styles/hover_pressed = SubResource( 11 )
+CheckButton/styles/normal = SubResource( 12 )
+CheckButton/styles/pressed = SubResource( 13 )
 LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
@@ -175,7 +175,7 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = null
-LineEdit/styles/normal = SubResource( 8 )
+LineEdit/styles/normal = SubResource( 14 )
 LineEdit/styles/read_only = null
 OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
@@ -185,23 +185,23 @@ OptionButton/constants/arrow_margin = 2
 OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = null
 OptionButton/icons/arrow = ExtResource( 2 )
-OptionButton/styles/disabled = SubResource( 9 )
-OptionButton/styles/focus = SubResource( 10 )
-OptionButton/styles/hover = SubResource( 11 )
-OptionButton/styles/normal = SubResource( 12 )
-OptionButton/styles/pressed = SubResource( 13 )
+OptionButton/styles/disabled = SubResource( 15 )
+OptionButton/styles/focus = SubResource( 16 )
+OptionButton/styles/hover = SubResource( 17 )
+OptionButton/styles/normal = SubResource( 18 )
+OptionButton/styles/pressed = SubResource( 19 )
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
-TooltipLabel/fonts/font = SubResource( 19 )
+TooltipLabel/fonts/font = SubResource( 20 )
 TooltipPanel/styles/panel = ExtResource( 14 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 14 )
-VScrollBar/styles/grabber_highlight = SubResource( 15 )
-VScrollBar/styles/grabber_pressed = SubResource( 16 )
-VScrollBar/styles/scroll = SubResource( 17 )
-VScrollBar/styles/scroll_focus = SubResource( 18 )
+VScrollBar/styles/grabber = SubResource( 21 )
+VScrollBar/styles/grabber_highlight = SubResource( 22 )
+VScrollBar/styles/grabber_pressed = SubResource( 23 )
+VScrollBar/styles/scroll = SubResource( 24 )
+VScrollBar/styles/scroll_focus = SubResource( 25 )

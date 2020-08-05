@@ -54,8 +54,8 @@ custom_constants/separation = 14
 
 [node name="Button" type="Button" parent="NavigationContainer/AreaSelection"]
 visible = false
-margin_right = 108.0
-margin_bottom = 55.0
+margin_right = 128.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 0, 55 )
 custom_styles/hover = ExtResource( 1 )
 custom_styles/pressed = ExtResource( 1 )

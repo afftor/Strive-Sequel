@@ -22,5 +22,7 @@ func start_scene():
 
 func start_date():
 	var person = get_parent().sex_participants[0]
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), "timeout")
 	get_parent().get_node("date").show()
 	get_parent().get_node("date").initiate(person)

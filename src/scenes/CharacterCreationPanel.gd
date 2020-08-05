@@ -23,6 +23,7 @@ var selected_class = ''
 
 var introduction_text = {master = "Create your Master Character", 'slave' : 'Create your Starting Slave'}
 
+
 func _ready():
 	input_handler.AddPanelOpenCloseAnimation($RaceSelection)
 	input_handler.AddPanelOpenCloseAnimation($TraitSelection)

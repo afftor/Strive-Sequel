@@ -22,7 +22,6 @@
 [ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/iconsclasses/Sex_Toy.png" type="Texture" id=27]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 970, 920 )
@@ -272,6 +271,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="name" type="Label" parent="ClassPanel"]
+margin_left = 250.0
+margin_top = 14.0
+margin_right = 694.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="ClassPanel"]
 show_behind_parent = true
 margin_top = 2.0
@@ -283,17 +296,6 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="name" type="Label" parent="ClassPanel/TextureRect"]
-margin_left = 250.0
-margin_top = 12.0
-margin_right = 694.0
-margin_bottom = 52.0
-custom_fonts/font = ExtResource( 10 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-text = "name"
-align = 1
-valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel/TextureRect"]
 show_behind_parent = true

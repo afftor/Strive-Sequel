@@ -302,8 +302,6 @@ func OpenClose(node):
 	CloseableWindowsArray.append(node)
 
 func Close(node):
-	#or i in CloseableWindowsArray:
-		#print("i:" + str(i.name))
 	CloseableWindowsArray.erase(node)
 	ResourceScripts.core_animations.CloseAnimation(node)
 

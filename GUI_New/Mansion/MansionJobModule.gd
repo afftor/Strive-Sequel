@@ -41,8 +41,9 @@ func open_jobs_window():
 		currentjob = null
 		var restbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 		restbutton.get_child(0).text = tr("TASKREST")
-		restbutton.toggle_mode = false
+		restbutton.toggle_mode = true
 		restbutton.connect("pressed", self, 'set_rest')
+		restbutton.pressed = person.get_work() == ''
 
 		### Temporary Patch
 		if person.travel.location == "mansion": person.travel.location = "Aliron"
@@ -177,9 +178,11 @@ func show_job_details(job, gatherable = false):
 	else:
 		var number
 		number = person.xp_module.get_progress_resource(job.code)/job.progress_per_item
+		text = ("\n[color=yellow]Expected gain per day: " + str(stepify(number * 24, 0.1)) + "[/color]")
 		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
 		newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 		newbutton.get_node("icon").texture = job.icon
+		globals.connectmaterialtooltip(newbutton, job, text)
 		selected_job = job
 
 
@@ -206,8 +209,8 @@ func select_job():
 	if !get_parent().TaskModule.is_visible():
 		get_parent().TaskModule.change_button()
 	get_parent().rebuild_task_info()
-	open_jobs_window()
 	cancel_job_choice()
+	get_parent().mansion_state_set("default")
 
 
 func set_rest():
