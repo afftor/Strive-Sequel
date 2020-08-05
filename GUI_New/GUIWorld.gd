@@ -60,16 +60,15 @@ func _ready():
 
 
 func _input(event):
-	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene != null && CurrentScene.name != "InteractionMainModule":
-		var ignore_rightclick = false
+	if (event.is_action_released("ESC") && CurrentScene != null && CurrentScene.name != "InteractionMainModule"):
 		if menu_opened:
+			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
+			if has_submodules_opened:
+				submodules_handler()
+				return
 			gui_data["GAMEMENU"].main_module.hide()
 			menu_opened = !menu_opened
 			return
-		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-			if i.is_visible() && i.get_global_rect().has_point(get_global_mouse_position()):
-				ignore_rightclick = true
-				continue
 		if get_tree().get_root().has_node("classinfo"):
 			if (CurrentScene == gui_data["MANSION"].main_module 
 				&& CurrentScene.mansion_state in ["default", "skills"] 
@@ -81,8 +80,14 @@ func _input(event):
 					menu_opened = !menu_opened
 		elif (CurrentScene == gui_data["MANSION"].main_module 
 			&& CurrentScene.mansion_state in ["default", "skills"]
-			&& !CurrentScene.get_node("MansionJournalModule").is_visible()):	
+			&& !CurrentScene.get_node("MansionJournalModule").is_visible()):
 			menu_opened = !menu_opened
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene != null && CurrentScene.name != "InteractionMainModule":
+		var ignore_rightclick = false
+		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+			if i.is_visible() && i.get_global_rect().has_point(get_global_mouse_position()):
+				ignore_rightclick = true
+				continue
 		if !ignore_rightclick:
 			visibility_handler()
 
@@ -109,10 +114,18 @@ func visibility_handler():
 
 
 func submodules_handler():
-	var last_opened_id = (CurrentScene.submodules.size() - 1)
-	var last_opened = CurrentScene.submodules[last_opened_id]
-	CurrentScene.submodules[last_opened_id].hide()
-	CurrentScene.submodules.erase(last_opened)
+	var last_opened_id
+	var last_opened
+	if menu_opened:
+		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
+		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
+		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
+		gui_data["GAMEMENU"].main_module.submodules.erase(last_opened)
+	else:
+		last_opened_id = (CurrentScene.submodules.size() - 1)
+		last_opened = CurrentScene.submodules[last_opened_id]
+		CurrentScene.submodules[last_opened_id].hide()
+		CurrentScene.submodules.erase(last_opened)
 
 
 

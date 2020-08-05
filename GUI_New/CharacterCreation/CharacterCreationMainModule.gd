@@ -509,6 +509,7 @@ func stat_up(stat):
 	else:
 		preservedsettings[stat.code] += 1
 		RebuildStatsContainer()
+		$ClassSelectionModule.update_class_buttons()
 
 func stat_down(stat):
 	if preservedsettings[stat.code] <= 1:
@@ -516,6 +517,7 @@ func stat_down(stat):
 	else:
 		preservedsettings[stat.code] -= 1
 		RebuildStatsContainer()
+		$ClassSelectionModule.update_class_buttons()
 
 func open_sex_traits():
 	$TraitSelection.show()
