@@ -1,13 +1,14 @@
 extends Control
 
 onready var City = $ExploreCityModule
-onready var Navigation = $ExploreNavigationModule
+onready var Navigation = $NavigationModule
 onready var Hire = $ExploreHireModule
 onready var QuestBoard = $QuestBoardModule
 onready var Shop = $ExploreShopModule
 onready var Upgrades = $StatUpgradeModule
 onready var FactionDetails = $FactionDetailsModule
 onready var FullSlaveInfo = $ExploreFullSlaveModule
+onready var StatUpgradeWindow = $StatUpgradeModule
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 const BUTTON_HEIGHT = 58
@@ -62,6 +63,12 @@ func _ready():
 		get_node(positiondict[i]).metadata = i
 		get_node(positiondict[i]).target_node = self
 		get_node(positiondict[i]).target_function = 'slave_position_selected'
+
+	$LocationGui.target_node = self
+	$LocationGui.target_function = 'slave_position_deselect'
+	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_node = self
+	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_function = 'slave_position_deselect'
+	$LocationGui/ItemUsePanel/Button.connect("pressed", self, "switch_panel")
 
 func show_quest_gen(action = "show"):
 	if action == "show":
@@ -603,6 +610,15 @@ func slave_position_selected(pos, character):
 	active_location.group[pos] = character
 	build_location_group()
 
+
+func slave_position_deselect(character):
+		for i in active_location.group:
+			if active_location.group[i] == character.id:
+				active_location.group.erase(i)
+				break
+		build_location_group()
+
+
 func finish_combat():
 	if action_type == 'advance':
 		active_location.progress.stage += 1
@@ -625,3 +641,20 @@ func details_quest_down(difficulty):
 	if active_faction.questsetting[difficulty] > 0:
 		active_faction.questsetting[difficulty] -= 1
 	faction_upgrade()
+
+var panelmode = 'items'
+var panelmodes = {item = {name = "Items", code = 'items'}, spells = {name = 'Spells', code = 'spells'}}
+var panelmodesarray = ['items','spells']
+
+func switch_panel():
+	match panelmode:
+		'spells':
+			$LocationGui/ItemUsePanel/Button.text = panelmodes.item.name
+			$LocationGui/ItemUsePanel/ScrollContainer.show()
+			$LocationGui/ItemUsePanel/SpellContainer.hide()
+			panelmode = 'items'
+		'items':
+			$LocationGui/ItemUsePanel/Button.text = panelmodes.spells.name
+			$LocationGui/ItemUsePanel/ScrollContainer.hide()
+			$LocationGui/ItemUsePanel/SpellContainer.show()
+			panelmode = 'spells'

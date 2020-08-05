@@ -9,7 +9,7 @@ onready var UpgradesModule = $MansionUpgradesModule
 onready var SlaveModule = $MansionSlaveModule
 onready var TaskModule = $MansionTaskInfoModule
 onready var MenuModule = $MansionBottomLeftModule
-onready var NavModule = $MansionNavigationModule
+onready var NavModule = $NavigationModule
 onready var CraftModule = $MansionCraftModule
 onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule
@@ -66,7 +66,7 @@ var always_show = [
 	"MansionSlaveModule",
 	"MansionSlaveListModule",
 	"MansionLogModule",
-	"MansionNavigationModule",
+	"NavigationModule",
 	"MenuButton",
 ]
 
@@ -116,7 +116,6 @@ func match_state():
 	for node in get_children():
 		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
 			node.hide()
-	
 	var menu_buttons = MenuModule.get_node("VBoxContainer")
 	for button in menu_buttons.get_children():
 		button.pressed = false
@@ -125,35 +124,54 @@ func match_state():
 			reset_vars()
 			SlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 550))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 650))
 			$MansionSkillsModule.show()
+			if mansion_state != mansion_prev_state:
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"skill":
 			$MansionSlaveListModule.show()
+			$MansionSlaveListModule.set_size(Vector2(1100, 845))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 550))
 			$MansionSlaveListModule.rebuild()
+			if mansion_state != mansion_prev_state:
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"travels":
 			$MansionTravelsModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 386))  # Needs to be checked with new assets
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 300)) 
 			travels_manager(travels_defaults)
 			menu_buttons.get_node("TravelsButton").pressed = true
+			if mansion_state != mansion_prev_state:
+				ResourceScripts.core_animations.UnfadeAnimation($MansionTravelsModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"upgrades":
 			$MansionUpgradesModule.show()
 			$MansionUpgradesModule.open()
 			$MansionUpgradesModule.open_queue()
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 480))  # Needs to be checked with new assets
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 300))  
 			menu_buttons.get_node("UpgradesButton").pressed = true
 			SlaveListModule.rebuild()
+			if mansion_state != mansion_prev_state:
+				ResourceScripts.core_animations.UnfadeAnimation($MansionUpgradesModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"occupation":
 			$MansionSlaveListModule.rebuild()
 			$MansionJobModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 580))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size())  # Needs to be checked with new assets
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 300))
+			# $MansionSlaveListModule/ScrollContainer.set_size($MansionSlaveListModule/ScrollContainer/VBoxContainer.get_size()) 
 			$MansionJobModule.cancel_job_choice()
+			if mansion_state != mansion_prev_state:
+				ResourceScripts.core_animations.UnfadeAnimation($MansionJobModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"char_info":
 			open_char_info()
 		"craft":
@@ -164,13 +182,19 @@ func match_state():
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
 			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 650))
+			if mansion_state != mansion_prev_state:
+				ResourceScripts.core_animations.UnfadeAnimation(SexSelect, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 			SexSelect.show()
 			sex_handler()
 			menu_buttons.get_node("SexButton").pressed = true
+
 	rebuild_task_info()
 	SlaveListModule.set_hover_area()
 
 func open_char_info():
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), "timeout")
 	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
 	GUIWorld.set_current_scene(slave_info)
 
@@ -185,13 +209,19 @@ func rebuild_mansion():
 func rebuild_task_info():
 	if ResourceScripts.game_party.active_tasks == []:
 		TaskModule.visible = false
+		if TaskModule.is_visible():
+			ResourceScripts.core_animations.FadeAnimation(TaskModule, 0.3)
 		return
 	for i in ResourceScripts.game_party.active_tasks:
 		if i.workers != []:
+			if !TaskModule.is_visible():
+				ResourceScripts.core_animations.UnfadeAnimation(TaskModule, 0.3)
 			TaskModule.visible = true
 			break
 		else:
 			TaskModule.visible = false
+			if TaskModule.is_visible():
+				ResourceScripts.core_animations.FadeAnimation(TaskModule, 0.3)
 	TaskModule.show_task_info()
 
 ### State Managers ###
@@ -212,11 +242,19 @@ func craft_handler():
 			CraftModule.get_node("MaterialSetupPanel").hide()
 			CraftModule.update()
 			# CraftModule.get_node("filter").hide()
+			ResourceScripts.core_animations.UnfadeAnimation(CraftModule, 0.3)
+			ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"confirm":
+			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
+			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(871, 300))
+			ResourceScripts.core_animations.FadeAnimation(CraftModule, 0.3)
 			CraftModule.hide()
 			CraftSmallModule.update()
 			CraftSmallModule.show()
 			SlaveListModule.rebuild()
+			ResourceScripts.core_animations.UnfadeAnimation(CraftSmallModule, 0.3)
+			ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 
 
 func travels_manager(params):

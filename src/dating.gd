@@ -23,6 +23,7 @@ var finish_encounter = false
 var turn = 0 setget turn_set
 var observing_slaves = []
 onready var showntext = '' setget showtext_set,showtext_get
+var submodules = []
 
 var helpdescript = {
 	mood = '[center]Mood[/center]\nA high mood increases likeliness of positive outcome of intimate actions and provides Loyalty growth buff after session is finished.\nMood grows from positive interactions and decreases from negative interactions.',
@@ -118,9 +119,11 @@ func _ready():
 	globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
 	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	$end/sexbutton.connect("pressed", self, 'start_sex')
-	initiate(person)
+#	initiate(person)
 
 func initiate(tempperson):
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+	GUIWorld.CurrentScene = self
 	var text = ''
 	self.visible = true
 	self.mood = 0
@@ -991,9 +994,9 @@ func calculateresults():
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n"
 		sex_offer = true
 	
-	$end/sexbutton.visible = globals.TextEncoder(sex_offer)
+	$end/sexbutton.visible = sex_offer
 	
-	return text
+	return globals.TextEncoder(text)
 
 func start_sex():
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
@@ -1005,6 +1008,9 @@ func _on_finishbutton_pressed():
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	hide()
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+	GUIWorld.CurrentScene = GUIWorld.gui_data["MANSION"].main_module
+	GUIWorld.CurrentScene.mansion_state_set("default")
 
 
 func _on_cancelsex_pressed():

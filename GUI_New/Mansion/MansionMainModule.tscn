@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=2]
@@ -20,12 +20,9 @@
 [ext_resource path="res://GUI_New/Mansion/MansionJobModule.gd" type="Script" id=18]
 [ext_resource path="res://GUI_New/Mansion/MansionTaskInfoModule.tscn" type="PackedScene" id=19]
 [ext_resource path="res://GUI_New/Mansion/MansionTaskInfoModule.gd" type="Script" id=20]
-[ext_resource path="res://assets/Themes_v2/MANSION/M_Nav.tres" type="Theme" id=21]
 [ext_resource path="res://assets/Textures_v2/MANSION/mansion.png" type="Texture" id=22]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=23]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu_Panel.tres" type="StyleBox" id=24]
-[ext_resource path="res://GUI_New/Mansion/MansionNavigationModule.tscn" type="PackedScene" id=25]
-[ext_resource path="res://GUI_New/Mansion/MansionNavigationModule.gd" type="Script" id=26]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftModule.tscn" type="PackedScene" id=27]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.tscn" type="PackedScene" id=28]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.gd" type="Script" id=29]
@@ -40,6 +37,7 @@
 [ext_resource path="res://GUI_New/Mansion/MansionJournalModule.tscn" type="PackedScene" id=38]
 [ext_resource path="res://src/date.tscn" type="PackedScene" id=39]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=40]
+[ext_resource path="res://GUI_New/Universal/NavigationModule.tscn" type="PackedScene" id=41]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 22 )
@@ -48,6 +46,7 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="ShaderMaterial" id=2]
 
 [node name="MansionMainModule" type="Panel"]
+visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 custom_styles/panel = SubResource( 1 )
@@ -142,13 +141,11 @@ margin_right = 305.0
 margin_bottom = 678.0
 script = ExtResource( 20 )
 
-[node name="MansionNavigationModule" parent="." instance=ExtResource( 25 )]
+[node name="NavigationModule" parent="." instance=ExtResource( 41 )]
 margin_left = 320.0
 margin_top = 15.0
 margin_right = -150.0
 margin_bottom = -1010.0
-theme = ExtResource( 21 )
-script = ExtResource( 26 )
 
 [node name="MansionCraftModule" parent="." instance=ExtResource( 27 )]
 visible = false
@@ -177,7 +174,6 @@ __meta__ = {
 }
 
 [node name="InteractionMainModule" parent="." instance=ExtResource( 30 )]
-visible = false
 
 [node name="InteractSelectionModule" parent="." instance=ExtResource( 31 )]
 visible = false
@@ -218,9 +214,9 @@ margin_right = 1390.0
 margin_bottom = 940.0
 
 [node name="date" parent="." instance=ExtResource( 39 )]
-visible = false
 
 [node name="tutorialpanel" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.992157 )
 margin_left = 564.0
 margin_top = 287.0

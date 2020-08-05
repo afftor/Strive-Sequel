@@ -4,6 +4,8 @@ extends Panel#"res://src/scenes/ClosingPanel.gd"
 onready var submodules = []
 func _ready():
 	add_close_button($saveloadpanel)
+	add_close_button($Options)
+	add_close_button(self)
 	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'SavePanelOpen')
 	$VBoxContainer/Load.connect('pressed', $saveloadpanel, 'LoadPanelOpen')
 	$VBoxContainer/Load.connect('pressed', self, 'append_saveload')

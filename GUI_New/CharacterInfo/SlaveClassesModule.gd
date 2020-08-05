@@ -21,7 +21,6 @@ func _ready():
 	for i in $categories.get_children():
 		i.connect("pressed",self,'class_category', [i.name])
 
-	
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
 	$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
@@ -83,7 +82,8 @@ func open(tempperson, tempmode = 'normal'):
 		if person.checkreqs(i.reqs) == false:
 			newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
 			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-			newbutton.disabled = true
+			newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+			# newbutton.disabled = true
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
@@ -115,6 +115,7 @@ func open_class(classcode):
 	if !sub_modules.has($ClassPanel):
 		GUIWorld.gui_data.SLAVE_INFO.main_module.submodules.append($ClassPanel)
 	var tempclass = classesdata.professions[classcode]
+	var class_locked = !person.checkreqs(tempclass.reqs)
 	var text = ResourceScripts.descriptions.get_class_details(person, tempclass)
 	current_class = classcode
 	$ClassPanel.open(classcode,person)
@@ -124,12 +125,12 @@ func open_class(classcode):
 		$ClassPanel/ExpLabel.set("custom_colors/font_color", Color(1,1,1))
 	else:
 		text = tr("EXPREQUIRED")+": " + str(person.get_next_class_exp()) + "/" +  str(floor(person.get_stat('base_exp'))) 
-		$ClassPanel/Unlock.disabled = person.get_stat('base_exp') < person.get_next_class_exp()
 		$ClassPanel/Unlock.show()
 		if person.get_stat('base_exp') < person.get_next_class_exp():
 			$ClassPanel/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.red)
 		else:
 			$ClassPanel/ExpLabel.set("custom_colors/font_color", variables.hexcolordict.green)
+	$ClassPanel/Unlock.disabled = class_locked || (person.get_stat('base_exp') < person.get_next_class_exp())
 	
 	$ClassPanel/ExpLabel.text = text
 	update_class_buttons(classcode)
@@ -143,6 +144,7 @@ func update_class_buttons(classcode):
 
 func unlock_class():
 	$ClassPanel.hide()
+	get_parent().submodules.clear()
 	yield(get_tree().create_timer(0.2),"timeout")
 	.hide()
 	person.add_stat('base_exp', -person.get_next_class_exp())
@@ -152,4 +154,5 @@ func unlock_class():
 	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
 	globals.text_log_add("class", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
 	input_handler.PlaySound("ding")
-	input_handler.update_slave_list()
+	# input_handler.update_slave_list()
+	get_parent().BodyModule.update()

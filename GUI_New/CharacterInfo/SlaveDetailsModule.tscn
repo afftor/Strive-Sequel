@@ -131,16 +131,16 @@ text = "Select Custom Body"
 [node name="traits" type="Button" parent="VBoxContainer"]
 margin_top = 255.0
 margin_right = 315.0
-margin_bottom = 295.0
+margin_bottom = 307.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 14 )
 text = "Manage Sex Traits"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
-margin_top = 255.0
+margin_top = 316.0
 margin_right = 315.0
-margin_bottom = 615.0
+margin_bottom = 676.0
 rect_min_size = Vector2( 315, 0 )
 
 [node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]

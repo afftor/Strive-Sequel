@@ -39,6 +39,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=37]
 
 [node name="CharacterCreationMainModule" type="Panel"]
+visible = false
 self_modulate = Color( 0.0235294, 0.0196078, 0.909804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -334,6 +335,9 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "CONFIRM"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SaveButton" type="TextureButton" parent="."]
 margin_left = 1530.47

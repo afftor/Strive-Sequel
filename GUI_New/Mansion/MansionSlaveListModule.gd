@@ -254,8 +254,9 @@ func build_for_upgrades(person, newbutton):
 
 
 func build_for_skills(person, newbutton):
-	# if get_parent().skill_source == person:
-	# 	return
+	if person == get_parent().skill_source:
+		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+		newbutton.disabled = true
 	if !person in get_parent().chars_for_skill:
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true

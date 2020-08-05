@@ -102,10 +102,10 @@ func show_resources_info():
 					# newtask.get_node("Task").text = str(ResourceScripts.game_res.materials[ResourceScripts.game_res.craftinglists[task_name][0].code])
 				else:
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[Items.recipes[ResourceScripts.game_res.craftinglists[task_name][0].code].resultitem].icon
-				if ResourceScripts.game_res.craftinglists[task_name][0].has('partdict'):
-					newtask.get_node("Task/TaskIcon").texture = load("res://assets/ItemShader.tres")
-				else:
-					newtask.get_node("Task/TaskIcon").texture = null
+				# if ResourceScripts.game_res.craftinglists[task_name][0].has('partdict'):
+				# 	newtask.get_node("Task/TaskIcon").texture = load("res://assets/ItemShader.tres")
+				# else:
+				# 	newtask.get_node("Task/TaskIcon").texture = null
 		elif task.product in ['prostitutegold']:
 			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production[task.product].icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold

@@ -33,7 +33,7 @@ var secondactorcounter = {}
 
 var submodules = []
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
+onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 
 
 #not used
@@ -102,9 +102,9 @@ func _ready():
 		ResourceScripts.game_res.materials.rope = 1
 		while i > 0:
 			i -= 1
-			createtestdummy()
+			# createtestdummy()
 		turns = 20
-		createtestdummy('resist')
+		# createtestdummy('resist')
 		changecategory('caress')
 		clearstate()
 		
@@ -205,21 +205,21 @@ func _input(event):
 	if event.is_action_pressed("F") && $Panel/passbutton.disabled == false:
 		_on_passbutton_pressed()
 
-var dummycounter = 0
+# var dummycounter = 0
 
-func createtestdummy(type = 'normal'):
-	var person = ResourceScripts.scriptdict.class_slave.new()
-	person.create('BeastkinFox', 'random', 'random')
-	var newmember = member.new()
-	newmember.sceneref = self
-	#bad solution. need replacing
-	person.statlist.statlist.vaginal_virgin = true
-	person.is_players_character = true
-	person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
-	person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
-	person.statlist.statlist.consent = 500
-	for i in person.statlist.statlist.sex_skills:
-		person.statlist.statlist.sex_skills[i] += 100
+# func createtestdummy(type = 'normal'):
+# 	var person = ResourceScripts.scriptdict.class_slave.new()
+# 	person.create('BeastkinFox', 'random', 'random')
+# 	var newmember = member.new()
+# 	newmember.sceneref = self
+# 	#bad solution. need replacing
+# 	person.statlist.statlist.vaginal_virgin = true
+# 	person.is_players_character = true
+# 	person.statlist.statlist.mods['hollownipples'] = 'hollownipples'
+# 	person.statlist.sex_traits = ['pushover']#'dislike_petting','bottle_fairy','hypersensitive','life_power',
+	# person.statlist.statlist.consent = 500
+	# for i in person.statlist.statlist.sex_skills:
+	# 	person.statlist.statlist.sex_skills[i] += 100
 	#person.sex = 'male'
 #	if type == 'resist':
 #		person.consent = false
@@ -227,16 +227,16 @@ func createtestdummy(type = 'normal'):
 #		person.sex = 'female'
 #		globals.connectrelatives(participants[0].person, person, 'father')
 	
-	newmember.setup_person(person, true)
-	newmember.consent = 500
-	dummycounter += 1
+	# newmember.setup_person(person, true)
+	# newmember.consent = 500
+	# dummycounter += 1
 	
 #	if person.consent == false && person.professions.has("master"):
 #		newmember.effects.append('forced')
 #	if person.obedience < 80 && person.professions.has("master"):
 #		newmember.effects.append('resist')
 	
-	participants.append(newmember)
+	# participants.append(newmember)
 
 
 func startsequence(actors):
@@ -425,7 +425,7 @@ func rebuildparticipantslist():
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
-			newnode.set_text(i.getname())
+			newnode.get_node("ActionName").set_text(i.getname())
 			if i.consent_level > giver_consent || i.consent_level > taker_consent:
 				newnode.modulate = Color(1,0.5,0.5)
 			

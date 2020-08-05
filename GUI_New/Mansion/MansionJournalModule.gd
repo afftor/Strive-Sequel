@@ -16,6 +16,8 @@ func _ready():
 
 func change_type(newtype):
 	type = newtype
+	$Main.pressed = newtype == "main"
+	$Minor.pressed = newtype == "minor"
 	show_quests()
 
 
@@ -28,6 +30,7 @@ func show_quests():
 
 
 func open():
+	$Main.pressed = true
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$QuestDescript.clear()

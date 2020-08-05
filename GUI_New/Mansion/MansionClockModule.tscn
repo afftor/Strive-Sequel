@@ -23,13 +23,13 @@
 size = 24
 font_data = ExtResource( 6 )
 
-[sub_resource type="LargeTexture" id=10]
+[sub_resource type="LargeTexture" id=2]
 
-[sub_resource type="LargeTexture" id=12]
+[sub_resource type="LargeTexture" id=3]
 
-[sub_resource type="LargeTexture" id=11]
+[sub_resource type="LargeTexture" id=4]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=5]
 size = 24
 font_data = ExtResource( 6 )
 
@@ -177,7 +177,7 @@ Hotkey: 2"
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 10 )
-texture_focused = SubResource( 10 )
+texture_focused = SubResource( 2 )
 
 [node name="Label" type="TextureRect" parent="TimeNode/2speed"]
 margin_left = 38.0
@@ -199,7 +199,7 @@ Hotkey: 2"
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
-texture_focused = SubResource( 12 )
+texture_focused = SubResource( 3 )
 
 [node name="Label" type="Label" parent="TimeNode/lessturn"]
 margin_left = 11.0
@@ -214,12 +214,12 @@ margin_left = 174.0
 margin_top = 108.0
 margin_right = 235.0
 margin_bottom = 164.0
-hint_tooltip = "Decrease hours advanced  per turn
-Hotkey: 2"
+hint_tooltip = "Increase hours advanced  per turn
+Hotkey: 3"
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 10 )
-texture_focused = SubResource( 11 )
+texture_focused = SubResource( 4 )
 
 [node name="Label" type="Label" parent="TimeNode/moreturn"]
 margin_left = 38.0
@@ -260,7 +260,7 @@ margin_left = 55.0
 margin_top = 6.0
 margin_right = 139.0
 margin_bottom = 51.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "500"
@@ -284,7 +284,7 @@ margin_left = 199.0
 margin_top = 7.0
 margin_right = 283.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "500"

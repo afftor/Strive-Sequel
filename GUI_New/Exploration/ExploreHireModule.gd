@@ -13,7 +13,13 @@ func _ready():
 	$PurchaseButton.connect("pressed", self, "show_full_info")
 	$HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SellMode.connect("pressed", self, "change_mode", ["sell"])
-	$EnslaveButton.connect("pressed", self, "enslave_select")
+	$HBoxContainer/EnslaveButton.connect("pressed", self, "enslave_select")
+	$HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
+
+
+func show_upgrade_window():
+	get_parent().StatUpgradeWindow.show()
+
 
 func change_mode(mode):
 	get_parent().hiremode = mode
@@ -85,7 +91,7 @@ func hire():
 
 func show_slave_info(person):
 	get_parent().person_to_hire = person
-	$EnslaveButton.visible = person.get_stat("slave_class") != "slave" # && (!person.has_profession('master'))
+	$HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" # && (!person.has_profession('master'))
 	for button in $ScrollContainer/VBoxContainer.get_children():
 		if button.name == "Button":
 			continue
@@ -217,6 +223,6 @@ func rebuild_traits(person):
 					traittext += globals.sex_actions_dict[k].getname() + ", "
 				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
 		globals.connecttexttooltip(newnode, traittext)
-
-
-
+	
+	
+	
