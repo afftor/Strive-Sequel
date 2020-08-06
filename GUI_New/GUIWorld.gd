@@ -32,7 +32,7 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	# test_mode()
+	test_mode()
 
 	if globals.start_new_game == true:
 		globals.start_new_game = false
