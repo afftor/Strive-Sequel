@@ -945,13 +945,18 @@ func makerandomgroup(enemygroup):
 	
 	return combatparty
 
+func complete_location(locationid):
+	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
+	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
+	return_characters_from_location(locationid)
+	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
+
 func remove_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	return_characters_from_location(locationid)
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
-	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
 	input_handler.update_slave_list()
 	if input_handler.active_location == location && input_handler.CurrentScene.get_node("Exploration").is_visible_in_tree():
 		input_handler.CurrentScene.get_node("Exploration").select_location('Aliron')
@@ -1102,7 +1107,7 @@ func common_effects(effects):
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
-				input_handler.remove_location(input_handler.active_location.id)
+				globals.complete_location(input_handler.active_location.id)
 			'complete_event':
 				pass
 			'reputation':

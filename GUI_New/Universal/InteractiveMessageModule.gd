@@ -171,6 +171,7 @@ func open(scene, not_save = false):
 	hold_selection = false
 
 func complete_skirmish():
+	globals.complete_location(input_handler.active_location.id)
 	globals.remove_location(input_handler.active_location.id)
 	close()
 

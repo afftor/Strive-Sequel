@@ -238,6 +238,7 @@ func show_class_info(classcode, person = null):
 
 
 func test_mode():
+	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
 	var character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'random', 'random')

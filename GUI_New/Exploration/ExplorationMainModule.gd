@@ -397,6 +397,16 @@ func enter_dungeon():
 		newbutton.connect("pressed", self, "enter_level", [completed_floors])
 		completed_floors -= 1
 
+func clear_dungeon_confirm():
+	globals.complete_location(active_location.id)
+	check_events('complete_location')
+	action_type = 'location_finish'
+
+func use_item_on_character(character, item):
+	item.use_explore(character)#item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	item.amount -= 1
+	#show_heal_items(position)
+	build_location_group()
 
 func check_events(action):
 	return globals.check_events(action)
