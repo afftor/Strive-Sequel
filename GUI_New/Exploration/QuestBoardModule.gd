@@ -153,7 +153,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ "(Master Charm Bonus)"
-	
+	$QuestDetails/Requester.text = ""
 	$QuestDetails/Requester.text += get_parent().active_area.factions[quest.source].name + " "
 	
 	$QuestDetails/RichTextLabel.bbcode_text = globals.TextEncoder(text)

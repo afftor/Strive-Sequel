@@ -27,7 +27,7 @@ func _ready():
 func update_purchase_btn():
 	$PurchaseButton/Label.text = get_parent().hiremode.capitalize()
 	if get_parent().hiremode == "sell":
-		$PurchaseButton.disabled = ((get_parent().person_to_hire.calculate_price() / 2) >= ResourceScripts.game_res.money)
+		$PurchaseButton.disabled = false
 	else:
 		$PurchaseButton.disabled = ((get_parent().person_to_hire.calculate_price()) >= ResourceScripts.game_res.money)
 

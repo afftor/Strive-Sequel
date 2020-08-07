@@ -32,7 +32,7 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	# test_mode()
+	test_mode()
 
 	if globals.start_new_game == true:
 		globals.start_new_game = false
@@ -62,11 +62,23 @@ func _ready():
 
 
 func _input(event):
+	var dialogue = get_tree().get_root().get_node_or_null("dialogue")
 	if CurrentScene == null:
 		return
+	if dialogue != null && dialogue.is_visible() && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+		dialogue.select_option(int(event.as_text()))
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name == "date":
 		return
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")):
+		if menu_opened:
+			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
+			if has_submodules_opened:
+				submodules_handler()
+				return
+			else:
+				gui_data["GAMEMENU"].main_module.hide()
+				menu_opened = !menu_opened
+				return
 		if CurrentScene == gui_data.INVENTORY.main_module && !PreviousScene == gui_data.SLAVE_INFO.main_module:
 			PreviousScene = CurrentScene
 			visibility_handler()
@@ -153,7 +165,8 @@ func visibility_handler():
 func submodules_handler():
 	var last_opened_id
 	var last_opened
-	if menu_opened && !get_tree().get_root().get_node("classinfo").is_visible():
+	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
+	if classinfo != null && menu_opened && !classinfo.is_visible():
 		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
 		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
 		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
@@ -168,6 +181,9 @@ func submodules_handler():
 
 func close_scene(scene):
 	scene.hide()
+	if scene in gui_data.EXPLORATION.main_module.submodules:
+		gui_data.EXPLORATION.main_module.submodules.erase(scene)
+		gui_data.EXPLORATION.main_module.Navigation.show()
 	if scene == gui_data.GAMEMENU.main_module:
 		menu_opened = false
 		return
@@ -224,6 +240,37 @@ func show_class_info(classcode, person = null):
 func test_mode():
 	ResourceScripts.game_world.make_world()
 	var character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	character.unlock_class("master")
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+	character = ResourceScripts.scriptdict.class_slave.new()
+	character.create('HalfkinCat', 'random', 'random')
+	characters_pool.move_to_state(character.id)
+
 	character.create('HalfkinCat', 'futa', 'random')
 	character.set_stat('consent', 100)
 	character.set_stat('penis_virgin', true)
@@ -447,3 +494,6 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
+
+			
+	character = ResourceScripts.scriptdict.class_slave.new()

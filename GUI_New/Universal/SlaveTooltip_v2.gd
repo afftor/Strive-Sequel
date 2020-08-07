@@ -17,7 +17,7 @@ var prevnode
 func _process(delta):
 	if parentnode != null && weakref(parentnode).get_ref() != null && ( parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
-		hide()
+		hide_tooltip()
 
 
 func _init():
@@ -168,7 +168,9 @@ func cooldown():
 
 
 
-func hide():
+func hide_tooltip():
 	parentnode = null
 	set_process(false)
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+	hide()
+	

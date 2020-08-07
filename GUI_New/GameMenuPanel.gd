@@ -53,4 +53,6 @@ func add_close_button(scene):
 
 
 func close_scene(scene):
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+	GUIWorld.menu_opened = false
 	scene.hide()

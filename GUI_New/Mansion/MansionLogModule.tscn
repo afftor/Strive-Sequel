@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionLogPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Log.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=4]
 
 [node name="MansionLogModule" type="Panel"]
 margin_right = 470.0
 margin_bottom = 300.0
 theme = ExtResource( 2 )
 custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,10 +24,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 22.0
+[node name="VScrollBar" type="VScrollBar" parent="."]
+margin_left = 12.0
 margin_top = 18.0
-margin_right = 440.0
+margin_right = 24.0
+margin_bottom = 279.0
+theme = ExtResource( 3 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 31.0
+margin_top = 18.0
+margin_right = 450.0
 margin_bottom = 279.0
 scroll_horizontal_enabled = false
 scroll_vertical = 50
@@ -33,7 +43,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 418.0
+margin_right = 419.0
 margin_bottom = 261.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -41,7 +51,7 @@ alignment = 2
 
 [node name="field" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 margin_top = 231.0
-margin_right = 418.0
+margin_right = 419.0
 margin_bottom = 261.0
 rect_min_size = Vector2( 0, 30 )
 
@@ -54,15 +64,15 @@ bbcode_enabled = true
 
 [node name="text" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/field"]
 margin_left = 104.0
-margin_right = 314.0
+margin_right = 315.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 
 [node name="date" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/field"]
-margin_left = 318.0
-margin_right = 418.0
+margin_left = 319.0
+margin_right = 419.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )

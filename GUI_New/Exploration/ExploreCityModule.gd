@@ -159,7 +159,9 @@ func enter_guild(guild):
 		return
 	else:
 		# if !get_parent().get_node("GuildBG").visible:
-		ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		var dialogue = get_tree().get_root().get_node_or_null("dialogue")
+		if dialogue != null && !dialogue.is_visible():
+			ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
 		get_parent().get_node("GuildBG").texture = images.backgrounds[guild.background]
 		get_parent().Hire.mode = "guild_slaves"
 		Guild.show()
