@@ -1,7 +1,6 @@
 extends Panel
 
 onready var Navigation = $NavigationContainer/AreaSelection
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 var selected_location
 
 
@@ -11,11 +10,9 @@ func _ready():
 
 
 func update_buttons():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 	for button in Navigation.get_children():
-		if button.name == "Button" || button.get_class() != 'Button':
-			continue
-		if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.MANSION.main_module:
-			button.pressed = false
+		if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
 			continue
 		button.pressed = selected_location == button.get_meta("data")
 
@@ -40,6 +37,7 @@ func sort_locations(locations_array):
 	return capitals + settlements + dungeons
 
 func build_accessible_locations():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 	input_handler.ClearContainer(Navigation)
 	var location_array = ["Aliron"]
 	var travelers = []
@@ -58,25 +56,31 @@ func build_accessible_locations():
 	var sorted_locations = sort_locations(location_array)
 	for i in sorted_locations:
 		var newseparator = $VSeparator.duplicate()
-		Navigation.add_child(newseparator)
-		newseparator.visible = true
 		var newbutton = input_handler.DuplicateContainerTemplate(Navigation)
 		if i == "Mansion":
 			newbutton.text = "Mansion"
 			newbutton.connect("pressed", self, "return_to_mansion")
+			newbutton.set_meta("data", i)
+			Navigation.add_child(newseparator)
+			newseparator.visible = true
+			if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.MANSION.main_module:
+				newbutton.pressed = true
 			continue
+		Navigation.add_child(newseparator)
+		newseparator.visible = true
 		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
 		newbutton.connect("pressed", self, "select_location", [i])
 		newbutton.set_meta("data", i)
 
-	if get_parent().selected_location != null:
-		for i in Navigation.get_children():
-			if i.has_meta("data"):
-				i.pressed = i.get_meta('data') == get_parent().selected_location
-	update_buttons()
+	# if get_parent().selected_location != null:
+	# 	for i in Navigation.get_children():
+	# 		if i.has_meta("data"):
+	# 			i.pressed = i.get_meta('data') == get_parent().selected_location
+	if GUIWorld.BaseScene != null && GUIWorld.BaseScene != GUIWorld.gui_data.MANSION.main_module:
+		update_buttons()
 
 func select_location(location):
-	print("location:", location)
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 	if GUIWorld.BaseScene == GUIWorld.gui_data.MANSION.main_module:
 		go_outside(location)
 		return
@@ -117,6 +121,9 @@ func select_location(location):
 	get_parent().show()
 
 func return_to_mansion():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
+	if GUIWorld.BaseScene == GUIWorld.gui_data.MANSION.main_module:
+		return
 	GUIWorld.PreviousScene = null
 	get_parent().selected_location = null
 	input_handler.PlaySound("door_open")
@@ -136,6 +143,7 @@ func return_to_mansion():
 
 
 func go_outside(location):
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 	GUIWorld.PreviousScene = get_parent()
 	get_parent().selected_location = location
 	input_handler.PlaySound("door_open")

@@ -1,11 +1,8 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/gui/gui icons/down.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/gui icons/up.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/gui icons/down-hl.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/gui icons/up-hl.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_hover.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=9]
@@ -15,6 +12,8 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=15]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=16]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=17]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -85,10 +84,12 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="Label" parent="."]
-margin_left = 50.0
+margin_left = 12.0
 margin_top = 679.0
-margin_right = 750.0
+margin_right = 791.0
 margin_bottom = 712.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reputation Earned : 10000"
 align = 1
 valign = 1
@@ -135,6 +136,7 @@ margin_left = 25.0
 margin_top = 29.0
 margin_right = 444.0
 margin_bottom = 136.0
+theme = ExtResource( 16 )
 custom_fonts/normal_font = ExtResource( 14 )
 text = "Upgrade Description
 "
@@ -161,6 +163,8 @@ margin_left = 25.2283
 margin_top = 144.127
 margin_right = 67.2283
 margin_bottom = 171.127
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Price"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -181,6 +185,8 @@ margin_top = 65.0001
 margin_right = 748.0
 margin_bottom = 92.0001
 grow_horizontal = 0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "FactionPoints"
 align = 2
 
@@ -189,31 +195,26 @@ margin_left = 50.0
 margin_top = 65.0001
 margin_right = 174.0
 margin_bottom = 92.0001
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "UnspentPoints"
 align = 2
 
 [node name="QuestGen" type="Button" parent="."]
 margin_left = 297.419
-margin_top = 744.526
-margin_right = 498.419
+margin_top = 725.526
+margin_right = 518.419
 margin_bottom = 777.526
 theme = ExtResource( 15 )
 toggle_mode = true
 text = "  Quest Generation  "
 
 [node name="QuestGenPanel" type="Panel" parent="."]
-visible = false
 margin_left = 255.0
 margin_top = 242.0
 margin_right = 559.0
 margin_bottom = 548.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="Panel" parent="QuestGenPanel"]
-margin_right = 40.0
-margin_bottom = 40.0
+custom_styles/panel = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -235,28 +236,35 @@ margin_left = 1.0
 margin_top = 20.0
 margin_right = 96.0
 margin_bottom = 44.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Easy"
 align = 1
 
 [node name="up" type="TextureButton" parent="QuestGenPanel/HBoxContainer/easy"]
-margin_left = 21.7253
-margin_top = 56.8229
-margin_right = 70.7253
-margin_bottom = 105.823
-texture_normal = ExtResource( 4 )
+margin_left = 19.7253
+margin_top = 121.624
+margin_right = 68.7253
+margin_bottom = 170.624
+rect_rotation = -90.0
+texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 6 )
+texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="down" type="TextureButton" parent="QuestGenPanel/HBoxContainer/easy"]
-margin_left = 21.7253
-margin_top = 156.823
-margin_right = 70.7253
-margin_bottom = 205.823
+margin_left = 69.9603
+margin_top = 135.779
+margin_right = 118.96
+margin_bottom = 184.779
+rect_rotation = 90.0
 texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 1 )
-texture_hover = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
@@ -279,28 +287,32 @@ margin_left = 0.975006
 margin_top = 20.0975
 margin_right = 95.975
 margin_bottom = 44.0975
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Medium"
 align = 1
 
 [node name="up" type="TextureButton" parent="QuestGenPanel/HBoxContainer/medium"]
-margin_left = 21.7253
-margin_top = 56.8229
-margin_right = 70.7253
-margin_bottom = 105.823
-texture_normal = ExtResource( 4 )
+margin_left = 19.7253
+margin_top = 121.624
+margin_right = 68.7253
+margin_bottom = 170.624
+rect_rotation = -90.0
+texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 6 )
+texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
 [node name="down" type="TextureButton" parent="QuestGenPanel/HBoxContainer/medium"]
-margin_left = 21.7253
-margin_top = 156.823
-margin_right = 70.7253
-margin_bottom = 205.823
+margin_left = 69.9603
+margin_top = 135.779
+margin_right = 118.96
+margin_bottom = 184.779
+rect_rotation = 90.0
 texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 1 )
-texture_hover = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
@@ -323,28 +335,32 @@ margin_left = 0.975006
 margin_top = 20.0975
 margin_right = 95.975
 margin_bottom = 44.0975
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Hard"
 align = 1
 
 [node name="up" type="TextureButton" parent="QuestGenPanel/HBoxContainer/hard"]
-margin_left = 21.7253
-margin_top = 56.8229
-margin_right = 70.7253
-margin_bottom = 105.823
-texture_normal = ExtResource( 4 )
+margin_left = 19.7253
+margin_top = 121.624
+margin_right = 68.7253
+margin_bottom = 170.624
+rect_rotation = -90.0
+texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 6 )
+texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
 [node name="down" type="TextureButton" parent="QuestGenPanel/HBoxContainer/hard"]
-margin_left = 21.7253
-margin_top = 156.823
-margin_right = 70.7253
-margin_bottom = 205.823
+margin_left = 69.9603
+margin_top = 135.779
+margin_right = 118.96
+margin_bottom = 184.779
+rect_rotation = 90.0
 texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 1 )
-texture_hover = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
@@ -357,10 +373,10 @@ text = "0"
 align = 1
 
 [node name="Apply" type="Button" parent="QuestGenPanel"]
-margin_left = 111.975
-margin_top = 258.0
-margin_right = 193.975
-margin_bottom = 291.0
+margin_left = 97.975
+margin_top = 244.0
+margin_right = 199.975
+margin_bottom = 296.0
 theme = ExtResource( 15 )
 text = "  Apply  "
 __meta__ = {
@@ -369,9 +385,11 @@ __meta__ = {
 
 [node name="totalquestpoints" type="Label" parent="QuestGenPanel"]
 margin_left = 78.3107
-margin_top = 217.199
+margin_top = 196.199
 margin_right = 230.311
-margin_bottom = 244.199
+margin_bottom = 228.199
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Unspent: "
 __meta__ = {
 "_edit_use_anchors_": false

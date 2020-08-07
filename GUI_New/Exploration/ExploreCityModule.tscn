@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreCity.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_workers.png" type="Texture" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -117,6 +118,8 @@ texture_hover = ExtResource( 6 )
 [node name="Label" type="Label" parent="GuildMenu/VBoxContainer/Button"]
 margin_right = 272.0
 margin_bottom = 58.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Guild Menu"
 align = 1
 valign = 1

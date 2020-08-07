@@ -117,7 +117,6 @@ __meta__ = {
 }
 
 [node name="QuestDetails" type="Panel" parent="."]
-visible = false
 show_behind_parent = true
 margin_left = 620.962
 margin_right = 1120.96

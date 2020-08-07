@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=21]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=22]
 [ext_resource path="res://assets/Textures_v2/MANSION/divider_navigator.png" type="Texture" id=23]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -224,13 +225,14 @@ margin_top = 100.733
 margin_right = 1047.64
 margin_bottom = 272.733
 rect_min_size = Vector2( 996, 10 )
+theme = ExtResource( 24 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1008.0
+margin_right = 1004.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
