@@ -167,11 +167,6 @@ func submodules_handler():
 
 
 func close_scene(scene):
-	print("close scene")
-	print("PreviousScene:", PreviousScene.name if PreviousScene != null else "")
-	print("CurrentScene:", CurrentScene.name if CurrentScene != null else "")
-	print("BaseScene:", BaseScene.name if BaseScene != null else "")
-	print("menu_opened:", menu_opened)
 	scene.hide()
 	if scene == gui_data.GAMEMENU.main_module:
 		menu_opened = false
@@ -194,7 +189,6 @@ func close_scene(scene):
 
 
 func set_current_scene(scene):
-	print("Set Current Scene")
 	if CurrentScene == gui_data["SLAVE_INFO"].main_module:
 		PreviousScene = CurrentScene
 	CurrentScene = scene
