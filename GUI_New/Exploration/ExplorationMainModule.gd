@@ -104,6 +104,7 @@ func open():
 	# input_handler.CloseAllCloseableWindows()
 	Navigation.build_accessible_locations()
 	selected_location = GUIWorld.gui_data["MANSION"].main_module.selected_location
+	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	Navigation.select_location(selected_location)
 	
 

@@ -41,7 +41,7 @@ func MainMenu():
 
 
 func add_close_button(scene):
-	var pos_in_tree = scene.get_child_count()
+	var pos_in_tree = scene.get_child_count() - 2
 	scene.rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
 	var closebutton = load(ResourceScripts.scenedict.close).instance()
 	scene.add_child(closebutton)

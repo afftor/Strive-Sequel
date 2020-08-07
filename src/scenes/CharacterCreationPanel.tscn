@@ -203,124 +203,124 @@ align = 1
 [node name="skin" type="OptionButton" parent="bodyparts"]
 margin_top = 28.0
 margin_right = 302.0
-margin_bottom = 68.0
+margin_bottom = 72.2509
 rect_min_size = Vector2( 0, 40 )
 
 [node name="hair_length_label" type="Label" parent="bodyparts"]
-margin_top = 72.0
+margin_top = 76.0
 margin_right = 302.0
-margin_bottom = 96.0
+margin_bottom = 100.0
 text = "SLAVEPARTHAIR_LENGTH"
 align = 1
 
 [node name="hair_length" type="OptionButton" parent="bodyparts"]
-margin_top = 100.0
+margin_top = 104.0
 margin_right = 302.0
-margin_bottom = 140.0
+margin_bottom = 148.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="hair_color_label" type="Label" parent="bodyparts"]
-margin_top = 144.0
+margin_top = 152.0
 margin_right = 302.0
-margin_bottom = 168.0
+margin_bottom = 176.0
 text = "SLAVEPARTHAIR_COLOR"
 align = 1
 
 [node name="hair_color" type="OptionButton" parent="bodyparts"]
-margin_top = 172.0
+margin_top = 180.0
 margin_right = 302.0
-margin_bottom = 212.0
+margin_bottom = 224.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="eye_color_label" type="Label" parent="bodyparts"]
-margin_top = 216.0
+margin_top = 228.0
 margin_right = 302.0
-margin_bottom = 240.0
+margin_bottom = 252.0
 text = "SLAVEPARTEYE_COLOR"
 align = 1
 
 [node name="eye_color" type="OptionButton" parent="bodyparts"]
-margin_top = 244.0
+margin_top = 256.0
 margin_right = 302.0
-margin_bottom = 284.0
+margin_bottom = 300.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="eye_shape_label" type="Label" parent="bodyparts"]
-margin_top = 288.0
+margin_top = 304.0
 margin_right = 302.0
-margin_bottom = 312.0
+margin_bottom = 328.0
 text = "SLAVEPARTEYE_SHAPE"
 align = 1
 
 [node name="eye_shape" type="OptionButton" parent="bodyparts"]
-margin_top = 316.0
+margin_top = 332.0
 margin_right = 302.0
-margin_bottom = 356.0
+margin_bottom = 376.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="ears_label" type="Label" parent="bodyparts"]
-margin_top = 360.0
+margin_top = 380.0
 margin_right = 302.0
-margin_bottom = 384.0
+margin_bottom = 404.0
 text = "SLAVEPARTEARS"
 align = 1
 
 [node name="ears" type="OptionButton" parent="bodyparts"]
-margin_top = 388.0
+margin_top = 408.0
 margin_right = 302.0
-margin_bottom = 428.0
+margin_bottom = 452.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="horns_label" type="Label" parent="bodyparts"]
-margin_top = 432.0
+margin_top = 456.0
 margin_right = 302.0
-margin_bottom = 456.0
+margin_bottom = 480.0
 text = "SLAVEPARTHORNS"
 align = 1
 
 [node name="horns" type="OptionButton" parent="bodyparts"]
-margin_top = 460.0
+margin_top = 484.0
 margin_right = 302.0
-margin_bottom = 500.0
+margin_bottom = 528.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="tail_label" type="Label" parent="bodyparts"]
-margin_top = 504.0
+margin_top = 532.0
 margin_right = 302.0
-margin_bottom = 528.0
+margin_bottom = 556.0
 text = "SLAVEPARTTAIL"
 align = 1
 
 [node name="tail" type="OptionButton" parent="bodyparts"]
-margin_top = 532.0
+margin_top = 560.0
 margin_right = 302.0
-margin_bottom = 572.0
+margin_bottom = 604.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="wings_label" type="Label" parent="bodyparts"]
-margin_top = 576.0
+margin_top = 608.0
 margin_right = 302.0
-margin_bottom = 600.0
+margin_bottom = 632.0
 text = "SLAVEPARTWINGS"
 align = 1
 
 [node name="wings" type="OptionButton" parent="bodyparts"]
-margin_top = 604.0
+margin_top = 636.0
 margin_right = 302.0
-margin_bottom = 644.0
+margin_bottom = 680.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="height_label" type="Label" parent="bodyparts"]
-margin_top = 648.0
+margin_top = 684.0
 margin_right = 302.0
-margin_bottom = 672.0
+margin_bottom = 708.0
 text = "SLAVEPARTHEIGHT"
 align = 1
 
 [node name="height" type="OptionButton" parent="bodyparts"]
-margin_top = 676.0
+margin_top = 712.0
 margin_right = 302.0
-margin_bottom = 716.0
+margin_bottom = 756.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="bodyparts2" type="VBoxContainer" parent="."]
@@ -338,115 +338,115 @@ align = 1
 [node name="penis_size" type="OptionButton" parent="bodyparts2"]
 margin_top = 28.0
 margin_right = 278.0
-margin_bottom = 68.0
+margin_bottom = 72.2509
 rect_min_size = Vector2( 0, 40 )
 
 [node name="penis_type_label" type="Label" parent="bodyparts2"]
-margin_top = 72.0
+margin_top = 76.0
 margin_right = 278.0
-margin_bottom = 96.0
+margin_bottom = 100.0
 text = "SLAVEPARTPENIS_TYPE"
 align = 1
 
 [node name="penis_type" type="OptionButton" parent="bodyparts2"]
-margin_top = 100.0
+margin_top = 104.0
 margin_right = 278.0
-margin_bottom = 140.0
+margin_bottom = 148.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="balls_size_label" type="Label" parent="bodyparts2"]
-margin_top = 144.0
+margin_top = 152.0
 margin_right = 278.0
-margin_bottom = 168.0
+margin_bottom = 176.0
 text = "SLAVEPARTBALLS_SIZE"
 align = 1
 
 [node name="balls_size" type="OptionButton" parent="bodyparts2"]
-margin_top = 172.0
+margin_top = 180.0
 margin_right = 278.0
-margin_bottom = 212.0
+margin_bottom = 224.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="tits_size_label" type="Label" parent="bodyparts2"]
-margin_top = 216.0
+margin_top = 228.0
 margin_right = 278.0
-margin_bottom = 240.0
+margin_bottom = 252.0
 text = "SLAVEPARTTITS_SIZE"
 align = 1
 
 [node name="tits_size" type="OptionButton" parent="bodyparts2"]
-margin_top = 244.0
+margin_top = 256.0
 margin_right = 278.0
-margin_bottom = 284.0
+margin_bottom = 300.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="ass_size_label" type="Label" parent="bodyparts2"]
-margin_top = 288.0
+margin_top = 304.0
 margin_right = 278.0
-margin_bottom = 312.0
+margin_bottom = 328.0
 text = "SLAVEPARTASS_SIZE"
 align = 1
 
 [node name="ass_size" type="OptionButton" parent="bodyparts2"]
-margin_top = 316.0
+margin_top = 332.0
 margin_right = 278.0
-margin_bottom = 356.0
+margin_bottom = 376.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="vaginal_virgin" type="CheckBox" parent="bodyparts2"]
-margin_top = 360.0
+margin_top = 380.0
 margin_right = 278.0
-margin_bottom = 400.0
+margin_bottom = 420.0
 rect_min_size = Vector2( 0, 40 )
 text = "SLAVEPARTVAGINAL_VIRGIN"
 clip_text = true
 
 [node name="penis_virgin" type="CheckBox" parent="bodyparts2"]
-margin_top = 404.0
+margin_top = 424.0
 margin_right = 278.0
-margin_bottom = 444.0
+margin_bottom = 464.0
 rect_min_size = Vector2( 0, 40 )
 text = "SLAVEPARTPENIS_VIRGIN"
 clip_text = true
 
 [node name="anal_virgin" type="CheckBox" parent="bodyparts2"]
-margin_top = 448.0
+margin_top = 468.0
 margin_right = 278.0
-margin_bottom = 488.0
+margin_bottom = 508.0
 rect_min_size = Vector2( 0, 40 )
 text = "SLAVEPARTANAL_VIRGIN"
 clip_text = true
 
 [node name="diet_label" type="Label" parent="bodyparts2"]
-margin_top = 492.0
+margin_top = 512.0
 margin_right = 278.0
-margin_bottom = 516.0
+margin_bottom = 536.0
 text = "SLAVEDIET"
 align = 1
 
 [node name="diet" type="Button" parent="bodyparts2"]
-margin_top = 520.0
+margin_top = 540.0
 margin_right = 278.0
-margin_bottom = 570.0
+margin_bottom = 590.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="class_label" type="Label" parent="bodyparts2"]
-margin_top = 574.0
+margin_top = 594.0
 margin_right = 278.0
-margin_bottom = 598.0
+margin_bottom = 618.0
 text = "SLAVESTARTINGCLASS"
 align = 1
 
 [node name="class" type="Button" parent="bodyparts2"]
-margin_top = 602.0
+margin_top = 622.0
 margin_right = 278.0
-margin_bottom = 652.0
+margin_bottom = 672.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="type_label" type="Label" parent="bodyparts2"]
-margin_top = 656.0
+margin_top = 676.0
 margin_right = 278.0
-margin_bottom = 680.0
+margin_bottom = 700.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0.141176, 1, 0.858824, 1 )
 text = "SLAVETYPE"
@@ -465,9 +465,9 @@ __meta__ = {
 }
 
 [node name="slave_class" type="OptionButton" parent="bodyparts2"]
-margin_top = 684.0
+margin_top = 704.0
 margin_right = 278.0
-margin_bottom = 724.0
+margin_bottom = 748.251
 rect_min_size = Vector2( 0, 40 )
 
 [node name="StatsContainer" type="HBoxContainer" parent="."]

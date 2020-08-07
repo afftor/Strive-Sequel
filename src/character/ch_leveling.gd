@@ -268,9 +268,9 @@ func work_tick():
 		var gatherable = Items.materiallist.has(currenttask.code)
 		work_tick_values(currenttask, gatherable)
 		if !gatherable:
-			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)#*(get_stat('productivity')*get_stat(currenttask.mod)/100)
+			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true) * location.gather_mod
 		else:
-			currenttask.progress += get_progress_resource(currenttask.code, true) * location.gather_mod
+			currenttask.progress += get_progress_resource(currenttask.code, true)
 		while currenttask.threshhold <= currenttask.progress:
 			currenttask.progress -= currenttask.threshhold
 			if !gatherable:

@@ -86,7 +86,7 @@ func update_location_list():
 	for i in ResourceScripts.game_world.areas.values():
 		if i.unlocked == true:
 			array.append(i)
-	
+	array.sort_custom(self, 'sort_lands')
 	for i in array:
 		$DestinationButton.add_item(i.name)
 		$DestinationButton.set_item_metadata($DestinationButton.get_item_count()-1, i.code)
@@ -139,10 +139,6 @@ func update_buttons():
 			continue
 		i.pressed = i.get_meta("code") == get_parent().selected_destination
 
-
-func sort_dislocation(first, second):
-	var selected_travel_characters = get_parent().selected_travel_characters
-	return selected_travel_characters.has(first)
 
 func update_character_dislocation():
 	var destination = get_parent().selected_destination
@@ -238,3 +234,13 @@ func travel_cancel():
 	open_character_dislocation()
 	get_parent().match_state()
 
+
+
+var lands_order = ['plains','forests','mountains','steppe','seas']
+
+func sort_lands(first, second):
+	if lands_order.has(first.code):
+		if lands_order.has(second.code):
+			return  lands_order.find(first.code) < lands_order.find(second.code)
+		else:
+			return true

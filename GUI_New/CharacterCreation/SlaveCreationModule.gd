@@ -29,6 +29,7 @@ func _ready():
 func build_bodyparts():
 	var person = get_parent().person
 	$ScrollContainer/HBoxContainer/bodyparts2/personality.visible = get_parent().mode != 'master'
+	$ScrollContainer/HBoxContainer/bodyparts2/label_personality.visible = get_parent().mode != 'master'
 	$ScrollContainer/HBoxContainer/bodyparts2/personality.select(variables.personality_array.find(person.get_stat('personality')))
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	for i in get_parent().bodypartsarray:

@@ -112,7 +112,9 @@ func hire_character():
 	ResourceScripts.game_res.money -= person.calculate_price()
 	input_handler.PlaySound("money_spend")
 	person.set_stat('is_hirable', false)
-	ResourceScripts.game_party.add_slave(person)
+	person.recruit() #ResourceScripts.game_party.add_slave(person)
+	person.travel.location = get_parent().selected_location
+	person.remove_from_task()
 	hide()
 	
 	if input_handler.scene_characters.has(person):
