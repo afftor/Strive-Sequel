@@ -7,7 +7,6 @@ var hold_selection = false #pause for scene to load
 var previous_dialogue_option = 0
 var previous_text = ''
 
-onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 func open(scene, not_save = false):
 	if scene.has("variations"):
@@ -176,6 +175,7 @@ func complete_skirmish():
 	close()
 
 func update_scene_characters():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	input_handler.ClearContainer($EventCharacters/VBoxContainer)
 	input_handler.ClearContainer($PlayerCharacters/VBoxContainer)
 	for i in input_handler.scene_characters:
@@ -245,6 +245,7 @@ func select_option(number):
 			button.emit_signal("pressed")
 
 func close(transition = false):
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()

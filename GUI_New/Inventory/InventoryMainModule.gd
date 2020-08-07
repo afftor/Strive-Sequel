@@ -34,10 +34,9 @@ func _ready():
 
 
 func close_inventory(state):
-	ResourceScripts.core_animations.BlackScreenTransition()
-	yield(get_tree().create_timer(0.5), "timeout")
 	GUIWorld.PreviousScene = self
 	GUIWorld.set_current_scene(GUIWorld.gui_data["SLAVE_INFO"].main_module)
+	ResourceScripts.core_animations.UnfadeAnimation(GUIWorld.gui_data["SLAVE_INFO"].main_module, 0.3)
 	char_module.set_state(state)
 
 

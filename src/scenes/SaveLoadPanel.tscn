@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_SaveLoad.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan.png" type="Texture" id=9]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/frame_load.png" type="Texture" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=12]
 
 [node name="saveloadpanel" type="Panel"]
 margin_right = 650.0
@@ -96,9 +97,21 @@ custom_styles/panel = ExtResource( 2 )
 [node name="RichTextLabel" type="RichTextLabel" parent="DetailsPanel"]
 margin_left = 17.0
 margin_top = 5.0
-margin_right = 467.0
+margin_right = 242.0
 margin_bottom = 145.0
-custom_fonts/normal_font = ExtResource( 10 )
+custom_fonts/normal_font = ExtResource( 12 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="DetailsPanel"]
+margin_left = 242.0
+margin_top = 5.0
+margin_right = 463.0
+margin_bottom = 145.0
+custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_enabled = true
 __meta__ = {

@@ -20,12 +20,15 @@ func update_buttons():
 		button.pressed = selected_location == button.get_meta("data")
 
 func sort_locations(locations_array):
-	var capitals = []
-	if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.EXPLORATION.main_module:
-		capitals.append("Mansion")
+	var capitals = ["Mansion"]
+	# if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.EXPLORATION.main_module:
+	# 	capitals.append("Mansion")
 	var settlements = []
 	var dungeons = []
 	for loca in locations_array:
+		if loca == null:
+			locations_array.erase(null)
+			continue
 		if loca == "mansion" || loca == "travel": continue
 		match ResourceScripts.world_gen.get_location_from_code(loca).type:
 			"capital":
@@ -73,6 +76,7 @@ func build_accessible_locations():
 	update_buttons()
 
 func select_location(location):
+	print("location:", location)
 	if GUIWorld.BaseScene == GUIWorld.gui_data.MANSION.main_module:
 		go_outside(location)
 		return
@@ -119,11 +123,12 @@ func return_to_mansion():
 	input_handler.StopBackgroundSound()
 	input_handler.SetMusicRandom("mansion")
 	ResourceScripts.core_animations.BlackScreenTransition()
-	get_parent().get_node("GuildBG").hide()
+	if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.EXPLORATION.main_module:
+		get_parent().get_node("GuildBG").hide()
 #	get_parent().City.enter_guild(get_parent().active_faction)
 	# get_parent().City.get_node("GuildMenuBG").hide()
-	get_parent().active_faction = null
-	get_parent().active_location = null
+		get_parent().active_faction = null
+		get_parent().active_location = null
 	yield(get_tree().create_timer(0.5), 'timeout')
 	GUIWorld.set_current_scene(GUIWorld.gui_data["MANSION"].main_module)
 	GUIWorld.BaseScene = GUIWorld.gui_data["MANSION"].main_module

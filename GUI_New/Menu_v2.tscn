@@ -499,6 +499,9 @@ margin_top = 528.0
 margin_right = 698.0
 margin_bottom = 608.0
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="TextureButton" parent="NewGamePanel/Materials"]
 visible = false

@@ -309,7 +309,7 @@ custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 align = 1
 
-[node name="Label8" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+[node name="label_personality" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
 margin_top = 80.0
 margin_right = 302.0
 margin_bottom = 112.0

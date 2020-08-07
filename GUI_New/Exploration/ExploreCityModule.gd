@@ -92,7 +92,7 @@ func open_city(city):
 		# newbutton.get_node("Label").rect_size.x = 272
 		# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
 
-func update_buttons(meta):
+func update_buttons(meta = null):
 	for button in City.get_children():
 		if meta == "slavemarket":
 			if button.has_meta("guild") && !button.has_meta(meta):

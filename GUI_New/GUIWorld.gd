@@ -57,6 +57,7 @@ func _ready():
 
 	CurrentScene = gui_data["MANSION"].main_module
 	BaseScene = gui_data["MANSION"].main_module
+	input_handler.get_spec_node(input_handler.NODE_CLASSINFO, null, false, false)
 	visibility_handler()
 
 
@@ -65,7 +66,18 @@ func _input(event):
 		return
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name == "date":
 		return
-	if (event.is_action_released("ESC") && CurrentScene != null && CurrentScene.name != "InteractionMainModule") && !get_tree().get_root().get_node("classinfo").is_visible():
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")):
+		if CurrentScene == gui_data.INVENTORY.main_module && !PreviousScene == gui_data.SLAVE_INFO.main_module:
+			PreviousScene = CurrentScene
+			visibility_handler()
+			PreviousScene = null
+			return
+		if CurrentScene == gui_data.SLAVE_INFO.main_module:# && !PreviousScene == gui_data.SLAVE_INFO.main_module:
+			PreviousScene = CurrentScene
+			visibility_handler()
+			PreviousScene = null
+			return
+	if (event.is_action_released("ESC") && CurrentScene != null && CurrentScene.name != "InteractionMainModule") && !input_handler.get_spec_node(input_handler.NODE_CLASSINFO).is_visible():
 		if menu_opened:
 			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
 			if has_submodules_opened:
@@ -109,23 +121,32 @@ func visibility_handler():
 	if has_submodules_opened:
 		submodules_handler()
 	if CurrentScene == gui_data["INVENTORY"].main_module && PreviousScene == gui_data["SLAVE_INFO"].main_module && CurrentScene.is_visible():
-		ResourceScripts.core_animations.BlackScreenTransition()
-		yield(get_tree().create_timer(0.5), "timeout")
+		ResourceScripts.core_animations.UnfadeAnimation(PreviousScene, 0.3)
 		CurrentScene.hide()
 		CurrentScene = PreviousScene
+	# if BaseScene == gui_data.MANSION.main_module && gui_data.INVENTORY.main_module.is_visible():
+	# 	ResourceScripts.core_animations.UnfadeAnimation(BaseScene, 0.3)
+	# 	# yield(get_tree().create_timer(0.3), "timeout")
+	# 	CurrentScene = BaseScene
 	if menu_opened:
 		gui_data["GAMEMENU"].main_module.open()
 		return
 	if BaseScene == gui_data["MANSION"].main_module && !has_submodules_opened:
 		BaseScene.mansion_state = "default"
 	if !has_submodules_opened && CurrentScene.is_visible():
-		ResourceScripts.core_animations.BlackScreenTransition()
-		yield(get_tree().create_timer(0.5), "timeout")
+		# ResourceScripts.core_animations.FadeAnimation(CurrentScene, 0.3)
+		# yield(get_tree().create_timer(0.3), "timeout")
 		CurrentScene = BaseScene
 	for scene in gui_data.values():
+		if scene.main_module.get_class() == "Tween":
+			continue
 		scene.main_module.visible = (scene.main_module == CurrentScene)
+		if CurrentScene != PreviousScene && PreviousScene != null:
+			ResourceScripts.core_animations.UnfadeAnimation(CurrentScene, 0.3)
 	CurrentScene.update()
 	for subscene in CurrentScene.get_children():
+		if subscene.get_class() == "Tween":
+			continue
 		subscene.update()
 
 
@@ -145,18 +166,22 @@ func submodules_handler():
 
 
 
-func close_scene():
+func close_scene(scene):
+	scene.hide()
+	if scene == gui_data.GAMEMENU.main_module:
+		menu_opened = false
+		return
 	if BaseScene == gui_data["MANSION"].main_module:
 		BaseScene.mansion_state = "default"
-		for module in BaseScene.submodules:
-			ResourceScripts.core_animations.FadeAnimation(module, 0.3)
-			yield(get_tree().create_timer(0.3), "timeout")
-			module.hide()
-			set_current_scene(BaseScene)
-			return
+		# for module in BaseScene.submodules:
+		# 	# ResourceScripts.core_animations.FadeAnimation(module, 0.3)
+		# 	# yield(get_tree().create_timer(0.3), "timeout")
+		# CurrentScene.hide()
+		set_current_scene(BaseScene)
+		return
 	for module in CurrentScene.submodules:
-		ResourceScripts.core_animations.FadeAnimation(module, 0.3)
-		yield(get_tree().create_timer(0.3), "timeout")
+		# ResourceScripts.core_animations.FadeAnimation(module, 0.3)
+		# yield(get_tree().create_timer(0.3), "timeout")
 		module.hide()
 	CurrentScene.submodules.clear()
 	# if CurrentScene == gui_data["SLAVE_INFO"].main_module:
@@ -170,13 +195,16 @@ func set_current_scene(scene):
 	visibility_handler()
 
 
-func add_close_button(scene):
+func add_close_button(scene, position = "snap"):
+	var closebuttonoffset = [0,0]
+	if position == "add_offset":
+		closebuttonoffset = [15,15]
 	var pos_in_tree = scene.get_child_count()
 	rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
 	closebutton = load(ResourceScripts.scenedict.close).instance()
 	scene.add_child(closebutton)
 	scene.move_child(closebutton, pos_in_tree)
-	closebutton.connect("pressed", self, 'close_scene')
+	closebutton.connect("pressed", self, 'close_scene', [scene])
 	var rect = scene.get_global_rect()
 	var pos = Vector2(rect.end.x - closebutton.rect_size.x - closebuttonoffset[0], rect.position.y + closebuttonoffset[1])
 	closebutton.rect_global_position = pos
@@ -227,6 +255,8 @@ func test_mode():
 	character.set_stat('consent', 100)
 	character.set_stat('charm_factor', 5)
 	character.set_stat('physics_factor', 5)
+	character.set_stat('food_love', "meat")
+	character.set_stat('food_hate', ["grain"])
 	#character.unlock_class("worker")
 	character.mp = 50
 	character.unlock_class("sadist")
@@ -269,6 +299,8 @@ func test_mode():
 	character.set_stat('consent', 100)
 
 	var character2 = ResourceScripts.scriptdict.class_slave.new()
+	character.set_stat('food_love', "meat")
+	character.set_stat('food_hate', ["grain"])
 	character2.create('HalfkinCat', 'random', 'random')
 	character2.set_stat('charm', 0)
 	character2.set_stat('physics', 0)

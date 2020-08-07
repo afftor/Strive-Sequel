@@ -142,9 +142,11 @@ func start_preset_set(button):
 	if data.materials.size() > 0:
 		input_handler.ClearContainer($NewGamePanel/Materials)
 		for i in data.materials:
+			var item = Items.materiallist[i]
 			var newbutton = input_handler.DuplicateContainerTemplate($NewGamePanel/Materials)
 			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 			newbutton.get_node("Label").text = str(data.materials[i])
+			globals.connectmaterialtooltip(newbutton, item)
 	# text = text.substr(0, text.length()-2)
 	
 	$NewGamePanel/RichTextLabel.bbcode_text = text

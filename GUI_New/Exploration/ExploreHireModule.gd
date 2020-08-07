@@ -19,6 +19,10 @@ func _ready():
 
 func show_upgrade_window():
 	get_parent().StatUpgradeWindow.show()
+	get_parent().submodules.clear()
+	get_parent().submodules.append(get_parent().StatUpgradeWindow)
+	self.hide()
+	get_parent().City.update_buttons()
 
 
 func change_mode(mode):
@@ -67,6 +71,7 @@ func hire():
 		show()
 	$HireMode.visible = mode != "guild_slaves"
 	$SellMode.visible = mode != "guild_slaves"
+	$HBoxContainer/UpgradeButton.visible = mode != "guild_slaves"
 	# $PurchaseButton.get_node("Label").text = "Purchase"
 	get_parent().hiremode = 'hire'
 	$RichTextLabel.bbcode_text = ""
@@ -91,7 +96,7 @@ func hire():
 
 func show_slave_info(person):
 	get_parent().person_to_hire = person
-	$HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" # && (!person.has_profession('master'))
+	$HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" && mode != "guild_slaves" # && (!person.has_profession('master'))
 	for button in $ScrollContainer/VBoxContainer.get_children():
 		if button.name == "Button":
 			continue
@@ -176,7 +181,7 @@ func sell_slave():
 	get_parent().get_node("GuildBG").visible = (mode != "slave_market")
 	get_parent().hiremode = 'sell'
 	$HireMode.visible = mode != "guild_slaves"
-	$SellMode.visible = mode != "guild_slaves"
+	$SellMode.visible = mode != "guild_slaves"	
 	show()
 	$RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)

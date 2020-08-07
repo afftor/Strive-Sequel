@@ -4,11 +4,11 @@ onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD,
 
 func _ready():
 	GUIWorld.add_close_button(self)
+	hide()
 #	move_child($Control, 0)
 
 
 func open(classcode, person):
-	ResourceScripts.core_animations.UnfadeAnimation(self, 0.3)
 	var tempclass = classesdata.professions[classcode]
 	$TextureRect.texture = tempclass.icon
 	$name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
