@@ -8,10 +8,10 @@ func _ready():
 
 
 func select_race():
-	selected_race = ""
 	show()
 	get_parent().ClassSelection.hide()
 	var person = get_parent().person
+	selected_race = person.get_stat("race")
 	input_handler.ClearContainer($RaceSelection/ScrollContainer/VBoxContainer)
 	for i in races.racelist.values():
 		var newbutton = input_handler.DuplicateContainerTemplate($RaceSelection/ScrollContainer/VBoxContainer)

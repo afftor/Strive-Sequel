@@ -98,6 +98,10 @@ script = ExtResource( 13 )
 
 [node name="StatUpgradeModule" parent="." instance=ExtResource( 18 )]
 visible = false
+margin_left = 560.0
+margin_top = 140.0
+margin_right = 1360.0
+margin_bottom = 940.0
 
 [node name="ExploreFullSlaveModule" parent="." instance=ExtResource( 16 )]
 visible = false

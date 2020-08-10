@@ -234,15 +234,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="mood"]
-margin_left = -51.9999
-margin_top = -13.9996
-margin_right = -18.9999
-margin_bottom = 18.0004
+margin_top = 227.0
+margin_right = 33.0
+margin_bottom = 259.0
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="mood"]
 margin_left = 1.0
@@ -268,10 +264,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="fear"]
-margin_left = -38.9999
-margin_top = -16.9996
-margin_right = -5.99994
-margin_bottom = 15.0004
+margin_top = 227.0
+margin_right = 33.0
+margin_bottom = 259.0
 expand = true
 stretch_mode = 6
 __meta__ = {

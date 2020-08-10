@@ -7,7 +7,7 @@
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 use_filter = true
 font_data = ExtResource( 5 )
@@ -52,7 +52,7 @@ margin_top = 168.0
 margin_right = 429.0
 margin_bottom = 293.0
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Test text"
 text = "Test text"

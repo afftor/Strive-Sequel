@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_inactive.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_inactive.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=32]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=33]
 [ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=34]
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=36]
@@ -112,10 +113,6 @@ region_rect = Rect2( 0, 0, 554, 754 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 24
-font_data = ExtResource( 45 )
-
-[sub_resource type="DynamicFont" id=18]
-size = 30
 font_data = ExtResource( 45 )
 
 [node name="MansionCraftModule" type="Panel"]
@@ -851,7 +848,7 @@ __meta__ = {
 margin_left = 64.0
 margin_top = 96.0
 margin_right = 532.0
-margin_bottom = 721.0
+margin_bottom = 682.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -918,7 +915,7 @@ margin_left = 12.0
 margin_top = 10.0
 margin_right = 537.0
 margin_bottom = 86.0
-custom_fonts/font = SubResource( 18 )
+theme = ExtResource( 33 )
 text = "SELECTMATERIAL"
 align = 1
 valign = 1

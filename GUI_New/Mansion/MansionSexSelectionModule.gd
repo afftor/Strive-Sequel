@@ -12,7 +12,7 @@ func _ready():
 func start_scene():
 	var choosen_chars = get_parent().sex_participants
 	# var newscene = interaction.instance()
-	ResourceScripts.game_globals.daily_interactions_left -= 1
+	ResourceScripts.game_globals.daily_sex_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
 	GUIWorld.set_current_scene(GUIWorld.gui_data["INTERACTION"].main_module)

@@ -132,6 +132,16 @@ var scenedict = {
 	]
 	},
 	
+	event_dungeon_unlock_resources = {text = tr("DIALOGUEEVENTDUNGEONRESOURCE"), 
+	tags = ['location_resource_info'],
+	default_event_type = "loot",
+	image = 'chest', 
+	common_effects = [],
+	options = [
+	{code = 'leave', reqs = [], text = tr("DIALOGUECONFIRM")}
+	]
+	},
+	
 	event_dungeon_complete_loot_easy = {text = tr("DIALOGUEEVENTDUNGEONLOOT"), 
 	tags = ['good','locked_chest'],
 	default_event_type = "loot",

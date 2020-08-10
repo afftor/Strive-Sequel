@@ -64,7 +64,6 @@ func open_city(city):
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 	newbutton.get_node("Icon").hide()
 	for i in expnode.active_area.capital_options:
-		print("expnode:", i)
 		newbutton = input_handler.DuplicateContainerTemplate(City)
 		newbutton.get_node("Label").text = expnode.city_options[i]
 		newbutton.connect("pressed", self, i)
@@ -92,7 +91,7 @@ func open_city(city):
 		# newbutton.get_node("Label").rect_size.x = 272
 		# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
 
-func update_buttons(meta):
+func update_buttons(meta = null):
 	for button in City.get_children():
 		if meta == "slavemarket":
 			if button.has_meta("guild") && !button.has_meta(meta):
@@ -159,7 +158,9 @@ func enter_guild(guild):
 		return
 	else:
 		# if !get_parent().get_node("GuildBG").visible:
-		ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		var dialogue = get_tree().get_root().get_node_or_null("dialogue")
+		if dialogue != null && !dialogue.is_visible():
+			ResourceScripts.core_animations.UnfadeAnimation(get_parent().get_node("GuildBG"),0.5)
 		get_parent().get_node("GuildBG").texture = images.backgrounds[guild.background]
 		get_parent().Hire.mode = "guild_slaves"
 		Guild.show()

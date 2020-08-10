@@ -17,7 +17,7 @@ var shotanimationarray = [] #supposedanimation = {code = 'code', runnext = false
 
 var CombatAnimations = ResourceScripts.scriptdict.combat_animation.new()
 
-var debug = false
+var debug = true
 
 var allowaction = false
 var highlightargets = false
@@ -148,9 +148,9 @@ func FinishCombat(victory = true):
 		tchar.is_active = false
 	CombatAnimations.force_end()
 	hide()
-	input_handler.combat_node = null
 	if victory: input_handler.finish_combat()
-	else: input_handler.combat_defeat()
+	else: input_handler.combat_defeat
+	input_handler.combat_node = null
 
 
 func select_actor():

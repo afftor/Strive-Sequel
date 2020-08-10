@@ -180,7 +180,6 @@ func work_tick():
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
 						remove_from_task()
 						if ResourceScripts.game_party.active_tasks != []:
-							print("I'm here")
 							for task in ResourceScripts.game_party.active_tasks:
 								if task.code == currenttask.code && task.task_location == location.id:
 									ResourceScripts.game_party.active_tasks.erase(task)

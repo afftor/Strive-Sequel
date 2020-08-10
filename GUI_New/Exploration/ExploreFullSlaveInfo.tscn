@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge.png" type="Texture" id=1]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=1]
 [ext_resource path="res://GUI_New/Exploration/ExploreSlaveSummaryModule.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI_New/Exploration/ExploreSlaveInfoModule.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_pressed.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonhuge_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=5]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.gd" type="Script" id=6]
 [ext_resource path="res://assets/images/raceshades/Arachna_M.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=8]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=17]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=20]
 
 [node name="ExploreFullSlaveModule" type="Panel"]
 margin_right = 1890.0
@@ -206,9 +207,11 @@ margin_left = 1466.0
 margin_top = 945.0
 margin_right = 1846.0
 margin_bottom = 1025.0
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 4 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 20 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

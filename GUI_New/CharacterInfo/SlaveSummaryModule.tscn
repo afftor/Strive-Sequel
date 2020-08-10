@@ -35,19 +35,19 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/decorative_name.png" type="Texture" id=34]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 31 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 31 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 32 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 42
 font_data = ExtResource( 32 )
 
@@ -105,7 +105,7 @@ nine_patch_stretch = true
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
@@ -124,7 +124,7 @@ nine_patch_stretch = true
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
@@ -143,7 +143,7 @@ nine_patch_stretch = true
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1.100"
 align = 1
@@ -201,7 +201,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Excellent"
 __meta__ = {
@@ -225,7 +225,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="magic_factor" type="TextureRect" parent="factors"]
@@ -245,7 +245,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="wits_factor" type="TextureRect" parent="factors"]
@@ -265,7 +265,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="charm_factor" type="TextureRect" parent="factors"]
@@ -285,7 +285,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="sexuals_factor" type="TextureRect" parent="factors"]
@@ -305,7 +305,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="tame_factor" type="TextureRect" parent="factors" groups=[
@@ -327,7 +327,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="timid_factor" type="TextureRect" parent="factors" groups=[
@@ -349,7 +349,7 @@ margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "25"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -448,7 +448,7 @@ margin_left = 6.0
 margin_top = -2.0
 margin_right = 56.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "0"
 align = 1
@@ -461,7 +461,7 @@ margin_left = 6.0
 margin_top = 39.0
 margin_right = 56.0
 margin_bottom = 71.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Physics"
 align = 1
@@ -475,7 +475,7 @@ margin_left = 6.0
 margin_top = 75.0
 margin_right = 56.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Wits"
 align = 1
@@ -486,7 +486,7 @@ margin_left = 6.0
 margin_top = 106.0
 margin_right = 56.0
 margin_bottom = 138.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Charm"
 align = 1
@@ -497,7 +497,7 @@ margin_left = 6.0
 margin_top = 142.0
 margin_right = 56.0
 margin_bottom = 174.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sexuals"
 align = 1
@@ -514,7 +514,7 @@ margin_top = -2.0
 margin_right = 50.0
 margin_bottom = 30.0
 mouse_filter = 0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "0"
 align = 1
@@ -526,7 +526,7 @@ __meta__ = {
 margin_top = 39.0
 margin_right = 50.0
 margin_bottom = 71.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Physics"
 align = 1
@@ -536,7 +536,7 @@ clip_text = true
 margin_top = 75.0
 margin_right = 50.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Wits"
 align = 1
@@ -546,7 +546,7 @@ clip_text = true
 margin_top = 106.0
 margin_right = 50.0
 margin_bottom = 138.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Charm"
 align = 1
@@ -556,7 +556,7 @@ clip_text = true
 margin_top = 142.0
 margin_right = 50.0
 margin_bottom = 174.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sexuals"
 align = 1
@@ -648,7 +648,7 @@ texture_hover = ExtResource( 25 )
 margin_left = 8.0
 margin_right = 203.0
 margin_bottom = 59.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Gear"
 align = 1
@@ -671,7 +671,7 @@ texture_hover = ExtResource( 25 )
 margin_left = 8.0
 margin_right = 203.0
 margin_bottom = 59.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Class"
 align = 1
@@ -694,7 +694,7 @@ texture_hover = ExtResource( 25 )
 margin_left = 8.0
 margin_right = 203.0
 margin_bottom = 59.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Details"
 align = 1
@@ -728,7 +728,7 @@ margin_top = 33.0
 margin_right = 208.0
 margin_bottom = 92.0
 grow_horizontal = 0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Name"
 align = 1

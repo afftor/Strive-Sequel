@@ -114,6 +114,8 @@ func match_state():
 	NavModule.build_accessible_locations()
 	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
 	for node in get_children():
+		if node.get_class() == "Tween":
+			continue
 		if node.name.findn(mansion_state) == -1 && ! node.name in always_show:
 			node.hide()
 	var menu_buttons = MenuModule.get_node("VBoxContainer")
@@ -193,11 +195,9 @@ func match_state():
 	SlaveListModule.set_hover_area()
 
 func open_char_info():
-	ResourceScripts.core_animations.BlackScreenTransition()
-	yield(get_tree().create_timer(0.5), "timeout")
 	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
 	GUIWorld.set_current_scene(slave_info)
-
+	ResourceScripts.core_animations.UnfadeAnimation(slave_info, 0.3)
 
 func rebuild_mansion():
 	$MansionSlaveListModule.update()

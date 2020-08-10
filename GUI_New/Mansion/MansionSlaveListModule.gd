@@ -146,7 +146,8 @@ func build_locations_list():
 	for loca in default_locations + populatedlocations:
 		if loca in ['Aliron']:
 			continue
-		
+		if loca == null:
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 		if loca in default_locations:
 			newbutton.text = loca.capitalize()

@@ -48,14 +48,15 @@ func open_jobs_window():
 		### Temporary Patch
 		if person.travel.location == "mansion": person.travel.location = "Aliron"
 
-		var gatherable_resources
+		var gatherable_resources = []
 		var person_location = person.get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var location_type
 		if person_location != 'Aliron':
 			location_type = location.type
 			if location_type == "dungeon":
-				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
+				if location.completed == true:
+					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
 			else:
 				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 		else:

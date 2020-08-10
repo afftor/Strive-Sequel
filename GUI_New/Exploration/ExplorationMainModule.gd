@@ -22,8 +22,8 @@ var active_faction
 var active_location
 var action_type
 var person_to_hire
-var current_level = 1
-var current_stage = 0
+var current_level = 1 #should get rid of eventually
+var current_stage = 0 #should get rid of eventually
 var submodules = []
 var dialogue_opened = false
 var city_options = {
@@ -104,6 +104,7 @@ func open():
 	# input_handler.CloseAllCloseableWindows()
 	Navigation.build_accessible_locations()
 	selected_location = GUIWorld.gui_data["MANSION"].main_module.selected_location
+	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	Navigation.select_location(selected_location)
 	
 
@@ -254,21 +255,18 @@ func build_location_description():
 				+ ": "
 				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 			)
-			text += (
-				"\nProgress: Levels - "
-				+ str(current_level)
-				+ "/"
-				+ str(active_location.levels.size())
-				+ ", "
-			)
-			text += "Stage - " + str(active_location.progress.stage)
+			if active_location.completed == false:
+				text += "\nProgress: Levels - " + str(current_level) + "/" +str(active_location.levels.size()) + ", "
+				text += "Stage - " + str(active_location.progress.stage)
+			else:
+				text += "\n{color=aqua|Location complete}"
 		'settlement':
 			text = tr(active_location.classname) + ": " + active_location.name
 		'skirmish':
 			pass
 		'quest_location':
 			text = active_location.name + "\n" + active_location.descript
-	$LocationGui/Image/RichTextLabel.bbcode_text = '[center]' + text + "[/center]"
+	$LocationGui/Image/RichTextLabel.bbcode_text = '[center]' + globals.TextEncoder(text) + "[/center]"
 
 
 func open_location_actions():
@@ -370,32 +368,19 @@ func build_spell_panel():
 					newnode.script = null
 
 
-func enter_dungeon():
-	check_events('enter')
-	var completed_floors = active_location.progress.level
-	input_handler.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
 
-	var newbutton
+func clear_dungeon():
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'clear_dungeon_confirm', "Forget this location? All present characters will be sent back to Mansion. This action can't be undone."])
 
-	while completed_floors > 0:
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/ScrollContainer/VBoxContainer
-		)
-		newbutton.text = 'Level: ' + str(completed_floors)
-		if (
-			active_location.progress.level > completed_floors
-			|| (
-				active_location.progress.level == completed_floors
-				&& (
-					active_location.progress.stage
-					>= active_location.levels["L" + str(active_location.progress.level)].stages
-				)
-			)
-		):
-			newbutton.text += "(completed)"
-		newbutton.connect("pressed", self, "enter_level", [completed_floors])
-		completed_floors -= 1
+func clear_dungeon_confirm():
+	globals.remove_location(active_location.id)
+	action_type = 'location_finish'
 
+func use_item_on_character(character, item):
+	item.use_explore(character)#item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	item.amount -= 1
+	#show_heal_items(position)
+	build_location_group()
 
 func check_events(action):
 	return globals.check_events(action)
@@ -476,8 +461,7 @@ func faction_upgrade():
 
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = "Price: " + str(i.cost[currentupgradelevel]) + " faction points."
-		newnode.get_node("confirm").connect(
-			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
+		newnode.get_node("confirm").connect('pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
 
 
@@ -518,6 +502,62 @@ func unlock_upgrade(upgrade, level):
 	faction_upgrade()
 
 
+
+func enter_dungeon():
+	check_events('enter')
+	build_location_group()
+	build_location_description()
+	current_level = active_location.progress.level
+	current_stage = active_location.progress.stage
+#	print(current_level, " ", current_stage)
+#	print(active_location.levels.size(), active_location.levels["L"+str(active_location.levels.size())].stages)
+	
+	var is_last_level = active_location.progress.level >= active_location.levels.size() && active_location.progress.stage >= active_location.levels["L"+str(active_location.levels.size())].stages
+	
+	input_handler.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
+	var newbutton
+	if !is_last_level:
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+		newbutton.text = 'Advance'
+		newbutton.connect("pressed",self,"area_advance",['advance'])
+		if variables.allow_skip_fights:
+			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+			newbutton.text = 'Skip to last room'
+			newbutton.connect("pressed",self,"skip_to_boss")
+	else:
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+		newbutton.text = 'Forget Location'
+		newbutton.connect("pressed",self,"clear_dungeon")
+
+func skip_to_boss():
+	current_level = active_location.levels.size()
+	active_location.progress.level = current_level
+	current_stage = active_location.levels["L" + str(active_location.levels.size())].stages-1
+	active_location.progress.stage = current_stage
+	enter_dungeon()
+
+
+func check_dungeon_end():
+	return current_stage >= active_location.levels["L"+str(current_level)].stages && current_level >= active_location.levels.size()
+
+func area_advance(mode):
+	if globals.check_location_group() == false:
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	match mode:
+		'advance':
+			current_stage = active_location.progress.stage
+		'roam':
+			current_stage = 0
+	if check_events(mode) == true:
+		yield(input_handler, 'EventFinished')
+	
+	action_type = mode
+	
+	StartCombat()
+
+
+
 func enter_level(level, skip_to_end = false):
 	current_level = level
 	if skip_to_end == true:
@@ -545,7 +585,7 @@ func enter_level(level, skip_to_end = false):
 			newbutton.connect("pressed",self,"enter_level",[level+1])
 		else:
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-			newbutton.text = 'Complete location'
+			newbutton.text = 'Forget Location'
 			newbutton.connect("pressed",self,"clear_dungeon")
 	
 	if variables.allow_skip_fights:
@@ -564,21 +604,32 @@ func enter_level(level, skip_to_end = false):
 	build_location_description()
 
 
-func area_advance(mode):
-	if globals.check_location_group() == false:
-		input_handler.SystemMessage("Select at least 1 character before advancing. ")
-		return
-	match mode:
-		'advance':
+func finish_combat():
+	
+	if action_type == 'advance' && check_dungeon_end() == false:
+		active_location.progress.stage += 1
+		current_stage = active_location.progress.stage
+		if active_location.progress.stage > active_location.levels["L"+str(current_level)].stages:
+			active_location.progress.stage = 0
+			active_location.progress.level += 1
 			current_stage = active_location.progress.stage
-		'roam':
-			current_stage = 0
-	if check_events(mode) == true:
-		yield(input_handler, 'EventFinished')
-	
-	action_type = mode
-	
-	StartCombat()
+			current_level = active_location.progress.level
+		if check_dungeon_end() == false:
+			if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
+				yield(input_handler, 'EventFinished')
+			if active_location.has('randomevents') && globals.check_random_event() == true:
+				yield(input_handler, 'EventFinished')
+		else:
+			active_location.completed = true
+			check_events("finish_combat")
+			check_events("dungeon_complete")
+		
+		enter_dungeon()
+	elif action_type == 'location_finish':
+		Navigation.build_accessible_locations()
+		Navigation.select_location("Aliron")
+	else:
+		enter_dungeon()
 
 
 func StartCombat():
@@ -618,18 +669,6 @@ func slave_position_deselect(character):
 				break
 		build_location_group()
 
-
-func finish_combat():
-	if action_type == 'advance':
-		active_location.progress.stage += 1
-		enter_level(active_location.progress.level)
-	elif action_type == 'location_finish':
-#		leave_location()
-		#update_categories()
-		Navigation.build_accessible_locations()
-		Navigation.select_location("Aliron")
-	else:
-		enter_level(current_level)
 
 
 func details_quest_up(difficulty):

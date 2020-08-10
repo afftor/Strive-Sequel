@@ -266,6 +266,7 @@ func finish_character():
 	ResourceScripts.game_party.add_slave(person)
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
+	input_handler.add_random_chat_message(person, 'hire')
 
 func text_changed(text, value):
 	if text != '':
@@ -389,7 +390,6 @@ func LoadCharacter():
 	var parse_result
 	parse_result = JSON.parse(text)
 	var character_to_load = parse_result.result
-	print("character_to_load:", character_to_load)
 	if character_to_load != null && character_to_load.type != mode:
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("Can't use this template. Types doesn't match.")])
 		return

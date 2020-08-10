@@ -124,10 +124,10 @@ func gear_detailed_tooltip(data, item = null):
 	item = data.item
 	if item.parts.size() == 0:
 		return
-	var text = '[center]'+data.item.name+'[/center]'
+	var text = '[center]{color=k_yellow|' + data.item.name +'}[/center]'
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += "\n\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		text += "\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]

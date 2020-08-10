@@ -268,8 +268,8 @@ func update():
 	
 	text = ''
 	$factors/food_consumption/Label.text = str(person.get_stat('food_consumption'))
-	$food_love/Button.texture = images.icons[person.food.food_love]
-	$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.food.food_love.to_upper())
+	$food_love/Button.texture = images.icons[person.get_stat("food_hate")]
+	$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.get_stat("food_hate").to_upper())
 	$food_love/Button.visible = $food_love/Button.texture != null
 	input_handler.ClearContainer($food_hate/Container)
 	for i in person.food.food_hate:
