@@ -170,12 +170,12 @@ func _init():
 	for i in translationscript.TranslationDict:
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
+	connect("EventFinished", self, "event_finished")
 
 func _ready():
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
 	settings_load()
-
 
 # func _input(event):
 # 	if event.is_echo() == true && !event.is_action_type(): 
@@ -592,7 +592,32 @@ func dialogue_option_selected(option):
 	if !ResourceScripts.game_progress.selected_dialogues.has(option):
 		ResourceScripts.game_progress.selected_dialogues.append(option)
 
-func interactive_message(code, type, args):
+var dialogue_array = []
+var event_is_active = false
+
+
+func interactive_message(code, type = '', args = {}):
+	dialogue_array.append({code = code, type = type, args = args})
+	start_event_attempt()
+
+func interactive_message_follow(code, type, args):
+	start_event(code, type, args)
+
+func event_finished():
+	event_is_active = false
+	start_event_attempt()
+
+func start_event_attempt():
+	if dialogue_array.size() > 0:
+		if event_is_active == true:
+			yield(self, "EventFinished")
+		else:
+			var event = dialogue_array[0]
+			start_event(event.code, event.type, event.args)
+			dialogue_array.erase(event)
+
+func start_event(code, type, args):
+	event_is_active = true
 	var data = scenedata.scenedict[code].duplicate(true)
 	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
 #	if data.has('opp_characters'):
@@ -640,11 +665,11 @@ func interactive_message(code, type, args):
 	scene.open(data)
 
 func interactive_message_custom(data):
-	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
+	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.open(data.duplicate(true), true)
 
 func interactive_dialogue_start(code, stage):
-	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
+	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.dialogue_next(code, stage)
 
 
@@ -783,14 +808,8 @@ func finish_combat():
 	
 	if encounter_win_script != null:
 		globals.common_effects(encounter_win_script)
-#		var data = scenedata.scenedict[encounter_win_script]
-#		interactive_message(encounter_win_script, data.default_event_type, {})
 		encounter_win_script = null
 		return
-	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
-		yield(self, 'EventFinished')
-	if active_location.has('randomevents') && globals.check_random_event() == true:
-		yield(self, 'EventFinished')
 	
 	exploration_node.finish_combat()
 

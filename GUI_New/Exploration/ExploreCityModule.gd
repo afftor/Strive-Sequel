@@ -64,7 +64,6 @@ func open_city(city):
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 	newbutton.get_node("Icon").hide()
 	for i in expnode.active_area.capital_options:
-		print("expnode:", i)
 		newbutton = input_handler.DuplicateContainerTemplate(City)
 		newbutton.get_node("Label").text = expnode.city_options[i]
 		newbutton.connect("pressed", self, i)

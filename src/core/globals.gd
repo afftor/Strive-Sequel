@@ -764,15 +764,13 @@ func check_events(action):
 	for i in eventarray:
 		if i.trigger == action && check_event_reqs(i.reqs) == true:
 			if i.event == 'custom_event':
-				input_handler.interactive_message_custom(scenedata.scenedict[i.args])
+				input_handler.interactive_message(i.args)
 			elif i.has('args'):
 				input_handler.call(i.event, i.args)
 			else:
 				input_handler.call(i.event)
-			eventtriggered = true
 			if i.has('oneshot') && i.oneshot == true:
 				erasearray.append(i)
-			break
 	for i in erasearray:
 		eventarray.erase(i)
 	return eventtriggered
@@ -810,6 +808,8 @@ func check_event_reqs(reqs):
 				check = input_handler.operate(i.operant, current_level, i.value)
 			'stage':
 				check = input_handler.operate(i.operant, current_stage, i.value)
+			'dungeon_complete':
+				check = i.value == input_handler.exploration_node.check_dungeon_end()
 		if check == false:
 			break
 	return check
@@ -958,9 +958,9 @@ func remove_location(locationid):
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
 	input_handler.update_slave_list()
-	if input_handler.active_location == location && input_handler.CurrentScene.get_node("Exploration").is_visible_in_tree():
-		input_handler.CurrentScene.get_node("Exploration").select_location('Aliron')
-		input_handler.CurrentScene.get_node("Exploration").build_accessible_locations()
+	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
+		input_handler.exploration_node.Navigation.select_location('Aliron')
+		input_handler.exploration_node.Navigation.build_accessible_locations()
 
 func return_characters_from_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)

@@ -66,6 +66,8 @@ func open(scene, not_save = false):
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
 	
+	
+	
 	var scenetext = scene.text
 	var newtext = ''
 	for i in scenetext:
@@ -94,6 +96,9 @@ func open(scene, not_save = false):
 		scenetext = input_handler.active_character.translate(scenetext)
 	if scene.tags.has("scene_character_translate"):
 		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
+	if scene.tags.has("location_resource_info"):
+		scenetext = add_location_resource_info() 
+	
 	ResourceScripts.core_animations.UnfadeAnimation($RichTextLabel,1)
 	ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer,1)
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
@@ -135,7 +140,7 @@ func open(scene, not_save = false):
 			var event_type = 'story_event'
 			if scenedata.scenedict[i.code].has('default_event_type'):
 				event_type = scenedata.scenedict[i.code].default_event_type
-			newbutton.connect("pressed", input_handler, 'interactive_message', [i.code, event_type, {}])
+			newbutton.connect("pressed", input_handler, 'interactive_message_follow', [i.code, event_type, {}])
 		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':
 			newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
 		elif scene.tags.has("custom_effect"):
@@ -191,7 +196,7 @@ var stored_scene
 
 func dialogue_next(code, argument):
 	previous_dialogue_option = argument
-	input_handler.interactive_message(code, '', '')
+	input_handler.interactive_message_follow(code, '', '')
 
 
 
@@ -205,7 +210,14 @@ func add_chest_options(scene):
 		scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUECHESTOPEN"})
 	else:
 		scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
-	
+
+func add_location_resource_info():
+	var text = '\nAfter defeating last enemies your party investigated the location and found a resources you can harvest:'
+	var location = input_handler.active_location
+	for i in location.gather_limit_resources:
+		text += "\n" + Items.materiallist[i].name + ": " + str(location.gather_limit_resources[i])
+	text += '\n\nHarvest speed modifier: ' + str(round(location.gather_mod*100)) + "%"
+	return text
 
 func lockpick_attempt(person):
 	var lock = input_handler.scene_loot.lock.difficulty
@@ -213,10 +225,10 @@ func lockpick_attempt(person):
 	var open = lockpickskill >= lock
 	
 	if open == true:
-		input_handler.interactive_message("lockpick_chest_success", "story_event", {})
+		input_handler.interactive_message_follow("lockpick_chest_success", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_success')
 	else:
-		input_handler.interactive_message("lockpick_chest_failure", "story_event", {})
+		input_handler.interactive_message_follow("lockpick_chest_failure", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
 func select_person_for_next_event(code):

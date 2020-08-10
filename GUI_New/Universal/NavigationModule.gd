@@ -92,7 +92,6 @@ func select_location(location):
 	# 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	# 	yield(get_tree().create_timer(0.5), "timeout")
 	if GUIWorld.PreviousScene == GUIWorld.gui_data.MANSION.main_module:
-		print("here")
 		GUIWorld.PreviousScene = null
 	else:
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)

@@ -199,7 +199,6 @@ func open_char_info():
 	GUIWorld.set_current_scene(slave_info)
 	ResourceScripts.core_animations.UnfadeAnimation(slave_info, 0.3)
 
-
 func rebuild_mansion():
 	$MansionSlaveListModule.update()
 	$MansionSkillsModule.build_skill_panel()

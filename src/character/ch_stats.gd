@@ -311,7 +311,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	var gendata = {race = '', sex = 'random', age = 'random'}
 	
 	if typeof(races) == TYPE_STRING && races == 'random':
-		gendata.race = statlist.get_random_race()
+		gendata.race = get_random_race()
 	elif typeof(races) == TYPE_STRING:
 		gendata.race = races
 	else:

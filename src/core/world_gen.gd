@@ -238,6 +238,7 @@ func make_location(code, area):
 	location.randomevents = location.eventarray
 	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
+	location.completed = false
 	location.stagedenemies = []
 	location.enemies = location.enemyarray.duplicate(true)
 	location.tasks = []
@@ -265,7 +266,9 @@ func make_location(code, area):
 		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
 		if location.final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
-		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
+		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = []})
+	if location.has('gather_limit_resources'):
+		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = [{code = 'dungeon_complete', value = true}]})
 	
 	
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
