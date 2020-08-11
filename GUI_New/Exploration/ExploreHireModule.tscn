@@ -723,7 +723,6 @@ align = 1
 valign = 1
 
 [node name="UpgradeButton" type="TextureButton" parent="HBoxContainer"]
-self_modulate = Color( 0.301961, 0.584314, 0.917647, 1 )
 margin_left = 209.0
 margin_right = 403.0
 margin_bottom = 58.0

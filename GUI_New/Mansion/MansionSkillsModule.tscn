@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/panel_borders.png" type="Texture" id=10]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=11]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 256, 120 )
 margin_left = 25.0
@@ -20,7 +20,7 @@ margin_right = 25.0
 margin_top = 10.0
 margin_bottom = 10.0
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=10]
 size = 24
 font_data = ExtResource( 11 )
 
@@ -30,7 +30,7 @@ anchor_bottom = 0.121
 margin_left = -0.174828
 margin_right = -0.334839
 margin_bottom = -10.68
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,7 +106,7 @@ margin_left = 53.0
 margin_top = 1.0
 margin_right = 93.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 text = "1"
 align = 2
 
@@ -116,7 +116,7 @@ margin_left = 53.0
 margin_top = 65.767
 margin_right = 93.0003
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -131,7 +131,7 @@ margin_left = 5.62131
 margin_top = 65.767
 margin_right = 45.6213
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"

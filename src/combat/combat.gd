@@ -149,7 +149,7 @@ func FinishCombat(victory = true):
 	CombatAnimations.force_end()
 	hide()
 	if victory: input_handler.finish_combat()
-	else: input_handler.combat_defeat
+	else: input_handler.combat_defeat()
 	input_handler.combat_node = null
 
 

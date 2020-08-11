@@ -34,21 +34,21 @@ func _ready():
 	# return
 	test_mode()
 
-	if globals.start_new_game == true:
-		globals.start_new_game = false
-		self.visible = false
-		var newgame_node = Node.new()
-		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
-		newgame_node.start()
-		input_handler.GameStartNode = newgame_node
-		yield(input_handler, "StartingSequenceComplete")
-		input_handler.GameStartNode.queue_free()
-		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
-		show()
+	# if globals.start_new_game == true:
+	# 	globals.start_new_game = false
+	# 	self.visible = false
+	# 	var newgame_node = Node.new()
+	# 	newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
+	# 	newgame_node.start()
+	# 	input_handler.GameStartNode = newgame_node
+	# 	yield(input_handler, "StartingSequenceComplete")
+	# 	input_handler.GameStartNode.queue_free()
+	# 	#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+	# 	show()
 
-		input_handler.ActivateTutorial("introduction")
-		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
-			input_handler.interactive_message('intro', '', {})
+	# 	input_handler.ActivateTutorial("introduction")
+	# 	if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
+	# 		input_handler.interactive_message('intro', '', {})
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
