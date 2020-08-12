@@ -10,14 +10,15 @@ func update():
 	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	var gatherable_resources
 	if location.type == "dungeon":
-		# if location.completed == true:
-		gatherable_resources = location.gather_limit_resources
+		if location.completed:
+			gatherable_resources = location.gather_limit_resources
 	else:
 		gatherable_resources = location.gather_resources
 	input_handler.ClearContainer(self)
-	for i in gatherable_resources:
-		var item = Items.materiallist[i]
-		var newbutton = input_handler.DuplicateContainerTemplate(self)
-		newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
-		newbutton.get_node("Label").text = str(gatherable_resources[i])
-		globals.connectmaterialtooltip(newbutton, item)
+	if gatherable_resources != null:
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			var newbutton = input_handler.DuplicateContainerTemplate(self)
+			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
+			newbutton.get_node("Label").text = str(gatherable_resources[i])
+			globals.connectmaterialtooltip(newbutton, item)

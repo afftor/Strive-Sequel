@@ -219,7 +219,7 @@ func show_location_characters(button = null):
 				# get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 	if !selected_location in ["show_all"]:
 		get_parent().TravelsModule.dislocation_area = selected_location
-	get_parent().TravelsModule.update_location_list()
+#	get_parent().TravelsModule.update_location_list()
 	if visible_persons.size() < 1:
 		selected_location = "show_all"			
 
