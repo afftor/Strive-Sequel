@@ -398,7 +398,7 @@ size_flags_horizontal = 3
 [node name="Button" type="Button" parent="NewGamePanel/PresetContainer/VBoxContainer"]
 visible = false
 margin_right = 226.0
-margin_bottom = 40.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 6 )
 toggle_mode = true
@@ -505,7 +505,8 @@ __meta__ = {
 
 [node name="Button" type="TextureButton" parent="NewGamePanel/Materials"]
 visible = false
-margin_right = 80.0
+margin_left = 154.0
+margin_right = 234.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 50 )

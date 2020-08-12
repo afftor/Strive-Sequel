@@ -66,8 +66,9 @@ func build_accessible_locations():
 			if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.MANSION.main_module:
 				newbutton.pressed = true
 			continue
-		Navigation.add_child(newseparator)
-		newseparator.visible = true
+		if i != sorted_locations[sorted_locations.size() - 1]:
+			Navigation.add_child(newseparator)
+			newseparator.visible = true
 		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
 		newbutton.connect("pressed", self, "select_location", [i])
 		newbutton.set_meta("data", i)
@@ -98,6 +99,8 @@ func select_location(location):
 		yield(get_tree().create_timer(0.5), 'timeout')
 	if location in ResourceScripts.game_world.capitals:
 		get_parent().City.open_city(location)
+		self.rect_position.x = 327
+		self.rect_size.x = 1450
 	else:
 		var data = ResourceScripts.world_gen.get_location_from_code(location)
 		var presented_characters = []

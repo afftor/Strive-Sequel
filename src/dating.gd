@@ -119,10 +119,11 @@ func _ready():
 	globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
 	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	$end/sexbutton.connect("pressed", self, 'start_sex')
-	#initiate(person)
+#	initiate(person)
 
 func initiate(tempperson):
-	ResourceScripts.game_globals.daily_dates_left -= 1
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+	GUIWorld.CurrentScene = self
 	var text = ''
 	self.visible = true
 	self.mood = 0
@@ -992,6 +993,7 @@ func calculateresults():
 	if person.get_stat('consent') >= 30 || person.get_stat('loyalty') + person.get_stat('consent')*2 > 110:
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n"
 		sex_offer = true
+	
 	$end/sexbutton.visible = sex_offer
 	
 	return globals.TextEncoder(text)
