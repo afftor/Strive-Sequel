@@ -16,6 +16,7 @@ onready var JobModule = $MansionJobModule
 onready var InteractSelection = $InteractSelectionModule
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
+onready var Locations = $MansionLocationsModule
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var submodules = []
 
@@ -264,8 +265,9 @@ func travels_manager(params):
 			is_travel_selected = false
 			selected_destination = null
 			selected_travel_characters.clear()
-			TravelsModule.update_location_list()
-			TravelsModule.update_character_dislocation() 
+			TravelsModule.get_node("Resources").hide()
+			TravelsModule.get_node("LocationListButton").pressed = Locations.is_visible()
+			TravelsModule.update_character_dislocation()
 			# SlaveListModule.rebuild()
 		'destination_selected':
 			is_travel_selected = true
@@ -273,7 +275,7 @@ func travels_manager(params):
 			selected_destination = params.destination
 			TravelsModule.update_character_dislocation() 
 			SlaveListModule.rebuild()
-			TravelsModule.update_buttons()
+#			TravelsModule.update_buttons()
 
 func upgrades_manager():
 	SlaveListModule.rebuild()
@@ -308,7 +310,7 @@ func slave_list_manager():
 					self.selected_travel_characters.append(active_person)
 				TravelsModule.update_character_dislocation()
 			SlaveListModule.rebuild()
-			TravelsModule.update_buttons()
+#			TravelsModule.update_buttons()
 		'upgrades':
 			if !select_chars_mode:
 				SlaveModule.show_slave_info()
@@ -361,6 +363,8 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
+	Locations.show()
+	Locations.open()
 	# print("LocaLinks:" +str(ResourceScripts.game_world.location_links))
 	# for person in ResourceScripts.game_party.characters.values():
 	# 	var loca = person.travel.location
@@ -381,8 +385,8 @@ func _on_TestButton_pressed():
 	# GUIWorld.gui_data["EXPLORATION"].main_module.open()
 	# print("Craft State:" + str(craft_state))
 	# print("Mansion State:" + str(mansion_state))
-	print("Active Task")
-	print(ResourceScripts.game_party.active_tasks) 
+	# print("Active Task")
+	# print(ResourceScripts.game_party.active_tasks) 
 	# print("Upgrade Progresses")
 	# print(ResourceScripts.game_res.upgrade_progresses)
 	# print("Selected Upgrade:" + str(selected_upgrade))

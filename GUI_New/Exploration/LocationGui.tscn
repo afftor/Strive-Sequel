@@ -35,17 +35,17 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_bow.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_sword.png" type="Texture" id=34]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 30 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 18
 font_data = ExtResource( 30 )
 
-[sub_resource type="ImageTexture" id=1]
+[sub_resource type="ImageTexture" id=3]
 
-[sub_resource type="ImageTexture" id=2]
+[sub_resource type="ImageTexture" id=4]
 
 [node name="LocationGui" type="Panel"]
 margin_right = 1920.0
@@ -795,7 +795,7 @@ margin_left = 52.0
 margin_top = 6.0
 margin_right = 261.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Heal Spell"
 align = 1
@@ -807,7 +807,7 @@ margin_top = 27.0
 margin_right = 313.0
 margin_bottom = 51.0
 rect_scale = Vector2( 0.8, 0.8 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Master"
 align = 1
@@ -824,7 +824,7 @@ toggle_mode = true
 texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 28 )
-texture_focused = SubResource( 1 )
+texture_focused = SubResource( 3 )
 
 [node name="Label" type="Label" parent="ItemUsePanel/ItemsButton"]
 margin_left = 94.7219
@@ -843,7 +843,7 @@ toggle_mode = true
 texture_normal = ExtResource( 27 )
 texture_pressed = ExtResource( 29 )
 texture_hover = ExtResource( 28 )
-texture_focused = SubResource( 2 )
+texture_focused = SubResource( 4 )
 
 [node name="Label" type="Label" parent="ItemUsePanel/SpellsButton"]
 margin_left = 19.9026
