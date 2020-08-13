@@ -50,17 +50,21 @@ func open():
 	build_area_list()
 	$col1.text = lands_order[location_index].capitalize()
 	$col2.text = lands_order[location_index + 1].capitalize()
-	# $col3.text = lands_order[location_index + 2].capitalize()
+	if area_list.size() >= 3:
+		$col3.text = lands_order[location_index + 2].capitalize()
 	var index = location_index
 	for container in [Column1, Column2, Column3]:
 		input_handler.ClearContainer(container)
-		if area_list.size() == index:
-			return
+		if !(area_list.size() >= 3):
+			if area_list.size() == index:
+				return
 		build_location_list(area_list[index], container)
 		if index == lands_order.size() - 1:
 			index = 0
 		else:
 			index += 1
+	$SwipeLeft.visible = area_list.size() > 3
+	$SwipeRight.visible = area_list.size() > 3
 
 
 

@@ -326,7 +326,7 @@ func victory():
 		var gained_exp = exp_per_character * tchar.get_stat('exp_mod')
 		tchar.add_stat('base_exp', gained_exp)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
-		newbutton.texture = tchar.get_icon()
+		newbutton.get_node("Icon").texture = tchar.get_icon()
 		newbutton.get_node("name").text = tchar.get_short_name()
 		newbutton.get_node("amount").text = str(gained_exp)
 		if tchar.hp <= 0:
@@ -364,7 +364,7 @@ func victory():
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		#newbutton.hide()
-		newbutton.texture = item.icon
+		newbutton.get_node("Icon").texture = item.icon
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
 		ResourceScripts.game_res.materials[i] += rewardsdict.materials[i]
@@ -372,7 +372,7 @@ func victory():
 	for i in rewardsdict.items:
 		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
 		#newnode.hide()
-		newnode.texture = input_handler.loadimage(i.icon, 'icons')
+		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
 		globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
 		globals.connectitemtooltip(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
