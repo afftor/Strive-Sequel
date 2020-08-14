@@ -175,7 +175,6 @@ func finish_diet_selection():
 	for i in person.get_stat('food_hate'):
 		text += i + " "
 #	$bodyparts2/diet.text = text
-	check_confirm_possibility()
 
 func open(type = 'slave', newguild = 'none'):
 	preservedsettings.clear()
@@ -242,7 +241,8 @@ func apply_preserved_settings():
 		person.set_stat(i, preservedsettings[i])
 
 func confirm_character():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'finish_character', 'Create this character?'])
+	if check_confirm_possibility():
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'finish_character', 'Create this character?'])
 
 
 func finish_character():
@@ -276,26 +276,18 @@ func text_changed(text, value):
 
 
 func check_confirm_possibility():
-	var can_confirm = true
-	
 	if !preservedsettings.has('food_love'):
-		can_confirm = false
+		input_handler.SystemMessage("You must select a liked food type")
+		return false
 	elif preservedsettings['food_love'] == '' || preservedsettings['food_hate'] == []:
-		can_confirm = false
-	else:
-		can_confirm
-
-	
+		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
+		return false
 	
 	if selected_class == '':
-#		$bodyparts2/class.text = "Select"
-		can_confirm = false
-	else:
-		pass
-#		$bodyparts2/class.text = classesdata.professions[selected_class].name
+		input_handler.SystemMessage("You must select a starting Class")
+		return false
 	
-	$ConfirmButton.disabled = !can_confirm
-	$ConfirmButton.hint_tooltip = "" if can_confirm else 'Select starting Class and Diet'
+	return true
 
 func set_savefilename(text):
 	savefilename = text + ".ch"
@@ -436,7 +428,6 @@ func LoadCharacter():
 	# apply_preserved_settings()
 	SlaveInfo.build_bodyparts()
 	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
-	check_confirm_possibility()
 	# if person.statlist.sex_traits.size() == 0:
 	# 	$VBoxContainer/sextrait.text = "Select Sex Trait"
 	# else:
@@ -508,7 +499,6 @@ func RebuildStatsContainer():
 	apply_preserved_settings()
 	if selected_class != '' && person.checkreqs(classesdata.professions[selected_class].reqs) == false:
 		selected_class = ''
-		check_confirm_possibility()
 
 func stat_up(stat):
 	if preservedsettings[stat.code] >= 5 || unassigned_points == 0:

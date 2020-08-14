@@ -729,8 +729,7 @@ func finish_combat():
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
 		yield(self, 'EventFinished')
-	if active_location.has('randomevents') && globals.check_random_event() == true:
-		yield(self, 'EventFinished')
+	
 	
 	exploration_node.finish_combat()
 

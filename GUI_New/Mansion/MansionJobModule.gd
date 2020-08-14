@@ -113,6 +113,7 @@ func show_job_details(job, gatherable = false):
 	input_handler.ClearContainer($job_details/ResourceOptions)
 	if gatherable:
 		job_name = job.progress_formula.capitalize()
+		job_descript = 'Gather availiable resources from location'
 		if job.tool_type != "":
 			work_tools = statdata.worktoolnames[job.tool_type]
 	else:

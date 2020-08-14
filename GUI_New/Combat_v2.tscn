@@ -103,7 +103,7 @@ region_rect = Rect2( 0, 0, 694, 182 )
 size = 24
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 55
 use_filter = true
 font_data = ExtResource( 1 )
@@ -692,7 +692,6 @@ __meta__ = {
 }
 
 [node name="debugvictory" type="Button" parent="ItemPanel"]
-visible = false
 margin_left = 18.0
 margin_top = 14.0
 margin_right = 392.0
@@ -847,6 +846,9 @@ toggle_mode = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 44 )
 texture_hover = ExtResource( 41 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Run" type="TextureButton" parent="Menu"]
 margin_left = 90.0
@@ -858,6 +860,7 @@ texture_pressed = ExtResource( 42 )
 texture_hover = ExtResource( 40 )
 
 [node name="Rewards" type="TextureRect" parent="."]
+visible = false
 margin_left = 537.95
 margin_top = 80.0
 margin_right = 1417.95
@@ -1034,7 +1037,7 @@ margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "VICTORY"
 align = 1
 

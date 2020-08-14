@@ -484,7 +484,7 @@ func test_mode():
 	tmp.anal = 90
 	tmp.petting = 100
 	#character.set_stat('sex_skills', tmp)
-	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]  #[state.areas.plains.locations.size()-1]]
+	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 	input_handler.active_area = ResourceScripts.game_world.areas.plains
 
 	for i in ResourceScripts.game_world.areas.plains.factions.values():
@@ -495,7 +495,7 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-	
+	#input_handler.interactive_message('event_trap_easy', '', {})
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()
