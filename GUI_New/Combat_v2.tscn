@@ -695,7 +695,6 @@ __meta__ = {
 }
 
 [node name="debugvictory" type="Button" parent="ItemPanel"]
-visible = false
 margin_left = 18.0
 margin_top = 14.0
 margin_right = 392.0
@@ -850,6 +849,9 @@ toggle_mode = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 44 )
 texture_hover = ExtResource( 41 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Run" type="TextureButton" parent="Menu"]
 margin_left = 90.0

@@ -810,8 +810,10 @@ func finish_combat():
 		globals.common_effects(encounter_win_script)
 		encounter_win_script = null
 		return
+	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
+		yield(input_handler, 'EventFinished')
 	
-	exploration_node.finish_combat()
+	exploration_node.advance()
 
 func finish_quest_dungeon(args):
 	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
