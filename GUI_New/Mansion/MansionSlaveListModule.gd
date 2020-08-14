@@ -67,7 +67,7 @@ func rebuild():
 			"sex":
 				build_sex_selection(person, newbutton)
 	var pos = self.rect_size
-	$TravelsContainerPanel.rect_position.y = pos.y - 100
+	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
 
 
@@ -159,9 +159,10 @@ func build_locations_list():
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 		newbutton.connect("pressed", self, "set_hover_area")
 		
-		var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
+		var newseparator = $TravelsContainerPanel/TravelsContainer/HBoxContainer/VSeparator.duplicate()
 		LocationsList.add_child(newseparator)
 		newseparator.visible = true
+		newseparator.rect_position.y = 100
 	LocationsList.get_children().back().queue_free()
 	update_location_buttons()
 
@@ -215,7 +216,7 @@ func show_location_characters(button = null):
 			if prev_selected_location != selected_location:
 				for visible in visible_persons:
 					visible.pressed = false
-				visible_persons[0].pressed = true
+				get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 				# get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 	if !selected_location in ["show_all"]:
 		get_parent().TravelsModule.dislocation_area = selected_location

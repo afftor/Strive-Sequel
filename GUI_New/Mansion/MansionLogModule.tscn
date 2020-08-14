@@ -56,14 +56,14 @@ margin_bottom = 261.0
 rect_min_size = Vector2( 0, 30 )
 
 [node name="label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/field"]
-margin_right = 100.0
+margin_right = 80.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 100, 0 )
+rect_min_size = Vector2( 80, 0 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 
 [node name="text" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/field"]
-margin_left = 104.0
+margin_left = 84.0
 margin_right = 315.0
 margin_bottom = 30.0
 size_flags_horizontal = 3

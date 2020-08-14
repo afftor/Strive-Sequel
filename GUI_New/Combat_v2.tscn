@@ -103,12 +103,14 @@ region_rect = Rect2( 0, 0, 694, 182 )
 size = 24
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 55
 use_filter = true
 font_data = ExtResource( 1 )
 
-[node name="combat_v2" type="Control"]
+[node name="combat_v2" type="Control" groups=[
+"pauseprocess",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -660,6 +662,7 @@ visible = false
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
+toggle_mode = true
 texture_normal = ExtResource( 35 )
 texture_hover = ExtResource( 36 )
 expand = true
@@ -858,6 +861,7 @@ texture_pressed = ExtResource( 42 )
 texture_hover = ExtResource( 40 )
 
 [node name="Rewards" type="TextureRect" parent="."]
+visible = false
 margin_left = 537.95
 margin_top = 80.0
 margin_right = 1417.95
@@ -1034,7 +1038,7 @@ margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "VICTORY"
 align = 1
 

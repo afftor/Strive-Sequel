@@ -30,6 +30,7 @@ func _ready():
 
 
 func showup(node, person):
+	$Panel.visible = person != ResourceScripts.game_party.get_master()
 	parentnode = node
 	var screen = get_viewport().get_visible_rect()
 	if shutoff == true && prevnode == parentnode:

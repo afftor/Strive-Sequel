@@ -84,7 +84,17 @@ func _ready():
 	$ItemPanel/debugvictory.connect("pressed",self, 'cheatvictory')
 	$Rewards/CloseButton.connect("pressed",self,'FinishCombat')
 	$Menu/Items.connect("toggled", self, "open_items")
+	$Menu/Run.connect("pressed", self, "run")
 	$ItemPanel.hide()
+
+
+func run():
+	ResourceScripts.core_animations.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	hide()
+	input_handler.combat_defeat() 
+
+
 
 
 func open_items(pressed):
@@ -153,9 +163,13 @@ func FinishCombat(victory = true):
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.is_active = false
 	CombatAnimations.force_end()
+	ResourceScripts.core_animations.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
 	hide()
-	if victory: input_handler.finish_combat()
-	else: input_handler.combat_defeat()
+	if victory: 
+		input_handler.finish_combat()
+	else: 
+		input_handler.combat_defeat() 
 	input_handler.combat_node = null
 
 
@@ -820,6 +834,8 @@ func summon(montype, limit):
 
 
 func use_skill(skill_code, caster, target):
+	$ItemPanel.hide()
+	$Menu/Items.pressed = false
 	if activeaction != skill_code: activeaction = skill_code
 	#to add code for different costs
 	#and various limits and cooldowns
@@ -1433,6 +1449,7 @@ func RebuildItemPanel():
 		newbutton.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
 		newbutton.get_node("Label").text = str(i.amount)
 		newbutton.set_meta('skill', i.useskill)
+		newbutton.set_meta('item', i)
 		newbutton.connect('pressed', self, 'ActivateItem', [i])
 		globals.connectitemtooltip(newbutton, i)
 
@@ -1440,6 +1457,9 @@ func ClearItemPanel():
 	input_handler.ClearContainer($ItemPanel/ScrollContainer/GridContainer)
 
 func ActivateItem(item):
+	for button in $ItemPanel/ScrollContainer/GridContainer.get_children():
+		if !button.has_meta("item"): continue
+		button.pressed = button.get_meta("item") == item
 	activeaction = Items.itemlist[item.code].combat_effect
 	activeitem = item
 	SelectSkill(activeaction)

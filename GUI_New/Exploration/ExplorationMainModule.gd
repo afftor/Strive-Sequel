@@ -71,6 +71,23 @@ func _ready():
 	$LocationGui/ItemUsePanel/ItemsButton.connect("pressed", self, "switch_panel", ["items"])
 	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
+	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
+	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
+	globals.connect("hour_tick", self, "build_location_group")
+
+
+func select_workers():
+	var MANSION = GUIWorld.gui_data.MANSION.main_module
+	GUIWorld.BaseScene = MANSION
+	GUIWorld.set_current_scene(GUIWorld.gui_data.MANSION.main_module)
+	MANSION.mansion_state_set("occupation")
+	MANSION.SlaveListModule.selected_location = selected_location
+	MANSION.SlaveListModule.show_location_characters()
+	MANSION.active_person = MANSION.SlaveListModule.visible_persons[0].get_meta("slave")
+	MANSION.hovered_person = null
+	MANSION.SlaveModule.show_slave_info()
+	MANSION.set_active_person(MANSION.active_person)
+
 
 func show_quest_gen(action = "show"):
 	if action == "show":
@@ -108,7 +125,7 @@ func open():
 	selected_location = GUIWorld.gui_data["MANSION"].main_module.selected_location
 	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	Navigation.select_location(selected_location)
-	
+
 
 
 func local_shop():
@@ -116,6 +133,33 @@ func local_shop():
 
 func open_location(data):
 	selected_location = data.id
+	var gatherable_resources
+	if data.type == "dungeon":
+		$LocationGui/Resources/Forget.visible = data.completed
+		$LocationGui/Resources/SelectWorkers.visible = data.completed
+	else:
+		$LocationGui/Resources/Forget.visible = false
+		if data.type == "capital":
+			return
+		else:
+			gatherable_resources = data.gather_resources
+			if gatherable_resources != null:
+				for i in gatherable_resources:
+					var item = Items.materiallist[i]
+					var max_workers_count = gatherable_resources[i]
+					var current_workers_count = 0
+					var active_tasks = ResourceScripts.game_party.active_tasks
+					if active_tasks == []:
+						$LocationGui/Resources/SelectWorkers.visible = true
+						break
+					for task in active_tasks:
+						if (task.code == i) && (task.task_location == selected_location):
+							current_workers_count = task.workers_count
+							if current_workers_count < max_workers_count:
+								$LocationGui/Resources/SelectWorkers.visible = true
+								break
+							else:
+								$LocationGui/Resources/SelectWorkers.visible = false
 	input_handler.StopBackgroundSound()
 	$LocationGui.show()
 	$LocationGui/Resources/Materials.update()
@@ -157,6 +201,8 @@ func open_location(data):
 
 func build_location_group():
 	#clear_groups()
+	if active_location == null || !active_location.has("group"):
+		return
 	for i in positiondict:
 		if (active_location.group.has('pos' + str(i)) && (ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false)):
 			active_location.group.erase('pos' + str(i))
@@ -318,7 +364,7 @@ func build_item_panel():
 		tutorial_items = true
 	if tutorial_items == true:
 		input_handler.ActivateTutorial("exploration_items")
-
+	switch_panel()
 
 func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
@@ -525,10 +571,10 @@ func enter_dungeon():
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Skip to last room'
 			newbutton.connect("pressed",self,"skip_to_boss")
-	else:
-		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-		newbutton.text = 'Forget Location'
-		newbutton.connect("pressed",self,"clear_dungeon")
+	# else:
+	# 	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	# 	newbutton.text = 'Forget Location'
+	# 	newbutton.connect("pressed",self,"clear_dungeon")
 
 func skip_to_boss():
 	current_level = active_location.levels.size()
@@ -606,7 +652,6 @@ func enter_level(level, skip_to_end = false):
 
 
 func finish_combat():
-	
 	if action_type == 'advance' && check_dungeon_end() == false:
 		active_location.progress.stage += 1
 		current_stage = active_location.progress.stage
@@ -624,7 +669,9 @@ func finish_combat():
 			active_location.completed = true
 			check_events("finish_combat")
 			check_events("dungeon_complete")
-		
+			$LocationGui/Resources/Forget.visible = true
+			$LocationGui/Resources/SelectWorkers.visible = true
+			$LocationGui/Resources/Materials.update()
 		enter_dungeon()
 	elif action_type == 'location_finish':
 		Navigation.build_accessible_locations()
@@ -686,7 +733,7 @@ var panelmode = 'items'
 var panelmodes = {item = {name = "Items", code = 'items'}, spells = {name = 'Spells', code = 'spells'}}
 var panelmodesarray = ['items','spells']
 
-func switch_panel(mode):
+func switch_panel(mode = "items"):
 	match mode:
 		'items':
 			$LocationGui/ItemUsePanel/ScrollContainer.show()
