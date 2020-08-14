@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=3]
-[ext_resource path="res://assets/Textures_v2/MANSION/divider_navigator.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=4]
 [ext_resource path="res://GUI_New/Universal/NavigationModule.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]

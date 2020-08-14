@@ -17,7 +17,6 @@
 [ext_resource path="res://GUI_New/Universal/InteractiveMessageModule.gd" type="Script" id=26]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=27]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 800, 679 )

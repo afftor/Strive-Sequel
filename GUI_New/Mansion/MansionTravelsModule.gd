@@ -28,6 +28,7 @@ func open_character_dislocation():
 	$HomeButton.clear()
 	$HomeButton.add_item(tr("MANSION"))
 	$HomeButton.set_item_metadata($HomeButton.get_item_count()-1, 'mansion')
+	$LocationListButton.pressed = get_parent().Locations.is_visible()
 	var populatedlocations = []
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
@@ -143,23 +144,38 @@ func select_destination(destination_code):
 	show_location_resources(destination_code)
 
 func show_location_resources(location_code):
+	var dungeon = false
 	$Resources.show()
 	var location = ResourceScripts.world_gen.get_location_from_code(location_code)
 	var gatherable_resources
 	if location.type == "capital":
 		return
 	elif location.type == "dungeon":
-		# if location.completed == true:
+		dungeon = true
+		# if location.completed:
 		gatherable_resources = location.gather_limit_resources
 	else:
 		gatherable_resources = location.gather_resources
 	input_handler.ClearContainer($Resources/GridContainer)
-	for i in gatherable_resources:
-		var item = Items.materiallist[i]
-		var newbutton = input_handler.DuplicateContainerTemplate($Resources/GridContainer)
-		newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
-		newbutton.get_node("Label").text = str(gatherable_resources[i])
-		globals.connectmaterialtooltip(newbutton, item)
+	if gatherable_resources != null:
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			var newbutton = input_handler.DuplicateContainerTemplate($Resources/GridContainer)
+			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
+			if dungeon:
+				newbutton.get_node("Label").text = str(gatherable_resources[i])
+				newbutton.set_meta("gather_mod", round(location.gather_mod*100))
+			else:
+				var max_workers_count = gatherable_resources[i]
+				var current_workers_count = 0
+				var active_tasks = ResourceScripts.game_party.active_tasks
+				for task in active_tasks:
+					if (task.code == i) && (task.task_location == location_code):
+						current_workers_count = task.workers_count
+				newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
+				newbutton.set_meta("max_workers", max_workers_count)
+				newbutton.set_meta("current_workers", current_workers_count)
+			globals.connectmaterialtooltip(newbutton, item)
 
 #func update_buttons():
 #	for i in $DestinationContainer/ScrollContainer/VBoxContainer.get_children():
@@ -183,7 +199,7 @@ func update_character_dislocation():
 			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0].id].travel_per_tick())) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
-		text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
+		# text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
 		match location.type:
 			'dungeon':
 				text += "\nType: " + location.classname + "\n" + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())

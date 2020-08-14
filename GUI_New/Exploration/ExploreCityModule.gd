@@ -122,13 +122,19 @@ func update():
 			continue
 		if button.has_meta("action"):
 			if button.get_meta("action") == "Hire":
-				button.pressed = get_parent().Hire.is_visible()
+				if get_parent().Hire.mode == "guild_slaves":
+					button.pressed = false
+				else:
+					button.pressed = get_parent().Hire.is_visible()
 			if button.get_meta("action") == "Upgrades":
 				button.pressed = get_parent().FactionDetails.is_visible()
 
 	for button in City.get_children():
 		if button.has_meta("slavemarket"):
-			button.pressed = get_parent().Hire.is_visible()
+			if get_parent().Hire.mode == "guild_slaves":
+				button.pressed = false
+			else:
+				button.pressed = get_parent().Hire.is_visible()
 			get_parent().Hire.is_slave_market_opened = get_parent().Hire.is_visible()
 		if button.has_meta("shop"):
 			button.pressed = get_parent().Shop.is_visible()

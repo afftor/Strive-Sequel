@@ -17,12 +17,12 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=17]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=18]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=18]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_population.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_foodperday.png" type="Texture" id=20]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=21]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=22]
-[ext_resource path="res://assets/Textures_v2/MANSION/divider_navigator.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_slavelist.png" type="Texture" id=23]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=24]
 
 [sub_resource type="DynamicFont" id=1]
@@ -65,6 +65,7 @@ __meta__ = {
 }
 
 [node name="Background" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_right = 1075.0
@@ -232,7 +233,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1008.0
+margin_right = 1004.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
@@ -434,9 +435,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -219.0
-margin_top = -139.926
+margin_top = -92.926
 margin_right = -173.0
-margin_bottom = -112.926
+margin_bottom = -65.926
 hint_tooltip = "TOOLTIPPOPULATION"
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 3 )
@@ -462,9 +463,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -101.0
-margin_top = -139.697
+margin_top = -90.6971
 margin_right = -54.0002
-margin_bottom = -112.697
+margin_bottom = -63.697
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 theme = ExtResource( 22 )
 custom_fonts/font = SubResource( 3 )
@@ -485,18 +486,18 @@ __meta__ = {
 }
 
 [node name="TravelsContainerPanel" type="Panel" parent="."]
-margin_left = 40.0
-margin_top = 504.0
-margin_right = 1070.0
-margin_bottom = 559.0
+margin_left = 18.0
+margin_top = 526.0
+margin_right = 1075.0
+margin_bottom = 569.0
 custom_styles/panel = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TravelsContainer" type="ScrollContainer" parent="TravelsContainerPanel"]
-margin_left = 18.4821
-margin_right = 1053.48
+margin_left = 2.0
+margin_right = 1053.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 55 )
 __meta__ = {
@@ -525,15 +526,16 @@ flat = true
 
 [node name="VSeparator" type="TextureRect" parent="TravelsContainerPanel"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 2.0
+margin_right = 4.0
+margin_bottom = 32.0
 texture = ExtResource( 23 )
 
 [node name="BedroomLimit" type="Label" parent="."]
 margin_left = 264.272
-margin_top = 781.056
+margin_top = 786.056
 margin_right = 453.272
-margin_bottom = 821.056
+margin_bottom = 826.056
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Bedroom limit:"
@@ -545,9 +547,9 @@ __meta__ = {
 
 [node name="IterationsLimit" type="Label" parent="."]
 margin_left = 525.066
-margin_top = 781.056
+margin_top = 786.056
 margin_right = 721.066
-margin_bottom = 821.056
+margin_bottom = 826.056
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Iterations limit:"

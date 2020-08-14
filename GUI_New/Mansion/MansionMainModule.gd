@@ -128,7 +128,7 @@ func match_state():
 			SlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 550))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
+			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSkillsModule.show()
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
@@ -136,7 +136,7 @@ func match_state():
 		"skill":
 			$MansionSlaveListModule.show()
 			$MansionSlaveListModule.set_size(Vector2(1100, 845))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
+			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 550))
 			$MansionSlaveListModule.rebuild()
 			if mansion_state != mansion_prev_state:
@@ -266,6 +266,7 @@ func travels_manager(params):
 			selected_destination = null
 			selected_travel_characters.clear()
 			TravelsModule.get_node("Resources").hide()
+			TravelsModule.get_node("SelectedLocation/Label").text = "Select Location"
 			TravelsModule.get_node("LocationListButton").pressed = Locations.is_visible()
 			TravelsModule.update_character_dislocation()
 			# SlaveListModule.rebuild()

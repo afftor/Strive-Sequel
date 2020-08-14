@@ -10,8 +10,11 @@ onready var Column2 = $LocationLists/Column2/ScrollContainer/VBoxContainer
 onready var Column3 = $LocationLists/Column3/ScrollContainer/VBoxContainer
 
 func _ready():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+	GUIWorld.add_close_button(self)
 	$SwipeLeft.connect("pressed", self, "swipe", ["left"])
 	$SwipeRight.connect("pressed", self, "swipe", ["right"])
+	globals.connect("hour_tick", self, "open")
 
 
 func swipe(side):
@@ -70,12 +73,21 @@ func open():
 
 func build_location_list(area, container):
 	if area.code != 'plains' && ResourceScripts.game_world.areas[area.code].has("capital_name"):
+		var capital =  ResourceScripts.game_world.areas[area.code].capital_name
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		var text = tr(ResourceScripts.game_world.areas[area.code].capital_name)
 		newbutton.text = text
+		newbutton.get_node("Label").text = str(calculate_location_characters(capital, newbutton))
 		newbutton.connect('pressed', self, 'select_location', [newbutton])
 		newbutton.name = ResourceScripts.game_world.areas[area.code].capital_name
 		newbutton.set_meta("code", ResourceScripts.game_world.areas[area.code].capital_name)
+	if container == Column1:
+		if !get_parent().SlaveListModule.selected_location in ["show_all", "Aliron", "mansion"]:
+			var newbutton = input_handler.DuplicateContainerTemplate(Column1)
+			var text = tr("RETURNTOMANSION")
+			newbutton.text = text
+			newbutton.set_meta("code", "Aliron")
+			newbutton.connect('pressed', self, 'select_location', [newbutton])
 	for location in ResourceScripts.game_world.areas[area.code].locations.values() + ResourceScripts.game_world.areas[area.code].questlocations.values():
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		newbutton.set_meta("location", location)
@@ -83,11 +95,23 @@ func build_location_list(area, container):
 		if ResourceScripts.game_world.areas[area.code].questlocations.has(location.id):
 			text = "Q:" + text
 		newbutton.text = text
+		newbutton.get_node("Label").text = str(calculate_location_characters(location.id, newbutton))
 		newbutton.connect("pressed", self, "select_location", [newbutton])
 
 
+func calculate_location_characters(location, button):
+	var characters_count = 0
+	for character in ResourceScripts.game_party.characters.values():
+		if character.get_location() == location:
+			characters_count += 1
+	return characters_count
+
 
 func select_location(button):
+	var columns = Column1.get_children() + Column2.get_children() + Column3.get_children()
+	for btn in columns:
+		btn.pressed = (btn == button)
+
 	var selected_location_label = get_parent().TravelsModule.get_node("SelectedLocation/Label")
 	var button_meta
 	var location_id
@@ -100,6 +124,6 @@ func select_location(button):
 		selected_location_label.text = button_meta
 		location_id = button_meta
 	get_parent().TravelsModule.select_destination(location_id)
-	self.hide()
-	get_parent().TravelsModule.get_node("LocationListButton").pressed = false
+	# self.hide()
+	# get_parent().TravelsModule.get_node("LocationListButton").pressed = false
 

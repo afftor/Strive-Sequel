@@ -196,16 +196,15 @@ margin_left = 5.0
 margin_top = 123.0
 margin_right = 82.0
 margin_bottom = 141.0
-rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/4/Image/TextureRect"]
-margin_left = -3.66667
-margin_top = -2.0
-margin_right = 72.3333
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -13.561
+margin_right = 110.0
+margin_bottom = 6.43896
 value = 50.0
 texture_progress = ExtResource( 19 )
 nine_patch_stretch = true
@@ -218,10 +217,10 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/4/Image/TextureRect"]
-margin_left = -3.66667
+margin_left = -4.0
 margin_top = 8.0
-margin_right = 72.3333
-margin_bottom = 18.0
+margin_right = 110.0
+margin_bottom = 28.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
@@ -266,16 +265,15 @@ margin_left = 5.0
 margin_top = 123.0
 margin_right = 82.0
 margin_bottom = 141.0
-rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/5/Image/TextureRect"]
-margin_left = -3.66667
-margin_top = -2.0
-margin_right = 72.3333
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -13.561
+margin_right = 110.0
+margin_bottom = 6.43896
 value = 50.0
 texture_progress = ExtResource( 19 )
 nine_patch_stretch = true
@@ -288,10 +286,10 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/5/Image/TextureRect"]
-margin_left = -3.66667
+margin_left = -4.0
 margin_top = 8.0
-margin_right = 72.3333
-margin_bottom = 18.0
+margin_right = 110.0
+margin_bottom = 28.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
@@ -336,16 +334,15 @@ margin_left = 5.0
 margin_top = 123.0
 margin_right = 82.0
 margin_bottom = 141.0
-rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/6/Image/TextureRect"]
-margin_left = -3.66667
-margin_top = -2.0
-margin_right = 72.3333
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -13.561
+margin_right = 110.0
+margin_bottom = 6.43896
 value = 50.0
 texture_progress = ExtResource( 19 )
 nine_patch_stretch = true
@@ -358,10 +355,10 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/backrow/6/Image/TextureRect"]
-margin_left = -3.66667
+margin_left = -4.0
 margin_top = 8.0
-margin_right = 72.3333
-margin_bottom = 18.0
+margin_right = 110.0
+margin_bottom = 28.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
@@ -407,20 +404,19 @@ text = "Name"
 align = 1
 
 [node name="TextureRect" type="Control" parent="Positions/HBoxContainer/frontrow/1/Image"]
-margin_left = 5.0
+margin_left = 4.0
 margin_top = 123.0
-margin_right = 82.0
+margin_right = 81.0
 margin_bottom = 141.0
-rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
-margin_left = -3.66667
-margin_top = -2.0
-margin_right = 72.3333
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -13.561
+margin_right = 110.0
+margin_bottom = 6.43896
 value = 50.0
 texture_progress = ExtResource( 19 )
 nine_patch_stretch = true
@@ -433,10 +429,10 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/1/Image/TextureRect"]
-margin_left = -3.66667
+margin_left = -4.0
 margin_top = 8.0
-margin_right = 72.3333
-margin_bottom = 18.0
+margin_right = 110.0
+margin_bottom = 28.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
@@ -477,20 +473,19 @@ text = "Name"
 align = 1
 
 [node name="TextureRect" type="Control" parent="Positions/HBoxContainer/frontrow/2/Image"]
-margin_left = 5.0
+margin_left = 4.0
 margin_top = 123.0
-margin_right = 82.0
+margin_right = 81.0
 margin_bottom = 141.0
-rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
-margin_left = -3.66667
-margin_top = -2.0
-margin_right = 72.3333
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -13.561
+margin_right = 110.0
+margin_bottom = 6.43896
 value = 50.0
 texture_progress = ExtResource( 19 )
 nine_patch_stretch = true
@@ -503,10 +498,10 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/2/Image/TextureRect"]
-margin_left = -3.66667
+margin_left = -4.0
 margin_top = 8.0
-margin_right = 72.3333
-margin_bottom = 18.0
+margin_right = 110.0
+margin_bottom = 28.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
@@ -547,20 +542,19 @@ text = "Name"
 align = 1
 
 [node name="TextureRect" type="Control" parent="Positions/HBoxContainer/frontrow/3/Image"]
-margin_left = 5.0
+margin_left = 4.0
 margin_top = 123.0
-margin_right = 82.0
+margin_right = 81.0
 margin_bottom = 141.0
-rect_scale = Vector2( 1.5, 1.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="hp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
-margin_left = -3.66667
-margin_top = -2.0
-margin_right = 72.3333
-margin_bottom = 8.0
+margin_left = -4.0
+margin_top = -13.561
+margin_right = 110.0
+margin_bottom = 6.43896
 value = 50.0
 texture_progress = ExtResource( 19 )
 nine_patch_stretch = true
@@ -573,10 +567,10 @@ __meta__ = {
 }
 
 [node name="mp" type="TextureProgress" parent="Positions/HBoxContainer/frontrow/3/Image/TextureRect"]
-margin_left = -3.66667
+margin_left = -4.0
 margin_top = 8.0
-margin_right = 72.3333
-margin_bottom = 18.0
+margin_right = 110.0
+margin_bottom = 28.0
 value = 50.0
 texture_progress = ExtResource( 18 )
 nine_patch_stretch = true
@@ -702,6 +696,9 @@ margin_top = 420.0
 margin_right = 628.001
 margin_bottom = 1060.0
 custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemUsePanel"]
 margin_left = 26.0
@@ -734,6 +731,9 @@ margin_bottom = 46.0
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="amount" type="Label" parent="ItemUsePanel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 27.4532
@@ -928,11 +928,12 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Resources/Materials/Button"]
 margin_left = 2.0
-margin_top = 54.0
+margin_top = 51.0
 margin_right = 77.0
 margin_bottom = 78.0
-custom_fonts/font = ExtResource( 22 )
+custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "20"
 align = 1
 valign = 1
 __meta__ = {

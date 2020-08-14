@@ -6,6 +6,7 @@ var closebutton
 var open_sound = 'menu_open'
 var close_sound = 'menu_close'
 var close_played = false
+export var test_mode = false
 
 # Main Modules
 onready var MAIN_MODULES = {
@@ -32,23 +33,24 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	test_mode()
+	if test_mode:
+		test_mode()
 
-	# if globals.start_new_game == true:
-	# 	globals.start_new_game = false
-	# 	self.visible = false
-	# 	var newgame_node = Node.new()
-	# 	newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
-	# 	newgame_node.start()
-	# 	input_handler.GameStartNode = newgame_node
-	# 	yield(input_handler, "StartingSequenceComplete")
-	# 	input_handler.GameStartNode.queue_free()
-	# 	#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
-	# 	show()
+	if globals.start_new_game == true:
+		globals.start_new_game = false
+		self.visible = false
+		var newgame_node = Node.new()
+		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
+		newgame_node.start()
+		input_handler.GameStartNode = newgame_node
+		yield(input_handler, "StartingSequenceComplete")
+		input_handler.GameStartNode.queue_free()
+		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
+		show()
 
-	# 	input_handler.ActivateTutorial("introduction")
-	# 	if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
-	# 		input_handler.interactive_message('intro', '', {})
+		input_handler.ActivateTutorial("introduction")
+		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
+			input_handler.interactive_message('intro', '', {})
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
@@ -188,6 +190,9 @@ func close_scene(scene):
 		menu_opened = false
 		return
 	if BaseScene == gui_data["MANSION"].main_module:
+		if BaseScene.mansion_state == "travels":
+			BaseScene.TravelsModule.open_character_dislocation()
+			return
 		BaseScene.mansion_state = "default"
 		# for module in BaseScene.submodules:
 		# 	# ResourceScripts.core_animations.FadeAnimation(module, 0.3)
