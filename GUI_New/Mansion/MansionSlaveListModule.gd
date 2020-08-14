@@ -159,7 +159,7 @@ func build_locations_list():
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 		newbutton.connect("pressed", self, "set_hover_area")
 		
-		var newseparator = $TravelsContainerPanel/TravelsContainer/HBoxContainer/VSeparator.duplicate()
+		var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
 		LocationsList.add_child(newseparator)
 		newseparator.visible = true
 		newseparator.rect_position.y = 100
