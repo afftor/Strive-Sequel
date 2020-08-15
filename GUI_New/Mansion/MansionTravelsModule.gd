@@ -76,70 +76,11 @@ func return_character():
 	open_character_dislocation()
 	input_handler.update_slave_list()
 
-# func select_dislocation_area(number):
-# 	var selected_travel_characters = get_parent().selected_travel_characters
-# 	selected_travel_characters.clear()
-# 	dislocation_area = $HomeButton.get_selected_metadata()
-# 	update_character_dislocation()
-# 	update_location_list()
-
-# func select_destination_area(number):
-# 	destination_area = $DestinationButton.get_selected_metadata()
-# 	update_location_list()
-
-# func update_location_list():
-# 	input_handler.ClearContainer($DestinationContainer/ScrollContainer/VBoxContainer)
-# 	var array = []
-	
-# 	$DestinationButton.clear()
-# 	for i in ResourceScripts.game_world.areas.values():
-# 		if i.unlocked == true:
-# 			array.append(i)
-# 	array.sort_custom(self, 'sort_lands')
-# 	for i in array:
-# 		$DestinationButton.add_item(i.name)
-# 		$DestinationButton.set_item_metadata($DestinationButton.get_item_count()-1, i.code)
-# 		if destination_area == i.code:
-# 			$DestinationButton.select($DestinationButton.get_item_count()-1)
-	
-# 	array.clear()
-	
-# 	for i in ResourceScripts.game_world.areas[destination_area].locations.values() + ResourceScripts.game_world.areas[destination_area].questlocations.values():
-# 		array.append(i)
-	
-# 	if dislocation_area != 'Aliron' && !get_parent().SlaveListModule.selected_location in ["show_all", "Aliron", "mansion"]:
-# 		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
-# 		var text = tr("RETURNTOMANSION")
-# 		newbutton.get_node("Label").text = text
-# 		newbutton.connect('pressed', self, 'select_destination', ['Aliron'])
-# 		newbutton.name = 'mansion'
-# 		newbutton.set_meta("code", ResourceScripts.game_world.areas[destination_area].capital_name)
-# 		newbutton.visible = get_parent().SlaveListModule.selected_location != "mansion"
-	
-# 	if destination_area != 'plains':
-# 		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
-# 		var text = tr(ResourceScripts.game_world.areas[destination_area].capital_name)
-# 		newbutton.get_node("Label").text = text
-# 		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.areas[destination_area].capital_name])
-# 		newbutton.name = ResourceScripts.game_world.areas[destination_area].capital_name
-# 		newbutton.set_meta("code", ResourceScripts.game_world.areas[destination_area].capital_name)
-	
-# 	for i in array:
-# 		if i.id == dislocation_area:
-# 			continue
-# 		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
-# 		var text = i.name
-# 		if ResourceScripts.game_world.areas[destination_area].questlocations.has(i.id):
-# 			text = "Q:" + text
-# 		newbutton.get_node("Label").text = text
-# 		newbutton.connect('pressed', self, 'select_destination', [i.id])
-# 		newbutton.name = i.id
-# 		newbutton.set_meta("code", i.id)
-
 
 var params = {code = '', destination = ""}
 func select_destination(destination_code):
 	params = {code = 'destination_selected', destination = destination_code}
+	destination_area = ResourceScripts.game_world.location_links[destination_code].area
 	get_parent().travels_manager(params)
 	show_location_resources(destination_code)
 
@@ -152,8 +93,8 @@ func show_location_resources(location_code):
 		return
 	elif location.type == "dungeon":
 		dungeon = true
-		# if location.completed:
-		gatherable_resources = location.gather_limit_resources
+		if location.completed:
+			gatherable_resources = location.gather_limit_resources
 	else:
 		gatherable_resources = location.gather_resources
 	input_handler.ClearContainer($Resources/GridContainer)
@@ -176,6 +117,7 @@ func show_location_resources(location_code):
 				newbutton.set_meta("max_workers", max_workers_count)
 				newbutton.set_meta("current_workers", current_workers_count)
 			globals.connectmaterialtooltip(newbutton, item)
+	$Resources/Label.visible = gatherable_resources != null
 
 #func update_buttons():
 #	for i in $DestinationContainer/ScrollContainer/VBoxContainer.get_children():
@@ -192,7 +134,7 @@ func update_character_dislocation():
 	var text = "Characters selected: " + str(selected_travel_characters.size())
 	var text2 = ''
 	if destination == null:
-		text += "\n\nPlease select location to proceed"
+		text += "\n\nSelect location to proceed"
 	elif destination == 'mansion':
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
@@ -214,6 +156,8 @@ func update_character_dislocation():
 			text2 = "Travel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
 			text2 += "\nObedience Cost: " + str(obed_cost)
+		else:
+			text += "\nSelect Characters to send"
 
 	
 	var can_travel = true

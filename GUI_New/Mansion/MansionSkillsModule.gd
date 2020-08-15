@@ -75,6 +75,7 @@ func build_skill_panel():
 			newbutton.get_node("charges").hide()
 
 func select_skill_target(skillcode):
+	input_handler.SystemMessage("Select target for Ability", 3)
 	get_parent().chars_for_skill.clear()
 	var skill_source = get_parent().skill_source
 	active_skill = skillcode

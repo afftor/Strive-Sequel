@@ -10,6 +10,10 @@ var l_mods = []
 func _ready():
 	populate_avail_mods()
 	populate_l_mods()
+	$Button.connect("pressed", self, 'open_edtior')
+
+func open_editor():
+	pass
 
 func populate_avail_mods():
 	av_mods = modding_core.get_avail_mods()

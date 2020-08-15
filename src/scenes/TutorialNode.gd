@@ -4,7 +4,7 @@ extends Control
 var current_tutorial
 
 var tutorial_themes = {
-	introduction = {name = "Introduction", text = "This is your Mansion Screen. At the center you can see your {color=yellow|Character List}. Click on an entry to see main stats and abilities. Double click, or use 'Character Info' button to see additional details. "},
+	introduction = {name = "Introduction", text = "This is your Mansion Screen. At the center you can see your {color=yellow|Character List}. Click on an entry to see main stats and abilities. Double click, or use 'Character Info' button to see additional details."},
 	slavetab = {name = "Character Tab", text = "This is the character panel. It contains most of the character's information and allows you to control it. Your characters are your main possessions.\nCharacters consume food every day, which is represented by Food Consumption stat on the left. Different characters require different amount of it, which, similar to other stats, often tied to race. Characters can be assigned to work by selecting Job menu. This way you can start utilizing them. "},
 	tasklist = {name = "Task List", text = "Task list shows up ongoing tasks. Once progress bar is filled, you receive an item to your storage. You can hover over the task to see what workers are assigned to it. Progress speed can be increased by {color=yellow|Productivity}, some stats, classes and tools related to the task."},
 	crafting = {name = "Crafting", text = "To craft an item, select the number of desired items, then assign a worker to task, responsible for production. Resources will be consumed when each new item starts its production. You can unlock more crafts by making upgrades and finding new recipes."},

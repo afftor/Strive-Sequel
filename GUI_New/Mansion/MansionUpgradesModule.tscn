@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=14]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/SimplePanel.tres" type="StyleBox" id=16]
+[ext_resource path="res://GUI_New/Mansion/MansionUpgradesModule.gd" type="Script" id=17]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=19]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -37,7 +38,7 @@ size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 18
+size = 25
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -64,6 +65,7 @@ font_data = ExtResource( 1 )
 [node name="MansionUpgradesModule" type="Panel"]
 rect_min_size = Vector2( 1100, 385 )
 custom_styles/panel = ExtResource( 5 )
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,7 +80,6 @@ __meta__ = {
 }
 
 [node name="QueueList" type="Panel" parent="."]
-visible = false
 margin_left = 755.44
 margin_right = 1074.44
 margin_bottom = 385.0
@@ -163,6 +164,9 @@ margin_top = 90.0
 margin_right = 30.0
 margin_bottom = 360.0
 theme = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UpgradeList"]
 margin_left = 45.0
@@ -234,16 +238,16 @@ margin_bottom = 112.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name"
+align = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UpgradeDescript"]
 margin_left = 19.0
-margin_top = 127.0
+margin_top = 118.0
 margin_right = 346.0
 margin_bottom = 238.0
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
-scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

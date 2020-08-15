@@ -673,17 +673,13 @@ func interactive_dialogue_start(code, stage):
 	scene.dialogue_next(code, stage)
 
 
-func ActivateTutorial(code):
+func ActivateTutorial(code): #disabled until rework
+	return
 	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
 		ResourceScripts.game_progress.active_tutorials.append(code)
 		get_spec_node(self.NODE_TUTORIAL).rebuild()
 		#get_tutorial_node().rebuild()
 
-# func show_class_info(classcode, person = null):
-# 	if person == null:
-# 		person = active_character
-# 	var node = get_spec_node(self.NODE_CLASSINFO) #get_class_info_panel()
-# 	node.open(classcode, person)
 
 func get_combat_node():
 	var window
@@ -913,20 +909,24 @@ func select_value_in_OB(node, value):
 
 func get_value_node(node):
 	if node is OptionButton:
-		return node.get_item_text(node.selected)
+		if node.get_selected_metadata() != null: return node.get_selected_metadata()
+		else: return node.get_item_text(node.selected)
 	if node is ItemList:
 		var tmp = node.get_selected_items()
 		if node.select_mode == ItemList.SELECT_SINGLE:
 			if tmp.size() == 0: return null
-			return node.get_item_text(tmp[0])
+			if node.get_item_metadata(tmp[0]): return node.get_item_metadata(tmp[0])
+			else: return node.get_item_text(tmp[0])
 		else:
 			var res = []
 			for i in tmp:
-				res.push_back(node.get_item_text(i))
+				if node.get_item_metadata(i) != null: res.push_back(node.get_item_metadata(i))
+				else: res.push_back(node.get_item_text(i))
 			return res
 	if node is CheckBox: return node.pressed
 	#node has text field
-	if node.name == 'number': return float(node.text)
+	if node.name == 'number': 
+		return float(node.text)
 	if node.name == 'index': return int(node.text)
 	if node.name == 'formula': return parse_json(node.text)
 	return node.text
@@ -1029,3 +1029,16 @@ func scanfolder(path): #makes an array of all folders in modfolder
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
+
+func swap_items(arr: Array, pos1, pos2):
+	if pos1 < 0 or pos2 < 0: return
+	if pos1 >= arr.size() or pos2 >= arr.size(): return
+	var tmp = arr[pos1]
+	arr[pos1] = arr[pos2]
+	arr[pos2] = tmp
+
+func repeat_string(ch, n):
+	var res = ""
+	for i in range(n): res += ch
+	return res
+

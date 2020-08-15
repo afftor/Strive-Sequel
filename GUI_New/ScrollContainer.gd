@@ -43,7 +43,9 @@ func calculate_scroll_area():
 	scroll_area = $ScrollContainer.get_rect().size
 
 func _process(delta):
-	if !buttons_count_changed():
+	if is_visible_in_tree() == false:
 		return
+#	if !buttons_count_changed():
+#		return
 	calculate_scroll_area()
 	v_scroll_bar.visible = (scroll_area.y < $ScrollContainer.get_child(0).rect_size.y)

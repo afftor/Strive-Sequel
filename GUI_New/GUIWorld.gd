@@ -35,10 +35,11 @@ func _ready():
 	# return
 	if test_mode:
 		test_mode()
-
+	var is_new_game = false
 	if globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
+		is_new_game = true
 		var newgame_node = Node.new()
 		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
 		newgame_node.start()
@@ -47,7 +48,6 @@ func _ready():
 		input_handler.GameStartNode.queue_free()
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
-
 		input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
@@ -61,6 +61,9 @@ func _ready():
 	BaseScene = gui_data["MANSION"].main_module
 	input_handler.get_spec_node(input_handler.NODE_CLASSINFO, null, false, false)
 	visibility_handler()
+	if is_new_game:
+		yield(input_handler, 'EventFinished')
+		input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data.MANSION.main_module.show_tutorial()
 
 
 func _input(event):
@@ -71,6 +74,8 @@ func _input(event):
 		dialogue.select_option(int(event.as_text()))
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name == "date":
 		return
+	if event.is_action_released("F1"):
+		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")):
 		if menu_opened:
 			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
@@ -128,6 +133,7 @@ func _input(event):
 				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
 			else:
 				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
+	
 
 
 func visibility_handler():
@@ -162,6 +168,8 @@ func visibility_handler():
 		if subscene.get_class() == "Tween":
 			continue
 		subscene.update()
+	gui_data.MANSION.main_module.get_node("TutorialButton").show()
+
 
 
 func submodules_handler():
@@ -178,6 +186,7 @@ func submodules_handler():
 		last_opened = CurrentScene.submodules[last_opened_id]
 		CurrentScene.submodules[last_opened_id].hide()
 		CurrentScene.submodules.erase(last_opened)
+	gui_data.MANSION.main_module.get_node("TutorialButton").show()
 
 
 

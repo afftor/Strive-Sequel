@@ -197,7 +197,6 @@ func open_location(data):
 	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
 		open_location_actions()
 	build_location_description()
-	print(current_stage)
 
 
 func build_location_group():

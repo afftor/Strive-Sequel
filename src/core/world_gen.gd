@@ -29,7 +29,7 @@ func make_area(code):
 	areadata.quests = {global = {}}
 	areadata.questlocations = {}
 	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
-	areadata.unlocked = false
+	areadata.unlocked = true
 	for i in areadata.start_settlements_number:
 		var number = round(rand_range(areadata.start_settlements_number[i][0], areadata.start_settlements_number[i][1]))
 		while number > 0:
