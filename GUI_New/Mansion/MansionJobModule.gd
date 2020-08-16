@@ -92,7 +92,7 @@ func open_jobs_window():
 			var current_workers_count = 0
 			var item_dict = Items.materiallist[resource]
 			var progress_formula = Items.materiallist[resource].progress_formula
-			text = progress_formula.capitalize()
+			text =  "Gather " + item_dict.name.capitalize()
 			var newbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 			newbutton.set_meta("resource", resource)
 			if person_location != 'Aliron' && location_type != "dungeon":
@@ -128,7 +128,7 @@ func show_job_details(job, gatherable = false):
 	var work_tools
 	input_handler.ClearContainer($job_details/ResourceOptions)
 	if gatherable:
-		job_name = job.progress_formula.capitalize()
+		job_name = "Gather " + job.name.capitalize()
 		job_descript = 'Gather availiable resources from location'
 		if job.tool_type != "":
 			work_tools = statdata.worktoolnames[job.tool_type]
@@ -144,7 +144,7 @@ func show_job_details(job, gatherable = false):
 		+ work_stat
 		+ "[/color]"
 	)
-	if (job.has("tool_type") || job.has("worktool")):# && work_tools != "":
+	if ((job.has("tool_type") && job.tool_type != '' ) || job.has("worktool")):# && work_tools != "":
 		if job.has("worktool"):
 			work_tools = statdata.worktoolnames[job.worktool]
 		if job.has("tool_type"):

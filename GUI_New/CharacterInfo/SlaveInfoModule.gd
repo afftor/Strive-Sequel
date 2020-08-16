@@ -31,7 +31,7 @@ func _ready():
 func update():
 	person = GUIWorld.gui_data["MANSION"].main_module.active_person
 	if person != null:
-		$Panel.visible = person.has_profession("master")
+		$Panel.visible = !person.has_profession("master")
 		var text = ""
 		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
 			$Panel/obedlabel.text = str(ceil(person.get_stat('obedience')))

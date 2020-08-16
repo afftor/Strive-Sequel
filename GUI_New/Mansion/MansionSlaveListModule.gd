@@ -300,7 +300,7 @@ func update_button(newbutton):
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
 		else:
-			newbutton.get_node("job/Label").text = Items.materiallist[person.get_work()].progress_formula.capitalize()
+			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
 	
 	
 	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100 && !person.has_profession('master'):

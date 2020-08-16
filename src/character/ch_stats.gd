@@ -264,8 +264,9 @@ func add_sex_trait(code):
 		unlocked_sex_traits.push_back(code)
 	if !sex_traits.has(code):
 		sex_traits.push_back(code)
-		var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
-		globals.text_log_add('char', text)
+		if parent.is_players_character:
+			var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
+			globals.text_log_add('char', text)
 
 func remove_sex_trait(code, absolute = true):
 	if absolute: unlocked_sex_traits.erase(code)

@@ -3,12 +3,12 @@ Fixed prostitution task not working
 Fixed sex interaction being bugged
 Fixed being able to select slave type on master creation
 Fixed quest locations not being usable
-
-
+Fixed characters not being returned to mansion in some cases
+Fixed wrong stats displayed on characters
+Fixed some resources not being gatherable
 0.3.0
 Global changes: Most resources are now gathered from locations
 New classes: Templar, Paladin, Shaman, Ranger, Bard, Archmage, Battlesmith, Technomancer
-
 New skills for classes: Healer, Necromancer, Sextoy
 Foreman's Hard Work now applies to all characters on the location.
 Alchemist's Firebomb now hits 1 row but with lower damage and 2 turns burn duration

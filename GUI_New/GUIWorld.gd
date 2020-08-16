@@ -351,7 +351,7 @@ func test_mode():
 
 
 
-	character.set_stat('obedience', 0)
+	character.set_stat('obedience', 100)
 	#character.fear = 25
 	#character.base_exp = 99
 	character.set_stat('charm_factor', 5)

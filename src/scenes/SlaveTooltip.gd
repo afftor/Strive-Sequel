@@ -36,10 +36,10 @@ func showup(node, person):
 	
 	for i in ['physics','wits','charm','sexuals']:
 		if i != 'sexuals':
-			get_node(i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus'))) 
+			get_node(i).text = str(floor(person.get_stat(i))) 
 			get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
 		else:
-			get_node(i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus')))
+			get_node(i).text = str(floor(person.get_stat(i)))
 			get_node(i+'2').text = '100'
 #	for i in ['loyalty','submission']:
 #		get_node("VBoxContainer/"+ i + '/bar').value = person[i]

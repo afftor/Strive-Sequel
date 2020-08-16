@@ -219,7 +219,8 @@ func travel_confirm():
 	open_character_dislocation()
 	get_parent().SlaveListModule.rebuild()
 	get_parent().SlaveListModule.show_location_characters()
-	reset_travels()
+	#reset_travels()
+	travel_cancel()
 	get_parent().match_state()
 
 func reset_travels():

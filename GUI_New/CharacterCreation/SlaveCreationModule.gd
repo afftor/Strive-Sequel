@@ -16,7 +16,7 @@ func _ready():
 	$ScrollContainer/HBoxContainer/bodyparts2/diet.connect("pressed", self, 'select_diet')
 	for i in get_parent().slave_classes:
 		$ScrollContainer/HBoxContainer/bodyparts2/slave_class.add_item(statdata.slave_class_names[i])
-#	$ScrollContainer/HBoxContainer/bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
+		$ScrollContainer/HBoxContainer/bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
 	for i in variables.personality_array:
 		$ScrollContainer/HBoxContainer/bodyparts2/personality.add_item(i.capitalize())
 	$ScrollContainer/HBoxContainer/bodyparts2/personality.connect("item_selected", self, "select_personality")

@@ -65,10 +65,10 @@ func show_summary():
 
 	for i in ['physics','wits','charm','sexuals']:
 		if i != 'sexuals':
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus'))) 
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i))) 
 			get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_factor') * 20)
 		else:
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus')))
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
