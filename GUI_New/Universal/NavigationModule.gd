@@ -35,7 +35,7 @@ func sort_locations(locations_array):
 				settlements.append(loca)
 			"dungeon","encounter":
 				dungeons.append(loca)
-			"quest_locations":
+			"quest_location":
 				quest_locations.append(loca)
 	return capitals + settlements + dungeons + quest_locations
 
@@ -47,7 +47,6 @@ func build_accessible_locations():
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		var person_location = person.get_location()
-		print("person location:", person_location)
 		if person_location == "mansion":
 			person_location = "Aliron"
 		if (!location_array.has(person_location)):
