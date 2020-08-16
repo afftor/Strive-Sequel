@@ -89,7 +89,7 @@ func show_location_resources(location_code):
 	$Resources.show()
 	var location = ResourceScripts.world_gen.get_location_from_code(location_code)
 	var gatherable_resources
-	if location.type == "capital":
+	if location.type in ["capital", "quest_location"]:
 		return
 	elif location.type == "dungeon":
 		dungeon = true
