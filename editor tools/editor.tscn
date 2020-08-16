@@ -79,6 +79,12 @@ margin_right = 467.0
 margin_bottom = 72.0
 text = "save mod"
 
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 471.0
+margin_right = 526.0
+margin_bottom = 72.0
+text = "exit"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 76.0
 margin_right = 1905.0
@@ -294,6 +300,7 @@ Without loaded data tables editing data is disabled, but you can still view reco
 Create and load empty mod?"
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/tablesel" to="." method="select_table"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="save_mod"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="exit"]
 [connection signal="tab_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer" to="." method="core_setup"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/lands" to="." method="show_data"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer2/TabContainer/locations" to="." method="show_data"]

@@ -85,3 +85,7 @@ func create_mod():
 	actions.visible = true
 	core_setup()
 	select_table(0)
+
+
+func exit():
+	input_handler.quit()

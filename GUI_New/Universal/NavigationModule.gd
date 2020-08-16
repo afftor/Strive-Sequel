@@ -33,7 +33,7 @@ func sort_locations(locations_array):
 				capitals.append(loca)
 			"settlement":
 				settlements.append(loca)
-			"dungeon":
+			"dungeon","encounter":
 				dungeons.append(loca)
 			"quest_locations":
 				quest_locations.append(loca)

@@ -142,7 +142,8 @@ func open_location(data):
 		if data.type == "capital":
 			return
 		else:
-			gatherable_resources = data.gather_resources
+			if data.has('gather_resources'):
+				gatherable_resources = data.gather_resources
 			if gatherable_resources != null:
 				for i in gatherable_resources:
 					var item = Items.materiallist[i]

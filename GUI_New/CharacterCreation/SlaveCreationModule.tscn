@@ -512,9 +512,9 @@ rect_min_size = Vector2( 0, 50 )
 
 [node name="class_label" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
 visible = false
-margin_top = 574.0
-margin_right = 278.0
-margin_bottom = 598.0
+margin_top = 752.0
+margin_right = 302.0
+margin_bottom = 784.0
 theme = ExtResource( 6 )
 custom_fonts/font = ExtResource( 5 )
 text = "SLAVESTARTINGCLASS"

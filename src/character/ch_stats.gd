@@ -1,6 +1,6 @@
 extends Reference
 
-var statlist = Statlist_init.template.duplicate() setget custom_stats_set, default_stats_get
+var statlist = Statlist_init.template.duplicate() setget , default_stats_get
 var bonuses = {}
 var traits = []
 var sex_traits = []
@@ -14,27 +14,28 @@ func _init():
 func default_stats_get():
 	return statlist.duplicate()
 
-func custom_stats_set(value):
+func custom_stats_set(st, value):
 #	statlist = value.duplicate(true)
 #	if value.has(''):
 #		statlist[''] = 
-	for st in value:
-		if st in ['loyalty', 'submission']:
+#	for st in value:
+	if st in ['loyalty', 'submission']:
 #			if value.has(st):
-			var delta = value[st] - statlist[st]
-			if delta != 0:
-				delta *= get_stat(st+'_gain_mod')
-				statlist[st] = clamp(statlist[st] + delta, 0, 100)
-		elif st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
+		var delta = value - statlist[st]
+		if delta != 0:
+			delta *= get_stat(st+'_gain_mod')
+			statlist[st] = clamp(statlist[st] + delta, 0, 100)
+	elif st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
 #			if value.has(st):
-			statlist[st] = min(value[st], statlist[st + '_factor'] * 20)
-		else: statlist[st] = value[st]
-	for st in ['physics', 'magic', 'tame', 'timid', 'growth', 'wits', 'charm', 'sexuals']:
-		if value.has(st+'_factor'):
-			statlist[st+'_factor'] = clamp(value[st+'_factor'], variables.minimum_factor_value, variables.maximum_factor_value)
-	if value.has('lust'):
+		statlist[st] = min(value, statlist[st + '_factor'] * 20)
+	else: statlist[st] = value
+#	if st in ['physics', 'magic', 'tame', 'timid', 'growth', 'wits', 'charm', 'sexuals']:
+	if st.ends_with('_factor'):
+#		if value.has(st+'_factor'):
+		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
+	if st == 'lust':
 		statlist.lustmax = 25 + statlist.sexuals_factor * 25
-		statlist.lust = clamp(value.lust, 0, statlist.lustmax)
+		statlist.lust = clamp(value, 0, statlist.lustmax)
 
 
 func custom_stats_get():
@@ -100,8 +101,9 @@ func get_full_name():
 		text = statlist.name + ' "' + statlist.nickname + '" ' + statlist.surname
 	return text
 
-func set_stat(stat, value): #for direct access only
-	 self.statlist[stat] = value
+func set_stat(statname, value): #for direct access only
+#	 self.statlist[stat] = value
+	custom_stats_set(statname, value)
 
 #bonus system
 func get_stat(statname, ref = false):
@@ -169,15 +171,23 @@ func add_bonus(b_rec:String, value, revert = false):
 
 func add_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
-		if revert: self.statlist[statname] = statlist[statname] - value
-		else: self.statlist[statname] = statlist[statname] + value
+		if revert: 
+			custom_stats_set(statname, statlist[statname] - value)
+#			self.statlist[statname] = statlist[statname] - value
+		else: 
+			custom_stats_set(statname, statlist[statname] + value)
+#			self.statlist[statname] = statlist[statname] + value
 	else:
 		add_bonus(statname+'_add', value, revert)
 
 func mul_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
-		if revert: self.statlist[statname] = statlist[statname] / value
-		else: self.statlist[statname] = statlist[statname] * value
+		if revert:
+			custom_stats_set(statname, statlist[statname] / value) 
+#			self.statlist[statname] = statlist[statname] / value
+		else: 
+			custom_stats_set(statname, statlist[statname] * value)
+#			self.statlist[statname] = statlist[statname] * value
 	else:
 		if bonuses.has(statname + '_mul'):
 			if revert:
@@ -191,8 +201,12 @@ func mul_stat(statname, value, revert = false):
 
 func add_part_stat(statname, value, revert = false):
 	if variables.direct_access_stat_list.has(statname):
-		if revert: self.statlist[statname] = statlist[statname] /(1.0 + value)
-		else: self.statlist[statname] = statlist[statname] * (1.0 + value)
+		if revert: 
+			custom_stats_set(statname, statlist[statname] /(1.0 + value))
+#			self.statlist[statname] = statlist[statname] /(1.0 + value)
+		else: 
+			custom_stats_set(statname, statlist[statname] * (1.0 + value))
+#			self.statlist[statname] = statlist[statname] * (1.0 + value)
 	else:
 		add_bonus(statname+'_mul', value, revert)
 
