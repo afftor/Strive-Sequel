@@ -48,6 +48,7 @@ var Mansion
 var SlaveModule
 var PreviousScene
 
+
 var exploration_node
 var active_character
 var scene_characters = []
@@ -169,12 +170,12 @@ func _init():
 	for i in translationscript.TranslationDict:
 		activetranslation.add_message(i, translationscript.TranslationDict[i])
 	TranslationServer.add_translation(activetranslation)
+	connect("EventFinished", self, "event_finished")
 
 func _ready():
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
 	settings_load()
-
 
 # func _input(event):
 # 	if event.is_echo() == true && !event.is_action_type(): 
@@ -301,8 +302,6 @@ func OpenClose(node):
 	CloseableWindowsArray.append(node)
 
 func Close(node):
-	#or i in CloseableWindowsArray:
-		#print("i:" + str(i.name))
 	CloseableWindowsArray.erase(node)
 	ResourceScripts.core_animations.CloseAnimation(node)
 
@@ -593,7 +592,32 @@ func dialogue_option_selected(option):
 	if !ResourceScripts.game_progress.selected_dialogues.has(option):
 		ResourceScripts.game_progress.selected_dialogues.append(option)
 
-func interactive_message(code, type, args):
+var dialogue_array = []
+var event_is_active = false
+
+
+func interactive_message(code, type = '', args = {}):
+	dialogue_array.append({code = code, type = type, args = args})
+	start_event_attempt()
+
+func interactive_message_follow(code, type, args):
+	start_event(code, type, args)
+
+func event_finished():
+	event_is_active = false
+	start_event_attempt()
+
+func start_event_attempt():
+	if dialogue_array.size() > 0:
+		if event_is_active == true:
+			yield(self, "EventFinished")
+		else:
+			var event = dialogue_array[0]
+			start_event(event.code, event.type, event.args)
+			dialogue_array.erase(event)
+
+func start_event(code, type, args):
+	event_is_active = true
 	var data = scenedata.scenedict[code].duplicate(true)
 	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
 #	if data.has('opp_characters'):
@@ -641,25 +665,21 @@ func interactive_message(code, type, args):
 	scene.open(data)
 
 func interactive_message_custom(data):
-	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
+	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.open(data.duplicate(true), true)
 
 func interactive_dialogue_start(code, stage):
-	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
+	var scene = get_spec_node(self.NODE_DIALOGUE)
 	scene.dialogue_next(code, stage)
 
 
-func ActivateTutorial(code):
+func ActivateTutorial(code): #disabled until rework
+	return
 	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
 		ResourceScripts.game_progress.active_tutorials.append(code)
 		get_spec_node(self.NODE_TUTORIAL).rebuild()
 		#get_tutorial_node().rebuild()
 
-# func show_class_info(classcode, person = null):
-# 	if person == null:
-# 		person = active_character
-# 	var node = get_spec_node(self.NODE_CLASSINFO) #get_class_info_panel()
-# 	node.open(classcode, person)
 
 func get_combat_node():
 	var window
@@ -695,11 +715,11 @@ func get_person_for_chat(array, event, bonus_args = []):
 
 func add_random_chat_message(person, event, bonus_args = []):
 	if person.has_profession('master'): return
-	var node = get_spec_node(self.NODE_CHAT) #get_chat_node()
-	node.select_chat_line(person, event, bonus_args)
+	var node = get_spec_node(self.NODE_CHAT)
+	node.show_chat_line(person, event)
 
 func get_random_chat_line(person, event):
-	var node = get_spec_node(self.NODE_CHAT) #get_chat_node()
+	var node = get_spec_node(self.NODE_CHAT)
 	return node.return_chat_line(person, event)
 
 func repeat_social_skill():
@@ -784,16 +804,12 @@ func finish_combat():
 	
 	if encounter_win_script != null:
 		globals.common_effects(encounter_win_script)
-#		var data = scenedata.scenedict[encounter_win_script]
-#		interactive_message(encounter_win_script, data.default_event_type, {})
 		encounter_win_script = null
 		return
 	if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
-		yield(self, 'EventFinished')
-	if active_location.has('randomevents') && globals.check_random_event() == true:
-		yield(self, 'EventFinished')
+		yield(input_handler, 'EventFinished')
 	
-	exploration_node.finish_combat()
+	exploration_node.advance()
 
 func finish_quest_dungeon(args):
 	interactive_message('finish_quest_dungeon', 'quest_finish_event', {locationname = active_location.name})
@@ -893,20 +909,24 @@ func select_value_in_OB(node, value):
 
 func get_value_node(node):
 	if node is OptionButton:
-		return node.get_item_text(node.selected)
+		if node.get_selected_metadata() != null: return node.get_selected_metadata()
+		else: return node.get_item_text(node.selected)
 	if node is ItemList:
 		var tmp = node.get_selected_items()
 		if node.select_mode == ItemList.SELECT_SINGLE:
 			if tmp.size() == 0: return null
-			return node.get_item_text(tmp[0])
+			if node.get_item_metadata(tmp[0]): return node.get_item_metadata(tmp[0])
+			else: return node.get_item_text(tmp[0])
 		else:
 			var res = []
 			for i in tmp:
-				res.push_back(node.get_item_text(i))
+				if node.get_item_metadata(i) != null: res.push_back(node.get_item_metadata(i))
+				else: res.push_back(node.get_item_text(i))
 			return res
 	if node is CheckBox: return node.pressed
 	#node has text field
-	if node.name == 'number': return float(node.text)
+	if node.name == 'number': 
+		return float(node.text)
 	if node.name == 'index': return int(node.text)
 	if node.name == 'formula': return parse_json(node.text)
 	return node.text
@@ -1009,3 +1029,16 @@ func scanfolder(path): #makes an array of all folders in modfolder
 				array.append(path + file_name)
 			file_name = dir.get_next()
 		return array
+
+func swap_items(arr: Array, pos1, pos2):
+	if pos1 < 0 or pos2 < 0: return
+	if pos1 >= arr.size() or pos2 >= arr.size(): return
+	var tmp = arr[pos1]
+	arr[pos1] = arr[pos2]
+	arr[pos2] = tmp
+
+func repeat_string(ch, n):
+	var res = ""
+	for i in range(n): res += ch
+	return res
+

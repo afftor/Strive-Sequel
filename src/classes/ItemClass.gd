@@ -213,7 +213,7 @@ func set_icon(node):
 
 func tooltiptext():
 	var text = ''
-	text += '{color=k_yellow|' + name + '}\n'
+	text += '[center]{color=k_yellow|' + name + '}[/center]\n'
 	if geartype != null:
 		text += 'Type: ' + geartype + "\n"
 	else:

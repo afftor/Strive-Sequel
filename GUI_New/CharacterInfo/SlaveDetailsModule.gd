@@ -71,6 +71,7 @@ func custom_icon_open(state):
 
 func sex_traits_open():
 	$SexTraitsPanel.show()
+	$VBoxContainer/IconBlock.hide()
 	person = GUIWorld.gui_data["MANSION"].main_module.active_person
 	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
 	var array = person.statlist.unlocked_sex_traits.duplicate()

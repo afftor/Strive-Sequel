@@ -38,6 +38,9 @@ margin_left = 56.0
 margin_right = 236.0
 margin_bottom = 52.0
 texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Button"]
 margin_right = 180.0

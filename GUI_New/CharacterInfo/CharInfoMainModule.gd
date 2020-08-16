@@ -15,11 +15,14 @@ onready var submodules = []
 var inventory_scene
 
 func _ready():
-	GUIWorld.add_close_button(self)
+	GUIWorld.add_close_button(self, "add_offset")
 
 
 func update():
 	active_person = GUIWorld.gui_data["MANSION"].main_module.active_person
+	if GUIWorld.PreviousScene == GUIWorld.gui_data["INVENTORY"].main_module:
+		GUIWorld.PreviousScene = null
+		return
 	if submodules.size() == 0:
 		set_state("default")
 	SummaryModule.show_summary()
@@ -36,38 +39,72 @@ func set_state(state):
 	match_state()
 
 func match_state():
+	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible()
 	GUIWorld.CurrentScene = self
 	match char_module_state:
 		"default":
-			# input_handler.Close(inventory_node)
+			# if DetailsModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(DetailsModule, 0.3)
+
+			# if DietModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(DietModule, 0.3)
+
+			# if ClassesModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(ClassesModule, 0.3)
+			# yield(get_tree().create_timer(0.4), "timeout")
 			DetailsModule.hide()
 			DietModule.hide()
 			ClassesModule.hide()
 			SummaryModule.update_buttons()
 			DetailsModule.get_node("SexTraitsPanel").hide()
 		"class":
+			# if DetailsModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(DetailsModule, 0.3)
+			submodules.clear()
+			submodules.append(ClassesModule)
 			DetailsModule.hide()
+
+			# if DietModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(DietModule, 0.3)
 			DietModule.hide()
+
 			ClassesModule.class_category("all")
+			# ResourceScripts.core_animations.UnfadeAnimation(ClassesModule, 0.3)
 			ClassesModule.show()
 			DetailsModule.get_node("SexTraitsPanel").hide()
-			submodules.append(ClassesModule)
 		"details":
-			ClassesModule.hide() # Temporary
-			DetailsModule.get_node("SexTraitsPanel").hide()
+			# if ClassesModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(ClassesModule, 0.3)
+			submodules.clear()
 			submodules.append(DetailsModule)
+			ClassesModule.hide()
+
+			# if DietModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(DietModule, 0.3)
+			DietModule.hide()
+			DetailsModule.get_node("SexTraitsPanel").hide()
+			# ResourceScripts.core_animations.UnfadeAnimation(DetailsModule, 0.3)
 			DetailsModule.show()
 		"diet":
-			DetailsModule.hide()
-			ClassesModule.hide() # Temporary
+			# if ClassesModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(ClassesModule, 0.3)
+			ClassesModule.hide()
+
+			# if DetailsModule.is_visible():
+			# 	ResourceScripts.core_animations.FadeAnimation(DetailsModule, 0.3)
+			DietModule.hide()
 			DetailsModule.get_node("SexTraitsPanel").hide()
+			submodules.clear()
 			DietModule.open_diet_window()
+			# ResourceScripts.core_animations.UnfadeAnimation(DietModule, 0.3)
 			DietModule.show()
 		"gear":
+			char_module_state = "default"
+			open_gear()
 			for node in submodules:
 				node.hide()
 			submodules.clear()
-			open_gear()
+			
 
 
 
@@ -78,4 +115,5 @@ func _on_Button_pressed():
 
 func open_gear():
 	GUIWorld.set_current_scene(GUIWorld.gui_data["INVENTORY"].main_module)
+	ResourceScripts.core_animations.UnfadeAnimation(GUIWorld.gui_data["INVENTORY"].main_module, 0.3)
 

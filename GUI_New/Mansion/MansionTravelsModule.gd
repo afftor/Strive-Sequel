@@ -10,7 +10,15 @@ func _ready():
 	$DestinationButton.connect("item_selected", self, 'select_destination_area')
 	$TravelConfirmButton.connect("pressed", self, "travel_confirm")
 	$TravelCancelButton.connect("pressed", self, "travel_cancel")
+	$LocationListButton.connect("toggled", self, "show_location_list")
 	globals.connect("hour_tick", self, "open_character_dislocation")
+
+
+func show_location_list(pressed):
+	get_parent().Locations.visible = pressed
+	get_parent().Locations.open()
+
+
 
 func open_character_dislocation():
 	if get_parent().mansion_state == "travels":
@@ -20,6 +28,7 @@ func open_character_dislocation():
 	$HomeButton.clear()
 	$HomeButton.add_item(tr("MANSION"))
 	$HomeButton.set_item_metadata($HomeButton.get_item_count()-1, 'mansion')
+	$LocationListButton.pressed = get_parent().Locations.is_visible()
 	var populatedlocations = []
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
@@ -67,81 +76,55 @@ func return_character():
 	open_character_dislocation()
 	input_handler.update_slave_list()
 
-func select_dislocation_area(number):
-	var selected_travel_characters = get_parent().selected_travel_characters
-	selected_travel_characters.clear()
-	dislocation_area = $HomeButton.get_selected_metadata()
-	update_character_dislocation()
-	update_location_list()
-
-func select_destination_area(number):
-	destination_area = $DestinationButton.get_selected_metadata()
-	update_location_list()
-
-func update_location_list():
-	input_handler.ClearContainer($DestinationContainer/ScrollContainer/VBoxContainer)
-	var array = []
-	
-	$DestinationButton.clear()
-	for i in ResourceScripts.game_world.areas.values():
-		if i.unlocked == true:
-			array.append(i)
-	
-	for i in array:
-		$DestinationButton.add_item(i.name)
-		$DestinationButton.set_item_metadata($DestinationButton.get_item_count()-1, i.code)
-		if destination_area == i.code:
-			$DestinationButton.select($DestinationButton.get_item_count()-1)
-	
-	array.clear()
-	
-	for i in ResourceScripts.game_world.areas[destination_area].locations.values() + ResourceScripts.game_world.areas[destination_area].questlocations.values():
-		array.append(i)
-	
-	if dislocation_area != 'Aliron' && !get_parent().SlaveListModule.selected_location in ["show_all", "Aliron", "mansion"]:
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
-		var text = tr("RETURNTOMANSION")
-		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', ['Aliron'])
-		newbutton.name = 'mansion'
-		newbutton.visible = get_parent().SlaveListModule.selected_location != "mansion"
-	
-	if destination_area != 'plains':
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
-		var text = tr(ResourceScripts.game_world.areas[destination_area].capital_name)
-		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.areas[destination_area].capital_name])
-		newbutton.name = ResourceScripts.game_world.areas[destination_area].capital_name
-		newbutton.set_meta("code", ResourceScripts.game_world.areas[destination_area].capital_name)
-	
-	for i in array:
-		if i.id == dislocation_area:
-			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/ScrollContainer/VBoxContainer)
-		var text = i.name
-		if ResourceScripts.game_world.areas[destination_area].questlocations.has(i.id):
-			text = "Q:" + text
-		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', [i.id])
-		newbutton.name = i.id
-		newbutton.set_meta("code", i.id)
-
 
 var params = {code = '', destination = ""}
 func select_destination(destination_code):
 	params = {code = 'destination_selected', destination = destination_code}
+	destination_area = ResourceScripts.game_world.location_links[destination_code].area
 	get_parent().travels_manager(params)
+	show_location_resources(destination_code)
 
-func update_buttons():
-	for i in $DestinationContainer/ScrollContainer/VBoxContainer.get_children():
-		if !i.has_meta("code"):
-			continue
-		i.pressed = i.get_meta("code") == get_parent().selected_destination
+func show_location_resources(location_code):
+	var dungeon = false
+	$Resources.show()
+	var location = ResourceScripts.world_gen.get_location_from_code(location_code)
+	var gatherable_resources
+	if location.type == "capital":
+		return
+	elif location.type == "dungeon":
+		dungeon = true
+		if location.completed:
+			gatherable_resources = location.gather_limit_resources
+	else:
+		gatherable_resources = location.gather_resources
+	input_handler.ClearContainer($Resources/GridContainer)
+	if gatherable_resources != null:
+		for i in gatherable_resources:
+			var item = Items.materiallist[i]
+			var newbutton = input_handler.DuplicateContainerTemplate($Resources/GridContainer)
+			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
+			if dungeon:
+				newbutton.get_node("Label").text = str(gatherable_resources[i])
+				newbutton.set_meta("gather_mod", round(location.gather_mod*100))
+			else:
+				var max_workers_count = gatherable_resources[i]
+				var current_workers_count = 0
+				var active_tasks = ResourceScripts.game_party.active_tasks
+				for task in active_tasks:
+					if (task.code == i) && (task.task_location == location_code):
+						current_workers_count = task.workers_count
+				newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
+				newbutton.set_meta("max_workers", max_workers_count)
+				newbutton.set_meta("current_workers", current_workers_count)
+			globals.connectmaterialtooltip(newbutton, item)
+	$Resources/Label.visible = gatherable_resources != null
 
+#func update_buttons():
+#	for i in $DestinationContainer/ScrollContainer/VBoxContainer.get_children():
+#		if !i.has_meta("code"):
+#			continue
+#		i.pressed = i.get_meta("code") == get_parent().selected_destination
 
-func sort_dislocation(first, second):
-	var selected_travel_characters = get_parent().selected_travel_characters
-	return selected_travel_characters.has(first)
 
 func update_character_dislocation():
 	var destination = get_parent().selected_destination
@@ -149,29 +132,32 @@ func update_character_dislocation():
 	var char_array = []
 	var obed_cost = 0
 	var text = "Characters selected: " + str(selected_travel_characters.size())
+	var text2 = ''
 	if destination == null:
-		text += "\n\nPlease select location to proceed"
+		text += "\n\nSelect location to proceed"
 	elif destination == 'mansion':
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
 			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0].id].travel_per_tick())) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
-		text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
+		# text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
 		match location.type:
 			'dungeon':
 				text += "\nType: " + location.classname + "\n" + tr("DUNGEONDIFFICULTY") + ": " + tr("DUNGEONDIFFICULTY" + location.difficulty.to_upper())
 			'settlement':
-				text += "\nType: " + tr(location.classname)
+				text += "\nType: " + tr(location.type.to_upper())
 			'skirmish':
 				pass
 		if selected_travel_characters.size() > 0 :
 			if dislocation_area == "mansion":
 				dislocation_area = "Aliron"
 			var travel_time = globals.calculate_travel_time(destination, dislocation_area) 
-			text += "\n\nTravel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
+			text2 = "Travel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
-			text += "\nObedience Cost: " + str(obed_cost)
+			text2 += "\nObedience Cost: " + str(obed_cost)
+		else:
+			text += "\nSelect Characters to send"
 
 	
 	var can_travel = true
@@ -186,6 +172,7 @@ func update_character_dislocation():
 			if person.get_stat('obedience') < obed_cost:
 				can_travel = false
 	$DescriptText.bbcode_text = text
+	$DescriptText2.bbcode_text = text2
 	$TravelConfirmButton.disabled = !can_travel
 
 
@@ -221,17 +208,34 @@ func travel_confirm():
 			person.travel.location = destination
 			person.travel.area  = destination_area
 	get_parent().selected_travel_characters.clear()
-	get_parent().match_state()
-	update_location_list()
+	
+	# update_location_list()
 	open_character_dislocation()
 	get_parent().SlaveListModule.rebuild()
 	get_parent().SlaveListModule.show_location_characters()
+	reset_travels()
+	get_parent().match_state()
+
+func reset_travels():
+	$Resources.hide()
+	$SelectedLocation/Label.text = "Select Location"
 
 
 func travel_cancel():
 	get_parent().selected_travel_characters.clear()
 	get_parent().selected_destination = null
-	update_location_list()
+	# update_location_list()
 	open_character_dislocation()
+	reset_travels()
 	get_parent().match_state()
 
+
+
+# var lands_order = ['plains','forests','mountains','steppe','seas']
+
+# func sort_lands(first, second):
+# 	if lands_order.has(first.code):
+# 		if lands_order.has(second.code):
+# 			return  lands_order.find(first.code) < lands_order.find(second.code)
+# 		else:
+# 			return true

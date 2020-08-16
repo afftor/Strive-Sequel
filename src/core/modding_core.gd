@@ -16,13 +16,11 @@ var data_loaded = false
 var avaliable_modes_list = [] #name, data_file, desc
 
 func _ready():
-	print('!')
 	get_mods_list()
 	process_pathes_mods()
 	process_extensions_mods()
 	process_script_mods()
 	ResourceScripts.load_scripts()
-	print('!!')
 
 func process_data_mods():
 	if data_loaded: return

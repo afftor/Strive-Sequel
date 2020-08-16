@@ -98,6 +98,7 @@ func select_category(category):
 	rebuild_recipe_list()
 	rebuild_scheldue()
 
+
 func rebuild_recipe_list():
 	var array = []
 	input_handler.ClearContainer($CraftSelect/ScrollContainer/VBoxContainer)
@@ -176,7 +177,7 @@ func rebuild_recipe_list():
 		
 		
 		var progressnode = newbutton.get_node("WorkUnits")
-		progressnode.texture = images.icons.craft_time
+		progressnode.texture = images.icons[i.worktype]
 		progressnode.get_node("Label").text = str(i.workunits)
 		progressnode.hint_tooltip = 'Progress required per craft'
 
@@ -325,7 +326,6 @@ func selectcraftitem(item):
 			array.append(i)
 		array.sort()
 		itemparts.clear()
-		
 		for i in ['Part1','Part2','Part3']:
 			get_node("MaterialSetupPanel/" + i).texture_normal = default_part_texture
 			get_node("MaterialSetupPanel/" + i + '/number').hide()
@@ -359,6 +359,7 @@ func choosematerial(button):
 	input_handler.ClearContainer($MaterialSelect/ScrollContainer/VBoxContainer)
 	$MaterialSelect.show()
 	$CraftSelect.hide()
+	$filter.hide()
 	chosenpartbutton = button
 	var part = button.get_meta('part')
 	var cost = button.get_meta('cost')
@@ -391,6 +392,7 @@ func choosematerial(button):
 			
 
 func selectmaterial(material, part, cost):
+	$filter.show()
 	itemparts[part] = {material = material.code, price = cost}
 	chosenpartbutton.get_node("TextureRect").texture = material.icon
 	# chosenpartbutton.get_node('TextureRect').hide()
@@ -463,7 +465,7 @@ func checkcreatingitem(item):
 
 func multipart_item_text(item):
 	var text = ''
-	text += '{color=k_yellow|' + name + '}\n'
+	text += '{color=k_yellow|' + item.name + '}\n'
 	if item.geartype != null:
 		text += 'Type: ' + item.geartype + "\n"
 	else:

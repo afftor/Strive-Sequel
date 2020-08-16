@@ -120,7 +120,8 @@ func show_save_details(save):
 		$DetailsPanel.hide()
 		return
 	# var text = 'Mode: ' + starting_presets.preset_data[save.preset].name + "\nMaster: " + save.master_name + "\tVersion: " + save.version + "\tGold: " + str(save.gold) + "\nDay: " + str(save.day) + " Hour: " + str(save.hour) + "\t" + get_date_time(save) + "\tPopulation: " + str(save.population)
-	var text = "Gold: " + str(save.gold) + "\tMode: " + starting_presets.preset_data[save.preset].name + "\nPopulation: " + str(save.population) + "\tVersion: " + save.version + "\nMaster: " + save.master_name + "\t" + get_date_time(save) +  "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
+	var text = "Gold: " + str(save.gold) + "\nPopulation: " + str(save.population) + "\nMaster: " + save.master_name + "\nDay: " + str(save.day) + " Hour: " + str(save.hour)
+	var text2 = "Mode: " + starting_presets.preset_data[save.preset].name + "\nVersion: " + save.version + "\n" + get_date_time(save)
 	# text += "\n\n\nVersion: " + save.version
 	if save.version != globals.gameversion:
 		text += "{color=red| (Outdated)}"
@@ -129,6 +130,7 @@ func show_save_details(save):
 #	text += add_zeros(save.time.hour) + ":" + add_zeros(save.time.minute) 
 #	text += " - " + str(save.time.month) + "/" + str(save.time.day) + "/" + str(save.time.year).substr(2, 4)
 	$DetailsPanel/RichTextLabel.bbcode_text = globals.TextEncoder(text)
+	$DetailsPanel/RichTextLabel2.bbcode_text = globals.TextEncoder(text2)
 	$DetailsPanel.show()
 	$DetailsPanel/MasterIcon.visible = input_handler.loadimage(save.master_icon) != null
 	$DetailsPanel/MasterIcon.texture = input_handler.loadimage(save.master_icon)

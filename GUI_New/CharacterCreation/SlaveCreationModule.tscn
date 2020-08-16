@@ -31,8 +31,8 @@ __meta__ = {
 
 [node name="descript" type="RichTextLabel" parent="."]
 margin_left = 34.0
-margin_top = 55.0
-margin_right = 738.0
+margin_top = 36.0
+margin_right = 748.0
 margin_bottom = 385.0
 custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -43,9 +43,9 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 64.0
-margin_top = 380.0
+margin_top = 396.0
 margin_right = 748.0
-margin_bottom = 778.0
+margin_bottom = 794.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -309,7 +309,7 @@ custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 align = 1
 
-[node name="Label8" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
+[node name="label_personality" type="Label" parent="ScrollContainer/HBoxContainer/bodyparts2"]
 margin_top = 80.0
 margin_right = 302.0
 margin_bottom = 112.0
@@ -439,7 +439,7 @@ align = 1
 [node name="vaginal_virgin" type="CheckBox" parent="ScrollContainer/HBoxContainer/bodyparts2"]
 margin_top = 560.0
 margin_right = 302.0
-margin_bottom = 600.0
+margin_bottom = 620.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 8 )
 custom_styles/hover = ExtResource( 4 )
@@ -456,9 +456,9 @@ text = "SLAVEPARTVAGINAL_VIRGIN"
 clip_text = true
 
 [node name="penis_virgin" type="CheckBox" parent="ScrollContainer/HBoxContainer/bodyparts2"]
-margin_top = 604.0
+margin_top = 624.0
 margin_right = 302.0
-margin_bottom = 644.0
+margin_bottom = 684.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 8 )
 custom_styles/hover = ExtResource( 4 )
@@ -475,9 +475,9 @@ text = "SLAVEPARTPENIS_VIRGIN"
 clip_text = true
 
 [node name="anal_virgin" type="CheckBox" parent="ScrollContainer/HBoxContainer/bodyparts2"]
-margin_top = 648.0
+margin_top = 688.0
 margin_right = 302.0
-margin_bottom = 688.0
+margin_bottom = 748.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 8 )
 custom_styles/hover = ExtResource( 4 )

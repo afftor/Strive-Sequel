@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://GUI_New/CharacterInfo/CharInfoMainModule.gd" type="Script" id=1]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveSummaryModule.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveSummaryModule.gd" type="Script" id=3]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.gd" type="Script" id=5]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.gd" type="Script" id=6]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GUI_New/CharacterInfo/SlaveClassesModule.gd" type="Script" id=8]
@@ -44,7 +43,6 @@ margin_left = 235.0
 margin_top = 145.0
 margin_right = 1205.0
 margin_bottom = 1065.0
-script = ExtResource( 5 )
 
 [node name="SlaveClassesModule" parent="." instance=ExtResource( 9 )]
 visible = false

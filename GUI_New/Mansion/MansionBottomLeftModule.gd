@@ -16,9 +16,11 @@ func _button_clicked(state, button):
 	else:
 		get_parent().mansion_state = "default"
 	
-func open_inventory():
+func open_inventory():	
 	GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.set_current_scene(GUIWorld.gui_data["INVENTORY"].main_module)
+	ResourceScripts.core_animations.UnfadeAnimation(GUIWorld.gui_data["INVENTORY"].main_module, 0.3)
+	yield(get_tree().create_timer(0.3), "timeout")
 	
 func open_interaction():
 	get_parent().InteractSelection.show()
@@ -27,9 +29,16 @@ func open_interaction():
 
 
 func open_journal(pressed):
+	if pressed:
+		ResourceScripts.core_animations.UnfadeAnimation(get_parent().Journal, 0.5)
+	else:
+		ResourceScripts.core_animations.FadeAnimation(get_parent().Journal, 0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
 	get_parent().Journal.visible = pressed
 	get_parent().Journal.open()
 	get_parent().submodules.append(get_parent().Journal) if pressed else get_parent().submodules.erase(get_parent().Journal)
+
+
 
 
 func update():

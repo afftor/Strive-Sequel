@@ -75,17 +75,21 @@ var params_to_save = [
 	"charm_factor",
 	"wits_factor",
 	"sexuals_factor",
-	"professions"
+	"professions",
+	"type"
 ]
 
 onready var RaceSelection = $RaceSelectionModule
 onready var ClassSelection = $ClassSelectionModule
 onready var SlaveInfo = $SlaveCreationModule
+onready var TraitSelection = $TraitSelection
 
 func _ready():
 	$SaveButton.connect("pressed", self, "SaveLoadCharPanel", ["save"])
 	$LoadButton.connect("pressed", self, "SaveLoadCharPanel", ["load"])
 	$SaveLoadCharPanel/LineEdit.connect("text_changed",self,'set_savefilename')
+	$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressSaveLoadCharacter", [savefilename])
+	$SaveLoadCharPanel/SaveLoadCancel.connect("pressed", self, "hideSaveLoadPanel")
 	# input_handler.AddPanelOpenCloseAnimation($RaceSelection)
 	# input_handler.AddPanelOpenCloseAnimation($TraitSelection)
 	# input_handler.AddPanelOpenCloseAnimation($DietPanel)
@@ -171,7 +175,6 @@ func finish_diet_selection():
 	for i in person.get_stat('food_hate'):
 		text += i + " "
 #	$bodyparts2/diet.text = text
-	check_confirm_possibility()
 
 func open(type = 'slave', newguild = 'none'):
 	preservedsettings.clear()
@@ -238,7 +241,8 @@ func apply_preserved_settings():
 		person.set_stat(i, preservedsettings[i])
 
 func confirm_character():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'finish_character', 'Create this character?'])
+	if check_confirm_possibility():
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'finish_character', 'Create this character?'])
 
 
 func finish_character():
@@ -262,6 +266,7 @@ func finish_character():
 	ResourceScripts.game_party.add_slave(person)
 	self.hide()
 	input_handler.emit_signal("CharacterCreated")
+	input_handler.add_random_chat_message(person, 'hire')
 
 func text_changed(text, value):
 	if text != '':
@@ -271,61 +276,53 @@ func text_changed(text, value):
 
 
 func check_confirm_possibility():
-	var can_confirm = true
-	
 	if !preservedsettings.has('food_love'):
-		can_confirm = false
+		input_handler.SystemMessage("You must select a liked food type")
+		return false
 	elif preservedsettings['food_love'] == '' || preservedsettings['food_hate'] == []:
-		can_confirm = false
-	else:
-		can_confirm
-
-	
+		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
+		return false
 	
 	if selected_class == '':
-#		$bodyparts2/class.text = "Select"
-		can_confirm = false
-	else:
-		pass
-#		$bodyparts2/class.text = classesdata.professions[selected_class].name
+		input_handler.SystemMessage("You must select a starting Class")
+		return false
 	
-	$ConfirmButton.disabled = !can_confirm
-	$ConfirmButton.hint_tooltip = "" if can_confirm else 'Select starting Class and Diet'
+	return true
 
 func set_savefilename(text):
 	savefilename = text + ".ch"
 
 func hideSaveLoadPanel():
 	$SaveLoadCharPanel.hide()
-	$SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressSaveCharacter")
-	$SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressLoadCharacter")
+	# $SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressSaveCharacter")
+	# $SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressLoadCharacter")
 	savefilename = null
 	saveloadstate = null
 
 func SaveLoadCharPanel(saveloadmode):
 	saveloadstate = saveloadmode
 	$SaveLoadCharPanel.show()
+	$SaveLoadCharPanel/RichTextLabel.bbcode_text = tr('SAVETEMPLATEDESCRIPT')
 	$SaveLoadCharPanel/LineEdit.clear()
 	input_handler.ClearContainerForced($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-	if saveloadmode == "save":
-		for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
-			var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
-			var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
-			newbutton.get_node("Label").text = savename
-			newbutton.connect('pressed', self, 'PressSaveCharacter', [savename])
-		$SaveLoadCharPanel/SaveLoadButton.text = "Save"
-		$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressSaveCharacter")
+	# if saveloadmode == "save":
+	for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
+		var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
+		var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
+		if saveloadmode == "save":
+			$SaveLoadCharPanel/SaveLoadButton.text = "Save"
+		else:
+			$SaveLoadCharPanel/SaveLoadButton.text = "Load"	
+		newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
+		newbutton.get_node("Label").text = savename
+		newbutton.connect('pressed', self, 'PressSaveLoadCharacter', [savename])	
+
+
+func PressSaveLoadCharacter(savename):
+	if saveloadstate == "save":
+		PressSaveCharacter(savename)
 	else:
-		for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
-			var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
-			var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-			newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
-			newbutton.get_node("Label").text = savename
-			newbutton.connect('pressed', self, 'PressLoadCharacter', [savename])
-		$SaveLoadCharPanel/SaveLoadButton.text = "Load"
-		$SaveLoadCharPanel/SaveLoadButton.connect("pressed", self, "PressLoadCharacter")
-	$SaveLoadCharPanel/SaveLoadCancel.connect("pressed", self, "hideSaveLoadPanel")
+		PressLoadCharacter(savename)
 
 
 func PressSaveCharacter(savename = null):
@@ -337,7 +334,7 @@ func PressSaveCharacter(savename = null):
 	
 	var file = File.new()
 	if file.file_exists(variables.userfolder + 'savedcharacters/' + savefilename):
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveCharacter', tr("OVERWRITECONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveCharacter', tr("OVERWRITETEMPLATECONFIRM")])
 	else:
 		SaveCharacter()
 
@@ -345,7 +342,6 @@ func PressSaveCharacter(savename = null):
 func SaveCharacter():
 	apply_preserved_settings()
 	var character_to_save = {}
-	
 	for i in params_to_save:
 		character_to_save[i] = person.get_stat(i)
 		if preservedsettings.has(i) && i != "professions": # && !preservedsettings in except_array:
@@ -354,27 +350,28 @@ func SaveCharacter():
 	character_to_save["tits_size"] = person.get_stat("tits_size")
 	character_to_save["ass_size"] = person.get_stat("ass_size")
 	character_to_save["balls_size"] = person.get_stat("balls_size")
+	character_to_save.type = str(mode)
 	var file = File.new()
 	file.open(variables.userfolder + 'savedcharacters/' + savefilename, file.WRITE)
 
 	var text = JSON.print(character_to_save)
 	file.store_string(text)
 	file.close()
-	input_handler.SystemMessage("Character Saved")
+	input_handler.SystemMessage("Character Template Saved")
 	hideSaveLoadPanel()
 
 
 
 func PressDeleteCharacter(savename):
 	$SaveLoadCharPanel/LineEdit.text = savename
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteCharacter', tr("DELETECONFIRM")])
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteCharacter', tr("DELETETEMPLATECONFIRM")])
 
 func PressLoadCharacter(savename = null):
 	if savename == null:
 		hideSaveLoadPanel()
 	else:
 		$SaveLoadCharPanel/LineEdit.text = savename
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadCharacter', tr("LOADCONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadCharacter', tr("LOADTEMPLATECONFIRM")])
 
 
 func LoadCharacter():
@@ -385,6 +382,9 @@ func LoadCharacter():
 	var parse_result
 	parse_result = JSON.parse(text)
 	var character_to_load = parse_result.result
+	if character_to_load != null && character_to_load.type != mode:
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("Can't use this template. Types doesn't match.")])
+		return
 	var check_stats = 0
 	var stats_array = []
 	for i in character_to_load:
@@ -428,7 +428,6 @@ func LoadCharacter():
 	# apply_preserved_settings()
 	SlaveInfo.build_bodyparts()
 	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
-	check_confirm_possibility()
 	# if person.statlist.sex_traits.size() == 0:
 	# 	$VBoxContainer/sextrait.text = "Select Sex Trait"
 	# else:
@@ -447,6 +446,7 @@ func LoadCharacter():
 	hideSaveLoadPanel()
 	RebuildStatsContainer()
 	rebuild_slave()
+	input_handler.SystemMessage("Character Template Loaded")
 	# person.create_s_trait_select(character_to_load.sex_traits)
 
 
@@ -499,7 +499,6 @@ func RebuildStatsContainer():
 	apply_preserved_settings()
 	if selected_class != '' && person.checkreqs(classesdata.professions[selected_class].reqs) == false:
 		selected_class = ''
-		check_confirm_possibility()
 
 func stat_up(stat):
 	if preservedsettings[stat.code] >= 5 || unassigned_points == 0:
@@ -507,6 +506,7 @@ func stat_up(stat):
 	else:
 		preservedsettings[stat.code] += 1
 		RebuildStatsContainer()
+		$ClassSelectionModule.update_class_buttons()
 
 func stat_down(stat):
 	if preservedsettings[stat.code] <= 1:
@@ -514,9 +514,12 @@ func stat_down(stat):
 	else:
 		preservedsettings[stat.code] -= 1
 		RebuildStatsContainer()
+		$ClassSelectionModule.update_class_buttons()
 
 func open_sex_traits():
-	$TraitSelection.show()
+	RaceSelection.hide()
+	ClassSelection.hide()
+	TraitSelection.show()
 	input_handler.ClearContainer($TraitSelection/ScrollContainer/VBoxContainer)
 	for i in Traitdata.sex_traits.values():
 		if i.starting == false || person.checkreqs(i.acquire_reqs) == false:

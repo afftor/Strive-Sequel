@@ -14,6 +14,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_gf',
 		type = 'factor',
+		abb = 'GRO',
 	},
 	physics_factor = {
 		code = 'physics_factor',
@@ -21,6 +22,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_pf',
 		type = 'factor',
+		abb = 'PHY',
 	},
 	wits_factor = {
 		code = 'wits_factor',
@@ -28,6 +30,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_wit',
 		type = 'factor',
+		abb = 'WIT',
 	},
 	charm_factor = {
 		code = 'charm_factor',
@@ -35,6 +38,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_charm',
 		type = 'factor',
+		abb = 'CHA',
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
@@ -42,6 +46,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_sf',
 		type = 'factor',
+		abb = 'SEX',
 	},
 	
 	magic_factor = {
@@ -50,6 +55,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_mf',
 		type = 'factor',
+		abb = 'MAG',
 	},
 	
 	tame_factor = {
@@ -58,6 +64,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_tf',
 		type = 'factor',
+		abb = 'TAM',
 	},
 	timid_factor = {
 		code = 'timid_factor',
@@ -65,6 +72,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = 'factor',
+		abb = 'TIM',
 	},
 	authority = {
 		code = 'authority',

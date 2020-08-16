@@ -29,7 +29,7 @@ func make_area(code):
 	areadata.quests = {global = {}}
 	areadata.questlocations = {}
 	areadata.travel_time = round(rand_range(areadata.travel_time[0], areadata.travel_time[1]))
-	areadata.unlocked = false
+	areadata.unlocked = true
 	for i in areadata.start_settlements_number:
 		var number = round(rand_range(areadata.start_settlements_number[i][0], areadata.start_settlements_number[i][1]))
 		while number > 0:
@@ -154,6 +154,7 @@ func make_guild(code, area):
 				while guilddatatemplate.questsetting[i] > area.quests.factions[data.code].size():
 					make_quest_for_guild(guilddatatemplate, i)
 			data.questnumber -= 1
+	if data.has('background'): guilddatatemplate.background = data.background
 	guilddatatemplate.slavenumber = data.slavenumber
 	while data.slavenumber > 0:
 		make_slave_for_guild(guilddatatemplate)
@@ -237,6 +238,7 @@ func make_location(code, area):
 	location.randomevents = location.eventarray
 	location.scriptedevents = []
 	location.progress = {level = 1, stage = 0}
+	location.completed = false
 	location.stagedenemies = []
 	location.enemies = location.enemyarray.duplicate(true)
 	location.tasks = []
@@ -254,7 +256,7 @@ func make_location(code, area):
 			location.gather_limit_resources[data.keys()[0]] = data.values()[0]
 			array.erase(data)
 		location.tasks.append("gather")
-		location.gather_mod = rand_range(1.5,1.75)
+		location.gather_mod = rand_range(location.gather_mod[0],location.gather_mod[1])
 	location.erase('gatherable_resources')
 	if location.has('background_pool'):
 		location.background = location.background_pool[randi()%location.background_pool.size()]
@@ -264,7 +266,9 @@ func make_location(code, area):
 		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
 		if location.final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
-		location.scriptedevents.append({trigger = 'finish_combat', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
+		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = []})
+	if location.has('gather_limit_resources'):
+		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
 	
 	
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})

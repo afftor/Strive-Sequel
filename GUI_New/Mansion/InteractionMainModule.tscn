@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://assets/images/sexicons/male.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/sexicons/drunk.png" type="Texture" id=2]
@@ -54,20 +54,23 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=52]
 [ext_resource path="res://assets/Textures_v2/Universal/PanelItems.tres" type="StyleBox" id=53]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=54]
+[ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=55]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=56]
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=1]
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=2]
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 48 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=4]
 size = 30
 font_data = ExtResource( 48 )
 
 [node name="InteractionMainModule" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
@@ -199,12 +202,10 @@ size_flags_vertical = 0
 custom_styles/hover = ExtResource( 20 )
 custom_styles/pressed = ExtResource( 17 )
 custom_styles/normal = ExtResource( 19 )
-custom_fonts/font = ExtResource( 44 )
+custom_fonts/font = ExtResource( 55 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.517647, 1 )
-text = "Caress"
-clip_text = true
 
 [node name="continue" type="Button" parent="Panel/GridContainer/GridContainer/Button"]
 visible = false
@@ -233,6 +234,17 @@ margin_bottom = 33.0
 custom_fonts/font = ExtResource( 44 )
 custom_colors/font_color = Color( 0.295026, 0.11673, 0.332031, 1 )
 text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionName" type="Label" parent="Panel/GridContainer/GridContainer/Button"]
+margin_right = 184.0
+margin_bottom = 52.0
+theme = ExtResource( 56 )
+align = 1
+valign = 1
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -425,7 +437,7 @@ margin_left = 5.0
 margin_top = 5.77391
 margin_right = 402.0
 margin_bottom = 45.7739
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -462,7 +474,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/normal = SubResource( 12 )
+custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 44 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name"
@@ -778,7 +790,7 @@ margin_left = 7.0
 margin_top = 4.0
 margin_right = 239.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Actors"
 align = 1
@@ -792,7 +804,7 @@ margin_left = 250.0
 margin_top = 4.0
 margin_right = 497.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Receivers"
 align = 1
@@ -878,7 +890,7 @@ margin_left = 459.0
 margin_top = 19.0
 margin_right = 903.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Portrait"
 align = 1
@@ -1007,7 +1019,7 @@ margin_bottom = 553.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OrgasmDenial/ScrollContainer"]
 margin_right = 471.0
-margin_bottom = 104.0
+margin_bottom = 164.0
 size_flags_horizontal = 3
 
 [node name="Cum" type="Button" parent="OrgasmDenial/ScrollContainer/VBoxContainer"]
@@ -1035,7 +1047,7 @@ margin_left = 15.0
 margin_top = 19.0
 margin_right = 459.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "List Of Characters"
 align = 1

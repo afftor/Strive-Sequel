@@ -1,0 +1,601 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_pressed.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=4]
+[ext_resource path="res://GUI_New/Universal/SlaveTooltip_v2.gd" type="Script" id=5]
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/gui icons/icon_wits.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/sexicons/futa.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/icon_sex.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/gui/gui icons/icon_physics.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp_hover.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_mp.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_exp.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=20]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://assets/Themes_v2/MANSION/M_Slave_Module.tres" type="Theme" id=22]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/crown.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/Universal/SlaveTooltipPanel.tres" type="StyleBox" id=25]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 21 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+outline_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 1 )
+
+[node name="SlaveTooltip_v2" type="Panel"]
+rect_min_size = Vector2( 470, 520 )
+theme = ExtResource( 22 )
+custom_styles/panel = ExtResource( 25 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.823529 )
+show_behind_parent = true
+margin_right = 470.0
+margin_bottom = 520.0
+rect_min_size = Vector2( 470, 520 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="job" type="RichTextLabel" parent="."]
+margin_left = 200.0
+margin_top = 139.0
+margin_right = 456.0
+margin_bottom = 204.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+bbcode_enabled = true
+text = "Job"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 470.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="professions" type="GridContainer" parent="TextureRect"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 95.0
+margin_bottom = 95.0
+mouse_filter = 2
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="TextureRect/professions" groups=[
+"ignore_rightclicks",
+]]
+visible = false
+margin_right = 89.0
+margin_bottom = 89.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 89, 89 )
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="TextureRect/professions/Button"]
+visible = false
+margin_left = 6.0
+margin_top = 64.0
+margin_right = 84.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 2 )
+text = "Label"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfIcon" type="TextureRect" parent="TextureRect/professions/Button"]
+show_behind_parent = true
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 84.0
+margin_bottom = 84.0
+expand = true
+stretch_mode = 1
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = 103.0
+margin_right = 181.0
+margin_bottom = 261.0
+rect_min_size = Vector2( 120, 150 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sex" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = 103.0
+margin_right = 47.0
+margin_bottom = 143.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 200.0
+margin_top = 107.0
+margin_right = 456.0
+margin_bottom = 135.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+bbcode_enabled = true
+text = "Name"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="base_stats" type="VBoxContainer" parent="." groups=[
+"hide_stranger",
+]]
+margin_left = 192.0
+margin_top = 211.0
+margin_right = 456.0
+margin_bottom = 304.0
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="TextureProgress" parent="base_stats"]
+margin_right = 264.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 200, 25 )
+value = 100.0
+rounded = true
+texture_over = ExtResource( 15 )
+texture_progress = ExtResource( 14 )
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="base_stats/hp"]
+margin_top = -2.75696
+margin_right = 262.0
+margin_bottom = 29.243
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "1.100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="TextureProgress" parent="base_stats"]
+margin_top = 34.0
+margin_right = 264.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_over = ExtResource( 15 )
+texture_progress = ExtResource( 13 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/mp"]
+margin_top = -3.75696
+margin_right = 262.0
+margin_bottom = 28.243
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "1.100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lust" type="TextureProgress" parent="base_stats"]
+margin_top = 68.0
+margin_right = 264.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 200, 25 )
+value = 50.0
+texture_over = ExtResource( 15 )
+texture_progress = ExtResource( 16 )
+nine_patch_stretch = true
+
+[node name="Label" type="Label" parent="base_stats/lust"]
+margin_top = -3.75696
+margin_right = 263.0
+margin_bottom = 28.243
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "1.100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="physics" type="Label" parent="."]
+margin_left = 72.8327
+margin_top = 309.41
+margin_right = 122.833
+margin_bottom = 341.41
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Physics"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="physics2" type="Label" parent="."]
+margin_left = 130.449
+margin_top = 308.616
+margin_right = 180.449
+margin_bottom = 340.616
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Physics"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wits" type="Label" parent="."]
+margin_left = 71.641
+margin_top = 345.752
+margin_right = 121.641
+margin_bottom = 377.752
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Wits"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wits2" type="Label" parent="."]
+margin_left = 130.052
+margin_top = 346.546
+margin_right = 180.052
+margin_bottom = 378.546
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Wits"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charm" type="Label" parent="."]
+margin_left = 71.2438
+margin_top = 384.08
+margin_right = 121.244
+margin_bottom = 416.08
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Charm"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charm2" type="Label" parent="."]
+margin_left = 130.449
+margin_top = 383.682
+margin_right = 180.449
+margin_bottom = 415.682
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Charm"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sexuals" type="Label" parent="."]
+margin_left = 72.4354
+margin_top = 422.01
+margin_right = 122.435
+margin_bottom = 454.01
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Sexuals"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sexuals2" type="Label" parent="."]
+margin_left = 131.244
+margin_top = 422.01
+margin_right = 181.244
+margin_bottom = 454.01
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Sexuals"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="Control" parent="."]
+margin_left = 16.0126
+margin_top = 284.016
+margin_right = 56.0126
+margin_bottom = 458.016
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exp" type="TextureButton" parent="TextureRect2"]
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 48.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureRect2/Exp"]
+margin_left = -1.0
+margin_right = 52.0
+margin_bottom = 34.0
+text = "EXP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="physics" type="TextureRect" parent="TextureRect2"]
+margin_left = 2.20064
+margin_top = 26.7605
+margin_right = 42.2006
+margin_bottom = 51.7605
+mouse_filter = 0
+texture = ExtResource( 10 )
+
+[node name="wits" type="TextureRect" parent="TextureRect2"]
+margin_top = 65.649
+margin_right = 40.0
+margin_bottom = 90.649
+mouse_filter = 0
+texture = ExtResource( 7 )
+
+[node name="charm" type="TextureRect" parent="TextureRect2"]
+margin_left = 3.07358
+margin_top = 102.532
+margin_right = 43.0736
+margin_bottom = 127.532
+mouse_filter = 0
+texture = ExtResource( 11 )
+
+[node name="sexuals" type="TextureRect" parent="TextureRect2"]
+margin_left = 3.77354
+margin_top = 143.566
+margin_right = 43.7735
+margin_bottom = 168.566
+mouse_filter = 0
+texture = ExtResource( 9 )
+
+[node name="exp" type="Label" parent="."]
+margin_left = 106.784
+margin_top = 269.761
+margin_right = 146.785
+margin_bottom = 301.761
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Control" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 200.0
+margin_top = 320.0
+margin_right = 452.0
+margin_bottom = 453.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="obedlabel" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 119.711
+margin_top = -1.52588e-05
+margin_right = 198.711
+margin_bottom = 40.0
+rect_scale = Vector2( 0.627771, 0.627771 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "25"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="Panel/obedlabel"]
+margin_left = -67.5715
+margin_top = -25.487
+margin_right = 8.42854
+margin_bottom = 45.513
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="authoritylabel" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 3.8147e-06
+margin_top = 95.682
+margin_right = 238.0
+margin_bottom = 127.682
+mouse_filter = 0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Authority: "
+align = 1
+
+[node name="authoritylabel2" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 14.7019
+margin_top = 21.41
+margin_right = 26.7019
+margin_bottom = 53.41
+mouse_filter = 0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "L"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="authoritylabel3" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 14.7019
+margin_top = 54.665
+margin_right = 27.7019
+margin_bottom = 86.665
+mouse_filter = 0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "S"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 32.0
+margin_top = 25.752
+margin_right = 214.0
+margin_bottom = 53.752
+value = 100.0
+texture_over = ExtResource( 20 )
+texture_progress = ExtResource( 17 )
+
+[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 32.0
+margin_top = 58.546
+margin_right = 214.0
+margin_bottom = 86.546
+value = 100.0
+texture_over = ExtResource( 20 )
+texture_progress = ExtResource( 19 )
+
+[node name="buffscontainer" type="HBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 528.0
+margin_right = 464.0
+margin_bottom = 579.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="buffscontainer"]
+visible = false
+margin_right = 51.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 51, 51 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="buffscontainer/Button"]
+margin_top = 24.0
+margin_right = 49.0
+margin_bottom = 51.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -15,6 +15,7 @@ func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent, 'exp_for_level')
 		input_handler.ActivateTutorial("levelup")
+		pass
 	base_exp = value
 
 func update_exp(value, is_set):
@@ -262,10 +263,12 @@ func work_tick():
 				ResourceScripts.game_res.upgrade_progresses.erase(ResourceScripts.game_res.upgrades_queue[0])
 				ResourceScripts.game_res.upgrades_queue.erase(ResourceScripts.game_res.upgrades_queue[0])
 	else:
+		var person_location = parent.get_location()
+		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
 		work_tick_values(currenttask, gatherable)
 		if !gatherable:
-			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)#*(get_stat('productivity')*get_stat(currenttask.mod)/100)
+			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true) * location.gather_mod
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
 		while currenttask.threshhold <= currenttask.progress:
@@ -277,10 +280,9 @@ func work_tick():
 					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 			else:
 				ResourceScripts.game_res.materials[currenttask.code] += 1
-				var person_location = parent.get_location()
-				var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 				if person_location != "Aliron" && location.type == "dungeon":
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
+						globals.text_log_add('work', parent.get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()
 						if ResourceScripts.game_party.active_tasks != []:
 							for task in ResourceScripts.game_party.active_tasks:

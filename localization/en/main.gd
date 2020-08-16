@@ -172,7 +172,7 @@ var TranslationDict = {
 	ITEMAPHRODISIAC = "Aphrodisiac",
 	ITEMAPHRODISIACDESCRIPT = "A strong potion bringing out a person's inner lust. \n\nTurns character Horny during sex interactions. ",
 	ITEMALCOHOL = "Whiskey",
-	ITEMALCOHOLDESCRIPT = "A common strong beverage to help people ease up. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.",
+	ITEMALCOHOLDESCRIPT = "A simple strong beverage produced from various grains. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions but can be rejected by a weaker body.",
 	ITEMBEER = "Beer",
 	ITEMBEERDESCRIPT = "A nectar of the gods. \n\nImproves obedience and reduces submission when consumed normally. Improves horniness and sensitivity during sex interactions.",
 	ITEMTAMEDRUG = "Tame Drug",
@@ -316,6 +316,16 @@ var TranslationDict = {
 	TOOLTIPSPEED = "Improves your odds to act before other characters",
 	TOOLTIPRESISTS = "Reduces elemental damage by relative resist",
 	
+	TOOLTIPFOODCONSUMPTION = "Daily Food Consumption",
+	TOOLTIPPOPULATION = "Population",
+	TOOLTIPPROGRESSREQUIRED = "Work Units required",
+	TOOLTIPSAVECHARACTER = "Save Character Template",
+	TOOLTIPLOADCHARACTER = "Load Character Template",
+	
+	
+	SAVENAME = "Save Name",
+	SAVETEMPLATEDESCRIPT = "You can save existing character template for the repeated use.",
+	
 	#Item Parts
 	TOOLHANDLE = 'Tool Handle',
 	WEAPONHANDLE = 'Weapon Handle',
@@ -446,6 +456,9 @@ var TranslationDict = {
 	STOPTASKCONFIRM = "Stop this job?",
 	SLAVEREMOVECONFIRM = "Expel this worker?",
 	
+	OVERWRITETEMPLATECONFIRM = "Overwrite this template?",
+	DELETETEMPLATECONFIRM = "Delete this template?",
+	LOADTEMPLATECONFIRM = "Load this template? Current settings will be lost.",
 	
 	#Inbuilt Tooltips
 	PAUSEBUTTONTOOLTIP = 'Pause\nHotkey: 1',
@@ -1828,6 +1841,7 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish",
 	
+	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",
 	
@@ -1899,12 +1913,16 @@ var TranslationDict = {
 	SCENEDAISY_CONFESS_ACCEPT_TEXT = "- N..No way! You feel the same?! I can't believe it...\n\nYou press your lips to Daisy and she gives in into your embrace.\n\nShe’s hoping to spend this night with you.",
 	SCENEDAISY_CONFESS_REFUSE_TEXT = "You politely refuse Daisy's proposal.\n\n- I see... But if that's too much for you, I could be your... night servant.\n\nIt seems Daisy still has some leftover hope to eventually win you over. ",
 
-	TUTORIAL_MAINSCREEN = "This is the main Mansion screen. On the right side is your character list. On the left side are active tasks. On the bottom are navigation options.\n\nYour goal is to sustain and grow in power by utilizing your characters to gather resources. However, managing characters' behavior is a big part of the game.\n\nLet's look further into it by opening the Character Panel.",
+	TUTORIAL_MAINSCREEN = "The center of your Mansion is the list of available characters before you. Click once to see details and skills available to selected character. You can view detailed info about them by double clicking or selecting \"Character Info\" in the left bottom corner. You can assign them to task by clicking on Occupation button. You can use their skills by selecting them at the bottom of the screen. ",
+	
+	
 	TUTORIAL_SLAVEBASICS = "Characters are the centerpiece of the game, as they do all the work and fighting. All characters require food daily to sustain themselves, and they also have food preferences often related to their race. \n\nAll characters, besides the Master, must be constantly disciplined. If both Fear and Obedience drop too low, they will be less productive or might even attempt an escape. Fear and Obedience can be increased via social skills. Fear and Obedience slowly decrease based on the Character's Tame Factor and Timid Factor.",
 	TUTORIAL_LUST = "Lust is a special stat used by every character and is more akin to a resource like Mana. It slowly grows every day and can be utilized by certain skills to provide unusual effects. Some classes, like the Succubus/Incubus are focused on manipulating this resource. Besides growing naturally, Lust can be increased from sexual interactions, based on the number of orgasms reached.",
-	TUTORIAL_SLAVEPANEL = "This is the character's main screen. Here you can see most of the important info, assign tasks, and use skills.\n\nEvery character consists of a number of stats, some of which can be seen on the left. You can hover over them at any time to see details on them. \n\nThe bottom panel holds active social skills. You can set active skills by right clicking. Use the 'Job' button to select the current task for the character.",
-	TUTORIAL_TASK_WINDOW = "Here you can select a task from the list. Tasks serve as a permanent job which can be changed at any point in time. \n\nWorking on a job involves such character stats as energy, productivity, fatigue, and exhaustion. Energy is consumed while a character works and restored when the character rests. By default characters will automatically stop working when their energy is depleted, but you can choose how much each character works manually. \n\nIf energy is depleted, the character will start accumulating Exhaustion. To see more details on these stats hover over them in the character tab. ",
+	TUTORIAL_SLAVEPANEL = "This is the character's detailed screen. Here you can see all of the visible stats and details.\n\nEvery character consists of a number of stats, some of which can be seen on the left. You can hover over them at any time to see details on them. \n\nAt the bottom left you can select items, unlock new classes and configure additional details like imported image.",
 	TUTORIAL_CLASSES_AND_SKILLS = "Every character has access to multiple classes they can unlock. After a class is unlocked, a character receives its bonuses and can use its skills. Skills can be either social or combat, with social skills helping to manage characters' behavior. Many skills have no other cost than daily charges, so feel free to use them as often as needed. ",
+	TUTORIAL_CHARACTER_SELECT = "After selecting skills or some other actions you will be able to select a target of said action, sometimes allowed to select multiple targets. Locations on the bottom of Slave List allows you to filter only characters in specific places.",
+	TUTORIAL_TRAVELING_AND_LOCATIONS = "At the top of the screen you can see the list of locations your characters are currently dislocated in. Click on them to see their details. \n\n\"Travels\" menu allow you to select other locations and make characters travel to them. Travelling takes time but many resources can only be gathered from outside of town. ",
+	TUTORIAL_LOCATIONS_RESOURCES = "Other locations allow to gather resources presented on them. Settlement type locations allow to gather resources infinitely, but have a limit on how many characters can gather it at once. Combat locations allow to gather a limited amount of resources after they've been cleared. ",
 
 
 	ITEMHAIRDYE = "Hair Dye",
@@ -2342,14 +2360,14 @@ var TranslationDict = {
 	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
 	
 	LOAN_EVENT = "By the morning the bank loaners has visited the mansion. ",
-    LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
-    LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
-    LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
-    LOAN_SUCCESS4 = "They took 86000 gold and departed quickly. This was your last payment and now you are free to do what you want...",
-    LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
-    
-    SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sexuals Factor}. It also increase chance to unlock a trait. ",
-    SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
+	LOAN_SUCCESS1 = "They took 1000 gold and departed quickly. Your next payment is expected by 28th day and will be requiring 3000 gold.",
+	LOAN_SUCCESS2 = "They took 3000 gold and departed quickly. Your next payment is expected by 50th day and will be requiring 10000 gold... Unless something else can be done about it.",
+	LOAN_SUCCESS3 = "They took 10000 gold and departed quickly. Your next payment is expected by 100th day and will be requiring 86000 gold... Unless something else can be done about it.",
+	LOAN_SUCCESS4 = "They took 86000 gold and departed quickly. This was your last payment and now you are free to do what you want...",
+	LOAN_FAILURE = "However, you had no cash available. You've failed to complete the requirements and bank takes away your property, leaving you on the streets. ",
+	
+	SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sexuals Factor}. It also increase chance to unlock a trait. ",
+	SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
 
 
 

@@ -6,6 +6,7 @@ var closebutton
 var open_sound = 'menu_open'
 var close_sound = 'menu_close'
 var close_played = false
+export var test_mode = false
 
 # Main Modules
 onready var MAIN_MODULES = {
@@ -14,6 +15,7 @@ onready var MAIN_MODULES = {
 	INVENTORY = preload("res://GUI_New/Inventory/InventoryMainModule.tscn"),
 	EXPLORATION = preload("res://GUI_New/Exploration/ExplorationMainModule.tscn"),
 	INTERACTION = preload("res://GUI_New/Mansion/InteractionMainModule.tscn"),
+	DATE = preload("res://src/date.tscn"),
 	GAMEMENU = preload("res://GUI_New/GameMenuPanel.tscn"),
 }
 
@@ -31,11 +33,13 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
-	# test_mode()
-
+	if test_mode:
+		test_mode()
+	var is_new_game = false
 	if globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
+		is_new_game = true
 		var newgame_node = Node.new()
 		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
 		newgame_node.start()
@@ -44,7 +48,6 @@ func _ready():
 		input_handler.GameStartNode.queue_free()
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
-
 		input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
@@ -56,21 +59,54 @@ func _ready():
 
 	CurrentScene = gui_data["MANSION"].main_module
 	BaseScene = gui_data["MANSION"].main_module
+	input_handler.get_spec_node(input_handler.NODE_CLASSINFO, null, false, false)
 	visibility_handler()
+	if is_new_game:
+		yield(input_handler, 'EventFinished')
+		input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data.MANSION.main_module.show_tutorial()
 
 
 func _input(event):
-	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene != null && CurrentScene.name != "InteractionMainModule":
-		var ignore_rightclick = false
+	var dialogue = get_tree().get_root().get_node_or_null("dialogue")
+	if CurrentScene == null:
+		return
+	if dialogue != null && dialogue.is_visible() && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
+		dialogue.select_option(int(event.as_text()))
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name == "date":
+		return
+	if event.is_action_released("F1"):
+		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")):
 		if menu_opened:
+			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
+			if has_submodules_opened:
+				submodules_handler()
+				return
+			else:
+				gui_data["GAMEMENU"].main_module.hide()
+				menu_opened = !menu_opened
+				return
+		if CurrentScene == gui_data.INVENTORY.main_module && !PreviousScene == gui_data.SLAVE_INFO.main_module:
+			PreviousScene = CurrentScene
+			visibility_handler()
+			PreviousScene = null
+			return
+		if CurrentScene == gui_data.SLAVE_INFO.main_module:# && !PreviousScene == gui_data.SLAVE_INFO.main_module:
+			PreviousScene = CurrentScene
+			visibility_handler()
+			PreviousScene = null
+			return
+	if (event.is_action_released("ESC") && CurrentScene != null && CurrentScene.name != "InteractionMainModule") && !input_handler.get_spec_node(input_handler.NODE_CLASSINFO).is_visible():
+		if menu_opened:
+			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
+			if has_submodules_opened:
+				submodules_handler()
+				return
 			gui_data["GAMEMENU"].main_module.hide()
+			CurrentScene.get_node("MansionClockModule").set_time_buttons()
 			menu_opened = !menu_opened
 			return
-		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-			if i.is_visible() && i.get_global_rect().has_point(get_global_mouse_position()):
-				ignore_rightclick = true
-				continue
-		if get_tree().get_root().get_node("classinfo") != null:
+		if get_tree().get_root().has_node("classinfo"):
 			if (CurrentScene == gui_data["MANSION"].main_module 
 				&& CurrentScene.mansion_state in ["default", "skills"] 
 				&& !get_tree().get_root().get_node("classinfo").is_visible()):
@@ -81,10 +117,23 @@ func _input(event):
 					menu_opened = !menu_opened
 		elif (CurrentScene == gui_data["MANSION"].main_module 
 			&& CurrentScene.mansion_state in ["default", "skills"]
-			&& !CurrentScene.get_node("MansionJournalModule").is_visible()):	
+			&& !CurrentScene.get_node("MansionJournalModule").is_visible()):
 			menu_opened = !menu_opened
+	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene != null && CurrentScene.name != "InteractionMainModule":
+		var ignore_rightclick = false
+		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+			if i.is_visible() && i.get_global_rect().has_point(get_global_mouse_position()):
+				ignore_rightclick = true
+				continue
 		if !ignore_rightclick:
 			visibility_handler()
+	if CurrentScene == gui_data["MANSION"].main_module && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):# && !text_field_input: ### Find Solution
+		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+			if input_handler.globalsettings.turn_based_time_flow == false:
+				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
+			else:
+				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
+	
 
 
 func visibility_handler():
@@ -92,37 +141,81 @@ func visibility_handler():
 	if has_submodules_opened:
 		submodules_handler()
 	if CurrentScene == gui_data["INVENTORY"].main_module && PreviousScene == gui_data["SLAVE_INFO"].main_module && CurrentScene.is_visible():
+		ResourceScripts.core_animations.UnfadeAnimation(PreviousScene, 0.3)
 		CurrentScene.hide()
 		CurrentScene = PreviousScene
+	# if BaseScene == gui_data.MANSION.main_module && gui_data.INVENTORY.main_module.is_visible():
+	# 	ResourceScripts.core_animations.UnfadeAnimation(BaseScene, 0.3)
+	# 	# yield(get_tree().create_timer(0.3), "timeout")
+	# 	CurrentScene = BaseScene
 	if menu_opened:
 		gui_data["GAMEMENU"].main_module.open()
 		return
 	if BaseScene == gui_data["MANSION"].main_module && !has_submodules_opened:
 		BaseScene.mansion_state = "default"
 	if !has_submodules_opened && CurrentScene.is_visible():
+		# ResourceScripts.core_animations.FadeAnimation(CurrentScene, 0.3)
+		# yield(get_tree().create_timer(0.3), "timeout")
 		CurrentScene = BaseScene
 	for scene in gui_data.values():
+		if scene.main_module.get_class() == "Tween":
+			continue
 		scene.main_module.visible = (scene.main_module == CurrentScene)
+		if CurrentScene != PreviousScene && PreviousScene != null:
+			ResourceScripts.core_animations.UnfadeAnimation(CurrentScene, 0.3)
 	CurrentScene.update()
 	for subscene in CurrentScene.get_children():
+		if subscene.get_class() == "Tween":
+			continue
 		subscene.update()
+	gui_data.MANSION.main_module.get_node("TutorialButton").show()
+
 
 
 func submodules_handler():
-	var last_opened_id = (CurrentScene.submodules.size() - 1)
-	var last_opened = CurrentScene.submodules[last_opened_id]
-	CurrentScene.submodules[last_opened_id].hide()
-	CurrentScene.submodules.erase(last_opened)
+	var last_opened_id
+	var last_opened
+	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
+	if classinfo != null && menu_opened && !classinfo.is_visible():
+		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
+		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
+		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
+		gui_data["GAMEMENU"].main_module.submodules.erase(last_opened)
+	else:
+		last_opened_id = (CurrentScene.submodules.size() - 1)
+		last_opened = CurrentScene.submodules[last_opened_id]
+		CurrentScene.submodules[last_opened_id].hide()
+		CurrentScene.submodules.erase(last_opened)
+	gui_data.MANSION.main_module.get_node("TutorialButton").show()
 
 
 
-func close_scene():
+func close_scene(scene):
+	scene.hide()
+	if scene in gui_data.EXPLORATION.main_module.submodules:
+		gui_data.EXPLORATION.main_module.submodules.erase(scene)
+		gui_data.EXPLORATION.main_module.Navigation.show()
+	if scene == gui_data.GAMEMENU.main_module:
+		menu_opened = false
+		return
 	if BaseScene == gui_data["MANSION"].main_module:
+		if BaseScene.mansion_state == "travels":
+			BaseScene.TravelsModule.open_character_dislocation()
+			return
 		BaseScene.mansion_state = "default"
+		# for module in BaseScene.submodules:
+		# 	# ResourceScripts.core_animations.FadeAnimation(module, 0.3)
+		# 	# yield(get_tree().create_timer(0.3), "timeout")
+		# CurrentScene.hide()
+		set_current_scene(BaseScene)
+		return
 	for module in CurrentScene.submodules:
+		# ResourceScripts.core_animations.FadeAnimation(module, 0.3)
+		# yield(get_tree().create_timer(0.3), "timeout")
 		module.hide()
 	CurrentScene.submodules.clear()
-	set_current_scene(BaseScene)
+	# if CurrentScene == gui_data["SLAVE_INFO"].main_module:
+	# 	return
 
 
 func set_current_scene(scene):
@@ -132,13 +225,16 @@ func set_current_scene(scene):
 	visibility_handler()
 
 
-func add_close_button(scene):
+func add_close_button(scene, position = "snap"):
+	var closebuttonoffset = [0,0]
+	if position == "add_offset":
+		closebuttonoffset = [15,15]
 	var pos_in_tree = scene.get_child_count()
 	rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
 	closebutton = load(ResourceScripts.scenedict.close).instance()
 	scene.add_child(closebutton)
 	scene.move_child(closebutton, pos_in_tree)
-	closebutton.connect("pressed", self, 'close_scene')
+	closebutton.connect("pressed", self, 'close_scene', [scene])
 	var rect = scene.get_global_rect()
 	var pos = Vector2(rect.end.x - closebutton.rect_size.x - closebuttonoffset[0], rect.position.y + closebuttonoffset[1])
 	closebutton.rect_global_position = pos
@@ -155,39 +251,52 @@ func show_class_info(classcode, person = null):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 func test_mode():
+	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'male', 'random')
-	character.set_stat('consent', 100)
-	character.set_stat('penis_virgin', true)
+	character.create('HalfkinCat', 'random', 'random')
+	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
-	character.add_trait('core_trait')
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'random', 'random')
+#	characters_pool.move_to_state(character.id)
+
+#	character.create('HalfkinCat', 'futa', 'random')
+#	characters_pool.move_to_state(character.id)
+	
 	character.unlock_class("master")
 	character.unlock_class("archer")
 	character.unlock_class("necromancer")
 	character.unlock_class("rogue")
 	character.unlock_class("pet")
 	character.unlock_class("souleater")
+	character.travel.location = 'L4'
+	character.travel.area = 'plains'
 	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(bow)
 	character.equip(bow)
@@ -208,6 +317,8 @@ func test_mode():
 	character.set_stat('consent', 100)
 	character.set_stat('charm_factor', 5)
 	character.set_stat('physics_factor', 5)
+	character.set_stat('food_love', "meat")
+	character.set_stat('food_hate', ["grain"])
 	#character.unlock_class("worker")
 	character.mp = 50
 	character.unlock_class("sadist")
@@ -234,6 +345,7 @@ func test_mode():
 	character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'random', 'random')
 	characters_pool.move_to_state(character.id)
+	#character.set_stat('base_exp', 1000)
 
 
 
@@ -246,9 +358,11 @@ func test_mode():
 	character.set_stat('sexuals_factor', 5)
 	character.set_stat('charm', 100)
 	character.set_stat('physics', 100)
-	character.set_stat('wits', 100)
+	character.set_stat('consent', 100)
 
 	var character2 = ResourceScripts.scriptdict.class_slave.new()
+	character.set_stat('food_love', "meat")
+	character.set_stat('food_hate', ["grain"])
 	character2.create('HalfkinCat', 'random', 'random')
 	character2.set_stat('charm', 0)
 	character2.set_stat('physics', 0)
@@ -342,7 +456,7 @@ func test_mode():
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("revitalizer", 3))
+	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 	globals.AddItemToInventory(
 		globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)
@@ -383,8 +497,8 @@ func test_mode():
 	tmp.oral = 70
 	tmp.anal = 90
 	tmp.petting = 100
-	character.set_stat('sex_skills', tmp)
-	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]  #[state.areas.plains.locations.size()-1]]
+	#character.set_stat('sex_skills', tmp)
+	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 	input_handler.active_area = ResourceScripts.game_world.areas.plains
 
 	for i in ResourceScripts.game_world.areas.plains.factions.values():
@@ -392,3 +506,10 @@ func test_mode():
 
 	for c in ResourceScripts.game_party.characters.values():
 		if c.get_location() == "mansion": c.travel.location = "Aliron"
+	yield(get_tree(), 'idle_frame')
+	input_handler.ActivateTutorial("introduction")
+	input_handler.add_random_chat_message(character2, 'hire')
+	#input_handler.interactive_message('event_trap_easy', '', {})
+	
+	
+	character = ResourceScripts.scriptdict.class_slave.new()

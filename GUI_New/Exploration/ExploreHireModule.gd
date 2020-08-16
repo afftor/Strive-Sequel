@@ -13,7 +13,25 @@ func _ready():
 	$PurchaseButton.connect("pressed", self, "show_full_info")
 	$HireMode.connect("pressed", self, "change_mode", ["hire"])
 	$SellMode.connect("pressed", self, "change_mode", ["sell"])
-	$EnslaveButton.connect("pressed", self, "enslave_select")
+	$HBoxContainer/EnslaveButton.connect("pressed", self, "enslave_select")
+	$HBoxContainer/UpgradeButton.connect("pressed", self, "show_upgrade_window")
+	for i in $factors.get_children():
+		if i.name == "Exp":
+			continue
+		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+	for i in $base_stats.get_children():
+		if i.name == "Exp":
+			continue
+		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+
+
+func show_upgrade_window():
+	get_parent().StatUpgradeWindow.show()
+	get_parent().submodules.clear()
+	get_parent().submodules.append(get_parent().StatUpgradeWindow)
+	self.hide()
+	get_parent().City.update_buttons()
+
 
 func change_mode(mode):
 	get_parent().hiremode = mode
@@ -61,14 +79,15 @@ func hire():
 		show()
 	$HireMode.visible = mode != "guild_slaves"
 	$SellMode.visible = mode != "guild_slaves"
+	$HBoxContainer/UpgradeButton.visible = mode != "guild_slaves"
 	# $PurchaseButton.get_node("Label").text = "Purchase"
 	get_parent().hiremode = 'hire'
 	$RichTextLabel.bbcode_text = ""
-	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($SlaveList/ScrollContainer/VBoxContainer)
 	for i in get_parent().active_faction.slaves:
 		var tchar = characters_pool.get_char_by_id(i)
 		var newbutton = input_handler.DuplicateContainerTemplate(
-			$ScrollContainer/VBoxContainer
+			$SlaveList/ScrollContainer/VBoxContainer
 		)
 		newbutton.get_node("name").text = tchar.get_stat('name')
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
@@ -85,8 +104,8 @@ func hire():
 
 func show_slave_info(person):
 	get_parent().person_to_hire = person
-	$EnslaveButton.visible = person.get_stat("slave_class") != "slave" # && (!person.has_profession('master'))
-	for button in $ScrollContainer/VBoxContainer.get_children():
+	$HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" && mode != "guild_slaves" # && (!person.has_profession('master'))
+	for button in $SlaveList/ScrollContainer/VBoxContainer.get_children():
 		if button.name == "Button":
 			continue
 		button.pressed = button.get_meta("person") == get_parent().person_to_hire
@@ -138,7 +157,8 @@ func show_slave_info(person):
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 
 	$ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
-	$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
+	$PurchaseButton.disabled = false
+	#$PurchaseButton.disabled = person.calculate_price() > ResourceScripts.game_res.money
 	rebuild_traits(person)
 
 
@@ -165,21 +185,24 @@ func enslave():
 	show_slave_info(character)
 
 func sell_slave():
-	# $PurchaseButton.get_node("Label").text = "Sell"
+	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
+	if slave_tooltip != null:
+		slave_tooltip.hide()
+	$PurchaseButton.disabled = false
 	get_parent().get_node("GuildBG").visible = (mode != "slave_market")
 	get_parent().hiremode = 'sell'
 	$HireMode.visible = mode != "guild_slaves"
-	$SellMode.visible = mode != "guild_slaves"
+	$SellMode.visible = mode != "guild_slaves"	
 	show()
 	$RichTextLabel.bbcode_text = ""
-	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($SlaveList/ScrollContainer/VBoxContainer)
 	var char_list = []
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
 		if (tchar.has_profession('master')): # || tchar.valuecheck({code = 'is_free', check = true}) == false):
 			continue
 		char_list.append(tchar)
-		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+		var newbutton = input_handler.DuplicateContainerTemplate($SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_stat('name')
 		newbutton.get_node("Price").text = str(round(tchar.calculate_price() / 2))
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar]) 
@@ -216,6 +239,6 @@ func rebuild_traits(person):
 					traittext += globals.sex_actions_dict[k].getname() + ", "
 				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
 		globals.connecttexttooltip(newnode, traittext)
-
-
-
+	
+	
+	

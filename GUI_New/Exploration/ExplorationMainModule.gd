@@ -1,13 +1,14 @@
 extends Control
 
 onready var City = $ExploreCityModule
-onready var Navigation = $ExploreNavigationModule
+onready var Navigation = $NavigationModule
 onready var Hire = $ExploreHireModule
 onready var QuestBoard = $QuestBoardModule
 onready var Shop = $ExploreShopModule
 onready var Upgrades = $StatUpgradeModule
 onready var FactionDetails = $FactionDetailsModule
 onready var FullSlaveInfo = $ExploreFullSlaveModule
+onready var StatUpgradeWindow = $StatUpgradeModule
 onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 const BUTTON_HEIGHT = 58
@@ -21,8 +22,8 @@ var active_faction
 var active_location
 var action_type
 var person_to_hire
-var current_level = 1
-var current_stage = 0
+var current_level = 1 #should get rid of eventually
+var current_stage = 0 #should get rid of eventually
 var submodules = []
 var dialogue_opened = false
 var city_options = {
@@ -63,6 +64,31 @@ func _ready():
 		get_node(positiondict[i]).target_node = self
 		get_node(positiondict[i]).target_function = 'slave_position_selected'
 
+	$LocationGui.target_node = self
+	$LocationGui.target_function = 'slave_position_deselect'
+	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_node = self
+	$LocationGui/PresentedSlavesPanel/ScrollContainer.target_function = 'slave_position_deselect'
+	$LocationGui/ItemUsePanel/ItemsButton.connect("pressed", self, "switch_panel", ["items"])
+	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
+	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
+	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
+	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
+	globals.connect("hour_tick", self, "build_location_group")
+
+
+func select_workers():
+	var MANSION = GUIWorld.gui_data.MANSION.main_module
+	GUIWorld.BaseScene = MANSION
+	GUIWorld.set_current_scene(GUIWorld.gui_data.MANSION.main_module)
+	MANSION.mansion_state_set("occupation")
+	MANSION.SlaveListModule.selected_location = selected_location
+	MANSION.SlaveListModule.show_location_characters()
+	MANSION.active_person = MANSION.SlaveListModule.visible_persons[0].get_meta("slave")
+	MANSION.hovered_person = null
+	MANSION.SlaveModule.show_slave_info()
+	MANSION.set_active_person(MANSION.active_person)
+
+
 func show_quest_gen(action = "show"):
 	if action == "show":
 		FactionDetails.get_node("QuestGenPanel").visible = FactionDetails.get_node("QuestGen").is_pressed()
@@ -76,7 +102,7 @@ func clear_submodules():
 	submodules.clear()
 
 func ShowSlavePanel(person):
-	var dialogue = get_tree().get_root().get_node("dialogue")
+	var dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)#get_tree().get_root().get_node("dialogue")
 	if dialogue.is_visible():
 		dialogue_opened = true
 		dialogue.hide()
@@ -84,7 +110,7 @@ func ShowSlavePanel(person):
 	FullSlaveInfo.show_summary(person)
 
 func update():
-	var dialogue = get_tree().get_root().get_node("dialogue")
+	var dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)#get_tree().get_root().get_node("dialogue")
 	if dialogue_opened && !FullSlaveInfo.is_visible():
 		dialogue.show()
 		dialogue_opened = false
@@ -97,16 +123,48 @@ func open():
 	# input_handler.CloseAllCloseableWindows()
 	Navigation.build_accessible_locations()
 	selected_location = GUIWorld.gui_data["MANSION"].main_module.selected_location
+	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	Navigation.select_location(selected_location)
-	
+
 
 
 func local_shop():
 	Shop.open_shop('location')
 
 func open_location(data):
+	selected_location = data.id
+	var gatherable_resources
+	if data.type == "dungeon":
+		$LocationGui/Resources/Forget.visible = data.completed
+		$LocationGui/Resources/SelectWorkers.visible = data.completed
+	else:
+		$LocationGui/Resources/Forget.visible = false
+		if data.type == "capital":
+			return
+		else:
+			gatherable_resources = data.gather_resources
+			if gatherable_resources != null:
+				for i in gatherable_resources:
+					var item = Items.materiallist[i]
+					var max_workers_count = gatherable_resources[i]
+					var current_workers_count = 0
+					var active_tasks = ResourceScripts.game_party.active_tasks
+					if active_tasks == []:
+						$LocationGui/Resources/SelectWorkers.visible = true
+						break
+					for task in active_tasks:
+						if (task.code == i) && (task.task_location == selected_location):
+							current_workers_count = task.workers_count
+							if current_workers_count < max_workers_count:
+								$LocationGui/Resources/SelectWorkers.visible = true
+								break
+							else:
+								$LocationGui/Resources/SelectWorkers.visible = false
 	input_handler.StopBackgroundSound()
 	$LocationGui.show()
+	$LocationGui/Resources/Materials.update()
+	Navigation.rect_position.x = 645
+	Navigation.rect_size.x = 1260
 	City.hide()
 	Hire.hide()
 #	$ServicePanel.hide()
@@ -122,8 +180,8 @@ func open_location(data):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
 
-#	if active_location.has('background'):
-#		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
+	if active_location.has('background'):
+		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
 
@@ -143,14 +201,10 @@ func open_location(data):
 
 func build_location_group():
 	#clear_groups()
+	if active_location == null || !active_location.has("group"):
+		return
 	for i in positiondict:
-		if (
-			active_location.group.has('pos' + str(i))
-			&& (
-				ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)])
-				== false
-			)
-		):
+		if (active_location.group.has('pos' + str(i)) && (ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false)):
 			active_location.group.erase('pos' + str(i))
 			get_node(positiondict[i] + "/Image").dragdata = null
 			get_node(positiondict[i] + "/Image").texture = null
@@ -199,7 +253,7 @@ func build_location_group():
 
 			get_node(positiondict[i] + "/Image").dragdata = character
 			get_node(positiondict[i] + "/Image/Label").text = character.get_short_name()
-			get_node(positiondict[i]).self_modulate.a = 0
+			# get_node(positiondict[i]).self_modulate.a = 0
 			get_node(positiondict[i]).character = character
 		else:
 			get_node(positiondict[i] + "/Image").dragdata = null
@@ -247,25 +301,22 @@ func build_location_description():
 				+ ": "
 				+ tr("DUNGEONDIFFICULTY" + active_location.difficulty.to_upper())
 			)
-			text += (
-				"\nProgress: Levels - "
-				+ str(current_level)
-				+ "/"
-				+ str(active_location.levels.size())
-				+ ", "
-			)
-			text += "Stage - " + str(active_location.progress.stage)
+			if active_location.completed == false:
+				text += "\nProgress: Levels - " + str(current_level) + "/" +str(active_location.levels.size()) + ", "
+				text += "Stage - " + str(active_location.progress.stage)
+			else:
+				text += "\n{color=aqua|Location complete}"
 		'settlement':
 			text = tr(active_location.classname) + ": " + active_location.name
 		'skirmish':
 			pass
 		'quest_location':
 			text = active_location.name + "\n" + active_location.descript
-	$LocationGui/Image/RichTextLabel.bbcode_text = '[center]' + text + "[/center]"
+	$LocationGui/DungeonInfo/RichTextLabel.bbcode_text = '[center]' + globals.TextEncoder(text) + "[/center]"
 
 
 func open_location_actions():
-	input_handler.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
 	match active_location.type:
 		'dungeon':
@@ -273,7 +324,7 @@ func open_location_actions():
 		'settlement':
 			for i in active_location.actions:
 				newbutton = input_handler.DuplicateContainerTemplate(
-					$LocationGui/ScrollContainer/VBoxContainer
+					$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 				)
 				newbutton.text = tr(i.to_upper())
 				newbutton.connect("pressed", self, i)
@@ -281,7 +332,7 @@ func open_location_actions():
 			for i in active_location.options:
 				if globals.checkreqs(i.reqs) == true:
 					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/ScrollContainer/VBoxContainer
+						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 					)
 					newbutton.text = tr(i.text)
 					newbutton.connect("pressed", globals, 'common_effects', [i.args])
@@ -289,7 +340,7 @@ func open_location_actions():
 			for i in active_location.options:
 				if globals.checkreqs(i.reqs) == true:
 					newbutton = input_handler.DuplicateContainerTemplate(
-						$LocationGui/ScrollContainer/VBoxContainer
+						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 					)
 					newbutton.text = tr(i.text)
 					newbutton.connect("pressed", globals, 'common_effects', [i.args])
@@ -307,12 +358,13 @@ func build_item_panel():
 		i.set_icon(newnode.get_node("Icon"))
 		#newnode.get_node("Label").text = i.name
 		newnode.get_node("amount").text = str(i.amount)
+		newnode.get_node("Name").text = str(i.name)
 		newnode.dragdata = i
 		globals.connectitemtooltip(newnode, i)
 		tutorial_items = true
 	if tutorial_items == true:
 		input_handler.ActivateTutorial("exploration_items")
-
+	switch_panel()
 
 func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
@@ -363,32 +415,19 @@ func build_spell_panel():
 					newnode.script = null
 
 
-func enter_dungeon():
-	check_events('enter')
-	var completed_floors = active_location.progress.level
-	input_handler.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
 
-	var newbutton
+func clear_dungeon():
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'clear_dungeon_confirm', "Forget this location? All present characters will be sent back to Mansion. This action can't be undone."])
 
-	while completed_floors > 0:
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/ScrollContainer/VBoxContainer
-		)
-		newbutton.text = 'Level: ' + str(completed_floors)
-		if (
-			active_location.progress.level > completed_floors
-			|| (
-				active_location.progress.level == completed_floors
-				&& (
-					active_location.progress.stage
-					>= active_location.levels["L" + str(active_location.progress.level)].stages
-				)
-			)
-		):
-			newbutton.text += "(completed)"
-		newbutton.connect("pressed", self, "enter_level", [completed_floors])
-		completed_floors -= 1
+func clear_dungeon_confirm():
+	globals.remove_location(active_location.id)
+	action_type = 'location_finish'
 
+func use_item_on_character(character, item):
+	item.use_explore(character)#item.use_explore(state.characters[active_location.group['pos'+str(position)]])
+	item.amount -= 1
+	#show_heal_items(position)
+	build_location_group()
 
 func check_events(action):
 	return globals.check_events(action)
@@ -469,8 +508,7 @@ func faction_upgrade():
 
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = "Price: " + str(i.cost[currentupgradelevel]) + " faction points."
-		newnode.get_node("confirm").connect(
-			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
+		newnode.get_node("confirm").connect('pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
 
 
@@ -511,6 +549,69 @@ func unlock_upgrade(upgrade, level):
 	faction_upgrade()
 
 
+
+func enter_dungeon():
+	check_events('enter')
+	build_location_group()
+	build_location_description()
+	current_level = active_location.progress.level
+	current_stage = active_location.progress.stage
+#	print(current_level, " ", current_stage)
+#	print(active_location.levels.size(), active_location.levels["L"+str(active_location.levels.size())].stages)
+	
+	var is_last_level = active_location.progress.level >= active_location.levels.size() && active_location.progress.stage >= active_location.levels["L"+str(active_location.levels.size())].stages
+	
+	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	var newbutton
+	if !is_last_level:
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+		newbutton.text = 'Advance'
+		newbutton.connect("pressed",self,"area_advance",['advance'])
+		if variables.allow_skip_fights:
+			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+			newbutton.text = 'Skip to last room'
+			newbutton.connect("pressed",self,"skip_to_boss")
+	# else:
+	# 	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	# 	newbutton.text = 'Forget Location'
+	# 	newbutton.connect("pressed",self,"clear_dungeon")
+
+func skip_to_boss():
+	current_level = active_location.levels.size()
+	active_location.progress.level = current_level
+	current_stage = active_location.levels["L" + str(active_location.levels.size())].stages-1
+	active_location.progress.stage = current_stage
+	enter_dungeon()
+
+
+func check_dungeon_end():
+	return current_stage >= active_location.levels["L"+str(current_level)].stages && current_level >= active_location.levels.size()
+
+func area_advance(mode):
+	if globals.check_location_group() == false:
+		input_handler.SystemMessage("Select at least 1 character before advancing. ")
+		return
+	current_stage = active_location.progress.stage
+	if check_events(mode) == true:
+		yield(input_handler, 'EventFinished')
+	var rand_event = false
+	if active_location.has('randomevents') && randf() <= variables.dungeon_encounter_chance && !check_staged_enemies():
+		rand_event = globals.start_random_event()
+		advance()
+	if rand_event == false:
+		StartCombat()
+	
+	action_type = mode
+
+func check_staged_enemies():
+	var result = false
+	for i in input_handler.active_location.stagedenemies:
+		if i.stage == current_stage && i.level == current_level:
+			result = true
+			break
+	return result
+
+
 func enter_level(level, skip_to_end = false):
 	current_level = level
 	if skip_to_end == true:
@@ -525,53 +626,59 @@ func enter_level(level, skip_to_end = false):
 	if check_events('enter_level') == true:
 		yield(input_handler, 'EventFinished')
 	
-	input_handler.ClearContainer($LocationGui/ScrollContainer/VBoxContainer)
+	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
 	if active_location.progress.level == level && active_location.progress.stage < active_location.levels["L"+str(level)].stages:
-		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Advance'
 		newbutton.connect("pressed",self,"area_advance",['advance'])
-	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
-		if active_location.levels.has("L"+str(level + 1)) == true:
-			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-			newbutton.text = 'Move to the next level'
-			newbutton.connect("pressed",self,"enter_level",[level+1])
-		else:
-			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-			newbutton.text = 'Complete location'
-			newbutton.connect("pressed",self,"clear_dungeon")
+#	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
+#		if active_location.levels.has("L"+str(level + 1)) == true:
+#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Move to the next level'
+#			newbutton.connect("pressed",self,"enter_level",[level+1])
+#		else:
+#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Forget Location'
+#			newbutton.connect("pressed",self,"clear_dungeon")
 	
 	if variables.allow_skip_fights:
-		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Skip to last room'
 		newbutton.connect("pressed",self,"enter_level", [level, true])
 	
-	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-	newbutton.text = 'Roam'
-	newbutton.connect("pressed",self,"area_advance",['roam'])
+#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
+#	newbutton.text = 'Roam'
+#	newbutton.connect("pressed",self,"area_advance",['roam'])
 	
-	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-	newbutton.text = 'Return'
-	newbutton.connect("pressed",self,"enter_dungeon")
+#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+#	newbutton.text = 'Return'
+#	newbutton.connect("pressed",self,"enter_dungeon")
 	build_location_group()
 	build_location_description()
 
 
-func area_advance(mode):
-	if globals.check_location_group() == false:
-		input_handler.SystemMessage("Select at least 1 character before advancing. ")
-		return
-	match mode:
-		'advance':
+func advance():
+	if check_dungeon_end() == false:
+		active_location.progress.stage += 1
+		current_stage = active_location.progress.stage
+		if active_location.progress.stage > active_location.levels["L"+str(current_level)].stages:
+			active_location.progress.stage = 0
+			active_location.progress.level += 1
 			current_stage = active_location.progress.stage
-		'roam':
-			current_stage = 0
-	if check_events(mode) == true:
-		yield(input_handler, 'EventFinished')
-	
-	action_type = mode
-	
-	StartCombat()
+			current_level = active_location.progress.level
+		if check_dungeon_end():
+			active_location.completed = true
+			check_events("dungeon_complete")
+			$LocationGui/Resources/Forget.visible = true
+			$LocationGui/Resources/SelectWorkers.visible = true
+			$LocationGui/Resources/Materials.update()
+		enter_dungeon()
+	elif action_type == 'location_finish':
+		Navigation.build_accessible_locations()
+		Navigation.select_location("Aliron")
+	else:
+		enter_dungeon()
 
 
 func StartCombat():
@@ -603,17 +710,14 @@ func slave_position_selected(pos, character):
 	active_location.group[pos] = character
 	build_location_group()
 
-func finish_combat():
-	if action_type == 'advance':
-		active_location.progress.stage += 1
-		enter_level(active_location.progress.level)
-	elif action_type == 'location_finish':
-#		leave_location()
-		#update_categories()
-		Navigation.build_accessible_locations()
-		Navigation.select_location("Aliron")
-	else:
-		enter_level(current_level)
+
+func slave_position_deselect(character):
+		for i in active_location.group:
+			if active_location.group[i] == character.id:
+				active_location.group.erase(i)
+				break
+		build_location_group()
+
 
 
 func details_quest_up(difficulty):
@@ -625,3 +729,22 @@ func details_quest_down(difficulty):
 	if active_faction.questsetting[difficulty] > 0:
 		active_faction.questsetting[difficulty] -= 1
 	faction_upgrade()
+
+var panelmode = 'items'
+var panelmodes = {item = {name = "Items", code = 'items'}, spells = {name = 'Spells', code = 'spells'}}
+var panelmodesarray = ['items','spells']
+
+func switch_panel(mode = "items"):
+	match mode:
+		'items':
+			$LocationGui/ItemUsePanel/ScrollContainer.show()
+			$LocationGui/ItemUsePanel/SpellContainer.hide()
+			$LocationGui/ItemUsePanel/SpellsButton.pressed = false
+			$LocationGui/ItemUsePanel/ItemsButton.pressed = true
+			# panelmode = 'items'
+		'spells':
+			$LocationGui/ItemUsePanel/ScrollContainer.hide()
+			$LocationGui/ItemUsePanel/SpellContainer.show()
+			$LocationGui/ItemUsePanel/SpellsButton.pressed = true
+			$LocationGui/ItemUsePanel/ItemsButton.pressed = false
+			# panelmode = 'spells'

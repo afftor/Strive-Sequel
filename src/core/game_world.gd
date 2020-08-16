@@ -131,6 +131,6 @@ func fail_quest(quest):
 	quest.state = 'failed'
 	for i in quest.requirements:
 		if i.code in ['complete_location','complete_dungeon']:
-			input_handler.return_characters_from_location(i.location)
+			globals.return_characters_from_location(i.location)
 			areas[i.area].locations.erase(i.location)
 			areas[i.area].questlocations.erase(i.location)

@@ -311,7 +311,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	var gendata = {race = '', sex = 'random', age = 'random'}
 	
 	if typeof(races) == TYPE_STRING && races == 'random':
-		gendata.race = statlist.get_random_race()
+		gendata.race = get_random_race()
 	elif typeof(races) == TYPE_STRING:
 		gendata.race = races
 	else:
@@ -687,9 +687,9 @@ func tick():
 #	if !parent.has_status('no_fear_reduce'):
 #		statlist.fear -= get_stat('fear_reduce')
 	if statlist.loyalty < 100.0 && !parent.has_status('no_loyal_reduction'):
-		statlist.loyalty -= (12.0-1*get_stat('tame_factor')/24) * get_stat('loyalty_degrade_mod')
+		add_stat('loyalty', -(12.0-1*get_stat('tame_factor')/24) * get_stat('loyalty_degrade_mod'))
 	if statlist.submission < 100.0:
-		statlist.submission -= (12.0-1*get_stat('timid_factor')/24) * get_stat('submission_degrade_mod')
+		add_stat('submission', -(12.0-1*get_stat('timid_factor')/24) * get_stat('submission_degrade_mod'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
 		if statlist.pregnancy.duration == 0:

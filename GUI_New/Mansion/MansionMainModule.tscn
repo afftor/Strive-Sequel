@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://GUI_New/Mansion/MansionSlaveListModule.gd" type="Script" id=10]
 [ext_resource path="res://GUI_New/Mansion/MansionSkillsModule.gd" type="Script" id=11]
 [ext_resource path="res://GUI_New/Mansion/MansionTravelsModule.tscn" type="PackedScene" id=12]
-[ext_resource path="res://GUI_New/Mansion/MansionTravelsModule.gd" type="Script" id=13]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=13]
 [ext_resource path="res://GUI_New/Mansion/MansionBottomLeftModule.gd" type="Script" id=14]
 [ext_resource path="res://GUI_New/Mansion/MansionSlaveModule.gd" type="Script" id=15]
 [ext_resource path="res://GUI_New/Mansion/MansionUpgradesModule.gd" type="Script" id=16]
@@ -20,12 +20,12 @@
 [ext_resource path="res://GUI_New/Mansion/MansionJobModule.gd" type="Script" id=18]
 [ext_resource path="res://GUI_New/Mansion/MansionTaskInfoModule.tscn" type="PackedScene" id=19]
 [ext_resource path="res://GUI_New/Mansion/MansionTaskInfoModule.gd" type="Script" id=20]
-[ext_resource path="res://assets/Themes_v2/MANSION/M_Nav.tres" type="Theme" id=21]
+[ext_resource path="res://GUI_New/Mansion/MansionLocationsModule.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/Textures_v2/MANSION/mansion.png" type="Texture" id=22]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=23]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu_Panel.tres" type="StyleBox" id=24]
-[ext_resource path="res://GUI_New/Mansion/MansionNavigationModule.tscn" type="PackedScene" id=25]
-[ext_resource path="res://GUI_New/Mansion/MansionNavigationModule.gd" type="Script" id=26]
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=25]
+[ext_resource path="res://assets/images/tutorial.png" type="Texture" id=26]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftModule.tscn" type="PackedScene" id=27]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.tscn" type="PackedScene" id=28]
 [ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.gd" type="Script" id=29]
@@ -39,6 +39,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=37]
 [ext_resource path="res://GUI_New/Mansion/MansionJournalModule.tscn" type="PackedScene" id=38]
 [ext_resource path="res://src/date.tscn" type="PackedScene" id=39]
+[ext_resource path="res://GUI_New/Universal/NavigationModule.tscn" type="PackedScene" id=41]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 22 )
@@ -124,7 +125,12 @@ margin_left = 320.0
 margin_top = 680.0
 margin_right = 1420.0
 margin_bottom = 1065.0
-script = ExtResource( 13 )
+
+[node name="MansionLocationsModule" parent="." instance=ExtResource( 21 )]
+margin_left = 320.0
+margin_top = 85.0
+margin_right = -500.0
+margin_bottom = -417.0
 
 [node name="MansionUpgradesModule" parent="." instance=ExtResource( 17 )]
 visible = false
@@ -141,13 +147,11 @@ margin_right = 305.0
 margin_bottom = 678.0
 script = ExtResource( 20 )
 
-[node name="MansionNavigationModule" parent="." instance=ExtResource( 25 )]
+[node name="NavigationModule" parent="." instance=ExtResource( 41 )]
 margin_left = 320.0
 margin_top = 15.0
 margin_right = -150.0
 margin_bottom = -1010.0
-theme = ExtResource( 21 )
-script = ExtResource( 26 )
 
 [node name="MansionCraftModule" parent="." instance=ExtResource( 27 )]
 visible = false
@@ -166,17 +170,16 @@ script = ExtResource( 29 )
 
 [node name="TestButton" type="Button" parent="."]
 visible = false
-margin_left = 320.0
-margin_top = 58.0
-margin_right = 382.0
-margin_bottom = 88.0
+margin_left = 1396.24
+margin_top = 26.3459
+margin_right = 1458.24
+margin_bottom = 56.3459
 text = "Test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InteractionMainModule" parent="." instance=ExtResource( 30 )]
-visible = false
 
 [node name="InteractSelectionModule" parent="." instance=ExtResource( 31 )]
 visible = false
@@ -210,11 +213,76 @@ align = 1
 valign = 1
 
 [node name="MansionJournalModule" parent="." instance=ExtResource( 38 )]
+visible = false
 margin_left = 530.0
 margin_top = 140.0
 margin_right = 1390.0
 margin_bottom = 940.0
 
 [node name="date" parent="." instance=ExtResource( 39 )]
+
+[node name="TutorialButton" type="Button" parent="."]
+margin_left = 1718.0
+margin_top = 17.0
+margin_right = 1769.0
+margin_bottom = 69.0
+theme = ExtResource( 13 )
+text = "?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tutorialpanel" type="TextureRect" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.992157 )
+margin_left = 169.0
+margin_top = 54.0
+margin_right = 1799.0
+margin_bottom = 1012.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="tutorialpanel"]
+self_modulate = Color( 1, 1, 1, 0.796078 )
+show_behind_parent = true
+margin_left = -178.0
+margin_top = -63.0
+margin_right = 1758.0
+margin_bottom = 1032.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="Panel" parent="tutorialpanel"]
+show_behind_parent = true
+margin_left = -9.0
+margin_top = 9.0
+margin_right = 1640.0
+margin_bottom = 948.0
+theme = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="tutorialpanel"]
+margin_left = 853.901
+margin_top = 963.607
+margin_right = 1095.9
+margin_bottom = 1012.61
+theme = ExtResource( 13 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="tutorialpanel"]
+margin_left = 633.819
+margin_top = 972.949
+margin_right = 815.819
+margin_bottom = 996.949
+text = "F1 to open again"
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

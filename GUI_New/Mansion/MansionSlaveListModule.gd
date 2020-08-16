@@ -19,8 +19,6 @@ func _ready():
 	input_handler.slave_list_node = self
 	globals.connect("slave_added", self, "rebuild")
 	globals.connect("hour_tick", self, "update")
-	globals.connecttexttooltip($population/TextureRect, "POPULATION TOOLTIP TEXT\n !!!CHANGE ME!!!")
-	globals.connecttexttooltip($food_consumption/TextureRect, "FOOD CONSUMPTION TOOLTIP TEXT\n !!!CHANGE ME!!!")
 
 
 func rebuild():
@@ -69,7 +67,7 @@ func rebuild():
 			"sex":
 				build_sex_selection(person, newbutton)
 	var pos = self.rect_size
-	$TravelsContainerPanel.rect_position.y = pos.y - 100
+	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
 
 
@@ -146,18 +144,26 @@ func update_dislocations():
 func build_locations_list():
 	input_handler.ClearContainer(LocationsList)
 	for loca in default_locations + populatedlocations:
+		if loca in ['Aliron']:
+			continue
+		if loca == null:
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
 		if loca in default_locations:
 			newbutton.text = loca.capitalize()
 		elif loca == "mansion":
 			newbutton.text = "Mansion"
-		elif loca == "Aliron":
-			newbutton.queue_free()
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
 		newbutton.set_meta("location", loca)
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 		newbutton.connect("pressed", self, "set_hover_area")
+		
+		var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
+		LocationsList.add_child(newseparator)
+		newseparator.visible = true
+		newseparator.rect_position.y = 100
+	LocationsList.get_children().back().queue_free()
 	update_location_buttons()
 
 
@@ -175,7 +181,7 @@ func build_sex_selection(person, newbutton):
 func update_description():
 	var sex_participants = get_parent().sex_participants
 	$BedroomLimit.text = 'Bedroom limit: '  +str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
-	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_interactions_left) + "/1"
+	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_sex_left) + "/1"
 
 func calculate_sex_limits():
 	var slavelimit = 2
@@ -210,11 +216,11 @@ func show_location_characters(button = null):
 			if prev_selected_location != selected_location:
 				for visible in visible_persons:
 					visible.pressed = false
-				visible_persons[0].pressed = true
+				get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 				# get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 	if !selected_location in ["show_all"]:
 		get_parent().TravelsModule.dislocation_area = selected_location
-	get_parent().TravelsModule.update_location_list()
+#	get_parent().TravelsModule.update_location_list()
 	if visible_persons.size() < 1:
 		selected_location = "show_all"			
 
@@ -222,10 +228,9 @@ func show_location_characters(button = null):
 
 func update_location_buttons():
 	for i in LocationsList.get_children():
-		if i == LocationsList.get_child(LocationsList.get_children().size()-1):
+		if i == LocationsList.get_child(LocationsList.get_children().size()-1) || !i.has_meta('location'):
 			continue
-		var pressed = (selected_location == i.get_meta("location"))
-		i.pressed = pressed
+		i.pressed = selected_location == i.get_meta("location")
 
 
 
@@ -251,8 +256,9 @@ func build_for_upgrades(person, newbutton):
 
 
 func build_for_skills(person, newbutton):
-	# if get_parent().skill_source == person:
-	# 	return
+	if person == get_parent().skill_source:
+		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+		newbutton.disabled = true
 	if !person in get_parent().chars_for_skill:
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true

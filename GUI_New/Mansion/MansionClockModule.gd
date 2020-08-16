@@ -97,10 +97,12 @@ func rotate_sky(gametime = 0):
 		
 func decrease_turns():
 	globals.hour_turns_set = max(globals.hour_turns_set - 1, 1)
+	input_handler.PlaySound("button_click")
 	update_turns_label()
 
 func increase_turns():
 	globals.hour_turns_set = min(globals.hour_turns_set + 1, variables.hour_turn_limit)
+	input_handler.PlaySound("button_click")
 	update_turns_label()
 
 
@@ -134,7 +136,8 @@ func advance_day():
 	ResourceScripts.game_party.update_global_cooldowns()
 	ResourceScripts.game_globals.hour = 0
 	ResourceScripts.game_globals.date += 1
-	ResourceScripts.game_globals.daily_interactions_left = 1
+	ResourceScripts.game_globals.daily_sex_left = 1
+	ResourceScripts.game_globals.daily_dates_left = 1
 	for i in ResourceScripts.game_party.characters.values():
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)

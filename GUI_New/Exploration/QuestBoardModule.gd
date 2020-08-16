@@ -12,13 +12,15 @@ func _ready():
 
 func quest_board():
 	get_parent().clear_submodules()
-	get_parent().submodules.append(self)
+	if !get_parent().submodules.has(self):
+		get_parent().submodules.append(self)
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false
 	get_parent().City.Guild.hide()
 	get_parent().City.get_node("GuildMenuBG").hide()
 	get_parent().City.opened_guild = {code = ""}
 	get_parent().City.update_buttons("quest_board")
+	$QuestDetails.hide()
 	is_quest_board_opened = !is_quest_board_opened
 	if !is_quest_board_opened:
 		hide()
@@ -109,7 +111,7 @@ func see_quest_info(quest):
 						continue
 					match k.code:
 						'stat':
-							tooltiptext += statdata.statdata[k.type].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
+							tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
 						'sex':
 							tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
 				globals.connecttexttooltip(newbutton,tooltiptext)
@@ -151,7 +153,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = "Reputation (" + quest.source + "): " + str(i.value) + " + " + str(round(i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))]))+ "(Master Charm Bonus)"
-	
+	$QuestDetails/Requester.text = ""
 	$QuestDetails/Requester.text += get_parent().active_area.factions[quest.source].name + " "
 	
 	$QuestDetails/RichTextLabel.bbcode_text = globals.TextEncoder(text)

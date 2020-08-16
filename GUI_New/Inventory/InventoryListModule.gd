@@ -169,7 +169,7 @@ func useitem(item, type):
 		if Items.itemlist[item.itembase].has("mansion_effect"):
 			#input_handler.GetItemTooltip().hide()
 			input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
-			emit_signal("item_used")
+			#mit_signal("item_used")
 			selectedhero.use_mansion_item(item)
 			get_parent().set_active_hero(selectedhero)
 		else:

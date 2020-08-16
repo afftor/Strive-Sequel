@@ -47,12 +47,21 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	#$Image/amount.hide()
 	iconnode.material = null
 	#$type.text = ''
-	
 	match type:
 		'material':
 			material_tooltip(data)
 		'materialowned':
-			materialowned_tooltip(data)
+			var workers_data = {}
+			if node.has_meta("max_workers"):
+				workers_data = {
+					max = node.get_meta("max_workers"),
+					current = node.get_meta("current_workers"),
+				}
+			if node.has_meta("gather_mod"):
+				workers_data = {
+					gather_mod = node.get_meta("gather_mod"),
+				}
+			material_tooltip(data, workers_data)
 		'gear':
 			if mode == 'default':
 				gear_tooltip(data)
@@ -68,7 +77,10 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	show()
 	
 	var pos = node.get_global_rect()
-	pos = Vector2(pos.end.x + 10, pos.position.y)
+	if node.has_meta("exploration"):
+		pos = Vector2(pos.end.x + 10, pos.position.y - 30)
+	else:
+		pos = Vector2(pos.end.x + 10, pos.position.y)
 	self.set_global_position(pos)
 	
 	$RichTextLabel.rect_size.y = 125
@@ -81,17 +93,26 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	
 	
 	if get_rect().end.x > screen.size.x:
-		rect_global_position.x -= screen.size.x - get_rect().end.x
+		if node.has_meta("exploration"):
+			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
+			self.set_global_position(pos)
+		else:
+			rect_global_position.x -= screen.size.x - get_rect().end.x
 	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y#node.get_global_rect().position.y - rect_size.y
 	
 	set_process(true)
 
-func material_tooltip(data):
+func material_tooltip(data, workers_data = {}):
 	var item = data.item
 	var text = data.text
 	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
+	if workers_data.has("max"):
+		text += "\nMax Workers: " + str(workers_data.max)
+		text += "\nCurrent Workers: " + str(workers_data.current)
+	if workers_data.has("gather_mod"):
+		text += "\nGathering Mod: " + str(workers_data.gather_mod)
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0
@@ -124,10 +145,10 @@ func gear_detailed_tooltip(data, item = null):
 	item = data.item
 	if item.parts.size() == 0:
 		return
-	var text = '[center]'+data.item.name+'[/center]'
+	var text = '[center]{color=k_yellow|' + data.item.name +'}[/center]'
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += "\n\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		text += "\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]

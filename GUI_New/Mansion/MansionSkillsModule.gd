@@ -62,7 +62,7 @@ func build_skill_panel():
 			if charges - used_charges <= 0:
 				newbutton.disabled = true
 			if person.skills.active_panel == variables.PANEL_COM: newbutton.disabled = true
-			
+			newbutton.set_meta('skill', skill.code)
 			newbutton.connect("pressed",self,"select_skill_target", [skill.code])
 			globals.connectskilltooltip(newbutton, skill.code, person)
 		else:
@@ -75,9 +75,13 @@ func build_skill_panel():
 			newbutton.get_node("charges").hide()
 
 func select_skill_target(skillcode):
+	input_handler.SystemMessage("Select target for Ability", 3)
 	get_parent().chars_for_skill.clear()
 	var skill_source = get_parent().skill_source
 	active_skill = skillcode
+	for i in $SkillPanel.get_children():
+		if i.has_meta('skill'):
+			i.pressed = i.get_meta("skill") == skillcode
 	# input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
 	var reqs = [{code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs
 	for i in ResourceScripts.game_party.characters.values():
@@ -90,7 +94,6 @@ func use_skill(target):
 	person.use_social_skill(active_skill, target)
 	# update()
 	get_parent().mansion_state = "default"
-
 
 func change_panel_type():
 	if get_parent().active_person == null:

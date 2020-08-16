@@ -103,16 +103,16 @@ func update_location_list():
 	for i in ResourceScripts.game_world.areas[destination_area].locations.values() + ResourceScripts.game_world.areas[destination_area].questlocations.values():
 		array.append(i)
 	
-	if dislocation_area != ResourceScripts.game_world.mansion_location:
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
-		var text = tr("RETURNTOMANSION")
-		newbutton.get_node("Label").text = text
-		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.mansion_location])
-		newbutton.name = 'mansion'
+	#if dislocation_area != ResourceScripts.game_world.mansion_location:
+	var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
+	var text = tr("MANSION")
+	newbutton.get_node("Label").text = text
+	newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.mansion_location])
+	newbutton.name = 'mansion'
 	
 	if destination_area != 'plains':
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
-		var text = tr(ResourceScripts.game_world.areas[destination_area].capital_name)
+		newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
+		text = tr(ResourceScripts.game_world.areas[destination_area].capital_name)
 		newbutton.get_node("Label").text = text
 		newbutton.connect('pressed', self, 'select_destination', [ResourceScripts.game_world.areas[destination_area].capital_name])
 		newbutton.name = ResourceScripts.game_world.areas[destination_area].capital_name
@@ -120,8 +120,8 @@ func update_location_list():
 	for i in array:
 		if i.id == dislocation_area:
 			continue
-		var newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
-		var text = i.name
+		newbutton = input_handler.DuplicateContainerTemplate($DestinationContainer/VBoxContainer)
+		text = i.name
 		if ResourceScripts.game_world.areas[destination_area].questlocations.has(i.id):
 			text = "Q:" + text
 		newbutton.get_node("Label").text = text

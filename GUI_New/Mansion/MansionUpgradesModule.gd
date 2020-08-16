@@ -93,6 +93,7 @@ func open_queue():
 
 		update_progress(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
 		# newbutton.set_meta('upgrade', upgrade)
+		globals.connecttexttooltip(newbutton, "Drag and drop to change order. Click to remove from queue.")
 		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgradedata.upgradelist[upgrade]])
 		if !get_parent().TaskModule.is_visible():
 			get_parent().TaskModule.task_index = 1
@@ -142,12 +143,18 @@ func update_buttons():
 			continue
 		i.pressed = i.get_meta("upgrade") == get_parent().selected_upgrade
 
-func remove_from_upgrades_queue(upgrade):
-	ResourceScripts.game_res.upgrades_queue.erase(upgrade.code)
-	if upgrade == get_parent().selected_upgrade:
-		selectupgrade(upgrade)
+var removing_upgrade
+
+func remove_upgrade_confirm():
+	ResourceScripts.game_res.upgrades_queue.erase(removing_upgrade.code)
+	if removing_upgrade == get_parent().selected_upgrade:
+		selectupgrade(removing_upgrade)
 	open()
 	open_queue()
+
+func remove_from_upgrades_queue(upgrade):
+	removing_upgrade = upgrade
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'remove_upgrade_confirm', 'Remove this upgrade from queue?'])
 
 
 func update_progress(upgrade, newbutton, currentupgradelevel):
@@ -190,7 +197,6 @@ func selectupgrade(upgrade):
 
 		$UpgradeDescript/Time.show()
 		$UpgradeDescript/Time/Label.text = str(upgrade.levels[currentupgradelevel].taskprogress)
-		globals.connecttexttooltip($UpgradeDescript/Time/Panel, "TOOLTIP\n!!!CHANGE ME!!!")
 		for i in upgrade.levels[currentupgradelevel].cost:
 			var item = Items.materiallist[i]
 			var newnode = input_handler.DuplicateContainerTemplate($UpgradeDescript/HBoxContainer)
@@ -264,4 +270,5 @@ func add_to_upgrades_queue():
 	selectupgrade(upgrade)
 	open()
 	open_queue()
+	input_handler.SystemMessage("Upgrade added to queue. Assign characters to start work.")
 

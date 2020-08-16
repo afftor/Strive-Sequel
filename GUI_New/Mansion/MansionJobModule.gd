@@ -21,6 +21,20 @@ func _ready():
 func change_hours(i):
 	pass
 
+func set_work_rule(rule):
+	var setting = get_node("work_rules/"+rule).pressed
+	person.xp_module.work_rules[rule] = setting
+	match setting:
+		true:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
+			person.apply_effect(effects_pool.add_effect(eff))
+		false:
+			person.remove_static_effect_by_code("work_rule_" + rule)
+	
+	
+	if currentjob != null:
+		show_job_details(currentjob)
+
 func cancel_job_choice():
 	$ConfirmButton.hide()
 	$CancelButton.hide()
@@ -41,20 +55,22 @@ func open_jobs_window():
 		currentjob = null
 		var restbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 		restbutton.get_child(0).text = tr("TASKREST")
-		restbutton.toggle_mode = false
+		restbutton.toggle_mode = true
 		restbutton.connect("pressed", self, 'set_rest')
+		restbutton.pressed = person.get_work() == ''
 
 		### Temporary Patch
 		if person.travel.location == "mansion": person.travel.location = "Aliron"
 
-		var gatherable_resources
+		var gatherable_resources = []
 		var person_location = person.get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var location_type
 		if person_location != 'Aliron':
 			location_type = location.type
 			if location_type == "dungeon":
-				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
+				if location.completed == true:
+					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
 			else:
 				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
 		else:
@@ -64,6 +80,7 @@ func open_jobs_window():
 					continue
 				var newbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 				newbutton.get_child(0).text = i.name
+				newbutton.set_meta("work", i)
 				newbutton.connect('pressed', self, 'show_job_details', [i])
 				if person.tags.has('no_sex') && i.tags.has("sex"):
 					newbutton.disabled = true
@@ -89,11 +106,12 @@ func open_jobs_window():
 			elif location_type == "dungeon":
 				if gatherable_resources[resource] == 0:
 					for button in $job_panel/ScrollContainer/VBoxContainer.get_children():
-						if button.name == "Button": continue
+						if button.name == "Button" || !button.has_meta('resource'): continue
 						if button.get_meta("resource") == resource: button.queue_free()
 					continue
 				text += " " + str(gatherable_resources[resource])
 			newbutton.get_child(0).text = text
+			newbutton.set_meta("work", item_dict)
 			newbutton.connect('pressed', self, 'show_job_details', [item_dict, true])
 
 
@@ -111,6 +129,7 @@ func show_job_details(job, gatherable = false):
 	input_handler.ClearContainer($job_details/ResourceOptions)
 	if gatherable:
 		job_name = job.progress_formula.capitalize()
+		job_descript = 'Gather availiable resources from location'
 		if job.tool_type != "":
 			work_tools = statdata.worktoolnames[job.tool_type]
 	else:
@@ -125,7 +144,11 @@ func show_job_details(job, gatherable = false):
 		+ work_stat
 		+ "[/color]"
 	)
-	if (job.has("tool_type") || job.has("worktool")):# && job.tool_type != "":
+	if (job.has("tool_type") || job.has("worktool")):# && work_tools != "":
+		if job.has("worktool"):
+			work_tools = statdata.worktoolnames[job.worktool]
+		if job.has("tool_type"):
+			work_tools = statdata.worktoolnames[job.tool_type]
 		text += (
 			"\n"
 			+ tr("WORKTOOL")
@@ -145,41 +168,35 @@ func show_job_details(job, gatherable = false):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
 
 	$job_details/RichTextLabel.bbcode_text = text
-	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
-		i.pressed = i.get_child(0).text == job_name
+	# for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
+	# 	i.pressed = i.get_child(0).text == job_name
+	for button in $job_panel/ScrollContainer/VBoxContainer.get_children():
+		if !button.has_meta("work"): continue
+		button.pressed = button.get_meta("work") == job
 
 	# 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 	# 		i.pressed = i.get_child(0).text == job.name
 	# 	$job_details/JobName.text = job.name
 	if !gatherable:
-		for i in job.production.values():
-			if globals.checkreqs(i.reqs) == false:
-				continue
-			var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
-			# if Items.materiallist.has(i.item):
-			# 	var number
-			# 	number = person.get_progress_task(job.code, i.code)/i.progress_per_item
-			# 	text = (
-			# 		"\n[color=yellow]Expected gain per day: "
-			# 		+ str(stepify(number * 24, 0.1))
-			# 		+ "[/color]"
-			# 	)
-			# 	newbutton.get_node("icon").texture = Items.materiallist[i.item].icon
-			# 	newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
-			# 	globals.connectmaterialtooltip(newbutton, Items.materiallist[i.item], text)
-			# else:
-			var number
-			number = person.get_progress_task(job.code, i.code)/i.progress_per_item
-			newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
-			newbutton.get_node("icon").texture = i.icon
-			globals.connecttexttooltip(newbutton, tr(i.descript) + text)
-			newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
+		if job.has("production"):
+			for i in job.production.values():
+				if globals.checkreqs(i.reqs) == false:
+					continue
+				var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
+				var number
+				number = person.get_progress_task(job.code, i.code)/i.progress_per_item
+				newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
+				newbutton.get_node("icon").texture = i.icon
+				globals.connecttexttooltip(newbutton, tr(i.descript) + text)
+				newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
 	else:
 		var number
 		number = person.xp_module.get_progress_resource(job.code)/job.progress_per_item
+		text = ("\n[color=yellow]Expected gain per day: " + str(stepify(number * 24, 0.1)) + "[/color]")
 		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
 		newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 		newbutton.get_node("icon").texture = job.icon
+		globals.connectmaterialtooltip(newbutton, job, text)
 		selected_job = job
 
 
@@ -206,8 +223,8 @@ func select_job():
 	if !get_parent().TaskModule.is_visible():
 		get_parent().TaskModule.change_button()
 	get_parent().rebuild_task_info()
-	open_jobs_window()
 	cancel_job_choice()
+	get_parent().mansion_state_set("default")
 
 
 func set_rest():

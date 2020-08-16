@@ -23,6 +23,7 @@ var finish_encounter = false
 var turn = 0 setget turn_set
 var observing_slaves = []
 onready var showntext = '' setget showtext_set,showtext_get
+var submodules = []
 
 var helpdescript = {
 	mood = '[center]Mood[/center]\nA high mood increases likeliness of positive outcome of intimate actions and provides Loyalty growth buff after session is finished.\nMood grows from positive interactions and decreases from negative interactions.',
@@ -89,38 +90,40 @@ class dateclass:
 
 
 func _ready():
-	ResourceScripts.game_world.make_world()
-	location = 'livingroom'
-	
-	globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-	globals.AddItemToInventory(globals.CreateUsableItem("beer"))
-	master = ResourceScripts.scriptdict.class_slave.new()
-	master.create('Human', 'male', 'random')
-	master.unlock_class('master')
-	characters_pool.move_to_state(master.id)
-	
-	person = ResourceScripts.scriptdict.class_slave.new()
-	person.create('HalfkinFox', 'female', 'random')
-	person.set_stat('personality', 'shy')
-	ResourceScripts.game_res.upgrades.torture_room = 1
-	
-	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'female', 'random')
-	characters_pool.move_to_state(character.id)
-	character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'female', 'random')
-	characters_pool.move_to_state(character.id)
-	character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'female', 'random')
-	characters_pool.move_to_state(character.id)
+#	ResourceScripts.game_world.make_world()
+#	location = 'livingroom'
+#
+#	globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
+#	globals.AddItemToInventory(globals.CreateUsableItem("beer"))
+#	master = ResourceScripts.scriptdict.class_slave.new()
+#	master.create('Human', 'male', 'random')
+#	master.unlock_class('master')
+#	characters_pool.move_to_state(master.id)
+#
+#	person = ResourceScripts.scriptdict.class_slave.new()
+#	person.create('HalfkinFox', 'female', 'random')
+#	person.set_stat('personality', 'shy')
+#	ResourceScripts.game_res.upgrades.torture_room = 1
+#
+#	var character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'female', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'female', 'random')
+#	characters_pool.move_to_state(character.id)
+#	character = ResourceScripts.scriptdict.class_slave.new()
+#	character.create('HalfkinCat', 'female', 'random')
+#	characters_pool.move_to_state(character.id)
 	for i in helpdescript:
 		globals.connecttexttooltip(get_node(i),helpdescript[i])
 	globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
 	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	$end/sexbutton.connect("pressed", self, 'start_sex')
-	initiate(person)
+#	initiate(person)
 
 func initiate(tempperson):
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+	GUIWorld.CurrentScene = self
 	var text = ''
 	self.visible = true
 	self.mood = 0
@@ -145,7 +148,7 @@ func initiate(tempperson):
 	
 	person = tempperson
 	
-	#master = ResourceScripts.game_party.get_master()
+	master = ResourceScripts.game_party.get_master()
 	
 	var newclass = dateclass.new()
 	newclass.sex = master.get_stat('sex')
@@ -993,18 +996,23 @@ func calculateresults():
 	
 	$end/sexbutton.visible = sex_offer
 	
-	return text
+	return globals.TextEncoder(text)
 
 func start_sex():
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	self.hide()
-	input_handler.GUIWorld.gui_data["INTERACTION"].main_module.startsequence([master, person])
+	input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).set_current_scene(input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data["INTERACTION"].main_module)
+	input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data["INTERACTION"].main_module.startsequence([master, person])
+	
 
 func _on_finishbutton_pressed():
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	hide()
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
+	GUIWorld.CurrentScene = GUIWorld.gui_data["MANSION"].main_module
+	GUIWorld.CurrentScene.mansion_state_set("default")
 
 
 func _on_cancelsex_pressed():

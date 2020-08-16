@@ -645,25 +645,103 @@ func build_lines():
 #			dict[k] += 1
 #	print(dict)
 
-func select_chat_line(character, event, bonus_args):
+func return_chat_line(character, event):
 	var array = []
 	for i in lines[event]:
 		if i.personalities.has(character.get_stat('personality')) && character.checkreqs(i.reqs) == true:
 			if i.has('arg_reqs'):
+				var check = false
 				for k in i.arg_reqs:
-					if k[0] == '!' && bonus_args.has(k[0].replace("!","")) == true:
-						continue
-					elif bonus_args.has(k[0]) == false:
-						continue
+					match k:
+						'partner_is_master':
+							if input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data["INTERACTION"].main_module.has_master():
+								check = true
+							
+				if check == false:
+					continue
 			array.append([i.text, i.weight])
 	if array.size() > 0:
-		var line = input_handler.weightedrandom(array)
-		add_new_chatter(character, line)
+		var line = character.translate(input_handler.weightedrandom(array))
+		if character.get_stat('race') in ['BeastkinCat','HalfkinCat'] && input_handler.globalsettings.meowing == true:
+			line = process_meowing(line)
+		return line
 
-func return_chat_line(character,event):
-	var array = []
-	for i in lines[event]:
-		if i.personalities.has(character.get_stat('personality')) && character.checkreqs(i.reqs) == true:
-			array.append([i.text, i.weight])
-	if array.size() > 0:
-		return input_handler.weightedrandom(array)
+func show_chat_line(character, event):
+	var line = return_chat_line(character, event)
+	add_new_chatter(character, line)
+
+
+
+func rebuild_text(words):
+	var res := ''
+	for w in words:
+		res = res + ' ' + w
+	if words.size() > 0:
+		res = res.substr(1)
+	return res
+
+func process_stutter(text:String, num = 1, mlen = 3, esc_list = []):
+	var words = text.split(' ')
+	
+	var buf = []
+	for i in range(words.size()):
+		var w = words[i]
+		if w in esc_list: continue
+		if w.length() < mlen: continue
+		buf.push_back(i)
+	
+	for i in range(num):
+		if buf.empty(): break
+		var tmp = randi() % buf.size()
+		words[tmp] = words[tmp][0] + '-' + words[tmp]
+	
+	return rebuild_text(words)
+
+func process_drunk(text: String, insert:Array, num = 1):
+	var res = ' ' + text + ' '
+	for i in range(num):
+		var count = res.count(' ')
+		var pos = randi() % count
+		var tpos = res.find(' ')
+		for ii in range(pos):
+			tpos = res.find(' ', tpos + 1)
+		var word = insert[randi() % insert.size()]
+		res = res.insert(tpos, ' ' + word)
+	return res.trim_prefix(' ').trim_suffix(' ')
+
+
+var meowing_replacements = {
+	ma = ['mya'],
+	mo = ['myo'],
+	mi = ['meow'],
+	na = ['nya'],
+	no = ['nyo'],
+	ni = ['neow'],
+	
+}
+
+func process_meowing(text: String, num = 1):
+	var words = text.split(' ')
+	
+	var buf = []
+	for i in range(words.size()):
+		var w = words[i]
+		for k in meowing_replacements.keys():
+			if w.findn(k) >= 0:
+				var pos = w.findn(k)
+				var word = w.substr(pos, pos + k.length())
+				var replace_word = meowing_replacements[k][randi()%meowing_replacements[k].size()]
+				replace_word = case_compare(word, replace_word)
+				w = w.insert(w.findn(k), '#').replacen('#' + k, replace_word) 
+				words[i] = w
+				break
+	
+	return rebuild_text(words)
+
+func case_compare(word1, word2):
+	if word1 == word1.to_upper():
+		word2 = word2.to_upper()
+	if word1 == word1.capitalize():
+		word2 = word2.capitalize()
+	return word2
+

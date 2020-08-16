@@ -1,0 +1,254 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Themes_v2/MANSION/MansionLocationsPanel.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://GUI_New/Mansion/MansionLocationsModule.gd" type="Script" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_travelnavigation_pressed.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_travelnavigation_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_travelnavigation.png" type="Texture" id=8]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=9]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="ImageTexture" id=2]
+
+[node name="MansionLocationsModule" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -820.0
+margin_bottom = -502.0
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.823529 )
+show_behind_parent = true
+margin_right = 1100.0
+margin_bottom = 578.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="col1" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 352.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="col2" type="Label" parent="."]
+margin_left = 368.0
+margin_top = 8.0
+margin_right = 736.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="col3" type="Label" parent="."]
+margin_left = 747.0
+margin_top = 8.0
+margin_right = 1091.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationLists" type="Control" parent="."]
+margin_top = 88.0
+margin_right = 1100.0
+margin_bottom = 576.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column1" type="Control" parent="LocationLists"]
+margin_right = 360.0
+margin_bottom = 490.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="LocationLists/Column1"]
+visible = false
+margin_left = 14.0
+margin_top = 8.0
+margin_right = 26.0
+margin_bottom = 464.0
+theme = ExtResource( 3 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LocationLists/Column1"]
+margin_left = 23.0
+margin_top = 8.0
+margin_right = 343.0
+margin_bottom = 464.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LocationLists/Column1/ScrollContainer"]
+
+[node name="Button" type="Button" parent="LocationLists/Column1/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 2 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="LocationLists/Column1/ScrollContainer/VBoxContainer/Button"]
+margin_right = 305.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "3"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column2" type="Control" parent="LocationLists"]
+margin_left = 368.0
+margin_right = 736.0
+margin_bottom = 490.0
+
+[node name="VScrollBar" type="VScrollBar" parent="LocationLists/Column2"]
+visible = false
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 464.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LocationLists/Column2"]
+margin_left = 23.0
+margin_top = 8.0
+margin_right = 343.0
+margin_bottom = 464.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LocationLists/Column2/ScrollContainer"]
+
+[node name="Button" type="Button" parent="LocationLists/Column2/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 2 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="LocationLists/Column2/ScrollContainer/VBoxContainer/Button"]
+margin_right = 305.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "3"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Column3" type="Control" parent="LocationLists"]
+margin_left = 747.0
+margin_right = 1096.0
+margin_bottom = 490.0
+
+[node name="VScrollBar" type="VScrollBar" parent="LocationLists/Column3"]
+visible = false
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 464.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LocationLists/Column3"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 330.0
+margin_bottom = 464.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LocationLists/Column3/ScrollContainer"]
+
+[node name="Button" type="Button" parent="LocationLists/Column3/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 320.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 2 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="LocationLists/Column3/ScrollContainer/VBoxContainer/Button"]
+margin_right = 305.0
+margin_bottom = 52.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "3"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwipeLeft" type="TextureButton" parent="."]
+visible = false
+margin_top = 192.0
+margin_right = 60.0
+margin_bottom = 302.0
+rect_scale = Vector2( -1, 1 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+texture_focused = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwipeRight" type="TextureButton" parent="."]
+visible = false
+margin_left = 1098.0
+margin_top = 192.0
+margin_right = 1158.0
+margin_bottom = 302.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+texture_focused = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
