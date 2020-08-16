@@ -1,8 +1,8 @@
 extends Panel
 
 
-onready var avmods = $MarginContainer/HBoxContainer/PanelContainer/MarginContainer/ScrollContainer2
-onready var lmods = $MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/ScrollContainer2
+onready var avmods = $MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer2
+onready var lmods = $MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/ScrollContainer2
 
 var av_mods = []
 var l_mods = []
@@ -10,6 +10,11 @@ var l_mods = []
 func _ready():
 	populate_avail_mods()
 	populate_l_mods()
+	$Button.connect("pressed", self, 'open_editor')
+
+func open_editor():
+	var editor = load("res://editor tools/editor.tscn").instance()
+	add_child(editor)
 
 func populate_avail_mods():
 	av_mods = modding_core.get_avail_mods()
@@ -24,18 +29,21 @@ func populate_l_mods():
 
 func add_mod():
 	if av_mods.size() == 0: return
+	if avmods.get_selected_items().size() == 0: return
 	var tmp = av_mods[avmods.get_selected_items()[0]]
 	for m in l_mods: if m.path == tmp.path : return
 	l_mods.push_back({name = tmp.name, path = tmp.path})
 	populate_l_mods()
 
 func remove_mod():
+	if lmods.get_selected_items().size() == 0: return
 	if l_mods.size() == 0: return
 	l_mods.remove(lmods.get_selected_items()[0])
 	populate_l_mods()
 
 func m_up():
 	if l_mods.size() <= 1: return
+	if lmods.get_selected_items().size() == 0: return
 	var pos = lmods.get_selected_items()[0]
 	if pos == 0: return
 	var tmp = l_mods[pos].duplicate()
@@ -46,6 +54,7 @@ func m_up():
 
 func m_down():
 	if l_mods.size() <= 1: return
+	if lmods.get_selected_items().size() == 0: return
 	var pos = lmods.get_selected_items()[0]
 	if pos == l_mods.size() - 1: return
 	var tmp = l_mods[pos].duplicate()

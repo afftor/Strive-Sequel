@@ -245,7 +245,7 @@ func event_person_selected(person):
 	var event_type = 'story_event'
 	if scenedata.scenedict[stored_scene].has('default_event_type'):
 		event_type = scenedata.scenedict[stored_scene].default_event_type
-	input_handler.interactive_message(stored_scene, event_type, {})
+	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 func select_option(number):
 	if $ScrollContainer/VBoxContainer.get_children().size() >= number && hold_selection == false:

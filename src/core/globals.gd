@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.2.1'
+const gameversion = '0.3.0'
 
 #time
 signal hour_tick
@@ -775,9 +775,7 @@ func check_events(action):
 		eventarray.erase(i)
 	return eventtriggered
 
-func check_random_event():
-	if randf() > variables.dungeon_encounter_chance:
-		return false
+func start_random_event():
 	var eventarray = input_handler.active_location.randomevents
 	var eventtriggered = false
 	var active_array = []

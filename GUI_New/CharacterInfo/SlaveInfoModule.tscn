@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=17]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -79,6 +80,7 @@ margin_right = 970.0
 margin_bottom = 920.0
 theme = ExtResource( 8 )
 custom_styles/panel = ExtResource( 7 )
+script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -714,9 +716,9 @@ __meta__ = {
 }
 
 [node name="food_consumption" type="Label" parent="."]
-margin_left = 71.0
+margin_left = 31.0
 margin_top = 739.0
-margin_right = 206.0
+margin_right = 224.0
 margin_bottom = 774.0
 rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
@@ -724,18 +726,22 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Consumption"
+text = "Daily Consumption"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="food_consumption"]
-margin_left = 138.941
-margin_right = 164.941
-margin_bottom = 32.0
+margin_left = 208.941
+margin_top = 1.0
+margin_right = 234.941
+margin_bottom = 33.0
 custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FoodLabel" type="Label" parent="."]
 margin_left = 8.0

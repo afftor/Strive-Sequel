@@ -82,12 +82,12 @@ func build_location_list(area, container):
 		newbutton.name = ResourceScripts.game_world.areas[area.code].capital_name
 		newbutton.set_meta("code", ResourceScripts.game_world.areas[area.code].capital_name)
 	if container == Column1:
-		if !get_parent().SlaveListModule.selected_location in ["show_all", "Aliron", "mansion"]:
-			var newbutton = input_handler.DuplicateContainerTemplate(Column1)
-			var text = tr("RETURNTOMANSION")
-			newbutton.text = text
-			newbutton.set_meta("code", "Aliron")
-			newbutton.connect('pressed', self, 'select_location', [newbutton])
+		#if !get_parent().SlaveListModule.selected_location in ["show_all", "Aliron", "mansion"]:
+		var newbutton = input_handler.DuplicateContainerTemplate(Column1)
+		var text = tr("MANSION")
+		newbutton.text = text
+		newbutton.set_meta("code", "Aliron")
+		newbutton.connect('pressed', self, 'select_location', [newbutton])
 	for location in ResourceScripts.game_world.areas[area.code].locations.values() + ResourceScripts.game_world.areas[area.code].questlocations.values():
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		newbutton.set_meta("location", location)
@@ -104,6 +104,8 @@ func calculate_location_characters(location, button):
 	for character in ResourceScripts.game_party.characters.values():
 		if character.get_location() == location:
 			characters_count += 1
+	if characters_count == 0:
+		characters_count = ""
 	return characters_count
 
 

@@ -77,9 +77,17 @@ func _ready():
 	# input_handler.CurrentScreen = 'mansion'
 	GUIWorld.BaseScene == self
 	$MenuButton.connect("pressed", self, "show_menu")
+	$TutorialButton.connect('pressed', self, 'show_tutorial')
+	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
 	match_state()
 	globals.log_node = $MansionLogModule
+#	if globals.start_new_game == true:
+#		yield(input_handler, 'EventFinished')
+#		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
+
+func show_tutorial():
+	$tutorialpanel.show()
 
 func show_menu():
 	GUIWorld.menu_opened = true
@@ -97,6 +105,7 @@ func mansion_state_set(state):
 	mansion_state = state
 	match_state()
 	slave_list_manager()
+	get_node("TutorialButton").show()
 
 func reset_vars():
 	if mansion_state != mansion_prev_state:
@@ -206,6 +215,7 @@ func rebuild_mansion():
 	CraftModule.rebuild_scheldue()
 	UpgradesModule.open_queue()
 	SlaveModule.show_slave_info()
+	$TutorialButton.show()
 
 func rebuild_task_info():
 	if ResourceScripts.game_party.active_tasks == []:

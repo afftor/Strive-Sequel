@@ -142,7 +142,8 @@ func open_location(data):
 		if data.type == "capital":
 			return
 		else:
-			gatherable_resources = data.gather_resources
+			if data.has('gather_resources'):
+				gatherable_resources = data.gather_resources
 			if gatherable_resources != null:
 				for i in gatherable_resources:
 					var item = Items.materiallist[i]
@@ -591,18 +592,25 @@ func area_advance(mode):
 	if globals.check_location_group() == false:
 		input_handler.SystemMessage("Select at least 1 character before advancing. ")
 		return
-	match mode:
-		'advance':
-			current_stage = active_location.progress.stage
-		'roam':
-			current_stage = 0
+	current_stage = active_location.progress.stage
 	if check_events(mode) == true:
 		yield(input_handler, 'EventFinished')
+	var rand_event = false
+	if active_location.has('randomevents') && randf() <= variables.dungeon_encounter_chance && !check_staged_enemies():
+		rand_event = globals.start_random_event()
+		advance()
+	if rand_event == false:
+		StartCombat()
 	
 	action_type = mode
-	
-	StartCombat()
 
+func check_staged_enemies():
+	var result = false
+	for i in input_handler.active_location.stagedenemies:
+		if i.stage == current_stage && i.level == current_level:
+			result = true
+			break
+	return result
 
 
 func enter_level(level, skip_to_end = false):
@@ -625,15 +633,15 @@ func enter_level(level, skip_to_end = false):
 		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Advance'
 		newbutton.connect("pressed",self,"area_advance",['advance'])
-	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
-		if active_location.levels.has("L"+str(level + 1)) == true:
-			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-			newbutton.text = 'Move to the next level'
-			newbutton.connect("pressed",self,"enter_level",[level+1])
-		else:
-			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-			newbutton.text = 'Forget Location'
-			newbutton.connect("pressed",self,"clear_dungeon")
+#	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
+#		if active_location.levels.has("L"+str(level + 1)) == true:
+#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Move to the next level'
+#			newbutton.connect("pressed",self,"enter_level",[level+1])
+#		else:
+#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+#			newbutton.text = 'Forget Location'
+#			newbutton.connect("pressed",self,"clear_dungeon")
 	
 	if variables.allow_skip_fights:
 		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
@@ -644,15 +652,15 @@ func enter_level(level, skip_to_end = false):
 #	newbutton.text = 'Roam'
 #	newbutton.connect("pressed",self,"area_advance",['roam'])
 	
-	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-	newbutton.text = 'Return'
-	newbutton.connect("pressed",self,"enter_dungeon")
+#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+#	newbutton.text = 'Return'
+#	newbutton.connect("pressed",self,"enter_dungeon")
 	build_location_group()
 	build_location_description()
 
 
-func finish_combat():
-	if action_type == 'advance' && check_dungeon_end() == false:
+func advance():
+	if check_dungeon_end() == false:
 		active_location.progress.stage += 1
 		current_stage = active_location.progress.stage
 		if active_location.progress.stage > active_location.levels["L"+str(current_level)].stages:
@@ -660,14 +668,8 @@ func finish_combat():
 			active_location.progress.level += 1
 			current_stage = active_location.progress.stage
 			current_level = active_location.progress.level
-		if check_dungeon_end() == false:
-			if active_location.has('scriptedevents') && globals.check_events("finish_combat") == true:
-				yield(input_handler, 'EventFinished')
-			if active_location.has('randomevents') && globals.check_random_event() == true:
-				yield(input_handler, 'EventFinished')
-		else:
+		if check_dungeon_end():
 			active_location.completed = true
-			check_events("finish_combat")
 			check_events("dungeon_complete")
 			$LocationGui/Resources/Forget.visible = true
 			$LocationGui/Resources/SelectWorkers.visible = true

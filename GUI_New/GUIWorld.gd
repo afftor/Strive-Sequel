@@ -33,12 +33,14 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
+	input_handler.CurrentScene = self
 	if test_mode:
 		test_mode()
-
+	var is_new_game = false
 	if globals.start_new_game == true:
 		globals.start_new_game = false
 		self.visible = false
+		is_new_game = true
 		var newgame_node = Node.new()
 		newgame_node.set_script(ResourceScripts.scriptdict.gamestart)
 		newgame_node.start()
@@ -47,7 +49,6 @@ func _ready():
 		input_handler.GameStartNode.queue_free()
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
-
 		input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
@@ -61,6 +62,9 @@ func _ready():
 	BaseScene = gui_data["MANSION"].main_module
 	input_handler.get_spec_node(input_handler.NODE_CLASSINFO, null, false, false)
 	visibility_handler()
+	if is_new_game:
+		yield(input_handler, 'EventFinished')
+		input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data.MANSION.main_module.show_tutorial()
 
 
 func _input(event):
@@ -71,6 +75,8 @@ func _input(event):
 		dialogue.select_option(int(event.as_text()))
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")) && CurrentScene.name == "date":
 		return
+	if event.is_action_released("F1"):
+		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
 	if (event.is_action_released("ESC") || event.is_action_released("RMB")):
 		if menu_opened:
 			var has_submodules_opened = (gui_data["GAMEMENU"].main_module.submodules.size() > 0)
@@ -128,6 +134,7 @@ func _input(event):
 				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
 			else:
 				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
+	
 
 
 func visibility_handler():
@@ -162,6 +169,8 @@ func visibility_handler():
 		if subscene.get_class() == "Tween":
 			continue
 		subscene.update()
+	gui_data.MANSION.main_module.get_node("TutorialButton").show()
+
 
 
 func submodules_handler():
@@ -178,6 +187,7 @@ func submodules_handler():
 		last_opened = CurrentScene.submodules[last_opened_id]
 		CurrentScene.submodules[last_opened_id].hide()
 		CurrentScene.submodules.erase(last_opened)
+	gui_data.MANSION.main_module.get_node("TutorialButton").show()
 
 
 
@@ -246,7 +256,7 @@ func test_mode():
 	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'random', 'random')
+	character.create('HalfkinCat', 'male', 'random')
 	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
 #	character = ResourceScripts.scriptdict.class_slave.new()
@@ -281,13 +291,13 @@ func test_mode():
 #	characters_pool.move_to_state(character.id)
 	
 	character.unlock_class("master")
-	character.unlock_class("archer")
-	character.unlock_class("necromancer")
+	character.unlock_class("caster")
+	character.unlock_class("apprentice")
 	character.unlock_class("rogue")
 	character.unlock_class("pet")
 	character.unlock_class("souleater")
-	character.travel.location = 'L4'
-	character.travel.area = 'plains'
+	#character.travel.location = 'L4'
+	#character.travel.area = 'plains'
 	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(bow)
 	character.equip(bow)
@@ -304,10 +314,11 @@ func test_mode():
 		'life_power'
 	]
 	#character.armor = 135
-	character.set_stat('wits', 20)
+	#character.set_stat('wits', 20)
 	character.set_stat('consent', 100)
 	character.set_stat('charm_factor', 5)
 	character.set_stat('physics_factor', 5)
+	character.set_stat('wits_factor', 5)
 	character.set_stat('food_love', "meat")
 	character.set_stat('food_hate', ["grain"])
 	#character.unlock_class("worker")
@@ -428,7 +439,7 @@ func test_mode():
 			}
 		]
 	)
-	ResourceScripts.game_res.money = 505590
+	ResourceScripts.game_res.money = 500
 	for i in Items.materiallist:
 		ResourceScripts.game_res.materials[i] = 200
 	ResourceScripts.game_res.materials.bandage = 0
@@ -489,7 +500,7 @@ func test_mode():
 	tmp.anal = 90
 	tmp.petting = 100
 	#character.set_stat('sex_skills', tmp)
-	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[3]]  #[state.areas.plains.locations.size()-1]]
+	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 	input_handler.active_area = ResourceScripts.game_world.areas.plains
 
 	for i in ResourceScripts.game_world.areas.plains.factions.values():
@@ -500,7 +511,7 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-	
+	#input_handler.interactive_message('loan_event1', '', {})
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()
