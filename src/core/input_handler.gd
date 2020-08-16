@@ -1042,3 +1042,7 @@ func repeat_string(ch, n):
 	for i in range(n): res += ch
 	return res
 
+func quit():
+	globalsettings.window_size = OS.window_size
+	globalsettings.window_pos = OS.window_position
+	get_tree().quit()

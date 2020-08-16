@@ -110,9 +110,10 @@ func options():
 	$Options.open()
 
 func quit():
-	input_handler.globalsettings.window_size = OS.window_size
-	input_handler.globalsettings.window_pos = OS.window_position
-	get_tree().quit()
+#	input_handler.globalsettings.window_size = OS.window_size
+#	input_handler.globalsettings.window_pos = OS.window_position
+#	get_tree().quit()
+	input_handler.quit()
 
 
 func mods():
