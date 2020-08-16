@@ -13,6 +13,8 @@ func update():
 	if selected_location == null:
 		return
 	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	if location.type == "quest_location":
+		return
 	var gatherable_resources
 	if location.type in ["dungeon",'encounter']:
 		dungeon = true
