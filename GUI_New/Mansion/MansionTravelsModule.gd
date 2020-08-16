@@ -23,7 +23,7 @@ func show_location_list(pressed):
 func open_character_dislocation():
 	if get_parent().mansion_state == "travels":
 		show()
-	# dislocation_area = get_parent()
+	dislocation_area = get_parent().active_person.travel.location
 	# destination_area = 'plains'
 	$HomeButton.clear()
 	$HomeButton.add_item(tr("MANSION"))
@@ -136,10 +136,13 @@ func update_character_dislocation():
 	var text2 = ''
 	if destination == null:
 		text += "\n\nSelect location to proceed"
-	elif destination == 'mansion':
+	elif destination in ['mansion', 'Aliron']:
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
-			text += "\nTravel Time: " + str(ceil(globals.calculate_travel_time(dislocation_area, 'mansion').time / ResourceScripts.game_party.characters[selected_travel_characters[0].id].travel_per_tick())) + " hours."
+			var max_time = 0
+			for person in selected_travel_characters:
+				max_time = max(ceil(globals.calculate_travel_time(person.travel.location, 'Aliron').time /  ResourceScripts.game_party.characters[person.id].travel_per_tick()), max_time)
+			text += "\nTravel Time: " + str(max_time) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
 		# text += "\n\nTarget Location: \n[color=yellow]" + location.name + "[/color]" 
@@ -153,6 +156,8 @@ func update_character_dislocation():
 		if selected_travel_characters.size() > 0 :
 			if dislocation_area == "mansion":
 				dislocation_area = "Aliron"
+			if dislocation_area == "travel":
+				dislocation_area = selected_travel_characters[0].travel.location
 			var travel_time = globals.calculate_travel_time(destination, dislocation_area) 
 			text2 = "Travel Time: " + str(ceil(travel_time.time / selected_travel_characters[0].travel_per_tick())) + " hours."
 			obed_cost = ceil(travel_time.obed_cost / selected_travel_characters[0].travel_per_tick())
@@ -195,7 +200,7 @@ func travel_confirm():
 	for person in selected_travel_characters:
 		person.remove_from_task(true)
 		person.process_event(variables.TR_MOVE)
-		var travel_cost = globals.calculate_travel_time(destination,dislocation_area)
+		var travel_cost = globals.calculate_travel_time(destination,person.travel.location)
 		if !person.is_controllable():
 			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
 		if variables.instant_travel == false:
