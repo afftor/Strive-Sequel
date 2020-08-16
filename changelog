@@ -1,5 +1,12 @@
-var text = Global changes: Most resources are now gathered from locations
+0.3.0a
+Fixed prostitution task not working
+Fixed sex interaction being bugged
+Fixed being able to select slave type on master creation
+Fixed quest locations not being usable
 
+
+0.3.0
+Global changes: Most resources are now gathered from locations
 New classes: Templar, Paladin, Shaman, Ranger, Bard, Archmage, Battlesmith, Technomancer
 
 New skills for classes: Healer, Necromancer, Sextoy
@@ -15,7 +22,6 @@ Shackles now belong to Dominator class and increase Timid Factor by 2
 Greater shackles are removed
 Bless: Now only increase ATK by 25%
 Mental Enhancement: New Dominator skill. Increases MATK by 25% (similar to bless)
-Fixed True Succubus class (for demons) not being obtainable
 0.2.1
 Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
 Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)

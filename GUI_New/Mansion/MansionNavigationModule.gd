@@ -29,7 +29,6 @@ func build_accessible_locations():
 	# 	if worlddata.lands[loca].keys().has("capital_name"):
 	# 		locations.append(loca)
 	input_handler.ClearContainer(Navigation)
-
 	var location_array = []
 	var travelers = []
 	### !!!Has to be different reqs for showing locations!!! ###

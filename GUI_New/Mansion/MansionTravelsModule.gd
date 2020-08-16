@@ -96,7 +96,8 @@ func show_location_resources(location_code):
 		if location.completed:
 			gatherable_resources = location.gather_limit_resources
 	else:
-		gatherable_resources = location.gather_resources
+		if location.has('gather_resources'):
+			gatherable_resources = location.gather_resources
 	input_handler.ClearContainer($Resources/GridContainer)
 	if gatherable_resources != null:
 		for i in gatherable_resources:

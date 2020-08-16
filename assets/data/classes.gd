@@ -397,7 +397,7 @@ var professions = {
 		tags = [],
 		categories = ['combat'],
 		showupreqs = [],
-		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'fighter', check = true},{code = 'has_profession', profession = 'knight', check = false}],
+		reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 3},{code = 'has_profession', profession = 'fighter', check = true},{code = 'has_profession', profession = 'paladin', check = false}],
 		statchanges = {hpmax = 30, armor = 5, speed = 3},
 		traits = ['heavy_armor'],
 		skills = [],

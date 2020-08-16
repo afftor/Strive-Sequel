@@ -14,7 +14,7 @@ func update():
 		return
 	var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	var gatherable_resources
-	if location.type == "dungeon":
+	if location.type in ["dungeon",'encounter']:
 		dungeon = true
 		self.visible = location.completed
 		if location.completed:

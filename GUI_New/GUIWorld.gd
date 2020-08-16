@@ -33,6 +33,7 @@ func _ready():
 	# OS.window_fullscreen = true
 	# queue_free()
 	# return
+	input_handler.CurrentScene = self
 	if test_mode:
 		test_mode()
 	var is_new_game = false
@@ -255,7 +256,7 @@ func test_mode():
 	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'random', 'random')
+	character.create('HalfkinCat', 'male', 'random')
 	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
 #	character = ResourceScripts.scriptdict.class_slave.new()
@@ -290,13 +291,13 @@ func test_mode():
 #	characters_pool.move_to_state(character.id)
 	
 	character.unlock_class("master")
-	character.unlock_class("archer")
-	character.unlock_class("necromancer")
+	character.unlock_class("caster")
+	character.unlock_class("apprentice")
 	character.unlock_class("rogue")
 	character.unlock_class("pet")
 	character.unlock_class("souleater")
-	character.travel.location = 'L4'
-	character.travel.area = 'plains'
+	#character.travel.location = 'L4'
+	#character.travel.area = 'plains'
 	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(bow)
 	character.equip(bow)
@@ -313,10 +314,11 @@ func test_mode():
 		'life_power'
 	]
 	#character.armor = 135
-	character.set_stat('wits', 20)
+	#character.set_stat('wits', 20)
 	character.set_stat('consent', 100)
 	character.set_stat('charm_factor', 5)
 	character.set_stat('physics_factor', 5)
+	character.set_stat('wits_factor', 5)
 	character.set_stat('food_love', "meat")
 	character.set_stat('food_hate', ["grain"])
 	#character.unlock_class("worker")
@@ -437,7 +439,7 @@ func test_mode():
 			}
 		]
 	)
-	ResourceScripts.game_res.money = 505590
+	ResourceScripts.game_res.money = 500
 	for i in Items.materiallist:
 		ResourceScripts.game_res.materials[i] = 200
 	ResourceScripts.game_res.materials.bandage = 0
@@ -509,7 +511,7 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-	#input_handler.interactive_message('event_trap_easy', '', {})
+	#input_handler.interactive_message('loan_event1', '', {})
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()

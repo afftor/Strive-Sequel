@@ -267,8 +267,10 @@ func work_tick():
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
 		work_tick_values(currenttask, gatherable)
-		if !gatherable:
+		if !gatherable && currenttask.code != 'prostitution':
 			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true) * location.gather_mod
+		elif currenttask.code == 'prostitution':
+			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
 		while currenttask.threshhold <= currenttask.progress:
