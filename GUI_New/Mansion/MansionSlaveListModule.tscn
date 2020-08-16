@@ -545,9 +545,9 @@ texture = ExtResource( 23 )
 
 [node name="BedroomLimit" type="Label" parent="."]
 margin_left = 264.272
-margin_top = 786.056
+margin_top = 794.056
 margin_right = 453.272
-margin_bottom = 826.056
+margin_bottom = 834.056
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Bedroom limit:"
@@ -559,9 +559,9 @@ __meta__ = {
 
 [node name="IterationsLimit" type="Label" parent="."]
 margin_left = 525.066
-margin_top = 786.056
+margin_top = 794.056
 margin_right = 721.066
-margin_bottom = 826.056
+margin_bottom = 834.056
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Iterations limit:"
