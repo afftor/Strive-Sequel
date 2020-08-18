@@ -211,7 +211,8 @@ func sell_slave():
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_stat('name')
 		newbutton.get_node("Price").text = str(round(tchar.calculate_price() / 2))
-		newbutton.connect("pressed", self, 'show_slave_info', [tchar]) 
+		newbutton.connect("pressed", self, 'show_slave_info', [tchar])
+		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
 	if char_list != []:
