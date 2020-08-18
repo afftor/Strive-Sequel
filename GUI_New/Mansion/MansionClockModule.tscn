@@ -34,8 +34,10 @@ size = 24
 font_data = ExtResource( 6 )
 
 [node name="MansionClockModule" type="Control"]
-margin_right = 290.0
-margin_bottom = 180.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 305.0
+margin_bottom = 195.0
 rect_min_size = Vector2( 290, 180 )
 script = ExtResource( 17 )
 __meta__ = {
@@ -43,7 +45,8 @@ __meta__ = {
 }
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 145, 164 )
+position = Vector2( 145, 164.407 )
+z_as_relative = false
 texture = ExtResource( 19 )
 mode = 3
 range_z_min = -1022

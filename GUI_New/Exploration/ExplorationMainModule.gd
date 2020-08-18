@@ -144,10 +144,13 @@ func open_location(data):
 		else:
 			if data.has('gather_resources'):
 				gatherable_resources = data.gather_resources
+				$LocationGui/Resources/SelectWorkers.visible = true
 			if gatherable_resources != null:
+				var stop_loop = false
 				for i in gatherable_resources:
+					if stop_loop:
+						break
 					var item = Items.materiallist[i]
-					var max_workers_count = gatherable_resources[i]
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
 					if active_tasks == []:
@@ -156,8 +159,9 @@ func open_location(data):
 					for task in active_tasks:
 						if (task.code == i) && (task.task_location == selected_location):
 							current_workers_count = task.workers_count
-							if current_workers_count < max_workers_count:
+							if current_workers_count < gatherable_resources[i]:
 								$LocationGui/Resources/SelectWorkers.visible = true
+								stop_loop = true
 								break
 							else:
 								$LocationGui/Resources/SelectWorkers.visible = false
@@ -198,6 +202,13 @@ func open_location(data):
 	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
 		open_location_actions()
 	build_location_description()
+	if data.type in ["quest_location", "encounter"]:
+		$LocationGui/Resources/Forget.visible = false
+		$LocationGui/Resources/SelectWorkers.visible = false
+		$LocationGui/Resources/Label.visible = false
+	else:
+		$LocationGui/Resources/Label.visible = true
+
 
 
 func build_location_group():
@@ -288,6 +299,14 @@ func build_location_group():
 	build_item_panel()
 	build_spell_panel()
 
+var selectedperson
+func return_character(character):
+	selectedperson = character
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+
+func return_character_confirm():
+	selectedperson.return_to_mansion()
+	build_location_group()
 
 func build_location_description():
 	var text = ''
@@ -365,7 +384,7 @@ func build_item_panel():
 		tutorial_items = true
 	if tutorial_items == true:
 		input_handler.ActivateTutorial("exploration_items")
-	switch_panel()
+	switch_panel(panelmode)
 
 func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
@@ -735,7 +754,8 @@ var panelmode = 'items'
 var panelmodes = {item = {name = "Items", code = 'items'}, spells = {name = 'Spells', code = 'spells'}}
 var panelmodesarray = ['items','spells']
 
-func switch_panel(mode = "items"):
+func switch_panel(mode):
+	panelmode = mode
 	match mode:
 		'items':
 			$LocationGui/ItemUsePanel/ScrollContainer.show()

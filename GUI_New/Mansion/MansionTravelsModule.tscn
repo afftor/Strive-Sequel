@@ -405,6 +405,9 @@ margin_left = -19.0
 margin_top = 147.0
 margin_right = 365.0
 margin_bottom = 385.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Resources"]
 margin_left = 27.0
@@ -414,6 +417,9 @@ custom_fonts/font = ExtResource( 25 )
 text = "Avalible Resources"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="Resources"]
 margin_left = 68.0

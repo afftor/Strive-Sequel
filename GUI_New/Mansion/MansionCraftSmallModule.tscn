@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_inactive.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craftshort.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_active.png" type="Texture" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=11]
+[ext_resource path="res://GUI_New/Mansion/MansionCraftSmallModule.gd" type="Script" id=12]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
@@ -24,6 +25,7 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 margin_right = 1100.0
 margin_bottom = 318.0
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

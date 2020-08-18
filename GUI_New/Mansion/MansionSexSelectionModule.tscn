@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonviolet_hover.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonviolet.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=8]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_disabled.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonmagenta_disabled.png" type="Texture" id=10]
+[ext_resource path="res://GUI_New/Mansion/MansionSexSelectionModule.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -21,6 +22,7 @@ anchor_bottom = 1.0
 margin_right = -820.0
 margin_bottom = -960.0
 custom_styles/panel = ExtResource( 8 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

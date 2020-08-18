@@ -77,8 +77,11 @@ func update_pressed_buttons():
 		if i.has_meta('class'):
 			i.pressed = get_parent().selected_class == i.get_meta('class')
 
+
+var selected_class
 func show_class_info(text, tempclass, person):
 	get_parent().selected_class = tempclass.code
+	selected_class = tempclass.code
 	# text += input_handler.show_class_info(tempclass.code, person)
 	$ClassPanel/ClassDescript.bbcode_text = person.translate(text)
 	update_pressed_buttons()
@@ -90,8 +93,10 @@ func cancel_class_selection():
 
 
 func select_class():
+	get_parent().selected_class = selected_class
+	get_parent().update_class_button()
 	hide()
-	get_parent().rebuild_slave()
+	# get_parent().rebuild_slave()
 	get_parent().check_confirm_possibility()
 
 

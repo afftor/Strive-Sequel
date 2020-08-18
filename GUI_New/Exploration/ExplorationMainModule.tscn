@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://GUI_New/Exploration/ExploreFullSlaveInfo.tscn" type="PackedScene" id=16]
 [ext_resource path="res://GUI_New/Exploration/ExploreFullSlaveInfo.gd" type="Script" id=17]
 [ext_resource path="res://StatsTrading.tscn" type="PackedScene" id=18]
-[ext_resource path="res://GUI_New/Mansion/MansionClockModule.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_guildbackground.png" type="Texture" id=33]
 [ext_resource path="res://GUI_New/Universal/NavigationModule.tscn" type="PackedScene" id=35]
 
@@ -58,12 +57,6 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 33 )
-
-[node name="MansionClockModule" parent="." instance=ExtResource( 19 )]
-margin_left = 15.0
-margin_top = 15.0
-margin_right = 305.0
-margin_bottom = 195.0
 
 [node name="ExploreCityModule" parent="." instance=ExtResource( 4 )]
 margin_left = 34.0

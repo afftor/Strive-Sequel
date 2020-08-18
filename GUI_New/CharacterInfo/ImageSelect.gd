@@ -38,6 +38,7 @@ func chooseimage(character, tempmod):
 
 func _on_reloadlist_pressed():
 	buildimagelist(mode)
+	_on_scroll(0)
 
 var currentpath 
 
@@ -145,6 +146,7 @@ func _on_racelock_pressed():
 #warning-ignore:unused_argument
 func _on_search_text_changed( text ):
 	resort()
+	_on_scroll(0)
 
 func _on_removeportrait_pressed():
 	if mode == 'portrait':

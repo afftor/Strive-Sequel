@@ -93,6 +93,7 @@ func hire():
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
+		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
 		# globals.connectslavetooltip(newbutton, tchar)
 	var person_id
@@ -101,6 +102,11 @@ func hire():
 	else: return
 	var person = characters_pool.get_char_by_id(person_id)
 	show_slave_info(person)
+
+
+func double_clicked(event):
+	if event is InputEventMouseButton and event.doubleclick:
+		show_full_info()
 
 func show_slave_info(person):
 	get_parent().person_to_hire = person

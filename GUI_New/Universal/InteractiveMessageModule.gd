@@ -266,7 +266,8 @@ func close(transition = false):
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
-	GUIWorld.CurrentScene = GUIWorld.BaseScene
+	if get_tree().get_root().get_node_or_null("GUIWorld"):
+		GUIWorld.CurrentScene = GUIWorld.BaseScene
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)

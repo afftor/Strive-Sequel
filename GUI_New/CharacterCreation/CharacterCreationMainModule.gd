@@ -544,6 +544,10 @@ func confirm_return():
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'cancel_creation', "Return to Main Menu?"])
 	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
+
+func update_class_button():
+	$VBoxContainer/SelectedClass.text = selected_class.capitalize()
+
 func test():
 #	print("Preserved Settings:", preservedsettings)
 #	print(person.get_stat("sex"))

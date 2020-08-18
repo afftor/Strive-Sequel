@@ -85,6 +85,7 @@ margin_left = 102.0
 margin_top = 21.0
 margin_right = 527.0
 margin_bottom = 127.0
+theme = ExtResource( 17 )
 custom_fonts/normal_font = ExtResource( 22 )
 bbcode_enabled = true
 bbcode_text = "[center]Level: 5/7

@@ -37,6 +37,7 @@ signal QuestStarted
 signal QuestCompleted
 signal CharacterCreated
 signal EnemyKilled
+signal ButtonUpdated
 
 var last_action_data = {}
 var text_characters = []
@@ -989,6 +990,7 @@ func DuplicateContainerTemplate(container):
 	newbutton.show()
 	container.add_child(newbutton)
 	container.move_child(container.get_node('Button'), newbutton.get_position_in_parent())
+	emit_signal("ButtonUpdated")
 	return newbutton
 
 

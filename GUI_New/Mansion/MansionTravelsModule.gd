@@ -15,14 +15,18 @@ func _ready():
 
 
 func show_location_list(pressed):
-	get_parent().Locations.visible = pressed
-	get_parent().Locations.open()
+	var locations_window = get_parent().Locations
+	get_parent().submodules.append(locations_window) if pressed else get_parent().submodules.erase(locations_window)
+	locations_window.visible = pressed
+	locations_window.open()
 
 
 
 func open_character_dislocation():
 	if get_parent().mansion_state == "travels":
 		show()
+	if get_parent().active_person == null:
+		return
 	dislocation_area = get_parent().active_person.travel.location
 	# destination_area = 'plains'
 	$HomeButton.clear()
@@ -90,6 +94,7 @@ func show_location_resources(location_code):
 	var location = ResourceScripts.world_gen.get_location_from_code(location_code)
 	var gatherable_resources
 	if location.type in ["capital", "quest_location"]:
+		$Resources.hide()
 		return
 	elif location.type == "dungeon":
 		dungeon = true
@@ -221,7 +226,7 @@ func travel_confirm():
 	get_parent().SlaveListModule.show_location_characters()
 	#reset_travels()
 	travel_cancel()
-	get_parent().match_state()
+	# get_parent().match_state()
 
 func reset_travels():
 	$Resources.hide()
@@ -234,6 +239,7 @@ func travel_cancel():
 	# update_location_list()
 	open_character_dislocation()
 	reset_travels()
+	get_parent().mansion_state_set("default")
 	get_parent().match_state()
 
 

@@ -82,6 +82,7 @@ func _ready():
 	slave_list_manager()
 	match_state()
 	globals.log_node = $MansionLogModule
+	input_handler.SetMusicRandom("mansion")
 #	if globals.start_new_game == true:
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
@@ -120,7 +121,6 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
-	# input_handler.SetMusicRandom("mansion")
 	NavModule.build_accessible_locations()
 	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
 	for node in get_children():
@@ -249,7 +249,7 @@ func craft_handler():
 		"default":
 			selected_craft_task = null
 			# is_craft_selected = false
-			CraftModule.show()
+			CraftModule.open()
 			CraftModule.get_node("MaterialSetupPanel").hide()
 			CraftModule.update()
 			# CraftModule.get_node("filter").hide()

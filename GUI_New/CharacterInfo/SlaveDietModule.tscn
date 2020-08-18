@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_diet.png" type="Texture" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveDietModule.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -26,6 +27,7 @@ font_data = ExtResource( 5 )
 margin_right = 670.0
 margin_bottom = 700.0
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
