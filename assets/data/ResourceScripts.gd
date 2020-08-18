@@ -112,3 +112,4 @@ func recreate_singletons():
 func revert_gamestate():
 	for s in gamestate:
 		set(s, scriptdict[s].new())
+	input_handler.connect("EnemyKilled", game_world, "quest_kill_receiver")

@@ -696,15 +696,11 @@ func set_slave_category(new_class):
 	statlist.slave_class = new_class
 
 func tick():
-	statlist.lust += get_stat('lusttick')
-#	if !parent.has_status('no_obed_reduce'):
-#		statlist.obedience -= get_stat('obed_reduce')
-#	if !parent.has_status('no_fear_reduce'):
-#		statlist.fear -= get_stat('fear_reduce')
+	add_stat('lust', get_stat('lusttick'))
 	if statlist.loyalty < 100.0 && !parent.has_status('no_loyal_reduction'):
-		add_stat('loyalty', -(12.0-1*get_stat('tame_factor')/24) * get_stat('loyalty_degrade_mod'))
+		add_stat('loyalty', -(12.0-1*get_stat('tame_factor'))/24 * get_stat('loyalty_degrade_mod'))
 	if statlist.submission < 100.0:
-		add_stat('submission', -(12.0-1*get_stat('timid_factor')/24) * get_stat('submission_degrade_mod'))
+		add_stat('submission', -(12.0-1*get_stat('timid_factor'))/24 * get_stat('submission_degrade_mod'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
 		if statlist.pregnancy.duration == 0:

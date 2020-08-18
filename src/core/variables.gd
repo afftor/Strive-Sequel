@@ -38,7 +38,7 @@ var bonuses_stat_list = ['productivity','mod_collect','speed','atk','matk','hitr
 #list for stats that do not uses bonuses system
 #imho must include all of dmg_rel stats
 var direct_access_stat_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'submission', 'authority',
-'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent']
+'energy', 'physics_bonus', 'wits_bonus','charm_bonus','sexuals_bonus','physics_factor','wits_factor','charm_factor','tame_factor','timid_factor', 'sexuals_factor','magic_factor','growth_factor', 'food_consumption', 'consent', 'physics','wits','charm']
 
 
 var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_cook','mod_smith','mod_tailor','mod_alchemy','mod_farm','mod_pros']

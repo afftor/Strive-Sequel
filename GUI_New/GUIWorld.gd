@@ -255,10 +255,12 @@ func show_class_info(classcode, person = null):
 func test_mode():
 	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
+	
 	var character = ResourceScripts.scriptdict.class_slave.new()
 	character.create('HalfkinCat', 'male', 'random')
 	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
+	ResourceScripts.game_res.upgrades.forge = 3
 #	character = ResourceScripts.scriptdict.class_slave.new()
 #	character.create('HalfkinCat', 'random', 'random')
 #	characters_pool.move_to_state(character.id)
@@ -294,10 +296,10 @@ func test_mode():
 	character.unlock_class("caster")
 	character.unlock_class("apprentice")
 	character.unlock_class("rogue")
-	character.unlock_class("pet")
+	character.unlock_class("druid")
 	character.unlock_class("souleater")
-	#character.travel.location = 'L4'
-	#character.travel.area = 'plains'
+	character.travel.location = 'L4'
+	character.travel.area = 'plains'
 	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(bow)
 	character.equip(bow)

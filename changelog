@@ -1,3 +1,8 @@
+0.3.0b
+Fixed lust growing over the cap
+Fixed submission/loyalty decaying too fast
+Fixed spells in dungeon not working
+Fixed upgrades breaking on game reload
 0.3.0a
 Fixed prostitution task not working
 Fixed sex interaction being bugged

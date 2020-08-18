@@ -740,10 +740,8 @@ func train(person, counter):
 	text += ("You spend some time training with [name2], improving your Physics. \n" 
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
-	
 	person.add_stat('physics', value)
 	master.add_stat('physics', value2)
-	
 	self.mood += 4
 	finish_encounter = true
 	
