@@ -253,7 +253,7 @@ func work_tick():
 					currentupgradelevel = ResourceScripts.game_res.upgrades[upgrades_queue[0]] + 1
 					ResourceScripts.game_res.upgrade_progresses[upgrades_queue[0]] = {level = currentupgradelevel, progress = 0}
 			ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress += get_progress_task(currenttask.code, currenttask.product, true)#*(productivity/100)
-			if ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress >= upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].levels[ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].level].taskprogress:
+			if ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress >= upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].levels[int(ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].level)].taskprogress:
 				if ResourceScripts.game_res.upgrades.has(ResourceScripts.game_res.upgrades_queue[0]):
 					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.upgrades_queue[0]] += 1
 				else:
