@@ -42,7 +42,8 @@ func close_inventory(state):
 
 
 func update():
-	selectedhero = GUIWorld.gui_data["MANSION"].main_module.active_person
+	if selectedhero == null:
+		selectedhero = GUIWorld.gui_data["MANSION"].main_module.active_person
 	set_active_hero(selectedhero)
 
 

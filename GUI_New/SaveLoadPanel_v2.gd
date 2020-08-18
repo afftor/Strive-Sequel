@@ -105,6 +105,10 @@ func SaveGame():
 	ResetSavePanel()
 	hide()
 	get_parent().hide()
+	var GUIWorld = get_tree().get_root().get_node_or_null("GUIWorld")
+	var MANSION
+	if GUIWorld:
+		GUIWorld.menu_opened = false
 	input_handler.SystemMessage("Game Saved")
 
 func LoadGame():

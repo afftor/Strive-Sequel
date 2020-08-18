@@ -1,11 +1,8 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI_New/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=5]
-[ext_resource path="res://assets/images/gui/inventory/itemicon2.png" type="Texture" id=6]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=7]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=9]
@@ -24,8 +21,6 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_chars_l.png" type="Texture" id=22]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=23]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=24]
-[ext_resource path="res://assets/images/gui/combat/skillmenu.png" type="Texture" id=25]
-[ext_resource path="res://assets/images/iconsskills/WeaponRefine.png" type="Texture" id=26]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=27]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=29]
@@ -90,20 +85,15 @@ size = 32
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 50
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 694, 182 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 55
 use_filter = true
 font_data = ExtResource( 1 )
@@ -550,82 +540,6 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="SkillPanel_old" type="TextureRect" parent="."]
-visible = false
-margin_left = 743.0
-margin_top = 431.868
-margin_right = 1167.0
-margin_bottom = 813.868
-texture = ExtResource( 25 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="SkillPanel_old"]
-margin_left = 27.0
-margin_top = 84.0
-margin_right = 439.0
-margin_bottom = 434.0
-
-[node name="GridContainer" type="GridContainer" parent="SkillPanel_old/ScrollContainer"]
-custom_constants/vseparation = 13
-custom_constants/hseparation = 21
-columns = 4
-
-[node name="Button" type="TextureButton" parent="SkillPanel_old/ScrollContainer/GridContainer"]
-visible = false
-margin_right = 77.0
-margin_bottom = 77.0
-rect_min_size = Vector2( 77, 77 )
-toggle_mode = true
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 6 )
-expand = true
-stretch_mode = 5
-
-[node name="manacost" type="Label" parent="SkillPanel_old/ScrollContainer/GridContainer/Button"]
-margin_left = 39.0
-margin_top = 52.0
-margin_right = 76.0
-margin_bottom = 76.0
-custom_colors/font_color = Color( 0, 0.859375, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "10"
-align = 1
-
-[node name="charge" type="Label" parent="SkillPanel_old/ScrollContainer/GridContainer/Button"]
-visible = false
-margin_left = 7.0
-margin_top = 53.0
-margin_right = 32.0
-margin_bottom = 77.0
-custom_colors/font_color = Color( 0.945098, 1, 0.341176, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "1"
-
-[node name="Icon" type="TextureRect" parent="SkillPanel_old/ScrollContainer/GridContainer/Button"]
-show_behind_parent = true
-margin_left = 1.0
-margin_right = 76.0
-margin_bottom = 75.0
-mouse_filter = 2
-texture = ExtResource( 26 )
-expand = true
-stretch_mode = 6
-
-[node name="cooldown" type="Label" parent="SkillPanel_old/ScrollContainer/GridContainer/Button"]
-visible = false
-modulate = Color( 1, 1, 1, 0.831373 )
-margin_right = 76.0
-margin_bottom = 77.0
-custom_fonts/font = SubResource( 5 )
-custom_colors/font_color = Color( 0.843137, 1, 0.172549, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "5"
-align = 1
-valign = 1
-
 [node name="ItemPanel" type="TextureRect" parent="."]
 margin_left = 738.0
 margin_top = 257.0
@@ -709,7 +623,7 @@ margin_left = 613.0
 margin_top = 658.0
 margin_right = 1307.0
 margin_bottom = 840.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -794,7 +708,7 @@ margin_left = 53.0
 margin_top = 1.0
 margin_right = 93.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "1"
 align = 2
 
@@ -804,7 +718,7 @@ margin_left = 53.0
 margin_top = 65.767
 margin_right = 93.0003
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -819,7 +733,7 @@ margin_left = 5.62131
 margin_top = 65.767
 margin_right = 45.6213
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -1040,7 +954,7 @@ margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "VICTORY"
 align = 1
 

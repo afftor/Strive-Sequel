@@ -25,7 +25,7 @@ func build_gear_panel():
 
 
 func unequip(slot):
-	var selectedhero = GUIWorld.gui_data["MANSION"].main_module.active_person
+	var selectedhero = get_parent().selectedhero
 	# if !selectedhero.check_location('Aliron', true):
 	# 	input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
 	# 	return

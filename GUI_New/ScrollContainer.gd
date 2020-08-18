@@ -16,6 +16,7 @@ func _ready():
 	v_scroll_bar.connect("mouse_entered", self, "set_entered", [true])
 	v_scroll_bar.connect("mouse_exited", self, "set_entered", [false])
 	hidden_scroll_bar.connect("value_changed", self, "position_grabber")
+	input_handler.connect("ButtonUpdated", self, "update_scroll")
 
 
 func scroll(value):
@@ -34,18 +35,24 @@ func set_entered(is_entered):
 	mouse_entered = is_entered
 
 
-func buttons_count_changed():
-	var prev_buttons_count = buttons_count
-	buttons_count = $ScrollContainer.get_child(0).get_child_count()
-	return prev_buttons_count != buttons_count
+# func buttons_count_changed():
+# 	var prev_buttons_count = buttons_count
+# 	buttons_count = $ScrollContainer.get_child(0).get_child_count()
+# 	return prev_buttons_count != buttons_count
 
 func calculate_scroll_area():
 	scroll_area = $ScrollContainer.get_rect().size
 
-func _process(delta):
-	if is_visible_in_tree() == false:
-		return
-#	if !buttons_count_changed():
-#		return
+func update_scroll():
 	calculate_scroll_area()
 	v_scroll_bar.visible = (scroll_area.y < $ScrollContainer.get_child(0).rect_size.y)
+
+
+
+# func _process(delta):
+# 	if is_visible_in_tree() == false:
+# 		return
+#	if !buttons_count_changed():
+#		return
+	# calculate_scroll_area()
+	# v_scroll_bar.visible = (scroll_area.y < $ScrollContainer.get_child(0).rect_size.y)

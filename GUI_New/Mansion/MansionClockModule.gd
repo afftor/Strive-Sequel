@@ -69,6 +69,7 @@ func _process(delta):
 			if gametime >= variables.SecondsPerHour:
 				gametime -= variables.SecondsPerHour
 				advance_hour()
+	GUIWorld.clock_visibility()
 
 
 func timeflowhotkey(hotkey):
@@ -128,8 +129,8 @@ func advance_hour():
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
-	if GUIWorld.CurrentScene.name == "MansionMainModule":
-		get_parent().rebuild_mansion()
+	# if GUIWorld.CurrentScene.name == "MansionMainModule":
+	GUIWorld.gui_data.MANSION.main_module.rebuild_mansion()
 
 
 func advance_day():
@@ -150,8 +151,8 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	ResourceScripts.game_world.update_locations()
 	globals.autosave()
-	if GUIWorld.CurrentScene.name == "MansionMainModule":
-		get_parent().rebuild_mansion()
+#	if GUIWorld.CurrentScene.name == "MansionMainModule":
+	GUIWorld.gui_data.MANSION.main_module.rebuild_mansion()
 
 
 func set_time_buttons():

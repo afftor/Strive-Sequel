@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/M_SlaveList.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=22]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_slavelist.png" type="Texture" id=23]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=24]
+[ext_resource path="res://GUI_New/Mansion/MansionSlaveListModule.gd" type="Script" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -60,6 +61,7 @@ margin_right = 1100.0
 margin_bottom = 580.0
 theme = ExtResource( 1 )
 custom_styles/panel = ExtResource( 9 )
+script = ExtResource( 25 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -245,7 +247,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1004.0
+margin_right = 1008.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3

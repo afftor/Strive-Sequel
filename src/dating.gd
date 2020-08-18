@@ -1011,6 +1011,7 @@ func _on_finishbutton_pressed():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
 	GUIWorld.CurrentScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.CurrentScene.mansion_state_set("default")
+	GUIWorld.gui_data.CLOCK.main_module.show()
 
 
 func _on_cancelsex_pressed():

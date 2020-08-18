@@ -17,6 +17,7 @@ onready var MAIN_MODULES = {
 	INTERACTION = preload("res://GUI_New/Mansion/InteractionMainModule.tscn"),
 	DATE = preload("res://src/date.tscn"),
 	GAMEMENU = preload("res://GUI_New/GameMenuPanel.tscn"),
+	CLOCK = preload("res://GUI_New/Mansion/MansionClockModule.tscn"),
 }
 
 # GUI Dict
@@ -93,6 +94,8 @@ func _input(event):
 			PreviousScene = null
 			return
 		if CurrentScene == gui_data.SLAVE_INFO.main_module:# && !PreviousScene == gui_data.SLAVE_INFO.main_module:
+			if CurrentScene.get_node("SlaveBodyModule/professions").get_global_rect().has_point(get_global_mouse_position()):
+				return
 			PreviousScene = CurrentScene
 			visibility_handler()
 			PreviousScene = null
@@ -134,7 +137,18 @@ func _input(event):
 				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
 			else:
 				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
-	
+		
+
+
+
+func clock_visibility():
+	if CurrentScene == gui_data.MANSION.main_module:
+		gui_data.CLOCK.main_module.show()
+	else:
+		if CurrentScene == gui_data.EXPLORATION.main_module && !CurrentScene.get_node("ExploreFullSlaveModule").is_visible() && !CurrentScene.get_node("LocationGui").is_visible():
+			gui_data.CLOCK.main_module.show()
+		else:
+			gui_data.CLOCK.main_module.hide()
 
 
 func visibility_handler():
@@ -170,6 +184,7 @@ func visibility_handler():
 			continue
 		subscene.update()
 	gui_data.MANSION.main_module.get_node("TutorialButton").show()
+	clock_visibility()
 
 
 
@@ -177,7 +192,7 @@ func submodules_handler():
 	var last_opened_id
 	var last_opened
 	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
-	if classinfo != null && menu_opened && !classinfo.is_visible():
+	if classinfo && menu_opened && !classinfo.is_visible():
 		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
 		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
 		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
@@ -193,6 +208,10 @@ func submodules_handler():
 
 func close_scene(scene):
 	scene.hide()
+	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
+	if classinfo && CurrentScene == gui_data.SLAVE_INFO.main_module && classinfo == scene:
+		CurrentScene.submodules.erase(scene)
+		return
 	if scene in gui_data.EXPLORATION.main_module.submodules:
 		gui_data.EXPLORATION.main_module.submodules.erase(scene)
 		gui_data.EXPLORATION.main_module.Navigation.show()
@@ -215,8 +234,8 @@ func close_scene(scene):
 		# yield(get_tree().create_timer(0.3), "timeout")
 		module.hide()
 	CurrentScene.submodules.clear()
-	# if CurrentScene == gui_data["SLAVE_INFO"].main_module:
-	# 	return
+	if CurrentScene == gui_data["SLAVE_INFO"].main_module:
+		return
 
 
 func set_current_scene(scene):
@@ -441,7 +460,7 @@ func test_mode():
 			}
 		]
 	)
-	ResourceScripts.game_res.money = 500
+	ResourceScripts.game_res.money =0# 500
 	for i in Items.materiallist:
 		ResourceScripts.game_res.materials[i] = 200
 	ResourceScripts.game_res.materials.bandage = 0
@@ -513,7 +532,7 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-	#input_handler.interactive_message('loan_event1', '', {})
+	# input_handler.interactive_message('loan_event1', '', {})
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()

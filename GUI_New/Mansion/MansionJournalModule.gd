@@ -6,6 +6,8 @@ var type = "main"
 
 
 func _ready():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+	GUIWorld.add_close_button(self)
 	$CompleteButton.connect("pressed", self, "CompleteQuest")
 	$CancelButton.connect("pressed", self, "CancelQuest")
 	$ItemSelectionPanel/CancelButton.connect("pressed",self, 'hide_item_selection')
@@ -15,6 +17,10 @@ func _ready():
 
 
 func change_type(newtype):
+	$QuestDescript.bbcode_text = ""
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		if i.has_meta('quest'):
+			i.pressed = false
 	type = newtype
 	$Main.pressed = newtype == "main"
 	$Minor.pressed = newtype == "minor"

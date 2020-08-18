@@ -50,6 +50,7 @@ func close_job_pannel():
 func open_jobs_window():
 	person = get_parent().active_person
 	if person != null:
+		$work_rules.get_child(2).visible = !person.has_profession("master")
 		$job_details.hide()
 		input_handler.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 		currentjob = null
@@ -103,6 +104,10 @@ func open_jobs_window():
 						current_workers_count = task.workers_count
 				text += " " + str(current_workers_count) + "/" + str(max_workers_count)
 				newbutton.disabled = current_workers_count == max_workers_count
+				if current_workers_count == max_workers_count:
+					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.87,0.87,0.87, 1))
+				else:
+					newbutton.get_node("Label").set("custom_colors/font_color", Color(0.97,0.88,0.5, 1))
 			elif location_type == "dungeon":
 				if gatherable_resources[resource] == 0:
 					for button in $job_panel/ScrollContainer/VBoxContainer.get_children():
@@ -117,6 +122,7 @@ func open_jobs_window():
 
 
 func show_job_details(job, gatherable = false):
+	$job_panel/ScrollContainer/VBoxContainer.get_child(0).pressed = false
 	$ConfirmButton.show()
 	$ConfirmButton.disabled = !gatherable
 	$CancelButton.show()
@@ -130,7 +136,7 @@ func show_job_details(job, gatherable = false):
 	if gatherable:
 		job_name = "Gather " + job.name.capitalize()
 		job_descript = 'Gather availiable resources from location'
-		if job.tool_type != "":
+		if job.has("tool_type") && job.tool_type != "":
 			work_tools = statdata.worktoolnames[job.tool_type]
 	else:
 		job_name = job.name
@@ -187,6 +193,7 @@ func show_job_details(job, gatherable = false):
 				number = person.get_progress_task(job.code, i.code)/i.progress_per_item
 				newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 				newbutton.get_node("icon").texture = i.icon
+				newbutton.set_meta("resource", i.code)
 				globals.connecttexttooltip(newbutton, tr(i.descript) + text)
 				newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
 	else:
@@ -196,9 +203,12 @@ func show_job_details(job, gatherable = false):
 		var newbutton = input_handler.DuplicateContainerTemplate($job_details/ResourceOptions)
 		newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
 		newbutton.get_node("icon").texture = job.icon
+		newbutton.set_meta("resource", job.code)
 		globals.connectmaterialtooltip(newbutton, job, text)
 		selected_job = job
-
+	var default_resource = $job_details/ResourceOptions.get_child(1) if $job_details/ResourceOptions.get_child(1).has_meta("resource") else $job_details/ResourceOptions.get_child(0)
+	selected_resource = default_resource.get_meta("resource")
+	select_resource(job, selected_resource, default_resource)
 
 func select_resource(job, resource, newbutton):
 	for button in $job_details/ResourceOptions.get_children():
@@ -220,8 +230,7 @@ func select_job():
 		get_parent().TaskModule.task_index = 0
 	else:
 		get_parent().TaskModule.task_index = 1
-	if !get_parent().TaskModule.is_visible():
-		get_parent().TaskModule.change_button()
+	get_parent().TaskModule.change_button()
 	get_parent().rebuild_task_info()
 	cancel_job_choice()
 	get_parent().mansion_state_set("default")
