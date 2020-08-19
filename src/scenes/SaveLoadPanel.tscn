@@ -28,6 +28,7 @@ margin_left = 17.0
 margin_top = 285.0
 margin_right = 586.0
 margin_bottom = 645.0
+size_flags_vertical = 3
 theme = ExtResource( 13 )
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -35,12 +36,12 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 569.0
-size_flags_horizontal = 3
 custom_constants/separation = 3
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 visible = false
+margin_left = 5.0
+margin_top = 5.0
 margin_right = 590.0
 margin_bottom = 51.0
 texture_normal = ExtResource( 3 )

@@ -91,7 +91,7 @@ func open_queue():
 
 		var currentupgradelevel = findupgradelevel(upgradedata.upgradelist[upgrade])
 
-		update_progress(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
+		update_progresses(upgradedata.upgradelist[upgrade], newbutton, currentupgradelevel)
 		# newbutton.set_meta('upgrade', upgrade)
 		globals.connecttexttooltip(newbutton, "Drag and drop to change order. Click to remove from queue.")
 		newbutton.connect("pressed", self, "remove_from_upgrades_queue", [upgradedata.upgradelist[upgrade]])
@@ -106,7 +106,7 @@ func open():
 
 func update_buttons():
 	var array = []
-	var upgrade = get_parent().selected_upgrade
+	# var upgrade = get_parent().selected_upgrade 
 	input_handler.ClearContainer(UpgradesContainer)
 	for i in upgradedata.upgradelist.values():
 		array.append(i)
@@ -133,7 +133,7 @@ func update_buttons():
 		if i.levels.has(currentupgradelevel + 1) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0, 0.6, 0))
 			text += ' Unlocked'
-		update_progress(i, newbutton, currentupgradelevel)
+		update_progresses(i, newbutton, currentupgradelevel)
 		newbutton.get_node("name").text = text
 		newbutton.set_meta('upgrade', i)
 		newbutton.connect("pressed", self, "selectupgrade", [i])
@@ -157,11 +157,12 @@ func remove_from_upgrades_queue(upgrade):
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'remove_upgrade_confirm', 'Remove this upgrade from queue?'])
 
 
-func update_progress(upgrade, newbutton, currentupgradelevel):
+func update_progresses(upgrade, newbutton, currentupgradelevel):
+	var level = int(currentupgradelevel)
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		newbutton.get_node("progress").visible = true
 		newbutton.get_node("progress").value = ResourceScripts.game_res.upgrade_progresses[upgrade.code].progress
-		newbutton.get_node("progress").max_value = upgrade.levels[(currentupgradelevel	+ 1)].taskprogress
+		newbutton.get_node("progress").max_value = upgrade.levels[int(level + 1)].taskprogress
 
 
 func sortupgrades(first, second):

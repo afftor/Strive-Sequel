@@ -36,7 +36,7 @@ func show_quests():
 
 
 func open():
-	$Main.pressed = true
+	# $Main.pressed = true
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$QuestDescript.clear()
@@ -57,6 +57,7 @@ func open():
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
 				make_quest_button(quest)
+	change_type(type)
 	show_quests()
 
 func make_active_quest_button(quest):

@@ -134,7 +134,7 @@ func _input(event):
 	if CurrentScene == gui_data["MANSION"].main_module && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):# && !text_field_input: ### Find Solution
 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
 			if input_handler.globalsettings.turn_based_time_flow == false:
-				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
+				gui_data.CLOCK.main_module.changespeed(gui_data.CLOCK.main_module.timebuttons[int(event.as_text())-1])
 			else:
 				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
 		
@@ -460,7 +460,7 @@ func test_mode():
 			}
 		]
 	)
-	ResourceScripts.game_res.money =0# 500
+	ResourceScripts.game_res.money = 80000
 	for i in Items.materiallist:
 		ResourceScripts.game_res.materials[i] = 200
 	ResourceScripts.game_res.materials.bandage = 0
@@ -479,6 +479,7 @@ func test_mode():
 	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
+	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 	globals.AddItemToInventory(
 		globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
