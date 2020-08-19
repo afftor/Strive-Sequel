@@ -194,7 +194,7 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['warriors_dungeon_easy','warriors_threat_easy','warriors_monster_hunt_easy'],
+		quests_easy = ['warriors_monster_hunt_easy'],#'warriors_dungeon_easy','warriors_threat_easy',
 		quests_medium = ['warriors_threat_medium', 'warriors_dungeon_medium','warriors_monster_hunt_medium'],
 		quests_hard = [],
 		slavenumber = [2,2],

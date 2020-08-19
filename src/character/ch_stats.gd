@@ -1,6 +1,6 @@
 extends Reference
 
-var statlist = Statlist_init.template.duplicate() setget , default_stats_get
+var statlist = Statlist_init.template.duplicate(true) setget , default_stats_get
 var bonuses = {}
 var traits = []
 var sex_traits = []

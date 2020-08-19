@@ -1625,7 +1625,7 @@ var Skilllist = {
 		value = 1,
 		damagestat = ['-damage_hp']
 	},
-	barrier = {#buff: protect from 100 damage for 3 turns
+	barrier = {
 		code = 'barrier',
 		
 		descript = '',
@@ -1651,10 +1651,10 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
-	blizzard = {#water damage to all enemies, 50% to reduce speed by 20 for 2 turns
+	blizzard = {
 		code = 'blizzard',
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Innervate.png"),
+		icon = load("res://assets/images/iconsskills/icon_ice.png"),
 		type = 'combat', 
 		ability_type = 'spell',
 		tags = ['damage','aoe'],
