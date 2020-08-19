@@ -161,7 +161,7 @@ func update_progress(upgrade, newbutton, currentupgradelevel):
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		newbutton.get_node("progress").visible = true
 		newbutton.get_node("progress").value = ResourceScripts.game_res.upgrade_progresses[upgrade.code].progress
-		newbutton.get_node("progress").max_value = upgrade.levels[(currentupgradelevel	+ 1)].taskprogress
+		newbutton.get_node("progress").max_value = upgrade.levels[(currentupgradelevel + 1)].taskprogress
 
 
 func sortupgrades(first, second):

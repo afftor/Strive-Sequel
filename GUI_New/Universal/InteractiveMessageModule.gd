@@ -313,7 +313,7 @@ func inspect_character_child():
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
-	person.stats.get_random_name()
+	person.statlist.get_random_name()
 	node.open(self, 'set_baby_name', person.get_stat('name'))
 
 func removebaby():
@@ -324,16 +324,10 @@ func removebaby():
 
 func set_baby_name(text):
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
+	person.baby_transform()
+	person.set_stat('obedience', 24)
 	person.set_stat('name', text)
-	person.surname = input_handler.active_character.surname
 	ResourceScripts.game_party.add_slave(person, true)
-	var mother = characters_pool.get_char_by_id(person.relatives.mother)
-	if mother == null:
-		person.set_slave_category('slave')
-	elif mother.get_stat('slave_class') != 'master':
-		person.set_slave_category(mother.get_stat('slave_class'))
-	else:
-		person.set_slave_category("servant")
 	close()
 
 func open_chest():

@@ -276,10 +276,11 @@ func test_mode():
 	ResourceScripts.game_world.make_world()
 	
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'male', 'random')
+	character.create('HalfkinCat', 'futa', 'random')
 	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
 	ResourceScripts.game_res.upgrades.forge = 3
+	ResourceScripts.game_res.upgrades.tailor = 1
 #	character = ResourceScripts.scriptdict.class_slave.new()
 #	character.create('HalfkinCat', 'random', 'random')
 #	characters_pool.move_to_state(character.id)
@@ -311,6 +312,9 @@ func test_mode():
 #	character.create('HalfkinCat', 'futa', 'random')
 #	characters_pool.move_to_state(character.id)
 	
+	globals.impregnate(character, character)
+	character.get_stat('pregnancy', true).duration = 2
+	character.statlist.statlist.sex_skills.anal = 100
 	character.unlock_class("master")
 	character.unlock_class("caster")
 	character.unlock_class("apprentice")
@@ -493,6 +497,12 @@ func test_mode():
 	globals.AddItemToInventory(
 		globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)
+	
+	
+	globals.AddItemToInventory(
+		globals.CreateGearItem("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
+	)
+	
 	globals.AddItemToInventory(
 		globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)

@@ -376,6 +376,7 @@ func remove_hovered_person():
 func _on_TestButton_pressed():
 	Locations.show()
 	Locations.open()
+	input_handler.emit_signal("EnemyKilled","wolf")
 	# print("LocaLinks:" +str(ResourceScripts.game_world.location_links))
 	# for person in ResourceScripts.game_party.characters.values():
 	# 	var loca = person.travel.location

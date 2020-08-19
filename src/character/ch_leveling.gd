@@ -232,7 +232,7 @@ func work_tick():
 					globals.spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product)#
+			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product, true)#
 			make_item_sequence(currenttask, craftingitem)
 	
 	elif currenttask.code == 'building':

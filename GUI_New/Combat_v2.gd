@@ -121,6 +121,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	input_handler.ActivateTutorial("combat")
 	show()
 	input_handler.combat_node = self
+	autoskill = null
 	turns = 0
 	$Combatlog/RichTextLabel.clear()
 	enemygroup.clear()
