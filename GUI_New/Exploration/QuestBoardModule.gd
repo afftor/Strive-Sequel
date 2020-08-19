@@ -16,24 +16,17 @@ func quest_board():
 		get_parent().submodules.append(self)
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false
-	get_parent().City.Guild.hide()
-	get_parent().City.get_node("GuildMenuBG").hide()
-	get_parent().City.opened_guild = {code = ""}
-	get_parent().City.update_buttons("quest_board")
 	$QuestDetails.hide()
 	is_quest_board_opened = !is_quest_board_opened
 	if !is_quest_board_opened:
 		hide()
 		return
+	get_parent().City.Guild.hide()
+	get_parent().get_node("GuildBG").hide()
+	get_parent().City.opened_guild = {code = ""}
+	get_parent().City.update_buttons("quest_board")
 	show()
 	get_parent().selectedquest = null
-#	$Label.hide()
-#	$Label2.hide()
-#	$questrewards.hide()
-#	$questreqs.hide()
-#	$RichTextLabel.clear()
-#	$AcceptQuest.hide()
-#	$time.hide()
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in get_parent().active_area.quests.factions:
 		for k in get_parent().active_area.quests.factions[i].values():

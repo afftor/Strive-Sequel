@@ -98,6 +98,7 @@ func run():
 
 
 func open_items(pressed):
+	$StatsPanel_v2.hide()
 	$ItemPanel.visible = pressed
 
 
@@ -112,6 +113,8 @@ func cheatvictory():
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
+	if music == "default":
+		music = 'battle1'
 	hide()
 	$ItemPanel/debugvictory.visible = debug
 	if variables.combat_tests == false:
@@ -424,6 +427,7 @@ func defeat():
 	FinishCombat(false)
 
 func player_turn(pos):
+	$Menu/Run.disabled = false
 	turns += 1
 	var selected_character = characters_pool.get_char_by_id(playergroup[pos])
 	#selected_character.update_timers()
@@ -563,6 +567,7 @@ func can_be_taunted(caster, target):
 	return (skill.target_range == 'any')
 
 func enemy_turn(pos):
+	$Menu/Run.disabled = true
 	turns += 1
 	var fighter = characters_pool.get_char_by_id(enemygroup[pos])
 	$Panel3.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_nameturn_r.png")
@@ -759,6 +764,8 @@ func FighterMouseOverFinish(fighter):
 		Target_Glow(f)
 
 func ShowFighterStats(fighter):
+	$ItemPanel.hide()
+	$Menu/Items.pressed = false
 	if fightover == true:
 		return
 	$StatsPanel_v2.show()

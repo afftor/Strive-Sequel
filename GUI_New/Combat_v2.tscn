@@ -1,8 +1,10 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI_New/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_run_disabled.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_inventory_disabled.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=7]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=9]
@@ -561,10 +563,14 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemPanel"]
-margin_left = 18.0
-margin_top = 19.0
-margin_right = 424.0
+margin_left = 22.0
+margin_top = 24.0
+margin_right = 418.0
 margin_bottom = 227.0
+rect_clip_content = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="ItemPanel/ScrollContainer"]
 custom_constants/vseparation = 13
@@ -609,6 +615,7 @@ __meta__ = {
 }
 
 [node name="debugvictory" type="Button" parent="ItemPanel"]
+visible = false
 margin_left = 18.0
 margin_top = 14.0
 margin_right = 392.0
@@ -763,6 +770,7 @@ toggle_mode = true
 texture_normal = ExtResource( 43 )
 texture_pressed = ExtResource( 44 )
 texture_hover = ExtResource( 41 )
+texture_disabled = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -775,6 +783,7 @@ margin_bottom = 106.006
 texture_normal = ExtResource( 45 )
 texture_pressed = ExtResource( 42 )
 texture_hover = ExtResource( 40 )
+texture_disabled = ExtResource( 4 )
 
 [node name="Rewards" type="TextureRect" parent="."]
 visible = false

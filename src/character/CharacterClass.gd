@@ -29,6 +29,8 @@ var combatgroup = ''
 var position = 0
 var taunt = null
 var selectedskill = 'attack'
+
+var previous_location
 #constant stats
 
 #to delegate!

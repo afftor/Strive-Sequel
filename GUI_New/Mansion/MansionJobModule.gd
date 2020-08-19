@@ -33,7 +33,8 @@ func set_work_rule(rule):
 	
 	
 	if currentjob != null:
-		show_job_details(currentjob)
+		var gatherable = Items.materiallist.has(currentjob.code)
+		show_job_details(currentjob, gatherable)
 
 func cancel_job_choice():
 	$ConfirmButton.hide()
@@ -139,6 +140,7 @@ func show_job_details(job, gatherable = false):
 		if job.has("tool_type") && job.tool_type != "":
 			work_tools = statdata.worktoolnames[job.tool_type]
 	else:
+		print("else")
 		job_name = job.name
 		if job.has("worktool"):
 			work_tools = statdata.worktoolnames[job.worktool]
@@ -170,6 +172,7 @@ func show_job_details(job, gatherable = false):
 				worktool = "worktool"
 			if job.has("tool_type"):
 				worktool = "tool_type"
+				print("here")
 			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
 
@@ -192,9 +195,21 @@ func show_job_details(job, gatherable = false):
 				var number
 				number = person.get_progress_task(job.code, i.code)/i.progress_per_item
 				newbutton.get_node("number").text = str(stepify(number * 24, 0.1))
-				newbutton.get_node("icon").texture = i.icon
+				if i.has("icon"):
+					newbutton.get_node("icon").texture = i.icon
+				else:
+					var item_icon
+					if Items.materiallist.has(i.item):
+						item_icon = Items.materiallist[i.item].icon
+						newbutton.get_node("icon").texture = item_icon
 				newbutton.set_meta("resource", i.code)
-				globals.connecttexttooltip(newbutton, tr(i.descript) + text)
+				if i.has("descript"):
+					globals.connecttexttooltip(newbutton, tr(i.descript) + text)
+				else:
+					var item_descript
+					if Items.materiallist.has(i.item):
+						item_descript = Items.materiallist[i.item].descript
+						globals.connecttexttooltip(newbutton, tr(item_descript) + text)
 				newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
 	else:
 		var number
@@ -205,6 +220,7 @@ func show_job_details(job, gatherable = false):
 		newbutton.get_node("icon").texture = job.icon
 		newbutton.set_meta("resource", job.code)
 		globals.connectmaterialtooltip(newbutton, job, text)
+		newbutton.connect('pressed', self, 'select_resource', [job, job.code, newbutton])
 		selected_job = job
 	var default_resource = $job_details/ResourceOptions.get_child(1) if $job_details/ResourceOptions.get_child(1).has_meta("resource") else $job_details/ResourceOptions.get_child(0)
 	selected_resource = default_resource.get_meta("resource")

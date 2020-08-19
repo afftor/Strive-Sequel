@@ -166,10 +166,7 @@ func upgrade_stat():
 	ResourceScripts.game_res.money -= substract_gold
 	for material in substract_materials:
 		ResourceScripts.game_res.materials[material] -= substract_materials[material]
-	print(" character.get_stat(stat) + 1:",  character.get_stat(stat) + 1)
 	character.add_stat(stat, 1)
-	print(" character.get_stat(stat):",  character.get_stat(stat))
-	print(" stat:",  stat)
 	show_stats(character)
 	show_stat_info(stat, character)
 

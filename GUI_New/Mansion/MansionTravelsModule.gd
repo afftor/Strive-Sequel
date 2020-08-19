@@ -21,6 +21,10 @@ func show_location_list(pressed):
 	locations_window.open()
 
 
+func update():
+	var locations_window = get_parent().Locations
+	$LocationListButton.pressed = locations_window.is_visible()
+
 
 func open_character_dislocation():
 	if get_parent().mansion_state == "travels":
@@ -146,7 +150,12 @@ func update_character_dislocation():
 		if selected_travel_characters.size() > 0 :
 			var max_time = 0
 			for person in selected_travel_characters:
-				max_time = max(ceil(globals.calculate_travel_time(person.travel.location, 'Aliron').time /  ResourceScripts.game_party.characters[person.id].travel_per_tick()), max_time)
+				var person_location
+				if person.travel.location == "travel":
+					person_location = person.previous_location
+				else:
+					person_location = person.travel.location
+				max_time = max(ceil(globals.calculate_travel_time(person_location, 'Aliron').time /  ResourceScripts.game_party.characters[person.id].travel_per_tick()), max_time)
 			text += "\nTravel Time: " + str(max_time) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
@@ -209,6 +218,7 @@ func travel_confirm():
 		if !person.is_controllable():
 			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
 		if variables.instant_travel == false:
+			person.previous_location = person.travel.location
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = destination_area, location = destination}
