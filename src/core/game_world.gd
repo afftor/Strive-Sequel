@@ -46,6 +46,7 @@ func advance_day():
 	update_locations()
 
 func quest_kill_receiver(monstercode):
+	print(1)
 	for i in areas.values():
 		for guild in i.quests.factions:
 			for quest in i.quests.factions[guild].values():
@@ -133,3 +134,13 @@ func fail_quest(quest):
 			globals.return_characters_from_location(i.location)
 			areas[i.area].locations.erase(i.location)
 			areas[i.area].questlocations.erase(i.location)
+
+func get_quest_by_id(id):
+	for i in ResourceScripts.game_world.areas.values():
+		for guild in i.quests.factions:
+			for quest in i.quests.factions[guild].values():
+				if quest.id == id:
+					return quest
+		for quest in i.quests.global.values():
+			if quest.id == id:
+				return quest

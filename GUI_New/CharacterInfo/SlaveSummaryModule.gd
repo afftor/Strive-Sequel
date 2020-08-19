@@ -65,12 +65,12 @@ func show_summary():
 
 	for i in ['physics','wits','charm','sexuals']:
 		if i != 'sexuals':
-			var color = set_color(person.get_stat(i))
+			var color = set_color(person.get_stat(i+'_bonus'))
 			get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
 			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i))) 
 			get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_factor') * 20)
 		else:
-			var color = set_color(person.get_stat(i))
+			var color = set_color(person.get_stat(i+'_bonus'))
 			get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
 			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
@@ -91,5 +91,9 @@ func show_summary():
 
 
 func set_color(value):
-	var color = Color(0.31,0.99,0.51,1) if value > 0 else Color(0.99,0.31,0.36,1)
+	var color = Color(0.98,0.88,0.51,1)
+	if value > 0:
+		color = Color(0.31,0.99,0.51,1)  
+	elif value < 0:
+		color = Color(0.99,0.31,0.36,1)
 	return color

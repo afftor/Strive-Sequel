@@ -96,12 +96,12 @@ func show_slave_info():
 
 		for i in ['physics','wits','charm','sexuals']:
 			if i != 'sexuals':
-				var color = set_color(person.get_stat(i))
+				var color = set_color(person.get_stat(i+"_bonus"))
 				get_node(i).text = str(floor(person.get_stat(i)))
 				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
 			else:
-				var color = set_color(person.get_stat(i))
+				var color = set_color(person.get_stat(i+"_bonus"))
 				get_node(i).text = str(floor(person.get_stat(i)))
 				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = '100'
@@ -155,7 +155,11 @@ func show_slave_info():
 			newnode.hint_tooltip = person.translate(i.description)
 
 func set_color(value):
-	var color = Color(0.31,0.99,0.51,1) if value > 0 else Color(0.99,0.31,0.36,1)
+	var color = Color(0.87,0.87,0.87,1)
+	if value > 0:
+		color = Color(0.31,0.99,0.51,1)  
+	elif value < 0:
+		color = Color(0.99,0.31,0.36,1)
 	return color
 	
 

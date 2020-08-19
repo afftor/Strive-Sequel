@@ -20,8 +20,8 @@ var scenedict = {
 		image = 'dungeonclear',
 		tags = [],
 		options = [
-			{code = 'complete_skirmish', text = 'Leave', reqs = []}],
-		
+			{code = 'complete_skirmish', text = 'Leave', reqs = [], bonus_effects = [{code = 'complete_active_location_quests'}]},
+		]
 		},
 	
 	

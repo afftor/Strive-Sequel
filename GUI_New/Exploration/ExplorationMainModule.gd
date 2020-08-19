@@ -591,10 +591,6 @@ func enter_dungeon():
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Skip to last room'
 			newbutton.connect("pressed",self,"skip_to_boss")
-	# else:
-	# 	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-	# 	newbutton.text = 'Forget Location'
-	# 	newbutton.connect("pressed",self,"clear_dungeon")
 
 func skip_to_boss():
 	current_level = active_location.levels.size()
@@ -667,13 +663,6 @@ func enter_level(level, skip_to_end = false):
 		newbutton.text = 'Skip to last room'
 		newbutton.connect("pressed",self,"enter_level", [level, true])
 	
-#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-#	newbutton.text = 'Roam'
-#	newbutton.connect("pressed",self,"area_advance",['roam'])
-	
-#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-#	newbutton.text = 'Return'
-#	newbutton.connect("pressed",self,"enter_dungeon")
 	build_location_group()
 	build_location_description()
 
@@ -688,8 +677,10 @@ func advance():
 			current_stage = active_location.progress.stage
 			current_level = active_location.progress.level
 		if check_dungeon_end():
-			active_location.completed = true
-			check_events("dungeon_complete")
+			if active_location.completed == false:
+				active_location.completed = true
+				globals.common_effects([{code = "complete_active_location_quests"}])
+				check_events("dungeon_complete")
 			$LocationGui/Resources/Forget.visible = true
 			$LocationGui/Resources/SelectWorkers.visible = true
 			$LocationGui/Resources/Materials.update()

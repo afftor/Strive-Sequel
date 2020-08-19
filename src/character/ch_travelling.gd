@@ -67,6 +67,7 @@ func make_location_description():
 	return text
 
 func return_to_mansion():
+	parent.set_work('travel')
 	var active_area
 	var active_location
 	if location == 'travel':

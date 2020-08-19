@@ -17,11 +17,11 @@ var stats_dict = {
 }
 
 var price = {
-	2: {gold = 100, wood = 10, woodmagic = 1000},
+	2: {gold = 100, wood = 10},
 	3: {gold = 200, woodmagic = 10},
-	4: {gold = 500, wood = 10},
-	5: {gold = 700, wood = 10},
-	6: {gold = 5000},
+	4: {gold = 500, woodiron = 10},
+	5: {gold = 700, steel = 10},
+	6: {gold = 5000, woodancient = 10},
 }
 
 var substract_gold = 0

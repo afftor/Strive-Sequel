@@ -1,8 +1,24 @@
+Stealthfix
+Fixed ongoing actions not being cancellable
+Fixed characters not returning when location is being forgotten
+Fixed quest locations not completing every time
 0.3.0b
+Added unique icons for new class spells
+Added buffs to character info panel
 Fixed lust growing over the cap
 Fixed submission/loyalty decaying too fast
 Fixed spells in dungeon not working
 Fixed upgrades breaking on game reload
+Fixed character's classes not opening on right click
+Fixed outside time not synching with mansion time
+Fixed resources displaying in elven capital
+Fixed craft items and categories being available without upgrades
+Fixed some bugs with item unequip
+Fixed dating limit per day not functioning
+Fixed sell item price being 100%
+Fixed enemy hunt quests not counting kills
+Fixed dungeon completion quests not registering their completion
+Fixed many smaller issues
 0.3.0a
 Fixed prostitution task not working
 Fixed sex interaction being bugged

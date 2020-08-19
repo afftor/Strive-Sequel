@@ -194,7 +194,7 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['warriors_threat_easy','warriors_dungeon_easy','warriors_monster_hunt_easy'],
+		quests_easy = ['warriors_dungeon_easy','warriors_threat_easy','warriors_monster_hunt_easy'],
 		quests_medium = ['warriors_threat_medium', 'warriors_dungeon_medium','warriors_monster_hunt_medium'],
 		quests_hard = [],
 		slavenumber = [2,2],
@@ -232,7 +232,7 @@ var factiondata = {
 		events = [
 			'workers_init',
 			],
-		quests_easy = ['workers_resources_easy','workers_craft_tools_easy','workers_threat_easy','workers_food_easy'],
+		quests_easy = ['workers_threat_easy','workers_resources_easy','workers_craft_tools_easy','workers_food_easy'],
 		quests_medium = ['workers_resources_medium','workers_food_medium','workers_craft_tools_medium'],
 		quests_hard = ['workers_resources_hard','workers_food_hard'],
 		slavenumber = [2,2],
