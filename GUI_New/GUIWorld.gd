@@ -281,39 +281,9 @@ func test_mode():
 	characters_pool.move_to_state(character.id)
 	ResourceScripts.game_res.upgrades.forge = 3
 	ResourceScripts.game_res.upgrades.tailor = 1
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-
-#	character.create('HalfkinCat', 'futa', 'random')
-#	characters_pool.move_to_state(character.id)
 	
-	globals.impregnate(character, character)
-	character.get_stat('pregnancy', true).duration = 2
+#	globals.impregnate(character, character)
+#	character.get_stat('pregnancy', true).duration = 2
 	character.statlist.statlist.sex_skills.anal = 100
 	character.unlock_class("master")
 	character.unlock_class("caster")
@@ -543,7 +513,7 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-	# input_handler.interactive_message('loan_event1', '', {})
+#	input_handler.interactive_message('fighters_election4', '', {})
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()

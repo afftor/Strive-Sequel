@@ -1126,7 +1126,7 @@ func common_effects(effects):
 			'make_quest_location':
 				ResourceScripts.world_gen.make_quest_location(i.value)
 			'remove_quest_location':
-				input_handler.remove_location(i.value)
+				remove_location(i.value)
 			'set_music':
 				input_handler.SetMusic(i.value)
 			'lose_game':

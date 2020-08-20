@@ -370,4 +370,5 @@ func fight_skirmish():
 func quest_fight(code):
 	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
+	close(true)
 

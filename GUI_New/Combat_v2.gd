@@ -71,6 +71,7 @@ func _init():
 	
 
 func _ready():
+	debug = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).test_mode
 	autoskill_dummy = ResourceScripts.scriptdict.class_slave.new()
 	autoskill_dummy.position = 0
 	autoskill_dummy.displaynode = ResourceScripts.scriptdict.fighternode.new()

@@ -165,7 +165,7 @@ var data = {
 		{text = "FIGHTERSELECTION5", reqs = [], 
 		bonus_effects = [
 			{code = 'decision', value = 'fighters_election_support'},
-			{code = 'material_change', operant = '-', name = 'lich_skull', value = 1},
+			{code = 'material_change', operant = '-', material = 'lich_skull', value = 1},
 			{code = 'complete_quest', value = 'fighters_election_quest'}]},
 		],
 		options = [
@@ -271,7 +271,7 @@ var data = {
 		bonus_effects = [
 			{code = 'decision', value = 'aire_is_saved'},
 			{code = 'decision', value = 'deal_with_lich'},
-			{code = 'material_change', operant = '+', name = 'lich_skull', value = 1},
+			{code = 'material_change', operant = '+', material = 'lich_skull', value = 1},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			], dialogue_argument = 1, type = 'next_dialogue'},
 		],
@@ -299,7 +299,7 @@ var data = {
 		bonus_effects = [
 			{code = 'decision', value = 'aire_is_dead'},
 			{code = 'decision', value = 'deal_with_lich'},
-			{code = 'material_change', operant = '+', name = 'lich_skull', value = 1},
+			{code = 'material_change', operant = '+', material = 'lich_skull', value = 1},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],
@@ -309,12 +309,13 @@ var data = {
 		variations = [
 		{reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
+		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "", reqs = [],
+		{text = "LICHENCWINAIRE", reqs = [],
 		bonus_effects = [
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
-			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
+			]},
 		],
 		options = [
 		{code = 'lich_aire_talk1', reqs = [], text = "LICHENCWINAIRENOTDEAD", dialogue_argument = 1},
@@ -326,11 +327,10 @@ var data = {
 		text = [
 		{text = "LICHENCWINELSE", reqs = [],
 		bonus_effects = [
-			{code = 'remove_quest_location', value = 'quest_fighters_lich'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'}]},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), bonus_effects = {code = 'remove_quest_location', value = 'quest_fighters_lich'}},
 		],
 		},
 		],
