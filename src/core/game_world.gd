@@ -46,7 +46,6 @@ func advance_day():
 	update_locations()
 
 func quest_kill_receiver(monstercode):
-	print(1)
 	for i in areas.values():
 		for guild in i.quests.factions:
 			for quest in i.quests.factions[guild].values():

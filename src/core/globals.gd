@@ -434,6 +434,7 @@ func LoadGame(filename):
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
 		ResourceScripts.set(p, dict2inst(savedict[p]))
+	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res.fix_serialization()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
