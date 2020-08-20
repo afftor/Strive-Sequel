@@ -58,9 +58,13 @@ func _ready():
 		var main_module = MAIN_MODULES[scene].instance()
 		add_child(main_module)
 		gui_data[scene] = {"main_module": main_module}
-
-	CurrentScene = gui_data["MANSION"].main_module
-	BaseScene = gui_data["MANSION"].main_module
+	if test_mode:
+		if !set_window_to_open():
+			CurrentScene = gui_data["MANSION"].main_module
+			BaseScene = gui_data["MANSION"].main_module
+	else:
+		CurrentScene = gui_data["MANSION"].main_module
+		BaseScene = gui_data["MANSION"].main_module
 	input_handler.get_spec_node(input_handler.NODE_CLASSINFO, null, false, false)
 	visibility_handler()
 	if is_new_game:
@@ -513,7 +517,23 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-#	input_handler.interactive_message('fighters_election4', '', {})
+	
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()
+
+
+
+	# input_handler.interactive_message('servants_election_finish5', '', {})
+
+
+
+func set_window_to_open():
+	return false
+	CurrentScene = gui_data.EXPLORATION.main_module
+	BaseScene = gui_data.EXPLORATION.main_module
+	gui_data["MANSION"].main_module.selected_location = "Aliron"
+	BaseScene.open()
+	BaseScene.active_area = ResourceScripts.game_world.areas.plains
+	var faction = BaseScene.active_area.factions["servants"]
+	BaseScene.City.enter_guild(faction)

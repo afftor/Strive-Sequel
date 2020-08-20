@@ -35,6 +35,13 @@ func open(scene, not_save = false):
 	if scene.tags.has("blackscreen_transition_common"):
 		ResourceScripts.core_animations.BlackScreenTransition(1)
 		yield(get_tree().create_timer(1), "timeout")
+		if scene.tags.has("close_guild"):
+			var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+			var guild = GUIWorld.gui_data.EXPLORATION.main_module.City
+			guild.opened_guild = {code = ""}
+			guild.get_parent().get_node("GuildBG").hide()
+			guild.Guild.hide()
+			guild.get_node("GuildMenuBG").hide()
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		yield(get_tree().create_timer(2), "timeout")

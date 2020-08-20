@@ -143,6 +143,7 @@ margin_right = 671.0
 margin_bottom = 219.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 9 )
 alignment = 2
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
