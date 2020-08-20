@@ -48,6 +48,7 @@ func update():
 
 
 func set_active_hero(hero):
+	GUIWorld.gui_data["MANSION"].main_module.active_person = hero
 	selectedhero = hero
 	SlaveList.update()
 	ItemsList.buildinventory()

@@ -148,17 +148,17 @@ func update():
 	# self.rect_position.y = 1080 - (height - get_parent().BUTTON_HEIGHT * 2) - 15 # 15 px shift from bottom edge
 
 
-
-
 func enter_guild(guild):
 	update_buttons("guild")
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false
 	get_parent().QuestBoard.is_quest_board_opened = false
 	get_parent().clear_submodules()
-	if opened_guild.code == guild.code && get_tree().get_root().get_node("dialogue") != null && !get_tree().get_root().get_node("dialogue").is_visible():
+	if opened_guild.code == guild.code && get_tree().get_root().get_node_or_null("dialogue") && !get_tree().get_root().get_node("dialogue").is_visible():
+		ResourceScripts.core_animations.FadeAnimation(get_parent().get_node("GuildBG"),0.5)
 		Guild.hide()
 		$GuildMenuBG.hide()
+		yield(get_tree().create_timer(0.5), "timeout")
 		get_parent().get_node("GuildBG").hide()
 		opened_guild = {code = ""}
 		return
@@ -256,6 +256,14 @@ func location_purchase():
 	newbutton.get_node("Label").get("custom_fonts/font").set_size(20)
 	newbutton.get_node("Icon").hide()
 	newbutton.connect("pressed", self, "open_city", [get_parent().selected_location])
+
+	Guild.hide()
+	$GuildMenuBG.hide()
+	if get_parent().get_node("GuildBG").is_visible():
+		ResourceScripts.core_animations.FadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
+	get_parent().get_node("GuildBG").hide()
+	opened_guild = {code = ""}
 
 
 func purchase_location(purchasing_location):

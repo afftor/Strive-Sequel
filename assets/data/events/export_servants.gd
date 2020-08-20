@@ -231,7 +231,7 @@ var data = {
 	servants_election_finish6 = {
 		image = null,
 		character = 'amelia',
-		tags = ['dialogue_scene','blackscreen_transition_common'],
+		tags = ['dialogue_scene','blackscreen_transition_common', 'close_guild'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH6", reqs = []},
 		],

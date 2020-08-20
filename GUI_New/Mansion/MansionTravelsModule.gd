@@ -212,7 +212,7 @@ func travel_confirm():
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	for person in selected_travel_characters:
-		person.remove_from_task(true)
+		person.remove_from_task()
 		person.process_event(variables.TR_MOVE)
 		var travel_cost = globals.calculate_travel_time(destination,person.travel.location)
 		if !person.is_controllable():

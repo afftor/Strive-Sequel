@@ -13,7 +13,6 @@ onready var NavModule = $NavigationModule
 onready var CraftModule = $MansionCraftModule
 onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule
-onready var InteractSelection = $InteractSelectionModule
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule

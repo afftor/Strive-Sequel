@@ -30,6 +30,7 @@ var city_options = {
 	location_purchase = "Buy Dungeon",
 	quest_board = "Notice Board",
 }
+
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
 	2: "LocationGui/Positions/HBoxContainer/frontrow/2",
@@ -98,6 +99,9 @@ func show_quest_gen(action = "show"):
 
 func clear_submodules():
 	for module in submodules:
+		# if module.is_visible():
+		# 	ResourceScripts.core_animations.FadeAnimation(module,0.5)
+		# 	yield(get_tree().create_timer(0.5), "timeout")
 		module.hide()
 	submodules.clear()
 

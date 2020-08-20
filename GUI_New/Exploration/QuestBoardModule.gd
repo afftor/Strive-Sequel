@@ -11,22 +11,6 @@ func _ready():
 
 
 func quest_board():
-	get_parent().clear_submodules()
-	if !get_parent().submodules.has(self):
-		get_parent().submodules.append(self)
-	Shop.is_shop_opened = false
-	SlaveMarket.is_slave_market_opened = false
-	$QuestDetails.hide()
-	is_quest_board_opened = !is_quest_board_opened
-	if !is_quest_board_opened:
-		hide()
-		return
-	get_parent().City.Guild.hide()
-	get_parent().get_node("GuildBG").hide()
-	get_parent().City.opened_guild = {code = ""}
-	get_parent().City.update_buttons("quest_board")
-	show()
-	get_parent().selectedquest = null
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in get_parent().active_area.quests.factions:
 		for k in get_parent().active_area.quests.factions[i].values():
@@ -39,6 +23,33 @@ func quest_board():
 				newbutton.get_node("ButtonOverlay").connect("mouse_entered",self,"change_texture", [newbutton, "in"])
 				newbutton.get_node("ButtonOverlay").connect("mouse_exited",self,"change_texture", [newbutton, "out"])
 				newbutton.set_meta("quest", k)
+	get_parent().clear_submodules()
+	if !get_parent().submodules.has(self):
+		get_parent().submodules.append(self)
+	Shop.is_shop_opened = false
+	SlaveMarket.is_slave_market_opened = false
+	$QuestDetails.hide()
+
+	# Animations
+	is_quest_board_opened = !is_quest_board_opened
+	if !is_quest_board_opened:
+		# hide()
+		return
+	get_parent().City.Guild.hide()
+	if get_parent().get_node("GuildBG").is_visible():
+		ResourceScripts.core_animations.FadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
+		get_parent().get_node("GuildBG").hide()
+	get_parent().City.opened_guild = {code = ""}
+	get_parent().City.update_buttons("quest_board")
+	self.set("modulate", Color(1,1,1,0))
+	show()
+	ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
+	if !get_parent().get_node("GuildBG").is_visible():
+		yield(get_tree().create_timer(0.5), "timeout")
+	self.set("modulate", Color(1,1,1,1))
+	get_parent().selectedquest = null
+
 
 
 func change_texture(button, state):
