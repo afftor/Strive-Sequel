@@ -90,16 +90,16 @@ func update():
 		# 	$RichTextLabel.bbcode_text += "\n\n" + person.translate(make_location_description())
 	
 		$food_consumption/Label.text = str(floor(person.get_stat("food_consumption")))
-		if person.get_stat("food_love") != null:
-			$food_love/Button.texture = images.icons[person.get_stat("food_love")]
-			$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.get_stat("food_love").to_upper())
+		if person.food.food_love != null:
+			$food_love/Button.texture = images.icons[person.food.food_love]
+			$food_love/Button.hint_tooltip = tr("FOODTYPE" +str(person.food.food_love).to_upper())
 		$food_love/Button.visible = $food_love/Button.texture != null
 		input_handler.ClearContainer($food_hate/Container)
-		if person.get_stat("food_hate") != null:
-			for i in person.get_stat("food_hate"):
+		if person.food.food_hate != null:
+			for i in person.food.food_hate:
 				var newnode = input_handler.DuplicateContainerTemplate($food_hate/Container)
 				newnode.texture = images.icons[i]
-				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
+				newnode.hint_tooltip =  tr("FOODTYPE" +str(i).to_upper())
 
 		input_handler.ClearContainer($SexSkills/VBoxContainer)
 		var s_skills = person.get_stat('sex_skills')
