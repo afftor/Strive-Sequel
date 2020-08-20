@@ -95,13 +95,14 @@ func update():
 		if person.get_stat("food_love") != null:
 			$food_love/Button.texture = images.icons[person.get_stat("food_love")]
 			$food_love/Button.hint_tooltip = tr("FOODTYPE" +person.get_stat("food_love").to_upper())
-		$food_love/Button.visible = $food_love/Button.texture != null
+		$food_love/Button.visible = person.get_stat("food_love") != null
 		input_handler.ClearContainer($food_hate/Container)
 		if person.get_stat("food_hate") != null:
 			for i in person.get_stat("food_hate"):
 				var newnode = input_handler.DuplicateContainerTemplate($food_hate/Container)
 				newnode.texture = images.icons[i]
 				newnode.hint_tooltip =  tr("FOODTYPE" +i.to_upper())
+		$food_hate/Container.visible = person.get_stat("food_hate") != null
 
 		input_handler.ClearContainer($SexSkillsControl/ScrollContainer/VBoxContainer)
 		var s_skills = person.get_stat('sex_skills')
