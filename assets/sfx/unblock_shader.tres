@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform vec2 pos;
+uniform sampler2D mask;
+
+void fragment(){
+    vec2 mask_pos = UV - pos * TEXTURE_PIXEL_SIZE;
+    float m = texture(mask, mask_pos).a;
+    vec4 color = texture(TEXTURE, UV);
+    color.a = color.a * m;
+    COLOR = color;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/pos = Vector2( 0, 0 )

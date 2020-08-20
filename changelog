@@ -1,6 +1,6 @@
 Fixed sex skills being shared by characters
 Fixed birth sequence crashing
-Stealthfix
+Fixed enemy hunt quests not counting kills after game load
 Fixed ongoing actions not being cancellable
 Fixed characters not returning when location is being forgotten
 Fixed quest locations not being turnable after completion
