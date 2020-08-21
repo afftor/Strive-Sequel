@@ -118,6 +118,7 @@ func _ready():
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	for i in $DietPanel/VBoxContainer.get_children():
 		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
+	
 	open()
 
 
@@ -133,32 +134,32 @@ func select_sex(value):
 
 
 func select_food_pref(selected_id, type):
-	var food_hate = person.get_stat('food_hate', true)
+	var food_hate = person.food.food_hate
 	match selected_id:
 		0:
-			if person.get_stat('food_love') == type:
-				person.set_stat('food_love', '')
+			if person.food.food_love == type:
+				person.food.food_love = ""
 			if food_hate.has(type):
 				food_hate.erase(type)
 		1:
-			person.set_stat('food_love', type)
+			person.food.food_love = type
 			if food_hate.has(type):
 				food_hate.erase(type)
 		2:
 			if !food_hate.has(type):
 				food_hate.append(type)
-			if person.get_stat('food_love') == type:
-				person.set_stat('food_love', '')
+			if person.food.food_love == type:
+				person.person.food.food_love = ""
 	select_diet()
 
 
 func select_diet():
 	var array = ['Neutral', "Like", "Hate"]
 	for i in $DietPanel/VBoxContainer.get_children():
-		i.get_node("OptionButton").set_item_disabled(1, person.get_stat('food_love') != '')
-		if  person.get_stat('food_love') == i.name:
+		i.get_node("OptionButton").set_item_disabled(1, person.food.food_love != '')
+		if  person.food.food_love == i.name:
 			i.get_node("OptionButton").selected = 1
-		elif person.get_stat('food_hate').has(i.name):
+		elif person.food.food_hate.has(i.name):
 			i.get_node("OptionButton").selected = 2
 		else:
 			i.get_node("OptionButton").selected = 0
@@ -169,10 +170,10 @@ func select_diet():
 
 
 func finish_diet_selection():
-	preservedsettings['food_love'] = person.get_stat('food_love')
-	preservedsettings['food_hate'] = person.get_stat('food_hate')
-	var text = person.get_stat('food_love') + "|"
-	for i in person.get_stat('food_hate'):
+	preservedsettings['food_love'] = person.food.food_love
+	preservedsettings['food_hate'] = person.food.food_hate
+	var text = person.food.food_love + "|"
+	for i in person.food.food_hate:
 		text += i + " "
 #	$bodyparts2/diet.text = text
 
@@ -269,8 +270,8 @@ func finish_character():
 	input_handler.add_random_chat_message(person, 'hire')
 
 func text_changed(text, value):
-	if text != '':
-		preservedsettings[value] = text
+	# if text != '':
+	preservedsettings[value] = text
 	apply_preserved_settings()
 	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
 

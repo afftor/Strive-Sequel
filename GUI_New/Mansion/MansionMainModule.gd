@@ -359,7 +359,12 @@ func update_sex_date_buttons():
 	else:
 		SexSelect.get_node("SexButton").disabled = true
 	
-	SexSelect.get_node("DateButton").disabled = sex_participants.size() > 1 || sex_participants.size() == 0 || sex_participants.has(ResourceScripts.game_party.get_master()) || ResourceScripts.game_globals.daily_dates_left <= 0
+	SexSelect.get_node("DateButton").disabled = (sex_participants.size() > 1 
+												|| sex_participants.size() == 0 
+												|| sex_participants.has(ResourceScripts.game_party.get_master()) 
+												|| ResourceScripts.game_globals.daily_dates_left <= 0 
+												|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
+												)
 
 func set_hovered_person(node, person):
 	hovered_person = person

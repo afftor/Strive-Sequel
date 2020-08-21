@@ -66,6 +66,7 @@ func rebuild():
 				build_for_craft(person, newbutton)
 			"sex":
 				build_sex_selection(person, newbutton)
+		newbutton.get_node("job").disabled = person.travel.location == "travel"
 	var pos = self.rect_size
 	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
@@ -244,15 +245,19 @@ func show_location_characters(button = null):
 		if person.is_visible():
 			visible_persons.append(person)
 			if prev_selected_location != selected_location:
-				for visible in visible_persons:
-					visible.pressed = false
+				for visible_person in visible_persons:
+					visible_person.pressed = false
 				get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 				# get_parent().set_active_person(visible_persons[0].get_meta("slave"))
+		if get_parent().mansion_state == "sex":
+			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
+			
 	if !selected_location in ["show_all"]:
 		get_parent().TravelsModule.dislocation_area = selected_location
 #	get_parent().TravelsModule.update_location_list()
 	if visible_persons.size() < 1:
-		selected_location = "show_all"			
+		selected_location = "show_all"
+
 
 
 
@@ -330,8 +335,7 @@ func update_button(newbutton):
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
 		else:
-			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
-	
+			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name	
 	
 	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100 && !person.has_profession('master'):
 		newbutton.get_node("obed").text = str(ceil(person.get_stat('obedience')))
@@ -364,7 +368,7 @@ func update_button(newbutton):
 	if person_location != null:
 		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
 	# 		# newbutton.get_node('job/Label').text = 'Positioned: ' + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[person.travel.location].area].name
-	
+	newbutton.get_node("job").disabled = person.travel.location == "travel"
 	newbutton.get_node("state").texture = person.get_class_icon()
 
 var obed_textures = {

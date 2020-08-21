@@ -1,6 +1,5 @@
 extends Panel
-
-
+var slave_classes = ['slave','servant']
 func _ready():
 	$descript.connect("meta_hover_started", self, 'text_url_hover')
 	$descript.connect("meta_hover_ended", self, "text_url_hover_hide")
@@ -14,16 +13,17 @@ func _ready():
 		$ScrollContainer/HBoxContainer/bodyparts2.get_node(i).connect("pressed", self, "select_checkbox", [i, $ScrollContainer/HBoxContainer/bodyparts2.get_node(i)])
 	
 	$ScrollContainer/HBoxContainer/bodyparts2/diet.connect("pressed", self, 'select_diet')
-	for i in get_parent().slave_classes:
-		$ScrollContainer/HBoxContainer/bodyparts2/slave_class.add_item(statdata.slave_class_names[i])
-		$ScrollContainer/HBoxContainer/bodyparts2/slave_class.connect("item_selected", self, "select_type", [$bodyparts2/slave_class])
 	for i in variables.personality_array:
 		$ScrollContainer/HBoxContainer/bodyparts2/personality.add_item(i.capitalize())
 	$ScrollContainer/HBoxContainer/bodyparts2/personality.connect("item_selected", self, "select_personality")
 	globals.connecttexttooltip($ScrollContainer/HBoxContainer/bodyparts2/personality, tr("SLAVEPARTPERSONALITYDESCRIPT"))
+	for i in slave_classes:
+		get_node("ScrollContainer/HBoxContainer/bodyparts2/slave_class").add_item(statdata.slave_class_names[i])
+	get_node("ScrollContainer/HBoxContainer/bodyparts2/slave_class").connect("item_selected", self, "select_type", [$ScrollContainer/HBoxContainer/bodyparts2/slave_class])
 #	$DietPanel/Button.connect("pressed", self, 'finish_diet_selection')
 #	for i in $DietPanel/VBoxContainer.get_children():
 #		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
+
 
 
 func build_bodyparts():

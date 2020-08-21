@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/BLKCHCRY.TTF" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=9]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=21]
 [ext_resource path="res://src/scenes/SaveLoadPanel.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/scenes/WarnScreen.tscn" type="PackedScene" id=23]
@@ -560,6 +561,7 @@ margin_left = 19.0441
 margin_top = 49.6543
 margin_right = 918.044
 margin_bottom = 687.654
+theme = ExtResource( 9 )
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 bbcode_text = "Fixed some dislike traits not applying and making fingering apply twice
