@@ -8,6 +8,7 @@ onready var actions = $MarginContainer/VBoxContainer/HBoxContainer2/VBoxContaine
 onready var modalert = $AcceptDialog
 
 func _ready():
+	rect_size = OS.window_size
 	editor_core.connect("editor_save", self, 'editor_save_changes')
 	if modding_core.tables.size() == 0:
 		actions.visible = false
@@ -88,4 +89,5 @@ func create_mod():
 
 
 func exit():
-	input_handler.quit()
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [input_handler, 'quit', "Exit program?"])
+#	input_handler.quit()
