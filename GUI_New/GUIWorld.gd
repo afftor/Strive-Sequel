@@ -280,7 +280,7 @@ func test_mode():
 	ResourceScripts.game_world.make_world()
 	
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'futa', 'random')
+	character.create('Elf', 'male', 'random')
 	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
 	ResourceScripts.game_res.upgrades.forge = 3
@@ -295,8 +295,8 @@ func test_mode():
 	character.unlock_class("rogue")
 	character.unlock_class("druid")
 	character.unlock_class("souleater")
-	character.travel.location = 'L4'
-	character.travel.area = 'plains'
+	#character.travel.location = 'L4'
+	#character.travel.area = 'plains'
 	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(bow)
 	character.equip(bow)
@@ -421,6 +421,7 @@ func test_mode():
 	character.add_trait('core_trait')
 	character.set_slave_category('slave')
 	character.is_players_character = true
+	character.set_stat('consent', 100)
 
 	globals.common_effects(
 		[
@@ -433,6 +434,8 @@ func test_mode():
 					{code = 'sextrait', value = 'submissive', operant = 'add'},  #for sextrait/add setting, trait is appended to character's traits
 					{code = 'submission', operant = '+', value = 50},
 					{code = 'obedience', operant = '+', value = 30},
+					{code = 'hair_length', operant = '=', value = 'ear'},
+					{code = 'consent', operant = '+', value = 30},
 					{code = 'tag', operant = 'remove', value = 'no_sex'},
 				]
 			}
@@ -524,7 +527,7 @@ func test_mode():
 
 
 
-	# input_handler.interactive_message('servants_election_finish5', '', {})
+	#input_handler.interactive_message('fighters_election4', '', {})
 
 
 

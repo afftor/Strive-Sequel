@@ -46,7 +46,6 @@ func build_bodyparts():
 			workarray = racedata[i]
 		elif races.racelist.Human.bodyparts.has(i):
 			workarray = races.racelist.Human.bodyparts[i]
-		
 		var preserved_option_exists = false
 		for k in workarray:
 			$ScrollContainer/HBoxContainer/bodyparts.get_node(i).add_item(k)

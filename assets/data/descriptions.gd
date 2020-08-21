@@ -250,7 +250,9 @@ var tattoooptions = {
 var bodypartsdata = {
 	sex = {
 		male = {code = 'male', name = '', chardescript = '', bodychanges = [
-			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoulder',0.5]], reqs = []},
+			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoulder',0.5],['bald',0.2]], reqs = []},
+			{code = 'hair_length', value = [['bald',1]], reqs = [{code = 'race', race = 'Kobold', check = true}]},
+			{code = 'hair_length', value = [['ear',0.5],['shoulder',2], ['waist', 2], ['hips',0.5]], reqs = [{code = 'one_of_races', value = ['Elf','Drow'], check = true}]},
 			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['masculine',1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['masculine', 1]], reqs = []},
@@ -306,6 +308,7 @@ var bodypartsdata = {
 		halfsquid = {code = 'halfsquid', name = '', chardescript = '', bodychanges = []},
 	},
 	hair_length = {
+		bald = {code = 'bald', name = '', chardescript = '', bodychanges = []}, 
 		ear = {code = 'ear', name = '', chardescript = '', bodychanges = []}, 
 		neck = {code = 'neck', name = '', chardescript = '', bodychanges = []},
 		shoulder = {code = 'shoulder', name = '', chardescript = '', bodychanges = []},

@@ -292,7 +292,7 @@ var data = {
 		image = null,
 		tags = [],
 		text = [
-		{text = 'LICHENCCONLUSION', reqs =[]},
+		{text = 'LICHENCCONLUSION', reqs = []},
 		],
 		options = [
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), 
@@ -330,7 +330,7 @@ var data = {
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'}]},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), bonus_effects = {code = 'remove_quest_location', value = 'quest_fighters_lich'}},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), bonus_effects = [{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],
 		},
 		],

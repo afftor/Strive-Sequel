@@ -652,9 +652,9 @@ var TranslationDict = {
 	TASKCOOKING = "Cooking",
 	TASKCOOKINGDESCRIPT = "Craft food items. Must have chosen a recipe to cook. ",
 	TASKTAILOR = "Tailor",
-	TASKTAILORDESCRIPT = "Craft cloth and leather items and gear. Must have chosen the items to craft ",
+	TASKTAILORDESCRIPT = "Craft cloth and leather items and gear. Must have chosen the items to craft. ",
 	TASKSMITH = "Smith",
-	TASKSMITHDESCRIPT = "A skilled Blacksmith is a valuable person in any productive household.  They produce items made of metal and monster materials. \n\nThey craft Forge and Tailor products100% faster. [DP5]",
+	TASKSMITHDESCRIPT = "Craft forge and metal items and gear. Must have chosen the items to craft. ",
 	TASKALCHEMY = "Alchemy",
 	TASKALCHEMYDESCRIPT = "Craft alchemical potions and items. Must have chosen the items to craft. ",
 	TASKBUILDING = "Upgrading",
@@ -1377,6 +1377,7 @@ var TranslationDict = {
 	BODYPARTBODY_SHAPEHALFSPIDER = "half-spider",
 	BODYPARTBODY_SHAPEHALFHORSE = "half-horse",
 	BODYPARTBODY_SHAPEHALFSQUID = "half-squid",
+	BODYPARTHAIR_LENGTHBALD = "bald",
 	BODYPARTHAIR_LENGTHEAR = "ear",
 	BODYPARTHAIR_LENGTHNECK = "neck",
 	BODYPARTHAIR_LENGTHSHOULDER = "shoulder",
@@ -1526,6 +1527,8 @@ var TranslationDict = {
 	BODYPARTBODY_SHAPEHALFSPIDERDESCRIPT = "The lower portion of [his] body consists of a [color=yellow]spider's legs and abdomen[/color].",
 	BODYPARTBODY_SHAPEHALFHORSEDESCRIPT = "While [his] upper body is human, [his] lower body is [color=yellow]equine[/color] in nature.",
 	BODYPARTBODY_SHAPEHALFSQUIDDESCRIPT =  "The lower portion of [his] body consists of a [color=yellow]number of tentacle appendages[/color], similar to those of an octopus.",
+	
+	BODYPARTHAIR_LENGTHBALDDESCRIPT = "[He] [color=aqua]lacks[/color] any visible hair on [his] head.",
 	
 	BODYPARTHAIR_LENGTHEARDESCRIPT = "[His] [color=aqua][hair_color][/color] hair is cut [color=aqua]short[/color].",
 	BODYPARTHAIR_LENGTHNECKDESCRIPT = "[His] [color=aqua][hair_color][/color] hair falls down to just [color=aqua]below [his] neck[/color].",

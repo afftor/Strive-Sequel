@@ -562,7 +562,56 @@ margin_right = 918.044
 margin_bottom = 687.654
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
-bbcode_text = "Fixed some dislike traits not applying and making fingering apply twice
+bbcode_text = "0.3.0c
+Fixed sex skills being shared by characters
+Fixed birth sequence crashing
+Fixed enemy hunt quests not counting kills after game load
+Fixed ongoing actions not being cancellable
+Fixed characters not returning when location is being forgotten
+Fixed quest locations not being turnable after completion
+Fixed main quest bugs including lich and xari encounters
+Fixed liked/disliked food not beingh displayed correctly
+0.3.0b
+Added unique icons for new class spells
+Added buffs to character info panel
+Fixed lust growing over the cap
+Fixed submission/loyalty decaying too fast
+Fixed spells in dungeon not working
+Fixed upgrades breaking on game reload
+Fixed character's classes not opening on right click
+Fixed outside time not synching with mansion time
+Fixed resources displaying in elven capital
+Fixed craft items and categories being available without upgrades
+Fixed some bugs with item unequip
+Fixed dating limit per day not functioning
+Fixed sell item price being 100%
+Fixed enemy hunt quests not counting kills
+Fixed dungeon completion quests not registering their completion
+Fixed many smaller issues
+0.3.0a
+Fixed prostitution task not working
+Fixed sex interaction being bugged
+Fixed being able to select slave type on master creation
+Fixed quest locations not being usable
+Fixed characters not being returned to mansion in some cases
+Fixed wrong stats displayed on characters
+Fixed some resources not being gatherable
+0.3.0
+Global changes: Most resources are now gathered from locations
+New classes: Templar, Paladin, Shaman, Ranger, Bard, Archmage, Battlesmith, Technomancer
+New skills for classes: Healer, Necromancer, Sextoy
+Foreman's Hard Work now applies to all characters on the location.
+Alchemist's Firebomb now hits 1 row but with lower damage and 2 turns burn duration
+Blood Mage's Blood explosion is completely reworked
+Holy attack moved from Knight to Paladin
+Fixed some dislike traits not applying and making fingering apply twice
+Xp Conversion for master now only gives 0.5 xp per lust
+Serve and Reward with sex skills now also give xp
+Arrow Rain now only hits 1 line.
+Shackles now belong to Dominator class and increase Timid Factor by 2
+Greater shackles are removed
+Bless: Now only increase ATK by 25%
+Mental Enhancement: New Dominator skill. Increases MATK by 25% (similar to bless)
 0.2.1
 Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
 Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)
@@ -754,7 +803,56 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Fixed some dislike traits not applying and making fingering apply twice
+text = "0.3.0c
+Fixed sex skills being shared by characters
+Fixed birth sequence crashing
+Fixed enemy hunt quests not counting kills after game load
+Fixed ongoing actions not being cancellable
+Fixed characters not returning when location is being forgotten
+Fixed quest locations not being turnable after completion
+Fixed main quest bugs including lich and xari encounters
+Fixed liked/disliked food not beingh displayed correctly
+0.3.0b
+Added unique icons for new class spells
+Added buffs to character info panel
+Fixed lust growing over the cap
+Fixed submission/loyalty decaying too fast
+Fixed spells in dungeon not working
+Fixed upgrades breaking on game reload
+Fixed character's classes not opening on right click
+Fixed outside time not synching with mansion time
+Fixed resources displaying in elven capital
+Fixed craft items and categories being available without upgrades
+Fixed some bugs with item unequip
+Fixed dating limit per day not functioning
+Fixed sell item price being 100%
+Fixed enemy hunt quests not counting kills
+Fixed dungeon completion quests not registering their completion
+Fixed many smaller issues
+0.3.0a
+Fixed prostitution task not working
+Fixed sex interaction being bugged
+Fixed being able to select slave type on master creation
+Fixed quest locations not being usable
+Fixed characters not being returned to mansion in some cases
+Fixed wrong stats displayed on characters
+Fixed some resources not being gatherable
+0.3.0
+Global changes: Most resources are now gathered from locations
+New classes: Templar, Paladin, Shaman, Ranger, Bard, Archmage, Battlesmith, Technomancer
+New skills for classes: Healer, Necromancer, Sextoy
+Foreman's Hard Work now applies to all characters on the location.
+Alchemist's Firebomb now hits 1 row but with lower damage and 2 turns burn duration
+Blood Mage's Blood explosion is completely reworked
+Holy attack moved from Knight to Paladin
+Fixed some dislike traits not applying and making fingering apply twice
+Xp Conversion for master now only gives 0.5 xp per lust
+Serve and Reward with sex skills now also give xp
+Arrow Rain now only hits 1 line.
+Shackles now belong to Dominator class and increase Timid Factor by 2
+Greater shackles are removed
+Bless: Now only increase ATK by 25%
+Mental Enhancement: New Dominator skill. Increases MATK by 25% (similar to bless)
 0.2.1
 Added sex trait system: Sex traits can now be unlocked during interactions. Dislikes can now be removed from interactions. The chance is affected by character's Sex Factor. Sex traits are toggled as active/inactive from Details menu. Sex Factor increase number of active traits. 
 Slave delivery quests will no longer request slaves of the sex with a very low chance in settings (<=10%)

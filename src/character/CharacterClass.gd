@@ -57,6 +57,8 @@ func get_stat(statname, ref = false):
 		return get(statname)
 	if statname == 'base_exp':
 		return xp_module.base_exp
+	if statname.begins_with('food_') and !(statname in ['food_consumption']):
+		return food.get(statname)
 	return statlist.get_stat(statname, ref)
 
 func set_stat(stat, value):
@@ -477,7 +479,6 @@ func death():
 	process_event(variables.TR_COMBAT_F)
 	if npc_reference != null:
 		input_handler.emit_signal("EnemyKilled", npc_reference)
-		print(npc_reference)
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
@@ -542,7 +543,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'one_of_races':
 			check = get_stat('race') in i.value
 		'is_free':
-			check = (check_location('mansion', true) && tags.has('selected') == false) == i.check
+			check = (check_location('mansion', true)) == i.check# && tags.has('selected') == false
 		'is_at_location':
 			if variables.allow_remote_intereaction == true and i.check: check = true
 			else: check = check_location(i.value, true) == i.check
@@ -552,6 +553,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			check = variables.longtails.has(get_stat('tail')) == i.check
 		'long_ears':
 			check = variables.longears.has(get_stat('ears')) == i.check
+		'hair_length':
+			check = (get_stat('hair_length') in i.value) == i.check
 		'is_humanoid':
 			check = (get_stat('racegroup') == 'humanoid') == i.check
 		'is_dead':

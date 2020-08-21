@@ -281,7 +281,10 @@ func updatelist():
 			newnode.visible = true
 			newnode.text = person.translate(i.name)
 			newnode.connect("pressed",self,'doaction', [i.effect])
-			globals.connecttexttooltip(newnode, person.translate(i.descript))
+			var text = i.descript
+			if dislike_same_sex() == true && i.effect in ['intimate','kiss','frenchkiss','propose']:
+				text += globals.TextEncoder("\n{color=yellow|Sexuality: [name] does not seem to be enthusiastic in having relationship with you. Mood required for positive response is increased.}")
+			globals.connecttexttooltip(newnode, person.translate(text))
 			if i.has('disablereqs'):
 				newnode.disabled = true
 	
@@ -354,61 +357,137 @@ func checkhistory(action):
 			counter += 1
 	return counter
 
-var chatlines = [
-	"You attempt to initiate a friendly chat with [name2]. ",
-	"You make a small talk to [name2]. ",
-	"You and [name2] discuss the weather. ",
-]
+
+var date_lines = {
+	chat_start = [
+		["You attempt to initiate a friendly chat with [name2]. ", 1],
+		["You {^innocently:casually:friendly} {^discuss mundane thigns:chat} with [name2]. ", 3],
+		["You make a small talk to [name2]. ",1],
+		["You and [name2] discuss the weather. ",1],
+	],
+	chat_positive = [
+		["[name2] spends some time engaging in a friendly chat with you. ",1],
+		["[name2] responds to you in a friendly manner. ",1],
+	],
+	chat_negative = [
+		["[name2] replies, but does so reluctantly.",1],
+		["[name2] shows little interest in further chatting. ",1],
+	],
+	intimate_start = [
+		["You casually flirt with [name2].", 1],
+		["You start a lewd talk with [name2].", 1],
+		["You ask [name2] about [his2] fantasies.", 1],
+	],
+	intimate_positive = [
+		["[name2] responds to you positively. ", 1],
+		["[name2] gives you a playful look. ", 1],
+		["[name2] moves slightly closer to you. ", 1],
+	],
+	intimate_negative = [
+		["[name2] stays silent, showing [his2] disdain.", 1],
+		["[name2] gives you a stern look. ", 1],
+		["[name2] moves away from you. ", 1],
+	],
+	
+	touch_start = [
+		["You {^casually:lightly} touch [name2].", 1],
+	],
+	touch_positive = [
+		["[name2] reacts relaxingly to your affection. ", 1],
+	],
+	touch_negative = [
+		["[name2] looks bored and reacts coldly.", 1],
+	],
+	combhair_start = [
+		["You {^gently:slowly} comb [name2]'s {^[hairlength] :}{^[haircolor] :}hair.", 1],
+	],
+	combhair_positive = [
+		["[name2] reacts relaxingly to your affection. ", 1],
+	],
+	combhair_negative = [
+		["[name2] looks bored and reacts coldly.", 1],
+	],
+}
+
+func character_description(text_input):
+	var text = text_input
+	
+	text = text.replace('[haircolor]', tr(person.get_stat('hair_color')))
+	text = text.replace('[hairlength]', hairlength_descripts(person.get_stat('hair_length')))
+	
+	return text
+
+func hairlength_descripts(hairlength):
+	var text = ''
+	if hairlength in ['']:
+		pass
+	return text
+
+func is_same_sex():
+	var rval = false
+	if master.get_stat('sex') == person.get_stat('sex'):
+		rval = true
+	return rval
+
+func dislike_same_sex():
+	var rval = false
+	if is_same_sex() == true && !person.check_trait('bisexual'):
+		rval = true
+	return rval
 
 func chat(person, counter):
-	var text = ''
-	text += "You attempt to initiate a friendly chat with [name2]. "
 	
+	var text = input_handler.weightedrandom(date_lines.chat_start) + "\n\n"
 	
 	if counter < 3 || randf() >= counter/10.0+0.1:
-		text += "[name2] spends some time engaging in a friendly chat with you. "
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.chat_positive)
+		text += "}"
 		self.mood += 8
 	else:
 		self.mood -= 1
-		text += "[name2] replies, but does so reluctantly. "
-	
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.chat_negative)
+		text += "}"
 	
 	return text
 
 func intimate(person, counter):
 	var text = ''
-	text += "You talk to [name2] about sexual things. "
+	text += input_handler.weightedrandom(date_lines.intimate_start) + "\n\n"
 	
-	if location == 'bedroom':
+	var min_mood = rand_range(8,14)
+	if dislike_same_sex():
+		min_mood *= 2
+	if mood > min_mood:
 		self.mood += 10
-		text += "[he2] opens up to you."
-		person.add_stat('consent', rand_range(2,3))
-	elif person.check_trait("shameless"):
-		text += "Being {color=yellow|[Shameless]} [he2] does not mind discussing it in public and opens up to you."
-		self.mood += 10
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.intimate_positive)
+		text += "}"
 		person.add_stat('consent', rand_range(2,3))
 	else:
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.intimate_negative)
+		text += "}"
 		self.mood -= 3
-		text += "[he2] seems to be reluctant to talk about such intimate matters in public and dodges the theme."
-	
-	
-	
 	return text
 
 func touch(person, counter):
-	var text = ''
-	text += "You casually touch [name2] in various places. "
 	
-	if counter < 3 && fear < 20:
-		text += "[he2] reacts relaxingly to your touch"
+	var text = ''
+	text += input_handler.weightedrandom(date_lines.touch_start) + "\n\n"
+	
+	if counter < 3:
 		self.mood += 6
-		if person.get_stat('loyalty') >= 10 && randf() >= 0.65:
-			text += ' and smiles at you'
-		text += '. '
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.touch_positive)
+		text += "}"
+		text += person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		self.mood -= 1
-		text += "[he2] reacts coldly to your touch. "
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.touch_negative)
+		text += "}"
+		self.mood -= 2
 	return text
 
 func holdhands(person, counter):
@@ -417,29 +496,42 @@ func holdhands(person, counter):
 		text += "You take [name2]'s hand into yours and stroll around. "
 	else:
 		text += "You take [name2]'s hand into yours and move closer. "
-	if (counter < 3 || randf() >= 0.4) && self.mood >= 4:
+	if (counter < 3 || randf() >= 0.4) && self.mood >= 5:
 		text += "[he2] holds your hand firmly. "
-		self.mood += 9
+		self.mood += 8
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		self.mood -= 1
+		self.mood -= 2
 		text += "[he2] holds your hand, but looks reclusive. "
 	
 	return text
 
 func combhair(person, counter): 
 	var text = ''
-	text += "You gently comb [name2]'s hair. "
+	text += input_handler.weightedrandom(date_lines.combhair_start) + "\n\n"
 	
-	if (counter < 3 || randf() >= 0.8) && self.mood >= 12:
-		text += "[he2] smiles and looks pleased. "
-		self.mood += 8
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+	if counter < 3:
+		self.mood += 6
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.combhair_positive)
+		text += "}"
+		text += person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.combhair_negative)
+		text += "}"
 		self.mood -= 2
-		text += "[he2] looks uncomfortable. "
-	
-	return text
+#	var text = ''
+#	text += "You gently comb [name2]'s hair. "
+#
+#	if (counter < 3 || randf() >= 0.8) && self.mood >= 12:
+#		text += "[he2] smiles and looks pleased. "
+#		self.mood += 8
+#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+#	else:
+#		self.mood -= 2
+#		text += "[he2] looks uncomfortable. "
+	return character_description(text)
 
 
 func hug(person, counter): 
@@ -1040,7 +1132,7 @@ var actionsdict = {
 	},
 	intimate = {
 		group = 'Affection',
-		name = 'Intimate Talk',
+		name = 'Flirt',
 		descript = 'Have an intimate talk. Slightly increases Consent if mood is above low.',
 		reqs = [],
 		location = [],
@@ -1083,7 +1175,7 @@ var actionsdict = {
 		group = 'Affection',
 		name = 'Comb Hair',
 		descript = "Comb [name]'s hair",
-		reqs = [],
+		reqs = [{code = 'hair_length', value = ['bald','ear'], check = false}],
 		location = [],
 		effect = 'combhair',
 	},
