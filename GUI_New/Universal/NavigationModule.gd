@@ -131,6 +131,7 @@ func return_to_mansion():
 		return
 	GUIWorld.PreviousScene = null
 	get_parent().selected_location = null
+	get_parent().City.opened_guild = {code = ""}
 	input_handler.PlaySound("door_open")
 	input_handler.StopBackgroundSound()
 	input_handler.SetMusicRandom("mansion")

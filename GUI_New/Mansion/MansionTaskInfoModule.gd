@@ -52,7 +52,7 @@ func show_upgrades_info():
 			var upgrade_progress = ResourceScripts.game_res.upgrade_progresses[upgrade]
 			var newupgrade = input_handler.DuplicateContainerTemplate(TaskContainer)
 			newupgrade.get_node("Task").text = upgrade_name
-			var upgrade_reqs = upgrade_product.levels[upgrade_progress.level].taskprogress
+			var upgrade_reqs = upgrade_product.levels[int(upgrade_progress.level)].taskprogress
 			newupgrade.get_node("ProgressBar").value = upgrade_progress.progress / (upgrade_reqs * 0.01)
 			var task
 			for t in ResourceScripts.game_party.active_tasks:

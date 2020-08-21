@@ -30,6 +30,7 @@ var city_options = {
 	location_purchase = "Buy Dungeon",
 	quest_board = "Notice Board",
 }
+
 var positiondict = {
 	1: "LocationGui/Positions/HBoxContainer/frontrow/1",
 	2: "LocationGui/Positions/HBoxContainer/frontrow/2",
@@ -98,6 +99,9 @@ func show_quest_gen(action = "show"):
 
 func clear_submodules():
 	for module in submodules:
+		# if module.is_visible():
+		# 	ResourceScripts.core_animations.FadeAnimation(module,0.5)
+		# 	yield(get_tree().create_timer(0.5), "timeout")
 		module.hide()
 	submodules.clear()
 
@@ -144,10 +148,13 @@ func open_location(data):
 		else:
 			if data.has('gather_resources'):
 				gatherable_resources = data.gather_resources
+				$LocationGui/Resources/SelectWorkers.visible = true
 			if gatherable_resources != null:
+				var stop_loop = false
 				for i in gatherable_resources:
+					if stop_loop:
+						break
 					var item = Items.materiallist[i]
-					var max_workers_count = gatherable_resources[i]
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
 					if active_tasks == []:
@@ -156,8 +163,9 @@ func open_location(data):
 					for task in active_tasks:
 						if (task.code == i) && (task.task_location == selected_location):
 							current_workers_count = task.workers_count
-							if current_workers_count < max_workers_count:
+							if current_workers_count < gatherable_resources[i]:
 								$LocationGui/Resources/SelectWorkers.visible = true
+								stop_loop = true
 								break
 							else:
 								$LocationGui/Resources/SelectWorkers.visible = false
@@ -198,6 +206,13 @@ func open_location(data):
 	if presented_characters.size() > 0 || variables.allow_remote_intereaction == true:
 		open_location_actions()
 	build_location_description()
+	if data.type in ["quest_location", "encounter"]:
+		$LocationGui/Resources/Forget.visible = false
+		$LocationGui/Resources/SelectWorkers.visible = false
+		$LocationGui/Resources/Label.visible = false
+	else:
+		$LocationGui/Resources/Label.visible = true
+
 
 
 func build_location_group():
@@ -288,6 +303,14 @@ func build_location_group():
 	build_item_panel()
 	build_spell_panel()
 
+var selectedperson
+func return_character(character):
+	selectedperson = character
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+
+func return_character_confirm():
+	selectedperson.return_to_mansion()
+	build_location_group()
 
 func build_location_description():
 	var text = ''
@@ -365,7 +388,7 @@ func build_item_panel():
 		tutorial_items = true
 	if tutorial_items == true:
 		input_handler.ActivateTutorial("exploration_items")
-	switch_panel()
+	switch_panel(panelmode)
 
 func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
@@ -572,10 +595,6 @@ func enter_dungeon():
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Skip to last room'
 			newbutton.connect("pressed",self,"skip_to_boss")
-	# else:
-	# 	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-	# 	newbutton.text = 'Forget Location'
-	# 	newbutton.connect("pressed",self,"clear_dungeon")
 
 func skip_to_boss():
 	current_level = active_location.levels.size()
@@ -648,13 +667,6 @@ func enter_level(level, skip_to_end = false):
 		newbutton.text = 'Skip to last room'
 		newbutton.connect("pressed",self,"enter_level", [level, true])
 	
-#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
-#	newbutton.text = 'Roam'
-#	newbutton.connect("pressed",self,"area_advance",['roam'])
-	
-#	newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-#	newbutton.text = 'Return'
-#	newbutton.connect("pressed",self,"enter_dungeon")
 	build_location_group()
 	build_location_description()
 
@@ -669,8 +681,10 @@ func advance():
 			current_stage = active_location.progress.stage
 			current_level = active_location.progress.level
 		if check_dungeon_end():
-			active_location.completed = true
-			check_events("dungeon_complete")
+			if active_location.completed == false:
+				active_location.completed = true
+				globals.common_effects([{code = "complete_active_location_quests"}])
+				check_events("dungeon_complete")
 			$LocationGui/Resources/Forget.visible = true
 			$LocationGui/Resources/SelectWorkers.visible = true
 			$LocationGui/Resources/Materials.update()
@@ -735,7 +749,8 @@ var panelmode = 'items'
 var panelmodes = {item = {name = "Items", code = 'items'}, spells = {name = 'Spells', code = 'spells'}}
 var panelmodesarray = ['items','spells']
 
-func switch_panel(mode = "items"):
+func switch_panel(mode):
+	panelmode = mode
 	match mode:
 		'items':
 			$LocationGui/ItemUsePanel/ScrollContainer.show()
@@ -749,3 +764,133 @@ func switch_panel(mode = "items"):
 			$LocationGui/ItemUsePanel/SpellsButton.pressed = true
 			$LocationGui/ItemUsePanel/ItemsButton.pressed = false
 			# panelmode = 'spells'
+ 
+
+func use_e_combat_skill(caster, target, skill):
+	caster.mp -= skill.manacost
+	for i in skill.catalysts:
+		ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
+	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
+	s_skill1.createfromskill(skill.code)
+	s_skill1.setup_caster(caster)
+	#s_skill1.setup_target(target)
+	s_skill1.process_event(variables.TR_CAST)
+	caster.process_event(variables.TR_CAST, s_skill1)
+	var targets
+	for n in range(s_skill1.repeat):
+		match skill.target_number:
+			'single':
+				targets = [target]
+			'all':
+				targets = get_party()
+		var s_skill2_list = []
+		for i in targets:
+			if skill.has('damage_type') and skill.damage_type == 'resurrect':
+				i.resurrect(input_handler.calculate_number_from_string_array(skill.value[0], caster, target))
+			else: 
+				var s_skill2 = s_skill1.clone()
+				s_skill2.setup_target(i)
+				s_skill2.setup_final()
+				s_skill2.hit_roll()
+				s_skill2.resolve_value(true)
+				s_skill2_list.push_back(s_skill2)
+		for s_skill2 in s_skill2_list:
+			s_skill2.process_event(variables.TR_HIT)
+			s_skill2.caster.process_event(variables.TR_HIT, s_skill2)
+			s_skill2.target.process_event(variables.TR_DEF, s_skill2)
+			s_skill2.setup_effects_final()
+		for s_skill2 in s_skill2_list:
+			if s_skill2.hit_res == variables.RES_MISS:
+				pass
+			else:
+				execute_skill(s_skill2)
+		for s_skill2 in s_skill2_list:
+			s_skill2.process_event(variables.TR_POSTDAMAGE)
+			s_skill2.caster.process_event(variables.TR_POSTDAMAGE, s_skill2)
+			if s_skill2.target.hp <= 0:
+				s_skill2.process_event(variables.TR_KILL)
+				s_skill2.caster.process_event(variables.TR_KILL, s_skill2)
+			s_skill2.remove_effects()
+	s_skill1.process_event(variables.TR_SKILL_FINISH)
+	caster.process_event(variables.TR_SKILL_FINISH, s_skill1)
+	s_skill1.remove_effects()
+	for i in skill.sounddata.values():
+		if i != null: input_handler.PlaySound(i)
+	if skill.has('follow_up'):
+		active_skill = skill.followup
+		use_e_combat_skill(caster, target, skill)
+	build_location_group()
+
+
+func execute_skill(s_skill2): #to update to exploration version
+	var text = ''
+	if s_skill2.hit_res == variables.RES_CRIT:
+		text += "[color=yellow]Critical!![/color] "
+		#s_skill2.target.displaynode.process_critical()
+	for i in s_skill2.value:
+		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
+		if i.damagestat == 'damage_hp' and i.dmgf == 0: #drain, damage, damage no log, drain no log
+			if i.is_drain && s_skill2.tags.has('no_log'):
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
+				var rval2 = s_skill2.caster.heal(rval)
+			elif i.is_drain:
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
+				var rval2 = s_skill2.caster.heal(rval)
+				text += "%s drained %d health from %s and gained %d health." %[s_skill2.caster.get_stat('name'), rval, s_skill2.target.get_stat('name'), rval2]
+			elif s_skill2.tags.has('no_log') && !i.is_drain:
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
+			else:
+				var rval = s_skill2.target.deal_damage(i.value, i.damage_type)
+				text += "%s is hit for %d damage. " %[s_skill2.target.get_stat('name'), rval]#, s_skill2.value[i]] 
+		elif i.damagestat == 'damage_hp' and i.dmgf == 1: #heal, heal no log
+			if s_skill2.tags.has('no_log'):
+				var rval = s_skill2.target.heal(i.value)
+			else:
+				var rval = s_skill2.target.heal(i.value)
+				text += "%s is healed for %d health." %[s_skill2.target.get_stat('name'), rval]
+		elif i.damagestat == 'restore_mana' and i.dmgf == 0: #heal, heal no log
+			if !s_skill2.tags.has('no log'):
+				var rval = s_skill2.target.mana_update(i.value)
+				text += "%s restored %d mana." %[s_skill2.target.get_stat('name'), rval] 
+			else:
+				s_skill2.target.mana_update(i.value)
+		elif i.damagestat == 'restore_mana' and i.dmgf == 1: #drain, damage, damage no log, drain no log
+			var rval = s_skill2.target.mana_update(-i.value)
+			if i.is_drain:
+				var rval2 = s_skill2.caster.mana_update(rval)
+				if !s_skill2.tags.has('no log'):
+					text += "%s drained %d mana from %s and gained %d mana." %[s_skill2.caster.get_stat('name'), rval, s_skill2.target.name, rval2]
+			if !s_skill2.tags.has('no log'):
+				text += "%s lost %d mana." %[s_skill2.target.get_stat('name'), rval] 
+		else: 
+			var mod = i.dmgf
+			var stat = i.damagestat
+			if mod == 0:
+				var rval = s_skill2.target.stat_update(stat, i.value)
+				if !s_skill2.tags.has('no log'):
+					text += "%s restored %d %s." %[s_skill2.target.get_stat('name'), rval, tr(stat)] 
+			elif mod == 1:
+				var rval = s_skill2.target.stat_update(stat, -i.value)
+				if i.is_drain:
+					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+					if !s_skill2.tags.has('no log'):
+						text += "%s drained %d %s from %s." %[s_skill2.caster.get_stat('name'), i.value, tr(stat),  s_skill2.target.get_stat('name')]
+				elif !s_skill2.tags.has('no log'):
+					text += "%s loses %d %s." %[s_skill2.target.get_stat('name'), -rval, tr(stat)]
+			elif mod == 2:
+				var rval = s_skill2.target.stat_update(stat, i.value, true)
+				if i.is_drain:# use this on your own risk
+					var rval2 = s_skill2.caster.stat_update(stat, -rval)
+					if !s_skill2.tags.has('no log'):
+						text += "%s drained %d %s from %s." %[s_skill2.caster.get_stat('name'), i.value, tr(stat),  s_skill2.target.get_stat('name')]
+				elif !s_skill2.tags.has('no log'):
+					text += "%s's %s is now %d." %[s_skill2.target.get_stat('name'), tr(stat), i.value] 
+			else: print('error in damagestat %s' % i.damagestat) #obsolete in new format
+
+var active_skill
+
+func get_party():
+	var res = []
+	for ch in active_location.group.values():
+		if ResourceScripts.game_party.characters[ch] != null: res.push_back(ResourceScripts.game_party.characters[ch])
+	return res

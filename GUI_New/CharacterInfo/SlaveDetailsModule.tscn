@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://GUI_New/CharacterInfo/ImageSelect.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=15]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=16]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=17]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=19]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -53,6 +55,7 @@ margin_right = 1124.95
 margin_bottom = 1057.0
 theme = ExtResource( 5 )
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -334,9 +337,10 @@ expand = true
 [node name="Label" type="Label" parent="ScrollContainer/GridContainer/Button"]
 margin_top = 150.0
 margin_right = 170.0
-margin_bottom = 174.0
+margin_bottom = 182.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
+theme = ExtResource( 19 )
 text = "nagsjfgsjldgfjsdgfl"
 align = 1
 clip_text = true

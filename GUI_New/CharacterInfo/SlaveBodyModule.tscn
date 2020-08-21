@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/images/gui/panels/noimagesmall.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/raceshades/Arachna_M.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=7]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=9]
+[ext_resource path="res://GUI_New/CharacterInfo/SlaveBodyModule.gd" type="Script" id=10]
 
 [node name="SlaveBodyModule" type="Panel"]
 show_behind_parent = true
@@ -16,6 +18,7 @@ margin_right = 700.0
 margin_bottom = 1044.0
 mouse_filter = 2
 custom_styles/panel = ExtResource( 4 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,10 +41,11 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0.823529 )
 self_modulate = Color( 1, 1, 1, 0.823529 )
 show_behind_parent = true
-margin_left = 2.0
-margin_top = 957.376
-margin_right = 698.0
-margin_bottom = 1062.38
+margin_left = 5.21887
+margin_top = 812.376
+margin_right = 701.219
+margin_bottom = 917.38
+custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -63,6 +67,19 @@ margin_bottom = 105.947
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="buffscontainer/Button"]
+show_behind_parent = true
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 103.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 105, 105 )
+texture = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

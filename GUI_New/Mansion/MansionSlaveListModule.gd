@@ -143,28 +143,58 @@ func update_dislocations():
 
 func build_locations_list():
 	input_handler.ClearContainer(LocationsList)
-	for loca in default_locations + populatedlocations:
-		if loca in ['Aliron']:
-			continue
+	var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
+	newbutton.set_meta("location", "show_all")
+	newbutton.text = "Show All"
+	newbutton.connect("pressed", self, "show_location_characters", [newbutton])
+	newbutton.connect("pressed", self, "set_hover_area")
+	var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
+	LocationsList.add_child(newseparator)
+	newseparator.visible = true
+	newseparator.rect_position.y = 100
+	var sorted_locations = sort_locations()
+	for loca in sorted_locations:
 		if loca == null:
 			continue
-		var newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
-		if loca in default_locations:
-			newbutton.text = loca.capitalize()
-		elif loca == "mansion":
+		newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
+		if loca == 'Aliron':
 			newbutton.text = "Mansion"
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
 		newbutton.set_meta("location", loca)
 		newbutton.connect("pressed", self, "show_location_characters", [newbutton])
 		newbutton.connect("pressed", self, "set_hover_area")
-		
-		var newseparator = $TravelsContainerPanel/VSeparator.duplicate()
+		newseparator = $TravelsContainerPanel/VSeparator.duplicate()
 		LocationsList.add_child(newseparator)
 		newseparator.visible = true
 		newseparator.rect_position.y = 100
 	LocationsList.get_children().back().queue_free()
 	update_location_buttons()
+
+
+func sort_locations():
+	var capitals = []
+	# if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.EXPLORATION.main_module:
+	# 	capitals.append("Mansion")
+	var settlements = []
+	var dungeons = []
+	var quest_locations = []
+	var locations_array = populatedlocations
+	for loca in locations_array:
+		if loca == null:
+			locations_array.erase(null)
+			continue
+		if loca in ["mansion", "travel", "show_all"]: continue
+		match ResourceScripts.world_gen.get_location_from_code(loca).type:
+			"capital":
+				capitals.append(loca)
+			"settlement":
+				settlements.append(loca)
+			"dungeon","encounter":
+				dungeons.append(loca)
+			"quest_location":
+				quest_locations.append(loca)
+	return capitals + settlements + dungeons + quest_locations
 
 
 func build_sex_selection(person, newbutton):
@@ -257,7 +287,7 @@ func build_for_upgrades(person, newbutton):
 
 func build_for_skills(person, newbutton):
 	if person == get_parent().skill_source:
-		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_chosen.png")
 		newbutton.disabled = true
 	if !person in get_parent().chars_for_skill:
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
@@ -300,7 +330,7 @@ func update_button(newbutton):
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
 		else:
-			newbutton.get_node("job/Label").text = Items.materiallist[person.get_work()].progress_formula.capitalize()
+			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name
 	
 	
 	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100 && !person.has_profession('master'):

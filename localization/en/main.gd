@@ -2198,8 +2198,8 @@ var TranslationDict = {
 	LICHENCTALK6REPLY2 = "You can keep her",
 	LICHENCCONLUSION = "— Good. Here's your skull. We will be leaving shortly, so don't bother to come here again.\n\n You leave the Lich's hideout, wondering what fate was left to the girl.",
 	LICHENCWINAIRENOTDEAD = "Talk to the girl",
+	LICHENCWINAIRE = "As you defeat the Lich and take his skull, the elf girl observes you cautiously.",
 	LICHENCWINELSE = "You take the Lich’s skull but can’t find anything else worthwhile.",
-	
 	LICHAIRETALK1 = "You strike down the Lich and take its skull. The elf girl observes you with a mix of relief and caution. \n\n — I... Thank you for the help. My name is Aire. My master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
 	LICHAIRETALK1REPLY1 = "What kind of Master would send an elf fighter on their own around here?",
 	LICHAIRETALK1REPLY2 = "I'm glad you are safe, take care",

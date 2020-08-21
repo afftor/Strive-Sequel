@@ -307,11 +307,11 @@ var data = {
 		tags = [],
 		text = [
 			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}]}]},
-			{text = "XARIENCOUNTER8_2", reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]},
+			{text = "XARIENCOUNTER8_2", reqs = []},
 			{text = "XARIENCOUNTER8_3", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'screen_black_transition', value = 1}, {code = 'decision', value = 'slept_with_xari'}]}
+			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'screen_black_transition', value = 1}, {code = 'decision', value = 'slept_with_xari'},{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
 		]
 	},
 
@@ -337,10 +337,10 @@ var data = {
 		character = 'xari',
 		tags = [],
 		text = [
-			{text = "XARIENCOUNTER10", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'remove_quest_location', value = 'quest_mages_xari'}]}
+			{text = "XARIENCOUNTER10", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]}
 		],
 		options = [
-			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []}
+			{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
 		]
 	},
 }

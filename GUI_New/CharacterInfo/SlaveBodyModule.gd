@@ -26,7 +26,7 @@ func update():
 				newnode.get_node("Label").text = str(i.get_duration())
 			else:
 				newnode.get_node("Label").hide()
-				newnode.hint_tooltip = person.translate(i.description)
+			newnode.hint_tooltip = person.translate(i.description)
 		input_handler.ClearContainer($professions)
 		if person.xp_module.professions.size() > 6:
 			$professions.columns = 12

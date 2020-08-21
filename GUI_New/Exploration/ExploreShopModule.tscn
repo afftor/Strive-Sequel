@@ -299,7 +299,7 @@ size_flags_horizontal = 3
 
 [node name="Button" type="Button" parent="SellBlock/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 493.0
+margin_right = 480.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )
 theme = ExtResource( 14 )

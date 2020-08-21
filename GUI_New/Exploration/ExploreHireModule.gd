@@ -65,22 +65,9 @@ func open_slave_market(guild):
 	hire()
 
 func hire():
-	get_parent().get_node("GuildBG").visible = (mode != "slave_market")
-	var guild_buttons = get_parent().City.get_node("GuildMenu/VBoxContainer").get_children()
-	if mode == "guild_slaves":
-		for button in guild_buttons:
-			if !button.has_meta("action"):
-				continue
-			if button.get_meta("action") != "Hire":
-				continue
-			else:
-				self.visible = button.is_pressed()
-	else:
-		show()
 	$HireMode.visible = mode != "guild_slaves"
 	$SellMode.visible = mode != "guild_slaves"
 	$HBoxContainer/UpgradeButton.visible = mode != "guild_slaves"
-	# $PurchaseButton.get_node("Label").text = "Purchase"
 	get_parent().hiremode = 'hire'
 	$RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveList/ScrollContainer/VBoxContainer)
@@ -93,6 +80,7 @@ func hire():
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
+		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
 		# globals.connectslavetooltip(newbutton, tchar)
 	var person_id
@@ -101,6 +89,33 @@ func hire():
 	else: return
 	var person = characters_pool.get_char_by_id(person_id)
 	show_slave_info(person)
+	
+	# Animations
+	if mode == "slave_market" && get_parent().get_node("GuildBG").is_visible():
+		ResourceScripts.core_animations.FadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
+	get_parent().get_node("GuildBG").visible = (mode != "slave_market")
+	var guild_buttons = get_parent().City.get_node("GuildMenu/VBoxContainer").get_children()
+	if mode == "guild_slaves":
+		for button in guild_buttons:
+			if !button.has_meta("action"):
+				continue
+			if button.get_meta("action") != "Hire":
+				continue
+			else:
+				self.visible = button.is_pressed()
+	else:
+		self.set("modulate", Color(1,1,1,0))
+		show()
+		ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
+		self.set("modulate", Color(1,1,1,1))
+
+
+
+func double_clicked(event):
+	if event is InputEventMouseButton and event.doubleclick:
+		show_full_info()
 
 func show_slave_info(person):
 	get_parent().person_to_hire = person
@@ -205,7 +220,8 @@ func sell_slave():
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_stat('name')
 		newbutton.get_node("Price").text = str(round(tchar.calculate_price() / 2))
-		newbutton.connect("pressed", self, 'show_slave_info', [tchar]) 
+		newbutton.connect("pressed", self, 'show_slave_info', [tchar])
+		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
 	if char_list != []:

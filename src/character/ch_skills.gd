@@ -133,9 +133,7 @@ func use_social_skill(s_code, target):
 	social_cooldowns[s_code] = template.cooldown
 	if template.has('social_skill_stats'):
 		for i in template.social_skill_stats:
-			print (parent.get_stat(i))
 			parent.add_stat(i, rand_range(0.4,0.8))
-			print (parent.get_stat(i))
 	if template.tags.has("dialogue_skill"):
 		var data = {text = '', image = template.dialogue_image, tags = ['skill_event'], options = []}
 		var text = parent.translate(template.dialogue_text)

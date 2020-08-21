@@ -740,10 +740,8 @@ func train(person, counter):
 	text += ("You spend some time training with [name2], improving your Physics. \n" 
 	+ master.get_short_name() + ": +" + str(floor(value2)) + "; "
 	+ person.get_short_name() + ": +" + str(floor(value)))
-	
 	person.add_stat('physics', value)
 	master.add_stat('physics', value2)
-	
 	self.mood += 4
 	finish_encounter = true
 	
@@ -1013,6 +1011,7 @@ func _on_finishbutton_pressed():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD)
 	GUIWorld.CurrentScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.CurrentScene.mansion_state_set("default")
+	GUIWorld.gui_data.CLOCK.main_module.show()
 
 
 func _on_cancelsex_pressed():

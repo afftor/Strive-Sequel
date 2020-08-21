@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/TaskInfoPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/taskinfo_header.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Prog_Small_BG.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://GUI_New/Mansion/MansionTaskInfoModule.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -20,14 +21,16 @@ font_data = ExtResource( 7 )
 margin_right = 290.0
 margin_bottom = 425.0
 rect_min_size = Vector2( 0, 425 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = 26.3158
+margin_right = 292.0
+margin_bottom = 78.3158
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -35,8 +38,9 @@ __meta__ = {
 
 [node name="Button" type="TextureButton" parent="."]
 margin_left = 56.0
+margin_top = 26.3158
 margin_right = 236.0
-margin_bottom = 52.0
+margin_bottom = 78.3158
 texture_normal = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,7 +65,7 @@ margin_right = 174.0
 margin_bottom = 46.0
 
 [node name="TaskList" type="Panel" parent="."]
-margin_top = 52.0
+margin_top = 81.0
 margin_right = 290.0
 margin_bottom = 425.0
 custom_styles/panel = ExtResource( 1 )
@@ -73,7 +77,7 @@ __meta__ = {
 self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_right = 290.0
-margin_bottom = 373.0
+margin_bottom = 344.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

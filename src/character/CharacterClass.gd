@@ -29,6 +29,8 @@ var combatgroup = ''
 var position = 0
 var taunt = null
 var selectedskill = 'attack'
+
+var previous_location
 #constant stats
 
 #to delegate!
@@ -475,6 +477,7 @@ func death():
 	process_event(variables.TR_COMBAT_F)
 	if npc_reference != null:
 		input_handler.emit_signal("EnemyKilled", npc_reference)
+		print(npc_reference)
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()

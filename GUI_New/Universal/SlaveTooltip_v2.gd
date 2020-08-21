@@ -22,11 +22,7 @@ func _process(delta):
 
 func _init():
 	set_process(false)
-	#connect("popup_hide", self, 'cooldown')
 
-
-func _ready():
-	pass
 
 
 func showup(node, person):
@@ -91,12 +87,24 @@ func showup(node, person):
 				# 	text += "∞}"
 		$job.bbcode_text = globals.TextEncoder(text) 
 
+		# for i in ['physics','wits','charm','sexuals']:
+		# 	if i != 'sexuals':
+		# 		get_node(i).text = str(floor(person.get_stat(i))) 
+		# 		get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
+		# 	else:
+		# 		get_node(i).text = str(floor(person.get_stat(i)))
+		# 		get_node(i+'2').text = '100'
+
 		for i in ['physics','wits','charm','sexuals']:
 			if i != 'sexuals':
-				get_node(i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus'))) 
+				var color = set_color(person.get_stat(i+"_bonus"))
+				get_node(i).text = str(floor(person.get_stat(i)))
+				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = str(person.get_stat(i+'_factor') * 20)
 			else:
-				get_node(i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus')))
+				var color = set_color(person.get_stat(i+"_bonus"))
+				get_node(i).text = str(floor(person.get_stat(i)))
+				get_node(i).set("custom_colors/font_color", color)
 				get_node(i+'2').text = '100'
 
 		text = "[center]" + statdata.statdata.productivity.name + "[/center]\n" + statdata.statdata.productivity.descript + "\nTotal Productivity: " + str(floor(person.get_stat('productivity'))) 
@@ -175,3 +183,11 @@ func hide_tooltip():
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	hide()
 	
+
+func set_color(value):
+	var color = Color(0.87,0.87,0.87,1)
+	if value > 0:
+		color = Color(0.31,0.99,0.51,1)  
+	elif value < 0:
+		color = Color(0.99,0.31,0.36,1)
+	return color

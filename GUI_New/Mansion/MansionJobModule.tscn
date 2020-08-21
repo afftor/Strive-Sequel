@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=1]
 [ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=2]
@@ -14,10 +14,12 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_jobselection.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Job_BG.tres" type="StyleBox" id=14]
+[ext_resource path="res://GUI_New/Mansion/MansionJobModule.gd" type="Script" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Job_Travel_Panel.tres" type="StyleBox" id=16]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=17]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://assets/Textures_v2/MANSION/Job/button_jobselection_disabled.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -62,6 +64,7 @@ margin_top = -1.0
 margin_right = 1102.0
 margin_bottom = 384.0
 custom_styles/panel = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,6 +120,7 @@ toggle_mode = true
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 20 )
 
 [node name="Label" type="Label" parent="job_panel/ScrollContainer/VBoxContainer/Button"]
 margin_right = 343.0

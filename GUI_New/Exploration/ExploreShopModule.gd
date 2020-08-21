@@ -31,20 +31,6 @@ func selectcategory(button, list):
 
 
 func open_shop(shop):
-	get_parent().get_node("GuildBG").visible = false
-	get_parent().clear_submodules()
-	get_parent().submodules.append(self)
-	SlaveMarket.is_slave_market_opened = false
-	Quests.is_quest_board_opened = false
-	get_parent().City.Guild.hide()
-	get_parent().City.get_node("GuildMenuBG").hide()
-	get_parent().City.opened_guild = {code = ""}
-	get_parent().City.update_buttons("shop")
-	is_shop_opened = !is_shop_opened
-	if !is_shop_opened:
-		hide()
-		return
-	show()
 	match shop:
 		'area':
 			get_parent().active_shop = get_parent().active_area.shop
@@ -56,6 +42,32 @@ func open_shop(shop):
 	$BuyFilter.get_child(0).pressed = true
 	update_sell_list()
 	update_buy_list()
+
+	SlaveMarket.is_slave_market_opened = false
+	Quests.is_quest_board_opened = false
+	get_parent().City.Guild.hide()
+	get_parent().City.get_node("GuildMenuBG").hide()
+	get_parent().City.opened_guild = {code = ""}
+	get_parent().City.update_buttons("shop")
+	
+	#Animations
+	get_parent().clear_submodules()
+	get_parent().submodules.append(self)
+	if get_parent().get_node("GuildBG").is_visible():
+		ResourceScripts.core_animations.FadeAnimation(get_parent().get_node("GuildBG"),0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
+		get_parent().get_node("GuildBG").hide()
+	is_shop_opened = !is_shop_opened
+	if !is_shop_opened:
+		hide()
+		return
+	self.set("modulate", Color(1,1,1,0))
+	show()
+	ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
+	if !get_parent().get_node("GuildBG").is_visible():
+		yield(get_tree().create_timer(0.5), "timeout")
+	self.set("modulate", Color(1,1,1,1))
+
 
 func get_item_category(item):
 	var type
@@ -91,7 +103,7 @@ func update_sell_list():
 		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("icon").texture = item.icon
-		newbutton.get_node("price").text = str(item.price)
+		newbutton.get_node("price").text = str(item.price / 2)
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
@@ -227,9 +239,13 @@ func item_puchase_confirm(value):
 
 func item_sell(item):
 	purchase_item = item
-	var price = item.price
+	var price
+	if item.price:
+		price = item.price / 2
+	else:
+		price = item.calculateprice()/2
 	var sellingamount
-	if Items.materiallist.has(item.code) == false:
+	if !Items.materiallist.has(item.code):
 		price = item.calculateprice()/2
 		sellingamount = item.amount
 	else:
@@ -238,7 +254,11 @@ func item_sell(item):
 
 func item_sell_confirm(value):
 	input_handler.PlaySound("money_spend")
-	var price = purchase_item.price
+	var price
+	if purchase_item.price:
+		price = purchase_item.price / 2
+	else:
+		price = purchase_item.calculateprice()/2
 	if Items.materiallist.has(purchase_item.code):
 		ResourceScripts.game_res.set_material(purchase_item.code, '-', value)
 	else:

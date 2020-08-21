@@ -17,6 +17,7 @@ onready var MAIN_MODULES = {
 	INTERACTION = preload("res://GUI_New/Mansion/InteractionMainModule.tscn"),
 	DATE = preload("res://src/date.tscn"),
 	GAMEMENU = preload("res://GUI_New/GameMenuPanel.tscn"),
+	CLOCK = preload("res://GUI_New/Mansion/MansionClockModule.tscn"),
 }
 
 # GUI Dict
@@ -57,9 +58,13 @@ func _ready():
 		var main_module = MAIN_MODULES[scene].instance()
 		add_child(main_module)
 		gui_data[scene] = {"main_module": main_module}
-
-	CurrentScene = gui_data["MANSION"].main_module
-	BaseScene = gui_data["MANSION"].main_module
+	if test_mode:
+		if !set_window_to_open():
+			CurrentScene = gui_data["MANSION"].main_module
+			BaseScene = gui_data["MANSION"].main_module
+	else:
+		CurrentScene = gui_data["MANSION"].main_module
+		BaseScene = gui_data["MANSION"].main_module
 	input_handler.get_spec_node(input_handler.NODE_CLASSINFO, null, false, false)
 	visibility_handler()
 	if is_new_game:
@@ -93,6 +98,8 @@ func _input(event):
 			PreviousScene = null
 			return
 		if CurrentScene == gui_data.SLAVE_INFO.main_module:# && !PreviousScene == gui_data.SLAVE_INFO.main_module:
+			if CurrentScene.get_node("SlaveBodyModule/professions").get_global_rect().has_point(get_global_mouse_position()):
+				return
 			PreviousScene = CurrentScene
 			visibility_handler()
 			PreviousScene = null
@@ -131,10 +138,21 @@ func _input(event):
 	if CurrentScene == gui_data["MANSION"].main_module && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):# && !text_field_input: ### Find Solution
 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
 			if input_handler.globalsettings.turn_based_time_flow == false:
-				CurrentScene.get_node("MansionClockModule").changespeed(CurrentScene.get_node("MansionClockModule").timebuttons[int(event.as_text())-1])
+				gui_data.CLOCK.main_module.changespeed(gui_data.CLOCK.main_module.timebuttons[int(event.as_text())-1])
 			else:
 				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
-	
+		
+
+
+
+func clock_visibility():
+	if CurrentScene == gui_data.MANSION.main_module:
+		gui_data.CLOCK.main_module.show()
+	else:
+		if CurrentScene == gui_data.EXPLORATION.main_module && !CurrentScene.get_node("ExploreFullSlaveModule").is_visible() && !CurrentScene.get_node("LocationGui").is_visible():
+			gui_data.CLOCK.main_module.show()
+		else:
+			gui_data.CLOCK.main_module.hide()
 
 
 func visibility_handler():
@@ -170,6 +188,7 @@ func visibility_handler():
 			continue
 		subscene.update()
 	gui_data.MANSION.main_module.get_node("TutorialButton").show()
+	clock_visibility()
 
 
 
@@ -177,7 +196,7 @@ func submodules_handler():
 	var last_opened_id
 	var last_opened
 	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
-	if classinfo != null && menu_opened && !classinfo.is_visible():
+	if classinfo && menu_opened && !classinfo.is_visible():
 		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
 		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
 		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
@@ -193,6 +212,10 @@ func submodules_handler():
 
 func close_scene(scene):
 	scene.hide()
+	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
+	if classinfo && CurrentScene == gui_data.SLAVE_INFO.main_module && classinfo == scene:
+		CurrentScene.submodules.erase(scene)
+		return
 	if scene in gui_data.EXPLORATION.main_module.submodules:
 		gui_data.EXPLORATION.main_module.submodules.erase(scene)
 		gui_data.EXPLORATION.main_module.Navigation.show()
@@ -215,8 +238,8 @@ func close_scene(scene):
 		# yield(get_tree().create_timer(0.3), "timeout")
 		module.hide()
 	CurrentScene.submodules.clear()
-	# if CurrentScene == gui_data["SLAVE_INFO"].main_module:
-	# 	return
+	if CurrentScene == gui_data["SLAVE_INFO"].main_module:
+		return
 
 
 func set_current_scene(scene):
@@ -255,49 +278,25 @@ func show_class_info(classcode, person = null):
 func test_mode():
 	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
+	
 	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'male', 'random')
+	character.create('HalfkinCat', 'futa', 'random')
 	character.unlock_class("master")
 	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-#	character = ResourceScripts.scriptdict.class_slave.new()
-#	character.create('HalfkinCat', 'random', 'random')
-#	characters_pool.move_to_state(character.id)
-
-#	character.create('HalfkinCat', 'futa', 'random')
-#	characters_pool.move_to_state(character.id)
+	ResourceScripts.game_res.upgrades.forge = 3
+	ResourceScripts.game_res.upgrades.tailor = 1
 	
+#	globals.impregnate(character, character)
+#	character.get_stat('pregnancy', true).duration = 2
+	character.statlist.statlist.sex_skills.anal = 100
 	character.unlock_class("master")
 	character.unlock_class("caster")
 	character.unlock_class("apprentice")
 	character.unlock_class("rogue")
-	character.unlock_class("pet")
+	character.unlock_class("druid")
 	character.unlock_class("souleater")
-	#character.travel.location = 'L4'
-	#character.travel.area = 'plains'
+	character.travel.location = 'L4'
+	character.travel.area = 'plains'
 	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 	globals.AddItemToInventory(bow)
 	character.equip(bow)
@@ -351,7 +350,7 @@ func test_mode():
 
 
 
-	character.set_stat('obedience', 0)
+	character.set_stat('obedience', 100)
 	#character.fear = 25
 	#character.base_exp = 99
 	character.set_stat('charm_factor', 5)
@@ -439,7 +438,7 @@ func test_mode():
 			}
 		]
 	)
-	ResourceScripts.game_res.money = 500
+	ResourceScripts.game_res.money = 80000
 	for i in Items.materiallist:
 		ResourceScripts.game_res.materials[i] = 200
 	ResourceScripts.game_res.materials.bandage = 0
@@ -459,6 +458,7 @@ func test_mode():
 	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
 	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
+	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 	globals.AddItemToInventory(
 		globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)
@@ -472,6 +472,12 @@ func test_mode():
 	globals.AddItemToInventory(
 		globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)
+	
+	
+	globals.AddItemToInventory(
+		globals.CreateGearItem("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
+	)
+	
 	globals.AddItemToInventory(
 		globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 	)
@@ -511,7 +517,23 @@ func test_mode():
 	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
 	input_handler.add_random_chat_message(character2, 'hire')
-	#input_handler.interactive_message('loan_event1', '', {})
+	
 	
 	
 	character = ResourceScripts.scriptdict.class_slave.new()
+
+
+
+	# input_handler.interactive_message('servants_election_finish5', '', {})
+
+
+
+func set_window_to_open():
+	return false
+	CurrentScene = gui_data.EXPLORATION.main_module
+	BaseScene = gui_data.EXPLORATION.main_module
+	gui_data["MANSION"].main_module.selected_location = "Aliron"
+	BaseScene.open()
+	BaseScene.active_area = ResourceScripts.game_world.areas.plains
+	var faction = BaseScene.active_area.factions["servants"]
+	BaseScene.City.enter_guild(faction)

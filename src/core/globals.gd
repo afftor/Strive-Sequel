@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.3.0'
+const gameversion = '0.3.0c'
 
 #time
 signal hour_tick
@@ -434,6 +434,7 @@ func LoadGame(filename):
 	characters_pool.deserialize(savedict.charpool)
 	for p in ResourceScripts.gamestate:
 		ResourceScripts.set(p, dict2inst(savedict[p]))
+	input_handler.connect("EnemyKilled", ResourceScripts.game_world, "quest_kill_receiver")
 	ResourceScripts.game_res.fix_serialization()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
@@ -851,7 +852,6 @@ func StartCombat(encounter = null):
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = data.unitcode
-	
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
 
 func StartQuestCombat(encounter):
@@ -967,9 +967,10 @@ func return_characters_from_location(locationid):
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
 			if variables.instant_travel == false:
-				person.travel.location = 'travel'
-				person.travel.travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
-				person.travel.travel_time = area.travel_time + location.travel_time
+#				person.travel.location = 'travel'
+#				person.travel.travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
+#				person.travel.travel_time = area.travel_time + location.travel_time
+				person.return_to_mansion()
 			else:
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
@@ -1126,12 +1127,18 @@ func common_effects(effects):
 			'make_quest_location':
 				ResourceScripts.world_gen.make_quest_location(i.value)
 			'remove_quest_location':
-				input_handler.remove_location(i.value)
+				remove_location(i.value)
 			'set_music':
 				input_handler.SetMusic(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
 				globals.return_to_main_menu()
+			'complete_active_location_quests':
+				var quest = ResourceScripts.game_world.get_quest_by_id(input_handler.active_location.questid)
+				for req in quest.requirements:
+					if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
+						req.completed = true
+						
 
 func checkreqs(array):
 	var check = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GUI_New/CharStatsPanel_v2.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=6]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 7 )
 
 [node name="StatsPanel_v2" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -295,10 +300,10 @@ theme = ExtResource( 6 )
 text = "20"
 
 [node name="resists" type="GridContainer" parent="."]
-margin_left = 390.267
+margin_left = 390.0
 margin_top = 298.0
-margin_right = 676.267
-margin_bottom = 419.0
+margin_right = 633.0
+margin_bottom = 421.0
 custom_constants/vseparation = 7
 custom_constants/hseparation = 0
 columns = 4
@@ -308,18 +313,20 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="resists"]
 visible = false
-margin_right = 372.0
-margin_bottom = 24.0
+margin_right = 88.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Attack:"
 align = 2
 
 [node name="Value" type="Label" parent="resists"]
 visible = false
-margin_right = 28.0
-margin_bottom = 24.0
-theme = ExtResource( 6 )
+margin_right = 22.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 
 [node name="Label" type="Label" parent="."]

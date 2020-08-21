@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/images/gui/gui icons/icon_charm.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/crown.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=22]
+[ext_resource path="res://GUI_New/Mansion/MansionSlaveModule.gd" type="Script" id=23]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=26]
@@ -74,6 +75,7 @@ font_data = ExtResource( 20 )
 rect_min_size = Vector2( 470, 665 )
 theme = ExtResource( 17 )
 custom_styles/panel = ExtResource( 10 )
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -330,7 +332,7 @@ margin_top = 309.41
 margin_right = 122.833
 margin_bottom = 341.41
 custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.996078, 0.317647, 0.364706, 1 )
 text = "Physics"
 align = 1
 clip_text = true

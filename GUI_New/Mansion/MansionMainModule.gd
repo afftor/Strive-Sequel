@@ -13,7 +13,6 @@ onready var NavModule = $NavigationModule
 onready var CraftModule = $MansionCraftModule
 onready var CraftSmallModule = $MansionCraftSmallModule
 onready var JobModule = $MansionJobModule
-onready var InteractSelection = $InteractSelectionModule
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule
@@ -82,6 +81,7 @@ func _ready():
 	slave_list_manager()
 	match_state()
 	globals.log_node = $MansionLogModule
+	input_handler.SetMusicRandom("mansion")
 #	if globals.start_new_game == true:
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
@@ -120,7 +120,6 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
-	# input_handler.SetMusicRandom("mansion")
 	NavModule.build_accessible_locations()
 	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
 	for node in get_children():
@@ -249,7 +248,7 @@ func craft_handler():
 		"default":
 			selected_craft_task = null
 			# is_craft_selected = false
-			CraftModule.show()
+			CraftModule.open()
 			CraftModule.get_node("MaterialSetupPanel").hide()
 			CraftModule.update()
 			# CraftModule.get_node("filter").hide()
@@ -376,6 +375,7 @@ func remove_hovered_person():
 func _on_TestButton_pressed():
 	Locations.show()
 	Locations.open()
+	input_handler.emit_signal("EnemyKilled","wolf")
 	# print("LocaLinks:" +str(ResourceScripts.game_world.location_links))
 	# for person in ResourceScripts.game_party.characters.values():
 	# 	var loca = person.travel.location

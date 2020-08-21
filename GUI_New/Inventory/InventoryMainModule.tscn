@@ -26,7 +26,6 @@ font_data = ExtResource( 14 )
 [node name="InventoryMainModule" type="Panel" groups=[
 "pauseprocess",
 ]]
-visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 649, 788 )

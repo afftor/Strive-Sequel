@@ -189,11 +189,11 @@ func CompleteQuest():
 				"slave_delivery":
 					check = i.completed
 				'complete_dungeon','complete_location':
-					check = ResourceScripts.game_progress.completed_locations.has(i.location)
+					check = ResourceScripts.world_gen.get_location_from_code(i.location).completed
 			if check == false:
 				break
 		if check == false:
-			input_handler.SystemMessage("Requirements are no met.")
+			input_handler.SystemMessage("Requirements are not met.")
 			input_handler.PlaySound("error")
 			return
 		else:

@@ -83,6 +83,7 @@ func _ready():
 #		if i.find('.remap') >= 0:
 #			continue
 #		var newaction = load(i).new()
+	$Panel/sceneeffects1.connect("meta_clicked", self, '_on_sceneeffects1_meta_clicked')
 	for i in globals.sex_actions_dict.values():
 		categories[i.category].append(i)
 	for i in get_node("Panel/HBoxContainer").get_children():

@@ -35,6 +35,13 @@ func open(scene, not_save = false):
 	if scene.tags.has("blackscreen_transition_common"):
 		ResourceScripts.core_animations.BlackScreenTransition(1)
 		yield(get_tree().create_timer(1), "timeout")
+		if scene.tags.has("close_guild"):
+			var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+			var guild = GUIWorld.gui_data.EXPLORATION.main_module.City
+			guild.opened_guild = {code = ""}
+			guild.get_parent().get_node("GuildBG").hide()
+			guild.Guild.hide()
+			guild.get_node("GuildMenuBG").hide()
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		yield(get_tree().create_timer(2), "timeout")
@@ -266,7 +273,8 @@ func close(transition = false):
 		input_handler.scene_characters.clear()
 	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
-	GUIWorld.CurrentScene = GUIWorld.BaseScene
+	if get_tree().get_root().get_node_or_null("GUIWorld"):
+		GUIWorld.CurrentScene = GUIWorld.BaseScene
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
@@ -312,7 +320,7 @@ func inspect_character_child():
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
-	person.stats.get_random_name()
+	person.statlist.get_random_name()
 	node.open(self, 'set_baby_name', person.get_stat('name'))
 
 func removebaby():
@@ -323,16 +331,10 @@ func removebaby():
 
 func set_baby_name(text):
 	var person = ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby]
+	person.baby_transform()
+	person.set_stat('obedience', 24)
 	person.set_stat('name', text)
-	person.surname = input_handler.active_character.surname
 	ResourceScripts.game_party.add_slave(person, true)
-	var mother = characters_pool.get_char_by_id(person.relatives.mother)
-	if mother == null:
-		person.set_slave_category('slave')
-	elif mother.get_stat('slave_class') != 'master':
-		person.set_slave_category(mother.get_stat('slave_class'))
-	else:
-		person.set_slave_category("servant")
 	close()
 
 func open_chest():
@@ -375,4 +377,5 @@ func fight_skirmish():
 func quest_fight(code):
 	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
+	close(true)
 

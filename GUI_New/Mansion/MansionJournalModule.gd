@@ -6,6 +6,8 @@ var type = "main"
 
 
 func _ready():
+	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+	GUIWorld.add_close_button(self)
 	$CompleteButton.connect("pressed", self, "CompleteQuest")
 	$CancelButton.connect("pressed", self, "CancelQuest")
 	$ItemSelectionPanel/CancelButton.connect("pressed",self, 'hide_item_selection')
@@ -15,6 +17,10 @@ func _ready():
 
 
 func change_type(newtype):
+	$QuestDescript.bbcode_text = ""
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		if i.has_meta('quest'):
+			i.pressed = false
 	type = newtype
 	$Main.pressed = newtype == "main"
 	$Minor.pressed = newtype == "minor"
@@ -30,7 +36,7 @@ func show_quests():
 
 
 func open():
-	$Main.pressed = true
+	# $Main.pressed = true
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
 	$QuestDescript.clear()
@@ -51,6 +57,7 @@ func open():
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
 				make_quest_button(quest)
+	change_type(type)
 	show_quests()
 
 func make_active_quest_button(quest):
@@ -211,12 +218,14 @@ func CompleteQuest():
 					check = i.completed
 				"slave_delivery":
 					check = i.completed
-				'complete_dungeon','complete_location':
-					check = ResourceScripts.game_progress.completed_locations.has(i.location)
+				'complete_dungeon':
+					check = i.completed
+				'complete_location':
+					check = i.completed
 			if check == false:
 				break
 		if check == false:
-			input_handler.SystemMessage("Requirements are no met.")
+			input_handler.SystemMessage("Requirements are not met.")
 			input_handler.PlaySound("error")
 			return
 		else:

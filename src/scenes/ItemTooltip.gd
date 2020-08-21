@@ -93,7 +93,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	
 	
 	if get_rect().end.x > screen.size.x:
-		if node.has_meta("exploration"):
+		if node.has_meta("exploration") || type == "gear":
 			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
 			self.set_global_position(pos)
 		else:

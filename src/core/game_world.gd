@@ -99,7 +99,6 @@ func update_guilds(area):
 					#area.quests.factions[faction].erase(quest.id)
 		for i in cleararray:
 			area.quests.factions[faction].erase(i)
-	
 	if int(ResourceScripts.game_globals.date) % 7 == 0:
 		for i in area.factions.values():
 			for k in i.slaves:
@@ -134,3 +133,13 @@ func fail_quest(quest):
 			globals.return_characters_from_location(i.location)
 			areas[i.area].locations.erase(i.location)
 			areas[i.area].questlocations.erase(i.location)
+
+func get_quest_by_id(id):
+	for i in ResourceScripts.game_world.areas.values():
+		for guild in i.quests.factions:
+			for quest in i.quests.factions[guild].values():
+				if quest.id == id:
+					return quest
+		for quest in i.quests.global.values():
+			if quest.id == id:
+				return quest

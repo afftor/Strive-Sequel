@@ -232,7 +232,7 @@ func work_tick():
 					globals.spend_resources(craftingitem)
 					currenttask.messages.erase("noresources")
 			work_tick_values(currenttask)
-			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product)#
+			craftingitem.workunits += get_progress_task(currenttask.code, currenttask.product, true)#
 			make_item_sequence(currenttask, craftingitem)
 	
 	elif currenttask.code == 'building':
@@ -253,7 +253,7 @@ func work_tick():
 					currentupgradelevel = ResourceScripts.game_res.upgrades[upgrades_queue[0]] + 1
 					ResourceScripts.game_res.upgrade_progresses[upgrades_queue[0]] = {level = currentupgradelevel, progress = 0}
 			ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress += get_progress_task(currenttask.code, currenttask.product, true)#*(productivity/100)
-			if ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress >= upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].levels[ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].level].taskprogress:
+			if ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].progress >= upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].levels[int(ResourceScripts.game_res.upgrade_progresses[ResourceScripts.game_res.upgrades_queue[0]].level)].taskprogress:
 				if ResourceScripts.game_res.upgrades.has(ResourceScripts.game_res.upgrades_queue[0]):
 					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.upgrades_queue[0]] += 1
 				else:
@@ -348,7 +348,7 @@ func get_progress_resource(tempresource, count_crit = false):
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if item.bonusstats.has("task_efficiency_tool"):
 			value = value + value*item.bonusstats.task_efficiency_tool
-	# value = value * (parent.get_stat('productivity') * parent.get_stat(task.mod)/100.0)#*(productivity*get(currenttask.mod)/100)
+	value = value * (parent.get_stat('productivity') * parent.get_stat(resource.workmod)/100.0)#*(productivity*get(currenttask.mod)/100)
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
