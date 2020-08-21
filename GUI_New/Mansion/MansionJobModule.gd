@@ -140,7 +140,6 @@ func show_job_details(job, gatherable = false):
 		if job.has("tool_type") && job.tool_type != "":
 			work_tools = statdata.worktoolnames[job.tool_type]
 	else:
-		print("else")
 		job_name = job.name
 		if job.has("worktool"):
 			work_tools = statdata.worktoolnames[job.worktool]

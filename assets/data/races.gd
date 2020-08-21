@@ -186,7 +186,7 @@ var racelist = {
 			skin = ['pale','fair','olive','tan','brown'],
 			hair_color = ['blond','red','auburn','brown','black'],
 			eye_color = ['blue','green','grey','brown','black'],
-			hair_length = ['ear','neck','shoulder','waist','hips'],
+			hair_length = ['bald','ear','neck','shoulder','waist','hips'],
 			eye_shape = ['normal'],
 			penis_type = ['human']
 			},

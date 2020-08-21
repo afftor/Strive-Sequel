@@ -50,6 +50,7 @@ margin_bottom = 778.0
 margin_right = 559.0
 margin_bottom = 753.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer2"]
@@ -134,6 +135,7 @@ margin_left = 651.0
 margin_right = 1211.0
 margin_bottom = 753.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]

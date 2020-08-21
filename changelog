@@ -1,9 +1,15 @@
+Added 'bald' hair length
+Kobold males now generate as bald
+Elf and Drow males now can generate with long hair
+Fixed fighter subquest bug when attacking lich before talking
+0.3.0c
 Fixed sex skills being shared by characters
 Fixed birth sequence crashing
 Fixed enemy hunt quests not counting kills after game load
 Fixed ongoing actions not being cancellable
 Fixed characters not returning when location is being forgotten
 Fixed quest locations not being turnable after completion
+Fixed main quest bugs including lich and xari encounters
 0.3.0b
 Added unique icons for new class spells
 Added buffs to character info panel

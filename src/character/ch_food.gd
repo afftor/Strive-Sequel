@@ -22,6 +22,7 @@ func get_racial_features(race):
 	for i in race_template.diet_hate:
 		if race_template.diet_hate[i] >= randf()*100 && i != food_love:
 			food_hate.append(i)
+	#print(food_love,food_hate)
 
 func create():
 	#setting food filter

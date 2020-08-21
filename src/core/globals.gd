@@ -717,13 +717,18 @@ func text_log_add(label, text):
 		newfield.rect_min_size.y = textfield.rect_size.y
 
 func character_stat_change(character, data):
-	var text = character.get_short_name() + ": " + statdata.statdata[data.code].name 
+	var text = character.get_short_name() + ": "
+	if statdata.statdata.has(data.code):
+		text += statdata.statdata[data.code].name 
 	if data.operant == '+':
 		text += " + "
 		character.add_stat(data.code, data.value)
+	elif data.operant == '=':
+		character.set_stat(data.code, data.value)
 	else:
 		text += " - "
 		character.add_stat(data.code, -data.value)
+	
 	text += str(data.value)
 	text_log_add('char', text)
 #	character.set(data.code, input_handler.math(data.operant, character.get(data.code), data.value))

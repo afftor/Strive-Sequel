@@ -260,7 +260,13 @@ func startsequence(actors):
 		if person.check_trait("Sex-crazed"):
 			newmember.effects.append("sexcrazed")
 	$Panel/aiallow.pressed = aiobserve
-	get_node("Panel/sceneeffects").set_bbcode("You bring selected participants into your bedroom. ")
+	var temparray = []
+	for i in actors:
+		if i.has_profession("master") == true:
+			temparray.append("{color=yellow|You}")
+		else:
+			temparray.append("{color=yellow|"+i.get_short_name()+"}")
+	var text = input_handler.text_form_recitation(temparray) + " walk into the bedroom."
 	
 	var counter = 0
 	for i in participants:
@@ -270,14 +276,13 @@ func startsequence(actors):
 	changecategory('caress')
 	clearstate()
 	rebuildparticipantslist()
-	var array = []
-	var has_master = true
-	var args = []
-	for i in participants:
-		array.append(i.person.id)
-		if i.person.has_profession("master"):
-			args.append("partner_is_master")
-	input_handler.get_person_for_chat(array, 'sex_start', args)
+	for i in actors:
+		if i.has_profession("master"):
+			continue
+		text += "\n{color=aqua|" + i.get_short_name() + "}: " + i.translate(input_handler.get_random_chat_line(i, 'sex_start'))
+	#input_handler.get_person_for_chat(array, 'sex_start', args)
+	
+	get_node("Panel/sceneeffects").set_bbcode(globals.TextEncoder(text))
 
 
 func clearstate():

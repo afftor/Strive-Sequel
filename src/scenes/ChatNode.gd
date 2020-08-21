@@ -173,7 +173,7 @@ var individual_lines = {
 	sex_start_line3 = {text = "I'm not too eager for this, but if you insist.", events = ['sex_start'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	sex_start_line4 = {text = "Hmh, leering over my body, [Master]?", events = ['sex_start'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	sex_start_line5 = {text = "Alright, if you want me...", events = ['sex_start'], personalities = ['bold','serious','kind'], reqs = [], weight = 1, tags = []},
-	sex_start_line6 = {text = "I...like being with you, [Master]...", events = ['sex_start','sex_finish'], personalities = ['bold','kind','serious','shy'], reqs = [], weight = 2, tags = [], arg_reqs = ['partner_is_master']},
+	sex_start_line6 = {text = "I...like being with you, [Master]...", events = ['sex_start','sex_finish'], personalities = ['bold','kind','serious','shy'], reqs = [], weight = 5, tags = [], arg_reqs = ['partner_is_master']},
 	sex_start_line7 = {text = "Ugh... Really? Fine, but you better not be gentle!", events = ['sex_start'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	sex_start_line8 = {text = "I knew you were lusting over me!", events = ['sex_start'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	sex_start_line9 = {text = "Don't think I'm easy, or anything. I need relief too you know.", events = ['sex_start'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
