@@ -14,7 +14,7 @@ func _ready():
 
 func open_editor():
 	var editor = load("res://editor tools/editor.tscn").instance()
-	add_child(editor)
+	get_parent().add_child(editor)
 
 func populate_avail_mods():
 	av_mods = modding_core.get_avail_mods()
