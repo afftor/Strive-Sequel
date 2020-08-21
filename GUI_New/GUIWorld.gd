@@ -6,7 +6,8 @@ var closebutton
 var open_sound = 'menu_open'
 var close_sound = 'menu_close'
 var close_played = false
-export var test_mode = false
+export var test_mode = false 
+export var generate_test_chars = false
 
 # Main Modules
 onready var MAIN_MODULES = {
@@ -28,6 +29,7 @@ var CurrentScene
 var PreviousScene
 var BaseScene
 var menu_opened = false
+
 
 
 func _ready():
@@ -140,7 +142,7 @@ func _input(event):
 			if input_handler.globalsettings.turn_based_time_flow == false:
 				gui_data.CLOCK.main_module.changespeed(gui_data.CLOCK.main_module.timebuttons[int(event.as_text())-1])
 			else:
-				CurrentScene.get_node("MansionClockModule").timeflowhotkey(int(event.as_text()))
+				gui_data.CLOCK.main_module.timeflowhotkey(int(event.as_text()))
 		
 
 
@@ -190,22 +192,28 @@ func visibility_handler():
 	gui_data.MANSION.main_module.get_node("TutorialButton").show()
 	clock_visibility()
 
-
+func menu_submodules_handler():
+	var last_opened_id
+	var last_opened
+	last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
+	last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
+	gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
+	gui_data["GAMEMENU"].main_module.submodules.erase(last_opened)
 
 func submodules_handler():
 	var last_opened_id
 	var last_opened
 	var classinfo = get_tree().get_root().get_node_or_null("classinfo")
 	if classinfo && menu_opened && !classinfo.is_visible():
-		last_opened_id = (gui_data["GAMEMENU"].main_module.submodules.size() - 1)
-		last_opened = gui_data["GAMEMENU"].main_module.submodules[last_opened_id]
-		gui_data["GAMEMENU"].main_module.submodules[last_opened_id].hide()
-		gui_data["GAMEMENU"].main_module.submodules.erase(last_opened)
+		menu_submodules_handler()
 	else:
-		last_opened_id = (CurrentScene.submodules.size() - 1)
-		last_opened = CurrentScene.submodules[last_opened_id]
-		CurrentScene.submodules[last_opened_id].hide()
-		CurrentScene.submodules.erase(last_opened)
+		if menu_opened:
+			menu_submodules_handler()
+		else:
+			last_opened_id = (CurrentScene.submodules.size() - 1)
+			last_opened = CurrentScene.submodules[last_opened_id]
+			CurrentScene.submodules[last_opened_id].hide()
+			CurrentScene.submodules.erase(last_opened)
 	gui_data.MANSION.main_module.get_node("TutorialButton").show()
 
 
@@ -278,256 +286,249 @@ func show_class_info(classcode, person = null):
 func test_mode():
 	variables.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
-	
-	var character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('Elf', 'male', 'random')
-	character.unlock_class("master")
-	characters_pool.move_to_state(character.id)
-	ResourceScripts.game_res.upgrades.forge = 3
-	ResourceScripts.game_res.upgrades.tailor = 1
-	
-#	globals.impregnate(character, character)
-#	character.get_stat('pregnancy', true).duration = 2
-	character.statlist.statlist.sex_skills.anal = 100
-	character.unlock_class("master")
-	character.unlock_class("caster")
-	character.unlock_class("apprentice")
-	character.unlock_class("rogue")
-	character.unlock_class("druid")
-	character.unlock_class("souleater")
-	#character.travel.location = 'L4'
-	#character.travel.area = 'plains'
-	var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
-	globals.AddItemToInventory(bow)
-	character.equip(bow)
-	character.set_slave_category('master')
-	character.statlist.negative_sex_traits = ['dislike_missionary']
-	character.statlist.unlocked_sex_traits = [
-		'submissive',
-		'pushover',
-		'bottle_fairy',
-		'dominant',
-		'sadist',
-		'desired',
-		'curious',
-		'life_power'
-	]
-	#character.armor = 135
-	#character.set_stat('wits', 20)
-	character.set_stat('consent', 100)
-	character.set_stat('charm_factor', 5)
-	character.set_stat('physics_factor', 5)
-	character.set_stat('wits_factor', 5)
-	character.set_stat('food_love', "meat")
-	character.set_stat('food_hate', ["grain"])
-	#character.unlock_class("worker")
-	character.mp = 50
-	character.unlock_class("sadist")
-#		character.unlock_class("caster")
-	for i in Skilldata.Skilllist:
-		if Skilldata.Skilllist[i].type != 'social':
-			continue
-		character.skills.social_skills.append(i)
-	character.is_players_character = true
-	globals.impregnate(character, character)
-	#character.get_stat('pregnancy').duration = 2
 
-	character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'random', 'random')
-	character.set_stat('consent', 100)
-	character.statlist.negative_sex_traits = ['dislike_missionary']
-	characters_pool.move_to_state(character.id)
-	#character.unlock_class("attendant")
-	character.add_trait('core_trait')
-	character.set_slave_category('servant')
-	character.set_stat('obedience', 100)
-	character.set_stat('lust', 50)
-	character.is_players_character = true
-	character = ResourceScripts.scriptdict.class_slave.new()
-	character.create('HalfkinCat', 'random', 'random')
-	characters_pool.move_to_state(character.id)
-	#character.set_stat('base_exp', 1000)
-
-
-
-	character.set_stat('obedience', 100)
-	#character.fear = 25
-	#character.base_exp = 99
-	character.set_stat('charm_factor', 5)
-	character.set_stat('physics_factor', 5)
-	character.set_stat('wits_factor', 5)
-	character.set_stat('sexuals_factor', 5)
-	character.set_stat('charm', 100)
-	character.set_stat('physics', 100)
-	character.set_stat('consent', 100)
-
-	var character2 = ResourceScripts.scriptdict.class_slave.new()
-	character.set_stat('food_love', "meat")
-	character.set_stat('food_hate', ["grain"])
-	character2.create('HalfkinCat', 'random', 'random')
-	character2.set_stat('charm', 0)
-	character2.set_stat('physics', 0)
-	character2.set_stat('wits', 0)
-	character2.set_stat('sexuals', 0)
-	var text = ''
-	for i in races.tasklist.values():
-		for k in i.production.values():
-			var value = character.get_progress_task(i.code, k.code, true) / k.progress_per_item
-			if Items.materiallist.has(k.item):
-				pass
-
-			else:
-				pass
-
-	var base_price = 0
-	var output_price = 0
-	for i in Items.recipes.values():
-		base_price = 0
-		output_price = 0
-		for k in i.materials:
-			base_price += Items.materiallist[k].price * i.materials[k]
-		for k in i.items:
-			base_price += Items.itemlist[k].price * i.items[k]
-
-		if Items.materiallist.has(i.resultitem):
-			output_price = Items.materiallist[i.resultitem].price * i.resultamount
-			if base_price != 0:
-				text += (
-					Items.materiallist[i.resultitem].name
-					+ ": Cost - "
-					+ str(base_price)
-					+ ", Return - "
-					+ str(output_price)
-					+ "\n"
-				)
-		else:
-			output_price = Items.itemlist[i.resultitem].price * i.resultamount
-			if base_price != 0:
-				text += (
-					Items.itemlist[i.resultitem].name
-					+ ": Cost - "
-					+ str(base_price)
-					+ ", Return - "
-					+ str(output_price)
-					+ "\n"
-				)
-
-	character.set_stat('loyalty', 95)
-	character.set_stat('authority', 100)
-	character.set_stat('submission', 95)
-	character.mp = 10
-	character.hp = 95
-	#character.exhaustion = 1000
-	character.add_trait('core_trait')
-	character.set_slave_category('slave')
-	character.is_players_character = true
-	character.set_stat('consent', 100)
-
-	globals.common_effects(
-		[
-			{code = 'make_story_character', value = 'Daisy'},
-			{
-				code = 'unique_character_changes',
-				value = 'daisy',
-				args = [
-					{code = 'sexuals_factor', value = 1, operant = "+"},
-					{code = 'sextrait', value = 'submissive', operant = 'add'},  #for sextrait/add setting, trait is appended to character's traits
-					{code = 'submission', operant = '+', value = 50},
-					{code = 'obedience', operant = '+', value = 30},
-					{code = 'hair_length', operant = '=', value = 'ear'},
-					{code = 'consent', operant = '+', value = 30},
-					{code = 'tag', operant = 'remove', value = 'no_sex'},
-				]
-			}
+	if generate_test_chars:
+		var character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'futa', 'random')
+		character.unlock_class("master")
+		characters_pool.move_to_state(character.id)
+		ResourceScripts.game_res.upgrades.forge = 3
+		ResourceScripts.game_res.upgrades.tailor = 1
+		
+	#	globals.impregnate(character, character)
+	#	character.get_stat('pregnancy', true).duration = 2
+		character.statlist.statlist.sex_skills.anal = 100
+		character.unlock_class("master")
+		character.unlock_class("caster")
+		character.unlock_class("apprentice")
+		character.unlock_class("rogue")
+		character.unlock_class("druid")
+		character.unlock_class("souleater")
+		character.travel.location = 'L4'
+		character.travel.area = 'plains'
+		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
+		globals.AddItemToInventory(bow)
+		character.equip(bow)
+		character.set_slave_category('master')
+		character.statlist.negative_sex_traits = ['dislike_missionary']
+		character.statlist.unlocked_sex_traits = [
+			'submissive',
+			'pushover',
+			'bottle_fairy',
+			'dominant',
+			'sadist',
+			'desired',
+			'curious',
+			'life_power'
 		]
-	)
-	ResourceScripts.game_res.money = 80000
-	for i in Items.materiallist:
-		ResourceScripts.game_res.materials[i] = 200
-	ResourceScripts.game_res.materials.bandage = 0
-	globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
-	globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
-	globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
-	globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
-	globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
-	globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
-	globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-	globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-	globals.AddItemToInventory(
-		globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-	)
-	globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
-	globals.AddItemToInventory(
-		globals.CreateGearItem("spear", {WeaponHandle = 'wood', Blade = 'obsidian'})
-	)
-	globals.AddItemToInventory(
-		globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-	)
-	globals.AddItemToInventory(
-		globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-	)
-	
-	
-	globals.AddItemToInventory(
-		globals.CreateGearItem("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
-	)
-	
-	globals.AddItemToInventory(
-		globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-	)
-	globals.AddItemToInventory(
-		globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
-	)
-	globals.AddItemToInventory(
-		globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
-	)
-	globals.AddItemToInventory(
-		globals.CreateGearItem(
-			"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
+		#character.armor = 135
+		#character.set_stat('wits', 20)
+		character.set_stat('consent', 100)
+		character.set_stat('charm_factor', 5)
+		character.set_stat('physics_factor', 5)
+		character.set_stat('wits_factor', 5)
+		character.set_stat('food_love', "meat")
+		character.set_stat('food_hate', ["grain"])
+		#character.unlock_class("worker")
+		character.mp = 50
+		character.unlock_class("sadist")
+	#		character.unlock_class("caster")
+		for i in Skilldata.Skilllist:
+			if Skilldata.Skilllist[i].type != 'social':
+				continue
+			character.skills.social_skills.append(i)
+		character.is_players_character = true
+		globals.impregnate(character, character)
+		#character.get_stat('pregnancy').duration = 2
+
+		character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'random', 'random')
+		character.set_stat('consent', 100)
+		character.statlist.negative_sex_traits = ['dislike_missionary']
+		characters_pool.move_to_state(character.id)
+		#character.unlock_class("attendant")
+		character.add_trait('core_trait')
+		character.set_slave_category('servant')
+		character.set_stat('obedience', 100)
+		character.set_stat('lust', 50)
+		character.is_players_character = true
+		character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'random', 'random')
+		characters_pool.move_to_state(character.id)
+		#character.set_stat('base_exp', 1000)
+
+
+
+		character.set_stat('obedience', 100)
+		#character.fear = 25
+		#character.base_exp = 99
+		character.set_stat('charm_factor', 5)
+		character.set_stat('physics_factor', 5)
+		character.set_stat('wits_factor', 5)
+		character.set_stat('sexuals_factor', 5)
+		character.set_stat('charm', 100)
+		character.set_stat('physics', 100)
+		character.set_stat('consent', 100)
+
+		var character2 = ResourceScripts.scriptdict.class_slave.new()
+		character.set_stat('food_love', "meat")
+		character.set_stat('food_hate', ["grain"])
+		character2.create('HalfkinCat', 'random', 'random')
+		character2.set_stat('charm', 0)
+		character2.set_stat('physics', 0)
+		character2.set_stat('wits', 0)
+		character2.set_stat('sexuals', 0)
+		var text = ''
+		for i in races.tasklist.values():
+			for k in i.production.values():
+				var value = character.get_progress_task(i.code, k.code, true) / k.progress_per_item
+				if Items.materiallist.has(k.item):
+					pass
+
+				else:
+					pass
+
+		var base_price = 0
+		var output_price = 0
+		for i in Items.recipes.values():
+			base_price = 0
+			output_price = 0
+			for k in i.materials:
+				base_price += Items.materiallist[k].price * i.materials[k]
+			for k in i.items:
+				base_price += Items.itemlist[k].price * i.items[k]
+
+			if Items.materiallist.has(i.resultitem):
+				output_price = Items.materiallist[i.resultitem].price * i.resultamount
+				if base_price != 0:
+					text += (
+						Items.materiallist[i.resultitem].name
+						+ ": Cost - "
+						+ str(base_price)
+						+ ", Return - "
+						+ str(output_price)
+						+ "\n"
+					)
+			else:
+				output_price = Items.itemlist[i.resultitem].price * i.resultamount
+				if base_price != 0:
+					text += (
+						Items.itemlist[i.resultitem].name
+						+ ": Cost - "
+						+ str(base_price)
+						+ ", Return - "
+						+ str(output_price)
+						+ "\n"
+					)
+
+		character.set_stat('loyalty', 95)
+		character.set_stat('authority', 100)
+		character.set_stat('submission', 95)
+		character.mp = 10
+		character.hp = 95
+		#character.exhaustion = 1000
+		character.add_trait('core_trait')
+		character.set_slave_category('slave')
+		character.is_players_character = true
+
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Daisy'},
+				{
+					code = 'unique_character_changes',
+					value = 'daisy',
+					args = [
+						{code = 'sexuals_factor', value = 1, operant = "+"},
+						{code = 'sextrait', value = 'submissive', operant = 'add'},  #for sextrait/add setting, trait is appended to character's traits
+						{code = 'submission', operant = '+', value = 50},
+						{code = 'obedience', operant = '+', value = 30},
+						{code = 'tag', operant = 'remove', value = 'no_sex'},
+					]
+				}
+			]
 		)
-	)
-	ResourceScripts.game_progress.show_tutorial = true
-	ResourceScripts.game_progress.active_quests.append(
-		{code = 'election_global_quest', stage = 'stage1'}
-	)
-	for i in ResourceScripts.game_world.areas.plains.factions.values():
-		i.totalreputation += 500
-	character.unlock_class("pet")
-	character.unlock_class("souleater")
-	character.mp = 10
-	var tmp = {}
-	tmp.oral = 70
-	tmp.anal = 90
-	tmp.petting = 100
-	#character.set_stat('sex_skills', tmp)
-	input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
-	input_handler.active_area = ResourceScripts.game_world.areas.plains
+		ResourceScripts.game_res.money = 80000
+		for i in Items.materiallist:
+			ResourceScripts.game_res.materials[i] = 200
+		ResourceScripts.game_res.materials.bandage = 0
+		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
+		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
+		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
+		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
+		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
+		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
+		globals.AddItemToInventory(
+			globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
+		globals.AddItemToInventory(
+			globals.CreateGearItem("spear", {WeaponHandle = 'wood', Blade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		
+		
+		globals.AddItemToInventory(
+			globals.CreateGearItem("fishingtools", {ToolHandle = 'wood', ToolClothwork = 'cloth'})
+		)
+		
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hunt_knife", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("legs_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("chest_base_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem(
+				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
+			)
+		)
+		ResourceScripts.game_progress.show_tutorial = true
+		ResourceScripts.game_progress.active_quests.append(
+			{code = 'election_global_quest', stage = 'stage1'}
+		)
+		for i in ResourceScripts.game_world.areas.plains.factions.values():
+			i.totalreputation += 500
+		character.unlock_class("pet")
+		character.unlock_class("souleater")
+		character.mp = 10
+		var tmp = {}
+		tmp.oral = 70
+		tmp.anal = 90
+		tmp.petting = 100
+		#character.set_stat('sex_skills', tmp)
+		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
+		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		
+		for i in ResourceScripts.game_world.areas.plains.factions.values():
+			i.reputation = 500
 
-	for i in ResourceScripts.game_world.areas.plains.factions.values():
-		i.reputation = 500
+		for c in ResourceScripts.game_party.characters.values():
+			if c.get_location() == "mansion": c.travel.location = "Aliron"
+		character = ResourceScripts.scriptdict.class_slave.new()
+		yield(get_tree(), 'idle_frame')
+		input_handler.add_random_chat_message(character2, 'hire')
 
-	for c in ResourceScripts.game_party.characters.values():
-		if c.get_location() == "mansion": c.travel.location = "Aliron"
-	yield(get_tree(), 'idle_frame')
 	input_handler.ActivateTutorial("introduction")
-	input_handler.add_random_chat_message(character2, 'hire')
-	
-	
-	
-	character = ResourceScripts.scriptdict.class_slave.new()
-
-
-
-	#input_handler.interactive_message('fighters_election4', '', {})
+	# input_handler.interactive_message('servants_election_finish5', '', {})
 
 
 

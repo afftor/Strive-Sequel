@@ -177,8 +177,8 @@ func remove_from_task(remember = false):
 			if i.code == work:
 				i.workers.erase(parent.id)
 				i.workers_count -= 1
-	if remember && work != 'travel':
-		previous_work = work
+	# if remember && work != 'travel':
+	# 	previous_work = work
 	work = ''
 
 func return_to_task():

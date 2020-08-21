@@ -142,7 +142,8 @@ func sell_slave():
 
 func sell_slave_confirm():
 	var selectedperson = get_parent().person_to_hire
-	ResourceScripts.game_res.money += round(selectedperson.calculate_price()/2)
+	ResourceScripts.game_res.money += int(round(selectedperson.calculate_price()/2))
+	selectedperson.remove_from_task()
 	ResourceScripts.game_party.remove_slave(selectedperson)
 	get_parent().active_faction.slaves.append(selectedperson.id)
 	selectedperson.is_players_character = false

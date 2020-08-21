@@ -29,3 +29,4 @@ func start_date():
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_parent().get_node("date").show()
 	get_parent().get_node("date").initiate(person)
+

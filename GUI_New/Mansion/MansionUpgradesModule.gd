@@ -114,7 +114,7 @@ func update_buttons():
 	array.sort_custom(self, 'sortupgrades')
 
 	for i in array:
-		var currentupgradelevel = findupgradelevel(i)
+		var currentupgradelevel = int(findupgradelevel(i))
 
 		var check = true
 		if i.levels.has(currentupgradelevel + 1):
@@ -182,11 +182,9 @@ func selectupgrade(upgrade):
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
 
-
-
 	input_handler.ClearContainer($UpgradeDescript/HBoxContainer)
 
-	var currentupgradelevel = findupgradelevel(upgrade) + 1
+	var currentupgradelevel = int(findupgradelevel(upgrade) + 1)
 
 	if currentupgradelevel > 1:
 		text += ('\n' + tr("UPGRADEPREVBONUS") + ' '	+ upgrade.levels[currentupgradelevel - 1].bonusdescript)
@@ -235,10 +233,10 @@ func findupgradelevel(upgrade):
 
 func start_upgrade():
 	var upgrade = upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]]
-	var currentupgradelevel = findupgradelevel(upgrade) + 1
+	var currentupgradelevel = int(findupgradelevel(upgrade) + 1)
 	if variables.free_upgrades == false:
 		for i in upgrade.levels[currentupgradelevel].cost:
-			ResourceScripts.game_res.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
+			ResourceScripts.game_res.materials[i] -= int(upgrade.levels[currentupgradelevel].cost[i])
 
 	if variables.instant_upgrades == false:
 		if !ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
@@ -253,6 +251,7 @@ func start_upgrade():
 			ResourceScripts.game_res.upgrades[upgrade.code] = 1
 	var is_already_in_queue = ResourceScripts.game_res.upgrades_queue.has(upgrade.code)
 	$UpgradeDescript/UnlockButton.disabled = is_already_in_queue
+	selectupgrade(upgrade)
 	show_list()
 	get_parent().TaskModule.task_index = 0
 	get_parent().TaskModule.change_button()

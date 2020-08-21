@@ -203,7 +203,7 @@ func _input(event):
 				$Panel/givetakepanel/givercontainer.get_child(key).emit_signal("pressed")
 			else:
 				$Panel/givetakepanel/receivercontainer.get_child(key).emit_signal("pressed")
-	if event.is_action_pressed("F") && $Panel/passbutton.disabled == false:
+	if event.is_action_pressed("F") && $Panel/passbutton.disabled == false && !$Control.is_visible():
 		_on_passbutton_pressed()
 
 # var dummycounter = 0
@@ -463,9 +463,9 @@ func rebuildparticipantslist():
 			get_node("Panel/GridContainer/GridContainer").add_child(newnode)
 			newnode.visible = true
 			if givers.size() < 2:
-				newnode.set_text(givers[0].person.translate("Let [name] Lead"))
+				newnode.get_node("ActionName").text = (givers[0].person.translate("Let [name] Lead"))
 			else:
-				newnode.set_text("Let Selected Lead")
+				newnode.get_node("ActionName").set_text("Let Selected Lead")
 			newnode.connect("pressed",self,'activateai')
 		elif selectmode == 'ai':
 			newnode = get_node("Panel/GridContainer/GridContainer/Button").duplicate()
