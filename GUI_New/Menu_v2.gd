@@ -87,6 +87,7 @@ func start_game_confirm():
 	$VBoxContainer/newgamebutton.disabled = true
 	globals.start_new_game = true
 	ResourceScripts.game_globals.newgame = true
+	ResourceScripts.game_globals.original_version = globals.gameversion
 	get_node("/root").remove_child(self)
 	input_handler.ChangeScene('mansion')
 	yield(globals, 'scene_changed')

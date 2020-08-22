@@ -42,14 +42,16 @@ func recheck():
 			tres = true
 			break
 	if tres:
-		atomic.clear()
+		remove()
+		is_applied = true
+#		atomic.clear()
 		for a in template.atomic:
 			var tmp := atomic_effect.new(a, id)
 			tmp.resolve_template()
 			#tmp.apply_template(obj)
 			obj.apply_atomic(tmp.template)
 			atomic.push_back(tmp.template)
-		sub_effects.clear()
+#		sub_effects.clear()
 		for e in template.sub_effects:
 			var tmp = effects_pool.e_createfromtemplate(e, id)
 			#tmp.calculate_args()
@@ -58,7 +60,7 @@ func recheck():
 		for eff in sub_effects:
 			obj.apply_effect(eff)
 		setup_siblings()
-		buffs.clear()
+#		buffs.clear()
 		for e in template.buffs:
 			var tmp = Buff.new(id)
 			tmp.createfromtemplate(e)

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.3.0c'
+const gameversion = '0.3.0d'
 
 #time
 signal hour_tick
@@ -1141,10 +1141,11 @@ func common_effects(effects):
 				input_handler.PlaySound('transition_sound')
 				globals.return_to_main_menu()
 			'complete_active_location_quests':
-				var quest = ResourceScripts.game_world.get_quest_by_id(input_handler.active_location.questid)
-				for req in quest.requirements:
-					if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
-						req.completed = true
+				if input_handler.active_location.has('questid'):
+					var quest = ResourceScripts.game_world.get_quest_by_id(input_handler.active_location.questid)
+					for req in quest.requirements:
+						if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
+							req.completed = true
 						
 
 func checkreqs(array):

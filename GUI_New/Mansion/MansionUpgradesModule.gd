@@ -232,26 +232,13 @@ func findupgradelevel(upgrade):
 	return int(rval)
 
 func start_upgrade():
-	var upgrade = upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]]
-	var currentupgradelevel = int(findupgradelevel(upgrade) + 1)
-	if variables.free_upgrades == false:
-		for i in upgrade.levels[currentupgradelevel].cost:
-			ResourceScripts.game_res.materials[i] -= int(upgrade.levels[currentupgradelevel].cost[i])
-
-	if variables.instant_upgrades == false:
-		if !ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
-			ResourceScripts.game_res.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
-		var char_selection = get_parent().chars_for_upgrades
-		for person in char_selection:
-			person.assign_to_task("building", "building")
-	else:
-		if ResourceScripts.game_res.upgrades.has(upgrade.code):
-			ResourceScripts.game_res.upgrades[upgrade.code] += 1
-		else:
-			ResourceScripts.game_res.upgrades[upgrade.code] = 1
-	var is_already_in_queue = ResourceScripts.game_res.upgrades_queue.has(upgrade.code)
-	$UpgradeDescript/UnlockButton.disabled = is_already_in_queue
-	selectupgrade(upgrade)
+#	var upgrade = upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]]
+#	var is_already_in_queue = ResourceScripts.game_res.upgrades_queue.has(upgrade.code)
+#	$UpgradeDescript/UnlockButton.disabled = is_already_in_queue
+#	selectupgrade(upgrade)
+	var char_selection = get_parent().chars_for_upgrades
+	for person in char_selection:
+		person.assign_to_task("building", "building")
 	show_list()
 	get_parent().TaskModule.task_index = 0
 	get_parent().TaskModule.change_button()
@@ -265,8 +252,21 @@ func add_to_upgrades_queue():
 		print("Warning: Selected Upgrade can't be null!")
 		return
 	var upgrade = get_parent().selected_upgrade
+	var currentupgradelevel = int(findupgradelevel(upgrade) + 1)
+	if variables.free_upgrades == false:
+		for i in upgrade.levels[currentupgradelevel].cost:
+			ResourceScripts.game_res.materials[i] -= int(upgrade.levels[currentupgradelevel].cost[i])
 	if !ResourceScripts.game_res.upgrades_queue.has(upgrade.code):
 		ResourceScripts.game_res.upgrades_queue.append(upgrade.code)
+	
+	if variables.instant_upgrades == false:
+		if !ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
+			ResourceScripts.game_res.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
+	else:
+		if ResourceScripts.game_res.upgrades.has(upgrade.code):
+			ResourceScripts.game_res.upgrades[upgrade.code] += 1
+		else:
+			ResourceScripts.game_res.upgrades[upgrade.code] = 1
 	selectupgrade(upgrade)
 	open()
 	open_queue()

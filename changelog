@@ -1,7 +1,15 @@
+0.3.0d
+Added a bit of variations to dating descriptions
 Added 'bald' hair length
 Kobold males now generate as bald
 Elf and Drow males now can generate with long hair
+Taurus females and futa now only generate with tits average and above
+Fixed created characters not acquiring correct food preferences
 Fixed fighter subquest bug when attacking lich before talking
+Fixed character travelling and occupation settings
+Fixed resources not being consumed on upgrade purchase
+Fixed dungeons not providing gathering rate speed bonus after clearing
+Fixed some abuses related to sex scene
 0.3.0c
 Fixed sex skills being shared by characters
 Fixed birth sequence crashing

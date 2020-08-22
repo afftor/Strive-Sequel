@@ -26,7 +26,7 @@ func setup_skills(data):
 func get_damage_mod(skill:Dictionary):
 	#stub. needs filling
 	var damage_mods = parent.get_stat('damage_mods')
-	if skill.type == 'social': return 1
+	if skill.type == 'social' or damage_mods.empty(): return 1
 	var res = damage_mods['all']
 	if skill.target_range == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']
 	if skill.target_range == 'weapon' and parent.get_weapon_range() == 'melee' and damage_mods.has('melee'): res *= damage_mods['melee']

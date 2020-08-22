@@ -61,7 +61,6 @@ func open(scene, not_save = false):
 		$CharacterImage.texture = images.sprites[scene.character]
 		$CharacterImage.show()
 	
-	
 	if self.visible == false:
 		self.visible = true
 		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)

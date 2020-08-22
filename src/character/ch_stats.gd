@@ -9,7 +9,12 @@ var unlocked_sex_traits = []
 var parent = null
 
 func _init():
-	pass
+	for i in variables.resists_list:
+		statlist.resists[i] = 0
+	for i in variables.status_list:
+		statlist.status_resists[i] = 0
+	for i in variables.mods_list:
+		statlist.damage_mods[i] = 1.0
 
 func default_stats_get():
 	return statlist.duplicate()
@@ -442,15 +447,15 @@ func generate_simple_fighter(data):
 	statlist.name = data.name
 	statlist.racegroup = data.race
 	for i in variables.resists_list:
-		statlist.resists[i] = 0
+#		statlist.resists[i] = 0
 		if data.resists.has(i):
 			statlist.resists[i] = data.resists[i]
 	for i in variables.status_list:
-		statlist.status_resists[i] = 0
+#		statlist.status_resists[i] = 0
 		if data.has('status_resists') && data.status_resists.has(i):
 			statlist.status_resists[i] = data.status_resists[i]
-	for i in variables.mods_list:
-		statlist.damage_mods[i] = 1.0
+#	for i in variables.mods_list:
+#		statlist.damage_mods[i] = 1.0
 #	if data.has('effects'):
 #		for e in data.effects:
 #			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
@@ -504,12 +509,12 @@ func create(temp_race, temp_gender, temp_age):
 	if temp_age == 'random':
 		statlist.age = get_random_age()
 	
-	for i in variables.resists_list:
-		statlist.resists[i] = 0
-	for i in variables.status_list:
-		statlist.status_resists[i] = 0
-	for i in variables.mods_list:
-		statlist.damage_mods[i] = 1.0
+#	for i in variables.resists_list:
+#		statlist.resists[i] = 0
+#	for i in variables.status_list:
+#		statlist.status_resists[i] = 0
+#	for i in variables.mods_list:
+#		statlist.damage_mods[i] = 1.0
 	
 	get_sex_features()
 	

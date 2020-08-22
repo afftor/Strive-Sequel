@@ -112,7 +112,7 @@ func material_tooltip(data, workers_data = {}):
 		text += "\nMax Workers: " + str(workers_data.max)
 		text += "\nCurrent Workers: " + str(workers_data.current)
 	if workers_data.has("gather_mod"):
-		text += "\nGathering Mod: " + str(workers_data.gather_mod)
+		text += "\nGathering Mod: " + str(workers_data.gather_mod) + "%"
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0

@@ -248,7 +248,7 @@ func make_location(code, area):
 		var array = []
 		for i in location.gatherable_resources.pool:
 			array.append({i : location.gatherable_resources.pool[i]})
-		while number > 0:
+		while number > 0 && array.size() > 0:
 			number -= 1
 			var data = array[randi()%array.size()]
 			var resource_number = data.values()[0]

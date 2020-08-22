@@ -267,9 +267,7 @@ func work_tick():
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var gatherable = Items.materiallist.has(currenttask.code)
 		work_tick_values(currenttask, gatherable)
-		if !gatherable && currenttask.code != 'prostitution':
-			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true) * location.gather_mod
-		elif currenttask.code == 'prostitution':
+		if !gatherable:
 			currenttask.progress += get_progress_task(currenttask.code, currenttask.product, true)
 		else:
 			currenttask.progress += get_progress_resource(currenttask.code, true)
@@ -322,6 +320,7 @@ func make_item_sequence(currenttask, craftingitem):
 					currenttask.messages.append("noresources")
 
 func get_progress_task(temptask, tempsubtask, count_crit = false):
+	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
 	var task = races.tasklist[temptask]
 	var subtask = task.production[tempsubtask]
 	var value = call(subtask.progress_function)
@@ -335,11 +334,13 @@ func get_progress_task(temptask, tempsubtask, count_crit = false):
 	if item != null && task.has('worktool') && task.worktool in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
-	
+	if location.has('gather_mod'):
+		value *= location.gather_mod
 	return value
 
 func get_progress_resource(tempresource, count_crit = false):
 	var resource = Items.materiallist[tempresource]
+	var location = ResourceScripts.world_gen.get_location_from_code(parent.get_location())
 	# var subtask = task.production[tempsubtask]
 	var value = call(resource.progress_formula)
 	var item
@@ -352,5 +353,6 @@ func get_progress_resource(tempresource, count_crit = false):
 	if item != null && resource.has('tool_type') && resource.tool_type in item.toolcategory:
 		if count_crit == true && item.bonusstats.has("task_crit_chance") && randf() <= item.bonusstats.task_crit_chance:
 			value = value*2
-	
+	if location.has('gather_mod'):
+		value *= location.gather_mod
 	return value

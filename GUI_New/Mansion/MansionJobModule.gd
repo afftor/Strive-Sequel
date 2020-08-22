@@ -18,9 +18,6 @@ func _ready():
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 
 
-func change_hours(i):
-	pass
-
 func set_work_rule(rule):
 	var setting = get_node("work_rules/"+rule).pressed
 	person.xp_module.work_rules[rule] = setting
@@ -50,7 +47,9 @@ func close_job_pannel():
 func open_jobs_window():
 	person = get_parent().active_person
 	if person != null:
-		$work_rules.get_child(2).visible = !person.has_profession("master")
+		for i in $work_rules.get_children():
+			i.pressed = person.xp_module.work_rules[i.name]
+		$work_rules/constrain.visible = !person.has_profession("master")
 		$job_details.hide()
 		input_handler.ClearContainer($job_panel/ScrollContainer/VBoxContainer)
 		currentjob = null
