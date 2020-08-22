@@ -345,9 +345,11 @@ func ItemSelect(targetscript, type, function, requirements = true):
 			if i.interaction_use == true:
 				array.append(i)
 	elif type == 'date_use':
-		for i in ResourceScripts.game_res.items.values():
-			if Items.itemlist[i.code].tags.has('date'):
-				array.append(i)
+			for i in ResourceScripts.game_res.items.values():
+				if i.type == 'gear':
+					continue
+				if Items.itemlist[i.code].tags.has('date'):
+					array.append(i)
 	
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))

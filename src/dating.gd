@@ -119,6 +119,7 @@ func _ready():
 	globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
 	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	$end/sexbutton.connect("pressed", self, 'start_sex')
+	$StopButton.connect("pressed",self,'doaction', ["stop"])
 #	initiate(person)
 
 func initiate(tempperson):
@@ -259,7 +260,7 @@ func updatelist():
 		if i.name != 'Button':
 			i.visible = false
 			i.queue_free()
-	$textfield/Label.text = locationdicts[location].name
+	$PlaceName.text = locationdicts[location].name
 	#$panel/categories/Location.visible = !location_changed
 	if category == 'Location':
 		for i in locationdicts.values():
@@ -273,6 +274,8 @@ func updatelist():
 	
 	
 	for i in actionsdict.values():
+		if i.name == "stop":
+			continue
 		if person.checkreqs(i.reqs) == true && check_location(i.location) && (i.group == category || i.group == 'any'):
 			if i.has('onetime') && checkhistory(i.effect) > 0 || (finish_encounter == true && i.effect != 'stop'):
 				continue
@@ -930,11 +933,25 @@ func stop(person, counter):
 	return text
 
 func useitem(person, counter):
-	globals.ItemSelect(self, 'date_use', 'item_selected')
-	return ''
+	$Items.show()
+	var array = []
+	for i in ResourceScripts.game_res.items.values():
+		if i.type == 'gear':
+			continue
+		if Items.itemlist[i.code].tags.has('date'):
+			array.append(i)
+	input_handler.ClearContainer($Items/ScrollContainer/HBoxContainer)
+	for item in array:
+		var newbutton = input_handler.DuplicateContainerTemplate($Items/ScrollContainer/HBoxContainer)
+		newbutton.get_node("ItemTexture").texture = load(item.icon)
+		newbutton.get_node("Label").text = item.code.capitalize()
+		newbutton.connect("pressed", self, "item_selected", [item])
+	# globals.ItemSelect(self, 'date_use', 'item_selected')
+	# return ''
 
 func item_selected(item):
 	call(item.code, person)
+	$Items.hide()
 
 func alcohol(person):
 	var text = ''

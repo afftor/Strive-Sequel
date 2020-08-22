@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://src/dating.gd" type="Script" id=1]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=2]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_hp.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_lust.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=5]
 [ext_resource path="res://assets/Themes_v2/MANSION/DatingActionsPanel.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=7]
@@ -15,6 +15,28 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_bigframe.png" type="Texture" id=13]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=14]
 [ext_resource path="res://assets/Themes_v2/MANSION/DateLogPanel.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_affection_hover.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_affection_pressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_discipline_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_discipline.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_affection.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_inventory_pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_inventory_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_inventory.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_training.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_training_hover.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_training_pressed.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_discipline_pressed.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_hover.png" type="Texture" id=29]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_pressed.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char.png" type="Texture" id=31]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=32]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_items.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=35]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=36]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=37]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -67,10 +89,10 @@ __meta__ = {
 }
 
 [node name="textfield" type="Panel" parent="."]
-margin_left = 142.437
-margin_top = 540.398
-margin_right = 1106.44
-margin_bottom = 943.398
+margin_left = 72.0
+margin_top = 559.0
+margin_right = 1138.0
+margin_bottom = 1019.0
 custom_styles/panel = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -79,8 +101,8 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="textfield"]
 margin_left = 45.0
 margin_top = 24.0
-margin_right = 745.0
-margin_bottom = 303.0
+margin_right = 1039.0
+margin_bottom = 350.0
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 text = "test text"
@@ -88,27 +110,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="slaveportrait" type="TextureRect" parent="textfield"]
-margin_left = 755.0
-margin_top = 8.0
-margin_right = 945.0
-margin_bottom = 198.0
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="textfield/slaveportrait"]
-margin_right = 190.0
-margin_bottom = 190.0
-expand = true
-
 [node name="masterportrait" type="TextureRect" parent="textfield"]
-margin_left = 756.0
-margin_top = 203.0
-margin_right = 946.0
-margin_bottom = 393.0
+margin_left = 13.0
+margin_top = -306.0
+margin_right = 123.0
+margin_bottom = -164.0
 expand = true
 stretch_mode = 7
 __meta__ = {
@@ -116,29 +122,31 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="textfield/masterportrait"]
-margin_left = -1.0
-margin_top = 1.0
-margin_right = 189.0
-margin_bottom = 191.0
+margin_left = -12.6165
+margin_top = -13.4658
+margin_right = 122.384
+margin_bottom = 154.534
+texture = ExtResource( 31 )
 expand = true
 
-[node name="Label" type="Label" parent="textfield"]
-margin_left = 317.0
-margin_top = -356.0
-margin_right = 629.0
-margin_bottom = -302.0
-text = "Test"
-align = 1
-
-[node name="TextureRect" type="TextureRect" parent="textfield/Label"]
-margin_left = -20.0
-margin_top = -2.0
-margin_right = 332.0
-margin_bottom = 56.0
+[node name="slaveportrait" type="TextureRect" parent="textfield"]
+margin_left = 13.0
+margin_top = -474.0
+margin_right = 123.0
+margin_bottom = -332.0
 expand = true
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="textfield/slaveportrait"]
+margin_left = -12.6165
+margin_top = -13.4658
+margin_right = 122.384
+margin_bottom = 154.534
+texture = ExtResource( 31 )
+expand = true
 
 [node name="panel" type="Panel" parent="."]
 margin_left = 269.0
@@ -151,60 +159,71 @@ __meta__ = {
 }
 
 [node name="categories" type="HBoxContainer" parent="panel"]
-margin_left = 16.0
-margin_top = 12.0
-margin_right = 216.0
-margin_bottom = 57.0
+margin_left = 8.0
+margin_top = 108.0
+margin_right = 861.0
+margin_bottom = 162.0
+custom_constants/separation = 25
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Affection" type="Button" parent="panel/categories"]
-margin_right = 200.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 200, 45 )
+[node name="Affection" type="TextureButton" parent="panel/categories"]
+margin_left = 281.0
+margin_right = 335.0
+margin_bottom = 54.0
 theme = ExtResource( 11 )
 toggle_mode = true
-text = "Affection"
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 17 )
+texture_hover = ExtResource( 16 )
 
-[node name="Discipline" type="Button" parent="panel/categories"]
-margin_left = 204.0
-margin_right = 404.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 200, 45 )
+[node name="Discipline" type="TextureButton" parent="panel/categories"]
+margin_left = 360.0
+margin_right = 414.0
+margin_bottom = 54.0
 theme = ExtResource( 11 )
 toggle_mode = true
-text = "Discipline"
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 18 )
 
-[node name="Training" type="Button" parent="panel/categories"]
-margin_left = 408.0
-margin_right = 608.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 200, 45 )
+[node name="Training" type="TextureButton" parent="panel/categories"]
+margin_left = 439.0
+margin_right = 493.0
+margin_bottom = 54.0
 theme = ExtResource( 11 )
 toggle_mode = true
-text = "Training"
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 25 )
 
-[node name="Location" type="Button" parent="panel/categories"]
-margin_left = 612.0
-margin_right = 812.0
-margin_bottom = 52.0
-rect_min_size = Vector2( 200, 45 )
+[node name="Location" type="TextureButton" parent="panel/categories"]
+margin_left = 518.0
+margin_right = 572.0
+margin_bottom = 54.0
 theme = ExtResource( 11 )
 toggle_mode = true
-text = "Location"
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 29 )
 
-[node name="Items" type="Button" parent="panel/categories"]
+[node name="Items" type="TextureButton" parent="panel/categories"]
 visible = false
-margin_left = 816.0
-margin_right = 1016.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 200, 45 )
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
 toggle_mode = true
-text = "Items"
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="panel"]
-margin_left = 16.0
-margin_top = 64.0
-margin_right = 920.0
-margin_bottom = 286.0
+margin_left = 111.0
+margin_top = 182.0
+margin_right = 757.0
+margin_bottom = 448.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
@@ -214,6 +233,8 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="panel/ScrollContainer"]
 size_flags_horizontal = 0
 size_flags_vertical = 0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
 columns = 3
 
 [node name="Button" type="Button" parent="panel/ScrollContainer/GridContainer"]
@@ -226,24 +247,47 @@ size_flags_vertical = 0
 theme = ExtResource( 11 )
 text = "Test"
 
+[node name="PlaceName" type="Label" parent="."]
+margin_left = 269.0
+margin_top = 70.0
+margin_right = 1138.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="PlaceName"]
+margin_right = 869.0
+margin_bottom = 90.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="mood" type="TextureProgress" parent="."]
-margin_left = 171.931
-margin_top = 25.139
-margin_right = 431.931
-margin_bottom = 53.139
+margin_left = 72.0
+margin_top = 434.0
+margin_right = 254.0
+margin_bottom = 462.0
 max_value = 50.0
 value = 50.0
-texture_under = ExtResource( 3 )
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 4 )
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="mood"]
-margin_top = 227.0
-margin_right = 33.0
-margin_bottom = 259.0
+margin_left = 1.0
+margin_top = -26.0
+margin_right = 34.0
+margin_bottom = 6.0
 expand = true
 stretch_mode = 6
 
@@ -259,13 +303,14 @@ align = 1
 valign = 1
 
 [node name="fear" type="TextureProgress" parent="."]
-margin_left = 648.876
-margin_top = 24.7062
-margin_right = 908.876
-margin_bottom = 52.7062
+margin_left = 73.0
+margin_top = 491.0
+margin_right = 255.0
+margin_bottom = 519.0
 value = 50.0
-texture_over = ExtResource( 3 )
-texture_progress = ExtResource( 2 )
+texture_under = ExtResource( 2 )
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -297,10 +342,10 @@ __meta__ = {
 
 [node name="mana" type="TextureRect" parent="."]
 visible = false
-margin_left = 537.0
-margin_top = 702.0
-margin_right = 585.0
-margin_bottom = 752.0
+margin_left = 221.22
+margin_top = 958.248
+margin_right = 269.22
+margin_bottom = 1008.25
 hint_tooltip = "Mana"
 expand = true
 stretch_mode = 6
@@ -316,10 +361,10 @@ margin_bottom = 35.0
 text = "x10"
 
 [node name="gold" type="TextureRect" parent="."]
-margin_left = 167.437
-margin_top = 880.398
-margin_right = 215.437
-margin_bottom = 930.398
+margin_left = 117.0
+margin_top = 958.248
+margin_right = 165.0
+margin_bottom = 1008.25
 hint_tooltip = "Gold"
 texture = ExtResource( 5 )
 expand = true
@@ -330,16 +375,17 @@ margin_left = 50.0
 margin_top = 15.0
 margin_right = 90.0
 margin_bottom = 35.0
+custom_fonts/font = ExtResource( 12 )
 text = "x10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="turns" type="TextureRect" parent="."]
-margin_left = 989.931
-margin_top = 876.19
-margin_right = 1037.93
-margin_bottom = 926.19
+margin_left = 1040.39
+margin_top = 958.248
+margin_right = 1088.39
+margin_bottom = 1008.25
 hint_tooltip = "Time Left"
 texture = ExtResource( 9 )
 expand = true
@@ -431,10 +477,82 @@ custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 
 [node name="authconslabel" type="Label" parent="."]
-margin_left = 39.8639
-margin_top = 973.819
-margin_right = 388.864
-margin_bottom = 997.819
+margin_left = 540.0
+margin_top = 952.0
+margin_right = 882.0
+margin_bottom = 1008.0
+theme = ExtResource( 37 )
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StopButton" type="Button" parent="."]
+margin_left = 909.0
+margin_top = 952.0
+margin_right = 1035.0
+margin_bottom = 1013.0
+theme = ExtResource( 11 )
+text = "Stop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="TextureRect" parent="."]
+visible = false
+margin_left = 1138.0
+margin_top = 70.0
+margin_right = 1588.0
+margin_bottom = 1019.0
+texture = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="Items"]
+margin_right = 450.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Items"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Items"]
+margin_left = 18.0
+margin_top = 108.0
+margin_right = 426.0
+margin_bottom = 927.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Items/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="Items/ScrollContainer/HBoxContainer"]
+visible = false
+margin_right = 400.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 0 )
+texture_normal = ExtResource( 34 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 36 )
+
+[node name="ItemTexture" type="TextureRect" parent="Items/ScrollContainer/HBoxContainer/Button"]
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 96.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Items/ScrollContainer/HBoxContainer/Button"]
+margin_left = 111.0
+margin_top = 4.0
+margin_right = 396.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 12 )
+text = "Item Name"
+align = 1
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

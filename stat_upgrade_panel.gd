@@ -35,10 +35,11 @@ func hide_stats_info():
 
 
 func show_characters_panel():
-	var idx = 0
+	# var idx = 0
 	var name
 	input_handler.ClearContainer(CharList)
 	for character in ResourceScripts.game_party.characters.values():
+		print(character)
 		name = character.get_full_name()
 		var newbutton = input_handler.DuplicateContainerTemplate(CharList)
 		newbutton.get_node("CharacterName").text = name
@@ -72,7 +73,7 @@ func show_stats(character):
 
 func _ready():
 	GUIWorld.add_close_button(self)
-	show_characters_panel()
+	# show_characters_panel()
 	$StatsPanel/ConfirmButton.connect("pressed", self, "upgrade_stat")
 
 

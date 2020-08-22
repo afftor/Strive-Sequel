@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://stat_upgrade_panel.gd" type="Script" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=17]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=18]
-[ext_resource path="res://GUI_New/ScrollContainer.gd" type="Script" id=19]
 
 [node name="CharactersPanel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.54902 )
@@ -242,14 +241,14 @@ margin_left = 19.0
 margin_top = 152.0
 margin_right = 400.0
 margin_bottom = 766.0
-script = ExtResource( 19 )
+theme = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CharList"]
 margin_left = 25.0
-margin_top = -25.0
+margin_top = -1.0
 margin_right = 325.0
 margin_bottom = 614.0
 scroll_horizontal_enabled = false
@@ -288,6 +287,7 @@ __meta__ = {
 }
 
 [node name="VScrollBar" type="VScrollBar" parent="CharList"]
+visible = false
 margin_right = 12.0
 margin_bottom = 614.0
 theme = ExtResource( 18 )

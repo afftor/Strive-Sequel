@@ -27,6 +27,7 @@ func _ready():
 
 func show_upgrade_window():
 	get_parent().StatUpgradeWindow.show()
+	get_parent().StatUpgradeWindow.show_characters_panel()
 	get_parent().submodules.clear()
 	get_parent().submodules.append(get_parent().StatUpgradeWindow)
 	self.hide()
