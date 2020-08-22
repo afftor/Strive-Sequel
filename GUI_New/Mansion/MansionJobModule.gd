@@ -30,8 +30,7 @@ func set_work_rule(rule):
 			person.apply_effect(effects_pool.add_effect(eff))
 		false:
 			person.remove_static_effect_by_code("work_rule_" + rule)
-	
-	
+
 	if currentjob != null:
 		var gatherable = Items.materiallist.has(currentjob.code)
 		show_job_details(currentjob, gatherable)

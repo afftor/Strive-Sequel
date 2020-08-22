@@ -1,18 +1,20 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_hp.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=5]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/Themes_v2/MANSION/DatingActionsPanel.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/gui/charpanel/CharScreen_0012_character-panel.png" type="Texture" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=12]
+[ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_bigframe.png" type="Texture" id=13]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/Themes_v2/MANSION/DateLogPanel.tres" type="StyleBox" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -25,7 +27,6 @@ texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 669, 841 )
 
 [node name="date" type="Control"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
@@ -57,13 +58,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MainPanel" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="textfield" type="Panel" parent="."]
-self_modulate = Color( 1, 1, 1, 0.72549 )
-margin_left = 3.0
-margin_top = 362.0
-margin_right = 967.0
-margin_bottom = 765.0
-custom_styles/panel = ExtResource( 6 )
+margin_left = 142.437
+margin_top = 540.398
+margin_right = 1106.44
+margin_bottom = 943.398
+custom_styles/panel = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -133,11 +141,10 @@ __meta__ = {
 }
 
 [node name="panel" type="Panel" parent="."]
-self_modulate = Color( 1, 1, 1, 0.72549 )
-margin_left = 4.0
-margin_top = 58.0
-margin_right = 968.0
-margin_bottom = 361.0
+margin_left = 269.0
+margin_top = 70.0
+margin_right = 1138.0
+margin_bottom = 559.0
 custom_styles/panel = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -309,10 +316,10 @@ margin_bottom = 35.0
 text = "x10"
 
 [node name="gold" type="TextureRect" parent="."]
-margin_left = 28.0
-margin_top = 702.0
-margin_right = 76.0
-margin_bottom = 752.0
+margin_left = 167.437
+margin_top = 880.398
+margin_right = 215.437
+margin_bottom = 930.398
 hint_tooltip = "Gold"
 texture = ExtResource( 5 )
 expand = true
@@ -329,10 +336,10 @@ __meta__ = {
 }
 
 [node name="turns" type="TextureRect" parent="."]
-margin_left = 850.494
-margin_top = 697.792
-margin_right = 898.494
-margin_bottom = 747.792
+margin_left = 989.931
+margin_top = 876.19
+margin_right = 1037.93
+margin_bottom = 926.19
 hint_tooltip = "Time Left"
 texture = ExtResource( 9 )
 expand = true
