@@ -595,6 +595,14 @@ func enter_dungeon():
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 			newbutton.text = 'Skip to last room'
 			newbutton.connect("pressed",self,"skip_to_boss")
+	if input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).test_mode:
+		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+		newbutton.text = "(debug)Complete location"
+		newbutton.connect("pressed",self,"debug_complete_location")
+
+func debug_complete_location():
+	active_location.completed = true
+	enter_dungeon()
 
 func skip_to_boss():
 	current_level = active_location.levels.size()

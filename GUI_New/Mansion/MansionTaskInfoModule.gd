@@ -58,10 +58,11 @@ func show_upgrades_info():
 			for t in ResourceScripts.game_party.active_tasks:
 				if t.code == "building":
 					task = t
-			var text = "Workers:\n"
-			for worker in task.workers:
-				text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
-			globals.connecttexttooltip(newupgrade, text)
+			if task != null:
+				var text = "Workers:\n"
+				for worker in task.workers:
+					text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
+				globals.connecttexttooltip(newupgrade, text)
 			# newupgrade.connect("mouse_entered", self, "show_workers", [task, newupgrade])
 			# newupgrade.connect("mouse_exited", $Tooltip, "hide")
 		
@@ -112,14 +113,23 @@ func show_resources_info():
 			newtask.get_node("ProgressBar").value = task.progress
 		else:
 			# newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
-			newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
+			if Items.materiallist.has(task.code):
+				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[task.code].icon
+			else:
+				newtask.get_node("Task/TaskIcon").texture = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold
 			newtask.get_node("ProgressBar").value = task.progress
 			newtask.get_node("Task").show()
 		newtask.get_node("Task").text = task_name.capitalize()
 		var text = "Workers:\n"
+		var cleararray = []
 		for worker in task.workers:
-			text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
+			if ResourceScripts.game_party.characters.has(worker):
+				text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
+			else:
+				cleararray.append(worker)
+		for i in cleararray:
+			task.workers.erase(i)
 		globals.connecttexttooltip(newtask, text)
 		# newtask.connect("mouse_entered", self, "show_workers", [task, newtask])
 		# newtask.connect("mouse_exited", $Tooltip, "hide")

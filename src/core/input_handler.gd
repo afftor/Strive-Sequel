@@ -785,7 +785,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
 		node.add_child(window)
-	if raise: window.raise()
+	if raise && type != NODE_GUI_WORLD: window.raise()
 	if ResourceScripts.node_data[type].has('args'): 
 		for param in ResourceScripts.node_data[type].args:
 			window.set(param, ResourceScripts.node_data[type].args[param])

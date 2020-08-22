@@ -20,8 +20,8 @@ var price = {
 	2: {gold = 100, wood = 10},
 	3: {gold = 200, woodmagic = 10},
 	4: {gold = 500, woodiron = 10},
-	5: {gold = 700, steel = 10},
-	6: {gold = 5000, woodancient = 10},
+	5: {gold = 1000, mithril = 10, clothmagic = 10},
+	6: {gold = 3000, woodancient = 5, adamantine = 5, clothethereal = 5, bonedragon = 3},
 }
 
 var substract_gold = 0

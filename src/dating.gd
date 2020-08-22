@@ -407,7 +407,43 @@ var date_lines = {
 	combhair_negative = [
 		["[name2] looks bored and reacts coldly.", 1],
 	],
+	
+	
+	
+	hug_start_samesize = [
+		["You give [name2] a friendly hug.", 1],
+		["You hug [name2] in a friendly manner.", 1],
+		["You embrace [name2] in your arms.", 1],
+	],
+	hug_start_bigsize = [
+		["You {^hug:embrace} [name2]'s small body.", 1],
+		["You lean down and {^hug:embrace} [name2].", 1],
+	],
+	hug_start_smallsize = [
+		["You make [name2] to lean down and give [him2] a hug.", 1],
+	],
+	hug_positive_samesize = [
+		["[name2] {^hugs:embraces} you back {^putting:resting} [his2] head on your shoulder.", 1],
+		["[name2] accepts your {^hug:embrace} and smiles warmly.", 1],
+	],
+	hug_positive_bigsize = [
+		["[name2] {^hugs:embraces} you back {^putting:resting} [his2] head on your chest.", 1],
+		["[name2] feels {^overwhelmed:stunned} by your size and hugs you back. ", 0.5],
+	],
+	hug_positive_smallsize = [
+		["[name2] is moved by your action and {^hugs:embraces} you back.", 1],
+		["[name2] awkwardly hugs you back due to your size.", 0.5],
+	],
+	hug_negative = [
+		["[he2] does not do anything waiting uncomfortably for you to finish.", 1],
+	],
+	
+	kiss_start = [
+		[""],
+	]
+	
 }
+ 
 
 func character_description(text_input):
 	var text = text_input
@@ -419,9 +455,24 @@ func character_description(text_input):
 
 func hairlength_descripts(hairlength):
 	var text = ''
-	if hairlength in ['']:
-		pass
+	if hairlength in ['shoulder','waist','hips']:
+		text = input_handler.weightedrandom([['long',3],['gorgeous',1],['beautiful',1],['soft',1], ['silky',1]])
+	elif hairlength in ['ear','neck']:
+		text = input_handler.weightedrandom([['soft',1],['silky',1]])
 	return text
+
+func compare_heights(char1, char2):
+	var rval = 'same'
+	var height1 = variables.slave_heights.find(char1.get_stat('height'))
+	var height2 = variables.slave_heights.find(char2.get_stat('height'))
+	
+	if height1-1 > height2:
+		rval = 'big'
+	if height2-1 > height1:
+		rval = 'small'
+	
+	return rval 
+
 
 func is_same_sex():
 	var rval = false
@@ -511,44 +562,68 @@ func combhair(person, counter):
 	text += input_handler.weightedrandom(date_lines.combhair_start) + "\n\n"
 	
 	if counter < 3:
-		self.mood += 6
+		self.mood += 7
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.combhair_positive)
 		text += "}"
-		text += person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.combhair_negative)
 		text += "}"
 		self.mood -= 2
-#	var text = ''
-#	text += "You gently comb [name2]'s hair. "
-#
-#	if (counter < 3 || randf() >= 0.8) && self.mood >= 12:
-#		text += "[he2] smiles and looks pleased. "
-#		self.mood += 8
-#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-#	else:
-#		self.mood -= 2
-#		text += "[he2] looks uncomfortable. "
 	return character_description(text)
 
 
 func hug(person, counter): 
 	var text = ''
-	text += "You embrace [name2] in your arms. "
+	var size_difference = compare_heights(master,person)
+	text += input_handler.weightedrandom(date_lines['hug_start_'+size_difference+"size"]) + "\n\n"
 	
-	if (counter < 3 || randf() >= 0.7) && self.mood >= 6:
-		text += "[he2] embraces you back resting [his2] head on your chest. "
+	
+	if (counter < 3 || randf() >= 0.7) && self.mood >= 20:
 		self.mood += 11
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines['hug_positive_'+size_difference+"size"])
+		text += "}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 		if person.get_stat("consent") < 12:
 			person.add_stat('consent', rand_range(3,5))
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		self.mood -= 3
-		text += "[he2] does not do anything waiting uncomfortably for you to finish. "
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines['hug_negative'])
+		text += "}"
+		self.mood -= 2
+	return character_description(text)
 	
-	return text
+#	if (counter < 3 || randf() >= 0.7) && self.mood >= 20:
+#		self.mood += 11
+#		text += "{color=green|"
+#		text += input_handler.weightedrandom(date_lines.hug_positive)
+#		text += "}"
+#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+#		if person.get_stat("consent") < 12:
+#			person.add_stat('consent', rand_range(3,5))
+#	else:
+#		text += "{color=red|"
+#		text += input_handler.weightedrandom(date_lines.hug_negative)
+#		text += "}"
+#		self.mood -= 2
+#	return character_description(text)
+#	var text = ''
+#	text += "You embrace [name2] in your arms. "
+#
+#	if (counter < 3 || randf() >= 0.7) && self.mood >= 6:
+#		text += 
+#		self.mood += 11
+#		if person.get_stat("consent") < 12:
+#			person.add_stat('consent', rand_range(3,5))
+#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+#	else:
+#		self.mood -= 3
+#		text +=
+#
+#	return text
 
 func kiss(person, counter): 
 	var text = ''
@@ -1175,7 +1250,7 @@ var actionsdict = {
 		group = 'Affection',
 		name = 'Comb Hair',
 		descript = "Comb [name]'s hair",
-		reqs = [{code = 'hair_length', value = ['bald','ear'], check = false}],
+		reqs = [{code = 'hair_length', value = ['bald'], check = false}],
 		location = [],
 		effect = 'combhair',
 	},

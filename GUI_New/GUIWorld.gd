@@ -292,7 +292,8 @@ func test_mode():
 		character.create('HalfkinCat', 'futa', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
-		ResourceScripts.game_res.upgrades.forge = 3
+		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
+		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
 		ResourceScripts.game_res.upgrades.tailor = 1
 		
 	#	globals.impregnate(character, character)
@@ -303,9 +304,10 @@ func test_mode():
 		character.unlock_class("apprentice")
 		character.unlock_class("rogue")
 		character.unlock_class("druid")
-		character.unlock_class("souleater")
-		character.travel.location = 'L4'
-		character.travel.area = 'plains'
+		character.unlock_class("assassin")
+		#character.travel.location = 'L4'
+		#character.travel.area = 'plains'
+		variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)

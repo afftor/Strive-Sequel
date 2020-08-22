@@ -3,7 +3,7 @@ extends Reference
 # warning-ignore-all:return_value_discarded
 
 var statlist = ResourceScripts.scriptdict.ch_statlist.new()
-var xp_module = ResourceScripts.scriptdict.ch_xp_module.new()
+var xp_module = ResourceScripts.scriptdict.ch_leveling.new()
 var equipment = ResourceScripts.scriptdict.ch_equipment.new()
 var skills = ResourceScripts.scriptdict.ch_skills.new()
 var travel = ResourceScripts.scriptdict.ch_travel.new()
@@ -261,6 +261,7 @@ func recruit():
 	ResourceScripts.game_party.add_slave(self)
 
 func set_work(task):
+	xp_module.remove_from_task()
 	xp_module.work = task
 
 func get_skill_by_tag(tg):
@@ -543,7 +544,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'one_of_races':
 			check = get_stat('race') in i.value
 		'is_free':
-			check = (check_location('mansion', true)) == i.check# && tags.has('selected') == false
+			check = (check_location('mansion', true)) == i.check
 		'is_at_location':
 			if variables.allow_remote_intereaction == true and i.check: check = true
 			else: check = check_location(i.value, true) == i.check
