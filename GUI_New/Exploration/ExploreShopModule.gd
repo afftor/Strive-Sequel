@@ -103,7 +103,7 @@ func update_sell_list():
 		var newbutton = input_handler.DuplicateContainerTemplate($SellBlock/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("icon").texture = item.icon
-		newbutton.get_node("price").text = str(item.price / 2)
+		newbutton.get_node("price").text = str(item.price)
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
@@ -241,7 +241,7 @@ func item_sell(item):
 	purchase_item = item
 	var price
 	if item.price:
-		price = item.price / 2
+		price = item.price# / 2
 	else:
 		price = item.calculateprice()/2
 	var sellingamount
@@ -256,7 +256,7 @@ func item_sell_confirm(value):
 	input_handler.PlaySound("money_spend")
 	var price
 	if purchase_item.price:
-		price = purchase_item.price / 2
+		price = purchase_item.price# / 2
 	else:
 		price = purchase_item.calculateprice()/2
 	if Items.materiallist.has(purchase_item.code):

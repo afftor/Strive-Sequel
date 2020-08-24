@@ -4,8 +4,8 @@ var craft_category = "smith"
 var item_filter = 'all'
 var selected_item
 var recipes = []
-var default_part_texture = preload("res://assets/Textures_v2/Mansion/Craft/Buttons/button_craftchoose.png")
-var placeholder = preload("res://assets/Textures_v2/Mansion/Craft/Buttons/button_craftchoose_placeholder.png")
+var default_part_texture = preload("res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png")
+var placeholder = preload("res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_placeholder.png")
 var craft_one_side_panel = preload("res://assets/Textures_v2/MANSION/Craft/Panels/panel_craftbig_oneside.png")
 var craft_two_sides_panel = preload("res://assets/Textures_v2/MANSION/Craft/Panels/panel_craftbig_twosides.png")
 #warning-ignore-all:return_value_discarded

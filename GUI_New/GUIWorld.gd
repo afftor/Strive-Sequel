@@ -305,9 +305,9 @@ func test_mode():
 		character.unlock_class("rogue")
 		character.unlock_class("druid")
 		character.unlock_class("assassin")
-		#character.travel.location = 'L4'
-		#character.travel.area = 'plains'
-		variables.dungeon_encounter_chance = 1
+		character.travel.location = 'L4'
+		character.travel.area = 'plains'
+		variables.dungeon_encounter_chance = 0.2
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)

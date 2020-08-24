@@ -55,9 +55,9 @@ func quest_board():
 func change_texture(button, state):
 	match state:
 		"in":
-			button.texture_normal = load("res://assets/Textures_v2/City/Universal/paper_small_active.png")
+			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small_active.png")
 		"out":
-			button.texture_normal = load("res://assets/Textures_v2/City/Universal/paper_small.png")
+			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
 
 
 func see_quest_info(quest):

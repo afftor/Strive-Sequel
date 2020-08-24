@@ -528,6 +528,7 @@ var racelist = {
 			ears = ['demon'],
 			horns = ['curved','straight'],
 			wings = ["demon"],
+			tail = ['demon'],
 			},
 		global_weight = 5,
 	},

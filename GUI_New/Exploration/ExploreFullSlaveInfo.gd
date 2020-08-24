@@ -69,13 +69,19 @@ func show_summary(person):
 		else:
 			i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
-
+	
+	
+	
 	for i in ['physics','wits','charm','sexuals']:
 		if i != 'sexuals':
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus'))) 
+			var color = set_color(person.get_stat(i+'_bonus'))
+			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
+			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i))) 
 			SummaryModule.get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_factor') * 20)
 		else:
-			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i) + person.get_stat(i+'_bonus')))
+			var color = set_color(person.get_stat(i+'_bonus'))
+			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
+			SummaryModule.get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
 			SummaryModule.get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
@@ -92,6 +98,16 @@ func show_summary(person):
 	# 	globals.connecttexttooltip(newnode, temptext)
 	Info.update()
 	BodyModule.update()
+
+
+
+func set_color(value):
+	var color = Color(0.98,0.88,0.51,1)
+	if value > 0:
+		color = Color(0.31,0.99,0.51,1)  
+	elif value < 0:
+		color = Color(0.99,0.31,0.36,1)
+	return color
 
 
 func _on_Button_pressed():

@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.3.0d'
+const gameversion = '0.3.0e'
 
 #time
 signal hour_tick
@@ -336,20 +336,16 @@ func ItemSelect(targetscript, type, function, requirements = true):
 		for i in ResourceScripts.game_res.items.values():
 			if i.geartype == requirements && i.task == null && i.owner == null && i.durability > 0:
 				array.append(i)
-	elif type == 'repairable':
-		for i in ResourceScripts.game_res.items.values():
-			if i.durability < i.maxdurability:
-				array.append(i)
 	elif type == 'sex_use':
 		for i in ResourceScripts.game_res.items.values():
 			if i.interaction_use == true:
 				array.append(i)
 	elif type == 'date_use':
-			for i in ResourceScripts.game_res.items.values():
-				if i.type == 'gear':
-					continue
-				if Items.itemlist[i.code].tags.has('date'):
-					array.append(i)
+		for i in ResourceScripts.game_res.items.values():
+			if i.type == 'gear':
+				continue
+			if Items.itemlist[i.code].tags.has('date'):
+				array.append(i)
 	
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
@@ -443,6 +439,9 @@ func LoadGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
+	print("Characters:", characters_pool.characters.size())
+	print("Items:", ResourceScripts.game_res.items.size())
+	print('locations', ResourceScripts.game_world.location_links.size())
 	
 	#current approach
 	if input_handler.CurrentScene != null:
