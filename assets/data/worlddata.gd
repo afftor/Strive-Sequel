@@ -444,7 +444,7 @@ var locations = {
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},
 		background_pool = ['cave_3'],
 		bgm = 'exploration',
-		gather_resources = {iron = [2,3], mithril = [4,4], boneancient = [1,1]},
+		gather_resources = {iron = [2,3], mithril = [3,4], boneancient = [1,1]},
 		area_shop_items = {
 			},
 	},

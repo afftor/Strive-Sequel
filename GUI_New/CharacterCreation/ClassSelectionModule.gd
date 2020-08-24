@@ -61,11 +61,12 @@ func update_class_buttons():
 		var reqs_text = ""
 		var req_value = ""
 		for req in tempclass.reqs:
-			reqs_text += "{color=k_yellow|" + str(statdata.statdata[req.stat].abb) + " - " + "}"
-			if req.value > person.get_stat(req.stat):
-				req_value += "{color=k_red|" + str(req.value) + "}"
-			else:
-				req_value += "{color=k_green|" + str(req.value) + "}"
+			if req.has('stat'):
+				reqs_text += "{color=k_yellow|" + str(statdata.statdata[req.stat].abb) + " - " + "}"
+				if req.value > person.get_stat(req.stat):
+					req_value += "{color=k_red|" + str(req.value) + "}"
+				else:
+					req_value += "{color=k_green|" + str(req.value) + "}"
 		reqs_text += req_value
 		newbutton.get_node("Reqs").bbcode_text = globals.TextEncoder(reqs_text)
 		newbutton.disabled = !person.checkreqs(tempclass.reqs)

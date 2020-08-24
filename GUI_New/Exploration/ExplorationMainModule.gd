@@ -309,6 +309,7 @@ func return_character(character):
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
 
 func return_character_confirm():
+	selectedperson.remove_from_task()
 	selectedperson.return_to_mansion()
 	build_location_group()
 

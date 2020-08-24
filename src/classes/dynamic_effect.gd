@@ -9,9 +9,6 @@ class_name dynamic_effect
 func _init(caller).(caller):
 	pass
 
-func apply():
-	is_applied = true
-	recheck()
 
 func remove():
 	if !is_applied: return
@@ -42,29 +39,4 @@ func recheck():
 			tres = true
 			break
 	if tres:
-		remove()
-		is_applied = true
-#		atomic.clear()
-		for a in template.atomic:
-			var tmp := atomic_effect.new(a, id)
-			tmp.resolve_template()
-			#tmp.apply_template(obj)
-			obj.apply_atomic(tmp.template)
-			atomic.push_back(tmp.template)
-#		sub_effects.clear()
-		for e in template.sub_effects:
-			var tmp = effects_pool.e_createfromtemplate(e, id)
-			#tmp.calculate_args()
-			sub_effects.push_back(effects_pool.add_effect(tmp))
-			pass
-		for eff in sub_effects:
-			obj.apply_effect(eff)
-		setup_siblings()
-#		buffs.clear()
-		for e in template.buffs:
-			var tmp = Buff.new(id)
-			tmp.createfromtemplate(e)
-			tmp.calculate_args()
-			buffs.push_back(tmp)
-
-
+		.reapply()
