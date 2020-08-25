@@ -65,10 +65,10 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0.823529 )
 self_modulate = Color( 1, 1, 1, 0.823529 )
 show_behind_parent = true
-margin_left = 2.0
-margin_top = 957.376
-margin_right = 698.0
-margin_bottom = 1062.38
+margin_left = 7.0
+margin_top = 691.0
+margin_right = 691.0
+margin_bottom = 796.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

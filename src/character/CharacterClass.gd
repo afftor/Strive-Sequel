@@ -64,8 +64,13 @@ func get_stat(statname, ref = false):
 func set_stat(stat, value):
 	if stat in ['hp', 'mp', 'shield']:
 		set(stat, value)
+		return
 	if stat == 'base_exp':
 		xp_module.base_exp = value
+		return
+	if stat.begins_with('food_') and !(stat in ['food_consumption']):
+		food.set(stat, value)
+		return
 	statlist.set_stat(stat, value)
 
 func add_stat_bonuses(ls:Dictionary):

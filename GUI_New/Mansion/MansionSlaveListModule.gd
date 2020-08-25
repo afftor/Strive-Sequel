@@ -73,12 +73,6 @@ func rebuild():
 	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
 
-
-func build_for_ocupation(person, newbutton):
-	if person.travel.location == "travel":
-		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
-		newbutton.disabled = true
-
 ### Requires some magic method to force recalculate scroll container size (Known Godot issue, but no one knows how to fix that) ###
 func count_visible_chars():
 	var char_counter = 0

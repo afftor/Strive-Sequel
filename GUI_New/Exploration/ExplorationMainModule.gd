@@ -139,7 +139,7 @@ func open_location(data):
 	selected_location = data.id
 	var gatherable_resources
 	if data.type == "dungeon":
-		$LocationGui/Resources/Forget.visible = data.completed
+		# $LocationGui/Resources/Forget.visible = data.completed
 		$LocationGui/Resources/SelectWorkers.visible = data.completed
 	else:
 		$LocationGui/Resources/Forget.visible = false
@@ -278,10 +278,12 @@ func build_location_group():
 			get_node(positiondict[i]).self_modulate.a = 1
 			get_node(positiondict[i]).character = null
 	var newbutton
+	var counter = 0
 	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]
 		if i.check_location(active_location.id, true):
+			counter += 1
 			newbutton = input_handler.DuplicateContainerTemplate(
 				$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
 			)
@@ -299,7 +301,9 @@ func build_location_group():
 			if active_location.group.values().has(i.id):
 				newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 			globals.connectslavetooltip(newbutton, i)
-
+	if counter == 0:
+		Navigation.return_to_mansion()
+		return
 	build_item_panel()
 	build_spell_panel()
 
@@ -694,7 +698,7 @@ func advance():
 				active_location.completed = true
 				globals.common_effects([{code = "complete_active_location_quests"}])
 				check_events("dungeon_complete")
-			$LocationGui/Resources/Forget.visible = true
+			# $LocationGui/Resources/Forget.visible = true
 			$LocationGui/Resources/SelectWorkers.visible = true
 			$LocationGui/Resources/Materials.update()
 		enter_dungeon()
