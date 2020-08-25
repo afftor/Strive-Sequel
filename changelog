@@ -1,3 +1,7 @@
+Kobold females now generate with smaller breast size
+Trap even now deals percent damage
+Fixed inactive enemies not being deleted properly bloating file size
+0.3.0e
 Multiple fixes to tasks and travelling
 Fixed some path issues for linux/mac users (thanks to lowtech)
 0.3.0d

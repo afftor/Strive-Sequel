@@ -439,9 +439,6 @@ func LoadGame(filename):
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
-	print("Characters:", characters_pool.characters.size())
-	print("Items:", ResourceScripts.game_res.items.size())
-	print('locations', ResourceScripts.game_world.location_links.size())
 	
 	#current approach
 	if input_handler.CurrentScene != null:
@@ -1060,6 +1057,8 @@ func common_effects(effects):
 				match i.type:
 					'damage':
 						input_handler.active_character.deal_damage(i.value)
+					'damage_percent':
+						input_handler.active_character.deal_damage((i.value/100)*input_handler.active_character.get_stat('hpmax'))
 					'stat', 'stat_add':
 						input_handler.active_character.add_stat(i.stat, i.value)
 					'stat_set':

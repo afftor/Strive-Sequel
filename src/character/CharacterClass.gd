@@ -64,8 +64,13 @@ func get_stat(statname, ref = false):
 func set_stat(stat, value):
 	if stat in ['hp', 'mp', 'shield']:
 		set(stat, value)
+		return
 	if stat == 'base_exp':
 		xp_module.base_exp = value
+		return
+	if stat.begins_with('food_') and !(stat in ['food_consumption']):
+		food.set(stat, value)
+		return
 	statlist.set_stat(stat, value)
 
 func add_stat_bonuses(ls:Dictionary):
@@ -763,6 +768,9 @@ func tick():
 func rest_tick():
 	self.hp += variables.basic_hp_regen*2
 	self.mp += variables.basic_mp_regen*2 + variables.mp_regen_per_magic * get_stat('magic_factor') * 2
+	for e in find_temp_effect_tag('addition_rest_tick'):
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.process_event(variables.TR_TICK)
 
 
 func translate(text):

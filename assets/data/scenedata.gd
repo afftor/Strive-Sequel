@@ -176,7 +176,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUEEVENTTRAPFAILURE"),
 			image = '',
-			common_effects = [{code = "affect_active_character", type = 'damage', value = 25}],
+			common_effects = [{code = "affect_active_character", type = 'damage_percent', value = 20}],
 			tags = ['active_character_translate'],
 			options = [
 				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
