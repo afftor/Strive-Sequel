@@ -149,7 +149,7 @@ func select_food_pref(selected_id, type):
 			if !food_hate.has(type):
 				food_hate.append(type)
 			if person.food.food_love == type:
-				person.person.food.food_love = ""
+				person.food.food_love = ""
 	select_diet()
 
 
@@ -239,7 +239,13 @@ func rebuild_slave():
 
 func apply_preserved_settings():
 	for i in preservedsettings:
-		person.set_stat(i, preservedsettings[i])
+		if i == "food_love":
+			person.food.food_love = preservedsettings["food_love"]
+		elif i == "food_hate":
+			person.food.food_hate = preservedsettings["food_hate"]
+		else:
+			person.set_stat(i, preservedsettings[i])
+
 
 func confirm_character():
 	if check_confirm_possibility():

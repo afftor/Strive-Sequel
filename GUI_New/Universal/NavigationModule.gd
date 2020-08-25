@@ -152,6 +152,7 @@ func go_outside(location):
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 	GUIWorld.PreviousScene = get_parent()
 	get_parent().selected_location = location
+	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(location)
 	input_handler.PlaySound("door_open")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')

@@ -150,7 +150,7 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	var taskexisted = false
 	var task_location = parent.get_location()
 	for i in ResourceScripts.game_party.active_tasks:
-		if i.code == taskcode && i.product == taskproduct:
+		if i.code == taskcode && i.product == taskproduct && i.task_location == task_location:
 			taskexisted = true
 			i.workers.append(parent.id)
 			i.workers_count += 1
@@ -162,9 +162,27 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 	#make new task if it didn't exist
 	var dict
 	if !gatherable:
-		dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.production[taskproduct].progress_per_item, workers = [], workers_count = 1, task_location = task_location, iterations = iterations, messages = [], mod = task.mod}
+		dict = {code = taskcode,
+		product = taskproduct,
+		progress = 0,
+		threshhold = task.production[taskproduct].progress_per_item,
+		workers = [],
+		workers_count = 1,
+		task_location = task_location,
+		iterations = iterations,
+		messages = [],
+		mod = task.mod}
 	else:
-		dict = {code = taskcode, product = taskproduct, progress = 0, threshhold = task.progress_per_item, workers = [], workers_count = 1, task_location = task_location, iterations = iterations, messages = [], mod = ""}
+		dict = {code = taskcode,
+		product = taskproduct,
+		progress = 0,
+		threshhold = task.progress_per_item,
+		workers = [],
+		workers_count = 1,
+		task_location = task_location,
+		iterations = iterations,
+		messages = [],
+		mod = ""}
 	dict.workers.append(parent.id)
 	work = taskcode
 	ResourceScripts.game_party.active_tasks.append(dict)

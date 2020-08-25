@@ -305,6 +305,12 @@ func test_mode():
 		character.unlock_class("rogue")
 		character.unlock_class("druid")
 		character.unlock_class("assassin")
+		character.unlock_class("ruler")
+		character.unlock_class("watchdog")
+		character.unlock_class("director")
+		character.unlock_class("trainer")
+		character.unlock_class("foreman")
+		character.unlock_class("smith")
 		character.travel.location = 'L4'
 		character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 0.2
@@ -511,6 +517,9 @@ func test_mode():
 			i.totalreputation += 500
 		character.unlock_class("pet")
 		character.unlock_class("souleater")
+		character.unlock_class("trainer")
+		character.unlock_class("foreman")
+		character.unlock_class("smith")
 		character.mp = 10
 		var tmp = {}
 		tmp.oral = 70
@@ -523,11 +532,24 @@ func test_mode():
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
 
-		for c in ResourceScripts.game_party.characters.values():
-			if c.get_location() == "mansion": c.travel.location = "Aliron"
+
 		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
+		character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'random', 'random')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'random', 'random')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'random', 'random')
+		characters_pool.move_to_state(character.id)
+		character = ResourceScripts.scriptdict.class_slave.new()
+		character.create('HalfkinCat', 'random', 'random')
+		characters_pool.move_to_state(character.id)
+		for c in ResourceScripts.game_party.characters.values():
+			if c.get_location() == "mansion": c.travel.location = "Aliron"
 
 	input_handler.ActivateTutorial("introduction")
 	# input_handler.interactive_message('servants_election_finish5', '', {})

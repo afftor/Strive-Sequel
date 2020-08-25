@@ -121,7 +121,7 @@ func advance_hour():
 		i.act_prepared()
 	for i in ResourceScripts.game_party.characters.values():
 		i.tick()
-	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
+	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	if input_handler.globalsettings.turn_based_time_flow:
 		pass

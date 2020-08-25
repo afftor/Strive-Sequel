@@ -27,6 +27,7 @@ func _ready():
 
 func show_upgrade_window():
 	get_parent().StatUpgradeWindow.show()
+	get_parent().StatUpgradeWindow.show_characters_panel()
 	get_parent().submodules.clear()
 	get_parent().submodules.append(get_parent().StatUpgradeWindow)
 	self.hide()
@@ -105,11 +106,12 @@ func hire():
 			else:
 				self.visible = button.is_pressed()
 	else:
-		self.set("modulate", Color(1,1,1,0))
-		show()
-		ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
-		yield(get_tree().create_timer(0.5), "timeout")
-		self.set("modulate", Color(1,1,1,1))
+		if !self.is_visible():
+			self.set("modulate", Color(1,1,1,0))
+			show()
+			ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
+			yield(get_tree().create_timer(0.5), "timeout")
+			self.set("modulate", Color(1,1,1,1))
 
 
 
