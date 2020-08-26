@@ -348,7 +348,7 @@ var locations = {
 		races = [],
 		leader = '',
 		tasks = ['gather'],
-		actions = ['local_shop3'],
+		actions = ['local_shop'],
 		event_pool = [],
 		strength = [1,10],
 		material_tiers = {easy = 1, medium = 0.3, hard = 0.1},

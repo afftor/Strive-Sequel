@@ -26,7 +26,7 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience'
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'consent', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','timid_factor','brave_factor','growth_factor']
 #list for various types of damage mods
-var mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill']
+var mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill', 'true']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']

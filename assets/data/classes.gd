@@ -69,7 +69,7 @@ var professions = {
 		tags = [],
 		categories = ['social'],
 		showupreqs = [{code = 'has_profession', profession = 'master', check = false}],
-		reqs = [{code = 'stat', stat = 'charm', operant = 'gte', value = 60}],
+		reqs = [{code = 'stat', stat = 'charm', operant = 'gte', value = 40}],
 		statchanges = {charm_bonus = 10},
 		traits = [],
 		skills = ['praise', 'warn', 'punish'],

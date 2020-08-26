@@ -294,6 +294,7 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
 		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
+		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
 		ResourceScripts.game_res.upgrades.tailor = 1
 		
 	#	globals.impregnate(character, character)
@@ -513,8 +514,6 @@ func test_mode():
 		ResourceScripts.game_progress.active_quests.append(
 			{code = 'election_global_quest', stage = 'stage1'}
 		)
-		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.totalreputation += 500
 		character.unlock_class("pet")
 		character.unlock_class("souleater")
 		character.unlock_class("trainer")
@@ -531,28 +530,29 @@ func test_mode():
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
+			i.totalreputation += 500
 
 
 		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
-		character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
-		character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'random', 'random')
-		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new()
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new()
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new()
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
+#		character = ResourceScripts.scriptdict.class_slave.new()
+#		character.create('HalfkinCat', 'random', 'random')
+#		characters_pool.move_to_state(character.id)
 		for c in ResourceScripts.game_party.characters.values():
 			if c.get_location() == "mansion": c.travel.location = "Aliron"
 
 	input_handler.ActivateTutorial("introduction")
-	# input_handler.interactive_message('servants_election_finish5', '', {})
+	input_handler.interactive_message('daisy_meet', '', {})
 
 
 
