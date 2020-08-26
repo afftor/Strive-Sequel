@@ -276,7 +276,6 @@ func updatelist():
 	
 	
 	for i in actionsdict.values():
-		print(i.name)
 		if i.name == "Stop":
 			continue
 		if person.checkreqs(i.reqs) == true && check_location(i.location) && (i.group == category || i.group == 'any'):

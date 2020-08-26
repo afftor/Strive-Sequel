@@ -1165,7 +1165,8 @@ var TranslationDict = {
 	TRAITMEDIUM_ARMORDESCRIPT = "Allows the usage of Medium Armor.",
 	TRAITHEAVY_ARMORDESCRIPT = "Allows the usage of Heavy Armor.",
 	TRAITLOCKPICKINGDESCRIPT = "Greatly increases the chance to pick locks.",
-	TRAITTRAP_DETECTIONDESCRIPT = "Can disarm traps.",
+	TRAITTRAP_DETECTIONDESCRIPT = "Increases a chance to disarm traps.",
+	TRAITTRAP_ANALYZEDESCRIPT = "Gives a chance to discover trap's nature and slightly increase a chance to disarm traps.",
 	TRAITWEAPON_MASTERYDESCRIPT = "Allows the use of Melee Weapons",
 	TRAITRANGED_WEAPON_MASTERYDESCRIPT = "Allows the use of Ranged Weapons.",
 	TRAITMAGIC_TOOLSDESCRIPT = "Allows the use of magic tools such as staves.",
@@ -1769,6 +1770,11 @@ var TranslationDict = {
 	DIALOGUELOCATIONEVENTGOOD = "Lawful",
 	DIALOGUELOCATIONEVENTEVIL = "Misbehave",
 	
+	DIALOGUEATTACKMIMIC = "Attack Mimic",
+	DIALOGUEMIMICOPENANYWAY = "Open Anyway",
+	
+	DIALOGUEMISSIONCOMPLETE = 'Your group have completed the task and returns to mansion. ',
+	
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVEOPTION = "Leave",
@@ -1777,8 +1783,16 @@ var TranslationDict = {
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUECHESTOPEN = "Open",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
-	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now.",
+	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now...",
+	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] has triggered the bomb trap mechanism causing an explosion and damaging everyone in the room. The chest is destroyed with its contents...",
+	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] has triggered the trap mechanism. The room fills with poisonous gas and the group quickly retreats from it. However, [name] has still inhaled too much of a gas due to being too close to the chest...",
+	DIALOGUECHESTMIMICDISCOVERED = "As [name] approaches the chest in the last moment [he] spots something unusual about it. After another moment [he] informs that this is most likely to be not a chest, but Mimic. ",
+	DIALOGUECHESTMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. Being stuck in his mucous, [he] won't be able to escape, unless helped. ",
+	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, Mimic does not seem to be harming [him], rather seizing its pray and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
+	
+	DIALOGUECHESTMIMICFIGHT = "Fight Mimic",
+	DIALOGUECHESTMIMICLEAVE = "Leave Mimic alone",
 	
 	DIALOGUEEVENTTRAP = "You come across a trapped hallway. Someone will have to disarm it, by skill or their well-being...",
 	

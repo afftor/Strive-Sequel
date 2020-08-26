@@ -16,6 +16,8 @@ var encounters = {
 	
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
+	
+	mimic = {unittype = 'randomgroup', unitcode = 'mimic', bg = 'default', bgm = 'default', win_effects = [], lose_effects = []},
 }
 
 var enemygroups = {
@@ -71,6 +73,8 @@ var enemygroups = {
 	
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},
+	
+	mimic = {reqs = [], units = {mimic = [1,1]}},
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -917,7 +921,8 @@ var enemies = {
 		atk = 80,
 		matk = 20,
 		speed = 40,
-		resists = {earth = 50, water = 100, fire = -25, mind = 50},
+		resists = {earth = 50, water = 100, fire = -25, mind = 50, dark = 50, light = -50},
+		status_resists = {stun = 100, bleed = 100, poison = 100},
 		race = 'monster',
 		loot = 'mimic_loot',
 		icon = null,
@@ -935,20 +940,34 @@ var enemies = {
 
 var loot_chests_data = {
 	easy_chest_usable = [
-	{code = 'material', min = 6, max = 10, grade = ['easy', 'medium']}, 
+	{code = 'material', min = 2, max = 5, grade = ['easy', 'medium']}, 
 	{code = 'material', min = 2, max = 5, grade = ['location']}, 
 	{code = 'usable', min = 2, max = 4, grade = ['easy']}, 
 	],
 	easy_chest_gear = [
-	{code = 'material', min = 2, max = 5, grade = ['easy']}, 
-	{code = 'material', min = 1, max = 3, grade = ['location']}, 
+	{code = 'material', min = 2, max = 3, grade = ['location']}, 
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3]]},
 	],
 	easy_chest_cosmetics = [
-	{code = 'material', min = 3, max = 8, grade = ['easy']}, 
-	{code = 'material', min = 1, max = 3, grade = ['location']}, 
+	{code = 'material', min = 2, max = 4, grade = ['location']}, 
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy']}
 	],
+	
+	
+	medium_chest_usable = [
+	{code = 'material', min = 2, max = 3, grade = ['medium','hard']}, 
+	{code = 'material', min = 2, max = 3, grade = ['location']}, 
+	{code = 'usable', min = 2, max = 4, grade = ['easy','medium']}, 
+	],
+	medium_chest_gear = [
+	{code = 'material', min = 2, max = 3, grade = ['location']}, 
+	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',3], ['medium', 10], ['hard',1]]},
+	],
+	medium_chest_cosmetics = [
+	{code = 'material', min = 2, max = 4, grade = ['location']}, 
+	{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']}
+	],
+	
 	easy_prisoner_reward_item = [
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 5]]},
 	],
@@ -961,6 +980,8 @@ var loot_chests_data = {
 	{code = 'gear', min = 1, max = 2, grade = ['easy'], material_grade = [['easy',10], ['medium', 4]]},
 	{code = 'defined', name = 'exp_scroll', min = 1, max = 2}, 
 	],
+	
+	test_chest_mimic = [],
 	
 	fighters_join_reward = [
 	{code = 'defined', name = 'sword', min = 1, max = 1, parts = {WeaponHandle = 'wood', Blade = 'iron'}},
@@ -993,9 +1014,17 @@ var loot_chests_data = {
 
 var locks_data = { #makes locks to lockpick for related chests
 	easy_chest_usable = {locks = [['normal', 1],['none', 0.5]], difficulty = [5,20]},
-	easy_chest_gear = {locks = [['normal', 1]], difficulty = [10,25]},
+	easy_chest_gear = {locks = [['normal', 1],['mimic',0.05],['mimic_erotic',0.05]], difficulty = [10,25]},
 	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1]], difficulty = [10,25]},
+	
+	
+	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1]], difficulty = [15,40]},
+	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2]], difficulty = [20,50]},
+	medium_boss_chest = {locks = [['normal', 1]], difficulty = [20,55]},
+	
+	test_chest_mimic = {locks = [['mimic', 1]], difficulty = [1,1]},
 	}
 
 

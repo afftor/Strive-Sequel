@@ -699,6 +699,7 @@ func advance():
 			active_location.progress.level += 1
 			current_stage = active_location.progress.stage
 			current_level = active_location.progress.level
+		globals.current_level = current_level
 		if check_dungeon_end():
 			if active_location.completed == false:
 				active_location.completed = true
