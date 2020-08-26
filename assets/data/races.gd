@@ -5,7 +5,7 @@ var race_groups = {
 	halfbreeds = ['HalfkinCat','HalfkinWolf','HalfkinFox','HalfkinBunny','HalfkinTanuki'],
 	beast = ['BeastkinCat','BeastkinWolf','BeastkinFox','BeastkinBunny','BeastkinTanuki'],
 	monster = ['Lamia','Scylla','Centaur','Nereid','Arachna','Slime','Harpy','Taurus','Dragonkin'],
-	rare = ['DarkElf','Drow','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
+	rare = ['TribalElf','DarkElf','Goblin','Gnome','Kobold','Dwarf','Seraph','Demon'],
 }
 
 
@@ -222,8 +222,8 @@ var racelist = {
 			},
 		global_weight = 40,
 	},
-	DarkElf = {
-		code = "DarkElf",
+	TribalElf = {
+		code = "TribalElf",
 		name = '',
 		descript = '',
 		adjective = '',
@@ -252,8 +252,8 @@ var racelist = {
 			},
 		global_weight = 30,
 	},
-	Drow = {
-		code = "Drow",
+	DarkElf = {
+		code = "DarkElf",
 		name = '',
 		descript = '',
 		adjective = '',

@@ -83,10 +83,10 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TaskList"]
-margin_left = 13.6245
+margin_left = 14.0
 margin_top = 6.0
-margin_right = 275.624
-margin_bottom = 298.0
+margin_right = 276.0
+margin_bottom = 332.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false

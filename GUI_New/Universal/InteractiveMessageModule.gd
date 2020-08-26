@@ -208,9 +208,40 @@ func dialogue_next(code, argument):
 
 func add_chest_options(scene):
 	var chest_data = input_handler.scene_loot
-	var text = "\n\nChest Lock: " +  str(chest_data.lock.type) 
-	if chest_data.lock.type != 'none':
-		text += "\nDifficulty: " + ResourceScripts.custom_text.lock_difficulty(chest_data.lock.difficulty)
+	var text = ""
+	var engineer
+	for i in input_handler.get_location_characters():
+		if i.has_profession("engineer"):
+			engineer = i
+			break
+	
+	if engineer != null:
+		var lock_read = false
+		if engineer.lockpick_chance() > rand_range(0.5,2)*chest_data.lock.difficulty:
+			lock_read = true
+		
+		text += "\n\n[Engineer]: "
+		if lock_read == false:
+			text += "[name] wasn't able to determine chest's lock mechanism and its potential danger."
+		else:
+			match chest_data.lock.type:
+				'normal':
+					text += "[name] concludes this chest is {color=aqua|unlocked} and safe to use."
+				'none':
+					text += "[name] concludes this chest is locked with a {color=aqua|mechanic lock} and has no additional danger."
+				'bomb':
+					text += "[name] concludes this chest is rigged with a {color=aqua|bomb trap}."
+				'gas':
+					text += "[name] concludes this chest is rigged with a {color=aqua|gas trap}."
+				'mimic','mimic_erotic':
+					text += "[name] wasn't able to determine chest's lock mechanism and its potential danger."
+		
+		text = globals.TextEncoder(engineer.translate(text))
+		
+	 #= "\n\nChest Lock: " +  str(chest_data.lock.type) 
+#	if chest_data.lock.type != 'none':
+#		text += "\nDifficulty: " + ResourceScripts.custom_text.lock_difficulty(chest_data.lock.difficulty)
+	
 	scene.text.append({text = text, reqs = []})
 	if chest_data.lock.type == 'none':
 		scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUECHESTOPEN"})

@@ -61,7 +61,7 @@ var lands = {
 		code = 'forests',
 		name = "Forests",
 		enabled = true,
-		races = [['Elf', 100], ['DarkElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
+		races = [['Elf', 100], ['TribalElf',10],['halfbreeds', 10], ['Fairy', 15], ['Dryad',5]],
 		policies = [],
 		travel_time = [6,6],
 		disposition = 25,
@@ -1569,7 +1569,7 @@ var easter_egg_characters = {
 		class_category = 'combat',
 	},
 	Aura = {
-		race = 'DarkElf',
+		race = 'TribalElf',
 		name = 'Aura',
 		bonus_description = '',
 		sex = 'female',

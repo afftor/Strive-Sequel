@@ -252,7 +252,7 @@ var bodypartsdata = {
 		male = {code = 'male', name = '', chardescript = '', bodychanges = [
 			{code = 'hair_length', value = [['ear', 4], ['neck',2], ['shoulder',0.5],['bald',0.2]], reqs = []},
 			{code = 'hair_length', value = [['bald',1]], reqs = [{code = 'race', race = 'Kobold', check = true}]},
-			{code = 'hair_length', value = [['ear',0.5],['shoulder',2], ['waist', 2], ['hips',0.5]], reqs = [{code = 'one_of_races', value = ['Elf','Drow'], check = true}]},
+			{code = 'hair_length', value = [['ear',0.5],['shoulder',2], ['waist', 2], ['hips',0.5]], reqs = [{code = 'one_of_races', value = ['Elf','DarkElf'], check = true}]},
 			{code = 'hair_style',  value = [['straight', 10], ['ponytail',1]], reqs = []},
 			{code = 'ass_size', value = [['flat', 1], ['masculine',1]], reqs = []},
 			{code = 'tits_size', value = [['flat', 1], ['masculine', 1]], reqs = []},

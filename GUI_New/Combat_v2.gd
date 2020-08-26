@@ -66,9 +66,6 @@ var dummy = {
 signal skill_use_finshed
 var eot = true
 
-func _init():
-	pass
-	
 
 func _ready():
 	debug = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).test_mode
@@ -288,16 +285,7 @@ func victory():
 		var loot = {}
 		for i in Enemydata.loottables[tchar.get_stat('loottable')]:
 			if i[0] == 'gold':
-				var counter = 1
-				if i.size() > 2:
-					counter = i[2]
-				if i[1] >= 1:
-					rewardsdict.gold += i[2]
-				else:
-					while counter > 0:
-						if randf() <= i[1]:
-							rewardsdict.gold += 1
-						counter -= 1
+				rewardsdict.gold += round(rand_range(i[1], i[2]))
 			elif Items.materiallist.has(i[0]):
 				var counter = 1
 				if i.size() > 2:

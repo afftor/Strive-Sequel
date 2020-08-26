@@ -1,5 +1,6 @@
+Drows have been renamed to dark elves
 Kobold females now generate with smaller breast size
-Trap even now deals percent damage
+Trap events now deal percent damage
 Escape chance is now present and depends on charcter's authority and obedience (can escape if defiant and obdience < 15). Chance is based on timid factor
 Fixed inactive enemies not being deleted properly bloating file size
 0.3.0e
