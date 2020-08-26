@@ -78,6 +78,8 @@ onready var node_data = {
 	input_handler.NODE_INVENTORY_NEW : {name = 'inventory_new', mode = 'scene', scene = preload("res://GUI_New/Inventory/InventoryMainModule.tscn") },
 	input_handler.NODE_MANSION_NEW : {name = 'mansion', mode = 'scene', scene = preload("res://GUI_New/Mansion/MansionMainModule.tscn") },
 	input_handler.NODE_GUI_WORLD : {name = 'GUIWorld', mode = 'scene', scene = preload("res://GUI_New/GUIWorld.tscn") },
+	#Animations
+	input_handler.ANIM_TASK_AQUARED : {name = 'ANIM_Task_aquared', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_task_aquired.tscn") },
 }
 
 

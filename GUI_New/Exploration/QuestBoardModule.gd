@@ -11,10 +11,12 @@ func _ready():
 
 
 func quest_board():
+	var counter = 0
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for i in get_parent().active_area.quests.factions:
 		for k in get_parent().active_area.quests.factions[i].values():
 			if k.state == 'free':
+				counter += 1
 				var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 				newbutton.get_node("Label").text = k.name
 				var text = k.descript
@@ -23,11 +25,16 @@ func quest_board():
 				newbutton.get_node("ButtonOverlay").connect("mouse_entered",self,"change_texture", [newbutton, "in"])
 				newbutton.get_node("ButtonOverlay").connect("mouse_exited",self,"change_texture", [newbutton, "out"])
 				newbutton.set_meta("quest", k)
-	get_parent().clear_submodules()
+	# get_parent().clear_submodules()
 	if !get_parent().submodules.has(self):
 		get_parent().submodules.append(self)
+	for module in get_parent().submodules:
+		if module != self:
+			module.hide()
+			get_parent().submodules.erase(module)
 	Shop.is_shop_opened = false
 	SlaveMarket.is_slave_market_opened = false
+	$NoQuests.visible = counter == 0
 	$QuestDetails.hide()
 
 	# Animations
@@ -42,12 +49,13 @@ func quest_board():
 		get_parent().get_node("GuildBG").hide()
 	get_parent().City.opened_guild = {code = ""}
 	get_parent().City.update_buttons("quest_board")
-	self.set("modulate", Color(1,1,1,0))
-	show()
-	ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
-	if !get_parent().get_node("GuildBG").is_visible():
-		yield(get_tree().create_timer(0.5), "timeout")
-	self.set("modulate", Color(1,1,1,1))
+	if !self.is_visible():
+		self.set("modulate", Color(1,1,1,0))
+		show()
+		ResourceScripts.core_animations.UnfadeAnimation(self,0.5)
+		if !get_parent().get_node("GuildBG").is_visible():
+			yield(get_tree().create_timer(0.5), "timeout")
+		self.set("modulate", Color(1,1,1,1))
 	get_parent().selectedquest = null
 
 
@@ -176,4 +184,13 @@ func accept_quest():
 			break
 	input_handler.interactive_message('quest_accept','',{})
 	is_quest_board_opened = false
+	play_animation()
 	quest_board()
+
+
+
+func play_animation():
+	var anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
+	anim_scene.get_node("SelectedQuest").text = get_parent().selectedquest.name
+	anim_scene.get_node("AnimationPlayer").play("task_aquared")
+	yield(get_tree().create_timer(0.5), "timeout")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI_New/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
@@ -24,7 +24,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_chars_l.png" type="Texture" id=22]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=23]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=24]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24_outline.tres" type="DynamicFont" id=25]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=27]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=29]
@@ -55,10 +55,14 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
+font_data = ExtResource( 25 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -80,24 +84,24 @@ void fragment() {
 	COLOR = col;
 	}"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/modulate = Color( 0, 0.320313, 1, 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 694, 182 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 24
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 55
 use_filter = true
 font_data = ExtResource( 1 )
@@ -150,7 +154,6 @@ margin_bottom = 628.0
 custom_constants/separation = 11
 
 [node name="left" type="Container" parent="Panel/PlayerGroup/Back"]
-visible = false
 margin_right = 182.0
 margin_bottom = 202.0
 rect_min_size = Vector2( 182, 202 )
@@ -167,6 +170,7 @@ stretch_mode = 4
 
 [node name="Template" type="TextureButton" parent="Panel/PlayerGroup/Back/left"]
 pause_mode = 2
+visible = false
 margin_right = 182.0
 margin_bottom = 202.0
 texture_normal = ExtResource( 33 )
@@ -214,7 +218,7 @@ margin_left = 9.0
 margin_top = 5.0
 margin_right = 173.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 25 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
@@ -231,7 +235,7 @@ margin_left = 9.0
 margin_top = 156.0
 margin_right = 173.0
 margin_bottom = 176.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10/100"
 align = 1
@@ -242,7 +246,7 @@ margin_left = 9.0
 margin_top = 176.0
 margin_right = 173.0
 margin_bottom = 196.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "10/100"
 align = 1
@@ -250,7 +254,7 @@ valign = 1
 
 [node name="border" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template"]
 modulate = Color( 1, 1, 1, 0.640863 )
-material = SubResource( 3 )
+material = SubResource( 4 )
 margin_left = -4.0
 margin_top = -4.0
 margin_right = 184.0
@@ -283,15 +287,27 @@ margin_left = -10.0
 margin_top = 15.0
 margin_right = 62.0
 margin_bottom = 47.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "555"
 align = 1
 
+[node name="Panel" type="Panel" parent="Panel/PlayerGroup/Back/left/Template"]
+self_modulate = Color( 0, 0, 0, 0.509804 )
+show_behind_parent = true
+margin_left = 9.0
+margin_top = 9.43697
+margin_right = 171.0
+margin_bottom = 39.437
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="mid" type="Container" parent="Panel/PlayerGroup/Back"]
+margin_top = 213.0
 margin_right = 182.0
-margin_bottom = 202.0
+margin_bottom = 415.0
 rect_min_size = Vector2( 182, 202 )
 
 [node name="Frame" type="TextureButton" parent="Panel/PlayerGroup/Back/mid"]
@@ -305,9 +321,9 @@ expand = true
 stretch_mode = 4
 
 [node name="right" type="Container" parent="Panel/PlayerGroup/Back"]
-margin_top = 213.0
+margin_top = 426.0
 margin_right = 182.0
-margin_bottom = 415.0
+margin_bottom = 628.0
 rect_min_size = Vector2( 182, 202 )
 
 [node name="Frame2" type="TextureButton" parent="Panel/PlayerGroup/Back/right"]
@@ -640,7 +656,7 @@ margin_left = 613.0
 margin_top = 658.0
 margin_right = 1307.0
 margin_bottom = 840.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -725,7 +741,7 @@ margin_left = 53.0
 margin_top = 1.0
 margin_right = 93.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "1"
 align = 2
 
@@ -735,7 +751,7 @@ margin_left = 53.0
 margin_top = 65.767
 margin_right = 93.0003
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -750,7 +766,7 @@ margin_left = 5.62131
 margin_top = 65.767
 margin_right = 45.6213
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -973,7 +989,7 @@ margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "VICTORY"
 align = 1
 

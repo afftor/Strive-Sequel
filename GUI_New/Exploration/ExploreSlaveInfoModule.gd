@@ -54,6 +54,12 @@ func update():
 	
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
+		var expnode = GUIWorld.gui_data.EXPLORATION.main_module
+		$Panel/authoritylabel.visible = expnode.hiremode != "hire"
+		$Panel/loyaltylabel.visible = expnode.hiremode != "hire"
+		$Panel/submissionlabel.visible = expnode.hiremode != "hire"
+		$Panel/authoritylabel2.visible = expnode.hiremode != "hire"
+		$Panel/authoritylabel3.visible = expnode.hiremode != "hire"
 
 		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
 		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)

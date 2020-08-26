@@ -311,8 +311,8 @@ func test_mode():
 		character.unlock_class("trainer")
 		character.unlock_class("foreman")
 		character.unlock_class("smith")
-		character.travel.location = 'L4'
-		character.travel.area = 'plains'
+		# character.travel.location = 'L4'
+		# character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 0.2
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
@@ -514,7 +514,7 @@ func test_mode():
 			{code = 'election_global_quest', stage = 'stage1'}
 		)
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.totalreputation += 500
+			i.totalreputation += 10000
 		character.unlock_class("pet")
 		character.unlock_class("souleater")
 		character.unlock_class("trainer")
@@ -530,7 +530,7 @@ func test_mode():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.reputation = 500
+			i.reputation = 10000
 
 
 		character = ResourceScripts.scriptdict.class_slave.new()

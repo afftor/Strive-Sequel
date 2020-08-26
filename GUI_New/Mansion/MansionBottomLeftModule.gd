@@ -16,7 +16,11 @@ func _button_clicked(state, button):
 	else:
 		get_parent().mansion_state = "default"
 	
-func open_inventory():	
+func open_inventory():
+	if get_parent().active_person == null:
+		var person = ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]]
+		print(person)
+		get_parent().set_active_person(person)
 	GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.set_current_scene(GUIWorld.gui_data["INVENTORY"].main_module)
 	ResourceScripts.core_animations.UnfadeAnimation(GUIWorld.gui_data["INVENTORY"].main_module, 0.3)

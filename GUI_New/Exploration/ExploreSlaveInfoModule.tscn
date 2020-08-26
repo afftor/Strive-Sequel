@@ -26,7 +26,6 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [node name="ExploreSlaveInfoModule" type="Panel"]
-visible = false
 margin_right = 970.0
 margin_bottom = 920.0
 theme = ExtResource( 8 )

@@ -1,6 +1,6 @@
 extends Panel
 
-var craft_category = "smith"
+var craft_category = "cooking"
 var item_filter = 'all'
 var selected_item
 var recipes = []

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
+
+[node name="Label3" type="Label"]
+margin_left = 441.0
+margin_top = 191.0
+margin_right = 880.0
+margin_bottom = 265.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Experience"
+align = 1
+valign = 1

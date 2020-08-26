@@ -21,7 +21,9 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=20]
 
-[node name="ExploreFullSlaveModule" type="Panel"]
+[node name="ExploreFullSlaveModule" type="Panel" groups=[
+"pauseprocess",
+]]
 margin_right = 1890.0
 margin_bottom = 1050.0
 __meta__ = {
@@ -196,7 +198,6 @@ __meta__ = {
 [node name="ExploreSlaveSummaryModule" parent="." instance=ExtResource( 2 )]
 
 [node name="ExploreSlaveInfoModule" parent="." instance=ExtResource( 3 )]
-visible = true
 margin_left = 220.0
 margin_top = 130.0
 margin_right = 1190.0

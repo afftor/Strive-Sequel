@@ -70,8 +70,30 @@ func open():
 	$SwipeRight.visible = area_list.size() > 3
 
 
+func sort_locations(locations_array):
+	var capitals = []
+	var settlements = []
+	var dungeons = []
+	var quest_locations = []
+	for loca in locations_array:
+		if loca == null:
+			locations_array.erase(null)
+			continue
+		match loca.type:
+			"capital":
+				capitals.append(loca)
+			"settlement":
+				settlements.append(loca)
+			"dungeon","encounter":
+				dungeons.append(loca)
+			"quest_location":
+				quest_locations.append(loca)
+	return capitals + settlements + dungeons + quest_locations
+
 
 func build_location_list(area, container):
+	var locations_array = ResourceScripts.game_world.areas[area.code].locations.values() + ResourceScripts.game_world.areas[area.code].questlocations.values()
+	var sorted_locations =  sort_locations(locations_array)
 	if area.code != 'plains' && ResourceScripts.game_world.areas[area.code].has("capital_name"):
 		var capital =  ResourceScripts.game_world.areas[area.code].capital_name
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
@@ -89,7 +111,7 @@ func build_location_list(area, container):
 		newbutton.get_node("Label").text = str(calculate_location_characters("Aliron", newbutton))
 		newbutton.set_meta("code", "Aliron")
 		newbutton.connect('pressed', self, 'select_location', [newbutton])
-	for location in ResourceScripts.game_world.areas[area.code].locations.values() + ResourceScripts.game_world.areas[area.code].questlocations.values():
+	for location in sorted_locations:
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
 		newbutton.set_meta("location", location)
 		var text = ResourceScripts.world_gen.get_location_from_code(location.id).name
