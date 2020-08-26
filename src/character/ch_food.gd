@@ -86,7 +86,10 @@ func get_food():
 		parent.add_stat('food_consumption', 3, true)
 	
 	if eaten == false:
+		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_starve)
+		parent.apply_effect(effects_pool.add_effect(eff))
 		starvation = true
+		
 		parent.add_stat('obedience', -75)
 		parent.hp -= 25
 		globals.text_log_add('food', parent.get_short_name() + ": has no food.")

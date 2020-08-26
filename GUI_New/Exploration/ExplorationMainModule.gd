@@ -280,27 +280,28 @@ func build_location_group():
 	var newbutton
 	var counter = 0
 	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
-	for id in ResourceScripts.game_party.character_order:
-		var i = ResourceScripts.game_party.characters[id]
-		if i.check_location(active_location.id, true):
-			counter += 1
-			newbutton = input_handler.DuplicateContainerTemplate(
-				$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
-			)
-			newbutton.dragdata = i
-			newbutton.get_node("icon").texture = i.get_icon()
-			if newbutton.get_node('icon').texture == null:
-				if i.has_profession('master'):
-					newbutton.get_node('icon').texture = images.icons.class_master
-				elif i.get_stat('slave_class') == 'servant':
-					newbutton.get_node('icon').texture = images.icons.class_servant
-				else:
-					newbutton.get_node('icon').texture = images.icons.class_slave
-			newbutton.get_node("Label").text = i.get_short_name()
-			newbutton.connect("pressed", self, "return_character", [i])
-			if active_location.group.values().has(i.id):
-				newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
-			globals.connectslavetooltip(newbutton, i)
+	var char_array = input_handler.get_location_characters()
+	for i in char_array:
+#		var i = ResourceScripts.game_party.characters[id]
+#		if i.check_location(active_location.id, true):
+		counter += 1
+		newbutton = input_handler.DuplicateContainerTemplate(
+			$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
+		)
+		newbutton.dragdata = i
+		newbutton.get_node("icon").texture = i.get_icon()
+		if newbutton.get_node('icon').texture == null:
+			if i.has_profession('master'):
+				newbutton.get_node('icon').texture = images.icons.class_master
+			elif i.get_stat('slave_class') == 'servant':
+				newbutton.get_node('icon').texture = images.icons.class_servant
+			else:
+				newbutton.get_node('icon').texture = images.icons.class_slave
+		newbutton.get_node("Label").text = i.get_short_name()
+		newbutton.connect("pressed", self, "return_character", [i])
+		if active_location.group.values().has(i.id):
+			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
+		globals.connectslavetooltip(newbutton, i)
 	if counter == 0:
 		Navigation.return_to_mansion()
 		return
@@ -800,7 +801,7 @@ func use_e_combat_skill(caster, target, skill):
 			'single':
 				targets = [target]
 			'all':
-				targets = get_party()
+				targets = input_handler.get_active_party()
 		var s_skill2_list = []
 		for i in targets:
 			if skill.has('damage_type') and skill.damage_type == 'resurrect':
@@ -907,8 +908,3 @@ func execute_skill(s_skill2): #to update to exploration version
 
 var active_skill
 
-func get_party():
-	var res = []
-	for ch in active_location.group.values():
-		if ResourceScripts.game_party.characters[ch] != null: res.push_back(ResourceScripts.game_party.characters[ch])
-	return res

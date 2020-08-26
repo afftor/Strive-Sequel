@@ -169,7 +169,6 @@ func show_job_details(job, gatherable = false):
 				worktool = "worktool"
 			if job.has("tool_type"):
 				worktool = "tool_type"
-				print("here")
 			if item.toolcategory.has(job[worktool]):
 				text += "[color=green]" + tr("CORRECTTOOLEQUIPPED") + "[/color]"
 

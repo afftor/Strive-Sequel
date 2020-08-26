@@ -67,6 +67,7 @@ func move_to_pool(id):
 
 
 func serialize():
+	cleanup()
 	var tmp = {}
 	for hid in characters.keys():
 		tmp[hid] = characters[hid].serialize()

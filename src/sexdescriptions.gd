@@ -566,13 +566,13 @@ const racenames = {
 		singlepos = "elf's",
 		pluralpos = "elves'"
 	},
-	'Dark Elf' : {
+	'Tribal Elf' : {
 		single = "elf",
 		plural = "elves",
 		singlepos = "elf's",
 		pluralpos = "elves'"
 	},
-	Drow = {
+	'Dark Elf' : {
 		single = "elf",
 		plural = "elves",
 		singlepos = "elf's",

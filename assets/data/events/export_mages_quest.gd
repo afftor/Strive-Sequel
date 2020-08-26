@@ -270,7 +270,7 @@ var data = {
 			{image = null,
 			character = 'xari',
 			tags = ['dialogue_scene'],
-			text = "XARIENCOUNTER7_1", reqs = [{type = 'master_check', value = [{code = 'one_of_races', value = ['Elf', 'DarkElf', 'Drow']}, {code = 'sex', operant = 'neq', value = 'female'}]}],
+			text = "XARIENCOUNTER7_1", reqs = [{type = 'master_check', value = [{code = 'one_of_races', value = ['Elf', 'TribalElf', 'DarkElf']}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
 				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
 			]
@@ -326,7 +326,7 @@ var data = {
 			{code = 'xari_encounter10', text = "XARIENCOUNTER9REPLY1",
 			reqs = [
 				{type = "location_has_specific_slaves", value = 1, location = 'quest_mages_xari', reqs = [
-					{code = 'one_of_races', value = ['Elf','DarkElf','Drow']}, 
+					{code = 'one_of_races', value = ['Elf','TribalElf','DarkElf']}, 
 					{code = 'sex', operant = 'neq', value = 'female'}]}], dialogue_argument = 1, type = 'next_dialogue'},
 			{code = 'close', text = "XARIENCOUNTER9REPLY2", reqs = []},
 		]

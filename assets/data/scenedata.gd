@@ -176,7 +176,7 @@ var scenedict = {
 			{reqs = [],
 			text = tr("DIALOGUEEVENTTRAPFAILURE"),
 			image = '',
-			common_effects = [{code = "affect_active_character", type = 'damage', value = 25}],
+			common_effects = [{code = "affect_active_character", type = 'damage_percent', value = 20}],
 			tags = ['active_character_translate'],
 			options = [
 				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
@@ -1035,9 +1035,9 @@ var quests = {
 	mages_election_quest = {
 		code = 'mages_election_quest',
 		stages = {
-			start = {code = 'start', name = "Drow Witch", descript = "Myr asked me to visit her sister Xari nearby Aliron and retrieve her books."},
-			stage1 = {code = 'stage1', name = "Drow Witch", descript = "To get Myr's books, Xari asked me to find her an elven boy and bring him to her."},
-			stage2 = {code = 'stage2', name = "Drow Witch", descript = "I've got the books Myr asked me to bring. It's time to get back to her."},
+			start = {code = 'start', name = "Dark Elf Witch", descript = "Myr asked me to visit her sister Xari nearby Aliron and retrieve her books."},
+			stage1 = {code = 'stage1', name = "Dark Elf Witch", descript = "To get Myr's books, Xari asked me to find her an elven boy and bring him to her."},
+			stage2 = {code = 'stage2', name = "Dark Elf Witch", descript = "I've got the books Myr asked me to bring. It's time to get back to her."},
 		},
 	},
 	workers_election_quest = {

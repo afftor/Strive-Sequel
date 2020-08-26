@@ -118,6 +118,7 @@ func take_quest(quest, area):
 			location.questid = quest.id
 			i.location = location.id
 			i.area = area.code
+			i.completed = false
 			location_links[location.id] = {area = area.code, category = 'questlocations'}
 
 func find_location_from_req(req):

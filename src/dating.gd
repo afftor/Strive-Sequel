@@ -116,8 +116,8 @@ func _ready():
 #	characters_pool.move_to_state(character.id)
 	for i in helpdescript:
 		globals.connecttexttooltip(get_node(i),helpdescript[i])
-	globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
-	globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
+	#globals.connecttexttooltip($panel/categories/Location,"Location can influence your partner and allow new options. Does not cost Time.")
+	#globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	$end/sexbutton.connect("pressed", self, 'start_sex')
 	$StopButton.connect("pressed",self,'doaction', ["stop"])
 #	initiate(person)

@@ -182,6 +182,7 @@ margin_right = 1390.0
 margin_bottom = 940.0
 
 [node name="date" parent="." instance=ExtResource( 39 )]
+visible = false
 
 [node name="TutorialButton" type="Button" parent="."]
 margin_left = 1718.0

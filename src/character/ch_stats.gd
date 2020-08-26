@@ -175,6 +175,11 @@ func add_bonus(b_rec:String, value, revert = false):
 	parent.recheck_effect_tag('recheck_stats')
 
 func add_stat(statname, value, revert = false):
+	if statname == 'sex_skills': #force custom direct access due to passing into interaction via link
+		for ss in statlist.sex_skills:
+			if revert: statlist.sex_skills[ss] -= value
+			else: statlist.sex_skills[ss] += value
+		return
 	if variables.direct_access_stat_list.has(statname):
 		if revert: 
 			custom_stats_set(statname, statlist[statname] - value)

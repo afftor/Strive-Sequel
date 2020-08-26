@@ -488,10 +488,12 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
-		is_active = false
-		print('warning! char died outside combat')
-		characters_pool.call_deferred('cleanup')
+	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+	apply_effect(effects_pool.add_effect(eff))
+#	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
+#		is_active = false
+#		print('warning! char died outside combat')
+#		characters_pool.call_deferred('cleanup')
 
 func killed():
 	process_event(variables.TR_DEATH)
@@ -702,14 +704,13 @@ func show_race_description():
 
 func check_escape_chance():
 	var check = false
-	var base_chance = 45 - get_stat('timid_factor') * 7
-#	if get_stat('obedience') < base_chance && get_stat('fear') < base_chance:
-#		check = true
+	if authority_level() == 'low' && get_stat('obedience') < 15:
+		check = 45 - get_stat('obedience') - get_stat('timid_factor') * 7 > randf()*100
 	return check
 
 func check_escape_possibility():
 	last_escape_day_check = ResourceScripts.game_globals.date
-	if check_escape_chance() == false || get_stat('sleep') == 'jail' || xp_module.professions.has("master") || has_status('no_escape') || randf() < get_stat('timid_factor') * 0.1:
+	if !check_escape_chance() || xp_module.professions.has("master") || has_status('no_escape'):
 		return false
 	var shackles_chance = get_stat('shackles_chance')
 	if shackles_chance != null:
@@ -719,9 +720,8 @@ func check_escape_possibility():
 			#shackles_chance = null
 			input_handler.emit_signal('shackles_off') #stub
 		return
-	var minchance = 50#-min(obedience, fear)
-	if randf()*100 <= minchance:
-		escape()
+	
+	escape()
 
 func escape():
 	process_event(variables.TR_REMOVE)
@@ -768,6 +768,9 @@ func tick():
 func rest_tick():
 	self.hp += variables.basic_hp_regen*2
 	self.mp += variables.basic_mp_regen*2 + variables.mp_regen_per_magic * get_stat('magic_factor') * 2
+	for e in find_temp_effect_tag('addition_rest_tick'):
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.process_event(variables.TR_TICK)
 
 
 func translate(text):
@@ -919,7 +922,8 @@ func deal_damage(value, source = 'normal'):
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && variables.invincible_player:
 		return 0
-	value *= (1.0 - get_stat('resists')[source]/100.0)
+	if source != 'true':
+		value *= (1.0 - get_stat('resists')[source]/100.0)
 	value = int(value);
 	if value > 0:
 		if shield > value:
@@ -989,6 +993,18 @@ func check_skill_availability(s_code, target):
 
 func calculate_linked_chars_by_effect(e_name):
 	return effects_pool.get_n_effects_linked_to(id, e_name).size()
+
+func authority_level():
+	var rval
+	
+	if get_stat("authority") < authority_threshold()/2:
+		rval = 'low'
+	elif get_stat("authority") < authority_threshold():
+		rval = 'medium'
+	else:
+		rval = 'high'
+	
+	return rval 
 
 func authority_threshold():
 	return 200 - get_stat('timid_factor') * 25

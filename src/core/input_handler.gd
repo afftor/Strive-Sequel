@@ -1077,3 +1077,18 @@ func quit():
 	globalsettings.window_size = OS.window_size
 	globalsettings.window_pos = OS.window_position
 	get_tree().quit()
+
+func get_active_party():
+	var res = []
+	for ch in active_location.group.values():
+		if ResourceScripts.game_party.characters[ch] != null: res.push_back(ResourceScripts.game_party.characters[ch])
+	return res
+
+func get_location_characters():
+	var array = []
+	for id in ResourceScripts.game_party.character_order:
+		var i = ResourceScripts.game_party.characters[id]
+		if i.check_location(active_location.id, true):
+			array.append(i)
+	
+	return array
