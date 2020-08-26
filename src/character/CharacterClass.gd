@@ -488,10 +488,12 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
-		is_active = false
-		print('warning! char died outside combat')
-		characters_pool.call_deferred('cleanup')
+	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+	apply_effect(effects_pool.add_effect(eff))
+#	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
+#		is_active = false
+#		print('warning! char died outside combat')
+#		characters_pool.call_deferred('cleanup')
 
 func killed():
 	process_event(variables.TR_DEATH)
