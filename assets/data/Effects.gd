@@ -364,23 +364,95 @@ var effect_table = {
 			}
 		],
 	},
+#	e_starve = {
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'starvation',
+#		tick_event = variables.TR_TICK,
+#		duration = 24, 
+#		stack = 1,
+#		sub_effects = [],
+#		tags = [],
+#		atomic = [],
+#		buffs = [
+#			{
+#				icon = "res://assets/images/iconsitems/food_old.png", 
+#				description = "No food has been eaten: Exhaustion does not restore while resting.",
+#				limit = 1,
+#				t_name = 'starvation',
+#				mansion_only = true,
+#			}
+#		],
+#	},
 	e_starve = {
 		type = 'temp_s',
-		target = 'target',
 		name = 'starvation',
 		tick_event = variables.TR_TICK,
 		duration = 24, 
 		stack = 1,
-		sub_effects = [],
-		tags = [],
-		atomic = [],
+		sub_effects = [{
+			type = 'oneshot',
+			atomic = [{type = 'stat_add_p', stat = 'authority', value = -0.2}]
+		}],
+		tags = [],#['addition_rest_tick'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = -50}, #or simply stat_add as productivity is measured in persents and '-50% productivity' can have both meanings
+			#depending on displaying purpose use this
+#			{type = 'stat_add_p', stat = 'atk', value = -50},
+#			{type = 'stat_add_p', stat = 'matk', value = -50},
+			#or this
+			{type = 'stat_add', stat = 'modall', value = -0.5},
+		],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/food_old.png", 
-				description = "No food has been eaten: Exhaustion does not restore while resting.",
+				description = "No food has been eaten: Exhaustion does not restore while resting.",#to fix
 				limit = 1,
 				t_name = 'starvation',
-				mansion_only = true,
+#				mansion_only = true,
+			}
+		],
+	},
+	e_injury = {
+		type = 'temp_s',
+		name = 'injury',
+		tick_event = variables.TR_TICK,
+		duration = 12, 
+		stack = 1,
+		sub_effects = [],
+		tags = ['addition_rest_tick'],
+		atomic = [
+			{type = 'stat_add_p', stat = 'hpmax', value = -20},
+		],
+		buffs = [
+			{#to fix
+				icon = "res://assets/images/iconsitems/food_old.png", 
+				description = "No food has been eaten: Exhaustion does not restore while resting.",
+				limit = 1,
+				t_name = 'injury',
+#				mansion_only = true,
+			}
+		],
+	},
+	e_grave_injury = {
+		type = 'temp_s',
+		name = 'grave_injury',
+		tick_event = variables.TR_TICK,
+		duration = 36, 
+		stack = 1,
+		sub_effects = [],
+		tags = ['addition_rest_tick', 'no_combat'],# need to implement person.has_status('no_combat') check in exploration interface
+		atomic = [
+			{type = 'stat_add', stat = 'sex_skills', value = -50},
+			{type = 'stat_add_p', stat = 'productivity', value = -25},#or simply stat_add as productivity is measured in persents and '-25% productivity' can have both meanings
+		],
+		buffs = [
+			{#to fix
+				icon = "res://assets/images/iconsitems/food_old.png", 
+				description = "No food has been eaten: Exhaustion does not restore while resting.",
+				limit = 1,
+				t_name = 'grave_injury',
+#				mansion_only = true,
 			}
 		],
 	},
