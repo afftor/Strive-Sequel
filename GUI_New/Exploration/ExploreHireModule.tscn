@@ -61,7 +61,9 @@ font_data = ExtResource( 22 )
 size = 48
 font_data = ExtResource( 32 )
 
-[node name="ExploreHireModule" type="Panel"]
+[node name="ExploreHireModule" type="Panel" groups=[
+"pauseprocess",
+]]
 margin_left = 516.0
 margin_top = 137.0
 margin_right = 1519.0

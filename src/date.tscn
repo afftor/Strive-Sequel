@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://src/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -30,13 +30,18 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_hover.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Icons/icon_location_pressed.png" type="Texture" id=30]
-[ext_resource path="res://assets/Textures_v2/DUNGEON/Panels/panel_dungeon_char.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_portrait.png" type="Texture" id=31]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=32]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_items.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=36]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=37]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=38]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 38 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -111,42 +116,87 @@ __meta__ = {
 }
 
 [node name="masterportrait" type="TextureRect" parent="textfield"]
-margin_left = 13.0
-margin_top = -306.0
-margin_right = 123.0
-margin_bottom = -164.0
-expand = true
+margin_left = 1.0
+margin_top = -489.0
+margin_right = 183.0
+margin_bottom = -287.0
+texture = ExtResource( 31 )
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="textfield/masterportrait"]
-margin_left = -12.6165
-margin_top = -13.4658
-margin_right = 122.384
-margin_bottom = 154.534
-texture = ExtResource( 31 )
+show_behind_parent = true
+margin_left = 1.0
+margin_right = 181.0
+margin_bottom = 202.0
 expand = true
+stretch_mode = 6
+
+[node name="Panel2" type="Panel" parent="textfield/masterportrait"]
+self_modulate = Color( 0, 0, 0, 0.588235 )
+show_behind_parent = true
+margin_left = 1.0
+margin_top = 154.728
+margin_right = 181.0
+margin_bottom = 194.728
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="textfield/masterportrait"]
+margin_top = 149.0
+margin_right = 182.0
+margin_bottom = 196.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Name"
+align = 1
+valign = 1
 
 [node name="slaveportrait" type="TextureRect" parent="textfield"]
-margin_left = 13.0
-margin_top = -474.0
-margin_right = 123.0
-margin_bottom = -332.0
-expand = true
+margin_top = -287.0
+margin_right = 182.0
+margin_bottom = -85.0
+texture = ExtResource( 31 )
 stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="textfield/slaveportrait"]
-margin_left = -12.6165
-margin_top = -13.4658
-margin_right = 122.384
-margin_bottom = 154.534
-texture = ExtResource( 31 )
+show_behind_parent = true
+margin_top = 1.52588e-05
+margin_right = 182.0
+margin_bottom = 202.0
 expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="textfield/slaveportrait"]
+self_modulate = Color( 0, 0, 0, 0.588235 )
+show_behind_parent = true
+margin_left = 2.0
+margin_top = 158.0
+margin_right = 182.0
+margin_bottom = 198.0
+
+[node name="Name" type="Label" parent="textfield/slaveportrait"]
+margin_left = 1.0
+margin_top = 148.0
+margin_right = 183.0
+margin_bottom = 195.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="panel" type="Panel" parent="."]
 margin_left = 269.0
@@ -271,9 +321,9 @@ __meta__ = {
 
 [node name="mood" type="TextureProgress" parent="."]
 margin_left = 72.0
-margin_top = 434.0
+margin_top = 484.0
 margin_right = 254.0
-margin_bottom = 462.0
+margin_bottom = 512.0
 max_value = 50.0
 value = 50.0
 texture_under = ExtResource( 2 )
@@ -304,9 +354,9 @@ valign = 1
 
 [node name="fear" type="TextureProgress" parent="."]
 margin_left = 73.0
-margin_top = 491.0
+margin_top = 518.0
 margin_right = 255.0
-margin_bottom = 519.0
+margin_bottom = 546.0
 value = 50.0
 texture_under = ExtResource( 2 )
 texture_over = ExtResource( 2 )

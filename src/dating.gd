@@ -168,27 +168,29 @@ func initiate(tempperson):
 	$fullbody.set_texture(null)
 	if person.get_body_image() != null && person.get_body_image() != null:
 		$fullbody.set_texture(person.get_body_image())
-	$textfield/slaveportrait.texture = null
+	# $textfield/slaveportrait.texture = null
 	
 	if person.get_icon() != null && person.get_icon():
-		$textfield/slaveportrait.set_texture(person.get_icon())
+		$textfield/slaveportrait/TextureRect.set_texture(person.get_icon())
 	else:
-		$textfield/slaveportrait.set_texture(null)
-	if $textfield/slaveportrait.texture == null:
-		$textfield/slaveportrait/TextureRect.visible = false
-	else:
-		$textfield/slaveportrait/TextureRect.visible = true
+		$textfield/slaveportrait/TextureRect.set_texture(null)
+	$textfield/slaveportrait/Name.text = person.get_short_name()
+	$textfield/masterportrait/Name.text = master.get_short_name()
+	# if $textfield/slaveportrait.texture == null:
+	# 	$textfield/slaveportrait/TextureRect.visible = false
+	# else:
+	# 	$textfield/slaveportrait/TextureRect.visible = true
 	
-	$textfield/masterportrait.texture = null
+	# $textfield/masterportrait/TextureRect.texture = null
 #	if globals.player.imageportait != null && globals.loadimage(globals.player.imageportait):
 #		$textfield/masterportrait.set_texture(globals.loadimage(globals.player.imageportait))
 #	else:
 #		globals.player.imageportait = null
 #		$textfield/masterportrait.set_texture(null)
-	if $textfield/masterportrait.texture == null:
-		$textfield/masterportrait/TextureRect.visible = false
-	else:
-		$textfield/masterportrait/TextureRect.visible = true
+	# if $textfield/masterportrait.texture == null:
+	# 	$textfield/masterportrait/TextureRect.visible = false
+	# else:
+	# 	$textfield/masterportrait/TextureRect.visible = true
 	
 	
 	
@@ -274,7 +276,8 @@ func updatelist():
 	
 	
 	for i in actionsdict.values():
-		if i.name == "stop":
+		print(i.name)
+		if i.name == "Stop":
 			continue
 		if person.checkreqs(i.reqs) == true && check_location(i.location) && (i.group == category || i.group == 'any'):
 			if i.has('onetime') && checkhistory(i.effect) > 0 || (finish_encounter == true && i.effect != 'stop'):

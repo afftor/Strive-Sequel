@@ -1360,7 +1360,10 @@ func ClearSkillPanel():
 
 func RebuildSkillPanel():
 	ClearSkillPanel()
+	var counter = 0
 	for i in activecharacter.skills.combat_skill_panel:
+		if counter > 9:
+			break
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 		newbutton.get_node("Icon").texture = skill.icon
@@ -1400,7 +1403,9 @@ func RebuildSkillPanel():
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.set_meta('skill', skill.code)
+		newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 		globals.connectskilltooltip(newbutton, skill.code, activecharacter)
+		counter += 1
 
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(images.cursors.default)
@@ -1502,3 +1507,20 @@ func combatlogadd(text):
 
 func combatlogadd_q(text):
 	$Combatlog/RichTextLabel.append_bbcode(text)
+
+
+var active_position
+func select_skill_for_position(position):
+	active_position = position
+	var person = activecharacter
+	var active_panel = 1
+	input_handler.ShowSkillSelectPanel(person, active_panel, self, 'skill_selected')
+
+
+func skill_selected(skill):
+	var person = activecharacter
+	if skill == null:
+		person.skills.combat_skill_panel.erase(active_position)
+	else:
+		person.skills.combat_skill_panel[active_position] = skill
+	RebuildSkillPanel()

@@ -54,7 +54,9 @@ margin_bottom = 12.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[node name="ExploreShopModule" type="Panel"]
+[node name="ExploreShopModule" type="Panel" groups=[
+"pauseprocess",
+]]
 margin_right = 1123.0
 margin_bottom = 980.0
 theme = ExtResource( 27 )

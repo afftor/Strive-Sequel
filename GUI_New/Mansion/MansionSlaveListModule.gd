@@ -130,6 +130,9 @@ func build_for_travel(person, newbutton):
 
 func build_for_craft(person, newbutton):
 	newbutton.pressed = false
+	if person.travel.location != ResourceScripts.game_world.mansion_location:
+		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
+		newbutton.disabled = true
 	# if person in get_parent().persons_for_craft:
 	# 	newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/panel_char_available.png")
 	# else:
@@ -256,7 +259,7 @@ func show_location_characters(button = null):
 			if prev_selected_location != selected_location:
 				for visible_person in visible_persons:
 					visible_person.pressed = false
-				get_parent().set_active_person(visible_persons[0].get_meta("slave"))
+				get_parent().active_person = null
 				# get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location

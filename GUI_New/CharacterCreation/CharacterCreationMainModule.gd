@@ -118,9 +118,15 @@ func _ready():
 	$VBoxContainer/class.connect("pressed", ClassSelection, "open_class_list")
 	for i in $DietPanel/VBoxContainer.get_children():
 		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
-	
+	$BackButton.connect("pressed", self, "Exit")
 	open()
 
+func Exit():
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'MainMenu', tr('LEAVECONFIRM')])
+
+
+func MainMenu():
+	globals.return_to_main_menu()
 
 func select_age(value):
 	person.set_stat('age', agearray[value])

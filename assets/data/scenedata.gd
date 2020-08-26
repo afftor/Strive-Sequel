@@ -92,7 +92,7 @@ var scenedict = {
 		]
 	},
 	quest_accept = {
-		text = tr("DIALOGUEQUESTACCEPT"), 
+		text = tr("DIALOGUEQUESTACCEPT"),
 		image = '',
 		tags = [], 
 		options = [

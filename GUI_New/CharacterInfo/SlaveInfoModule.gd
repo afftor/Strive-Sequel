@@ -26,7 +26,15 @@ func _ready():
 		newlabel.show()
 		newvalue.show()
 	update()
-	
+
+
+func set_color(value):
+	var color = Color(0.98,0.88,0.51,1)
+	if value > 0:
+		color = Color(0.31,0.99,0.51,1)  
+	elif value < 0:
+		color = Color(0.99,0.31,0.36,1)
+	return color	
 
 func update():
 	person = GUIWorld.gui_data["MANSION"].main_module.active_person
@@ -53,6 +61,10 @@ func update():
 		text = authority_lines[authority]
 		
 		$Panel/authoritylabel.text = 'Authority: ' + text
+		if authority == "low":
+			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
+		else:
+			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
 	
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')

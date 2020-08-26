@@ -479,7 +479,8 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 
 
 func faction_upgrade():
-	submodules.append($FactionDetailsModule)
+	if submodules.has($FactionDetailsModule):
+		submodules.append($FactionDetailsModule)
 	var guild_buttons = City.get_node("GuildMenu/VBoxContainer").get_children()
 	for button in guild_buttons:
 		if button.name == "Button":
@@ -533,8 +534,10 @@ func faction_upgrade():
 			# text += "\n\nPrice: " + str(i.cost[currentupgradelevel]) + " faction points."
 			if active_faction.reputation < i.cost[currentupgradelevel]:
 				newnode.get_node("confirm").disabled = true
+		
 		else:
-			newnode.get_node("confirm").hide()
+			newnode.hide()
+			continue
 
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = "Price: " + str(i.cost[currentupgradelevel]) + " faction points."
@@ -566,6 +569,8 @@ func faction_services():
 
 
 func unlock_upgrade(upgrade, level):
+	print(upgrade)
+	print(level)
 	if active_faction.upgrades.has(upgrade.code):
 		active_faction.upgrades[upgrade.code] += 1
 	else:

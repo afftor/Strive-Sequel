@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_upper.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower.png" type="Texture" id=3]
+[ext_resource path="res://Button_messagemodule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textcontainer_messagemodule.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Message module"
+length = 3.66666
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer6/TextureRect2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3.16666, 3.53333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer6/Panel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2.86666, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer6/TextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 3.16666, 3.53333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer6/TextureRect3:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 2.86666, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimationPlayer6/Button:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.56667, 1.76666, 2.36666, 2.56666 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimationPlayer6/RichTextLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.933333, 1.16667, 2.73333, 2.96666 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="AnimationPlayer6" type="AnimationPlayer"]
+"anims/Message module" = SubResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 14.7731 ],
+"_edit_vertical_guides_": [ 560.049 ]
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 559.902
+margin_top = 14.7822
+margin_right = 1359.9
+margin_bottom = 385.783
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 560.077
+margin_top = 14.8914
+margin_right = 1360.08
+margin_bottom = 385.891
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0 )
+margin_left = 560.0
+margin_top = 386.0
+margin_right = 1360.0
+margin_bottom = 1064.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 560.125
+margin_top = 386.185
+margin_right = 1360.13
+margin_bottom = 1065.19
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="." instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 611.425
+margin_top = 981.527
+margin_right = 1282.42
+margin_bottom = 1029.53
+
+[node name="RichTextLabel" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 594.0
+margin_top = 451.45
+margin_right = 1326.0
+margin_bottom = 806.45
