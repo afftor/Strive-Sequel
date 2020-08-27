@@ -1784,11 +1784,12 @@ var TranslationDict = {
 	DIALOGUECHESTOPEN = "Open",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
 	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now...",
+	DIALOGUELOCKPICKALARMFAILURE = "[name] has failed to pick the lock and caused the alarm to go off. In a few moments enemies charge at your position.",
 	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] has triggered the bomb trap mechanism causing an explosion and damaging everyone in the room. The chest is destroyed with its contents...",
 	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] has triggered the trap mechanism. The room fills with poisonous gas and the group quickly retreats from it. However, [name] has still inhaled too much of a gas due to being too close to the chest...",
 	DIALOGUECHESTMIMICDISCOVERED = "As [name] approaches the chest in the last moment [he] spots something unusual about it. After another moment [he] informs that this is most likely to be not a chest, but Mimic. ",
-	DIALOGUECHESTMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. Being stuck in his mucous, [he] won't be able to escape, unless helped. ",
-	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, Mimic does not seem to be harming [him], rather seizing its pray and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...",
+	DIALOGUECHESTMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. Being stuck in his mucous, [he] won't be able to escape, unless helped. \n\n{color=aqua|[name]} - {random_chat=0|mimic_eat",
+	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, Mimic does not seem to be harming [him], rather seizing its pray and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]} - {random_chat=0|mimic_molest}",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
 	
 	DIALOGUECHESTMIMICFIGHT = "Fight Mimic",
@@ -1822,7 +1823,8 @@ var TranslationDict = {
 	DIALOGUEEVENTTRAPFAILURE = "[center]{color=red|Failure!}[/center]\n[name] has disarmed the trap in a rough manner, suffering damage in the process.",
 	DIALOGUEACTIVATETRAP = "Deactivate Trap",
 	
-	DIALOGUEDUNGEONCHEST = "You find a locked treasure chest. ",
+	DIALOGUEDUNGEONCHEST = "You find a locked chest.  ",
+	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
 	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
 	
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by the bandits for ransom or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",

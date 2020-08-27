@@ -625,6 +625,15 @@ var individual_lines = {
 	date_scold3 = {text = "I'm sorry, please don't be angry. ", events = ['date_scold'], personalities = ['kind','shy'], reqs = [], weight = 1, tags = []},
 	date_scold4 = {text = "Stop, I didn't deserve this! ", events = ['date_scold'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_scold5 = {text = "I'm sorry you feel this way.", events = ['date_scold'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
+	
+	mimic_eat1 = {text = "Oh no! It's alive!", events = ['mimic_eat'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	mimic_eat2 = {text = "Noo! It's got me! Help!", events = ['mimic_eat','mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	mimic_eat3 = {text = "Ugh, I can't get out!", events = ['mimic_eat','mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	
+	
+	mimic_molest1 = {text = "Agh... It's touching me all over!", events = ['mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	mimic_molest2 = {text = "What's the... Ah! Stop!", events = ['mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	mimic_molest3 = {text = "N-no, stop! No there!", events = ['mimic_rape'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 }
 
 func build_lines():

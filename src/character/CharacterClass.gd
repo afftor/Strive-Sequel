@@ -1024,10 +1024,10 @@ func authority_threshold():
 	return 200 - get_stat('timid_factor') * 25
 
 func lockpick_chance(): #used for chest opening
-	var base_chance = randf()*5+5
-	var secondary_chance = get_stat('wits')/5
+	var base_chance = randf()*5+5 #5-10
+	var secondary_chance = get_stat('wits')/5 #0-24
 	if check_trait('lockpicking'):
-		secondary_chance = secondary_chance*4 + (randf()*5+5)
+		secondary_chance = secondary_chance*4 + (randf()*5+5) #max 101-106
 	
 	return base_chance + secondary_chance
 
