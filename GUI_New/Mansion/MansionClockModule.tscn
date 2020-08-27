@@ -23,17 +23,17 @@
 size = 24
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 6 )
-
-[sub_resource type="LargeTexture" id=2]
 
 [sub_resource type="LargeTexture" id=3]
 
 [sub_resource type="LargeTexture" id=4]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="LargeTexture" id=5]
+
+[sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 6 )
 
@@ -67,6 +67,7 @@ margin_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 110, 110 )
+mouse_filter = 2
 texture = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -98,7 +99,7 @@ margin_left = 4.0
 margin_top = 53.0
 margin_right = 85.0
 margin_bottom = 108.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Date"
@@ -183,7 +184,7 @@ Hotkey: 2"
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 10 )
-texture_focused = SubResource( 2 )
+texture_focused = SubResource( 3 )
 
 [node name="Label" type="TextureRect" parent="TimeNode/2speed"]
 margin_left = 38.0
@@ -205,7 +206,7 @@ Hotkey: 2"
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
-texture_focused = SubResource( 3 )
+texture_focused = SubResource( 4 )
 
 [node name="Label" type="Label" parent="TimeNode/lessturn"]
 margin_left = 11.0
@@ -225,7 +226,7 @@ Hotkey: 3"
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 10 )
-texture_focused = SubResource( 4 )
+texture_focused = SubResource( 5 )
 
 [node name="Label" type="Label" parent="TimeNode/moreturn"]
 margin_left = 38.0
@@ -266,7 +267,7 @@ margin_left = 55.0
 margin_top = 6.0
 margin_right = 139.0
 margin_bottom = 51.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "500"
@@ -290,7 +291,7 @@ margin_left = 199.0
 margin_top = 7.0
 margin_right = 283.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "500"

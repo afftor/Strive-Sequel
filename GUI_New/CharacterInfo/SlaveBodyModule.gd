@@ -30,11 +30,13 @@ func update():
 		input_handler.ClearContainer($professions)
 		if person.xp_module.professions.size() > 6:
 			$professions.columns = 12
+			$professions.set("custom_constants/hseparation", 6)
 			$professions/Button.rect_min_size = Vector2(50,50)
 			$professions/Button/TextureRect.rect_size = Vector2(34,34)
 			$professions/Button/Label.hide()
 		else:
 			$professions.columns = 6
+			$professions.set("custom_constants/hseparation", 14)
 			$professions/Button.rect_min_size = Vector2(100,100)
 			$professions/Button/TextureRect.rect_size = Vector2(84,84)
 		for i in person.xp_module.professions:

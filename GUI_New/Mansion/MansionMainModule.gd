@@ -273,6 +273,7 @@ func travels_manager(params):
 		'default':
 			is_travel_selected = false
 			selected_destination = null
+			Locations.show()
 			selected_travel_characters.clear()
 			TravelsModule.get_node("Resources").hide()
 			TravelsModule.get_node("SelectedLocation/Label").text = "Select Location"
