@@ -516,6 +516,42 @@ func make_chest_loot(chest):
 					
 					dict.items.append(item)
 					number -= 1
+			'weapon':
+				var number = round(rand_range(i.min, i.max))
+				var array = []
+				for k in Items.itemlist.values():
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon'] && k.geartype != 'costume':
+						array.append(k.code)
+				while number > 0:
+					var itemdict = {}
+					itemdict.item = array[randi()%array.size()]
+					itemdict.grade = i.grade[randi()%i.grade.size()]
+					if i.has('material_grade'):
+						itemdict.locationmaterials = location.resources
+						itemdict.material_grade = i.material_grade
+					var item = generate_random_gear(itemdict)
+					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
+					
+					dict.items.append(item)
+					number -= 1
+			'armor':
+				var number = round(rand_range(i.min, i.max))
+				var array = []
+				for k in Items.itemlist.values():
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['armor'] && k.geartype != 'costume':
+						array.append(k.code)
+				while number > 0:
+					var itemdict = {}
+					itemdict.item = array[randi()%array.size()]
+					itemdict.grade = i.grade[randi()%i.grade.size()]
+					if i.has('material_grade'):
+						itemdict.locationmaterials = location.resources
+						itemdict.material_grade = i.material_grade
+					var item = generate_random_gear(itemdict)
+					item = globals.CreateGearItem(item.code, item.itemparts, item.bonus)
+					
+					dict.items.append(item)
+					number -= 1
 	return dict
 
 func generate_random_gear(dict):#dict = {item = code, material_grade = 'location', locationmaterials = []/optional/}

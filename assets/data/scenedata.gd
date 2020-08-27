@@ -70,6 +70,15 @@ var scenedict = {
 		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN")}
 		],
 	},
+	lockpick_alarm_failure = {
+		text = 'DIALOGUELOCKPICKALARMFAILURE',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		set_enemy = 'random_local_group',
+		options = [
+		{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")}
+		],
+	},
 	lockpick_chest_failure = {
 		text = 'DIALOGUECHESTLOCKPICKFAILURE',
 		tags = ['active_character_translate'], 
@@ -131,6 +140,25 @@ var scenedict = {
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'kill'}]}
 		],
+	},
+	
+	dungeon_find_armory_easy = {
+		text = tr("DIALOGUEDUNGEONARMORY"), 
+		tags = ['locked_chest'],
+		image = 'chest', 
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		]
+	},
+	dungeon_find_armory_medium = {
+		text = tr("DIALOGUEDUNGEONARMORY"), 
+		tags = ['locked_chest'],
+		image = 'chest', 
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_armory_weapon', 1],['medium_armory_armor', 1]]}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		]
 	},
 	
 	dungeon_find_chest_easy = {

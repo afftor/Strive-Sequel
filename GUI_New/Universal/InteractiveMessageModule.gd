@@ -118,7 +118,10 @@ func open(scene, not_save = false):
 		scenetext += "\n\n" + text
 	
 	if scene.has("set_enemy"):
-		dialogue_enemy = scene.set_enemy
+		if scene.set_enemy == 'random_local_group':
+			dialogue_enemy = input_handler.weightedrandom(input_handler.active_location.enemies)
+		else:
+			dialogue_enemy = scene.set_enemy
 	var counter = 1
 	var options = scene.options
 	for i in options:
@@ -244,6 +247,8 @@ func add_chest_options(scene):
 					text += "[name] concludes this chest is rigged with a {color=aqua|gas trap}."
 				'mimic','mimic_erotic':
 					text += "[name] wasn't able to determine chest's lock mechanism and its potential danger."
+				'alarm':
+					text += "[name] notices a hidden alarm mechanism tied to a lock, which wil llikely cause an uproar if triggered."
 		
 		text = globals.TextEncoder(engineer.translate(text))
 		
@@ -280,6 +285,8 @@ func lockpick_attempt(person):
 		input_handler.interactive_message_follow("chest_is_mimic_trapped", "story_event", {})
 	elif type in ["mimic_erotic"]:
 		input_handler.interactive_message_follow("chest_is_erotic_mimic_trapped", "story_event", {})
+	elif type in ['alarm']:
+		input_handler.interactive_message_follow("lockpick_alarm_failure", "story_event", {})
 	elif open == true:
 		input_handler.interactive_message_follow("lockpick_chest_success", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_success')

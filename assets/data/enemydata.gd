@@ -968,6 +968,20 @@ var loot_chests_data = {
 	{code = 'static_gear', min = 1, max = 1, grade = ['easy','medium']}
 	],
 	
+	easy_armory_weapon = [
+		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3], ['hard',1]]},
+	],
+	easy_armory_armor = [
+		{code = 'armor', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 3], ['hard',1]]},
+	],
+	
+	medium_armory_weapon = [
+		{code = 'weapon', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',2], ['medium', 10], ['hard',3]]},
+	],
+	medium_armory_armor = [
+		{code = 'armor', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',2], ['medium', 10], ['hard',3]]},
+	],
+	
 	easy_prisoner_reward_item = [
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',10], ['medium', 5]]},
 	],
@@ -1018,6 +1032,11 @@ var locks_data = { #makes locks to lockpick for related chests
 	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1]], difficulty = [10,25]},
 	
+	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
+	easy_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
+	
+	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
+	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	
 	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
