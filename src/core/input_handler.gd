@@ -857,6 +857,9 @@ func combat_defeat():
 			ResourceScripts.game_party.characters[active_location.group[i]].hp = 1
 			ResourceScripts.game_party.characters[active_location.group[i]].defeated = false
 			ResourceScripts.game_party.characters[active_location.group[i]].is_active = true
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
+			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
 	get_spec_node(input_handler.NODE_DIALOGUE).close()
 	if exploration_node != null && active_location.has('progress'):
 		exploration_node.enter_level(globals.current_level)
