@@ -503,7 +503,7 @@ func killed():
 	characters_pool.call_deferred('cleanup')
 	input_handler.update_slave_list()
 
-func common_effect(i):
+func affect_char(i):
 	match i.type:
 		'damage':
 			deal_damage(i.value)

@@ -298,6 +298,9 @@ func TextEncoder(text, node = null):
 				'random_chat':
 					var character = input_handler.scene_characters[int(data[1])]
 					originaltext = character.translate(input_handler.get_random_chat_line(character, originaltext))
+				'random_chat_active':
+					var character = input_handler.active_character
+					originaltext = character.translate(input_handler.get_random_chat_line(character, originaltext))
 				'custom_text_function':
 					originaltext = originaltext + ResourceScripts.custom_text.get_custom_text(data[1])
 		
@@ -1054,7 +1057,7 @@ func common_effects(effects):
 			'active_character_switch':
 				input_handler.active_character = input_handler.scene_characters[i.value]
 			'affect_active_character':
-				input_handler.active_character.common_effect(i)
+				input_handler.active_character.affect_char(i)
 			'make_loot':
 				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
 			'open_loot':
@@ -1138,7 +1141,7 @@ func common_effects(effects):
 							req.completed = true
 			'affect_active_party':
 				for k in input_handler.get_active_party():
-					k.common_effect(i)
+					k.affect_char(i)
 
 func checkreqs(array):
 	var check = true

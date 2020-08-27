@@ -428,7 +428,7 @@ func victory():
 func defeat():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	play_animation("defeat")
-	input_handler.SetMusic("combat_defeat")
+	input_handler.PlaySound("combat_defeat")
 	yield(get_tree().create_timer(3), "timeout")
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')

@@ -50,7 +50,7 @@ outline_color = Color( 0.976471, 0.964706, 0.45098, 1 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=6]
-length = 3.0
+length = 6.5
 step = 0.0333333
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect:rect_size")
@@ -59,7 +59,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.233333, 2.76667, 3 ),
+"times": PoolRealArray( 0, 0.233333, 5.709, 5.94 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 688, 40 ), Vector2( 688, 40 ), Vector2( 688, 40 ), Vector2( 688, 40 ) ]
@@ -71,7 +71,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.233333, 2.76667, 3 ),
+"times": PoolRealArray( 0, 0.233333, 5.709, 5.94 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
@@ -95,7 +95,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.233333, 0.6, 2.43333, 2.66667 ),
+"times": PoolRealArray( 0, 0.233333, 0.6, 5.379, 5.61 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 654.63, -75.1833 ), Vector2( 654.63, -75.1833 ), Vector2( 654.63, 113.766 ), Vector2( 654.63, 113.766 ), Vector2( 654.63, -75.1833 ) ]
@@ -107,7 +107,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.533333, 0.7, 2.3, 2.4 ),
+"times": PoolRealArray( 0, 0.533333, 0.7, 5.247, 5.346 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0 ) ]
@@ -143,7 +143,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.633333, 1.56667, 1.9 ),
+"times": PoolRealArray( 0, 0.633333, 1.56667, 4.851 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0 ) ]
@@ -155,7 +155,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.699999, 0.999999, 2.1, 2.2 ),
+"times": PoolRealArray( 0, 0.699999, 0.999999, 5.049, 5.148 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -167,7 +167,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.966666, 1.26667, 2.06667, 2.16666 ),
+"times": PoolRealArray( 0, 0.966666, 1.26667, 5.016, 5.115 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -179,7 +179,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0.233333, 0.599999, 2.43333, 2.66666 ),
+"times": PoolRealArray( 0.233333, 0.599999, 5.379, 5.61 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 90 ), Vector2( 0, -100 ), Vector2( 0, -100 ), Vector2( 0, 90 ) ]

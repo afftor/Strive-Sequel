@@ -175,6 +175,7 @@ func open_location(data):
 	Navigation.rect_position.x = 645
 	Navigation.rect_size.x = 1260
 	City.hide()
+	City.hide()
 	Hire.hide()
 #	$ServicePanel.hide()
 	QuestBoard.hide()
@@ -220,7 +221,11 @@ func build_location_group():
 	if active_location == null || !active_location.has("group"):
 		return
 	for i in positiondict:
-		if (active_location.group.has('pos' + str(i)) && (ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false)):
+		if (
+		active_location.group.has('pos' + str(i)) 
+		&& 
+		((ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false) || ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status('no_combat'))
+		) :
 			active_location.group.erase('pos' + str(i))
 			get_node(positiondict[i] + "/Image").dragdata = null
 			get_node(positiondict[i] + "/Image").texture = null
@@ -283,8 +288,6 @@ func build_location_group():
 	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
 	var char_array = input_handler.get_location_characters()
 	for i in char_array:
-#		var i = ResourceScripts.game_party.characters[id]
-#		if i.check_location(active_location.id, true):
 		counter += 1
 		newbutton = input_handler.DuplicateContainerTemplate(
 			$LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer
@@ -728,6 +731,9 @@ func slave_position_selected(pos, character):
 	if character == null:
 		active_location.group.erase(pos)
 		build_location_group()
+		return
+	if character.has_status('no_combat'):
+		input_handler.SystemMessage(character.translate("[name] has sustained a grave injury and is unable to participate in fights."))
 		return
 	character = character.id
 	var positiontaken = false

@@ -118,10 +118,7 @@ func open(scene, not_save = false):
 		scenetext += "\n\n" + text
 	
 	if scene.has("set_enemy"):
-		if scene.set_enemy == 'random_local_group':
-			dialogue_enemy = input_handler.weightedrandom(input_handler.active_location.enemies)
-		else:
-			dialogue_enemy = scene.set_enemy
+		dialogue_enemy = scene.set_enemy
 	var counter = 1
 	var options = scene.options
 	for i in options:
@@ -274,7 +271,7 @@ func lockpick_attempt(person):
 	if type == 'none':
 		lock = 0
 	elif type in ['mimic','mimic_erotic']:
-		lock = 1
+		lock = lock * randf()*2
 	var open = lockpickskill >= lock
 	if !type in ['none','mimic','mimic_erotic']:
 		person.add_stat('wits', rand_range(2,3))

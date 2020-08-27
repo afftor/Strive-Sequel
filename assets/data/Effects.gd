@@ -438,18 +438,18 @@ var effect_table = {
 		type = 'temp_s',
 		name = 'grave_injury',
 		tick_event = variables.TR_TICK,
-		duration = 36, 
+		duration = 72, 
 		stack = 1,
 		sub_effects = [],
 		tags = ['addition_rest_tick', 'no_combat'],# need to implement person.has_status('no_combat') check in exploration interface
 		atomic = [
-			{type = 'stat_add', stat = 'sex_skills', value = -50},
-			{type = 'stat_add_p', stat = 'productivity', value = -25},#or simply stat_add as productivity is measured in persents and '-25% productivity' can have both meanings
+			{type = 'stat_add', stat = 'sexuals_bonus', value = -50},
+			{type = 'stat_add_p', stat = 'productivity', value = -0.25},#or simply stat_add as productivity is measured in persents and '-25% productivity' can have both meanings
 		],
 		buffs = [
 			{#to fix
-				icon = "res://assets/images/iconsitems/food_old.png", 
-				description = "No food has been eaten: Exhaustion does not restore while resting.",
+				icon = "res://assets/images/iconsskills/icon_blood_explosion.png", 
+				description = "Grave Injury\nProductivity reduced by 25%%. Sexuals Bonus -50. Can't participate in Combat. ",
 				limit = 1,
 				t_name = 'grave_injury',
 #				mansion_only = true,
@@ -478,7 +478,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
-				description = "Efficiency increased",
+				description = "Efficiency increased by 50%%",
 				limit = 1,
 				t_name = 'discipline',
 				mansion_only = true,
@@ -1900,6 +1900,23 @@ var effect_table = {
 	e_t_hide = {
 		type = 'temp_s',
 		target = 'owner',
+		rem_event = [variables.TR_SKILL_FINISH, variables.TR_COMBAT_F, variables.TR_DMG],
+		stack = 1,
+		name = 'hide',
+		tags = ['buff', 'hide'],
+		atomic = [],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/icon_eyes.png", 
+				description = "Hidden",
+				t_name = 'hide'
+			}
+		],
+		sub_effects = [],
+	},
+	e_t_hide2 = {
+		type = 'temp_s',
+		target = 'target',
 		rem_event = [variables.TR_SKILL_FINISH, variables.TR_COMBAT_F, variables.TR_DMG],
 		stack = 1,
 		name = 'hide',

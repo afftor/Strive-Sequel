@@ -2021,7 +2021,7 @@ var Skilllist = {
 		reqs = [{code = 'gear_equiped', param = 'geartype', value = 'heavy', check = false},
 			{code = 'gear_equiped', param = 'geartype', value = 'medium', check = false}],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_t_hide'})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_t_hide2'})], 
 		manacost = 5,
 		energycost = 0,
 		charges = 0,

@@ -196,7 +196,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, 205.002 )
+shader_param/pos = Vector2( 0, -300 )
 shader_param/mask = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -216,7 +216,6 @@ __meta__ = {
 anims/battle_start = SubResource( 1 )
 
 [node name="TextureRect6" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 self_modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 223.721
 margin_top = 247.521
@@ -228,7 +227,6 @@ __meta__ = {
 }
 
 [node name="TextureRect5" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 407.775
 margin_top = 239.588
 margin_right = 1514.78
@@ -239,7 +237,6 @@ __meta__ = {
 }
 
 [node name="TextureRect7" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
@@ -249,12 +246,10 @@ __meta__ = {
 
 [node name="dagger" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 845.404
-margin_top = 250.321
-margin_right = 1250.43
-margin_bottom = 690.321
-rect_rotation = 77.5001
-rect_scale = Vector2( 1.14545, 1.14545 )
+margin_left = 798.278
+margin_top = 255.921
+margin_right = 1203.3
+margin_bottom = 695.921
 rect_pivot_offset = Vector2( 367.667, 404.987 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -273,12 +268,10 @@ __meta__ = {
 
 [node name="dagger2" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 662.456
-margin_top = 250.152
-margin_right = 1067.46
-margin_bottom = 690.152
-rect_rotation = -77.5001
-rect_scale = Vector2( 1.14545, 1.14545 )
+margin_left = 718.25
+margin_top = 255.921
+margin_right = 1123.25
+margin_bottom = 695.921
 rect_pivot_offset = Vector2( 40.4009, 402.308 )
 texture = ExtResource( 4 )
 flip_h = true

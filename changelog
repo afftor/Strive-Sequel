@@ -1,8 +1,17 @@
-Drows have been renamed to dark elves
+Added multiple GUI animations to some places
+Added new random events: New chest lock type traps, mimics, and more
 Kobold females now generate with smaller breast size
 Trap events now deal percent damage
+Drows have been renamed to dark elves
 Escape chance is now present and depends on charcter's authority and obedience (can escape if defiant and obdience < 15). Chance is based on timid factor
+Food starvation debuff reworked
+Defeat in combat now applies debuff preventing from participating in combat for 3 days (ticks faster when using rest)
+Travel menu opens locations by default
+Fixed craft menu opening on smithing even if its unlocked
+Fixed master character 
 Fixed inactive enemies not being deleted properly bloating file size
+Fixed buffs not displaying in slave info
+Fixed hp/mp not displaying in dungeon locations
 0.3.0e
 Multiple fixes to tasks and travelling
 Fixed some path issues for linux/mac users (thanks to lowtech)

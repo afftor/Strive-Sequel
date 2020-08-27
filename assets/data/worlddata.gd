@@ -1014,7 +1014,7 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3','cave_4','cave_5'],
 		enemyarray =  [["rats_easy", 0.5],['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
 		final_enemy = [['bandits_easy_boss',1]], final_enemy_type = 'character', final_enemy_class = ['combat'],
-		eventarray = [['dungeon_find_chest_easy', 1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
+		eventarray = [['dungeon_find_chest_easy', 1]],#[['dungeon_find_armory_easy',1],['event_trap_easy', 1],['event_dungeon_prisoner',1]], 
 		levels = [2,3], 
 		resources = ['cloth','leather','iron','wood','clothsilk'],
 		gatherable_resources = {number = [1,3], pool = {wood = [25,40], stone = [30,50], iron = [20,30]}},

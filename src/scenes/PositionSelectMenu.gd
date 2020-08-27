@@ -36,6 +36,9 @@ func slave_position_selected(character):
 		active_location.group.erase(pos)
 		build_location_group()
 		return
+	if character.has_status('no_combat'):
+		input_handler.SystemMessage(character.translate("[name] has sustained a grave injury and is unable to participate in fights."))
+		return
 	character = character.id
 	var positiontaken = false
 	var oldheroposition = null
@@ -71,4 +74,7 @@ func start_combat():
 		input_handler.SystemMessage("Select at least 1 character to fight. ")
 		return
 	hide()
-	globals.StartCombat(globals.current_enemy_group)
+	if globals.current_enemy_group == 'random_local_group':
+		globals.StartAreaCombat()
+	else:
+		globals.StartCombat(globals.current_enemy_group)
