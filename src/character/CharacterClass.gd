@@ -488,8 +488,6 @@ func death():
 	if displaynode != null:
 		displaynode.defeat()
 	#clean_effects()
-	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-	apply_effect(effects_pool.add_effect(eff))
 #	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
 #		is_active = false
 #		print('warning! char died outside combat')
@@ -504,6 +502,22 @@ func killed():
 	ResourceScripts.game_party.character_order.erase(id)
 	characters_pool.call_deferred('cleanup')
 	input_handler.update_slave_list()
+
+func common_effect(i):
+	match i.type:
+		'damage':
+			deal_damage(i.value)
+		'damage_percent':
+			deal_damage((i.value / 100) * get_stat('hpmax'))
+		'damage_mana_percent':
+			mana_update(-i.value * get_stat('maxmp'))
+		'stat', 'stat_add':
+			add_stat(i.stat, i.value)
+		'stat_set':
+			set_stat(i.stat, i.value)
+		'effect':
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[i.value])
+			apply_effect(effects_pool.add_effect(eff))
 
 func process_check(check): #compatibility stub
 	return checkreqs(check) 
