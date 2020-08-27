@@ -311,10 +311,10 @@ func test_mode():
 		character.unlock_class("director")
 		character.unlock_class("trainer")
 		character.unlock_class("foreman")
-		character.unlock_class("smith")
-		# character.travel.location = 'L4'
-		# character.travel.area = 'plains'
-		variables.dungeon_encounter_chance = 0.2
+		character.unlock_class("engineer")
+		character.travel.location = 'L4'
+		character.travel.area = 'plains'
+		variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
@@ -552,7 +552,7 @@ func test_mode():
 			if c.get_location() == "mansion": c.travel.location = "Aliron"
 
 	input_handler.ActivateTutorial("introduction")
-	input_handler.interactive_message('daisy_meet', '', {})
+	#input_handler.interactive_message('daisy_meet', '', {})
 
 
 

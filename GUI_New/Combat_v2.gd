@@ -339,6 +339,8 @@ func victory():
 		if tchar.hp <= 0:
 			tchar.hp = 1
 			tchar.defeated = false
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+			tchar.apply_effect(effects_pool.add_effect(eff))
 #		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 #		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)

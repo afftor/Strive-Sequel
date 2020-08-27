@@ -213,6 +213,14 @@ var traits = {
 		icon = null,
 		effects = [],
 	},
+	trap_analyze = { #allows to detect traps on random events
+		code = 'trap_analyze',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = [],
+	},
 	magic_tools = {
 		code = 'magic_tools',
 		name = '',

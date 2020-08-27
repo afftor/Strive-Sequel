@@ -1054,15 +1054,7 @@ func common_effects(effects):
 			'active_character_switch':
 				input_handler.active_character = input_handler.scene_characters[i.value]
 			'affect_active_character':
-				match i.type:
-					'damage':
-						input_handler.active_character.deal_damage(i.value)
-					'damage_percent':
-						input_handler.active_character.deal_damage((i.value/100)*input_handler.active_character.get_stat('hpmax'))
-					'stat', 'stat_add':
-						input_handler.active_character.add_stat(i.stat, i.value)
-					'stat_set':
-						input_handler.active_character.set_stat(i.stat, i.value)
+				input_handler.active_character.common_effect(i)
 			'make_loot':
 				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
 			'open_loot':
@@ -1144,7 +1136,9 @@ func common_effects(effects):
 					for req in quest.requirements:
 						if req.code in ['complete_location','complete_dungeon'] && req.area == input_handler.active_area.code && req.location == input_handler.active_location.id:
 							req.completed = true
-						
+			'affect_active_party':
+				for k in input_handler.get_active_party():
+					k.common_effect(i)
 
 func checkreqs(array):
 	var check = true

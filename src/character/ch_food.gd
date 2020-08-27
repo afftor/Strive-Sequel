@@ -90,6 +90,4 @@ func get_food():
 		parent.apply_effect(effects_pool.add_effect(eff))
 		starvation = true
 		
-		parent.add_stat('obedience', -75)
-		parent.hp -= 25
-		globals.text_log_add('food', parent.get_short_name() + ": has no food.")
+		globals.text_log_add('food', parent.get_short_name() + ": not enough food. Authority reduced.")

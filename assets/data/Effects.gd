@@ -396,7 +396,7 @@ var effect_table = {
 		}],
 		tags = [],#['addition_rest_tick'],
 		atomic = [
-			{type = 'stat_add_p', stat = 'productivity', value = -50}, #or simply stat_add as productivity is measured in persents and '-50% productivity' can have both meanings
+			{type = 'stat_add_p', stat = 'productivity', value = -0.5}, #or simply stat_add as productivity is measured in persents and '-50% productivity' can have both meanings
 			#depending on displaying purpose use this
 #			{type = 'stat_add_p', stat = 'atk', value = -50},
 #			{type = 'stat_add_p', stat = 'matk', value = -50},
@@ -406,7 +406,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/food_old.png", 
-				description = "No food has been eaten: Exhaustion does not restore while resting.",#to fix
+				description = "Starvation\nProductivity reduced by 50%\n Damage reduced by 50%",
 				limit = 1,
 				t_name = 'starvation',
 #				mansion_only = true,

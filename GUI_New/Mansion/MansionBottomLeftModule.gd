@@ -19,7 +19,6 @@ func _button_clicked(state, button):
 func open_inventory():
 	if get_parent().active_person == null:
 		var person = ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]]
-		print(person)
 		get_parent().set_active_person(person)
 	GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
 	GUIWorld.set_current_scene(GUIWorld.gui_data["INVENTORY"].main_module)

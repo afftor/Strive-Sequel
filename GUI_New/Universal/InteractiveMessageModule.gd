@@ -142,6 +142,8 @@ func open(scene, not_save = false):
 		
 		if i.has('select_person'):
 			newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+		elif i.code == 'chest_mimic_force_open':
+			newbutton.connect("pressed",self,'chest_mimic_force_open')
 		elif scene.tags.has('linked_event') && !i.code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
 			var event_type = 'story_event'
 			if scenedata.scenedict[i.code].has('default_event_type'):
@@ -205,13 +207,20 @@ func dialogue_next(code, argument):
 	input_handler.interactive_message_follow(code, '', '')
 
 
+func chest_mimic_force_open():
+	var chest_data = input_handler.scene_loot
+	match chest_data.lock.type:
+		'mimic':
+			input_handler.interactive_message_follow("chest_is_mimic_trapped", "story_event", {})
+		'mimic_erotic':
+			input_handler.interactive_message_follow("chest_is_erotic_mimic_trapped", "story_event", {})
 
 func add_chest_options(scene):
 	var chest_data = input_handler.scene_loot
 	var text = ""
 	var engineer
 	for i in input_handler.get_location_characters():
-		if i.has_profession("engineer"):
+		if i.check_trait("trap_analyze"):
 			engineer = i
 			break
 	
@@ -243,10 +252,7 @@ func add_chest_options(scene):
 #		text += "\nDifficulty: " + ResourceScripts.custom_text.lock_difficulty(chest_data.lock.difficulty)
 	
 	scene.text.append({text = text, reqs = []})
-	if chest_data.lock.type == 'none':
-		scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUECHESTOPEN"})
-	else:
-		scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
 
 func add_location_resource_info():
 	var text = '\nAfter defeating last enemies your party investigated the location and found a resources you can harvest:'
@@ -258,14 +264,33 @@ func add_location_resource_info():
 
 func lockpick_attempt(person):
 	var lock = input_handler.scene_loot.lock.difficulty
+	var type = input_handler.scene_loot.lock.type
 	var lockpickskill = person.lockpick_chance()
+	if type == 'none':
+		lock = 0
+	elif type in ['mimic','mimic_erotic']:
+		lock = 1
 	var open = lockpickskill >= lock
+	if !type in ['none','mimic','mimic_erotic']:
+		person.add_stat('wits', rand_range(2,3))
 	
-	if open == true:
+	if type in ['mimic','mimic_erotic'] && open == true:
+		input_handler.interactive_message_follow("chest_is_mimic_discovered", "story_event", {})
+	elif type in ['mimic']:
+		input_handler.interactive_message_follow("chest_is_mimic_trapped", "story_event", {})
+	elif type in ["mimic_erotic"]:
+		input_handler.interactive_message_follow("chest_is_erotic_mimic_trapped", "story_event", {})
+	elif open == true:
 		input_handler.interactive_message_follow("lockpick_chest_success", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_success')
 	else:
-		input_handler.interactive_message_follow("lockpick_chest_failure", "story_event", {})
+		match type:
+			'normal':
+				input_handler.interactive_message_follow("lockpick_chest_failure", "story_event", {})
+			'bomb':
+				input_handler.interactive_message_follow("lockpick_chest_bomb_failure", "story_event", {})
+			'gas':
+				input_handler.interactive_message_follow("lockpick_chest_gas_failure", "story_event", {})
 		input_handler.add_random_chat_message(person, 'lockpick_failure')
 
 func select_person_for_next_event(code):

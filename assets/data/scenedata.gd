@@ -16,7 +16,7 @@ var scenedict = {
 	troll_skirmish_start = {text = tr("DIALOGUETROLL_SKIRMISH_START"), set_enemy = 'troll_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
 	skirmish_complete = {
-		text = [{text = "Your group have completed the task and returns to mansion. ", reqs = []}], 
+		text = [{text = "DIALOGUEMISSIONCOMPLETE", reqs = []}], 
 		image = 'dungeonclear',
 		tags = [],
 		options = [
@@ -62,22 +62,74 @@ var scenedict = {
 	]
 	},
 	
-	lockpick_chest_failure = {
-		text = 'DIALOGUECHESTLOCKPICKFAILURE',
-		tags = ['active_character_translate'], 
-		image = 'chest',
-		bonus_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 2}],
-		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
-		],
-	},
 	lockpick_chest_success = {
 		text = 'DIALOGUECHESTLOCKPICKSUCCESS',
 		tags = ['active_character_translate'], 
 		image = 'chest',
-		bonus_effects = [{code = 'affect_active_character', type = 'stat', stat = 'wits', value = 2}],
 		options = [
 		{code = 'open_chest', reqs = [], text = tr("DIALOGUECHESTOPEN")}
+		],
+	},
+	lockpick_chest_failure = {
+		text = 'DIALOGUECHESTLOCKPICKFAILURE',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		],
+	},
+	lockpick_chest_bomb_failure = {
+		text = 'DIALOGUECHESTLOCKPICKBOMBFAILURE',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = 35}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		],
+	},
+	lockpick_chest_gas_failure = {
+		text = 'DIALOGUECHESTLOCKPICKGASFAILURE',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		bonus_effects = [{code = "affect_active_character", type = 'damage_percent', value = 25},{code = "affect_active_character", type = 'damage_mana_percent', value = 75}],
+		options = [
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		],
+	},
+	
+	
+	chest_is_mimic_discovered = {
+		text = 'DIALOGUECHESTMIMICDISCOVERED',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		set_enemy = 'mimic',
+		options = [
+		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
+		{code = 'chest_mimic_force_open', reqs = [], text = "DIALOGUEMIMICOPENANYWAY"},
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		],
+	},
+	
+	
+	chest_is_mimic_trapped = {
+		text = 'DIALOGUECHESTMIMICTRAPPED',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		set_enemy = 'mimic',
+		options = [
+		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'kill'}]}
+		],
+	},
+	
+	chest_is_erotic_mimic_trapped = {
+		text = 'DIALOGUECHESTEROTICMIMICTRAPPED',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		set_enemy = 'mimic',
+		options = [
+		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'kill'}]}
 		],
 	},
 	
@@ -87,8 +139,16 @@ var scenedict = {
 		image = 'chest', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 		options = [
-		#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		]
+	},
+	dungeon_find_chest_medium = {
+		text = tr("DIALOGUEDUNGEONCHEST"), 
+		tags = ['locked_chest'],
+		image = 'chest', 
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5]]}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
 		]
 	},
 	quest_accept = {
@@ -96,7 +156,7 @@ var scenedict = {
 		image = '',
 		tags = [], 
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		{code = 'close', reqs = [], text = "DIALOGUECLOSE"},
 		],
 	},
 	
@@ -105,18 +165,18 @@ var scenedict = {
 		image = 'locationpurchase',
 		tags = [], 
 		options = [
-		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		{code = 'close', reqs = [], text = "DIALOGUECLOSE"},
 		],
 	},
 	
-	event_good_recruit = {text = tr("DIALOGUEEVENTGOODRECRUIT"), 
+	event_good_recruit = {text = "DIALOGUEEVENTGOODRECRUIT", 
 	args = {},
 	tags = ['good','scene_character_translate'],
 	default_event_type = "character_event",
 	image = 'recruit', 
 	common_effects = [{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {}}]}],
 	options = [
-	{code = 'recruit', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION")},
+	{code = 'recruit', reqs = [], text = "DIALOGUERECRUITCHARACTEROPTION"},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
@@ -390,7 +450,7 @@ var scenedict = {
 		variations = [
 			{reqs = [{type = 'active_character_checks', value = [{code = 'random', value = [['self.physics_factor','*8'],"+", ['self.physics', '/3']]}]},
 			],
-			text = tr("DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES"),
+			text = "DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES",
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['linked_event','active_character_translate'],
 			image = 'rebels_furry',
@@ -399,7 +459,7 @@ var scenedict = {
 				]
 			},
 			{reqs = [],
-			text = tr("DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE"),
+			text = "DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE",
 			image = 'rebels_furry',
 			winscene = 'event_person_acquired',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 2}],
@@ -412,32 +472,32 @@ var scenedict = {
 		],
 	},
 	
-	event_nothing_found = {text = tr("DIALOGUEEVENTNOTHING"), 
+	event_nothing_found = {text = "DIALOGUEEVENTNOTHING", 
 	tags = ['good'],
 	default_event_type = "location",
 	image = 'noevent', 
 	options = [
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
 	]
 	},
 	
 	#items with options
 	
-	minorus_potion_select = {text = tr("DIALOGUEEVENTMINORUSSELECT"), 
+	minorus_potion_select = {text = "DIALOGUEEVENTMINORUSSELECT", 
 	tags = ['custom_effect','active_character_translate'],
 	image = 'pot', 
 	options = [
-	{code = 'minorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
-	{code = 'minorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
-	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
-	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
+	{code = 'minorus_tits', reqs = [], text = "DIALOGUETITSSELECT"},
+	{code = 'minorus_ass', reqs = [], text = "DIALOGUEASSSELECT"},
+	{code = 'minorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}]}], text = "DIALOGUEBALLSSELECT"},
+	{code = 'minorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = "DIALOGUEPENISSELECT"},
 	]
 	},
-	majorus_potion_select = {text = tr("DIALOGUEEVENTMAJORUSSELECT"), 
+	majorus_potion_select = {text = "DIALOGUEEVENTMAJORUSSELECT", 
 	tags = ['custom_effect','active_character_translate'],
 	image = 'pot', 
 	options = [
-	{code = 'majorus_tits', reqs = [], text = tr("DIALOGUETITSSELECT")},
+	{code = 'majorus_tits', reqs = [], text = "DIALOGUETITSSELECT"},
 	{code = 'majorus_ass', reqs = [], text = tr("DIALOGUEASSSELECT")},
 	{code = 'majorus_balls', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'balls_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEBALLSSELECT")},
 	{code = 'majorus_penis', reqs = [{type = 'active_character_checks', value = [{code = 'bodypart', part = 'penis_size', operant = 'neq', value = ''}]}], text = tr("DIALOGUEPENISSELECT")},
@@ -1044,7 +1104,7 @@ var quests = {
 		code = 'workers_election_quest',
 		stages = {
 			start = {code = 'start', name = "Missing Payment", descript = "Sigmund, from Worker's Guild asked me to visit Duncan from Fighters Guild and retrieve the payment from previous shipment."},
-			stage1 = {code = 'stage1', name = "Missing Payment", descript = "Duncan told me, that Reim was the courier, who should've brough Workers their payment. I should search for him at Aliron and figure out what happened."},
+			stage1 = {code = 'stage1', name = "Missing Payment", descript = "Duncan told me that Reim was the courier, who should've brought Workers their payment. I should search for him at Aliron and figure out what happened."},
 			stage2 = {code = 'stage2', name = "Missing Payment", descript = "Reim refused to complete his duty and asked me to pay for him. I should return to Duncan."},
 			stage3 = {code = 'stage3', name = "Missing Payment", descript = "I've resolved the payment issue with Fighters Guild and it's time to return to Sigmund now.."},
 		},
