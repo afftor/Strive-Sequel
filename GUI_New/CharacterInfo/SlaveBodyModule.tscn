@@ -52,6 +52,7 @@ __meta__ = {
 
 [node name="Button" type="TextureRect" parent="buffscontainer"]
 visible = false
+show_behind_parent = true
 margin_right = 100.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 100, 100 )

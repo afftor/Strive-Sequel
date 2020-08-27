@@ -23,6 +23,10 @@ var music = {
 	
 	intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),
+	combat_defeat = load("res://assets/sounds/music/defeated.wav"),
+	class_aquired = load("res://assets/sounds/music/class_aquired.wav"),
+	quest_completed = load("res://assets/sounds/music/task_completed.wav"),
+	quest_aquired = load("res://assets/sounds/music/task_aquired.wav"),
 	
 	
 }

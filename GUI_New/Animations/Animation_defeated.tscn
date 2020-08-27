@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Defeated/defeated_example.jpg" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Defeated/defeated_type.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Defeated/effect_red.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Defeated/effect_black2.png" type="Texture" id=5]
@@ -9,7 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Defeated/mask_defeated.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Defeated"
+resource_name = "defeated"
 length = 3.33333
 step = 0.0333333
 tracks/0/type = "value"
@@ -112,28 +111,19 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, -100 )
+shader_param/pos = Vector2( 0, 79.375 )
 shader_param/mask = ExtResource( 8 )
 
 [node name="Control" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 960.139 ]
 }
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/Defeated = SubResource( 1 )
-
-[node name="TextureRect12" type="TextureRect" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.803922 )
-margin_right = 1920.0
-margin_bottom = 1080.0
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/defeated = SubResource( 1 )
 
 [node name="TextureRect14" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -182,12 +172,14 @@ __meta__ = {
 
 [node name="TextureRect13" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 708.224
-margin_top = 189.85
-margin_right = 1223.22
-margin_bottom = 255.85
+margin_left = 702.873
+margin_top = 181.647
+margin_right = 1217.87
+margin_bottom = 247.647
+rect_scale = Vector2( 0.846666, 0.846666 )
 rect_pivot_offset = Vector2( 256.937, 32.82 )
 texture = ExtResource( 2 )
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

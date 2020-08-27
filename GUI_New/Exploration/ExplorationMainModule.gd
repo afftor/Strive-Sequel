@@ -262,11 +262,12 @@ func build_location_group():
 				'hpmax'
 			)
 			get_node(positiondict[i] + "/Image/TextureRect/hp").value = character.hp
+			get_node(positiondict[i] + "/Image/TextureRect/hp/Labelhp").text = str(round(character.hp)) + "/" + str(round(character.get_stat('hpmax')))
 			get_node(positiondict[i] + "/Image/TextureRect/mp").max_value = character.get_stat(
 				'mpmax'
 			)
 			get_node(positiondict[i] + "/Image/TextureRect/mp").value = character.mp
-
+			get_node(positiondict[i] + "/Image/TextureRect/mp/Labelmp").text = str(round(character.mp)) + "/" + str(round(character.get_stat('mpmax')))
 			get_node(positiondict[i] + "/Image").dragdata = character
 			get_node(positiondict[i] + "/Image/Label").text = character.get_short_name()
 			# get_node(positiondict[i]).self_modulate.a = 0

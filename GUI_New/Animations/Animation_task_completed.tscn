@@ -1,17 +1,17 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/panel_complete.png" type="Texture" id=2]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/Task completed example.jpg" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/wing.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/filler_splashes_acquired.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/light_mask.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/mask_splashes_acquired.png" type="Texture" id=7]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/mask_wings.png" type="Texture" id=8]
-[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Task completed/glow.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/panel_complete.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/Task completed example.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/wing.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/filler_splashes_acquired.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/light_mask.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/mask_splashes_acquired.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/mask_wings.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/TaskCompleted/glow.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
-resource_name = "task completed"
+resource_name = "task_completed"
 length = 3.66667
 step = 0.0333333
 tracks/0/type = "value"
@@ -162,12 +162,12 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, -67.9976 )
+shader_param/pos = Vector2( 0, -200 )
 shader_param/mask = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, -74.9975 )
+shader_param/pos = Vector2( 0, -210 )
 shader_param/mask = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -184,11 +184,13 @@ font_data = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 288.253 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 959.868 ]
 }
 
-[node name="AnimationPlayer5" type="AnimationPlayer" parent="."]
-"anims/task completed" = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/task_completed = SubResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ 959.849 ]
 }
@@ -214,6 +216,7 @@ __meta__ = {
 }
 
 [node name="TextureRect5" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 537.0
 margin_top = 27.7148
 margin_right = 1383.0
@@ -225,10 +228,12 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-margin_left = 1018.69
-margin_top = 274.792
-margin_right = 1134.69
-margin_bottom = 524.792
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 1257.36
+margin_top = 38.2929
+margin_right = 1373.36
+margin_bottom = 288.293
+rect_rotation = -90.0
 rect_pivot_offset = Vector2( 0.0506592, 236.723 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -236,10 +241,12 @@ __meta__ = {
 }
 
 [node name="TextureRect4" type="TextureRect" parent="."]
-margin_left = 902.812
-margin_top = 160.974
-margin_right = 1018.81
-margin_bottom = 410.974
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 546.775
+margin_top = 38.0694
+margin_right = 662.775
+margin_bottom = 288.07
+rect_rotation = 90.0
 rect_pivot_offset = Vector2( 115.886, 239.125 )
 texture = ExtResource( 4 )
 flip_h = true
@@ -248,11 +255,12 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 960.709
+margin_left = 660.301
 margin_top = 84.9359
-margin_right = 1560.71
+margin_right = 1260.3
 margin_bottom = 284.936
 rect_min_size = Vector2( 1, 0 )
+rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 300.81, 98.9762 )
 texture = ExtResource( 2 )
 stretch_mode = 6
@@ -261,6 +269,7 @@ __meta__ = {
 }
 
 [node name="TextureRect6" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 4 )
 margin_left = 553.0
 margin_top = 40.0
@@ -272,6 +281,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 764.814
 margin_top = 108.036
 margin_right = 1153.81
@@ -286,6 +296,7 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 796.707
 margin_top = 190.11
 margin_right = 1124.71

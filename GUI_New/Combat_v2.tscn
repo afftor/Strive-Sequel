@@ -812,6 +812,7 @@ texture_hover = ExtResource( 40 )
 texture_disabled = ExtResource( 4 )
 
 [node name="Rewards" type="TextureRect" parent="."]
+visible = false
 margin_left = 537.95
 margin_top = 80.0
 margin_right = 1417.95

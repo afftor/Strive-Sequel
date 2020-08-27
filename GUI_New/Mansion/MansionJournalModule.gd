@@ -250,8 +250,24 @@ func CompleteReqs():
 	globals.text_log_add("quest", "Quest Complete: " + selectedquest.name)
 	Reward()
 
+
+func play_animation():
+	input_handler.SetMusic("quest_completed")
+	var anim_scene
+	anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
+	anim_scene.get_node("AnimationPlayer").play("task_completed")
+	anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
+	yield(get_tree().create_timer(4), "timeout")
+	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	anim_scene.queue_free()
+	input_handler.SetMusic("mansion1")
+
+
+
+
 func Reward():
-	input_handler.PlaySound("questcomplete")
+	# input_handler.PlaySound("questcomplete")
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
@@ -282,6 +298,7 @@ func Reward():
 		if counter == false:
 			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
 	
+	play_animation()
 	open()
 
 func CancelQuest():
