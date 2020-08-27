@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/class_aquired.wav-53e7d53ef40e49ba0d26603c0d93f440.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/class_aquired.wav"
+dest_files=[ "res://.import/class_aquired.wav-53e7d53ef40e49ba0d26603c0d93f440.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -143,6 +143,7 @@ func update_class_buttons(classcode):
 
 
 func unlock_class():
+	play_animation()
 	$ClassPanel.hide()
 	get_parent().submodules.clear()
 	yield(get_tree().create_timer(0.2),"timeout")
@@ -156,3 +157,17 @@ func unlock_class():
 	input_handler.PlaySound("ding")
 	# input_handler.update_slave_list()
 	get_parent().BodyModule.update()
+
+
+func play_animation():
+	input_handler.SetMusic("class_aquired")
+	var anim_scene
+	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
+	anim_scene.get_node("AnimationPlayer").play("class_achieved")
+	anim_scene.get_node("TextureRect").texture = classesdata.professions[current_class].icon
+	anim_scene.get_node("Label2").text = current_class.capitalize()
+	yield(get_tree().create_timer(1.5), "timeout")
+	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	anim_scene.queue_free()
+	input_handler.SetMusic("mansion1")

@@ -79,7 +79,11 @@ onready var node_data = {
 	input_handler.NODE_MANSION_NEW : {name = 'mansion', mode = 'scene', scene = preload("res://GUI_New/Mansion/MansionMainModule.tscn") },
 	input_handler.NODE_GUI_WORLD : {name = 'GUIWorld', mode = 'scene', scene = preload("res://GUI_New/GUIWorld.tscn") },
 	#Animations
-	input_handler.ANIM_TASK_AQUARED : {name = 'ANIM_Task_aquared', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_task_aquired.tscn") },
+	input_handler.ANIM_TASK_AQUARED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_task_aquired.tscn") },
+	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_battle_start.tscn") },
+	input_handler.ANIM_BATTLE_DEFEAT : {name = 'ANIMBattleDefeat', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_defeated.tscn") },
+	input_handler.ANIM_CLASS_ACHIEVED : {name = 'ANIMClassAchieved', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_class_achieved.tscn") },
+	input_handler.ANIM_TASK_COMPLETED : {name = 'ANIMTaskCompleted', mode = 'scene', scene = preload("res://GUI_New/Animations/Animation_task_completed.tscn") },
 }
 
 

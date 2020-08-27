@@ -186,11 +186,17 @@ func accept_quest():
 	is_quest_board_opened = false
 	play_animation()
 	quest_board()
+	var active_location = get_parent().active_location
+	if active_location.has('bgm'):
+		input_handler.SetMusic(active_location.bgm)
 
 
 
 func play_animation():
+	input_handler.SetMusic("quest_aquired")
 	var anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
 	anim_scene.get_node("SelectedQuest").text = get_parent().selectedquest.name
 	anim_scene.get_node("AnimationPlayer").play("task_aquared")
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(4), "timeout")
+	anim_scene.queue_free()
+

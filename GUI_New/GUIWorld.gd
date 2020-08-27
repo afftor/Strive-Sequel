@@ -525,8 +525,8 @@ func test_mode():
 		tmp.anal = 90
 		tmp.petting = 100
 		#character.set_stat('sex_skills', tmp)
-		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
-		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		# input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
+		# input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
