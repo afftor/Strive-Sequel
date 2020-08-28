@@ -53,7 +53,7 @@ func base_exp_set(value):
 	xp_module.base_exp = value
 
 func get_stat(statname, ref = false):
-	if statname in ['hp', 'mp', 'shield']:
+	if statname in ['hp', 'mp', 'shield', 'taunt']:
 		return get(statname)
 	if statname == 'base_exp':
 		return xp_module.base_exp
@@ -62,7 +62,7 @@ func get_stat(statname, ref = false):
 	return statlist.get_stat(statname, ref)
 
 func set_stat(stat, value):
-	if stat in ['hp', 'mp', 'shield']:
+	if stat in ['hp', 'mp', 'shield', 'taunt']:
 		set(stat, value)
 		return
 	if stat == 'base_exp':
@@ -828,8 +828,8 @@ func apply_atomic(template):
 			mana_update(template.value)
 			pass
 		'stat_set', 'stat_set_revert': #use this on direct-accessed stats
-			template.buffer = get(template.stat)
-			set(template.stat, template.value)
+			template.buffer = get_stat(template.stat, true)
+			set_stat(template.stat, template.value)
 		'stat_add':
 			add_stat(template.stat, template.value)
 		'stat_mul':#do not mix add_p and mul for the sake of logic
@@ -885,7 +885,7 @@ func apply_atomic(template):
 func remove_atomic(template):
 	match template.type:
 		'stat_set_revert':
-			set(template.stat, template.buffer)
+			set_stat(template.stat, template.buffer)
 		'stat_add':
 			add_stat(template.stat, template.value, true)
 		'stat_mul':
