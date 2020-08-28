@@ -1,5 +1,6 @@
 Added multiple GUI animations to some places
 Added new random events: New chest lock type traps, mimics, and more
+Main stats now grow slower at higher levels (starting at 40 base)
 Kobold females now generate with smaller breast size
 Trap events now deal percent damage
 Drows have been renamed to dark elves

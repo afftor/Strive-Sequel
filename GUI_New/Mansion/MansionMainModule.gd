@@ -360,12 +360,13 @@ func update_sex_date_buttons():
 	else:
 		SexSelect.get_node("SexButton").disabled = true
 	
-	SexSelect.get_node("DateButton").disabled = (sex_participants.size() > 1 
-												|| sex_participants.size() == 0 
-												|| sex_participants.has(ResourceScripts.game_party.get_master()) 
-												|| ResourceScripts.game_globals.daily_dates_left <= 0 
-												|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
-												)
+	SexSelect.get_node("DateButton").disabled = (
+		sex_participants.size() > 1 
+		|| sex_participants.size() == 0 
+		|| sex_participants.has(ResourceScripts.game_party.get_master()) 
+		|| ResourceScripts.game_globals.daily_dates_left <= 0 
+		|| ResourceScripts.game_party.get_master().travel.location != ResourceScripts.game_world.mansion_location
+	)
 
 func set_hovered_person(node, person):
 	hovered_person = person
@@ -379,7 +380,10 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
-	print(characters_pool.characters.size())
+	print(ResourceScripts.game_party.get_master().get_stat('physics'))
+	ResourceScripts.game_party.get_master().add_stat("physics",5)
+	print(ResourceScripts.game_party.get_master().get_stat('physics'))
+	#print(characters_pool.characters.size())
 	# print("LocaLinks:" +str(ResourceScripts.game_world.location_links))
 	# for person in ResourceScripts.game_party.characters.values():
 	# 	var loca = person.travel.location

@@ -310,7 +310,7 @@ func test_mode():
 		character.unlock_class("watchdog")
 		character.unlock_class("director")
 		character.unlock_class("trainer")
-		character.unlock_class("foreman")
+		character.unlock_class("thief")
 		character.unlock_class("engineer")
 		character.travel.location = 'L4'
 		character.travel.area = 'plains'
@@ -352,7 +352,7 @@ func test_mode():
 
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('HalfkinCat', 'male', 'random')
-		character.set_stat("penis_virgin", true)
+		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		character.statlist.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
