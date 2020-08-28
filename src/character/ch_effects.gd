@@ -91,19 +91,19 @@ func apply_effect(eff_id):
 	var obj = effects_pool.get_effect_by_id(eff_id)
 	match obj.template.type:
 		'static', 'c_static', 'dynamic':
-			if parent.is_koed(): return
+			if parent.is_koed() and !obj.tags.has('on_dead'): return
 			static_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = parent.id
 			obj.apply()
 		'trigger':
-			if parent.is_koed(): return
+			if parent.is_koed() and !obj.tags.has('on_dead'): return
 			triggered_effects.push_back(eff_id)
 			#obj.applied_pos = position
 			obj.applied_char = parent.id
 			obj.apply()
 		'temp_s','temp_p','temp_u':
-			if parent.is_koed(): return
+			if parent.is_koed() and !obj.tags.has('on_dead'): return
 			apply_temp_effect(eff_id)
 #		'area':
 #			if parent.is_coed(): return
