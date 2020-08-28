@@ -721,9 +721,23 @@ func advance():
 
 
 func StartCombat():
+	play_animation()
+	yield(get_tree().create_timer(1), "timeout")
+	ResourceScripts.core_animations.BlackScreenTransition(0.5)
+	yield(get_tree().create_timer(0.5), "timeout")
 	globals.current_level = current_level
 	globals.current_stage = current_stage
 	globals.StartCombat()
+
+
+func play_animation():
+	var anim_scene
+	anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
+	anim_scene.get_node("AnimationPlayer").play("battle_start")
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	anim_scene.queue_free()
 
 
 func slave_position_selected(pos, character):

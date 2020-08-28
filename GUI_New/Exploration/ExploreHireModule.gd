@@ -83,7 +83,7 @@ func hire():
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
-		# globals.connectslavetooltip(newbutton, tchar)
+		globals.connectslavetooltip(newbutton, tchar)
 	var person_id
 	if get_parent().active_faction.slaves != []:
 		person_id = get_parent().active_faction.slaves[0] 

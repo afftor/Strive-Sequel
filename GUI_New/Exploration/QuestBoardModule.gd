@@ -197,6 +197,6 @@ func play_animation():
 	var anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
 	anim_scene.get_node("SelectedQuest").text = get_parent().selectedquest.name
 	anim_scene.get_node("AnimationPlayer").play("task_aquared")
-	yield(get_tree().create_timer(6), "timeout")
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	anim_scene.queue_free()
 

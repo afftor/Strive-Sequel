@@ -46,7 +46,7 @@ func rebuild():
 		newbutton.parentnodearray = ResourceScripts.game_party.character_order
 		
 		newbutton.connect('pressed', get_parent(), 'set_active_person', [person])
-		newbutton.connect('gui_input', self, 'double_clicked')
+		newbutton.connect('gui_input', self, 'double_clicked', [newbutton])
 		newbutton.connect('mouse_entered', get_parent(), 'set_hovered_person', [newbutton, person])
 		newbutton.connect('mouse_exited', get_parent(), 'remove_hovered_person')
 		newbutton.get_node("job").connect("pressed", self, "open_job_panel", [person])
@@ -99,8 +99,10 @@ func is_in_area():
 	var in_area = $HoverArea.get_global_rect().has_point(get_global_mouse_position())
 	return in_area
 
-func double_clicked(event):
+func double_clicked(event, button):
 	if event is InputEventMouseButton and event.doubleclick:
+		if get_parent().active_person == null:
+			get_parent().set_active_person(button.get_meta("slave"))
 		get_parent().mansion_state = "char_info"
 
 

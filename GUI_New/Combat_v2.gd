@@ -109,23 +109,22 @@ func cheatvictory():
 
 func play_animation(anim):
 	var anim_scene
-	if anim == "start":
-		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
-		anim_scene.get_node("AnimationPlayer").play("battle_start")
-		yield(get_tree().create_timer(1.5), "timeout")
-	elif anim == "defeat":
+	if anim == "defeat":
+		input_handler.PlaySound("combat_defeat")
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
-		yield(get_tree().create_timer(1.5), "timeout")
-	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	anim_scene.queue_free()
+	elif anim == "defeat":
+		print("") # Here will be win animation
+	# yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+	# ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	# yield(get_tree().create_timer(0.5), 'timeout')
+	return anim_scene
+	# anim_scene.queue_free()
 
 
 
 func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', enemy_stats_mod = 1):
 	#$Background.texture = images.backgrounds[background]
-	play_animation("start")
 	if music == "default":
 		music = 'battle1'
 	hide()
@@ -433,19 +432,22 @@ func victory():
 
 func defeat():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
-	play_animation("defeat")
-	input_handler.PlaySound("combat_defeat")
-	yield(get_tree().create_timer(3), "timeout")
+	var anim_scene = play_animation("defeat")
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+
+
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
 	FinishCombat(false)
-	yield(get_tree().create_timer(0.5), 'timeout')
+	# yield(get_tree().create_timer(0.5), 'timeout')
 	var active_location = GUIWorld.gui_data.EXPLORATION.main_module.active_location
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
+	yield(get_tree().create_timer(0.5), "timeout")
 	hide()
+	anim_scene.queue_free()
 
 func player_turn(pos):
 	$Menu/Run.disabled = false
