@@ -176,6 +176,9 @@ func FinishCombat(victory = true):
 		#mb to change this part when dealing with captured enemies  
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.is_active = false
+	for p in playergroup.values():
+		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
+		#add permadeath check here
 	CombatAnimations.force_end()
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
@@ -281,6 +284,7 @@ func victory():
 	#on combat ends triggers
 	for p in playergroup.values():
 		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
+		#add permadeath check here
 	
 	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
 	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -351,8 +355,10 @@ func victory():
 		if tchar.hp <= 0:
 			tchar.hp = 1
 			tchar.defeated = false
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
-			tchar.apply_effect(effects_pool.add_effect(eff))
+#			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+#			tchar.apply_effect(effects_pool.add_effect(eff))
+			#add permadeath check here
+			
 #		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/HBoxContainer/first)
 #		if $Rewards/HBoxContainer/first.get_children().size() >= 5:
 #			$Rewards/HBoxContainer/first.remove_child(newbutton)

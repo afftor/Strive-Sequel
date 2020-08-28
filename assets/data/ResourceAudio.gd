@@ -23,7 +23,6 @@ var music = {
 	
 	intro = load("res://assets/sounds/music/ending.ogg"),
 	intimate = load("res://assets/sounds/music/intimate.ogg"),
-
 	
 	
 }
@@ -92,6 +91,7 @@ var sounds = {
 	avalanche = load("res://assets/sounds/sounds/avalanche.wav"),
 	
 	transition_sound = load("res://assets/sounds/sounds/magic1.wav"),
+	
 	combat_defeat = load("res://assets/sounds/music/defeated.wav"),
 	class_aquired = load("res://assets/sounds/music/class_aquired.wav"),
 	quest_completed = load("res://assets/sounds/music/task_completed.wav"),

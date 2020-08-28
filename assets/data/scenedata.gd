@@ -145,7 +145,7 @@ var scenedict = {
 	dungeon_find_armory_easy = {
 		text = tr("DIALOGUEDUNGEONARMORY"), 
 		tags = ['locked_chest'],
-		image = 'chest', 
+		image = 'trap', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
@@ -154,7 +154,7 @@ var scenedict = {
 	dungeon_find_armory_medium = {
 		text = tr("DIALOGUEDUNGEONARMORY"), 
 		tags = ['locked_chest'],
-		image = 'chest', 
+		image = 'trap', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_armory_weapon', 1],['medium_armory_armor', 1]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
@@ -165,7 +165,7 @@ var scenedict = {
 		text = tr("DIALOGUEDUNGEONCHEST"), 
 		tags = ['locked_chest'],
 		image = 'chest', 
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['test_chest_mimic', 1]]}],#['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
 		]

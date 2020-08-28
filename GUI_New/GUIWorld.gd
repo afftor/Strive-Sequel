@@ -310,7 +310,7 @@ func test_mode():
 		character.unlock_class("watchdog")
 		character.unlock_class("director")
 		character.unlock_class("trainer")
-		character.unlock_class("foreman")
+		character.unlock_class("thief")
 		character.unlock_class("engineer")
 		character.travel.location = 'L4'
 		character.travel.area = 'plains'
@@ -351,7 +351,8 @@ func test_mode():
 		#character.get_stat('pregnancy').duration = 2
 
 		character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'random', 'random')
+		character.create('HalfkinCat', 'male', 'random')
+		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		character.statlist.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
@@ -364,7 +365,6 @@ func test_mode():
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
-		#character.set_stat('base_exp', 1000)
 
 
 
@@ -433,6 +433,8 @@ func test_mode():
 		character.set_stat('loyalty', 95)
 		character.set_stat('authority', 100)
 		character.set_stat('submission', 95)
+		yield(get_tree(),'idle_frame')
+		character.xp_module.base_exp = 1000
 		character.mp = 10
 		character.hp = 95
 		#character.exhaustion = 1000
@@ -514,11 +516,7 @@ func test_mode():
 		ResourceScripts.game_progress.active_quests.append(
 			{code = 'election_global_quest', stage = 'stage1'}
 		)
-		character.unlock_class("pet")
-		character.unlock_class("souleater")
-		character.unlock_class("trainer")
-		character.unlock_class("foreman")
-		character.unlock_class("smith")
+		
 		character.mp = 10
 		var tmp = {}
 		tmp.oral = 70

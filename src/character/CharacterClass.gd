@@ -482,11 +482,17 @@ func mp_set(value):
 
 func death():
 	process_event(variables.TR_DEATH)
-	process_event(variables.TR_COMBAT_F)
+#	process_event(variables.TR_COMBAT_F)
 	if npc_reference != null:
 		input_handler.emit_signal("EnemyKilled", npc_reference)
 	if displaynode != null:
 		displaynode.defeat()
+	if input_handler.combat_node != null:
+		affect_char({type = 'effect', value = 'e_g_injury_delay'})
+		#in this case check for permadeath is not here but in various finish combat methods
+	else:
+		affect_char({type = 'effect', value = 'e_grave_injury'})
+		#add permadeath check here
 	#clean_effects()
 #	if input_handler.combat_node == null && travel.location == ResourceScripts.game_world.mansion_location:
 #		is_active = false
@@ -503,7 +509,7 @@ func killed():
 	characters_pool.call_deferred('cleanup')
 	input_handler.update_slave_list()
 
-func common_effect(i):
+func affect_char(i):
 	match i.type:
 		'damage':
 			deal_damage(i.value)

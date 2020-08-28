@@ -9,7 +9,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "defeated"
-length = 3.33333
+length = 6.0
 step = 0.0333333
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect17:self_modulate")
@@ -18,7 +18,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.333333, 2.66667, 3.23333 ),
+"times": PoolRealArray( 0, 0.333333, 2.079, 5.775 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 1 ) ]
@@ -54,7 +54,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.833333, 1.1, 2.66667, 2.8 ),
+"times": PoolRealArray( 0, 0.833333, 1.1, 2.079, 5.346 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -66,7 +66,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.833333, 1.06667, 2.66667 ),
+"times": PoolRealArray( 0.833333, 1.06667, 2.079 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.6, 1.6 ), Vector2( 0.84, 0.84 ), Vector2( 1, 1 ) ]
@@ -111,7 +111,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, 79.375 )
+shader_param/pos = Vector2( 0, -100 )
 shader_param/mask = ExtResource( 8 )
 
 [node name="Control" type="Control"]
@@ -126,7 +126,6 @@ __meta__ = {
 anims/defeated = SubResource( 1 )
 
 [node name="TextureRect14" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 8.0
 margin_top = 1.0
 margin_right = 1911.0
@@ -137,7 +136,6 @@ __meta__ = {
 }
 
 [node name="TextureRect15" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 1.79871
 margin_top = 28.5026
 margin_right = 1921.8
@@ -160,7 +158,6 @@ __meta__ = {
 }
 
 [node name="TextureRect17" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 1.67017
 margin_top = -0.902496
 margin_right = 1921.67
@@ -176,7 +173,6 @@ margin_left = 702.873
 margin_top = 181.647
 margin_right = 1217.87
 margin_bottom = 247.647
-rect_scale = Vector2( 0.846666, 0.846666 )
 rect_pivot_offset = Vector2( 256.937, 32.82 )
 texture = ExtResource( 2 )
 stretch_mode = 6
