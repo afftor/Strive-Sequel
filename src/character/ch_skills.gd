@@ -106,6 +106,7 @@ func get_skill_by_tag(tg):
 	for s in combat_skills:
 		var s_f = Skilldata.Skilllist[s]
 		if s_f.tags.has(tg): return s
+	return null
 
 func restore_skill_charge(code):
 	if social_skills_charges.has(code):

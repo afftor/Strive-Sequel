@@ -117,6 +117,10 @@ func _get_weight_for_skill(s_name):
 	var res = 0
 	#check if skill is in cooldown
 	if app_obj.skills.combat_cooldowns.has(s_name): return res
+	#checks if skill can be used
+	var data = Skilldata.Skilllist[s_name]
+	if data.skilltype == 'skill' and app_obj.has_status('disarm') and !data.tags.has('default'): return 0
+	if data.skilltype == 'spell' and app_obj.has_status('silence') and !data.tags.has('default'): return 0
 	#no targets check
 	if skill_targets[s_name].size() == 0: return res
 	#empty ai_data check
@@ -138,9 +142,11 @@ func _get_action(hide_ignore = false):
 	if !hide_ignore: _set_next_state()
 	var actions = []
 	for s_n in app_obj.skills.combat_skills:
-		actions.push_back([s_n, _get_weight_for_skill(s_n)])
+		var curw = _get_weight_for_skill(s_n)
+		if curw > 0: actions.push_back([s_n, curw])
 	if actions.size() == 0:
 		print ('ERROR IN AI TEMPLATE')
+		return app_obj.get_skill_by_tag('default')
 	var res = input_handler.weightedrandom(actions)
 	return res
 

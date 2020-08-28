@@ -270,7 +270,9 @@ func set_work(task):
 	xp_module.work = task
 
 func get_skill_by_tag(tg):
-	return skills.get_skill_by_tag(tg)
+	var res = skills.get_skill_by_tag(tg)
+	if res == null: print ("ERROR in skill config - no default skill")
+	return res
 
 func baby_transform():
 	statlist.baby_transform()
@@ -514,7 +516,7 @@ func affect_char(i):
 		'damage':
 			deal_damage(i.value)
 		'damage_percent':
-			deal_damage((i.value / 100) * get_stat('hpmax'))
+			deal_damage((i.value / 100.0) * get_stat('hpmax'))
 		'damage_mana_percent':
 			mana_update(-i.value * get_stat('maxmp'))
 		'stat', 'stat_add':
