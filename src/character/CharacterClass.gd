@@ -356,6 +356,13 @@ func can_act():
 func can_evade():
 	return effects.can_evade()
 
+func can_use_skill(skill):
+	if mp < skill.manacost: return false
+	if skills.combat_cooldowns.has(skill.code): return false
+	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
+	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
+	return true
+
 func has_status(status):
 	return effects.has_status(status)
 
