@@ -281,8 +281,9 @@ func TextEncoder(text, node = null):
 		newtextarray.remove(newtextarray.size()-1)
 		var startcode = ''
 		var endcode = ''
-		for data in newtextarray:
-			data = data.replace('{','').split("=")
+		for data1 in newtextarray:
+			data1 = data1.replace('{','')
+			var data = data1.split("=")
 			match data[0]:
 				'color':
 					startcode += '[color=' + variables.hexcolordict[data[1]] + ']'
@@ -293,7 +294,7 @@ func TextEncoder(text, node = null):
 					endcode = '[/url]' + endcode
 					counter += 1
 				'check':
-					if input_handler.evaluate(data[1]) == false:
+					if input_handler.evaluate(data1.trim_prefix('check=')) == false:
 						originaltext = ''
 				'random_chat':
 					var character = input_handler.scene_characters[int(data[1])]
