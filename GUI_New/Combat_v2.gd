@@ -1430,6 +1430,9 @@ func RebuildSkillPanel():
 		if activecharacter.has_status('silence') and skill.ability_type == 'spell':
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+		if activecharacter.has_status('disarm') and skill.ability_type == 'skill':
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
 		if activecharacter.mp < skill.manacost:
 			newbutton.disabled = true
