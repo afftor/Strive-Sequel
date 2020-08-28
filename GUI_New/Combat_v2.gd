@@ -110,14 +110,16 @@ func cheatvictory():
 func play_animation(anim):
 	var anim_scene
 	if anim == "defeat":
+		input_handler.PlaySound("combat_defeat")
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
-		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	elif anim == "defeat":
 		print("") # Here will be win animation
-	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	anim_scene.queue_free()
+	# yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+	# ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	# yield(get_tree().create_timer(0.5), 'timeout')
+	return anim_scene
+	# anim_scene.queue_free()
 
 
 
@@ -430,19 +432,22 @@ func victory():
 
 func defeat():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
-	play_animation("defeat")
-	input_handler.PlaySound("combat_defeat")
-	yield(get_tree().create_timer(3), "timeout")
+	var anim_scene = play_animation("defeat")
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+
+
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
 	FinishCombat(false)
-	yield(get_tree().create_timer(0.5), 'timeout')
+	# yield(get_tree().create_timer(0.5), 'timeout')
 	var active_location = GUIWorld.gui_data.EXPLORATION.main_module.active_location
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
+	yield(get_tree().create_timer(0.5), "timeout")
 	hide()
+	anim_scene.queue_free()
 
 func player_turn(pos):
 	$Menu/Run.disabled = false
