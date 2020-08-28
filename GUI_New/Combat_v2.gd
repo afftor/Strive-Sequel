@@ -1446,18 +1446,18 @@ func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	skill = Skilldata.Skilllist[skill]
 	#need to add daily restriction check
-	if activecharacter.mp < skill.manacost || activecharacter.skills.combat_cooldowns.has(skill.code) :
+	if !activecharacter.can_use_skill(skill)  :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', 'attack')
+		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
 		return
 	for i in skill.catalysts:
 		if ResourceScripts.game_res.materials[i] < skill.catalysts[i]:
 			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
-			call_deferred('SelectSkill', 'attack');
+			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'));
 			break
 	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
-		call_deferred('SelectSkill', 'attack')
+		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code
