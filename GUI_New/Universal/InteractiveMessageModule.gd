@@ -235,9 +235,9 @@ func add_chest_options(scene):
 		else:
 			match chest_data.lock.type:
 				'normal':
-					text += "[name] concludes this chest is {color=aqua|unlocked} and safe to use."
-				'none':
 					text += "[name] concludes this chest is locked with a {color=aqua|mechanic lock} and has no additional danger."
+				'none':
+					text += "[name] concludes this chest is {color=aqua|unlocked} and safe to use."
 				'bomb':
 					text += "[name] concludes this chest is rigged with a {color=aqua|bomb trap}."
 				'gas':
@@ -431,10 +431,10 @@ func fight_skirmish():
 		input_handler.encounter_win_script = current_scene.winscene
 	globals.current_enemy_group = dialogue_enemy
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
-	close(true)
+	#close(true)
 
 func quest_fight(code):
 	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
-	close(true)
+	#close(true)
 

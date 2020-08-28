@@ -1429,10 +1429,10 @@ func RebuildSkillPanel():
 		if !activecharacter.checkreqs(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.has_status('silence') and skill.ability_type == 'spell':
+		if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.has_status('disarm') and skill.ability_type == 'skill':
+		if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])

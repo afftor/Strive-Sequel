@@ -2910,7 +2910,7 @@ var buffs = {
 	},
 	b_disarm = {
 		icon = "res://assets/images/iconsskills/Shackle.png", 
-		description = "Disarmed",
+		description = "Disarmed: Can't use Skill type abilities",
 		t_name = 'disarm'
 	},
 	b_banish = {

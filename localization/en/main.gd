@@ -623,6 +623,7 @@ var TranslationDict = {
 	SKILLL_ORB = "Lightning Orb",
 	SKILLL_ORBDESCRIPT = "Deals high Air Damage to enemy Target. If Target survives, jumps for another random enemy for half of the damage. ",
 	
+	SKILLMIMIC_ATTACK = "Sticky Grab",
 	
 	WORKTOOL = "Work Tool",
 	WORKTOOLAXE = "Lumber Axe",
@@ -1788,8 +1789,10 @@ var TranslationDict = {
 	DIALOGUECHESTLOCKPICKBOMBFAILURE = "[name] has triggered the bomb trap mechanism causing an explosion and damaging everyone in the room. The chest is destroyed with its contents...",
 	DIALOGUECHESTLOCKPICKGASFAILURE = "[name] has triggered the trap mechanism. The room fills with poisonous gas and the group quickly retreats from it. However, [name] has still inhaled too much of a gas due to being too close to the chest...",
 	DIALOGUECHESTMIMICDISCOVERED = "As [name] approaches the chest in the last moment [he] spots something unusual about it. After another moment [he] informs that this is most likely to be not a chest, but Mimic. ",
-	DIALOGUECHESTMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. Being stuck in his mucous, [he] won't be able to escape, unless helped. \n\n{color=aqua|[name]} - {random_chat_active|mimic_eat}",
-	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, Mimic does not seem to be harming [him], rather seizing its pray and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]} - {random_chat_active|mimic_molest}",
+	DIALOGUECHESTMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. Being stuck in his mucous, [he] won't be able to escape, unless helped. \n\n{color=aqua|[name]} - {random_chat_active|mimic_eat}\n\n[He] will certainly be eaten if left in this state.",
+	DIALOGUECHESTEROTICMIMICTRAPPED = "As [name] leans on the chest, [he] quickly realizes that it's not a chest, but a Mimic, which is about to devour [him]. However, Mimic does not seem to be harming [him], rather seizing its pray and getting under [his] clothes. With no outside help Mimic will surely have its way with [name]...\n\n{color=aqua|[name]} - {random_chat_active|mimic_molest}\n\nLeaving [him] in this state won't likely kill [him], but...",
+	DIALOGUECHESTMIMICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} - {random_chat_active|mimic_leave}",
+	DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE = "You decide it's too dangerous to challenge the Mimic and leaving [name] to him is an acceptable price...\n\n{color=aqua|[name]} - {random_chat_active|mimic_erotic_leave}\n\nAfter about an hour of erotic moans and pleads [name] manages to free [him]self and escape.",
 	DIALOGUECHESTLOCKPICKSUCCESS = "[name] has skillfully picked the chest's lock and its contents belong to you now. ",
 	
 	DIALOGUECHESTMIMICFIGHT = "Fight Mimic",

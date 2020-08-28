@@ -285,10 +285,10 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel/PlayerGroup/Back/left/Template/Buffs/Button"]
 visible = false
-margin_left = -10.0
-margin_top = 15.0
-margin_right = 62.0
-margin_bottom = 47.0
+margin_left = 3.17221
+margin_top = 25.7773
+margin_right = 75.1722
+margin_bottom = 57.7773
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

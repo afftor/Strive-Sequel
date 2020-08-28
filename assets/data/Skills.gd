@@ -2702,6 +2702,30 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 2.2
 	},
+	mimic_attack = {
+		code = 'mimic_attack',
+		descript = '',
+		icon = load("res://assets/images/iconsskills/AcidBomb.png"),
+		type = 'combat', 
+		ability_type = 'skill',
+		tags = ['damage','ads'],
+		reqs = [],
+		targetreqs = [],
+		effects = [Effectdata.rebuild_template({effect = 'e_s_disarm1', duration = 3})], 
+		manacost = 0,
+		energycost = 0,
+		charges = 0,
+		combatcooldown = 0,
+		cooldown = 0,
+		catalysts = {},
+		target = 'enemy',
+		target_number = 'single',
+		target_range = 'melee',
+		damage_type = 'water', 
+		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
+		sounddata = {initiate = null, strike = 'blade', hit = null},
+		value = 1.2
+	},
 #dummyskills
 	master_lust_skill ={
 		code = 'master_lust_skill',

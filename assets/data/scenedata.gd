@@ -122,23 +122,42 @@ var scenedict = {
 	
 	chest_is_mimic_trapped = {
 		text = 'DIALOGUECHESTMIMICTRAPPED',
-		tags = ['active_character_translate'], 
+		tags = ['active_character_translate','linked_event'], 
 		image = 'chest',
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'kill'}]}
+		{code = 'chest_is_mimic_leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
 		],
 	},
 	
 	chest_is_erotic_mimic_trapped = {
 		text = 'DIALOGUECHESTEROTICMIMICTRAPPED',
-		tags = ['active_character_translate'], 
+		tags = ['active_character_translate','linked_event'], 
 		image = 'chest',
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'kill'}]}
+		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
+		],
+	},
+	
+	chest_is_mimic_leave = {
+		text = 'DIALOGUECHESTMIMICTRAPPEDLEAVE',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		default_event_type = 'character_event',
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		],
+	},
+	chest_is_erotic_mimic_leave = {
+		text = 'DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE',
+		tags = ['active_character_translate'], 
+		image = 'chest',
+		default_event_type = 'character_event',
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
 		],
 	},
 	
