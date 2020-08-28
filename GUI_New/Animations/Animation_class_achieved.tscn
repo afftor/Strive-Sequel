@@ -10,72 +10,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Defeated"
-length = 3.0
-step = 0.0333333
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer2/TextureRect17:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.333333 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.313726 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimationPlayer2/TextureRect14:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.333333, 0.566667 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimationPlayer2/TextureRect15:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.533333, 0.833333 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer2/TextureRect13:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.833333, 1.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer2/TextureRect13:rect_scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.833333, 1.06667, 2.66667 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.6, 1.6 ), Vector2( 0.84, 0.84 ), Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-length = 3.33333
+length = 6.0
 step = 0.0333333
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect7:rect_position")
@@ -84,7 +19,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 2.8, 3.13333 ),
+"times": PoolRealArray( 0, 0.2, 6.501, 6.831 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 961, 151 ), Vector2( 663.406, 151.155 ), Vector2( 663.406, 151.155 ), Vector2( 961, 151 ) ]
@@ -96,7 +31,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 2.8, 3.13333 ),
+"times": PoolRealArray( 0, 0.2, 5.346, 5.676 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 0.0, 0.0 ]
@@ -120,7 +55,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 2.8, 3.13333 ),
+"times": PoolRealArray( 0, 0.2, 5.346, 5.676 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 200 ), Vector2( 600, 200 ), Vector2( 600, 200 ), Vector2( 0, 200 ) ]
@@ -132,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 2.46667, 2.7 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1257.7, 107.759 ), Vector2( 1257.7, 107.759 ), Vector2( 1257.7, 107.759 ), Vector2( 1257.7, 107.759 ) ]
@@ -144,7 +79,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.9, 2.46667, 2.7 ),
+"times": PoolRealArray( 0, 0.633333, 0.9, 5.016, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -90.0, -90.0, 0.0, 0.0, -90.0 ]
@@ -156,7 +91,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 2.46667, 2.7 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ) ]
@@ -168,7 +103,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.733333, 2.6, 2.7 ),
+"times": PoolRealArray( 0, 0.633333, 0.733333, 5.148, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -180,7 +115,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 2.46667, 2.7 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 545.556, 107.276 ), Vector2( 545.556, 107.276 ), Vector2( 545.556, 107.276 ), Vector2( 545.556, 107.276 ) ]
@@ -192,7 +127,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.9, 2.46667, 2.7 ),
+"times": PoolRealArray( 0, 0.633333, 0.9, 5.016, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 90.0, 90.0, 0.0, 0.0, 90.0 ]
@@ -204,7 +139,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 2.46667, 2.7 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ) ]
@@ -216,7 +151,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.733333, 2.6, 2.7 ),
+"times": PoolRealArray( 0, 0.633333, 0.733333, 5.148, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -312,7 +247,7 @@ tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 0, 0.466666, 0.666666, 2.43333, 2.6 ),
+"times": PoolRealArray( 0, 0.466666, 0.666666, 4.983, 5.148 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -324,7 +259,7 @@ tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"times": PoolRealArray( 0, 0.766666, 0.999999, 2.36667, 2.53333 ),
+"times": PoolRealArray( 0, 0.766666, 0.999999, 4.917, 5.082 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -336,19 +271,36 @@ tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"times": PoolRealArray( 0, 0.466666, 0.933332, 2.1, 2.53333 ),
+"times": PoolRealArray( 0, 0.466666, 0.933332, 4.653, 5.082 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Label3:self_modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.899999, 1.3, 4.785, 4.95 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 48
 outline_color = Color( 0.976471, 0.964706, 0.45098, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 40
+outline_color = Color( 0.976471, 0.964706, 0.45098, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
 outline_color = Color( 0.976471, 0.964706, 0.45098, 1 )
 font_data = ExtResource( 3 )
 
@@ -356,17 +308,22 @@ font_data = ExtResource( 3 )
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 1055.36 ]
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+<<<<<<< HEAD
 anims/Defeated = SubResource( 1 )
 anims/class_achieved = SubResource( 2 )
+=======
+anims/class_achieved = SubResource( 1 )
+>>>>>>> master
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-margin_left = -1551.29
+margin_left = 1926.17
 margin_top = -20.3858
-margin_right = -2.29089
+margin_right = 3475.17
 margin_bottom = 215.614
 texture = ExtResource( 7 )
 flip_h = true
@@ -376,7 +333,7 @@ __meta__ = {
 }
 
 [node name="TextureRect5" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 5.0664e-06 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 160.624
 margin_top = 236.032
 margin_right = 1774.62
@@ -387,9 +344,9 @@ __meta__ = {
 }
 
 [node name="TextureRect4" type="TextureRect" parent="."]
-margin_left = 1921.64
+margin_left = -1558.21
 margin_top = 296.242
-margin_right = 3470.65
+margin_right = -9.19849
 margin_bottom = 532.242
 texture = ExtResource( 7 )
 __meta__ = {
@@ -397,7 +354,7 @@ __meta__ = {
 }
 
 [node name="TextureRect6" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.545451 )
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 537.571
 margin_top = 96.4691
 margin_right = 1386.57
@@ -409,10 +366,12 @@ __meta__ = {
 }
 
 [node name="TextureRect8" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 545.556
 margin_top = 107.276
 margin_right = 665.556
 margin_bottom = 357.276
+rect_rotation = 90.0
 rect_pivot_offset = Vector2( 121.676, 242.8 )
 texture = ExtResource( 2 )
 flip_h = true
@@ -421,10 +380,12 @@ __meta__ = {
 }
 
 [node name="TextureRect9" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 1257.7
 margin_top = 107.759
 margin_right = 1377.7
 margin_bottom = 357.759
+rect_rotation = -90.0
 rect_pivot_offset = Vector2( 3.08203, 239.505 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -434,7 +395,7 @@ __meta__ = {
 [node name="TextureRect7" type="TextureRect" parent="."]
 margin_left = 663.406
 margin_top = 151.155
-margin_right = 1263.41
+margin_right = 663.406
 margin_bottom = 351.155
 rect_pivot_offset = Vector2( 300, 100 )
 texture = ExtResource( 8 )
@@ -444,7 +405,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 680.148
+margin_top = 161.004
+margin_right = 980.148
+margin_bottom = 461.004
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect10" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 660.841
 margin_top = 148.742
 margin_right = 1264.84
@@ -455,11 +430,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 876.822
-margin_top = 162.783
-margin_right = 1197.82
-margin_bottom = 229.783
-custom_fonts/font = SubResource( 3 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 895.191
+margin_top = 161.393
+margin_right = 1216.19
+margin_bottom = 228.393
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.54902, 0.658824, 0.529412, 1 )
 text = "Class aquired"
 __meta__ = {
@@ -467,25 +443,29 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 876.881
-margin_top = 243.478
-margin_right = 1197.88
-margin_bottom = 310.478
-custom_fonts/font = SubResource( 4 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 895.25
+margin_top = 227.478
+margin_right = 1216.25
+margin_bottom = 294.478
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.87451, 1, 0.85098, 1 )
 text = "Barbarian"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 674.001
-margin_top = 161.805
-margin_right = 974.001
-margin_bottom = 461.805
-rect_scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 6 )
-stretch_mode = 6
+[node name="Label3" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 894.786
+margin_top = 284.405
+margin_right = 1215.79
+margin_bottom = 351.405
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.596078, 0.466667, 0.345098, 1 )
+text = "Hettie Darkmane"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
