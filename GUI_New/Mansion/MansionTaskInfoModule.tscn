@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Themes_v2/MANSION/TaskInfoPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/taskinfo_header.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://GUI_New/Mansion/MansionTaskInfoModule.gd" type="Script" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/TaskInfo/button_taskinfo_pressed.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -42,6 +43,8 @@ margin_top = 26.3158
 margin_right = 236.0
 margin_bottom = 78.3158
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

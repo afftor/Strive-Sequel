@@ -135,6 +135,10 @@ func show_slave_info():
 		else:
 			authority = 'high'
 		authority_text = authority_lines[authority]
+		if authority == "low":
+			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.99,0.31,0.36,1))
+		else:
+			$Panel/authoritylabel.set("custom_colors/font_color", Color(0.98,0.88,0.51,1))
 		
 		$Panel/authoritylabel.text = 'Authority: ' + authority_text
 	

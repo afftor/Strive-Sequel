@@ -160,13 +160,13 @@ func unlock_class():
 
 
 func play_animation():
-	input_handler.SetMusic("class_aquired")
+	input_handler.PlaySound("class_aquired")
 	var anim_scene
 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
 	anim_scene.get_node("AnimationPlayer").play("class_achieved")
 	anim_scene.get_node("TextureRect").texture = classesdata.professions[current_class].icon
 	anim_scene.get_node("Label2").text = current_class.capitalize()
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()

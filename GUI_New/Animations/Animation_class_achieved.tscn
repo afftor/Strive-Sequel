@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/light_side.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Defeated"
 length = 3.0
 step = 0.0333333
@@ -74,8 +74,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.6, 1.6 ), Vector2( 0.84, 0.84 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "class_achieved"
+[sub_resource type="Animation" id=2]
 length = 3.33333
 step = 0.0333333
 tracks/0/type = "value"
@@ -361,8 +360,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Defeated = SubResource( 2 )
-anims/class_achieved = SubResource( 1 )
+anims/Defeated = SubResource( 1 )
+anims/class_achieved = SubResource( 2 )
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 margin_left = -1551.29

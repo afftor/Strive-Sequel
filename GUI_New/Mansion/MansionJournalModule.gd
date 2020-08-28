@@ -252,16 +252,15 @@ func CompleteReqs():
 
 
 func play_animation():
-	input_handler.SetMusic("quest_completed")
+	input_handler.PlaySound("quest_completed")
 	var anim_scene
 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
 	anim_scene.get_node("AnimationPlayer").play("task_completed")
 	anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
-	yield(get_tree().create_timer(4), "timeout")
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
-	input_handler.SetMusic("mansion1")
 
 
 
