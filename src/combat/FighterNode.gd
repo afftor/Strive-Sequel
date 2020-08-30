@@ -161,18 +161,21 @@ func update_buff(i):
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
 	newbuff.hint_tooltip = text
+	if i.get_duration() != null && i.get_duration() > 0:
+		newbuff.get_node("Label").show()
+		newbuff.get_node("Label").text = str(i.get_duration())
 
 func update_hp_label(newhp, newhpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
-		$hplabel.text = str(floor(newhp)) + '/' + str(floor(fighter.get_stat('hpmax')))
+		$hplabel.text = str(ceil(newhp)) + '/' + str(ceil(fighter.get_stat('hpmax')))
 	else:
-		$hplabel.text = str(round(newhpp)) + '%%'
+		$hplabel.text = str(ceil(newhpp)) + '%%'
 
 func update_mp_label(newmp, newmpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
 		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
 	else:
-		$mplabel.text = str(round(newmpp)) + '%%'
+		$mplabel.text = str(floor(newmpp)) + '%%'
 
 func noq_defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")

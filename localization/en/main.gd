@@ -1147,7 +1147,7 @@ var TranslationDict = {
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Crafts alchemical products 100% faster.\nHealing items are 25% more effective in combat.",
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
-	TRAITBREEDERDESCRIPT = "Farming is 50% more efficient.\nAllows breeding with any race.\nPregnancy progresses 30% faster.\nOffspring will inherit only this character's stats.",
+	TRAITBREEDERDESCRIPT = "Allows breeding with any race.\nPregnancy progresses 30% faster.\nOffspring will inherit only this parent's stats.",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.",
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
@@ -1205,8 +1205,8 @@ var TranslationDict = {
 	PROFALCHEMISTDESCRIPT = "Alchemists specialize in brewing processes which are invaluable for a steady supply of potions.",
 	PROFFARMER = "Farmer",
 	PROFFARMERDESCRIPT = "Farmers are trained to work with crops. ",
-	PROFBREEDER = "Breeder",
-	PROFBREEDERDESCRIPT = "One who finds purpose in bringing a new generation into being.  They can accept any partner, but their children will carry on their lineage.",
+	PROFBREEDER = "Breed Sow",
+	PROFBREEDERDESCRIPT = "One who finds purpose in bringing a new generation into being. They can accept any partner, but their children will carry on their lineage.",
 	PROFHARLOT = "Harlot",
 	PROFHARLOTDESCRIPT = "The oldest profession might not seem like much, but so far it's always in demand.",
 	PROFGEISHA = "Geisha",
@@ -1779,10 +1779,12 @@ var TranslationDict = {
 	DIALOGUECHARINSPECT = "Inspect",
 	DIALOGUERECRUITCHARACTEROPTION = "Recruit",
 	DIALOGUELEAVEOPTION = "Leave",
+	DIALOGUELEAVERECRUITOPTION = "Cancel (abandons recruit)",
 	DIALOGUEEVENTNOTHING = "After searching around you weren't able to find anything of interest...",
 	DIALOGUEEVENTGOODRECRUIT = "After scouting through [locationname], you've heard the rumors of a person, willing to join you. After a couple of moments you find [name], [age] [raceadj], who seems willing to leave this place. ",
 	DIALOGUEEVENTGOODLOOT = "After searching surroundings, you find a small locked cache. ",
 	DIALOGUECHESTOPEN = "Open",
+	DIALOGUETAKELOOT = "Take",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
 	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now...",
 	DIALOGUELOCKPICKALARMFAILURE = "[name] has failed to pick the lock and caused the alarm to go off. In a few moments enemies charge at your position.",
@@ -1818,6 +1820,9 @@ var TranslationDict = {
 	DIALOGUEEVENTPERSONFREE = "You've set [name] free. [He] expresses [his] gratitude and wishes to repay you one day. ",
 	DIALOGUEEVENTEXOTICTRADER = "You find an exotic slave trader with a large group of guards. Exotic race slaves are rare and expensive, so you should consider yourself lucky. After greetings he presents you his belongings.",
 	
+	
+	DIALOGUEALIRONEXOTICTRADER = "This morning you've received a message that today Avermik came to town. An mysterious slave trader which deals with rare and exotic races. They seem to recurringly visit Aliron and might provide a reliable way to seize on an unusual slave. \n\nIf you have enough cash...",
+	
 	DIALOGUEPERSONASKTOJOIN = "Offer to join",
 	DIALOGUERECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n[name] was able to convince [scncharname] to join you.",
 	DIALOGUERECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n[name] wasn't able to convince [scncharname] to join you.",
@@ -1830,12 +1835,29 @@ var TranslationDict = {
 	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
 	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
 	
+	DIALOGUEGROVEWOOD = "You find a stash of prepared wood likely abandoned by some lumberjacks. ",
+	DIALOGUEGROVELEATHER = "You find a stash of hidden leather probably left by poachers. ",
+	DIALOGUECRYPTBONES = "You find a pile of perfectly preserved bones. ",
+	
 	DIALOGUEEVENTDUNGEONPRISONER = "You come across a jail room holding a bound [race] [male], likely held by the bandits for ransom or mockery. At your approach [he] tells you [his] name is [name] and begs you for help.",
 	DIALOGUETAKESLAVE = "Capture and enslave",
 	DIALOGUEEVENTDUNGEONPRISONERSENSLAVE = "You release [name] from [his] cell, only to turn [him] into your slave. As [he]'s escorted back to your mansion, your team continues on. ",
 	
 	DIALOGUEEVENTDUNGEONPRISONERFREE1 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a small cache of resources near [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
 	DIALOGUEEVENTDUNGEONPRISONERFREE2 = "You release and unbind [name], much to [his] relief. As [he] thanks you, [he] shows you a secret item [he] has hidden in [his] cell as thanks for [his] rescue. After explaining to [him] how to get out, you are ready to continue on your way.",
+	
+	DIALOGUEEVENTGOBLINFRIENDLY = "As you make your way through the caves you find an isolated room. As you barge in, a lone goblin [boy] jumps in scare. \n\n- Wait, wait, please don't kill me! I'm not wanna fight, I'm only here accidently. I won't tell anyone I've seen you, I promise.\n\nSurprised by the fact [he] knows common speech and is civilized unlike others you consider what to do with [him].",
+	DIALOGUEEVENTGOBLINRECRUIT = "Attempt to recruit",
+	DIALOGUEEVENTGOBLINBRINGTOLEADER = "Request getting you to the leader",
+	DIALOGUEEVENTGOBLINKILL = "Kill",
+	DIALOGUEEVENTGOBLINGLEAVE = "Let go",
+	DIALOGUEEVENTGOBLINRECRUITSUCCESS = "[center]{color=green|Success!}[/center]\n- Eh?.. You want me to work for you? Well, I can't refuse someone big and strong like you, can I? I mean, I'll gladly take your offer! This place is a big ass dump after all.\n\nAfter [name] received instructios, [he] quickly disappeared in the way of your mansion.",
+	DIALOGUEEVENTGOBLINRECRUITFAILURE = "[center]{color=red|Failure!}[/center]\n- Eh?.. I... don't think this is a good idea, we don't take betreyals nicely, ya know. Now, if you excuse me...\n\nBefore you can react, the goblin [boy] disappears from sight in one of the tunnels you didn't notice on entrance.",
+	DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS = "[center]{color=green|Success!}[/center]\n- You actually serious?! I-I guess someone like you can do that... Okay, fine, I'll show you the way, but after this you won't see me anywhere close to it. You got me? \n\nAfter a few minutes of getting through cave maze, you end up before the entrance of the room which seems to lead to the local goblin leader. Before you can notice, the goblin is already disapparead from sight.",
+	DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE = "[center]{color=red|Failure!}[/center]\n- This... This is unreasonable ya know, I'm not out of my mind yet. If you are so willing to die, don't drag me in. \n\nAs [he] was talking [he] moved to the position and darted from the room before you could react. ",
+	DIALOGUEEVENTGOBLINKILLREPLY = "You can't risk any suspicious goblin leave, let alone warn others. Before [he] can react, your group strike [him] down. Unfortunately, there's nothing else of interest here.",
+	DIALOGUEEVENTGOBLINLEAVEREPLY = "There's no need to dispose of a friendly goblin even at a place like this. You allow [him] to go free which brings a relief on [his] face.\n\n- That's great! I'll see myself off. Best of luck to you, guys!",
+	
 	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it’s easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = "[center]{color=green|Success!}[/center]\n[name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.", #to rework

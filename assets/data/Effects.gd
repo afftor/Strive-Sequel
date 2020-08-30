@@ -99,7 +99,7 @@ var effect_table = {
 	},
 	e_tr_breeder = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_farm', value = 1.0}],
+		atomic = [],
 		buffs = [],
 		sub_effects = [],
 	},

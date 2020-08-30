@@ -932,13 +932,13 @@ var enemies = {
 		tags = [],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 0], ['ads', 500]],
+		ai = [['basic', 50], ['ads', 50]],
 		ai_position = ['melee'],
 		xpreward = 100,
 	},
 }
 
-var loot_chests_data = {
+var loot_variants_data = {
 	easy_chest_usable = [
 	{code = 'material', min = 2, max = 5, grade = ['easy', 'medium']}, 
 	{code = 'material', min = 2, max = 5, grade = ['location']}, 
@@ -958,9 +958,10 @@ var loot_chests_data = {
 	{code = 'material', min = 2, max = 3, grade = ['medium','hard']}, 
 	{code = 'material', min = 2, max = 3, grade = ['location']}, 
 	{code = 'usable', min = 2, max = 4, grade = ['easy','medium']}, 
+	{code = 'usable', min = 0, max = 1, grade = ['easy','medium']}, 
 	],
 	medium_chest_gear = [
-	{code = 'material', min = 2, max = 3, grade = ['location']}, 
+	{code = 'material', min = 2, max = 4, grade = ['location']}, 
 	{code = 'gear', min = 1, max = 1, grade = ['easy'], material_grade = [['easy',3], ['medium', 10], ['hard',1]]},
 	],
 	medium_chest_cosmetics = [
@@ -995,6 +996,17 @@ var loot_chests_data = {
 	{code = 'defined', name = 'exp_scroll', min = 1, max = 2}, 
 	],
 	
+	grove_wood_reward = [
+		{code = 'material_selected', options = [['wood',1],['woodiron',1],['woodmagic',0.7],['woodancient',0.2]], value = [100,200]}
+	],
+	grove_leather_reward = [
+		{code = 'material_selected', options = [['leather',1],['leatherthick',1],['leathermythic',0.7],['leatherdragon',0.1]], value = [100,200]}
+	],
+	crypt_bone_reward = [
+		{code = 'material_selected', options = [['bone',1],['boneancient',0.5],['bonedragon',0.1]], value = [100,200]}
+	],
+	
+	
 	test_chest_mimic = [],
 	
 	fighters_join_reward = [
@@ -1027,9 +1039,9 @@ var loot_chests_data = {
 
 
 var locks_data = { #makes locks to lockpick for related chests
-	easy_chest_usable = {locks = [['normal', 1],['none', 0.5]], difficulty = [5,20]},
+	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.01],['mimic_erotic',0.01]], difficulty = [5,20]},
 	easy_chest_gear = {locks = [['normal', 1],['mimic',0.05],['mimic_erotic',0.05]], difficulty = [10,25]},
-	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2]], difficulty = [5,20]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.02],['mimic_erotic',0.02]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1]], difficulty = [10,25]},
 	
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -1038,9 +1050,9 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	
-	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1]], difficulty = [15,40]},
+	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
-	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2]], difficulty = [20,50]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1]], difficulty = [20,55]},
 	
 	test_chest_mimic = {locks = [['mimic', 1]], difficulty = [100,100]},

@@ -9,8 +9,6 @@
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=8]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 use_filter = true
 font_data = ExtResource( 7 )

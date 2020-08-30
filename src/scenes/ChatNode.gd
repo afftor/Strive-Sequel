@@ -640,13 +640,13 @@ var individual_lines = {
 	mimic_leave3 = {text = "No! *sob* Please, I beg...", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	mimic_leave4 = {text = "Wait, I don't wanna die!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
 	
-	mimic_erotic_leave1 = {text = "Y-you gonna leave me- Ah!.. Like this?", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
-	mimic_erotic_leave2 = {text = "No, I hate it! Please help!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
-	mimic_erotic_leave3 = {text = "Noooo! This feels gross!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
-	mimic_erotic_leave4 = {text = "Agh, why you don't help me?!", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
+	mimic_erotic_leave1 = {text = "Y-you gonna leave me- Ah!.. Like this?", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	mimic_erotic_leave2 = {text = "No, I hate it! Please help!", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
+	mimic_erotic_leave3 = {text = "Noooo! This feels gross!", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
+	mimic_erotic_leave4 = {text = "Agh, why you don't help me?!", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = false }]},
 	
-	mimic_erotic_leave5 = {text = "Ooh! I starting to... Like this...", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
-	mimic_erotic_leave6 = {text = "Ah.. This... Is not too bad...", events = ['mimic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
+	mimic_erotic_leave5 = {text = "Ooh! I starting to... Like this...", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
+	mimic_erotic_leave6 = {text = "Ah.. This... Is not too bad...", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
 }
 
 func build_lines():

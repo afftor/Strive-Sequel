@@ -55,6 +55,7 @@ func _ready():
 		input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
+		globals.common_effects({code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]})
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
@@ -299,7 +300,7 @@ func test_mode():
 		
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2
-		character.statlist.statlist.sex_skills.anal = 100
+		character.add_stat('charm', 100)
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
@@ -366,7 +367,8 @@ func test_mode():
 		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 
-
+		ResourceScripts.game_globals.date = 7
+		ResourceScripts.game_globals.hour = 7
 
 		character.set_stat('obedience', 100)
 		#character.fear = 25
@@ -523,8 +525,8 @@ func test_mode():
 		tmp.anal = 90
 		tmp.petting = 100
 		#character.set_stat('sex_skills', tmp)
-		# input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
-		# input_handler.active_area = ResourceScripts.game_world.areas.plains
+		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
+		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
@@ -550,7 +552,7 @@ func test_mode():
 			if c.get_location() == "mansion": c.travel.location = "Aliron"
 
 	input_handler.ActivateTutorial("introduction")
-	#input_handler.interactive_message('daisy_meet', '', {})
+	#input_handler.interactive_message('event_goblin_friendly', '', {})
 
 
 

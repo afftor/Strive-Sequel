@@ -147,6 +147,7 @@ margin_right = 330.053
 margin_bottom = 41.8421
 custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,6 +161,18 @@ custom_fonts/font = ExtResource( 31 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "100"
 align = 2
+
+[node name="icon" type="TextureRect" parent="SlaveList/ScrollContainer/VBoxContainer/Button"]
+margin_left = 2.01312
+margin_top = 2.08087
+margin_right = 47.0131
+margin_bottom = 47.0809
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VScrollBar" type="VScrollBar" parent="SlaveList"]
 margin_left = 23.0

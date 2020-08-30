@@ -573,8 +573,6 @@ func faction_services():
 
 
 func unlock_upgrade(upgrade, level):
-	print(upgrade)
-	print(level)
 	if active_faction.upgrades.has(upgrade.code):
 		active_faction.upgrades[upgrade.code] += 1
 	else:

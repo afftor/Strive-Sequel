@@ -71,6 +71,8 @@ func open(scene, not_save = false):
 	
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
+	if scene.tags.has("free_loot"):
+		add_loot_options(scene)
 	
 	
 	
@@ -88,6 +90,8 @@ func open(scene, not_save = false):
 		newtext += tr(i.text)
 	scenetext = newtext
 	scenetext = tr(scenetext)
+	if scene.has('bonus_effects'):
+		globals.common_effects(scene.bonus_effects)
 	
 	if scenetext.find("[locationname]") >= 0:
 		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
@@ -255,6 +259,9 @@ func add_chest_options(scene):
 	
 	scene.text.append({text = text, reqs = []})
 	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+
+func add_loot_options(scene):
+	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT"})
 
 func add_location_resource_info():
 	var text = '\nAfter defeating last enemies your party investigated the location and found a resources you can harvest:'

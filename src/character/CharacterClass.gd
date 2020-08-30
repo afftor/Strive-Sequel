@@ -203,6 +203,12 @@ func get_short_name():
 func get_full_name():
 	return statlist.get_full_name()
 
+func get_short_race():
+	var race = get_stat('race')
+	if race.findn('Beastkin '): race = race.replace('Beastkin ','B.')
+	if race.findn('Halfkin '): race = race.replace('Halfkin ','H.')
+	return race.capitalize()
+
 func equip(item, item_prev_id = null):
 	equipment.equip(item, item_prev_id)
 
@@ -619,6 +625,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'random':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			check = globals.rng.randf()*100 <= i.value
+		'virgin':
+			check = get_stat('vaginal_virgin') == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -672,7 +680,7 @@ func decipher_single(ch):
 				continue
 		'race_is_beast':
 			if i.check == true:
-				text2 += 'Only for bestial races.'
+				text2 += 'Only for Bestial races.'
 			else:
 				continue
 		'gear_equiped': #to fix non-default param
@@ -691,7 +699,11 @@ func decipher_single(ch):
 		'sex':
 			match i.operant:
 				'neq':
-					text2 += "Not allowed for " + i.value + "s."
+					text2 += "Not allowed for: " + i.value.capitalize() + "s."
+		'virgin':
+			match i.check:
+				false:
+					text2 += "Not a virgin"
 	return text2
 
 
@@ -926,6 +938,9 @@ func calculate_number_from_string_array(arr):
 				modvalue = str(get_stat(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
+		elif (i.find('random') >= 0):
+			i = i.split(' ')
+			modvalue = str(globals.rng.randi_range(0, int(i[1])))
 		if singleop != '':
 			endvalue = input_handler.string_to_math(endvalue, singleop+modvalue)
 			singleop = ''

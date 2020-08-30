@@ -135,10 +135,12 @@ func make_guild(code, area):
 		reputation = 0,
 		totalreputation = 0,
 		difficulty = 1,
-		races = area.races.duplicate(true),
+		races = [],
 		upgrades = {},
 		slavelevel = 0,
 	}
+	if !data.tags.has("unique_slave_races"):
+		guilddatatemplate.races = area.races.duplicate(true)
 	if data.has('slave_races'):
 		for i in data.slave_races:
 			guilddatatemplate.races.append(i)
@@ -164,24 +166,47 @@ func make_guild(code, area):
 	
 	area.factions[guilddatatemplate.code] = guilddatatemplate
 
+
 func make_slave_for_guild(guild):
 	var newslave = ResourceScripts.scriptdict.class_slave.new()
 	var race = input_handler.weightedrandom(guild.races)
-#	if globals.globalsettings.guilds_any_race:
-#		race = 'random'
+#    if globals.globalsettings.guilds_any_race:
+#        race = 'random'
 	var slaveclass = null
 	if guild.preferences.size() > 0:
 		slaveclass = guild.preferences[randi()%guild.preferences.size()]
 	newslave.generate_random_character_from_data(race, slaveclass, guild.difficulty + round(randf())-0.3)
 	var char_class = input_handler.weightedrandom(guild.chartype)
 	newslave.set_slave_category(char_class)
+	var bonus_resolved = {}
 	for i in guild.charbonus:
-		newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
+#        newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
+		if typeof(guild.charbonus[i]) == TYPE_ARRAY: bonus_resolved[i] = round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1]))
+		else: bonus_resolved[i] = guild.charbonus[i]
+	newslave.add_stat_bonuses(bonus_resolved)
 	guild.slaves.append(newslave.id)
 	newslave.set_stat('is_hirable', true)
 	newslave.set_stat('hire_scene', 'hire')
 	newslave.is_known_to_player = true
-#	print ("%s - %d" % [newslave.get_stat('race'), newslave.get_stat('hpmax')])
+
+#func make_slave_for_guild(guild):
+#	var newslave = ResourceScripts.scriptdict.class_slave.new()
+#	var race = input_handler.weightedrandom(guild.races)
+##	if globals.globalsettings.guilds_any_race:
+##		race = 'random'
+#	var slaveclass = null
+#	if guild.preferences.size() > 0:
+#		slaveclass = guild.preferences[randi()%guild.preferences.size()]
+#	newslave.generate_random_character_from_data(race, slaveclass, guild.difficulty + round(randf())-0.3)
+#	var char_class = input_handler.weightedrandom(guild.chartype)
+#	newslave.set_slave_category(char_class)
+#	for i in guild.charbonus:
+#		newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
+#	guild.slaves.append(newslave.id)
+#	newslave.set_stat('is_hirable', true)
+#	newslave.set_stat('hire_scene', 'hire')
+#	newslave.is_known_to_player = true
+##	print ("%s - %d" % [newslave.get_stat('race'), newslave.get_stat('hpmax')])
 
 
 func make_quest_for_guild(guilddatatemplate, difficulty):
@@ -446,7 +471,7 @@ func make_repeatable_quest_location(quest,area,req):
 func make_chest_loot(chest):
 	var data
 	if typeof(chest) == TYPE_STRING:
-		data = Enemydata.loot_chests_data[chest]
+		data = Enemydata.loot_variants_data[chest]
 	var dict = {materials = {}, items = [], lock = {difficulty = 0, type = 'none'}}
 	var location = input_handler.active_location
 	
@@ -482,6 +507,13 @@ func make_chest_loot(chest):
 						if k.type != 'food' && i.grade.has(k.tier) && !k.tags.has('no_random'):
 							array.append(k.code)
 					tempdict = {array[randi()%array.size()] : round(rand_range(i.min, i.max))}
+				input_handler.AddOrIncrementDict(dict.materials, tempdict)
+			'material_selected':
+				var tempdict 
+				var mat = input_handler.weightedrandom(i.options)
+				var value = rand_range(i.value[0], i.value[1])
+				var number = ceil(value/Items.materiallist[mat].price)
+				tempdict = {mat : number}
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'usable':
 				var array = []

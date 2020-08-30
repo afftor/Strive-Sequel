@@ -1,16 +1,20 @@
-Added multiple GUI animations to some places
-Added new random events: New chest lock type traps, mimics, and more
+Added multiple GUI animations to some actions
+Added new random events: New chest lock type traps, mimics, finding random resources
+Added effect duration in tooltip for combat
+Added race name to labels in hiring menu
+Breeder class is renamed to Breed Sow and now can be unlocked. Stats and reqs changed
+Slightly readjusted Aliron's slave race rates (Humans are more common than halfkins; elves are more common in general and rare races are equially as common as elves for slave market)
+Added exotic slave trader shop every 2 weeks starting day 7 (requires new game)
 Main stats now grow slower at higher levels (starting at 40 base)
 Kobold females now generate with smaller breast size
 Trap events now deal percent damage
 Drows have been renamed to dark elves
-Escape chance is now present and depends on charcter's authority and obedience (can escape if defiant and obdience < 15). Chance is based on timid factor
+Slave escape chance is now present and depends on charcter's authority and obedience (can escape if defiant and obdience < 15). Chance is based on timid factor
 Food starvation debuff reworked
 Defeat in combat now applies debuff preventing from participating in combat for 3 days (ticks faster when using rest)
 Travel menu opens locations by default
-Fixed craft menu opening on smithing even if its unlocked
-Fixed master character 
-Fixed inactive enemies not being deleted properly bloating file size
+Fixed craft menu opening on smithing even if its locked
+Fixed inactive enemies not being deleted properly in some situtations
 Fixed buffs not displaying in slave info
 Fixed hp/mp not displaying in dungeon locations
 0.3.0e

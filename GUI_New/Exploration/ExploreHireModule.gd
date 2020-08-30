@@ -77,8 +77,9 @@ func hire():
 		var newbutton = input_handler.DuplicateContainerTemplate(
 			$SlaveList/ScrollContainer/VBoxContainer
 		)
-		newbutton.get_node("name").text = tchar.get_stat('name')
+		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
 		newbutton.get_node("Price").text = str(tchar.calculate_price())
+		newbutton.get_node('icon').texture = tchar.get_icon()
 		#newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [tchar])
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])  #, self, "select_slave_in_guild", [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
@@ -220,11 +221,12 @@ func sell_slave():
 			continue
 		char_list.append(tchar)
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveList/ScrollContainer/VBoxContainer)
-		newbutton.get_node("name").text = tchar.get_stat('name')
+		newbutton.get_node("name").text = tchar.get_short_name() + " - " + tchar.get_short_race()
 		newbutton.get_node("Price").text = str(round(tchar.calculate_price() / 2))
 		newbutton.connect("pressed", self, 'show_slave_info', [tchar])
 		newbutton.connect('gui_input', self, 'double_clicked')
 		newbutton.set_meta("person", tchar)
+		newbutton.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(newbutton, tchar)
 	if char_list != []:
 		var person = char_list[0]

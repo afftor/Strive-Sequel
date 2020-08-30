@@ -1143,6 +1143,8 @@ func common_effects(effects):
 			'affect_active_party':
 				for k in input_handler.get_active_party():
 					k.affect_char(i)
+			'progress_active_location':
+				input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false).gui_data['EXPLORATION'].main_module.skip_to_boss()
 
 func checkreqs(array):
 	var check = true

@@ -31,7 +31,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 5.346, 5.676 ),
+"times": PoolRealArray( 0, 0.2, 6.501, 6.831 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 0.0, 0.0 ]
@@ -55,7 +55,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 5.346, 5.676 ),
+"times": PoolRealArray( 0, 0.2, 6.501, 6.831 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 200 ), Vector2( 600, 200 ), Vector2( 600, 200 ), Vector2( 0, 200 ) ]
@@ -67,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
+"times": PoolRealArray( 0.633333, 0.9, 6.171, 6.402 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1257.7, 107.759 ), Vector2( 1257.7, 107.759 ), Vector2( 1257.7, 107.759 ), Vector2( 1257.7, 107.759 ) ]
@@ -79,7 +79,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.9, 5.016, 5.247 ),
+"times": PoolRealArray( 0, 0.633333, 0.9, 5.28, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -90.0, -90.0, 0.0, 0.0, -90.0 ]
@@ -91,7 +91,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.28, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ) ]
@@ -103,7 +103,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.733333, 5.148, 5.247 ),
+"times": PoolRealArray( 0, 0.633333, 0.733333, 5.412, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -115,7 +115,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.28, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 545.556, 107.276 ), Vector2( 545.556, 107.276 ), Vector2( 545.556, 107.276 ), Vector2( 545.556, 107.276 ) ]
@@ -127,7 +127,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.9, 5.016, 5.247 ),
+"times": PoolRealArray( 0, 0.633333, 0.9, 5.28, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 90.0, 90.0, 0.0, 0.0, 90.0 ]
@@ -139,7 +139,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0.633333, 0.9, 5.016, 5.247 ),
+"times": PoolRealArray( 0.633333, 0.9, 5.28, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ), Vector2( 120, 250 ) ]
@@ -151,7 +151,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.633333, 0.733333, 5.148, 5.247 ),
+"times": PoolRealArray( 0, 0.633333, 0.733333, 5.412, 5.511 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -247,7 +247,7 @@ tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 0, 0.466666, 0.666666, 4.983, 5.148 ),
+"times": PoolRealArray( 0, 0.466666, 0.666666, 5.247, 5.412 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -259,7 +259,7 @@ tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"times": PoolRealArray( 0, 0.766666, 0.999999, 4.917, 5.082 ),
+"times": PoolRealArray( 0, 0.766666, 0.999999, 5.181, 5.346 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -271,7 +271,7 @@ tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"times": PoolRealArray( 0, 0.466666, 0.933332, 4.653, 5.082 ),
+"times": PoolRealArray( 0, 0.466666, 0.933332, 4.917, 5.346 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -283,7 +283,7 @@ tracks/22/loop_wrap = true
 tracks/22/imported = false
 tracks/22/enabled = true
 tracks/22/keys = {
-"times": PoolRealArray( 0, 0.899999, 1.3, 4.785, 4.95 ),
+"times": PoolRealArray( 0, 0.899999, 1.3, 5.082, 5.247 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -313,12 +313,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-<<<<<<< HEAD
-anims/Defeated = SubResource( 1 )
-anims/class_achieved = SubResource( 2 )
-=======
 anims/class_achieved = SubResource( 1 )
->>>>>>> master
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 margin_left = 1926.17
@@ -346,7 +341,7 @@ __meta__ = {
 [node name="TextureRect4" type="TextureRect" parent="."]
 margin_left = -1558.21
 margin_top = 296.242
-margin_right = -9.19849
+margin_right = -9.19922
 margin_bottom = 532.242
 texture = ExtResource( 7 )
 __meta__ = {
@@ -393,10 +388,10 @@ __meta__ = {
 }
 
 [node name="TextureRect7" type="TextureRect" parent="."]
-margin_left = 663.406
-margin_top = 151.155
-margin_right = 663.406
-margin_bottom = 351.155
+margin_left = 961.0
+margin_top = 151.0
+margin_right = 961.0
+margin_bottom = 351.0
 rect_pivot_offset = Vector2( 300, 100 )
 texture = ExtResource( 8 )
 expand = true

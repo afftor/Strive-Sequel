@@ -38,11 +38,12 @@ func show_characters_panel():
 	# var idx = 0
 	var name
 	input_handler.ClearContainer(CharList)
-	for character in ResourceScripts.game_party.characters.values():
-		print(character)
+	for i in ResourceScripts.game_party.character_order:
+		var character = ResourceScripts.game_party.characters[i]
 		name = character.get_full_name()
 		var newbutton = input_handler.DuplicateContainerTemplate(CharList)
 		newbutton.get_node("CharacterName").text = name
+		newbutton.get_node("icon").texture = character.get_icon()
 		newbutton.connect("pressed", self, "show_stats", [character])
 		newbutton.set_meta("slave", character)
 	$StatsPanel.hide()
