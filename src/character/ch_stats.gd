@@ -39,8 +39,7 @@ func custom_stats_set(st, value):
 #		if value.has(st+'_factor'):
 		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
 	if st == 'lust':
-		statlist.lustmax = 25 + statlist.sexuals_factor * 25
-		statlist.lust = clamp(value, 0, statlist.lustmax)
+		statlist.lust = clamp(value, 0, get_stat('lustmax'))
 
 
 func custom_stats_get():
@@ -70,6 +69,9 @@ func custom_stats_get():
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		res['mpmax'] = tres
+	if res.has('lustmax'):
+		res.lustmax = 25 + res.sexuals_factor * 25
+		res.lust = clamp(res.lust, 0, res.lustmax)
 	if res.has('resists'):
 		var tres = res.resists
 		for r in variables.resists_list:
