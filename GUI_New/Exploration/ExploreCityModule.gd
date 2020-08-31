@@ -12,7 +12,6 @@ func open_city(city):
 	var expnode = get_parent()
 	expnode.get_node("LocationGui").hide()
 	show()
-
 	expnode.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[city].area]
 	expnode.active_location = {}
 	input_handler.active_area = expnode.active_area

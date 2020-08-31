@@ -356,14 +356,19 @@ func recruit_from_scene(order = 0):
 	input_handler.active_character = input_handler.scene_characters[order]
 	recruit()
 
-func recruit():
+func capture_from_scene(order = 0):
+	input_handler.active_character = input_handler.scene_characters[order]
+	recruit(true)
+
+
+func recruit(capture = false):
 	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
 		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 			input_handler.SystemMessage("You don't have enough rooms")
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
-	input_handler.active_character.recruit()
+	input_handler.active_character.recruit(capture)
 	close()
 
 func create_location_recruit(args):

@@ -26,7 +26,7 @@ func make_world():
 	ResourceScripts.world_gen.build_world()
 	areas.plains.unlocked = true
 	areas.forests.unlocked = true
-	mansion_location = areas[starting_area].capital_name
+	mansion_location = areas[starting_area].capital_code
 
 func get_area_name(area_id):
 	return areas[area_id].name

@@ -399,6 +399,7 @@ var scenedict = {
 	options = [
 	{code = 'event_goblin_recruit', reqs = [], select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
 	{code = 'event_goblin_skip_dungeon', reqs = [],  select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
+	{code = 'event_goblin_capture', reqs = [], text = tr("DIALOGUEEVENTGOBLINCAPTURE")},
 	{code = 'event_goblin_kill', reqs = [], text = tr("DIALOGUEEVENTGOBLINKILL")},
 	{code = 'event_goblin_leave', reqs = [], text = tr("DIALOGUEEVENTGOBLINGLEAVE")}
 	]
@@ -452,7 +453,16 @@ var scenedict = {
 			}
 		],
 	},
-	
+	event_goblin_capture = {
+	text = "DIALOGUEEVENTGOBLINKILLREPLY",
+	image = '',
+	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
+	tags = ['active_character_translate','scene_character_translate'],
+	options = [
+		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
+		]
+	},
 	event_goblin_kill = {
 	text = "DIALOGUEEVENTGOBLINKILLREPLY",
 	image = '',

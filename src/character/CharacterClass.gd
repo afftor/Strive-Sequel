@@ -189,10 +189,10 @@ func generate_predescribed_character(data):
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
+	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
 	add_trait('core_trait')
-	learn_c_skill('attack')
 
 func setup_baby(mother, father):
 	statlist.setup_baby(mother, father)
@@ -267,9 +267,17 @@ func set_travel_time(value):
 func return_to_mansion():
 	travel.return_to_mansion()
 
-func recruit():
-	travel.recruit()
+func recruit(enslave = false):
+	travel.location = input_handler.active_location.id
+	if enslave == true:
+		set_slave_category('slave')
+		
 	ResourceScripts.game_party.add_slave(self)
+
+func recruit_and_return():
+	travel.return_recruit()
+	ResourceScripts.game_party.add_slave(self)
+
 
 func set_work(task):
 	xp_module.remove_from_task()

@@ -42,13 +42,13 @@ func sort_locations(locations_array):
 func build_accessible_locations():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 	input_handler.ClearContainer(Navigation)
-	var location_array = ["Aliron"]
+	var location_array = ["aliron"]
 	var travelers = []
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		var person_location = person.get_location()
 		if person_location == "mansion":
-			person_location = "Aliron"
+			person_location = "aliron"
 		if (!location_array.has(person_location)):
 			location_array.append(person_location)
 

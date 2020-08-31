@@ -458,6 +458,7 @@ var racelist = {
 		diet_love = {vege = 1, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
 		tags = [],
+		combat_skills = ['fairy_heal'],
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],

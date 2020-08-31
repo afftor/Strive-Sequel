@@ -1522,6 +1522,32 @@ var Skilllist = {
 		value = 1.3,
 		damagestat = ['-damage_hp']
 	},
+	fairy_heal = {#heals target for 50%
+		code = 'fairy_heal',
+		
+		descript = '',
+		icon = load("res://assets/images/enemies/fairyf.png"),
+		type = 'combat', 
+		ability_type = 'spell',
+		tags = ['heal', 'noreduce', 'noevade','support', 'exploration'],
+		reqs = [],
+		targetreqs = [],
+		effects = [], 
+		manacost = 15,
+		energycost = 0,
+		charges = 1,
+		combatcooldown = 0,
+		cooldown = 1,
+		catalysts = {},
+		target = 'ally',
+		target_number = 'single',
+		target_range = 'any',
+		damage_type = 'light',
+		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
+		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
+		value = 1.3,
+		damagestat = ['-damage_hp']
+	},
 	first_aid = {#heals target for 35%
 		code = 'first_aid',
 		descript = '',

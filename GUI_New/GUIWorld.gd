@@ -290,7 +290,7 @@ func test_mode():
 
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'futa', 'random')
+		character.create('Fairy', 'futa', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -301,6 +301,7 @@ func test_mode():
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.add_stat('charm', 100)
+		character.add_stat('physics', 100)
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
