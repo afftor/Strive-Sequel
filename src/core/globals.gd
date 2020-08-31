@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.3.0e'
+const gameversion = '0.3.1'
 
 #time
 signal hour_tick
@@ -964,7 +964,7 @@ func remove_location(locationid):
 	area.questlocations.erase(location.id)
 	input_handler.update_slave_list()
 	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
-		input_handler.exploration_node.Navigation.select_location('Aliron')
+		input_handler.exploration_node.Navigation.select_location('aliron')
 		input_handler.exploration_node.Navigation.build_accessible_locations()
 
 func return_characters_from_location(locationid):

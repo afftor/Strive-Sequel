@@ -854,7 +854,7 @@ func punish_process(value):
 func build_observing_slaves():
 	for i in ResourceScripts.game_party.character_order:
 		var character = ResourceScripts.game_party.characters[i]
-		if character.check_location('Aliron') && character != person && !character.has_profession('master'):
+		if character.check_location('aliron') && character != person && !character.has_profession('master'):
 			observing_slaves.append(character)
 
 func slap(person, counter):

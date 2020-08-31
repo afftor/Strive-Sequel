@@ -109,7 +109,7 @@ func build_location_list(area, container):
 		var text = tr("MANSION")
 		newbutton.text = text
 		newbutton.get_node("Label").text = str(calculate_location_characters("Aliron", newbutton))
-		newbutton.set_meta("code", "Aliron")
+		newbutton.set_meta("code", "aliron")
 		newbutton.connect('pressed', self, 'select_location', [newbutton])
 	for location in sorted_locations:
 		var newbutton = input_handler.DuplicateContainerTemplate(container)
@@ -126,7 +126,7 @@ func calculate_location_characters(location, button):
 	var characters_count = 0
 	for character in ResourceScripts.game_party.characters.values():
 		if character.get_location() == "mansion":
-			character.travel.location = "Aliron"
+			character.travel.location = "aliron"
 		if character.get_location() == location:
 			characters_count += 1
 	if characters_count == 0:

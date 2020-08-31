@@ -6,7 +6,7 @@ var scenedict = {
 	
 	slave_escape = {text = tr("DIALOGUEESCAPETEXT"), image = 'slaveescape', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUEESCAPECLOSE")}]},
 	
-	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'exotic_slaver', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 6}]}], tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
+	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 6}]}], tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
 	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
 	
@@ -344,15 +344,15 @@ var scenedict = {
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"), 
 	tags = ['active_character_translate'],
 	image = '', 
-	common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'slave'},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 20}],
+	common_effects = [],
 	options = [
-	{code = 'recruit', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION")},
+	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
 	]
 	},
 	event_dungeon_prisoner_free = {
 		variations = [
-			{reqs = [{type = 'random', value = 0.6}],
+			{reqs = [{type = 'random', value = 70}],
 			text = tr("DIALOGUEEVENTDUNGEONPRISONERFREE1"),
 			image = 'chest',
 			default_event_type = "loot",
@@ -400,8 +400,8 @@ var scenedict = {
 	{code = 'event_goblin_recruit', reqs = [], select_person = true, text = ("DIALOGUEEVENTGOBLINRECRUIT")},
 	{code = 'event_goblin_skip_dungeon', reqs = [],  select_person = true, text = tr("DIALOGUEEVENTGOBLINBRINGTOLEADER")},
 	{code = 'event_goblin_capture', reqs = [], text = tr("DIALOGUEEVENTGOBLINCAPTURE")},
-	{code = 'event_goblin_kill', reqs = [], text = tr("DIALOGUEEVENTGOBLINKILL")},
-	{code = 'event_goblin_leave', reqs = [], text = tr("DIALOGUEEVENTGOBLINGLEAVE")}
+	#{code = 'event_goblin_kill', reqs = [], text = tr("DIALOGUEEVENTGOBLINKILL")},
+	{code = 'event_goblin_leave', reqs = [], text = tr("DIALOGUEEVENTGOBLINLEAVE")}
 	]
 	},
 	
@@ -454,7 +454,7 @@ var scenedict = {
 		],
 	},
 	event_goblin_capture = {
-	text = "DIALOGUEEVENTGOBLINKILLREPLY",
+	text = "DIALOGUEEVENTGOBLINCAPTUREREPLY",
 	image = '',
 	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
 	tags = ['active_character_translate','scene_character_translate'],
@@ -474,6 +474,84 @@ var scenedict = {
 	event_goblin_leave = {
 	text = "DIALOGUEEVENTGOBLINLEAVEREPLY",
 	image = '',
+	tags = ['active_character_translate'],
+	options = [
+		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
+		],
+	},
+	
+	event_fairy_friendly = {text = tr("DIALOGUEEVENTGOBLINFRIENDLY"), 
+	tags = ['linked_event','active_character_translate'],
+	default_event_type = "character_event",
+	image = 'fairy', 
+	
+	common_effects = [
+	{code = 'make_scene_character', 
+	value = [
+		{type = 'function', 
+		function = 'make_local_recruit', 
+		args = {
+			races = [['Fairy', 5]], 
+			difficulty = [0,1], 
+			type = 'servant'
+			}
+		},
+		],
+	}
+	],
+	options = [
+	{code = 'event_fairy_recruit', reqs = [], select_person = true, text = ("DIALOGUEEVENTFAIRYRECRUIT")},
+	{code = 'event_fairy_heal', reqs = [], text = tr("DIALOGUEEVENTFAIRYASKHEAL")},
+	{code = 'event_fairy_capture', reqs = [], text = tr("DIALOGUEEVENTFAIRYCAPTURE")},
+	{code = 'event_fairy_leave', reqs = [], text = tr("DIALOGUEEVENTFAIRYLEAVE")}
+	]
+	},
+	event_fairy_recruit = {
+		variations = [
+			{reqs = [{type = 'active_character_checks', value = [{code = 'stat', stat = 'charm', operant = 'gte', value = ['random 30', "+25"]}]}],
+			text = 'DIALOGUEEVENTFAIRYRECRUITSUCCESS',
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 50},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
+			tags = ['active_character_translate','scene_character_translate'],
+			image = 'fairy',
+			options = [
+				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
+				]
+			},
+			{reqs = [],
+			text = "DIALOGUEEVENTFAIRYRECRUITFAILURE",
+			image = 'fairy',
+			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
+			tags = ['active_character_translate','scene_character_translate'],
+			options = [
+				{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
+				],
+				
+			}
+		],
+	},
+	event_fairy_heal = {
+	text = "DIALOGUEEVENTFAIRYASKHEALREPLY",
+	image = 'fairy',
+	tags = ['active_character_translate'],
+	bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = -35}],
+	options = [
+		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
+		],
+	},
+	event_fairy_capture = {
+	text = "DIALOGUEEVENTFAIRYCAPTUREREPLY",
+	image = 'fairy',
+	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
+	tags = ['active_character_translate','scene_character_translate'],
+	options = [
+		{code = 'capture_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
+		]
+	},
+	event_fairy_leave = {
+	text = "DIALOGUEVENTFAIRYLEAVEREPLY",
+	image = 'fairy',
 	tags = ['active_character_translate'],
 	options = [
 		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},

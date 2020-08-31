@@ -60,13 +60,13 @@ func open_jobs_window():
 		restbutton.pressed = person.get_work() == ''
 
 		### Temporary Patch
-		if person.travel.location == "mansion": person.travel.location = "Aliron"
+		if person.travel.location == "mansion": person.travel.location = "aliron"
 
 		var gatherable_resources = []
 		var person_location = person.get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var location_type
-		if person_location != 'Aliron':
+		if person_location != 'aliron':
 			location_type = location.type
 			if location_type == "dungeon":
 				if location.completed == true:
@@ -95,7 +95,7 @@ func open_jobs_window():
 			text =  "Gather " + item_dict.name.capitalize()
 			var newbutton = input_handler.DuplicateContainerTemplate($job_panel/ScrollContainer/VBoxContainer)
 			newbutton.set_meta("resource", resource)
-			if person_location != 'Aliron' && location_type != "dungeon":
+			if person_location != 'aliron' && location_type != "dungeon":
 				max_workers_count = gatherable_resources[resource]
 				var active_tasks = ResourceScripts.game_party.active_tasks
 				for task in active_tasks:

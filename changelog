@@ -1,9 +1,13 @@
 Added multiple GUI animations to some actions
-Added new random events: New chest lock type traps, mimics, finding random resources
+Added new random events: New chest lock type traps, mimics, finding random resources, encounters
 Added effect duration in tooltip for combat
 Added race name to labels in hiring menu
+Recruited characters won't automatically travel to mansion anymore
+Forcefully recruited characters will receive new debuff preventing them from gaining obedience from positive skills
+Characters won't participate in fight at 0 obedience
 Breeder class is renamed to Breed Sow and now can be unlocked. Stats and reqs changed
 Slightly readjusted Aliron's slave race rates (Humans are more common than halfkins; elves are more common in general and rare races are equially as common as elves for slave market)
+Fairies lose some stats but gain a racial healing skill
 Added exotic slave trader shop every 2 weeks starting day 7 (requires new game)
 Main stats now grow slower at higher levels (starting at 40 base)
 Kobold females now generate with smaller breast size

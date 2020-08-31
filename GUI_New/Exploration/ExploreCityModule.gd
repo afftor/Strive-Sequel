@@ -47,7 +47,7 @@ func open_city(city):
 			newbutton.get_node("Label").rect_size.x = 272
 			newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 			newbutton.get_node("Icon").hide()
-		elif i.code == 'exotic_slave_trader'&& ResourceScripts.game_globals.date % 7 == 0 && ResourceScripts.game_globals.date % 14 != 0 && ResourceScripts.game_globals.hour >= 6 && ResourceScripts.game_globals.hour <= 20:#fix button toggle 
+		elif i.code == 'exotic_slave_trader'&& int(ResourceScripts.game_globals.date) % 7 == 0 && int(ResourceScripts.game_globals.date) % 14 != 0 && ResourceScripts.game_globals.hour >= 6 && ResourceScripts.game_globals.hour <= 20:#fix button toggle 
 			newbutton = input_handler.DuplicateContainerTemplate($AreaEvents)
 			newbutton.get_node("Label").text = i.name
 			newbutton.connect("pressed", expnode.Hire, "open_slave_market", [i])

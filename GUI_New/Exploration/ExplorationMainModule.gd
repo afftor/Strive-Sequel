@@ -75,6 +75,7 @@ func _ready():
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
 	globals.connect("hour_tick", self, "build_location_group")
+	input_handler.connect("EventFinished", self, 'build_location_group')
 
 
 func select_workers():
@@ -722,7 +723,7 @@ func advance():
 		enter_dungeon()
 	elif action_type == 'location_finish':
 		Navigation.build_accessible_locations()
-		Navigation.select_location("Aliron")
+		Navigation.select_location("aliron")
 	else:
 		enter_dungeon()
 
@@ -755,6 +756,9 @@ func slave_position_selected(pos, character):
 		return
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate("[name] has sustained a grave injury and is unable to participate in fights."))
+		return
+	elif character.get_stat('obedience') <= 0 and character.get_stat('loyalty') < 100 and character.get_stat('submission') < 100 and !character.has_profession('master'):
+		input_handler.SystemMessage(character.translate("[name] refuses to participate in a fight (low obedience)."))
 		return
 	character = character.id
 	var positiontaken = false

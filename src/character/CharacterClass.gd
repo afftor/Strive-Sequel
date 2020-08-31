@@ -271,7 +271,9 @@ func recruit(enslave = false):
 	travel.location = input_handler.active_location.id
 	if enslave == true:
 		set_slave_category('slave')
-		
+		var eff =  effects_pool.e_createfromtemplate(Effectdata.effect_table.resist_state)
+		apply_effect(effects_pool.add_effect(eff))
+		eff.remains = 12 * (8 - get_stat('timid_factor'))
 	ResourceScripts.game_party.add_slave(self)
 
 func recruit_and_return():
@@ -379,8 +381,6 @@ func can_use_skill(skill):
 
 func has_status(status):
 	var res = effects.has_status(status)
-	if status == 'no_combat':
-		res = res or (get_stat('obedience') <= 0 and get_stat('loyalty') < 100 and get_stat('submission') < 100 and !has_profession('master'))
 	return res
 
 func can_be_damaged(s_name):
@@ -750,6 +750,11 @@ func show_race_description():
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
 		else:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
+	text = text.substr(0, text.length() - 2) + "."
+	if temprace.has("combat_skills"):
+		text += "\nCombat Abilitites: " 
+		for i in temprace.combat_skills:
+			text += Skilldata.Skilllist[i].name + "; "
 	text = text.substr(0, text.length() - 2) + "."
 	
 	return text

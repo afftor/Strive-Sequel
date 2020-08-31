@@ -369,7 +369,7 @@ func test_mode():
 		characters_pool.move_to_state(character.id)
 
 		ResourceScripts.game_globals.date = 7
-		ResourceScripts.game_globals.hour = 7
+		ResourceScripts.game_globals.hour = 5
 
 		character.set_stat('obedience', 100)
 		#character.fear = 25
@@ -550,10 +550,10 @@ func test_mode():
 #		character.create('HalfkinCat', 'random', 'random')
 #		characters_pool.move_to_state(character.id)
 		for c in ResourceScripts.game_party.characters.values():
-			if c.get_location() == "mansion": c.travel.location = "Aliron"
+			if c.get_location() == "mansion": c.travel.location = "aliron"
 
 	input_handler.ActivateTutorial("introduction")
-	#input_handler.interactive_message('event_goblin_friendly', '', {})
+	#input_handler.interactive_message('aliron_exotic_trader', '', {})
 
 
 
@@ -561,7 +561,7 @@ func set_window_to_open():
 	return false
 	CurrentScene = gui_data.EXPLORATION.main_module
 	BaseScene = gui_data.EXPLORATION.main_module
-	gui_data["MANSION"].main_module.selected_location = "Aliron"
+	gui_data["MANSION"].main_module.selected_location = "aliron"
 	BaseScene.open()
 	BaseScene.active_area = ResourceScripts.game_world.areas.plains
 	var faction = BaseScene.active_area.factions["servants"]
