@@ -2788,6 +2788,36 @@ var effect_table = {
 		buffs = []
 	},
 	
+#	combat_obed = {
+#		type = 'c_static',
+#		conditions = [{code = 'stat', stat = 'obedience', operant = 'lte', value = 0}],
+#		tags = ['recheck_stats'],
+#		atomic = [],
+#		buffs = [], 
+#		sub_effects = [{
+#			type = 'static',
+#			tags = ['no_combat']
+#		}],
+#	},
+
+obed_block = {
+	type = 'temp_s',
+	duration = 36,
+	stack = 1,
+	name = 'obed_block',
+	tick_event = [variables.TR_TICK],
+	args = [],
+	sub_effects = [],
+	tags = ['no_obed_gain'],
+	buffs = [{
+		icon = "",
+		description = "Can't gain obedience. Can't use some skills. %d hours remains",
+		args = [{obj = 'parent', param = 'remains'}],
+		limit = 1,
+		t_name = 'obed_block',
+	}]
+},
+
 };
 
 var atomic = {

@@ -443,7 +443,16 @@ func build_spell_panel():
 				newnode.dragdata = {skill = skill, caster = person}
 				if person.mp < skill.manacost:
 					disabled = true
-
+				if person.has_status('no_obed_gain'):
+					disabled = true
+				if skill.charges > 0:
+					var leftcharges = skill.charges
+					if person.skills.combat_skill_charges.has(skill.code):
+						leftcharges -= person.skills.combat_skill_charges[skill.code]
+#						newbutton.get_node("charge").visible = true
+#						newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+					if leftcharges <= 0:
+						disabled = true
 				if disabled == true:
 					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
 					newnode.script = null
@@ -811,6 +820,12 @@ func use_e_combat_skill(caster, target, skill):
 	caster.mp -= skill.manacost
 	for i in skill.catalysts:
 		ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
+	if skill.charges > 0:
+		if caster.skills.combat_skill_charges.has(skill.code):
+			caster.skills.combat_skill_charges[skill.code] += 1
+		else:
+			caster.skills.combat_skill_charges[skill.code] = 1
+		caster.skills.daily_cooldowns[skill.code] = skill.cooldown
 	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
 	s_skill1.createfromskill(skill.code)
 	s_skill1.setup_caster(caster)
