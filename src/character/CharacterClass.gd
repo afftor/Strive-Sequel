@@ -378,7 +378,10 @@ func can_use_skill(skill):
 	return true
 
 func has_status(status):
-	return effects.has_status(status)
+	var res = effects.has_status(status)
+	if status == 'no_combat':
+		res = res or (get_stat('obedience') <= 0 and get_stat('loyalty') < 100 and get_stat('submission') < 100 and !has_profession('master'))
+	return res
 
 func can_be_damaged(s_name):
 	return effects.can_be_damaged(s_name)
