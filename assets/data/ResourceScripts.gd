@@ -53,6 +53,7 @@ onready var node_data = {
 	input_handler.NODE_TUTORIAL : {name = 'tutorial_node', mode = 'scene', scene = preload("res://src/scenes/TutorialNode.tscn")},
 	input_handler.NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
 	input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://GUI_New/Universal/InteractiveMessageModule.tscn")},
+	# input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://GUI_New/Universal/InteractiveMessageModuleAnimated.tscn")},
 	# input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/scenes/InteractiveMessage.tscn")},
 	input_handler.NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://src/main/Inventory.tscn"), calls = 'open'},
 	input_handler.NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},

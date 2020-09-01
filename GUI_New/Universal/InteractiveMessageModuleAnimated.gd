@@ -34,7 +34,7 @@ func open(scene, not_save = false):
 	$ScrollContainer.modulate.a = 0
 	if scene.tags.has("blackscreen_transition_common"):
 		ResourceScripts.core_animations.BlackScreenTransition(1)
-		# yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
 		if scene.tags.has("close_guild"):
 			var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 			var guild = GUIWorld.gui_data.EXPLORATION.main_module.City
@@ -44,7 +44,7 @@ func open(scene, not_save = false):
 			guild.get_node("GuildMenuBG").hide()
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
-		# yield(get_tree().create_timer(2), "timeout")
+		yield(get_tree().create_timer(2), "timeout")
 	
 	if scene.has("character") == false:
 		$ImagePanel.show()
@@ -121,13 +121,8 @@ func open(scene, not_save = false):
 		dialogue_enemy = scene.set_enemy
 	var counter = 1
 	var options = scene.options
-
-	if $RichTextLabel.bbcode_text != '':
-		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
-	else:
-		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
 	for i in options:
-		# yield(get_tree(), 'idle_frame')
+		#yield(get_tree(), 'idle_frame')
 		if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
 			continue
 		var disable = false
@@ -137,7 +132,6 @@ func open(scene, not_save = false):
 			else:
 				continue
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.hide()
 		newbutton.get_node("Label").bbcode_text = tr(i.text)
 		newbutton.get_node("hotkey").text = str(counter)
 		yield(get_tree(), 'idle_frame')
@@ -182,20 +176,12 @@ func open(scene, not_save = false):
 			newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
 		newbutton.disabled = disable
 		counter += 1
-
+	if $RichTextLabel.bbcode_text != '':
+		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
+	else:
+		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
 	yield(get_tree().create_timer(0.7), "timeout")
 	hold_selection = false
-	animate_buttons()
-
-func animate_buttons():
-	var count = $ScrollContainer/VBoxContainer.get_child_count()
-	count -= 1
-	while count != 0:
-		if  $ScrollContainer/VBoxContainer.get_child(count).name == "Button": continue
-		$ScrollContainer/VBoxContainer.get_child(count).show()
-		ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer/VBoxContainer.get_child(count),1)
-		yield(get_tree().create_timer(1), "timeout")
-		count -= 1
 
 func complete_skirmish():
 	globals.complete_location(input_handler.active_location.id)
@@ -334,13 +320,13 @@ func select_option(number):
 			button.toggle_mode = true
 			button.pressed = true
 			hold_selection = true
-			# yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.2), "timeout")
 			button.emit_signal("pressed")
 
 func close(transition = false):
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
-	# yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
 	if transition == false:
 		input_handler.scene_characters.clear()
