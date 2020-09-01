@@ -453,11 +453,12 @@ var racelist = {
 			charm_factor = [4,5],
 			wits_factor = [1,3],
 		},
-		race_bonus = {hpfactor = 0.65, matk = 10, modmelee = -0.2, evasion = 30, mod_collect = -0.2},
+		race_bonus = {hpfactor = 0.65, matk = 8, modmelee = -0.2, evasion = 25, mod_collect = -0.2},
 		personality = {kind = 1, bold = 0.7, shy = 1, serious = 0.2},
 		diet_love = {vege = 1, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 30, grain = 10},
 		tags = [],
+		combat_skills = ['fairy_heal'],
 		bodyparts = {
 			ears = ['elven'],
 			hair_color = ['green','blond','purple','white','gradient'],

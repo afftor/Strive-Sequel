@@ -230,6 +230,14 @@ text = "Elf"
 align = 1
 valign = 1
 
+[node name="Panel" type="Panel" parent="EventCharacters/VBoxContainer/Button"]
+show_behind_parent = true
+margin_right = 164.0
+margin_bottom = 165.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PlayerCharacters" type="ScrollContainer" parent="."]
 margin_left = 789.0
 margin_top = -297.0

@@ -55,6 +55,7 @@ func _ready():
 		input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
+		globals.common_effects({code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]})
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
@@ -289,7 +290,7 @@ func test_mode():
 
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'futa', 'random')
+		character.create('Fairy', 'futa', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -299,7 +300,8 @@ func test_mode():
 		
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2
-		character.statlist.statlist.sex_skills.anal = 100
+		character.add_stat('charm', 100)
+		character.add_stat('physics', 100)
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
@@ -366,7 +368,8 @@ func test_mode():
 		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 
-
+		ResourceScripts.game_globals.date = 7
+		ResourceScripts.game_globals.hour = 5
 
 		character.set_stat('obedience', 100)
 		#character.fear = 25
@@ -523,8 +526,8 @@ func test_mode():
 		tmp.anal = 90
 		tmp.petting = 100
 		#character.set_stat('sex_skills', tmp)
-		# input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
-		# input_handler.active_area = ResourceScripts.game_world.areas.plains
+		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
+		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
@@ -547,10 +550,10 @@ func test_mode():
 #		character.create('HalfkinCat', 'random', 'random')
 #		characters_pool.move_to_state(character.id)
 		for c in ResourceScripts.game_party.characters.values():
-			if c.get_location() == "mansion": c.travel.location = "Aliron"
+			if c.get_location() == "mansion": c.travel.location = "aliron"
 
 	input_handler.ActivateTutorial("introduction")
-	#input_handler.interactive_message('daisy_meet', '', {})
+	#input_handler.interactive_message('aliron_exotic_trader', '', {})
 
 
 
@@ -558,7 +561,7 @@ func set_window_to_open():
 	return false
 	CurrentScene = gui_data.EXPLORATION.main_module
 	BaseScene = gui_data.EXPLORATION.main_module
-	gui_data["MANSION"].main_module.selected_location = "Aliron"
+	gui_data["MANSION"].main_module.selected_location = "aliron"
 	BaseScene.open()
 	BaseScene.active_area = ResourceScripts.game_world.areas.plains
 	var faction = BaseScene.active_area.factions["servants"]

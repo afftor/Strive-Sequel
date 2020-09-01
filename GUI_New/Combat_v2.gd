@@ -110,16 +110,14 @@ func cheatvictory():
 func play_animation(anim):
 	var anim_scene
 	if anim == "defeat":
-		input_handler.PlaySound("combat_defeat")
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
+		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	elif anim == "defeat":
 		print("") # Here will be win animation
-	# yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-	# ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-	# yield(get_tree().create_timer(0.5), 'timeout')
-	return anim_scene
-	# anim_scene.queue_free()
+	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	anim_scene.queue_free()
 
 
 
@@ -432,22 +430,19 @@ func victory():
 
 func defeat():
 	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
-	var anim_scene = play_animation("defeat")
+	play_animation("defeat")
+	input_handler.PlaySound("combat_defeat")
+	yield(get_tree().create_timer(3), "timeout")
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
-	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-
-
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
 	FinishCombat(false)
-	# yield(get_tree().create_timer(0.5), 'timeout')
+	yield(get_tree().create_timer(0.5), 'timeout')
 	var active_location = GUIWorld.gui_data.EXPLORATION.main_module.active_location
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-	yield(get_tree().create_timer(0.5), "timeout")
 	hide()
-	anim_scene.queue_free()
 
 func player_turn(pos):
 	$Menu/Run.disabled = false
@@ -1429,7 +1424,10 @@ func RebuildSkillPanel():
 		if !activecharacter.checkreqs(skill.reqs):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.has_status('silence') and skill.ability_type == 'spell':
+		if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+			newbutton.disabled = true
+			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+		if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
@@ -1445,18 +1443,18 @@ func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	skill = Skilldata.Skilllist[skill]
 	#need to add daily restriction check
-	if activecharacter.mp < skill.manacost || activecharacter.skills.combat_cooldowns.has(skill.code) :
+	if !activecharacter.can_use_skill(skill)  :
 		#SelectSkill('attack')
-		call_deferred('SelectSkill', 'attack')
+		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
 		return
 	for i in skill.catalysts:
 		if ResourceScripts.game_res.materials[i] < skill.catalysts[i]:
 			input_handler.SystemMessage("Missing catalyst: " + Items.materiallist[i].name)
-			call_deferred('SelectSkill', 'attack');
+			call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'));
 			break
 	if skill.charges > 0 && activecharacter.skills.combat_skill_charges.has(skill.code) && activecharacter.skills.combat_skill_charges[skill.code] >= skill.charges:
 		#input_handler.SystemMessage("No charges left: " + skill.name)
-		call_deferred('SelectSkill', 'attack')
+		call_deferred('SelectSkill', activecharacter.get_skill_by_tag('default'))
 		return
 	activecharacter.selectedskill = skill.code
 	activeaction = skill.code

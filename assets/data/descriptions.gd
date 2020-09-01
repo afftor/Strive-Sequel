@@ -87,7 +87,7 @@ func entry():
 	var text = ''
 	text += person.get_full_name() + ". "
 	if person.has_profession('master'):
-		text =  "[color=green]Mansion's [Master][/color] - " + text
+		text = "[color=green]Mansion's [Master][/color] - " + text
 	return text
 
 var showmode = 'default'

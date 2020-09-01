@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUI_New/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
@@ -25,7 +25,6 @@
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=23]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=24]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=25]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=26]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=27]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=29]
@@ -278,17 +277,16 @@ visible = false
 margin_right = 50.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 50, 50 )
-theme = ExtResource( 26 )
 texture = ExtResource( 24 )
 expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel/PlayerGroup/Back/left/Template/Buffs/Button"]
 visible = false
-margin_left = -10.0
-margin_top = 15.0
-margin_right = 62.0
-margin_bottom = 47.0
+margin_left = 3.17221
+margin_top = 25.7773
+margin_right = 75.1722
+margin_bottom = 57.7773
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

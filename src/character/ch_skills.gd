@@ -106,6 +106,7 @@ func get_skill_by_tag(tg):
 	for s in combat_skills:
 		var s_f = Skilldata.Skilllist[s]
 		if s_f.tags.has(tg): return s
+	return null
 
 func restore_skill_charge(code):
 	if social_skills_charges.has(code):
@@ -256,7 +257,11 @@ func use_social_skill(s_code, target):
 				
 				'obedience':
 					var skill_stat_type
-					if template.tags.has('positive'): skill_stat_type = target.get_stat('tame_factor')
+					if template.tags.has('positive'): 
+						skill_stat_type = target.get_stat('tame_factor')
+						if h.has_status('no_obed_gain'): 
+							detail_tags.append('blocked')
+							i.value = 0
 					if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor')
 					i.value = round(i.value * (0.9 + skill_stat_type*0.1))
 			
@@ -308,6 +313,8 @@ func use_social_skill(s_code, target):
 				effect_text += " - Maxed"
 			if detail_tags.has("submissionmaxed") && stat == 'submission':
 				effect_text += ' - Maxed'
+			if detail_tags.has("blocked") && stat == 'obedience':
+				effect_text += ' - Is in resist mode'
 			for i in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)

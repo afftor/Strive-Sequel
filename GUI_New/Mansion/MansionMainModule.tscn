@@ -135,7 +135,6 @@ margin_right = 1420.0
 margin_bottom = 1063.0
 
 [node name="TestButton" type="Button" parent="."]
-visible = false
 margin_left = 1396.24
 margin_top = 26.3459
 margin_right = 1458.24

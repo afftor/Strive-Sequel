@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreCity.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/MANSION/LeftMenu/Buttons/buttonicon.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_workers.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=14]
+[ext_resource path="res://GUI_New/Exploration/ExploreCityModule.gd" type="Script" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -24,6 +25,7 @@ self_modulate = Color( 1, 1, 1, 0.854902 )
 margin_right = 272.0
 margin_bottom = 488.0
 theme = ExtResource( 1 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

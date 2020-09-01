@@ -99,7 +99,7 @@ var effect_table = {
 	},
 	e_tr_breeder = {
 		type = 'static',
-		atomic = [{type = 'stat_add_p', stat = 'mod_farm', value = 1.0}],
+		atomic = [],
 		buffs = [],
 		sub_effects = [],
 	},
@@ -2788,6 +2788,25 @@ var effect_table = {
 		buffs = []
 	},
 	
+
+	resist_state = {
+		type = 'temp_s',
+		duration = 36,
+		stack = 1,
+		name = 'resist_state',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		sub_effects = [],
+		tags = ['no_obed_gain'],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Shackle.png",
+			description = "Resist mode: Can't gain obedience from positive abilities. Can't use exploration skills. ",
+			args = [],
+			limit = 1,
+			t_name = 'resist_state',
+		}]
+	},
+
 };
 
 var atomic = {
@@ -2910,7 +2929,7 @@ var buffs = {
 	},
 	b_disarm = {
 		icon = "res://assets/images/iconsskills/Shackle.png", 
-		description = "Disarmed",
+		description = "Disarmed: Can't use Skill type abilities",
 		t_name = 'disarm'
 	},
 	b_banish = {

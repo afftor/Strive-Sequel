@@ -297,7 +297,7 @@ func work_tick():
 					ResourceScripts.game_res.materials[races.tasklist[currenttask.code].production[currenttask.product].item] += 1
 			else:
 				ResourceScripts.game_res.materials[currenttask.code] += 1
-				if person_location != "Aliron" && location.type == "dungeon":
+				if person_location != "aliron" && location.type == "dungeon":
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
 						globals.text_log_add('work', parent.get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()

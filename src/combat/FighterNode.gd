@@ -142,9 +142,6 @@ func add_buff(i):
 	var text = i.description
 	newbuff.texture = i.icon
 	buffs.push_back(i.template_name)
-	if i.get_duration() > 0 && i.get_duration() != null:
-		newbuff.get_node("Label").show()
-		newbuff.get_node("Label").text = str(i.get_duration())
 	if i.template.has('bonuseffect'):
 		match i.template.bonuseffect:
 			'barrier':
@@ -157,9 +154,6 @@ func update_buff(i):
 	var newbuff = $Buffs.get_child(pos)
 	var text = i.description
 	newbuff.texture = i.icon
-	if i.get_duration() > 0 && i.get_duration() != null:
-		newbuff.get_node("Label").show()
-		newbuff.get_node("Label").text = str(i.get_duration())
 	buffs.push_back(i.template_name)
 	if i.template.has('bonuseffect'):
 		match i.template.bonuseffect:
@@ -167,6 +161,9 @@ func update_buff(i):
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
 	newbuff.hint_tooltip = text
+	if i.get_duration() != null && i.get_duration() > 0:
+		newbuff.get_node("Label").show()
+		newbuff.get_node("Label").text = str(i.get_duration())
 
 func update_hp_label(newhp, newhpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
@@ -176,9 +173,9 @@ func update_hp_label(newhp, newhpp):
 
 func update_mp_label(newmp, newmpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
-		$mplabel.text = str(ceil(newmp)) + '/' + str(ceil(fighter.get_stat('mpmax')))
+		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
 	else:
-		$mplabel.text = str(ceil(newmpp)) + '%%'
+		$mplabel.text = str(floor(newmpp)) + '%%'
 
 func noq_defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")

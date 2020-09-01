@@ -94,7 +94,7 @@ func return_to_mansion():
 	else:
 		location = ResourceScripts.game_world.mansion_location
 
-func recruit():
+func return_recruit():
 	if variables.instant_travel == false:
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time

@@ -145,7 +145,7 @@ func update_character_dislocation():
 	var text2 = ''
 	if destination == null:
 		text += "\n\nSelect location to proceed"
-	elif destination in ['mansion', 'Aliron']:
+	elif destination in ['mansion', 'aliron']:
 		text += "\n\nTarget Location: " + tr("MANSION")
 		if selected_travel_characters.size() > 0 :
 			var max_time = 0
@@ -155,7 +155,7 @@ func update_character_dislocation():
 					person_location = person.previous_location
 				else:
 					person_location = person.travel.location
-				max_time = max(ceil(globals.calculate_travel_time(person_location, 'Aliron').time /  ResourceScripts.game_party.characters[person.id].travel_per_tick()), max_time)
+				max_time = max(ceil(globals.calculate_travel_time(person_location, 'aliron').time /  ResourceScripts.game_party.characters[person.id].travel_per_tick()), max_time)
 			text += "\nTravel Time: " + str(max_time) + " hours."
 	else:
 		var location = ResourceScripts.world_gen.get_location_from_code(destination)
@@ -169,7 +169,7 @@ func update_character_dislocation():
 				pass
 		if selected_travel_characters.size() > 0 :
 			if dislocation_area == "mansion":
-				dislocation_area = "Aliron"
+				dislocation_area = "aliron"
 			if dislocation_area == "travel":
 				dislocation_area = selected_travel_characters[0].travel.location
 			var travel_time = globals.calculate_travel_time(destination, dislocation_area) 
@@ -208,7 +208,7 @@ func set_travel_character(id):
 
 func travel_confirm():
 	if dislocation_area == "mansion":
-		dislocation_area = "Aliron"
+		dislocation_area = "aliron"
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	for person in selected_travel_characters:

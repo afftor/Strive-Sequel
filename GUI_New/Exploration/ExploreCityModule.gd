@@ -12,7 +12,6 @@ func open_city(city):
 	var expnode = get_parent()
 	expnode.get_node("LocationGui").hide()
 	show()
-
 	expnode.active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[city].area]
 	expnode.active_location = {}
 	input_handler.active_area = expnode.active_area
@@ -36,9 +35,9 @@ func open_city(city):
 
 	var newbutton
 	for i in array:
-		newbutton = input_handler.DuplicateContainerTemplate(City)
-		newbutton.get_node("Label").text = i.name
 		if i.code == "slavemarket":
+			newbutton = input_handler.DuplicateContainerTemplate(City)
+			newbutton.get_node("Label").text = i.name
 			newbutton.connect("pressed", expnode.Hire, "open_slave_market", [i])
 			newbutton.set_meta("slavemarket", true)
 			newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
@@ -48,7 +47,15 @@ func open_city(city):
 			newbutton.get_node("Label").rect_size.x = 272
 			newbutton.get_node("Label").get("custom_fonts/font").set_size(30)
 			newbutton.get_node("Icon").hide()
+		elif i.code == 'exotic_slave_trader'&& int(ResourceScripts.game_globals.date) % 7 == 0 && int(ResourceScripts.game_globals.date) % 14 != 0 && ResourceScripts.game_globals.hour >= 6 && ResourceScripts.game_globals.hour <= 20:#fix button toggle 
+			newbutton = input_handler.DuplicateContainerTemplate($AreaEvents)
+			newbutton.get_node("Label").text = i.name
+			newbutton.connect("pressed", expnode.Hire, "open_slave_market", [i])
+		elif i.code == 'exotic_slave_trader':
+			continue
 		else:
+			newbutton = input_handler.DuplicateContainerTemplate(City)
+			newbutton.get_node("Label").text = i.name
 			newbutton.get_node("Icon").texture = worlddata.factiondata[i.code].icon
 			newbutton.connect("pressed", self, "enter_guild", [i])
 		newbutton.set_meta("guild", i)

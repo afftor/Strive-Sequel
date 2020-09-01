@@ -172,7 +172,7 @@ func build_locations_list():
 		if loca == null:
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(LocationsList)
-		if loca == 'Aliron':
+		if loca == 'aliron':
 			newbutton.text = "Mansion"
 		else:
 			newbutton.text = ResourceScripts.world_gen.get_location_from_code(loca).name
@@ -369,14 +369,14 @@ func update_button(newbutton):
 	# if !person.check_location('Aliron'):
 	if person.check_location('travel'):
 		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. " 
-	elif person.check_location('Aliron') || person.get_location() == "mansion": # Temporary
+	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
 		# person.travel.location = "Aliron"
 		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 		
 	else:
 		### Temporary
 		if person.get_location() == "mansion":
-			person_location = "Aliron"
+			person_location = "aliron"
 		else:
 			person_location = person.get_location()
 	if person_location != null:

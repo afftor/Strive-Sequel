@@ -170,8 +170,8 @@ func build_accessible_locations():
 	
 	var newbutton = input_handler.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
 	newbutton.text = "Aliron"
-	newbutton.connect("pressed",self,"select_location",['Aliron'])
-	newbutton.set_meta("data", 'Aliron')
+	newbutton.connect("pressed",self,"select_location",['aliron'])
+	newbutton.set_meta("data", 'aliron')
 	
 	for i in location_array:
 		newbutton = input_handler.DuplicateContainerTemplate($NavigationPanel/NavigationContainer/AreaSelection)
@@ -206,7 +206,7 @@ func select_location(location):
 			if i.check_location(data.id, true):
 				presented_characters.append(i)
 		if presented_characters.size() == 0:
-			select_location('Aliron')
+			select_location('aliron')
 		else:
 			open_location(data)
 
@@ -1403,7 +1403,7 @@ func finish_combat():
 #		leave_location()
 		#update_categories()
 		build_accessible_locations()
-		select_location("Aliron")
+		select_location("aliron")
 	else:
 		enter_level(current_level)
 
@@ -1415,7 +1415,7 @@ func clear_dungeon_confirm():
 	input_handler.remove_location(active_location.id)
 	check_events('complete_location')
 	action_type = 'location_finish'
-	select_location('Aliron')
+	select_location('aliron')
 	build_accessible_locations()
 #	leave_location()
 	

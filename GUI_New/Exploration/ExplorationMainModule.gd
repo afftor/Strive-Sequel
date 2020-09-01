@@ -75,6 +75,7 @@ func _ready():
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
 	globals.connect("hour_tick", self, "build_location_group")
+	input_handler.connect("EventFinished", self, 'build_location_group')
 
 
 func select_workers():
@@ -443,7 +444,16 @@ func build_spell_panel():
 				newnode.dragdata = {skill = skill, caster = person}
 				if person.mp < skill.manacost:
 					disabled = true
-
+				if person.has_status('no_obed_gain'):
+					disabled = true
+				if skill.charges > 0:
+					var leftcharges = skill.charges
+					if person.skills.combat_skill_charges.has(skill.code):
+						leftcharges -= person.skills.combat_skill_charges[skill.code]
+#						newbutton.get_node("charge").visible = true
+#						newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+					if leftcharges <= 0:
+						disabled = true
 				if disabled == true:
 					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
 					newnode.script = null
@@ -573,8 +583,6 @@ func faction_services():
 
 
 func unlock_upgrade(upgrade, level):
-	print(upgrade)
-	print(level)
 	if active_faction.upgrades.has(upgrade.code):
 		active_faction.upgrades[upgrade.code] += 1
 	else:
@@ -715,7 +723,7 @@ func advance():
 		enter_dungeon()
 	elif action_type == 'location_finish':
 		Navigation.build_accessible_locations()
-		Navigation.select_location("Aliron")
+		Navigation.select_location("aliron")
 	else:
 		enter_dungeon()
 
@@ -748,6 +756,9 @@ func slave_position_selected(pos, character):
 		return
 	if character.has_status('no_combat'):
 		input_handler.SystemMessage(character.translate("[name] has sustained a grave injury and is unable to participate in fights."))
+		return
+	elif character.get_stat('obedience') <= 0 and character.get_stat('loyalty') < 100 and character.get_stat('submission') < 100 and !character.has_profession('master'):
+		input_handler.SystemMessage(character.translate("[name] refuses to participate in a fight (low obedience)."))
 		return
 	character = character.id
 	var positiontaken = false
@@ -811,6 +822,12 @@ func use_e_combat_skill(caster, target, skill):
 	caster.mp -= skill.manacost
 	for i in skill.catalysts:
 		ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
+	if skill.charges > 0:
+		if caster.skills.combat_skill_charges.has(skill.code):
+			caster.skills.combat_skill_charges[skill.code] += 1
+		else:
+			caster.skills.combat_skill_charges[skill.code] = 1
+		caster.skills.daily_cooldowns[skill.code] = skill.cooldown
 	var s_skill1 = ResourceScripts.scriptdict.class_sskill.new()
 	s_skill1.createfromskill(skill.code)
 	s_skill1.setup_caster(caster)

@@ -53,7 +53,7 @@ func base_exp_set(value):
 	xp_module.base_exp = value
 
 func get_stat(statname, ref = false):
-	if statname in ['hp', 'mp', 'shield']:
+	if statname in ['hp', 'mp', 'shield', 'taunt']:
 		return get(statname)
 	if statname == 'base_exp':
 		return xp_module.base_exp
@@ -62,7 +62,7 @@ func get_stat(statname, ref = false):
 	return statlist.get_stat(statname, ref)
 
 func set_stat(stat, value):
-	if stat in ['hp', 'mp', 'shield']:
+	if stat in ['hp', 'mp', 'shield', 'taunt']:
 		set(stat, value)
 		return
 	if stat == 'base_exp':
@@ -189,10 +189,10 @@ func generate_predescribed_character(data):
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
+	learn_c_skill('attack')
 	statlist.create(temp_race, temp_gender, temp_age)
 	food.create()
 	add_trait('core_trait')
-	learn_c_skill('attack')
 
 func setup_baby(mother, father):
 	statlist.setup_baby(mother, father)
@@ -202,6 +202,12 @@ func get_short_name():
 
 func get_full_name():
 	return statlist.get_full_name()
+
+func get_short_race():
+	var race = get_stat('race')
+	if race.findn('Beastkin '): race = race.replace('Beastkin ','B.')
+	if race.findn('Halfkin '): race = race.replace('Halfkin ','H.')
+	return race.capitalize()
 
 func equip(item, item_prev_id = null):
 	equipment.equip(item, item_prev_id)
@@ -261,16 +267,28 @@ func set_travel_time(value):
 func return_to_mansion():
 	travel.return_to_mansion()
 
-func recruit():
-	travel.recruit()
+func recruit(enslave = false):
+	travel.location = input_handler.active_location.id
+	if enslave == true:
+		set_slave_category('slave')
+		var eff =  effects_pool.e_createfromtemplate(Effectdata.effect_table.resist_state)
+		apply_effect(effects_pool.add_effect(eff))
+		eff.remains = 12 * (8 - get_stat('timid_factor'))
 	ResourceScripts.game_party.add_slave(self)
+
+func recruit_and_return():
+	travel.return_recruit()
+	ResourceScripts.game_party.add_slave(self)
+
 
 func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
 
 func get_skill_by_tag(tg):
-	return skills.get_skill_by_tag(tg)
+	var res = skills.get_skill_by_tag(tg)
+	if res == null: print ("ERROR in skill config - no default skill")
+	return res
 
 func baby_transform():
 	statlist.baby_transform()
@@ -354,8 +372,16 @@ func can_act():
 func can_evade():
 	return effects.can_evade()
 
+func can_use_skill(skill):
+	if mp < skill.manacost: return false
+	if skills.combat_cooldowns.has(skill.code): return false
+	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
+	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
+	return true
+
 func has_status(status):
-	return effects.has_status(status)
+	var res = effects.has_status(status)
+	return res
 
 func can_be_damaged(s_name):
 	return effects.can_be_damaged(s_name)
@@ -514,7 +540,7 @@ func affect_char(i):
 		'damage':
 			deal_damage(i.value)
 		'damage_percent':
-			deal_damage((i.value / 100) * get_stat('hpmax'))
+			deal_damage((i.value / 100.0) * get_stat('hpmax'))
 		'damage_mana_percent':
 			mana_update(-i.value * get_stat('maxmp'))
 		'stat', 'stat_add':
@@ -610,6 +636,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'random':
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			check = globals.rng.randf()*100 <= i.value
+		'virgin':
+			check = get_stat('vaginal_virgin') == i.check
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
@@ -663,7 +691,7 @@ func decipher_single(ch):
 				continue
 		'race_is_beast':
 			if i.check == true:
-				text2 += 'Only for bestial races.'
+				text2 += 'Only for Bestial races.'
 			else:
 				continue
 		'gear_equiped': #to fix non-default param
@@ -682,7 +710,11 @@ func decipher_single(ch):
 		'sex':
 			match i.operant:
 				'neq':
-					text2 += "Not allowed for " + i.value + "s."
+					text2 += "Not allowed for: " + i.value.capitalize() + "s."
+		'virgin':
+			match i.check:
+				false:
+					text2 += "Not a virgin"
 	return text2
 
 
@@ -718,6 +750,11 @@ func show_race_description():
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
 		else:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
+	text = text.substr(0, text.length() - 2) + "."
+	if temprace.has("combat_skills"):
+		text += "\nCombat Abilitites: " 
+		for i in temprace.combat_skills:
+			text += Skilldata.Skilllist[i].name + "; "
 	text = text.substr(0, text.length() - 2) + "."
 	
 	return text
@@ -819,8 +856,8 @@ func apply_atomic(template):
 			mana_update(template.value)
 			pass
 		'stat_set', 'stat_set_revert': #use this on direct-accessed stats
-			template.buffer = get(template.stat)
-			set(template.stat, template.value)
+			template.buffer = get_stat(template.stat, true)
+			set_stat(template.stat, template.value)
 		'stat_add':
 			add_stat(template.stat, template.value)
 		'stat_mul':#do not mix add_p and mul for the sake of logic
@@ -876,7 +913,7 @@ func apply_atomic(template):
 func remove_atomic(template):
 	match template.type:
 		'stat_set_revert':
-			set(template.stat, template.buffer)
+			set_stat(template.stat, template.buffer)
 		'stat_add':
 			add_stat(template.stat, template.value, true)
 		'stat_mul':
@@ -917,6 +954,9 @@ func calculate_number_from_string_array(arr):
 				modvalue = str(get_stat(i[1]))
 			elif i[0] == 'target':
 				return ""; #nonexistent yet case of skill value being based completely on target
+		elif (i.find('random') >= 0):
+			i = i.split(' ')
+			modvalue = str(globals.rng.randi_range(0, int(i[1])))
 		if singleop != '':
 			endvalue = input_handler.string_to_math(endvalue, singleop+modvalue)
 			singleop = ''

@@ -39,8 +39,7 @@ func custom_stats_set(st, value):
 #		if value.has(st+'_factor'):
 		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
 	if st == 'lust':
-		statlist.lustmax = 25 + statlist.sexuals_factor * 25
-		statlist.lust = clamp(value, 0, statlist.lustmax)
+		statlist.lust = clamp(value, 0, get_stat('lustmax'))
 
 
 func custom_stats_get():
@@ -70,6 +69,9 @@ func custom_stats_get():
 		if bonuses.has('mpmax_add'): tres += bonuses.mpmax_add
 		if bonuses.has('mpmax_mul'): tres *= bonuses.mpmax_mul
 		res['mpmax'] = tres
+	if res.has('lustmax'):
+		res.lustmax = 25 + res.sexuals_factor * 25
+		res.lust = clamp(res.lust, 0, res.lustmax)
 	if res.has('resists'):
 		var tres = res.resists
 		for r in variables.resists_list:
@@ -101,9 +103,11 @@ func get_short_name():
 func get_full_name():
 	var text = ''
 	if statlist.nickname == '':
-		text = statlist.name + ' ' + statlist.surname
+		text = statlist.name
 	else:
-		text = statlist.name + ' "' + statlist.nickname + '" ' + statlist.surname
+		text = statlist.name + ' "' + statlist.nickname + '"'
+	if statlist.surname != '':
+		text += " " + statlist.surname
 	return text
 
 func set_stat(statname, value): #for direct access only
@@ -566,10 +570,14 @@ func get_racial_features():
 			statlist[i] = race_template.bodyparts[i][randi()%race_template.bodyparts[i].size()]
 		else:
 			statlist[i] = input_handler.weightedrandom(race_template.bodyparts[i])
-
+	
 	
 	if race_template.tags.has("multibreasts") && input_handler.globalsettings.furry_multiple_nipples == true:
 		statlist.multiple_tits = variables.furry_multiple_nipples_number
+	
+	if race_template.has("combat_skills"):
+		for i in race_template.combat_skills:
+			parent.learn_c_skill(i)
 	
 	parent.food.get_racial_features(statlist.race)
 	

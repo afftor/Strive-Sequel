@@ -380,9 +380,8 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
-	print(ResourceScripts.game_party.get_master().get_stat('physics'))
-	ResourceScripts.game_party.get_master().add_stat("physics",5)
-	print(ResourceScripts.game_party.get_master().get_stat('physics'))
+	ResourceScripts.game_globals.date = 20
+	#ResourceScripts.game_party.get_master().add_stat("physics",5)
 	#print(characters_pool.characters.size())
 	# print("LocaLinks:" +str(ResourceScripts.game_world.location_links))
 	# for person in ResourceScripts.game_party.characters.values():

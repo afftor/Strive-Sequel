@@ -88,6 +88,9 @@ var scenes = {
 	trap = load("res://assets/images/scenes/trap.png"),
 	warn = load("res://assets/images/scenes/warn.png"),
 	wolves_skirmish = load("res://assets/images/scenes/wolves_skirmish.png"),
+	fairy = load("res://assets/images/scenes/fairy.png"),
+	avermik = load("res://assets/images/scenes/avermik.png"),
+	
 }
 
 var sprites = {

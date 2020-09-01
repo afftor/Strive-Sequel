@@ -71,6 +71,8 @@ func open(scene, not_save = false):
 	
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
+	if scene.tags.has("free_loot"):
+		add_loot_options(scene)
 	
 	
 	
@@ -88,6 +90,8 @@ func open(scene, not_save = false):
 		newtext += tr(i.text)
 	scenetext = newtext
 	scenetext = tr(scenetext)
+	if scene.has('bonus_effects'):
+		globals.common_effects(scene.bonus_effects)
 	
 	if scenetext.find("[locationname]") >= 0:
 		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
@@ -249,9 +253,9 @@ func add_chest_options(scene):
 		else:
 			match chest_data.lock.type:
 				'normal':
-					text += "[name] concludes this chest is {color=aqua|unlocked} and safe to use."
-				'none':
 					text += "[name] concludes this chest is locked with a {color=aqua|mechanic lock} and has no additional danger."
+				'none':
+					text += "[name] concludes this chest is {color=aqua|unlocked} and safe to use."
 				'bomb':
 					text += "[name] concludes this chest is rigged with a {color=aqua|bomb trap}."
 				'gas':
@@ -269,6 +273,9 @@ func add_chest_options(scene):
 	
 	scene.text.append({text = text, reqs = []})
 	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+
+func add_loot_options(scene):
+	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT"})
 
 func add_location_resource_info():
 	var text = '\nAfter defeating last enemies your party investigated the location and found a resources you can harvest:'
@@ -363,14 +370,19 @@ func recruit_from_scene(order = 0):
 	input_handler.active_character = input_handler.scene_characters[order]
 	recruit()
 
-func recruit():
+func capture_from_scene(order = 0):
+	input_handler.active_character = input_handler.scene_characters[order]
+	recruit(true)
+
+
+func recruit(capture = false):
 	if ResourceScripts.game_party.characters.size() >= ResourceScripts.game_res.get_pop_cap():
 		if ResourceScripts.game_res.get_pop_cap() < variables.max_population_cap:
 			input_handler.SystemMessage("You don't have enough rooms")
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
-	input_handler.active_character.recruit()
+	input_handler.active_character.recruit(capture)
 	close()
 
 func create_location_recruit(args):
@@ -445,10 +457,10 @@ func fight_skirmish():
 		input_handler.encounter_win_script = current_scene.winscene
 	globals.current_enemy_group = dialogue_enemy
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
-	close(true)
+	#close(true)
 
 func quest_fight(code):
 	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
-	close(true)
+	#close(true)
 
