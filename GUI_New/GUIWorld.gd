@@ -55,7 +55,7 @@ func _ready():
 		input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
-		globals.common_effects({code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]})
+		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
 
 	for scene in MAIN_MODULES:
 		var main_module = MAIN_MODULES[scene].instance()
@@ -302,6 +302,7 @@ func test_mode():
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.add_stat('charm', 100)
 		character.add_stat('physics', 100)
+		character.add_stat('hpmax', 100)
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")

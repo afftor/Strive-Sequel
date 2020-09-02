@@ -761,7 +761,7 @@ func show_race_description():
 
 func check_escape_chance():
 	var check = false
-	if authority_level() == 'low' && get_stat('obedience') < 15:
+	if authority_level() == 'low' && get_stat('obedience') < 15 && get_stat('loyalty') < 100 && get_stat('submission') < 100:
 		check = 45 - get_stat('obedience') - get_stat('timid_factor') * 7 > randf()*100
 	return check
 

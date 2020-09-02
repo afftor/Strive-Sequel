@@ -1545,7 +1545,7 @@ var Skilllist = {
 		damage_type = 'light',
 		sfx = [{code = 'heal', target = 'target', period = 'predamage'}],
 		sounddata = {initiate = null, strike = 'skill_scene', hit = null},
-		value = 1.3,
+		value = [['target.hpmax','*0.5']],
 		damagestat = ['-damage_hp']
 	},
 	first_aid = {#heals target for 35%

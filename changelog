@@ -1,3 +1,7 @@
+Fixed fairy racial skill not restoring correct amount of hp
+Fixed exotic slave trader event not adding properly at the game's start
+Fixed class unlock animation not using correct character name
+0.3.1
 Added multiple GUI animations to some actions
 Added new random events: New chest lock type traps, mimics, finding random resources, encounters
 Added effect duration in tooltip for combat

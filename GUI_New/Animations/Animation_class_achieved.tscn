@@ -341,7 +341,7 @@ __meta__ = {
 [node name="TextureRect4" type="TextureRect" parent="."]
 margin_left = -1558.21
 margin_top = 296.242
-margin_right = -9.19922
+margin_right = -9.19946
 margin_bottom = 532.242
 texture = ExtResource( 7 )
 __meta__ = {
@@ -361,12 +361,10 @@ __meta__ = {
 }
 
 [node name="TextureRect8" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 545.556
 margin_top = 107.276
 margin_right = 665.556
 margin_bottom = 357.276
-rect_rotation = 90.0
 rect_pivot_offset = Vector2( 121.676, 242.8 )
 texture = ExtResource( 2 )
 flip_h = true
@@ -375,12 +373,10 @@ __meta__ = {
 }
 
 [node name="TextureRect9" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 1257.7
 margin_top = 107.759
 margin_right = 1377.7
 margin_bottom = 357.759
-rect_rotation = -90.0
 rect_pivot_offset = Vector2( 3.08203, 239.505 )
 texture = ExtResource( 2 )
 __meta__ = {
@@ -388,10 +384,10 @@ __meta__ = {
 }
 
 [node name="TextureRect7" type="TextureRect" parent="."]
-margin_left = 961.0
-margin_top = 151.0
-margin_right = 961.0
-margin_bottom = 351.0
+margin_left = 663.406
+margin_top = 151.155
+margin_right = 1263.41
+margin_bottom = 351.155
 rect_pivot_offset = Vector2( 300, 100 )
 texture = ExtResource( 8 )
 expand = true
@@ -401,7 +397,6 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 680.148
 margin_top = 161.004
 margin_right = 980.148
@@ -425,7 +420,6 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 895.191
 margin_top = 161.393
 margin_right = 1216.19
@@ -438,7 +432,6 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 895.25
 margin_top = 227.478
 margin_right = 1216.25
@@ -452,7 +445,6 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 894.786
 margin_top = 284.405
 margin_right = 1215.79
