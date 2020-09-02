@@ -165,6 +165,7 @@ func play_animation():
 	anim_scene.get_node("AnimationPlayer").play("class_achieved")
 	anim_scene.get_node("TextureRect").texture = classesdata.professions[current_class].icon
 	anim_scene.get_node("Label2").text = current_class.capitalize()
+	anim_scene.get_node("Label3").text = person.get_full_name()
 	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
