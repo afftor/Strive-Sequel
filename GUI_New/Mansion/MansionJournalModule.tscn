@@ -1,10 +1,10 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=6]
 [ext_resource path="res://GUI_New/Mansion/MansionJournalModule.gd" type="Script" id=7]
 [ext_resource path="res://assets/Textures_v2/CITY/Universal/paper_description.png" type="Texture" id=8]
@@ -20,6 +20,8 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=18]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=19]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=20]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -129,22 +131,35 @@ margin_top = 386.0
 margin_right = 772.0
 margin_bottom = 461.0
 
-[node name="Button" type="TextureRect" parent="reqs"]
+[node name="Button" type="TextureButton" parent="reqs"]
 visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 0
-texture = ExtResource( 5 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
+[node name="TextureRect" type="TextureRect" parent="reqs/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="amount" type="Label" parent="reqs/Button"]
 visible = false
-margin_left = 33.5211
-margin_top = 51.5712
-margin_right = 73.5211
-margin_bottom = 75.5712
+margin_left = 32.5641
+margin_top = 48.7934
+margin_right = 72.5641
+margin_bottom = 72.7934
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
@@ -155,22 +170,36 @@ margin_top = 518.0
 margin_right = 772.0
 margin_bottom = 593.0
 
-[node name="Button" type="TextureRect" parent="rewards"]
+[node name="Button" type="TextureButton" parent="rewards"]
 visible = false
 margin_right = 75.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 size_flags_horizontal = 0
-texture = ExtResource( 5 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
+[node name="TextureRect" type="TextureRect" parent="rewards/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="amount" type="Label" parent="rewards/Button"]
 visible = false
-margin_left = 33.5211
-margin_top = 51.5712
-margin_right = 73.5211
-margin_bottom = 75.5712
+margin_left = 30.6155
+margin_top = 46.5347
+margin_right = 70.6155
+margin_bottom = 70.5347
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2

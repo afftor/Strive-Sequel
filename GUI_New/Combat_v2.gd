@@ -1397,8 +1397,8 @@ func RebuildSkillPanel():
 		var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 		newbutton.get_node("Icon").texture = skill.icon
 		newbutton.get_node("manacost").text = str(skill.manacost)
-		if skill.manacost <= 0:
-			newbutton.get_node("manacost").hide()
+		# if skill.manacost <= 0:
+		newbutton.get_node("manacost").visible = skill.manacost > 0
 		if skill.manacost > activecharacter.mp:
 #			newbutton.get_node("Icon").modulate = Color(0,0,1)
 			newbutton.disabled = true

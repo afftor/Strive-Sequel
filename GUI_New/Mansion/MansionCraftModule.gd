@@ -138,7 +138,6 @@ func rebuild_recipe_list():
 					$filter/gear.show()
 	
 	array.sort_custom(self, 'sort_craft_list')
-	
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($CraftSelect/ScrollContainer/VBoxContainer)
 		var item
@@ -292,7 +291,9 @@ var itemparts = {}
 var chosenpartbutton
 
 func selectcraftitem(item):
+	itemparts = {}
 	update_buttons(item)
+	checkcreatingitem(item.code)
 	self.get_stylebox("panel", "" ).set_texture(craft_one_side_panel)
 	$CraftScheldue.hide()
 	$SelectCharacters.hide()
@@ -419,9 +420,12 @@ func selectmaterial(material, part, cost):
 var enditem
 
 func checkcreatingitem(item):
-	
+	if !Items.itemlist.has(item):
+		return
 	enditem = null
 	var baseitem = Items.itemlist[item]
+	if !baseitem.has("parts"):
+		return
 	var text = tr('TOTALPRICE') + ': '
 	var resourcedict = {}
 	for i in itemparts.values():

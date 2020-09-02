@@ -76,6 +76,7 @@ func _ready():
 	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
+	GUIWorld.add_close_button(FactionDetails)
 
 
 func select_workers():
@@ -107,10 +108,13 @@ func clear_submodules():
 	submodules.clear()
 
 func ShowSlavePanel(person):
-	var dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)#get_tree().get_root().get_node("dialogue")
+	print("here")
+	print(person)
+	var dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE, null, false, false)#get_tree().get_root().get_node("dialogue")
 	if dialogue.is_visible():
-		dialogue_opened = true
-		dialogue.hide()
+		FullSlaveInfo.raise()
+		# dialogue_opened = true
+		# dialogue.hide()
 	FullSlaveInfo.show()
 	FullSlaveInfo.show_summary(person)
 

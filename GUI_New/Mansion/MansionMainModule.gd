@@ -339,7 +339,7 @@ func slave_list_manager():
 		'craft':
 			# if !is_craft_selected:
 			# 	return
-			if !active_person in persons_for_craft:
+			if (active_person.get_location() == ResourceScripts.game_world.mansion_location) && !active_person in persons_for_craft:
 				persons_for_craft.append(active_person)
 			else:
 				persons_for_craft.erase(active_person)

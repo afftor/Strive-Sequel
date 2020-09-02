@@ -165,6 +165,7 @@ func enter_guild(guild):
 		ResourceScripts.core_animations.FadeAnimation(get_parent().get_node("GuildBG"),0.5)
 		Guild.hide()
 		$GuildMenuBG.hide()
+		get_parent().FactionDetails.hide()
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_parent().get_node("GuildBG").hide()
 		opened_guild = {code = ""}

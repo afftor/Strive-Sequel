@@ -28,6 +28,7 @@ signal item_sold
 #warning-ignore-all:unused_signal
 
 func _ready():
+	GUIWorld.add_close_button(self, "add_offset")
 	$VBoxContainer/InfoButton.connect("pressed", self, "close_inventory", ["default"])
 	$VBoxContainer/ClassButton.connect("pressed", self, "close_inventory", ["class"])
 	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://GUI_New/Exploration/ExploreCityModule.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GUI_New/Exploration/LocationGui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/backgrounds/elf_capital.png" type="Texture" id=6]
-[ext_resource path="res://GUI_New/Exploration/ExploreCityModule.gd" type="Script" id=8]
 [ext_resource path="res://GUI_New/Exploration/ExploreHireModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GUI_New/Exploration/FactionDetailsModule.tscn" type="PackedScene" id=11]
 [ext_resource path="res://GUI_New/Exploration/QuestBoardModule.tscn" type="PackedScene" id=12]
@@ -65,7 +64,6 @@ margin_left = 34.0
 margin_top = 566.0
 margin_right = 324.0
 margin_bottom = 1078.0
-script = ExtResource( 8 )
 
 [node name="ExploreHireModule" parent="." instance=ExtResource( 9 )]
 visible = false

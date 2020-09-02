@@ -138,7 +138,7 @@ func _input(event):
 				continue
 		if !ignore_rightclick:
 			visibility_handler()
-	if CurrentScene == gui_data["MANSION"].main_module && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):# && !text_field_input: ### Find Solution
+	if !menu_opened && CurrentScene == gui_data["MANSION"].main_module && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):# && !text_field_input: ### Find Solution
 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
 			if input_handler.globalsettings.turn_based_time_flow == false:
 				gui_data.CLOCK.main_module.changespeed(gui_data.CLOCK.main_module.timebuttons[int(event.as_text())-1])

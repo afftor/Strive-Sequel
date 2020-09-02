@@ -13,7 +13,9 @@
 size = 30
 font_data = ExtResource( 12 )
 
-[node name="GameMenuPanel" type="Panel"]
+[node name="GameMenuPanel" type="Panel" groups=[
+"pauseprocess",
+]]
 self_modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 730.0
 margin_top = 265.0
