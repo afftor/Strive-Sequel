@@ -129,6 +129,10 @@ var template = {
 	vaginal_virgin = true,
 	anal_virgin = true,
 	mouth_virgin = true,
+	
+	was_proposed = false,
+	had_cons_sex_with_mc = false,
+	had_forced_sex_with_mc = false,
 	#tasks
 	
 	shackles_chance = null,

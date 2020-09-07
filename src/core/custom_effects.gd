@@ -112,5 +112,21 @@ func writ_of_exemption_use():
 		ResourceScripts.game_party.remove_slave(character)
 	input_handler.rebuild_slave_list()
 
+func oblivionpot(character):
+	character.remove_all_classes()
+	input_handler.active_character = character
+	input_handler.interactive_message("oblivion_potion_use",'custom_effect', character)
+
+
+func pheromones(character):
+	input_handler.active_character = character
+	if character.get_stat('race') in races.race_groups.halfbreeds + races.race_groups.beast:
+		character.add_stat("lust", character.get_stat("lustmax"))
+	input_handler.interactive_message("pheromones_use",'char_translate',character)
+
+func sensetivity_pot(character):
+	character.add_stat("lust", character.get_stat("lustmax"))
+	input_handler.interactive_message("sensetivity_pot_use",'char_translate',character)
+
 func close():#for the cancel function
-	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
+	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()

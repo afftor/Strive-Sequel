@@ -287,7 +287,7 @@ func updatelist():
 			newnode.text = person.translate(i.name)
 			newnode.connect("pressed",self,'doaction', [i.effect])
 			var text = i.descript
-			if dislike_same_sex() == true && i.effect in ['intimate','kiss','frenchkiss','propose']:
+			if dislike_same_sex() == true && i.effect in ['intimate','kiss','propose']:
 				text += globals.TextEncoder("\n{color=yellow|Sexuality: [name] does not seem to be enthusiastic in having relationship with you. Mood required for positive response is increased.}")
 			globals.connecttexttooltip(newnode, person.translate(text))
 			if i.has('disablereqs'):
@@ -444,8 +444,20 @@ var date_lines = {
 	],
 	
 	kiss_start = [
-		[""],
-	]
+		["You {^slowly : }{^lean:tilt:bend} to [name2]'s face.",1],
+	],
+	kiss_positive = [
+		["[he2] {^tenderly:softly} kisses you back."],
+		["[he2] returns your kiss{^ while closing [his2] eyes:}."],
+	],
+	kiss_erotic = [
+		["[he2] {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}. Finally [name2] pulls away with a {^happy:satisfied} smile. "],
+	],
+	kiss_erotic_puclic = ["[he2] {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}, ignoring {^gawking:ogling} {^people:crowd}. Finally [name2] pulls away with a {^happy:satisfied} smile. "],
+	kiss_negative = [
+		["[he2] uncomfortably {^turns:looks} away accepting your {^kiss:smooch} on the cheeck.",1],
+		["[he2] {^embarrassingly:awkwardly} moves away preventing your attempt.",1]
+	],
 	
 }
  
@@ -520,7 +532,7 @@ func intimate(person, counter):
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.intimate_positive)
 		text += "}"
-		person.add_stat('consent', rand_range(2,3))
+		person.add_stat('consent', rand_range(1,3))
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.intimate_negative)
@@ -593,82 +605,91 @@ func hug(person, counter):
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 		if person.get_stat("consent") < 12:
-			person.add_stat('consent', rand_range(3,5))
+			person.add_stat('consent', rand_range(1,2))
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines['hug_negative'])
 		text += "}"
 		self.mood -= 2
 	return character_description(text)
-	
-#	if (counter < 3 || randf() >= 0.7) && self.mood >= 20:
-#		self.mood += 11
-#		text += "{color=green|"
-#		text += input_handler.weightedrandom(date_lines.hug_positive)
-#		text += "}"
-#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-#		if person.get_stat("consent") < 12:
-#			person.add_stat('consent', rand_range(3,5))
-#	else:
-#		text += "{color=red|"
-#		text += input_handler.weightedrandom(date_lines.hug_negative)
-#		text += "}"
-#		self.mood -= 2
-#	return character_description(text)
-#	var text = ''
-#	text += "You embrace [name2] in your arms. "
-#
-#	if (counter < 3 || randf() >= 0.7) && self.mood >= 6:
-#		text += 
-#		self.mood += 11
-#		if person.get_stat("consent") < 12:
-#			person.add_stat('consent', rand_range(3,5))
-#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-#	else:
-#		self.mood -= 3
-#		text +=
-#
-#	return text
+
 
 func kiss(person, counter): 
-	var text = ''
-	text += "You gently kiss [name2] on the cheek. "
+	var text = input_handler.weightedrandom(date_lines.kiss_start) + "\n\n"
 	
-	if (self.mood >= 10 || person.get_stat('loyalty') >= 15):
+	var min_mood = 20
+	if dislike_same_sex():
+		min_mood *= 1.5
+	
+	if self.mood < min_mood:
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.kiss_negative)
+		text += "}"
+		self.mood -= 5
+	elif self.mood >= min_mood && (self.mood < min_mood*2 || (location == 'city' && !person.check_traits('shameless'))):
+		self.mood += 10
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.kiss_positive)
+		
 		if person.get_stat('personality') in ['shy','kind']:
-			text += "[he2] blushes and looks away. "
+			text += "[name2] blushes and looks away. "
 		else:
-			text += "[he2] giggles looking at you. "
-		self.mood += 12
+			text += "[name2] giggles looking at you. "
+		
+		text += "}"
 		if person.get_stat("consent") < 15:
-			person.add_stat('consent', rand_range(3,5))
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-	else:
-		self.mood -= 2
-		text += "[he2] abruptly stops you, showing [his2] disinterest. "
+			person.add_stat('consent', rand_range(1,3))
+		if randf() > 0.5:
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+	elif self.mood >= min_mood*2:
+		self.mood += 14
+		text += "{color=green|"
+		if location == 'city' && person.check_traits('shameless'):
+			text += input_handler.weightedrandom(date_lines.kiss_erotic_puclic)
+		else:
+			text += input_handler.weightedrandom(date_lines.kiss_erotic)
+		
+		match person.get_stat('personality'):
+			'serious', 'kind':
+				text += "[name2] smiles and looks at you with bedroom eyes."
+			'shy':
+				text += "[name2] looks slightly embarrassed, realizing what [he2] just did and looks away."
+			'bold':
+				text += "[name2] giggles in satisfaction{^:, grabbing your arm}. "
+		
+		text += "}"
+		if person.get_stat("consent") < 20:
+			person.add_stat('consent', rand_range(1,3))
+		if randf() > 0.5:
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	
 	return text
 
-func frenchkiss(person, counter): 
+func rape(person, counter):
 	var text = ''
-	text += "You invade [name2]'s mouth with your tongue. "
 	
-	if self.mood >= 20 && (location == 'bedroom' || person.check_trait("shameless")):
-		if person.check_trait("shameless"):
-			text += "Being {color=yellow|[Shameless]} [he2] does not mind doing it in public and passionately accepts your kiss."
-		else:
-			text += "[he2] closes eyes passionately accepting your kiss."
-		if !person.check_trait("Bisexual") && person.get_stat('sex') == master.get_stat('sex'):
-			self.mood += 6
-		else:
-			self.mood += 13
-		if person.get_stat("consent") < 25:
-			person.add_stat('consent', rand_range(3,5))
-	else:
-		self.mood -= 5
-		text += "[he2] abruptly stops you, showing [his2] disinterest. "
-	
-	return text
+	return text 
+
+#func frenchkiss(person, counter): 
+#	var text = ''
+#	text += "You invade [name2]'s mouth with your tongue. "
+#
+#	if self.mood >= 20 && (location == 'bedroom' || person.check_trait("shameless")):
+#		if person.check_trait("shameless"):
+#			text += "Being {color=yellow|[Shameless]} [he2] does not mind doing it in public and passionately accepts your kiss."
+#		else:
+#			text += "[he2] closes eyes passionately accepting your kiss."
+#		if !person.check_trait("Bisexual") && person.get_stat('sex') == master.get_stat('sex'):
+#			self.mood += 6
+#		else:
+#			self.mood += 13
+#		if person.get_stat("consent") < 25:
+#			person.add_stat('consent', rand_range(3,5))
+#	else:
+#		self.mood -= 5
+#		text += "[he2] abruptly stops you, showing [his2] disinterest. "
+#
+#	return text
 
 #func pushdown(person, counter):
 #	var text = ''
@@ -692,22 +713,37 @@ func frenchkiss(person, counter):
 func propose(person, counter):
 	var text = ''
 	text += "You ask [name2] if [he2] would like to take your relationship to the next level. "
-	var difficulty =  self.mood*3 + person.get_stat('loyalty')*2 + drunkness*5
-	if person.get_stat('sex') ==  ResourceScripts.game_party.get_master().get_stat('sex') && !person.check_trait('bisexual'):
-		difficulty -= 10
+	
+	var gave_consent = false
+	
+	if person.get_stat('had_cons_sex_with_mc') == true:
+		gave_consent = true
+	elif person.get_stat('had_forced_sex_with_mc') == true:
+		gave_consent = true
+		
+	if person.get_stat('consent') >= 25:
+		gave_consent = true
+		text += "\n\n[name2] responds without second thought it if already made [his2] mind about this."
+	
+	var difficulty =  self.mood*2 + person.get_stat('loyalty')/2 + drunkness*5
+	if dislike_same_sex():
+		difficulty -= 25
 #	if globals.state.relativesdata.has(person.id) && (int(globals.state.relativesdata[person.id].father) == int(globals.player.id) || int(globals.state.relativesdata[person.id].mother) == int(globals.player.id)):
 #		difficulty -= 10
 	if difficulty <= 100:
 		text += "[he2] shows a troubled face and rejects your proposal. "
 		self.mood -= 15
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_refuse')) 
-		return text
 	else:
-		#showsexswitch(text, mode)
+		gave_consent = true
 		text += "[he2] gives a meek nod, showing [his2] readiness to follow you to the bedroom."
-		person.set_stat('consent', 20)
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_proposal_agree'))
-		return text
+	
+	if gave_consent == true:
+		person.set_stat('consent', max(25, person.get_stat('consent')))
+		person.set_stat('was_proposed',true)
+	
+	return text
 
 var sexmode
 
@@ -1039,7 +1075,7 @@ func alcohol(person):
 		text += "[he2] accepts your invitation and you slowly consume it, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
 		self.mood += 15
 		person.add_stat('authority', 11)
-		person.add_stat('consent', 5)
+		person.add_stat('consent', 2)
 		
 		drunkness += 3
 		ResourceScripts.game_res.remove_item('alcohol',1)
@@ -1306,14 +1342,14 @@ var actionsdict = {
 		effect = 'stroketail',
 	},
 	
-	frenchkiss = {
-		group = 'Affection',
-		name = 'French Kiss',
-		descript = "Kiss [name] in an erotic manner",
-		reqs = [],
-		location = [],
-		effect = 'frenchkiss',
-	},
+#	frenchkiss = {
+#		group = 'Affection',
+#		name = 'French Kiss',
+#		descript = "Kiss [name] in an erotic manner",
+#		reqs = [],
+#		location = [],
+#		effect = 'frenchkiss',
+#	},
 #	pushdown = {
 #		group = 'Affection',
 #		name = 'Push down',
@@ -1326,7 +1362,7 @@ var actionsdict = {
 		group = 'Affection',
 		name = 'Propose',
 		descript = "Ask [name] if [he] would consent to become more intimate with you. Boosts Consent greatly when successful. ",
-		reqs = [{code = 'stat', stat = 'consent', operant = 'lte', value = 20}],
+		reqs = [{code = 'stat', stat = 'consent', operant = 'lt', value = 25}, {code = 'stat', stat = 'was_proposed', operant = 'eq', value = false}],
 		location = ['bedroom'],
 		effect = 'propose',
 	},

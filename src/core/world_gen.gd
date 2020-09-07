@@ -517,10 +517,13 @@ func make_chest_loot(chest):
 				input_handler.AddOrIncrementDict(dict.materials, tempdict)
 			'usable':
 				var array = []
+				var amount = round(rand_range(i.min, i.max))
+				if amount <= 0:
+					continue
 				for k in Items.itemlist.values():
 					if i.grade.has(k.tier) && k.type == 'usable':
 						array.append(k.code)
-				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], round(rand_range(i.min, i.max))))
+				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()],amount))
 			'static_gear':
 				var number = round(rand_range(i.min, i.max))
 				var array = []

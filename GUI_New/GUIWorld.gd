@@ -312,12 +312,12 @@ func test_mode():
 		character.unlock_class("ruler")
 		character.unlock_class("watchdog")
 		character.unlock_class("director")
-		character.unlock_class("trainer")
+		character.unlock_class("dominator")
 		character.unlock_class("thief")
 		character.unlock_class("engineer")
-		character.travel.location = 'L4'
-		character.travel.area = 'plains'
-		variables.dungeon_encounter_chance = 1
+		#character.travel.location = 'L4'
+		#character.travel.area = 'plains'
+		variables.dungeon_encounter_chance = 0.2
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
@@ -481,6 +481,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
 		globals.AddItemToInventory(
