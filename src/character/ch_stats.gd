@@ -341,8 +341,11 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class']):
-			statlist[i] = chardata[i]
+		if !(i in ['code','class_category', 'slave_class', 'tags']):
+			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
+				statlist[i] = chardata[i].duplicate(true)
+			else:
+				statlist[i] = chardata[i]
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):

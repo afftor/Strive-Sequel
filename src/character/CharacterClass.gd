@@ -162,6 +162,7 @@ func generate_ea_character(gendata, desired_class):
 		var chardata = array[randi()%array.size()]
 		create(chardata.race, chardata.sex, chardata.age)
 		statlist.process_chardata(chardata, true)
+		tags = chardata.tags.duplicate()
 		res = chardata.class_category
 	return res
 
