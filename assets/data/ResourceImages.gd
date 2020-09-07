@@ -192,6 +192,10 @@ var icons = {
 	smith = load("res://assets/Textures_v2/MANSION/icon_blacksmith_64.png"),
 	tailor = load("res://assets/Textures_v2/MANSION/icon_tailoring_64.png"),
 	upgrade = load("res://assets/Textures_v2/MANSION/icon_upgrade_64.png"),
+	travel_city = load("res://assets/Textures_v2/Universal/Icons/icon_travel_city.png"),
+	travel_dungeon = load("res://assets/Textures_v2/Universal/Icons/icon_travel_dungeon.png"),
+	travel_event = load("res://assets/Textures_v2/Universal/Icons/icon_travel_event.png"),
+	travel_village = load("res://assets/Textures_v2/Universal/Icons/icon_travel_village.png"),
 #	TO COMPLETE AND USE IN DATA TABLES
 #	NEED TO GET RID OF ALL LOAD FUNCTIONS
 #	skill_abuse = "res://assets/images/iconsskills/abuse.png",

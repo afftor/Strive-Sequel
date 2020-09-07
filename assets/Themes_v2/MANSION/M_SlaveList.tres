@@ -1,9 +1,14 @@
-[gd_resource type="Theme" load_steps=2 format=2]
+[gd_resource type="Theme" load_steps=3 format=2]
 
-[ext_resource path="res://MainFont_Small.tres" type="DynamicFont" id=1]
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Roundo-Medium.otf"
+
+[sub_resource type="DynamicFont" id=2]
+use_filter = true
+font_data = SubResource( 1 )
 
 [resource]
-default_font = ExtResource( 1 )
+default_font = SubResource( 2 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )

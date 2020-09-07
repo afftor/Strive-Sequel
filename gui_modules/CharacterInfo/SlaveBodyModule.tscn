@@ -1,0 +1,172 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/images/raceshades/Arachna_M.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/panels/noimagesmall.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttonskill_prof.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=7]
+[ext_resource path="res://gui_modules/CharacterInfo/SlaveBodyModule.gd" type="Script" id=8]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/SlaveBodyModule_panel.tres" type="StyleBox" id=10]
+
+[node name="SlaveBodyModule" type="Panel"]
+show_behind_parent = true
+margin_top = 124.0
+margin_right = 700.0
+margin_bottom = 1044.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 10 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_left = 5.21887
+margin_top = 7.62939e-06
+margin_right = 698.219
+margin_bottom = 1043.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buffscontainer" type="HBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.823529 )
+self_modulate = Color( 1, 1, 1, 0.823529 )
+show_behind_parent = true
+margin_left = 5.21887
+margin_top = 812.376
+margin_right = 701.219
+margin_bottom = 917.38
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="buffscontainer"]
+visible = false
+show_behind_parent = true
+margin_right = 100.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="buffscontainer/Button"]
+margin_left = 28.5601
+margin_top = 81.947
+margin_right = 77.5601
+margin_bottom = 105.947
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="buffscontainer/Button"]
+show_behind_parent = true
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 103.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 105, 105 )
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="opacity" type="HSlider" parent="."]
+visible = false
+margin_left = 68.0
+margin_top = 21.0
+margin_right = 767.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.8, 0.8 )
+hint_tooltip = "Image Opacity"
+min_value = 10.0
+value = 100.0
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsButton" type="TextureButton" parent="."]
+visible = false
+margin_left = 5.21887
+margin_top = 47.5277
+margin_right = 45.2189
+margin_bottom = 87.5277
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="ProfessionsBG" type="Panel" parent="."]
+margin_left = 1.0
+margin_top = -130.0
+margin_right = 700.0
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="professions" type="GridContainer" parent="."]
+margin_left = 17.0
+margin_top = -116.0
+margin_right = 689.0
+margin_bottom = -16.0
+mouse_filter = 2
+custom_constants/hseparation = 14
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="professions" groups=[
+"ignore_rightclicks",
+]]
+visible = false
+margin_right = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 100, 0 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="professions/Button"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 93.0
+margin_bottom = 93.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="professions/Button"]
+visible = false
+margin_left = 7.0
+margin_top = 69.0
+margin_right = 93.0
+margin_bottom = 93.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

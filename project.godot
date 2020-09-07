@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Strive for Power 2"
-run/main_scene="res://GUI_New/Menu_v2.tscn"
+run/main_scene="res://gui_modules/Menu_v2.tscn"
 config/use_custom_user_dir=true
 boot_splash/image="res://assets/images/backgrounds/loading.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -132,6 +132,7 @@ AI_data="*res://assets/data/ai_data.gd"
 characters_pool="*res://src/core/characters_pool.gd"
 effects_pool="*res://src/core/effects_pool.gd"
 editor_core="*res://editor tools/editor_core.gd"
+gui_controller="*res://src/core/gui_controller.gd"
 
 [debug]
 
@@ -151,7 +152,6 @@ window/stretch/aspect="keep"
 
 [gui]
 
-theme/custom_font="res://MainFont.tres"
 timers/tooltip_delay_sec=0.2
 
 [input]

@@ -1,11 +1,3 @@
-Added oblivion potion mechanics
-Added Entangle skill for Dryads
-Pheromones can now be used in mansion
-Nerfed bandages output 3 -> 2
-Nerfed First Aid heal value 35% -> 30%
-Fixed ranged attacks not requiring bow
-Fixed First Aid Tooltip
-Fixed some console errors
 Fixed fairy racial skill not restoring correct amount of hp
 Fixed exotic slave trader event not adding properly at the game's start
 Fixed class unlock animation not using correct character name

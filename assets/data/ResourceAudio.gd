@@ -96,4 +96,5 @@ var sounds = {
 	class_aquired = load("res://assets/sounds/music/class_aquired.wav"),
 	quest_completed = load("res://assets/sounds/music/task_completed.wav"),
 	quest_aquired = load("res://assets/sounds/music/task_aquired.wav"),
+	battle_start = load("res://assets/sounds/sounds/battle_start.wav"),
 }

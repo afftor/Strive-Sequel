@@ -492,7 +492,6 @@ var racelist = {
 		diet_love = {vege = 2, meat = 0.1, fish = 1, grain = 1.5},
 		diet_hate = {vege = 10, meat = 80, fish = 45, grain = 10},
 		tags = [],
-		combat_skills = ['entangle'],
 		bodyparts = {
 			ears = ['elven'],
 			skin = ['green','purple','brown'],

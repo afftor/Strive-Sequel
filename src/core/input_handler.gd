@@ -98,7 +98,14 @@ enum {
 	NODE_SLAVEMODULE,
 	NODE_INVENTORY_NEW,
 	NODE_MANSION_NEW,
-	NODE_GUI_WORLD,
+	# NODE_GUI_WORLD,
+	NODE_CLOCK,
+	NODE_NAVIGATION,
+	NODE_EXPLORATION,
+	NODE_EXPLORE_SLAVEINFO,
+	NODE_GAMEMENU,
+	NODE_SEX,
+	NODE_DATE,
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -212,6 +219,93 @@ func _ready():
 	OS.window_position = globalsettings.window_pos
 	settings_load()
 
+func _input(event):
+	if event.is_echo() == true && !event.is_action_type(): 
+		return
+	if gui_controller.current_screen == null:
+		return
+	if event.is_action_released("F1") \
+		&& gui_controller.current_screen == gui_controller.mansion:
+		gui_controller.mansion.show_tutorial()
+	if event.is_action_released("F9"):
+		OS.window_fullscreen = !OS.window_fullscreen
+		input_handler.globalsettings.fullscreen = OS.window_fullscreen
+		if input_handler.globalsettings.fullscreen == false:
+			OS.window_position = Vector2(0,0)
+	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
+		for i in get_tree().get_nodes_in_group("disable_rmb_esc"):
+			if i.is_visible_in_tree():
+				if gui_controller.windows_opened.size() > 0:
+					gui_controller.close_top_window()
+				return
+		var ignore_rightclick = false
+		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
+			if i.get_global_rect().has_point(i.get_global_mouse_position()):
+				ignore_rightclick = true
+				continue
+		if ignore_rightclick == false:
+			if gui_controller.windows_opened.size() > 0:
+				gui_controller.close_top_window()
+				for subscene in gui_controller.current_screen.get_children():
+					if subscene.get_class() == "Tween":
+						continue
+					subscene.update()
+				return
+			else:
+				match gui_controller.current_screen:
+					gui_controller.mansion:
+						if event.is_action("ESC") && gui_controller.mansion.mansion_state in ["default", "skills"]:
+							gui_controller.mansion.show_menu()
+						else:
+							gui_controller.mansion.mansion_state_set("default")
+					gui_controller.inventory:
+						gui_controller.inventory.hide()
+						gui_controller.current_screen = gui_controller.previous_screen
+						if gui_controller.previous_screen == gui_controller.slavepanel:
+							gui_controller.previous_screen = gui_controller.mansion
+						gui_controller.current_screen.show()
+					gui_controller.game_menu:
+						gui_controller.game_menu.hide()
+						gui_controller.current_screen = gui_controller.previous_screen
+					gui_controller.slavepanel:
+						gui_controller.slavepanel.hide()
+						gui_controller.current_screen = gui_controller.previous_screen
+						gui_controller.current_screen.show()
+						if gui_controller.current_screen == gui_controller.mansion:
+							gui_controller.mansion.mansion_state_set("default")
+					gui_controller.explore_slaveinfo:
+						gui_controller.explore_slaveinfo.hide()
+						gui_controller.current_screen = gui_controller.previous_screen
+						gui_controller.update_modules()
+						gui_controller.current_screen.show()
+			
+			if gui_controller.current_screen == gui_controller.mansion:
+				gui_controller.clock.raise()
+			if gui_controller.current_screen == gui_controller.exploration:
+				var location = active_location
+				var capital = false
+				capital = location.type == "capital"
+				if capital:
+					gui_controller.clock.raise()
+					gui_controller.clock.show()
+		gui_controller.update_modules()
+	if (gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.exploration) \
+		&& str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
+		&& gui_controller.windows_opened.size() == 0 \
+		&& text_field_input == false \
+		&& get_tree().get_root().get_node_or_null("dialogue") \
+		&& !get_tree().get_root().get_node("dialogue").is_visible():
+		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
+			if input_handler.globalsettings.turn_based_time_flow == false:
+				gui_controller.clock.changespeed(gui_controller.clock.timebuttons[int(event.as_text())-1])
+			else:
+				gui_controller.clock.timeflowhotkey(int(event.as_text()))
+	elif str(event.as_text().replace("Kp ",'')) in str(range(1,9)) \
+		&& get_tree().get_root().get_node_or_null("dialogue") \
+		&& get_tree().get_root().get_node("dialogue").is_visible():
+		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
+		
+
 # func _input(event):
 # 	if event.is_echo() == true && !event.is_action_type(): 
 # 		return
@@ -246,45 +340,6 @@ func _ready():
 # 		input_handler.globalsettings.fullscren = OS.window_fullscreen
 
 
-# func _input(event):
-# 	if event.is_echo() == true && !event.is_action_type(): 
-# 		return
-# 	#print(var2str(event))
-# 	if (event.is_action("ESC") || event.is_action_released("RMB")):
-# 		var ignore_rightclick = false
-# 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-# 			if i.visible == true:
-# 				ignore_rightclick = true
-# 				continue
-# 		if ignore_rightclick == false:
-
-# 			# Changes Start
-# 			if CloseableWindowsArray.size() != 0:# && !CurrentScene.name == "MansionMainModule":
-# 				CloseTopWindow()
-# #				Mansion.mansion_state = "default"
-# 			else:
-# 				if CurrentScene.name == 'mansion' && event.is_action("ESC"):
-# 					CurrentScene.get_node("MenuPanel").open()
-# #				if CurrentScene.name == "MansionMainModule":
-# #					Mansion.mansion_state = "default"
-# 			#Changes end
-# 	if event.is_action_released("F9"):
-# 		OS.window_fullscreen = !OS.window_fullscreen
-# 		input_handler.globalsettings.fullscreen = OS.window_fullscreen
-# 		if input_handler.globalsettings.fullscreen == false:
-# 			OS.window_position = Vector2(0,0)
-# 	if CurrentScreen == 'mansion' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)) && CloseableWindowsArray.size() == 0 && text_field_input == false:
-# 		if str(int(event.as_text())) in str(range(1,4)) && !event.is_pressed():
-# 			if input_handler.globalsettings.turn_based_time_flow == false:
-# 				CurrentScene.changespeed(CurrentScene.timebuttons[int(event.as_text())-1])
-# 			else:
-# 				CurrentScene.timeflowhotkey(int(event.as_text()))
-# 	elif CurrentScreen == 'scene' && str(event.as_text().replace("Kp ",'')) in str(range(1,9)):
-# 		get_tree().get_root().get_node("dialogue").select_option(int(event.as_text()))
-# 	if event.is_action_pressed('full_screen'):
-# 		OS.window_fullscreen = !OS.window_fullscreen
-# 		input_handler.globalsettings.fullscren = OS.window_fullscreen
-
 func _process(delta):
 	if OS.window_position.y < 0:
 		OS.window_position.y = 0
@@ -310,18 +365,8 @@ func _process(delta):
 			AudioServer.set_bus_volume_db(1, input_handler.globalsettings.musicvol)
 			musicraising = false
 
-func CloseAllCloseableWindows():
-	while CloseableWindowsArray.size() > 0:
-		CloseTopWindow()
 
-func CloseTopWindow():
-	var node = CloseableWindowsArray.back()
-	if typeof(node) == TYPE_STRING:
-		return
-	elif ResourceScripts.core_animations.BeingAnimated.has(node):
-		return
-	node.hide()
-	#CloseableWindowsArray.pop_back(); #i think this is required #It's not, breaks multiple windows order
+
 
 func LockOpenWindow():
 	CloseableWindowsArray.append('lock')
@@ -819,7 +864,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
 		node.add_child(window)
-	if raise && type != NODE_GUI_WORLD: window.raise()
+	if raise: window.raise()
 	if ResourceScripts.node_data[type].has('args'): 
 		for param in ResourceScripts.node_data[type].args:
 			window.set(param, ResourceScripts.node_data[type].args[param])

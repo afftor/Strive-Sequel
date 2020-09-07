@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/inventory/item_frame_chose.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=5]
-[ext_resource path="res://GUI_New/SaveLoadPanel_v2.gd" type="Script" id=6]
+[ext_resource path="res://gui_modules/SaveLoadPanel_v2.gd" type="Script" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan_pressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Icons/icon_trashcan.png" type="Texture" id=9]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/frame_load.png" type="Texture" id=11]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
+
 
 [node name="saveloadpanel" type="Panel"]
 margin_right = 650.0
