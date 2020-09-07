@@ -605,6 +605,16 @@ var individual_lines = {
 	date_propose_refuse4 = {text = "Uh, no. This is awkward.", events = ['date_proposal_refuse'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	date_propose_refuse5 = {text = "I'm sure there's someone better than me.", events = ['date_proposal_refuse'], personalities = ['kind','shy','serious'], reqs = [], weight = 1, tags = []},
 	
+	
+	date_propose_had_sex1 = {text = "Don't be silly, didn't we do it already?", events = ['date_proposal_had_sex'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	date_propose_had_sex2 = {text = "Sure, if you want me to confirm it officially...", events = ['date_proposal_had_sex'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	date_propose_had_sex3 = {text = "...But didn't we already do that?", events = ['date_proposal_had_sex'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	
+	date_propose_was_forced1 = {text = "You didn't really give me much of a choice last time, why bother now?", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	date_propose_was_forced2 = {text = "Why didn't you ask me before? What's the point now...", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	date_propose_was_forced3 = {text = "Do as you wish. You've already did, though. ", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	date_propose_was_forced4 = {text = "Just getting this out of the way now? Fine. ", events = ['date_proposal_was_forced'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = []},
+	
 	date_sex_offer1 = {text = "...[Master]? I'd like to continue this affair.", events = ['date_sex_offer'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	date_sex_offer2 = {text = "Uhm, [Master], we could do, you know, lewd stuff... If you don't mind.", events = ['date_sex_offer'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	date_sex_offer3 = {text = "Hey, you are not going to leave me just now?", events = ['date_sex_offer'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
