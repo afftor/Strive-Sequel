@@ -1,0 +1,373 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=6]
+[ext_resource path="res://assets/images/gui/inventory/itemicon1.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/inventory/itemicon4.png" type="Texture" id=8]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Pressed.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=10]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=18]
+[ext_resource path="res://gui_modules/Mansion/Scripts/MansionJournalModule.gd" type="Script" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=20]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/CITY/Universal/paper_description.png" type="Texture" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 22 )
+region_rect = Rect2( 0, 0, 500, 740 )
+
+[sub_resource type="ImageTexture" id=3]
+
+[node name="MansionJournalModule" type="Panel"]
+margin_right = 860.0
+margin_bottom = 800.0
+custom_styles/panel = ExtResource( 20 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0, 0, 0, 0.823529 )
+show_behind_parent = true
+margin_right = 860.0
+margin_bottom = 800.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActiveTasks" type="Label" parent="."]
+margin_left = 74.2
+margin_top = 29.136
+margin_right = 308.2
+margin_bottom = 80.136
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Active Tasks"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 337.821
+margin_top = -5.0
+margin_right = 837.821
+margin_bottom = 735.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 46.0
+margin_top = 169.0
+margin_right = 338.0
+margin_bottom = 694.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 292.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 292.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+theme = ExtResource( 6 )
+toggle_mode = true
+text = "Text Teateya h hasjh"
+
+[node name="QuestDescript" type="RichTextLabel" parent="."]
+margin_left = 398.0
+margin_top = 40.0
+margin_right = 772.0
+margin_bottom = 311.0
+theme = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+
+[node name="CompleteButton" type="Button" parent="."]
+margin_left = 382.0
+margin_top = 716.948
+margin_right = 599.002
+margin_bottom = 761.948
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/normal = ExtResource( 11 )
+text = "Complete"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="."]
+margin_left = 599.002
+margin_top = 716.948
+margin_right = 816.004
+margin_bottom = 761.948
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/normal = ExtResource( 11 )
+text = "Forfeit"
+
+[node name="reqs" type="HBoxContainer" parent="."]
+margin_left = 398.0
+margin_top = 386.0
+margin_right = 772.0
+margin_bottom = 461.0
+
+[node name="Button" type="TextureButton" parent="reqs"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="reqs/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="reqs/Button"]
+visible = false
+margin_left = 32.5641
+margin_top = 48.7934
+margin_right = 72.5641
+margin_bottom = 72.7934
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="rewards" type="HBoxContainer" parent="."]
+margin_left = 398.0
+margin_top = 518.0
+margin_right = 772.0
+margin_bottom = 593.0
+
+[node name="Button" type="TextureButton" parent="rewards"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+size_flags_horizontal = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="rewards/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 72.0
+margin_bottom = 72.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="amount" type="Label" parent="rewards/Button"]
+visible = false
+margin_left = 30.6155
+margin_top = 46.5347
+margin_right = 70.6155
+margin_bottom = 70.5347
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="."]
+margin_left = 387.0
+margin_top = 335.0
+margin_right = 788.0
+margin_bottom = 367.0
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Requirements"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 396.0
+margin_top = 467.0
+margin_right = 772.0
+margin_bottom = 499.0
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rewards"
+align = 1
+
+[node name="Time" type="TextureRect" parent="."]
+margin_left = 497.826
+margin_top = 610.948
+margin_right = 537.826
+margin_bottom = 668.948
+texture = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Time"]
+margin_left = 45.6711
+margin_top = 17.499
+margin_right = 140.671
+margin_bottom = 41.499
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time"
+
+[node name="Main" type="TextureButton" parent="."]
+margin_left = 188.177
+margin_top = 98.136
+margin_right = 316.177
+margin_bottom = 140.136
+rect_scale = Vector2( -1, 1 )
+toggle_mode = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+texture_focused = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main"]
+margin_left = 103.0
+margin_right = 206.0
+margin_bottom = 42.0
+rect_scale = Vector2( -1, 1 )
+text = "Main"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Minor" type="TextureButton" parent="."]
+margin_left = 188.177
+margin_top = 98.136
+margin_right = 316.177
+margin_bottom = 140.136
+toggle_mode = true
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+texture_focused = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Minor"]
+margin_right = 103.0
+margin_bottom = 42.0
+text = "Minor"
+align = 1
+valign = 1
+
+[node name="ItemSelectionPanel" type="Panel" parent="."]
+visible = false
+margin_left = 106.755
+margin_top = 42.4658
+margin_right = 744.755
+margin_bottom = 739.466
+custom_styles/panel = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ItemSelectionPanel"]
+margin_left = 27.6803
+margin_top = 114.136
+margin_right = 600.68
+margin_bottom = 499.136
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ItemSelectionPanel/ScrollContainer"]
+columns = 7
+
+[node name="Button" type="TextureButton" parent="ItemSelectionPanel/ScrollContainer/GridContainer"]
+visible = false
+margin_right = 75.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 75, 75 )
+toggle_mode = true
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ItemSelectionPanel/ScrollContainer/GridContainer/Button"]
+show_behind_parent = true
+margin_right = 75.0
+margin_bottom = 75.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Amount" type="Label" parent="ItemSelectionPanel/ScrollContainer/GridContainer/Button"]
+visible = false
+margin_left = 25.731
+margin_top = 46.3779
+margin_right = 65.731
+margin_bottom = 70.3779
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+
+[node name="noitems" type="Label" parent="ItemSelectionPanel"]
+margin_left = 217.01
+margin_top = 139.171
+margin_right = 414.01
+margin_bottom = 163.171
+text = "NOFITTINGITEMS"
+
+[node name="ConfirmButton" type="Button" parent="ItemSelectionPanel"]
+margin_left = 188.214
+margin_top = 542.812
+margin_right = 433.214
+margin_bottom = 602.812
+theme = ExtResource( 6 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="ItemSelectionPanel"]
+margin_left = 188.214
+margin_top = 612.812
+margin_right = 433.214
+margin_bottom = 672.812
+theme = ExtResource( 6 )
+text = "Cancel"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ItemSelectionPanel"]
+margin_left = 40.0
+margin_top = 32.0
+margin_right = 572.0
+margin_bottom = 90.0

@@ -246,27 +246,27 @@ var effect_table = {
 		buffs = ['b_charm'],
 	},
 	#shackles effects for now have the same bug as shield effects in displaced and here - they don't remove all previous shackles effects before applying (so on breaking shackles removing the first effect reverts shackles_chance to null and removing the second effect reverts this chance to resulting chance of the first effect), this part needs to be fixed after testing before the final version. but for test purpose current version is ok, cause this bug have controlled appearance
-	e_s_shackles1 = {
-		type = 'trigger',
-		trigger = [variables.TR_POSTDAMAGE],
-		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
-		req_skill = true,
-		sub_effects = ['e_shackles1'],
-		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],#[target, caster]
-		buffs = []
-	},
-	e_shackles1 = { 
-		type = 'temp_s',
-		target = 'target',
-		name = 'shackles',
-		rem_event = variables.TR_SHACKLES_OFF,
-		stack = 1,
-		tags = [],
-		sub_effects = [],
-		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
-		atomic = ['a_shackles_1'],
-		buffs = ['b_shackles'],
-	},
+#	e_s_shackles1 = {
+#		type = 'trigger',
+#		trigger = [variables.TR_POSTDAMAGE],
+#		conditions = [{type = 'skill', value = ['hit_res', 'mask', variables.RES_HITCRIT]}],
+#		req_skill = true,
+#		sub_effects = ['e_shackles1'],
+#		args = [{obj = 'parent', param = 'target'}, {obj = 'parent', param = 'caster'}],#[target, caster]
+#		buffs = []
+#	},
+#	e_shackles1 = { 
+#		type = 'temp_s',
+#		target = 'target',
+#		name = 'shackles',
+#		rem_event = variables.TR_SHACKLES_OFF,
+#		stack = 1,
+#		tags = [],
+#		sub_effects = [],
+#		args = [{obj = 'parent_arg_get', index = 0, param = 'magic_factor'}, {obj = 'parent_arg_get', index = 1, param = 'magic_factor'}],#[target.magic_factor, caster.magic_factor]
+#		atomic = ['a_shackles_1'],
+#		buffs = ['b_shackles'],
+#	},
 	e_shackles = {#to add duration for sure
 		type = 'temp_s',
 		target = 'target',
@@ -2849,7 +2849,7 @@ var buffs = {
 	#icons are defined by path or by name in images.icons, do not load images here!
 	b_shackles = {
 		icon = "res://assets/images/iconsskills/Magic Shackles.png", 
-		description = "Shackles: Prevents character's escape. Increase Timid Factor by 2. ",
+		description = "Shackles",
 		limit = 1,
 		t_name = 'shackles',
 		mansion_only = true,

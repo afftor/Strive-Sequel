@@ -963,9 +963,11 @@ func remove_location(locationid):
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
 	input_handler.update_slave_list()
+	if gui_controller.current_screen == gui_controller.mansion:
+		gui_controller.mansion.mansion_state_set("default")
 	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
-		input_handler.exploration_node.Navigation.select_location('aliron')
-		input_handler.exploration_node.Navigation.build_accessible_locations()
+		input_handler.exploration_node.nav.select_location('aliron')
+		input_handler.exploration_node.nav.build_accessible_locations()
 
 func return_characters_from_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
@@ -1084,7 +1086,7 @@ func common_effects(effects):
 						number -= 1
 			'update_guild':
 				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
-				input_handler.exploration_node.City.enter_guild(input_handler.active_faction)
+				input_handler.exploration_node.enter_guild(input_handler.active_faction)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':

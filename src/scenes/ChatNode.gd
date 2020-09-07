@@ -676,7 +676,7 @@ func return_chat_line(character, event):
 				for k in i.arg_reqs:
 					match k:
 						'partner_is_master':
-							if input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data["INTERACTION"].main_module.has_master():
+							if gui_controller.sex_panel.has_master():
 								check = true
 							
 				if check == false:

@@ -1,0 +1,772 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_loyalty.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small_submission.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/gui/gui icons/icon_lfood.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/gui/obed_good.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/gui/gui icons/icon_dlfood.png" type="Texture" id=9]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_SEX_Skills.tres" type="Theme" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=11]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills.png" type="Texture" id=13]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=16]
+[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=17]
+[ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="SlaveInfoModule" type="Panel"]
+margin_right = 970.0
+margin_bottom = 920.0
+theme = ExtResource( 12 )
+custom_styles/panel = ExtResource( 19 )
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 300.0
+margin_bottom = 220.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="obedlabel" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 222.976
+margin_top = 31.9961
+margin_right = 301.976
+margin_bottom = 84.9961
+rect_scale = Vector2( 0.627771, 0.627771 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "25"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="Panel/obedlabel"]
+margin_left = -71.8484
+margin_top = -10.3006
+margin_right = 4.1516
+margin_bottom = 60.6994
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Panel/obedlabel"]
+margin_left = -91.2655
+margin_top = -41.7744
+margin_right = 95.7345
+margin_bottom = -1.77439
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Obedience"
+align = 1
+valign = 1
+
+[node name="authoritylabel" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 32.0
+margin_top = 188.12
+margin_right = 270.0
+margin_bottom = 220.12
+mouse_filter = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.901961, 0.686275, 0.0862745, 1 )
+text = "Authority: "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="authoritylabel2" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 63.0
+margin_top = 90.0
+margin_right = 242.0
+margin_bottom = 122.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Loyalty"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="authoritylabel3" type="Label" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 62.513
+margin_top = 140.0
+margin_right = 241.513
+margin_bottom = 172.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Submission"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loyaltylabel" type="TextureProgress" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 62.0
+margin_top = 117.12
+margin_right = 241.0
+margin_bottom = 141.12
+value = 100.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 4 )
+
+[node name="submissionlabel" type="TextureProgress" parent="Panel" groups=[
+"hide_master",
+"hide_stranger",
+]]
+margin_left = 62.0
+margin_top = 164.12
+margin_right = 241.0
+margin_bottom = 188.12
+value = 100.0
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="character_class" type="Label" parent="Panel" groups=[
+"hide_master",
+]]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 162.0
+margin_bottom = 84.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Slave"
+align = 1
+valign = 1
+
+[node name="BaseStatsPanel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 300.0
+margin_right = 970.0
+margin_bottom = 220.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="base_stats" type="GridContainer" parent="BaseStatsPanel"]
+margin_left = 3.40582
+margin_top = 26.5445
+margin_right = 343.406
+margin_bottom = 190.544
+custom_constants/vseparation = 1
+custom_constants/hseparation = 14
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_right = 118.0
+margin_bottom = 32.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "ATK:"
+align = 2
+
+[node name="atk" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 132.0
+margin_right = 158.0
+margin_bottom = 32.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "25"
+
+[node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 172.0
+margin_right = 300.0
+margin_bottom = 32.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "MATK:"
+align = 2
+
+[node name="matk" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 314.0
+margin_right = 340.0
+margin_bottom = 32.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "20"
+
+[node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_top = 33.0
+margin_right = 118.0
+margin_bottom = 65.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "DEF:"
+align = 2
+
+[node name="armor" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 132.0
+margin_top = 33.0
+margin_right = 158.0
+margin_bottom = 65.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "15"
+
+[node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 172.0
+margin_top = 33.0
+margin_right = 300.0
+margin_bottom = 65.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "MDEF:"
+align = 2
+
+[node name="mdef" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 314.0
+margin_top = 33.0
+margin_right = 340.0
+margin_bottom = 65.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "20"
+
+[node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_top = 66.0
+margin_right = 118.0
+margin_bottom = 98.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Hit Rate:"
+align = 2
+
+[node name="hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 132.0
+margin_top = 66.0
+margin_right = 158.0
+margin_bottom = 98.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "15"
+
+[node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 172.0
+margin_top = 66.0
+margin_right = 300.0
+margin_bottom = 98.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Evasion:"
+align = 2
+
+[node name="evasion" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 314.0
+margin_top = 66.0
+margin_right = 340.0
+margin_bottom = 98.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "20"
+
+[node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_top = 99.0
+margin_right = 118.0
+margin_bottom = 131.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Speed:"
+align = 2
+
+[node name="speed" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 132.0
+margin_top = 99.0
+margin_right = 158.0
+margin_bottom = 131.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "15"
+
+[node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 172.0
+margin_top = 99.0
+margin_right = 300.0
+margin_bottom = 131.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Armor Pen.:"
+align = 2
+
+[node name="armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 314.0
+margin_top = 99.0
+margin_right = 340.0
+margin_bottom = 131.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "20"
+
+[node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_top = 132.0
+margin_right = 118.0
+margin_bottom = 164.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Critical:"
+align = 2
+
+[node name="critchance" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 132.0
+margin_top = 132.0
+margin_right = 158.0
+margin_bottom = 164.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "15"
+
+[node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 172.0
+margin_top = 132.0
+margin_right = 300.0
+margin_bottom = 164.0
+mouse_filter = 1
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Critical Mod:"
+align = 2
+
+[node name="critmod" type="Label" parent="BaseStatsPanel/base_stats"]
+margin_left = 314.0
+margin_top = 132.0
+margin_right = 340.0
+margin_bottom = 164.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "20"
+
+[node name="resists" type="GridContainer" parent="BaseStatsPanel"]
+margin_left = 372.0
+margin_top = 74.0
+margin_right = 629.0
+margin_bottom = 203.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 5
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BaseStatsPanel/resists"]
+visible = false
+margin_right = 81.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Attack:"
+align = 2
+
+[node name="Value" type="Label" parent="BaseStatsPanel/resists"]
+visible = false
+margin_right = 28.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "25"
+
+[node name="ResistsLabel" type="Label" parent="BaseStatsPanel"]
+margin_left = 372.0
+margin_top = 8.0
+margin_right = 660.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Resists"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 41.0
+margin_top = 264.0
+margin_right = 937.0
+margin_bottom = 659.0
+theme = ExtResource( 3 )
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DietButton" type="Button" parent="."]
+margin_left = 40.0
+margin_top = 841.0
+margin_right = 266.0
+margin_bottom = 906.0
+theme = ExtResource( 11 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+toggle_mode = true
+text = "Diet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_love" type="TextureRect" parent="."]
+margin_left = 72.0
+margin_top = 770.593
+margin_right = 107.0
+margin_bottom = 805.593
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="food_love"]
+visible = false
+margin_left = 48.0
+margin_top = 2.40716
+margin_right = 79.0
+margin_bottom = 32.4072
+
+[node name="food_hate" type="TextureRect" parent="."]
+margin_left = 72.0
+margin_top = 806.0
+margin_right = 107.0
+margin_bottom = 841.0
+rect_min_size = Vector2( 35, 35 )
+size_flags_horizontal = 0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="food_hate"]
+margin_left = 48.0
+margin_right = 157.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="food_hate/Container"]
+visible = false
+margin_right = 31.0
+margin_bottom = 30.0
+
+[node name="SexSkillsControl" type="Control" parent="."]
+margin_left = 304.0
+margin_top = 740.0
+margin_right = 664.0
+margin_bottom = 907.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SexSkillsControl"]
+margin_left = 11.0
+margin_top = -4.0
+margin_right = 312.0
+margin_bottom = 168.0
+theme = ExtResource( 10 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SexSkillsControl/ScrollContainer"]
+
+[node name="Button" type="TextureRect" parent="SexSkillsControl/ScrollContainer/VBoxContainer"]
+visible = false
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="SexSkillsControl/ScrollContainer/VBoxContainer/Button"]
+margin_left = 37.0
+margin_top = -8.0
+margin_right = 292.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_as_outline = 1
+text = "Sex Skill Name"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="SexSkillsControl/ScrollContainer/VBoxContainer/Button"]
+margin_left = 37.0
+margin_top = 27.0
+margin_right = 293.0
+margin_bottom = 47.0
+texture_over = ExtResource( 13 )
+texture_progress = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="SexSkillsControl/ScrollContainer/VBoxContainer/Button/ProgressBar"]
+margin_top = -2.0
+margin_right = 255.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_as_outline = 1
+text = "1/100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="SexSkillsControl"]
+margin_left = 6.0
+margin_right = 18.0
+margin_bottom = 168.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SexSkilsLabel" type="Label" parent="."]
+margin_left = 304.0
+margin_top = 688.0
+margin_right = 664.0
+margin_bottom = 728.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Sex Skills"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="traitslabel" type="Label" parent="."]
+margin_left = 672.0
+margin_top = 688.0
+margin_right = 960.0
+margin_bottom = 728.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Sex Traits"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 671.0
+margin_top = 776.0
+margin_right = 938.0
+margin_bottom = 901.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="traits" type="VBoxContainer" parent="ScrollContainer"]
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Label" parent="ScrollContainer/traits"]
+visible = false
+margin_right = 55.0
+margin_bottom = 24.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "1.100"
+align = 1
+
+[node name="ConsentLabel" type="Label" parent="."]
+margin_left = 672.0
+margin_top = 736.0
+margin_right = 960.0
+margin_bottom = 768.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Consent"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food_consumption" type="Label" parent="."]
+margin_left = 31.0
+margin_top = 739.0
+margin_right = 224.0
+margin_bottom = 774.0
+rect_min_size = Vector2( 50, 35 )
+mouse_filter = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Daily Consumption"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="food_consumption"]
+margin_left = 208.941
+margin_top = 1.0
+margin_right = 234.941
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "25"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FoodLabel" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 688.0
+margin_right = 300.0
+margin_bottom = 728.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Food"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterIcon" type="TextureRect" parent="."]
+visible = false
+margin_left = 193.103
+margin_top = 25.5297
+margin_right = 253.103
+margin_bottom = 65.5297
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="MasterIcon"]
+margin_left = -161.103
+margin_right = -53.1026
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Master"

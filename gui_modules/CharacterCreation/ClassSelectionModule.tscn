@@ -1,0 +1,177 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
+[ext_resource path="res://gui_modules/CharacterCreation/ClassSelectionModule.gd" type="Script" id=5]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=6]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=7]
+[ext_resource path="res://assets/images/iconsclasses/Whore.png" type="Texture" id=8]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Pressed.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Middle_Panel.tres" type="StyleBox" id=10]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=11]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=12]
+[ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Disabled.tres" type="StyleBox" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 1 )
+
+[node name="ClassSelectionModule" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1140.0
+margin_bottom = -250.0
+custom_styles/panel = ExtResource( 10 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color( 0.180392, 0.054902, 0.713726, 1 )
+show_behind_parent = true
+margin_right = 780.0
+margin_bottom = 830.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassPanel" type="Panel" parent="."]
+margin_right = 780.0
+margin_bottom = 829.0
+custom_styles/panel = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ClassPanel"]
+margin_left = 25.0
+margin_top = 32.3585
+margin_right = 318.0
+margin_bottom = 782.358
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClassPanel/ScrollContainer"]
+margin_right = 293.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Button" type="Button" parent="ClassPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 293.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 0, 110 )
+theme = ExtResource( 4 )
+toggle_mode = true
+script = ExtResource( 7 )
+
+[node name="icon" type="TextureRect" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 7.99368
+margin_top = 14.1785
+margin_right = 87.9937
+margin_bottom = 94.1785
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 92.5268
+margin_top = 10.3214
+margin_right = 272.527
+margin_bottom = 42.3214
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Class Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReqsLabel" type="Label" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 92.5268
+margin_top = 46.4906
+margin_right = 210.527
+margin_bottom = 73.4906
+custom_fonts/font = SubResource( 1 )
+text = "Requirements"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reqs" type="RichTextLabel" parent="ClassPanel/ScrollContainer/VBoxContainer/Button"]
+margin_left = 93.0
+margin_top = 73.0
+margin_right = 281.0
+margin_bottom = 100.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClassPanel"]
+visible = false
+margin_left = 181.146
+margin_top = 32.0
+margin_right = 770.146
+margin_bottom = 122.0
+text = "Select starting character class. Other classes can be learned later. "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassDescript" type="RichTextLabel" parent="ClassPanel"]
+margin_left = 347.0
+margin_top = 16.0
+margin_right = 761.0
+margin_bottom = 727.0
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="Button" parent="."]
+margin_left = 559.749
+margin_top = 748.947
+margin_right = 754.749
+margin_bottom = 816.947
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="."]
+margin_left = 350.0
+margin_top = 748.947
+margin_right = 545.0
+margin_bottom = 816.947
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}

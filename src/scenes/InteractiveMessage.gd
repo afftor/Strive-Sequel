@@ -7,7 +7,11 @@ var hold_selection = false #pause for scene to load
 var previous_dialogue_option = 0
 var previous_text = ''
 
+var dialogue_visible = false
+
 func open(scene, not_save = false):
+	gui_controller.dialogue = self
+	dialogue_visible = true
 	if scene.has("variations"):
 		for i in scene.variations:
 			if globals.checkreqs(i.reqs):
@@ -182,7 +186,11 @@ func update_scene_characters():
 		newbutton.get_node('icon').texture = i.get_icon()
 		globals.connectslavetooltip(newbutton, i)
 		if i.is_players_character == false:
-			newbutton.connect('signal_RMB_release',input_handler,'ShowSlavePanel', [i])
+			newbutton.connect('signal_RMB_release',self,'show_full_info', [i])
+
+
+
+
 
 var stored_scene
 
@@ -243,6 +251,8 @@ func select_option(number):
 			button.emit_signal("pressed")
 
 func close(transition = false):
+	#temporary
+	dialogue_visible = false
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()

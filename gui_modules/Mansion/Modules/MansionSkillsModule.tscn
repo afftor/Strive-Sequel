@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/panel_borders.png" type="Texture" id=1]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=4]
+[ext_resource path="res://assets/images/gui/universal/skill_frame_diabled.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_empty.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/Mansion/Scripts/MansionSkillsModule.gd" type="Script" id=7]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/icon_skillssword_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/icon_skillssword.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_dark.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/icon_skillssword_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/MANSION/Skills/Buttons/buttonskill_light.png" type="Texture" id=12]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 256, 120 )
+margin_left = 25.0
+margin_right = 25.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="MansionSkillsModule" type="Panel"]
+anchor_right = 0.573
+anchor_bottom = 0.121
+margin_left = -0.174828
+margin_right = -0.334839
+margin_bottom = -10.68
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillPanelBG" type="TextureRect" parent="." groups=[
+"hide_stranger",
+"hide_traveler",
+]]
+visible = false
+margin_right = 1100.0
+margin_bottom = 138.0
+stretch_mode = 6
+
+[node name="skillpanelswitch" type="TextureButton" parent="."]
+margin_left = 9.0
+margin_top = 10.0
+margin_right = 41.0
+margin_bottom = 106.0
+hint_tooltip = "Social/Combat Skills"
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 8 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillPanel" type="HBoxContainer" parent="." groups=[
+"hide_stranger",
+"hide_traveler",
+]]
+margin_left = 46.0
+margin_top = 8.0
+margin_right = 1090.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 96 )
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="SkillPanel"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 4 )
+
+[node name="icon" type="TextureRect" parent="SkillPanel/Button"]
+show_behind_parent = true
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 96, 96 )
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charges" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 53.0
+margin_top = 1.0
+margin_right = 93.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 2
+
+[node name="energycost" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 53.0
+margin_top = 65.767
+margin_right = 93.0003
+margin_bottom = 97.767
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="manacost" type="Label" parent="SkillPanel/Button"]
+visible = false
+margin_left = 5.62131
+margin_top = 65.767
+margin_right = 45.6213
+margin_bottom = 97.767
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"

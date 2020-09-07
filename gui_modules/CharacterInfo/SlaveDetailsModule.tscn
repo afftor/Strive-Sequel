@@ -1,0 +1,586 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=7]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=10]
+[ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=15]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=16]
+[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=17]
+[ext_resource path="res://gui_modules/CharacterInfo/ImageSelect.gd" type="Script" id=18]
+[ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=19]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 970, 920 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 42
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 13 )
+
+[node name="SlaveDetailsModule" type="Panel"]
+margin_left = 154.949
+margin_top = 137.0
+margin_right = 1124.95
+margin_bottom = 1057.0
+theme = ExtResource( 11 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 970.0
+margin_bottom = 920.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 64.0
+margin_top = 109.0
+margin_right = 379.0
+margin_bottom = 854.0
+rect_min_size = Vector2( 315, 0 )
+custom_constants/separation = 9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="descript" type="Button" parent="VBoxContainer"]
+margin_right = 315.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Add Custom Description"
+
+[node name="nickname" type="Button" parent="VBoxContainer"]
+margin_top = 51.0
+margin_right = 315.0
+margin_bottom = 93.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Set Nickname"
+
+[node name="masternoun" type="Button" parent="VBoxContainer" groups=[
+"hide_master",
+]]
+margin_top = 102.0
+margin_right = 315.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Set Master Noun"
+
+[node name="icon" type="Button" parent="VBoxContainer"]
+margin_top = 153.0
+margin_right = 315.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Select Custom Portrait"
+
+[node name="body" type="Button" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 315.0
+margin_bottom = 246.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Select Custom Body"
+
+[node name="traits" type="Button" parent="VBoxContainer"]
+margin_top = 255.0
+margin_right = 315.0
+margin_bottom = 307.0
+rect_min_size = Vector2( 315, 40 )
+theme = ExtResource( 4 )
+text = "Manage Sex Traits"
+
+[node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 316.0
+margin_right = 315.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 315, 0 )
+
+[node name="cancelportait" type="Button" parent="VBoxContainer/IconBlock"]
+visible = false
+margin_right = 315.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 315, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Cancel"
+
+[node name="search" type="LineEdit" parent="VBoxContainer/IconBlock"]
+margin_right = 315.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+placeholder_text = "Search"
+
+[node name="addcustom" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 46.0
+margin_right = 315.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Add custom image"
+
+[node name="openfolder" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 92.0
+margin_right = 315.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Open system folder"
+
+[node name="reloadlist" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 138.0
+margin_right = 315.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Reload portraits"
+
+[node name="removeportrait" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 184.0
+margin_right = 315.0
+margin_bottom = 226.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Reset the image"
+
+[node name="reverseportrait" type="Button" parent="VBoxContainer/IconBlock"]
+visible = false
+margin_left = 706.0
+margin_top = 286.0
+margin_right = 1036.0
+margin_bottom = 326.0
+rect_min_size = Vector2( 315, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Reverse to default"
+
+[node name="selectfolder" type="Button" parent="VBoxContainer/IconBlock"]
+margin_top = 230.0
+margin_right = 315.0
+margin_bottom = 272.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Select Folders"
+
+[node name="assignboth" type="CheckBox" parent="VBoxContainer/IconBlock"]
+margin_top = 276.0
+margin_right = 315.0
+margin_bottom = 316.0
+rect_min_size = Vector2( 315, 40 )
+hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Assign Both"
+
+[node name="racelock" type="CheckBox" parent="VBoxContainer/IconBlock"]
+margin_top = 320.0
+margin_right = 315.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 315, 40 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Race Locked"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 412.0
+margin_top = 190.0
+margin_right = 910.0
+margin_bottom = 760.0
+custom_styles/focus = ExtResource( 16 )
+custom_styles/normal = ExtResource( 16 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Text Edit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 412.518
+margin_top = 150.0
+margin_right = 473.518
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Label"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="Button" parent="."]
+margin_left = 685.045
+margin_top = 815.52
+margin_right = 912.045
+margin_bottom = 881.52
+theme = ExtResource( 12 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Confirm"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 396.096
+margin_top = 113.983
+margin_right = 920.096
+margin_bottom = 765.983
+size_flags_horizontal = 2
+size_flags_vertical = 2
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 5
+columns = 3
+
+[node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
+visible = false
+margin_right = 150.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 150, 175 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+expand = true
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Button"]
+margin_top = 150.0
+margin_right = 170.0
+margin_bottom = 182.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource( 8 )
+text = "nagsjfgsjldgfjsdgfl"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pic" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="PopUp" type="WindowDialog" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 10.0
+margin_bottom = 10.0
+script = ExtResource( 18 )
+
+[node name="FileDialog" type="FileDialog" parent="PopUp"]
+margin_left = 110.949
+margin_top = 149.229
+margin_right = 889.947
+margin_bottom = 741.229
+size_flags_horizontal = 2
+size_flags_vertical = 2
+window_title = "Open a File"
+dialog_text = "Select New Portait"
+dialog_hide_on_ok = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.jpg", "*.png" )
+current_dir = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master"
+current_path = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="selectfolders" type="WindowDialog" parent="PopUp"]
+margin_left = 145.518
+margin_top = 306.394
+margin_right = 854.514
+margin_bottom = 666.394
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="portratislabel" type="Label" parent="PopUp/selectfolders"]
+margin_left = 14.0
+margin_top = 14.0
+margin_right = 267.0
+margin_bottom = 32.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Portrait folder: "
+
+[node name="spritelabel" type="Label" parent="PopUp/selectfolders"]
+margin_left = 11.6673
+margin_top = 79.1626
+margin_right = 266.667
+margin_bottom = 103.163
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Body folder: "
+
+[node name="closefolderselect" type="Button" parent="PopUp/selectfolders"]
+margin_left = 250.578
+margin_top = 312.84
+margin_right = 412.578
+margin_bottom = 343.84
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Close"
+
+[node name="chooseportraitolder" type="Button" parent="PopUp/selectfolders"]
+margin_left = 19.5274
+margin_top = 42.3252
+margin_right = 539.527
+margin_bottom = 72.3252
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Close"
+align = 0
+
+[node name="choosebodyfolder" type="Button" parent="PopUp/selectfolders"]
+margin_left = 19.86
+margin_top = 107.488
+margin_right = 538.86
+margin_bottom = 137.488
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Close"
+align = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopUp/selectfolders"]
+margin_left = 56.4991
+margin_top = 155.159
+margin_right = 662.499
+margin_bottom = 255.159
+size_flags_horizontal = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+bbcode_text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
+text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
+
+[node name="folderdialogue" type="FileDialog" parent="PopUp"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 63.5165
+margin_top = 214.272
+margin_right = 850.515
+margin_bottom = 618.271
+size_flags_horizontal = 2
+size_flags_vertical = 2
+window_title = "Open a Directory"
+dialog_text = "Select default path folder"
+mode = 2
+access = 2
+current_dir = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master"
+current_path = "F:/GAMEDEV/GODOT/Strive-Sequel/Refactor/Strive-Sequel-master/"
+
+[node name="noimagestext" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 339.235
+margin_top = 33.0
+margin_right = 963.235
+margin_bottom = 172.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+bbcode_enabled = true
+bbcode_text = "[center]You have no images with fitting criterias available.[/center]
+[center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]"
+text = "You have no images with fitting criterias available.
+Put your images into portrait folder and hit 'Reload Portraits' button"
+
+[node name="Label2" type="Label" parent="."]
+margin_right = 970.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Details"
+align = 1
+valign = 1
+
+[node name="SexTraitsPanel" type="Panel" parent="."]
+margin_left = 30.0
+margin_top = 414.0
+margin_right = 379.0
+margin_bottom = 882.0
+custom_styles/panel = ExtResource( 5 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="SexTraitsPanel"]
+margin_top = 38.0
+margin_right = 12.0
+margin_bottom = 418.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_right = 349.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Traits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_top = 38.0
+margin_right = 349.0
+margin_bottom = 418.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
+margin_right = 315.0
+size_flags_horizontal = 3
+custom_constants/separation = 5
+
+[node name="Button" type="Button" parent="SexTraitsPanel/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 315.0
+margin_bottom = 32.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+toggle_mode = true
+text = "Trait"
+
+[node name="TraitHelp" type="TextureRect" parent="SexTraitsPanel"]
+visible = false
+margin_left = 387.0
+margin_top = 19.1694
+margin_right = 438.0
+margin_bottom = 58.1694
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="TraitCapacity" type="Label" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_top = 424.0
+margin_right = 349.0
+margin_bottom = 456.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "TraitCapacity"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_changed" from="VBoxContainer/IconBlock/search" to="PopUp" method="_on_search_text_changed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/reloadlist" to="PopUp" method="_on_reloadlist_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/removeportrait" to="PopUp" method="_on_removeportrait_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/reverseportrait" to="PopUp" method="_on_reverseportrait_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/selectfolder" to="PopUp" method="_on_selectfolder_pressed"]
+[connection signal="pressed" from="VBoxContainer/IconBlock/racelock" to="PopUp" method="_on_racelock_pressed"]
+[connection signal="file_selected" from="PopUp/FileDialog" to="PopUp" method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="PopUp/selectfolders/closefolderselect" to="PopUp" method="_on_closefolderselect_pressed"]
+[connection signal="pressed" from="PopUp/selectfolders/chooseportraitolder" to="PopUp" method="_on_chooseportraitolder_pressed"]
+[connection signal="pressed" from="PopUp/selectfolders/choosebodyfolder" to="PopUp" method="_on_choosebodyfolder_pressed"]
+[connection signal="dir_selected" from="PopUp/folderdialogue" to="PopUp" method="_on_folderdialogue_dir_selected"]

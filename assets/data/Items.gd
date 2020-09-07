@@ -1568,8 +1568,8 @@ var itemlist = {
 		mansion_effect = 'aphrodisiac',
 		interaction_effect = 'aphrodisiac',
 	},
-	sensetivity_pot = {
-		code = 'sensetivity_pot',
+	sensetivity_drug = {#maxes out lust, 1 per day
+		code = 'sensetivity_drug',
 		name = "",
 		descript = "",
 		type = 'usable',
@@ -1582,7 +1582,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		interaction_effect = 'sensetivity_pot',
+		interaction_effect = 'sensetivity_drug',
 	},
 	alcohol = {
 		code = 'alcohol',
@@ -1720,8 +1720,8 @@ var itemlist = {
 		mansion_effect = 'sexdrug',
 		interaction_effect = '',
 	},
-	oblivion_potion = {
-		code = 'oblivion_potion',
+	oblivionpotion = {#Makes slave unlearn 1 class of choice. 
+		code = 'oblivionpotion',
 		name = "",
 		descript = "",
 		type = 'usable',
@@ -1734,7 +1734,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		mansion_effect = 'oblivionpot',
+		mansion_effect = '',
 	},
 	writ_of_exemption = {# changes slave status to servant
 		code = 'writ_of_exemption',
@@ -1767,7 +1767,6 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [], 
-		mansion_effect = 'pheromones',
 		interaction_effect = 'pheromones',
 	},
 	
@@ -2070,13 +2069,13 @@ var recipes = {
 		workunits = 3,
 		worktype = 'cooking'
 	},
-	bandage = { 
+	bandage = { #profits: 5 gold per 3 units of work
 		code = 'bandage',
 		materials = {cloth = 1},
 		items = {},
 		unlockreqs = [], 
 		crafttype = 'basic',
-		resultamount = 2, 
+		resultamount = 3, 
 		resultitemtype = 'material', 
 		resultitem = 'bandage', 
 		workunits = 3,

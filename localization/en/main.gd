@@ -181,8 +181,7 @@ var TranslationDict = {
 	ITEMRAGEDRUGDESCRIPT = "Tame Factor -1-2. Wits Factor -1-2. Physics Factor +1.",
 	ITEMSEXDRUG = "Sex Drug",
 	ITEMSEXDRUGDESCRIPT = "Physics Factor -1. Wits Factor -1. Sex Factor set to 6. Lust Maximized.",
-	ITEMSENSETIVITY_POT = "Sensetivity Potion",
-	ITEMSENSETIVITY_POTDESCRIPT = "A strong drug causing user to become a lot more sensetive during sex interaction.",
+	
 	ITEMHEALPOT = "Health Potion",
 	ITEMHEALPOTDESCRIPT = "Restores some health. Can be used in combat.",
 	ITEMMANAPOT = "Mana Potion",
@@ -204,8 +203,6 @@ var TranslationDict = {
 	ITEMWRIT_OF_EXEMPTIONDESCRIPT = "An official paper holding all the necessities to grant a person freedom from slavery. It has all the required seals and is only missing a name...",
 	ITEMSTRONG_PHEROMONES = "Strong Pheromones",
 	ITEMSTRONG_PHEROMONESDESCRIPT = "A popular drug used on bestial races. Inhaling causes a great surge of euphoria and lust in an individual, making them accept just about any treatment they usually would be too shy to consider. Ineffective for non-bestial species and often banned in affected communities. ",
-	ITEMOBLIVION_POTION = "Oblivion Potion",
-	ITEMOBLIVION_POTIONDESCRIPT = "Remove all learned classes.",
 	
 	ITEMMAID_DRESS = "Maid Dress",
 	ITEMMAID_DRESSDESCRIPT = "A common servant dress for females. Inspires obedience and is appealing to the eye.",
@@ -524,8 +521,6 @@ var TranslationDict = {
 	SKILLLESSER_HEALDESCRIPT = "Heals target ally for a 120% of MATK.",
 	SKILLFAIRY_HEAL = "Fairy Grace",
 	SKILLFAIRY_HEALDESCRIPT = "Heals target ally for a 50% of their maximum health. Only usable once in a day.",
-	SKILLENTANGLE = "Entangle",
-	SKILLENTANGLEDESCRIPT = "Deals Earth spell damage and stuns target for 1 turn. Only usable twice in a day.",
 	SKILLSERRATED_SHOT = "Serrated Shot",
 	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
@@ -582,7 +577,7 @@ var TranslationDict = {
 	SKILLOVERGROWTH = "Overgrowth",
 	SKILLOVERGROWTHDESCRIPT = "Deals Earth magic damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
-	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health.",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally for 25% of maximum health.",
 	
 	SKILLENDURE = "Endure",
 	SKILLENDUREDESCRIPT = "Increase all resistances by 20% for 2 turns.",
@@ -2021,12 +2016,6 @@ var TranslationDict = {
 	DIALOGUEASSSELECT = "Rear",
 	DIALOGUEBALLSSELECT = "Balls",
 	DIALOGUEPENISSELECT = "Penis",
-	
-	DIALOGUEOBLIVIONPOTUSE = "[name] gulps down on the Oblivion Potion. [He] staggers as previous memories leave [his] mind.",
-	DIALOGUEPHEROMONESSELF_SUCCESS = "As [name] absorb the pheromones, a strong lust quickly overwhelms you.",
-	DIALOGUEPHEROMONESSELF_FAIL = "Pheromones did not affected you in the slightest. ",
-	DIALOGUEPHEROMONES_SUCCESS = "As [name] absorbs the pheromones, a strong lust quickly overwhelms [him]. Not sure what to do about it, [he] gives you a pleading look.\n\n{color=aqua|[name]} - {random_chat_active|aphrodisiac}",
-	DIALOGUEPHEROMONES_FAIL = "[name] seems to be completely unaffected by pheromones. This seems to be a waste.",
 	
 	WORKRULERATION = "Extra Rations",
 	WORKRULERATIONDESCRIPT = "Increases Food Consumption by 3. Boosts Productivity by 15%.",
