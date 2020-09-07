@@ -451,8 +451,8 @@ func test_mode():
 		character.unlock_class("trainer")
 		character.unlock_class("thief")
 		character.unlock_class("engineer")
-		character.travel.location = 'L4'
-		character.travel.area = 'plains'
+		#character.travel.location = 'L4'
+		#character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
@@ -593,7 +593,7 @@ func test_mode():
 						{code = 'sextrait', value = 'submissive', operant = 'add'},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'obedience', operant = '+', value = 30},
-						# {code = 'tag', operant = 'remove', value = 'no_sex'},
+						{code = 'tag', operant = 'remove', value = 'no_sex'},
 					]
 				}
 			]

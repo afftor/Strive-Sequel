@@ -174,7 +174,7 @@ func splitrand(text):
 #capitalize the first letter in text and those after strings in the array clookfor
 #ignores flags inside "[" and "]"
 func capitallogic(text):
-	var clookfor = ["\n",". ","! "]
+	var clookfor = ["\n",". ","! ","|"]
 	var clookat = [0]
 	var cplace
 	for i in clookfor:

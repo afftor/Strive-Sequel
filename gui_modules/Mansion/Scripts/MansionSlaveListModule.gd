@@ -213,7 +213,6 @@ func sort_locations():
 
 
 func build_sex_selection(person, newbutton):
-	print(person.get_stat("tags"))
 	calculate_sex_limits()
 	var sex_participants = get_parent().sex_participants
 	for button in SlaveContainer.get_children():
