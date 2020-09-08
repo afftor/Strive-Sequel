@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png" type="Texture" id=19]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=20]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExploreFullSlaveInfo.gd" type="Script" id=21]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask_exploration.png" type="Texture" id=22]
 
 [node name="ExploreFullSlaveModule" type="Panel" groups=[
 "pauseprocess",
@@ -56,9 +57,11 @@ __meta__ = {
 
 [node name="Body" type="TextureRect" parent="SlaveBodyModule"]
 show_behind_parent = true
-margin_left = 5.0
-margin_right = 698.0
-margin_bottom = 791.0
+light_mask = 8
+margin_left = -95.4775
+margin_top = -97.0
+margin_right = 804.523
+margin_bottom = 803.0
 mouse_filter = 2
 texture = ExtResource( 6 )
 expand = true
@@ -187,6 +190,13 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BodyMask" type="Light2D" parent="SlaveBodyModule"]
+light_mask = 8
+position = Vector2( 345, 351 )
+texture = ExtResource( 22 )
+mode = 3
+range_item_cull_mask = 8
 
 [node name="Button" type="Button" parent="."]
 visible = false

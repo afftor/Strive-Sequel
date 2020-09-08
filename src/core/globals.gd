@@ -486,6 +486,7 @@ func return_to_main_menu():
 	input_handler.CurrentScene.queue_free()
 	input_handler.ChangeScene('menu')
 	ResourceScripts.revert_gamestate()
+	gui_controller.current_screen = null
 #	ResourceScripts.recreate_singletons()
 
 func addrelations(person, person2, value):

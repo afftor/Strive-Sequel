@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/ChatNode.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=4]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -45,6 +46,7 @@ margin_left = 14.0
 margin_top = 13.3366
 margin_right = 372.0
 margin_bottom = 112.337
+custom_fonts/font = ExtResource( 4 )
 text = "I think I've learned a lot... or have I?"
 valign = 1
 autowrap = true
@@ -58,6 +60,7 @@ margin_left = 376.74
 margin_top = 8.87409
 margin_right = 476.74
 margin_bottom = 32.8741
+custom_fonts/font = ExtResource( 4 )
 text = "Gondubaga"
 align = 1
 autowrap = true

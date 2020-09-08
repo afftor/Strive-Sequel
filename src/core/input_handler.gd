@@ -269,7 +269,7 @@ func _input(event):
 						gui_controller.current_screen = gui_controller.previous_screen
 					gui_controller.slavepanel:
 						gui_controller.slavepanel.hide()
-						gui_controller.current_screen = gui_controller.previous_screen
+						gui_controller.current_screen = gui_controller.mansion
 						gui_controller.current_screen.show()
 						if gui_controller.current_screen == gui_controller.mansion:
 							gui_controller.mansion.mansion_state_set("default")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=36]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=37]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=38]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24_outline.tres" type="DynamicFont" id=39]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -205,6 +206,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 115.0
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 39 )
 text = "Name"
 align = 1
 
@@ -297,6 +299,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 115.0
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 39 )
 text = "Name"
 align = 1
 
@@ -389,6 +392,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 115.0
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 39 )
 text = "Name"
 align = 1
 
@@ -489,6 +493,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 115.0
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 39 )
 text = "Name"
 align = 1
 
@@ -586,6 +591,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 115.0
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 39 )
 text = "Name"
 align = 1
 
@@ -683,6 +689,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 115.0
 margin_bottom = 27.0
+custom_fonts/font = ExtResource( 39 )
 text = "Name"
 align = 1
 
@@ -833,9 +840,10 @@ clip_text = true
 
 [node name="Label" type="Label" parent="PresentedSlavesPanel/ScrollContainer/VBoxContainer/Button"]
 margin_left = 7.0
-margin_top = 93.0
+margin_top = 89.0
 margin_right = 94.0
 margin_bottom = 117.0
+custom_fonts/font = ExtResource( 39 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Mave"
 align = 1

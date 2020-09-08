@@ -1274,7 +1274,6 @@ func _on_finishbutton_pressed():
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.current_screen.mansion_state_set("default")
 		gui_controller.clock.raise()
-		gui_controller.nav_panel.raise()
 
 
 func _on_cancelsex_pressed():

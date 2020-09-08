@@ -5,6 +5,8 @@ extends Panel
 
 func _ready():
 	for i in get_children():
+		if i.get_class() == "Light2D":
+			continue
 		if !i.name in ['BodyImage', 'buffscontainer']:
 			i.connect("pressed", self, 'unequip', [i.name])
 			i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])

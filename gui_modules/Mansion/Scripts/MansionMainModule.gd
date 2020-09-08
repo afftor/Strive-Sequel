@@ -94,8 +94,8 @@ func _ready():
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
 		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
-	# input_handler.CurrentScene = self
-	# input_handler.CurrentScreen = 'mansion'
+	input_handler.CurrentScene = self
+	input_handler.CurrentScreen = 'mansion'
 	yield(get_tree(),'idle_frame')
 	gui_controller.mansion = self
 	gui_controller.current_screen = self
@@ -107,6 +107,10 @@ func _ready():
 	match_state()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
+	set_active_person(ResourceScripts.game_party.get_master())
+	SlaveListModule.rebuild()
+	SlaveListModule.build_locations_list()
+	mansion_state_set("default")
 #	if globals.start_new_game == true:
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
@@ -236,7 +240,7 @@ func open_char_info():
 	gui_controller.slavepanel.set_state("default")
 	gui_controller.slavepanel.SummaryModule.show_summary()
 	gui_controller.slavepanel.show()
-	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.previous_screen = gui_controller.mansion
 	gui_controller.previous_screen.hide()
 	gui_controller.current_screen = gui_controller.slavepanel
 	gui_controller.close_all_closeable_windows()
@@ -593,7 +597,7 @@ func test_mode():
 						{code = 'sextrait', value = 'submissive', operant = 'add'},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'obedience', operant = '+', value = 30},
-						{code = 'tag', operant = 'remove', value = 'no_sex'},
+						# {code = 'tag', operant = 'remove', value = 'no_sex'},
 					]
 				}
 			]

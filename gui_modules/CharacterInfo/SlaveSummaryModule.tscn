@@ -52,6 +52,7 @@ size = 42
 font_data = ExtResource( 31 )
 
 [node name="SlaveSummaryModule" type="Panel"]
+light_mask = 0
 rect_min_size = Vector2( 220, 1050 )
 custom_styles/panel = ExtResource( 33 )
 script = ExtResource( 32 )
@@ -60,6 +61,7 @@ __meta__ = {
 }
 
 [node name="Portrait" type="TextureRect" parent="."]
+light_mask = 0
 margin_left = 11.0
 margin_top = 11.0
 margin_right = 208.0
@@ -72,6 +74,7 @@ __meta__ = {
 }
 
 [node name="sex" type="TextureRect" parent="."]
+light_mask = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -87,6 +90,7 @@ stretch_mode = 6
 [node name="base_stats" type="VBoxContainer" parent="." groups=[
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 8.0
 margin_top = 232.0
 margin_right = 208.0
@@ -97,6 +101,7 @@ __meta__ = {
 }
 
 [node name="hp" type="TextureProgress" parent="base_stats"]
+light_mask = 0
 margin_right = 200.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 200, 25 )
@@ -106,6 +111,7 @@ texture_progress = ExtResource( 6 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/hp"]
+light_mask = 0
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 30.0
@@ -115,6 +121,7 @@ text = "1.100"
 align = 1
 
 [node name="mp" type="TextureProgress" parent="base_stats"]
+light_mask = 0
 margin_top = 38.0
 margin_right = 200.0
 margin_bottom = 63.0
@@ -125,6 +132,7 @@ texture_progress = ExtResource( 9 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/mp"]
+light_mask = 0
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 30.0
@@ -134,6 +142,7 @@ text = "1.100"
 align = 1
 
 [node name="lust" type="TextureProgress" parent="base_stats"]
+light_mask = 0
 margin_top = 76.0
 margin_right = 200.0
 margin_bottom = 101.0
@@ -144,6 +153,7 @@ texture_progress = ExtResource( 10 )
 nine_patch_stretch = true
 
 [node name="Label" type="Label" parent="base_stats/lust"]
+light_mask = 0
 margin_top = -2.0
 margin_right = 199.0
 margin_bottom = 30.0
@@ -156,6 +166,7 @@ __meta__ = {
 }
 
 [node name="factors" type="VBoxContainer" parent="."]
+light_mask = 0
 margin_left = 31.0
 margin_top = 555.0
 margin_right = 152.0
@@ -169,6 +180,7 @@ __meta__ = {
 
 [node name="base_exp" type="TextureRect" parent="factors"]
 visible = false
+light_mask = 0
 margin_right = 50.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 50, 35 )
@@ -180,6 +192,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/base_exp"]
+light_mask = 0
 margin_left = 69.0
 margin_top = 7.0
 margin_right = 118.0
@@ -190,6 +203,7 @@ text = "0"
 [node name="growth_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",
 ]]
+light_mask = 0
 margin_right = 50.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 50, 35 )
@@ -201,6 +215,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/growth_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -213,6 +228,7 @@ __meta__ = {
 }
 
 [node name="physics_factor" type="TextureRect" parent="factors"]
+light_mask = 0
 margin_top = 35.0
 margin_right = 50.0
 margin_bottom = 70.0
@@ -225,6 +241,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/physics_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -233,6 +250,7 @@ custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="magic_factor" type="TextureRect" parent="factors"]
+light_mask = 0
 margin_top = 70.0
 margin_right = 50.0
 margin_bottom = 105.0
@@ -245,6 +263,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/magic_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -253,6 +272,7 @@ custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="wits_factor" type="TextureRect" parent="factors"]
+light_mask = 0
 margin_top = 105.0
 margin_right = 50.0
 margin_bottom = 140.0
@@ -265,6 +285,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/wits_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -273,6 +294,7 @@ custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="charm_factor" type="TextureRect" parent="factors"]
+light_mask = 0
 margin_top = 140.0
 margin_right = 50.0
 margin_bottom = 175.0
@@ -285,6 +307,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/charm_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -293,6 +316,7 @@ custom_fonts/font = SubResource( 2 )
 text = "25"
 
 [node name="sexuals_factor" type="TextureRect" parent="factors"]
+light_mask = 0
 margin_top = 175.0
 margin_right = 50.0
 margin_bottom = 210.0
@@ -305,6 +329,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/sexuals_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -315,6 +340,7 @@ text = "25"
 [node name="tame_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",
 ]]
+light_mask = 0
 margin_top = 210.0
 margin_right = 50.0
 margin_bottom = 245.0
@@ -327,6 +353,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/tame_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -337,6 +364,7 @@ text = "25"
 [node name="timid_factor" type="TextureRect" parent="factors" groups=[
 "hide_master",
 ]]
+light_mask = 0
 margin_top = 245.0
 margin_right = 50.0
 margin_bottom = 280.0
@@ -349,6 +377,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="factors/timid_factor"]
+light_mask = 0
 margin_left = 69.2385
 margin_top = 1.0
 margin_right = 229.239
@@ -360,16 +389,19 @@ __meta__ = {
 }
 
 [node name="VBoxContainer2" type="Control" parent="."]
+light_mask = 0
 margin_left = 8.0
 margin_top = 352.0
 margin_right = 213.0
 margin_bottom = 519.0
 
 [node name="TextureRect2" type="Control" parent="VBoxContainer2"]
+light_mask = 0
 margin_bottom = 167.0
 mouse_filter = 2
 
 [node name="Exp" type="TextureButton" parent="VBoxContainer2/TextureRect2"]
+light_mask = 0
 margin_left = -2.0
 margin_top = -2.0
 margin_right = 50.0
@@ -379,6 +411,7 @@ texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="VBoxContainer2/TextureRect2/Exp"]
+light_mask = 0
 margin_right = 52.0
 margin_bottom = 32.0
 text = "EXP"
@@ -386,6 +419,7 @@ align = 1
 valign = 1
 
 [node name="physics" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+light_mask = 0
 margin_left = 13.0
 margin_top = 44.0
 margin_right = 42.0
@@ -397,6 +431,7 @@ __meta__ = {
 }
 
 [node name="wits" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+light_mask = 0
 margin_left = 13.0
 margin_top = 80.0
 margin_right = 41.0
@@ -405,6 +440,7 @@ mouse_filter = 0
 texture = ExtResource( 8 )
 
 [node name="charm" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+light_mask = 0
 margin_left = 13.0
 margin_top = 111.0
 margin_right = 41.0
@@ -413,6 +449,7 @@ mouse_filter = 0
 texture = ExtResource( 14 )
 
 [node name="sexuals" type="TextureRect" parent="VBoxContainer2/TextureRect2"]
+light_mask = 0
 margin_left = 13.0
 margin_top = 147.0
 margin_right = 41.0
@@ -421,6 +458,7 @@ mouse_filter = 0
 texture = ExtResource( 15 )
 
 [node name="TextureRect3" type="Control" parent="VBoxContainer2"]
+light_mask = 0
 margin_left = 56.0
 margin_right = 106.0
 margin_bottom = 167.0
@@ -428,6 +466,7 @@ rect_min_size = Vector2( 50, 0 )
 mouse_filter = 2
 
 [node name="BaseExp" type="Label" parent="VBoxContainer2/TextureRect3"]
+light_mask = 0
 margin_left = 6.0
 margin_top = -2.0
 margin_right = 56.0
@@ -441,6 +480,7 @@ __meta__ = {
 }
 
 [node name="physics" type="Label" parent="VBoxContainer2/TextureRect3"]
+light_mask = 0
 margin_left = 6.0
 margin_top = 39.0
 margin_right = 56.0
@@ -455,6 +495,7 @@ __meta__ = {
 }
 
 [node name="wits" type="Label" parent="VBoxContainer2/TextureRect3"]
+light_mask = 0
 margin_left = 6.0
 margin_top = 75.0
 margin_right = 56.0
@@ -466,6 +507,7 @@ align = 1
 clip_text = true
 
 [node name="charm" type="Label" parent="VBoxContainer2/TextureRect3"]
+light_mask = 0
 margin_left = 6.0
 margin_top = 106.0
 margin_right = 56.0
@@ -477,6 +519,7 @@ align = 1
 clip_text = true
 
 [node name="sexuals" type="Label" parent="VBoxContainer2/TextureRect3"]
+light_mask = 0
 margin_left = 6.0
 margin_top = 142.0
 margin_right = 56.0
@@ -488,12 +531,14 @@ align = 1
 clip_text = true
 
 [node name="TextureRect4" type="Control" parent="VBoxContainer2"]
+light_mask = 0
 margin_left = 128.0
 margin_right = 178.0
 margin_bottom = 167.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="NextClassExp" type="Label" parent="VBoxContainer2/TextureRect4"]
+light_mask = 0
 margin_top = -2.0
 margin_right = 50.0
 margin_bottom = 30.0
@@ -507,6 +552,7 @@ __meta__ = {
 }
 
 [node name="physics2" type="Label" parent="VBoxContainer2/TextureRect4"]
+light_mask = 0
 margin_top = 39.0
 margin_right = 50.0
 margin_bottom = 71.0
@@ -517,6 +563,7 @@ align = 1
 clip_text = true
 
 [node name="wits2" type="Label" parent="VBoxContainer2/TextureRect4"]
+light_mask = 0
 margin_top = 75.0
 margin_right = 50.0
 margin_bottom = 107.0
@@ -527,6 +574,7 @@ align = 1
 clip_text = true
 
 [node name="charm2" type="Label" parent="VBoxContainer2/TextureRect4"]
+light_mask = 0
 margin_top = 106.0
 margin_right = 50.0
 margin_bottom = 138.0
@@ -537,6 +585,7 @@ align = 1
 clip_text = true
 
 [node name="sexuals2" type="Label" parent="VBoxContainer2/TextureRect4"]
+light_mask = 0
 margin_top = 142.0
 margin_right = 50.0
 margin_bottom = 174.0
@@ -547,6 +596,7 @@ align = 1
 clip_text = true
 
 [node name="ProfessionsBG" type="Panel" parent="."]
+light_mask = 0
 margin_left = 220.0
 margin_right = 1190.0
 margin_bottom = 130.0
@@ -557,6 +607,7 @@ __meta__ = {
 
 [node name="professions" type="GridContainer" parent="."]
 visible = false
+light_mask = 0
 margin_left = 236.0
 margin_top = 14.0
 margin_right = 1176.0
@@ -571,6 +622,7 @@ __meta__ = {
 
 [node name="Button" type="TextureButton" parent="professions"]
 visible = false
+light_mask = 0
 margin_right = 100.0
 margin_bottom = 100.0
 grow_horizontal = 0
@@ -586,6 +638,7 @@ stretch_mode = 6
 script = ExtResource( 17 )
 
 [node name="TextureRect" type="TextureRect" parent="professions/Button"]
+light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 93.0
@@ -599,6 +652,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="professions/Button"]
 visible = false
+light_mask = 0
 margin_left = 7.0
 margin_top = 69.0
 margin_right = 93.0
@@ -609,6 +663,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+light_mask = 0
 margin_left = 4.99811
 margin_top = 852.933
 margin_right = 214.998
@@ -618,6 +673,7 @@ __meta__ = {
 }
 
 [node name="GearButton" type="TextureButton" parent="VBoxContainer"]
+light_mask = 0
 margin_right = 210.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
@@ -627,6 +683,7 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="VBoxContainer/GearButton"]
+light_mask = 0
 margin_left = 8.0
 margin_right = 203.0
 margin_bottom = 59.0
@@ -640,6 +697,7 @@ __meta__ = {
 }
 
 [node name="ClassButton" type="TextureButton" parent="VBoxContainer"]
+light_mask = 0
 margin_top = 64.0
 margin_right = 210.0
 margin_bottom = 124.0
@@ -650,6 +708,7 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
 
 [node name="Label2" type="Label" parent="VBoxContainer/ClassButton"]
+light_mask = 0
 margin_left = 8.0
 margin_right = 203.0
 margin_bottom = 59.0
@@ -663,6 +722,7 @@ __meta__ = {
 }
 
 [node name="DetailsButton" type="TextureButton" parent="VBoxContainer"]
+light_mask = 0
 margin_top = 128.0
 margin_right = 210.0
 margin_bottom = 188.0
@@ -673,6 +733,7 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 11 )
 
 [node name="Label3" type="Label" parent="VBoxContainer/DetailsButton"]
+light_mask = 0
 margin_left = 8.0
 margin_right = 203.0
 margin_bottom = 59.0
@@ -686,6 +747,7 @@ __meta__ = {
 }
 
 [node name="Name" type="HBoxContainer" parent="."]
+light_mask = 0
 margin_left = 602.82
 margin_right = 797.82
 margin_bottom = 125.0
@@ -698,6 +760,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Name"]
+light_mask = 0
 margin_right = 64.0
 margin_bottom = 125.0
 texture = ExtResource( 29 )
@@ -706,6 +769,7 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="Name"]
+light_mask = 0
 margin_left = 79.0
 margin_top = 33.0
 margin_right = 208.0
@@ -720,6 +784,7 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="Name"]
+light_mask = 0
 margin_left = 223.0
 margin_right = 287.0
 margin_bottom = 125.0

@@ -77,6 +77,7 @@ size = 24
 font_data = ExtResource( 2 )
 
 [node name="SlaveInfoModule" type="Panel"]
+light_mask = 0
 margin_right = 970.0
 margin_bottom = 920.0
 theme = ExtResource( 12 )
@@ -88,6 +89,7 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
 margin_right = 300.0
 margin_bottom = 220.0
 __meta__ = {
@@ -98,6 +100,7 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 222.976
 margin_top = 31.9961
 margin_right = 301.976
@@ -112,6 +115,7 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="Panel/obedlabel"]
+light_mask = 0
 margin_left = -71.8484
 margin_top = -10.3006
 margin_right = 4.1516
@@ -121,6 +125,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="Panel/obedlabel"]
+light_mask = 0
 margin_left = -91.2655
 margin_top = -41.7744
 margin_right = 95.7345
@@ -135,6 +140,7 @@ valign = 1
 "hide_master",
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 32.0
 margin_top = 188.12
 margin_right = 270.0
@@ -152,6 +158,7 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 63.0
 margin_top = 90.0
 margin_right = 242.0
@@ -169,6 +176,7 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 62.513
 margin_top = 140.0
 margin_right = 241.513
@@ -186,6 +194,7 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 62.0
 margin_top = 117.12
 margin_right = 241.0
@@ -198,6 +207,7 @@ texture_progress = ExtResource( 4 )
 "hide_master",
 "hide_stranger",
 ]]
+light_mask = 0
 margin_left = 62.0
 margin_top = 164.12
 margin_right = 241.0
@@ -212,6 +222,7 @@ __meta__ = {
 [node name="character_class" type="Label" parent="Panel" groups=[
 "hide_master",
 ]]
+light_mask = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 162.0
@@ -225,6 +236,7 @@ valign = 1
 
 [node name="BaseStatsPanel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
 margin_left = 300.0
 margin_right = 970.0
 margin_bottom = 220.0
@@ -233,6 +245,7 @@ __meta__ = {
 }
 
 [node name="base_stats" type="GridContainer" parent="BaseStatsPanel"]
+light_mask = 0
 margin_left = 3.40582
 margin_top = 26.5445
 margin_right = 343.406
@@ -245,6 +258,7 @@ __meta__ = {
 }
 
 [node name="label_atk" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_right = 118.0
 margin_bottom = 32.0
 mouse_filter = 1
@@ -255,6 +269,7 @@ text = "ATK:"
 align = 2
 
 [node name="atk" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 132.0
 margin_right = 158.0
 margin_bottom = 32.0
@@ -264,6 +279,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 
 [node name="label_matk" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 172.0
 margin_right = 300.0
 margin_bottom = 32.0
@@ -275,6 +291,7 @@ text = "MATK:"
 align = 2
 
 [node name="matk" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 314.0
 margin_right = 340.0
 margin_bottom = 32.0
@@ -284,6 +301,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_armor" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_top = 33.0
 margin_right = 118.0
 margin_bottom = 65.0
@@ -295,6 +313,7 @@ text = "DEF:"
 align = 2
 
 [node name="armor" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 132.0
 margin_top = 33.0
 margin_right = 158.0
@@ -305,6 +324,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_mdef" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 172.0
 margin_top = 33.0
 margin_right = 300.0
@@ -317,6 +337,7 @@ text = "MDEF:"
 align = 2
 
 [node name="mdef" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 314.0
 margin_top = 33.0
 margin_right = 340.0
@@ -327,6 +348,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_top = 66.0
 margin_right = 118.0
 margin_bottom = 98.0
@@ -338,6 +360,7 @@ text = "Hit Rate:"
 align = 2
 
 [node name="hitrate" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 132.0
 margin_top = 66.0
 margin_right = 158.0
@@ -348,6 +371,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_evasion" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 172.0
 margin_top = 66.0
 margin_right = 300.0
@@ -360,6 +384,7 @@ text = "Evasion:"
 align = 2
 
 [node name="evasion" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 314.0
 margin_top = 66.0
 margin_right = 340.0
@@ -370,6 +395,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_speed" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_top = 99.0
 margin_right = 118.0
 margin_bottom = 131.0
@@ -381,6 +407,7 @@ text = "Speed:"
 align = 2
 
 [node name="speed" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 132.0
 margin_top = 99.0
 margin_right = 158.0
@@ -391,6 +418,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 172.0
 margin_top = 99.0
 margin_right = 300.0
@@ -403,6 +431,7 @@ text = "Armor Pen.:"
 align = 2
 
 [node name="armorpenetration" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 314.0
 margin_top = 99.0
 margin_right = 340.0
@@ -413,6 +442,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="label_critchance" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_top = 132.0
 margin_right = 118.0
 margin_bottom = 164.0
@@ -424,6 +454,7 @@ text = "Critical:"
 align = 2
 
 [node name="critchance" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 132.0
 margin_top = 132.0
 margin_right = 158.0
@@ -434,6 +465,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "15"
 
 [node name="label_critmod" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 172.0
 margin_top = 132.0
 margin_right = 300.0
@@ -446,6 +478,7 @@ text = "Critical Mod:"
 align = 2
 
 [node name="critmod" type="Label" parent="BaseStatsPanel/base_stats"]
+light_mask = 0
 margin_left = 314.0
 margin_top = 132.0
 margin_right = 340.0
@@ -456,6 +489,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="resists" type="GridContainer" parent="BaseStatsPanel"]
+light_mask = 0
 margin_left = 372.0
 margin_top = 74.0
 margin_right = 629.0
@@ -469,6 +503,7 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="BaseStatsPanel/resists"]
 visible = false
+light_mask = 0
 margin_right = 81.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -479,6 +514,7 @@ align = 2
 
 [node name="Value" type="Label" parent="BaseStatsPanel/resists"]
 visible = false
+light_mask = 0
 margin_right = 28.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 6 )
@@ -486,6 +522,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 
 [node name="ResistsLabel" type="Label" parent="BaseStatsPanel"]
+light_mask = 0
 margin_left = 372.0
 margin_top = 8.0
 margin_right = 660.0
@@ -500,6 +537,7 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+light_mask = 0
 margin_left = 41.0
 margin_top = 264.0
 margin_right = 937.0
@@ -513,6 +551,7 @@ __meta__ = {
 }
 
 [node name="DietButton" type="Button" parent="."]
+light_mask = 0
 margin_left = 40.0
 margin_top = 841.0
 margin_right = 266.0
@@ -528,6 +567,7 @@ __meta__ = {
 }
 
 [node name="food_love" type="TextureRect" parent="."]
+light_mask = 0
 margin_left = 72.0
 margin_top = 770.593
 margin_right = 107.0
@@ -543,12 +583,14 @@ __meta__ = {
 
 [node name="Button" type="TextureRect" parent="food_love"]
 visible = false
+light_mask = 0
 margin_left = 48.0
 margin_top = 2.40716
 margin_right = 79.0
 margin_bottom = 32.4072
 
 [node name="food_hate" type="TextureRect" parent="."]
+light_mask = 0
 margin_left = 72.0
 margin_top = 806.0
 margin_right = 107.0
@@ -563,6 +605,7 @@ __meta__ = {
 }
 
 [node name="Container" type="HBoxContainer" parent="food_hate"]
+light_mask = 0
 margin_left = 48.0
 margin_right = 157.0
 margin_bottom = 30.0
@@ -572,10 +615,12 @@ __meta__ = {
 
 [node name="Button" type="TextureRect" parent="food_hate/Container"]
 visible = false
+light_mask = 0
 margin_right = 31.0
 margin_bottom = 30.0
 
 [node name="SexSkillsControl" type="Control" parent="."]
+light_mask = 0
 margin_left = 304.0
 margin_top = 740.0
 margin_right = 664.0
@@ -586,6 +631,7 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SexSkillsControl"]
+light_mask = 0
 margin_left = 11.0
 margin_top = -4.0
 margin_right = 312.0
@@ -597,13 +643,16 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SexSkillsControl/ScrollContainer"]
+light_mask = 0
 
 [node name="Button" type="TextureRect" parent="SexSkillsControl/ScrollContainer/VBoxContainer"]
 visible = false
+light_mask = 0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="Label" type="Label" parent="SexSkillsControl/ScrollContainer/VBoxContainer/Button"]
+light_mask = 0
 margin_left = 37.0
 margin_top = -8.0
 margin_right = 292.0
@@ -619,6 +668,7 @@ __meta__ = {
 }
 
 [node name="ProgressBar" type="TextureProgress" parent="SexSkillsControl/ScrollContainer/VBoxContainer/Button"]
+light_mask = 0
 margin_left = 37.0
 margin_top = 27.0
 margin_right = 293.0
@@ -627,6 +677,7 @@ texture_over = ExtResource( 13 )
 texture_progress = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="SexSkillsControl/ScrollContainer/VBoxContainer/Button/ProgressBar"]
+light_mask = 0
 margin_top = -2.0
 margin_right = 255.0
 margin_bottom = 20.0
@@ -642,6 +693,7 @@ __meta__ = {
 }
 
 [node name="VScrollBar" type="VScrollBar" parent="SexSkillsControl"]
+light_mask = 0
 margin_left = 6.0
 margin_right = 18.0
 margin_bottom = 168.0
@@ -651,6 +703,7 @@ __meta__ = {
 }
 
 [node name="SexSkilsLabel" type="Label" parent="."]
+light_mask = 0
 margin_left = 304.0
 margin_top = 688.0
 margin_right = 664.0
@@ -665,6 +718,7 @@ __meta__ = {
 }
 
 [node name="traitslabel" type="Label" parent="."]
+light_mask = 0
 margin_left = 672.0
 margin_top = 688.0
 margin_right = 960.0
@@ -675,6 +729,7 @@ text = "Sex Traits"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+light_mask = 0
 margin_left = 671.0
 margin_top = 776.0
 margin_right = 938.0
@@ -685,6 +740,7 @@ __meta__ = {
 }
 
 [node name="traits" type="VBoxContainer" parent="ScrollContainer"]
+light_mask = 0
 custom_constants/separation = 9
 __meta__ = {
 "_edit_use_anchors_": false
@@ -692,6 +748,7 @@ __meta__ = {
 
 [node name="Button" type="Label" parent="ScrollContainer/traits"]
 visible = false
+light_mask = 0
 margin_right = 55.0
 margin_bottom = 24.0
 mouse_filter = 0
@@ -701,6 +758,7 @@ text = "1.100"
 align = 1
 
 [node name="ConsentLabel" type="Label" parent="."]
+light_mask = 0
 margin_left = 672.0
 margin_top = 736.0
 margin_right = 960.0
@@ -714,6 +772,7 @@ __meta__ = {
 }
 
 [node name="food_consumption" type="Label" parent="."]
+light_mask = 0
 margin_left = 31.0
 margin_top = 739.0
 margin_right = 224.0
@@ -730,6 +789,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="food_consumption"]
+light_mask = 0
 margin_left = 208.941
 margin_top = 1.0
 margin_right = 234.941
@@ -742,6 +802,7 @@ __meta__ = {
 }
 
 [node name="FoodLabel" type="Label" parent="."]
+light_mask = 0
 margin_left = 8.0
 margin_top = 688.0
 margin_right = 300.0
@@ -757,6 +818,7 @@ __meta__ = {
 
 [node name="MasterIcon" type="TextureRect" parent="."]
 visible = false
+light_mask = 0
 margin_left = 193.103
 margin_top = 25.5297
 margin_right = 253.103
@@ -764,6 +826,7 @@ margin_bottom = 65.5297
 texture = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="MasterIcon"]
+light_mask = 0
 margin_left = -161.103
 margin_right = -53.1026
 margin_bottom = 42.0

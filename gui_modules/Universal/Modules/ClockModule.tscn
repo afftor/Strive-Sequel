@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Scripts/ClockModule.gd" type="Script" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timerbig_hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/mask_timersky.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/MANSION/Timer/button_timersmall_left.png" type="Texture" id=18]
+[ext_resource path="res://assets/Themes_v2/hinttooltipTheme.tres" type="Theme" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -43,6 +45,7 @@ margin_top = 15.0
 margin_right = 305.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 290, 180 )
+theme = ExtResource( 19 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -177,6 +180,7 @@ margin_bottom = 56.0
 texture = ExtResource( 5 )
 
 [node name="2speed" type="TextureButton" parent="TimeNode"]
+visible = false
 margin_left = 174.0
 margin_top = 108.0
 margin_right = 235.0
@@ -212,9 +216,10 @@ texture_focused = SubResource( 4 )
 
 [node name="Label" type="Label" parent="TimeNode/lessturn"]
 margin_left = 11.0
-margin_top = 25.0
-margin_right = 18.0
-margin_bottom = 49.0
+margin_top = 11.4947
+margin_right = 20.0
+margin_bottom = 43.4947
+theme = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "-"
 
@@ -231,10 +236,11 @@ texture_hover = ExtResource( 10 )
 texture_focused = SubResource( 5 )
 
 [node name="Label" type="Label" parent="TimeNode/moreturn"]
-margin_left = 38.0
-margin_top = 26.0
-margin_right = 50.0
-margin_bottom = 50.0
+margin_left = 40.3833
+margin_top = 12.4947
+margin_right = 52.3833
+margin_bottom = 44.4947
+theme = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "+"
 
@@ -243,6 +249,7 @@ margin_left = 125.0
 margin_top = 127.0
 margin_right = 166.0
 margin_bottom = 159.0
+theme = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "1"
 align = 1
@@ -261,8 +268,8 @@ texture = ExtResource( 7 )
 visible = false
 self_modulate = Color( 1, 1, 1, 0.77898 )
 margin_left = -1.0
-margin_right = 285.0
-margin_bottom = 177.0
+margin_right = 290.0
+margin_bottom = 181.0
 
 [node name="gold" type="Label" parent="TimeNode"]
 margin_left = 55.0
