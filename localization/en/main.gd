@@ -1521,7 +1521,7 @@ var TranslationDict = {
 	BODYPARTPENIS_SIZEEQUINE_AVERAGEDESCRIPT = 'A [color=yellow]sizable{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} equine cock[/color] grows from [his] nethers which, while small on a horse, is still thicker and heavier than the average human tool.',
 	BODYPARTPENIS_SIZEEQUINE_BIGDESCRIPT = 'A [color=yellow]massive{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} equine cock[/color] hangs heavily below [his] waist, its mottled texture not quite matching the rest of [his] skin. The size of the package gives most partners pause.',
 	
-	BODYPARTAGETEENDESCRIPT = "[He]'s a [color=aqua]teenage [boy_][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
+	BODYPARTAGETEENDESCRIPT = "[He]'s a [color=aqua]teenage [boygirlfuta][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
 	BODYPARTAGEADULTDESCRIPT = "[He]'s a [color=aqua]young adult [male][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
 	BODYPARTAGEMATUREDESCRIPT = "[He]'s a [color=aqua]mature [male][/color] of the [url=race][color=yellow][raceadj] race[/color][/url].",
 	
@@ -1816,7 +1816,7 @@ var TranslationDict = {
 	
 	DIALOGUESLAVERPURCHASE = "Purchase",
 	DIALOGUEEVENTGOODSLAVERS = "You come across a group of slavers returning from the elven lands. With them you spot a captured [age] [male] [race] to be sold later at the local market. \n\nThey are ready to part with [him] for a reasonable price of [price] gold. \n\nThe [race] gives you a desperate look. ",
-	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you're left alone with the [race]. Still uncertain about [his] future, [he] pleads for your mercy. ",
+	DIALOGUEEVENTGOODSLAVERSACQUIRED = "Now you're left alone with the [race_short] [boy]. Still uncertain about [his] future, [he] pleads for your mercy. ",
 	DIALOGUESLAVERSPURCHASE = "Purchase",
 	DIALOGUEREQUESTSLAVE = "Lie to convince the merchants to forfeit the slave to you",
 	DIALOGUEEVENTSLAVERSNEGOTIATESUCCESS = "[center]{color=green|Success!}[/center]\n[name] tells them that slave trafficking from the Elven lands is outlawed and they will have to be arrested for it. After a small pause the slavers leave the captured [race] behind and quickly retreat. ",

@@ -134,7 +134,7 @@ var RepairCostMultiplierHard = 0.8
 var ItemEffectNaturalMultiplier = 0.15
 #Heroes
 var all_races_array = []
-var starting_races_array = ['Human','Elf','DarkElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
+var starting_races_array = ['Human','Elf','TribalElf','Orc','BeastkinCat', 'BeastkinFox', 'BeastkinWolf', 'BeastkinBunny','HalfkinCat', 'HalfkinFox', 'HalfkinWolf', 'HalfkinBunny']
 
 var master_starting_classes = ['fighter','archer','worker','rogue','apprentice','hunter']
 var slave_starting_classes = ['attendant', 'fighter', 'archer', 'worker', 'harlot', 'apprentice','hunter']
