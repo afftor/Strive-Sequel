@@ -187,6 +187,7 @@ func generate_simple_fighter(tempname):
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	statlist.process_chardata(data, true)
+	tags = data.tags.duplicate()
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)

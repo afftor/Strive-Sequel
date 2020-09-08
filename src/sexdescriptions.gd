@@ -87,6 +87,12 @@ func decoder(text, tempgivers = null, temptakers = null):
 		'[partners1]' : partners(givers),
 		'[partners2]' : partners(takers),
 		'[partners3]' : partners(givers + takers),
+		'[race1]' : race(givers),
+		'[race2]' : race(takers),
+		'[race3]' : race(givers + takers),
+		'[boy1]' : boy(givers),
+		'[boy2]' : boy(takers),
+		'[boy3]' : boy(givers + takers),
 		#body parts
 		'[pussy1]' : pussy(givers),
 		'[pussy2]' : pussy(takers),
@@ -590,6 +596,18 @@ const racenames = {
 		singlepos = "gnome's",
 		pluralpos = "gnomes'"
 	},
+	Dwarf = {
+		single = "dwarf",
+		plural = "dwarves",
+		singlepos = "dwarf's",
+		pluralpos = "dwarves'"
+	},
+	Kobold = {
+		single = "kobold",
+		plural = "kobolds",
+		singlepos = "kobold's",
+		pluralpos = "kobolds'"
+	},
 	Goblin = {
 		single = "goblin",
 		plural = "goblins",
@@ -794,26 +812,26 @@ func partner(group):
 		if mp.charm > 60:
 			if mp.age in ['child','teen']:
 				array1 += ['adorable','cute']
-			if mp.age in ['adult','teen']:
+			if mp.age in ['adult','teen','mature']:
 				array1 += ['charming','enchanting','captivating']
-#		if mp.cour < 40:
-#			array1 += ['shy','meek']
+		if mp.personality == 'shy':
+			array1 += ['shy','meek']
 		if mp.wits > 80:
 			array1 += ['clever']
-#		if mp.conf > 65:
-#			array1 += ['proud','haughty']
+		if mp.personality == 'bold':
+			array1 += ['brave','haughty']
 		if i.lust > 300:
 			array1 += ['horny', 'excited']
 		#boy/girl
 		if mp.sex == 'male':
-			if mp.age == 'adult':
+			if mp.age == 'mature':
 				boygirl = 'man' if group.size() == 1 else 'men'
 				if group.size() >= 2:
 					boygirl = 'boy' if group.size() == 1 else 'boys'
 			else:
 				boygirl = 'boy' if group.size() == 1 else 'boys'
 		else:
-			if mp.age == 'adult':
+			if mp.age == 'mature':
 				boygirl = 'woman' if group.size() == 1 else 'women'
 				if group.size() >= 2:
 					boygirl = 'girl' if group.size() == 1 else 'girls'
@@ -821,11 +839,11 @@ func partner(group):
 				boygirl = 'girl' if group.size() == 1 else 'girls'
 		array2 += [boygirl]
 		#race
-		for i in racenames:
-			if i == mp.race:
-				array2 += [racenames[i].single + ' ' + boygirl]
+		for k in racenames:
+			if k == mp.race:
+				array2 += [racenames[k].single + ' ' + boygirl]
 				if group.size() >= 2:
-					array2 += [racenames[i].plural]
+					array2 += [racenames[k].plural]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
@@ -1144,6 +1162,14 @@ func pussy(group):
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
+
+func race(group):
+	for i in group:
+		return i.person.translate('[race_short]')
+
+func boy(group):
+	for i in group:
+		return i.person.translate('[boy]')
 
 func labia(member):
 	var array = ["labia","pussy lips","genitals","folds"]

@@ -201,7 +201,7 @@ func initiate(tempperson):
 	else:
 		$panel/categories/Location.disabled = false
 		location = 'livingroom'
-		text = "You meet [name2] and order [him2] to keep you company. "
+		text = "You meet {^[name2]:[race2] [boy2]} and order [him2] to keep you company. "
 		if person.has_temp_effect('resist_state'):
 			text += "[he2] reluctantly follows you having no other choice, still sore from [his2] encapture."
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_angry')) + "\n"
@@ -308,7 +308,7 @@ func moveto(newloc):
 	yield(get_tree().create_timer(0.5), 'timeout')
 	$panel/categories/Affection.emit_signal("pressed")
 	$background.texture = images.backgrounds[locationdicts[newloc].background]
-	self.showntext = 'You lead [name2] to the [color=yellow]' + locationdicts[location].name + '[/color]. '
+	self.showntext = 'You lead {^[name2]:[race2] [boy2]} to the [color=yellow]' + locationdicts[location].name + '[/color]. '
 	
 	
 	updatelist()
@@ -366,95 +366,95 @@ func checkhistory(action):
 
 var date_lines = {
 	chat_start = [
-		["You attempt to initiate a friendly chat with [name2]. ", 1],
-		["You {^innocently:casually:friendly} {^discuss mundane thigns:chat} with [name2]. ", 3],
-		["You make a small talk to [name2]. ",1],
+		["You attempt to initiate a friendly chat with {^[name2]:[race2] [boy2]}. ", 1],
+		["You {^innocently:casually:friendly} {^discuss mundane thigns:chat} with {^[name2]:[race2] [boy2]}. ", 3],
+		["You make a small talk to {^[name2]:[race2] [boy2]}. ",1],
 		["You and [name2] discuss the weather. ",1],
 	],
 	chat_positive = [
-		["[name2] spends some time engaging in a friendly chat with you. ",1],
-		["[name2] responds to you in a friendly manner. ",1],
+		["{^[name2]:[race2] [boy2]:[he2]} spends some time engaging in a friendly chat with you. ",1],
+		["{^[name2]:[race2] [boy2]:[he2]} responds to you in a friendly manner. ",1],
 	],
 	chat_negative = [
-		["[name2] replies, but does so reluctantly.",1],
-		["[name2] shows little interest in further chatting. ",1],
+		["{^[name2]:[race2] [boy2]:[he2]} replies, but does so reluctantly.",1],
+		["{^[name2]:[race2] [boy2]:[he2]} shows little interest in further chatting. ",1],
 	],
 	intimate_start = [
-		["You casually flirt with [name2].", 1],
-		["You start a lewd talk with [name2].", 1],
-		["You ask [name2] about [his2] fantasies.", 1],
+		["You casually flirt with {^[name2]:[race2] [boy2]}.", 1],
+		["You start a lewd talk with {^[name2]:[race2] [boy2]}.", 1],
+		["You ask {^[name2]:[race2] [boy2]} about [his2] fantasies.", 1],
 	],
 	intimate_positive = [
-		["[name2] responds to you positively. ", 1],
-		["[name2] gives you a playful look. ", 1],
-		["[name2] moves slightly closer to you. ", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} responds to you positively. ", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} gives you a playful look. ", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} moves slightly closer to you. ", 1],
 	],
 	intimate_negative = [
-		["[name2] stays silent, showing [his2] disdain.", 1],
-		["[name2] gives you a stern look. ", 1],
-		["[name2] moves away from you. ", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} stays silent, showing [his2] disdain.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} gives you a stern look. ", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} moves away from you. ", 1],
 	],
 	
 	touch_start = [
-		["You {^casually:lightly} touch [name2].", 1],
+		["You {^casually:lightly} touch {^[name2]:[race2] [boy2]}.", 1],
 	],
 	touch_positive = [
-		["[name2] reacts relaxingly to your affection. ", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} reacts relaxingly to your affection. ", 1],
 	],
 	touch_negative = [
-		["[name2] looks bored and reacts coldly.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} looks bored and reacts coldly.", 1],
 	],
 	combhair_start = [
-		["You {^gently:slowly} comb [name2]'s {^[hairlength] :}{^[haircolor] :}hair.", 1],
+		["You {^gently:slowly} comb {^[name2]:[race2] [boy2]}'s {^[hairlength] :}{^[haircolor] :}hair.", 1],
 	],
 	combhair_positive = [
-		["[name2] reacts relaxingly to your affection. ", 1],
+		["{^[name2]:[race2] [boy2]} reacts relaxingly to your affection. ", 1],
 	],
 	combhair_negative = [
-		["[name2] looks bored and reacts coldly.", 1],
+		["{^[name2]:[race2] [boy2]} looks bored and reacts coldly.", 1],
 	],
 	
 	
 	
 	hug_start_samesize = [
-		["You give [name2] a friendly hug.", 1],
-		["You hug [name2] in a friendly manner.", 1],
-		["You embrace [name2] in your arms.", 1],
+		["You give {^[name2]:[race2] [boy2]} a friendly hug.", 1],
+		["You hug {^[name2]:[race2] [boy2]} in a friendly manner.", 1],
+		["You embrace {^[name2]:[race2] [boy2]} in your arms.", 1],
 	],
 	hug_start_bigsize = [
-		["You {^hug:embrace} [name2]'s small body.", 1],
-		["You lean down and {^hug:embrace} [name2].", 1],
+		["You {^hug:embrace} {^[name2]:[race2] [boy2]}'s small body.", 1],
+		["You lean down and {^hug:embrace} {^[name2]:[race2] [boy2]}.", 1],
 	],
 	hug_start_smallsize = [
-		["You make [name2] to lean down and give [him2] a hug.", 1],
+		["You make {^[name2]:[race2] [boy2]} to lean down and give [him2] a hug.", 1],
 	],
 	hug_positive_samesize = [
-		["[name2] {^hugs:embraces} you back {^putting:resting} [his2] head on your shoulder.", 1],
-		["[name2] accepts your {^hug:embrace} and smiles warmly.", 1],
+		["{^[name2]:[race2] [boy2]} {^hugs:embraces} you back {^putting:resting} [his2] head on your shoulder.", 1],
+		["{^[name2]:[race2] [boy2]} accepts your {^hug:embrace} and smiles warmly.", 1],
 	],
 	hug_positive_bigsize = [
-		["[name2] {^hugs:embraces} you back {^putting:resting} [his2] head on your chest.", 1],
-		["[name2] feels {^overwhelmed:stunned} by your size and hugs you back. ", 0.5],
+		["{^[name2]:[race2] [boy2]} {^hugs:embraces} you back {^putting:resting} [his2] head on your chest.", 1],
+		["{^[name2]:[race2] [boy2]} feels {^overwhelmed:stunned} by your size and hugs you back. ", 0.5],
 	],
 	hug_positive_smallsize = [
-		["[name2] is moved by your action and {^hugs:embraces} you back.", 1],
-		["[name2] awkwardly hugs you back due to your size.", 0.5],
+		["{^[name2]:[race2] [boy2]} is moved by your action and {^hugs:embraces} you back.", 1],
+		["{^[name2]:[race2] [boy2]} awkwardly hugs you back due to your size.", 0.5],
 	],
 	hug_negative = [
-		["[he2] does not do anything waiting uncomfortably for you to finish.", 1],
+		["{^[name2]:[race2] [boy2]} does not do anything waiting uncomfortably for you to finish.", 1],
 	],
 	
 	kiss_start = [
-		["You {^slowly :}{^lean:tilt:bend} to [name2]'s face.",1],
+		["You {^slowly :}{^lean:tilt:bend} to {^[name2]:[race2] [boy2]}'s face.",1],
 	],
 	kiss_positive = [
-		["[he2] {^tenderly:softly} kisses you back.",1],
-		["[he2] returns your kiss{^ while closing [his2] eyes:}.",1],
+		["{^[name2]:[race2] [boy2]} {^tenderly:softly} kisses you back.",1],
+		["{^[name2]:[race2] [boy2]} returns your kiss{^ while closing [his2] eyes:}.",1],
 	],
 	kiss_erotic = [
-		["[he2] {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}. Finally [name2] pulls away with a {^happy:satisfied} smile. ",1],
+		["{^[name2]:[race2] [boy2]} {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}. Finally [name2] pulls away with a {^happy:satisfied} smile. ",1],
 	],
-	kiss_erotic_puclic = ["[he2] {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}, ignoring {^gawking:ogling} {^people:crowd}. Finally [name2] pulls away with a {^happy:satisfied} smile. ",1],
+	kiss_erotic_puclic = ["{^[name2]:[race2] [boy2]} {^eagerly:passionately:lewdly} pushes [his2] tongue into your mouth. You spend some time {^embracing:hugging} {^together:each other}, ignoring {^gawking:ogling} {^people:crowd}. Finally [name2] pulls away with a {^happy:satisfied} smile. ",1],
 	kiss_negative = [
 		["[he2] uncomfortably {^turns:looks} away accepting your {^kiss:smooch} on the cheeck.",1],
 		["[he2] {^embarrassingly:awkwardly} moves away preventing your attempt.",1]
@@ -462,38 +462,38 @@ var date_lines = {
 	
 	
 	propose_initiate = [
-		["You ask [name2] if [he2] would like to take your relationship to the next level. ",1]
+		["You ask {^[name2]:[race2] [boy2]} if [he2] would like to take your relationship to the next level. ",1]
 		],
 	propose_had_sex_before = [
-		["[name2] looks at you sligtly puzzled, as you've already were having sex before and quickly agrees.",1]
+		["{^[name2]:[race2] [boy2]:[he2]} looks at you sligtly puzzled, as you've already were having sex before and quickly agrees.",1]
 		],
 	propose_was_forced_before = [
-		["[name2] looks at you with a sign of {^scorn:contempt}, as you've already {^made:forced} [him2] to have sex against [his2] will before. After a sigh [he2] gives you [his2] verbal agreement. ",1]
+		["{^[name2]:[race2] [boy2]:[he2]} looks at you with a sign of {^scorn:contempt}, as you've already {^made:forced} [him2] to have sex against [his2] will before. After a sigh [he2] gives you [his2] verbal agreement. ",1]
 	],
 	
 	propose_already_reached_consent = [
-		["[name2] responds without second thought it if already made [his2] mind about this.",1],
-		["[name2] quickly agrees to your propose. It seems [he2] has already set up [his2] mind on this.",1]
+		["{^[name2]:[race2] [boy2]:[he2]} responds without second thought it if already made [his2] mind about this.",1],
+		["{^[name2]:[race2] [boy2]:[he2]} quickly agrees to your propose. It seems [he2] has already set up [his2] mind on this.",1]
 		],
 	
 	propose_reject = [
-		["[he2] {^denies:rejects} your proposal{^ with a troubled face:}.",1]
+		["{^[name2]:[race2] [boy2]:[he2]} {^denies:rejects} your proposal{^ with a troubled face:}.",1]
 	],
 	propose_accept = [
-		["[he2] happily {^agrees:conrurs} to your {^request:proposal}.",1],
-		["After a moment [he2] {^agrees:concurs} to your {^request:proposal}.",1]
+		["{^[name2]:[race2] [boy2]:[he2]} happily {^agrees:conrurs} to your {^request:proposal}.",1],
+		["After a moment {^[name2]:[race2] [boy2]:[he2]} {^agrees:concurs} to your {^request:proposal}.",1]
 	],
 	
 	praise_initiate = [
-		["You praise [name2]'s efforts. ",1],
-		["You {^proclaim:express} your gratitude to [name2]. ",1],
-		["You praise [name2] for [his2] recent behavoir. ",]
+		["You praise {^[name2]:[race2] [boy2]:[he2]}'s efforts. ",1],
+		["You {^proclaim:express} your gratitude to {^[name2]:[race2] [boy2]:[he2]}. ",1],
+		["You praise {^[name2]:[race2] [boy2]:[he2]} for [his2] recent behavoir. ",]
 		],
 	praise_accept = [
-		["[he2] listens to your praise with a joy evident on [his2] face. ",1]
+		["{^[name2]:[race2] [boy2]:[he2]} listens to your praise with a joy evident on [his2] face. ",1]
 		],
 	praise_resist = [
-		["[he2] does not show any signs of accepting your praise.",1]
+		["{^[name2]:[race2] [boy2]:[he2]} does not show any signs of accepting your praise.",1]
 		]
 	
 }
@@ -669,9 +669,9 @@ func kiss(person, counter):
 		text += input_handler.weightedrandom(date_lines.kiss_positive)
 		
 		if person.get_stat('personality') in ['shy','kind']:
-			text += " [name2] blushes and looks away. "
+			text += " {^[name2]:[race2] [boy2]:[he2]} blushes and looks away. "
 		else:
-			text += " [name2] giggles looking at you. "
+			text += " {^[name2]:[race2] [boy2]:[he2]} giggles looking at you. "
 		
 		text += "}"
 		if person.get_stat("consent") < 15:
@@ -688,11 +688,11 @@ func kiss(person, counter):
 		
 		match person.get_stat('personality'):
 			'serious', 'kind':
-				text += "[name2] smiles and looks at you with bedroom eyes."
+				text += "{^[name2]:[race2] [boy2]:[he2]} smiles and looks at you with bedroom eyes."
 			'shy':
-				text += "[name2] looks slightly embarrassed, realizing what [he2] just did and looks away."
+				text += "{^[name2]:[race2] [boy2]:[he2]} looks slightly embarrassed, realizing what [he2] just did and looks away."
 			'bold':
-				text += "[name2] giggles in satisfaction{^:, grabbing your arm}. "
+				text += "{^[name2]:[race2] [boy2]:[he2]} giggles in satisfaction{^:, grabbing your arm}. "
 		
 		text += "}"
 		if person.get_stat("consent") < 20:

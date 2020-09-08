@@ -592,6 +592,9 @@ func weightedrandom(array): #uses an array of [value, weight] with value being r
 			return i[0] 
 		counter += i[1]
 
+func random_from_array(array):
+	return array[randi()%array.size()]
+
 func open_shell(string):
 	var path = string
 	match string:

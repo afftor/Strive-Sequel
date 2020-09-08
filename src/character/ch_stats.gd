@@ -753,6 +753,7 @@ func translate(text):
 	text = text.replace("[Sir]", globals.fastif(statlist.sex == 'male', 'Sir', 'Miss'))
 	text = text.replace("[raceadj]", races.racelist[statlist.race].adjective)
 	text = text.replace("[race]", races.racelist[statlist.race].name)
+	text = text.replace("[race_short]",input_handler.random_from_array(races.short_race_names[races.racelist[statlist.race].code]))
 	text = text.replace("[name]", get_short_name())
 	text = text.replace("[surname]",globals.fastif(statlist.surname != '', statlist.surname, get_short_name()))
 	text = text.replace("[age]", statlist.age.capitalize())
@@ -778,6 +779,6 @@ func translate(text):
 			rtext = 'girl'
 		'futa':
 			rtext = 'futanari'
-	text = text.replace("[boy_]", rtext)
+	text = text.replace("[boygirlfuta]", rtext)
 	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', 'boy', 'girl'))
 	return text

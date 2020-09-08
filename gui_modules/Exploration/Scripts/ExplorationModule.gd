@@ -1242,7 +1242,6 @@ func sell_slave():
 		char_list.clear()
 
 func show_slave_info(person):
-	print(person)
 	person_to_hire = person
 	$SlaveMarket/HBoxContainer/EnslaveButton.visible = person.get_stat("slave_class") != "slave" && market_mode != "guild_slaves" # && (!person.has_profession('master'))
 	for button in SlaveMarketList.get_children():
