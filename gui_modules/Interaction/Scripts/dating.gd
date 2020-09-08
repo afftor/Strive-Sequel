@@ -52,6 +52,8 @@ func mood_set(value):
 	difference *= rand_range(0.75, 1.25)
 	if difference != 0:
 		if difference > 0:
+			if person.has_temp_effect('resist_state'):
+				difference /= 3
 			$mood/Label.text = "+"
 			$mood/Label.set("custom_colors/font_color", Color(0,1,0))
 		else:
@@ -200,23 +202,24 @@ func initiate(tempperson):
 		$panel/categories/Location.disabled = false
 		location = 'livingroom'
 		text = "You meet [name2] and order [him2] to keep you company. "
-		if person.get_stat('loyalty') >= 25:
+		if person.has_temp_effect('resist_state'):
+			text += "[he2] reluctantly follows you having no other choice, still sore from [his2] encapture."
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_angry')) + "\n"
+		elif person.get_stat('loyalty') >= 50:
 			text += "[he2] gladly accepts your order and is ready to follow you anywhere you take [him2]. "
 			self.mood += 10
-		elif person.get_stat('obedience') >= 90:
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
+		elif person.get_stat('obedience') >= 60:
 			self.mood += 4
 			text += "[he2] obediently agrees to your order and tries [his2] best to please you. "
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
 		else:
 			
 			text += "Without great joy [he2] obeys your order and reluctantly joins you. "
-#		if person.lust >= 30:
-#			mood += 6
-#		elif person.traits.has("Devoted"):
-#			mood += 10
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
 	
-	#$panel/consent.visible = person.get_stat('consent')
 	
-	self.showntext = text
+	self.showntext = globals.TextEncoder(text)
 	updatelist()
 	$panel/categories/Affection.emit_signal("pressed")
 
@@ -480,6 +483,18 @@ var date_lines = {
 		["[he2] happily {^agrees:conrurs} to your {^request:proposal}.",1],
 		["After a moment [he2] {^agrees:concurs} to your {^request:proposal}.",1]
 	],
+	
+	praise_initiate = [
+		["You praise [name2]'s efforts. ",1],
+		["You {^proclaim:express} your gratitude to [name2]. ",1],
+		["You praise [name2] for [his2] recent behavoir. ",]
+		],
+	praise_accept = [
+		["[he2] listens to your praise with a joy evident on [his2] face. ",1]
+		],
+	praise_resist = [
+		["[he2] does not show any signs of accepting your praise.",1]
+		]
 	
 }
  
@@ -792,21 +807,21 @@ var sexmode
 #	$sexswitch/RichTextLabel.bbcode_text = text
 
 func praise(person, counter):
-	var text = ''
-	text += "You praise [name2] for [his2] recent behavoir. "
+	var text = input_handler.weightedrandom(date_lines.praise_initiate) + "\n\n"
 	
-	if person.get_stat('obedience') >= 85 && counter < 2:
-		self.mood += 3
-		text = text + "[he2] listens to your praise with joy evident on [his2] face.  "
-	elif person.get_stat('obedience') >= 85:
-		text = text + "[he2] takes your words respectfully but without great joy. You’ve probably overpraised [him2] lately. "
-		
+	if person.has_temp_effect('resist_state') == false:
+		self.mood += 15
+		person.add_stat('obedience', 10)
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.praise_accept)
+		text += "}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'master_praise')) + "\n"
 	else:
-		text = text + "[he2] takes your praise arrogantly, gaining joy from it. "
-		self.mood += 3
-		#person.get_stat('loyalty') -= rand_range(1,2)
-	
-	return text
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.praise_resist)
+		text += "}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'praise_reject')) + "\n"
+	return character_description(text)
 
 func pathead(person, counter):
 	var text = ''
@@ -1314,9 +1329,10 @@ var actionsdict = {
 	praise = {
 		group = 'Affection',
 		name = 'Praise',
-		descript = "Praise [name] for [his] previous success to encourage further good behavior",
+		descript = "Praise [name] for [his] previous success to encourage further good behavior. Only useable once.",
 		reqs = [],
 		location = [],
+		onetime = true,
 		effect = 'praise',
 	},
 	pathead = {

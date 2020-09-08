@@ -298,6 +298,9 @@ func get_weapon_element():
 	#for testing
 	return equipment.get_weapon_element()
 
+func has_temp_effect(temp_name):
+	return effects.has_temp_effect(temp_name)
+
 func find_temp_effect(eff_code):
 	return effects.find_temp_effect(eff_code)
 

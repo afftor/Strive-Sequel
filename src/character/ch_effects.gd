@@ -22,6 +22,9 @@ func find_temp_effect(eff_code):
 			res = i
 	return {num = nm, index = res}
 
+func has_temp_effect(temp_name):
+	return find_temp_effect(temp_name).num > 0
+
 func find_temp_effect_tag(eff_tag):
 	var res = []
 	for e in temp_effects + static_effects:

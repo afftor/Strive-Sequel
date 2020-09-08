@@ -1033,6 +1033,7 @@ func common_effects(effects):
 									var text = character.get_short_name() + ": " + "Sex unlocked"
 									text_log_add('char', text)
 								character.tags.erase(k.value)
+								#character.stats.tags.erase(k.value)
 					else:
 						character_stat_change(character, k)
 			'start_event':

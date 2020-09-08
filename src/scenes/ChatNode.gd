@@ -390,9 +390,9 @@ var individual_lines = {
 	loyalty_submission_line22 = {text = "Surprisingly enough... I'm okay with you being my [Master].", events = ['submission_loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	loyalty_submission_line23 = {text = "Gah! Fine! I'll do anything you want, [Master].", events = ['submission_loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	
-	writ_success1 = {text = "...This is very kind of you, [master], but please allow me to stay by your side.", events = ['writ_success'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	writ_success1 = {text = "...This is very kind of you, [Master], but please allow me to stay by your side.", events = ['writ_success'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
 	writ_success2 = {text = "Wow, are you serious about this? But I can't leave you alone, can I. ", events = ['writ_success'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	writ_success3 = {text = "I appreciate this gesture, but my place is at your side, [master]. ", events = ['writ_success'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	writ_success3 = {text = "I appreciate this gesture, but my place is at your side, [Master]. ", events = ['writ_success'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	writ_success4 = {text = "I... I don't think I can make it out on my own... Please let me stay, [Master]...", events = ['writ_success'], personalities = ['Shy'], reqs = [], weight = 1, tags = []},
 	writ_success5 = {text = "C-can I stay here? Please...?", events = ['writ_success'], personalities = ['Shy'], reqs = [], weight = 1, tags = []},
 	writ_success6 = {text = "R-really? Me? are you sure? I just want to be with you...", events = ['writ_success'], personalities = ['Shy'], reqs = [], weight = 1, tags = []},
@@ -657,6 +657,46 @@ var individual_lines = {
 	
 	mimic_erotic_leave5 = {text = "Ooh! I starting to... Like this...", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
 	mimic_erotic_leave6 = {text = "Ah.. This... Is not too bad...", events = ['mimic_erotic_leave'], personalities = ['kind','serious','shy','bold'], reqs = [], weight = 1, tags = [{code = 'trait', trait = 'deviant', check = true }]},
+	
+	praise_reject1 = {text = "You think you can tame me like this!?", events = ['praise_reject'], personalities = ['kind','serious','bold'], reqs = [], weight = 1, tags = []},
+	praise_reject2 = {text = "Please, stop this farce.", events = ['praise_reject'], personalities = ['serious','shy','kind'], reqs = [], weight = 1, tags = []},
+	praise_reject3 = {text = "You've got to be kidding. ", events = ['praise_reject'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
+	
+	date_start1 = {text = "I'm glad to accompany you, [Master]. ", events = ['date_start'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
+	date_start2 = {text = "What do you want me for, [Master]? ", events = ['date_start'], personalities = ['serious','shy','bold','kind'], reqs = [], weight = 1, tags = []},
+	date_start3 = {text = "[Master], this... Makes me a bit nervous. ", events = ['date_start'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	date_start4 = {text = "Me, together with [Master]... ", events = ['date_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start5 = {text = "So, what do we do now, [Master]?", events = ['date_start'], personalities = ['bold','serious','kind'], reqs = [], weight = 1, tags = []},
+	date_start6 = {text = "As long as I get a break from the work...", events = ['date_start'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start7 = {text = "Uhm... I'm sorry for not being a very good company for [Master].", events = ['date_start'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start8 = {text = "You called for me, [Master]?", events = ['date_start'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
+	date_start9 = {text = "I'll accompany you to my best capability, [Master].", events = ['date_start'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	
+	date_start_happy1 = {text = "Finally, I was thinking you'd never ask!", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start_happy2 = {text = "Hey, how were you doing, [Master]?", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start_happy3 = {text = "Hehe, want me to tell you how I spent my day?", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start_happy4 = {text = "I'm glad to be together with you, [Master]. ", events = ['date_start_happy'], personalities = ['shy','kind'], reqs = [], weight = 1, tags = []},
+	date_start_happy5 = {text = "I hope others won't get jealous of us...", events = ['date_start_happy'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start_happy6 = {text = "T-thank you for choosing me, [Master]!", events = ['date_start_happy'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start_happy7 = {text = "It is a pleasure to be with you, [Master].", events = ['date_start_happy'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	date_start_happy8 = {text = "It's a pleasure to be in your company, [Master].", events = ['date_start_happy'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	date_start_happy9 = {text = "It's a honor to be your chosen, [Master].", events = ['date_start_happy'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	date_start_happy10 = {text = "It makes me happy you've called me, [Master].", events = ['date_start_happy'], personalities = ['serious','kind'], reqs = [], weight = 1, tags = []},
+	date_start_happy11 = {text = "He-he, only you and me now, [Master].", events = ['date_start_happy'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	
+	date_start_angry1 = {text = "Don't think you can make me like you now!", events = ['date_start_angry'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start_angry2 = {text = "Hmph, you think you can talk your way out of what you've done to me?", events = ['date_start_angry'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start_angry3 = {text = "Just make it quick, you bastard.", events = ['date_start_angry'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
+	date_start_angry4 = {text = "I don't want to do this.", events = ['date_start_angry'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	date_start_angry5 = {text = "Please, just let me go on my own.", events = ['date_start_angry'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	date_start_angry6 = {text = "You are a horrible person, I don't want to be here.", events = ['date_start_angry'], personalities = ['kind'], reqs = [], weight = 1, tags = []},
+	date_start_angry7 = {text = "Please, let me go!", events = ['date_start_angry'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start_angry8 = {text = "I'll do what you ask, j-just let me go...", events = ['date_start_angry'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start_angry9 = {text = "Why can't you let me be fre... *sob*", events = ['date_start_angry'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
+	date_start_angry10 = {text = "Your efforts are futile.", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	date_start_angry11 = {text = "What's this? Are you trying to make me like you..?", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+	date_start_angry12 = {text = "Do what you want, this will change nothing.", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
+
 }
 
 func build_lines():

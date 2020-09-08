@@ -793,14 +793,23 @@ var scenedict = {
 		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
 		],
 	},
-#	writ_confirm = {
-#		text = tr("DIALOGUEWRITSELECT"),
-#		image = null,
-#		options = [
-#		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
-#
-#		],
-#	},
+	
+		oblivion_potion_use = {
+		text = "DIALOGUEOBLIVIONPOTUSE", image = 'potused', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]
+	},
+	pheromones_use = {
+		text = [
+		{text = "DIALOGUEPHEROMONESSELF_SUCCESS", reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = true}, {code = 'race_is_beast', check = true}]}]},
+		{text = "DIALOGUEPHEROMONESSELF_FAIL", reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = true}, {code = 'race_is_beast', check = false}]}]},
+		{text = "DIALOGUEPHEROMONES_SUCCESS", reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = false}, {code = 'race_is_beast', check = true}]}]},
+		{text = "DIALOGUEPHEROMONES_FAIL", reqs = [{type = 'active_character_checks', value = [{code = 'is_master', check = false}, {code = 'race_is_beast', check = false}]}]},
+		],
+		image = 'potused',
+		tags = ['custom_effect','active_character_translate'],
+		options = [
+		{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")},
+		],
+	},
 	
 	#Action events
 	enslave = {text = tr("DIALOGUEENSLAVETEXT"), image = 'warn', tags = ['active_character_translate'], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},

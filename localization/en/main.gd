@@ -204,6 +204,8 @@ var TranslationDict = {
 	ITEMSTRONG_PHEROMONES = "Strong Pheromones",
 	ITEMSTRONG_PHEROMONESDESCRIPT = "A popular drug used on bestial races. Inhaling causes a great surge of euphoria and lust in an individual, making them accept just about any treatment they usually would be too shy to consider. Ineffective for non-bestial species and often banned in affected communities. ",
 	
+	ITEMOBLIVION_POTION = "Oblivion Potion",
+	ITEMOBLIVION_POTIONDESCRIPT = "Remove all learned classes.",
 	ITEMMAID_DRESS = "Maid Dress",
 	ITEMMAID_DRESSDESCRIPT = "A common servant dress for females. Inspires obedience and is appealing to the eye.",
 	ITEMMAID_HEADBAND = "Maid Headband",
@@ -521,6 +523,8 @@ var TranslationDict = {
 	SKILLLESSER_HEALDESCRIPT = "Heals target ally for a 120% of MATK.",
 	SKILLFAIRY_HEAL = "Fairy Grace",
 	SKILLFAIRY_HEALDESCRIPT = "Heals target ally for a 50% of their maximum health. Only usable once in a day.",
+	SKILLENTANGLE = "Entangle",
+	SKILLENTANGLEDESCRIPT = "Deals Earth spell damage and stuns target for 1 turn. Only usable twice in a day.",
 	SKILLSERRATED_SHOT = "Serrated Shot",
 	SKILLSERRATED_SHOTDESCRIPT = "Deals 100% physical weapon damage and causes target to bleed for 4 turns.",
 	SKILLMASS_LESSER_HEAL = "Mass Lesser Heal",
@@ -577,7 +581,7 @@ var TranslationDict = {
 	SKILLOVERGROWTH = "Overgrowth",
 	SKILLOVERGROWTHDESCRIPT = "Deals Earth magic damage to all enemies.",
 	SKILLFIRST_AID = "First Aid",
-	SKILLFIRST_AIDDESCRIPT = "Heals ally for 25% of maximum health.",
+	SKILLFIRST_AIDDESCRIPT = "Heals ally for 30% of maximum health.",
 	
 	SKILLENDURE = "Endure",
 	SKILLENDUREDESCRIPT = "Increase all resistances by 20% for 2 turns.",
@@ -2007,6 +2011,12 @@ var TranslationDict = {
 	DIALOGUEMAJORUSPOTASS = " After Majorus Potion has been applied to [name]'s butt, it increases in size.",
 	DIALOGUEMAJORUSPOTPENIS = " After Majorus Potion has been applied to [name]'s penis, it increases in size.",
 	DIALOGUEMAJORUSPOTBALLS = " After Majorus Potion has been applied to [name]'s balls, they increase in size.",
+	
+	DIALOGUEOBLIVIONPOTUSE = "[name] gulps down on the Oblivion Potion. [He] staggers as previous memories leave [his] mind.",
+	DIALOGUEPHEROMONESSELF_SUCCESS = "As [name] absorb the pheromones, a strong lust quickly overwhelms you.",
+	DIALOGUEPHEROMONESSELF_FAIL = "Pheromones did not affected you in the slightest. ",
+	DIALOGUEPHEROMONES_SUCCESS = "As [name] absorbs the pheromones, a strong lust quickly overwhelms [him]. Not sure what to do about it, [he] gives you a pleading look.\n\n{color=aqua|[name]} - {random_chat_active|aphrodisiac}",
+	DIALOGUEPHEROMONES_FAIL = "[name] seems to be completely unaffected by pheromones. This seems to be a waste.",
 	
 	DIALOGUEWRIT_CONFIRM = "Using this Writ will liberate [name] from slavery, making [him] a peon. This, however, will allow [him] to leave your possession, if [he] wishes so.",
 	DIALOGUEWRIT_SUCCESS = "[name] can't believe [his] eyes as [he] receive proof of [his] freedom from you. After a pause, [he] declares [his] willingness to continue to serve under your rule. \n\n{color=aqua|[name]} - {random_chat=0|writ_success}",

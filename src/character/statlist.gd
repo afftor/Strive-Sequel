@@ -125,6 +125,10 @@ var template = {
 	pregnancy = { "fertility": 0, "duration": 0, "baby": null },
 	lactation = false,
 	
+	was_proposed = false,
+	had_cons_sex_with_mc = false,
+	had_forced_sex_with_mc = false,
+	
 	penis_virgin = true,
 	vaginal_virgin = true,
 	anal_virgin = true,

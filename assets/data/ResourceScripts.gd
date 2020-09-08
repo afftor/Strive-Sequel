@@ -70,7 +70,7 @@ onready var node_data = {
 	input_handler.NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://src/scenes/Imagetooltip.tscn")},
 	input_handler.NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/scenes/TextTooltipPanel.tscn")},
 	# input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://src/scenes/CharacterCreationPanel.tscn"), calls = 'open'},
-	#input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},
+	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},
 	input_handler.NODE_SLAVEPANEL : {name = 'slavepanel', mode = 'scene', scene = preload("res://src/scenes/SlavePanel.tscn")},
 	input_handler.NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open'},
 	input_handler.NODE_SYSMESSAGE : {name = 'SysMessage', mode = 'scene', scene = preload("res://src/scenes/SysMessage.tscn") },
@@ -80,7 +80,7 @@ onready var node_data = {
 	input_handler.NODE_CLOCK : {name = 'clock', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ClockModule.tscn") },
 	input_handler.NODE_NAVIGATION : {name = 'nav_panel', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/NavigationModule.tscn") },
 	# input_handler.NODE_EXPLORATION : {name = 'exploration', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationMainModule.tscn") }, # Should be removed
-	#input_handler.NODE_EXPLORATION : {name = 'exploration', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationModule.tscn") },
+	input_handler.NODE_EXPLORATION : {name = 'exploration', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExplorationModule.tscn") },
 	input_handler.NODE_EXPLORE_SLAVEINFO : {name = 'explore_slaveinfo', mode = 'scene', scene = preload("res://gui_modules/Exploration/Modules/ExploreFullSlaveInfo.tscn") },
 	input_handler.NODE_GAMEMENU : {name = 'gamemenu', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GameMenuPanel.tscn") },
 	input_handler.NODE_SEX : {name = 'sex_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/InteractionMainModule.tscn") },
