@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -66,7 +66,7 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_resources_hover.png" type="Texture" id=64]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all_pressed.png" type="Texture" id=65]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=66]
-[ext_resource path="res://assets/Themes_v2/EXPLORATION/ExploreMarketPanel.tres" type="Theme" id=67]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_marketplace.png" type="Texture" id=67]
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/MarketButtons.tres" type="Theme" id=68]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=69]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=70]
@@ -79,7 +79,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=77]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=78]
 [ext_resource path="res://assets/Textures_v2/CITY/Universal/paper_small_active.png" type="Texture" id=79]
-[ext_resource path="res://assets/images/iconsitems/food_old.png" type="Texture" id=80]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=80]
 [ext_resource path="res://assets/Textures_v2/CITY/Universal/back_noticebpard.png" type="Texture" id=81]
 [ext_resource path="res://assets/Textures_v2/CITY/Universal/divider_noticeboard.png" type="Texture" id=82]
 [ext_resource path="res://assets/Textures_v2/CITY/Universal/paper_small.png" type="Texture" id=83]
@@ -94,9 +94,11 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_pressed.png" type="Texture" id=92]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=93]
 [ext_resource path="res://StatsTrading.tscn" type="PackedScene" id=94]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=95]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=96]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=97]
 [ext_resource path="res://gui_modules/Exploration/Modules/LocationGui.tscn" type="PackedScene" id=98]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=99]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -1118,11 +1120,11 @@ __meta__ = {
 "pauseprocess",
 ]]
 visible = false
-margin_left = 419.443
-margin_top = 103.0
-margin_right = 1542.44
-margin_bottom = 1083.0
-theme = ExtResource( 67 )
+margin_left = 398.0
+margin_top = 137.0
+margin_right = 1521.0
+margin_bottom = 1062.0
+custom_styles/panel = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1142,8 +1144,16 @@ self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_top = 83.0
 margin_right = 1123.0
-margin_bottom = 980.0
+margin_bottom = 925.0
 custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="AreaShop"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 67 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1351,8 +1361,8 @@ __meta__ = {
 margin_left = 68.0
 margin_top = 150.0
 margin_right = 548.0
-margin_bottom = 630.0
-rect_min_size = Vector2( 480, 480 )
+margin_bottom = 600.0
+rect_min_size = Vector2( 480, 0 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1454,7 +1464,7 @@ __meta__ = {
 margin_left = 36.0
 margin_top = 141.0
 margin_right = 48.0
-margin_bottom = 630.0
+margin_bottom = 591.0
 theme = ExtResource( 19 )
 
 [node name="BuyBlock" type="Control" parent="AreaShop"]
@@ -1471,7 +1481,7 @@ __meta__ = {
 margin_left = 44.0
 margin_top = 150.0
 margin_right = 524.0
-margin_bottom = 630.0
+margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1572,7 +1582,7 @@ __meta__ = {
 margin_left = 552.07
 margin_top = 141.0
 margin_right = 564.07
-margin_bottom = 630.0
+margin_bottom = 591.0
 theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1581,9 +1591,9 @@ __meta__ = {
 [node name="NumberSelection" type="Panel" parent="AreaShop"]
 visible = false
 margin_left = 294.0
-margin_top = 761.0
+margin_top = 724.0
 margin_right = 794.0
-margin_bottom = 951.0
+margin_bottom = 914.0
 custom_styles/panel = SubResource( 11 )
 script = ExtResource( 73 )
 __meta__ = {
@@ -1607,9 +1617,9 @@ bbcode_enabled = true
 
 [node name="HSlider" type="HSlider" parent="AreaShop/NumberSelection"]
 margin_left = 37.0
-margin_top = 111.0
+margin_top = 95.0
 margin_right = 567.0
-margin_bottom = 137.0
+margin_bottom = 121.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_icons/grabber_disabled = ExtResource( 69 )
 custom_icons/grabber_highlight = ExtResource( 69 )
@@ -1622,9 +1632,9 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="AreaShop/NumberSelection"]
 margin_left = 125.443
-margin_top = 136.8
+margin_top = 122.8
 margin_right = 379.443
-margin_bottom = 180.8
+margin_bottom = 174.8
 theme = ExtResource( 42 )
 text = "Confirm"
 
@@ -1830,15 +1840,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="QuestBoard/QuestDetails/questreqs"]
+[node name="Button" type="TextureButton" parent="QuestBoard/QuestDetails/questreqs"]
 visible = false
-margin_right = 75.0
+margin_left = 154.0
+margin_right = 229.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
 theme = ExtResource( 78 )
-texture = ExtResource( 80 )
+texture_normal = ExtResource( 95 )
+texture_pressed = ExtResource( 80 )
+texture_hover = ExtResource( 99 )
 expand = true
 stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="QuestBoard/QuestDetails/questreqs/Button"]
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 70.0
+margin_bottom = 69.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="amount" type="Label" parent="QuestBoard/QuestDetails/questreqs/Button"]
 visible = false
@@ -1861,14 +1885,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="TextureRect" parent="QuestBoard/QuestDetails/questrewards"]
+[node name="Button" type="TextureButton" parent="QuestBoard/QuestDetails/questrewards"]
 visible = false
-margin_right = 75.0
+margin_left = 154.0
+margin_right = 229.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 75, 75 )
-texture = ExtResource( 80 )
+texture_normal = ExtResource( 95 )
+texture_pressed = ExtResource( 80 )
+texture_hover = ExtResource( 99 )
 expand = true
 stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="QuestBoard/QuestDetails/questrewards/Button"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 70.0
+margin_bottom = 69.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="amount" type="Label" parent="QuestBoard/QuestDetails/questrewards/Button"]
 visible = false

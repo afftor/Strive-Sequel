@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/scenes/SkillToolTip.gd" type="Script" id=2]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 3 )
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=4]
 
 [node name="skilltooltip" type="Panel"]
 margin_left = 1027.0
@@ -26,6 +22,7 @@ margin_top = 11.0
 margin_right = 423.0
 margin_bottom = 202.0
 mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 bbcode_text = "Skill Description"
@@ -41,7 +38,7 @@ margin_left = 11.0
 margin_top = -37.0
 margin_right = 421.0
 margin_bottom = -6.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Cost"
 valign = 1

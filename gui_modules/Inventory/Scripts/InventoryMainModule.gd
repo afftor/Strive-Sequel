@@ -35,10 +35,10 @@ func _ready():
 
 
 func close_inventory(state):
-	gui_controller.current_screen = gui_controller.slavepanel
-	gui_controller.previous_screen = gui_controller.mansion
 	if gui_controller.slavepanel == null:
 		gui_controller.slavepanel = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
+	gui_controller.current_screen = gui_controller.slavepanel
+	gui_controller.previous_screen = gui_controller.mansion
 	gui_controller.slavepanel.set_state(state)
 	gui_controller.slavepanel.show()
 	self.hide()

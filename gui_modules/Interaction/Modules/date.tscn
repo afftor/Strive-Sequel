@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/images/backgrounds/mansion.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/sprites/aire.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/gui/craftgui/Time.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/charpanel/CharScreen_0012_character-panel.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/Dating/Panels/panel_dating_bigframe.png" type="Texture" id=13]
@@ -39,20 +39,15 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=37]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=38]
 
-
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 38 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 36
 use_filter = true
 extra_spacing_top = 1
 font_data = ExtResource( 14 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 669, 841 )
 
 [node name="date" type="Control"]
 margin_right = 40.0
@@ -150,7 +145,7 @@ __meta__ = {
 margin_top = 149.0
 margin_right = 182.0
 margin_bottom = 196.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Name"
 align = 1
@@ -190,7 +185,7 @@ margin_left = 1.0
 margin_top = 148.0
 margin_right = 183.0
 margin_bottom = 195.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Name"
 align = 1
@@ -347,7 +342,7 @@ margin_left = 1.0
 margin_top = -26.0
 margin_right = 31.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
 text = "+"
 align = 1
@@ -382,7 +377,7 @@ margin_left = 1.0
 margin_top = -26.0
 margin_right = 31.0
 margin_bottom = 11.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 1, 0.367188, 1 )
 text = "+"
 align = 1
@@ -443,23 +438,23 @@ expand = true
 stretch_mode = 6
 
 [node name="Label" type="Label" parent="turns"]
-margin_left = 50.0
-margin_top = 15.0
-margin_right = 90.0
-margin_bottom = 35.0
+margin_left = 44.0
+margin_top = 8.0
+margin_right = 84.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 12 )
 text = "x10"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="end" type="Panel" parent="."]
-visible = false
 self_modulate = Color( 1, 1, 1, 0.890196 )
 margin_left = 618.0
 margin_top = 160.0
 margin_right = 1385.0
 margin_bottom = 886.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = ExtResource( 10 )
 
 [node name="Control" type="Control" parent="end"]
 margin_left = -612.666
@@ -472,6 +467,7 @@ margin_left = 281.044
 margin_top = 646.004
 margin_right = 506.044
 margin_bottom = 685.004
+theme = ExtResource( 11 )
 text = "Close"
 
 [node name="sexbutton" type="Button" parent="end"]
@@ -479,6 +475,7 @@ margin_left = 281.46
 margin_top = 586.247
 margin_right = 506.46
 margin_bottom = 625.247
+theme = ExtResource( 11 )
 text = "Sex"
 __meta__ = {
 "_edit_use_anchors_": false

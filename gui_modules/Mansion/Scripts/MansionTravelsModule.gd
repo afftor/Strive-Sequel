@@ -30,6 +30,7 @@ func update():
 func open_character_dislocation():
 	if get_parent().mansion_state == "travels":
 		show()
+		$Forget.hide()
 	if get_parent().active_person == null:
 		return
 	dislocation_area = get_parent().active_person.travel.location

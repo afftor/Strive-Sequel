@@ -5,8 +5,9 @@ var selected_location
 
 
 func _ready():
-	# globals.connect("hour_tick", self, "update_buttons")
+	globals.connect("hour_tick", self, "update_buttons")
 	globals.connect("hour_tick", self, "build_accessible_locations")
+	pass
 
 
 func update_buttons():
@@ -81,6 +82,7 @@ func build_accessible_locations():
 
 func select_location(location):
 	if gui_controller.current_screen == gui_controller.mansion:
+		input_handler.PlaySound("door_open")
 		gui_controller.previous_screen = gui_controller.current_screen
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')

@@ -16,6 +16,9 @@ var inventory_scene
 
 func _ready():
 	gui_controller.add_close_button(self, "add_offset")
+	for module in self.get_children():
+		module.update()
+	update()
 
 
 func update():
@@ -115,6 +118,7 @@ func match_state():
 
 
 func open_gear():
+	self.hide()
 	gui_controller.inventory = input_handler.get_spec_node(input_handler.NODE_INVENTORY_NEW)
 	gui_controller.inventory.show()
 	gui_controller.previous_screen = gui_controller.current_screen

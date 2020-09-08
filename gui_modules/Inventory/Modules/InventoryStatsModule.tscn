@@ -268,6 +268,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="resists"]
+visible = false
 margin_right = 107.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
@@ -277,8 +278,8 @@ text = "Attack:"
 align = 2
 
 [node name="Value" type="Label" parent="resists"]
-margin_left = 107.0
-margin_right = 133.0
+visible = false
+margin_right = 26.0
 margin_bottom = 32.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )

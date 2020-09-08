@@ -48,6 +48,7 @@ texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="SlaveDetailsModule" type="Panel"]
+light_mask = 0
 margin_right = 970.0
 margin_bottom = 920.0
 theme = ExtResource( 17 )
@@ -59,6 +60,7 @@ __meta__ = {
 
 [node name="Background" type="Panel" parent="."]
 show_behind_parent = true
+light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 970, 920 )
@@ -69,6 +71,7 @@ __meta__ = {
 
 [node name="Tooltip" type="Panel" parent="."]
 visible = false
+light_mask = 0
 margin_left = 970.0
 margin_right = 1670.0
 margin_bottom = 420.0
@@ -78,6 +81,7 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Tooltip"]
+light_mask = 0
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 650.0
@@ -90,6 +94,7 @@ __meta__ = {
 }
 
 [node name="categories" type="VBoxContainer" parent="."]
+light_mask = 0
 margin_left = 33.2982
 margin_top = 64.0
 margin_right = 143.298
@@ -100,6 +105,7 @@ __meta__ = {
 }
 
 [node name="all" type="Button" parent="categories"]
+light_mask = 0
 margin_right = 109.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
@@ -111,6 +117,7 @@ toggle_mode = true
 text = "All"
 
 [node name="social" type="Button" parent="categories"]
+light_mask = 0
 margin_top = 44.0
 margin_right = 109.0
 margin_bottom = 84.0
@@ -123,6 +130,7 @@ toggle_mode = true
 text = "Soc"
 
 [node name="labor" type="Button" parent="categories"]
+light_mask = 0
 margin_top = 88.0
 margin_right = 109.0
 margin_bottom = 128.0
@@ -135,6 +143,7 @@ toggle_mode = true
 text = "Lab"
 
 [node name="sexual" type="Button" parent="categories"]
+light_mask = 0
 margin_top = 132.0
 margin_right = 109.0
 margin_bottom = 172.0
@@ -147,6 +156,7 @@ toggle_mode = true
 text = "Sex"
 
 [node name="combat" type="Button" parent="categories"]
+light_mask = 0
 margin_top = 176.0
 margin_right = 109.0
 margin_bottom = 216.0
@@ -159,6 +169,7 @@ toggle_mode = true
 text = "Com"
 
 [node name="magic" type="Button" parent="categories"]
+light_mask = 0
 margin_top = 220.0
 margin_right = 109.0
 margin_bottom = 260.0
@@ -171,6 +182,7 @@ toggle_mode = true
 text = "Mag"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+light_mask = 0
 margin_left = 159.842
 margin_top = 64.0
 margin_right = 909.842
@@ -183,11 +195,13 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+light_mask = 0
 columns = 5
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/GridContainer"]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.635294 )
+light_mask = 0
 margin_right = 150.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 150, 150 )
@@ -199,6 +213,7 @@ expand = true
 
 [node name="icon" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
 show_behind_parent = true
+light_mask = 0
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 150, 150 )
@@ -206,6 +221,7 @@ texture = ExtResource( 20 )
 expand = true
 
 [node name="name" type="Label" parent="ScrollContainer/GridContainer/Button"]
+light_mask = 0
 margin_left = 5.0
 margin_top = 118.0
 margin_right = 147.0
@@ -221,6 +237,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+light_mask = 0
 margin_left = 118.897
 margin_top = 12.4618
 margin_right = 472.897
@@ -229,6 +246,7 @@ text = "Classes"
 align = 1
 
 [node name="CheckBox" type="CheckBox" parent="."]
+light_mask = 0
 margin_left = 33.2982
 margin_top = 772.0
 margin_right = 153.298
@@ -244,6 +262,7 @@ __meta__ = {
 
 [node name="ClassPanel" type="Panel" parent="."]
 visible = false
+light_mask = 0
 margin_left = 970.0
 margin_top = -130.0
 margin_right = 1670.0
@@ -253,6 +272,7 @@ script = ExtResource( 10 )
 
 [node name="Background" type="Panel" parent="ClassPanel"]
 show_behind_parent = true
+light_mask = 0
 margin_left = -2.0
 margin_right = 698.0
 margin_bottom = 1050.0
@@ -262,6 +282,7 @@ __meta__ = {
 }
 
 [node name="descript" type="RichTextLabel" parent="ClassPanel"]
+light_mask = 0
 margin_left = 14.0
 margin_top = 754.0
 margin_right = 686.0
@@ -274,6 +295,7 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="ClassPanel"]
+light_mask = 0
 margin_left = 250.0
 margin_top = 14.0
 margin_right = 694.0
@@ -289,6 +311,7 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel"]
 show_behind_parent = true
+light_mask = 0
 margin_top = 2.0
 margin_right = 246.0
 margin_bottom = 248.0
@@ -301,11 +324,13 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel/TextureRect"]
 show_behind_parent = true
+light_mask = 0
 margin_right = 250.0
 margin_bottom = 250.0
 texture = ExtResource( 2 )
 
 [node name="reqs" type="RichTextLabel" parent="ClassPanel"]
+light_mask = 0
 margin_left = 14.0
 margin_top = 266.0
 margin_right = 246.0
@@ -314,6 +339,7 @@ custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 
 [node name="bonus" type="RichTextLabel" parent="ClassPanel"]
+light_mask = 0
 margin_left = 262.0
 margin_top = 66.0
 margin_right = 677.0
@@ -322,6 +348,7 @@ custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 
 [node name="SocialSkills" type="ScrollContainer" parent="ClassPanel"]
+light_mask = 0
 margin_left = 270.0
 margin_top = 566.0
 margin_right = 668.0
@@ -329,12 +356,14 @@ margin_bottom = 666.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/SocialSkills"]
+light_mask = 0
 margin_right = 398.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Button" type="TextureRect" parent="ClassPanel/SocialSkills/HBoxContainer"]
 visible = false
+light_mask = 0
 margin_left = 161.0
 margin_right = 236.0
 margin_bottom = 75.0
@@ -343,6 +372,7 @@ texture = ExtResource( 5 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel/SocialSkills/HBoxContainer/Button"]
+light_mask = 0
 margin_right = 76.0
 margin_bottom = 75.0
 mouse_filter = 2
@@ -351,6 +381,7 @@ expand = true
 stretch_mode = 6
 
 [node name="CombatSkills" type="ScrollContainer" parent="ClassPanel"]
+light_mask = 0
 margin_left = 270.0
 margin_top = 389.0
 margin_right = 668.0
@@ -358,12 +389,14 @@ margin_bottom = 489.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ClassPanel/CombatSkills"]
+light_mask = 0
 margin_right = 398.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Button" type="TextureRect" parent="ClassPanel/CombatSkills/HBoxContainer"]
 visible = false
+light_mask = 0
 margin_left = 161.0
 margin_right = 236.0
 margin_bottom = 75.0
@@ -372,6 +405,7 @@ texture = ExtResource( 5 )
 expand = true
 
 [node name="TextureRect" type="TextureRect" parent="ClassPanel/CombatSkills/HBoxContainer/Button"]
+light_mask = 0
 margin_right = 76.0
 margin_bottom = 75.0
 mouse_filter = 2
@@ -380,6 +414,7 @@ expand = true
 stretch_mode = 6
 
 [node name="SocialLabel" type="Label" parent="ClassPanel"]
+light_mask = 0
 margin_left = 274.0
 margin_top = 526.0
 margin_right = 666.0
@@ -393,6 +428,7 @@ __meta__ = {
 }
 
 [node name="CombatLabel" type="Label" parent="ClassPanel"]
+light_mask = 0
 margin_left = 270.0
 margin_top = 347.0
 margin_right = 668.0
@@ -406,6 +442,7 @@ __meta__ = {
 }
 
 [node name="Unlock" type="Button" parent="ClassPanel"]
+light_mask = 0
 margin_left = 464.0
 margin_top = 975.0
 margin_right = 670.0
@@ -416,6 +453,7 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Unlock"
 
 [node name="ExpLabel" type="Label" parent="ClassPanel"]
+light_mask = 0
 margin_left = 30.0
 margin_top = 994.0
 margin_right = 317.0

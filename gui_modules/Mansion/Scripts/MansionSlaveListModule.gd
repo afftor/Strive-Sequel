@@ -218,11 +218,9 @@ func build_sex_selection(person, newbutton):
 	for button in SlaveContainer.get_children():
 		if button == SlaveContainer.get_child(SlaveContainer.get_children().size()-1):
 			continue
-		var tags = button.get_meta("slave").get_stat("tags")
 		button.pressed = sex_participants.has(button.get_meta("slave"))
 		button.disabled = (sex_participants.size() >= limit && !button.is_pressed())
-		if tags != null:
-			button.disabled = tags.has("no_sex")
+		button.disabled = button.get_meta("slave").tags.has("no_sex")
 	update_description()
 
 

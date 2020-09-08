@@ -15,6 +15,7 @@ var current_screen
 var previous_screen
 var windows_opened = []
 var dialogue
+var is_dialogue_just_started = true
 
 signal screen_changed
 
@@ -31,6 +32,13 @@ func update_modules():
 		if subscene.get_class() == "Tween":
 			continue
 		subscene.update()
+	clock_visibility()
+
+func clock_visibility():
+	if exploration == null:
+		clock.visible = current_screen == mansion || current_screen == game_menu
+	else:
+		clock.visible = ((current_screen == mansion || current_screen == exploration) && !exploration.get_node("LocationGui").is_visible()) || current_screen == game_menu
 
 
 func add_close_button(scene, position = "snap"):
@@ -63,6 +71,8 @@ func close_scene(scene):
 		previous_screen = null
 	if current_screen == mansion:
 		mansion.mansion_state_set("default")
+		gui_controller.clock.raise()
+		gui_controller.clock.show()
 	if current_screen == explore_slaveinfo && previous_screen == exploration:
 		current_screen = exploration
 		previous_screen = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/iconsitems/item_vege.png" type="Texture" id=4]
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=6]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -73,9 +74,13 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="Cost"]
 margin_left = 48.6366
-margin_top = 21.0
+margin_top = 13.0
 margin_right = 101.637
 margin_bottom = 45.0
+theme = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 0.929412, 0, 1 )
 text = "100"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

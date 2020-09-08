@@ -110,6 +110,7 @@ margin_bottom = 761.948
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 2 )
 text = "Complete"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,6 +124,7 @@ margin_bottom = 761.948
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 2 )
 text = "Forfeit"
 
 [node name="reqs" type="HBoxContainer" parent="."]
@@ -263,6 +265,7 @@ margin_left = 103.0
 margin_right = 206.0
 margin_bottom = 42.0
 rect_scale = Vector2( -1, 1 )
+theme = ExtResource( 12 )
 text = "Main"
 align = 1
 valign = 1
@@ -287,6 +290,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Minor"]
 margin_right = 103.0
 margin_bottom = 42.0
+theme = ExtResource( 12 )
 text = "Minor"
 align = 1
 valign = 1

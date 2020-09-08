@@ -95,8 +95,8 @@ func open_city(city):
 	self.current_pressed_area_btn = null
 	$GuildBG.hide()
 	$LocationGui.hide()
-	# if active_area.has('capital_background_noise'):
-	# 	input_handler.PlayBackgroundSound(active_area.capital_background_noise)
+	if active_area.has('capital_background_noise'):
+		input_handler.PlayBackgroundSound(active_area.capital_background_noise)
 	if active_area.has('capital_background_music'):
 		input_handler.SetMusic(active_area.capital_background_music)
 	if active_area.has("capital_dynamic_background"):
@@ -149,7 +149,6 @@ func build_area_menu(area_actions):
 			&& ResourceScripts.game_globals.hour <= 20
 		):
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
 		elif action.code == 'exotic_slave_trader':
 			continue
@@ -182,6 +181,7 @@ var current_stage
 
 
 func open_location(data):
+	input_handler.StopBackgroundSound()
 	$LocationGui/NavigationModule.build_accessible_locations()
 	$LocationGui/NavigationModule.update_buttons()
 	selected_location = data.id
@@ -793,7 +793,7 @@ func build_location_group():
 		if active_location.group.values().has(i.id):
 			newbutton.get_node("icon").modulate = Color(0.3, 0.3, 0.3)
 		globals.connectslavetooltip(newbutton, i)
-	if counter == 0:
+	if counter == 0 && gui_controller.exploration.get_node("LocationGui").is_visible():
 		nav.return_to_mansion()
 		return
 	build_item_panel()
@@ -1044,7 +1044,10 @@ func enter_guild(guild):
 
 	# Visuals
 	$GuildBG.texture = images.backgrounds[guild.background]
-	unfade($GuildBG)
+	if get_tree().get_root().get_node_or_null("dialogue") && ! get_tree().get_root().get_node("dialogue").is_visible():
+		unfade($GuildBG)
+	if gui_controller.is_dialogue_just_started:
+		unfade($GuildBG)
 
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
@@ -1675,7 +1678,7 @@ func see_quest_info(quest):
 				newbutton.texture = images.icons.quest_enemy
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
-				newbutton.texture = images.icons.quest_enemy
+				newbutton.get_node("Icon").texture = images.icons.quest_enemy
 				newbutton.hint_tooltip = (
 					"Hunt Monsters: "
 					+ Enemydata.enemies[i.type].name
@@ -1684,7 +1687,7 @@ func see_quest_info(quest):
 				)
 			'random_item':
 				var itemtemplate = Items.itemlist[i.type]
-				newbutton.texture = itemtemplate.icon
+				newbutton.get_node("Icon").texture = itemtemplate.icon
 				newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value)
 				if itemtemplate.has('parts'):
 					#newbutton.material = load("res://src/ItemShader.tres").duplicate()
@@ -1703,7 +1706,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 			'complete_location':
-				newbutton.texture = images.icons.quest_encounter
+				newbutton.get_node("Icon").texture = images.icons.quest_encounter
 				newbutton.hint_tooltip = (
 					"Complete quest location: "
 					+ worlddata.dungeons[i.type].name
@@ -1715,10 +1718,10 @@ func see_quest_info(quest):
 					+ worlddata.dungeons[i.type].descript
 				)
 			'complete_dungeon':
-				newbutton.texture = images.icons.quest_dungeon
+				newbutton.get_node("Icon").texture = images.icons.quest_dungeon
 				newbutton.hint_tooltip = "Complete quest dungeon: "
 			'random_material':
-				newbutton.texture = Items.materiallist[i.type].icon
+				newbutton.get_node("Icon").texture = Items.materiallist[i.type].icon
 				newbutton.get_node("amount").show()
 				newbutton.get_node("amount").text = str(i.value)
 				globals.connectmaterialtooltip(
@@ -1727,7 +1730,7 @@ func see_quest_info(quest):
 					'\n\n[color=yellow]Required: ' + str(i.value) + "[/color]"
 				)
 			'slave_delivery':
-				newbutton.texture = images.icons.quest_slave_delivery
+				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var tooltiptext = "Slave Required:\n"
 				for k in i.statreqs:
 					if k.code in ['is_master', 'is_free']:
@@ -1758,19 +1761,19 @@ func see_quest_info(quest):
 				input_handler.ghost_items.append(item)
 				globals.connectitemtooltip(newbutton, item)
 			'gear_static':
-				newbutton.texture = Items.itemlist[i.item].icon
+				newbutton.get_node("Icon").texture = Items.itemlist[i.item].icon
 				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 			'usable':
 				var item = Items.itemlist[i.item]
-				newbutton.texture = item.icon
+				newbutton.get_node("Icon").texture = item.icon
 				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 			'material':
 				var material = Items.materiallist[i.item]
-				newbutton.texture = material.icon
+				newbutton.get_node("Icon").texture = material.icon
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				globals.connectmaterialtooltip(newbutton, material)
@@ -1786,7 +1789,7 @@ func see_quest_info(quest):
 						)
 					)
 				)
-				newbutton.texture = images.icons.quest_gold
+				newbutton.get_node("Icon").texture = images.icons.quest_gold
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = (
@@ -1817,7 +1820,7 @@ func see_quest_info(quest):
 						)
 					)
 				)
-				newbutton.texture = images.icons[i.code]
+				newbutton.get_node("Icon").texture = images.icons[i.code]
 				newbutton.get_node("amount").text = str(value)
 				newbutton.get_node("amount").show()
 				newbutton.hint_tooltip = (
