@@ -257,11 +257,12 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "20"
 
 [node name="resists" type="GridContainer" parent="."]
-margin_top = 27.9333
-margin_right = 348.0
-margin_bottom = 175.933
+margin_left = 2.10526
+margin_top = 32.1439
+margin_right = 350.105
+margin_bottom = 180.144
 custom_constants/vseparation = -1
-custom_constants/hseparation = 0
+custom_constants/hseparation = 5
 columns = 4
 __meta__ = {
 "_edit_use_anchors_": false
@@ -269,13 +270,13 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="resists"]
 visible = false
-margin_right = 107.0
+margin_right = 105.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Attack:"
-align = 2
+align = 1
 
 [node name="Value" type="Label" parent="resists"]
 visible = false

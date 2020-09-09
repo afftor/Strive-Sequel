@@ -967,8 +967,8 @@ func remove_location(locationid):
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.mansion_state_set("default")
 	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
-		input_handler.exploration_node.nav.select_location('aliron')
-		input_handler.exploration_node.nav.build_accessible_locations()
+		gui_controller.nav_panel.select_location('aliron')
+		gui_controller.nav_panel.build_accessible_locations()
 
 func return_characters_from_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)

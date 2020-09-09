@@ -18,6 +18,7 @@ func _ready():
 
 func open():
 	show()
+	
 
 func OptionsOpen():
 	if !gui_controller.windows_opened.has($Options):

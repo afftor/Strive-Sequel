@@ -11,7 +11,7 @@ func _ready():
 
 
 func update_buttons():
-	nav = $NavigationContainer/AreaSelection
+	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
 	if gui_controller.current_screen == gui_controller.mansion:
 		for button in nav.get_children():
 			if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
@@ -46,7 +46,7 @@ func sort_locations(locations_array):
 	return capitals + settlements + dungeons + quest_locations
 
 func build_accessible_locations():
-	nav = $NavigationContainer/AreaSelection
+	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
 	input_handler.ClearContainer(nav)
 	var location_array = ["aliron"]
 	var travelers = []
@@ -81,6 +81,8 @@ func build_accessible_locations():
 
 
 func select_location(location):
+	selected_location = location
+	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	if gui_controller.current_screen == gui_controller.mansion:
 		input_handler.PlaySound("door_open")
 		gui_controller.previous_screen = gui_controller.current_screen
@@ -107,12 +109,10 @@ func select_location(location):
 			return
 		else:
 			gui_controller.exploration.open_location(data)
-	selected_location = location
 	build_accessible_locations()
-	update_buttons()
 
 
-func return_to_mansion():
+func return_to_mansion(with_state = "default"):
 	if gui_controller.current_screen == gui_controller.mansion:
 		build_accessible_locations()
 		update_buttons()
@@ -131,6 +131,6 @@ func return_to_mansion():
 	gui_controller.clock.raise()
 	gui_controller.exploration.get_node("GuildBG").hide()
 	gui_controller.exploration.active_faction = null
-	gui_controller.mansion.mansion_state_set("default")
+	gui_controller.mansion.mansion_state_set(with_state)
 	build_accessible_locations()
 	update_buttons()

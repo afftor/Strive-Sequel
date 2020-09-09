@@ -93,7 +93,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_hover.png" type="Texture" id=91]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_pressed.png" type="Texture" id=92]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_upgrades_task.png" type="Texture" id=93]
-[ext_resource path="res://StatsTrading.tscn" type="PackedScene" id=94]
+[ext_resource path="res://gui_modules/Exploration/Modules/StatsTrading.tscn" type="PackedScene" id=94]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=95]
 [ext_resource path="res://assets/dynamic_backgrounds/dynamic_background.tscn" type="PackedScene" id=96]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=97]
@@ -135,22 +135,6 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=9]
 size = 48
 font_data = ExtResource( 10 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 28 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
-
-[sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 70 )
-region_rect = Rect2( 0, 0, 128, 55 )
-margin_left = 12.0
-margin_right = 12.0
-margin_top = 12.0
-margin_bottom = 12.0
-
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 28 )
-region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 75 )
@@ -219,6 +203,22 @@ margin_left = 8.0
 margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 70 )
+region_rect = Rect2( 0, 0, 128, 55 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 28 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="ExplorationModule" type="Control"]
 self_modulate = Color( 1, 1, 1, 0.74902 )
@@ -1116,556 +1116,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AreaShop" type="Panel" parent="." groups=[
-"pauseprocess",
-]]
-visible = false
-margin_left = 398.0
-margin_top = 137.0
-margin_right = 1521.0
-margin_bottom = 1062.0
-custom_styles/panel = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="Panel" parent="AreaShop"]
-self_modulate = Color( 0, 0, 0, 1 )
-show_behind_parent = true
-margin_right = 1123.0
-margin_bottom = 83.0
-custom_styles/panel = SubResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background2" type="Panel" parent="AreaShop"]
-self_modulate = Color( 0, 0, 0, 0.705882 )
-show_behind_parent = true
-margin_top = 83.0
-margin_right = 1123.0
-margin_bottom = 925.0
-custom_styles/panel = SubResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="AreaShop"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 67 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="AreaShop"]
-margin_right = 1123.0
-margin_bottom = 83.0
-custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Marketplace"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SellFilter" type="HBoxContainer" parent="AreaShop"]
-margin_left = 53.97
-margin_top = 141.765
-margin_right = 513.97
-margin_bottom = 195.765
-custom_constants/separation = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="all" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_right = 54.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYALL"
-toggle_mode = true
-texture_normal = ExtResource( 66 )
-texture_pressed = ExtResource( 65 )
-texture_hover = ExtResource( 52 )
-
-[node name="food" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 58.0
-margin_right = 112.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYMATERIAL"
-toggle_mode = true
-texture_normal = ExtResource( 62 )
-texture_pressed = ExtResource( 54 )
-texture_hover = ExtResource( 51 )
-
-[node name="usable" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 116.0
-margin_right = 170.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYUSE"
-toggle_mode = true
-texture_normal = ExtResource( 43 )
-texture_pressed = ExtResource( 47 )
-texture_hover = ExtResource( 55 )
-
-[node name="material" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 174.0
-margin_right = 228.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYMATERIAL"
-toggle_mode = true
-texture_normal = ExtResource( 61 )
-texture_pressed = ExtResource( 58 )
-texture_hover = ExtResource( 64 )
-
-[node name="tool" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 232.0
-margin_right = 286.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYTOOL"
-toggle_mode = true
-texture_normal = ExtResource( 60 )
-texture_pressed = ExtResource( 48 )
-texture_hover = ExtResource( 57 )
-
-[node name="weapon" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 290.0
-margin_right = 344.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYWEAPON"
-toggle_mode = true
-texture_normal = ExtResource( 49 )
-texture_pressed = ExtResource( 59 )
-texture_hover = ExtResource( 44 )
-
-[node name="armor" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 348.0
-margin_right = 402.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYARMOR"
-toggle_mode = true
-texture_normal = ExtResource( 46 )
-texture_pressed = ExtResource( 45 )
-texture_hover = ExtResource( 56 )
-
-[node name="costume" type="TextureButton" parent="AreaShop/SellFilter"]
-margin_left = 406.0
-margin_right = 460.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYCOSTUME"
-toggle_mode = true
-texture_normal = ExtResource( 63 )
-texture_pressed = ExtResource( 50 )
-texture_hover = ExtResource( 53 )
-
-[node name="BuyFilter" type="HBoxContainer" parent="AreaShop"]
-margin_left = 602.043
-margin_top = 141.765
-margin_right = 1062.04
-margin_bottom = 195.765
-custom_constants/separation = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="all" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_right = 54.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYALL"
-toggle_mode = true
-texture_normal = ExtResource( 66 )
-texture_pressed = ExtResource( 65 )
-texture_hover = ExtResource( 52 )
-
-[node name="food" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 58.0
-margin_right = 112.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYMATERIAL"
-toggle_mode = true
-texture_normal = ExtResource( 62 )
-texture_pressed = ExtResource( 54 )
-texture_hover = ExtResource( 51 )
-
-[node name="usable" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 116.0
-margin_right = 170.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYUSE"
-toggle_mode = true
-texture_normal = ExtResource( 43 )
-texture_pressed = ExtResource( 47 )
-texture_hover = ExtResource( 55 )
-
-[node name="material" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 174.0
-margin_right = 228.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYMATERIAL"
-toggle_mode = true
-texture_normal = ExtResource( 61 )
-texture_pressed = ExtResource( 58 )
-texture_hover = ExtResource( 64 )
-
-[node name="tool" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 232.0
-margin_right = 286.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYTOOL"
-toggle_mode = true
-texture_normal = ExtResource( 60 )
-texture_pressed = ExtResource( 48 )
-texture_hover = ExtResource( 57 )
-
-[node name="weapon" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 290.0
-margin_right = 344.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYWEAPON"
-toggle_mode = true
-texture_normal = ExtResource( 49 )
-texture_pressed = ExtResource( 59 )
-texture_hover = ExtResource( 44 )
-
-[node name="armor" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 348.0
-margin_right = 402.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYARMOR"
-toggle_mode = true
-texture_normal = ExtResource( 46 )
-texture_pressed = ExtResource( 45 )
-texture_hover = ExtResource( 56 )
-
-[node name="costume" type="TextureButton" parent="AreaShop/BuyFilter"]
-margin_left = 406.0
-margin_right = 460.0
-margin_bottom = 54.0
-hint_tooltip = "INVENTORYCOSTUME"
-toggle_mode = true
-texture_normal = ExtResource( 63 )
-texture_pressed = ExtResource( 50 )
-texture_hover = ExtResource( 53 )
-
-[node name="SellBlock" type="Control" parent="AreaShop"]
-margin_top = 104.765
-margin_right = 40.0
-margin_bottom = 144.765
-script = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="AreaShop/SellBlock"]
-margin_left = 68.0
-margin_top = 150.0
-margin_right = 548.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 480, 0 )
-scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AreaShop/SellBlock/ScrollContainer"]
-margin_right = 480.0
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer"]
-visible = false
-margin_right = 480.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 464, 50 )
-theme = ExtResource( 68 )
-custom_fonts/font = ExtResource( 8 )
-
-[node name="icon" type="TextureRect" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 6.0
-margin_top = 6.0
-margin_right = 47.0
-margin_bottom = 45.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 69.0
-margin_top = 13.0
-margin_right = 279.0
-margin_bottom = 45.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Test"
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="price" type="Label" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -68.0
-margin_top = -11.7131
-margin_right = -11.0
-margin_bottom = 12.2869
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "10"
-align = 2
-
-[node name="amount" type="Label" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 340.97
-margin_top = 13.0
-margin_right = 388.97
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "1"
-align = 2
-
-[node name="Label" type="Label" parent="AreaShop/SellBlock"]
-margin_left = 498.337
-margin_top = 108.88
-margin_right = 551.337
-margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Cost"
-
-[node name="Label2" type="Label" parent="AreaShop/SellBlock"]
-margin_left = 387.443
-margin_top = 108.88
-margin_right = 480.443
-margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Number"
-
-[node name="Label3" type="Label" parent="AreaShop/SellBlock"]
-margin_left = 113.97
-margin_top = 108.88
-margin_right = 206.97
-margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Item"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VScrollBar" type="VScrollBar" parent="AreaShop/SellBlock"]
-margin_left = 36.0
-margin_top = 141.0
-margin_right = 48.0
-margin_bottom = 591.0
-theme = ExtResource( 19 )
-
-[node name="BuyBlock" type="Control" parent="AreaShop"]
-margin_left = 521.97
-margin_top = 104.765
-margin_right = 561.97
-margin_bottom = 144.765
-script = ExtResource( 27 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="AreaShop/BuyBlock"]
-margin_left = 44.0
-margin_top = 150.0
-margin_right = 524.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AreaShop/BuyBlock/ScrollContainer"]
-margin_right = 480.0
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer"]
-visible = false
-margin_right = 493.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 464, 50 )
-theme = ExtResource( 68 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-
-[node name="icon" type="TextureRect" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 6.0
-margin_top = 6.0
-margin_right = 47.0
-margin_bottom = 45.0
-mouse_filter = 2
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="name" type="Label" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 69.0
-margin_top = 13.0
-margin_right = 279.0
-margin_bottom = 45.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Test"
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="price" type="Label" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -68.0
-margin_top = -11.7131
-margin_right = -11.0
-margin_bottom = 12.2869
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "10"
-align = 2
-
-[node name="amount" type="Label" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
-margin_left = 340.97
-margin_top = 13.0
-margin_right = 388.97
-margin_bottom = 42.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "1"
-align = 2
-
-[node name="Label" type="Label" parent="AreaShop/BuyBlock"]
-margin_left = 477.337
-margin_top = 108.88
-margin_right = 530.337
-margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Cost"
-
-[node name="Label2" type="Label" parent="AreaShop/BuyBlock"]
-margin_left = 366.443
-margin_top = 108.88
-margin_right = 459.443
-margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Number"
-
-[node name="Label3" type="Label" parent="AreaShop/BuyBlock"]
-margin_left = 88.97
-margin_top = 108.88
-margin_right = 181.97
-margin_bottom = 140.88
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Item"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VScrollBar" type="VScrollBar" parent="AreaShop/BuyBlock"]
-margin_left = 552.07
-margin_top = 141.0
-margin_right = 564.07
-margin_bottom = 591.0
-theme = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NumberSelection" type="Panel" parent="AreaShop"]
-visible = false
-margin_left = 294.0
-margin_top = 724.0
-margin_right = 794.0
-margin_bottom = 914.0
-custom_styles/panel = SubResource( 11 )
-script = ExtResource( 73 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="AreaShop/NumberSelection"]
-self_modulate = Color( 0, 0, 0, 0.686275 )
-show_behind_parent = true
-margin_right = 500.0
-margin_bottom = 190.0
-custom_styles/panel = SubResource( 12 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="AreaShop/NumberSelection"]
-margin_left = 37.0
-margin_top = 32.0
-margin_right = 461.0
-margin_bottom = 98.0
-custom_fonts/normal_font = ExtResource( 8 )
-bbcode_enabled = true
-
-[node name="HSlider" type="HSlider" parent="AreaShop/NumberSelection"]
-margin_left = 37.0
-margin_top = 95.0
-margin_right = 567.0
-margin_bottom = 121.0
-rect_scale = Vector2( 0.8, 0.8 )
-custom_icons/grabber_disabled = ExtResource( 69 )
-custom_icons/grabber_highlight = ExtResource( 69 )
-custom_icons/grabber = ExtResource( 69 )
-custom_styles/slider = ExtResource( 72 )
-ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="AreaShop/NumberSelection"]
-margin_left = 125.443
-margin_top = 122.8
-margin_right = 379.443
-margin_bottom = 174.8
-theme = ExtResource( 42 )
-text = "Confirm"
-
-[node name="Label4" type="Label" parent="AreaShop"]
-margin_left = 62.0
-margin_top = 83.765
-margin_right = 520.0
-margin_bottom = 142.765
-custom_fonts/font = ExtResource( 71 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Inventory"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="AreaShop"]
-margin_left = 610.043
-margin_top = 83.765
-margin_right = 1068.04
-margin_bottom = 142.765
-custom_fonts/font = ExtResource( 71 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Trader"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="QuestBoard" type="Panel" parent="."]
 visible = false
 margin_left = 400.0
@@ -2305,3 +1755,553 @@ margin_bottom = 957.0
 
 [node name="LocationGui" parent="." instance=ExtResource( 98 )]
 visible = false
+
+[node name="AreaShop" type="Panel" parent="." groups=[
+"pauseprocess",
+]]
+visible = false
+margin_left = 398.0
+margin_top = 137.0
+margin_right = 1521.0
+margin_bottom = 1062.0
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="AreaShop"]
+self_modulate = Color( 0, 0, 0, 1 )
+show_behind_parent = true
+margin_right = 1123.0
+margin_bottom = 83.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background2" type="Panel" parent="AreaShop"]
+self_modulate = Color( 0, 0, 0, 0.705882 )
+show_behind_parent = true
+margin_top = 83.0
+margin_right = 1123.0
+margin_bottom = 925.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="AreaShop"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 67 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AreaShop"]
+margin_right = 1123.0
+margin_bottom = 83.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Marketplace"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellFilter" type="HBoxContainer" parent="AreaShop"]
+margin_left = 53.97
+margin_top = 141.765
+margin_right = 513.97
+margin_bottom = 195.765
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_right = 54.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYALL"
+toggle_mode = true
+texture_normal = ExtResource( 66 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 52 )
+
+[node name="food" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 62 )
+texture_pressed = ExtResource( 54 )
+texture_hover = ExtResource( 51 )
+
+[node name="usable" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYUSE"
+toggle_mode = true
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 47 )
+texture_hover = ExtResource( 55 )
+
+[node name="material" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 61 )
+texture_pressed = ExtResource( 58 )
+texture_hover = ExtResource( 64 )
+
+[node name="tool" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYTOOL"
+toggle_mode = true
+texture_normal = ExtResource( 60 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 57 )
+
+[node name="weapon" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 290.0
+margin_right = 344.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYWEAPON"
+toggle_mode = true
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 59 )
+texture_hover = ExtResource( 44 )
+
+[node name="armor" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 348.0
+margin_right = 402.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYARMOR"
+toggle_mode = true
+texture_normal = ExtResource( 46 )
+texture_pressed = ExtResource( 45 )
+texture_hover = ExtResource( 56 )
+
+[node name="costume" type="TextureButton" parent="AreaShop/SellFilter"]
+margin_left = 406.0
+margin_right = 460.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYCOSTUME"
+toggle_mode = true
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 53 )
+
+[node name="BuyFilter" type="HBoxContainer" parent="AreaShop"]
+margin_left = 602.043
+margin_top = 141.765
+margin_right = 1062.04
+margin_bottom = 195.765
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_right = 54.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYALL"
+toggle_mode = true
+texture_normal = ExtResource( 66 )
+texture_pressed = ExtResource( 65 )
+texture_hover = ExtResource( 52 )
+
+[node name="food" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 58.0
+margin_right = 112.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 62 )
+texture_pressed = ExtResource( 54 )
+texture_hover = ExtResource( 51 )
+
+[node name="usable" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 116.0
+margin_right = 170.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYUSE"
+toggle_mode = true
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 47 )
+texture_hover = ExtResource( 55 )
+
+[node name="material" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 174.0
+margin_right = 228.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYMATERIAL"
+toggle_mode = true
+texture_normal = ExtResource( 61 )
+texture_pressed = ExtResource( 58 )
+texture_hover = ExtResource( 64 )
+
+[node name="tool" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 232.0
+margin_right = 286.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYTOOL"
+toggle_mode = true
+texture_normal = ExtResource( 60 )
+texture_pressed = ExtResource( 48 )
+texture_hover = ExtResource( 57 )
+
+[node name="weapon" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 290.0
+margin_right = 344.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYWEAPON"
+toggle_mode = true
+texture_normal = ExtResource( 49 )
+texture_pressed = ExtResource( 59 )
+texture_hover = ExtResource( 44 )
+
+[node name="armor" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 348.0
+margin_right = 402.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYARMOR"
+toggle_mode = true
+texture_normal = ExtResource( 46 )
+texture_pressed = ExtResource( 45 )
+texture_hover = ExtResource( 56 )
+
+[node name="costume" type="TextureButton" parent="AreaShop/BuyFilter"]
+margin_left = 406.0
+margin_right = 460.0
+margin_bottom = 54.0
+hint_tooltip = "INVENTORYCOSTUME"
+toggle_mode = true
+texture_normal = ExtResource( 63 )
+texture_pressed = ExtResource( 50 )
+texture_hover = ExtResource( 53 )
+
+[node name="SellBlock" type="Control" parent="AreaShop"]
+margin_top = 104.765
+margin_right = 40.0
+margin_bottom = 144.765
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AreaShop/SellBlock"]
+margin_left = 68.0
+margin_top = 150.0
+margin_right = 548.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 480, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AreaShop/SellBlock/ScrollContainer"]
+margin_right = 480.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 464, 50 )
+theme = ExtResource( 68 )
+custom_fonts/font = ExtResource( 8 )
+
+[node name="icon" type="TextureRect" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.0
+margin_top = 13.0
+margin_right = 279.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Test"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -11.7131
+margin_right = -11.0
+margin_bottom = 12.2869
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "10"
+align = 2
+
+[node name="amount" type="Label" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 340.97
+margin_top = 13.0
+margin_right = 388.97
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="AreaShop/SellBlock"]
+margin_left = 498.337
+margin_top = 108.88
+margin_right = 551.337
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Cost"
+
+[node name="Label2" type="Label" parent="AreaShop/SellBlock"]
+margin_left = 387.443
+margin_top = 108.88
+margin_right = 480.443
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Number"
+
+[node name="Label3" type="Label" parent="AreaShop/SellBlock"]
+margin_left = 113.97
+margin_top = 108.88
+margin_right = 206.97
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Item"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="AreaShop/SellBlock"]
+margin_left = 36.0
+margin_top = 141.0
+margin_right = 48.0
+margin_bottom = 591.0
+theme = ExtResource( 19 )
+
+[node name="BuyBlock" type="Control" parent="AreaShop"]
+margin_left = 521.97
+margin_top = 104.765
+margin_right = 561.97
+margin_bottom = 144.765
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="AreaShop/BuyBlock"]
+margin_left = 44.0
+margin_top = 150.0
+margin_right = 524.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AreaShop/BuyBlock/ScrollContainer"]
+margin_right = 480.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 493.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 464, 50 )
+theme = ExtResource( 68 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+
+[node name="icon" type="TextureRect" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 47.0
+margin_bottom = 45.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 69.0
+margin_top = 13.0
+margin_right = 279.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Test"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -11.7131
+margin_right = -11.0
+margin_bottom = 12.2869
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "10"
+align = 2
+
+[node name="amount" type="Label" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
+margin_left = 340.97
+margin_top = 13.0
+margin_right = 388.97
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "1"
+align = 2
+
+[node name="Label" type="Label" parent="AreaShop/BuyBlock"]
+margin_left = 477.337
+margin_top = 108.88
+margin_right = 530.337
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Cost"
+
+[node name="Label2" type="Label" parent="AreaShop/BuyBlock"]
+margin_left = 366.443
+margin_top = 108.88
+margin_right = 459.443
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Number"
+
+[node name="Label3" type="Label" parent="AreaShop/BuyBlock"]
+margin_left = 88.97
+margin_top = 108.88
+margin_right = 181.97
+margin_bottom = 140.88
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Item"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VScrollBar" type="VScrollBar" parent="AreaShop/BuyBlock"]
+margin_left = 552.07
+margin_top = 141.0
+margin_right = 564.07
+margin_bottom = 591.0
+theme = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumberSelection" type="Panel" parent="AreaShop"]
+visible = false
+margin_left = 294.0
+margin_top = 724.0
+margin_right = 794.0
+margin_bottom = 914.0
+custom_styles/panel = SubResource( 11 )
+script = ExtResource( 73 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="AreaShop/NumberSelection"]
+self_modulate = Color( 0, 0, 0, 0.686275 )
+show_behind_parent = true
+margin_right = 500.0
+margin_bottom = 190.0
+custom_styles/panel = SubResource( 12 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AreaShop/NumberSelection"]
+margin_left = 37.0
+margin_top = 32.0
+margin_right = 461.0
+margin_bottom = 98.0
+custom_fonts/normal_font = ExtResource( 8 )
+bbcode_enabled = true
+
+[node name="HSlider" type="HSlider" parent="AreaShop/NumberSelection"]
+margin_left = 37.0
+margin_top = 95.0
+margin_right = 567.0
+margin_bottom = 121.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_icons/grabber_disabled = ExtResource( 69 )
+custom_icons/grabber_highlight = ExtResource( 69 )
+custom_icons/grabber = ExtResource( 69 )
+custom_styles/slider = ExtResource( 72 )
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="AreaShop/NumberSelection"]
+margin_left = 125.443
+margin_top = 122.8
+margin_right = 379.443
+margin_bottom = 174.8
+theme = ExtResource( 42 )
+text = "Confirm"
+
+[node name="Label4" type="Label" parent="AreaShop"]
+margin_left = 62.0
+margin_top = 83.765
+margin_right = 520.0
+margin_bottom = 142.765
+custom_fonts/font = ExtResource( 71 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="AreaShop"]
+margin_left = 610.043
+margin_top = 83.765
+margin_right = 1068.04
+margin_bottom = 142.765
+custom_fonts/font = ExtResource( 71 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Trader"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

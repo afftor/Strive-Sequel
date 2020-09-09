@@ -27,6 +27,7 @@ __meta__ = {
 
 [node name="Body" type="TextureRect" parent="."]
 show_behind_parent = true
+light_mask = 4
 margin_left = -158.852
 margin_right = 841.148
 margin_bottom = 1000.0
@@ -42,6 +43,7 @@ __meta__ = {
 position = Vector2( 352, 468 )
 texture = ExtResource( 11 )
 mode = 3
+range_item_cull_mask = 4
 
 [node name="buffscontainer" type="HBoxContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.823529 )

@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/sfx/unblock_shader.tres" type="Material" id=1]
-[ext_resource path="res://Label2_victory.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gold_victory.tscn" type="PackedScene" id=3]
-[ext_resource path="res://button_victory_collect.tscn" type="PackedScene" id=4]
-[ext_resource path="res://button_char_victory.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Label1_victory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui_modules/Animations/Label2_victory.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/Animations/gold_victory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui_modules/Animations/button_victory_collect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui_modules/Animations/button_char_victory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui_modules/Animations/Label1_victory.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/header_victory.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_victory.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/victory.png" type="Texture" id=10]
@@ -13,6 +13,11 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/line_blue.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=14]
+
+
+
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Victory"

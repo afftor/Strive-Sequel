@@ -83,14 +83,18 @@ func _ready():
 
 func open(location):
 	selected_location = location
-	$NavigationModule.selected_location = location
-	$NavigationModule.build_accessible_locations()
-	$NavigationModule.update_buttons()
+	# $NavigationModule.build_accessible_locations()
+	# $NavigationModule.update_buttons()
 	input_handler.exploration_node = self
-	open_city(selected_location)
+	# var loca = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	# if loca.type == "capital":
+	# 	open_city(selected_location)
 
 
 func open_city(city):
+	gui_controller.nav_panel = $NavigationModule
+	gui_controller.nav_panel.build_accessible_locations()
+	gui_controller.nav_panel.update_buttons()
 	active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[city].area]
 	self.current_pressed_area_btn = null
 	$GuildBG.hide()
@@ -182,23 +186,22 @@ var current_stage
 
 func open_location(data):
 	input_handler.StopBackgroundSound()
-	$LocationGui/NavigationModule.build_accessible_locations()
-	$LocationGui/NavigationModule.update_buttons()
+	gui_controller.nav_panel = $LocationGui.get_node("NavigationModule")
 	selected_location = data.id
 	var gatherable_resources
 	if data.type == "dungeon":
-		# $LocationGui/Resources/Forget.visible = data.completed
-		$LocationGui/Resources/SelectWorkers.visible = data.completed
+		$LocationGui.get_node("Resources/Forget").visible = data.completed
+		$LocationGui.get_node("Resources/SelectWorkers").visible = data.completed
 		gui_controller.clock.hide()
 	else:
-		$LocationGui/Resources/Forget.visible = false
+		$LocationGui.get_node("Resources/Forget").visible = false
 		if data.type == "capital":
 			return
 		else:
 			gui_controller.clock.hide()
 			if data.has('gather_resources'):
 				gatherable_resources = data.gather_resources
-				$LocationGui/Resources/SelectWorkers.visible = true
+				$LocationGui.get_node("Resources/SelectWorkers").visible = true
 			if gatherable_resources != null:
 				var stop_loop = false
 				for i in gatherable_resources:
@@ -208,20 +211,19 @@ func open_location(data):
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
 					if active_tasks == []:
-						$LocationGui/Resources/SelectWorkers.visible = true
+						$LocationGui.get_node("Resources/SelectWorkers").visible = true
 						break
 					for task in active_tasks:
 						if (task.code == i) && (task.task_location == selected_location):
 							current_workers_count = task.workers_count
 							if current_workers_count < gatherable_resources[i]:
-								$LocationGui/Resources/SelectWorkers.visible = true
+								$LocationGui.get_node("Resources/SelectWorkers").visible = true
 								stop_loop = true
 								break
 							else:
-								$LocationGui/Resources/SelectWorkers.visible = false
-	input_handler.StopBackgroundSound()
+								$LocationGui.get_node("Resources/SelectWorkers").visible = false
 	$LocationGui.show()
-	$LocationGui/Resources/Materials.update()
+	$LocationGui.get_node("Resources/Materials").update()
 	active_location = data
 	active_area = ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[data.id].area]
 	input_handler.active_area = active_area
@@ -253,6 +255,7 @@ func open_location(data):
 		$LocationGui/Resources/Label.visible = false
 	else:
 		$LocationGui/Resources/Label.visible = true
+	gui_controller.nav_panel.build_accessible_locations()
 
 
 func build_location_description():
@@ -566,6 +569,7 @@ func advance():
 				check_events("dungeon_complete")
 			# $LocationGui/Resources/Forget.visible = true
 			$LocationGui/Resources/SelectWorkers.visible = true
+			$LocationGui/Resources/Forget.visible = true
 			$LocationGui/Resources/Materials.update()
 		enter_dungeon()
 	elif action_type == 'location_finish':
@@ -1359,6 +1363,7 @@ func open_shop(pressed, pressed_button, shop):
 	match shop:
 		'area':
 			active_shop = active_area.shop
+			print(active_shop)
 		'location':
 			active_shop = input_handler.active_location.shop
 	sell_category = 'all'
@@ -1369,6 +1374,9 @@ func open_shop(pressed, pressed_button, shop):
 	update_buy_list()
 	if pressed:
 		unfade($AreaShop)
+
+func local_shop():
+	open_shop(true, current_pressed_area_btn, 'location')
 
 
 func selectcategory(button, list):
@@ -1525,7 +1533,7 @@ func item_purchase(item, amount):
 		price = item.calculateprice()
 	else:
 		price = item.price
-	$NumberSelection.open(
+	$AreaShop/NumberSelection.open(
 		self,
 		'item_puchase_confirm',
 		"Purchase $n " + item.name + "? Total cost: $m",
@@ -1537,7 +1545,6 @@ func item_purchase(item, amount):
 
 
 func item_puchase_confirm(value):
-	var active_shop = get_parent().active_shop
 	input_handler.PlaySound("money_spend")
 	if typeof(purchase_item) == TYPE_OBJECT:
 		globals.AddItemToInventory(purchase_item)
@@ -1936,11 +1943,10 @@ func update_guild_buttons(guild_name):
 
 func select_workers():
 	var MANSION = gui_controller.mansion
-	MANSION.mansion_state_set("occupation")
 	MANSION.SlaveListModule.selected_location = selected_location
 	MANSION.SlaveListModule.show_location_characters()
 	MANSION.active_person = MANSION.SlaveListModule.visible_persons[0].get_meta("slave")
 	MANSION.hovered_person = null
 	MANSION.SlaveModule.show_slave_info()
 	MANSION.set_active_person(MANSION.active_person)
-	$NavigationModule.return_to_mansion()
+	$NavigationModule.return_to_mansion("occupation")
