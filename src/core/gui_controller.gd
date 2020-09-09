@@ -96,7 +96,6 @@ func open_exploration(location):
 	current_screen = exploration
 	# exploration.show()
 	exploration.open(location)
-	clock.raise()
 
 
 func show_class_info(classcode, person = null):

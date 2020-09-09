@@ -1,31 +1,31 @@
 [gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://stat_upgrade_panel.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=1]
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/Themes_v2/EXPLORATION/SlaveUpgradesPanel.tres" type="StyleBox" id=3]
-[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=4]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=5]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=6]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=7]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
+[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=4]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=9]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=11]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=12]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=13]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=14]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=15]
-[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=11]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=14]
+[ext_resource path="res://gui_modules/Exploration/Scripts/stat_upgrade_panel.gd" type="Script" id=15]
+[ext_resource path="res://assets/Themes_v2/EXPLORATION/SlaveUpgradesPanel.tres" type="StyleBox" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=17]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=18]
-[ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=19]
 
 [node name="CharactersPanel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.54902 )
 margin_right = 800.0
 margin_bottom = 800.0
-custom_styles/panel = ExtResource( 3 )
-script = ExtResource( 1 )
+custom_styles/panel = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,7 +45,7 @@ margin_left = 414.0
 margin_top = 87.0
 margin_right = 793.0
 margin_bottom = 791.0
-custom_styles/panel = ExtResource( 4 )
+custom_styles/panel = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,7 +53,7 @@ __meta__ = {
 [node name="StatInfo" type="Label" parent="StatsPanel"]
 margin_right = 379.0
 margin_bottom = 24.0
-theme = ExtResource( 12 )
+theme = ExtResource( 13 )
 text = "Stat Info"
 align = 1
 valign = 1
@@ -65,7 +65,7 @@ __meta__ = {
 margin_top = 421.0
 margin_right = 379.0
 margin_bottom = 445.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Stat Name"
 align = 1
@@ -78,7 +78,7 @@ __meta__ = {
 margin_top = 461.0
 margin_right = 379.0
 margin_bottom = 501.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Current Value"
 align = 1
@@ -103,8 +103,8 @@ margin_left = 78.8632
 margin_top = 630.0
 margin_right = 286.863
 margin_bottom = 694.0
-theme = ExtResource( 13 )
-custom_fonts/font = ExtResource( 8 )
+theme = ExtResource( 12 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
@@ -137,9 +137,9 @@ visible = false
 margin_right = 300.0
 margin_bottom = 51.0
 rect_min_size = Vector2( 0, 51 )
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 8 )
 expand = true
 
 [node name="StatName" type="Label" parent="StatsPanel/StatsVBox/Button"]
@@ -168,7 +168,7 @@ margin_right = 229.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 texture_normal = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
+texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 
@@ -189,7 +189,7 @@ margin_left = 2.0
 margin_top = 50.0
 margin_right = 77.0
 margin_bottom = 77.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
@@ -202,7 +202,7 @@ margin_left = 113.0
 margin_top = 579.0
 margin_right = 164.0
 margin_bottom = 630.0
-texture = ExtResource( 11 )
+texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
@@ -211,7 +211,7 @@ margin_left = 51.0
 margin_top = 8.0
 margin_right = 176.0
 margin_bottom = 48.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
@@ -221,7 +221,7 @@ margin_left = 9.0
 margin_top = 87.0
 margin_right = 407.0
 margin_bottom = 111.0
-theme = ExtResource( 12 )
+theme = ExtResource( 13 )
 text = "ChooseCharcter"
 align = 1
 valign = 1
@@ -242,7 +242,7 @@ margin_left = 19.0
 margin_top = 152.0
 margin_right = 400.0
 margin_bottom = 766.0
-theme = ExtResource( 18 )
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -270,15 +270,15 @@ rect_min_size = Vector2( 300, 51 )
 theme = ExtResource( 2 )
 toggle_mode = true
 texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 15 )
-texture_hover = ExtResource( 16 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 18 )
 
 [node name="CharacterName" type="Label" parent="CharList/ScrollContainer/CharactersVBox/Button"]
 margin_left = 54.0
 margin_top = 6.0
 margin_right = 336.0
 margin_bottom = 45.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Character Name"
 align = 1
@@ -293,7 +293,7 @@ margin_left = 3.0
 margin_top = 3.0
 margin_right = 48.0
 margin_bottom = 48.0
-texture = ExtResource( 19 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -304,4 +304,4 @@ __meta__ = {
 visible = false
 margin_right = 12.0
 margin_bottom = 614.0
-theme = ExtResource( 18 )
+theme = ExtResource( 3 )

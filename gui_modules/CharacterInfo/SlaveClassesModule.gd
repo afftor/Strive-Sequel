@@ -106,10 +106,7 @@ func class_category(name):
 	open(person, mode)
 
 func sort_classes(first,second):
-	if first.name >= second.name:
-		return false
-	else:
-		return true
+	return first.name >= second.name
 
 func open_class(classcode):
 	if !gui_controller.windows_opened.has($ClassPanel):
@@ -146,17 +143,14 @@ func update_class_buttons(classcode):
 func unlock_class():
 	play_animation()
 	$ClassPanel.hide()
-	get_parent().submodules.clear()
+	gui_controller.windows_opened.clear()
 	yield(get_tree().create_timer(0.2),"timeout")
-	.hide()
 	person.add_stat('base_exp', -person.get_next_class_exp())
 	person.unlock_class(current_class)
 	yield(get_tree().create_timer(0.2),"timeout")
-#	input_handler.ShowSlavePanel(person)
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
 	globals.text_log_add("class", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
-	# input_handler.update_slave_list()
 	get_parent().BodyModule.update()
+	get_parent().set_state("default")
 
 
 func play_animation():

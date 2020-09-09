@@ -3,8 +3,9 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_upper.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower.png" type="Texture" id=3]
-[ext_resource path="res://Button_messagemodule.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui_modules/Animations/Button_messagemodule.tscn" type="PackedScene" id=4]
 [ext_resource path="res://textcontainer_messagemodule.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Message module"

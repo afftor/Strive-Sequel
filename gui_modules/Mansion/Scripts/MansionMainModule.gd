@@ -104,13 +104,13 @@ func _ready():
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
 	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
-	match_state()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
-	set_active_person(ResourceScripts.game_party.get_master())
-	SlaveListModule.rebuild()
-	SlaveListModule.build_locations_list()
-	mansion_state_set("default")
+	if globals.start_new_game:
+		set_active_person(ResourceScripts.game_party.get_master())
+		SlaveListModule.rebuild()
+		SlaveListModule.build_locations_list()
+		mansion_state_set("default")
 #	if globals.start_new_game == true:
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
@@ -152,7 +152,8 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
-	$NavigationModule.build_accessible_locations()
+	gui_controller.nav_panel = $NavigationModule
+	gui_controller.nav_panel.build_accessible_locations()
 	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
 	for node in get_children():
 		if node.get_class() == "Tween":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveSummaryModule.gd" type="Script" id=32]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Summary_Panel.tres" type="StyleBox" id=33]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=34]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=35]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -414,6 +415,7 @@ texture_hover = ExtResource( 16 )
 light_mask = 0
 margin_right = 52.0
 margin_bottom = 32.0
+custom_fonts/font = ExtResource( 35 )
 text = "EXP"
 align = 1
 valign = 1

@@ -263,7 +263,8 @@ func show_location_characters(button = null):
 				for visible_person in visible_persons:
 					visible_person.pressed = false
 				get_parent().active_person = null
-				# get_parent().set_active_person(visible_persons[0].get_meta("slave"))
+				if get_parent().mansion_state in ["default", "skills"]:
+					get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 		if get_parent().mansion_state == "sex":
 			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
 			
