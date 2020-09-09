@@ -102,7 +102,7 @@ func build_location_list(area, container):
 		newbutton.get_node("Label").text = str(calculate_location_characters(capital, newbutton))
 		newbutton.connect('pressed', self, 'select_location', [newbutton])
 		newbutton.name = ResourceScripts.game_world.areas[area.code].capital_name
-		newbutton.set_meta("code", ResourceScripts.game_world.areas[area.code].capital_name)
+		newbutton.set_meta("code", ResourceScripts.game_world.areas[area.code].capital_code)
 		newbutton.get_node("Icon").texture = images.icons.travel_city
 	if container == Column1:
 		#if !get_parent().SlaveListModule.selected_location in ["show_all", "Aliron", "mansion"]:
