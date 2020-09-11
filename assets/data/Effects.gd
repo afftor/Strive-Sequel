@@ -27,7 +27,7 @@ var effect_table = {
 			{type = 'stat_add_p', stat = 'mod_smith', value = -0.15},
 			{type = 'stat_add_p', stat = 'mod_alchemy', value = -0.15},
 			{type = 'stat_add_p', stat = 'mod_tailor', value = -0.15},
-			{type = 'stat_add_p', stat = 'submission_degrade_mod', value = -0.5}
+			{type = 'stat_add', stat = 'submission_degrade_mod', value = -0.5}
 			],
 		buffs = [],
 		sub_effects = [],
@@ -136,7 +136,7 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
-			{type = 'stat_add_p', stat = 'loyalty_degrade_mod', value = 0.5},
+			{type = 'stat_add', stat = 'loyalty_degrade_mod', value = 0.5},
 		],
 		buffs = [],
 		sub_effects = [],

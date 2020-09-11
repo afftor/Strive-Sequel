@@ -51,7 +51,7 @@ var TranslationDict = {
 	MATERIALSTONEDESCRIPT = "Stone comes in many forms and shapes. It can serve as a good building material or even low quality tools. Acquired from mining. ",
 	MATERIALOBSIDIAN = "Obsidian",
 	MATERIALOBSIDIANADJ = "Obsidian",
-	MATERIALOBSIDIANDESCRIPT = "A glossy black stone found near active volcanoes. It can serve as a high quality ornament in many a construction, jewelry, or  Quality tools.  ",
+	MATERIALOBSIDIANDESCRIPT = "A glossy black stone found near active volcanoes. It can serve as a high quality ornament in many a construction, jewelry, or Quality tools.",
 	MATERIALWOOD = "Wood",
 	MATERIALWOODADJ = "Wooden",
 	MATERIALWOODDESCRIPT = "Sturdy wood for general building and furnishing purposes. Acquired from wood cutting. ",
@@ -301,7 +301,7 @@ var TranslationDict = {
 	CRITCHANCE = "Crit. Chance",
 	CRITMOD = "Crit. Mod",
 	LEVELUP = "Level up",
-	MAXLEVEL =  "Maximum Level",
+	MAXLEVEL = "Maximum Level",
 	LEVELUPTEXT = " has just acquired a level. Select a new trait to unlock",
 	TASKCRITCHANCE = "Work Crit Chance",
 	TASKEFFICIENCYTOOL = "Work Efficiency Bonus",
@@ -733,7 +733,7 @@ var TranslationDict = {
 	SLAVEAGEMATURE = "Mature",
 	
 	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their submission decays 50% slower and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
-	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master.  Many folks end up as peons as a way to pay their, or their family’s debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
+	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family’s debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 
 	SLAVETYPE = "Type",
 	
@@ -810,7 +810,7 @@ var TranslationDict = {
 	
 	STATFATIGUE = "Fatigue",
 	STATEXHAUSTION = "Exhaustion",
-	STATFATIGUEDESCRIPT = "Mental fatigue of the character. Fatigue reduces productivity. Restores when focusing on Joy.",  
+	STATFATIGUEDESCRIPT = "Mental fatigue of the character. Fatigue reduces productivity. Restores when focusing on Joy.",
 	STATEXHAUSTIONDESCRIPT = "Physical exhaustion of the character. Reduces productivity and may cause other health issues. Restores while sleeping. ",
 	
 	
@@ -850,7 +850,7 @@ var TranslationDict = {
 	STATAUTHORITY = "Authority",
 	STATAUTHORITYDESCRIPT = "Authority represents a character's respect for you. Authority is built by punishments and dates, and determines how quickly Loyalty is built. Low Authority will prevent character from building Loyalty. Low authority and obedience makes possible for character to attempt escape.",
 	STATLUST = "Lust",
-	STATLUSTDESCRIPT =  "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when utilized correctly.",
+	STATLUSTDESCRIPT = "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when utilized correctly.",
 	STATPRODUCTIVITY = "Productivity",
 	STATPRODUCTIVITYDESCRIPT = "Affects all productive tasks. Affected by Fatigue and Exhaustion and can be influenced by special effects. ",
 	STATCONSENT = "Consent",
@@ -982,11 +982,11 @@ var TranslationDict = {
 	
 	RACEHUMANDESCRIPT = "Humans are one of the most common races. Their strength comes in their numbers and flexibility, but they generally are rather weak in magic and have low potential growth. Only a few exceptional humans have shown outstanding feats. \n\nHuman society is rather open to others but also quick to anger and start wars even among themselves. While some might act prudish, especially in public, humans in general are very sexually active and do not stray from other humanoid races. ",
 	RACEELFDESCRIPT = "Elves prefer living in the forest and being close to nature with other naturistic races like Dryads and Fairies. They are adept in magic, but their physical strength is fairly mediocre. \n\nElven society is fairly secluded but isn't above contact and trading with other races. Elves rarely show an active interset in sex outside of their social group, often preferring life-long relationships. Still they are considered very appealing and attractive by other races making them in popular demand as slaves.",
-	RACETRIBALELFDESCRIPT = "A rarer version of elves with distinct dark skin. Tribal elves mostly inhabit southern regions and show numerous differences to their common counterparts. They are less prone to magic but possess stronger bodies.\n\nHowever, their society (often separated into tribes) is more secluded and hostile to outsiders, but they are also more open to sex than normal elves.   ",
+	RACETRIBALELFDESCRIPT = "A rarer version of elves with distinct dark skin. Tribal elves mostly inhabit southern regions and show numerous differences to their common counterparts. They are less prone to magic but possess stronger bodies.\n\nHowever, their society (often separated into tribes) is more secluded and hostile to outsiders, but they are also more open to sex than normal elves.",
 	RACEDARKELFDESCRIPT = "A rare subspecies of elves propagated and trained for combat. Their bluish skin and rare eye colors make them very noticeable and force them to hide their bodies in clothes. Being adepts in both physical techniques and magic, they often happen to be trained assassins, combatants and sellswords. However, they are not able to breed with other species and having no real society they must desperately seek out each other for the purpose of procreation. Due to it, their sexual activity is the highest among all elves. ",
 	RACEORCDESCRIPT = "Orcs are a semi-sapient race of brutes inhabiting many desert and badland regions. Orcs resemble large, greenish humanoids with strong bodies and bad tempers. Despite that, some orcs are rather capable of fitting into normal society to work as simple bodyguards and soldiers. \n\nCommonly orcs form tribes and aren't above killing each other or any stray groups they deem dangerous. They are also rather fond of forcefully using members of other races for sex but aren't capable of interbreeding with them. ",
 	RACEGOBLINDESCRIPT = "Goblins are short humanoids often occupying caves and dungeons. Most goblins are outright hostile to all outsiders and prefer to stick to groups as their individual power is fairly low. A certain number of goblins have abandoned their initial groups and strive to live with other races. Sometimes they even become known adventurers, but more often they are used for crude work, since they are hardly remarkable at anything except for their libido. ",
-	RACEKOBOLDDESCRIPT = "Kobolds are a short, lizard-like race distinctively related to dragons. They generally live underground or in forests and aren't very friendly to other races often seen as pests.  Certain individuals have managed to find acceptance among other racial groups. ",
+	RACEKOBOLDDESCRIPT = "Kobolds are a short, lizard-like race distinctively related to dragons. They generally live underground or in forests and aren't very friendly to other races often seen as pests. Certain individuals have managed to find acceptance among other racial groups. ",
 	RACEGNOMEDESCRIPT = "Gnomes are a rare species of short, intelligent humanoids. Their poor physical strength makes them rather poor workers or fighters. They possess some magical capabilities, a good amount of charisma and have aneasy time connecting with other races. Many gnomes find their place as traders or entertainers, but a good amount are pretty happy to serve in more lewd occupations... assuming they can find the demand. ",
 	RACEDWARFDESCRIPT = "Dwarves are a short, stout humanoid race that prefer to live by a strict set of rules in an enclosed underground society. Dwarves are rather physically strong, can be quick to anger, and are rarely fit for magic tasks. ",
 	RACEDRYADDESCRIPT = "Dryads are a rare species of forest humanoids possessing green skin and being covered in plant matter. They rarely engage in communication with other races and generally prefer to stick to their home. Despite that, they are quite capable of fighting and using magic.",
@@ -1000,9 +1000,9 @@ var TranslationDict = {
 	RACESLIMEDESCRIPT = "Some slimes have managed to evolve beyond their usual state and are capable of holding the soul of living beings. Taking on a humanoid appearance they are even able to develop speech and eventually acquire personality. Their bodies are still capable of unusual properties but they are considerably better at controlling it at will. ",
 	RACELAMIADESCRIPT = "Lamias are easily recognized as from the waist down their body becomes a serpentine tail. They tend to be timid in their interactions rarely showing themselves to the majority of the population. Their population has been severely reduced by hunting and extermination expeditions launched by different races. Lamias are surprisingly intelligent, as the few captured and studied samples have shown.",
 	RACESCYLLADESCRIPT = "Scylla are rather unusual in appearance, possessing a number of tentacle-like appendages they use in the place of legs. They generally prefer damp and aquatic regions. In general, their behavior and capabilities are not much different from lamia. Their appearance is extremely rare to the point of being treated as mere myth or drunken fancy by some.",
-	RACEARACHNADESCRIPT = "Having a humanoid head and torso with the abdomen of a spider it is difficult to mistake an Arachna even though seeing one is rare.  Arachna live in isolation and tend to choose caves and other underground locations as their homes. While not being especially aggressive, they are fearsome hunters and have been reported for rare night attacks on both cattle and humans.",
+	RACEARACHNADESCRIPT = "Having a humanoid head and torso with the abdomen of a spider it is difficult to mistake an Arachna even though seeing one is rare. Arachna live in isolation and tend to choose caves and other underground locations as their homes. While not being especially aggressive, they are fearsome hunters and have been reported for rare night attacks on both cattle and humans.",
 	RACENEREIDDESCRIPT = "Nereid are considered to be another subspecies of the humanoid races, yet they likely split from another race in the distant past. They adapted to an aquatic lifestyle having a fish tail. Nereids are often seen by sailors and fishermen, but they tend to be hesitant in making contact with humans, likely viewing them as a threat.",
-	RACEBEASTKINDESCRIPT = "Beastkin is a term referring to multiple humanoid-animal races usually of mammalian origins. They tend to be covered in fur and have a slightly more bestial body structure.  However their height and behavior is that of a human. Somehow they are able to breed with humans and elves resulting in halfkin hybrids. ",
+	RACEBEASTKINDESCRIPT = "Beastkin is a term referring to multiple humanoid-animal races usually of mammalian origins. They tend to be covered in fur and have a slightly more bestial body structure. However their height and behavior is that of a human. Somehow they are able to breed with humans and elves resulting in halfkin hybrids. ",
 	RACEHALFKINDESCRIPT = "Halfkin are Beastkin's hybrids which keep some of their parent's animalistic features but appear much more human, lacking fur and having a more human body. Halfkins are often rejected by their Beastkin parent's race, but often manage to fit into the society of the other one. Despite that, they still tend to inherit some of their Beastkin race's talents, usually being rather different from normal members of the society they are accepted into. ",
 	RACEBEASTKINCATDESCRIPT = "Cat folk are an unusually social breed of Beastkin having no known settlements of their own and living quite openly in populous towns and cities. They have a great deal of popularity among certain crowds for their lush appearance and lascivious nature.",
 	RACEBEASTKINWOLFDESCRIPT = "Unlike other Beastkin Wolves are not viewed as simple novelties but are treated as the powerful, agile pack hunters they are. Though they rarely show hostility towards outsiders unless threatened, great caution should be taken when dealing with them.",
@@ -1074,7 +1074,7 @@ var TranslationDict = {
 	SKILLHIDE = "Hide",
 	SKILLHIDEDESCRIPT = "Makes user untargetable. Has no effect when is only possible target. Must have no Heavy or Medium Armor pieces.",
 	SKILLBARRIER = "Barrier",
-	SKILLBARRIERDESCRIPT = "Provides a magical shield that absorbs 100 damage.  Shield lasts for 3 turns.",
+	SKILLBARRIERDESCRIPT = "Provides a magical shield that absorbs 100 damage. Shield lasts for 3 turns.",
 	SKILLASSASSINATE = "Assassinate",
 	SKILLASSASSINATEDESCRIPT = "Assaults target for 400% damage. Must be hidden to execute. ",
 	SKILLPROTECT = "Protect",
@@ -1098,7 +1098,7 @@ var TranslationDict = {
 	SKILLSUCCUBUS_LUST_SKILLDESCRIPT = "Utilizes target's Lust for self-benefit. Target must have at least 50 lust.",
 	DIALOGUESUCCUBUS_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana\n3. Gain Obedience and Loyalty\n4. Increase Atk and Matk by 25% for 2 days for 50 lust.",
 	
-	DIALOGUEPUBLICHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. In the following display [targethe]'s being punished as the audience hears [targethis] cries. By the end of it not only has [targetname] learned [targethis] lesson, but the observers have seemed to become  more docile. ",
+	DIALOGUEPUBLICHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. In the following display [targethe]'s being punished as the audience hears [targethis] cries. By the end of it not only has [targetname] learned [targethis] lesson, but the observers have seemed to become more docile. ",
 	DIALOGUEPUBLICSEXHUMILIATIONREPORT = "[name] brings [targetname] to the large room where everyone has been gathered. In the following show [targethe]'s sexual punishment is clearly exposed to the audience. By the end of it not only do the observers get more docile, but they also have shown some hints of excitement. ",
 	
 	DIALOGUEPUBLICEXECUTIONTEXT = "As [targetname] hears about your decision, [he] quickly drops on the floor begging you to spare [targethis] life, promising to do anything and never disappoint you again. ",
@@ -1124,7 +1124,7 @@ var TranslationDict = {
 	DIALOGUEGREATSHACKLESREPORT = "[name] conjures strong magical shackles on [targetname] which will prevent [targethim] from escaping.",
 	DIALOGUEMINDCONTROLREPORT = "[name] dominates [targetname]’s mind with a powerful magic, turning [targethim] into an obedient puppet. ",
 	DIALOGUESTOPMINDCONTROLREPORT = "[name] removes the spell from [targetname] allowing [targethim]independent thought again.",
-	DIALOGUEHARDWORKREPORT = "[name] inspires [targetname] to work  harder.",
+	DIALOGUEHARDWORKREPORT = "[name] inspires [targetname] to work harder.",
 	DIALOGUEDISCIPLINEREPORT = "[name] disciplines [targetname] to work harder.",
 	DIALOGUEAUTHORITYREPORT = "[name] uses [his] authority, making [targetname] work harder.",
 	DIALOGUECONSUME_SOULREPORT = "[name] annihilates [targetname] and consumes [targethis] soul, learning form [targethis] experience. ",
@@ -1534,7 +1534,7 @@ var TranslationDict = {
 	BODYPARTBODY_SHAPEHALFFISHDESCRIPT = "[His] body is [color=yellow]scaly and sleek[/color], possessing fins and webbed digits.",
 	BODYPARTBODY_SHAPEHALFSPIDERDESCRIPT = "The lower portion of [his] body consists of a [color=yellow]spider's legs and abdomen[/color].",
 	BODYPARTBODY_SHAPEHALFHORSEDESCRIPT = "While [his] upper body is human, [his] lower body is [color=yellow]equine[/color] in nature.",
-	BODYPARTBODY_SHAPEHALFSQUIDDESCRIPT =  "The lower portion of [his] body consists of a [color=yellow]number of tentacle appendages[/color], similar to those of an octopus.",
+	BODYPARTBODY_SHAPEHALFSQUIDDESCRIPT = "The lower portion of [his] body consists of a [color=yellow]number of tentacle appendages[/color], similar to those of an octopus.",
 	
 	BODYPARTHAIR_LENGTHBALDDESCRIPT = "[He] [color=aqua]lacks[/color] any visible hair on [his] head.",
 	
@@ -1576,7 +1576,7 @@ var TranslationDict = {
 	
 	BODYPARTSKINPALEDESCRIPT = "[His] skin is a [color=aqua]pale[/color] white.",
 	BODYPARTSKINGREYDESCRIPT = "[His] skin is a stone [color=aqua]grey[/color].",
-	BODYPARTSKINFAIRDESCRIPT =  "[His] skin is healthy and [color=aqua]fair[/color] color.",
+	BODYPARTSKINFAIRDESCRIPT = "[His] skin is healthy and [color=aqua]fair[/color] color.",
 	BODYPARTSKINOLIVEDESCRIPT = "[His] skin is of an unusual [color=aqua]olive[/color] tone.",
 	BODYPARTSKINTANDESCRIPT = "[His] skin is a [color=aqua]tanned[/color] bronze color.",
 	BODYPARTSKINBROWNDESCRIPT = "[His] skin is a mixed [color=aqua]brown[/color] color.",
@@ -1706,17 +1706,17 @@ var TranslationDict = {
 	SEXTRAITDISLIKE_BDSM = "Dislike Harsh Sex",
 	SEXTRAITDISLIKE_TAIL = "Dislike Perverted Actions",
 	
-	SEXTRAITDISLIKE_PETTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_FINGERINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_TITSDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_ORALDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_MISSIONARYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_DOGGYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_SITTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_RIDINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_GROUPDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_BDSMDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
-	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions  are lowered for [him]. ",
+	SEXTRAITDISLIKE_PETTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_FINGERINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_TITSDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_ORALDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_MISSIONARYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_DOGGYDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_SITTINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_RIDINGDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_GROUPDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_BDSMDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
+	SEXTRAITDISLIKE_TAILDESCRIPT = "[name] expresses dislike for certain lewd actions. [his] consent and the effect of received actions are lowered for [him]. ",
 	
 	
 	
@@ -1837,7 +1837,7 @@ var TranslationDict = {
 	DIALOGUEEVENTTRAPFAILURE = "[center]{color=red|Failure!}[/center]\n[name] has disarmed the trap in a rough manner, suffering damage in the process.",
 	DIALOGUEACTIVATETRAP = "Deactivate Trap",
 	
-	DIALOGUEDUNGEONCHEST = "You find a locked chest.  ",
+	DIALOGUEDUNGEONCHEST = "You find a locked chest. ",
 	DIALOGUEDUNGEONARMORY = "You find a locked armory, which might have something useful in it.",
 	DIALOGUEEVENTDUNGEONLOOT = "After making into the last room, you find the main storage with the most prized possessions. ",
 	
@@ -1950,7 +1950,7 @@ var TranslationDict = {
 	SWITCHSTATS = "Individual Stats",
 	SWITCHLIST = "Character List",
 	
-	SCENEDAISY_MEET_TEXT = "As you walk around the town, you hear some arguing. A large man yells at a crying young halfkin bunny girl sitting near some pottery shards.\n\n- You clumsy dumbass! This was the third time. I'm selling you to the brothel now,  At least this way you will be useful at something.\n\nThe girl does not seem to be suited for manual labor, but is fairly appealing. ",
+	SCENEDAISY_MEET_TEXT = "As you walk around the town, you hear some arguing. A large man yells at a crying young halfkin bunny girl sitting near some pottery shards.\n\n- You clumsy dumbass! This was the third time. I'm selling you to the brothel now, At least this way you will be useful at something.\n\nThe girl does not seem to be suited for manual labor, but is fairly appealing. ",
 	SCENEDAISY_MEET_OPTION1 = "Offer to purchase the girl",
 	SCENEDAISY_MEET_OPTION2 = "Demand the girl as your kinsman",
 	SCENEDAISY_MEET_OPTION3 = "Ignore",
@@ -2078,7 +2078,7 @@ var TranslationDict = {
 	STARTINGDIALOGUE2REPLY3 = "What are the Guilds?",
 	STARTINGDIALOGUE2REPLY4 = "I'm fine",
 	STARTINGDIALOGUE3_1 = "— Certainly not by yourself. As a landowner you hold the right to employ others to work for you. I'd recommend sticking to one of the city's guilds at first. Each has its own trades and benefits so you can choose what you like. They pay well if you manage to complete their tasks. You will also be able to hire more people there, or you can try your luck at the slave market.",
-	STARTINGDIALOGUE3_2 = "— Oh, you don't know? Twelve years ago, after the revolution happened and the Monarchy was overthrown, all of the land became public property to buy or sell. Since nobles no longer held exclusive right of land possession, lots of it was sold to the rich. Now the Guilds hold the greatest amount of wealth and political power as they are closely tied with the land owners.",
+	STARTINGDIALOGUE3_2 = "— Oh, you don't know? Twelve years ago, after the revolution happened and the Monarchy was overthrown, all of the land became public property to buy or sell. Since nobles no longer held exclusive right of land possession, lots of it was sold to the rich. Now the Guilds hold the greatest amount of wealth and political power as they are closely tied with the landowners.",
 	STARTINGDIALOGUE3_3 = "— The Guilds are the establishments which provide connections for business partners, buyers, requests and so on. There are Fighters, Mages, Workers and Servants, each specialize in different aspects. You can learn more once you go meet them.",
 	STARTINGDIALOGUE3REPLY1 = "How do I even make this much money?",
 	STARTINGDIALOGUE3REPLY2 = "Is there something special about owning the land?",
@@ -2213,9 +2213,9 @@ var TranslationDict = {
 	ELECTIONSTART5_2 = "— My pleasure. We'll hope for your success.",
 	
 	FIGHTERSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
-	WORKERSREQUESTELECTIONSUPPORT = "I want your support in the  Mayor Election",
-	SERVANTSREQUESTELECTIONSUPPORT = "I want your support in the  Mayor Election",
-	MAGESREQUESTELECTIONSUPPORT = "I want your support in the  Mayor Election",
+	WORKERSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
+	SERVANTSREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
+	MAGESREQUESTELECTIONSUPPORT = "I want your support in the Mayor Election",
 	
 	SERVANTSELECTIONCONFIRM = "— Oh, you've completed our requests? Nice work! With this I'll be able to convince others this is a good idea. Return to me once you have support from two other guilds.",
 	
@@ -2332,7 +2332,7 @@ var TranslationDict = {
 	WORKERSELECTIONCONTINUE1REPLY2 = "He has wasted the money on a hooker",
 	WORKERSELECTIONCONTINUE1REPLY3 = "I need some more time",
 	WORKERSELECTIONCONTINUE2_1 = "— Huh… I see. I’ll find another courier then. Thank you for your time. You can report back to Sigmund.",
-	WORKERSELECTIONCONTINUE2_2 = "— ...Is that so? I guess you have no reason to lie. We will look into it. You can tell Sigmund, the payment will be delivered today.",      
+	WORKERSELECTIONCONTINUE2_2 = "— ...Is that so? I guess you have no reason to lie. We will look into it. You can tell Sigmund, the payment will be delivered today.",
 	WORKERSELECTIONINITIATE5 = "— Is dat so? Alright then. Thanks for helping out. While ya were out I made sure there’s no objections among the guild. Ya have our support for your election thingie.",
 	WORKERSELECTIONINITIATE5REPLY1 = "It's about time",
 	WORKERSELECTIONINITIATE5REPLY2 = "Thank you",

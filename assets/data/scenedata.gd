@@ -1375,7 +1375,7 @@ var quests = {
 	election_global_quest = {
 		code = 'election_global_quest',
 		stages = {
-			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "According to City's electon process, any land owner is capable of becoming a mayor, as long as they are supported by the Guilds. Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
+			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "According to City's electon process, any landowner is capable of becoming a mayor, as long as they are supported by the Guilds. Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
 			stage2 = {code = 'stage2', name = 'Story Complete', descript = "You've beaten current game's story. Thank you for playing! "}
 		},
 	
