@@ -41,8 +41,8 @@ var backgrounds = {
 	servants_guild = load("res://assets/images/backgrounds/servants_guild.png"),
 	workers_guild = load("res://assets/images/backgrounds/workers_guild.png"),
 	#events
-	anastasia_event1 = load("res://assets/images/backgrounds/anastasia_event.png"),
-	
+	anastasia_event_alive = load("res://assets/images/backgrounds/anastasia_event.png"),
+	anastasia_event_dead = load("res://assets/images/backgrounds/anastasia_event2.png"),
 	
 	}
 

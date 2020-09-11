@@ -273,6 +273,9 @@ var rewardsdict
 
 #to check next functions
 func victory():
+	$Rewards.show()
+	$Rewards/AnimationPlayer.play("Victory")
+	# yield($Rewards/AnimationPlayer, "animation_finished")
 	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -286,9 +289,9 @@ func victory():
 		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 	
-	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
-	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+#	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
+#	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.start()
 	
 	input_handler.PlaySound("battle_victory")
 	

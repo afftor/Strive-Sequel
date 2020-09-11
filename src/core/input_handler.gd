@@ -77,6 +77,7 @@ enum {
 	NODE_TUTORIAL,
 	NODE_LOOTTABLE,
 	NODE_DIALOGUE,
+	NODE_DIALOGUE_T2,
 	NODE_INVENTORY,
 	NODE_POPUP,
 	NODE_CONFIRMPANEL,
@@ -671,9 +672,22 @@ func calculate_number_from_string_array(arr, caster, target):
 	return endvalue
 
 func dialogue_option_selected(option):
-	get_spec_node(self.NODE_DIALOGUE).previous_text = tr(option)
-	if !ResourceScripts.game_progress.selected_dialogues.has(option):
-		ResourceScripts.game_progress.selected_dialogues.append(option)
+	if option.has("change_dialogue_type"):
+		gui_controller.dialogue_window_type = option.change_dialogue_type
+		gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+		match gui_controller.dialogue_window_type:
+			1:
+				gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
+				get_spec_node(self.NODE_DIALOGUE_T2).hide()
+			2:
+				gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
+				get_spec_node(self.NODE_DIALOGUE).hide()
+		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
+	else:
+		gui_controller.dialogue_txt = ''
+	gui_controller.dialogue.previous_text = tr(option.text)
+	if !ResourceScripts.game_progress.selected_dialogues.has(option.text):
+		ResourceScripts.game_progress.selected_dialogues.append(option.text)
 
 var dialogue_array = []
 var event_is_active = false
@@ -702,7 +716,13 @@ func start_event_attempt():
 func start_event(code, type, args):
 	event_is_active = true
 	var data = scenedata.scenedict[code].duplicate(true)
-	var scene = get_spec_node(self.NODE_DIALOGUE) #get_dialogue_node()
+	var scene
+	match gui_controller.dialogue_window_type:
+		1:
+			scene = get_spec_node(self.NODE_DIALOGUE)
+		2:
+			scene = get_spec_node(self.NODE_DIALOGUE_T2)
+	gui_controller.dialogue = scene
 #	if data.has('opp_characters'):
 #		for i in data.opp_characters:
 #			match i.type:

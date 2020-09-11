@@ -1260,8 +1260,9 @@ func start_sex():
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	self.hide()
-	input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).set_current_scene(input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data["INTERACTION"].main_module)
-	input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).gui_data["INTERACTION"].main_module.startsequence([master, person])
+	if gui_controller.sex_panel == null:
+		gui_controller.sex_panel = input_handler.get_spec_node(input_handler.NODE_SEX)
+	gui_controller.sex_panel.startsequence([master, person])
 	
 
 func _on_finishbutton_pressed():

@@ -253,18 +253,18 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH7_ANY", reqs = []},
 		],
 		options = [
-			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
 		],
 	},
 
 	servants_election_finish8 = {
 		image = null,
-		character = 'anastasia',
+		# character = 'anastasia',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH8", reqs = []}
 		],
-		common_effects = [{code = 'set_music', value = 'battle2'}],
+		common_effects = [{code = 'set_music', value = 'battle2'}, {code = 'set_bg', value = 'anastasia_event_alive'}],
 		options = [
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
 		]
@@ -272,13 +272,13 @@ var data = {
 
 	servants_election_finish9 = {
 		image = null,
-		character = 'anastasia',
+		# character = 'anastasia',
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH9", reqs = []}
 		],
 		options = [
-			{code = 'start_finale', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
+			{code = 'start_finale', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 1}
 		]
 	},
 

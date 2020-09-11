@@ -6,7 +6,8 @@ var scenedict = {
 	# mansion = "res://GUI_New/GUIWorld.tscn",
 	loadscreen = "res://src/LoadScreen.tscn",
 	# combat = "res://src/combat/combat.tscn",
-	combat = "res://gui_modules/Universal/Modules/Combat_v2.tscn",
+	# combat = "res://gui_modules/Universal/Modules/Combat_v2.tscn",
+	combat = "res://gui_modules/Universal/Modules/Combat_v2_animated.tscn",
 	itemselect = "res://ItemSelect.tscn",
 	black = "res://assets/sfx/BlackScreen.tscn",
 	close = "res://src/scenes/CloseButton.tscn",
@@ -54,6 +55,7 @@ onready var node_data = {
 	input_handler.NODE_LOOTTABLE : {name = 'lootwindow', mode = 'scene', scene = preload("res://src/scenes/LootWindow.tscn")},
 	# input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/InteractiveMessageModule.tscn")},
 	input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/InteractiveMessageModule_animated.tscn")}, # In progress
+	input_handler.NODE_DIALOGUE_T2 : {name = 'dialogue_t2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/QuestDialogue.tscn")}, 
 	# input_handler.NODE_DIALOGUE : {name = 'dialogue', mode = 'scene', scene = preload("res://src/scenes/InteractiveMessage.tscn")},
 	input_handler.NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://src/main/Inventory.tscn"), calls = 'open'},
 	input_handler.NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},

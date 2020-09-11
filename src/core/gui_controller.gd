@@ -16,6 +16,8 @@ var previous_screen
 var windows_opened = []
 var dialogue
 var is_dialogue_just_started = true
+var dialogue_window_type = 1
+var dialogue_txt = ''
 
 signal screen_changed
 
