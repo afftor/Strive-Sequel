@@ -675,7 +675,7 @@ func test_mode():
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100
 			i.totalreputation += 100
-		ResourceScripts.game_progress.decisions.append("aire_is_dead")
+		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 
 		# character = ResourceScripts.scriptdict.class_slave.new()
 		# character.create('Fairy', 'futa', 'random')

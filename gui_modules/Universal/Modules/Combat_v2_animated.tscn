@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
@@ -57,7 +57,6 @@
 [ext_resource path="res://gui_modules/Animations/Label2_victory.tscn" type="PackedScene" id=55]
 [ext_resource path="res://gui_modules/Animations/button_char_victory.tscn" type="PackedScene" id=56]
 [ext_resource path="res://gui_modules/Animations/button_victory_collect.tscn" type="PackedScene" id=57]
-[ext_resource path="res://gui_modules/Animations/gold_victory.tscn" type="PackedScene" id=58]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/line_blue.png" type="Texture" id=59]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=60]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=61]
@@ -118,7 +117,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=9]
 resource_name = "Victory"
-length = 5.0
+length = 2.5
 step = 0.0333333
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect2:rect_scale")
@@ -209,7 +208,7 @@ tracks/7/path = NodePath("Button2:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/keys = {
 "times": PoolRealArray( 0, 1.56667, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -221,7 +220,7 @@ tracks/8/path = NodePath("Button:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/keys = {
 "times": PoolRealArray( 0, 1.56667, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -257,7 +256,7 @@ tracks/11/path = NodePath("TextureRect3:self_modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
-tracks/11/enabled = false
+tracks/11/enabled = true
 tracks/11/keys = {
 "times": PoolRealArray( 0, 0.833333, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -293,7 +292,7 @@ tracks/14/path = NodePath("TextureRect8:self_modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
 "times": PoolRealArray( 0, 4.03333, 5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -1163,8 +1162,28 @@ __meta__ = {
 "_edit_vertical_guides_": [ 537.963, 557.036, 977.382 ]
 }
 
+[node name="TextureRect2" type="TextureRect" parent="Rewards"]
+margin_left = 520.245
+margin_top = 80.3575
+margin_right = 1400.25
+margin_bottom = 325.357
+rect_pivot_offset = Vector2( 439.807, 89.3837 )
+texture = ExtResource( 51 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Rewards/TextureRect2"]
+self_modulate = Color( 0, 0, 0, 0.823529 )
+show_behind_parent = true
+margin_right = 881.0
+margin_bottom = 185.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect3" type="TextureRect" parent="Rewards"]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 520.982
 margin_top = 265.346
 margin_right = 1400.98
@@ -1174,14 +1193,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect2" type="TextureRect" parent="Rewards"]
-margin_left = 520.245
-margin_top = 80.3575
-margin_right = 1400.25
-margin_bottom = 325.357
-rect_pivot_offset = Vector2( 439.807, 89.3837 )
-texture = ExtResource( 51 )
-stretch_mode = 6
+[node name="Panel2" type="Panel" parent="Rewards/TextureRect3"]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.823529 )
+show_behind_parent = true
+margin_left = 1.0
+margin_right = 882.0
+margin_bottom = 743.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1249,26 +1267,46 @@ margin_top = 904.459
 margin_right = 1105.58
 margin_bottom = 976.459
 
-[node name="gold" parent="Rewards" instance=ExtResource( 58 )]
+[node name="gold" type="TextureRect" parent="Rewards"]
 margin_left = 654.382
 margin_top = 773.073
 margin_right = 736.382
 margin_bottom = 877.073
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Rewards/gold"]
+margin_left = 78.85
+margin_top = 38.7952
+margin_right = 121.85
+margin_bottom = 70.7952
+custom_fonts/font = ExtResource( 23 )
+text = "+50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" parent="Rewards" instance=ExtResource( 56 )]
+visible = false
 margin_left = 975.596
 margin_top = 360.796
 margin_right = 1371.6
 margin_bottom = 412.796
 
 [node name="Button2" parent="Rewards" instance=ExtResource( 56 )]
+visible = false
 margin_left = 539.837
 margin_top = 360.796
 margin_right = 935.837
 margin_bottom = 412.796
 
 [node name="TextureRect8" type="TextureRect" parent="Rewards"]
-self_modulate = Color( 1, 1, 1, 0 )
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 60 )
