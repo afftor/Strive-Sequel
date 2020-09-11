@@ -104,6 +104,7 @@ margin_right = 1420.0
 margin_bottom = 1065.0
 
 [node name="MansionLocationsModule" parent="." instance=ExtResource( 19 )]
+visible = false
 margin_left = 320.0
 margin_top = 85.0
 margin_right = -500.0
@@ -117,6 +118,7 @@ margin_right = 1420.0
 margin_bottom = 1065.0
 
 [node name="MansionTaskInfoModule" parent="." instance=ExtResource( 17 )]
+visible = false
 margin_left = 15.0
 margin_top = 253.0
 margin_right = 305.0
@@ -137,6 +139,7 @@ margin_right = 1420.0
 margin_bottom = 1063.0
 
 [node name="MansionSexSelectionModule" parent="." instance=ExtResource( 18 )]
+visible = false
 margin_left = 320.0
 margin_top = 948.0
 margin_right = -500.0

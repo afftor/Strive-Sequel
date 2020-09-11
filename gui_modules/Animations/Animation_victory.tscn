@@ -14,11 +14,6 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=14]
 
-
-
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Victory"
 length = 5.0
@@ -160,7 +155,7 @@ tracks/11/path = NodePath("TextureRect3:self_modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
-tracks/11/enabled = true
+tracks/11/enabled = false
 tracks/11/keys = {
 "times": PoolRealArray( 0, 0.833333, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -232,6 +227,7 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 520.982
 margin_top = 265.346
 margin_right = 1400.98
@@ -336,6 +332,7 @@ margin_bottom = 412.796
 
 [node name="TextureRect8" type="TextureRect" parent="."]
 visible = false
+self_modulate = Color( 1, 1, 1, 0.103447 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 14 )

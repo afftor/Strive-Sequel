@@ -7,13 +7,27 @@ var hold_selection = false #pause for scene to load
 var previous_dialogue_option = 0
 var previous_text = ''
 
+func _ready():
+	if get_node_or_null("Background/HideButton"):
+		get_node("Background/HideButton").connect("pressed", self, "hide_dialogue")
+		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
+		
+func hide_dialogue(action = "hide"):
+	for node in self.get_children():
+		if !node.name in ["ShowPanel", "EventBackground"]:
+			node.visible = action != "hide"
+	get_node("ShowPanel").visible = action == "hide"
+
 
 func open(scene, not_save = false):
+	input_handler.PlaySound("speech")
+	get_tree().get_root().set_disable_input(true)
 	if scene.has("variations"):
 		for i in scene.variations:
 			if globals.checkreqs(i.reqs):
 				open(i)
 				break
+		get_tree().get_root().set_disable_input(false)
 		return
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
@@ -138,7 +152,7 @@ func open(scene, not_save = false):
 		if newbutton.get_node("Label").get_v_scroll().is_visible():
 			newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
 		newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
-		newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i.text])
+		newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i])
 		
 		if i.has('select_person'):
 			newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
@@ -189,7 +203,6 @@ func open(scene, not_save = false):
 		get_tree().get_root().get_node("lootwindow").raise()
 
 func show_buttons():
-	get_tree().get_root().set_disable_input(true)
 	for button in $ScrollContainer/VBoxContainer.get_children():
 		if button.name == "Button":
 			continue

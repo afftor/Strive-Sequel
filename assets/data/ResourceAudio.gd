@@ -92,9 +92,11 @@ var sounds = {
 	
 	transition_sound = load("res://assets/sounds/sounds/magic1.wav"),
 	
-	combat_defeat = load("res://assets/sounds/music/defeated.wav"),
-	class_aquired = load("res://assets/sounds/music/class_aquired.wav"),
-	quest_completed = load("res://assets/sounds/music/task_completed.wav"),
-	quest_aquired = load("res://assets/sounds/music/task_aquired.wav"),
+	combat_defeat = load("res://assets/sounds/sounds/defeated.wav"),
+	class_aquired = load("res://assets/sounds/sounds/class_aquired.wav"),
+	quest_completed = load("res://assets/sounds/sounds/task_completed.wav"),
+	quest_aquired = load("res://assets/sounds/sounds/task_aquired.wav"),
 	battle_start = load("res://assets/sounds/sounds/battle_start.wav"),
+	battle_victory = load("res://assets/sounds/sounds/victory_new.wav"),
+	speech = load("res://assets/sounds/sounds/speech_screen.wav"),
 }

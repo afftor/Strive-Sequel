@@ -171,7 +171,7 @@ func match_state():
 			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 620))
 			# SlaveListModule.get_node("Background").set_size(Vector2(1100, 845))
 			$MansionSkillsModule.show()
-			if mansion_state != mansion_prev_state:
+			if mansion_state != mansion_prev_state && mansion_prev_state != "skill":
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"skill":
@@ -431,7 +431,7 @@ func test_mode():
 
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('Fairy', 'futa', 'random')
+		character.create('Fairy', 'male', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -495,7 +495,7 @@ func test_mode():
 		#character.get_stat('pregnancy').duration = 2
 
 		character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('HalfkinCat', 'male', 'random')
+		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
 		character.statlist.negative_sex_traits = ['dislike_missionary']
@@ -527,7 +527,7 @@ func test_mode():
 		var character2 = ResourceScripts.scriptdict.class_slave.new()
 		character.set_stat('food_love', "meat")
 		character.set_stat('food_hate', ["grain"])
-		character2.create('HalfkinCat', 'random', 'random')
+		character2.create('Elf', 'random', 'random')
 		character2.set_stat('charm', 0)
 		character2.set_stat('physics', 0)
 		character2.set_stat('wits', 0)
@@ -661,6 +661,7 @@ func test_mode():
 		ResourceScripts.game_progress.active_quests.append(
 			{code = 'election_global_quest', stage = 'stage1'}
 		)
+		# input_handler.interactive_message("servants_election_finish1", '',{})
 		
 		character.mp = 10
 		var tmp = {}
@@ -672,8 +673,9 @@ func test_mode():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.reputation = 500
-			i.totalreputation += 500
+			i.reputation = 100
+			i.totalreputation += 100
+		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 
 		# character = ResourceScripts.scriptdict.class_slave.new()
 		# character.create('Fairy', 'futa', 'random')

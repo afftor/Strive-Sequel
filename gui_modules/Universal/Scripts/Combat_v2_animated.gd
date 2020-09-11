@@ -273,6 +273,9 @@ var rewardsdict
 
 #to check next functions
 func victory():
+	get_tree().get_root().set_disable_input(true)
+	$Rewards.show()
+	$Rewards/AnimationPlayer.play("Victory")
 	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -286,9 +289,9 @@ func victory():
 		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 	
-	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
-	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
+#	var tween = input_handler.GetTweenNode($Rewards/victorylabel)
+#	tween.interpolate_property($Rewards/victorylabel,'rect_scale', Vector2(1.5,1.5), Vector2(1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+#	tween.start()
 	
 	input_handler.PlaySound("battle_victory")
 	
@@ -349,6 +352,7 @@ func victory():
 		var gained_exp = exp_per_character * tchar.get_stat('exp_mod')
 		tchar.add_stat('base_exp', gained_exp)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
+		newbutton.modulate.a = 0
 		newbutton.get_node("Icon").texture = tchar.get_icon()
 		newbutton.get_node("name").text = tchar.get_short_name()
 		newbutton.get_node("amount").text = str(gained_exp)
@@ -382,14 +386,15 @@ func victory():
 #		subtween.start()
 	#$Rewards/ScrollContainer/HBoxContainer.move_child($Rewards/ScrollContainer/HBoxContainer/Button, $Rewards/ScrollContainer/HBoxContainer.get_children().size())
 	
-	$Rewards.visible = true
-	$Rewards.modulate.a = 0
-	ResourceScripts.core_animations.UnfadeAnimation($Rewards)
+	# $Rewards.visible = true
+	# $Rewards.modulate.a = 0
+	# ResourceScripts.core_animations.UnfadeAnimation($Rewards)
 	$Rewards.set_meta("result", 'victory')
 	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.modulate.a = 0
 		#newbutton.hide()
 		newbutton.get_node("Icon").texture = item.icon
 		newbutton.get_node("name").text = item.name
@@ -398,7 +403,6 @@ func victory():
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
 		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
-		#newnode.hide()
 		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
 		globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
@@ -427,6 +431,19 @@ func victory():
 	for i in playergroup.values():
 		array.append(i)
 	input_handler.get_person_for_chat(array, 'combat_won')
+	yield($Rewards/AnimationPlayer, "animation_finished")
+	show_buttons($Rewards/ScrollContainer/HBoxContainer)
+	show_buttons($Rewards/ScrollContainer2/HBoxContainer)
+	get_tree().get_root().set_disable_input(false)
+
+
+func show_buttons(container):
+	for button in container.get_children():
+		if button.name == "Button":
+			continue
+		ResourceScripts.core_animations.UnfadeAnimation(button, 0.3)
+		yield(get_tree().create_timer(0.3), "timeout")
+		button.set("modulate", Color(1, 1, 1, 1))
 
 func defeat():
 #	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
