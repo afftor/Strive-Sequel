@@ -1890,7 +1890,7 @@ var effect_table = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'skill',
-			atomic = [{type = 'stat_mul', value = 0.75}]
+			atomic = [{type = 'stat_mul', stat = 'value', value = 0.75}]
 		}],
 		buffs = []
 	},
@@ -1907,7 +1907,7 @@ var effect_table = {
 		sub_effects = [{
 			type = 'oneshot',
 			target = 'skill',
-			atomic = [{type = 'stat_mul', value = 0.85}]
+			atomic = [{type = 'stat_mul',  stat = 'value', value = 0.85}]
 		}],
 		buffs = []
 	},
