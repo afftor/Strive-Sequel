@@ -377,8 +377,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	#Add extra stats for harder characters
 	while difficulty > 1:
 		var array = []
-		if randf() >= 0.75:
-			array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'sexuals_factor', 'charm_factor']
+		if randf() >= 0.8:
+			array = ['physics_factor', 'magic_factor', 'wits_factor', 'timid_factor', 'tame_factor', 'sexuals_factor', 'charm_factor']
 		else:
 			match slaveclass:
 				'combat':

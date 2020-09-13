@@ -189,24 +189,6 @@ func make_slave_for_guild(guild):
 	newslave.set_stat('hire_scene', 'hire')
 	newslave.is_known_to_player = true
 
-#func make_slave_for_guild(guild):
-#	var newslave = ResourceScripts.scriptdict.class_slave.new()
-#	var race = input_handler.weightedrandom(guild.races)
-##	if globals.globalsettings.guilds_any_race:
-##		race = 'random'
-#	var slaveclass = null
-#	if guild.preferences.size() > 0:
-#		slaveclass = guild.preferences[randi()%guild.preferences.size()]
-#	newslave.generate_random_character_from_data(race, slaveclass, guild.difficulty + round(randf())-0.3)
-#	var char_class = input_handler.weightedrandom(guild.chartype)
-#	newslave.set_slave_category(char_class)
-#	for i in guild.charbonus:
-#		newslave.add_stat(i, round(rand_range(guild.charbonus[i][0], guild.charbonus[i][1])))
-#	guild.slaves.append(newslave.id)
-#	newslave.set_stat('is_hirable', true)
-#	newslave.set_stat('hire_scene', 'hire')
-#	newslave.is_known_to_player = true
-##	print ("%s - %d" % [newslave.get_stat('race'), newslave.get_stat('hpmax')])
 
 
 func make_quest_for_guild(guilddatatemplate, difficulty):

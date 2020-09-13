@@ -90,7 +90,10 @@ var scenes = {
 	wolves_skirmish = load("res://assets/images/scenes/wolves_skirmish.png"),
 	fairy = load("res://assets/images/scenes/fairy.png"),
 	avermik = load("res://assets/images/scenes/avermik.png"),
-	
+	armory = load("res://assets/images/scenes/armory.png"),
+	goblin_encounter = load("res://assets/images/scenes/goblin_encounter.png"),
+	fairy_encounter = load("res://assets/images/scenes/fairy_encounter.png"),
+	chest_mimic = load("res://assets/images/scenes/chest_mimic.png"),
 }
 
 var sprites = {

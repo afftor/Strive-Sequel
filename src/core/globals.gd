@@ -1155,6 +1155,10 @@ func common_effects(effects):
 					gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds.anastasia_event_dead
 				else:
 					gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds.anastasia_event_alive
+			'unlock_class':
+				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
+					ResourceScripts.game_progress.unlocked_classes.append(i.name)
+
 
 func checkreqs(array):
 	var check = true
@@ -1267,3 +1271,5 @@ func valuecheck(dict):
 				if i.check_location(dict.location) && i.checkreqs(dict.reqs) == true && !i.has_profession('master'):
 					counter += 1
 			return counter >= dict.value
+		'class_unlocked':
+			return ResourceScripts.game_progress.if_class_unlocked(dict.operant, dict.class, dict.check)

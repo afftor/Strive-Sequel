@@ -229,7 +229,7 @@ func work_tick():
 		parent.food.food_consumption_rations = true
 
 	if ['smith','alchemy','tailor','cooking'].has(currenttask.product) && currenttask.code != 'building':
-		if ResourceScripts.game_res.craftinglists[currenttask.product].size() <= 0:		
+		if ResourceScripts.game_res.craftinglists[currenttask.product].size() <= 0:
 			if currenttask.messages.has('notask') == false:
 				globals.text_log_add('crafting', parent.get_short_name() + ": No craft task for " + currenttask.product.capitalize() + ". ")
 				currenttask.messages.append('notask')

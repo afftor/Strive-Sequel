@@ -124,7 +124,7 @@ var scenedict = {
 	chest_is_mimic_trapped = {
 		text = 'DIALOGUECHESTMIMICTRAPPED',
 		tags = ['active_character_translate','linked_event'], 
-		image = 'chest',
+		image = 'chest_mimic',
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
@@ -135,7 +135,7 @@ var scenedict = {
 	chest_is_erotic_mimic_trapped = {
 		text = 'DIALOGUECHESTEROTICMIMICTRAPPED',
 		tags = ['active_character_translate','linked_event'], 
-		image = 'chest',
+		image = 'chestchest_mimic',
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
@@ -146,7 +146,7 @@ var scenedict = {
 	chest_is_mimic_leave = {
 		text = 'DIALOGUECHESTMIMICTRAPPEDLEAVE',
 		tags = ['active_character_translate'], 
-		image = 'chest',
+		image = 'chest_mimic',
 		default_event_type = 'character_event',
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
@@ -155,7 +155,7 @@ var scenedict = {
 	chest_is_erotic_mimic_leave = {
 		text = 'DIALOGUECHESTMIMICEROTICTRAPPEDLEAVE',
 		tags = ['active_character_translate'], 
-		image = 'chest',
+		image = 'chest_mimic',
 		default_event_type = 'character_event',
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
@@ -165,7 +165,7 @@ var scenedict = {
 	dungeon_find_armory_easy = {
 		text = tr("DIALOGUEDUNGEONARMORY"), 
 		tags = ['locked_chest'],
-		image = 'trap', 
+		image = 'armory', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
@@ -174,7 +174,7 @@ var scenedict = {
 	dungeon_find_armory_medium = {
 		text = tr("DIALOGUEDUNGEONARMORY"), 
 		tags = ['locked_chest'],
-		image = 'trap', 
+		image = 'armory', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_armory_weapon', 1],['medium_armory_armor', 1]]}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
@@ -380,7 +380,7 @@ var scenedict = {
 	event_goblin_friendly = {text = tr("DIALOGUEEVENTGOBLINFRIENDLY"), 
 	tags = ['linked_event','active_character_translate'],
 	default_event_type = "character_event",
-	image = '', 
+	image = 'goblin_encounter', 
 	
 	common_effects = [
 	{code = 'make_scene_character', 
@@ -411,7 +411,7 @@ var scenedict = {
 			text = 'DIALOGUEEVENTGOBLINRECRUITSUCCESS',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 50},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
 			tags = ['active_character_translate','scene_character_translate'],
-			image = '',
+			image = 'goblin_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
@@ -419,7 +419,7 @@ var scenedict = {
 			},
 			{reqs = [],
 			text = "DIALOGUEEVENTGOBLINRECRUITFAILURE",
-			image = '',
+			image = 'goblin_encounter',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['active_character_translate','scene_character_translate'],
 			options = [
@@ -436,14 +436,14 @@ var scenedict = {
 			text = 'DIALOGUEEVENTGOBLINBRINGTOLEADERSUCCESS',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'progress_active_location'}],
 			tags = ['active_character_translate','scene_character_translate'],
-			image = '',
+			image = 'goblin_encounter',
 			options = [
 				{code = 'leave', reqs = [], text = tr("DIALOGUECLOSE")}
 				]
 			},
 			{reqs = [],
 			text = "DIALOGUEEVENTGOBLINBRINGTOLEADERFAILURE",
-			image = '',
+			image = 'goblin_encounter',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['active_character_translate','scene_character_translate'],
 			options = [
@@ -455,7 +455,7 @@ var scenedict = {
 	},
 	event_goblin_capture = {
 	text = "DIALOGUEEVENTGOBLINCAPTUREREPLY",
-	image = '',
+	image = 'goblin_encounter',
 	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
@@ -465,7 +465,7 @@ var scenedict = {
 	},
 	event_goblin_kill = {
 	text = "DIALOGUEEVENTGOBLINKILLREPLY",
-	image = '',
+	image = 'goblin_encounter',
 	tags = ['active_character_translate'],
 	options = [
 		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
@@ -473,7 +473,7 @@ var scenedict = {
 	},
 	event_goblin_leave = {
 	text = "DIALOGUEEVENTGOBLINLEAVEREPLY",
-	image = '',
+	image = 'goblin_encounter',
 	tags = ['active_character_translate'],
 	options = [
 		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
@@ -483,7 +483,7 @@ var scenedict = {
 	event_fairy_friendly = {text = tr("DIALOGUEEVENTGOBLINFRIENDLY"), 
 	tags = ['linked_event','active_character_translate'],
 	default_event_type = "character_event",
-	image = 'fairy', 
+	image = 'fairy_encounter', 
 	
 	common_effects = [
 	{code = 'make_scene_character', 
@@ -512,7 +512,7 @@ var scenedict = {
 			text = 'DIALOGUEEVENTFAIRYRECRUITSUCCESS',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 5},{code = 'affect_scene_characters', type = 'all', stat = 'obedience', value = 30},{code = 'affect_scene_characters', type = 'all', stat = 'authority', value = 50},{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 25}],
 			tags = ['active_character_translate','scene_character_translate'],
-			image = 'fairy',
+			image = 'fairy_encounter',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
 				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVERECRUITOPTION")}
@@ -520,7 +520,7 @@ var scenedict = {
 			},
 			{reqs = [],
 			text = "DIALOGUEEVENTFAIRYRECRUITFAILURE",
-			image = 'fairy',
+			image = 'fairy_encounter',
 			common_effects = [{code = 'affect_active_character', type = 'stat', stat = 'charm', value = 3}],
 			tags = ['active_character_translate','scene_character_translate'],
 			options = [
@@ -532,7 +532,7 @@ var scenedict = {
 	},
 	event_fairy_heal = {
 	text = "DIALOGUEEVENTFAIRYASKHEALREPLY",
-	image = 'fairy',
+	image = 'fairy_encounter',
 	tags = ['active_character_translate'],
 	bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = -35}],
 	options = [
@@ -541,7 +541,7 @@ var scenedict = {
 	},
 	event_fairy_capture = {
 	text = "DIALOGUEEVENTFAIRYCAPTUREREPLY",
-	image = 'fairy',
+	image = 'fairy_encounter',
 	common_effects = [{code = 'affect_scene_characters', type = 'all', stat = 'loyalty', value = 0}],
 	tags = ['active_character_translate','scene_character_translate'],
 	options = [
@@ -551,7 +551,7 @@ var scenedict = {
 	},
 	event_fairy_leave = {
 	text = "DIALOGUEVENTFAIRYLEAVEREPLY",
-	image = 'fairy',
+	image = 'fairy_encounter',
 	tags = ['active_character_translate'],
 	options = [
 		{code = 'leave', text = tr("DIALOGUECLOSE"), reqs = []},
@@ -1375,7 +1375,7 @@ var quests = {
 	election_global_quest = {
 		code = 'election_global_quest',
 		stages = {
-			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "According to City's electon process, any land owner is capable of becoming a mayor, as long as they are supported by the Guilds. Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
+			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "According to City's electon process, any landowner is capable of becoming a mayor, as long as they are supported by the Guilds. Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
 			stage2 = {code = 'stage2', name = 'Story Complete', descript = "You've beaten current game's story. Thank you for playing! "}
 		},
 	

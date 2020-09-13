@@ -195,7 +195,7 @@ func open(scene, not_save = false):
 		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
 	else:
 		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
-	yield(get_tree().create_timer(0.7), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
 	hold_selection = false
 	show_buttons()
 	gui_controller.is_dialogue_just_started = false
