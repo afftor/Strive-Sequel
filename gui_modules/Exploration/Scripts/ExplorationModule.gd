@@ -1120,6 +1120,20 @@ func faction_upgrade(pressed, pressed_button, area):
 		)
 
 
+func unlock_upgrade(upgrade, level):
+	if active_faction.upgrades.has(upgrade.code):
+		active_faction.upgrades[upgrade.code] += 1
+	else:
+		active_faction.upgrades[upgrade.code] = 1
+	active_faction.reputation -= upgrade.cost[level]
+	var effect = upgrade.effects
+	for i in effect:
+		var value = get_indexed('active_faction:' + i.code)
+		value = input_handler.math(i.operant, value, i.value)
+		set_indexed('active_faction:' + i.code, value)
+	faction_upgrade(true, current_pressed_area_btn, active_faction)
+
+
 func show_quest_gen(action = "show"):
 	if action == "show":
 		$FactionDetails.get_node("QuestGenPanel").visible = $FactionDetails.get_node("QuestGen").is_pressed()

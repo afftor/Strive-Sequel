@@ -371,8 +371,9 @@ __meta__ = {
 }
 
 [node name="physics" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect3"]
+margin_left = -28.0
 margin_top = 49.0
-margin_right = 50.0
+margin_right = 75.0
 margin_bottom = 81.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -384,8 +385,9 @@ __meta__ = {
 }
 
 [node name="wits" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect3"]
+margin_left = -28.0
 margin_top = 83.0
-margin_right = 50.0
+margin_right = 75.0
 margin_bottom = 115.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -394,8 +396,9 @@ align = 1
 clip_text = true
 
 [node name="charm" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect3"]
+margin_left = -28.0
 margin_top = 117.0
-margin_right = 50.0
+margin_right = 75.0
 margin_bottom = 149.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -404,8 +407,9 @@ align = 1
 clip_text = true
 
 [node name="sexuals" type="Label" parent="InventoryFactorsModule/VBoxContainer2/TextureRect3"]
+margin_left = -28.0
 margin_top = 151.0
-margin_right = 50.0
+margin_right = 75.0
 margin_bottom = 183.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )

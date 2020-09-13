@@ -4,6 +4,7 @@ extends Panel
 
 var dislocation_area = 'mansion'
 var destination_area = 'plains'
+var selected_location
 
 func _ready():
 	$HomeButton.connect("item_selected", self, 'select_dislocation_area')
@@ -28,9 +29,14 @@ func update():
 
 
 func open_character_dislocation():
+	$Forget.hide()
+	if selected_location != null:
+		var location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+		if location.type in ["quest_location", "encounter", "dungeon"]:
+			if location.has("completed"):
+				$Forget.visible = location.completed
 	if get_parent().mansion_state == "travels":
 		show()
-		$Forget.hide()
 	if get_parent().active_person == null:
 		return
 	dislocation_area = get_parent().active_person.travel.location
@@ -92,14 +98,9 @@ func select_destination(destination_code):
 	selected_location = destination_code
 	params = {code = 'destination_selected', destination = destination_code}
 	destination_area = ResourceScripts.game_world.location_links[destination_code].area
-	var location = ResourceScripts.world_gen.get_location_from_code(destination_code)
-	if location.type in ["quest_location", "encounter", "dungeon"]:
-		if location.completed:
-			$Forget.show()
 	get_parent().travels_manager(params)
 	show_location_resources(destination_code)
 
-var selected_location
 func forget_location():
 	input_handler.get_spec_node(
 		input_handler.NODE_CONFIRMPANEL,
@@ -113,6 +114,7 @@ func forget_location():
 
 func clear_dungeon_confirm():
 	globals.remove_location(selected_location)
+	selected_location = null
 	# action_type = 'location_finish'
 
 func show_location_resources(location_code):
@@ -257,13 +259,13 @@ func travel_confirm():
 	open_character_dislocation()
 	get_parent().SlaveListModule.rebuild()
 	get_parent().SlaveListModule.show_location_characters()
-	#reset_travels()
 	travel_cancel()
-	# get_parent().match_state()
+	selected_location = null
 
 func reset_travels():
 	$Resources.hide()
 	$SelectedLocation/Label.text = "Select Location"
+	selected_location = null
 
 
 func travel_cancel():
@@ -274,6 +276,7 @@ func travel_cancel():
 	reset_travels()
 	get_parent().mansion_state_set("default")
 	get_parent().match_state()
+	selected_location = null
 
 
 
