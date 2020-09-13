@@ -275,7 +275,11 @@ var rewardsdict
 func victory():
 	get_tree().get_root().set_disable_input(true)
 	$Rewards.show()
+	$Rewards.modulate.a = 0
 	$Rewards/AnimationPlayer.play("Victory")
+	$Rewards.modulate.a = 1
+	$Rewards/ScrollContainer/HBoxContainer.hide()
+	$Rewards/ScrollContainer2/HBoxContainer.hide()
 	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -352,7 +356,9 @@ func victory():
 		var gained_exp = exp_per_character * tchar.get_stat('exp_mod')
 		tchar.add_stat('base_exp', gained_exp)
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer2/HBoxContainer)
+		newbutton.hide()
 		newbutton.modulate.a = 0
+		newbutton.show()
 		newbutton.get_node("Icon").texture = tchar.get_icon()
 		newbutton.get_node("name").text = tchar.get_short_name()
 		newbutton.get_node("amount").text = str(gained_exp)
@@ -394,8 +400,9 @@ func victory():
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newbutton.hide()
 		newbutton.modulate.a = 0
-		#newbutton.hide()
+		newbutton.show()
 		newbutton.get_node("Icon").texture = item.icon
 		newbutton.get_node("name").text = item.name
 		newbutton.get_node("amount").text = str(rewardsdict.materials[i])
@@ -403,6 +410,9 @@ func victory():
 		globals.connectmaterialtooltip(newbutton, item)
 	for i in rewardsdict.items:
 		var newnode = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
+		newnode.hide()
+		newnode.modulate.a = 0
+		newnode.show()
 		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
 		globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
@@ -411,6 +421,7 @@ func victory():
 			newnode.get_node("amount").visible = false
 		else:
 			newnode.get_node("amount").text = str(i.amount)
+			
 	
 	
 	#yield(get_tree().create_timer(1.7), 'timeout')
@@ -432,6 +443,8 @@ func victory():
 		array.append(i)
 	input_handler.get_person_for_chat(array, 'combat_won')
 	yield($Rewards/AnimationPlayer, "animation_finished")
+	$Rewards/ScrollContainer/HBoxContainer.show()
+	$Rewards/ScrollContainer2/HBoxContainer.show()
 	show_buttons($Rewards/ScrollContainer/HBoxContainer)
 	show_buttons($Rewards/ScrollContainer2/HBoxContainer)
 	get_tree().get_root().set_disable_input(false)

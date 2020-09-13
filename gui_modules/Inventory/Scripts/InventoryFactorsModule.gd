@@ -39,7 +39,12 @@ func show_factors():
 
 		for i in ['physics','wits','charm','sexuals']:
 			if i != 'sexuals':
-				get_node("VBoxContainer2/TextureRect3/" + str(i)).text = str(floor(person.get_stat(i)))
+				var text = ''
+				if person.get_stat(i+"_bonus") > 0:
+					text += '+'
+				if person.get_stat(i+"_bonus") != 0:
+					text += str(floor(person.get_stat(i+"_bonus")))
+				get_node("VBoxContainer2/TextureRect3/" + str(i)).text = str(floor(person.get_stat(i))) + text
 				get_node("VBoxContainer2/TextureRect4/" + i + "2").text = str(person.get_stat(i+'_factor') * 20)
 			else:
 				get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
