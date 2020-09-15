@@ -480,7 +480,7 @@ var professions = {
 		icon = load("res://assets/images/iconsclasses/Healer.png"),
 		tags = [],
 		categories = ['combat','magic'],
-		showupreqs = [{code = "class_unlocked", name = 'healer', operant = 'eq', check = true}],
+		showupreqs = [{code = "class_unlocked", class = 'healer', operant = 'eq', check = true}],
 		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 20},{code = 'has_any_profession', value = ['apprentice', 'scholar']}],
 		statchanges = {physics_bonus = 10, hpmax = 10},
 		traits = [],

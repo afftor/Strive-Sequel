@@ -464,16 +464,16 @@ func test_mode():
 		character.equip(bow)
 		character.set_slave_category('master')
 		character.statlist.negative_sex_traits = {dislike_missionary = true}
-		character.statlist.unlocked_sex_traits = {
-			'submissive' : true,
-			'pushover' : true,
-			'bottle_fairy' : true,
-			'dominant' : true,
-			'sadist' : true,
-			'desired' : true,
-			'curious' : true,
-			'life_power' : true
-		}
+		character.statlist.unlocked_sex_traits = [
+			'submissive',
+			'pushover',
+			'bottle_fairy',
+			'dominant',
+			'sadist',
+			'desired',
+			'curious',
+			'life_power'
+		]
 		#character.armor = 135
 		#character.set_stat('wits', 20)
 		character.set_stat('consent', 100)
