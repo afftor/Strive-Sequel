@@ -456,24 +456,24 @@ func test_mode():
 		character.unlock_class("trainer")
 		character.unlock_class("thief")
 		character.unlock_class("engineer")
-		character.travel.location = 'L4'
-		character.travel.area = 'plains'
+		#character.travel.location = 'L4'
+		#character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
 		character.set_slave_category('master')
-		character.statlist.negative_sex_traits = ['dislike_missionary']
-		character.statlist.unlocked_sex_traits = [
-			'submissive',
-			'pushover',
-			'bottle_fairy',
-			'dominant',
-			'sadist',
-			'desired',
-			'curious',
-			'life_power'
-		]
+		character.statlist.negative_sex_traits = {dislike_missionary = true}
+		character.statlist.unlocked_sex_traits = {
+			'submissive' : true,
+			'pushover' : true,
+			'bottle_fairy' : true,
+			'dominant' : true,
+			'sadist' : true,
+			'desired' : true,
+			'curious' : true,
+			'life_power' : true
+		}
 		#character.armor = 135
 		#character.set_stat('wits', 20)
 		character.set_stat('consent', 100)
@@ -498,7 +498,6 @@ func test_mode():
 		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
-		character.statlist.negative_sex_traits = ['dislike_missionary']
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -595,10 +594,10 @@ func test_mode():
 					value = 'daisy',
 					args = [
 						{code = 'sexuals_factor', value = 1, operant = "+"},
-						{code = 'sextrait', value = 'submissive', operant = 'add'},  #for sextrait/add setting, trait is appended to character's traits
+						{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'obedience', operant = '+', value = 30},
-						# {code = 'tag', operant = 'remove', value = 'no_sex'},
+						{code = 'tag', operant = 'remove', value = 'no_sex'},
 					]
 				}
 			]

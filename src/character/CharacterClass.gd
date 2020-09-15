@@ -107,8 +107,8 @@ func add_negative_sex_trait(code):
 func remove_negative_sex_trait(code):
 	statlist.remove_negative_sex_trait(code)
 
-func add_sex_trait(code):
-	statlist.add_sex_trait(code)
+func add_sex_trait(code, known = false):
+	statlist.add_sex_trait(code, known)
 
 func remove_sex_trait(code, absolute = true):
 	statlist.remove_sex_trait(code, absolute)
@@ -440,6 +440,9 @@ func get_negative_sex_traits():
 
 func get_unlocked_sex_traits():
 	return statlist.get_unlocked_sex_traits()
+
+func make_trait_known(trait):
+	return statlist.make_trait_known(trait)
 
 func get_gear(slot):
 	return equipment.get_gear(slot)
@@ -882,7 +885,7 @@ func apply_atomic(template):
 		'add_trait':
 			add_trait(template.trait)
 		'add_sex_trait':
-			add_sex_trait(template.trait)
+			add_sex_trait(template.trait, true)
 		'unlock_sex_trait':
 			unlock_sex_trait(template.trait)
 		'event':

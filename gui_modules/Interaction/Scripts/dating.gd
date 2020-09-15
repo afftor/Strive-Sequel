@@ -288,7 +288,7 @@ func updatelist():
 			newnode.text = person.translate(i.name)
 			newnode.connect("pressed",self,'doaction', [i.effect])
 			var text = i.descript
-			if dislike_same_sex() == true && i.effect in ['intimate','kiss','propose']:
+			if dislike_same_sex() == true && i.effect in ['flirt','kiss','propose']:
 				text += globals.TextEncoder("\n{color=yellow|Sexuality: [name] does not seem to be enthusiastic in having relationship with you. Mood required for positive response is increased.}")
 			globals.connecttexttooltip(newnode, person.translate(text))
 			if i.has('disablereqs'):
@@ -379,17 +379,17 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]:[he2]} replies, but does so reluctantly.",1],
 		["{^[name2]:[race2] [boy2]:[he2]} shows little interest in further chatting. ",1],
 	],
-	intimate_start = [
+	flirt_start = [
 		["You casually flirt with {^[name2]:[race2] [boy2]}.", 1],
 		["You start a lewd talk with {^[name2]:[race2] [boy2]}.", 1],
 		["You ask {^[name2]:[race2] [boy2]} about [his2] fantasies.", 1],
 	],
-	intimate_positive = [
+	flirt_positive = [
 		["{^[name2]:[race2] [boy2]:[he2]} responds to you positively. ", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} gives you a playful look. ", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} moves slightly closer to you. ", 1],
 	],
-	intimate_negative = [
+	flirt_negative = [
 		["{^[name2]:[race2] [boy2]:[he2]} stays silent, showing [his2] disdain.", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} gives you a stern look. ", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} moves away from you. ", 1],
@@ -487,7 +487,7 @@ var date_lines = {
 	praise_initiate = [
 		["You praise {^[name2]:[race2] [boy2]:[he2]}'s efforts. ",1],
 		["You {^proclaim:express} your gratitude to {^[name2]:[race2] [boy2]:[he2]}. ",1],
-		["You praise {^[name2]:[race2] [boy2]:[he2]} for [his2] recent behavoir. ",]
+		["You praise {^[name2]:[race2] [boy2]:[he2]} for [his2] recent behavoir. ",1]
 		],
 	praise_accept = [
 		["{^[name2]:[race2] [boy2]:[he2]} listens to your praise with a joy evident on [his2] face. ",1]
@@ -557,9 +557,9 @@ func chat(person, counter):
 	
 	return text
 
-func intimate(person, counter):
+func flirt(person, counter):
 	var text = ''
-	text += input_handler.weightedrandom(date_lines.intimate_start) + "\n\n"
+	text += input_handler.weightedrandom(date_lines.flirt_start) + "\n\n"
 	
 	var min_mood = rand_range(8,14)
 	if dislike_same_sex():
@@ -567,15 +567,42 @@ func intimate(person, counter):
 	if mood > min_mood:
 		self.mood += 10
 		text += "{color=green|"
-		text += input_handler.weightedrandom(date_lines.intimate_positive)
+		text += input_handler.weightedrandom(date_lines.flirt_positive)
 		text += "}"
 		person.add_stat('consent', rand_range(1,3))
 	else:
 		text += "{color=red|"
-		text += input_handler.weightedrandom(date_lines.intimate_negative)
+		text += input_handler.weightedrandom(date_lines.flirt_negative)
 		text += "}"
 		self.mood -= 3
 	return text
+
+
+func intimate(person, counter):
+	var text = 'You {^cautiously:mindfully} ask [name2] about [his2] preferences in bed.'
+	
+	if mood >= 80 - master.get_stat('charm_factor') * 7:
+		var has_unknown_traits = false
+		var trait_array = person.get_all_sex_traits()
+		var unknown_trait_array = []
+		for i in trait_array:
+			if trait_array[i] == false:
+				has_unknown_traits = true
+				unknown_trait_array.append(i)
+		if has_unknown_traits == true:
+			var unlocking_trait = input_handler.random_from_array(unknown_trait_array)
+			person.make_trait_known(unlocking_trait)
+			text += "\n\n{color=green|[name2] opens up to you and you learn a bit about [his2] preferences. "
+			text += "\nYou have learned that [name2] possess a sex trait: " + Traitdata.sex_traits[unlocking_trait].name
+			text += "}"
+		else:
+			text += "\n\n{color=green|[name2] opens up to you but you don't learn anything new about [him2]. "
+			text += "}"
+	else:
+		text += "{color=red|You've failed to get [name2] into a mood to talk about [his2] sexual preferences}"
+		self.mood -= 8
+	return text
+
 
 func touch(person, counter):
 	
@@ -1299,16 +1326,23 @@ var actionsdict = {
 		location = [],#empty = any
 		descript = 'Have a friendly chat. Will boost Mood slightly.',
 		effect = 'chat',
-		#disablereqs = "!person.traits.has('Mute')",
+	},
+	flirt = {
+		group = 'Affection',
+		name = 'Flirt',
+		descript = 'Flirt with [name]. Will slightly improve Consent if Mood is high. Slightly increases Consent if mood is above low.',
+		reqs = [],
+		location = [],
+		effect = 'flirt',
 	},
 	intimate = {
 		group = 'Affection',
-		name = 'Flirt',
-		descript = 'Have an intimate talk. Slightly increases Consent if mood is above low.',
+		name = 'Intimate Talk',
+		descript = "Have an intimate talk in attempt to learn more about [name]'s preferences. Can only be used once.",
 		reqs = [],
+		onetime = true,
 		location = [],
 		effect = 'intimate',
-		#disablereqs = "!person.traits.has('Mute')",
 	},
 	touch = {
 		group = 'Affection',

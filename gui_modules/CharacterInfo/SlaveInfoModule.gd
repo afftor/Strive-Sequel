@@ -152,20 +152,26 @@ func rebuild_traits():
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
 		newnode.text = trait.name
 	
-	for i in person.statlist.sex_traits + person.statlist.negative_sex_traits:
+	var traits = person.get_all_sex_traits()
+	
+	for i in traits:
 		var trait = Traitdata.sex_traits[i]
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/traits)
-		newnode.text = trait.name
-		var traittext = person.translate(trait.descript)
-		for j in trait.reqs:
-			if j.has('code') && j.code == 'action_type':
-				traittext += "\n\nDisliked actions:[color=aqua] "
-				for k in j.value:
-					globals.sex_actions_dict[k].givers = []
-					globals.sex_actions_dict[k].takers = []
-					traittext += globals.sex_actions_dict[k].getname() + ", "
-				traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
-		globals.connecttexttooltip(newnode, traittext)
+		if traits[i] == true:#trait is known
+			newnode.text = trait.name
+			var traittext = person.translate(trait.descript)
+			for j in trait.reqs:
+				if j.has('code') && j.code == 'action_type':
+					traittext += "\n\nDisliked actions:[color=aqua] "
+					for k in j.value:
+						globals.sex_actions_dict[k].givers = []
+						globals.sex_actions_dict[k].takers = []
+						traittext += globals.sex_actions_dict[k].getname() + ", "
+					traittext = traittext.substr(0, traittext.length() - 2) + ".[/color]"
+			globals.connecttexttooltip(newnode, traittext)
+		else:
+			newnode.text = tr("TRAITUNKNOWN")
+			globals.connecttexttooltip(newnode, person.translate(tr("TRAITUNKNOWNTOOLTIP")))
 
 
 func text_url_hover(meta):

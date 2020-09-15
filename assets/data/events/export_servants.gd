@@ -160,7 +160,7 @@ var data = {
 	servants_election_finish1 = {
 		image = null,
 		character = 'amelia',
-		tags = ['dialogue_scene', 'master_translate'],
+		tags = ['dialogue_scene','master_translate'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH1", reqs = []},
 			{text = "SERVANTSELECTIONFINISH1_2", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 4}], bonus_effects = [{code = 'make_loot', pool = [['servants_election_bonus',1]]}, {code = 'open_loot'}]},

@@ -950,7 +950,7 @@ var scenedict = {
 		image = 'daisyevent',
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'sexuals_factor', value = 1, operant = "+"},
-			{code = 'sextrait', value = 'submissive', operant = 'add'},#for sextrait/add setting, trait is appended to character's traits
+			{code = 'sextrait', value = 'submissive', operant = 'add', known = true},#for sextrait/add setting, trait is appended to character's traits
 			{code = 'submission', operant = '+', value = 50},
 			{code = 'obedience', operant = '+', value = 30},
 			{code = 'tag', operant = 'remove', value = 'no_sex'},

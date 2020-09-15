@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.3.1'
+const gameversion = '0.3.2'
 
 #time
 signal hour_tick
@@ -1026,7 +1026,7 @@ func common_effects(effects):
 					if k.code == 'sextrait':
 						match k.operant:
 							'add':
-								character.add_sex_trait(k.value)
+								character.add_sex_trait(k.value, k.known)
 					elif k.code == 'tag':
 						match k.operant:
 							'remove':

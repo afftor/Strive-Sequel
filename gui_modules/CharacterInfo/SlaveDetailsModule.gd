@@ -74,17 +74,26 @@ func sex_traits_open():
 	$VBoxContainer/IconBlock.hide()
 	person = gui_controller.mansion.active_person
 	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
-	var array = person.statlist.unlocked_sex_traits.duplicate()
-	array.sort_custom(self, 'sort_traits')
-	
-	$SexTraitsPanel/VScrollBar.hide() if array == [] else $SexTraitsPanel/VScrollBar.show()
-
+	$SexTraitsPanel/TraitsNotLearned.bbcode_text = person.translate(tr("NOTALLTRAITSLEARNED"))
+	var array = person.get_all_sex_traits()#.keys()
+	var all_traits_known = true
 	for i in array:
-		var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
-		newbutton.pressed = person.check_trait(i)
-		newbutton.text = Traitdata.sex_traits[i].name
-		globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
-		newbutton.connect("toggled", self, 'toggle_trait', [i])
+		if array[i] == false:
+			all_traits_known = false
+			break
+	if all_traits_known:
+		array = person.get_unlocked_sex_traits().keys()
+		array.sort_custom(self, 'sort_traits')
+		
+		$SexTraitsPanel/VScrollBar.hide() if array == [] else $SexTraitsPanel/VScrollBar.show()
+	
+		for i in array:
+			var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+			newbutton.pressed = person.check_trait(i)
+			newbutton.text = Traitdata.sex_traits[i].name
+			globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
+			newbutton.connect("toggled", self, 'toggle_trait', [i])
+	$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
 	update_trait_capacity()
 
 func update_trait_capacity():
@@ -99,7 +108,7 @@ func toggle_trait(trait_status, trait):
 	match trait_status:
 		true:
 			if !person.check_trait(trait):
-				person.add_sex_trait(trait)
+				person.add_sex_trait(trait, true)
 		false:
 			if person.check_trait(trait):
 				person.remove_sex_trait(trait, false)
@@ -107,8 +116,6 @@ func toggle_trait(trait_status, trait):
 	get_parent().SlaveInfo.rebuild_traits()
 
 
-
-		
 
 func confirm():
 	person = gui_controller.mansion.active_person

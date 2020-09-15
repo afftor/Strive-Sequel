@@ -3,8 +3,8 @@ extends Reference
 var statlist = Statlist_init.template.duplicate(true) setget , default_stats_get
 var bonuses = {}
 var traits = []
-var sex_traits = []
-var negative_sex_traits = []
+var sex_traits = {}
+var negative_sex_traits = {}
 var unlocked_sex_traits = []
 var parent = null
 
@@ -277,16 +277,16 @@ func check_trait(trait):
 	return (traits.has(trait) or sex_traits.has(trait) or negative_sex_traits.has(trait))
 
 func add_negative_sex_trait(code):
-	negative_sex_traits.push_back(code)
+	negative_sex_traits[code] = false
 
 func remove_negative_sex_trait(code):
 	negative_sex_traits.erase(code)
 
-func add_sex_trait(code):
+func add_sex_trait(code, known = false):
 	if !unlocked_sex_traits.has(code):
 		unlocked_sex_traits.push_back(code)
 	if !sex_traits.has(code):
-		sex_traits.push_back(code)
+		sex_traits[code] = known
 		if parent.is_players_character:
 			var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
 			globals.text_log_add('char', text)
@@ -305,7 +305,7 @@ func create_s_trait_select(trait):
 	else:
 		sex_traits.clear()
 		unlocked_sex_traits.clear()
-		sex_traits.append(trait.code)
+		sex_traits[trait.code] = true
 
 func get_stat_data():
 	var res = {}
@@ -696,13 +696,24 @@ func get_body_image():
 	return load(statlist.body_image)
 
 func get_all_sex_traits():
-	return sex_traits + negative_sex_traits
+	var return_traits = {}
+	for i in sex_traits:
+		return_traits[i] = sex_traits[i]
+	for i in negative_sex_traits:
+		return_traits[i] = negative_sex_traits[i]
+	return return_traits
 
 func get_negative_sex_traits():
 	return negative_sex_traits
 
 func get_unlocked_sex_traits():
 	return unlocked_sex_traits
+
+func make_trait_known(trait):
+	if sex_traits.has(trait):
+		sex_traits[trait] = true
+	if negative_sex_traits.has(trait):
+		negative_sex_traits[trait] = true
 
 func baby_transform():
 	var mother = characters_pool.get_char_by_id(statlist.relatives.mother) #ResourceScripts.game_party.characters[statlist.relatives.mother]
