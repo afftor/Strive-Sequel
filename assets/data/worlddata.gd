@@ -540,7 +540,7 @@ var questdata = {
 		code = 'workers_resources_hard',
 		name = 'Resource gathering',
 		descript = 'The guild requires additional resources for its needs. ',
-		randomconditions = [{code = 'random_material', function = 'range', type = ['woodmagic','boneancinet','leathermythic','mithril'], range = [8,15]}],
+		randomconditions = [{code = 'random_material', function = 'range', type = ['woodmagic','boneancient','leathermythic','mithril'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [250,400],
 		rewards = [

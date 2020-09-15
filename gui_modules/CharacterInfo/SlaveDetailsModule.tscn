@@ -412,8 +412,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel/"
+current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -507,8 +507,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel/"
+current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -580,7 +580,11 @@ custom_constants/separation = 5
 [node name="Button" type="Button" parent="SexTraitsPanel/ScrollContainer/VBoxContainer"]
 visible = false
 light_mask = 0
+<<<<<<< HEAD
 margin_right = 301.0
+=======
+margin_right = 315.0
+>>>>>>> master
 margin_bottom = 52.0
 theme = ExtResource( 4 )
 toggle_mode = true
@@ -608,6 +612,17 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "TraitCapacity"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TraitsNotLearned" type="RichTextLabel" parent="SexTraitsPanel"]
+margin_left = 34.0
+margin_top = 49.0
+margin_right = 348.0
+margin_bottom = 276.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "NOTALLTRAITSLEARNED"
 __meta__ = {
 "_edit_use_anchors_": false
 }

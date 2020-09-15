@@ -712,7 +712,7 @@ func toggle_trait(trait_status, trait):
 	match trait_status:
 		true:
 			if !person.check_trait(trait):
-				person.add_sex_trait(trait)
+				person.add_sex_trait(trait, true)
 		false:
 			if person.check_trait(trait):
 				person.remove_sex_trait(trait, false)

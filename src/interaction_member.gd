@@ -122,7 +122,7 @@ func setup_person(ch, no_loyal = false):
 	sens = 0
 	consent = ch.get_stat('consent')
 	name = ch.get_short_name()
-	sex_traits = ch.get_all_sex_traits()
+	sex_traits = ch.get_all_sex_traits().keys()
 	var tmp = ch.get_gear('crotch')
 	if tmp != null && ResourceScripts.game_res.items[tmp].itembase == 'strapon':
 		strapon = true

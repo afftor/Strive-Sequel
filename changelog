@@ -1,10 +1,12 @@
 Added new illustrations for some events
 Added oblivion potion mechanics
 Added Entangle skill for Dryads
+Sex traits are now initially hidden for hired characters. They can be learned during dating
 Pheromones can now be used in mansion
 Slightly buffed human's racial stats
 Nerfed bandages output 3 -> 2
 Nerfed First Aid heal value 35% -> 30%
+Fixed guild slaves not benefitting from quality upgrades
 Fixed Spirit:Turtle not working correctly
 Fixed ranged attacks not requiring bow
 Fixed First Aid Tooltip
