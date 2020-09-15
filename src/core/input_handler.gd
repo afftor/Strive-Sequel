@@ -107,6 +107,7 @@ enum {
 	NODE_GAMEMENU,
 	NODE_SEX,
 	NODE_DATE,
+	NODE_TUTORIAL_PANEL
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -227,7 +228,10 @@ func _input(event):
 		return
 	if event.is_action_released("F1") \
 		&& gui_controller.current_screen == gui_controller.mansion:
-		gui_controller.mansion.show_tutorial()
+		if gui_controller.mansion_tutorial_panel == null || !gui_controller.mansion_tutorial_panel.is_visible():
+			gui_controller.mansion.show_tutorial()
+		else:
+			gui_controller.mansion_tutorial_panel.hide()
 	if event.is_action_released("F9"):
 		OS.window_fullscreen = !OS.window_fullscreen
 		input_handler.globalsettings.fullscreen = OS.window_fullscreen
@@ -256,6 +260,9 @@ func _input(event):
 				match gui_controller.current_screen:
 					gui_controller.mansion:
 						if event.is_action("ESC") && gui_controller.mansion.mansion_state in ["default", "skills"]:
+							if gui_controller.mansion_tutorial_panel != null && gui_controller.mansion_tutorial_panel.is_visible():
+								gui_controller.mansion_tutorial_panel.hide()
+								return
 							gui_controller.mansion.show_menu()
 						else:
 							gui_controller.mansion.mansion_state_set("default")

@@ -9,7 +9,7 @@ var details_state = "description"
 var portaitsbuilt = false
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 #	$CloseButton.connect("pressed", self, "hide")
 	$VBoxContainer/descript.connect("pressed", self, "custom_description_open")
@@ -23,6 +23,13 @@ func _ready():
 	custom_description_open()
 
 
+func unpress_buttons():
+	for button in $VBoxContainer.get_children():
+		if button.get_class() != "Button":
+			continue
+		button.pressed = false
+
+
 func show_text_edit():
 	$SexTraitsPanel.hide()
 	$TextEdit.show()
@@ -31,6 +38,8 @@ func show_text_edit():
 	$ScrollContainer.hide()
 
 func custom_description_open():
+	unpress_buttons()
+	$VBoxContainer/descript.pressed = true
 	$SexTraitsPanel.hide()
 	$ConfirmButton.show()
 	person = gui_controller.mansion.active_person
@@ -41,6 +50,8 @@ func custom_description_open():
 		$TextEdit.text = person.get_stat('bonus_description')
 
 func custom_nickname_open():
+	unpress_buttons()
+	$VBoxContainer/nickname.pressed = true
 	$SexTraitsPanel.hide()
 	$ConfirmButton.show()
 	person = gui_controller.mansion.active_person
@@ -50,6 +61,8 @@ func custom_nickname_open():
 	$TextEdit.text = person.get_stat('nickname')
 
 func custom_masternoun_open():
+	unpress_buttons()
+	$VBoxContainer/masternoun.pressed = true
 	$SexTraitsPanel.hide()
 	$ConfirmButton.show()
 	person = gui_controller.mansion.active_person
@@ -59,6 +72,11 @@ func custom_masternoun_open():
 	$TextEdit.text = person.get_stat('masternoun')
 
 func custom_icon_open(state):
+	unpress_buttons()
+	if state == "portrait":
+		$VBoxContainer/icon.pressed = true
+	else:
+		$VBoxContainer/body.pressed = true
 	$SexTraitsPanel.hide()
 	$Label.hide()
 	$ConfirmButton.hide()
@@ -70,6 +88,8 @@ func custom_icon_open(state):
 	details_state = state
 
 func sex_traits_open():
+	unpress_buttons()
+	$VBoxContainer/traits.pressed = true
 	$SexTraitsPanel.show()
 	$VBoxContainer/IconBlock.hide()
 	person = gui_controller.mansion.active_person
@@ -77,7 +97,7 @@ func sex_traits_open():
 	var array = person.statlist.unlocked_sex_traits.duplicate()
 	array.sort_custom(self, 'sort_traits')
 	
-	$SexTraitsPanel/VScrollBar.hide() if array == [] else $SexTraitsPanel/VScrollBar.show()
+#	$SexTraitsPanel/VScrollBar.hide() if array == [] else $SexTraitsPanel/VScrollBar.show()
 
 	for i in array:
 		var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)

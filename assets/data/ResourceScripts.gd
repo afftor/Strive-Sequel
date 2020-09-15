@@ -88,6 +88,7 @@ onready var node_data = {
 	input_handler.NODE_GAMEMENU : {name = 'gamemenu', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/GameMenuPanel.tscn") },
 	input_handler.NODE_SEX : {name = 'sex_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/InteractionMainModule.tscn") },
 	input_handler.NODE_DATE : {name = 'date_panel', mode = 'scene', scene = preload("res://gui_modules/Interaction/Modules/date.tscn") },
+	input_handler.NODE_TUTORIAL_PANEL : {name = 'tutorial_panel', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/tutorialpanel.tscn") },
 	#Animations
 	input_handler.ANIM_TASK_AQUARED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_aquired.tscn") },
 	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_battle_start.tscn") },

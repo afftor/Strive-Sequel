@@ -38,14 +38,14 @@ func show_factors():
 				i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 
 		for i in ['physics','wits','charm','sexuals']:
+			var text = ''
+			if person.get_stat(i+"_bonus") > 0:
+				text += '+'
+			if person.get_stat(i+"_bonus") != 0:
+				text += str(floor(person.get_stat(i+"_bonus")))
 			if i != 'sexuals':
-				var text = ''
-				if person.get_stat(i+"_bonus") > 0:
-					text += '+'
-				if person.get_stat(i+"_bonus") != 0:
-					text += str(floor(person.get_stat(i+"_bonus")))
 				get_node("VBoxContainer2/TextureRect3/" + str(i)).text = str(floor(person.get_stat(i))) + text
 				get_node("VBoxContainer2/TextureRect4/" + i + "2").text = str(person.get_stat(i+'_factor') * 20)
 			else:
-				get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
+				get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i))) + text
 				get_node("VBoxContainer2/TextureRect4/" + i + "2").text = '100'

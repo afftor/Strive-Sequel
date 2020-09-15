@@ -111,7 +111,7 @@ func open_city(city):
 	var guilds = []
 	var area_actions = []
 	for i in active_area.factions.values():
-		if i.code in ["slavemarket", "exotic_slave_trader"]:
+		if i.code in ["slavemarket", "exotic_slave_trader", "aliron_church"]:
 			area_actions.append(i)
 		else:
 			guilds.append(i)
@@ -156,6 +156,9 @@ func build_area_menu(area_actions):
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
 		elif action.code == 'exotic_slave_trader':
 			continue
+		elif action.code == 'aliron_church':
+			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
+			newbutton.connect("pressed", self, "enter_church", [newbutton, action])
 		# newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = action.name
 		newbutton.get_node("Label").get("custom_fonts/font").set_size(32)
@@ -169,8 +172,11 @@ func build_area_menu(area_actions):
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = i.text
-		newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
-		newbutton.connect("pressed", self, "open_city", [selected_location])
+		if i.args.keys().has("oneshot") && !i.args.oneshot:
+			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, '', i.args])
+		else:
+			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, 'area_oneshot_event', i.args])
+			newbutton.connect("pressed", self, "open_city", [selected_location])
 		newbutton.modulate = Color(0.5, 0.8, 0.5)
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
@@ -182,6 +188,10 @@ func build_area_menu(area_actions):
 
 var current_level
 var current_stage
+
+
+func enter_church():
+	print("I'm in church")
 
 
 func open_location(data):
@@ -976,6 +986,11 @@ func enter_dungeon():
 		)
 		newbutton.text = "(debug)Complete location"
 		newbutton.connect("pressed", self, "debug_complete_location")
+
+
+func debug_complete_location():
+	active_location.completed = true
+	enter_dungeon()
 
 
 func check_events(action):

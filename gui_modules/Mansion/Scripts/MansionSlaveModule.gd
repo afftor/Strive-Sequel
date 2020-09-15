@@ -24,10 +24,14 @@ func _ready():
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
 
 
-#func open_char_class_info():
-#	var slave_info = GUIWorld.gui_data["SLAVE_INFO"].main_module
-#	GUIWorld.set_current_scene(slave_info)
-#	slave_info.set_state("class")
+func open_char_class_info():
+	if gui_controller.slavepanel == null:
+		gui_controller.slavepanel = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
+	gui_controller.previous_screen = gui_controller.current_screen
+	gui_controller.current_screen = gui_controller.slavepanel
+	gui_controller.slavepanel.show()
+	gui_controller.slavepanel.raise()
+	gui_controller.slavepanel.set_state("class")
 
 
 func show_slave_info():

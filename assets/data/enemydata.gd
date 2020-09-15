@@ -1035,6 +1035,9 @@ var loot_variants_data = {
 		{code = 'defined', name = 'lifegem', min = 3, max = 4},
 		{code = 'defined', name = 'boneancient', min = 5, max = 5},
 	],
+	aliron_church_bonus = [
+		{code = 'defined', name = 'lifeshard', min = 5, max = 5},
+	],
 }
 
 

@@ -104,6 +104,7 @@ var sprites = {
 	anastasia = load("res://assets/images/sprites/anastasia.png"),
 	aire = load("res://assets/images/sprites/aire.png"),
 	xari = load("res://assets/images/sprites/xari.png"),
+	ginny = load("res://assets/images/sprites/ginny.png"),
 	}
 
 var dynamic_backgrounds = {

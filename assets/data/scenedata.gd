@@ -1322,8 +1322,6 @@ var dialogue_inits = {
 			target_option = 2,
 		},
 	],
-	
-	
 }
 
 var quests = {
@@ -1379,6 +1377,16 @@ var quests = {
 			stage2 = {code = 'stage2', name = 'Story Complete', descript = "You've beaten current game's story. Thank you for playing! "}
 		},
 	
-	}
+	},
+
+	aliron_church_quest = {
+		code = 'aliron_church_quest',
+		stages = {
+			start = {code ='start', name = 'Church Quest Name1', descript = "Church Quest Descript1"},
+			stage1 = {code ='stage1', name = 'Church Quest Name2', descript = "Church Quest Descript2"},
+			stage2 = {code ='stage2', name = 'Church Quest Name3', descript = "Church Quest Descript3"},
+		},
+	
+	},
 }
 

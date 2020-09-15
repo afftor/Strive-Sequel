@@ -78,6 +78,7 @@ var always_show = [
 func _ready():
 	if test_mode:
 		test_mode()
+		mansion_state_set("default")
 	var is_new_game = false
 	if globals.start_new_game == true:
 		globals.start_new_game = false
@@ -102,7 +103,7 @@ func _ready():
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
 	$MenuButton.connect("pressed", self, "show_menu")
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
-	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
+#	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
@@ -116,8 +117,10 @@ func _ready():
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
 
 func show_tutorial():
-	$tutorialpanel.show()
-	$tutorialpanel.raise()
+	if gui_controller.mansion_tutorial_panel == null:
+		gui_controller.mansion_tutorial_panel = input_handler.get_spec_node(input_handler.NODE_TUTORIAL_PANEL)
+	gui_controller.mansion_tutorial_panel.show()
+	gui_controller.mansion_tutorial_panel.raise()
 
 func show_menu():
 	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)
@@ -605,7 +608,7 @@ func test_mode():
 		)
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 200
+			ResourceScripts.game_res.materials[i] = 75
 		ResourceScripts.game_res.materials.bandage = 0
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
@@ -658,10 +661,10 @@ func test_mode():
 			)
 		)
 		ResourceScripts.game_progress.show_tutorial = true
-		ResourceScripts.game_progress.active_quests.append(
-			{code = 'election_global_quest', stage = 'stage1'}
-		)
-		# input_handler.interactive_message("servants_election_finish1", '',{})
+		# ResourceScripts.game_progress.active_quests.append(
+		# 	{code = 'aliron_church_quest', stage = 'start'}
+		# )
+		input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}

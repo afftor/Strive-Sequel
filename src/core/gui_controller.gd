@@ -11,6 +11,9 @@ var game_menu
 var classinfo
 var sex_panel
 var date_panel
+var mansion_tutorial_panel
+
+
 var current_screen
 var previous_screen
 var windows_opened = []
