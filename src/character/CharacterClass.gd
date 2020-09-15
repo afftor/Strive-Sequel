@@ -646,6 +646,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			check = globals.rng.randf()*100 <= i.value
 		'virgin':
 			check = get_stat('vaginal_virgin') == i.check
+		'class_unlocked':
+			return ResourceScripts.game_progress.if_class_unlocked(i.operant, i.class, i.check)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
