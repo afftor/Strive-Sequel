@@ -115,6 +115,7 @@ func _ready():
 #	if globals.start_new_game == true:
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
+	globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -512,7 +513,7 @@ func test_mode():
 		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 
-		ResourceScripts.game_globals.date = 7
+		ResourceScripts.game_globals.date = 3
 		ResourceScripts.game_globals.hour = 5
 
 		character.set_stat('obedience', 100)
@@ -663,7 +664,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		input_handler.interactive_message("ginny_visit", '',{})
+		# input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}

@@ -122,6 +122,7 @@ func _ready():
 	#globals.connecttexttooltip($panel/categories/Training,"Training together will end the encounter.")
 	$end/sexbutton.connect("pressed", self, 'start_sex')
 	$StopButton.connect("pressed",self,'doaction', ["stop"])
+	gui_controller.add_close_button($Items)
 #	initiate(person)
 
 func initiate(tempperson):
@@ -1111,7 +1112,9 @@ func stop(person, counter):
 	return text
 
 func useitem(person, counter):
-	$Items.show()
+	if !gui_controller.windows_opened.has($Items):
+		gui_controller.windows_opened.append($Items)
+	$Items.visible = !$Items.is_visible()
 	var array = []
 	for i in ResourceScripts.game_res.items.values():
 		if i.type == 'gear':
@@ -1123,6 +1126,7 @@ func useitem(person, counter):
 		var newbutton = input_handler.DuplicateContainerTemplate($Items/ScrollContainer/HBoxContainer)
 		newbutton.get_node("ItemTexture").texture = load(item.icon)
 		newbutton.get_node("Label").text = item.code.capitalize()
+		newbutton.get_node("Amount").text = str(ResourceScripts.game_res.items[item.id].amount)
 		newbutton.connect("pressed", self, "item_selected", [item])
 	# globals.ItemSelect(self, 'date_use', 'item_selected')
 	# return ''
@@ -1293,6 +1297,7 @@ func start_sex():
 	
 
 func _on_finishbutton_pressed():
+	gui_controller.windows_opened.clear()
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	hide()
@@ -1301,13 +1306,16 @@ func _on_finishbutton_pressed():
 	gui_controller.current_screen.show()
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.current_screen.mansion_state_set("default")
+		gui_controller.clock.show()
 		gui_controller.clock.raise()
 
 
 func _on_cancelsex_pressed():
+	gui_controller.windows_opened.clear()
 	$sexswitch.visible = false
 
 func _on_confirmsex_pressed():
+	gui_controller.windows_opened.clear()
 	if $sexswitch/cancelsex.visible == true:
 		calculateresults()
 	self.visible = false

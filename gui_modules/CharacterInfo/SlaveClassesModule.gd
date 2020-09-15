@@ -106,7 +106,7 @@ func class_category(name):
 	open(person, mode)
 
 func sort_classes(first,second):
-	return first.name >= second.name
+	return first.name <= second.name
 
 func open_class(classcode):
 	if !gui_controller.windows_opened.has($ClassPanel):

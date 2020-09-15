@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=36]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=37]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=38]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=39]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -449,6 +450,7 @@ __meta__ = {
 }
 
 [node name="end" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.890196 )
 margin_left = 618.0
 margin_top = 160.0
@@ -488,6 +490,9 @@ margin_right = 695.64
 margin_bottom = 529.728
 custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sexswitch" type="Panel" parent="."]
 visible = false
@@ -600,7 +605,20 @@ margin_bottom = 96.0
 custom_fonts/font = ExtResource( 12 )
 text = "Item Name"
 align = 1
-valign = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Items/ScrollContainer/HBoxContainer/Button"]
+margin_left = 4.0
+margin_top = 70.0
+margin_right = 97.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 39 )
+text = "5"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

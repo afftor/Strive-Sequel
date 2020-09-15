@@ -104,8 +104,6 @@ func sex_traits_open():
 	if all_traits_known:
 		array = person.get_unlocked_sex_traits().keys()
 		array.sort_custom(self, 'sort_traits')
-		
-		$SexTraitsPanel/VScrollBar.hide() if array == [] else $SexTraitsPanel/VScrollBar.show()
 	
 		for i in array:
 			var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)

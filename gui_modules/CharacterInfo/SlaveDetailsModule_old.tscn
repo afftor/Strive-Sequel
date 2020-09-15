@@ -90,6 +90,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Add Custom Description"
 
 [node name="nickname" type="Button" parent="VBoxContainer"]
@@ -101,6 +102,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Set Nickname"
 
 [node name="masternoun" type="Button" parent="VBoxContainer" groups=[
@@ -114,6 +116,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Set Master Noun"
 
 [node name="icon" type="Button" parent="VBoxContainer"]
@@ -125,6 +128,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Select Custom Portrait"
 
 [node name="body" type="Button" parent="VBoxContainer"]
@@ -136,6 +140,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Select Custom Body"
 
 [node name="traits" type="Button" parent="VBoxContainer"]
@@ -145,6 +150,7 @@ margin_right = 315.0
 margin_bottom = 307.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 4 )
+toggle_mode = true
 text = "Manage Sex Traits"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
@@ -406,8 +412,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
+current_dir = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel"
+current_path = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -501,8 +507,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
+current_dir = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel"
+current_path = "F:/GAMEDEV/GODOT/Strive_after_crash/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -556,9 +562,9 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SexTraitsPanel"]
 light_mask = 0
-margin_left = 34.0
+margin_left = 36.0
 margin_top = 38.0
-margin_right = 349.0
+margin_right = 337.0
 margin_bottom = 418.0
 theme = ExtResource( 3 )
 __meta__ = {
@@ -567,19 +573,16 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SexTraitsPanel/ScrollContainer"]
 light_mask = 0
-margin_right = 315.0
+margin_right = 301.0
 size_flags_horizontal = 3
 custom_constants/separation = 5
 
 [node name="Button" type="Button" parent="SexTraitsPanel/ScrollContainer/VBoxContainer"]
 visible = false
 light_mask = 0
-margin_right = 315.0
+margin_right = 301.0
 margin_bottom = 52.0
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 toggle_mode = true
 text = "Trait"
 
@@ -605,17 +608,6 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "TraitCapacity"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TraitsNotLearned" type="RichTextLabel" parent="SexTraitsPanel"]
-margin_left = 34.0
-margin_top = 49.0
-margin_right = 348.0
-margin_bottom = 276.0
-custom_fonts/normal_font = ExtResource( 2 )
-text = "NOTALLTRAITSLEARNED"
 __meta__ = {
 "_edit_use_anchors_": false
 }
