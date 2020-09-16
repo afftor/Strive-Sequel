@@ -276,20 +276,22 @@ func remove_trait(tr_code):
 func check_trait(trait):
 	return (traits.has(trait) or sex_traits.has(trait) or negative_sex_traits.has(trait))
 
-func add_negative_sex_trait(code):
-	negative_sex_traits[code] = false
 
 func remove_negative_sex_trait(code):
 	negative_sex_traits.erase(code)
 
 func add_sex_trait(code, known = false):
-	if !unlocked_sex_traits.has(code):
-		unlocked_sex_traits.push_back(code)
-	if !sex_traits.has(code):
-		sex_traits[code] = known
-		if parent.is_players_character:
-			var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
-			globals.text_log_add('char', text)
+	var trait = Traitdata.sex_traits[code]
+	if trait.negative == true:
+		negative_sex_traits[code] = known
+	else:
+		if !unlocked_sex_traits.has(code):
+			unlocked_sex_traits.push_back(code)
+		if !sex_traits.has(code):
+			sex_traits[code] = known
+			if parent.is_players_character:
+				var text = get_short_name() + ": " + "New Sexual Trait Acquired - " + Traitdata.sex_traits[code].name
+				globals.text_log_add('char', text)
 
 func remove_sex_trait(code, absolute = true):
 	if absolute: unlocked_sex_traits.erase(code)
@@ -341,12 +343,15 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
 				statlist[i] = chardata[i]
 	if chardata.has('slave_class'): set_slave_category(chardata.slave_class)
+	if chardata.has("sex_traits"):
+		for i in chardata.sex_traits:
+			add_sex_trait(i)
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
@@ -434,7 +439,7 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	while rolls > 0:
 		var number = randi()%traitarray.size()
 		var newtrait = traitarray[number]
-		parent.add_negative_sex_trait(newtrait.code)
+		parent.add_sex_trait(newtrait.code)
 		traitarray.remove(number)
 		rolls -= 1
 	traitarray.clear()

@@ -21,7 +21,10 @@ var deities = {
 
 
 func selena_item(item):
-	
 	var text = ''
+	
+	
+	
+	return text
 
 

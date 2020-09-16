@@ -13,9 +13,6 @@ var quest_template = {
 }
 
 
-func _ready():
-	for i in worlddata.easter_egg_characters.values():
-		i.code = i.name.to_lower()
 
 func build_world():
 	for i in worlddata.lands:
@@ -146,6 +143,8 @@ func make_guild(code, area):
 			guilddatatemplate.races.append(i)
 	if data.has("events"):
 		guilddatatemplate.events = data.events.duplicate(true)
+	if data.has("reputation_shop"):
+		guilddatatemplate.reputation_shop = data.reputation_shop.duplicate(true)
 	if data.slavenumber.size() > 0:
 		data.slavenumber = round(rand_range(data.slavenumber[0], data.slavenumber[1]))
 	if data.questnumber.size() > 0:

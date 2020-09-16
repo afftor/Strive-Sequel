@@ -493,7 +493,7 @@ func test_mode():
 		character.is_players_character = true
 		globals.impregnate(character, character)
 		#character.get_stat('pregnancy').duration = 2
-
+		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
@@ -594,7 +594,7 @@ func test_mode():
 					value = 'daisy',
 					args = [
 						{code = 'sexuals_factor', value = 1, operant = "+"},
-						{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
+						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'obedience', operant = '+', value = 30},
 						{code = 'tag', operant = 'remove', value = 'no_sex'},
