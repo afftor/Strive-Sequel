@@ -90,6 +90,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Add Custom Description"
 
 [node name="nickname" type="Button" parent="VBoxContainer"]
@@ -101,6 +102,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Set Nickname"
 
 [node name="masternoun" type="Button" parent="VBoxContainer" groups=[
@@ -114,6 +116,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Set Master Noun"
 
 [node name="icon" type="Button" parent="VBoxContainer"]
@@ -125,6 +128,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Select Custom Portrait"
 
 [node name="body" type="Button" parent="VBoxContainer"]
@@ -136,6 +140,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Select Custom Body"
 
 [node name="traits" type="Button" parent="VBoxContainer"]
@@ -145,6 +150,7 @@ margin_right = 315.0
 margin_bottom = 307.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 4 )
+toggle_mode = true
 text = "Manage Sex Traits"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
@@ -577,9 +583,6 @@ light_mask = 0
 margin_right = 315.0
 margin_bottom = 52.0
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 toggle_mode = true
 text = "Trait"
 

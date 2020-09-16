@@ -77,8 +77,28 @@ func _ready():
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
+	$TestButton.connect("pressed", self, "test")
+	$TestButton.visible = gui_controller.mansion.test_mode
+	$JournalButton.connect("toggled", self, "open_journal")
+	gui_controller.win_btn_connections_handler(true, $MansionJournalModule, $JournalButton)
+	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
+
+func test():
+	for win in gui_controller.windows_opened:
+		print(win.name)
+
+
+func open_journal(pressed):
+	if pressed:
+		ResourceScripts.core_animations.UnfadeAnimation($MansionJournalModule, 0.5)
+	else:
+		ResourceScripts.core_animations.FadeAnimation($MansionJournalModule, 0.5)
+		yield(get_tree().create_timer(0.5), "timeout")
+	$MansionJournalModule.visible = pressed
+	$MansionJournalModule.open()
+	gui_controller.windows_opened.append($MansionJournalModule) if pressed else gui_controller.windows_opened.erase($MansionJournalModule)
 
 
 func open(location):

@@ -197,10 +197,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 1.46667, 1.86667, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( -0.198, 0, 1.46667, 1.86667, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -550 ), Vector2( 0, -400 ), Vector2( 0, 500 ) ]
+"values": [ Vector2( 0, -550.237 ), Vector2( 0, -1200 ), Vector2( 0, -550 ), Vector2( 0, -400 ), Vector2( 0, 1200 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("CloseButton:modulate")
@@ -1113,6 +1113,7 @@ align = 1
 valign = 1
 
 [node name="Rewards" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -1221,7 +1222,7 @@ __meta__ = {
 }
 
 [node name="TextureRect7" type="TextureRect" parent="Rewards"]
-visible = false
+self_modulate = Color( 1, 1, 1, 5.72091e-05 )
 material = ExtResource( 6 )
 margin_left = 522.16
 margin_top = 266.515

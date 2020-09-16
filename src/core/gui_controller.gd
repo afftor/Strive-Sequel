@@ -65,6 +65,10 @@ func add_close_button(scene, position = "snap"):
 
 
 func close_scene(scene):
+	print(window_button_connections[scene])
+	if window_button_connections.has(scene) && window_button_connections[scene] != null:
+		window_button_connections[scene].pressed = false
+		return
 	scene.hide()
 	if windows_opened.has(scene):
 		windows_opened.erase(scene)

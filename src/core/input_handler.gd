@@ -531,7 +531,7 @@ func itemshadeimage(node, item):
 			node.material.set_shader_param(part, color)
 
 
-func operate(operation, value1, value2):
+func operate(operation, value1, value2):	
 	var result
 	
 	match operation:

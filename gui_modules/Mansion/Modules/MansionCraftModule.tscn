@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -13,26 +13,26 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=11]
 [ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=13]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_inactive.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_hover.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/iconsitems/PotionLesser.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/gui/text scene/textbutton.png" type="Texture" id=18]
 [ext_resource path="res://assets/images/gui/text scene/textbuttondisabled.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_active.png" type="Texture" id=20]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_cooking_active.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_cooking_hover.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_cooking_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonhl.png" type="Texture" id=22]
 [ext_resource path="res://assets/images/iconsitems/item_meat.png" type="Texture" id=23]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_inactive.png" type="Texture" id=24]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_active.png" type="Texture" id=25]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_inactive.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_pressed.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_cooking.png" type="Texture" id=26]
 [ext_resource path="res://assets/images/iconsitems/ElvenWood.png" type="Texture" id=27]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/frame_tool.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=30]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_cooking_inactive.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_hover.png" type="Texture" id=31]
 [ext_resource path="res://assets/images/gui/text scene/textbuttonpressed.png" type="Texture" id=32]
-[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_active.png" type="Texture" id=33]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_hover.png" type="Texture" id=33]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_pressed.png" type="Texture" id=34]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_all.png" type="Texture" id=35]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=36]
@@ -50,6 +50,10 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Craft_One_Side.tres" type="StyleBox" id=48]
 [ext_resource path="res://src/scenes/HScrollBar.tres" type="StyleBox" id=49]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Craft_BG.tres" type="StyleBox" id=50]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring.png" type="Texture" id=51]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_pressed.png" type="Texture" id=52]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy.png" type="Texture" id=53]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_pressed.png" type="Texture" id=54]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -134,23 +138,25 @@ __meta__ = {
 }
 
 [node name="categories" type="HBoxContainer" parent="."]
-margin_left = 64.0
-margin_top = 56.0
-margin_right = 1030.0
-margin_bottom = 176.0
-custom_constants/separation = 74
+margin_left = 40.0
+margin_top = 6.0
+margin_right = 1045.0
+margin_bottom = 226.0
+custom_constants/separation = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="smith" type="TextureButton" parent="categories"]
-margin_right = 170.0
-margin_bottom = 120.0
+margin_right = 240.0
+margin_bottom = 220.0
 toggle_mode = true
-texture_normal = ExtResource( 14 )
+texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 14 )
 
 [node name="Label" type="Label" parent="categories/smith"]
+visible = false
 margin_left = 18.0
 margin_top = 129.0
 margin_right = 145.0
@@ -163,14 +169,16 @@ __meta__ = {
 }
 
 [node name="cooking" type="TextureButton" parent="categories"]
-margin_left = 244.0
-margin_right = 414.0
-margin_bottom = 120.0
+margin_left = 255.0
+margin_right = 495.0
+margin_bottom = 220.0
 toggle_mode = true
-texture_normal = ExtResource( 31 )
+texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 20 )
 
 [node name="Label" type="Label" parent="categories/cooking"]
+visible = false
 margin_left = 31.0
 margin_top = 129.0
 margin_right = 158.0
@@ -183,14 +191,16 @@ __meta__ = {
 }
 
 [node name="tailor" type="TextureButton" parent="categories"]
-margin_left = 488.0
-margin_right = 658.0
-margin_bottom = 120.0
+margin_left = 510.0
+margin_right = 750.0
+margin_bottom = 220.0
 toggle_mode = true
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 20 )
+texture_normal = ExtResource( 51 )
+texture_pressed = ExtResource( 52 )
+texture_hover = ExtResource( 33 )
 
 [node name="Label" type="Label" parent="categories/tailor"]
+visible = false
 margin_left = 33.0
 margin_top = 129.0
 margin_right = 160.0
@@ -203,14 +213,16 @@ __meta__ = {
 }
 
 [node name="alchemy" type="TextureButton" parent="categories"]
-margin_left = 732.0
-margin_right = 902.0
-margin_bottom = 120.0
+margin_left = 765.0
+margin_right = 1005.0
+margin_bottom = 220.0
 toggle_mode = true
-texture_normal = ExtResource( 26 )
-texture_pressed = ExtResource( 33 )
+texture_normal = ExtResource( 53 )
+texture_pressed = ExtResource( 54 )
+texture_hover = ExtResource( 31 )
 
 [node name="Label" type="Label" parent="categories/alchemy"]
+visible = false
 margin_left = 28.0
 margin_top = 129.0
 margin_right = 155.0
@@ -939,6 +951,7 @@ margin_top = 243.0
 margin_right = 995.0
 margin_bottom = 301.0
 theme = ExtResource( 10 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select Characters"
 
 [node name="CraftOrder" type="Label" parent="."]

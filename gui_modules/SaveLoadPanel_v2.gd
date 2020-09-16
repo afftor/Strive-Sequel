@@ -18,7 +18,7 @@ func ResetSavePanel():
 var savedata = {}
 
 func SavePanelOpen():
-	show()
+#	show()
 	saveloadmode = 'save'
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = true
@@ -43,7 +43,7 @@ func SavePanelOpen():
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
 
 func LoadPanelOpen():
-	show()
+#	show()
 	saveloadmode = 'load'
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$LineEdit.editable = false

@@ -424,8 +424,8 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
-	print(ResourceScripts.game_party.active_tasks)
-	print(input_handler)
+	# print(ResourceScripts.game_party.active_tasks)
+	print(ResourceScripts.game_progress.unlocked_classes)
 
 
 
@@ -460,6 +460,7 @@ func test_mode():
 		character.unlock_class("trainer")
 		character.unlock_class("thief")
 		character.unlock_class("engineer")
+		character.unlock_class("scholar")
 		#character.travel.location = 'L4'
 		#character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 1
@@ -664,7 +665,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		# input_handler.interactive_message("ginny_visit", '',{})
+		input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}

@@ -6,8 +6,8 @@ func _ready():
 	add_close_button($saveloadpanel)
 	add_close_button($Options)
 	add_close_button(self)
-	$VBoxContainer/Save.connect('pressed', $saveloadpanel, 'SavePanelOpen')
-	$VBoxContainer/Load.connect('pressed', $saveloadpanel, 'LoadPanelOpen')
+	$VBoxContainer/Save.connect('pressed', self, 'SavePanelOpen')
+	$VBoxContainer/Load.connect('pressed', self, 'LoadPanelOpen')
 	$VBoxContainer/Load.connect('pressed', self, 'append_saveload')
 	$VBoxContainer/Save.connect('pressed', self, 'append_saveload')
 	$VBoxContainer/Options.connect('pressed', self, 'OptionsOpen')
@@ -19,6 +19,14 @@ func _ready():
 func open():
 	show()
 	
+func SavePanelOpen():
+	$saveloadpanel.SavePanelOpen()
+	$saveloadpanel.show()
+
+
+func LoadPanelOpen():
+	$saveloadpanel.LoadPanelOpen()
+	$saveloadpanel.show()
 
 func OptionsOpen():
 	if !gui_controller.windows_opened.has($Options):
