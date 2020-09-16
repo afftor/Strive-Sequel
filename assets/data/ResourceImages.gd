@@ -114,7 +114,8 @@ var dynamic_backgrounds = {
 }
 
 var portraits = {
-	daisy = 'res://assets/images/portraits/daisy.png'
+	daisy = 'res://assets/images/portraits/daisy.png',
+	daisy_sad = "res://assets/images/portraits/daisysad.png",
 }
 
 var gui = {

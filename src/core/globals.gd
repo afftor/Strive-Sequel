@@ -985,10 +985,6 @@ func return_characters_from_location(locationid):
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
 
-func make_story_character(args):
-	var newchar = ResourceScripts.scriptdict.class_slave.new()
-	newchar.generate_predescribed_character(ResourceScripts.world_gen.pregen_characters[args])
-	return newchar
 
 func common_effects(effects):
 	for i in effects:
@@ -1275,4 +1271,4 @@ func valuecheck(dict):
 					counter += 1
 			return counter >= dict.value
 		'class_unlocked':
-			return ResourceScripts.game_progress.if_class_unlocked(dict.operant, dict.class, dict.check)
+			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)

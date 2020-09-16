@@ -101,9 +101,6 @@ func get_weapon_range():
 func get_damage_mod(skill:Dictionary):
 	return skills.get_damage_mod(skill)
 
-func add_negative_sex_trait(code):
-	statlist.add_negative_sex_trait(code)
-
 func remove_negative_sex_trait(code):
 	statlist.remove_negative_sex_trait(code)
 
@@ -647,7 +644,7 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 		'virgin':
 			check = get_stat('vaginal_virgin') == i.check
 		'class_unlocked':
-			return ResourceScripts.game_progress.if_class_unlocked(i.operant, i.class, i.check)
+			return ResourceScripts.game_progress.if_class_unlocked(i.class, i.check, i.operant)
 	return check
 
 func decipher_reqs(reqs, colorcode = false):
