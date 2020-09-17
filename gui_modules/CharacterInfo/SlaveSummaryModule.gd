@@ -67,20 +67,21 @@ func show_summary():
 			i.get_node("Label").set("custom_colors/font_color", Color(1,1,1))
 
 	for i in ['physics','wits','charm','sexuals']:
+		var text = ''
+		if person.get_stat(i+"_bonus") > 0:
+			text += '+'
+		if person.get_stat(i+"_bonus") != 0:
+			text += str(floor(person.get_stat(i+"_bonus")))
 		if i != 'sexuals':
 			var color = set_color(person.get_stat(i+'_bonus'))
-			var text = ''
-			if person.get_stat(i+"_bonus") > 0:
-				text += '+'
-			if person.get_stat(i+"_bonus") != 0:
-				text += str(floor(person.get_stat(i+"_bonus")))
+
 			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))  + text
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.statlist[i]))  + text
 			get_node("VBoxContainer2/TextureRect4/" + i + '2').text = str(person.get_stat(i+'_factor') * 20)
 		else:
 			var color = set_color(person.get_stat(i+'_bonus'))
-			get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
-			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)))
+			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
+			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.statlist.statlist[i])) + text
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
 	
 	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())

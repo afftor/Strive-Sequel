@@ -10,16 +10,16 @@ var lastsave = null
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
-	add_close_button($NewGamePanel)
-	add_close_button($saveloadpanel)
-	add_close_button($Options)
-	var buttonlist = ['continueb','newgame','loadwindow','options','mods' ,'quit']
+	gui_controller.add_close_button($NewGamePanel)
+	gui_controller.add_close_button($saveloadpanel)
+	gui_controller.add_close_button($Options)
+	var buttonlist = ['continue','newgame','loadwindow','options','mods' ,'quit']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()
 	for i in range(0,6):
-		$VBoxContainer.get_child(i).connect("pressed",self,buttonlist[i])
+		$VBoxContainer.get_child(i).connect("toggled",self,buttonlist[i], [$VBoxContainer.get_child(i)])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
@@ -73,10 +73,10 @@ func continueb():
 	globals.LoadGame(lastsave.get_file().get_basename());
 
 
-func newgame():
-	update()
-	$VBoxContainer/newgamebutton/TextureRect.show()
-	$NewGamePanel.show()
+func newgame(pressed, pressed_button):
+	gui_controller.win_btn_connections_handler(pressed, $NewGamePanel, pressed_button)
+	self.current_pressed_btn = pressed_button
+	$NewGamePanel.visible = pressed
 	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
 
 func start_game():
@@ -91,6 +91,7 @@ func start_game_confirm():
 	get_node("/root").remove_child(self)
 	input_handler.ChangeScene('mansion')
 	yield(globals, 'scene_changed')
+	gui_controller.windows_opened.clear()
 	self.queue_free()
 
 
@@ -102,13 +103,16 @@ func CloseDemoWarn():
 	$DemoPanel.hide()
 
 
-func loadwindow():
-	update()
+func loadwindow(pressed, pressed_button):
+	gui_controller.win_btn_connections_handler(pressed, $saveloadpanel, pressed_button)
+	self.current_pressed_btn = pressed_button
+	$saveloadpanel.visible = pressed
 	$saveloadpanel.LoadPanelOpen()
 
-func options():
-	update()
-	$Options.open()
+func options(pressed, pressed_button):
+	gui_controller.win_btn_connections_handler(pressed, $Options, pressed_button)
+	self.current_pressed_btn = pressed_button
+	$Options.visible = pressed
 
 func quit():
 #	input_handler.globalsettings.window_size = OS.window_size
@@ -117,9 +121,10 @@ func quit():
 	input_handler.quit()
 
 
-func mods():
-	update()
-	$mod_panel.visible = true
+func mods(pressed, pressed_button):
+	gui_controller.win_btn_connections_handler(pressed, $mods_panel, pressed_button)
+	self.current_pressed_btn = pressed_button
+	$mod_panel.visible = pressed
 
 var settingarray = ['futa','furry','turn_based_time_flow']
 
@@ -157,23 +162,32 @@ func start_preset_set(button):
 
 
 
-func add_close_button(scene):
-	var pos_in_tree = scene.get_child_count()
-	scene.rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
-	var closebutton = load(ResourceScripts.scenedict.close).instance()
-	scene.add_child(closebutton)
-	scene.move_child(closebutton, pos_in_tree)
-	closebutton.connect("pressed", self, 'close_scene', [scene])
-	var rect = scene.get_global_rect()
-	var pos = Vector2(rect.end.x - closebutton.rect_size.x, rect.position.y)
-	closebutton.rect_global_position = pos
+# func add_close_button(scene):
+# 	var pos_in_tree = scene.get_child_count()
+# 	scene.rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
+# 	var closebutton = load(ResourceScripts.scenedict.close).instance()
+# 	scene.add_child(closebutton)
+# 	scene.move_child(closebutton, pos_in_tree)
+# 	closebutton.connect("pressed", self, 'close_scene', [scene])
+# 	var rect = scene.get_global_rect()
+# 	var pos = Vector2(rect.end.x - closebutton.rect_size.x, rect.position.y)
+# 	closebutton.rect_global_position = pos
 
 
-func close_scene(scene):
-	scene.hide()
+
+# func update():
+# 	var panels = [$DemoPanel, $mod_panel, $NewGamePanel, $Changelogpanel, $saveloadpanel, $Options]
+# 	for i in panels:
+# 		i.hide()
 
 
-func update():
-	var panels = [$DemoPanel, $mod_panel, $NewGamePanel, $Changelogpanel, $saveloadpanel, $Options]
-	for i in panels:
-		i.hide()
+var current_pressed_btn setget set_btn_pressed
+
+
+func set_btn_pressed(value):
+	if current_pressed_btn == null:
+		current_pressed_btn = value
+		return
+	if value != current_pressed_btn:
+		current_pressed_btn.pressed = false
+		current_pressed_btn = value

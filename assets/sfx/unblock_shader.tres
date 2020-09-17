@@ -1,6 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
 [sub_resource type="Shader" id=1]
+resource_local_to_scene = true
 code = "shader_type canvas_item;
 uniform vec2 pos;
 uniform sampler2D mask;
@@ -14,5 +15,6 @@ void fragment(){
 }"
 
 [resource]
+resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/pos = Vector2( 0, -500.002 )
+shader_param/pos = Vector2( 0, -1200 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=16]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/ImageSelect.gd" type="Script" id=18]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=19]
 
@@ -91,6 +90,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Add Custom Description"
 
 [node name="nickname" type="Button" parent="VBoxContainer"]
@@ -102,6 +102,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Set Nickname"
 
 [node name="masternoun" type="Button" parent="VBoxContainer" groups=[
@@ -115,6 +116,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Set Master Noun"
 
 [node name="icon" type="Button" parent="VBoxContainer"]
@@ -126,6 +128,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Select Custom Portrait"
 
 [node name="body" type="Button" parent="VBoxContainer"]
@@ -137,6 +140,7 @@ rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 10 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 text = "Select Custom Body"
 
 [node name="traits" type="Button" parent="VBoxContainer"]
@@ -146,6 +150,7 @@ margin_right = 315.0
 margin_bottom = 307.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 4 )
+toggle_mode = true
 text = "Manage Sex Traits"
 
 [node name="IconBlock" type="VBoxContainer" parent="VBoxContainer"]
@@ -407,8 +412,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
-current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
+current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
+current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -502,8 +507,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
-current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
+current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
+current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -537,17 +542,6 @@ margin_top = 414.0
 margin_right = 379.0
 margin_bottom = 882.0
 custom_styles/panel = ExtResource( 5 )
-script = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VScrollBar" type="VScrollBar" parent="SexTraitsPanel"]
-light_mask = 0
-margin_top = 38.0
-margin_right = 12.0
-margin_bottom = 418.0
-theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -572,6 +566,7 @@ margin_left = 34.0
 margin_top = 38.0
 margin_right = 349.0
 margin_bottom = 418.0
+theme = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -588,9 +583,6 @@ light_mask = 0
 margin_right = 315.0
 margin_bottom = 52.0
 theme = ExtResource( 4 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
-custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 toggle_mode = true
 text = "Trait"
 

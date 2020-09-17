@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=20]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExploreFullSlaveInfo.gd" type="Script" id=21]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask_exploration.png" type="Texture" id=22]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=23]
 
 [node name="ExploreFullSlaveModule" type="Panel" groups=[
 "pauseprocess",
@@ -96,6 +97,7 @@ margin_left = 28.5601
 margin_top = 81.947
 margin_right = 77.5601
 margin_bottom = 105.947
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1

@@ -78,6 +78,7 @@ var always_show = [
 func _ready():
 	if test_mode:
 		test_mode()
+		mansion_state_set("default")
 	var is_new_game = false
 	if globals.start_new_game == true:
 		globals.start_new_game = false
@@ -102,7 +103,7 @@ func _ready():
 	gui_controller.clock = input_handler.get_spec_node(input_handler.NODE_CLOCK)
 	$MenuButton.connect("pressed", self, "show_menu")
 	$TutorialButton.connect('pressed', self, 'show_tutorial')
-	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
+#	$tutorialpanel/Button.connect('pressed',$tutorialpanel,'hide')
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
@@ -114,10 +115,13 @@ func _ready():
 #	if globals.start_new_game == true:
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
+	globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
 
 func show_tutorial():
-	$tutorialpanel.show()
-	$tutorialpanel.raise()
+	if gui_controller.mansion_tutorial_panel == null:
+		gui_controller.mansion_tutorial_panel = input_handler.get_spec_node(input_handler.NODE_TUTORIAL_PANEL)
+	gui_controller.mansion_tutorial_panel.show()
+	gui_controller.mansion_tutorial_panel.raise()
 
 func show_menu():
 	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)
@@ -420,8 +424,8 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
-	print(ResourceScripts.game_party.active_tasks)
-	print(input_handler)
+	# print(ResourceScripts.game_party.active_tasks)
+	print(ResourceScripts.game_progress.unlocked_classes)
 
 
 
@@ -445,17 +449,18 @@ func test_mode():
 		character.add_stat('physics', 100)
 		character.add_stat('hpmax', 100)
 		character.unlock_class("master")
-		character.unlock_class("caster")
-		character.unlock_class("apprentice")
-		character.unlock_class("rogue")
-		character.unlock_class("druid")
-		character.unlock_class("assassin")
-		character.unlock_class("ruler")
-		character.unlock_class("watchdog")
-		character.unlock_class("director")
-		character.unlock_class("trainer")
-		character.unlock_class("thief")
-		character.unlock_class("engineer")
+		# character.unlock_class("caster")
+		# character.unlock_class("apprentice")
+		# character.unlock_class("rogue")
+		# character.unlock_class("druid")
+		# character.unlock_class("assassin")
+		# character.unlock_class("ruler")
+		# character.unlock_class("watchdog")
+		# character.unlock_class("director")
+		# character.unlock_class("trainer")
+		# character.unlock_class("thief")
+		# character.unlock_class("engineer")
+		# character.unlock_class("scholar")
 		#character.travel.location = 'L4'
 		#character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 1
@@ -509,7 +514,7 @@ func test_mode():
 		character.create('HalfkinCat', 'random', 'random')
 		characters_pool.move_to_state(character.id)
 
-		ResourceScripts.game_globals.date = 7
+		ResourceScripts.game_globals.date = 3
 		ResourceScripts.game_globals.hour = 5
 
 		character.set_stat('obedience', 100)
@@ -604,7 +609,7 @@ func test_mode():
 		)
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 200
+			ResourceScripts.game_res.materials[i] = 75
 		ResourceScripts.game_res.materials.bandage = 0
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
@@ -657,10 +662,10 @@ func test_mode():
 			)
 		)
 		ResourceScripts.game_progress.show_tutorial = true
-		ResourceScripts.game_progress.active_quests.append(
-			{code = 'election_global_quest', stage = 'stage1'}
-		)
-		# input_handler.interactive_message("servants_election_finish1", '',{})
+		# ResourceScripts.game_progress.active_quests.append(
+		# 	{code = 'aliron_church_quest', stage = 'start'}
+		# )
+		# input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}
@@ -672,8 +677,8 @@ func test_mode():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.reputation = 100
-			i.totalreputation += 100
+			i.reputation = 1000
+			i.totalreputation += 1000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 
 		# character = ResourceScripts.scriptdict.class_slave.new()

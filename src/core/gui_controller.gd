@@ -11,6 +11,9 @@ var game_menu
 var classinfo
 var sex_panel
 var date_panel
+var mansion_tutorial_panel
+
+
 var current_screen
 var previous_screen
 var windows_opened = []
@@ -62,6 +65,9 @@ func add_close_button(scene, position = "snap"):
 
 
 func close_scene(scene):
+	if window_button_connections.has(scene) && window_button_connections[scene] != null:
+		window_button_connections[scene].pressed = false
+		return
 	scene.hide()
 	if windows_opened.has(scene):
 		windows_opened.erase(scene)

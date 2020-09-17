@@ -1085,6 +1085,9 @@ func common_effects(effects):
 			'update_guild':
 				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
 				input_handler.exploration_node.enter_guild(input_handler.active_faction)
+			'update_city':
+				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				input_handler.exploration_node.open_city(input_handler.active_location.id)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':

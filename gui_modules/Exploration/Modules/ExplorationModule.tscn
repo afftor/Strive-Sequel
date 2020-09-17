@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=2]
+[gd_scene load_steps=129 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -99,6 +99,12 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=97]
 [ext_resource path="res://gui_modules/Exploration/Modules/LocationGui.tscn" type="PackedScene" id=98]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=99]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=100]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_pressed.png" type="Texture" id=102]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_hover.png" type="Texture" id=103]
+[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue.png" type="Texture" id=104]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonevent_disabled.png" type="Texture" id=107]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -472,9 +478,9 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SlaveMarket/SlaveList"]
-margin_left = 82.0
+margin_left = 56.0
 margin_top = 147.0
-margin_right = 487.0
+margin_right = 461.0
 margin_bottom = 636.0
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -2305,3 +2311,115 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GuildShop" type="Control" parent="."]
+visible = false
+margin_left = 468.0
+margin_top = 16.8675
+margin_right = 1528.0
+margin_bottom = 1082.87
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="GuildShop"]
+margin_right = 1060.0
+margin_bottom = 1050.0
+texture = ExtResource( 104 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuildShop"]
+margin_left = 67.0
+margin_top = 45.0
+margin_right = 1016.0
+margin_bottom = 668.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuildShop/ScrollContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 100.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 95 )
+texture_pressed = ExtResource( 80 )
+texture_hover = ExtResource( 99 )
+texture_disabled = ExtResource( 107 )
+
+[node name="Title" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
+margin_left = 128.0
+margin_top = 34.1325
+margin_right = 362.0
+margin_bottom = 66.1325
+text = "Thing to buy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
+margin_left = 813.043
+margin_top = 34.1325
+margin_right = 863.043
+margin_bottom = 66.1325
+text = "Price"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
+margin_left = 9.0
+margin_top = 8.0
+margin_right = 89.0
+margin_bottom = 88.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
+visible = false
+margin_left = 52.001
+margin_top = 62.1325
+margin_right = 92.001
+margin_bottom = 94.1325
+text = "1"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="RichTextLabel" parent="GuildShop"]
+margin_left = 48.0
+margin_top = 734.0
+margin_right = 1016.0
+margin_bottom = 1019.0
+bbcode_enabled = true
+
+[node name="JournalButton" type="TextureButton" parent="."]
+margin_left = 1848.73
+margin_top = 16.8675
+margin_right = 1902.73
+margin_bottom = 67.8674
+toggle_mode = true
+texture_normal = ExtResource( 101 )
+texture_pressed = ExtResource( 102 )
+texture_hover = ExtResource( 103 )
+
+[node name="MansionJournalModule" parent="." instance=ExtResource( 100 )]
+visible = false
+margin_left = 530.0
+margin_top = 177.0
+margin_right = 1390.0
+margin_bottom = 977.0
+
+[node name="TestButton" type="Button" parent="."]
+margin_left = 1821.4
+margin_top = 991.439
+margin_right = 1880.24
+margin_bottom = 1037.69
+text = "Test"

@@ -2439,9 +2439,57 @@ var TranslationDict = {
 	SEXTRAITHELP = "Sex Traits can provide special effects during sex interactions. Traits have a chance to be unlocked in sex interaction by performing specific actions related to it. After unlock Traits can be toggled on and off. Maximum number of traits which can be active in same time is decided by {color=yellow|Sexuals Factor}. It also increase chance to unlock a trait. ",
 	SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
 
+	# Aliron Church
+	GINNYVISIT = "In the morning your mansion has a visitor. As you open the door, you see a young girl in a nun outfit.\n\n- Hello, [sir]. I'm Ginny. I've heard you just moved here and I was hoping to catch your interest as I work at the church of Celena.",
+	GINNYVISITREPLY1 = "Alright, but make it quick",
+	GINNYVISITREPLY2 = "Why don't you come inside?",
+	GINNYVISITREPLY3 = "Not interested in whatever you’re selling",
 
+	GINNYVISIT2_1 = "- Ah, I won't take your time, just wanted to say that we are open to any new visitors. Celena wishes to help anyone in need and I hope to build a stable, kind community. I'd be happy if you decide to learn more and drop by at some point. Now, I won't be taking anymore of your time. Goodbye!",
+	GINNYVISIT2_2 = "- I'm sorry, but I can't stay for long. Plus I've been told not to trust land owners as they often kidnap and enslave strangers... I mean I don't think you do that, but still. Anyway, if you wish to know more, feel free to see us, I'm always happy to get new visitors. Goodbye!",
+	GINNYVISIT2_3 = "- Sorry to distract you! I just wanted to tell you since you are new, you can visit our church if you are interested... I'm sorry, goodbye. ",
 
+	ALIRONCHURCHFIRSTCOME = "You enter a small local church. The building seems not very spacious but fairly clean and cozy. As your entrance is spotted, Ginny rushes to greet you.\n\n- Welcome, [sir]. I'm glad you came after all, with Celena's help. Are you seeking guidance or maybe you want to become a member?",
+	ALIRONCHURCHFIRSTCOMEREPLY1 = "I'm just wandering around",
+	ALIRONCHURCHFIRSTCOMEREPLY2 = "I'd like to learn more about your religion",
+	ALIRONCHURCHFIRSTCOMEREPLY3 = "I think I'll come in another time",
 
+	ALIRONCHURCHINTRODUCTION1 = "- Oh, this is great! It's always a pleasure to get to know new people who come to the city. Some complain about it being overcrowded but we are able to get more members too. This is a Church of Celena. I know, it does not look like much, but we are the biggest religious establishment around the city. Since Aliron is not very pious, we don't get much of an offertory to afford a better place.",
+	ALIRONCHURCHINTRODUCTION2 = "- Wonderful! This is a Church of Celena. I know, it does not look like much, but we are the biggest religious establishment around the city. Granted, Aliron is not very pious, but still. We worship the Goddess Celena and help others in need. ",
+
+	ALIRONCHURCHINTRODUCTIONREPLY1 = "Can you tell me more about Celena?",
+	ALIRONCHURCHINTRODUCTIONREPLY2 = "Is there some way I could help?",
+	ALIRONCHURCHINTRODUCTIONREPLY3 = "Leave",
+
+	ALIRONCHURCHLEAVE = "Please come again!",
+
+	ALIRONCHURCHCELENA = "- Gladly. Celena is the Goddess who's associated with us humans. She's the embodiment of compassion and always watches out for those in trouble. She's also the goddess of life and harvest so if you come across her shrine, you can offer it some food. ",
+	ALIRONCHURCHCELENAREPLY1 = "Are gods even real? Do you have any proof?",
+	ALIRONCHURCHCELENAREPLY2 = "There are other deities?",
+	ALIRONCHURCHCELENAREPLY3 = "Tell me about shrines",
+	ALIRONCHURCHCELENAREPLY4 = "I've learned enough",
+	
+	ALIRONCHURCHCELENAANSWER_1 = "It's true you might doubt their existence, but it's apparent after some time. You can ask Celena for help or a blessing, and you will often be able to receive it in some form. Yes, it might not be as epic as their status suggests, but it's an undeniable proof that they still watch over us.",
+	ALIRONCHURCHCELENAANSWER_2 = "- Naturally! Most other races don't recognize Celena and have their own gods who respond to their prayers. I know the forest elves worship Freya and their trees, but how can they compare to Celena's omnipresent love? ",
+	ALIRONCHURCHCELENAANSWER_3 = "- Most of the shrines you might find around these lands will be of Celena. By making an offer you may receive a blessing or some other gift. But different deities have different preferences, they say. I'm not sure, I've only been devoted to Celena for my whole life.",
+
+	ALIRONCHURCHENTER1 = "As you enter the church, Ginny greets you as usual.\n\n- Welcome, [name]! What can I do for you?",
+	ALIRONCHURCHENTER2 = "- Is there something else I can help you with, [sir] [name]?",
+
+	ALIRONCHURCHENTERREPLY1 = "Tell me more about your work",
+	ALIRONCHURCHENTERREPLY2 = "I've brought the food you've asked for",
+
+	ALIRONCHURCHQUESTSTART = "- We are mostly doing fine, but we also have to feed the poor and homeless. It would be great if you can get us {color=aqua|25 meat soups} as we don't always have enough. You can cook them from raw resources. I'm sure Celena will be very pleased. ",
+	ALIRONCHURCHQUESTSTARTREPLY1 = "I don't suppose there will be a reward?",
+	ALIRONCHURCHQUESTSTARTREPLY2 = "I'll be glad to help",
+	ALIRONCHURCHQUESTSTARTREPLY3 = "No promises, I'll see what I can do",
+
+	ALIRONCHURCHQUESTSTART1_1 = "- Isn't virtue it's own reward? I will try to assemble something, but you can see we don't have much.",
+	ALIRONCHURCHQUESTSTART1_2 = "- That's wonderful, I'll be praying to Celena for your safety.",
+	ALIRONCHURCHQUESTSTART1_3 = "- Thank you, we will appreciate it. If you need anything else, let me know.",
+
+	ALIRONCHURCHQUESTCOMPLETE1 = "- This is wonderful! For your help I'd like to present you with a holy text on teaching healing magic. I'm sure this will be of some use to you. Oh, and take some of these healing shards. You can break them down to heal your injuries even in dire situations.\n\n- Oh, also we can always use more food for poor. If you bring it to us once a week, we'll provide you with more shards.",
+	ALIRONCHURCHQUESTCOMPLETE2 = "- This is wonderful! I know it's not much, but I can spare you some life shards. These are Celena's gift to us, so you can use them in your adventures.",
 
 }
 

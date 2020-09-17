@@ -1,5 +1,6 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame.png" type="Texture" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=4]
@@ -18,59 +19,49 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=17]
 [ext_resource path="res://src/scenes/SaveLoadPanel.tscn" type="PackedScene" id=18]
 [ext_resource path="res://src/scenes/Options.tscn" type="PackedScene" id=19]
-[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/dot_square.png" type="Texture" id=20]
-[ext_resource path="res://assets/images/gui/MainScreen/Options.png" type="Texture" id=21]
-[ext_resource path="res://assets/images/gui/MainScreen/OptionsSelect.png" type="Texture" id=22]
-[ext_resource path="res://assets/images/gui/MainScreen/Quit.png" type="Texture" id=23]
-[ext_resource path="res://assets/images/gui/MainScreen/Load.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_quit_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_quit_pressed.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame_hover.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/background_mainmenu.png" type="Texture" id=25]
 [ext_resource path="res://assets/images/buttons/mainmenu/patreonlogo.png" type="Texture" id=26]
-[ext_resource path="res://assets/images/gui/MainScreen/ContinueSelect.png" type="Texture" id=27]
-[ext_resource path="res://assets/images/gui/MainScreen/NewGames.png" type="Texture" id=28]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_newgame_pressed.png" type="Texture" id=27]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load.png" type="Texture" id=28]
 [ext_resource path="res://assets/images/buttons/mainmenu/itchio.jpg" type="Texture" id=29]
-[ext_resource path="res://assets/images/gui/MainScreen/QuitSelect.png" type="Texture" id=30]
-[ext_resource path="res://assets/images/gui/MainScreen/LoadSelect.png" type="Texture" id=31]
-[ext_resource path="res://assets/images/gui/MainScreen/Continue.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mod_pressed.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load_hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_continue.png" type="Texture" id=32]
 [ext_resource path="res://assets/images/gui/Discord_Logo.png" type="Texture" id=33]
-[ext_resource path="res://assets/images/gui/MainScreen/NewGamesSelect.png" type="Texture" id=34]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_load_pressed.png" type="Texture" id=34]
 [ext_resource path="res://src/scenes/WarnScreen.tscn" type="PackedScene" id=35]
 [ext_resource path="res://src/scenes/ModPanel.tscn" type="PackedScene" id=36]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_NewGameOptions.tres" type="Theme" id=37]
 [ext_resource path="res://assets/Themes_v2/MAIN_MENU/Menu_StartGame_panel.tres" type="StyleBox" id=38]
 [ext_resource path="res://gui_modules/Menu_v2.gd" type="Script" id=39]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_continue_pressed.png" type="Texture" id=40]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_continue_hover.png" type="Texture" id=41]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_quit.png" type="Texture" id=42]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options_pressed.png" type="Texture" id=43]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mod.png" type="Texture" id=44]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_options_hover.png" type="Texture" id=45]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_mod_hover.png" type="Texture" id=46]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="DynamicFontData" id=5]
-font_path = "res://Roundo-Medium.otf"
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-use_filter = true
-font_data = SubResource( 5 )
-
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 60
 use_mipmaps = true
 use_filter = true
 extra_spacing_bottom = -10
 font_data = ExtResource( 12 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 210, 58 )
 
@@ -100,135 +91,72 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 39.013
-margin_top = 185.458
-margin_right = 487.013
-margin_bottom = 845.458
+margin_left = 97.4565
+margin_top = 331.976
+margin_right = 355.457
+margin_bottom = 695.976
 custom_constants/separation = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="continuebutton" type="TextureButton" parent="VBoxContainer"]
-margin_right = 448.0
-margin_bottom = 68.0
+margin_right = 258.0
+margin_bottom = 44.0
+toggle_mode = true
 texture_normal = ExtResource( 32 )
-texture_pressed = ExtResource( 27 )
-texture_hover = ExtResource( 27 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/continuebutton"]
-visible = false
-margin_left = 48.987
-margin_top = 22.542
-margin_right = 70.987
-margin_bottom = 44.542
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 41 )
 
 [node name="newgamebutton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 76.0
-margin_right = 448.0
-margin_bottom = 144.0
+margin_top = 52.0
+margin_right = 258.0
+margin_bottom = 102.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 28 )
-texture_pressed = ExtResource( 34 )
-texture_hover = ExtResource( 34 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/newgamebutton"]
-visible = false
-margin_left = 48.987
-margin_top = 18.542
-margin_right = 70.987
-margin_bottom = 40.542
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 24 )
 
 [node name="loadbutton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 152.0
-margin_right = 448.0
-margin_bottom = 220.0
+margin_top = 110.0
+margin_right = 258.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 24 )
-texture_pressed = ExtResource( 31 )
+toggle_mode = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 34 )
 texture_hover = ExtResource( 31 )
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/loadbutton"]
-visible = false
-margin_left = 48.987
-margin_top = 23.542
-margin_right = 70.987
-margin_bottom = 45.542
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="optionsbutton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 228.0
-margin_right = 448.0
-margin_bottom = 296.0
+margin_top = 168.0
+margin_right = 258.0
+margin_bottom = 218.0
 rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
 texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
-texture_hover = ExtResource( 22 )
+texture_pressed = ExtResource( 43 )
+texture_hover = ExtResource( 45 )
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/optionsbutton"]
-visible = false
-margin_left = 48.987
-margin_top = 21.742
-margin_right = 70.987
-margin_bottom = 43.742
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="modsbutton" type="Button" parent="VBoxContainer"]
-margin_top = 304.0
-margin_right = 448.0
-margin_bottom = 354.0
+[node name="modsbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 226.0
+margin_right = 258.0
+margin_bottom = 276.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_fonts/font = SubResource( 6 )
-text = "Mods"
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/modsbutton"]
-visible = false
-margin_left = 48.987
-margin_top = 10.042
-margin_right = 70.987
-margin_bottom = 32.042
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+toggle_mode = true
+texture_normal = ExtResource( 44 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 46 )
 
 [node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 362.0
-margin_right = 448.0
-margin_bottom = 430.0
+margin_top = 284.0
+margin_right = 258.0
+margin_bottom = 334.0
 rect_min_size = Vector2( 0, 50 )
-texture_normal = ExtResource( 23 )
-texture_pressed = ExtResource( 30 )
-texture_hover = ExtResource( 30 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/quitbutton"]
-visible = false
-margin_left = 48.987
-margin_top = 21.542
-margin_right = 70.987
-margin_bottom = 43.542
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+toggle_mode = true
+texture_normal = ExtResource( 42 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = 53.0
@@ -273,11 +201,11 @@ expand = true
 stretch_mode = 5
 
 [node name="MainLabel" type="Label" parent="."]
-margin_left = 612.0
-margin_top = 52.0
-margin_right = 1218.0
-margin_bottom = 126.0
-custom_fonts/font = SubResource( 7 )
+margin_left = -56.0731
+margin_top = 138.849
+margin_right = 549.927
+margin_bottom = 212.849
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.682353, 0.321569, 0.768627, 1 )
 text = "Strive: Conquest"
 align = 1
@@ -475,9 +403,9 @@ margin_top = 672.097
 margin_right = 598.21
 margin_bottom = 735.097
 theme = ExtResource( 16 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Start Game"

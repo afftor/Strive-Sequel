@@ -136,6 +136,10 @@ func open(scene, not_save = false):
 	var options = scene.options
 	for i in options:
 		#yield(get_tree(), 'idle_frame')
+		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
+			i.previous_dialogue_option = [i.previous_dialogue_option]
+		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option):
+			continue
 		if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
 			continue
 		var disable = false
@@ -371,7 +375,7 @@ func select_option(number):
 			button.emit_signal("pressed")
 
 func close(transition = false):
-#	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
+	previous_dialogue_option = 0
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hide()
@@ -380,8 +384,7 @@ func close(transition = false):
 	input_handler.CurrentScreen = previousscene
 	input_handler.emit_signal("EventFinished")
 	gui_controller.is_dialogue_just_started = true
-#	if get_tree().get_root().get_node_or_null("GUIWorld"):
-#		GUIWorld.CurrentScene = GUIWorld.BaseScene
+
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
