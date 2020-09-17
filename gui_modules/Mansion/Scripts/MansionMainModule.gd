@@ -449,18 +449,18 @@ func test_mode():
 		character.add_stat('physics', 100)
 		character.add_stat('hpmax', 100)
 		character.unlock_class("master")
-		character.unlock_class("caster")
-		character.unlock_class("apprentice")
-		character.unlock_class("rogue")
-		character.unlock_class("druid")
-		character.unlock_class("assassin")
-		character.unlock_class("ruler")
-		character.unlock_class("watchdog")
-		character.unlock_class("director")
-		character.unlock_class("trainer")
-		character.unlock_class("thief")
-		character.unlock_class("engineer")
-		character.unlock_class("scholar")
+		# character.unlock_class("caster")
+		# character.unlock_class("apprentice")
+		# character.unlock_class("rogue")
+		# character.unlock_class("druid")
+		# character.unlock_class("assassin")
+		# character.unlock_class("ruler")
+		# character.unlock_class("watchdog")
+		# character.unlock_class("director")
+		# character.unlock_class("trainer")
+		# character.unlock_class("thief")
+		# character.unlock_class("engineer")
+		# character.unlock_class("scholar")
 		#character.travel.location = 'L4'
 		#character.travel.area = 'plains'
 		variables.dungeon_encounter_chance = 1
@@ -665,7 +665,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		input_handler.interactive_message("ginny_visit", '',{})
+		# input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}
@@ -677,8 +677,8 @@ func test_mode():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.reputation = 100
-			i.totalreputation += 100
+			i.reputation = 1000
+			i.totalreputation += 1000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 
 		# character = ResourceScripts.scriptdict.class_slave.new()

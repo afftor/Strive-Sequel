@@ -189,7 +189,7 @@ var factiondata = {
 		code = 'fighters',
 		name = 'Fighters',# Guild',
 		description = '',
-		actions = ['hire','upgrade'],
+		actions = ['hire','upgrade', 'guild_shop'],
 		preference = ['combat'],
 		character_types = [['servant',1]],
 		character_bonuses = {authority = [75,100], obedience = [48,48]},
@@ -213,7 +213,7 @@ var factiondata = {
 		code = 'mages',
 		name = 'Mages',# Guild',
 		description = '',
-		actions = ['hire','upgrade'],
+		actions = ['hire','upgrade', 'guild_shop'],
 		preference = ['magic'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
@@ -230,14 +230,14 @@ var factiondata = {
 		background = "mages_guild",
 		reputation_shop = {
 			classes = {alchemist = 500, archmage = 1000, dominator = 1500},
-			items = {oblivionpot = [1,300],unstable_concoction = [10,100]},
+			items = {oblivion_potion = [1,300],unstable_concoction = [10,100]},
 		}
 	},
 	workers = {
 		code = 'workers',
 		name = 'Workers',# Guild',
 		description = '',
-		actions = ['hire','upgrade'],
+		actions = ['hire','upgrade', 'guild_shop'],
 		preference = ['labor'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
@@ -253,7 +253,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_workers.png"),
 		background = "workers_guild",
 		reputation_shop = {
-			classes = {blacksmith = 500, foreman = 500, engineer = 750},
+			classes = {smith = 500, foreman = 500, engineer = 750},
 			items = {leatherdragon = [1,500], obsidian = [1,100]},
 		}
 	},
@@ -261,7 +261,7 @@ var factiondata = {
 		code = 'servants',
 		name = 'Servants',# Guild',
 		description = '',
-		actions = ['hire','upgrade'],
+		actions = ['hire','upgrade', 'guild_shop'],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},

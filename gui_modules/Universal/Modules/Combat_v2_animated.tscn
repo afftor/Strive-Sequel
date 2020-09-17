@@ -1222,6 +1222,7 @@ __meta__ = {
 }
 
 [node name="TextureRect7" type="TextureRect" parent="Rewards"]
+visible = false
 self_modulate = Color( 1, 1, 1, 5.72091e-05 )
 material = ExtResource( 6 )
 margin_left = 522.16

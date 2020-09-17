@@ -28,6 +28,7 @@ var faction_actions = {
 	quests = 'Quests',
 	upgrade = "Upgrades",
 	services = "Service",
+	guild_shop = "Guild Shop"
 }
 
 var positiondict = {
@@ -1092,9 +1093,119 @@ func enter_guild(guild):
 var infotext = "Upgrades effects and quest settings update after some time passed. "
 
 
-func faction_upgrade(pressed, pressed_button, area):
+func faction_guild_shop(pressed, pressed_button, guild):
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
-	active_faction = area
+	active_faction = guild
+	self.current_pressed_area_btn = pressed_button
+	$GuildShop.visible = pressed
+	input_handler.ClearContainer($GuildShop/ScrollContainer/VBoxContainer)
+	for item in guild.reputation_shop.items:
+		if guild.reputation_shop.items[item][0] <= 0:
+			continue
+		var item_ref
+		if Items.itemlist.has(item):
+			item_ref =  Items.itemlist[item]
+		else:
+			item_ref = Items.materiallist[item]
+		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
+		newbutton.get_node("Title").text = item_ref.name
+		newbutton.get_node("Icon").texture = item_ref.icon
+		newbutton.get_node("Price").text = str(guild.reputation_shop.items[item][1])
+		newbutton.get_node("Amount").show()
+		newbutton.get_node("Amount").text = str(guild.reputation_shop.items[item][0])
+		newbutton.disabled = active_faction.reputation < guild.reputation_shop.items[item][1]
+		newbutton.connect("pressed", self, "buy_item", [item_ref])
+		globals.connectmaterialtooltip(newbutton, item_ref)
+
+	for cls in guild.reputation_shop.classes:
+		if ResourceScripts.game_progress.unlocked_classes.has(cls):
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
+		newbutton.get_node("Title").text = str(cls.capitalize())
+		newbutton.get_node("Price").text = str(guild.reputation_shop.classes[cls])
+		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
+		newbutton.connect("pressed", self, "unlock_class", [cls])
+		newbutton.disabled = active_faction.reputation < guild.reputation_shop.classes[cls]
+		var master = ResourceScripts.game_party.get_master()
+		var temptext = "[center]" \
+						+str(cls.capitalize()) \
+						+ "[/center]\n" \
+						+ResourceScripts.descriptions.get_class_bonuses(master, classesdata.professions[cls]) \
+						+ ResourceScripts.descriptions.get_class_traits(master, classesdata.professions[cls])
+		var social_skills = ''
+		var combat_skills = ''
+		if classesdata.professions[cls].has("skills") && classesdata.professions[cls].skills != []:
+			temptext += "\nSocial Skills - "
+			for skill in classesdata.professions[cls].skills:
+				social_skills += skill.capitalize() + ", "
+			social_skills = social_skills.substr(0, social_skills.length() - 2)
+		temptext += social_skills
+		if classesdata.professions[cls].has("combatskills") && classesdata.professions[cls].combatskills != []:
+			temptext += "\nCombat Skills - "
+			for skill in classesdata.professions[cls].combatskills:
+				combat_skills += skill.capitalize() + ", "
+			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
+		temptext += combat_skills
+		globals.connecttexttooltip(newbutton, temptext)
+
+
+func buy_item(item_ref):
+	item_to_buy = item_ref
+	var price = str(active_faction.reputation_shop.items[item_ref.code][1])
+	var text = "Are you sure you want to buy " + str(item_ref.name) + " for " + str(price) + " reputation points?"
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL,
+	[
+		self,
+		'buy_item_confirm',
+		text
+	])
+
+func unlock_class(cls):
+	class_to_unlock = cls
+	var price = active_faction.reputation_shop.classes[cls]
+	var text = "Are you sure you want to unlock " + str(cls) + " for " + str(price) + " reputation points?"
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL,
+	[
+		self,
+		'unlock_clas_confirm',
+		text
+	])
+		
+var item_to_buy
+var class_to_unlock
+
+func buy_item_confirm():
+	if typeof(item_to_buy) == TYPE_OBJECT:
+		globals.AddItemToInventory(item_to_buy)
+		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
+	else:
+		if Items.materiallist.has(item_to_buy.code):
+			ResourceScripts.game_res.set_material(item_to_buy.code, '+', 1)
+			active_faction.reputation_shop.items[item_to_buy.code][0] -= 1
+		elif Items.itemlist.has(item_to_buy.code):
+			active_faction.reputation_shop.items[item_to_buy.code][0] -= 1
+			match item_to_buy.type:
+				'usable':
+					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code))
+				'gear':
+					globals.AddItemToInventory(globals.CreateGearItem(item_to_buy.code, {}))
+	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1]
+	faction_guild_shop(true, current_pressed_area_btn, active_faction)
+
+
+func unlock_clas_confirm():
+	globals.common_effects([{code = "unlock_class", name = class_to_unlock}])
+	faction_guild_shop(true, current_pressed_area_btn, active_faction)
+	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+	active_faction.reputation -= active_faction.reputation_shop.classes[class_to_unlock]
+
+
+
+
+
+func faction_upgrade(pressed, pressed_button, guild):
+	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
+	active_faction = guild
 	self.current_pressed_area_btn = pressed_button
 	var text = ''
 	$FactionDetails.visible = pressed
