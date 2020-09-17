@@ -1055,6 +1055,14 @@ func check_skill_availability(s_code, target):
 		descript = get_short_name() + ": Can't use this skill today anymore."
 		check = false
 	
+	if !checkreqs(template.reqs):
+		check = false
+		descript = get_short_name() + ": Requirements aren't met."
+	
+	if !target.checkreqs(template.targetreqs):
+		check = false
+		descript = target.get_short_name() + ": Target requirements aren't met."
+	
 	return {check = check, descript = descript}
 
 
