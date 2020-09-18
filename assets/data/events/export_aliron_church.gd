@@ -25,9 +25,7 @@ var data = {
 		],
 		options = [
 			{code = 'close', reqs = [], text = "DIALOGUECLOSE",
-			bonus_effects = [
-				{code = 'progress_quest', value = 'aliron_church_quest', stage = 'start'},
-			]},
+			},
 		],
 		
 	},
@@ -172,14 +170,14 @@ var data = {
 					dialogue_argument = 5, 
 					type = 'next_dialogue',
 					bonus_effects = [
-						{code = 'progress_quest', value = 'aliron_church_quest', stage = 'stage2'},
+						{code = 'complete_quest', value = 'aliron_church_quest'},
 						{code = "material_change", material = "meatsoup", operant = '-', value = 25},
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
 						{code = "unlock_class", name = "healer"}
 				]}],	
 			},
 			{
-				reqs = [{type = 'active_quest_stage', value = 'aliron_church_quest', stage = 'stage2'},],
+				reqs = [{type = 'complete_quest', value = 'aliron_church_quest'},],
 				image = null,
 				character = 'ginny',
 				tags = ['dialogue_scene', 'master_translate'],

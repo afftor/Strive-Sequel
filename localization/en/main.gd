@@ -2440,7 +2440,7 @@ var TranslationDict = {
 	SEXTRAITDISLIKES = "Dislike traits are character's natural preferences over certain actions. They can't be toggled off, but they can be removed by some effort and luck. ",
 
 	# Aliron Church
-	GINNYVISIT = "In the morning your mansion has a visitor. As you open the door, you see a young girl in a nun outfit.\n\n- Hello, [sir]. I'm Ginny. I've heard you just moved here and I was hoping to catch your interest as I work at the church of Celena.",
+	GINNYVISIT = "In the morning your mansion has a visitor. As you open the door, you see a young girl in a nun outfit.\n\n- Hello, [Sir]. I'm Ginny. I've heard you just moved here and I was hoping to catch your interest as I work at the church of Celena.",
 	GINNYVISITREPLY1 = "Alright, but make it quick",
 	GINNYVISITREPLY2 = "Why don't you come inside?",
 	GINNYVISITREPLY3 = "Not interested in whatever you’re selling",
@@ -2449,7 +2449,7 @@ var TranslationDict = {
 	GINNYVISIT2_2 = "- I'm sorry, but I can't stay for long. Plus I've been told not to trust land owners as they often kidnap and enslave strangers... I mean I don't think you do that, but still. Anyway, if you wish to know more, feel free to see us, I'm always happy to get new visitors. Goodbye!",
 	GINNYVISIT2_3 = "- Sorry to distract you! I just wanted to tell you since you are new, you can visit our church if you are interested... I'm sorry, goodbye. ",
 
-	ALIRONCHURCHFIRSTCOME = "You enter a small local church. The building seems not very spacious but fairly clean and cozy. As your entrance is spotted, Ginny rushes to greet you.\n\n- Welcome, [sir]. I'm glad you came after all, with Celena's help. Are you seeking guidance or maybe you want to become a member?",
+	ALIRONCHURCHFIRSTCOME = "You enter a small local church. The building seems not very spacious but fairly clean and cozy. As your entrance is spotted, Ginny rushes to greet you.\n\n- Welcome, [Sir]. I'm glad you came after all, with Celena's help. Are you seeking guidance or maybe you want to become a member?",
 	ALIRONCHURCHFIRSTCOMEREPLY1 = "I'm just wandering around",
 	ALIRONCHURCHFIRSTCOMEREPLY2 = "I'd like to learn more about your religion",
 	ALIRONCHURCHFIRSTCOMEREPLY3 = "I think I'll come in another time",
@@ -2474,7 +2474,7 @@ var TranslationDict = {
 	ALIRONCHURCHCELENAANSWER_3 = "- Most of the shrines you might find around these lands will be of Celena. By making an offer you may receive a blessing or some other gift. But different deities have different preferences, they say. I'm not sure, I've only been devoted to Celena for my whole life.",
 
 	ALIRONCHURCHENTER1 = "As you enter the church, Ginny greets you as usual.\n\n- Welcome, [name]! What can I do for you?",
-	ALIRONCHURCHENTER2 = "- Is there something else I can help you with, [sir] [name]?",
+	ALIRONCHURCHENTER2 = "- Is there something else I can help you with, [Sir] [name]?",
 
 	ALIRONCHURCHENTERREPLY1 = "Tell me more about your work",
 	ALIRONCHURCHENTERREPLY2 = "I've brought the food you've asked for",

@@ -1382,9 +1382,9 @@ var quests = {
 	aliron_church_quest = {
 		code = 'aliron_church_quest',
 		stages = {
-			start = {code ='start', name = 'Church Quest Name1', descript = "Church Quest Descript1"},
-			stage1 = {code ='stage1', name = 'Church Quest Name2', descript = "Church Quest Descript2"},
-			stage2 = {code ='stage2', name = 'Church Quest Name3', descript = "Church Quest Descript3"},
+			#start = {code ='start', name = 'Church Quest Name1', descript = "Church Quest Descript1"},
+			stage1 = {code ='stage1', name = 'Initiation', descript = "Ginny from Aliron's church of Celena asked you to brign her 25 Meat Soups."},
+			#stage2 = {code ='stage2', name = 'Church Quest Name3', descript = "Church Quest Descript3"},
 		},
 	
 	},
