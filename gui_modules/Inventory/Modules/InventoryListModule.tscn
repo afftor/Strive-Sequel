@@ -96,6 +96,7 @@ use_filter = true
 font_data = ExtResource( 12 )
 
 [node name="InventoryListModule" type="Panel"]
+light_mask = 0
 margin_right = 595.0
 margin_bottom = 1050.0
 custom_styles/panel = SubResource( 1 )
@@ -104,6 +105,7 @@ __meta__ = {
 }
 
 [node name="Scroller" type="Control" parent="."]
+light_mask = 0
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -112,6 +114,7 @@ __meta__ = {
 
 [node name="VScrollBar" type="VScrollBar" parent="Scroller"]
 visible = false
+light_mask = 0
 margin_left = 19.0
 margin_top = 251.0
 margin_right = 31.0
@@ -126,6 +129,7 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Scroller"]
+light_mask = 0
 margin_left = 49.8002
 margin_top = 251.0
 margin_right = 549.8
@@ -137,11 +141,13 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="VBoxContainer" parent="Scroller/ScrollContainer"]
+light_mask = 0
 margin_right = 500.0
 size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="Scroller/ScrollContainer/GridContainer"]
 visible = false
+light_mask = 0
 margin_right = 500.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 50, 50 )
@@ -151,6 +157,7 @@ texture_hover = ExtResource( 34 )
 
 [node name="Image" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
 show_behind_parent = true
+light_mask = 0
 margin_left = 455.287
 margin_top = 5.96381
 margin_right = 494.287
@@ -165,6 +172,7 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
+light_mask = 0
 margin_left = 54.0
 margin_top = 12.0
 margin_right = 381.0
@@ -179,6 +187,7 @@ __meta__ = {
 }
 
 [node name="Type" type="TextureRect" parent="Scroller/ScrollContainer/GridContainer/Button"]
+light_mask = 0
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 48.0
@@ -189,6 +198,7 @@ expand = true
 stretch_mode = 6
 
 [node name="Number" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
+light_mask = 0
 margin_left = 356.154
 margin_top = 13.0
 margin_right = 428.154
@@ -205,6 +215,7 @@ __meta__ = {
 
 [node name="HiddenContainer" type="ScrollContainer" parent="."]
 visible = false
+light_mask = 0
 margin_left = 81.0
 margin_top = 230.0
 margin_right = 554.0
@@ -215,6 +226,7 @@ scroll_horizontal_enabled = false
 columns = 7
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+light_mask = 0
 margin_left = 48.0
 margin_top = 172.0
 margin_right = 550.0
@@ -225,6 +237,7 @@ __meta__ = {
 }
 
 [node name="all" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_right = 54.0
 margin_bottom = 54.0
 hint_tooltip = "INVENTORYALL"
@@ -234,6 +247,7 @@ texture_pressed = ExtResource( 37 )
 texture_hover = ExtResource( 24 )
 
 [node name="food" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 64.0
 margin_right = 118.0
 margin_bottom = 54.0
@@ -244,6 +258,7 @@ texture_pressed = ExtResource( 27 )
 texture_hover = ExtResource( 23 )
 
 [node name="usable" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 128.0
 margin_right = 182.0
 margin_bottom = 54.0
@@ -254,6 +269,7 @@ texture_pressed = ExtResource( 20 )
 texture_hover = ExtResource( 26 )
 
 [node name="material" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 192.0
 margin_right = 246.0
 margin_bottom = 54.0
@@ -264,6 +280,7 @@ texture_pressed = ExtResource( 28 )
 texture_hover = ExtResource( 35 )
 
 [node name="tool" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 256.0
 margin_right = 310.0
 margin_bottom = 54.0
@@ -274,6 +291,7 @@ texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 29 )
 
 [node name="weapon" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 320.0
 margin_right = 374.0
 margin_bottom = 54.0
@@ -284,6 +302,7 @@ texture_pressed = ExtResource( 31 )
 texture_hover = ExtResource( 15 )
 
 [node name="armor" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 384.0
 margin_right = 438.0
 margin_bottom = 54.0
@@ -294,6 +313,7 @@ texture_pressed = ExtResource( 14 )
 texture_hover = ExtResource( 30 )
 
 [node name="costume" type="TextureButton" parent="HBoxContainer"]
+light_mask = 0
 margin_left = 448.0
 margin_right = 502.0
 margin_bottom = 54.0
@@ -305,6 +325,7 @@ texture_hover = ExtResource( 25 )
 
 [node name="NumberSelectPanel" type="TextureRect" parent="."]
 visible = false
+light_mask = 0
 margin_left = 197.0
 margin_top = 206.0
 margin_right = 669.0
@@ -312,6 +333,7 @@ margin_bottom = 445.0
 texture = ExtResource( 11 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 78.0
 margin_top = 61.0
 margin_right = 388.0
@@ -322,12 +344,14 @@ bbcode_text = "Purchase X?"
 text = "Purchase X?"
 
 [node name="SpinBox" type="SpinBox" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 171.0
 margin_top = 127.0
 margin_right = 271.0
 margin_bottom = 161.0
 
 [node name="ConfirmButton" type="TextureButton" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 38.0
 margin_top = 161.0
 margin_right = 206.0
@@ -339,6 +363,7 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="NumberSelectPanel/ConfirmButton"]
+light_mask = 0
 margin_left = 12.0
 margin_top = 17.0
 margin_right = 154.0
@@ -347,6 +372,7 @@ text = "CONFIRM"
 align = 1
 
 [node name="CancelButton" type="TextureButton" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 258.0
 margin_top = 161.0
 margin_right = 426.0
@@ -358,6 +384,7 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="NumberSelectPanel/CancelButton"]
+light_mask = 0
 margin_left = 12.0
 margin_top = 17.0
 margin_right = 154.0
@@ -367,6 +394,7 @@ align = 1
 
 [node name="MaxButton" type="Button" parent="NumberSelectPanel"]
 visible = false
+light_mask = 0
 margin_left = 142.0
 margin_top = 123.0
 margin_right = 302.0
@@ -374,6 +402,7 @@ margin_bottom = 153.0
 text = "Max"
 
 [node name="EndPrice" type="Label" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 284.0
 margin_top = 133.0
 margin_right = 406.0
@@ -382,6 +411,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "= 100"
 
 [node name="BasePrice" type="Label" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 38.0
 margin_top = 132.0
 margin_right = 160.0
@@ -391,6 +421,7 @@ text = "100*"
 align = 2
 
 [node name="TextureRect" type="TextureRect" parent="NumberSelectPanel"]
+light_mask = 0
 margin_left = 376.0
 margin_top = 117.0
 margin_right = 426.0
@@ -401,6 +432,7 @@ expand = true
 stretch_mode = 6
 
 [node name="SearchFilter" type="LineEdit" parent="."]
+light_mask = 0
 margin_left = 48.0
 margin_top = 115.61
 margin_right = 548.0
@@ -420,6 +452,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+light_mask = 0
 margin_right = 595.0
 margin_bottom = 90.0
 custom_fonts/font = SubResource( 8 )

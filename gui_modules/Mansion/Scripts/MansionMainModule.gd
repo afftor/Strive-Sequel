@@ -116,6 +116,8 @@ func _ready():
 #		yield(input_handler, 'EventFinished')
 #		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
 	globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
+	SlaveListModule.update_dislocations()
+	SlaveListModule.build_locations_list()
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:

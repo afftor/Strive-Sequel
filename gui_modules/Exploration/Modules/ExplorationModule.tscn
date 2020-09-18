@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=2]
+[gd_scene load_steps=128 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -104,7 +104,6 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_pressed.png" type="Texture" id=102]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_hover.png" type="Texture" id=103]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue.png" type="Texture" id=104]
-[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonevent_disabled.png" type="Texture" id=107]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -2337,8 +2336,6 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GuildShop/ScrollContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
 
 [node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer"]
 visible = false
@@ -2347,7 +2344,6 @@ margin_bottom = 100.0
 texture_normal = ExtResource( 95 )
 texture_pressed = ExtResource( 80 )
 texture_hover = ExtResource( 99 )
-texture_disabled = ExtResource( 107 )
 
 [node name="Title" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
 margin_left = 128.0
@@ -2393,12 +2389,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Info" type="RichTextLabel" parent="GuildShop"]
+[node name="FactionPoints" type="Label" parent="GuildShop"]
 margin_left = 48.0
 margin_top = 734.0
-margin_right = 1016.0
-margin_bottom = 1019.0
-bbcode_enabled = true
+margin_right = 192.0
+margin_bottom = 766.0
+text = "Faction Points"
 
 [node name="JournalButton" type="TextureButton" parent="."]
 margin_left = 1848.73

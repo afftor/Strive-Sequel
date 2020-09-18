@@ -205,7 +205,7 @@ var factiondata = {
 		icon = load("res://assets/Textures_v2/CITY/Icons/icon_fighters.png"),
 		background = "fighters_guild",
 		reputation_shop = {
-			classes = {knight = 500, paladin = 500, sniper = 750, asssassin = 1000},
+			classes = {knight = 500, paladin = 500, sniper = 750, assassin = 1000},
 			items = {bonedragon = [1,500]},
 		}
 	},
