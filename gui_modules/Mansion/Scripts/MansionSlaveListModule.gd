@@ -372,7 +372,7 @@ func update_button(newbutton):
 	if person.check_location('travel'):
 		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. " 
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
-		# person.travel.location = "Aliron"
+		# person.travel.location = "aliron"
 		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
 		
 	else:

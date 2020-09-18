@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://gui_modules/Inventory/Modules/InventorySlaveListModule.tscn" type="PackedScene" id=12]
 [ext_resource path="res://gui_modules/Inventory/Modules/InventoryGearModule.tscn" type="PackedScene" id=13]
 [ext_resource path="res://gui_modules/Inventory/Modules/InventoryListModule.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=15]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -29,6 +30,7 @@ font_data = ExtResource( 5 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 649, 788 )
+theme = ExtResource( 15 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,6 +43,13 @@ custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="InventoryGearModule" parent="." instance=ExtResource( 13 )]
+margin_left = 1200.0
+margin_top = 15.0
+margin_right = 1905.0
+margin_bottom = 1065.0
+script = ExtResource( 7 )
 
 [node name="InventoryListModule" parent="." instance=ExtResource( 14 )]
 margin_left = 605.0
@@ -62,13 +71,6 @@ margin_top = 875.0
 margin_right = 610.0
 margin_bottom = 1065.0
 script = ExtResource( 8 )
-
-[node name="InventoryGearModule" parent="." instance=ExtResource( 13 )]
-margin_left = 1200.0
-margin_top = 15.0
-margin_right = 1905.0
-margin_bottom = 1065.0
-script = ExtResource( 7 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 20.1855

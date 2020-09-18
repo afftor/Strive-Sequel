@@ -94,13 +94,13 @@ func show_quest_info(quest):
 			var newbutton = input_handler.DuplicateContainerTemplate($reqs)
 			match i.code:
 				'kill_monsters':
-					newbutton.texture = images.icons.quest_enemy
+					newbutton.get_node("TextureRect").texture = images.icons.quest_enemy
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
 					newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.curvalue) + "/" + str(i.value)
 				'random_item':
 					var itemtemplate = Items.itemlist[i.type]
-					newbutton.texture = itemtemplate.icon
+					newbutton.get_node("TextureRect").texture = itemtemplate.icon
 					newbutton.hint_tooltip = itemtemplate.name + ": " + str(i.value) 
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
