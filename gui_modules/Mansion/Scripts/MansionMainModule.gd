@@ -95,6 +95,12 @@ func _ready():
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
 		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
+		globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
+		
+		set_active_person(ResourceScripts.game_party.get_master())
+		SlaveListModule.rebuild()
+		SlaveListModule.build_locations_list()
+		mansion_state_set("default")
 	input_handler.CurrentScene = self
 	input_handler.CurrentScreen = 'mansion'
 	yield(get_tree(),'idle_frame')
@@ -107,15 +113,7 @@ func _ready():
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
-	if globals.start_new_game:
-		set_active_person(ResourceScripts.game_party.get_master())
-		SlaveListModule.rebuild()
-		SlaveListModule.build_locations_list()
-		mansion_state_set("default")
-#	if globals.start_new_game == true:
-#		yield(input_handler, 'EventFinished')
-#		input_handler.get_spec_node(input_handler.NODE_MANSION_NEW).show_tutorial()
-	globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
+	
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
 

@@ -382,7 +382,7 @@ var data = {
 	lich_aire_talk4 = {
 		variations = [
 		{reqs = [
-		{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}]},
+		{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}]},
 		],
 		image = null,
 		character = 'aire',

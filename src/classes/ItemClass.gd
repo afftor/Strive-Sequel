@@ -223,7 +223,7 @@ func tooltiptext():
 		text += "Slots: "
 		for i in slots:
 			text += tr("ITEMSLOT"+i.to_upper()) + ", "
-		text = text.substr(0, text.length() -2)
+		text = text.substr(0, text.length() -2) + "\n"
 	
 	if toolcategory != null:
 		text += tr("TOOLWORKCATEGORY") + ": " 

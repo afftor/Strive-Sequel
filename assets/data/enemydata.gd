@@ -1038,13 +1038,33 @@ var loot_variants_data = {
 	aliron_church_bonus = [
 		{code = 'defined', name = 'lifeshard', min = 5, max = 5},
 	],
+	
+	celena_reward = [
+		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
+	],
+	celena_destroy_shrine = [
+		{code = 'defined', name = 'iron', min = 5, max = 10},
+		{code = 'defined', name = 'mithril', min = 1, max = 4},
+	],
+	erebus_reward = [
+		{code = 'defined', name = 'energyshard', min = 3, max = 5},
+	],
+	erebus_destroy_shrine = [
+		{code = 'defined', name = 'stone', min = 20, max = 40},
+		{code = 'defined', name = 'obsidian', min = 1, max = 4},
+	],
+	freya_destroy_shrine = [
+		{code = 'defined', name = 'wood', min = 5, max = 30},
+		{code = 'defined', name = 'woodmagic', min = 2, max = 10},
+		{code = 'defined', name = 'woodancient', min = 0, max = 1},
+	],
 }
 
 
 var locks_data = { #makes locks to lockpick for related chests
-	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.01],['mimic_erotic',0.01]], difficulty = [5,20]},
-	easy_chest_gear = {locks = [['normal', 1],['mimic',0.05],['mimic_erotic',0.05]], difficulty = [10,25]},
-	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.02],['mimic_erotic',0.02]], difficulty = [5,20]},
+	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_gear = {locks = [['normal', 1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1]], difficulty = [10,25]},
 	
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -1053,9 +1073,9 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	
-	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [15,40]},
+	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
-	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [20,50]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1]], difficulty = [20,55]},
 	
 	test_chest_mimic = {locks = [['mimic', 1]], difficulty = [100,100]},

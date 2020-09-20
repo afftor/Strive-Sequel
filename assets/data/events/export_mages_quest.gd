@@ -278,7 +278,7 @@ var data = {
 			{image = null,
 			character = 'xari',
 			tags = ['dialogue_scene'],
-			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'charm_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
+			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'sexuals_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
 				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
 			]
