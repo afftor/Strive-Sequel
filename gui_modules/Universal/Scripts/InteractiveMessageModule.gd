@@ -9,6 +9,7 @@ var previous_text = ''
 
 
 func open(scene, not_save = false):
+	print(scene)
 	if scene.has("variations"):
 		for i in scene.variations:
 			if globals.checkreqs(i.reqs):
@@ -20,7 +21,7 @@ func open(scene, not_save = false):
 	input_handler.CurrentScreen = 'scene'
 	current_scene = scene
 	hold_selection = true
-	if scene.has("common_effects"): 
+	if scene.has("common_effects"):
 		globals.common_effects(scene.common_effects)
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
@@ -68,9 +69,11 @@ func open(scene, not_save = false):
 		previous_text = ''
 		yield(get_tree().create_timer(0.2), "timeout")
 	show()
-	
+	print(scene)
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
+	if scene.tags.has("shrine"):
+		add_shrine_options(scene)
 	if scene.tags.has("free_loot"):
 		add_loot_options(scene)
 	
@@ -107,7 +110,7 @@ func open(scene, not_save = false):
 	if scene.tags.has("scene_character_translate"):
 		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
 	if scene.tags.has("location_resource_info"):
-		scenetext = add_location_resource_info() 
+		scenetext = add_location_resource_info()
 	
 	ResourceScripts.core_animations.UnfadeAnimation($RichTextLabel,1)
 	ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer,1)
@@ -123,7 +126,10 @@ func open(scene, not_save = false):
 	
 	if scene.has("set_enemy"):
 		dialogue_enemy = scene.set_enemy
+	
+	
 	var counter = 1
+	
 	var options = scene.options
 	for i in options:
 		#yield(get_tree(), 'idle_frame')
@@ -286,6 +292,35 @@ func add_location_resource_info():
 		text += "\n" + Items.materiallist[i].name + ": " + str(location.gather_limit_resources[i])
 	text += '\n\nHarvest speed modifier: ' + str(round(location.gather_mod*100)) + "%"
 	return text
+
+func add_shrine_options(scene):
+	var shrineoptions = Enemydata.shrines[scene.shrine].options
+	
+	for i in shrineoptions.invert():
+		match i:
+			'material':
+				scene.options.insert(0,{code = 'shrine_option', args = ['select_material'], reqs = [], text = "DIALOGUESHRINEITEM"})
+			'character':
+				scene.options.insert(0,{code = 'shrine_option', args = ['character'], reqs = [], text = "DIALOGUESHRINECHARACTER"})
+			'destroy':
+				scene.options.insert(0,{code = 'shrine_option', args = ['character'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
+
+func shrine_option(scene, option):
+	match option:
+		'select_material':
+			globals.ItemSelect(self, 'material', 'shrine_mat_select')
+		"character":
+			pass
+		'destroy':
+			pass
+		'material_selected':
+			pass
+
+var selected_item
+
+func shrine_mat_select(item):
+	selected_item = item
+	shrine_option(current_scene,'material_selected')
 
 func lockpick_attempt(person):
 	var lock = input_handler.scene_loot.lock.difficulty

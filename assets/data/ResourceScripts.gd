@@ -3,12 +3,9 @@ extends Node
 var scenedict = {
 	menu = "res://gui_modules/Menu_v2.tscn",
 	mansion = "res://gui_modules/Mansion/Modules/MansionMainModule.tscn",
-	# mansion = "res://GUI_New/GUIWorld.tscn",
 	loadscreen = "res://src/LoadScreen.tscn",
-	# combat = "res://src/combat/combat.tscn",
-	# combat = "res://gui_modules/Universal/Modules/Combat_v2.tscn",
 	combat = "res://gui_modules/Universal/Modules/Combat_v2_animated.tscn",
-	itemselect = "res://ItemSelect.tscn",
+	itemselect = "res://gui_modules/Mansion/Modules/ItemSelect.tscn",
 	black = "res://assets/sfx/BlackScreen.tscn",
 	close = "res://src/scenes/CloseButton.tscn",
 	interaction = "res://src/interactionpanel.tscn",

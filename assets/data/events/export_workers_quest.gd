@@ -134,7 +134,7 @@ var data = {
 		{text = "WORKERSELECTIONINITIATE3", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []},
+			{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = []},
 		],
 	},
 	
@@ -214,7 +214,7 @@ var data = {
 		{text = "REIMENCOUNTER4_2", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [
-			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = []},
+			{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = []},
 		],
 	},
 
@@ -261,7 +261,7 @@ var data = {
 			
 		],
 		options = [
-			{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [],
+			{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [],
 			bonus_effects = [{code = 'progress_quest', value = 'workers_election_quest', stage = 'stage3'}]},
 		],
 	},

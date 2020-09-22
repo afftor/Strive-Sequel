@@ -350,6 +350,9 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				continue
 			if Items.itemlist[i.code].tags.has('date'):
 				array.append(i)
+	elif type == 'material':
+		for i in ResourceScripts.game_res.materials:
+			array.append(i)
 	
 	for i in array:
 		var newnode = input_handler.DuplicateContainerTemplate(node.get_node("ScrollContainer/GridContainer"))
@@ -365,6 +368,10 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				newnode.get_node('name').text = i.name
 				newnode.get_node("Percent").text = str(i.amount)
 				connectitemtooltip(newnode, i)
+			'material':
+				newnode.get_node("Perecent").show()
+				newnode.get_node('name').text = Items.materiallist[i].name
+				newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',input_handler,'CloseSelection', [node])
 

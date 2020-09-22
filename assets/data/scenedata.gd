@@ -8,13 +8,13 @@ var scenedict = {
 	
 	aliron_exotic_trader = {text = tr("DIALOGUEALIRONEXOTICTRADER"), image = 'avermik', bonus_effects = [{code = 'add_timed_event', value = "aliron_exotic_trader", args = [{type = 'add_to_date', date = [14,14], hour = 6}]}], tags = [], options = [{code = 'close', reqs = [], text = tr("DIALOGUECLOSE")}]},
 	
-	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
+	location_event_search = {text = tr("DIALOGUELOCATIONEVENT"), tags = [], image = '', options = [{code = 'good_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTGOOD")},{code = 'evil_event', reqs = [], text = tr("DIALOGUELOCATIONEVENTEVIL")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
 	
-	wolves_skirmish_start = {text = tr("DIALOGUEWOLVES_SKIRMISH_START"), set_enemy = 'wolves_skirmish',tags = [], image = 'wolves_skirmish', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
-	rebels_skirmish_start = {text = tr("DIALOGUEREBELS_SKIRMISH_START"), set_enemy = 'rebels_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
-	goblins_skirmish_start = {text = tr("DIALOGUEGOBLINS_SKIRMISH_START"), set_enemy = 'goblins_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
-	ogre_skirmish_start = {text = tr("DIALOGUEOGRE_SKIRMISH_START"), set_enemy = 'ogre_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
-	troll_skirmish_start = {text = tr("DIALOGUETROLL_SKIRMISH_START"), set_enemy = 'troll_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}]},
+	wolves_skirmish_start = {text = tr("DIALOGUEWOLVES_SKIRMISH_START"), set_enemy = 'wolves_skirmish',tags = [], image = 'wolves_skirmish', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
+	rebels_skirmish_start = {text = tr("DIALOGUEREBELS_SKIRMISH_START"), set_enemy = 'rebels_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
+	goblins_skirmish_start = {text = tr("DIALOGUEGOBLINS_SKIRMISH_START"), set_enemy = 'goblins_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
+	ogre_skirmish_start = {text = tr("DIALOGUEOGRE_SKIRMISH_START"), set_enemy = 'ogre_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
+	troll_skirmish_start = {text = tr("DIALOGUETROLL_SKIRMISH_START"), set_enemy = 'troll_skirmish',tags = [], image = '', options = [{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}]},
 	
 	skirmish_complete = {
 		text = [{text = "DIALOGUEMISSIONCOMPLETE", reqs = []}], 
@@ -85,7 +85,7 @@ var scenedict = {
 		tags = ['active_character_translate'], 
 		image = 'chest',
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 	lockpick_chest_bomb_failure = {
@@ -94,7 +94,7 @@ var scenedict = {
 		image = 'chest',
 		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = 35}],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 	lockpick_chest_gas_failure = {
@@ -103,7 +103,7 @@ var scenedict = {
 		image = 'chest',
 		bonus_effects = [{code = "affect_active_character", type = 'damage_percent', value = 25},{code = "affect_active_character", type = 'damage_mana_percent', value = 75}],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 	
@@ -116,7 +116,7 @@ var scenedict = {
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
 		{code = 'chest_mimic_force_open', reqs = [], text = "DIALOGUEMIMICOPENANYWAY"},
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 	
@@ -128,7 +128,7 @@ var scenedict = {
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'chest_is_mimic_leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
+		{code = 'chest_is_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
 		],
 	},
 	
@@ -139,7 +139,7 @@ var scenedict = {
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
-		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVEOPTION", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
+		{code = 'chest_is_erotic_mimic_leave', reqs = [], text = "DIALOGUELEAVE", bonus_effects = [{code = 'affect_active_character', type = 'stat_set', stat = 'hp', value = 0}]}
 		],
 	},
 	
@@ -149,7 +149,7 @@ var scenedict = {
 		image = 'chest_mimic',
 		default_event_type = 'character_event',
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 	chest_is_erotic_mimic_leave = {
@@ -158,7 +158,7 @@ var scenedict = {
 		image = 'chest_mimic',
 		default_event_type = 'character_event',
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 	
@@ -168,7 +168,7 @@ var scenedict = {
 		image = 'armory', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	dungeon_find_armory_medium = {
@@ -177,7 +177,7 @@ var scenedict = {
 		image = 'armory', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_armory_weapon', 1],['medium_armory_armor', 1]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	
@@ -209,7 +209,7 @@ var scenedict = {
 		image = 'chest', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	dungeon_find_chest_medium = {
@@ -218,7 +218,7 @@ var scenedict = {
 		image = 'chest', 
 		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['medium_chest_usable', 1], ['medium_chest_gear',0.2], ['medium_chest_cosmetics', 0.5]]}],
 		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		]
 	},
 	quest_accept = {
@@ -247,7 +247,7 @@ var scenedict = {
 	common_effects = [{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {}}]}],
 	options = [
 	{code = 'recruit', reqs = [], text = "DIALOGUERECRUITCHARACTEROPTION"},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	
@@ -258,7 +258,7 @@ var scenedict = {
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_chest_usable', 1], ['easy_chest_gear',0.2], ['easy_chest_cosmetics', 0.5]]}],
 	options = [
 	#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	
@@ -279,7 +279,7 @@ var scenedict = {
 	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['easy_boss_chest',1]]}],
 	options = [
 	#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	
@@ -338,7 +338,7 @@ var scenedict = {
 	options = [
 	{code = 'event_dungeon_prisoner_enslave', reqs = [], text = ("DIALOGUETAKESLAVE")},
 	{code = 'event_dungeon_prisoner_free', reqs = [], text = tr("DIALOGUESETFREEPERSON")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	event_dungeon_prisoner_enslave = {text = tr("DIALOGUEEVENTDUNGEONPRISONERSENSLAVE"), 
@@ -347,7 +347,7 @@ var scenedict = {
 	common_effects = [],
 	options = [
 	{code = 'capture_from_scene', reqs = [], text = tr("DIALOGUERECRUITCHARACTEROPTION")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
 	event_dungeon_prisoner_free = {
@@ -583,7 +583,7 @@ var scenedict = {
 	],
 	options = [
 	#{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
 	]
 	},
 	
@@ -604,7 +604,7 @@ var scenedict = {
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_person_acquired', reqs = [{type = "has_money_for_scene_slave", value = 0}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE"), bonus_effects = [{code = 'spend_money_for_scene_character', value = 0}]},
 	{code = 'event_good_slavers_request', select_person = true, reqs = [], text = tr("DIALOGUEREQUESTSLAVE")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
 	]
 	},
 	event_good_slavers_request = {
@@ -652,7 +652,7 @@ var scenedict = {
 		common_effects = [{code = 'change_type_scene_characters', type = 'all', value = 'servant'},{code = 'affect_scene_characters', type = 'stat', stat = 'authority', value = 55}],
 		options = [
 		{code = 'event_person_recruit_attempt', select_person = true, reqs = [], text = tr("DIALOGUEPERSONASKTOJOIN")},
-		{code = 'close', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+		{code = 'close', reqs = [], text = tr("DIALOGUELEAVE")}
 		],
 	},
 	
@@ -666,7 +666,7 @@ var scenedict = {
 			image = 'slave_decision',
 			options = [
 				{code = 'recruit_from_scene', text = tr("DIALOGUECONTINUE"), reqs = []},
-				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")}
+				{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 				]
 			},
 			{reqs = [],
@@ -695,7 +695,7 @@ var scenedict = {
 	options = [
 	{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
 	{code = 'event_good_rebels_intimidate', select_person = true, reqs = [], text = tr("DIALOGUEINTIMIDATE")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
 	]
 	},
 	
@@ -730,7 +730,7 @@ var scenedict = {
 	default_event_type = "location",
 	image = 'noevent', 
 	options = [
-	{code = 'leave', reqs = [], text = "DIALOGUELEAVEOPTION"}
+	{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 	]
 	},
 	
@@ -1218,6 +1218,24 @@ var scenedict = {
 		options = [
 		{code = 'close', text = "DIALOGUECLOSE", reqs = []},
 		],
+	},
+	
+	celena_shrine_find = {
+		text = tr("DIALOGUEGROVEWOOD"), 
+		tags = [],
+		image = null, 
+		options = [
+		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
+	},
+	celena_shrine_approach = {
+		text = tr("DIALOGUEGROVEWOOD"), 
+		tags = ['shrine','active_character_translate'],
+		shrine = 'celena',
+		image = null, 
+		options = [
+		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
 	},
 }
 
