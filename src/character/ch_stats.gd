@@ -366,9 +366,8 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 	
 	parent.create(gendata.race, gendata.sex, gendata.age)
 	
-	if randf() <= 0.003:
-		desired_class = parent.generate_ea_character(gendata, desired_class)
-	
+#	if randf() <= 0.003:
+#		desired_class = parent.generate_ea_character(gendata, desired_class)
 	var slaveclass = desired_class
 	if slaveclass == null:
 		slaveclass = input_handler.weightedrandom([['combat', 1],['magic', 1],['social', 1],['sexual',1], ['labor',1]])

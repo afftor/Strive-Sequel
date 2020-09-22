@@ -1038,13 +1038,33 @@ var loot_variants_data = {
 	aliron_church_bonus = [
 		{code = 'defined', name = 'lifeshard', min = 5, max = 5},
 	],
+	
+	celena_reward = [
+		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
+	],
+	celena_destroy_shrine = [
+		{code = 'defined', name = 'iron', min = 5, max = 10},
+		{code = 'defined', name = 'mithril', min = 1, max = 4},
+	],
+	erebus_reward = [
+		{code = 'defined', name = 'energyshard', min = 3, max = 5},
+	],
+	erebus_destroy_shrine = [
+		{code = 'defined', name = 'stone', min = 20, max = 40},
+		{code = 'defined', name = 'obsidian', min = 1, max = 4},
+	],
+	freya_destroy_shrine = [
+		{code = 'defined', name = 'wood', min = 5, max = 30},
+		{code = 'defined', name = 'woodmagic', min = 2, max = 10},
+		{code = 'defined', name = 'woodancient', min = 0, max = 1},
+	],
 }
 
 
 var locks_data = { #makes locks to lockpick for related chests
-	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.01],['mimic_erotic',0.01]], difficulty = [5,20]},
-	easy_chest_gear = {locks = [['normal', 1],['mimic',0.05],['mimic_erotic',0.05]], difficulty = [10,25]},
-	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.02],['mimic_erotic',0.02]], difficulty = [5,20]},
+	easy_chest_usable = {locks = [['normal', 1],['none', 0.5],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
+	easy_chest_gear = {locks = [['normal', 1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [10,25]},
+	easy_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [5,20]},
 	easy_boss_chest = {locks = [['normal', 1]], difficulty = [10,25]},
 	
 	easy_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [15,25]},
@@ -1053,9 +1073,9 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_armory_weapon = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	medium_armory_armor = {locks = [['normal', 1], ['alarm', 1]], difficulty = [30,60]},
 	
-	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [15,40]},
+	medium_chest_usable = {locks = [['normal', 1],['none', 0.5],['bomb',1],['gas',1],['mimic',0.3],['mimic_erotic',0.3]], difficulty = [15,40]},
 	medium_chest_gear = {locks = [['normal', 1],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [25,55]},
-	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.1],['mimic_erotic',0.1]], difficulty = [20,50]},
+	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1]], difficulty = [20,55]},
 	
 	test_chest_mimic = {locks = [['mimic', 1]], difficulty = [100,100]},
@@ -1085,3 +1105,47 @@ var loottables = {
 	zombie_loot = [['cloth', 0.5, 2], ['gold',1, 3]],
 	mimic_loot = [['woodiron', 0.8, 5], ['lifegem', 0.75, 3], ['gold', 20, 30]],
 }
+
+
+var shrines = {
+	celena = {
+		options = {
+			"material" : {input = 'material', output = 'celena_item'},
+			"character" : {input = 'character', output = 'celena_character'},
+			"destroy" : {input = 'destroy', output = 'selena_destroy'}
+		},
+		bless = '',
+		curse = '',
+		
+		
+		
+	},
+	erebus = {},
+	freya = {},
+}
+
+
+func celena_item(code):
+	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = []}
+	var item = Items.materiallist[code]
+	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+	
+	if item.type in ['wood','plant','food']:
+		dict.text += "\n\n{color=green|The offering disappars in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}"
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',1]]}]
+		dict.tags.append("free_loot")
+	else:
+		dict.text += "\n\n{color=red|The offering disappers from sight but there's no other changes around. It seems your offer wasn't liked.}"
+		dict.options.append({code = 'close', text = "DIALOGUELEAVE"})
+	
+	
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func celena_character(person):
+	pass
+
+func celena_destroy():
+	pass
+
+
+

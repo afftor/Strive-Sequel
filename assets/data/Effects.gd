@@ -322,6 +322,28 @@ var effect_table = {
 			}
 		],
 	},
+	e_celena_bless = {
+		type = 'temp_s',
+		name = 'celena_bless',
+		tick_event = variables.TR_TICK,
+		duration = 12, 
+		stack = 1,
+		sub_effects = [],
+		tags = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'productivity', value = 0.1},
+		],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsclasses/Worker.png", 
+				description = "Celena's Blessing: Reduce damage taken by 30%%.",
+				limit = 1,
+				t_name = 'celena_bless',
+				mansion_only = true,
+			}
+		],
+	},
+	
 	e_food_like = {
 		type = 'temp_s',
 		name = 'food_like',
@@ -1330,7 +1352,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Authority.png", 
-				description = "Resistes increased",
+				description = "Resists increased",
 				limit = 1,
 				t_name = 'endure',
 				combat_only = true,

@@ -129,7 +129,7 @@ var data = {
 		{text = "MAGESELECTION3_ANY", reqs = [],}
 		],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}, {code = 'make_quest_location', value = 'quest_mages_xari'}]}
+		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}, {code = 'make_quest_location', value = 'quest_mages_xari'}]}
 		],
 	},
 	
@@ -155,7 +155,7 @@ var data = {
 		tags = [],
 		text = [{text = "MAGESELECTION4_2", reqs = [], bonus_effects = [{code = 'complete_quest', value = 'mages_election_quest'}]}],
 		options = [
-		{code = 'close', text = tr("DIALOGUELEAVEOPTION"), reqs = [], 
+		{code = 'close', text = tr("DIALOGUELEAVE"), reqs = [], 
 		bonus_effects = [{code = 'decision', value = 'mages_election_support'}],}
 		],
 		},
@@ -170,7 +170,7 @@ var data = {
 		{text = "MAGESELECTION5", reqs = []}
 		],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], }
+		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], }
 		],
 	},
 	
@@ -278,7 +278,7 @@ var data = {
 			{image = null,
 			character = 'xari',
 			tags = ['dialogue_scene'],
-			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'charm_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
+			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'sexuals_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
 				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
 			]

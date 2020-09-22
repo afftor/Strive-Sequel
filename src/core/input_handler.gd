@@ -719,9 +719,15 @@ func start_event_attempt():
 			start_event(event.code, event.type, event.args)
 			dialogue_array.erase(event)
 
+
+
 func start_event(code, type, args):
 	event_is_active = true
-	var data = scenedata.scenedict[code].duplicate(true)
+	var data
+	if type == 'direct':
+		data = code
+	else:
+		data = scenedata.scenedict[code].duplicate(true)
 	var scene
 	match gui_controller.dialogue_window_type:
 		1:

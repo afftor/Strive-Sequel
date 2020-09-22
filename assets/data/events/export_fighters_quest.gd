@@ -295,7 +295,7 @@ var data = {
 		{text = 'LICHENCCONLUSION', reqs = []},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), 
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), 
 		bonus_effects = [
 			{code = 'decision', value = 'aire_is_dead'},
 			{code = 'decision', value = 'deal_with_lich'},
@@ -330,7 +330,7 @@ var data = {
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'}]},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), bonus_effects = [{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), bonus_effects = [{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],
 		},
 		],
@@ -382,7 +382,7 @@ var data = {
 	lich_aire_talk4 = {
 		variations = [
 		{reqs = [
-		{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}]},
+		{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}]},
 		],
 		image = null,
 		character = 'aire',
@@ -391,7 +391,7 @@ var data = {
 		{text = "LICHAIRETALK4", reqs = []},
 		],
 		options = [
-		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION"), dialogue_argument = 1, bonus_effects = [{code = 'decision', value = 'aire_had_sex'},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE"), dialogue_argument = 1, bonus_effects = [{code = 'decision', value = 'aire_had_sex'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]
 		
@@ -448,7 +448,7 @@ var data = {
 		{text = "LICHAIRETALK7", reqs = []},
 		],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'},
+		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [{code = 'decision', value = 'aire_is_dead'},
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],
@@ -463,7 +463,7 @@ var data = {
 		],
 		common_effects = [],
 		options = [
-		{code = 'leave', text = tr("DIALOGUELEAVEOPTION"), reqs = [], bonus_effects = [
+		{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = [], bonus_effects = [
 			{code = 'progress_quest', value = 'fighters_election_quest', stage = 'stage2'},
 			{code = 'remove_quest_location', value = 'quest_fighters_lich'}]},
 		],

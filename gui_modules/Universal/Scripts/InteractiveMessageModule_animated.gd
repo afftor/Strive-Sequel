@@ -80,6 +80,8 @@ func open(scene, not_save = false):
 	
 	if scene.tags.has('locked_chest'):
 		add_chest_options(scene)
+	if scene.tags.has("shrine"):
+		add_shrine_options(scene)
 	if scene.tags.has("free_loot"):
 		add_loot_options(scene)
 	
@@ -160,6 +162,8 @@ func open(scene, not_save = false):
 		
 		if i.has('select_person'):
 			newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+		elif i.code == 'shrine_option':
+			newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
 		elif i.code == 'chest_mimic_force_open':
 			newbutton.connect("pressed",self,'chest_mimic_force_open')
 		elif scene.tags.has('linked_event') && !i.code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
@@ -303,6 +307,36 @@ func add_chest_options(scene):
 	
 	scene.text.append({text = text, reqs = []})
 	scene.options.insert(0,{code = 'lockpick_attempt', select_person = true, reqs = [], text = "DIALOGUECHESTLOCKPICK"})
+
+
+func add_shrine_options(scene):
+	var shrineoptions = Enemydata.shrines[scene.shrine].options
+	var array = shrineoptions.keys()
+	array.invert()
+	for i in array:
+		match shrineoptions[i].input:
+			'material':
+				scene.options.insert(0,{code = 'shrine_option', args = ['select_material'], reqs = [], text = "DIALOGUESHRINEITEM"})
+			'character':
+				scene.options.insert(0,{code = 'shrine_option', args = ['character'], reqs = [], text = "DIALOGUESHRINECHARACTER"})
+			'destroy':
+				scene.options.insert(0,{code = 'shrine_option', args = ['character'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
+
+func shrine_option(option):
+	match option:
+		'select_material':
+			globals.ItemSelect(self, 'material', 'shrine_mat_select')
+		"character":
+			pass
+		'destroy':
+			pass
+		'material_selected':
+			Enemydata.call
+
+var selected_item
+
+func shrine_mat_select(item):
+	selected_item = item
 
 func add_loot_options(scene):
 	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT"})

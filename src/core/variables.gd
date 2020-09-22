@@ -254,7 +254,7 @@ var new_stat_bonuses_syntax = false
 
 
 
-var pregduration = 90
+var pregduration = 720
 
 var slave_classes_per_difficulty = {
 	0 : [0, 2],
