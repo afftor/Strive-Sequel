@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/GameMenuPanelFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scenes/SaveLoadPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/Options.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui_modules/Universal/Scripts/GameMenuPanel.gd" type="Script" id=4]
@@ -8,10 +8,6 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/GameMenuPanel.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtVioletPressed.tres" type="StyleBox" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ButtVioletNormal.tres" type="StyleBox" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 1 )
 
 [node name="GameMenuPanel" type="Panel" groups=[
 "pauseprocess",
@@ -67,7 +63,7 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Save"]
 margin_right = 400.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Save"
 align = 1
@@ -88,7 +84,7 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Load"]
 margin_right = 400.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Load"
 align = 1
@@ -109,7 +105,7 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Options"]
 margin_right = 400.0
 margin_bottom = 69.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Options"
 align = 1
@@ -130,7 +126,7 @@ custom_styles/normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="VBoxContainer/Exit"]
 margin_right = 400.0
 margin_bottom = 69.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Exit"
 align = 1

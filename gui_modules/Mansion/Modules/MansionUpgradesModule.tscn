@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=5]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionUpgradesModule.gd" type="Script" id=6]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=7]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=8]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=9]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Upgrades_BG.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/SimplePanel.tres" type="StyleBox" id=11]
@@ -18,6 +18,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades.png" type="Texture" id=18]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 

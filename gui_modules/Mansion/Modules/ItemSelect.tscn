@@ -8,8 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=8]
-[ext_resource path="res://gui_modules/ItemSelect.gd" type="Script" id=9]
-
+[ext_resource path="res://gui_modules/Mansion/Scripts/ItemSelect.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )

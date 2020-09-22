@@ -101,6 +101,7 @@ margin_left = 23.0
 margin_top = 8.0
 margin_right = 343.0
 margin_bottom = 464.0
+theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,6 +159,7 @@ margin_left = 23.0
 margin_top = 8.0
 margin_right = 343.0
 margin_bottom = 464.0
+theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -215,6 +217,7 @@ margin_left = 10.0
 margin_top = 8.0
 margin_right = 330.0
 margin_bottom = 464.0
+theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false

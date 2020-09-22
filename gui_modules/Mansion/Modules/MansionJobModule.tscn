@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/images/gui/gui icons/up-press.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/gui/gui icons/down-press.png" type="Texture" id=12]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionJobModule.gd" type="Script" id=13]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=14]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_jobselection_disabled.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_jobselection_hover.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather_hover.png" type="Texture" id=17]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=19]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Job_BG.tres" type="StyleBox" id=20]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Job_Travel_Panel.tres" type="StyleBox" id=21]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )

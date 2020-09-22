@@ -111,6 +111,7 @@ custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Complete"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,6 +126,7 @@ custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Forfeit"
 
 [node name="reqs" type="HBoxContainer" parent="."]

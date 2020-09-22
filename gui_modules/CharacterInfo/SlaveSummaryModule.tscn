@@ -753,9 +753,10 @@ __meta__ = {
 
 [node name="Name" type="HBoxContainer" parent="."]
 light_mask = 0
-margin_left = 602.82
-margin_right = 797.82
-margin_bottom = 125.0
+margin_left = 556.82
+margin_top = 6.0
+margin_right = 843.82
+margin_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 15

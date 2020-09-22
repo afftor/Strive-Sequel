@@ -113,8 +113,6 @@ func play_animation(anim):
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
 		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-	elif anim == "defeat":
-		print("") # Here will be win animation
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
@@ -459,20 +457,17 @@ func show_buttons(container):
 		button.set("modulate", Color(1, 1, 1, 1))
 
 func defeat():
-#	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	play_animation("defeat")
 	input_handler.PlaySound("combat_defeat")
-	yield(get_tree().create_timer(3), "timeout")
+	yield(get_tree().create_timer(3), 'timeout')
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
 	FinishCombat(false)
-	yield(get_tree().create_timer(0.5), 'timeout')
 	var active_location = gui_controller.exploration.active_location
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-	hide()
 
 func player_turn(pos):
 	# battlefieldpositions[pos].get_node("Character/Active").show()
