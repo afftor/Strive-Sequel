@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=2]
+[gd_scene load_steps=141 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -26,7 +26,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_big_lust.png" type="Texture" id=24]
 [ext_resource path="res://assets/images/gui/gui icons/base_exp.png" type="Texture" id=25]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=26]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=27]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=27]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=28]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=29]
 [ext_resource path="res://assets/images/gui/gui icons/food.png" type="Texture" id=30]
@@ -103,7 +103,20 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity.png" type="Texture" id=101]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_pressed.png" type="Texture" id=102]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/icon_journalcity_hover.png" type="Texture" id=103]
-[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue.png" type="Texture" id=104]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=104]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_reputationshop.png" type="Texture" id=105]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_hover.png" type="Texture" id=106]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_reputationshop_reputation.png" type="Texture" id=107]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop_pressed.png" type="Texture" id=108]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/button_reputationshop.png" type="Texture" id=109]
+[ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_warriorsguild.png" type="Texture" id=110]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_30_Label.tres" type="Theme" id=111]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=112]
+[ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_buydungeonlocation.png" type="Texture" id=113]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=114]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=115]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco.png" type="Texture" id=116]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=117]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -501,26 +514,28 @@ texture_pressed = ExtResource( 21 )
 expand = true
 
 [node name="name" type="Label" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
-margin_left = 53.0526
-margin_top = 11.8421
-margin_right = 330.053
-margin_bottom = 41.8421
+margin_left = 53.0
+margin_top = 2.0
+margin_right = 330.0
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Name"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Price" type="Label" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
 margin_left = 326.0
-margin_top = 13.0
+margin_top = 2.0
 margin_right = 391.0
-margin_bottom = 37.0
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "100"
 align = 2
+valign = 1
 
 [node name="icon" type="TextureRect" parent="SlaveMarket/SlaveList/ScrollContainer/VBoxContainer/Button"]
 margin_left = 2.01312
@@ -2252,14 +2267,6 @@ margin_right = 500.0
 margin_bottom = 190.0
 custom_styles/panel = SubResource( 23 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="AreaShop/NumberSelection"]
-margin_left = 37.0
-margin_top = 32.0
-margin_right = 461.0
-margin_bottom = 98.0
-custom_fonts/normal_font = ExtResource( 8 )
-bbcode_enabled = true
-
 [node name="HSlider" type="HSlider" parent="AreaShop/NumberSelection"]
 margin_left = 37.0
 margin_top = 95.0
@@ -2282,6 +2289,56 @@ margin_right = 379.443
 margin_bottom = 174.8
 theme = ExtResource( 42 )
 text = "Confirm"
+
+[node name="ItemName" type="Label" parent="AreaShop/NumberSelection"]
+margin_top = 10.0
+margin_right = 500.0
+margin_bottom = 42.0
+text = "Item Name"
+align = 1
+valign = 1
+
+[node name="ItemAmount" type="Label" parent="AreaShop/NumberSelection"]
+margin_left = 81.0
+margin_top = 58.842
+margin_right = 123.0
+margin_bottom = 90.842
+text = "x 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemPrice" type="Label" parent="AreaShop/NumberSelection"]
+margin_left = 381.0
+margin_top = 58.842
+margin_right = 461.0
+margin_bottom = 90.842
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "x Price"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemIcon" type="TextureRect" parent="AreaShop/NumberSelection"]
+margin_left = 37.0
+margin_top = 50.0
+margin_right = 77.0
+margin_bottom = 90.0
+texture = ExtResource( 112 )
+expand = true
+stretch_mode = 6
+
+[node name="Gold" type="TextureRect" parent="AreaShop/NumberSelection"]
+margin_left = 353.311
+margin_top = 51.0
+margin_right = 393.311
+margin_bottom = 91.0
+texture = ExtResource( 112 )
+expand = true
+stretch_mode = 6
 
 [node name="Label4" type="Label" parent="AreaShop"]
 margin_left = 62.0
@@ -2313,24 +2370,25 @@ __meta__ = {
 
 [node name="GuildShop" type="Control" parent="."]
 visible = false
-margin_left = 468.0
-margin_top = 16.8675
-margin_right = 1528.0
-margin_bottom = 1082.87
+margin_left = 655.0
+margin_top = 77.0
+margin_right = 1265.0
+margin_bottom = 1002.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="TextureRect" parent="GuildShop"]
-margin_right = 1060.0
-margin_bottom = 1050.0
-texture = ExtResource( 104 )
+margin_right = 610.0
+margin_bottom = 925.0
+texture = ExtResource( 105 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GuildShop"]
-margin_left = 67.0
-margin_top = 45.0
-margin_right = 1016.0
-margin_bottom = 668.0
+margin_left = 47.0
+margin_top = 100.0
+margin_right = 578.0
+margin_bottom = 609.0
+theme = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2339,28 +2397,31 @@ __meta__ = {
 
 [node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 100.0
-margin_bottom = 100.0
-texture_normal = ExtResource( 95 )
-texture_pressed = ExtResource( 80 )
-texture_hover = ExtResource( 99 )
+margin_right = 514.0
+margin_bottom = 108.0
+texture_normal = ExtResource( 109 )
+texture_pressed = ExtResource( 108 )
+texture_hover = ExtResource( 106 )
 
 [node name="Title" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
-margin_left = 128.0
-margin_top = 34.1325
-margin_right = 362.0
-margin_bottom = 66.1325
+margin_left = 115.0
+margin_top = 2.0
+margin_right = 507.0
+margin_bottom = 34.0
+theme = ExtResource( 104 )
 text = "Thing to buy"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Price" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
-margin_left = 813.043
-margin_top = 34.1325
-margin_right = 863.043
-margin_bottom = 66.1325
-text = "Price"
+margin_left = 427.0
+margin_top = 63.0
+margin_right = 507.0
+margin_bottom = 95.0
+text = "x Price"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2368,8 +2429,8 @@ __meta__ = {
 [node name="Icon" type="TextureRect" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
 margin_left = 9.0
 margin_top = 8.0
-margin_right = 89.0
-margin_bottom = 88.0
+margin_right = 99.0
+margin_bottom = 97.0
 expand = true
 stretch_mode = 6
 __meta__ = {
@@ -2389,12 +2450,337 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Type" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
+margin_left = 115.443
+margin_top = 69.0
+margin_right = 164.443
+margin_bottom = 101.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Type"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
+margin_left = 362.0
+margin_top = 48.0
+margin_right = 412.0
+margin_bottom = 98.0
+texture = ExtResource( 107 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemIcon" type="TextureRect" parent="GuildShop"]
+margin_left = 87.0
+margin_top = 664.535
+margin_right = 135.0
+margin_bottom = 712.535
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumberSelection2" type="Panel" parent="GuildShop"]
+visible = false
+margin_left = 50.0
+margin_top = 624.0
+margin_right = 562.0
+margin_bottom = 814.0
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 73 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="GuildShop/NumberSelection2"]
+margin_left = 37.0
+margin_top = 95.0
+margin_right = 567.0
+margin_bottom = 121.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_icons/grabber_disabled = ExtResource( 69 )
+custom_icons/grabber_highlight = ExtResource( 69 )
+custom_icons/grabber = ExtResource( 69 )
+custom_styles/slider = ExtResource( 72 )
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="GuildShop/NumberSelection2"]
+margin_left = 125.443
+margin_top = 122.8
+margin_right = 379.443
+margin_bottom = 174.8
+theme = ExtResource( 42 )
+text = "Confirm"
+
+[node name="ItemName" type="Label" parent="GuildShop/NumberSelection2"]
+margin_top = 2.0
+margin_right = 511.0
+margin_bottom = 34.0
+text = "Item Name"
+align = 1
+valign = 1
+
+[node name="ItemAmount" type="Label" parent="GuildShop/NumberSelection2"]
+margin_left = 36.9699
+margin_top = 56.0
+margin_right = 78.9699
+margin_bottom = 88.0
+text = "x 1"
+align = 1
+valign = 1
+
+[node name="ItemPrice" type="Label" parent="GuildShop/NumberSelection2"]
+margin_left = 379.443
+margin_top = 56.0
+margin_right = 459.443
+margin_bottom = 88.0
+text = "x Price"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="GuildShop/NumberSelection2"]
+margin_left = 315.962
+margin_top = 40.5347
+margin_right = 365.962
+margin_bottom = 90.5347
+texture = ExtResource( 107 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GuildIcon" type="TextureRect" parent="GuildShop"]
+margin_left = 50.0
+margin_top = 837.459
+margin_right = 122.0
+margin_bottom = 909.459
+texture = ExtResource( 110 )
+
+[node name="GuildName" type="Label" parent="GuildShop"]
+margin_left = 9.0
+margin_top = 861.0
+margin_right = 603.0
+margin_bottom = 893.0
+theme = ExtResource( 111 )
+text = "Guild Name"
+align = 1
+valign = 1
+
+[node name="TextureRect3" type="TextureRect" parent="GuildShop"]
+margin_left = 418.497
+margin_top = 847.0
+margin_right = 468.497
+margin_bottom = 897.0
+texture = ExtResource( 107 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FactionPoints" type="Label" parent="GuildShop"]
-margin_left = 48.0
-margin_top = 734.0
-margin_right = 192.0
-margin_bottom = 766.0
-text = "Faction Points"
+margin_left = 476.0
+margin_top = 859.0
+margin_right = 594.0
+margin_bottom = 891.0
+text = "FP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GuildShop"]
+margin_right = 610.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Reputation Shop"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyLocation" type="Control" parent="."]
+visible = false
+margin_left = 610.0
+margin_top = 240.0
+margin_right = 1310.0
+margin_bottom = 840.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="BuyLocation"]
+margin_right = 700.0
+margin_bottom = 600.0
+texture = ExtResource( 113 )
+
+[node name="Label" type="Label" parent="BuyLocation/Background"]
+margin_left = 9.0
+margin_right = 346.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Locations"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="BuyLocation/Background"]
+margin_left = 353.97
+margin_right = 690.97
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Information"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BuyLocation"]
+margin_left = 20.0
+margin_top = 104.0
+margin_right = 335.0
+margin_bottom = 564.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuyLocation/ScrollContainer"]
+margin_right = 315.0
+rect_min_size = Vector2( 315, 0 )
+
+[node name="Button" type="Button" parent="BuyLocation/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 315.0
+margin_bottom = 52.0
+theme = ExtResource( 42 )
+toggle_mode = true
+text = "Location Name"
+
+[node name="LocationInfo" type="Control" parent="BuyLocation"]
+visible = false
+margin_left = 363.0
+margin_top = 95.0
+margin_right = 685.0
+margin_bottom = 582.0
+
+[node name="LocationName" type="Label" parent="BuyLocation/LocationInfo"]
+margin_right = 321.0
+margin_bottom = 32.0
+theme = ExtResource( 104 )
+text = "Location Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PossibleResources" type="Label" parent="BuyLocation/LocationInfo"]
+margin_top = 105.0
+margin_right = 321.0
+margin_bottom = 137.0
+custom_fonts/font = ExtResource( 8 )
+text = "Possible Resources"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resources" type="Control" parent="BuyLocation/LocationInfo"]
+margin_left = 4.0
+margin_top = 142.0
+margin_right = 321.0
+margin_bottom = 380.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="BuyLocation/LocationInfo/Resources"]
+margin_left = 33.97
+margin_top = -3.0
+margin_right = 299.97
+margin_bottom = 185.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="BuyLocation/LocationInfo/Resources/GridContainer"]
+visible = false
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 95 )
+texture_hover = ExtResource( 99 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="BuyLocation/LocationInfo/Resources/GridContainer/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 74, 74 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="BuyLocation/LocationInfo"]
+margin_left = 160.136
+margin_top = 384.0
+margin_right = 229.136
+margin_bottom = 416.0
+theme = ExtResource( 104 )
+text = "Price"
+valign = 1
+
+[node name="PurchaseLocation" type="TextureButton" parent="BuyLocation/LocationInfo"]
+margin_left = 50.975
+margin_top = 422.442
+margin_right = 275.975
+margin_bottom = 480.442
+texture_normal = ExtResource( 116 )
+texture_pressed = ExtResource( 115 )
+texture_hover = ExtResource( 117 )
+texture_disabled = ExtResource( 114 )
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="BuyLocation/LocationInfo/PurchaseLocation"]
+margin_right = 219.0
+margin_bottom = 60.0
+theme = ExtResource( 111 )
+text = "Purchase"
+align = 1
+valign = 1
+
+[node name="Difficulty" type="Label" parent="BuyLocation/LocationInfo"]
+margin_left = -9.0
+margin_top = 30.0
+margin_right = 328.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 8 )
+text = "Diff"
+align = 1
+valign = 1
+
+[node name="Gold" type="TextureRect" parent="BuyLocation/LocationInfo"]
+margin_left = 103.962
+margin_top = 380.0
+margin_right = 143.962
+margin_bottom = 420.0
+texture = ExtResource( 112 )
+expand = true
+stretch_mode = 6
 
 [node name="JournalButton" type="TextureButton" parent="."]
 margin_left = 1848.73

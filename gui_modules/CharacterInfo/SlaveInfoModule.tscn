@@ -16,9 +16,10 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=16]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=17]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 40

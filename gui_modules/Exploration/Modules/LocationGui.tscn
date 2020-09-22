@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=8]
 [ext_resource path="res://assets/images/gui/combat/combatpanelleftborder.png" type="Texture" id=9]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=10]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=10]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=13]
@@ -871,6 +871,14 @@ margin_right = 49.0
 margin_bottom = 338.0
 theme = ExtResource( 5 )
 
+[node name="ReturnAll" type="Button" parent="PresentedSlavesPanel"]
+margin_left = 188.0
+margin_top = 331.0
+margin_right = 429.0
+margin_bottom = 383.0
+theme = ExtResource( 7 )
+text = "Return All to Mansion"
+
 [node name="ItemUsePanel" type="Panel" parent="."]
 margin_left = 328.001
 margin_top = 420.0
@@ -1008,12 +1016,15 @@ texture_hover = ExtResource( 12 )
 texture_focused = SubResource( 4 )
 
 [node name="Label" type="Label" parent="ItemUsePanel/ItemsButton"]
-margin_left = 94.7219
-margin_top = 7.29767
-margin_right = 160.722
-margin_bottom = 31.2977
+margin_left = 90.7219
+margin_top = 2.29767
+margin_right = 156.722
+margin_bottom = 34.2977
 rect_scale = Vector2( -1, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Items"
+align = 1
+valign = 1
 
 [node name="SpellsButton" type="TextureButton" parent="ItemUsePanel"]
 margin_left = 151.386
@@ -1027,11 +1038,14 @@ texture_hover = ExtResource( 12 )
 texture_focused = SubResource( 5 )
 
 [node name="Label" type="Label" parent="ItemUsePanel/SpellsButton"]
-margin_left = 19.9026
-margin_top = 7.29767
-margin_right = 85.9026
-margin_bottom = 31.2977
+margin_left = 23.9026
+margin_top = 2.29767
+margin_right = 89.9026
+margin_bottom = 34.2977
+custom_fonts/font = ExtResource( 3 )
 text = "Spells"
+align = 1
+valign = 1
 
 [node name="Label" type="Label" parent="ItemUsePanel"]
 margin_right = 300.0

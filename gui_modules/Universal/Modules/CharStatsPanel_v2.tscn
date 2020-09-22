@@ -1,23 +1,22 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://gui_modules/CharStatsPanel_v2.gd" type="Script" id=1]
-[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png" type="Texture" id=2]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=3]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=4]
-[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=5]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=6]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=7]
-
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/Universal/Scripts/CharStatsPanel_v2.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
-font_data = ExtResource( 7 )
+font_data = ExtResource( 1 )
 
 [node name="StatsPanel_v2" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 694.0
 margin_bottom = 504.0
-script = ExtResource( 1 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,7 +25,7 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 694.0
 margin_bottom = 504.0
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,7 +48,7 @@ columns = 4
 margin_right = 128.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Health: "
 align = 2
 
@@ -58,7 +57,7 @@ margin_left = 132.0
 margin_right = 260.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "100/100"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
@@ -67,7 +66,7 @@ margin_left = 264.0
 margin_right = 392.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Energy:"
 align = 2
 
@@ -77,7 +76,7 @@ margin_left = 264.0
 margin_right = 392.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "100/100"
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
@@ -85,7 +84,7 @@ margin_left = 264.0
 margin_right = 392.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Mana:"
 align = 2
 
@@ -94,7 +93,7 @@ margin_left = 396.0
 margin_right = 524.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "100/100"
 
 [node name="base stats" type="GridContainer" parent="."]
@@ -114,7 +113,7 @@ margin_right = 163.0
 margin_bottom = 32.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "ATK:"
 align = 2
 
@@ -123,7 +122,7 @@ margin_left = 163.0
 margin_right = 189.0
 margin_bottom = 32.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "25"
 
 [node name="label_matk" type="Label" parent="base stats"]
@@ -132,7 +131,7 @@ margin_right = 352.0
 margin_bottom = 32.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "MATK:"
 align = 2
 
@@ -141,7 +140,7 @@ margin_left = 352.0
 margin_right = 378.0
 margin_bottom = 32.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "20"
 
 [node name="label_armor" type="Label" parent="base stats"]
@@ -150,7 +149,7 @@ margin_right = 163.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "DEF:"
 align = 2
 
@@ -160,7 +159,7 @@ margin_top = 39.0
 margin_right = 189.0
 margin_bottom = 71.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "15"
 
 [node name="label_mdef" type="Label" parent="base stats"]
@@ -170,7 +169,7 @@ margin_right = 352.0
 margin_bottom = 71.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "MDEF:"
 align = 2
 
@@ -180,7 +179,7 @@ margin_top = 39.0
 margin_right = 378.0
 margin_bottom = 71.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "20"
 
 [node name="label_hitrate" type="Label" parent="base stats"]
@@ -189,7 +188,7 @@ margin_right = 163.0
 margin_bottom = 110.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Hit Rate:"
 align = 2
 
@@ -199,7 +198,7 @@ margin_top = 78.0
 margin_right = 189.0
 margin_bottom = 110.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "15"
 
 [node name="label_evasion" type="Label" parent="base stats"]
@@ -209,7 +208,7 @@ margin_right = 352.0
 margin_bottom = 110.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Evasion:"
 align = 2
 
@@ -219,7 +218,7 @@ margin_top = 78.0
 margin_right = 378.0
 margin_bottom = 110.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "20"
 
 [node name="label_speed" type="Label" parent="base stats"]
@@ -228,7 +227,7 @@ margin_right = 163.0
 margin_bottom = 149.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Speed:"
 align = 2
 
@@ -238,7 +237,7 @@ margin_top = 117.0
 margin_right = 189.0
 margin_bottom = 149.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "15"
 
 [node name="label_armorpenetration" type="Label" parent="base stats"]
@@ -248,7 +247,7 @@ margin_right = 352.0
 margin_bottom = 149.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Armor Pen.:"
 align = 2
 
@@ -258,7 +257,7 @@ margin_top = 117.0
 margin_right = 378.0
 margin_bottom = 149.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "20"
 
 [node name="label_critchance" type="Label" parent="base stats"]
@@ -267,7 +266,7 @@ margin_right = 163.0
 margin_bottom = 188.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Critical:"
 align = 2
 
@@ -277,7 +276,7 @@ margin_top = 156.0
 margin_right = 189.0
 margin_bottom = 188.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "15"
 
 [node name="label_critmod" type="Label" parent="base stats"]
@@ -287,7 +286,7 @@ margin_right = 352.0
 margin_bottom = 188.0
 mouse_filter = 1
 size_flags_horizontal = 3
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Critical Mod:"
 align = 2
 
@@ -297,7 +296,7 @@ margin_top = 156.0
 margin_right = 378.0
 margin_bottom = 188.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "20"
 
 [node name="resists" type="GridContainer" parent="."]
@@ -335,7 +334,7 @@ margin_left = 380.0
 margin_top = 224.0
 margin_right = 686.0
 margin_bottom = 281.0
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Resists"
 align = 1
 valign = 1
@@ -345,7 +344,7 @@ margin_left = 125.153
 margin_top = 15.0734
 margin_right = 405.153
 margin_bottom = 39.0734
-theme = ExtResource( 6 )
+theme = ExtResource( 2 )
 text = "Name"
 align = 1
 __meta__ = {
@@ -356,6 +355,6 @@ __meta__ = {
 margin_left = 665.071
 margin_right = 694.071
 margin_bottom = 29.0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 3 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )

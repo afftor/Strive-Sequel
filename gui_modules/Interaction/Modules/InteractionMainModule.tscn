@@ -837,7 +837,6 @@ custom_fonts/font = ExtResource( 2 )
 text = "x20"
 
 [node name="Control" type="Control" parent="."]
-visible = false
 margin_left = -35.0
 margin_top = -15.0
 margin_right = 2034.0
@@ -848,10 +847,10 @@ size_flags_vertical = 2
 [node name="Panel" type="Panel" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 517.0
-margin_top = 90.0
-margin_right = -611.0
-margin_bottom = -352.0
+margin_left = 490.0
+margin_top = 175.0
+margin_right = -639.0
+margin_bottom = -268.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_styles/panel = ExtResource( 1 )
@@ -872,9 +871,9 @@ __meta__ = {
 
 [node name="finishbutton" type="Button" parent="Control/Panel"]
 margin_left = 395.044
-margin_top = 677.524
+margin_top = 662.524
 margin_right = 548.044
-margin_bottom = 716.524
+margin_bottom = 714.524
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 5 )

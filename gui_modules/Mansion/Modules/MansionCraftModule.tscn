@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=10]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=11]
-[ext_resource path="res://gui_modules/ScrollContainer.gd" type="Script" id=12]
+[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_hover.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_hover.png" type="Texture" id=15]
@@ -54,6 +54,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_pressed.png" type="Texture" id=52]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy.png" type="Texture" id=53]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_pressed.png" type="Texture" id=54]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=55]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -378,6 +379,8 @@ margin_left = 59.0
 margin_top = 8.0
 margin_right = 309.0
 margin_bottom = 44.0
+custom_fonts/font = ExtResource( 55 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Item Name"
 valign = 1
 __meta__ = {

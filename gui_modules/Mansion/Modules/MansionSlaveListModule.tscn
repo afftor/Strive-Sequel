@@ -298,28 +298,30 @@ __meta__ = {
 }
 
 [node name="explabel" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 563.105
-margin_top = 5.4158
-margin_right = 638.105
-margin_bottom = 37.4158
+margin_left = 563.0
+margin_top = 5.0
+margin_right = 638.0
+margin_bottom = 45.0
 rect_min_size = Vector2( 75, 0 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 107.0
-margin_top = 6.0
+margin_top = 5.0
 margin_right = 230.0
-margin_bottom = 38.0
+margin_bottom = 45.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name "
+valign = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -386,16 +388,17 @@ __meta__ = {
 }
 
 [node name="obed" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
-margin_left = 511.356
-margin_top = 5.8264
-margin_right = 556.356
-margin_bottom = 37.8264
+margin_left = 511.0
+margin_top = 6.0
+margin_right = 556.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 45, 0 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
 align = 1
+valign = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -418,10 +421,11 @@ __meta__ = {
 margin_left = 703.0
 margin_top = 6.0
 margin_right = 924.0
-margin_bottom = 38.0
+margin_bottom = 45.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Location"
+valign = 1
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -500,9 +504,9 @@ __meta__ = {
 }
 
 [node name="TravelsContainerPanel" type="Panel" parent="."]
-margin_left = 18.0
+margin_left = 25.0
 margin_top = 526.0
-margin_right = 1075.0
+margin_right = 1082.0
 margin_bottom = 569.0
 custom_styles/panel = ExtResource( 7 )
 __meta__ = {

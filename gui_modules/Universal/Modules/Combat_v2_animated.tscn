@@ -1,7 +1,7 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://gui_modules/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_run_disabled.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_inventory_disabled.png" type="Texture" id=5]
@@ -101,21 +101,25 @@ size = 32
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="DynamicFont" id=6]
+size = 36
+use_filter = true
+font_data = ExtResource( 25 )
+
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 694, 182 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 24
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 size = 55
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "Victory"
+[sub_resource type="Animation" id=10]
 length = 2.5
 step = 0.0333333
 tracks/0/type = "value"
@@ -748,7 +752,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Panel3"]
 margin_right = 503.0
 margin_bottom = 102.0
-custom_fonts/font = ExtResource( 47 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Char Name"
 align = 1
@@ -846,7 +850,7 @@ margin_left = 613.0
 margin_top = 658.0
 margin_right = 1307.0
 margin_bottom = 840.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -931,7 +935,7 @@ margin_left = 53.0
 margin_top = 1.0
 margin_right = 93.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "1"
 align = 2
 
@@ -941,7 +945,7 @@ margin_left = 53.0
 margin_top = 65.767
 margin_right = 93.0003
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -956,7 +960,7 @@ margin_left = 5.62131
 margin_top = 65.767
 margin_right = 45.6213
 margin_bottom = 97.767
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.917647, 0.968627, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -1067,7 +1071,7 @@ margin_left = 313.0
 margin_top = 66.0
 margin_right = 645.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "VICTORY"
 align = 1
 
@@ -1132,7 +1136,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rewards"]
-anims/Victory = SubResource( 9 )
+anims/Victory = SubResource( 10 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 79.8189, 170.095 ],
 "_edit_vertical_guides_": [ 537.963, 557.036, 977.382 ]

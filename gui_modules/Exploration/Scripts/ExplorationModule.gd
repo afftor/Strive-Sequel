@@ -77,7 +77,9 @@ func _ready():
 	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
-	$LocationGui/Resources/Forget.connect("pressed", self, "clear_dungeon")
+	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
+	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
+	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
 	$TestButton.visible = gui_controller.mansion.test_mode
 	$JournalButton.connect("toggled", self, "open_journal")
@@ -169,7 +171,7 @@ func build_area_menu(area_actions):
 	for action in area_actions:
 		if action.code == "slavemarket":
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-			newbutton.connect("toggled", self, "faction_hire", [newbutton, action])
+			newbutton.connect("toggled", self, "faction_hire", [newbutton, action, "city_slaves"])
 		elif (
 			action.code == 'exotic_slave_trader'
 			&& int(ResourceScripts.game_globals.date) % 7 == 0
@@ -842,10 +844,27 @@ func return_character(character):
 	selectedperson = character
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
 
+
 func return_character_confirm():
 	selectedperson.remove_from_task()
 	selectedperson.return_to_mansion()
 	build_location_group()
+
+func return_all_to_mansion():
+	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_all_to_mansion_confirm', "Return all character back to Mansion?"])
+
+
+func return_all_to_mansion_confirm():
+	var presented_characters = []
+	for id in ResourceScripts.game_party.character_order:
+		var i = ResourceScripts.game_party.characters[id]
+		if i.travel.area == active_area.code && i.check_location(active_location.id, true):
+			presented_characters.append(i)
+	for person in presented_characters:
+		person.remove_from_task()
+		person.return_to_mansion()
+	$NavigationModule.return_to_mansion("default")
+	
 
 
 func build_item_panel():
@@ -1099,6 +1118,7 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 func faction_guild_shop(pressed, pressed_button, guild):
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = guild
+	input_handler.active_faction = guild
 	self.current_pressed_area_btn = pressed_button
 	input_handler.ClearContainer($GuildShop/ScrollContainer/VBoxContainer)
 	for item in guild.reputation_shop.items:
@@ -1112,11 +1132,10 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = item_ref.name
 		newbutton.get_node("Icon").texture = item_ref.icon
-		newbutton.get_node("Price").text = str(guild.reputation_shop.items[item][1])
+		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.items[item][1])
 		newbutton.get_node("Amount").show()
 		newbutton.get_node("Amount").text = str(guild.reputation_shop.items[item][0])
-		newbutton.disabled = (active_faction.reputation - guild.reputation_shop.items[item][1]) < 0
-		newbutton.connect("pressed", self, "buy_item", [item_ref])
+		newbutton.connect("pressed", self, "buy_item", [item_ref, guild.reputation_shop.items[item][1], guild.reputation_shop.items[item][0]])
 		if Items.itemlist.has(item):
 			globals.connecttempitemtooltip(newbutton, item_ref, 'geartemplate')
 		else:
@@ -1127,73 +1146,114 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = str(cls.capitalize())
-		newbutton.get_node("Price").text = str(guild.reputation_shop.classes[cls])
+		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
-		newbutton.connect("pressed", self, "unlock_class", [cls])
-		newbutton.disabled = (active_faction.reputation - guild.reputation_shop.classes[cls]) < 0
-		var master = ResourceScripts.game_party.get_master()
-		globals.connecttexttooltip(newbutton, master.translate(classesdata.professions[cls].descript))
-	$GuildShop/FactionPoints.text = "Faction Points: " + str(active_faction.reputation)
+		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
+		var person = ResourceScripts.game_party.get_master()
+		var tempclass = classesdata.professions[cls]
+		var text = ''
+
+		text += ResourceScripts.descriptions.get_class_name(tempclass, person)
+
+		text += "\nBonuses\n"
+		text += ResourceScripts.descriptions.get_class_bonuses(person, tempclass)
+
+		text += '\n' + str(ResourceScripts.descriptions.get_class_traits(person, tempclass))
+		if str(ResourceScripts.descriptions.get_class_traits(person, tempclass)) != '':
+			text += '\n'
+
+		text += tr('CLASSREQS')+"\n"
+		if tempclass.reqs.size() > 0:
+			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass)
+		else:
+			text += tr("REQSNONE")
+
+		text += '\n' + str(person.translate(tempclass.descript))
+		var social_skills = ''
+		var combat_skills = ''
+		if tempclass.has("skills") && tempclass.skills != []:
+			text += "\nSocial Skills - "
+			for skill in tempclass.skills:
+				social_skills += skill.capitalize() + ", "
+			social_skills = social_skills.substr(0, social_skills.length() - 2)
+		text += social_skills
+		if tempclass.has("combatskills") && tempclass.combatskills != []:
+			text += "\nCombat Skills - "
+			for skill in tempclass.combatskills:
+				combat_skills += skill.capitalize() + ", "
+			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
+		text += combat_skills
+		globals.connecttexttooltip(newbutton, text)
+	$GuildShop/FactionPoints.text = "x " + str(active_faction.reputation)
+	$GuildShop/GuildName.text = str(active_faction.name)
 	if pressed:
 		unfade($GuildShop)
 	else:
 		fade($GuildShop)
 
-		
 
-
-func buy_item(item_ref):
+func buy_item(item_ref, price, amount, type = "item"):
+	var item_name = ''
+	if type == "class":
+		item_name = item_ref.capitalize()
+	if type == "item":
+		item_name = item_ref.name
 	item_to_buy = item_ref
-	var price = str(active_faction.reputation_shop.items[item_ref.code][1])
-	var text = "Are you sure you want to buy " + str(item_ref.name) + " for " + str(price) + " reputation points?"
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL,
-	[
+	$GuildShop/NumberSelection2.open(
 		self,
 		'buy_item_confirm',
-		text
-	])
+		item_name,
+		price,
+		0,
+		amount,
+		true
+	)
 
-func unlock_class(cls):
-	class_to_unlock = cls
-	var price = active_faction.reputation_shop.classes[cls]
-	var text = "Are you sure you want to unlock " + str(cls) + " for " + str(price) + " reputation points?"
+
+func buy_item_confirm(amount):
+	items_amount = amount
+	var item_name = ''
+	var price = 0
+	if typeof(item_to_buy) == TYPE_DICTIONARY:
+		item_name = item_to_buy.name
+		price = active_faction.reputation_shop.items[item_to_buy.code][1] * amount
+	if typeof(item_to_buy) == TYPE_STRING:
+		item_name = item_to_buy
+		price = active_faction.reputation_shop.classes[item_to_buy]
+	var text = "Are you sure you want to spend " + str(price) + " reputation points " + "for " + str(item_name)  + "?"
 	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL,
 	[
 		self,
-		'unlock_clas_confirm',
+		'confirm_buy_item',
 		text
 	])
 		
 var item_to_buy
-var class_to_unlock
+var items_amount
 
-func buy_item_confirm():
+func confirm_buy_item():
+	if typeof(item_to_buy) == TYPE_STRING:
+		globals.common_effects([{code = "unlock_class", name = item_to_buy}])
+		input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
+		active_faction.reputation -= active_faction.reputation_shop.classes[item_to_buy]
+		faction_guild_shop(true, current_pressed_area_btn, active_faction)
+		return
 	if typeof(item_to_buy) == TYPE_OBJECT:
 		globals.AddItemToInventory(item_to_buy)
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 	else:
 		if Items.materiallist.has(item_to_buy.code):
-			ResourceScripts.game_res.set_material(item_to_buy.code, '+', 1)
-			active_faction.reputation_shop.items[item_to_buy.code][0] -= 1
+			ResourceScripts.game_res.set_material(item_to_buy.code, '+', items_amount)
+			active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
 		elif Items.itemlist.has(item_to_buy.code):
-			active_faction.reputation_shop.items[item_to_buy.code][0] -= 1
+			active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
 			match item_to_buy.type:
 				'usable':
 					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code))
 				'gear':
 					globals.AddItemToInventory(globals.CreateGearItem(item_to_buy.code, {}))
-	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1]
+	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1] * items_amount
 	faction_guild_shop(true, current_pressed_area_btn, active_faction)
-
-
-func unlock_clas_confirm():
-	globals.common_effects([{code = "unlock_class", name = class_to_unlock}])
-	input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP).hide()
-	active_faction.reputation -= active_faction.reputation_shop.classes[class_to_unlock]
-	faction_guild_shop(true, current_pressed_area_btn, active_faction)
-
-
-
 
 
 func faction_upgrade(pressed, pressed_button, guild):
@@ -1325,7 +1385,8 @@ func show_full_info(person = null):
 	# FullSlaveInfo.update_purchase_btn()
 
 
-func faction_hire(pressed, pressed_button, area):
+func faction_hire(pressed, pressed_button, area, mode = "guild_slaves"):
+	market_mode = mode
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = area
 	self.current_pressed_area_btn = pressed_button
@@ -1373,7 +1434,7 @@ func show_upgrade_window():
 func change_mode(mode):
 	hiremode = mode
 	if mode == "hire":
-		faction_hire(true, current_pressed_area_btn, active_faction)
+		faction_hire(true, current_pressed_area_btn, active_faction, "city_slaves")
 	else:
 		sell_slave()
 
@@ -1703,11 +1764,12 @@ func item_purchase(item, amount):
 	$AreaShop/NumberSelection.open(
 		self,
 		'item_puchase_confirm',
-		"Purchase $n " + item.name + "? Total cost: $m",
+		"Buy " + str(item.name),
 		price,
 		0,
 		amount,
-		true
+		true,
+		item.icon
 	)
 
 
@@ -1760,11 +1822,12 @@ func item_sell(item):
 	$AreaShop/NumberSelection.open(
 		self,
 		'item_sell_confirm',
-		"Sell $n " + item.name + "? Gained gold: $m",
+		"Sell " + str(item.name),
 		price,
 		0,
 		sellingamount,
-		false
+		false,
+		item.icon
 	)
 
 
@@ -2024,48 +2087,49 @@ func see_quest_info(quest):
 	$QuestBoard/QuestDetails/time/Label.text = "Limit: " + str(quest.time_limit) + " days."
 
 
-func location_purchase(pressed = true, button = null):
-	if pressed:
-		self.current_pressed_area_btn = null
-	gui_controller.close_all_closeable_windows()
-
-	input_handler.ClearContainer(AreaActions)
+func location_purchase(pressed, pressed_button):
+	$BuyLocation/LocationInfo.hide()
+	self.current_pressed_area_btn = pressed_button
+	gui_controller.win_btn_connections_handler(pressed, $BuyLocation, pressed_button)
+	input_handler.ClearContainer($BuyLocation/ScrollContainer/VBoxContainer)
 	for i in worlddata.dungeons.values():
 		if i.type != 'dungeon':
 			continue
-		var newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-		newbutton.get_node("Label").text = i.classname + ": " + str(i.puchase_price) + " gold"
-		newbutton.connect("pressed", self, 'purchase_location', [i])
-		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
-		newbutton.texture_hover = load(
-			"res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png"
-		)
-		newbutton.texture_pressed = load(
-			"res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png"
-		)
-		newbutton.texture_disabled = load(
-			"res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png"
-		)
-		newbutton.get_node("Label").rect_position.x = 0
-		newbutton.get_node("Label").rect_size.x = 272
-		newbutton.get_node("Label").get("custom_fonts/font").set_size(20)
-		if ResourceScripts.game_res.money < i.puchase_price:
-			newbutton.disabled = true
-	var newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
-	newbutton.get_node("Label").text = "Leave"
-	newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
-	newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
-	newbutton.texture_pressed = load(
-		"res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png"
-	)
-	newbutton.get_node("Label").rect_position.x = 0
-	newbutton.get_node("Label").rect_size.x = 272
-	newbutton.get_node("Label").get("custom_fonts/font").set_size(20)
-	newbutton.connect("pressed", self, "open_city", [selected_location])
+		var newbutton = input_handler.DuplicateContainerTemplate($BuyLocation/ScrollContainer/VBoxContainer)
+		newbutton.set_meta("location_name", i.name)
+		newbutton.connect("pressed", self, "show_location_info", [i])
+		newbutton.text = str(i.classname)
+	if pressed:
+		unfade($BuyLocation)
+	else:
+		fade($BuyLocation)
+
+func show_location_info(location):
+	purchasing_location = location
+	$BuyLocation/LocationInfo.show()
+	$BuyLocation/LocationInfo/LocationName.text = location.classname
+	$BuyLocation/LocationInfo/Difficulty.text = "Difficulty: " + str(location.difficulty).capitalize()
+	$BuyLocation/LocationInfo/Price.text = str(location.purchase_price)
+	input_handler.ClearContainer($BuyLocation/LocationInfo/Resources/GridContainer)
+	for i in location.gatherable_resources.pool:
+		var item = Items.materiallist[i]
+		var newbutton = input_handler.DuplicateContainerTemplate($BuyLocation/LocationInfo/Resources/GridContainer)
+		newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
+		globals.connectmaterialtooltip(newbutton, item)
+
+	update_location_shop_btn(location.name)
 
 
-func purchase_location(purchasing_location):
-	gui_controller.close_all_closeable_windows()
+func update_location_shop_btn(location_name):
+	for btn in $BuyLocation/ScrollContainer/VBoxContainer.get_children():
+		if !btn.has_meta("location_name"):
+			continue
+		btn.pressed = btn.get_meta("location_name") == location_name
+
+	
+var purchasing_location
+
+func purchase_location():
 	if purchasing_location.has('purchase_area'):
 		active_area = ResourceScripts.game_world.areas[purchasing_location.purchase_area]
 	if active_area.locations.size() < 8:
@@ -2081,13 +2145,13 @@ func purchase_location(purchasing_location):
 		ResourceScripts.game_world.location_links[randomlocation.id] = {
 			area = active_area.code, category = 'locations'
 		}
-		ResourceScripts.game_res.money -= purchasing_location.puchase_price
+		ResourceScripts.game_res.money -= purchasing_location.purchase_price
 		input_handler.interactive_message(
 			'purchase_dungeon_location', 'location_purchase_event', {}
 		)
 	else:
 		input_handler.SystemMessage("Can't purchase anymore")
-	location_purchase()
+	location_purchase(true, current_pressed_area_btn)
 
 
 var current_pressed_area_btn setget set_area_btn_pressed

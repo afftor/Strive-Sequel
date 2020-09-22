@@ -7,14 +7,16 @@ var target_function
 var target_node
 var require_gold
 var cost
+var icon
 
 func _ready():
 	$Button.connect('pressed', self, "confirm_number_selection")
 	$HSlider.connect("value_changed", self, "change_number_selection")
 
-func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, minvalue = 0, maxvalue = 100, requiregold = false):
+func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, minvalue = 0, maxvalue = 100, requiregold = false, item_icon = null):
 	show()
 	showntext = text
+	icon = item_icon
 	target_function = targetfunction
 	target_node = targetnode
 	cost = itemcost
@@ -25,11 +27,18 @@ func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, min
 	update()
 
 func update():
-	if require_gold == false:
-		$Button.disabled = $HSlider.value == 0 
-	else:
-		$Button.disabled = $HSlider.value == 0 || ResourceScripts.game_res.money < $HSlider.value * cost
-	$RichTextLabel.bbcode_text = showntext.replace("$n", str($HSlider.value)).replace("$m", str($HSlider.value*cost))
+	if get_parent().name == "AreaShop":
+		if require_gold == false:
+			$Button.disabled = $HSlider.value == 0 
+		else:
+			$Button.disabled = $HSlider.value == 0 || ResourceScripts.game_res.money < $HSlider.value * cost
+		$ItemIcon.texture = icon
+	if get_parent().name == "GuildShop":
+		$Button.disabled = $HSlider.value == 0 || (input_handler.active_faction.reputation - cost * $HSlider.value) < 0
+
+	$ItemPrice.text = "x " + str($HSlider.value * cost) 
+	$ItemAmount.text = "x " + str($HSlider.value) 
+	$ItemName.text = showntext
 
 func confirm_number_selection():
 	target_node.call(target_function, $HSlider.value)

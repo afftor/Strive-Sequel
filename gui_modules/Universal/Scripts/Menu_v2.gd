@@ -13,14 +13,15 @@ func _ready():
 	gui_controller.add_close_button($NewGamePanel)
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
-	var buttonlist = ['continue','newgame','loadwindow','options','mods' ,'quit']
+	var buttonlist = ['continue','newgame','loadwindow','options','mods']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()
-	for i in range(0,6):
+	for i in range(0,5):
 		$VBoxContainer.get_child(i).connect("toggled",self,buttonlist[i], [$VBoxContainer.get_child(i)])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
+	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
 	$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	yield(get_tree().create_timer(0.1), "timeout")
