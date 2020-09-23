@@ -236,3 +236,6 @@ func rebuild_buffs():
 
 func clear_buffs():
 	buffs.clear()
+
+func get_duration():
+	return null

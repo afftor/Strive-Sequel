@@ -20,7 +20,7 @@ var effect_table = {
 	e_tr_slave = {
 		type = 'static',
 		atomic = [
-			{type = 'stat_add', stat = 'modall', value = -0.1},
+			{type = 'stat_add', stat = 'damage_mod_all', value = -0.1},
 			{type = 'stat_add_p', stat = 'mod_collect', value = 0.1},
 			{type = 'stat_add_p', stat = 'mod_pros', value = 0.1},
 			{type = 'stat_add_p', stat = 'mod_farm', value = 0.1},
@@ -423,7 +423,7 @@ var effect_table = {
 #			{type = 'stat_add_p', stat = 'atk', value = -50},
 #			{type = 'stat_add_p', stat = 'matk', value = -50},
 			#or this
-			{type = 'stat_add', stat = 'modall', value = -0.5},
+			{type = 'stat_add', stat = 'damage_mod_all', value = -0.5},
 		],
 		buffs = [
 			{
@@ -442,7 +442,7 @@ var effect_table = {
 		duration = 12, 
 		stack = 1,
 		sub_effects = [],
-		tags = ['addition_rest_tick'],
+		tags = ['addition_rest_tick', 'injury'],
 		atomic = [
 			{type = 'stat_add_p', stat = 'hpmax', value = -20},
 		],
@@ -478,7 +478,7 @@ var effect_table = {
 		duration = 72, 
 		stack = 1,
 		sub_effects = [],
-		tags = ['addition_rest_tick', 'no_combat', 'on_dead'],# need to implement person.has_status('no_combat') check in exploration interface
+		tags = ['addition_rest_tick', 'no_combat', 'on_dead', 'injury'],# need to implement person.has_status('no_combat') check in exploration interface
 		atomic = [
 			{type = 'stat_add', stat = 'sexuals_bonus', value = -50},
 			{type = 'stat_add_p', stat = 'productivity', value = -0.25},#or simply stat_add as productivity is measured in persents and '-25% productivity' can have both meanings
@@ -675,7 +675,7 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'modall', value = 0.2},
+			{type = 'stat_add', stat = 'damage_mod_all', value = 0.2},
 			{type = 'stat_add_p', stat = 'armor', value = 0.2},
 			{type = 'stat_add_p', stat = 'mdef', value = 0.2},
 		],
@@ -856,7 +856,7 @@ var effect_table = {
 		tags = ['debuff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'modall', value = -0.3},
+			{type = 'stat_add', stat = 'damage_mod_all', value = -0.3},
 		],
 		buffs = [
 			{
@@ -1013,7 +1013,7 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'modall', value = 0.25},
+			{type = 'stat_add', stat = 'damage_mod_all', value = 0.25},
 			{type = 'stat_mul', stat = 'armor', value = 1.25},
 		],
 		buffs = [
@@ -1340,14 +1340,14 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'resistnormal', value = 20},
-			{type = 'stat_add', stat = 'resistfire', value = 20},
-			{type = 'stat_add', stat = 'resistearth', value = 20},
-			{type = 'stat_add', stat = 'resistwater', value = 20},
-			{type = 'stat_add', stat = 'resistair', value = 20},
-			{type = 'stat_add', stat = 'resistlight', value = 20},
-			{type = 'stat_add', stat = 'resistdark', value = 20},
-			{type = 'stat_add', stat = 'resistmind', value = 20}
+			{type = 'stat_add', stat = 'resist_normal', value = 20},
+			{type = 'stat_add', stat = 'resist_fire', value = 20},
+			{type = 'stat_add', stat = 'resist_earth', value = 20},
+			{type = 'stat_add', stat = 'resist_water', value = 20},
+			{type = 'stat_add', stat = 'resist_air', value = 20},
+			{type = 'stat_add', stat = 'resist_light', value = 20},
+			{type = 'stat_add', stat = 'resist_dark', value = 20},
+			{type = 'stat_add', stat = 'resist_mind', value = 20}
 		],
 		buffs = [
 			{
@@ -1617,10 +1617,10 @@ var effect_table = {
 		tags = ['debuff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'resistfire', value = -40},
-			{type = 'stat_add', stat = 'resistearth', value = -40},
-			{type = 'stat_add', stat = 'resistwater', value = -40},
-			{type = 'stat_add', stat = 'resistair', value = -40},
+			{type = 'stat_add', stat = 'resist_fire', value = -40},
+			{type = 'stat_add', stat = 'resist_earth', value = -40},
+			{type = 'stat_add', stat = 'resist_water', value = -40},
+			{type = 'stat_add', stat = 'resist_air', value = -40},
 		],
 		buffs = [
 			{
@@ -1643,10 +1643,10 @@ var effect_table = {
 		tags = ['buff'],
 		sub_effects = [],
 		atomic = [
-			{type = 'stat_add', stat = 'resistfire', value = 25},
-			{type = 'stat_add', stat = 'resistearth', value = 25},
-			{type = 'stat_add', stat = 'resistwater', value = 25},
-			{type = 'stat_add', stat = 'resistair', value = 25},
+			{type = 'stat_add', stat = 'resist_fire', value = 25},
+			{type = 'stat_add', stat = 'resist_earth', value = 25},
+			{type = 'stat_add', stat = 'resist_water', value = 25},
+			{type = 'stat_add', stat = 'resist_air', value = 25},
 		],
 		buffs = [
 			{
@@ -1868,7 +1868,7 @@ var effect_table = {
 		sub_effects = [],
 		atomic = [
 			{type = 'stat_add', stat = 'hitrate', value = 30},
-			{type = 'stat_add', stat = 'modskill', value = 0.2},
+			{type = 'stat_add', stat = 'damage_mod_skill', value = 0.2},
 		],
 		buffs = [
 			{
@@ -2781,7 +2781,99 @@ var effect_table = {
 		sub_effects = [],
 	},
 	
-		date_bonus = {
+	celena_bless = {
+		type = 'temp_s',
+		duration = 12,
+		stack = 1,
+		name = 'celena_bless',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				args = [],
+				atomic = [{type = 'remove_all_effects', value = 'injury'}],
+			},
+			{
+				type = 'static',
+				tags = [],
+				atomic = [
+					{type = 'stat_add', stat = 'resist_all', value = 30},
+				],
+				buffs = [], 
+				sub_effects = [],
+			}
+		],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
+			description = "",
+			args = [],
+			limit = 1,
+			t_name = 'celena_bless',
+		}]
+	},
+	freya_bless = {
+		type = 'temp_s',
+		duration = 24,
+		stack = 1,
+		name = 'freya_bless',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		atomic = [
+			{type = 'stat_add', stat = 'hitrate', value = 25},
+			{type = 'stat_add', stat = 'armorpenetration', value = 30},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
+			description = "",
+			args = [],
+			limit = 1,
+			t_name = 'freya_bless',
+		}]
+	},
+	celena_curse = {
+		type = 'temp_s',
+		duration = 24,
+		stack = 1,
+		name = 'celena_curse',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		atomic = [
+			{type = 'stat_mul', stat = 'hpmax', value = 0.5},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
+			description = "",
+			args = [],
+			limit = 1,
+			t_name = 'celena_curse',
+		}]
+	},
+	freya_curse = {
+		type = 'temp_s',
+		duration = 48,
+		stack = 1,
+		name = 'freya_curse',
+		tick_event = [variables.TR_TICK],
+		args = [],
+		tags = [],
+		atomic = [
+			{type = 'stat_add', stat = 'evasion', value = -50},
+			{type = 'stat_add', stat = 'hitrate', value = -50},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
+			description = "",
+			args = [],
+			limit = 1,
+			t_name = 'freya_curse',
+		}]
+	},
+	
+	date_bonus = {
 		type = 'temp_s',
 		duration = 36,
 		stack = 1,

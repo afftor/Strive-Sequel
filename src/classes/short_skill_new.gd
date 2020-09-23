@@ -105,6 +105,8 @@ func setup_caster(c):
 		chance = caster.get_stat('hitrate')
 		critchance = caster.get_stat('critchance')
 		armor_p = caster.get_stat('armorpenetration')
+		if target_range == 'weapon':
+			target_range = caster.get_weapon_range()
 	else:
 		chance = 100
 		critchance = 0

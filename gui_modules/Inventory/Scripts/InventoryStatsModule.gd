@@ -7,6 +7,7 @@ func _ready():
 	$StatsButton.connect("pressed", self, "open_base_stats")
 	$ResistsButton.connect("pressed", self, "open_resists")
 	for i in variables.resists_list:
+		if i == 'all': continue
 		var newlabel = $resists/Label.duplicate()
 		var newvalue = $resists/Value.duplicate()
 		$resists.add_child(newlabel)

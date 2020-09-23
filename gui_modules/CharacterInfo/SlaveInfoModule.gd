@@ -17,6 +17,7 @@ func _ready():
 	$RichTextLabel.connect("meta_hover_started", self, 'text_url_hover')
 	$RichTextLabel.connect("meta_hover_ended", self, "text_url_hover_hide")
 	for i in variables.resists_list:
+		if i == 'all': continue
 		var newlabel = $BaseStatsPanel/resists/Label.duplicate()
 		var newvalue = $BaseStatsPanel/resists/Value.duplicate()
 		$BaseStatsPanel/resists.add_child(newlabel)
