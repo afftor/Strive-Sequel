@@ -1,6 +1,7 @@
 extends Panel
 
 func _ready():
+	$CloseButton.connect("pressed", self, "hide")
 	for i in variables.resists_list:
 		if i == 'all': continue
 		var newlabel = $resists/Label.duplicate()
@@ -17,6 +18,10 @@ func _ready():
 
 func open(character = ResourceScripts.scriptdict.class_slave.new()):
 	$name.text = character.get_short_name()
+	if character.is_players_character:
+		$Background.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png")
+	else:
+		$Background.texture = load("res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_r.png")
 	for i in ['hp','mp']:
 		$VBoxContainer.get_node(i).text = str(floor(character.get_stat(i))) + "/" + str(floor(character.get_stat(i+"max")))
 	

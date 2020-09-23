@@ -81,8 +81,8 @@ func _ready():
 	rng.randomize()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
-	for i in variables.resists_list:
-		statdata.statdata['resist'+i] = {code = "resist"+i}
+	for i in variables.resists_list:#should there be also status resists and damage mods and damage resists? 
+		statdata.statdata['resist_'+i] = {code = "resist_"+i}
 	
 	for i in statdata.statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())

@@ -93,7 +93,19 @@ func calculate_dmg():
 	elif parent.ability_type == 'spell':
 		reduction = max(0, parent.target.get_stat('mdef'))
 		reduction = min(100, reduction)
-
+	
+	if !template.nodef and !template.nomod:
+		value *= (float(100 - reduction)/100.0)
+		
+	#damage resists
+	var mods = parent.target.get_stat('resist_damage')
+	reduction = 0
+	if parent.tags.has('aoe'):
+		reduction = mods.aoe
+	elif parent.target_range == 'any': #or add tags for this
+		reduction = mods.ranged
+	elif parent.target_range == 'melee': #or add tags for this
+		reduction = mods.melee
 	if !template.nodef and !template.nomod:
 		value *= (float(100 - reduction)/100.0)
 	

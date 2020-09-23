@@ -55,6 +55,7 @@ var template = {
 	hitrate = 100,
 	evasion = 0,
 	resists = {},
+	resist_damage = {},
 	status_resists = {},
 	damage_mods = {},
 	armor = 0,
