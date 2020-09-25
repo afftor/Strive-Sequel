@@ -2497,9 +2497,9 @@ __meta__ = {
 }
 
 [node name="HSlider" type="HSlider" parent="GuildShop/NumberSelection2"]
-margin_left = 37.0
+margin_left = 38.0
 margin_top = 95.0
-margin_right = 567.0
+margin_right = 568.0
 margin_bottom = 121.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_icons/grabber_disabled = ExtResource( 69 )

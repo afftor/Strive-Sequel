@@ -736,12 +736,27 @@ func count_action_consent(action, giver, taker):
 
 func open_item_list(member):
 	itemusemember = member
-	globals.ItemSelect(self, 'sex_use', 'use_item')
+	if !gui_controller.windows_opened.has($ItemSelectSex):
+		gui_controller.windows_opened.append($ItemSelectSex)
+	$ItemSelectSex.visible = !$ItemSelectSex.is_visible()
+	var array = []
+	for i in ResourceScripts.game_res.items.values():
+		if i.interaction_use == true:
+			array.append(i)
+	input_handler.ClearContainer($ItemSelectSex/ScrollContainer/GridContainer)
+	for item in array:
+		var newbutton = input_handler.DuplicateContainerTemplate($ItemSelectSex/ScrollContainer/GridContainer)
+		newbutton.get_node("icon").texture = load(item.icon)
+		newbutton.get_node("name").text = item.code.capitalize()
+		newbutton.get_node("Percent").text = str(ResourceScripts.game_res.items[item.id].amount)
+		newbutton.connect("pressed", self, "use_item", [item])
+	# globals.ItemSelect(self, 'sex_use', 'use_item')
 
 func use_item(item):
 	var effect = Items.itemlist[item.itembase].interaction_effect
 	item.amount -= 1
 	call(effect, itemusemember)
+	open_item_list(itemusemember)
 	rebuildparticipantslist()
 
 

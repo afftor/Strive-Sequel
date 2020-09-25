@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -56,6 +56,13 @@
 [ext_resource path="res://assets/images/iconsitems/bag.png" type="Texture" id=54]
 [ext_resource path="res://assets/images/sexicons/rope.png" type="Texture" id=55]
 [ext_resource path="res://assets/Themes_v2/MANSION/Sex_Buttons_Font.tres" type="DynamicFont" id=56]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=57]
+[ext_resource path="res://assets/images/iconsgear/AxeBasic.png" type="Texture" id=58]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=59]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=60]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=61]
+[ext_resource path="res://assets/Textures_v2/MANSION/Sex/Panels/panel_items.png" type="Texture" id=62]
+[ext_resource path="res://gui_modules/Universal/Scripts/ItemSelect.gd" type="Script" id=63]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -66,6 +73,14 @@ size = 30
 font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 62 )
+region_rect = Rect2( 0, 0, 446, 730 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 8 )
 
@@ -1049,6 +1064,96 @@ custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "List Of Characters"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSelectSex" type="Panel" parent="."]
+visible = false
+margin_left = 460.0
+margin_top = 15.0
+margin_right = 906.0
+margin_bottom = 745.0
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 63 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="ItemSelectSex"]
+self_modulate = Color( 0, 0, 0, 0.980392 )
+show_behind_parent = true
+margin_right = 446.0
+margin_bottom = 730.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ItemSelectSex"]
+margin_left = 27.0
+margin_top = 101.0
+margin_right = 424.0
+margin_bottom = 699.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="VBoxContainer" parent="ItemSelectSex/ScrollContainer"]
+margin_right = 397.0
+size_flags_horizontal = 3
+
+[node name="Button" type="TextureButton" parent="ItemSelectSex/ScrollContainer/GridContainer"]
+visible = false
+margin_right = 397.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+expand = true
+
+[node name="Percent" type="Label" parent="ItemSelectSex/ScrollContainer/GridContainer/Button"]
+margin_left = 56.0
+margin_top = 75.0
+margin_right = 106.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 57 )
+custom_colors/font_color = Color( 1, 0.0234375, 0.0234375, 1 )
+text = "100%"
+align = 2
+
+[node name="name" type="Label" parent="ItemSelectSex/ScrollContainer/GridContainer/Button"]
+margin_left = 134.0
+margin_top = 20.0
+margin_right = 357.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 2 )
+text = "Item Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ItemSelectSex/ScrollContainer/GridContainer/Button"]
+margin_right = 100.0
+margin_bottom = 100.0
+texture = ExtResource( 58 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ItemSelectSex"]
+margin_right = 446.0
+margin_bottom = 101.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
+text = "SELECTITEM"
+align = 1
+valign = 1
+
+[node name="CloseButton" type="TextureButton" parent="ItemSelectSex"]
+margin_left = 417.0
+margin_right = 446.0
+margin_bottom = 29.0
+texture_normal = ExtResource( 59 )
+texture_pressed = ExtResource( 60 )
+texture_hover = ExtResource( 61 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

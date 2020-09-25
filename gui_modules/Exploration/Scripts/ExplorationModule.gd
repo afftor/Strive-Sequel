@@ -1116,6 +1116,7 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 
 
 func faction_guild_shop(pressed, pressed_button, guild):
+	$GuildShop/NumberSelection2.hide()
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = guild
 	input_handler.active_faction = guild
@@ -1142,8 +1143,8 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			globals.connectmaterialtooltip(newbutton, item_ref)
 
 	for cls in guild.reputation_shop.classes:
-		if ResourceScripts.game_progress.unlocked_classes.has(cls):
-			continue
+		# if ResourceScripts.game_progress.unlocked_classes.has(cls):
+		# 	continue
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = str(cls.capitalize())
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
@@ -1191,21 +1192,30 @@ func faction_guild_shop(pressed, pressed_button, guild):
 	else:
 		fade($GuildShop)
 
+var hide_elems_arr = ["HSlider", "ItemAmount"]#, "TextureRect2","ItemPrice"]
 
 func buy_item(item_ref, price, amount, type = "item"):
 	var item_name = ''
 	if type == "class":
 		item_name = item_ref.capitalize()
+		if ResourceScripts.game_progress.unlocked_classes.has(item_ref):
+			$GuildShop/NumberSelection2.show()
+			$GuildShop/NumberSelection2/ItemPrice.text = "Unlocked"
+			$GuildShop/NumberSelection2/Button.disabled = true
+			return
 	if type == "item":
 		item_name = item_ref.name
 	item_to_buy = item_ref
+	for node in $GuildShop/NumberSelection2.get_children():
+		if node.name in hide_elems_arr:
+			node.visible = type == "item"
 	$GuildShop/NumberSelection2.open(
 		self,
 		'buy_item_confirm',
 		item_name,
 		price,
-		0,
 		amount,
+		10 * amount,
 		true
 	)
 
@@ -1243,10 +1253,10 @@ func confirm_buy_item():
 		input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP).hide()
 	else:
 		if Items.materiallist.has(item_to_buy.code):
-			ResourceScripts.game_res.set_material(item_to_buy.code, '+', items_amount)
-			active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
+			ResourceScripts.game_res.set_material(item_to_buy.code, '+', active_faction.reputation_shop.items[item_to_buy.code][0] * items_amount)
+			# active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
 		elif Items.itemlist.has(item_to_buy.code):
-			active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
+			# active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
 			match item_to_buy.type:
 				'usable':
 					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code))

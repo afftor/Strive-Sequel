@@ -1,7 +1,7 @@
 [gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanel_v2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanelV2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/portraits/daisy.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_run_disabled.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_inventory_disabled.png" type="Texture" id=5]
@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Icons/icon_bow.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/backgrounds/dungeon.png" type="Texture" id=12]
-[ext_resource path="res://gui_modules/Universal/Scripts/Combat_v2_animated.gd" type="Script" id=13]
+[ext_resource path="res://gui_modules/Universal/Scripts/CombatV2Animated.gd" type="Script" id=13]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/diamond.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_outer.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_log.png" type="Texture" id=16]
@@ -456,6 +456,9 @@ margin_left = 9.0
 margin_top = 97.0
 margin_right = 173.0
 margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template/Buffs"]
 visible = false
@@ -764,6 +767,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ItemPanel" type="TextureRect" parent="."]
+visible = false
 margin_left = 738.0
 margin_top = 257.0
 margin_right = 1182.0
@@ -1117,7 +1121,6 @@ align = 1
 valign = 1
 
 [node name="Rewards" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -1203,7 +1206,7 @@ margin_left = 726.661
 margin_top = 127.361
 margin_right = 1194.66
 margin_bottom = 213.361
-rect_scale = Vector2( 0.949999, 0.949999 )
+rect_scale = Vector2( 0.899999, 0.899999 )
 rect_pivot_offset = Vector2( 233.207, 42.6875 )
 texture = ExtResource( 61 )
 stretch_mode = 6
@@ -1217,7 +1220,7 @@ margin_left = 726.661
 margin_top = 127.361
 margin_right = 1194.66
 margin_bottom = 213.361
-rect_scale = Vector2( 0.949999, 0.949999 )
+rect_scale = Vector2( 0.899999, 0.899999 )
 rect_pivot_offset = Vector2( 233.211, 42.7058 )
 texture = ExtResource( 50 )
 stretch_mode = 6
@@ -1227,7 +1230,6 @@ __meta__ = {
 
 [node name="TextureRect7" type="TextureRect" parent="Rewards"]
 visible = false
-self_modulate = Color( 1, 1, 1, 5.72091e-05 )
 material = ExtResource( 6 )
 margin_left = 522.16
 margin_top = 266.515
@@ -1298,6 +1300,7 @@ margin_left = 551.95
 margin_top = 361.0
 margin_right = 955.95
 margin_bottom = 773.0
+theme = ExtResource( 48 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1355,6 +1358,7 @@ margin_left = 974.95
 margin_top = 361.0
 margin_right = 1372.95
 margin_bottom = 866.0
+theme = ExtResource( 48 )
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false

@@ -4,7 +4,8 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/images/tutorial.png" type="Texture" id=3]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=4]
-[ext_resource path="res://gui_modules/Universal/Modules/tutorialpanel.gd" type="Script" id=5]
+[ext_resource path="res://gui_modules/Universal/Scripts/tutorialpanel.gd" type="Script" id=5]
+
 
 [node name="tutorialpanel" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.992157 )

@@ -369,7 +369,7 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				newnode.get_node("Percent").text = str(i.amount)
 				connectitemtooltip(newnode, i)
 			'material':
-				newnode.get_node("Perecent").show()
+				newnode.get_node("Percent").show()
 				newnode.get_node('name').text = Items.materiallist[i].name
 				newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
 		newnode.connect('pressed', targetscript, function, [i])
@@ -973,6 +973,7 @@ func remove_location(locationid):
 	input_handler.update_slave_list()
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.mansion_state_set("default")
+		return
 	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
 		gui_controller.nav_panel.select_location('aliron')
 		gui_controller.nav_panel.build_accessible_locations()
