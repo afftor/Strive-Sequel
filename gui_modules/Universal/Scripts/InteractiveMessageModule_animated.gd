@@ -110,7 +110,7 @@ func open(scene, not_save = false):
 		scenetext = scenetext.replace("[locationtypename]", input_handler.active_location.classname)
 	if scene.tags.has("master_translate"):
 		if ResourceScripts.game_party.get_master() == null:
-			print("master_not_found")
+			print("Error: Master not found")
 			return
 		scenetext = ResourceScripts.game_party.get_master().translate(scenetext)
 	if scene.tags.has("active_character_translate"):
@@ -153,6 +153,8 @@ func open(scene, not_save = false):
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newbutton.set("modulate", Color(1, 1, 1, 0))
 		newbutton.get_node("Label").bbcode_text = tr(i.text)
+		if i.has('active_char_translate'):
+			newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
 		newbutton.get_node("hotkey").text = str(counter)
 		yield(get_tree(), 'idle_frame')
 		if newbutton.get_node("Label").get_v_scroll().is_visible():
@@ -318,25 +320,26 @@ func add_shrine_options(scene):
 			'material':
 				scene.options.insert(0,{code = 'shrine_option', args = ['select_material'], reqs = [], text = "DIALOGUESHRINEITEM"})
 			'character':
-				scene.options.insert(0,{code = 'shrine_option', args = ['character'], reqs = [], text = "DIALOGUESHRINECHARACTER"})
+				scene.options.insert(0,{code = 'shrine_option', args = ['character'], active_char_translate = true, reqs = [], text = "DIALOGUESHRINECHARACTER"})
 			'destroy':
-				scene.options.insert(0,{code = 'shrine_option', args = ['character'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
+				scene.options.insert(0,{code = 'shrine_option', args = ['destroy'], reqs = [], text = "DIALOGUESHRINEDESTROY"})
 
 func shrine_option(option):
 	match option:
 		'select_material':
 			globals.ItemSelect(self, 'material', 'shrine_mat_select')
 		"character":
-			pass
+			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['character'].output, input_handler.active_character)
 		'destroy':
-			pass
+			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['destroy'].output, input_handler.active_character)
 		'material_selected':
-			Enemydata.call
+			Enemydata.call(Enemydata.shrines[current_scene.shrine].options['material'].output, selected_item)
 
 var selected_item
 
 func shrine_mat_select(item):
 	selected_item = item
+	shrine_option('material_selected')
 
 func add_loot_options(scene):
 	scene.options.insert(0,{code = 'open_chest', reqs = [], text = "DIALOGUETAKELOOT"})

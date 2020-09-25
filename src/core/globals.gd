@@ -369,9 +369,11 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				newnode.get_node("Percent").text = str(i.amount)
 				connectitemtooltip(newnode, i)
 			'material':
-				newnode.get_node("Perecent").show()
+				newnode.get_node("icon").texture = Items.materiallist[i].icon
+				newnode.get_node("Percent").show()
 				newnode.get_node('name').text = Items.materiallist[i].name
 				newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
+				connectmaterialtooltip(newnode, Items.materiallist[i])
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',input_handler,'CloseSelection', [node])
 

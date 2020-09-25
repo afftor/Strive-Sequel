@@ -762,7 +762,7 @@ func show_race_description():
 		text += "\nCombat Abilitites: " 
 		for i in temprace.combat_skills:
 			text += Skilldata.Skilllist[i].name + "; "
-	text = text.substr(0, text.length() - 2) + "."
+		text = text.substr(0, text.length() - 2) + "."
 	
 	return text
 

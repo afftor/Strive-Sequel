@@ -175,15 +175,6 @@ func show_slave_info():
 			var tmp = i.get_duration()
 			if tmp != null:
 				newnode.get_node("Label").text = str(tmp.count)
-				match tmp.event:
-					'hours':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
-					'turns':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
-					'hits':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
-					'attacks':
-						newnode.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 			else:
 				newnode.get_node("Label").hide()
 			newnode.hint_tooltip = person.translate(i.description)

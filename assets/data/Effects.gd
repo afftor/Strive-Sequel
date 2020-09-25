@@ -515,7 +515,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Discipline.png", 
-				description = "Efficiency increased by 50%%",
+				description = "Labor efficiency increased by 50%%",
 				limit = 1,
 				t_name = 'discipline',
 				mansion_only = true,
@@ -2805,8 +2805,8 @@ var effect_table = {
 			}
 		],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/icon_protective_shell.png",
+			description = "Celena's Blessing: Reduce incoming damage by 30%%",
 			args = [],
 			limit = 1,
 			t_name = 'celena_bless',
@@ -2825,8 +2825,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/heavyshot.png",
+			description = "Freya's Blessing: +30 Armor Penetration, +25 Hitrate",
 			args = [],
 			limit = 1,
 			t_name = 'freya_bless',
@@ -2844,8 +2844,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/BloodMagic.png",
+			description = "Celena's Curse: Max health is reduced by 50%%.",
 			args = [],
 			limit = 1,
 			t_name = 'celena_curse',
@@ -2865,8 +2865,8 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "",
+			icon = "res://assets/images/iconsskills/BloodMagic.png",
+			description = "Freya's Curse: -50 Evasion and Hit Rate.",
 			args = [],
 			limit = 1,
 			t_name = 'freya_curse',

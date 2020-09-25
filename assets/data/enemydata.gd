@@ -1042,9 +1042,16 @@ var loot_variants_data = {
 	celena_reward = [
 		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
 	],
-	celena_destroy_shrine = [
+	celena_reward2 = [
+		{code = 'defined', name = 'lifegem', min = 2, max = 3},
+	],
+	celena_destroy_shrine1 = [
 		{code = 'defined', name = 'iron', min = 5, max = 10},
-		{code = 'defined', name = 'mithril', min = 1, max = 4},
+		{code = 'defined', name = 'steel', min = 2, max = 4},
+	],
+	celena_destroy_shrine2 = [
+		{code = 'defined', name = 'steel', min = 3, max = 5},
+		{code = 'defined', name = 'mithril', min = 1, max = 3},
 	],
 	erebus_reward = [
 		{code = 'defined', name = 'energyshard', min = 3, max = 5},
@@ -1112,40 +1119,117 @@ var shrines = {
 		options = {
 			"material" : {input = 'material', output = 'celena_item'},
 			"character" : {input = 'character', output = 'celena_character'},
-			"destroy" : {input = 'destroy', output = 'selena_destroy'}
+			"destroy" : {input = 'destroy', output = 'celena_destroy'}
 		},
-		bless = '',
-		curse = '',
-		
-		
-		
+		bless = 'celena_bless',
+		curse = 'celena_curse',
 	},
 	erebus = {},
-	freya = {},
+	freya = {
+		options = {
+			"material" : {input = 'material', output = 'freya_item'},
+			"character" : {input = 'character', output = 'freya_character'},
+			"destroy" : {input = 'destroy', output = 'freya_destroy'}
+		},
+		bless = 'freya_bless',
+		curse = 'freya_curse',
+	
+	},
 }
 
 
 func celena_item(code):
-	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = []}
+	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
 	var item = Items.materiallist[code]
 	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
 	
 	if item.type in ['wood','plant','food']:
 		dict.text += "\n\n{color=green|The offering disappars in a thin air and after a moment a new item materialize in place. It seems your offer was correct and you are rewarded.}"
-		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',1]]}]
+		
+		dict.common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['celena_reward',2], ['celena_reward2',1]]}]
 		dict.tags.append("free_loot")
 	else:
-		dict.text += "\n\n{color=red|The offering disappers from sight but there's no other changes around. It seems your offer wasn't liked.}"
-		dict.options.append({code = 'close', text = "DIALOGUELEAVE"})
+		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
+		dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
 	
 	
 	input_handler.interactive_message_follow(dict, 'direct', [])
 
 func celena_character(person):
-	pass
+	
+	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	
+	if randf() <= 0.5:
+		dict.text += "\n\n{color=green|An small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
+		
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_bless'})
+	else:
+		dict.text += "\n\nAfter a few minutes nothing still happened and [name] decides to move on."
+	
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	
+	
+	input_handler.interactive_message_follow(dict, 'direct', [])
 
-func celena_destroy():
-	pass
+func celena_destroy(person):
+	
+	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	
+	if randf() <= 0.33:
+		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
+		
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'celena_curse'})
+	
+	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['celena_destroy_shrine1',3], ['celena_destroy_shrine2',1]]})
+	dict.tags.append("free_loot")
+	
+	
+	input_handler.interactive_message_follow(dict, 'direct', [])
 
+func freya_item(code):
+	var dict = {text = '[name] puts an offer on the altar. ', image = '', options = [], tags = ['active_character_translate']}
+	var item = Items.materiallist[code]
+	globals.common_effects([{code = 'material_change', operant = '-', material = code, value = 1}])
+	
+	if item.type in ['cloth']:
+		dict.text += "\n\n{color=green|The offering disappars in a thin air and a bright light surrounds [name]. It seems the offer was correct and [he] received a blessing.}"
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
+	elif item.type in ['wood']:
+		dict.text += "\n\n{color=red|The offering disappers from sight but an eerie glow erupts from the altar. It seems [name] as been cursed...}"
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
+	else:
+		dict.text += "\n\nThe offering disappers from sight but there's no other changes around. It seems your offer wasn't liked."
+	
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	
+	input_handler.interactive_message_follow(dict, 'direct', [])
 
+func freya_character(person):
+	
+	var dict = {text = '[name] puts [his] hand on the altar. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	
+	if randf() <= 0.5:
+		dict.text += "\n\n{color=green|An small glow emits from the altar and enshrouds [name]. It seems [he] has been blessed...}"
+		
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_bless'})
+	
+	dict.options.append({code = 'close', reqs = [], text = "DIALOGUELEAVE"})
+	
+	
+	input_handler.interactive_message_follow(dict, 'direct', [])
+
+func freya_destroy(person):
+	
+	var dict = {text = '[name] demolishes the shrine and gathers the resources. ', image = '', options = [], tags = ['active_character_translate'], common_effects = []}
+	
+	if randf() <= 0.75:
+		dict.text += "\n\n{color=red|An eerie glow emits from the remnants of an altar and enshrouds [name]. It seems [he] has been cursed...}"
+		
+		dict.common_effects.append({code = 'affect_active_character', type = 'effect', value = 'freya_curse'})
+	
+	dict.common_effects.append({code = 'make_loot', type = 'tableloot', pool = [['freya_destroy_shrine',1]]})
+	dict.tags.append("free_loot")
+	
+	
+	input_handler.interactive_message_follow(dict, 'direct', [])
 

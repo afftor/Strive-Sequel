@@ -435,7 +435,7 @@ func test_mode():
 
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('Fairy', 'male', 'random')
+		character.create('Dragonkin', 'male', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -449,9 +449,9 @@ func test_mode():
 		character.add_stat('physics', 100)
 		character.add_stat('hpmax', 100)
 		character.unlock_class("master")
-		# character.unlock_class("caster")
-		# character.unlock_class("apprentice")
-		# character.unlock_class("rogue")
+		character.unlock_class("caster")
+		character.unlock_class("apprentice")
+		character.unlock_class("dominator")
 		# character.unlock_class("druid")
 		# character.unlock_class("assassin")
 		# character.unlock_class("ruler")
@@ -463,7 +463,9 @@ func test_mode():
 		# character.unlock_class("scholar")
 		character.travel.location = 'L4'
 		character.travel.area = 'plains'
-		variables.dungeon_encounter_chance = 1
+		character.add_stat('resist_normal', 50)
+		character.add_stat('resist_all', 50)
+		#variables.dungeon_encounter_chance = 1
 		var bow = globals.CreateGearItem("bow", {WeaponHandle = 'wood', BowBase = 'obsidian'})
 		globals.AddItemToInventory(bow)
 		character.equip(bow)
@@ -610,7 +612,6 @@ func test_mode():
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 75
-		ResourceScripts.game_res.materials.bandage = 0
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
