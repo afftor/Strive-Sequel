@@ -84,7 +84,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 	if dictparts.size() == 0:
 		mode = 'simple'
 	itembase = ItemName
-	bonusstats = {}#task_energy_tool = 0, task_efficiency_tool = 0, atk = 0, matk = 0, damagemod = 1, armor = 0, armorpenetration = 0, evasion = 0, hitrate = 0, hpmax = 0, hpmod = 0, manamod = 0, speed = 0, resistfire = 0, resistearth = 0, resistair = 0, resistwater = 0, mdef = 0}
+	bonusstats = {}
 	stackable = false
 	type = 'gear'
 	var itemtemplate = Items.itemlist[ItemName]

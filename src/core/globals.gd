@@ -81,8 +81,8 @@ func _ready():
 	rng.randomize()
 	ResourceScripts.recreate_singletons()
 	ResourceScripts.revert_gamestate()
-	for i in variables.resists_list:
-		statdata.statdata['resist'+i] = {code = "resist"+i}
+	for i in variables.resists_list:#should there be also status resists and damage mods and damage resists? 
+		statdata.statdata['resist_'+i] = {code = "resist_"+i}
 	
 	for i in statdata.statdata.values():
 		i.name = tr("STAT" + i.code.to_upper())
@@ -369,9 +369,14 @@ func ItemSelect(targetscript, type, function, requirements = true):
 				newnode.get_node("Percent").text = str(i.amount)
 				connectitemtooltip(newnode, i)
 			'material':
+<<<<<<< HEAD
+=======
+				newnode.get_node("icon").texture = Items.materiallist[i].icon
+>>>>>>> master
 				newnode.get_node("Percent").show()
 				newnode.get_node('name').text = Items.materiallist[i].name
 				newnode.get_node("Percent").text = str(ResourceScripts.game_res.materials[i])
+				connectmaterialtooltip(newnode, Items.materiallist[i])
 		newnode.connect('pressed', targetscript, function, [i])
 		newnode.connect('pressed',input_handler,'CloseSelection', [node])
 

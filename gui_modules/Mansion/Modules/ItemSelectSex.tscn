@@ -61,16 +61,6 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
 expand = true
 
-[node name="Percent" type="Label" parent="ScrollContainer/GridContainer/Button"]
-margin_left = 56.0
-margin_top = 75.0
-margin_right = 106.0
-margin_bottom = 102.0
-custom_fonts/font = ExtResource( 5 )
-custom_colors/font_color = Color( 1, 0.0234375, 0.0234375, 1 )
-text = "100%"
-align = 2
-
 [node name="name" type="Label" parent="ScrollContainer/GridContainer/Button"]
 margin_left = 134.0
 margin_top = 20.0
@@ -88,6 +78,18 @@ margin_bottom = 100.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+
+[node name="Percent" type="Label" parent="ScrollContainer/GridContainer/Button"]
+margin_left = 56.0
+margin_top = 75.0
+margin_right = 106.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 5 )
+text = "100%"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_right = 446.0

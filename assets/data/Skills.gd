@@ -522,7 +522,7 @@ var Skilllist = {
 		charges = 2,
 		cooldown = 1,
 		icon = load("res://assets/images/iconsskills/Discipline2.png"),
-		tags = ['positive','repeated_effect_reduce_loyalty'],
+		tags = ['positive'],
 		value = ['0'],
 		damagestat = 'no_stat'
 	},

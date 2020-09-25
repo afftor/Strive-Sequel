@@ -11,9 +11,11 @@ var parent = null
 func _init():
 	for i in variables.resists_list:
 		statlist.resists[i] = 0
+	for i in variables.resists_damage_list:
+		statlist.resist_damage[i] = 0
 	for i in variables.status_list:
 		statlist.status_resists[i] = 0
-	for i in variables.mods_list:
+	for i in variables.damage_mods_list:
 		statlist.damage_mods[i] = 1.0
 
 func default_stats_get():
@@ -75,20 +77,26 @@ func custom_stats_get():
 	if res.has('resists'):
 		var tres = res.resists
 		for r in variables.resists_list:
-			if bonuses.has('resist' + r + '_add'): tres[r] += bonuses['resist' + r + '_add']
-			if bonuses.has('resist' + r + '_mul'): tres[r] *= bonuses['resist' + r + '_mul']
+			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
+			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 		res.resists = tres
+	if res.has('resist_damage'):
+		var tres = res.resist_damage
+		for r in variables.resists_damage_list:
+			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
+			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
+		res.resist_damage = tres
 	if res.has('status_resists'):
 		var tres = res.status_resists
 		for r in variables.status_list:
-			if bonuses.has('resist' + r + '_add'): tres[r] += bonuses['resist' + r + '_add']
-			if bonuses.has('resist' + r + '_mul'): tres[r] *= bonuses['resist' + r + '_mul']
+			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
+			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 		res.status_resists = tres
 	if res.has('damage_mods'):
 		var tres = res.damage_mods
-		for r in variables.mods_list:
-			if bonuses.has('mod' + r + '_add'): tres[r] += bonuses['mod' + r + '_add']
-			if bonuses.has('mod' + r + '_mul'): tres[r] *= bonuses['mod' + r + '_mul']
+		for r in variables.damage_mods_list:
+			if bonuses.has('damage_mod_' + r + '_add'): tres[r] += bonuses['damage_mod_' + r + '_add']
+			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
 		res.damage_mods = tres
 	return res
 
@@ -134,7 +142,7 @@ func add_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec])
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') or (rec as String).begins_with('mod'):
+			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
 				add_bonus(rec + '_add', ls[rec])
 				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
@@ -152,7 +160,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') or (rec as String).begins_with('mod'):
+			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
 				add_bonus(rec + '_add', ls[rec], true)
 				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :

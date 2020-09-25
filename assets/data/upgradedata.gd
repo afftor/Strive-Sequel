@@ -392,4 +392,53 @@ var upgradelist = {
 		}
 	},
 	
+	luxury_rooms = {
+		code = 'luxury_rooms',
+		name = '',
+		positionorder = 3,
+		descript = '',
+		category = 'upgrade',
+		levels = {
+			1:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS1"),
+				taskprogress = 100,
+				#townnode = "farm",
+				cost = {wood = 50, cloth = 25},
+			},
+			2:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS2"),
+				taskprogress = 200,
+				#townnode = "farm",
+				cost = {wood = 100, stone = 50, cloth = 25},
+			},
+			3:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS3"),
+				taskprogress = 300,
+				#townnode = "farm",
+				cost = {woodiron = 50, stone = 100, clothsilk = 25},
+			},
+			4:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADELUXURYROOMSBONUS4"),
+				taskprogress = 400,
+				#townnode = "farm",
+				cost = {woodiron = 100,clothsilk = 50, leatherthick = 50},
+			},
+#			5:{
+#				unlockreqs = [],
+#				icon = 'upgrade_farm', 
+#				bonusdescript = tr("UPGRADELUXURYROOMSBONUS5"),
+#				taskprogress = 500,
+#				#townnode = "farm",
+#				cost = {woodiron = 100, clothsilk = 50, steel = 50},
+#			},
+		}
+	},
 }

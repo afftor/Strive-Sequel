@@ -870,14 +870,14 @@ var TranslationDict = {
 	STATMOD_FARM = "Farm Task Efficiency",
 	STATMOD_PROS = "Prostitution Task Efficiency",
 	
-	STATRESISTNORMAL = "Normal Resist",
-	STATRESISTFIRE = "Fire Resist",
-	STATRESISTAIR = "Air Resist",
-	STATRESISTEARTH = "Earth Resist", 
-	STATRESISTWATER = "Water Resist",
-	STATRESISTLIGHT = "Light Resist",
-	STATRESISTDARK = "Dark Resist",
-	STATRESISTMIND = "Mind Resist",
+	STATRESIST_NORMAL = "Normal Resist",
+	STATRESIST_FIRE = "Fire Resist",
+	STATRESIST_AIR = "Air Resist",
+	STATRESIST_EARTH = "Earth Resist", 
+	STATRESIST_WATER = "Water Resist",
+	STATRESIST_LIGHT = "Light Resist",
+	STATRESIST_DARK = "Dark Resist",
+	STATRESIST_MIND = "Mind Resist",
 	
 	STATFOOD_CONSUMPTION = "Food Consumption",
 	STATFOOD_CONSUMPTIONDESCRIPT = "Amount of food items a person requires every day. Lack of food leads to starvation, exhaustion and eventual death.",
@@ -1795,6 +1795,9 @@ var TranslationDict = {
 	DIALOGUETAKELOOT = "Take",
 	DIALOGUEAPPROACHSHRINE = "Approach Shrine",
 	DIALOGUESHRINECHOOSEPERSON = "Select another character",
+	DIALOGUESHRINEITEM = "Make an offering",
+	DIALOGUESHRINECHARACTER = "Offer [name] to altar",
+	DIALOGUESHRINEDESTROY = "Demolish Shrine",
 	DIALOGUECHESTLOCKPICK = "Attempt to Lockpick",
 	DIALOGUECHESTLOCKPICKFAILURE = "[name] has failed to pick lock's chest and the mechanism has jammed. There's no other option, but to leave it now...",
 	DIALOGUELOCKPICKALARMFAILURE = "[name] has failed to pick the lock and caused the alarm to go off. In a few moments enemies charge at your position.",
@@ -1816,6 +1819,9 @@ var TranslationDict = {
 	DIALOGUEFIGHTOPTION = "Fight",
 	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight you.",
 	
+	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather weary, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
+	DIALOGUESHRINEEREBUS = "You come across an unsual assemblence of stones: a small uneven pyramid which has a sizable hole on top. Despite its rough appearance, you can feel a faint power around it.",
+	DIALOGUESHRINEFREYA = "You find an unusual wooden structure: a beautiful female figure. What especially stands out, is it seems it wasn't carved but rather has grown into such shape. You can feel a faint power around it. ",
 	
 	
 	DIALOGUESLAVERPURCHASE = "Purchase",
@@ -1943,6 +1949,7 @@ var TranslationDict = {
 	ENEMYLICH_QUEST = "Lich",
 	ENEMYUNDEAD_LICH = "Lich",
 	ENEMYMIMIC = "Mimic",
+	ENEMYBALLISTA = "Ballista",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",

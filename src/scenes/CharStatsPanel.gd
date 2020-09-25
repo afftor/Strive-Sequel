@@ -2,6 +2,7 @@ extends Panel
 
 func _ready():
 	for i in variables.resists_list:
+		if i == 'all': continue
 		var newlabel = $resists/Label.duplicate()
 		var newvalue = $resists/Value.duplicate()
 		$resists.add_child(newlabel)

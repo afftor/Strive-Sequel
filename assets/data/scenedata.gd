@@ -1221,7 +1221,7 @@ var scenedict = {
 	},
 	
 	celena_shrine_find = {
-		text = tr("DIALOGUEGROVEWOOD"), 
+		text = tr("DIALOGUESHRINECELENA"), 
 		tags = [],
 		image = null, 
 		options = [
@@ -1229,7 +1229,7 @@ var scenedict = {
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
 	},
 	celena_shrine_approach = {
-		text = tr("DIALOGUEGROVEWOOD"), 
+		text = tr("DIALOGUESHRINECELENA"), 
 		tags = ['shrine','active_character_translate'],
 		shrine = 'celena',
 		image = null, 

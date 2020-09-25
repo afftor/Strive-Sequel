@@ -161,9 +161,20 @@ func update_buff(i):
 				newbuff.get_node("Label").show()
 				newbuff.get_node("Label").text = str(fighter.shield)
 	newbuff.hint_tooltip = text
-	if i.get_duration() != null && i.get_duration() > 0:
+	var tmp = i.get_duration()
+	if tmp != null:
+		newbuff.get_node("Label").text = str(tmp.count)
+		match tmp.event:
+			'hours':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,0,1))
+			'turns':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(0,1,0))
+			'hits':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
+			'attacks':
+				newbuff.get_node("Label").set("custom_colors/font_color",Color(1,0,0))
 		newbuff.get_node("Label").show()
-		newbuff.get_node("Label").text = str(i.get_duration())
+
 
 func update_hp_label(newhp, newhpp):
 	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:

@@ -762,7 +762,7 @@ func show_race_description():
 		text += "\nCombat Abilitites: " 
 		for i in temprace.combat_skills:
 			text += Skilldata.Skilllist[i].name + "; "
-	text = text.substr(0, text.length() - 2) + "."
+		text = text.substr(0, text.length() - 2) + "."
 	
 	return text
 
@@ -989,6 +989,7 @@ func deal_damage(value, source = 'normal'):
 	var tmp = hp
 	if ResourceScripts.game_party.characters.has(self.id) && variables.invincible_player:
 		return 0
+	value *= (1.0 - get_stat('resists')['all']/100.0)
 	if source != 'true':
 		value *= (1.0 - get_stat('resists')[source]/100.0)
 	value = int(value);
