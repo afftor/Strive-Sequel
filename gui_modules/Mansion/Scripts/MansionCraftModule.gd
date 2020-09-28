@@ -219,10 +219,10 @@ func rebuild_scheldue():
 		newnode.set_meta("selected_craft", i)
 		newnode.get_node("DeleteButton").connect("pressed",self,'delete_from_queue', [i])
 		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
-#		newnode.arraydata = i
-#		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
-#		newnode.target_node = self
-#		newnode.target_function = 'rebuild_scheldue'
+		newnode.arraydata = i
+		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
+		newnode.target_node = self
+		newnode.target_function = 'rebuild_scheldue'
 	
 
 var repeats = 1
@@ -464,6 +464,8 @@ func checkcreatingitem(item):
 	globals.TextEncoder(text, $MaterialSetupPanel/EndItemDescript)
 	#globals.connecttooltip($NumberSelect/EndItem, text)
 	$MaterialSetupPanel/EndItemFrame/EndItem.set_texture(baseitem.icon)
+	# TODO Remove print
+	print(enditem)
 	input_handler.itemshadeimage($MaterialSetupPanel/EndItemFrame/EndItem, enditem)
 
 
