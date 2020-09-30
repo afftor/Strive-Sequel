@@ -34,6 +34,17 @@ func check_gear_equipped(gearname, param = 'itembase'):
 			return true
 	return false
 
+func check_wooden_gear_equipped():
+	for i in gear.values():
+		if i == null:
+			continue
+		var tempgear = ResourceScripts.game_res.items[i]
+		if tempgear.parts.empty() != true:
+			for k in tempgear.parts.values():
+				if Items.materiallist[k].type == 'wood':
+					return true
+	return false
+
 func get_gear(slot):
 	return gear[slot]
 

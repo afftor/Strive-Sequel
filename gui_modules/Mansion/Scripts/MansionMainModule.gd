@@ -425,7 +425,7 @@ func remove_hovered_person():
 
 func _on_TestButton_pressed():
 	# print(ResourceScripts.game_party.active_tasks)
-	print(ResourceScripts.game_progress.unlocked_classes)
+	print(ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]].checkreqs([{code = 'has_wooden_gear'}]))
 
 
 

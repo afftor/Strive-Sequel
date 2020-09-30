@@ -1237,6 +1237,40 @@ var scenedict = {
 		{code = 'celena_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
 	},
+	erebus_shrine_find = {
+		text = tr("DIALOGUESHRINEEREBUS"), 
+		tags = [],
+		image = null, 
+		options = [
+		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
+	},
+	erebus_shrine_approach = {
+		text = tr("DIALOGUESHRINEEREBUS"), 
+		tags = ['shrine','active_character_translate'],
+		shrine = 'celena',
+		image = null, 
+		options = [
+		{code = 'erebus_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
+	},
+	freya_shrine_find = {
+		text = tr("DIALOGUESHRINEFREYA"), 
+		tags = [],
+		image = null, 
+		options = [
+		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUEAPPROACHSHRINE")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
+	},
+	freya_shrine_approach = {
+		text = tr("DIALOGUESHRINEFREYA"), 
+		tags = ['shrine','active_character_translate'],
+		shrine = 'celena',
+		image = null, 
+		options = [
+		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
+		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
+	},
 }
 
 var dialogue_inits = {
