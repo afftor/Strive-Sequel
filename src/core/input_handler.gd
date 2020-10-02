@@ -112,6 +112,7 @@ enum {
 	ANIM_BATTLE_START,
 	ANIM_BATTLE_DEFEAT,
 	ANIM_CLASS_ACHIEVED,
+	ANIM_CLASS_UNLOCKED,
 	ANIM_TASK_COMPLETED,
 } #, NODE_TWEEN, NODE_REPEATTWEEN}
 
@@ -276,6 +277,7 @@ func _input(event):
 						gui_controller.current_screen = gui_controller.previous_screen
 					gui_controller.slavepanel:
 						gui_controller.slavepanel.hide()
+						gui_controller.slavepanel.SummaryModule.selected_person = null
 						gui_controller.current_screen = gui_controller.mansion
 						gui_controller.current_screen.show()
 						if gui_controller.current_screen == gui_controller.mansion:
@@ -1181,3 +1183,14 @@ func get_location_characters():
 			array.append(i)
 	
 	return array
+
+
+func play_unlock_class_anim():
+	input_handler.PlaySound("class_aquired")
+	var anim_scene
+	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_UNLOCKED)
+	anim_scene.get_node("AnimationPlayer").play("class_unlocked")
+	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+	yield(get_tree().create_timer(0.5), 'timeout')
+	anim_scene.queue_free()

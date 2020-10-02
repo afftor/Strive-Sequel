@@ -3,6 +3,8 @@ extends Control
 #onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var CharMainModule = get_parent()
 
+var selected_person
+
 func _ready():
 	var base_stats_container = $VBoxContainer2/TextureRect2
 	for i in $base_stats.get_children():
@@ -23,6 +25,33 @@ func _ready():
 	$VBoxContainer2/TextureRect2/Exp.connect("pressed", get_parent(), "set_state", ["class"])
 	$VBoxContainer/DetailsButton.connect("pressed", get_parent(), "set_state", ["details"])
 	$VBoxContainer/DetailsButton.set_meta("state", "details")
+	$ChangeSlaveButtons/Left.connect("pressed", self, "change_slave", ["prev"])
+	$ChangeSlaveButtons/Right.connect("pressed", self, "change_slave", ["next"])
+
+
+func change_slave(param):
+	var chars = ResourceScripts.game_party.character_order
+	var current_idx = 0
+	while selected_person.id != chars[current_idx]:
+		current_idx += 1
+	
+	match param:
+		"prev":
+			if current_idx == 0:
+				selected_person = ResourceScripts.game_party.characters[chars[chars.size() - 1]]
+			else:
+				selected_person = ResourceScripts.game_party.characters[chars[current_idx - 1]]
+		"next":
+			if current_idx == chars.size() - 1:
+				selected_person = ResourceScripts.game_party.characters[chars[0]]
+			else:
+				selected_person = ResourceScripts.game_party.characters[chars[current_idx + 1]]
+	CharMainModule.match_state()
+
+
+# func sort_chars(f, s):
+# 	return f.id > s.id
+
 
 	# show_summary()
 # func update():
@@ -41,7 +70,10 @@ func update():
 func show_summary():
 	# input_handler.PreviousScene = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
 	input_handler.ClearContainer($professions)
-	var person = gui_controller.mansion.active_person
+	var person
+	if selected_person == null:
+		selected_person = gui_controller.mansion.active_person
+	person = selected_person
 	$Portrait.texture = person.get_icon()
 	$sex.texture = images.icons[person.get_stat('sex')]
 	$Name/name.text = person.get_full_name()

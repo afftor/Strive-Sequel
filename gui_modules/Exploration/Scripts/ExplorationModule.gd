@@ -77,7 +77,6 @@ func _ready():
 	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
-	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
 	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
@@ -1151,40 +1150,26 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		newbutton.get_node("Icon").texture = classesdata.professions[cls].icon
 		newbutton.connect("pressed", self, "buy_item", [cls, guild.reputation_shop.classes[cls], 1, "class"])
 		var person = ResourceScripts.game_party.get_master()
-		var tempclass = classesdata.professions[cls]
-		var text = ''
-
-		text += ResourceScripts.descriptions.get_class_name(tempclass, person)
-
-		text += "\nBonuses\n"
-		text += ResourceScripts.descriptions.get_class_bonuses(person, tempclass)
-
-		text += '\n' + str(ResourceScripts.descriptions.get_class_traits(person, tempclass))
-		if str(ResourceScripts.descriptions.get_class_traits(person, tempclass)) != '':
-			text += '\n'
-
-		text += tr('CLASSREQS')+"\n"
-		if tempclass.reqs.size() > 0:
-			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass)
-		else:
-			text += tr("REQSNONE")
-
-		text += '\n' + str(person.translate(tempclass.descript))
+		var prof = classesdata.professions[cls]
+		var name = ResourceScripts.descriptions.get_class_name(prof, person)
+		newbutton.connect('signal_RMB_release', gui_controller, 'show_class_info', [prof.code, person])
+		var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
 		var social_skills = ''
 		var combat_skills = ''
-		if tempclass.has("skills") && tempclass.skills != []:
-			text += "\nSocial Skills - "
-			for skill in tempclass.skills:
+		if classesdata.professions[cls].has("skills") && classesdata.professions[cls].skills != []:
+			temptext += "\nSocial Skills - "
+			for skill in classesdata.professions[cls].skills:
 				social_skills += skill.capitalize() + ", "
 			social_skills = social_skills.substr(0, social_skills.length() - 2)
-		text += social_skills
-		if tempclass.has("combatskills") && tempclass.combatskills != []:
-			text += "\nCombat Skills - "
-			for skill in tempclass.combatskills:
+		temptext += social_skills
+		if classesdata.professions[cls].has("combatskills") && classesdata.professions[cls].combatskills != []:
+			temptext += "\nCombat Skills - "
+			for skill in classesdata.professions[cls].combatskills:
 				combat_skills += skill.capitalize() + ", "
 			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
-		text += combat_skills
-		globals.connecttexttooltip(newbutton, text)
+		temptext += combat_skills
+		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
+		globals.connecttexttooltip(newbutton, temptext)
 	$GuildShop/FactionPoints.text = "x " + str(active_faction.reputation)
 	$GuildShop/GuildName.text = str(active_faction.name)
 	if pressed:

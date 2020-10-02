@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui_modules/Universal/Modules/CharStatsPanelV2.tscn" type="PackedScene" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Buttons/button_victory.png" type="Texture" id=53]
 [ext_resource path="res://gui_modules/Animations/Label1_victory.tscn" type="PackedScene" id=54]
 [ext_resource path="res://gui_modules/Animations/Label2_victory.tscn" type="PackedScene" id=55]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=56]
 [ext_resource path="res://gui_modules/Animations/button_victory_collect.tscn" type="PackedScene" id=57]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/line_blue.png" type="Texture" id=59]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=60]
@@ -299,6 +300,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 56 )
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
@@ -1121,6 +1123,7 @@ align = 1
 valign = 1
 
 [node name="Rewards" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {

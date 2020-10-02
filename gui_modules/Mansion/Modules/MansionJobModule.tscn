@@ -22,7 +22,6 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Job_BG.tres" type="StyleBox" id=20]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Job_Travel_Panel.tres" type="StyleBox" id=21]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
 
@@ -188,6 +187,21 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Coerced Labor"
+
+[node name="luxury" type="CheckBox" parent="work_rules"]
+margin_top = 177.0
+margin_right = 224.0
+margin_bottom = 225.0
+custom_icons/checked = ExtResource( 5 )
+custom_icons/unchecked = ExtResource( 4 )
+custom_styles/focus = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Luxury Room"
 
 [node name="job_details" type="Control" parent="."]
 margin_left = 708.0

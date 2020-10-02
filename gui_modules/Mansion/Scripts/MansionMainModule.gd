@@ -156,6 +156,9 @@ func reset_vars():
 
 # Handles Resizing and visibility
 func match_state():
+	if gui_controller.clock != null:
+		gui_controller.clock.show()
+		gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
 	Journal.visible = MenuModule.get_node("VBoxContainer/Journal").is_pressed()
@@ -442,6 +445,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
 		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
 		ResourceScripts.game_res.upgrades.tailor = 1
+		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 		
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2
@@ -611,7 +615,7 @@ func test_mode():
 		)
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 75
+			ResourceScripts.game_res.materials[i] = 20
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))

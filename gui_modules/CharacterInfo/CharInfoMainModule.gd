@@ -22,14 +22,11 @@ func _ready():
 
 
 func update():
-	active_person = gui_controller.mansion.active_person
-	# if GUIWorld.PreviousScene == GUIWorld.gui_data["INVENTORY"].main_module:
-	# 	GUIWorld.PreviousScene = null
-	# 	return
-	# if gui_controller.windows_opened.size() == 0:
-	# 	set_state("default")
+	active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
 	SlaveInfo.get_node("DietButton").pressed = DietModule.is_visible()
 	SummaryModule.show_summary()
+	SlaveInfo.update()
+	BodyModule.update()
 
 
 func set_state(state):

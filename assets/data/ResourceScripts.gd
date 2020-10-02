@@ -85,6 +85,7 @@ onready var node_data = {
 	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_battle_start.tscn") },
 	input_handler.ANIM_BATTLE_DEFEAT : {name = 'ANIMBattleDefeat', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_defeated.tscn") },
 	input_handler.ANIM_CLASS_ACHIEVED : {name = 'ANIMClassAchieved', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_class_achieved.tscn") },
+	input_handler.ANIM_CLASS_UNLOCKED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_class_unlocked.tscn") },
 	input_handler.ANIM_TASK_COMPLETED : {name = 'ANIMTaskCompleted', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_completed.tscn") },
 }
 
