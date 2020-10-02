@@ -38,7 +38,7 @@ func set_color(value):
 	return color	
 
 func update():
-	person = gui_controller.mansion.active_person
+	person = get_parent().active_person
 	if person != null:
 		$Panel.visible = !person.has_profession("master")
 		$MasterIcon.visible = person.has_profession("master")

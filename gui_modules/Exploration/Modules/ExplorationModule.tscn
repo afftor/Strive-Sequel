@@ -2395,13 +2395,16 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GuildShop/ScrollContainer"]
 
-[node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer"]
+[node name="Button" type="TextureButton" parent="GuildShop/ScrollContainer/VBoxContainer" groups=[
+"ignore_rightclicks",
+]]
 visible = false
 margin_right = 514.0
 margin_bottom = 108.0
 texture_normal = ExtResource( 109 )
 texture_pressed = ExtResource( 108 )
 texture_hover = ExtResource( 106 )
+script = ExtResource( 12 )
 
 [node name="Title" type="Label" parent="GuildShop/ScrollContainer/VBoxContainer/Button"]
 margin_left = 115.0
@@ -2497,9 +2500,9 @@ __meta__ = {
 }
 
 [node name="HSlider" type="HSlider" parent="GuildShop/NumberSelection2"]
-margin_left = 37.0
+margin_left = 38.0
 margin_top = 95.0
-margin_right = 567.0
+margin_right = 568.0
 margin_bottom = 121.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_icons/grabber_disabled = ExtResource( 69 )

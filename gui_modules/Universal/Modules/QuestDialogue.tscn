@@ -8,10 +8,11 @@
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_hover.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_pressed.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue_small.png" type="Texture" id=8]
-[ext_resource path="res://gui_modules/Universal/Scripts/InteractiveMessageModule_animated.gd" type="Script" id=9]
+[ext_resource path="res://gui_modules/Universal/Scripts/InteractiveMessageModuleAnimated.gd" type="Script" id=9]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=13]
+
 
 [node name="QuestDialogue" type="Panel"]
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -35,6 +35,9 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Summary_Panel.tres" type="StyleBox" id=33]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=34]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=35]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/arrow_charswap.png" type="Texture" id=36]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/arrow_charswap_hover.png" type="Texture" id=37]
+[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/arrow_charswap_pressed.png" type="Texture" id=38]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -766,8 +769,10 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="Name"]
+visible = false
 light_mask = 0
-margin_right = 64.0
+margin_left = 7.0
+margin_right = 71.0
 margin_bottom = 125.0
 texture = ExtResource( 29 )
 __meta__ = {
@@ -790,12 +795,41 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="Name"]
+visible = false
 light_mask = 0
-margin_left = 223.0
-margin_right = 287.0
+margin_left = 191.0
+margin_right = 255.0
 margin_bottom = 125.0
 texture = ExtResource( 29 )
 flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ChangeSlaveButtons" type="Control" parent="."]
+margin_left = 851.32
+margin_top = 6.0
+margin_right = 851.32
+margin_bottom = 131.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="TextureButton" parent="ChangeSlaveButtons"]
+margin_left = -623.7
+margin_top = 15.0
+margin_right = -553.7
+margin_bottom = 107.0
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 38 )
+texture_hover = ExtResource( 37 )
+
+[node name="Right" type="TextureButton" parent="ChangeSlaveButtons"]
+margin_left = 330.68
+margin_top = 15.0
+margin_right = 400.68
+margin_bottom = 107.0
+rect_scale = Vector2( -1, 1 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 38 )
+texture_hover = ExtResource( 37 )

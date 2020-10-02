@@ -441,10 +441,10 @@ text = "1"
 align = 1
 
 [node name="totalstatlabel" type="Label" parent="StatsModule"]
-margin_left = 9.0
-margin_top = 297.0
-margin_right = 364.0
-margin_bottom = 327.0
+margin_left = 10.0
+margin_top = 291.0
+margin_right = 365.0
+margin_bottom = 323.0
 theme = ExtResource( 35 )
 text = "Total Stats"
 

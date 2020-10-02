@@ -23,7 +23,7 @@ func _ready():
 	$NumberSelect/BackButton2.connect("pressed", self, "cancel_choise")
 	# input_handler.AddPanelOpenCloseAnimation($MaterialSelect)
 	
-	for i in [$MaterialSetupPanel/Part1, $MaterialSetupPanel/Part2, $MaterialSetupPanel/Part3]:
+	for i in [$MaterialSetupPanel/ModularSetup/Part1, $MaterialSetupPanel/ModularSetup/Part2, $MaterialSetupPanel/ModularSetup/Part3]:
 		i.connect("pressed", self, 'choosematerial', [i])
 	
 	for i in $categories.get_children():
@@ -219,10 +219,10 @@ func rebuild_scheldue():
 		newnode.set_meta("selected_craft", i)
 		newnode.get_node("DeleteButton").connect("pressed",self,'delete_from_queue', [i])
 		newnode.get_node("progress").text = str(floor(i.workunits)) + "/" + str(i.workunits_needed)
-#		newnode.arraydata = i
-#		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
-#		newnode.target_node = self
-#		newnode.target_function = 'rebuild_scheldue'
+		newnode.arraydata = i
+		newnode.parentnodearray = ResourceScripts.game_res.craftinglists[craft_category]
+		newnode.target_node = self
+		newnode.target_function = 'rebuild_scheldue'
 	
 
 var repeats = 1
@@ -302,8 +302,10 @@ func selectcraftitem(item):
 	itemtemplate = item.resultitem
 	$NumberSelect.show()
 	$MaterialSetupPanel.show()
-	for i in ['Part1','Part2','Part3', 'Part1Descript', 'Part2Descript', 'Part3Descript', 'Label']:
-		get_node("MaterialSetupPanel/" + i).visible = !item.crafttype == 'basic'
+	get_node("MaterialSetupPanel/ModularSetup/").visible = item.crafttype != 'basic'
+	get_node("MaterialSetupPanel/BasicSetup/").visible = !get_node("MaterialSetupPanel/ModularSetup/").visible
+	# for i in ['Part1','Part2','Part3', 'Part1Descript', 'Part2Descript', 'Part3Descript', 'Label']:
+	# 	get_node("MaterialSetupPanel/ModularSetup/" + i).visible = !item.crafttype == 'basic'
 	if item.crafttype == 'basic':
 		var baseitem
 		if Items.materiallist.has(item.resultitem):
@@ -318,6 +320,16 @@ func selectcraftitem(item):
 		var encoded_text = globals.TextEncoder(text)
 		encoded_text += "\n" + str(baseitem.descript)
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = encoded_text
+		var basic_setup_container = $MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer
+		
+		input_handler.ClearContainer(basic_setup_container)
+		for i in item.materials:
+			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
+			newbutton.get_node("Icon").texture = Items.materiallist[i].icon
+			newbutton.get_node("Reqs").text = str(item.materials[i]) + '/' + str(ResourceScripts.game_res.materials[i])
+			newbutton.get_node("Name").text = i.capitalize()
+			newbutton.disabled = item.materials[i] > ResourceScripts.game_res.materials[i]
+
 	else:
 		$NumberSelect/NumberConfirm.disabled = true
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = ''
@@ -328,29 +340,29 @@ func selectcraftitem(item):
 		array.sort()
 		itemparts.clear()
 		for i in ['Part1','Part2','Part3']:
-			get_node("MaterialSetupPanel/" + i).texture_normal = default_part_texture
-			get_node("MaterialSetupPanel/" + i + '/number').hide()
-			get_node("MaterialSetupPanel/" + i + 'Descript').bbcode_text = ''
-			get_node("MaterialSetupPanel/" + i + "/TextureRect").texture = placeholder
-			get_node("MaterialSetupPanel/" + i + "/TextureRect").show()
+			get_node("MaterialSetupPanel/ModularSetup/" + i).texture_normal = default_part_texture
+			get_node("MaterialSetupPanel/ModularSetup/" + i + '/number').hide()
+			get_node("MaterialSetupPanel/ModularSetup/" + i + 'Descript').bbcode_text = ''
+			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").texture = placeholder
+			get_node("MaterialSetupPanel/ModularSetup/" + i + "/TextureRect").show()
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = null
 		
-		$MaterialSetupPanel/Part1.set_meta('part',array[0])
-		$MaterialSetupPanel/Part1.set_meta('cost',item.parts[array[0]])
-		$MaterialSetupPanel/Part2.hide()
-		$MaterialSetupPanel/Part3.hide()
+		$MaterialSetupPanel/ModularSetup/Part1.set_meta('part',array[0])
+		$MaterialSetupPanel/ModularSetup/Part1.set_meta('cost',item.parts[array[0]])
+		$MaterialSetupPanel/ModularSetup/Part2.hide()
+		$MaterialSetupPanel/ModularSetup/Part3.hide()
 		match array.size():
 			2:
-				$MaterialSetupPanel/Part2.show()
-				$MaterialSetupPanel/Part2.set_meta('part',array[1])
-				$MaterialSetupPanel/Part2.set_meta('cost',item.parts[array[1]])
+				$MaterialSetupPanel/ModularSetup/Part2.show()
+				$MaterialSetupPanel/ModularSetup/Part2.set_meta('part',array[1])
+				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
 			3:
-				$MaterialSetupPanel/Part2.show()
-				$MaterialSetupPanel/Part2.set_meta('part',array[1])
-				$MaterialSetupPanel/Part2.set_meta('cost',item.parts[array[1]])
-				$MaterialSetupPanel/Part3.show()
-				$MaterialSetupPanel/Part3.set_meta('part',array[2])
-				$MaterialSetupPanel/Part3.set_meta('cost',item.parts[array[3]])
+				$MaterialSetupPanel/ModularSetup/Part2.show()
+				$MaterialSetupPanel/ModularSetup/Part2.set_meta('part',array[1])
+				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
+				$MaterialSetupPanel/ModularSetup/Part3.show()
+				$MaterialSetupPanel/ModularSetup/Part3.set_meta('part',array[2])
+				$MaterialSetupPanel/ModularSetup/Part3.set_meta('cost',item.parts[array[3]])
 
 
 
@@ -415,7 +427,7 @@ func selectmaterial(material, part, cost):
 		else:
 			for k in material.parts[part][i]:
 				text += '\n' + Effectdata.effects[k].descript
-	get_node('MaterialSetupPanel/' + chosenpartbutton.name + 'Descript').bbcode_text = text
+	get_node("MaterialSetupPanel/ModularSetup/" + chosenpartbutton.name + 'Descript').bbcode_text = text
 
 var enditem
 

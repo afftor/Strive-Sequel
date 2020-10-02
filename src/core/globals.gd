@@ -975,6 +975,7 @@ func remove_location(locationid):
 	input_handler.update_slave_list()
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.mansion_state_set("default")
+		return
 	if input_handler.active_location == location && input_handler.exploration_node.is_visible_in_tree():
 		gui_controller.nav_panel.select_location('aliron')
 		gui_controller.nav_panel.build_accessible_locations()
@@ -1166,6 +1167,7 @@ func common_effects(effects):
 			'unlock_class':
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
+					input_handler.play_unlock_class_anim()
 
 
 func checkreqs(array):

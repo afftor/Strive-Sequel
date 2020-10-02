@@ -18,9 +18,15 @@ func _ready():
 		i.hint_tooltip = "WORKRULE" + i.name.to_upper() + "DESCRIPT"
 
 
+	
+
+
 func set_work_rule(rule):
 	var setting = get_node("work_rules/"+rule).pressed
 	person.xp_module.work_rules[rule] = setting
+	if rule == "luxury":
+		open_jobs_window()
+		return
 	match setting:
 		true:
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table["work_rule_" + rule])
@@ -31,6 +37,8 @@ func set_work_rule(rule):
 	if currentjob != null:
 		var gatherable = Items.materiallist.has(currentjob.code)
 		show_job_details(currentjob, gatherable)
+
+	
 
 func cancel_job_choice():
 	$ConfirmButton.hide()
@@ -45,7 +53,15 @@ func close_job_pannel():
 
 
 func open_jobs_window():
+	var luxury_rooms_taken = 0
+	for p in ResourceScripts.game_party.characters.values():
+		if p.xp_module.work_rules["luxury"]:
+			luxury_rooms_taken += 1
+	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms)
+	$work_rules/luxury.disabled = luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms
+
 	person = get_parent().active_person
+	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 	if person != null:
 		for i in $work_rules.get_children():
 			i.pressed = person.xp_module.work_rules[i.name]

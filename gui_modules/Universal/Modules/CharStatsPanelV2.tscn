@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=2]
@@ -6,7 +6,11 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_charinfo_l.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=6]
-[ext_resource path="res://gui_modules/Universal/Scripts/CharStatsPanel_v2.gd" type="Script" id=7]
+[ext_resource path="res://gui_modules/Universal/Scripts/CharStatsPanelV2.gd" type="Script" id=7]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -16,6 +20,7 @@ font_data = ExtResource( 1 )
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 694.0
 margin_bottom = 504.0
+theme = ExtResource( 11 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -38,14 +43,17 @@ margin_right = 543.0
 margin_bottom = 898.0
 
 [node name="VBoxContainer" type="GridContainer" parent="."]
-margin_left = 79.8271
-margin_top = 122.194
-margin_right = 605.827
-margin_bottom = 201.194
+margin_left = 188.0
+margin_top = 123.0
+margin_right = 679.0
+margin_bottom = 202.0
 columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 128.0
+margin_right = 119.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 theme = ExtResource( 2 )
@@ -53,8 +61,8 @@ text = "Health: "
 align = 2
 
 [node name="hp" type="Label" parent="VBoxContainer"]
-margin_left = 132.0
-margin_right = 260.0
+margin_left = 123.0
+margin_right = 242.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 theme = ExtResource( 2 )
@@ -80,8 +88,8 @@ theme = ExtResource( 2 )
 text = "100/100"
 
 [node name="Label6" type="Label" parent="VBoxContainer"]
-margin_left = 264.0
-margin_right = 392.0
+margin_left = 246.0
+margin_right = 365.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 theme = ExtResource( 2 )
@@ -89,8 +97,8 @@ text = "Mana:"
 align = 2
 
 [node name="mp" type="Label" parent="VBoxContainer"]
-margin_left = 396.0
-margin_right = 524.0
+margin_left = 369.0
+margin_right = 488.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 theme = ExtResource( 2 )
@@ -358,3 +366,59 @@ margin_bottom = 29.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 5 )
+
+[node name="buffscontainer" type="HBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.823529 )
+self_modulate = Color( 1, 1, 1, 0.823529 )
+show_behind_parent = true
+light_mask = 0
+margin_left = 9.0
+margin_top = 440.0
+margin_right = 686.0
+margin_bottom = 496.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureRect" parent="buffscontainer"]
+visible = false
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="buffscontainer/Button"]
+margin_left = 2.0
+margin_top = 23.7062
+margin_right = 50.9999
+margin_bottom = 50.7062
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="buffscontainer/Button"]
+show_behind_parent = true
+margin_right = 53.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 53, 53 )
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 36.0
+margin_top = 19.0
+margin_right = 206.0
+margin_bottom = 189.0
+expand = true
+stretch_mode = 6

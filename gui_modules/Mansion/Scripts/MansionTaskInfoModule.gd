@@ -97,16 +97,22 @@ func show_resources_info():
 				newtask.get_node("ProgressBar").max_value = ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed
 				newtask.get_node("ProgressBar").value = ResourceScripts.game_res.craftinglists[task_name][0].workunits
 				var recipe = Items.recipes[ResourceScripts.game_res.craftinglists[task_name][0].code]
+				var item
+				if recipe.resultitemtype == 'item':
+					item = Items.itemlist[recipe.resultitem]
+				else:
+					item = Items.materiallist[recipe.resultitem]
 				if recipe.resultitemtype == 'material':
 					newtask.get_node("Task/TaskIcon").texture = Items.materiallist[ResourceScripts.game_res.craftinglists[task_name][0].code].icon
 					# newtask.get_node("icon/Label").show()
 					# newtask.get_node("Task").text = str(ResourceScripts.game_res.materials[ResourceScripts.game_res.craftinglists[task_name][0].code])
+
+				elif recipe.crafttype == 'modular':
+					input_handler.itemshadeimage(newtask.get_node("Task/TaskIcon"), item)
+
 				else:
 					newtask.get_node("Task/TaskIcon").texture = Items.itemlist[Items.recipes[ResourceScripts.game_res.craftinglists[task_name][0].code].resultitem].icon
-				# if ResourceScripts.game_res.craftinglists[task_name][0].has('partdict'):
-				# 	newtask.get_node("Task/TaskIcon").texture = load("res://assets/ItemShader.tres")
-				# else:
-				# 	newtask.get_node("Task/TaskIcon").texture = null
+
 		elif task.product in ['prostitutegold']:
 			newtask.get_node("Task/TaskIcon").texture = races.tasklist[task_name].production[task.product].icon
 			newtask.get_node("ProgressBar").max_value = task.threshhold

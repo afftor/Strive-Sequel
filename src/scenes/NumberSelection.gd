@@ -20,12 +20,16 @@ func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, min
 	target_function = targetfunction
 	target_node = targetnode
 	cost = itemcost
-	$HSlider.value = 1
+	if minvalue > 0:
+		$HSlider.step = minvalue
+	else:
+		$HSlider.step = 1
+	$HSlider.value = minvalue
 	$HSlider.min_value = minvalue
 	$HSlider.max_value = maxvalue
 	require_gold = requiregold
 	update()
-
+ 
 func update():
 	if get_parent().name == "AreaShop":
 		if require_gold == false:
@@ -34,14 +38,14 @@ func update():
 			$Button.disabled = $HSlider.value == 0 || ResourceScripts.game_res.money < $HSlider.value * cost
 		$ItemIcon.texture = icon
 	if get_parent().name == "GuildShop":
-		$Button.disabled = $HSlider.value == 0 || (input_handler.active_faction.reputation - cost * $HSlider.value) < 0
+		$Button.disabled = $HSlider.value == 0 || (input_handler.active_faction.reputation - (cost / $HSlider.step) * $HSlider.value) < 0
 
-	$ItemPrice.text = "x " + str($HSlider.value * cost) 
+	$ItemPrice.text = "x " + str($HSlider.value * (cost / $HSlider.step)) 
 	$ItemAmount.text = "x " + str($HSlider.value) 
 	$ItemName.text = showntext
 
 func confirm_number_selection():
-	target_node.call(target_function, $HSlider.value)
+	target_node.call(target_function, $HSlider.value / $HSlider.step)
 	hide()
 
 func change_number_selection(value):
