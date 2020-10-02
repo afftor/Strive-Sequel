@@ -693,7 +693,10 @@ func dialogue_option_selected(option):
 		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
 	else:
 		gui_controller.dialogue_txt = ''
-	gui_controller.dialogue.previous_text = tr(option.text)
+	if option.has('active_char_translate'):
+		gui_controller.dialogue.previous_text = active_character.translate(tr(option.text))
+	else:
+		gui_controller.dialogue.previous_text = tr(option.text)
 	if !ResourceScripts.game_progress.selected_dialogues.has(option.text):
 		ResourceScripts.game_progress.selected_dialogues.append(option.text)
 

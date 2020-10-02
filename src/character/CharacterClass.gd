@@ -645,6 +645,8 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			check = get_stat('vaginal_virgin') == i.check
 		'class_unlocked':
 			return ResourceScripts.game_progress.if_class_unlocked(i.class, i.check, i.operant)
+		'has_wooden_gear':
+			return equipment.check_wooden_gear_equipped()
 	return check
 
 func decipher_reqs(reqs, colorcode = false):

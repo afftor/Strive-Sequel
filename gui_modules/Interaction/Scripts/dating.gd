@@ -495,8 +495,25 @@ var date_lines = {
 		],
 	praise_resist = [
 		["{^[name2]:[race2] [boy2]:[he2]} does not show any signs of accepting your praise.",1]
-		]
+		],
 	
+	pathead_initiate = [
+		["You {^casually:lightly} {^pat:stroke} {^[name2]:[race2] [boy2]}'s head.", 1],
+	],
+	
+	pathead_positive = [
+		["{^[name2]:[race2] [boy2]:[he2]} smiles back at you.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} embarrassingly {^shies:looks} away.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} takes it with joy evident on [his2] face.", 1],
+	],
+	pathead_negative = [
+		["{^[name2]:[race2] [boy2]:[he2]} gives you a disapproving {^glance:look}.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} seems to be offended by your gesture.", 1],
+	],
+	
+	scold_initiate = [
+		["You scold {^[name2]:[race2] [boy2]} for [his2] recent faults. ",1]
+	]
 }
  
 

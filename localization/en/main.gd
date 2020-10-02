@@ -600,7 +600,7 @@ var TranslationDict = {
 	SKILLRIGHTEOUS_FIRE = "Righteous Fire",
 	SKILLRIGHTEOUS_FIREDESCRIPT = "Deals 1.0 fire Spell damage to any enemy. Silences target for 2 turns",
 	SKILLELEMENTAL_WEAKNESS = "Elemental Weakness",
-	SKILLELEMENTAL_WEAKNESSDECRIPT = "Target enemy receive -40 Fire, Air, Earth and Water resists for 3 turns.",
+	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Target enemy receive -40 Fire, Air, Earth and Water resists for 3 turns.",
 	SKILLELEMENTAL_PROTECTION = "Elemental Protection",
 	SKILLELEMENTAL_PROTECTIONDECRIPT = "Buff Ally Row: +25 Fire, Air, Earth and Water resists for 3 turns.",
 	SKILLTAUNT = "Taunt",
@@ -1818,6 +1818,7 @@ var TranslationDict = {
 	DIALOGUEWOLVES_SKIRMISH_START = "You find the location of the wolves which were reported by the locals. ",
 	DIALOGUEFIGHTOPTION = "Fight",
 	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight you.",
+	DIALOGUEGOBLINS_SKIRMISH_START = "You find the group of goblins which has been reported by locals. It seems they are ready to fight you.",
 	
 	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather weary, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
 	DIALOGUESHRINEEREBUS = "You come across an unsual assemblence of stones: a small uneven pyramid which has a sizable hole on top. Despite its rough appearance, you can feel a faint power around it.",
