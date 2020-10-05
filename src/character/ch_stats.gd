@@ -42,6 +42,8 @@ func custom_stats_set(st, value):
 		statlist[st] = clamp(statlist[st], variables.minimum_factor_value, variables.maximum_factor_value)
 	if st == 'lust':
 		statlist.lust = clamp(value, 0, get_stat('lustmax'))
+	if st == 'obedience':
+		statlist.obedience = min(statlist.obedience, get_obed_cap())
 
 
 func custom_stats_get():
@@ -99,6 +101,28 @@ func custom_stats_get():
 			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
 		res.damage_mods = tres
 	return res
+
+func authority_level():
+	var rval
+	if get_stat("authority") < authority_threshold()/2:
+		rval = 'low'
+	elif get_stat("authority") < authority_threshold():
+		rval = 'medium'
+	else:
+		rval = 'high'
+	return rval 
+
+func authority_threshold():
+	return 200 - get_stat('timid_factor') * 25
+
+func get_obed_cap():
+	match authority_level():
+		'low':
+			return 72
+		'medium':
+			return 144
+		'high':
+			return 288
 
 func get_short_name():
 	var text = ''
@@ -193,7 +217,16 @@ func get_stat_gain_rate(statname):
 	elif statlist[statname] >= 40: res = 0.75
 	return res
 
+
 func add_stat(statname, value, revert = false):
+	if statname == 'loyaltyObeidence':# no revert mode
+		value *= 0.33 * get_stat('tame_factor')
+		statlist.obedience += value
+		statlist.obedience = min(statlist.obedience, get_obed_cap())
+	if statname == 'submissionObedience':# no revert mode
+		value *= 0.33 * get_stat('timid_factor')
+		statlist.obedience += value
+		statlist.obedience = min(statlist.obedience, get_obed_cap())
 	if statname == 'sex_skills': #force custom direct access due to passing into interaction via link
 		for ss in statlist.sex_skills:
 			if revert: statlist.sex_skills[ss] -= value
@@ -752,7 +785,7 @@ func tick():
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.loyalty < 100.0 && !parent.has_status('no_loyal_reduction'):
 		add_stat('loyalty', -(12.0-1*get_stat('tame_factor'))/24 * get_stat('loyalty_degrade_mod'))
-	if statlist.submission < 100.0:
+	if statlist.submission < 100.0: #obsolete
 		add_stat('submission', -(12.0-1*get_stat('timid_factor'))/24 * get_stat('submission_degrade_mod'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
@@ -763,7 +796,7 @@ func tick():
 func is_uncontrollable():
 	return statlist.obedience <= 0 && statlist.loyalty < 100 && statlist.submission < 100
 
-func is_controllable():#not sure - either this or previous is wrong cause of obedience check
+func is_controllable():#not sure - either this or previous is wrong cause of obedience check, nvn, rework both!
 	return statlist.loyalty >= 100 || statlist.submission >= 100
 
 func translate(text):
@@ -805,3 +838,4 @@ func translate(text):
 	text = text.replace("[boygirlfuta]", rtext)
 	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', 'boy', 'girl'))
 	return text
+
