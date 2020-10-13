@@ -2406,7 +2406,7 @@ var effect_table = {
 		sub_effects = [],
 	},
 	e_i_shackles_obed = {
-		type = 'static',
+		type = 'c_static',
 		descript = 'Reduce Obedience drain by 75%',
 		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 4}],
 		tags = ['recheck_stats', 'recheck_item'],
@@ -2418,9 +2418,9 @@ var effect_table = {
 	},
 	e_i_pet_suit = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Obedience Drain is increased by 20%.",
-		tags = ['recheck_class', 'recheck_item'],
+		tags = ['recheck_class', 'recheck_item'], #useless
 		atomic = [
 		{type = 'stat_add', stat = 'obDrainIncrease', value = 0.2},
 		],
@@ -2438,7 +2438,7 @@ var effect_table = {
 	},
 	e_maid_dress_effect = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Obedience Drain -30%",
 		tags = [],
 		atomic = [
@@ -2449,7 +2449,7 @@ var effect_table = {
 	},
 	e_i_handcuffs_obed = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Obedience Drain -15%",
 		tags = [],
 		atomic = [
@@ -2460,7 +2460,7 @@ var effect_table = {
 	},
 	e_worker_outfit_effect = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Hunting, Fishing and Collecting Tasks: +25%",
 		tags = [],
 		atomic = [
@@ -2475,7 +2475,7 @@ var effect_table = {
 	},
 	e_craftman_suit_effect = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Cooking, Smithing, Alchemy, Tailor and Upgrading Tasks: +25%",
 		tags = [],
 		atomic = [
