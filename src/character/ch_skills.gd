@@ -225,9 +225,11 @@ func use_social_skill(s_code, target):
 						eff.process_event(variables.TR_SOC_SPEC)
 						eff.set_args('receiver', null)
 			continue
-		if i.damagestat == '+loyalty':
-			if parent.has_profession('master'): i.value *= 4
 		var detail_tags = []
+		if i.damagestat == 'loyalty' and i.dmgf == 0:
+			if parent.has_profession('master'): 
+				detail_tags.append('master_loyalty')
+				i.value *= 4
 		for h in targ_fin:
 			var mod = i.dmgf
 			var stat = i.damagestat
@@ -311,9 +313,9 @@ func use_social_skill(s_code, target):
 				change = '-'#
 			effect_text += ": "
 			if maxstat != 0 && !stat in ['loyaltyObedience', 'submissionObedience', 'obedience','loyalty','authority','submission','consent']:
-				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ")"
+				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%.1f)" % i.value) +  ")"
 			else:
-				effect_text += change + str(floor(tmp))
+				effect_text += change + str(floor(tmp)) + ("(%.1f)" % i.value)
 			if detail_tags.has("noauthority") && stat == 'loyalty':
 				effect_text += " - Not enough Authority"
 			if detail_tags.has("loyalty_repeat") && !detail_tags.has("noauthority") && stat == 'loyalty':
@@ -328,6 +330,8 @@ func use_social_skill(s_code, target):
 				effect_text += ' - Maxed (%d)' % maxstat
 			if detail_tags.has("blocked") && stat == 'obedience':
 				effect_text += ' - Is in resist mode'
+			if detail_tags.has("master_loyalty") && stat == 'loyalty':
+				effect_text += " - Bonus from master"
 			for i in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
