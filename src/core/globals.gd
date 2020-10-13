@@ -85,8 +85,10 @@ func _ready():
 		statdata.statdata['resist_'+i] = {code = "resist_"+i}
 	
 	for i in statdata.statdata.values():
-		i.name = tr("STAT" + i.code.to_upper())
-		i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
+		if !i.has('name') or i.name == '': i.name = tr("STAT" + i.code.to_upper())
+		else: i.name = tr(i.name)
+		if !i.has('descript') or i.descript == '': i.descript = tr("STAT" + i.code.to_upper() + "DESCRIPT")
+		else: i.descript = tr(i.descript)
 	
 	for i in upgradedata.upgradelist.values():
 		i.name = tr("UPGRADE" + i.code.to_upper())
