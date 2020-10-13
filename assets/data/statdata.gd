@@ -130,6 +130,20 @@ var statdata = {
 		baseicon = 'stat_obed',
 		type = 'mental_stat',
 	},
+	loyaltyObedience = {
+		code = 'loyaltyObedience',
+		name = '',
+		descript = '',
+		baseicon = 'stat_obed',
+		type = 'mental_stat',
+	},
+	submissionObedience = {
+		code = 'submissionObedience',
+		name = '',
+		descript = '',
+		baseicon = 'stat_obed',
+		type = 'mental_stat',
+	},
 	fear = {
 		code = 'fear',
 		name = '',

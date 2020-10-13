@@ -219,7 +219,7 @@ func get_stat_gain_rate(statname):
 
 
 func add_stat(statname, value, revert = false):
-	if statname == 'loyaltyObeidence':# no revert mode
+	if statname == 'loyaltyObedience':# no revert mode
 		value *= 0.33 * get_stat('tame_factor')
 		statlist.obedience += value
 		statlist.obedience = min(statlist.obedience, get_obed_cap())
@@ -276,11 +276,15 @@ func add_part_stat(statname, value, revert = false):
 
 
 func stat_update(stat, value, is_set = false): #for permanent changes
-	var tmp = statlist[stat]
+	var tmp
+	if stat.ends_with('Obedience') : tmp = statlist['obedience']
+	else: tmp = statlist[stat]
 	value = round(value)
 	if !is_set: add_stat(stat, value)
 	else: set_stat(stat, value)
-	if tmp != null: tmp = get_stat(stat) - tmp
+	if tmp != null: 
+		if stat.ends_with('Obedience'): tmp = get_stat('obedience') - tmp
+		else: tmp = get_stat(stat) - tmp
 	else:  tmp = get_stat(stat)
 	return tmp
 
@@ -783,10 +787,10 @@ func set_slave_category(new_class):
 
 func tick():
 	add_stat('lust', get_stat('lusttick'))
-	if statlist.loyalty < 100.0 && !parent.has_status('no_loyal_reduction'):
-		add_stat('loyalty', -(12.0-1*get_stat('tame_factor'))/24 * get_stat('loyalty_degrade_mod'))
-	if statlist.submission < 100.0: #obsolete
-		add_stat('submission', -(12.0-1*get_stat('timid_factor'))/24 * get_stat('submission_degrade_mod'))
+#	if statlist.loyalty < 100.0 && !parent.has_status('no_loyal_reduction'):
+#		add_stat('loyalty', -(12.0-1*get_stat('tame_factor'))/24 * get_stat('loyalty_degrade_mod'))
+#	if statlist.submission < 100.0: #obsolete
+#		add_stat('submission', -(12.0-1*get_stat('timid_factor'))/24 * get_stat('submission_degrade_mod'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
 		if statlist.pregnancy.duration == 0:

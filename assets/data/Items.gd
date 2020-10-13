@@ -739,7 +739,7 @@ var materiallist = {
 var itemlist = {
 	#gear
 	
-	leather_collar = {#-20% fear decay
+	leather_collar = {
 		code = 'leather_collar',
 		name = "",
 		descript = "",
@@ -990,9 +990,9 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/shackles.png"),
 		tier = 'medium',
 		reqs = [],
-		effects = ['e_i_shackles'],
+		effects = ['e_i_shackles','e_i_shackles_obed'],
 		tags = [],
-		basestats = {physics_bonus = -25},
+		basestats = {physics_bonus = -50},
 	},
 	handcuffs = {#physics -10, Adds hidden counter: +x value per day, when counter hits 100, add trait "submissive"
 		code = 'handcuffs',
@@ -1007,7 +1007,7 @@ var itemlist = {
 		icon = load("res://assets/images/iconsitems/handcuffs.png"),
 		tier = 'easy',
 		reqs = [],
-		effects = ['e_handcuffs_effect'],
+		effects = ['e_handcuffs_effect','e_i_handcuffs_obed'],
 		tags = [],
 		basestats = {physics_bonus = -10},
 	},

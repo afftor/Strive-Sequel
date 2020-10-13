@@ -261,7 +261,7 @@ func use_social_skill(s_code, target):
 								i.value = 0
 						if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor')
 						i.value = round(i.value * (0.9 + skill_stat_type*0.1))
-					'loyaltyObeidence', 'submissionObedience':
+					'loyaltyObedience', 'submissionObedience':
 						var skill_stat_type
 						if template.tags.has('positive'): 
 							skill_stat_type = target.get_stat('tame_factor') #or h, not target?
@@ -277,17 +277,17 @@ func use_social_skill(s_code, target):
 				0:
 					if stat == 'loyalty' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
 						bonusspeech.append('loyalty')
-					elif stat == 'submission' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
-						if h.get_stat('loyalty') < 100:
-							bonusspeech.append("submission")
-							if h.get_stat('growth_factor') > h.get_stat('sexuals_factor'):
-								h.add_stat('growth_factor', -1)
-							elif h.get_stat('sexuals_factor') > 1:
-								h.add_stat('sexuals_factor', -1)
-						else:
-							bonusspeech.append("submission_loyalty")
+#					elif stat == 'submission' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
+#						if h.get_stat('loyalty') < 100:
+#							bonusspeech.append("submission")
+#							if h.get_stat('growth_factor') > h.get_stat('sexuals_factor'):
+#								h.add_stat('growth_factor', -1)
+#							elif h.get_stat('sexuals_factor') > 1:
+#								h.add_stat('sexuals_factor', -1)
+#						else:
+#							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, i.value)
-					if stat in ['loyaltyObeidence', 'submissionObedience']:
+					if stat in ['loyaltyObedience', 'submissionObedience']:
 						if h.get_stat('obedience') >= h.get_obed_cap():
 							detail_tags.append('obed_cap') #2implement this tag in log
 					if i.is_drain: parent.stat_update(stat, -tmp)
