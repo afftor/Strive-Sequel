@@ -302,13 +302,15 @@ func use_social_skill(s_code, target):
 			var maxstat = 100
 			if h.get_stat(stat+'max') != null:
 				maxstat = h.get_stat(stat + "max")
+			elif stat in ['loyaltyObedience', 'submissionObedience']:
+				maxstat = h.get_obed_cap()
 			elif i.damagestat.find("factor")>=0:
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
-				change = ''
+				change = '-'#
 			effect_text += ": "
-			if maxstat != 0 && !stat in ['obedience','loyalty','authority','submission','consent']:
+			if maxstat != 0 && !stat in ['loyaltyObedience', 'submissionObedience', 'obedience','loyalty','authority','submission','consent']:
 				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ")"
 			else:
 				effect_text += change + str(floor(tmp))
@@ -322,6 +324,8 @@ func use_social_skill(s_code, target):
 				effect_text += " - Maxed"
 			if detail_tags.has("submissionmaxed") && stat == 'submission':
 				effect_text += ' - Maxed'
+			if detail_tags.has("obed_cap") && stat.ends_with('Obedience'):
+				effect_text += ' - Maxed (%d)' % maxstat
 			if detail_tags.has("blocked") && stat == 'obedience':
 				effect_text += ' - Is in resist mode'
 			for i in bonusspeech:

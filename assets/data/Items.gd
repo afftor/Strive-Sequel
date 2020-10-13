@@ -771,7 +771,7 @@ var itemlist = {
 		reqs = [],
 		effects = ['e_chocker_effect'],
 		tags = [],
-		basestats = {},
+		basestats = {timid_factor = 1},
 	},
 	steel_collar = {#-25% fear decay
 		code = 'steel_collar',
