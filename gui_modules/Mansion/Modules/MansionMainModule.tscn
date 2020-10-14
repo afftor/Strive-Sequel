@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=20]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftSmallModule.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=22]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/MANSION/mansion.png" type="Texture" id=24]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu_Panel.tres" type="StyleBox" id=25]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu.png" type="Texture" id=26]
@@ -29,6 +30,8 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_menu_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=29]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_hover.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 24 )
@@ -41,7 +44,8 @@ size = 30
 font_data = ExtResource( 14 )
 
 [node name="MansionMainModule" type="Panel"]
-margin_right = 1920.0
+margin_left = 1.0
+margin_right = 1921.0
 margin_bottom = 1080.0
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
@@ -236,13 +240,15 @@ custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
 
-[node name="TutorialButton" type="Button" parent="."]
-margin_left = 1718.0
-margin_top = 17.0
-margin_right = 1769.0
-margin_bottom = 69.0
+[node name="TutorialButton" type="TextureButton" parent="."]
+margin_left = 1718.95
+margin_top = 16.0
+margin_right = 1769.95
+margin_bottom = 68.0
 theme = ExtResource( 3 )
-text = "?"
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

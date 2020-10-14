@@ -58,8 +58,7 @@ func open_jobs_window():
 		if p.xp_module.work_rules["luxury"]:
 			luxury_rooms_taken += 1
 	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms)
-	$work_rules/luxury.disabled = luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms
-
+	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms) && !$work_rules/luxury.is_pressed()
 	person = get_parent().active_person
 	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 	if person != null:

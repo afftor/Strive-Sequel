@@ -1,0 +1,182 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/panel_tutorial.png" type="Texture" id=1]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorside.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorside_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorside_pressed.png" type="Texture" id=7]
+[ext_resource path="res://gui_modules/Mansion/Scripts/TutorialV2.gd" type="Script" id=8]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/Textures_v2/CHEATS/buttonbig_cheats_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/CHEATS/buttonbig_cheats.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/CHEATS/buttonbig_cheats_hover.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=13]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_pressed.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_hover.png" type="Texture" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="TutorialV2" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = 259.0
+margin_top = 40.0
+margin_right = 1661.0
+margin_bottom = 1040.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 561.0
+margin_top = 40.0
+margin_right = 1661.0
+margin_bottom = 133.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Tutorial"
+align = 1
+valign = 1
+
+[node name="TutorialImage" type="TextureRect" parent="."]
+visible = false
+margin_left = 667.157
+margin_top = 141.881
+margin_right = 1567.16
+margin_bottom = 877.881
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialText" type="Label" parent="."]
+margin_left = 736.091
+margin_top = 890.513
+margin_right = 1507.09
+margin_bottom = 957.513
+custom_fonts/font = ExtResource( 4 )
+text = "Tutorial Text Tutorial Text Tutorial Text Tutorial Text Tutorial Text Tutorial 
+Text Tutorial TextTutorial TextTutorial Text Tutorial Text "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutList" type="ScrollContainer" parent="."]
+margin_left = 291.343
+margin_top = 147.0
+margin_right = 533.343
+margin_bottom = 1004.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutList"]
+
+[node name="Button" type="TextureButton" parent="TutList/VBoxContainer"]
+visible = false
+margin_right = 242.0
+margin_bottom = 54.0
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="TutList/VBoxContainer/Button"]
+margin_right = 242.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Tut"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 642.164
+margin_top = 957.513
+margin_right = 802.164
+margin_bottom = 1015.51
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Back"]
+margin_right = 160.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "< Previous"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forward" type="TextureButton" parent="."]
+margin_left = 1453.59
+margin_top = 957.513
+margin_right = 1613.59
+margin_bottom = 1015.51
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Forward"]
+margin_right = 160.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Next >"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hide" type="TextureButton" parent="."]
+margin_left = 1004.0
+margin_top = 958.0
+margin_right = 1226.0
+margin_bottom = 1016.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Hide"]
+margin_right = 222.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 9 )
+text = "Hide tutorial"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -729,21 +729,14 @@ func clear_dungeon_confirm():
 
 func build_location_group():
 	#clear_groups()
-	if active_location == null || ! active_location.has("group"):
+	if active_location == null || !active_location.has("group"):
 		return
+	for ch in ResourceScripts.game_party.characters.values():
+		if ch.check_location(active_location.id) && ch.combat_position != 0:
+			if !active_location.group.has(['pos' + str(ch.combat_position)]):
+				active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:
-		if (
-			active_location.group.has('pos' + str(i))
-			&& (
-				(
-					ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)])
-					== false
-				)
-				|| ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status(
-					'no_combat'
-				)
-			)
-		):
+		if (active_location.group.has('pos' + str(i)) && ((ResourceScripts.game_party.characters.has(active_location.group['pos' + str(i)]) == false) || ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].has_status('no_combat'))):
 			active_location.group.erase('pos' + str(i))
 			get_node(positiondict[i] + "/Image").dragdata = null
 			get_node(positiondict[i] + "/Image").texture = null
@@ -751,17 +744,8 @@ func build_location_group():
 			get_node(positiondict[i]).self_modulate.a = 1
 			get_node(positiondict[i]).character = null
 			continue
-		if (
-			active_location.group.has('pos' + str(i))
-			&& ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]] != null
-			&& ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].check_location(
-				active_location.id
-			)
-		):
-			var character = ResourceScripts.game_party.characters[active_location.group[(
-				'pos'
-				+ str(i)
-			)]]
+		if (active_location.group.has('pos' + str(i)) && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]] != null && ResourceScripts.game_party.characters[active_location.group['pos' + str(i)]].check_location(active_location.id)):
+			var character = ResourceScripts.game_party.characters[active_location.group[('pos' + str(i))]]
 			get_node(positiondict[i] + "/Image").texture = character.get_icon()
 			if get_node(positiondict[i] + "/Image").texture == null:
 				if character.has_profession('master'):
@@ -809,6 +793,7 @@ func build_location_group():
 			get_node(positiondict[i] + "/Image").hide()
 			get_node(positiondict[i]).self_modulate.a = 1
 			get_node(positiondict[i]).character = null
+		
 	var newbutton
 	var counter = 0
 	input_handler.ClearContainer($LocationGui/PresentedSlavesPanel/ScrollContainer/VBoxContainer)
@@ -1142,8 +1127,8 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			globals.connectmaterialtooltip(newbutton, item_ref)
 
 	for cls in guild.reputation_shop.classes:
-		# if ResourceScripts.game_progress.unlocked_classes.has(cls):
-		# 	continue
+		if ResourceScripts.game_progress.unlocked_classes.has(cls):
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($GuildShop/ScrollContainer/VBoxContainer)
 		newbutton.get_node("Title").text = str(cls.capitalize())
 		newbutton.get_node("Price").text = "x " + str(guild.reputation_shop.classes[cls])
@@ -1172,9 +1157,9 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		globals.connecttexttooltip(newbutton, temptext)
 	$GuildShop/FactionPoints.text = "x " + str(active_faction.reputation)
 	$GuildShop/GuildName.text = str(active_faction.name)
-	if pressed:
+	if pressed && !$GuildShop.is_visible():
 		unfade($GuildShop)
-	else:
+	elif !pressed && $GuildShop.is_visible():
 		fade($GuildShop)
 
 var hide_elems_arr = ["HSlider", "ItemAmount"]#, "TextureRect2","ItemPrice"]
@@ -1909,7 +1894,7 @@ func see_quest_info(quest):
 		var newbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
 		match i.code:
 			'kill_monsters':
-				newbutton.texture = images.icons.quest_enemy
+#				newbutton.texture = images.icons.quest_enemy
 				newbutton.get_node("amount").text = str(i.value)
 				newbutton.get_node("amount").show()
 				newbutton.get_node("Icon").texture = images.icons.quest_enemy
@@ -1991,7 +1976,7 @@ func see_quest_info(quest):
 		match i.code:
 			'gear':
 				var item = globals.CreateGearItem(i.item, i.itemparts)
-				item.set_icon(newbutton)
+				item.set_icon(newbutton.get_node("Icon"))
 				input_handler.ghost_items.append(item)
 				globals.connectitemtooltip(newbutton, item)
 			'gear_static':

@@ -43,7 +43,9 @@ var backgrounds = {
 	#events
 	anastasia_event_alive = load("res://assets/images/backgrounds/anastasia_event.png"),
 	anastasia_event_dead = load("res://assets/images/backgrounds/anastasia_event2.png"),
-	
+
+	#custom dialogue backgrounds
+	church_event = load("res://assets/images/backgrounds/garden.png"),
 	}
 
 var scenes = {

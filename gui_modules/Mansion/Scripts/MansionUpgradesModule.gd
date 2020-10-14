@@ -16,6 +16,7 @@ func _ready():
 	yield(get_tree().create_timer(0.3), "timeout")
 	if variables.unlock_all_upgrades == true:
 		for i in globals.upgradelist.values():
+			print( i.levels.keys())
 			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	globals.connect("hour_tick", self, "update_buttons")
 	$SelectChars.connect("pressed", self, "select_chars_for_upgrade")
@@ -178,7 +179,8 @@ func selectupgrade(upgrade):
 	get_parent().upgrades_manager()
 	var text = upgrade.descript
 	var is_already_in_queue = ResourceScripts.game_res.upgrades_queue.has(upgrade.code)
-	$UpgradeDescript/UnlockButton.disabled = is_already_in_queue || get_parent().selected_upgrade == null
+	var max_upgrade_level = upgradedata.upgradelist[upgrade.code].levels.keys().back()
+	$UpgradeDescript/UnlockButton.disabled = is_already_in_queue || get_parent().selected_upgrade == null || upgrade.levels.keys().back() == max_upgrade_level
 	$UpgradeDescript.show()
 	$UpgradeDescript/Label.text = upgrade.name
 

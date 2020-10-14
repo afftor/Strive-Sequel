@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -45,6 +45,10 @@
 [ext_resource path="res://src/scenes/ModPanel.tscn" type="PackedScene" id=43]
 [ext_resource path="res://src/scenes/Options.tscn" type="PackedScene" id=44]
 [ext_resource path="res://src/scenes/WarnScreen.tscn" type="PackedScene" id=45]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Panels/panel_modsoptions.png" type="Texture" id=46]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits.png" type="Texture" id=47]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits_hover.png" type="Texture" id=48]
+[ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits_pressed.png" type="Texture" id=49]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -138,10 +142,20 @@ texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 37 )
 texture_hover = ExtResource( 41 )
 
-[node name="modsbutton" type="TextureButton" parent="VBoxContainer"]
+[node name="creditsbutton" type="TextureButton" parent="VBoxContainer"]
 margin_top = 226.0
 margin_right = 258.0
 margin_bottom = 276.0
+rect_min_size = Vector2( 0, 50 )
+toggle_mode = true
+texture_normal = ExtResource( 47 )
+texture_pressed = ExtResource( 49 )
+texture_hover = ExtResource( 48 )
+
+[node name="modsbutton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 284.0
+margin_right = 258.0
+margin_bottom = 334.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 35 )
@@ -149,9 +163,9 @@ texture_pressed = ExtResource( 25 )
 texture_hover = ExtResource( 38 )
 
 [node name="quitbutton" type="TextureButton" parent="VBoxContainer"]
-margin_top = 284.0
+margin_top = 342.0
 margin_right = 258.0
-margin_bottom = 334.0
+margin_bottom = 392.0
 rect_min_size = Vector2( 0, 50 )
 toggle_mode = true
 texture_normal = ExtResource( 40 )
@@ -883,3 +897,53 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+margin_left = 635.0
+margin_top = 153.0
+margin_right = 1285.0
+margin_bottom = 927.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="Credits"]
+margin_right = 650.0
+margin_bottom = 774.0
+texture = ExtResource( 46 )
+
+[node name="Label" type="Label" parent="Credits/Background"]
+margin_right = 649.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Credits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits/Background"]
+margin_left = 29.0
+margin_top = 110.0
+margin_right = 616.0
+margin_bottom = 735.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/Background/ScrollContainer"]
+margin_right = 587.0
+margin_bottom = 32.0
+
+[node name="Button" type="Label" parent="Credits/Background/ScrollContainer/VBoxContainer"]
+margin_right = 587.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 587, 0 )
+custom_fonts/font = ExtResource( 2 )
+text = "Title"
+align = 1
+valign = 1

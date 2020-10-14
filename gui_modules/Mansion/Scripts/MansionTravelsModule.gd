@@ -10,7 +10,7 @@ func _ready():
 	$HomeButton.connect("item_selected", self, 'select_dislocation_area')
 	$DestinationButton.connect("item_selected", self, 'select_destination_area')
 	$TravelConfirmButton.connect("pressed", self, "travel_confirm")
-	$TravelCancelButton.connect("pressed", self, "travel_cancel")
+	$TravelCancelButton.connect("pressed", self, "travel_update")
 	$LocationListButton.connect("toggled", self, "show_location_list")
 	$Forget.connect("pressed", self, "forget_location")
 	globals.connect("hour_tick", self, "open_character_dislocation")
@@ -259,7 +259,7 @@ func travel_confirm():
 	open_character_dislocation()
 	get_parent().SlaveListModule.rebuild()
 	get_parent().SlaveListModule.show_location_characters()
-	travel_cancel()
+	travel_update("confirm")
 	selected_location = null
 
 func reset_travels():
@@ -268,13 +268,14 @@ func reset_travels():
 	selected_location = null
 
 
-func travel_cancel():
+func travel_update(action = "cancel"):
 	get_parent().selected_travel_characters.clear()
 	get_parent().selected_destination = null
 	# update_location_list()
 	open_character_dislocation()
 	reset_travels()
-	get_parent().mansion_state_set("default")
+	if action == "cancel":
+		get_parent().mansion_state_set("default")
 	get_parent().match_state()
 	selected_location = null
 

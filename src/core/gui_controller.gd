@@ -12,6 +12,7 @@ var classinfo
 var sex_panel
 var date_panel
 var mansion_tutorial_panel
+var cheat_panel
 
 
 var current_screen
