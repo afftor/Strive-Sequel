@@ -406,7 +406,7 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]:[he2]} looks bored and reacts coldly.", 1],
 	],
 	combhair_start = [
-		["You {^gently:slowly} comb {^[name2]:[race2] [boy2]}'s {^[hairlength] :}{^[haircolor] :}hair.", 1],
+		["You {^gently:slowly} comb {^[name2]:[race2] [boy2]}'s {^[hairlength]:}{^[haircolor]:}hair.", 1],
 	],
 	combhair_positive = [
 		["{^[name2]:[race2] [boy2]} reacts relaxingly to your affection. ", 1],
@@ -501,27 +501,94 @@ var date_lines = {
 		["You {^casually:lightly} {^pat:stroke} {^[name2]:[race2] [boy2]}'s head.", 1],
 	],
 	
-	pathead_positive = [
+	pathead_accept = [
 		["{^[name2]:[race2] [boy2]:[he2]} smiles back at you.", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} embarrassingly {^shies:looks} away.", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} takes it with joy evident on [his2] face.", 1],
 	],
-	pathead_negative = [
+	pathead_resist = [
 		["{^[name2]:[race2] [boy2]:[he2]} gives you a disapproving {^glance:look}.", 1],
 		["{^[name2]:[race2] [boy2]:[he2]} seems to be offended by your gesture.", 1],
 	],
 	
 	scold_initiate = [
 		["You scold {^[name2]:[race2] [boy2]} for [his2] recent faults. ",1]
-	]
+	],
+	scold_accept = [
+		["{^[name2]:[race2] [boy2]:[he2]} {^nods:looks down} in {^submission:acceptance}.", 1],
+	],
+	scold_resist = [
+		["{^[name2]:[race2] [boy2]:[he2]} give you an annoyed look.", 1],
+	],
+	
+	rubears_initiate = [
+		["You {^affectionately:tenderly} {^stroke:rub:pat} {^[name2]:[race2] [boy2]} behind [his2] [earadj]ears.", 1],
+		["You {^affectionately:tenderly} {^stroke:rub:pat} {^[name2]:[race2] [boy2]} on [his2] [earadj]ears, moving down to [his2] {^[haircolor]:[hairlength]} hair.", 1],
+	],
+	rubears_accept = [
+		["{^[name2]:[race2] [boy2]:[he2]} seems {^pleased with it:to enjoy it}, as [his2] [earadj]ears {^joyfully:playfully} twitch.", 1],
+	],
+	rubears_resist = [
+		["{^[name2]:[race2] [boy2]:[he2]} {^looks:seems} {^annoyed:unpleased} by this{^.: and waits for it to over.}", 1],
+	],
+	stroketail_initiate = [
+		["You {^gently:affectionately} {^stroke:run your hand over} {^[name2]:[race2] [boy2]}'s [tailadj]tail.", 1],
+	],
+	stroketail_accept = [
+		["{^[name2]:[race2] [boy2]:[he2]} seems {^pleased with it:to enjoy it}, as [his2] [tailadj]tail {^joyfully:playfully} wags.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} {^twitches:jerks} {^in surprise:for a moment}, but then accepts your {^petting:caress:pumper}.", 1],
+	],
+	stroketail_resist = [
+		["{^[name2]:[race2] [boy2]:[he2]} {^looks:seems} {^agitated:annoyed} by this{^.: and waits until you finish.}", 1],
+	],
+	pullear_initiate = [
+		["You forcefully {^yank:stretch} {^[name2]:[race2] [boy2]}'s [earadj]ear making [him2] {^wince:let out a pleading cry}. ", 1],
+	],
+	pullear_accept = [
+		["Despite intense pain, {^[name2]:[race2] [boy2]:[he2]} stoically endures your abuse.", 1],
+	],
+	pullear_resist = [
+		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:angry} and tries to break free.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} {^whines:cries} in protest{^:, begging for mercy}.", 1],
+	],
+	pulltail_initiate = [
+		["You forcefully {^yank:stretch} {^[name2]:[race2] [boy2]}{^'s: by [his2]} [tailadj]tail making [him2] {^wince:let out a pleading cry}. ", 1],
+	],
+	pulltail_accept = [
+		["Despite intense pain, {^[name2]:[race2] [boy2]:[he2]} stoically endures your abuse.", 1],
+	],
+	pulltail_resist = [
+		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:angry} and tries to break free.", 1],
+		["{^[name2]:[race2] [boy2]:[he2]} {^whines:cries} in protest{^:, begging for mercy}.", 1],
+	],
+	slap_initiate = [
+		["You slap {^[name2]:[race2] [boy2]} across the face{: leaving a mark on [his2] cheek}. ", 1],
+	],
+	slap_accept = [
+		["Despite intense pain, {^[name2]:[race2] [boy2]:[he2]} stoically endures your abuse.", 1],
+	],
+	slap_resist = [
+		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:very agited}.", 1],
+	],
+	
 }
  
+var descripts = {
+	hairlength = {func = 'hairlength_descripts', stat = 'hair_length'},
+	earadj = {func = 'ears_descripts', stat = 'ears'},
+	tailadj = {func = 'tail_descripts', stat = 'tail'},
+}
 
 func character_description(text_input):
 	var text = text_input
+	var temptext = ''
 	
-	text = text.replace('[haircolor]', tr(person.get_stat('hair_color')))
-	text = text.replace('[hairlength]', hairlength_descripts(person.get_stat('hair_length')))
+	text = text.replace('[haircolor]', tr(person.get_stat('hair_color'))+" ")
+	for i in descripts:
+		temptext = call(descripts[i].func, person.get_stat(descripts[i].stat))
+		if temptext != '':
+			temptext += " "
+		text = text.replace("["+i+"]", temptext)
 	
 	return text
 
@@ -532,6 +599,67 @@ func hairlength_descripts(hairlength):
 	elif hairlength in ['ear','neck']:
 		text = input_handler.weightedrandom([['soft',1],['silky',1]])
 	return text
+
+func ears_descripts(eartype):
+	var array = [['',0.5]]
+	if eartype in ['human','elven','orcish','demon','fish']:
+		pass
+	elif eartype in ['cat','wolf','fox','tanuki','bunny_standing','bunny_drooping','cow']:
+		array = [['fluffy',1],['animal',1]]
+		match eartype:
+			'cat': 
+				array.append(['cat',1]) 
+				array.append(['feline',1])
+			'wolf':
+				array.append(['wolf',1])
+				array.append(['dog-like',1])
+			'fox':
+				array.append(['fox',1])
+			'wolf':
+				array.append(['wolf',1])
+			'tanuki':
+				array.append(['racoon',1])
+			'bunny_standing','bunny_drooping':
+				array.append(['bunny',1])
+	elif eartype == 'feathered':
+		array.append(["feathered", 1])
+		
+	return input_handler.weightedrandom(array)
+
+func tail_descripts(tailtype):
+	var array = [['',0.5]]
+	if !tailtype in ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']:
+		pass
+	elif tailtype in ['cat','wolf','fox','tanuki','cow']:
+		array = [['fluffy',1],['furry',1]]
+		match tailtype:
+			'cat': 
+				array.append(['cat',1]) 
+				array.append(['feline',1])
+			'wolf':
+				array.append(['wolf',1])
+				array.append(['dog-like',1])
+			'fox':
+				array.append(['fox',1])
+			'wolf':
+				array.append(['wolf',1])
+			'tanuki':
+				array.append(['racoon',1])
+	elif tailtype in ['dragon','demon','fish','lizard']:
+		match tailtype:
+			'dragon':
+				array.append(['dragon',1])
+				array.append(['scaly',1])
+			'demon':
+				array.append(['demonic',1])
+			'fish':
+				array.append(['fish-like',1])
+				array.append(['scaly',1])
+			'lizard':
+				array.append(['lizard',1])
+				array.append(['scaly',1])
+		
+	return input_handler.weightedrandom(array)
 
 func compare_heights(char1, char2):
 	var rval = 'same'
@@ -869,69 +997,121 @@ func praise(person, counter):
 	return character_description(text)
 
 func pathead(person, counter):
-	var text = ''
-	text += "You pat [name2]'s head and praise [him2] for [his2] recent behavior. "
+	var text = input_handler.weightedrandom(date_lines.pathead_initiate) + "\n\n"
 	
-	if counter < 5 || randf() >= 0.4:
-		self.mood += 2
-		text = text + "[he2] takes it with joy evident on [his2] face.  "
+	if person.has_temp_effect('resist_state') == false:
+		self.mood += 10
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.pathead_accept)
+		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		text = text + "[he2] seems to be bored from repeated action. "
-		self.mood -= 1
-	return text
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.pathead_resist)
+		text += "}"
+	return character_description(text)
 
 func scold(person, counter):
-	var text = ''
-	text += "You scold [name2] for [his2] recent faults. "
+	var text = input_handler.weightedrandom(date_lines.scold_initiate) + "\n\n"
+	var value = {mood = -3, fear = 10, authority = 3, action = 'scold'}
 	
-	var value = {mood = -2, fear = 10, authority = 3, action = 'scold'}
+	if person.has_temp_effect('resist_state') == false:
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.scold_accept)
+		text += "}"
+		#text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+	else:
+		value.mood = -10
+		text += "{color=greed|"
+		text += input_handler.weightedrandom(date_lines.scold_resist)
+		text += "}"
 	
 	text += punish_process(value)
-	return text
+	
+	return character_description(text)
 
 func rubears(person, counter):
-	var text = ''
-	text += "You affectionately rub [name2] behind [his2] ears. "
+	var text = input_handler.weightedrandom(date_lines.rubears_initiate) + "\n\n"
 	
-	if counter < 5 || randf() >= 0.4:
-		self.mood += 9
-		text = text + "[he2] seems pleased with it, as [his2] ears playfully twitch.  "
+	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 20:
+		self.mood += 8
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.rubears_accept)
+		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		text = text + "[he2] seems to be bored from repeated action. "
-		self.mood -= 1
-	return text
+		self.mood += 2
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.rubears_resist)
+		text += "}"
+	return character_description(text)
 
 func stroketail(person, counter):
-	var text = ''
-	text += "You gently stroke [name2]'s tail. "
+	var text = input_handler.weightedrandom(date_lines.stroketail_initiate) + "\n\n"
 	
-	if counter < 5 || randf() >= 0.4:
+	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 25:
 		self.mood += 11
-		text = text + "[he2] seems happy with your attention, as [his2] tail wags in response."
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.stroketail_accept)
+		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		text = text + "[he2] seems to be bored from repeated action. "
-		self.mood -= 1
-	return text
+		self.mood -= 3
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.stroketail_resist)
+		text += "}"
+	return character_description(text)
+#	var text = ''
+#	text += "You gently stroke [name2]'s tail. "
+#
+#	if counter < 5 || randf() >= 0.4:
+#		self.mood += 11
+#		text = text + "[he2] seems happy with your attention, as [his2] tail wags in response."
+#		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+#	else:
+#		text = text + "[he2] seems to be bored from repeated action. "
+#		self.mood -= 1
+#	return text
 
 func pullear(person, counter):
-	var text = ''
-	text += "You forcefully stretch [name2]'s ear making [him2] let out a pleading cry. "
 	
+	var text = input_handler.weightedrandom(date_lines.pullear_initiate) + "\n\n"
 	var value = {mood = -7, fear = 14, authority = 4, action = 'pullear'}
 	
+	if person.has_temp_effect('resist_state') == false:
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.pullear_accept)
+		text += "}"
+		#text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+	else:
+		value.mood = -10
+		text += "{color=greed|"
+		text += input_handler.weightedrandom(date_lines.pullear_resist)
+		text += "}"
+	
 	text += punish_process(value)
-	return text
+	
+	return character_description(text)
 
 func pulltail(person, counter):
-	var text = ''
-	text += "You yank [name2]'s tail with force making [him2] whimper in pain. "
 	
+	var text = input_handler.weightedrandom(date_lines.pulltail_initiate) + "\n\n"
 	var value = {mood = -5, fear = 15, authority = 4, action = 'pulltail'}
+	
+	if person.has_temp_effect('resist_state') == false:
+		text += "{color=green|"
+		text += input_handler.weightedrandom(date_lines.pulltail_accept)
+		text += "}"
+		#text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+	else:
+		value.mood = -10
+		text += "{color=greed|"
+		text += input_handler.weightedrandom(date_lines.pulltail_resist)
+		text += "}"
+	
 	text += punish_process(value)
-	return text
+	
+	return character_description(text)
 
 func punish_process(value):
 	var text = ''
@@ -1438,7 +1618,7 @@ var actionsdict = {
 		group = 'Affection',
 		name = 'Stroke Tail',
 		descript = "Gently stroke [name]'s tail",
-		reqs = [{code = 'bodypart', part = 'tail', operant = 'neq', value = ''}],
+		reqs = [{code = 'long_tail', check = true}],
 		location = [],
 		effect = 'stroketail',
 	},

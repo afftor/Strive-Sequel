@@ -226,61 +226,72 @@ func use_social_skill(s_code, target):
 						eff.set_args('receiver', null)
 			continue
 		var detail_tags = []
+		if i.damagestat == 'loyalty' and i.dmgf == 0:
+			if parent.has_profession('master'): 
+				detail_tags.append('master_loyalty')
+				i.value *= 4
 		for h in targ_fin:
 			var mod = i.dmgf
 			var stat = i.damagestat
-			
-			match stat:
-				'loyalty':
-					if mod == 0:
-						if target.authority_threshold()/2 > target.get_stat('authority'):
+			if mod == 0:
+				match stat:
+					'loyalty':
+						match target.authority_level():#or h, not target?
+							'low':
+								i.value *= 0.25
+							'medium':
+								i.value *= 0.75
+	#						'high':
+	#							i.value *= 1
+					
+					'submission':#obsolete
+						if target.get_stat('submission') >= 100:
 							i.value = 0
-							detail_tags.append('noauthority')
-						elif target.get_stat('loyalty') >= 100:
-							i.value = 0
-							detail_tags.append('loyaltymaxed')
+							detail_tags.append('submissionmaxed')
 						else:
-							if template.tags.has("repeated_effect_reduce_loyalty") && target.skills.skills_received_today.has(s_code):
+							if template.tags.has("repeated_effect_reduce_submission") && target.skills.skills_received_today.has(s_code):
 								i.value /= 2.5
-								detail_tags.append("loyalty_repeat")
-							i.value = (i.value * (0.75 + target.get_stat('tame_factor')*0.25)) * (1 - (target.authority_threshold() - target.get_stat('authority'))/100)
+								detail_tags.append("submission_repeat")
+							i.value = (i.value * (0.75 + target.get_stat('timid_factor')*0.25))
+					
+					'obedience':#obsolete
+						var skill_stat_type
+						if template.tags.has('positive'): 
+							skill_stat_type = target.get_stat('tame_factor') 
+							if h.has_status('no_obed_gain'): 
+								detail_tags.append('blocked')
+								i.value = 0
+						if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor')
+						i.value = round(i.value * (0.9 + skill_stat_type*0.1))
+					'loyaltyObedience', 'submissionObedience':
+						var skill_stat_type
+						if template.tags.has('positive'): 
+							skill_stat_type = target.get_stat('tame_factor') #or h, not target?
+							if h.has_status('no_obed_gain'): 
+								detail_tags.append('blocked')
+								i.value = 0
+						if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor') #or h, not target?
+						i.value = round(i.value * (0.9 + skill_stat_type*0.1))
 				
-				'submission':
-					if target.get_stat('submission') >= 100:
-						i.value = 0
-						detail_tags.append('submissionmaxed')
-					else:
-						if template.tags.has("repeated_effect_reduce_submission") && target.skills.skills_received_today.has(s_code):
-							i.value /= 2.5
-							detail_tags.append("submission_repeat")
-						i.value = (i.value * (0.75 + target.get_stat('timid_factor')*0.25))
-				
-				'obedience':
-					var skill_stat_type
-					if template.tags.has('positive'): 
-						skill_stat_type = target.get_stat('tame_factor')
-						if h.has_status('no_obed_gain'): 
-							detail_tags.append('blocked')
-							i.value = 0
-					if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor')
-					i.value = round(i.value * (0.9 + skill_stat_type*0.1))
-			
 			var bonusspeech = []
 			var tmp
 			match mod:
 				0:
 					if stat == 'loyalty' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
 						bonusspeech.append('loyalty')
-					elif stat == 'submission' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
-						if h.get_stat('loyalty') < 100:
-							bonusspeech.append("submission")
-							if h.get_stat('growth_factor') > h.get_stat('sexuals_factor'):
-								h.add_stat('growth_factor', -1)
-							elif h.get_stat('sexuals_factor') > 1:
-								h.add_stat('sexuals_factor', -1)
-						else:
-							bonusspeech.append("submission_loyalty")
+#					elif stat == 'submission' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
+#						if h.get_stat('loyalty') < 100:
+#							bonusspeech.append("submission")
+#							if h.get_stat('growth_factor') > h.get_stat('sexuals_factor'):
+#								h.add_stat('growth_factor', -1)
+#							elif h.get_stat('sexuals_factor') > 1:
+#								h.add_stat('sexuals_factor', -1)
+#						else:
+#							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, i.value)
+					if stat in ['loyaltyObedience', 'submissionObedience']:
+						if h.get_stat('obedience') >= h.get_obed_cap():
+							detail_tags.append('obed_cap') #2implement this tag in log
 					if i.is_drain: parent.stat_update(stat, -tmp)
 				1:
 					tmp = h.stat_update(stat, -i.value)
@@ -293,16 +304,18 @@ func use_social_skill(s_code, target):
 			var maxstat = 100
 			if h.get_stat(stat+'max') != null:
 				maxstat = h.get_stat(stat + "max")
+			elif stat in ['loyaltyObedience', 'submissionObedience']:
+				maxstat = h.get_obed_cap()
 			elif i.damagestat.find("factor")>=0:
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
-				change = ''
+				change = '-'#
 			effect_text += ": "
-			if maxstat != 0 && !stat in ['obedience','loyalty','authority','submission','consent']:
-				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ")"
+			if maxstat != 0 && !stat in ['loyaltyObedience', 'submissionObedience', 'obedience','loyalty','authority','submission','consent']:
+				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%.1f)" % i.value) +  ")"
 			else:
-				effect_text += change + str(floor(tmp))
+				effect_text += change + str(floor(tmp)) + ("(%.1f)" % i.value)
 			if detail_tags.has("noauthority") && stat == 'loyalty':
 				effect_text += " - Not enough Authority"
 			if detail_tags.has("loyalty_repeat") && !detail_tags.has("noauthority") && stat == 'loyalty':
@@ -313,8 +326,12 @@ func use_social_skill(s_code, target):
 				effect_text += " - Maxed"
 			if detail_tags.has("submissionmaxed") && stat == 'submission':
 				effect_text += ' - Maxed'
+			if detail_tags.has("obed_cap") && stat.ends_with('Obedience'):
+				effect_text += ' - Maxed (%d)' % maxstat
 			if detail_tags.has("blocked") && stat == 'obedience':
 				effect_text += ' - Is in resist mode'
+			if detail_tags.has("master_loyalty") && stat == 'loyalty':
+				effect_text += " - Bonus from master"
 			for i in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)

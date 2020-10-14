@@ -27,7 +27,7 @@ var effect_table = {
 			{type = 'stat_add_p', stat = 'mod_smith', value = -0.15},
 			{type = 'stat_add_p', stat = 'mod_alchemy', value = -0.15},
 			{type = 'stat_add_p', stat = 'mod_tailor', value = -0.15},
-			{type = 'stat_add', stat = 'submission_degrade_mod', value = -0.5}
+			{type = 'stat_mul', stat = 'obDrainReduction', value = 0.8}
 			],
 		buffs = [],
 		sub_effects = [],
@@ -136,7 +136,7 @@ var effect_table = {
 		type = 'static',
 		atomic = [
 			{type = 'stat_add_p', stat = 'productivity', value = 0.15},
-			{type = 'stat_add', stat = 'loyalty_degrade_mod', value = 0.5},
+			{type = 'stat_add', stat = 'obDrainIncrease', value = 0.5},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -2397,7 +2397,7 @@ var effect_table = {
 	},
 	e_i_shackles = {
 		type = 'c_static',
-		descript = 'Prevents escape if Physics Factor less than 4',
+		descript = 'Prevents escape if Physics Factor less than 4.',
 		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 4}],
 		tags = ['recheck_stats', 'recheck_item'],
 		no_escape = true,
@@ -2405,14 +2405,24 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_i_shackles_obed = {
+		type = 'c_static',
+		descript = 'Reduce Obedience drain by 75%',
+		conditions = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 4}],
+		tags = ['recheck_stats', 'recheck_item'],
+		atomic = [
+		{type = 'stat_mul', stat = 'obDrainReduction', value = 0.25}
+		],
+		buffs = [],
+		sub_effects = [],
+	},
 	e_i_pet_suit = {
 		type = 'static',
-		conditions = [],
-		descript = "Loyalty Decay: -35%\nSubmission Decay: -65%.",
-		tags = ['recheck_class', 'recheck_item'],
+#		conditions = [],
+		descript = "Obedience Drain is increased by 20%.",
+		tags = ['recheck_class', 'recheck_item'], #useless
 		atomic = [
-		{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.65},
-		{type = 'stat_mul', stat = 'submission_degrade_mod', value = 0.35},
+		{type = 'stat_add', stat = 'obDrainIncrease', value = 0.2},
 		],
 		buffs = [],
 		sub_effects = [],
@@ -2428,18 +2438,29 @@ var effect_table = {
 	},
 	e_maid_dress_effect = {
 		type = 'static',
-		conditions = [],
-		descript = "Loyalty Decay: -50%",
+#		conditions = [],
+		descript = "Obedience Drain -30%",
 		tags = [],
 		atomic = [
-		{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.5},
+		{type = 'stat_mul', stat = 'obDrainReduction', value = 0.7},
+		],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_i_handcuffs_obed = {
+		type = 'static',
+#		conditions = [],
+		descript = "Obedience Drain -15%",
+		tags = [],
+		atomic = [
+		{type = 'stat_mul', stat = 'obDrainReduction', value = 0.85},
 		],
 		buffs = [],
 		sub_effects = [],
 	},
 	e_worker_outfit_effect = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Hunting, Fishing and Collecting Tasks: +25%",
 		tags = [],
 		atomic = [
@@ -2454,7 +2475,7 @@ var effect_table = {
 	},
 	e_craftman_suit_effect = {
 		type = 'static',
-		conditions = [],
+#		conditions = [],
 		descript = "Cooking, Smithing, Alchemy, Tailor and Upgrading Tasks: +25%",
 		tags = [],
 		atomic = [
@@ -2561,22 +2582,22 @@ var effect_table = {
 	#temp items
 	e_leather_collar_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.7},{type = 'stat_mul', stat = 'submission_degrade_mod', value = 0.7},{type = 'stat_add_p', stat = 'authority_mod', value = 0.25}],
-		descript = 'Reduces Loyalty and Submission decay by 30%. Increases Authority gain by 25%. ',
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.65},{type = 'stat_add_p', stat = 'authority_mod', value = 0.20}],
+		descript = 'Reduces Obedience Drain by 35%. Increases Authority gain by 20%. ',
 		buffs = [],
 		sub_effects = [],
 	},
 	e_chocker_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'loyalty_degrade_mod', value = 0.4}],
-		descript = "Reduces Loyalty decay by 60%.",
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.8}],
+		descript = "Reduces Obedience Drain by 20%.",
 		buffs = [],
 		sub_effects = [],
 	},
 	e_steel_collar_effect = {
 		type = 'static',
-		atomic = [{type = 'stat_mul', stat = 'submission_degrade_mod', value = 0.75},{type = 'stat_add_p', stat = 'authority_mod', value = 0.35}],
-		descript = 'Reduces Submission decay by 50%. Increases Authority gain by 35%.',
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.35},{type = 'stat_add_p', stat = 'authority_mod', value = 0.35}],
+		descript = 'Reduces Obedience Drain by 65%. Increases Authority gain by 35%.',
 		buffs = [],
 		sub_effects = [],
 	},
@@ -2608,6 +2629,21 @@ var effect_table = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 1}],
 		descript = 'Increases Lust growth by 100%.',
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tentacle_suit_subeffect = {
+		type = 'c_static',
+		conditions = [
+			{code = 'trait', trait = 'deviant', check = false},
+			{code = 'stat', stat = 'sex_factor', operant = 'lt', value = 5}
+		],
+		tags = ['recheck_trait', 'recheck_item'],
+		descript = 'Reduce Physics and Wits by 25 if character has less than 5 Sex Factor and no Deviant trait.',
+		atomic = [
+			{type = 'stat_add', stat = 'wits_bonus', value = -25},
+			{type = 'stat_add', stat = 'physics_bonus', value = -25}
+		],
 		buffs = [],
 		sub_effects = [],
 	},

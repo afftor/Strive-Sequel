@@ -205,6 +205,15 @@ func return_to_task():
 func get_work():
 	return work
 
+func get_obed_drain(value):
+	var rule_bonus = 0.0
+	if work_rules.luxury: rule_bonus = 0.25
+	value *= parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease ')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty'))
+	return value
+
+func predict_obed_time():
+	return parent.get_stat('obedience') / get_obed_drain(1)
+
 func work_tick():
 	var currenttask
 	for i in ResourceScripts.game_party.active_tasks:
@@ -222,7 +231,7 @@ func work_tick():
 			messages.append("refusedwork")
 		return
 	if parent.get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
-		parent.add_stat('obedience', -1)
+		parent.add_stat('obedience', -get_obed_drain(1))
 		messages.erase("refusedwork")
 	
 	if parent.get_static_effect_by_code("work_rule_ration") != null:

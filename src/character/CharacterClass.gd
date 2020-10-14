@@ -1080,20 +1080,14 @@ func check_skill_availability(s_code, target):
 func calculate_linked_chars_by_effect(e_name):
 	return effects_pool.get_n_effects_linked_to(id, e_name).size()
 
-func authority_level():
-	var rval
-	
-	if get_stat("authority") < authority_threshold()/2:
-		rval = 'low'
-	elif get_stat("authority") < authority_threshold():
-		rval = 'medium'
-	else:
-		rval = 'high'
-	
-	return rval 
+func authority_level(): #remove from gui all copypaste!!
+	return statlist.authority_level()
 
 func authority_threshold():
-	return 200 - get_stat('timid_factor') * 25
+	return statlist.authority_threshold()
+
+func get_obed_cap():
+	return statlist.get_obed_cap()
 
 func lockpick_chance(): #used for chest opening
 	var base_chance = randf()*5+5 #5-10
