@@ -26,7 +26,8 @@ var mp = 50 setget mp_set
 var shield = 0 setget set_shield
 var defeated = false
 var combatgroup = ''
-var position = 0
+var position = 0 # Not sure it's used or not. Make new field just in case
+var combat_position = 0 setget set_combat_position, get_combat_positon
 var taunt = null
 var selectedskill = 'attack'
 
@@ -38,6 +39,13 @@ var previous_location
 
 func _init():
 	rebuild_parents()
+
+
+func set_combat_position(pos):
+	combat_position = pos
+
+func get_combat_positon():
+	return combat_position
 
 func rebuild_parents():
 	statlist.parent = self

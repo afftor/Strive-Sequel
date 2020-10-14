@@ -54,6 +54,12 @@ func open(scene, not_save = false):
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		yield(get_tree().create_timer(2), "timeout")
+
+	if scene.has("custom_background"):
+		$Background.show()
+		$Background.texture = images.backgrounds[scene.custom_background]
+	else:
+		$Background.hide()
 	
 	if scene.has("character") == false:
 		$ImagePanel.show()

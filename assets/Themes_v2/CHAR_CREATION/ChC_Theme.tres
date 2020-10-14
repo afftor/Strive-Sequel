@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=42 format=2]
+[gd_resource type="Theme" load_steps=41 format=2]
 
-[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/search_charcreation.png" type="Texture" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/LineEdit.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/triangles_selection.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=4]
@@ -68,10 +68,6 @@ region_rect = Rect2( 0, 0, 40, 40 )
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 40, 40 )
-
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 340, 40 )
 
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 12 )
@@ -177,7 +173,7 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = null
-LineEdit/styles/normal = SubResource( 14 )
+LineEdit/styles/normal = ExtResource( 1 )
 LineEdit/styles/read_only = null
 OptionButton/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )

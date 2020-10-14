@@ -120,8 +120,9 @@ func _ready():
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = input_handler.get_spec_node(input_handler.NODE_TUTORIAL_PANEL)
-	gui_controller.mansion_tutorial_panel.show()
+	gui_controller.mansion_tutorial_panel.open()
 	gui_controller.mansion_tutorial_panel.raise()
+	$TutorialButton.pressed = gui_controller.mansion_tutorial_panel.is_visible()
 
 func show_menu():
 	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)
@@ -402,6 +403,12 @@ func slave_list_manager():
 	SlaveModule.show_slave_info()
 
 func update_sex_date_buttons():
+	if variables.unlimited_date_sex:
+		if sex_participants.has(ResourceScripts.game_party.get_master()):
+			SexSelect.get_node("DateButton").disabled = true
+		else:
+			SexSelect.get_node("DateButton").disabled = false
+		SexSelect.get_node("SexButton").disabled = false
 	if ResourceScripts.game_globals.daily_sex_left > 0:
 		SexSelect.get_node("SexButton").disabled = sex_participants.size() < 2 || sex_participants.size() > SlaveListModule.limit
 	else:
@@ -427,8 +434,18 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
+	print(ResourceScripts.game_progress.active_tutorials)
 	# print(ResourceScripts.game_party.active_tasks)
-	print(ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]].checkreqs([{code = 'has_wooden_gear'}]))
+	# print(ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]].checkreqs([{code = 'has_wooden_gear'}]))
+	# var c = load("res://gui_modules/Universal/Modules/CheatsModule.tscn")
+	# var cheats = c.instance()
+	# self.add_child(cheats)
+	# cheats.open()
+	# var t = load("res://gui_modules/Mansion/Modules/TutorialV2.tscn")
+	# var tuts = t.instance()
+	# self.add_child(tuts)
+	# tuts.open()
+
 
 
 
@@ -613,9 +630,9 @@ func test_mode():
 				}
 			]
 		)
-		ResourceScripts.game_res.money = 80000
+		ResourceScripts.game_res.money = 80
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 20
+			ResourceScripts.game_res.materials[i] = 2
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
@@ -667,10 +684,10 @@ func test_mode():
 			)
 		)
 		ResourceScripts.game_progress.show_tutorial = true
-		# ResourceScripts.game_progress.active_quests.append(
-		# 	{code = 'aliron_church_quest', stage = 'start'}
-		# )
-		input_handler.interactive_message("celena_shrine_find", '',{})
+		ResourceScripts.game_progress.active_quests.append(
+			{code = 'aliron_church_quest', stage = 'start'}
+		)
+		# input_handler.interactive_message("celena_shrine_find", '',{})
 		
 		character.mp = 10
 		var tmp = {}

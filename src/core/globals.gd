@@ -1167,7 +1167,7 @@ func common_effects(effects):
 			'unlock_class':
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
-					input_handler.play_unlock_class_anim()
+					input_handler.play_unlock_class_anim(i.name)
 
 
 func checkreqs(array):

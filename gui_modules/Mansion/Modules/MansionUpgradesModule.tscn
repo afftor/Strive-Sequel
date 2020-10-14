@@ -19,7 +19,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/icon_upgrade_64.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/MANSION/Upgrades/Buttons/button_upgrades.png" type="Texture" id=18]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 
 [sub_resource type="DynamicFont" id=2]
@@ -242,10 +241,11 @@ text = "Name"
 align = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UpgradeDescript"]
-margin_left = 19.0
-margin_top = 118.0
-margin_right = 346.0
-margin_bottom = 238.0
+margin_left = 16.6084
+margin_top = 120.392
+margin_right = 343.608
+margin_bottom = 240.392
+theme = ExtResource( 2 )
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true

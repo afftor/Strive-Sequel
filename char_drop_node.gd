@@ -19,6 +19,7 @@ func drop_data(position, data):
 	if data is ResourceScripts.scriptdict.class_slave:
 		if target_node != null && target_function != null:
 			if metadata != null:
+				data.combat_position = metadata
 				target_node.call(target_function, metadata, data)
 			else:
 				target_node.call(target_function, data)

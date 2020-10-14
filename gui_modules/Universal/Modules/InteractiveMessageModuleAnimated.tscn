@@ -71,6 +71,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_left = -541.0
+margin_top = -342.0
+margin_right = 1289.0
+margin_bottom = 645.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Control" type="Control" parent="."]
 margin_left = -689.0
 margin_top = -430.0

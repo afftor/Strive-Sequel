@@ -1,7 +1,7 @@
 extends Panel
 
 #warning-ignore-all:return_value_discarded
-var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
+# var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
 
 func _ready():
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
@@ -20,15 +20,42 @@ func _ready():
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
 	
-	for i in cheats:
-		var newbutton = input_handler.DuplicateContainerTemplate($TabContainer/debug/ScrollContainer/VBoxContainer)
-		newbutton.pressed = variables.get(i)
-		newbutton.text = i
-		newbutton.connect("pressed", self, 'cheat_toggle', [i, newbutton])
+
+	$TabContainer/debug/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
+	$TabContainer/debug/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
+	$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "activate_cheats")
+	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
+
+# TODO Implement get code method
+func get_code():
+	pass
+
+func open_cheats_menu():
+	if gui_controller.cheat_panel == null:
+		var c = load("res://gui_modules/Universal/Modules/CheatsModule.tscn")
+		var cheats = c.instance()
+		gui_controller.cheat_panel = cheats
+		get_tree().get_root().add_child(cheats)
+	gui_controller.windows_opened.append(gui_controller.cheat_panel)
+	gui_controller.cheat_panel.raise()
+	gui_controller.cheat_panel.open()
+
+
+func text_changed(text):
+	$TabContainer/debug/EnterCodeMenu/Activate.disabled = !variables.cheat_codes.has(text)
+
+
+func activate_cheats():
+	variables.cheats_active = true
+	$TabContainer/debug/EnterCodeMenu.hide()
+	$TabContainer/debug/OpenCheatsMenu.show()
 
 
 func open():
 	show()
+	$TabContainer/debug/EnterCodeMenu/Activate.disabled = true
+	$TabContainer/debug/EnterCodeMenu.visible = !variables.cheats_active
+	$TabContainer/debug/OpenCheatsMenu.visible = variables.cheats_active
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
 	
@@ -55,6 +82,10 @@ func mutepressed(node):
 	var name = node.get_parent().name
 	input_handler.globalsettings[name + 'mute'] = node.pressed
 	node.get_parent().editable = !node.pressed
+	if node.pressed:
+		node.get_parent().set("custom_styles/grabber_area", load("res://assets/Themes_v2/UNIVERSAL/GrabberDisabled.tres"))
+	else:
+		node.get_parent().set("custom_styles/grabber_area", null)
 	updatesounds()
 
 func updatesounds():
@@ -68,8 +99,8 @@ func updatesounds():
 func close():
 	hide()
 
-func cheat_toggle(i, button):
-	variables.set(i,button.pressed)
+# func cheat_toggle(i, button):
+# 	variables.set(i,button.pressed)
 
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value

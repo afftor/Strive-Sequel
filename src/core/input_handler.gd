@@ -106,7 +106,7 @@ enum {
 	NODE_GAMEMENU,
 	NODE_SEX,
 	NODE_DATE,
-	NODE_TUTORIAL_PANEL
+	NODE_TUTORIAL_PANEL,
 	#Animations
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
@@ -680,6 +680,8 @@ func calculate_number_from_string_array(arr, caster, target):
 	return endvalue
 
 func dialogue_option_selected(option):
+	if gui_controller.dialogue == null:
+		gui_controller.dialogue = get_spec_node(NODE_DIALOGUE)
 	if option.has("change_dialogue_type"):
 		gui_controller.dialogue_window_type = option.change_dialogue_type
 		gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
@@ -793,11 +795,21 @@ func interactive_dialogue_start(code, stage):
 	scene.dialogue_next(code, stage)
 
 
-func ActivateTutorial(code): #disabled until rework
-	return
+# func ActivateTutorial(code): #disabled until rework
+# 	return
+# 	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
+# 		ResourceScripts.game_progress.active_tutorials.append(code)
+# 		get_spec_node(self.NODE_TUTORIAL).rebuild()
+# 		#get_tutorial_node().rebuild()
+
+
+func ActivateTutorial(code):
 	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
 		ResourceScripts.game_progress.active_tutorials.append(code)
-		get_spec_node(self.NODE_TUTORIAL).rebuild()
+	if gui_controller.mansion_tutorial_panel == null:
+		gui_controller.mansion_tutorial_panel = get_spec_node(self.NODE_TUTORIAL_PANEL, null, false, false)
+	gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
+	gui_controller.mansion_tutorial_panel.open(code)
 		#get_tutorial_node().rebuild()
 
 
@@ -900,6 +912,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 		match ResourceScripts.node_data[type].mode:
 			'scene':
 				window = ResourceScripts.node_data[type].scene.instance()
+				window.visible = unhide
 			'node':
 				window = ResourceScripts.node_data[type].node.new()
 		window.name = ResourceScripts.node_data[type].name
@@ -1188,11 +1201,13 @@ func get_location_characters():
 	return array
 
 
-func play_unlock_class_anim():
+func play_unlock_class_anim(cls):
 	input_handler.PlaySound("class_aquired")
 	var anim_scene
 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_UNLOCKED)
 	anim_scene.get_node("AnimationPlayer").play("class_unlocked")
+	anim_scene.get_node("TextureRect11").texture = classesdata.professions[cls].icon
+	anim_scene.get_node("Label2").text = cls.capitalize()
 	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')

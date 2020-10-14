@@ -11,7 +11,8 @@ func _ready():
 
 func start_scene():
 	var choosen_chars = get_parent().sex_participants
-	ResourceScripts.game_globals.daily_sex_left -= 1
+	if !variables.unlimited_date_sex:
+		ResourceScripts.game_globals.daily_sex_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
 #	GUIWorld.set_current_scene(GUIWorld.gui_data["INTERACTION"].main_module)
@@ -27,7 +28,8 @@ func start_scene():
 
 func start_date():
 	var person = get_parent().sex_participants[0]
-	ResourceScripts.game_globals.daily_dates_left -= 1
+	if !variables.unlimited_date_sex:
+		ResourceScripts.game_globals.daily_dates_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
 	gui_controller.date_panel = input_handler.get_spec_node(input_handler.NODE_DATE)

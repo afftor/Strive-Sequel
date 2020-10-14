@@ -21,7 +21,8 @@ func _ready():
 		i.connect("pressed",self,'class_category', [i.name])
 
 	$ClassPanel/Unlock.connect('pressed', self, 'unlock_class')
-	$CheckBox.connect("pressed", self, "checkbox_locked")
+	if !get_parent().name == "CheatsModule":
+		$CheckBox.connect("pressed", self, "checkbox_locked")
 	input_handler.AddPanelOpenCloseAnimation($ClassPanel)
 
 func _process(delta):
@@ -66,10 +67,11 @@ func open(tempperson, tempmode = 'normal'):
 	
 	var array = []
 	for i in classesdata.professions.values():
-		if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs) || person.has_profession(i.code):
-			continue
-		if !$CheckBox.pressed && person.checkreqs(i.reqs) == false:
-			continue
+		if !variables.unlock_all_classes:
+			if (!i.categories.has(category) && category != 'all') || !person.checkreqs(i.showupreqs) || person.has_profession(i.code):
+				continue
+			if !$CheckBox.pressed && person.checkreqs(i.reqs) == false:
+				continue
 		array.append(i)
 	
 	array.sort_custom(self, 'sort_classes')
@@ -78,13 +80,14 @@ func open(tempperson, tempmode = 'normal'):
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
 		newbutton.get_node('icon').texture = i.icon
 		var name = i.name
-		if i.has('altname') && person.checkreqs(i.altnamereqs):
-			name = i.altname
-		if person.checkreqs(i.reqs) == false:
-			newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-			newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-			newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
-			# newbutton.disabled = true
+		if !variables.unlock_all_classes:
+			if i.has('altname') && person.checkreqs(i.altnamereqs):
+				name = i.altname
+			if person.checkreqs(i.reqs) == false:
+				newbutton.texture_normal = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+				newbutton.texture_hover = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+				newbutton.texture_pressed = load("res://assets/images/gui/universal/skill_frame_diabled.png")
+				# newbutton.disabled = true
 		newbutton.get_node('name').text = name
 		newbutton.connect('pressed',self,"open_class", [i.code])
 		newbutton.set_meta('class_code', i.code)
@@ -112,7 +115,11 @@ func open_class(classcode):
 	if !gui_controller.windows_opened.has($ClassPanel):
 		gui_controller.windows_opened.append($ClassPanel)
 	var tempclass = classesdata.professions[classcode]
-	var class_locked = !person.checkreqs(tempclass.reqs)
+	var class_locked = true
+	if !variables.unlock_all_classes:
+		class_locked = !person.checkreqs(tempclass.reqs)
+	else:
+		class_locked = false
 	var text = ResourceScripts.descriptions.get_class_details(person, tempclass)
 	current_class = classcode
 	$ClassPanel.open(classcode,person)

@@ -13,12 +13,12 @@ func _ready():
 	gui_controller.add_close_button($NewGamePanel)
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
-	var buttonlist = ['continue','newgame','loadwindow','options','mods']
+	var buttonlist = ['continueb','newgame','loadwindow','options', 'credits', 'mods']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
 	#input_handler.StopMusic()
 	check_last_save()
-	for i in range(0,5):
+	for i in range(0,6):
 		$VBoxContainer.get_child(i).connect("toggled",self,buttonlist[i], [$VBoxContainer.get_child(i)])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
@@ -114,6 +114,14 @@ func options(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $Options, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$Options.visible = pressed
+
+
+func credits(pressed, pressed_button):
+	gui_controller.win_btn_connections_handler(pressed, $Options, pressed_button)
+	self.current_pressed_btn = pressed_button
+	$Credits.visible = pressed
+
+
 
 func quit():
 #	input_handler.globalsettings.window_size = OS.window_size

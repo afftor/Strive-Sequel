@@ -180,12 +180,11 @@ __meta__ = {
 anims/class_unlocked = SubResource( 1 )
 
 [node name="TextureRect5" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 665.581
 margin_top = 230.605
 margin_right = 1255.58
 margin_bottom = 270.605
-rect_scale = Vector2( 1e-05, 1e-05 )
+rect_scale = Vector2( 2.41587, 2.41587 )
 rect_pivot_offset = Vector2( 293.876, 18.1982 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -193,12 +192,11 @@ __meta__ = {
 }
 
 [node name="TextureRect6" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 719.528
 margin_top = 230.57
 margin_right = 1309.53
 margin_bottom = 270.57
-rect_scale = Vector2( 1e-05, 1 )
+rect_scale = Vector2( 2.18181, 2.27272 )
 rect_pivot_offset = Vector2( 293.245, 19.3559 )
 texture = ExtResource( 5 )
 __meta__ = {
@@ -210,7 +208,6 @@ margin_left = 659.912
 margin_top = 151.121
 margin_right = 1259.91
 margin_bottom = 351.121
-rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 299.694, 99.5355 )
 texture = ExtResource( 3 )
 stretch_mode = 7
@@ -219,20 +216,20 @@ __meta__ = {
 }
 
 [node name="TextureRect11" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 670.125
 margin_top = 161.092
 margin_right = 970.125
 margin_bottom = 461.092
 rect_scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
 flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 865.389
 margin_top = 176.874
 margin_right = 1225.39
@@ -246,7 +243,6 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 865.554
 margin_top = 248.707
 margin_right = 1225.55

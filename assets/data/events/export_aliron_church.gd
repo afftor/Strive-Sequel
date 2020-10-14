@@ -31,6 +31,7 @@ var data = {
 	},
 
 	aliron_church_firstcome = {
+		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -48,6 +49,7 @@ var data = {
 	},
 
 	aliron_church_introduction = {
+		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -65,6 +67,7 @@ var data = {
 
 
 	aliron_church_leave = {
+		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -78,6 +81,7 @@ var data = {
 	},
 
 	aliron_church_celena = {
+		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -97,6 +101,7 @@ var data = {
 	},
 
 	aliron_church_enter = {
+		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -116,7 +121,8 @@ var data = {
 		
 	},
 
-	aliron_church_quest_start = { 
+	aliron_church_quest_start = {
+		custom_background = "church_event", 
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -134,6 +140,7 @@ var data = {
 	},
 
 	aliron_church_quest_start1 = {
+		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
@@ -157,6 +164,7 @@ var data = {
 					{type = 'active_quest_stage', value = 'aliron_church_quest', stage = 'stage1'}
 				],
 				image = null,
+				custom_background = "church_event",
 				character = 'ginny',
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
@@ -179,6 +187,7 @@ var data = {
 			{
 				reqs = [{type = 'complete_quest', value = 'aliron_church_quest'},],
 				image = null,
+				custom_background = "church_event",
 				character = 'ginny',
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
