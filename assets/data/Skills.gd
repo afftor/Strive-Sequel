@@ -21,7 +21,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'praise',
-		value = [['caster.charm', '*0.05','+5'], ['24'], ['1']],
+		value = [['5'], ['caster.charm', '*3', '/100', '+1', '*24'], ['1']],
 		damagestat = ['+loyalty', '+loyaltyObedience', '+consent'],
 	},
 	warn = {#
@@ -42,8 +42,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'warn',
-		value = [['caster.physics', '*0.04','+3'], ['24'], ['caster.charm', "*0.04",'+4'],['1']],
-		damagestat = ['+submission', '+submissionObedience', '+authority', '+consent'],
+		value = [['caster.charm', '*3', '/100', '+1', '*24'],  ['caster.charm', "*0.04",'+4'],['1']],
+		damagestat = ['+submissionObedience', '+authority', '+consent'],
 	},
 
 #	reward = {#
@@ -87,7 +87,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'sexreward',
-		value = [['caster.sexuals', '*0.08','+8'], ['36'], ['25'], ['1'], ['10'],['20']],
+		value = [['caster.sexuals', '*0.08','+8'], ['caster.sexuals', '*3', '/100', '+1', '*36'], ['25'], ['1'], ['10'],['20']],
 		damagestat = ['+loyalty', '+loyaltyObedience', '-lust', '+consent','base_exp','base_exp'],
 		receiver = ['target','target','target','target','target','caster'],
 	},
@@ -109,7 +109,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'punish',
-		value = [['caster.physics', '*0.05','+12'], ['24'], ['caster.charm', "*0.12",'+10'], ['1']],
+		value = [['caster.physics', '*0.05','+12'], ['caster.physics', '*3', '/100', '+1', '*24'], ['caster.charm', "*0.12",'+10'], ['1']],
 		damagestat = ['+submission', '+submissionObedience', '+authority','+consent'],
 #		value = [['15'],['caster.physics', '*0.3', '+40']],
 #		damagestat = ['+obedience','+fear'],
@@ -133,7 +133,7 @@ var Skilllist = {
 		dialogue_show_repeat = true,
 		dialogue_image = 'abuse',
 		
-		value = [['caster.physics', '*0.1','+12'], ['24'], ['5'], ['10'], ['48']],
+		value = [['caster.physics', '*0.1','+12'], ['caster.physics', '*3', '/100', '+1', '*36'], ['5'], ['10'], ['48']],
 		damagestat = ['+submission', '+submissionObedience', '+authority', '-loyalty', '+loyaltyObedience'],
 		
 		receiver = ['target','target','target','target','caster']
@@ -158,9 +158,9 @@ var Skilllist = {
 		dialogue_image = 'public_punish',
 		tags = ['negative','repeated_effect_reduce_submission'],
 		
-		value = [['caster.physics', '*0.05','+15'], ['48'], ['caster.charm', "*0.1",'+15'], ['24'], ['caster.charm', "*0.03",'+5']],
-		damagestat = ['+submission', '+submissionObedience', '+authority', '+submissionObedience','+authority'],
-		receiver = ['target','target','target','all','all']
+		value = [['caster.charm', '*3', '/100', '+1', '*36'], ['caster.charm', "*0.1",'+15'], ['caster.charm', '*3', '/100', '+1', '*36'], ['caster.charm', "*0.03",'+5']],
+		damagestat = ['+submissionObedience', '+authority', '+submissionObedience','+authority'],
+		receiver = ['target','target','all','all']
 	},
 	publicsexhumiliation = {
 		code = 'publicsexhumiliation',

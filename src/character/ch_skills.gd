@@ -313,9 +313,9 @@ func use_social_skill(s_code, target):
 				change = '-'#
 			effect_text += ": "
 			if maxstat != 0 && !stat in ['loyaltyObedience', 'submissionObedience', 'obedience','loyalty','authority','submission','consent']:
-				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%.1f)" % i.value) +  ")"
+				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % i.value) +  ")"
 			else:
-				effect_text += change + str(floor(tmp)) + ("(%.1f)" % i.value)
+				effect_text += change + str(floor(tmp))
 			if detail_tags.has("noauthority") && stat == 'loyalty':
 				effect_text += " - Not enough Authority"
 			if detail_tags.has("loyalty_repeat") && !detail_tags.has("noauthority") && stat == 'loyalty':
@@ -327,11 +327,9 @@ func use_social_skill(s_code, target):
 			if detail_tags.has("submissionmaxed") && stat == 'submission':
 				effect_text += ' - Maxed'
 			if detail_tags.has("obed_cap") && stat.ends_with('Obedience'):
-				effect_text += ' - Maxed (%d)' % maxstat
+				effect_text += ("(%.d)" % i.value) + (" - Maxed (%d)" % maxstat)
 			if detail_tags.has("blocked") && stat == 'obedience':
 				effect_text += ' - Is in resist mode'
-			if detail_tags.has("master_loyalty") && stat == 'loyalty':
-				effect_text += " - Bonus from master"
 			for i in bonusspeech:
 				effect_text += "\n\n{color=aqua|"+ h.get_short_name() + "} - {random_chat=0|"+ i +"}\n"
 	if target != null and target.skills.skills_received_today.has(s_code) == false: target.skills.skills_received_today.append(s_code)
