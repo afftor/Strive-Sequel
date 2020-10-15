@@ -82,23 +82,25 @@ font_data = ExtResource( 10 )
 [node name="CheatsModule" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 368.0
+margin_top = 139.0
+margin_right = -367.0
+margin_bottom = -141.0
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" type="TextureRect" parent="."]
-margin_left = 368.0
-margin_top = 139.0
-margin_right = 1553.0
-margin_bottom = 939.0
+margin_left = 3.05176e-05
+margin_right = 1185.0
+margin_bottom = 800.0
 texture = ExtResource( 5 )
 
 [node name="Title" type="Label" parent="."]
-margin_left = 368.0
-margin_top = 139.0
-margin_right = 1553.0
-margin_bottom = 223.0
+margin_left = 3.05176e-05
+margin_right = 1185.0
+margin_bottom = 84.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.960784, 1, 0.223529, 1 )
 text = "Cheats"
@@ -106,10 +108,10 @@ align = 1
 valign = 1
 
 [node name="CharsScroll" type="ScrollContainer" parent="."]
-margin_left = 801.0
-margin_top = 239.0
-margin_right = 1141.0
-margin_bottom = 915.0
+margin_left = 433.0
+margin_top = 100.0
+margin_right = 773.0
+margin_bottom = 776.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,10 +153,10 @@ __meta__ = {
 }
 
 [node name="LeftSide" type="ScrollContainer" parent="."]
-margin_left = 392.0
-margin_top = 246.0
-margin_right = 760.0
-margin_bottom = 903.0
+margin_left = 24.0
+margin_top = 107.0
+margin_right = 392.0
+margin_bottom = 764.0
 theme = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -203,11 +205,10 @@ __meta__ = {
 }
 
 [node name="RightSide" type="ScrollContainer" parent="."]
-visible = false
-margin_left = 1199.7
-margin_top = 239.0
-margin_right = 1513.7
-margin_bottom = 915.0
+margin_left = 830.443
+margin_top = 92.0
+margin_right = 1144.44
+margin_bottom = 768.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -239,10 +240,9 @@ __meta__ = {
 [node name="ClassesModule" type="Panel" parent="."]
 visible = false
 light_mask = 0
-margin_left = 475.0
-margin_top = 80.0
-margin_right = 1445.0
-margin_bottom = 1000.0
+margin_left = 116.768
+margin_right = 1086.77
+margin_bottom = 920.0
 theme = ExtResource( 25 )
 custom_styles/panel = SubResource( 4 )
 script = ExtResource( 13 )
@@ -455,10 +455,9 @@ valign = 1
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 570.0
-margin_top = 125.0
-margin_right = -570.0
-margin_bottom = -125.0
+margin_left = 207.377
+margin_right = -932.623
+margin_bottom = -250.0
 custom_styles/panel = ExtResource( 33 )
 script = ExtResource( 34 )
 __meta__ = {
@@ -559,10 +558,10 @@ __meta__ = {
 
 [node name="AddItem" type="Control" parent="."]
 visible = false
-margin_left = 655.0
-margin_top = 77.0
-margin_right = 1265.0
-margin_bottom = 1002.0
+margin_left = 281.61
+margin_top = -50.0
+margin_right = 891.61
+margin_bottom = 875.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -592,6 +591,7 @@ margin_bottom = 52.0
 [node name="Button" type="TextureButton" parent="AddItem/ScrollContainer/VBoxContainer"]
 margin_right = 500.0
 margin_bottom = 52.0
+toggle_mode = true
 texture_normal = ExtResource( 46 )
 texture_pressed = ExtResource( 45 )
 texture_hover = ExtResource( 40 )
@@ -669,7 +669,6 @@ margin_top = 2.0
 margin_right = 511.0
 margin_bottom = 34.0
 custom_fonts/font = ExtResource( 6 )
-text = "Item Name"
 align = 1
 valign = 1
 

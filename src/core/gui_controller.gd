@@ -126,8 +126,15 @@ func show_class_info(classcode, person = null):
 
 func close_top_window():
 	var node = windows_opened.back()
-	if window_button_connections.has(node) && window_button_connections[node] != null:
+	if !weakref(node).get_ref():
+		windows_opened.erase(node)
+		if window_button_connections.keys().has(node):
+			window_button_connections.erase(node)
+			return
+	if window_button_connections.keys().has(node) && window_button_connections[node] != null:
 		window_button_connections[node].pressed = false
+		windows_opened.erase(node)
+		return
 	if typeof(node) == TYPE_STRING:
 		return
 	elif ResourceScripts.core_animations.BeingAnimated.has(node):

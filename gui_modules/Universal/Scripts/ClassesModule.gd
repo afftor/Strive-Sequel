@@ -68,4 +68,5 @@ func confirm_class_selection():
 	for cls in classes_to_add:
 		person.unlock_class(cls)
 	classes_to_add.clear()
+	gui_controller.mansion.SlaveModule.show_slave_info()
 	hide()

@@ -32,9 +32,17 @@ var cheats = [
 	'add_material'
 ]
 
+func _ready():
+	gui_controller.add_close_button(self)
+	gui_controller.add_close_button($AddItem)
+	gui_controller.add_close_button($ClassesModule)
+
 
 
 func open():
+	$AddItem/NumberSelection3.hide()
+	$AddItem.hide()
+	$ClassesModule.hide()
 	ResourceScripts.core_animations.UnfadeAnimation(self, 0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
 	show()
@@ -112,8 +120,9 @@ var factors_list = [
 
 func max_factors():
 	for factor in factors_list:
-		selected_person.set_stat(factor, 5)
+		selected_person.set_stat(factor, 6)
 	input_handler.SystemMessage("All factors set to maximum")
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func max_stats():
@@ -122,36 +131,44 @@ func max_stats():
 		max_stat = selected_person.get_stat(stat+'_factor') * 20
 		selected_person.set_stat(stat, max_stat)
 	input_handler.SystemMessage("All stats set to maximum")
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 		
 func max_sex_skills():
 	for skill in selected_person.statlist.statlist.sex_skills:
 		selected_person.statlist.statlist.sex_skills[skill] = 100
 	input_handler.SystemMessage("All sex skills set to maximum")
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func max_loyal_auth():
 	selected_person.set_stat("loyalty", 100)
 	selected_person.set_stat("authority", 201)
 	input_handler.SystemMessage("Authority and loyalty set to maximum")
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func unlock_all_sex_traits():
 	for trait in Traitdata.sex_traits:
 		selected_person.add_sex_trait(str(trait), true)
 	input_handler.SystemMessage("All sex traits unlocked")
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func unlock_classes():
+	gui_controller.windows_opened.append($ClassesModule)
 	$ClassesModule.open(selected_person)
 
 
 func change_race():
 	$CheatRaceChange.select_race(selected_person)
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func add_material():
+	gui_controller.windows_opened.append($AddItem)
 	$AddItem.show()
+	input_handler.ClearContainer($AddItem/ScrollContainer/VBoxContainer)
 	for m in Items.materiallist:
 		var item = Items.materiallist[m]
 		var newbutton = input_handler.DuplicateContainerTemplate(
@@ -159,13 +176,14 @@ func add_material():
 		)
 		newbutton.get_node("Title").text = item.name
 		newbutton.get_node("Icon").texture = item.icon
-		newbutton.connect("pressed", self, "item_purchase", [item])
+		newbutton.connect("pressed", self, "item_purchase", [item, newbutton])
 		globals.connectmaterialtooltip(newbutton, item, 'material')
 
 
 var purchase_item
 var tempitems = []
-func item_purchase(item, amount = 10000):
+func item_purchase(item, btn, amount = 10000):
+	$AddItem/NumberSelection3.show()
 	purchase_item = item
 	if amount < 0:
 		amount = 100
@@ -180,6 +198,10 @@ func item_purchase(item, amount = 10000):
 		true,
 		item.icon
 	)
+	for button in $AddItem/ScrollContainer/VBoxContainer.get_children():
+		if button.name == "Button":
+			continue
+		button.pressed = button == btn
 
 func add_material_confirm(value):
 	if Items.materiallist.has(purchase_item.code):
@@ -198,6 +220,7 @@ func max_all_upgrades():
 	for upgrade in upgradedata.upgradelist:
 		ResourceScripts.game_res.upgrades[upgrade] = upgradedata.upgradelist[upgrade].levels.keys().back()
 	input_handler.SystemMessage("All upgrades set to maximum")
+	gui_controller.mansion.SlaveModule.show_slave_info()
 
 
 func plus_100k_of_gold():

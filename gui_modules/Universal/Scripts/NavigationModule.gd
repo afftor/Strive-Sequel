@@ -109,6 +109,7 @@ func select_location(location):
 			return
 		else:
 			gui_controller.exploration.open_location(data)
+	gui_controller.exploration.show()
 	build_accessible_locations()
 
 
@@ -134,3 +135,4 @@ func return_to_mansion(with_state = "default"):
 	gui_controller.mansion.mansion_state_set(with_state)
 	build_accessible_locations()
 	update_buttons()
+	gui_controller.exploration.hide()

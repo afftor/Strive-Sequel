@@ -44,6 +44,7 @@ var positiondict = {
 func _ready():
 	# ResourceScripts.game_world.make_world()
 	# open_city("aliron")
+	gui_controller.add_close_button($BuyLocation)
 	$FactionDetails.get_node("QuestGen").connect("pressed", self, "show_quest_gen")
 	$FactionDetails.get_node("QuestGenPanel/Apply").connect(
 		"pressed", self, "show_quest_gen", ["hide"]
@@ -271,8 +272,8 @@ func open_location(data):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-
-	input_handler.ActivateTutorial("exploration")
+	if !ResourceScripts.game_progress.active_tutorials.has("exploration"):
+		input_handler.ActivateTutorial("exploration")
 
 	#check if anyone is present
 	build_location_group()
@@ -732,6 +733,9 @@ func build_location_group():
 	if active_location == null || !active_location.has("group"):
 		return
 	for ch in ResourceScripts.game_party.characters.values():
+		if ch.get_stat('obedience') == 0:
+			active_location.group.erase('pos' + str(ch.combat_position))
+			ch.combat_position = 0
 		if ch.check_location(active_location.id) && ch.combat_position != 0:
 			if !active_location.group.has(['pos' + str(ch.combat_position)]):
 				active_location.group['pos' + str(ch.combat_position)] = ch.id
@@ -868,7 +872,8 @@ func build_item_panel():
 		globals.connectitemtooltip(newnode, i)
 		tutorial_items = true
 	if tutorial_items == true:
-		input_handler.ActivateTutorial("exploration_items")
+		if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
+			input_handler.ActivateTutorial("exploration_items")
 	switch_panel(panelmode)
 
 
@@ -1158,9 +1163,9 @@ func faction_guild_shop(pressed, pressed_button, guild):
 	$GuildShop/FactionPoints.text = "x " + str(active_faction.reputation)
 	$GuildShop/GuildName.text = str(active_faction.name)
 	if pressed && !$GuildShop.is_visible():
-		unfade($GuildShop)
+		unfade($GuildShop, 0.3)
 	elif !pressed && $GuildShop.is_visible():
-		fade($GuildShop)
+		fade($GuildShop, 0.3)
 
 var hide_elems_arr = ["HSlider", "ItemAmount"]#, "TextureRect2","ItemPrice"]
 
@@ -1298,9 +1303,9 @@ func faction_upgrade(pressed, pressed_button, guild):
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
 		if pressed:
-			unfade($FactionDetails)
+			unfade($FactionDetails, 0.3)
 		else:
-			fade($FactionDetails)
+			fade($FactionDetails, 0.3)
 
 
 func unlock_upgrade(upgrade, level):
@@ -1365,7 +1370,7 @@ func show_full_info(person = null):
 	# FullSlaveInfo.update_purchase_btn()
 
 
-func faction_hire(pressed, pressed_button, area, mode = "guild_slaves"):
+func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_anim = true):
 	market_mode = mode
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = area
@@ -1397,10 +1402,12 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves"):
 		return
 	var person = characters_pool.get_char_by_id(person_id)
 	show_slave_info(person)
+	if !play_anim:
+		return
 	if pressed:
-		unfade($SlaveMarket)
+		unfade($SlaveMarket, 0.3)
 	else:
-		fade($SlaveMarket)
+		fade($SlaveMarket, 0.3)
 
 func show_upgrade_window():
 	gui_controller.close_top_window()
@@ -1414,7 +1421,7 @@ func show_upgrade_window():
 func change_mode(mode):
 	hiremode = mode
 	if mode == "hire":
-		faction_hire(true, current_pressed_area_btn, active_faction, "city_slaves")
+		faction_hire(true, current_pressed_area_btn, active_faction, "city_slaves", false)
 	else:
 		sell_slave()
 
@@ -1548,17 +1555,17 @@ func faction_sellslaves():
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
 
-func unfade(window):
+func unfade(window, time = 0.5):
 	window.set("modulate", Color(1, 1, 1, 0))
 	window.show()
-	ResourceScripts.core_animations.UnfadeAnimation(window, 0.5)
-	yield(get_tree().create_timer(0.5), "timeout")
+	ResourceScripts.core_animations.UnfadeAnimation(window, time)
+	yield(get_tree().create_timer(time), "timeout")
 	window.set("modulate", Color(1, 1, 1, 1))
 
-func fade(window):
+func fade(window, time = 0.5):
 	# window.set("modulate", Color(1, 1, 1, 1))
-	ResourceScripts.core_animations.FadeAnimation(window, 0.5)
-	yield(get_tree().create_timer(0.5), "timeout")
+	ResourceScripts.core_animations.FadeAnimation(window, time)
+	yield(get_tree().create_timer(time), "timeout")
 	window.hide()
 	# window.set("modulate", Color(1, 1, 1, 0))
 
@@ -2096,7 +2103,7 @@ func show_location_info(location):
 		var newbutton = input_handler.DuplicateContainerTemplate($BuyLocation/LocationInfo/Resources/GridContainer)
 		newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 		globals.connectmaterialtooltip(newbutton, item)
-
+	$BuyLocation/LocationInfo/PurchaseLocation.disabled = location.purchase_price > ResourceScripts.game_res.money
 	update_location_shop_btn(location.name)
 
 

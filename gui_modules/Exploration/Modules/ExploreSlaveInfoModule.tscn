@@ -116,6 +116,7 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
+visible = false
 margin_left = 62.513
 margin_top = 137.0
 margin_right = 241.513
@@ -145,6 +146,7 @@ texture_progress = ExtResource( 4 )
 "hide_master",
 "hide_stranger",
 ]]
+visible = false
 margin_left = 62.0
 margin_top = 164.12
 margin_right = 241.0

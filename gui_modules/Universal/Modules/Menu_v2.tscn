@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -49,6 +49,7 @@
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits.png" type="Texture" id=47]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits_hover.png" type="Texture" id=48]
 [ext_resource path="res://assets/Textures_v2/MAIN_MENU/Buttons/button_credits_pressed.png" type="Texture" id=49]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=50]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -419,6 +420,7 @@ margin_bottom = 735.097
 theme = ExtResource( 15 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = ExtResource( 50 )
 custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )

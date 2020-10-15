@@ -73,7 +73,8 @@ func open():
 		$categories.get_node(i).visible = globals.checkreqs(craftcategories[i].reqs)
 	if craft_category != null:
 		select_category(craft_category)
-	input_handler.ActivateTutorial('crafting')
+	if !ResourceScripts.game_progress.active_tutorials.has("crafting"):
+		input_handler.ActivateTutorial('crafting')
 
 func clear():
 	craft_category = null

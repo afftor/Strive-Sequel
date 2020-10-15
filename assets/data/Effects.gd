@@ -428,7 +428,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsitems/food_old.png", 
-				description = "Starvation\nProductivity reduced by 50%\n Damage reduced by 50%",
+				description = "Starvation\nProductivity reduced by 50%%\n Damage reduced by 50%%",
 				limit = 1,
 				t_name = 'starvation',
 #				mansion_only = true,
