@@ -63,7 +63,7 @@ var mansion_prev_state
 var prev_selected_travel
 
 var always_show = [
-	"TestButton",
+	# "TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
 	"MansionBottomLeftModule",
@@ -122,7 +122,6 @@ func show_tutorial():
 		gui_controller.mansion_tutorial_panel = input_handler.get_spec_node(input_handler.NODE_TUTORIAL_PANEL)
 	gui_controller.mansion_tutorial_panel.open()
 	gui_controller.mansion_tutorial_panel.raise()
-	$TutorialButton.pressed = gui_controller.mansion_tutorial_panel.is_visible()
 
 func show_menu():
 	gui_controller.game_menu = input_handler.get_spec_node(input_handler.NODE_GAMEMENU)

@@ -129,8 +129,6 @@ func advance_hour():
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
-	# if GUIWorld.CurrentScene.name == "MansionMainModule":
-#	GUIWorld.gui_data.MANSION.main_module.rebuild_mansion()
 
 
 func advance_day():

@@ -32,6 +32,7 @@ func OptionsOpen():
 	if !gui_controller.windows_opened.has($Options):
 		gui_controller.windows_opened.append($Options)
 	$Options.open()
+	$Options.show()
 
 func append_saveload():
 	if !gui_controller.windows_opened.has($saveloadpanel):

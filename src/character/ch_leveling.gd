@@ -231,7 +231,7 @@ func work_tick():
 			messages.append("refusedwork")
 		return
 	if parent.get_stat('obedience') > 0: #new work stat. If <= 0 and loyal/sub < 100, refuse to work
-		parent.add_stat('obedience', -get_obed_drain(1))
+		parent.add_stat('obedience', - get_obed_drain(1))
 		messages.erase("refusedwork")
 	
 	if parent.get_static_effect_by_code("work_rule_ration") != null:

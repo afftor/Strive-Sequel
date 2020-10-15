@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -16,10 +16,9 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=16]
-[ext_resource path="res://gui_modules/Universal/Scripts/ScrollContainer.gd" type="Script" id=17]
+[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -67,10 +66,6 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=13]
-size = 24
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=14]
@@ -177,6 +172,7 @@ __meta__ = {
 "hide_master",
 "hide_stranger",
 ]]
+visible = false
 light_mask = 0
 margin_left = 62.513
 margin_top = 140.0
@@ -203,11 +199,15 @@ margin_bottom = 141.12
 value = 100.0
 texture_over = ExtResource( 6 )
 texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="submissionlabel" type="TextureProgress" parent="Panel" groups=[
 "hide_master",
 "hide_stranger",
 ]]
+visible = false
 light_mask = 0
 margin_left = 62.0
 margin_top = 164.12
@@ -626,7 +626,6 @@ margin_left = 304.0
 margin_top = 740.0
 margin_right = 664.0
 margin_bottom = 907.0
-script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -635,7 +634,7 @@ __meta__ = {
 light_mask = 0
 margin_left = 11.0
 margin_top = -4.0
-margin_right = 312.0
+margin_right = 348.0
 margin_bottom = 168.0
 theme = ExtResource( 10 )
 scroll_horizontal_enabled = false
@@ -694,6 +693,7 @@ __meta__ = {
 }
 
 [node name="VScrollBar" type="VScrollBar" parent="SexSkillsControl"]
+visible = false
 light_mask = 0
 margin_left = 6.0
 margin_right = 18.0
@@ -727,35 +727,6 @@ margin_bottom = 728.0
 custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sex Traits"
-align = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-light_mask = 0
-margin_left = 671.0
-margin_top = 776.0
-margin_right = 938.0
-margin_bottom = 901.0
-scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="traits" type="VBoxContainer" parent="ScrollContainer"]
-light_mask = 0
-custom_constants/separation = 9
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Label" parent="ScrollContainer/traits"]
-visible = false
-light_mask = 0
-margin_right = 55.0
-margin_bottom = 24.0
-mouse_filter = 0
-custom_fonts/font = SubResource( 13 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "1.100"
 align = 1
 
 [node name="ConsentLabel" type="Label" parent="."]
@@ -834,3 +805,25 @@ margin_bottom = 42.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Master"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 689.0
+margin_top = 773.0
+margin_right = 941.0
+margin_bottom = 888.0
+theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="traits" type="VBoxContainer" parent="ScrollContainer"]
+
+[node name="Button" type="Label" parent="ScrollContainer/traits"]
+visible = false
+margin_right = 250.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 250, 0 )
+custom_styles/normal = ExtResource( 17 )
+text = "Trait"
+clip_text = true

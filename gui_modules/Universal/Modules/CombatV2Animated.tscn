@@ -453,6 +453,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Active" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template"]
+visible = false
+margin_right = 182.0
+margin_bottom = 202.0
+texture = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Panel/PlayerGroup/Back/left/Template"]
+self_modulate = Color( 0, 0, 0, 0.509804 )
+show_behind_parent = true
+margin_left = 9.0
+margin_top = 9.43697
+margin_right = 171.0
+margin_bottom = 39.437
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Buffs" type="HBoxContainer" parent="Panel/PlayerGroup/Back/left/Template"]
 margin_left = 9.0
 margin_top = 97.0
@@ -482,26 +502,6 @@ custom_colors/font_color = Color( 0.680153, 0.925781, 0.242294, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "555"
 align = 1
-
-[node name="Panel" type="Panel" parent="Panel/PlayerGroup/Back/left/Template"]
-self_modulate = Color( 0, 0, 0, 0.509804 )
-show_behind_parent = true
-margin_left = 9.0
-margin_top = 9.43697
-margin_right = 171.0
-margin_bottom = 39.437
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Active" type="TextureRect" parent="Panel/PlayerGroup/Back/left/Template"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 26 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="mid" type="Container" parent="Panel/PlayerGroup/Back"]
 margin_top = 213.0

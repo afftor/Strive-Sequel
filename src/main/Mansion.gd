@@ -279,7 +279,7 @@ func _ready():
 		#globals.AddItemToInventory(globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'stone'}))
 		show()
 		
-		input_handler.ActivateTutorial("introduction")
+		# input_handler.ActivateTutorial("introduction")
 		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
 			input_handler.interactive_message('intro', '', {})
 	build_task_bar()
@@ -313,44 +313,44 @@ func quest_test():
 	$Exploration.testcombat()
 	#input_handler.emit_signal('EnemyKilled', 'rat')
 
-func _process(delta):
-	if self.visible == false:
-		return
-	$gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
-	$food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food()) + " - " + str(ResourceScripts.game_party.get_food_consumption())
+# func _process(delta):
+# 	if self.visible == false:
+# 		return
+# 	$gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
+# 	$food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food()) + " - " + str(ResourceScripts.game_party.get_food_consumption())
 	
-	$population.text = "Population: "+ str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
-	#buildscreen()
-	update_task_bar()
-	if input_handler.globalsettings.turn_based_time_flow == false:
-		$TimeNode/HidePanel.visible = gamepaused_nonplayer
-		if gamepaused == false:
-			for i in get_tree().get_nodes_in_group("pauseprocess"):
-				if i.visible == true:
-					previouspeed = gamespeed
-					changespeed(timebuttons[0], false)
-					gamepaused = true
-					gamepaused_nonplayer = true
-		else:
-			var allnodeshidden = true
-			for i in get_tree().get_nodes_in_group("pauseprocess"):
-				if i.visible == true:
-					allnodeshidden = false
-					break
+# 	$population.text = "Population: "+ str(ResourceScripts.game_party.characters.size()) +"/" + str(ResourceScripts.game_res.get_pop_cap())
+# 	#buildscreen()
+# 	update_task_bar()
+# 	if input_handler.globalsettings.turn_based_time_flow == false:
+# 		$TimeNode/HidePanel.visible = gamepaused_nonplayer
+# 		if gamepaused == false:
+# 			for i in get_tree().get_nodes_in_group("pauseprocess"):
+# 				if i.visible == true:
+# 					previouspeed = gamespeed
+# 					changespeed(timebuttons[0], false)
+# 					gamepaused = true
+# 					gamepaused_nonplayer = true
+# 		else:
+# 			var allnodeshidden = true
+# 			for i in get_tree().get_nodes_in_group("pauseprocess"):
+# 				if i.visible == true:
+# 					allnodeshidden = false
+# 					break
 			
 			
 			
-			if allnodeshidden == true && gamepaused_nonplayer == true:
-				restoreoldspeed(previouspeed)
-				gamepaused_nonplayer = false
-				gamepaused = false
+# 			if allnodeshidden == true && gamepaused_nonplayer == true:
+# 				restoreoldspeed(previouspeed)
+# 				gamepaused_nonplayer = false
+# 				gamepaused = false
 		
-		if gamespeed != 0:
-			gametime += delta * gamespeed
-			$TimeNode/dayprogress.value = input_handler.calculatepercent(gametime, variables.SecondsPerHour)
-			if gametime >= variables.SecondsPerHour:
-				gametime -= variables.SecondsPerHour
-				advance_hour()
+# 		if gamespeed != 0:
+# 			gametime += delta * gamespeed
+# 			$TimeNode/dayprogress.value = input_handler.calculatepercent(gametime, variables.SecondsPerHour)
+# 			if gametime >= variables.SecondsPerHour:
+# 				gametime -= variables.SecondsPerHour
+# 				advance_hour()
 
 func advance_hour():
 	ResourceScripts.game_globals.hour += 1

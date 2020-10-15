@@ -114,6 +114,7 @@ func options(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $Options, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$Options.visible = pressed
+	$Options.open()
 
 
 func credits(pressed, pressed_button):

@@ -52,10 +52,10 @@ func activate_cheats():
 
 
 func open():
-	show()
 	$TabContainer/debug/EnterCodeMenu/Activate.disabled = true
 	$TabContainer/debug/EnterCodeMenu.visible = !variables.cheats_active
 	$TabContainer/debug/OpenCheatsMenu.visible = variables.cheats_active
+	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
 	

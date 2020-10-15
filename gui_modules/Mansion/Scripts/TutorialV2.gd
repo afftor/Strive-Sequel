@@ -8,7 +8,8 @@ var tutorials = [
 	"crafting",
 	"traveling",
 	"job",
-	"quest"
+	"quest",
+	"exploration"
 
 ]
 
@@ -38,13 +39,14 @@ onready var TutList = $TutList/VBoxContainer
 
 
 func _ready():
+	gui_controller.add_close_button(self)
 	$Back.connect("pressed", self, "change_index", [-1])
 	$Forward.connect("pressed", self, "change_index", [1])
 	$Hide.connect("pressed", self, "hide")
 
 func open(tutorial = null):
+	self.raise()
 	$TutorialImage.hide()
-
 	unfade(self)
 	yield(get_tree().create_timer(0.5), "timeout")
 
@@ -53,8 +55,8 @@ func open(tutorial = null):
 		if !tut in ResourceScripts.game_progress.active_tutorials:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate(TutList)
-		newbutton.hide()
-		unfade(newbutton, 0.3)
+		# newbutton.hide()
+		# unfade(newbutton, 0.3)
 		newbutton.get_node("Label").text = tut.capitalize()
 		newbutton.set_meta("tut", tut)
 		newbutton.connect("pressed", self, "show_tutorial_list", [tut])
@@ -122,3 +124,4 @@ func fade(window):
 	yield(get_tree().create_timer(0.5), "timeout")
 	window.hide()
 	# window.set("modulate", Color(1, 1, 1, 0))
+
