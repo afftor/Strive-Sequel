@@ -208,7 +208,7 @@ func get_work():
 func get_obed_drain(value):
 	var rule_bonus = 0.0
 	if work_rules.luxury: rule_bonus = 0.25
-	value *= parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease ')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty'))
+	value *= parent.get_stat('obDrainReduction') * (1 + parent.get_stat('obDrainIncrease')) * (1 - rule_bonus - 0.0075 * parent.get_stat('loyalty'))
 	return value
 
 func predict_obed_time():

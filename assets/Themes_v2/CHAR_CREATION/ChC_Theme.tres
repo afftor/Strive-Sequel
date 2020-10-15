@@ -69,29 +69,33 @@ region_rect = Rect2( 0, 0, 40, 40 )
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 40, 40 )
 
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 300, 40 )
+
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
 [sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 12 )
-region_rect = Rect2( 0, 0, 300, 40 )
-
-[sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="StyleBoxTexture" id=18]
+[sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="StyleBoxTexture" id=19]
+[sub_resource type="StyleBoxTexture" id=18]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 300, 40 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=19]
 size = 24
 font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 12, 48 )
 
 [sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 6 )
@@ -102,14 +106,10 @@ texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 12, 48 )
 
 [sub_resource type="StyleBoxTexture" id=23]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 12, 48 )
-
-[sub_resource type="StyleBoxTexture" id=24]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 12, 256 )
 
-[sub_resource type="StyleBoxTexture" id=25]
+[sub_resource type="StyleBoxTexture" id=24]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 12, 256 )
 
@@ -183,23 +183,23 @@ OptionButton/constants/arrow_margin = 2
 OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = null
 OptionButton/icons/arrow = ExtResource( 2 )
-OptionButton/styles/disabled = SubResource( 15 )
-OptionButton/styles/focus = SubResource( 16 )
-OptionButton/styles/hover = SubResource( 17 )
-OptionButton/styles/normal = SubResource( 18 )
-OptionButton/styles/pressed = SubResource( 19 )
+OptionButton/styles/disabled = SubResource( 14 )
+OptionButton/styles/focus = SubResource( 15 )
+OptionButton/styles/hover = SubResource( 16 )
+OptionButton/styles/normal = SubResource( 17 )
+OptionButton/styles/pressed = SubResource( 18 )
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
 TooltipLabel/constants/shadow_offset_x = 1
 TooltipLabel/constants/shadow_offset_y = 1
-TooltipLabel/fonts/font = SubResource( 20 )
+TooltipLabel/fonts/font = SubResource( 19 )
 TooltipPanel/styles/panel = ExtResource( 14 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 21 )
-VScrollBar/styles/grabber_highlight = SubResource( 22 )
-VScrollBar/styles/grabber_pressed = SubResource( 23 )
-VScrollBar/styles/scroll = SubResource( 24 )
-VScrollBar/styles/scroll_focus = SubResource( 25 )
+VScrollBar/styles/grabber = SubResource( 20 )
+VScrollBar/styles/grabber_highlight = SubResource( 21 )
+VScrollBar/styles/grabber_pressed = SubResource( 22 )
+VScrollBar/styles/scroll = SubResource( 23 )
+VScrollBar/styles/scroll_focus = SubResource( 24 )
