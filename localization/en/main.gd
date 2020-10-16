@@ -854,7 +854,7 @@ var TranslationDict = {
 	STATLUST = "Lust",
 	STATLUSTDESCRIPT = "Lust increases with time and allows the use of specific skills. Lust can be a powerful control and resource tool when utilized correctly.",
 	STATPRODUCTIVITY = "Productivity",
-	STATPRODUCTIVITYDESCRIPT = "Affects all productive tasks. Affected by Fatigue and Exhaustion and can be influenced by special effects. ",
+	STATPRODUCTIVITYDESCRIPT = "Affects all productive tasks. Total productivity applies to all occupations, while efficiency will boost specific tasks.",
 	STATCONSENT = "Consent",
 	STATCONSENTDESCRIPT = "Affects consent for actions during sex interactions. Each action has different consent based on traits, partners and other factors. This number represents only the unaltered value. Basic consent grows when having positive results, trying new actions and partners. Also slightly increased from discipline skills. ",
 	

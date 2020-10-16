@@ -529,7 +529,8 @@ func test_mode():
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
 		character.set_slave_category('servant')
-		character.set_stat('obedience', 100)
+		character.set_stat('obedience', 0)
+		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.is_players_character = true
 		character = ResourceScripts.scriptdict.class_slave.new()
