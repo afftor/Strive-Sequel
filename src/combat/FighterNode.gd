@@ -177,13 +177,13 @@ func update_buff(i):
 
 
 func update_hp_label(newhp, newhpp):
-	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
+	if fighter.combatgroup == 'ally' || ResourceScripts.game_progress.show_enemy_hp:
 		$hplabel.text = str(ceil(newhp)) + '/' + str(ceil(fighter.get_stat('hpmax')))
 	else:
 		$hplabel.text = str(ceil(newhpp)) + '%%'
 
 func update_mp_label(newmp, newmpp):
-	if fighter.combatgroup == 'ally' || variables.show_enemy_hp:
+	if fighter.combatgroup == 'ally' || ResourceScripts.game_progress.show_enemy_hp:
 		$mplabel.text = str(floor(newmp)) + '/' + str(floor(fighter.get_stat('mpmax')))
 	else:
 		$mplabel.text = str(floor(newmpp)) + '%%'

@@ -48,7 +48,7 @@ func open():
 		$categories.get_node(i).visible = globals.checkreqs(craftcategories[i].reqs)
 	if craft_category != null:
 		select_category(craft_category)
-	input_handler.ActivateTutorial('crafting')
+	# input_handler.ActivateTutorial('crafting')
 
 func clear():
 	craft_category = null

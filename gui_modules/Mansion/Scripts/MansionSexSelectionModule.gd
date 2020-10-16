@@ -11,7 +11,7 @@ func _ready():
 
 func start_scene():
 	var choosen_chars = get_parent().sex_participants
-	if !variables.unlimited_date_sex:
+	if !ResourceScripts.game_progress.unlimited_date_sex:
 		ResourceScripts.game_globals.daily_sex_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -28,7 +28,7 @@ func start_scene():
 
 func start_date():
 	var person = get_parent().sex_participants[0]
-	if !variables.unlimited_date_sex:
+	if !ResourceScripts.game_progress.unlimited_date_sex:
 		ResourceScripts.game_globals.daily_dates_left -= 1
 	ResourceScripts.core_animations.BlackScreenTransition()
 	yield(get_tree().create_timer(0.5), "timeout")

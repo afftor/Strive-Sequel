@@ -23,6 +23,25 @@ var stored_events = {
 
 var completed_locations = {}
 
+
+#Cheats
+var cheats_active = false
+var instant_travel = false
+var skip_combat = false
+var free_upgrades = false
+var instant_upgrades = false
+var unlock_all_upgrades = false
+var invincible_player = false
+var show_enemy_hp = true
+var social_skill_unlimited_charges = false
+var allow_skip_fights = false
+var unlimited_date_sex = false
+var unlock_all_classes = false
+
+# Cheat codes testing only
+var cheat_code = "12345qwerty"
+
+
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
 

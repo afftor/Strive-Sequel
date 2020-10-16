@@ -8,7 +8,7 @@ func _ready():
 	$UpgradeDescript/UnlockButton.connect("pressed", self, "unlockupgrade")
 	
 	yield(get_tree().create_timer(0.3), "timeout")
-	if variables.unlock_all_upgrades == true:
+	if ResourceScripts.game_progress.unlock_all_upgrades == true:
 		for i in upgradedata.upgradelist.values():
 			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	hide()
@@ -67,7 +67,7 @@ func open():
 		$ActiveUpgrade/ProgressBar.max_value = tempupgrade.levels[tempupgradelevel].taskprogress
 	else:
 		$ActiveUpgrade.hide()
-	input_handler.ActivateTutorial('upgrades')
+	# input_handler.ActivateTutorial('upgrades')
 
 
 func sortupgrades(first, second):
@@ -127,7 +127,7 @@ func selectupgrade(upgrade):
 	
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code) && ResourceScripts.game_res.selected_upgrade.code == upgrade.code:
 		canpurchase = false
-	if variables.free_upgrades == true || ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
+	if ResourceScripts.game_progress.free_upgrades == true || ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		canpurchase = true
 	
 	
@@ -148,12 +148,12 @@ func unlockupgrade():
 	if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 		ResourceScripts.game_res.selected_upgrade = {code = upgrade.code, level = currentupgradelevel}
 	else:
-		if variables.free_upgrades == false:
+		if ResourceScripts.game_progress.free_upgrades == false:
 			for i in upgrade.levels[currentupgradelevel].cost:
 				ResourceScripts.game_res.materials[i] -= upgrade.levels[currentupgradelevel].cost[i]
 		var upgradecode = upgrade.code
 		
-		if variables.instant_upgrades == false:
+		if ResourceScripts.game_progress.instant_upgrades == false:
 			ResourceScripts.game_res.upgrade_progresses[upgrade.code] = {level = currentupgradelevel, progress = 0}
 			ResourceScripts.game_res.selected_upgrade = {code = upgradecode, level = currentupgradelevel}
 		else:

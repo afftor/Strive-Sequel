@@ -40,8 +40,8 @@ func _ready():
 		variables.generate_test_chars = false
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
-		variables.unlock_all_upgrades = true
-		variables.skip_combat = false
+		ResourceScripts.game_progress.unlock_all_upgrades = true
+		ResourceScripts.game_progress.skip_combat = false
 		#$UpgradeList._ready()
 		$TestButton.show()
 	

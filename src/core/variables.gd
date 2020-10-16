@@ -228,19 +228,7 @@ var master_charm_quests_rep_bonus = {
 var dungeon_encounter_chance = 0.2
 var exp_scroll_quest_reward = false
 
-#Cheats
-var cheats_active = false
-var instant_travel = false
-var skip_combat = false
-var free_upgrades = false
-var instant_upgrades = false
-var unlock_all_upgrades = false
-var invincible_player = false
-var show_enemy_hp = true
-var social_skill_unlimited_charges = false
-var allow_skip_fights = false
-var unlimited_date_sex = false
-var unlock_all_classes = false
+
 
 #debug_only
 var allow_remote_intereaction = false
@@ -252,10 +240,7 @@ var combat_tests = false #for combat testing
 var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - pass data as is
 
 
-# Cheat codes testing only
-var cheat_codes = [
-	"12345qwerty"
-]
+
 
 
 

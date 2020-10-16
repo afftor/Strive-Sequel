@@ -58,6 +58,8 @@ func list_cheats():
 		newbutton.get_node("Label").text = cheat.capitalize()
 		newbutton.connect("pressed", self, "set_cheat", [cheat, newbutton])
 		newbutton.set_meta("cheat", cheat)
+		if cheat == "instant_upgrades":
+			newbutton.get_node("Label").text = "Unlock All Upgrades"
 		
 		
 func set_cheat(cheat = null, btn = null):
@@ -78,7 +80,7 @@ func set_cheat(cheat = null, btn = null):
 		if button.name == "Button" || button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]:
 			continue
 		button.toggle_mode = !button.get_meta("cheat") in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]
-		button.pressed = variables[button.get_meta("cheat")]
+		button.pressed = ResourceScripts.game_progress[button.get_meta("cheat")]
 
 
 func list_characters():
@@ -234,6 +236,6 @@ func plus_10k_of_guild_reputation():
 	input_handler.SystemMessage("10k of factions reputation added")
 
 func add_new_character():
-	input_handler.get_spec_node(input_handler.NODE_CHARCREATE)
+	input_handler.get_spec_node(input_handler.NODE_CHARCREATE).open("slave", "none", true)
 
 

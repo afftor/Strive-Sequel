@@ -988,7 +988,7 @@ func open_location(data):
 		input_handler.SetMusic(active_location.bgm)
 	
 	
-	input_handler.ActivateTutorial("exploration")
+	# input_handler.ActivateTutorial("exploration")
 	
 	#check if anyone is present
 	build_location_group()
@@ -1143,8 +1143,8 @@ func build_item_panel():
 		newnode.dragdata = i
 		globals.connectitemtooltip(newnode, i)
 		tutorial_items = true
-	if tutorial_items == true:
-		input_handler.ActivateTutorial("exploration_items")
+	# if tutorial_items == true:
+	# 	input_handler.ActivateTutorial("exploration_items")
 
 func build_spell_panel():
 	input_handler.ClearContainer($LocationGui/ItemUsePanel/SpellContainer/VBoxContainer)
@@ -1231,7 +1231,7 @@ func show_heal_items(position):
 	#input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
 
 #func return_character_confirm():
-#	if variables.instant_travel == false:
+#	if ResourceScripts.game_progress.instant_travel == false:
 #		selectedperson.location = 'travel'
 #		selectedperson.travel_target = {area = '', location = ResourceScripts.game_world.mansion_location}
 #		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
@@ -1362,7 +1362,7 @@ func enter_level(level, skip_to_end = false):
 			newbutton.text = 'Complete location'
 			newbutton.connect("pressed",self,"clear_dungeon")
 	
-	if variables.allow_skip_fights:
+	if ResourceScripts.game_progress.allow_skip_fights:
 		newbutton = input_handler.DuplicateContainerTemplate($LocationGui/ScrollContainer/VBoxContainer)
 		newbutton.text = 'Skip to last room'
 		newbutton.connect("pressed",self,"enter_level", [level, true])

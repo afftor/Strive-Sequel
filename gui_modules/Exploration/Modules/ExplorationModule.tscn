@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=2]
+[gd_scene load_steps=142 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -117,6 +117,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=115]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco.png" type="Texture" id=116]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=117]
+[ext_resource path="res://assets/images/tutorial.png" type="Texture" id=118]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -2607,6 +2608,14 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="tutorial" type="Sprite" parent="GuildShop"]
+position = Vector2( -457.213, 464.337 )
+texture = ExtResource( 118 )
+
+[node name="tutorial2" type="Sprite" parent="GuildShop"]
+position = Vector2( -857.373, -198.991 )
+texture = ExtResource( 118 )
 
 [node name="BuyLocation" type="Control" parent="."]
 visible = false

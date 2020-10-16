@@ -53,13 +53,15 @@ func close_job_pannel():
 
 
 func open_jobs_window():
+	person = get_parent().active_person
+	print(person.xp_module.work_rules["luxury"])
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
 		if p.xp_module.work_rules["luxury"]:
 			luxury_rooms_taken += 1
-	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms)
-	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms) && !$work_rules/luxury.is_pressed()
-	person = get_parent().active_person
+	$work_rules/luxury.text = "Luxury Rooms: " + str(luxury_rooms_taken) + "/" + str(ResourceScripts.game_res.upgrades.luxury_rooms + 1)
+	$work_rules/luxury.disabled = (luxury_rooms_taken >= ResourceScripts.game_res.upgrades.luxury_rooms + 1) && person != null && !person.xp_module.work_rules["luxury"]
+	
 	$work_rules/luxury.visible = person != ResourceScripts.game_party.get_master()
 	if person != null:
 		for i in $work_rules.get_children():
@@ -197,6 +199,8 @@ func show_job_details(job, gatherable = false):
 	# 	for i in $job_panel/ScrollContainer/VBoxContainer.get_children():
 	# 		i.pressed = i.get_child(0).text == job.name
 	# 	$job_details/JobName.text = job.name
+	var selected_res
+	var default_resource
 	if !gatherable:
 		if job.has("production"):
 			for i in job.production.values():
@@ -222,6 +226,8 @@ func show_job_details(job, gatherable = false):
 						item_descript = Items.materiallist[i.item].descript
 						globals.connecttexttooltip(newbutton, tr(item_descript) + text)
 				newbutton.connect('pressed', self, 'select_resource', [job, i.code, newbutton])
+				selected_res = i.code
+				default_resource = newbutton
 	else:
 		var number
 		number = person.xp_module.get_progress_resource(job.code)/job.progress_per_item
@@ -232,10 +238,9 @@ func show_job_details(job, gatherable = false):
 		newbutton.set_meta("resource", job.code)
 		globals.connectmaterialtooltip(newbutton, job, text)
 		newbutton.connect('pressed', self, 'select_resource', [job, job.code, newbutton])
-		selected_job = job
-	var default_resource = $job_details/ResourceOptions.get_child(1) if $job_details/ResourceOptions.get_child(1).has_meta("resource") else $job_details/ResourceOptions.get_child(0)
-	selected_resource = default_resource.get_meta("resource")
-	select_resource(job, selected_resource, default_resource)
+		selected_res = job.code
+		default_resource = newbutton
+	select_resource(job, selected_res, default_resource)
 
 func select_resource(job, resource, newbutton):
 	for button in $job_details/ResourceOptions.get_children():
