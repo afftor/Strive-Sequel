@@ -42,8 +42,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'warn',
-		value = [['caster.charm', '*3', '/100', '+1', '*24'],  ['caster.charm', "*0.04",'+4'],['1']],
-		damagestat = ['+submissionObedience', '+authority', '+consent'],
+		value = [['caster.charm', '*3', '/100', '+1', '*24'],  ['caster.charm', "*0.04",'+4']],
+		damagestat = ['+submissionObedience', '+authority'],
 	},
 
 #	reward = {#
@@ -87,7 +87,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'sexreward',
-		value = [['caster.sexuals', '*0.08','+8'], ['caster.sexuals', '*3', '/100', '+1', '*36'], ['25'], ['1'], ['10'],['20']],
+		value = [['2'], ['caster.sexuals', '*3', '/100', '+1', '*36'], ['25'], ['1'], ['10'],['20']],
 		damagestat = ['+loyalty', '+loyaltyObedience', '-lust', '+consent','base_exp','base_exp'],
 		receiver = ['target','target','target','target','target','caster'],
 	},
@@ -109,8 +109,8 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'punish',
-		value = [['caster.physics', '*0.05','+12'], ['caster.physics', '*3', '/100', '+1', '*24'], ['caster.charm', "*0.12",'+10'], ['1']],
-		damagestat = ['+submission', '+submissionObedience', '+authority','+consent'],
+		value = [['caster.physics', '*3', '/100', '+1', '*24'], ['caster.charm', "*0.06",'+8']],
+		damagestat = ['+submissionObedience', '+authority'],
 #		value = [['15'],['caster.physics', '*0.3', '+40']],
 #		damagestat = ['+obedience','+fear'],
 	},
@@ -133,10 +133,10 @@ var Skilllist = {
 		dialogue_show_repeat = true,
 		dialogue_image = 'abuse',
 		
-		value = [['caster.physics', '*0.1','+12'], ['caster.physics', '*3', '/100', '+1', '*36'], ['5'], ['10'], ['48']],
-		damagestat = ['+submission', '+submissionObedience', '+authority', '-loyalty', '+loyaltyObedience'],
+		value = [['caster.physics', '*3', '/100', '+1', '*36'], ['5'], ['10'], ['48']],
+		damagestat = ['+submissionObedience', '+authority', '-loyalty', '+loyaltyObedience'],
 		
-		receiver = ['target','target','target','target','caster']
+		receiver = ['target','target','target','caster']
 	},
 	publichumiliation = {
 		code = 'publichumiliation',
@@ -181,9 +181,9 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'public_sex',
-		value = [['caster.physics', '*0.05','+15'], ['24'], ['caster.sexuals', "*0.1",'+15'], ['10'], ['24'], ['15']],
-		damagestat = ['+submission', '+submissionObedience', '+lust','-loyalty', '+submissionObedience','+lust'],
-		receiver = ['target','target','target', 'target', 'all','all']
+		value = [['48'], ['caster.sexuals', "*0.1",'+15'], ['10'], ['24'], ['15']],
+		damagestat = ['+submissionObedience', '+lust','-loyalty', '+submissionObedience','+lust'],
+		receiver = ['target','target', 'target', 'all','all']
 	},
 	publicexecution = {
 		code = 'publicexecution',
@@ -203,9 +203,9 @@ var Skilllist = {
 		dialogue_image = 'execution',
 		dialogue_report = '',
 		dialogue_show_repeat = false,
-		value = [['30'],['80'],['25'],['15']],
-		damagestat = ['+submission', '+submissionObedience', '+authority', '-loyalty'],
-		receiver = ['all','all','all','all']
+		value = [['96'],['25'],['15']],
+		damagestat = ['+submissionObedience', '+authority', '-loyalty'],
+		receiver = ['all','all','all']
 	},
 	
 	charm = {#
@@ -227,12 +227,10 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'charm',
-		value = [['caster.charm', '*0.08','+10'], ['36']],
+		value = [['caster.charm', '*0.06','+4'], ['caster.charm', '*3', '/100', '+1', '*36']],
 		damagestat = ['+loyalty', '+loyaltyObedience'],
-#		value = ['caster.charm','*0.25','+25'],
-#		damagestat = 'obedience',
 	},
-	seduce = {#
+	seduce = {
 		code = 'seduce',
 		descript = '',
 		type = 'social',
@@ -251,12 +249,12 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'seduce',
-		value = [['caster.charm', '*0.05','+5'], ['36'],['2']],
+		value = [['4'], ['caster.charm', '*3', '/100', '+1', '*36'],['2']],
 		damagestat = ['+loyalty', '+loyaltyObedience','+consent'],
 #		value = [['0']],
 #		damagestat = ['no_stat']
 	},
-	greatseduce = {#prevents escape and obedience decay, maximizes obedience, increases lust growth
+	greatseduce = {
 		code = 'greatseduce',
 		descript = '',
 		type = 'social',
@@ -275,7 +273,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = false,
 		dialogue_image = 'seduce',
-		value = [['caster.charm', '*0.1','+7'], ['48'],['3']],
+		value = [['6'], ['caster.charm', '*3', '/100', '+1', '*48'],['3']],
 		damagestat = ['+loyalty', '+loyaltyObedience','+consent'],
 	},
 	drain = {#target -20 energy, -20% hp, -20% mana | caster takes all of it.
@@ -336,7 +334,7 @@ var Skilllist = {
 		dialogue_report = '',
 		dialogue_show_repeat = true,
 		dialogue_image = 'serve',
-		value = [['20'], ['40'], ['caster.charm*0.03','+5'],['20'],['10']],
+		value = [['20'], ['caster.charm', '*3', '/100', '+1', '*32'], ['2'],['20'],['10']],
 		damagestat = ['-lust','loyaltyObedience','loyalty','base_exp','base_exp'],
 		receiver = ['caster','target','target','target','caster']
 	},
@@ -358,10 +356,8 @@ var Skilllist = {
 		dialogue_show_repeat = true,
 		dialogue_image = 'sedation',
 		tags = ['positive','repeated_effect_reduce_loyalty'],
-		value = [['caster.wits', '*0.08','+8'], ['48']],
+		value = [['3'], ['caster.wits', '*3', '/100', '+1', '*36']],
 		damagestat = ['+loyalty', '+loyaltyObedience'],
-#		value = [['caster.wits','*0.25','+30']],
-#		damagestat = ['obedience'],
 	},
 	fear = {
 		code = 'fear',
@@ -381,8 +377,8 @@ var Skilllist = {
 		dialogue_show_repeat = true,
 		dialogue_image = 'fear',
 		tags = ['negative','repeated_effect_reduce_submission'],
-		value = [['caster.wits', '*0.1','+10'], ['48'], ['10']],
-		damagestat = ['+submission', '+submissionObedience','+authority'],
+		value = [['caster.wits', '*3', '/100', '+1', '*48'], ['10']],
+		damagestat = ['+submissionObedience','+authority'],
 	},
 	innervate = {#REDO
 		code = 'innervate',
@@ -462,7 +458,7 @@ var Skilllist = {
 		dialogue_image = 'mindcontrol',
 		icon = load("res://assets/images/iconsskills/Mind_Control.png"),
 		tags = ['positive'],
-		value = [['150'], ['100'], ['50']],
+		value = [['150'], ['30'], ['100']],
 		damagestat = ['authority', 'loyalty','+consent'],
 	},
 	stopmindcontrol = {#fix to target self and all other params
@@ -526,8 +522,8 @@ var Skilllist = {
 		value = ['0'],
 		damagestat = 'no_stat'
 	},
-	authority = {
-		code = 'authority',
+	supremacy = {
+		code = 'supremacy',
 		descript = '',
 		type = 'social',
 		ability_type = 'skill',

@@ -530,14 +530,13 @@ var effect_table = {
 		duration = 'parent_arg', 
 		stack = 1,
 		no_escape = true,
-		no_loyal_reduction = true,
 		tags = ['s_dur_add'],
 		sub_effects = [],
 		atomic = [],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
-				description = tr("BUFFSEDUCE"),
+				description = "Seduce: Escape chance decreased",
 				limit = 1,
 				t_name = '',
 				mansion_only = true,
@@ -552,14 +551,13 @@ var effect_table = {
 		duration = 'parent_arg', 
 		stack = 1,
 		no_escape = true,
-		no_loyal_reduction = true,
 		tags = ['s_dur_add'],
 		sub_effects = [],
 		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.5}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Reward_with_sex 3.png", 
-				description = tr("BUFFGREATSEDUCE"),
+				description = "Greater Seduce: Escape chance decreased; Lust Growth increased by 50%%",
 				limit = 1,
 				t_name = '',
 				mansion_only = true,
@@ -575,11 +573,11 @@ var effect_table = {
 		stack = 1,
 		tags = ['s_dur_add'],
 		sub_effects = [],
-		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.2}],
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.2}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", 
-				description = "charmed",
+				description = "Charmed: Obedience drain reduced by 20%%",
 				limit = 1,
 				t_name = '',
 				mansion_only = true,

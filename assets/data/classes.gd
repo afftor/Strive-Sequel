@@ -14,7 +14,7 @@ var professions = {
 		reqs = [{code = 'global_profession_limit', profession = 'master', value = 1},{code = 'cant_spawn_naturally'}],
 		statchanges = {},
 		traits = ['master'],
-		skills = ['praise', 'warn','punish','master_lust_skill'],
+		skills = ['praise','punish','master_lust_skill'],
 		combatskills = [],
 	},
 	ruler = {
@@ -28,7 +28,7 @@ var professions = {
 		reqs = [{code = 'has_profession', profession = 'master', check = true}],
 		statchanges = {hpmax = 20},
 		traits = [],
-		skills = ['authority','publichumiliation','publicsexhumiliation','publicexecution'],
+		skills = ['supremacy','publichumiliation','publicsexhumiliation','publicexecution'],
 		combatskills = ['inspire'],
 	},
 	watchdog = {
@@ -42,7 +42,7 @@ var professions = {
 		reqs = [{code = 'stat', stat = 'physics', operant = 'gte', value = 20}],
 		statchanges = {timid_factor = -1, physics_bonus = 10},
 		traits = [],
-		skills = ['praise', 'punish', 'warn'],
+		skills = ['praise', 'warn'],
 		combatskills = [],
 	},
 	sadist = {
