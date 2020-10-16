@@ -997,7 +997,7 @@ func set_shield(value):
 func deal_damage(value, source = 'normal'):
 	if npc_reference == 'combat_global': return null
 	var tmp = hp
-	if ResourceScripts.game_party.characters.has(self.id) && variables.invincible_player:
+	if ResourceScripts.game_party.characters.has(self.id) && ResourceScripts.game_progress.invincible_player:
 		return 0
 	value *= (1.0 - get_stat('resists')['all']/100.0)
 	if source != 'true':

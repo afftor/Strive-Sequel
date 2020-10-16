@@ -129,7 +129,7 @@ func start_combat(newplayergroup, newenemygroup, background, music = 'battle1', 
 	# 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	# 	yield(get_tree().create_timer(0.5), 'timeout')
 	input_handler.emit_signal("CombatStarted", encountercode)
-	input_handler.ActivateTutorial("combat")
+	# input_handler.ActivateTutorial("combat")
 	show()
 	input_handler.combat_node = self
 	autoskill = null

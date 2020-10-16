@@ -402,7 +402,7 @@ func slave_list_manager():
 	SlaveModule.show_slave_info()
 
 func update_sex_date_buttons():
-	if variables.unlimited_date_sex:
+	if ResourceScripts.game_progress.unlimited_date_sex:
 		if sex_participants.has(ResourceScripts.game_party.get_master()):
 			SexSelect.get_node("DateButton").disabled = true
 		else:
@@ -449,7 +449,7 @@ func _on_TestButton_pressed():
 
 
 func test_mode():
-	variables.allow_skip_fights = true
+	ResourceScripts.game_progress.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()
 
 	if generate_test_chars:
@@ -632,7 +632,7 @@ func test_mode():
 		)
 		ResourceScripts.game_res.money = 80
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 2
+			ResourceScripts.game_res.materials[i] = 200000
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))

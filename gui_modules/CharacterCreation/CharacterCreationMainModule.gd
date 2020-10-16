@@ -119,6 +119,7 @@ func _ready():
 	for i in $DietPanel/VBoxContainer.get_children():
 		i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
 	$BackButton.connect("pressed", self, "Exit")
+	$BackButtonCheats.connect("pressed", self, "hide")
 	open()
 
 func Exit():
@@ -183,7 +184,7 @@ func finish_diet_selection():
 		text += i + " "
 #	$bodyparts2/diet.text = text
 
-func open(type = 'slave', newguild = 'none'):
+func open(type = 'slave', newguild = 'none', is_from_cheats = false):
 	preservedsettings.clear()
 	show()
 	guild = newguild
@@ -209,7 +210,8 @@ func open(type = 'slave', newguild = 'none'):
 #	$bodyparts2/slave_class.visible = mode == 'slave'
 #	$bodyparts2/slave_class.select(0)
 	globals.connecttexttooltip($SlaveCreationModule/ScrollContainer/HBoxContainer/bodyparts2/type_label, "Slave&Peon:\n" + tr('SLAVECLASSDESCRIPT') + "\n\n" + tr('SERVANTCLASSDESCRIPT'))
-	$BackButton.visible = type != 'slave'
+	$BackButton.visible = type != 'slave' || is_from_cheats
+	$BackButtonCheats.visible = is_from_cheats
 	rebuild_slave()
 
 

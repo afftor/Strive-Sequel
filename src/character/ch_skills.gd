@@ -142,7 +142,7 @@ func use_social_skill(s_code, target):
 		data.text = text
 		
 		var charges = Skilldata.get_charges(template, parent)
-		if charges > 0 && variables.social_skill_unlimited_charges == false && !template.has('custom_used_charges'):
+		if charges > 0 && ResourceScripts.game_progress.social_skill_unlimited_charges == false && !template.has('custom_used_charges'):
 			if social_skills_charges.has(s_code):
 				social_skills_charges[s_code] += 1
 			else:
@@ -171,7 +171,7 @@ func use_social_skill(s_code, target):
 		ResourceScripts.game_res.money -= template.goldcost
 	parent.mp -= template.manacost
 	
-	if typeof(template.charges) == TYPE_INT && template.charges > 0 && variables.social_skill_unlimited_charges == false:
+	if typeof(template.charges) == TYPE_INT && template.charges > 0 && ResourceScripts.game_progress.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
 			social_skills_charges[s_code] += 1
 		else:

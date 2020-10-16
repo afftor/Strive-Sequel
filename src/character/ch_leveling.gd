@@ -14,7 +14,7 @@ var messages = []
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent, 'exp_for_level')
-		input_handler.ActivateTutorial("levelup")
+		# input_handler.ActivateTutorial("levelup")
 	base_exp = value
 
 func update_exp(value, is_set):

@@ -135,8 +135,8 @@ func open(tempperson):
 	person = tempperson
 	$job_panel.hide()
 	$class_learn.hide()
-	input_handler.ActivateTutorial('slavetab')
-	input_handler.ActivateTutorial('skills')
+	# input_handler.ActivateTutorial('slavetab')
+	# input_handler.ActivateTutorial('skills')
 	show()
 	update()
 	
@@ -146,8 +146,8 @@ func open(tempperson):
 
 func hide():
 	.hide()
-	if ResourceScripts.game_party.active_tasks.size() > 0:
-		input_handler.ActivateTutorial('tasklist')
+	# if ResourceScripts.game_party.active_tasks.size() > 0:
+	# 	input_handler.ActivateTutorial('tasklist')
 
 var authority_lines = {
 	low = "Defiance",

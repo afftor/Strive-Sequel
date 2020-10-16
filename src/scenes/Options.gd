@@ -2,7 +2,6 @@ extends Panel
 
 #warning-ignore-all:return_value_discarded
 # var cheats = ['instant_travel','skip_combat','free_upgrades','instant_upgrades','invincible_player','show_enemy_hp','social_skill_unlimited_charges']
-
 func _ready():
 	for i in $TabContainer/Audio/VBoxContainer.get_children():
 		i.connect("value_changed", self, 'soundsliderchange',[i.name])
@@ -23,7 +22,7 @@ func _ready():
 
 	$TabContainer/debug/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
 	$TabContainer/debug/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
-	$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "activate_cheats")
+	$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
 	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
 
 # TODO Implement get code method
@@ -42,19 +41,28 @@ func open_cheats_menu():
 
 
 func text_changed(text):
-	$TabContainer/debug/EnterCodeMenu/Activate.disabled = !variables.cheat_codes.has(text)
+	print(text)
+	if ResourceScripts.game_progress.cheat_code == text:
+		$TabContainer/debug/EnterCodeMenu/Activate.disconnect("pressed", self, "go_for_code")
+		$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "activate_cheats")
+
+	# $TabContainer/debug/EnterCodeMenu/Activate.disabled = !ResourceScripts.game_progress.cheat_code == text
 
 
 func activate_cheats():
-	variables.cheats_active = true
+	ResourceScripts.game_progress.cheats_active = true
 	$TabContainer/debug/EnterCodeMenu.hide()
 	$TabContainer/debug/OpenCheatsMenu.show()
 
 
+func go_for_code():
+	OS.shell_open("https://www.google.com")
+
+
 func open():
-	$TabContainer/debug/EnterCodeMenu/Activate.disabled = true
-	$TabContainer/debug/EnterCodeMenu.visible = !variables.cheats_active
-	$TabContainer/debug/OpenCheatsMenu.visible = variables.cheats_active
+	# $TabContainer/debug/EnterCodeMenu/Activate.disabled = true
+	$TabContainer/debug/EnterCodeMenu.visible = !ResourceScripts.game_progress.cheats_active
+	$TabContainer/debug/OpenCheatsMenu.visible = ResourceScripts.game_progress.cheats_active
 	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)

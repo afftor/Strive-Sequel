@@ -853,7 +853,7 @@ func StartCombat(encounter = null):
 		data = Enemydata.encounters[encounter]
 		input_handler.encounter_win_script = Enemydata.encounters[encounter].win_effects
 	
-	if variables.skip_combat == true:
+	if ResourceScripts.game_progress.skip_combat == true:
 		input_handler.finish_combat()
 		return
 	
@@ -988,7 +988,7 @@ func return_characters_from_location(locationid):
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
 		if person.check_location(location.id, true) || person.travel.travel_target.location == location.id:
-			if variables.instant_travel == false:
+			if ResourceScripts.game_progress.instant_travel == false:
 #				person.travel.location = 'travel'
 #				person.travel.travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 #				person.travel.travel_time = area.travel_time + location.travel_time

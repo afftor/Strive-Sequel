@@ -272,8 +272,8 @@ func open_location(data):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-	if !ResourceScripts.game_progress.active_tutorials.has("exploration"):
-		input_handler.ActivateTutorial("exploration")
+	# if !ResourceScripts.game_progress.active_tutorials.has("exploration"):
+	# 	input_handler.ActivateTutorial("exploration")
 
 	#check if anyone is present
 	build_location_group()
@@ -697,7 +697,7 @@ func enter_level(level, skip_to_end = false):
 #			newbutton.text = 'Forget Location'
 #			newbutton.connect("pressed",self,"clear_dungeon")
 
-	if variables.allow_skip_fights:
+	if ResourceScripts.game_progress.allow_skip_fights:
 		newbutton = input_handler.DuplicateContainerTemplate(
 			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 		)
@@ -871,9 +871,9 @@ func build_item_panel():
 		newnode.dragdata = i
 		globals.connectitemtooltip(newnode, i)
 		tutorial_items = true
-	if tutorial_items == true:
-		if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
-			input_handler.ActivateTutorial("exploration_items")
+	# if tutorial_items == true:
+	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
+	# 		input_handler.ActivateTutorial("exploration_items")
 	switch_panel(panelmode)
 
 
@@ -1006,7 +1006,7 @@ func enter_dungeon():
 		)
 		newbutton.text = 'Advance'
 		newbutton.connect("pressed", self, "area_advance", ['advance'])
-		if variables.allow_skip_fights:
+		if ResourceScripts.game_progress.allow_skip_fights:
 			newbutton = input_handler.DuplicateContainerTemplate(
 				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 			)

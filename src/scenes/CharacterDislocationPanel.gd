@@ -225,7 +225,7 @@ func travel_confirm():
 		var travel_cost = globals.calculate_travel_time(destination,dislocation_area)
 		if !person.is_controllable():
 			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
-		if variables.instant_travel == false:
+		if ResourceScripts.game_progress.instant_travel == false:
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = destination_area, location = destination}
