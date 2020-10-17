@@ -289,9 +289,12 @@ func use_social_skill(s_code, target):
 #						else:
 #							bonusspeech.append("submission_loyalty")
 					tmp = h.stat_update(stat, i.value)
-					if stat in ['loyaltyObedience', 'submissionObedience']:
+					if stat in ['loyaltyObedience', 'submissionObedience', 'obedience']:
 						if h.get_stat('obedience') >= h.get_obed_cap():
-							detail_tags.append('obed_cap') #2implement this tag in log
+							detail_tags.append('obed_cap') 
+					if stat  == 'lust':
+						if h.get_stat('lust') >= h.get_stat('lustmax'):
+							detail_tags.append('lust_cap')
 					if i.is_drain: parent.stat_update(stat, -tmp)
 				1:
 					tmp = h.stat_update(stat, -i.value)
@@ -310,18 +313,20 @@ func use_social_skill(s_code, target):
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
-				change = ''#
+				change = ''
 			effect_text += ": "
-			if maxstat != 0 && !stat in ['loyaltyObedience', 'submissionObedience', 'obedience','loyalty','authority','submission','consent']:
+			if maxstat != 0 && !(stat in ['loyaltyObedience', 'submissionObedience', 'obedience','authority','submission','consent', 'lust', 'loyalty']):
 				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % i.value) +  ")"
 			else:
-				effect_text += change + str(floor(tmp))
+				effect_text += change + str(floor(tmp)) 
 			if detail_tags.has("noauthority") && stat == 'loyalty':
 				effect_text += " - Not enough Authority"
 			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
 				effect_text += " - Maxed"
 			if detail_tags.has("obed_cap") && stat.ends_with('Obedience'):
-				effect_text += ("(%.d)" % i.value) + (" - Maxed (%d)" % maxstat)
+				effect_text += ("(%d) - Maxed" % i.value)
+			if detail_tags.has("lust_cap") && stat == 'lust':
+				effect_text += " - Maxed"
 			if detail_tags.has("blocked") && stat == 'obedience':
 				effect_text += ' - Is in resist mode'
 			for i in bonusspeech:
