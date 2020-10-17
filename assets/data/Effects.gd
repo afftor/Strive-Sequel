@@ -564,10 +564,10 @@ var effect_table = {
 			}
 		],
 	},
-	e_t_charm1 = {
+	e_t_allure1 = {
 		type = 'temp_s',
 		target = 'target',
-		name = 'charm1',
+		name = 'allure1',
 		tick_event = variables.TR_TICK,
 		duration = 'parent_arg', 
 		stack = 1,
@@ -577,7 +577,7 @@ var effect_table = {
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", 
-				description = "Charmed: Obedience drain reduced by 20%%",
+				description = "Allured: Obedience drain reduced by 20%%",
 				limit = 1,
 				t_name = '',
 				mansion_only = true,

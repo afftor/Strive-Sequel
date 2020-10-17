@@ -25,9 +25,9 @@ func showup(node, skillcode):
 	
 	var charges = Skilldata.get_charges(skill, character)
 	if charges > 0 and skill.cooldown > 0:
-		text += "\n\nMax Charges: [color=yellow]" + str(charges) + "[/color]. Cooldown: " + str(skill.cooldown) + " day(s)."
+		text += "\n\nMax Charges: {color=yellow|" + str(charges) + "}. Cooldown: " + str(skill.cooldown) + " day(s)."
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:
-		text += "\n\nCooldown: [color=yellow]" + str(skill.combatcooldown) + "[/color]"
+		text += "\n\nCooldown: {color=yellow|" + str(skill.combatcooldown) + "}"
 	
 	$descript.bbcode_text = globals.TextEncoder(text)
 	
