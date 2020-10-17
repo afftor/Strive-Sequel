@@ -142,6 +142,14 @@ func convert_to_new_template():
 		tmp.is_drain = is_drain
 		tmp.is_process = (i == 0)
 		res_res.value.push_back(tmp)
+	if template.has('value_caster_reqs'):
+		for id in template.value_caster_reqs: 
+			if res_res.value.size() < id + 1: continue
+			res_res.value[id].caster_reqs = template.value_caster_reqs[id].duplicate()
+	if template.has('value_target_reqs'):
+		for id in template.value_target_reqs: 
+			if res_res.value.size() < id + 1: continue
+			res_res.value[id].target_reqs = template.value_target_reqs[id].duplicate()
 	res_res.catalysts = {}
 	res_res.effects = template.effects.duplicate()
 	if template.has('catalysts'): res_res.catalysts = template.catalysts.duplicate()
