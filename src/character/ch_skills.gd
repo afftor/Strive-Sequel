@@ -310,7 +310,7 @@ func use_social_skill(s_code, target):
 				maxstat = 0
 			var change = '+'
 			if tmp < 0:
-				change = '-'#
+				change = ''#
 			effect_text += ": "
 			if maxstat != 0 && !stat in ['loyaltyObedience', 'submissionObedience', 'obedience','loyalty','authority','submission','consent']:
 				effect_text += str(floor(h.get_stat(stat))) +"/" + str(floor(maxstat)) +  " (" + change + "" + str(floor(tmp)) + ("(%d)" % i.value) +  ")"
@@ -318,14 +318,8 @@ func use_social_skill(s_code, target):
 				effect_text += change + str(floor(tmp))
 			if detail_tags.has("noauthority") && stat == 'loyalty':
 				effect_text += " - Not enough Authority"
-			if detail_tags.has("loyalty_repeat") && !detail_tags.has("noauthority") && stat == 'loyalty':
-				effect_text += "(lowered effect)"
-			if detail_tags.has("submission_repeat") && stat == 'submission':
-				effect_text += "(lowered effect)"
 			if detail_tags.has("loyaltymaxed") && stat == 'loyalty':
 				effect_text += " - Maxed"
-			if detail_tags.has("submissionmaxed") && stat == 'submission':
-				effect_text += ' - Maxed'
 			if detail_tags.has("obed_cap") && stat.ends_with('Obedience'):
 				effect_text += ("(%.d)" % i.value) + (" - Maxed (%d)" % maxstat)
 			if detail_tags.has("blocked") && stat == 'obedience':

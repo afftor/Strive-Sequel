@@ -65,6 +65,7 @@ var hexcolordict = {
 	green = '#00b700',
 	white = '#ffffff',
 	aqua = '#24ffdb',
+	pink = '#f824ff',
 	factor1 = '#ff5e5e',
 	factor2 = '#f6922a',
 	factor3 = '#4dff83',

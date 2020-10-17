@@ -471,7 +471,7 @@ func test_mode():
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
-		character.unlock_class("dominator")
+		character.unlock_class("ruler")
 		# character.unlock_class("druid")
 		# character.unlock_class("assassin")
 		# character.unlock_class("ruler")
@@ -540,7 +540,7 @@ func test_mode():
 		ResourceScripts.game_globals.date = 3
 		ResourceScripts.game_globals.hour = 5
 
-		character.set_stat('obedience', 100)
+		character.set_stat('obedience', 0)
 		#character.fear = 25
 		#character.base_exp = 99
 		character.set_stat('charm_factor', 5)
@@ -624,7 +624,7 @@ func test_mode():
 						{code = 'sexuals_factor', value = 1, operant = "+"},
 						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
-						{code = 'obedience', operant = '+', value = 30},
+						{code = 'obedience', operant = '+', value = 0},
 						{code = 'tag', operant = 'remove', value = 'no_sex'},
 					]
 				}

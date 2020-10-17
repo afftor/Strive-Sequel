@@ -1,3 +1,10 @@
+Dating changes:
+Dating results are now defined by dominance of mood or fear during it. If mood is higher, slave receive loyalty boost with some consent. If fear is higher, slave receive obedience and authority boosts. Repeated actions will become less effective with each new use during same date. Dating descriptions are more varied now.
+
+Obedience system changes:
+Obedience is now capped based on authority and is not consumed statically. Loyalty no longer sets obedience to infinite but loyalty and luxury room will still make it infinite (so you still able to have some characters with no obedience issues). Submission have been removed, instead skills now provide "positive" obedience, "negative" obedience (scaling on tame/timid factor of target) or neutral obedience (generally from sex oriented skills). Social skills have been revamped.
+
+
 Added reputation shops to guilds
 Added new small quest/event sequence
 Added new illustrations for some events

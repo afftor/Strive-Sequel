@@ -29,7 +29,7 @@ func showup(node, skillcode):
 	if skill.has('combatcooldown') && skill.combatcooldown > 0:
 		text += "\n\nCooldown: [color=yellow]" + str(skill.combatcooldown) + "[/color]"
 	
-	$descript.bbcode_text = text
+	$descript.bbcode_text = globals.TextEncoder(text)
 	
 	text = "Usage Cost: "
 	if skill.manacost > 0:
