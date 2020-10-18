@@ -211,6 +211,7 @@ func use_social_skill(s_code, target):
 	var effect_text = '\n'
 	#applying values
 	for i in s_skill.value:
+		if !i.check_conditions(): continue
 		var targ_fin
 		match i.receiver:
 			'caster': targ_fin = targ_cast

@@ -23,6 +23,9 @@ var Skilllist = {
 		dialogue_image = 'praise',
 		value = [['caster.charm', '*3', '/100', '+1', '*20'], ['1']],
 		damagestat = ['+loyaltyObedience', '+consent'],
+		#example of value reqs
+#		value_caster_reqs = {1:[{code = 'is_master', check = false}]},
+#		value_target_reqs = {0:[{code = 'stat', stat = 'sex', value = 'male', operant = 'eq'}]},
 	},
 	warn = {#
 		code = 'warn',
