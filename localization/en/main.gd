@@ -212,6 +212,8 @@ var TranslationDict = {
 	ITEMMAID_HEADBANDDESCRIPT = "A simple headgear to keep their hair in shape, commonly worn by lower servants.",
 	ITEMLACY_UNDERWEAR = "Lacy Underwear",
 	ITEMLACY_UNDERWEARDESCRIPT = "Fancy looking underwear, often associated with ladies of higher class.",
+	ITEMSEETHROUGH_UNDERWEAR = "See Through Lingerie",
+	ITEMSEETHROUGH_UNDERWEARDESCRIPT = "An expensive piece of clothing fairly popular in lewd activities. Being woven from magic cloth provides not only great feel on touch but also outstanding durability.",
 	ITEMWORKER_OUTFIT = "Worker's Outfit",
 	ITEMWORKER_OUTFITDESCRIPT = "Common work clothes which do not restrain movement and keep the wearer warm.",
 	ITEMCRAFTSMAN_SUIT = "Craftsman Suit",
@@ -858,6 +860,8 @@ var TranslationDict = {
 	STATCONSENT = "Consent",
 	STATCONSENTDESCRIPT = "Affects consent for actions during sex interactions. Each action has different consent based on traits, partners and other factors. This number represents only the unaltered value. Basic consent grows when having positive results, trying new actions and partners. Also slightly increased from discipline skills. ",
 	
+	STATLOYALTY_GAIN_MOD = "Loyalty Gain",
+	STATLUSTTICK = "Lust Growth",
 	
 	STATMOD_BUILD = "Upgrading Task Efficiency",
 	STATMOD_COLLECT = "Collection Task Efficiency",
@@ -1038,7 +1042,7 @@ var TranslationDict = {
 	SKILLCONSUME_SOUL = "Consume Soul",
 	SKILLCONSUME_SOULDESCRIPT = "Kills target and receives their experience.",
 	SKILLSERVE = "Serve",
-	SKILLSERVEDESCRIPT = "Requires 20 lust. Improved by Charm. \nBasic Effects: \nObedience: 40, Loyalty: 5. ",
+	SKILLSERVEDESCRIPT = "Provide a care service for another person. Improves Obedience and reduce Obedience drain by 25% for 1 day. Requires 20 lust. Improved by Charm. \nBasic Effects: \nObedience: 30, Loyalty: 4. ",
 	SKILLDISCIPLINE = "Discipline",
 	SKILLDISCIPLINEDESCRIPT = "Boosts target's manual labor performance. ",
 	SKILLSEDATE = "Sedate",
@@ -1081,7 +1085,10 @@ var TranslationDict = {
 	SKILLASSASSINATEDESCRIPT = "Assaults target for 400% damage. Must be hidden to execute. ",
 	SKILLPROTECT = "Protect",
 	SKILLPROTECTDESCRIPT = "Protects target from damage.",
-	
+	SKILLSHAREDTOY = "Shared Toy",
+	SKILLSHAREDTOYDESCRIPT = "Category: {color=pink|Lewd}\nBecome everyone's pleasure and relief for a time. Improves everyone's obedience. Only usable once in 3 days. Improved by Sexual Proficiency. Requires 75 Lust.\nBasic Effects: \nObedience: 45",
+	SKILLPERFORMANCE = "Performance",
+	SKILLPERFORMANCEDESCRIPT = "Category: {color=green|Gracious}\nProvide a small rest and entertainment for your other servants. Improves with Charm.\nBasic Effects: \nObedience: 24, Loyalty: 5.",
 	
 	DIALOGUEMASTER_LUST_SKILLTEXT = "Before approaching [targetname] you should decide what's [targethis] accumulated Lust is going to be used for.\n\n1. Convert it into Experience\n2. Restore Health and Mana, Improve Authority and Obedience\n3. Improve Productivity by 20% for 3 days for 50 Lust\n4. Increase ATK and MATK by 15% for 2 days for 50 Lust.",
 	
@@ -1107,6 +1114,9 @@ var TranslationDict = {
 	DIALOGUEPUBLICEXECUTIONREPORT = "You used [targetname] as an example to everyone in your mansion by ending [targethis] life in front of their eyes. This seems to be rather effective, albeit unnecessarily cruel for some.",
 	DIALOGUEPURCHASEDUNGEONLOCATION = "You purchase a location for a new dungeon and mark it on your map.\n\nNew location at [areaname] unlocked: [locationname] - [locationtypename].",
 	
+	DIALOGUESHAREDTOYREPORT = "[name] takes on a duty to please your other servants with [his] body...\n\nBy the end of it, it seems even your meeker servants have been left satisfied.",
+	DIALOGUEPERFORMANCEREPORT = "[name] sets a staged dance gathering everyone around to watch and relax. People seem to be quite pleased with [his] performance. ",
+	
 	DIALOGUEQUESTACCEPT = "You take a quest note from the board and put it into your pocket. Once you can meet its conditions, you can complete it from your Mansion. ",
 	
 	DIALOGUEPRAISEREPORT = "[name] has praised [targetname] for [targethis] efforts.\n\n{color=aqua|[targetname]} - {random_chat=0|master_praise}",
@@ -1114,7 +1124,7 @@ var TranslationDict = {
 	DIALOGUESERVEREPORT = "[name] has approached [targetname] and provided [targethim] with [his] sincerest affection.",
 	DIALOGUESEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. Despite visual calmness, [targetname] has clearly become enamoured by [him].",
 	DIALOGUEGREATSEDUCEREPORT = "[name] has approached [targetname] and after a couple moments left [targethim] wondering. [targetHis] mind has been overtaken by strong desire, making him quite docile.",
-	DIALOGUECHARMREPORT = "[name] has given [targetname] a small private encouragement.",
+	DIALOGUEALLUREREPORT = "[name] has given [targetname] a small private encouragement.",
 	DIALOGUEABUSEREPORT = "[name] has pushed [targetname] into a corner and took out some of [his] anger on [targethim].\n\n{color=aqua|[targetname]} - {random_chat=0|abuse}",
 	DIALOGUEREWARDREPORT = "[name] has provided [targetname] with a small amount of gold for [targethis] good behavior.",
 	DIALOGUEREWARDSEXREPORT = "[name] has taken care of [targetname]'s needs as a reward for [targethis] good deeds.",

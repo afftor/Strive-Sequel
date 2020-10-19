@@ -340,9 +340,9 @@ var professions = {
 		categories = ['sexual'],
 		showupreqs = [{code = "class_unlocked", class = 'sextoy', operant = 'eq', check = true}],
 		reqs = [{code = 'has_profession', profession = 'pet', check = true},{code = 'has_profession', profession = 'petbeast', check = true, orflag = true}, {code = 'has_profession', profession = 'harlot', check = true}, {code = 'stat', stat = 'sexuals', operant = 'gte', value = 60}],
-		statchanges = {sexuals_bonus = 25, sexuals_factor = 1, timid_factor = 1},
+		statchanges = {sexuals_bonus = 15, sexuals_factor = 1, timid_factor = 1},
 		traits = ['sextoy'],
-		skills = [],
+		skills = ['sharedtoy'],
 		combatskills = ['endure'], 
 	},
 	dancer = {
@@ -356,7 +356,7 @@ var professions = {
 		reqs = [{code = 'stat', stat = 'charm', operant = 'gte', value = 20},{code = 'stat', stat = 'physics', operant = 'gte', value = 20}],
 		statchanges = {charm_bonus = 10, charm_factor = 1},
 		traits = [],
-		skills = ['allure'],
+		skills = ['allure','performance'],
 		combatskills = ['distract'], 
 	},
 	maid = {
@@ -372,7 +372,7 @@ var professions = {
 		reqs = [],
 		statchanges = {charm_bonus = 5, hpmax = 5, tame_factor = 1},
 		traits = [],
-		skills = ['allure'],
+		skills = ['serve','allure'],
 		combatskills = [],
 	},
 	fighter = {

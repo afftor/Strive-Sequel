@@ -471,7 +471,6 @@ func test_mode():
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
-		character.unlock_class("ruler")
 		# character.unlock_class("druid")
 		# character.unlock_class("assassin")
 		# character.unlock_class("ruler")
@@ -612,6 +611,8 @@ func test_mode():
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.set_slave_category('slave')
+		character.add_stat('lust', 100)
+		character.unlock_class("dancer")
 		character.is_players_character = true
 
 		globals.common_effects(
@@ -640,7 +641,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
