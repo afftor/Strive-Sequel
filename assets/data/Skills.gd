@@ -1699,7 +1699,7 @@ var Skilllist = {
 		target_number = 'all',
 		target_range = 'any',
 		damage_type = 'water',
-		value = 0.7,
+		value = 0.65,
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = null, hit = null},
 	},
@@ -2783,7 +2783,7 @@ var Skilllist = {
 		type = 'social',
 		ability_type = 'skill',
 		reqs = [],
-		targetreqs = [{code = 'stat', name = 'lust'}], #TOCHECK
+		targetreqs = [],#{code = 'stat', name = 'lust'}], #TOCHECK
 		effects = [],
 		manacost = 0,
 		charges = 0,

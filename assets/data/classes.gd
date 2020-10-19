@@ -72,7 +72,7 @@ var professions = {
 		reqs = [{code = 'stat', stat = 'charm', operant = 'gte', value = 40}],
 		statchanges = {charm_bonus = 10},
 		traits = [],
-		skills = ['praise', 'warn', 'punish'],
+		skills = ['praise', 'warn', 'punish', 'publichumiliation'],
 		combatskills = [],
 	},
 	director = {
