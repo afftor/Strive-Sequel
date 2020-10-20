@@ -116,6 +116,7 @@ func open(location):
 
 
 func open_city(city):
+	self.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.nav_panel.update_buttons()
