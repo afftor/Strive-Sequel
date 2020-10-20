@@ -243,7 +243,7 @@ func travel_confirm():
 		var travel_cost = globals.calculate_travel_time(destination,person.travel.location)
 		if !person.is_controllable():
 			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
-		if ResourceScripts.game_progress.unlock_all_upgrades == false:
+		if ResourceScripts.game_progress.instant_travel == false:
 			person.previous_location = person.travel.location
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'

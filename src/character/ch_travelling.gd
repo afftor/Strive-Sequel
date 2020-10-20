@@ -87,7 +87,7 @@ func return_to_mansion():
 			if active_location.group[i] == parent.id:
 				active_location.group.erase(i)
 				break
-	if ResourceScripts.game_progress.unlock_all_upgrades == false:
+	if ResourceScripts.game_progress.instant_travel == false:
 		location = 'travel'
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = max(1, abs(round(active_area.travel_time + active_location.travel_time - travel_time)))
@@ -95,7 +95,7 @@ func return_to_mansion():
 		location = ResourceScripts.game_world.mansion_location
 
 func return_recruit():
-	if ResourceScripts.game_progress.unlock_all_upgrades == false:
+	if ResourceScripts.game_progress.instant_travel == false:
 		travel_target = {area = ResourceScripts.game_world.starting_area, location = ResourceScripts.game_world.mansion_location}
 		travel_time = input_handler.active_area.travel_time + input_handler.active_location.travel_time
 		parent.set_work('travel')
