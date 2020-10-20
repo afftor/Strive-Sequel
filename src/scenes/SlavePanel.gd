@@ -504,12 +504,13 @@ func build_skill_panel():
 			if skill.icon == null:
 				newbutton.get_node("icon").texture = load("res://assets/images/gui/panels/noimage.png")
 			newbutton.get_node("icon").show()
-			if skill.manacost > 0:
+			if skill.cost.has('mp'):
+				newbutton.get_node("manacost").text = str(skill.cost.mp)
 				newbutton.get_node("manacost").visible = true
-				newbutton.get_node("manacost").text = str(skill.manacost)
-				if person.mp < skill.manacost:
-					newbutton.disabled = true
-					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
+			if !person.check_cost(skill.cost):
+#			newbutton.get_node("Icon").modulate = Color(0,0,1)
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 #			if skill.energycost > 0:
 #				newbutton.get_node("energycost").visible = true
 #				newbutton.get_node("energycost").text = str(skill.energycost)

@@ -32,10 +32,8 @@ func showup(node, skillcode):
 	$descript.bbcode_text = globals.TextEncoder(text)
 	
 	text = "Usage Cost: "
-	if skill.manacost > 0:
-		text += "Mana: " + str(skill.manacost) + ". "
-	if skill.energycost > 0:
-		text += "Energy: " + str(skill.energycost) + ". "
+	for st in skill.cost:
+		text += "%s: %d. " % [statdata.statdata[st].name ,int(skill.cost[st])]
 	if skill.has('catalysts') && skill.catalysts.size() > 0:
 		for i in skill.catalysts:
 			text += Items.materiallist[i].name + " - " + str(skill.catalysts[i]) + ", "
