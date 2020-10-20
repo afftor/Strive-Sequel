@@ -162,6 +162,7 @@ func show_location_resources(location_code):
 
 
 func update_character_dislocation():
+	input_handler.ActivateTutorial("traveling")
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	var char_array = []

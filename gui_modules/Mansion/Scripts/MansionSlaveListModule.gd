@@ -432,5 +432,6 @@ func get_state_texture(tempchar):
 	return rval
 
 func open_job_panel(person):
+	input_handler.ActivateTutorial('job')
 	get_parent().set_active_person(person)
 	get_parent().mansion_state_set("occupation")

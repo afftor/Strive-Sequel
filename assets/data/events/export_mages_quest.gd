@@ -303,6 +303,7 @@ var data = {
 
 	xari_encounter8 = {
 		image = null,
+		custom_background = "xari_encounter8",
 		character = 'xari',
 		tags = [],
 		text = [

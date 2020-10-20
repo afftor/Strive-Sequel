@@ -45,6 +45,7 @@ func _ready():
 	# ResourceScripts.game_world.make_world()
 	# open_city("aliron")
 	gui_controller.add_close_button($BuyLocation)
+	gui_controller.add_close_button($GuildShop)
 	$FactionDetails.get_node("QuestGen").connect("pressed", self, "show_quest_gen")
 	$FactionDetails.get_node("QuestGenPanel/Apply").connect(
 		"pressed", self, "show_quest_gen", ["hide"]
@@ -221,6 +222,7 @@ func enter_church():
 
 
 func open_location(data):
+	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui.get_node("NavigationModule")
 	selected_location = data.id
@@ -272,8 +274,7 @@ func open_location(data):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-	# if !ResourceScripts.game_progress.active_tutorials.has("exploration"):
-	# 	input_handler.ActivateTutorial("exploration")
+
 
 	#check if anyone is present
 	build_location_group()
@@ -1108,7 +1109,7 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 
 func faction_guild_shop(pressed, pressed_button, guild):
 	$GuildShop/NumberSelection2.hide()
-	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
+	gui_controller.win_btn_connections_handler(pressed, $GuildShop, pressed_button)
 	active_faction = guild
 	input_handler.active_faction = guild
 	self.current_pressed_area_btn = pressed_button
@@ -1838,6 +1839,7 @@ func item_sell_confirm(value):
 
 
 func quest_board(pressed, pressed_button):
+	input_handler.ActivateTutorial("quest")
 	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
 	self.current_pressed_area_btn = pressed_button
 	# $QuestBoard.visible = pressed

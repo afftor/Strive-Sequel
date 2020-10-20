@@ -23,6 +23,8 @@ export var test_mode = false
 export var generate_test_chars = false
 
 
+signal tut_option_selected
+
 #Skills
 var skill_source
 var skill_target
@@ -116,10 +118,15 @@ func _ready():
 	
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
+	$TutorialIntro.show()
+
+
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = input_handler.get_spec_node(input_handler.NODE_TUTORIAL_PANEL)
+	if !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
+		gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
 	gui_controller.mansion_tutorial_panel.open()
 	gui_controller.mansion_tutorial_panel.raise()
 
@@ -684,11 +691,11 @@ func test_mode():
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
-		ResourceScripts.game_progress.show_tutorial = true
-		ResourceScripts.game_progress.active_quests.append(
-			{code = 'aliron_church_quest', stage = 'start'}
-		)
-		# input_handler.interactive_message("celena_shrine_find", '',{})
+		# ResourceScripts.game_progress.show_tutorial = true
+		# ResourceScripts.game_progress.active_quests.append(
+		# 	{code = 'aliron_church_quest', stage = 'start'}
+		# )
+		# input_handler.interactive_message("lich_aire_talk4", '',{})
 		
 		character.mp = 10
 		var tmp = {}

@@ -68,7 +68,7 @@ font_data = ExtResource( 2 )
 size = 30
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=13]
 size = 24
 font_data = ExtResource( 2 )
 
@@ -138,9 +138,9 @@ valign = 1
 ]]
 light_mask = 0
 margin_left = 32.0
-margin_top = 188.12
+margin_top = 156.12
 margin_right = 270.0
-margin_bottom = 220.12
+margin_bottom = 188.12
 mouse_filter = 0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.901961, 0.686275, 0.0862745, 1 )
@@ -735,7 +735,7 @@ margin_left = 672.0
 margin_top = 736.0
 margin_right = 960.0
 margin_bottom = 768.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Consent"
 align = 1
@@ -753,7 +753,7 @@ rect_min_size = Vector2( 50, 35 )
 mouse_filter = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Daily Consumption"
 __meta__ = {
@@ -766,7 +766,7 @@ margin_left = 208.941
 margin_top = 1.0
 margin_right = 234.941
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"
 __meta__ = {

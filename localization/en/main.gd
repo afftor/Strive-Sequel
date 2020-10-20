@@ -2519,6 +2519,40 @@ var TranslationDict = {
 
 	ALIRONCHURCHQUESTCOMPLETE1 = "- This is wonderful! For your help I'd like to present you with a holy text on teaching healing magic. I'm sure this will be of some use to you. Oh, and take some of these healing shards. You can break them down to heal your injuries even in dire situations.\n\n- Oh, also we can always use more food for poor. If you bring it to us once a week, we'll provide you with more shards.",
 	ALIRONCHURCHQUESTCOMPLETE2 = "- This is wonderful! I know it's not much, but I can spare you some life shards. These are Celena's gift to us, so you can use them in your adventures.",
+	
+	# Tutorials
+	INTRODUCTIONTUTORIAL1 = "This is the main Mansion screen. At the center you can see the list of all your possessed characters.",
+	INTRODUCTIONTUTORIAL2 = "Main actions can be found at the bottom left corner.",
+	INTRODUCTIONTUTORIAL3 = "At the top of the screen you can find a navigation panel, which will list available locations to visit and interact with. Click on the Aliron to go to town.",
 
+	QUESTTUTORIAL1 = "Repeatable quests can be obtained from the city's Notice Board. Use them to earn money and guild reputation. Different guilds offer different quests. Reputation can be used to unlock exclusive classes and purchase guild exclusive items.",
+	QUESTTUTORIAL2 = "Once you've completed a quest, or procured the required items, you can submit it and receive your reward from the Journal tab.",
+	QUESTTUTORIAL3 = "Select \"Complete\" when on the selected quest to finish it.",
+
+	SKILLSTUTORIAL1 = "At the bottom of the screen you can see abilities available to the currently selected character. Abilities are acquired from Classes and can be used on characters in the same location as caster. Social abilities are important for keeping obedience high, which is important to make characters work and travel. However, many of them will have a subtype. {color=green|Generous} subtype will vary based on target’s Tame Factor, while {color=red|Mean} subtype will depend on the Timid Factor.",
+	SKILLSTUTORIAL2 = "Choosing a proper approach for each character will make them obedient for a longer time. Some characters, like Master, won’t require any obedience at all. To change assigned ability, right click on it.",
+	SKILLSTUTORIAL3 = "After selecting an ability you’ll have to select a target for it. Remember that only targets from the same location are viable. As working will consume obedience it’s better to keep a character, who can provide discipline in the same location.",
+	SKILLSTUTORIAL4 = "At the right side you can switch to combat abilities set up. While you can’t use them outside of combat, you can still check their descriptions and prepare yourself before it.",
+
+	EXPLORATIONTUTORIAL1 = "While browsing non-city locations you’ll have access to the list of presented characters and a combat party setup. Drag and drop characters onto the party setup to assign them to it.",
+	EXPLORATIONTUTORIAL2 = "Do note, that melee attacks can’t be performed by back row while front row is present, and back row also can’t be targeted by melee attacks at the same time. On the right of the combat team you can find available items. They can be used by dragging and dropping on active characters.",
+	EXPLORATIONTUTORIAL3 = "You can also use spells to heal while in preparation, but keep an eye at mana levels or catalyst requirements.",
+
+	TRAVELINGTUTORIAL1 = "In the Travel menu, at the top you can see available regions. More distant regions will take longer to travel. ",
+	TRAVELINGTUTORIAL2 = "There are 4 types of locations: Capital, settlements, dungeons and events. Capitals generally will feature events and services. Settlements provide shops and constant resource gathering. Dungeons can be explored for combat and rewards, while also providing some resources to gather on completion. Event locations are usually one and expire once the event is cleared. Refer 'Information' tab for further details.",
+	TRAVELINGTUTORIAL3 = "Once a location is selected, click on the 'Location Select' to hide the Locations window and select the characters to send.",
+	TRAVELINGTUTORIAL4 = "Select characters from the list. You can sort them by locations at the bottom. Once done, confirm it to start travelling. The actual travel will require time progress.",
+
+	CRAFTTUTORIAL1 = "While in the Craft Menu, select the crafting category from the top of the screen.",
+	CRAFTTUTORIAL2 = "You need specific materials to craft an item displayed next to it. Modular items are crafted differently from standard items. Instead of specific materials they take material types for each different part of the item.",
+	CRAFTTUTORIAL3 = "To select a material for the part of the modular item click on the empty slot.",
+	CRAFTTUTORIAL4 = "At the top you can see how many of a material is needed. Different materials will provide different effects to the end item.",
+	CRAFTTUTORIAL5 = "Once finished you can select how many times the item should be crafted and confirm the order.",
+	CRAFTTUTORIAL6 = "Each item has its own required production time. To process any craft, you need to assign a character to it. You can do so from their occupation menu, or right from the Craft screen. Only characters at the mansion can craft.",
+	CRAFTTUTORIAL7 = "If you decide to assign crafters from the Craft screen, select characters to be assigned, then click confirm.You can also select them from the occupation menu.",
+	CRAFTTUTORIAL8 = "Once you are done, at the left side of the screen you'll see new progress for the items being worked on.",
+
+	JOBTUTORIAL1 = "At your slave list you can change your character's job. Different locations have different occupation options based on the present resources and activities.",
+	JOBTUTORIAL2 = "Select an occupation from the list to see its details. Some occupations have different outputs which have to be selected in such cases. You can also adjust working conditions to modify the output."
 }
 

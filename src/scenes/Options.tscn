@@ -112,6 +112,24 @@ custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Show Consent Details"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="enable_tutorials" type="CheckBox" parent="TabContainer/Gameplay"]
+margin_left = 40.0
+margin_top = 378.0
+margin_right = 532.0
+margin_bottom = 418.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_hover_pressed = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
+text = "Enable Tutorials"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay"]
 margin_left = 40.0
@@ -315,7 +333,6 @@ anchor_bottom = 1.0
 margin_top = 42.0
 
 [node name="EnterCodeMenu" type="Control" parent="TabContainer/debug"]
-visible = false
 margin_right = 587.0
 margin_bottom = 608.0
 __meta__ = {
@@ -345,7 +362,7 @@ custom_styles/normal = ExtResource( 8 )
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
-placeholder_text = "12345qwerty"
+placeholder_text = "Password"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -402,6 +419,7 @@ __meta__ = {
 }
 
 [node name="OpenCheatsMenu" type="Control" parent="TabContainer/debug"]
+visible = false
 margin_right = 587.0
 margin_bottom = 608.0
 __meta__ = {
