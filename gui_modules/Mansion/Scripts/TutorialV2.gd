@@ -43,7 +43,7 @@ var traveling_images = {
 	1: load("res://assets/Textures_v2/MANSION/Tutorial/travel_2.png"),
 	2: load("res://assets/Textures_v2/MANSION/Tutorial/travel_3.png"),
 	3: load("res://assets/Textures_v2/MANSION/Tutorial/travel_4.png"),
-	4: load("res://assets/Textures_v2/MANSION/Tutorial/travel_5.png"),
+	# 4: load("res://assets/Textures_v2/MANSION/Tutorial/travel_5.png"),
 }
 
 var traveling_text = {
@@ -51,7 +51,7 @@ var traveling_text = {
 	1: "TRAVELINGTUTORIAL2",
 	2: "TRAVELINGTUTORIAL3",
 	3: "TRAVELINGTUTORIAL4",
-	4: "TRAVELINGTUTORIAL4"
+	# 4: "TRAVELINGTUTORIAL4"
 }
 
 var skills_images = {
@@ -124,6 +124,7 @@ func _ready():
 func open(tutorial = null):
 	self.raise()
 	$TutorialImage.hide()
+	$TutorialText.hide()
 	unfade(self)
 	yield(get_tree().create_timer(0.5), "timeout")
 
@@ -192,6 +193,7 @@ var text_dict = {}
 
 func show_tutorial(img, size, idx = 0):
 	$TutorialImage.show()
+	$TutorialText.show()
 	# unfade($TutorialImage, 0.3)
 	# TODO This is temporary patch while not all tuts has images
 	img_dict = img
@@ -201,7 +203,7 @@ func show_tutorial(img, size, idx = 0):
 	$Back.disabled = idx == 0
 	$Forward.disabled = idx == size
 	$TutorialImage.texture = img[idx]
-	$TutorialText.text = tr(text_dict[idx])
+	$TutorialText.text = globals.TextEncoder(tr(text_dict[idx]))
 
 func change_index(value):
 	img_index += value

@@ -118,7 +118,7 @@ func build_for_travel(person, newbutton):
 	if person.travel.location == get_parent().selected_destination || get_parent().selected_destination == null || person.travel.location == "travel":
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
-	elif (person.get_stat('obedience') <= 0) && !person.is_controllable():
+	elif (person.xp_module.predict_obed_time() <= 0) && !person.is_controllable():
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_unavailable.png")
 		newbutton.disabled = true
 	else:
@@ -354,10 +354,10 @@ func update_button(newbutton):
 			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name	
 	
 	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100 && !person.has_profession('master'):
-		newbutton.get_node("obed").text = str(ceil(person.get_stat('obedience')))
-		if person.get_stat('obedience') <= 0:
+		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
+		if person.xp_module.predict_obed_time() <= 0:
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-		elif person.get_stat('obedience') <= 10:
+		elif person.xp_module.predict_obed_time() <= 10:
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
 		else:
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))

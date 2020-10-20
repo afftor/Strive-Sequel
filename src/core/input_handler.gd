@@ -1203,6 +1203,7 @@ func get_location_characters():
 
 
 func play_unlock_class_anim(cls):
+	get_tree().get_root().set_disable_input(true)
 	input_handler.PlaySound("class_aquired")
 	var anim_scene
 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_UNLOCKED)
@@ -1213,3 +1214,4 @@ func play_unlock_class_anim(cls):
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
+	get_tree().get_root().set_disable_input(false)

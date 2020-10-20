@@ -44,10 +44,10 @@ func update():
 		$MasterIcon.visible = person.has_profession("master")
 		var text = ""
 		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
-			$Panel/obedlabel.text = str(ceil(person.get_stat('obedience')))
+			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.get_stat('obedience') > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
+		if person.xp_module.predict_obed_time() > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
