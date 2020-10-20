@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Job/button_gather.png" type="Texture" id=19]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Job_BG.tres" type="StyleBox" id=20]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Job_Travel_Panel.tres" type="StyleBox" id=21]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=22]
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
@@ -224,6 +225,7 @@ margin_top = 72.0
 margin_right = 370.0
 margin_bottom = 222.0
 rect_min_size = Vector2( 360, 150 )
+theme = ExtResource( 22 )
 custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true

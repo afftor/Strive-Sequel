@@ -119,9 +119,8 @@ func _ready():
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
 	$TutorialIntro.show()
-	yield(self, "tut_option_selected")
-	yield(get_tree().create_timer(1), "timeout")
-	input_handler.ActivateTutorial("introduction")
+
+
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -696,7 +695,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		# input_handler.interactive_message("celena_shrine_find", '',{})
+		# input_handler.interactive_message("lich_aire_talk4", '',{})
 		
 		character.mp = 10
 		var tmp = {}

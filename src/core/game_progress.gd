@@ -11,7 +11,7 @@ var areaprogress = {}
 var currentarea
 var active_tutorials = []
 var seen_tutorials = []
-var show_tutorial = true
+var show_tutorial = false
 var unlocked_classes = []
 
 var seen_dialogues = []

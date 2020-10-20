@@ -14,6 +14,8 @@ func select_option(enabled):
 	else:
 		message += "disabled."
 	input_handler.SystemMessage(message)
-	get_parent().emit_signal("tut_option_selected")
+	yield(get_tree().create_timer(1), "timeout")
+	if enabled:
+		input_handler.ActivateTutorial("introduction")
 
 
