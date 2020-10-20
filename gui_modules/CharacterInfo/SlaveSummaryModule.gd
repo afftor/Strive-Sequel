@@ -46,7 +46,9 @@ func change_slave(param):
 				selected_person = ResourceScripts.game_party.characters[chars[0]]
 			else:
 				selected_person = ResourceScripts.game_party.characters[chars[current_idx + 1]]
+	CharMainModule.active_person = selected_person
 	CharMainModule.match_state()
+	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
 
 
 # func sort_chars(f, s):

@@ -162,6 +162,7 @@ func show_location_resources(location_code):
 
 
 func update_character_dislocation():
+	input_handler.ActivateTutorial("traveling")
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	var char_array = []
@@ -242,7 +243,7 @@ func travel_confirm():
 		var travel_cost = globals.calculate_travel_time(destination,person.travel.location)
 		if !person.is_controllable():
 			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
-		if ResourceScripts.game_progress.instant_travel == false:
+		if ResourceScripts.game_progress.unlock_all_upgrades == false:
 			person.previous_location = person.travel.location
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'

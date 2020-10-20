@@ -75,6 +75,7 @@ func build_skill_panel():
 			newbutton.get_node("charges").hide()
 
 func select_skill_target(skillcode):
+	input_handler.ActivateTutorial('skills')
 	input_handler.SystemMessage("Select target for Ability", 3)
 	get_parent().chars_for_skill.clear()
 	var skill_source = get_parent().skill_source
@@ -91,6 +92,7 @@ func select_skill_target(skillcode):
 	get_parent().skill_manager()
 
 func use_skill(target):
+	get_tree().get_root().get_node("skilltooltip").hide()
 	person.use_social_skill(active_skill, target)
 	# update()
 	get_parent().mansion_state = "default"

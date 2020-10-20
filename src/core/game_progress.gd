@@ -39,7 +39,7 @@ var unlimited_date_sex = false
 var unlock_all_classes = false
 
 # Cheat codes testing only
-var cheat_code = "12345qwerty"
+var cheat_code = "fkfynroh"
 
 
 func _init():

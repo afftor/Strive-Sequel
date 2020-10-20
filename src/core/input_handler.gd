@@ -804,13 +804,14 @@ func interactive_dialogue_start(code, stage):
 
 
 func ActivateTutorial(code):
-	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
+	if ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
 		ResourceScripts.game_progress.active_tutorials.append(code)
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = get_spec_node(self.NODE_TUTORIAL_PANEL, null, false, false)
-	gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
-	gui_controller.mansion_tutorial_panel.open(code)
-		#get_tutorial_node().rebuild()
+	if !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
+		gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
+	if !ResourceScripts.game_progress.seen_tutorials.has(code) && ResourceScripts.game_progress.show_tutorial:
+		gui_controller.mansion_tutorial_panel.open(code)
 
 
 func get_combat_node():

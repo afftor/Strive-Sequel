@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=30]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_hover.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
+[ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 24 )
@@ -262,4 +263,6 @@ text = "Test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

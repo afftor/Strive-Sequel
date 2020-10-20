@@ -1231,7 +1231,7 @@ func show_heal_items(position):
 	#input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
 
 #func return_character_confirm():
-#	if ResourceScripts.game_progress.instant_travel == false:
+#	if ResourceScripts.game_progress.unlock_all_upgrades == false:
 #		selectedperson.location = 'travel'
 #		selectedperson.travel_target = {area = '', location = ResourceScripts.game_world.mansion_location}
 #		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
