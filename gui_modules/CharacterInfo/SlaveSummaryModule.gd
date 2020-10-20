@@ -51,15 +51,6 @@ func change_slave(param):
 	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
 
 
-# func sort_chars(f, s):
-# 	return f.id > s.id
-
-
-	# show_summary()
-# func update():
-# 	update_buttons()
-
-
 func update_buttons():
 	for button in $VBoxContainer.get_children():
 		button.pressed = (button.get_meta("state") == get_parent().char_module_state)
