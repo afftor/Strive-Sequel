@@ -494,7 +494,7 @@ func RebuildStatsContainer():
 	if person.statlist.sex_traits.size() == 0:
 		$VBoxContainer/SexTraitLabel.text = "Select Sex Trait"
 	else:
-		$VBoxContainer/SexTraitLabel.text = Traitdata.sex_traits[person.statlist.sex_traits[0]].name
+		$VBoxContainer/SexTraitLabel.text = Traitdata.sex_traits[person.statlist.sex_traits.keys()[0]].name
 	for i in array:
 		if mode == 'master' && i.code in ["growth_factor",'timid_factor','tame_factor']:
 			continue

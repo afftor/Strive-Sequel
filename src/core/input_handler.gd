@@ -925,7 +925,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 	if ResourceScripts.node_data[type].has('calls'): 
 		if args == null: args = []
 		window.callv(ResourceScripts.node_data[type].calls, args)
-	elif args != null: 
+	elif args != null:
 		for param in args:
 			window.set(param, args[param])
 	return window

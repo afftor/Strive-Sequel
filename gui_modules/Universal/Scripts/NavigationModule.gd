@@ -81,6 +81,8 @@ func build_accessible_locations():
 
 
 func select_location(location):
+	if gui_controller.exploration == null:
+		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
 	selected_location = location
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
 	if gui_controller.current_screen == gui_controller.mansion:
