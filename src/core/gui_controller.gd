@@ -110,6 +110,9 @@ func open_exploration(location):
 func show_class_info(classcode, person = null):
 	if current_screen == game_menu:
 		return
+	if current_screen == exploration && exploration.get_node("GuildShop").is_visible() && classinfo != null && classinfo.is_visible():
+		classinfo.hide()
+		return
 	if person == null:
 		person = mansion.active_person
 	var node = input_handler.get_spec_node(input_handler.NODE_CLASSINFO)  #get_class_info_panel()

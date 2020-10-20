@@ -235,10 +235,10 @@ func update():
 	$factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp()) 
 	
 	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
-		$obedlabel.text = str(ceil(person.get_stat('obedience')))
+		$obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 	else:
 		$obedlabel.text = "∞"
-	if person.get_stat('obedience') > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
+	if person.xp_module.predict_obed_time() > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
 		$obedlabel/icon.texture = images.icons.obed_good
 	else:
 		$obedlabel/icon.texture = images.icons.obed_bad

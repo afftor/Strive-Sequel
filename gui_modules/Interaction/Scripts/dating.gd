@@ -210,7 +210,7 @@ func initiate(tempperson):
 			text += "[he2] gladly accepts your order and is ready to follow you anywhere you take [him2]. "
 			self.mood += 10
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
-		elif person.get_stat('obedience') >= 60:
+		elif person.xp_module.predict_obed_time() >= 60:
 			self.mood += 4
 			text += "[he2] obediently agrees to your order and tries [his2] best to please you. "
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
@@ -1365,7 +1365,7 @@ func beer(person):
 #	var text = ''
 #	text += "You serve fresh wine for you and [name2]. "
 #
-#	if self.mood < 5 || person.get_stat('obedience') < 80:
+#	if self.mood < 5 || person.xp_module.predict_obed_time() < 80:
 #		text = "[he2] refuses to drink with you. "
 #	else:
 #		if counter < 3:
@@ -1389,7 +1389,7 @@ func beer(person):
 #	var text = ''
 #	text += "You present [name2] with a small decorative gift. "
 #
-#	if person.get_stat('obedience') >= 75:
+#	if person.xp_module.predict_obed_time() >= 75:
 #		self.mood += 7
 #		#person.get_stat('loyalty') += 4
 #		text = text + "[he2] accepts your gift with a pleasant smile on [his2] face.  "
@@ -1407,7 +1407,7 @@ func beer(person):
 #	var text = ''
 #	text += "You purchase some candies for [name2] from a local vendor. "
 #
-#	if person.get_stat('obedience') >= 55:
+#	if person.xp_module.predict_obed_time() >= 55:
 #		self.mood += 6
 #		#person.get_stat('loyalty') += 3
 #		text = text + "[he2] joyfull accepts them and enjoys the sweet taste.  "

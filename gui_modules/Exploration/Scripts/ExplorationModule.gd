@@ -217,10 +217,6 @@ var current_level
 var current_stage
 
 
-func enter_church():
-	print("I'm in church")
-
-
 func open_location(data):
 	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
@@ -1653,6 +1649,7 @@ func update_sell_list():
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
+		newbutton.set_meta('item', item.name)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
@@ -1669,6 +1666,7 @@ func update_sell_list():
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(item.amount)
 		newbutton.set_meta('type', type)
+		newbutton.set_meta('item', item.name)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectitemtooltip(newbutton, item)
@@ -1693,6 +1691,7 @@ func update_buy_list():
 			newbutton.get_node("icon").texture = item.icon
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
+			newbutton.set_meta('item', item.name)
 			newbutton.connect("pressed", self, "item_purchase", [item, amount])
 			newbutton.visible = (
 				(newbutton.get_meta("type") == buy_category)
@@ -1719,6 +1718,7 @@ func update_buy_list():
 			newbutton.get_node("icon").texture = item.icon
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
+			newbutton.set_meta('item', item.name)
 			newbutton.visible = (
 				(newbutton.get_meta("type") == buy_category)
 				|| buy_category == "all"
@@ -1743,6 +1743,12 @@ var purchase_item
 
 
 func item_purchase(item, amount):
+	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
+		btn.pressed = false
+	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
+		if !btn.has_meta("item"):
+			continue
+		btn.pressed = btn.get_meta("item") == item.name
 	purchase_item = item
 	if amount < 0:
 		amount = 100
@@ -1797,6 +1803,12 @@ func item_puchase_confirm(value):
 
 
 func item_sell(item):
+	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
+		btn.pressed = false
+	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
+		if !btn.has_meta("item"):
+			continue
+		btn.pressed = btn.get_meta("item") == item.name
 	purchase_item = item
 	var price
 	if item.price:
