@@ -17,5 +17,6 @@ func select_option(enabled):
 	yield(get_tree().create_timer(1), "timeout")
 	if enabled:
 		input_handler.ActivateTutorial("introduction")
+	gui_controller.windows_opened.erase(self)
 
 

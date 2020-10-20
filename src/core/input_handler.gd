@@ -808,7 +808,7 @@ func ActivateTutorial(code):
 		ResourceScripts.game_progress.active_tutorials.append(code)
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = get_spec_node(self.NODE_TUTORIAL_PANEL, null, false, false)
-	if !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
+	if ResourceScripts.game_progress.show_tutorial && !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
 		gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
 	if ResourceScripts.game_progress.show_tutorial && !ResourceScripts.game_progress.seen_tutorials.has(code):
 		gui_controller.mansion_tutorial_panel.open(code)
