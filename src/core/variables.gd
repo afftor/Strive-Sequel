@@ -285,7 +285,7 @@ var condtypes = ['conditional static//oneshot', 'random', 'skill', 'caster', 'ta
 #var char_condtypes = ['stats', 'stat_index', 'gear', 'race', 'trait', 'class', 'dead']
 var ops = ['==', '!=', '>=', '>', '<=', '<', 'has', '!has']
 var real_ops = ['eq', 'neq', 'gte', 'gt', 'lte', 'lt', 'has', 'hasno']
-var skill_condstats = ['name', 'type', 'ability_type', 'manacost', 'tags', 'damage_type']
+var skill_condstats = ['name', 'type', 'ability_type', 'tags', 'damage_type']
 var char_condstats = ['hp', 'hpmax', 'mp', 'mpmax', 'is_players_character', 'age', 'sex', 'physics_factor', 'magic_factor', 'tame_factor', 'brave_factor', 'growth_factor', 'charm_factor', 'wits_factor', 'sexuals_factor']#incomplete
 var char_indexstats = ['counters', 'bonuses']#possibly incomplete
 var eventlist = ['TR_CAST','TR_HIT', 'TR_DEF', 'TR_TURN_S', 'TR_TURN_GET', 'TR_TURN_F', 'TR_DEATH', 'TR_KILL', 'TR_DMG', 'TR_POSTDAMAGE', 'TR_SKILL_FINISH', 'TR_HEAL', 'TR_COMBAT_S', 'TR_COMBAT_F', 'TR_DAY', 'TR_S_CAST', 'TR_S_TARGET', 'TR_TICK', 'TR_MOVE', 'TR_REMOVE']

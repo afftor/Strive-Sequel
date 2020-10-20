@@ -9,9 +9,7 @@ var type
 var ability_type
 var tags
 var value = []
-var manacost
-var energycost
-var goldcost
+var cost
 var target_range
 var target_number
 #var damagesrc
@@ -40,7 +38,7 @@ func _init():
 	target = null
 	target_range = 'any'
 	target_number = 'single'
-	goldcost = 0
+	cost = {}
 	random_factor = 0
 	random_factor_p = 0.0
 	repeat = 1
@@ -71,9 +69,7 @@ func createfromskill(s_code):
 	type = template.type
 	ability_type = template.ability_type
 	tags = template.tags.duplicate()
-	manacost = template.manacost
-	energycost = template.energycost
-	get_from_template('goldcost')
+	cost = template.cost.duplicate()
 	get_from_template('target_range')
 	get_from_template('target_number')
 	

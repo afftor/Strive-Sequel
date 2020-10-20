@@ -828,7 +828,7 @@ func use_skill(skill_code, caster, target):
 			else:
 				combatlogadd("\n" + caster.get_stat('name') + ' uses ' + skill.name + ". ")
 		
-		caster.mp -= skill.manacost
+		caster.pay_cost(skill.cost)
 		
 		if skill.combatcooldown != 0:
 			caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
@@ -1344,13 +1344,13 @@ func RebuildSkillPanel():
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel/ScrollContainer/GridContainer)
 		var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 		newbutton.get_node("Icon").texture = skill.icon
-		newbutton.get_node("manacost").text = str(skill.manacost)
-		if skill.manacost <= 0:
-			newbutton.get_node("manacost").hide()
-		if skill.manacost > activecharacter.mp:
+		if skill.cost.has('mp'):
+			newbutton.get_node("manacost").text = str(skill.cost.mp)
+			newbutton.get_node("manacost").visible = true
+			if !activecharacter.check_cost(skill.cost):
 #			newbutton.get_node("Icon").modulate = Color(0,0,1)
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		if activecharacter.skills.combat_cooldowns.has(skill.code):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -1376,7 +1376,7 @@ func RebuildSkillPanel():
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
-		if activecharacter.mp < skill.manacost:
+		if !activecharacter.check_cost(skill.cost):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.set_meta('skill', skill.code)
@@ -1386,7 +1386,7 @@ func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	skill = Skilldata.Skilllist[skill]
 	#need to add daily restriction check
-	if activecharacter.mp < skill.manacost || activecharacter.skills.combat_cooldowns.has(skill.code) :
+	if !activecharacter.check_cost(skill.cost) || activecharacter.skills.combat_cooldowns.has(skill.code) :
 		#SelectSkill('attack')
 		call_deferred('SelectSkill', 'attack')
 		return

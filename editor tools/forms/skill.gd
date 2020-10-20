@@ -37,7 +37,7 @@ func _init():
 			rlist = ['spell','skill', 'item'],
 			dlist = ['spell','skill', 'item'],
 		},
-		{
+		{ #2fix
 			type = editor_core.PANEL_NUM,
 			stat = 'manacost',
 			container = 0,

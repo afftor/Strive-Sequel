@@ -573,7 +573,7 @@ var effect_table = {
 		stack = 1,
 		tags = ['s_dur_add'],
 		sub_effects = [],
-		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.2}],
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.8}],
 		buffs = [
 			{
 				icon = "res://assets/images/iconsskills/Charm.png", 
@@ -706,6 +706,26 @@ var effect_table = {
 				description = "Damage increased",
 				limit = 1,
 				t_name = 'command'
+			}
+		],
+	},
+	e_t_serve = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'serve',
+		tick_event = variables.TR_TICK,
+		duration = 24, 
+		stack = 1,
+		tags = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.75}],
+		buffs = [
+			{
+				icon = "res://assets/images/iconsskills/Charm.png", 
+				description = "Serving: Obedience drain reduced by 25%%",
+				limit = 1,
+				t_name = 'serve',
+				mansion_only = true,
 			}
 		],
 	},
@@ -2362,37 +2382,6 @@ var effect_table = {
 		]
 	},
 	#items
-	e_i_la = {
-		type = 'static',
-		tags = ['penalty', 'lightarmorencumb'],
-		atomic = [{type = 'stat_add', stat = 'manacost_mod', value = 0.15}],
-		buffs = [
-			{
-				icon = "", 
-				description = "",
-				t_name = 'lightarmorencumb',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
-	e_i_ha = {
-		type = 'static',
-		tags = ['penalty', 'heavyarmorencumb'],
-		atomic = [
-			{type = 'stat_add', stat = 'manacost_mod', value = 0.2},
-			{type = 'stat_add', stat = 'evasion', value = -10}
-		],
-		buffs = [
-			{
-				icon = "", 
-				description = "",
-				t_name = 'heavyarmorencumb',
-				limit = 1
-			}
-		],
-		sub_effects = [],
-	},
 	e_i_shackles = {
 		type = 'c_static',
 		descript = 'Prevents escape if Physics Factor less than 4.',
@@ -2971,7 +2960,6 @@ var atomic = {
 	a_fire_custom1 = {type = 'event', value = variables.TR_CUSTOM1},
 	
 	a_caster_heal = {type = 'heal', value = [['parent_arg_get', 0, 'process_value'], '*', 0.5]},
-	a_magecrit = {type = 'mana', value = ['parent_arg_get', 0, 'manacost']},
 	a_firefist = {type = 'damage', value = [['parent_arg_get', 0, 'process_value'], '*', 0.2], source = variables.S_FIRE},#bugged
 	a_gobmet_blade = {type = 'damage', source = variables.S_EARTH, value = ['parent_args', 0]},#bugged
 	a_elvenwood_rod = {type = 'mana', value = [['parent_args', 0], '*', 0.1]},

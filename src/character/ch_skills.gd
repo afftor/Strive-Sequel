@@ -94,12 +94,10 @@ func cooldown_tick():
 	for i in cleararray:
 		daily_cooldowns.erase(i)
 
-func skill_tooltip(skillcode):
+func skill_tooltip(skillcode): #??
 	var text = ''
 	var skill = Skilldata.Skilllist[skillcode]
 	text += "[center]" + skill.name + "[/center]\n" + skill.descript
-	var manacost = skill.manacost
-	var energycost = skill.energycost
 	return text
 
 func get_skill_by_tag(tg):
@@ -167,9 +165,7 @@ func use_social_skill(s_code, target):
 	
 	input_handler.PlaySound('page')
 	#paying costs
-	if template.has('goldcost'):
-		ResourceScripts.game_res.money -= template.goldcost
-	parent.mp -= template.manacost
+	parent.pay_cost(template.cost)
 	
 	if typeof(template.charges) == TYPE_INT && template.charges > 0 && ResourceScripts.game_progress.social_skill_unlimited_charges == false:
 		if social_skills_charges.has(s_code):
@@ -232,6 +228,8 @@ func use_social_skill(s_code, target):
 				detail_tags.append('master_loyalty')
 				i.value *= 4
 		for h in targ_fin:
+			if i.template.has('receiver_reqs'):
+				if !h.checkreqs(i.template.receiver_reqs): continue
 			var mod = i.dmgf
 			var stat = i.damagestat
 			if mod == 0:
@@ -267,11 +265,11 @@ func use_social_skill(s_code, target):
 					'loyaltyObedience', 'submissionObedience':
 						var skill_stat_type
 						if template.tags.has('positive'): 
-							skill_stat_type = target.get_stat('tame_factor') #or h, not target?
+							skill_stat_type = h.get_stat('tame_factor') #or h, not target?
 							if h.has_status('no_obed_gain'): 
 								detail_tags.append('blocked')
 								i.value = 0
-						if template.tags.has('negative'): skill_stat_type = target.get_stat('timid_factor') #or h, not target?
+						if template.tags.has('negative'): skill_stat_type = h.get_stat('timid_factor') #or h, not target?
 						i.value = round(i.value * (0.9 + skill_stat_type*0.1))
 				
 			var bonusspeech = []
@@ -341,7 +339,7 @@ func use_social_skill(s_code, target):
 			data.image = template.dialogue_image
 		else:
 			data.image = 'noevent'
-		text = target.translate(text.replace("[target", "["))
+		if target != null: text = target.translate(text.replace("[target", "["))
 		data.text = text + effect_text
 		
 		if template.dialogue_show_repeat == true:
