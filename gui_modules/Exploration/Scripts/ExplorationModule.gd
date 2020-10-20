@@ -394,7 +394,7 @@ func use_item_on_character(character, item):
 
 
 func use_e_combat_skill(caster, target, skill):
-	caster.mp -= skill.manacost
+	caster.pay_cost(skill.cost)
 	for i in skill.catalysts:
 		ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
 	if skill.charges > 0:
@@ -913,12 +913,14 @@ func build_spell_panel():
 				newnode.get_node("castername").text = person.get_short_name()
 				var text = skill.descript
 				var disabled = false
-				if skill.manacost > 0:
+				for st in skill.cost:
 					text += (
-						"\n\nMana cost: "
-						+ str(skill.manacost)
+						"\n\n" 
+						+ statdata.statdata[st].name
+						+ " cost: "
+						+ str(skill.cost[st])
 						+ " ("
-						+ str(floor(person.mp))
+						+ str(floor(person.get_stat(st)))
 						+ ")"
 					)
 				if skill.catalysts.empty() == false:
@@ -937,7 +939,7 @@ func build_spell_panel():
 							disabled = true
 				globals.connecttexttooltip(newnode, text)
 				newnode.dragdata = {skill = skill, caster = person}
-				if person.mp < skill.manacost:
+				if !person.check_cost(skill.cost):
 					disabled = true
 				if person.has_status('no_obed_gain'):
 					disabled = true

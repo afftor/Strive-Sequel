@@ -31,18 +31,12 @@ func build_skill_panel():
 			if skill.icon == null:
 				newbutton.get_node("icon").texture = load("res://assets/images/gui/panels/noimage.png")
 			newbutton.get_node("icon").show()
-			if skill.manacost > 0:
+			if skill.cost.has('mp'): #need to implement other costs
 				newbutton.get_node("manacost").visible = true
-				newbutton.get_node("manacost").text = str(skill.manacost)
-				if person.mp < skill.manacost:
-					newbutton.disabled = true
-					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
-			if skill.energycost > 0:
-				newbutton.get_node("energycost").visible = true
-				newbutton.get_node("energycost").text = str(skill.energycost)
-				if person.energy < skill.energycost:
-					newbutton.disabled = true
-					newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
+				newbutton.get_node("manacost").text = str(skill.cost.mp)
+			if !person.check_cost(skill.cost):
+				newbutton.disabled = true
+				newbutton.get_node("icon").material = load("res://assets/sfx/bw_shader.tres")
 			var charges = Skilldata.get_charges(skill, person)
 			var used_charges = 0
 			if person.skills.social_skills_charges.has(skill.code):
@@ -76,15 +70,19 @@ func build_skill_panel():
 
 func select_skill_target(skillcode):
 	input_handler.ActivateTutorial('skills')
+	active_skill = skillcode
+	var template = Skilldata.Skilllist[skillcode]
+	if template.tags.has('no_target'):
+		use_skill(person)
+		return
 	input_handler.SystemMessage("Select target for Ability", 3)
 	get_parent().chars_for_skill.clear()
 	var skill_source = get_parent().skill_source
-	active_skill = skillcode
 	for i in $SkillPanel.get_children():
 		if i.has_meta('skill'):
 			i.pressed = i.get_meta("skill") == skillcode
 	# input_handler.ShowSlaveSelectPanel(self, 'use_skill', [{code = 'is_free', check = true}, {code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs)
-	var reqs = [{code = 'is_id', operant = 'neq', value = person.id}] + Skilldata.Skilllist[skillcode].targetreqs
+	var reqs = [{code = 'is_id', operant = 'neq', value = person.id}] + template.targetreqs
 	for i in ResourceScripts.game_party.characters.values():
 		if !i.checkreqs(reqs) || !i.same_location_with(skill_source):
 			continue

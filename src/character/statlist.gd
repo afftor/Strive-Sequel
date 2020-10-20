@@ -27,7 +27,6 @@ var template = {
 	submission_gain_mod = 1.0,#obsolete
 	loyalty_gain_mod = 1.0,
 	lust = 0.0, 
-	loyal = 0.0, #unused except for interactions: to be removed
 	lustmax = 50,
 	loyalty_degrade_mod = 1.0,
 	submission_degrade_mod = 1.0,#obsolete
@@ -67,7 +66,6 @@ var template = {
 	armorpenetration = 0,
 	critchance = 10,
 	critmod = 1.5,
-	manacost_mod = 1.0, #not used 
 	speed = 30,
 	shield = 0,
 	#enemy AI. do not forget to set to null at end of combat

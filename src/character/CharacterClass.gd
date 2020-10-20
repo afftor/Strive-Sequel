@@ -93,9 +93,9 @@ func add_bonus(b_rec:String, value, revert = false):
 func add_stat(statname, value, revert = false):
 	if statname in ['hp', 'mp', 'shield']:
 		set(statname, get(statname) + value)
-	if statname == 'base_exp':
+	elif statname == 'base_exp':
 		xp_module.base_exp += value
-	statlist.add_stat(statname, value, revert)
+	else: statlist.add_stat(statname, value, revert)
 
 func mul_stat(statname, value, revert = false):
 	statlist.mul_stat(statname, value, revert)
@@ -383,7 +383,7 @@ func can_evade():
 	return effects.can_evade()
 
 func can_use_skill(skill):
-	if mp < skill.manacost: return false
+	if !check_cost(skill.cost): return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
@@ -1049,6 +1049,15 @@ func resurrect(hp_per):
 	defeated = false
 	hp = int(get_stat('hpmax') * hp_per /100)
 
+func pay_cost(cost):
+	for st in cost: 
+		if st == 'money': ResourceScripts.game_party.money -= cost.money
+		else: add_stat(st, -cost[st])
+
+func check_cost(cost):
+	for st in cost:
+		if get_stat(st) < cost[st]: return false
+	return true
 
 func check_skill_availability(s_code, target):
 	var check = true
@@ -1056,8 +1065,8 @@ func check_skill_availability(s_code, target):
 	var template = Skilldata.Skilllist[s_code]
 	var descript = ''
 	
-	if mp < template.manacost:
-		descript = get_short_name() + ": Not enough mana."
+	if !check_cost(template.cost):
+		descript = get_short_name() + ": Can't pay costs'"
 		check = false
 	if skills.social_skills_charges.has(s_code) && skills.social_skills_charges[s_code] >= template.charges:
 		descript = get_short_name() + ": " + template.name + " - No charges left."

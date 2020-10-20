@@ -165,6 +165,22 @@ var statdata = {
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
 	},
+	loyalty_gain_mod = {
+		code = 'loyalty_gain_mod',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		
+	},
+	lusttick = {
+		code = 'lusttick',
+		name = '',
+		descript = '',
+		baseicon = 'stat_cf',
+		type = 'mental_stat',
+		
+	},
 	food_consumption = {
 		code = 'food_consumption',
 		name = '',
