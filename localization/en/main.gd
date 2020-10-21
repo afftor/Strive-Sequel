@@ -1358,12 +1358,12 @@ var TranslationDict = {
 	UPGRADEROOMSBONUS3 = "Increases maximum number of hosted characters to 20.",
 	UPGRADEROOMSBONUS4 = "Increases maximum number of hosted characters to 25.",
 	UPGRADEROOMSBONUS5 = "Increases maximum number of hosted characters to 30.",
-	UPGRDELUXURY_ROOMS = "Luxury Rooms",
-	UPGRDELUXURY_ROOMSDESCRIPT = "Increases maximum number of avilable Luxury Rooms. Luxury Rooms will reduce Obedience to its residents. ",
-	UPGRDELUXURY_ROOMSBONUS1 = "Increases maximum number of avilable Luxury Rooms to 2.",
-	UPGRDELUXURY_ROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
-	UPGRDELUXURY_ROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
-	UPGRDELUXURY_ROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
+	UPGRADELUXURY_ROOMS = "Luxury Rooms",
+	UPGRADELUXURY_ROOMSDESCRIPT = "Increases maximum number of avilable Luxury Rooms. Luxury Rooms will reduce Obedience to its residents. ",
+	UPGRADELUXURY_ROOMSBONUS1 = "Increases maximum number of avilable Luxury Rooms to 2.",
+	UPGRADELUXURY_ROOMSBONUS2 = "Increases maximum number of avilable Luxury Rooms to 3.",
+	UPGRADELUXURY_ROOMSBONUS3 = "Increases maximum number of avilable Luxury Rooms to 4.",
+	UPGRADELUXURY_ROOMSBONUS4 = "Increases maximum number of avilable Luxury Rooms to 5.",
 	
 	
 	UPGRADEMASTERBEDROOMBONUS1 = 'Increases number of participants in sex interactions to 3',
