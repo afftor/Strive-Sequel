@@ -453,8 +453,6 @@ func _on_TestButton_pressed():
 	# tuts.open()
 
 
-
-
 func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
 	ResourceScripts.game_world.make_world()

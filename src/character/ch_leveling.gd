@@ -212,7 +212,11 @@ func get_obed_drain(value):
 	return value
 
 func predict_obed_time():
+	if check_infinite_obedience() == true: return 10000
 	return parent.get_stat('obedience') / get_obed_drain(1)
+
+func check_infinite_obedience():
+	return get_obed_drain(1) == 0 || parent.has_profession('master')
 
 func work_tick():
 	var currenttask
