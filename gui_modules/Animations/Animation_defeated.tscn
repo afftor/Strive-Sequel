@@ -111,7 +111,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, 107.813 )
+shader_param/pos = Vector2( 0, 55.0002 )
 shader_param/mask = ExtResource( 5 )
 
 [node name="Control" type="Control"]
@@ -177,7 +177,7 @@ margin_left = 702.873
 margin_top = 181.647
 margin_right = 1217.87
 margin_bottom = 247.647
-rect_scale = Vector2( 1.16572, 1.16572 )
+rect_scale = Vector2( 1.49143, 1.49143 )
 rect_pivot_offset = Vector2( 256.937, 32.82 )
 texture = ExtResource( 4 )
 stretch_mode = 6

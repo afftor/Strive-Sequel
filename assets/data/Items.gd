@@ -41,6 +41,8 @@ var stats = {
 	wits_bonus = '',
 	charm_bonus = '',
 	sexuals_bonus = '',
+
+	loyalty_gain_mod = ''
 }
 
 

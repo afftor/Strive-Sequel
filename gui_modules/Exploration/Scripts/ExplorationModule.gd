@@ -117,6 +117,7 @@ func open(location):
 
 func open_city(city):
 	self.raise()
+	gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.nav_panel.update_buttons()
@@ -146,6 +147,7 @@ func open_city(city):
 		ResourceScripts.core_animations.FadeAnimation($GuildBG, 0.3)
 		yield(get_tree().create_timer(0.3), "timeout")
 	$GuildBG.hide()
+
 
 
 func build_guilds_panel(guilds):
@@ -731,7 +733,7 @@ func build_location_group():
 	if active_location == null || !active_location.has("group"):
 		return
 	for ch in ResourceScripts.game_party.characters.values():
-		if ch.get_stat('obedience') == 0:
+		if ch != ResourceScripts.game_party.get_master() && ch.get_stat('obedience') == 0:
 			active_location.group.erase('pos' + str(ch.combat_position))
 			ch.combat_position = 0
 		if ch.check_location(active_location.id) && ch.combat_position != 0:
