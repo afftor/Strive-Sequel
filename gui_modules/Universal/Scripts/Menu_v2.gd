@@ -132,7 +132,7 @@ func quit():
 
 
 func mods(pressed, pressed_button):
-	gui_controller.win_btn_connections_handler(pressed, $mods_panel, pressed_button)
+	gui_controller.win_btn_connections_handler(pressed, $mod_panel, pressed_button)
 	self.current_pressed_btn = pressed_button
 	$mod_panel.visible = pressed
 
