@@ -232,6 +232,7 @@ func use_social_skill(s_code, target):
 				if !h.checkreqs(i.template.receiver_reqs): continue
 			var mod = i.dmgf
 			var stat = i.damagestat
+			if stat in ['loyaltyObedience', 'submissionObedience', 'obedience', 'loyalty'] and h.has_profession('master'): continue
 			if mod == 0:
 				match stat:
 					'loyalty':
@@ -276,8 +277,9 @@ func use_social_skill(s_code, target):
 			var tmp
 			match mod:
 				0:
-					if stat == 'loyalty' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
-						bonusspeech.append('loyalty')
+					if stat == 'loyalty':
+						if h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
+							bonusspeech.append('loyalty')
 #					elif stat == 'submission' && h.get_stat(stat) < 100 && h.get_stat(stat) + i.value >= 100:
 #						if h.get_stat('loyalty') < 100:
 #							bonusspeech.append("submission")
