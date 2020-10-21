@@ -41,6 +41,8 @@ var stats = {
 	wits_bonus = '',
 	charm_bonus = '',
 	sexuals_bonus = '',
+
+	loyalty_gain_mod = ''
 }
 
 
@@ -941,7 +943,24 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {sexuals_bonus = 10},
+		basestats = {charm_bonus = 5, loyalty_gain_mod = 0.15},
+	},
+	seethrough_underwear = {
+		code = 'seethrough_underwear',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['underwear'],
+		price = 250,
+		icon = load("res://assets/images/iconsitems/underwearlacy.png"),
+		tier = 'medium',
+		reqs = [],
+		effects = [],
+		tags = [],
+		basestats = {sexuals_bonus = 10, lusttick = 0.1},
 	},
 	maid_headband = {
 		code = 'maid_headband',
@@ -2586,6 +2605,18 @@ var recipes = {
 		workunits = 15, 
 		worktype = 'tailor'
 	},
+	seethrough_underwear = {
+		code = 'lacy_underwear',
+		materials = {clothsilk = 5, clothmagic = 10},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 2}], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'seethrough_underwear',
+		workunits = 30, 
+		worktype = 'tailor'
+	},
 	worker_outfit = {
 		code = 'worker_outfit',
 		materials = {cloth = 15, leather = 15},
@@ -2602,7 +2633,7 @@ var recipes = {
 		code = 'craftsman_suit',
 		materials = {clothsilk = 5, leatherthick = 10, steel = 10},
 		items = {},
-		unlockreqs = [], 
+		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 2}], 
 		crafttype = 'basic',
 		resultamount = 1, 
 		resultitemtype = 'item', 

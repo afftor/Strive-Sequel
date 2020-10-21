@@ -44,10 +44,10 @@ func update():
 		$MasterIcon.visible = person.has_profession("master")
 		var text = ""
 		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
-			$Panel/obedlabel.text = str(ceil(person.get_stat('obedience')))
+			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.get_stat('obedience') > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
+		if person.xp_module.predict_obed_time() > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad
@@ -131,6 +131,7 @@ func update():
 		rebuild_traits()
 	
 		$ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
+		$ConsentLabel.visible = person != ResourceScripts.game_party.get_master()
 		if person != ResourceScripts.game_party.get_master():
 			$Panel/character_class.text = statdata.slave_class_names[person.get_stat('slave_class')]
 			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))

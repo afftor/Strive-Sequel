@@ -130,6 +130,9 @@ func hire_character():
 		else:
 			input_handler.SystemMessage("Population limit reached")
 		return
+	if ResourceScripts.game_res.money < person.calculate_price():
+		input_handler.SystemMessage("Not enough money")
+		return
 	ResourceScripts.game_res.money -= person.calculate_price()
 	input_handler.PlaySound("money_spend")
 	person.set_stat('is_hirable', false)

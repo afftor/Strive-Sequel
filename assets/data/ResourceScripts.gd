@@ -1,7 +1,7 @@
 extends Node
 
 var scenedict = {
-	menu = "res://gui_modules/Menu_v2.tscn",
+	menu = "res://gui_modules/Universal/Modules/Menu_v2.tscn",
 	mansion = "res://gui_modules/Mansion/Modules/MansionMainModule.tscn",
 	loadscreen = "res://src/LoadScreen.tscn",
 	combat = "res://gui_modules/Universal/Modules/CombatV2Animated.tscn",
@@ -84,6 +84,7 @@ onready var node_data = {
 	input_handler.ANIM_TASK_AQUARED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_aquired.tscn") },
 	input_handler.ANIM_BATTLE_START : {name = 'ANIMBattleStart', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_battle_start.tscn") },
 	input_handler.ANIM_BATTLE_DEFEAT : {name = 'ANIMBattleDefeat', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_defeated.tscn") },
+	input_handler.ANIM_BATTLE_RUNAWAY : {name = 'ANIMBattleRunaway', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_runaway.tscn") },
 	input_handler.ANIM_CLASS_ACHIEVED : {name = 'ANIMClassAchieved', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_class_achieved.tscn") },
 	input_handler.ANIM_CLASS_UNLOCKED : {name = 'ANIMTaskAquared', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_class_unlocked.tscn") },
 	input_handler.ANIM_TASK_COMPLETED : {name = 'ANIMTaskCompleted', mode = 'scene', scene = preload("res://gui_modules/Animations/Animation_task_completed.tscn") },

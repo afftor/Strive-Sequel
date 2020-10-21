@@ -111,6 +111,7 @@ enum {
 	ANIM_TASK_AQUARED,
 	ANIM_BATTLE_START,
 	ANIM_BATTLE_DEFEAT,
+	ANIM_BATTLE_RUNAWAY,
 	ANIM_CLASS_ACHIEVED,
 	ANIM_CLASS_UNLOCKED,
 	ANIM_TASK_COMPLETED,
@@ -804,13 +805,14 @@ func interactive_dialogue_start(code, stage):
 
 
 func ActivateTutorial(code):
-	if ResourceScripts.game_progress.show_tutorial == true && ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
+	if ResourceScripts.game_progress.active_tutorials.has(code) == false && ResourceScripts.game_progress.seen_tutorials.has(code) == false:
 		ResourceScripts.game_progress.active_tutorials.append(code)
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = get_spec_node(self.NODE_TUTORIAL_PANEL, null, false, false)
-	gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
-	gui_controller.mansion_tutorial_panel.open(code)
-		#get_tutorial_node().rebuild()
+	if ResourceScripts.game_progress.show_tutorial && !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
+		gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
+	if ResourceScripts.game_progress.show_tutorial && !ResourceScripts.game_progress.seen_tutorials.has(code):
+		gui_controller.mansion_tutorial_panel.open(code)
 
 
 func get_combat_node():
@@ -924,7 +926,7 @@ func get_spec_node(type, args = null, raise = true, unhide = true):
 	if ResourceScripts.node_data[type].has('calls'): 
 		if args == null: args = []
 		window.callv(ResourceScripts.node_data[type].calls, args)
-	elif args != null: 
+	elif args != null:
 		for param in args:
 			window.set(param, args[param])
 	return window
@@ -1202,6 +1204,7 @@ func get_location_characters():
 
 
 func play_unlock_class_anim(cls):
+	get_tree().get_root().set_disable_input(true)
 	input_handler.PlaySound("class_aquired")
 	var anim_scene
 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_UNLOCKED)
@@ -1212,3 +1215,4 @@ func play_unlock_class_anim(cls):
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
+	get_tree().get_root().set_disable_input(false)

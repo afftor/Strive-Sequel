@@ -162,6 +162,7 @@ func show_location_resources(location_code):
 
 
 func update_character_dislocation():
+	input_handler.ActivateTutorial("traveling")
 	var destination = get_parent().selected_destination
 	var selected_travel_characters = get_parent().selected_travel_characters
 	var char_array = []
@@ -214,7 +215,7 @@ func update_character_dislocation():
 			# var person = ResourceScripts.game_party.characters[i]
 			if person.is_controllable():
 				continue
-			if person.get_stat('obedience') < obed_cost:
+			if person.xp_module.predict_obed_time() < obed_cost:
 				can_travel = false
 	$DescriptText.bbcode_text = text
 	$DescriptText2.bbcode_text = text2

@@ -110,3 +110,9 @@ func calculate_dmg():
 		value *= (float(100 - reduction)/100.0)
 	
 	value = round(value)
+
+func check_conditions():
+	var res = true
+	if template.has('caster_reqs'): res = res and parent.caster.checkreqs(template.caster_reqs)
+	if template.has('target_reqs'): res = res and parent.target.checkreqs(template.target_reqs)
+	return res

@@ -46,6 +46,9 @@ var backgrounds = {
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
+	lich_aire_talk4 = load("res://assets/images/backgrounds/AireCG001.png"),
+	lich_aire_talk7 = load("res://assets/images/backgrounds/AireCG002.png"),
+	xari_encounter8 = load("res://assets/images/backgrounds/XariCG001.png"),
 	}
 
 var scenes = {

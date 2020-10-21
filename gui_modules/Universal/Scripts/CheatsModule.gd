@@ -64,7 +64,7 @@ func list_cheats():
 		
 func set_cheat(cheat = null, btn = null):
 	if cheat != null && btn != null && !cheat in ["instant_upgrades", "plus_100k_of_gold", "plus_10k_of_guild_reputation", "add_new_character", "add_material"]:
-		variables[cheat] = btn.is_pressed()
+		ResourceScripts.game_progress[cheat] = btn.is_pressed()
 	match cheat:
 		"instant_upgrades":
 			max_all_upgrades()

@@ -18,6 +18,8 @@ func _ready():
 	for i in ['furry','furry_multiple_nipples', 'futa_balls', 'turn_based_time_flow', 'show_full_consent']:
 		get_node("TabContainer/Gameplay/" + i).connect("pressed", self, "gameplay_rule", [i])
 		get_node("TabContainer/Gameplay/" + i).pressed = input_handler.globalsettings[i]
+
+	$TabContainer/Gameplay/enable_tutorials.connect("toggled", self, "enable_tutorials")
 	
 
 	$TabContainer/debug/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
@@ -25,9 +27,10 @@ func _ready():
 	$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
 	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
 
-# TODO Implement get code method
-func get_code():
-	pass
+func enable_tutorials(pressed):
+	ResourceScripts.game_progress.show_tutorial = pressed
+
+
 
 func open_cheats_menu():
 	if gui_controller.cheat_panel == null:
@@ -60,6 +63,7 @@ func go_for_code():
 
 
 func open():
+	$TabContainer/Gameplay/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
 	# $TabContainer/debug/EnterCodeMenu/Activate.disabled = true
 	$TabContainer/debug/EnterCodeMenu.visible = !ResourceScripts.game_progress.cheats_active
 	$TabContainer/debug/OpenCheatsMenu.visible = ResourceScripts.game_progress.cheats_active

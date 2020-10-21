@@ -13,9 +13,7 @@ var value = []
 var long_value = []
 var damagestat = []
 var receiver = []
-var manacost
-var energycost
-var goldcost
+var cost
 var target_range
 var target_number
 var damage_type
@@ -42,7 +40,7 @@ func _init():
 	target_range = 'any'
 	target_number = 'single'
 	damage_type = 'direct'
-	goldcost = 0
+	cost = {}
 	damagestat = '+damage_hp'
 
 	receiver = 'target'
@@ -66,9 +64,7 @@ func createfromskill(s_code):
 	type = template.type
 	ability_type = template.ability_type
 	tags = template.tags.duplicate()
-	manacost = template.manacost
-	energycost = template.energycost
-	get_from_template('goldcost')
+	cost = template.cost.duplicate()
 	get_from_template('target_range')
 	get_from_template('target_number')
 	get_from_template('damage_type')
@@ -142,6 +138,18 @@ func convert_to_new_template():
 		tmp.is_drain = is_drain
 		tmp.is_process = (i == 0)
 		res_res.value.push_back(tmp)
+	if template.has('value_caster_reqs'):
+		for id in template.value_caster_reqs: 
+			if res_res.value.size() < id + 1: continue
+			res_res.value[id].caster_reqs = template.value_caster_reqs[id].duplicate()
+	if template.has('value_target_reqs'):
+		for id in template.value_target_reqs: 
+			if res_res.value.size() < id + 1: continue
+			res_res.value[id].target_reqs = template.value_target_reqs[id].duplicate()
+	if template.has('value_receiver_reqs'):
+		for id in template.value_receiver_reqs: 
+			if res_res.value.size() < id + 1: continue
+			res_res.value[id].receiver_reqs = template.value_receiver_reqs[id].duplicate()
 	res_res.catalysts = {}
 	res_res.effects = template.effects.duplicate()
 	if template.has('catalysts'): res_res.catalysts = template.catalysts.duplicate()
@@ -153,8 +161,7 @@ func convert_to_new_template():
 	res_res.type = template.type
 	if template.has('ability_type'): res_res.ability_type = template.ability_type
 	else: res_res.ability_type = 'social'
-	res_res.manacost = manacost
-	res_res.goldcost = goldcost
+	res_res.cost = cost
 	if template.has('charges'): res_res.charges = template.charges
 	if template.has('cooldown'): res_res.cooldown = template.cooldown
 	if template.has('combatcooldown'): res_res.combatcooldown = template.combatcooldown
@@ -179,7 +186,6 @@ func convert_to_new_template():
 	if template.has('armor_p'): res_res.armor_p = template.armor_p
 	if template.has('critchance'): res_res.critchance = template.critchance
 	if template.has('process_no_stat'): res_res.process_no_stat = template.process_no_stat
-	if template.has('energycost'): res_res.energycost = template.energycost
 	if template.has('follow_up'): res_res.follow_up = template.follow_up
 	if template.has('social_skill_stats'): res_res.social_skill_stats = template.social_skill_stats
 	res_res.tags = tags.duplicate()

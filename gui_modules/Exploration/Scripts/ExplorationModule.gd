@@ -45,6 +45,7 @@ func _ready():
 	# ResourceScripts.game_world.make_world()
 	# open_city("aliron")
 	gui_controller.add_close_button($BuyLocation)
+	gui_controller.add_close_button($GuildShop)
 	$FactionDetails.get_node("QuestGen").connect("pressed", self, "show_quest_gen")
 	$FactionDetails.get_node("QuestGenPanel/Apply").connect(
 		"pressed", self, "show_quest_gen", ["hide"]
@@ -115,6 +116,8 @@ func open(location):
 
 
 func open_city(city):
+	self.raise()
+	gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
 	gui_controller.nav_panel.update_buttons()
@@ -144,6 +147,7 @@ func open_city(city):
 		ResourceScripts.core_animations.FadeAnimation($GuildBG, 0.3)
 		yield(get_tree().create_timer(0.3), "timeout")
 	$GuildBG.hide()
+
 
 
 func build_guilds_panel(guilds):
@@ -216,11 +220,8 @@ var current_level
 var current_stage
 
 
-func enter_church():
-	print("I'm in church")
-
-
 func open_location(data):
+	input_handler.ActivateTutorial("exploration")
 	input_handler.StopBackgroundSound()
 	gui_controller.nav_panel = $LocationGui.get_node("NavigationModule")
 	selected_location = data.id
@@ -272,8 +273,7 @@ func open_location(data):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-	# if !ResourceScripts.game_progress.active_tutorials.has("exploration"):
-	# 	input_handler.ActivateTutorial("exploration")
+
 
 	#check if anyone is present
 	build_location_group()
@@ -393,7 +393,7 @@ func use_item_on_character(character, item):
 
 
 func use_e_combat_skill(caster, target, skill):
-	caster.mp -= skill.manacost
+	caster.pay_cost(skill.cost)
 	for i in skill.catalysts:
 		ResourceScripts.game_res.materials[i] -= skill.catalysts[i]
 	if skill.charges > 0:
@@ -733,7 +733,7 @@ func build_location_group():
 	if active_location == null || !active_location.has("group"):
 		return
 	for ch in ResourceScripts.game_party.characters.values():
-		if ch.get_stat('obedience') == 0:
+		if ch != ResourceScripts.game_party.get_master() && ch.get_stat('obedience') == 0:
 			active_location.group.erase('pos' + str(ch.combat_position))
 			ch.combat_position = 0
 		if ch.check_location(active_location.id) && ch.combat_position != 0:
@@ -912,12 +912,14 @@ func build_spell_panel():
 				newnode.get_node("castername").text = person.get_short_name()
 				var text = skill.descript
 				var disabled = false
-				if skill.manacost > 0:
+				for st in skill.cost:
 					text += (
-						"\n\nMana cost: "
-						+ str(skill.manacost)
+						"\n\n" 
+						+ statdata.statdata[st].name
+						+ " cost: "
+						+ str(skill.cost[st])
 						+ " ("
-						+ str(floor(person.mp))
+						+ str(floor(person.get_stat(st)))
 						+ ")"
 					)
 				if skill.catalysts.empty() == false:
@@ -936,7 +938,7 @@ func build_spell_panel():
 							disabled = true
 				globals.connecttexttooltip(newnode, text)
 				newnode.dragdata = {skill = skill, caster = person}
-				if person.mp < skill.manacost:
+				if !person.check_cost(skill.cost):
 					disabled = true
 				if person.has_status('no_obed_gain'):
 					disabled = true
@@ -1106,7 +1108,7 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 
 func faction_guild_shop(pressed, pressed_button, guild):
 	$GuildShop/NumberSelection2.hide()
-	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
+	gui_controller.win_btn_connections_handler(pressed, $GuildShop, pressed_button)
 	active_faction = guild
 	input_handler.active_faction = guild
 	self.current_pressed_area_btn = pressed_button
@@ -1650,6 +1652,7 @@ func update_sell_list():
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
+		newbutton.set_meta('item', item.name)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
@@ -1666,6 +1669,7 @@ func update_sell_list():
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(item.amount)
 		newbutton.set_meta('type', type)
+		newbutton.set_meta('item', item.name)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectitemtooltip(newbutton, item)
@@ -1690,6 +1694,7 @@ func update_buy_list():
 			newbutton.get_node("icon").texture = item.icon
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
+			newbutton.set_meta('item', item.name)
 			newbutton.connect("pressed", self, "item_purchase", [item, amount])
 			newbutton.visible = (
 				(newbutton.get_meta("type") == buy_category)
@@ -1716,6 +1721,7 @@ func update_buy_list():
 			newbutton.get_node("icon").texture = item.icon
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
+			newbutton.set_meta('item', item.name)
 			newbutton.visible = (
 				(newbutton.get_meta("type") == buy_category)
 				|| buy_category == "all"
@@ -1740,6 +1746,12 @@ var purchase_item
 
 
 func item_purchase(item, amount):
+	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
+		btn.pressed = false
+	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
+		if !btn.has_meta("item"):
+			continue
+		btn.pressed = btn.get_meta("item") == item.name
 	purchase_item = item
 	if amount < 0:
 		amount = 100
@@ -1794,6 +1806,12 @@ func item_puchase_confirm(value):
 
 
 func item_sell(item):
+	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
+		btn.pressed = false
+	for btn in $AreaShop/SellBlock/ScrollContainer/VBoxContainer.get_children():
+		if !btn.has_meta("item"):
+			continue
+		btn.pressed = btn.get_meta("item") == item.name
 	purchase_item = item
 	var price
 	if item.price:
@@ -1836,6 +1854,7 @@ func item_sell_confirm(value):
 
 
 func quest_board(pressed, pressed_button):
+	input_handler.ActivateTutorial("quest")
 	gui_controller.win_btn_connections_handler(pressed, $QuestBoard, pressed_button)
 	self.current_pressed_area_btn = pressed_button
 	# $QuestBoard.visible = pressed

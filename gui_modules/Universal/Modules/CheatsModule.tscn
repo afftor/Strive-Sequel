@@ -192,6 +192,7 @@ __meta__ = {
 }
 
 [node name="Descript" type="Label" parent="LeftSide/VBoxContainer/Button"]
+visible = false
 margin_top = 70.0
 margin_right = 356.0
 margin_bottom = 105.0

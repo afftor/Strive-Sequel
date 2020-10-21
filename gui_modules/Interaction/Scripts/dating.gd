@@ -27,7 +27,7 @@ var submodules = []
 
 var helpdescript = {
 	mood = '[center]Mood[/center]\nA high mood increases likeliness of positive outcome of intimate actions and provides Loyalty growth buff after session is finished.\nMood grows from positive interactions and decreases from negative interactions.',
-	fear = '[center]Fear[/center]\nFear provides Submission growth buff after session is finished. \nFear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. ',
+	fear = '[center]Fear[/center]\nFear improves Authority and Obedience once date is over. \nFear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. ',
 	#consent = "[center]Consent[/center]\nConsent will make character agree to perform lewder actions in a more exciting situtations. \nConsent is gained by willingly performing lewd actions.",
 	#authority = ""
 	}
@@ -210,7 +210,7 @@ func initiate(tempperson):
 			text += "[he2] gladly accepts your order and is ready to follow you anywhere you take [him2]. "
 			self.mood += 10
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start_happy')) + "\n"
-		elif person.get_stat('obedience') >= 60:
+		elif person.xp_module.predict_obed_time() >= 60:
 			self.mood += 4
 			text += "[he2] obediently agrees to your order and tries [his2] best to please you. "
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_start')) + "\n"
@@ -296,7 +296,8 @@ func updatelist():
 				newnode.disabled = true
 	
 	$panel/ScrollContainer/GridContainer.move_child($panel/ScrollContainer/GridContainer/Button, $panel/ScrollContainer/GridContainer.get_children().size())
-	var text = "Authority: " + str(floor(person.get_stat('authority'))) + "("  + str(person.authority_threshold()) + ")" + ", Consent: " + str(floor(person.get_stat("consent"))) 
+	var text = "Consent: " + str(floor(person.get_stat("consent")))  #"Authority: " + str(floor(person.get_stat('authority'))) + "("  + str(person.authority_threshold()) + ")" + ",
+	
 	$authconslabel.text = text
 	#$mana/Label.text = str(globals.resources.mana)
 	$gold/Label.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
@@ -690,11 +691,11 @@ func chat(person, counter):
 	
 	var text = input_handler.weightedrandom(date_lines.chat_start) + "\n\n"
 	
-	if counter < 3 || randf() >= counter/10.0+0.1:
+	if 8 - counter*1.5 > 2 :
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.chat_positive)
 		text += "}"
-		self.mood += 8
+		self.mood += 8 - counter*1.5
 	else:
 		self.mood -= 1
 		text += "{color=red|"
@@ -710,12 +711,11 @@ func flirt(person, counter):
 	var min_mood = rand_range(8,14)
 	if dislike_same_sex():
 		min_mood *= 2
-	if mood > min_mood:
-		self.mood += 10
+	if mood > min_mood && 10 - counter*2 > 2:
+		self.mood += 10 - counter * 2
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.flirt_positive)
 		text += "}"
-		person.add_stat('consent', rand_range(1,3))
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.flirt_negative)
@@ -755,12 +755,12 @@ func touch(person, counter):
 	var text = ''
 	text += input_handler.weightedrandom(date_lines.touch_start) + "\n\n"
 	
-	if counter < 3:
-		self.mood += 6
+	if 6 - counter > 1:
+		self.mood += 6 - counter
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.touch_positive)
 		text += "}"
-		text += person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.touch_negative)
@@ -771,12 +771,12 @@ func touch(person, counter):
 func holdhands(person, counter):
 	var text = ''
 	if location != 'bedroom':
-		text += "You take [name2]'s hand into yours and stroll around. "
+		text += "You take [name2]'s hand into yours as you stroll around. "
 	else:
 		text += "You take [name2]'s hand into yours and move closer. "
-	if (counter < 3 || randf() >= 0.4) && self.mood >= 5:
+	if 8 - counter > 3 && self.mood >= 5:
 		text += "[he2] holds your hand firmly. "
-		self.mood += 8
+		self.mood += 8 - counter
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		self.mood -= 2
@@ -788,8 +788,8 @@ func combhair(person, counter):
 	var text = ''
 	text += input_handler.weightedrandom(date_lines.combhair_start) + "\n\n"
 	
-	if counter < 3:
-		self.mood += 7
+	if 7 - counter > 2:
+		self.mood += 7 - counter
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.combhair_positive)
 		text += "}"
@@ -808,14 +808,12 @@ func hug(person, counter):
 	text += input_handler.weightedrandom(date_lines['hug_start_'+size_difference+"size"]) + "\n\n"
 	
 	
-	if (counter < 3 || randf() >= 0.7) && self.mood >= 20:
-		self.mood += 11
+	if (11 - counter*2 > 2 ) && self.mood >= 20:
+		self.mood += 11 - counter*2
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines['hug_positive_'+size_difference+"size"])
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
-		if person.get_stat("consent") < 12:
-			person.add_stat('consent', rand_range(1,2))
 	else:
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines['hug_negative'])
@@ -837,7 +835,7 @@ func kiss(person, counter):
 		text += "}"
 		self.mood -= 5
 	elif self.mood >= min_mood && (self.mood < min_mood*2 || (location == 'city' && !person.check_traits('shameless'))):
-		self.mood += 10
+		self.mood += 20
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.kiss_positive)
 		
@@ -847,12 +845,10 @@ func kiss(person, counter):
 			text += " {^[name2]:[race2] [boy2]:[he2]} giggles looking at you. "
 		
 		text += "}"
-		if person.get_stat("consent") < 15:
-			person.add_stat('consent', rand_range(1,3))
 		if randf() > 0.5:
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	elif self.mood >= min_mood*2:
-		self.mood += 14
+		self.mood += 30
 		text += "{color=green|"
 		if location == 'city' && person.check_traits('shameless'):
 			text += input_handler.weightedrandom(date_lines.kiss_erotic_puclic)
@@ -868,8 +864,6 @@ func kiss(person, counter):
 				text += "{^[name2]:[race2] [boy2]:[he2]} giggles in satisfaction{^:, grabbing your arm}. "
 		
 		text += "}"
-		if person.get_stat("consent") < 20:
-			person.add_stat('consent', rand_range(1,3))
 		if randf() > 0.5:
 			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	
@@ -999,8 +993,8 @@ func praise(person, counter):
 func pathead(person, counter):
 	var text = input_handler.weightedrandom(date_lines.pathead_initiate) + "\n\n"
 	
-	if person.has_temp_effect('resist_state') == false:
-		self.mood += 10
+	if person.has_temp_effect('resist_state') == false && 10-counter*1.5 > 2:
+		self.mood += 10 - counter*1.5
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pathead_accept)
 		text += "}"
@@ -1013,7 +1007,7 @@ func pathead(person, counter):
 
 func scold(person, counter):
 	var text = input_handler.weightedrandom(date_lines.scold_initiate) + "\n\n"
-	var value = {mood = -3, fear = 10, authority = 3, action = 'scold'}
+	var value = {mood = -3, fear = 10 - counter, action = 'scold'}
 	
 	if person.has_temp_effect('resist_state') == false:
 		text += "{color=green|"
@@ -1022,7 +1016,7 @@ func scold(person, counter):
 		#text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		value.mood = -10
-		text += "{color=greed|"
+		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.scold_resist)
 		text += "}"
 	
@@ -1033,14 +1027,14 @@ func scold(person, counter):
 func rubears(person, counter):
 	var text = input_handler.weightedrandom(date_lines.rubears_initiate) + "\n\n"
 	
-	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 20:
-		self.mood += 8
+	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 20 && 8 - counter > 3:
+		self.mood += 8 - counter
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.rubears_accept)
 		text += "}"
 		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
-		self.mood += 2
+		self.mood -= 2
 		text += "{color=red|"
 		text += input_handler.weightedrandom(date_lines.rubears_resist)
 		text += "}"
@@ -1049,8 +1043,8 @@ func rubears(person, counter):
 func stroketail(person, counter):
 	var text = input_handler.weightedrandom(date_lines.stroketail_initiate) + "\n\n"
 	
-	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 25:
-		self.mood += 11
+	if person.has_temp_effect('resist_state') == false && person.get_stat('loyalty') >= 25 && 11 - counter*1.5 > 2:
+		self.mood += 11 - counter*1.5
 		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.stroketail_accept)
 		text += "}"
@@ -1076,7 +1070,7 @@ func stroketail(person, counter):
 func pullear(person, counter):
 	
 	var text = input_handler.weightedrandom(date_lines.pullear_initiate) + "\n\n"
-	var value = {mood = -7, fear = 14, authority = 4, action = 'pullear'}
+	var value = {mood = -7, fear = 14-counter, action = 'pullear'}
 	
 	if person.has_temp_effect('resist_state') == false:
 		text += "{color=green|"
@@ -1085,7 +1079,7 @@ func pullear(person, counter):
 		#text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		value.mood = -10
-		text += "{color=greed|"
+		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pullear_resist)
 		text += "}"
 	
@@ -1096,7 +1090,7 @@ func pullear(person, counter):
 func pulltail(person, counter):
 	
 	var text = input_handler.weightedrandom(date_lines.pulltail_initiate) + "\n\n"
-	var value = {mood = -5, fear = 15, authority = 4, action = 'pulltail'}
+	var value = {mood = -5, fear = 15-counter, action = 'pulltail'}
 	
 	if person.has_temp_effect('resist_state') == false:
 		text += "{color=green|"
@@ -1105,7 +1099,7 @@ func pulltail(person, counter):
 		#text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_affection')) + "\n"
 	else:
 		value.mood = -10
-		text += "{color=greed|"
+		text += "{color=green|"
 		text += input_handler.weightedrandom(date_lines.pulltail_resist)
 		text += "}"
 	
@@ -1133,18 +1127,14 @@ func punish_process(value):
 		var array = []
 		for i in observing_slaves:
 			array.append(i.get_short_name())
-			if i.get_stat('authority') < 20:
-				i.add_stat('authority',rand_range(2,4))
 		text += input_handler.text_form_recitation(array)
 		text += "[/color] watch over [name2]'s humiliation in awe. "
 		
 		
 		value.mood *= 1.2
 		value.fear *= 1.3
-		value.authority *= 1.2
 	
 	
-	person.add_stat('authority', value.authority)
 	self.fear += value.fear
 	self.mood += value.mood
 	
@@ -1160,7 +1150,7 @@ func slap(person, counter):
 	var text = ''
 	text += "You slap [name2] across the face as punishment. [his2] cheek gets red. "
 	
-	var value = {mood = -3, fear = 12, authority = 3, action = 'slap'}
+	var value = {mood = -3, fear = 12-counter, action = 'slap'}
 	text += punish_process(value)
 	return text
 
@@ -1168,7 +1158,7 @@ func flag(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table, and after exposing [his2] rear, punish it with force. "
 	
-	var value = {mood = -5, fear = 16, authority = 5, action = 'flag'}
+	var value = {mood = -5, fear = 16-counter, action = 'flag'}
 	
 	text += punish_process(value)
 	return text
@@ -1178,7 +1168,7 @@ func whip(person, counter):
 	text += "You put [name2] on the punishment table, and after exposing [his2] rear, whip it with force. "
 	
 	
-	var value = {mood = -5, fear = 20, authority = 5, action = 'whip'}
+	var value = {mood = -5, fear = 20-counter, action = 'whip'}
 	text += punish_process(value)
 	return text
 
@@ -1187,7 +1177,7 @@ func horse(person, counter):
 	text += "You tie [name2] securely to the wooden horse with [his2] legs spread wide. [he2] cries with pain under [his2] own weight. "
 	
 	
-	var value = {mood = -5, fear = 20, authority = 5, action = 'horse'}
+	var value = {mood = -5, fear = 20-counter, action = 'horse'}
 	text += punish_process(value)
 	
 	return text
@@ -1196,7 +1186,7 @@ func wax(person, counter):
 	var text = ''
 	text += "You put [name2] on the punishment table and after exposing [his2] body you drip hot wax over it making [him2] cry with pain. "
 	
-	var value = {mood = -5, fear = 18, authority = 6, action = 'wax'}
+	var value = {mood = -5, fear = 18-counter, action = 'wax'}
 	
 	text += punish_process(value)
 	
@@ -1340,8 +1330,8 @@ func alcohol(person):
 	else:
 		text += "[he2] accepts your invitation and you slowly consume it, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
 		self.mood += 15
-		person.add_stat('authority', 11)
-		person.add_stat('consent', 2)
+		#person.add_stat('authority', 11)
+		#person.add_stat('consent', 2)
 		
 		drunkness += 3
 		ResourceScripts.game_res.remove_item('alcohol',1)
@@ -1358,8 +1348,8 @@ func beer(person):
 	else:
 		text += "[he2] accepts your invitation and you casually drink together, as [his2] mood improve. You notice that [he2] gets tipsy and feels at ease with you. "
 		self.mood += 10
-		person.add_stat('authority', 5)
-		person.add_stat('consent', 3)
+		#person.add_stat('authority', 5)
+		#person.add_stat('consent', 3)
 		
 		drunkness += 1
 		ResourceScripts.game_res.remove_item('beer',1)
@@ -1375,7 +1365,7 @@ func beer(person):
 #	var text = ''
 #	text += "You serve fresh wine for you and [name2]. "
 #
-#	if self.mood < 5 || person.get_stat('obedience') < 80:
+#	if self.mood < 5 || person.xp_module.predict_obed_time() < 80:
 #		text = "[he2] refuses to drink with you. "
 #	else:
 #		if counter < 3:
@@ -1399,7 +1389,7 @@ func beer(person):
 #	var text = ''
 #	text += "You present [name2] with a small decorative gift. "
 #
-#	if person.get_stat('obedience') >= 75:
+#	if person.xp_module.predict_obed_time() >= 75:
 #		self.mood += 7
 #		#person.get_stat('loyalty') += 4
 #		text = text + "[he2] accepts your gift with a pleasant smile on [his2] face.  "
@@ -1417,7 +1407,7 @@ func beer(person):
 #	var text = ''
 #	text += "You purchase some candies for [name2] from a local vendor. "
 #
-#	if person.get_stat('obedience') >= 55:
+#	if person.xp_module.predict_obed_time() >= 55:
 #		self.mood += 6
 #		#person.get_stat('loyalty') += 3
 #		text = text + "[he2] joyfull accepts them and enjoys the sweet taste.  "
@@ -1460,29 +1450,58 @@ func strChange(value):
 
 func calculateresults():
 	var sex_offer = false
-	var loyal_bonus = floor(self.mood * 2)
-	var subm_bonus = floor(self.fear * 2) 
+	var endmood = floor(self.mood)
+	var endfear = floor(self.fear) 
 	
-	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
-	eff.set_args('subm_bonus', subm_bonus)
-	eff.set_args('loyal_bonus', loyal_bonus)
-	person.apply_effect(effects_pool.add_effect(eff))
-	
-	var text = ('Encounter Complete!'
-	+ "\nLoyalty bonus for next 36 hours: +" + str(loyal_bonus) +"%"
-	+ "\nSubmission bonus for next 36 hours: +" + str(subm_bonus) +"%"
-	
-	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
-	+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
+#	var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table['date_bonus'])
+#	eff.set_args('subm_bonus', subm_bonus)
+#	eff.set_args('loyal_bonus', loyal_bonus)
+#	person.apply_effect(effects_pool.add_effect(eff))
+	var obedience = 0
+	var authority = 0
+	var consent = 0
+	var loyalty = 0
+	var text = ('Encounter Ended.'
+	+ "\nMood: " + str(endmood)
+	+ "\nFear: " + str(endfear)
 	)
+#	+ "\nLoyalty Gained: +" + str(loyal_bonus)
+	
+#	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
+	#+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
+	if endmood >= endfear:
+		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
+		authority = ceil(endmood/10)
+		consent = master.get_stat("sexuals_factor")*4
+		text += ("\n\n{color=green|Positive Mood}: " 
+		+ "\nLoyalty: +" + str(loyalty) + " ([Master]'s Charm Factor Bonus: +" + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
+		+ "\nConsent: +" + str(consent) + " ([Master]'s Sex Factor: " + str(master.get_stat("sexuals_factor"))+")"
+		+ "\nAuthority: +" + str(authority)
+		+ "\n\nSatisfied by the time together, you and [name] grow closer."
+		)
+		
+		person.add_stat("loyalty", loyalty)
+		person.add_stat("consent", consent)
+		person.add_stat("authority", authority)
+		
+	else:
+		obedience = ceil(endfear/1.75)
+		authority = ceil(endfear/3) + master.get_stat('physics_factor') * 4 
+		text += ("\n\n{color=red|Fearful Mood}: " 
+		+ "\nObedience: +" + str(obedience)
+		+ "\nAuthority: +" + str(authority) + " ([Master]'s Physics Factor Bonus: +" + str(master.get_stat("physics_factor")*4)+")"
+		+ "\n\nWhile this was an unpleasant expirience for [name], it will certainly teach [him] to be afraid of your anger."
+		)
+		person.add_stat("obedience", obedience)
+		person.add_stat("authority", authority)
 	
 	if person.get_stat('consent') >= 30 || person.get_stat('loyalty') + person.get_stat('consent')*2 > 110:
-		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'date_sex_offer')) + "\n\n{color=green|It seems [name] does not mind to continue this encounter...}"
 		sex_offer = true
 	
 	$end/sexbutton.visible = sex_offer
 	
-	return globals.TextEncoder(text)
+	return globals.TextEncoder(person.translate(text))
 
 func start_sex():
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
@@ -1568,7 +1587,7 @@ var actionsdict = {
 	praise = {
 		group = 'Affection',
 		name = 'Praise',
-		descript = "Praise [name] for [his] previous success to encourage further good behavior. Only useable once.",
+		descript = "Praise [name] for [his] previous success to encourage further good behavior. Can only be used once.",
 		reqs = [],
 		location = [],
 		onetime = true,
@@ -1601,7 +1620,8 @@ var actionsdict = {
 	kiss = {
 		group = 'Affection',
 		name = 'Kiss',
-		descript = "Kiss [name] lightly",
+		descript = "Attempt to kiss [name]. Can only be used once.",
+		onetime = true,
 		reqs = [],
 		location = [],
 		effect = 'kiss',
@@ -1659,7 +1679,7 @@ var actionsdict = {
 	slap = {
 		group = 'Discipline',
 		name = 'Slap',
-		descript = "Slap [name] across the face to reprimand [him]. Slightly icnreases Authority.",
+		descript = "Slap [name] across the face to reprimand [him].",
 		reqs = [],
 		location = [],
 		effect = 'slap',

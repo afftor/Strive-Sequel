@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=2]
+[gd_scene load_steps=141 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
@@ -117,7 +117,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=115]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco.png" type="Texture" id=116]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=117]
-[ext_resource path="res://assets/images/tutorial.png" type="Texture" id=118]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -2039,6 +2038,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )
 theme = ExtResource( 68 )
 custom_fonts/font = ExtResource( 8 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="AreaShop/SellBlock/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0
@@ -2157,6 +2157,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 464, 50 )
 theme = ExtResource( 68 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+toggle_mode = true
 
 [node name="icon" type="TextureRect" parent="AreaShop/BuyBlock/ScrollContainer/VBoxContainer/Button"]
 margin_left = 6.0
@@ -2608,14 +2609,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="tutorial" type="Sprite" parent="GuildShop"]
-position = Vector2( -457.213, 464.337 )
-texture = ExtResource( 118 )
-
-[node name="tutorial2" type="Sprite" parent="GuildShop"]
-position = Vector2( -857.373, -198.991 )
-texture = ExtResource( 118 )
 
 [node name="BuyLocation" type="Control" parent="."]
 visible = false

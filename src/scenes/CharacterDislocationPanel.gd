@@ -152,9 +152,9 @@ func update_character_dislocation():
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		var person = ResourceScripts.game_party.characters[i]
 		newbutton.get_node("Label").text = person.get_full_name()
-		var obed_text = str(person.get_stat('obedience'))
+		var obed_text = str(person.xp_module.predict_obed_time())
 		var obed_color
-		if person.get_stat('obedience') <= 0:
+		if person.xp_module.predict_obed_time() <= 0:
 			obed_color = variables.hexcolordict.red
 		else:
 			obed_color = variables.hexcolordict.green
@@ -202,7 +202,7 @@ func update_character_dislocation():
 			var person = ResourceScripts.game_party.characters[i]
 			if person.is_controllable():
 				continue
-			if person.get_stat('obedience') < obed_cost:
+			if person.xp_module.predict_obed_time() < obed_cost:
 				can_travel = false
 	
 	$DescriptText.bbcode_text = text
@@ -225,7 +225,7 @@ func travel_confirm():
 		var travel_cost = globals.calculate_travel_time(destination,dislocation_area)
 		if !person.is_controllable():
 			person.add_stat('obedience', -ceil((travel_cost.obed_cost/person.travel_per_tick())))
-		if ResourceScripts.game_progress.instant_travel == false:
+		if ResourceScripts.game_progress.unlock_all_upgrades == false:
 			person.xp_module.work = 'travel'
 			person.travel.location = 'travel'
 			person.travel.travel_target = {area = destination_area, location = destination}

@@ -102,7 +102,7 @@ func checkbox_locked():
 	open(person, mode)
 
 func class_category(name):
-	person = gui_controller.mansion.active_person
+	person = gui_controller.mansion.active_person if person == null else get_parent().active_person
 	category = name
 	for i in $categories.get_children():
 		i.pressed = i.name == category

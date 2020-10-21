@@ -46,16 +46,9 @@ func change_slave(param):
 				selected_person = ResourceScripts.game_party.characters[chars[0]]
 			else:
 				selected_person = ResourceScripts.game_party.characters[chars[current_idx + 1]]
+	CharMainModule.active_person = selected_person
 	CharMainModule.match_state()
-
-
-# func sort_chars(f, s):
-# 	return f.id > s.id
-
-
-	# show_summary()
-# func update():
-# 	update_buttons()
+	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
 
 
 func update_buttons():
@@ -87,6 +80,10 @@ func show_summary():
 		i.get_node("Label").text = str(floor(i.value)) + "/" + str(floor(i.max_value))
 
 	for i in $factors.get_children():
+		if person == ResourceScripts.game_party.get_master() && i.name in ["tame_factor", "timid_factor"]:
+			i.hide()
+		else:
+			i.show()
 		# if i.name in ['food_consumption', 'base_exp']:
 		if i.name in ['base_exp']:
 			# i.get_node("Label").text = str(floor(person.get_stat(i.name)))

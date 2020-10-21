@@ -87,10 +87,7 @@ func _ready():
 
 
 func run():
-	# ResourceScripts.core_animations.BlackScreenTransition(0.5)
-	# yield(get_tree().create_timer(0.5), 'timeout')
-	# hide()
-	defeat()
+	defeat(true)
 
 
 
@@ -112,6 +109,10 @@ func play_animation(anim):
 	if anim == "defeat":
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
+		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+	if anim == "runaway":
+		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
+		anim_scene.get_node("AnimationPlayer").play("runaway")
 		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
@@ -456,10 +457,15 @@ func show_buttons(container):
 		yield(get_tree().create_timer(0.3), "timeout")
 		button.set("modulate", Color(1, 1, 1, 1))
 
-func defeat():
-	play_animation("defeat")
+func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
 	input_handler.PlaySound("combat_defeat")
-	yield(get_tree().create_timer(3), 'timeout')
+	if runaway:
+		play_animation("runaway")
+		yield(get_tree().create_timer(4.5), 'timeout')
+	else:
+		play_animation("defeat")
+		yield(get_tree().create_timer(3), 'timeout')
+
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(images.cursors.default)
@@ -910,7 +916,7 @@ func use_skill(skill_code, caster, target):
 			else:
 				combatlogadd("\n" + caster.get_stat('name') + ' uses ' + skill.name + ". ")
 		
-		caster.mp -= skill.manacost
+		caster.pay_cost(skill.cost)
 		
 		if skill.combatcooldown != 0:
 			caster.skills.combat_cooldowns[skill_code] = skill.combatcooldown
@@ -1298,6 +1304,7 @@ func execute_skill(s_skill2):
 	#new section applying conception of multi-value skills
 	#TO POLISH & REMAKE
 	for i in s_skill2.value:
+		if !i.check_conditions(): continue
 		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
 		if i.damagestat == 'damage_hp' and i.dmgf == 0: #drain, damage, damage no log, drain no log
 			if i.is_drain && s_skill2.tags.has('no_log'):
@@ -1428,10 +1435,10 @@ func RebuildSkillPanel():
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
 		var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
 		newbutton.get_node("Icon").texture = skill.icon
-		newbutton.get_node("manacost").text = str(skill.manacost)
-		# if skill.manacost <= 0:
-		newbutton.get_node("manacost").visible = skill.manacost > 0
-		if skill.manacost > activecharacter.mp:
+		if skill.cost.has('mp'):
+			newbutton.get_node("manacost").text = str(skill.cost.mp)
+			newbutton.get_node("manacost").visible = true
+		if !activecharacter.check_cost(skill.cost):
 #			newbutton.get_node("Icon").modulate = Color(0,0,1)
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
@@ -1463,7 +1470,7 @@ func RebuildSkillPanel():
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
-		if activecharacter.mp < skill.manacost:
+		if !activecharacter.check_cost(skill.cost):
 			newbutton.disabled = true
 			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 		newbutton.set_meta('skill', skill.code)

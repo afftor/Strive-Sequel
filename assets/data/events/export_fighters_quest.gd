@@ -384,6 +384,7 @@ var data = {
 		{reqs = [
 		{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}]},
 		],
+		custom_background = "lich_aire_talk4",
 		image = null,
 		character = 'aire',
 		tags = [],
@@ -443,6 +444,7 @@ var data = {
 
 	lich_aire_talk7 = {
 		image = null,
+		custom_background = "lich_aire_talk7",
 		tags = [],
 		text = [
 		{text = "LICHAIRETALK7", reqs = []},

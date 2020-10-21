@@ -36,7 +36,10 @@ func update():
 			$Button.disabled = $HSlider.value == 0 
 		else:
 			$Button.disabled = $HSlider.value == 0 || ResourceScripts.game_res.money < $HSlider.value * cost
-		$ItemIcon.texture = icon
+		if typeof(icon) == TYPE_STRING:
+			$ItemIcon.texture = load(icon)
+		else:
+			$ItemIcon.texture = icon
 	if get_parent().name == "GuildShop":
 		$Button.disabled = $HSlider.value == 0 || (input_handler.active_faction.reputation - (cost / $HSlider.step) * $HSlider.value) < 0
 	if get_parent().name in ["AreaShop", "GuildShop"]:

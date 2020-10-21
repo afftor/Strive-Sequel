@@ -1231,7 +1231,7 @@ func show_heal_items(position):
 	#input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
 
 #func return_character_confirm():
-#	if ResourceScripts.game_progress.instant_travel == false:
+#	if ResourceScripts.game_progress.unlock_all_upgrades == false:
 #		selectedperson.location = 'travel'
 #		selectedperson.travel_target = {area = '', location = ResourceScripts.game_world.mansion_location}
 #		selectedperson.travel_time = active_area.travel_time + active_location.travel_time
@@ -1636,6 +1636,7 @@ func execute_skill(s_skill2): #to update to exploration version
 		text += "[color=yellow]Critical!![/color] "
 		#s_skill2.target.displaynode.process_critical()
 	for i in s_skill2.value:
+		if !i.check_conditions(): continue
 		if i.damagestat == 'no_stat': continue #for skill values that directly process into effects
 		if i.damagestat == 'damage_hp' and i.dmgf == 0: #drain, damage, damage no log, drain no log
 			if i.is_drain && s_skill2.tags.has('no_log'):

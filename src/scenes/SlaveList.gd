@@ -50,10 +50,10 @@ func update_button(newbutton):
 		newbutton.get_node("HBoxContainer/job").text = races.tasklist[person.get_work()].name
 	
 	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100 && !person.has_profession('master'):
-		newbutton.get_node("HBoxContainer/obed").text = str(ceil(person.get_stat('obedience')))
-		if person.get_stat('obedience') <= 0:
+		newbutton.get_node("HBoxContainer/obed").text = str(ceil(person.xp_module.predict_obed_time()))
+		if person.xp_module.predict_obed_time() <= 0:
 			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-		elif person.get_stat('obedience') <= 10:
+		elif person.xp_module.predict_obed_time() <= 10:
 			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
 		else:
 			newbutton.get_node("HBoxContainer/obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))

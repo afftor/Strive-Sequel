@@ -23,6 +23,8 @@ export var test_mode = false
 export var generate_test_chars = false
 
 
+signal tut_option_selected
+
 #Skills
 var skill_source
 var skill_target
@@ -116,10 +118,15 @@ func _ready():
 	
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
+	$TutorialIntro.show()
+
+
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
 		gui_controller.mansion_tutorial_panel = input_handler.get_spec_node(input_handler.NODE_TUTORIAL_PANEL)
+	if !gui_controller.windows_opened.has(gui_controller.mansion_tutorial_panel):
+		gui_controller.windows_opened.append(gui_controller.mansion_tutorial_panel)
 	gui_controller.mansion_tutorial_panel.open()
 	gui_controller.mansion_tutorial_panel.raise()
 
@@ -471,7 +478,6 @@ func test_mode():
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
-		character.unlock_class("dominator")
 		# character.unlock_class("druid")
 		# character.unlock_class("assassin")
 		# character.unlock_class("ruler")
@@ -540,7 +546,7 @@ func test_mode():
 		ResourceScripts.game_globals.date = 3
 		ResourceScripts.game_globals.hour = 5
 
-		character.set_stat('obedience', 100)
+		character.set_stat('obedience', 0)
 		#character.fear = 25
 		#character.base_exp = 99
 		character.set_stat('charm_factor', 5)
@@ -612,6 +618,8 @@ func test_mode():
 		#character.exhaustion = 1000
 		character.add_trait('core_trait')
 		character.set_slave_category('slave')
+		character.add_stat('lust', 100)
+		character.unlock_class("dancer")
 		character.is_players_character = true
 
 		globals.common_effects(
@@ -624,7 +632,7 @@ func test_mode():
 						{code = 'sexuals_factor', value = 1, operant = "+"},
 						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
-						{code = 'obedience', operant = '+', value = 30},
+						{code = 'obedience', operant = '+', value = 0},
 						{code = 'tag', operant = 'remove', value = 'no_sex'},
 					]
 				}
@@ -640,7 +648,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
 		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
@@ -683,11 +691,11 @@ func test_mode():
 				"chest_base_cloth", {ArmorBaseCloth = 'clothsilk', ArmorTrim = 'wood'}
 			)
 		)
-		ResourceScripts.game_progress.show_tutorial = true
-		ResourceScripts.game_progress.active_quests.append(
-			{code = 'aliron_church_quest', stage = 'start'}
-		)
-		# input_handler.interactive_message("celena_shrine_find", '',{})
+		# ResourceScripts.game_progress.show_tutorial = true
+		# ResourceScripts.game_progress.active_quests.append(
+		# 	{code = 'aliron_church_quest', stage = 'start'}
+		# )
+		# input_handler.interactive_message("lich_aire_talk4", '',{})
 		
 		character.mp = 10
 		var tmp = {}
