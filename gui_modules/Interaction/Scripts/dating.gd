@@ -1470,11 +1470,11 @@ func calculateresults():
 #	+ "\nConsent Gained: " + str(floor(person.get_stat('consent')-self.consStart))
 	#+ "\nAuthority Gained: " + str(floor(person.get_stat("authority") - self.authStart))
 	if endmood >= endfear:
-		loyalty = ceil(endmood/4) + master.get_stat('charm_factor') * 5
+		loyalty = ceil(endmood/4) + max(0,(master.get_stat('charm_factor')) - 3) * 5
 		authority = ceil(endmood/10)
 		consent = master.get_stat("sexuals_factor")*4
 		text += ("\n\n{color=green|Positive Mood}: " 
-		+ "\nLoyalty: +" + str(loyalty) + " ([Master]'s Charm Factor Bonus: +" + str(master.get_stat('charm_factor') * 5) + ")"
+		+ "\nLoyalty: +" + str(loyalty) + " ([Master]'s Charm Factor Bonus: +" + str( max(0,(master.get_stat('charm_factor')) - 3) * 5) + ")"
 		+ "\nConsent: +" + str(consent) + " ([Master]'s Sex Factor: " + str(master.get_stat("sexuals_factor"))+")"
 		+ "\nAuthority: +" + str(authority)
 		+ "\n\nSatisfied by the time together, you and [name] grow closer."
