@@ -87,10 +87,7 @@ func _ready():
 
 
 func run():
-	# ResourceScripts.core_animations.BlackScreenTransition(0.5)
-	# yield(get_tree().create_timer(0.5), 'timeout')
-	# hide()
-	defeat()
+	defeat(true)
 
 
 
@@ -112,6 +109,10 @@ func play_animation(anim):
 	if anim == "defeat":
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
+		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+	if anim == "runaway":
+		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
+		anim_scene.get_node("AnimationPlayer").play("runaway")
 		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
 	yield(get_tree().create_timer(0.5), 'timeout')
@@ -456,10 +457,15 @@ func show_buttons(container):
 		yield(get_tree().create_timer(0.3), "timeout")
 		button.set("modulate", Color(1, 1, 1, 1))
 
-func defeat():
-	play_animation("defeat")
+func defeat(runaway = false): #runaway is a temporary variable until run() method not fully implemented
 	input_handler.PlaySound("combat_defeat")
-	yield(get_tree().create_timer(3), 'timeout')
+	if runaway:
+		play_animation("runaway")
+		yield(get_tree().create_timer(4.5), 'timeout')
+	else:
+		play_animation("defeat")
+		yield(get_tree().create_timer(3), 'timeout')
+
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	Input.set_custom_mouse_cursor(images.cursors.default)

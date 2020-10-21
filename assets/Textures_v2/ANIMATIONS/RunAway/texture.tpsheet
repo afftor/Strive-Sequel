@@ -1,0 +1,153 @@
+{
+	"textures": [
+		{
+			"image": "texture.png",
+			"size": {
+				"w": 1121,
+				"h": 2038
+			},
+			"sprites": [
+				{
+					"filename": "flag3_runaway.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 373,
+						"h": 511
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag1_runaway.png",
+					"region": {
+						"x": 0,
+						"y": 511,
+						"w": 393,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag2_runaway.png",
+					"region": {
+						"x": 373,
+						"y": 0,
+						"w": 382,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag9_runaway.png",
+					"region": {
+						"x": 0,
+						"y": 1020,
+						"w": 379,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag4_runaway.png",
+					"region": {
+						"x": 0,
+						"y": 1529,
+						"w": 378,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag5_runaway.png",
+					"region": {
+						"x": 378,
+						"y": 1529,
+						"w": 371,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag8_runaway.png",
+					"region": {
+						"x": 379,
+						"y": 1020,
+						"w": 367,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag6_runaway.png",
+					"region": {
+						"x": 393,
+						"y": 509,
+						"w": 366,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "flag7_runaway.png",
+					"region": {
+						"x": 755,
+						"y": 0,
+						"w": 366,
+						"h": 509
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.6",
+		"format": "RGBA8888",
+	}
+}

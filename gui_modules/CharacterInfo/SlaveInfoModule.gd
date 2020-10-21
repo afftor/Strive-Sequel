@@ -131,6 +131,7 @@ func update():
 		rebuild_traits()
 	
 		$ConsentLabel.text = "Consent: " + str(floor(person.get_stat('consent')))
+		$ConsentLabel.visible = person != ResourceScripts.game_party.get_master()
 		if person != ResourceScripts.game_party.get_master():
 			$Panel/character_class.text = statdata.slave_class_names[person.get_stat('slave_class')]
 			globals.connecttexttooltip($Panel/character_class, tr(person.get_stat('slave_class').to_upper()+"CLASSDESCRIPT"))
