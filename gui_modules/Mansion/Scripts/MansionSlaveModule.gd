@@ -136,11 +136,11 @@ func show_slave_info():
 				text += "\n" + str(round(person.get_stat(i)*100)) + " - " + statdata.statdata[i].name
 		globals.connecttexttooltip($productivity, globals.TextEncoder(text))
 		var authority_text = ""
-		if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
+		if person.xp_module.check_infinite_obedience() == false:
 			$Panel/obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 		else:
 			$Panel/obedlabel.text = "∞"
-		if person.xp_module.predict_obed_time() > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
+		if person.xp_module.check_infinite_obedience() == true || person.xp_module.predict_obed_time() > 0:
 			$Panel/obedlabel/icon.texture = images.icons.obed_good
 		else:
 			$Panel/obedlabel/icon.texture = images.icons.obed_bad

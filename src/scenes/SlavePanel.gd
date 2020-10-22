@@ -234,7 +234,7 @@ func update():
 	$factors/base_exp/Label.set("custom_colors/font_color", exp_color)
 	$factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp()) 
 	
-	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100:
+	if !person.xp_module.check_infinite_obedience():
 		$obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 	else:
 		$obedlabel.text = "∞"

@@ -27,7 +27,7 @@ var effect_table = {
 			{type = 'stat_add_p', stat = 'mod_smith', value = -0.15},
 			{type = 'stat_add_p', stat = 'mod_alchemy', value = -0.15},
 			{type = 'stat_add_p', stat = 'mod_tailor', value = -0.15},
-			{type = 'stat_mul', stat = 'obDrainReduction', value = 0.8}
+			{type = 'stat_mul', stat = 'obDrainReduction', value = 0.9}
 			],
 		buffs = [],
 		sub_effects = [],

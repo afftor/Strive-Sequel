@@ -353,11 +353,11 @@ func update_button(newbutton):
 		else:
 			newbutton.get_node("job/Label").text = "Gathering " + Items.materiallist[person.get_work()].name	
 	
-	if person.get_stat('loyalty') < 100 && person.get_stat('submission') < 100 && !person.has_profession('master'):
+	if !person.xp_module.check_infinite_obedience():
 		newbutton.get_node("obed").text = str(ceil(person.xp_module.predict_obed_time()))
 		if person.xp_module.predict_obed_time() <= 0:
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
-		elif person.xp_module.predict_obed_time() <= 10:
+		elif person.xp_module.predict_obed_time() <= 24:
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
 		else:
 			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))

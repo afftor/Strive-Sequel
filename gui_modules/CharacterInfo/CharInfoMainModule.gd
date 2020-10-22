@@ -72,7 +72,6 @@ func match_state():
 			open_gear()
 	update()
 
-			
 
 
 
