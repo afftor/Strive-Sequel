@@ -102,6 +102,7 @@ func show_summary(person, from_dialogue = null):
 	# 	globals.connecttexttooltip(newnode, temptext)
 	Info.update(person)
 	BodyModule.update(person)
+	update_purchase_btn()
 
 
 
