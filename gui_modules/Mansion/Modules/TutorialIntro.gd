@@ -18,5 +18,6 @@ func select_option(enabled):
 	if enabled:
 		input_handler.ActivateTutorial("introduction")
 	gui_controller.windows_opened.erase(self)
+	ResourceScripts.game_progress.intro_tutorial_seen = true
 
 

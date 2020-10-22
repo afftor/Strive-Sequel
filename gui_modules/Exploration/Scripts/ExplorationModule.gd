@@ -116,7 +116,8 @@ func open(location):
 
 
 func open_city(city):
-	self.raise()
+	if gui_controller.dialogue != null && !gui_controller.dialogue.is_visible():
+		self.raise()
 	gui_controller.clock.raise()
 	gui_controller.nav_panel = $NavigationModule
 	gui_controller.nav_panel.build_accessible_locations()
@@ -1373,6 +1374,8 @@ func show_full_info(person = null):
 
 
 func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_anim = true):
+	$SlaveMarket/HireMode.pressed = true
+	$SlaveMarket/SellMode.pressed = false
 	market_mode = mode
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = area
@@ -1428,6 +1431,8 @@ func change_mode(mode):
 		sell_slave()
 
 func sell_slave():
+	$SlaveMarket/HireMode.pressed = false
+	$SlaveMarket/SellMode.pressed = true
 	var slave_tooltip = get_tree().get_root().get_node_or_null("slavetooltip")
 	if slave_tooltip != null:
 		slave_tooltip.hide()
@@ -1860,6 +1865,7 @@ func quest_board(pressed, pressed_button):
 	# $QuestBoard.visible = pressed
 	var counter = 0
 	input_handler.ClearContainer($QuestBoard/ScrollContainer/VBoxContainer)
+	$QuestBoard/QuestDetails.hide()
 	for i in active_area.quests.factions:
 		for k in active_area.quests.factions[i].values():
 			if k.state == 'free':

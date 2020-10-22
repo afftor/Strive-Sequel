@@ -129,7 +129,6 @@ func show_class_info(classcode, person = null):
 
 func close_top_window():
 	var node = windows_opened.back()
-	print(node.name)
 	if !weakref(node).get_ref():
 		windows_opened.erase(node)
 		if window_button_connections.keys().has(node):

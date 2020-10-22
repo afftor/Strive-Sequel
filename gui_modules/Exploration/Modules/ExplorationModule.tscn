@@ -1048,6 +1048,7 @@ margin_top = 88.0
 margin_right = 388.0
 margin_bottom = 130.0
 rect_scale = Vector2( -1, 1 )
+toggle_mode = true
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
@@ -1071,6 +1072,7 @@ margin_left = 260.0
 margin_top = 88.0
 margin_right = 388.0
 margin_bottom = 130.0
+toggle_mode = true
 texture_normal = ExtResource( 32 )
 texture_pressed = ExtResource( 33 )
 texture_hover = ExtResource( 34 )
@@ -1220,6 +1222,7 @@ __meta__ = {
 }
 
 [node name="QuestDetails" type="Panel" parent="QuestBoard"]
+visible = false
 show_behind_parent = true
 margin_left = 620.962
 margin_right = 1120.96

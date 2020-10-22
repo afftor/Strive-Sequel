@@ -147,15 +147,17 @@ func hire_character():
 	
 	if input_handler.active_faction.has('slaves'):
 		input_handler.active_faction.slaves.erase(person.id)
+	if gui_controller.exploration.active_faction.slaves.has(person.id):
+		gui_controller.exploration.active_faction.slaves.erase(person.id)
+
 	
 	# if input_handler.exploration_node.get_node("ExploreHireModule").is_visible_in_tree() == true:
 	# 	input_handler.exploration_node.faction_hire()
-	
+
 	if person.get_stat('hire_scene') != '':
 		input_handler.active_character = person
 		input_handler.scene_characters.append(person)
 		input_handler.interactive_message(person.get_stat('hire_scene'), '', {})
-#	GUIWorld.set_current_scene(GUIWorld.gui_data["EXPLORATION"].main_module)
 	gui_controller.exploration.faction_hire(true, gui_controller.exploration.current_pressed_area_btn, gui_controller.exploration.active_faction)
 
 func sell_slave():

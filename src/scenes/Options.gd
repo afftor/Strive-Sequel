@@ -128,6 +128,9 @@ func futa_rate_change(value):
 
 func gameplay_rule(rule):
 	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed
+	if rule == "turn_based_time_flow":
+		if gui_controller.clock != null:
+			gui_controller.clock.set_time_buttons()
 
 func toggle_factors():
 	input_handler.globalsettings.factors_as_words = $TabContainer/Graphics/factors.pressed
