@@ -342,7 +342,6 @@ margin_right = 920.096
 margin_bottom = 765.983
 size_flags_horizontal = 2
 size_flags_vertical = 2
-theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false

@@ -49,7 +49,6 @@ func change_slave(param):
 	CharMainModule.active_person = selected_person
 	CharMainModule.match_state()
 	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
-	CharMainModule.DetailsModule.custom_description_open()
 
 
 func update_buttons():
