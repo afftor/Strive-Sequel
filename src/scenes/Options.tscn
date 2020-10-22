@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 42.0
@@ -326,20 +327,19 @@ custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Factors as words"
 
-[node name="debug" type="Tabs" parent="TabContainer"]
-visible = false
+[node name="Cheats" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 42.0
 
-[node name="EnterCodeMenu" type="Control" parent="TabContainer/debug"]
+[node name="EnterCodeMenu" type="Control" parent="TabContainer/Cheats"]
 margin_right = 587.0
 margin_bottom = 608.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TabContainer/debug/EnterCodeMenu"]
+[node name="Label" type="Label" parent="TabContainer/Cheats/EnterCodeMenu"]
 margin_left = -29.0
 margin_top = 42.0
 margin_right = 620.0
@@ -353,7 +353,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="TabContainer/debug/EnterCodeMenu"]
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Cheats/EnterCodeMenu"]
 margin_left = 137.0
 margin_top = 76.0
 margin_right = 453.0
@@ -367,7 +367,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Activate" type="TextureButton" parent="TabContainer/debug/EnterCodeMenu"]
+[node name="Activate" type="TextureButton" parent="TabContainer/Cheats/EnterCodeMenu"]
 margin_left = 186.149
 margin_top = 139.0
 margin_right = 406.149
@@ -380,7 +380,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TabContainer/debug/EnterCodeMenu/Activate"]
+[node name="Label" type="Label" parent="TabContainer/Cheats/EnterCodeMenu/Activate"]
 margin_top = -2.0
 margin_right = 220.0
 margin_bottom = 61.0
@@ -393,7 +393,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GetCode" type="TextureButton" parent="TabContainer/debug/EnterCodeMenu"]
+[node name="GetCode" type="TextureButton" parent="TabContainer/Cheats/EnterCodeMenu"]
 margin_left = 164.0
 margin_top = 540.0
 margin_right = 436.0
@@ -406,7 +406,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TabContainer/debug/EnterCodeMenu/GetCode"]
+[node name="Label" type="Label" parent="TabContainer/Cheats/EnterCodeMenu/GetCode"]
 margin_right = 272.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 9 )
@@ -418,7 +418,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OpenCheatsMenu" type="Control" parent="TabContainer/debug"]
+[node name="OpenCheatsMenu" type="Control" parent="TabContainer/Cheats"]
 visible = false
 margin_right = 587.0
 margin_bottom = 608.0
@@ -426,13 +426,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="TabContainer/debug/OpenCheatsMenu"]
+[node name="Panel" type="Panel" parent="TabContainer/Cheats/OpenCheatsMenu"]
 margin_top = 42.0
 margin_right = 587.0
 margin_bottom = 302.0
 custom_styles/panel = ExtResource( 18 )
 
-[node name="Label" type="Label" parent="TabContainer/debug/OpenCheatsMenu"]
+[node name="Label" type="Label" parent="TabContainer/Cheats/OpenCheatsMenu"]
 margin_top = 42.0
 margin_right = 587.0
 margin_bottom = 116.0
@@ -442,7 +442,7 @@ text = "Supporter Code Activated"
 align = 1
 valign = 1
 
-[node name="CheatsMenu" type="TextureButton" parent="TabContainer/debug/OpenCheatsMenu"]
+[node name="CheatsMenu" type="TextureButton" parent="TabContainer/Cheats/OpenCheatsMenu"]
 margin_left = 186.149
 margin_top = 154.0
 margin_right = 406.149
@@ -455,7 +455,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TabContainer/debug/OpenCheatsMenu/CheatsMenu"]
+[node name="Label" type="Label" parent="TabContainer/Cheats/OpenCheatsMenu/CheatsMenu"]
 margin_top = -2.0
 margin_right = 220.0
 margin_bottom = 61.0

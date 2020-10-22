@@ -62,6 +62,8 @@ func show_upgrades_info():
 			if task != null:
 				var text = "Workers:\n"
 				for worker in task.workers:
+					if !ResourceScripts.game_party.characters.has(worker):
+						continue
 					text += ResourceScripts.game_party.characters[worker].get_short_name() + '\n'
 				globals.connecttexttooltip(newupgrade, text)
 			# newupgrade.connect("mouse_entered", self, "show_workers", [task, newupgrade])

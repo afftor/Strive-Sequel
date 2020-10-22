@@ -20,6 +20,7 @@ func hide_dialogue(action = "hide"):
 
 
 func open(scene, not_save = false):
+
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("variations"):

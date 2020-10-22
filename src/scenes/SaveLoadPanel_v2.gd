@@ -113,6 +113,8 @@ func SaveGame():
 
 func LoadGame():
 	globals.LoadGame($LineEdit.text)
+	yield(get_tree(), "idle_frame")
+	gui_controller.game_menu.hide()
 
 func SaveNameTransform(path):
 	return path.replace(variables.userfolder + 'saves/',"").replace('.sav', '').replace('.dat','')

@@ -12,6 +12,7 @@ var currentarea
 var active_tutorials = []
 var seen_tutorials = []
 var show_tutorial = false
+var intro_tutorial_seen = false
 var unlocked_classes = []
 
 var seen_dialogues = []

@@ -1,0 +1,396 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://src/scenes/ModPanelV2.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/gui/panels/1,1.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=4]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=6]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/Textures_v2/Mods/button_modsname_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/Mods/button_modsname_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/Mods/button_modsname.png" type="Texture" id=10]
+[ext_resource path="res://assets/Textures_v2/Mods/panel_mods_big.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Mods/panel_mods_number.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=18]
+
+[sub_resource type="DynamicFont" id=6]
+size = 46
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 500, 500 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 590, 51 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 590, 51 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="Mods" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.003
+margin_right = 0.00012207
+margin_bottom = -3.23999
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = 459.0
+margin_top = 153.0
+margin_right = 1460.0
+margin_bottom = 927.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModsLabel" type="Label" parent="."]
+margin_left = 459.0
+margin_top = 153.0
+margin_right = 1022.0
+margin_bottom = 252.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Mods"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescLabel" type="Label" parent="."]
+margin_left = 1022.0
+margin_top = 153.0
+margin_right = 1460.0
+margin_bottom = 252.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Description"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="."]
+margin_left = 459.0
+margin_top = 780.138
+margin_right = 1022.0
+margin_bottom = 812.138
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Move Mods to change the load order"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 496.0
+margin_top = 252.0
+margin_right = 987.0
+margin_bottom = 780.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 491.0
+margin_bottom = 48.0
+
+[node name="Button" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 491.0
+margin_bottom = 48.0
+custom_constants/separation = 5
+
+[node name="NumberTexture" type="TextureRect" parent="ScrollContainer/VBoxContainer/Button"]
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 53.0
+texture = ExtResource( 12 )
+
+[node name="Number" type="Label" parent="ScrollContainer/VBoxContainer/Button/NumberTexture"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 5 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ModButton" type="TextureButton" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 45.0
+margin_top = 5.0
+margin_right = 438.0
+margin_bottom = 53.0
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="ModeTitle" type="Label" parent="ScrollContainer/VBoxContainer/Button/ModButton"]
+margin_left = 12.0
+margin_right = 393.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 5 )
+text = "Mod Title"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/Button"]
+margin_left = 443.0
+margin_right = 491.0
+margin_bottom = 48.0
+theme = ExtResource( 6 )
+
+[node name="Control_old" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2444.64
+margin_top = 47.9341
+margin_right = 1785.64
+margin_bottom = -229.066
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_old"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control_old/MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 1236.0
+margin_bottom = 778.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control_old/MarginContainer/HBoxContainer"]
+margin_right = 564.0
+margin_bottom = 753.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer2"]
+margin_right = 564.0
+margin_bottom = 753.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 534.0
+margin_bottom = 723.0
+
+[node name="Label" type="Label" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+margin_right = 504.0
+margin_bottom = 32.0
+text = "Loaded mods"
+
+[node name="Label2" type="Label" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 504.0
+margin_bottom = 103.0
+text = "these mods will be applied to game and avaliable in editor at next game start."
+autowrap = true
+
+[node name="ScrollContainer2" type="ItemList" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 504.0
+margin_bottom = 107.0
+custom_styles/selected_focus = SubResource( 2 )
+custom_styles/bg_focus = SubResource( 3 )
+custom_styles/selected = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control_old/MarginContainer/HBoxContainer"]
+margin_left = 568.0
+margin_right = 643.0
+margin_bottom = 753.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Control_old/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 228.0
+margin_right = 75.0
+margin_bottom = 274.251
+text = "<"
+
+[node name="Button2" type="Button" parent="Control_old/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 278.0
+margin_right = 75.0
+margin_bottom = 324.251
+text = ">"
+
+[node name="Button3" type="Button" parent="Control_old/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 328.0
+margin_right = 75.0
+margin_bottom = 374.251
+text = "Up"
+
+[node name="Button4" type="Button" parent="Control_old/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 378.0
+margin_right = 75.8375
+margin_bottom = 424.251
+text = "Down"
+
+[node name="Button5" type="Button" parent="Control_old/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 428.0
+margin_right = 75.0
+margin_bottom = 474.251
+text = "Ok"
+
+[node name="Button6" type="Button" parent="Control_old/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 478.0
+margin_right = 75.0
+margin_bottom = 524.251
+text = "Close"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control_old/MarginContainer/HBoxContainer"]
+margin_left = 647.0
+margin_right = 1211.0
+margin_bottom = 753.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer"]
+margin_right = 564.0
+margin_bottom = 753.0
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer/MarginContainer"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 534.0
+margin_bottom = 723.0
+
+[node name="Label" type="Label" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 504.0
+margin_bottom = 32.0
+text = "List of mods avaliable to load"
+
+[node name="ScrollContainer2" type="ItemList" parent="Control_old/MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 504.0
+margin_bottom = 36.0
+custom_styles/selected_focus = SubResource( 2 )
+custom_styles/bg_focus = SubResource( 3 )
+custom_styles/selected = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Control_old"]
+margin_left = 261.39
+margin_top = 204.0
+margin_right = 1020.39
+margin_bottom = 356.0
+window_title = "Restart game"
+dialog_text = "Changes saved. 
+Restart game to reload content of selected mods."
+
+[node name="Button" type="Button" parent="Control_old"]
+margin_left = 434.506
+margin_top = 810.104
+margin_right = 830.506
+margin_bottom = 878.104
+text = "Open Editor (Alpha Version)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 1053.0
+margin_top = 252.0
+margin_right = 1428.0
+margin_bottom = 878.0
+theme = ExtResource( 13 )
+custom_fonts/normal_font = ExtResource( 5 )
+text = "TExt Text Textw"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Apply" type="TextureButton" parent="."]
+margin_left = 496.0
+margin_top = 825.934
+margin_right = 716.0
+margin_bottom = 883.934
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Apply"]
+margin_right = 220.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Apply"
+align = 1
+valign = 1
+
+[node name="Editor" type="TextureButton" parent="."]
+margin_left = 768.295
+margin_top = 825.934
+margin_right = 988.295
+margin_bottom = 883.934
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Editor"]
+margin_right = 220.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Editor"
+align = 1
+valign = 1
+[connection signal="pressed" from="Control_old/MarginContainer/HBoxContainer/VBoxContainer/Button" to="Control_old" method="add_mod"]
+[connection signal="pressed" from="Control_old/MarginContainer/HBoxContainer/VBoxContainer/Button2" to="Control_old" method="remove_mod"]
+[connection signal="pressed" from="Control_old/MarginContainer/HBoxContainer/VBoxContainer/Button3" to="Control_old" method="m_up"]
+[connection signal="pressed" from="Control_old/MarginContainer/HBoxContainer/VBoxContainer/Button4" to="Control_old" method="m_down"]
+[connection signal="pressed" from="Control_old/MarginContainer/HBoxContainer/VBoxContainer/Button5" to="Control_old" method="on_ok"]
+[connection signal="pressed" from="Control_old/MarginContainer/HBoxContainer/VBoxContainer/Button6" to="Control_old" method="on_cancel"]
+[connection signal="confirmed" from="Control_old/AcceptDialog" to="Control_old" method="_on_AcceptDialog_confirmed"]

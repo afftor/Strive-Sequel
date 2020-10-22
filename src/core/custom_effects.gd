@@ -96,7 +96,6 @@ func writ_of_exemption_use():
 	var acceptance_req = 100
 	var acceptance_chance = 0
 	ResourceScripts.game_res.remove_item("writ_of_exemption", 1)
-	input_handler.get_spec_node(input_handler.NODE_GUI_WORLD).close_scene(input_handler.get_spec_node(input_handler.NODE_INVENTORY_NEW))
 	input_handler.scene_characters = [person]
 	if character.get_stat('loyalty') == 100 && character.get_stat('submission') == 100:
 		acceptance_chance = 100

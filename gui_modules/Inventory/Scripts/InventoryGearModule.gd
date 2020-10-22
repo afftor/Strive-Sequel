@@ -37,8 +37,7 @@ func unequip(slot):
 
 
 func show_equip_tooltip(slot):
-#	var selectedhero = GUIWorld.gui_data["MANSION"].main_module.active_person
-	var selectedhero = gui_controller.mansion.active_person
+	var selectedhero = get_parent().selectedhero
 	if selectedhero.equipment.gear[slot] == null:
 		return
 	else:

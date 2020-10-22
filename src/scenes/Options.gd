@@ -22,10 +22,10 @@ func _ready():
 	$TabContainer/Gameplay/enable_tutorials.connect("toggled", self, "enable_tutorials")
 	
 
-	$TabContainer/debug/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
-	$TabContainer/debug/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
-	$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
-	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
+	$TabContainer/Cheats/EnterCodeMenu/GetCode.connect("pressed", self, "get_code")
+	$TabContainer/Cheats/EnterCodeMenu/LineEdit.connect("text_changed", self, "text_changed")
+	$TabContainer/Cheats/EnterCodeMenu/Activate.connect("pressed", self, "go_for_code")
+	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.connect("pressed", self, "open_cheats_menu")
 
 func enable_tutorials(pressed):
 	ResourceScripts.game_progress.show_tutorial = pressed
@@ -46,16 +46,16 @@ func open_cheats_menu():
 func text_changed(text):
 	print(text)
 	if ResourceScripts.game_progress.cheat_code == text:
-		$TabContainer/debug/EnterCodeMenu/Activate.disconnect("pressed", self, "go_for_code")
-		$TabContainer/debug/EnterCodeMenu/Activate.connect("pressed", self, "activate_cheats")
+		$TabContainer/Cheats/EnterCodeMenu/Activate.disconnect("pressed", self, "go_for_code")
+		$TabContainer/Cheats/EnterCodeMenu/Activate.connect("pressed", self, "activate_cheats")
 
-	# $TabContainer/debug/EnterCodeMenu/Activate.disabled = !ResourceScripts.game_progress.cheat_code == text
+	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = !ResourceScripts.game_progress.cheat_code == text
 
 
 func activate_cheats():
 	ResourceScripts.game_progress.cheats_active = true
-	$TabContainer/debug/EnterCodeMenu.hide()
-	$TabContainer/debug/OpenCheatsMenu.show()
+	$TabContainer/Cheats/EnterCodeMenu.hide()
+	$TabContainer/Cheats/OpenCheatsMenu.show()
 
 
 func go_for_code():
@@ -64,10 +64,10 @@ func go_for_code():
 
 func open():
 	$TabContainer/Gameplay/enable_tutorials.pressed = ResourceScripts.game_progress.show_tutorial
-	# $TabContainer/debug/EnterCodeMenu/Activate.disabled = true
-	$TabContainer/debug/EnterCodeMenu.visible = !ResourceScripts.game_progress.cheats_active
-	$TabContainer/debug/OpenCheatsMenu.visible = ResourceScripts.game_progress.cheats_active
-	$TabContainer/debug/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
+	# $TabContainer/Cheats/EnterCodeMenu/Activate.disabled = true
+	$TabContainer/Cheats/EnterCodeMenu.visible = !ResourceScripts.game_progress.cheats_active
+	$TabContainer/Cheats/OpenCheatsMenu.visible = ResourceScripts.game_progress.cheats_active
+	$TabContainer/Cheats/OpenCheatsMenu/CheatsMenu.visible = get_parent().name != "Menu_v2"
 	male_rate_change(input_handler.globalsettings.malechance)
 	futa_rate_change(input_handler.globalsettings.futachance)
 	
@@ -128,6 +128,9 @@ func futa_rate_change(value):
 
 func gameplay_rule(rule):
 	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed
+	if rule == "turn_based_time_flow":
+		if gui_controller.clock != null:
+			gui_controller.clock.set_time_buttons()
 
 func toggle_factors():
 	input_handler.globalsettings.factors_as_words = $TabContainer/Graphics/factors.pressed

@@ -118,7 +118,8 @@ func _ready():
 	
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
-	$TutorialIntro.show()
+	if !ResourceScripts.game_progress.intro_tutorial_seen:
+		$TutorialIntro.show()
 
 
 
