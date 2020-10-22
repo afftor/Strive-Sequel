@@ -246,7 +246,7 @@ func _input(event):
 				return
 		var ignore_rightclick = false
 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-			if i.get_global_rect().has_point(i.get_global_mouse_position()):
+			if i.get_global_rect().has_point(i.get_global_mouse_position()) && i.is_visible():
 				ignore_rightclick = true
 				continue
 		if ignore_rightclick == false:
