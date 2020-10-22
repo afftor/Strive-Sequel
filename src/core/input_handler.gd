@@ -241,6 +241,7 @@ func _input(event):
 	if (event.is_action_pressed("ESC") || event.is_action_released("RMB")):
 		for i in get_tree().get_nodes_in_group("disable_rmb_esc"):
 			if i.is_visible_in_tree():
+				print("here")
 				if gui_controller.windows_opened.size() > 0:
 					gui_controller.close_top_window()
 				return

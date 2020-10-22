@@ -20,9 +20,9 @@ var introduction_images = {
 }
 
 var introduction_text = {
-	0: "INTRODUCTIONTUTORIAL1",
-	1: "INTRODUCTIONTUTORIAL2",
-	2: "INTRODUCTIONTUTORIAL3",
+	0: tr("INTRODUCTIONTUTORIAL1"),
+	1: tr("INTRODUCTIONTUTORIAL2"),
+	2: tr("INTRODUCTIONTUTORIAL3"),
 }
 
 var exploration_images = {
@@ -32,9 +32,9 @@ var exploration_images = {
 }
 
 var exploration_text = {
-	0: "EXPLORATIONTUTORIAL1",
-	1: "EXPLORATIONTUTORIAL2",
-	2: "EXPLORATIONTUTORIAL3"
+	0: tr("EXPLORATIONTUTORIAL1"),
+	1: tr("EXPLORATIONTUTORIAL2"),
+	2: tr("EXPLORATIONTUTORIAL3")
 }
 
 
@@ -47,10 +47,10 @@ var traveling_images = {
 }
 
 var traveling_text = {
-	0: "TRAVELINGTUTORIAL1",
-	1: "TRAVELINGTUTORIAL2",
-	2: "TRAVELINGTUTORIAL3",
-	3: "TRAVELINGTUTORIAL4",
+	0: tr("TRAVELINGTUTORIAL1"),
+	1: tr("TRAVELINGTUTORIAL2"),
+	2: tr("TRAVELINGTUTORIAL3"),
+	3: tr("TRAVELINGTUTORIAL4"),
 	# 4: "TRAVELINGTUTORIAL4"
 }
 
@@ -62,10 +62,10 @@ var skills_images = {
 }
 
 var skills_text = {
-	0: "SKILLSTUTORIAL1",
-	1: "SKILLSTUTORIAL2",
-	2: "SKILLSTUTORIAL3",
-	3: "SKILLSTUTORIAL4",
+	0: tr("SKILLSTUTORIAL1"),
+	1: tr("SKILLSTUTORIAL2"),
+	2: tr("SKILLSTUTORIAL3"),
+	3: tr("SKILLSTUTORIAL4"),
 }
 
 var craft_images = {
@@ -80,14 +80,14 @@ var craft_images = {
 }
 
 var craft_text = {
-	0: "CRAFTTUTORIAL1",
-	1: "CRAFTTUTORIAL2",
-	2: "CRAFTTUTORIAL3",
-	3: "CRAFTTUTORIAL4",
-	4: "CRAFTTUTORIAL5",
-	5: "CRAFTTUTORIAL6",
-	6: "CRAFTTUTORIAL7",
-	7: "CRAFTTUTORIAL8",
+	0: tr("CRAFTTUTORIAL1"),
+	1: tr("CRAFTTUTORIAL2"),
+	2: tr("CRAFTTUTORIAL3"),
+	3: tr("CRAFTTUTORIAL4"),
+	4: tr("CRAFTTUTORIAL5"),
+	5: tr("CRAFTTUTORIAL6"),
+	6: tr("CRAFTTUTORIAL7"),
+	7: tr("CRAFTTUTORIAL8"),
 }
 
 var job_images = {
@@ -97,9 +97,9 @@ var job_images = {
 }
 
 var job_text = {
-	0: "JOBTUTORIAL1",
-	1: "JOBTUTORIAL2",
-	2: "JOBTUTORIAL3",
+	0: tr("JOBTUTORIAL1"),
+	1: tr("JOBTUTORIAL2"),
+	2: tr("JOBTUTORIAL3"),
 }
 
 var quest_images = {
@@ -109,9 +109,9 @@ var quest_images = {
 }
 
 var quest_text = {
-	0: "QUESTTUTORIAL1",
-	1: "QUESTTUTORIAL2",
-	2: "QUESTTUTORIAL3",
+	0: tr("QUESTTUTORIAL1"),
+	1: tr("QUESTTUTORIAL2"),
+	2: tr("QUESTTUTORIAL3"),
 }
 
 onready var TutList = $TutList/VBoxContainer
@@ -205,7 +205,7 @@ func show_tutorial(img, size, idx = 0):
 	$Back.disabled = idx == 0
 	$Forward.disabled = idx == size
 	$TutorialImage.texture = img[idx]
-	$TutorialText.text = globals.TextEncoder(tr(text_dict[idx]))
+	$TutorialText.bbcode_text = globals.TextEncoder(text_dict[idx])
 
 func change_index(value):
 	img_index += value

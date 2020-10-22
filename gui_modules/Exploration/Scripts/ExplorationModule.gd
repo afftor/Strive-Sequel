@@ -94,6 +94,21 @@ func test():
 		print(win.name)
 
 
+
+func enslave_select():
+	var character = person_to_hire
+	character.set_slave_category("slave")
+	input_handler.active_character = character
+	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
+	globals.common_effects(changes)
+	globals.text_log_add('char',character.translate("[name] has been demoted to Slave."))
+	globals.character_stat_change(character, {code = 'loyalty', operant = '-', value = 50})
+	globals.character_stat_change(character, {code = 'submission', operant = '-', value = 25})
+	input_handler.scene_characters.append(character)
+	input_handler.interactive_message('enslave', '', {})
+	input_handler.update_slave_list()
+
+
 func open_journal(pressed):
 	if pressed:
 		ResourceScripts.core_animations.UnfadeAnimation($MansionJournalModule, 0.5)
