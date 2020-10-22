@@ -158,7 +158,7 @@ func hire_character():
 		input_handler.active_character = person
 		input_handler.scene_characters.append(person)
 		input_handler.interactive_message(person.get_stat('hire_scene'), '', {})
-	gui_controller.exploration.faction_hire(true, gui_controller.exploration.current_pressed_area_btn, gui_controller.exploration.active_faction)
+	gui_controller.exploration.faction_hire(true, gui_controller.exploration.current_pressed_area_btn, gui_controller.exploration.active_faction, gui_controller.exploration.market_mode)
 
 func sell_slave():
 	var selectedperson = gui_controller.exploration.person_to_hire
