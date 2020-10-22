@@ -606,7 +606,7 @@ func test_mode():
 						+ "\n"
 					)
 
-		character.set_stat('loyalty', 95)
+		character.set_stat('loyalty', 100)
 		character.set_stat('authority', 100)
 		character.set_stat('submission', 95)
 		yield(get_tree(),'idle_frame')

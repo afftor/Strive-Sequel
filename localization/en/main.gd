@@ -736,7 +736,7 @@ var TranslationDict = {
 	SLAVEAGEADULT = "Young Adult",
 	SLAVEAGEMATURE = "Mature",
 	
-	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their obedience drains 20% slower and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
+	SLAVECLASSDESCRIPT = "Slaves are considered to be property. Their life solely belongs to their master and in case of escape they are treated as criminals effectively negating their rights.\n\n[color=aqua]Slaves suffer 10% damage reduction, but their obedience drains 10% slower and they have higher consent on sexual interactions. Slaves have +10% bonus to Collection, Farming and Prostitution tasks, but -15% to Smith, Tailor and Alchemy. [/color]",
 	SERVANTCLASSDESCRIPT = "Peons are generally purchased to be taken care of but otherwise have similar rights to others. Peons generally have the same rights of others, but are purchased to serve a Master. Many folks end up as peons as a way to pay their, or their family’s debt, or otherwise gain a stable living condition. However, if they escape, peons can often continue their life with only minor penalties. Therefore, they gain no penalties or benefits compared to slaves. They also cannot be forced to participate in sexual activities.",
 
 	SLAVETYPE = "Type",
@@ -2066,7 +2066,7 @@ var TranslationDict = {
 	WORKRULELUXURYDESCRIPT = "Character will have a personal room to live at. Globally reduce Obedience Drain by 25%. If Loyalty is maxed out, Obedience won't decrease anymore.",
 	
 	SERVICEENSLAVE = "Enslave",
-	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their obedience drains 20% slower and they have higher consent on sexual interactions.[/color]",
+	SERVICEENSLAVEDESCRIPT = "Makes chosen character into a Slave.\n\n[color=aqua]Slaves suffer 10% damage reduction and 10% productivity reduction, but their obedience drains 10% slower and they have higher consent on sexual interactions.[/color]",
 	
 	NEWGAMESETTINGINFO = "These settings can be changed in Options at any point in future",
 	
