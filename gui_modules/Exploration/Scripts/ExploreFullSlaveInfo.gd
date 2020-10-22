@@ -45,9 +45,9 @@ func show_summary(person, from_dialogue = null):
 		$Price.visible = true
 		$TextureRect.visible = true
 	if gui_controller.exploration.hiremode == "sell":
-		$Price.text = str(person.calculate_price() / 2)
+		$Price.text = str(round(person.calculate_price() / 2))
 	else:
-		$Price.text = str(person.calculate_price())
+		$Price.text = str(round(person.calculate_price()))
 #	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
 	SummaryModule.get_node("Portrait").texture = person.get_icon()
