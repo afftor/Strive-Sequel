@@ -1167,13 +1167,13 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		if classesdata.professions[cls].has("skills") && classesdata.professions[cls].skills != []:
 			temptext += "\nSocial Skills - "
 			for skill in classesdata.professions[cls].skills:
-				social_skills += skill.capitalize() + ", "
+				social_skills += Skilldata.Skilllist[skill].name + ", "
 			social_skills = social_skills.substr(0, social_skills.length() - 2)
 		temptext += social_skills
 		if classesdata.professions[cls].has("combatskills") && classesdata.professions[cls].combatskills != []:
 			temptext += "\nCombat Skills - "
 			for skill in classesdata.professions[cls].combatskills:
-				combat_skills += skill.capitalize() + ", "
+				combat_skills += Skilldata.Skilllist[skill].name + ", "
 			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
 		temptext += combat_skills
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
