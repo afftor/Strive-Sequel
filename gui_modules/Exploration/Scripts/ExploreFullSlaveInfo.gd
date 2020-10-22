@@ -45,9 +45,9 @@ func show_summary(person, from_dialogue = null):
 		$Price.visible = true
 		$TextureRect.visible = true
 	if gui_controller.exploration.hiremode == "sell":
-		$Price.text = str(person.calculate_price() / 2)
+		$Price.text = str(round(person.calculate_price() / 2))
 	else:
-		$Price.text = str(person.calculate_price())
+		$Price.text = str(round(person.calculate_price()))
 #	get_parent().submodules.append(self)
 	# input_handler.ClearContainer(BodyModule.get_node("professions"))
 	SummaryModule.get_node("Portrait").texture = person.get_icon()
@@ -102,6 +102,7 @@ func show_summary(person, from_dialogue = null):
 	# 	globals.connecttexttooltip(newnode, temptext)
 	Info.update(person)
 	BodyModule.update(person)
+	update_purchase_btn()
 
 
 
@@ -158,7 +159,7 @@ func hire_character():
 		input_handler.active_character = person
 		input_handler.scene_characters.append(person)
 		input_handler.interactive_message(person.get_stat('hire_scene'), '', {})
-	gui_controller.exploration.faction_hire(true, gui_controller.exploration.current_pressed_area_btn, gui_controller.exploration.active_faction)
+	gui_controller.exploration.faction_hire(true, gui_controller.exploration.current_pressed_area_btn, gui_controller.exploration.active_faction, gui_controller.exploration.market_mode)
 
 func sell_slave():
 	var selectedperson = gui_controller.exploration.person_to_hire

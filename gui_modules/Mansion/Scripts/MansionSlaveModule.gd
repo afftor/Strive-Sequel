@@ -73,13 +73,13 @@ func show_slave_info():
 			if classesdata.professions[i].has("skills") && classesdata.professions[i].skills != []:
 				temptext += "\nSocial Skills - "
 				for skill in classesdata.professions[i].skills:
-					social_skills += skill.capitalize() + ", "
+					social_skills += Skilldata.Skilllist[skill].name + ", "
 				social_skills = social_skills.substr(0, social_skills.length() - 2)
 			temptext += social_skills
 			if classesdata.professions[i].has("combatskills") && classesdata.professions[i].combatskills != []:
 				temptext += "\nCombat Skills - "
 				for skill in classesdata.professions[i].combatskills:
-					combat_skills += skill.capitalize() + ", "
+					combat_skills += Skilldata.Skilllist[skill].name + ", "
 				combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
 			temptext += combat_skills
 			temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"

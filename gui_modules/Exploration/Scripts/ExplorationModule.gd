@@ -94,6 +94,21 @@ func test():
 		print(win.name)
 
 
+
+func enslave_select():
+	var character = person_to_hire
+	character.set_slave_category("slave")
+	input_handler.active_character = character
+	var changes = [{code = 'money_change', operant = '-', value = variables.enslavement_price}]
+	globals.common_effects(changes)
+	globals.text_log_add('char',character.translate("[name] has been demoted to Slave."))
+	globals.character_stat_change(character, {code = 'loyalty', operant = '-', value = 50})
+	globals.character_stat_change(character, {code = 'submission', operant = '-', value = 25})
+	input_handler.scene_characters.append(character)
+	input_handler.interactive_message('enslave', '', {})
+	input_handler.update_slave_list()
+
+
 func open_journal(pressed):
 	if pressed:
 		ResourceScripts.core_animations.UnfadeAnimation($MansionJournalModule, 0.5)
@@ -1152,13 +1167,13 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		if classesdata.professions[cls].has("skills") && classesdata.professions[cls].skills != []:
 			temptext += "\nSocial Skills - "
 			for skill in classesdata.professions[cls].skills:
-				social_skills += skill.capitalize() + ", "
+				social_skills += Skilldata.Skilllist[skill].name + ", "
 			social_skills = social_skills.substr(0, social_skills.length() - 2)
 		temptext += social_skills
 		if classesdata.professions[cls].has("combatskills") && classesdata.professions[cls].combatskills != []:
 			temptext += "\nCombat Skills - "
 			for skill in classesdata.professions[cls].combatskills:
-				combat_skills += skill.capitalize() + ", "
+				combat_skills += Skilldata.Skilllist[skill].name + ", "
 			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
 		temptext += combat_skills
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"

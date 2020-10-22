@@ -63,6 +63,8 @@ func show_stats(character):
 	for stat in stats_dict:
 		if character.get_stat(stat) == 6:
 			continue
+		if character == ResourceScripts.game_party.get_master() && stat in ["timid_factor", "tame_factor"]:
+			continue
 		else:
 			stats_to_show += 1
 			var newbutton = input_handler.DuplicateContainerTemplate(StatsContainer)

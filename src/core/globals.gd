@@ -1095,10 +1095,13 @@ func common_effects(effects):
 
 						number -= 1
 			'update_guild':
-				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.enter_guild(input_handler.active_faction)
 			'update_city':
 				#input_handler.exploration_node.enter_guild(input_handler.active_faction)
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])

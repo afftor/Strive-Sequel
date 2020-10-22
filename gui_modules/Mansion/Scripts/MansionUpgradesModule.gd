@@ -16,7 +16,6 @@ func _ready():
 	yield(get_tree().create_timer(0.3), "timeout")
 	if ResourceScripts.game_progress.unlock_all_upgrades == true:
 		for i in globals.upgradelist.values():
-			print( i.levels.keys())
 			ResourceScripts.game_res.upgrades[i.code] = i.levels.keys().back()
 	globals.connect("hour_tick", self, "update_buttons")
 	$SelectChars.connect("pressed", self, "select_chars_for_upgrade")

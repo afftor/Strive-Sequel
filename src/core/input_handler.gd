@@ -246,7 +246,7 @@ func _input(event):
 				return
 		var ignore_rightclick = false
 		for i in get_tree().get_nodes_in_group("ignore_rightclicks"):
-			if i.get_global_rect().has_point(i.get_global_mouse_position()):
+			if i.get_global_rect().has_point(i.get_global_mouse_position()) && i.is_visible():
 				ignore_rightclick = true
 				continue
 		if ignore_rightclick == false:
@@ -267,6 +267,7 @@ func _input(event):
 							gui_controller.mansion.show_menu()
 						else:
 							gui_controller.mansion.mansion_state_set("default")
+						gui_controller.clock.raise()
 					gui_controller.inventory:
 						gui_controller.inventory.hide()
 						gui_controller.current_screen = gui_controller.previous_screen

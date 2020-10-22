@@ -49,7 +49,9 @@ use_filter = true
 extra_spacing_top = 1
 font_data = ExtResource( 14 )
 
-[node name="date" type="Control"]
+[node name="date" type="Control" groups=[
+"pauseprocess",
+]]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
