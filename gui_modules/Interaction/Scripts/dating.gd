@@ -1510,6 +1510,7 @@ func start_sex():
 	if gui_controller.sex_panel == null:
 		gui_controller.sex_panel = input_handler.get_spec_node(input_handler.NODE_SEX)
 	gui_controller.sex_panel.startsequence([master, person])
+	gui_controller.sex_panel.raise()
 	
 
 func _on_finishbutton_pressed():

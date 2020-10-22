@@ -54,7 +54,6 @@ func close_job_pannel():
 
 func open_jobs_window():
 	person = get_parent().active_person
-	print(person.xp_module.work_rules["luxury"])
 	var luxury_rooms_taken = 0
 	for p in ResourceScripts.game_party.characters.values():
 		if p.xp_module.work_rules["luxury"]:

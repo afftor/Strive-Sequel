@@ -20,7 +20,7 @@ var lands = {
 		events = [
 			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {}},
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {}},
-			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'active_quest_stage', value = 'aliron_church_quest', stage = 'start'}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
+			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'dialogue_seen', value = 'GINNYVISIT', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
