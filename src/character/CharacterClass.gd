@@ -276,6 +276,7 @@ func return_to_mansion():
 
 func recruit(enslave = false):
 	travel.location = input_handler.active_location.id
+	travel.area = input_handler.active_area.code
 	if enslave == true:
 		set_slave_category('slave')
 		var eff =  effects_pool.e_createfromtemplate(Effectdata.effect_table.resist_state)
