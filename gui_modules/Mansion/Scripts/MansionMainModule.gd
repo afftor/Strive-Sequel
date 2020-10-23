@@ -65,7 +65,7 @@ var mansion_prev_state
 var prev_selected_travel
 
 var always_show = [
-	# "TestButton",
+	"TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
 	"MansionBottomLeftModule",
@@ -441,7 +441,13 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
-	print(ResourceScripts.game_progress.active_tutorials)
+	print(input_handler.active_area)
+	var counter = 0
+	for i in ResourceScripts.game_party.character_order:
+		print(i)
+		counter += 1
+	print(counter)
+	# print(ResourceScripts.game_progress.active_tutorials)
 	# print(ResourceScripts.game_party.active_tasks)
 	# print(ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]].checkreqs([{code = 'has_wooden_gear'}]))
 	# var c = load("res://gui_modules/Universal/Modules/CheatsModule.tscn")

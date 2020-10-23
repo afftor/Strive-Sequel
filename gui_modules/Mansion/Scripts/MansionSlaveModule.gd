@@ -22,6 +22,7 @@ func _ready():
 		if i.name == "Exp":
 			continue
 		globals.connecttexttooltip(i, statdata.statdata[i.name].descript)
+	globals.connect("hour_tick", self, "show_slave_info")
 
 
 func open_char_class_info():
