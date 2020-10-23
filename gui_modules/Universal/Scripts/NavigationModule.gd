@@ -119,6 +119,8 @@ func return_to_mansion(with_state = "default"):
 	if gui_controller.current_screen == gui_controller.mansion:
 		build_accessible_locations()
 		update_buttons()
+		if gui_controller.exploration != null:
+			gui_controller.exploration.get_node("LocationGui").hide()
 		return
 	gui_controller.previous_screen = null
 	gui_controller.current_screen = gui_controller.mansion

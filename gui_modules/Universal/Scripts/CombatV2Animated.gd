@@ -110,6 +110,7 @@ func play_animation(anim):
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_DEFEAT)
 		anim_scene.get_node("AnimationPlayer").play("defeated")
 		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+		yield(get_tree().create_timer(1), 'timeout')
 	if anim == "runaway":
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
 		anim_scene.get_node("AnimationPlayer").play("runaway")
@@ -273,12 +274,7 @@ var rewardsdict
 #to check next functions
 func victory():
 	get_tree().get_root().set_disable_input(true)
-	$Rewards.show()
-	$Rewards.modulate.a = 0
-	$Rewards/AnimationPlayer.play("Victory")
-	$Rewards.modulate.a = 1
-	$Rewards/ScrollContainer/HBoxContainer.hide()
-	$Rewards/ScrollContainer2/HBoxContainer.hide()
+
 	autoskill_dummy.is_active = false
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
@@ -394,8 +390,7 @@ func victory():
 	# $Rewards.visible = true
 	# $Rewards.modulate.a = 0
 	# ResourceScripts.core_animations.UnfadeAnimation($Rewards)
-	$Rewards.set_meta("result", 'victory')
-	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
+
 	for i in rewardsdict.materials:
 		var item = Items.materiallist[i]
 		var newbutton = input_handler.DuplicateContainerTemplate($Rewards/ScrollContainer/HBoxContainer)
@@ -441,7 +436,17 @@ func victory():
 	for i in playergroup.values():
 		array.append(i)
 	input_handler.get_person_for_chat(array, 'combat_won')
-	yield($Rewards/AnimationPlayer, "animation_finished")
+	# yield($Rewards/AnimationPlayer, "animation_finished")
+	$Rewards/gold/Label.text = '+0'
+	$Rewards.set_meta("result", 'victory')
+	$Rewards/gold/Label.text = str("+") + str(rewardsdict.gold)
+	$Rewards.show()
+	$Rewards.modulate.a = 0
+	$Rewards/AnimationPlayer.play("Victory")
+	$Rewards.modulate.a = 1
+	yield(get_tree().create_timer(1.5), "timeout")
+	$Rewards/ScrollContainer/HBoxContainer.hide()
+	$Rewards/ScrollContainer2/HBoxContainer.hide()
 	$Rewards/ScrollContainer/HBoxContainer.show()
 	$Rewards/ScrollContainer2/HBoxContainer.show()
 	show_buttons($Rewards/ScrollContainer/HBoxContainer)

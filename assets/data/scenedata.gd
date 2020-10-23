@@ -135,7 +135,7 @@ var scenedict = {
 	chest_is_erotic_mimic_trapped = {
 		text = 'DIALOGUECHESTEROTICMIMICTRAPPED',
 		tags = ['active_character_translate','linked_event'], 
-		image = 'chestchest_mimic',
+		image = 'chest_mimic',
 		set_enemy = 'mimic',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = "DIALOGUEATTACKMIMIC"},
