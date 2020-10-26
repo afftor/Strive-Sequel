@@ -124,6 +124,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
+use_filter = true
 font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -427,7 +428,7 @@ margin_right = 272.0
 margin_bottom = 58.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Guild"
+text = "111111111111111"
 align = 1
 valign = 1
 __meta__ = {

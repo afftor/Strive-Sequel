@@ -523,10 +523,10 @@ func get_class_details(newperson, classdata, showreqs = true, showskills = false
 	
 	return globals.TextEncoder(text)
 
-func get_class_reqs(newperson, classdata):
+func get_class_reqs(newperson, classdata, colorcode = true):
 	var text = ''
-	if newperson.decipher_reqs(classdata.reqs, true):
-		text += newperson.decipher_reqs(classdata.reqs, true)
+	if newperson.decipher_reqs(classdata.reqs, colorcode):
+		text += newperson.decipher_reqs(classdata.reqs, colorcode)
 	return text
 
 func get_class_bonuses(newperson, classdata):

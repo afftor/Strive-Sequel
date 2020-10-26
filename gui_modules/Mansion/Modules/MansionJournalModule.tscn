@@ -173,6 +173,9 @@ margin_left = 398.0
 margin_top = 518.0
 margin_right = 772.0
 margin_bottom = 593.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="TextureButton" parent="rewards"]
 visible = false

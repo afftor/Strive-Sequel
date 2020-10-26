@@ -65,7 +65,7 @@ var mansion_prev_state
 var prev_selected_travel
 
 var always_show = [
-	"TestButton",
+	# "TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
 	"MansionBottomLeftModule",
@@ -700,7 +700,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		# input_handler.interactive_message("lich_aire_talk4", '',{})
+		input_handler.interactive_message("servants_election_finish7", '',{})
 		
 		character.mp = 10
 		var tmp = {}

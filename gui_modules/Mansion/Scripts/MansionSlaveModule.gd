@@ -165,7 +165,7 @@ func show_slave_info():
 		$Panel/submissionlabel.value = person.get_stat('submission')
 
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
-		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
+		globals.connecttexttooltip($Panel/loyaltylabel, (str(statdata.statdata.loyalty.descript) + '\n' + str(person.get_stat('loyalty')) + "/100"))
 		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)
 		globals.connecttexttooltip($Panel/submissionlabel, statdata.statdata.submission.descript)
 
