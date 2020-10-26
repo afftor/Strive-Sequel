@@ -694,6 +694,7 @@ func dialogue_option_selected(option):
 			2:
 				gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				get_spec_node(self.NODE_DIALOGUE).hide()
+				# gui_controller.dialogue.get_node("Background").show()
 		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
 	else:
 		gui_controller.dialogue_txt = ''
@@ -1217,3 +1218,5 @@ func play_unlock_class_anim(cls):
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
 	get_tree().get_root().set_disable_input(false)
+
+

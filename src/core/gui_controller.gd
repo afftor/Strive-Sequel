@@ -64,6 +64,8 @@ func add_close_button(scene, position = "snap"):
 	)
 	closebutton.rect_global_position = pos
 
+	return closebutton
+
 
 func close_scene(scene):
 	if scene == slavepanel:

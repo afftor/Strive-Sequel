@@ -8,8 +8,8 @@ var previous_dialogue_option = 0
 var previous_text = ''
 
 func _ready():
-	if get_node_or_null("Background/HideButton"):
-		get_node("Background/HideButton").connect("pressed", self, "hide_dialogue")
+	if get_node_or_null("BackgroundT2/HideButton"):
+		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
 		
 func hide_dialogue(action = "hide"):
@@ -56,11 +56,11 @@ func open(scene, not_save = false):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		yield(get_tree().create_timer(2), "timeout")
 
-	if scene.has("custom_background"):
-		$Background.show()
-		$Background.texture = images.backgrounds[scene.custom_background]
-	else:
-		$Background.hide()
+	if scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
+		$CustomBackground.show()
+		$CustomBackground.texture = images.backgrounds[scene.custom_background]
+	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
+		$CustomBackground.hide()
 	
 	if scene.has("character") == false:
 		$ImagePanel.show()
