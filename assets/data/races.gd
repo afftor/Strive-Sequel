@@ -1181,6 +1181,7 @@ var short_race_names = {
 	Harpy = ['harpy'],
 	Scylla = ['squid','scyla'],
 	Nereid = ['fish', 'nereid'],
+	Lamia = ['snake','lamia'],
 	BeastkinWolf = ['wolf'],
 	BeastkinFox = ['fox'],
 	BeastkinBunny = ['bunny'],

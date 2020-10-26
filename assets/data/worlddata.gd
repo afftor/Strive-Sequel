@@ -42,7 +42,6 @@ var lands = {
 			bone = {min = 5, max = 20, chance = 0.7},
 			lifeshard = {min = 4, max = 8, chance = 1},
 			energyshard = {min = 2, max = 5, chance = 1},
-			writ_of_exemption = {min = 1, max = 1, chance = 1},
 			trap = {min = 5, max = 10, chance = 1},
 			itempool0 = {items = ['dagger','club'], min = 1, max = 2, chance = 1},
 			#itempool00 = {items = ['worker_outfit'], min = 3, max = 3, chance = 1},
@@ -290,7 +289,7 @@ var factiondata = {
 		character_types = [['slave',1]],
 		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
 		
-		slave_races = [['rare',3]],
+		slave_races = [['rare',3],['Lamia',100]],
 		tags = [],
 		quests_easy = [],
 		quests_medium = [],

@@ -332,7 +332,7 @@ func make_quest(questcode):
 					if i.value.has('male') && input_handler.globalsettings.malechance <= 10:
 						i.value.erase("male")
 					if i.value.has("female") && input_handler.globalsettings.malechance + input_handler.globalsettings.futachance >= 90:
-						i.value.rase("female")
+						i.value.erase("female")
 				if typeof(i.value) == TYPE_ARRAY:
 					i.value = i.value[randi()%i.value.size()] 
 				tempdata.statreqs.append(i)

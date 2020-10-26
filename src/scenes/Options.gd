@@ -58,7 +58,7 @@ func activate_cheats():
 
 
 func go_for_code():
-	OS.shell_open("https://www.google.com")
+	OS.shell_open("https://www.patreon.com/posts/new-password-18830450")
 
 
 func open():

@@ -731,8 +731,9 @@ func get_icon_path():
 
 func get_body_image():
 	var tmp = input_handler.loadimage(statlist.body_image, 'shades')
-	if tmp != null: return tmp
-	if statlist.body_image == 'default' or statlist.body_image == '' or statlist.body_image == null:
+	if tmp != null: 
+		return tmp
+	else:
 		var text = statlist.race.to_lower().replace('halfkin','beastkin')
 		if statlist.sex == 'male':
 			text += "_m"

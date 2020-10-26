@@ -65,6 +65,8 @@ func get_stat(statname, ref = false):
 		return get(statname)
 	if statname == 'base_exp':
 		return xp_module.base_exp
+	if statname == 'counters':
+		return effects.counters
 	if statname.begins_with('food_') and !(statname in ['food_consumption']):
 		return food.get(statname)
 	return statlist.get_stat(statname, ref)
@@ -509,8 +511,12 @@ func hp_set(value):
 		if has_status('reincarnate'): 
 			hp = get_stat('hpmax')
 			remove_temp_effect_tag('reincarnate')
-#			play_sfx('reborn')
-		else: death()
+#            play_sfx('reborn')
+			if displaynode != null:
+				displaynode.update_hp()
+				displaynode.rebuildbuffs()
+		else:
+			death()
 	else:
 		defeated = false 
 

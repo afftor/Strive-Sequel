@@ -47,7 +47,7 @@ var productivity_mods = ['mod_build','mod_hunt', 'mod_fish','mod_collect','mod_c
 var longtails = ['fox','cat','wolf','dragon','demon','tanuki','fish','lizard']
 var longears = ['fox','cat','wolf','bunny_standing','bunny_drooping','elven','tanuki']
 
-var impregnation_compatibility = ['Human','Elf','DarkElf','Beastkin','Halfkin'] #the rest is only for same race
+var impregnation_compatibility = ['Human','Elf','DarkElf','TribalElf','Beastkin','Halfkin'] #the rest is only for same race
 var inheritedassets = ['ears','eye_color','eye_shape', 'hair_color', 'horns', 'tail', 'wings', 'skin_coverage', 'arms', 'legs', 'body_shape']
 var inheritedstats = ['growth_factor','magic_factor','physics_factor','wits_factor','charm_factor','sexuals_factor']
 
