@@ -111,11 +111,12 @@ func SaveGame():
 	input_handler.SystemMessage("Game Saved")
 
 func LoadGame():
-	gui_controller.close_all_closeable_windows()
+	print($LineEdit.text)
 	globals.LoadGame($LineEdit.text)
 	yield(get_tree(), "idle_frame")
 	if gui_controller.game_menu != null:
 		gui_controller.game_menu.hide()
+	gui_controller.close_all_closeable_windows()
 
 func SaveNameTransform(path):
 	return path.replace(variables.userfolder + 'saves/',"").replace('.sav', '').replace('.dat','')
