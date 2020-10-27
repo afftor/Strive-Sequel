@@ -101,14 +101,13 @@ func DeleteSave():
 	ResetSavePanel()
 
 func SaveGame():
+	gui_controller.close_all_closeable_windows()
 	globals.SaveGame($LineEdit.text)
 	ResetSavePanel()
-	hide()
-	get_parent().hide()
-	var GUIWorld = get_tree().get_root().get_node_or_null("GUIWorld")
-	var MANSION
-	if GUIWorld:
-		GUIWorld.menu_opened = false
+	yield(get_tree(), "idle_frame")
+	if gui_controller.game_menu != null:
+		gui_controller.game_menu.hide()
+	gui_controller.current_screen = gui_controller.mansion
 	input_handler.SystemMessage("Game Saved")
 
 func LoadGame():

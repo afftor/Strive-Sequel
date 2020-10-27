@@ -218,7 +218,8 @@ func open(scene, not_save = false):
 	gui_controller.is_dialogue_just_started = false
 	if get_tree().get_root().get_node_or_null("lootwindow") && get_tree().get_root().get_node("lootwindow").is_visible():
 		get_tree().get_root().get_node("lootwindow").raise()
-
+	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
+		get_tree().get_root().get_node("ANIMTaskAquared").raise()
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)
 	for button in $ScrollContainer/VBoxContainer.get_children():

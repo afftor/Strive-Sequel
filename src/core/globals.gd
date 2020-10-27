@@ -1173,7 +1173,8 @@ func common_effects(effects):
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
 					input_handler.play_unlock_class_anim(i.name)
-
+			'reset_day_count':
+				ResourceScripts.game_progress.reset_day_count(i.quest)
 
 func checkreqs(array):
 	var check = true
@@ -1288,3 +1289,5 @@ func valuecheck(dict):
 			return counter >= dict.value
 		'class_unlocked':
 			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)
+		'timed_option':
+			return ResourceScripts.game_progress.if_time_passed(dict.value, dict.quest)
