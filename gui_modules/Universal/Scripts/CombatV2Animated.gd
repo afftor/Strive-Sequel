@@ -1434,54 +1434,55 @@ func ClearSkillPanel():
 func RebuildSkillPanel():
 	ClearSkillPanel()
 	var counter = 0
-	for i in activecharacter.skills.combat_skill_panel:
-		if counter > 9:
-			break
+	var src = activecharacter.skills.combat_skill_panel
+	for i in range(1,11):
 		var newbutton = input_handler.DuplicateContainerTemplate($SkillPanel)
-		var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
-		newbutton.get_node("Icon").texture = skill.icon
-		if skill.cost.has('mp'):
-			newbutton.get_node("manacost").text = str(skill.cost.mp)
-			newbutton.get_node("manacost").visible = true
-		if !activecharacter.check_cost(skill.cost):
-#			newbutton.get_node("Icon").modulate = Color(0,0,1)
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.skills.combat_cooldowns.has(skill.code):
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-			newbutton.get_node("cooldown").visible = true
-			newbutton.get_node("cooldown").text = str(activecharacter.skills.combat_cooldowns[skill.code])
-			newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.yellow)
-		if skill.charges > 0:
-			var leftcharges = skill.charges
-			if activecharacter.skills.combat_skill_charges.has(skill.code):
-				leftcharges -= activecharacter.skills.combat_skill_charges[skill.code]
-			newbutton.get_node("charge").visible = true
-			newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
-			if leftcharges <= 0:
+		if src.has(i):
+			var skill = Skilldata.Skilllist[activecharacter.skills.combat_skill_panel[i]]
+			newbutton.get_node("Icon").texture = skill.icon
+			if skill.cost.has('mp'):
+				newbutton.get_node("manacost").text = str(skill.cost.mp)
+				newbutton.get_node("manacost").visible = true
+			if !activecharacter.check_cost(skill.cost):
+	#			newbutton.get_node("Icon").modulate = Color(0,0,1)
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.skills.combat_cooldowns.has(skill.code):
 				newbutton.disabled = true
 				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
 				newbutton.get_node("cooldown").visible = true
-				newbutton.get_node("cooldown").text = str(activecharacter.skills.daily_cooldowns[skill.code])
-				newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.red)
-		if !activecharacter.checkreqs(skill.reqs):
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
-		if !activecharacter.check_cost(skill.cost):
-			newbutton.disabled = true
-			newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
-		newbutton.set_meta('skill', skill.code)
-		newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
-		globals.connectskilltooltip(newbutton, skill.code, activecharacter)
-		counter += 1
+				newbutton.get_node("cooldown").text = str(activecharacter.skills.combat_cooldowns[skill.code])
+				newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.yellow)
+			if skill.charges > 0:
+				var leftcharges = skill.charges
+				if activecharacter.skills.combat_skill_charges.has(skill.code):
+					leftcharges -= activecharacter.skills.combat_skill_charges[skill.code]
+				newbutton.get_node("charge").visible = true
+				newbutton.get_node("charge").text = str(leftcharges)+"/"+str(skill.charges)
+				if leftcharges <= 0:
+					newbutton.disabled = true
+					newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+					newbutton.get_node("cooldown").visible = true
+					newbutton.get_node("cooldown").text = str(activecharacter.skills.daily_cooldowns[skill.code])
+					newbutton.get_node("cooldown").set("custom_colors/font_color", variables.hexcolordict.red)
+			if !activecharacter.checkreqs(skill.reqs):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			if activecharacter.has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.connect('pressed', self, 'SelectSkill', [skill.code])
+			if !activecharacter.check_cost(skill.cost):
+				newbutton.disabled = true
+				newbutton.get_node("Icon").material = load("res://assets/sfx/bw_shader.tres")
+			newbutton.set_meta('skill', skill.code)
+			newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
+			globals.connectskilltooltip(newbutton, skill.code, activecharacter)
+		else:
+			newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 
 func SelectSkill(skill):
 	Input.set_custom_mouse_cursor(images.cursors.default)

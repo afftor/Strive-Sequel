@@ -6,8 +6,7 @@ var type = "main"
 
 
 func _ready():
-#	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
-#	GUIWorld.add_close_button(self)
+	gui_controller.add_close_button(self)
 	$CompleteButton.connect("pressed", self, "CompleteQuest")
 	$CancelButton.connect("pressed", self, "CancelQuest")
 	$ItemSelectionPanel/CancelButton.connect("pressed",self, 'hide_item_selection')
@@ -146,7 +145,7 @@ func show_quest_info(quest):
 			match i.code:
 				'gear':
 					var item = globals.CreateGearItem(i.item, i.itemparts)
-					item.set_icon(newbutton)
+					item.set_icon(newbutton.get_node("TextureRect"))
 					input_handler.ghost_items.append(item)
 					globals.connectitemtooltip(newbutton, item)
 				'gear_static':

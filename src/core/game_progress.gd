@@ -39,7 +39,7 @@ var allow_skip_fights = false
 var unlimited_date_sex = false
 var unlock_all_classes = false
 
-# Cheat codes testing only
+# Cheat codes
 var cheat_code = "fkfynroh"
 
 

@@ -71,7 +71,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CustomBackground" type="TextureRect" parent="."]
 show_behind_parent = true
 margin_left = -569.0
 margin_top = -398.0

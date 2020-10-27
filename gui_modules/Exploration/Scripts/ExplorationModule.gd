@@ -88,6 +88,8 @@ func _ready():
 	gui_controller.windows_opened.clear()
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
+	var closebutton = gui_controller.add_close_button($AreaShop)
+	gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 
 func test():
 	for win in gui_controller.windows_opened:
@@ -385,10 +387,11 @@ func slave_position_selected(pos, character):
 		if active_location.group[i] == character:
 			oldheroposition = i
 			active_location.group.erase(i)
-
+	var INTEGER_VALUE_FROM_POS_INDEX = 3
 	if oldheroposition != null && positiontaken == true && oldheroposition != pos:
 		active_location.group[oldheroposition] = active_location.group[pos]
-
+		var CHARACTER_UID = active_location.group[oldheroposition]
+		ResourceScripts.game_party.characters[CHARACTER_UID].combat_position = int(oldheroposition[INTEGER_VALUE_FROM_POS_INDEX])
 	active_location.group[pos] = character
 	build_location_group()
 
@@ -2037,6 +2040,7 @@ func see_quest_info(quest):
 				newbutton.get_node("amount").show()
 			'usable':
 				var item = Items.itemlist[i.item]
+				input_handler.itemshadeimage(newbutton.get_node("Icon"), item)
 				newbutton.get_node("Icon").texture = item.icon
 				globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
 				newbutton.get_node("amount").text = str(i.value)
