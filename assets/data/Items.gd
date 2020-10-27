@@ -1754,7 +1754,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		mansion_effect = '',
+		mansion_effect = 'oblivionpot',
 	},
 	writ_of_exemption = {# changes slave status to servant
 		code = 'writ_of_exemption',

@@ -289,7 +289,7 @@ var factiondata = {
 		character_types = [['slave',1]],
 		character_bonuses = {submission = [20,35], authority = [50,100], obedience = [36,36]},
 		
-		slave_races = [['rare',3],['Lamia',100]],
+		slave_races = [['rare',3]],
 		tags = [],
 		quests_easy = [],
 		quests_medium = [],
