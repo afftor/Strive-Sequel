@@ -115,6 +115,7 @@ var data = {
 			{code = 'aliron_church_quest_complete', reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTSTART'},
 				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 25},
+				{type = 'timed_option', value = 7, quest = "aliron_church"},
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0},
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4, type = 'next_dialogue'},
 		],
@@ -161,7 +162,8 @@ var data = {
 		variations = [
 			{
 				reqs = [
-					{type = 'active_quest_stage', value = 'aliron_church_quest', stage = 'stage1'}
+					{type = 'active_quest_stage', value = 'aliron_church_quest', stage = 'stage1'},
+					{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHQUESTCOMPLETE1'},
 				],
 				image = null,
 				custom_background = "church_event",
@@ -178,14 +180,15 @@ var data = {
 					dialogue_argument = 5, 
 					type = 'next_dialogue',
 					bonus_effects = [
-						{code = 'complete_quest', value = 'aliron_church_quest'},
+						# {code = 'complete_quest', value = 'aliron_church_quest'},
 						{code = "material_change", material = "meatsoup", operant = '-', value = 25},
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
-						{code = "unlock_class", name = "healer"}
+						{code = "unlock_class", name = "healer"},
+						{code = 'reset_day_count', quest = "aliron_church"},
 				]}],	
 			},
 			{
-				reqs = [{type = 'complete_quest', value = 'aliron_church_quest'},],
+				reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTCOMPLETE1'},],
 				image = null,
 				custom_background = "church_event",
 				character = 'ginny',
@@ -198,6 +201,7 @@ var data = {
 					bonus_effects = [
 						{code = "material_change", material = "meatsoup", operant = '-', value = 25},
 						{code = 'make_loot', pool = [['aliron_church_bonus',5]]}, {code = 'open_loot'},
+						{code = 'reset_day_count', quest = "aliron_church"},
 				],	
 				},
 				],

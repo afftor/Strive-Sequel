@@ -135,6 +135,7 @@ func advance_day():
 	ResourceScripts.game_party.update_global_cooldowns()
 	ResourceScripts.game_globals.hour = 0
 	ResourceScripts.game_globals.date += 1
+	ResourceScripts.game_progress.days_from_last_church_quest += 1
 	ResourceScripts.game_globals.daily_sex_left = 1
 	ResourceScripts.game_globals.daily_dates_left = 1
 	for i in ResourceScripts.game_party.characters.values():

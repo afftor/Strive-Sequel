@@ -24,6 +24,7 @@ var stored_events = {
 
 var completed_locations = {}
 
+var days_from_last_church_quest = 0
 
 #Cheats
 var cheats_active = false
@@ -99,4 +100,16 @@ func update_progress(operant, value):
 			mainprogress -= value
 		'=':
 			mainprogress = value
+
+func if_time_passed(value, quest):
+	var check = false
+	match quest:
+		"aliron_church":
+			check = days_from_last_church_quest > value
+	return check
+
+func reset_day_count(quest):
+	match quest:
+		"aliron_church":
+			days_from_last_church_quest = 0
 

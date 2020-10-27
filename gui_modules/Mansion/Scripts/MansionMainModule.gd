@@ -701,7 +701,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		input_handler.interactive_message("servants_election_finish7", '',{})
+		input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}
