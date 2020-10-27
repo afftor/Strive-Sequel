@@ -65,6 +65,8 @@ func new_charcter_description(character):
 				text += tr("NOSEXDETAILSDESCRIPT")
 				add_no_sex_descript = true
 			continue
+		elif i == 'hair_style' && person.get_stat('hair_length') == 'bald':
+			continue
 		var charpart = character.get_stat(i)
 		if str(charpart) != '':
 			var newtext = ''

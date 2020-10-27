@@ -1968,6 +1968,8 @@ var TranslationDict = {
 	ENEMYUNDEAD_LICH = "Lich",
 	ENEMYMIMIC = "Mimic",
 	ENEMYBALLISTA = "Ballista",
+	ENEMYTROLL = "Troll",
+	ENEMYBANDINT_ASSASSIN = "Bandit Asssassin",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",

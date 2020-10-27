@@ -1,3 +1,14 @@
+0.3.2a
+Added some additional clarity for upgrade material tooltip
+Fixed slave requrest descriptions to represent factor values as words when set so
+Fixed seethrough underwear not being craftable
+Fixed random fairy event showing wrong description
+Fixed tribal elves not being breedable with other races
+Fixed lamia race lacking short names causing some issues
+Fixed bald hair having length description
+Fixed oblivion potion
+Fixed writ of exemption still relying on submision forcalculations
+0.3.2
 Dating changes:
 Dating results are now defined by dominance of mood or fear during it. If mood is higher, slave receive loyalty boost with some consent. If fear is higher, slave receive obedience and authority boosts. Repeated actions will become less effective with each new use during same date. Dating descriptions are more varied now.
 

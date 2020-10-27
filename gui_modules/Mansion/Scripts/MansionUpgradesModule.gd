@@ -204,12 +204,14 @@ func selectupgrade(upgrade):
 			var value1 = upgrade.levels[currentupgradelevel].cost[i]
 			if ResourceScripts.game_res.upgrade_progresses.has(upgrade.code):
 				value1 = 0
-			newnode.get_node("Label").text = str(ResourceScripts.game_res.materials[i]) + "/" + str(value1)
-			globals.connectmaterialtooltip(newnode, item)
+			var bonustext = str(ResourceScripts.game_res.materials[i]) + "/" + str(value1)
+			newnode.get_node("Label").text = bonustext
+			bonustext = "\n\nRequired for Upgrade: " + bonustext
+			globals.connectmaterialtooltip(newnode, item, bonustext)
 			if ResourceScripts.game_res.materials[i] >= upgrade.levels[currentupgradelevel].cost[i]:
-				newnode.get_node('Label').set("custom_colors/font_color", Color(0.2, 0.8, 0.2))
+				newnode.get_node('Label').set("custom_colors/font_color", Color(variables.hexcolordict.green))
 			else:
-				newnode.get_node('Label').set("custom_colors/font_color", Color(0.8, 0.2, 0.2))
+				newnode.get_node('Label').set("custom_colors/font_color", Color(variables.hexcolordict.red))
 				canpurchase = false
 	else:
 		$UpgradeDescript/Time.hide()

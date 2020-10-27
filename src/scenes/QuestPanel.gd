@@ -102,7 +102,10 @@ func show_quest_info(quest):
 							continue
 						match k.code:
 							'stat':
-								tooltiptext += statdata.statdata[k.type].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
+								if k.stat.ends_with('factor') && input_handler.globalsettings.factors_as_words:
+									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " +  ResourceScripts.descriptions.factor_descripts[int(k.value)] + " "  + "\n"
+								else:
+									tooltiptext += statdata.statdata[k.stat].name +": "+ input_handler.operant_translation(k.operant) + " " + str(k.value) + " "  + "\n"
 							'sex':
 								tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
 					globals.connecttexttooltip(newbutton,tooltiptext)

@@ -97,10 +97,10 @@ func writ_of_exemption_use():
 	var acceptance_chance = 0
 	ResourceScripts.game_res.remove_item("writ_of_exemption", 1)
 	input_handler.scene_characters = [person]
-	if character.get_stat('loyalty') == 100 && character.get_stat('submission') == 100:
+	if character.get_stat('loyalty') == 100:
 		acceptance_chance = 100
 	else:
-		acceptance_chance = (character.get_stat('loyalty') + character.get_stat('submission')) / 2
+		acceptance_chance = character.get_stat('loyalty')
 		acceptance_chance = acceptance_chance - acceptance_chance*variables.personality_conversion_rates[character.get_stat('personality')]
 	if acceptance_chance >= randf()*acceptance_req:
 		input_handler.interactive_message_follow("writ_of_exemption_success",'char_translate',character)

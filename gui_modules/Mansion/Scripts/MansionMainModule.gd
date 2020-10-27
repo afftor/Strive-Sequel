@@ -480,6 +480,7 @@ func test_mode():
 		character.add_stat('charm', 100)
 		character.add_stat('physics', 100)
 		character.add_stat('hpmax', 100)
+		character.set_stat('hair_length','bald')
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
@@ -645,7 +646,7 @@ func test_mode():
 		)
 		ResourceScripts.game_res.money = 80
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 200000
+			ResourceScripts.game_res.materials[i] = 20
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
@@ -662,7 +663,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateUsableItem("energyshard", 2))
 		globals.AddItemToInventory(globals.CreateUsableItem("strong_pheromones", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
-		globals.AddItemToInventory(globals.CreateUsableItem("majorus_potion", 3))
+		globals.AddItemToInventory(globals.CreateUsableItem("oblivion_potion", 3))
 		globals.AddItemToInventory(
 			globals.CreateGearItem("axe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)

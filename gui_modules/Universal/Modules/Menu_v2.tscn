@@ -1162,6 +1162,7 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Credits/Background"]
+visible = false
 margin_left = 29.0
 margin_top = 110.0
 margin_right = 616.0
@@ -1180,6 +1181,45 @@ margin_right = 587.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 587, 0 )
 custom_fonts/font = ExtResource( 2 )
-text = "Title"
+text = "Credits"
 align = 1
 valign = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Background"]
+margin_left = 32.0
+margin_top = 151.0
+margin_right = 612.0
+margin_bottom = 752.0
+bbcode_text = "Game design, writing, programming: Maverik
+
+Combat and skil programming: ykoc
+
+GUI programming: Gerakena
+
+Character design: Nightigall
+Scene art: Allanheil
+Background art: Laynesis, OMA(Olga Morozova)
+Icon art: Persich
+
+
+Proofreading: Dorant
+
+Also thanks to: negtize724"
+text = "Game design, writing, programming: Maverik
+
+Combat and skil programming: ykoc
+
+GUI programming: Gerakena
+
+Character design: Nightigall
+Scene art: Allanheil
+Background art: Laynesis, OMA(Olga Morozova)
+Icon art: Persich
+
+
+Proofreading: Dorant
+
+Also thanks to: negtize724"
+__meta__ = {
+"_edit_use_anchors_": false
+}

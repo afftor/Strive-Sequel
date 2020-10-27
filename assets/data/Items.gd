@@ -41,7 +41,8 @@ var stats = {
 	wits_bonus = '',
 	charm_bonus = '',
 	sexuals_bonus = '',
-
+	timid_factor = '',
+	
 	loyalty_gain_mod = ''
 }
 
@@ -1753,7 +1754,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		mansion_effect = '',
+		mansion_effect = 'oblivionpot',
 	},
 	writ_of_exemption = {# changes slave status to servant
 		code = 'writ_of_exemption',
@@ -2606,7 +2607,7 @@ var recipes = {
 		worktype = 'tailor'
 	},
 	seethrough_underwear = {
-		code = 'lacy_underwear',
+		code = 'seethrough_underwear',
 		materials = {clothsilk = 5, clothmagic = 10},
 		items = {},
 		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 2}], 

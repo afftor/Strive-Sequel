@@ -480,7 +480,7 @@ var scenedict = {
 		],
 	},
 	
-	event_fairy_friendly = {text = tr("DIALOGUEEVENTGOBLINFRIENDLY"), 
+	event_fairy_friendly = {text = tr("DIALOGUEEVENTFAIRYFRIENDLY"), 
 	tags = ['linked_event','active_character_translate'],
 	default_event_type = "character_event",
 	image = 'fairy_encounter', 
