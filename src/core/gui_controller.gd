@@ -133,11 +133,6 @@ func show_class_info(classcode, person = null):
 
 func close_top_window():
 	var node = windows_opened.back()
-	if !weakref(node).get_ref():
-		windows_opened.erase(node)
-		if window_button_connections.keys().has(node):
-			window_button_connections.erase(node)
-			return
 	if window_button_connections.keys().has(node) && window_button_connections[node] != null:
 		window_button_connections[node].pressed = false
 		windows_opened.erase(node)
@@ -154,6 +149,7 @@ func close_top_window():
 func close_all_closeable_windows():
 	while windows_opened.size() > 0:
 		close_top_window()
+	window_button_connections.clear()
 
 
 
@@ -182,10 +178,11 @@ func submodules_handler(submodules):
 	submodules.erase(last)
 	return submodules.size()
 
-func win_btn_connections_handler(pressed, window, button):
+func win_btn_connections_handler(pressed, window, button = null):
 	if pressed:
-		gui_controller.window_button_connections[window] = button
+		window_button_connections[window] = button
 	else:
-		gui_controller.window_button_connections[window] = null
-	if pressed && !gui_controller.windows_opened.has(window):
-		gui_controller.windows_opened.append(window)
+		window_button_connections[window] = null
+		windows_opened.erase(window)
+	if pressed && !windows_opened.has(window):
+		windows_opened.append(window)
