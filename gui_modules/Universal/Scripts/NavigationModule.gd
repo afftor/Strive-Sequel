@@ -113,6 +113,7 @@ func select_location(location):
 			gui_controller.exploration.open_location(data)
 	gui_controller.exploration.show()
 	build_accessible_locations()
+	gui_controller.close_all_closeable_windows()
 
 
 func return_to_mansion(with_state = "default"):
