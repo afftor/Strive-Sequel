@@ -99,7 +99,7 @@ func _ready():
 		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
 		globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
 		
-		set_active_person(ResourceScripts.game_party.get_master())
+		
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
@@ -120,6 +120,7 @@ func _ready():
 	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
+	set_active_person(ResourceScripts.game_party.get_master())
 
 
 
