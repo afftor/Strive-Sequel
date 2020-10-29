@@ -111,7 +111,6 @@ func SaveGame():
 	input_handler.SystemMessage("Game Saved")
 
 func LoadGame():
-	print($LineEdit.text)
 	globals.LoadGame($LineEdit.text)
 	yield(get_tree(), "idle_frame")
 	if gui_controller.game_menu != null:
