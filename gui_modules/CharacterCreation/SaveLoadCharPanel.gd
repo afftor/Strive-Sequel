@@ -8,7 +8,7 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HideButton.connect("pressed", self, "hide")
+	$HideButton.connect("pressed", get_parent(), "hideSaveLoadPanel")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

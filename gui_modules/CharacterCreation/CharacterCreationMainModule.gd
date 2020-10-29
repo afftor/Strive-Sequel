@@ -309,6 +309,8 @@ func set_savefilename(text):
 	savefilename = text + ".ch"
 
 func hideSaveLoadPanel():
+	ResourceScripts.core_animations.FadeAnimation($SaveLoadCharPanel, 0.5)
+	yield(get_tree().create_timer(0.5), "timeout")
 	$SaveLoadCharPanel.hide()
 	# $SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressSaveCharacter")
 	# $SaveLoadCharPanel/SaveLoadButton.disconnect("pressed", self, "PressLoadCharacter")
@@ -316,8 +318,10 @@ func hideSaveLoadPanel():
 	saveloadstate = null
 
 func SaveLoadCharPanel(saveloadmode):
-	saveloadstate = saveloadmode
 	$SaveLoadCharPanel.show()
+	ResourceScripts.core_animations.UnfadeAnimation($SaveLoadCharPanel, 0.5)
+	yield(get_tree().create_timer(0.5), "timeout")
+	saveloadstate = saveloadmode
 	$SaveLoadCharPanel/RichTextLabel.bbcode_text = tr('SAVETEMPLATEDESCRIPT')
 	$SaveLoadCharPanel/LineEdit.clear()
 	input_handler.ClearContainerForced($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
