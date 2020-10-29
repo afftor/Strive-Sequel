@@ -40,7 +40,7 @@ func show_slave_info():
 	if hovered_person != null:
 		person = hovered_person
 	else:
-		person = get_parent().active_person
+		person = input_handler.interacted_character
 	if person != null:
 		$Panel.visible = person != ResourceScripts.game_party.get_master()
 		globals.connecttexttooltip($RichTextLabel, person.show_race_description())

@@ -97,7 +97,7 @@ func rebuildinventory():
 				if typeof(item) == TYPE_OBJECT && item.amount != null && (item.amount > 1 || item.type == 'usable'):
 					i.get_node("Number").text = str(item.amount)
 	if mode == 'character':
-		var selectedhero = get_parent().selectedhero
+		var selectedhero = input_handler.interacted_character
 		$GearPanel/BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
 			if selectedhero.equipment.gear[i] == null:
@@ -149,7 +149,7 @@ func filter_changed(text):
 	rebuildinventory()
 
 func useitem(item, type):
-	var selectedhero = get_parent().selectedhero
+	var selectedhero = input_handler.interacted_character
 	# if mode == null:
 	# 	return
 	# elif mode == 'character' && selectedhero != null:

@@ -49,13 +49,13 @@ func close_inventory(state):
 
 func update():
 	if selectedhero == null:
-		selectedhero = gui_controller.mansion.active_person
+		selectedhero = input_handler.interacted_character
 	set_active_hero(selectedhero)
 
 
 func set_active_hero(hero):
 	# gui_controller.mansion.active_person = hero
-	selectedhero = hero
+	input_handler.interacted_character = hero
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()

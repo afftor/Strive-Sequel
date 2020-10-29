@@ -7,7 +7,7 @@ func _ready():
 
 
 func update():
-	selectedhero = get_parent().selectedhero
+	selectedhero = input_handler.interacted_character
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	for id in ResourceScripts.game_party.character_order:
 		var i = ResourceScripts.game_party.characters[id]

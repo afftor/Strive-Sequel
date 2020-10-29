@@ -70,7 +70,7 @@ func check_last_save():
 	else:
 		$VBoxContainer/continuebutton.visible = true
 
-func continueb():
+func continueb(pressed, some_node):
 	globals.LoadGame(lastsave.get_file().get_basename());
 
 

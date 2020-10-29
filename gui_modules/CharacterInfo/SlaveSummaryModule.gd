@@ -1,6 +1,6 @@
 extends Control
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
+
 onready var CharMainModule = get_parent()
 
 var selected_person
@@ -46,9 +46,12 @@ func change_slave(param):
 				selected_person = ResourceScripts.game_party.characters[chars[0]]
 			else:
 				selected_person = ResourceScripts.game_party.characters[chars[current_idx + 1]]
-	CharMainModule.active_person = selected_person
+	input_handler.interacted_character = selected_person
+	# TODO Double check person references in modules
+	# CharMainModule.active_person = selected_person
 	CharMainModule.match_state()
 	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
+	# CharMainModule.DetailsModule.person = selected_person
 	CharMainModule.DetailsModule.custom_description_open()
 
 func update_buttons():
@@ -63,9 +66,9 @@ func update():
 func show_summary():
 	# input_handler.PreviousScene = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
 	input_handler.ClearContainer($professions)
+	# TODO Remove unnecessary person references
 	var person
-	if selected_person == null:
-		selected_person = gui_controller.mansion.active_person
+	selected_person = input_handler.interacted_character
 	person = selected_person
 	$Portrait.texture = person.get_icon()
 	$sex.texture = images.icons[person.get_stat('sex')]
@@ -84,7 +87,6 @@ func show_summary():
 			i.hide()
 		else:
 			i.show()
-		# if i.name in ['food_consumption', 'base_exp']:
 		if i.name in ['base_exp']:
 			# i.get_node("Label").text = str(floor(person.get_stat(i.name)))
 			continue
@@ -112,19 +114,6 @@ func show_summary():
 			# get_node("VBoxContainer2/TextureRect3/" + i).set("custom_colors/font_color", color)
 			get_node("VBoxContainer2/TextureRect3/" + i).text = str(floor(person.get_stat(i)) - person.get_stat(i+"_bonus")) + text
 			get_node("VBoxContainer2/TextureRect4/"+ i + '2').text = '100'
-	
-	# $factors/base_exp/Label.hint_tooltip = tr("NEXTCLASSEXP") + str(person.get_next_class_exp())
-	# for i in person.xp_module.professions:
-	# 	var newnode = input_handler.DuplicateContainerTemplate($professions)
-	# 	var prof = classesdata.professions[i]
-	# 	var name = ResourceScripts.descriptions.get_class_name(prof, person)
-	# 	newnode.get_node("Label").text = name
-	# 	newnode.get_node("TextureRect").rect_size = Vector2(86,86)
-	# 	newnode.get_node("TextureRect").texture = prof.icon
-	# 	newnode.connect('signal_RMB_release', GUIWorld, 'show_class_info', [prof.code, person])
-	# 	var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-	# 	temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-	# 	globals.connecttexttooltip(newnode, temptext)
 
 
 

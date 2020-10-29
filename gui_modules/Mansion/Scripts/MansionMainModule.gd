@@ -99,7 +99,7 @@ func _ready():
 		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
 		globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
 		
-		set_active_person(ResourceScripts.game_party.get_master())
+		
 		SlaveListModule.rebuild()
 		SlaveListModule.build_locations_list()
 		mansion_state_set("default")
@@ -120,6 +120,7 @@ func _ready():
 	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
+	set_active_person(ResourceScripts.game_party.get_master())
 
 
 
@@ -139,7 +140,8 @@ func show_menu():
 
 
 func set_active_person(person):
-	active_person = person
+	input_handler.interacted_character = person
+	active_person = input_handler.interacted_character
 	SlaveListModule.prev_selected_location = SlaveListModule.selected_location
 	slave_list_manager()
 
@@ -644,9 +646,9 @@ func test_mode():
 				}
 			]
 		)
-		ResourceScripts.game_res.money = 80
+		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 20
+			ResourceScripts.game_res.materials[i] = 2000
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
@@ -701,7 +703,7 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		input_handler.interactive_message("ginny_visit", '',{})
+		# input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}

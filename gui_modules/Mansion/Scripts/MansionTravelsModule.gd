@@ -113,8 +113,12 @@ func forget_location():
 
 
 func clear_dungeon_confirm():
+	if gui_controller.current_screen != gui_controller.mansion:
+		selected_location = input_handler.active_location.id
 	globals.remove_location(selected_location)
 	selected_location = null
+
+
 	# action_type = 'location_finish'
 
 func show_location_resources(location_code):

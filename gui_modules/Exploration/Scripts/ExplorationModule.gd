@@ -79,6 +79,7 @@ func _ready():
 	$LocationGui/ItemUsePanel/SpellsButton.connect("pressed", self, "switch_panel", ["spells"])
 	$LocationGui/ItemUsePanel/ItemsButton.pressed = true
 	$LocationGui/Resources/SelectWorkers.connect("pressed", self, "select_workers")
+	$LocationGui/Resources/Forget.connect("pressed", gui_controller.mansion.TravelsModule, "forget_location")
 	$LocationGui/PresentedSlavesPanel/ReturnAll.connect("pressed", self, "return_all_to_mansion")
 	$BuyLocation/LocationInfo/PurchaseLocation.connect("pressed", self, "purchase_location")
 	$TestButton.connect("pressed", self, "test")
@@ -89,7 +90,7 @@ func _ready():
 	globals.connect("hour_tick", self, "build_location_group")
 	input_handler.connect("EventFinished", self, 'build_location_group')
 	var closebutton = gui_controller.add_close_button($AreaShop)
-	gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
+	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 
 func test():
 	for win in gui_controller.windows_opened:
@@ -985,8 +986,9 @@ func open_location_actions():
 				newbutton = input_handler.DuplicateContainerTemplate(
 					$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 				)
+				newbutton.toggle_mode = true
 				newbutton.text = tr(i.to_upper())
-				newbutton.connect("pressed", self, i)
+				newbutton.connect("toggled", self, i, [newbutton])
 		'encounter':
 			for i in active_location.options:
 				if globals.checkreqs(i.reqs) == true:
@@ -994,6 +996,7 @@ func open_location_actions():
 						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 					)
 					newbutton.text = tr(i.text)
+					newbutton.toggle_mode = false
 					newbutton.connect("pressed", globals, 'common_effects', [i.args])
 		'quest_location':
 			for i in active_location.options:
@@ -1002,6 +1005,7 @@ func open_location_actions():
 						$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 					)
 					newbutton.text = tr(i.text)
+					newbutton.toggle_mode = false
 					newbutton.connect("pressed", globals, 'common_effects', [i.args])
 
 
@@ -1603,7 +1607,8 @@ func open_shop(pressed, pressed_button, shop):
 		'area':
 			active_shop = active_area.shop
 		'location':
-			active_shop = input_handler.active_location.shop
+			if pressed:
+				active_shop = input_handler.active_location.shop
 	sell_category = 'all'
 	buy_category = 'all'
 	$AreaShop/SellFilter.get_child(0).pressed = true
@@ -1615,8 +1620,8 @@ func open_shop(pressed, pressed_button, shop):
 	else:
 		fade($AreaShop)
 
-func local_shop():
-	open_shop(true, current_pressed_area_btn, 'location')
+func local_shop(pressed, button):
+	open_shop(pressed, button, 'location')
 
 
 func selectcategory(button, list):

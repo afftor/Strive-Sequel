@@ -5,9 +5,9 @@ extends Panel
 
 var person
 onready var ImageSelect = $PopUp
+onready var CharMainModule = get_parent()
 var details_state = "description"
 var portaitsbuilt = false
-
 
 
 func _ready():
@@ -42,7 +42,7 @@ func custom_description_open():
 	$VBoxContainer/descript.pressed = true
 	$SexTraitsPanel.hide()
 	$ConfirmButton.show()
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	if person != null:
 		show_text_edit()
 		$Label.text = "Add Custom Description"
@@ -54,7 +54,7 @@ func custom_nickname_open():
 	$VBoxContainer/nickname.pressed = true
 	$SexTraitsPanel.hide()
 	$ConfirmButton.show()
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	show_text_edit()
 	$Label.text = "Add Custom Nickname"
 	details_state = "nickname"
@@ -65,7 +65,7 @@ func custom_masternoun_open():
 	$VBoxContainer/masternoun.pressed = true
 	$SexTraitsPanel.hide()
 	$ConfirmButton.show()
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	show_text_edit()
 	$Label.text = "Add Custom Masternoun"
 	details_state = "masternoun"
@@ -92,7 +92,7 @@ func sex_traits_open():
 	$VBoxContainer/traits.pressed = true
 	$SexTraitsPanel.show()
 	$VBoxContainer/IconBlock.hide()
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
 	$SexTraitsPanel/TraitsNotLearned.bbcode_text = person.translate(tr("NOTALLTRAITSLEARNED"))
 	var array = person.get_all_sex_traits()#.keys()
@@ -115,7 +115,7 @@ func sex_traits_open():
 	update_trait_capacity()
 
 func update_trait_capacity():
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	var text = 'Current Capacity: ' + str(person.statlist.sex_traits.size()) + "/" + str(person.get_stat('sexuals_factor')+1)
 	$SexTraitsPanel/TraitCapacity.text = text
 	for i in $SexTraitsPanel/ScrollContainer/VBoxContainer.get_children():
@@ -136,7 +136,7 @@ func toggle_trait(trait_status, trait):
 
 
 func confirm():
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	var text = $TextEdit.text
 	match details_state:
 		"description":

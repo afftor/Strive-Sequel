@@ -11,7 +11,8 @@ var person
 
 func update(person = null):
 	if person == null:
-		person = gui_controller.mansion.active_person
+		person = input_handler.interacted_character
+		# TODO Rework person reference
 		if get_parent().SummaryModule.selected_person != null:
 			person = get_parent().SummaryModule.selected_person
 		if gui_controller.previous_screen != null && gui_controller.previous_screen == gui_controller.exploration:

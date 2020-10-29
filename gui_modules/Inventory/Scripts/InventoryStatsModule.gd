@@ -25,7 +25,7 @@ func open_base_stats():
 	$base_stats.show()
 	$StatsButton.pressed = true
 	$ResistsButton.pressed = false
-	var character = get_parent().selectedhero
+	var character = input_handler.interacted_character
 #	$name.text = character.get_short_name()
 #	for i in ['hp','mp']:
 #		$VBoxContainer.get_node(i).text = str(floor(character.get_stat(i))) + "/" + str(floor(character.get_stat(i+"max")))
@@ -43,7 +43,7 @@ func open_resists():
 	$base_stats.hide()
 	$StatsButton.pressed = false
 	$ResistsButton.pressed = true
-	var character = get_parent().selectedhero
+	var character = input_handler.interacted_character
 	for i in $resists.get_children():
 		var tmp = character.get_stat('resists')
 		if variables.resists_list.has(i.name):

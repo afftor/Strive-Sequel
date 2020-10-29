@@ -266,15 +266,11 @@ func show_location_characters(button = null):
 				if get_parent().mansion_state in ["default", "skills"]:
 					get_parent().set_active_person(visible_persons[0].get_meta("slave"))
 		if get_parent().mansion_state == "sex":
-			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location
-			
+			person.visible = person_reference.travel.location == ResourceScripts.game_world.mansion_location		
 	if !selected_location in ["show_all"]:
 		get_parent().TravelsModule.dislocation_area = selected_location
-#	get_parent().TravelsModule.update_location_list()
 	if visible_persons.size() < 1:
 		selected_location = "show_all"
-
-
 
 
 func update_location_buttons():

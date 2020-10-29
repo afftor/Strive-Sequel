@@ -11,7 +11,7 @@ func _ready():
 
 
 func build_skill_panel():
-	person = get_parent().skill_source
+	person = input_handler.interacted_character
 	if person == null:
 		return
 	input_handler.ClearContainer($SkillPanel)
