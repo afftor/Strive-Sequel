@@ -22,7 +22,8 @@ func _ready():
 
 
 func update():
-	active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
+	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
+	active_person = input_handler.interacted_character
 	SlaveInfo.get_node("DietButton").pressed = DietModule.is_visible()
 	SummaryModule.show_summary()
 	SlaveInfo.update()

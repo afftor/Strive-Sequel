@@ -150,8 +150,8 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	ResourceScripts.game_world.update_locations()
 	globals.autosave()
-#	if GUIWorld.CurrentScene.name == "MansionMainModule":
-#	GUIWorld.gui_data.MANSION.main_module.rebuild_mansion()
+	if gui_controller.current_screen == gui_controller.mansion:
+		gui_controller.mansion.rebuild_mansion()
 
 
 func set_time_buttons():

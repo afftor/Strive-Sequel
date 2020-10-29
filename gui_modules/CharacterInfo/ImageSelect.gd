@@ -94,7 +94,7 @@ func buildimagelist(type = mode):
 #	image.save_png(newpath)
 
 func resort():
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	var strictsearch = IconBlock.get_node("racelock").is_pressed()
 	var gender = person.get_stat('sex')
 	var race = person.get_stat('race')
@@ -118,7 +118,7 @@ func resort():
 
 
 func setslaveimage(path):
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	if mode == 'portrait':
 		person.set_stat('icon_image', path)
 		if IconBlock.get_node("assignboth").pressed && input_handler.loadimage(path.replace("portraits", 'bodies')) != null:

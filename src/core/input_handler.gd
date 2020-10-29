@@ -48,6 +48,7 @@ var skill_list_node
 var Mansion
 var SlaveModule
 var PreviousScene
+var interacted_character
 
 
 var exploration_node
@@ -273,17 +274,25 @@ func _input(event):
 						gui_controller.current_screen = gui_controller.previous_screen
 						if gui_controller.previous_screen == gui_controller.slavepanel:
 							gui_controller.previous_screen = gui_controller.mansion
+							gui_controller.slavepanel.update()
 						gui_controller.current_screen.show()
+						gui_controller.mansion.set_active_person(interacted_character)
+						gui_controller.mansion.SlaveListModule.selected_location = "show_all"
+						gui_controller.mansion.SlaveListModule.prev_selected_location = "show_all"
+						gui_controller.mansion.SlaveListModule.show_location_characters()
 					gui_controller.game_menu:
 						gui_controller.game_menu.hide()
 						gui_controller.current_screen = gui_controller.previous_screen
 					gui_controller.slavepanel:
 						gui_controller.slavepanel.hide()
-						gui_controller.slavepanel.SummaryModule.selected_person = null
+						# gui_controller.slavepanel.SummaryModule.selected_person = null
 						gui_controller.current_screen = gui_controller.mansion
+						gui_controller.mansion.set_active_person(interacted_character)
 						gui_controller.current_screen.show()
-						if gui_controller.current_screen == gui_controller.mansion:
-							gui_controller.mansion.mansion_state_set("default")
+						gui_controller.mansion.mansion_state_set("default")
+						gui_controller.mansion.SlaveListModule.selected_location = "show_all"
+						gui_controller.mansion.SlaveListModule.prev_selected_location = "show_all"
+						gui_controller.mansion.SlaveListModule.show_location_characters()
 					gui_controller.explore_slaveinfo:
 						gui_controller.explore_slaveinfo.hide()
 						gui_controller.current_screen = gui_controller.previous_screen

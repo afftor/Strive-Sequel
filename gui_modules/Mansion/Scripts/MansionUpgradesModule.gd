@@ -256,6 +256,9 @@ func add_to_upgrades_queue():
 		print("Warning: Selected Upgrade can't be null!")
 		return
 	var upgrade = get_parent().selected_upgrade
+	if ResourceScripts.game_res.upgrades_queue.has(upgrade.code):
+		input_handler.SystemMessage("Upgrade already in the queue.")
+		return
 	var currentupgradelevel = int(findupgradelevel(upgrade) + 1)
 	if ResourceScripts.game_progress.free_upgrades == false:
 		for i in upgrade.levels[currentupgradelevel].cost:

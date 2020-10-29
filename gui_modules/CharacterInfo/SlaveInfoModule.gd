@@ -38,7 +38,7 @@ func set_color(value):
 	return color	
 
 func update():
-	person = get_parent().active_person
+	person = input_handler.interacted_character
 	if person != null:
 		$Panel.visible = !person.has_profession("master")
 		$MasterIcon.visible = person.has_profession("master")

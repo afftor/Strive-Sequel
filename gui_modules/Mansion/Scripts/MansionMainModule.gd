@@ -139,7 +139,8 @@ func show_menu():
 
 
 func set_active_person(person):
-	active_person = person
+	input_handler.interacted_character = person
+	active_person = input_handler.interacted_character
 	SlaveListModule.prev_selected_location = SlaveListModule.selected_location
 	slave_list_manager()
 
@@ -644,9 +645,9 @@ func test_mode():
 				}
 			]
 		)
-		ResourceScripts.game_res.money = 80
+		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 20
+			ResourceScripts.game_res.materials[i] = 2000
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
