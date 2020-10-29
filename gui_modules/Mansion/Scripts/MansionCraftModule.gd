@@ -152,6 +152,7 @@ func rebuild_recipe_list():
 		newbutton.set_meta('item', i)
 		newbutton.connect("pressed", self, 'selectcraftitem', [i])
 		newbutton.get_node('icon').texture = item.icon
+		###
 		if i.crafttype == 'basic':
 			for k in i.items:
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
@@ -323,12 +324,24 @@ func selectcraftitem(item):
 		var basic_setup_container = $MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer
 		
 		input_handler.ClearContainer(basic_setup_container)
-		for i in item.materials:
+		###
+		for m in item.materials:
 			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
-			newbutton.get_node("Icon").texture = Items.materiallist[i].icon
-			newbutton.get_node("Reqs").text = str(item.materials[i]) + '/' + str(ResourceScripts.game_res.materials[i])
-			newbutton.get_node("Name").text = i.capitalize()
-			newbutton.disabled = item.materials[i] > ResourceScripts.game_res.materials[i]
+			newbutton.get_node("Icon").texture = Items.materiallist[m].icon
+			newbutton.get_node("Reqs").text = str(item.materials[m]) + '/' + str(ResourceScripts.game_res.materials[m])
+			newbutton.get_node("Name").text = m.capitalize()
+			newbutton.disabled = item.materials[m] > ResourceScripts.game_res.materials[m]
+		for i in item.items:
+			var amount = ''
+			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
+			newbutton.get_node("Icon").texture = Items.itemlist[i].icon
+			for item_value in ResourceScripts.game_res.items.values():
+				if item_value.code == i:
+					amount = item_value.amount
+					break
+			newbutton.get_node("Reqs").text = str(item.items[i]) + '/' + str(amount)
+			newbutton.get_node("Name").text = str(Items.itemlist[i].name)
+#			newbutton.disabled = item.itemlist[i] > ResourceScripts.game_res.items[i]
 
 	else:
 		$NumberSelect/NumberConfirm.disabled = true

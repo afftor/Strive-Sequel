@@ -68,6 +68,9 @@ func add_close_button(scene, position = "snap"):
 
 
 func close_scene(scene):
+	if input_handler.get_spec_node(input_handler.NODE_CHARCREATE, null, false, false).is_visible():
+		scene.hide()
+		return
 	if scene == slavepanel:
 		scene.SummaryModule.selected_person = null
 	if window_button_connections.has(scene) && window_button_connections[scene] != null:

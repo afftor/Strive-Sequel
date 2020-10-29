@@ -531,7 +531,7 @@ size_flags_horizontal = 3
 
 [node name="Button" type="TextureButton" parent="CraftSelect/ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 476.0
+margin_right = 497.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 toggle_mode = true
@@ -939,9 +939,9 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MaterialSelect"]
-margin_left = 43.0
+margin_left = 46.0
 margin_top = 96.0
-margin_right = 532.0
+margin_right = 535.0
 margin_bottom = 682.0
 theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
