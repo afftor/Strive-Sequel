@@ -213,6 +213,10 @@ func use_social_skill(s_code, target):
 			'caster': targ_fin = targ_cast
 			'target': targ_fin = targ_targ
 			'all': targ_fin = targ_all
+			'area': 
+				targ_fin = targ_all.duplicate()
+				targ_fin.push_back(parent)
+				if target != null: targ_fin.push_back(target)
 		if i.damagestat == 'no_stat':
 			if template.has('process_no_stat'):
 				for h in targ_fin:
