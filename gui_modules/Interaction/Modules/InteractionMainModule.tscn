@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -63,24 +63,31 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=61]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Panels/panel_items.png" type="Texture" id=62]
 [ext_resource path="res://gui_modules/Universal/Scripts/ItemSelect.gd" type="Script" id=63]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=64]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=65]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_filter = true
+font_data = ExtResource( 64 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 8 )
+[sub_resource type="StyleBoxTexture" id=3]
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 62 )
 region_rect = Rect2( 0, 0, 446, 730 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 30
 font_data = ExtResource( 8 )
 
@@ -230,9 +237,12 @@ margin_bottom = 49.0
 hint_tooltip = "Continue (continuing actions are only half as effective)"
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 65 )
 custom_styles/hover = ExtResource( 32 )
 custom_styles/pressed = ExtResource( 44 )
 custom_styles/normal = ExtResource( 39 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "∞"
 __meta__ = {
@@ -451,7 +461,7 @@ margin_left = 5.0
 margin_top = 5.77391
 margin_right = 402.0
 margin_bottom = 45.7739
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -488,7 +498,7 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_styles/normal = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name"
@@ -803,7 +813,7 @@ margin_left = 7.0
 margin_top = 4.0
 margin_right = 239.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Actors"
 align = 1
@@ -817,7 +827,7 @@ margin_left = 250.0
 margin_top = 4.0
 margin_right = 497.0
 margin_bottom = 85.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Receivers"
 align = 1
@@ -852,6 +862,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "x20"
 
 [node name="Control" type="Control" parent="."]
+visible = false
 margin_left = -35.0
 margin_top = -15.0
 margin_right = 2034.0
@@ -902,7 +913,7 @@ margin_left = 459.0
 margin_top = 19.0
 margin_right = 903.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "Portrait"
 align = 1
@@ -1060,7 +1071,7 @@ margin_left = 15.0
 margin_top = 19.0
 margin_right = 459.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "List Of Characters"
 align = 1
@@ -1075,7 +1086,7 @@ margin_left = 460.0
 margin_top = 15.0
 margin_right = 906.0
 margin_bottom = 745.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
 script = ExtResource( 63 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1142,7 +1153,7 @@ stretch_mode = 6
 [node name="Label" type="Label" parent="ItemSelectSex"]
 margin_right = 446.0
 margin_bottom = 101.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.960784, 0.870588, 0.494118, 1 )
 text = "SELECTITEM"
 align = 1
