@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/CharacterCreation/SlaveCreationModule.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Middle_Panel_Main.tres" type="StyleBox" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=8]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=9]
 
 [node name="SlaveCreationModule" type="Panel"]
 anchor_right = 1.0
@@ -46,6 +47,7 @@ margin_left = 64.0
 margin_top = 396.0
 margin_right = 748.0
 margin_bottom = 794.0
+theme = ExtResource( 9 )
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
