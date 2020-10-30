@@ -238,7 +238,7 @@ func update():
 		$obedlabel.text = str(ceil(person.xp_module.predict_obed_time()))
 	else:
 		$obedlabel.text = "∞"
-	if person.xp_module.predict_obed_time() > 0 || person.get_stat('loyalty') >= 100 || person.get_stat('submission') >= 100:
+	if person.xp_module.predict_obed_time() > 0 || person.get_stat('loyalty') >= 100:
 		$obedlabel/icon.texture = images.icons.obed_good
 	else:
 		$obedlabel/icon.texture = images.icons.obed_bad

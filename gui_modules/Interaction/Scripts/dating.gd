@@ -26,7 +26,7 @@ onready var showntext = '' setget showtext_set,showtext_get
 var submodules = []
 
 var helpdescript = {
-	mood = '[center]Mood[/center]\nA high mood increases likeliness of positive outcome of intimate actions and provides Loyalty growth buff after session is finished.\nMood grows from positive interactions and decreases from negative interactions.',
+	mood = '[center]Mood[/center]\nA high mood increases likeliness of positive outcome of intimate actions and provides Loyalty after session is finished.\nMood grows from positive interactions and decreases from negative interactions.',
 	fear = '[center]Fear[/center]\nFear improves Authority and Obedience once date is over. \nFear grows from punishing actions, but when pushed too high will make partner breakdown and stop interaction. ',
 	#consent = "[center]Consent[/center]\nConsent will make character agree to perform lewder actions in a more exciting situtations. \nConsent is gained by willingly performing lewd actions.",
 	#authority = ""

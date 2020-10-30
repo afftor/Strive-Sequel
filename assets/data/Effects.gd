@@ -2896,7 +2896,7 @@ var effect_table = {
 		}]
 	},
 	
-	date_bonus = {
+	date_bonus = { #not used
 		type = 'temp_s',
 		duration = 36,
 		stack = 1,
@@ -2906,19 +2906,18 @@ var effect_table = {
 		sub_effects = ['t_date_bonus'],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Reward_with_sex 3.png",
-			description = "Loyalty gain increased by %d%%. Submission gain increased by %d%%. %d hours remains",
+			description = "Loyalty gain increased by %d%%. %d hours remains",
 			args = [{obj = 'parent_args', param = 1},{obj = 'parent_args', param = 0}, {obj = 'parent', param = 'remains'}],
 			limit = 1,
 			t_name = 'date_effect',
 			mansion_only = true,
 		}]
 	},
-	t_date_bonus = {
+	t_date_bonus = { #not used
 		type = 'static',
 		tags = [],
 		args = [{obj = 'parent_args', param = 0}, {obj = 'parent_args', param = 1}],
 		atomic = [
-			{type = 'stat_add_p', stat = 'submission_gain_mod', value = [['parent_args', 0], '*', 0.01]},
 			{type = 'stat_add_p', stat = 'loyalty_gain_mod', value = [['parent_args', 1], '*', 0.01]},
 		],
 		sub_effects = [],
