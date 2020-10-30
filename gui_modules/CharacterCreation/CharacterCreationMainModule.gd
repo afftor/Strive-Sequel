@@ -137,6 +137,8 @@ func select_age(value):
 func select_sex(value):
 	person.set_stat('sex', sexarray[value])
 	preservedsettings['sex'] = sexarray[value]
+	if preservedsettings.has("tits_size"):
+		preservedsettings.erase("tits_size")
 	rebuild_slave()
 
 
