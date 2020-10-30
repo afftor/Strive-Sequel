@@ -1230,23 +1230,24 @@ func play_unlock_class_anim(cls):
 
 
 func font_size_calculator(label): #, text, font):
-	var font = label.get_font("coustom_fonts/font")
+	var font = label.get_font("font")
 	var new_font = DynamicFont.new()
-	new_font.font_data = font
-	new_font.set("custom_fonts/font/size", 1)
-	var text_width = font.get_string_size(label.get_text()).x
-	var label_width = label.get_size().x
-	if text_width < label_width:
-		var new_size = new_font.size
-		new_font.set("custom_fonts/font/size", new_size)
-		var new_label = Label.new()
-		new_label.text = label.get_text()
-		new_label.add_font_override("custom_fonts/font", new_font)
-		font_size_calculator(new_label)
-	if text_width > label_width:
-		return new_font
-
-	print(new_font, ":", text_width, ":", label_width)
+	new_font.use_filter = true
+	new_font.font_data = load(font.get_font_data().get_font_path())
+	new_font.size = font.get_size()
 	print(new_font.get_size())
-	print(label.get_text())
-	# return new_font
+	print(new_font.get_font_data().get_font_path())
+	var text_width = new_font.get_string_size(label.get_text()).x
+	var label_width = label.get_size().x
+	var diff = 100 - (text_width / (label_width * 0.01))
+	if text_width >= label_width:
+		print(diff)
+		# new_font.size = 
+	# 	return new_font
+
+
+	return new_font
+
+
+
+

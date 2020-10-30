@@ -19,7 +19,7 @@ var selectedquest
 
 var city_options = {
 	location_purchase = "Buy Dungeon",
-	quest_board = "Notice Board",
+	quest_board = "Notice Board 1243812643812483",
 }
 
 var faction_actions = {
@@ -192,7 +192,7 @@ func build_area_menu(area_actions):
 		newbutton.get_node("Label").text = city_options[option]
 		newbutton.connect("toggled", self, option, [newbutton])
 		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
-		newbutton.get_node("Label").add_font_override("custom_fonts/font", font)
+		newbutton.get_node("Label").set("custom_fonts/font", font)
 	for action in area_actions:
 		if action.code == "slavemarket":
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
@@ -213,7 +213,7 @@ func build_area_menu(area_actions):
 		# 	newbutton.connect("pressed", self, "enter_church", [newbutton, action])
 		# newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = action.name
-		input_handler.font_size_calculator(newbutton.get_node("Label"))
+		# input_handler.font_size_calculator(newbutton.get_node("Label"))
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = "Shop"
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
