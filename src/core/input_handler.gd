@@ -1099,9 +1099,11 @@ func dir_contents(target):
 			elif !file_name in ['.','..', null] && dir.current_is_dir():
 				array += dir_contents(target + "/" + file_name)
 			file_name = dir.get_next()
+		array.sort()
 		return array
 	else:
 		print("An error occurred when trying to access the path.")
+
 
 func evaluate(input): #used to read strings as conditions when needed
 	#qickfix for moving charclass stat template
