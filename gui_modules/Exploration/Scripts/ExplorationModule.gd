@@ -191,10 +191,14 @@ func build_area_menu(area_actions):
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = city_options[option]
 		newbutton.connect("toggled", self, option, [newbutton])
+		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+		newbutton.get_node("Label").set("custom_fonts/font", font)
 	for action in area_actions:
 		if action.code == "slavemarket":
 			newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 			newbutton.connect("toggled", self, "faction_hire", [newbutton, action, "city_slaves"])
+			var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+			newbutton.get_node("Label").set("custom_fonts/font", font)
 		elif (
 			action.code == 'exotic_slave_trader'
 			&& int(ResourceScripts.game_globals.date) % 7 == 0
@@ -211,9 +215,12 @@ func build_area_menu(area_actions):
 		# 	newbutton.connect("pressed", self, "enter_church", [newbutton, action])
 		# newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = action.name
+		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+		newbutton.get_node("Label").set("custom_fonts/font", font)
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = "Shop"
 	newbutton.connect("toggled", self, "open_shop", [newbutton, "area"])
+
 
 	for i in active_area.events:
 		if globals.checkreqs(i.reqs) == false:
@@ -229,9 +236,12 @@ func build_area_menu(area_actions):
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
 		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
-		newbutton.get_node("Label").rect_position.x = 0
-		newbutton.get_node("Label").rect_size.x = 272
-		newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
+		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+		newbutton.get_node("Label").set("custom_fonts/font", font)
+		# newbutton.get_node("Label").rect_position.x = 0
+		# newbutton.get_node("Label").rect_size.x = 272
+		# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)
+		
 	
 
 

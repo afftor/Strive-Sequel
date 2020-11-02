@@ -414,7 +414,6 @@ visible = false
 margin_right = 272.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 266, 50 )
-rect_clip_content = true
 size_flags_horizontal = 2
 size_flags_vertical = 8
 toggle_mode = true
@@ -425,7 +424,8 @@ texture_disabled = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="AreaMenu/ScrollContainer/VBoxContainer/Button"]
 margin_right = 272.0
-margin_bottom = 58.0
+margin_bottom = 59.0
+rect_min_size = Vector2( 272, 59 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "111111111111111"
