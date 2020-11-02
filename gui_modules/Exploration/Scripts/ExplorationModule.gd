@@ -1187,7 +1187,7 @@ func faction_guild_shop(pressed, pressed_button, guild):
 			combat_skills = combat_skills.substr(0, combat_skills.length() - 2)
 		temptext += combat_skills
 		temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
-		globals.connecttexttooltip(newbutton, temptext)
+		globals.connecttexttooltip(newbutton, temptext, true)
 	$GuildShop/FactionPoints.text = "x " + str(active_faction.reputation)
 	$GuildShop/GuildName.text = str(active_faction.name)
 	if pressed && !$GuildShop.is_visible():

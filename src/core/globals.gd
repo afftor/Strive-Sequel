@@ -191,14 +191,14 @@ func AddItemToInventory(item, dont_duplicate = true):
 func get_item_id_by_code(itembase):
 	return ResourceScripts.game_res.get_item_id_by_code(itembase)
 
-func connecttexttooltip(node, text):
+func connecttexttooltip(node, text, move_right = false):
 	if node.is_connected("mouse_entered",self,'showtexttooltip'):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
-	node.connect("mouse_entered",self,'showtexttooltip', [node, text])
+	node.connect("mouse_entered",self,'showtexttooltip', [node, text, move_right])
 
-func showtexttooltip(node, text):
+func showtexttooltip(node, text, move_right):
 	var texttooltip = input_handler.get_spec_node(input_handler.NODE_TEXTTOOLTIP) #input_handler.GetTextTooltip()
-	texttooltip.showup(node, text)
+	texttooltip.showup(node, text, move_right)
 
 func connectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):

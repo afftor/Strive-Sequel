@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/panel_item_pressed.png" type="Texture" id=8]
-[ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/mask_inventory_gear.png" type="Texture" id=9]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=11]
 
@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="BodyMask" type="Light2D" parent="."]
 light_mask = 2
-position = Vector2( 355.568, 612.451 )
+position = Vector2( 345.568, 512.451 )
 z_as_relative = false
 texture = ExtResource( 9 )
 mode = 3
