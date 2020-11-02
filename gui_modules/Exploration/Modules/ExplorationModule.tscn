@@ -122,7 +122,7 @@
 size = 30
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 use_filter = true
 font_data = ExtResource( 10 )
@@ -410,6 +410,7 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="AreaMenu/ScrollContainer/VBoxContainer"]
+visible = false
 margin_right = 272.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 266, 50 )
@@ -425,7 +426,7 @@ texture_disabled = ExtResource( 11 )
 margin_right = 272.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 272, 59 )
-custom_fonts/font = SubResource( 24 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "111111111111111"
 align = 1

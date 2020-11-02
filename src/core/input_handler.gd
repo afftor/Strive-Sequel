@@ -1237,16 +1237,15 @@ func font_size_calculator(label): #, text, font):
 	new_font.use_filter = true
 	new_font.font_data = load(font.get_font_data().get_font_path())
 	new_font.size = font.get_size()
-	print(new_font.get_size())
-	print(new_font.get_font_data().get_font_path())
 	var text_width = new_font.get_string_size(label.get_text()).x
 	var label_width = label.get_size().x
-	var diff = 100 - (text_width / (label_width * 0.01))
+	var diff = (text_width / (label_width * 0.01)) - 100
 	if text_width >= label_width:
-		print(diff)
-		# new_font.size = 
-	# 	return new_font
-
+		var old_size = new_font.get_size()
+		# TODO Check if the new font size needs adjustments in case of magic number (12)
+		var new_size = round((old_size - (old_size * 0.01 * (diff + 12))))
+		new_font.size = new_size
+		new_font.size *= round(diff * 0.01)
 
 	return new_font
 
