@@ -52,8 +52,10 @@ func showup(node, text, move_right = false):
 	var screen = get_viewport().get_visible_rect()
 	if move_right:
 		pos = Vector2(pos.end.x + 10, pos.position.y)
+		set_global_position(pos)
 	else:
 		pos = Vector2(pos.position.x, pos.end.y + 10)
+		set_global_position(pos)
 		if get_rect().end.x >= screen.size.x:
 			rect_global_position.x -= get_rect().end.x - screen.size.x
 		if get_rect().end.y >= screen.size.y:
@@ -61,7 +63,6 @@ func showup(node, text, move_right = false):
 		if get_rect().position.y < 0:
 			rect_global_position.y = 0
 			rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
-	set_global_position(pos)
 	prevnode = parentnode
 
 func turnoff():
