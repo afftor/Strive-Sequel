@@ -1084,7 +1084,11 @@ func common_effects(effects):
 			'make_loot':
 				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
 			'open_loot':
-				input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+				# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+					var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
+					if !gui_controller.windows_opened.has(loot_win):
+						gui_controller.windows_opened.append(loot_win)
+					loot_win.open(input_handler.scene_loot)
 			'make_scene_character':
 				for k in i.value:
 					var newcharacter
