@@ -59,6 +59,8 @@ func update_buttons():
 		button.pressed = (button.get_meta("state") == get_parent().char_module_state)
 
 func update():
+	if get_parent().char_module_state == "default" && gui_controller.windows_opened.size() == 0:
+		return
 	if gui_controller.windows_opened.size() == 0:
 		get_parent().set_state("default")
 	update_buttons()
