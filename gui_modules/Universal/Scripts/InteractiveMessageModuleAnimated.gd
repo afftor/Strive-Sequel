@@ -499,9 +499,13 @@ func set_baby_name(text):
 	close()
 
 func open_chest():
-	# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 	var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
-	loot_win.get_node("AnimationPlayer").play("Loot")
+	if !gui_controller.windows_opened.has(loot_win):
+		gui_controller.windows_opened.append(loot_win)
+	loot_win.open(input_handler.scene_loot)
+	# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+	# var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
+	# loot_win.get_node("AnimationPlayer").play("Loot")
 	#input_handler.get_loot_node().open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 	close()
 
