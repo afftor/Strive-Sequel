@@ -141,6 +141,7 @@ func rebuild_recipe_list():
 		newbutton.get_node('icon').texture = item.icon
 		
 		if i.crafttype == 'basic':
+			print("here")
 			for k in i.items:
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var recipeitem = Items.itemlist[k]

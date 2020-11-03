@@ -292,6 +292,8 @@ var itemparts = {}
 var chosenpartbutton
 
 func selectcraftitem(item):
+	globals.disconnect_text_tooltip($MaterialSetupPanel/EndItemFrame)
+	globals.disconnect_temp_item_tooltip($MaterialSetupPanel/EndItemFrame)
 	itemparts = {}
 	update_buttons(item)
 	checkcreatingitem(item.code)
@@ -311,8 +313,10 @@ func selectcraftitem(item):
 		var baseitem
 		if Items.materiallist.has(item.resultitem):
 			baseitem = Items.materiallist[item.resultitem]
-		else:
+			globals.connecttempitemtooltip($MaterialSetupPanel/EndItemFrame, baseitem, 'material')
+		elif item.crafttype == 'basic' && item.crafttype != 'modular':
 			baseitem = Items.itemlist[item.resultitem]
+			globals.connecttempitemtooltip($MaterialSetupPanel/EndItemFrame, baseitem, 'geartemplate')
 		$NumberSelect/NumberConfirm.disabled = false
 		$MaterialSetupPanel/EndItemFrame/EndItem.material = null
 		$MaterialSetupPanel/EndItemFrame/EndItem.texture = baseitem.icon

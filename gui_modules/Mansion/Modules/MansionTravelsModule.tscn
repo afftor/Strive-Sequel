@@ -196,7 +196,7 @@ __meta__ = {
 margin_left = 404.0
 margin_top = 72.0
 margin_right = 696.0
-margin_bottom = 244.0
+margin_bottom = 193.0
 theme = ExtResource( 5 )
 custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
@@ -208,9 +208,9 @@ __meta__ = {
 
 [node name="DescriptText2" type="RichTextLabel" parent="."]
 margin_left = 403.0
-margin_top = 259.81
+margin_top = 193.0
 margin_right = 702.0
-margin_bottom = 326.81
+margin_bottom = 260.0
 theme = ExtResource( 5 )
 custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
