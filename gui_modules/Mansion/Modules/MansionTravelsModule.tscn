@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -30,7 +30,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Buttons/button_return_hover.png" type="Texture" id=28]
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Buttons/button_return.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/tab_travel.png" type="Texture" id=30]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=31]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
@@ -54,6 +53,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 24
+use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
@@ -196,7 +196,7 @@ __meta__ = {
 margin_left = 404.0
 margin_top = 72.0
 margin_right = 696.0
-margin_bottom = 193.0
+margin_bottom = 227.0
 theme = ExtResource( 5 )
 custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
@@ -208,9 +208,9 @@ __meta__ = {
 
 [node name="DescriptText2" type="RichTextLabel" parent="."]
 margin_left = 403.0
-margin_top = 193.0
+margin_top = 234.0
 margin_right = 702.0
-margin_bottom = 260.0
+margin_bottom = 318.0
 theme = ExtResource( 5 )
 custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
@@ -221,10 +221,10 @@ __meta__ = {
 }
 
 [node name="TravelConfirmButton" type="Button" parent="."]
-margin_left = 467.0
-margin_top = 329.0
-margin_right = 690.0
-margin_bottom = 371.0
+margin_left = 426.161
+margin_top = 330.0
+margin_right = 556.161
+margin_bottom = 372.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 14 )
 custom_fonts/font = SubResource( 6 )
@@ -251,10 +251,10 @@ custom_colors/font_color_pressed = Color( 0.317647, 0.937255, 0.517647, 1 )
 text = "Cancel"
 
 [node name="TravelJobButton" type="TextureButton" parent="."]
-margin_left = 408.0
-margin_top = 329.0
-margin_right = 462.0
-margin_bottom = 369.0
+margin_left = 368.0
+margin_top = 330.0
+margin_right = 422.0
+margin_bottom = 370.0
 rect_min_size = Vector2( 0, 40 )
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 22 )
@@ -469,10 +469,15 @@ __meta__ = {
 }
 
 [node name="Forget" type="Button" parent="."]
-visible = false
-margin_left = 408.0
-margin_top = 261.0
-margin_right = 690.0
-margin_bottom = 313.0
-theme = ExtResource( 31 )
-text = "Forget Location"
+margin_left = 560.792
+margin_top = 330.0
+margin_right = 690.792
+margin_bottom = 372.0
+theme = ExtResource( 14 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Forget"
+__meta__ = {
+"_edit_use_anchors_": false
+}
