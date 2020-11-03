@@ -1244,7 +1244,6 @@ func font_size_calculator(label): #, text, font):
 	var diff = (text_width / (label_width * 0.01)) - 100
 	if text_width >= (label_width - PADDINGS):
 		var old_size = new_font.get_size()
-		# TODO Check if the new font size needs adjustments in case of magic number (12)
 		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
 		new_font.size = new_size
 
