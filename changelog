@@ -1,3 +1,5 @@
+Fixed force opening mimic sometimes causing crash
+More fixed GUI issues
 0.3.2a
 Added some additional clarity for upgrade material tooltip
 Fixed repeatability of church quest

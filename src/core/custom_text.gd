@@ -38,14 +38,21 @@ func lock_difficulty(value):
 		
 	return text
 
-func transform_number(number):
-	var magnitude = 0
-	var array = ['', 'K', 'M']
-	while abs(number) >= 1000:
-		magnitude += 1
-		number /= 1000.0
-	
-	return str(stepify(number, 0.1)) + array[magnitude]# % (num,[magnitude])
+var magLabels = ['', 'K', 'M', 'B']
+func transform_number(num):
+	if num < 10000:
+		return str(int(num))
+	var mag = min( int( log(num)/log(10) - 1) / 3, magLabels.size() - 1)
+	return str( int(num) / int(pow(1000, mag)) ) + magLabels[mag]
+
+#func transform_number(number):
+#	var magnitude = 0
+#	var array = ['', 'K', 'M']
+#	while abs(number) >= 1000:
+#		magnitude += 1
+#		number /= 1000.0
+#
+#	return str(stepify(number, 0.1)) + array[magnitude]# % (num,[magnitude])
 
 func RomanNumberConvert(value):
 	var rval = ''

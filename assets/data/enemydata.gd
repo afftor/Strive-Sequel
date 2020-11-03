@@ -1088,7 +1088,7 @@ var locks_data = { #makes locks to lockpick for related chests
 	medium_chest_cosmetics = {locks = [['normal', 1],['none', 0.2],['mimic',0.2],['mimic_erotic',0.2]], difficulty = [20,50]},
 	medium_boss_chest = {locks = [['normal', 1]], difficulty = [20,55]},
 	
-	test_chest_mimic = {locks = [['mimic', 1]], difficulty = [100,100]},
+	test_chest_mimic = {locks = [['mimic_erotic', 1]], difficulty = [1,1]},
 	}
 
 
