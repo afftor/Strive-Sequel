@@ -227,6 +227,8 @@ func build_area_menu(area_actions):
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 		newbutton.get_node("Label").text = i.text
+		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+		newbutton.get_node("Label").set("custom_fonts/font", font)
 		if i.args.keys().has("oneshot") && !i.args.oneshot:
 			newbutton.connect("pressed", input_handler, "interactive_message", [i.code, '', i.args])
 		else:
@@ -236,8 +238,7 @@ func build_area_menu(area_actions):
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
 		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
-		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
-		newbutton.get_node("Label").set("custom_fonts/font", font)
+
 		# newbutton.get_node("Label").rect_position.x = 0
 		# newbutton.get_node("Label").rect_size.x = 272
 		# newbutton.get_node("Label").get("custom_fonts/font").set_size(24)

@@ -1231,6 +1231,8 @@ func play_unlock_class_anim(cls):
 	get_tree().get_root().set_disable_input(false)
 
 
+const PADDINGS = 25
+
 func font_size_calculator(label): #, text, font):
 	var font = label.get_font("font")
 	var new_font = DynamicFont.new()
@@ -1239,13 +1241,13 @@ func font_size_calculator(label): #, text, font):
 	new_font.size = font.get_size()
 	var text_width = new_font.get_string_size(label.get_text()).x
 	var label_width = label.get_size().x
+	print(label.get_text(), " : ", text_width, " : ", label_width)
 	var diff = (text_width / (label_width * 0.01)) - 100
-	if text_width >= label_width:
+	if text_width >= (label_width - PADDINGS):
 		var old_size = new_font.get_size()
 		# TODO Check if the new font size needs adjustments in case of magic number (12)
-		var new_size = round((old_size - (old_size * 0.01 * (diff + 18))))
+		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
 		new_font.size = new_size
-		new_font.size *= round(diff * 0.01)
 
 	return new_font
 
