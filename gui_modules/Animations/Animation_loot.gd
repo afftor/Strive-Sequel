@@ -4,6 +4,7 @@ extends Control
 var lootdata
 
 func open(loot): #, message):
+	show()
 	$AnimationPlayer.play("Loot")
 
 	lootdata = loot
