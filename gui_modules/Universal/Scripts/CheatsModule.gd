@@ -60,6 +60,8 @@ func list_cheats():
 		newbutton.set_meta("cheat", cheat)
 		if cheat == "instant_upgrades":
 			newbutton.get_node("Label").text = "Unlock All Upgrades"
+		var font = input_handler.font_size_calculator(newbutton.get_node("Label"))
+		newbutton.get_node("Label").set("custom_fonts/font", font)
 		
 		
 func set_cheat(cheat = null, btn = null):
@@ -101,7 +103,9 @@ func list_character_cheats(person, button):
 		var target_func = cheat
 		var newbutton = input_handler.DuplicateContainerTemplate(RightSide)
 		newbutton.get_node("Name").text = cheat_dict[cheat]
-		newbutton.connect("pressed", self, target_func)
+		newbutton.connect("pressed", self, target_func)		
+		var font = input_handler.font_size_calculator(newbutton.get_node("Name"))
+		newbutton.get_node("Name").set("custom_fonts/font", font)
 	for btn in CharList.get_children():
 		if btn.name == "Button":
 			continue
