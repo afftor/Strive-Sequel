@@ -69,7 +69,11 @@ func add_close_button(scene, position = "snap"):
 
 func close_scene(scene):
 	if input_handler.get_spec_node(input_handler.NODE_CHARCREATE, null, false, false).is_visible():
+		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, null, false, false).hide()
 		scene.hide()
+		if previous_screen != null && (previous_screen in [mansion, slavepanel]):
+			current_screen = previous_screen
+		update_modules()
 		return
 	if scene == slavepanel:
 		scene.SummaryModule.selected_person = null
