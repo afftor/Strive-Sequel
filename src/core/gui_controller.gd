@@ -73,7 +73,8 @@ func close_scene(scene):
 		scene.hide()
 		if previous_screen != null && (previous_screen in [mansion, slavepanel]):
 			current_screen = previous_screen
-		update_modules()
+		if !current_screen == null:
+			update_modules()
 		return
 	if scene == slavepanel:
 		scene.SummaryModule.selected_person = null
