@@ -191,6 +191,11 @@ func AddItemToInventory(item, dont_duplicate = true):
 func get_item_id_by_code(itembase):
 	return ResourceScripts.game_res.get_item_id_by_code(itembase)
 
+
+func disconnect_text_tooltip(node):
+	if node.is_connected("mouse_entered",self,'showtexttooltip'):
+		node.disconnect("mouse_entered",self,'showtexttooltip')
+
 func connecttexttooltip(node, text, move_right = false):
 	if node.is_connected("mouse_entered",self,'showtexttooltip'):
 		node.disconnect("mouse_entered",self,'showtexttooltip')
@@ -204,6 +209,11 @@ func connectitemtooltip(node, item):
 	if node.is_connected("mouse_entered",item,'tooltip'):
 		node.disconnect("mouse_entered",item,'tooltip')
 	node.connect("mouse_entered",item,'tooltip', [node])
+
+
+func disconnect_temp_item_tooltip(node):
+	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
+		node.disconnect("mouse_entered",self,'tempitemtooltip')
 
 func connecttempitemtooltip(node, item, mode):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
@@ -1074,7 +1084,11 @@ func common_effects(effects):
 			'make_loot':
 				input_handler.scene_loot = ResourceScripts.world_gen.make_chest_loot(input_handler.weightedrandom(i.pool))
 			'open_loot':
-				input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+				# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
+					var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
+					if !gui_controller.windows_opened.has(loot_win):
+						gui_controller.windows_opened.append(loot_win)
+					loot_win.open(input_handler.scene_loot)
 			'make_scene_character':
 				for k in i.value:
 					var newcharacter
@@ -1103,6 +1117,10 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
+			'update_location':
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				input_handler.exploration_node.open_location(input_handler.active_location)	
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':

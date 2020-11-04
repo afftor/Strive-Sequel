@@ -16,9 +16,9 @@ var inventory_scene
 
 func _ready():
 	gui_controller.add_close_button(self, "add_offset")
-	for module in self.get_children():
-		module.update()
-	update()
+#	for module in self.get_children():
+#		module.update()
+#	update()
 
 
 func update():

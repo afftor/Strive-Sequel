@@ -288,7 +288,7 @@ var data = {
 			tags = [],
 			text = "XARIENCOUNTER7_3", reqs = [{type = 'master_check', value = [{code = 'sex', operant = 'eq', value = 'female'}]}],
 			options = [
-				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}]},
+				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage1'}, {code = "update_location"}]},
 			]
 		},
 			{image = null,
@@ -296,7 +296,7 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = "XARIENCOUNTER7_4", reqs = [],
 			options = [
-				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = []},
+				{code = 'close', text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = "update_location"}]},
 			]},
 		],
 	},

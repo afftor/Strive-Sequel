@@ -11,6 +11,7 @@ func _ready():
 	$DestinationButton.connect("item_selected", self, 'select_destination_area')
 	$TravelConfirmButton.connect("pressed", self, "travel_confirm")
 	$TravelCancelButton.connect("pressed", self, "travel_update")
+	$TravelJobButton.connect("pressed", get_parent(), "mansion_state_set", ["occupation"])
 	$LocationListButton.connect("toggled", self, "show_location_list")
 	$Forget.connect("pressed", self, "forget_location")
 	globals.connect("hour_tick", self, "open_character_dislocation")

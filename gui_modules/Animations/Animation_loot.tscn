@@ -1,0 +1,283 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://gui_modules/Animations/Animation_loot.gd" type="Script" id=2]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/panel_loot_bottom.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/panel_loot_upper.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/glow_loot_square.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/Loot/frame_loot_square.png" type="Texture" id=7]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Loot"
+length = 5.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect3:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.199606 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.833333, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Label:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.166667, 0.366667, 0.433333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "LootButton"
+length = 4.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Box:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Frame:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1.23333, 1.73333, 2.13333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Glow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.023 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Box:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.528 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.056, 2.046 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Label:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.056, 2.079 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="LootWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 220.831, 339.983, 466.015 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 763.996, 1146.99, 891.695 ]
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Loot = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 686.033
+margin_top = 269.131
+margin_right = 1234.03
+margin_bottom = 924.131
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = 685.971
+margin_top = 173.019
+margin_right = 1233.97
+margin_bottom = 269.019
+rect_pivot_offset = Vector2( 274.271, 47.7916 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 823.402
+margin_top = 185.332
+margin_right = 1095.4
+margin_bottom = 256.332
+rect_pivot_offset = Vector2( 136.049, 35.4892 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "REWARD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 780.0
+margin_top = 340.0
+margin_right = 1158.0
+margin_bottom = 809.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+columns = 3
+
+[node name="Button" type="Control" parent="ScrollContainer/GridContainer"]
+visible = false
+margin_right = 120.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 539.897 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 960.011 ]
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/GridContainer/Button"]
+autoplay = "LootButton"
+method_call_mode = 1
+anims/LootButton = SubResource( 3 )
+
+[node name="Glow" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 123.0
+margin_bottom = 122.0
+rect_pivot_offset = Vector2( 59, 59 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 112.0
+margin_bottom = 110.0
+rect_pivot_offset = Vector2( 50, 50 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Frame" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+self_modulate = Color( 1, 1, 1, 0.249997 )
+margin_left = 10.0
+margin_top = 9.0
+margin_right = 112.0
+margin_bottom = 111.0
+rect_pivot_offset = Vector2( 51, 51 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/GridContainer/Button"]
+self_modulate = Color( 1, 1, 1, 0.987203 )
+margin_left = 15.0
+margin_top = 13.0
+margin_right = 109.0
+margin_bottom = 107.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/Button"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 15.0
+margin_top = 72.0
+margin_right = 109.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 8 )
+align = 1
+valign = 1

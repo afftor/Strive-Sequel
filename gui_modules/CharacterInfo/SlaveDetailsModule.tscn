@@ -298,11 +298,13 @@ margin_left = 412.0
 margin_top = 190.0
 margin_right = 910.0
 margin_bottom = 760.0
+theme = ExtResource( 3 )
 custom_styles/focus = ExtResource( 16 )
 custom_styles/normal = ExtResource( 16 )
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Text Edit"
+wrap_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
