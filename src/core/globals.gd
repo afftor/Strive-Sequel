@@ -1117,6 +1117,10 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
+			'update_location':
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				input_handler.exploration_node.open_location(input_handler.active_location)	
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':
