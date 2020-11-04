@@ -161,13 +161,14 @@ __meta__ = {
 }
 
 [node name="sceneeffects" type="RichTextLabel" parent="Panel"]
-margin_left = 39.0
-margin_top = 765.0
-margin_right = 1389.0
-margin_bottom = 1046.0
+margin_left = 41.2721
+margin_top = 767.272
+margin_right = 1391.27
+margin_bottom = 1048.27
 rect_min_size = Vector2( 1200, 250 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+theme = ExtResource( 3 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 meta_underlined = false
