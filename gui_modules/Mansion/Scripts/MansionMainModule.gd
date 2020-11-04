@@ -480,12 +480,13 @@ func test_mode():
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.add_stat('charm', 100)
-		character.add_stat('physics', 100)
+		character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('hair_length','bald')
 		character.unlock_class("master")
 		character.unlock_class("caster")
 		character.unlock_class("apprentice")
+		character.unlock_class("thief")
 		# character.unlock_class("druid")
 		# character.unlock_class("assassin")
 		# character.unlock_class("ruler")
@@ -495,8 +496,8 @@ func test_mode():
 		# character.unlock_class("thief")
 		# character.unlock_class("engineer")
 		# character.unlock_class("scholar")
-		#character.travel.location = 'L4'
-		#character.travel.area = 'plains'
+		character.travel.location = 'L4'
+		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
 		#variables.dungeon_encounter_chance = 1
@@ -671,7 +672,7 @@ func test_mode():
 		)
 		globals.AddItemToInventory(globals.CreateGearItem("club", {WeaponMace = 'stone'}))
 		globals.AddItemToInventory(
-			globals.CreateGearItem("spear", {WeaponHandle = 'wood', Blade = 'obsidian'})
+			globals.CreateGearItem("dagger", {WeaponHandle = 'wood', Blade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
@@ -703,7 +704,6 @@ func test_mode():
 		# ResourceScripts.game_progress.active_quests.append(
 		# 	{code = 'aliron_church_quest', stage = 'start'}
 		# )
-		# input_handler.interactive_message("ginny_visit", '',{})
 		
 		character.mp = 10
 		var tmp = {}
@@ -713,6 +713,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
+		input_handler.interactive_message("dungeon_find_chest_easy", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 1000

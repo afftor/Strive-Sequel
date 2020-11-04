@@ -98,6 +98,7 @@ func remove_class(prof):
 		if prof_links['s_' + i].size() == 1:
 			if prof_links['s_' + i][0] == prof.code:
 				parent.unlearn_skill(i)
+				prof_links.erase('s_' + i)
 			else:
 				print('WARNING! error in prof dependancy')
 		else:
@@ -106,6 +107,7 @@ func remove_class(prof):
 		if prof_links['s_' + i].size() == 1:
 			if prof_links['s_' + i][0] == prof.code:
 				parent.unlearn_c_skill(i)
+				prof_links.erase('s_' + i)
 			else:
 				print('WARNING! error in prof dependancy')
 		else:
@@ -114,6 +116,7 @@ func remove_class(prof):
 		if prof_links['t_' + i].size() == 1:
 			if prof_links['t_' + i][0] == prof.code:
 				parent.remove_trait(i)
+				prof_links.erase('t_' + i)
 			else:
 				print('WARNING! error in prof dependancy')
 		else:
