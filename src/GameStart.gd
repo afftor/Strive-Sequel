@@ -14,7 +14,7 @@ func start():
 	for i in data.upgrades:
 		ResourceScripts.game_res.upgrades[i] = data.upgrades[i]
 	
-	input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
+	gui_controller.char_creation = input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['master'])
 	yield(input_handler, 'CharacterCreated')
 	if data.code != 'default':
 		ResourceScripts.game_progress.mainprogress = 1

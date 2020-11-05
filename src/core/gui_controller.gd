@@ -13,6 +13,7 @@ var sex_panel
 var date_panel
 var mansion_tutorial_panel
 var cheat_panel
+var char_creation
 
 
 var current_screen
@@ -68,10 +69,10 @@ func add_close_button(scene, position = "snap"):
 
 
 func close_scene(scene):
-	if input_handler.get_spec_node(input_handler.NODE_CHARCREATE, null, false, false).is_visible():
-		input_handler.get_spec_node(input_handler.NODE_CHARCREATE, null, false, false).hide()
+	if char_creation.is_visible():
+		char_creation.hide()
 		scene.hide()
-		if previous_screen != null && (previous_screen in [mansion, slavepanel]):
+		if previous_screen != null && (previous_screen in [mansion, slavepanel]) && !current_screen == exploration:
 			current_screen = previous_screen
 		if !current_screen == null:
 			update_modules()

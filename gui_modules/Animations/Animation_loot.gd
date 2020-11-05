@@ -3,6 +3,9 @@ extends Control
 
 var lootdata
 
+func _ready():
+	$Confirm.connect("pressed", gui_controller, "close_scene", [self])
+
 func open(loot): #, message):
 	show()
 	$AnimationPlayer.play("Loot")
