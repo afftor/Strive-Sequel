@@ -214,16 +214,16 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 780.0
+margin_left = 737.0
 margin_top = 340.0
-margin_right = 1158.0
+margin_right = 1189.0
 margin_bottom = 809.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-columns = 3
+columns = 4
 
 [node name="Button" type="Control" parent="ScrollContainer/GridContainer"]
 visible = false
@@ -298,9 +298,9 @@ align = 1
 valign = 1
 
 [node name="Confirm" type="TextureButton" parent="."]
-margin_left = 869.239
+margin_left = 853.239
 margin_top = 840.355
-margin_right = 1079.24
+margin_right = 1063.24
 margin_bottom = 898.355
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 11 )
