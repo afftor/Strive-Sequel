@@ -710,10 +710,7 @@ func enter_level(level, skip_to_end = false):
 
 		input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 		var newbutton
-		if (
-			active_location.progress.level == level
-			&& active_location.progress.stage < active_location.levels["L" + str(level)].stages
-		):
+		if (active_location.progress.level == level && active_location.progress.stage < active_location.levels["L" + str(level)].stages):
 			newbutton = input_handler.DuplicateContainerTemplate(
 				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 			)
