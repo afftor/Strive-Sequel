@@ -69,7 +69,7 @@ func add_close_button(scene, position = "snap"):
 
 
 func close_scene(scene):
-	if char_creation.is_visible():
+	if char_creation != null && char_creation.is_visible():
 		char_creation.hide()
 		scene.hide()
 		if previous_screen != null && (previous_screen in [mansion, slavepanel]) && !current_screen == exploration:
