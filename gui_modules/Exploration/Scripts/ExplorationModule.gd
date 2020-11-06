@@ -700,40 +700,41 @@ func enter_level(level, skip_to_end = false):
 		active_location.progress.level = current_level
 		current_stage = active_location.levels["L" + str(active_location.levels.size())].stages - 1
 		active_location.progress.stage = current_stage
-	if active_location.progress.level < level:
-		active_location.progress.level = level
-		active_location.progress.stage = 0
+	if level != null:
+		if active_location.progress.level < level:
+			active_location.progress.level = level
+			active_location.progress.stage = 0
 
-	if check_events('enter_level') == true:
-		yield(input_handler, 'EventFinished')
+		if check_events('enter_level') == true:
+			yield(input_handler, 'EventFinished')
 
-	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-	var newbutton
-	if (
-		active_location.progress.level == level
-		&& active_location.progress.stage < active_location.levels["L" + str(level)].stages
-	):
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-		)
-		newbutton.text = 'Advance'
-		newbutton.connect("pressed", self, "area_advance", ['advance'])
-#	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
-#		if active_location.levels.has("L"+str(level + 1)) == true:
-#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Move to the next level'
-#			newbutton.connect("pressed",self,"enter_level",[level+1])
-#		else:
-#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Forget Location'
-#			newbutton.connect("pressed",self,"clear_dungeon")
+		input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+		var newbutton
+		if (
+			active_location.progress.level == level
+			&& active_location.progress.stage < active_location.levels["L" + str(level)].stages
+		):
+			newbutton = input_handler.DuplicateContainerTemplate(
+				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+			)
+			newbutton.text = 'Advance'
+			newbutton.connect("pressed", self, "area_advance", ['advance'])
+	#	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
+	#		if active_location.levels.has("L"+str(level + 1)) == true:
+	#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	#			newbutton.text = 'Move to the next level'
+	#			newbutton.connect("pressed",self,"enter_level",[level+1])
+	#		else:
+	#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	#			newbutton.text = 'Forget Location'
+	#			newbutton.connect("pressed",self,"clear_dungeon")
 
-	if ResourceScripts.game_progress.allow_skip_fights:
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-		)
-		newbutton.text = 'Skip to last room'
-		newbutton.connect("pressed", self, "enter_level", [level, true])
+		if ResourceScripts.game_progress.allow_skip_fights:
+			newbutton = input_handler.DuplicateContainerTemplate(
+				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+			)
+			newbutton.text = 'Skip to last room'
+			newbutton.connect("pressed", self, "enter_level", [level, true])
 
 	build_location_group()
 	build_location_description()
