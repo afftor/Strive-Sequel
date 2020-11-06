@@ -25,7 +25,7 @@ func _ready():
 	$TimeNode/lessturn.connect("pressed", self, "decrease_turns")
 	$TimeNode/moreturn.connect("pressed", self, "increase_turns")
 
-	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD"))
+	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
 	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD"))
 	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
@@ -38,6 +38,7 @@ func _process(delta):
 		return
 	$TimeNode/gold.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.money)
 	$TimeNode/food.text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.get_food())
+	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
 		# + " - "
 		# + str(ResourceScripts.game_party.get_food_consumption())
 	# )
