@@ -794,7 +794,14 @@ func tick():
 #		add_stat('submission', -(12.0-1*get_stat('timid_factor'))/24 * get_stat('submission_degrade_mod'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
+		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2 and !check_trait('breeder'):
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
+			parent.apply_effect(effects_pool.add_effect(eff))
+		if statlist.pregnancy.duration * 3 <= variables.pregduration:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
+			parent.apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration == 0:
+			parent.remove_all_temp_effects_tag('pregnant')
 			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent})
 	
 

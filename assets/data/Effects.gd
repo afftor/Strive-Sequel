@@ -2942,7 +2942,24 @@ var effect_table = {
 			t_name = 'resist_state',
 		}]
 	},
-
+	e_pregnancy = {
+		type = 'temp_s',
+		stack = 2,
+		name = 'pregnancy',
+		tags = ['pregnant'],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = -10},
+			{type = 'stat_add', stat = 'physics_bonus', value = -20},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Shackle.png",
+			description = "Is pregnant. Stats decreased",
+			args = [],
+			limit = 1,
+			t_name = 'preg',
+		}]
+	},
 };
 
 var atomic = {
