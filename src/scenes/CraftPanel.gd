@@ -225,7 +225,7 @@ var partdict
 
 func confirm_cancel_craft(entry):
 	cancelentry = entry
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'cancel_item_craft', 'Cancel this task?'])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_item_craft', 'Cancel this task?'])
 	#input_handler.ShowConfirmPanel(self, 'cancel_item_craft', 'Cancel this task?')
 
 func cancel_item_craft():

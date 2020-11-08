@@ -743,7 +743,7 @@ var active_skill
 
 func clear_dungeon():
 	input_handler.get_spec_node(
-		input_handler.NODE_CONFIRMPANEL,
+		input_handler.NODE_YESNOPANEL,
 		[
 			self,
 			'clear_dungeon_confirm',
@@ -859,7 +859,7 @@ func build_location_group():
 var selectedperson
 func return_character(character):
 	selectedperson = character
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
 
 
 func return_character_confirm():
@@ -868,7 +868,7 @@ func return_character_confirm():
 	build_location_group()
 
 func return_all_to_mansion():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_all_to_mansion_confirm', "Return all character back to Mansion?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_all_to_mansion_confirm', "Return all character back to Mansion?"])
 
 
 func return_all_to_mansion_confirm():
@@ -1240,7 +1240,7 @@ func buy_item_confirm(amount):
 		item_name = item_to_buy
 		price = active_faction.reputation_shop.classes[item_to_buy]
 	var text = "Are you sure you want to spend " + str(price) + " reputation points " + "for " + str(item_name)  + "?"
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL,
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL,
 	[
 		self,
 		'confirm_buy_item',

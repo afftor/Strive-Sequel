@@ -70,7 +70,7 @@ func LoadPanelOpen():
 
 func PressLoadGame(savename):
 	$LineEdit.text = savename
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
 	#input_handler.ShowConfirmPanel(self, 'LoadGame',tr("LOADCONFIRM"))
 
 func PressSaveGame(savename):
@@ -84,14 +84,14 @@ func PressSaveGame(savename):
 	
 	var file = File.new()
 	if file.file_exists(variables.userfolder + 'saves/' + savename + '.sav'):
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveGame', tr("OVERWRITECONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'SaveGame', tr("OVERWRITECONFIRM")])
 		#input_handler.ShowConfirmPanel(self, 'SaveGame',tr("OVERWRITECONFIRM"))
 	else:
 		SaveGame()
 
 func DeleteSaveGame(savename):
 	$LineEdit.text = savename
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteSave', tr("DELETECONFIRM")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'DeleteSave', tr("DELETECONFIRM")])
 	#input_handler.ShowConfirmPanel(self, 'DeleteSave',tr("DELETECONFIRM"))
 
 func DeleteSave():
