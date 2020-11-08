@@ -4,9 +4,9 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=4]
-[ext_resource path="res://src/scenes/confirmpanel.gd" type="Script" id=21]
+[ext_resource path="res://src/scenes/alertpanel.gd" type="Script" id=21]
 
-[node name="ConfirmPanel" type="Popup"]
+[node name="AlertPanel" type="Popup"]
 visible = true
 margin_left = 721.0
 margin_top = 331.0
@@ -22,16 +22,20 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+;; Expect all default text to be replaced (or hidden) when the alert is
+;; instantiated. So let's set the defaults to something
+;; developer-friendly (such as "<bbcode>").
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 53.0
 margin_top = 34.9474
 margin_right = 477.0
 margin_bottom = 138.947
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-bbcode_text = "Load/Overwrite?"
-text = "Load/Overwrite?"
+bbcode_text = "<bbcode>"
+text = "<text>"
 
-[node name="Confirm" type="TextureButton" parent="."]
+[node name="ButtonL" type="TextureButton" parent="."]
 margin_left = 26.0
 margin_top = 164.0
 margin_right = 236.0
@@ -40,16 +44,16 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="Confirm"]
+[node name="Label" type="Label" parent="ButtonL"]
 margin_left = 12.0
 margin_right = 202.0
 margin_bottom = 58.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "CONFIRM"
+text = "<left>"
 align = 1
 valign = 1
 
-[node name="Cancel" type="TextureButton" parent="."]
+[node name="ButtonR" type="TextureButton" parent="."]
 margin_left = 291.0
 margin_top = 164.0
 margin_right = 501.0
@@ -58,11 +62,11 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="Cancel"]
+[node name="Label" type="Label" parent="ButtonR"]
 margin_left = 10.0
 margin_right = 201.0
 margin_bottom = 58.0
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "CANCEL"
+text = "<right>"
 align = 1
 valign = 1
