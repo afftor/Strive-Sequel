@@ -163,7 +163,7 @@ func hire_character():
 
 func sell_slave():
 	var selectedperson = gui_controller.exploration.person_to_hire
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'sell_slave_confirm', selectedperson.translate("Sell [name]?")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'sell_slave_confirm', selectedperson.translate("Sell [name]?")])
 
 
 func sell_slave_confirm():
