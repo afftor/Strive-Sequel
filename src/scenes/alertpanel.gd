@@ -21,6 +21,7 @@ func ShowYesNo(TargetNode : Object, \
                YesFunction : String, Text : String) -> void:
         Show(TargetNode, Text, "YES", YesFunction, "NO", '')
 
+# Use '' (the empty string) as label to hide a button.
 func Show(TargetNode : Object, Text : String, \
           LeftLabel : String, LeftFunc : String, \
           RightLabel : String, RightFunc : String) -> void:
@@ -28,9 +29,11 @@ func Show(TargetNode : Object, Text : String, \
         $RichTextLabel.bbcode_text = Text
         targetnode = TargetNode
         left_fn = LeftFunc
-        right_fn = RightFunc
         $ButtonL/Label.text = LeftLabel
+        $ButtonL.visible = (LeftLabel != '')
+        right_fn = RightFunc
         $ButtonR/Label.text = RightLabel
+        $ButtonR.visible = (RightLabel != '')
 
 func OnLeftButton() -> void:
         hide()
