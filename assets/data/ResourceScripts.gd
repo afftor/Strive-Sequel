@@ -55,6 +55,7 @@ onready var node_data = {
 	input_handler.NODE_INVENTORY : {name = 'inventory', mode = 'scene', scene = preload("res://src/main/Inventory.tscn"), calls = 'open'},
 	input_handler.NODE_POPUP : {name = 'PopupPanel', mode = 'scene', scene = preload("res://src/scenes/PopupPanel.tscn"), calls = 'open'},
 	input_handler.NODE_CONFIRMPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowConfirmCancel'},
+	input_handler.NODE_YESNOPANEL : {name = 'AlertPanel', mode = 'scene', scene = preload("res://src/scenes/AlertPanel.tscn"), calls = 'ShowYesNo'},
 	input_handler.NODE_SLAVESELECT : {name = 'SlaveSelectMenu', mode = 'scene', scene = preload("res://src/scenes/SlaveSelectMenu.tscn")},
 	input_handler.NODE_SKILLSELECT : {name = 'SelectSkillMenu', mode = 'scene', scene = preload("res://src/scenes/SkillSelectMenu.tscn")},
 	input_handler.NODE_MUSIC : {name = 'music', mode = 'node', node = AudioStreamPlayer, args = {'bus':"Music"}},
