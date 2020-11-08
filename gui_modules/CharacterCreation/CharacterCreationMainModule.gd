@@ -123,7 +123,7 @@ func _ready():
 	open()
 
 func Exit():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'MainMenu', tr('LEAVECONFIRM')])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'MainMenu', tr('LEAVECONFIRM')])
 
 
 func MainMenu():
@@ -279,7 +279,7 @@ func apply_preserved_settings():
 
 func confirm_character():
 	if check_confirm_possibility():
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'finish_character', 'Create this character?'])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', 'Create this character?'])
 
 
 func finish_character():
@@ -375,7 +375,7 @@ func PressSaveCharacter(savename = null):
 	
 	var file = File.new()
 	if file.file_exists(variables.userfolder + 'savedcharacters/' + savefilename):
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'SaveCharacter', tr("OVERWRITETEMPLATECONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'SaveCharacter', tr("OVERWRITETEMPLATECONFIRM")])
 	else:
 		SaveCharacter()
 
@@ -405,14 +405,14 @@ func SaveCharacter():
 
 func PressDeleteCharacter(savename):
 	$SaveLoadCharPanel/LineEdit.text = savename
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'DeleteCharacter', tr("DELETETEMPLATECONFIRM")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'DeleteCharacter', tr("DELETETEMPLATECONFIRM")])
 
 func PressLoadCharacter(savename = null):
 	if savename == null:
 		hideSaveLoadPanel()
 	else:
 		$SaveLoadCharPanel/LineEdit.text = savename
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadCharacter', tr("LOADTEMPLATECONFIRM")])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadCharacter', tr("LOADTEMPLATECONFIRM")])
 
 var temp_character
 func reset_profession():
@@ -588,7 +588,7 @@ func select_sex_trait(trait):
 
 
 func confirm_return():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'cancel_creation', "Return to Main Menu?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_creation', "Return to Main Menu?"])
 	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
 

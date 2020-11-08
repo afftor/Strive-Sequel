@@ -303,7 +303,7 @@ func Reward():
 	open()
 
 func CancelQuest():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'cancel_quest_confirm', "Forfeit This Quest?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', "Forfeit This Quest?"])
 	#input_handler.ShowConfirmPanel(self, "cancel_quest_confirm", "Forfeit This Quest?")
 
 func cancel_quest_confirm():
