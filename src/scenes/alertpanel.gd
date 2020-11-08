@@ -17,6 +17,10 @@ func ShowConfirmCancel(TargetNode : Object, \
                        ConfirmFunction : String, Text : String) -> void:
         Show(TargetNode, Text, "CONFIRM", ConfirmFunction, "CANCEL", '')
 
+func ShowYesNo(TargetNode : Object, \
+               YesFunction : String, Text : String) -> void:
+        Show(TargetNode, Text, "YES", YesFunction, "NO", '')
+
 func Show(TargetNode : Object, Text : String, \
           LeftLabel : String, LeftFunc : String, \
           RightLabel : String, RightFunc : String) -> void:
