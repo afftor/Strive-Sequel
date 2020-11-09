@@ -11,7 +11,7 @@ func _ready():
 	$TabContainer/Graphics/fullscreen.pressed = input_handler.globalsettings.fullscreen
 	$TabContainer/Graphics/factors.pressed = input_handler.globalsettings.factors_as_words
 	$TabContainer/Gameplay/VBoxContainer/malerate.connect("value_changed", self, 'male_rate_change')
-	$TabContainer/Gameplay/VBoxContainer/futarate.connect("value_changed", self, "futa_rate_change")
+	$TabContainer/Gameplay/VBoxContainer/male_and_futa_rate.connect("value_changed", self, "futa_rate_change")
 	
 	$TabContainer/Graphics/factors.connect("pressed", self, "toggle_factors")
 	
@@ -72,7 +72,7 @@ func open():
 	var futa = input_handler.globalsettings.futachance
 	if !input_handler.globalsettings.futa:
 		futa = 0
-	$TabContainer/Gameplay/VBoxContainer/futarate.visible = input_handler.globalsettings.futa
+	$TabContainer/Gameplay/VBoxContainer/male_and_futa_rate.visible = input_handler.globalsettings.futa
 
 	male_rate_change(male)
 	futa_rate_change(male + futa)
@@ -127,27 +127,27 @@ func update_rate_text() -> void:
 	if input_handler.globalsettings.futa:
 		var futa : int = input_handler.globalsettings.futachance
 		var female : int = 100 - (male + futa)
-		text = "Male: %3d%%  -  Futa: %3d%%  -  Female: %3d%%" % [male, futa, female]
-		$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
-		$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = ''
+		text = "Male: %3d%%  -  Futa: %3d%%  -  Female: %3d%%" \
+			% [male, futa, female]
 	else:
 		var female : int = 100 - male
-		text = "Male: %3d%%  -  Female: %3d%%" % [male, female]
-		$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
+		text = "Male: %3d%%  -  Female: %3d%%" \
+			% [male, female]
+	$TabContainer/Gameplay/VBoxContainer/SexRates.text = text
 
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	var delta : int = value - input_handler.globalsettings.malechance
 	input_handler.globalsettings.malechance += delta
-	if $TabContainer/Gameplay/VBoxContainer/futarate.value < value:
-		$TabContainer/Gameplay/VBoxContainer/futarate.value = value
+	if $TabContainer/Gameplay/VBoxContainer/male_and_futa_rate.value < value:
+		$TabContainer/Gameplay/VBoxContainer/male_and_futa_rate.value = value
 	else:
                 # move the boundary shared with the futa range
 		input_handler.globalsettings.futachance -= delta
 	update_rate_text()
 
 func futa_rate_change(value):
-	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
+	$TabContainer/Gameplay/VBoxContainer/male_and_futa_rate.value = value
 	if $TabContainer/Gameplay/VBoxContainer/malerate.value > value:
 		$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	var male = $TabContainer/Gameplay/VBoxContainer/malerate.value
