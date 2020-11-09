@@ -434,8 +434,7 @@ func close(transition = false):
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
-	input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL).update()
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
+	# TODO check if this method should open any window
 	close()
 
 func repeat():
@@ -472,11 +471,9 @@ func execute():
 
 func inspect_active_character():
 	input_handler.ShowSlavePanel(input_handler.active_character)
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [input_handler.active_character])
 
 func inspect_character_child():
 	input_handler.ShowSlavePanel(ResourceScripts.game_party.babies[input_handler.active_character.get_stat('pregnancy').baby])
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [state.babies[input_handler.active_character.get_stat('pregnancy').baby]])
 
 func keepbaby():
 	var node = input_handler.get_spec_node(input_handler.NODE_TEXTEDIT) #input_handler.GetTextEditNode()

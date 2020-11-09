@@ -76,7 +76,6 @@ func update_button(newbutton):
 
 func open_slave_tab(character):
 	input_handler.ShowSlavePanel(character)
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [character])
 
 var obed_textures = {high = images.icons.obed1, med = images.icons.obed2, low = images.icons.obed3}
 var fear_textures = {high = images.icons.fear1, med = images.icons.fear2, low = images.icons.fear3}

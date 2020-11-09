@@ -89,7 +89,6 @@ func unlock_class():
 	person.unlock_class(current_class)
 	yield(get_tree().create_timer(0.2),"timeout")
 	input_handler.ShowSlavePanel(person)
-	#input_handler.get_spec_node(input_handler.NODE_SLAVEPANEL, [person])
 	globals.text_log_add("class", person.translate("[name] has acquired new Class: " + classesdata.professions[current_class].name))
 	input_handler.PlaySound("ding")
 	input_handler.update_slave_list()

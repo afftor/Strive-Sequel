@@ -94,7 +94,6 @@ enum {
 	NODE_ITEMTOOLTIP,
 	NODE_TEXTTOOLTIP,
 	NODE_CHARCREATE,
-	NODE_SLAVEPANEL,
 	NODE_COMBATPOSITIONS,
 	NODE_SYSMESSAGE,
 	NODE_SLAVEMODULE,
@@ -649,9 +648,10 @@ func ConnectSound(node, sound, action):
 #Slave Panel
 
 func ShowSlavePanel(person): #not fully node getter
-	var node = get_spec_node(self.NODE_SLAVEPANEL)
-	node.raise()
-	node.open(person)
+	if gui_controller.slavepanel == null:
+		gui_controller.slavepanel = get_spec_node(self.NODE_SLAVEMODULE)
+	gui_controller.slavepanel.raise()
+	gui_controller.slavepanel.open(person)
 
 
 func calculate_number_from_string_array(arr, caster, target):
@@ -883,9 +883,10 @@ func rebuild_skill_list():
 	skill_list_node.build_skill_panel()
 
 func update_slave_panel():
-	var node = get_spec_node(self.NODE_SLAVEPANEL, null, false)#, false)
-	if node.visible == true:
-		node.update()
+	if gui_controller.slavepanel == null:
+		gui_controller.slavepanel = get_spec_node(self.NODE_SLAVEMODULE)
+	if gui_controller.slavepanel.visible == true:
+		gui_controller.slavepanel.update()
 
 func check_mouse_in_nodes(nodes):
 	var check = false
