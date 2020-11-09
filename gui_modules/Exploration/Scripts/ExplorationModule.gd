@@ -1309,7 +1309,6 @@ func faction_upgrade(pressed, pressed_button, guild):
 		+ "/"
 		+ str(active_faction.questsetting.total)
 	)
-
 	for i in worlddata.guild_upgrades.values():
 		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/VBoxContainer)
 		text = i.name + ": " + i.descript
@@ -1326,7 +1325,6 @@ func faction_upgrade(pressed, pressed_button, guild):
 		else:
 			newnode.hide()
 			continue
-
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = (
 			"Price: "
@@ -1336,10 +1334,10 @@ func faction_upgrade(pressed, pressed_button, guild):
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
-		if pressed:
-			unfade($FactionDetails, 0.3)
-		else:
-			fade($FactionDetails, 0.3)
+	if pressed:
+		unfade($FactionDetails, 0.3)
+	else:
+		fade($FactionDetails, 0.3)
 
 
 func unlock_upgrade(upgrade, level):
@@ -1411,7 +1409,6 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = area
 	self.current_pressed_area_btn = pressed_button
-	# $SlaveMarket.visible = pressed
 	$SlaveMarket/HireMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/SellMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/HBoxContainer/UpgradeButton.visible = market_mode != "guild_slaves"
@@ -1432,12 +1429,17 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
 	var person_id
+	var person
 	if active_faction.slaves != []:
 		person_id = active_faction.slaves[0]
+		person = characters_pool.get_char_by_id(person_id)
+		show_slave_info(person)
 	else:
+		current_pressed_area_btn.pressed = false 
+		$SlaveMarket.hide()
+		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
+		gui_controller.win_btn_connections_handler(false, $SlaveMarket, pressed_button)
 		return
-	var person = characters_pool.get_char_by_id(person_id)
-	show_slave_info(person)
 	if !play_anim:
 		return
 	if pressed:

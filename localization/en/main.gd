@@ -2556,6 +2556,8 @@ var TranslationDict = {
 
 	JOBTUTORIAL1 = "At your slave list you can change your character's job. Different locations have different occupation options based on the present resources and activities.",
 	JOBTUTORIAL2 = "Select an occupation from the list to see its details. Some occupations have different outputs which have to be selected in such cases. You can also adjust working conditions to modify the output.",
-	JOBTUTORIAL3 = "Production is based on the Total Productivity modifier. Different tasks have different additional modifiers, i.e. Stone or Iron Mining will also be affected by \"Collect Efficiency\". Productivity can be viewed at the character's info panel when hovering over."
+	JOBTUTORIAL3 = "Production is based on the Total Productivity modifier. Different tasks have different additional modifiers, i.e. Stone or Iron Mining will also be affected by \"Collect Efficiency\". Productivity can be viewed at the character's info panel when hovering over.",
+
+	NOSLAVESINMARKET = "No Slaves Avalible.",
 }
 

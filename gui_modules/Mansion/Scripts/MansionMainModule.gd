@@ -475,6 +475,7 @@ func test_mode():
 		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
 		ResourceScripts.game_res.upgrades.tailor = 1
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
+		ResourceScripts.game_res.upgrades.rooms = 3
 		
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2
@@ -715,8 +716,8 @@ func test_mode():
 		input_handler.interactive_message("dungeon_find_chest_easy", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.reputation = 1000
-			i.totalreputation += 1000
+			i.reputation = 100000
+			i.totalreputation += 100000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 
 		# character = ResourceScripts.scriptdict.class_slave.new()
