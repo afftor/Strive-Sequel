@@ -682,9 +682,15 @@ func get_random_race():
 	return input_handler.weightedrandom(array)
 
 func get_random_sex():
-	if randf()*100 <= input_handler.globalsettings.malechance:
+	var male = input_handler.globalsettings.malechance
+	var male_or_futa = input_handler.globalsettings.futachance
+	if !input_handler.globalsettings.futa:
+		male_or_futa = input_handler.globalsettings.malechance
+
+	var roll = randf()*100
+	if roll <= male:
 		return 'male'
-	elif randf()*100 <= input_handler.globalsettings.futachance && input_handler.globalsettings.futa == true:
+	elif roll <= male_or_futa:
 		return 'futa'
 	else:
 		return 'female'
