@@ -236,7 +236,6 @@ func complete_skirmish():
 	close()
 
 func update_scene_characters():
-#	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	input_handler.ClearContainer($EventCharacters/VBoxContainer)
 	input_handler.ClearContainer($PlayerCharacters/VBoxContainer)
 	for i in input_handler.scene_characters:

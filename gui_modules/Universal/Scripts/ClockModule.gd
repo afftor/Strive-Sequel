@@ -9,8 +9,6 @@ const DEGREES_PER_HOUR = 15
 onready var sky = $Sky
 onready var timebuttons = [$"TimeNode/0speed", $"TimeNode/1speed", $"TimeNode/2speed"]
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
-
 
 func _ready():
 	var speedvalues = [0, 1, 5]
@@ -70,7 +68,6 @@ func _process(delta):
 			if gametime >= variables.SecondsPerHour:
 				gametime -= variables.SecondsPerHour
 				advance_hour()
-#	GUIWorld.clock_visibility()
 
 
 func timeflowhotkey(hotkey):

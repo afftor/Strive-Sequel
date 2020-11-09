@@ -14,8 +14,6 @@ onready var GearModule = $InventoryGearModule
 onready var StatsModule = $InventoryStatsModule
 onready var FactorsModule = $InventorySlaveListModule/InventoryFactorsModule
 onready var submodules = []
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
-#onready var char_module = GUIWorld.gui_data["SLAVE_INFO"].main_module
 
 signal inventory_opened
 signal inventory_hidden

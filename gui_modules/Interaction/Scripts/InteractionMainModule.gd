@@ -33,7 +33,6 @@ var secondactorcounter = {}
 
 var submodules = []
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 
 
 #not used

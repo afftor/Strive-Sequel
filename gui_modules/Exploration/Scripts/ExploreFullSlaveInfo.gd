@@ -1,6 +1,5 @@
 extends Panel
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 onready var Info = $ExploreSlaveInfoModule
 onready var SummaryModule = $ExploreSlaveSummaryModule
@@ -96,7 +95,6 @@ func show_summary(person, from_dialogue = null):
 	# 	newnode.get_node("Label").text = name
 	# 	newnode.get_node("TextureRect").rect_size = Vector2(86,86)
 	# 	newnode.get_node("TextureRect").texture = prof.icon
-	# 	newnode.connect('signal_RMB_release', GUIWorld, 'show_class_info', [prof.code, person])
 	# 	var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
 	# 	temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 	# 	globals.connecttexttooltip(newnode, temptext)
@@ -119,8 +117,7 @@ func _on_Button_pressed():
 	# var person = get_parent().person_to_hire
 	for i in get_parent().submodules:
 		print(i.name)
-#	print("Current Scene:" + str(GUIWorld.CurrentScene.name))
-#	print("Previous Scene:" + str(GUIWorld.PreviousScene.name))
+		
 
 func hire_character():
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(gui_controller.exploration.selected_location)

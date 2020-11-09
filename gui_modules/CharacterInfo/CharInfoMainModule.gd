@@ -3,8 +3,6 @@ extends Panel
 var active_person
 var char_module_state
 
-# onready var GUIWorld = get_parent()
-
 onready var ClassesModule = $SlaveClassesModule
 onready var DetailsModule = $SlaveDetailsModule
 onready var SummaryModule = $SlaveSummaryModule
@@ -77,8 +75,7 @@ func match_state():
 
 
 #func _on_Button_pressed():
-#	print("Current Scene:" + str(GUIWorld.CurrentScene.name))
-#	print("Previous Scene:" + str(GUIWorld.PreviousScene.name))
+		# pass
 
 
 func open_gear():

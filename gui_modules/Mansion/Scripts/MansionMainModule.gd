@@ -16,7 +16,6 @@ onready var JobModule = $MansionJobModule
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule
-# onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var submodules = []
 
 export var test_mode = false

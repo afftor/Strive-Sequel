@@ -74,14 +74,6 @@ func rebuild():
 	show_location_characters()
 
 ### Requires some magic method to force recalculate scroll container size (Known Godot issue, but no one knows how to fix that) ###
-#func count_visible_chars():
-#	var char_counter = 0
-#	for i in get_tree().get_root().get_node("GUIWorld/MansionMainModule/MansionSlaveListModule/ScrollContainer/VBoxContainer").get_children():
-#		if i.is_visible():
-#			char_counter += 1
-#	return char_counter
-
-
 func set_hover_area():
 	yield(get_tree(), 'idle_frame')
 #	var chars = count_visible_chars()
@@ -189,8 +181,6 @@ func build_locations_list():
 
 func sort_locations():
 	var capitals = []
-	# if GUIWorld.BaseScene != null && GUIWorld.BaseScene == GUIWorld.gui_data.EXPLORATION.main_module:
-	# 	capitals.append("Mansion")
 	var settlements = []
 	var dungeons = []
 	var quest_locations = []

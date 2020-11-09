@@ -8,7 +8,6 @@ func _ready():
 
 func update():
 	var dungeon = false
-#	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
 	var selected_location = input_handler.active_location
 	if selected_location == null:
 		return
