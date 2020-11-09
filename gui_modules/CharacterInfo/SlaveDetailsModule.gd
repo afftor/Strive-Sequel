@@ -42,7 +42,7 @@ func custom_description_open():
 	person = input_handler.interacted_character
 	if person != null:
 		show_text_edit()
-		$Label.text = "Add Custom Description"
+		$Label.text = "Add Custom Description (start with # to hide)"
 		details_state = "description"
 		$TextEdit.text = person.get_stat('bonus_description')
 

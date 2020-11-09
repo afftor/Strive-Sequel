@@ -2049,7 +2049,7 @@ func aphrodisiac(member):
 	_on_passbutton_pressed()
 	
 
-func sensetivity_pot(member):
+func sensitivity_pot(member):
 	member.sensmod += 1
 	member.lewdmod += 0.2
 	var text = "\n" + member.name + " has used an sensitivity potion. [His] body became more responsive.\n{color=aqua|[name]} - {random_chat=0|aphrodisiac}"

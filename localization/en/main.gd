@@ -204,6 +204,8 @@ var TranslationDict = {
 	ITEMSTRONG_PHEROMONES = "Strong Pheromones",
 	ITEMSTRONG_PHEROMONESDESCRIPT = "A popular drug used on bestial races. Inhaling causes a great surge of euphoria and lust in an individual, making them accept just about any treatment they usually would be too shy to consider. Ineffective for non-bestial species and often banned in affected communities. ",
 	
+	ITEMSENSITIVITY_POT = "Sensintivity Drug",
+	ITEMSENSITIVITY_POTDESCRIPT = "",
 	ITEMOBLIVION_POTION = "Oblivion Potion",
 	ITEMOBLIVION_POTIONDESCRIPT = "Remove all learned classes.",
 	ITEMMAID_DRESS = "Maid Dress",
@@ -1165,7 +1167,7 @@ var TranslationDict = {
 	TRAITATTENDANTDESCRIPT = "Once per combat turn [name] can use an item without using a turn.",
 	TRAITALCHEMISTDESCRIPT = "Crafts alchemical products 100% faster.\nHealing items are 25% more effective in combat.",
 	TRAITFARMERDESCRIPT = "Farming is 50% more efficient. ",
-	TRAITBREEDERDESCRIPT = "Allows breeding with any race.\nPregnancy progresses 30% faster.\nOffspring will inherit only this parent's stats.",
+	TRAITBREEDERDESCRIPT = "Allows breeding with any race.\nPregnancy Debuffs are weaker\nOffspring will inherit only this parent's stats.",
 	TRAITHARLOTDESCRIPT = "Prostitution is 50% more efficient.",
 	TRAITSUCCUBUSDESCRIPT = "Sex activities provide 50% more experience.",
 	TRAITPETDESCRIPT = "Prostitution is 25% more efficient.",
@@ -1672,6 +1674,9 @@ var TranslationDict = {
 	BODYPARTVAGINAL_VIRGINTRUE_FALSEDESCRIPT = "[He] has a [color=yellow]normal pussy[/color] below [his] waist.",
 	BODYPARTHAS_PUSSYFALSEDESCRIPT = " ",
 	
+	BODYPARTPREGLINELATE = "[His] {color=yellow|unborn} child forces [his] belly to protrude massively; [he] will give birth soon.",
+	BODYPARTPREGLINEEARLY = "[His] {color=yellow|unborn fetus} causes [his] belly to bulge slightly. ",
+	
 	SEXTRAITORAL = "Oral Lover",
 	SEXTRAITLIKES_SHORTSTACKS = "Shortstack Enthusiast",
 	SEXTRAITLIKES_BEASTS = "Likes them beasty",
@@ -1836,6 +1841,8 @@ var TranslationDict = {
 	DIALOGUEFIGHTOPTION = "Fight",
 	DIALOGUEREBELS_SKIRMISH_START = "You find the group of rebels which has been reported by locals. It seems they are ready to fight you.",
 	DIALOGUEGOBLINS_SKIRMISH_START = "You find the group of goblins which has been reported by locals. It seems they are ready to fight you.",
+	DIALOGUEOGRE_SKIRMISH_START = "",
+	DIALOGUETROLL_SKIRMISH_START = "",
 	
 	DIALOGUESHRINECELENA = "You come across a religious structure: a small shrine made of light metal. It seems to be rather weary, but you can make out a symbol of moon engraved on a side of it. Despite being located at such place, you still feel a faint power around it. ",
 	DIALOGUESHRINEEREBUS = "You come across an unsual assemblence of stones: a small uneven pyramid which has a sizable hole on top. Despite its rough appearance, you can feel a faint power around it.",

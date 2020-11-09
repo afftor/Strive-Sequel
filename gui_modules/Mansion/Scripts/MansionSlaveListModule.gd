@@ -329,7 +329,7 @@ func update_button(newbutton):
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(person.hp)) + "/" + str(round(person.get_stat('hpmax'))) + "\nMP: " + str(round(person.mp)) + "/" + str(round(person.get_stat('mpmax')))
 	#newbutton.get_node("HBoxContainer/stats/hplabel").text = str(round(person.hp)) + "/" + str(round(person.hpmax))
 	#newbutton.get_node("HBoxContainer/stats/mplabel").text = str(round(person.mp)) + "/" + str(round(person.mpmax))
-	newbutton.get_node("explabel").text = str(round(person.get_stat('base_exp')))
+	newbutton.get_node("explabel").text = str(floor(person.get_stat('base_exp')))
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '':
 		newbutton.get_node("job/Label").text = tr("TASKREST")
