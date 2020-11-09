@@ -72,9 +72,9 @@ func close_scene(scene):
 	if char_creation != null && char_creation.is_visible():
 		char_creation.hide()
 		scene.hide()
-		if previous_screen != null && (previous_screen in [mansion, slavepanel]) && !current_screen == exploration:
+		if previous_screen != null && (previous_screen in [mansion, slavepanel]) && current_screen != exploration:
 			current_screen = previous_screen
-		if !current_screen == null:
+		if current_screen != null:
 			update_modules()
 		return
 	if scene == slavepanel:
@@ -90,7 +90,10 @@ func close_scene(scene):
 		current_screen = previous_screen
 		current_screen.raise()
 		current_screen.show()
-		previous_screen = null
+		if current_screen == slavepanel:
+			previous_screen = mansion
+		else:
+			previous_screen = null
 	if current_screen == mansion:
 		mansion.mansion_state_set("default")
 		gui_controller.clock.raise()

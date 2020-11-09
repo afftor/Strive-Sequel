@@ -700,40 +700,38 @@ func enter_level(level, skip_to_end = false):
 		active_location.progress.level = current_level
 		current_stage = active_location.levels["L" + str(active_location.levels.size())].stages - 1
 		active_location.progress.stage = current_stage
-	if active_location.progress.level < level:
-		active_location.progress.level = level
-		active_location.progress.stage = 0
+	if level != null:
+		if active_location.progress.level < level:
+			active_location.progress.level = level
+			active_location.progress.stage = 0
 
-	if check_events('enter_level') == true:
-		yield(input_handler, 'EventFinished')
+		if check_events('enter_level') == true:
+			yield(input_handler, 'EventFinished')
 
-	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-	var newbutton
-	if (
-		active_location.progress.level == level
-		&& active_location.progress.stage < active_location.levels["L" + str(level)].stages
-	):
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-		)
-		newbutton.text = 'Advance'
-		newbutton.connect("pressed", self, "area_advance", ['advance'])
-#	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
-#		if active_location.levels.has("L"+str(level + 1)) == true:
-#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Move to the next level'
-#			newbutton.connect("pressed",self,"enter_level",[level+1])
-#		else:
-#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-#			newbutton.text = 'Forget Location'
-#			newbutton.connect("pressed",self,"clear_dungeon")
+		input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+		var newbutton
+		if (active_location.progress.level == level && active_location.progress.stage < active_location.levels["L" + str(level)].stages):
+			newbutton = input_handler.DuplicateContainerTemplate(
+				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+			)
+			newbutton.text = 'Advance'
+			newbutton.connect("pressed", self, "area_advance", ['advance'])
+	#	elif active_location.progress.level == level && active_location.progress.stage >= active_location.levels["L"+str(level)].stages:
+	#		if active_location.levels.has("L"+str(level + 1)) == true:
+	#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	#			newbutton.text = 'Move to the next level'
+	#			newbutton.connect("pressed",self,"enter_level",[level+1])
+	#		else:
+	#			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+	#			newbutton.text = 'Forget Location'
+	#			newbutton.connect("pressed",self,"clear_dungeon")
 
-	if ResourceScripts.game_progress.allow_skip_fights:
-		newbutton = input_handler.DuplicateContainerTemplate(
-			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
-		)
-		newbutton.text = 'Skip to last room'
-		newbutton.connect("pressed", self, "enter_level", [level, true])
+		if ResourceScripts.game_progress.allow_skip_fights:
+			newbutton = input_handler.DuplicateContainerTemplate(
+				$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
+			)
+			newbutton.text = 'Skip to last room'
+			newbutton.connect("pressed", self, "enter_level", [level, true])
 
 	build_location_group()
 	build_location_description()
@@ -1270,7 +1268,7 @@ func confirm_buy_item():
 			# active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
 			match item_to_buy.type:
 				'usable':
-					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code))
+					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code, items_amount))
 				'gear':
 					globals.AddItemToInventory(globals.CreateGearItem(item_to_buy.code, {}))
 	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1] * items_amount
@@ -1311,7 +1309,6 @@ func faction_upgrade(pressed, pressed_button, guild):
 		+ "/"
 		+ str(active_faction.questsetting.total)
 	)
-
 	for i in worlddata.guild_upgrades.values():
 		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/VBoxContainer)
 		text = i.name + ": " + i.descript
@@ -1328,7 +1325,6 @@ func faction_upgrade(pressed, pressed_button, guild):
 		else:
 			newnode.hide()
 			continue
-
 		newnode.get_node("text").bbcode_text = text
 		newnode.get_node("Price").text = (
 			"Price: "
@@ -1338,10 +1334,10 @@ func faction_upgrade(pressed, pressed_button, guild):
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
-		if pressed:
-			unfade($FactionDetails, 0.3)
-		else:
-			fade($FactionDetails, 0.3)
+	if pressed:
+		unfade($FactionDetails, 0.3)
+	else:
+		fade($FactionDetails, 0.3)
 
 
 func unlock_upgrade(upgrade, level):
@@ -1413,7 +1409,6 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
 	active_faction = area
 	self.current_pressed_area_btn = pressed_button
-	# $SlaveMarket.visible = pressed
 	$SlaveMarket/HireMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/SellMode.visible = market_mode != "guild_slaves"
 	$SlaveMarket/HBoxContainer/UpgradeButton.visible = market_mode != "guild_slaves"
@@ -1434,12 +1429,17 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
 	var person_id
+	var person
 	if active_faction.slaves != []:
 		person_id = active_faction.slaves[0]
+		person = characters_pool.get_char_by_id(person_id)
+		show_slave_info(person)
 	else:
+		current_pressed_area_btn.pressed = false 
+		$SlaveMarket.hide()
+		input_handler.SystemMessage(tr("NOSLAVESINMARKET"))
+		gui_controller.win_btn_connections_handler(false, $SlaveMarket, pressed_button)
 		return
-	var person = characters_pool.get_char_by_id(person_id)
-	show_slave_info(person)
 	if !play_anim:
 		return
 	if pressed:

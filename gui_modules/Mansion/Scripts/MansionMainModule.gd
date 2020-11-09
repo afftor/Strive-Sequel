@@ -16,7 +16,6 @@ onready var JobModule = $MansionJobModule
 onready var SexSelect = $MansionSexSelectionModule
 onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule
-# onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 onready var submodules = []
 
 export var test_mode = false
@@ -476,6 +475,7 @@ func test_mode():
 		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
 		ResourceScripts.game_res.upgrades.tailor = 3
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
+		ResourceScripts.game_res.upgrades.rooms = 3
 		
 	#	globals.impregnate(character, character)
 	#	character.get_stat('pregnancy', true).duration = 2

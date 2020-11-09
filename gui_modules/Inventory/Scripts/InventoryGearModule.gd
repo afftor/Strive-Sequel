@@ -1,7 +1,5 @@
 extends Panel
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
-
 
 func _ready():
 	for i in get_children():

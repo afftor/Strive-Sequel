@@ -226,9 +226,9 @@ text = "Race"
 
 [node name="Label7" type="Label" parent="VBoxContainer"]
 visible = false
-margin_top = 368.0
+margin_top = 402.0
 margin_right = 433.0
-margin_bottom = 392.0
+margin_bottom = 434.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SLAVEPARTSEXTRAIT"

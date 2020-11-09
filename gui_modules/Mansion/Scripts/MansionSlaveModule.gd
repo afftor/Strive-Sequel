@@ -2,7 +2,6 @@ extends Panel
 
 
 onready var MansionMainModule = get_parent()
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 var person
 var authority_lines = {
 	low = "Defiance",

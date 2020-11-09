@@ -1,7 +1,6 @@
 extends Panel
 
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 var person
 var authority_lines = {
 	low = "Defiance",
@@ -54,9 +53,6 @@ func showup(node, person):
 			var name = ResourceScripts.descriptions.get_class_name(prof, person)
 			newnode.get_node("Label").text = name
 			newnode.get_node("ProfIcon").texture = prof.icon
-			# newnode.connect('signal_RMB_release',GUIWorld, 'show_class_info', [prof.code, person])
-			# var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
-			# temptext += "\n\n{color=aqua|" + tr("CLASSRIGHTCLICKDETAILS") + "}"
 		$Portrait.texture = person.get_icon()
 		$sex.texture = images.icons[person.get_stat('sex')]
 		$RichTextLabel.bbcode_text = text

@@ -1,6 +1,5 @@
 extends Control
 
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 func _ready():
 	$VBoxContainer/TravelsButton.connect("pressed", self, "_button_clicked", ["travels", $VBoxContainer/TravelsButton])
@@ -26,9 +25,6 @@ func open_inventory():
 	gui_controller.inventory.show()
 	gui_controller.inventory.set_active_hero(get_parent().active_person)
 	gui_controller.emit_signal("screen_changed")
-#	GUIWorld.PreviousScene = GUIWorld.gui_data["MANSION"].main_module
-#	GUIWorld.set_current_scene(GUIWorld.gui_data["INVENTORY"].main_module)
-#	ResourceScripts.core_animations.UnfadeAnimation(GUIWorld.gui_data["INVENTORY"].main_module, 0.3)
 	yield(get_tree().create_timer(0.3), "timeout")
 	
 func open_interaction():

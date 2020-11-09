@@ -2,7 +2,6 @@ extends Panel
 
 
 var person
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 
 
 #func _ready():

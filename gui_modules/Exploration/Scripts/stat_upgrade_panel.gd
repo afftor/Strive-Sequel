@@ -3,7 +3,6 @@ extends Panel
 onready var StatsContainer = $StatsPanel/StatsVBox
 onready var CharList = $CharList/ScrollContainer/CharactersVBox
 onready var Materials = $StatsPanel/Materials
-#onready var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false)
 var selected_character
 
 var stats_dict = {

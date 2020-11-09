@@ -10,8 +10,6 @@ onready var Column2 = $LocationLists/Column2/ScrollContainer/VBoxContainer
 onready var Column3 = $LocationLists/Column3/ScrollContainer/VBoxContainer
 
 func _ready():
-#	var GUIWorld = input_handler.get_spec_node(input_handler.NODE_GUI_WORLD, null, false, false)
-#	GUIWorld.add_close_button(self)
 	$SwipeLeft.connect("pressed", self, "swipe", ["left"])
 	$SwipeRight.connect("pressed", self, "swipe", ["right"])
 	globals.connect("hour_tick", self, "open")

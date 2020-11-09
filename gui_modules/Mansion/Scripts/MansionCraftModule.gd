@@ -200,7 +200,7 @@ func sort_craft_list(first, second):
 	else:
 		enditem2 = Items.materiallist[second.resultitem]
 
-	return enditem.name > enditem2.name
+	return enditem.name < enditem2.name
 
 func rebuild_scheldue():
 	input_handler.ClearContainer($CraftScheldue/ScrollContainer/VBoxContainer)
