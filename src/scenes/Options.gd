@@ -125,11 +125,15 @@ func update_rate_text() -> void:
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	input_handler.globalsettings.malechance = value
+	if $TabContainer/Gameplay/VBoxContainer/futarate.value < value:
+		$TabContainer/Gameplay/VBoxContainer/futarate.value = value
 	update_rate_text()
 
 func futa_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
 	input_handler.globalsettings.futachance = value
+	if $TabContainer/Gameplay/VBoxContainer/malerate.value > value:
+		$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	update_rate_text()
 
 func gameplay_rule(rule):
