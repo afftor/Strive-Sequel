@@ -1268,7 +1268,7 @@ func confirm_buy_item():
 			# active_faction.reputation_shop.items[item_to_buy.code][0] -= items_amount
 			match item_to_buy.type:
 				'usable':
-					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code))
+					globals.AddItemToInventory(globals.CreateUsableItem(item_to_buy.code, items_amount))
 				'gear':
 					globals.AddItemToInventory(globals.CreateGearItem(item_to_buy.code, {}))
 	active_faction.reputation -= active_faction.reputation_shop.items[item_to_buy.code][1] * items_amount
