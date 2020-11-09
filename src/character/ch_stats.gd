@@ -565,7 +565,6 @@ func setup_baby(mother, father):
 	ResourceScripts.game_party.babies[parent.id] = parent
 
 func create(temp_race, temp_gender, temp_age):
-	
 	statlist.race = temp_race
 	statlist.sex = temp_gender
 	statlist.age = temp_age

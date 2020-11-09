@@ -55,6 +55,7 @@ func build_bodyparts():
 		
 		if preserved_option_exists == false:
 			get_parent().preservedsettings.erase(i)
+			get_parent().preservedsettings[i] = person.get_stat(i)
 			#preservedsettings[i] = person.get(i)
 			#print(i, person.get(i))
 		

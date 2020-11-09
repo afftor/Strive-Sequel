@@ -23,8 +23,8 @@ func select_race():
 
 func select_character_race():
 	hide()
-	var person = get_parent().person
-	person.set_stat('race', selected_race)
+	# var person = get_parent().person
+	get_parent().person.set_stat('race', selected_race)
 	get_parent().preservedsettings["race"] = selected_race
 	get_parent().rebuild_slave()
 
