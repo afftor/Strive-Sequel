@@ -113,17 +113,24 @@ func close():
 # func cheat_toggle(i, button):
 # 	variables.set(i,button.pressed)
 
+func update_rate_text() -> void:
+        var male = input_handler.globalsettings.malechance
+        var male_or_futa = input_handler.globalsettings.futachance
+        var futa = male_or_futa - male
+        var female = 100 - male_or_futa
+        var text = "Male: %3d%%  -  Futa: %3d%%  -  Female: %3d%%" % [male, futa, female]
+        $TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
+        $TabContainer/Gameplay/VBoxContainer/malerate/Label.text = ''
+
 func male_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/malerate.value = value
 	input_handler.globalsettings.malechance = value
-	var text = 'Male generation chance: ' + str(value) + "%"
-	$TabContainer/Gameplay/VBoxContainer/malerate/Label.text = text
+	update_rate_text()
 
 func futa_rate_change(value):
 	$TabContainer/Gameplay/VBoxContainer/futarate.value = value
 	input_handler.globalsettings.futachance = value
-	var text = 'Futa generation chance: ' + str(value) + "%"
-	$TabContainer/Gameplay/VBoxContainer/futarate/Label.text = text
+	update_rate_text()
 
 func gameplay_rule(rule):
 	input_handler.globalsettings[rule] = get_node("TabContainer/Gameplay/" + rule).pressed
