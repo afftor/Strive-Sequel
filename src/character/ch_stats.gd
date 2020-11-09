@@ -683,14 +683,14 @@ func get_random_race():
 
 func get_random_sex():
 	var male = input_handler.globalsettings.malechance
-	var male_or_futa = input_handler.globalsettings.futachance
+	var futa = input_handler.globalsettings.futachance
 	if !input_handler.globalsettings.futa:
-		male_or_futa = input_handler.globalsettings.malechance
+		futa = 0
 
 	var roll = randf()*100
 	if roll <= male:
 		return 'male'
-	elif roll <= male_or_futa:
+	elif roll <= male + futa:
 		return 'futa'
 	else:
 		return 'female'
