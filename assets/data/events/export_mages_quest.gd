@@ -280,7 +280,7 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = "XARIENCOUNTER7_2", reqs = [{type = 'master_check', value = [{code = 'sexuals_factor', operant = 'gte', value = 4}, {code = 'sex', operant = 'neq', value = 'female'}]}],
 			options = [
-				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1},
+				{code = 'xari_encounter8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
 			]
 		},
 			{image = null,
@@ -304,7 +304,7 @@ var data = {
 	xari_encounter8 = {
 		image = null,
 		custom_background = "xari_encounter8",
-		character = 'xari',
+		# character = 'xari',
 		tags = [],
 		text = [
 			{text = "XARIENCOUNTER8_1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 3}]}]},
@@ -312,7 +312,7 @@ var data = {
 			{text = "XARIENCOUNTER8_3", reqs = []},
 		],
 		options = [
-			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'screen_black_transition', value = 1}, {code = 'decision', value = 'slept_with_xari'},{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
+			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], change_dialogue_type = 1, bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}, {code = 'screen_black_transition', value = 1}, {code = 'decision', value = 'slept_with_xari'},{code = 'remove_quest_location', value = 'quest_mages_xari'}]}
 		]
 	},
 

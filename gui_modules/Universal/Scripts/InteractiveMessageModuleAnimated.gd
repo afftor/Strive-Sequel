@@ -18,9 +18,8 @@ func hide_dialogue(action = "hide"):
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"
 
-
+# TODO Rework bg updates
 func open(scene, not_save = false):
-
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("variations"):
@@ -29,6 +28,19 @@ func open(scene, not_save = false):
 				open(i)
 				break
 		get_tree().get_root().set_disable_input(false)
+		return
+	if scene.has("dialogue_type") && gui_controller.dialogue_window_type != scene.dialogue_type:
+		gui_controller.dialogue_window_type = scene.dialogue_type
+		gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+		match gui_controller.dialogue_window_type:
+			1:
+				input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
+				gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)
+			2:
+				input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
+				gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2)
+		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
+		gui_controller.dialogue.open(scene)
 		return
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
@@ -57,10 +69,13 @@ func open(scene, not_save = false):
 		yield(get_tree().create_timer(2), "timeout")
 
 	if scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		$CustomBackground.show()
-		$CustomBackground.texture = images.backgrounds[scene.custom_background]
+		gui_controller.dialogue.get_node("CustomBackground").show()
+		gui_controller.dialogue.get_node("CustomBackground").texture = images.backgrounds[scene.custom_background]
+	elif scene.has("custom_background") && gui_controller.dialogue_window_type == 2:
+		gui_controller.dialogue.get_node("EventBackground").show()
+		gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds[scene.custom_background]
 	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		$CustomBackground.hide()
+		gui_controller.dialogue.get_node("CustomBackground").hide()
 	
 	if scene.has("character") == false:
 		$ImagePanel.show()
@@ -220,6 +235,8 @@ func open(scene, not_save = false):
 		get_tree().get_root().get_node("lootwindow").raise()
 	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
+
+
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)
 	for button in $ScrollContainer/VBoxContainer.get_children():
