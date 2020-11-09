@@ -2943,18 +2943,37 @@ var effect_table = {
 		}]
 	},
 	e_pregnancy = {
-		type = 'temp_s',
-		stack = 2,
+		type = 'temp_u',
+		stack = 1,
 		name = 'pregnancy',
 		tags = ['pregnant'],
 		atomic = [
 			{type = 'stat_add', stat = 'speed', value = -10},
 			{type = 'stat_add', stat = 'physics_bonus', value = -20},
 		],
+		next_level = 'e_pregnancy1',
 		sub_effects = [],
 		buffs = [{
 			icon = "res://assets/images/iconsskills/Shackle.png",
-			description = "Is pregnant. Stats decreased",
+			description = "Is pregnant. Speed -10, Physics Bonus -20",
+			args = [],
+			limit = 1,
+			t_name = 'preg',
+		}]
+	},
+	e_pregnancy1 = {
+		type = 'temp_u',
+		stack = 1,
+		name = 'pregnancy',
+		tags = ['pregnant'],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = -20},
+			{type = 'stat_add', stat = 'physics_bonus', value = -40},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/Shackle.png",
+			description = "Is heavily pregnant. Speed -20, Physics Bonus -40",
 			args = [],
 			limit = 1,
 			t_name = 'preg',

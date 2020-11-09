@@ -1,3 +1,7 @@
+Added pregnancy descriptions and debuff
+Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
+Added an option to use bonus description text field for notes
+0.3.2b
 Fixed force opening mimic sometimes causing crash
 More fixed GUI issues
 0.3.2a

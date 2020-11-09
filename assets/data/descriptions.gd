@@ -34,7 +34,7 @@ func create_character_description(character):
 
 var descriptionorder = [
 'entry', 'age', '[newline]', 'hair_length', 'hair_style', 'eye_color', 'eye_shape', 'horns', 'ears', 'skin', 'skin_coverage','wings', 'tail', 'height',
-'[newline]','tits_size','multiple_tits','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]', 'piercing','[newline]','tattoo','[newline]','[bonus]'
+'[newline]','tits_size','multiple_tits','pregnancy','ass_size','[allowed_sex]','penis_type','[allowed_sex]', 'balls_size','[allowed_sex]', 'has_pussy','[allowed_sex]', "anal_virgin", '[newline]', 'piercing','[newline]','tattoo','[newline]','[bonus]'
 ]
 
 func new_charcter_description(character):
@@ -44,7 +44,7 @@ func new_charcter_description(character):
 	var add_no_sex_descript = false
 	
 	for i in descriptionorder:
-		if i in ['entry','multiple_tits','piercing','tattoo']:
+		if i in ['entry','pregnancy','multiple_tits','piercing','tattoo']:
 			var temptext = call(i)
 			if temptext != "":
 				text += temptext
@@ -57,7 +57,8 @@ func new_charcter_description(character):
 			check_allowed_sex = true
 			continue
 		elif i == '[bonus]':
-			text += character.get_stat('bonus_description')
+			if !character.get_stat('bonus_description').begins_with("#"):
+				text += character.get_stat('bonus_description')
 			continue
 		elif check_allowed_sex == true && (person.tags.has("no_sex") || (person.is_players_character == false && person.is_known_to_player == false)):
 			check_allowed_sex = false
@@ -123,6 +124,18 @@ func multiple_tits():
 #
 #	return text
 
+func pregnancy():
+	var text = ''
+	if person.get_stat('pregnancy').duration > 0 :
+		if variables.pregduration/3 > person.get_stat('pregnancy').duration:
+			text += tr("BODYPARTPREGLINELATE")
+			
+		elif variables.pregduration/1.5 > person.get_stat('pregnancy').duration:
+			text += tr("BODYPARTPREGLINEEARLY")
+			
+	
+	
+	return text
 
 func piercing():
 	var text = ""

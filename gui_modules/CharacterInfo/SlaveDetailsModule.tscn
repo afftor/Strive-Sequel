@@ -415,8 +415,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
+current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -510,8 +510,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
+current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
+current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false

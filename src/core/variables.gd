@@ -298,7 +298,7 @@ var argtypesdesc = ['outside assigned argument of effect instance',"parameter of
 var receiver_list = ['target', 'caster', 'all']
 var bodypart_list = ['skin', 'height', 'hair_length', 'hair_color', 'hair_style', 'ears', 'eye_color', 'eye_shape', 'horns', 'wings', 'tail', 'arms', 'legs', 'lower_body', 'body_shape', 'skin_coverage', 'fur', 'facial_hair', 'penis_size', 'penis_type', 'balls_size', 'tits_size', 'vagina', 'ass_size', 'has_pussy', 'multiple_tits', 'multiple_tits_developed', 'has_womb','lactation', 'penis_virgin', 'vaginal_virgin', 'anal_virgin', 'mouth_virgin']
 var slots = ["chest","underwear", "legs", "hands", "rhand", "lhand", "neck", "head", "ass", "croach"]
-var interactioneffs = ['alcohol','aphrodisiac','sensetivity_pot']
+var interactioneffs = ['alcohol','aphrodisiac','sensitivity_pot']
 
 
 var personality_conversion_rates = {

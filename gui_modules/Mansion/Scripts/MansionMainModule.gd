@@ -474,7 +474,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
 		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
 		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
-		ResourceScripts.game_res.upgrades.tailor = 1
+		ResourceScripts.game_res.upgrades.tailor = 3
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 		
 	#	globals.impregnate(character, character)
@@ -575,14 +575,14 @@ func test_mode():
 		character2.set_stat('wits', 0)
 		character2.set_stat('sexuals', 0)
 		var text = ''
-		for i in races.tasklist.values():
-			for k in i.production.values():
-				var value = character.get_progress_task(i.code, k.code, true) / k.progress_per_item
-				if Items.materiallist.has(k.item):
-					pass
-
-				else:
-					pass
+#		for i in races.tasklist.values():
+#			for k in i.production.values():
+#				var value = character.get_progress_task(i.code, k.code, true) / k.progress_per_item
+#				if Items.materiallist.has(k.item):
+#					pass
+#
+#				else:
+#					pass
 
 		var base_price = 0
 		var output_price = 0
@@ -659,7 +659,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
-		globals.AddItemToInventory(globals.CreateUsableItem("alcohol"))
+		globals.AddItemToInventory(globals.CreateUsableItem("sensitivity_pot"))
 		globals.AddItemToInventory(globals.CreateUsableItem("exp_scroll", 4))
 		globals.AddItemToInventory(globals.CreateUsableItem("writ_of_exemption", 3))
 		globals.AddItemToInventory(globals.CreateUsableItem("lifegem", 5))
@@ -713,11 +713,11 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message("dungeon_find_chest_easy", '',{})
+		input_handler.interactive_message("event_goblin_friendly", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
-			i.reputation = 1000
-			i.totalreputation += 1000
+			i.reputation = 100000
+			i.totalreputation += 100000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 
 		# character = ResourceScripts.scriptdict.class_slave.new()

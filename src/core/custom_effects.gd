@@ -123,9 +123,9 @@ func pheromones(character):
 		character.add_stat("lust", character.get_stat("lustmax"))
 	input_handler.interactive_message("pheromones_use",'char_translate',character)
 
-func sensetivity_pot(character):
+func sensitivity_pot(character):
 	character.add_stat("lust", character.get_stat("lustmax"))
-	input_handler.interactive_message("sensetivity_pot_use",'char_translate',character)
+	input_handler.interactive_message("sensitivity_pot_use",'char_translate',character)
 
 func close():#for the cancel function
 	input_handler.get_spec_node(input_handler.NODE_DIALOGUE).close()

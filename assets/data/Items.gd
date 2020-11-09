@@ -43,7 +43,8 @@ var stats = {
 	sexuals_bonus = '',
 	timid_factor = '',
 	
-	loyalty_gain_mod = ''
+	loyalty_gain_mod = '',
+	lusttick = '',
 }
 
 
@@ -1588,8 +1589,8 @@ var itemlist = {
 		mansion_effect = 'aphrodisiac',
 		interaction_effect = 'aphrodisiac',
 	},
-	sensetivity_pot = {
-		code = 'sensetivity_pot',
+	sensitivity_pot = {
+		code = 'sensitivity_pot',
 		name = "",
 		descript = "",
 		type = 'usable',
@@ -1602,7 +1603,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		interaction_effect = 'sensetivity_pot',
+		interaction_effect = 'sensitivity_pot',
 	},
 	alcohol = {
 		code = 'alcohol',
