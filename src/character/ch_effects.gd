@@ -42,7 +42,15 @@ func find_eff_by_trait(trait_code):
 				res.push_back(e)
 	return res
 
-
+func find_eff_by_tattoo(slot, code):
+	var tag = "%s_%s" % [slot, code]
+	var res = []
+	for e in (static_effects + triggered_effects + temp_effects):
+		var eff = effects_pool.get_effect_by_id(e)
+		if eff.self_args.has('tattoo'):
+			if eff.self_args.tattoo == tag:
+				res.push_back(e)
+	return res
 func find_eff_by_item(item_id):
 	var res = []
 	for e in (static_effects + triggered_effects + temp_effects):
