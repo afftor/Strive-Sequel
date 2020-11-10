@@ -2965,7 +2965,7 @@ var effect_table = {
 		type = 'temp_u',
 		stack = 1,
 		name = 'pregnancy',
-		tags = ['pregnant'],
+		tags = ['pregnant', 'heavy_pregnant'],
 		atomic = [
 			{type = 'stat_add', stat = 'speed', value = -20},
 			{type = 'stat_add', stat = 'physics_bonus', value = -40},
