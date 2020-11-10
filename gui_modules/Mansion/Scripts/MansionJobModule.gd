@@ -88,7 +88,9 @@ func open_jobs_window():
 				if location.completed == true:
 					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources
 			else:
-				gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
+				if ResourceScripts.world_gen.get_location_from_code(person_location).has("gather_resources"):
+					gatherable_resources = ResourceScripts.world_gen.get_location_from_code(person_location).gather_resources
+					
 		else:
 			gatherable_resources = ResourceScripts.game_world.areas[location.area].gatherable_resources
 			for i in races.tasklist.values():
