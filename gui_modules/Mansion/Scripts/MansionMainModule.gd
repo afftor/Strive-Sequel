@@ -153,6 +153,9 @@ func mansion_state_set(state):
 	get_node("TutorialButton").show()
 
 func reset_vars():
+	input_handler.interacted_character = null
+	SlaveListModule.active_person = null
+	SlaveModule.person = null
 	if mansion_state != mansion_prev_state:
 		select_chars_mode = false
 		selected_upgrade = null
@@ -161,7 +164,6 @@ func reset_vars():
 	if active_person == null:
 		active_person = ResourceScripts.game_party.get_master()
 	Journal.hide()
-		# sex_participants.clear()
 
 # Handles Resizing and visibility
 func match_state():

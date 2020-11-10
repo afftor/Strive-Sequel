@@ -2954,7 +2954,7 @@ var effect_table = {
 		next_level = 'e_pregnancy1',
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/icon_reincarnation.png",
+			icon = "res://assets/images/iconsskills/preg_icon1.png",
 			description = "Is pregnant. Speed -10, Physics Bonus -20",
 			args = [],
 			limit = 1,
@@ -2972,7 +2972,7 @@ var effect_table = {
 		],
 		sub_effects = [],
 		buffs = [{
-			icon = "res://assets/images/iconsskills/icon_reincarnation.png",
+			icon = "res://assets/images/iconsskills/preg_icon2.png",
 			description = "Is heavily pregnant. Speed -20, Physics Bonus -40",
 			args = [],
 			limit = 1,
