@@ -7,6 +7,8 @@ var sex_traits = {}
 var negative_sex_traits = {}
 var unlocked_sex_traits = []
 var parent = null
+var reported_pregnancy = false
+
 
 func _init():
 	for i in variables.resists_list:
@@ -789,13 +791,20 @@ func tick():
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
-		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2 and !check_trait('breeder'):
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
-			parent.apply_effect(effects_pool.add_effect(eff))
+		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2:
+			if reported_pregnancy == false:
+				var text = tr("LOGREPORTPREGNANCY")
+				if parent.has_profession('master'): text = tr('LOGREPORTPREGNANCYMASTER')
+				reported_pregnancy = true
+				input_handler.globals.text_log_add('char', translate(text))
+			if !check_trait('breeder'):
+				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
+				parent.apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration * 3 <= variables.pregduration:
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
 			parent.apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration == 0:
+			reported_pregnancy = false
 			parent.remove_all_temp_effects_tag('pregnant')
 			input_handler.interactive_message('childbirth', 'childbirth', {pregchar = parent})
 	

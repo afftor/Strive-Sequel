@@ -422,6 +422,9 @@ var TranslationDict = {
 	SYSNOWORKERENERGY = "Work canceled: No energy",
 	DIALOGUEREPEATACTION = "Repeat",
 	
+	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
+	LOGREPORTPREGNANCYMASTEr = "It seems, that you([name]) are pregnant.",
+	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
 	SELECTWORKER = "Select Worker",
