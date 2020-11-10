@@ -841,8 +841,8 @@ func tick():
 	
 	food.tick()
 	
-	self.hp += variables.basic_hp_regen
-	self.mp += variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic
+	self.hp += variables.basic_hp_regen # * get_stat('hp_reg_mod')
+	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) #* get_stat('mp_reg_mod')
 	
 	statlist.tick()
 #	if !has_status('no_obed_reduce'):
@@ -862,8 +862,8 @@ func tick():
 			return
 
 func rest_tick():
-	self.hp += variables.basic_hp_regen * 2 * get_stat('hp_reg_mod')
-	self.mp += (variables.basic_mp_regen + variables.mp_regen_per_magic * get_stat('magic_factor')) * 2 * get_stat('mp_reg_mod')
+	self.hp += variables.basic_hp_regen * 2# * get_stat('hp_reg_mod')
+	self.mp += (variables.basic_mp_regen + variables.mp_regen_per_magic * get_stat('magic_factor')) * 2 #* get_stat('mp_reg_mod')
 	for e in find_temp_effect_tag('addition_rest_tick'):
 		var eff = effects_pool.get_effect_by_id(e)
 		eff.process_event(variables.TR_TICK)
