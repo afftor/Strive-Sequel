@@ -68,6 +68,7 @@ func set_new_scene(scene_resource):
 	get_node("/root").add_child(current_scene)
 	get_node("/root").remove_child(self)
 	if input_handler.CurrentScene.name == "MansionMainModule":
+		input_handler.interacted_character = null
 		input_handler.CurrentScene.mansion_state_set("default")
 	globals.emit_signal("scene_changed")
 	self.queue_free()
