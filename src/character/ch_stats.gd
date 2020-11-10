@@ -791,7 +791,7 @@ func tick():
 	add_stat('lust', get_stat('lusttick'))
 	if statlist.pregnancy.duration > 0 && statlist.pregnancy.baby != null:
 		statlist.pregnancy.duration -= 1
-		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2:
+		if statlist.pregnancy.duration * 3 <= variables.pregduration * 2 and !parent.has_status('pregnant'):
 			if reported_pregnancy == false:
 				var text = tr("LOGREPORTPREGNANCY")
 				if parent.has_profession('master'): text = tr('LOGREPORTPREGNANCYMASTER')
@@ -801,8 +801,9 @@ func tick():
 				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
 				parent.apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration * 3 <= variables.pregduration:
-			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
-			parent.apply_effect(effects_pool.add_effect(eff))
+			if check_trait('breeder') and !parent.has_status('pregnant') or !check_trait('breeder') and !parent.has_status('heavy_pregnant'):
+				var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_pregnancy)
+				parent.apply_effect(effects_pool.add_effect(eff))
 		if statlist.pregnancy.duration == 0:
 			reported_pregnancy = false
 			parent.remove_all_temp_effects_tag('pregnant')
