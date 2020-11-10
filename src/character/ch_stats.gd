@@ -856,3 +856,37 @@ func translate(text):
 	text = text.replace("[boy]", globals.fastif(statlist.sex == 'male', 'boy', 'girl'))
 	return text
 
+#tatoo functional is here, though it can be moved to separate component
+var tattoo = {face = null, neck = null, arms = null, legs = null, chest = null, crotch = null, waist = null, ass = null}
+
+func can_add_tattoo(slot, code):
+	if !Traitdata.get_slot_list_for_tat(code).has(slot): return false
+	var template = Traitdata.tattoodata[code]
+	if tattoo[slot] == code : return false
+	if template.has('conditions'): 
+		if !parent.checkreqs(template.conditions): return false
+	if ResourceScripts.game_res.if_has_material(template.ink, 'lt', 1): return false
+	if !template.can_repeat:
+		for s in tattoo:
+			if tattoo[s] == code: return false
+	return true
+
+func add_tattoo(slot, code):
+	if !can_add_tattoo(slot, code): return
+	var template = Traitdata.tattoodata[code]
+	if tattoo[slot] != null: remove_tattoo(slot)
+	for slots in template.effects:
+		if !slots.has(slot): continue
+		for e in template.effects.slots:
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
+			parent.apply_effect(effects_pool.add_effect(eff))
+			eff.set_args('tattoo', "%s_%s" % [slot, code])
+	tattoo[slot] = code
+
+func remove_tattoo(slot):
+	if tattoo[slot] == null: return
+	var arr = parent.find_eff_by_tattoo(slot, tattoo[slot])
+	for e in arr:
+		var eff = effects_pool.get_effect_by_id(e)
+		eff.remove()
+	tattoo[slot] = null

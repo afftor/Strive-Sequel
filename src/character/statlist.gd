@@ -36,6 +36,8 @@ var template = {
 	hpmax = 100, 
 	mpmax = 50,
 	exp_mod = 1,
+	hp_reg_mod = 1.0,
+	mp_reg_mod = 1.0,
 	#enemy combat/reward data
 	xpreward = 10,
 	loottable = "",

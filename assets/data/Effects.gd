@@ -2979,6 +2979,54 @@ var effect_table = {
 			t_name = 'preg',
 		}]
 	},
+	e_brand = {
+		type = 'static',
+		atomic = [{type = 'stat_mul', stat = 'obDrainReduction', value = 0.75}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_mkup = {
+		type = 'static',
+		atomic = [{type = 'stat_add', stat = 'charm_bonus', value = 10}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tlust1 = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.1}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tlust2 = {
+		type = 'static',
+		atomic = [{type = 'stat_add_p', stat = 'lusttick', value = 0.2}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_thpr = {
+		type = 'static',
+		atomic = [{type = 'stat_add', stat = 'hp_reg_mod', value = 0.2}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_tmpr = {
+		type = 'static',
+		atomic = [{type = 'stat_add', stat = 'mp_reg_mod', value = 0.1}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_trib1 = {
+		type = 'static',
+		atomic = [{type = 'stat_add', stat = 'physics_bonus', value = 3}],
+		buffs = [],
+		sub_effects = [],
+	},
+	e_trib2 = {
+		type = 'static',
+		atomic = [{type = 'stat_add', stat = 'hpmax', value = 5}],
+		buffs = [],
+		sub_effects = [],
+	},
 };
 
 var atomic = {

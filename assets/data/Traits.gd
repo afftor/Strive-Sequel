@@ -1016,3 +1016,73 @@ var sex_traits = { #only for interaction tab
 #		effects = [{effect = 'sens_bonus', operant = "+", value = 0.25},{effect = 'horny_bonus', operant = "+", value = 0.25}],
 #	},
 }
+
+
+var tattoodata = {
+	brand = {
+		name = 'Branding',
+		can_repeat = false,
+		conditions = [{code = 'is_master', check = false}],
+		ink = 'ink1',
+		effects = {
+			['neck','crotch','ass']: ['e_brand']
+		}
+	},
+	makeup = {
+		name = 'Makeup',
+		can_repeat = true,
+		ink = 'ink1',
+		effects = {
+			['face']: ['e_mkup']
+		}
+	},
+	lust = {
+		name = 'Lust',
+		can_repeat = true,
+		ink = 'ink1',
+		effects = {
+			['chest','ass']: ['e_tlust1'],
+			['crotch']: ['e_tlust2']
+		}
+	},
+	hp_r = {
+		name = 'HP regen',
+		can_repeat = true,
+		ink = 'ink1',
+		effects = {
+			['arms', 'legs', 'waist']: ['e_thpr']
+		}
+	},
+	mp_r = {
+		name = 'MP regen',
+		can_repeat = true,
+		ink = 'ink1',
+		effects = {
+			['arms', 'legs', 'waist']: ['e_tmpr']
+		}
+	},
+	tribal = {
+		name = 'Tribal',
+		can_repeat = true,
+		ink = 'ink1',
+		effects = {
+			['arms', 'legs', 'chest']: ['e_trib1'],
+			['face']: ['e_trib2']
+		}
+	},
+}
+
+func get_tat_list_for_slot(slot):
+	var res = []
+	for t in tattoodata:
+		for slots in tattoodata.effects:
+			if res.has(t): continue
+			if slots.has(slot): res.push_back(t)
+	return res
+
+func get_slot_list_for_tat(code):
+	var res = []
+	for slots in tattoodata[code].effects:
+		for s in slots: 
+			if !res.has(s): res.push_back(s) 
+	return res
