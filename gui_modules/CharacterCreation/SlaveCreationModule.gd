@@ -33,13 +33,20 @@ func build_bodyparts():
 	$ScrollContainer/HBoxContainer/bodyparts2/personality.select(variables.personality_array.find(person.get_stat('personality')))
 	$ScrollContainer/HBoxContainer/bodyparts2/type_label.visible = get_parent().mode != 'master'
 	$ScrollContainer/HBoxContainer/bodyparts2/slave_class.visible = get_parent().mode != 'master'
+
+	# TODO Rework part with current body part and preserved settings
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	for i in get_parent().bodypartsarray:
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).clear()
 		var current_bodypart = person.get_stat(i)
-		
 		if get_parent().preservedsettings.has(i) == false && current_bodypart != '':
 			get_parent().preservedsettings[i] = current_bodypart
+		# if !racedata.has(i) && get_parent().preservedsettings.has(i):
+		# 	get_parent().preservedsettings[i] = ''
+		# 	get_parent().person.set_stat(i, "")
+		else:
+			if get_parent().preservedsettings.has(i):
+				get_parent().preservedsettings[i] = ''		
 		
 		var workarray = []
 		if racedata.has(i):
@@ -54,7 +61,7 @@ func build_bodyparts():
 				$ScrollContainer/HBoxContainer/bodyparts.get_node(i).select($ScrollContainer/HBoxContainer/bodyparts.get_node(i).get_item_count()-1)
 		
 		if preserved_option_exists == false:
-			get_parent().preservedsettings.erase(i)
+			# get_parent().preservedsettings.erase(i)
 			get_parent().preservedsettings[i] = person.get_stat(i)
 			#preservedsettings[i] = person.get(i)
 			#print(i, person.get(i))
@@ -149,7 +156,6 @@ func build_bodyparts():
 		'futa':
 			$ScrollContainer/HBoxContainer/bodyparts2/penis_virgin.visible = true
 			$ScrollContainer/HBoxContainer/bodyparts2/vaginal_virgin.visible = true
-
 
 func select_bodypart(value, bodypart, node):
 	var person = get_parent().person

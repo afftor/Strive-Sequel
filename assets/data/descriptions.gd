@@ -83,7 +83,6 @@ func new_charcter_description(character):
 				text += newtext + " "
 	
 	text = input_handler.text_cut_excessive_lines(text)
-	
 	return text
 
 func entry():

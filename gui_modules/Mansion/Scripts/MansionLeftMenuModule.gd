@@ -24,6 +24,7 @@ func open_inventory():
 	gui_controller.previous_screen = gui_controller.mansion
 	gui_controller.inventory.show()
 	gui_controller.inventory.set_active_hero(get_parent().active_person)
+	get_parent().mansion_state_set("default")
 	gui_controller.emit_signal("screen_changed")
 	yield(get_tree().create_timer(0.3), "timeout")
 	

@@ -234,7 +234,6 @@ func rebuild_slave():
 	$VBoxContainer/SelectedClass.text = selected_class.capitalize()
 	person.set_stat('food_love',  '')
 	person.set_stat('food_hate', [])
-	apply_preserved_settings()
 	for i in ['name','surname','nickname']:
 		if preservedsettings.has(i):
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
@@ -245,12 +244,22 @@ func rebuild_slave():
 	if preservedsettings.has("sex_traits") && preservedsettings.sex_traits != null:
 		select_sex_trait(preservedsettings.sex_traits)
 	RebuildStatsContainer()
-
-	person.set_stat("race", race)
 	SlaveInfo.build_bodyparts()
 	SlaveInfo.get_node("descript").bbcode_text = person.make_description()
 
+
+func delete_keys_from_preservedsettings(keys):
+	for key in keys:
+		preservedsettings.erase(key)
+
+
 func apply_preserved_settings():
+	var racedata = races.racelist[person.get_stat('race')].bodyparts
+	var keys_to_delete = []
+	for i in bodypartsarray:
+		if preservedsettings.has(i) && preservedsettings[i] != '' && !racedata.has(i):
+			keys_to_delete.append(i)
+	delete_keys_from_preservedsettings(keys_to_delete)
 	for i in preservedsettings:
 		if i == "food_love":
 			person.food.food_love = preservedsettings["food_love"]
