@@ -232,8 +232,16 @@ func rebuild_slave():
 	$VBoxContainer/HBoxContainer/SexVBox/sex.select(sexarray.find(sex))
 	$VBoxContainer/HBoxContainer/AgeVBox/age.select(agearray.find(age))
 	$VBoxContainer/SelectedClass.text = selected_class.capitalize()
-	person.set_stat('food_love',  '')
-	person.set_stat('food_hate', [])
+	if preservedsettings.has("food_love"):
+		if preservedsettings.food_love != '':
+			person.food.food_love = preservedsettings["food_love"]
+	else:
+		person.set_stat('food_love',  '')
+	if preservedsettings.has("food_hate"):
+		if preservedsettings.food_hate != []:
+			person.food.food_hate = preservedsettings["food_hate"]
+	else:
+		person.set_stat('food_hate', [])
 	for i in ['name','surname','nickname']:
 		if preservedsettings.has(i):
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
@@ -377,7 +385,7 @@ func SaveCharacter():
 	var character_to_save = {}
 	for i in params_to_save:
 		character_to_save[i] = person.get_stat(i)
-		if preservedsettings.has(i) && i != "professions": # && !preservedsettings in except_array:
+		if preservedsettings.has(i) && !i in ["professions", "food_love", "food_hate"]: # && !preservedsettings in except_array:
 			character_to_save[i] = preservedsettings[i]
 	character_to_save.professions = selected_class
 	character_to_save["tits_size"] = person.get_stat("tits_size")
@@ -429,30 +437,17 @@ func LoadCharacter():
 			character_to_load[i] = 1
 	selected_class = character_to_load.professions
 	for i in character_to_load:
-		# if i == "sex_traits":
-		# 	continue
+		if i == "food_love":
+			person.food.food_love = character_to_load["food_love"]
+			preservedsettings[i] = character_to_load["food_love"]
+			continue
+		elif i == "food_hate":
+			person.food.food_hate = character_to_load["food_hate"]
+			preservedsettings[i] = character_to_load["food_hate"]
+			continue
 		person.set_stat(i, character_to_load[i])
 		preservedsettings[i] = character_to_load[i]
-	finish_diet_selection()
-#	for i in person.professions:
-#		ClassSelection.select_class(i)
-	# var race = person.get_stat('race')
-	# var sex = person.get_stat('sex')
-	# var age = person.get_stat('age')
-	# person = ResourceScripts.scriptdict.class_slave.new()
-	# person.create(race, sex, age)
-	# person.is_active = false
-	# person.is_known_to_player = true
-	# if mode == 'master':
-	# 	person.unlock_class('master')
-	
-#	$VBoxContainer/race.text = races.racelist[person.race].name
-#	$VBoxContainer/sex.select(sexarray.find(person.sex))
-#	$VBoxContainer/age.select(agearray.find(person.age))
-#	$VBoxContainer/personality.visible = mode != 'master'
-#	$VBoxContainer/personality.select(variables.personality_array.find(person.personality))
-	# person.set_stat("food_love", "")
-	# person.set_stat("food_hate", [])
+
 	for i in ['name','surname','nickname']:
 		if preservedsettings.has(i):
 			$VBoxContainer.get_node(i).text = preservedsettings[i]
@@ -472,13 +467,16 @@ func LoadCharacter():
 					if i.get_class() == "CheckBox":
 						i.pressed = person[i.get_name()]
 					elif i.get_class() == "OptionButton":
-						for i in $DietPanel/VBoxContainer.get_children():
-							i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
+						continue
+						# for i in $DietPanel/VBoxContainer.get_children():
+						# 	i.get_node("OptionButton").connect("item_selected", self, "select_food_pref", [i.name])
 					else:
 						i.text = person[i.get_name()].capitalize()
-	hideSaveLoadPanel()
 	RebuildStatsContainer()
-	rebuild_slave()
+	rebuild_slave()					
+	select_diet()
+	finish_diet_selection()
+	hideSaveLoadPanel()
 	input_handler.SystemMessage("Character Template Loaded")
 	# person.create_s_trait_select(character_to_load.sex_traits)
 
