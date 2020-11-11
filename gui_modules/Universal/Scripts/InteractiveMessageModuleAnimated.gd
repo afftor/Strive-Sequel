@@ -20,6 +20,8 @@ func hide_dialogue(action = "hide"):
 
 # TODO Rework bg updates
 func open(scene, not_save = false):
+	if gui_controller.dialogue == null:
+		gui_controller.dialogue = self
 	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
 		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
