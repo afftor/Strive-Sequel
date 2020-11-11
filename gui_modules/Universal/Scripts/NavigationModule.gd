@@ -121,6 +121,8 @@ func return_to_mansion(with_state = "default"):
 		build_accessible_locations()
 		update_buttons()
 		return
+	ResourceScripts.core_animations.BlackScreenTransition()
+	yield(get_tree().create_timer(0.5), 'timeout')
 	if gui_controller.exploration != null:
 		gui_controller.exploration.get_node("LocationGui").hide()
 	gui_controller.previous_screen = null
@@ -129,8 +131,7 @@ func return_to_mansion(with_state = "default"):
 	input_handler.PlaySound("door_open")
 	input_handler.StopBackgroundSound()
 	input_handler.SetMusicRandom("mansion")
-	ResourceScripts.core_animations.BlackScreenTransition()
-	yield(get_tree().create_timer(0.5), 'timeout')
+
 	gui_controller.mansion.show()
 	gui_controller.mansion.raise()
 	gui_controller.clock.show()
