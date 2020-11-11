@@ -1089,6 +1089,7 @@ func common_effects(effects):
 					if !gui_controller.windows_opened.has(loot_win):
 						gui_controller.windows_opened.append(loot_win)
 					loot_win.open(input_handler.scene_loot)
+					loot_win.raise()
 			'make_scene_character':
 				for k in i.value:
 					var newcharacter

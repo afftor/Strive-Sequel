@@ -20,6 +20,8 @@ func hide_dialogue(action = "hide"):
 
 # TODO Rework bg updates
 func open(scene, not_save = false):
+	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
+		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("variations"):
@@ -516,6 +518,7 @@ func open_chest():
 	if !gui_controller.windows_opened.has(loot_win):
 		gui_controller.windows_opened.append(loot_win)
 	loot_win.open(input_handler.scene_loot)
+	loot_win.raise()
 	# input_handler.get_spec_node(input_handler.NODE_LOOTTABLE).open(input_handler.scene_loot, '[center]Acquired Items:[/center]')
 	# var loot_win = input_handler.get_spec_node(input_handler.ANIM_LOOT)
 	# loot_win.get_node("AnimationPlayer").play("Loot")
