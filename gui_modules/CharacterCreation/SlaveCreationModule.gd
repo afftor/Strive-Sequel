@@ -44,9 +44,9 @@ func build_bodyparts():
 		# if !racedata.has(i) && get_parent().preservedsettings.has(i):
 		# 	get_parent().preservedsettings[i] = ''
 		# 	get_parent().person.set_stat(i, "")
-		else:
-			if get_parent().preservedsettings.has(i):
-				get_parent().preservedsettings[i] = ''		
+		# else:
+		# 	if get_parent().preservedsettings.has(i):
+		# 		get_parent().preservedsettings[i] = ''		
 		
 		var workarray = []
 		if racedata.has(i):
@@ -156,6 +156,7 @@ func build_bodyparts():
 		'futa':
 			$ScrollContainer/HBoxContainer/bodyparts2/penis_virgin.visible = true
 			$ScrollContainer/HBoxContainer/bodyparts2/vaginal_virgin.visible = true
+
 
 func select_bodypart(value, bodypart, node):
 	var person = get_parent().person

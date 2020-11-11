@@ -257,7 +257,7 @@ func apply_preserved_settings():
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	var keys_to_delete = []
 	for i in bodypartsarray:
-		if preservedsettings.has(i) && preservedsettings[i] != '' && !racedata.has(i):
+		if !races.racelist.Human.bodyparts.has(i) && preservedsettings.has(i) && preservedsettings[i] != '' && !racedata.has(i):
 			keys_to_delete.append(i)
 	delete_keys_from_preservedsettings(keys_to_delete)
 	for i in preservedsettings:
