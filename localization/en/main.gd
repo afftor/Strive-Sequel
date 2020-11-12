@@ -2566,5 +2566,7 @@ var TranslationDict = {
 	JOBTUTORIAL3 = "Production is based on the Total Productivity modifier. Different tasks have different additional modifiers, i.e. Stone or Iron Mining will also be affected by \"Collect Efficiency\". Productivity can be viewed at the character's info panel when hovering over.",
 
 	NOSLAVESINMARKET = "No Slaves Avalible.",
+	RESETLOADCHARPROFESSION = "Class doesn't match current guild.\nStarting class will be reseted.",
+	TEMPLATETYPENOTMATCH = "Can't use this template. Types doesn't match.",
 }
 
