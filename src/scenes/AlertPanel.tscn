@@ -30,6 +30,10 @@ __meta__ = {
 ;; instantiated. So let's set the defaults to something
 ;; developer-friendly (such as "<bbcode>").
 
+;; Expect all default text to be replaced (or hidden) when the alert is
+;; instantiated. So let's set the defaults to something
+;; developer-friendly (such as "<bbcode>").
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 53.0
 margin_top = 34.9474
