@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
 [ext_resource path="res://src/scenes/confirmpanel.gd" type="Script" id=21]
 
 [node name="ConfirmPanel" type="Popup"]
@@ -21,12 +22,16 @@ __meta__ = {
 [node name="TextureRect" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 53.0
 margin_top = 34.9474
 margin_right = 477.0
 margin_bottom = 138.947
+theme = ExtResource( 5 )
 custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 bbcode_text = "Load/Overwrite?"
 text = "Load/Overwrite?"

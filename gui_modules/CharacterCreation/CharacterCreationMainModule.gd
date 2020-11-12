@@ -414,18 +414,33 @@ func PressLoadCharacter(savename = null):
 		$SaveLoadCharPanel/LineEdit.text = savename
 		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'LoadCharacter', tr("LOADTEMPLATECONFIRM")])
 
+var temp_character
+func reset_profession():
+	temp_character.professions = ''
+	LoadCharacter(temp_character)
 
-func LoadCharacter():
-	var loadfilename = $SaveLoadCharPanel/LineEdit.text + ".ch"
-	var file = File.new()
-	file.open(variables.userfolder + "savedcharacters/" + loadfilename, file.READ)
-	var text = file.get_as_text()
-	var parse_result
-	parse_result = JSON.parse(text)
-	var character_to_load = parse_result.result
+
+func LoadCharacter(updated_char_to_load = null):
+	var character_to_load
+	if updated_char_to_load == null:
+		var loadfilename = $SaveLoadCharPanel/LineEdit.text + ".ch"
+		var file = File.new()
+		file.open(variables.userfolder + "savedcharacters/" + loadfilename, file.READ)
+		var text = file.get_as_text()
+		var parse_result
+		parse_result = JSON.parse(text)
+		character_to_load = parse_result.result
+	else:
+		character_to_load = updated_char_to_load
+	temp_character = character_to_load
+	# Load availability checking
 	if character_to_load != null && character_to_load.type != mode:
-		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("Can't use this template. Types doesn't match.")])
+		input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'hideSaveLoadPanel', tr("TEMPLATETYPENOTMATCH")])
 		return
+	if guild != "none":
+		if character_to_load != null && character_to_load.professions != '' && !character_to_load.professions in variables.get(guild+'_starting_classes'):
+			input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'reset_profession', tr("RESETLOADCHARPROFESSION")])
+			return
 	var check_stats = 0
 	var stats_array = []
 	for i in character_to_load:
@@ -479,6 +494,7 @@ func LoadCharacter():
 	hideSaveLoadPanel()
 	input_handler.SystemMessage("Character Template Loaded")
 	# person.create_s_trait_select(character_to_load.sex_traits)
+	temp_character = null
 
 
 func DeleteCharacter():

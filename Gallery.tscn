@@ -1,0 +1,196 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=2]
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Textures_v2/Gallery/buttongallery.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/Gallery/background_gallery.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/Gallery/buttongallery_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/Gallery/buttongallery_pressed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Textures_v2/Gallery/frame_gallery_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/Gallery/frame_gallery_pressed.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="Gallery" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_horizontal_guides_": [ 153.037 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 960.151, 74.0, 1845.74 ]
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="."]
+margin_right = 1920.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Gallery"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScenesButton" type="TextureButton" parent="."]
+margin_left = 757.751
+margin_top = 84.0
+margin_right = 953.751
+margin_bottom = 134.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScenesButton"]
+margin_right = 196.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Scenes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlotButton" type="TextureButton" parent="."]
+margin_left = 966.466
+margin_top = 84.0
+margin_right = 1162.47
+margin_bottom = 134.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PlotButton"]
+margin_right = 196.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Plot"
+align = 1
+valign = 1
+
+[node name="Pagination" type="HBoxContainer" parent="."]
+margin_left = 276.0
+margin_top = 153.0
+margin_right = 1644.0
+margin_bottom = 205.0
+custom_constants/separation = 18
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Pagination"]
+margin_right = 52.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+theme = ExtResource( 2 )
+text = "1"
+
+[node name="Button2" type="Button" parent="Pagination"]
+margin_left = 70.0
+margin_right = 122.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+theme = ExtResource( 2 )
+text = "1"
+
+[node name="Button3" type="Button" parent="Pagination"]
+margin_left = 140.0
+margin_right = 192.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+theme = ExtResource( 2 )
+text = "1"
+
+[node name="Button4" type="Button" parent="Pagination"]
+margin_left = 210.0
+margin_right = 262.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+theme = ExtResource( 2 )
+text = "1"
+
+[node name="Button5" type="Button" parent="Pagination"]
+margin_left = 280.0
+margin_right = 332.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+theme = ExtResource( 2 )
+text = "1"
+
+[node name="Button6" type="Button" parent="Pagination"]
+margin_left = 350.0
+margin_right = 402.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 52, 52 )
+theme = ExtResource( 2 )
+text = "1"
+
+[node name="ImageContainer" type="GridContainer" parent="."]
+margin_left = 74.0
+margin_top = 240.0
+margin_right = 1846.0
+margin_bottom = 1004.0
+custom_constants/hseparation = 28
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="ImageContainer"]
+margin_right = 436.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 436, 252 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="Button2" type="TextureButton" parent="ImageContainer"]
+margin_left = 464.0
+margin_right = 900.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 436, 252 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="Button3" type="TextureButton" parent="ImageContainer"]
+margin_left = 928.0
+margin_right = 1364.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 436, 252 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+
+[node name="Button4" type="TextureButton" parent="ImageContainer"]
+margin_left = 1392.0
+margin_right = 1828.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 436, 252 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
