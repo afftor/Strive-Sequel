@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery.png" type="Texture" id=51]
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_hover.png" type="Texture" id=52]
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_pressed.png" type="Texture" id=53]
+[ext_resource path="res://Gallery.tscn" type="PackedScene" id=54]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -1280,3 +1281,6 @@ Also thanks to: negtize724"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Gallery" parent="." instance=ExtResource( 54 )]
+visible = false

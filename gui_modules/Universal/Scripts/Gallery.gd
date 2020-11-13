@@ -8,6 +8,7 @@ func _ready():
 	$StoryButton.set_meta("type", "story")
 	$EroButton.connect("pressed", self, "set_state", ["ero"])
 	$EroButton.set_meta("type", "ero")
+	$CloseButton.connect("pressed", self, "close_galery")
 	load_images("story")
 	show_scene_images() 
 
@@ -56,3 +57,9 @@ func show_fullscreen(image):
 	$FullScreenImage.show()
 	$FullScreenImage.texture = load(image)
 	ResourceScripts.core_animations.UnfadeAnimation($FullScreenImage)
+
+
+func close_galery():
+	ResourceScripts.core_animations.FadeAnimation(self)
+	yield(get_tree().create_timer(0.3), "timeout")
+	hide()

@@ -176,6 +176,7 @@ __meta__ = {
 }
 
 [node name="Button" type="TextureButton" parent="ImageContainer"]
+visible = false
 margin_right = 422.0
 margin_bottom = 238.0
 rect_min_size = Vector2( 422, 238 )

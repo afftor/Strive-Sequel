@@ -12,3 +12,5 @@ func _ready():
 
 func close_parent():
 	ResourceScripts.core_animations.FadeAnimation(get_parent())
+	yield(get_tree().create_timer(0.3), "timeout")
+	get_parent().hide()
