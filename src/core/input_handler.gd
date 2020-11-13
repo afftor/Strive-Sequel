@@ -225,7 +225,7 @@ func update_progress_data(field, value):
 		"ero_scenes":
 			append_not_duplicate(data.ero_scenes, value.get_load_path())
 		_: #Default
-			append_not_duplicate(data.scenes_seen, value)
+			append_not_duplicate(data[field], value)
 	file = File.new()
 	file.open(variables.userfolder + 'progress-data', file.WRITE)
 	text = JSON.print(data)
