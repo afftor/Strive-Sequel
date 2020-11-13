@@ -164,6 +164,13 @@ var globalsettings = {
 	
 } setget settings_save
 
+# Progress data template
+var progress_data = {
+	story_scenes = [],
+	ero_scenes = []
+}
+
+
 func set_previous_scene(scene):
 	PreviousScene = scene
 
@@ -191,6 +198,38 @@ func settings_save(value):
 	config.save(variables.userfolder + "Settings.ini")
 	if CurrentScene != null and weakref(CurrentScene) != null and CurrentScene.name == 'mansion':
 		CurrentScene.set_time_buttons()
+
+
+func update_progress_data(field, value):
+	if !progress_data.has(field):
+		print("Warning: progress data has no '", str(field), "' field.")
+		return
+
+	var text
+	var parse_result
+	var data
+	var file = File.new()
+	if file.file_exists(variables.userfolder + 'progress-data'):
+		file.open(variables.userfolder + 'progress-data', file.READ)
+		text = file.get_as_text()
+		parse_result = JSON.parse(text)
+		data = parse_result.result
+	else:
+		data = progress_data
+	file.close()
+	match field:
+		"story_scenes":
+			append_not_duplicate(data.story_scenes, value.get_load_path()) #Passed "value" should be the type of StreamTexture
+		"ero_scenes":
+			append_not_duplicate(data.ero_scenes, value.get_load_path())
+		_: #Default
+			append_not_duplicate(data.scenes_seen, value)
+	file = File.new()
+	file.open(variables.userfolder + 'progress-data', file.WRITE)
+	text = JSON.print(data)
+	file.store_string(text)
+	file.close()
+
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -1252,5 +1291,7 @@ func font_size_calculator(label): #, text, font):
 	return new_font
 
 
-
+func append_not_duplicate(list, value):
+	if !list.has(value):
+		list.append(value)
 

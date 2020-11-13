@@ -26,6 +26,12 @@ func open(scene, not_save = false):
 		get_tree().get_root().get_node("ANIMLoot").raise()
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
+	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
+		if scene.has("scene_type"):
+			if scene.scene_type == "story_scene":
+				input_handler.update_progress_data("story_scenes", images.backgrounds[scene.custom_background])
+			elif scene.scene_type == "ero_scene":
+				input_handler.update_progress_data("ero_scenes", images.backgrounds[scene.custom_background])
 	if scene.has("variations"):
 		for i in scene.variations:
 			if globals.checkreqs(i.reqs):

@@ -386,6 +386,8 @@ var data = {
 		],
 		dialogue_type = 2,
 		custom_background = "lich_aire_talk4",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		image = null,
 		character = 'aire',
 		tags = [],
@@ -446,6 +448,8 @@ var data = {
 	lich_aire_talk7 = {
 		image = null,
 		custom_background = "lich_aire_talk7",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = [],
 		text = [
 		{text = "LICHAIRETALK7", reqs = []},
