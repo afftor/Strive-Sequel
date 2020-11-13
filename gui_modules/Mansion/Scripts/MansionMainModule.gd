@@ -64,7 +64,7 @@ var mansion_prev_state
 var prev_selected_travel
 
 var always_show = [
-	"TestButton",
+	# "TestButton",
 	"MansionTaskInfoModule",
 	"MansionClockModule",
 	"MansionBottomLeftModule",
