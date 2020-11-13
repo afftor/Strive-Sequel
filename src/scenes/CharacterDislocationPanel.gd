@@ -65,7 +65,7 @@ var returnperson
 
 func return_confirm(person):
 	returnperson = person
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character', person.translate('Send [name] back to Mansion?')])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character', person.translate('Send [name] back to Mansion?')])
 
 func return_character():
 	returnperson.return_to_mansion()

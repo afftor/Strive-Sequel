@@ -43,7 +43,7 @@ func PlayClickSound():
 
 
 func Exit():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'MainMenu', tr('LEAVECONFIRM')])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'MainMenu', tr('LEAVECONFIRM')])
 	#input_handler.ShowConfirmPanel(self, 'MainMenu', tr('LEAVECONFIRM'))
 
 func MainMenu():
