@@ -22,6 +22,7 @@ func _ready():
 		$VBoxContainer.get_child(i).connect("toggled",self,buttonlist[i], [$VBoxContainer.get_child(i)])
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
+	$VBoxContainer/gallery.connect("pressed", self, "gallery")
 	$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	yield(get_tree().create_timer(0.1), "timeout")
@@ -115,6 +116,9 @@ func options(pressed, pressed_button):
 	self.current_pressed_btn = pressed_button
 	$Options.visible = pressed
 	$Options.open()
+
+func gallery():
+	$Gallery.show()
 
 
 func credits(pressed, pressed_button):

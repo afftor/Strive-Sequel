@@ -69,6 +69,8 @@ func LoadPanelOpen():
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
 
 func PressLoadGame(savename):
+	gui_controller.close_all_closeable_windows()
+	gui_controller.windows_opened.clear()
 	$LineEdit.text = savename
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadGame', tr("LOADCONFIRM")])
 	#input_handler.ShowConfirmPanel(self, 'LoadGame',tr("LOADCONFIRM"))

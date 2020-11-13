@@ -444,12 +444,13 @@ func remove_hovered_person():
 
 
 func _on_TestButton_pressed():
-	print(input_handler.active_area)
-	var counter = 0
-	for i in ResourceScripts.game_party.character_order:
-		print(i)
-		counter += 1
-	print(counter)
+	print(ResourceScripts.game_progress.seen_dialogues)
+	# print(input_handler.active_area)
+	# var counter = 0
+	# for i in ResourceScripts.game_party.character_order:
+	# 	print(i)
+	# 	counter += 1
+	# print(counter)
 	# print(ResourceScripts.game_progress.active_tutorials)
 	# print(ResourceScripts.game_party.active_tasks)
 	# print(ResourceScripts.game_party.characters[ResourceScripts.game_party.character_order[0]].checkreqs([{code = 'has_wooden_gear'}]))
@@ -716,7 +717,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message("event_goblin_friendly", '',{})
+		input_handler.interactive_message("lich_aire_talk4", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000

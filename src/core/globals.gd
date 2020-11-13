@@ -1183,17 +1183,36 @@ func common_effects(effects):
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
 			'set_bg':
-				gui_controller.dialogue.get_node("EventBackground").show()
-				if ResourceScripts.game_progress.decisions.has("aire_is_dead"):
-					gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds.anastasia_event_dead
+				var image
+				if i.progress_based:
+					image = get_image_based_on_progress(i.value)
 				else:
-					gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds.anastasia_event_alive
+					image = images.backgrounds[i.value]
+				gui_controller.dialogue.get_node("EventBackground").show()
+				gui_controller.dialogue.get_node("EventBackground").texture = image
+				if i.save_to_gallery:
+					if i.has("scene_type") && i.scene_type == "ero_scene":
+						input_handler.update_progress_data("ero_scenes", image)
+					elif i.has("scene_type") && i.scene_type == "story_scene":
+						input_handler.update_progress_data("story_scenes", image)
 			'unlock_class':
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
 					input_handler.play_unlock_class_anim(i.name)
 			'reset_day_count':
 				ResourceScripts.game_progress.reset_day_count(i.quest)
+
+
+func get_image_based_on_progress(event_name):
+	var image
+	match event_name:
+		"anastasia_event":
+			if ResourceScripts.game_progress.decisions.has("aire_is_dead"):
+				image = images.backgrounds.anastasia_event_dead
+			else:
+				image = images.backgrounds.anastasia_event_alive
+	return image
+
 
 func checkreqs(array):
 	var check = true

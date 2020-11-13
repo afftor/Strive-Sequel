@@ -264,7 +264,7 @@ var data = {
 		text = [
 			{text = "SERVANTSELECTIONFINISH8", reqs = []}
 		],
-		common_effects = [{code = 'set_music', value = 'battle2'}, {code = 'set_bg', value = 'anastasia_event_alive'}],
+		common_effects = [{code = 'set_music', value = 'battle2'}, {code = 'set_bg', progress_based = true, value = 'anastasia_event', save_to_gallery = true, scene_type = "story_scene"}],
 		options = [
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
 		]
