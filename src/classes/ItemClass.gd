@@ -124,8 +124,8 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 			var material = Items.materiallist[parts[i]]
 			var materialeffects = material['parts'][i].duplicate(true)
 			if itemtemplate.itemtype == 'armor':
-				for i in materialeffects:
-					materialeffects[i] = float(materialeffects[i]) / 2
+				for j in materialeffects:
+					materialeffects[j] = float(materialeffects[j]) / 2
 			materials.append(material.code)
 			input_handler.AddOrIncrementDict(parteffectdict, materialeffects)
 #		if parteffectdict.has('durabilitymod'):

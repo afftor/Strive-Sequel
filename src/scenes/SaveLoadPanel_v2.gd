@@ -29,8 +29,8 @@ func SavePanelOpen():
 			config.load(i)
 			var details = config.get_section_keys('details')
 			savedata[savename] = {}
-			for i in details:
-				savedata[savename][i] = config.get_value("details", i, null)
+			for detail in details:
+				savedata[savename][detail] = config.get_value("details", detail, null)
 		if i.ends_with('.sav') == false:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
@@ -55,8 +55,8 @@ func LoadPanelOpen():
 			config.load(i)
 			var details = config.get_section_keys('details')
 			savedata[savename] = {}
-			for i in details:
-				savedata[savename][i] = config.get_value("details", i, null)
+			for detail in details:
+				savedata[savename][detail] = config.get_value("details", detail, null)
 		if i.ends_with('.sav') == false:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
