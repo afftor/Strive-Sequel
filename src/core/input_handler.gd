@@ -81,7 +81,9 @@ enum {
 	NODE_DIALOGUE_T2,
 	NODE_INVENTORY,
 	NODE_POPUP,
+	NODE_ALERT_PANEL,
 	NODE_CONFIRMPANEL,
+	NODE_YESNOPANEL,
 	NODE_SLAVESELECT,
 	NODE_SKILLSELECT,
 	NODE_EVENT,
@@ -1124,7 +1126,7 @@ func get_value_node(node):
 
 func meowingcondition(character):
 	var allow = false
-	if input_handler.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]):
+	if input_handler.globalsettings.meowing == true && character.checkreqs([{code = 'one_of_races', value = ['BeastkinCat','HalfkinCat']}]) && character.has_profession('master') == false:
 		allow = true
 	return allow
 

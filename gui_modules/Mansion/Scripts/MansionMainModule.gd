@@ -153,6 +153,9 @@ func mansion_state_set(state):
 	get_node("TutorialButton").show()
 
 func reset_vars():
+#	input_handler.interacted_character = null
+#	SlaveListModule.active_person = null
+#	SlaveModule.person = null
 	if mansion_state != mansion_prev_state:
 		select_chars_mode = false
 		selected_upgrade = null
@@ -161,7 +164,6 @@ func reset_vars():
 	if active_person == null:
 		active_person = ResourceScripts.game_party.get_master()
 	Journal.hide()
-		# sex_participants.clear()
 
 # Handles Resizing and visibility
 func match_state():
@@ -468,7 +470,7 @@ func test_mode():
 
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('Dragonkin', 'male', 'random')
+		character.create('Dragonkin', 'futa', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -535,7 +537,8 @@ func test_mode():
 			character.skills.social_skills.append(i)
 		character.is_players_character = true
 		globals.impregnate(character, character)
-		#character.get_stat('pregnancy').duration = 2
+		#character.get_stat('pregnancy').duration = 10
+		print(character.get_stat('pregnancy'))
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Elf', 'male', 'random')

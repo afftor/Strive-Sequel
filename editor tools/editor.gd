@@ -89,5 +89,5 @@ func create_mod():
 
 
 func exit():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [input_handler, 'quit', "Exit program?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [input_handler, 'quit', "Exit program?"])
 #	input_handler.quit()

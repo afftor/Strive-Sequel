@@ -682,7 +682,7 @@ func sort_food(first, second):
 
 
 func return_to_mansion_confirm():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM"))])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM"))])
 	#input_handler.ShowConfirmPanel(self, 'return_to_mansion', person.translate(tr("RETURNCHARACTERCONFIRM")))
 
 func return_to_mansion():

@@ -648,7 +648,7 @@ func guild_hire_slave():
 
 func sell_slave(person):
 	selectedperson = person
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'sell_slave_confirm', selectedperson.translate("Sell [name]?")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'sell_slave_confirm', selectedperson.translate("Sell [name]?")])
 
 func sell_slave_confirm():
 	ResourceScripts.game_res.money += round(selectedperson.calculate_price()/2)
@@ -1227,7 +1227,7 @@ func show_heal_items(position):
 
 #func return_character(character):
 #	selectedperson = character
-#	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+#	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
 	#input_handler.ShowConfirmPanel(self,'return_character_confirm',character.translate("Send [name] back?"))
 
 #func return_character_confirm():
@@ -1408,7 +1408,7 @@ func finish_combat():
 		enter_level(current_level)
 
 func clear_dungeon():
-	input_handler.get_spec_node(input_handler.NODE_CONFIRMPANEL, [self, 'clear_dungeon_confirm', "Finish exploring this location? Your party will be sent back and the location will be removed from the list. "])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'clear_dungeon_confirm', "Finish exploring this location? Your party will be sent back and the location will be removed from the list. "])
 	#input_handler.ShowConfirmPanel(self, "clear_dungeon_confirm", "Finish exploring this location? Your party will be sent back and the location will be removed from the list. ")
 
 func clear_dungeon_confirm():

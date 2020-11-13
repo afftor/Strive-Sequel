@@ -20,8 +20,14 @@ func _init():
 
 
 func fix_serialization():
+	var clear_array = []
 	for i in items:
+		if items[i].itembase == 'sensetivity_pot':
+			clear_array.append(i)
+			continue
 		items[i] = dict2inst(items[i])
+	for i in clear_array:
+		items.erase(i)
 #	fix_items_inventory(false)
 
 func serialize():

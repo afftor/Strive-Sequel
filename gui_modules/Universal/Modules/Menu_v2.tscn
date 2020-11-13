@@ -515,7 +515,17 @@ margin_bottom = 687.654
 theme = ExtResource( 4 )
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.3.2a
+bbcode_text = "Added pregnancy descriptions and debuff
+Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
+Added an option to use bonus description text field for notes
+Fixed some issues during character creation
+Items during craft show in alphabetic order
+Fixed some scene errors
+Fixed some window errors when there was nothing to purchase
+0.3.2b
+Fixed force opening mimic sometimes causing crash
+More fixed GUI issues
+0.3.2a
 Added some additional clarity for upgrade material tooltip
 Fixed repeatability of church quest
 Fixed slave requrest descriptions to represent factor values as words when set so
@@ -837,7 +847,17 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.3.2a
+text = "Added pregnancy descriptions and debuff
+Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
+Added an option to use bonus description text field for notes
+Fixed some issues during character creation
+Items during craft show in alphabetic order
+Fixed some scene errors
+Fixed some window errors when there was nothing to purchase
+0.3.2b
+Fixed force opening mimic sometimes causing crash
+More fixed GUI issues
+0.3.2a
 Added some additional clarity for upgrade material tooltip
 Fixed repeatability of church quest
 Fixed slave requrest descriptions to represent factor values as words when set so

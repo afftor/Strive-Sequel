@@ -1,6 +1,10 @@
 Added pregnancy descriptions and debuff
 Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
 Added an option to use bonus description text field for notes
+Fixed some issues during character creation
+Items during craft show in alphabetic order
+Fixed some scene errors
+Fixed some window errors when there was nothing to purchase
 0.3.2b
 Fixed force opening mimic sometimes causing crash
 More fixed GUI issues

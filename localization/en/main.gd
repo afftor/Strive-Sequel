@@ -374,6 +374,8 @@ var TranslationDict = {
 	FRONT = "Front",
 	BACK = "Back",
 	CANCEL = "Cancel",
+	YES = "Yes",
+	NO = "No",
 	REMOVE = "Remove",
 	NONE = "None",
 	SPEED = "Speed",
@@ -421,6 +423,9 @@ var TranslationDict = {
 	SYSNOFOOD = "Work canceled: No food",
 	SYSNOWORKERENERGY = "Work canceled: No energy",
 	DIALOGUEREPEATACTION = "Repeat",
+	
+	LOGREPORTPREGNANCY = "[name] tells you, that [he] seems to be pregnant.",
+	LOGREPORTPREGNANCYMASTEr = "It seems, that you([name]) are pregnant.",
 	
 	SELECT = "Select",
 	SELECTTOOL = "Select Tool",
