@@ -301,34 +301,34 @@ func victory():
 		var tchar = characters_pool.get_char_by_id(i)
 		rewardsdict.xp += tchar.get_stat('xpreward')
 		var loot = {}
-		for i in Enemydata.loottables[tchar.get_stat('loottable')]:
-			if i[0] == 'gold':
-				rewardsdict.gold += round(rand_range(i[1], i[2]))
-			elif Items.materiallist.has(i[0]):
+		for item in Enemydata.loottables[tchar.get_stat('loottable')]:
+			if item[0] == 'gold':
+				rewardsdict.gold += round(rand_range(item[1], item[2]))
+			elif Items.materiallist.has(item[0]):
 				var counter = 1
-				if i.size() > 2:
-					counter = i[2]
+				if item.size() > 2:
+					counter = item[2]
 				while counter > 0:
-					if randf() <= i[1]:
-						input_handler.AddOrIncrementDict(loot, {i[0] : 1})
+					if randf() <= item[1]:
+						input_handler.AddOrIncrementDict(loot, {item[0] : 1})
 					counter -= 1
 				input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
-			elif Items.itemlist.has(i[0]):
-				var itemtemp = Items.itemlist[i[0]]
+			elif Items.itemlist.has(item[0]):
+				var itemtemp = Items.itemlist[item[0]]
 				var counter = 1
-				if i.size() > 2:
-					counter = i[2]
+				if item.size() > 2:
+					counter = item[2]
 				while counter > 0:
-					if randf() <= i[1]:
+					if randf() <= item[1]:
 						if itemtemp.type == 'usable':
 							var itemfound = false
 							for k in rewardsdict.items:
-								if k.itembase == i[0]:
+								if k.itembase == item[0]:
 									k.amount += 1
 									itemfound = true
 									break
 							if itemfound == false:
-								var newitem = globals.CreateUsableItem(i[0])
+								var newitem = globals.CreateUsableItem(item[0])
 								rewardsdict.items.append(newitem)
 					counter -= 1
 		
@@ -861,8 +861,8 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
 		
-		for i in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
-			tchar.mul_stat(i, enemy_stats_mod)
+		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
+			tchar.mul_stat(stat, enemy_stats_mod)
 		tchar.hp = tchar.get_stat("hpmax")
 		enemygroup[i] = characters_pool.add_char(tchar)
 		battlefield[int(i)] = enemygroup[i]

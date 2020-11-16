@@ -90,10 +90,10 @@ func update_area_shop(area):
 					var item = Items.itemlist[data.items[randi()%data.items.size()]]
 					if item.has('parts'):
 						var parts = {}
-						for i in item.parts:
+						for part in item.parts:
 							var tiers = []
-							for i in area.material_tiers:
-								tiers.append([i, area.material_tiers[i]])
+							for tier in area.material_tiers:
+								tiers.append([tier, area.material_tiers[tier]])
 							var materialtier = input_handler.weightedrandom(tiers)
 							var materialarray = []
 							for k in Items.materials_by_tiers[materialtier]:
@@ -101,10 +101,10 @@ func update_area_shop(area):
 									materialarray.append(k)
 							if materialarray.size() == 0:
 								for k in Items.materiallist.values():
-									if k.has('parts') && k.parts.has(i):
+									if k.has('parts') && k.parts.has(part):
 										materialarray.append([k.code, 1.0/k.price])
 								materialarray = [input_handler.weightedrandom(materialarray)]
-							parts[i] = materialarray[randi()%materialarray.size()]
+							parts[part] = materialarray[randi()%materialarray.size()]
 						area.shop[item.code] = parts
 					else:
 						if area.shop.has(item.code):
