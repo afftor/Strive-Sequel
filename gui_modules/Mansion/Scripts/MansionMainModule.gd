@@ -717,13 +717,13 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message("mages_election1", '',{})
+		input_handler.interactive_message("daisy_first_event", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000
 			i.totalreputation += 100000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
-		globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
+		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
 
 		# character = ResourceScripts.scriptdict.class_slave.new()
 		# character.create('Fairy', 'futa', 'random')
