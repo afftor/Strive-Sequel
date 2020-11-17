@@ -858,12 +858,12 @@ func partner(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#assures correct return values
-	if marray1 == []:
-		if marray2 == []:
+	if marray1.empty():
+		if marray2.empty():
 			return "the diverse group"
 		else:
 			return "the " + getrandomfromarray(marray2)
-	elif marray2 == []:
+	elif marray2.empty():
 		return "the " + getrandomfromarray(marray1) + " group"
 	else:
 		return "the " + getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -974,12 +974,12 @@ func partners(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#assures correct return values
-	if marray1 == []:
-		if marray2 == []:
+	if marray1.empty():
+		if marray2.empty():
 			return "the diverse group's"
 		else:
 			return "the " + getrandomfromarray(marray2)
-	elif marray2 == []:
+	elif marray2.empty():
 		return "the " + getrandomfromarray(marray1) + " group's"
 	else:
 		return "the " + getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1047,7 +1047,7 @@ func body(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.5 || marray1 == []:
+	if  randf() < 0.5 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1104,7 +1104,7 @@ func penis(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1158,7 +1158,7 @@ func pussy(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1252,7 +1252,7 @@ func ass(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1317,7 +1317,7 @@ func hips(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.5 || marray1 == []:
+	if  randf() < 0.5 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1395,7 +1395,7 @@ func tits(group):
 				if not array2.has(j):
 					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1433,7 +1433,7 @@ func thickness(mp):
 	return thick
 
 func getrandomfromarray(array):
-	if array != []:
+	if !array.empty():
 		return array[randi()%array.size()]
 	else:
 		print("empty array passed to getrandomfromarray(array)")

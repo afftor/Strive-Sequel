@@ -25,7 +25,7 @@ func _ready():
 	open_queue()
 
 func confirm_char_selection():
-	if ResourceScripts.game_res.upgrades_queue == []:
+	if ResourceScripts.game_res.upgrades_queue.empty():
 		print("Warrning: Upgrade queue can't be empty!")
 		return
 	var upgrade = ResourceScripts.game_res.upgrades_queue[0]
@@ -66,11 +66,11 @@ func show_list():
 
 
 func open_queue():
-	$QueueList.visible = (ResourceScripts.game_res.upgrades_queue != [])
-	$SelectChars.visible = (ResourceScripts.game_res.upgrades_queue != [] && !get_parent().select_chars_mode)
-	$Confirm.visible = (!$SelectChars.is_visible() && get_parent().select_chars_mode && ResourceScripts.game_res.upgrades_queue != [])
-	$Confirm.disabled = get_parent().chars_for_upgrades == []
-	$Cancel.visible = (!$SelectChars.is_visible() && get_parent().select_chars_mode && ResourceScripts.game_res.upgrades_queue != [])
+	$QueueList.visible = (!ResourceScripts.game_res.upgrades_queue.empty())
+	$SelectChars.visible = (!ResourceScripts.game_res.upgrades_queue.empty() && !get_parent().select_chars_mode)
+	$Confirm.visible = (!$SelectChars.is_visible() && get_parent().select_chars_mode && !ResourceScripts.game_res.upgrades_queue.empty())
+	$Confirm.disabled = get_parent().chars_for_upgrades.empty()
+	$Cancel.visible = (!$SelectChars.is_visible() && get_parent().select_chars_mode && !ResourceScripts.game_res.upgrades_queue.empty())
 	var upgrades = ResourceScripts.game_res.upgrades_queue
 	# if !upgrades == []: 
 	# 	for person in ResourceScripts.game_party.characters:

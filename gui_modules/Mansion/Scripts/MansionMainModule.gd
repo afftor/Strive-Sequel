@@ -117,8 +117,8 @@ func _ready():
 	
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
-	if !ResourceScripts.game_progress.intro_tutorial_seen:
-		$TutorialIntro.show()
+#	if !ResourceScripts.game_progress.intro_tutorial_seen:
+#		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 
 
@@ -275,13 +275,13 @@ func rebuild_mansion():
 	$TutorialButton.show()
 
 func rebuild_task_info():
-	if ResourceScripts.game_party.active_tasks == []:
+	if ResourceScripts.game_party.active_tasks.empty():
 		TaskModule.visible = false
 		if TaskModule.is_visible():
 			ResourceScripts.core_animations.FadeAnimation(TaskModule, 0.3)
 		return
 	for i in ResourceScripts.game_party.active_tasks:
-		if i.workers != []:
+		if !i.workers.empty():
 			if !TaskModule.is_visible():
 				ResourceScripts.core_animations.UnfadeAnimation(TaskModule, 0.3)
 			TaskModule.visible = true

@@ -57,7 +57,7 @@ func update_class_buttons():
 		# newbutton.connect('pressed', self, "select_class", [tempclass.code])
 		# newbutton.connect('signal_RMB_release',input_handler,'show_class_info', [tempclass.code, person])
 		# globals.connecttexttooltip(newbutton, text)
-		newbutton.get_node("ReqsLabel").visible = (tempclass.reqs != [])
+		newbutton.get_node("ReqsLabel").visible = (!tempclass.reqs.empty())
 		var reqs_text = ""
 		var req_value = ""
 		for req in tempclass.reqs:
