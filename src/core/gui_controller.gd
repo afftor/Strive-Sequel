@@ -43,6 +43,8 @@ func update_modules():
 
 func clock_visibility():
 	if !current_screen in [mansion, exploration]:
+		if clock != null:
+			clock.visible = false
 		return
 	if exploration == null:
 		clock.visible = current_screen == mansion || current_screen == game_menu
