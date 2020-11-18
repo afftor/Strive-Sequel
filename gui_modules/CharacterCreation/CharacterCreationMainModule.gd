@@ -238,7 +238,7 @@ func rebuild_slave():
 	else:
 		person.set_stat('food_love',  '')
 	if preservedsettings.has("food_hate"):
-		if preservedsettings.food_hate != []:
+		if !preservedsettings.food_hate.empty():
 			person.food.food_hate = preservedsettings["food_hate"]
 	else:
 		person.set_stat('food_hate', [])
@@ -316,7 +316,7 @@ func check_confirm_possibility():
 	if !preservedsettings.has('food_love'):
 		input_handler.SystemMessage("You must select a liked food type")
 		return false
-	elif preservedsettings['food_love'] == '' || preservedsettings['food_hate'] == []:
+	elif preservedsettings['food_love'] == '' || preservedsettings['food_hate'].empty():
 		input_handler.SystemMessage("You must select one liked and at least one hated food type.")
 		return false
 	

@@ -7,7 +7,7 @@ func _ready():
 func update():
 	for i in $categories2.get_children():
 		i.pressed = i.name == (get_parent().selected_craft_task)
-	$ButtonConfirm.disabled = (get_parent().persons_for_craft == [])
+	$ButtonConfirm.disabled = (get_parent().persons_for_craft.empty())
 
 func assign_person_to_task():
 	var craft = get_parent().selected_craft_task
