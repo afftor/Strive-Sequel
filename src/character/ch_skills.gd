@@ -116,6 +116,9 @@ func restore_skill_charge(code):
 		ResourceScripts.game_party.global_skills_used[code] -= 1
 		if ResourceScripts.game_party.global_skills_used[code] <= 0:
 			ResourceScripts.game_party.global_skills_used.erase(code)
+	gui_controller.mansion.SkillModule.build_skill_panel()
+
+
 
 func use_social_skill(s_code, target):
 	var template = Skilldata.Skilllist[s_code]
@@ -128,7 +131,6 @@ func use_social_skill(s_code, target):
 			#input_handler.SystemMessage(check.descript)
 			globals.text_log_add('skill',check.descript)
 			return
-	
 	social_cooldowns[s_code] = template.cooldown
 	if template.has('social_skill_stats'):
 		for i in template.social_skill_stats:

@@ -336,7 +336,7 @@ func selectcraftitem(item):
 			newbutton.get_node("Name").text = m.capitalize()
 			newbutton.disabled = item.materials[m] > ResourceScripts.game_res.materials[m]
 		for i in item.items:
-			var amount = ''
+			var amount = 0
 			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
 			newbutton.get_node("Icon").texture = Items.itemlist[i].icon
 			for item_value in ResourceScripts.game_res.items.values():
@@ -345,7 +345,7 @@ func selectcraftitem(item):
 					break
 			newbutton.get_node("Reqs").text = str(item.items[i]) + '/' + str(amount)
 			newbutton.get_node("Name").text = str(Items.itemlist[i].name)
-#			newbutton.disabled = item.itemlist[i] > ResourceScripts.game_res.items[i]
+			newbutton.disabled = item.items[i] > amount
 
 	else:
 		$NumberSelect/NumberConfirm.disabled = true

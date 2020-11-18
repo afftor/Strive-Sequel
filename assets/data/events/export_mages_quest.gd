@@ -338,7 +338,7 @@ var data = {
 	xari_encounter10 = {
 		image = null,
 		character = 'xari',
-		tags = [],
+		tags = ['master_translate'],
 		text = [
 			{text = "XARIENCOUNTER10", reqs = [], bonus_effects = [{code = 'progress_quest', value = 'mages_election_quest', stage = 'stage2'}]}
 		],

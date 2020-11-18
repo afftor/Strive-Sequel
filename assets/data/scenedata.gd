@@ -945,9 +945,13 @@ var scenedict = {
 	},
 	daisy_first_event_discipline = {
 		text = tr("SCENEDAISY_FIRST_EVENT_DISCIPLINE"),
+		custom_background = "daisy_discipline",
+		dialogue_type = 2,
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
 		tags = [],
 		receiver = 'master',
-		image = 'daisyevent',
+		image = null,
 		common_effects = [{code = 'unique_character_changes', value = 'daisy', args = [
 			{code = 'sexuals_factor', value = 1, operant = "+"},
 			{code = 'sextrait', value = 'submissive', operant = 'add', known = true},#for sextrait/add setting, trait is appended to character's traits
@@ -956,7 +960,7 @@ var scenedict = {
 			{code = 'tag', operant = 'remove', value = 'no_sex'},
 			]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = [], change_dialogue_type = 1},
 		],
 	},
 	daisy_confess_event = {

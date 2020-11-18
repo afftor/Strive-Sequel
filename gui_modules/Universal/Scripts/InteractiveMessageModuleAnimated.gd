@@ -205,8 +205,12 @@ func open(scene, not_save = false):
 			if scenedata.scenedict[i.code].has('default_event_type'):
 				event_type = scenedata.scenedict[i.code].default_event_type
 			newbutton.connect("pressed", input_handler, 'interactive_message_follow', [i.code, event_type, {}])
-		elif scene.tags.has("skill_event") && !i.code == 'cancel_skill_usage':
-			newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
+		elif scene.tags.has("skill_event"):
+			if !i.code == 'cancel_skill_usage':
+				newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
+			elif i.code == 'cancel_skill_usage':
+				newbutton.connect("pressed", input_handler.active_character, "restore_skill_charge", [gui_controller.mansion.SkillModule.active_skill])
+				newbutton.connect("pressed", self, "hide")
 		elif scene.tags.has("custom_effect"):
 			newbutton.connect('pressed', ResourceScripts.custom_effects, i.code)
 		elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight']:
@@ -459,7 +463,7 @@ func close(transition = false):
 
 
 func cancel_skill_usage():
-	input_handler.active_character.restore_skill_charge(input_handler.activated_skill)
+	input_handler.active_character.restore_skill_charge(gui_controller.mansion.SkillModule.active_skill)
 	# TODO check if this method should open any window
 	close()
 
