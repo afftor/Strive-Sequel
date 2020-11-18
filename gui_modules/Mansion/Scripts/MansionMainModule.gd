@@ -117,8 +117,8 @@ func _ready():
 	
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
-#	if !ResourceScripts.game_progress.intro_tutorial_seen:
-#		$TutorialIntro.show()
+	if !ResourceScripts.game_progress.intro_tutorial_seen:
+		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 
 
