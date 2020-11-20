@@ -1023,7 +1023,8 @@ var tattoodata = {
 		name = 'Branding',
 		can_repeat = false,
 		conditions = [{code = 'is_master', check = false}],
-		ink = 'ink1',
+		item = 'ink1',
+		slots = ['neck','crotch','ass'],
 		effects = {
 			['neck','crotch','ass']: ['e_brand']
 		}
@@ -1031,7 +1032,8 @@ var tattoodata = {
 	makeup = {
 		name = 'Makeup',
 		can_repeat = true,
-		ink = 'ink1',
+		item = 'ink1',
+		slots = ['face'],
 		effects = {
 			['face']: ['e_mkup']
 		}
@@ -1039,7 +1041,8 @@ var tattoodata = {
 	lust = {
 		name = 'Lust',
 		can_repeat = true,
-		ink = 'ink1',
+		item = 'ink1',
+		slots = ['chest','ass','crotch'],
 		effects = {
 			['chest','ass']: ['e_tlust1'],
 			['crotch']: ['e_tlust2']
@@ -1048,7 +1051,8 @@ var tattoodata = {
 	hp_r = {
 		name = 'HP regen',
 		can_repeat = true,
-		ink = 'ink1',
+		item = 'ink1',
+		slots = ['arms','legs','waist'],
 		effects = {
 			['arms', 'legs', 'waist']: ['e_thpr']
 		}
@@ -1056,7 +1060,8 @@ var tattoodata = {
 	mp_r = {
 		name = 'MP regen',
 		can_repeat = true,
-		ink = 'ink1',
+		slots = ['arms','legs','waist'],
+		item = 'ink1',
 		effects = {
 			['arms', 'legs', 'waist']: ['e_tmpr']
 		}
@@ -1064,7 +1069,8 @@ var tattoodata = {
 	tribal = {
 		name = 'Tribal',
 		can_repeat = true,
-		ink = 'ink1',
+		item = 'ink1',
+		slots = ['arms','legs','chest','face'],
 		effects = {
 			['arms', 'legs', 'chest']: ['e_trib1'],
 			['face']: ['e_trib2']
