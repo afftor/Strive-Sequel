@@ -881,7 +881,7 @@ func can_add_tattoo(slot, code):
 	if tattoo[slot] == code : return false
 	if template.has('conditions'): 
 		if !parent.checkreqs(template.conditions): return false
-	if ResourceScripts.game_res.if_has_material(template.ink, 'lt', 1): return false
+	if ResourceScripts.game_res.if_has_material(template.item, 'lt', 1): return false
 	if !template.can_repeat:
 		for s in tattoo:
 			if tattoo[s] == code: return false
