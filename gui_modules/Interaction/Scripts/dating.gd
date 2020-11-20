@@ -336,7 +336,7 @@ func doaction(action):
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
 	var text = call(action, person, checkhistory(action))
-	if !action in ['useitem']:
+	if !action in ['useitem', 'food']:
 		self.showntext = globals.TextEncoder(decoder(text))
 	actionhistory.append(action)
 	stopactions = false
@@ -1298,6 +1298,53 @@ func stop(person, counter):
 	endencounter()
 	return text
 
+func get_item_category(item):
+	var type
+	if Items.materiallist.has(item.code):
+		if item.type == 'food':
+			type = 'food'
+		else:
+			type = 'material'
+	else:
+		if item.itemtype == 'tool':
+			type = 'tool'
+		elif item.itemtype == 'weapon':
+			type = 'weapon'
+		elif item.itemtype == 'armor':
+			if item.geartype == 'costume':
+				type = 'costume'
+			else:
+				type = 'armor'
+		else:
+			type = 'usable'
+	return type
+
+
+func food(person, counter):
+	input_handler.append_not_duplicate(gui_controller.windows_opened, $Items)
+	$Items.visible = !$Items.is_visible()
+	var array = []
+	for i in ResourceScripts.game_res.materials:
+		if ResourceScripts.game_res.materials[i] <= 0:
+			continue
+		var material = Items.materiallist[i]
+		var type = get_item_category(material)
+		if type == "food":
+			array.append(material)
+
+	input_handler.ClearContainer($Items/ScrollContainer/HBoxContainer)
+	for item in array:
+		var newbutton = input_handler.DuplicateContainerTemplate($Items/ScrollContainer/HBoxContainer)
+		newbutton.get_node("ItemTexture").texture = item.icon
+		newbutton.get_node("Label").text = item.name
+		newbutton.get_node("Amount").text = str(ResourceScripts.game_res.materials[item.code])
+		newbutton.connect("pressed", self, "usefood", [item])
+
+
+func usefood(food):
+	print("Using: ", str(food))
+
+
 func useitem(person, counter):
 	if !gui_controller.windows_opened.has($Items):
 		gui_controller.windows_opened.append($Items)
@@ -1842,6 +1889,15 @@ var actionsdict = {
 		reqs = [],
 		location = [],
 		effect = 'useitem',
+	},
+
+	food = {
+		group = "Affection",
+		name = "Food",
+		descript = "Select a food.",
+		reqs = [],
+		location = [],
+		effect = 'food',
 	},
 	
 	stop = {
