@@ -177,3 +177,7 @@ func useitem(item, type):
 
 	# elif mode == 'shop':
 	# 	sellwindow(item, type)
+
+
+func list_tattoos():
+	pass

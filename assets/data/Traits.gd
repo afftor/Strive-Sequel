@@ -1075,7 +1075,7 @@ var tattoodata = {
 func get_tat_list_for_slot(slot):
 	var res = []
 	for t in tattoodata:
-		for slots in tattoodata.effects:
+		for slots in tattoodata[t].effects:
 			if res.has(t): continue
 			if slots.has(slot): res.push_back(t)
 	return res
