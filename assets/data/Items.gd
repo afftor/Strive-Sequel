@@ -2239,12 +2239,24 @@ var recipes = {
 		code = 'steel_collar',
 		materials = {steel = 5},
 		items = {},
-		unlockreqs = [], 
+		unlockreqs = [{type = "has_upgrade", name = 'smith', value = 2}], 
 		crafttype = 'basic',
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'steel_collar',
 		workunits = 10, 
+		worktype = 'smith'
+	},
+	shackles = {
+		code = 'shackles',
+		materials = {steel = 10},
+		items = {},
+		unlockreqs = [{type = "has_upgrade", name = 'smith', value = 2}], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'shackles',
+		workunits = 10,
 		worktype = 'smith'
 	},
 	animal_ears = {

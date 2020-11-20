@@ -317,7 +317,7 @@ func work_tick():
 					if ResourceScripts.world_gen.get_location_from_code(person_location).gather_limit_resources[currenttask.code] == 0:
 						globals.text_log_add('work', parent.get_short_name() + ": " + "No more resources to gather.")
 						remove_from_task()
-						if ResourceScripts.game_party.active_tasks != []:
+						if !ResourceScripts.game_party.active_tasks.empty():
 							for task in ResourceScripts.game_party.active_tasks:
 								if task.code == currenttask.code && task.task_location == location.id:
 									ResourceScripts.game_party.active_tasks.erase(task)

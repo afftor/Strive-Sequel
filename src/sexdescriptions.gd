@@ -850,20 +850,20 @@ func partner(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#assures correct return values
-	if marray1 == []:
-		if marray2 == []:
+	if marray1.empty():
+		if marray2.empty():
 			return "the diverse group"
 		else:
 			return "the " + getrandomfromarray(marray2)
-	elif marray2 == []:
+	elif marray2.empty():
 		return "the " + getrandomfromarray(marray1) + " group"
 	else:
 		return "the " + getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -953,33 +953,33 @@ func partners(group):
 				boygirl = "girl's" if group.size() == 1 else "girls'"
 		array2 += [boygirl]
 		#race
-		for i in racenames:
-			if i == mp.race:
-				array2 += [racenames[i].single + ' ' + boygirl]
+		for j in racenames:
+			if j == mp.race:
+				array2 += [racenames[j].single + ' ' + boygirl]
 				if group.size() >= 2:
-					array2 += [racenames[i].pluralpos]
+					array2 += [racenames[j].pluralpos]
 				else:
-					array2 += [racenames[i].singlepos]
+					array2 += [racenames[j].singlepos]
 		#for multiple people, only incude shared
 		if marray1 == null:
 			marray1 = array1
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#assures correct return values
-	if marray1 == []:
-		if marray2 == []:
+	if marray1.empty():
+		if marray2.empty():
 			return "the diverse group's"
 		else:
 			return "the " + getrandomfromarray(marray2)
-	elif marray2 == []:
+	elif marray2.empty():
 		return "the " + getrandomfromarray(marray1) + " group's"
 	else:
 		return "the " + getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1039,15 +1039,15 @@ func body(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.5 || marray1 == []:
+	if  randf() < 0.5 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1096,15 +1096,15 @@ func penis(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1150,15 +1150,15 @@ func pussy(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1244,15 +1244,15 @@ func ass(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1309,15 +1309,15 @@ func hips(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.5 || marray1 == []:
+	if  randf() < 0.5 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1387,15 +1387,15 @@ func tits(group):
 			marray2 = array2
 		else:
 			tarray = [] + marray1
-			for i in tarray:
-				if not array1.has(i):
-					marray1.erase(i)
+			for j in tarray:
+				if not array1.has(j):
+					marray1.erase(j)
 			tarray = [] + marray2
-			for i in tarray:
-				if not array2.has(i):
-					marray2.erase(i)
+			for j in tarray:
+				if not array2.has(j):
+					marray2.erase(j)
 	#30% of time do not use descriptors
-	if  randf() < 0.3 || marray1 == []:
+	if  randf() < 0.3 || marray1.empty():
 		return getrandomfromarray(marray2)
 	else:
 		return getrandomfromarray(marray1) + " " + getrandomfromarray(marray2)
@@ -1433,7 +1433,7 @@ func thickness(mp):
 	return thick
 
 func getrandomfromarray(array):
-	if array != []:
+	if !array.empty():
 		return array[randi()%array.size()]
 	else:
 		print("empty array passed to getrandomfromarray(array)")

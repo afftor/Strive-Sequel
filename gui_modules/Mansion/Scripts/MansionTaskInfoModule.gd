@@ -88,7 +88,7 @@ func show_resources_info():
 			continue
 		var task_name = task.code
 		var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
-		if task.workers == []:
+		if task.workers.empty():
 			newtask.hide()
 			continue
 

@@ -55,10 +55,10 @@ func get_mods_list():
 	f.close()
 	mods_list = parse_json(tres)
 	check_avail()
-	for f in mods_list:
+	for mod in mods_list:
 		var mconf := ConfigFile.new()
-		mconf.load(f.path)
-		f.config = mconf
+		mconf.load(mod.path)
+		mod.config = mconf
 
 func save_mod_list():
 	check_avail()

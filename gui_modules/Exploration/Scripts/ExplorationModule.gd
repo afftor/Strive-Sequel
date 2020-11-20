@@ -277,7 +277,7 @@ func open_location(data):
 					var item = Items.materiallist[i]
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
-					if active_tasks == []:
+					if active_tasks.empty:
 						$LocationGui.get_node("Resources/SelectWorkers").visible = true
 						break
 					for task in active_tasks:
@@ -1180,13 +1180,13 @@ func faction_guild_shop(pressed, pressed_button, guild):
 		var temptext = "[center]"+ResourceScripts.descriptions.get_class_name(prof,person) + "[/center]\n"+ResourceScripts.descriptions.get_class_bonuses(person, prof) + ResourceScripts.descriptions.get_class_traits(person, prof)
 		var social_skills = ''
 		var combat_skills = ''
-		if classesdata.professions[cls].has("skills") && classesdata.professions[cls].skills != []:
+		if classesdata.professions[cls].has("skills") && !classesdata.professions[cls].skills.empty():
 			temptext += "\nSocial Skills - "
 			for skill in classesdata.professions[cls].skills:
 				social_skills += Skilldata.Skilllist[skill].name + ", "
 			social_skills = social_skills.substr(0, social_skills.length() - 2)
 		temptext += social_skills
-		if classesdata.professions[cls].has("combatskills") && classesdata.professions[cls].combatskills != []:
+		if classesdata.professions[cls].has("combatskills") && !classesdata.professions[cls].combatskills.empty():
 			temptext += "\nCombat Skills - "
 			for skill in classesdata.professions[cls].combatskills:
 				combat_skills += Skilldata.Skilllist[skill].name + ", "
@@ -1430,7 +1430,7 @@ func faction_hire(pressed, pressed_button, area, mode = "guild_slaves", play_ani
 		globals.connectslavetooltip(newbutton, tchar)
 	var person_id
 	var person
-	if active_faction.slaves != []:
+	if !active_faction.slaves.empty():
 		person_id = active_faction.slaves[0]
 		person = characters_pool.get_char_by_id(person_id)
 		show_slave_info(person)
@@ -1490,7 +1490,7 @@ func sell_slave():
 		newbutton.set_meta("person", tchar)
 		newbutton.get_node('icon').texture = tchar.get_icon()
 		globals.connectslavetooltip(newbutton, tchar)
-	if char_list != []:
+	if !char_list.empty():
 		var person = char_list[0]
 		show_slave_info(person)
 		char_list.clear()

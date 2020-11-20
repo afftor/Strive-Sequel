@@ -218,6 +218,7 @@ func deserialize(tmp):
 #warning-ignore:incompatible_ternary
 	applied_pos = null if (tmp['app_pos'] == null) else int(tmp['app_pos'])
 	applied_char = tmp['app_char']
+	if get_applied_obj() == null: return
 	buffs.clear()
 	calculate_args()
 	for b in tmp['buffs']:

@@ -171,7 +171,7 @@ func close_all_closeable_windows():
 
 func gamemenu_esc_rmb_handler(event):
 	var submodules = game_menu.submodules
-	if submodules != []:
+	if !submodules.empty():
 		submodules_handler(submodules)
 	else:
 		game_menu.hide()

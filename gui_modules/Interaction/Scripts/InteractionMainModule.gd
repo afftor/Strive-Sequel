@@ -1193,16 +1193,16 @@ func startscene(scenescript, cont = false, pretext = ''):
 		if i.scene.has_method("givereffect"):
 			for member in i.givers:
 				effects = i.scene.givereffect(member)
-				for i in effects:
-					if i in ['sens','horny']:
-						effects[i] = effects[i]/2
+				for effect in effects:
+					if effect in ['sens','horny']:
+						effects[effect] = effects[effect]/2
 				member.actioneffect(effects, i)
 		if i.scene.has_method("takereffect"):
 			for member in i.takers:
 				effects = i.scene.takereffect(member)
-				for i in effects:
-					if i in ['sens','horny']:
-						effects[i] = effects[i]/2
+				for effect in effects:
+					if effect in ['sens','horny']:
+						effects[effect] = effects[effect]/2
 				member.actioneffect(effects, i)
 	
 	var request
@@ -2189,7 +2189,7 @@ func operate_flag(flag, input1, input2, actor):
 
 
 func check_acquire_reqs(actor, arr):
-	if arr == []:
+	if arr.empty():
 		var check = false
 		return check
 	var check = true

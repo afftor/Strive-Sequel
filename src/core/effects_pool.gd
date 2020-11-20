@@ -27,7 +27,7 @@ func cleanup():
 		if !effects[id].is_applied:
 			remove_id(id)
 			continue
-		if effects[id].applied_char == null:
+		if effects[id].applied_char == null or effects[id].get_applied_obj() == null:
 			remove_id(id)
 
 func remove_id(id):
