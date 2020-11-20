@@ -2,14 +2,81 @@ extends Panel
 
 
 func _ready():
-	for i in get_children():
-		if i.get_class() == "Light2D":
-			continue
-		if !i.name in ['BodyImage', 'buffscontainer']:
-			i.connect("pressed", self, 'unequip', [i.name])
-			i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
-			i.hint_tooltip = tr("ITEMSLOT" + i.name.to_upper())
+	for i in $InventorySlots.get_children():
+		i.connect("pressed", self, 'unequip', [i.name])
+		i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
+		i.hint_tooltip = tr("ITEMSLOT" + i.name.to_upper())
+	for i in $TattooSlots.get_children():
+		i.connect("pressed", self, 'select_tattoo', [i.name])
+		# i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
+		# i.hint_tooltip = tr(i.name.to_upper())
+		i.set_meta("tattoo_slot", i.name)
 
+
+
+#TODO Adopt confirmation panel
+func select_tattoo(slot):
+	update_tattoo_slots(slot)
+	var selectedhero = input_handler.interacted_character
+	if selectedhero.statlist.tattoo[slot] != null:
+		selectedhero.remove_tattoo(slot)
+	get_parent().set_active_hero(selectedhero)
+
+
+#TODO REmove dummy data
+var tattoo_dummy_data = {
+	tattoo1 = {
+		code = 'makeup',
+		name = 'tattoo1',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+	tattoo2 = {
+		code = 'tattoo2',
+		ink = "ink2",
+		name = "Super Tatto 2",
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+	},
+	tattoo3 = {
+		code = 'tattoo3',
+		ink = "ink3",
+		name = "Super Tatto 3",
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+	},
+	tattoo4 = {
+		code = 'tattoo4',
+		ink = "ink4",
+		name = "Super Tatto 4",
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+	},
+}	
+
+
+func show_tattoos():
+	var selectedhero = input_handler.interacted_character
+	for slot in selectedhero.statlist.tattoo:
+		if selectedhero.statlist.tattoo[slot] == null:
+			$TattooSlots.get_node(slot + "/icon").texture = null
+		else:
+			var t_icon
+			for t in tattoo_dummy_data.values():
+				if t.code == selectedhero.statlist.tattoo[slot]:
+					t_icon = t.icon
+					break
+			var tattoo = selectedhero.statlist.tattoo[slot]
+			$TattooSlots.get_node(slot + "/icon").texture = t_icon
+
+
+func update_tattoo_slots(slot):
+	for s in $TattooSlots.get_children():
+		if !s.has_meta("tattoo_slot"):
+			continue
+		s.pressed = s.get_meta("tattoo_slot") == slot
+
+	
 
 func build_gear_panel():
 	var selectedhero = input_handler.interacted_character
@@ -17,10 +84,10 @@ func build_gear_panel():
 		$BodyImage.texture = selectedhero.get_body_image()
 		for i in selectedhero.equipment.gear:
 			if selectedhero.equipment.gear[i] == null:
-				get_node(i + "/icon").texture = null
+				$InventorySlots.get_node(i + "/icon").texture = null
 			else:
 				var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[i]]
-				item.set_icon(get_node(i + "/icon"))
+				item.set_icon($InventorySlots.get_node(i + "/icon"))
 
 
 

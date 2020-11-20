@@ -8,6 +8,7 @@ var person
 var mode
 var show_list = true
 var category = 'all'
+var list_mode = 'inventory'
 onready var ItemsList = $InventoryListModule
 onready var SlaveList = $InventorySlaveListModule
 onready var GearModule = $InventoryGearModule
@@ -30,6 +31,13 @@ func _ready():
 	$VBoxContainer/InfoButton.connect("pressed", self, "close_inventory", ["default"])
 	$VBoxContainer/ClassButton.connect("pressed", self, "close_inventory", ["class"])
 	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])
+	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode", ["tattoo"])
+	GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode", ["inventory"])
+
+
+func change_list_mode(mode = "inventory"):
+	list_mode = mode
+	$InventoryListModule.buildinventory()
 
 
 func close_inventory(state):
@@ -57,6 +65,7 @@ func set_active_hero(hero):
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()
+	GearModule.show_tattoos()
 	StatsModule.open_base_stats()
 	FactorsModule.show_factors()
 	GearModule.show_buffs()

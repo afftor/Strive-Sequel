@@ -877,7 +877,7 @@ func add_tattoo(slot, code):
 	if tattoo[slot] != null: remove_tattoo(slot)
 	for slots in template.effects:
 		if !slots.has(slot): continue
-		for e in template.effects.slots:
+		for e in template.effects[slots]:
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 			parent.apply_effect(effects_pool.add_effect(eff))
 			eff.set_args('tattoo', "%s_%s" % [slot, code])
