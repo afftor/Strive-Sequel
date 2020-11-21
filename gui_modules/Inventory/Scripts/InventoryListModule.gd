@@ -26,54 +26,62 @@ func buildinventory():
 	var list_mode = get_parent().list_mode
 	get_parent().get_node("InventoryGearModule/InventorySlots").visible = list_mode == "inventory"
 	get_parent().get_node("InventoryGearModule/TattooSlots").visible = !get_parent().get_node("InventoryGearModule/InventorySlots").is_visible()
-	match list_mode:
-		"inventory":
-			for i in ResourceScripts.game_res.materials:
-				if ResourceScripts.game_res.materials[i] <= 0:
-					continue
-				var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
-				var material = Items.materiallist[i]
-				var type = get_item_category(material)
-				newbutton.get_node('Image').texture = material.icon
-				newbutton.get_node('Number').text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[i])
-				newbutton.get_node('Number').show()
-				newbutton.set_meta('type', type)
-				newbutton.get_node("Name").text = material.name
-				globals.connectmaterialtooltip(newbutton, material)
-				newbutton.get_node("Type").texture = get_item_type_icon(material)
-				newbutton.set_meta("item", i)
-				newbutton.connect("pressed",self,'useitem', [i, 'material'])
-				itemarray.append(newbutton)
-			for i in ResourceScripts.game_res.items.values():
-				if i.owner != null:
-					continue
-				var newnode = input_handler.DuplicateContainerTemplate(itemcontainer)
-				if i.durability != null:
-					newnode.get_node("Number").show()
-					newnode.get_node("Number").text = str(input_handler.calculatepercent(i.durability, i.maxdurability)) + '%'
-				if i.amount != null:
-					newnode.get_node("Number").show()
-					newnode.get_node("Number").text = ResourceScripts.custom_text.transform_number(i.amount)
-				else:
-					newnode.get_node("Number").hide()
-				i.set_icon(newnode.get_node("Image"))
-				var type = get_item_category(i)
-				globals.connectitemtooltip(newnode, i)
-				newnode.get_node("Name").text = i.name
-				newnode.get_node("Type").texture = get_item_type_icon(i)
-				newnode.set_meta('type', type)
-				newnode.set_meta("item", i)
-				newnode.connect("pressed",self,'useitem', [i, i.type])
-				itemarray.append(newnode)
-		"tattoo":
-			for t in Items.tattoolist:
-				var tattoo = Items.tattoolist[t]
-				var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
-				newbutton.get_node("Name").text = tattoo.name
-				newbutton.set_meta("tattoo", tattoo.meta)
-				if tattoo.has("icon"):
-					newbutton.get_node('Image').texture = tattoo.icon
-				newbutton.connect("pressed",self,'select_tattoo', [tattoo.code, tattoo.meta])
+	# match list_mode:
+		# "inventory":
+	for i in ResourceScripts.game_res.materials:
+		if ResourceScripts.game_res.materials[i] <= 0:
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
+		var material = Items.materiallist[i]
+		var type = get_item_category(material)
+		newbutton.get_node('Image').texture = material.icon
+		newbutton.get_node('Number').text = ResourceScripts.custom_text.transform_number(ResourceScripts.game_res.materials[i])
+		newbutton.get_node('Number').show()
+		newbutton.set_meta('type', type)
+		newbutton.get_node("Name").text = material.name
+		globals.connectmaterialtooltip(newbutton, material)
+		newbutton.get_node("Type").texture = get_item_type_icon(material)
+		itemarray.append(newbutton)
+		newbutton.set_meta("item", i)
+		if list_mode != "tattoo":
+			newbutton.visible = material.type != "tattoo"
+
+			newbutton.connect("pressed",self,'useitem', [i, 'material'])
+		else:
+			newbutton.visible = material.type == "tattoo"
+			newbutton.connect("pressed",self,'select_tattoo', [material.code, i])
+	for i in ResourceScripts.game_res.items.values():
+		if list_mode == "tattoo":
+			break
+		if i.owner != null:
+			continue
+		var newnode = input_handler.DuplicateContainerTemplate(itemcontainer)
+		if i.durability != null:
+			newnode.get_node("Number").show()
+			newnode.get_node("Number").text = str(input_handler.calculatepercent(i.durability, i.maxdurability)) + '%'
+		if i.amount != null:
+			newnode.get_node("Number").show()
+			newnode.get_node("Number").text = ResourceScripts.custom_text.transform_number(i.amount)
+		else:
+			newnode.get_node("Number").hide()
+		i.set_icon(newnode.get_node("Image"))
+		var type = get_item_category(i)
+		globals.connectitemtooltip(newnode, i)
+		newnode.get_node("Name").text = i.name
+		newnode.get_node("Type").texture = get_item_type_icon(i)
+		newnode.set_meta('type', type)
+		newnode.set_meta("item", i)
+		newnode.connect("pressed",self,'useitem', [i, i.type])
+		itemarray.append(newnode)
+		# "tattoo":
+			# for t in Items.tattoolist:
+			# 	var tattoo = Items.tattoolist[t]
+			# 	var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
+			# 	newbutton.get_node("Name").text = tattoo.name
+			# 	newbutton.set_meta("tattoo", tattoo.meta)
+			# 	if tattoo.has("icon"):
+			# 		newbutton.get_node('Image').texture = tattoo.icon
+			# 	newbutton.connect("pressed",self,'select_tattoo', [tattoo.code, tattoo.meta])
 	rebuildinventory()
 
 var selected_tattoo: String
@@ -89,9 +97,9 @@ func select_tattoo(tattoo_code: String, tattoo_meta: String):
 
 func highlight_selected_tattoo(tattoo_meta: String):
 	for button in itemcontainer.get_children():
-		if !button.has_meta("tattoo"):
+		if !button.has_meta("item"):
 			continue
-		button.pressed = button.get_meta("tattoo") == tattoo_meta
+		button.pressed = button.get_meta("item") == tattoo_meta
 
 func show_avalible_slots(tattoo):
 	var avalible_slots = Traitdata.tattoodata[tattoo].slots

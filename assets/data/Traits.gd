@@ -1019,7 +1019,7 @@ var sex_traits = { #only for interaction tab
 
 
 var tattoodata = {
-	brand = {
+	ink_branding = {
 		name = 'Branding',
 		can_repeat = false,
 		conditions = [{code = 'is_master', check = false}],
@@ -1029,7 +1029,7 @@ var tattoodata = {
 			['neck','crotch','ass']: ['e_brand']
 		}
 	},
-	makeup = {
+	ink_makeup = {
 		name = 'Makeup',
 		can_repeat = true,
 		item = 'ink1',
@@ -1038,7 +1038,7 @@ var tattoodata = {
 			['face']: ['e_mkup']
 		}
 	},
-	lust = {
+	ink_lust = {
 		name = 'Lust',
 		can_repeat = true,
 		item = 'ink1',
@@ -1048,7 +1048,16 @@ var tattoodata = {
 			['crotch']: ['e_tlust2']
 		}
 	},
-	hp_r = {
+	# ink_hp_r = {
+	# 	name = 'HP regen',
+	# 	can_repeat = true,
+	# 	item = 'ink1',
+	# 	slots = ['arms','legs','waist'],
+	# 	effects = {
+	# 		['arms', 'legs', 'waist']: ['e_thpr']
+	# 	}
+	# },
+	ink_hp = {
 		name = 'HP regen',
 		can_repeat = true,
 		item = 'ink1',
@@ -1057,7 +1066,16 @@ var tattoodata = {
 			['arms', 'legs', 'waist']: ['e_thpr']
 		}
 	},
-	mp_r = {
+	# ink_mp_r = {
+	# 	name = 'MP regen',
+	# 	can_repeat = true,
+	# 	slots = ['arms','legs','waist'],
+	# 	item = 'ink1',
+	# 	effects = {
+	# 		['arms', 'legs', 'waist']: ['e_tmpr']
+	# 	}
+	# },
+	ink_mp = {
 		name = 'MP regen',
 		can_repeat = true,
 		slots = ['arms','legs','waist'],
@@ -1066,7 +1084,7 @@ var tattoodata = {
 			['arms', 'legs', 'waist']: ['e_tmpr']
 		}
 	},
-	tribal = {
+	ink_tribal = {
 		name = 'Tribal',
 		can_repeat = true,
 		item = 'ink1',

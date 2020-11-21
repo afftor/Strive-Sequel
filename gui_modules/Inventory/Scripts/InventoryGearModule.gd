@@ -35,6 +35,7 @@ func add_remove_tattoo_action():
 	match tattoo_action:
 		"add_tattoo":
 			selectedhero.add_tattoo(selected_slot, selected_tattoo)
+			ResourceScripts.game_res.materials[selected_tattoo] -= 1
 		"remove_tattoo":
 			selectedhero.remove_tattoo(selected_slot)
 	update_tattoo_slots("deselect_all")
@@ -49,11 +50,12 @@ func show_tattoos():
 			$TattooSlots.get_node(slot + "/icon").texture = null
 		else:
 			var t_icon
-			for t in Items.tattoolist.values():
-				if t.code == selectedhero.statlist.tattoo[slot]:
-					t_icon = t.icon
+			for t in ResourceScripts.game_res.materials:
+				var tattoo = Items.materiallist[t]
+				if tattoo.code == selectedhero.statlist.tattoo[slot]:
+					t_icon = tattoo.icon
 					break
-			var tattoo = selectedhero.statlist.tattoo[slot]
+			# var tattoo = selectedhero.statlist.tattoo[slot]
 			$TattooSlots.get_node(slot + "/icon").texture = t_icon
 
 
