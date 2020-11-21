@@ -11,6 +11,7 @@ func _ready():
 		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
 		i.hint_tooltip = tr(i.name.to_upper())
 		i.set_meta("tattoo_slot", i.name)
+		i.disabled = true
 
 
 
@@ -20,10 +21,12 @@ var tattoo_action = "add_tattoo"
 func add_remove_tattoo(slot: String):
 	var selectedhero = input_handler.interacted_character
 	var selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
-	update_tattoo_slots(slot)
-	if selectedhero.statlist.tattoo[slot] == null && selected_tattoo == '':
-		input_handler.SystemMessage(tr("CHOOSETATTOO"))
+	if selectedhero.statlist.tattoo[slot] == null && selected_tattoo == "":
+		for i in $TattooSlots.get_children():
+			i.pressed = false
+			i.disabled = true
 		return
+	update_tattoo_slots(slot)
 	selected_slot = slot
 	if selectedhero.statlist.tattoo[slot] != null:
 		tattoo_action = "remove_tattoo"
@@ -127,7 +130,7 @@ func show_tattoo_tooltip(slot):
 			if key.has(slot):
 				desc = tattoo.descripts[key]
 				break
-		globals.connecttexttooltip($TattooSlots.get_node(slot), tr(desc))
+		globals.showtexttooltip($TattooSlots.get_node(slot), tr(desc), false)
 		# tattoo.tooltip($TattooSlots.get_node(slot))
 
 
