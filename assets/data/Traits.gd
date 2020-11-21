@@ -1028,7 +1028,10 @@ var tattoodata = {
 		slots = ['neck','crotch','ass'],
 		effects = {
 			['neck','crotch','ass']: ['e_brand']
-		}
+		},
+		descripts = {
+			['neck','crotch','ass']: "descript1",
+		},
 	},
 	ink_makeup = {
 		name = 'Makeup',
@@ -1038,7 +1041,10 @@ var tattoodata = {
 		slots = ['face'],
 		effects = {
 			['face']: ['e_mkup']
-		}
+		},
+		descripts = {
+			['face']: "descript1",
+		},
 	},
 	ink_lust = {
 		name = 'Lust',
@@ -1049,7 +1055,11 @@ var tattoodata = {
 		effects = {
 			['chest','ass']: ['e_tlust1'],
 			['crotch']: ['e_tlust2']
-		}
+		},
+		descripts = {
+			['chest','ass']: "descript1",
+			['crotch']: "descript2",
+		},
 	},
 	# ink_hp_r = {
 	# 	name = 'HP regen',
@@ -1068,7 +1078,10 @@ var tattoodata = {
 		slots = ['arms','legs','waist'],
 		effects = {
 			['arms', 'legs', 'waist']: ['e_thpr']
-		}
+		},
+		descripts = {
+			['arms', 'legs', 'waist']: "descript1",
+		},
 	},
 	# ink_mp_r = {
 	# 	name = 'MP regen',
@@ -1087,7 +1100,10 @@ var tattoodata = {
 		item = 'ink1',
 		effects = {
 			['arms', 'legs', 'waist']: ['e_tmpr']
-		}
+		},
+		descripts = {
+			['arms', 'legs', 'waist']: "descript1",
+		},
 	},
 	ink_tribal = {
 		name = 'Tribal',
@@ -1098,7 +1114,11 @@ var tattoodata = {
 		effects = {
 			['arms', 'legs', 'chest']: ['e_trib1'],
 			['face']: ['e_trib2']
-		}
+		},
+		descripts = {
+			['arms', 'legs', 'chest']: "descript1",
+			['face']: "descript2",
+		},
 	},
 }
 
