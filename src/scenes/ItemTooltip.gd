@@ -116,7 +116,7 @@ func material_tooltip(data, workers_data = {}):
 	iconnode.texture = item.icon
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0
-	textnode.bbcode_text = text
+	textnode.bbcode_text = globals.TextEncoder(text)
 #	$type.text = tr('MATERIALCATEGORY' + item.type.to_upper())
 
 func materialowned_tooltip(data):
