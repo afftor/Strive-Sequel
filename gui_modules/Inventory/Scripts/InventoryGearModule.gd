@@ -8,8 +8,8 @@ func _ready():
 		i.hint_tooltip = tr("ITEMSLOT" + i.name.to_upper())
 	for i in $TattooSlots.get_children():
 		i.connect("pressed", self, 'add_remove_tattoo', [i.name])
-		# i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
-		# i.hint_tooltip = tr(i.name.to_upper())
+		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
+		i.hint_tooltip = tr(i.name.to_upper())
 		i.set_meta("tattoo_slot", i.name)
 
 
@@ -18,9 +18,13 @@ var selected_slot: String
 var tattoo_action = "add_tattoo"
 
 func add_remove_tattoo(slot: String):
-	update_tattoo_slots(slot)
-	selected_slot = slot
 	var selectedhero = input_handler.interacted_character
+	var selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
+	update_tattoo_slots(slot)
+	if selectedhero.statlist.tattoo[slot] == null && selected_tattoo == '':
+		input_handler.SystemMessage(tr("CHOOSETATTOO"))
+		return
+	selected_slot = slot
 	if selectedhero.statlist.tattoo[slot] != null:
 		tattoo_action = "remove_tattoo"
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
@@ -39,6 +43,7 @@ func add_remove_tattoo_action():
 		"remove_tattoo":
 			selectedhero.remove_tattoo(selected_slot)
 	update_tattoo_slots("deselect_all")
+	get_parent().get_node("InventoryListModule").selected_tattoo = ''
 	get_parent().set_active_hero(selectedhero)
 
 
@@ -50,12 +55,11 @@ func show_tattoos():
 			$TattooSlots.get_node(slot + "/icon").texture = null
 		else:
 			var t_icon
-			for t in ResourceScripts.game_res.materials:
-				var tattoo = Items.materiallist[t]
-				if tattoo.code == selectedhero.statlist.tattoo[slot]:
-					t_icon = tattoo.icon
+			for t in Traitdata.tattoodata:
+				var tattoo = Traitdata.tattoodata[t]
+				if t == selectedhero.statlist.tattoo[slot]:
+					t_icon = Traitdata.tattoodata[t].icon
 					break
-			# var tattoo = selectedhero.statlist.tattoo[slot]
 			$TattooSlots.get_node(slot + "/icon").texture = t_icon
 
 
@@ -95,6 +99,9 @@ func unequip(slot):
 	# 	return
 	if selectedhero.equipment.gear[slot] != null:
 		selectedhero.unequip(ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]])
+		var itemtooltip = get_tree().get_root().get_node_or_null("itemtooltip")
+		if itemtooltip != null && itemtooltip.is_visible():
+			itemtooltip.hide()
 	get_parent().set_active_hero(selectedhero)
 
 
@@ -104,7 +111,17 @@ func show_equip_tooltip(slot):
 		return
 	else:
 		var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]
-		item.tooltip(get_node(slot))
+		item.tooltip($InventorySlots.get_node(slot))
+
+
+func show_tattoo_tooltip(slot):
+	print("Tatto tooltip method")
+	# var selectedhero = input_handler.interacted_character
+	# if selectedhero.statlist.tattoo[slot] == null:
+	# 	return
+	# else:
+	# 	var tattoo = Traitdata.tattoodata[selectedhero.statlist.tattoo[slot]]
+	# 	tattoo.tooltip($TattooSlots.get_node(slot))
 
 
 func show_buffs():
