@@ -874,6 +874,8 @@ func translate(text):
 
 #tatoo functional is here, though it can be moved to separate component
 var tattoo = {face = null, neck = null, arms = null, legs = null, chest = null, crotch = null, waist = null, ass = null}
+
+
 func can_add_tattoo(slot, code):
 	if !Traitdata.get_slot_list_for_tat(code).has(slot): return false
 	var template = Traitdata.tattoodata[code]
@@ -885,8 +887,10 @@ func can_add_tattoo(slot, code):
 		for s in tattoo:
 			if tattoo[s] == code: return false
 	return true
-func add_tattoo(slot, code):
-	if !can_add_tattoo(slot, code): return
+
+
+func add_tattoo(slot, code) -> bool:
+	if !can_add_tattoo(slot, code): return false
 	var template = Traitdata.tattoodata[code]
 	if tattoo[slot] != null: remove_tattoo(slot)
 	for slots in template.effects:
@@ -896,6 +900,9 @@ func add_tattoo(slot, code):
 			parent.apply_effect(effects_pool.add_effect(eff))
 			eff.set_args('tattoo', "%s_%s" % [slot, code])
 	tattoo[slot] = code
+	return true
+
+	
 func remove_tattoo(slot):
 	if tattoo[slot] == null: return
 	var arr = parent.find_eff_by_tattoo(slot, tattoo[slot])

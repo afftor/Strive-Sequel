@@ -38,8 +38,10 @@ func add_remove_tattoo_action():
 	var selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
 	match tattoo_action:
 		"add_tattoo":
-			selectedhero.add_tattoo(selected_slot, selected_tattoo)
-			ResourceScripts.game_res.materials[selected_tattoo] -= 1
+			if selectedhero.add_tattoo(selected_slot, selected_tattoo):
+				ResourceScripts.game_res.materials[selected_tattoo] -= 1
+			else:
+				input_handler.SystemMessage(tr("INVALIDREQS"))
 		"remove_tattoo":
 			selectedhero.remove_tattoo(selected_slot)
 	update_tattoo_slots("deselect_all")
@@ -115,13 +117,18 @@ func show_equip_tooltip(slot):
 
 
 func show_tattoo_tooltip(slot):
-	print("Tatto tooltip method")
-	# var selectedhero = input_handler.interacted_character
-	# if selectedhero.statlist.tattoo[slot] == null:
-	# 	return
-	# else:
-	# 	var tattoo = Traitdata.tattoodata[selectedhero.statlist.tattoo[slot]]
-	# 	tattoo.tooltip($TattooSlots.get_node(slot))
+	var selectedhero = input_handler.interacted_character
+	if selectedhero.statlist.tattoo[slot] == null:
+		return
+	else:
+		var tattoo = Traitdata.tattoodata[selectedhero.statlist.tattoo[slot]]
+		var desc
+		for key in tattoo.descripts:
+			if key.has(slot):
+				desc = tattoo.descripts[key]
+				break
+		globals.connecttexttooltip($TattooSlots.get_node(slot), tr(desc))
+		# tattoo.tooltip($TattooSlots.get_node(slot))
 
 
 func show_buffs():

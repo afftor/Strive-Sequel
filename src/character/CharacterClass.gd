@@ -468,7 +468,7 @@ func can_add_tattoo(slot, code):
 	return statlist.can_add_tattoo(slot, code)
 
 func add_tattoo(slot, code):
-	statlist.add_tattoo(slot, code)
+	return statlist.add_tattoo(slot, code)
 
 func remove_tattoo(slot):
 	statlist.remove_tattoo(slot)
