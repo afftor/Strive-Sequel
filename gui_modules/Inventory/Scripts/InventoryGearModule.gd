@@ -7,52 +7,39 @@ func _ready():
 		i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
 		i.hint_tooltip = tr("ITEMSLOT" + i.name.to_upper())
 	for i in $TattooSlots.get_children():
-		i.connect("pressed", self, 'select_tattoo', [i.name])
+		i.connect("pressed", self, 'add_remove_tattoo', [i.name])
 		# i.connect("mouse_entered", self, 'show_equip_tooltip', [i.name])
 		# i.hint_tooltip = tr(i.name.to_upper())
 		i.set_meta("tattoo_slot", i.name)
 
 
 
-#TODO Adopt confirmation panel
-func select_tattoo(slot):
+var selected_slot: String
+var tattoo_action = "add_tattoo"
+
+func add_remove_tattoo(slot: String):
 	update_tattoo_slots(slot)
+	selected_slot = slot
 	var selectedhero = input_handler.interacted_character
 	if selectedhero.statlist.tattoo[slot] != null:
-		selectedhero.remove_tattoo(slot)
+		tattoo_action = "remove_tattoo"
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
+	else:
+		tattoo_action = "add_tattoo"
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("ADDTATTOO")])
+
+
+func add_remove_tattoo_action():
+	var selectedhero = input_handler.interacted_character
+	var selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
+	match tattoo_action:
+		"add_tattoo":
+			selectedhero.add_tattoo(selected_slot, selected_tattoo)
+		"remove_tattoo":
+			selectedhero.remove_tattoo(selected_slot)
+	update_tattoo_slots("deselect_all")
 	get_parent().set_active_hero(selectedhero)
 
-
-#TODO REmove dummy data
-var tattoo_dummy_data = {
-	tattoo1 = {
-		code = 'makeup',
-		name = 'tattoo1',
-		descript = '',
-		icon = load("res://assets/images/iconsitems/item_bread.png"),
-		price = 2,
-		type = 'tattoo',
-		tags = ['tattoo'],
-	},
-	tattoo2 = {
-		code = 'tattoo2',
-		ink = "ink2",
-		name = "Super Tatto 2",
-		icon = load("res://assets/images/iconsitems/item_bread.png"),
-	},
-	tattoo3 = {
-		code = 'tattoo3',
-		ink = "ink3",
-		name = "Super Tatto 3",
-		icon = load("res://assets/images/iconsitems/item_bread.png"),
-	},
-	tattoo4 = {
-		code = 'tattoo4',
-		ink = "ink4",
-		name = "Super Tatto 4",
-		icon = load("res://assets/images/iconsitems/item_bread.png"),
-	},
-}	
 
 
 func show_tattoos():
@@ -62,7 +49,7 @@ func show_tattoos():
 			$TattooSlots.get_node(slot + "/icon").texture = null
 		else:
 			var t_icon
-			for t in tattoo_dummy_data.values():
+			for t in Items.tattoolist.values():
 				if t.code == selectedhero.statlist.tattoo[slot]:
 					t_icon = t.icon
 					break
@@ -70,13 +57,21 @@ func show_tattoos():
 			$TattooSlots.get_node(slot + "/icon").texture = t_icon
 
 
-func update_tattoo_slots(slot):
+func update_tattoo_slots(slot: String):
 	for s in $TattooSlots.get_children():
 		if !s.has_meta("tattoo_slot"):
 			continue
 		s.pressed = s.get_meta("tattoo_slot") == slot
 
-	
+
+func highlight_avalible_slots(slots: Array):
+	for s in $TattooSlots.get_children():
+		s.pressed = false
+		if !s.has_meta("tattoo_slot"):
+			continue
+		s.pressed = s.get_meta("tattoo_slot") in slots
+
+
 
 func build_gear_panel():
 	var selectedhero = input_handler.interacted_character

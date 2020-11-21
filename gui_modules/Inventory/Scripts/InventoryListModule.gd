@@ -66,22 +66,37 @@ func buildinventory():
 				newnode.connect("pressed",self,'useitem', [i, i.type])
 				itemarray.append(newnode)
 		"tattoo":
-			for t in tattoo_dummy_data:
-				var tattoo = tattoo_dummy_data[t]
+			for t in Items.tattoolist:
+				var tattoo = Items.tattoolist[t]
 				var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
 				newbutton.get_node("Name").text = tattoo.name
+				newbutton.set_meta("tattoo", tattoo.meta)
 				if tattoo.has("icon"):
 					newbutton.get_node('Image').texture = tattoo.icon
-				newbutton.connect("pressed",self,'add_tattoo', [tattoo.code])
+				newbutton.connect("pressed",self,'select_tattoo', [tattoo.code, tattoo.meta])
 	rebuildinventory()
 
-var selected_tattoo_slot
+var selected_tattoo: String
 
-func add_tattoo(tattoo):
-	var selectedhero = input_handler.interacted_character
-	selectedhero.add_tattoo("face", tattoo) #TODO Replace hard coded Face-slot with selected_tattoo_slot
-	get_parent().set_active_hero(selectedhero)
+func select_tattoo(tattoo_code: String, tattoo_meta: String):
+	# var selectedhero = input_handler.interacted_character
+	# selectedhero.add_tattoo("face", tattoo) #TODO Replace hard coded Face-slot with selected_tattoo_slot
+	# get_parent().set_active_hero(selectedhero)
+	selected_tattoo = tattoo_code
+	show_avalible_slots(tattoo_code)
+	highlight_selected_tattoo(tattoo_meta)
 
+
+func highlight_selected_tattoo(tattoo_meta: String):
+	for button in itemcontainer.get_children():
+		if !button.has_meta("tattoo"):
+			continue
+		button.pressed = button.get_meta("tattoo") == tattoo_meta
+
+func show_avalible_slots(tattoo):
+	var avalible_slots = Traitdata.tattoodata[tattoo].slots
+	get_parent().get_node("InventoryGearModule").highlight_avalible_slots(avalible_slots)
+	
 
 func rebuildinventory():
 	var list_mode = get_parent().list_mode
@@ -130,36 +145,9 @@ func rebuildinventory():
 						item.set_icon($GearPanel.get_node(i + "/icon"))
 				$StatsPanel.open(selectedhero)
 		"tattoo":
-			for tattoo in tattoo_dummy_data:
-				print(tattoo)
-
-#TODO REmove dummy data
-var tattoo_dummy_data = {
-	tattoo1 = {
-		code = 'makeup',
-		name = 'tattoo1',
-		descript = '',
-		icon = load("res://assets/images/iconsitems/item_bread.png"),
-		price = 2,
-		type = 'tattoo',
-		tags = ['tattoo'],
-	},
-	tattoo2 = {
-		code = 'tattoo2',
-		ink = "ink2",
-		name = "Super Tatto 2",
-	},
-	tattoo3 = {
-		code = 'tattoo3',
-		ink = "ink3",
-		name = "Super Tatto 3",
-	},
-	tattoo4 = {
-		code = 'tattoo4',
-		ink = "ink4",
-		name = "Super Tatto 4",
-	},
-}			
+#			for tattoo in tattoo_dummy_data:
+#				print(tattoo)		
+			pass
 
 
 func get_item_type_icon(item):
@@ -205,6 +193,8 @@ func filter_changed(text):
 
 func useitem(item, type):
 	var selectedhero = input_handler.interacted_character
+	for button in itemcontainer.get_children():
+		button.pressed = false
 	# if mode == null:
 	# 	return
 	# elif mode == 'character' && selectedhero != null:
