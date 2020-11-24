@@ -1020,86 +1020,86 @@ var sex_traits = { #only for interaction tab
 
 var tattoodata = {
 	brand = {
-		name = 'Branding',
+		name = 'Brand',
 		can_repeat = false,
-		icon = load("res://assets/images/iconsitems/item_fish.png"),
+		icon = load("res://assets/images/iconsitems/TattooBrand.png"),
 		conditions = [{code = 'is_master', check = false}],
-		item = 'ink1',
+		item = 'ink_branding',
 		slots = ['neck','crotch','ass'],
 		effects = {
 			['neck','crotch','ass']: ['e_brand']
 		},
 		descripts = {
-			['neck','crotch','ass']: "descript1",
+			['neck','crotch','ass']: "TATTOOBRANDDESCRIPT",
 		},
 	},
 	makeup = {
 		name = 'Makeup',
 		can_repeat = true,
-		icon = load("res://assets/images/iconsitems/item_fish.png"),
-		item = 'ink1',
+		icon = load("res://assets/images/iconsitems/TattooMakeup.png"),
+		item = 'ink_makeup',
 		slots = ['face'],
 		effects = {
 			['face']: ['e_mkup']
 		},
 		descripts = {
-			['face']: "descript1",
+			['face']: "TATTOOMAKEUPDESCRIPT",
 		},
 	},
 	lust = {
 		name = 'Lust',
 		can_repeat = true,
-		icon = load("res://assets/images/iconsitems/item_fish.png"),
-		item = 'ink1',
+		icon = load("res://assets/images/iconsitems/TattooLust.png"),
+		item = 'ink_lust',
 		slots = ['chest','ass','crotch'],
 		effects = {
 			['chest','ass']: ['e_tlust1'],
 			['crotch']: ['e_tlust2']
 		},
 		descripts = {
-			['chest','ass']: "descript1",
-			['crotch']: "descript2",
+			['chest','ass']: "TATTOOLUSTDESCRIPT",
+			['crotch']: "TATTOOLUST2DESCRIPT",
 		},
 	},
 	hp_r = {
 		name = 'HP regen',
 		can_repeat = true,
-		icon = load("res://assets/images/iconsitems/item_fish.png"),
-		item = 'ink1',
+		icon = load("res://assets/images/iconsitems/TattooHp.png"),
+		item = 'ink_hp',
 		slots = ['arms','legs','waist'],
 		effects = {
 			['arms', 'legs', 'waist']: ['e_thpr']
 		},
 		descripts = {
-			['arms', 'legs', 'waist']: "descript1",
+			['arms', 'legs', 'waist']: "TATTOOHPDESCRIPT",
 		},
 	},
 	mp_r = {
 		name = 'MP regen',
 		can_repeat = true,
-		icon = load("res://assets/images/iconsitems/item_fish.png"),
+		icon = load("res://assets/images/iconsitems/TattooEnergy.png"),
 		slots = ['arms','legs','waist'],
-		item = 'ink1',
+		item = 'ink_mp',
 		effects = {
 			['arms', 'legs', 'waist']: ['e_tmpr']
 		},
 		descripts = {
-			['arms', 'legs', 'waist']: "descript1",
+			['arms', 'legs', 'waist']: "TATTOOMPDESCRIPT",
 		},
 	},
 	tribal = {
 		name = 'Tribal',
 		can_repeat = true,
-		icon = load("res://assets/images/iconsitems/item_fish.png"),
-		item = 'ink1',
+		icon = load("res://assets/images/iconsitems/TattooTribal.png"),
+		item = 'ink_tribal',
 		slots = ['arms','legs','chest','face'],
 		effects = {
 			['arms', 'legs', 'chest']: ['e_trib1'],
 			['face']: ['e_trib2']
 		},
 		descripts = {
-			['arms', 'legs', 'chest']: "descript1",
-			['face']: "descript2",
+			['arms', 'legs', 'chest']: "TATTOOTRIBALDESCRIPT",
+			['face']: "TATTOOTRIBAL2DESCRIPT",
 		},
 	},
 }
