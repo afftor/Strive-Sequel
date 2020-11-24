@@ -1019,7 +1019,7 @@ var sex_traits = { #only for interaction tab
 
 
 var tattoodata = {
-	brand = {
+	ink_branding = {
 		name = 'Brand',
 		can_repeat = false,
 		icon = load("res://assets/images/iconsitems/TattooBrand.png"),
@@ -1033,7 +1033,7 @@ var tattoodata = {
 			['neck','crotch','ass']: "TATTOOBRANDDESCRIPT",
 		},
 	},
-	makeup = {
+	ink_makeup = {
 		name = 'Makeup',
 		can_repeat = true,
 		icon = load("res://assets/images/iconsitems/TattooMakeup.png"),
@@ -1046,7 +1046,7 @@ var tattoodata = {
 			['face']: "TATTOOMAKEUPDESCRIPT",
 		},
 	},
-	lust = {
+	ink_lust = {
 		name = 'Lust',
 		can_repeat = true,
 		icon = load("res://assets/images/iconsitems/TattooLust.png"),
@@ -1061,7 +1061,16 @@ var tattoodata = {
 			['crotch']: "TATTOOLUST2DESCRIPT",
 		},
 	},
-	hp_r = {
+	# ink_hp_r = {
+	# 	name = 'HP regen',
+	# 	can_repeat = true,
+	# 	item = 'ink1',
+	# 	slots = ['arms','legs','waist'],
+	# 	effects = {
+	# 		['arms', 'legs', 'waist']: ['e_thpr']
+	# 	}
+	# },
+	ink_hp = {
 		name = 'HP regen',
 		can_repeat = true,
 		icon = load("res://assets/images/iconsitems/TattooHp.png"),
@@ -1074,7 +1083,16 @@ var tattoodata = {
 			['arms', 'legs', 'waist']: "TATTOOHPDESCRIPT",
 		},
 	},
-	mp_r = {
+	# ink_mp_r = {
+	# 	name = 'MP regen',
+	# 	can_repeat = true,
+	# 	slots = ['arms','legs','waist'],
+	# 	item = 'ink1',
+	# 	effects = {
+	# 		['arms', 'legs', 'waist']: ['e_tmpr']
+	# 	}
+	# },
+	ink_mp = {
 		name = 'MP regen',
 		can_repeat = true,
 		icon = load("res://assets/images/iconsitems/TattooEnergy.png"),
@@ -1087,7 +1105,7 @@ var tattoodata = {
 			['arms', 'legs', 'waist']: "TATTOOMPDESCRIPT",
 		},
 	},
-	tribal = {
+	ink_tribal = {
 		name = 'Tribal',
 		can_repeat = true,
 		icon = load("res://assets/images/iconsitems/TattooTribal.png"),

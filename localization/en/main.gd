@@ -2595,5 +2595,10 @@ var TranslationDict = {
 	NOSLAVESINMARKET = "No Slaves Avalible.",
 	RESETLOADCHARPROFESSION = "Class doesn't match current guild.\nStarting class will be reseted.",
 	TEMPLATETYPENOTMATCH = "Can't use this template. Types doesn't match.",
+
+	REMOVETATTOO = "Are you sure you want to remove this tattoo?",
+	ADDTATTOO = "Add tattoo?",
+	CHOOSETATTOO = "Choose a tattoo first.",
+	SAMETATTOO = "You already have the same tattoo in this slot.",
 }
 

@@ -8,6 +8,7 @@ var person
 var mode
 var show_list = true
 var category = 'all'
+var list_mode = 'inventory'
 onready var ItemsList = $InventoryListModule
 onready var SlaveList = $InventorySlaveListModule
 onready var GearModule = $InventoryGearModule
@@ -30,6 +31,20 @@ func _ready():
 	$VBoxContainer/InfoButton.connect("pressed", self, "close_inventory", ["default"])
 	$VBoxContainer/ClassButton.connect("pressed", self, "close_inventory", ["class"])
 	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])
+	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode")
+	# GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode", ["inventory"])
+	change_list_mode()
+
+
+func change_list_mode():
+	list_mode = "inventory" if list_mode == "tattoo" else "tattoo"
+	var texture
+	if list_mode == "inventory":
+		texture = load("res://assets/Textures_v2/Tattoo/icon_tattoo.png")
+	else:
+		texture = load("res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png")
+	GearModule.get_node("TattooButton").texture_normal = texture
+	$InventoryListModule.buildinventory()
 
 
 func close_inventory(state):
@@ -54,9 +69,14 @@ func update():
 func set_active_hero(hero):
 	# gui_controller.mansion.active_person = hero
 	input_handler.interacted_character = hero
+	list_mode == "inventory"
+	GearModule.selected_slot = ''
+	ItemsList.selected_tattoo = ''
+	change_list_mode()
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()
+	GearModule.show_tattoos()
 	StatsModule.open_base_stats()
 	FactorsModule.show_factors()
 	GearModule.show_buffs()

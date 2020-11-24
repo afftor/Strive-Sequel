@@ -2844,6 +2844,69 @@ var recipes = {
 	},
 }
 
+var tattoolist = {
+	tattoo1 = {
+		code = 'brand',
+		meta = 'tattoo1',
+		name = 'tattoo1',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+	tattoo2 = {
+		code = 'makeup',
+		meta = 'tattoo2',
+		name = 'tattoo1',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+	tattoo3 = {
+		code = 'lust',
+		name = 'tattoo1',
+		meta = 'tattoo3',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+	tattoo4 = {
+		code = 'hp_r',
+		name = 'tattoo1',
+		meta = 'tattoo4',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+	tattoo5 = {
+		code = 'mp_r',
+		name = 'tattoo1',
+		meta = 'tattoo5',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+	tattoo6 = {
+		code = 'tribal',
+		name = 'tattoo1',
+		meta = 'tattoo6',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_bread.png"),
+		price = 2,
+		type = 'tattoo',
+		tags = ['tattoo'],
+	},
+}
+
 
 func get_materials_by_grade(grade):
 	var array = []
