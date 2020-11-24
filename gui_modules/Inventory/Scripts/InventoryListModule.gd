@@ -45,6 +45,7 @@ func buildinventory():
 		if material.type != "tattoo":
 			newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		else:
+			
 			newbutton.connect("pressed",self,'select_tattoo', [material.code, i])
 		if list_mode == "tattoo":
 			newbutton.visible = material.type == "tattoo"
