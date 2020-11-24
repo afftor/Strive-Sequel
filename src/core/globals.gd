@@ -949,24 +949,24 @@ func makerandomgroup(enemygroup):
 			
 			if true:
 				#smart way
-				for i in combatparty:
-					if combatparty[i] != null:
+				for j in combatparty:
+					if combatparty[j] != null:
 						continue
 					var aiposition = unit.ai_position[randi()%unit.ai_position.size()]
-					if aiposition == 'melee' && i in [1,2,3]:
-						temparray.append(i)
-					if aiposition == 'ranged' && i in [4,5,6]:
-						temparray.append(i)
+					if aiposition == 'melee' && j in [1,2,3]:
+						temparray.append(j)
+					if aiposition == 'ranged' && j in [4,5,6]:
+						temparray.append(j)
 				
 				if temparray.size() <= 0:
-					for i in combatparty:
-						if combatparty[i] == null:
-							temparray.append(i)
+					for j in combatparty:
+						if combatparty[j] == null:
+							temparray.append(j)
 			else:
 				#stupid way
-				for i in combatparty:
-					if combatparty[i] != null:
-						temparray.append(i)
+				for j in combatparty:
+					if combatparty[j] != null:
+						temparray.append(j)
 			
 			if temparray.size() > 0:
 				combatparty[temparray[randi()%temparray.size()]] = i.units

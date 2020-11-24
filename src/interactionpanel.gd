@@ -2158,7 +2158,7 @@ func operate_flag(flag, input1, input2, actor):
 
 
 func check_acquire_reqs(actor, arr):
-	if arr == []:
+	if arr.empty():
 		var check = false
 		return check
 	var check = true
