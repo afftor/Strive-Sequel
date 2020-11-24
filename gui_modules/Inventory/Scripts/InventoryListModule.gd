@@ -43,12 +43,14 @@ func buildinventory():
 		itemarray.append(newbutton)
 		newbutton.set_meta("item", i)
 		if material.type != "tattoo":
-			# newbutton.visible = material.type != "tattoo"
-
 			newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		else:
-			# newbutton.visible = material.type == "tattoo"
 			newbutton.connect("pressed",self,'select_tattoo', [material.code, i])
+		if list_mode == "tattoo":
+			newbutton.visible = material.type == "tattoo"
+		else:
+			newbutton.visible = true
+
 	for i in ResourceScripts.game_res.items.values():
 		if list_mode == "tattoo":
 			break
@@ -72,6 +74,7 @@ func buildinventory():
 		newnode.set_meta("item", i)
 		newnode.connect("pressed",self,'useitem', [i, i.type])
 		itemarray.append(newnode)
+		newnode.visible = list_mode != "tattoo"
 		# "tattoo":
 			# for t in Items.tattoolist:
 			# 	var tattoo = Items.tattoolist[t]
@@ -92,8 +95,8 @@ func select_tattoo(tattoo_code: String, tattoo_meta: String):
 	selected_tattoo = tattoo_code
 	show_avalible_slots(tattoo_code)
 	highlight_selected_tattoo(tattoo_meta)
-	for i in get_parent().get_node("InventoryGearModule/TattooSlots").get_children():
-		i.disabled = false
+	# for i in get_parent().get_node("InventoryGearModule/TattooSlots").get_children():
+	# 	i.disabled = false
 
 
 func highlight_selected_tattoo(tattoo_meta: String):

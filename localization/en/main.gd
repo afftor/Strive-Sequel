@@ -2599,5 +2599,6 @@ var TranslationDict = {
 	REMOVETATTOO = "Are you sure you want to remove this tattoo?",
 	ADDTATTOO = "Add tattoo?",
 	CHOOSETATTOO = "Choose a tattoo first.",
+	SAMETATTOO = "You already have the same tattoo in this slot.",
 }
 

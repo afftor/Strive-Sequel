@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo.png" type="Texture" id=16]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryGearModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
-[ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_hover.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_pressed.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=22]
 
@@ -439,7 +438,6 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -471,7 +469,6 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -503,7 +500,6 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -535,7 +531,6 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -567,7 +562,6 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -599,7 +593,6 @@ rect_min_size = Vector2( 100, 100 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -628,9 +621,9 @@ margin_top = 771.905
 margin_right = 345.568
 margin_bottom = 871.905
 rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {
@@ -659,9 +652,9 @@ margin_top = 912.451
 margin_right = 395.568
 margin_bottom = 1012.45
 rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 21 )
-texture_hover = ExtResource( 20 )
 texture_disabled = ExtResource( 22 )
 expand = true
 __meta__ = {

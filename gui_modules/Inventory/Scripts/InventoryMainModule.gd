@@ -33,6 +33,7 @@ func _ready():
 	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])
 	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode")
 	# GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode", ["inventory"])
+	change_list_mode()
 
 
 func change_list_mode():
@@ -68,6 +69,10 @@ func update():
 func set_active_hero(hero):
 	# gui_controller.mansion.active_person = hero
 	input_handler.interacted_character = hero
+	list_mode == "inventory"
+	GearModule.selected_slot = ''
+	ItemsList.selected_tattoo = ''
+	change_list_mode()
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()

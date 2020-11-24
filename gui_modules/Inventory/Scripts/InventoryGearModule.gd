@@ -9,25 +9,35 @@ func _ready():
 	for i in $TattooSlots.get_children():
 		i.connect("pressed", self, 'add_remove_tattoo', [i.name])
 		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
-		i.hint_tooltip = tr(i.name.to_upper())
 		i.set_meta("tattoo_slot", i.name)
-		i.disabled = true
+		i.hint_tooltip = tr(i.name.to_upper())
+		# i.disabled = true
 
 
 
 var selected_slot: String
 var tattoo_action = "add_tattoo"
+var avalible_slots = []
 
 func add_remove_tattoo(slot: String):
 	var selectedhero = input_handler.interacted_character
 	var selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
+	selected_slot = slot
 	if selectedhero.statlist.tattoo[slot] == null && selected_tattoo == "":
 		for i in $TattooSlots.get_children():
 			i.pressed = false
-			i.disabled = true
 		return
+
+	if selectedhero.statlist.tattoo[slot] == selected_tattoo:
+		input_handler.SystemMessage(tr("SAMETATTOO"))
+		$TattooSlots.get_node(slot).pressed = true
+		return
+
+	if !slot in avalible_slots:
+		$TattooSlots.get_node(slot).pressed = false
+		return
+
 	update_tattoo_slots(slot)
-	selected_slot = slot
 	if selectedhero.statlist.tattoo[slot] != null:
 		tattoo_action = "remove_tattoo"
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
@@ -47,7 +57,10 @@ func add_remove_tattoo_action():
 				input_handler.SystemMessage(tr("INVALIDREQS"))
 		"remove_tattoo":
 			selectedhero.remove_tattoo(selected_slot)
-	update_tattoo_slots("deselect_all")
+	
+	for i in $TattooSlots.get_children():
+		if !i.get_global_rect().has_point(get_global_mouse_position()):
+			i.pressed = false
 	get_parent().get_node("InventoryListModule").selected_tattoo = ''
 	get_parent().set_active_hero(selectedhero)
 
@@ -68,7 +81,7 @@ func show_tattoos():
 			$TattooSlots.get_node(slot + "/icon").texture = t_icon
 
 
-func update_tattoo_slots(slot: String):
+func update_tattoo_slots(slot: String = ''):
 	for s in $TattooSlots.get_children():
 		if !s.has_meta("tattoo_slot"):
 			continue
@@ -76,11 +89,13 @@ func update_tattoo_slots(slot: String):
 
 
 func highlight_avalible_slots(slots: Array):
+	avalible_slots = slots
 	for s in $TattooSlots.get_children():
-		s.pressed = false
 		if !s.has_meta("tattoo_slot"):
 			continue
-		s.pressed = s.get_meta("tattoo_slot") in slots
+		s.pressed = slots.has(s.get_meta("tattoo_slot"))
+		s.disabled = !slots.has(s.get_meta("tattoo_slot"))
+		
 
 
 
