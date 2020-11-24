@@ -32,19 +32,16 @@ func _ready():
 	$VBoxContainer/ClassButton.connect("pressed", self, "close_inventory", ["class"])
 	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])
 	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode")
-	# GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode", ["inventory"])
+	GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode")
+	GearModule.get_node("TattooButton").visible = true
 	$InventoryListModule.buildinventory()
 
 
 func change_list_mode():
 	list_mode = "inventory" if list_mode == "tattoo" else "tattoo"
-	var texture
-	if list_mode == "inventory":
-		texture = load("res://assets/Textures_v2/Tattoo/icon_tattoo.png")
-	else:
-		texture = load("res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png")
-	GearModule.get_node("TattooButton").texture_normal = texture
 	$InventoryListModule.buildinventory()
+	GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
+	GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
 
 func set_list_mode_inventory():
 	list_mode == "inventory"
@@ -67,7 +64,10 @@ func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
 	list_mode = "inventory"
+	GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
+	GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
 	GearModule.selected_slot = ''
+	GearModule.highlight_avalible_slots([])
 	ItemsList.selected_tattoo = ''
 	# set_list_mode_inventory()
 	# set_active_hero(selectedhero)

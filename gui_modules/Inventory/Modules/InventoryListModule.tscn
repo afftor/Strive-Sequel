@@ -456,7 +456,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="ItemsListTitle" type="Label" parent="."]
 light_mask = 0
 margin_right = 595.0
 margin_bottom = 90.0

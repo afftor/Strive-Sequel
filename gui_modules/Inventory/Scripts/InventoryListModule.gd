@@ -20,10 +20,14 @@ func _ready():
 
 
 func buildinventory():
+
 	input_handler.ClearContainer(itemcontainer)
 	input_handler.ClearContainer($HiddenContainer/GridContainer)
 	itemarray.clear()
 	var list_mode = get_parent().list_mode
+	$SearchFilter.visible = list_mode != "tattoo"
+	$HBoxContainer.visible = list_mode != "tattoo"
+	$ItemsListTitle.text = "Inventory" if list_mode == "inventory" else "Tattoo"
 	get_parent().get_node("InventoryGearModule/InventorySlots").visible = list_mode == "inventory"
 	get_parent().get_node("InventoryGearModule/TattooSlots").visible = !get_parent().get_node("InventoryGearModule/InventorySlots").is_visible()
 	get_parent().get_node("InventoryGearModule/buffscontainer").visible = list_mode == "inventory"
