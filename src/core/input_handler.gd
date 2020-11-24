@@ -311,6 +311,9 @@ func _input(event):
 							gui_controller.mansion.mansion_state_set("default")
 						gui_controller.clock.raise()
 					gui_controller.inventory:
+						if gui_controller.inventory.list_mode == "tattoo":
+							gui_controller.inventory.change_list_mode()
+							return
 						gui_controller.inventory.hide()
 						gui_controller.current_screen = gui_controller.previous_screen
 						if gui_controller.previous_screen == gui_controller.slavepanel:

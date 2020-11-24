@@ -47,9 +47,10 @@ func buildinventory():
 		itemarray.append(newbutton)
 		newbutton.set_meta("item", i)
 		if material.type != "tattoo":
+
 			newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		else:
-			
+			newbutton.set_meta("tattoo_item", i)
 			newbutton.connect("pressed",self,'select_tattoo', [material.code, i])
 		if list_mode == "tattoo":
 			newbutton.visible = material.type == "tattoo"
@@ -72,6 +73,8 @@ func buildinventory():
 			newnode.get_node("Number").hide()
 		i.set_icon(newnode.get_node("Image"))
 		var type = get_item_category(i)
+		if type == "tattoo":
+			continue
 		globals.connectitemtooltip(newnode, i)
 		newnode.get_node("Name").text = i.name
 		newnode.get_node("Type").texture = get_item_type_icon(i)
@@ -94,10 +97,9 @@ func buildinventory():
 var selected_tattoo: String
 
 func select_tattoo(tattoo_code: String, tattoo_meta: String):
-	# var selectedhero = input_handler.interacted_character
-	# selectedhero.add_tattoo("face", tattoo) #TODO Replace hard coded Face-slot with selected_tattoo_slot
-	# get_parent().set_active_hero(selectedhero)
+	get_parent().list_mode = "tattoo"
 	selected_tattoo = tattoo_code
+	buildinventory()
 	show_avalible_slots(tattoo_code)
 	highlight_selected_tattoo(tattoo_meta)
 	# for i in get_parent().get_node("InventoryGearModule/TattooSlots").get_children():
@@ -106,9 +108,9 @@ func select_tattoo(tattoo_code: String, tattoo_meta: String):
 
 func highlight_selected_tattoo(tattoo_meta: String):
 	for button in itemcontainer.get_children():
-		if !button.has_meta("item"):
+		if !button.has_meta("tattoo_item"):
 			continue
-		button.pressed = button.get_meta("item") == tattoo_meta
+		button.pressed = button.get_meta("tattoo_item") == tattoo_meta
 
 func show_avalible_slots(tattoo):
 	var avalible_slots = Traitdata.tattoodata[tattoo].slots
