@@ -33,7 +33,7 @@ func _ready():
 	$VBoxContainer/DetailsButton.connect("pressed", self, "close_inventory", ["details"])
 	GearModule.get_node("TattooButton").connect("pressed", self, "change_list_mode")
 	# GearModule.get_node("InventoryButton").connect("pressed", self, "change_list_mode", ["inventory"])
-	change_list_mode()
+	$InventoryListModule.buildinventory()
 
 
 func change_list_mode():
@@ -46,6 +46,9 @@ func change_list_mode():
 	GearModule.get_node("TattooButton").texture_normal = texture
 	$InventoryListModule.buildinventory()
 
+func set_list_mode_inventory():
+	list_mode == "inventory"
+	$InventoryListModule.buildinventory()
 
 func close_inventory(state):
 	if gui_controller.slavepanel == null:
@@ -63,16 +66,16 @@ func close_inventory(state):
 func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
-	set_active_hero(selectedhero)
+	list_mode = "inventory"
+	GearModule.selected_slot = ''
+	ItemsList.selected_tattoo = ''
+	# set_list_mode_inventory()
+	# set_active_hero(selectedhero)
 
 
 func set_active_hero(hero):
 	# gui_controller.mansion.active_person = hero
 	input_handler.interacted_character = hero
-	list_mode == "inventory"
-	GearModule.selected_slot = ''
-	ItemsList.selected_tattoo = ''
-	change_list_mode()
 	SlaveList.update()
 	ItemsList.buildinventory()
 	GearModule.build_gear_panel()
