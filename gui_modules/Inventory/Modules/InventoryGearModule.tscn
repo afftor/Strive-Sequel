@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/images/iconsgear/workeroutfit.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/iconsitems/collar.png" type="Texture" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Panels/mask_inventory_gear.png" type="Texture" id=9]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=10]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Tattoo/icon_tattoo.png" type="Texture" id=16]
+[ext_resource path="res://gui_modules/Inventory/Scripts/InventoryGearModule.gd" type="Script" id=18]
+[ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo.png" type="Texture" id=19]
+[ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_pressed.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/Tattoo/frame_tattoo_disabled.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 5 )
@@ -21,6 +26,7 @@ light_mask = 0
 margin_right = 705.0
 margin_bottom = 1050.0
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,7 +53,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="chest" type="TextureButton" parent="."]
+[node name="InventorySlots" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chest" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 295.568
 margin_top = 377.451
@@ -62,7 +76,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="chest"]
+[node name="icon" type="TextureRect" parent="InventorySlots/chest"]
 show_behind_parent = true
 light_mask = 0
 margin_top = -0.546295
@@ -76,7 +90,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="underwear" type="TextureButton" parent="."]
+[node name="underwear" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 295.568
 margin_top = 562.451
@@ -91,7 +105,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="underwear"]
+[node name="icon" type="TextureRect" parent="InventorySlots/underwear"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -104,7 +118,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="legs" type="TextureButton" parent="."]
+[node name="legs" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 295.568
 margin_top = 812.451
@@ -119,7 +133,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="legs"]
+[node name="icon" type="TextureRect" parent="InventorySlots/legs"]
 show_behind_parent = true
 light_mask = 0
 margin_top = -1.22778
@@ -133,7 +147,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hands" type="TextureButton" parent="."]
+[node name="hands" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 55.5678
 margin_top = 392.451
@@ -148,7 +162,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="hands"]
+[node name="icon" type="TextureRect" parent="InventorySlots/hands"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -161,7 +175,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="rhand" type="TextureButton" parent="."]
+[node name="rhand" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 55.5678
 margin_top = 512.451
@@ -176,7 +190,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="rhand"]
+[node name="icon" type="TextureRect" parent="InventorySlots/rhand"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -189,7 +203,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lhand" type="TextureButton" parent="."]
+[node name="lhand" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 555.568
 margin_top = 512.451
@@ -204,7 +218,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="lhand"]
+[node name="icon" type="TextureRect" parent="InventorySlots/lhand"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -217,7 +231,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="neck" type="TextureButton" parent="."]
+[node name="neck" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 295.568
 margin_top = 262.451
@@ -232,7 +246,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="neck"]
+[node name="icon" type="TextureRect" parent="InventorySlots/neck"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -245,7 +259,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="head" type="TextureButton" parent="."]
+[node name="head" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 295.568
 margin_top = 82.4508
@@ -260,7 +274,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="head"]
+[node name="icon" type="TextureRect" parent="InventorySlots/head"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -273,7 +287,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ass" type="TextureButton" parent="."]
+[node name="ass" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 355.568
 margin_top = 672.451
@@ -288,7 +302,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="ass"]
+[node name="icon" type="TextureRect" parent="InventorySlots/ass"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -301,7 +315,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="crotch" type="TextureButton" parent="."]
+[node name="crotch" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 245.568
 margin_top = 672.451
@@ -316,7 +330,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="crotch"]
+[node name="icon" type="TextureRect" parent="InventorySlots/crotch"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -329,7 +343,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tool" type="TextureButton" parent="."]
+[node name="tool" type="TextureButton" parent="InventorySlots"]
 light_mask = 0
 margin_left = 555.568
 margin_top = 392.451
@@ -344,7 +358,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="icon" type="TextureRect" parent="tool"]
+[node name="icon" type="TextureRect" parent="InventorySlots/tool"]
 show_behind_parent = true
 light_mask = 0
 margin_right = 40.0
@@ -406,3 +420,265 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TattooSlots" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="face" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 295.568
+margin_top = 182.451
+margin_right = 395.568
+margin_bottom = 282.451
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/face"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 13.2292
+margin_top = 12.2292
+margin_right = 88.2292
+margin_bottom = 87.2292
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="neck" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 295.568
+margin_top = 315.046
+margin_right = 395.568
+margin_bottom = 415.046
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/neck"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 12.5992
+margin_top = 12.0529
+margin_right = 87.5992
+margin_bottom = 87.0529
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arms" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 474.941
+margin_top = 476.905
+margin_right = 574.941
+margin_bottom = 576.905
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/arms"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 12.5992
+margin_top = 12.0529
+margin_right = 87.5992
+margin_bottom = 87.0529
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chest" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 295.568
+margin_top = 476.905
+margin_right = 395.568
+margin_bottom = 576.905
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/chest"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 13.2292
+margin_top = 12.0529
+margin_right = 88.2292
+margin_bottom = 87.0529
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crotch" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 351.082
+margin_top = 772.451
+margin_right = 451.082
+margin_bottom = 872.451
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/crotch"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 12.2704
+margin_top = 11.7241
+margin_right = 87.2704
+margin_bottom = 86.7241
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="waist" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 295.568
+margin_top = 627.2
+margin_right = 395.568
+margin_bottom = 727.2
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/waist"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 13.2142
+margin_top = 12.6679
+margin_right = 88.2142
+margin_bottom = 87.6679
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ass" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 245.568
+margin_top = 771.905
+margin_right = 345.568
+margin_bottom = 871.905
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/ass"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 13.2143
+margin_top = 12.6679
+margin_right = 88.2143
+margin_bottom = 87.6679
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="legs" type="TextureButton" parent="TattooSlots"]
+light_mask = 0
+margin_left = 295.568
+margin_top = 912.451
+margin_right = 395.568
+margin_bottom = 1012.45
+rect_min_size = Vector2( 100, 100 )
+toggle_mode = true
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 21 )
+texture_disabled = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="TattooSlots/legs"]
+show_behind_parent = true
+light_mask = 0
+margin_left = 14.1581
+margin_top = 12.6679
+margin_right = 89.1581
+margin_bottom = 87.6679
+rect_min_size = Vector2( 75, 75 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TattooButton" type="TextureButton" parent="."]
+margin_left = 623.819
+margin_top = 881.298
+margin_right = 677.819
+margin_bottom = 935.298
+texture_normal = ExtResource( 16 )
