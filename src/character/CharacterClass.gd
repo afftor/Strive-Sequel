@@ -788,7 +788,7 @@ func show_race_description():
 	text += temprace.descript
 	text += "\n\nRace bonuses: "
 	for i in temprace.race_bonus:
-		if statdata.statdata[i].has("percent") && statdata.statdata[i].percent == true:
+		if statdata.statdata[i].percent == true:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
 		else:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '

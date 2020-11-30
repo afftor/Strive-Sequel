@@ -179,7 +179,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
-		
+		default_bonus = 'add_part'
 	},
 	food_consumption = {
 		code = 'food_consumption',
@@ -377,6 +377,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_build = {
 		code = 'mod_build',
@@ -384,6 +385,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_hunt = {
 		code = 'mod_hunt',
@@ -391,6 +393,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_fish = {
 		code = 'mod_fish',
@@ -398,6 +401,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_cook = {
 		code = 'mod_cook',
@@ -405,6 +409,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_smith = {
 		code = 'mod_smith',
@@ -412,6 +417,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_tailor = {
 		code = 'mod_tailor',
@@ -419,6 +425,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_alchemy = {
 		code = 'mod_alchemy',
@@ -426,6 +433,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_farm = {
 		code = 'mod_farm',
@@ -433,6 +441,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_pros = {
 		code = 'mod_pros',
@@ -440,6 +449,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	task_crit_chance = {
 		code = 'task_crit_chance',
@@ -463,7 +473,7 @@ var statdata = {
 		baseicon = 'food_love',
 	},
 	
-	damagemod = {
+	damagemod = { #possibly obsolete
 		code = 'damagemod',
 		name = '',
 		descript = '',
@@ -471,12 +481,27 @@ var statdata = {
 		baseicon = 'food_love',
 	},
 	
-	modmelee = {
-		code = 'modmelee',
+	obDrainReduction = {
+		code = 'obDrainReduction',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'mul'
+	},
+	obDrainIncrease = {
+		code = 'obDrainIncrease',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+	},
+	authority_mod = {#never applied stat for some reasons
+		code = 'authority_mod',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 }
 
@@ -497,3 +522,21 @@ var worktoolnames = {
 	hunt_knife = '',
 }
 
+func _ready():
+	for i in variables.resists_list:
+		statdata['resist_'+i] = {
+				code = "resist_"+i,
+			}
+	for i in variables.status_list:
+		statdata['resist_'+i] = {
+				code = "resist_"+i,
+			}
+	for i in ['all', 'melee', 'ranged', 'skill', 'spell']:
+		statdata['damage_mod_'+i] = {
+				code = "damage_mod_"+i,
+				percent = true,
+			}
+	
+	for val in statdata.values():
+		if !val.has('percent'): val.percent = false
+		if !val.has('default_bonus'): val.default_bonus = 'add'

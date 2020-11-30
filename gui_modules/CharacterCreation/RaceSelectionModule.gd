@@ -41,7 +41,7 @@ func show_race_info(temprace):
 		if (i as String).begins_with('resist'):
 			text += i.replace("resist_","").capitalize() + " Resist: " + str(race.race_bonus[i]) + "%, "
 			continue
-		if statdata.statdata[i].has("percent") && statdata.statdata[i].percent == true:
+		if statdata.statdata[i].percent == true:
 			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]*100) + '%, '
 		else:
 			text += statdata.statdata[i].name + ": " + str(race.race_bonus[i]) + ', '

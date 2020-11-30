@@ -32,7 +32,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_slave']
+		effects = [],#'e_tr_slave']
+		bonusstats = {damage_mod_all = -0.1, mod_collect = -0.1, mod_pros = -0.1, mod_farm = -0.1, mod_smith = -0.15, mod_alchemy = -0.15, mod_tailor = -0.15, obDrainReduction = 0.9}
 	},
 	servant = {#servant class trait
 		code = 'servant',
@@ -48,7 +49,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_worker'],
+		effects = [],#'e_tr_worker'],
+		bonusstats = {mod_collect = 0.5}
 	}, 
 	foreman = {
 		code = 'foreman',
@@ -56,7 +58,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_foreman'],
+		effects = [],#'e_tr_foreman'],
+		bonusstats = {mod_collect = 0.33}
 	}, 
 	hunter= {
 		code = 'hunter',
@@ -64,7 +67,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_hunter'],
+		effects = [],#'e_tr_hunter'],
+		bonusstats = {mod_hunt = 0.5, mod_fish = 0.5}
 	}, 
 	smith = {
 		code = 'smith',
@@ -72,7 +76,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_smith'],
+		effects = [],#'e_tr_smith'],
+		bonusstats = {mod_smith = 1.0, mod_tailor = 1.0}
 	}, 
 	engineer = {
 		code = 'engineer',
@@ -80,7 +85,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_engi'],
+		effects = [],#'e_tr_engi'],
+		bonusstats = {mod_build = 1.0}
 	}, 
 	chef = {
 		code = 'chef',
@@ -88,7 +94,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_chef'],
+		effects = [],#'e_tr_chef'],
+		bonusstats = {mod_cook = 1.0}
 	}, 
 	attendant = {#item usage in combat takes no turn
 		code = 'attendant',
@@ -104,7 +111,9 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_alchemist','e_tr_potion'],
+		effects = [#'e_tr_alchemist',
+			'e_tr_potion'],
+		bonusstats = {mod_alchemy = 1.0}
 	}, 
 	witcrit = {#+crit
 		code = 'witcrit',
@@ -136,7 +145,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_cattle'],
+		effects = [],#'e_tr_cattle'],
+		bonusstats = {mod_farm = 0.5}
 	}, 
 	breeder = {#+100% farm production, allows breeding with any race, -30% pregnancy duration
 		code = 'breeder',
@@ -152,7 +162,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_harlot'],
+		effects = [],#'e_tr_harlot'],
+		bonusstats = {mod_pros = 0.5}
 	}, 
 	succubus = {#+100% exp from prostitution
 		code = 'succubus',
@@ -168,7 +179,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_pet'],
+		effects = [],#'e_tr_pet'],
+		bonusstats = {mod_pros = 0.25}
 	},
 	sextoy = {#+50% gold from prostitution
 		code = 'sextoy',
@@ -176,7 +188,8 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['e_tr_harlot'],
+		effects = [],#'e_tr_harlot'],
+		bonusstats = {mod_pros = 0.5}
 	},
 	
 	#exploration related traits
@@ -1016,6 +1029,9 @@ var sex_traits = { #only for interaction tab
 #		effects = [{effect = 'sens_bonus', operant = "+", value = 0.25},{effect = 'horny_bonus', operant = "+", value = 0.25}],
 #	},
 }
+func _ready():
+	for tr in traits.values():
+		if !tr.has('bonusstats'): tr.bonusstats = {}
 
 
 var tattoodata = {

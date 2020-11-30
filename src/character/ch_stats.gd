@@ -184,17 +184,29 @@ func add_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec])
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
-				add_bonus(rec + '_add', ls[rec])
-				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
-			if !statlist.has(rec):
+			if !statdata.statdata.has(rec): 
+				print('debug warning - lost stat %s' % rec)
+				continue
+			match statdata.statdata[rec].default_bonus:
+				'add': add_stat(rec, ls[rec])
+				'mul': 
+					print('debug warning + %s' % parent.id)
+					mul_stat(rec, ls[rec])
+				'add_part': 
+					print('debug warning + %s' % parent.id)
+					add_part_stat(rec, ls[rec])
+#			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
+#				add_bonus(rec + '_add', ls[rec])
+#				continue
+			
+#			if !statlist.has(rec):
 			#safe variant
 			#add_bonus(rec, ls[rec])
-				continue
-			add_stat(rec, ls[rec])
+#				continue
+#			add_stat(rec, ls[rec])
 
 func remove_stat_bonuses(ls:Dictionary):
 	if variables.new_stat_bonuses_syntax:
@@ -202,14 +214,28 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
-				add_bonus(rec + '_add', ls[rec], true)
-				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
 				continue
-			if !statlist.has(rec): continue
-			add_stat(rec, ls[rec], true)
+			if !statdata.statdata.has(rec): 
+				print('debug warning - lost stat %s' % rec)
+				continue
+			match statdata.statdata[rec].default_bonus:
+				'add': add_stat(rec, ls[rec], true)
+				'mul': 
+					print('debug warning - %s' % parent.id)
+					mul_stat(rec, ls[rec], true)
+				'add_part': 
+					print('debug warning - %s' % parent.id)
+					add_part_stat(rec, ls[rec], true)
+#			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
+#				add_bonus(rec + '_add', ls[rec], true)
+#				continue
+#			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
+#				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+#				continue
+#			if !statlist.has(rec): continue
+#			add_stat(rec, ls[rec], true)
 
 func add_bonus(b_rec:String, value, revert = false):
 	if value == 0: return
@@ -311,6 +337,7 @@ func add_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if traits.has(tr_code): return
 	traits.push_back(tr_code)
+	parent.add_stat_bonuses(trait.bonusstats)
 	for e in trait.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		parent.apply_effect(effects_pool.add_effect(eff))
@@ -330,6 +357,7 @@ func remove_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if !traits.has(tr_code): return
 	traits.erase(tr_code)
+	parent.remove_stat_bonuses(trait.bonusstats)
 	var arr = parent.find_eff_by_trait(tr_code)
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)
