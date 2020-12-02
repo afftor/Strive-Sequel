@@ -1123,6 +1123,25 @@ func enter_guild(guild):
 		newbutton.texture_hover = load(
 			"res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png"
 		)
+	var check = true
+	for a in guild.bonus_actions:
+		if a.reqs != []:
+			for r in a.reqs:
+				check = globals.valuecheck(r)
+				if !check:
+					break
+		if !check:
+			continue
+		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
+		newbutton.get_node("Label").text = a.name
+		newbutton.connect("toggled", self, "faction_" + a.code, [newbutton, guild])
+		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonviolet.png")
+		newbutton.texture_pressed = load(
+			"res://assets/Textures_v2/CITY/Buttons/buttonviolet_pressed.png"
+		)
+		newbutton.texture_hover = load(
+			"res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png"
+		)
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = "Leave"
 	newbutton.connect("pressed", self, "open_city", [selected_location])
@@ -1136,6 +1155,19 @@ func enter_guild(guild):
 
 
 var infotext = "Upgrades effects and quest settings update after some time passed. "
+
+
+
+func faction_disassemble(pressed, pressed_button, guild):
+	gui_controller.win_btn_connections_handler(pressed, $DisassembleModule, pressed_button)
+	self.current_pressed_area_btn = pressed_button
+	
+	if pressed && !$DisassembleModule.is_visible():
+		unfade($DisassembleModule, 0.3)
+		$DisassembleModule.open()
+	elif !pressed && $DisassembleModule.is_visible():
+		fade($DisassembleModule, 0.3)
+
 
 
 func faction_guild_shop(pressed, pressed_button, guild):
@@ -1309,7 +1341,15 @@ func faction_upgrade(pressed, pressed_button, guild):
 		+ "/"
 		+ str(active_faction.questsetting.total)
 	)
+	var check = true
 	for i in worlddata.guild_upgrades.values():
+		if i.reqs != []:
+			for r in i.reqs:		
+				check = globals.valuecheck(r)
+				if !check:
+					break
+		if !check:
+			continue
 		var newnode = input_handler.DuplicateContainerTemplate($FactionDetails/VBoxContainer)
 		text = i.name + ": " + i.descript
 		var currentupgradelevel

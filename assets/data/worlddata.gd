@@ -171,14 +171,23 @@ var guild_upgrades = {
 		maxlevel = 4,
 		effects = [{code = 'slavelevel', operant = '+', value = 1}],
 	},
-	questnumberupgrade = {
-		code = 'questnumberupgrade',
-		descript = 'Increases the amount of available quests at once by 1.',
-		name = 'Quest Number',
+	# questnumberupgrade = {
+	# 	code = 'questnumberupgrade',
+	# 	descript = 'Increases the amount of available quests at once by 1.',
+	# 	name = 'Quest Number',
+	# 	cost = [100,500,1000,2000],
+	# 	reqs = [],
+	# 	maxlevel = 4,
+	# 	effects = [{code = 'questsetting:total', operant = '+', value = 1}],
+	# },
+	workers_disassamby_upgrade = {
+		code = 'workers_disassamby_upgrade',
+		descript = '',
+		name = 'Disassambe',
 		cost = [100,500,1000,2000],
-		reqs = [],
+		reqs = [{type = "current_guild", check = true, value = "workers"}],
 		maxlevel = 4,
-		effects = [{code = 'questsetting:total', operant = '+', value = 1}],
+		effects = [],
 	},
 	
 }
@@ -189,6 +198,7 @@ var factiondata = {
 		name = 'Fighters',# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
+		bonus_actions = [],
 		preference = ['combat'],
 		character_types = [['servant',1]],
 		character_bonuses = {authority = [75,100], obedience = [48,48]},
@@ -213,6 +223,7 @@ var factiondata = {
 		name = 'Mages',# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
+		bonus_actions = [],
 		preference = ['magic'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,10], authority = [45,65], obedience = [48,48]},
@@ -237,6 +248,19 @@ var factiondata = {
 		name = 'Workers',# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
+		bonus_actions = [
+			{
+				code = 'disassemble', 
+				name = 'Disassemble', 
+				reqs = [
+					{
+						type = "has_faction_upgrade",
+						check = true,
+						value = "workers_disassamby_upgrade"
+					},
+				],
+			},
+		],
 		preference = ['labor'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [5,15], authority = [70,90], obedience = [48,48]},
@@ -261,6 +285,7 @@ var factiondata = {
 		name = 'Servants',# Guild',
 		description = '',
 		actions = ['hire','upgrade', 'guild_shop'],
+		bonus_actions = [],
 		preference = ['sexual','social'],
 		character_types = [['servant',1]],
 		character_bonuses = {submission = [10,20], authority = [75,110], obedience = [48,48]},
@@ -296,6 +321,7 @@ var factiondata = {
 		quests_hard = [],
 		slavenumber = [3,5],
 		questnumber = [],
+		bonus_actions = [],
 	},
 	exotic_slave_trader = {
 		code = 'exotic_slave_trader',
@@ -313,6 +339,7 @@ var factiondata = {
 		quests_hard = [],
 		slavenumber = [4,5],
 		questnumber = [],
+		bonus_actions = [],
 	},
 	aliron_church = {
 		code = 'aliron_church',
@@ -329,6 +356,7 @@ var factiondata = {
 		quests_hard = [],
 		slavenumber = [],
 		questnumber = [],
+		bonus_actions = [],
 	},
 }
 

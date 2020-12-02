@@ -448,7 +448,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/face"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 13.2292
 margin_top = 12.2292
@@ -479,7 +478,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/neck"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 12.5992
 margin_top = 12.0529
@@ -510,7 +508,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/arms"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 12.5992
 margin_top = 12.0529
@@ -541,7 +538,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/chest"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 13.2292
 margin_top = 12.0529
@@ -572,7 +568,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/crotch"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 12.2704
 margin_top = 11.7241
@@ -603,7 +598,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/waist"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 13.2142
 margin_top = 12.6679
@@ -634,7 +628,6 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/ass"]
-show_behind_parent = true
 light_mask = 0
 margin_left = 13.2143
 margin_top = 12.6679

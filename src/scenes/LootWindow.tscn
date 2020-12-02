@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=7]
 
 [node name="LootWindow" type="PopupPanel"]
+visible = true
 margin_left = 592.0
 margin_top = 315.0
 margin_right = 1327.0

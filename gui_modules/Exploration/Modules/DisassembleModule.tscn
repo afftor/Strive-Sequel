@@ -1,0 +1,523 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/panel_disassemble.png" type="Texture" id=3]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_hover.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave_pressed.png" type="Texture" id=6]
+[ext_resource path="res://gui_modules/Exploration/Scripts/DisassembleModule.gd" type="Script" id=7]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=8]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/panel_disassemble_tooltip.png" type="Texture" id=9]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/frame_tooltip.png" type="Texture" id=10]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=11]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=12]
+[ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=13]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=16]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/icon_weapon_pure.png" type="Texture" id=17]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_hover.png" type="Texture" id=18]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=19]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=20]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_pressed.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=25]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 128, 55 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="DisassembleModule" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = 690.0
+margin_top = 77.0
+margin_right = 1230.0
+margin_bottom = 1002.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Background"]
+margin_right = 540.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Disassamble"
+align = 1
+valign = 1
+
+[node name="ItemList" type="ScrollContainer" parent="Background"]
+margin_left = 29.0
+margin_top = 184.0
+margin_right = 518.0
+margin_bottom = 861.0
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ItemList"]
+
+[node name="Button" type="TextureButton" parent="Background/ItemList/VBoxContainer"]
+visible = false
+margin_right = 480.0
+margin_bottom = 52.0
+toggle_mode = true
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 18 )
+
+[node name="Icon" type="TextureRect" parent="Background/ItemList/VBoxContainer/Button"]
+margin_left = 7.0
+margin_top = 6.0
+margin_right = 46.0
+margin_bottom = 45.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Background/ItemList/VBoxContainer/Button"]
+margin_left = 61.0
+margin_top = 6.0
+margin_right = 304.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Item Title"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Background/ItemList/VBoxContainer/Button"]
+margin_left = 348.462
+margin_top = 10.0
+margin_right = 388.462
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "23"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="Background/ItemList/VBoxContainer/Button"]
+margin_left = 430.224
+margin_top = 10.0
+margin_right = 470.224
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "230"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item" type="Label" parent="Background"]
+margin_left = 92.9573
+margin_top = 141.692
+margin_right = 138.957
+margin_bottom = 173.692
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Item"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Background"]
+margin_left = 352.729
+margin_top = 141.692
+margin_right = 433.729
+margin_bottom = 173.692
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Amount"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="Background"]
+margin_left = 458.224
+margin_top = 141.692
+margin_right = 503.224
+margin_bottom = 173.692
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Cost"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DisassambleClose" type="TextureButton" parent="Background"]
+margin_left = 511.0
+margin_right = 540.0
+margin_bottom = 29.0
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
+
+[node name="ItemInfo" type="TextureRect" parent="."]
+visible = false
+margin_left = 1230.0
+margin_top = 218.692
+margin_right = 1780.0
+margin_bottom = 998.692
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="ItemInfo"]
+margin_right = 550.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Item Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IconFrame" type="TextureRect" parent="ItemInfo"]
+margin_left = 174.534
+margin_top = 57.0
+margin_right = 374.534
+margin_bottom = 257.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="ItemInfo/IconFrame"]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 193.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoText" type="Label" parent="ItemInfo"]
+margin_top = 295.0
+margin_right = 550.0
+margin_bottom = 327.0
+custom_fonts/font = ExtResource( 4 )
+text = "Choose material you'll get after disassamble"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ItemInfo"]
+margin_left = 42.0
+margin_top = 334.0
+margin_right = 532.0
+margin_bottom = 518.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemInfo/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="ItemInfo/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 464.0
+margin_bottom = 52.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+
+[node name="Icon" type="TextureRect" parent="ItemInfo/ScrollContainer/VBoxContainer/Button"]
+margin_left = 6.65735
+margin_top = 5.8252
+margin_right = 46.6573
+margin_bottom = 45.8252
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="ItemInfo/ScrollContainer/VBoxContainer/Button"]
+margin_left = 57.0
+margin_top = 6.0
+margin_right = 223.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Material Title"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="ItemInfo/ScrollContainer/VBoxContainer/Button"]
+margin_left = 392.0
+margin_top = 6.0
+margin_right = 450.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "75"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoClose" type="TextureButton" parent="ItemInfo"]
+margin_left = 520.0
+margin_right = 549.0
+margin_bottom = 29.0
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 22 )
+
+[node name="NumberSelection" type="Panel" parent="."]
+visible = false
+margin_left = 1254.0
+margin_top = 782.842
+margin_right = 1754.0
+margin_bottom = 972.842
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="NumberSelection"]
+self_modulate = Color( 0, 0, 0, 0.686275 )
+show_behind_parent = true
+margin_right = 500.0
+margin_bottom = 190.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="HSlider" type="HSlider" parent="NumberSelection"]
+margin_left = 37.0
+margin_top = 95.0
+margin_right = 567.0
+margin_bottom = 121.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_icons/grabber_disabled = ExtResource( 16 )
+custom_icons/grabber_highlight = ExtResource( 16 )
+custom_icons/grabber = ExtResource( 16 )
+custom_styles/slider = ExtResource( 14 )
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="NumberSelection"]
+margin_left = 125.443
+margin_top = 122.8
+margin_right = 379.443
+margin_bottom = 174.8
+theme = ExtResource( 11 )
+text = "Confirm"
+
+[node name="ItemAmount" type="Label" parent="NumberSelection"]
+margin_left = 81.0
+margin_top = 58.842
+margin_right = 123.0
+margin_bottom = 90.842
+custom_fonts/font = ExtResource( 4 )
+text = "x 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="NumberSelection"]
+margin_left = 381.0
+margin_top = 58.842
+margin_right = 461.0
+margin_bottom = 90.842
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "x Price"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemIcon" type="TextureRect" parent="NumberSelection"]
+margin_left = 37.0
+margin_top = 51.0
+margin_right = 77.0
+margin_bottom = 91.0
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaterialIcon" type="TextureRect" parent="NumberSelection"]
+margin_left = 353.311
+margin_top = 51.0
+margin_right = 393.311
+margin_bottom = 91.0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="ItemTooltipV2" type="TextureRect" parent="."]
+visible = false
+margin_left = 1230.0
+margin_top = 218.692
+margin_right = 1780.0
+margin_bottom = 848.692
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="ItemTooltipV2"]
+margin_right = 550.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Item Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IconFrame" type="TextureRect" parent="ItemTooltipV2"]
+margin_left = 174.125
+margin_top = 52.0
+margin_right = 374.125
+margin_bottom = 252.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="ItemTooltipV2/IconFrame"]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 193.0
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoText" type="RichTextLabel" parent="ItemTooltipV2"]
+margin_left = 9.0
+margin_top = 295.0
+margin_right = 541.0
+margin_bottom = 408.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+bbcode_text = "Modular Item Description"
+text = "Modular Item Description"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoText2" type="RichTextLabel" parent="ItemTooltipV2"]
+margin_left = 9.0
+margin_top = 427.0
+margin_right = 541.0
+margin_bottom = 574.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoText3" type="RichTextLabel" parent="ItemTooltipV2"]
+margin_left = 9.0
+margin_top = 295.0
+margin_right = 541.0
+margin_bottom = 574.0
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ItemTooltipV2"]
+margin_left = 9.0
+margin_top = 590.243
+margin_right = 218.0
+margin_bottom = 622.243
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.678431, 0.678431, 0.678431, 1 )
+text = "Hold shift for details"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="TextureRect" parent="ItemTooltipV2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -130.294
+margin_top = -56.0
+margin_right = -72.2944
+margin_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ItemTooltipV2/Cost"]
+margin_left = 48.6366
+margin_top = 13.0
+margin_right = 101.637
+margin_bottom = 45.0
+theme = ExtResource( 20 )
+custom_colors/font_color = Color( 1, 0.929412, 0, 1 )
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

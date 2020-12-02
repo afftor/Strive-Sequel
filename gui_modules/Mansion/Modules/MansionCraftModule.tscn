@@ -884,9 +884,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MaterialSetupPanel/BasicSetup/ScrollContainer"]
+margin_right = 496.0
+margin_bottom = 60.0
 
 [node name="Button" type="TextureButton" parent="MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer"]
-visible = false
 margin_right = 496.0
 margin_bottom = 60.0
 texture_normal = ExtResource( 58 )
@@ -923,7 +924,7 @@ margin_right = 351.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 55 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Name"
+text = "Рыба"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

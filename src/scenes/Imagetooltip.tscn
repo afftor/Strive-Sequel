@@ -1,17 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/iconsitems/item_vege.png" type="Texture" id=4]
-[ext_resource path="res://Roundo-Medium.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
-
-[sub_resource type="DynamicFont" id=1]
-size = 20
-use_filter = true
-font_data = ExtResource( 5 )
 
 [node name="tooltip" type="Panel"]
 show_behind_parent = true
@@ -53,7 +48,7 @@ margin_top = 168.0
 margin_right = 429.0
 margin_bottom = 293.0
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
 bbcode_text = "Test text"
 text = "Test text"

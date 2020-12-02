@@ -65,6 +65,7 @@ var prev_selected_travel
 
 var always_show = [
 	"TestButton",
+	"DisassembleModule", #TODO Delete this
 	"MansionTaskInfoModule",
 	"MansionClockModule",
 	"MansionBottomLeftModule",
@@ -445,9 +446,10 @@ func remove_hovered_person():
 
 func _on_TestButton_pressed():
 	# print(ResourceScripts.game_progress.seen_dialogues)
-	print(active_person.get_stat('tattoo'))
-	print(Traitdata.get_tat_list_for_slot("arms"))
-
+	# print(active_person.get_stat('tattoo'))
+	# print(Traitdata.get_tat_list_for_slot("arms"))
+	get_node("DisassembleModule").build_list()
+	get_node("DisassembleModule").show()
 
 
 func test_mode():
@@ -666,6 +668,30 @@ func test_mode():
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})

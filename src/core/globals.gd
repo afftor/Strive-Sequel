@@ -211,6 +211,12 @@ func connectitemtooltip(node, item):
 	node.connect("mouse_entered",item,'tooltip', [node])
 
 
+func connectitemtooltip_v2(node, item):
+	if node.is_connected("mouse_entered",item,'tooltip_v2'):
+		node.disconnect("mouse_entered",item,'tooltip_v2')
+	node.connect("mouse_entered",item,'tooltip_v2', [node])
+
+
 func disconnect_temp_item_tooltip(node):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
@@ -1331,3 +1337,7 @@ func valuecheck(dict):
 			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)
 		'timed_option':
 			return ResourceScripts.game_progress.if_time_passed(dict.value, dict.quest)
+		'current_guild':
+			return ((dict.value == input_handler.active_faction.code) && dict.check)
+		'has_faction_upgrade':
+			return dict.check && input_handler.active_faction.upgrades.has(dict.value)

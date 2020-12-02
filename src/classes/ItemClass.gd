@@ -260,6 +260,34 @@ func tooltiptext():
 	text = globals.TextEncoder(text)
 	return text
 
+func tooltiptext_light():
+	var text = ''
+	# text += '[center]{color=k_yellow|' + name + '}[/center]\n'
+	if itemtype in ['armor','weapon','tool']:
+		# text += "\n"
+		for i in bonusstats:
+			if bonusstats[i] != 0:
+				var value = bonusstats[i]
+				var change = ''
+				if statdata.statdata[i].has('percent'):
+					value = value*100
+				text += statdata.statdata[i].name + ': {color='
+				if value > 0:
+					change = '+'
+					text += 'k_green|' + change
+				else:
+					text += 'k_red|'
+				value = str(value)
+				if statdata.statdata[i].has('percent'):
+					value = value + '%'
+				text += value + '}\n'
+		text += tooltipeffects()
+	elif itemtype == 'usable':
+		text += '\n' + tr("INPOSESSION") + ': ' + str(amount)
+	
+	text = globals.TextEncoder(text)
+	return text
+
 func tooltipeffects():
 	var text = ''
 	for i in effects:
@@ -271,6 +299,12 @@ func tooltipeffects():
 
 func tooltip(targetnode):
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+	var data = {text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
+	node.showup(targetnode, data, 'gear')
+
+
+func tooltip_v2(targetnode):
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
 	var data = {text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
 	node.showup(targetnode, data, 'gear')
 
