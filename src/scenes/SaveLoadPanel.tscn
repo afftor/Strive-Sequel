@@ -138,3 +138,64 @@ margin_top = -7.41267
 margin_right = 129.344
 margin_bottom = 132.587
 texture = ExtResource( 11 )
+
+[node name="Update" type="Button" parent="."]
+margin_left = 272.075
+margin_top = 20.0476
+margin_right = 393.912
+margin_bottom = 48.2985
+text = "Update Save File"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdatePanel" type="Panel" parent="."]
+margin_left = 650.0
+margin_right = 1300.0
+margin_bottom = 774.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpdatePanel"]
+margin_left = 22.0
+margin_top = 285.0
+margin_right = 612.0
+margin_bottom = 741.0
+
+[node name="Button" type="TextureButton" parent="UpdatePanel/VBoxContainer"]
+visible = false
+margin_top = 65.0
+margin_right = 590.0
+margin_bottom = 116.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="UpdatePanel/VBoxContainer/Button"]
+margin_left = 23.0
+margin_top = 9.0
+margin_right = 340.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.941176, 0.882353, 0.505882, 1 )
+text = "Savename"
+
+[node name="Date" type="Label" parent="UpdatePanel/VBoxContainer/Button"]
+margin_left = 340.0
+margin_top = 8.0
+margin_right = 522.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Savename"
+align = 2
+
+[node name="Update" type="Button" parent="UpdatePanel/VBoxContainer/Button"]
+margin_left = 546.0
+margin_top = 5.0
+margin_right = 586.0
+margin_bottom = 46.2509
+rect_min_size = Vector2( 30, 30 )
+hint_tooltip = "Delete"
+text = "Update"
