@@ -246,10 +246,12 @@ func gear_tooltip(data, item = null):
 	textnode.show()
 	textnode2.show()
 	textnode3.hide()
-	$ItemTooltipV2.texture = load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png")
+#	$ItemTooltipV2.texture = load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png")
 	if item == null:
 		item = data.item
 	$ItemTooltipV2/Title.text = item.name
+	var font = input_handler.font_size_calculator($ItemTooltipV2/Title)
+	$ItemTooltipV2/Title.set("custom_fonts/font", font)
 	var text = item.tooltiptext_light()
 	$ItemTooltipV2/Cost/Label.text = str(data.price)
 	$ItemTooltipV2/Cost.visible = item.price != 0
@@ -262,6 +264,8 @@ func gear_tooltip(data, item = null):
 	
 	textnode.bbcode_text = item.description #TODO Change this for modular item description
 	textnode2.bbcode_text = text
+	textnode2.bbcode_text += '\n\n\n'
+	print(textnode2.get_global_rect())
 
 func gear_detailed_tooltip(data, item = null):
 	gear_tooltip(data, item)

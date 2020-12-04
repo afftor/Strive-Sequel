@@ -1308,7 +1308,7 @@ func confirm_buy_item():
 
 
 func faction_upgrade(pressed, pressed_button, guild):
-	gui_controller.win_btn_connections_handler(pressed, $SlaveMarket, pressed_button)
+	gui_controller.win_btn_connections_handler(pressed, $FactionDetails, pressed_button)
 	active_faction = guild
 	self.current_pressed_area_btn = pressed_button
 	var text = ''
@@ -1374,8 +1374,10 @@ func faction_upgrade(pressed, pressed_button, guild):
 		newnode.get_node("confirm").connect(
 			'pressed', self, "unlock_upgrade", [i, currentupgradelevel]
 		)
-	if pressed:
+	if pressed && !$FactionDetails.is_visible():
 		unfade($FactionDetails, 0.3)
+	elif pressed && $FactionDetails.is_visible():
+		return
 	else:
 		fade($FactionDetails, 0.3)
 

@@ -150,6 +150,7 @@ __meta__ = {
 }
 
 [node name="UpdatePanel" type="Panel" parent="."]
+visible = false
 margin_left = 650.0
 margin_right = 1300.0
 margin_bottom = 774.0

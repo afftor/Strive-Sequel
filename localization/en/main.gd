@@ -2600,5 +2600,7 @@ var TranslationDict = {
 	ADDTATTOO = "Add tattoo?",
 	CHOOSETATTOO = "Choose a tattoo first.",
 	SAMETATTOO = "You already have the same tattoo in this slot.",
+	
+	NOTCOMPATIBLE = "This save file is not compatible with the current version of the game.\nHowever, you can update the file.\nWARNING! All characters will be returned to Mansion. Some progress might be lost.\nProceed? (original save file will stay untouched, but won't work with the current version)",
 }
 

@@ -134,6 +134,19 @@ func LoadPanelOpen():
 
 
 func PressLoadGame(savename):
+	# var file = File.new()
+	# if !file.file_exists(variables.userfolder+'saves/'+ savename + '.sav') :
+	# 	print("no file %s" % (variables.userfolder+'saves/'+ savename + '.sav'))
+	# 	return
+	# file.open(variables.userfolder+'saves/'+ savename + '.sav', File.READ)
+	# var savedict = parse_json(file.get_as_text())
+	# file.close()
+
+	# for faction in savedict.game_world.areas.plains.factions.values():
+	# 	if !faction.has("bonus_actions"):
+	# 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadGame', tr("NOTCOMPATIBLE")])
+	# 		return
+
 	gui_controller.close_all_closeable_windows()
 	gui_controller.windows_opened.clear()
 	$LineEdit.text = savename
