@@ -90,9 +90,9 @@ __meta__ = {
 }
 
 [node name="char_sprite" type="TextureRect" parent="."]
-margin_left = 1008.17
+margin_left = 1005.45
 margin_top = -0.513306
-margin_right = 1921.17
+margin_right = 1918.45
 margin_bottom = 1079.49
 stretch_mode = 6
 __meta__ = {

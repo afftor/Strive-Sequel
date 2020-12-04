@@ -158,8 +158,6 @@ var TranslationDict = {
 	ITEMSLOTNECK = "Neck",
 	ITEMSLOTTOOL = "Tool",
 	
-	ITEMBED = "Bed",
-	ITEMBEDDESCRIPT = "",
 	ITEMLEATHER_COLLAR = "Leather Collar",
 	ITEMLEATHER_COLLARDESCRIPT = "A simple leather collar that signifies ownership.",
 	ITEMELEGANT_CHOKER = "Elegant Choker",
@@ -244,6 +242,19 @@ var TranslationDict = {
 	ITEMCRAFTSMAN_SUITDESCRIPT = "Advanced clothes, designed to help with crafting materials.",
 	ITEMHANDCUFFS = "Handcuffs",
 	ITEMHANDCUFFSDESCRIPT = "A pair of leather handcuffs designed to limit the wearer's movement. Despite their purpose, they can even be considered somewhat comfortable to wear. ",
+	
+	ITEMWORKER_GLOVES = "Worker Gloves",
+	ITEMGAUNTLETS = "Gauntlets",
+	ITEMCIRCLET = "Circlet",
+	ITEMCROWN = "Pale Crown",
+	ITEMBELL_COLLAR = "Belled Collar",
+	ITEMRIBBON = "Ribbon",
+	ITEMWORKER_GLOVESDESCRIPT = "A pair of thick gloves suited for hard labor. Better take these off before the bedroom",
+	ITEMGAUNTLETSDESCRIPT = "A gloves made of sturdy metal designed for hand protection. Generally not suited for erotic roleplay",
+	ITEMCIRCLETDESCRIPT = "A well crafted metal ornament boosting wearer's magic power.",
+	ITEMCROWNDESCRIPT = "An old crown of unknown origin",
+	ITEMBELL_COLLARDESCRIPT = "Despite its nature, this collar considered more of an object of fashion came from distant land.",
+	ITEMRIBBONDESCRIPT = "A bright red ribbon of unknown nature. ",
 	
 	#Items
 	ITEMAXE = "Axe",

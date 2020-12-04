@@ -3027,6 +3027,13 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_i_gauntlets = {
+		type = 'static',
+		descript = "Skill Damage: +10%",
+		atomic = [{type = 'stat_add', stat = 'damage_mod_skill', value = 0.1}],
+		buffs = [],
+		sub_effects = [],
+	},
 };
 
 var atomic = {
