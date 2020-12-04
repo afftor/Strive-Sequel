@@ -964,7 +964,7 @@ var itemlist = {
 		reqs = [],
 		effects = [],
 		tags = [],
-		basestats = {charm_bonus = 15, physics_bonus = -10},
+		basestats = {charm_bonus = 15},
 	},
 	pet_suit = {#+30 charm, -15 physics, -20% fear decay, -15% obedience decay
 		code = 'pet_suit',
@@ -982,7 +982,7 @@ var itemlist = {
 		effects = [#'e_i_pet_suit',
 			 'e_i_pet_suit_bonus'],
 		tags = [],
-		basestats = {charm_bonus = 15, physics_bonus = -15, obDrainIncrease = 0.2},
+		basestats = {charm_bonus = 15, obDrainIncrease = 0.2},
 	},
 	maid_dress = {
 		code = 'maid_dress',
@@ -2108,6 +2108,23 @@ var itemlist = {
 		effects = [],
 		tags = ['no_random'],
 		basestats = {speed = 5},
+	},
+	ribbon = {
+		code = 'ribbon',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['neck'],
+		price = 220,
+		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		tier = 'medium',
+		reqs = [],
+		effects = [],
+		tags = ['no_random'],
+		basestats = {mdef = 5},
 	},
 }
 
