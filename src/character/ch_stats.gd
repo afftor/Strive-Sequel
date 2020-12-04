@@ -28,7 +28,7 @@ func deserialize(savedict):
 	if savedict.has('negative_sex_traits'): negative_sex_traits = savedict.negative_sex_traits.duplicate()
 	if savedict.has('unlocked_sex_traits'): unlocked_sex_traits = savedict.unlocked_sex_traits.duplicate()
 	if savedict.has('reported_pregnancy'): reported_pregnancy = savedict.reported_pregnancy
-	if savedict.has('tattoo'): bonuses = savedict.tattoo.duplicate()
+	if savedict.has('tattoo'): tattoo = savedict.tattoo.duplicate()
 	if !savedict.has('statlist'): return
 	for stat in statlist:
 		if savedict.statlist.has(stat):
@@ -171,7 +171,7 @@ func get_stat(statname, ref = false):
 	else:  tmp = custom_stats_get()
 	if !tmp.has(statname): return null
 	var res = tmp[statname]
-	if variables.bonuses_stat_list.has(statname):
+	if statdata.statdata.has(statname) and !statdata.statdata[statname].custom_get: #variables.bonuses_stat_list.has(statname):
 		if bonuses.has(statname + '_add'): res += bonuses[statname + '_add']
 		if bonuses.has(statname + '_mul'): res *= bonuses[statname + '_mul']
 	elif statname in ['physics','wits','charm','sexuals']:
@@ -184,17 +184,30 @@ func add_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec])
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
-				add_bonus(rec + '_add', ls[rec])
-				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec])
 				continue
-			if !statlist.has(rec):
+			if !statdata.statdata.has(rec): 
+				print('debug warning - lost stat %s' % rec)
+				continue
+			if statdata.statdata[rec].skip_process : continue
+			match statdata.statdata[rec].default_bonus:
+				'add': add_stat(rec, ls[rec])
+				'mul': 
+#					print('debug warning + %s' % parent.id)
+					mul_stat(rec, ls[rec])
+				'add_part': 
+#					print('debug warning + %s' % parent.id)
+					add_part_stat(rec, ls[rec])
+#			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
+#				add_bonus(rec + '_add', ls[rec])
+#				continue
+			
+#			if !statlist.has(rec):
 			#safe variant
 			#add_bonus(rec, ls[rec])
-				continue
-			add_stat(rec, ls[rec])
+#				continue
+#			add_stat(rec, ls[rec])
 
 func remove_stat_bonuses(ls:Dictionary):
 	if variables.new_stat_bonuses_syntax:
@@ -202,14 +215,28 @@ func remove_stat_bonuses(ls:Dictionary):
 			add_bonus(rec, ls[rec], true)
 	else:
 		for rec in ls:
-			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
-				add_bonus(rec + '_add', ls[rec], true)
-				continue
 			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
 				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
 				continue
-			if !statlist.has(rec): continue
-			add_stat(rec, ls[rec], true)
+			if !statdata.statdata.has(rec): 
+				print('debug warning - lost stat %s' % rec)
+				continue
+			match statdata.statdata[rec].default_bonus:
+				'add': add_stat(rec, ls[rec], true)
+				'mul': 
+#					print('debug warning - %s' % parent.id)
+					mul_stat(rec, ls[rec], true)
+				'add_part': 
+#					print('debug warning - %s' % parent.id)
+					add_part_stat(rec, ls[rec], true)
+#			if (rec as String).begins_with('resist') or (rec as String).begins_with('damage_mod'):
+#				add_bonus(rec + '_add', ls[rec], true)
+#				continue
+#			if (rec as String).ends_with('mod') && rec as String != 'critmod' :
+#				add_bonus(rec.replace('mod','_mul'), ls[rec], true)
+#				continue
+#			if !statlist.has(rec): continue
+#			add_stat(rec, ls[rec], true)
 
 func add_bonus(b_rec:String, value, revert = false):
 	if value == 0: return
@@ -221,7 +248,7 @@ func add_bonus(b_rec:String, value, revert = false):
 		else: bonuses[b_rec] += value
 	else:
 		if revert:
-			print('error bonus not found')
+			print('error bonus not found %s' % b_rec)
 		else:
 			#if b_rec.ends_with('_add'): bonuses[b_rec] = value
 			if b_rec.ends_with('_mul'): bonuses[b_rec] = 1.0 + value
@@ -252,7 +279,7 @@ func add_stat(statname, value, revert = false):
 		return
 	if statname in ['physics', 'wits', 'charm'] and value > 0: 
 		value *= get_stat_gain_rate(statname)
-	if variables.direct_access_stat_list.has(statname):
+	if statdata.statdata[statname].direct:
 		if revert: 
 			custom_stats_set(statname, statlist[statname] - value)
 #			self.statlist[statname] = statlist[statname] - value
@@ -263,7 +290,7 @@ func add_stat(statname, value, revert = false):
 		add_bonus(statname+'_add', value, revert)
 
 func mul_stat(statname, value, revert = false):
-	if variables.direct_access_stat_list.has(statname):
+	if statdata.statdata[statname].direct:
 		if revert:
 			custom_stats_set(statname, statlist[statname] / value) 
 #			self.statlist[statname] = statlist[statname] / value
@@ -278,11 +305,11 @@ func mul_stat(statname, value, revert = false):
 					bonuses.erase(statname + '_mul')
 			else: bonuses[statname + '_mul'] *= value
 		else:
-			if revert: print('error bonus not found')
+			if revert: print('error bonus not found %s' % statname)
 			else: bonuses[statname + '_mul'] = value
 
 func add_part_stat(statname, value, revert = false):
-	if variables.direct_access_stat_list.has(statname):
+	if statdata.statdata[statname].direct:
 		if revert: 
 			custom_stats_set(statname, statlist[statname] /(1.0 + value))
 #			self.statlist[statname] = statlist[statname] /(1.0 + value)
@@ -311,6 +338,7 @@ func add_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if traits.has(tr_code): return
 	traits.push_back(tr_code)
+	parent.add_stat_bonuses(trait.bonusstats)
 	for e in trait.effects:
 		var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 		parent.apply_effect(effects_pool.add_effect(eff))
@@ -330,6 +358,7 @@ func remove_trait(tr_code):
 	var trait = Traitdata.traits[tr_code]
 	if !traits.has(tr_code): return
 	traits.erase(tr_code)
+	parent.remove_stat_bonuses(trait.bonusstats)
 	var arr = parent.find_eff_by_trait(tr_code)
 	for e in arr:
 		var eff = effects_pool.get_effect_by_id(e)

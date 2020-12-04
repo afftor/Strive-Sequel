@@ -15,6 +15,7 @@ var statdata = {
 		baseicon = 'stat_gf',
 		type = 'factor',
 		abb = 'GRO',
+		direct = true
 	},
 	physics_factor = {
 		code = 'physics_factor',
@@ -23,6 +24,7 @@ var statdata = {
 		baseicon = 'stat_pf',
 		type = 'factor',
 		abb = 'PHY',
+		direct = true
 	},
 	wits_factor = {
 		code = 'wits_factor',
@@ -31,6 +33,7 @@ var statdata = {
 		baseicon = 'stat_wit',
 		type = 'factor',
 		abb = 'WIT',
+		direct = true
 	},
 	charm_factor = {
 		code = 'charm_factor',
@@ -39,6 +42,7 @@ var statdata = {
 		baseicon = 'stat_charm',
 		type = 'factor',
 		abb = 'CHA',
+		direct = true
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
@@ -47,6 +51,7 @@ var statdata = {
 		baseicon = 'stat_sf',
 		type = 'factor',
 		abb = 'SEX',
+		direct = true
 	},
 	
 	magic_factor = {
@@ -56,6 +61,7 @@ var statdata = {
 		baseicon = 'stat_mf',
 		type = 'factor',
 		abb = 'MAG',
+		direct = true
 	},
 	
 	tame_factor = {
@@ -65,6 +71,7 @@ var statdata = {
 		baseicon = 'stat_tf',
 		type = 'factor',
 		abb = 'TAM',
+		direct = true
 	},
 	timid_factor = {
 		code = 'timid_factor',
@@ -73,6 +80,7 @@ var statdata = {
 		baseicon = 'stat_df',
 		type = 'factor',
 		abb = 'TIM',
+		direct = true
 	},
 	authority = {
 		code = 'authority',
@@ -80,6 +88,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
+		direct = true
 	},
 	loyalty = {
 		code = 'loyalty',
@@ -87,6 +96,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
+		direct = true
 	},
 	submission = {
 		code = 'submission',
@@ -101,6 +111,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		direct = true
 	},
 	wits = { 
 		code = 'wits',
@@ -108,6 +119,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		direct = true
 	},
 	charm = { 
 		code = 'charm',
@@ -115,6 +127,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		direct = true
 	},
 	sexuals = { 
 		code = 'sexuals',
@@ -122,6 +135,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		custom_get = true
 	},
 	obedience = {
 		code = 'obedience',
@@ -129,6 +143,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_obed',
 		type = 'mental_stat',
+		direct = true
 	},
 	loyaltyObedience = {
 		code = 'loyaltyObedience',
@@ -157,6 +172,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
+		direct = true
 	},
 	loyal = {
 		code = 'loyal',
@@ -179,7 +195,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
-		
+		default_bonus = 'add_part'
 	},
 	food_consumption = {
 		code = 'food_consumption',
@@ -187,6 +203,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_food',
 		type = 'misc',
+		direct = true
 	},
 	
 	food_hate = {
@@ -210,6 +227,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		direct = true
 	},
 	hpmax = {
 		code = 'hpmax',
@@ -217,6 +235,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		custom_get = true
 	},
 	hpmaxmod = {
 		code = 'hpmaxmod',
@@ -240,6 +259,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		direct = true
 	},
 	mpmax = {
 		code = 'mpmax',
@@ -247,6 +267,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		custom_get = true
 	},
 	mpmaxmod = {
 		code = 'mpmaxmod',
@@ -345,24 +366,28 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	wits_bonus = {
 		code = 'wits_bonus',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	charm_bonus = {
 		code = 'charm_bonus',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	sexuals_bonus = {
 		code = 'sexuals_bonus',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	productivity = {
 		code = 'productivity',
@@ -377,6 +402,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_build = {
 		code = 'mod_build',
@@ -384,6 +410,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_hunt = {
 		code = 'mod_hunt',
@@ -391,6 +418,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_fish = {
 		code = 'mod_fish',
@@ -398,6 +426,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_cook = {
 		code = 'mod_cook',
@@ -405,6 +434,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_smith = {
 		code = 'mod_smith',
@@ -412,6 +442,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_tailor = {
 		code = 'mod_tailor',
@@ -419,6 +450,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_alchemy = {
 		code = 'mod_alchemy',
@@ -426,6 +458,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_farm = {
 		code = 'mod_farm',
@@ -433,6 +466,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	mod_pros = {
 		code = 'mod_pros',
@@ -440,6 +474,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'add_part'
 	},
 	task_crit_chance = {
 		code = 'task_crit_chance',
@@ -447,6 +482,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		skip_process = true
 	},
 	task_efficiency_tool = {
 		code = 'task_efficiency_tool',
@@ -454,6 +490,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		skip_process = true
 	},
 	consent = {
 		code = 'consent',
@@ -463,20 +500,65 @@ var statdata = {
 		baseicon = 'food_love',
 	},
 	
-	damagemod = {
+	damagemod = { #possibly obsolete
 		code = 'damagemod',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		skip_process = true
 	},
 	
-	modmelee = {
-		code = 'modmelee',
+	obDrainReduction = {
+		code = 'obDrainReduction',
 		name = '',
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		default_bonus = 'mul'
+	},
+	obDrainIncrease = {
+		code = 'obDrainIncrease',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+	},
+	authority_mod = {#never applied stat for some reasons
+		code = 'authority_mod',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		default_bonus = 'add_part'
+	},
+	#container stats
+	resists = {
+		code = 'resists',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
+	},
+	status_resists = {
+		code = 'status_resists',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
+	},
+	resist_damage = {
+		code = 'resist_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
+	},
+	damage_mods = {
+		code = 'damage_mods',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
 	},
 }
 
@@ -497,3 +579,24 @@ var worktoolnames = {
 	hunt_knife = '',
 }
 
+func _ready():
+	for i in variables.resists_list:
+		statdata['resist_'+i] = {
+				code = "resist_"+i,
+			}
+	for i in variables.status_list:
+		statdata['resist_'+i] = {
+				code = "resist_"+i,
+			}
+	for i in ['all', 'melee', 'ranged', 'skill', 'spell']:
+		statdata['damage_mod_'+i] = {
+				code = "damage_mod_"+i,
+				percent = true,
+			}
+	
+	for val in statdata.values():
+		if !val.has('percent'): val.percent = false
+		if !val.has('default_bonus'): val.default_bonus = 'add'
+		if !val.has('direct'): val.direct = false
+		if !val.has('custom_get'): val.custom_get = false
+		if !val.has('skip_process'): val.skip_process = false
