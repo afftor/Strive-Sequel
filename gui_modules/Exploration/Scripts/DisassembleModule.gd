@@ -243,6 +243,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 
 
 func gear_tooltip(data, item = null):
+	$ItemTooltipV2.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png"))
 	textnode.show()
 	textnode2.show()
 	textnode3.hide()
@@ -265,11 +266,15 @@ func gear_tooltip(data, item = null):
 	textnode.bbcode_text = item.description #TODO Change this for modular item description
 	textnode2.bbcode_text = text
 	textnode2.bbcode_text += '\n\n\n'
-	print(textnode2.get_global_rect())
+	yield(get_tree(), 'idle_frame')
+	if textnode2.get_v_scroll().get_max() > 296:
+		$ItemTooltipV2.rect_size.y = 630 + textnode2.get_v_scroll().get_max() - 280
+	else:
+		$ItemTooltipV2.rect_size.y = 630
 
 func gear_detailed_tooltip(data, item = null):
 	gear_tooltip(data, item)
-	$ItemTooltipV2.texture = load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip_shift.png")
+	$ItemTooltipV2.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip_shift.png"))
 	textnode.hide()
 	textnode2.hide()
 	textnode3.show()

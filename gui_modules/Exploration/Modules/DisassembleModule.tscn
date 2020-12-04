@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonslave.png" type="Texture" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_hover.png" type="Texture" id=18]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2.png" type="Texture" id=19]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=20]
-[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png" type="Texture" id=21]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/DisassembleTooltip_2.tres" type="StyleBox" id=21]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=22]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_pressed.png" type="Texture" id=24]
@@ -46,14 +46,6 @@ margin_bottom = 12.0
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 21 )
-region_rect = Rect2( 0, 0, 550, 630 )
-margin_left = 7.36842
-margin_right = 6.31579
-margin_top = 430.737
-margin_bottom = 50.0
 
 [node name="DisassembleModule" type="Control"]
 anchor_right = 1.0
@@ -414,7 +406,10 @@ margin_left = 1260.0
 margin_top = 218.692
 margin_right = 1810.0
 margin_bottom = 848.692
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="ItemTooltipV2"]
 margin_right = 550.0
@@ -485,6 +480,7 @@ margin_left = 9.0
 margin_top = 295.0
 margin_right = 541.0
 margin_bottom = 574.0
+rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
 scroll_active = false
@@ -493,10 +489,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ItemTooltipV2"]
+anchor_top = 1.002
+anchor_bottom = 1.002
 margin_left = 9.0
-margin_top = 590.243
+margin_top = -41.0171
 margin_right = 218.0
-margin_bottom = 622.243
+margin_bottom = -9.01709
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.678431, 0.678431, 0.678431, 1 )
 text = "Hold shift for details"
@@ -517,6 +515,9 @@ mouse_filter = 2
 texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="ItemTooltipV2/Cost"]
 margin_left = 48.6366
