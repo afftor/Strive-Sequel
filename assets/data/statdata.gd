@@ -15,6 +15,7 @@ var statdata = {
 		baseicon = 'stat_gf',
 		type = 'factor',
 		abb = 'GRO',
+		direct = true
 	},
 	physics_factor = {
 		code = 'physics_factor',
@@ -23,6 +24,7 @@ var statdata = {
 		baseicon = 'stat_pf',
 		type = 'factor',
 		abb = 'PHY',
+		direct = true
 	},
 	wits_factor = {
 		code = 'wits_factor',
@@ -31,6 +33,7 @@ var statdata = {
 		baseicon = 'stat_wit',
 		type = 'factor',
 		abb = 'WIT',
+		direct = true
 	},
 	charm_factor = {
 		code = 'charm_factor',
@@ -39,6 +42,7 @@ var statdata = {
 		baseicon = 'stat_charm',
 		type = 'factor',
 		abb = 'CHA',
+		direct = true
 	},
 	sexuals_factor = {
 		code = 'sexuals_factor',
@@ -47,6 +51,7 @@ var statdata = {
 		baseicon = 'stat_sf',
 		type = 'factor',
 		abb = 'SEX',
+		direct = true
 	},
 	
 	magic_factor = {
@@ -56,6 +61,7 @@ var statdata = {
 		baseicon = 'stat_mf',
 		type = 'factor',
 		abb = 'MAG',
+		direct = true
 	},
 	
 	tame_factor = {
@@ -65,6 +71,7 @@ var statdata = {
 		baseicon = 'stat_tf',
 		type = 'factor',
 		abb = 'TAM',
+		direct = true
 	},
 	timid_factor = {
 		code = 'timid_factor',
@@ -73,6 +80,7 @@ var statdata = {
 		baseicon = 'stat_df',
 		type = 'factor',
 		abb = 'TIM',
+		direct = true
 	},
 	authority = {
 		code = 'authority',
@@ -80,6 +88,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
+		direct = true
 	},
 	loyalty = {
 		code = 'loyalty',
@@ -87,6 +96,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_df',
 		type = '',
+		direct = true
 	},
 	submission = {
 		code = 'submission',
@@ -101,6 +111,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		direct = true
 	},
 	wits = { 
 		code = 'wits',
@@ -108,6 +119,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		direct = true
 	},
 	charm = { 
 		code = 'charm',
@@ -115,6 +127,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		direct = true
 	},
 	sexuals = { 
 		code = 'sexuals',
@@ -122,6 +135,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
+		custom_get = true
 	},
 	obedience = {
 		code = 'obedience',
@@ -129,6 +143,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_obed',
 		type = 'mental_stat',
+		direct = true
 	},
 	loyaltyObedience = {
 		code = 'loyaltyObedience',
@@ -157,6 +172,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
+		direct = true
 	},
 	loyal = {
 		code = 'loyal',
@@ -187,6 +203,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_food',
 		type = 'misc',
+		direct = true
 	},
 	
 	food_hate = {
@@ -210,6 +227,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		direct = true
 	},
 	hpmax = {
 		code = 'hpmax',
@@ -217,6 +235,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		custom_get = true
 	},
 	hpmaxmod = {
 		code = 'hpmaxmod',
@@ -240,6 +259,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		direct = true
 	},
 	mpmax = {
 		code = 'mpmax',
@@ -247,6 +267,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		type = 'misc',
+		custom_get = true
 	},
 	mpmaxmod = {
 		code = 'mpmaxmod',
@@ -345,24 +366,28 @@ var statdata = {
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	wits_bonus = {
 		code = 'wits_bonus',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	charm_bonus = {
 		code = 'charm_bonus',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	sexuals_bonus = {
 		code = 'sexuals_bonus',
 		name = '',
 		descript = '',
 		baseicon = 'food_love',
+		direct = true
 	},
 	productivity = {
 		code = 'productivity',
@@ -457,6 +482,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		skip_process = true
 	},
 	task_efficiency_tool = {
 		code = 'task_efficiency_tool',
@@ -464,6 +490,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		skip_process = true
 	},
 	consent = {
 		code = 'consent',
@@ -479,6 +506,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		skip_process = true
 	},
 	
 	obDrainReduction = {
@@ -502,6 +530,35 @@ var statdata = {
 		descript = '',
 		baseicon = 'food_love',
 		default_bonus = 'add_part'
+	},
+	#container stats
+	resists = {
+		code = 'resists',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
+	},
+	status_resists = {
+		code = 'status_resists',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
+	},
+	resist_damage = {
+		code = 'resist_damage',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
+	},
+	damage_mods = {
+		code = 'damage_mods',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+		custom_get = true
 	},
 }
 
@@ -540,3 +597,6 @@ func _ready():
 	for val in statdata.values():
 		if !val.has('percent'): val.percent = false
 		if !val.has('default_bonus'): val.default_bonus = 'add'
+		if !val.has('direct'): val.direct = false
+		if !val.has('custom_get'): val.custom_get = false
+		if !val.has('skip_process'): val.skip_process = false
