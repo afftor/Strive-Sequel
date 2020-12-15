@@ -154,7 +154,7 @@ func remove_upgrade_confirm():
 
 func remove_from_upgrades_queue(upgrade):
 	removing_upgrade = upgrade
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'remove_upgrade_confirm', 'Remove this upgrade from queue?'])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'remove_upgrade_confirm', tr('REMOVEUPGRADEFROMQUEUEQUESTION')])
 
 
 func update_progresses(upgrade, newbutton, currentupgradelevel):

@@ -2602,5 +2602,22 @@ var TranslationDict = {
 	SAMETATTOO = "You already have the same tattoo in this slot.",
 	
 	NOTCOMPATIBLE = "This save file is not compatible with the current version of the game.\nHowever, you can update the file.\nWARNING! All characters will be returned to Mansion. Some progress might be lost.\nProceed? (original save file will stay untouched, but won't work with the current version)",
+	CREATECHARQUESTION = "Create this character?",
+	RETURNTOMAINMENUQUESTION = "Return to Main Menu?",
+	FORGETLOCATIONQUESTION = "Forget this location? All present characters will be sent back to Mansion. This action can't be undone.",
+
+	SENDCHARBACKQUESTION = "Send [name] back?",
+	SENDCHARBACKTOMANSIONQUESTION = "Send [name] back to Mansion?",
+
+	RETURNALLCHARSTOMANSIONQUESTION = "Return all character back to Mansion?",
+	CANCELTASKQUESTION = "Cancel this task?",
+	FORFEITQUESTQUESTION = "Forfeit This Quest?",
+	
+	REMOVEUPGRADEFROMQUEUEQUESTION = "Remove this upgrade from the queue?",
+
+	STARTTHISGAME = "Start this Game?",
+	UPDATEFILE = "Update this file?",
+
+
 }
 

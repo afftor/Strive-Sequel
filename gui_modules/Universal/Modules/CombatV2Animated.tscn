@@ -22,7 +22,7 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/bar_battle_hp.png" type="Texture" id=20]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_inventory.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_battle_chars_l.png" type="Texture" id=22]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=23]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=23]
 [ext_resource path="res://assets/images/gui/taskmenu/energyicon.png" type="Texture" id=24]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=25]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/effect_battle_portrait.png" type="Texture" id=26]
@@ -61,6 +61,8 @@
 [ext_resource path="res://assets/Textures_v2/BATTLE/Universal/black_fullhd.png" type="Texture" id=60]
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=61]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_victory.png" type="Texture" id=62]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 20

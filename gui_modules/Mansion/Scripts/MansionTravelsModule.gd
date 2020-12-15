@@ -86,7 +86,7 @@ var returnperson
 
 func return_confirm(person):
 	returnperson = person
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character', person.translate('Send [name] back to Mansion?')])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character', person.translate(tr('SENDCHARBACKTOMANSIONQUESTION'))])
 
 func return_character():
 	returnperson.return_to_mansion()
@@ -108,7 +108,7 @@ func forget_location():
 		[
 			self,
 			'clear_dungeon_confirm',
-			"Forget this location? All present characters will be sent back to Mansion. This action can't be undone."
+			tr("FORGETLOCATIONQUESTION")
 		]
 	)
 

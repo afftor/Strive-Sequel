@@ -90,9 +90,9 @@ __meta__ = {
 
 [node name="ButtonBack" type="Button" parent="."]
 margin_left = 362.0
-margin_top = 249.0
-margin_right = 517.0
-margin_bottom = 297.0
+margin_top = 238.0
+margin_right = 532.0
+margin_bottom = 306.0
 theme = ExtResource( 2 )
 text = "Back"
 __meta__ = {
@@ -101,9 +101,9 @@ __meta__ = {
 
 [node name="ButtonConfirm" type="Button" parent="."]
 margin_left = 571.618
-margin_top = 248.419
-margin_right = 765.618
-margin_bottom = 296.419
+margin_top = 237.419
+margin_right = 786.618
+margin_bottom = 305.419
 theme = ExtResource( 2 )
 text = "Confirm"
 __meta__ = {

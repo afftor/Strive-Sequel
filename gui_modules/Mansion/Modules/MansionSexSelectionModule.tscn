@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=2]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSexSelectionModule.gd" type="Script" id=3]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonmagenta_disabled.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta_pressed.png" type="Texture" id=5]
@@ -11,10 +11,6 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonviolet_disabled.png" type="Texture" id=9]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonmagenta.png" type="Texture" id=11]
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 2 )
 
 [node name="MansionSexSelectionModule" type="Panel"]
 anchor_right = 1.0
@@ -53,7 +49,7 @@ __meta__ = {
 margin_top = 2.0
 margin_right = 272.0
 margin_bottom = 58.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Date"
 align = 1
@@ -78,7 +74,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="SexButton"]
 margin_right = 272.0
 margin_bottom = 62.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sex"
 align = 1

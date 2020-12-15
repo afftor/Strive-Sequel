@@ -22,7 +22,9 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonbig_city_disabled.png" type="Texture" id=20]
 [ext_resource path="res://gui_modules/Exploration/Scripts/ExploreFullSlaveInfo.gd" type="Script" id=21]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask_exploration.png" type="Texture" id=22]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=23]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=23]
+
+
 
 [node name="ExploreFullSlaveModule" type="Panel" groups=[
 "pauseprocess",

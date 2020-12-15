@@ -277,7 +277,7 @@ func open_location(data):
 					var item = Items.materiallist[i]
 					var current_workers_count = 0
 					var active_tasks = ResourceScripts.game_party.active_tasks
-					if active_tasks.empty:
+					if active_tasks.empty():
 						$LocationGui.get_node("Resources/SelectWorkers").visible = true
 						break
 					for task in active_tasks:
@@ -747,7 +747,7 @@ func clear_dungeon():
 		[
 			self,
 			'clear_dungeon_confirm',
-			"Forget this location? All present characters will be sent back to Mansion. This action can't be undone."
+			tr("FORGETLOCATIONQUESTION")
 		]
 	)
 
@@ -859,7 +859,7 @@ func build_location_group():
 var selectedperson
 func return_character(character):
 	selectedperson = character
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character_confirm', character.translate("Send [name] back?")])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character_confirm', character.translate(tr("SENDCHARBACKQUESTION"))])
 
 
 func return_character_confirm():

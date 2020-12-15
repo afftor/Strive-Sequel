@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=5]
@@ -12,10 +12,11 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=10]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Details.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=12]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_slavedetails.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/panels/noimage.png" type="Texture" id=15]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/TextEdit.tres" type="StyleBox" id=16]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/ImageSelect.gd" type="Script" id=18]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDetailsModule.gd" type="Script" id=19]
 
@@ -30,22 +31,6 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 [sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 30
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 42
-font_data = ExtResource( 13 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 30
-font_data = ExtResource( 13 )
 
 [node name="SlaveDetailsModule" type="Panel"]
 light_mask = 0
@@ -147,7 +132,7 @@ text = "Select Custom Body"
 light_mask = 0
 margin_top = 255.0
 margin_right = 315.0
-margin_bottom = 307.0
+margin_bottom = 310.0
 rect_min_size = Vector2( 315, 40 )
 theme = ExtResource( 4 )
 toggle_mode = true
@@ -169,7 +154,7 @@ margin_bottom = 30.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Cancel"
 
@@ -180,7 +165,7 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 placeholder_text = "Search"
 
@@ -193,7 +178,7 @@ rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Add custom image"
 
@@ -206,7 +191,7 @@ rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Open system folder"
 
@@ -219,7 +204,7 @@ rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reload portraits"
 
@@ -232,7 +217,7 @@ rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reset the image"
 
@@ -246,7 +231,7 @@ margin_bottom = 326.0
 rect_min_size = Vector2( 315, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Reverse to default"
 
@@ -259,7 +244,7 @@ rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Select Folders"
 
@@ -271,7 +256,7 @@ margin_bottom = 316.0
 rect_min_size = Vector2( 315, 40 )
 hint_tooltip = "Will attempt to assign both portrait and body image, if same file name exists in both folders"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -286,7 +271,7 @@ rect_min_size = Vector2( 315, 40 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -301,7 +286,7 @@ margin_bottom = 760.0
 theme = ExtResource( 3 )
 custom_styles/focus = ExtResource( 16 )
 custom_styles/normal = ExtResource( 16 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Text Edit"
 wrap_enabled = true
@@ -315,7 +300,7 @@ margin_left = 412.518
 margin_top = 150.0
 margin_right = 473.518
 margin_bottom = 177.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Label"
 __meta__ = {
@@ -329,7 +314,7 @@ margin_top = 815.52
 margin_right = 912.045
 margin_bottom = 881.52
 theme = ExtResource( 12 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Confirm"
 __meta__ = {
@@ -415,8 +400,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
-current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
+current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
+current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -438,6 +423,7 @@ margin_right = 267.0
 margin_bottom = 32.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Portrait folder: "
 
 [node name="spritelabel" type="Label" parent="PopUp/selectfolders"]
@@ -448,6 +434,7 @@ margin_right = 266.667
 margin_bottom = 103.163
 size_flags_horizontal = 2
 size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Body folder: "
 
 [node name="closefolderselect" type="Button" parent="PopUp/selectfolders"]
@@ -458,6 +445,7 @@ margin_right = 412.578
 margin_bottom = 343.84
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/font = ExtResource( 2 )
 text = "Close"
 
 [node name="chooseportraitolder" type="Button" parent="PopUp/selectfolders"]
@@ -468,6 +456,7 @@ margin_right = 539.527
 margin_bottom = 72.3252
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/font = ExtResource( 2 )
 text = "Close"
 align = 0
 
@@ -479,6 +468,7 @@ margin_right = 538.86
 margin_bottom = 137.488
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/font = ExtResource( 2 )
 text = "Close"
 align = 0
 
@@ -490,6 +480,7 @@ margin_right = 662.499
 margin_bottom = 255.159
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
 text = "Selected folder and all subfolders in it will provide images to the required area and will be saved upon exit"
@@ -510,8 +501,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "C:/Users/1/Desktop/godot/Strive-Sequel"
-current_path = "C:/Users/1/Desktop/godot/Strive-Sequel/"
+current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
+current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -522,6 +513,7 @@ margin_right = 963.235
 margin_bottom = 172.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]You have no images with fitting criterias available.[/center]
 [center]Put your images into portrait folder and hit 'Reload Portraits' button[/center]"
@@ -532,7 +524,7 @@ Put your images into portrait folder and hit 'Reload Portraits' button"
 light_mask = 0
 margin_right = 970.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Details"
 align = 1
@@ -554,7 +546,7 @@ light_mask = 0
 margin_left = 34.0
 margin_right = 349.0
 margin_bottom = 42.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Traits"
 align = 1

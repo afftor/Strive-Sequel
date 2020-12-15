@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=2]
@@ -25,34 +25,21 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/icon_slave.png" type="Texture" id=23]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=24]
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionSlaveListPanel.tres" type="StyleBox" id=25]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=26]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=27]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=28]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=1]
 
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=2]
 
-[sub_resource type="DynamicFont" id=3]
-size = 20
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=3]
 
 [sub_resource type="StyleBoxTexture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=5]
 
-[sub_resource type="StyleBoxTexture" id=6]
-
-[sub_resource type="StyleBoxTexture" id=7]
-
-[sub_resource type="StyleBoxTexture" id=8]
-
-[sub_resource type="DynamicFont" id=9]
-size = 30
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 1 )
 
@@ -71,7 +58,7 @@ margin_left = 446.923
 margin_top = 7.7562
 margin_right = 623.923
 margin_bottom = 47.7562
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.866667, 0.905882, 0.478431, 1 )
 text = "Character List"
 __meta__ = {
@@ -134,21 +121,21 @@ stretch_mode = 6
 
 [node name="sex" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 54.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 104.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 50, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Sex"
 
 [node name="name" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 108.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 233.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 125, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name "
 __meta__ = {
@@ -157,13 +144,13 @@ __meta__ = {
 
 [node name="stats" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 237.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 337.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 100, 0 )
 mouse_filter = 0
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "HP/MP"
 __meta__ = {
@@ -172,12 +159,12 @@ __meta__ = {
 
 [node name="job" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 341.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 501.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 160, 0 )
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Occupation"
 __meta__ = {
@@ -186,35 +173,35 @@ __meta__ = {
 
 [node name="obed" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 505.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 585.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 80, 0 )
 hint_tooltip = "STATOBEDIENCEDESCRIPT"
 mouse_filter = 0
 size_flags_horizontal = 0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Obed"
 
 [node name="explabel" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 589.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 699.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 110, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Exp"
 
 [node name="location" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 703.0
-margin_top = 5.0
+margin_top = 4.0
 margin_right = 938.0
-margin_bottom = 45.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 235, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Location"
 __meta__ = {
@@ -223,11 +210,11 @@ __meta__ = {
 
 [node name="state2" type="Label" parent="Categories/Button/HBoxContainer"]
 margin_left = 942.0
-margin_top = 5.0
-margin_right = 1004.0
-margin_bottom = 45.0
+margin_top = 4.0
+margin_right = 1007.0
+margin_bottom = 46.0
 rect_min_size = Vector2( 50, 0 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Type"
 __meta__ = {
@@ -247,7 +234,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1008.0
+margin_right = 1004.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
@@ -303,7 +290,7 @@ margin_top = 5.0
 margin_right = 638.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 75, 0 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
@@ -315,10 +302,10 @@ __meta__ = {
 
 [node name="name" type="Label" parent="ScrollContainer/VBoxContainer/Button"]
 margin_left = 107.0
-margin_top = 5.0
+margin_top = 3.0
 margin_right = 230.0
-margin_bottom = 45.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Name "
 valign = 1
@@ -378,7 +365,7 @@ __meta__ = {
 margin_left = 2.0
 margin_right = 184.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Rest"
 align = 1
@@ -393,7 +380,7 @@ margin_top = 6.0
 margin_right = 556.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 45, 0 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "100"
@@ -422,7 +409,7 @@ margin_left = 703.0
 margin_top = 6.0
 margin_right = 924.0
 margin_bottom = 45.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Location"
 valign = 1
@@ -458,7 +445,7 @@ margin_right = -173.0
 margin_bottom = -65.926
 hint_tooltip = "TOOLTIPPOPULATION"
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Pop"
 __meta__ = {
@@ -486,7 +473,7 @@ margin_right = -54.0002
 margin_bottom = -63.697
 hint_tooltip = "TOOLTIPFOODCONSUMPTION"
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 28 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "FC"
 __meta__ = {
@@ -529,12 +516,12 @@ custom_constants/separation = 18
 visible = false
 margin_right = 108.0
 margin_bottom = 40.0
-custom_styles/hover = SubResource( 4 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 6 )
-custom_styles/disabled = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
-custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -554,7 +541,7 @@ margin_left = 264.272
 margin_top = 794.056
 margin_right = 453.272
 margin_bottom = 834.056
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Bedroom limit:"
 align = 1
@@ -568,7 +555,7 @@ margin_left = 525.066
 margin_top = 794.056
 margin_right = 721.066
 margin_bottom = 834.056
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 27 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Iterations limit:"
 align = 1

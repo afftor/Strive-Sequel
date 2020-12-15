@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist_pressed.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures_v2/MANSION/Sex/Buttons/button_charlist.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/CHEATS/panel_cheats.png" type="Texture" id=5]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/Textures_v2/CHEATS/button_cheats_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/CHEATS/button_cheats_pressed.png" type="Texture" id=8]
 [ext_resource path="res://assets/Textures_v2/CHEATS/button_cheats.png" type="Texture" id=9]
@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/Textures_v2/CHEATS/buttonbig_cheats.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/CHEATS/buttonbig_cheats_hover.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/CHEATS/buttonbig_cheats_pressed.png" type="Texture" id=18]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=21]
 [ext_resource path="res://assets/Textures_v2/back_charinfo.png" type="Texture" id=22]
@@ -46,6 +46,10 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_reputationshop.png" type="Texture" id=44]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_charlist_pressed.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_charlist.png" type="Texture" id=46]
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 36

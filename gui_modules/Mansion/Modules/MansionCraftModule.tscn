@@ -1,6 +1,6 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=67 format=2]
 
-[ext_resource path="res://MainFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=4]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=9]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=10]
 [ext_resource path="res://assets/images/iconsitems/Wood.png" type="Texture" id=11]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_blacksmith_hover.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_itemchoose_hover.png" type="Texture" id=15]
@@ -53,75 +54,32 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_tailoring_pressed.png" type="Texture" id=52]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy.png" type="Texture" id=53]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/icon_alchemy_pressed.png" type="Texture" id=54]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=55]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=55]
 [ext_resource path="res://dragarraytemplate.gd" type="Script" id=56]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/divider_craft.png" type="Texture" id=57]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craft_enough.png" type="Texture" id=58]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_craft_notenough.png" type="Texture" id=59]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=60]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 region_rect = Rect2( 0, 0, 12, 256 )
 margin_left = 5.0
 margin_right = 5.0
 margin_top = 5.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 30
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 30
-font_data = ExtResource( 2 )
+[sub_resource type="StyleBoxTexture" id=5]
 
-[sub_resource type="DynamicFont" id=7]
-size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=11]
-
-[sub_resource type="DynamicFont" id=12]
-size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=13]
-size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=15]
-size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=6]
 region_rect = Rect2( 0, 0, 554, 754 )
-
-[sub_resource type="DynamicFont" id=17]
-size = 20
-font_data = ExtResource( 2 )
 
 [node name="MansionCraftModule" type="Panel"]
 margin_right = 1100.0
@@ -165,7 +123,7 @@ margin_left = 18.0
 margin_top = 129.0
 margin_right = 145.0
 margin_bottom = 153.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Blacksmith"
 align = 1
 __meta__ = {
@@ -187,7 +145,7 @@ margin_left = 31.0
 margin_top = 129.0
 margin_right = 158.0
 margin_bottom = 153.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Cooking"
 align = 1
 __meta__ = {
@@ -209,7 +167,7 @@ margin_left = 33.0
 margin_top = 129.0
 margin_right = 160.0
 margin_bottom = 153.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Tailoring"
 align = 1
 __meta__ = {
@@ -231,7 +189,7 @@ margin_left = 28.0
 margin_top = 129.0
 margin_right = 155.0
 margin_bottom = 153.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "Alchemy"
 align = 1
 __meta__ = {
@@ -384,7 +342,7 @@ margin_left = 59.0
 margin_top = 8.0
 margin_right = 309.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 55 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Item Name"
 valign = 1
@@ -398,6 +356,7 @@ margin_left = 253.0
 margin_top = 8.0
 margin_right = 377.0
 margin_bottom = 44.0
+custom_fonts/font = ExtResource( 55 )
 text = "100/500"
 align = 1
 valign = 1
@@ -429,8 +388,8 @@ margin_left = 1055.0
 margin_top = 338.0
 margin_right = 1067.0
 margin_bottom = 916.0
-custom_styles/grabber = SubResource( 2 )
-custom_styles/scroll = SubResource( 3 )
+custom_styles/grabber = SubResource( 1 )
+custom_styles/scroll = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -440,7 +399,7 @@ margin_left = 552.0
 margin_top = 784.0
 margin_right = 1100.0
 margin_bottom = 980.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -451,7 +410,7 @@ margin_top = 132.0
 margin_right = 507.0
 margin_bottom = 166.0
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_hover = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -466,7 +425,7 @@ margin_top = 132.0
 margin_right = 268.0
 margin_bottom = 166.0
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_hover = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -495,7 +454,7 @@ __meta__ = {
 margin_top = 36.0
 margin_right = 544.0
 margin_bottom = 82.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -540,10 +499,10 @@ texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 15 )
 
 [node name="icon" type="TextureRect" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 77.0
-margin_bottom = 78.0
+margin_left = 3.9021
+margin_top = 3.55246
+margin_right = 74.9021
+margin_bottom = 75.5525
 texture = ExtResource( 17 )
 expand = true
 stretch_mode = 6
@@ -553,10 +512,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
 margin_left = 80.0
-margin_top = -5.0
 margin_right = 416.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 55 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Item Name"
 __meta__ = {
@@ -583,10 +541,10 @@ expand = true
 
 [node name="Label" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button/HBoxContainer/Button"]
 margin_left = 24.0
-margin_top = 15.0
+margin_top = 13.0
 margin_right = 40.0
-margin_bottom = 39.0
-custom_fonts/font = SubResource( 8 )
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 60 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
@@ -596,11 +554,11 @@ __meta__ = {
 }
 
 [node name="number" type="Label" parent="CraftSelect/ScrollContainer/VBoxContainer/Button"]
-margin_left = 46.8235
+margin_left = 44.8235
 margin_top = 49.0
-margin_right = 76.8235
-margin_bottom = 76.0
-custom_fonts/font = SubResource( 9 )
+margin_right = 74.8235
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 60 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1"
@@ -626,7 +584,7 @@ __meta__ = {
 margin_top = 42.0
 margin_right = 56.0
 margin_bottom = 69.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 60 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 text = "1"
@@ -641,7 +599,7 @@ margin_top = 916.0
 margin_right = 373.0
 margin_bottom = 950.0
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_hover = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -655,7 +613,7 @@ margin_left = 552.0
 margin_top = 232.0
 margin_right = 1096.0
 margin_bottom = 784.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -686,8 +644,8 @@ __meta__ = {
 margin_left = 205.0
 margin_top = 8.0
 margin_right = 520.0
-margin_bottom = 174.0
-custom_fonts/normal_font = SubResource( 12 )
+margin_bottom = 189.0
+custom_fonts/normal_font = ExtResource( 12 )
 bbcode_enabled = true
 scroll_active = false
 __meta__ = {
@@ -704,7 +662,7 @@ margin_left = 115.0
 margin_top = 221.0
 margin_right = 478.0
 margin_bottom = 321.0
-custom_fonts/normal_font = SubResource( 13 )
+custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 scroll_active = false
 
@@ -713,7 +671,7 @@ margin_left = 115.0
 margin_top = 336.0
 margin_right = 478.0
 margin_bottom = 436.0
-custom_fonts/normal_font = SubResource( 13 )
+custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 scroll_active = false
 
@@ -722,7 +680,7 @@ margin_left = 115.0
 margin_top = 448.0
 margin_right = 478.0
 margin_bottom = 552.0
-custom_fonts/normal_font = SubResource( 13 )
+custom_fonts/normal_font = ExtResource( 12 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 scroll_active = false
 __meta__ = {
@@ -754,7 +712,7 @@ margin_left = 56.8332
 margin_top = 64.4109
 margin_right = 94.8332
 margin_bottom = 91.4109
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = ExtResource( 55 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1"
 align = 1
@@ -784,7 +742,7 @@ margin_left = 56.8332
 margin_top = 64.4109
 margin_right = 94.8332
 margin_bottom = 91.4109
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = ExtResource( 55 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1"
 align = 1
@@ -817,7 +775,7 @@ margin_left = 56.8332
 margin_top = 64.4109
 margin_right = 94.8332
 margin_bottom = 91.4109
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = ExtResource( 55 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1"
 align = 1
@@ -849,7 +807,7 @@ margin_left = 8.0
 margin_top = 182.0
 margin_right = 188.0
 margin_bottom = 222.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Parts"
 
@@ -909,7 +867,7 @@ margin_left = 351.456
 margin_top = 8.0
 margin_right = 475.456
 margin_bottom = 51.0
-custom_fonts/font = ExtResource( 55 )
+custom_fonts/font = ExtResource( 12 )
 text = "1000/1000"
 align = 2
 valign = 1
@@ -922,7 +880,7 @@ margin_left = 74.0
 margin_top = 8.0
 margin_right = 351.0
 margin_bottom = 51.0
-custom_fonts/font = ExtResource( 55 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Рыба"
 valign = 1
@@ -934,7 +892,7 @@ __meta__ = {
 margin_top = 225.0
 margin_right = 550.0
 margin_bottom = 980.0
-custom_styles/panel = SubResource( 16 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -976,7 +934,7 @@ margin_left = 9.0
 margin_top = 69.0
 margin_right = 89.0
 margin_bottom = 96.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -992,7 +950,7 @@ margin_left = 108.0
 margin_top = 15.0
 margin_right = 460.0
 margin_bottom = 100.0
-custom_fonts/normal_font = SubResource( 17 )
+custom_fonts/normal_font = ExtResource( 55 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 scroll_active = false
@@ -1036,6 +994,7 @@ margin_left = 573.0
 margin_top = 328.0
 margin_right = 703.0
 margin_bottom = 352.0
+custom_fonts/font = ExtResource( 12 )
 text = "Craft Order"
 __meta__ = {
 "_edit_use_anchors_": false

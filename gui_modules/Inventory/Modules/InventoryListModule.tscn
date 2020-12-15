@@ -1,17 +1,11 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_detail.png" type="Texture" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar.png" type="Texture" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
 [ext_resource path="res://assets/images/gui/inventory/icon_armor1.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/iconsgear/ArmorBasic.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/gui/menu/menubuttonnorm.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/gui/menu/menubuttonhl.png" type="Texture" id=9]
-[ext_resource path="res://assets/images/gui/menu/menubuttonpressed.png" type="Texture" id=10]
-[ext_resource path="res://assets/images/gui/menu/confirmpanel.png" type="Texture" id=11]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_potion.png" type="Texture" id=13]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_armor_pressed.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_weapon_hover.png" type="Texture" id=15]
@@ -42,6 +36,7 @@
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/icon_all.png" type="Texture" id=40]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/search.tres" type="StyleBox" id=41]
 [ext_resource path="res://gui_modules/Inventory/Scripts/InventoryListModule.gd" type="Script" id=42]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=43]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 39 )
@@ -82,19 +77,6 @@ margin_left = 3.0
 margin_right = 3.0
 margin_top = 3.0
 margin_bottom = 3.0
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 24
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 36
-use_filter = true
-font_data = ExtResource( 12 )
 
 [node name="InventoryListModule" type="Panel"]
 light_mask = 0
@@ -177,10 +159,10 @@ __meta__ = {
 [node name="Name" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
 light_mask = 0
 margin_left = 54.0
-margin_top = 8.0
+margin_top = 6.0
 margin_right = 381.0
-margin_bottom = 44.0
-custom_fonts/font = SubResource( 6 )
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Item Name"
@@ -204,10 +186,10 @@ stretch_mode = 6
 [node name="Number" type="Label" parent="Scroller/ScrollContainer/GridContainer/Button"]
 light_mask = 0
 margin_left = 356.0
-margin_top = 8.0
+margin_top = 6.0
 margin_right = 428.0
-margin_bottom = 45.0
-custom_fonts/font = SubResource( 6 )
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "0000"
@@ -328,114 +310,6 @@ texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 25 )
 
-[node name="NumberSelectPanel" type="TextureRect" parent="."]
-visible = false
-light_mask = 0
-margin_left = 197.0
-margin_top = 206.0
-margin_right = 669.0
-margin_bottom = 445.0
-texture = ExtResource( 11 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 78.0
-margin_top = 61.0
-margin_right = 388.0
-margin_bottom = 109.0
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-bbcode_enabled = true
-bbcode_text = "Purchase X?"
-text = "Purchase X?"
-
-[node name="SpinBox" type="SpinBox" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 171.0
-margin_top = 127.0
-margin_right = 271.0
-margin_bottom = 161.0
-
-[node name="ConfirmButton" type="TextureButton" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 38.0
-margin_top = 161.0
-margin_right = 206.0
-margin_bottom = 216.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 9 )
-expand = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="NumberSelectPanel/ConfirmButton"]
-light_mask = 0
-margin_left = 12.0
-margin_top = 17.0
-margin_right = 154.0
-margin_bottom = 41.0
-text = "CONFIRM"
-align = 1
-
-[node name="CancelButton" type="TextureButton" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 258.0
-margin_top = 161.0
-margin_right = 426.0
-margin_bottom = 216.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 9 )
-expand = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="NumberSelectPanel/CancelButton"]
-light_mask = 0
-margin_left = 12.0
-margin_top = 17.0
-margin_right = 154.0
-margin_bottom = 41.0
-text = "CANCEL"
-align = 1
-
-[node name="MaxButton" type="Button" parent="NumberSelectPanel"]
-visible = false
-light_mask = 0
-margin_left = 142.0
-margin_top = 123.0
-margin_right = 302.0
-margin_bottom = 153.0
-text = "Max"
-
-[node name="EndPrice" type="Label" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 284.0
-margin_top = 133.0
-margin_right = 406.0
-margin_bottom = 157.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "= 100"
-
-[node name="BasePrice" type="Label" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 38.0
-margin_top = 132.0
-margin_right = 160.0
-margin_bottom = 156.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "100*"
-align = 2
-
-[node name="TextureRect" type="TextureRect" parent="NumberSelectPanel"]
-light_mask = 0
-margin_left = 376.0
-margin_top = 117.0
-margin_right = 426.0
-margin_bottom = 170.0
-mouse_filter = 2
-texture = ExtResource( 8 )
-expand = true
-stretch_mode = 6
-
 [node name="SearchFilter" type="LineEdit" parent="."]
 light_mask = 0
 margin_left = 48.0
@@ -443,7 +317,7 @@ margin_top = 115.61
 margin_right = 548.0
 margin_bottom = 167.61
 custom_styles/normal = ExtResource( 41 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/selection_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/cursor_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/clear_button_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -451,6 +325,7 @@ custom_colors/font_color_selected = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 custom_constants/minimum_spaces = 3
+align = 1
 placeholder_text = "  Filter"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -460,8 +335,11 @@ __meta__ = {
 light_mask = 0
 margin_right = 595.0
 margin_bottom = 90.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 43 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Inventory"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,9 +1,9 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=7]
@@ -31,6 +31,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Buttons/button_return.png" type="Texture" id=29]
 [ext_resource path="res://assets/Textures_v2/MANSION/Travel/Panels/tab_travel.png" type="Texture" id=30]
 
+
+
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 230, 40 )
@@ -45,27 +47,6 @@ region_rect = Rect2( 0, 0, 230, 40 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 20
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 20
 font_data = ExtResource( 1 )
 
 [node name="MansionTravelsModule" type="Panel"]
@@ -117,10 +98,10 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 303.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 303, 0 )
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
-visible = false
 margin_right = 303.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
@@ -134,6 +115,7 @@ margin_left = 10.0
 margin_top = 8.0
 margin_right = 253.0
 margin_bottom = 37.0
+custom_fonts/font = ExtResource( 3 )
 text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -144,6 +126,7 @@ margin_left = 251.0
 margin_top = 9.0
 margin_right = 296.0
 margin_bottom = 33.0
+custom_fonts/font = ExtResource( 3 )
 text = "15"
 align = 2
 __meta__ = {
@@ -155,6 +138,7 @@ margin_left = 3240.13
 margin_top = 227.42
 margin_right = 3489.13
 margin_bottom = 251.42
+custom_fonts/font = ExtResource( 3 )
 text = "LABELDISLOCATION"
 align = 1
 clip_text = true
@@ -167,6 +151,7 @@ margin_left = 3235.87
 margin_top = 260.42
 margin_right = 3499.87
 margin_bottom = 300.42
+custom_fonts/font = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -198,7 +183,7 @@ margin_top = 72.0
 margin_right = 696.0
 margin_bottom = 227.0
 theme = ExtResource( 5 )
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "Text"
 text = "Text"
@@ -212,7 +197,7 @@ margin_top = 234.0
 margin_right = 702.0
 margin_bottom = 318.0
 theme = ExtResource( 5 )
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "Text"
 text = "Text"
@@ -227,7 +212,7 @@ margin_right = 556.161
 margin_bottom = 372.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 14 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.937255, 0.517647, 1 )
@@ -244,7 +229,7 @@ margin_right = 579.0
 margin_bottom = 369.0
 rect_min_size = Vector2( 0, 40 )
 theme = ExtResource( 14 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0.317647, 0.937255, 0.517647, 1 )
@@ -296,7 +281,7 @@ margin_left = 2.0
 margin_top = -1.0
 margin_right = 336.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -319,7 +304,7 @@ texture_hover = ExtResource( 28 )
 [node name="Label" type="Label" parent="TravelersContainer/VBoxContainer/Button"]
 margin_right = 289.0
 margin_bottom = 41.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 4 )
 text = "Name"
 align = 1
 valign = 1
@@ -332,7 +317,7 @@ margin_left = 712.0
 margin_top = 8.0
 margin_right = 1096.0
 margin_bottom = 56.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Groups on the Way"
 align = 1
@@ -346,7 +331,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 704.0
 margin_bottom = 56.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Information"
 align = 1
@@ -369,7 +354,7 @@ __meta__ = {
 margin_top = -3.0
 margin_right = 212.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Select Location"
 align = 1
@@ -392,7 +377,7 @@ texture_hover = ExtResource( 18 )
 margin_top = -1.0
 margin_right = 256.0
 margin_bottom = 39.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Location Select"
 align = 1
@@ -414,7 +399,7 @@ __meta__ = {
 margin_left = 27.0
 margin_right = 367.0
 margin_bottom = 34.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 text = "Avalible Resources"
 align = 1
 valign = 1
@@ -459,7 +444,7 @@ margin_left = 2.0
 margin_top = 53.0
 margin_right = 77.0
 margin_bottom = 80.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "2/3"
 align = 1
@@ -474,7 +459,7 @@ margin_top = 330.0
 margin_right = 690.792
 margin_bottom = 372.0
 theme = ExtResource( 14 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Forget"

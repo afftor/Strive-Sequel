@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=4 format=2]
 
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_loadaccept.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxTexture" id=1]

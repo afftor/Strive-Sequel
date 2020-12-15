@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/images/iconsgear/SwordBasic.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=5]
@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Hover.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/Button_Colored_Normal.tres" type="StyleBox" id=11]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=12]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=13]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats.png" type="Texture" id=14]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_hover.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/INVENTORY/Buttons/button_stats_pressed.png" type="Texture" id=16]
@@ -22,16 +22,13 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/MansionJournalModule.tres" type="StyleBox" id=20]
 [ext_resource path="res://assets/Textures_v2/CITY/Icons/icon_sandclocks_noticeboard.png" type="Texture" id=21]
 [ext_resource path="res://assets/Textures_v2/CITY/Universal/paper_description.png" type="Texture" id=22]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=23]
 
-[sub_resource type="DynamicFont" id=1]
-size = 36
-font_data = ExtResource( 13 )
-
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 22 )
 region_rect = Rect2( 0, 0, 500, 740 )
 
-[sub_resource type="ImageTexture" id=3]
+[sub_resource type="ImageTexture" id=2]
 
 [node name="MansionJournalModule" type="Panel"]
 margin_right = 860.0
@@ -56,7 +53,7 @@ margin_left = 74.2
 margin_top = 29.136
 margin_right = 308.2
 margin_bottom = 80.136
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Active Tasks"
 __meta__ = {
@@ -68,7 +65,7 @@ margin_left = 337.821
 margin_top = -5.0
 margin_right = 837.821
 margin_bottom = 735.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -98,9 +95,12 @@ margin_top = 40.0
 margin_right = 772.0
 margin_bottom = 311.0
 theme = ExtResource( 3 )
-custom_fonts/normal_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 13 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CompleteButton" type="Button" parent="."]
 margin_left = 382.0
@@ -110,7 +110,7 @@ margin_bottom = 761.948
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Complete"
 __meta__ = {
@@ -125,7 +125,7 @@ margin_bottom = 761.948
 custom_styles/hover = ExtResource( 10 )
 custom_styles/pressed = ExtResource( 9 )
 custom_styles/normal = ExtResource( 11 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 13 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Forfeit"
 
@@ -164,6 +164,7 @@ margin_left = 32.5641
 margin_top = 48.7934
 margin_right = 72.5641
 margin_bottom = 72.7934
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
@@ -207,6 +208,7 @@ margin_left = 30.6155
 margin_top = 46.5347
 margin_right = 70.6155
 margin_bottom = 70.5347
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1"
 align = 2
@@ -260,7 +262,7 @@ toggle_mode = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 15 )
-texture_focused = SubResource( 3 )
+texture_focused = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -287,7 +289,7 @@ toggle_mode = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 16 )
 texture_hover = ExtResource( 15 )
-texture_focused = SubResource( 3 )
+texture_focused = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -380,3 +382,4 @@ margin_left = 40.0
 margin_top = 32.0
 margin_right = 572.0
 margin_bottom = 90.0
+custom_fonts/normal_font = ExtResource( 13 )

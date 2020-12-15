@@ -1,27 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Background.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButtons.tres" type="Theme" id=3]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesBig.tres" type="DynamicFont" id=4]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveDietModule.gd" type="Script" id=5]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/panel_diet.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 673, 700 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 42
-font_data = ExtResource( 4 )
 
 [node name="SlaveDietModule" type="Panel"]
 margin_right = 670.0
@@ -68,7 +56,7 @@ margin_left = 18.2053
 margin_top = -6.99472
 margin_right = 110.459
 margin_bottom = 13.1653
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Food Name"
 __meta__ = {
@@ -79,7 +67,7 @@ __meta__ = {
 margin_left = 487.703
 margin_right = 579.703
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "High"
 align = 1
@@ -92,14 +80,14 @@ margin_left = 36.0
 margin_top = 78.0
 margin_right = 632.0
 margin_bottom = 220.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = ExtResource( 1 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 
 [node name="Label" type="Label" parent="."]
 margin_right = 670.0
 margin_bottom = 78.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Diet"
 align = 1

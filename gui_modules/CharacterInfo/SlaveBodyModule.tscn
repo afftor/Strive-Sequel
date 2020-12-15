@@ -11,7 +11,9 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Professions_Panel.tres" type="StyleBox" id=9]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/SlaveBodyModule_panel.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask.png" type="Texture" id=11]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=12]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=12]
+
+
 
 [node name="SlaveBodyModule" type="Panel"]
 show_behind_parent = true

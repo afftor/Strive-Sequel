@@ -46,7 +46,7 @@ func update_file(filename):
 	if filename == '':
 		return
 	file_to_update = filename
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'update_file_action', "Update this file?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'update_file_action', tr("UPDATEFILE")])
 
 
 var file_to_update

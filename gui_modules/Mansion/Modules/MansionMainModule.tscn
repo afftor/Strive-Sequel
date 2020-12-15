@@ -1,7 +1,7 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/CHAR_CREATION/ChC_Theme.tres" type="Theme" id=3]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionMainModule.gd" type="Script" id=4]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
@@ -13,7 +13,7 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Left_Menu.tres" type="Theme" id=12]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJournalModule.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=14]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionUpgradesModule.tscn" type="PackedScene" id=15]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionCraftModule.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionTaskInfoModule.tscn" type="PackedScene" id=17]
@@ -40,10 +40,6 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [sub_resource type="ShaderMaterial" id=2]
 
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 14 )
-
 [node name="MansionMainModule" type="Panel"]
 margin_left = 1.0
 margin_right = 1921.0
@@ -54,6 +50,8 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_mode = true
+generate_test_chars = true
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -198,22 +196,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSeparator" type="TextureRect" parent="NavigationModule"]
-visible = false
-margin_left = 13.0
-margin_top = -1.0
-margin_right = 53.0
-margin_bottom = 54.0
-texture = ExtResource( 30 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
 margin_left = 18.0
-margin_top = -1.0
+margin_top = -6.0
 margin_right = 1450.0
-margin_bottom = 59.0
+margin_bottom = 58.0
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -224,20 +211,33 @@ custom_constants/separation = 14
 
 [node name="Button" type="Button" parent="NavigationModule/NavigationContainer/AreaSelection"]
 visible = false
-margin_right = 108.0
-margin_bottom = 55.0
+anchor_top = -0.015625
+anchor_bottom = -0.015625
+margin_right = 137.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 55 )
 custom_styles/hover = ExtResource( 20 )
 custom_styles/pressed = ExtResource( 20 )
 custom_styles/focus = ExtResource( 20 )
 custom_styles/disabled = ExtResource( 20 )
 custom_styles/normal = ExtResource( 20 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 14 )
 custom_colors/font_color = Color( 0.6, 0.513726, 0.435294, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 toggle_mode = true
 text = "Mansion"
+
+[node name="VSeparator" type="TextureRect" parent="NavigationModule"]
+visible = false
+margin_left = 18.0
+margin_top = -2.0
+margin_right = 38.0
+margin_bottom = 43.0
+texture = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TutorialButton" type="TextureButton" parent="."]
 margin_left = 1718.95

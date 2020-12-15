@@ -79,7 +79,7 @@ func newgame():
 	$NewGamePanel/PresetContainer/VBoxContainer.get_child(0).emit_signal('pressed')
 
 func start_game():
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'start_game_confirm', 'Start this Game?'])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'start_game_confirm', tr('STARTTHISGAME')])
 
 func start_game_confirm():
 	ResourceScripts.game_world.make_world()

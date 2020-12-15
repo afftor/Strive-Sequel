@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_30.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=4]
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionLocationsPanel.tres" type="StyleBox" id=5]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_travelnavigation_hover.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_travelnavigation_pressed.png" type="Texture" id=8]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionLocationsModule.gd" type="Script" id=9]
+
+
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -39,7 +41,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 352.0
 margin_bottom = 80.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
@@ -52,7 +54,7 @@ margin_left = 368.0
 margin_top = 8.0
 margin_right = 736.0
 margin_bottom = 80.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
@@ -65,7 +67,7 @@ margin_left = 747.0
 margin_top = 8.0
 margin_right = 1091.0
 margin_bottom = 80.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 align = 1
 valign = 1
@@ -121,7 +123,7 @@ text = "Location"
 [node name="Label" type="Label" parent="LocationLists/Column1/ScrollContainer/VBoxContainer/Button"]
 margin_right = 305.0
 margin_bottom = 52.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "3"
 align = 2
@@ -179,7 +181,7 @@ text = "Location"
 [node name="Label" type="Label" parent="LocationLists/Column2/ScrollContainer/VBoxContainer/Button"]
 margin_right = 305.0
 margin_bottom = 52.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "3"
 align = 2
@@ -237,7 +239,7 @@ text = "Location"
 [node name="Label" type="Label" parent="LocationLists/Column3/ScrollContainer/VBoxContainer/Button"]
 margin_right = 305.0
 margin_bottom = 52.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "3"
 align = 2

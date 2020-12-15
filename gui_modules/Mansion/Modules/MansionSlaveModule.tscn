@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -25,49 +25,21 @@
 [ext_resource path="res://assets/images/gui/inventory/icon_craft1.png" type="Texture" id=23]
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Slave_Module.tres" type="Theme" id=24]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=25]
-[ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=26]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=26]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSlaveModule.gd" type="Script" id=27]
 [ext_resource path="res://assets/Themes_v2/MANSION/MansionSlaveInfoPanele.tres" type="StyleBox" id=28]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=29]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=30]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 14
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=3]
-size = 24
-outline_color = Color( 0.878431, 0.878431, 0.878431, 1 )
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 23
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 36
-font_data = ExtResource( 26 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 36
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=10]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -96,7 +68,7 @@ margin_top = 139.0
 margin_right = 456.0
 margin_bottom = 204.0
 mouse_filter = 2
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 29 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 text = "Job"
@@ -146,7 +118,7 @@ margin_left = 6.0
 margin_top = 64.0
 margin_right = 84.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Label"
 align = 1
 __meta__ = {
@@ -193,7 +165,7 @@ margin_left = 200.0
 margin_top = 107.0
 margin_right = 456.0
 margin_bottom = 135.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = ExtResource( 29 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 text = "Name"
@@ -232,7 +204,7 @@ stretch_margin_bottom = 5
 margin_top = -2.75696
 margin_right = 262.0
 margin_bottom = 29.243
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 30 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1.100"
 align = 1
@@ -254,7 +226,7 @@ nine_patch_stretch = true
 margin_top = -3.75696
 margin_right = 262.0
 margin_bottom = 28.243
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 30 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1.100"
 align = 1
@@ -276,7 +248,7 @@ nine_patch_stretch = true
 margin_top = -3.75696
 margin_right = 263.0
 margin_bottom = 28.243
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = ExtResource( 30 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "1.100"
 align = 1
@@ -298,7 +270,7 @@ margin_left = 80.0
 margin_top = 13.9836
 margin_right = 176.0
 margin_bottom = 53.9836
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 align = 1
 __meta__ = {
@@ -319,7 +291,7 @@ __meta__ = {
 margin_left = 8.0
 margin_right = 432.0
 margin_bottom = 63.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 26 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Character Info"
 align = 1
@@ -333,7 +305,7 @@ margin_left = 72.8327
 margin_top = 309.41
 margin_right = 122.833
 margin_bottom = 341.41
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.996078, 0.317647, 0.364706, 1 )
 text = "Physics"
 align = 1
@@ -347,7 +319,7 @@ margin_left = 130.449
 margin_top = 308.616
 margin_right = 180.449
 margin_bottom = 340.616
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Physics"
 align = 1
@@ -361,7 +333,7 @@ margin_left = 71.641
 margin_top = 345.752
 margin_right = 121.641
 margin_bottom = 377.752
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Wits"
 align = 1
@@ -375,7 +347,7 @@ margin_left = 130.052
 margin_top = 346.546
 margin_right = 180.052
 margin_bottom = 378.546
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Wits"
 align = 1
@@ -389,7 +361,7 @@ margin_left = 71.2438
 margin_top = 384.08
 margin_right = 121.244
 margin_bottom = 416.08
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Charm"
 align = 1
@@ -403,7 +375,7 @@ margin_left = 130.449
 margin_top = 383.682
 margin_right = 180.449
 margin_bottom = 415.682
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Charm"
 align = 1
@@ -417,7 +389,7 @@ margin_left = 72.4354
 margin_top = 422.01
 margin_right = 122.435
 margin_bottom = 454.01
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Sexuals"
 align = 1
@@ -431,7 +403,7 @@ margin_left = 131.244
 margin_top = 422.01
 margin_right = 181.244
 margin_bottom = 454.01
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Sexuals"
 align = 1
@@ -506,7 +478,7 @@ margin_left = 106.784
 margin_top = 269.761
 margin_right = 146.785
 margin_bottom = 301.761
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "0"
 align = 1
@@ -533,7 +505,7 @@ margin_top = -1.52588e-05
 margin_right = 198.711
 margin_bottom = 40.0
 rect_scale = Vector2( 0.627771, 0.627771 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "25"
 align = 1
@@ -562,7 +534,7 @@ margin_top = 103.0
 margin_right = 238.0
 margin_bottom = 135.0
 mouse_filter = 0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Authority: "
 align = 1
@@ -576,7 +548,7 @@ margin_top = 21.0
 margin_right = 211.0
 margin_bottom = 53.0
 mouse_filter = 0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Loyalty"
 align = 1
@@ -594,7 +566,7 @@ margin_top = 77.0
 margin_right = 211.0
 margin_bottom = 109.0
 mouse_filter = 0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Submission"
 align = 1
@@ -649,6 +621,7 @@ stretch_mode = 1
 margin_top = 24.0
 margin_right = 49.0
 margin_bottom = 51.0
+custom_fonts/font = ExtResource( 29 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "5"
 align = 1
