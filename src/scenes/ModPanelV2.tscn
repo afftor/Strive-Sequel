@@ -4,7 +4,7 @@
 [ext_resource path="res://src/scenes/ModPanelV2.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/panels/1,1.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/gui/inventory/item_frame.png" type="Texture" id=4]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=6]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/Textures_v2/Mods/button_modsname_hover.png" type="Texture" id=8]
@@ -18,6 +18,8 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_pressed.png" type="Texture" id=16]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_hover.png" type="Texture" id=17]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/buttondeco_disabled.png" type="Texture" id=18]
+
+
 
 [sub_resource type="DynamicFont" id=6]
 size = 46

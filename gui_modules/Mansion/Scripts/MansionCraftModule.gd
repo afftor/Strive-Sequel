@@ -270,7 +270,7 @@ var partdict
 
 func delete_from_queue(entry):
 	cancelentry = entry
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_item_craft', 'Cancel this task?'])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_item_craft', tr('CANCELTASKQUESTION')	])
 
 func confirm_cancel_craft(entry):
 	get_parent().is_craft_selected = true

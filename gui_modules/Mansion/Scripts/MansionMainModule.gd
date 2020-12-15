@@ -65,6 +65,7 @@ var prev_selected_travel
 
 var always_show = [
 	"TestButton",
+	"DisassembleModule", #TODO Delete this
 	"MansionTaskInfoModule",
 	"MansionClockModule",
 	"MansionBottomLeftModule",
@@ -445,9 +446,10 @@ func remove_hovered_person():
 
 func _on_TestButton_pressed():
 	# print(ResourceScripts.game_progress.seen_dialogues)
-	print(active_person.get_stat('tattoo'))
-	print(Traitdata.get_tat_list_for_slot("arms"))
-
+	# print(active_person.get_stat('tattoo'))
+	# print(Traitdata.get_tat_list_for_slot("arms"))
+	get_node("DisassembleModule").build_list()
+	get_node("DisassembleModule").show()
 
 
 func test_mode():
@@ -466,7 +468,7 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 		ResourceScripts.game_res.upgrades.rooms = 3
 		
-	#	globals.impregnate(character, character)
+
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.add_stat('charm', 100)
 		character.add_stat('wits', 100)
@@ -637,6 +639,7 @@ func test_mode():
 				}
 			]
 		)
+
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 2000
@@ -666,6 +669,30 @@ func test_mode():
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+		)
+		globals.AddItemToInventory(
+			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
 			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
@@ -710,7 +737,7 @@ func test_mode():
 			i.totalreputation += 100000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
-
+		globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 		# character = ResourceScripts.scriptdict.class_slave.new()
 		# character.create('Fairy', 'futa', 'random')
 		# characters_pool.move_to_state(character.id)

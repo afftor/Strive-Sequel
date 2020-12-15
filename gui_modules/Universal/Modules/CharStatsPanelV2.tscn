@@ -7,10 +7,12 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=5]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=6]
 [ext_resource path="res://gui_modules/Universal/Scripts/CharStatsPanelV2.gd" type="Script" id=7]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_20_Bold.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/traits/bowextradamage.png" type="Texture" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=11]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 20

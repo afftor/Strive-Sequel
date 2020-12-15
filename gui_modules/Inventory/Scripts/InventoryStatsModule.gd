@@ -1,7 +1,9 @@
 extends Panel
 
+
 var stat_index = 0
 var stats = ["base_stats", "resists"]
+
 
 func _ready():
 	$StatsButton.connect("pressed", self, "open_base_stats")
@@ -20,15 +22,13 @@ func _ready():
 		if statdata.statdata.has(i.name.replace("label_","")):
 			globals.connecttexttooltip(i, statdata.statdata[i.name.replace("label_", "")].descript)
 
+			
 func open_base_stats():
 	$resists.hide()
 	$base_stats.show()
 	$StatsButton.pressed = true
 	$ResistsButton.pressed = false
 	var character = input_handler.interacted_character
-#	$name.text = character.get_short_name()
-#	for i in ['hp','mp']:
-#		$VBoxContainer.get_node(i).text = str(floor(character.get_stat(i))) + "/" + str(floor(character.get_stat(i+"max")))
 	
 	for i in variables.fighter_stats_list:
 		if !i in ['hpmax', 'mpmax','critmod']:
@@ -54,6 +54,7 @@ func open_resists():
 				i.set("custom_colors/font_color", variables.hexcolordict.green)
 			else:
 				i.set("custom_colors/font_color", variables.hexcolordict.white)
+
 
 func switch_stats():
 	if stat_index == stats.size() - 1:

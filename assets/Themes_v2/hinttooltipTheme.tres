@@ -1,6 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=2]
 
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
+
+
 
 [resource]
 TooltipLabel/colors/font_color = Color( 0, 0, 0, 1 )

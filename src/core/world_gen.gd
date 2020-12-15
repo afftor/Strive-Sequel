@@ -121,6 +121,7 @@ func make_guild(code, area):
 		name = data.name,
 		area = area.code,
 		actions = data.actions,
+		bonus_actions = data.bonus_actions,
 		chartype = data.character_types,
 		charbonus = data.character_bonuses,
 		preferences = data.preference,

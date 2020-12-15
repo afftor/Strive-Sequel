@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://gui_modules/CharacterCreation/SlaveCreationModule.gd" type="Script" id=2]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/images/gui/exclamation.png" type="Texture" id=4]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/CheckBox.tres" type="Theme" id=8]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=9]
+
+
 
 [node name="SlaveCreationModule" type="Panel"]
 anchor_right = 1.0

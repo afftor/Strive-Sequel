@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/NonDecorButton_with_Font.tres" type="Theme" id=3]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick.png" type="Texture" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=5]
@@ -22,6 +22,10 @@
 [ext_resource path="res://assets/Themes_v2/MANSION/M_Job_BG.tres" type="StyleBox" id=20]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Job_Travel_Panel.tres" type="StyleBox" id=21]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=22]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=23]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=24]
+
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 region_rect = Rect2( 0, 0, 12, 48 )
@@ -39,25 +43,9 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 
-[sub_resource type="DynamicFont" id=5]
-size = 24
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=5]
 
 [sub_resource type="StyleBoxTexture" id=6]
-
-[sub_resource type="StyleBoxTexture" id=7]
-
-[sub_resource type="DynamicFont" id=8]
-size = 30
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 22
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 20
-font_data = ExtResource( 2 )
 
 [node name="MansionJobModule" type="Panel"]
 margin_left = 2.0
@@ -151,7 +139,7 @@ margin_bottom = 48.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 4 )
 custom_styles/focus = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -165,8 +153,8 @@ margin_right = 224.0
 margin_bottom = 107.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 4 )
-custom_styles/focus = SubResource( 6 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -180,8 +168,8 @@ margin_right = 224.0
 margin_bottom = 166.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 4 )
-custom_styles/focus = SubResource( 7 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_disabled = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -195,8 +183,8 @@ margin_right = 224.0
 margin_bottom = 225.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 4 )
-custom_styles/focus = SubResource( 7 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = ExtResource( 23 )
 custom_colors/font_color_disabled = Color( 0.996078, 0.317647, 0.364706, 1 )
 custom_colors/font_color_hover_pressed = Color( 0.976471, 0.882353, 0.505882, 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -213,7 +201,7 @@ margin_bottom = 385.0
 [node name="JobName" type="Label" parent="job_details"]
 margin_right = 392.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Job Name"
 align = 1
@@ -226,7 +214,7 @@ margin_right = 370.0
 margin_bottom = 222.0
 rect_min_size = Vector2( 360, 150 )
 theme = ExtResource( 22 )
-custom_fonts/normal_font = SubResource( 9 )
+custom_fonts/normal_font = ExtResource( 24 )
 custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 bbcode_enabled = true
 bbcode_text = "Job Details
@@ -260,6 +248,7 @@ margin_left = -549.175
 margin_top = 1379.67
 margin_right = -174.175
 margin_bottom = 1404.67
+custom_fonts/font = ExtResource( 23 )
 text = "Days"
 align = 1
 __meta__ = {
@@ -272,6 +261,7 @@ margin_left = 25.4814
 margin_top = 186.921
 margin_right = 352.481
 margin_bottom = 210.921
+custom_fonts/font = ExtResource( 23 )
 text = "Select Desired Resources"
 align = 1
 
@@ -312,7 +302,7 @@ __meta__ = {
 margin_top = 43.4496
 margin_right = 70.0
 margin_bottom = 70.4496
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = ExtResource( 24 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
@@ -426,6 +416,7 @@ margin_left = 131.212
 margin_top = 98.42
 margin_right = 191.213
 margin_bottom = 122.42
+custom_fonts/font = ExtResource( 23 )
 text = "0"
 align = 1
 __meta__ = {
@@ -437,6 +428,7 @@ margin_left = 291.213
 margin_top = 97.932
 margin_right = 351.213
 margin_bottom = 121.932
+custom_fonts/font = ExtResource( 23 )
 text = "0"
 align = 1
 __meta__ = {
@@ -448,6 +440,7 @@ margin_left = 451.213
 margin_top = 97.932
 margin_right = 511.213
 margin_bottom = 121.932
+custom_fonts/font = ExtResource( 23 )
 text = "0"
 align = 1
 __meta__ = {
@@ -459,6 +452,7 @@ margin_left = 198.737
 margin_top = 179.947
 margin_right = 442.737
 margin_bottom = 203.947
+custom_fonts/font = ExtResource( 23 )
 text = "Free Hours left: "
 align = 1
 __meta__ = {
@@ -470,6 +464,7 @@ margin_left = 85.704
 margin_top = 13.7841
 margin_right = 235.704
 margin_bottom = 37.7841
+custom_fonts/font = ExtResource( 23 )
 text = "Rest Hours"
 align = 1
 __meta__ = {
@@ -481,6 +476,7 @@ margin_left = 245.704
 margin_top = 13.7841
 margin_right = 395.704
 margin_bottom = 37.7841
+custom_fonts/font = ExtResource( 23 )
 text = "Work Hours"
 align = 1
 __meta__ = {
@@ -492,6 +488,7 @@ margin_left = 405.704
 margin_top = 13.296
 margin_right = 555.704
 margin_bottom = 37.296
+custom_fonts/font = ExtResource( 23 )
 text = "Joy Hours"
 align = 1
 __meta__ = {
@@ -501,7 +498,7 @@ __meta__ = {
 [node name="JobSelection" type="Label" parent="."]
 margin_right = 390.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Job Selection"
 align = 1
@@ -514,7 +511,7 @@ __meta__ = {
 margin_left = 390.0
 margin_right = 702.0
 margin_bottom = 57.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
 text = "Conditions"
 align = 1

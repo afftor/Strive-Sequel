@@ -279,7 +279,7 @@ func apply_preserved_settings():
 
 func confirm_character():
 	if check_confirm_possibility():
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', 'Create this character?'])
+		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'finish_character', tr('CREATECHARQUESTION')])
 
 
 func finish_character():
@@ -588,7 +588,7 @@ func select_sex_trait(trait):
 
 
 func confirm_return():
-	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_creation', "Return to Main Menu?"])
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_creation', tr("RETURNTOMAINMENUQUESTION")])
 	#input_handler.ShowConfirmPanel(self, "cancel_creation", "Return to Main Menu?")
 
 

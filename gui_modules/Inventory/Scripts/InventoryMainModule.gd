@@ -1,9 +1,9 @@
 extends Panel
 
-# onready var itemcontainer = $ScrollContainer/GridContainer
 
 var selectedhero
 var person
+
 
 var mode
 var show_list = true
@@ -16,6 +16,7 @@ onready var StatsModule = $InventoryStatsModule
 onready var FactorsModule = $InventorySlaveListModule/InventoryFactorsModule
 onready var submodules = []
 
+
 signal inventory_opened
 signal inventory_hidden
 signal item_used
@@ -23,8 +24,6 @@ signal item_equipped
 signal item_discarded
 signal item_sold
 
-#warning-ignore-all:return_value_discarded
-#warning-ignore-all:unused_signal
 
 func _ready():
 	gui_controller.add_close_button(self, "add_offset")
@@ -43,9 +42,11 @@ func change_list_mode():
 	GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
 	GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
 
+
 func set_list_mode_inventory():
 	list_mode == "inventory"
 	$InventoryListModule.buildinventory()
+
 
 func close_inventory(state):
 	if gui_controller.slavepanel == null:
@@ -58,8 +59,6 @@ func close_inventory(state):
 	ResourceScripts.core_animations.UnfadeAnimation(gui_controller.slavepanel, 0.3)
 
 
-
-
 func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
@@ -69,12 +68,9 @@ func update():
 	GearModule.selected_slot = ''
 	GearModule.highlight_avalible_slots([])
 	ItemsList.selected_tattoo = ''
-	# set_list_mode_inventory()
-	# set_active_hero(selectedhero)
 
 
 func set_active_hero(hero):
-	# gui_controller.mansion.active_person = hero
 	input_handler.interacted_character = hero
 	SlaveList.update()
 	ItemsList.buildinventory()

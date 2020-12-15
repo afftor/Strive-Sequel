@@ -7,6 +7,7 @@ func _ready():
 #warning-ignore:return_value_discarded
 	$LineEdit.connect("text_entered",self,'PressSaveGame')
 	$DetailsPanel/MasterIcon.hide()
+	$Update.connect("pressed", self, "update_save_file")
 
 func ResetSavePanel():
 	match saveloadmode:
@@ -16,6 +17,66 @@ func ResetSavePanel():
 			LoadPanelOpen()
 
 var savedata = {}
+
+func update_save_file():
+	$UpdatePanel.show()
+	input_handler.ClearContainer($UpdatePanel/VBoxContainer)
+	for i in input_handler.dir_contents(variables.userfolder + 'saves'):
+		var savename = SaveNameTransform(i)
+		if i.ends_with(".dat") == true:
+			var config = ConfigFile.new()
+			config.load(i)
+			var details = config.get_section_keys('details')
+			savedata[savename] = {}
+			for i in details:
+				savedata[savename][i] = config.get_value("details", i, null)
+		if i.ends_with('.sav') == false:
+			continue
+		var newbutton = input_handler.DuplicateContainerTemplate($UpdatePanel/VBoxContainer)
+		newbutton.get_node("Update").connect("pressed", self, 'update_file', [savename])
+		newbutton.get_node("Label").text = savename
+		newbutton.connect('pressed', self, 'update_file', [savename])
+		newbutton.connect("mouse_entered", self, "show_save_details", [savename])
+		if savedata.has(savename):
+			newbutton.get_node("Date").show()
+			newbutton.get_node("Date").text = get_date_time(savedata[savename])
+
+
+func update_file(filename):	
+	if filename == '':
+		return
+	file_to_update = filename
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'update_file_action', tr("UPDATEFILE")])
+
+
+var file_to_update
+func update_file_action():
+	var file = File.new()
+	file.open(variables.userfolder + 'saves/' + file_to_update + '.sav', file.READ)
+	var text = file.get_as_text()
+	var parse_result
+	parse_result = JSON.parse(text)
+	var loaded_file = parse_result.result
+	file.close()
+	var temp_chars = loaded_file.charpool
+	for character in temp_chars.values():
+		character.travel.location = "aliron"
+
+	ResourceScripts.game_world.make_world()
+	loaded_file.charpool = temp_chars
+	loaded_file.game_world = ResourceScripts.get("game_world").serialize()
+	var new_file_name = file_to_update + "_updated"
+	file = File.new()
+	file.open(variables.userfolder + 'saves/' + new_file_name + '.sav', file.WRITE)
+	text = JSON.print(loaded_file)
+	file.store_string(text)
+	file.close()
+
+	var dir = Directory.new()
+	dir.copy(variables.userfolder + 'saves/' + file_to_update + '.dat', variables.userfolder + 'saves/' + new_file_name + '.dat')
+	
+
+
 
 func SavePanelOpen():
 #	show()
@@ -41,6 +102,8 @@ func SavePanelOpen():
 		if savedata.has(savename):
 			newbutton.get_node("Date").show()
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
+
+
 
 func LoadPanelOpen():
 #	show()
@@ -68,7 +131,22 @@ func LoadPanelOpen():
 			newbutton.get_node("Date").show()
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
 
+
+
 func PressLoadGame(savename):
+	# var file = File.new()
+	# if !file.file_exists(variables.userfolder+'saves/'+ savename + '.sav') :
+	# 	print("no file %s" % (variables.userfolder+'saves/'+ savename + '.sav'))
+	# 	return
+	# file.open(variables.userfolder+'saves/'+ savename + '.sav', File.READ)
+	# var savedict = parse_json(file.get_as_text())
+	# file.close()
+
+	# for faction in savedict.game_world.areas.plains.factions.values():
+	# 	if !faction.has("bonus_actions"):
+	# 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'LoadGame', tr("NOTCOMPATIBLE")])
+	# 		return
+
 	gui_controller.close_all_closeable_windows()
 	gui_controller.windows_opened.clear()
 	$LineEdit.text = savename

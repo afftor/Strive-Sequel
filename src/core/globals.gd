@@ -212,6 +212,12 @@ func connectitemtooltip(node, item):
 	node.connect("mouse_entered",item,'tooltip', [node])
 
 
+func connectitemtooltip_v2(node, item):
+	if node.is_connected("mouse_entered",item,'tooltip_v2'):
+		node.disconnect("mouse_entered",item,'tooltip_v2')
+	node.connect("mouse_entered",item,'tooltip_v2', [node])
+
+
 func disconnect_temp_item_tooltip(node):
 	if node.is_connected("mouse_entered",self,'tempitemtooltip'):
 		node.disconnect("mouse_entered",self,'tempitemtooltip')
@@ -453,6 +459,11 @@ func LoadGame(filename):
 	file.open(variables.userfolder+'saves/'+ filename + '.sav', File.READ)
 	var savedict = parse_json(file.get_as_text())
 	file.close()
+
+	for faction in savedict.game_world.areas.plains.factions:
+		var current_faction = savedict.game_world.areas.plains.factions[faction]
+		if !current_faction.has("bonus_actions"):
+			savedict.game_world.areas.plains.factions[faction]["bonus_actions"] = worlddata.factiondata[faction].bonus_actions
 	
 #	state.deserialize(savedict)
 	characters_pool.deserialize(savedict.charpool)
@@ -1155,6 +1166,12 @@ func common_effects(effects):
 				var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]
 				guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
 				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
+				print("guild.reputation", guild.reputation)
+				print("guild.totalreputation", guild.totalreputation)
+				if guild.totalreputation > 500 && guild.totalreputation < 1500:
+					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total = 2
+				elif guild.totalreputation > 1500:
+					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total = 3
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)
@@ -1332,3 +1349,7 @@ func valuecheck(dict):
 			return ResourceScripts.game_progress.if_class_unlocked(dict.class, dict.check, dict.operant)
 		'timed_option':
 			return ResourceScripts.game_progress.if_time_passed(dict.value, dict.quest)
+		'current_guild':
+			return ((dict.value == input_handler.active_faction.code) && dict.check)
+		'has_faction_upgrade':
+			return dict.check && input_handler.active_faction.upgrades.has(dict.value)

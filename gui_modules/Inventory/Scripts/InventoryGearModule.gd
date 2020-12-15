@@ -11,7 +11,6 @@ func _ready():
 		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
 		i.set_meta("tattoo_slot", i.name)
 		i.hint_tooltip = tr(i.name.to_upper())
-		# i.disabled = true
 
 
 
@@ -114,9 +113,6 @@ func build_gear_panel():
 
 func unequip(slot):
 	var selectedhero = input_handler.interacted_character
-	# if !selectedhero.check_location('Aliron', true):
-	# 	input_handler.SystemMessage("Can't use or equip items while away from Mansion.")
-	# 	return
 	if selectedhero.equipment.gear[slot] != null:
 		selectedhero.unequip(ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]])
 		var itemtooltip = get_tree().get_root().get_node_or_null("itemtooltip")
@@ -146,7 +142,6 @@ func show_tattoo_tooltip(slot):
 				desc = tattoo.descripts[key]
 				break
 		globals.showtexttooltip($TattooSlots.get_node(slot), tr(desc), false)
-		# tattoo.tooltip($TattooSlots.get_node(slot))
 
 
 func show_buffs():
