@@ -458,7 +458,7 @@ func handle_scene_backgrounds(scene):
 		gui_controller.dialogue.get_node("CustomBackground").hide()
 
 
-
+#TODO Refactor this
 func handle_characters_sprites(scene):
 	if !scene.has("character"):
 		$ImagePanel.show()
@@ -474,6 +474,20 @@ func handle_characters_sprites(scene):
 		$ImagePanel.hide()
 		$CharacterImage.texture = images.sprites[scene.character]
 		$CharacterImage.show()
+	if !scene.has("character2"):
+		$ImagePanel.show()
+		$CharacterImage2.hide()
+		if scene.image != '' && scene.image != null:
+			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
+		else:
+			$ImagePanel.hide()
+			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
+	else:
+		if !($CharacterImage2.texture == images.sprites[scene.character2]):
+			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2,0.5)
+		$ImagePanel.hide()
+		$CharacterImage2.texture = images.sprites[scene.character2]
+		$CharacterImage2.show()
 
 
 func handle_loots(scene):
@@ -545,7 +559,7 @@ func set_enemy(scene):
 
 #TODO Refactor this
 func handle_scene_options(scene):
-		# var counter = 1
+		var option_number = 1
 		var options = scene.options
 		for i in options:
 			#yield(get_tree(), 'idle_frame')
@@ -566,7 +580,7 @@ func handle_scene_options(scene):
 			newbutton.get_node("Label").bbcode_text = tr(i.text)
 			if i.has('active_char_translate'):
 				newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
-			newbutton.get_node("hotkey").text = str(counter)
+			newbutton.get_node("hotkey").text = str(option_number)
 			yield(get_tree(), 'idle_frame')
 			if newbutton.get_node("Label").get_v_scroll().is_visible():
 				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
@@ -614,4 +628,4 @@ func handle_scene_options(scene):
 			if i.has('bonus_effects'):
 				newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
 			newbutton.disabled = disable
-			# counter += 1
+			option_number += 1

@@ -2636,9 +2636,10 @@ var TranslationDict = {
 	ALIRONELECTIONSFINISH_LINE2 = """[color=aqua]Sigmund: Are ya sure she's actually da princess? Might be an imposter. Pretty common fo' dwarven disputes.[/color] 
 	[color=yellow]Amelia: We are almost sure she's the real deal. Her appearance is correlating to the youngest child, and her aura is undeniably of the royal bloodline. I'd be more worried if the empire is involved in it.[/color]""",
 
-	ALIRONELECTIONSFINISH_LINE3 = """[color=aqua]Duncan: Our scouts have been reporting increased activity from the rebels in past months. Rebel forces and sympathizers make their advancement as we speak. I'm forced to declare this as a state of emergency.
+	ALIRONELECTIONSFINISH_LINE3 = """[color=aqua]Duncan: Our scouts have been reporting increased activity from the rebels in past months. Rebel forces and sympathizers make their advancement as we speak. I'm forced to declare this as a state of emergency.[/color]
+
 	The room filled with a hubbub. 
-	[color=yellow]Sigmund: I agree. We can't afford to lose any of da vital points or trade routes.[/color]""",
+[color=yellow]Sigmund: I agree. We can't afford to lose any of da vital points or trade routes.[/color]""",
 
 	ALIRONELECTIONSFINISH_LINE4 = """[color=yellow]Myr: Mhph, so you gonna declare yourself a leader now? Given your credibility after the appearance of princess too.[/color] 
 	[color=aqua]Duncan: I don't expect you to comply. And I won't need your help to deal with them. And once we find out the betrayer, they will not get off the hook. You better prepare for it.[/color] 
