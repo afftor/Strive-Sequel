@@ -241,7 +241,7 @@ func tooltiptext():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
 				text += statdata.statdata[i].name + ': {color='
 				if value > 0:
@@ -250,7 +250,7 @@ func tooltiptext():
 				else:
 					text += 'k_red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()
@@ -269,7 +269,7 @@ func tooltiptext_light():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
 				text += statdata.statdata[i].name + ': {color='
 				if value > 0:
@@ -278,7 +278,7 @@ func tooltiptext_light():
 				else:
 					text += 'k_red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()

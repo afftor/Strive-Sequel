@@ -221,6 +221,7 @@ func remove_stat_bonuses(ls:Dictionary):
 			if !statdata.statdata.has(rec): 
 				print('debug warning - lost stat %s' % rec)
 				continue
+			if statdata.statdata[rec].skip_process : continue
 			match statdata.statdata[rec].default_bonus:
 				'add': add_stat(rec, ls[rec], true)
 				'mul': 

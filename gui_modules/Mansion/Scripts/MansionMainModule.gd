@@ -671,31 +671,7 @@ func test_mode():
 			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItem("chest_adv_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood', ArmorEnc = 'wood'})
 		)
 		
 		

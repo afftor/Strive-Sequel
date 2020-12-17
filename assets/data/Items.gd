@@ -76,6 +76,7 @@ var Parts = {
 	ArmorBaseHeavy = {name = tr("ARMORBASE"), code = 'ArmorBaseHeavy', icon = load("res://assets/images/iconsitems/parts/armorbase.png")},
 	ArmorTrim = {name = tr("ARMORTRIM"), code = 'ArmorTrim', icon = load("res://assets/images/iconsitems/parts/trim.png")},
 	ArmorCloth = {name = tr("ARMORCLOTH"), code = 'ArmorCloth', icon = load("res://assets/images/iconsitems/parts/armorbase.png")},
+	ArmorEnc = {name = tr("ARMORENC"), code = "ArmorEnc", icon = load("res://assets/images/iconsitems/parts/rod.png")},
 	JewelryGem = {name = tr("JEWELRYGEM"), code = 'JewelryGem', icon = load("res://assets/images/iconsitems/parts/rod.png")},
 }
 
@@ -220,6 +221,10 @@ var partmaterials = {
 		mithril = {armor = 4, resist_earth = 15, resist_dark = 10},
 		adamantine = {armor = 5, resist_earth = 15, resist_fire = 10},
 		obsidian = {resist_fire = 10, resist_air = 10}
+	},
+	ArmorEnc = {
+		bone = {atk = 3, resist_dark = 5},
+		wood = {atk = 3, resist_dark = 5},
 	},
 }
 
@@ -666,7 +671,7 @@ var materiallist = {
 		code = 'ice_material',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/BlueGrass.png"),
+		icon = load("res://assets/images/iconsgear/item_iceshard.png"),
 		price = 10,
 		type = 'gem',
 		tier = 'hard',
@@ -696,7 +701,7 @@ var materiallist = {
 		code = 'nature_material',
 		name = '',
 		descript = '',
-		icon = load("res://assets/images/iconsitems/BlueGrass.png"),
+		icon = load("res://assets/images/iconsgear/item_stones.png"),
 		price = 10,
 		type = 'gem',
 		tier = 'hard',
@@ -1606,6 +1611,31 @@ var itemlist = {
 		effects = [],
 	},
 	
+	chest_adv_metal = {
+		name = '', 
+		code = 'chest_adv_metal', 
+		description = '',
+		icon = load("res://assets/images/iconsgear/item_metal_chest_adv.png"),
+		tier = 'hard',
+		price = 0,
+		basestats = {},
+		basemods = {},
+		crafttype = 'modular',
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'heavy',
+		reqs = [{code = 'trait', trait = 'heavy_armor', check = true}],
+		parts = {ArmorBaseHeavy = 8, ArmorTrim = 3, ArmorEnc = 2},
+		partcolororder = {ArmorBaseHeavy = 1, ArmorTrim = 2, ArmorEnc = 3},
+		partmaterialname = "ArmorBaseHeavy",
+		tags = ['recipe'],
+		repairdifficulty = 'easy',
+		slots = ['chest'],
+		hitsound = 'metal',
+		effects = [],
+	},
+	
+	
 	legs_base_cloth = {
 		name = '', 
 		code = 'legs_base_cloth', 
@@ -2034,7 +2064,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['hands'],
 		price = 250,
-		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		icon = load("res://assets/images/iconsgear/item_worker_gloves.png"),
 		tier = 'medium',
 		reqs = [],
 		effects = [],
@@ -2051,7 +2081,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['hands'],
 		price = 250,
-		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		icon = load("res://assets/images/iconsgear/item_gauntlets.png"),
 		tier = 'medium',
 		reqs = [],
 		effects = [],
@@ -2068,7 +2098,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['head'],
 		price = 200,
-		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		icon = load("res://assets/images/iconsgear/item_circlet.png"),
 		tier = 'medium',
 		reqs = [],
 		effects = [],
@@ -2085,7 +2115,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['head'],
 		price = 1000,
-		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		icon = load("res://assets/Textures_v2/MANSION/crown.png"),
 		tier = 'hard',
 		reqs = [],
 		effects = [],
@@ -2102,7 +2132,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['neck'],
 		price = 125,
-		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		icon = load("res://assets/images/iconsgear/item_pet_collar.png"),
 		tier = 'easy',
 		reqs = [],
 		effects = [],
@@ -2119,7 +2149,7 @@ var itemlist = {
 		crafttype = 'basic',
 		slots = ['neck'],
 		price = 220,
-		icon = load("res://assets/images/iconsgear/petgloves.png"),
+		icon = load("res://assets/images/iconsgear/item_ribbon.png"),
 		tier = 'medium',
 		reqs = [],
 		effects = [],
@@ -2756,6 +2786,20 @@ var recipes = {
 		workunits = 25, 
 		worktype = 'smith'
 	},
+	
+	chest_adv_metal = {
+		code = 'chest_adv_metal',
+		materials = {},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'modular',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'chest_adv_metal',
+		workunits = 100, 
+		worktype = 'smith'
+	},
+	
 	legs_base_cloth = {
 		code = 'legs_base_cloth',
 		materials = {},

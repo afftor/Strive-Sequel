@@ -191,7 +191,7 @@ func geartemplete_tooltip(data):
 			if item.basestats[i] != 0:
 				var value = item.basestats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
 				text += statdata.statdata[i].name + " " +Items.stats[i] + ': {color='
 				if value > 0:
@@ -200,7 +200,7 @@ func geartemplete_tooltip(data):
 				else:
 					text += 'red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 	
