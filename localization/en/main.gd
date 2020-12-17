@@ -2618,6 +2618,284 @@ var TranslationDict = {
 	STARTTHISGAME = "Start this Game?",
 	UPDATEFILE = "Update this file?",
 
+	# after finishing election-princess-meeting sequence
 
+	QUESTLOG_AFTERELECTIONOPTION1 = "Visit Myr to know how you can help",
+	QUESTLOG_AFTERELECTIONOPTION2 = "Visit Fred's dormitory at Aliron to learn about his whereabouts",
+	QUESTLOG_AFTERELECTIONOPTION3 = "Find Fred's meeting spot outside of Aliron",
+	QUESTLOG_AFTERELECTIONOPTION4 = "Return to Myr with the news",
+	QUESTLOG_AFTERELECTIONOPTION5 = "Visit Duncan",
+	QUESTLOG_AFTERELECTIONOPTION6 = "Visit Sigmund to help him with the recent rebel takeover",
+
+	# Aliron elections finish
+
+	ALIRONELECTIONSFINISH_LINE1 = """Few hours later an emergency meeting was assembled by four major guilds. The leaders and landlords entered a fierce discussion on the current situation.
+	[color=aqua]Duncan: This is ridiculous. Now every peasant will know there's a living princess. HOW did a large rebel group got into the city on such a day? Your job is to specifically prevent such things, Myr. Is this some sort of sabotage?[/color]
+	[color=yellow]Myr: How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family. And yet we have a grown up princess marching rebels in our direction now.[/color]""",
+
+	ALIRONELECTIONSFINISH_LINE2 = """[color=aqua]Sigmund: Are ya sure she's actually da princess? Might be an imposter. Pretty common fo' dwarven disputes.[/color] 
+	[color=yellow]Amelia: We are almost sure she's the real deal. Her appearance is correlating to the youngest child, and her aura is undeniably of the royal bloodline. I'd be more worried if the empire is involved in it.[/color]""",
+
+	ALIRONELECTIONSFINISH_LINE3 = """[color=aqua]Duncan: Our scouts have been reporting increased activity from the rebels in past months. Rebel forces and sympathizers make their advancement as we speak. I'm forced to declare this as a state of emergency.
+	The room filled with a hubbub. 
+	[color=yellow]Sigmund: I agree. We can't afford to lose any of da vital points or trade routes.[/color]""",
+
+	ALIRONELECTIONSFINISH_LINE4 = """[color=yellow]Myr: Mhph, so you gonna declare yourself a leader now? Given your credibility after the appearance of princess too.[/color] 
+	[color=aqua]Duncan: I don't expect you to comply. And I won't need your help to deal with them. And once we find out the betrayer, they will not get off the hook. You better prepare for it.[/color] 
+	[color=yellow]Myr: We?! Why how would Mage Guild benefit from this?[/color] 
+	[color=aqua]Duncan: Regardless, we will find the culprit and all accomplices will be coped with surely. Be it you, or Servants, or even one of ours.[/color]""",
+
+	ALIRONELECTIONSFINISH_LINE5 = """Once the meeting was over, you approach Amelia to consult on what's happening now.
+	- Oh, this is horrible. Now Fighters will take the rulership over everyone until the riot is dealt with. Bad news, but the election is naturally put on hold. Good news, so is your debt. Looks like we have been benched. Me especially.""",
+
+	ALIRONELECTIONSFINISH_QUESTION1 = "Why can't you do anything?",
+	ALIRONELECTIONSFINISH_QUESTION2 = "It seemed to me the guilds were fighting each other.",
+
+	ALIRONELECTIONSFINISH_ANSWER1 = """- Servants never had any connections to warfare. We don't train soldiers, possess magic or produce supplies. 
+	I guess we are here to stick around 'till it's over. And hope there will be something left after it.
+	You know, Duncan is going to take weeks to find out what's really going on, and until then the air around here will be dense. 
+	You could obviously jump into the fight, but I feel like we would do better, if we get possible suspicions out of hand. What do you think?""",
+
+	ALIRONELECTIONSFINISH_ANSWER2 = """- Sure, that's what we always do. This one is pretty nasty though, as there's been a betrayal from someone for the rebel side.
+	Mages Guild is in charge of any large scale teleportations, so this shouldn't have been possible unless they were sabotaged. 
+	You know, Duncan is going to take weeks to find out what's really going on, and until then the air around here will be dense. 
+	You could obviously jump into the fight, but I feel like we would do better, if we get possible suspicions out of hand. What do you think?""",
+
+	ALIRONELECTIONSFINISH_QUESTION3 = "Actually, I was about to offer it to Duncan myself.",
+	ALIRONELECTIONSFINISH_QUESTION4 = "That sounds like something a perpetrator would say to use me for their benefit.",
+	ALIRONELECTIONSFINISH_QUESTION5 = "I'm not sure, what if I get in the way?",
+
+	ALIRONELECTIONSFINISH_ANSWER3 = """- Quite enthusiastic, aren't you? This is all the better, just don't act prematurely.
+	- Anyway, take this permission you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
+
+	ALIRONELECTIONSFINISH_ANSWER4 = """- Hah, this is why I've chosen you. Well, since you realize that, if that was the case, we won't be able to fool you, right? 
+	- Anyway, take this permission you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
+
+	ALIRONELECTIONSFINISH_ANSWER5 = """- Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you. 
+	- Take this permission. With this you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
+
+	#==============Mages guild line================= (triggers when meeting mage leader)
+
+	MAGESAFTERELLECTION1 = "- I thought I've said I don't want to see anyone... Oh, it's you. What do you want?",
+
+	MAGESAFTERELLECTION1_QUESTION1 = "Just dropped to say \"Hi\".",
+	MAGESAFTERELLECTION1_QUESTION2 = "I'm investigating what's been going on around here.",
+
+	MAGESAFTERELLECTION1_ANSWER1 = """-Yeah, right, like hell you did. Is it about Fighters? Or, more likely, it's Amelia's idea, right
+	- Fucking hell. They can't finish off one brat, can't even learn about it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+
+	MAGESAFTERELLECTION1_ANSWER2 = """- Fucking hell. They can't finish off one brat, can't even learn about it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+
+	MAGESAFTERELLECTION1_QUESTION3 = "Hoped you'd tell me",
+	MAGESAFTERELLECTION1_QUESTION4 = "I guess you don't know either",
+	MAGESAFTERELLECTION1_QUESTION5 = "...",
+
+	MAGESAFTERELLECTION1_ANSWER3 = """- The city is protected from unauthorized teleportation by a magic crystal sphere. The device can have very different applications but what's important is that it requires a power source. This power source was stolen right before the... event. 
+	- Cutting to the chase, only guild's higher members are allowed to monitor it, and we only have one potential person who else has gone missing on the same day. Name's Fred. You can find him and confirm he did it on his own accord. If he indeed sided with rebels or the empire it's better for you to take him down. 
+	- I'll give you his home address, you might find some clues about his whereabouts there.""",
+
+	MAGESAFTERELLECTION1_QUESTION6 = "What's that power source which was stolen?",
+	MAGESAFTERELLECTION1_QUESTION7 = "You suspect he's dead?",
+	MAGESAFTERELLECTION1_QUESTION8 = "I'll let you know once I learn something.",
+
+	MAGESAFTERELLECTION1_ANSWER4 = """- It's an artifact, a sword of a former king Nicolas. Technically, it belonged to the royal family, but since the revolution the guilds have decided to utilize it for the good of everyone.""",
+	MAGESAFTERELLECTION1_ANSWER5 = """- I'd prefer to be dead if I was him. Otherwise, Duncan will gladly fix it. He does not take betrayals lightly.""",
+	MAGESAFTERELLECTION1_ANSWER6 = """- Find him, or what's left of him. If he's still alive, I'd not expect him to be happy to see you, so feel free to take him down if needed. Or even if not.""",
+
+	# Visit Fred's home
+
+	VISITFREDSHOMEINTRO = """You enter a dormitory in one of the poorer districts of the city. Fred's room is rather small and unclean, with thin walls letting you hear the neighbors. After some time searching you find a hidden note stating Fred was planning to secretly meet someone named Greg at the outskirts.
+	After asking other residents you decide it's the most likely place to find him.""",
+	
+	VISITFREDSHOME_IF_BRIBE = """You return to Fred's room. After a few minutes of searching you discover the hidden stash, proving Fred didn't lie to you.
+	The sum makes you wonder how quickly Fred would be burgled by his neighbors if they knew about it. After securing the money you leave the dormitory.""",
+
+	FINDFRED1 = """As you go deeper into the cave you come across a manmade prisoner room. As you carefully scout around you notice Fred tied and observed by a group of mercs.
+	[color=aqua]Merc: - How long are we going to wait here? I'm bored and it's hella cold here.[/color]
+	[color=yellow]Merc 2: - Stop being such a whiny little bitch. They said to get rid of this guy if they won't return by evening.[/color] 
+	[color=aqua]Merc: - Screw it, I wanna get drunk already. You surely don't expect them to pay extra?[/color]""",
+	
+	FINDFRED_OPTION1 = "Talk",
+	FINDFRED_OPTION2 = "Attack",
+
+	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them. Merc: - Huh? Who the hell are you?",
+	FINDFRED_TALK1_QUESTION1 = "I've come with a message, your service is no longer needed.",
+	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out",
+	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I've lost, I better go.",
+	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
+
+	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look. 
+	- Huh, really? Who are you trying to fool here?""",
+
+	FINDFRED_TALK1_QUESTION5 = "Taking me for an imposter is really unclever.",
+	FINDFRED_TALK1_QUESTION6 = "Hey, I'm being serious here, let's not jump to conclusions.",
+	FINDFRED_TALK1_QUESTION7 = "Aren't you cocky for someone who already received your payment?",
+	FINDFRED_TALK1_QUESTION8 = "Was worth a try. I guess we'll do it a hard way.",
+
+	FINDFRED_TALK1_ELSE = """The mercs look relieved by the thought of being freed from the guard duty, but the leader gives you a doubtful look.
+	Merc Leader: - It's great that you have come, but just so we are on the same term, what's the name of our contractor?""",
+
+	FINDFRED_TALK1_CONTRACTOR_DUNCAN = "Duncan",
+	FINDFRED_TALK1_CONTRACTOR_GREG = "Greg",
+	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
+	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
+
+	FINDFRED_TALK1_IF_GREG1 = "Merc Leader: - Huh, alright then. Let's go, guys. And you... Give them the report that we didn't neglect our mission. Will be glad if we got hired again. See ya.",
+	FINDFRED_TALK1_IF_GREG2 = "As mercs leave, you move to the tied Fred and remove his gag letting him speak. - W-who are you? You are from the guild? Would you mind untying me?",    
+
+	FINDFRED_ATTACK = "Deciding there's no point in negotiations you prepare to attack the mercs.",
+
+	FINDFRED_AFTERWIN = """As the fight is over you move to the tied Fred and remove his gag letting him speak.
+	- W-who are you? You are from the guild? Would you mind untying me?""",
+
+	FINDFRED_AFTERWIN_QUESTION1 = "Not until you explain what happened.",
+	FINDFRED_AFTERWIN_QUESTION2 = "Where's the artifact you've stolen?",
+
+	FINDFRED_TALK1_ANSWER2 = """- *Sigh* I don't have much of a choice, do I? They offered me good cash if I brought them the sword, but they betrayed and captured me!
+		I had no idea what the purpose was, I thought it's just some old relic nobody cares about. Damn that Greg and the demon bitch...""",
+
+	FINDFRED_AFTERWIN_QUESTION3 = "Why did you cooperate with rebels?",
+	FINDFRED_AFTERWIN_QUESTION4 = "What can you tell me about them?",
+	FINDFRED_AFTERWIN_QUESTION5 = "I'll bring you back to guilds.",
+	FINDFRED_AFTERWIN_QUESTION6 = "I've heard enough, traitors deserve death.",
+
+	FINDFRED_TALK1_ANSWER3 = """- They took it. I had no idea what it was for and they offered me a nice sum. But they betrayed me and left me like this, Greg and the demon bitch...""",
+	FINDFRED_TALK1_ANSWER4 = """- I told you, I had no idea who they were. You've seen my place, it's a dump! I fucked up, but who wouldn't consider the opportunity?""",
+	FINDFRED_TALK1_ANSWER5 = """- I dunno, I think Greg is one of the rebels now, he told me to get the sword, but after he got it,
+	he passed it to the demon chick that I don't know. Then they tied me against my will and left me to these guys. I really don't know much else.""",
+
+	FINDFRED_TALK1_ANSWER6 = """- No, please, I'll be executed for treachery! You gotta believe me, I didn't mean it.
+	Look, I can't go back, but if you let me go, I'll let you get the first half of what I got paid. Do you think my life is worth five hundred gold to you?""",
+
+	FINDFRED_AFTERWIN_QUESTION7 = "This is not about gold, you will have to answer for your betrayal.",
+	FINDFRED_AFTERWIN_QUESTION8 = "I guess I could say that you've escaped in the end, but what are you planning to do then?",
+
+	FINDFRED_TALK1_ANSWER7 = """- No, please! You gotta believe me, I didn't mean it.
+	Look, I can't go back, but if you let me go, I'll let you get the first half of what I got paid. Do you think my life is worth five hundred gold to you?""",
+
+	FINDFRED_AFTERWIN_QUESTION9 = "Funny of you to expect you can buy me *kill*",
+
+	FINDFRED_LINE_END = "Despite Fred's protests, you decide to take him back to Duncan.",
+	FINDFRED_LINE_END_KILL = "Not listening to him anymore, you strike down Fred and get the proof of it from his body.",
+
+	FINDFRED_TALK1_ANSWER8 = """- I... I don't really know. I guess I'll have to get out of the country. Don't think either of the parties will accept me now.
+	Maybe I'll be able to get through the border.""",
+
+	FINDFRED_AFTERWIN_QUESTION10 = "Alright, I will believe you",
+	FINDFRED_AFTERWIN_QUESTION11 = "Fine, the money can serve to repair some of the damage you've done at least",
+	FINDFRED_AFTERWIN_QUESTION12 = "Forget it, you'll answer for the stealing",
+	FINDFRED_AFTERWIN_QUESTION13 = "Forget it, you die here",
+
+	FINDFRED_TALK1_ANSWER9 = """- Thank you! I left the cash in my room. There's the stash under a floor bar near the window.
+	You let Fred go on his way and ready to depart.""",
+
+	FINDFRED_LINE_END_KILL2 = "Preventing further protests you plug back Fred's mouth and lead him out of the cave.",
+
+	# *Intermission scene - starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
+
+	INTERMISSIONINTRO1 = """[color=aqua]Greg: - You've got your fancy sword. Hope we are even now.[/color]
+	[color=yellow]Demon: - I can't complain, helping you with the teleportation performance has paid off to us.[/color]""",
+
+	INTERMISSIONINTRO2 = """[color=aqua]Greg: - Perfect, get lost then. I would prefer us not being seen together, especially by the princess.[/color]
+	[color=yellow]Demon: - Now, don't be so harsh. The cult offered assistance not just for the sake of the artifact. We could do more, you know.[/color]
+	[color=aqua]Greg: - I'm not going to give anything else for your help anymore.[/color]
+	[color=yellow]Demon: - Hmph, this is fine.[/color]""",
+
+	INTERMISSIONINTRO3 = "[color=yellow]Demon: - Still, we can get something additional from this. I think I'll stay for a bit.[/color]",
+
+	RETURNTOMYR_IF_FRED = """- So you found him. Nice work, I've already sent him to Duncan with explanations attached.
+	This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
+
+	RETURNTOMYR_IF_NOT_FRED = """- So you found him and took care of him. Good, I've already sent the note to Duncan.
+	This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
+
+	RETURNTOMYR = """- So it was him after all, and the artifact was taken away as well...
+	I've actually expected it already. Here, take this report and get it to Duncan, I need some.. adjournment if you excuse me.""",
+
+	RETURNTODUNCAN_IF_FRED = """- Good work on finding the culprit, we've taken him to the jail where he will be waiting for his punishment. """,
+	RETURNTODUNCAN_IF_FRED_QUESTION1 = "Tell what you learned",
+	RETURNTODUNCAN_IF_NOT_FRED = "- So Fred is dead. Allow me to ask, was there no other choice?",
+
+	RETURNTODUNCAN_IF_NOT_FRED_QUESTION1 = "I had to defend myself",
+	RETURNTODUNCAN_IF_NOT_FRED_QUESTION2 = "It was my decision.",
+
+	RETURNTODUNCAN1 = "- A report, huh. I take it you didn't get the actual culprit then.",
+	RETURNTODUNCAN2 = "- So that's how. I'd prefer to question him first, but what's done is done.",
+
+	RETURNTODUNCAN_ANSWER1 = """- Greg... Well if I’ll be damned, he was one of the older knights back in the days, but then went missing during the coup. I thought he was killed but it seems I was wrong. No clue about the demon woman though.
+	- Anyway, good work, but we've been having difficulties. One of the forts has been taken over and rebels have been attacking our trade and supply routes out there. More importantly, workers reported there's something crucial happened with their major iron supplies and I don't have any soldiers to spare. If you have time, you can go see Sigmund and take care of it.""",
+
+	RETURNTODUNCAN_QUESTION1 = "Will see what I can do",    
+	RETURNTODUNCAN_QUESTION2 = "Ofcourse, who else would do it anyway",
+		
+	RETURNTODUNCAN_ANSWER2 = "- Better not delay it, every moment counts for us now.",
+
+	RETURNTODUNCAN_EXTRA1 = """- This is obviously Mages' fault. Myr should know who's the one responsible. Once you find him, we will not hesitate with the proper punishment. """,
+
+	#Intermission scene 2
+
+	INTERMISSION2INTRO1 = """The rebel army stood in front of a small settlement recently turned into a battlefield.
+	[color=yellow]Anastasia: - Uncle! Why didn't you let me talk to them?![/color]
+	[color=aqua]Greg: - Those were guilds' trained soldiers.[/color]
+	[color=yellow]Anastasia: - Yet, they asked to see me in person. We could've avoided these destructions.[/color]""",
+
+	INTERMISSION2INTRO2 = """Due to surrounding people Greg had to answer, despite his unwillingness.
+	[color=aqua]Greg: - You are too naive, Princess. They could be assassins sent simply for your head. This is how our enemies work.[/color]
+	[color=yellow]Anastasia: - ... Yet, this is not how I want this to be. We must avoid harming innocents and needless losses.""",
+
+	INTERMISSION2INTRO3 = """[color=yellow]Anastasia: - I've decided, release the survivors so they can return home.[/color]
+	[color=aqua]Greg: - What!?[/color]
+	[color=yellow]Anastasia: - This is the minimum we can do now to show our graciousness.[/color]
+	[color=aqua]Greg: - ...Fine, but don't fool yourself, graciousness won't help you return to the throne.[/color]""",
+
+	INTERMISSION2_IF_AIRE_DEAD = """[color=yellow]Anastasia: - Hey, are there any news from Aire? She's still not back?[/color]
+	[color=aqua]Attendant: - I'm afraid, no, your highness.[/color]
+	[color=yellow]Anastasia: - Ah... I really could use some of your company. I hope you are safe.[/color]""",
+
+	INTERMISSION2_IF_AIRE_ALIVE = """[color=yellow]Anastasia: - Do you think I'm wrong demanding something like that?[/color]
+	[color=aqua]Aire: - I'm sorry, I'm not in a position to judge you, your highness.[/color]
+	[color=yellow]Anastasia: - Aire, please.[/color]
+	[color=aqua]Aire: - I'm just your tool, you can't be wrong for me.[/color]
+	Noticing the princess's angry stare Aire informally adds.
+	[color=aqua]Aire: - But, I guess, I prefer to be able to return home if I were in their place.[/color]""",
+
+	INTERMISSION2_IF_AIRE_RAPED1 = """[color=yellow]Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked pretty sad at the time. Did something bad happen?[/color]
+	Princess notices how Aire tenses a bit when hearing the question.
+	[color=aqua]Aire: - ... It's nothing worth mentioning to you.[/color]""",
+
+	INTERMISSION2_IF_AIRE_RAPED2 = """[color=yellow]Anastasia: - You didn't get injured again, did you?[/color]
+	[color=aqua]Aire: - I'm fine, as long as I can serve you.[/color]
+	[color=yellow]Anastasia: - Uh... I wonder if other elves are usually like this.[/color]""",
+
+	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """[color=yellow]Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked somewhat upbeat at the time. Did something good happen?[/color]
+	[color=aqua]Aire: - Oh, yes, actually I got into trouble but there was a person who saved me.[/color]""",
+
+	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """[color=yellow]Anastasia: - A rescuer? Who was that?[/color]
+	[color=aqua]Aire: - I'm not sure, I believe [his] name was [name]. [He] seemed like a good person.[/color]""",
+
+	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """[color=yellow]Anastasia: - [name]? We should properly reward [him], once this whole mess is over.[/color]
+	[color=aqua]Aire: - Ana, you don't really have to.[/color]
+	[color=yellow]Anastasia: - Don't be stupid, what would I do if you didn't return? You've been my friend for so long after all.[/color]
+	[color=aqua]Aire: - ...[/color]""",
+
+	SIGMUNDOPTION = "- Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.",
+
+	SIGMUND_QUESTION1 = "One shouldn't be a problem, should it?",
+	SIGMUND_QUESTION2 = "Something special about this one?",
+
+	SIGMUND_ANSWER1 = "- It's not, but it's actually da major one for the magic ore used for enchantable alloys. Dis is not a wide known information, but it seems da rebels knew where to strike.",
+
+	SIGMUND_QUESTION3 = "Will be glad to help",
+	SIGMUND_QUESTION4 = "Anything goes as long as I get to beat more rebels",
+	SIGMUND_QUESTION5 = "Hope I'll get some reward from it.",
+
+	SIGMUND_ANSWER2 = """- Yah, it wouldn't be da problem, but it's actually da major one for the magic ore used for enchantable alloys.
+	Dis is not a wide known information, but it seems da rebels knew where to strike.""",
+
+	SIGMUND_ANSWER3 = "- Great, will mark it on ya map.",
+	SIGMUND_ANSWER4 = "- Argh, darn, fine, as long as you deal with it.",
+
+	SIGMUND_EXTRA1 = """- Ya know, I wasn't around at da time of king's death.
+	Yah, non-humans weren't allowed to take any major posts. I dun really like the whole war business, but obviously ya won't see me siding with fans of those times. """,
 }
 

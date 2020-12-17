@@ -17,8 +17,6 @@
 [ext_resource path="res://gui_modules/Universal/Scripts/InteractiveMessageModuleAnimated.gd" type="Script" id=15]
 [ext_resource path="res://src/scenes/RightClickReactButton.gd" type="Script" id=16]
 
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 800, 679 )
@@ -97,9 +95,22 @@ __meta__ = {
 
 [node name="CharacterImage" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_left = 689.814
+margin_left = 722.0
+margin_top = -396.556
+margin_right = 1453.0
+margin_bottom = 683.444
+texture = ExtResource( 11 )
+stretch_mode = 6
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterImage2" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_left = -608.68
 margin_top = -398.35
-margin_right = 1420.81
+margin_right = 122.316
 margin_bottom = 681.65
 texture = ExtResource( 11 )
 stretch_mode = 6

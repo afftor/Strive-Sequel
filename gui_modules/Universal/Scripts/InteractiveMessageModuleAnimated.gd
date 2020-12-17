@@ -18,8 +18,8 @@ func hide_dialogue(action = "hide"):
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"
 
-# TODO Rework bg updates
-func open(scene, not_save = false):
+
+func open(scene, is_should_save = false):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
 	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
@@ -27,31 +27,17 @@ func open(scene, not_save = false):
 	input_handler.PlaySound("speech")
 	get_tree().get_root().set_disable_input(true)
 	if scene.has("save_scene_to_gallery") && scene.save_scene_to_gallery:
-		if scene.has("scene_type"):
-			if scene.scene_type == "story_scene":
-				input_handler.update_progress_data("story_scenes", images.backgrounds[scene.custom_background])
-			elif scene.scene_type == "ero_scene":
-				input_handler.update_progress_data("ero_scenes", images.backgrounds[scene.custom_background])
+		save_scene_to_gallery(scene)
+
 	if scene.has("variations"):
-		for i in scene.variations:
-			if globals.checkreqs(i.reqs):
-				open(i)
-				break
+		select_scene_variation_based_on_data(scene)
 		get_tree().get_root().set_disable_input(false)
 		return
+	
 	if scene.has("dialogue_type") && gui_controller.dialogue_window_type != scene.dialogue_type:
-		gui_controller.dialogue_window_type = scene.dialogue_type
-		gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
-		match gui_controller.dialogue_window_type:
-			1:
-				input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
-				gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)
-			2:
-				input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
-				gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2)
-		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
-		gui_controller.dialogue.open(scene)
+		set_dialogue_window_type(scene)
 		return
+
 	if input_handler.CurrentScreen != 'scene': previousscene = input_handler.CurrentScreen
 	input_handler.CurrentScreen = 'scene'
 	current_scene = scene
@@ -62,185 +48,16 @@ func open(scene, not_save = false):
 		scene.text = [{text = scene.text, reqs = []}]
 	
 	update_scene_characters()
-
 	$CharacterImage.hide()
 	$ImagePanel.hide()
-	if gui_controller.is_dialogue_just_started:
-		$RichTextLabel.modulate.a = 0
-		$ScrollContainer.modulate.a = 0
-	else:
-		$RichTextLabel.modulate.a = 1
-		$ScrollContainer.modulate.a = 1
-	if scene.tags.has("blackscreen_transition_common"):
-		ResourceScripts.core_animations.BlackScreenTransition(1)
-		yield(get_tree().create_timer(1), "timeout")
-	elif scene.tags.has("blackscreen_transition_slow"):
-		ResourceScripts.core_animations.BlackScreenTransition(2)
-		yield(get_tree().create_timer(2), "timeout")
+	handle_scene_transition_fx(scene)
+	handle_scene_backgrounds(scene)
+	handle_characters_sprites(scene)
+	handle_loots(scene)
+	generate_scene_text(scene, is_should_save)
+	set_enemy(scene)
+	handle_scene_options(scene)
 
-	if scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		gui_controller.dialogue.get_node("CustomBackground").show()
-		gui_controller.dialogue.get_node("CustomBackground").texture = images.backgrounds[scene.custom_background]
-	elif scene.has("custom_background") && gui_controller.dialogue_window_type == 2:
-		gui_controller.dialogue.get_node("EventBackground").show()
-		gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds[scene.custom_background]
-	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		gui_controller.dialogue.get_node("CustomBackground").hide()
-	
-	if scene.has("character") == false:
-		$ImagePanel.show()
-		$CharacterImage.hide()
-		if scene.image != '' && scene.image != null:
-			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
-		else:
-			$ImagePanel.hide()
-			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
-	else:
-		if $CharacterImage.texture == images.sprites[scene.character] == false:
-			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage,0.5)
-		$ImagePanel.hide()
-		$CharacterImage.texture = images.sprites[scene.character]
-		$CharacterImage.show()
-	
-	if self.visible == false:
-		self.visible = true
-		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
-		$RichTextLabel.bbcode_text = ''
-		previous_text = ''
-		yield(get_tree().create_timer(0.2), "timeout")
-	show()
-	
-	if scene.tags.has('locked_chest'):
-		add_chest_options(scene)
-	if scene.tags.has("shrine"):
-		add_shrine_options(scene)
-	if scene.tags.has("free_loot"):
-		add_loot_options(scene)
-	
-	
-	
-	var scenetext = scene.text
-	var newtext = ''
-	for i in scenetext:
-		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
-			i.previous_dialogue_option = [i.previous_dialogue_option]
-		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !globals.checkreqs(i.reqs):
-			continue
-		if ResourceScripts.game_progress.seen_dialogues.has(i.text) == false && not_save == false:
-			ResourceScripts.game_progress.seen_dialogues.append(i.text)
-		if i.has("bonus_effects"):
-			globals.common_effects(i.bonus_effects)
-		newtext += tr(i.text)
-	scenetext = newtext
-	scenetext = tr(scenetext)
-	if scene.has('bonus_effects'):
-		globals.common_effects(scene.bonus_effects)
-	
-	if scenetext.find("[locationname]") >= 0:
-		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
-		scenetext = scenetext.replace("[areaname]", input_handler.active_area.name)
-		scenetext = scenetext.replace("[locationtypename]", input_handler.active_location.classname)
-	if scene.tags.has("master_translate"):
-		if ResourceScripts.game_party.get_master() == null:
-			print("Error: Master not found")
-			return
-		scenetext = ResourceScripts.game_party.get_master().translate(scenetext)
-	if scene.tags.has("active_character_translate"):
-		scenetext = input_handler.active_character.translate(scenetext)
-	if scene.tags.has("scene_character_translate"):
-		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
-	if scene.tags.has("location_resource_info"):
-		scenetext = add_location_resource_info() 
-	if gui_controller.is_dialogue_just_started:
-		ResourceScripts.core_animations.UnfadeAnimation($RichTextLabel,1)
-		ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer,1)
-	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
-	if scene.tags.has("scene_characters_sell"):#
-		var counter = 0
-		var text = ''
-		for i in input_handler.scene_characters:
-			text += i.get_short_name() + " " + i.get_stat('sex') + " - " + races.racelist[i.get_stat('race')].name + ": " + str(i.calculate_price()) + " gold\n"
-			scene.options.append({code = 'recruit_from_scene', args = counter, reqs = [{type = "has_money_for_scene_slave", value = counter}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE") + " - " + i.get_short_name() + ": " + str(i.calculate_price()) + " Gold", bonus_effects = [{code = 'spend_money_for_scene_character', value = counter}]})
-			counter += 1
-		scenetext += "\n\n" + text
-	
-	if scene.has("set_enemy"):
-		dialogue_enemy = scene.set_enemy
-	var counter = 1
-	var options = scene.options
-	for i in options:
-		#yield(get_tree(), 'idle_frame')
-		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
-			i.previous_dialogue_option = [i.previous_dialogue_option]
-		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option):
-			continue
-		if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
-			continue
-		var disable = false
-		if globals.checkreqs(i.reqs) == false:
-			if i.has('not_hide') == true:
-				disable = true
-			else:
-				continue
-		var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
-		newbutton.set("modulate", Color(1, 1, 1, 0))
-		newbutton.get_node("Label").bbcode_text = tr(i.text)
-		if i.has('active_char_translate'):
-			newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
-		newbutton.get_node("hotkey").text = str(counter)
-		yield(get_tree(), 'idle_frame')
-		if newbutton.get_node("Label").get_v_scroll().is_visible():
-			newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
-		newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
-		newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i])
-		
-		if i.has('select_person'):
-			newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
-		elif i.code == 'shrine_option':
-			newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
-		elif i.code == 'chest_mimic_force_open':
-			newbutton.connect("pressed",self,'chest_mimic_force_open')
-		elif scene.tags.has('linked_event') && !i.code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
-			var event_type = 'story_event'
-			if scenedata.scenedict[i.code].has('default_event_type'):
-				event_type = scenedata.scenedict[i.code].default_event_type
-			newbutton.connect("pressed", input_handler, 'interactive_message_follow', [i.code, event_type, {}])
-		elif scene.tags.has("skill_event"):
-			if !i.code == 'cancel_skill_usage':
-				newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
-			elif i.code == 'cancel_skill_usage':
-				newbutton.connect("pressed", input_handler.active_character, "restore_skill_charge", [gui_controller.mansion.SkillModule.active_skill])
-				newbutton.connect("pressed", self, "hide")
-		elif scene.tags.has("custom_effect"):
-			newbutton.connect('pressed', ResourceScripts.custom_effects, i.code)
-		elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight']:
-			newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])
-		else:
-			var args
-			if i.has('args') == true: args = i.args
-			if args != null:
-				newbutton.connect("pressed", self, i.code, [args])
-			else:
-				newbutton.connect("pressed", self, i.code)
-		
-		if i.has('type'):
-			match i.type:
-				'next_dialogue':
-					newbutton.get_node("Label").bbcode_text = globals.TextEncoder("{color=yellow|"+newbutton.get_node("Label").bbcode_text +"}")
-		if ResourceScripts.game_progress.selected_dialogues.has(i.text):
-			newbutton.get_node("Label").bbcode_text = globals.TextEncoder("{color=gray_text_dialogue|"+newbutton.get_node("Label").bbcode_text +"}")
-		
-		if i.has('disabled') && i.disabled == true:
-			disable = true
-		if i.has('bonus_effects'):
-			newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
-		newbutton.disabled = disable
-		counter += 1
-
-	if $RichTextLabel.bbcode_text != '':
-		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
-	else:
-		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
 	yield(get_tree().create_timer(0.2), "timeout")
 	hold_selection = false
 	show_buttons()
@@ -249,6 +66,8 @@ func open(scene, not_save = false):
 		get_tree().get_root().get_node("lootwindow").raise()
 	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
+
+	show()
 
 
 func show_buttons():
@@ -573,3 +392,226 @@ func quest_fight(code):
 	globals.current_enemy_group = code
 	input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
 	#close(true)
+
+
+
+func save_scene_to_gallery(scene):
+	if scene.has("scene_type"):
+		if scene.scene_type == "story_scene":
+			input_handler.update_progress_data("story_scenes", images.backgrounds[scene.custom_background])
+		elif scene.scene_type == "ero_scene":
+			input_handler.update_progress_data("ero_scenes", images.backgrounds[scene.custom_background])
+
+
+func select_scene_variation_based_on_data(scene):
+	for i in scene.variations:
+		if globals.checkreqs(i.reqs):
+			open(i)
+			break
+
+
+func set_dialogue_window_type(scene):
+	gui_controller.dialogue_window_type = scene.dialogue_type
+	gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
+	match gui_controller.dialogue_window_type:
+		1:
+			input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2).hide()
+			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE)
+		2:
+			input_handler.get_spec_node(input_handler.NODE_DIALOGUE).hide()
+			gui_controller.dialogue = input_handler.get_spec_node(input_handler.NODE_DIALOGUE_T2)
+	gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
+	gui_controller.dialogue.open(scene)
+
+
+func handle_scene_transition_fx(scene):
+	if gui_controller.is_dialogue_just_started:
+		$RichTextLabel.modulate.a = 0
+		$ScrollContainer.modulate.a = 0
+	else:
+		$RichTextLabel.modulate.a = 1
+		$ScrollContainer.modulate.a = 1
+	if scene.tags.has("blackscreen_transition_common"):
+		ResourceScripts.core_animations.BlackScreenTransition(1)
+		yield(get_tree().create_timer(1), "timeout")
+	elif scene.tags.has("blackscreen_transition_slow"):
+		ResourceScripts.core_animations.BlackScreenTransition(2)
+		yield(get_tree().create_timer(2), "timeout")
+
+	if self.visible == false:
+		self.visible = true
+		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
+		$RichTextLabel.bbcode_text = ''
+		previous_text = ''
+		yield(get_tree().create_timer(0.2), "timeout")
+
+
+
+func handle_scene_backgrounds(scene):
+	if scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
+		gui_controller.dialogue.get_node("CustomBackground").show()
+		gui_controller.dialogue.get_node("CustomBackground").texture = images.backgrounds[scene.custom_background]
+	elif scene.has("custom_background") && gui_controller.dialogue_window_type == 2:
+		gui_controller.dialogue.get_node("EventBackground").show()
+		gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds[scene.custom_background]
+	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
+		gui_controller.dialogue.get_node("CustomBackground").hide()
+
+
+
+func handle_characters_sprites(scene):
+	if !scene.has("character"):
+		$ImagePanel.show()
+		$CharacterImage.hide()
+		if scene.image != '' && scene.image != null:
+			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
+		else:
+			$ImagePanel.hide()
+			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
+	else:
+		if !($CharacterImage.texture == images.sprites[scene.character]):
+			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage,0.5)
+		$ImagePanel.hide()
+		$CharacterImage.texture = images.sprites[scene.character]
+		$CharacterImage.show()
+
+
+func handle_loots(scene):
+	if scene.tags.has('locked_chest'):
+		add_chest_options(scene)
+	if scene.tags.has("shrine"):
+		add_shrine_options(scene)
+	if scene.tags.has("free_loot"):
+		add_loot_options(scene)
+
+
+#TODO Refactor this
+func generate_scene_text(scene, is_should_save):
+	var scenetext = scene.text
+	var newtext = ''
+	for i in scenetext:
+		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
+			i.previous_dialogue_option = [i.previous_dialogue_option]
+		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !globals.checkreqs(i.reqs):
+			continue
+		if ResourceScripts.game_progress.seen_dialogues.has(i.text) == false && is_should_save == false:
+			ResourceScripts.game_progress.seen_dialogues.append(i.text)
+		if i.has("bonus_effects"):
+			globals.common_effects(i.bonus_effects)
+		newtext += tr(i.text)
+	scenetext = newtext
+	scenetext = tr(scenetext)
+	if scene.has('bonus_effects'):
+		globals.common_effects(scene.bonus_effects)
+	
+	if scenetext.find("[locationname]") >= 0:
+		scenetext = scenetext.replace("[locationname]", input_handler.active_location.name)
+		scenetext = scenetext.replace("[areaname]", input_handler.active_area.name)
+		scenetext = scenetext.replace("[locationtypename]", input_handler.active_location.classname)
+	if scene.tags.has("master_translate"):
+		if ResourceScripts.game_party.get_master() == null:
+			print("Error: Master not found")
+			return
+		scenetext = ResourceScripts.game_party.get_master().translate(scenetext)
+	if scene.tags.has("active_character_translate"):
+		scenetext = input_handler.active_character.translate(scenetext)
+	if scene.tags.has("scene_character_translate"):
+		scenetext = input_handler.scene_characters[0].translate(scenetext.replace("[scnchar","["))
+	if scene.tags.has("location_resource_info"):
+		scenetext = add_location_resource_info() 
+	if gui_controller.is_dialogue_just_started:
+		ResourceScripts.core_animations.UnfadeAnimation($RichTextLabel,1)
+		ResourceScripts.core_animations.UnfadeAnimation($ScrollContainer,1)
+	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
+	if scene.tags.has("scene_characters_sell"):#
+		var counter = 0
+		var text = ''
+		for i in input_handler.scene_characters:
+			text += i.get_short_name() + " " + i.get_stat('sex') + " - " + races.racelist[i.get_stat('race')].name + ": " + str(i.calculate_price()) + " gold\n"
+			scene.options.append({code = 'recruit_from_scene', args = counter, reqs = [{type = "has_money_for_scene_slave", value = counter}], not_hide = true, text = tr("DIALOGUESLAVERSPURCHASE") + " - " + i.get_short_name() + ": " + str(i.calculate_price()) + " Gold", bonus_effects = [{code = 'spend_money_for_scene_character', value = counter}]})
+			counter += 1
+		scenetext += "\n\n" + text
+
+	if $RichTextLabel.bbcode_text != '':
+		$RichTextLabel.bbcode_text += "\n\n[color=yellow]"+previous_text+"[/color]\n\n" + globals.TextEncoder(scenetext)
+	else:
+		$RichTextLabel.bbcode_text = globals.TextEncoder(scenetext)
+
+
+func set_enemy(scene):
+	if scene.has("set_enemy"):
+		dialogue_enemy = scene.set_enemy
+
+
+#TODO Refactor this
+func handle_scene_options(scene):
+		# var counter = 1
+		var options = scene.options
+		for i in options:
+			#yield(get_tree(), 'idle_frame')
+			if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
+				i.previous_dialogue_option = [i.previous_dialogue_option]
+			if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option):
+				continue
+			if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
+				continue
+			var disable = false
+			if globals.checkreqs(i.reqs) == false:
+				if i.has('not_hide') == true:
+					disable = true
+				else:
+					continue
+			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
+			newbutton.set("modulate", Color(1, 1, 1, 0))
+			newbutton.get_node("Label").bbcode_text = tr(i.text)
+			if i.has('active_char_translate'):
+				newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
+			newbutton.get_node("hotkey").text = str(counter)
+			yield(get_tree(), 'idle_frame')
+			if newbutton.get_node("Label").get_v_scroll().is_visible():
+				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
+			newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
+			newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i])
+			
+			if i.has('select_person'):
+				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+			elif i.code == 'shrine_option':
+				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
+			elif i.code == 'chest_mimic_force_open':
+				newbutton.connect("pressed",self,'chest_mimic_force_open')
+			elif scene.tags.has('linked_event') && !i.code in ['close','leave', 'fight_skirmish','continue','recruit','recruit_from_scene']:
+				var event_type = 'story_event'
+				if scenedata.scenedict[i.code].has('default_event_type'):
+					event_type = scenedata.scenedict[i.code].default_event_type
+				newbutton.connect("pressed", input_handler, 'interactive_message_follow', [i.code, event_type, {}])
+			elif scene.tags.has("skill_event"):
+				if !i.code == 'cancel_skill_usage':
+					newbutton.connect("pressed", input_handler.active_character, 'use_social_skill', [i.code, input_handler.target_character])
+				elif i.code == 'cancel_skill_usage':
+					newbutton.connect("pressed", input_handler.active_character, "restore_skill_charge", [gui_controller.mansion.SkillModule.active_skill])
+					newbutton.connect("pressed", self, "hide")
+			elif scene.tags.has("custom_effect"):
+				newbutton.connect('pressed', ResourceScripts.custom_effects, i.code)
+			elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight']:
+				newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])
+			else:
+				var args
+				if i.has('args') == true: args = i.args
+				if args != null:
+					newbutton.connect("pressed", self, i.code, [args])
+				else:
+					newbutton.connect("pressed", self, i.code)
+			
+			if i.has('type'):
+				match i.type:
+					'next_dialogue':
+						newbutton.get_node("Label").bbcode_text = globals.TextEncoder("{color=yellow|"+newbutton.get_node("Label").bbcode_text +"}")
+			if ResourceScripts.game_progress.selected_dialogues.has(i.text):
+				newbutton.get_node("Label").bbcode_text = globals.TextEncoder("{color=gray_text_dialogue|"+newbutton.get_node("Label").bbcode_text +"}")
+			
+			if i.has('disabled') && i.disabled == true:
+				disable = true
+			if i.has('bonus_effects'):
+				newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
+			newbutton.disabled = disable
+			# counter += 1
