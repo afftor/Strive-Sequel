@@ -618,7 +618,7 @@ var individual_lines = {
 	date_sex_offer1 = {text = "...[Master]? I'd like to continue this affair.", events = ['date_sex_offer'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	date_sex_offer2 = {text = "Uhm, [Master], we could do, you know, lewd stuff... If you don't mind.", events = ['date_sex_offer'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	date_sex_offer3 = {text = "Hey, you are not going to leave me just now?", events = ['date_sex_offer'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
-	date_sex_offer4 = {text = "Hey, would you mind keeping me a company for some longer?", events = ['date_sex_offer'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
+	date_sex_offer4 = {text = "Hey, would you mind keeping me a company for little longer?", events = ['date_sex_offer'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	date_sex_offer5 = {text = "My body feels like... It could use some more attention.", events = ['date_sex_offer'], personalities = ['bold','serious','kind'], reqs = [], weight = 1, tags = []},
 	date_sex_offer6 = {text = "Uhm, can we continue this? I don't want to leave you. ", events = ['date_sex_offer'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
 	

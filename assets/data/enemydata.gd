@@ -75,6 +75,21 @@ var enemygroups = {
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},
 	
 	mimic = {reqs = [], units = {mimic = [1,1]}},
+	
+	jungle_easy1 = {reqs = [], units = {giant_ant = [2,3], wild_raptor = [0,1], maneater_plant = [0,1]}},
+	jungle_easy2 = {reqs = [], units = {giant_ant = [0,2], centipede = [0,1], maneater_plan = [0,1]}},
+	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
+	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}},
+	jungle_boss1 = {reqs = [], units = {giant_ant = [1,2], giant_ant_warrior = [1,1]}},
+	jungle_boss2 = {reqs = [], units = {ogre = [1,1], ogre_alpa = [1,1], ogre_mage = [1,1]}},
+	
+	firedepths_easy1 = {reqs = [], units = {salamander = [1,2], rock_thrower = [1,2]}},
+	firedepths_easy2 = {reqs = [], units = {antropoid = [1,2], ifrit = [0,1]}},
+	firedepths_medium1 = {reqs = [], units = {salamander = [1,3], rock_thrower = [1,2], ifrit = [0,1]}},
+	firedepths_medium2 = {},
+	firedepths_boss1 = {},
+	
+	
 }
 
 #Ai patterns: basic - basic attack/ranged attack or pass (if exist), ads - advanced single target skill, aoe - aoe skill, buff - buffing skill
@@ -996,10 +1011,10 @@ var enemies = {
 		code = 'maneater_plant',
 		name = '',
 		descript = '',
-		hpmax = 300,
-		armor = 65,
-		mdef = 25,
-		hitrate = 140,
+		hpmax = 150,
+		armor = 40,
+		mdef = 15,
+		hitrate = 120,
 		evasion = 0,
 		armorpenetration = 0,
 		atk = 33,
@@ -1019,6 +1034,7 @@ var enemies = {
 		ai_position = ['ranged'],
 		xpreward = 20,
 	},
+	
 }
 
 var loot_variants_data = {

@@ -1,44 +1,46 @@
 extends Node
 
 const category = 'SM'
-const code = 'nippleclap'
-const order = 4
+const code = 'clitclamp'
+const order = 5
 var givers
 var takers
 const canlast = true
 const giverpart = ''
-const takerpart = 'acc5'#nipple extra
+const takerpart = 'acc6'#clit
 const virginloss = false
 const givertags = ['noorgasm']
-const takertags = ['punish','pain', 'tits']
+const takertags = ['punish','pain', 'vagina']
 const giver_skill = []
 const taker_skill = []
 const consent_level = 30
 
 func getname(state = null):
-	return "Nipple Clap"
+	return "Clit Clamp"
 
 func getongoingname(givers, takers):
-	return "[name1] put clip[s/1] on [names2] nipples."
+	return "[name1] put clip[s/1] on [names2] clit[/s1]."
 
 func getongoingdescription(givers, takers):
 	return ""
 	
 func requirements():
 	var valid = true
-#	for i in takers:
-#		if i.acc5 != null:
+	for i in takers:
+#		if i.acc6 != null:
 #			valid = false
-	if takers.size() < 1 || givers.size() != 1:
+		if i.person.get_stat('sex') == 'male':
+			valid = false
+	if takers.size() != 1 || givers.size() != 1:
 		valid = false
 	return valid
 
 func givereffect(member):
-	var effects = {lust = 25}
+	var effects = {sens = 30}
 	return effects
 
 func takereffect(member):
-	var effects = {sens = 75, horny = 5}
+	var effects = {sens = 120, horny = 10}
 	if member.person.get_stat('sex') == 'male':
 		effects.sens /= 1.3
 	return effects
@@ -46,7 +48,7 @@ func takereffect(member):
 func initiate():
 	var text = ''
 	var temparray = []
-	temparray += ["[name1] {^place:stick}[s/1] clips on [names2] nipples."]
+	temparray += ["[name1] {^place:stick}[s/1] clips on [names2] clit."]
 #	temparray += ["[name1] latch[es/1] onto [names2] nipples"]
 	text += temparray[randi()%temparray.size()]
 	temparray.clear()
@@ -59,15 +61,15 @@ func initiate():
 func reaction(member):
 	var text = ''
 	if member.energy == 0:
-		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] nipples {^respond:react} to {^the stimulation:the claps pression:the claps teasing}."
+		text = "[name2] lie[s/2] unconscious, {^trembling:twitching} {^slightly :}as [his2] clit {^respond:react} to {^the stimulation:the clamps pression:the clamps teasing}."
 	#elif member.consent == false:
 		#TBD
 	elif member.sens < 100:
-		text = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] nipples being {^stimulated:teased:pressed:pinched}."
+		text = "[name2] {^show:give}[s/2] little {^response:reaction} to [his2] clit being {^stimulated:teased:pressed:pinched}."
 	elif member.sens < 400:
-		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] nipples are {^stimulated:teased:pressed:pinched}."
+		text = "[name2] {^begin:start}[s/2] to {^respond:react} as [his2] clit are {^stimulated:teased:pressed:pinched}."
 	elif member.sens < 800:
-		text = "[name2] {^moans[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] nipples are {^stimulated:teased::pressed:pinched}."
+		text = "[name2] {^moans[s/2]:crie[s/2] out} in {^pleasure:arousal:extacy} as [his2] clit are {^stimulated:teased::pressed:pinched}."
 	else:
-		text = "[names2] body {^trembles:quivers} {^by the slightest pressure of the claps:in response of the claps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
+		text = "[names2] body {^trembles:quivers} {^by the slightest pressure of the clamps:in response of the clamps pression}{^ as [he2] rapidly near[s/2] orgasm: as [he2] approach[es/2] orgasm: as [he2] edge[s/2] toward orgasm:}."
 	return text

@@ -384,7 +384,7 @@ var sex_traits = { #only for interaction tab
 		random_generation = true,
 		acquire_reqs = [],
 		negative = true,
-		reqs = [{code = "action_type", value = ["spanking",'whipping','nippleclap','clitclap','ringgag','blindfold','nosehook','facesit','afacesit']}],
+		reqs = [{code = "action_type", value = ["spanking",'whipping','nippleclamp','clitclamp','ringgag','blindfold','nosehook','facesit','afacesit']}],
 		effects = [{effect = 'consent', operant = '*', value = 1, trigger = 'consent_check'},{effect = 'horny_bonus', operant = "-", value = 0.33, trigger = 'action_self'}]
 	},
 	dislike_tail = {
