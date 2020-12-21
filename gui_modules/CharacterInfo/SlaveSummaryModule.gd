@@ -33,7 +33,6 @@ func change_slave(param):
 	var chars = ResourceScripts.game_party.character_order
 	var current_idx = 0
 	while selected_person.id != chars[current_idx]:
-		print(selected_person.id, ":::", chars[current_idx])
 		current_idx += 1
 	
 	match param:
