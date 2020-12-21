@@ -98,11 +98,11 @@ func open(tempperson, tempmode = 'normal'):
 
 
 func checkbox_locked():
-	person = gui_controller.mansion.active_person
+	person = input_handler.interacted_character
 	open(person, mode)
 
 func class_category(name):
-	person = gui_controller.mansion.active_person if person == null else get_parent().active_person
+	person = gui_controller.mansion.active_person if person == null else input_handler.interacted_character
 	category = name
 	for i in $categories.get_children():
 		i.pressed = i.name == category
