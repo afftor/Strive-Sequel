@@ -21,8 +21,6 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=20]
 
-
-
 [sub_resource type="StyleBoxTexture" id=1]
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -162,7 +160,6 @@ size_flags_vertical = 3
 custom_constants/separation = 5
 
 [node name="Button" type="TextureButton" parent="UpgradeList/ScrollContainer/VBoxContainer"]
-visible = false
 margin_right = 319.0
 margin_bottom = 46.0
 rect_min_size = Vector2( 0, 46 )

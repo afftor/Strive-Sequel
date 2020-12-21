@@ -135,6 +135,8 @@ func update_buttons():
 			text += ' Unlocked'
 		update_progresses(i, newbutton, currentupgradelevel)
 		newbutton.get_node("name").text = text
+		var font = input_handler.font_size_calculator(newbutton.get_node("name"))
+		newbutton.get_node("name").set("custom_fonts/font", font)
 		newbutton.set_meta('upgrade', i)
 		newbutton.connect("pressed", self, "selectupgrade", [i])
 		# newbutton.connect("pressed", self, "add_to_upgrades_queue", [i])
