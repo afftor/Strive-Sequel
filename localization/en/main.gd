@@ -2630,21 +2630,21 @@ var TranslationDict = {
 	# Aliron elections finish
 
 	ALIRONELECTIONSFINISH_LINE1 = """Few hours later an emergency meeting was assembled by four major guilds. The leaders and landlords entered a fierce discussion on the current situation.
-	[color=aqua]Duncan: This is ridiculous. Now every peasant will know there's a living princess. HOW did a large rebel group got into the city on such a day? Your job is to specifically prevent such things, Myr. Is this some sort of sabotage?[/color]
-	[color=yellow]Myr: How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family. And yet we have a grown up princess marching rebels in our direction now.[/color]""",
+	{color=aqua|Duncan: This is ridiculous. Now every peasant will know there's a living princess. HOW did a large rebel group got into the city on such a day? Your job is to specifically prevent such things, Myr. Is this some sort of sabotage?}
+	{color=yellow|Myr: How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family. And yet we have a grown up princess marching rebels in our direction now.}""",
 
-	ALIRONELECTIONSFINISH_LINE2 = """[color=aqua]Sigmund: Are ya sure she's actually da princess? Might be an imposter. Pretty common fo' dwarven disputes.[/color] 
-	[color=yellow]Amelia: We are almost sure she's the real deal. Her appearance is correlating to the youngest child, and her aura is undeniably of the royal bloodline. I'd be more worried if the empire is involved in it.[/color]""",
+	ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund: Are ya sure she's actually da princess? Might be an imposter. Pretty common fo' dwarven disputes.} 
+	{color=yellow|Amelia: We are almost sure she's the real deal. Her appearance is correlating to the youngest child, and her aura is undeniably of the royal bloodline. I'd be more worried if the empire is involved in it.}""",
 
-	ALIRONELECTIONSFINISH_LINE3 = """[color=aqua]Duncan: Our scouts have been reporting increased activity from the rebels in past months. Rebel forces and sympathizers make their advancement as we speak. I'm forced to declare this as a state of emergency.[/color]
+	ALIRONELECTIONSFINISH_LINE3 = """{color=aqua|Duncan: Our scouts have been reporting increased activity from the rebels in past months. Rebel forces and sympathizers make their advancement as we speak. I'm forced to declare this as a state of emergency.}
 
 	The room filled with a hubbub. 
-[color=yellow]Sigmund: I agree. We can't afford to lose any of da vital points or trade routes.[/color]""",
+{color=yellow|Sigmund: I agree. We can't afford to lose any of da vital points or trade routes.}""",
 
-	ALIRONELECTIONSFINISH_LINE4 = """[color=yellow]Myr: Mhph, so you gonna declare yourself a leader now? Given your credibility after the appearance of princess too.[/color] 
-	[color=aqua]Duncan: I don't expect you to comply. And I won't need your help to deal with them. And once we find out the betrayer, they will not get off the hook. You better prepare for it.[/color] 
-	[color=yellow]Myr: We?! Why how would Mage Guild benefit from this?[/color] 
-	[color=aqua]Duncan: Regardless, we will find the culprit and all accomplices will be coped with surely. Be it you, or Servants, or even one of ours.[/color]""",
+	ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: Mhph, so you gonna declare yourself a leader now? Given your credibility after the appearance of princess too.} 
+	{color=aqua|Duncan: I don't expect you to comply. And I won't need your help to deal with them. And once we find out the betrayer, they will not get off the hook. You better prepare for it.} 
+	{color=yellow|Myr: We?! Why how would Mage Guild benefit from this?} 
+	{color=aqua|Duncan: Regardless, we will find the culprit and all accomplices will be coped with surely. Be it you, or Servants, or even one of ours.}""",
 
 	ALIRONELECTIONSFINISH_LINE5 = """Once the meeting was over, you approach Amelia to consult on what's happening now.
 	- Oh, this is horrible. Now Fighters will take the rulership over everyone until the riot is dealt with. Bad news, but the election is naturally put on hold. Good news, so is your debt. Looks like we have been benched. Me especially.""",
@@ -2712,9 +2712,9 @@ var TranslationDict = {
 	The sum makes you wonder how quickly Fred would be burgled by his neighbors if they knew about it. After securing the money you leave the dormitory.""",
 
 	FINDFRED1 = """As you go deeper into the cave you come across a manmade prisoner room. As you carefully scout around you notice Fred tied and observed by a group of mercs.
-	[color=aqua]Merc: - How long are we going to wait here? I'm bored and it's hella cold here.[/color]
-	[color=yellow]Merc 2: - Stop being such a whiny little bitch. They said to get rid of this guy if they won't return by evening.[/color] 
-	[color=aqua]Merc: - Screw it, I wanna get drunk already. You surely don't expect them to pay extra?[/color]""",
+	{color=aqua|Merc: - How long are we going to wait here? I'm bored and it's hella cold here.}
+	{color=yellow|Merc 2: - Stop being such a whiny little bitch. They said to get rid of this guy if they won't return by evening.} 
+	{color=aqua|Merc: - Screw it, I wanna get drunk already. You surely don't expect them to pay extra?}""",
 	
 	FINDFRED_OPTION1 = "Talk",
 	FINDFRED_OPTION2 = "Attack",
@@ -2789,20 +2789,33 @@ var TranslationDict = {
 
 	FINDFRED_TALK1_ANSWER9 = """- Thank you! I left the cash in my room. There's the stash under a floor bar near the window.
 	You let Fred go on his way and ready to depart.""",
+	
+	FINDFRED_TALK1_ANSWER10 = """Mercs give you a doubtful look and after a couple of phrases the leader speaks.
+	- Alright, 300 gold and you can have him.""",
+
+	FINDFRED_BRIBE_TAKEN = """As you pass them the money they prepare to leave.
+	Bandit Leader: - Nice working with you. Just in case someone else shows up, let's not announce our deal.""",
+
+	FINDFRED_BRIBE_REFUSED = """Bandit Leader: - Well, that's a shame. Then, we can't let you leave, knowing what's been going on here.""",
+
+	FINFRED_BRIBE_OPTION1 = "Agree",
+	FINFRED_BRIBE_OPTION2 = "Refuse",
 
 	FINDFRED_LINE_END_KILL2 = "Preventing further protests you plug back Fred's mouth and lead him out of the cave.",
 
+	FINDFRED_TALK_FAIL = "Merc Leader: - Yea', I don't think so. You will have to tell us who you are after we beat the shit out of you.",
+
 	# *Intermission scene - starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
 
-	INTERMISSIONINTRO1 = """[color=aqua]Greg: - You've got your fancy sword. Hope we are even now.[/color]
-	[color=yellow]Demon: - I can't complain, helping you with the teleportation performance has paid off to us.[/color]""",
+	INTERMISSIONINTRO1 = """{color=aqua|Greg: - You've got your fancy sword. Hope we are even now.}
+	{color=yellow|Demon: - I can't complain, helping you with the teleportation performance has paid off to us.}""",
 
-	INTERMISSIONINTRO2 = """[color=aqua]Greg: - Perfect, get lost then. I would prefer us not being seen together, especially by the princess.[/color]
-	[color=yellow]Demon: - Now, don't be so harsh. The cult offered assistance not just for the sake of the artifact. We could do more, you know.[/color]
-	[color=aqua]Greg: - I'm not going to give anything else for your help anymore.[/color]
-	[color=yellow]Demon: - Hmph, this is fine.[/color]""",
+	INTERMISSIONINTRO2 = """{color=aqua|Greg: - Perfect, get lost then. I would prefer us not being seen together, especially by the princess.}
+	{color=yellow|Demon: - Now, don't be so harsh. The cult offered assistance not just for the sake of the artifact. We could do more, you know.}
+	{color=aqua|Greg: - I'm not going to give anything else for your help anymore.}
+	{color=yellow|Demon: - Hmph, this is fine.}""",
 
-	INTERMISSIONINTRO3 = "[color=yellow]Demon: - Still, we can get something additional from this. I think I'll stay for a bit.[/color]",
+	INTERMISSIONINTRO3 = "{color=yellow|Demon: - Still, we can get something additional from this. I think I'll stay for a bit.}",
 
 	RETURNTOMYR_IF_FRED = """- So you found him. Nice work, I've already sent him to Duncan with explanations attached.
 	This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
@@ -2836,48 +2849,48 @@ var TranslationDict = {
 	#Intermission scene 2
 
 	INTERMISSION2INTRO1 = """The rebel army stood in front of a small settlement recently turned into a battlefield.
-	[color=yellow]Anastasia: - Uncle! Why didn't you let me talk to them?![/color]
-	[color=aqua]Greg: - Those were guilds' trained soldiers.[/color]
-	[color=yellow]Anastasia: - Yet, they asked to see me in person. We could've avoided these destructions.[/color]""",
+	{color=yellow|Anastasia: - Uncle! Why didn't you let me talk to them?!}
+	{color=aqua|Greg: - Those were guilds' trained soldiers.}
+	{color=yellow|Anastasia: - Yet, they asked to see me in person. We could've avoided these destructions.}""",
 
 	INTERMISSION2INTRO2 = """Due to surrounding people Greg had to answer, despite his unwillingness.
-	[color=aqua]Greg: - You are too naive, Princess. They could be assassins sent simply for your head. This is how our enemies work.[/color]
-	[color=yellow]Anastasia: - ... Yet, this is not how I want this to be. We must avoid harming innocents and needless losses.""",
+	{color=aqua|Greg: - You are too naive, Princess. They could be assassins sent simply for your head. This is how our enemies work.}
+	{color=yellow|Anastasia: - ... Yet, this is not how I want this to be. We must avoid harming innocents and needless losses.""",
 
-	INTERMISSION2INTRO3 = """[color=yellow]Anastasia: - I've decided, release the survivors so they can return home.[/color]
-	[color=aqua]Greg: - What!?[/color]
-	[color=yellow]Anastasia: - This is the minimum we can do now to show our graciousness.[/color]
-	[color=aqua]Greg: - ...Fine, but don't fool yourself, graciousness won't help you return to the throne.[/color]""",
+	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: - I've decided, release the survivors so they can return home.}
+	{color=aqua|Greg: - What!?}
+	{color=yellow|Anastasia: - This is the minimum we can do now to show our graciousness.}
+	{color=aqua|Greg: - ...Fine, but don't fool yourself, graciousness won't help you return to the throne.}""",
 
-	INTERMISSION2_IF_AIRE_DEAD = """[color=yellow]Anastasia: - Hey, are there any news from Aire? She's still not back?[/color]
-	[color=aqua]Attendant: - I'm afraid, no, your highness.[/color]
-	[color=yellow]Anastasia: - Ah... I really could use some of your company. I hope you are safe.[/color]""",
+	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: - Hey, are there any news from Aire? She's still not back?}
+	{color=aqua|Attendant: - I'm afraid, no, your highness.}
+	{color=yellow|Anastasia: - Ah... I really could use some of your company. I hope you are safe.}""",
 
-	INTERMISSION2_IF_AIRE_ALIVE = """[color=yellow]Anastasia: - Do you think I'm wrong demanding something like that?[/color]
-	[color=aqua]Aire: - I'm sorry, I'm not in a position to judge you, your highness.[/color]
-	[color=yellow]Anastasia: - Aire, please.[/color]
-	[color=aqua]Aire: - I'm just your tool, you can't be wrong for me.[/color]
+	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: - Do you think I'm wrong demanding something like that?}
+	{color=aqua|Aire: - I'm sorry, I'm not in a position to judge you, your highness.}
+	{color=yellow|Anastasia: - Aire, please.}
+	{color=aqua|Aire: - I'm just your tool, you can't be wrong for me.}
 	Noticing the princess's angry stare Aire informally adds.
-	[color=aqua]Aire: - But, I guess, I prefer to be able to return home if I were in their place.[/color]""",
+	{color=aqua|Aire: - But, I guess, I prefer to be able to return home if I were in their place.}""",
 
-	INTERMISSION2_IF_AIRE_RAPED1 = """[color=yellow]Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked pretty sad at the time. Did something bad happen?[/color]
+	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked pretty sad at the time. Did something bad happen?}
 	Princess notices how Aire tenses a bit when hearing the question.
-	[color=aqua]Aire: - ... It's nothing worth mentioning to you.[/color]""",
+	{color=aqua|Aire: - ... It's nothing worth mentioning to you.}""",
 
-	INTERMISSION2_IF_AIRE_RAPED2 = """[color=yellow]Anastasia: - You didn't get injured again, did you?[/color]
-	[color=aqua]Aire: - I'm fine, as long as I can serve you.[/color]
-	[color=yellow]Anastasia: - Uh... I wonder if other elves are usually like this.[/color]""",
+	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|Anastasia: - You didn't get injured again, did you?}
+	{color=aqua|Aire: - I'm fine, as long as I can serve you.}
+	{color=yellow|Anastasia: - Uh... I wonder if other elves are usually like this.}""",
 
-	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """[color=yellow]Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked somewhat upbeat at the time. Did something good happen?[/color]
-	[color=aqua]Aire: - Oh, yes, actually I got into trouble but there was a person who saved me.[/color]""",
+	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked somewhat upbeat at the time. Did something good happen?}
+	{color=aqua|Aire: - Oh, yes, actually I got into trouble but there was a person who saved me.}""",
 
-	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """[color=yellow]Anastasia: - A rescuer? Who was that?[/color]
-	[color=aqua]Aire: - I'm not sure, I believe [his] name was [name]. [He] seemed like a good person.[/color]""",
+	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|Anastasia: - A rescuer? Who was that?}
+	{color=aqua|Aire: - I'm not sure, I believe [his] name was [name]. [He] seemed like a good person.}""",
 
-	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """[color=yellow]Anastasia: - [name]? We should properly reward [him], once this whole mess is over.[/color]
-	[color=aqua]Aire: - Ana, you don't really have to.[/color]
-	[color=yellow]Anastasia: - Don't be stupid, what would I do if you didn't return? You've been my friend for so long after all.[/color]
-	[color=aqua]Aire: - ...[/color]""",
+	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia: - [name]? We should properly reward [him], once this whole mess is over.}
+	{color=aqua|Aire: - Ana, you don't really have to.}
+	{color=yellow|Anastasia: - Don't be stupid, what would I do if you didn't return? You've been my friend for so long after all.}
+	{color=aqua|Aire: - ...}""",
 
 	SIGMUNDOPTION = "- Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.",
 
