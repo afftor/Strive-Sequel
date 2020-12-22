@@ -479,6 +479,7 @@ func LoadGame(filename):
 	#current approach
 	# if input_handler.CurrentScene != null:
 		# input_handler.CurrentScene.queue_free()	
+	gui_controller.mansion.queue_free()
 	if gui_controller.current_screen != null:
 		gui_controller.current_screen.queue_free()
 	input_handler.ChangeScene('mansion');

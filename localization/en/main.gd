@@ -2719,14 +2719,16 @@ var TranslationDict = {
 	FINDFRED_OPTION1 = "Talk",
 	FINDFRED_OPTION2 = "Attack",
 
-	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them. Merc: - Huh? Who the hell are you?",
+	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them.\nMerc: - Huh? Who the hell are you?",
 	FINDFRED_TALK1_QUESTION1 = "I've come with a message, your service is no longer needed.",
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I've lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
 
 	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look. 
-	- Huh, really? Who are you trying to fool here?""",
+- Huh, really? Who are you trying to fool here?""",
+
+	FINDFRED_TALK1_ANSWER1_1 = """- Huh, really? Who are you trying to fool here?""",
 
 	FINDFRED_TALK1_QUESTION5 = "Taking me for an imposter is really unclever.",
 	FINDFRED_TALK1_QUESTION6 = "Hey, I'm being serious here, let's not jump to conclusions.",
@@ -2791,10 +2793,10 @@ var TranslationDict = {
 	You let Fred go on his way and ready to depart.""",
 	
 	FINDFRED_TALK1_ANSWER10 = """Mercs give you a doubtful look and after a couple of phrases the leader speaks.
-	- Alright, 300 gold and you can have him.""",
+- Alright, 300 gold and you can have him.""",
 
 	FINDFRED_BRIBE_TAKEN = """As you pass them the money they prepare to leave.
-	Bandit Leader: - Nice working with you. Just in case someone else shows up, let's not announce our deal.""",
+Bandit Leader: - Nice working with you. Just in case someone else shows up, let's not announce our deal.""",
 
 	FINDFRED_BRIBE_REFUSED = """Bandit Leader: - Well, that's a shame. Then, we can't let you leave, knowing what's been going on here.""",
 
@@ -2808,23 +2810,23 @@ var TranslationDict = {
 	# *Intermission scene - starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
 
 	INTERMISSIONINTRO1 = """{color=aqua|Greg: - You've got your fancy sword. Hope we are even now.}
-	{color=yellow|Demon: - I can't complain, helping you with the teleportation performance has paid off to us.}""",
+{color=yellow|Demon: - I can't complain, helping you with the teleportation performance has paid off to us.}""",
 
 	INTERMISSIONINTRO2 = """{color=aqua|Greg: - Perfect, get lost then. I would prefer us not being seen together, especially by the princess.}
-	{color=yellow|Demon: - Now, don't be so harsh. The cult offered assistance not just for the sake of the artifact. We could do more, you know.}
-	{color=aqua|Greg: - I'm not going to give anything else for your help anymore.}
-	{color=yellow|Demon: - Hmph, this is fine.}""",
+{color=yellow|Demon: - Now, don't be so harsh. The cult offered assistance not just for the sake of the artifact. We could do more, you know.}
+{color=aqua|Greg: - I'm not going to give anything else for your help anymore.}
+{color=yellow|Demon: - Hmph, this is fine.}""",
 
 	INTERMISSIONINTRO3 = "{color=yellow|Demon: - Still, we can get something additional from this. I think I'll stay for a bit.}",
 
 	RETURNTOMYR_IF_FRED = """- So you found him. Nice work, I've already sent him to Duncan with explanations attached.
-	This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
+This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
 
 	RETURNTOMYR_IF_NOT_FRED = """- So you found him and took care of him. Good, I've already sent the note to Duncan.
-	This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
+This should make things easier among us now, until something new comes up. Here, take a tip from me, and report to Duncan next.""",
 
 	RETURNTOMYR = """- So it was him after all, and the artifact was taken away as well...
-	I've actually expected it already. Here, take this report and get it to Duncan, I need some.. adjournment if you excuse me.""",
+I've actually expected it already. Here, take this report and get it to Duncan, I need some.. adjournment if you excuse me.""",
 
 	RETURNTODUNCAN_IF_FRED = """- Good work on finding the culprit, we've taken him to the jail where he will be waiting for his punishment. """,
 	RETURNTODUNCAN_IF_FRED_QUESTION1 = "Tell what you learned",
