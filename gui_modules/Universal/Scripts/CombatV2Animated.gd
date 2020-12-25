@@ -1283,6 +1283,29 @@ func CalculateTargets(skill, target, finale = false):
 				var tmp = array[globals.rng.randi_range(0, array.size()-1)]
 				array.clear()
 				array = [tmp]
+		'x_random':
+			for j in range(1, 13):
+				if j in range(1,7) && targetgroup == 'player':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif j in range(7, 13) && targetgroup == 'enemy':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif targetgroup == 'full':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+			while array.size() > skill.number_rnd_targets:  
+				var tmp = globals.rng.randi_range(0, array.size() - 1)
+				array.remove(tmp)
 	if (!finale) and skill.tags.has('random_target'):
 		array.clear()
 		for pos in allowedtargets.enemy + allowedtargets.ally:

@@ -578,6 +578,9 @@ func generate_simple_fighter(data):
 #		for e in data.effects:
 #			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[e])
 #			apply_effect(effects_pool.add_effect(eff))
+	if data.has('traits'):
+		for tr in data.traits:
+			add_trait(tr)
 
 func setup_baby(mother, father):
 	var temp_race

@@ -9,6 +9,14 @@ var traits = {
 		icon = null,
 		effects = ['test_combat_start'],
 	}, 
+	absorb_atk_trait = {
+		code = 'absorb_atk_trait',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_curseatk'],
+	}, 
 	
 	'master' : {#150% effect from social skills
 		code = 'master',
