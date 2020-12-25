@@ -2119,6 +2119,17 @@ var effect_table = {
 		tags = ['debuff', 'disarm'],
 		buffs = ['b_disarm'],
 	},
+	e_s_disarm3 = {#duration version
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		tick_event = [variables.TR_TURN_F],
+		duration = 'parent',
+		stack = 1,
+		name = 'disarm',
+		tags = ['negative', 'disarm'], #or disarm only
+		buffs = ['b_disarm'],
+	},
 	e_s_silence = {
 		type = 'temp_s',
 		target = 'target',
@@ -2332,7 +2343,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent_arg',
-		tags = ['affliction'],
+		tags = ['affliction', 'negative', 'debuff'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_poison'],
 		atomic = [],
@@ -2380,6 +2391,78 @@ var effect_table = {
 				atomic = ['a_bleed'],
 			}
 		]
+	},
+	e_s_shred = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'shred',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'armor', value = -30}],
+		buffs = ['b_shred'],
+	},
+	e_s_growl = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'growl',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = -20},
+			{type = 'stat_add', stat = 'evasion', value = -15},
+			],
+		buffs = ['b_growl'],
+	},
+	e_tr_curseatk = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		reset = [],
+		req_skill = true,
+		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
+		atomic = [],
+		buffs = ['tr_curseatk'],
+		sub_effects = ['e_s_curseatk']
+	},
+	e_s_curseatk = {
+		type = 'temp_s',
+		target = 'caster',
+		name = 'curseatk',
+		stack = 0,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 2,
+		tags = ['affliction', 'negative', 'debuff'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'atk', value = -0.25}],
+		buffs = ['b_curseatk'],
+	},
+	e_s_mward = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'magicward',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 4,
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+			{type = 'stat_add', stat = 'mdef', value = 40},
+			],
+		buffs = ['b_magicward'],
 	},
 	#items
 	e_i_shackles = {
@@ -3208,6 +3291,35 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Sedate.png", 
 		description = "Confusion",
 		t_name = 'powerpot',
+		combat_only = true
+	},
+	b_shred = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Armor reduced",
+		t_name = 'shred',
+		combat_only = true
+	},
+	b_growl = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Speed and evasion decreased",
+		t_name = 'shrgrowled',
+		combat_only = true
+	},
+	b_curseatk = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Attack decreased",
+		t_name = 'curseatk',
+		combat_only = true
+	},
+	tr_curseatk = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Attacking this target cause atk decreased",
+		t_name = 'curseatk_src',
+	},
+	b_magicward = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Attack and mdef increased",
+		t_name = 'magicward',
 		combat_only = true
 	},
 };
