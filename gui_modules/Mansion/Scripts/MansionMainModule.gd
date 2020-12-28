@@ -671,7 +671,7 @@ func test_mode():
 			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("chest_adv_metal", {ArmorBaseHeavy = 'mithril', ArmorTrim = 'wood', ArmorEnc = 'wood'})
+			globals.CreateGearItem("chest_adv_leather", {ArmorBaseMed = 'leather', ArmorTrim = 'wood', ArmorEnc = 'ice_material'})
 		)
 		
 		

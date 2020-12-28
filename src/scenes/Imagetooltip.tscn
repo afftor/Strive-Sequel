@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=3]
-[ext_resource path="res://assets/images/iconsitems/item_vege.png" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=6]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
-
-
 
 [node name="tooltip" type="Panel"]
 show_behind_parent = true
@@ -34,13 +31,12 @@ stretch_mode = 7
 [node name="Image" type="TextureRect" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -296.0
-margin_top = 7.99997
-margin_right = -146.0
-margin_bottom = 158.0
+margin_left = -371.526
+margin_top = 8.0
+margin_right = -71.5261
+margin_bottom = 308.0
 rect_min_size = Vector2( 150, 150 )
 mouse_filter = 2
-texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
