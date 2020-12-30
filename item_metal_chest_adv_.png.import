@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BootsBasicLeather.png-52359d155ab3d082b2c5b25ff974f4c4.stex"
+path="res://.import/item_metal_chest_adv_.png-af8cb9bb1a9ec9e0ce54ba5a5572324d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/iconsgear/BootsBasicLeather.png"
-dest_files=[ "res://.import/BootsBasicLeather.png-52359d155ab3d082b2c5b25ff974f4c4.stex" ]
+source_file="res://item_metal_chest_adv_.png"
+dest_files=[ "res://.import/item_metal_chest_adv_.png-af8cb9bb1a9ec9e0ce54ba5a5572324d.stex" ]
 
 [params]
 
@@ -24,11 +24,11 @@ flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
