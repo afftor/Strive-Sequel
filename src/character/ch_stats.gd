@@ -97,24 +97,28 @@ func custom_stats_get():
 	if res.has('resists'):
 		var tres = res.resists
 		for r in variables.resists_list:
+			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 		res.resists = tres
 	if res.has('resist_damage'):
 		var tres = res.resist_damage
 		for r in variables.resists_damage_list:
+			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 		res.resist_damage = tres
 	if res.has('status_resists'):
 		var tres = res.status_resists
 		for r in variables.status_list:
+			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
 		res.status_resists = tres
 	if res.has('damage_mods'):
 		var tres = res.damage_mods
 		for r in variables.damage_mods_list:
+			if !tres.has(r): tres[r] = 1.0
 			if bonuses.has('damage_mod_' + r + '_add'): tres[r] += bonuses['damage_mod_' + r + '_add']
 			if bonuses.has('damage_mod_' + r + '_mul'): tres[r] *= bonuses['damage_mod_' + r + '_mul']
 		res.damage_mods = tres
