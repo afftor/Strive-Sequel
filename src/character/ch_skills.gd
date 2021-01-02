@@ -38,6 +38,13 @@ func get_damage_mod(skill:Dictionary):
 	
 	return res
 
+func get_value_damage_mod(skill_val:Dictionary):
+	#stub. needs filling
+	var damage_mods = parent.get_stat('damage_mods')
+	var res = 1.0
+	if damage_mods.has(skill_val.damage_type): res *= damage_mods[skill_val.damage_type]
+	return res
+
 func learn_skill(skill):
 	if !social_skills.has(skill):
 		social_skills.append(skill)

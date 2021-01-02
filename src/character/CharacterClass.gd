@@ -111,6 +111,9 @@ func get_weapon_range():
 func get_damage_mod(skill:Dictionary):
 	return skills.get_damage_mod(skill)
 
+func get_value_damage_mod(skill_v:Dictionary):
+	return skills.get_value_damage_mod(skill_v)
+
 func remove_negative_sex_trait(code):
 	statlist.remove_negative_sex_trait(code)
 
