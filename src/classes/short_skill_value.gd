@@ -35,7 +35,7 @@ func apply_atomic(tmp):
 			value = tmp.value
 
 func resolve_value(check_m):
-	var dmgmod = parent.caster.get_damage_mod(parent.template)
+	var dmgmod = parent.caster.get_damage_mod(parent.template) * parent.caster.get_value_damage_mod(template)
 	var endvalue
 	var atk
 	var stat

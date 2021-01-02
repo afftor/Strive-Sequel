@@ -588,7 +588,7 @@ func _ready():
 		statdata['resist_'+i] = {
 				code = "resist_"+i,
 			}
-	for i in ['all', 'melee', 'ranged', 'skill', 'spell']:
+	for i in variables.damage_mods_list:
 		statdata['damage_mod_'+i] = {
 				code = "damage_mod_"+i,
 				percent = true,
