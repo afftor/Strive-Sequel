@@ -499,6 +499,12 @@ var statdata = {
 		percent = true,
 		baseicon = 'food_love',
 	},
+	xpreward = {
+		code = 'xpreward',
+		name = '',
+		descript = '',
+		baseicon = 'food_love',
+	},
 	
 	damagemod = { #possibly obsolete
 		code = 'damagemod',

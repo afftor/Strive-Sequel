@@ -89,7 +89,16 @@ func createfromskill(s_code):
 func process_check(check:Array):
 	var op1 = check[0]
 	var op2 = check[2]
-	if typeof(op1) == TYPE_STRING:
+	if op1 == 'damage_type':
+		if check[1] == 'eq':
+			for val in value:
+				if value.source == op2: return true
+			return false
+		elif check[1] == 'neq':
+			for val in value:
+				if value.source == op2: return false
+			return true
+	elif typeof(op1) == TYPE_STRING:
 		op1 = get(op1)
 #	if typeof(op2) == TYPE_STRING && check[1] != 'has':
 #		op2 = get(op2)

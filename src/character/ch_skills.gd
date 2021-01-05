@@ -42,7 +42,7 @@ func get_value_damage_mod(skill_val:Dictionary):
 	#stub. needs filling
 	var damage_mods = parent.get_stat('damage_mods')
 	var res = 1.0
-	if damage_mods.has(skill_val.damage_type): res *= damage_mods[skill_val.damage_type]
+	if damage_mods.has(skill_val.source): res *= damage_mods[skill_val.source]
 	return res
 
 func learn_skill(skill):

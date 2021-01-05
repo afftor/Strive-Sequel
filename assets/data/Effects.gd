@@ -2428,7 +2428,10 @@ var effect_table = {
 		trigger = [variables.TR_POST_TARG],
 		reset = [],
 		req_skill = true,
-		conditions = [{type = 'skill', value = ['tags', 'has', 'damage']}],
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_range', 'eq', 'melee']},
+			],
 		atomic = [],
 		buffs = ['tr_curseatk'],
 		sub_effects = ['e_s_curseatk']
