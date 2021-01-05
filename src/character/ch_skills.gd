@@ -35,6 +35,7 @@ func get_damage_mod(skill:Dictionary):
 	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']
 	if skill.ability_type == 'spell' and damage_mods.has('spell'): res *= damage_mods['spell']
 	if skill.tags.has('aoe') and damage_mods.has('aoe'): res *= damage_mods['aoe'] 
+	if skill.tags.has('heal') and damage_mods.has('heal'): res *= damage_mods['heal'] 
 	
 	return res
 

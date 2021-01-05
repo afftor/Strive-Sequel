@@ -1046,9 +1046,11 @@ func deal_damage(value, source = 'normal'):
 		return heal(-value)
 
 func heal(value):
-	if value < 0: return deal_damage(value)
 	var tmp = hp
+#	if get_stat('resist_damage').has('heal'):
+#		value *= get_stat('resist_damage').heal
 	value = round(value)
+	if value < 0: return deal_damage(value)
 	self.hp += value
 	tmp = hp - tmp
 	process_event(variables.TR_HEAL)
