@@ -3,7 +3,7 @@ extends Panel
 var parentnode
 var shutoff = false
 var prevnode
-onready var iconnode = $Image
+onready var iconnode = $IconFrame/Image
 onready var textnode = $RichTextLabel
 
 var currentdata
@@ -84,12 +84,13 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	self.set_global_position(pos)
 	
 	$RichTextLabel.rect_size.y = 125
-	rect_size.y = 250
+	rect_size.y = 362
 	
 	yield(get_tree(), 'idle_frame')
 	
-	rect_size.y = max(250, $RichTextLabel.get_v_scroll().get_max() + 220)
+	rect_size.y = max(362, $RichTextLabel.get_v_scroll().get_max() + 300)
 	$RichTextLabel.rect_size.y = rect_size.y - 100
+	$RichTextLabel.rect_position.y = 250
 	
 	
 	if get_rect().end.x > screen.size.x:
@@ -148,7 +149,7 @@ func gear_detailed_tooltip(data, item = null):
 	var text = '[center]{color=k_yellow|' + data.item.name +'}[/center]'
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += "\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		# text += '\n' + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]

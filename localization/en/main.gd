@@ -2336,6 +2336,7 @@ var TranslationDict = {
 	LICHENCWINAIRE = "As you defeat the Lich and take his skull, the elf girl observes you cautiously.",
 	LICHENCWINELSE = "You take the Lich’s skull but can’t find anything else worthwhile.",
 	LICHAIRETALK1 = "You strike down the Lich and take its skull. The elf girl observes you with a mix of relief and caution. \n\n — I... Thank you for the help. My name is Aire. My master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
+	LICHAIRETALK1_DEAL_WITH_LICH = "The elf girl observes you with a mix of relief and caution. \n\n — I... Thank you for the help. My name is Aire. My master has sent me here to deal with the undead who disturbed nearby peasants, but it didn't go well.",
 	LICHAIRETALK1REPLY1 = "What kind of Master would send an elf fighter on their own around here?",
 	LICHAIRETALK1REPLY2 = "I'm glad you are safe, take care",
 	LICHAIRETALK1REPLY3 = "Don't you think you should reward me for your rescue?",
@@ -2630,50 +2631,51 @@ var TranslationDict = {
 	# Aliron elections finish
 
 	ALIRONELECTIONSFINISH_LINE1 = """Few hours later an emergency meeting was assembled by four major guilds. The leaders and landlords entered a fierce discussion on the current situation.
-	{color=aqua|Duncan: This is ridiculous. Now every peasant will know there's a living princess. HOW did a large rebel group got into the city on such a day? Your job is to specifically prevent such things, Myr. Is this some sort of sabotage?}
-	{color=yellow|Myr: How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family. And yet we have a grown up princess marching rebels in our direction now.}""",
+{color=aqua|Duncan: This is ridiculous. Now every peasant will know there's a living princess. HOW did a large rebel group got into the city on such a day? Your job is to specifically prevent such things, Myr. Is this some sort of sabotage?}
+{color=yellow|Myr: How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family. And yet we have a grown up princess marching rebels in our direction now.}""",
 
 	ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund: Are ya sure she's actually da princess? Might be an imposter. Pretty common fo' dwarven disputes.} 
-	{color=yellow|Amelia: We are almost sure she's the real deal. Her appearance is correlating to the youngest child, and her aura is undeniably of the royal bloodline. I'd be more worried if the empire is involved in it.}""",
+{color=yellow|Amelia: We are almost sure she's the real deal. Her appearance is correlating to the youngest child, and her aura is undeniably of the royal bloodline. I'd be more worried if the empire is involved in it.}""",
 
 	ALIRONELECTIONSFINISH_LINE3 = """{color=aqua|Duncan: Our scouts have been reporting increased activity from the rebels in past months. Rebel forces and sympathizers make their advancement as we speak. I'm forced to declare this as a state of emergency.}
 
-	The room filled with a hubbub. 
+The room filled with a hubbub. 
+
 {color=yellow|Sigmund: I agree. We can't afford to lose any of da vital points or trade routes.}""",
 
 	ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: Mhph, so you gonna declare yourself a leader now? Given your credibility after the appearance of princess too.} 
-	{color=aqua|Duncan: I don't expect you to comply. And I won't need your help to deal with them. And once we find out the betrayer, they will not get off the hook. You better prepare for it.} 
-	{color=yellow|Myr: We?! Why how would Mage Guild benefit from this?} 
-	{color=aqua|Duncan: Regardless, we will find the culprit and all accomplices will be coped with surely. Be it you, or Servants, or even one of ours.}""",
+{color=aqua|Duncan: I don't expect you to comply. And I won't need your help to deal with them. And once we find out the betrayer, they will not get off the hook. You better prepare for it.} 
+{color=yellow|Myr: We?! Why how would Mage Guild benefit from this?} 
+{color=aqua|Duncan: Regardless, we will find the culprit and all accomplices will be coped with surely. Be it you, or Servants, or even one of ours.}""",
 
 	ALIRONELECTIONSFINISH_LINE5 = """Once the meeting was over, you approach Amelia to consult on what's happening now.
-	- Oh, this is horrible. Now Fighters will take the rulership over everyone until the riot is dealt with. Bad news, but the election is naturally put on hold. Good news, so is your debt. Looks like we have been benched. Me especially.""",
+- Oh, this is horrible. Now Fighters will take the rulership over everyone until the riot is dealt with. Bad news, but the election is naturally put on hold. Good news, so is your debt. Looks like we have been benched. Me especially.""",
 
 	ALIRONELECTIONSFINISH_QUESTION1 = "Why can't you do anything?",
 	ALIRONELECTIONSFINISH_QUESTION2 = "It seemed to me the guilds were fighting each other.",
 
 	ALIRONELECTIONSFINISH_ANSWER1 = """- Servants never had any connections to warfare. We don't train soldiers, possess magic or produce supplies. 
-	I guess we are here to stick around 'till it's over. And hope there will be something left after it.
-	You know, Duncan is going to take weeks to find out what's really going on, and until then the air around here will be dense. 
-	You could obviously jump into the fight, but I feel like we would do better, if we get possible suspicions out of hand. What do you think?""",
+I guess we are here to stick around 'till it's over. And hope there will be something left after it.
+- You know, Duncan is going to take weeks to find out what's really going on, and until then the air around here will be dense. 
+You could obviously jump into the fight, but I feel like we would do better, if we get possible suspicions out of hand. What do you think?""",
 
 	ALIRONELECTIONSFINISH_ANSWER2 = """- Sure, that's what we always do. This one is pretty nasty though, as there's been a betrayal from someone for the rebel side.
-	Mages Guild is in charge of any large scale teleportations, so this shouldn't have been possible unless they were sabotaged. 
-	You know, Duncan is going to take weeks to find out what's really going on, and until then the air around here will be dense. 
-	You could obviously jump into the fight, but I feel like we would do better, if we get possible suspicions out of hand. What do you think?""",
+Mages Guild is in charge of any large scale teleportations, so this shouldn't have been possible unless they were sabotaged. 
+- You know, Duncan is going to take weeks to find out what's really going on, and until then the air around here will be dense. 
+You could obviously jump into the fight, but I feel like we would do better, if we get possible suspicions out of hand. What do you think?""",
 
 	ALIRONELECTIONSFINISH_QUESTION3 = "Actually, I was about to offer it to Duncan myself.",
 	ALIRONELECTIONSFINISH_QUESTION4 = "That sounds like something a perpetrator would say to use me for their benefit.",
 	ALIRONELECTIONSFINISH_QUESTION5 = "I'm not sure, what if I get in the way?",
 
 	ALIRONELECTIONSFINISH_ANSWER3 = """- Quite enthusiastic, aren't you? This is all the better, just don't act prematurely.
-	- Anyway, take this permission you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
+- Anyway, take this permission you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER4 = """- Hah, this is why I've chosen you. Well, since you realize that, if that was the case, we won't be able to fool you, right? 
-	- Anyway, take this permission you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
+- Anyway, take this permission you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
 
 	ALIRONELECTIONSFINISH_ANSWER5 = """- Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you. 
-	- Take this permission. With this you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
+- Take this permission. With this you'll be able to ask things around. I suggest going for the mages' guild at a start. They should already know something about how our princess got in.""",
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
 
@@ -2851,43 +2853,43 @@ I've actually expected it already. Here, take this report and get it to Duncan, 
 	#Intermission scene 2
 
 	INTERMISSION2INTRO1 = """The rebel army stood in front of a small settlement recently turned into a battlefield.
-	{color=yellow|Anastasia: - Uncle! Why didn't you let me talk to them?!}
-	{color=aqua|Greg: - Those were guilds' trained soldiers.}
-	{color=yellow|Anastasia: - Yet, they asked to see me in person. We could've avoided these destructions.}""",
+{color=yellow|Anastasia: - Uncle! Why didn't you let me talk to them?!}
+{color=aqua|Greg: - Those were guilds' trained soldiers.}
+{color=yellow|Anastasia: - Yet, they asked to see me in person. We could've avoided these destructions.}""",
 
 	INTERMISSION2INTRO2 = """Due to surrounding people Greg had to answer, despite his unwillingness.
-	{color=aqua|Greg: - You are too naive, Princess. They could be assassins sent simply for your head. This is how our enemies work.}
-	{color=yellow|Anastasia: - ... Yet, this is not how I want this to be. We must avoid harming innocents and needless losses.""",
+{color=aqua|Greg: - You are too naive, Princess. They could be assassins sent simply for your head. This is how our enemies work.}
+{color=yellow|Anastasia: - ... Yet, this is not how I want this to be. We must avoid harming innocents and needless losses.}""",
 
 	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: - I've decided, release the survivors so they can return home.}
-	{color=aqua|Greg: - What!?}
-	{color=yellow|Anastasia: - This is the minimum we can do now to show our graciousness.}
-	{color=aqua|Greg: - ...Fine, but don't fool yourself, graciousness won't help you return to the throne.}""",
+{color=aqua|Greg: - What!?}
+{color=yellow|Anastasia: - This is the minimum we can do now to show our graciousness.}
+{color=aqua|Greg: - ...Fine, but don't fool yourself, graciousness won't help you return to the throne.}""",
 
 	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: - Hey, are there any news from Aire? She's still not back?}
-	{color=aqua|Attendant: - I'm afraid, no, your highness.}
-	{color=yellow|Anastasia: - Ah... I really could use some of your company. I hope you are safe.}""",
+{color=aqua|Attendant: - I'm afraid, no, your highness.}
+{color=yellow|Anastasia: - Ah... I really could use some of your company. I hope you are safe.}""",
 
 	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: - Do you think I'm wrong demanding something like that?}
-	{color=aqua|Aire: - I'm sorry, I'm not in a position to judge you, your highness.}
-	{color=yellow|Anastasia: - Aire, please.}
-	{color=aqua|Aire: - I'm just your tool, you can't be wrong for me.}
-	Noticing the princess's angry stare Aire informally adds.
-	{color=aqua|Aire: - But, I guess, I prefer to be able to return home if I were in their place.}""",
+{color=aqua|Aire: - I'm sorry, I'm not in a position to judge you, your highness.}
+{color=yellow|Anastasia: - Aire, please.}
+{color=aqua|Aire: - I'm just your tool, you can't be wrong for me.}
+Noticing the princess's angry stare Aire informally adds.
+{color=aqua|Aire: - But, I guess, I prefer to be able to return home if I were in their place.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked pretty sad at the time. Did something bad happen?}
-	Princess notices how Aire tenses a bit when hearing the question.
-	{color=aqua|Aire: - ... It's nothing worth mentioning to you.}""",
+Princess notices how Aire tenses a bit when hearing the question.
+{color=aqua|Aire: - ... It's nothing worth mentioning to you.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|Anastasia: - You didn't get injured again, did you?}
-	{color=aqua|Aire: - I'm fine, as long as I can serve you.}
-	{color=yellow|Anastasia: - Uh... I wonder if other elves are usually like this.}""",
+{color=aqua|Aire: - I'm fine, as long as I can serve you.}
+{color=yellow|Anastasia: - Uh... I wonder if other elves are usually like this.}""",
 
 	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how was your last assignment? You looked somewhat upbeat at the time. Did something good happen?}
-	{color=aqua|Aire: - Oh, yes, actually I got into trouble but there was a person who saved me.}""",
+{color=aqua|Aire: - Oh, yes, actually I got into trouble but there was a person who saved me.}""",
 
 	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|Anastasia: - A rescuer? Who was that?}
-	{color=aqua|Aire: - I'm not sure, I believe [his] name was [name]. [He] seemed like a good person.}""",
+{color=aqua|Aire: - I'm not sure, I believe [his] name was [name]. [He] seemed like a good person.}""",
 
 	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia: - [name]? We should properly reward [him], once this whole mess is over.}
 	{color=aqua|Aire: - Ana, you don't really have to.}

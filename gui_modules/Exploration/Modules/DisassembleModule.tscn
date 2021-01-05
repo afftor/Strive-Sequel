@@ -26,8 +26,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_pressed.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=25]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 36
 use_filter = true

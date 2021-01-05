@@ -72,7 +72,9 @@ var data = {
 			{text = "ALIRONELECTIONSFINISH_ANSWER1", reqs = []}
 		],
 		options = [
-			{code = "after_election_line5", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
+			{code = "after_election_answer3", text = "ALIRONELECTIONSFINISH_QUESTION3", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+			{code = "after_election_answer4", text = "ALIRONELECTIONSFINISH_QUESTION4", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
+			{code = "after_election_answer5", text = "ALIRONELECTIONSFINISH_QUESTION5", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 		]
 	},
 	

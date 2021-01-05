@@ -341,7 +341,8 @@ var data = {
 		character = 'aire',
 		tags = ['dialogue_scene'],
 		text = [
-		{text = "LICHAIRETALK1", reqs = []},
+		{text = "LICHAIRETALK1", reqs = [{type = 'decision', value = 'deal_with_lich', check = false}]},
+		{text = "LICHAIRETALK1_DEAL_WITH_LICH", reqs = [{type = 'decision', value = 'deal_with_lich', check = true}]},
 		],
 		options = [
 		{code = 'lich_aire_talk2', text = "LICHAIRETALK1REPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},

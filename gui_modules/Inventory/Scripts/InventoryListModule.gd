@@ -69,7 +69,7 @@ func buildinventory():
 		var type = get_item_category(i)
 		if type == "tattoo":
 			continue
-		globals.connectitemtooltip(newnode, i)
+		globals.connectitemtooltip_v2(newnode, i)
 		newnode.get_node("Name").text = i.name
 		newnode.get_node("Type").texture = get_item_type_icon(i)
 		newnode.set_meta('type', type)
