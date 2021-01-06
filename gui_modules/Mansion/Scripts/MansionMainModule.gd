@@ -642,7 +642,7 @@ func test_mode():
 
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 2000
+			ResourceScripts.game_res.materials[i] = 50
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))

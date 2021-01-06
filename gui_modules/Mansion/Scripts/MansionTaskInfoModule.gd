@@ -97,6 +97,7 @@ func show_resources_info():
 				newtask.hide()
 			else:
 				newtask.show()
+				newtask.get_node("NoResources").visible = task.messages.has('noresources')
 				newtask.get_node("ProgressBar").max_value = ResourceScripts.game_res.craftinglists[task_name][0].workunits_needed
 				newtask.get_node("ProgressBar").value = ResourceScripts.game_res.craftinglists[task_name][0].workunits
 				var recipe = Items.recipes[ResourceScripts.game_res.craftinglists[task_name][0].code]
