@@ -1066,23 +1066,7 @@ func check_events(action):
 var previous_guild = ''
 
 
-func enter_guild(guild):
-	self.current_pressed_area_btn = null
-	if (
-		previous_guild == guild.name
-		&& get_tree().get_root().get_node_or_null("dialogue")
-		&& ! get_tree().get_root().get_node("dialogue").is_visible()
-	):
-		previous_guild = ''
-		update_guild_buttons('')
-		open_city(selected_location)
-		return
-	previous_guild = guild.name
-	update_guild_buttons(guild.name)
-	active_area = ResourceScripts.game_world.areas[guild.area]
-	active_faction = guild
-	market_mode = "guild_slaves"
-	input_handler.active_faction = guild
+func update_guild_actions(guild):
 	input_handler.ClearContainer(AreaActions)
 	var newbutton
 	if active_faction.has('events'):
@@ -1145,6 +1129,26 @@ func enter_guild(guild):
 	newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
 	newbutton.get_node("Label").text = "Leave"
 	newbutton.connect("pressed", self, "open_city", [selected_location])
+
+
+func enter_guild(guild):
+	self.current_pressed_area_btn = null
+	if (
+		previous_guild == guild.name
+		&& get_tree().get_root().get_node_or_null("dialogue")
+		&& ! get_tree().get_root().get_node("dialogue").is_visible()
+	):
+		previous_guild = ''
+		update_guild_buttons('')
+		open_city(selected_location)
+		return
+	previous_guild = guild.name
+	update_guild_buttons(guild.name)
+	active_area = ResourceScripts.game_world.areas[guild.area]
+	active_faction = guild
+	market_mode = "guild_slaves"
+	input_handler.active_faction = guild
+	update_guild_actions(guild)
 
 	# Visuals
 	$GuildBG.texture = images.backgrounds[guild.background]
@@ -1393,6 +1397,7 @@ func unlock_upgrade(upgrade, level):
 		var value = get_indexed('active_faction:' + i.code)
 		value = input_handler.math(i.operant, value, i.value)
 		set_indexed('active_faction:' + i.code, value)
+	update_guild_actions(active_faction)
 	faction_upgrade(true, current_pressed_area_btn, active_faction)
 
 
