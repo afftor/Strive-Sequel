@@ -1,0 +1,304 @@
+TODO
+- mark removed stats
+- mark requests for behavior change
+- list stats to add
+- list stats to implement and add
+
+'base_exp':
+	 add
+'growth_factor':
+	 add
+'physics_factor':
+	 add
+'wits_factor':
+	 add
+'charm_factor':
+	 add
+'sexuals_factor':
+	 add
+'magic_factor':
+	 add
+'tame_factor':
+	 add
+'timid_factor':
+	 add
+'authority':
+	 add
+'loyalty':
+	 add
+'submission':
+	 add
+'physics':
+	 add
+'wits':
+	 add
+'charm':
+	 add
+'sexuals':
+	 add
+'obedience':
+	 add
+'loyaltyObedience':
+	 add
+'submissionObedience':
+	 add
+'fear':
+	 add
+'lust':
+	 add
+'loyal':
+	 add
+'loyalty_gain_mod':
+	 add
+'lusttick':
+	 add_part
+'food_consumption':
+	 add
+'food_hate':
+	 add
+'food_love':
+	 add
+'hp':
+	 add
+'hpmax':
+	 add
+'hpmaxmod':
+	 add
+	 percent conversion
+'hpfactor':
+	 add
+	 percent conversion
+'mp':
+	 add
+'mpmax':
+	 add
+'mpmaxmod':
+	 add
+	 percent conversion
+'hitrate':
+	 add
+'evasion':
+	 add
+'speed':
+	 add
+'energy':
+	 add
+'fatigue':
+	 add
+'exhaustion':
+	 add
+'atk':
+	 add
+'matk':
+	 add
+'armor':
+	 add
+'mdef':
+	 add
+'armorpenetration':
+	 add
+'critchance':
+	 add
+'critmod':
+	 add
+	 percent conversion
+'physics_bonus':
+	 add
+'wits_bonus':
+	 add
+'charm_bonus':
+	 add
+'sexuals_bonus':
+	 add
+'productivity':
+	 add
+	 percent conversion
+'mod_collect':
+	 add_part
+	 percent conversion
+'mod_build':
+	 add_part
+	 percent conversion
+'mod_hunt':
+	 add_part
+	 percent conversion
+'mod_fish':
+	 add_part
+	 percent conversion
+'mod_cook':
+	 add_part
+	 percent conversion
+'mod_smith':
+	 add_part
+	 percent conversion
+'mod_tailor':
+	 add_part
+	 percent conversion
+'mod_alchemy':
+	 add_part
+	 percent conversion
+'mod_farm':
+	 add_part
+	 percent conversion
+'mod_pros':
+	 add_part
+	 percent conversion
+'task_crit_chance':
+	 add
+	 percent conversion
+'task_efficiency_tool':
+	 add
+	 percent conversion
+'consent':
+	 add
+	 percent conversion
+'xpreward':
+	 add
+'damagemod':
+	 add
+	 percent conversion
+'obDrainReduction':
+	 mul
+	 percent conversion
+'obDrainIncrease':
+	 add
+	 percent conversion
+'authority_mod':
+	 add_part
+'resists':
+	 add
+'status_resists':
+	 add
+'resist_damage':
+	 add
+'damage_mods':
+	 add
+'resist_normal':
+	 add
+'resist_fire':
+	 add
+'resist_earth':
+	 add
+'resist_air':
+	 add
+'resist_water':
+	 add
+'resist_light':
+	 add
+'resist_dark':
+	 add
+'resist_mind':
+	 add
+'resist_all':
+	 add
+'resist_stun':
+	 add
+'resist_status_stun':
+	 add
+	 same stat as prev
+'resist_freeze':
+	 add
+'resist_status_freeze':
+	 add
+	 same stat as prev
+'resist_disarm':
+	 add
+'resist_status_disarm':
+	 add
+	 same stat as prev
+'resist_silence':
+	 add
+'resist_status_silence':
+	 add
+	 same stat as prev
+'resist_burn':
+	 add
+'resist_status_burn':
+	 add
+	 same stat as prev
+'resist_confuse':
+	 add
+'resist_status_confuse':
+	 add
+	 same stat as prev
+'resist_bleed':
+	 add
+'resist_status_bleed':
+	 add
+	 same stat as prev
+'resist_poison':
+	 add
+'resist_status_poison':
+	 add
+	 same stat as prev
+'resist_melee':
+	 add
+'resist_damage_melee':
+	 add
+	 same stat as prev
+'resist_ranged':
+	 add
+'resist_damage_ranged':
+	 add
+	 same stat as prev
+'resist_aoe':
+	 add
+'resist_damage_aoe':
+	 add
+	 same stat as prev
+'resist_heal':
+	 add
+'resist_damage_heal':
+	 add
+	 same stat as prev
+'damage_mod_all':
+	 add
+	 percent conversion
+'damage_mod_melee':
+	 add
+	 percent conversion
+'damage_mod_ranged':
+	 add
+	 percent conversion
+'damage_mod_normal':
+	 add
+	 percent conversion
+'damage_mod_fire':
+	 add
+	 percent conversion
+'damage_mod_earth':
+	 add
+	 percent conversion
+'damage_mod_air':
+	 add
+	 percent conversion
+'damage_mod_water':
+	 add
+	 percent conversion
+'damage_mod_light':
+	 add
+	 percent conversion
+'damage_mod_dark':
+	 add
+	 percent conversion
+'damage_mod_mind':
+	 add
+	 percent conversion
+'damage_mod_physic':
+	 add
+	 percent conversion
+'damage_mod_spell':
+	 add
+	 percent conversion
+'damage_mod_skill':
+	 add
+	 percent conversion
+'damage_mod_aoe':
+	 add
+	 percent conversion
+'damage_mod_true':
+	 add
+	 percent conversion
+'damage_mod_heal':
+	 add
+	 percent conversion 
