@@ -183,7 +183,7 @@ var guild_upgrades = {
 	workers_disassamby_upgrade = {
 		code = 'workers_disassamby_upgrade',
 		descript = '',
-		name = 'Disassambe',
+		name = 'Disassamble',
 		cost = [100,500,1000,2000],
 		reqs = [{type = "current_guild", check = true, value = "workers"}],
 		maxlevel = 4,

@@ -1751,7 +1751,10 @@ func update_sell_list():
 		)
 		newbutton.get_node("name").text = item.name
 		item.set_icon(newbutton.get_node("icon"))  #.texture = item.get_icon()
-		newbutton.get_node("price").text = str(item.calculateprice() / 2)
+		if is_half_price:
+			newbutton.get_node("price").text = str(item.calculateprice() / 2)
+		else:
+			newbutton.get_node("price").text = str(item.calculateprice())
 		newbutton.get_node("amount").visible = true
 		newbutton.get_node("amount").text = str(item.amount)
 		newbutton.set_meta('type', type)
@@ -1891,6 +1894,8 @@ func item_puchase_confirm(value):
 		update_buy_list()
 
 
+var is_half_price : bool = true
+
 func item_sell(item):
 	for btn in $AreaShop/BuyBlock/ScrollContainer/VBoxContainer.get_children():
 		btn.pressed = false
@@ -1903,10 +1908,16 @@ func item_sell(item):
 	if item.price:
 		price = item.price  # / 2
 	else:
-		price = item.calculateprice() / 2
+		if is_half_price:
+			price = item.calculateprice() / 2
+		else:
+			price = item.calculateprice()
 	var sellingamount
 	if ! Items.materiallist.has(item.code):
-		price = item.calculateprice() / 2
+		if is_half_price:
+			price = item.calculateprice() / 2
+		else:
+			price = item.calculateprice()
 		sellingamount = item.amount
 	else:
 		sellingamount = ResourceScripts.game_res.materials[item.code]
@@ -1928,11 +1939,17 @@ func item_sell_confirm(value):
 	if purchase_item.price:
 		price = purchase_item.price  # / 2
 	else:
-		price = purchase_item.calculateprice() / 2
+		if is_half_price:
+			price = purchase_item.calculateprice() / 2
+		else:
+			price = purchase_item.calculate_price()
 	if Items.materiallist.has(purchase_item.code):
 		ResourceScripts.game_res.set_material(purchase_item.code, '-', value)
 	else:
-		price = round(purchase_item.calculateprice() / 2)
+		if is_half_price:
+			price = round(purchase_item.calculateprice() / 2)
+		else:
+			price = purchase_item.calculate_price()
 		purchase_item.amount -= value
 	ResourceScripts.game_res.money += price * value
 	update_sell_list()
