@@ -2251,6 +2251,7 @@ __meta__ = {
 }
 
 [node name="NumberSelection" type="Panel" parent="AreaShop"]
+visible = false
 margin_left = 294.0
 margin_top = 724.0
 margin_right = 794.0

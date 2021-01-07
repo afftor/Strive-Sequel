@@ -1851,7 +1851,7 @@ func item_purchase(item, amount):
 		'item_puchase_confirm',
 		"Buy " + str(item.name),
 		price,
-		0,
+		1,
 		amount,
 		true,
 		item.icon
@@ -1915,7 +1915,7 @@ func item_sell(item):
 		'item_sell_confirm',
 		"Sell " + str(item.name),
 		price,
-		0,
+		1,
 		sellingamount,
 		false,
 		item.icon
