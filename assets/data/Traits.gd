@@ -7,7 +7,7 @@ var traits = {
 		descript = '',
 		visible = false,
 		icon = null,
-		effects = ['test_combat_start'],
+		effects = [],#'e_atkpass'],
 	}, 
 	absorb_atk_trait = {
 		code = 'absorb_atk_trait',
@@ -17,6 +17,22 @@ var traits = {
 		icon = null,
 		effects = ['e_tr_curseatk'],
 	}, 
+	fireshield_trait = {
+		code = 'fireshield_trait',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_fireshield'],
+	},
+	atkpass_trait = {
+		code = 'atkpass_trait',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_atkpass'],
+	},
 	
 	'master' : {#150% effect from social skills
 		code = 'master',
