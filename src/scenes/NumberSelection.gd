@@ -13,17 +13,14 @@ func _ready():
 	$Button.connect('pressed', self, "confirm_number_selection")
 	$HSlider.connect("value_changed", self, "change_number_selection")
 
-func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, minvalue = 0, maxvalue = 100, requiregold = false, item_icon = null):
+func open(targetnode = null, targetfunction = null, text = '', itemcost = 0, minvalue = 1, maxvalue = 100, requiregold = false, item_icon = null):
 	show()
 	showntext = text
 	icon = item_icon
 	target_function = targetfunction
 	target_node = targetnode
 	cost = itemcost
-	if minvalue > 0:
-		$HSlider.step = minvalue
-	else:
-		$HSlider.step = 1
+	$HSlider.step = minvalue
 	$HSlider.value = minvalue
 	$HSlider.min_value = minvalue
 	$HSlider.max_value = maxvalue

@@ -163,7 +163,8 @@ func rebuild_recipe_list():
 			for k in i.materials:
 				var newnode = input_handler.DuplicateContainerTemplate(newbutton.get_node("HBoxContainer"))
 				var recipeitem = Items.materiallist[k]
-				globals.connectmaterialtooltip(newnode,recipeitem,'')
+				var bonustext = "\n\nRequired for Craft: " + str(i.materials[k])
+				globals.connectmaterialtooltip(newnode,recipeitem, bonustext)
 				newnode.texture = recipeitem.icon
 				newnode.get_node("Label").text = str(i.materials[k])
 		elif i.crafttype == 'modular':

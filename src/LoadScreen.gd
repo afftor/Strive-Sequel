@@ -65,6 +65,8 @@ func update_progress():
 func set_new_scene(scene_resource):
 	current_scene = scene_resource.instance()
 	input_handler.CurrentScene = current_scene
+	gui_controller.current_screen = current_scene
+	# gui_controller.mansion
 	get_node("/root").add_child(current_scene)
 	get_node("/root").remove_child(self)
 	if input_handler.CurrentScene.name == "MansionMainModule":

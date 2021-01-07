@@ -49,7 +49,10 @@ func buildinventory():
 		if list_mode == "tattoo":
 			newbutton.visible = material.type == "tattoo"
 		else:
-			newbutton.visible = true
+			if ResourceScripts.game_res.upgrades.has("tattoo"):
+				newbutton.visible = true
+			else:
+				newbutton.visible = material.type != "tattoo"
 
 	for i in ResourceScripts.game_res.items.values():
 		if list_mode == "tattoo":
@@ -69,7 +72,7 @@ func buildinventory():
 		var type = get_item_category(i)
 		if type == "tattoo":
 			continue
-		globals.connectitemtooltip(newnode, i)
+		globals.connectitemtooltip_v2(newnode, i)
 		newnode.get_node("Name").text = i.name
 		newnode.get_node("Type").texture = get_item_type_icon(i)
 		newnode.set_meta('type', type)

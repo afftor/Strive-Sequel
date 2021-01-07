@@ -133,7 +133,7 @@ font_data = ExtResource( 26 )
 size = 20
 font_data = ExtResource( 10 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 75 )
 region_rect = Rect2( 0, 0, 800, 800 )
 margin_left = 80.0
@@ -141,15 +141,15 @@ margin_right = 80.0
 margin_top = 80.0
 margin_bottom = 30.0
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 81 )
 region_rect = Rect2( 0, 0, 1120, 800 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 76 )
 region_rect = Rect2( 0, 0, 500, 740 )
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 90 )
 region_rect = Rect2( 0, 0, 256, 256 )
 margin_left = 80.0
@@ -157,11 +157,11 @@ margin_right = 80.0
 margin_top = 80.0
 margin_bottom = 30.0
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 28 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 93 )
 region_rect = Rect2( 0, 0, 700, 180 )
 margin_left = 8.0
@@ -169,11 +169,11 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=15]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 28 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 86 )
 region_rect = Rect2( 0, 0, 230, 40 )
 margin_left = 8.0
@@ -181,7 +181,7 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=17]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 85 )
 region_rect = Rect2( 0, 0, 230, 40 )
 margin_left = 8.0
@@ -189,7 +189,7 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=18]
+[sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 89 )
 region_rect = Rect2( 0, 0, 230, 40 )
 margin_left = 8.0
@@ -197,11 +197,11 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
-[sub_resource type="StyleBoxTexture" id=19]
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 28 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
-[sub_resource type="StyleBoxTexture" id=20]
+[sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 70 )
 region_rect = Rect2( 0, 0, 128, 55 )
 margin_left = 12.0
@@ -209,7 +209,7 @@ margin_right = 12.0
 margin_top = 12.0
 margin_bottom = 12.0
 
-[sub_resource type="StyleBoxTexture" id=21]
+[sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 28 )
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
@@ -1134,7 +1134,7 @@ margin_left = 400.0
 margin_top = 138.0
 margin_right = 1520.0
 margin_bottom = 938.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1143,7 +1143,7 @@ __meta__ = {
 show_behind_parent = true
 margin_right = 1120.0
 margin_bottom = 798.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1218,7 +1218,7 @@ show_behind_parent = true
 margin_left = 620.962
 margin_right = 1120.96
 margin_bottom = 740.0
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1433,7 +1433,7 @@ margin_left = 560.0
 margin_top = 138.0
 margin_right = 1360.0
 margin_bottom = 938.0
-custom_styles/panel = SubResource( 12 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1443,7 +1443,7 @@ self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_right = 800.0
 margin_bottom = 800.0
-custom_styles/panel = SubResource( 13 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1483,7 +1483,7 @@ visible = false
 margin_right = 700.0
 margin_bottom = 180.0
 rect_min_size = Vector2( 0, 180 )
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 9 )
 
 [node name="FactionBG2" type="Panel" parent="FactionDetails/VBoxContainer/Button"]
 self_modulate = Color( 1, 1, 1, 0.803922 )
@@ -1491,7 +1491,7 @@ show_behind_parent = true
 margin_left = 3.0
 margin_right = 700.0
 margin_bottom = 200.0
-custom_styles/panel = SubResource( 15 )
+custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1515,9 +1515,9 @@ margin_top = 52.0
 margin_right = 665.0
 margin_bottom = 136.0
 theme = ExtResource( 42 )
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 text = "Purchase"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1794,7 +1794,7 @@ self_modulate = Color( 0, 0, 0, 1 )
 show_behind_parent = true
 margin_right = 1123.0
 margin_bottom = 83.0
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1805,7 +1805,7 @@ show_behind_parent = true
 margin_top = 83.0
 margin_right = 1123.0
 margin_bottom = 925.0
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2251,11 +2251,12 @@ __meta__ = {
 }
 
 [node name="NumberSelection" type="Panel" parent="AreaShop"]
+visible = false
 margin_left = 294.0
 margin_top = 724.0
 margin_right = 794.0
 margin_bottom = 914.0
-custom_styles/panel = SubResource( 20 )
+custom_styles/panel = SubResource( 15 )
 script = ExtResource( 73 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2266,7 +2267,7 @@ self_modulate = Color( 0, 0, 0, 0.686275 )
 show_behind_parent = true
 margin_right = 500.0
 margin_bottom = 190.0
-custom_styles/panel = SubResource( 21 )
+custom_styles/panel = SubResource( 16 )
 
 [node name="HSlider" type="HSlider" parent="AreaShop/NumberSelection"]
 margin_left = 37.0

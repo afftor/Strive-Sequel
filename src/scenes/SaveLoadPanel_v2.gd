@@ -28,8 +28,8 @@ func update_save_file():
 			config.load(i)
 			var details = config.get_section_keys('details')
 			savedata[savename] = {}
-			for ii in details:
-				savedata[savename][ii] = config.get_value("details", ii, null)
+			for d in details:
+				savedata[savename][d] = config.get_value("details", d, null)
 		if i.ends_with('.sav') == false:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($UpdatePanel/VBoxContainer)

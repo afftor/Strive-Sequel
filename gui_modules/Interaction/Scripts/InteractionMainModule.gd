@@ -109,6 +109,7 @@ func _ready():
 		clearstate()
 		
 		rebuildparticipantslist()
+	
 
 var OrgasmDenyVictim
 var OrgasmDenyPlayer
@@ -240,6 +241,7 @@ func _input(event):
 
 
 func startsequence(actors):
+	hidebody()
 	participants.clear()
 	show()
 	secondactorcounter.clear()

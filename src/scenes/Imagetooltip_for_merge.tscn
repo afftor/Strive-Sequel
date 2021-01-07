@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/images/iconsitems/item_vege.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/frame_tooltip.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=8]
+
+[node name="tooltip" type="Panel"]
+show_behind_parent = true
+margin_right = 443.0
+margin_bottom = 362.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_left = 357.0
+margin_top = 1.0
+margin_right = 589.0
+margin_bottom = 232.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.032
+anchor_top = 0.599
+anchor_right = 0.032
+anchor_bottom = 0.599
+margin_left = -0.176001
+margin_top = 0.161987
+margin_right = 414.824
+margin_bottom = 100.162
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "Test text"
+text = "Test text"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -107.664
+margin_top = -40.6561
+margin_right = -62.6641
+margin_bottom = 4.34387
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Cost"]
+margin_left = 37.6242
+margin_top = 5.32468
+margin_right = 90.6246
+margin_bottom = 40.3247
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.929412, 0, 1 )
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IconFrame" type="TextureRect" parent="."]
+anchor_left = 0.277
+anchor_top = 0.011
+anchor_right = 0.277
+anchor_bottom = 0.011
+margin_left = 0.0942459
+margin_top = 0.0179996
+margin_right = 200.094
+margin_bottom = 200.018
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="IconFrame"]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 150, 150 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

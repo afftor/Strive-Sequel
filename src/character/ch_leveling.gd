@@ -349,6 +349,7 @@ func make_item_sequence(currenttask, craftingitem):
 					make_item_sequence(currenttask, craftingitem)
 			else:
 				if currenttask.messages.has('noresources') == false:
+					print("make_item_sequence")
 					globals.text_log_add('crafting', parent.get_short_name() + ": " + "Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 

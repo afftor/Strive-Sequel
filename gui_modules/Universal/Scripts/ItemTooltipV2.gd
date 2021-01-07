@@ -1,4 +1,4 @@
-extends TextureRect
+extends Panel
 
 var parentnode
 var shutoff = false
@@ -84,22 +84,22 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 	self.set_global_position(pos)
 	
 	$InfoText.rect_size.y = 125
-	rect_size.y = 250
+	rect_size.y = 630
 	
 	yield(get_tree(), 'idle_frame')
 	
-	rect_size.y = max(250, $InfoText.get_v_scroll().get_max() + 220)
-	$InfoText.rect_size.y = rect_size.y - 100
+	rect_size.y = max(630, $InfoText2.get_v_scroll().get_max() + 500)
+	$InfoText2.rect_size.y = rect_size.y - 100
 	
 	
-	# if get_rect().end.x > screen.size.x:
-	# 	if node.has_meta("exploration") || type == "gear":
-	# 		pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
-	# 		self.set_global_position(pos)
-	# 	else:
-	# 		rect_global_position.x -= screen.size.x - get_rect().end.x
-	# if get_rect().end.y > screen.size.y:
-	# 	rect_global_position.y -= get_rect().end.y - screen.size.y#node.get_global_rect().position.y - rect_size.y
+	if get_rect().end.x > screen.size.x:
+		if node.has_meta("exploration") || type == "gear":
+			pos = Vector2(pos.x - rect_size.x - node.rect_size.x - 10, pos.y)
+			self.set_global_position(pos)
+		else:
+			rect_global_position.x -= screen.size.x - get_rect().end.x
+	if get_rect().end.y > screen.size.y:
+		rect_global_position.y -= get_rect().end.y - screen.size.y#node.get_global_rect().position.y - rect_size.y
 	
 	set_process(true)
 
@@ -126,29 +126,39 @@ func materialowned_tooltip(data):
 
 
 func gear_tooltip(data, item = null):
+	self.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png"))
+	$Title.text = data.title
 	if item == null:
 		item = data.item
-	var text = item.tooltiptext()
+	var text1 = item.tooltiptext_1()
+	var text2 = item.tooltiptext_2()
 	$Cost/Label.text = str(data.price)
 	$Cost.visible = item.price != 0
 	
+	$HoldShift.visible = item.get('partcolororder') != null
 	if item.get('partcolororder') != null:
 		input_handler.itemshadeimage(iconnode, item)
-		text += "\n\n[color=yellow]Hold shift for details[/color]"
 	else:
 		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
 	
-	textnode.bbcode_text = text
+	$InfoText.bbcode_text = text1
+	$InfoText2.bbcode_text = text2
+
+	$InfoText.show()
+	$InfoText2.show()
+	$InfoText3.hide()
+
 
 func gear_detailed_tooltip(data, item = null):
 	gear_tooltip(data, item)
 	item = data.item
 	if item.parts.size() == 0:
 		return
-	var text = '[center]{color=k_yellow|' + data.item.name +'}[/center]'
+	$Title.text = data.item.name
+	var text = ''
 	for i in item.parts:
 		var material = Items.materiallist[item.parts[i]]
-		text += "\n" + tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
+		text += tr(Items.Parts[i].name) + ": {color=yellow|" + material.name +"}"
 		for k in material.parts[i]:
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]
@@ -164,10 +174,15 @@ func gear_detailed_tooltip(data, item = null):
 				value = str(value)
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value + '%'
-				text += value + '}'
+				text +=  value + '}'
+		text += '\n'
 #		for k in material.parts[i]:
 #			text += "\n" + Items.stats[k] + " " + str(material.parts[i][k])
-	textnode.bbcode_text = globals.TextEncoder(text)
+	$InfoText3.bbcode_text = globals.TextEncoder(text)
+	$InfoText.hide()
+	$InfoText2.hide()
+	$InfoText3.show()
+	get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip_shift.png"))
 
 func geartemplete_tooltip(data):
 	var item = data.item

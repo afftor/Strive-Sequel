@@ -1,10 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://src/scenes/SkillToolTip.gd" type="Script" id=2]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=4]
-
-
 
 [node name="skilltooltip" type="Panel"]
 margin_left = 1027.0

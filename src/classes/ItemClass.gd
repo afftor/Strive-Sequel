@@ -213,7 +213,7 @@ func set_icon(node):
 
 func tooltiptext():
 	var text = ''
-	text += '[center]{color=k_yellow|' + name + '}[/center]\n'
+	# text += '[center]{color=k_yellow|' + name + '}[/center]\n'
 	if geartype != null:
 		text += 'Type: ' + geartype + "\n"
 	else:
@@ -260,6 +260,63 @@ func tooltiptext():
 	text = globals.TextEncoder(text)
 	return text
 
+func tooltiptext_1():
+	var text = ''
+	if geartype != null:
+		text += 'Type: ' + geartype + "\n"
+	else:
+		text += "Type: Usable\n"
+	
+	if slots.size() > 0:
+		text += "Slots: "
+		for i in slots:
+			text += tr("ITEMSLOT"+i.to_upper()) + ", "
+		text = text.substr(0, text.length() -2) + "\n"
+	
+	if toolcategory != null:
+		text += tr("TOOLWORKCATEGORY") + ": " 
+		for i in toolcategory:
+			text += statdata.worktoolnames[i] +", "
+		text = text.substr(0, text.length()-2) 
+	if !reqs.empty():
+		var tempslave = ResourceScripts.scriptdict.class_slave.new()
+		text += tempslave.decipher_reqs(reqs)
+	
+	text = globals.TextEncoder(text)
+	return text
+
+
+func tooltiptext_2():
+	var text = ''
+	if description != null:
+		text += description
+
+	if itemtype in ['armor','weapon','tool']:
+		# text += "\n"
+		for i in bonusstats:
+			if bonusstats[i] != 0:
+				var value = bonusstats[i]
+				var change = ''
+				if statdata.statdata[i].has('percent'):
+					value = value*100
+				text += statdata.statdata[i].name + ': {color='
+				if value > 0:
+					change = '+'
+					text += 'k_green|' + change
+				else:
+					text += 'k_red|'
+				value = str(value)
+				if statdata.statdata[i].has('percent'):
+					value = value + '%'
+				text += value + '}\n'
+		text += tooltipeffects()
+	elif itemtype == 'usable':
+		text += tr("INPOSESSION") + ': ' + str(amount)
+	
+	text = globals.TextEncoder(text)
+	return text
+
+
 func tooltiptext_light():
 	var text = ''
 	# text += '[center]{color=k_yellow|' + name + '}[/center]\n'
@@ -305,7 +362,7 @@ func tooltip(targetnode):
 
 func tooltip_v2(targetnode):
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
-	var data = {text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
+	var data = {title = name, text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
 	node.showup(targetnode, data, 'gear')
 
 

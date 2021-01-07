@@ -63,8 +63,12 @@ func update():
 	if selectedhero == null:
 		selectedhero = input_handler.interacted_character
 	list_mode = "inventory"
-	GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
-	GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
+	if ResourceScripts.game_res.upgrades.has("tattoo"):
+		GearModule.get_node("TattooButton").visible = list_mode != "tattoo"
+		GearModule.get_node("InventoryButton").visible = !GearModule.get_node("TattooButton").is_visible()
+	else:
+		GearModule.get_node("TattooButton").visible = false
+		GearModule.get_node("InventoryButton").visible = false
 	GearModule.selected_slot = ''
 	GearModule.highlight_avalible_slots([])
 	ItemsList.selected_tattoo = ''

@@ -26,8 +26,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft_pressed.png" type="Texture" id=24]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Panels/panel_itemcraft.png" type="Texture" id=25]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 36
 use_filter = true
@@ -187,8 +185,8 @@ __meta__ = {
 }
 
 [node name="DisassambleClose" type="TextureButton" parent="Background"]
-margin_left = 511.0
-margin_right = 540.0
+margin_left = 540.0
+margin_right = 569.0
 margin_bottom = 29.0
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 23 )
@@ -317,9 +315,9 @@ texture_hover = ExtResource( 22 )
 
 [node name="NumberSelection" type="Panel" parent="."]
 visible = false
-margin_left = 1254.0
+margin_left = 1282.0
 margin_top = 782.842
-margin_right = 1754.0
+margin_right = 1782.0
 margin_bottom = 972.842
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
@@ -404,6 +402,7 @@ expand = true
 stretch_mode = 6
 
 [node name="ItemTooltipV2" type="Panel" parent="."]
+visible = false
 margin_left = 1260.0
 margin_top = 218.692
 margin_right = 1810.0

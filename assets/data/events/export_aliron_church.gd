@@ -1,4 +1,4 @@
-var data = {
+	var data = {
 	ginny_visit = {
 		image = null,
 		character = 'ginny',

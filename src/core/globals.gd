@@ -480,6 +480,7 @@ func LoadGame(filename):
 	#current approach
 	# if input_handler.CurrentScene != null:
 		# input_handler.CurrentScene.queue_free()	
+	gui_controller.mansion.queue_free()
 	if gui_controller.current_screen != null:
 		gui_controller.current_screen.queue_free()
 	input_handler.ChangeScene('mansion');
@@ -1168,8 +1169,6 @@ func common_effects(effects):
 				var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]
 				guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
 				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
-				print("guild.reputation", guild.reputation)
-				print("guild.totalreputation", guild.totalreputation)
 				if guild.totalreputation > 500 && guild.totalreputation < 1500:
 					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total = 2
 				elif guild.totalreputation > 1500:

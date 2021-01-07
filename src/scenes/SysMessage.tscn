@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/fonts/RoundoShadow40.font" type="BitmapFont" id=2]
 
 [node name="SysMessage" type="Panel"]
-visible = false
 margin_left = 161.0
 margin_top = 107.0
 margin_right = 1837.0

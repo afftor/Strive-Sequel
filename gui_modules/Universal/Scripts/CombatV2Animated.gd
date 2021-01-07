@@ -452,6 +452,7 @@ func victory():
 	show_buttons($Rewards/ScrollContainer/HBoxContainer)
 	show_buttons($Rewards/ScrollContainer2/HBoxContainer)
 	get_tree().get_root().set_disable_input(false)
+	$Rewards/CloseButton.grab_click_focus()
 
 
 func show_buttons(container):
