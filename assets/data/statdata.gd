@@ -594,6 +594,16 @@ func _ready():
 		statdata['resist_'+i] = {
 				code = "resist_"+i,
 			}
+		statdata['resist_status_'+i] = {
+				code = "resist_status_"+i,
+			}
+	for i in variables.resists_damage_list:
+		statdata['resist_'+i] = {
+				code = "resist_"+i,
+			}
+		statdata['resist_damage_'+i] = {
+				code = "resist_damage_"+i,
+			}
 	for i in variables.damage_mods_list:
 		statdata['damage_mod_'+i] = {
 				code = "damage_mod_"+i,
@@ -606,3 +616,9 @@ func _ready():
 		if !val.has('direct'): val.direct = false
 		if !val.has('custom_get'): val.custom_get = false
 		if !val.has('skip_process'): val.skip_process = false
+	
+#	for st in statdata:
+#		print("'%s':" % st)
+#		print("\t %s" % statdata[st].default_bonus)
+#		if statdata[st].percent: print("\t percent conversion")
+#	print('\n')

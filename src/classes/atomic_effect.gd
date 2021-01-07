@@ -7,9 +7,9 @@ var parent
 
 func _init(buff_ta, obj):
 	if typeof(buff_ta) == TYPE_STRING:
-		template = Effectdata.atomic[buff_ta]
+		template = Effectdata.atomic[buff_ta].duplicate(true)
 	else:
-		template = buff_ta.duplicate()
+		template = buff_ta.duplicate(true)
 	parent = obj
 
 func calculate_property(prop): #updated version. copy this to displaced

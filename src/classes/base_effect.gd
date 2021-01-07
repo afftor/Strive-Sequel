@@ -95,9 +95,9 @@ func get_applied_obj():
 
 func createfromtemplate(buff_t):
 	if typeof(buff_t) == TYPE_STRING:
-		template = Effectdata.effect_table[buff_t].duplicate()
+		template = Effectdata.effect_table[buff_t].duplicate(true)
 	else:
-		template = buff_t.duplicate()
+		template = buff_t.duplicate(true)
 	if template.has('tags'):
 		tags = template.tags.duplicate()
 	if !template.has('sub_effects'):
@@ -150,7 +150,10 @@ func calculate_args():
 						args.push_back(par.get_arg(arg.index).get(arg.param))
 				'app_obj':
 					var par = get_applied_obj()
-					args.push_back(par.get_stat(arg.param))
+					if arg.has('param'):
+						args.push_back(par.get_stat(arg.param))
+					else:
+						args.push_back(par)
 
 func get_arg(index):
 	var arg = template.args[index]
@@ -185,7 +188,10 @@ func get_arg(index):
 					else: args[index] = obj.get(arg.param)
 			'app_obj':
 				var par = get_applied_obj()
-				args[index] = par.get_stat(arg.param)
+				if arg.has('param'):
+					args[index] = par.get_stat(arg.param)
+				else:
+					args[index] = par
 	return args[index]
 
 func set_args(arg, value):

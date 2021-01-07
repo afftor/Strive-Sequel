@@ -393,6 +393,7 @@ func can_evade():
 
 func can_use_skill(skill):
 	if !check_cost(skill.cost): return false
+	if skill.type == 'auto': return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
@@ -936,7 +937,9 @@ func apply_atomic(template):
 			killed()
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
-			input_handler.combat_node.use_skill(template.skill, self, template.target)
+			if skills.combat_cooldowns.has(template.skill): return
+#			input_handler.combat_node.use_skill(template.skill, self, template.target)
+			input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = template.target})
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)

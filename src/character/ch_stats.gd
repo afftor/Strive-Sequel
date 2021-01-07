@@ -107,6 +107,8 @@ func custom_stats_get():
 			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
+			if bonuses.has('resist_damage_' + r + '_add'): tres[r] += bonuses['resist_damage_' + r + '_add']
+			if bonuses.has('resist_damage_' + r + '_mul'): tres[r] *= bonuses['resist_damage_' + r + '_mul']
 		res.resist_damage = tres
 	if res.has('status_resists'):
 		var tres = res.status_resists
@@ -114,6 +116,8 @@ func custom_stats_get():
 			if !tres.has(r): tres[r] = 0.0
 			if bonuses.has('resist_' + r + '_add'): tres[r] += bonuses['resist_' + r + '_add']
 			if bonuses.has('resist_' + r + '_mul'): tres[r] *= bonuses['resist_' + r + '_mul']
+			if bonuses.has('resist_status_' + r + '_add'): tres[r] += bonuses['resist_status_' + r + '_add']
+			if bonuses.has('resist_status_' + r + '_mul'): tres[r] *= bonuses['resist_status_' + r + '_mul']
 		res.status_resists = tres
 	if res.has('damage_mods'):
 		var tres = res.damage_mods

@@ -92,11 +92,11 @@ func process_check(check:Array):
 	if op1 == 'damage_type':
 		if check[1] == 'eq':
 			for val in value:
-				if value.source == op2: return true
+				if val.damage_type == op2: return true
 			return false
 		elif check[1] == 'neq':
 			for val in value:
-				if value.source == op2: return false
+				if val.damage_type == op2: return false
 			return true
 	elif typeof(op1) == TYPE_STRING:
 		op1 = get(op1)
