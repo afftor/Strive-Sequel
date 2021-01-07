@@ -66,7 +66,7 @@ onready var node_data = {
 	input_handler.NODE_SLAVETOOLTIP : {name = 'slavetooltip', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/SlaveTooltip_v2.tscn")},
 	input_handler.NODE_SKILLTOOLTIP : {name = 'skilltooltip', mode = 'scene', scene = preload("res://src/scenes/SkillToolTip.tscn")},
 	input_handler.NODE_ITEMTOOLTIP : {name = 'itemtooltip', mode = 'scene', scene = preload("res://src/scenes/Imagetooltip_for_merge.tscn")},
-	input_handler.NODE_ITEMTOOLTIP_V2 : {name = 'itemtooltip_v2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ItemTooltipV2_for_merge.tscn")},
+#	input_handler.NODE_ITEMTOOLTIP_V2 : {name = 'itemtooltip_v2', mode = 'scene', scene = preload("res://gui_modules/Universal/Modules/ItemTooltipV2_for_merge.tscn")},
 	input_handler.NODE_TEXTTOOLTIP : {name = 'texttooltip', mode = 'scene', scene = preload("res://src/scenes/TextTooltipPanel.tscn")},
 	input_handler.NODE_CHARCREATE : {name = 'charcreationpanel', mode = 'scene', scene = preload("res://gui_modules/CharacterCreation/CharacterCreationMainModule.tscn"), calls = 'open'},
 	input_handler.NODE_COMBATPOSITIONS : {name = 'combatpositions', mode = 'scene', scene = preload("res://src/scenes/PositionSelectMenu.tscn"), calls = 'open'},

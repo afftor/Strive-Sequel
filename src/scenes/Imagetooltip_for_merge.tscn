@@ -1,21 +1,21 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
-[ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/iconsitems/item_vege.png" type="Texture" id=4]
-[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/images/gui/panels/tooltippanel.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/iconsitems/gold.png" type="Texture" id=6]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=7]
-[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/frame_tooltip.png" type="Texture" id=8]
+[ext_resource path="res://assets/Textures_v2/DisassembleNewTooltip/frame_tooltip.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/ItemTooltip.gd" type="Script" id=8]
 
 [node name="tooltip" type="Panel"]
 show_behind_parent = true
 margin_right = 443.0
 margin_bottom = 362.0
 mouse_filter = 2
-custom_styles/panel = ExtResource( 1 )
-script = ExtResource( 2 )
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,7 +26,7 @@ margin_left = 357.0
 margin_top = 1.0
 margin_right = 589.0
 margin_bottom = 232.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 expand = true
 stretch_mode = 7
 
@@ -40,7 +40,7 @@ margin_top = 0.161987
 margin_right = 414.824
 margin_bottom = 100.162
 mouse_filter = 2
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "Test text"
 text = "Test text"
@@ -68,7 +68,7 @@ margin_left = 37.6242
 margin_top = 5.32468
 margin_right = 90.6246
 margin_bottom = 40.3247
-theme = ExtResource( 7 )
+theme = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.929412, 0, 1 )
 text = "100"
 align = 1
@@ -85,7 +85,7 @@ margin_left = 0.0942459
 margin_top = 0.0179996
 margin_right = 200.094
 margin_bottom = 200.018
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
