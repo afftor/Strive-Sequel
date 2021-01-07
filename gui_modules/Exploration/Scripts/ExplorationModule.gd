@@ -1168,6 +1168,8 @@ var infotext = "Upgrades effects and quest settings update after some time passe
 
 
 func faction_disassemble(pressed, pressed_button, guild):
+	if $FactionDetails.is_visible():
+		$FactionDetails.hide()
 	gui_controller.win_btn_connections_handler(pressed, $DisassembleModule, pressed_button)
 	self.current_pressed_area_btn = pressed_button
 	

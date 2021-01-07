@@ -157,7 +157,8 @@ func close_top_window():
 		return
 	elif ResourceScripts.core_animations.BeingAnimated.has(node):
 		return
-	node.hide()
+	if node != null:
+		node.hide()
 	windows_opened.erase(node)
 	#CloseableWindowsArray.pop_back(); #i think this is required #It's not, breaks multiple windows order
 
