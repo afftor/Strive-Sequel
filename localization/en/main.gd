@@ -1974,6 +1974,10 @@ var TranslationDict = {
 	LOCATIONNAMEDUNGEON_VOLCANO = "Volcanic Cave",
 	LOCATIONNAMEDUNGEON_CITY = "Ruined City",
 	LOCATIONNAMEBASIC_THREAT_WOLVES = "Skirmish",
+	LOCATIONNAMEDUNGEON_ANCIENT_JUNGLES = "Ancient Jungles",
+	LOCATIONNAMEDUNGEON_FIRE_DEPTHS = "Fire Depths",
+	LOCATIONNAMEDUNGEON_FROZEN_DOMAIN = "Frozen Domain",
+	LOCATIONNAMEDUNGEON_DRAGON_NEST = "Dragon Nest",
 	
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
@@ -2662,7 +2666,8 @@ var TranslationDict = {
 	ITEMLATEX_SUIT = "Latex Suit",
 	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
 	
-	
+	MATERIALTROLL_BLOOD = "Troll Blood",
+	MATERIALTROLL_BLOODDESCRIPT = "A vial of red fluid obtained from defeating trolls.",
 	MATERIALINK_BASE = "Ink Base",
 	MATERIALINK_BASEDESCRIPT = "A special ink suited for being imbued with magic. Serves as a basis for tattos. ",
 	MATERIALICE_CRYSTAL = "Eternal Ice",

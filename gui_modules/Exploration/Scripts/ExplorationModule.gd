@@ -1123,13 +1123,12 @@ func enter_guild(guild):
 		newbutton.texture_hover = load(
 			"res://assets/Textures_v2/CITY/Buttons/buttonviolet_hover.png"
 		)
-	var check = true
 	for a in guild.bonus_actions:
-		if a.reqs != []:
-			for r in a.reqs:
-				check = globals.valuecheck(r)
-				if !check:
-					break
+		var check = true
+		for r in a.reqs:
+			check = globals.valuecheck(r)
+			if !check:
+				break
 		if !check:
 			continue
 		newbutton = input_handler.DuplicateContainerTemplate(AreaActions)
