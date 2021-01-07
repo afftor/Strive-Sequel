@@ -10,7 +10,7 @@ func _ready():
 		i.connect("pressed", self, 'add_remove_tattoo', [i.name])
 		i.connect("mouse_entered", self, 'show_tattoo_tooltip', [i.name])
 		i.set_meta("tattoo_slot", i.name)
-		i.hint_tooltip = tr(i.name.to_upper())
+		i.hint_tooltip = tr("TATTOO" + i.name.to_upper())
 
 
 

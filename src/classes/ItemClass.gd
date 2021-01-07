@@ -125,7 +125,7 @@ func CreateGear(ItemName = '', dictparts = {}, bonus = {}):
 			var materialeffects = material['parts'][i].duplicate(true)
 			if itemtemplate.itemtype == 'armor':
 				for j in materialeffects:
-					materialeffects[j] = float(materialeffects[j]) / 2
+					materialeffects[j] = float(materialeffects[j] * itemtemplate.statmod)
 			materials.append(material.code)
 			input_handler.AddOrIncrementDict(parteffectdict, materialeffects)
 #		if parteffectdict.has('durabilitymod'):
@@ -241,7 +241,7 @@ func tooltiptext():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
 				text += statdata.statdata[i].name + ': {color='
 				if value > 0:
@@ -250,7 +250,7 @@ func tooltiptext():
 				else:
 					text += 'k_red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()
@@ -326,7 +326,7 @@ func tooltiptext_light():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
 				text += statdata.statdata[i].name + ': {color='
 				if value > 0:
@@ -335,7 +335,7 @@ func tooltiptext_light():
 				else:
 					text += 'k_red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()

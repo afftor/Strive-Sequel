@@ -35,7 +35,7 @@ func apply_atomic(tmp):
 			value = tmp.value
 
 func resolve_value(check_m):
-	var dmgmod = parent.caster.get_damage_mod(parent.template)
+	var dmgmod = parent.caster.get_damage_mod(parent.template) * parent.caster.get_value_damage_mod(template)
 	var endvalue
 	var atk
 	var stat
@@ -107,6 +107,10 @@ func calculate_dmg():
 	elif parent.target_range == 'melee': #or add tags for this
 		reduction = mods.melee
 	if !template.nodef and !template.nomod:
+		value *= (float(100 - reduction)/100.0)
+	if parent.tags.has('heal'):
+		reduction = mods.heal
+	if !template.nomod: #there may be errors due to damagestat templating
 		value *= (float(100 - reduction)/100.0)
 	
 	value = round(value)

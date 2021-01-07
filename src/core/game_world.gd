@@ -99,13 +99,15 @@ func update_guilds(area):
 					#area.quests.factions[faction].erase(quest.id)
 		for i in cleararray:
 			area.quests.factions[faction].erase(i)
-	if int(ResourceScripts.game_globals.date) % 7 == 0:
+	if int(ResourceScripts.game_globals.date) % variables.guild_slave_update_time == 0:
 		for i in area.factions.values():
 			for k in i.slaves:
 				characters_pool.get_char_by_id(k).is_active = false
 			i.slaves.clear()
 			while i.slaves.size() < i.slavenumber:
 				ResourceScripts.world_gen.make_slave_for_guild(i)
+	
+	if int(ResourceScripts.game_globals.date) % variables.guild_quest_update_time == 0:
 		for faction in area.quests.factions:
 			ResourceScripts.world_gen.fill_faction_quests(faction, area.code)
 

@@ -503,14 +503,14 @@ func make_chest_loot(chest):
 				if amount <= 0:
 					continue
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'usable':
+					if i.grade.has(k.tier) && k.type == 'usable' && !k.tags.has('no_random'):
 						array.append(k.code)
 				dict.items.append(globals.CreateUsableItem(array[randi()%array.size()], amount))
 			'static_gear':
 				var number = round(rand_range(i.min, i.max))
 				var array = []
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.has('geartype') && k.geartype == 'costume':
+					if i.grade.has(k.tier) && k.has('geartype') && k.geartype == 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
 					dict.items.append(globals.CreateGearItem(array[randi()%array.size()],{}))
@@ -519,7 +519,7 @@ func make_chest_loot(chest):
 				var number = round(rand_range(i.min, i.max))
 				var array = []
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor'] && k.geartype != 'costume':
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon', 'armor'] && k.geartype != 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
 					var itemdict = {}
@@ -537,7 +537,7 @@ func make_chest_loot(chest):
 				var number = round(rand_range(i.min, i.max))
 				var array = []
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon'] && k.geartype != 'costume':
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['weapon'] && k.geartype != 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
 					var itemdict = {}
@@ -555,7 +555,7 @@ func make_chest_loot(chest):
 				var number = round(rand_range(i.min, i.max))
 				var array = []
 				for k in Items.itemlist.values():
-					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['armor'] && k.geartype != 'costume':
+					if i.grade.has(k.tier) && k.type == 'gear' && k.itemtype in ['armor'] && k.geartype != 'costume' && !k.tags.has('no_random'):
 						array.append(k.code)
 				while number > 0:
 					var itemdict = {}

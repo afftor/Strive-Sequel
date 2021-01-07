@@ -330,7 +330,7 @@ func selectmaterial(material, part, cost):
 			if Items.itemlist[itemtemplate].itemtype == 'armor':
 				endvalue = float(endvalue) / 2
 			if endvalue != 0:
-				text += '\n' + tr(Items.stats[i]) + ': ' + str(endvalue)
+				text += '\n' + statdata.statdata[i].name + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
 				text += '\n' + Effectdata.effects[k].descript

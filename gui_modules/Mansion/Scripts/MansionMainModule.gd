@@ -464,9 +464,10 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
 		ResourceScripts.game_res.upgrades.resource_gather_grains = 1
 		#ResourceScripts.game_res.upgrades.resource_gather_cloth = 1
+		ResourceScripts.game_res.upgrades.alchemy = 3
 		ResourceScripts.game_res.upgrades.tailor = 3
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
-		ResourceScripts.game_res.upgrades.rooms = 3
+		ResourceScripts.game_res.upgrades.forge = 3
 		
 
 	#	character.get_stat('pregnancy', true).duration = 2
@@ -648,7 +649,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("worker_outfit", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("gauntlets", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
@@ -671,31 +672,7 @@ func test_mode():
 			globals.CreateGearItem("pickaxe", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
 		)
 		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
-		)
-		globals.AddItemToInventory(
-			globals.CreateGearItem("hammer", {ToolHandle = 'wood', ToolBlade = 'obsidian'})
+			globals.CreateGearItem("swordadv", {Blade = 'mithril', WeaponHandle = 'wood', WeaponEnc = 'fire_ruby'})
 		)
 		
 		

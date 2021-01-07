@@ -2119,6 +2119,17 @@ var effect_table = {
 		tags = ['debuff', 'disarm'],
 		buffs = ['b_disarm'],
 	},
+	e_s_disarm3 = {#duration version
+		type = 'temp_s',
+		target = 'target',
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		tick_event = [variables.TR_TURN_F],
+		duration = 'parent',
+		stack = 1,
+		name = 'disarm',
+		tags = ['negative', 'disarm'], #or disarm only
+		buffs = ['b_disarm'],
+	},
 	e_s_silence = {
 		type = 'temp_s',
 		target = 'target',
@@ -2332,7 +2343,7 @@ var effect_table = {
 		tick_event = [variables.TR_TURN_F],
 		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
 		duration = 'parent_arg',
-		tags = ['affliction'],
+		tags = ['affliction', 'negative', 'debuff'],
 		args = [{obj = 'parent_args', param = 0}],
 		sub_effects = ['e_poison'],
 		atomic = [],
@@ -2380,6 +2391,191 @@ var effect_table = {
 				atomic = ['a_bleed'],
 			}
 		]
+	},
+	e_s_shred = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'shred',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add', stat = 'armor', value = -30}],
+		buffs = ['b_shred'],
+	},
+	e_s_growl = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'growl',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['affliction'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'speed', value = -20},
+			{type = 'stat_add', stat = 'evasion', value = -15},
+			],
+		buffs = ['b_growl'],
+	},
+	e_tr_curseatk = {
+		type = 'trigger',
+		trigger = [variables.TR_POST_TARG],
+		reset = [],
+		req_skill = true,
+		conditions = [
+			{type = 'skill', value = ['tags', 'has', 'damage']},
+			{type = 'skill', value = ['target_range', 'eq', 'melee']},
+			],
+		atomic = [],
+		buffs = ['tr_curseatk'],
+		sub_effects = ['e_s_curseatk']
+	},
+	e_s_curseatk = {
+		type = 'temp_s',
+		target = 'caster',
+		name = 'curseatk',
+		stack = 0,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 2,
+		tags = ['affliction', 'negative', 'debuff'],
+		args = [],
+		sub_effects = [],
+		atomic = [{type = 'stat_add_p', stat = 'atk', value = -0.25}],
+		buffs = ['b_curseatk'],
+	},
+	e_s_mward = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'magicward',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 4,
+		tags = ['positive', 'buff'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.25},
+			{type = 'stat_add', stat = 'mdef', value = 40},
+			],
+		buffs = ['b_magicward'],
+	},
+	e_s_slam = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'slam',
+		stack = 1,
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		duration = 'parent',
+		tags = ['negative'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add', stat = 'resist_damage_heal', value = -100},
+			],
+		buffs = ['b_slam'],
+	},
+	e_tr_fireshield = {
+		type = 'static',
+		tags = ['negative'],
+		args = [],
+		sub_effects = [
+			{
+				type = 'trigger',
+				conditions = [{type = 'skill', value = ['damage_type', 'eq', 'water'] }],
+				trigger = [variables.TR_POST_TARG],
+				req_skill = true,
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'self',
+						execute = 'remove_parent'
+					}
+				],
+				buffs = []
+			},
+			{
+				type = 'trigger',
+				conditions = [],
+				trigger = [variables.TR_TURN_GET],
+				req_skill = false,
+				sub_effects = [
+					{
+						type = 'oneshot',
+						target = 'owner',
+						args = [{obj = 'app_obj'}],
+						atomic = [{type = 'use_combat_skill', skill = 'pas_fireshield', target = ['parent_args', 0]}]
+					}
+				],
+				buffs = []
+			},
+		],
+		atomic = [],
+		buffs = ['b_fireshield'],
+	},
+	e_atkpass = {
+		type = 'trigger',
+		trigger = [variables.TR_TURN_F],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'app_obj'}],
+			atomic = [{type = 'use_combat_skill', skill = 'pas_atkpass_apply', target = ['parent_args', 0]}]
+			}],
+		buffs = ['b_atkpass_src']
+	},
+	e_s_atkpass = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'atkpass',
+		stack = 0,
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		tags = ['positive', 'buff', 'atkpass'],
+		args = [],
+		sub_effects = [],
+		atomic = [
+			{type = 'stat_add_p', stat = 'atk', value = 0.1},
+			{type = 'stat_add_p', stat = 'matk', value = 0.1},
+			],
+		buffs = ['b_atkpass'],
+	},
+	e_t_atkpass_remove = {
+		type = 'temp_s',
+		target = 'target',
+		name = 'atkpass_remove',
+		stack = 1,
+		rem_event = [variables.TR_COMBAT_F],
+		tags = [],
+		args = [],
+		sub_effects = ['e_tr_atkpass_remove'],
+	},
+	e_tr_atkpass_remove = {
+		type = 'trigger',
+		trigger = [variables.TR_DEATH],
+		req_skill = false,
+		conditions = [],
+		sub_effects = [{
+			type = 'oneshot',
+			target = 'owner',
+			args = [{obj = 'app_obj'}],
+			atomic = [{type = 'use_combat_skill', skill = 'pas_atkpass_remove', target = ['parent_args', 0]}]
+					}]
+	},
+	e_s_atkpass_remove = {
+		type = 'oneshot',
+		target = 'target',
+		args = [],
+		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
 	},
 	#items
 	e_i_shackles = {
@@ -3027,6 +3223,13 @@ var effect_table = {
 		buffs = [],
 		sub_effects = [],
 	},
+	e_i_gauntlets = {
+		type = 'static',
+		descript = "Skill Damage: +10%",
+		atomic = [{type = 'stat_add', stat = 'damage_mod_skill', value = 0.1}],
+		buffs = [],
+		sub_effects = [],
+	},
 };
 
 var atomic = {
@@ -3201,6 +3404,61 @@ var buffs = {
 		icon = "res://assets/images/iconsskills/Sedate.png", 
 		description = "Confusion",
 		t_name = 'powerpot',
+		combat_only = true
+	},
+	b_shred = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Armor reduced",
+		t_name = 'shred',
+		combat_only = true
+	},
+	b_growl = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Speed and evasion decreased",
+		t_name = 'shrgrowled',
+		combat_only = true
+	},
+	b_curseatk = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Attack decreased",
+		t_name = 'curseatk',
+		combat_only = true
+	},
+	tr_curseatk = {
+		icon = "res://assets/images/iconsskills/icon_turtle.png", 
+		description = "Attacking this target cause atk decreased",
+		t_name = 'curseatk_src',
+	},
+	b_magicward = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Attack and mdef increased",
+		t_name = 'magicward',
+		combat_only = true
+	},
+	b_slam = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Healing reduced",
+		t_name = 'slam',
+		combat_only = true
+	},
+	b_fireshield = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Fire shield",
+		t_name = 'fireshield',
+		combat_only = true
+	},
+	b_atkpass = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Damage increased",
+		t_name = 'atkpass',
+		limit = -1,
+		combat_only = true
+	},
+	b_atkpass_src = {
+		icon = "res://assets/images/iconsskills/Sedate.png", 
+		description = "Increases ATK and MATK of allies by 10 every other turn. Clear when defeated.",
+		t_name = 'atkpass_s',
+		limit = 1,
 		combat_only = true
 	},
 };

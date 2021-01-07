@@ -26,10 +26,10 @@ var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience'
 #list for values with relative values
 var dmg_rel_list = ['hp', 'mp', 'lust', 'obedience', 'loyalty', 'consent', 'exhaustion', 'energy', 'base_exp','physics_factor','wits_factor','charm_factor','sexuals_factor','tame_factor','timid_factor','brave_factor','growth_factor']
 #list for various types of damage mods
-var damage_mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill', 'true']
+var damage_mods_list = ['all','melee','ranged','normal','fire','earth','air','water','light','dark','mind','physic','spell', 'skill', 'aoe', 'true', 'heal']
 
 var resists_list = ['normal','fire','earth','air','water','light','dark','mind','all']
-var resists_damage_list = ['melee', 'ranged', 'aoe']
+var resists_damage_list = ['melee', 'ranged', 'aoe', 'heal']
 var status_list = ['stun','freeze','disarm','silence','burn','confuse','bleed','poison']
 var fighter_stats_list = ['hpmax','mpmax','atk','matk','armor','mdef','hitrate','evasion','armorpenetration','speed', 'critchance','critmod']
 
@@ -122,6 +122,12 @@ var sex_factor_skill_multiplier = {
 	5 : 1.75,
 	6 : 2.2,
 }
+
+#slave & quest timings
+
+var guild_slave_update_time = 7
+var guild_quest_update_time = 7
+
 
 #mansion & ugprades
 var base_population_cap = 5
@@ -247,7 +253,7 @@ var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - 
 var new_stat_bonuses_syntax = false
 
 
-
+var pregenabled = true
 var pregduration = 720
 
 var slave_classes_per_difficulty = {

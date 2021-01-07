@@ -12,7 +12,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "task_completed"
-length = 3.66667
+length = 5.0
 step = 0.0333333
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect2:rect_scale")
@@ -21,7 +21,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.166667, 2.56667, 2.73333 ),
+"times": PoolRealArray( 0, 0.166667, 4.785, 4.95 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
@@ -33,7 +33,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.533333, 2.43333, 2.6 ),
+"times": PoolRealArray( 0, 0.3, 0.533333, 4.653, 4.818 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -45,7 +45,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.566667, 0.766667, 2.33333, 2.46667 ),
+"times": PoolRealArray( 0, 0.566667, 0.766667, 4.554, 4.686 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -57,7 +57,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.6, 0.766667, 0.866667, 2.33333, 2.5 ),
+"times": PoolRealArray( 0.6, 0.766667, 0.866667, 4.554, 4.719 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 90.0, 36.0, 0.0, 0.0, 90.0 ]
@@ -69,7 +69,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.6, 0.7, 2.36667, 2.5 ),
+"times": PoolRealArray( 0, 0.6, 0.7, 4.587, 4.719 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -81,7 +81,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.6, 0.766667, 0.866667, 2.33333, 2.5 ),
+"times": PoolRealArray( 0.6, 0.766667, 0.866667, 4.554, 4.719 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -90.0, -36.0, 0.0, 0.0, -90.0 ]
@@ -93,7 +93,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.6, 0.7, 2.36667, 2.5 ),
+"times": PoolRealArray( 0, 0.6, 0.7, 4.587, 4.719 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -228,12 +228,10 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 1257.36
 margin_top = 38.2929
 margin_right = 1373.36
 margin_bottom = 288.293
-rect_rotation = -90.0
 rect_pivot_offset = Vector2( 0.0506592, 236.723 )
 texture = ExtResource( 9 )
 __meta__ = {
@@ -241,12 +239,10 @@ __meta__ = {
 }
 
 [node name="TextureRect4" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 546.775
 margin_top = 38.0694
 margin_right = 662.775
 margin_bottom = 288.07
-rect_rotation = 90.0
 rect_pivot_offset = Vector2( 115.886, 239.125 )
 texture = ExtResource( 9 )
 flip_h = true
@@ -260,7 +256,6 @@ margin_top = 84.9359
 margin_right = 1260.3
 margin_bottom = 284.936
 rect_min_size = Vector2( 1, 0 )
-rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 300.81, 98.9762 )
 texture = ExtResource( 4 )
 stretch_mode = 6
@@ -281,11 +276,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 764.814
-margin_top = 108.036
-margin_right = 1153.81
-margin_bottom = 175.036
+margin_left = 669.0
+margin_top = 108.0
+margin_right = 1247.0
+margin_bottom = 175.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Task completed "
@@ -296,11 +290,10 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 796.707
-margin_top = 190.11
-margin_right = 1124.71
-margin_bottom = 257.11
+margin_left = 676.0
+margin_top = 190.0
+margin_right = 1246.0
+margin_bottom = 257.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Monster hunt"

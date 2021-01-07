@@ -441,4 +441,22 @@ var upgradelist = {
 #			},
 		}
 	},
+	
+	tattoo_set = {
+		code = 'tattoo_set',
+		name = '',
+		positionorder = 8,
+		descript = '',
+		category = 'upgrade',
+		levels = {
+			1:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADETATTOOBONUS"),
+				taskprogress = 100,
+				#townnode = "farm",
+				cost = {woodiron = 25, woodmagic = 25, leatherthick = 20},
+			},
+		}
+	},
 }

@@ -165,7 +165,7 @@ func gear_detailed_tooltip(data, item = null):
 				var change = ''
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value*100
-				text += '\n' + tr(Items.stats[k]) + ': {color='
+				text += '\n' + statdata.statdata[i].name + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|' + change
@@ -206,16 +206,16 @@ func geartemplete_tooltip(data):
 			if item.basestats[i] != 0:
 				var value = item.basestats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
-				text += statdata.statdata[i].name + " " +Items.stats[i] + ': {color='
+				text += statdata.statdata[i].name  + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|' + change
 				else:
 					text += 'red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 	

@@ -340,7 +340,7 @@ func doaction(action):
 		self.showntext = globals.TextEncoder(decoder(text))
 	actionhistory.append(action)
 	stopactions = false
-	if !action in ['train', 'study','practice_charm', 'public', 'useitem']:
+	if !action in ['train', 'study','practice_charm', 'public', 'useitem','stop']:
 		self.turn -= 1
 		if turn%2 == 0:
 			if location == 'garden' && person.get_stat('personality') == 'shy':
@@ -1203,7 +1203,8 @@ func train(person, counter):
 	+ person.get_short_name() + ": +" + str(floor(value)))
 	person.add_stat('physics', value)
 	master.add_stat('physics', value2)
-	self.mood += 4
+	self.mood += self.turn
+	self.turn = 0
 	finish_encounter = true
 	
 	return text
@@ -1219,7 +1220,8 @@ func study(person, counter):
 	
 	person.add_stat('wits', value)
 	master.add_stat('wits', value2)
-	self.mood += 20
+	self.mood += self.turn
+	self.turn = 0
 	finish_encounter = true
 	
 	return text
@@ -1235,7 +1237,8 @@ func charm(person, counter):
 	
 	person.add_stat('charm', value)
 	master.add_stat('charm', value2)
-	self.mood += rand_range(20,30)
+	self.mood += self.turn
+	self.turn = 0
 	finish_encounter = true
 	
 	return text

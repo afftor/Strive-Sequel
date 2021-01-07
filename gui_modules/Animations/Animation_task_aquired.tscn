@@ -24,7 +24,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/pos = Vector2( 0, 90 )
+shader_param/pos = Vector2( 0, -100 )
 shader_param/mask = ExtResource( 8 )
 
 [sub_resource type="Shader" id=3]
@@ -205,9 +205,9 @@ __meta__ = {
 [node name="TextureRect2" type="TextureRect" parent="."]
 material = SubResource( 2 )
 margin_left = 654.63
-margin_top = -75.1833
+margin_top = 113.766
 margin_right = 1266.63
-margin_bottom = 104.817
+margin_bottom = 293.766
 rect_pivot_offset = Vector2( 306.37, 86.234 )
 texture = ExtResource( 5 )
 stretch_mode = 6
@@ -220,7 +220,6 @@ margin_left = 619.295
 margin_top = 82.8406
 margin_right = 1307.29
 margin_bottom = 122.841
-rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 343.474, 19.9467 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -228,7 +227,7 @@ __meta__ = {
 }
 
 [node name="TextureRect4" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.705882 )
 margin_left = 664.044
 margin_top = 86.0128
 margin_right = 1261.04
@@ -239,7 +238,7 @@ __meta__ = {
 }
 
 [node name="TextureRect5" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.277257 )
 material = SubResource( 4 )
 margin_left = 664.044
 margin_top = 86.0128
@@ -251,10 +250,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 791.395
+margin_left = 684.0
 margin_top = 119.0
-margin_right = 1130.39
+margin_right = 1245.0
 margin_bottom = 186.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -265,11 +263,10 @@ __meta__ = {
 }
 
 [node name="SelectedQuest" type="Label" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 794.488
-margin_top = 192.219
-margin_right = 1127.49
-margin_bottom = 259.219
+margin_left = 680.0
+margin_top = 192.0
+margin_right = 1243.0
+margin_bottom = 259.0
 rect_pivot_offset = Vector2( 188.832, 67.9652 )
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )

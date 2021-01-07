@@ -111,6 +111,9 @@ func get_weapon_range():
 func get_damage_mod(skill:Dictionary):
 	return skills.get_damage_mod(skill)
 
+func get_value_damage_mod(skill_v:Dictionary):
+	return skills.get_value_damage_mod(skill_v)
+
 func remove_negative_sex_trait(code):
 	statlist.remove_negative_sex_trait(code)
 
@@ -390,6 +393,7 @@ func can_evade():
 
 func can_use_skill(skill):
 	if !check_cost(skill.cost): return false
+	if skill.type == 'auto': return false
 	if skills.combat_cooldowns.has(skill.code): return false
 	if has_status('disarm') and skill.ability_type == 'skill' and !skill.tags.has('default'): return false
 	if has_status('silence') and skill.ability_type == 'spell' and !skill.tags.has('default'): return false
@@ -788,7 +792,7 @@ func show_race_description():
 	text += temprace.descript
 	text += "\n\nRace bonuses: "
 	for i in temprace.race_bonus:
-		if statdata.statdata[i].has("percent") && statdata.statdata[i].percent == true:
+		if statdata.statdata[i].percent == true:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]*100) + '%, '
 		else:
 			text += statdata.statdata[i].name + ": " + str(temprace.race_bonus[i]) + ', '
@@ -933,7 +937,9 @@ func apply_atomic(template):
 			killed()
 		'use_combat_skill':
 			if input_handler.combat_node == null: return
-			input_handler.combat_node.use_skill(template.skill, self, template.target)
+			if skills.combat_cooldowns.has(template.skill): return
+#			input_handler.combat_node.use_skill(template.skill, self, template.target)
+			input_handler.combat_node.q_skills.push_back({skill = template.skill, caster = self, target = template.target})
 		'use_social_skill':
 			if !check_location('mansion'): return
 			#use_social_skill(template.value, null)
@@ -1043,9 +1049,11 @@ func deal_damage(value, source = 'normal'):
 		return heal(-value)
 
 func heal(value):
-	if value < 0: return deal_damage(value)
 	var tmp = hp
+#	if get_stat('resist_damage').has('heal'):
+#		value *= get_stat('resist_damage').heal
 	value = round(value)
+	if value < 0: return deal_damage(value)
 	self.hp += value
 	tmp = hp - tmp
 	process_event(variables.TR_HEAL)
