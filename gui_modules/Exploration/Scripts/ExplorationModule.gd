@@ -1087,6 +1087,11 @@ func update_guild_actions(guild):
 				"interactive_dialogue_start",
 				[event.target, event.target_option]
 			)
+			newbutton.connect(
+				"pressed",
+				gui_controller,
+				"close_all_closeable_windows"
+			)
 			newbutton.texture_normal = load(
 				"res://assets/Textures_v2/CITY/Buttons/buttonmagenta.png"
 			)
