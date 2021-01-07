@@ -2544,8 +2544,8 @@ var effect_table = {
 		args = [],
 		sub_effects = [],
 		atomic = [
-#			{type = 'stat_add_p', stat = 'atk', value = 0.1},
-#			{type = 'stat_add_p', stat = 'matk', value = 0.1},
+			{type = 'stat_add_p', stat = 'atk', value = 0.1},
+			{type = 'stat_add_p', stat = 'matk', value = 0.1},
 			],
 		buffs = ['b_atkpass'],
 	},
@@ -3425,7 +3425,7 @@ var buffs = {
 		combat_only = true
 	},
 	tr_curseatk = {
-		icon = "res://assets/images/iconsskills/Sedate.png", 
+		icon = "res://assets/images/iconsskills/icon_turtle.png", 
 		description = "Attacking this target cause atk decreased",
 		t_name = 'curseatk_src',
 	},
@@ -3456,7 +3456,7 @@ var buffs = {
 	},
 	b_atkpass_src = {
 		icon = "res://assets/images/iconsskills/Sedate.png", 
-		description = "Increases damage of allies every other turn",
+		description = "Increases ATK and MATK of allies by 10 every other turn. Clear when defeated.",
 		t_name = 'atkpass_s',
 		limit = 1,
 		combat_only = true

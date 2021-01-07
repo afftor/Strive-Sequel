@@ -654,7 +654,7 @@ func getrelativename(person, person2):
 	return result
 
 func impregnate(father, mother):
-	if mother.get_stat('has_womb') == false || mother.get_stat('pregnancy').duration != 0:
+	if mother.get_stat('has_womb') == false || mother.get_stat('pregnancy').duration != 0 || variables.pregenabled == false:
 		return
 	var check = true
 	if father.get_stat('race') != mother.get_stat('race'):
@@ -968,6 +968,8 @@ func makerandomgroup(enemygroup):
 					if aiposition == 'melee' && j in [1,2,3]:
 						temparray.append(j)
 					if aiposition == 'ranged' && j in [4,5,6]:
+						temparray.append(j)
+					if aiposition == 'any':
 						temparray.append(j)
 				
 				if temparray.size() <= 0:

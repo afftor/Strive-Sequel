@@ -123,6 +123,12 @@ var sex_factor_skill_multiplier = {
 	6 : 2.2,
 }
 
+#slave & quest timings
+
+var guild_slave_update_time = 7
+var guild_quest_update_time = 7
+
+
 #mansion & ugprades
 var base_population_cap = 5
 var population_cap_per_room_upgrade = 5
@@ -247,7 +253,7 @@ var ai_setup = 'old' # 'off' - no setup, 'old' - using data convertion, 'new' - 
 var new_stat_bonuses_syntax = false
 
 
-
+var pregenabled = true
 var pregduration = 720
 
 var slave_classes_per_difficulty = {

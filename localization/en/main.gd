@@ -109,8 +109,8 @@ var TranslationDict = {
 	MATERIALADAMANTINE = "Adamantine",
 	MATERIALADAMANTINEADJ = "Adamantine",
 	MATERIALADAMANTINEDESCRIPT = "A very rare and strong magic alloy. Produced by crafting. ",
-	MATERIALFLEAWARTS = "Fleawarts",
-	MATERIALFLEAWARTSDESCRIPT = "A common plant with healing properties.",
+	MATERIALBLUE_MOSS = "Blue Moss",
+	MATERIALBLUE_MOSSDESCRIPT = "A rare plant with magical properties.",
 	MATERIALSALVIA = "Salvia",
 	MATERIALSALVIADESCRIPT = "An uncommon plant with mind influencing properties. ",
 	MATERIALTRAP = "Trap Component",
@@ -301,7 +301,7 @@ var TranslationDict = {
 	ITEMCHEST_BASE_METAL = "Plate Armor",
 	ITEMLEGS_BASE_CLOTH = "Pants",
 	ITEMLEGS_BASE_LEATHER = "Medium Lower Armor",
-	ITEMLEGS_BASE_METAL = "Heavy Lower Armor",
+	ITEMLEGS_BASE_METAL = "Plate Lower Armor",
 	
 	ITEMCHEST_BASE_CLOTHDESCRIPT = "A light armor which can be worn by anyone. Provides reasonable protection from spell type damage.",
 	ITEMCHEST_BASE_LEATHERDESCRIPT = "An armor assembled from bones or leather, requires some training for comfortable usage.",
@@ -2628,7 +2628,89 @@ var TranslationDict = {
 
 	STARTTHISGAME = "Start this Game?",
 	UPDATEFILE = "Update this file?",
-
-
+	
+	
+	STATOBDRAINREDUCTION = "Obedience Drain Decrease",
+	STATOBDRAININCREASE = "Obedience Drain Increase",
+	STATAUTHORITY_MOD = "Authority Growth",
+	
+	ITEMCHEST_ADV_CLOTH = "Coat",
+	ITEMLEGS_ADV_CLOTH = "Mantle",
+	ITEMCHEST_ADV_LEATHER = "Advanced Medium Armor",
+	ITEMLEGS_ADV_LEATHER = "Advanced Medium Pants",
+	ITEMCHEST_ADV_METAL = "Advanced Heavy Armor",
+	ITEMLEGS_ADV_METAL = "Advanced Heavy Pants",
+	ITEMCHEST_ADV_CLOTHDESCRIPT = "Advanced mage armor besides protection provides boost to wearer's powers, however requires additional materials. ",
+	ITEMLEGS_ADV_CLOTHDESCRIPT = "Advanced mage armor besides protection provides boost to wearer's powers, however requires additional materials. ",
+	ITEMCHEST_ADV_LEATHERDESCRIPT = "A more complex medium armor usually made of lighter materials, yet providing reasonable defense. ",
+	ITEMLEGS_ADV_LEATHERDESCRIPT = "A more complex medium armor usually made of lighter materials, yet providing reasonable defense. ",
+	ITEMCHEST_ADV_METALDESCRIPT = "A heavy metal armor of higher craftsmanship shown by using additional materials. ",
+	ITEMLEGS_ADV_METALDESCRIPT = "A heavy metal armor of higher craftsmanship shown by using additional materials. ",
+	
+	ITEMSWORDADV = "Heavy Sword",
+	ITEMSTAFFADV = "Master Staff",
+	ITEMSPEARADV = "Great Spear",
+	ITEMBOWADV = "Longbow",
+	ITEMSWORDADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	ITEMSTAFFADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	ITEMSPEARADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	ITEMBOWADVDESCRIPT = "A masterful weapon forged with inclusion of additional materials.",
+	
+	ARMORENC = "Encrustment",
+	WEAPONECN = "Encrustment",
+	
+	ITEMLATEX_SUIT = "Latex Suit",
+	ITEMLATEX_SUITDESCRIPT = "A tight clothing accentuating curves of the body.",
+	
+	
+	MATERIALINK_BASE = "Ink Base",
+	MATERIALINK_BASEDESCRIPT = "A special ink suited for being imbued with magic. Serves as a basis for tattos. ",
+	MATERIALICE_CRYSTAL = "Eternal Ice",
+	MATERIALICE_CRYSTALDESCRIPT = "A rare crystal holding some magic properties which can be used in craft.",
+	MATERIALFIRE_RUBY = "Fire Ruby",
+	MATERIALFIRE_RUBYDESCRIPT = "A rare gem storing some magic power which can be utilized in craft.",
+	MATERIALLIZARD_SKIN = "Lizard Scales",
+	MATERIALLIZARD_SKINDESCRIPT = "Lizard skin with some magic properties which can be used in craft.",
+	MATERIALINSECT_CHITIN = "Chitin",
+	MATERIALINSECT_CHITINDESCRIPT = "An insect exoskeleton which can be used in craft.",
+	MATERIALOGRE_TEETH = "Ogre Teeth",
+	MATERIALOGRE_TEETHDESCRIPT = "Sharp fangs of a monster with some magic properties which can be used in craft.",
+	MATERIALCRYSTALIZED_ETHER = "Crystalized Ether",
+	MATERIALCRYSTALIZED_ETHERDESCRIPT = "Dull round gems possessing the element of Air. Can be used in craft",
+	
+	UPGRADETATTOO_SET = "Beauty Parlor",
+	UPGRADETATTOO_SETDESCRIPT = "An upgrade unlocking new interactions",
+	UPGRADETATTOOBONUS = "Unlocks application of tattoos.",
+	
+	TATTOOFACE = "Face",
+	TATTOONECK = "Neck",
+	TATTOOCHEST = "Chest",
+	TATTOOARMS = "Arms",
+	TATTOOWAIST = "Waist",
+	TATTOOASS = "Ass",
+	TATTOOCROTCH = "Crotch",
+	TATTOOLEGS = "Legs",
+	
+	STATDAMAGE_MOD_FIRE = "Fire Damage",
+	STATDAMAGE_MOD_WATER = "Water Damage",
+	STATDAMAGE_MOD_AIR = "Air Damage",
+	STATDAMAGE_MOD_EARTH = "Earth Damage",
+	STATDAMAGE_MOD_LIGHT = "Light Damage",
+	STATDAMAGE_MOD_DARK = "Dark Damage",
+	STATDAMAGE_MOD_MIND = "Mind Damage",
+	
+	ENEMYMANEATER_PLANT = "Maneater Plant",
+	ENEMYCENTIPEDE = "Centipede",
+	ENEMYOGRE_ALPHA = "Ogre Alpha",
+	ENEMYROCKTHROWER = "Rockthrower",
+	ENEMYANT = "Giant Ant",
+	ENEMYSALAMNDER = "Salamander",
+	ENEMYGREAT_VIPER = "Great Viper",
+	ENEMYIFRIT = "Ifrit",
+	ENEMYANTHROPOID = "Anthropoid",
+	ENEMYMAGMA_BEAST = "Magma Beast",
+	ENEMYEREBUS_STONE = "Erebus Stone",
+	
+	
 }
 

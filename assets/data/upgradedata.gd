@@ -453,9 +453,9 @@ var upgradelist = {
 				unlockreqs = [],
 				icon = 'upgrade_farm', 
 				bonusdescript = tr("UPGRADETATTOOBONUS"),
-				taskprogress = 50,
+				taskprogress = 100,
 				#townnode = "farm",
-				cost = {wood = 25, leather = 20, iron = 10},
+				cost = {woodiron = 25, woodmagic = 25, leatherthick = 20},
 			},
 		}
 	},

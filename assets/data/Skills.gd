@@ -2253,7 +2253,7 @@ var Skilllist = {
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_fireburst', duration = 3})], 
-		cost = {mp = 8},
+		cost = {mp = 12},
 		charges = 0,
 		combatcooldown = 0,
 		cooldown = 0,
@@ -2654,7 +2654,7 @@ var Skilllist = {
 		catalysts = {unstable_concoction = 1},
 		target = 'enemy',
 		target_number = 'single',
-		target_range = 'melee',
+		target_range = 'any',
 		damage_type = 'water', 
 		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
@@ -2683,8 +2683,8 @@ var Skilllist = {
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.2
 	},
-	entangle1 = {
-		code = 'entangle1',
+	entangle_enemy = {
+		code = 'entangle_enemy',
 		descript = '',
 		icon = load("res://assets/images/iconsskills/AcidBomb.png"),
 		type = 'combat', 
@@ -2700,11 +2700,11 @@ var Skilllist = {
 		catalysts = {},
 		target = 'enemy',
 		target_number = 'single',#?
-		target_range = 'melee',#?
-		damage_type = 'no_stat',
+		target_range = 'any',
+		damage_type = 'earth',
 		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}],#? 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0.0
+		value = 1
 	},
 	poison_spray = {
 		code = 'poison_spray',
@@ -2787,7 +2787,7 @@ var Skilllist = {
 		icon = load("res://assets/images/iconsskills/Attack.png"),
 		type = 'combat', 
 		ability_type = 'skill',
-		tags = ['ads'],
+		tags = ['aoe'],
 		reqs = [],
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_growl', duration = 3})],
@@ -2800,10 +2800,10 @@ var Skilllist = {
 		target_number = 'x_random',
 		number_rnd_targets = 3,
 		target_range = 'any',
-		damage_type = 'weapon',
+		damage_type = 'air',
 		sfx = [{code = 'water_attack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
-		value = 0,
+		value = 0.5,
 	},
 	magicward = {
 		code = 'magicward',
@@ -2874,7 +2874,7 @@ var Skilllist = {
 		target_number = 'single',
 		target_range = 'melee',
 		damage_type = 'normal',
-		sfx = [{code = 'earth_spike', target = 'target', period = 'predamage'}], 
+		sfx = [{code = 'targetattack', target = 'target', period = 'predamage'}], 
 		sounddata = {initiate = 'avalanche', strike = null, hit = null, hittype = 'bodyarmor'},
 		value = 1.2
 	},

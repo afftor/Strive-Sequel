@@ -354,7 +354,7 @@ func selectcraftitem(item):
 		var array = []
 		for i in item.parts:
 			array.append(i)
-		array.sort()
+		#array.sort()
 		itemparts.clear()
 		for i in ['Part1','Part2','Part3']:
 			get_node("MaterialSetupPanel/ModularSetup/" + i).texture_normal = default_part_texture
@@ -379,7 +379,7 @@ func selectcraftitem(item):
 				$MaterialSetupPanel/ModularSetup/Part2.set_meta('cost',item.parts[array[1]])
 				$MaterialSetupPanel/ModularSetup/Part3.show()
 				$MaterialSetupPanel/ModularSetup/Part3.set_meta('part',array[2])
-				$MaterialSetupPanel/ModularSetup/Part3.set_meta('cost',item.parts[array[3]])
+				$MaterialSetupPanel/ModularSetup/Part3.set_meta('cost',item.parts[array[2]])
 
 
 
@@ -440,7 +440,7 @@ func selectmaterial(material, part, cost):
 			if Items.itemlist[itemtemplate].itemtype == 'armor':
 				endvalue = float(endvalue) / 2
 			if endvalue != 0:
-				text += '\n' + tr(Items.stats[i]) + ': ' + str(endvalue)
+				text += '\n' + statdata.statdata[i].name + ': ' + str(endvalue)
 		else:
 			for k in material.parts[part][i]:
 				text += '\n' + Effectdata.effects[k].descript
