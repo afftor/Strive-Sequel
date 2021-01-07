@@ -35,6 +35,7 @@ func get_damage_mod(skill:Dictionary):
 	if skill.ability_type == 'skill' and damage_mods.has('skill'): res *= damage_mods['skill']
 	if skill.ability_type == 'spell' and damage_mods.has('spell'): res *= damage_mods['spell']
 	if skill.tags.has('aoe') and damage_mods.has('aoe'): res *= damage_mods['aoe'] 
+	if skill.tags.has('heal') and damage_mods.has('heal'): res *= damage_mods['heal'] 
 	
 	return res
 
@@ -42,7 +43,7 @@ func get_value_damage_mod(skill_val:Dictionary):
 	#stub. needs filling
 	var damage_mods = parent.get_stat('damage_mods')
 	var res = 1.0
-	if damage_mods.has(skill_val.damage_type): res *= damage_mods[skill_val.damage_type]
+	if damage_mods.has(skill_val.source): res *= damage_mods[skill_val.source]
 	return res
 
 func learn_skill(skill):

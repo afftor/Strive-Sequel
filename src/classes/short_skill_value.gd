@@ -108,6 +108,10 @@ func calculate_dmg():
 		reduction = mods.melee
 	if !template.nodef and !template.nomod:
 		value *= (float(100 - reduction)/100.0)
+	if parent.tags.has('heal'):
+		reduction = mods.heal
+	if !template.nomod: #there may be errors due to damagestat templating
+		value *= (float(100 - reduction)/100.0)
 	
 	value = round(value)
 

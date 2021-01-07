@@ -51,7 +51,7 @@ var playerpaneltextures = {
 	target = null,
 	disabled = null,
 }
-
+var q_skills = []
 var battlefield = [] #hid/null
 onready var battlefieldpositions = {1 : $Panel/PlayerGroup/Front/left, 2 : $Panel/PlayerGroup/Front/mid, 3 : $Panel/PlayerGroup/Front/right,
 4 : $Panel/PlayerGroup/Back/left, 5 : $Panel/PlayerGroup/Back/mid, 6 : $Panel/PlayerGroup/Back/right,
@@ -488,6 +488,7 @@ func player_turn(pos):
 	$Menu/Run.disabled = false
 	turns += 1
 	var selected_character = characters_pool.get_char_by_id(playergroup[pos])
+	activecharacter = selected_character
 	#selected_character.update_timers()
 	selected_character.process_event(variables.TR_TURN_GET)
 	selected_character.displaynode.rebuildbuffs()
@@ -519,7 +520,6 @@ func player_turn(pos):
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 	#allowaction = true
-	activecharacter = selected_character
 	RebuildSkillPanel()
 	RebuildItemPanel()
 	SelectSkill(selected_character.selectedskill)
@@ -865,6 +865,7 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 			tchar.mul_stat(stat, enemy_stats_mod)
 		tchar.hp = tchar.get_stat("hpmax")
 		enemygroup[i] = characters_pool.add_char(tchar)
+		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
 
@@ -903,6 +904,7 @@ func summon(montype, limit):
 
 
 func use_skill(skill_code, caster, target):
+	
 	$ItemPanel.hide()
 	$Menu/Items.pressed = false
 	if activeaction != skill_code: activeaction = skill_code
@@ -1083,10 +1085,17 @@ func use_skill(skill_code, caster, target):
 	if endturn or caster.hp <= 0 or !caster.can_act():
 		#on end turn triggers
 		caster.process_event(variables.TR_TURN_F)
+			#use queued skills
+		while !q_skills.empty():
+			var tdata = q_skills.pop_front()
+			var tstate = use_skill(tdata.skill, tdata.caster, tdata.target)
+			if typeof(tstate) == TYPE_OBJECT:
+				yield(tstate, 'completed')
+		
 		call_deferred('select_actor')
 		eot = false
 	else:
-		if activecharacter.combatgroup == 'ally':
+		if caster.combatgroup == 'ally':
 			CombatAnimations.check_start()
 			if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
 		#allowaction = true
@@ -1253,6 +1262,21 @@ func CalculateTargets(skill, target, finale = false):
 					if !tchar.can_be_damaged(skill.code) and !finale: continue
 					array.append(tchar)
 				elif targetgroup == 'full':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+		'nontarget_group':
+			for j in range(1, 13):
+				if target.position == j: continue
+				if j in range(1,7) && targetgroup == 'enemy':
+					if battlefield[j] == null : continue
+					var tchar = characters_pool.get_char_by_id(battlefield[j])
+					if tchar.defeated: continue
+					if !tchar.can_be_damaged(skill.code) and !finale: continue
+					array.append(tchar)
+				elif j in range(7, 13) && targetgroup == 'player':
 					if battlefield[j] == null : continue
 					var tchar = characters_pool.get_char_by_id(battlefield[j])
 					if tchar.defeated: continue
@@ -1455,6 +1479,7 @@ func ClearSkillPanel():
 	input_handler.ClearContainer($SkillPanel)
 
 func RebuildSkillPanel():
+	if activecharacter == null: return
 	ClearSkillPanel()
 	var counter = 0
 	var src = activecharacter.skills.combat_skill_panel
@@ -1508,6 +1533,7 @@ func RebuildSkillPanel():
 			newbutton.connect('signal_RMB_release',self,'select_skill_for_position', [i])
 
 func SelectSkill(skill):
+	if activecharacter == null: return
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	skill = Skilldata.Skilllist[skill]
 	#need to add daily restriction check
