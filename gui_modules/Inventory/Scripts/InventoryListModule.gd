@@ -49,7 +49,10 @@ func buildinventory():
 		if list_mode == "tattoo":
 			newbutton.visible = material.type == "tattoo"
 		else:
-			newbutton.visible = true
+			if ResourceScripts.game_res.upgrades.has("tattoo"):
+				newbutton.visible = true
+			else:
+				newbutton.visible = material.type != "tattoo"
 
 	for i in ResourceScripts.game_res.items.values():
 		if list_mode == "tattoo":
