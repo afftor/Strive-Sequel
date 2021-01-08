@@ -315,7 +315,7 @@ func gear_detailed_tooltip(data, item = null):
 				var change = ''
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value*100
-				text += '\n' + statdata.statdata[i].name + ': {color='
+				text += '\n' + statdata.statdata[k].name + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|' + change
