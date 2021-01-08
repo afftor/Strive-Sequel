@@ -19,6 +19,7 @@ func select_race():
 		newbutton.text = i.name
 		# newbutton.connect("mouse_entered", self, 'show_race_info',[i.code])
 		newbutton.connect("pressed", self, "show_race_info", [i.code])
+	show_race_info(person.get_stat("race"))
 
 
 func select_character_race():
