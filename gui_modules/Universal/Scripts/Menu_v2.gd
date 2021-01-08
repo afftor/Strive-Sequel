@@ -118,6 +118,7 @@ func options(pressed, pressed_button):
 	$Options.open()
 
 func gallery():
+	$Gallery.set_state("story")
 	$Gallery.open_galery()
 
 
