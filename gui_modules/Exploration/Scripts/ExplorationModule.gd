@@ -1767,7 +1767,7 @@ func update_sell_list():
 		newbutton.set_meta('item', item.name)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
-		globals.connectitemtooltip(newbutton, item)
+		globals.connectitemtooltip_v2(newbutton, item)
 
 
 func update_buy_list():
@@ -1826,7 +1826,7 @@ func update_buy_list():
 				newitem.set_icon(newbutton.get_node('icon'))
 				newbutton.get_node("name").text = newitem.name
 				tempitems.append(newitem)
-				globals.connectitemtooltip(newbutton, newitem)
+				globals.connectitemtooltip_v2(newbutton, newitem)
 				newbutton.get_node("price").text = str(newitem.calculateprice())
 				newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
 			else:
@@ -1851,6 +1851,7 @@ func item_purchase(item, amount):
 	if amount < 0:
 		amount = 100
 	var price = 0
+	var icon = null
 	if typeof(item) == TYPE_OBJECT:
 		price = item.calculateprice()
 	else:
@@ -1863,7 +1864,8 @@ func item_purchase(item, amount):
 		1,
 		amount,
 		true,
-		item.icon
+		item.icon,
+		item
 	)
 
 
@@ -1935,7 +1937,8 @@ func item_sell(item):
 		1,
 		sellingamount,
 		false,
-		item.icon
+		item.icon,
+		item
 	)
 
 
@@ -1978,6 +1981,7 @@ func quest_board(pressed, pressed_button):
 					$QuestBoard/ScrollContainer/VBoxContainer
 				)
 				newbutton.get_node("Label").text = k.name
+				newbutton.get_node("Requester").text = k.source.capitalize()
 				var text = k.descript
 				newbutton.get_node("RichTextLabel2").bbcode_text = globals.TextEncoder(text)
 				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
@@ -2015,6 +2019,7 @@ func change_texture(button, state):
 			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
 
 
+
 func see_quest_info(quest):
 	for i in $QuestBoard/ScrollContainer/VBoxContainer.get_children():
 		if i.name == 'Button':
@@ -2047,7 +2052,8 @@ func see_quest_info(quest):
 				if itemtemplate.has('parts'):
 					#newbutton.material = load("res://src/ItemShader.tres").duplicate()
 					var showcase_item = globals.CreateGearItem(i.type, i.parts)
-					input_handler.itemshadeimage(newbutton, showcase_item)
+					# input_handler.itemshadeimage(newbutton, showcase_item)
+					showcase_item.set_icon(newbutton.get_node("Icon"))
 					globals.connectitemtooltip(newbutton, showcase_item)
 					if i.has('parts'):
 						newbutton.hint_tooltip += "\nPart Requirements: "

@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=9 format=2]
+[gd_resource type="Theme" load_steps=10 format=2]
 
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttondetails_hover.png" type="Texture" id=1]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttondetails_pressed.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Buttons/buttondetails.png" type="Texture" id=3]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -32,3 +33,4 @@ Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
+TooltipPanel/styles/panel = ExtResource( 4 )

@@ -12,11 +12,11 @@ var mode = 'default'
 
 func _process(delta):
 	if weakref(parentnode).get_ref() == null || weakref(parentnode) == null:
-		hide()
+		_hide()
 		return
 	if parentnode != null && (parentnode.is_visible_in_tree() == false || !parentnode.get_global_rect().has_point(get_global_mouse_position())):
 		set_process(false)
-		hide()
+		_hide()
 
 func _input(event):
 	if event.is_pressed():
@@ -165,7 +165,7 @@ func gear_detailed_tooltip(data, item = null):
 				var change = ''
 				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
 					value = value*100
-				text += '\n' + statdata.statdata[i].name + ': {color='
+				text += '\n' + statdata.statdata[k].name + ': {color='
 				if value > 0:
 					change = '+'
 					text += 'green|' + change
@@ -246,7 +246,9 @@ func cooldown():
 	yield(get_tree().create_timer(0.2), 'timeout')
 	shutoff = false
 
-func hide():
+func _hide():
 	parentnode = null
 	set_process(false)
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
+	hide()
+	

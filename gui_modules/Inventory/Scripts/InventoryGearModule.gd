@@ -115,7 +115,7 @@ func unequip(slot):
 	var selectedhero = input_handler.interacted_character
 	if selectedhero.equipment.gear[slot] != null:
 		selectedhero.unequip(ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]])
-		var itemtooltip = get_tree().get_root().get_node_or_null("itemtooltip")
+		var itemtooltip = get_tree().get_root().get_node_or_null("itemtooltip_v2")
 		if itemtooltip != null && itemtooltip.is_visible():
 			itemtooltip.hide()
 	get_parent().set_active_hero(selectedhero)
@@ -127,7 +127,7 @@ func show_equip_tooltip(slot):
 		return
 	else:
 		var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]
-		item.tooltip($InventorySlots.get_node(slot))
+		item.tooltip_v2($InventorySlots.get_node(slot))
 
 
 func show_tattoo_tooltip(slot):

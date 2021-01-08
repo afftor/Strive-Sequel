@@ -59,6 +59,12 @@ func show_fullscreen(image):
 	ResourceScripts.core_animations.UnfadeAnimation($FullScreenImage)
 
 
+func open_galery():
+	ResourceScripts.core_animations.UnfadeAnimation(self)
+	yield(get_tree().create_timer(0.3), "timeout")
+	show()
+
+
 func close_galery():
 	ResourceScripts.core_animations.FadeAnimation(self)
 	yield(get_tree().create_timer(0.3), "timeout")
