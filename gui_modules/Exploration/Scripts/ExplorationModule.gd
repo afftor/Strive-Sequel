@@ -1851,6 +1851,7 @@ func item_purchase(item, amount):
 	if amount < 0:
 		amount = 100
 	var price = 0
+	var icon = null
 	if typeof(item) == TYPE_OBJECT:
 		price = item.calculateprice()
 	else:
@@ -1863,7 +1864,8 @@ func item_purchase(item, amount):
 		1,
 		amount,
 		true,
-		item.icon
+		item.icon,
+		item
 	)
 
 
@@ -1935,7 +1937,8 @@ func item_sell(item):
 		1,
 		sellingamount,
 		false,
-		item.icon
+		item.icon,
+		item
 	)
 
 
