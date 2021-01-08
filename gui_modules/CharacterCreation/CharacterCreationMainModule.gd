@@ -339,6 +339,10 @@ func hideSaveLoadPanel():
 	saveloadstate = null
 
 func SaveLoadCharPanel(saveloadmode):
+	if saveloadmode == "save":
+		$SaveLoadCharPanel/SaveLoadButton.text = "Save"
+	else:
+		$SaveLoadCharPanel/SaveLoadButton.text = "Load"	
 	$SaveLoadCharPanel.show()
 	ResourceScripts.core_animations.UnfadeAnimation($SaveLoadCharPanel, 0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -350,10 +354,7 @@ func SaveLoadCharPanel(saveloadmode):
 	for i in input_handler.dir_contents(variables.userfolder + 'savedcharacters'):
 		var savename = i.replace(variables.userfolder + 'savedcharacters/',"").replace('.ch', '')
 		var newbutton = input_handler.DuplicateContainerTemplate($SaveLoadCharPanel/ScrollContainer/VBoxContainer)
-		if saveloadmode == "save":
-			$SaveLoadCharPanel/SaveLoadButton.text = "Save"
-		else:
-			$SaveLoadCharPanel/SaveLoadButton.text = "Load"	
+
 		newbutton.get_node("Delete").connect("pressed", self, 'PressDeleteCharacter', [savename])
 		newbutton.get_node("Label").text = savename
 		newbutton.connect('pressed', self, 'PressSaveLoadCharacter', [savename])	
