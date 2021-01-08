@@ -1,6 +1,6 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/Noto_Sans_SC/NotoSansSC-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=4]
@@ -54,6 +54,8 @@
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_hover.png" type="Texture" id=52]
 [ext_resource path="res://assets/Textures_v2/Gallery/button_gallery_pressed.png" type="Texture" id=53]
 [ext_resource path="res://Gallery.tscn" type="PackedScene" id=54]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=55]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=56]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -1215,7 +1217,7 @@ texture = ExtResource( 46 )
 [node name="Label" type="Label" parent="Credits/Background"]
 margin_right = 649.0
 margin_bottom = 81.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 56 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Credits"
 align = 1
@@ -1250,9 +1252,10 @@ valign = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits/Background"]
 margin_left = 32.0
-margin_top = 151.0
+margin_top = 117.0
 margin_right = 612.0
 margin_bottom = 752.0
+custom_fonts/normal_font = ExtResource( 55 )
 bbcode_text = "Game design, writing, programming: Maverik
 
 Combat and skil programming: ykoc
