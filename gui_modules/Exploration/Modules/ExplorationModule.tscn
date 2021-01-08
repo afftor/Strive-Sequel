@@ -70,6 +70,7 @@
 [ext_resource path="res://assets/Themes_v2/EXPLORATION/MarketButtons.tres" type="Theme" id=68]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/scrollbar_horizontal_detail.png" type="Texture" id=69]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_square.png" type="Texture" id=70]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=71]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HSliderBG.tres" type="StyleBox" id=72]
 [ext_resource path="res://src/scenes/NumberSelection.gd" type="Script" id=73]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/DecorButton.tres" type="Theme" id=74]
@@ -86,7 +87,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=85]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=86]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats.png" type="Texture" id=87]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=88]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=90]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_hover.png" type="Texture" id=91]
@@ -1595,7 +1595,7 @@ margin_left = 255.0
 margin_top = 242.0
 margin_right = 559.0
 margin_bottom = 548.0
-custom_styles/panel = ExtResource( 88 )
+custom_styles/panel = ExtResource( 71 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

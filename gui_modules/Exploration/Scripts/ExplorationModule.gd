@@ -898,7 +898,7 @@ func build_item_panel():
 		newnode.get_node("amount").text = str(i.amount)
 		newnode.get_node("Name").text = str(i.name)
 		newnode.dragdata = i
-		globals.connectitemtooltip(newnode, i)
+		globals.connectitemtooltip_v2(newnode, i)
 		tutorial_items = true
 	# if tutorial_items == true:
 	# 	if !ResourceScripts.game_progress.active_tutorials.has("exploration_items"):
@@ -2054,7 +2054,7 @@ func see_quest_info(quest):
 					var showcase_item = globals.CreateGearItem(i.type, i.parts)
 					# input_handler.itemshadeimage(newbutton, showcase_item)
 					showcase_item.set_icon(newbutton.get_node("Icon"))
-					globals.connectitemtooltip(newbutton, showcase_item)
+					globals.connectitemtooltip_v2(newbutton, showcase_item)
 					if i.has('parts'):
 						newbutton.hint_tooltip += "\nPart Requirements: "
 						for k in i.parts:
@@ -2124,7 +2124,7 @@ func see_quest_info(quest):
 				var item = globals.CreateGearItem(i.item, i.itemparts)
 				item.set_icon(newbutton.get_node("Icon"))
 				input_handler.ghost_items.append(item)
-				globals.connectitemtooltip(newbutton, item)
+				globals.connectitemtooltip_v2(newbutton, item)
 			'gear_static':
 				newbutton.get_node("Icon").texture = Items.itemlist[i.item].icon
 				globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
