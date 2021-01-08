@@ -214,6 +214,7 @@ __meta__ = {
 }
 
 [node name="FullScreenImage" type="TextureRect" parent="."]
+visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
 mouse_filter = 2

@@ -118,7 +118,7 @@ func options(pressed, pressed_button):
 	$Options.open()
 
 func gallery():
-	$Gallery.show()
+	$Gallery.open_galery()
 
 
 func credits(pressed, pressed_button):

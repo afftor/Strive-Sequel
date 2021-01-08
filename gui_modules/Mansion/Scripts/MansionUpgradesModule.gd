@@ -105,6 +105,8 @@ func open():
 
 
 func update_buttons():
+	if !self.is_visible():
+		return
 	var array = []
 	# var upgrade = get_parent().selected_upgrade 
 	input_handler.ClearContainer(UpgradesContainer)
@@ -130,9 +132,11 @@ func update_buttons():
 			text += ": " + str(currentupgradelevel + 1)
 
 		var newbutton = input_handler.DuplicateContainerTemplate(UpgradesContainer)
+
 		if i.levels.has(currentupgradelevel + 1) == false:
 			newbutton.get_node("name").set("custom_colors/font_color", Color(0, 0.6, 0))
 			text += ' Unlocked'
+
 		update_progresses(i, newbutton, currentupgradelevel)
 		newbutton.get_node("name").text = text
 		var font = input_handler.font_size_calculator(newbutton.get_node("name"))
