@@ -2019,6 +2019,7 @@ func change_texture(button, state):
 			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
 
 
+			
 func see_quest_info(quest):
 	for i in $QuestBoard/ScrollContainer/VBoxContainer.get_children():
 		if i.name == 'Button':
