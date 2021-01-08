@@ -33,6 +33,8 @@ func _ready():
 
 
 func update_modules():
+	if current_screen == null:
+		return
 	if dialogue != null && dialogue.is_visible_in_tree():
 		dialogue.raise()
 	for subscene in current_screen.get_children():
@@ -98,11 +100,11 @@ func close_scene(scene):
 			previous_screen = mansion
 		else:
 			previous_screen = null
-	if current_screen == mansion:
+	if current_screen == mansion && mansion != null:
 		mansion.mansion_state_set("default")
 		gui_controller.clock.raise()
 		gui_controller.clock.show()
-	if current_screen == explore_slaveinfo && previous_screen == exploration:
+	if current_screen == explore_slaveinfo and explore_slaveinfo != null && previous_screen == exploration:
 		current_screen = exploration
 		previous_screen = null
 		var location = input_handler.active_location

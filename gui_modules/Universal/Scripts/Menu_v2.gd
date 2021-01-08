@@ -13,6 +13,7 @@ func _ready():
 	gui_controller.add_close_button($NewGamePanel)
 	gui_controller.add_close_button($saveloadpanel)
 	gui_controller.add_close_button($Options)
+	gui_controller.add_close_button($Credits)
 	var buttonlist = ['continueb','newgame','loadwindow','options', 'credits', 'mods']
 	$version.text = "ver. " + globals.gameversion
 	input_handler.CurrentScene = self
