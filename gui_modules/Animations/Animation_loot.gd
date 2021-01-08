@@ -23,7 +23,7 @@ func open(loot): #, message):
 		newbutton.get_node("Label").text = str(i.amount)
 		# if i.amount <= 1:
 		# 	newbutton.get_node("Label").hide()
-		globals.connectitemtooltip(newbutton, i)
+		globals.connectitemtooltip_v2(newbutton, i)
 		globals.AddItemToInventory(i)
 	for i in loot.materials:
 		newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)

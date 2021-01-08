@@ -126,7 +126,10 @@ func materialowned_tooltip(data):
 
 
 func gear_tooltip(data, item = null):
-	self.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png"))
+	if data.item.type == "usable":
+		self.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip_shift.png"))
+	else:
+		self.get_stylebox("panel", "" ).set_texture(load("res://assets/Textures_v2/DisassembleNewTooltip/panel_tooltip.png"))
 	$Title.text = data.title
 	if item == null:
 		item = data.item

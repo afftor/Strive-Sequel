@@ -410,7 +410,7 @@ func victory():
 		newnode.get_node("Icon").texture = input_handler.loadimage(i.icon, 'icons')
 		globals.AddItemToInventory(i)
 		newnode.get_node("name").text = i.name
-		globals.connectitemtooltip(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
+		globals.connectitemtooltip_v2(newnode, ResourceScripts.game_res.items[globals.get_item_id_by_code(i.itembase)])
 		if i.amount == null || i.amount == 0:
 			newnode.get_node("amount").visible = false
 		else:
@@ -1580,7 +1580,7 @@ func RebuildItemPanel():
 		newbutton.set_meta('skill', i.useskill)
 		newbutton.set_meta('item', i)
 		newbutton.connect('pressed', self, 'ActivateItem', [i])
-		globals.connectitemtooltip(newbutton, i)
+		globals.connectitemtooltip_v2(newbutton, i)
 
 func ClearItemPanel():
 	input_handler.ClearContainer($ItemPanel/ScrollContainer/GridContainer)
