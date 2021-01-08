@@ -25,7 +25,7 @@ func _ready():
 
 	globals.connecttexttooltip($TimeNode/gold/Control, tr("TOOLTIPGOLD") + "\n\nMoney in Posession: " +str(ResourceScripts.game_res.money))
 	globals.connecttexttooltip($TimeNode/food/Control, tr("TOOLTIPFOOD"))
-	$TimeNode/Date.text = "Day: " + str(ResourceScripts.game_globals.date)
+	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
 	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
 	sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR
 	set_time_buttons()
