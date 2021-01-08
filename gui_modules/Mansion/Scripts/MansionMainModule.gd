@@ -527,7 +527,7 @@ func test_mode():
 		character.is_players_character = true
 		globals.impregnate(character, character)
 		#character.get_stat('pregnancy').duration = 10
-		print(character.get_stat('pregnancy'))
+		#print(character.get_stat('pregnancy'))
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Elf', 'male', 'random')

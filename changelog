@@ -1,3 +1,12 @@
+0.4.0a
+Transitioned to godot 3.2.4 (should fix some potential crashes and issues)
+Added multiple new items, recipes, dungeons, repeatable quests, enemies
+Added tattoo system (requires mansion upgrade)
+Added item disassembling system (worker guild upgrade)
+Added support for other languages and fixed some 
+Added gallery in main menu
+Minor balance changes to some races, prices and items
+0.3.2c
 Added pregnancy descriptions and debuff
 Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
 Added an option to use bonus description text field for notes
