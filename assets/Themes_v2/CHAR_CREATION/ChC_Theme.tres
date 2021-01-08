@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button_pressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/button.png" type="Texture" id=12]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/tick_chosen.png" type="Texture" id=13]
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=16]
 

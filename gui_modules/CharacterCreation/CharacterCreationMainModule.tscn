@@ -48,8 +48,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_hover.png" type="Texture" id=46]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/cross2_pressed.png" type="Texture" id=47]
 
-
-
 [node name="CharacterCreationMainModule" type="Panel"]
 self_modulate = Color( 0.0235294, 0.0196078, 0.909804, 1 )
 anchor_right = 1.0
@@ -95,52 +93,52 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 433.0
-margin_bottom = 32.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SLAVEPARTNAME"
 align = 1
 
 [node name="name" type="LineEdit" parent="VBoxContainer"]
-margin_top = 38.0
+margin_top = 41.0
 margin_right = 433.0
-margin_bottom = 78.0
+margin_bottom = 81.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 placeholder_text = "SLAVEPARTNAME"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
-margin_top = 84.0
+margin_top = 87.0
 margin_right = 433.0
-margin_bottom = 116.0
+margin_bottom = 122.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SLAVEPARTSURNAME"
 align = 1
 
 [node name="surname" type="LineEdit" parent="VBoxContainer"]
-margin_top = 122.0
+margin_top = 128.0
 margin_right = 433.0
-margin_bottom = 162.0
+margin_bottom = 168.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 placeholder_text = "Surname"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
-margin_top = 168.0
+margin_top = 174.0
 margin_right = 433.0
-margin_bottom = 200.0
+margin_bottom = 209.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SLAVEPARTNICKNAME"
 align = 1
 
 [node name="nickname" type="LineEdit" parent="VBoxContainer"]
-margin_top = 206.0
+margin_top = 215.0
 margin_right = 433.0
-margin_bottom = 246.0
+margin_bottom = 255.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -148,27 +146,27 @@ placeholder_text = "Optional"
 placeholder_alpha = 0.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 252.0
+margin_top = 261.0
 margin_right = 433.0
-margin_bottom = 338.0
+margin_bottom = 350.0
 custom_constants/separation = 30
 
 [node name="SexVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 200.0
-margin_bottom = 86.0
+margin_bottom = 89.0
 
 [node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/SexVBox"]
 margin_right = 200.0
-margin_bottom = 32.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SLAVEPARTSEX"
 align = 1
 
 [node name="sex" type="OptionButton" parent="VBoxContainer/HBoxContainer/SexVBox"]
-margin_top = 36.0
+margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 86.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
 custom_fonts/font = ExtResource( 2 )
@@ -182,20 +180,20 @@ align = 1
 [node name="AgeVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 230.0
 margin_right = 430.0
-margin_bottom = 86.0
+margin_bottom = 89.0
 
 [node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/AgeVBox"]
 margin_right = 200.0
-margin_bottom = 32.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SLAVEPARTAGE"
 align = 1
 
 [node name="age" type="OptionButton" parent="VBoxContainer/HBoxContainer/AgeVBox"]
-margin_top = 36.0
+margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 86.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 200, 50 )
 theme = ExtResource( 28 )
 custom_fonts/font = ExtResource( 2 )
@@ -216,9 +214,9 @@ text = "SLAVEPARTRACE"
 align = 1
 
 [node name="race" type="Button" parent="VBoxContainer"]
-margin_top = 344.0
+margin_top = 356.0
 margin_right = 433.0
-margin_bottom = 396.0
+margin_bottom = 411.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -237,9 +235,9 @@ text = "SLAVEPARTSEXTRAIT"
 align = 1
 
 [node name="class" type="Button" parent="VBoxContainer"]
-margin_top = 402.0
+margin_top = 417.0
 margin_right = 433.0
-margin_bottom = 454.0
+margin_bottom = 472.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -251,9 +249,9 @@ __meta__ = {
 }
 
 [node name="SelectedClass" type="Label" parent="VBoxContainer"]
-margin_top = 460.0
+margin_top = 478.0
 margin_right = 433.0
-margin_bottom = 492.0
+margin_bottom = 513.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "SelectedClass"
@@ -261,9 +259,9 @@ align = 1
 valign = 1
 
 [node name="sextrait" type="Button" parent="VBoxContainer"]
-margin_top = 498.0
+margin_top = 519.0
 margin_right = 433.0
-margin_bottom = 550.0
+margin_bottom = 574.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
@@ -272,9 +270,9 @@ custom_colors/font_color_pressed = Color( 0.317647, 0.996078, 0.505882, 1 )
 text = "Sex Trait"
 
 [node name="SexTraitLabel" type="Label" parent="VBoxContainer"]
-margin_top = 556.0
+margin_top = 580.0
 margin_right = 433.0
-margin_bottom = 588.0
+margin_bottom = 615.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Sex Traits"
@@ -479,7 +477,7 @@ __meta__ = {
 
 [node name="meat" type="Label" parent="DietPanel/VBoxContainer"]
 margin_right = 281.0
-margin_bottom = 32.0
+margin_bottom = 35.0
 theme = ExtResource( 35 )
 text = "Meat"
 
@@ -504,9 +502,9 @@ __meta__ = {
 }
 
 [node name="fish" type="Label" parent="DietPanel/VBoxContainer"]
-margin_top = 43.0
+margin_top = 46.0
 margin_right = 281.0
-margin_bottom = 75.0
+margin_bottom = 81.0
 theme = ExtResource( 35 )
 text = "Fish"
 
@@ -528,9 +526,9 @@ items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate",
 selected = 1
 
 [node name="vege" type="Label" parent="DietPanel/VBoxContainer"]
-margin_top = 86.0
+margin_top = 92.0
 margin_right = 281.0
-margin_bottom = 118.0
+margin_bottom = 127.0
 theme = ExtResource( 35 )
 text = "Vegetables"
 
@@ -552,9 +550,9 @@ items = [ "Neutral", null, false, 0, null, "Like", null, false, 1, null, "Hate",
 selected = 1
 
 [node name="grain" type="Label" parent="DietPanel/VBoxContainer"]
-margin_top = 129.0
+margin_top = 138.0
 margin_right = 281.0
-margin_bottom = 161.0
+margin_bottom = 173.0
 theme = ExtResource( 35 )
 text = "Grains"
 
