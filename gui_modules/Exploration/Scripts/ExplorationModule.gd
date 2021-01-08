@@ -1981,6 +1981,7 @@ func quest_board(pressed, pressed_button):
 					$QuestBoard/ScrollContainer/VBoxContainer
 				)
 				newbutton.get_node("Label").text = k.name
+				newbutton.get_node("Requester").text = k.source.capitalize()
 				var text = k.descript
 				newbutton.get_node("RichTextLabel2").bbcode_text = globals.TextEncoder(text)
 				newbutton.get_node("ButtonOverlay").connect("pressed", self, "see_quest_info", [k])
@@ -2050,7 +2051,8 @@ func see_quest_info(quest):
 				if itemtemplate.has('parts'):
 					#newbutton.material = load("res://src/ItemShader.tres").duplicate()
 					var showcase_item = globals.CreateGearItem(i.type, i.parts)
-					input_handler.itemshadeimage(newbutton, showcase_item)
+					# input_handler.itemshadeimage(newbutton, showcase_item)
+					showcase_item.set_icon(newbutton.get_node("Icon"))
 					globals.connectitemtooltip(newbutton, showcase_item)
 					if i.has('parts'):
 						newbutton.hint_tooltip += "\nPart Requirements: "
