@@ -141,6 +141,14 @@ var upgradelist = {
 				taskprogress = 500,
 				#townnode = "farm",
 				cost = {obsidian = 20, woodmagic = 30, clothmagic = 30},
+			},
+			3:{
+				unlockreqs = [],
+				icon = 'upgrade_farm', 
+				bonusdescript = tr("UPGRADEALCHEMYBONUS2"),
+				taskprogress = 1000,
+				#townnode = "farm",
+				cost = {obsidian = 20, woodmagic = 30, clothmagic = 30},
 			}
 		}
 	},

@@ -1293,7 +1293,6 @@ func font_size_calculator(label): #, text, font):
 		var old_size = new_font.get_size()
 		var new_size = round((old_size - (old_size * 0.01 * (abs(diff) + PADDINGS / 2))))
 		new_font.size = new_size
-
 	return new_font
 
 

@@ -206,8 +206,8 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['warriors_monster_hunt_easy','warriors_dungeon_easy','warriors_threat_easy'],
-		quests_medium = ['warriors_threat_medium', 'warriors_dungeon_medium','warriors_monster_hunt_medium'],
+		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy'],
+		quests_medium = ['fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium'],
 		quests_hard = [],
 		tags = [],
 		slavenumber = [2,2],
@@ -687,8 +687,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	warriors_threat_easy = {
-		code = 'warriors_threat_easy',
+	fighters_threat_easy = {
+		code = 'fighters_threat_easy',
 		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_goblins','basic_threat_rebels']}],#,
@@ -700,8 +700,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	warriors_threat_medium = {
-		code = 'warriors_threat_medium',
+	fighters_threat_medium = {
+		code = 'fighters_threat_medium',
 		name = 'Trouble Solving',
 		descript = 'The guild requires a help with a certain issue.',
 		randomconditions = [{code = 'complete_location', type = ['basic_threat_ogre']}],#,
@@ -713,8 +713,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	warriors_dungeon_easy = {
-		code = 'warriors_dungeon_easy',
+	fighters_dungeon_easy = {
+		code = 'fighters_dungeon_easy',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
 		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_den', 'dungeon_goblin_cave']}],
@@ -727,25 +727,40 @@ var questdata = {
 		],
 		time_limit = [12,16],
 	},
-	warriors_dungeon_medium = {
-		code = 'warriors_dungeon_medium',
+	fighters_dungeon_medium = {
+		code = 'fighters_dungeon_medium',
 		name = 'Dungeon clear',
 		descript = 'The guild requires a local dungeon to be cleared.',
-		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_fort','dungeon_undead_crypt']}],
+		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_bandit_fort','dungeon_undead_crypt','dungeon_ancient_jungles']}],
 		unlockreqs = [],
 		reputation = [200,350],
 		rewards = [
 		[1, {code = 'gold', range = [350,500]}],
-		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [25,50]}],
+		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [75,100]}],
 		[1, {code = 'gear', material_grade = [['easy', 5], ['medium',2]], name = ['chest_base_metal','legs_base_metal']}],
 		],
 		time_limit = [16,20],
 	},
-	warriors_monster_hunt_easy = {
-		code = 'warriors_monster_hunt_easy',
+	fighters_dungeon_hard = {
+		code = 'fighters_dungeon_hard',
+		name = 'Dungeon clear',
+		descript = 'The guild requires a local dungeon to be cleared.',
+		randomconditions = [{code = 'complete_dungeon', type = ['dungeon_fire_depths','dungeon_ancient_jungles']}],
+		unlockreqs = [],
+		reputation = [300,500],
+		rewards = [
+		[1, {code = 'gold', range = [600,900]}],
+		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [150,250]}],
+		[1, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_base_metal','legs_base_metal']}],
+		[0.3, {code = 'gear', material_grade = [['medium',3],['hard',2]], name = ['chest_adv_metal','legs_adv_metal','swordadv','spearadv','bowadv']}],
+		],
+		time_limit = [16,20],
+	},
+	fighters_monster_hunt_easy = {
+		code = 'fighters_monster_hunt_easy',
 		name = 'Monster Hunt',
 		descript = 'The guild has a task for hunting certain amount of enemies.',
-		randomconditions = [{code = 'kill_monsters', type = ['rat','wolf'], range = [6,9]}],
+		randomconditions = [{code = 'kill_monsters', type = ['wolf','goblin_melee'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
@@ -754,11 +769,11 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-	warriors_monster_hunt_medium = {
-		code = 'warriors_monster_hunt_medium',
+	fighters_monster_hunt_medium = {
+		code = 'fighters_monster_hunt_medium',
 		name = 'Monster Hunt',
 		descript = 'The guild has a task for hunting certain amount of enemies.',
-		randomconditions = [{code = 'kill_monsters', type = ['rat','wolf'], range = [6,9]}],
+		randomconditions = [{code = 'kill_monsters', type = ['wolf','goblin_melee'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [200,250],
 		rewards = [
@@ -797,7 +812,7 @@ var questdata = {
 		code = 'mages_craft_potions_easy',
 		name = 'Potion Making',
 		descript = 'The guild needs to resupply their store room.',
-		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol'], range = [2,3]}],
+		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [2,3]}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
@@ -809,7 +824,7 @@ var questdata = {
 		code = 'mages_craft_potions_medium',
 		name = 'Magic Catalysts',
 		descript = 'The guild needs to resupply their store room.',
-		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol'], range = [5,8]},{code = 'random_item', type = ['energyshard','energygem'], range = [2,4]}],
+		randomconditions = [{code = 'random_item', type = ['aphrodisiac', 'alcohol','energyshard'], range = [5,8]},{code = 'random_item', type = ['energyshard','energygem'], range = [2,4]}],
 		unlockreqs = [],
 		reputation = [200,300],
 		rewards = [
@@ -898,8 +913,8 @@ var questdata = {
 		],
 		time_limit = [8,12],
 	},
-#	warriors_fighter_slave_easy = {
-#		code = 'warriors_fighter_slave_easy',
+#	fighters_fighter_slave_easy = {
+#		code = 'fighters_fighter_slave_easy',
 #		type = 'slavegetquest',
 #		name = 'Slave Request',
 #		descript = 'The guild is in need of specific trained individual.',
@@ -1203,10 +1218,10 @@ var dungeons = {
 		background_pool = ['cave_1', 'cave_2', 'cave_3', 'cave_4', 'cave_5'],
 		bgm = "dungeon",
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
-		final_enemy = [['jungle_boss1',1],['jungle_boss2',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_easy', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',1]],
+		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
+		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
 		levels = [2,4],
-		resources = ['woodiron','leathermythic'],
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','steel','iron'],
 		gatherable_resources = {number = [2,3], pool = {woodmagic = [15,25], woodiron = [15,30], leatherthick = [20,30], leathermythic = [10,20]}},
 		gather_mod = [2.5,3.5],
 		stages_per_level = [4,5],
@@ -1226,9 +1241,9 @@ var dungeons = {
 		bgm = "dungeon",
 		enemyarray = [['firedepths_easy1', 1],['firedepths_easy2', 1],['firedepths_medium1', 1],['firedepths_medium2', 1]],
 		final_enemy = [['firedepths_boss1',1],['firedepths_boss2',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_easy', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',1]],
+		eventarray = [['dungeon_find_chest_medium', 1], ['erebus_shrine_find',0.2]],
 		levels = [2,4],
-		resources = ['steel','mithril'],
+		resources = ['steel','mithril','obsidian','leatherthick','leather'],
 		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}},
 		gather_mod = [2.5,4],
 		stages_per_level = [4,6],
@@ -1353,7 +1368,7 @@ var pregen_characters = {
 		hair_length = 'waist',
 		hair_style = 'straight',
 		eye_color = 'blue',
-		ears = 'bunny_drooping',
+		ears = 'bunny_standing',
 		skin = 'pale',
 		physics_factor = 1,
 		wits_factor = 2,

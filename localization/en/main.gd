@@ -2977,9 +2977,12 @@ Princess notices how Aire tenses a bit when hearing the question.
 	MATERIALINSECT_CHITIN = "Chitin",
 	MATERIALINSECT_CHITINDESCRIPT = "An insect exoskeleton which can be used in craft.",
 	MATERIALOGRE_TEETH = "Ogre Teeth",
-	MATERIALOGRE_TEETHDESCRIPT = "Sharp fangs of a monster with some magic properties which can be used in craft.",
+	MATERIALOGRE_TEETHDESCRIPT = "Sharp fangs of a monster often considered a potential alchemy ingredient and holding medical properties.",
 	MATERIALCRYSTALIZED_ETHER = "Crystalized Ether",
 	MATERIALCRYSTALIZED_ETHERDESCRIPT = "Dull round gems possessing the element of Air. Can be used in craft",
+	MATERIALEARTH_SHARD = "Earth Shard",
+	MATERIALEARTH_SHARDDECRIPT = "A rare gem storing some magic power which can be utilized in craft.",
+	
 	
 	UPGRADETATTOO_SET = "Beauty Parlor",
 	UPGRADETATTOO_SETDESCRIPT = "An upgrade unlocking new interactions",

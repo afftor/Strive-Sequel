@@ -1464,12 +1464,12 @@ var loottables = {
 	rockthrower_loot = [['stone', 0.6, 5]],
 	salamander_loot = [['lizard_skin', 0.4, 1]],
 	ant_loot = [['insect_chitin', 0.1, 1]],
-	great_viper_loot = [['lizard_skin', 0.8, 6], ['leathermythic', 0.8, 3]],
-	ogre_alpha_loot = [['ogre_teeth', 1, 2], ['gold', 30, 50]],
-	ifrit_loot = [['obsidian', 0.5, 1], ['crystalized_ether', 0.5, 2]],
+	great_viper_loot = [['lizard_skin', 0.8, 6], ['leathermythic', 0.8, 5],['ice_crystal', 0.1, 1], ['fire_ruby', 0.1, 1], ['crystalized_ether', 0.1, 1],['earth_shard', 0.1, 1]],
+	ogre_alpha_loot = [['ogre_teeth', 1, 2], ['gold', 30, 50],['ice_crystal', 0.1, 1], ['fire_ruby', 0.1, 1], ['crystalized_ether', 0.1, 1],['earth_shard', 0.1, 1]],
+	ifrit_loot = [['obsidian', 0.5, 1], ['fire_ruby', 0.3, 1]],
 	anthropoid_loot = [['crystalized_ether', 0.5, 2]],
-	magma_beast_loot = [['lizard_skin', 0.8, 5], ['obsidian', 0.8, 6]],
-	erebus_stone_loot = [['obsidian', 0.8, 5]],
+	magma_beast_loot = [['lizard_skin', 0.8, 5], ['obsidian', 0.8, 6], ['fire_ruby', 0.2, 1]],
+	erebus_stone_loot = [['obsidian', 0.8, 5],['ice_crystal', 0.05, 1], ['fire_ruby', 0.05, 1], ['crystalized_ether', 0.05, 1], ['earth_shard', 0.3, 1]],
 }
 
 
