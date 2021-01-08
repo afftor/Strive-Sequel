@@ -260,6 +260,7 @@ func tooltiptext():
 	text = globals.TextEncoder(text)
 	return text
 
+
 func tooltiptext_1():
 	var text = ''
 	if geartype != null:
@@ -297,7 +298,7 @@ func tooltiptext_2():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value*100
 				text += statdata.statdata[i].name + ': {color='
 				if value > 0:
@@ -306,7 +307,7 @@ func tooltiptext_2():
 				else:
 					text += 'k_red|'
 				value = str(value)
-				if statdata.statdata[i].has('percent'):
+				if statdata.statdata[i].percent:
 					value = value + '%'
 				text += value + '}\n'
 		text += tooltipeffects()
@@ -354,8 +355,10 @@ func tooltipeffects():
 #		text += '}\n'
 	return text
 
+# TODO Remove old tooltip methids
+
 func tooltip(targetnode):
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
 	var data = {text = tooltiptext(), icon = input_handler.loadimage(icon, 'icons'), item = self, price = str(calculateprice())}
 	node.showup(targetnode, data, 'gear')
 

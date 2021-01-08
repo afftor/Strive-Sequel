@@ -1767,7 +1767,7 @@ func update_sell_list():
 		newbutton.set_meta('item', item.name)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
-		globals.connectitemtooltip(newbutton, item)
+		globals.connectitemtooltip_v2(newbutton, item)
 
 
 func update_buy_list():
@@ -1826,7 +1826,7 @@ func update_buy_list():
 				newitem.set_icon(newbutton.get_node('icon'))
 				newbutton.get_node("name").text = newitem.name
 				tempitems.append(newitem)
-				globals.connectitemtooltip(newbutton, newitem)
+				globals.connectitemtooltip_v2(newbutton, newitem)
 				newbutton.get_node("price").text = str(newitem.calculateprice())
 				newbutton.connect('pressed', self, "item_purchase", [newitem, amount])
 			else:
@@ -2019,7 +2019,7 @@ func change_texture(button, state):
 			button.texture_normal = load("res://assets/Textures_v2/CITY/Universal/paper_small.png")
 
 
-			
+
 func see_quest_info(quest):
 	for i in $QuestBoard/ScrollContainer/VBoxContainer.get_children():
 		if i.name == 'Button':
