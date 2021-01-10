@@ -43,11 +43,11 @@ stretch_mode = 6
 
 [node name="Text" type="Label" parent="VBoxContainer/Button"]
 margin_left = 14.0
-margin_top = 13.3366
+margin_top = 5.87283
 margin_right = 372.0
-margin_bottom = 112.337
+margin_bottom = 121.873
 custom_fonts/font = ExtResource( 4 )
-text = "I think I've learned a lot... or have I?"
+text = "Thank you for being so patient with me [Master]! I feel stronger already!"
 valign = 1
 autowrap = true
 clip_text = true

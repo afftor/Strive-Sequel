@@ -66,7 +66,7 @@ func show_quest_info(quest):
 					newbutton.texture = images.icons.quest_enemy
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					newbutton.hint_tooltip = "Hunt Monsters: " + Enemydata.enemies[i.type].name + " - " + str(i.curvalue) + "/" + str(i.value)
+					newbutton.hint_tooltip = "Defeat: " + tr(variables.enemy_types[i.type]) + " - " + str(i.curvalue) + "/" + str(i.value)
 				'random_item':
 					var itemtemplate = Items.itemlist[i.type]
 					newbutton.texture = itemtemplate.icon

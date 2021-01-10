@@ -696,7 +696,12 @@ var individual_lines = {
 	date_start_angry10 = {text = "Your efforts are futile.", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	date_start_angry11 = {text = "What's this? Are you trying to make me like you..?", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
 	date_start_angry12 = {text = "Do what you want, this will change nothing.", events = ['date_start_angry'], personalities = ['serious'], reqs = [], weight = 1, tags = []},
-
+	
+	treat_food_resist1 = {text = "You trying to buy my disposition with something like that? Pathetic.", events = ['treat_food_resist'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []}, 
+	treat_food_like1 = {text = "Wow, how did you know this is my favorite?", events = ['treat_food_like'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
+	treat_food_hate1 = {text = "Sorry, I can't stomach this.", events = ['treat_food_hate'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
+	treat_food_neutral1 = {text = "Thank you, [master], I'll accept this.", events = ['treat_food_neutral'], personalities = ['serious','kind','bold','shy'], reqs = [], weight = 1, tags = []},
+	
 }
 
 func build_lines():

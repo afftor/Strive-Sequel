@@ -273,7 +273,7 @@ func make_location(code, area):
 		location.stagedenemies.append({enemy = bossenemy, type = 'normal', level = location.levels.size(), stage = location.levels["L"+str(location.levels.size())].stages-1})
 		if location.final_enemy_type == 'character':
 			location.scriptedevents.append({trigger = 'finish_combat', event = 'character_boss_defeat', reqs = [{code = 'level', value = location.levels.size(), operant = 'gte'}, {code = 'stage', value = location.levels["L"+str(location.levels.size())].stages-1, operant = 'gte'}]})
-		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_easy', reqs = []})
+		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_' + location.difficulty, reqs = []})
 	if location.has('gather_limit_resources'):
 		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
 	
@@ -454,7 +454,7 @@ func make_chest_loot(chest):
 	var data
 	if typeof(chest) == TYPE_STRING:
 		data = Enemydata.loot_variants_data[chest]
-	var dict = {materials = {}, items = [], lock = {difficulty = 0, type = 'none'}}
+	var dict = {materials = {}, items = [], gold = 0, lock = {difficulty = 0, type = 'none'}}
 	var location = input_handler.active_location
 	
 	if Enemydata.locks_data.has(chest):
@@ -569,6 +569,9 @@ func make_chest_loot(chest):
 					
 					dict.items.append(item)
 					number -= 1
+			'gold':
+				var number = round(rand_range(i.min, i.max))
+				dict.gold += number
 	return dict
 
 func generate_random_gear(dict):#dict = {item = code, material_grade = 'location', locationmaterials = []/optional/}

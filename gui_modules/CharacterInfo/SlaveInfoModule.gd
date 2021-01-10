@@ -68,9 +68,8 @@ func update():
 	
 		$Panel/loyaltylabel.value = person.get_stat('loyalty')
 		$Panel/submissionlabel.value = person.get_stat('submission')
-
-		globals.connecttexttooltip($food_love,"[center]" +statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
-		globals.connecttexttooltip($food_hate,"[center]" +statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
+		globals.connecttexttooltip($food_love,"[center]" + statdata.statdata.food_love.name + "[/center]\n"+  statdata.statdata.food_love.descript)
+		globals.connecttexttooltip($food_hate,"[center]" + statdata.statdata.food_hate.name + "[/center]\n"+ statdata.statdata.food_hate.descript)
 		globals.connecttexttooltip($Panel/obedlabel/icon, statdata.statdata.obedience.descript)
 		globals.connecttexttooltip($Panel/loyaltylabel, statdata.statdata.loyalty.descript)
 		globals.connecttexttooltip($Panel/authoritylabel, statdata.statdata.authority.descript)

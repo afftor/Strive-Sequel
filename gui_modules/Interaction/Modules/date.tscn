@@ -40,10 +40,6 @@
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=38]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=39]
 
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 38 )
@@ -455,6 +451,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Items" type="TextureRect" parent="."]
+visible = false
+margin_left = 1138.0
+margin_top = 70.0
+margin_right = 1588.0
+margin_bottom = 1019.0
+texture = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="Items"]
+margin_right = 450.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 32 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Items"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Items"]
+margin_left = 18.0
+margin_top = 108.0
+margin_right = 426.0
+margin_bottom = 927.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Items/ScrollContainer"]
+
+[node name="Button" type="TextureButton" parent="Items/ScrollContainer/HBoxContainer"]
+visible = false
+margin_right = 400.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 0 )
+texture_normal = ExtResource( 34 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 36 )
+
+[node name="ItemTexture" type="TextureRect" parent="Items/ScrollContainer/HBoxContainer/Button"]
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 96.0
+margin_bottom = 96.0
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Items/ScrollContainer/HBoxContainer/Button"]
+margin_left = 111.0
+margin_top = 4.0
+margin_right = 396.0
+margin_bottom = 96.0
+custom_fonts/font = ExtResource( 12 )
+text = "Item Name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Items/ScrollContainer/HBoxContainer/Button"]
+margin_left = 4.0
+margin_top = 70.0
+margin_right = 97.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 39 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="end" type="Panel" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 1, 0.890196 )
@@ -558,76 +625,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Items" type="TextureRect" parent="."]
-visible = false
-margin_left = 1138.0
-margin_top = 70.0
-margin_right = 1588.0
-margin_bottom = 1019.0
-texture = ExtResource( 33 )
-
-[node name="Label" type="Label" parent="Items"]
-margin_right = 450.0
-margin_bottom = 90.0
-custom_fonts/font = ExtResource( 32 )
-custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
-text = "Items"
-align = 1
-valign = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Items"]
-margin_left = 18.0
-margin_top = 108.0
-margin_right = 426.0
-margin_bottom = 927.0
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Items/ScrollContainer"]
-
-[node name="Button" type="TextureButton" parent="Items/ScrollContainer/HBoxContainer"]
-visible = false
-margin_right = 400.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 400, 0 )
-texture_normal = ExtResource( 34 )
-texture_pressed = ExtResource( 35 )
-texture_hover = ExtResource( 36 )
-
-[node name="ItemTexture" type="TextureRect" parent="Items/ScrollContainer/HBoxContainer/Button"]
-margin_left = 3.0
-margin_top = 4.0
-margin_right = 96.0
-margin_bottom = 96.0
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Items/ScrollContainer/HBoxContainer/Button"]
-margin_left = 111.0
-margin_top = 4.0
-margin_right = 396.0
-margin_bottom = 96.0
-custom_fonts/font = ExtResource( 12 )
-text = "Item Name"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Amount" type="Label" parent="Items/ScrollContainer/HBoxContainer/Button"]
-margin_left = 4.0
-margin_top = 70.0
-margin_right = 97.0
-margin_bottom = 97.0
-custom_fonts/font = ExtResource( 39 )
-text = "5"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="pressed" from="panel/categories/Affection" to="." method="selectcategory" binds= [ "Affection" ]]
 [connection signal="pressed" from="panel/categories/Discipline" to="." method="selectcategory" binds= [ "Discipline" ]]
 [connection signal="pressed" from="panel/categories/Training" to="." method="selectcategory" binds= [ "Training" ]]

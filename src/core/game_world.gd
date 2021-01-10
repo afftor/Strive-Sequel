@@ -45,19 +45,26 @@ func advance_day():
 					ResourceScripts.world_gen.update_area_shop(k)
 	update_locations()
 
-func quest_kill_receiver(monstercode):
+func quest_kill_receiver(enemycode):
+	var enemydata = Enemydata.enemies[enemycode]
 	for i in areas.values():
 		for guild in i.quests.factions:
 			for quest in i.quests.factions[guild].values():
 				if quest.state == 'taken':
 					for cond in quest.requirements:
-						if cond.code == 'kill_monsters' && cond.type == monstercode && cond.value > cond.curvalue:
+						if cond.code == 'kill_monsters' && enemydata.tags.has(cond.type) && cond.value > cond.curvalue:
 							cond.curvalue += 1
+							if cond.value == cond.curvalue:
+								input_handler.SystemMessage(quest.name + ":" + "QUESTREQSCOMPLETE")
+								input_handler.PlaySound("book")
 		for quest in i.quests.global.values():
 			if quest.state == 'taken':
 				for cond in quest.requirements:
-					if cond.code == 'kill_monsters' && cond.type == monstercode && cond.value > cond.curvalue:
+					if cond.code == 'kill_monsters' && enemydata.tags.has(cond.type) && cond.value > cond.curvalue:
 						cond.curvalue += 1
+						if cond.value == cond.curvalue:
+							input_handler.SystemMessage(quest.name + ":" + "QUESTREQSCOMPLETE")
+							input_handler.PlaySound("book")
 
 func update_locations():
 	for i in ResourceScripts.game_world.areas.values():

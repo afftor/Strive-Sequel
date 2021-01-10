@@ -56,6 +56,12 @@ var system_messages = {
 	no_crafting_item = "MESSAGE_NOCRAFTINGITEM",
 	
 }
+var enemy_types = {
+	bandit = "ENEMYTYPEBANDITS",
+	wolf = "ENEMYTYPEWOLVES",
+	undead = "ENEMYTYPEUNDEAD"
+}
+
 var hexcolordict = {
 	red = '#ff5e5e',
 	yellow = "#ffff00",

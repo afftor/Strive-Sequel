@@ -714,10 +714,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="food_consumption"]
 light_mask = 0
-margin_left = 208.941
-margin_top = 1.0
-margin_right = 234.941
-margin_bottom = 33.0
+margin_left = 224.941
+margin_right = 250.941
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "25"

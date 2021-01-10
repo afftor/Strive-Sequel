@@ -1,4 +1,9 @@
 0.4.0a
+Experimental-2
+Chests can now contain gold
+Harder dungeons have better chest rewards after boss fight
+Multiple crash and gui fixes
+Experimental-1
 Transitioned to godot 3.2.4 (should fix some potential crashes and issues)
 Added multiple new items, recipes, dungeons, repeatable quests, enemies
 Added tattoo system (requires mansion upgrade)

@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/images/gui/universal/scrollbar2.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/gui/universal/scrollbar presed.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/gui/universal/scrollbar.png" type="Texture" id=16]
-[ext_resource path="res://assets/images/gui/barv.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/gui/slavepanel/CharScreen_0012_character-panel.png" type="Texture" id=17]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=18]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -97,15 +97,15 @@ margin_top = 66.728
 margin_bottom = 62.8257
 
 [sub_resource type="StyleBoxTexture" id=15]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 15, 50 )
-margin_top = 10.0
-margin_bottom = 10.0
-expand_margin_top = 10.0
-expand_margin_bottom = 10.0
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 669, 841 )
+margin_left = 28.772
+margin_right = 31.5303
+margin_top = 25.1661
+margin_bottom = 26.3892
 
 [sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 15 )
+texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 15, 50 )
 margin_top = 10.0
 margin_bottom = 10.0
@@ -121,16 +121,18 @@ expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 15, 50 )
+margin_top = 10.0
+margin_bottom = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=19]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 21, 266 )
 margin_top = 10.0
 margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id=19]
-texture = ExtResource( 17 )
-region_rect = Rect2( 0, 0, 16, 84 )
-margin_top = 15.0
-margin_bottom = 15.0
 
 [resource]
 default_font = ExtResource( 18 )

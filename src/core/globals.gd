@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.4.0a'
+const gameversion = '0.4.0 - experimental 2'
 
 #time
 signal hour_tick
@@ -496,22 +496,23 @@ func get_last_save():
 	for i in dir:
 		if i.ends_with('.sav') == false:
 			continue
-		dated_dir[i] = OS.get_datetime_from_unix_time(tmp.get_modified_time(i))
+		dated_dir[i] = tmp.get_modified_time(i)
 	if dated_dir.size() == 0: return null
 	var b = dated_dir.keys()[0]
-	for i in range(dated_dir.keys().size()):
-		if datetime_comp(dated_dir[dated_dir.keys()[i]], dated_dir[b]):
-			b = dated_dir.keys()[i]
+	for i in dated_dir.keys():
+		if dated_dir[i] > dated_dir[b]:
+			b = i
 	return b
 
 func datetime_comp(a, b):
-	if a.year > b.year: return true
-	if a.month > b.month: return true
-	if a.day > b.day: return true
-	if a.hour > b.hour: return true
-	if a.minute > b.minute: return true
+	if a.year != b.year: return (a.year > b.year)
+	if a.month != b.month: return (a.month > b.month)
+	if a.day != b.day: return (a.day > b.day)
+	if a.hour != b.hour: return (a.hour > b.hour)
+	if a.minute != b.minute: return (a.minute > b.minute)
 	if a.second > b.second: return true
 	return false
+
 
 func fastif(value, result1, result2):
 	if value:

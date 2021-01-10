@@ -206,7 +206,7 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy'],
+		quests_easy = ['fighters_monster_hunt_easy'],#,'fighters_dungeon_easy','fighters_threat_easy'],
 		quests_medium = ['fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium'],
 		quests_hard = [],
 		tags = [],
@@ -760,7 +760,7 @@ var questdata = {
 		code = 'fighters_monster_hunt_easy',
 		name = 'Monster Hunt',
 		descript = 'The guild has a task for hunting certain amount of enemies.',
-		randomconditions = [{code = 'kill_monsters', type = ['wolf','goblin_melee'], range = [6,9]}],
+		randomconditions = [{code = 'kill_monsters', type = ['bandit','goblin'], range = [6,9]}],
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
@@ -773,12 +773,25 @@ var questdata = {
 		code = 'fighters_monster_hunt_medium',
 		name = 'Monster Hunt',
 		descript = 'The guild has a task for hunting certain amount of enemies.',
-		randomconditions = [{code = 'kill_monsters', type = ['wolf','goblin_melee'], range = [6,9]}],
+		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [8,15]}],
 		unlockreqs = [],
 		reputation = [200,250],
 		rewards = [
 		[1, {code = 'gold', range = [200,300]}],
 		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [50,100]}],
+		],
+		time_limit = [8,16],
+	},
+	fighters_monster_hunt_hard = {
+		code = 'fighters_monster_hunt_hard',
+		name = 'Monster Hunt',
+		descript = 'The guild has a task for hunting certain amount of enemies.',
+		randomconditions = [{code = 'kill_monsters', type = ['bandit','undead'], range = [15,25]}],
+		unlockreqs = [],
+		reputation = [400,500],
+		rewards = [
+		[1, {code = 'gold', range = [350,600]}],
+		[1, {code = 'gear', material_grade = [['easy', 1], ['medium',4], ['hard',3]], name = ['sword','spear','club','bow']}, {code = 'gold', range = [150,250]}],
 		],
 		time_limit = [8,16],
 	},
@@ -1221,7 +1234,7 @@ var dungeons = {
 		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
 		levels = [2,4],
-		resources = ['woodmagic','woodiron','leatherthick','leathermythic','steel','iron'],
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','chitin','iron'],
 		gatherable_resources = {number = [2,3], pool = {woodmagic = [15,25], woodiron = [15,30], leatherthick = [20,30], leathermythic = [10,20]}},
 		gather_mod = [2.5,3.5],
 		stages_per_level = [4,5],
@@ -1395,6 +1408,8 @@ var pregen_characters = {
 		tits_size = 'average',
 		sex_traits = ['pushover','dislike_group'],
 		tags = ['no_sex'],
-		personality = 'shy'
+		personality = 'shy',
+		food_like = 'vege',
+		food_hate = ['fish']
 	},
 }

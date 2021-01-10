@@ -282,6 +282,26 @@ var scenedict = {
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
 	]
 	},
+	event_dungeon_complete_loot_medium = {text = tr("DIALOGUEEVENTDUNGEONLOOT"), 
+	tags = ['good','locked_chest'],
+	default_event_type = "loot",
+	image = 'chest', 
+	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['medium_boss_chest',1]]}],
+	options = [
+	#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
+	]
+	},
+	event_dungeon_complete_loot_hard = {text = tr("DIALOGUEEVENTDUNGEONLOOT"), 
+	tags = ['good','locked_chest'],
+	default_event_type = "loot",
+	image = 'chest', 
+	common_effects = [{code = 'make_loot',type = 'tableloot', pool = [['hard_boss_chest',1]]}],
+	options = [
+	#{code = 'open_chest', reqs = [], text = tr("DIALOGUEFORCECHESTOPEN")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")}
+	]
+	},
 	
 	event_trap_easy = {text = tr("DIALOGUEEVENTTRAP"), 
 	tags = ['linked_event'],

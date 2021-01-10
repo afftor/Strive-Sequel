@@ -49,7 +49,7 @@ __meta__ = {
 [node name="Icon" type="TextureRect" parent="IconFrame"]
 margin_left = 8.0
 margin_top = 7.0
-margin_right = 193.0
+margin_right = 194.0
 margin_bottom = 193.0
 expand = true
 stretch_mode = 7

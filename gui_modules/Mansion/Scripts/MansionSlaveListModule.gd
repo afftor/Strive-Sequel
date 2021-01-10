@@ -210,7 +210,10 @@ func build_sex_selection(person, newbutton):
 			continue
 		button.pressed = sex_participants.has(button.get_meta("slave"))
 		button.disabled = (sex_participants.size() >= limit && !button.is_pressed())
-		button.disabled = button.get_meta("slave").tags.has("no_sex")
+		if button.get_meta("slave").tags.has("no_sex"):
+			button.hint_tooltip = "Sex Requirements aren't met"
+			button.get_node("name").set("custom_colors/font_color", Color(variables.hexcolordict.red))
+	
 	update_description()
 
 

@@ -111,7 +111,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
-		direct = true
+		direct = true,
+		custom_get = true
 	},
 	wits = { 
 		code = 'wits',
@@ -119,7 +120,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
-		direct = true
+		direct = true,
+		custom_get = true
 	},
 	charm = { 
 		code = 'charm',
@@ -127,7 +129,8 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_bf',
 		type = 'primal',
-		direct = true
+		direct = true,
+		custom_get = true
 	},
 	sexuals = { 
 		code = 'sexuals',
@@ -271,6 +274,22 @@ var statdata = {
 	},
 	mpmaxmod = {
 		code = 'mpmaxmod',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	hp_reg_mod = {
+		code = 'hp_reg_mod',
+		name = '',
+		descript = '',
+		percent = true,
+		baseicon = 'food_love',
+		type = 'misc',
+	},
+	mp_reg_mod = {
+		code = 'mp_reg_mod',
 		name = '',
 		descript = '',
 		percent = true,

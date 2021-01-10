@@ -572,6 +572,23 @@ var date_lines = {
 		["{^[name2]:[race2] [boy2]:[he2]} looks {^mad:very agited}.", 1],
 	],
 	
+	
+	food_initiate = [
+		["You offer {^[name2]:[race2] [boy2]:[he2]} a treat of [food].",1],
+	],
+	food_resist = [
+		['{^[name2]:[race2] [boy2]:[he2]} rejects your offer demonstrating [his2] resistance.',1]
+	],
+	food_liked = [
+		["{^[name2]:[race2] [boy2]:[he2]} accepts it with enthusiasm and thanks you. ",1]
+	],
+	food_hated = [
+		["{^[name2]:[race2] [boy2]:[he2]} gives you a disdain look. ",1]
+	],
+	food_netural = [
+		["{^[name2]:[race2] [boy2]:[he2]} accepts it respectfully, but does not show much of a joy.",1]
+	],
+	
 }
  
 var descripts = {
@@ -1342,10 +1359,54 @@ func food(person, counter):
 		newbutton.get_node("Label").text = item.name
 		newbutton.get_node("Amount").text = str(ResourceScripts.game_res.materials[item.code])
 		newbutton.connect("pressed", self, "usefood", [item])
+		globals.connectmaterialtooltip(newbutton, item)
 
 
 func usefood(food):
-	print("Using: ", str(food))
+	var text = input_handler.weightedrandom(date_lines.food_initiate).replace("[food]", food.name) + "\n\n"
+	$Items.hide()
+	ResourceScripts.game_res.set_material(food.code, '-', 1)
+	self.turn -=1 
+	
+	if person.has_temp_effect('resist_state'):
+		text += "{color=red|"
+		text += input_handler.weightedrandom(date_lines.food_resist)
+		text += "}"
+		text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'treat_food_resist')) + "\n"
+	else:
+		var state = 'neutral'
+		if food.tags.has(person.food.food_love):
+			state = 'like'
+			for i in food.tags:
+				if person.food.food_hate.has(i):
+					state = 'neutral'
+		else:
+			for i in food.tags:
+				if person.food.food_hate.has(i):
+					state = 'hate'
+			
+		if state == 'like':
+			text += "{color=green|"
+			text += input_handler.weightedrandom(date_lines.food_liked)
+			text += "}"
+			self.mood += 15
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'treat_food_like')) + "\n"
+		elif state == 'hate':
+			self.mood -= 10
+			text += "{color=red|"
+			text += input_handler.weightedrandom(date_lines.food_hated)
+			text += "}"
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'treat_food_hate')) + "\n"
+		elif state == 'neutral':
+			text += "{color=green|"
+			text += input_handler.weightedrandom(date_lines.food_netural)
+			text += "}"
+			self.mood += 5
+			text += "\n\n{color=aqua|" + person.get_short_name() + "}: " + person.translate(input_handler.get_random_chat_line(person, 'treat_food_neutral')) + "\n"
+	
+	self.showntext = globals.TextEncoder(decoder(text))
+	updatelist()
+	
 
 
 func useitem(person, counter):
@@ -1896,11 +1957,12 @@ var actionsdict = {
 
 	food = {
 		group = "Affection",
-		name = "Food",
-		descript = "Select a food.",
+		name = "Treat with food",
+		descript = "Treat [name] with food.",
 		reqs = [],
 		location = [],
 		effect = 'food',
+		#onetime = true,
 	},
 	
 	stop = {

@@ -33,3 +33,11 @@ func open(loot): #, message):
 		newbutton.get_node("Label").text = str(loot.materials[i])
 		globals.connectmaterialtooltip(newbutton, Items.materiallist[i])
 		ResourceScripts.game_res.materials[i] += loot.materials[i]
+	if loot.gold > 0:
+		newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/GridContainer)
+		newbutton.get_node("TextureRect").texture = load("res://assets/images/iconsitems/gold.png")
+		newbutton.get_node("AnimationPlayer").play("LootButton")
+		yield(get_tree().create_timer(0.3), "timeout")
+		newbutton.get_node("Label").text = str(loot.gold)
+		globals.connecttexttooltip(newbutton, 'Gold')
+		ResourceScripts.game_res.update_money('+', loot.gold)

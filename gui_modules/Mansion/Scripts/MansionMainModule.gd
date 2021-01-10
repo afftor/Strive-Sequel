@@ -425,6 +425,13 @@ func update_sex_date_buttons():
 	else:
 		SexSelect.get_node("SexButton").disabled = true
 	
+	for i in sex_participants:
+		if i.tags.has("no_sex"):
+			SexSelect.get_node("SexButton").disabled = true
+	for i in sex_participants:
+		if i.tags.has("no_date"):
+			SexSelect.get_node("DateButton").disabled = true
+	
 	SexSelect.get_node("DateButton").disabled = (
 		sex_participants.size() > 1 
 		|| sex_participants.size() == 0 
@@ -468,11 +475,11 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.tailor = 3
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 		ResourceScripts.game_res.upgrades.forge = 3
-		
+		ResourceScripts.game_res.upgrades.tattoo_set = 1
 
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.add_stat('charm', 100)
-		character.add_stat('wits', 100)
+	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('hair_length','bald')
 		character.unlock_class("master")
@@ -488,7 +495,7 @@ func test_mode():
 		# character.unlock_class("thief")
 		# character.unlock_class("engineer")
 		# character.unlock_class("scholar")
-		# character.travel.location = 'L4'
+		character.travel.location = 'L4'
 		# character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
@@ -513,7 +520,7 @@ func test_mode():
 		character.set_stat('consent', 100)
 		character.set_stat('charm_factor', 5)
 		character.set_stat('physics_factor', 5)
-		character.set_stat('wits_factor', 5)
+		#character.set_stat('wits_factor', 5)
 		character.set_stat('food_love', "meat")
 		character.set_stat('food_hate', ["grain"])
 		#character.unlock_class("worker")
@@ -527,7 +534,7 @@ func test_mode():
 		character.is_players_character = true
 		globals.impregnate(character, character)
 		#character.get_stat('pregnancy').duration = 10
-		#print(character.get_stat('pregnancy'))
+		print(character.get_stat('pregnancy'))
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Elf', 'male', 'random')
@@ -635,7 +642,7 @@ func test_mode():
 						#{code = 'sextrait', value = 'submissive', operant = 'add', known = false},  #for sextrait/add setting, trait is appended to character's traits
 						{code = 'submission', operant = '+', value = 50},
 						{code = 'obedience', operant = '+', value = 0},
-						{code = 'tag', operant = 'remove', value = 'no_sex'},
+						#{code = 'tag', operant = 'remove', value = 'no_sex'},
 					]
 				}
 			]
@@ -707,7 +714,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		# input_handler.interactive_message("lich_enc_initiate", '',{})
+		input_handler.interactive_message("event_dungeon_complete_loot_easy", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000

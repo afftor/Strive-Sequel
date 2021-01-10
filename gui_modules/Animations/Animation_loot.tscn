@@ -12,8 +12,6 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=10]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=11]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Loot"
 length = 5.0
@@ -182,6 +180,7 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 686.033
 margin_top = 269.131
 margin_right = 1234.03
@@ -196,6 +195,7 @@ margin_left = 685.971
 margin_top = 173.019
 margin_right = 1233.97
 margin_bottom = 269.019
+rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 274.271, 47.7916 )
 texture = ExtResource( 5 )
 __meta__ = {
@@ -203,6 +203,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 823.402
 margin_top = 185.332
 margin_right = 1095.4
@@ -301,6 +302,7 @@ align = 1
 valign = 1
 
 [node name="Confirm" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 853.239
 margin_top = 840.355
 margin_right = 1063.24
