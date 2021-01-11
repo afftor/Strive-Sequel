@@ -107,7 +107,7 @@ func show_quest_info(quest):
 						#newbutton.material = load("res://src/ItemShader.tres").duplicate()
 						var showcase_item = globals.CreateGearItem(i.type, i.parts)
 						input_handler.itemshadeimage(newbutton, showcase_item)
-						globals.connectitemtooltip(newbutton, showcase_item)
+						globals.connectitemtooltip_v2(newbutton, showcase_item)
 						if i.has('parts'):
 							newbutton.hint_tooltip += "\nPart Requirements: "
 							for k in i.parts:
@@ -147,12 +147,12 @@ func show_quest_info(quest):
 					var item = globals.CreateGearItem(i.item, i.itemparts)
 					item.set_icon(newbutton.get_node("TextureRect"))
 					input_handler.ghost_items.append(item)
-					globals.connectitemtooltip(newbutton, item)
+					globals.connectitemtooltip_v2(newbutton, item)
 				'gear_static':
 					newbutton.get_node("TextureRect").texture = Items.itemlist[i.item].icon
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
+					globals.connecttempitemtooltip_v2(newbutton, Items.itemlist[i.item], 'geartemplate')
 				'gold':
 					var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 					newbutton.get_node("TextureRect").texture = images.icons.quest_gold
@@ -174,7 +174,7 @@ func show_quest_info(quest):
 				'usable':
 					var item = Items.itemlist[i.item]
 					newbutton.get_node("TextureRect").texture = item.icon
-					globals.connecttempitemtooltip(newbutton, item, 'geartemplate')
+					globals.connecttempitemtooltip_v2(newbutton, item, 'geartemplate')
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
 		$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
@@ -329,7 +329,7 @@ func select_items_for_quest(quest_req):
 		var newbutton = input_handler.DuplicateContainerTemplate($ItemSelectionPanel/ScrollContainer/GridContainer)
 		newbutton.connect('pressed', self, 'item_pressed', [i])
 		i.set_icon(newbutton.get_node("TextureRect"))
-		globals.connectitemtooltip(newbutton, i)
+		globals.connectitemtooltip_v2(newbutton, i)
 		if i.amount > 1:
 			newbutton.get_node("Amount").text = str(i.amount)
 			newbutton.get_node("Amount").show()
