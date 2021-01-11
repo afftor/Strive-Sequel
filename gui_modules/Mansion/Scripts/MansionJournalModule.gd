@@ -106,7 +106,8 @@ func show_quest_info(quest):
 					if itemtemplate.has('parts'):
 						#newbutton.material = load("res://src/ItemShader.tres").duplicate()
 						var showcase_item = globals.CreateGearItem(i.type, i.parts)
-						input_handler.itemshadeimage(newbutton, showcase_item)
+						# input_handler.itemshadeimage(newbutton, showcase_item)
+						showcase_item.set_icon(newbutton.get_node("TextureRect"))
 						globals.connectitemtooltip_v2(newbutton, showcase_item)
 						if i.has('parts'):
 							newbutton.hint_tooltip += "\nPart Requirements: "
