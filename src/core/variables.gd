@@ -59,7 +59,8 @@ var system_messages = {
 var enemy_types = {
 	bandit = "ENEMYTYPEBANDITS",
 	wolf = "ENEMYTYPEWOLVES",
-	undead = "ENEMYTYPEUNDEAD"
+	undead = "ENEMYTYPEUNDEAD",
+	goblin = "ENEMYTYPEGOBLIN"
 }
 
 var hexcolordict = {

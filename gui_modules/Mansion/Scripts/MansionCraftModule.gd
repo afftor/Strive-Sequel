@@ -333,7 +333,7 @@ func selectcraftitem(item):
 		for m in item.materials:
 			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
 			newbutton.get_node("Icon").texture = Items.materiallist[m].icon
-			newbutton.get_node("Reqs").text = str(item.materials[m]) + '/' + str(ResourceScripts.game_res.materials[m])
+			newbutton.get_node("Reqs").text =  str(ResourceScripts.game_res.materials[m]) + "/" + str(item.materials[m])
 			newbutton.get_node("Name").text = m.capitalize()
 			newbutton.disabled = item.materials[m] > ResourceScripts.game_res.materials[m]
 		for i in item.items:
@@ -344,7 +344,7 @@ func selectcraftitem(item):
 				if item_value.code == i:
 					amount = item_value.amount
 					break
-			newbutton.get_node("Reqs").text = str(item.items[i]) + '/' + str(amount)
+			newbutton.get_node("Reqs").text = str(amount)+ "/" +str(item.items[i])
 			newbutton.get_node("Name").text = str(Items.itemlist[i].name)
 			newbutton.disabled = item.items[i] > amount
 
