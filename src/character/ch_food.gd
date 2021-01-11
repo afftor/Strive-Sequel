@@ -24,6 +24,26 @@ func get_racial_features(race):
 			food_hate.append(i)
 	#print(food_love,food_hate)
 
+func process_chardata(data):
+	get_racial_features(data.race)
+	#advanced generation
+	var array = []
+	if data.has('diet_love'):
+		for i in data.diet_love:
+			array.append([i, data.diet_love[i]])
+		food_love = input_handler.weightedrandom(array)
+	if data.has('diet_hate'):
+		food_hate.clear()
+		for i in data.diet_hate:
+			if data.diet_hate[i] >= randf()*100 && i != food_love:
+				food_hate.append(i)
+	#simple data processing
+	if data.has('food_like'):
+		food_love = data.food_like
+	if data.has('food_hate'):
+		food_hate = data.food_hate.duplicate()
+	create()
+
 func create():
 	#setting food filter
 	for i in Items.materiallist.values():
