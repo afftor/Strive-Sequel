@@ -173,6 +173,7 @@ func build_guilds_panel(guilds):
 	input_handler.ClearContainer(GuildPanelContainer)
 	var newbutton
 	var counter = 0
+	guilds.sort_custom(self, 'sort_factions')
 	for guild in guilds:
 		counter += 1
 		var newseparator = $NavigationModule/GuildsPanel/VSeparator.duplicate()
@@ -182,6 +183,14 @@ func build_guilds_panel(guilds):
 		newbutton.set_meta("guild_name", guild.name)
 		GuildPanelContainer.add_child(newseparator)
 		newseparator.visible = counter != guilds.size()
+
+
+func sort_factions(first, second):
+	if variables.guild_order.has(first.code):
+		if variables.guild_order.has(second.code):
+			return variables.guild_order.find(first.code) < variables.guild_order.find(second.code)
+		else:
+			return true
 
 
 func build_area_menu(area_actions):
