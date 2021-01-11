@@ -2995,6 +2995,7 @@ Princess notices how Aire tenses a bit when hearing the question.
 	ENEMYTYPEBANDITS = "Bandits",
 	ENEMYTYPEWOLVES = "Wolves",
 	ENEMYTYPEUNDEAD = "Undeads",
+	ENEMYTYPEGOBLIN = "Goblins",
 	
 	UPGRADETATTOO_SET = "Beauty Parlor",
 	UPGRADETATTOO_SETDESCRIPT = "An upgrade unlocking new interactions",

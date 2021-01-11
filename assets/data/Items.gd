@@ -2361,7 +2361,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = [],
 		basestats = {mod_collect = 0.1, mod_farm = 0.1, mod_smith = 0.1, mod_build = 0.15},
 	},
 	gauntlets = {
@@ -2378,7 +2378,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = [],
 		basestats = {},
 	},
 	circlet = {
@@ -2395,7 +2395,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = [],
 		basestats = {matk = 10},
 	},
 	crown = {
@@ -2429,7 +2429,7 @@ var itemlist = {
 		tier = 'easy',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = [],
 		basestats = {speed = 5},
 	},
 	ribbon = {
@@ -2446,7 +2446,7 @@ var itemlist = {
 		tier = 'medium',
 		reqs = [],
 		effects = [],
-		tags = ['no_random'],
+		tags = [],
 		basestats = {mdef = 5},
 	},
 }

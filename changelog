@@ -3,12 +3,13 @@ Experimental-2
 Chests can now contain gold
 Harder dungeons have better chest rewards after boss fight
 Multiple crash and gui fixes
+Daisy can now be dated before sex is unlocked
 Experimental-1
 Transitioned to godot 3.2.4 (should fix some potential crashes and issues)
 Added multiple new items, recipes, dungeons, repeatable quests, enemies
 Added tattoo system (requires mansion upgrade)
 Added item disassembling system (worker guild upgrade)
-Added support for other languages and fixed some 
+Added support for other languages and fixed some nodes using wrong fonts
 Added gallery in main menu
 Minor balance changes to some races, prices and items
 0.3.2c
