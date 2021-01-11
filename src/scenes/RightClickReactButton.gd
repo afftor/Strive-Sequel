@@ -24,7 +24,9 @@ func _input(event):
 
 func disable():
 	if gui_controller.dialogue != null && gui_controller.dialogue.is_visible() || \
-		gui_controller.slavepanel != null && gui_controller.slavepanel.is_visible() || \
 		gui_controller.inventory != null && gui_controller.inventory.is_visible():
 		return true
 	return false
+
+
+	# gui_controller.slavepanel != null && gui_controller.slavepanel.is_visible() || \
