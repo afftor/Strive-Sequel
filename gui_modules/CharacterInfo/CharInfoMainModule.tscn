@@ -29,6 +29,13 @@ margin_top = 15.0
 margin_right = 235.0
 margin_bottom = 1065.0
 
+[node name="SlaveBodyModule" parent="." instance=ExtResource( 2 )]
+show_behind_parent = false
+margin_left = 1205.0
+margin_top = 145.0
+margin_right = 1905.0
+margin_bottom = 1065.0
+
 [node name="SlaveInfoModule" parent="." instance=ExtResource( 1 )]
 margin_left = 235.0
 margin_top = 145.0
@@ -55,13 +62,6 @@ light_mask = 0
 margin_left = 535.0
 margin_top = 365.0
 margin_right = 1205.0
-margin_bottom = 1065.0
-
-[node name="SlaveBodyModule" parent="." instance=ExtResource( 2 )]
-show_behind_parent = false
-margin_left = 1205.0
-margin_top = 145.0
-margin_right = 1905.0
 margin_bottom = 1065.0
 
 [node name="Button" type="Button" parent="."]

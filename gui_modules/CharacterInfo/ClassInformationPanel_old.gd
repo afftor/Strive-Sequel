@@ -1,17 +1,16 @@
 extends Panel
 
-
-
 func _ready():
-	gui_controller.add_close_button(self)
-#	hide()
+	pass
 #	move_child($Control, 0)
 
 
 func open(classcode, person):
 	var tempclass = classesdata.professions[classcode]
+	
+	
 	$TextureRect.texture = tempclass.icon
-	$name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
+	$TextureRect/name.text = ResourceScripts.descriptions.get_class_name(tempclass, person)
 	
 	input_handler.ClearContainer($SocialSkills/HBoxContainer)
 	input_handler.ClearContainer($CombatSkills/HBoxContainer)
@@ -26,12 +25,9 @@ func open(classcode, person):
 	text += ResourceScripts.descriptions.get_class_traits(person, tempclass)
 	$bonus.bbcode_text = text
 	
-	text = tr('CLASSREQS')+"\n"
+	text = "[center]"+tr('CLASSREQS')+"[/center]\n\n"
 	if tempclass.reqs.size() > 0:
-		if gui_controller.exploration != null && gui_controller.exploration.get_node("GuildShop").is_visible():
-			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass, false)
-		else:
-			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass)
+		text += ResourceScripts.descriptions.get_class_reqs(person, tempclass)
 	else:
 		text += tr("REQSNONE")
 	$reqs.bbcode_text = text
@@ -51,4 +47,4 @@ func open(classcode, person):
 			newnode.texture = load("res://assets/images/gui/panels/noimage.png")
 		globals.connectskilltooltip(newnode, skill.code, person)
 	$CombatLabel.visible = tempclass.combatskills.size() > 0
-	# show()
+	show()
