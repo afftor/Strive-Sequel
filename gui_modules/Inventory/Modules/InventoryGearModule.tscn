@@ -658,6 +658,7 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="TattooSlots/legs"]
+show_behind_parent = true
 light_mask = 0
 margin_left = 14.1581
 margin_top = 12.6679
