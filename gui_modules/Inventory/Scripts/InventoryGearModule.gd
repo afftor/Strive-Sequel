@@ -17,10 +17,11 @@ func _ready():
 var selected_slot: String
 var tattoo_action = "add_tattoo"
 var avalible_slots = []
+var selected_tattoo = ""
 
 func add_remove_tattoo(slot: String):
 	var selectedhero = input_handler.interacted_character
-	var selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
+	selected_tattoo = get_parent().get_node("InventoryListModule").selected_tattoo
 	selected_slot = slot
 	if selectedhero.statlist.tattoo[slot] == null && selected_tattoo == "":
 		for i in $TattooSlots.get_children():
@@ -38,11 +39,16 @@ func add_remove_tattoo(slot: String):
 
 	update_tattoo_slots(slot)
 	if selectedhero.statlist.tattoo[slot] != null:
-		tattoo_action = "remove_tattoo"
-		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
+		if selected_tattoo == "":
+			tattoo_action = "remove_tattoo"
+			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REMOVETATTOO")])
+		else:
+			tattoo_action = "replace_tattoo"
+			input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("REPLACETATTOO")])
 	else:
 		tattoo_action = "add_tattoo"
 		input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'add_remove_tattoo_action', tr("ADDTATTOO")])
+	selected_tattoo = ""
 
 
 func add_remove_tattoo_action():
@@ -56,6 +62,13 @@ func add_remove_tattoo_action():
 				input_handler.SystemMessage(tr("INVALIDREQS"))
 		"remove_tattoo":
 			selectedhero.remove_tattoo(selected_slot)
+		"replace_tattoo":
+			if !selectedhero.can_add_tattoo(selected_slot, selected_tattoo):
+				input_handler.SystemMessage(tr("INVALIDREQS"))
+			else:
+				selectedhero.remove_tattoo(selected_slot)
+				selectedhero.add_tattoo(selected_slot, selected_tattoo)
+				ResourceScripts.game_res.materials[selected_tattoo] -= 1
 	
 	for i in $TattooSlots.get_children():
 		if !i.get_global_rect().has_point(get_global_mouse_position()):
