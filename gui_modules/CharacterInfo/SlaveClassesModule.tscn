@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PT_30.tres" type="DynamicFont" id=9]
-[ext_resource path="res://gui_modules/CharacterInfo/ClassInformationPanel_v2.gd" type="Script" id=10]
+[ext_resource path="res://gui_modules/CharacterInfo/ClassInformationPanel.gd" type="Script" id=10]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=11]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_pressed.png" type="Texture" id=12]
 [ext_resource path="res://assets/images/gui/universal/skill_frame_hover.png" type="Texture" id=13]
@@ -23,6 +23,7 @@
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveClassesModule.gd" type="Script" id=21]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/ClassInfoPanel.tres" type="StyleBox" id=22]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=23]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 19 )
