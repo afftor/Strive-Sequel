@@ -630,6 +630,7 @@ func test_mode():
 		character.add_stat('lust', 100)
 		character.unlock_class("dancer")
 		character.is_players_character = true
+		character.statlist.tattoo.face = 'ink_makeup'
 
 		globals.common_effects(
 			[
@@ -647,7 +648,7 @@ func test_mode():
 				}
 			]
 		)
-
+		
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 50

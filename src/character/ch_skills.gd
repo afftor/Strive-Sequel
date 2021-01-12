@@ -19,8 +19,9 @@ var items_used_today = {}
 var prepared_act = []
 
 func setup_skills(data):
-	combat_skills = data.skills.duplicate() 
-	if !data.skills.has("ranged_attack") and !combat_skills.has('attack'):
+	if data.has('skills'):
+		combat_skills = data.skills.duplicate() 
+	if !combat_skills.has("ranged_attack") and !combat_skills.has('attack'):
 		combat_skills.push_back('attack')
 
 func get_damage_mod(skill:Dictionary):

@@ -197,7 +197,9 @@ func generate_simple_fighter(tempname):
 func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	statlist.process_chardata(data, true)
+	food.process_chardata(data)
 	tags = data.tags.duplicate()
+	skills.setup_skills(data)
 
 func create(temp_race, temp_gender, temp_age):
 	id = characters_pool.add_char(self)
@@ -884,7 +886,7 @@ func translate(text):
 func calculate_price():
 	var value = 0
 	value += (get_stat('physics') + get_stat('wits') + get_stat('charm') + get_stat('sexuals'))*2.5
-	value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*8 + get_stat('growth_factor') * 25 + get_stat('magic_factor') * 15
+	value += (get_stat('physics_factor') + get_stat('wits_factor') + get_stat('charm_factor') + get_stat('sexuals_factor') + get_stat('tame_factor') + get_stat('timid_factor'))*8 + get_stat('growth_factor') * 32 + get_stat('magic_factor') * 15
 	value += xp_module.professions.size()*40
 	if statlist.bonuses.has("price_mul"): value *= statlist.bonuses.price_mul
 	return max(100,round(value))

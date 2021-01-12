@@ -137,7 +137,7 @@ var TranslationDict = {
 	MATERIALINK_MPDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. Energy to supply magic is generally scarce, but this unknown signia will resupply the bearer with some additional traces from the air.\n\nApplied to: {color=yellow|Arms, Legs, Waist}\n\nMana Regeneration: +10%.",
 	MATERIALINK_TRIBALDESCRIPT = "A set of tools and ink allowing to apply a certain magical signature on the subject. The technique of this special ink has been salvaged from the clan of fierce warriors. \n\nApplied to: {color=yellow|Face, Chest, Arms, Legs}\n\nWhen applied to Face: +5 Health\nOtherwise: +3 Physics",
 	
-	TATTOOBRANDDESCRIPT = "A sign on your ownership. Reduce Obedience drain by 25%",
+	TATTOOBRANDDESCRIPT = "A sign of your ownership. Reduce Obedience drain by 25%",
 	TATTOOLUSTDESCRIPT = "Lust Growth: +10%",
 	TATTOOLUST2DESCRIPT = "Lust Growth: +20%",
 	TATTOOMAKEUPDESCRIPT = "Charm: +10",
