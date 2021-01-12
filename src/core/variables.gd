@@ -160,6 +160,7 @@ var servants_starting_classes = ['harlot','pet','petbeast','thief']
 var workers_starting_classes = ['worker','hunter','farmer']
 
 var guild_order = ['fighters','workers','servants','mages','slavemarket']
+var stats_order = ['fighters','workers','servants','mages','slavemarket']
 
 var master_starting_stats = 10
 var slave_starting_stats = 15

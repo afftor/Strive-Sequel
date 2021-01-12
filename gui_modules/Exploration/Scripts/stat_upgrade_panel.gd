@@ -60,14 +60,17 @@ func show_stats(character):
 	if character == null:
 		return
 	for stat in stats_dict:
-		if character.get_stat(stat) == 6:
-			continue
+		# if character.get_stat(stat) == 6:
+		# 	continue
 		if character == ResourceScripts.game_party.get_master() && stat in ["timid_factor", "tame_factor"]:
 			continue
 		else:
 			stats_to_show += 1
 			var newbutton = input_handler.DuplicateContainerTemplate(StatsContainer)
 			newbutton.get_node("StatName").text = stats_dict[stat]
+			if character.get_stat(stat) == 6:
+				newbutton.disabled = true
+				continue
 			newbutton.connect("pressed", self, "show_stat_info", [stat, character])
 	person = character
 	update_buttons()
