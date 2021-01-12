@@ -173,6 +173,7 @@ func build_guilds_panel(guilds):
 	input_handler.ClearContainer(GuildPanelContainer)
 	var newbutton
 	var counter = 0
+	guilds.sort_custom(self, 'sort_factions')
 	for guild in guilds:
 		counter += 1
 		var newseparator = $NavigationModule/GuildsPanel/VSeparator.duplicate()
@@ -182,6 +183,14 @@ func build_guilds_panel(guilds):
 		newbutton.set_meta("guild_name", guild.name)
 		GuildPanelContainer.add_child(newseparator)
 		newseparator.visible = counter != guilds.size()
+
+
+func sort_factions(first, second):
+	if variables.guild_order.has(first.code):
+		if variables.guild_order.has(second.code):
+			return variables.guild_order.find(first.code) < variables.guild_order.find(second.code)
+		else:
+			return true
 
 
 func build_area_menu(area_actions):
@@ -1626,21 +1635,30 @@ func show_slave_info(person):
 var sell_category = 'all'
 var buy_category = 'all'
 var active_shop
+
 func faction_sellslaves():
 	hiremode = 'sell'
 #	$HirePanel.show()
 #	$HirePanel/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
+	var first_char = null
+	var counter = 0
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
 		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
 			continue
+		if counter == 0:
+			first_char = tchar
+			counter += 1
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_stat('name')
 		newbutton.get_node("Price").text = str(round(tchar.calculate_price()/2))
-		newbutton.connect("pressed", self, "sell_slave", [tchar])
+		newbutton.connect("pressed", self, "show_slave_info", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
+	if first_char != null:
+		show_slave_info(first_char)
+
 
 func unfade(window, time = 0.5):
 	window.set("modulate", Color(1, 1, 1, 0))

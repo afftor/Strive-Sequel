@@ -1,4 +1,4 @@
-	extends Node
+extends Node
 #Game Settings
 var HoursPerDay = 24
 var SecondsPerHour = 3
@@ -321,3 +321,5 @@ var personality_conversion_rates = {
 	kind = 0.2,
 	serious = 0.5
 }
+
+

@@ -61,8 +61,12 @@ func showup(node, text, move_right = false):
 		if get_rect().end.y >= screen.size.y:
 			rect_global_position.y = node.get_global_rect().position.y - (get_rect().size.y+10)
 		if get_rect().position.y < 0:
-			rect_global_position.y = 0
-			rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
+			if gui_controller.current_screen == gui_controller.mansion:
+				rect_global_position.y = screen.size.y - get_rect().size.y
+				rect_global_position.x -= 485
+			else:
+				rect_global_position.y = 0
+				rect_global_position.x -= get_rect().end.x - get_rect().size.x - 350
 	prevnode = parentnode
 
 func turnoff():

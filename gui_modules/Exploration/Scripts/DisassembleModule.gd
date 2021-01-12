@@ -85,6 +85,8 @@ func build_list():
 			continue
 		if i.amount == 0:
 			continue
+		if i.owner != null:
+			continue
 		var newbutton = input_handler.DuplicateContainerTemplate(itemcontainer)
 		newbutton.get_node("Title").text = i.name
 		i.set_icon(newbutton.get_node("Icon"))

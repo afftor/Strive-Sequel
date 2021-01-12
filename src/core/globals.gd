@@ -279,6 +279,7 @@ func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	data.item = material
 	data.icon = material.icon
 	data.price = str(material.price)
+	data.type = material.type
 	if ResourceScripts.game_res.materials[material.code] > 0:
 		data.amount = ResourceScripts.game_res.materials[material.code]
 	

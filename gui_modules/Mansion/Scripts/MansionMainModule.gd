@@ -495,7 +495,7 @@ func test_mode():
 		# character.unlock_class("thief")
 		# character.unlock_class("engineer")
 		# character.unlock_class("scholar")
-		character.travel.location = 'L4'
+		# character.travel.location = 'L4'
 		# character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
@@ -715,7 +715,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message("event_dungeon_complete_loot_easy", '',{})
+		# input_handler.interactive_message("servants_election_finish1", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000

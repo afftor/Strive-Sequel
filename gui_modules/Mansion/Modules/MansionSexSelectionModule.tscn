@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/Themes_v2/UNIVERSAL/PanelBorders.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/Themes_v2/SimpleBgPanel.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainBig.tres" type="DynamicFont" id=2]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionSexSelectionModule.gd" type="Script" id=3]
 [ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonmagenta_disabled.png" type="Texture" id=4]

@@ -13,8 +13,6 @@
 [ext_resource path="res://assets/Textures_v2/CHAR_INFO/Panels/body_mask.png" type="Texture" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=12]
 
-
-
 [node name="SlaveBodyModule" type="Panel"]
 show_behind_parent = true
 light_mask = 0
@@ -136,12 +134,10 @@ __meta__ = {
 }
 
 [node name="professions" type="GridContainer" parent="."]
-light_mask = 0
-margin_left = 17.0
+margin_left = 14.4802
 margin_top = -116.0
-margin_right = 689.0
+margin_right = 686.48
 margin_bottom = -16.0
-mouse_filter = 2
 custom_constants/hseparation = 14
 columns = 6
 __meta__ = {
@@ -152,11 +148,13 @@ __meta__ = {
 "ignore_rightclicks",
 ]]
 visible = false
-light_mask = 0
 margin_right = 100.0
+margin_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_min_size = Vector2( 100, 0 )
+rect_min_size = Vector2( 100, 100 )
+focus_mode = 0
+mouse_filter = 1
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 6 )
@@ -165,6 +163,18 @@ texture_focused = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="professions/Button"]
+visible = false
+light_mask = 0
+margin_left = 7.0
+margin_top = 69.0
+margin_right = 93.0
+margin_bottom = 93.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="professions/Button"]
 light_mask = 0
@@ -175,18 +185,6 @@ margin_bottom = 93.0
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="professions/Button"]
-visible = false
-light_mask = 0
-margin_left = 7.0
-margin_top = 69.0
-margin_right = 93.0
-margin_bottom = 93.0
-align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

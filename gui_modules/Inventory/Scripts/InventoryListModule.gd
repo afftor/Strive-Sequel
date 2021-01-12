@@ -41,7 +41,6 @@ func buildinventory():
 		itemarray.append(newbutton)
 		newbutton.set_meta("item", i)
 		if material.type != "tattoo":
-
 			newbutton.connect("pressed",self,'useitem', [i, 'material'])
 		else:
 			newbutton.set_meta("tattoo_item", i)

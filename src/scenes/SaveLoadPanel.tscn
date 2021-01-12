@@ -14,8 +14,6 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_20_normal.tres" type="DynamicFont" id=12]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=13]
 
-
-
 [node name="saveloadpanel" type="Panel"]
 margin_right = 650.0
 margin_bottom = 774.0
@@ -142,6 +140,7 @@ margin_bottom = 132.587
 texture = ExtResource( 11 )
 
 [node name="Update" type="Button" parent="."]
+visible = false
 margin_left = 272.075
 margin_top = 20.0476
 margin_right = 393.912
