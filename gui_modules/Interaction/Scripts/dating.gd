@@ -1340,9 +1340,11 @@ func get_item_category(item):
 	return type
 
 
+var prev_action = ""
+
 func food(person, counter):
 	input_handler.append_not_duplicate(gui_controller.windows_opened, $Items)
-	$Items.visible = !$Items.is_visible()
+	$Items.visible = !$Items.is_visible() || (prev_action == "useitem" || prev_action == "")
 	var array = []
 	for i in ResourceScripts.game_res.materials:
 		if ResourceScripts.game_res.materials[i] <= 0:
@@ -1360,6 +1362,7 @@ func food(person, counter):
 		newbutton.get_node("Amount").text = str(ResourceScripts.game_res.materials[item.code])
 		newbutton.connect("pressed", self, "usefood", [item])
 		globals.connectmaterialtooltip(newbutton, item)
+	prev_action = "food"
 
 
 func usefood(food):
@@ -1406,13 +1409,12 @@ func usefood(food):
 	
 	self.showntext = globals.TextEncoder(decoder(text))
 	updatelist()
-	
 
 
 func useitem(person, counter):
 	if !gui_controller.windows_opened.has($Items):
 		gui_controller.windows_opened.append($Items)
-	$Items.visible = !$Items.is_visible()
+	$Items.visible = !$Items.is_visible() || (prev_action == "food" || prev_action == "")
 	var array = []
 	for i in ResourceScripts.game_res.items.values():
 		if i.type == 'gear':
@@ -1428,6 +1430,7 @@ func useitem(person, counter):
 		newbutton.connect("pressed", self, "item_selected", [item])
 	# globals.ItemSelect(self, 'date_use', 'item_selected')
 	# return ''
+	prev_action = "useitem"
 
 func item_selected(item):
 	call(item.code, person)
