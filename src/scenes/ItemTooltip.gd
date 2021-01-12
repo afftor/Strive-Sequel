@@ -101,7 +101,8 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 			rect_global_position.x -= screen.size.x - get_rect().end.x
 	if get_rect().end.y > screen.size.y:
 		rect_global_position.y -= get_rect().end.y - screen.size.y#node.get_global_rect().position.y - rect_size.y
-	
+	if data.has("type") && data.type == "tattoo":
+		rect_global_position.x = 200
 	set_process(true)
 
 func material_tooltip(data, workers_data = {}):
