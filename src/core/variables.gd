@@ -85,6 +85,7 @@ var hexcolordict = {
 	k_gray = "#e0e0e0",
 	k_green = "#51fe84",
 	k_red = "#fe515d",
+	magenta = "#ff84ff",
 }
 
 

@@ -186,38 +186,65 @@ func piercing():
 			text = "\n[url=piercing][color=#d1b970]Piercing:[/color][/url] Omitted."
 	return text
 
+var tattoo_descripts = {
+	face_makeup = "[His] face has permanent makeup accentuating on [his] beauty.",
+	face_tribal = "[His] face is painted with tribal markings.",
+	neck_branding = "[His] neck features a slave brand with your name on it.",
+	chest_lust = "[His] chest is decorated with a lewd marks emphasizing [his] nipples.",
+	chest_tribal = "[His] chest is camouflaged with tribal markings.",
+	waist_hp = "Back of [his] waist holds an delicate plant tattoo.",
+	waist_mp = "Back of [his] waist is decorated with glowing energy lines.",
+	arms_hp = "[His] arms are decorated with elegant plant tattoos.",
+	arms_mp = "[His] arms feature glowing energy lines.",
+	arms_tribal = "[His] arms are painted with tribal markings.",
+	ass_branding = "[His] ass cheek has a slave brand with your name on it.",
+	ass_lust = "[His] rear is decorated with a lewd crest.",
+	crotch_branding = "[His] crotch has a slave brand with your name on it.",
+	crotch_lust = "[His] crotch is tattooed with a lewd crest.",
+	legs_hp = "[His] legs are decorated with a elegant plant tattoos.",
+	legs_mp = "[His] legs feature glowing energy lines.",
+	legs_tribalr = "[His] legs are painted with tribal markings.",
+}
+
 func tattoo():
 	var text = ''
+	for slot in person.statlist.tattoo:
+		#print(person.statlist.tattoo[slot])
+		if person.statlist.tattoo[slot] != null:
+			text += tattoo_descripts[slot + "_" + person.statlist.tattoo[slot].replace("ink_",'')] + " "
+			#print(person.statlist.tattoo[slot])
+	
+	
+	return "{color=magenta|" + text + "}"
 	#Fix later
-	var tmp = person.get_stat('tattoo')
-	var tmp1 = person.get_stat('tattooshow')
-	var sametattoo = true
-	for i in tmp.values():
-		if tmp.face != i || tmp.face == 'none':
-			sametattoo = false
-			break
-	if sametattoo == true:
-		text += "[name]'s entire body is tattooed with [color=yellow]" + tattoooptions[tmp.face].name + '[/color] pattern, featuring complex ' + tattoooptions[tmp.face].descript + '. '
-	else:
-		if tmp.face != 'none' && tmp1.face == true:
-			text += tattoosdescript.face.start + '[color=yellow]' + tattoooptions[tmp.face].name + '[/color]' + tattoosdescript.face.end + tattoooptions[tmp.face].descript + '. '
-		if tmp.chest != 'none' && tmp1.chest == true:
-			text += tattoosdescript.chest.start + '[color=yellow]' + tattoooptions[tmp.chest].name + '[/color]' + tattoosdescript.chest.end + tattoooptions[tmp.chest].descript + '. '
-		if tmp.arms != 'none' && tmp1.arms == true:
-			text += tattoosdescript.arms.start + '[color=yellow]' + tattoooptions[tmp.arms].name + '[/color]' + tattoosdescript.arms.end + tattoooptions[tmp.arms].descript + '. '
-		if tmp.waist != 'none' && tmp1.waist == true:
-			text += tattoosdescript.waist.start + '[color=yellow]' + tattoooptions[tmp.waist].name + '[/color]' + tattoosdescript.waist.end + tattoooptions[tmp.waist].descript + '. '
-		if tmp.legs != 'none' && tmp1.legs == true:
-			text += tattoosdescript.legs.start + '[color=yellow]' + tattoooptions[tmp.legs].name + '[/color]' + tattoosdescript.legs.end + tattoooptions[tmp.legs].descript + '. '
-		if tmp.ass != 'none' && tmp1.ass == true:
-			text += tattoosdescript.ass.start + '[color=yellow]' + tattoooptions[tmp.ass].name + '[/color]' + tattoosdescript.ass.end + tattoooptions[tmp.ass].descript + '. '
-	if text != '':
-		#possible bug
-		if globals.state.descriptsettings.tattoo == true || showmode != 'default': 
-			text = "\n\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] " + text
-		else:
-			text = "\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] Omitted."
-	return text
+#	var tmp = person.get_stat('tattoo')
+#	var tmp1 = person.get_stat('tattooshow')
+#	var sametattoo = true
+#	for i in tmp.values():
+#		if tmp.face != i || tmp.face == 'none':
+#			sametattoo = false
+#			break
+#	if sametattoo == true:
+#		text += "[name]'s entire body is tattooed with [color=yellow]" + tattoooptions[tmp.face].name + '[/color] pattern, featuring complex ' + tattoooptions[tmp.face].descript + '. '
+#	else:
+#		if tmp.face != 'none' && tmp1.face == true:
+#			text += tattoosdescript.face.start + '[color=yellow]' + tattoooptions[tmp.face].name + '[/color]' + tattoosdescript.face.end + tattoooptions[tmp.face].descript + '. '
+#		if tmp.chest != 'none' && tmp1.chest == true:
+#			text += tattoosdescript.chest.start + '[color=yellow]' + tattoooptions[tmp.chest].name + '[/color]' + tattoosdescript.chest.end + tattoooptions[tmp.chest].descript + '. '
+#		if tmp.arms != 'none' && tmp1.arms == true:
+#			text += tattoosdescript.arms.start + '[color=yellow]' + tattoooptions[tmp.arms].name + '[/color]' + tattoosdescript.arms.end + tattoooptions[tmp.arms].descript + '. '
+#		if tmp.waist != 'none' && tmp1.waist == true:
+#			text += tattoosdescript.waist.start + '[color=yellow]' + tattoooptions[tmp.waist].name + '[/color]' + tattoosdescript.waist.end + tattoooptions[tmp.waist].descript + '. '
+#		if tmp.legs != 'none' && tmp1.legs == true:
+#			text += tattoosdescript.legs.start + '[color=yellow]' + tattoooptions[tmp.legs].name + '[/color]' + tattoosdescript.legs.end + tattoooptions[tmp.legs].descript + '. '
+#		if tmp.ass != 'none' && tmp1.ass == true:
+#			text += tattoosdescript.ass.start + '[color=yellow]' + tattoooptions[tmp.ass].name + '[/color]' + tattoosdescript.ass.end + tattoooptions[tmp.ass].descript + '. '
+#	if text != '':
+#		#possible bug
+#		if globals.state.descriptsettings.tattoo == true || showmode != 'default': 
+#			text = "\n\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] " + text
+#		else:
+#			text = "\n[url=tattoo][color=#d1b970]Tattoos:[/color][/url] Omitted."
 #
 #func mods():
 #	var text = ''
