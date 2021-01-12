@@ -920,7 +920,7 @@ var enemies = {
 		tags = ['beast'],
 		is_character = false,
 		gear = [],
-		ai = [['basic', 100]],
+		ai = [['basic', 50],['ads',50]],
 		ai_position = ['melee'],
 		xpreward = 100,
 	},
