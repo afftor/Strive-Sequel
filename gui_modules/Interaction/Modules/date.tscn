@@ -624,7 +624,6 @@ text = "Stop"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="panel/categories/Affection" to="." method="selectcategory" binds= [ "Affection" ]]
 [connection signal="pressed" from="panel/categories/Discipline" to="." method="selectcategory" binds= [ "Discipline" ]]
 [connection signal="pressed" from="panel/categories/Training" to="." method="selectcategory" binds= [ "Training" ]]
