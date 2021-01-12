@@ -240,10 +240,10 @@ __meta__ = {
 }
 
 [node name="TutorialButton" type="TextureButton" parent="."]
-margin_left = 1718.95
-margin_top = 16.0
-margin_right = 1769.95
-margin_bottom = 68.0
+margin_left = 1716.95
+margin_top = 17.0
+margin_right = 1767.95
+margin_bottom = 69.0
 theme = ExtResource( 3 )
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 32 )
@@ -253,6 +253,7 @@ __meta__ = {
 }
 
 [node name="TestButton" type="Button" parent="."]
+visible = false
 margin_left = 102.757
 margin_top = 246.472
 margin_right = 164.757
@@ -263,5 +264,4 @@ __meta__ = {
 }
 
 [node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
-
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]
