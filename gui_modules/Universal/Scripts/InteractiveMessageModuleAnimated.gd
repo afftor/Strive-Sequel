@@ -476,7 +476,8 @@ func handle_characters_sprites(scene):
 		$CharacterImage.show()
 	if !scene.has("character2"):
 		$ImagePanel.show()
-		$CharacterImage2.hide()
+		if get_node_or_null("CharacterImage2"):
+			$CharacterImage2.hide()
 		if scene.image != '' && scene.image != null:
 			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
 		else:
