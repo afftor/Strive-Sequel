@@ -1635,21 +1635,30 @@ func show_slave_info(person):
 var sell_category = 'all'
 var buy_category = 'all'
 var active_shop
+
 func faction_sellslaves():
 	hiremode = 'sell'
 #	$HirePanel.show()
 #	$HirePanel/RichTextLabel.bbcode_text = ""
 	input_handler.ClearContainer($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
+	var first_char = null
+	var counter = 0
 	for i in ResourceScripts.game_party.characters:
 		var tchar = characters_pool.get_char_by_id(i)
 		if tchar.has_profession('master') || tchar.valuecheck({code = 'is_free', check = true}) == false:
 			continue
+		if counter == 0:
+			first_char = tchar
+			counter += 1
 		var newbutton = input_handler.DuplicateContainerTemplate($SlaveMarket/SlaveList/ScrollContainer/VBoxContainer)
 		newbutton.get_node("name").text = tchar.get_stat('name')
 		newbutton.get_node("Price").text = str(round(tchar.calculate_price()/2))
-		newbutton.connect("pressed", self, "sell_slave", [tchar])
+		newbutton.connect("pressed", self, "show_slave_info", [tchar])
 		newbutton.set_meta("person", tchar)
 		globals.connectslavetooltip(newbutton, tchar)
+	if first_char != null:
+		show_slave_info(first_char)
+
 
 func unfade(window, time = 0.5):
 	window.set("modulate", Color(1, 1, 1, 0))

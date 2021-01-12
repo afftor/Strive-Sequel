@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://gui_modules/Interaction/Scripts/dating.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_small.png" type="Texture" id=2]
@@ -39,6 +39,7 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/PT_24_Label.tres" type="Theme" id=37]
 [ext_resource path="res://assets/Fonts_v2/Ledger/Ledger-Regular.ttf" type="DynamicFontData" id=38]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmallBold.tres" type="DynamicFont" id=39]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=40]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -222,7 +223,8 @@ __meta__ = {
 margin_left = 281.0
 margin_right = 335.0
 margin_bottom = 54.0
-theme = ExtResource( 11 )
+hint_tooltip = "Affection"
+theme = ExtResource( 40 )
 toggle_mode = true
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 17 )
@@ -232,7 +234,8 @@ texture_hover = ExtResource( 16 )
 margin_left = 360.0
 margin_right = 414.0
 margin_bottom = 54.0
-theme = ExtResource( 11 )
+hint_tooltip = "Discipline"
+theme = ExtResource( 40 )
 toggle_mode = true
 texture_normal = ExtResource( 19 )
 texture_pressed = ExtResource( 27 )
@@ -242,7 +245,8 @@ texture_hover = ExtResource( 18 )
 margin_left = 439.0
 margin_right = 493.0
 margin_bottom = 54.0
-theme = ExtResource( 11 )
+hint_tooltip = "Training"
+theme = ExtResource( 40 )
 toggle_mode = true
 texture_normal = ExtResource( 24 )
 texture_pressed = ExtResource( 26 )
@@ -252,7 +256,8 @@ texture_hover = ExtResource( 25 )
 margin_left = 518.0
 margin_right = 572.0
 margin_bottom = 54.0
-theme = ExtResource( 11 )
+hint_tooltip = "Location"
+theme = ExtResource( 40 )
 toggle_mode = true
 texture_normal = ExtResource( 28 )
 texture_pressed = ExtResource( 30 )
@@ -263,6 +268,7 @@ visible = false
 margin_left = 232.0
 margin_right = 286.0
 margin_bottom = 54.0
+theme = ExtResource( 40 )
 toggle_mode = true
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 21 )
