@@ -247,6 +247,7 @@ func build_area_menu(area_actions):
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
 		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
+		newbutton.toggle_mode = false
 
 		# newbutton.get_node("Label").rect_position.x = 0
 		# newbutton.get_node("Label").rect_size.x = 272
