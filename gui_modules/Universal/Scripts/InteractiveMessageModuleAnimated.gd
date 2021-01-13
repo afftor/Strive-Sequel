@@ -58,7 +58,7 @@ func open(scene, is_should_save = false):
 	set_enemy(scene)
 	handle_scene_options(scene)
 
-	yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	hold_selection = false
 	show_buttons()
 	gui_controller.is_dialogue_just_started = false
@@ -563,7 +563,7 @@ func handle_scene_options(scene):
 		var option_number = 1
 		var options = scene.options
 		for i in options:
-			#yield(get_tree(), 'idle_frame')
+			# yield(get_tree(), 'idle_frame')
 			if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
 				i.previous_dialogue_option = [i.previous_dialogue_option]
 			if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option):
@@ -579,10 +579,10 @@ func handle_scene_options(scene):
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
 			newbutton.get_node("Label").bbcode_text = tr(i.text)
+			yield(get_tree(), 'idle_frame')
 			if i.has('active_char_translate'):
 				newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
 			newbutton.get_node("hotkey").text = str(option_number)
-			yield(get_tree(), 'idle_frame')
 			if newbutton.get_node("Label").get_v_scroll().is_visible():
 				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
 			newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
@@ -630,3 +630,5 @@ func handle_scene_options(scene):
 				newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
 			newbutton.disabled = disable
 			option_number += 1
+
+			
