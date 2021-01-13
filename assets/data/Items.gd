@@ -1197,7 +1197,7 @@ var itemlist = {
 		geartype = 'costume',
 		crafttype = 'basic',
 		slots = ['underwear','chest','legs'],
-		price = 150,
+		price = 200,
 		icon = load("res://assets/images/iconsitems/clothbdsm.png"),
 		tier = 'medium',
 		reqs = [],
@@ -2755,16 +2755,40 @@ var recipes = {
 		workunits = 10, 
 		worktype = 'tailor'
 	},
+	bell_collar = {
+		code = 'bell_collar',
+		materials = {leather = 6, iron = 3},
+		items = {},
+		unlockreqs = [], 
+		crafttype = 'basic',
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'bell_collar',
+		workunits = 15, 
+		worktype = 'tailor'
+	},
+	ribbon = {
+		code = 'ribbon',
+		materials = {leather = 5, clothsilk = 10},
+		items = {},
+		unlockreqs = [], 
+		crafttype = [{type = "has_upgrade", name = 'tailor', value = 2}], 
+		resultamount = 1, 
+		resultitemtype = 'item', 
+		resultitem = 'ribbon',
+		workunits = 25, 
+		worktype = 'tailor'
+	},
 	elegant_choker = {
 		code = 'elegant_choker',
-		materials = {cloth = 8, clothsilk = 4},
+		materials = {leatherthick = 10, clothsilk = 5},
 		items = {},
 		unlockreqs = [{type = "has_upgrade", name = 'tailor', value = 3}], 
 		crafttype = 'basic',
 		resultamount = 1, 
 		resultitemtype = 'item', 
 		resultitem = 'elegant_choker',
-		workunits = 12, 
+		workunits = 30,
 		worktype = 'tailor'
 	},
 	steel_collar = {
