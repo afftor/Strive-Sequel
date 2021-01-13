@@ -39,7 +39,7 @@
 			{text = "ALIRONCHURCHFIRSTCOME", reqs = []},
 		],
 		options = [
-			{code = 'aliron_church_introduction', text = "ALIRONCHURCHFIRSTCOMEREPLY1", reqs = [], dialogue_argument = 1},
+			{code = 'aliron_church_introduction', text = "ALIRONCHURCHFIRSTCOMEREPLY1", reqs = [], dialogue_argument = 1, remove_after_first_use = true},
 			{code = 'aliron_church_introduction', text = "ALIRONCHURCHFIRSTCOMEREPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
 			{code = 'close', text = "ALIRONCHURCHFIRSTCOMEREPLY3", reqs = [], dialogue_argument = 3, bonus_effects = [
 				{code = 'update_city'},
