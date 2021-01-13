@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=138 format=2]
 
 [ext_resource path="res://assets/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle3.tres" type="DynamicFont" id=2]
@@ -87,6 +87,7 @@
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_pressed.png" type="Texture" id=85]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation_hover.png" type="Texture" id=86]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats.png" type="Texture" id=87]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=88]
 [ext_resource path="res://assets/Textures_v2/Universal/Buttons/button_occupation.png" type="Texture" id=89]
 [ext_resource path="res://assets/Textures_v2/Universal/Panels/panel_big.png" type="Texture" id=90]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/arrowstats_hover.png" type="Texture" id=91]
@@ -258,6 +259,7 @@ __meta__ = {
 }
 
 [node name="Background" type="Panel" parent="NavigationModule"]
+visible = false
 self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_right = 1585.0
@@ -265,6 +267,15 @@ margin_bottom = 55.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background2" type="TextureRect" parent="NavigationModule"]
+self_modulate = Color( 0, 0, 0, 0.705882 )
+show_behind_parent = true
+margin_right = 1585.0
+margin_bottom = 55.0
+texture = ExtResource( 88 )
+expand = true
+stretch_mode = 7
 
 [node name="VSeparator" type="TextureRect" parent="NavigationModule"]
 visible = false

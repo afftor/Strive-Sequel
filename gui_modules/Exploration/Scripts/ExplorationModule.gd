@@ -1761,6 +1761,8 @@ func update_sell_list():
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
 	for item in ResourceScripts.game_res.items.values():
+		if item.amount <= 0:
+			continue
 		var type = get_item_category(item)
 		if item.owner != null:
 			continue
@@ -2296,7 +2298,7 @@ var current_pressed_area_btn setget set_area_btn_pressed
 
 
 func set_area_btn_pressed(value):
-	if current_pressed_area_btn == null:
+	if !is_instance_valid(current_pressed_area_btn):
 		current_pressed_area_btn = value
 		return
 	if value != current_pressed_area_btn:

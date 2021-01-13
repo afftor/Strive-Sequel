@@ -151,7 +151,7 @@ func show_class_info(classcode, person = null):
 
 func close_top_window():
 	var node = windows_opened.back()
-	if window_button_connections.keys().has(node) && window_button_connections[node] != null:
+	if window_button_connections.keys().has(node) && is_instance_valid(window_button_connections[node]):
 		window_button_connections[node].pressed = false
 		windows_opened.erase(node)
 		return
