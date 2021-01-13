@@ -73,13 +73,13 @@ __meta__ = {
 
 [node name="CustomBackground" type="TextureRect" parent="."]
 show_behind_parent = true
-margin_left = -569.0
-margin_top = -398.0
-margin_right = 1370.0
-margin_bottom = 683.0
+margin_left = -545.0
+margin_top = -385.0
+margin_right = 1345.0
+margin_bottom = 665.0
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 6
+stretch_mode = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,6 +94,7 @@ __meta__ = {
 }
 
 [node name="CharacterImage" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
 margin_left = 722.0
 margin_top = -396.556
@@ -107,6 +108,7 @@ __meta__ = {
 }
 
 [node name="CharacterImage2" type="TextureRect" parent="."]
+visible = false
 show_behind_parent = true
 margin_left = -608.68
 margin_top = -398.35

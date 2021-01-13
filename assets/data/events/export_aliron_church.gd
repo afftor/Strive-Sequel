@@ -115,6 +115,10 @@
 			{code = 'aliron_church_quest_complete', reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTSTART'},
 				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 25},
+			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0, remove_after_first_use = true},
+			{code = 'aliron_church_quest_complete', reqs = [
+				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTSTART'},
+				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 25},
 				{type = 'timed_option', value = 7, quest = "aliron_church"},
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0},
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4, type = 'next_dialogue'},

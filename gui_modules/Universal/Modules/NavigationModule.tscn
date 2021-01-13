@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Fonts_v2/PT_Sans/PTSans-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=2]
 [ext_resource path="res://gui_modules/Universal/Scripts/NavigationModule.gd" type="Script" id=3]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Panel_Square.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/divider_navi_player.png" type="Texture" id=5]
+[ext_resource path="res://assets/Textures_v2/ANIMATIONS/ClassAchieved/panel_class.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -22,6 +23,7 @@ __meta__ = {
 }
 
 [node name="Background" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 0, 0, 0, 0.705882 )
 show_behind_parent = true
 margin_right = 1450.0
@@ -29,6 +31,15 @@ margin_bottom = 55.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background2" type="TextureRect" parent="."]
+self_modulate = Color( 0, 0, 0, 0.705882 )
+show_behind_parent = true
+margin_right = 1450.0
+margin_bottom = 55.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
 
 [node name="VSeparator" type="TextureRect" parent="."]
 visible = false

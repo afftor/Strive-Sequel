@@ -24,7 +24,6 @@
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/ClassInfoPanel.tres" type="StyleBox" id=22]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle2.tres" type="DynamicFont" id=23]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 19 )
 region_rect = Rect2( 0, 0, 970, 920 )
@@ -257,7 +256,6 @@ __meta__ = {
 }
 
 [node name="ClassPanel" type="Panel" parent="."]
-visible = false
 light_mask = 0
 margin_left = 970.0
 margin_top = -130.0
@@ -267,7 +265,6 @@ custom_styles/panel = ExtResource( 22 )
 script = ExtResource( 10 )
 
 [node name="Background" type="Panel" parent="ClassPanel"]
-visible = false
 show_behind_parent = true
 light_mask = 0
 margin_left = -2.0

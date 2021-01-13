@@ -93,21 +93,24 @@ func sex_traits_open():
 	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
 	$SexTraitsPanel/TraitsNotLearned.bbcode_text = person.translate(tr("NOTALLTRAITSLEARNED"))
 	var array = person.get_all_sex_traits()#.keys()
+
 	var all_traits_known = true
 	for i in array:
-		if array[i] == false:
+		if array[i]:
+			person.statlist.unlocked_sex_traits.append(i)
+		else:
 			all_traits_known = false
 			break
 	if all_traits_known:
 		array = person.get_unlocked_sex_traits()#.keys()
 		array.sort_custom(self, 'sort_traits')
-	
-		for i in array:
-			var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
-			newbutton.pressed = person.check_trait(i)
-			newbutton.text = Traitdata.sex_traits[i].name
-			globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
-			newbutton.connect("toggled", self, 'toggle_trait', [i])
+
+	for i in array:
+		var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+		newbutton.pressed = person.check_trait(i)
+		newbutton.text = Traitdata.sex_traits[i].name
+		globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
+		newbutton.connect("toggled", self, 'toggle_trait', [i])
 	$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
 	update_trait_capacity()
 

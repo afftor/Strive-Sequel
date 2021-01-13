@@ -247,6 +247,7 @@ func build_area_menu(area_actions):
 		newbutton.texture_normal = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_hover.png")
 		newbutton.texture_pressed = load("res://assets/Textures_v2/CITY/Buttons/buttonbig_city_pressed.png")
+		newbutton.toggle_mode = false
 
 		# newbutton.get_node("Label").rect_position.x = 0
 		# newbutton.get_node("Label").rect_size.x = 272
@@ -265,8 +266,8 @@ func open_location(data):
 	gui_controller.nav_panel = $LocationGui.get_node("NavigationModule")
 	selected_location = data.id
 	var gatherable_resources
+	$LocationGui.get_node("Resources/Forget").visible = true
 	if data.type == "dungeon":
-		$LocationGui.get_node("Resources/Forget").visible = data.completed
 		$LocationGui.get_node("Resources/SelectWorkers").visible = data.completed
 		gui_controller.clock.hide()
 	else:
@@ -1761,6 +1762,8 @@ func update_sell_list():
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
 	for item in ResourceScripts.game_res.items.values():
+		if item.amount <= 0:
+			continue
 		var type = get_item_category(item)
 		if item.owner != null:
 			continue
@@ -2296,7 +2299,7 @@ var current_pressed_area_btn setget set_area_btn_pressed
 
 
 func set_area_btn_pressed(value):
-	if current_pressed_area_btn == null:
+	if !is_instance_valid(current_pressed_area_btn):
 		current_pressed_area_btn = value
 		return
 	if value != current_pressed_area_btn:

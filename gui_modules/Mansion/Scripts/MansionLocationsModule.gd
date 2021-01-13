@@ -107,6 +107,7 @@ func build_location_list(area, container):
 		var newbutton = input_handler.DuplicateContainerTemplate(Column1)
 		var text = tr("MANSION")
 		newbutton.text = text
+		newbutton.get_node("Icon").texture = images.icons.travel_city
 		newbutton.get_node("Label").text = str(calculate_location_characters("Aliron", newbutton))
 		newbutton.set_meta("code", "aliron")
 		newbutton.connect('pressed', self, 'select_location', [newbutton])

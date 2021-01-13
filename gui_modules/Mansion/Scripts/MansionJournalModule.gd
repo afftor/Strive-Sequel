@@ -153,7 +153,7 @@ func show_quest_info(quest):
 					newbutton.get_node("TextureRect").texture = Items.itemlist[i.item].icon
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-					globals.connecttempitemtooltip_v2(newbutton, Items.itemlist[i.item], 'geartemplate')
+					globals.connecttempitemtooltip(newbutton, Items.itemlist[i.item], 'geartemplate')
 				'gold':
 					var value = round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 					newbutton.get_node("TextureRect").texture = images.icons.quest_gold
@@ -299,7 +299,7 @@ func Reward():
 				counter = true
 		if counter == false:
 			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
-	
+	globals.common_effects([{code = 'reputation', name = selectedquest.source, only_recount = true}])
 	play_animation()
 	open()
 
