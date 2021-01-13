@@ -400,8 +400,8 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.jpg", "*.png" )
-current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
+current_dir = "/GAMEDEV/GODOT/Strive/Strive-Sequel"
+current_path = "/GAMEDEV/GODOT/Strive/Strive-Sequel/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -501,8 +501,8 @@ window_title = "Open a Directory"
 dialog_text = "Select default path folder"
 mode = 2
 access = 2
-current_dir = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel"
-current_path = "F:/GAMEDEV/GODOT/Strive/Strive-Sequel/"
+current_dir = "/GAMEDEV/GODOT/Strive/Strive-Sequel"
+current_path = "/GAMEDEV/GODOT/Strive/Strive-Sequel/"
 
 [node name="noimagestext" type="RichTextLabel" parent="."]
 visible = false
@@ -576,7 +576,7 @@ custom_constants/separation = 5
 visible = false
 light_mask = 0
 margin_right = 315.0
-margin_bottom = 52.0
+margin_bottom = 55.0
 theme = ExtResource( 4 )
 toggle_mode = true
 text = "Trait"
@@ -617,6 +617,7 @@ text = "NOTALLTRAITSLEARNED"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="text_changed" from="VBoxContainer/IconBlock/search" to="PopUp" method="_on_search_text_changed"]
 [connection signal="pressed" from="VBoxContainer/IconBlock/addcustom" to="PopUp" method="_on_addcustom_pressed"]
 [connection signal="pressed" from="VBoxContainer/IconBlock/openfolder" to="PopUp" method="_on_openfolder_pressed"]
