@@ -1,7 +1,7 @@
 extends Node
 var TranslationDict = {
 	#Buildings
-	MANSION = "Mansion",
+	MANSION = "Aliron (Mansion)",
 	RETURNTOMANSION = "Return to Mansion",
 	WORKERMARKET = "Market",
 	PURCHASE = "Purchase",

@@ -265,8 +265,8 @@ func open_location(data):
 	gui_controller.nav_panel = $LocationGui.get_node("NavigationModule")
 	selected_location = data.id
 	var gatherable_resources
+	$LocationGui.get_node("Resources/Forget").visible = true
 	if data.type == "dungeon":
-		$LocationGui.get_node("Resources/Forget").visible = data.completed
 		$LocationGui.get_node("Resources/SelectWorkers").visible = data.completed
 		gui_controller.clock.hide()
 	else:
