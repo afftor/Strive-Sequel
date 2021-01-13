@@ -50,8 +50,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-test_mode = true
-generate_test_chars = true
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -264,4 +262,5 @@ __meta__ = {
 }
 
 [node name="TutorialIntro" parent="." instance=ExtResource( 33 )]
+
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]

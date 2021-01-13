@@ -320,7 +320,7 @@ var individual_lines = {
 	loyalty_line1 = {text = "I... could I pledge my loyalty to [Master]? For all good you've done to me...", events = ['loyalty'], personalities = ['shy','kind','bold','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_line2 = {text = "My body and soul both belong to you, [Master].", events = ['loyalty'], personalities = ['kind','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_line3 = {text = "[Master]...? P-please, let me stay by your side... ", events = ['loyalty'], personalities = ['shy'], reqs = [], weight = 1, tags = []},
-	loyalty_line4 = {text = "What’s this feeling... I want to stay with [Master]? ", events = ['loyalty'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
+	loyalty_line4 = {text = "What's this feeling... I want to stay with [Master]? ", events = ['loyalty'], personalities = ['bold','serious'], reqs = [], weight = 1, tags = []},
 	loyalty_line5 = {text = "Don't get any funny ideas. I just like it here is all!", events = ['loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	loyalty_line6 = {text = "You're not so bad after all, [Master]!", events = ['loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},
 	loyalty_line7 = {text = "Ha! Guess I need you just as much as you need me.", events = ['loyalty'], personalities = ['bold'], reqs = [], weight = 1, tags = []},

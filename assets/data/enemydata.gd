@@ -81,7 +81,7 @@ var enemygroups = {
 	jungle_medium1 = {reqs = [], units = {wild_raptor = [2,3], maneater_plant = [1,2]}},
 	jungle_medium2 = {reqs = [], units = {centipede = [1,2], giant_ant = [2,3]}},
 	jungle_boss1 = {reqs = [], units = {wild_raptor = [1,2], great_viper = [1,1]}},
-	jungle_boss2 = {reqs = [], units = {ogre_melee = [1,1], ogre_alpa = [1,1], ogre_mage = [1,1]}},
+	jungle_boss2 = {reqs = [], units = {ogre_melee = [1,1], ogre_alpha = [1,1], ogre_mage = [1,1]}},
 	jungle_boss3 = {reqs = [], units = {maneater_plant = [0,2], gryphon = [1,1]}},
 	
 	firedepths_easy1 = {reqs = [], units = {salamander = [1,2], rock_thrower = [1,2]}},
