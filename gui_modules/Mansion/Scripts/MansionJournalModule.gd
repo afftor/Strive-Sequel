@@ -299,7 +299,7 @@ func Reward():
 				counter = true
 		if counter == false:
 			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
-	
+	globals.common_effects([{code = 'reputation', name = selectedquest.source, only_recount = true}])
 	play_animation()
 	open()
 
