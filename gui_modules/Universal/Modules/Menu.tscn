@@ -532,16 +532,7 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.4.0a
-Transitioned to godot 3.2.4 (should fix some potential crashes and issues)
-Added multiple new items, recipes, dungeons, repeatable quests, enemies
-Added tattoo system (requires mansion upgrade)
-Added item disassembling system (worker guild upgrade)
-Added support for other languages and fixed some nodes using wrong fonts
-Added gallery in main menu
-Minor balance changes to some races, prices and items
-0.3.2c
-Added pregnancy descriptions and debuff
+bbcode_text = "Added pregnancy descriptions and debuff
 Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
 Added an option to use bonus description text field for notes
 Fixed some issues during character creation
@@ -873,16 +864,7 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.4.0a
-Transitioned to godot 3.2.4 (should fix some potential crashes and issues)
-Added multiple new items, recipes, dungeons, repeatable quests, enemies
-Added tattoo system (requires mansion upgrade)
-Added item disassembling system (worker guild upgrade)
-Added support for other languages and fixed some nodes using wrong fonts
-Added gallery in main menu
-Minor balance changes to some races, prices and items
-0.3.2c
-Added pregnancy descriptions and debuff
+text = "Added pregnancy descriptions and debuff
 Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
 Added an option to use bonus description text field for notes
 Fixed some issues during character creation

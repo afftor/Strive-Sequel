@@ -123,6 +123,7 @@ func show_item_info(item, amount):
 	item.set_icon($ItemInfo/IconFrame/Icon)
 	globals.connectitemtooltip_v2($ItemInfo/IconFrame/Icon, item)
 	$ItemInfo/Title.text = item.name
+
 	for p in item.parts:
 		var part = item.parts[p]
 		var newbutton = input_handler.DuplicateContainerTemplate(materials_container)
@@ -149,15 +150,16 @@ func select_material(icon, maxvalue, part):
 
 
 func get_part_cost(item, part):
-	var result_item
-	for i in Items.recipes.values():
-		if i.crafttype == "basic":
-			continue
-		if i.resultitemtype == 'item':
-			if item.itembase == Items.itemlist[i.resultitem].code:
-				result_item = Items.itemlist[i.resultitem]
-				selected_result_item = result_item
-				break
+	var result_item = Items.itemlist[item.itembase]
+#	for i in Items.recipes.values():
+#		if i.crafttype == "basic":
+#			continue
+#		if i.resultitemtype == 'item':
+#			if item.itembase == Items.itemlist[i.resultitem].code:
+#				result_item = Items.itemlist[i.resultitem]
+	selected_result_item = result_item
+	item_to_disassamble = item
+#				break
 
 	return str(round(result_item.parts[part] * 0.75), '-', result_item.parts[part])
 

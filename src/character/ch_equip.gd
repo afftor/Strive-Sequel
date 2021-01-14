@@ -49,7 +49,7 @@ func get_gear(slot):
 	return gear[slot]
 
 func equip(item, item_prev_id = null):
-	var duplicate = globals.check_duplicates(item.itembase, item.parts)
+	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
 	#if duplicate != null:
 	if parent.checkreqs(item.reqs) == false:
 		input_handler.SystemMessage(tr("INVALIDREQS"))
@@ -75,7 +75,7 @@ func equip(item, item_prev_id = null):
 	parent.recheck_effect_tag('recheck_item')
 
 func unequip(item):
-	var duplicate = globals.check_duplicates(item.itembase, item.parts)
+	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
 	if duplicate != null:
 		var duplicate_item = ResourceScripts.game_res.items[duplicate]
 		if duplicate_item.owner == null:
