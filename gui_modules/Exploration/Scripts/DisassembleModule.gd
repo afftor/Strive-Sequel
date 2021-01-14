@@ -39,12 +39,12 @@ func change_number_selection(value):
 
 var item_to_disassamble
 func confirm_number_selection():
-	var item
-	for i in ResourceScripts.game_res.items.values():
-		if i.itembase == selected_result_item.code:
-			item = i
-			break
-	item_to_disassamble = item
+	var item = item_to_disassamble
+#	for i in ResourceScripts.game_res.items.values():
+#		if i.itembase == selected_result_item.code:
+#			item = i
+#			break
+#	item_to_disassamble = item
 	var message = str("Disassamble ", selected_result_item.name, '?\n', \
 						"You'll get between ", \
 						round(selected_result_item.parts[selected_part] * 0.75 * $NumberSelection/HSlider.value), \
@@ -69,10 +69,7 @@ func disassamble():
 	}
 	data.materials[material] = final_amount
 	loot_window.open(data, message)
-	for i in ResourceScripts.game_res.items.values():
-		if i.itembase == selected_result_item.code:
-			ResourceScripts.game_res.items[i.id].amount -= $NumberSelection/HSlider.value
-			break
+	ResourceScripts.game_res.items[item_to_disassamble.id].amount -= $NumberSelection/HSlider.value
 	build_list()
 
 
@@ -123,7 +120,7 @@ func show_item_info(item, amount):
 	item.set_icon($ItemInfo/IconFrame/Icon)
 	globals.connectitemtooltip_v2($ItemInfo/IconFrame/Icon, item)
 	$ItemInfo/Title.text = item.name
-
+	item_to_disassamble = item
 	for p in item.parts:
 		var part = item.parts[p]
 		var newbutton = input_handler.DuplicateContainerTemplate(materials_container)
@@ -132,7 +129,6 @@ func show_item_info(item, amount):
 		newbutton.get_node("Cost").text = str(get_part_cost(item, p))
 		newbutton.connect("pressed", self, "select_material", [Items.materiallist[part].icon, amount, p])
 
-		
 var selected_part
 var selected_result_item
 
@@ -151,19 +147,8 @@ func select_material(icon, maxvalue, part):
 
 func get_part_cost(item, part):
 	var result_item = Items.itemlist[item.itembase]
-#	for i in Items.recipes.values():
-#		if i.crafttype == "basic":
-#			continue
-#		if i.resultitemtype == 'item':
-#			if item.itembase == Items.itemlist[i.resultitem].code:
-#				result_item = Items.itemlist[i.resultitem]
 	selected_result_item = result_item
-	item_to_disassamble = item
-#				break
-
 	return str(round(result_item.parts[part] * 0.75), '-', result_item.parts[part])
-
-
 
 
 #Tooltip
