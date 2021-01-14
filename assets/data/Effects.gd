@@ -1461,7 +1461,7 @@ var effect_table = {
 		tags = ['buff', 'positive', 'bard'],
 		sub_effects = ['e_bards_clean'],
 		atomic = [
-			{type = 'stat_add', stat = 'def', value = 15},
+			{type = 'stat_add', stat = 'armor', value = 15},
 			{type = 'stat_add', stat = 'mdef', value = 15},
 		],
 		buffs = [
