@@ -105,13 +105,12 @@ func sex_traits_open():
 		array = person.get_unlocked_sex_traits()#.keys()
 		array.sort_custom(self, 'sort_traits')
 
-	for i in array:
-		var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
-		newbutton.pressed = person.check_trait(i) || (i in person.get_negative_sex_traits())
-		newbutton.text = Traitdata.sex_traits[i].name
-		globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
-		newbutton.connect("toggled", self, 'toggle_trait', [i])
-		newbutton.visible = all_traits_known
+		for i in array:
+			var newbutton = input_handler.DuplicateContainerTemplate($SexTraitsPanel/ScrollContainer/VBoxContainer)
+			newbutton.pressed = person.check_trait(i)
+			newbutton.text = Traitdata.sex_traits[i].name
+			globals.connecttexttooltip(newbutton, person.translate(Traitdata.sex_traits[i].descript))
+			newbutton.connect("toggled", self, 'toggle_trait', [i])
 	$SexTraitsPanel/TraitsNotLearned.visible = !all_traits_known
 	update_trait_capacity()
 

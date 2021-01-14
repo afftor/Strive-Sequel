@@ -16,12 +16,18 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/Textures_v2/Universal/Icons/icon_master.png" type="Texture" id=15]
 [ext_resource path="res://assets/Textures_v2/Universal/Bars/bar_sexskills_progress.png" type="Texture" id=16]
-[ext_resource path="res://assets/Themes_v2/EmptyTexture.tres" type="StyleBox" id=17]
 [ext_resource path="res://gui_modules/CharacterInfo/SlaveInfoModule.gd" type="Script" id=18]
 [ext_resource path="res://assets/Themes_v2/CHAR_INFO/CHI_Slave_Info_Panell.tres" type="StyleBox" id=19]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/TitlesMiddle.tres" type="DynamicFont" id=21]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainExtraSmallBold.tres" type="DynamicFont" id=22]
+
+[sub_resource type="StyleBoxTexture" id=1]
+region_rect = Rect2( 863, 93, 163, 8 )
+margin_left = 10.0
+margin_right = 10.0
+margin_bottom = 3.0
+modulate_color = Color( 0, 0, 0, 1 )
 
 [node name="SlaveInfoModule" type="Panel"]
 light_mask = 0
@@ -684,9 +690,9 @@ align = 1
 [node name="ConsentLabel" type="Label" parent="."]
 light_mask = 0
 margin_left = 672.0
-margin_top = 736.0
+margin_top = 866.353
 margin_right = 960.0
-margin_bottom = 768.0
+margin_bottom = 908.353
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Consent"
@@ -758,10 +764,10 @@ custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Master"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 689.0
-margin_top = 773.0
-margin_right = 941.0
-margin_bottom = 888.0
+margin_left = 690.498
+margin_top = 743.034
+margin_right = 942.498
+margin_bottom = 858.034
 theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -773,9 +779,9 @@ __meta__ = {
 [node name="Button" type="Label" parent="ScrollContainer/traits"]
 visible = false
 margin_right = 250.0
-margin_bottom = 52.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 250, 0 )
-custom_styles/normal = ExtResource( 17 )
+custom_styles/normal = SubResource( 1 )
 custom_fonts/font = ExtResource( 20 )
 text = "Trait"
 clip_text = true
