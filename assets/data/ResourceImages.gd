@@ -31,10 +31,20 @@ var backgrounds = {
 	crypt4 = load("res://assets/images/backgrounds/crypt4.png"),
 	crypt5 = load("res://assets/images/backgrounds/crypt5.png"),
 	
-	
 	fort1 = load("res://assets/images/backgrounds/fort1.png"),
 	fort2 = load("res://assets/images/backgrounds/fort2.png"),
 	fort3 = load("res://assets/images/backgrounds/fort3.png"),
+	
+	jungle1 = load("res://assets/images/backgrounds/jungle1.png"),
+	jungle2 = load("res://assets/images/backgrounds/jungle2.png"),
+	jungle3 = load("res://assets/images/backgrounds/jungle3.png"),
+	jungle4 = load("res://assets/images/backgrounds/jungle4.png"),
+	
+	fire_depths1 = load("res://assets/images/backgrounds/fire_depths1.png"),
+	fire_depths2 = load("res://assets/images/backgrounds/fire_depths2.png"),
+	fire_depths3 = load("res://assets/images/backgrounds/fire_depths3.png"),
+	fire_depths4 = load("res://assets/images/backgrounds/fire_depths4.png"),
+	
 	
 	fighters_guild = load("res://assets/images/backgrounds/fighters_guild.png"),
 	mages_guild = load("res://assets/images/backgrounds/mage_guild.png"),

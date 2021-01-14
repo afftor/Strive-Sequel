@@ -579,6 +579,7 @@ func open_sex_traits():
 		newbutton.connect("pressed", self, "select_sex_trait", [i])
 		globals.connecttexttooltip(newbutton, person.translate(i.descript))
 
+
 func select_sex_trait(trait):
 	person.create_s_trait_select(trait)
 	preservedsettings["sex_traits"] = trait

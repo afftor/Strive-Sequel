@@ -409,6 +409,7 @@ func create_s_trait_select(trait):
 		sex_traits.clear()
 		unlocked_sex_traits.clear()
 		sex_traits[trait.code] = true
+		unlocked_sex_traits.push_back(trait.code)
 
 func get_stat_data():
 	var res = {}
