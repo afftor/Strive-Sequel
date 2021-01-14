@@ -151,7 +151,7 @@ func _ready():
 #	scene.visible = true
 #	scene.Start(scenes[name], debug, line)
 
-func check_duplicates(item, parts):
+func get_duplicate_id_if_exist(item, parts):
 	for i in ResourceScripts.game_res.items.values():
 		if str(i.itembase) == str(item) && str(i.parts) == str(parts) && i.owner == null:
 			return i.id
@@ -171,7 +171,7 @@ func CreateUsableItem(item, amount = 1):
 func AddItemToInventory(item, dont_duplicate = true):
 #	item.inventory = ResourceScripts.game_res.items
 	if dont_duplicate && item.stackable == false:
-		var duplicate = check_duplicates(item.itembase, item.parts)
+		var duplicate = get_duplicate_id_if_exist(item.itembase, item.parts)
 		if duplicate != null:
 			ResourceScripts.game_res.items[duplicate].amount += 1
 			item.amount = 0

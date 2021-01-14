@@ -562,6 +562,7 @@ margin_top = 38.0
 margin_right = 349.0
 margin_bottom = 418.0
 theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

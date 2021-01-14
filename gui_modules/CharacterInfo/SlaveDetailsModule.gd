@@ -92,7 +92,9 @@ func sex_traits_open():
 	person = input_handler.interacted_character
 	input_handler.ClearContainer($SexTraitsPanel/ScrollContainer/VBoxContainer)
 	$SexTraitsPanel/TraitsNotLearned.bbcode_text = person.translate(tr("NOTALLTRAITSLEARNED"))
-	var array = person.get_all_sex_traits()#.keys()
+	var array = []
+	array = person.get_all_sex_traits()#.keys()
+	print("person.get_all_sex_traits()", person.get_all_sex_traits())
 
 	var all_traits_known = true
 	for i in array:

@@ -69,10 +69,7 @@ func disassamble():
 	}
 	data.materials[material] = final_amount
 	loot_window.open(data, message)
-	for i in ResourceScripts.game_res.items.values():
-		if i.itembase == selected_result_item.code:
-			ResourceScripts.game_res.items[i.id].amount -= $NumberSelection/HSlider.value
-			break
+	ResourceScripts.game_res.items[item_to_disassamble.id].amount -= $NumberSelection/HSlider.value
 	build_list()
 
 
@@ -154,16 +151,6 @@ func get_part_cost(item, part):
 	return str(round(result_item.parts[part] * 0.75), '-', result_item.parts[part])
 
 
-
-
-#	for i in Items.recipes.values():
-#		if i.crafttype == "basic":
-#			continue
-#		if i.resultitemtype == 'item':
-#			if item.itembase == Items.itemlist[i.resultitem].code:
-#				result_item = Items.itemlist[i.resultitem]
-#				selected_result_item = result_item
-#				break
 #Tooltip
 
 var parentnode

@@ -58,6 +58,8 @@ func match_state():
 			ClassesModule.hide()
 			DietModule.hide()
 			DetailsModule.get_node("SexTraitsPanel").hide()
+			DetailsModule.unpress_buttons()
+			DetailsModule.custom_description_open()
 			DetailsModule.show()
 		"diet":
 			ClassesModule.hide()
