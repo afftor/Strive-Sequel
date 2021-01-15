@@ -655,6 +655,7 @@ func test_mode():
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 1
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
@@ -722,7 +723,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		#input_handler.interactive_message("ginny_visit", '',{})
+		# input_handler.interactive_message("ginny_visit", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000
