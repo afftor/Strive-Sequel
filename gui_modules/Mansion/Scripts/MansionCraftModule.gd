@@ -341,7 +341,7 @@ func selectcraftitem(item):
 			var newbutton = input_handler.DuplicateContainerTemplate(basic_setup_container)
 			newbutton.get_node("Icon").texture = Items.itemlist[i].icon
 			for item_value in ResourceScripts.game_res.items.values():
-				if item_value.code == i:
+				if item_value.code == i || item_value.itembase == i:
 					amount = item_value.amount
 					break
 			newbutton.get_node("Reqs").text = str(amount)+ "/" +str(item.items[i])

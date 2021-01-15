@@ -168,7 +168,7 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 63.0
-margin_top = 365.0
+margin_top = 457.0
 margin_right = 734.0
 margin_bottom = 632.0
 theme = ExtResource( 14 )
@@ -179,7 +179,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 671.0
-margin_bottom = 267.0
+margin_bottom = 175.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 14 )
