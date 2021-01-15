@@ -34,7 +34,7 @@ func rebuild():
 	for i in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[i]
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
-		newbutton.disabled = false
+		newbutton.disabled = person.is_on_quest()
 		newbutton.pressed = (get_parent().active_person == person)
 		newbutton.set_meta('slave', person)
 
@@ -93,8 +93,8 @@ func is_in_area():
 
 func double_clicked(event, button):
 	if event is InputEventMouseButton and event.doubleclick:
-		if get_parent().active_person == null:
-			get_parent().set_active_person(button.get_meta("slave"))
+		# if get_parent().active_person == null:
+		get_parent().set_active_person(button.get_meta("slave"))
 		get_parent().mansion_state = "char_info"
 
 
@@ -147,6 +147,7 @@ func update_dislocations():
 	temparray.sort()
 	populatedlocations = temparray
 	build_locations_list()
+
 
 func build_locations_list():
 	input_handler.ClearContainer(LocationsList)
@@ -222,6 +223,7 @@ func update_description():
 	$BedroomLimit.text = 'Bedroom limit: '  +str(sex_participants.size()) +  '/' + str(calculate_sex_limits())
 	$IterationsLimit.text = "Interactions per day: " + str(ResourceScripts.game_globals.daily_sex_left) + "/1"
 
+
 func calculate_sex_limits():
 	var slavelimit = 2
 	if ResourceScripts.game_res.upgrades.has('master_bedroom'):
@@ -273,7 +275,6 @@ func update_location_buttons():
 		i.pressed = selected_location == i.get_meta("location")
 
 
-
 func build_for_upgrades(person, newbutton):
 	if get_parent().select_chars_mode:
 		if person.get_work() == "building" || !person.check_location('aliron'):
@@ -294,7 +295,6 @@ func build_for_upgrades(person, newbutton):
 		# 	i.pressed = i.get_meta("slave") == get_parent().active_person
 
 
-
 func build_for_skills(person, newbutton):
 	if person == get_parent().skill_source:
 		newbutton.texture_disabled = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_chosen.png")
@@ -306,15 +306,18 @@ func build_for_skills(person, newbutton):
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
 
+
 func remove_from_travel(person):
 	get_parent().persons_for_travel.erase(person)
 	rebuild()
+
 
 func update():
 	update_dislocations()
 #	get_parent().NavModule.build_accessible_locations()
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		update_button(i)
+
 
 func update_button(newbutton):
 	var person_location
@@ -335,7 +338,11 @@ func update_button(newbutton):
 	newbutton.get_node("explabel").text = str(floor(person.get_stat('base_exp')))
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '':
-		newbutton.get_node("job/Label").text = tr("TASKREST")
+		if person.is_on_quest():
+			newbutton.get_node("job/Label").text = tr("I'm on quest")
+		else:
+			newbutton.get_node("job/Label").text = tr("TASKREST")
+
 	else:
 		if !gatherable:
 			newbutton.get_node("job/Label").text = races.tasklist[person.get_work()].name
@@ -361,9 +368,7 @@ func update_button(newbutton):
 	if person.check_location('travel'):
 		newbutton.get_node('Location').text = 'Relocating: in ' + str(ceil(person.travel.travel_time / person.travel_per_tick())) + " hours. " 
 	elif person.check_location('aliron') || person.get_location() == "mansion": # Temporary
-		# person.travel.location = "aliron"
-		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name
-		
+		newbutton.get_node('Location').text = "Mansion"#ResourceScripts.world_gen.get_location_from_code(person.get_location()).name	
 	else:
 		### Temporary
 		if person.get_location() == "mansion":
@@ -372,7 +377,6 @@ func update_button(newbutton):
 			person_location = person.get_location()
 	if person_location != null:
 		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
-	# 		# newbutton.get_node('job/Label').text = 'Positioned: ' + ResourceScripts.game_world.areas[ResourceScripts.game_world.location_links[person.travel.location].area].name
 	newbutton.get_node("job").disabled = person.travel.location == "travel"
 	newbutton.get_node("state").texture = person.get_class_icon()
 

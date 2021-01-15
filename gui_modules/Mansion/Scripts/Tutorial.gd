@@ -10,7 +10,8 @@ var tutorials = [
 	"job",
 	"quest",
 	"exploration",
-	"skills"
+	"skills",
+	"tattoo"
 ]
 
 var introduction_images = {
@@ -108,11 +109,24 @@ var quest_images = {
 	2: load("res://assets/Textures_v2/MANSION/Tutorial/quests_3.png"),
 }
 
+
 var quest_text = {
 	0: tr("QUESTTUTORIAL1"),
 	1: tr("QUESTTUTORIAL2"),
 	2: tr("QUESTTUTORIAL3"),
 }
+
+var tattoo_images = {
+	0: load("res://assets/Textures_v2/MANSION/Tutorial/tattoo_1.png"),
+	1: load("res://assets/Textures_v2/MANSION/Tutorial/tattoo_2.png"),
+}
+
+
+var tattoo_text = {
+	0: tr("TUTORIAL_TATTOO_1"),
+	1: tr("TUTORIAL_TATTOO_2"),
+}
+
 
 onready var TutList = $TutList/VBoxContainer
 
@@ -183,6 +197,10 @@ func show_tutorial_list(tut):
 			img = skills_images
 			size = skills_images.size() - 1
 			text_dict = skills_text
+		"tattoo":
+			img = tattoo_images
+			size = tattoo_images.size() - 1
+			text_dict = tattoo_text
 	img_index = 0
 	if !ResourceScripts.game_progress.seen_tutorials.has(tut):
 		ResourceScripts.game_progress.seen_tutorials.append(tut)

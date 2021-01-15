@@ -436,6 +436,12 @@ func get_next_class_exp():
 func get_work():
 	return xp_module.get_work()
 
+func is_on_quest():
+	return xp_module.is_on_quest()
+
+func assign_to_quest_and_make_unavalible(quest = null):
+	xp_module.assign_to_quest_and_make_unavalible()
+
 func use_mansion_item(item):
 	skills.use_mansion_item(item)
 
@@ -847,8 +853,8 @@ func tick():
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
-	
-	food.tick()
+	if !xp_module.is_on_quest():
+		food.tick()
 	
 	self.hp += variables.basic_hp_regen * get_stat('hp_reg_mod')
 	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')

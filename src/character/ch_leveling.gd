@@ -11,6 +11,10 @@ var workproduct = null
 var work_rules = {ration = false, shifts = false, constrain = false, luxury = false}
 var messages = []
 
+
+var is_on_quest = false
+
+
 func base_exp_set(value):
 	if value >= get_next_class_exp() && base_exp < get_next_class_exp():
 		input_handler.add_random_chat_message(parent, 'exp_for_level')
@@ -207,6 +211,12 @@ func return_to_task():
 
 func get_work():
 	return work
+
+func is_on_quest():
+	return is_on_quest
+
+func assign_to_quest_and_make_unavalible():
+	is_on_quest = true
 
 func get_obed_drain(value):
 	var rule_bonus = 0.0

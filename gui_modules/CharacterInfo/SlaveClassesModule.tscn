@@ -256,6 +256,7 @@ __meta__ = {
 }
 
 [node name="ClassPanel" type="Panel" parent="."]
+visible = false
 light_mask = 0
 margin_left = 970.0
 margin_top = -130.0
