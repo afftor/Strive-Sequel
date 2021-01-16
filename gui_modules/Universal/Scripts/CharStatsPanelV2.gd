@@ -45,14 +45,13 @@ func open(character = ResourceScripts.scriptdict.class_slave.new()):
 
 	input_handler.ClearContainer($buffscontainer)
 	
-	
-	for i in character.get_mansion_buffs():
+	for i in character.get_all_buffs():
 		var newnode = input_handler.DuplicateContainerTemplate($buffscontainer)
 		newnode.texture = i.icon
 		var tmp = i.get_duration()
 		if tmp != null:
 			newnode.get_node("Label").text = str(tmp.count)
-			newnode.hint_tooltip = character.translate(i.description)
+		newnode.hint_tooltip = character.translate(i.description)
 #		if i.get_duration() != null and i.get_duration() >= 0:
 #			newnode.get_node("Label").text = str(i.get_duration())
 #		else:
