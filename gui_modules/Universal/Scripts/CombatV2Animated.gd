@@ -858,6 +858,7 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 			continue
 		var tempname = enemygroup[i]
 		var tchar = ResourceScripts.scriptdict.class_slave.new()
+		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
@@ -865,7 +866,6 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
 			tchar.mul_stat(stat, enemy_stats_mod)
 		tchar.hp = tchar.get_stat("hpmax")
-		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
