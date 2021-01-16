@@ -26,6 +26,10 @@ func update():
 	SummaryModule.show_summary()
 	SlaveInfo.update()
 	BodyModule.update()
+	for button in SummaryModule.get_node("VBoxContainer").get_children():
+		print(button.name)
+		button.disabled = active_person.is_on_quest()
+	SlaveInfo.get_node("DietButton").disabled = active_person.is_on_quest()
 
 
 func set_state(state):

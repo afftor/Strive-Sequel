@@ -453,10 +453,10 @@ func remove_hovered_person():
 
 func _on_TestButton_pressed():
 	# print(ResourceScripts.game_progress.seen_dialogues)
-	# print(active_person.get_stat('tattoo'))
+	print(active_person.is_on_quest())
 	# print(Traitdata.get_tat_list_for_slot("arms"))
-	get_node("DisassembleModule").build_list()
-	get_node("DisassembleModule").show()
+#	get_node("DisassembleModule").build_list()
+#	get_node("DisassembleModule").show()
 
 
 func test_mode():
@@ -540,6 +540,7 @@ func test_mode():
 		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
+		character.assign_to_quest_and_make_unavalible()
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -631,6 +632,7 @@ func test_mode():
 		character.unlock_class("dancer")
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
+		character.assign_to_quest_and_make_unavalible()
 
 		globals.common_effects(
 			[
@@ -651,7 +653,7 @@ func test_mode():
 		
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 50
+			ResourceScripts.game_res.materials[i] = 1
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
