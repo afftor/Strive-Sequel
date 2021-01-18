@@ -303,6 +303,8 @@ func work_tick():
 					ResourceScripts.game_res.upgrades[ResourceScripts.game_res.upgrades_queue[0]] = 1
 				input_handler.emit_signal("UpgradeUnlocked", upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]])
 				globals.text_log_add('upgrades',"Upgrade finished: " + upgradedata.upgradelist[ResourceScripts.game_res.upgrades_queue[0]].name)
+				if ResourceScripts.game_res.upgrades_queue[0] == "tattoo_set":
+					input_handler.ActivateTutorial("tattoo")
 				ResourceScripts.game_res.upgrade_progresses.erase(ResourceScripts.game_res.upgrades_queue[0])
 				ResourceScripts.game_res.upgrades_queue.erase(ResourceScripts.game_res.upgrades_queue[0])
 	else:
