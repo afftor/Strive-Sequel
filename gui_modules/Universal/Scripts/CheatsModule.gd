@@ -199,7 +199,7 @@ func item_purchase(item, btn, amount = 10000):
 		'add_material_confirm',
 		"Add " + str(item.name),
 		price,
-		0,
+		1,
 		amount,
 		true,
 		item.icon
