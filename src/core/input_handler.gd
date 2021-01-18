@@ -1024,7 +1024,8 @@ func combat_defeat():
 #			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
 			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
 			#add permadeath check here
-	get_spec_node(input_handler.NODE_DIALOGUE).close()
+	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
+		gui_controller.dialogue.close()
 	if exploration_node != null && active_location.has('progress'):
 		exploration_node.enter_level(globals.current_level)
 
