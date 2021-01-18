@@ -14,6 +14,8 @@ func _ready():
 		
 func hide_dialogue(action = "hide"):
 	for node in self.get_children():
+		if node.get_class() == "Tween":
+			continue
 		if !node.name in ["ShowPanel", "EventBackground"]:
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"

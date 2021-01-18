@@ -1170,13 +1170,23 @@ func common_effects(effects):
 			'reputation':
 				var data = ResourceScripts.world_gen.get_faction_from_code(i.name)
 				var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]
-				if !(i.has("only_recount") && i.only_recount):
+				if i.value > 1000:
+					if (guild.totalreputation <= 500 && ((i.value + guild.totalreputation) > 1500)):
+						ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 2
+						ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += 2
 					guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
 					guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
+					continue
+				ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
+				ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += 1
 				if guild.totalreputation > 500 && guild.totalreputation < 1500:
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total = 2
+					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
+					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += 1
+					# input_handler.play_anim("anim")
 				elif guild.totalreputation > 1500:
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total = 3
+					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
+					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy +=1
+					# input_handler.play_anim("anim")
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)
