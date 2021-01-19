@@ -2171,7 +2171,7 @@ var effect_table = {
 		name = 'taunt',
 		tags = ['debuff', 'taunt', 'negative'],
 		buffs = ['b_taunt'],
-		args = [{obj = 'parent_args', param = 0}],
+		args = [{obj = 'parent_arg_get', index = 0, param = 'id'}],
 		atomic = [{type = 'stat_set_revert', stat = 'taunt', value = ['parent_args', 0]}]
 	},
 	e_s_void = {

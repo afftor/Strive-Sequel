@@ -1,3 +1,10 @@
+Fixed steel collar and shackles not being craftable
+Fixed paladin taunt not working
+Removed Amulet of recognition from random item pool
+0.4.0b
+Fixed occassional issues with item dissasembling
+Fixed fire depths giving crashes
+Fixed slaves having only penalties
 0.4.0a
 Experimental-2
 Chests can now contain gold

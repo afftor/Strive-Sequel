@@ -532,7 +532,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "Added pregnancy descriptions and debuff
+bbcode_text = "0.4.0b
+Fixed occassional issues with item dissasembling
+Fixed fire depths giving crashes
+Fixed slaves having only penalties
+0.4.0a
+Added pregnancy descriptions and debuff
 Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
 Added an option to use bonus description text field for notes
 Fixed some issues during character creation
@@ -864,7 +869,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "Added pregnancy descriptions and debuff
+text = "0.4.0b
+Fixed occassional issues with item dissasembling
+Fixed fire depths giving crashes
+Fixed slaves having only penalties
+0.4.0a
+Added pregnancy descriptions and debuff
 Breed sow class now lightens pregnancy penalty instead of reducing pregnancy duration time
 Added an option to use bonus description text field for notes
 Fixed some issues during character creation

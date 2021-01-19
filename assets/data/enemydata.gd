@@ -87,9 +87,9 @@ var enemygroups = {
 	firedepths_easy1 = {reqs = [], units = {salamander = [1,2], rock_thrower = [1,2]}},
 	firedepths_easy2 = {reqs = [], units = {anthropoid = [1,2], ifrit = [0,1]}},
 	firedepths_medium1 = {reqs = [], units = {salamander = [1,3], rock_thrower = [1,2], ifrit = [0,1]}},
-	firedepths_medium2 = {reqs = [], ifrit = [2,4]},
-	firedepths_boss1 = {reqs = [], magma_beast = [1,1], salamander = [1,1]},
-	firedepths_boss2 = {reqs = [], erebus_stone = [2,2]},
+	firedepths_medium2 = {reqs = [], units = {ifrit = [2,4]}},
+	firedepths_boss1 = {reqs = [], units = {magma_beast = [1,1], salamander = [1,1]}},
+	firedepths_boss2 = {reqs = [], units = {erebus_stone = [2,2]}},
 	
 	
 }
