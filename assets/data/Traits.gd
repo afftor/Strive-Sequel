@@ -57,7 +57,7 @@ var traits = {
 		visible = false,
 		icon = null,
 		effects = [],#'e_tr_slave']
-		bonusstats = {damage_mod_all = -0.1, mod_collect = -0.1, mod_pros = -0.1, mod_farm = -0.1, mod_smith = -0.15, mod_alchemy = -0.15, mod_tailor = -0.15, obDrainReduction = 0.9}
+		bonusstats = {damage_mod_all = -0.1, mod_collect = 0.1, mod_pros = 0.1, mod_farm = 0.1, mod_smith = -0.15, mod_alchemy = -0.15, mod_tailor = -0.15, obDrainReduction = 0.9}
 	},
 	servant = {#servant class trait
 		code = 'servant',

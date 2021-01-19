@@ -937,7 +937,7 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1, {code = 'gold', range = [150,300]}],
+		[1, {code = 'gold', range = [200,400]}],
 		],
 		time_limit = [8,12],
 	},
@@ -1271,7 +1271,7 @@ var dungeons = {
 		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
 		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
 		levels = [2,4],
-		resources = ['woodmagic','woodiron','leatherthick','leathermythic','chitin','iron'],
+		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
 		gatherable_resources = {number = [2,3], pool = {woodmagic = [15,25], woodiron = [15,30], leatherthick = [20,30], leathermythic = [10,20]}},
 		gather_mod = [2.5,3.5],
 		stages_per_level = [4,5],

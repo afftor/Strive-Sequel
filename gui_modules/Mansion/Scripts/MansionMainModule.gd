@@ -465,7 +465,7 @@ func test_mode():
 
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
-		character.create('Dragonkin', 'futa', 'random')
+		character.create('Human', 'female', 'random')
 		character.unlock_class("master")
 		characters_pool.move_to_state(character.id)
 		ResourceScripts.game_res.upgrades.resource_gather_veges = 1
@@ -476,7 +476,9 @@ func test_mode():
 		ResourceScripts.game_res.upgrades.luxury_rooms = 1
 		ResourceScripts.game_res.upgrades.forge = 3
 		ResourceScripts.game_res.upgrades.tattoo_set = 1
-
+		var item = globals.CreateGearItem("strapon", {})
+		globals.AddItemToInventory(item)
+		character.equip(item)
 	#	character.get_stat('pregnancy', true).duration = 2
 		character.add_stat('charm', 100)
 	#	character.add_stat('wits', 100)
@@ -540,7 +542,7 @@ func test_mode():
 		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
-		character.assign_to_quest_and_make_unavalible()
+		#character.assign_to_quest_and_make_unavalible()
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -632,7 +634,7 @@ func test_mode():
 		character.unlock_class("dancer")
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
-		character.assign_to_quest_and_make_unavalible()
+		#character.assign_to_quest_and_make_unavalible()
 
 		globals.common_effects(
 			[
@@ -660,7 +662,7 @@ func test_mode():
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("maid_dress", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("craftsman_suit", {}))
-		globals.AddItemToInventory(globals.CreateGearItem("gauntlets", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("lacy_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("seethrough_underwear", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("amulet_of_recognition", {}))
@@ -723,7 +725,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		# input_handler.interactive_message("ginny_visit", '',{})
+		input_handler.interactive_message("daisy_first_event", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000

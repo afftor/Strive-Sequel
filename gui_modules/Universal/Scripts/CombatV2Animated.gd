@@ -853,7 +853,6 @@ func FighterPress(pos):
 	ClearSkillPanel()
 	use_skill(activeaction, activecharacter, characters_pool.get_char_by_id(battlefield[pos]))
 
-
 func buildenemygroup(enemygroup, enemy_stats_mod):
 	for i in range(1,7):
 		if enemygroup[i] != null:
@@ -867,6 +866,7 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 			continue
 		var tempname = enemygroup[i]
 		var tchar = ResourceScripts.scriptdict.class_slave.new()
+		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.generate_simple_fighter(tempname)
 		tchar.combatgroup = 'enemy'
 		tchar.position = i
@@ -874,10 +874,33 @@ func buildenemygroup(enemygroup, enemy_stats_mod):
 		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
 			tchar.mul_stat(stat, enemy_stats_mod)
 		tchar.hp = tchar.get_stat("hpmax")
-		enemygroup[i] = characters_pool.add_char(tchar)
 		tchar.add_trait('core_trait')
 		battlefield[int(i)] = enemygroup[i]
 		make_fighter_panel(tchar, i)
+#func buildenemygroup(enemygroup, enemy_stats_mod):
+#	for i in range(1,7):
+#		if enemygroup[i] != null:
+#			enemygroup[i+6] = enemygroup[i]
+#		enemygroup.erase(i)
+#
+#	for i in enemygroup:
+#		if enemygroup[i] == 'boss':
+#			continue
+#		if enemygroup[i] == null:
+#			continue
+#		var tempname = enemygroup[i]
+#		var tchar = ResourceScripts.scriptdict.class_slave.new()
+#		tchar.generate_simple_fighter(tempname)
+#		tchar.combatgroup = 'enemy'
+#		tchar.position = i
+#
+#		for stat in ['hpmax', 'atk', 'matk', 'hitrate', 'armor', 'xpreward']:
+#			tchar.mul_stat(stat, enemy_stats_mod)
+#		tchar.hp = tchar.get_stat("hpmax")
+#		enemygroup[i] = characters_pool.add_char(tchar)
+#		tchar.add_trait('core_trait')
+#		battlefield[int(i)] = enemygroup[i]
+#		make_fighter_panel(tchar, i)
 
 func buildplayergroup(group):
 	#to remake getting data from state
