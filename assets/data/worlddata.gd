@@ -293,7 +293,7 @@ var factiondata = {
 		events = [
 			'servants_init',
 			],
-		quests_easy = ['servants_craft_items_easy','servants_slave_easy'],
+		quests_easy = ['servants_slave_work_easy', 'servants_craft_items_easy','servants_slave_easy'],
 		quests_medium = ['servants_craft_items_medium','servants_slave_medium'],
 		quests_hard = ['servants_craft_items_hard'],
 		tags = [],
@@ -960,6 +960,32 @@ var questdata = {
 		reputation = [250,350],
 		rewards = [
 		[1, {code = 'gold', range = [350,500]}],
+		],
+		time_limit = [8,12],
+	},
+	servants_slave_work_easy = {
+		code = 'servants_slave_work_easy',
+		name = 'Assignment',
+		descript = 'The guild is in need of someone performing a task for them.',
+		randomconditions = [
+			{code = 'slave_work', 
+			mandatory_conditions = [{code = 'sex', operant = 'eq', value = ['male','female']}],
+			condition_number = [1,2],
+			conditions = [
+				
+				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','chef','thief']},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,3]},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [20,40]},
+			],
+			work_time = [4,6], #days
+			},
+		],
+		unlockreqs = [],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [200,400]}],
 		],
 		time_limit = [8,12],
 	},

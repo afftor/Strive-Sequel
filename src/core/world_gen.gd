@@ -326,7 +326,7 @@ func make_quest(questcode):
 		if tempdata.has('parts'):
 			for i in tempdata.parts:
 				tempdata.parts[i] = tempdata.parts[i][randi()%tempdata.parts[i].size()]
-		if tempdata.code == 'slave_delivery':
+		if tempdata.code in ['slave_delivery','slave_work']:
 			tempdata.statreqs = []
 			for i in tempdata.mandatory_conditions:
 				if i.code == 'sex':
@@ -340,18 +340,28 @@ func make_quest(questcode):
 			var statreq = round(rand_range(tempdata.condition_number[0],tempdata.condition_number[1]))
 			while statreq > 0:
 				var statdata = tempdata.conditions[randi()%tempdata.conditions.size()]
-				var req = {operant = statdata.operant, code = statdata.code, stat = statdata.type[randi()%statdata.type.size()], value = round(rand_range(statdata.range[0], statdata.range[1]))}
-				
-				statdata.type.erase(req.code)
-				tempdata.statreqs.append(req)
 				statreq -= 1
+				if statdata.code == 'stat':
+					var req = {code = statdata.code, operant = statdata.operant, stat = statdata.type[randi()%statdata.type.size()], value = round(rand_range(statdata.range[0], statdata.range[1]))}
+					statdata.type.erase(req.code)
+					tempdata.statreqs.append(req)
+				elif statdata.code == 'class':
+					var number = round(rand_range(statdata.range[0],statdata.range[1]))
+					while number > 0:
+						var newclass = statdata.type[randi()%statdata.type.size()]
+						statdata.type.erase(newclass)
+						tempdata.statreqs.append({code = 'has_profession', value = newclass, check = true})
+						number -= 1
 				if statdata.use_once == true:
 					tempdata.conditions.erase(statdata)
 			tempdata.erase('condition_number')
 			tempdata.erase('conditions')
 			tempdata.erase('mandatory_conditions')
+			if tempdata.has('work_time'):
+				tempdata.work_time = round(rand_range(tempdata.work_time[0], tempdata.work_time[1]))
 			tempdata.statreqs.append({code = 'is_master', check = false})
 			tempdata.statreqs.append({code = 'is_free', check = true})
+			print(tempdata)
 		else:
 			tempdata.type = tempdata.type[randi()%tempdata.type.size()] 
 		requirements_number -= 1
