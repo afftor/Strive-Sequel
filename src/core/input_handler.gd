@@ -72,6 +72,8 @@ var musicfading = false
 var musicraising = false
 var musicvalue
 
+var selectedquest
+
 enum {
 	NODE_CLASSINFO,
 	NODE_CHAT,
@@ -1277,6 +1279,27 @@ func play_unlock_class_anim(cls):
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
 	get_tree().get_root().set_disable_input(false)
+
+
+func play_animation(animation):
+	var anim_scene
+	match animation:
+		"fight":
+			input_handler.PlaySound("battle_start")
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
+			anim_scene.raise()
+			anim_scene.get_node("AnimationPlayer").play("battle_start")
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+		"quest":
+			input_handler.PlaySound("quest_aquired")
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
+			anim_scene.get_node("SelectedQuest").text = selectedquest.name
+			anim_scene.get_node("AnimationPlayer").play("task_aquared")
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			anim_scene.queue_free()
 
 
 const PADDINGS = 25
