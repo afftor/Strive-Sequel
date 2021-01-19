@@ -148,7 +148,10 @@ func update_class_buttons(classcode):
 
 
 func unlock_class():
-	play_animation()
+	var args = {}
+	args["current_class"] = current_class
+	args["person"] = person
+	input_handler.play_animation("class_aquired", args)
 	$ClassPanel.hide()
 	gui_controller.windows_opened.clear()
 	yield(get_tree().create_timer(0.2),"timeout")
@@ -160,16 +163,16 @@ func unlock_class():
 	get_parent().set_state("default")
 
 
-func play_animation():
-	input_handler.PlaySound("class_aquired")
-	var anim_scene
-	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
-	anim_scene.get_node("AnimationPlayer").play("class_achieved")
-	anim_scene.get_node("TextureRect").texture = classesdata.professions[current_class].icon
-	anim_scene.get_node("Label2").text = current_class.capitalize()
-	anim_scene.get_node("Label3").text = person.get_full_name()
-	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	anim_scene.queue_free()
-	input_handler.SetMusic("mansion1")
+# func play_animation():
+# 	input_handler.PlaySound("class_aquired")
+# 	var anim_scene
+# 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
+# 	anim_scene.get_node("AnimationPlayer").play("class_achieved")
+# 	anim_scene.get_node("TextureRect").texture = classesdata.professions[current_class].icon
+# 	anim_scene.get_node("Label2").text = current_class.capitalize()
+# 	anim_scene.get_node("Label3").text = person.get_full_name()
+# 	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+# 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+# 	yield(get_tree().create_timer(0.5), 'timeout')
+# 	anim_scene.queue_free()
+# 	input_handler.SetMusic("mansion1")

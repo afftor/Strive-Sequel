@@ -111,12 +111,16 @@ func play_animation(anim):
 		anim_scene.get_node("AnimationPlayer").play("defeated")
 		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
 		yield(get_tree().create_timer(1), 'timeout')
+		ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
 	if anim == "runaway":
 		anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_RUNAWAY)
 		anim_scene.get_node("AnimationPlayer").play("runaway")
-		yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
+		# yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+		yield(get_tree().create_timer(3), 'timeout')
+		ResourceScripts.core_animations.FadeAnimation(anim_scene, 1)
+		yield(get_tree().create_timer(1), 'timeout')
+
 	anim_scene.queue_free()
 
 
@@ -179,13 +183,15 @@ func FinishCombat(victory = true):
 	for p in playergroup.values():
 		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
-	CombatAnimations.force_end()
-	ResourceScripts.core_animations.BlackScreenTransition(0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	hide()
+
 	if victory: 
+		CombatAnimations.force_end()
+		ResourceScripts.core_animations.BlackScreenTransition(0.5)
+		yield(get_tree().create_timer(0.5), 'timeout')
+		hide()
 		input_handler.finish_combat()
 	else: 
+		hide()
 		input_handler.combat_defeat() 
 	input_handler.combat_node = null
 
@@ -467,13 +473,16 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 	input_handler.PlaySound("combat_defeat")
 	if runaway:
 		play_animation("runaway")
-		yield(get_tree().create_timer(4.5), 'timeout')
+		yield(get_tree().create_timer(3), 'timeout')
+		ResourceScripts.core_animations.BlackScreenTransition(1.5)
+		yield(get_tree().create_timer(1.5), 'timeout')
 	else:
 		play_animation("defeat")
 		yield(get_tree().create_timer(3), 'timeout')
 
-	CombatAnimations.check_start()
-	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	# CombatAnimations.check_start()
+	# if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	CombatAnimations.force_end()
 	Input.set_custom_mouse_cursor(images.cursors.default)
 	fightover = true
 	FinishCombat(false)

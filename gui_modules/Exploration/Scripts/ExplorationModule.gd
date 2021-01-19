@@ -651,7 +651,7 @@ func advance():
 
 
 func StartCombat():
-	play_animation("fight")
+	input_handler.play_animation("fight")
 	yield(get_tree().create_timer(1), "timeout")
 	ResourceScripts.core_animations.BlackScreenTransition(0.5)
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -669,25 +669,25 @@ func skip_to_boss():
 	enter_dungeon()
 
 
-func play_animation(animation):
-	var anim_scene
-	match animation:
-		"fight":
-			input_handler.PlaySound("battle_start")
-			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
-			anim_scene.raise()
-			anim_scene.get_node("AnimationPlayer").play("battle_start")
-			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-			yield(get_tree().create_timer(0.5), 'timeout')
-			anim_scene.queue_free()
-		"quest":
-			input_handler.PlaySound("quest_aquired")
-			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
-			anim_scene.get_node("SelectedQuest").text = selectedquest.name
-			anim_scene.get_node("AnimationPlayer").play("task_aquared")
-			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-			anim_scene.queue_free()
+# func play_animation(animation):
+# 	var anim_scene
+# 	match animation:
+# 		"fight":
+# 			input_handler.PlaySound("battle_start")
+# 			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
+# 			anim_scene.raise()
+# 			anim_scene.get_node("AnimationPlayer").play("battle_start")
+# 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+# 			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+# 			yield(get_tree().create_timer(0.5), 'timeout')
+# 			anim_scene.queue_free()
+# 		"quest":
+# 			input_handler.PlaySound("quest_aquired")
+# 			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
+# 			anim_scene.get_node("SelectedQuest").text = selectedquest.name
+# 			anim_scene.get_node("AnimationPlayer").play("task_aquared")
+# 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+# 			anim_scene.queue_free()
 
 
 func check_dungeon_end():
@@ -2020,7 +2020,10 @@ func accept_quest():
 		if i.code in ['complete_dungeon', 'complete_location']:
 			break
 	input_handler.interactive_message('quest_accept', '', {})
-	play_animation("quest")
+	var args = {}
+	args["label"] = "Task aсquired"
+	args["info"] = selectedquest.name
+	input_handler.play_animation("quest", args)
 	quest_board(true, current_pressed_area_btn)
 
 
@@ -2041,6 +2044,7 @@ func see_quest_info(quest):
 		i.pressed = i.get_meta('quest') == quest
 	input_handler.ghost_items.clear()
 	selectedquest = quest
+	input_handler.selectedquest = quest
 	$QuestBoard/QuestDetails.show()
 	input_handler.ClearContainer($QuestBoard/QuestDetails/questreqs)
 	input_handler.ClearContainer($QuestBoard/QuestDetails/questrewards)

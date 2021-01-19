@@ -89,6 +89,7 @@ func show_quest_info(quest):
 			i.pressed = i.get_meta('quest') == quest
 	if !quest.has('stage'):
 		selectedquest = quest
+		input_handler.selectedquest = quest
 		for i in quest.requirements:
 			var newbutton = input_handler.DuplicateContainerTemplate($reqs)
 			match i.code:
@@ -254,29 +255,33 @@ func CompleteReqs():
 	Reward()
 
 
-func play_animation():
-	input_handler.PlaySound("quest_completed")
-	var anim_scene
-	anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
-	anim_scene.get_node("AnimationPlayer").play("task_completed")
-	anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
-	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-	yield(get_tree().create_timer(0.5), 'timeout')
-	anim_scene.queue_free()
+# func play_animation():
+# 	input_handler.PlaySound("quest_completed")
+# 	var anim_scene
+# 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
+# 	anim_scene.get_node("AnimationPlayer").play("task_completed")
+# 	anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
+# 	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+# 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+# 	yield(get_tree().create_timer(0.5), 'timeout')
+# 	anim_scene.queue_free()
 
 
 
 
 func Reward():
 	# input_handler.PlaySound("questcomplete")
+	input_handler.play_animation("quest_completed")
+	yield(get_tree().create_timer(3.5), 'timeout')
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
 				ResourceScripts.game_res.money += round(i.value + i.value * variables.master_charm_quests_gold_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 			'reputation':
-				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				var reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				globals.common_effects([{code = 'reputation', name = selectedquest.source, value = reputation_value, operant = '+'}])
 			'gear':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
 			'gear_static':
@@ -299,8 +304,7 @@ func Reward():
 				counter = true
 		if counter == false:
 			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
-	globals.common_effects([{code = 'reputation', name = selectedquest.source, only_recount = true}])
-	play_animation()
+
 	open()
 
 func CancelQuest():

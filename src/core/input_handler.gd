@@ -72,6 +72,8 @@ var musicfading = false
 var musicraising = false
 var musicvalue
 
+var selectedquest
+
 enum {
 	NODE_CLASSINFO,
 	NODE_CHAT,
@@ -1024,7 +1026,8 @@ func combat_defeat():
 #			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
 			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
 			#add permadeath check here
-	get_spec_node(input_handler.NODE_DIALOGUE).close()
+	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
+		gui_controller.dialogue.close()
 	if exploration_node != null && active_location.has('progress'):
 		exploration_node.enter_level(globals.current_level)
 
@@ -1276,6 +1279,49 @@ func play_unlock_class_anim(cls):
 	yield(get_tree().create_timer(0.5), 'timeout')
 	anim_scene.queue_free()
 	get_tree().get_root().set_disable_input(false)
+
+
+func play_animation(animation, args = {}):
+	var anim_scene
+	match animation:
+		"fight":
+			PlaySound("battle_start")
+			anim_scene = get_spec_node(input_handler.ANIM_BATTLE_START)
+			anim_scene.raise()
+			anim_scene.get_node("AnimationPlayer").play("battle_start")
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+		"quest":
+			PlaySound("quest_aquired")
+			anim_scene = get_spec_node(input_handler.ANIM_TASK_AQUARED)
+			anim_scene.get_node("Label").text = args.label
+			anim_scene.get_node("SelectedQuest").text = args.info
+			anim_scene.get_node("AnimationPlayer").play("task_aquared")
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			anim_scene.queue_free()
+		"class_aquired":
+			PlaySound("class_aquired")
+			anim_scene = get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
+			anim_scene.get_node("AnimationPlayer").play("class_achieved")
+			anim_scene.get_node("TextureRect").texture = classesdata.professions[args.current_class].icon
+			anim_scene.get_node("Label2").text = args.current_class.capitalize()
+			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+			SetMusic("mansion1")
+		"quest_completed":
+			PlaySound("quest_completed")
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
+			anim_scene.get_node("AnimationPlayer").play("task_completed")
+			anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
 
 
 const PADDINGS = 25

@@ -655,7 +655,7 @@ func test_mode():
 		
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
-			ResourceScripts.game_res.materials[i] = 1
+			ResourceScripts.game_res.materials[i] = 1899
 		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
@@ -732,7 +732,7 @@ func test_mode():
 			i.totalreputation += 100000
 		# ResourceScripts.game_progress.decisions.append("aire_is_dead")
 		# globals.common_effects([{code = 'progress_quest', value = 'mages_election_quest', stage = 'start'}])
-		globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
+		# globals.common_effects([{code = 'reputation', name = 'fighters', operant = '+', value = 100}])
 		# character = ResourceScripts.scriptdict.class_slave.new()
 		# character.create('Fairy', 'futa', 'random')
 		# characters_pool.move_to_state(character.id)

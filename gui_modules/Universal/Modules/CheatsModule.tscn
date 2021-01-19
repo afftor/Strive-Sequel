@@ -47,10 +47,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_charlist_pressed.png" type="Texture" id=45]
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Buttons/button_charlist.png" type="Texture" id=46]
 
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 36
 use_filter = true
