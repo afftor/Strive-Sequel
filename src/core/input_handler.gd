@@ -1281,12 +1281,12 @@ func play_unlock_class_anim(cls):
 	get_tree().get_root().set_disable_input(false)
 
 
-func play_animation(animation):
+func play_animation(animation, args = {}):
 	var anim_scene
 	match animation:
 		"fight":
-			input_handler.PlaySound("battle_start")
-			anim_scene = input_handler.get_spec_node(input_handler.ANIM_BATTLE_START)
+			PlaySound("battle_start")
+			anim_scene = get_spec_node(input_handler.ANIM_BATTLE_START)
 			anim_scene.raise()
 			anim_scene.get_node("AnimationPlayer").play("battle_start")
 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
@@ -1294,11 +1294,33 @@ func play_animation(animation):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 		"quest":
-			input_handler.PlaySound("quest_aquired")
-			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_AQUARED)
-			anim_scene.get_node("SelectedQuest").text = selectedquest.name
+			PlaySound("quest_aquired")
+			anim_scene = get_spec_node(input_handler.ANIM_TASK_AQUARED)
+			anim_scene.get_node("Label").text = args.label
+			anim_scene.get_node("SelectedQuest").text = args.info
 			anim_scene.get_node("AnimationPlayer").play("task_aquared")
 			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			anim_scene.queue_free()
+		"class_aquired":
+			PlaySound("class_aquired")
+			anim_scene = get_spec_node(input_handler.ANIM_CLASS_ACHIEVED)
+			anim_scene.get_node("AnimationPlayer").play("class_achieved")
+			anim_scene.get_node("TextureRect").texture = classesdata.professions[args.current_class].icon
+			anim_scene.get_node("Label2").text = args.current_class.capitalize()
+			anim_scene.get_node("Label3").text = args.person.get_full_name()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
+			anim_scene.queue_free()
+			SetMusic("mansion1")
+		"quest_completed":
+			PlaySound("quest_completed")
+			anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
+			anim_scene.get_node("AnimationPlayer").play("task_completed")
+			anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
+			yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
+			ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
+			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 
 

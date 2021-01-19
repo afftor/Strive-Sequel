@@ -2020,7 +2020,10 @@ func accept_quest():
 		if i.code in ['complete_dungeon', 'complete_location']:
 			break
 	input_handler.interactive_message('quest_accept', '', {})
-	input_handler.play_animation("quest")
+	var args = {}
+	args["label"] = "Task aсquired"
+	args["info"] = selectedquest.name
+	input_handler.play_animation("quest", args)
 	quest_board(true, current_pressed_area_btn)
 
 
