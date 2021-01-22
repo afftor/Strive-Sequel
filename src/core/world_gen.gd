@@ -361,7 +361,7 @@ func make_quest(questcode):
 				tempdata.work_time = round(rand_range(tempdata.work_time[0], tempdata.work_time[1]))
 			tempdata.statreqs.append({code = 'is_master', check = false})
 			tempdata.statreqs.append({code = 'is_free', check = true})
-			print(tempdata)
+			# print(tempdata)
 		else:
 			tempdata.type = tempdata.type[randi()%tempdata.type.size()] 
 		requirements_number -= 1

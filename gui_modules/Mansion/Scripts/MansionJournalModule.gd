@@ -9,6 +9,7 @@ func _ready():
 	gui_controller.add_close_button(self)
 	$CompleteButton.connect("pressed", self, "CompleteQuest")
 	$CancelButton.connect("pressed", self, "CancelQuest")
+	$SelectCharacter.connect("pressed", self, "SelectCharacters")
 	$ItemSelectionPanel/CancelButton.connect("pressed",self, 'hide_item_selection')
 	$ItemSelectionPanel/ConfirmButton.connect("pressed", self, "turn_in_quest_items")
 	$Main.connect("pressed", self, "change_type", ["main"])
@@ -23,6 +24,16 @@ func change_type(newtype):
 	type = newtype
 	$Main.pressed = newtype == "main"
 	$Minor.pressed = newtype == "minor"
+	$CancelButton.visible = false
+	$CompleteButton.visible = false
+	$SelectCharacter.visible = false
+	$QuestDescript.clear()
+	$rewards.hide()
+	$reqs.hide()
+	$Label.hide()
+	$Label2.hide()
+	$Time.hide()
+	hide_item_selection()
 	show_quests()
 
 
@@ -38,6 +49,7 @@ func open():
 	# $Main.pressed = true
 	$CancelButton.visible = false
 	$CompleteButton.visible = false
+	$SelectCharacter.visible = false
 	$QuestDescript.clear()
 	input_handler.ClearContainer($ScrollContainer/VBoxContainer)
 	$rewards.hide()
@@ -82,11 +94,15 @@ func show_quest_info(quest):
 	$Label.show()
 	$Label2.show()
 	$Time.show()
+	$CompleteButton.show()
+	$SelectCharacter.hide()
 	input_handler.ClearContainer($reqs)
 	input_handler.ClearContainer($rewards)
 	for i in $ScrollContainer/VBoxContainer.get_children():
 		if i.has_meta('quest'):
 			i.pressed = i.get_meta('quest') == quest
+
+	var quest_descript = quest.descript
 	if !quest.has('stage'):
 		selectedquest = quest
 		input_handler.selectedquest = quest
@@ -140,6 +156,37 @@ func show_quest_info(quest):
 							'sex':
 								tooltiptext += "Sex: " + tr('SLAVESEX'+k.value.to_upper()) + "\n"
 					globals.connecttexttooltip(newbutton,tooltiptext)
+				'slave_work':
+					$CompleteButton.hide()
+					$SelectCharacter.show()
+					$SelectCharacter.disabled = quest.taken
+					var time = ''
+					var reqs = {}
+					for  req in quest.requirements:
+						if req.has("statreqs"):
+							reqs = req.statreqs
+						if req.has("work_time"):
+							if req.work_time <= 0:
+								$CompleteButton.show()
+								$SelectCharacter.hide()
+							time = str(req.work_time)
+							work_time_holder = time
+					var sex = ''
+					var prof = '' 
+					for r in reqs:
+						if r.code == "sex":
+							sex = r.value
+						if r.code == "has_profession" && r.check:
+							prof = r.value
+							var profbutton = input_handler.DuplicateContainerTemplate($reqs)
+							var prof_icon = classesdata.professions[prof].icon
+							profbutton.get_node("TextureRect").texture = prof_icon
+							globals.connecttexttooltip(profbutton, prof.capitalize())
+					newbutton.get_node("TextureRect").texture = images.icons[sex]
+					var tooltiptext = "Slave Required:\n"
+					tooltiptext += "Sex: " + sex
+					globals.connecttexttooltip(newbutton, tooltiptext)
+					quest_descript += "\nWork duration: " + time + ' days.'
 		
 		
 		for i in quest.rewards:
@@ -179,7 +226,8 @@ func show_quest_info(quest):
 					globals.connecttempitemtooltip_v2(newbutton, item, 'geartemplate')
 					newbutton.get_node("amount").text = str(i.value)
 					newbutton.get_node("amount").show()
-		$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest.descript
+
+		$QuestDescript.bbcode_text = '[center]' + quest.name + '[/center]\n' + quest_descript
 		$Time/Label.text = str(quest.time_limit) + " days left."
 		$CancelButton.visible = true
 		$CompleteButton.visible = true
@@ -191,6 +239,7 @@ func show_quest_info(quest):
 		$Time.hide()
 		$CancelButton.visible = false
 		$CompleteButton.visible = false
+		$SelectCharacter.visible = false
 		quest = scenedata.quests[quest.code].stages[quest.stage]
 		$QuestDescript.bbcode_text = globals.TextEncoder('[center]' + quest.name + '[/center]\n' + quest.descript)
 
@@ -255,16 +304,23 @@ func CompleteReqs():
 	Reward()
 
 
-# func play_animation():
-# 	input_handler.PlaySound("quest_completed")
-# 	var anim_scene
-# 	anim_scene = input_handler.get_spec_node(input_handler.ANIM_TASK_COMPLETED)
-# 	anim_scene.get_node("AnimationPlayer").play("task_completed")
-# 	anim_scene.get_node("Label3").text = selectedquest.code.capitalize()
-# 	yield(anim_scene.get_node("AnimationPlayer"), "animation_finished")
-# 	ResourceScripts.core_animations.FadeAnimation(anim_scene, 0.5)
-# 	yield(get_tree().create_timer(0.5), 'timeout')
-# 	anim_scene.queue_free()
+func SelectCharacters():
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', [{code = 'is_master', check = false}])
+
+
+var selected_character
+func event_person_selected(character):
+	selected_character = character
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'event_person_selected_confirm', tr('SENDCHARTOQUESTCONFIRM')])
+
+
+var work_time_holder
+func event_person_selected_confirm():
+	var character = selected_character
+	character.assign_to_quest_and_make_unavalible(selectedquest, work_time_holder)
+	var quest_taken = ResourceScripts.game_world.get_quest_by_id(selectedquest.id)
+	quest_taken.taken = true
+	show_quest_info(selectedquest)
 
 
 

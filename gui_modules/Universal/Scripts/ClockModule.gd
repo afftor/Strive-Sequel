@@ -139,6 +139,7 @@ func advance_day():
 	for i in ResourceScripts.game_party.characters.values():
 		i.cooldown_tick()
 		i.process_event(variables.TR_DAY)
+		i.quest_day_tick()
 	for i in ResourceScripts.game_world.areas.values():
 		ResourceScripts.game_world.update_guilds(i)
 		if int(ResourceScripts.game_globals.date) % variables.shop_restock_days == 0:

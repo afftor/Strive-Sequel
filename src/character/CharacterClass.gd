@@ -439,8 +439,11 @@ func get_work():
 func is_on_quest():
 	return xp_module.is_on_quest()
 
-func assign_to_quest_and_make_unavalible(quest = null):
-	xp_module.assign_to_quest_and_make_unavalible()
+func assign_to_quest_and_make_unavalible(quest, work_time):
+	xp_module.assign_to_quest_and_make_unavalible(quest, work_time)
+
+func quest_day_tick():
+	xp_module.quest_day_tick()
 
 func use_mansion_item(item):
 	skills.use_mansion_item(item)

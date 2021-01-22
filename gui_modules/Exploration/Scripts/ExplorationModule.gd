@@ -2132,6 +2132,32 @@ func see_quest_info(quest):
 						'sex':
 							tooltiptext += "Sex: " + tr('SLAVESEX' + k.value.to_upper()) + "\n"
 				globals.connecttexttooltip(newbutton, tooltiptext)
+			'slave_work':
+				var time = ''
+
+				var reqs = {}
+				for  req in quest.requirements:
+					if req.has("statreqs"):
+						reqs = req.statreqs
+					if req.has("work_time"):
+						time = str(req.work_time)
+				var sex = ''
+				var prof = '' 
+				for r in reqs:
+					if r.code == "sex":
+						sex = r.value
+					if r.code == "has_profession" && r.check:
+						prof = r.value
+						var profbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
+						var prof_icon = classesdata.professions[prof].icon
+						profbutton.get_node("Icon").texture = prof_icon
+						globals.connecttexttooltip(profbutton, prof.capitalize())
+				newbutton.get_node("Icon").texture = images.icons[sex]
+				var tooltiptext = "Slave Required:\n"
+				tooltiptext += "Sex: " + sex
+				globals.connecttexttooltip(newbutton, tooltiptext)
+				text += "\nWork duration: " + time + ' days.'
+
 
 	for i in quest.rewards:
 		var newbutton = input_handler.DuplicateContainerTemplate(

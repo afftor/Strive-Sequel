@@ -13,6 +13,8 @@ var messages = []
 
 
 var is_on_quest = false
+var quest_id
+var quest_days_left = 0
 
 
 func base_exp_set(value):
@@ -215,8 +217,26 @@ func get_work():
 func is_on_quest():
 	return is_on_quest
 
-func assign_to_quest_and_make_unavalible():
+
+func assign_to_quest_and_make_unavalible(quest, work_time):
 	is_on_quest = true
+	quest_days_left = int(work_time)
+	quest_id = quest.id
+	# print(quest_days_left)
+	print(quest)
+
+
+func quest_day_tick():
+	if quest_days_left > 0:
+		quest_days_left -= 1
+		var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
+		for  req in quest_taken.requirements:
+			if req.has("work_time"):
+				req.work_time -= 1
+		if quest_days_left <= 0:
+			is_on_quest = false
+
+
 
 func get_obed_drain(value):
 	var rule_bonus = 0.0
