@@ -367,6 +367,8 @@ func slave_list_manager():
 			SlaveListModule.rebuild()
 			SlaveModule.show_slave_info()
 		'skill':
+			if active_person.is_on_quest():
+				return
 			if active_person in chars_for_skill:
 				SkillModule.use_skill(active_person)
 			set_active_person(skill_source)
@@ -542,7 +544,7 @@ func test_mode():
 		character.create('Elf', 'male', 'random')
 		character.set_stat("penis_virgin", false)
 		character.set_stat('consent', 100)
-		#character.assign_to_quest_and_make_unavalible()
+		# character.assign_to_quest_and_make_unavalible()
 		characters_pool.move_to_state(character.id)
 		#character.unlock_class("attendant")
 		character.add_trait('core_trait')
@@ -634,7 +636,7 @@ func test_mode():
 		character.unlock_class("dancer")
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
-		#character.assign_to_quest_and_make_unavalible()
+		# character.assign_to_quest_and_make_unavalible()
 
 		globals.common_effects(
 			[
@@ -725,7 +727,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		input_handler.interactive_message("daisy_first_event", '',{})
+		# input_handler.interactive_message("daisy_first_event", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000

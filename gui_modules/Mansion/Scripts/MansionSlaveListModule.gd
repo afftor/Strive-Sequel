@@ -68,7 +68,7 @@ func rebuild():
 				build_for_craft(person, newbutton)
 			"sex":
 				build_sex_selection(person, newbutton)
-		newbutton.get_node("job").disabled = person.travel.location == "travel"
+		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 	var pos = self.rect_size
 	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
@@ -293,6 +293,8 @@ func build_for_upgrades(person, newbutton):
 		newbutton.texture_pressed = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_pressed.png")
 		# for i in $ScrollContainer/VBoxContainer.get_children():
 		# 	i.pressed = i.get_meta("slave") == get_parent().active_person
+	newbutton.get_node("job").disabled = person.is_on_quest()
+	
 
 
 func build_for_skills(person, newbutton):
@@ -305,6 +307,7 @@ func build_for_skills(person, newbutton):
 	else:
 		newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
 		newbutton.texture_hover = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available_hover.png")
+	newbutton.get_node("job").disabled = person.is_on_quest()
 
 
 func remove_from_travel(person):
@@ -339,7 +342,7 @@ func update_button(newbutton):
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '':
 		if person.is_on_quest():
-			newbutton.get_node("job/Label").text = tr("I'm on quest")
+			newbutton.get_node("job/Label").text = tr("On quest")
 		else:
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 
@@ -377,8 +380,10 @@ func update_button(newbutton):
 			person_location = person.get_location()
 	if person_location != null:
 		newbutton.get_node('Location').text = ResourceScripts.world_gen.get_location_from_code(person_location).name
-	newbutton.get_node("job").disabled = person.travel.location == "travel"
+	newbutton.get_node("job").disabled = person.travel.location == "travel" || 	person.is_on_quest()
 	newbutton.get_node("state").texture = person.get_class_icon()
+
+
 
 var obed_textures = {
 	high = load("res://assets/images/gui/gui icons/obedience1.png"),

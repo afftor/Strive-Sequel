@@ -65,6 +65,7 @@ func learn_c_skill(skill):
 					combat_skill_panel[i] = skill
 					break
 
+
 func unlearn_skill(skill):
 	if !parent.xp_module.check_skill_prof(skill):
 		social_skills.erase(skill)
@@ -74,6 +75,7 @@ func unlearn_skill(skill):
 		for i in range(1,12):
 			if social_skill_panel.has(i) and social_skill_panel[i] == skill: social_skill_panel.erase(i)
 
+
 func unlearn_c_skill(skill):
 	if !parent.xp_module.check_skill_prof(skill):
 		combat_skills.erase(skill)
@@ -82,6 +84,8 @@ func unlearn_c_skill(skill):
 #		combat_skills_charges.erase(skill)
 		for i in range(1,12):
 			if combat_skill_panel.has(i) and combat_skill_panel[i] == skill: combat_skill_panel.erase(i)
+
+
 func cooldown_tick():
 	items_used_today.clear()
 	skills_received_today.clear()

@@ -17,6 +17,8 @@ func open(targetnode, targetfunc, reqs = [], allow_remove = false):
 		var i = ResourceScripts.game_party.characters[id]
 		if i.checkreqs(reqs) == false:
 			continue
+		if i.is_on_quest():
+			continue
 		var newnode = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 		newnode.get_node("icon").texture = i.get_icon()
 		newnode.get_node('text').text = i.get_short_name()

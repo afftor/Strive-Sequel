@@ -117,6 +117,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SelectCharacter" type="Button" parent="."]
+visible = false
+margin_left = 382.0
+margin_top = 716.948
+margin_right = 599.002
+margin_bottom = 761.948
+custom_styles/hover = ExtResource( 10 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/normal = ExtResource( 11 )
+custom_fonts/font = ExtResource( 13 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Select Character"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CancelButton" type="Button" parent="."]
 margin_left = 599.002
 margin_top = 716.948

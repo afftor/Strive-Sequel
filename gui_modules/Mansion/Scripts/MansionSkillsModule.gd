@@ -86,6 +86,8 @@ func select_skill_target(skillcode):
 	for i in ResourceScripts.game_party.characters.values():
 		if !i.checkreqs(reqs) || !i.same_location_with(skill_source):
 			continue
+		if i.is_on_quest():
+			continue
 		get_parent().chars_for_skill.append(i)
 	get_parent().skill_manager()
 
