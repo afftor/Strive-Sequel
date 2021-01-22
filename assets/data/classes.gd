@@ -16,6 +16,7 @@ var professions = {
 		traits = ['master'],
 		skills = ['praise','punish','master_lust_skill'],
 		combatskills = [],
+		conflict_classes = ['watchdog','headgirl'], #remove according checks from reqs in future
 	},
 	ruler = {
 		code = 'ruler',
@@ -30,6 +31,7 @@ var professions = {
 		traits = [],
 		skills = ['supremacy','publichumiliation','publicsexhumiliation','publicexecution'],
 		combatskills = ['inspire'],
+		conflict_classes = ['watchdog','headgirl'],
 	},
 	watchdog = {
 		code = 'watchdog',
@@ -44,6 +46,7 @@ var professions = {
 		traits = [],
 		skills = ['praise', 'warn'],
 		combatskills = [],
+		conflict_classes = ['master','ruler'],
 	},
 	sadist = {
 		code = 'sadist',
@@ -58,6 +61,7 @@ var professions = {
 		traits = [],
 		skills = ['abuse'],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	headgirl = {
 		code = 'headgirl',
@@ -74,6 +78,7 @@ var professions = {
 		traits = [],
 		skills = ['praise', 'warn', 'punish', 'publichumiliation'],
 		combatskills = [],
+		conflict_classes = ['master','ruler'],
 	},
 	director = {
 		code = 'director',
@@ -88,6 +93,7 @@ var professions = {
 		traits = ['director'],
 		skills = ['publichumiliation','publicsexhumiliation','publicexecution'],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	trainer = {
 		code = 'trainer',
@@ -102,6 +108,7 @@ var professions = {
 		traits = [],
 		skills = ['discipline','publichumiliation','publicsexhumiliation'],
 		combatskills = ["command"], 
+		conflict_classes = [],
 	},
 	worker = {
 		code = 'worker',
@@ -116,6 +123,7 @@ var professions = {
 		traits = ['worker'],
 		skills = [],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	foreman = {
 		code = 'foreman',
@@ -130,6 +138,7 @@ var professions = {
 		traits = ['foreman'],
 		skills = ['hardwork'],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	hunter = {
 		code = 'hunter',
@@ -144,6 +153,7 @@ var professions = {
 		traits = ['hunter', 'ranged_weapon_mastery'],
 		skills = [],
 		combatskills = ['huntersmark'], 
+		conflict_classes = [],
 	},
 	smith = {
 		code = 'smith',
@@ -158,6 +168,7 @@ var professions = {
 		traits = ['smith'],
 		skills = [],
 		combatskills = ['weapon_refine'],
+		conflict_classes = [],
 	},
 	chef = {
 		code = 'chef',
@@ -172,6 +183,7 @@ var professions = {
 		traits = ['chef'],
 		skills = [],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	attendant = {
 		code = 'attendant',
@@ -186,6 +198,7 @@ var professions = {
 		traits = ['attendant'],
 		skills = [],
 		combatskills = ['first_aid'],
+		conflict_classes = [],
 	},
 	alchemist = {
 		code = 'alchemist',
@@ -200,6 +213,7 @@ var professions = {
 		traits = ['alchemist'],
 		skills = [],
 		combatskills = ['acidbomb','firebomb'],
+		conflict_classes = [],
 	},
 	farmer = {
 		code = 'farmer',
@@ -214,6 +228,7 @@ var professions = {
 		traits = ['farmer'], 
 		skills = [],
 		combatskills = [],
+		conflict_classes = [],
 	},
 #	cattle = {
 #		code = 'cattle',
@@ -242,6 +257,7 @@ var professions = {
 		traits = ['breeder'],
 		skills = [],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	harlot = {
 		code = 'harlot',
@@ -256,6 +272,7 @@ var professions = {
 		traits = ['harlot'], 
 		skills = ['rewardsex'],
 		combatskills = ['distract'], 
+		conflict_classes = [],
 	},
 	geisha = {
 		code = 'geisha',
@@ -270,6 +287,7 @@ var professions = {
 		traits = [],
 		skills = ['rewardsex'],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	succubus = {
 		code = 'succubus',
@@ -286,6 +304,7 @@ var professions = {
 		traits = ['succubus'],
 		skills = ['seduce','succubus_lust_skill'],
 		combatskills = ['attract'],
+		conflict_classes = ['true_succubus'],
 	},
 	true_succubus = {
 		code = 'true_succubus',
@@ -302,6 +321,7 @@ var professions = {
 		traits = ['succubus'],
 		skills = ['seduce','greatseduce','succubus_lust_skill'],
 		combatskills = ['attract'],
+		conflict_classes = ['succubus'],
 	},
 	pet = {
 		code = 'pet',
@@ -316,6 +336,7 @@ var professions = {
 		traits = [],
 		skills = ['serve'],
 		combatskills = ['distract'],
+		conflict_classes = ['petbeast'],
 	},
 	petbeast = {
 		code = 'petbeast',
@@ -330,6 +351,7 @@ var professions = {
 		traits = [],
 		skills = ['serve'],
 		combatskills = ['distract'],
+		conflict_classes = ['pet'],
 	},
 	sextoy = {
 		code = 'sextoy',
@@ -344,6 +366,7 @@ var professions = {
 		traits = ['sextoy'],
 		skills = ['sharedtoy'],
 		combatskills = ['endure'], 
+		conflict_classes = [],
 	},
 	dancer = {
 		code = 'dancer',
@@ -358,6 +381,7 @@ var professions = {
 		traits = [],
 		skills = ['allure','performance'],
 		combatskills = ['distract'], 
+		conflict_classes = [],
 	},
 	maid = {
 		code = 'maid',
@@ -374,6 +398,7 @@ var professions = {
 		traits = [],
 		skills = ['serve','allure'],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	fighter = {
 		code = 'fighter',
@@ -388,6 +413,7 @@ var professions = {
 		traits = ['weapon_mastery','medium_armor'],
 		skills = [],
 		combatskills = ['earth_atk'], 
+		conflict_classes = [],
 	},
 	knight = {
 		code = 'knight',
@@ -402,6 +428,7 @@ var professions = {
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = ['fire_cleave', 'protect'],
+		conflict_classes = ['paladin'],
 	},
 	dragonknight = {
 		code = 'dragonknight',
@@ -416,6 +443,7 @@ var professions = {
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = ['fire_burst','air_cutter','dragonmight'],
+		conflict_classes = [],
 	},
 	berserker = {
 		code = 'berserker',
@@ -430,6 +458,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['earth_shatter','revenge'],
+		conflict_classes = [],
 	},
 	apprentice = {
 		code = 'apprentice',
@@ -444,6 +473,7 @@ var professions = {
 		traits = ['magic_tools'],
 		skills = ['sedate','fear'],
 		combatskills = ['mindblast'],
+		conflict_classes = [],
 	},
 	scholar = {
 		code = 'scholar',
@@ -458,6 +488,7 @@ var professions = {
 		traits = ['magic_tools'],
 		skills = [],
 		combatskills = ['firearr','lesser_heal'],
+		conflict_classes = [],
 	},
 	caster = {
 		code = 'caster',
@@ -472,6 +503,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['blizzard','lightning','mindblast'],
+		conflict_classes = [],
 	},
 	healer = {
 		code = 'healer',
@@ -486,6 +518,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['mass_lesser_heal','bless','resurrect','elemental_protection'],
+		conflict_classes = [],
 	},
 	dominator = {
 		code = 'dominator',
@@ -500,6 +533,7 @@ var professions = {
 		traits = [],
 		skills = ['shackles','mindcontrol'],
 		combatskills = ['psychicblast','mental_bless'],
+		conflict_classes = [],
 	},
 	druid = {
 		code = 'druid',
@@ -514,6 +548,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['mass_lesser_heal','overgrowth'],
+		conflict_classes = [],
 	},
 	bloodmage = {
 		code = 'bloodmage',
@@ -528,6 +563,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['blood_magic', 'blood_explosion'],
+		conflict_classes = [],
 	},
 	valkyrie = {
 		code = 'valkyrie',
@@ -542,6 +578,7 @@ var professions = {
 		traits = ['medium_armor','valkyrie_spear'],
 		skills = [],
 		combatskills = ['holy_lance','swipe','fly_evasion'],
+		conflict_classes = [],
 	},
 	souleater = {
 		code = 'souleater',
@@ -556,6 +593,7 @@ var professions = {
 		traits = [],
 		skills = ['consume_soul','drain_mana'],
 		combatskills = ['devour'],
+		conflict_classes = [],
 	},
 	necromancer = {
 		code = 'necromancer',
@@ -570,6 +608,7 @@ var professions = {
 		traits = [],
 		skills = ['make_undead'],
 		combatskills = ['decay','elemental_weakness'],
+		conflict_classes = [],
 	},
 	archer = {
 		code = 'archer',
@@ -584,6 +623,7 @@ var professions = {
 		traits = ['ranged_weapon_mastery','medium_armor'],
 		skills = [],
 		combatskills = ['serrated_shot','wind_atk'],
+		conflict_classes = [],
 	},
 	sniper = {
 		code = 'sniper',
@@ -598,6 +638,7 @@ var professions = {
 		traits = ['medium_armor'],
 		skills = [],
 		combatskills = ['arrowrain','explosivearr'],
+		conflict_classes = [],
 	},
 	rogue = {
 		code = 'rogue',
@@ -612,6 +653,7 @@ var professions = {
 		traits = ['medium_armor','weapon_mastery', 'autohide'], 
 		skills = [],
 		combatskills = ['water_atk','hide'],
+		conflict_classes = [],
 	},
 	thief = {
 		code = 'thief',
@@ -626,6 +668,7 @@ var professions = {
 		traits = ['lockpicking', 'trap_detection'], #allows lockpicking chests and trap detect actions in events
 		skills = [],
 		combatskills = [],
+		conflict_classes = [],
 	},
 	assassin = {
 		code = 'assassin',
@@ -640,6 +683,7 @@ var professions = {
 		traits = ['witcrit'],
 		skills = [],
 		combatskills = ['shadowstrike','assassinate'], 
+		conflict_classes = [],
 	},
 	engineer = {
 		code = 'engineer',
@@ -654,6 +698,7 @@ var professions = {
 		traits = ['engineer','trap_analyze'],
 		skills = [],
 		combatskills = [], 
+		conflict_classes = [],
 	},
 	
 	
@@ -672,6 +717,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['purge','righteous_fire'], 
+		conflict_classes = [],
 	},
 	paladin = {
 		code = 'paladin',
@@ -686,6 +732,7 @@ var professions = {
 		traits = ['heavy_armor'],
 		skills = [],
 		combatskills = ['holy_atk','taunt'], 
+		conflict_classes = ['knight'],
 	},
 	shaman = {
 		code = 'shaman',
@@ -700,6 +747,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['reincarnate','spirit1','spirit2','spirit3'], 
+		conflict_classes = [],
 	},
 	ranger = {
 		code = 'ranger',
@@ -714,6 +762,7 @@ var professions = {
 		traits = ['ranged_weapon_mastery','medium_armor'],
 		skills = [],
 		combatskills = ['trap','camouflage'], 
+		conflict_classes = [],
 	},
 	bard = {
 		code = 'bard',
@@ -728,6 +777,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['bard1','bard2','bard3'], 
+		conflict_classes = [],
 	},
 	archmage = {
 		code = 'archmage',
@@ -742,6 +792,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['earthquake','l_orb'], 
+		conflict_classes = [],
 	},
 	battlesmith = {
 		code = 'battlesmith',
@@ -756,6 +807,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['protective_shell','hammerfall'], 
+		conflict_classes = [],
 	},
 	technomancer = {
 		code = 'technomancer',
@@ -770,6 +822,7 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['mirror_image','energy_field'], 
+		conflict_classes = [],
 	},
 }
 

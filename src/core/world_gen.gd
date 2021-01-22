@@ -347,11 +347,21 @@ func make_quest(questcode):
 					tempdata.statreqs.append(req)
 				elif statdata.code == 'class':
 					var number = round(rand_range(statdata.range[0],statdata.range[1]))
+					var classarray = []
 					while number > 0:
 						var newclass = statdata.type[randi()%statdata.type.size()]
 						statdata.type.erase(newclass)
-						tempdata.statreqs.append({code = 'has_profession', value = newclass, check = true})
-						number -= 1
+						var has_conflicts = false
+						for i in classarray:
+							var classdata = classesdata.professions[i]
+							if classdata.conflict_classes.has(newclass):
+								has_conflicts = true
+								break
+						if has_conflicts == false:
+							classarray.append(newclass)
+							number -= 1
+					for i in classarray:
+						tempdata.statreqs.append({code = 'has_profession', value = i, check = true})
 				if statdata.use_once == true:
 					tempdata.conditions.erase(statdata)
 			tempdata.erase('condition_number')
@@ -361,7 +371,6 @@ func make_quest(questcode):
 				tempdata.work_time = round(rand_range(tempdata.work_time[0], tempdata.work_time[1]))
 			tempdata.statreqs.append({code = 'is_master', check = false})
 			tempdata.statreqs.append({code = 'is_free', check = true})
-			print(tempdata)
 		else:
 			tempdata.type = tempdata.type[randi()%tempdata.type.size()] 
 		requirements_number -= 1
