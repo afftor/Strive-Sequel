@@ -957,9 +957,9 @@ var questdata = {
 			],},
 		],
 		unlockreqs = [],
-		reputation = [250,350],
+		reputation = [300,450],
 		rewards = [
-		[1, {code = 'gold', range = [350,500]}],
+		[1, {code = 'gold', range = [450,600]}],
 		],
 		time_limit = [8,12],
 	},
@@ -973,7 +973,7 @@ var questdata = {
 			condition_number = [1,2],
 			conditions = [
 				
-				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','chef','thief']},
+				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['harlot','maid','dancer','pet','petbeast','thief']},
 			
 				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,3]},
 			
@@ -985,9 +985,61 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1, {code = 'gold', range = [200,400]}],
+		[1, {code = 'gold', range = [200,300]}],
 		],
 		time_limit = [8,12],
+	},
+	servants_slave_work_medium = {
+		code = 'servants_slave_work_medium',
+		name = 'Assignment',
+		descript = 'The guild is in need of someone performing a task for them.',
+		randomconditions = [
+			{code = 'slave_work', 
+			mandatory_conditions = [],
+			condition_number = [1,2],
+			conditions = [
+				
+				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['harlot','maid','dancer','bard','sextoy','succubus']},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [2,4]},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [30,60]},
+			],
+			work_time = [5,7], #days
+			},
+		],
+		unlockreqs = [],
+		reputation = [200,300],
+		rewards = [
+		[1, {code = 'gold', range = [300,500]}],
+		],
+		time_limit = [10,15],
+	},
+	servants_slave_work_hard = {
+		code = 'servants_slave_work_hard',
+		name = 'Assignment',
+		descript = 'The guild is in need of someone performing a task for them.',
+		randomconditions = [
+			{code = 'slave_work', 
+			mandatory_conditions = [],
+			condition_number = [2,3],
+			conditions = [
+				
+				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['harlot','maid','geisha','pet','petbeast','dancer','bard','sextoy','succubus']},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['tame_factor', 'timid_factor'], range = [4,5]},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['charm','sexuals'], range = [50,80]},
+			],
+			work_time = [6,10], #days
+			},
+		],
+		unlockreqs = [],
+		reputation = [350,550],
+		rewards = [
+		[1, {code = 'gold', range = [400,650]}],
+		],
+		time_limit = [12,18],
 	},
 #	fighters_fighter_slave_easy = {
 #		code = 'fighters_fighter_slave_easy',
@@ -1027,10 +1079,12 @@ var locationnames = {
 	crypt_adjs = ['Dark','Black','Blood', 'Bone', 'Rotten', 'Flesh', 'Evil', 'Blood', 'Red', 'Grim', 'Great', 'Demonic', 'Gloomy', 'Deadly'],
 	mountains_nouns = ['Caves','Tunnels','Burrows','Caverns','Mine','Quarry','Chambers','Dungeon'],
 	mountains_adjs = ['Dark','Black', 'Distant', 'Red', 'Blue','Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
-	volcano_nouns = ['Caves','Dungeon','Scar', 'Chambers', 'Halls', 'Lair'],
-	volcano_adjs = ['Burning','Fire','Scorching', 'Heating'],
+	fire_depths_nouns = ['Caves','Dungeon','Scar', 'Chambers', 'Halls', 'Lair'],
+	fire_depths_adjs = ['Burning','Fire','Scorching', 'Heating'],
 	city_nouns = ['Ruins','Chambers','Halls','Quarters','Labyrinth'],
 	city_adjs =  ['Dark','Distant', 'Red', 'Blue', 'Black', 'Lower','Deep', 'Heavy', 'Crystal', 'Rocking'],
+	ancient_jungles_nouns = ['Thicket','Jungle','Rainforest','Wilds','Wildwood','Hedge','Chaparral','Morass','Tangle'],
+	ancient_jungles_adjs = ['Green','Dark','Dense','Thick','Overgrown','Bushy','Living','Ancient','Old','Great','Red','Gloomy'],
 }
 
 

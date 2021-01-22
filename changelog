@@ -1,6 +1,10 @@
 Fixed steel collar and shackles not being craftable
 Fixed paladin taunt not working
+Fixed escape animation
+Fixed new dungeons names
+Fixed cheat menu resources creation
 Removed Amulet of recognition from random item pool
+Added logical resists to some enemies
 0.4.0b
 Fixed occassional issues with item dissasembling
 Fixed fire depths giving crashes
