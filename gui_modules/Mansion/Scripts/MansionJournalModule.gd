@@ -165,6 +165,7 @@ func show_quest_info(quest):
 					for  req in quest.requirements:
 						if req.has("statreqs"):
 							reqs = req.statreqs
+							char_reqs = reqs
 						if req.has("work_time"):
 							if req.work_time <= 0:
 								$CompleteButton.show()
@@ -303,9 +304,9 @@ func CompleteReqs():
 	globals.text_log_add("quest", "Quest Complete: " + selectedquest.name)
 	Reward()
 
-
+var char_reqs
 func SelectCharacters():
-	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', [{code = 'is_master', check = false}])
+	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', char_reqs)
 
 
 var selected_character
@@ -327,8 +328,7 @@ func event_person_selected_confirm():
 
 func Reward():
 	# input_handler.PlaySound("questcomplete")
-	input_handler.play_animation("quest_completed")
-	yield(get_tree().create_timer(3.5), 'timeout')
+
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
@@ -360,8 +360,9 @@ func Reward():
 				counter = true
 		if counter == false:
 			globals.common_effects([{code = 'add_timed_event', value = "guilds_elections_switch", args = [{type = 'add_to_date', date = [1,1], hour = 7}]}])
-
 	open()
+	input_handler.play_animation("quest_completed")
+	yield(get_tree().create_timer(3.5), 'timeout')
 
 func CancelQuest():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', tr("FORFEITQUESTQUESTION")])

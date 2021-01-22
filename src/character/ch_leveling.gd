@@ -223,7 +223,11 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	quest_days_left = int(work_time)
 	quest_id = quest.id
 	# print(quest_days_left)
-	print(quest)
+	# print(quest)	
+
+
+func get_quest_days_left():
+	return quest_days_left
 
 
 func quest_day_tick():
@@ -235,6 +239,7 @@ func quest_day_tick():
 				req.work_time -= 1
 		if quest_days_left <= 0:
 			is_on_quest = false
+			input_handler.SystemMessage(tr(parent.get_short_name() + " returned from quest."))
 
 
 
@@ -252,6 +257,8 @@ func check_infinite_obedience():
 	return get_obed_drain(1) == 0 || parent.has_profession('master')
 
 func work_tick():
+	if is_on_quest():
+		return
 	var currenttask
 	for i in ResourceScripts.game_party.active_tasks:
 		if i.workers.has(parent.id):

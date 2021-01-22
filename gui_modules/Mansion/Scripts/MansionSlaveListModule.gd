@@ -35,6 +35,9 @@ func rebuild():
 		var person = ResourceScripts.game_party.characters[i]
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
 		newbutton.disabled = person.is_on_quest()
+		if !person.is_on_quest():
+			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
+
 		newbutton.pressed = (get_parent().active_person == person)
 		newbutton.set_meta('slave', person)
 
@@ -69,6 +72,7 @@ func rebuild():
 			"sex":
 				build_sex_selection(person, newbutton)
 		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
+
 	var pos = self.rect_size
 	$TravelsContainerPanel.rect_position.y = pos.y - 50
 	show_location_characters()
@@ -327,6 +331,7 @@ func update_button(newbutton):
 	if newbutton.name == 'Button':
 		return
 	var person = newbutton.get_meta('slave')
+
 	newbutton.get_node("icon").texture = person.get_icon()
 	newbutton.get_node("name").text = person.get_short_name()
 	newbutton.get_node("sex").texture = images.icons[person.get_stat('sex')]
@@ -342,7 +347,7 @@ func update_button(newbutton):
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '':
 		if person.is_on_quest():
-			newbutton.get_node("job/Label").text = tr("On quest")
+			newbutton.get_node("job/Label").text = "On quest: " + str(person.get_quest_days_left())
 		else:
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 

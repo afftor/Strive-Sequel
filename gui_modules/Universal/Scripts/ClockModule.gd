@@ -127,6 +127,7 @@ func advance_hour():
 #	$gold.text = str(state.money)
 #	$food.text = str(state.get_food()) + " - " + str(state.get_food_consumption())
 	globals.emit_signal("hour_tick")
+	gui_controller.mansion.SlaveListModule.rebuild()
 
 
 func advance_day():
