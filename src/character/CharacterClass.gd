@@ -442,6 +442,9 @@ func is_on_quest():
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	xp_module.assign_to_quest_and_make_unavalible(quest, work_time)
 
+func get_quest_days_left():
+	return xp_module.get_quest_days_left()
+
 func quest_day_tick():
 	xp_module.quest_day_tick()
 
@@ -630,7 +633,10 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			if typeof(i.value) == TYPE_ARRAY: i.value = calculate_number_from_string_array(i.value)
 			check = input_handler.operate(i.operant, get_stat(i.stat)[i.index], i.value)
 		'has_profession':
-			check = has_profession(i.profession) == i.check
+			if i.has("profession"):
+				check = has_profession(i.profession) == i.check
+			if i.has("value"):
+				check = has_profession(i.value) == i.check
 		'has_any_profession':
 			check = false
 			for k in i.value:
@@ -853,11 +859,12 @@ func pretick():
 	recheck_effect_tag('recheck_tick')
 
 func tick():
+	if xp_module.is_on_quest():
+		return
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
-	if !xp_module.is_on_quest():
-		food.tick()
+
 	
 	self.hp += variables.basic_hp_regen * get_stat('hp_reg_mod')
 	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')
