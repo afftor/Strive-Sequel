@@ -173,10 +173,13 @@ func show_quest_info(quest):
 							time = str(req.work_time)
 							work_time_holder = time
 					var sex = ''
-					var prof = '' 
+					var prof = ''
+					var stats = {} 
 					for r in reqs:
 						if r.code == "sex":
 							sex = r.value
+						if r.code == "stat":
+							stats[r.stat] = r.value
 						if r.code == "has_profession" && r.check:
 							prof = r.value
 							var profbutton = input_handler.DuplicateContainerTemplate($reqs)
@@ -184,8 +187,13 @@ func show_quest_info(quest):
 							profbutton.get_node("TextureRect").texture = prof_icon
 							globals.connecttexttooltip(profbutton, prof.capitalize())
 					newbutton.get_node("TextureRect").texture = images.icons[sex]
+					var stats_text = "\nStats:\n"
 					var tooltiptext = "Slave Required:\n"
 					tooltiptext += "Sex: " + sex
+					if !stats.empty():
+						for st in stats:
+							stats_text += st.capitalize() + " : " + str(stats[st])
+						tooltiptext += stats_text
 					globals.connecttexttooltip(newbutton, tooltiptext)
 					quest_descript += "\nWork duration: " + time + ' days.'
 		
