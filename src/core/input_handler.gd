@@ -1297,7 +1297,9 @@ func play_animation(animation, args = {}):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 		"quest":
-			PlaySound("quest_aquired")
+			# PlaySound("quest_aquired")
+			if args.has("sound"):
+				PlaySound(args.sound)
 			anim_scene = get_spec_node(input_handler.ANIM_TASK_AQUARED)
 			anim_scene.get_node("Label").text = args.label
 			anim_scene.get_node("SelectedQuest").text = args.info

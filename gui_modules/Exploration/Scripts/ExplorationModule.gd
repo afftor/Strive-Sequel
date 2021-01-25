@@ -2023,6 +2023,7 @@ func accept_quest():
 	var args = {}
 	args["label"] = "Task aсquired"
 	args["info"] = selectedquest.name
+	args["sound"] = "quest_aquired"
 	input_handler.play_animation("quest", args)
 	quest_board(true, current_pressed_area_btn)
 
