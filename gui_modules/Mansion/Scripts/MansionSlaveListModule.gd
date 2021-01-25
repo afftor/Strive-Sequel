@@ -36,7 +36,7 @@ func rebuild():
 		var newbutton = input_handler.DuplicateContainerTemplate(SlaveContainer)
 		newbutton.disabled = person.is_on_quest()
 		if !person.is_on_quest():
-			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char_available.png")
+			newbutton.texture_normal = load("res://assets/Textures_v2/MANSION/CharacterList/Buttons/panel_char.png")
 
 		newbutton.pressed = (get_parent().active_person == person)
 		newbutton.set_meta('slave', person)

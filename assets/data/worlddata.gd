@@ -293,7 +293,7 @@ var factiondata = {
 		events = [
 			'servants_init',
 			],
-		quests_easy = ['servants_slave_work_easy', 'servants_craft_items_easy','servants_slave_easy'],
+		quests_easy = ['servants_slave_work_easy'], #['servants_slave_work_easy', 'servants_craft_items_easy','servants_slave_easy'],
 		quests_medium = ['servants_craft_items_medium','servants_slave_medium'],
 		quests_hard = ['servants_craft_items_hard'],
 		tags = [],
