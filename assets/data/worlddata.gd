@@ -206,9 +206,9 @@ var factiondata = {
 		events = [
 			'fighters_init',
 			],
-		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy'],
-		quests_medium = ['fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium'],
-		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard'],
+		quests_easy = ['fighters_monster_hunt_easy','fighters_dungeon_easy','fighters_threat_easy','fighters_slave_work_easy'],
+		quests_medium = ['fighters_threat_medium', 'fighters_dungeon_medium','fighters_monster_hunt_medium','fighters_slave_work_medium'],
+		quests_hard = ['fighters_dungeon_hard','fighters_monster_hunt_hard','fighters_slave_work_easy'],
 		tags = [],
 		slavenumber = [2,2],
 		questnumber = [4,4],
@@ -294,8 +294,8 @@ var factiondata = {
 			'servants_init',
 			],
 		quests_easy = ['servants_slave_work_easy', 'servants_craft_items_easy','servants_slave_easy'],
-		quests_medium = ['servants_craft_items_medium','servants_slave_medium'],
-		quests_hard = ['servants_craft_items_hard'],
+		quests_medium = ['servants_craft_items_medium','servants_slave_medium','servants_slave_work_medium'],
+		quests_hard = ['servants_craft_items_hard','servants_slave_work_hard'],
 		tags = [],
 		slavenumber = [2,3],
 		questnumber = [2,2],
@@ -985,7 +985,10 @@ var questdata = {
 		unlockreqs = [],
 		reputation = [100,150],
 		rewards = [
-		[1, {code = 'gold', range = [200,300]}],
+			[1, {code = 'gold', range = [200,300]}],
+			[0.5, {code = 'gear_static', name  = ['maid_headband','handcuffs','animal_gloves','animal_ears','bell_collar','leather_collar'], value = [1,1]},
+				{code = 'gold', range = [100,150]}
+		],
 		],
 		time_limit = [8,12],
 	},
@@ -1012,6 +1015,13 @@ var questdata = {
 		reputation = [200,300],
 		rewards = [
 		[1, {code = 'gold', range = [300,500]}],
+		
+			[
+			0.5, 
+			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt'], value = [1,1]},
+			{code = 'gold', range = [300,400]}
+			],
+		
 		],
 		time_limit = [10,15],
 	},
@@ -1038,29 +1048,95 @@ var questdata = {
 		reputation = [350,550],
 		rewards = [
 		[1, {code = 'gold', range = [400,650]}],
+			[
+			0.5, 
+			{code = 'gear_static', name  = ['ribbon','maid_dress','steel_collar','chastity_belt','elegant_choker'], value = [1,1]},
+			{code = 'gold', range = [350,450]}
+			],
+		
 		],
 		time_limit = [12,18],
 	},
-#	fighters_fighter_slave_easy = {
-#		code = 'fighters_fighter_slave_easy',
-#		type = 'slavegetquest',
-#		name = 'Slave Request',
-#		descript = 'The guild is in need of specific trained individual.',
-#		randomconditions = [{code = 'stat', operant = 'gte', function = 'range', type = ['body_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['physics'], range = [20,40]}]
-#		unlockreqs = [],
-#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-#		time_limit = [8,12],
-#	},
-#	mages_slave_easy = {
-#		code = 'mages_slave_easy',
-#		type = 'slavegetquest',
-#		name = 'Slave Request',
-#		descript = 'The guild is in need of specific trained individual.',
-#		randomconditions =  [{code = 'stat',operant = 'gte', function = 'range', type = ['magic_factor'], range = [2,3]},{use_once = true, code = 'stat', function = 'range',operant = 'gte', type = ['wits'], range = [20,40]}]},
-#		unlockreqs = [],
-#		rewards = [{code = 'gold', range = [150,200]}, {code = 'reputation', range = [100,200]}],
-#		time_limit = [8,12],
-#	},
+	fighters_slave_work_easy = {
+		code = 'fighters_slave_work_easy',
+		name = 'Assignment',
+		descript = 'The guild is in need of someone performing a task for them.',
+		randomconditions = [
+			{code = 'slave_work', 
+			mandatory_conditions = [],
+			condition_number = [1,2],
+			conditions = [
+				
+				{use_once = true, code = 'class', function = 'range', range = [1,1], type = ['fighter','archer','rogue']},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,3]},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [20,40]},
+			],
+			work_time = [4,6], #days
+			},
+		],
+		unlockreqs = [],
+		reputation = [100,150],
+		rewards = [
+		[1, {code = 'gold', range = [200,300]}],
+		],
+		time_limit = [8,12],
+	},
+	fighters_slave_work_medium = {
+		code = 'fightersslave_work_medium',
+		name = 'Assignment',
+		descript = 'The guild is in need of someone performing a task for them.',
+		randomconditions = [
+			{code = 'slave_work', 
+			mandatory_conditions = [],
+			condition_number = [1,2],
+			conditions = [
+				
+				{use_once = true, code = 'class', function = 'range', range = [1,2], type = ['fighter','archer','rogue','sniper','knight']},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [2,4]},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [30,60]},
+			],
+			work_time = [5,7], #days
+			},
+		],
+		unlockreqs = [],
+		reputation = [200,300],
+		rewards = [
+		[1, {code = 'gold', range = [300,500]}],
+		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','chest_base_metal','legs_base_metal','chest_base_leather','legs_base_leather']}, {code = 'gold',range = [50,100]}],
+		],
+		time_limit = [10,15],
+	},
+	fighters_slave_work_hard = {
+		code = 'fighters_slave_work_hard',
+		name = 'Assignment',
+		descript = 'The guild is in need of someone performing a task for them.',
+		randomconditions = [
+			{code = 'slave_work', 
+			mandatory_conditions = [],
+			condition_number = [2,3],
+			conditions = [
+				
+				{use_once = true, code = 'class', function = 'range', range = [2,3], type = ['knight','sniper','paladin','watchdog','']},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics_factor'], range = [4,5]},
+			
+				{use_once = true, code = 'stat', function = 'range', operant = 'gte', type = ['physics'], range = [50,80]},
+			],
+			work_time = [6,10], #days
+			},
+		],
+		unlockreqs = [],
+		reputation = [350,550],
+		rewards = [
+		[1, {code = 'gold', range = [400,650]}],
+		[1, {code = 'gear', material_grade = [['easy',1], ['medium',4], ['hard',1]], name = ['sword','spear','club','bow','swordadv','spearadv','clubadv','bowadv']}, {code = 'gold',range = [150,250]}],
+		],
+		time_limit = [12,18],
+	},
 }
 
 
