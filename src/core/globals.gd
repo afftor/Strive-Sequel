@@ -1177,6 +1177,7 @@ func common_effects(effects):
 						var args = {}
 						args["label"] = i.name
 						args["info"] = "Reputation: +2 Total Quest"
+						args["sound"] = "class_aquired"
 						input_handler.play_animation("quest", args)
 					guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
 					guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
@@ -1184,6 +1185,7 @@ func common_effects(effects):
 				var args = {}
 				args["label"] = i.name
 				args["info"] = "Reputation: +1 Total Quest"
+				args["sound"] = "class_aquired"
 				if guild.totalreputation > 500 && guild.totalreputation < 1500:
 					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
 					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += 1

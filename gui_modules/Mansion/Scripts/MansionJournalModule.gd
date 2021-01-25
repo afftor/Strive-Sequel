@@ -324,11 +324,10 @@ func event_person_selected_confirm():
 	show_quest_info(selectedquest)
 
 
-
-
 func Reward():
 	# input_handler.PlaySound("questcomplete")
-
+	var is_recount_reputation = false
+	var reputation_value = 0
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
@@ -336,8 +335,8 @@ func Reward():
 			'reputation':
 				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				var reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
-				globals.common_effects([{code = 'reputation', name = selectedquest.source, value = reputation_value, operant = '+'}])
+				reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				is_recount_reputation = true
 			'gear':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
 			'gear_static':
@@ -363,10 +362,13 @@ func Reward():
 	open()
 	input_handler.play_animation("quest_completed")
 	yield(get_tree().create_timer(3.5), 'timeout')
+	if is_recount_reputation:
+		globals.common_effects([{code = 'reputation', name = selectedquest.source, value = reputation_value, operant = '+'}])
 
 func CancelQuest():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', tr("FORFEITQUESTQUESTION")])
 	#input_handler.ShowConfirmPanel(self, "cancel_quest_confirm", "Forfeit This Quest?")
+
 
 func cancel_quest_confirm():
 	ResourceScripts.game_world.fail_quest(selectedquest)
@@ -397,12 +399,14 @@ func select_items_for_quest(quest_req):
 			newbutton.get_node("Amount").show()
 	item_selection_update()
 
+
 func item_pressed(item):
 	if selected_items.has(item):
 		selected_items.erase(item)
 	else:
 		selected_items.append(item)
 	item_selection_update()
+
 
 func item_selection_update():
 	var existing_items = {}
@@ -418,9 +422,9 @@ func item_selection_update():
 	$ItemSelectionPanel/ConfirmButton.disabled = amount < selected_req.value
 
 
-
 func hide_item_selection():
 	$ItemSelectionPanel.hide()
+
 
 func turn_in_quest_items():
 	var amount = selected_req.value

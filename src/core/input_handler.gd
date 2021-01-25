@@ -57,6 +57,7 @@ var scene_characters = []
 var scene_loot
 var active_area
 var active_location
+var selected_location
 var active_faction = {}
 
 var activated_skill
@@ -449,6 +450,8 @@ func OpenClose(node):
 	CloseableWindowsArray.append(node)
 
 func Close(node):
+	if gui_controller.windows_opened.has(node):
+		gui_controller.windows_opened.erase(node)
 	CloseableWindowsArray.erase(node)
 	ResourceScripts.core_animations.CloseAnimation(node)
 
@@ -560,6 +563,7 @@ func ShowSkillSelectPanel(person, type, TargetNode, TargetFunction): #very stran
 
 func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false): #just a strange container method
 	var node = get_spec_node(self.NODE_SLAVESELECT) #GetSlaveSelectNode()
+	append_not_duplicate(gui_controller.windows_opened, node)
 	node.open(TargetNode, TargetFunction, reqs, allowcancel)
 
 
@@ -1294,7 +1298,9 @@ func play_animation(animation, args = {}):
 			yield(get_tree().create_timer(0.5), 'timeout')
 			anim_scene.queue_free()
 		"quest":
-			PlaySound("quest_aquired")
+			# PlaySound("quest_aquired")
+			if args.has("sound"):
+				PlaySound(args.sound)
 			anim_scene = get_spec_node(input_handler.ANIM_TASK_AQUARED)
 			anim_scene.get_node("Label").text = args.label
 			anim_scene.get_node("SelectedQuest").text = args.info

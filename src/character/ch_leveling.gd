@@ -222,6 +222,7 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	is_on_quest = true
 	quest_days_left = int(work_time)
 	quest_id = quest.id
+	parent.set_combat_position(0)
 	# print(quest_days_left)
 	# print(quest)	
 
@@ -240,6 +241,8 @@ func quest_day_tick():
 		if quest_days_left <= 0:
 			is_on_quest = false
 			input_handler.SystemMessage(tr(parent.get_short_name() + " returned from quest."))
+			globals.text_log_add("char", parent.translate("[name] has returned from work"))
+			input_handler.PlaySound("ding")
 
 
 
