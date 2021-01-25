@@ -57,6 +57,7 @@ var scene_characters = []
 var scene_loot
 var active_area
 var active_location
+var selected_location
 var active_faction = {}
 
 var activated_skill

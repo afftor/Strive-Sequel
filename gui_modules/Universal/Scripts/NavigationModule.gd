@@ -12,7 +12,7 @@ func _ready():
 
 func update_buttons():
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
-	if gui_controller.current_screen == gui_controller.mansion:
+	if gui_controller.current_screen == gui_controller.mansion || gui_controller.current_screen == gui_controller.inventory:
 		for button in nav.get_children():
 			if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
 				continue
@@ -22,7 +22,8 @@ func update_buttons():
 	for button in nav.get_children():
 		if button.name == "Button" || button.get_class() != 'Button' || !button.has_meta("data"):
 			continue
-		button.pressed = selected_location == button.get_meta("data")
+		button.pressed = input_handler.selected_location == button.get_meta("data")
+
 
 func sort_locations(locations_array):
 	var capitals = ["Mansion"]
@@ -44,6 +45,7 @@ func sort_locations(locations_array):
 			"quest_location":
 				quest_locations.append(loca)
 	return capitals + settlements + dungeons + quest_locations
+
 
 func build_accessible_locations():
 	nav = gui_controller.nav_panel.get_node("NavigationContainer/AreaSelection")
@@ -79,12 +81,11 @@ func build_accessible_locations():
 		update_buttons()
 
 
-
 func select_location(location):
 	if gui_controller.exploration == null:
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
-	selected_location = location
-	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(selected_location)
+	input_handler.selected_location = location
+	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(location)
 	if gui_controller.current_screen == gui_controller.mansion:
 		input_handler.PlaySound("door_open")
 		gui_controller.previous_screen = gui_controller.current_screen

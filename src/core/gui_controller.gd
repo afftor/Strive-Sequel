@@ -41,7 +41,10 @@ func update_modules():
 		if subscene.get_class() == "Tween":
 			continue
 		subscene.update()
+		if subscene == nav_panel:
+			nav_panel.update_buttons()
 	clock_visibility()
+
 
 func clock_visibility():
 	if !current_screen in [mansion, exploration]:
