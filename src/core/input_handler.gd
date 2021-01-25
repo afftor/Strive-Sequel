@@ -449,6 +449,8 @@ func OpenClose(node):
 	CloseableWindowsArray.append(node)
 
 func Close(node):
+	if gui_controller.windows_opened.has(node):
+		gui_controller.windows_opened.erase(node)
 	CloseableWindowsArray.erase(node)
 	ResourceScripts.core_animations.CloseAnimation(node)
 
@@ -560,6 +562,7 @@ func ShowSkillSelectPanel(person, type, TargetNode, TargetFunction): #very stran
 
 func ShowSlaveSelectPanel(TargetNode, TargetFunction, reqs = [], allowcancel = false): #just a strange container method
 	var node = get_spec_node(self.NODE_SLAVESELECT) #GetSlaveSelectNode()
+	append_not_duplicate(gui_controller.windows_opened, node)
 	node.open(TargetNode, TargetFunction, reqs, allowcancel)
 
 

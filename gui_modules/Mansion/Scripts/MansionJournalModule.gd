@@ -324,8 +324,6 @@ func event_person_selected_confirm():
 	show_quest_info(selectedquest)
 
 
-
-
 func Reward():
 	# input_handler.PlaySound("questcomplete")
 
@@ -364,9 +362,11 @@ func Reward():
 	input_handler.play_animation("quest_completed")
 	yield(get_tree().create_timer(3.5), 'timeout')
 
+
 func CancelQuest():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', tr("FORFEITQUESTQUESTION")])
 	#input_handler.ShowConfirmPanel(self, "cancel_quest_confirm", "Forfeit This Quest?")
+
 
 func cancel_quest_confirm():
 	ResourceScripts.game_world.fail_quest(selectedquest)
@@ -397,12 +397,14 @@ func select_items_for_quest(quest_req):
 			newbutton.get_node("Amount").show()
 	item_selection_update()
 
+
 func item_pressed(item):
 	if selected_items.has(item):
 		selected_items.erase(item)
 	else:
 		selected_items.append(item)
 	item_selection_update()
+
 
 func item_selection_update():
 	var existing_items = {}
@@ -418,9 +420,9 @@ func item_selection_update():
 	$ItemSelectionPanel/ConfirmButton.disabled = amount < selected_req.value
 
 
-
 func hide_item_selection():
 	$ItemSelectionPanel.hide()
+
 
 func turn_in_quest_items():
 	var amount = selected_req.value
