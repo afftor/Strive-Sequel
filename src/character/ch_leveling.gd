@@ -222,6 +222,7 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	is_on_quest = true
 	quest_days_left = int(work_time)
 	quest_id = quest.id
+	parent.set_combat_position(0)
 	# print(quest_days_left)
 	# print(quest)	
 
