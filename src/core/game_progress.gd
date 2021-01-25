@@ -41,8 +41,8 @@ var unlimited_date_sex = false
 var unlock_all_classes = false
 
 # Cheat codes
-# var cheat_code = "fkfynroh"
-var cheat_code = "111"
+var cheat_code = "fkfynroh"
+# var cheat_code = "111"
 
 
 func _init():
