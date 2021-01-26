@@ -2155,13 +2155,13 @@ func see_quest_info(quest):
 						var prof_icon = classesdata.professions[prof].icon
 						profbutton.get_node("Icon").texture = prof_icon
 						globals.connecttexttooltip(profbutton, prof.capitalize())
-				newbutton.get_node("Icon").texture = images.icons[sex]
+				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var stats_text = "\nStats:\n"
 				var tooltiptext = "Slave Required:\n"
 				tooltiptext += "Sex: " + sex
 				if !stats.empty():
 					for st in stats:
-						stats_text += st.capitalize() + " : " + str(stats[st])
+						stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
 					tooltiptext += stats_text
 				globals.connecttexttooltip(newbutton, tooltiptext)
 				text += "\nWork duration: " + time + ' days.'

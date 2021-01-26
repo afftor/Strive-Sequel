@@ -82,6 +82,7 @@ func show_workers(task, button):
 	$Tooltip.rect_size.y = int(WorkersContainer.get_child(WorkersContainer.get_child_count() - 1).rect_size.y) * WorkersContainer.get_child_count() + 20
 	$Tooltip.show()
 
+
 func show_resources_info():
 	for task in ResourceScripts.game_party.active_tasks:
 		if task.code == "building":
@@ -140,9 +141,13 @@ func show_resources_info():
 		for i in cleararray:
 			task.workers.erase(i)
 		globals.connecttexttooltip(newtask, text)
-		# newtask.connect("mouse_entered", self, "show_workers", [task, newtask])
-		# newtask.connect("mouse_exited", $Tooltip, "hide")
-		# newtask.get_node("Task").icon = Items.materiallist[races.tasklist[task_name].production[task.product].item].icon
-		# newtask.get_node("Task").text = task_name.capitalize()
-		# newtask.get_node("ProgressBar").max_value = task.threshhold
-		# newtask.get_node("ProgressBar").value = task.progress
+	for ch in ResourceScripts.game_party.characters.values():
+		if ch.is_on_quest():
+			var work_time = ch.get_quest_work_time()
+			var newtask = input_handler.DuplicateContainerTemplate(TaskContainer)
+			newtask.show()
+			newtask.get_node("Task/TaskIcon").texture = ch.get_icon()
+			newtask.get_node("NoResources").hide()
+			newtask.get_node("ProgressBar").max_value = int(work_time)
+			newtask.get_node("ProgressBar").value = int(work_time) - int(ch.get_quest_days_left())
+			newtask.get_node("Task").text = "Assignment"

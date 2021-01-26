@@ -160,6 +160,9 @@ func show_quest_info(quest):
 					$CompleteButton.hide()
 					$SelectCharacter.show()
 					$SelectCharacter.disabled = quest.taken
+					if quest.id in ResourceScripts.game_progress.work_quests_finished:
+						$CompleteButton.show()
+						$SelectCharacter.hide()
 					var time = ''
 					var reqs = {}
 					for  req in quest.requirements:
@@ -167,9 +170,6 @@ func show_quest_info(quest):
 							reqs = req.statreqs
 							char_reqs = reqs
 						if req.has("work_time"):
-							if req.work_time <= 0:
-								$CompleteButton.show()
-								$SelectCharacter.hide()
 							time = str(req.work_time)
 							work_time_holder = time
 					var sex = ''
@@ -186,13 +186,13 @@ func show_quest_info(quest):
 							var prof_icon = classesdata.professions[prof].icon
 							profbutton.get_node("TextureRect").texture = prof_icon
 							globals.connecttexttooltip(profbutton, prof.capitalize())
-					newbutton.get_node("TextureRect").texture = images.icons[sex]
+					newbutton.get_node("TextureRect").texture = images.icons.quest_slave_delivery
 					var stats_text = "\nStats:\n"
 					var tooltiptext = "Slave Required:\n"
 					tooltiptext += "Sex: " + sex
 					if !stats.empty():
 						for st in stats:
-							stats_text += st.capitalize() + " : " + str(stats[st])
+							stats_text += st.capitalize() + " : " + str(stats[st]) + '\n'
 						tooltiptext += stats_text
 					globals.connecttexttooltip(newbutton, tooltiptext)
 					quest_descript += "\nWork duration: " + time + ' days.'
@@ -379,6 +379,9 @@ func CancelQuest():
 
 
 func cancel_quest_confirm():
+	for ch in ResourceScripts.game_party.characters.values():
+		if ch.is_on_quest() && selectedquest.id == ch.get_selected_work_quest()['id']:
+			ch.remove_from_work_quest()
 	ResourceScripts.game_world.fail_quest(selectedquest)
 	open()
 

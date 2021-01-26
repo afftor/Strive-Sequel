@@ -347,7 +347,14 @@ func update_button(newbutton):
 	var gatherable = Items.materiallist.has(person.get_work())
 	if person.get_work() == '':
 		if person.is_on_quest():
-			newbutton.get_node("job/Label").text = "On quest: " + str(person.get_quest_days_left())
+			var time_left = int(person.get_quest_days_left())
+			var time_left_string = ''
+			if time_left == 1:
+				time_left = 24 - ResourceScripts.game_globals.hour
+				time_left_string = str(time_left) + " h."
+			else:
+				time_left_string = str(time_left) + " d."
+			newbutton.get_node("job/Label").text = "On quest: " + time_left_string
 		else:
 			newbutton.get_node("job/Label").text = tr("TASKREST")
 

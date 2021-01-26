@@ -44,6 +44,9 @@ var unlock_all_classes = false
 var cheat_code = "fkfynroh"
 # var cheat_code = "111"
 
+var work_quests_finished = []
+
+
 
 func _init():
 	globals.connect("hour_tick", self, 'check_timed_events')
