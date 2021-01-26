@@ -300,6 +300,15 @@ func set_work(task):
 	xp_module.remove_from_task()
 	xp_module.work = task
 
+func get_quest_work_time():
+	return xp_module.get_quest_work_time()
+
+func get_selected_work_quest():
+	return xp_module.get_selected_work_quest()
+
+func remove_from_work_quest():
+	xp_module.remove_from_work_quest()
+
 func get_skill_by_tag(tg):
 	var res = skills.get_skill_by_tag(tg)
 	if res == null: print ("ERROR in skill config - no default skill")

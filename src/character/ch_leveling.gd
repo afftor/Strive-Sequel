@@ -15,6 +15,8 @@ var messages = []
 var is_on_quest = false
 var quest_id
 var quest_days_left = 0
+var quest_work_time = 0
+var selected_work_quest = null
 
 
 func base_exp_set(value):
@@ -218,13 +220,26 @@ func is_on_quest():
 	return is_on_quest
 
 
+func get_quest_work_time():
+	return quest_work_time
+
+
+func get_selected_work_quest():
+	return selected_work_quest
+
+
 func assign_to_quest_and_make_unavalible(quest, work_time):
 	is_on_quest = true
 	quest_days_left = int(work_time)
 	quest_id = quest.id
+	selected_work_quest = quest
 	parent.set_combat_position(0)
-	# print(quest_days_left)
-	# print(quest)	
+	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
+	# for  req in quest_taken.requirements:
+	# 	if req.has("work_time"):
+	quest_work_time = work_time
+	gui_controller.mansion.TaskModule.show()
+	gui_controller.mansion.TaskModule.show_resources_info()
 
 
 func get_quest_days_left():
@@ -234,16 +249,19 @@ func get_quest_days_left():
 func quest_day_tick():
 	if quest_days_left > 0:
 		quest_days_left -= 1
-		var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
-		for  req in quest_taken.requirements:
-			if req.has("work_time"):
-				req.work_time -= 1
 		if quest_days_left <= 0:
-			is_on_quest = false
-			input_handler.SystemMessage(tr(parent.get_short_name() + " returned from quest."))
-			globals.text_log_add("char", parent.translate("[name] has returned from work"))
-			input_handler.PlaySound("ding")
+			remove_from_work_quest()
 
+
+
+func remove_from_work_quest():
+	is_on_quest = false
+	input_handler.SystemMessage(tr(parent.get_short_name() + " returned from quest."))
+	globals.text_log_add("char", parent.translate("[name] has returned from work"))
+	input_handler.PlaySound("ding")
+	quest_work_time = 0
+	ResourceScripts.game_progress.work_quests_finished.append(quest_id)
+	quest_id = ''
 
 
 func get_obed_drain(value):

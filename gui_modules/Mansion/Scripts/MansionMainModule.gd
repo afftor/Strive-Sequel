@@ -276,13 +276,18 @@ func rebuild_mansion():
 	$TutorialButton.show()
 
 func rebuild_task_info():
-	if ResourceScripts.game_party.active_tasks.empty():
+	var char_on_quest = false
+	for ch in ResourceScripts.game_party.characters.values():
+		if ch.is_on_quest():
+			char_on_quest = true
+			break
+	if ResourceScripts.game_party.active_tasks.empty() && !char_on_quest:
 		TaskModule.visible = false
 		if TaskModule.is_visible():
 			ResourceScripts.core_animations.FadeAnimation(TaskModule, 0.3)
 		return
 	for i in ResourceScripts.game_party.active_tasks:
-		if !i.workers.empty():
+		if !i.workers.empty() || char_on_quest:
 			if !TaskModule.is_visible():
 				ResourceScripts.core_animations.UnfadeAnimation(TaskModule, 0.3)
 			TaskModule.visible = true
