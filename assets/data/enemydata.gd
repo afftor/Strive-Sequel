@@ -1055,7 +1055,7 @@ var enemies = {
 		speed = 50,
 		resists = {earth = 50, air = 100, fire = 50, water = -50, light = -50, dark = 50},
 		race = 'beast',
-		loot = 'spider_loot',
+		loot = 'ant_loot',
 		icon = "res://assets/images/enemies/GolemIcon.png",
 		body = null,
 		skills = [],
@@ -1461,7 +1461,7 @@ var locks_data = { #makes locks to lockpick for related chests
 
 var loottables = {
 	rat_loot = [['leather', 0.1], ['lifeshard', 0.1]],
-	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.2]],
+	spider_loot = [['clothsilk', 0.5, 2],['lifeshard', 0.2],['insect_chitin',0.1,1]],
 	bandit_loot = [['cloth', 0.4, 2], ['lifeshard', 0.2], ['energyshard', 0.05], ['gold', 1, 3]],
 	bandit_boss_loot = [['clothsilk', 0.8, 4], ['lifeshard', 0.3], ['gold', 15, 30]],
 	wolf_loot = [['leather', 0.2, 2], ['bone', 0.2]],
@@ -1478,12 +1478,12 @@ var loottables = {
 	quest_lich_loot = [['boneancient', 0.5, 2], ['lich_skull', 1], ['energygem', 0.5]],
 	lich_loot = [['boneancient', 0.5, 2], ['energygem', 0.5]],
 	zombie_loot = [['cloth', 0.5, 2], ['gold',1, 3]],
-	mimic_loot = [['woodiron', 0.8, 5], ['lifegem', 0.75, 3], ['gold', 20, 30]],
+	mimic_loot = [['woodiron', 0.8, 8], ['lifegem', 0.75, 3], ['gold', 20, 30]],
 	
 	troll_loot = [['troll_blood', 1, 1],['gold', 10, 15]],
 	ogre_loot = [['ogre_teeth', 0.3, 1], ['gold', 5, 10], ['lifegem', 0.05, 1]],
 	maneater_loot = [['blue_moss', 0.3, 1], ['gold',3,10]],
-	centipede_loot = [['insect_chitin', 0.4, 1]],
+	centipede_loot = [['insect_chitin', 0.7, 1]],
 	rockthrower_loot = [['stone', 0.6, 5], ['lifegem', 0.1, 1]],
 	salamander_loot = [['lizard_skin', 0.4, 1]],
 	ant_loot = [['insect_chitin', 0.1, 1]],

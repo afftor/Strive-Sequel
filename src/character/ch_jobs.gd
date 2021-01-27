@@ -54,7 +54,7 @@ func tailor_progress():
 	return 1 + (1 * (parent.get_stat('wits')/66.0 + parent.get_stat('physics')/150.0))
 
 func forge_progress():
-	return 1 + (1 * (parent.get_stat('wits')/66.0 + parent.get_stat('physics')/150.0)) * (1+0.25*ResourceScripts.game_res.upgrades.forgeworkshop)
+	return 1 + (1 * (parent.get_stat('wits')/150.0 + parent.get_stat('physics')/66.0)) * (1+0.25*ResourceScripts.game_res.upgrades.forgeworkshop)
 
 func alchemy_progress():
 	return 1 + (1 * (parent.get_stat('wits')/50.0))

@@ -3033,6 +3033,7 @@ Princess notices how Aire tenses a bit when hearing the question.
 	ENEMYANTHROPOID = "Anthropoid",
 	ENEMYMAGMA_BEAST = "Magma Beast",
 	ENEMYEREBUS_STONE = "Erebus Stone",
+	ENEMYWILD_RAPTOR = "Raptor",
 	NO_FIGHT_LOW_OBED = "[name] refuses to participate in a fight (low obedience).",
 	CHAR_NO_COMBAT = "[name] has sustained a grave injury and is unable to participate in fights.",
 	SENDCHARTOQUESTCONFIRM = "Send this character to quest?",

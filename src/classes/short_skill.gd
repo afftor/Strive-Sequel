@@ -71,7 +71,7 @@ func createfromskill(s_code):
 
 	
 	if typeof(template.value) == TYPE_ARRAY: 
-		if typeof(template.value[0]) == TYPE_ARRAY:
+		if typeof(template.value[0]) != TYPE_STRING:
 			long_value = template.value.duplicate()
 		else:
 			long_value.push_back(template.value.duplicate())
