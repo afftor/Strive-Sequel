@@ -14,19 +14,20 @@ var date_panel
 var mansion_tutorial_panel
 var cheat_panel
 var char_creation
+var dialogue
 
 
 var current_screen
 var previous_screen
 var windows_opened = []
-var dialogue
+var window_button_connections = {}
+
 var is_dialogue_just_started = true
 var dialogue_window_type = 1
 var dialogue_txt = ''
 
 signal screen_changed
 
-var window_button_connections = {}
 
 func _ready():
 	connect("screen_changed", self, "update_modules")

@@ -1183,7 +1183,7 @@ func common_effects(effects):
 					guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
 					continue
 				var args = {}
-				args["label"] = i.name
+				args["label"] = guild.name
 				args["info"] = "Reputation: +1 Total Quest"
 				args["sound"] = "class_aquired"
 				if guild.totalreputation > 500 && guild.totalreputation < 1500:

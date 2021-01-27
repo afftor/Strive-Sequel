@@ -233,6 +233,7 @@ func assign_to_quest_and_make_unavalible(quest, work_time):
 	quest_days_left = int(work_time)
 	quest_id = quest.id
 	selected_work_quest = quest
+	work = quest.name
 	parent.set_combat_position(0)
 	# var quest_taken = ResourceScripts.game_world.get_quest_by_id(quest_id)
 	# for  req in quest_taken.requirements:
