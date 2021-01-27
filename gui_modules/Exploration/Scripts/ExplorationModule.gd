@@ -2154,7 +2154,8 @@ func see_quest_info(quest):
 						var profbutton = input_handler.DuplicateContainerTemplate($QuestBoard/QuestDetails/questreqs)
 						var prof_icon = classesdata.professions[prof].icon
 						profbutton.get_node("Icon").texture = prof_icon
-						globals.connecttexttooltip(profbutton, prof.capitalize())
+						var prof_name = "Required Class:\n" + classesdata.professions[prof].name
+						globals.connecttexttooltip(profbutton, prof_name)
 				newbutton.get_node("Icon").texture = images.icons.quest_slave_delivery
 				var stats_text = "\nStats:\n"
 				var tooltiptext = "Slave Required:\n"
