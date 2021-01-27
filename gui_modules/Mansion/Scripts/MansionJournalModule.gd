@@ -102,8 +102,8 @@ func show_quest_info(quest):
 		if i.has_meta('quest'):
 			i.pressed = i.get_meta('quest') == quest
 
-	var quest_descript = quest.descript
 	if !quest.has('stage'):
+		var quest_descript = quest.descript
 		selectedquest = quest
 		input_handler.selectedquest = quest
 		for i in quest.requirements:
