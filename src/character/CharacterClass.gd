@@ -455,6 +455,8 @@ func get_quest_days_left():
 	return xp_module.get_quest_days_left()
 
 func quest_day_tick():
+	if self.is_on_quest():
+		add_stat("base_exp", 12)
 	xp_module.quest_day_tick()
 
 func use_mansion_item(item):

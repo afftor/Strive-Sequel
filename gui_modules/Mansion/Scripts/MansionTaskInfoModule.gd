@@ -148,6 +148,8 @@ func show_resources_info():
 			newtask.show()
 			newtask.get_node("Task/TaskIcon").texture = ch.get_icon()
 			newtask.get_node("NoResources").hide()
-			newtask.get_node("ProgressBar").max_value = int(work_time)
-			newtask.get_node("ProgressBar").value = int(work_time) - int(ch.get_quest_days_left())
-			newtask.get_node("Task").text = "Assignment"
+			newtask.get_node("ProgressBar").max_value = 100
+			var percent = float(work_time) * 24 / 100
+			var hours_passed = ((int(work_time) * 24 - int(ch.get_quest_days_left()) * 24) + ResourceScripts.game_globals.hour) / percent
+			newtask.get_node("ProgressBar").value = hours_passed
+			newtask.get_node("Task").text = ch.get_short_name() + " : " + ch.get_work()

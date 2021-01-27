@@ -345,7 +345,7 @@ func update_button(newbutton):
 	#newbutton.get_node("HBoxContainer/stats/mplabel").text = str(round(person.mp)) + "/" + str(round(person.mpmax))
 	newbutton.get_node("explabel").text = str(floor(person.get_stat('base_exp')))
 	var gatherable = Items.materiallist.has(person.get_work())
-	if person.get_work() == '':
+	if person.get_work() == '' || person.get_work() == "Assignment":
 		if person.is_on_quest():
 			var time_left = int(person.get_quest_days_left())
 			var time_left_string = ''
