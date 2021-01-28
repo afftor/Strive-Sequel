@@ -869,22 +869,19 @@ func pretick():
 	process_event(variables.TR_TICK)
 	recheck_effect_tag('recheck_tick')
 
+
+
 func tick():
-	if xp_module.is_on_quest():
+	if is_on_quest():
 		return
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
 
-	
 	self.hp += variables.basic_hp_regen * get_stat('hp_reg_mod')
 	self.mp += (variables.basic_mp_regen + get_stat('magic_factor') * variables.mp_regen_per_magic) * get_stat('mp_reg_mod')
-	
+	food.tick()
 	statlist.tick()
-#	if !has_status('no_obed_reduce'):
-#		self.obedience -= obed_reduce
-#	if !has_status('no_fear_reduce'):
-#		self.fear -= fear_reduce
 	if get_work() == 'travel':
 		#fatigue -= 1
 		travel.tick()
@@ -896,6 +893,7 @@ func tick():
 		check_escape_possibility()
 		if ResourceScripts.game_party.characters.has(self.id):
 			return
+
 
 func rest_tick():
 	self.hp += variables.basic_hp_regen * 2 * get_stat('hp_reg_mod')
