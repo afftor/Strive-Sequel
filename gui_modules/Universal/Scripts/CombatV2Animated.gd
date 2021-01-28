@@ -169,6 +169,20 @@ func FinishCombat(victory = true):
 	for i in playergroup.values() + enemygroup.values():
 		var tchar = characters_pool.get_char_by_id(i)
 		tchar.skills.combat_cooldowns.clear()
+
+	for p in playergroup.values():
+		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
+		#add permadeath check here
+
+	if victory: 
+		CombatAnimations.force_end()
+		ResourceScripts.core_animations.BlackScreenTransition(1.5)
+		yield(get_tree().create_timer(1.5), 'timeout')
+		hide()
+		input_handler.finish_combat()
+	else: 
+		hide()
+		input_handler.combat_defeat()
 	for i in range(battlefield.size()):
 		if battlefield[i] != null:
 			var tchar = characters_pool.get_char_by_id(battlefield[i])
@@ -179,20 +193,7 @@ func FinishCombat(victory = true):
 		#mark enemy characters for clearing
 		#mb to change this part when dealing with captured enemies  
 		var tchar = characters_pool.get_char_by_id(i)
-		tchar.is_active = false
-	for p in playergroup.values():
-		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
-		#add permadeath check here
-
-	if victory: 
-		CombatAnimations.force_end()
-		ResourceScripts.core_animations.BlackScreenTransition(0.5)
-		yield(get_tree().create_timer(0.5), 'timeout')
-		hide()
-		input_handler.finish_combat()
-	else: 
-		hide()
-		input_handler.combat_defeat() 
+		tchar.is_active = false 
 	input_handler.combat_node = null
 
 
@@ -480,6 +481,8 @@ func defeat(runaway = false): #runaway is a temporary variable until run() metho
 	else:
 		play_animation("defeat")
 		yield(get_tree().create_timer(3), 'timeout')
+		ResourceScripts.core_animations.BlackScreenTransition(1.5)
+		yield(get_tree().create_timer(1.5), 'timeout')
 
 	# CombatAnimations.check_start()
 	# if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')

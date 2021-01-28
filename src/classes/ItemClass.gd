@@ -291,9 +291,9 @@ func tooltiptext_2():
 	var text = ''
 	if description != null:
 		text += description
+		text += "\n"
 
 	if itemtype in ['armor','weapon','tool']:
-		# text += "\n"
 		for i in bonusstats:
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
