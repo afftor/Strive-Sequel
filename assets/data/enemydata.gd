@@ -1064,7 +1064,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = [['basic', 100]],
-		ai_position = ['ranged'],
+		ai_position = ['any'],
 		xpreward = 20,
 	},
 	wild_raptor =  {
@@ -1091,7 +1091,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = [['basic', 100]],
-		ai_position = ['ranged'],
+		ai_position = ['any'],
 		xpreward = 20,
 	},
 	centipede = {
@@ -1174,7 +1174,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = [['basic', 100]],
-		ai_position = ['ranged'],
+		ai_position = ['any'],
 		xpreward = 140,
 	},
 	anthropoid = {
@@ -1202,7 +1202,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = [['basic', 100]],
-		ai_position = ['ranged'],
+		ai_position = ['any'],
 		xpreward = 20,
 	},
 	ifrit = {
@@ -1230,7 +1230,7 @@ var enemies = {
 		is_character = false,
 		gear = [],
 		ai = [['basic', 30],['ads',70]],
-		ai_position = ['ranged'],
+		ai_position = ['any'],
 		xpreward = 20,
 	},
 	magma_beast = {
@@ -1481,12 +1481,12 @@ var loottables = {
 	mimic_loot = [['woodiron', 0.8, 8], ['lifegem', 0.75, 3], ['gold', 20, 30]],
 	
 	troll_loot = [['troll_blood', 1, 1],['gold', 10, 15]],
-	ogre_loot = [['ogre_teeth', 0.3, 1], ['gold', 5, 10], ['lifegem', 0.05, 1]],
+	ogre_loot = [['ogre_teeth', 0.6, 1], ['gold', 5, 10], ['lifegem', 0.05, 1],['earth_shard', 0.01, 1]],
 	maneater_loot = [['blue_moss', 0.3, 1], ['gold',3,10]],
 	centipede_loot = [['insect_chitin', 0.7, 1]],
 	rockthrower_loot = [['stone', 0.6, 5], ['lifegem', 0.1, 1]],
 	salamander_loot = [['lizard_skin', 0.4, 1]],
-	ant_loot = [['insect_chitin', 0.1, 1]],
+	ant_loot = [['insect_chitin', 0.4, 1]],
 	great_viper_loot = [['lizard_skin', 0.8, 6], ['leathermythic', 0.8, 5],['ice_crystal', 0.1, 1], ['fire_ruby', 0.1, 1], ['crystalized_ether', 0.1, 1],['earth_shard', 0.1, 1]],
 	ogre_alpha_loot = [['ogre_teeth', 1, 2], ['gold', 30, 50],['ice_crystal', 0.1, 1], ['fire_ruby', 0.1, 1], ['crystalized_ether', 0.1, 1],['earth_shard', 0.1, 1]],
 	ifrit_loot = [['obsidian', 0.5, 1], ['fire_ruby', 0.3, 1], ['lifegem', 0.1, 1],['energygem',0.2, 1]],
