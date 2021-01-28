@@ -774,6 +774,16 @@ func process_stutter(text:String, num = 1, mlen = 3, esc_list = []):
 	
 	return rebuild_text(words)
 
+var meowing_replacements = {
+	ma = ['mya'],
+	mo = ['myo'],
+	mi = ['meow'],
+	na = ['nya'],
+	no = ['nyo'],
+	ni = ['neow'],
+	
+}
+
 func process_drunk(text: String, insert:Array, num = 1):
 	var res = ' ' + text + ' '
 	for i in range(num):
@@ -787,15 +797,6 @@ func process_drunk(text: String, insert:Array, num = 1):
 	return res.trim_prefix(' ').trim_suffix(' ')
 
 
-var meowing_replacements = {
-	ma = ['mya'],
-	mo = ['myo'],
-	mi = ['meow'],
-	na = ['nya'],
-	no = ['nyo'],
-	ni = ['neow'],
-	
-}
 
 func process_meowing(text: String, num = 1):
 	var words = text.split(' ')
@@ -803,6 +804,7 @@ func process_meowing(text: String, num = 1):
 	var buf = []
 	for i in range(words.size()):
 		var w = words[i]
+		if w.begins_with('[') or w.ends_with(']'): continue
 		for k in meowing_replacements.keys():
 			if w.findn(k) >= 0:
 				var pos = w.findn(k)

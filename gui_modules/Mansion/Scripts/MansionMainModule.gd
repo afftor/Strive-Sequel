@@ -504,8 +504,8 @@ func test_mode():
 		# character.unlock_class("thief")
 		# character.unlock_class("engineer")
 		# character.unlock_class("scholar")
-		# character.travel.location = 'L4'
-		# character.travel.area = 'plains'
+		character.travel.location = 'L4'
+		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
 		#variables.dungeon_encounter_chance = 1

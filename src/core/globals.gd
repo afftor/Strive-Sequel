@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.4.0b'
+const gameversion = '0.4.1'
 
 #time
 signal hour_tick
@@ -1179,8 +1179,6 @@ func common_effects(effects):
 						args["info"] = "Reputation: +2 Total Quest"
 						args["sound"] = "class_aquired"
 						input_handler.play_animation("quest", args)
-					guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
-					guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
 					continue
 				var args = {}
 				args["label"] = guild.name
@@ -1194,6 +1192,9 @@ func common_effects(effects):
 					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
 					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy +=1
 					input_handler.play_animation("quest", args)
+				
+				guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
+				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)

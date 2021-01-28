@@ -532,7 +532,17 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.4.0b
+bbcode_text = "0.4.1
+Added new quest type: Work - will ask for character with specific stats to work for limited time
+Fixed steel collar and shackles not being craftable
+Fixed paladin taunt not working
+Fixed escape animation
+Fixed new dungeons names
+Fixed cheat menu resources creation
+Fixed some instances of speech modifications getting into the way of syntax
+Removed Amulet of recognition from random item pool
+Added logical resists to some enemies
+0.4.0b
 Fixed occassional issues with item dissasembling
 Fixed fire depths giving crashes
 Fixed slaves having only penalties
@@ -869,7 +879,17 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.4.0b
+text = "0.4.1
+Added new quest type: Work - will ask for character with specific stats to work for limited time
+Fixed steel collar and shackles not being craftable
+Fixed paladin taunt not working
+Fixed escape animation
+Fixed new dungeons names
+Fixed cheat menu resources creation
+Fixed some instances of speech modifications getting into the way of syntax
+Removed Amulet of recognition from random item pool
+Added logical resists to some enemies
+0.4.0b
 Fixed occassional issues with item dissasembling
 Fixed fire depths giving crashes
 Fixed slaves having only penalties

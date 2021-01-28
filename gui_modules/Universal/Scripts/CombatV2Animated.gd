@@ -320,6 +320,7 @@ func victory():
 						input_handler.AddOrIncrementDict(loot, {item[0] : 1})
 					counter -= 1
 				input_handler.AddOrIncrementDict(rewardsdict.materials, loot)
+				loot.clear()
 			elif Items.itemlist.has(item[0]):
 				var itemtemp = Items.itemlist[item[0]]
 				var counter = 1

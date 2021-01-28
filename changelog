@@ -1,9 +1,16 @@
+0.4.1a
+Fixed reputation not being gained
+Fixed some enemy names and issues
+Fixed some loot drops being too high
+Fixed smith task benefiting from wits more than from physics
+0.4.1
 Added new quest type: Work - will ask for character with specific stats to work for limited time
 Fixed steel collar and shackles not being craftable
 Fixed paladin taunt not working
 Fixed escape animation
 Fixed new dungeons names
 Fixed cheat menu resources creation
+Fixed some instances of speech modifications getting into the way of syntax
 Removed Amulet of recognition from random item pool
 Added logical resists to some enemies
 0.4.0b
