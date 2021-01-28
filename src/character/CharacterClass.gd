@@ -872,6 +872,7 @@ func pretick():
 func tick():
 	if xp_module.is_on_quest():
 		return
+	food.tick()
 	var skip_work = false
 	if get_work() == '':
 		skip_work = true
