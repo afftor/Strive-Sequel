@@ -324,7 +324,7 @@ func selectcraftitem(item):
 		var item_name = baseitem.name
 		var text = "{color=k_yellow|" + str(item_name) + "}"
 		var encoded_text = globals.TextEncoder(text)
-		encoded_text += "\n" + str(baseitem.descript)
+		encoded_text += "\n" + str(globals.TextEncoder(baseitem.descript))
 		$MaterialSetupPanel/EndItemDescript.bbcode_text = encoded_text
 		var basic_setup_container = $MaterialSetupPanel/BasicSetup/ScrollContainer/VBoxContainer
 		
@@ -469,16 +469,11 @@ func checkcreatingitem(item):
 			resourcedict[i.material] = i.price
 	for i in resourcedict:
 		text += "\n" + i.capitalize() + ' - ' + str(resourcedict[i])
-	
-	
-	
+
 	var fullrecipe = true
 	for i in baseitem.parts:
 		if !itemparts.has(i):
 			fullrecipe = false
-	
-	#$NumberSelect/CreateItem.disabled = !fullrecipe
-	
 	
 	var temppartdict = {}
 	for i in itemparts:
