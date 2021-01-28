@@ -532,7 +532,12 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.4.1
+bbcode_text = "0.4.1a
+Fixed reputation not being gained
+Fixed some enemy names and skill issues
+Fixed some loot drops being too high
+Fixed smith task benefiting from wits more than from physics
+0.4.1
 Added new quest type: Work - will ask for character with specific stats to work for limited time
 Fixed steel collar and shackles not being craftable
 Fixed paladin taunt not working
@@ -879,7 +884,12 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.4.1
+text = "0.4.1a
+Fixed reputation not being gained
+Fixed some enemy names and skill issues
+Fixed some loot drops being too high
+Fixed smith task benefiting from wits more than from physics
+0.4.1
 Added new quest type: Work - will ask for character with specific stats to work for limited time
 Fixed steel collar and shackles not being craftable
 Fixed paladin taunt not working
