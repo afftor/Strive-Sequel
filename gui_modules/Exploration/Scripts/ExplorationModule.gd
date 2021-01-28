@@ -624,6 +624,7 @@ func check_staged_enemies():
 
 
 func advance():
+	build_location_group()
 	if check_dungeon_end() == false:
 		active_location.progress.stage += 1
 		current_stage = active_location.progress.stage
@@ -766,10 +767,10 @@ func build_location_group():
 	if active_location == null || !active_location.has("group"):
 		return
 	for ch in ResourceScripts.game_party.characters.values():
-		if ch != ResourceScripts.game_party.get_master() && ch.get_stat('obedience') == 0:
+		if !ch.has_profession('master') && ch.get_stat('obedience') == 0:
 			active_location.group.erase('pos' + str(ch.combat_position))
 			ch.combat_position = 0
-		if ch.check_location(active_location.id) && ch.combat_position != 0:
+		if ch.check_location(active_location.id) and ch.combat_position != 0 and !ch.has_status('no_combat'):
 			if !active_location.group.has(['pos' + str(ch.combat_position)]):
 				active_location.group['pos' + str(ch.combat_position)] = ch.id
 	for i in positiondict:
