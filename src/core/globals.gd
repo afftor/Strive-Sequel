@@ -1244,6 +1244,8 @@ func common_effects(effects):
 					input_handler.play_unlock_class_anim(i.name)
 			'reset_day_count':
 				ResourceScripts.game_progress.reset_day_count(i.quest)
+			'heal_all_in_locatipn':
+				input_handler.heal_all_in_locatopn(i.amount)
 
 
 func get_image_based_on_progress(event_name):

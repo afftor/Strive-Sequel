@@ -92,10 +92,10 @@ func _ready():
 	var closebutton = gui_controller.add_close_button($AreaShop)
 	# gui_controller.win_btn_connections_handler(true, $AreaShop, closebutton)
 
+
 func test():
 	for win in gui_controller.windows_opened:
 		print(win.name)
-
 
 
 func enslave_select():
@@ -332,6 +332,7 @@ func open_location(data):
 	else:
 		$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
+	input_handler.interactive_message("tribal_elves", '',{})
 
 
 func build_location_description():
