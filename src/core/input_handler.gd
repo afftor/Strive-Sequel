@@ -1355,3 +1355,9 @@ func append_not_duplicate(list, value):
 	if !list.has(value):
 		list.append(value)
 
+
+func heal_all_in_locatopn(amount):
+	for ch in ResourceScripts.game_party.characters.values():
+		if ch.get_location() == selected_location:
+			ch.heal(amount)
+

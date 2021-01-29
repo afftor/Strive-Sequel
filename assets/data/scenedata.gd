@@ -1295,6 +1295,62 @@ var scenedict = {
 		{code = 'freya_shrine_approach', select_person = true, reqs = [], text = tr("DIALOGUESHRINECHOOSEPERSON")},
 		{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},]
 	},
+	spring = {
+		text = tr("SPRINGTEXT"), 
+		tags = ['dialogue_scene'],
+		# default_event_type = "character_event",
+		image = '', 
+		options = [
+			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL"), dialogue_argument = 1},
+			{code = 'chance_dependent_event', reqs = [], text = tr("SPRING_CHANCE"), events = ["spring_loot","spring_no_loot"],
+			chance = 66, dialogue_argument = 2},
+		]
+		},
+	spring_heal = {
+		text = tr("DIALOGUEDUNGEONARMORY"), 
+		tags = [],
+		image = 'chest', 
+		common_effects = [{code = 'heal_all_in_location', amount = 33}],
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
+		],
+	},
+	spring_loot = {
+		text = tr("DIALOGUEDUNGEONARMORY"), 
+		tags = ['free_loot'],
+		image = 'chest', 
+		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}], #Temporary
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
+		],
+	},
+	spring_no_loot = {
+		text = tr("DIALOGUEDUNGEONARMORY"), 
+		tags = [],
+		image = 'chest',
+		options = [
+		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
+		],
+	},
+	tribal_elves = {text = tr("TRIBALELVES"), 
+		args = {},
+		tags = [],
+		image = 'slavers_elf',
+		set_enemy = 'tribal_elves',
+		options = [
+		{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
+		]
+	},
+	tribal_elves_win = {text = tr("TRIBALELVES_WIN"), 
+	args = {},
+	tags = [''],
+	common_effects = [{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {}}]}],
+	image = 'slavers_elf',
+	options = [
+	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEKEEPSLAVEPERSON")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	]
+},
 }
 
 var dialogue_inits = {

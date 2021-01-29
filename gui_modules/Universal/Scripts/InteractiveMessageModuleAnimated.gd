@@ -609,8 +609,10 @@ func handle_scene_options(scene):
 					newbutton.connect("pressed", self, "hide")
 			elif scene.tags.has("custom_effect"):
 				newbutton.connect('pressed', ResourceScripts.custom_effects, i.code)
-			elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight']:
+			elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight','chance_dependent_event']:
 				newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])
+			elif scene.tags.has("dialogue_scene") && i.code =='chance_dependent_event':
+				newbutton.connect('pressed', self, 'chance_dependent_event', [i.events, i.chance])				
 			else:
 				var args
 				if i.has('args') == true: args = i.args
@@ -634,3 +636,6 @@ func handle_scene_options(scene):
 			option_number += 1
 
 			
+func chance_dependent_event(events, chance):
+	var code = events[0] if globals.rng.randf()*100 <= chance else events[1]
+	input_handler.interactive_message_follow(code, '', '')

@@ -732,7 +732,7 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		# input_handler.interactive_message("daisy_first_event", '',{})
+		# input_handler.interactive_message("tribal_elves", '',{})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 100000
