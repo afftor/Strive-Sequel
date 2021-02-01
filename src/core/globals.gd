@@ -474,6 +474,7 @@ func LoadGame(filename):
 	ResourceScripts.game_res.fix_serialization()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
+	ResourceScripts.game_world.fix_serialization()
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
@@ -1175,8 +1176,8 @@ func common_effects(effects):
 				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value) #guess there should be a + operant check before it
 				var n = get_nquest_for_rep(guild.totalreputation) - n1
 				if n > 0:
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += n
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += n
+					guild.questsetting.total += n
+					guild.questsetting.easy += n
 					var args = {}
 					args["label"] = guild.name
 					args["info"] = "Reputation: +%d Total Quest" % n
@@ -1239,7 +1240,7 @@ func get_nquest_for_rep(value):
 	if value > variables.reputation_tresholds.back() : 
 		return variables.reputation_tresholds.size()
 	var n = 0
-	while value > variables.reputation_tresholds[n]:
+	while value >= variables.reputation_tresholds[n]:
 		n += 1
 	return n
 
