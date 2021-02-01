@@ -3056,6 +3056,9 @@ The princess notices Aire tensing up in response to the question.
 	SKILLENEMY_ENTANGLE = "Entangle",
 	SKILLSHRED = "Shred",
 	
-	
+	SPRINGTEXT = "SPRINGTEXT",
+	SPRING_HEAL = "SPRING_HEAL",
+	DIALOGUE_SPRING_LOOT = "DIALOGUE_SPRING_LOOT",
+	DIALOGUE_SPRING_NO_LOOT = "DIALOGUE_SPRING_NO_LOOT",
 }
 
