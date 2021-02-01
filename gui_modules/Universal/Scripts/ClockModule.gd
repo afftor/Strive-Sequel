@@ -88,6 +88,13 @@ func advance_turn():
 		number -= 1
 	rotate_sky()
 
+
+func update_labels():
+	$TimeNode/Date.text = "D: " + str(ResourceScripts.game_globals.date)
+	$TimeNode/Time.text = str(ResourceScripts.game_globals.hour) + ":00"
+	rotate_sky()
+
+
 func rotate_sky(gametime = 0):
 	if input_handler.globalsettings.turn_based_time_flow:
 		sky.rect_rotation = ResourceScripts.game_globals.hour * DEGREES_PER_HOUR

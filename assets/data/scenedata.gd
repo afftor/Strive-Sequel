@@ -1302,36 +1302,43 @@ var scenedict = {
 		image = '', 
 		options = [
 			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL"), dialogue_argument = 1},
-			{code = 'chance_dependent_event', reqs = [], text = tr("SPRING_CHANCE"), events = ["spring_loot","spring_no_loot"],
-			chance = 66, dialogue_argument = 2},
+			{code = 'spring_loot', reqs = [], text = tr("SPRING_CHANCE"), dialogue_argument = 2},
 		]
 		},
 	spring_heal = {
-		text = tr("DIALOGUEDUNGEONARMORY"), 
+		text = tr("SPRING_HEAL"), 
 		tags = [],
 		image = 'chest', 
-		common_effects = [{code = 'heal_all_in_location', amount = 33}],
+		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = -33}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
 		],
 	},
 	spring_loot = {
-		text = tr("DIALOGUEDUNGEONARMORY"), 
-		tags = ['free_loot'],
-		image = 'chest', 
-		common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_armory_weapon', 1],['easy_armory_armor', 1]]}], #Temporary
-		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
-		],
-	},
-	spring_no_loot = {
-		text = tr("DIALOGUEDUNGEONARMORY"), 
-		tags = [],
-		image = 'chest',
-		options = [
-		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
-		],
-	},
+		variations = [
+			{reqs = [{type = 'random', value = 66}],
+			text = tr("DIALOGUE_SPRING_LOOT"),
+			image = 'chest',
+			default_event_type = "loot",
+			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
+			tags = [''],
+			options = [
+				{code = 'open_chest', text = tr("DIALOGUECLOSE"), reqs = []},
+				]
+			},
+			{reqs = [],
+			text = tr("DIALOGUE_SPRING_NO_LOOT"),
+			image = 'chest',
+			default_event_type = "loot",
+			common_effects = [],
+			tags = [''],
+			options = [
+				{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = []},
+				],
+				
+			}
+		]},
+
 	tribal_elves = {text = tr("TRIBALELVES"), 
 		args = {},
 		tags = [],
