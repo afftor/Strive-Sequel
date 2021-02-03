@@ -1,6 +1,6 @@
 extends Node
 
-const gameversion = '0.4.1a'
+const gameversion = '0.4.1b'
 
 #time
 signal hour_tick
@@ -474,6 +474,7 @@ func LoadGame(filename):
 	ResourceScripts.game_res.fix_serialization()
 #	ResourceScripts.game_res.fix_items_inventory(false)
 	ResourceScripts.game_party.fix_serialization()
+	ResourceScripts.game_world.fix_serialization()
 	effects_pool.deserialize(savedict.effpool)
 	characters_pool.cleanup()
 	effects_pool.cleanup()
@@ -1172,31 +1173,18 @@ func common_effects(effects):
 			'reputation':
 				var data = ResourceScripts.world_gen.get_faction_from_code(i.name)
 				var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]
-				if i.value > 1000:
-					if (guild.totalreputation <= 500 && ((i.value + guild.totalreputation) > 1500)):
-						ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 2
-						ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += 2
-						var args = {}
-						args["label"] = i.name
-						args["info"] = "Reputation: +2 Total Quest"
-						args["sound"] = "class_aquired"
-						input_handler.play_animation("quest", args)
-					continue
-				var args = {}
-				args["label"] = guild.name
-				args["info"] = "Reputation: +1 Total Quest"
-				args["sound"] = "class_aquired"
-				if guild.totalreputation > 500 && guild.totalreputation < 1500:
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy += 1
-					input_handler.play_animation("quest", args)
-				elif guild.totalreputation > 1500:
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.total += 1
-					ResourceScripts.game_world.areas[data.area].factions[data.code].questsetting.easy +=1
-					input_handler.play_animation("quest", args)
-				
+				var n1 = get_nquest_for_rep(guild.totalreputation)
 				guild.reputation = input_handler.math(i.operant, guild.reputation, i.value)
-				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value)
+				guild.totalreputation = input_handler.math(i.operant, guild.totalreputation, i.value) #guess there should be a + operant check before it
+				var n = get_nquest_for_rep(guild.totalreputation) - n1
+				if n > 0:
+					guild.questsetting.total += n
+					guild.questsetting.easy += n
+					var args = {}
+					args["label"] = guild.name
+					args["info"] = "Reputation: +%d Total Quest" % n
+					args["sound"] = "class_aquired"
+					input_handler.play_animation("quest", args)
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)
@@ -1247,6 +1235,14 @@ func common_effects(effects):
 			'reset_day_count':
 				ResourceScripts.game_progress.reset_day_count(i.quest)
 
+
+func get_nquest_for_rep(value):
+	if value > variables.reputation_tresholds.back() : 
+		return variables.reputation_tresholds.size()
+	var n = 0
+	while value >= variables.reputation_tresholds[n]:
+		n += 1
+	return n
 
 func get_image_based_on_progress(event_name):
 	var image

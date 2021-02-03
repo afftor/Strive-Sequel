@@ -322,4 +322,4 @@ var personality_conversion_rates = {
 	serious = 0.5
 }
 
-
+var reputation_tresholds = [0, 500, 1500]

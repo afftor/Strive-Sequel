@@ -2426,7 +2426,7 @@ var Skilllist = {
 		tags = ['damage','ads'],
 		reqs = [],
 		targetreqs = [],
-		effects = [Effectdata.rebuild_template({effect = 'e_s_burn', chance = 0.5, push_value = true, duratin = 2})], 
+		effects = [Effectdata.rebuild_template({effect = 'e_s_burn', chance = 0.5, push_value = true, duration = 2})], 
 		cost = {},
 		charges = 0,
 		combatcooldown = 0,

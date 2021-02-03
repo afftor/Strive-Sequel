@@ -171,7 +171,15 @@ func FinishCombat(victory = true):
 		tchar.skills.combat_cooldowns.clear()
 
 	for p in playergroup.values():
-		characters_pool.get_char_by_id(p).process_event(variables.TR_COMBAT_F)
+		var ch = characters_pool.get_char_by_id(p)
+		if ch.hp <=0: 
+			ch.hp = 1
+			ch.is_active = true
+			ch.defeated = false
+			ch.combat_position = 0
+			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
+			ch.apply_effect(effects_pool.add_effect(eff))
+		ch.process_event(variables.TR_COMBAT_F)
 		#add permadeath check here
 
 	if victory: 
@@ -365,9 +373,9 @@ func victory():
 		newbutton.get_node("Icon").texture = tchar.get_icon()
 		newbutton.get_node("name").text = tchar.get_short_name()
 		newbutton.get_node("amount").text = str(gained_exp)
-		if tchar.hp <= 0:
-			tchar.hp = 1
-			tchar.defeated = false
+#		if tchar.hp <= 0:
+#			tchar.hp = 1
+#			tchar.defeated = false
 #			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
 #			tchar.apply_effect(effects_pool.add_effect(eff))
 			#add permadeath check here

@@ -1021,11 +1021,11 @@ func start_scene(scene):
 	interactive_message(scene.code, 'event_selection', scene.args)
 
 func combat_defeat():
-	for i in active_location.group:
-		if ResourceScripts.game_party.characters.has(active_location.group[i]) && ResourceScripts.game_party.characters[active_location.group[i]].hp <= 0:
-			ResourceScripts.game_party.characters[active_location.group[i]].hp = 1
-			ResourceScripts.game_party.characters[active_location.group[i]].defeated = false
-			ResourceScripts.game_party.characters[active_location.group[i]].is_active = true
+#	for i in active_location.group:
+#		if ResourceScripts.game_party.characters.has(active_location.group[i]) && ResourceScripts.game_party.characters[active_location.group[i]].hp <= 0:
+#			ResourceScripts.game_party.characters[active_location.group[i]].hp = 1
+#			ResourceScripts.game_party.characters[active_location.group[i]].defeated = false
+#			ResourceScripts.game_party.characters[active_location.group[i]].is_active = true
 #			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table.e_grave_injury)
 #			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
 			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
