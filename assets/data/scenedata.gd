@@ -1355,7 +1355,7 @@ var scenedict = {
 	image = 'slavers_elf',
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEKEEPSLAVEPERSON")},
-	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVEOPTION")},
+	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
 	]
 },
 }
