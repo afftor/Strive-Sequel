@@ -288,6 +288,7 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="DemoPanel"]
+visible = false
 margin_left = 170.0
 margin_top = 289.0
 margin_right = 431.0
@@ -296,10 +297,9 @@ text = "Confirm"
 
 [node name="WarnScreen" parent="." instance=ExtResource( 21 )]
 visible = false
-margin_left = 3.01477
-margin_top = 9.04404
-margin_right = 1923.01
-margin_bottom = 1089.04
+margin_left = 0.01477
+margin_top = 0.0440397
+margin_bottom = 1080.04
 
 [node name="mod_panel" parent="." instance=ExtResource( 20 )]
 visible = false
