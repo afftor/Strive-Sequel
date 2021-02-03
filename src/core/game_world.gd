@@ -30,9 +30,12 @@ func fix_serialization():
 				guild.questsetting.total = globals.get_nquest_for_rep(guild.totalreputation)
 				print("questnumber fixed for %s - set to %d" % [guild.name, guild.questsetting.total])
 			if guild.questsetting.total < guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
-				guild.questsetting.total = guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard
-				print("wrong questnumber for %s - increased for compatibility - set to %d" % [guild.name, guild.questsetting.total])
-			if guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
+#                guild.questsetting.total = guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard
+				guild.questsetting.easy = 1
+				guild.questsetting.medium = 0
+				guild.questsetting.hard = 0
+				print("wrong questnumber for %s - counters resetted" % [guild.name])
+			elif guild.questsetting.total > guild.questsetting.easy + guild.questsetting.medium + guild.questsetting.hard:
 				print("wrong questnumber for %s - unallocated quests" % [guild.name])
 
 

@@ -332,7 +332,7 @@ func open_location(data):
 	else:
 		$LocationGui/Resources/Label.visible = true
 	gui_controller.nav_panel.build_accessible_locations()
-	input_handler.interactive_message("spring", '',{})
+	#input_handler.interactive_message("spring", '',{})
 
 
 func build_location_description():
