@@ -481,13 +481,14 @@ func LoadGame(filename):
 	#current approach
 	# if input_handler.CurrentScene != null:
 		# input_handler.CurrentScene.queue_free()
-	if gui_controller.mansion != null:
+	if is_instance_valid(gui_controller.mansion):
 		gui_controller.mansion.queue_free()
-	if gui_controller.current_screen != null:
+	if is_instance_valid(gui_controller.current_screen):
 		gui_controller.current_screen.queue_free()
 	input_handler.ChangeScene('mansion');
 	yield(self, "scene_changed")
-	gui_controller.clock.update_labels()
+	if is_instance_valid(gui_controller.clock):
+		gui_controller.clock.update_labels()
 	input_handler.SystemMessage("Game Loaded")
 
 
