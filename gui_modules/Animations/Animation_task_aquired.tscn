@@ -24,7 +24,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/pos = Vector2( 0, 90 )
+shader_param/pos = Vector2( 0, 89.9999 )
 shader_param/mask = ExtResource( 8 )
 
 [sub_resource type="Shader" id=3]
@@ -42,7 +42,7 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
-shader_param/pos = Vector2( 0, -140 )
+shader_param/pos = Vector2( 0, 190.588 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 36
@@ -203,6 +203,7 @@ __meta__ = {
 }
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 2 )
 margin_left = 654.63
 margin_top = -75.1833

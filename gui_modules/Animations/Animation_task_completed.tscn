@@ -162,12 +162,12 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, -200 )
+shader_param/pos = Vector2( 0, 130.001 )
 shader_param/mask = ExtResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 2 )
-shader_param/pos = Vector2( 0, -210 )
+shader_param/pos = Vector2( 0, 127.501 )
 shader_param/mask = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -183,6 +183,7 @@ font_data = ExtResource( 1 )
 [node name="Control" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 __meta__ = {
 "_edit_horizontal_guides_": [ 288.253 ],
 "_edit_use_anchors_": false,
@@ -199,6 +200,7 @@ __meta__ = {
 visible = false
 margin_right = 1920.0
 margin_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -210,6 +212,7 @@ material = SubResource( 3 )
 margin_left = 19.533
 margin_right = 1900.54
 margin_bottom = 326.0
+mouse_filter = 2
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,6 +224,7 @@ margin_left = 537.0
 margin_top = 27.7148
 margin_right = 1383.0
 margin_bottom = 297.715
+mouse_filter = 2
 texture = ExtResource( 5 )
 stretch_mode = 1
 __meta__ = {
@@ -228,22 +232,28 @@ __meta__ = {
 }
 
 [node name="TextureRect3" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 1257.36
 margin_top = 38.2929
 margin_right = 1373.36
 margin_bottom = 288.293
+rect_rotation = -90.0002
 rect_pivot_offset = Vector2( 0.0506592, 236.723 )
+mouse_filter = 2
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect4" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 546.775
 margin_top = 38.0694
 margin_right = 662.775
 margin_bottom = 288.07
+rect_rotation = 90.0002
 rect_pivot_offset = Vector2( 115.886, 239.125 )
+mouse_filter = 2
 texture = ExtResource( 9 )
 flip_h = true
 __meta__ = {
@@ -256,7 +266,9 @@ margin_top = 84.9359
 margin_right = 1260.3
 margin_bottom = 284.936
 rect_min_size = Vector2( 1, 0 )
+rect_scale = Vector2( 1e-05, 1 )
 rect_pivot_offset = Vector2( 300.81, 98.9762 )
+mouse_filter = 2
 texture = ExtResource( 4 )
 stretch_mode = 6
 __meta__ = {
@@ -270,12 +282,14 @@ margin_left = 553.0
 margin_top = 40.0
 margin_right = 1367.0
 margin_bottom = 285.0
+mouse_filter = 2
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 669.0
 margin_top = 108.0
 margin_right = 1247.0
@@ -290,6 +304,7 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 676.0
 margin_top = 190.0
 margin_right = 1246.0

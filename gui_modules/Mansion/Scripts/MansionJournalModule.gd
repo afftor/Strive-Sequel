@@ -337,6 +337,7 @@ func Reward():
 	# input_handler.PlaySound("questcomplete")
 	var is_recount_reputation = false
 	var reputation_value = 0
+	var guild
 	for i in selectedquest.rewards:
 		match i.code:
 			'gold':
@@ -345,6 +346,7 @@ func Reward():
 				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].reputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 				# ResourceScripts.game_world.areas[selectedquest.area].factions[selectedquest.source].totalreputation += round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
 				reputation_value = round(i.value + i.value * variables.master_charm_quests_rep_bonus[int(ResourceScripts.game_party.get_master().get_stat('charm_factor'))])
+				guild = selectedquest.source
 				is_recount_reputation = true
 			'gear':
 				globals.AddItemToInventory(globals.CreateGearItem(i.item, i.itemparts))
@@ -372,7 +374,7 @@ func Reward():
 	input_handler.play_animation("quest_completed")
 	yield(get_tree().create_timer(3.5), 'timeout')
 	if is_recount_reputation:
-		globals.common_effects([{code = 'reputation', name = selectedquest.source, value = reputation_value, operant = '+'}])
+		globals.common_effects([{code = 'reputation', name = guild, value = reputation_value, operant = '+'}])
 
 func CancelQuest():
 	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'cancel_quest_confirm', tr("FORFEITQUESTQUESTION")])
