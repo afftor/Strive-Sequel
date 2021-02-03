@@ -1,3 +1,7 @@
+Fixed some new reputaiton related bugs
+Fixed characters not eating food
+Fixed some enemy skill issues
+Fixed clock not updating on game reload
 0.4.1a
 Fixed reputation not being gained
 Fixed some enemy names and skill issues
