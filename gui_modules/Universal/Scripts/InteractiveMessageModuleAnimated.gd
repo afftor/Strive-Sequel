@@ -21,7 +21,7 @@ func hide_dialogue(action = "hide"):
 	get_node("ShowPanel").visible = action == "hide"
 
 
-func open(scene, is_should_save = false):
+func open(scene):
 	if gui_controller.dialogue == null:
 		gui_controller.dialogue = self
 	if get_tree().get_root().get_node_or_null("ANIMLoot") && get_tree().get_root().get_node("ANIMLoot").is_visible():
@@ -56,7 +56,7 @@ func open(scene, is_should_save = false):
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
 	handle_loots(scene)
-	generate_scene_text(scene, is_should_save)
+	generate_scene_text(scene)
 	set_enemy(scene)
 	handle_scene_options(scene)
 
@@ -285,7 +285,6 @@ func close(transition = false):
 
 func cancel_skill_usage():
 	input_handler.active_character.restore_skill_charge(gui_controller.mansion.SkillModule.active_skill)
-	# TODO check if this method should open any window
 	close()
 
 func repeat():
@@ -460,7 +459,6 @@ func handle_scene_backgrounds(scene):
 		gui_controller.dialogue.get_node("CustomBackground").hide()
 
 
-#TODO Refactor this
 func handle_characters_sprites(scene):
 	if !scene.has("character"):
 		$ImagePanel.show()
@@ -502,8 +500,7 @@ func handle_loots(scene):
 		add_loot_options(scene)
 
 
-#TODO Refactor this
-func generate_scene_text(scene, is_should_save):
+func generate_scene_text(scene):
 	var scenetext = scene.text
 	var newtext = ''
 	for i in scenetext:
@@ -511,8 +508,8 @@ func generate_scene_text(scene, is_should_save):
 			i.previous_dialogue_option = [i.previous_dialogue_option]
 		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !globals.checkreqs(i.reqs):
 			continue
-		if ResourceScripts.game_progress.seen_dialogues.has(i.text) == false && is_should_save == false:
-			ResourceScripts.game_progress.seen_dialogues.append(i.text)
+		# if ResourceScripts.game_progress.seen_dialogues.has(i.text) == false && is_should_save == false:
+		ResourceScripts.game_progress.seen_dialogues.append(i.text)
 		if i.has("bonus_effects"):
 			globals.common_effects(i.bonus_effects)
 		newtext += tr(i.text)
@@ -560,7 +557,6 @@ func set_enemy(scene):
 		dialogue_enemy = scene.set_enemy
 
 
-#TODO Refactor this
 func handle_scene_options(scene):
 		var option_number = 1
 		var options = scene.options

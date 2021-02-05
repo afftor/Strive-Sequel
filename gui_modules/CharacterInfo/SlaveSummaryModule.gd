@@ -47,7 +47,6 @@ func change_slave(param):
 			else:
 				selected_person = ResourceScripts.game_party.characters[chars[current_idx + 1]]
 	input_handler.interacted_character = selected_person
-	# TODO Double check person references in modules
 	# CharMainModule.active_person = selected_person
 	CharMainModule.match_state()
 	CharMainModule.ClassesModule.get_node("ClassPanel").hide()
@@ -68,7 +67,6 @@ func update():
 func show_summary():
 	# input_handler.PreviousScene = input_handler.get_spec_node(input_handler.NODE_SLAVEMODULE)
 	input_handler.ClearContainer($professions)
-	# TODO Remove unnecessary person references
 	var person
 	selected_person = input_handler.interacted_character
 	person = selected_person

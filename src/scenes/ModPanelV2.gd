@@ -11,15 +11,6 @@ func _ready():
 	$Editor.connect("pressed", self, 'open_editor')
 
 
-
-
-
-# TODO Keeped as refferece will be deleted 
-# func _ready():
-	# populate_avail_mods()
-	# populate_l_mods()
-	# $Button.connect("pressed", self, 'open_editor')
-
 func open_editor():
 	var editor = load("res://editor tools/editor.tscn").instance()
 	get_parent().add_child(editor)
