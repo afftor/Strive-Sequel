@@ -1,20 +1,21 @@
 var data = {
 	final_operation_start = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("FINAL_OPERATON_START"), reqs = []},
+			{text = "FINAL_OPERATON_START", reqs = []},
 		],
 		options = [
 			{
 				code = 'final_operation_1',
-				text = tr("FINAL_OPERATON_START_OPTION_1"),
+				text = "FINAL_OPERATON_START_OPTION_1",
 				reqs = [],
 				dialogue_argument = 1
 			},
 			{
 				code = 'final_operation_2',
-				text = tr("FINAL_OPERATON_START_OPTION_2"),
+				text = "FINAL_OPERATON_START_OPTION_2",
 				reqs = [],
 				dialogue_argument = 2
 			},
@@ -22,28 +23,29 @@ var data = {
 	},
 	final_operation_1 = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("FINAL_OPERATON_1"), reqs = [], previous_dialogue_option = 1},
-			{text = tr("FINAL_OPERATON_3"), reqs = [], previous_dialogue_option = 2},
+			{text = "FINAL_OPERATON_1", reqs = [], previous_dialogue_option = 1},
+			{text = "FINAL_OPERATON_3", reqs = [], previous_dialogue_option = 2},
 		],
 		options = [
 			{
 				code = 'final_operation_1',
-				text = tr("FINAL_OPERATON_OPTION_1"),
+				text = "FINAL_OPERATON_OPTION_1",
 				reqs = [],
 				dialogue_argument = 2,
 				remove_after_first_use = true
 			},
 			{
 				code = 'final_operation_4',
-				text = tr("FINAL_OPERATON_OPTION_2"),
+				text = "FINAL_OPERATON_OPTION_2",
 				reqs = [],
 				dialogue_argument = 3
 			},
 			{
 				code = 'final_operation_4',
-				text = tr("FINAL_OPERATON_OPTION_3"),
+				text = "FINAL_OPERATON_OPTION_3",
 				reqs = [],
 				dialogue_argument = 4
 			},
@@ -51,28 +53,29 @@ var data = {
 	},
 	final_operation_2 = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("FINAL_OPERATON_2"), reqs = [], previous_dialogue_option = 2},
-			{text = tr("FINAL_OPERATON_3"), reqs = [], previous_dialogue_option = 3},
+			{text = "FINAL_OPERATON_2", reqs = [], previous_dialogue_option = 2},
+			{text = "FINAL_OPERATON_3", reqs = [], previous_dialogue_option = 3},
 		],
 		options = [
 			{
 				code = 'final_operation_2',
-				text = tr("FINAL_OPERATON_OPTION_1"),
+				text = "FINAL_OPERATON_OPTION_1",
 				reqs = [],
 				dialogue_argument = 3,
 				remove_after_first_use = true
 			},
 			{
 				code = 'final_operation_4',
-				text = tr("FINAL_OPERATON_OPTION_2"),
+				text = "FINAL_OPERATON_OPTION_2",
 				reqs = [],
 				dialogue_argument = 4
 			},
 			{
 				code = 'final_operation_4',
-				text = tr("FINAL_OPERATON_OPTION_3"),
+				text = "FINAL_OPERATON_OPTION_3",
 				reqs = [],
 				dialogue_argument = 5
 			},
@@ -80,12 +83,13 @@ var data = {
 	},
 	final_operation_4 = {
 		image = null,
+		character = "duncan",
 		tags = ['master_translate'],
 		text = [
-			{text = tr("FINAL_OPERATON_4"), reqs = []},
+			{text = "FINAL_OPERATON_4", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = tr("DIALOGUELEAVE"), reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
 		],
 	},
 }

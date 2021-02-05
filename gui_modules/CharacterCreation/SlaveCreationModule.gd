@@ -34,7 +34,6 @@ func build_bodyparts():
 	$ScrollContainer/HBoxContainer/bodyparts2/type_label.visible = get_parent().mode != 'master'
 	$ScrollContainer/HBoxContainer/bodyparts2/slave_class.visible = get_parent().mode != 'master'
 
-	# TODO Rework part with current body part and preserved settings
 	var racedata = races.racelist[person.get_stat('race')].bodyparts
 	for i in get_parent().bodypartsarray:
 		$ScrollContainer/HBoxContainer/bodyparts.get_node(i).clear()

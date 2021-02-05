@@ -1033,7 +1033,7 @@ func combat_defeat():
 	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
 		gui_controller.dialogue.close()
 	if exploration_node != null && active_location.has('progress'):
-		exploration_node.enter_level(globals.current_level)
+		exploration_node.open_location_actions()
 
 func character_boss_defeat():
 	var character_race = []

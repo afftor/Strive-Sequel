@@ -3,13 +3,14 @@ var data = {
 		variations = [
 			{
 				image = null,
+				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_1",
 				reqs = [],
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',
-						text = tr("INITIATE_HIDEOUT_ATTACK_OFCOURSE"),
+						text = "INITIATE_HIDEOUT_ATTACK_OFCOURSE",
 						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1
@@ -18,13 +19,14 @@ var data = {
 			},
 			{
 				image = null,
+				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_2",
 				reqs = [],
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',
-						text = tr("INITIATE_HIDEOUT_ATTACK_OFCOURSE"),
+						text = "INITIATE_HIDEOUT_ATTACK_OFCOURSE",
 						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1
@@ -35,26 +37,27 @@ var data = {
 	},
 	initiate_hideout_attack_3 = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("INITIATE_HIDEOUT_ATTACK_3"), reqs = []},
+			{text = "INITIATE_HIDEOUT_ATTACK_3", reqs = []},
 		],
 		options = [
 			{
 				code = 'initiate_hideout_attack_4',
-				text = tr("INITIATE_HIDEOUT_ATTACK_3_OPTION_1"),
+				text = "INITIATE_HIDEOUT_ATTACK_3_OPTION_1",
 				reqs = [],
 				dialogue_argument = 1
 			},
 			{
 				code = 'initiate_hideout_attack_4',
-				text = tr("INITIATE_HIDEOUT_ATTACK_3_OPTION_2"),
+				text = "INITIATE_HIDEOUT_ATTACK_3_OPTION_2",
 				reqs = [],
 				dialogue_argument = 2
 			},
 			{
 				code = 'initiate_hideout_attack_5',
-				text = tr("INITIATE_HIDEOUT_ATTACK_3_OPTION_3"),
+				text = "INITIATE_HIDEOUT_ATTACK_3_OPTION_3",
 				reqs = [],
 				dialogue_argument = 3
 			},
@@ -62,20 +65,21 @@ var data = {
 	},
 	initiate_hideout_attack_6 = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("INITIATE_HIDEOUT_ATTACK_6"), reqs = []},
+			{text = "INITIATE_HIDEOUT_ATTACK_6", reqs = []},
 		],
 		options = [
 			{
 				code = 'initiate_hideout_attack_3',
-				text = tr("INITIATE_HIDEOUT_ATTACK_OPTION_1"),
+				text = "INITIATE_HIDEOUT_ATTACK_OPTION_1",
 				reqs = [],
 				dialogue_argument = 1
 			},
 			{
 				code = 'initiate_hideout_attack_5',
-				text = tr("INITIATE_HIDEOUT_ATTACK_OPTION_2"),
+				text = "INITIATE_HIDEOUT_ATTACK_OPTION_2",
 				reqs = [],
 				dialogue_argument = 2
 			},
@@ -83,74 +87,79 @@ var data = {
 	},
 	initiate_hideout_attack_4 = {
 		image = null,
+		character = "duncan",
 		tags = ['master_translate'],
 		text = [
-			{text = tr("INITIATE_HIDEOUT_ATTACK_4"), reqs = []},
+			{text = "INITIATE_HIDEOUT_ATTACK_4", reqs = []},
 		],
 		options = [
 			{
 				code = 'fight',
-				text = tr("DIALOGUEFIGHTOPTION"),
+				text = "DIALOGUEFIGHTOPTION",
 				reqs = [],
 			},
 		]
 	},
 	initiate_hideout_attack_5 = {
 		image = null,
+		character = "duncan",
 		tags = ['master_translate'],
 		text = [
-			{text = tr("INITIATE_HIDEOUT_ATTACK_5"), reqs = []},
+			{text = "INITIATE_HIDEOUT_ATTACK_5", reqs = []},
 		],
 		options = [
 			{
 				code = 'fight',
-				text = tr("DIALOGUEFIGHTOPTION"),
+				text = "DIALOGUEFIGHTOPTION",
 				reqs = [],
 			},
 		]
 	},
 	guild_attack_on_hideout_1 = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("GUILD_ATTACK_ON_HIDEOUT_1"), reqs = []},
+			{text = "GUILD_ATTACK_ON_HIDEOUT_1", reqs = []},
 		],
 		options = [
 			{
 				code = 'guild_attack_on_hideout_2',
-				text = tr("DIALOGUECONTINUE"),
-                reqs = [],
-                dialogue_argument = 1
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				dialogue_argument = 1
 			},
 		]
 	},
 	guild_attack_on_hideout_2 = {
 		image = null,
+		character = "duncan",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = tr("GUILD_ATTACK_ON_HIDEOUT_2"), reqs = []},
+			{text = "GUILD_ATTACK_ON_HIDEOUT_2", reqs = []},
 		],
 		options = [
 			{
 				code = 'guild_attack_on_hideout_3',
-				text = tr("DIALOGUECONTINUE"),
-                reqs = [],
-                dialogue_argument = 1
+				text = "DIALOGUECONTINUE",
+				reqs = [],
+				dialogue_argument = 1
 			},
 		]
-    },
-    
-    guild_attack_on_hideout_3 = {
+	},
+	
+	guild_attack_on_hideout_3 = {
 		variations = [
 			{
 				image = null,
+				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "GUILD_ATTACK_ON_HIDEOUT_4_1",
 				reqs = [],
 				options = [
 					{
 						code = 'guild_attack_on_hideout_4_3',
-						text = tr("DIALOGUECONTINUE"),
+						text = "DIALOGUECONTINUE",
 						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1
@@ -159,13 +168,14 @@ var data = {
 			},
 			{
 				image = null,
+				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "GUILD_ATTACK_ON_HIDEOUT_4_2",
 				reqs = [],
 				options = [
 					{
 						code = 'guild_attack_on_hideout_4_3',
-						text = tr("DIALOGUECONTINUE"),
+						text = "DIALOGUECONTINUE",
 						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1
@@ -173,20 +183,21 @@ var data = {
 				]
 			}
 		]
-    },
+	},
 
-    guild_attack_on_hideout_4_3 = {
+	guild_attack_on_hideout_4_3 = {
 		image = null,
+		character = "duncan",
 		tags = ['master_translate'],
 		text = [
-			{text = tr("GUILD_ATTACK_ON_HIDEOUT_4_3"), reqs = []},
+			{text = "GUILD_ATTACK_ON_HIDEOUT_4_3", reqs = []},
 		],
 		options = [
 			{
 				code = 'close',
-				text = tr("DIALOGUECLOSE"),
+				text = "DIALOGUECLOSE",
 				reqs = [],
 			},
 		]
-    },
+	},
 }

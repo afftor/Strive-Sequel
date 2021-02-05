@@ -9,7 +9,6 @@ var person
 func update(person = null):
 	if person == null:
 		person = input_handler.interacted_character
-		# TODO Rework person reference
 		if get_parent().SummaryModule.selected_person != null:
 			person = get_parent().SummaryModule.selected_person
 		if (

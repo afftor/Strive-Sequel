@@ -355,7 +355,6 @@ func tooltipeffects():
 #		text += '}\n'
 	return text
 
-# TODO Remove old tooltip methids
 
 func tooltip(targetnode):
 	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
