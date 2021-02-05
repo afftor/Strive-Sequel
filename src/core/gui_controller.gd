@@ -1,5 +1,6 @@
 extends Node
 
+# These vars are holding the references to the corresponding scenes.
 var mansion
 var nav_panel
 var clock
@@ -17,16 +18,40 @@ var char_creation
 var dialogue
 
 
-var current_screen
-var previous_screen
-var windows_opened = []
-var window_button_connections = {}
+var current_screen #reference to the current scene visible (Mansion, Exploration, Inventory, etc.).
+var previous_screen #reference to the just-closed scene (Mansion, Exploration, etc.). Sometimes needed gui_controller to handle modules visibility.
+var windows_opened = [] #an array of references to opened sub-modules (MansionJournal, GameMenu, etc.)
+var window_button_connections = {} #a dictionary that contains pairs of sub-modules and corresponding buttons. A depth explanation can be found below.
 
-var is_dialogue_just_started = true
-var dialogue_window_type = 1
-var dialogue_txt = ''
+var is_dialogue_just_started = true #a helper member which helps to handle InteractiveMessage module rendering.
+var dialogue_window_type = 1 #holds an InteractiveMessage module type. (There are two different scenes for the that InteractiveMessageModuleAnimated.tscn and QuestDialogue.tscn)
+var dialogue_txt = '' #holding text from previous dialogue scene type in case this type needs to be changed while dialogue still not finished.
 
-signal screen_changed
+signal screen_changed # You can call this if you need to force mudules update
+
+# Visibility of submodules of main scenes with a lot of submodules (Mansion, Inventory, etc.) is handled by corresponding main modules.
+# Basically, it is a set of switch statements in main modules that checks whether or not some modules should be updated or visible based on certain conditions.
+
+# Ex. 
+# CharInfoMainModule.gd
+
+# func match_state():
+# 	$CloseButton.visible = !ClassesModule.get_node("ClassPanel").is_visible()
+# 	match char_module_state:
+# 		"default":
+# 			DetailsModule.hide()
+# 			DietModule.hide()
+# 			ClassesModule.hide()
+# 			SummaryModule.update_buttons()
+# 			DetailsModule.get_node("SexTraitsPanel").hide()
+# 		"class":
+# 			DetailsModule.hide()
+# 			DietModule.hide()
+# 			ClassesModule.class_category("all")
+# 			ClassesModule.show()
+# 			DetailsModule.get_node("SexTraitsPanel").hide()
+# 		"details":
+# 			...
 
 
 func _ready():
@@ -201,6 +226,17 @@ func submodules_handler(submodules):
 	submodules.erase(last)
 	return submodules.size()
 
+
+
+# There are the toggle buttons are used in some places where the logic of rendering is quite complicated. 
+# Because there no easy way to handle the "pressed" state of regular buttons, the Toggle buttons used.
+# When the toggle button pressed, “Window_button_connections” dictionary saves the opened scene as a key and button as a value. 
+# This dictionary is used by methods in other scenes to handle opening and closing windows. (Ex. ExplorationModule.gd set_area_btn_pressed()). 
+# The idea is to check if the just pressed button is the same which was pressed before that. If so, the state of the button sets as “not pressed” which automatically changes the toggle state. 
+# Any “toggle” signal of these buttons connected to corresponding methods that set the visibility of a scene depending on the “pressed” state (pressed = visible, unpressed = not visible)
+
+
+	
 func win_btn_connections_handler(pressed, window, button = null):
 	if pressed:
 		window_button_connections[window] = button
