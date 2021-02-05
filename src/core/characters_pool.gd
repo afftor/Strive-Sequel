@@ -25,17 +25,19 @@ func get_char_by_id(id):
 	if ResourceScripts.game_party.characters.has(id): return ResourceScripts.game_party.characters[id]
 	if characters.has(id): return characters[id]
 
-func cleanup():
+func cleanup(on_exit = false):
 	for id in characters.keys():
-		if !characters[id].is_active:
+		if !characters[id].is_active or on_exit:
 			characters[id].clean_effects()
 #			if state.characters.has(id):
 #				state.character_order.erase(id)
 #				input_handler.slave_list_node.rebuild()
+			characters[id].clean_references()
 			remove_id(id)
 	for id in ResourceScripts.game_party.characters.keys():
-		if !ResourceScripts.game_party.characters[id].is_active:
+		if !ResourceScripts.game_party.characters[id].is_active or on_exit:
 			ResourceScripts.game_party.characters[id].clean_effects()
+			ResourceScripts.game_party.characters[id].clean_references()
 			ResourceScripts.game_party.character_order.erase(id)
 			input_handler.slave_list_node.rebuild()
 			remove_id(id)

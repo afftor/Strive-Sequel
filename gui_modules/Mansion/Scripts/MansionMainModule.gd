@@ -774,7 +774,7 @@ func test_mode():
 		# character.create('Fairy', 'futa', 'random')
 		# characters_pool.move_to_state(character.id)
 		
-		character = ResourceScripts.scriptdict.class_slave.new()
+#		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
 

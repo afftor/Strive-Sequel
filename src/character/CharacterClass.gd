@@ -56,6 +56,16 @@ func rebuild_parents():
 	effects.parent = self
 	food.parent = self
 
+
+func clean_references():
+	statlist.parent = null
+	xp_module.parent = null
+	equipment.parent = null
+	skills.parent = null
+	travel.parent = null
+	effects.parent = null
+	food.parent = null
+
 #component functions tunneling
 func base_exp_set(value):
 	xp_module.base_exp = value

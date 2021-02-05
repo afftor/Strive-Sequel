@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 
 const category = 'tools'
 const code = 'milker'
