@@ -63,18 +63,19 @@ func build_accessible_locations():
 	for i in sorted_locations:
 		var newseparator = $VSeparator.duplicate()
 		var newbutton = input_handler.DuplicateContainerTemplate(nav)
+		nav.add_child(newseparator)
 		if i == "Mansion":
 			newbutton.text = "Mansion"
 			newbutton.connect("pressed", self, "return_to_mansion")
 			# newbutton.set_meta("data", i)
-			nav.add_child(newseparator)
 			newseparator.visible = true
 			newbutton.pressed = gui_controller.current_screen == gui_controller.mansion
 			newbutton.toggle_mode = !gui_controller.current_screen == gui_controller.mansion
 			continue
 		if i != sorted_locations[sorted_locations.size() - 1]:
-			nav.add_child(newseparator)
 			newseparator.visible = true
+		else:
+			newseparator.visible = false
 		newbutton.text = ResourceScripts.world_gen.get_location_from_code(i).name
 		newbutton.connect("pressed", self, "select_location", [i])
 		newbutton.set_meta("data", i)
@@ -82,10 +83,12 @@ func build_accessible_locations():
 
 
 func select_location(location):
+	pass
 	if gui_controller.exploration == null:
 		gui_controller.exploration = input_handler.get_spec_node(input_handler.NODE_EXPLORATION, null, false, false)
 	input_handler.selected_location = location
 	input_handler.active_location = ResourceScripts.world_gen.get_location_from_code(location)
+	
 	if gui_controller.current_screen == gui_controller.mansion:
 		input_handler.PlaySound("door_open")
 		gui_controller.previous_screen = gui_controller.current_screen
@@ -96,8 +99,9 @@ func select_location(location):
 	else:
 		ResourceScripts.core_animations.BlackScreenTransition(0.5)
 		yield(get_tree().create_timer(0.5), 'timeout')
+	
 	if location in ResourceScripts.game_world.capitals:
-		gui_controller.exploration.open_city(location)
+		gui_controller.exploration.open_city(location)#
 		gui_controller.clock.raise()
 		gui_controller.clock.show()
 	else:
@@ -112,6 +116,7 @@ func select_location(location):
 			return
 		else:
 			gui_controller.exploration.open_location(data)
+
 	gui_controller.exploration.show()
 	build_accessible_locations()
 	gui_controller.close_all_closeable_windows()

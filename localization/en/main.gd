@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 var TranslationDict = {
 	#Buildings
 	MANSION = "Aliron (Mansion)",

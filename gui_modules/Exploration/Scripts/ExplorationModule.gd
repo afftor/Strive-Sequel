@@ -165,7 +165,7 @@ func open_city(city):
 	if $GuildBG.is_visible():
 		ResourceScripts.core_animations.FadeAnimation($GuildBG, 0.3)
 		yield(get_tree().create_timer(0.3), "timeout")
-	$GuildBG.hide()
+		$GuildBG.hide()
 
 
 

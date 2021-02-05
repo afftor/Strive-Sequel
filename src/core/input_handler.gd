@@ -239,10 +239,21 @@ func update_progress_data(field, value):
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		globalsettings.window_size = OS.window_size
-		globalsettings.window_pos = OS.window_position
-		settings_save(globalsettings)
-		get_tree().quit()
+		quit()
+#		globalsettings.window_size = OS.window_size
+#		globalsettings.window_pos = OS.window_position
+#		settings_save(globalsettings)
+#		get_tree().quit()
+
+
+func quit():
+	characters_pool.cleanup(true)
+	globalsettings.window_size = OS.window_size
+	globalsettings.window_pos = OS.window_position
+	settings_save(globalsettings)
+	get_tree().get_root().queue_free()
+	get_tree().quit()
+
 
 func _init():
 	#Storing available translations
@@ -1249,10 +1260,6 @@ func repeat_string(ch, n):
 	for i in range(n): res += ch
 	return res
 
-func quit():
-	globalsettings.window_size = OS.window_size
-	globalsettings.window_pos = OS.window_position
-	get_tree().quit()
 
 func get_active_party():
 	var res = []

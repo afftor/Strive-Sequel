@@ -75,6 +75,10 @@ func _ready():
 	autoskill_dummy.displaynode.animation_node = CombatAnimations
 	autoskill_dummy.displaynode.fighter = autoskill_dummy
 	autoskill_dummy.npc_reference = 'combat_global'
+	#test fix
+	add_child(autoskill_dummy.displaynode)
+	autoskill_dummy.displaynode.visible = false
+	#----
 	battlefield.resize(14)
 	for i in range(1,13):
 		battlefield[i] = null
