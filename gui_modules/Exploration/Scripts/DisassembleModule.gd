@@ -252,7 +252,7 @@ func gear_tooltip(data, item = null):
 	else:
 		iconnode.texture = input_handler.loadimage(item.icon, 'icons')
 	
-	textnode.bbcode_text = item.description #TODO Change this for modular item description
+	textnode.bbcode_text = item.description
 	textnode2.bbcode_text = text
 	textnode2.bbcode_text += '\n\n\n'
 	yield(get_tree(), 'idle_frame')

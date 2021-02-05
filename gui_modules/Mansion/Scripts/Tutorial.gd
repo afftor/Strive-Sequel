@@ -164,8 +164,6 @@ func show_tutorial_list(tut):
 		if !b.has_meta("tut"):
 			continue
 		b.pressed = b.get_meta("tut") == tut
-	# TODO Unnecessary variables dicts etc
-	# TODO Optimize match section (delete it to make code more compact)
 	var img = {}
 	var size = 0
 	match tut:

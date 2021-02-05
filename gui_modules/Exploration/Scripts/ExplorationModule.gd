@@ -1040,7 +1040,7 @@ func enter_dungeon():
 
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
-	if ! is_last_level:
+	if !is_last_level:
 		newbutton = input_handler.DuplicateContainerTemplate(
 			$LocationGui/DungeonInfo/ScrollContainer/VBoxContainer
 		)
