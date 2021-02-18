@@ -46,7 +46,7 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 		match t_skill.target:
 			'self':
 				var target_dir = {target = app_obj.position, quality = 1.0}
-				var act_targets = input_handler.combat_node.CalcuateTargets(t_skill, app_obj)
+				var act_targets = input_handler.combat_node.CalculateTargets(t_skill, app_obj)
 				if act_targets.size() == 0: 
 					target_dir.quality = 0
 					target_array.push_back(target_dir)
@@ -64,7 +64,7 @@ func calculate_target_list(hide_ignore = false): #utility checks and targets cal
 				var pos_targets = input_handler.combat_node.get_allied_targets(app_obj)
 				for target in pos_targets:
 					var target_dir = {target = target.position, quality = 1.0}
-					var act_targets = input_handler.combat_node.CalcuateTargets(t_skill, target)
+					var act_targets = input_handler.combat_node.CalculateTargets(t_skill, target)
 					if act_targets.size() == 0: 
 						target_dir.quality = 0
 						target_array.push_back(target_dir)
