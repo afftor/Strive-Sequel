@@ -460,6 +460,8 @@ func handle_scene_backgrounds(scene):
 
 
 func handle_characters_sprites(scene):
+	#i do not understand conditions and sequencing of most of code in cases of characters do exist
+	#so i think that there are some logical errors here  
 	if !scene.has("character"):
 		$ImagePanel.show()
 		$CharacterImage.hide()
@@ -506,7 +508,7 @@ func generate_scene_text(scene):
 	for i in scenetext:
 		if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
 			i.previous_dialogue_option = [i.previous_dialogue_option]
-		if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option) || !globals.checkreqs(i.reqs):
+		if (i.has("previous_dialogue_option") && !(previous_dialogue_option in i.previous_dialogue_option)) || !globals.checkreqs(i.reqs):
 			continue
 		# if ResourceScripts.game_progress.seen_dialogues.has(i.text) == false && is_should_save == false:
 		ResourceScripts.game_progress.seen_dialogues.append(i.text)
@@ -564,7 +566,7 @@ func handle_scene_options(scene):
 			# yield(get_tree(), 'idle_frame')
 			if i.has("previous_dialogue_option") && typeof(i.previous_dialogue_option) != TYPE_ARRAY:
 				i.previous_dialogue_option = [i.previous_dialogue_option]
-			if (i.has("previous_dialogue_option") && !previous_dialogue_option in i.previous_dialogue_option):
+			if (i.has("previous_dialogue_option") && !(previous_dialogue_option in i.previous_dialogue_option)):
 				continue
 			if i.has('remove_after_first_use') && ResourceScripts.game_progress.selected_dialogues.has(i.text):
 				continue
@@ -605,8 +607,8 @@ func handle_scene_options(scene):
 					newbutton.connect("pressed", self, "hide")
 			elif scene.tags.has("custom_effect"):
 				newbutton.connect('pressed', ResourceScripts.custom_effects, i.code)
-			elif scene.tags.has("dialogue_scene") && !i.code in ['close','quest_fight']:
-				newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])		
+			elif scene.tags.has("dialogue_scene") && !(i.code in ['close','quest_fight']):
+				newbutton.connect('pressed', self, 'dialogue_next', [i.code, i.dialogue_argument])
 			else:
 				var args
 				if i.has('args') == true: args = i.args
@@ -628,3 +630,17 @@ func handle_scene_options(scene):
 				newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])
 			newbutton.disabled = disable
 			option_number += 1
+
+
+var counters = {}
+func operate_counter(c_name, c_op):
+	if !counters.has(c_name): counters[c_name] = 0
+	match c_op:
+		'+': counters[c_name] += 1
+		'-': counters[c_name] -= 1
+		_: counters[c_name] = c_op
+
+
+func counter_cond(c_name, c_op, value):
+	if !counters.has(c_name): return false
+	return input_handler.operate(c_op, counters[c_name], value)
