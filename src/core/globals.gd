@@ -1228,6 +1228,8 @@ func common_effects(effects):
 						input_handler.update_progress_data("ero_scenes", image)
 					elif i.has("scene_type") && i.scene_type == "story_scene":
 						input_handler.update_progress_data("story_scenes", image)
+			'dialogue_counter':
+				gui_controller.dialogue.operate_counter(i.name, i.op)
 			'unlock_class':
 				if !ResourceScripts.game_progress.unlocked_classes.has(i.name):
 					ResourceScripts.game_progress.unlocked_classes.append(i.name)
@@ -1371,6 +1373,8 @@ func valuecheck(dict):
 		'timed_option':
 			return ResourceScripts.game_progress.if_time_passed(dict.value, dict.quest)
 		'current_guild':
-			return ((dict.value == input_handler.active_faction.code) && dict.check)
+			return ((dict.value == input_handler.active_faction.code) == dict.check)
 		'has_faction_upgrade':
-			return dict.check && input_handler.active_faction.upgrades.has(dict.value)
+			return dict.check == input_handler.active_faction.upgrades.has(dict.value)
+		'local_counter':
+			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, dict.value) == dict.check
