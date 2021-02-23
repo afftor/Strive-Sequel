@@ -121,6 +121,8 @@ var sprites = {
 	aire = load("res://assets/images/sprites/aire.png"),
 	xari = load("res://assets/images/sprites/xari.png"),
 	ginny = load("res://assets/images/sprites/ginny.png"),
+	kurdan = load("res://assets/images/sprites/kurdan.png"),
+	demon_female = load("res://assets/images/sprites/demon_female.png"),
 	}
 
 var dynamic_backgrounds = {

@@ -1,5 +1,5 @@
 var data = {
-    fred_return_to_duncan_1 = {
+	fred_return_to_duncan_1 = {
 		variations = [
 			# Var 1
 			{reqs = [{type = 'decision', value = 'brought_fred', check = true}],
@@ -7,8 +7,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "RETURNTODUNCAN_IF_FRED", reqs = []}],
 			options = [
-            {code = 'fred_return_to_duncan_answer_1', text = "RETURNTODUNCAN_IF_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-            ],
+			{code = 'fred_return_to_duncan_answer_1', text = "RETURNTODUNCAN_IF_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			],
 			},
 			# Var 2
 			{reqs = [{type = 'decision', value = 'kill_fred', check = true}],
@@ -16,9 +16,9 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "RETURNTODUNCAN_IF_NOT_FRED", reqs = []}],
 			options = [
-            {code = 'fred_return_to_duncan_2', text = "RETURNTODUNCAN_IF_NOT_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-            {code = 'fred_return_to_duncan_2', text = "RETURNTODUNCAN_IF_NOT_FRED_QUESTION2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
-            ],
+			{code = 'fred_return_to_duncan_2', text = "RETURNTODUNCAN_IF_NOT_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			{code = 'fred_return_to_duncan_2', text = "RETURNTODUNCAN_IF_NOT_FRED_QUESTION2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},
+			],
 			},
 			# Var 3
 			{reqs = [], #{type = 'decision', value = 'bribe_from_fred_taken', check = true}
@@ -29,21 +29,22 @@ var data = {
 			{code = 'fred_return_to_duncan_answer_1', text = "RETURNTODUNCAN_IF_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
 			},
 		]
-    },
+	},
 
-    fred_return_to_duncan_2 = {
+	fred_return_to_duncan_2 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "RETURNTODUNCAN2", reqs = []}
 		],
+		bonus_effects = [{code = 'decision', value = 'HelpSigmundAvailable'}],
 		options = [
-			{code = "fred_return_to_duncan_answer_1", text = "RETURNTODUNCAN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
+				{code = "fred_return_to_duncan_answer_1", text = "RETURNTODUNCAN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]
-    },
-    
-    fred_return_to_duncan_answer_1 = {
+	},
+	
+	fred_return_to_duncan_answer_1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -54,9 +55,9 @@ var data = {
 			{code = "fred_return_to_duncan_answer_2", text = "RETURNTODUNCAN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "fred_return_to_duncan_answer_2", text = "RETURNTODUNCAN_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 		]
-    },
+	},
 
-    fred_return_to_duncan_answer_2 = {
+	fred_return_to_duncan_answer_2 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -66,9 +67,9 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = []},
 		]
-    },
+	},
 
-    intermission_2_intro_1 = {
+	intermission_2_intro_1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -78,9 +79,9 @@ var data = {
 		options = [
 			{code = "intermission_2_intro_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		]
-    },
+	},
 
-    intermission_2_intro_2 = {
+	intermission_2_intro_2 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -112,8 +113,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "INTERMISSION2_IF_AIRE_DEAD", reqs = []}],
 			options = [
-            {code = 'close', text = "DIALOGUECLOSE", reqs = []},
-            ],
+			{code = 'close', text = "DIALOGUECLOSE", reqs = []},
+			],
 			},
 			# Var 2
 			{reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
@@ -121,8 +122,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "INTERMISSION2_IF_AIRE_ALIVE", reqs = []}],
 			options = [
-            {code = 'intermission_2_aire_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-            ],
+			{code = 'intermission_2_aire_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			],
 			},
 		]
 	},
@@ -135,8 +136,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "INTERMISSION2_IF_AIRE_RAPED1", reqs = []}],
 			options = [
-            {code = 'intermission_2_aire_raped', text = "DIALOGUECONTINIE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-            ],
+			{code = 'intermission_2_aire_raped', text = "DIALOGUECONTINIE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			],
 			},
 			# Var 2
 			{reqs = [{type = 'decision', value = 'aire_raped', check = false}],
@@ -144,8 +145,8 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "INTERMISSION2_IF_AIRE_NOT_RAPED1", reqs = []}],
 			options = [
-            {code = 'intermission_2_aire_not_raped_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
-            ],
+			{code = 'intermission_2_aire_not_raped_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
+			],
 			},
 		]
 	},

@@ -3420,7 +3420,144 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 	SEARCH_DUNGEON_19_3 = """- Oh? Well if you just wanted to see an elf chained up you could've just come by, we get those in from time to time. Well, the offer is still open if you change your mind, come visit me if you do.""",
 	SEARCH_DUNGEON_OPTION_48 = """Thanks Amelia""",
 
+	# HELP SIGMUND
+	HELP_SIGMUND_OPTION_0 = """I've been asked to help you""",
+	
+	HELP_SIGMUND_START = """- Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.""",
+	HELP_SIGMUND_OPTION_1 = """One shouldn't be a problem, should it?""",
+	HELP_SIGMUND_OPTION_2 = """Something special about this one?""",
+	HELP_SIGMUND_1 = """- It's not, but it's actually da major one for the magic ore used for enchantable alloys. Dis is not a wide known information, but it seems da rebels knew where to strike.""",
+	HELP_SIGMUND_OPTION_3 = """Will be glad to help""",
+	HELP_SIGMUND_OPTION_4 = """Anything goes as long as I get to beat more rebels""",
+	HELP_SIGMUND_OPTION_5 = """Hope I'll get some reward from it.""",
+	HELP_SIGMUND_2 = """- Yah, it wouldn't be da problem, but it's actually da major one for the magic ore used for enchantable alloys. Dis is not a wide known information, but it seems da rebels knew where to strike.""",
+	HELP_SIGMUND_3 = """- Great, will mark it on ya map.""",
+	HELP_SIGMUND_4 = """- Argh, darn, fine, as long as you deal with it.""",
+	
+	# MINES ARRIVAL
+	MINES_ARRIVAL_START = """A few hundreds feet away from it you find a half-abandoned post. As you approach it you are met by one of the men, who appears to be a local miner, who seems relieved to meet you. 
 
+- Hello, [Sir]! You must've been sent by the guild. I'm sorry, but the mine was overtaken by rebels a few days ago and we were driven out with few people taken as prisoners who refused to leave.
+""",
+	MINES_ARRIVAL_OPTION_1 = """What can you tell me about the mines?""",
+	MINES_ARRIVAL_OPTION_2 = """What the rebels came for?""",
+	MINES_ARRIVAL_OPTION_3 = """I'll deal with it, you can stay back""",
+	MINES_ARRIVAL_1 = """- Well, I've only been working around here for a few last months. Seems to be quite old and deep but I was mostly working at upper floors.""",
+	MINES_ARRIVAL_2 = """- I dunno, it's not like they had to explain themselves. I've seen some weird folks leaving the mine and loading some crates on the cart though""",
+	MINES_ARRIVAL_OPTION_4 = """What was so weird about it?""",
+	MINES_ARRIVAL_OPTION_5 = """Who was leading them?""",
+	MINES_ARRIVAL_OPTION_6 = """That's enough about them""",
+	MINES_ARRIVAL_3 = """- It was during the night and they looked like they were trying to stay hidden from others, didn't light any torches or lamps.""",
+	MINES_ARRIVAL_4 = """- It was some guy in a robe with a large hood. He was only ordering others around and it felt like he didn't want to show his face otherwise. I think even rebels were somewhat afraid of him.""",
+	MINES_ARRIVAL_5 = """- Yeah, the faster you deal with them, the better.""",
+	MINES_ARRIVAL_6 = """- That's great, I knew we could rely on you. I'll let others know, if you don't mind. 
+
+The man disappears in the opposite direction and you proceed to the mine's entrance.""",
+
+	# HALF DUNGEON EXPLORED
+	HALF_DUNGEON_EXPLORED_START = """As you walk through the shaft you suddenly realize that someone is coming from behind. As you lay in ambush to meet the new enemy a lone orc casually walks through. 
+
+- Oh, Hello. I'm not an enemy, my name is Kurdan. Pleasure to meet you stranger. I seem a bit lost, would you mind giving me a direction?""",
+	HALF_DUNGEON_EXPLORED_OPTION_1 = """You look suspicious""",
+	HALF_DUNGEON_EXPLORED_OPTION_2 = """What are you doing here""",
+	HALF_DUNGEON_EXPLORED_1 = """- I've been invited to a gathering of Erebus followers and those who are interested. Look...
+
+He shows you a dull, yet unusual metal bracelet hanging from his wrist.
+
+- This is a proof of invitation and my involvement. I thought I might give it a try since it's been difficult to survive as a mage practitioner in our lands recently. But it seems this country has some complex issues too.
+""",
+
+	HALF_DUNGEON_EXPLORED_OPTION_3 = """What's been going on in your lands?""",
+	HALF_DUNGEON_EXPLORED_OPTION_4 = """Does magic really worth leaving your country?""",
+	HALF_DUNGEON_EXPLORED_OPTION_5 = """I know nothing about this""",
+	HALF_DUNGEON_EXPLORED_2 = """- Huh, I guess the word didn't spread around fast enough yet. Magic is not welcome by orcish authorities anymore. The reason for that is the ongoing war against the Thoth. Because of that anyone practicing sorcery is viewed as a threat. Most unfortunate circumstances.""",
+	HALF_DUNGEON_EXPLORED_3 = """- It's not about magic... Not entirely at least. You see, learning magic gave me a great inside on the nature of things. Not everyone aims to use it for everyday purposes or adventures. By tapping into magic energy you get closer to understanding the basic principles of how the world is functioning. You learn more about deities who are tied to this power.""",
+	HALF_DUNGEON_EXPLORED_4 = """- I see... Well, I should continue my small pilgrimage in this case. Since I've left my homeland I'm in a tight spot here if I won't find any shelter.""",
+	HALF_DUNGEON_EXPLORED_OPTION_6 = """I'm under the guilds' investigation and I'd prefer you to leave this place""",
+	HALF_DUNGEON_EXPLORED_OPTION_7 = """I could use a mage user, if you want to join my mansion""",
+	HALF_DUNGEON_EXPLORED_OPTION_8 = """Since I'm going to clear all rebels out of here you could join me until then	""",
+	HALF_DUNGEON_EXPLORED_5 = """- Oh... Hmm, I see, this is unfortunate. Perhaps I'll visit at a different time then. Adieu.""",
+	HALF_DUNGEON_EXPLORED_6 = """- Well, this is a generous offer in my book. Are you sure about this? I might not be able to refuse it.""",
+	HALF_DUNGEON_EXPLORED_OPTION_9 = """I'm sure""",
+	HALF_DUNGEON_EXPLORED_OPTION_10 = """On a second thought...""",
+	HALF_DUNGEON_EXPLORED_7 = """- I'm sorry, I think I'm obliged to come to this meeting here after all. But thank you for the invitation, I'll consider it in future.""",
+	HALF_DUNGEON_EXPLORED_8 = """- Alright then, I'll take it instead of putting myself in danger around here. 
+
+You explain to Kurdan how to get to Aliron and find your place after which he leaves""",
+	HALF_DUNGEON_EXPLORED_9 = """- Yes, this will work for me. Alright then, allow me to accompany you in this journey.""",
+	
+	# PRE_FINAL BOSS
+	PRE_FINAL_BOSS_START = """As you reach the final room you are met by a group of rebels lead by a woman of demon origins.
+
+- Well, ain't it a knight in shining armor. I guess the guilds finally got here. Too bad we are already done.""",
+	PRE_FINAL_BOSS_OPTION_1 = """And who exactly are you?""",
+	PRE_FINAL_BOSS_OPTION_2 = """I thought the rebel leader was male""",
+	PRE_FINAL_BOSS_OPTION_3 = """You better surrender now if you wanna live""",
+	PRE_FINAL_BOSS_1 = """- This isn't really important, I'm only here for an errand, but it seems I'll be dragged in at this point.""",
+	PRE_FINAL_BOSS_2_1 = """- Male, female, who really cares, all these names are so meaningless after all.""",
+	PRE_FINAL_BOSS_2_2 = """- Male, female, who really cares, all these names are so meaningless after all. 
+
+The demon turns to Kurdan who was quietly observing what's been going on so far.
+
+- Don't you agree with me, orc?""",
+	PRE_FINAL_BOSS_3 = """- Please, I'm shaking all over here. 
+
+- I presume you've come here to restore the mine's work, and you've been unfortunate enough to find me here. However, I have an offer for you. I do not wish to fight yet so if you let me take the miners we kept as prisoners I'll leave in peace so you can do with the rest of these rebels whatever you want. 
+
+Rebel: - Hey, you traitorous bit-..
+
+- Silence, putzes. 
+
+Demon's voice shaken the air and her underling froze in place.""",
+	PRE_FINAL_BOSS_4 = """- I believe this is a good deal for you. After all, these people are mere peasants, whats good in risking your life for them? I'm sure your employers will be able to replace them.
+
+The prisoners overhearing your conversation closely observed your reaction in fear.""",
+	PRE_FINAL_BOSS_OPTION_4 = """Agree""",
+	PRE_FINAL_BOSS_OPTION_5 = """Refuse""",
+	PRE_FINAL_BOSS_5 = """- Hah, now that's my type of a hero. A smart choice. We'll be leaving shortly then, 
+
+You observe as the demon leaves taking scared miners with her.""",
+	PRE_FINAL_BOSS_6 = """- This wasn't the fairest of outcomes, but you are in your right to do so. I'm sorry, [name], but I'll be leaving here.
+
+Kurdan leaves following the demon's route.""",
+	PRE_FINAL_BOSS_7 = """You turn to the leftover rebels but realizing they won't be getting a pardon, they do not show signs of surrender.
+
+- Screw that demon bitch, you won't get us alive!
+""",
+	PRE_FINAL_BOSS_8 = """Demon: - So trying to play it to the end, eh? And what do you think about it... Kurdan, if I'm correct? Haven't you come here for enlightenment?
+		
+Kurdan: - It seems I've been misguided. I'll have to side with [name] here.
+		
+Demon: - Is that so... How unfortunate. Oh well, I still could use an extra hand now, you did kept your invitation sigil, right?""",
+	PRE_FINAL_BOSS_9 = """The bracelet on the Kurdan's hand erupted in dim purple glow as the demon mumbled a spell. Before you could react, Kurdan's posture and movements changed. He steadily went to the demon's side preparing for battle.
+		
+Demon: - You should be useful in this dispute. Now, let's see if you are even worth our time.""",
+	PRE_FINAL_BOSS_10 = """- So trying to play it to the end, eh? Fine, let's see if you are even worthy of notion.""",
+	PRE_FINAL_BOSS_11 = """As you defeat the latest rebels there's nothing left at the mines and you can report back to the Workers Guild.""",
+	PRE_FINAL_BOSS_12 = """- Must admit, you aren't half bad. Well, I'm done for today, this place is no fun at all. Let us meet again, hero. 
+
+Before you can stop her, she chants a quick spell and disappears in magic vortex.""",
+	PRE_FINAL_BOSS_13 = """As the demon leaves, Kurdan falls to the ground regaining his senses.
+	
+- Uugh... Dammit. I'm terribly sorry for this. I couldn't control myself. Looks like I was fooled by coming here. Let me know if I can correct my wrongdoings.""",
+	PRE_FINAL_BOSS_OPTION_6 = """You can join me""",
+	PRE_FINAL_BOSS_OPTION_7 = """I'll bring you to the authorities""",
+	PRE_FINAL_BOSS_OPTION_8 = """You should leave""",
+	PRE_FINAL_BOSS_14 = """- Hmmh, so be it. If I can repay you this way, I'll do it.""",
+	PRE_FINAL_BOSS_15 = """- I-I understand. So be it, I entrust myself to your authorities.""",
+	PRE_FINAL_BOSS_16 = """Kurdan nodes in agreement and slowly leaves the hall.""",
+	PRE_FINAL_BOSS_17 = """You release the imprisoned miners and receive their gratitude. 
+	
+- Thank you, [Sir]! We don't know how to repay you for this.""",
+	PRE_FINAL_BOSS_OPTION_9 = """No payment is needed, just get the work done""",
+	PRE_FINAL_BOSS_OPTION_10 = """Well, I could use some payment since you offered.""",
+	PRE_FINAL_BOSS_18 = """- You trully are generous. We will report to the guild once we return others to the work.
+	
+Saying goodbye you leave the mines and head back to Aliron.
+""",
+	PRE_FINAL_BOSS_19 = """- It isn't much, but we had some ores left. You can take it.
+	
+You take the foreman's reward and head back to Aliron.
+""",
 
 }
-

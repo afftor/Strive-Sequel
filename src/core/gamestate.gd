@@ -6,7 +6,7 @@ extends Node
 func revert():
 	#globals._ready()
 	input_handler.encounter_win_script = null
-	input_handler.encounter_lose_scripts.clear()
+	input_handler.encounter_lose_script = null
 	
 
 func _ready():
