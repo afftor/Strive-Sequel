@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/silouette_shader.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/outline_width = 2.0
+shader_param/outline_color = Color( 0.443137, 0.101961, 0.466667, 1 )
+shader_param/inline_color = Color( 0.176471, 0.027451, 0.270588, 1 )
+shader_param/opacity = 1.0
