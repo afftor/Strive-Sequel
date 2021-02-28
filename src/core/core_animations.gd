@@ -152,6 +152,19 @@ func UnfadeAnimation(node, time = 0.3, delay = 0):
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tweennode.start()
 
+
+func UnshadeAnimation(node, time = 0.3, delay = 0):
+	var tweennode = input_handler.GetTweenNode(node)
+	tweennode.interpolate_property(node.get_material(), 'shader_param/opacity', 1.0, 0.0, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+	tweennode.start()
+
+
+func ShadeAnimation(node, time = 0.3, delay = 0):
+	var tweennode = input_handler.GetTweenNode(node)
+	tweennode.interpolate_property(node.get_material(), 'shader_param/opacity', 0.0, 1.0, time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
+	tweennode.start()
+
+
 func ShakeAnimation(node, time = 0.5, magnitude = 5):
 	var newdict = {node = node, time = time, magnitude = magnitude, originpos = node.rect_position}
 	for i in ShakingNodes:

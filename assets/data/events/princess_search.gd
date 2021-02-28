@@ -224,6 +224,7 @@ var data = {
 	#look for some minor issues in translation file comments
 	princess_search_dungeon_1 = {
 		image = null,
+		character = 'amelia_shade',
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_1", reqs = []}], 
 		options = [

@@ -11,7 +11,10 @@ func _ready():
 	if get_node_or_null("BackgroundT2/HideButton"):
 		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
-		
+	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
+	$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
+
+
 func hide_dialogue(action = "hide"):
 	for node in self.get_children():
 		if node.get_class() == "Tween":
@@ -272,6 +275,8 @@ func select_option(number):
 			button.emit_signal("pressed")
 
 func close(transition = false):
+	ch1 = null
+	ch2 = null
 	previous_dialogue_option = 0
 	ResourceScripts.core_animations.FadeAnimation(self, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -459,38 +464,103 @@ func handle_scene_backgrounds(scene):
 		gui_controller.dialogue.get_node("CustomBackground").hide()
 
 
+var ch1 = null
+var ch2 = null
+var ch1_shade = false
+var ch2_shade = false
+
 func handle_characters_sprites(scene):
-	#i do not understand conditions and sequencing of most of code in cases of characters do exist
-	#so i think that there are some logical errors here  
-	if !scene.has("character"):
+	#--i do not understand conditions and sequencing of most of code in cases of characters do exist
+	#--so i think that there are some logical errors here  
+	#reworked with additional functional
+	var scene_char = null
+	var char_shade = false
+	
+	if !scene.has("character") and !scene.has("character2"):
 		$ImagePanel.show()
 		$CharacterImage.hide()
 		if scene.image != '' && scene.image != null:
 			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
 		else:
 			$ImagePanel.hide()
-			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
 	else:
-		if !($CharacterImage.texture == images.sprites[scene.character]):
-			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage,0.5)
 		$ImagePanel.hide()
-		$CharacterImage.texture = images.sprites[scene.character]
-		$CharacterImage.show()
-	if !scene.has("character2"):
-		$ImagePanel.show()
-		if get_node_or_null("CharacterImage2"):
-			$CharacterImage2.hide()
-		if scene.image != '' && scene.image != null:
-			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
-		else:
-			$ImagePanel.hide()
-			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
-	else:
-		if !($CharacterImage2.texture == images.sprites[scene.character2]):
-			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2,0.5)
-		$ImagePanel.hide()
-		$CharacterImage2.texture = images.sprites[scene.character2]
-		$CharacterImage2.show()
+		if scene.has("character"):
+			if scene.character.ends_with('_shade'):
+				scene_char = scene.character.trim_suffix('_shade')
+				char_shade = true
+			else:
+				scene_char = scene.character
+				char_shade = false
+			if ch1 != scene_char:
+				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
+				$CharacterImage.texture = images.sprites[scene_char]
+				if char_shade: 
+					$CharacterImage.material.set_shader_param('opacity', 1.0)
+					ch1_shade = true
+				else: 
+					$CharacterImage.material.set_shader_param('opacity', 0.0)
+					ch1_shade = false
+				ch1 = scene_char
+			else:
+				if char_shade != ch1_shade:
+					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage, 0.5)
+					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage, 0.5)
+					ch1_shade = char_shade
+			$CharacterImage.show()
+		if scene.has("character2"):
+			if scene.character2.ends_with('_shade'):
+				scene_char = scene.character2.trim_suffix('_shade')
+				char_shade = true
+			else:
+				scene_char = scene.character2
+				char_shade = false
+			if ch2 != scene_char:
+				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
+				$CharacterImage2.texture = images.sprites[scene_char]
+				if char_shade: 
+					$CharacterImage2.material.set_shader_param('opacity', 1.0)
+					ch2_shade = true
+				else: 
+					$CharacterImage2.material.set_shader_param('opacity', 0.0)
+					ch2_shade = false
+				ch1 = scene_char
+			else:
+				if char_shade != ch2_shade:
+					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage2, 0.5)
+					else: ResourceScripts.core_animations.UnshadeAnimation($CharacterImage2, 0.5)
+					ch2_shade = char_shade
+			$CharacterImage2.show()
+	
+#	if !scene.has("character"):
+#		$ImagePanel.show()
+#		$CharacterImage.hide()
+#		if scene.image != '' && scene.image != null:
+#			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
+#		else:
+#			$ImagePanel.hide()
+#			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
+#	else:
+#		if !($CharacterImage.texture == images.sprites[scene.character]):
+#			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage,0.5)
+#		$ImagePanel.hide()
+#		$CharacterImage.texture = images.sprites[scene.character]
+#		$CharacterImage.show()
+#	if !scene.has("character2"):
+#		$ImagePanel.show()
+#		if get_node_or_null("CharacterImage2"):
+#			$CharacterImage2.hide()
+#		if scene.image != '' && scene.image != null:
+#			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
+#		else:
+#			$ImagePanel.hide()
+#			#$ImagePanel/SceneImage.texture = load("res://assets/images/scenes/image_wip.png")
+#	else:
+#		if !($CharacterImage2.texture == images.sprites[scene.character2]):
+#			ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2,0.5)
+#		$ImagePanel.hide()
+#		$CharacterImage2.texture = images.sprites[scene.character2]
+#		$CharacterImage2.show()
 
 
 func handle_loots(scene):
