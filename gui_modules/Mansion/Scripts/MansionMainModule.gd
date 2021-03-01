@@ -467,6 +467,7 @@ func _on_TestButton_pressed():
 
 func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
+	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 
 	if generate_test_chars:
@@ -503,7 +504,7 @@ func test_mode():
 		# character.unlock_class("thief")
 		# character.unlock_class("engineer")
 		# character.unlock_class("scholar")
-		character.travel.location = 'L4'
+		# character.travel.location = 'L4'
 		character.travel.area = 'plains'
 		character.add_stat('resist_normal', 50)
 		character.add_stat('resist_all', 50)
@@ -733,7 +734,7 @@ func test_mode():
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		# ResourceScripts.game_progress.decisions.append("aire_raped")
 		input_handler.interactive_message("final_operation_start", '',{})
-		
+    
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
 			i.totalreputation += 500

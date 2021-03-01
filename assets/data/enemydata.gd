@@ -14,6 +14,9 @@ var encounters = {
 	troll_skirmish = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	tribal_elves = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'tribal_elves_win', args = []}], lose_effects = []},
 	
+	rebel_group = {unittype = 'randomgroup', unitcode = 'rebel_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_group_win', args = []}], lose_effects = [{code = 'start_event', data = 'rebel_group_lose', args = []}]},
+	demon_kurdan = {unittype = 'randomgroup', unitcode = 'demon_kurdan', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_kurdan_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_kurdan_lose', args = []}]},
+	demon = {unittype = 'randomgroup', unitcode = 'demon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_lose', args = []}]},
 	
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
@@ -71,6 +74,9 @@ var enemygroups = {
 	skeletons_lich = {reqs = [], units = {skeleton_melee = [2,3], skeleton_archer = [1,2], undead_lich = [1,1]}},
 	skeletons_lich_boss = {maxunits = 6, reqs = [], units = {undead_lich = [1,1], skeleton_archer = [2,2], zombie = [3,3]}},
 	
+	rebel_group = {reqs = [], units = {rebel_recruit = [1,1]}},
+	demon_kurdan = {reqs = [], units = {undead_lich = [1,1]}},
+	demon = {reqs = [], units = {zombie = [1,1]}},
 	
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},
@@ -1434,6 +1440,10 @@ var loot_variants_data = {
 		{code = 'defined', name = 'wood', min = 5, max = 15},
 		{code = 'defined', name = 'woodmagic', min = 2, max = 5},
 		{code = 'defined', name = 'woodancient', min = 0, max = 1},
+	],
+	rebels_ore_reward = [
+		{code = 'defined', name = 'steel', min = 25, max = 25},
+		{code = 'defined', name = 'mithril', min = 10, max = 10},
 	],
 }
 

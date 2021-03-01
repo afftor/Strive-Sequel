@@ -883,6 +883,7 @@ func StartCombat(encounter = null):
 	if encounter != null:
 		data = Enemydata.encounters[encounter]
 		input_handler.encounter_win_script = Enemydata.encounters[encounter].win_effects
+		input_handler.encounter_lose_script = Enemydata.encounters[encounter].lose_effects
 	
 	if ResourceScripts.game_progress.skip_combat == true:
 		input_handler.finish_combat()
@@ -1041,6 +1042,8 @@ func common_effects(effects):
 			'make_story_character':
 				var newslave = ResourceScripts.scriptdict.class_slave.new()
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
+				if "recruit_from_location" in i:
+					newslave.travel.location = input_handler.active_location.id
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
 			'add_timed_event':

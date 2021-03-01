@@ -67,7 +67,7 @@ var ghost_items = []
 
 
 var encounter_win_script = null
-var encounter_lose_scripts = []
+var encounter_lose_script = null
 
 var musicfading = false
 var musicraising = false
@@ -1010,8 +1010,6 @@ func finish_combat():
 	emit_signal("CombatEnded", combat_node.encountercode)
 	SetMusic("exploration")
 	
-	encounter_lose_scripts.clear()
-	
 	if encounter_win_script != null:
 		globals.common_effects(encounter_win_script)
 		encounter_win_script = null
@@ -1041,6 +1039,10 @@ func combat_defeat():
 #			ResourceScripts.game_party.characters[active_location.group[i]].apply_effect(effects_pool.add_effect(eff))
 			#i totally disagree with the same code placed here and in combat.victory() (and in old exploration too)
 			#add permadeath check here
+	if encounter_lose_script != null:
+		globals.common_effects(encounter_lose_script)
+		encounter_lose_script = null
+		return
 	if is_instance_valid(gui_controller.dialogue) && gui_controller.dialogue.is_visible():
 		gui_controller.dialogue.close()
 	if exploration_node != null && active_location.has('progress'):
