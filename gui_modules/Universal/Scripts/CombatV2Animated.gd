@@ -94,6 +94,9 @@ func run():
 	defeat(true)
 
 
+var norun_mode = false
+func set_norun_mode(value):
+	norun_mode = value
 
 
 func open_items(pressed):
@@ -511,7 +514,6 @@ func player_turn(pos):
 	for position in battlefieldpositions.values():
 		if position.get_node_or_null("Character"):
 			position.get_node("Character/Active").visible = battlefieldpositions[pos] == position
-	$Menu/Run.disabled = false
 	turns += 1
 	var selected_character = characters_pool.get_char_by_id(playergroup[pos])
 	activecharacter = selected_character
@@ -545,6 +547,7 @@ func player_turn(pos):
 			selected_character.process_event(variables.TR_TAUNT_FAIL)
 	CombatAnimations.check_start()
 	if CombatAnimations.is_busy: yield(CombatAnimations, 'alleffectsfinished')
+	$Menu/Run.disabled = norun_mode
 	#allowaction = true
 	RebuildSkillPanel()
 	RebuildItemPanel()

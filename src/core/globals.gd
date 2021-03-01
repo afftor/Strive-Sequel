@@ -902,6 +902,7 @@ func StartCombat(encounter = null):
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = data.unitcode
+	input_handler.combat_node.set_norun_mode(true)
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, data.bg, data.bgm, enemy_stats_mod)
 
 func StartQuestCombat(encounter):
@@ -926,6 +927,7 @@ func StartAreaCombat():
 	if input_handler.combat_node == null:
 		input_handler.combat_node = input_handler.get_combat_node()
 	input_handler.combat_node.encountercode = enemydata
+	input_handler.combat_node.set_norun_mode(false)
 	input_handler.combat_node.start_combat(input_handler.active_location.group, enemies, 'background', music, enemy_stats_mod)
 
 func make_enemies(enemydata):
