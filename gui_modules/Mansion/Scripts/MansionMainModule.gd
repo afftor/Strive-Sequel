@@ -733,10 +733,8 @@ func test_mode():
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		# ResourceScripts.game_progress.decisions.append("aire_raped")
-		ResourceScripts.game_progress.decisions.append("KurdanFollowing")
-		
-		input_handler.interactive_message("pre_final_boss_start", '',{})
-		
+		input_handler.interactive_message("final_operation_start", '',{})
+    
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
 			i.totalreputation += 500

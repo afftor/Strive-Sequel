@@ -3420,6 +3420,172 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 	SEARCH_DUNGEON_19_3 = """- Oh? Well if you just wanted to see an elf chained up you could've just come by, we get those in from time to time. Well, the offer is still open if you change your mind, come visit me if you do.""",
 	SEARCH_DUNGEON_OPTION_48 = """Thanks Amelia""",
 
+
+
+}
+
+#search for princess
+	SEARCH_FIGHTERS_1 = """- Now then, we haven't had any luck with our interrogations. These idiots are fanatically dedicated to their rebellion.""",
+	SEARCH_FIGHTERS_OPTION_1 = """Any reason you haven't found the princess yet?""",
+	SEARCH_FIGHTERS_1_1 = """- With the mass influx of rebel prisoners along with us keeping the peace in the city we don't have the manpower to do much about finding her on our own.""",
+	SEARCH_FIGHTERS_OPTION_2 = """Can I get any help from the Fighters Guild?""",
+	SEARCH_FIGHTERS_1_2 = """- As it stands I can offer you little more than guaranteeing you'll be the first to know if one of the rebels talks. Though as it stands that's likely to take weeks, or even longer.""",
+	SEARCH_FIGHTERS_OPTION_3 = """I'll get to it then.""",
+	SEARCH_FIGHTERS_2 = """- Come back as soon as you have the location of the princess and we can plan out what to do. The other guilds may have some ideas.
+
+- Considering your objective it may be worth paying Amelia a visit to see if she can offer any advice.""",
+	SEARCH_FIGHTERS_OPTION_4 = """I want to speak to the elf girl.""",
+	SEARCH_FIGHTERS_3 = """- Her? We haven't gotten anything out of her. If anything she's even more fanatical than the rest of them.""",
+	SEARCH_FIGHTERS_OPTION_5 = """I've met her before. Maybe I can get some information from her.""",
+	SEARCH_FIGHTERS_OPTION_6 = """An elf is rare to see, one fighting for a human rebellion is even more-so.""",
+	SEARCH_FIGHTERS_4 = """- Hmm… Tell me more about it.""",
+	SEARCH_FIGHTERS_OPTION_7 = """When you had me go after the lich she was there too. I didn't know she was with the rebels though.""",
+	SEARCH_FIGHTERS_OPTION_8 = """I spared her life once.""",
+	SEARCH_FIGHTERS_5_1 = """- That's true, she definitely knows more than the other rebels. I suppose there's nothing to lose letting you try to get her talking.""",
+	SEARCH_FIGHTERS_5_2 = """- Strange circumstance, but I've heard wilder stories that turned out true. I suppose you've got the best chance out of any of us to get her talking, go ahead.""",
+	SEARCH_FIGHTERS_5_3 = """- Interesting, well if you can use that leverage to get her talking then it'll have been worth leaving her alive. I suppose you've got the best chance out of any of us at least.""",
+	SEARCH_FIGHTERS_5 = """- You'll find her in the city's dungeon. I'll send word to the guards so they'll let you pass.""",
+	SEARCH_FIGHTERS_6_INIT = """ """,
+	SEARCH_FIGHTERS_6 = """ """,#no phrases here in this scene, mb error, mb _6 scene is not reqired
+	SEARCH_FIGHTERS_7_INIT = """Can I speak with you?""",
+	SEARCH_FIGHTERS_7 = """- I've heard you were working with the mages to track the princess, do you need me for something?""",
+	SEARCH_FIGHTERS_OPTION_9 = """I was hoping to talk to the elf girl.""",
+	SEARCH_FIGHTERS_8 = """- Well I've got no reason to deny that request. She's in the dungeons, I'll send word to the guards.""",
+	SEARCH_SERVANTS_OPTION_INIT = """Would you have any ideas on how to track the princess?""",
+	SEARCH_SERVANTS_1 = """- Mmm, perhaps ask Duncan if you could speak with the elf girl. She looked different than the other rebels they brought in, special.
+
+- Though if you're not the talking type the Mages Guild might be able to help in other ways. Magic has quite a lot of applications.""",
+	SEARCH_SERVANTS_2 = """- Well none of the rebels the fighters brought in look to be more than a peon. I don't suspect they'll get much information out of them if any at all.
+
+- Then again you might ask Myr for some help. Magic has quite the variety of uses.""",
+	SEARCH_SERVANTS_OPTION = """Thanks, I'll get to it.""",
+	SEARCH_DUNGEON_1 = """You walk to the entrance of the dungeons. The guards give you the key and point you in the direction of the cell which holds Aire.
+
+To your surprise standing outside of the cell is Amelia, she notices you and makes her way over.""", #it is possible not to know aire's name at that point - amelia tells it in next line
+	SEARCH_DUNGEON_OPTION_1 = """Amelia? What are you doing here?""",
+	SEARCH_DUNGEON_2_1 = """- Oh, just following up on my suggestion to you. Glad to see at least someone takes my advice seriously.""",
+	SEARCH_DUNGEON_2_2 = """- A little bird told me you were visiting one of our new guests. I thought perhaps I could come share some advice.""",
+	SEARCH_DUNGEON_2_3 = """- Her name is Aire if you didn't know. It does seem like she should know exactly what we need.
+
+- I'm sure you can get her talking being such a charming individual yourself. Though if she proves… difficult I could always try some of my methods.""",
+	SEARCH_DUNGEON_OPTION_2 = """I'll think about it.""",
+	SEARCH_DUNGEON_OPTION_3 = """Let's hope that won't be necessary.""",
+	SEARCH_DUNGEON_3_1 = """As you walk into Aire's cell you feel her sharp gaze as she recognizes you. The elf girl sitting in the corner of the cold wall with hands cuffed behind her.
+
+- It's you again. Think you can get anything out of me?""",
+	SEARCH_DUNGEON_OPTION_4 = """So you still remember me""",
+	SEARCH_DUNGEON_4_1 = """- There's not many bastards like you out there. """,
+	SEARCH_DUNGEON_OPTION_5 = """I take it it's too late to ask for forgiveness?""",
+	SEARCH_DUNGEON_4_2 = """- Who are you trying to fool? You've already shown your true face.""",
+	SEARCH_DUNGEON_OPTION_6 = """This place seems just about right for you""",
+	SEARCH_DUNGEON_4_3 = """- ...Fuck off.""",
+	SEARCH_DUNGEON_OPTION_7 = """We want to know where the princess escaped to""",
+	SEARCH_DUNGEON_OPTION_8 = """You must know where has your master has gone to""",
+	SEARCH_DUNGEON_OPTION_9 = """Don't you think you should cooperate and make things better for you?""",
+	SEARCH_DUNGEON_5_1 = """- You really think I'd ever cooperate with you?""",
+	SEARCH_DUNGEON_OPTION_10 = """Why not? What makes you so loyal?""",
+	SEARCH_DUNGEON_5_2 = """- ...You wouldn't understand, nor will I waste my breath telling you.""",
+	SEARCH_DUNGEON_OPTION_11 = """Who knows what could happen to you if you don't cooperate""",
+	SEARCH_DUNGEON_5_3 = """- Give me your worst. I'd rather die than help your kind.""",
+	SEARCH_DUNGEON_OPTION_12 = """The princess will have it better if you cooperate""",
+	SEARCH_DUNGEON_5_4 = """- Oh, I'm sure she'd be better anywhere else instead.""",
+	SEARCH_DUNGEON_OPTION_13 = """This is going nowhere""",
+	SEARCH_DUNGEON_6_1 = """I told you, you'll never get anything out of me. Go ahead and keep wasting your time.""",
+	SEARCH_DUNGEON_OPTION_14 = """Once I get to her, you'll wish you'd have been more cooperative.""",
+	SEARCH_DUNGEON_6_2 = """- If you dare to even touch her, I'll hunt you down to the ends of the earth.""",
+	SEARCH_DUNGEON_OPTION_15 = """Fine. Enjoy rotting in this cell then""",
+	SEARCH_DUNGEON_6_3 = """Aire does not react to your words, but somehow she seems content with your irritation.""",
+	SEARCH_DUNGEON_OPTION_16 = """Hit her*""",
+	SEARCH_DUNGEON_6_4 = """*Smack*
+
+- Hmph, as expected from a lowly [man] like you.""",
+	SEARCH_DUNGEON_OPTION_LEAVE = """Leave""",
+	SEARCH_DUNGEON_3_2 = """You find the elf girl in the corner of her cell, sitting with hands cuffed behind her back. Despite the tired look in her eyes, they are filled with dignity. As you open the door she ostentatiously looks away. 
+
+- ... If you think you'll be getting anything out of me, you're wasting your time. """,
+	SEARCH_DUNGEON_OPTION_17 = """Greet her""",
+	SEARCH_DUNGEON_7_1 = """Aire turns to you with a curious look. As she recognizes your face, her tone becomes slightly nervous.
+
+- ...Oh, it's you. Come to gloat?""",
+	SEARCH_DUNGEON_OPTION_18 = """Stay quiet""",
+	SEARCH_DUNGEON_7_2 = """After a few moments the curiosity gets the better of the elf girl and she turns to you. 
+
+- ...Oh, it's you. Come to gloat?""",
+	SEARCH_DUNGEON_OPTION_19 = """Actually I wanted to ask a few questions.""",
+	SEARCH_DUNGEON_OPTION_20 = """Let's cut to the chase, tell us where the princess is hiding.""",
+	SEARCH_DUNGEON_OPTION_21 = """I have to go""",
+	SEARCH_DUNGEON_8_1 = """- I won't be telling you where Anastasia is, not to you, nor anyone else in this city. Other than that, I don't mind some company. (if met previously) And I know you aren't a bad person at least.""",
+	SEARCH_DUNGEON_OPTION_22 = """Why are you so loyal to the princess?""",
+	SEARCH_DUNGEON_OPTION_23 = """What's your role in the rebellion?""",
+	SEARCH_DUNGEON_OPTION_24 = """What do you think about me?""",
+	SEARCH_DUNGEON_8_7_1 = """- Well, I'd lie if I say I don't find you attractive. And I suppose you've proven yourself to be better in combat as well. I wish you were by Ana's side instead of Greg, things might've been very different.""",
+	SEARCH_DUNGEON_8_7_2 = """You certainly can hold your own in battle, and you don't seem to be as bad as others we've been told about from the guilds. Maybe we could've become friends if things had been different.""",
+	SEARCH_DUNGEON_OPTION_25 = """That's all for now""",
+	SEARCH_DUNGEON_7_3 = """ """, #no line in doc
+	SEARCH_DUNGEON_9 = """- She saved me when I was a child. Well, kind of, she was a child too mind you.
+
+- My parents had been killed by bandits and I was captured and brought to their camp. Then the bandits were raided in turn by Ana's men. I was freed but I had nowhere left to go. 
+
+- So she offered to let me serve her. Her guards looked like they disagreed, but with the way she carried herself it seemed they could only abide by her decision. I tried to not get in the way and to just perform my duties, but she checked on me often and treated me like a little sister even though I'm just a commoner, an elf, not to mention her servant. Since then I've sworn my loyalty to her. I'm ready to sacrifice my life for her.""",
+	SEARCH_DUNGEON_OPTION_26 = """I'm sorry for your loss""",
+	SEARCH_DUNGEON_8_2 = """- Don't be, I've got over it a long time ago, I'm so very different than I was back then.""",
+	SEARCH_DUNGEON_OPTION_27 = """Your devotion is admirable""",
+	SEARCH_DUNGEON_8_3 = """- I wouldn't expect you to fully understand, but thanks.""",
+	SEARCH_DUNGEON_OPTION_28 = """You could've done better on your own""",
+	SEARCH_DUNGEON_8_4 = """- No, you don't understand.. I shouldn't have told you, I guess.""",
+	SEARCH_DUNGEON_10 = """- I'm just serving Ana. I couldn't care less about human politics. To me you lot are enemies only due to killing Ana's father, regardless of who he was. """,
+	SEARCH_DUNGEON_OPTION_29 = """You realize you can be executed for plotting against the guilds?""",
+	SEARCH_DUNGEON_8_5 = """- Even if so, I do not care. There are always reasons someone will want you dead, regardless of what or where.""",
+	SEARCH_DUNGEON_OPTION_30 = """I wish we hadn't ended up on opposing sides""",
+	SEARCH_DUNGEON_8_6 = """- That makes two of us, but we can't really change it now. But enough of pointless sentiments, I'm sure you aren't here for that.""",
+	SEARCH_DUNGEON_11 = """- This again? I thought I made myself clear there's no way I'm telling any of you anything.""",
+	SEARCH_DUNGEON_OPTION_31 = """Aren't you worried about her wellbeing?""",
+	SEARCH_DUNGEON_12_1 = """- I am, but... I have a hard time imagining her being in a worse place than in the hands of the guilds.""",
+	SEARCH_DUNGEON_OPTION_32 = """Your cooperation could earn you better living conditions, or even a pardon""",
+	SEARCH_DUNGEON_12_2 = """- This isn't about me, you idiot. I know very well the guilds are going to execute her once she's found, and I'm not going to help you hasten that.""",
+	SEARCH_DUNGEON_OPTION_33 = """Stop being foolish, the rebellion is over and it's only a matter of time until we find her""",
+	SEARCH_DUNGEON_12_3 = """- If so, then you don't need my help, things will work out for you on their own.""",
+	SEARCH_DUNGEON_OPTION_34 = """If you won't play along I'm sure the other interrogators won't be as nice...""",
+	SEARCH_DUNGEON_12_4 = """- Try me. I'm not going to betray her trust no matter what you, or anyone else threaten to do to me.""",
+	SEARCH_DUNGEON_OPTION_35 = """I can promise you that I'll pledge for Anastasia's safety""",
+	SEARCH_DUNGEON_13 = """Aire pauses, considering your words for a long while. 
+
+- Surely your word would hold some weight and it seems you have certain privileges around here, but can I really trust you? What reason would you possibly have to help her?""",
+	SEARCH_DUNGEON_OPTION_36 = """I'm actually on your side, if you help me out I'll help her stay alive""",
+	SEARCH_DUNGEON_7_4 = """- Sorry, I'm not going to believe such an obvious lie.""",
+	SEARCH_DUNGEON_OPTION_37 = """We could return you to the elven lands""",
+	SEARCH_DUNGEON_7_5 = """- Nonsense, not only would I be abandoning my duty, I also don't want to be there after all this.""",
+	SEARCH_DUNGEON_OPTION_38 = """We can charge you with hiding a criminal""",
+	SEARCH_DUNGEON_7_6 = """- I can live with that, if anything it would prove the worth of my loyalty even more.""",
+	SEARCH_DUNGEON_OPTION_39 = """I don't need any more reason than to make you feel better""",
+	SEARCH_DUNGEON_14_1 = """- Those are some cheap words given my position. You really expect me to believe that?""",
+	SEARCH_DUNGEON_OPTION_40 = """I believe we should do our best to make people less miserable""",
+	SEARCH_DUNGEON_14_2 = """- You really think this way?.. That's what she believes in too. It sounds overly idealistic to me, though.""",
+	SEARCH_DUNGEON_OPTION_41 = """She could provide some value on the political side of things""",
+	SEARCH_DUNGEON_14_3 = """- No way. Her existence is a danger to the guilds and we both know it. She will be dealt with as soon as they get their hands on her.""",
+	SEARCH_DUNGEON_OPTION_42 = """She'd make a wonderful addition to my harem""",
+	SEARCH_DUNGEON_14_4 = """Aire bursts into laughter.
+
+- Is that a lame attempt at a joke? If you're serious that is some terrible motivation, I don't know which would be worse in that case, her with you or the guilds. """,
+	SEARCH_DUNGEON_7_7 = """- I'm sorry, I don't think I can trust you after all. Ana will be better off away from here even if she continues her life on the run, even in poverty.""",
+	SEARCH_DUNGEON_15 = """Aire spends some time in silence during which conflicting emotions play across her face. Finally she lets out a long sigh.
+
+- Fine, I'll trust you. If there's anyone from here who can act to her benefit, it would be you. She's escaped to elven lands. I've managed to secure a spot for her thanks to my heritage. You'd be able to find out more from the high priestess, assuming she'll let you meet her, but at this point I suspect it shouldn't be much of a problem for you.""",
+	SEARCH_DUNGEON_16 = """You see Amelia still waiting near the entrance to the cells as you exit the dungeons, she beckons you over to her.
+
+-How'd it go?""",
+	SEARCH_DUNGEON_OPTION_43 = """I got the princess' location.""",
+	SEARCH_DUNGEON_17 = """- Wow, really? I knew you had a silver tongue in you, great work. Duncan will want to know as soon as you're ready to deliver the information to him, don't worry I won't steal your spotlight if you want to wait a bit.""",
+	SEARCH_DUNGEON_OPTION_44 = """I wasn't able to get any information on the princess.""",
+	SEARCH_DUNGEON_18 = """- Aw, that's ok though, it was worth a try. I could tell by looking at her she'd be a tough one to crack. So.. have you considered my offer? I could try to get her talking if you want.""",
+	SEARCH_DUNGEON_OPTION_45 = """Go ahead, it couldn't hurt.""",
+	SEARCH_DUNGEON_19_1 = """- Don't worry, I'm sure I can get at least something out of her, but it may take some time. I'll be sure to personally deliver the information to you when I get it.""",
+	SEARCH_DUNGEON_OPTION_46 = """No, I think I'll find another way.""",
+	SEARCH_DUNGEON_19_2 = """- Alright, I understand, just come talk to me if you want to reconsider.""",
+	SEARCH_DUNGEON_OPTION_47 = """Actually I just wanted to talk with her, I've already got another way of finding the princess.""",
+	SEARCH_DUNGEON_19_3 = """- Oh? Well if you just wanted to see an elf chained up you could've just come by, we get those in from time to time. Well, the offer is still open if you change your mind, come visit me if you do.""",
+	SEARCH_DUNGEON_OPTION_48 = """Thanks Amelia""",
+
 	# HELP SIGMUND
 	HELP_SIGMUND_OPTION_0 = """I've been asked to help you""",
 	
