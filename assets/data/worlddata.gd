@@ -1458,6 +1458,32 @@ var dungeons = {
 		affiliation = 'local',
 		events = [],
 	},
+	
+dungeon_quest_mines = {
+		code = 'dungeon_quest_mines',
+		type = 'dungeon',
+		name = 'quest_mines',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_1'],
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [], 
+		levels = [1,1], 
+		resources = [],
+		#gatherable_resources = {},
+		gather_mod = [],
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		
+		area = 'plains',
+		travel_time = [4,6],
+	},
+	
 #	dungeon_frozen_domain = {
 #		code = 'dungeon_frozen_domain',
 #		type = 'dungeon',
