@@ -1046,6 +1046,8 @@ func common_effects(effects):
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
 				if "recruit_from_location" in i:
 					newslave.travel.location = input_handler.active_location.id
+				if "send_to_mansion" in i :
+					newslave.travel.return_to_mansion()
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
 			'add_timed_event':
@@ -1173,6 +1175,8 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				globals.complete_location(input_handler.active_location.id)
+			'remove_active_location':
+				globals.remove_location(input_handler.active_location.id)
 			'complete_event':
 				pass
 			'reputation':

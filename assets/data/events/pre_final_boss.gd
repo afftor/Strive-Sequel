@@ -134,9 +134,8 @@ var data = {
 	rebel_group_win = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_11", reqs = []} ],
-		common_effects = [{code = 'return_all_to_mansion_confirm'}, {code = 'clear_dungeon_confirm'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = []
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}],
 			}
 		],
 	},
@@ -178,7 +177,7 @@ var data = {
 	pre_final_boss_6 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_14", reqs = []} ],
-		common_effects = [{code = 'make_story_character', value = 'Kurdan'}],
+		common_effects = [{code = 'make_story_character', value = 'Kurdan', recruit_from_location = true, send_to_mansion = true}],
 		options = [ {
 			code = 'pre_final_boss_8',
 			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
@@ -219,10 +218,9 @@ var data = {
 	pre_final_boss_fin_2 = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_19", reqs = []} ],
-		common_effects = [{code = 'make_loot', pool = [['rebels_ore_reward',1]]}, {code = 'open_loot'}, 
-		{code = 'return_all_to_mansion_confirm'}, {code = 'clear_dungeon_confirm'}],
+		common_effects = [{code = 'make_loot', pool = [['rebels_ore_reward',1]]}, {code = 'open_loot'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = []
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}]
 			}
 		],
 	},
