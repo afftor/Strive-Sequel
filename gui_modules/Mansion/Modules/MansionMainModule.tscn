@@ -198,9 +198,9 @@ __meta__ = {
 }
 
 [node name="NavigationContainer" type="ScrollContainer" parent="NavigationModule"]
-margin_left = 16.3182
+margin_left = 18.0
 margin_top = -6.0
-margin_right = 1448.32
+margin_right = 1450.0
 margin_bottom = 58.0
 scroll_vertical_enabled = false
 __meta__ = {
