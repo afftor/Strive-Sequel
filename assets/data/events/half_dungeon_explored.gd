@@ -112,7 +112,6 @@ var data = {
 	
 	half_dungeon_explored_end_follow = {
 		image = null, character = "kurdan", tags = [],
-		common_effects = [{code = 'make_story_character', value = 'Kurdan', recruit_from_location = true}],
 		text = [ {text = "HALF_DUNGEON_EXPLORED_9", reqs = [], previous_dialogue_option = 8, bonus_effects = [{code = 'decision', value = 'KurdanFollowing'}]}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []
