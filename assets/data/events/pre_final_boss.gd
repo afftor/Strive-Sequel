@@ -178,7 +178,7 @@ var data = {
 	pre_final_boss_6 = {
 		image = null, character = "kurdan", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_14", reqs = []} ],
-		common_effects = [{code = 'make_story_character', value = 'Kurdan'}],
+		common_effects = [{code = 'make_story_character', value = 'Kurdan', recruit_from_location = true}],
 		options = [ {
 			code = 'pre_final_boss_8',
 			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4

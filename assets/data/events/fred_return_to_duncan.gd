@@ -38,7 +38,7 @@ var data = {
 		text = [
 			{text = "RETURNTODUNCAN2", reqs = []}
 		],
-		bonus_effects = [{code = 'decision', value = 'HelpSigmundAvailable'}],
+		bonus_effects = [{code = 'decision', value = 'DungeonQuestMinesAvailable'}],
 		options = [
 				{code = "fred_return_to_duncan_answer_1", text = "RETURNTODUNCAN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]

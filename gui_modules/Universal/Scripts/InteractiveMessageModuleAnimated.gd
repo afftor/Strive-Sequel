@@ -54,6 +54,7 @@ func open(scene):
 	
 	update_scene_characters()
 	$CharacterImage.hide()
+	$CharacterImage2.hide()
 	$ImagePanel.hide()
 	handle_scene_transition_fx(scene)
 	handle_scene_backgrounds(scene)
@@ -524,7 +525,7 @@ func handle_characters_sprites(scene):
 				else: 
 					$CharacterImage2.material.set_shader_param('opacity', 0.0)
 					ch2_shade = false
-				ch1 = scene_char
+				ch2 = scene_char
 			else:
 				if char_shade != ch2_shade:
 					if char_shade: ResourceScripts.core_animations.ShadeAnimation($CharacterImage2, 0.5)

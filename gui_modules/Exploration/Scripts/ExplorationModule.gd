@@ -308,13 +308,11 @@ func open_location(data):
 	if active_location.has('progress'):
 		current_level = active_location.progress.level
 		current_stage = active_location.progress.stage
-
 	if active_location.has('background'):
 		$LocationGui/Image/TextureRect.texture = images.backgrounds[active_location.background]
 	if active_location.has('bgm'):
 		input_handler.SetMusic(active_location.bgm)
-
-
+	
 	#check if anyone is present
 	build_location_group()
 	var presented_characters = []
@@ -1058,6 +1056,8 @@ func enter_dungeon():
 		)
 		newbutton.text = "(debug)Complete location"
 		newbutton.connect("pressed", self, "debug_complete_location")
+		
+		special_events() # maybe change it for sending signal "enter_dungeon" with location data/code
 
 
 func debug_complete_location():
@@ -2365,3 +2365,17 @@ func select_workers():
 	MANSION.SlaveModule.show_slave_info()
 	MANSION.set_active_person(MANSION.active_person)
 	$NavigationModule.return_to_mansion("occupation")
+
+# func to add special events after enter_dungeon()
+func special_events():
+	if (active_location.code == 'dungeon_quest_mines') and !("MinesArrival" in ResourceScripts.game_progress.decisions):
+		input_handler.interactive_message("mines_arrival_start", '',{})
+		globals.common_effects([{code = 'decision', value = 'MinesArrival'}])
+	if (active_location.code == 'dungeon_quest_mines') and (active_location.progress.stage
+			> active_location.levels["L" + str(active_location.levels.size())].stages / 2) and !("HalfDungeonExplored" in ResourceScripts.game_progress.decisions):
+				input_handler.interactive_message("half_dungeon_explored_start", '',{})
+				globals.common_effects([{code = 'decision', value = 'HalfDungeonExplored'}])
+	if (active_location.code == 'dungeon_quest_mines') and (active_location.progress.stage
+			== active_location.levels["L" + str(active_location.levels.size())].stages - 1) and !("PreFinalBossDone" in ResourceScripts.game_progress.decisions):
+				input_handler.interactive_message("pre_final_boss_start", '',{})
+				globals.common_effects([{code = 'decision', value = 'PreFinalBossDone'}])
