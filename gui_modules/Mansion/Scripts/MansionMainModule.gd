@@ -732,11 +732,8 @@ func test_mode():
 		#character.set_stat('sex_skills', tmp)
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
-		ResourceScripts.game_progress.decisions.append("KurdanFollowing")
-		#input_handler.interactive_message("pre_final_boss_start", '',{})
-		ResourceScripts.game_progress.decisions.append("DungeonQuestMinesAvailable")
-		if "DungeonQuestMinesAvailable" in ResourceScripts.game_progress.decisions:
-			globals.common_effects([{code = 'make_quest_location', value = 'dungeon_quest_mines'}])
+		ResourceScripts.game_progress.decisions.append("kill_fred")
+		input_handler.interactive_message("fred_return_to_duncan_1", '',{})
 		
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():

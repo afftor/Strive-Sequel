@@ -1175,6 +1175,8 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				globals.complete_location(input_handler.active_location.id)
+			'remove_active_location':
+				globals.remove_location(input_handler.active_location.id)
 			'complete_event':
 				pass
 			'reputation':
