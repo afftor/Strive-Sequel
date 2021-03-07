@@ -120,7 +120,7 @@ func build_location_list(area, container):
 		newbutton.text = text
 		if location.has('captured'):
 			if location.captured:
-				newbutton.set("custom_colors/font_color", variables.hexcolordict.red)
+				newbutton.set("custom_colors/font_color_disabled", variables.hexcolordict.red)
 				newbutton.disabled = true
 				globals.connecttexttooltip(newbutton, "Location unavailable")
 				globals.return_characters_from_location(location.id)
