@@ -733,6 +733,10 @@ func test_mode():
 		input_handler.active_location = ResourceScripts.game_world.areas.plains.locations[ResourceScripts.game_world.areas.plains.locations.keys()[4]]  #[state.areas.plains.locations.size()-1]]
 		input_handler.active_area = ResourceScripts.game_world.areas.plains
 		ResourceScripts.game_progress.decisions.append("kill_fred")
+		#for i in ResourceScripts.game_world.areas['plains'].locations.values():
+		#	if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
+		#		i.captured = true
+		
 		input_handler.interactive_message("fred_return_to_duncan_1", '',{})
 		
 	

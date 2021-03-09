@@ -370,6 +370,7 @@ var locations = {
 		name = 'village_human',
 		races = [],
 		leader = '',
+		captured = false,
 		tasks = ['gather'],
 		actions = ['local_shop'],
 		event_pool = [['event_good_recruit', 0.5], ['event_good_loot_small', 1], ['event_nothing_found', 2],['exotic_slave_trader',0.5], ['event_good_slavers_woods',1], ['event_good_rebels_beastkin',1]],
