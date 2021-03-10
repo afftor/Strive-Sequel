@@ -6,6 +6,8 @@ var current_scene
 var hold_selection = false #pause for scene to load
 var previous_dialogue_option = 0
 var previous_text = ''
+var base_text_size
+var base_text_position
 
 func _ready():
 	if get_node_or_null("BackgroundT2/HideButton"):
@@ -13,6 +15,8 @@ func _ready():
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
 	$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
+	base_text_size = $RichTextLabel.rect_size
+	base_text_position = $RichTextLabel.rect_position
 
 
 func hide_dialogue(action = "hide"):
@@ -72,7 +76,7 @@ func open(scene):
 		get_tree().get_root().get_node("lootwindow").raise()
 	if get_tree().get_root().get_node_or_null("ANIMTaskAquared") && get_tree().get_root().get_node("ANIMTaskAquared").is_visible():
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
-
+	
 	show()
 
 
@@ -470,6 +474,7 @@ var ch2 = null
 var ch1_shade = false
 var ch2_shade = false
 
+
 func handle_characters_sprites(scene):
 	#--i do not understand conditions and sequencing of most of code in cases of characters do exist
 	#--so i think that there are some logical errors here  
@@ -479,13 +484,17 @@ func handle_characters_sprites(scene):
 	
 	if !scene.has("character") and !scene.has("character2"):
 		$ImagePanel.show()
+		hide_long_text()
 		$CharacterImage.hide()
 		if scene.image != '' && scene.image != null:
 			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
 		else:
 			$ImagePanel.hide()
+			show_long_text()
 	else:
 		$ImagePanel.hide()
+		show_long_text()
+	
 		if scene.has("character"):
 			if scene.character.ends_with('_shade'):
 				scene_char = scene.character.trim_suffix('_shade')
@@ -563,6 +572,22 @@ func handle_characters_sprites(scene):
 #		$CharacterImage2.texture = images.sprites[scene.character2]
 #		$CharacterImage2.show()
 
+func show_long_text():
+	self.get_stylebox("panel", "").modulate_color.a = 0
+	$LongFrame.show()
+	$DialogueBG.rect_size.y = $LongFrame.rect_size.y
+	$DialogueBG.rect_position.y = $LongFrame.rect_position.y
+	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - ($ScrollContainer.rect_size.y * 1.8)
+	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + 46
+
+func hide_long_text():
+	self.get_stylebox("panel", "").modulate_color.a = 255
+	$LongFrame.hide()
+	$DialogueBG.rect_size.y = self.rect_size.y
+	$DialogueBG.rect_position.y = 0
+	$RichTextLabel.rect_size = base_text_size
+	$RichTextLabel.rect_position = base_text_position
+	
 
 func handle_loots(scene):
 	if scene.tags.has('locked_chest'):

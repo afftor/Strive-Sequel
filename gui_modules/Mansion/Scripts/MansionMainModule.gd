@@ -737,7 +737,9 @@ func test_mode():
 		#	if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
 		#		i.captured = true
 		
-		input_handler.interactive_message("fred_return_to_duncan_1", '',{})
+		#input_handler.interactive_message("fred_return_to_duncan_1", '',{})
+		#input_handler.interactive_message('slave_escape', '', {})
+		input_handler.interactive_message("test1", '',{})
 		
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
