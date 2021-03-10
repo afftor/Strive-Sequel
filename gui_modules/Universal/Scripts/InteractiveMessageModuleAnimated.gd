@@ -578,7 +578,7 @@ func show_long_text():
 	$DialogueBG.rect_size.y = $LongFrame.rect_size.y
 	$DialogueBG.rect_position.y = $LongFrame.rect_position.y
 	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - ($ScrollContainer.rect_size.y * 1.8)
-	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + 46
+	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + ($ScrollContainer.rect_size.y * 0.5)
 
 func hide_long_text():
 	self.get_stylebox("panel", "").modulate_color.a = 255
