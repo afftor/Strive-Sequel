@@ -738,7 +738,8 @@ func test_mode():
 		#		i.captured = true
 		
 		input_handler.interactive_message("fred_return_to_duncan_1", '',{})
-		
+		#input_handler.interactive_message('slave_escape', '', {})
+	
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
