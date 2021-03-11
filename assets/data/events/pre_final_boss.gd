@@ -106,7 +106,7 @@ var data = {
 				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
 				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
 				options = [ {
-				code = 'pre_final_boss_5',
+				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
 				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6
 				} ],
 			}, {
@@ -114,7 +114,7 @@ var data = {
 				image = null, tags = ['dialogue_scene'], character = "demon_female",
 				text = [{text = "PRE_FINAL_BOSS_10", reqs = []}],
 				options = [ {
-				code = 'quest_fight', args = 'demon', type = 'next_dialogue',
+				code = 'quest_fight', args = 'demon', type = 'next_dialogue', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
 				text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 6
 				} ],
 			},

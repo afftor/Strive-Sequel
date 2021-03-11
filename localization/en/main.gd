@@ -3560,5 +3560,18 @@ Saying goodbye you leave the mines and head back to Aliron.
 	
 You take the foreman's reward and head back to Aliron.
 """,
+	
+	#After mines
+	AFTER_MINES_WORKERS_OPTION_1 = """I've solved the issue with the mines""",
+	AFTER_MINES_SIGMUND_START = """- That's great news. I've already set da preparations so we will resume da work as soon as possible. Ya've earned yar reward. 
 
+Sigmund passes you the pouch with some gold in it.""",
+	AFTER_MINES_SIGMUND_OPTION_1 = """Thanks, if there's nothing else I'll be going""",
+	AFTER_MINES_SIGMUND_OPTION_2 = """There was somebody unusual among the rebels""",
+	AFTER_MINES_SIGMUND_1 = """- Go on, I think Duncan will be interested to hear dat ya done.""",
+	AFTER_MINES_SIGMUND_2 = """- Ya? Well, it ain't our problems, better report about it to Duncan.""",
+	AFTER_MINES_WORKERS_OPTION_2 = """I've solved the issue with the mines, but there were some casualties""",
+	AFTER_MINES_SIGMUND_3 = """- Ya' I've received some reports. It seems some of da workers were taken after yer operation. We can't run a proper investigation at the current time, and I can't give you any extra reward. Ya should go see Duncan.""",
+	
+	
 }
