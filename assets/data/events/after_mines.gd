@@ -17,7 +17,8 @@ var data = {
 				image = null, tags = ['dialogue_scene'], character = "sigmund",
 				text = [{text = "AFTER_MINES_SIGMUND_3", reqs = []}],
 				options = [ {
-					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
+					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, 
+					bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}],
 				} ],
 			},
 		]
@@ -28,7 +29,19 @@ var data = {
 		text = [{text = "AFTER_MINES_SIGMUND_1", reqs = [], previous_dialogue_option = 1},
 		{text = "AFTER_MINES_SIGMUND_2", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2,
+			bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}],
+		}
+		],
+	},
+	
+	after_mines_duncan_start = {
+		image = null, tags = ['dialogue_scene'], character = "sigmund",
+		text = [{text = "AFTER_MINES_SIGMUND_1", reqs = [], previous_dialogue_option = 1},
+		{text = "AFTER_MINES_SIGMUND_2", reqs = [], previous_dialogue_option = 2}],
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2,
+			bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}],
 		}
 		],
 	}

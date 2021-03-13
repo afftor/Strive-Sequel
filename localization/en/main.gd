@@ -3573,5 +3573,6 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_WORKERS_OPTION_2 = """I've solved the issue with the mines, but there were some casualties""",
 	AFTER_MINES_SIGMUND_3 = """- Ya' I've received some reports. It seems some of da workers were taken after yer operation. We can't run a proper investigation at the current time, and I can't give you any extra reward. Ya should go see Duncan.""",
 	
+	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with Worker's issues""",
 	
 }
