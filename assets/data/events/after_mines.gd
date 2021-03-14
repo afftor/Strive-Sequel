@@ -31,8 +31,7 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2,
 			bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}],
-		}
-		],
+		} ],
 	},
 	
 	after_mines_duncan_start = {
@@ -47,11 +46,10 @@ var data = {
 		}, {
 			code = 'after_mines_duncan_1', text = "AFTER_MINES_DUNCAN_OPTION_2", reqs = [], dialogue_argument = 2, remove_after_first_use = true
 		}, {
-			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_3", reqs = [
+			code = 'after_mines_duncan_2', text = "AFTER_MINES_DUNCAN_OPTION_3", reqs = [
 				{type = 'dialogue_selected', check = true, value = 'AFTER_MINES_DUNCAN_OPTION_1'}, 
 			{type = 'dialogue_selected', check = true, value = 'AFTER_MINES_DUNCAN_OPTION_2'}, ], dialogue_argument = 3
-		}, 
-		],
+		} ],
 	},
 	
 	after_mines_duncan_1 = {
@@ -85,10 +83,34 @@ var data = {
 					code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_3", reqs = [
 						{type = 'dialogue_selected', check = true, value = 'AFTER_MINES_DUNCAN_OPTION_1'}, 
 					{type = 'dialogue_selected', check = true, value = 'AFTER_MINES_DUNCAN_OPTION_2'}, ], dialogue_argument = 3
-				}, 
-				],
+				} ],
 			},
 				]
+	},
+	
+	after_mines_duncan_2 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan",
+		text = [{text = "AFTER_MINES_DUNCAN_8", reqs = []}],
+		options = [ {
+			code = 'after_mines_duncan_3', text = "AFTER_MINES_DUNCAN_OPTION_7", reqs = [], dialogue_argument = 2
+		},  {
+			code = 'after_mines_duncan_3', text = "AFTER_MINES_DUNCAN_OPTION_8", reqs = [], dialogue_argument = 2
+		},  {
+			code = 'after_mines_duncan_3', text = "AFTER_MINES_DUNCAN_OPTION_9", reqs = [], dialogue_argument = 2
+		},  ],
+	},
+	
+	after_mines_duncan_3 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan",
+		text = [{text = "AFTER_MINES_DUNCAN_9", reqs = []}],
+		common_effects = [{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
+		options = [ {
+			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_10", reqs = [], dialogue_argument = 2
+		},  {
+			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_11", reqs = [], dialogue_argument = 2
+		},  {
+			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_12", reqs = [], dialogue_argument = 2
+		},  ],
 	},
 	
 }

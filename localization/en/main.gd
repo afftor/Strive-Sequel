@@ -3591,4 +3591,15 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_DUNCAN_5 = """- You were outnumbered, but she just left? I find it hard to believe. We'll drop this for now, but know, you won't be pardoned if there's some deeper connection between you and that rebel helping demon comes up.""",
 	AFTER_MINES_DUNCAN_6 = """- Hmmh. Fine, I'll believe you. But know, you won't be pardoned if there's some deeper connection between you and that rebel helping demon comes up.""",
 	AFTER_MINES_DUNCAN_7 = """- I'll tell you what's that to me. We are not going to tolerate any cooperation with our foes and you can figure what's going to happen if we find out there's  some deeper connection between you and that rebel helping demon.""",
+	AFTER_MINES_DUNCAN_8 = """- So that was about it, the mine is back at work and your mission is finished. However, the timing of this is too inconvenient to think of it as of coincidence. I shall ask you, do you think Workers might have planned this?""",
+	AFTER_MINES_DUNCAN_OPTION_7 = """There might be some connection""",
+	AFTER_MINES_DUNCAN_OPTION_8 = """I don't think so""",
+	AFTER_MINES_DUNCAN_OPTION_9 = """I'd rather not draw any conclusions""",
+	AFTER_MINES_DUNCAN_9 = """- I see. We plan for a large scale operation, so be on a standby in the next few days. I'll send you a messenger once I'm gonna need you. You can go now.""",
+	AFTER_MINES_DUNCAN_OPTION_10 = """I'll be waiting for it then""",
+	AFTER_MINES_DUNCAN_OPTION_11 = """What a pain... I hope it's over soon""",
+	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time""",
+
+
+
 }
