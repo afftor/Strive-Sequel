@@ -736,8 +736,9 @@ func test_mode():
 		#	if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
 		#		i.captured = true
 		
-		ResourceScripts.game_progress.decisions.append("SaveRebels")
-		ResourceScripts.game_progress.decisions.append("PreFinalBossDone")
+		#ResourceScripts.game_progress.decisions.append("SaveRebels")
+		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
+		ResourceScripts.game_progress.decisions.append("AfterMinesTalkedToSigmund") # after we talked to workers
 		#input_handler.interactive_message("after_mines_sigmund_start", '',{})
 		#input_handler.interactive_message('slave_escape', '', {})
 	

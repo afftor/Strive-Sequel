@@ -3574,5 +3574,21 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_SIGMUND_3 = """- Ya' I've received some reports. It seems some of da workers were taken after yer operation. We can't run a proper investigation at the current time, and I can't give you any extra reward. Ya should go see Duncan.""",
 	
 	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with Worker's issues""",
-	
+	AFTER_MINES_DUNCAN_1 = """- That's so... I've been getting some reports on the subject. Can you add anything on it?""",
+	AFTER_MINES_DUNCAN_OPTION_1 = """There was an Orc traveller at the mines""",
+	AFTER_MINES_DUNCAN_OPTION_2 = """I've met a demon out there""",
+	AFTER_MINES_DUNCAN_OPTION_3 = """Nothing else really that worth a mention""",
+	AFTER_MINES_DUNCAN_2 = """- An orc? Huh, that's unusual for them to walk into our lands. But lone orc is not something worthy of notion, if they were to make a big move we would know it already, but they haven't been heard of for decades.""",
+	AFTER_MINES_DUNCAN_3 = """- So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't intrude us. It's a shame to lose the relic to them, but demons are too few and scarce to possess any real threat.""",
+	AFTER_MINES_DUNCAN_4 = """- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.""",
+	AFTER_MINES_DUNCAN_3_4 = """- So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't intrude us. It's a shame to lose the relic to them, but demons are too few and scarce to possess any real threat.
+
+- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.
+""",
+	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice""",
+	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't be saved by that moment""",
+	AFTER_MINES_DUNCAN_OPTION_6 = """What's that to you? We still got the mine back working""",
+	AFTER_MINES_DUNCAN_5 = """- You were outnumbered, but she just left? I find it hard to believe. We'll drop this for now, but know, you won't be pardoned if there's some deeper connection between you and that rebel helping demon comes up.""",
+	AFTER_MINES_DUNCAN_6 = """- Hmmh. Fine, I'll believe you. But know, you won't be pardoned if there's some deeper connection between you and that rebel helping demon comes up.""",
+	AFTER_MINES_DUNCAN_7 = """- I'll tell you what's that to me. We are not going to tolerate any cooperation with our foes and you can figure what's going to happen if we find out there's  some deeper connection between you and that rebel helping demon.""",
 }

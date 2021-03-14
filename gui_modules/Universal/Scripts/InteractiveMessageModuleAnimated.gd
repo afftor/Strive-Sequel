@@ -577,7 +577,7 @@ func show_long_text():
 	$LongFrame.show()
 	$DialogueBG.rect_size.y = $LongFrame.rect_size.y
 	$DialogueBG.rect_position.y = $LongFrame.rect_position.y
-	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - 249
+	$RichTextLabel.rect_size.y = $LongFrame.rect_size.y - 249 - 50
 	$RichTextLabel.rect_position.y = $LongFrame.rect_position.y + 46#($ScrollContainer.rect_size.y * 0.5)
 
 func hide_long_text():
