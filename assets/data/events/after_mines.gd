@@ -103,7 +103,7 @@ var data = {
 	after_mines_duncan_3 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "AFTER_MINES_DUNCAN_9", reqs = []}],
-		common_effects = [{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
+		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 18}]}],
 		options = [ {
 			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_10", reqs = [], dialogue_argument = 2
 		},  {
@@ -113,4 +113,38 @@ var data = {
 		},  ],
 	},
 	
+	after_mines_message = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "AFTER_MINES_MESSAGE", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'decision', value = 'AfterMinesGotTheMessage'}]
+		}],
+	},
+	
+	after_mines_duncan_4 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
+		text = [{text = "AFTER_MINES_DUNCAN_10", reqs = []}],
+		options = [ {
+			code = 'after_mines_duncan_5', text = "AFTER_MINES_DUNCAN_OPTION_14", reqs = [], dialogue_argument = 1
+		}, {
+			code = 'after_mines_duncan_5', text = "AFTER_MINES_DUNCAN_OPTION_15", reqs = [], dialogue_argument = 2
+		} ],
+	},
+	
+	after_mines_duncan_5 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan",
+		text = [{text = "AFTER_MINES_DUNCAN_11", reqs = [], previous_dialogue_option = 1}, 
+		{text = "AFTER_MINES_DUNCAN_12", reqs = [], previous_dialogue_option = 2}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+		}],
+	},
+	
+	after_mines_convoy_1 = {
+		image = null, tags = ['dialogue_scene']	,
+		text = [{text = "AFTER_MINES_CONVOY_1", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+		}],
+	},
 }

@@ -740,7 +740,7 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		ResourceScripts.game_progress.decisions.append("AfterMinesTalkedToSigmund") # after we talked to workers
 		#input_handler.interactive_message("after_mines_sigmund_start", '',{})
-		#input_handler.interactive_message('slave_escape', '', {})
+		input_handler.interactive_message('after_mines_message', '', {})
 	
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():

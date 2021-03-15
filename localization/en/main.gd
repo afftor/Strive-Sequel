@@ -3599,7 +3599,24 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_DUNCAN_OPTION_10 = """I'll be waiting for it then""",
 	AFTER_MINES_DUNCAN_OPTION_11 = """What a pain... I hope it's over soon""",
 	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time""",
+	AFTER_MINES_MESSAGE = """In the morning you receive a messenger from Duncan who declares you're expected to visit him.""",
+	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message""",
+	AFTER_MINES_DUNCAN_10 = """- It's time. We've prepared to siege the [townname] which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for the full fledged siege.
 
+- I'll be leading it and I have a mission for you. There's a convoy of additional food supplies necessary for the operation. You'll have to escort it there. As you do it, your forces will join the siege
+""",
+	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard""",
+	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I must play delivery boy at this time""",
+	AFTER_MINES_DUNCAN_11 = """- Don't take this for granted, there might be rebel or bandit ambushes on the way still.
 
+- Now, we shall meet on the battlefield and put an end to this commotion.""",
+	AFTER_MINES_DUNCAN_12 = """- We all have to make our contributions for the cause. Guilds will not forget your participation once this is over and the mayor election will resume.
 
+- Now, we shall meet on the battlefield and put an end to this commotion.""",
+	AFTER_MINES_CONVOY_1 = """You find the prepared supplies you are supposed to deliver at the depot. A few mules are prepared for you so all you've left to do is to move with your team.""",
+	
+	
+	
+	
+	
 }

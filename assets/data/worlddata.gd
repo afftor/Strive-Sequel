@@ -22,6 +22,7 @@ var lands = {
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {}},
 			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'dialogue_seen', value = 'GINNYVISIT', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
+			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'dialogue_seen', check = true, value = 'AFTER_MINES_DUNCAN_10'}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
