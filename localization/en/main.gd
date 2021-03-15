@@ -3438,8 +3438,7 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 	# MINES ARRIVAL
 	MINES_ARRIVAL_START = """A few hundreds feet away from it you find a half-abandoned post. As you approach it you are met by one of the men, who appears to be a local miner, who seems relieved to meet you. 
 
-- Hello, [Sir]! You must've been sent by the guild. I'm sorry, but the mine was overtaken by rebels a few days ago and we were driven out with few people taken as prisoners who refused to leave.
-""",
+- Hello, [Sir]! You must've been sent by the guild. I'm sorry, but the mine was overtaken by rebels a few days ago and we were driven out with few people taken as prisoners who refused to leave.""",
 	MINES_ARRIVAL_OPTION_1 = """What can you tell me about the mines?""",
 	MINES_ARRIVAL_OPTION_2 = """What the rebels came for?""",
 	MINES_ARRIVAL_OPTION_3 = """I'll deal with it, you can stay back""",
@@ -3465,8 +3464,7 @@ The man disappears in the opposite direction and you proceed to the mine's entra
 
 He shows you a dull, yet unusual metal bracelet hanging from his wrist.
 
-- This is a proof of invitation and my involvement. I thought I might give it a try since it's been difficult to survive as a mage practitioner in our lands recently. But it seems this country has some complex issues too.
-""",
+- This is a proof of invitation and my involvement. I thought I might give it a try since it's been difficult to survive as a mage practitioner in our lands recently. But it seems this country has some complex issues too.""",
 
 	HALF_DUNGEON_EXPLORED_OPTION_3 = """What's been going on in your lands?""",
 	HALF_DUNGEON_EXPLORED_OPTION_4 = """Does magic really worth leaving your country?""",
@@ -3523,8 +3521,7 @@ You observe as the demon leaves taking scared miners with her.""",
 Kurdan leaves following the demon's route.""",
 	PRE_FINAL_BOSS_7 = """You turn to the leftover rebels but realizing they won't be getting a pardon, they do not show signs of surrender.
 
-- Screw that demon bitch, you won't get us alive!
-""",
+- Screw that demon bitch, you won't get us alive!""",
 	PRE_FINAL_BOSS_8 = """Demon: - So trying to play it to the end, eh? And what do you think about it... Kurdan, if I'm correct? Haven't you come here for enlightenment?
 		
 Kurdan: - It seems I've been misguided. I'll have to side with [name] here.
@@ -3554,12 +3551,10 @@ Before you can stop her, she chants a quick spell and disappears in magic vortex
 	PRE_FINAL_BOSS_OPTION_10 = """Well, I could use some payment since you offered.""",
 	PRE_FINAL_BOSS_18 = """- You trully are generous. We will report to the guild once we return others to the work.
 	
-Saying goodbye you leave the mines and head back to Aliron.
-""",
+Saying goodbye you leave the mines and head back to Aliron.""",
 	PRE_FINAL_BOSS_19 = """- It isn't much, but we had some ores left. You can take it.
 	
-You take the foreman's reward and head back to Aliron.
-""",
+You take the foreman's reward and head back to Aliron.""",
 	
 	#After mines
 	AFTER_MINES_WORKERS_OPTION_1 = """I've solved the issue with the mines""",
@@ -3583,8 +3578,7 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_DUNCAN_4 = """- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_3_4 = """- So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't intrude us. It's a shame to lose the relic to them, but demons are too few and scarce to possess any real threat.
 
-- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.
-""",
+- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.""",
 	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice""",
 	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't be saved by that moment""",
 	AFTER_MINES_DUNCAN_OPTION_6 = """What's that to you? We still got the mine back working""",
@@ -3603,8 +3597,7 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message""",
 	AFTER_MINES_DUNCAN_10 = """- It's time. We've prepared to siege the [townname] which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for the full fledged siege.
 
-- I'll be leading it and I have a mission for you. There's a convoy of additional food supplies necessary for the operation. You'll have to escort it there. As you do it, your forces will join the siege
-""",
+- I'll be leading it and I have a mission for you. There's a convoy of additional food supplies necessary for the operation. You'll have to escort it there. As you do it, your forces will join the siege""",
 	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard""",
 	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I must play delivery boy at this time""",
 	AFTER_MINES_DUNCAN_11 = """- Don't take this for granted, there might be rebel or bandit ambushes on the way still.
@@ -3614,9 +3607,13 @@ Sigmund passes you the pouch with some gold in it.""",
 
 - Now, we shall meet on the battlefield and put an end to this commotion.""",
 	AFTER_MINES_CONVOY_1 = """You find the prepared supplies you are supposed to deliver at the depot. A few mules are prepared for you so all you've left to do is to move with your team.""",
-	
-	
-	
-	
+	AFTER_MINES_CONVOY_OPTION_1 = """Move""",
+	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
+	AFTER_MINES_CONVOY_3 = """A few hours after you've left the town you enter the forest. Eventually the thin road among the trees is blocked by the fallen log. You order the men to clear it but as they get to it a large group of rebels jump out of the woods in an attempt to stop your mission.""",
+	AFTER_MINES_CONVOY_4 = """As you strike down the leader, the remnants of the rebel group quickly retreat in the woods. You've thought them a good lesson and they shouldn't give you any more problems as you continue on your mission.""",
+	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As [townname] gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are hardly armed. Once in range one of men kneels before you.
+
+- Your highness, I beg you to spare us some food. The war has been ruthless to us and soldiers took nearly all our food. After that we were attacked by goblins and had to retreat. Our children are starving!""",
+
 	
 }

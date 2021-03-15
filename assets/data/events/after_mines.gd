@@ -141,10 +141,43 @@ var data = {
 	},
 	
 	after_mines_convoy_1 = {
-		image = null, tags = ['dialogue_scene']	,
+		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_1", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_2', text = "AFTER_MINES_CONVOY_OPTION_1", reqs = [], dialogue_argument = 1
+		}, {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
+		}, ],
+	},
+	
+	after_mines_convoy_2 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "AFTER_MINES_CONVOY_2", reqs = []}],
+		options = [ {
+			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}, {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
+		}, ],
+	},
+	
+	after_mines_convoy_fight = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "AFTER_MINES_CONVOY_3", reqs = []}],
+		options = [ {
+			code = 'quest_fight', args = 'rebel_convoy', type = 'next_dialogue',
+			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
+		} ],
+	},
+	
+	rebel_convoy_win = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
+		options = [ {
+			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 		}],
 	},
+	
+	after_mines_convoy_3 = {
+		
+	}
 }

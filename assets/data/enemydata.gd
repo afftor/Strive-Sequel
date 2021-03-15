@@ -17,7 +17,8 @@ var encounters = {
 	rebel_group = {unittype = 'randomgroup', unitcode = 'rebel_group', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_group_win', args = []}], lose_effects = [{code = 'start_event', data = 'rebel_group_lose', args = []}]},
 	demon_kurdan = {unittype = 'randomgroup', unitcode = 'demon_kurdan', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_kurdan_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_kurdan_lose', args = []}]},
 	demon = {unittype = 'randomgroup', unitcode = 'demon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_lose', args = []}]},
-	
+	rebel_convoy = {unittype = 'randomgroup', unitcode = 'rebel_convoy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_convoy_win', args = []}], lose_effects = [{code = 'start_event', data = 'rebel_convoy_lose', args = []}]},
+
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	
