@@ -202,9 +202,9 @@ func assign_to_task(taskcode, taskproduct, iterations = -1):
 func remove_from_task(remember = false):
 	if work != '':
 		for i in ResourceScripts.game_party.active_tasks:
-			if i.code == work && i.task_location == parent.get_location():
+			if i.code == work && i.task_location == parent.get_location() && i.product == workproduct:
 				i.workers.erase(parent.id)
-				i.workers_count -= 1
+				i.workers_count = max(0, i.workers_count - 1)
 	# if remember && work != 'travel':
 	# 	previous_work = work
 	work = ''
@@ -410,7 +410,6 @@ func make_item_sequence(currenttask, craftingitem):
 					make_item_sequence(currenttask, craftingitem)
 			else:
 				if currenttask.messages.has('noresources') == false:
-					print("make_item_sequence")
 					globals.text_log_add('crafting', parent.get_short_name() + ": " + "Not Enough Resources for craft. ")
 					currenttask.messages.append("noresources")
 

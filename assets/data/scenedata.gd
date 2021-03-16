@@ -1298,7 +1298,6 @@ var scenedict = {
 	spring = {
 		text = tr("SPRINGTEXT"), 
 		tags = ['dialogue_scene'],
-		# default_event_type = "character_event",
 		image = '', 
 		options = [
 			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL"), dialogue_argument = 1},

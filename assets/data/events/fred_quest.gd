@@ -1,5 +1,5 @@
 var data = {
-    fred_intro = {
+	fred_intro = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -9,9 +9,9 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
-    },
+	},
 
-    fred_1 = {
+	fred_1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -22,9 +22,9 @@ var data = {
 			{code = "fred_talk_1", text = "FINDFRED_OPTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = 'quest_fight', text = "FINDFRED_OPTION2", reqs = [], args = 'lich_fight_easy', dialogue_argument = 1},
 		]
-    },
+	},
 
-    fred_talk_1 = {
+	fred_talk_1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -37,9 +37,9 @@ var data = {
 			{code = "fred_talk_fail", text = "FINDFRED_TALK1_QUESTION3", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 			{code = "quest_fight", text = "FINDFRED_TALK1_QUESTION4", reqs = [], args = 'lich_fight_easy', dialogue_argument = 4},
 		]
-    },
+	},
 
-    fred_talk_1_answer_1 = {
+	fred_talk_1_answer_1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -53,9 +53,9 @@ var data = {
 			{code = "fred_talk_1_else", text = "FINDFRED_TALK1_QUESTION7", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 			{code = "fred_talk_fail", text = "FINDFRED_TALK1_QUESTION8", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
-    },
+	},
 
-    fred_talk_1_else = {
+	fred_talk_1_else = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -68,9 +68,9 @@ var data = {
 			{code = "fred_talk_fail", text = "FINDFRED_TALK1_CONTRACTOR_FRED", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 			{code = "fred_talk_fail", text = "FINDFRED_TALK1_CONTRACTOR_AVERMIK", reqs = [], dialogue_argument = 4, type = "next_dialogue"},
 		]
-    },
+	},
 
-    fred_talk_fail = {
+	fred_talk_fail = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -78,11 +78,11 @@ var data = {
 			{text = "FINDFRED_TALK_FAIL", reqs = []}
 		],
 		options = [
-            {code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lich_fight_easy', dialogue_argument = 1},
+			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lich_fight_easy', dialogue_argument = 1},
 		]
-    },
+	},
 
-    fred_talk_1_if_greg_1 = {
+	fred_talk_1_if_greg_1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -92,9 +92,9 @@ var data = {
 		options = [
 			{code = "fred_talk_1_if_greg_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
-    },
+	},
 
-    fred_talk_1_if_greg_2 = {
+	fred_talk_1_if_greg_2 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -277,6 +277,6 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
 		]
-    },
+	},
 
 }
