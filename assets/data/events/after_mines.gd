@@ -154,7 +154,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_2", reqs = []}],
 		options = [ {
-			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'screen_black_transition', value = 1}, {code = 'remove_active_location'}]
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
 		}, ],
@@ -164,7 +164,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_3", reqs = []}],
 		options = [ {
-			code = 'quest_fight', args = 'rebel_convoy', type = 'next_dialogue',
+			code = 'quest_fight', args = 'rebel_convoy',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
 		} ],
 	},
@@ -173,11 +173,42 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
 		options = [ {
-			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [{code = 'screen_black_transition', value = 1}]
 		}],
 	},
 	
+	rebel_convoy_lose = {
+		image = null, tags = [],
+		text = [ {text = "", reqs = []} ],
+		options = [ {
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]
+			}
+		]
+	},
+	
 	after_mines_convoy_3 = {
-		
-	}
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "AFTER_MINES_CONVOY_5", reqs = []}],
+		options = [ {
+			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_2", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'decision', value = 'SiegeLostSupplies'}, {code = 'screen_black_transition', value = 1}]
+		}, {
+			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_3", reqs = [], dialogue_argument = 2,
+			bonus_effects = [{code = 'decision', value = 'SiegeHalfSupplies'}, {code = 'screen_black_transition', value = 1}]
+		}, {
+			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_4", reqs = [], dialogue_argument = 3,
+			bonus_effects = [{code = 'screen_black_transition', value = 1}]
+		}, ],
+	},
+	
+	after_mines_convoy_4 = {
+		image = null, tags = ['dialogue_scene'], character = "Duncan",
+		text = [ {text = "AFTER_MINES_CONVOY_6", reqs = [], previous_dialogue_option = 1},
+		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
+		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
+		options = [ {
+			code = 'after_mines_convoy_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
+		}],
+	},
 }

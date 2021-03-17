@@ -45,7 +45,7 @@ var data = {
 		{code = 'workers_elections_continue1', text = "FIGHTERSINTRODUCTION2REPLY6", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 6},
 		{code = 'workers_election_initiate3', text = "FIGHTERSINTRODUCTION2REPLY7", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 7}, 
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
-		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'decision', value = 'AfterMinesTalkedToSigmund', check = true}], dialogue_argument = 8},
+		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'decision', value = 'AfterMinesTalkedToSigmund', check = true}], dialogue_argument = 8, remove_after_first_use = true},
 		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'decision', value = 'AfterMinesGotTheMessage', check = true}], dialogue_argument = 9},
 		],
 		

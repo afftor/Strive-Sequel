@@ -78,6 +78,7 @@ var enemygroups = {
 	rebel_group = {reqs = [], units = {rebel_recruit = [1,1]}},
 	demon_kurdan = {reqs = [], units = {undead_lich = [1,1]}},
 	demon = {reqs = [], units = {zombie = [1,1]}},
+	rebel_convoy = {reqs = [], units = {rebel_recruit = [1,2]}},
 	
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},

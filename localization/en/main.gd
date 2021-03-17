@@ -3614,6 +3614,20 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As [townname] gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are hardly armed. Once in range one of men kneels before you.
 
 - Your highness, I beg you to spare us some food. The war has been ruthless to us and soldiers took nearly all our food. After that we were attacked by goblins and had to retreat. Our children are starving!""",
+	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need""",
+	AFTER_MINES_CONVOY_OPTION_3 = """We can spare you a half of what we have""",
+	AFTER_MINES_CONVOY_OPTION_4 = """It's none of my business""",
+	AFTER_MINES_CONVOY_6 = """- We can't thank you enough for this, [Sir]. 
 
+After some time you are left alone with only tenth of original provision. Duncan will surely not like this but there's nothing can be done now. Perhaps at least your deed will earn you some recognition among commonfolk...""",
+	AFTER_MINES_CONVOY_7 = """You order your men to unload half of the provision and allow refugees to take it. 
+
+- Thank you, [Sir]! We will be praying for your safety.
+
+You part ways considering how you are going to explain this to Duncan...""",
+	AFTER_MINES_CONVOY_8 = """You reject refugees any supplies. With no other option they miserably see you off.""",
+	
+	
+	
 	
 }
