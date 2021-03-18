@@ -1372,7 +1372,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage1'}], 
+			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'}], 
 			target = 'duncan_not_found',
 			target_option = 2,
 		},
@@ -1559,8 +1559,10 @@ var quests = {
 	lead_convoy_quest = {
 		code = 'lead_convoy_quest',
 		stages = {
-			stage1 = {code ='stage1', name = 'Lead convoy', descript = "Meet Duncan in Aliron"},
-			stage2 = {code = 'stage2', name = 'Story Complete', descript = "You've beaten current game's story. Thank you for playing! "}
+			stage1 = {code ='stage1', name = 'Lead the convoy', descript = "Meet Fighters guild leader"},
+			stage2 = {code = 'stage2', name = 'Lead the convoy', descript = "Wait for the word from Duncan"},
+			stage2_1 = {code = 'stage2_1', name = 'Lead the convoy', descript = "Talk to Duncan"},
+			stage3 = {code = 'stage3', name = 'Lead the convoy', descript = "Meet Duncan at Aliron streets"}
 		},
 	
 	},
