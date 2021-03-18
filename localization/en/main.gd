@@ -3627,6 +3627,37 @@ After some time you are left alone with only tenth of original provision. Duncan
 You part ways considering how you are going to explain this to Duncan...""",
 	AFTER_MINES_CONVOY_8 = """You reject refugees any supplies. With no other option they miserably see you off.""",
 	DUNCAN_NOT_FOUND = """You've tried to find Duncan, but it seems he's not around. You'll have to join him during the siege.""",
+	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by guilds united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.
+""",
+	AFTER_MINES_CONVOY_10 = """- You finally arrive, [name]. I've received a report that you're missing a considerable amount of provision. Explain yourself.""",
+	AFTER_MINES_CONVOY_OPTION_5 = """I've met a group of refugees who needed them""",
+	AFTER_MINES_CONVOY_OPTION_6 = """The bandits attacked us and stole it in the ruckus (lie)""",
+	AFTER_MINES_CONVOY_11 = """- You've had a clear instruction, yet decided to go against it. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now get ready for battle.
+	""",
+	AFTER_MINES_CONVOY_12 = """- A failure is a failure. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now get ready for battle.""",
+	AFTER_MINES_CONVOY_13 = """- Greetings, [name]. I see you've completed your mission successfully. That's content to have a capable subordinate for once.""",
+	AFTER_MINES_CONVOY_14 = """Inside the settlement walls rebels have been fortifying their defence in preparation for upcoming battle. 
+
+Aire: - The guilds forces are preparing for attack. There's roughly about 2 thousand troops. Those are trained soldiers and mages. Even in our position I doubt we can do it.
+
+Greg: - You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards on my own.
+
+Aire: -... Yes Sir.""",
+	AFTER_MINES_CONVOY_15 = """A few hundred feet away from town's walls Duncan faced Anastasia as an established etiquette. 
+
+Anastasia: - It pains me to see how people are suffering because of our actions but we won't lay down our weapon. 
+
+Duncan: - I shall thank you once we are done. It's been a while since my last battlefield.""",
+	AFTER_MINES_CONVOY_16 = """Anastasia threw an angry glance at Duncan.
+
+Anastasia: - That's all you gonna say now? After killing my father?
+
+Duncan: - I have nothing else to say to a child here. Let's get this over with.""",
+	AFTER_MINES_CONVOY_17 = """Despite her irritation Anastasia managed to collect herself and present her royal upbringing by a calm answer. 
+
+Anastasia: - Very well. The gods shall find the just. 
+
+Duncan: - The gods shall find the just.""",
 	
 	
 	

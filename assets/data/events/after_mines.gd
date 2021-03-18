@@ -155,7 +155,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_2", reqs = []}],
 		options = [ {
-			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'screen_black_transition', value = 1}]
+			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'screen_black_transition', value = 0.5}]
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
 		}, ],
@@ -175,7 +175,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
 		options = [ {
 			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, 
-			bonus_effects = [{code = 'screen_black_transition', value = 1}]
+			bonus_effects = [{code = 'screen_black_transition', value = 0.5}]
 		}],
 	},
 	
@@ -193,18 +193,18 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_5", reqs = []}],
 		options = [ {
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_2", reqs = [], dialogue_argument = 1,
-			bonus_effects = [{code = 'decision', value = 'SiegeLostSupplies'}, {code = 'screen_black_transition', value = 1}]
+			bonus_effects = [{code = 'decision', value = 'SiegeLostSupplies'}, {code = 'screen_black_transition', value = 0.5}]
 		}, {
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_3", reqs = [], dialogue_argument = 2,
-			bonus_effects = [{code = 'decision', value = 'SiegeHalfSupplies'}, {code = 'screen_black_transition', value = 1}]
+			bonus_effects = [{code = 'decision', value = 'SiegeHalfSupplies'}, {code = 'screen_black_transition', value = 0.5}]
 		}, {
 			code = 'after_mines_convoy_4', text = "AFTER_MINES_CONVOY_OPTION_4", reqs = [], dialogue_argument = 3,
-			bonus_effects = [{code = 'screen_black_transition', value = 1}]
+			bonus_effects = [{code = 'screen_black_transition', value = 0.5}]
 		}, ],
 	},
 	
 	after_mines_convoy_4 = {
-		image = null, tags = ['dialogue_scene'], character = "duncan",
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		text = [ {text = "AFTER_MINES_CONVOY_6", reqs = [], previous_dialogue_option = 1},
 		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
 		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
@@ -219,5 +219,75 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 4
 		}],
-	}
+	},
+	
+	after_mines_convoy_5 = {
+		variations = [ {
+				reqs = [{type = 'decision', value = 'SiegeLostSupplies', check = false}, 
+				{type = 'decision', value = 'SiegeHalfSupplies', check = false}],
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
+				text = [{text = "AFTER_MINES_CONVOY_9", reqs = []}, {text = "AFTER_MINES_CONVOY_13", reqs = []},],
+				options = [ {
+				code = 'after_mines_convoy_7',
+				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3
+				} ]
+			}, {
+				reqs = [],
+				image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
+				text = [{text = "AFTER_MINES_CONVOY_9", reqs = []}, {text = "AFTER_MINES_CONVOY_10", reqs = []},],
+				options = [ {
+				code = 'after_mines_convoy_6',
+				text = "AFTER_MINES_CONVOY_OPTION_5", reqs = [], dialogue_argument = 1
+				}, {
+				code = 'after_mines_convoy_6',
+				text = "AFTER_MINES_CONVOY_OPTION_6", reqs = [], dialogue_argument = 2
+				} ]
+			}
+		],
+	},
+	
+	after_mines_convoy_6 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
+		text = [{text = "AFTER_MINES_CONVOY_11", reqs = [], previous_dialogue_option = 1}, 
+		{text = "AFTER_MINES_CONVOY_12", reqs = [], previous_dialogue_option = 2}],
+		options = [ {
+			code = 'after_mines_convoy_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}],
+	},
+	
+	after_mines_convoy_7 = {
+		image = null, tags = ['dialogue_scene'], character = "aire", character2 = "greg",
+		text = [{text = "AFTER_MINES_CONVOY_14", reqs = []}],
+		common_effects = [{code = 'screen_black_transition', value = 0.5}],
+		options = [ {
+			code = 'after_mines_convoy_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}],
+	},
+	
+	after_mines_convoy_8 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "anastasia",
+		text = [{text = "AFTER_MINES_CONVOY_15", reqs = []}],
+		common_effects = [{code = 'screen_black_transition', value = 0.5}],
+		options = [ {
+			code = 'after_mines_convoy_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}],
+	},
+	
+	after_mines_convoy_9 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "anastasia",
+		text = [{text = "AFTER_MINES_CONVOY_16", reqs = []}],
+		common_effects = [{code = 'screen_black_transition', value = 0.5}],
+		options = [ {
+			code = 'after_mines_convoy_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+		}],
+	},
+	
+	after_mines_convoy_10 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "anastasia",
+		text = [{text = "AFTER_MINES_CONVOY_17", reqs = []}],
+		common_effects = [{code = 'screen_black_transition', value = 0.5}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+		}],
+	},
 }
