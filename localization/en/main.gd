@@ -3626,7 +3626,7 @@ After some time you are left alone with only tenth of original provision. Duncan
 
 You part ways considering how you are going to explain this to Duncan...""",
 	AFTER_MINES_CONVOY_8 = """You reject refugees any supplies. With no other option they miserably see you off.""",
-	
+	DUNCAN_NOT_FOUND = """You've tried to find Duncan, but it seems he's not around. You'll have to join him during the siege.""",
 	
 	
 	

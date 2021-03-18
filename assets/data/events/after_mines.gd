@@ -135,6 +135,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "AFTER_MINES_DUNCAN_11", reqs = [], previous_dialogue_option = 1}, 
 		{text = "AFTER_MINES_DUNCAN_12", reqs = [], previous_dialogue_option = 2}],
+		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}, {code = "update_guild"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
 		}],
@@ -154,7 +155,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_2", reqs = []}],
 		options = [ {
-			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'screen_black_transition', value = 1}, {code = 'remove_active_location'}]
+			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'screen_black_transition', value = 1}]
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
 		}, ],
@@ -203,7 +204,7 @@ var data = {
 	},
 	
 	after_mines_convoy_4 = {
-		image = null, tags = ['dialogue_scene'], character = "Duncan",
+		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [ {text = "AFTER_MINES_CONVOY_6", reqs = [], previous_dialogue_option = 1},
 		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
 		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
@@ -211,4 +212,12 @@ var data = {
 			code = 'after_mines_convoy_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
 		}],
 	},
+	
+	duncan_not_found = {
+		image = null, tags = ['dialogue_scene'],
+		text = [ {text = "DUNCAN_NOT_FOUND", reqs = []} ],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 4
+		}],
+	}
 }

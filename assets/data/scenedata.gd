@@ -1372,6 +1372,13 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage1'}], 
+			target = 'duncan_not_found',
+			target_option = 2,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], 
 			target = 'fighters_introduction2',
 			target_option = 3,
@@ -1545,6 +1552,15 @@ var quests = {
 			#start = {code ='start', name = 'Church Quest Name1', descript = "Church Quest Descript1"},
 			stage1 = {code ='stage1', name = 'Initiation', descript = "Ginny from Aliron's church of Celena asked you to brign her 25 Meat Soups."},
 			#stage2 = {code ='stage2', name = 'Church Quest Name3', descript = "Church Quest Descript3"},
+		},
+	
+	},
+	
+	lead_convoy_quest = {
+		code = 'lead_convoy_quest',
+		stages = {
+			stage1 = {code ='stage1', name = 'Lead convoy', descript = "Meet Duncan in Aliron"},
+			stage2 = {code = 'stage2', name = 'Story Complete', descript = "You've beaten current game's story. Thank you for playing! "}
 		},
 	
 	},
