@@ -18,8 +18,8 @@ onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule
 onready var submodules = []
 
-export var test_mode = false
-export var generate_test_chars = false
+export var test_mode = true
+export var generate_test_chars = true
 
 
 signal tut_option_selected
@@ -737,10 +737,10 @@ func test_mode():
 				#i.captured = true
 		
 		#ResourceScripts.game_progress.decisions.append("SaveRebels")
-		ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
+		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("AfterMinesTalkedToSigmund") # after we talked to workers
-		#input_handler.interactive_message("after_mines_sigmund_start", '',{})
-		#input_handler.interactive_message('after_mines_message', '', {})
+		#input_handler.interactive_message("after_mines_convoy_2", '',{})
+		input_handler.interactive_message('after_mines_message', '', {})
 	
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():

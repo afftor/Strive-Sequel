@@ -158,7 +158,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_CONVOY_2", reqs = []}],
 		options = [ {
-			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, #bonus_effects = [{code = 'screen_black_transition', value = 0.5}]
+			code = 'after_mines_convoy_fight', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'teleport_active_location', to_loc = {area = 'plains', location = 'settlement_plains1', code = 'settlement_plains1'}}]
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2
 		}, ],

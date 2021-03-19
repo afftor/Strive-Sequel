@@ -158,7 +158,7 @@ func find_location_from_req(req):
 func get_area_capital(area):
 	if !area.has('capital'):return null
 	if area.capital.empty():return null
-	return area.capital.keys[0]
+	return area.capital.keys()[0]
 
 
 func find_location_by_data(data):

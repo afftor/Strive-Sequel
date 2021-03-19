@@ -1255,6 +1255,7 @@ func common_effects(effects):
 			'teleport_active_character':
 				input_handler.active_character.teleport(i.to_loc)
 			'teleport_active_location':
+				gui_controller.nav_panel.return_to_mansion()
 				for pos in input_handler.active_location.group:
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
