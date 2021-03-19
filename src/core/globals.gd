@@ -1010,6 +1010,8 @@ func remove_location(locationid):
 	return_characters_from_location(locationid)
 	area.locations.erase(location.id)
 	area.questlocations.erase(location.id)
+	ResourceScripts.game_world.location_links.erase(location.id)
+	
 	input_handler.update_slave_list()
 	if gui_controller.current_screen == gui_controller.mansion:
 		gui_controller.mansion.mansion_state_set("default")
@@ -1174,9 +1176,9 @@ func common_effects(effects):
 						break
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
-				globals.complete_location(input_handler.active_location.id)
+				complete_location(input_handler.active_location.id)
 			'remove_active_location':
-				globals.remove_location(input_handler.active_location.id)
+				remove_location(input_handler.active_location.id)
 			'complete_event':
 				pass
 			'reputation':
@@ -1245,6 +1247,28 @@ func common_effects(effects):
 					input_handler.play_unlock_class_anim(i.name)
 			'reset_day_count':
 				ResourceScripts.game_progress.reset_day_count(i.quest)
+			#to_loc and from_loc are location-defining data dicts 
+			#in formats:
+			#{area = area_id} - means area capital
+			#{location = location_id}
+			#{code = location_code} - means first id-wise existing location with given code
+			'teleport_active_character':
+				input_handler.active_character.teleport(i.to_loc)
+			'teleport_active_location':
+				for pos in input_handler.active_location.group:
+					var ch_id = input_handler.active_location.group[pos]
+					if ch_id != null:
+						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
+			'teleport_location':
+				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
+				if locdata.location == null:
+					print("teleportation from %s failed" % str(i.from_loc))
+					return 
+				locdata = ResourceScripts.world_gen.get_location_from_code(locdata.location)
+				for pos in locdata.group:
+					var ch_id = locdata.group[pos]
+					if ch_id != null:
+						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
 
 
 func get_nquest_for_rep(value):

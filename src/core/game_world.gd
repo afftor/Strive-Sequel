@@ -147,19 +147,51 @@ func take_quest(quest, area):
 			i.completed = false
 			location_links[location.id] = {area = area.code, category = 'questlocations'}
 
+
 func find_location_from_req(req):
 	var location = null
 	if areas[req.area].questlocation.has(req.location):
 		location = req.location
 	return location
 
+
+func get_area_capital(area):
+	if !area.has('capital'):return null
+	if area.capital.empty():return null
+	return area.capital.keys[0]
+
+
+func find_location_by_data(data):
+	var location = null
+	var area = null
+	if data.has('area'): 
+		if areas.has(data.area): area = areas[data.area]
+		else: 
+			print("error - no area %s" % data.area)
+			return null
+		if area.has('capital'):
+			location = get_area_capital(area)
+		else: 
+			print("error - no capital in area %s" % data.area)
+			return null
+	elif data.has('id'):
+		location = data.id
+		area = ResourceScripts.world_gen.get_area_from_location_code(location)
+	elif data.has('code'):
+		for id in location_links:
+			location = id
+			area = location_links[id].area
+			if !areas[area][location_links[id].category].has(location): continue
+			var loc_data = areas[area][location_links[id].category][location]
+			if loc_data.code == data.code: break
+	return {location = location, area = area}
+
+
+
 func fail_quest(quest):
 	quest.state = 'failed'
 	for i in quest.requirements:
-		if i.code in ['complete_location','complete_dungeon']:
-			globals.return_characters_from_location(i.location)
-			areas[i.area].locations.erase(i.location)
-			areas[i.area].questlocations.erase(i.location)
+		if i.code in ['complete_location','complete_dungeon']: globals.remove_location(i.location)
 
 func get_quest_by_id(id):
 	for i in ResourceScripts.game_world.areas.values():

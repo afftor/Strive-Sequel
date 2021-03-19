@@ -627,6 +627,22 @@ func affect_char(i):
 		'effect':
 			var eff = effects_pool.e_createfromtemplate(Effectdata.effect_table[i.value])
 			apply_effect(effects_pool.add_effect(eff))
+		'teleport':
+			teleport(i.value)
+
+func teleport(data):
+	var locdata = ResourceScripts.game_world.find_location_by_data(data)
+	if locdata.area == null or locdata.location == null:
+		print("teleportation to %s failed" % str(data))
+		return
+	xp_module.remove_from_task()
+	travel.location = locdata.location
+	travel.area = locdata.area
+	travel.travel_time = 0
+	globals.emit_signal("slave_arrived", self)
+	input_handler.update_slave_list()
+	#add logging if reqired
+
 
 func process_check(check): #compatibility stub
 	return checkreqs(check) 
