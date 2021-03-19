@@ -1,5 +1,5 @@
 var data = {
-    intermission_intro1 = {
+	intermission_intro1 = {
 		image = null,
 		# character = "greg",
 		# character2 = "myr",

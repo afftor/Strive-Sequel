@@ -87,7 +87,7 @@ var data = {
 					{type = 'dialogue_selected', check = true, value = 'AFTER_MINES_DUNCAN_OPTION_2'}, ], dialogue_argument = 3
 				} ],
 			},
-				]
+		]
 	},
 	
 	after_mines_duncan_2 = {
