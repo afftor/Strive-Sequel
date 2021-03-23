@@ -22,6 +22,7 @@ var lands = {
 			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {}},
 			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'dialogue_seen', value = 'GINNYVISIT', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
+			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'dialogue_seen', check = true, value = 'AFTER_MINES_DUNCAN_10'}], args = {"oneshot": false}},
 			],
 		capital_options = ['quest_board','location_purchase'],
 		material_tiers = {easy = 1, medium = 0.2, hard = 0.05},
@@ -1342,13 +1343,18 @@ var dungeons = {
 		eventarray = [], 
 		levels = [1,1], 
 		resources = [],
-		gatherable_resources = {},
-		gather_mod = [],
+		#gatherable_resources = {},
+		#gather_mod = [],
+		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
 		stages_per_level = [10,10],
 		bgm = "dungeon",
 		purchase_price = 0,
 		affiliation = 'local', #defines character races and events
 		events = [],
+		
+		area = 'plains',
+		travel_time = [4,6],
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
@@ -1479,31 +1485,6 @@ var dungeons = {
 		purchase_price = 500,
 		affiliation = 'local',
 		events = [],
-	},
-	
-dungeon_quest_mines = {
-		code = 'dungeon_quest_mines',
-		type = 'dungeon',
-		name = 'quest_mines',
-		classname = '',
-		descript = '',
-		difficulty = 'easy',
-		background_pool = ['cave_1'],
-		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
-		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
-		eventarray = [], 
-		levels = [1,1], 
-		resources = [],
-		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
-		gather_mod = [2.5,4], #temp mod for the game to work
-		stages_per_level = [10,10],
-		bgm = "dungeon",
-		purchase_price = 0,
-		affiliation = 'local', #defines character races and events
-		events = [],
-		
-		area = 'plains',
-		travel_time = [4,6],
 	},
 	
 #	dungeon_frozen_domain = {

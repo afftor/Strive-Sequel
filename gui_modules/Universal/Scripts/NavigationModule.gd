@@ -149,3 +149,5 @@ func return_to_mansion(with_state = "default"):
 	update_buttons()
 	gui_controller.exploration.hide()
 	gui_controller.close_all_closeable_windows()
+	
+	gui_controller.dialogue.raise()

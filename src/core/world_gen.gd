@@ -46,7 +46,7 @@ func make_area(code):
 		ResourceScripts.game_world.capitals.append(areadata.capital_code)
 		areadata.capital = {}
 		ResourceScripts.game_world.location_links[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code}
-		areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code}
+		areadata.capital[areadata.capital_code] = {name = areadata.capital_name, area = areadata.code, type = 'capital', travel_time = 0, category = 'capital', id = areadata.capital_code, group = {}}
 	for i in areadata.guilds:
 		make_guild(i, areadata)
 	areadata.erase('guilds')

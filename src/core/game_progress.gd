@@ -76,7 +76,6 @@ func check_timed_events():
 						return
 			input_handler.interactive_message(i.code, 'story_event', {})
 			stored_events.timed_events.erase(i)
-			break
 
 #checks
 func if_quest_stage(name, value, operant):

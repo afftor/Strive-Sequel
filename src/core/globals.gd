@@ -1255,6 +1255,7 @@ func common_effects(effects):
 			'teleport_active_character':
 				input_handler.active_character.teleport(i.to_loc)
 			'teleport_active_location':
+				input_handler.exploration_node.open_location(ResourceScripts.world_gen.get_location_from_code(i.to_loc.code))
 				for pos in input_handler.active_location.group:
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
@@ -1269,6 +1270,8 @@ func common_effects(effects):
 					var ch_id = locdata.group[pos]
 					if ch_id != null:
 						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
+			'return_to_mansion':
+				gui_controller.nav_panel.return_to_mansion()
 
 
 func get_nquest_for_rep(value):

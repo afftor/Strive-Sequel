@@ -3438,8 +3438,7 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 	# MINES ARRIVAL
 	MINES_ARRIVAL_START = """A few hundreds feet away from it you find a half-abandoned post. As you approach it you are met by one of the men, who appears to be a local miner, who seems relieved to meet you. 
 
-- Hello, [Sir]! You must've been sent by the guild. I'm sorry, but the mine was overtaken by rebels a few days ago and we were driven out with few people taken as prisoners who refused to leave.
-""",
+- Hello, [Sir]! You must've been sent by the guild. I'm sorry, but the mine was overtaken by rebels a few days ago and we were driven out with few people taken as prisoners who refused to leave.""",
 	MINES_ARRIVAL_OPTION_1 = """What can you tell me about the mines?""",
 	MINES_ARRIVAL_OPTION_2 = """What the rebels came for?""",
 	MINES_ARRIVAL_OPTION_3 = """I'll deal with it, you can stay back""",
@@ -3465,8 +3464,7 @@ The man disappears in the opposite direction and you proceed to the mine's entra
 
 He shows you a dull, yet unusual metal bracelet hanging from his wrist.
 
-- This is a proof of invitation and my involvement. I thought I might give it a try since it's been difficult to survive as a mage practitioner in our lands recently. But it seems this country has some complex issues too.
-""",
+- This is a proof of invitation and my involvement. I thought I might give it a try since it's been difficult to survive as a mage practitioner in our lands recently. But it seems this country has some complex issues too.""",
 
 	HALF_DUNGEON_EXPLORED_OPTION_3 = """What's been going on in your lands?""",
 	HALF_DUNGEON_EXPLORED_OPTION_4 = """Does magic really worth leaving your country?""",
@@ -3523,8 +3521,7 @@ You observe as the demon leaves taking scared miners with her.""",
 Kurdan leaves following the demon's route.""",
 	PRE_FINAL_BOSS_7 = """You turn to the leftover rebels but realizing they won't be getting a pardon, they do not show signs of surrender.
 
-- Screw that demon bitch, you won't get us alive!
-""",
+- Screw that demon bitch, you won't get us alive!""",
 	PRE_FINAL_BOSS_8 = """Demon: - So trying to play it to the end, eh? And what do you think about it... Kurdan, if I'm correct? Haven't you come here for enlightenment?
 		
 Kurdan: - It seems I've been misguided. I'll have to side with [name] here.
@@ -3554,11 +3551,114 @@ Before you can stop her, she chants a quick spell and disappears in magic vortex
 	PRE_FINAL_BOSS_OPTION_10 = """Well, I could use some payment since you offered.""",
 	PRE_FINAL_BOSS_18 = """- You trully are generous. We will report to the guild once we return others to the work.
 	
-Saying goodbye you leave the mines and head back to Aliron.
-""",
+Saying goodbye you leave the mines and head back to Aliron.""",
 	PRE_FINAL_BOSS_19 = """- It isn't much, but we had some ores left. You can take it.
 	
-You take the foreman's reward and head back to Aliron.
-""",
+You take the foreman's reward and head back to Aliron.""",
+	
+	#After mines
+	AFTER_MINES_WORKERS_OPTION_1 = """I've solved the issue with the mines""",
+	AFTER_MINES_SIGMUND_START = """- That's great news. I've already set da preparations so we will resume da work as soon as possible. Ya've earned yar reward. 
 
+Sigmund passes you the pouch with some gold in it.""",
+	AFTER_MINES_SIGMUND_OPTION_1 = """Thanks, if there's nothing else I'll be going""",
+	AFTER_MINES_SIGMUND_OPTION_2 = """There was somebody unusual among the rebels""",
+	AFTER_MINES_SIGMUND_1 = """- Go on, I think Duncan will be interested to hear dat ya done.""",
+	AFTER_MINES_SIGMUND_2 = """- Ya? Well, it ain't our problems, better report about it to Duncan.""",
+	AFTER_MINES_WORKERS_OPTION_2 = """I've solved the issue with the mines, but there were some casualties""",
+	AFTER_MINES_SIGMUND_3 = """- Ya' I've received some reports. It seems some of da workers were taken after yer operation. We can't run a proper investigation at the current time, and I can't give you any extra reward. Ya should go see Duncan.""",
+	
+	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with Worker's issues""",
+	AFTER_MINES_DUNCAN_1 = """- That's so... I've been getting some reports on the subject. Can you add anything on it?""",
+	AFTER_MINES_DUNCAN_OPTION_1 = """There was an Orc traveller at the mines""",
+	AFTER_MINES_DUNCAN_OPTION_2 = """I've met a demon out there""",
+	AFTER_MINES_DUNCAN_OPTION_3 = """Nothing else really that worth a mention""",
+	AFTER_MINES_DUNCAN_2 = """- An orc? Huh, that's unusual for them to walk into our lands. But lone orc is not something worthy of notion, if they were to make a big move we would know it already, but they haven't been heard of for decades.""",
+	AFTER_MINES_DUNCAN_3 = """- So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't intrude us. It's a shame to lose the relic to them, but demons are too few and scarce to possess any real threat.""",
+	AFTER_MINES_DUNCAN_4 = """- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.""",
+	AFTER_MINES_DUNCAN_3_4 = """- So, it might have been the demon you've mentioned earlier. From the way you say it, she was up to something, but it shouldn't intrude us. It's a shame to lose the relic to them, but demons are too few and scarce to possess any real threat.
+
+- But I've also heard you've let that demon go without a fight, and take some workers with her. Explain yourself.""",
+	AFTER_MINES_DUNCAN_OPTION_4 = """I was outnumbered and had no choice""",
+	AFTER_MINES_DUNCAN_OPTION_5 = """The miners couldn't be saved by that moment""",
+	AFTER_MINES_DUNCAN_OPTION_6 = """What's that to you? We still got the mine back working""",
+	AFTER_MINES_DUNCAN_5 = """- You were outnumbered, but she just left? I find it hard to believe. We'll drop this for now, but know, you won't be pardoned if there's some deeper connection between you and that rebel helping demon comes up.""",
+	AFTER_MINES_DUNCAN_6 = """- Hmmh. Fine, I'll believe you. But know, you won't be pardoned if there's some deeper connection between you and that rebel helping demon comes up.""",
+	AFTER_MINES_DUNCAN_7 = """- I'll tell you what's that to me. We are not going to tolerate any cooperation with our foes and you can figure what's going to happen if we find out there's  some deeper connection between you and that rebel helping demon.""",
+	AFTER_MINES_DUNCAN_8 = """- So that was about it, the mine is back at work and your mission is finished. However, the timing of this is too inconvenient to think of it as of coincidence. I shall ask you, do you think Workers might have planned this?""",
+	AFTER_MINES_DUNCAN_OPTION_7 = """There might be some connection""",
+	AFTER_MINES_DUNCAN_OPTION_8 = """I don't think so""",
+	AFTER_MINES_DUNCAN_OPTION_9 = """I'd rather not draw any conclusions""",
+	AFTER_MINES_DUNCAN_9 = """- I see. We plan for a large scale operation, so be on a standby in the next few days. I'll send you a messenger once I'm gonna need you. You can go now.""",
+	AFTER_MINES_DUNCAN_OPTION_10 = """I'll be waiting for it then""",
+	AFTER_MINES_DUNCAN_OPTION_11 = """What a pain... I hope it's over soon""",
+	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time""",
+	AFTER_MINES_MESSAGE = """In the morning you receive a messenger from Duncan who declares you're expected to visit him.""",
+	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message""",
+	AFTER_MINES_DUNCAN_10 = """- It's time. We've prepared to siege the [townname] which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for the full fledged siege.
+
+- I'll be leading it and I have a mission for you. There's a convoy of additional food supplies necessary for the operation. You'll have to escort it there. As you do it, your forces will join the siege""",
+	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard""",
+	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I must play delivery boy at this time""",
+	AFTER_MINES_DUNCAN_11 = """- Don't take this for granted, there might be rebel or bandit ambushes on the way still.
+
+- Now, we shall meet on the battlefield and put an end to this commotion.""",
+	AFTER_MINES_DUNCAN_12 = """- We all have to make our contributions for the cause. Guilds will not forget your participation once this is over and the mayor election will resume.
+
+- Now, we shall meet on the battlefield and put an end to this commotion.""",
+	AFTER_MINES_CONVOY_1 = """You find the prepared supplies you are supposed to deliver at the depot. A few mules are prepared for you so all you've left to do is to move with your team.""",
+	AFTER_MINES_CONVOY_OPTION_1 = """Move""",
+	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
+	AFTER_MINES_CONVOY_3 = """A few hours after you've left the town you enter the forest. Eventually the thin road among the trees is blocked by the fallen log. You order the men to clear it but as they get to it a large group of rebels jump out of the woods in an attempt to stop your mission.""",
+	AFTER_MINES_CONVOY_4 = """As you strike down the leader, the remnants of the rebel group quickly retreat in the woods. You've thought them a good lesson and they shouldn't give you any more problems as you continue on your mission.""",
+	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As [townname] gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are hardly armed. Once in range one of men kneels before you.
+
+- Your highness, I beg you to spare us some food. The war has been ruthless to us and soldiers took nearly all our food. After that we were attacked by goblins and had to retreat. Our children are starving!""",
+	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need""",
+	AFTER_MINES_CONVOY_OPTION_3 = """We can spare you a half of what we have""",
+	AFTER_MINES_CONVOY_OPTION_4 = """It's none of my business""",
+	AFTER_MINES_CONVOY_6 = """- We can't thank you enough for this, [Sir]. 
+
+After some time you are left alone with only tenth of original provision. Duncan will surely not like this but there's nothing can be done now. Perhaps at least your deed will earn you some recognition among commonfolk...""",
+	AFTER_MINES_CONVOY_7 = """You order your men to unload half of the provision and allow refugees to take it. 
+
+- Thank you, [Sir]! We will be praying for your safety.
+
+You part ways considering how you are going to explain this to Duncan...""",
+	AFTER_MINES_CONVOY_8 = """You reject refugees any supplies. With no other option they miserably see you off.""",
+	DUNCAN_NOT_FOUND = """You've tried to find Duncan, but it seems he's not around. You'll have to join him during the siege.""",
+	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by guilds united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.
+""",
+	AFTER_MINES_CONVOY_10 = """- You finally arrive, [name]. I've received a report that you're missing a considerable amount of provision. Explain yourself.""",
+	AFTER_MINES_CONVOY_OPTION_5 = """I've met a group of refugees who needed them""",
+	AFTER_MINES_CONVOY_OPTION_6 = """The bandits attacked us and stole it in the ruckus (lie)""",
+	AFTER_MINES_CONVOY_11 = """- You've had a clear instruction, yet decided to go against it. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now get ready for battle.
+	""",
+	AFTER_MINES_CONVOY_12 = """- A failure is a failure. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now get ready for battle.""",
+	AFTER_MINES_CONVOY_13 = """- Greetings, [name]. I see you've completed your mission successfully. That's content to have a capable subordinate for once.""",
+	AFTER_MINES_CONVOY_14 = """Inside the settlement walls rebels have been fortifying their defence in preparation for upcoming battle. 
+
+Aire: - The guilds forces are preparing for attack. There's roughly about 2 thousand troops. Those are trained soldiers and mages. Even in our position I doubt we can do it.
+
+Greg: - You are not in a position to doubt anything. Take your place and get ready for battle. We have enough forces to protect this shady town and if anything I have a couple of trump cards on my own.
+
+Aire: -... Yes Sir.""",
+	AFTER_MINES_CONVOY_15 = """A few hundred feet away from town's walls Duncan faced Anastasia as an established etiquette. 
+
+Anastasia: - It pains me to see how people are suffering because of our actions but we won't lay down our weapon. 
+
+Duncan: - I shall thank you once we are done. It's been a while since my last battlefield.""",
+	AFTER_MINES_CONVOY_16 = """Anastasia threw an angry glance at Duncan.
+
+Anastasia: - That's all you gonna say now? After killing my father?
+
+Duncan: - I have nothing else to say to a child here. Let's get this over with.""",
+	AFTER_MINES_CONVOY_17 = """Despite her irritation Anastasia managed to collect herself and present her royal upbringing by a calm answer. 
+
+Anastasia: - Very well. The gods shall find the just. 
+
+Duncan: - The gods shall find the just.""",
+	
+	
+	
 }
