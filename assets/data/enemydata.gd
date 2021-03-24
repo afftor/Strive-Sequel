@@ -18,7 +18,9 @@ var encounters = {
 	demon_kurdan = {unittype = 'randomgroup', unitcode = 'demon_kurdan', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_kurdan_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_kurdan_lose', args = []}]},
 	demon = {unittype = 'randomgroup', unitcode = 'demon', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'demon_win', args = []}], lose_effects = [{code = 'start_event', data = 'demon_lose', args = []}]},
 	rebel_convoy = {unittype = 'randomgroup', unitcode = 'rebel_convoy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'rebel_convoy_win', args = []}], lose_effects = [{code = 'start_event', data = 'rebel_convoy_lose', args = []}]},
-
+	betrayal_confirmed_rebels_1 = {unittype = 'randomgroup', unitcode = 'betrayal_confirmed_rebels_1', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_1_win', args = []}], lose_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_1_lose', args = []}]},
+	betrayal_confirmed_rebels_2 = {unittype = 'randomgroup', unitcode = 'betrayal_confirmed_rebels_2', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_2_win', args = []}], lose_effects = [{code = 'start_event', data = 'betrayal_confirmed_rebels_2_lose', args = []}]},
+	
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	lich_fight_normal = {unittype = 'randomgroup', unitcode = 'quest_lich_normal', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
 	
@@ -79,6 +81,8 @@ var enemygroups = {
 	demon_kurdan = {reqs = [], units = {undead_lich = [1,1]}},
 	demon = {reqs = [], units = {zombie = [1,1]}},
 	rebel_convoy = {reqs = [], units = {rebel_recruit = [1,2]}},
+	betrayal_confirmed_rebels_1 = {reqs = [], units = {rebel_recruit = [1,1]}},
+	betrayal_confirmed_rebels_2 = {reqs = [], units = {rebel_recruit = [1,1]}},
 	
 	quest_lich_easy = {reqs = [], units = {lich_quest = [1,1], zombie = [1,1], skeleton_archer = [1,1]}},
 	quest_lich_normal = {reqs = [], units = {lich_quest = [1,1], zombie = [2,2], skeleton_archer = [2,2]}},

@@ -212,7 +212,7 @@ var data = {
 		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
 		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
 		options = [ {
-			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines'}}],
+			#bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines'}}],
 			code = 'after_mines_convoy_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
 		}],
 	},

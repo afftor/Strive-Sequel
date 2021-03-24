@@ -3660,5 +3660,82 @@ Anastasia: - Very well. The gods shall find the just.
 Duncan: - The gods shall find the just.""",
 	
 	
+	# betrayal confirmed
+	BETRAYAL_CONFIRMED_ADVANCE = """The battlefield was filled with sounds of clashing blades as numerous arrows whistled through the air. Before long an enemy group has charged at your flank.""",
+	BETRAYAL_CONFIRMED_1 = """After slicing down another enemy knight Duncan looked around. His unit almost approached the leading enemy group and now he could see their leader clearly. He already knew from the reports that Greg was with rebels, but now he confirmed it with his own eyes.""",
+	BETRAYAL_CONFIRMED_2 = """Greg: - Long time no see.
+
+Duncan: - I wish it would stay this way. 
+
+Greg: - You look tired, did the safe life made you relax too much?
+
+Duncan: - Enough to end you and this pity revolt.""",
+	BETRAYAL_CONFIRMED_3 = """Greg: - Heh, we'll see about that. I wouldn't expect you to come out in the front line, but I guess it's our luck.
+
+Duncan: - What are you talking about?
+
+Greg: - Do you expect the army to do it if you are taken down? 
+
+Duncan: ...
+
+Now Duncan realized that there were another group of rebel reinforces approaching them from the side. Their numbers will be outnumbered by at least two to one. Regardless, he readied his sword.""",
+	BETRAYAL_CONFIRMED_4 = """As you deal with the rebels you are ordered to advance, from your side it seems the Guilds army is slowly coming on top.""",
+	BETRAYAL_CONFIRMED_5 = """Myr observed the battlefield from the nearby hill a few hundred feet away. Most of the lower mages were drafted for supporting fighting forces but she had a different mission. Being the strongest caster in all Aliron or even a whole country, she was required to do more than a simple healing and spellslinging. 
+
+She patiently observed the battlefield, as the guilds troops advanced at the town. """,
+	BETRAYAL_CONFIRMED_6 = """Duncan: - Strategy was always your stronger side. 
+
+Greg: - Why, thanks. 
+
+As more groups were approaching Duncan he and his unit grew more wounded and exhausted.""",
+	BETRAYAL_CONFIRMED_7 = """Greg: - It was your mistake to lead the charge personally. 
+
+Duncan: - Who else would it do? 
+
+Greg: - Perhaps it's a time for you to surrender. 
+
+Duncan: - Not interested.
+
+Greg: - Hmph, you always was all brawn and no brains. So be it.""",
+	BETRAYAL_CONFIRMED_8 = """Myr: - These damn fools...
+
+Not waiting any longer Myr started chanting a powerful spell. In a few moments a large earthquake hit the rebel reinforcement group approaching Duncan's unit. A few other mages following her also began casting long range magic on the separated rebel groups. """,
 	
+	BETRAYAL_CONFIRMED_9 = """Shaken by a shockwave from powerful magic Duncan turned to the side where enemies have been approaching to find out their forces have crumbled by the magic barrage.
+
+Duncan: - Damn you, Myr. Who asked for your interruption here?
+
+Duncan muttered to himself. However, Greg was far more surprised by this. As he realized he just lost a notable advantage, he quickly withdrew from the fight.
+
+Greg: - Cursed sorcerers. Retreat to the town's walls!
+
+Following the command rebel forces have begun moving back, however Guilds' army quickly picked up the initiative and moved forward.""",
+	BETRAYAL_CONFIRMED_10 = """However, before any of the main guild forces were able to enter the town, a gigantic white dome had enveloped the rebels' refuge. Previously unseen level of magic completely blocked out any advancements or attacks from the guilds' army. 
+
+Dumbfounded by this, guilds forces have been forced to regroup.""",
+	BETRAYAL_CONFIRMED_11 = """Duncan: - What's this thing about? Why can't we pass through?
+
+Myr: - Looks like a Divine Influence to me. This is not really our speciality.
+
+Duncan: - What are you talking about?
+
+Myr: - It's a special kind of magic, the source of which is higher beings. But it's so rare I've only observed it a couple of times. We can't really do anything about it with our current margin of power.""",
+	BETRAYAL_CONFIRMED_12 = """Duncan: - Dammit, to think rebels would have something like this...
+
+Myr: - I can imagine princess could pull out something unusual, but not on this scale. 
+
+Duncan: - How long will this thing persist?
+
+Myr: - I'd not expect it to go down on its own. 
+
+Duncan: - Fuck...""",
+	BETRAYAL_CONFIRMED_13 = """Duncan: - Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we will be able to finish this battle and liberate [townname]. 
+
+Myr: - We will be keeping the forces ready in case they decide to launch a counterattack.""",
+	BETRAYAL_CONFIRMED_OPTION_1 = """I have no idea what to do either""",
+	BETRAYAL_CONFIRMED_OPTION_2 = """Do you have any suggestions where I should start?""",
+	BETRAYAL_CONFIRMED_14 = """Myr: - Hmm, my only idea would be to try other religious institutions. Those usually are more familiar with Divine Influences and how to deal with them.""",
+	BETRAYAL_CONFIRMED_OPTION_3 = """I'll try my best""",
+	BETRAYAL_CONFIRMED_OPTION_4 = """You really make me work""",
+	BETRAYAL_CONFIRMED_OPTION_5 = """Alright, will ask for a votive candle on your behalf""",
 }
