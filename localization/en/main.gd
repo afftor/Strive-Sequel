@@ -3738,4 +3738,19 @@ Myr: - We will be keeping the forces ready in case they decide to launch a count
 	BETRAYAL_CONFIRMED_OPTION_3 = """I'll try my best""",
 	BETRAYAL_CONFIRMED_OPTION_4 = """You really make me work""",
 	BETRAYAL_CONFIRMED_OPTION_5 = """Alright, will ask for a votive candle on your behalf""",
+	
+	DIVINE_SYMBOL_OPTION_1 = """Can you tell me anything about Divine Influence?""",
+	DIVINE_SYMBOL_1 = """- We've had some records and teaching about it. What exactly would you like to know?""",
+	DIVINE_SYMBOL_OPTION_2 = """*Describe situation*""",
+	DIVINE_SYMBOL_2 = """- Wow, it seems to be a Champion's doing.""",
+	DIVINE_SYMBOL_OPTION_3 = """What's a Champion?""",
+	DIVINE_SYMBOL_OPTION_4 = """Can something be done about it?""",
+	DIVINE_SYMBOL_3 = """- Champions are individuals chosen by Gods who are able to invoke their diety's power. In turn they are believed to follow their god's instructions. Actually they are so rare we only know a handful from thousands of years of history. Ah, I would love to meet Celena's Champion one day. """,
+	DIVINE_SYMBOL_4 = """- Hmm, I think there's a way. If another god conjures a medium you should be able to neutralize the powers of another god. Then you'll be able to pass that barrier, although for removing it completely you'll have to defeat the champion.""",
+	DIVINE_SYMBOL_OPTION_5 = """What do I need to do?""",
+	DIVINE_SYMBOL_OPTION_6 = """You can conjure such a thing?""",
+	DIVINE_SYMBOL_5 = """- If you bring me the divine symbol I can bless it with Celena's power. I'll give you the recipe so please come back once you make it.""",
+	
+	
+	
 }

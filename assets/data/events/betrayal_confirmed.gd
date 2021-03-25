@@ -134,12 +134,50 @@ var data = {
 	betrayal_confirmed_13 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan", character2 = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}],
+		common_effects = [{code = 'decision', value = "DivineSymbolStart"}],
 		options = [ {
 			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1,
 		}, {
 			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_4", reqs = [], dialogue_argument = 2,
 		}, {
 			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_5", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	divine_symbol_1 = {
+		image = null, tags = ['dialogue_scene'], character = "ginny",
+		text = [{text = "DIVINE_SYMBOL_1", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_2', text = "DIVINE_SYMBOL_OPTION_2", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	divine_symbol_2 = {
+		image = null, tags = ['dialogue_scene'], character = "ginny",
+		text = [{text = "DIVINE_SYMBOL_2", reqs = [], previous_dialogue_option = 1},
+		{text = "DIVINE_SYMBOL_3", reqs = [], previous_dialogue_option = 3},],
+		options = [ {
+			code = 'divine_symbol_2', text = "DIVINE_SYMBOL_OPTION_3", reqs = [], dialogue_argument = 3,
+		}, {
+			code = 'divine_symbol_3', text = "DIVINE_SYMBOL_OPTION_4", reqs = [], dialogue_argument = 4,
+		}, ],
+	},
+	
+	divine_symbol_3 = {
+		image = null, tags = ['dialogue_scene'], character = "ginny",
+		text = [{text = "DIVINE_SYMBOL_4", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_4', text = "DIVINE_SYMBOL_OPTION_5", reqs = [], dialogue_argument = 3,
+		}, {
+			code = 'divine_symbol_4', text = "DIVINE_SYMBOL_OPTION_6", reqs = [], dialogue_argument = 4,
+		}, ],
+	},
+	
+	divine_symbol_4 = {
+		image = null, tags = ['dialogue_scene'], character = "ginny",
+		text = [{text = "DIVINE_SYMBOL_5", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3,
 		}],
 	},
 }

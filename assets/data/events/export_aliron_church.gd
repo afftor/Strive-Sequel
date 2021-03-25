@@ -122,6 +122,8 @@
 				{type = 'timed_option', value = 7, quest = "aliron_church"},
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0},
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4, type = 'next_dialogue'},
+			{code = 'divine_symbol_1', text = "DIVINE_SYMBOL_OPTION_1", dialogue_argument = 5, type = 'next_dialogue', 
+			reqs = [{type = 'decision', value = 'DivineSymbolStart', check = true}]}
 		],
 		
 	},
