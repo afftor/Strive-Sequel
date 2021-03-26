@@ -11,7 +11,6 @@ var data = {
 	betrayal_confirmed_rebels_1_win = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "BETRAYAL_CONFIRMED_1", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		} ],
@@ -34,9 +33,8 @@ var data = {
 	},
 	
 	betrayal_confirmed_3 = {
-		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "BETRAYAL_CONFIRMED_4", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'quest_fight', args = 'betrayal_confirmed_rebels_2',
 			text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1,
@@ -46,16 +44,14 @@ var data = {
 	betrayal_confirmed_rebels_2_win = {
 		image = null, tags = ['dialogue_scene'], character = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_5", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		} ],
 	},
 	
 	betrayal_confirmed_4 = {
-		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_6", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
@@ -64,7 +60,6 @@ var data = {
 	betrayal_confirmed_5 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_7", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
@@ -79,18 +74,16 @@ var data = {
 	},
 	
 	betrayal_confirmed_7 = {
-		image = null, tags = ['dialogue_scene'], character = "myr",
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_8", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
 	},
 	
 	betrayal_confirmed_8 = {
-		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_9", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
@@ -105,9 +98,8 @@ var data = {
 	},
 	
 	betrayal_confirmed_10 = {
-		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], character = "duncan", character2 = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_11", reqs = []}],
-		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
 			code = 'betrayal_confirmed_11', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],

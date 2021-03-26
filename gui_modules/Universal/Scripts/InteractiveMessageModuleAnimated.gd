@@ -8,6 +8,9 @@ var previous_dialogue_option = 0
 var previous_text = ''
 var base_text_size
 var base_text_position
+var doing_transition = false
+
+signal TransitionFinished
 
 func _ready():
 	if get_node_or_null("BackgroundT2/HideButton"):
@@ -57,10 +60,13 @@ func open(scene):
 		scene.text = [{text = scene.text, reqs = []}]
 	
 	update_scene_characters()
+	handle_scene_transition_fx(scene)
+	if doing_transition:
+		yield(self, "TransitionFinished")
+		doing_transition = false
 	$CharacterImage.hide()
 	$CharacterImage2.hide()
 	$ImagePanel.hide()
-	handle_scene_transition_fx(scene)
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
 	handle_loots(scene)
@@ -444,9 +450,11 @@ func handle_scene_transition_fx(scene):
 		$ScrollContainer.modulate.a = 1
 	if scene.tags.has("blackscreen_transition_common"):
 		ResourceScripts.core_animations.BlackScreenTransition(1)
+		doing_transition = true
 		yield(get_tree().create_timer(1), "timeout")
 	elif scene.tags.has("blackscreen_transition_slow"):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
+		doing_transition = true
 		yield(get_tree().create_timer(2), "timeout")
 
 	if self.visible == false:
@@ -454,7 +462,9 @@ func handle_scene_transition_fx(scene):
 		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 		$RichTextLabel.bbcode_text = ''
 		previous_text = ''
+		doing_transition = true
 		yield(get_tree().create_timer(0.2), "timeout")
+	emit_signal("TransitionFinished")
 
 
 
