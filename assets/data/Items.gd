@@ -325,8 +325,8 @@ var materiallist = {
 		tags = ['vege', 'meat'],
 	},
 	
-	item_a = {
-		code = 'item_a',
+	divine_symbol = {
+		code = 'divine_symbol',
 		name = '',
 		descript = '',
 		icon = load("res://assets/images/iconsitems/item_soup.png"),
@@ -351,6 +351,15 @@ var materiallist = {
 		tags = [],
 		color = Color('a980ca'),
 		parts = {},
+	},
+	blessed_divine_symbol = {
+		code = 'blessed_divine_symbol',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_cake.png"),
+		price = 1,
+		type = 'quest',
+		tags = [],
 	},
 	
 	fishcakes = {
@@ -2507,16 +2516,16 @@ var recipes = {
 		worktype = 'cooking'
 	},
 	
-	item_a = {
-		code = 'item_a',
+	divine_symbol = {
+		code = 'divine_symbol',
 		materials = {mythril = 5},
 		items = {},
 		unlockreqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage1'},
-		{type = 'has_material', operant = 'lt', value = 1, material = 'item_a'}],
+		{type = 'has_material', operant = 'lt', value = 1, material = 'divine_symbol'}],
 		crafttype = 'basic',
 		resultamount = 1,
 		resultitemtype = 'material', 
-		resultitem = 'item_a', 
+		resultitem = 'divine_symbol', 
 		workunits = 1, 
 		worktype = 'smith',
 		unique = true

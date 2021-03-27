@@ -123,6 +123,12 @@ var TranslationDict = {
 	MATERIALBANDAGEDESCRIPT = "A pack of bandages required for healing with the First Aid skill.",
 	MATERIALLICH_SKULL = "Lich's Skull",
 	MATERIALLICH_SKULLDESCRIPT = "Once belonged to a Lich, still holds faint traces of powerful magic in it. ",
+	MATERIALDIVINE_SYMBOL = "Divine Symbol",
+	MATERIALDIVINE_SYMBOLDESCRIPT = "You don't know how but it's supposed to help you encouner Celena's Champion",
+	MATERIALMYTHRIL = "Mythril",
+	MATERIALMYTHRILDESCRIPT = "A very rare and strong magic alloy. Produced by crafting.",
+	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
+	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "This should let you create a brief breech in the barrier (mouthful, right?) and get rid of a Champion",
 	
 	MATERIALINK_BRANDING = "Ink: Branding",
 	MATERIALINK_MAKEUP = "Ink: Permanent Makeup",
@@ -3750,7 +3756,12 @@ Myr: - We will be keeping the forces ready in case they decide to launch a count
 	DIVINE_SYMBOL_OPTION_5 = """What do I need to do?""",
 	DIVINE_SYMBOL_OPTION_6 = """You can conjure such a thing?""",
 	DIVINE_SYMBOL_5 = """- If you bring me the divine symbol I can bless it with Celena's power. I'll give you the recipe so please come back once you make it.""",
-	
+	DIVINE_SYMBOL_OPTION_7 = """I've brought the symbol you asked for""",
+	DIVINE_SYMBOL_6 = """- Ah, you have it? A beautiful work! Please, give me some time.
+
+Ginny leaves you for a few minutes, eventually returning to you with the symbol you've passed her, now giving off a barely notable light.
+
+- Here, this should let you create a brief breech in the barrier. Please, be careful out there [sir] [name].""",
 	
 	
 }

@@ -173,4 +173,15 @@ var data = {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3,
 		}],
 	},
+	
+	divine_symbol_5 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], character = "ginny",
+		common_effects = [{code = 'complete_quest', value = 'divine_symbol_quest'},
+		{code = 'material_change', operant = '-', material = 'divine_symbol', value = 1},
+		{code = 'material_change', operant = '+', material = 'blessed_divine_symbol', value = 1},],
+		text = [{text = "DIVINE_SYMBOL_6", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3,
+		}],
+	}
 }
