@@ -3761,7 +3761,37 @@ Myr: - We will be keeping the forces ready in case they decide to launch a count
 
 Ginny leaves you for a few minutes, eventually returning to you with the symbol you've passed her, now giving off a barely notable light.
 
-- Here, this should let you create a brief breech in the barrier. Please, be careful out there [sir] [name].""",
+- Here, this should let you create a brief breech in the barrier. Please, be careful out there [Sir] [name].""",
+	DIVINE_SYMBOL_7 = """Duncan: - You are back. What is the news?""",
+	DIVINE_SYMBOL_OPTION_8 = """I've found the way to enter the barrier""",
+	DIVINE_SYMBOL_OPTION_9 = """I'm ready to go""",
+	DIVINE_SYMBOL_8 = """Duncan: - So, with this you will be able to enter the barrier and get rid of that "Champion". Fine, I approve of it. Once you enter it we will get ready for the assault.
+
+Myr: - Judging from the looks of it, I'd expect the culprit to be at the center of Dome, likely protected too. 
+
+Duncan: - Whoever it is, gather your best followers and prepare for the hard fight. I would prefer to follow you, but the army can't be left without a commander.""",
+	DIVINE_SYMBOL_9 = """Duncan: - Good, let's now waste time. This battle's outcome is at your hands. 
+
+Myr: - There's a spot you can go inside unnoticed from the hill side, I'll show you.""",
+	DIVINE_SYMBOL_10 = """You finish your preparations and by the night enter the barrier at the side Myr showed you. As you make it into the streets you only spot rare rebel patrols who seem fairly relaxed. By staying in shadows you manage to eavesdrop on them.
+
+First Patrol: - Why are we even doing this? It's not like those bastards can enter it. 
+
+Second Patrol: - Yah, I know. We have been at it for days and nothing. I'd rather grab a beer and a pair of tits instead of fuckin' spear. 
+
+As they pass you continue to move on.""",
+	DIVINE_SYMBOL_11 = """As you slowly make your way into the center, you notice how your position is approached by another patrol. As you are caught in a bad position, you won't be able to retreat unnoticed.""",
+	DIVINE_SYMBOL_OPTION_10 = """Make run for it""",
+	DIVINE_SYMBOL_12 = """{color=green|Success}
+
+Thanks to your nimble reaction, you've managed to quickly get out of the way of patrol.""",
+	DIVINE_SYMBOL_13 = """{color=red|Failure}
+
+You've tried to run for it, but after making it to the corner, crashed into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
+	
+	
+	
+	
 	
 	
 }

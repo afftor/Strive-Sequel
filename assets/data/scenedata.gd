@@ -1568,7 +1568,7 @@ var quests = {
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
 		stages = {
-			stage1 = {code ='stage1', name = 'Craft divine symbol', descript = "Forge divine symbol for Ginny"},
+			stage1 = {code ='stage1', name = 'Divine symbol', descript = "Forge divine symbol for Ginny"},
 		},
 	},
 	

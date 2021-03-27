@@ -123,7 +123,7 @@
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0},
 			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4, type = 'next_dialogue'},
 			{code = 'divine_symbol_1', text = "DIVINE_SYMBOL_OPTION_1", dialogue_argument = 5, type = 'next_dialogue', 
-			reqs = [{type = 'decision', value = 'DivineSymbolStart', check = true}]},
+			reqs = [{type = 'decision', value = 'DivineSymbolStart', check = true}], remove_after_first_use = true},
 			{code = 'divine_symbol_5', text = "DIVINE_SYMBOL_OPTION_7", dialogue_argument = 6, type = 'next_dialogue', 
 			reqs = [{type = 'has_material', operant = 'gte', value = 1, material = 'divine_symbol'}]},
 		],

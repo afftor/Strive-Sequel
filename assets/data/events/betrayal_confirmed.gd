@@ -137,6 +137,7 @@ var data = {
 	},
 	
 	divine_symbol_1 = {
+		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene'], character = "ginny",
 		text = [{text = "DIVINE_SYMBOL_1", reqs = []}],
 		options = [ {
@@ -145,6 +146,7 @@ var data = {
 	},
 	
 	divine_symbol_2 = {
+		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene'], character = "ginny",
 		text = [{text = "DIVINE_SYMBOL_2", reqs = [], previous_dialogue_option = 1},
 		{text = "DIVINE_SYMBOL_3", reqs = [], previous_dialogue_option = 3},],
@@ -156,6 +158,7 @@ var data = {
 	},
 	
 	divine_symbol_3 = {
+		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene'], character = "ginny",
 		text = [{text = "DIVINE_SYMBOL_4", reqs = []}],
 		options = [ {
@@ -166,6 +169,7 @@ var data = {
 	},
 	
 	divine_symbol_4 = {
+		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene'], character = "ginny",
 		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage1'}],
 		text = [{text = "DIVINE_SYMBOL_5", reqs = []}],
@@ -175,6 +179,7 @@ var data = {
 	},
 	
 	divine_symbol_5 = {
+		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "ginny",
 		common_effects = [{code = 'complete_quest', value = 'divine_symbol_quest'},
 		{code = 'material_change', operant = '-', material = 'divine_symbol', value = 1},
@@ -183,5 +188,74 @@ var data = {
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3,
 		}],
-	}
+	},
+	
+	# duncan and myr part
+	divine_symbol_6 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
+		text = [{text = "DIVINE_SYMBOL_7", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_7', text = "DIVINE_SYMBOL_OPTION_8", 
+			reqs = [{type = 'has_material', operant = 'gte', value = 1, material = 'blessed_divine_symbol'}], 
+			dialogue_argument = 1
+		}, {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3,
+		}],
+	},
+	
+	divine_symbol_7 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
+		text = [{text = "DIVINE_SYMBOL_8", reqs = []}],
+		options = [  {
+			code = 'divine_symbol_8', text = "DIVINE_SYMBOL_OPTION_9", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3,
+		}],
+	},
+	
+	divine_symbol_8 = {
+		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
+		text = [{text = "DIVINE_SYMBOL_9", reqs = []}],
+		options = [  {
+			code = 'divine_symbol_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3,
+		}],
+	},
+	
+	divine_symbol_9 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
+		text = [{text = "DIVINE_SYMBOL_10", reqs = []}],
+		options = [  {
+			code = 'divine_symbol_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3,
+		}],
+	},
+	
+	divine_symbol_10 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_11", reqs = []}],
+		options = [  {
+			code = 'divine_symbol_11', text = "DIVINE_SYMBOL_OPTION_10", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	divine_symbol_11 = {
+		variations = [ {
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 50}]}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "DIVINE_SYMBOL_12", reqs = []}],
+			options = [ {
+				code = '', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			}],
+		}, {
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 50}]}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "DIVINE_SYMBOL_13", reqs = []}],
+			options = [ {
+				code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
+			}],
+		}
+			
+		]
+	},
 }
