@@ -1563,7 +1563,17 @@ var quests = {
 			stage2_1 = {code = 'stage2_1', name = 'Lead the convoy', descript = "Talk to Duncan"},
 			stage3 = {code = 'stage3', name = 'Lead the convoy', descript = "Meet Duncan at Aliron streets"}
 		},
-	
 	},
+	
+	divine_symbol_quest = {
+		code = 'divine_symbol_quest',
+		stages = {
+			stage1 = {code ='stage1', name = 'Craft divine symbol', descript = "Forge divine symbol for Ginny"},
+			#stage2 = {code = 'stage2', name = 'Lead the convoy', descript = "Wait for the word from Duncan"},
+			#stage2_1 = {code = 'stage2_1', name = 'Lead the convoy', descript = "Talk to Duncan"},
+			#stage3 = {code = 'stage3', name = 'Lead the convoy', descript = "Meet Duncan at Aliron streets"}
+		},
+	},
+	
 }
 

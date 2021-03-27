@@ -167,6 +167,7 @@ var data = {
 	
 	divine_symbol_4 = {
 		image = null, tags = ['dialogue_scene'], character = "ginny",
+		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage1'}],
 		text = [{text = "DIVINE_SYMBOL_5", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3,
