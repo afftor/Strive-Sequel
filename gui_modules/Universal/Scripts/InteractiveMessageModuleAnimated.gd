@@ -59,11 +59,11 @@ func open(scene):
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
 	
-	update_scene_characters()
 	handle_scene_transition_fx(scene)
 	if doing_transition:
 		yield(self, "TransitionFinished")
 		doing_transition = false
+	update_scene_characters()
 	$CharacterImage.hide()
 	$CharacterImage2.hide()
 	$ImagePanel.hide()
@@ -462,7 +462,6 @@ func handle_scene_transition_fx(scene):
 		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
 		$RichTextLabel.bbcode_text = ''
 		previous_text = ''
-		doing_transition = true
 		yield(get_tree().create_timer(0.2), "timeout")
 	emit_signal("TransitionFinished")
 
