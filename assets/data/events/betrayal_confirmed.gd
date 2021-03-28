@@ -235,7 +235,7 @@ var data = {
 		options = [  {
 			code = 'divine_symbol_11', text = "DIVINE_SYMBOL_OPTION_10", reqs = [], dialogue_argument = 1,
 		}, {
-			code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 2,
+			code = 'quest_fight', args = 'patrol', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 2,
 		}],
 	},
 	
@@ -245,17 +245,33 @@ var data = {
 			image = null, tags = ['dialogue_scene'],
 			text = [{text = "DIVINE_SYMBOL_12", reqs = []}],
 			options = [ {
-				code = '', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+				code = 'divine_symbol_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 			}],
 		}, {
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 50}]}],
 			image = null, tags = ['dialogue_scene'],
 			text = [{text = "DIVINE_SYMBOL_13", reqs = []}],
 			options = [ {
-				code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
+				code = 'quest_fight', args = 'patrol', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
 			}],
 		}
-			
 		]
 	},
+	
+	patrol_win = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_14", reqs = []}],
+		options = [  {
+			code = 'divine_symbol_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	divine_symbol_12 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_15", reqs = []}],
+		options = [  {
+			code = 'divine_symbol_13', text = "DIVINE_SYMBOL_OPTION_11", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
 }

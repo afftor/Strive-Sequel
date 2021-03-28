@@ -3788,9 +3788,9 @@ Thanks to your nimble reaction, you've managed to quickly get out of the way of 
 	DIVINE_SYMBOL_13 = """{color=red|Failure}
 
 You've tried to run for it, but after making it to the corner, crashed into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
-	
-	
-	
+	DIVINE_SYMBOL_14 = """You've managed to defeat the patrol relatively quietly. Praying for not being interrupted anymore you leave the place.""",
+	DIVINE_SYMBOL_15 = """You make it into a small square where your target should be. However, multiple buildings don't tell which one will lead you to it.""",
+	DIVINE_SYMBOL_OPTION_11 = """Search""",
 	
 	
 	
