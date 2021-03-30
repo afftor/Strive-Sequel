@@ -1414,3 +1414,10 @@ func valuecheck(dict):
 			return dict.check == input_handler.active_faction.upgrades.has(dict.value)
 		'local_counter':
 			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, dict.value) == dict.check
+		'wits_factor_check':
+			var master_char = ResourceScripts.game_party.get_master()
+			if master_char == null:
+				return false
+			else:
+				var result = globals.rng.randi_range(dict.from, dict.to) > dict.value * master_char.statlist.statlist.wits
+				return result #returns true on fail and vice versa

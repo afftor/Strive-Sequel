@@ -206,7 +206,7 @@ var data = {
 	divine_symbol_7 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
 		text = [{text = "DIVINE_SYMBOL_8", reqs = []}],
-		options = [  {
+		options = [ {
 			code = 'divine_symbol_8', text = "DIVINE_SYMBOL_OPTION_9", reqs = [], dialogue_argument = 2,
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3,
@@ -216,7 +216,7 @@ var data = {
 	divine_symbol_8 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
 		text = [{text = "DIVINE_SYMBOL_9", reqs = []}],
-		options = [  {
+		options = [ {
 			code = 'divine_symbol_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3,
 		}],
 	},
@@ -224,7 +224,7 @@ var data = {
 	divine_symbol_9 = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'],
 		text = [{text = "DIVINE_SYMBOL_10", reqs = []}],
-		options = [  {
+		options = [ {
 			code = 'divine_symbol_10', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 3,
 		}],
 	},
@@ -232,7 +232,7 @@ var data = {
 	divine_symbol_10 = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "DIVINE_SYMBOL_11", reqs = []}],
-		options = [  {
+		options = [ {
 			code = 'divine_symbol_11', text = "DIVINE_SYMBOL_OPTION_10", reqs = [], dialogue_argument = 1,
 		}, {
 			code = 'quest_fight', args = 'patrol', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 2,
@@ -261,7 +261,7 @@ var data = {
 	patrol_win = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "DIVINE_SYMBOL_14", reqs = []}],
-		options = [  {
+		options = [ {
 			code = 'divine_symbol_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
 	},
@@ -269,9 +269,101 @@ var data = {
 	divine_symbol_12 = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "DIVINE_SYMBOL_15", reqs = []}],
-		options = [  {
+		common_effects = [{code = 'dialogue_counter', name = 'search_attempts', op = '+'}, 
+		{code = 'dialogue_counter', name = 'search_attempts', op = '-'}], #init counter
+		options = [ {
 			code = 'divine_symbol_13', text = "DIVINE_SYMBOL_OPTION_11", reqs = [], dialogue_argument = 1,
 		}],
 	},
 	
+	divine_symbol_13 = {
+		variations = [ {
+			reqs = [{type = 'wits_factor_check', from = 0, to = 100, value = 20}, 
+			{type = 'local_counter', name = 'search_attempts', operant = 'lt', value = 4, check = true}],
+			common_effects = [{code = 'dialogue_counter', name = 'search_attempts', op = '+'}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "DIVINE_SYMBOL_16", reqs = []}],
+			options = [ {
+				code = 'quest_fight', args = 'wrong_building_rebels', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 4
+			}],
+		}, {
+			reqs = [],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "DIVINE_SYMBOL_18", reqs = []}],
+			options = [ {
+				code = 'divine_symbol_15', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			}],
+		}
+		]
+	},
+	
+	wrong_building_rebels_win = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_17", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_13', text = "DIVINE_SYMBOL_OPTION_11", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	divine_symbol_14 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_18", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_15', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	divine_symbol_15 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_19", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_16', text = "DIVINE_SYMBOL_OPTION_12", reqs = [], dialogue_argument = 1,
+		},{
+			code = 'divine_symbol_17', text = "DIVINE_SYMBOL_OPTION_13", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	divine_symbol_16 = {
+		variations = [ {
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 5}]}], 
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "DIVINE_SYMBOL_20", reqs = []}],
+			options = [ {
+				code = 'divine_symbol_18', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
+			}],
+		}, {
+			reqs = [],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "", reqs = []}],
+			options = [ {
+				code = 'quest_fight', args = '', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1
+			}],
+		}
+		]
+	},
+	
+	#fight them
+	divine_symbol_17 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_21", reqs = []}],
+		options = [ {
+			code = 'quest_fight', args = '', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	two_guards_win = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "DIVINE_SYMBOL_22", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_18', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	divine_symbol_18 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_23", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_19', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
 }

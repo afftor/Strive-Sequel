@@ -3791,7 +3791,44 @@ You've tried to run for it, but after making it to the corner, crashed into a pi
 	DIVINE_SYMBOL_14 = """You've managed to defeat the patrol relatively quietly. Praying for not being interrupted anymore you leave the place.""",
 	DIVINE_SYMBOL_15 = """You make it into a small square where your target should be. However, multiple buildings don't tell which one will lead you to it.""",
 	DIVINE_SYMBOL_OPTION_11 = """Search""",
-	
-	
-	
+	DIVINE_SYMBOL_16 = """{color=red|Failure}
+
+You've entered a wrong building. A few rebels realize you're an intruder and arm themselves.""",
+	DIVINE_SYMBOL_17 = """As you finish the rebels as silently as possible you return to the square.""",
+	DIVINE_SYMBOL_18 = """{color=green|Success}
+
+You enter a small hallway with doors guarded by an armed group of rebels. 
+
+First Guard: - Why can't we stay inside?
+
+Second Guard: - She requested to be left alone. That's for the better if you ask me.""",
+	DIVINE_SYMBOL_19 = """First Guard: - Hmm? Why you dislike her?
+
+Second Guard: - She's of beast blood, she acts like lunatic and looks like a brat. Greg finds her useful, but I'd rather side with a troll.
+
+First Guard: - Yeah, in terms of brains you would find a common ground.
+
+Second Guard: - Hey, you shut yo-
+
+The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
+	DIVINE_SYMBOL_OPTION_12 = """Greg requested you to visit him""",
+	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
+	DIVINE_SYMBOL_20 = """Second Guard: - Damnit, what does he want at this time now? 
+
+First Guard: - Probably figured you've been sleeping during the last watch.
+
+Second Guard: - You didn't tell him that, did you? Fuck, lets go. 
+
+The guards leave the building, leaving the doors to you.""",
+	DIVINE_SYMBOL_21 = """Deciding there's no room for negotiation you prepare for a fight.""",
+	DIVINE_SYMBOL_22 = """As you knock out the guards you are finally able to approach the doors.""",
+	DIVINE_SYMBOL_23 = """You enter a sumptuous, dimly lit room. A small figure on the other side turns at you. 
+
+- Well, this did take you a while and now you didn't even knock. How rude... I kinda like it, now that I think about it. 
+
+Miniature girl reacted to your appearance unexpectedly nonchalantly. 
+
+- Zephyra. 
+
+Zephyra briefly bowed down to you after delivering her name.""",
 }
