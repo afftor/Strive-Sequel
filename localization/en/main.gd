@@ -3831,4 +3831,60 @@ Miniature girl reacted to your appearance unexpectedly nonchalantly.
 - Zephyra. 
 
 Zephyra briefly bowed down to you after delivering her name.""",
+	DIVINE_SYMBOL_24 = """- Before I forget... Here, an acquaintance gift.
+
+She passes you a roll of paper she took from the pile on a small table. As you unfold it you see a rough but somewhat talented sketch of a [man]'s portrait. On a second look you notice how this person vaguely resembles you. Seeing the look on your face, Zephyra shines with excitement. 
+
+- Do you like it?""",
+	DIVINE_SYMBOL_OPTION_14 = """Can't say I don't""",
+	DIVINE_SYMBOL_OPTION_15 = """How did you do that?""",
+	DIVINE_SYMBOL_OPTION_16 = """Are you a stalker?""",
+	DIVINE_SYMBOL_25 = """- Finally someone is admiring my artwork. Hold your flattery, though, that's my speciality.""",
+	DIVINE_SYMBOL_26 = """- I drew it, silly. Oh, you mean how did I know what you look like? I didn't. You know how sometimes you dream of a thing which didn't happen to you yet, but then it happens after some time? Maybe it's something like this.""",
+	DIVINE_SYMBOL_27 = """- Ah-ha, no, if I were one I wouldn't be waiting for you here, would I?""",
+	DIVINE_SYMBOL_28 = """
+
+- So, are you going to take it?""",
+	DIVINE_SYMBOL_OPTION_18 = """*Accept*""",
+	DIVINE_SYMBOL_OPTION_19 = """*Refuse*""",
+	DIVINE_SYMBOL_29 = """You thank Zephyra for the drawing and put it away. She smiles at you, making you to forget the reason why you've come here.
+
+- But you must desire something different for me. Perhaps something to do with the barrier?""",
+	DIVINE_SYMBOL_30 = """You give away the drawing with a stern look. 
+
+- So, you must've come because of the barrier, right?""",
+	DIVINE_SYMBOL_OPTION_20 = """Would it work to ask you to remove it nicely?""",
+	DIVINE_SYMBOL_OPTION_21 = """You'll have to remove it, or else""",
+	DIVINE_SYMBOL_31 = """- Why, this is fine, but firstly I have a request if you don't mind. Allow me to join you.""",
+	DIVINE_SYMBOL_OPTION_22 = """Why do you want to join me?""",
+	DIVINE_SYMBOL_OPTION_23 = """You must have some really good reason for that""", 
+	DIVINE_SYMBOL_32 = """- I guess, I must explain. I've set this whole thing up in order to find you. Well, not specifically you, but someone capable enough to pass it and find me. And you managed pretty good.""",
+	DIVINE_SYMBOL_OPTION_24 = """Why would you need someone like that?""",
+	DIVINE_SYMBOL_OPTION_25 = """That's a rather bold plan""",
+	DIVINE_SYMBOL_OPTION_26 = """What's the task you need me for?""", #after 24 and 25 seen
+	DIVINE_SYMBOL_33 = """- You are probably aware I'm a Champion of Alios. We have this whim when we have to do something our benefactor orders. My mission was to find and join you... Someone one like you? Nah, I guess that's rude, I've found you already.""",
+	DIVINE_SYMBOL_34 = """- What's the better way to find a strong crafty person than to interrupt one of the largest commotions around here? One way or another your employees would be forced to find a way in and seek for assistance. So I've offered a bit of help to the other side. And now I found you!""",
+	DIVINE_SYMBOL_35 = """- Alios isn't really clear in his intentions, but if you ask me, the world must be in a great danger. Maybe we'll come up with something later. So, will you allow me to join? I'm sure this will be a fruitful cooperation.""",
+	DIVINE_SYMBOL_OPTION_27 = """Alright, why not""",
+	DIVINE_SYMBOL_OPTION_28 = """No, I can't trust you""",
+	DIVINE_SYMBOL_OPTION_29 = """I do not cooperate, only dominate""",
+	DIVINE_SYMBOL_36 = """Zephyra takes a long pause contemplating you and your words. Just as you think she's not going to say anything, she kneels down before you.
+
+- Fine, I'll become your subordinate if you wish so. """,
+	DIVINE_SYMBOL_OPTION_30 = """I'll take care of you """,
+	DIVINE_SYMBOL_OPTION_31 = """That was a joke, you can join me""",
+	DIVINE_SYMBOL_OPTION_32 = """No, after all I can't trust you""",
+	DIVINE_SYMBOL_37 = """- Do I get to call you the [master]? Hehe, now let me dispel the barrier, then we can continue once this is over.""",
+	DIVINE_SYMBOL_38 = """- Hehe, glad we worked this out. Alright, hold on, I'll dispel the barrier. We can discuss other things once this is over.""",
+	DIVINE_SYMBOL_39 = """- You stupid! Made me do something so embarrassing... Oh well, let's get this over with, we can discuss other things once this is over.""",
+	DIVINE_SYMBOL_40 = """- Haah, that's a downer. Well, lets get this over with then, I'll remove a barrier in a moment. Was nice to meet you.""",
+	DIVINE_SYMBOL_41 = """Zephyra closed her eyes and her figure was enveloped in dim light in proof of her divine connection. At the same time through the window you could observe how the barrier slowly began dissipating.""",
+	
+	
+	
+	
+	
+	
+	
+	
 }

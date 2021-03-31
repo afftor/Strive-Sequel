@@ -366,4 +366,137 @@ var data = {
 			code = 'divine_symbol_19', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
 	},
+	
+	divine_symbol_19 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_24", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_20', text = "DIVINE_SYMBOL_OPTION_14", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'divine_symbol_20', text = "DIVINE_SYMBOL_OPTION_15", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'divine_symbol_20', text = "DIVINE_SYMBOL_OPTION_16", reqs = [], dialogue_argument = 3,
+		}, ],
+	},
+	
+	divine_symbol_20 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_25", reqs = [], previous_dialogue_option = 1}, 
+		{text = "DIVINE_SYMBOL_26", reqs = [], previous_dialogue_option = 2}, 
+		{text = "DIVINE_SYMBOL_27", reqs = [], previous_dialogue_option = 3}, 
+		{text = "DIVINE_SYMBOL_28", reqs = []}, ],
+		options = [ {
+			code = 'divine_symbol_21', text = "DIVINE_SYMBOL_OPTION_18", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'divine_symbol_21', text = "DIVINE_SYMBOL_OPTION_19", reqs = [], dialogue_argument = 2,
+		}, ],
+	},
+	
+	divine_symbol_21 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_29", reqs = [], previous_dialogue_option = 1}, 
+		{text = "DIVINE_SYMBOL_30", reqs = [], previous_dialogue_option = 2}],
+		options = [ {
+			code = 'divine_symbol_22', text = "DIVINE_SYMBOL_OPTION_20", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'divine_symbol_22', text = "DIVINE_SYMBOL_OPTION_21", reqs = [], dialogue_argument = 2,
+		}, ],
+	},
+	
+	divine_symbol_22 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_31", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_23', text = "DIVINE_SYMBOL_OPTION_22", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'divine_symbol_23', text = "DIVINE_SYMBOL_OPTION_23", reqs = [], dialogue_argument = 1,
+		}, ],
+	},
+	
+	divine_symbol_23 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_32", reqs = [], previous_dialogue_option = 1}, 
+		{text = "DIVINE_SYMBOL_33", reqs = [], previous_dialogue_option = 2}, 
+		{text = "DIVINE_SYMBOL_34", reqs = [], previous_dialogue_option = 3}],
+		options = [ {
+			code = 'divine_symbol_23', text = "DIVINE_SYMBOL_OPTION_24", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'divine_symbol_23', text = "DIVINE_SYMBOL_OPTION_25", reqs = [], dialogue_argument = 3,
+		}, {
+			code = 'divine_symbol_24', text = "DIVINE_SYMBOL_OPTION_26", reqs = [
+			{type = 'dialogue_seen', check = true, value = 'DIVINE_SYMBOL_33'},
+			{type = 'dialogue_seen', check = true, value = 'DIVINE_SYMBOL_34'} ], dialogue_argument = 4,
+		}, ],
+	},
+	
+	divine_symbol_24 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_35", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_27', text = "DIVINE_SYMBOL_OPTION_27", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'divine_symbol_29', text = "DIVINE_SYMBOL_OPTION_28", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'divine_symbol_25', text = "DIVINE_SYMBOL_OPTION_29", reqs = [], dialogue_argument = 3,
+		}, ],
+	},
+	
+	divine_symbol_25 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_36", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_26', text = "DIVINE_SYMBOL_OPTION_30", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'divine_symbol_28', text = "DIVINE_SYMBOL_OPTION_31", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'divine_symbol_29', text = "DIVINE_SYMBOL_OPTION_32", reqs = [], dialogue_argument = 3,
+		}, ],
+	},
+	
+	#recruit and type=slave
+	divine_symbol_26 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_37", reqs = []}],
+		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true, enslave = true},
+		{code = 'decision', value = 'ZephyraRecruited'}, {code = 'decision', value = 'ZephyraEnslaved'}],
+		options = [ {
+			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	#=Alright, why not
+	divine_symbol_27 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_38", reqs = []}],
+		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
+		{code = 'decision', value = 'ZephyraRecruited'}],
+		options = [ {
+			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	#=That was a joke, you can join me
+	divine_symbol_28 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_39", reqs = []}],
+		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
+		{code = 'decision', value = 'ZephyraRecruited'}],
+		options = [ {
+			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	#=No I can't trust you/No, after all I can't trust you
+	divine_symbol_29 = {
+		image = null, tags = ['dialogue_scene'], #character = "zephyra"
+		text = [{text = "DIVINE_SYMBOL_40", reqs = []}],
+		options = [ {
+			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	#=Continue
+	divine_symbol_30 = {
+		
+	},
 }

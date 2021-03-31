@@ -1048,8 +1048,12 @@ func common_effects(effects):
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
 				if "recruit_from_location" in i:
 					newslave.travel.location = input_handler.active_location.id
-				if "send_to_mansion" in i :
-					newslave.travel.return_to_mansion()
+				if "send_to_mansion" in i:
+					if i.send_to_mansion:
+						newslave.travel.return_to_mansion()
+				if "enslave" in i:
+					if i.enslave:
+						newslave.set_slave_category(newslave.slave_class)
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
 			'add_timed_event':
