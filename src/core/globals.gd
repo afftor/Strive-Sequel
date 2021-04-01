@@ -1051,9 +1051,8 @@ func common_effects(effects):
 				if "send_to_mansion" in i:
 					if i.send_to_mansion:
 						newslave.travel.return_to_mansion()
-				if "enslave" in i:
-					if i.enslave:
-						newslave.set_slave_category(newslave.slave_class)
+				if "slave_category" in i:
+					newslave.set_slave_category(i.slave_category)
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
 			'add_timed_event':

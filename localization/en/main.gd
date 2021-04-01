@@ -3879,12 +3879,44 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 	DIVINE_SYMBOL_39 = """- You stupid! Made me do something so embarrassing... Oh well, let's get this over with, we can discuss other things once this is over.""",
 	DIVINE_SYMBOL_40 = """- Haah, that's a downer. Well, lets get this over with then, I'll remove a barrier in a moment. Was nice to meet you.""",
 	DIVINE_SYMBOL_41 = """Zephyra closed her eyes and her figure was enveloped in dim light in proof of her divine connection. At the same time through the window you could observe how the barrier slowly began dissipating.""",
-	
-	
-	
-	
-	
-	
+	DIVINE_SYMBOL_42 = """
+
+- Well, here you go. Let us meet again, then.""",
+	DIVINE_SYMBOL_43 = """
+
+- Here we go, happy? Hey, do you mind giving me a piggyback ride? My brains really hurt after all this work, you know.""",
+	DIVINE_SYMBOL_44 = """As the barrier fell, Duncan ordered an immediate attack. Many of the rebel troops were caught off guard resting and unable to quickly fight back. As guilds' army slowly advanced into town nobody seemed to care about your group allowing you to escape unnoticed.""",
+	DIVINE_SYMBOL_45 = """Greg: - What the hell... Shit, what happened to the barrier!?
+
+Aire: - It seems they somehow made it inside. Their main army has been prepared for it. I'm afraid we won't hold for long.
+
+Greg: - Goddamnit. Order the retreat. And make sure the princess is safe. Curses on that useless champion, she better not make out of this alive.""",
+	DIVINE_SYMBOL_46 = """Myr: - Huh, [he] really managed to pull this off. You are not going to lead the assault?
+
+Duncan: - No, it's over and there's no challenge. I've set a number of scouts to watch out for any potential escape direction so princess should be our now. 
+
+Myr: - Hmph, she's too smart to get caught by you. 
+
+At this moment a messenger approached Duncan.""",
+	DIVINE_SYMBOL_47 = """Messenger: - Sir, [name] has returned and asks for an audience. 
+
+Duncan: - Bring [him].
+
+As you come out you notice how Duncan's stoic face shows a hint of respect. 
+
+Duncan: - A splendid job. You are going down in history with what you've pulled out here. Also managed to do what those mages couldn't.
+
+Myr: - Screw you.""",
+	DIVINE_SYMBOL_OPTION_33 = """That wasn't too hard""",
+	DIVINE_SYMBOL_OPTION_34 = """I thought I'm not gonna make it""",
+	DIVINE_SYMBOL_48 = """Duncan: - Either way the town will be ours by the next morning. You can go and rest until then.""",
+	DIVINE_SYMBOL_49 = """A few hours later
+
+Soldier: - We have captured the town, but there has been no signs of Greg or the princess.
+
+Duncan: - Damnit, they must've had some hidden escape roots we had no idea about. Nevertheless, the town is ours and rebel forces have been defeated.
+
+Duncan: - [name], you can return to Aliron now. We shall decide on our next actions.""",
 	
 	
 }
