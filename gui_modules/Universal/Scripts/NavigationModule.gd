@@ -150,4 +150,5 @@ func return_to_mansion(with_state = "default"):
 	gui_controller.exploration.hide()
 	gui_controller.close_all_closeable_windows()
 	
-	gui_controller.dialogue.raise()
+	if gui_controller.dialogue != null:
+		gui_controller.dialogue.raise()
