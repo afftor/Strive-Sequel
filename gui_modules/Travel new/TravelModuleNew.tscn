@@ -1,0 +1,380 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://gui_modules/Travel new/TravelModuleNew.gd" type="Script" id=1]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/panel_travel_main.png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/Themes_v2/travel_new/NonDecorButtonThin_with_Font.tres" type="Theme" id=8]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/travel_new/NonDecorButtonThinSmall_with_Font.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=17]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.105882, 0.054902, 0.0823529, 1 )
+
+[node name="Travels" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 134.194 ],
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="area" type="Control" parent="MarginContainer"]
+margin_right = 1860.0
+margin_bottom = 1020.0
+
+[node name="from_panel" type="Control" parent="MarginContainer/area"]
+anchor_right = 0.319
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/from_panel"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/from_panel/CenterContainer"]
+margin_left = 100.0
+margin_top = 17.0
+margin_right = 492.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Starting location"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/area/from_panel"]
+anchor_top = 0.103
+anchor_right = 1.0
+anchor_bottom = 0.42
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/area/from_panel/MarginContainer"]
+margin_right = 533.0
+margin_bottom = 263.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer"]
+margin_right = 533.0
+margin_bottom = 263.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="Button" type="Button" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer"]
+margin_right = 533.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 8 )
+custom_fonts/font = ExtResource( 10 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 0.977
+anchor_right = 0.977
+anchor_bottom = 1.0
+margin_left = -0.741028
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "30"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+margin_left = 10.7248
+margin_top = 9.13593
+margin_right = 42.7248
+margin_bottom = 41.1359
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="to_panel" type="Control" parent="MarginContainer/area"]
+anchor_left = 0.319
+anchor_right = 0.639
+anchor_bottom = 1.0
+margin_left = -0.340027
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/to_panel"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/CenterContainer"]
+margin_left = 116.0
+margin_top = 17.0
+margin_right = 478.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Travel location"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/area/to_panel"]
+anchor_top = 0.251
+anchor_right = 1.0
+anchor_bottom = 0.884
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/area/to_panel/MarginContainer2"]
+margin_right = 535.0
+margin_bottom = 585.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer"]
+margin_right = 535.0
+margin_bottom = 585.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="Button" type="Button" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer"]
+margin_right = 535.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 13 )
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 0.977
+anchor_right = 0.977
+anchor_bottom = 1.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "30"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button"]
+margin_left = 10.7248
+margin_top = 9.13593
+margin_right = 42.7248
+margin_bottom = 41.1359
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/area/to_panel"]
+anchor_top = 0.923
+anchor_right = 1.0
+anchor_bottom = 0.962
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/to_panel/HBoxContainer"]
+margin_right = 295.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer"]
+margin_left = 50.0
+margin_right = 244.0
+margin_bottom = 58.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Close"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/area/to_panel/HBoxContainer"]
+margin_left = 299.0
+margin_right = 595.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer2"]
+margin_left = 51.0
+margin_right = 245.0
+margin_bottom = 58.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Confirm"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info_panel" type="Control" parent="MarginContainer/area"]
+anchor_left = 0.64
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/info_panel"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+
+[node name="Label" type="Label" parent="MarginContainer/area/info_panel/CenterContainer"]
+margin_left = 187.0
+margin_top = 17.0
+margin_right = 481.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Information"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/area/info_panel"]
+anchor_top = 0.105
+anchor_right = 1.0
+anchor_bottom = 0.666
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+
+[node name="info_text" type="RichTextLabel" parent="MarginContainer/area/info_panel/MarginContainer"]
+margin_right = 589.0
+margin_bottom = 492.0
+custom_fonts/normal_font = ExtResource( 4 )
+custom_colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "test text"
+
+[node name="resources" type="VBoxContainer" parent="MarginContainer/area/info_panel"]
+anchor_top = 0.668
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/info_panel/resources"]
+margin_right = 669.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Avalible Resources"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/info_panel/resources"]
+margin_top = 39.0
+margin_right = 669.0
+margin_bottom = 338.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/area/info_panel/resources/CenterContainer"]
+margin_left = 334.0
+margin_top = 149.0
+margin_right = 334.0
+margin_bottom = 149.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="MarginContainer/area/info_panel/resources/CenterContainer/GridContainer"]
+visible = false
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/area/info_panel/resources/CenterContainer/GridContainer/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 74, 74 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/info_panel/resources/CenterContainer/GridContainer/Button"]
+margin_left = 2.0
+margin_top = 53.0
+margin_right = 77.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "2/3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="frame" type="TextureRect" parent="MarginContainer"]
+margin_right = 1860.0
+margin_bottom = 1020.0
+texture = ExtResource( 2 )
+expand = true
