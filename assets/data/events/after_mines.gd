@@ -178,6 +178,7 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}}],
 			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 		}],
 	},

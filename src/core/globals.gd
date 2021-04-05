@@ -1258,11 +1258,16 @@ func common_effects(effects):
 			'teleport_active_character':
 				input_handler.active_character.teleport(i.to_loc)
 			'teleport_active_location':
-				input_handler.exploration_node.open_location(ResourceScripts.world_gen.get_location_from_code(i.to_loc.code))
+				var location
+				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
+					if a.classname == i.to_loc.location.to_upper(): # SETTLEMENT_PLAINS1
+						location = a
+				#location.area = area
+				
 				for pos in input_handler.active_location.group:
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
-						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
+						characters_pool.get_char_by_id(ch_id).teleport(location)
 			'teleport_location':
 				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
 				if locdata.location == null:

@@ -467,7 +467,7 @@ func _on_TestButton_pressed():
 
 func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
-	variables.allow_remote_intereaction = true
+	variables.allow_remote_intereaction = false
 	ResourceScripts.game_world.make_world()
 
 	if generate_test_chars:
@@ -740,8 +740,8 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
-		input_handler.interactive_message('divine_symbol_30', '', {})
-		
+		#input_handler.interactive_message('divine_symbol_35', '', {})
+		globals.connect("hour_tick", self, "test")
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
@@ -786,3 +786,5 @@ func test_mode():
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
 
+func test():
+	input_handler.interactive_message('after_mines_convoy_1', '', {})

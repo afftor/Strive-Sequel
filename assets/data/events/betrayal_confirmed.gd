@@ -545,6 +545,7 @@ var data = {
 		text = [ {text = "DIVINE_SYMBOL_48", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_36', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = "return_to_mansion"}],
 		}],
 	},
 	
@@ -552,6 +553,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
 		options = [ {
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines', area = 'plains'}}],
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 		}],
 	},
