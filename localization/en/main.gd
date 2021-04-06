@@ -4110,8 +4110,231 @@ The priestess takes another long pause to contemplate the situation when finally
 
 It's time to return home.""",
 	
+	PRE_ANASTASIA_EXECUTION_1 = """As you show Duncan Princess' corpse he makes a pained grimace. After you explained to him what happened he looked disappointed but content.
+
+- A shame this happened, but I believe you've done what you could. Finally this is over, so be prepared to step up being a mayor, you've deserved it.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_1 = """I want her elf servant""",
+	PRE_ANASTASIA_EXECUTION_OPTION_2 = """That's an honor""",
+	PRE_ANASTASIA_EXECUTION_OPTION_3 = """Pleasure doing business with you""",
+	PRE_ANASTASIA_EXECUTION_2 = """- No can do. Don't make me remind you that you've lost all important provision before the siege. This shall be your compensation to us.""",
+	PRE_ANASTASIA_EXECUTION_3 = """- Hmm, fine, we have no use for her at this point, but do not expect her to be friendly, especially after the princess' death.""",
+	PRE_ANASTASIA_EXECUTION_4 = """- We shall declare your succession in a week, until then you can rest.""",
+	PRE_ANASTASIA_EXECUTION_5 = """You successfully deliver the princess to the prison and make your way to Duncan who seemed to be already aware of your success.
+
+- You've done what few people dreamed to achieve, not only you've ended the war, but captured the princess herself. You've earned your future position. Once the princess' fate will be decided we will be declaring your win. Speaking of which, I've arranged the meeting for tomorrow. You should participate.
+""",
+	PRE_ANASTASIA_EXECUTION_OPTION_4 = """What is going to happen to her?""",
+	PRE_ANASTASIA_EXECUTION_OPTION_5 = """I'll join for sure""",
+	PRE_ANASTASIA_EXECUTION_OPTION_6 = """More paperwork than actual fighting""",
+	PRE_ANASTASIA_EXECUTION_6 = """- This is what we will decide tomorrow, but I'm positive her head will roll on the gallows.""",
+	PRE_ANASTASIA_EXECUTION_OPTION_7 = """She deserved it""",
+	PRE_ANASTASIA_EXECUTION_OPTION_8 = """Seems like a waste to kill such a pretty girl""",
+	PRE_ANASTASIA_EXECUTION_7 = """- Don't care about deserving, she's dangerous and what happened has shown it. We get rid of her and move on.""",
+	PRE_ANASTASIA_EXECUTION_8 = """- If she was not a Deranged King's daughter, I would agree with you, however she has shown we can't risk it.""",
+	PRE_ANASTASIA_EXECUTION_9 = """- Until later then.""",
+	PRE_ANASTASIA_EXECUTION_10 = """- Agreed, yet we can't simply finish her off and be done with it. Not on our own at least. Do come.""",
+	PRE_ANASTASIA_EXECUTION_11 = """The guilds and landlords once again have gathered, now mostly in rejoice of the upcoming finale of the won war. 
+
+Duncan: - As many have already heard, the rebellious princess has been finally captured by a [name], who will be becoming the next city mayor because of [his] achievements. Today we, the leaders, make a decision on the princess' fate. 
+
+Myr: - As a reminder, she has instigated the civil war which led to many losses, not only in people but also in business...""",
+	PRE_ANASTASIA_EXECUTION_12 = """Sigmund: - Really care 'bout yar magic toys, huh. Were mages always dat mercantile? 
+
+Myr: - Oh, please, you weren't the one on the frontlines, exhausting your supplies for this pointless war. 
+
+Sigmund: - Hmph.""",
+	PRE_ANASTASIA_EXECUTION_13 = """Duncan: - She also put us under a threat of empire.
+
+Amelia: - Hmm, according to my sources she and the rebels were mostly controlled by Gregor. A king's knight.
+
+Duncan: - ...This does not excuse her involvement.
+
+Amelia: - She might be not quite as dangerous as you try to present her, though. Could she be mostly misguided?""",
+	PRE_ANASTASIA_EXECUTION_14 = """Duncan: - Nonsense. Without her existence there would be no rebellion. This is why we decide on her execution today.
+
+Amelia: - And I presume, you wish her dead?
+
+Duncan: - For certain.""",
+	PRE_ANASTASIA_EXECUTION_15 = """Myr: - I agree. The girl is nothing but a problem. The sooner we end it, the better.
+
+Sigmund: - I can't say I like dat, but wat are da options we 'ave?
+
+Myr: - Indeed, for once your dwarf brain gets it.
+
+Sigmund didn't seem to realize the insult or maybe didn't pay it attention.""",
+	PRE_ANASTASIA_EXECUTION_16 = """Amelia: - Ah, how tragic. Does it seem like our vote holds no power over here?
+
+Duncan: - It does, since three of us already agreed.
+
+Amelia: - A grim fate to fall on the young maiden, and there's really nothing can be done...?
+""",
+	PRE_ANASTASIA_EXECUTION_OPTION_9 = """I wish to keep her alive""",
+	PRE_ANASTASIA_EXECUTION_OPTION_10 = """*Stay silent*""",
+	PRE_ANASTASIA_EXECUTION_19 = """All guild leaders except for Amelia has raised an eyebrow at you. 
+
+Amelia: - Isn't it a pleasure that our future mayor is a merciful one?
+
+Duncan: - I thought this is not disputable. We can't risk keeping her alive and you know that. What is your goal?""",
+	PRE_ANASTASIA_EXECUTION_OPTION_11 = """I will make her my wife""",
+	PRE_ANASTASIA_EXECUTION_OPTION_12 = """I want to make her my slave""",
+	PRE_ANASTASIA_EXECUTION_20 = """This outrageous statement even made Amelia look surprised. 
+
+Duncan: - You can't be serious...
+
+Myr: - I can't believe this either.""",
+	PRE_ANASTASIA_EXECUTION_21 = """Amelia: - A true man, a conqueror and a lover. What a pleasure to a woman's ear. 
+
+Duncan: - Enough of your nonsense, you might've earned your reputation as a mayor, but marrying a former rebel princess is ridiculous. 
+
+Amelia: - I actually don't think so.
+
+Duncan: - What?
+
+Amelia: - Consider the following, what if we have the princess marry our mayor and publicly acknowledge our regime? Won't it be even better than having her executed? Moreover, many rebels would consider her as a legitimate co-ruler, while of course she would have none of the power. 
+
+Duncan: - That's... Never going to happen.""",
+	PRE_ANASTASIA_EXECUTION_22 = """Amelia: - Well, you never know where a girl's heart might sway. I think it's better than to doom such a young beauty to death.
+
+The meeting went into uproar as people started arguing over the new idea.""",
+	PRE_ANASTASIA_EXECUTION_23 = """Myr: - Hmph, if it's [name], [he] might manage it, I suppose. 
+
+Sigmund: - I say it's okay if ya think so, we trust [name].""",
+	PRE_ANASTASIA_EXECUTION_24 = """Being left in minority Duncan remained silent for some time, as the room mostly came to the conclusion that your idea is sound.
+
+Duncan: - Very well. If [name] can indeed convince the princess to publicly acknowledge our regime there's no harm in keeping her around, provided her status will be that of a slave. Even as... [his] wife. 
+
+Amelia: - I suspect it's not going to be easy at all, though, [name]. But I'm sure you'll figure something out. 
+
+Duncan: - But if you won't she will be executed as planned. Until either happens your election will be put on hold. 
+
+Duncan: - With this the meeting is over.""",
+	PRE_ANASTASIA_EXECUTION_25 = """Amelia: - Big [man] should also think big, huh? A former princess as a personal slave is not something you see just any day.
+
+Duncan: - I admire your ambition, but this is too much even for you. If she manages to escape, her status will allow her to lead another rebellion, even more fierce.
+
+Amelia: - I see where you are coming from, but think about it, if she's to declare her acceptance of our institution and asks rebels to drop their weapons it would be even better for us.
+
+Duncan: - She has shown no willingness to cooperate, so I find it hard to believe.
+
+Amelia: - I believe our future mayor has proven [he]'s capable of great things. So why don't we try it?""",
+	PRE_ANASTASIA_EXECUTION_26 = """Myr: - Hmph, if it's [name], [he] might manage it, I suppose. 
+
+Sigmund: - Yah, I agree. There's no point rushin' either.""",
+	PRE_ANASTASIA_EXECUTION_27 = """Duncan: - ...Very well. You can attempt to persuade her. But if you won't succeed she will be executed as planned. Until either happens your election will be put on hold.""",
+	PRE_ANASTASIA_EXECUTION_28 = """Duncan: - Then, we've decided. The execution will be held next week. After that we will declare a mayor. Thank you for your work.""",
+	
+	MIND_CONTROL_1 = """- Well, who could've thought you are this ambitious to get your hands on the princess herself. But I assure this shall not be easy for us. Duncan did not lie when said she's completely unwilling to cooperate as she sees us nothing but evil.
+
+- You'll have to do your best in order to persuade her. I'll give you a little tip. If there's anything I'd use to convince her, it would be her naiveness and sense of duty. She still holds a strong belief she's responsible for others.""",
+	MIND_CONTROL_OPTION_1 = """Another way?""",
+	MIND_CONTROL_OPTION_2 = """You mean torture""",
+	MIND_CONTROL_2 = """- No-no, the torture wouldn't work on her, if anything, it would probably make things, she might not give up even in her death.""",
+	MIND_CONTROL_3 = """- There exist some practices of enforced control. I've observed a magic technique which completely bends a target's mind to another will. Then the master could issue any orders, but little was left of the slave's will in the end.
+
+- I guess it's up to you if you wish to use something like this. I'm sure if you ask nicely enough Myr could point you a direction.""",
+	MIND_CONTROL_OPTION_3 = """Thanks for the tip""",
+	MIND_CONTROL_OPTION_4 = """I wouldn't want to do something like this""",
+	MIND_CONTROL_4 = """- It's my pleasure. I wish you success in whatever you are planning.""",
+	MIND_CONTROL_5 = """- Neither would I, the servitude should be willing after all. I just make sure you know this is still an option, use this information however you want.""",
+	MIND_CONTROL_OPTION_5 = """About princess...""",
+	MIND_CONTROL_6 = """- Yes, how's your negotiations go?""",
+	MIND_CONTROL_OPTION_6 = """I've decided it's not worth it""",
+	MIND_CONTROL_OPTION_7 = """I'm still on it""",
+	MIND_CONTROL_7 = """- So you agree to her execution?""",
+	MIND_CONTROL_8 = """- Shame you didn't succeed. The execution will be held in a week.""",
+	MIND_CONTROL_OPTION_8 = """Ask about the mind control technique""",
+	MIND_CONTROL_9 = """- Mind control? We aren't really that interested in it. It would be more appropriate for the sly puss and her company.""",
+	MIND_CONTROL_OPTION_9 = """But you must know something""",
+	MIND_CONTROL_OPTION_10 = """Your help would be invaluable""",
+	MIND_CONTROL_10 = """- *Sigh* Try Xari, I believe she's been dabbling in it. Just don't get any weird ideas about what you could do with this.""",
+	MIND_CONTROL_11 = """- Hey, [name], what's up?""",
+	MIND_CONTROL_12 = """I've been told you can help me with a mind control technique""",
+	MIND_CONTROL_13 = """Just dropped to say hi *Leave*""",
+	MIND_CONTROL_14 = """- Eeh? I haven't been asked about this in a long while. 
+
+Xari takes a long pause thinking about your request.
+
+- Fine, I can do it for you for 1000 gold. But this will be the only time. I really could use some gold right now, but it's too exhausting and I don't feel right doing it.""",
+	MIND_CONTROL_OPTION_11 = """*Pay*""",
+	MIND_CONTROL_OPTION_12 = """I'll think about it """,
+	MIND_CONTROL_15 = """You pass Xari the huge sum which she puts away. 
+
+- Alright, let me prepare it.""",
+	MIND_CONTROL_16 = """After a couple of hours Xari comes out with a small vial of bright pink liquid. 
+
+- Finally done. This potion will suppress the will of its target to irreversible state. One last thing, do you have some medium for the control device?""",
+	MIND_CONTROL_OPTION_13 = """*Give her bracelet*""",
+	MIND_CONTROL_17 = """You pass Xari the princess' bracelet which helped to locate her.
+
+- Oh, this one must be expensive. Alright.
+
+She chants a control spell as the bracelet and potion glows with a dark aura.""",
+	MIND_CONTROL_18 = """- Done. Make your victim drink this, then put the bracelet on them, this way you'll also be able to command them. And one more time, their mind will be permanently broken. Don't ask me then to fix it, I can't.""",
+	MIND_CONTROL_OPTION_14 = """Thanks""",
+	MIND_CONTROL_OPTION_15 = """Noted""",
+	MIND_CONTROL_19 = """- Alright, hold on.
+
+Xari fishes a small ring out of her stash. As she chants the control spell, the ring and the potion glow with a dark aura.""",
+	MIND_CONTROL_20 = """- Done. Make your victim drink this, then put the ring on them, this way you'll also be able to command them. And one more time, their mind will be permanently broken. Don't ask me then to fix it, I can't.""",
+	
+	ANASTASIA_EXECUTION_1 = """A week later. Anastasia's execution was held at the main square and a covered postrum has been prepared with people gathering around. Despite being in conflicted feelings, Amelia has invited you over. 
+
+- Hey, isn't it a nice day? Maybe a bit too nice for such a sad occurrence. But cheer up, you are going to become the mayor soon after all. And this is important for your public image.""",
+	ANASTASIA_EXECUTION_OPTION_1 = """Don't think I should be cheerful at someone's execution""",
+	ANASTASIA_EXECUTION_OPTION_2 = """I'm fine, at least this is over""",
+	ANASTASIA_EXECUTION_2 = """- Well, maybe it won't be that bad after all. 
+
+Amelia smiled at you mysteriously.""",
+	ANASTASIA_EXECUTION_3 = """- That's the spirit. After all, we got the best spots so we can easily leave if bored.""",
+	ANASTASIA_EXECUTION_4 = """Oh, look, it's about to begin.""",
+	ANASTASIA_EXECUTION_5 = """As the cover from the postrum was removed the crowds began to raise their voices. In the center of it was a fully naked Anastasia entrapped in wooden stockade. As she was observed by the whole town her face quickly turned angry and red. The herald next to her began declaring her crimes which went on for a full minute. 
+
+Herald: - ...for these crimes, rebel Princess Anastasia is subjected...
+
+Before the last words he made a pause to instigate the intrigue.
+
+Herald: - To a prolonged public humiliation. She will be repaying for her crimes with her body. Everyone should use her as they seem fit as long as she's not grievously harmed. 
+
+Anastasia: - Wha..?
+
+Princess could not make out if she should be happy for staying alive or prefer to be executed instead of the upcoming degradation.""",
+	ANASTASIA_EXECUTION_6 = """The crowd grew even more excited as many men moved up quickly forming a line. Anastasia was quickly mounted from behind by first of them with guards keeping things in regulation.
+
+Citizen: - Take this, you bitch! My brother died at war because of you.
+
+Anastasia: - I'm sorry... Please, it hurts... Stop...
+
+However, the princess' pleads fell on deaf ears. Angry and horny citizens around felt entirely just in their debauchery.""",
+	ANASTASIA_EXECUTION_7 = """Amelia: - He-he, isn't it much nicer than a dead body? I'm actually proud of myself. Don't look so surprised, I've managed to convince Duncan and others that after this nobody will ever see her as a royalty, so she'll be safe. Can't guarantee that for her mind, though.""",
+	ANASTASIA_EXECUTION_OPTION_3 = """Admirable move""",
+	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse""",
+	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing""",
+	ANASTASIA_EXECUTION_8 = """Amelia: - I did say I pity her, didn't I? And this is much more fun to look at too.""",
+	ANASTASIA_EXECUTION_9 = """Amelia: - *giggle* Well, that's only half of the truth. Ever thought about how many landlords, riches and nobles would like to do it with a real and only princess? After the thought I gave them we managed to settle it in a democratic way. These first guys in the line could learn a better way to disguise themselves, though.""",
+	ANASTASIA_EXECUTION_10 = """Amelia: - Surely you don't believe this, do you? Even so, this was her choice. Yesterday I informed her about the new punishment and offered a way to end her life, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, given there would be no consequences.""",
+	ANASTASIA_EXECUTION_11 = """Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
+	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet customers didn't seem to end. Her pleads and cries have entirely turned into sobs and faint moans. 
+
+The former princess has been kept used by citizens for the whole next week, eventually disappearing from the main square.""",
+	ANASTASIA_EXECUTION_13 = """The crowd has gathered at the square in waiting for the announcement of the war being over. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The cries of rejoice have sprouted from the people. 
+
+- None can belittle how much effort [sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
+	ANASTASIA_EXECUTION_1 = """""",
 	
 	
-#	LOOKING_FOR_PRINCESS_4 = """""",
-#	LOOKING_FOR_PRINCESS_OPTION_4 = """""",
+	
+#	ANASTASIA_EXECUTION_1 = """""",
+#	ANASTASIA_EXECUTION_OPTION_1 = """""",
 }
