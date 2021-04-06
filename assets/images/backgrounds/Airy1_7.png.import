@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/Airy1_7.png-78f725476b54f3fc60f6beb8fd610cf8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/backgrounds/Airy1_7.png"
+dest_files=[ "res://.import/Airy1_7.png-78f725476b54f3fc60f6beb8fd610cf8.stex" ]
 
 [params]
 

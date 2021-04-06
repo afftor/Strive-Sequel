@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/windblade.png-9d3f6019f081e5efa7e7ed5a43b5f6a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/iconsskills/windblade.png"
+dest_files=[ "res://.import/windblade.png-9d3f6019f081e5efa7e7ed5a43b5f6a0.stex" ]
 
 [params]
 

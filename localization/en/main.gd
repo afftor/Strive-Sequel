@@ -1344,6 +1344,11 @@ var TranslationDict = {
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.", 
 	
+	PROFALIOSCHAMPION = "Champion of Alios",
+	PROFALIOSCHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
+	PROFRENOWNROYALTY = "Renown Royalty",
+	PROFRENOWNROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
+	
 	NEXTCLASSEXP = "Experience required for next class.",
 	
 	UPGRADEPREVBONUS = "Previous bonus: ",

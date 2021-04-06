@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/trained_raptor.png-5f7dfc3ef21f8ee02d256f50d2a9958f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/enemies/trained_raptor.png"
+dest_files=[ "res://.import/trained_raptor.png-5f7dfc3ef21f8ee02d256f50d2a9958f.stex" ]
 
 [params]
 

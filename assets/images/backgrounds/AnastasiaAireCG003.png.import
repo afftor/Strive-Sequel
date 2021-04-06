@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/AnastasiaAireCG003.png-6767ab37ee3dfe490252efc32b0521c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/backgrounds/AnastasiaAireCG003.png"
+dest_files=[ "res://.import/AnastasiaAireCG003.png-6767ab37ee3dfe490252efc32b0521c2.stex" ]
 
 [params]
 

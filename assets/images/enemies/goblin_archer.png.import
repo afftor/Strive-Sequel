@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/goblin_archer.png-9efce342c08754ed25ed3a60a785c258.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/enemies/goblin_archer.png"
+dest_files=[ "res://.import/goblin_archer.png-9efce342c08754ed25ed3a60a785c258.stex" ]
 
 [params]
 
