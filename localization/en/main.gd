@@ -3917,6 +3917,201 @@ Soldier: - We have captured the town, but there has been no signs of Greg or the
 Duncan: - Damnit, they must've had some hidden escape roots we had no idea about. Nevertheless, the town is ours and rebel forces have been defeated.
 
 Duncan: - [name], you can return to Aliron now. We shall decide on our next actions.""",
+	LOOKING_FOR_PRINCESS_START = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
+	LOOKING_FOR_PRINCESS_1 = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we’ve got no leads as to where she may have gone. Our interrogation of the prisoners hasn’t turned up much.""",
+	LOOKING_FOR_PRINCESS_2 = """- Don’t think I’ve forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you’ve proven yourself to be very capable.""",
+	LOOKING_FOR_PRINCESS_3 = """- Oh, and here, your reward for your help in the raid. you’ve proven yourself to be very capable.""",
+	LOOKING_FOR_PRINCESS_4 = """- We still have to secure the princess.""",
+	LOOKING_FOR_PRINCESS_OPTION_1 = """Let’s get right into it, I’m eager to get to her myself.""",
+	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
+	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
+	LOOKING_FOR_PRINCESS_5 = """-We’ve had no further leads on her location so far. So far no one has come forward with any new information.""",
+	LOOKING_FOR_PRINCESS_OPTION_4 = """I’ll track her down.""",
+	LOOKING_FOR_PRINCESS_OPTION_5 = """I’ll come back later.""",
+	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds mercenaries and scavengers didn't waste any time. However after another half hour you notice a smaller scavenger. 
+
+The lone kobold is going through the rummage seemingly unaware of your presence yet. Having acquired a decent collection already you spot an uncharacteristically elegant silver bracelet on his hand. """,
+	LOOKING_FOR_PRINCESS_OPTION_6 = """*Greet him*""",
+	LOOKING_FOR_PRINCESS_OPTION_7 = """*Approach*""",
+	LOOKING_FOR_PRINCESS_7 = """As you move closer he spots you and jumps up, backing off a bit. 
+
+- Hey, what do you want?
+
+The kobold tediously looked you over.""",
+	LOOKING_FOR_PRINCESS_OPTION_8 = """What are you doing here?""",
+	LOOKING_FOR_PRINCESS_OPTION_9 = """That's a nice bracelet you have there""",
+	LOOKING_FOR_PRINCESS_8 = """- Same thing you do. Trying to survive. Or you gonna insist that's not what you've came for here?""",
+	LOOKING_FOR_PRINCESS_9 = """- Of course it's nice since I've found it. You look like you wanna get it, correct? Hah, I can see when someone is after something. Just for you I'm ready to sell it. Only 500 gold and it's yours.""",
+	LOOKING_FOR_PRINCESS_OPTION_10 = """That's rather expensive for something so simple""",
+	LOOKING_FOR_PRINCESS_OPTION_11 = """I'll rather take it by force""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE = """Fine, take the gold""",
+	LOOKING_FOR_PRINCESS_OPTION_13 = """I'll consider it and return then""",
+	LOOKING_FOR_PRINCESS_10 = """- Hah, trying to take me for a fool? I don't know how simple it is, but I can see you want it, and I can see you don't look cheap. Take it""",
+	LOOKING_FOR_PRINCESS_11 = """Before you are able to make a move, the kobold swiftly escapes in a small hole in the ground taking his possessions with him. There's no way for you to follow him like this. You should probably return the other day.""",
+	LOOKING_FOR_PRINCESS_12 = """After some time you find the same kobold with a bracelet. 
+
+- Hey, made up your mind yet?""",
+	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
+	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
+
+	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
+	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time""",
+	LOOKING_FOR_PRINCESS_OPTION_THINK = """I'll think about""",
+	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard *attack*""",
+	LOOKING_FOR_PRINCESS_14 = """- Yeah, no shit, consider this a retribution for attacking me. Take it or leave, I don't care.""",
+	LOOKING_FOR_PRINCESS_15 = """Same as the last time the kobold quickly runs away into one of the small holes leaving you with nothing. You should probably return the other day.""",
+	LOOKING_FOR_PRINCESS_16 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
+	
+	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
+	LOOKING_FOR_PRINCESS_OPTION_18 = """The beating will be your payment *attack*""",
+	LOOKING_FOR_PRINCESS_17 = """This time you've went slightly ahead of the kobold, yet it wasn't enough to stop him from getting away. It's only at the last moment he thumbled on his way, almost falling, but regaining his composure. This, however, made him drop the bracelet behind.
+	
+	Unable to retrieve it without leaving the burrow, he only could swear back at you. 
+	
+	After closer inspection you confirm that it must belong to a royal family so it's time to take it to Myr.""",
+	LOOKING_FOR_PRINCESS_18 = """As you pass the gold to the kobold, he gives away the bracelet and quickly disappears with money. After closer inspection you confirm that it must belong to a royal family so it's time to take it to Myr.""",
+	LOOKING_FOR_PRINCESS_OPTION_19 = """I've bought the bracelet""",
+	LOOKING_FOR_PRINCESS_19 = """You've presented the bracelet to Amelia who closely inspected it for a few moments. 
+
+Amelia: - Well, fine work. This is certainly a royal family jewelry. The engraving was addressed to the youngest daughter.
+
+Myr: - Well then, let's get this over wit. 
+
+Myr takes a small medallion out of her table. As she chants the spell, the medallion in her hand starts glowing. After about a minute she finishes and turns back to you.""",
+	LOOKING_FOR_PRINCESS_20 = """Myr: - Alright, this will point to the previous owner's direction. Hold it in your hand and you'll feel slight vibrations.
+
+Amelia: - Neat. Now you'll be able to track down our little problem. Heh, I wonder if it will keep vibrating in her presence as well...
+
+Myr: - Leave your professional quirks out of this unless you want me to throw you out.
+
+Amelia: - Alright, alright, I should be going anyway. Good luck [name], I'm waiting for your success.""",
+	LOOKING_FOR_PRINCESS_21 = """After testing the medallion you decide it's point heavily in the direction of Elven forests. Your goal should be visiting them now.""",
+	LOOKING_FOR_PRINCESS_22 = """You ask for an audience from elven High Priestess, who seems to act as the primal ruler of the elven capital. Despite natural distaste for outsiders, your status forced elves to accept your audience request.""",
+	LOOKING_FOR_PRINCESS_23 = """The medallion has kept pointing at the elven capital so you were left no other option but to meet the High Priestess, who's taken as the primal ruler of the elven capital. Despite natural distaste for outsiders, your status forced elves to accept your audience request.""",
+	LOOKING_FOR_PRINCESS_24 = """As you've been brought to a large room with a few guards in it, you've been told to wait there. After a minute an elven woman appeared from the opposite side to approach you. Her stature and guards' reaction clearly indicated her superior position to others.
+
+- Usually we do not welcome outsiders in our lands, but we've made a promise to receive ambassadors from human lands. State your business, stranger.""",
+	LOOKING_FOR_PRINCESS_OPTION_20 = """You should show more respect to the guests""",
+	LOOKING_FOR_PRINCESS_OPTION_21 = """I'm looking for a certain woman""",
+	LOOKING_FOR_PRINCESS_OPTION_22 = """We didn't mean to offend you""",
+	LOOKING_FOR_PRINCESS_25 = """- You are talking to Freya's High Priestess. There's no higher respect you could receive from us, [race]. Consider this Freya's benevolence but you'll receive the woman you want.""",
+	LOOKING_FOR_PRINCESS_26 = """- We know what you are here for. Consider this Freya's benevolence but you'll receive the woman you want.""",
+	LOOKING_FOR_PRINCESS_27 = """- Cease your useless banter. Consider this Freya's benevolence but you'll receive the woman you want.""",
+	LOOKING_FOR_PRINCESS_OPTION_23 = """Easy like that?""",
+	LOOKING_FOR_PRINCESS_OPTION_24 = """Why would you do that?""",
+	LOOKING_FOR_PRINCESS_OPTION_25 = """Well, I'm not going to complain""",
+	LOOKING_FOR_PRINCESS_28 = """- We have no interest in your human disputes. This woman came seeking refuge, but we are no charity. Once you take the woman I expect you to leave this place. 
+
+The priestess gave orders to the guards to get the princess out.
+""",
+	LOOKING_FOR_PRINCESS_29 = """As Anastasia saw you, she realized what she was bought for and her face became pale.
+
+Anastasia: - No... What the hell?! You can't do this to me!
+
+Priestess: - Cease your childish behavior, human, if you are royalty, act like one.""",
+	LOOKING_FOR_PRINCESS_OPTION_26 = """An honor to meet you, princess""",
+	LOOKING_FOR_PRINCESS_OPTION_27 = """Now, don't need to make a scene""",
+	LOOKING_FOR_PRINCESS_OPTION_28 = """I've been waiting to get my hands on you""",
+	LOOKING_FOR_PRINCESS_30 = """The princess paid little attention to your words and continued to whip out on the priestess, who seemed to grow more and more irritated.
+
+Anastasia: - They will kill me, like they killed my dad. And you betrayed, I thought I could trust you!""",
+	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
+	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth*""",
+	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss it""",
+	LOOKING_FOR_PRINCESS_31 = """Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
+
+Priestess: - I'll excuse this display of misbehave for now. Now leave and remember our agency in future. 
+
+Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you. """,
+	LOOKING_FOR_PRINCESS_32 = """Anastasia: - Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-
+
+*Slap*
+
+Before you managed to reach Anastasia, the priestess herself gave her a loud slap which made her fall on the ground in shock.""",
+	LOOKING_FOR_PRINCESS_OPTION_32 = """There's no need to get violent""",
+	LOOKING_FOR_PRINCESS_OPTION_33 = """Can't say I wouldn't do the same""",
+	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough""",
+	LOOKING_FOR_PRINCESS_33 = """Priestess: - Silence, [race]!
+	
+Her sudden outburst made you back off.""",
+	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her being clearly enraged.
+
+Priestess: - I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have your tongue cut out already. 
+
+Anastasia: - ...""",
+	LOOKING_FOR_PRINCESS_35 = """Priestess: - You, however, will have to answer for your crime with your life. Guards!
+
+Anastasia: - What? No...
+
+Following the order, the guards seized Anastasia and also blocked your way from interfering. Still in shock from sudden change of situation and realization the princess couldn't believe this was happening to her.""",
+	LOOKING_FOR_PRINCESS_OPTION_35 = """*Oppose*""",
+	LOOKING_FOR_PRINCESS_OPTION_36 = """*Let her be executed*""",
+	LOOKING_FOR_PRINCESS_36 = """You tell the priestess that you will need the princess alive no matter what. After observing the shocked princess she seemed to be more calm, yet unbendable. 
+
+Priestess: - She shall be executed regardless of your needs. This is the law and we can't pardon it despite your or her status. Once her spirit is redeemed by the tree you can have her corpse. I presume this should suffice for your masters.""",
+	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric""",
+	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this""",
+	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands""",
+	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.""",
+	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.""",
+	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.""",
+	LOOKING_FOR_PRINCESS_40 = """You notice that Zephyra cautiously signals you to let her negotiate on your behalf.""",
+	LOOKING_FOR_PRINCESS_OPTION_40 = """As her guardian I request to take punishment for her""",
+	LOOKING_FOR_PRINCESS_OPTION_41 = """*Allow Zephyra to negotiate*""",
+	LOOKING_FOR_PRINCESS_OPTION_42 = """There's no helping it""",
+	LOOKING_FOR_PRINCESS_41 = """Priestess makes a long pause while glaring at you. 
+
+Priestess: - This is true that the guardian can be punished instead of a minor. And you must be aware that I can't simply execute the messenger. Yet, the tradition demands the spilled blood. 
+
+The priestess takes another long pause to contemplate the situation when finally answers.""",
+	LOOKING_FOR_PRINCESS_42 = """Priestess: - Very well, I'll allow you to take her punishment by sacrificing one of your followers.""",
+	LOOKING_FOR_PRINCESS_OPTION_43 = """*Accept*""",
+	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse* """,
+	LOOKING_FOR_PRINCESS_43 = """You've chosen the sacrifice to take the place of Anastasia. As you part with [name], you don't expect to see [him] again.
+	
+	Priestess: - Leave now and tell your masters that we still stand by old agreement.
+	
+	Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
+	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.""",
+	LOOKING_FOR_PRINCESS_45 = """Receiving your approval Zephyra walks forward. The Priestess observes her with prudence.
+
+	Zephyra: - Old traditions are important, but... quite problematic. 
+
+	Priestess: - What are you daring to suggest?
+
+	Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
+
+	Priestess: - You... You have no idea what you are talking about.
+""",
+	LOOKING_FOR_PRINCESS_46 = """Guard: - (whispering) Huh... What's this about?
+	
+	Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
+
+	You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+
+	Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
+	LOOKING_FOR_PRINCESS_47 = """By the order the princess is handed over to you and you give your thanks to the priestess.
+
+	Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
+	
+	Priestess: - Sure, whatever. Leave and take your foul vixen with you.
+	
+	Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
+	LOOKING_FOR_PRINCESS_48 = """Once outside with the now quiet princess you ask Zephyra to explain what happened.
+	
+	- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
+	LOOKING_FOR_PRINCESS_OPTION_45 = """That sounds pretty sad""",
+	LOOKING_FOR_PRINCESS_OPTION_46 = """So, she's a compelled lesbian?""",
+	LOOKING_FOR_PRINCESS_OPTION_47 = """You were unexpectedly helpful""",
+	LOOKING_FOR_PRINCESS_49 = """- Indeed, why can't people relax a bit more? Don't you think it's awesome that Alios is pretty relaxed in such things? Ah, sorry, I didn't mean to preach.""",
+	LOOKING_FOR_PRINCESS_50 = """- I dunno, maybe she's chaste. She did look pretty frigid during the whole ordeal, but maybe it's all an act. Maybe we'll never know.""",
+	LOOKING_FOR_PRINCESS_51 = """- Why, thank you! Wait, what did you mean unexpectedly? If you're gonna treat me like a kid, I'll be acting more like one, you know. Surely you wouldn't want that?""",
+	LOOKING_FOR_PRINCESS_52 = """Without wasting much time the guards have tied Anastasia to the large tree at the center of sanctum. Before the ceremony started you've been forced to leave, which spared you from looking over the princess' pleading face. After about half an hour her pale corpse has been handed over.
+
+It's time to return home.""",
 	
 	
+	
+#	LOOKING_FOR_PRINCESS_4 = """""",
+#	LOOKING_FOR_PRINCESS_OPTION_4 = """""",
 }
