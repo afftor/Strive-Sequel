@@ -23,6 +23,9 @@ margin_right = 1266.0
 margin_bottom = 1006.0
 theme = ExtResource( 1 )
 script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="TextureRect" parent="."]
 margin_left = 61.3965

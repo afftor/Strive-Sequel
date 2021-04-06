@@ -742,7 +742,7 @@ func test_mode():
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
 		#input_handler.interactive_message('divine_symbol_35', '', {})
 		globals.connect("hour_tick", self, "test")
-	
+		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
 			i.totalreputation += 500

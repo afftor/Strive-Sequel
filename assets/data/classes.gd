@@ -701,9 +701,6 @@ var professions = {
 		conflict_classes = [],
 	},
 	
-	
-	#new classes
-	
 	templar = {
 		code = 'templar',
 		name = '',
@@ -822,6 +819,38 @@ var professions = {
 		traits = [],
 		skills = [],
 		combatskills = ['mirror_image','energy_field'], 
+		conflict_classes = [],
+	},
+	
+	renownroyalty = {
+		code = 'renown_royalty',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Technomancer.png"),
+		tags = [],
+		categories = ['social'],
+		showupreqs = [],
+		reqs = [{code = 'disabled', check = true}],
+		statchanges = {charm = 15},
+		traits = [],
+		skills = [],
+		combatskills = [], 
+		conflict_classes = [],
+	},
+	
+	alioschampion = {
+		code = 'alios_champion',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsclasses/Technomancer.png"),
+		tags = [],
+		categories = ['magic'],
+		showupreqs = [],
+		reqs = [{code = 'disabled', check = true}],
+		statchanges = {mpmax = 20, wits = 15},
+		traits = [],
+		skills = [],
+		combatskills = [], 
 		conflict_classes = [],
 	},
 }

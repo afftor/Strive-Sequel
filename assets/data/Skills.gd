@@ -2001,7 +2001,7 @@ var Skilllist = {
 	assassinate = {#must be in hide, deals 400% damage, only once per day
 		code = 'assassinate',
 		descript = '',
-		icon = load('res://assets/images/iconsclasses/assassin.png'),
+		icon = load('res://assets/images/iconsskills/assassinate.png'),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -2048,7 +2048,7 @@ var Skilllist = {
 		code = 'wind_atk',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Inspire.png"),
+		icon = load("res://assets/images/iconsskills/windblade.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -2099,7 +2099,7 @@ var Skilllist = {
 		code = 'water_atk',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/wateredge.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -2148,7 +2148,7 @@ var Skilllist = {
 		code = 'fire_cleave',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/firecleave.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','aoe'],
@@ -2197,7 +2197,7 @@ var Skilllist = {
 		code = 'revenge',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/revenge.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','ads'],
@@ -2245,7 +2245,7 @@ var Skilllist = {
 		code = 'air_cutter',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/aircutter.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','aoe'],
@@ -2299,7 +2299,7 @@ var Skilllist = {
 		code = 'holy_lance',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/holylance.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','aoe'],
@@ -2323,7 +2323,7 @@ var Skilllist = {
 		code = 'swipe',
 		
 		descript = '',
-		icon = load("res://assets/images/iconsskills/Attack.png"),
+		icon = load("res://assets/images/iconsskills/swipe.png"),
 		type = 'combat', 
 		ability_type = 'skill',
 		tags = ['damage','aoe'],
