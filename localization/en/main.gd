@@ -4277,6 +4277,8 @@ She chants a control spell as the bracelet and potion glows with a dark aura."""
 Xari fishes a small ring out of her stash. As she chants the control spell, the ring and the potion glow with a dark aura.""",
 	MIND_CONTROL_20 = """- Done. Make your victim drink this, then put the ring on them, this way you'll also be able to command them. And one more time, their mind will be permanently broken. Don't ask me then to fix it, I can't.""",
 	
+	
+	
 	ANASTASIA_EXECUTION_1 = """A week later. Anastasia's execution was held at the main square and a covered postrum has been prepared with people gathering around. Despite being in conflicted feelings, Amelia has invited you over. 
 
 - Hey, isn't it a nice day? Maybe a bit too nice for such a sad occurrence. But cheer up, you are going to become the mayor soon after all. And this is important for your public image.""",
@@ -4319,22 +4321,286 @@ The former princess has been kept used by citizens for the whole next week, even
 	ANASTASIA_EXECUTION_13 = """The crowd has gathered at the square in waiting for the announcement of the war being over. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The cries of rejoice have sprouted from the people. 
 
 - None can belittle how much effort [sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
-	ANASTASIA_EXECUTION_1 = """""",
+	
+	
+	ANASTASIA_PERSUASION_1 = """You walk into a rather comfortable jail room for a single unbound prisoner which is held there: the former rebellion leader, princess Anastasia. Despite her state she observes you with a sharp glance, yet stays silent. It seems she wasn't really tortured or interrogated since her arrival, but there would be little reason to that.""",
+	ANASTASIA_PERSUASION_OPTION_1 = """Recruit""",
+	ANASTASIA_PERSUASION_OPTION_2 = """Mindbreak""",
+	ANASTASIA_PERSUASION_2 = """You take the Xari's potion out of your pouch and forcefully pour it into Anastasia's mouth until she can realize what's going on. While she struggles, you hold her down making sure she swallows it, as her build is too weak to fight back.
+
+As you are done, she drops on the ground coughing heavily and clinging to her throat. For the last time her eyes display fear and hatred towards you not fully realizing what's happening to her. A moment later she lost consciousness.
+""",
+	ANASTASIA_PERSUASION_3 = """You put the enchanted bracelet over her wrist, the one she's been treasuring and lost some time ago. The bracelet shines for a moment and tightly fixates on it.""",
+	ANASTASIA_PERSUASION_4 = """You put the enchanted ring over her finger. The ring gives off a dim light, then tightly secures on it.""",
+	ANASTASIA_PERSUASION_5 = """After another minute the princess starts moving and slowly rises up. Her eyes are devoid of consciousness and she only barely manages to focus on you standing before her. As you give her a couple of simple orders and she follows them, you decide the work is finished.""",
+	ANASTASIA_PERSUASION_OPTION_3 = """Greetings, princess""",
+	ANASTASIA_PERSUASION_OPTION_4 = """Don't give me such a hostile look, I'm your friend""",
+	ANASTASIA_PERSUASION_OPTION_5 = """That room is too nice for a scum like you""",
+	ANASTASIA_PERSUASION_6 = """- ...What do you want?""",
+	ANASTASIA_PERSUASION_7 = """- Then you have to let me out instead of these empty claims.""",
+	ANASTASIA_PERSUASION_8 = """- Hmph. I did not choose my room, put me whenever you want, it changes nothing.""",
+	ANASTASIA_PERSUASION_9 = """- I know I will be executed soon regardless, what is it you want? """,
+	ANASTASIA_PERSUASION_OPTION_6 = """I wish to save you""",
+	ANASTASIA_PERSUASION_OPTION_7 = """Are you really ready to part with your life?""",
+	ANASTASIA_PERSUASION_OPTION_8 = """Your execution isn't final""",
+	ANASTASIA_PERSUASION_10 = """A spark of hope appeared in Anastasia's eyes despite her effort to deny the possibility. She might've presented herself as being ready to die, but after all she wanted to live. 
+
+- I-i know you are lying. What other conclusion is there for me now?""",
+	ANASTASIA_PERSUASION_11 = """- My readiness can't change this situation. What is your point?""",
+	ANASTASIA_PERSUASION_12 = """- My execution was planned since the day my father was executed himself. Are you taking me for a fool?""",
+	ANASTASIA_PERSUASION_OPTION_9 = """There's a way to save you""",
+	ANASTASIA_PERSUASION_OPTION_10 = """I have negotiated for your pardon""",
+	ANASTASIA_PERSUASION_13 = """You tell the princess that to be saved she'd have to comply with guilds and publicly support them. However, her reaction is entirely exasperated on such thought.
+
+- This is nonsense, these people have been after my life since I was seven. And now you say I can be pardoned. Who are you that I should take your word on it?""",
+	ANASTASIA_PERSUASION_OPTION_11 = """I'm a next city mayor""",
+	ANASTASIA_PERSUASION_OPTION_12 = """I've done a great number of deeds, including bringing them you""",
+	ANASTASIA_PERSUASION_14 = """Anastasia fell silent upon hearing that. She had no reason to doubt you, but she still was hesitant to process such a possibility.
+
+- This can't be the only thing they actually expect of me, isn't it?""",
+	ANASTASIA_PERSUASION_OPTION_13 = """I will ask your hand, but you are required to agree""",
+	ANASTASIA_PERSUASION_OPTION_14 = """You'll have to marry me """,
+	ANASTASIA_PERSUASION_OPTION_15 = """You will also become my property""",
+	ANASTASIA_PERSUASION_OPTION_16 = """Your destiny will be at my hands""",
+	ANASTASIA_PERSUASION_15 = """Anastasia visibly blushed. She did expect her status to lead to such situation but the option never occurred before. 
+
+- T-This is ridiculous. Why would I marry my captor?""",
+	ANASTASIA_PERSUASION_OPTION_17 = """My feelings are sincere""",
+	ANASTASIA_PERSUASION_OPTION_18 = """Didn't I prove myself capable this way?""",
+	ANASTASIA_PERSUASION_OPTION_19 = """Do you really have any other choice?""",
+	ANASTASIA_PERSUASION_16 = """Anastasia blushed even harder, clearly having little experience dealing with such situations, yet her royal manners have took over.
+
+	- Even if this is true, I have no reason to accept the demands of my father's killers.""",
+	ANASTASIA_PERSUASION_17 = """Anastasia took a pause to reevaluate your words and statements. However, her royalty status seemed to have taken over.
+
+	- Regardless, I have no reason to accept the demands of my father's killers.""",
+	ANASTASIA_PERSUASION_18 = """- Hmph, I have no reason to accept the demands of my father's killers.""",
+	ANASTASIA_PERSUASION_19 = """- Hmph, turned into a plaything. Why would I accept it?""",
+	ANASTASIA_PERSUASION_OPTION_20 = """I can promise to treat you fairly""",
+	ANASTASIA_PERSUASION_OPTION_21 = """You'd prefer to die instead?""",
+	ANASTASIA_PERSUASION_OPTION_22 = """You have no better options anyway""",
+	ANASTASIA_PERSUASION_20 = """Anastasia went silent for about half a minute. Her face faintly displayed sadness and tiredness, but it seemed like she wasn't completely opposed to the possibility.""",
+	ANASTASIA_PERSUASION_21 = """- Didn't they say it's better to die standing than to live on your knees?""",
+	ANASTASIA_PERSUASION_22 = """- Regardless, I have no reason to accept the demands of my father's killers""",
+	ANASTASIA_PERSUASION_OPTION_23 = """I'm sorry for your loss, but you have to think for yourself""",
+	ANASTASIA_PERSUASION_OPTION_24 = """Do you have some sort of father complex?""",
+	ANASTASIA_PERSUASION_OPTION_25 = """Being stubborn will not help your case""",
+	ANASTASIA_PERSUASION_23 = """- If it's true, you know I can't pardon my father's murders.""",
+	ANASTASIA_PERSUASION_24 = """- Shut up!""",
+	ANASTASIA_PERSUASION_25 = """- You don't understand it.""",
+	ANASTASIA_PERSUASION_26 = """After my father was killed, I've been forced to live in constant running and fear. What did we do to deserve this?""",
+	ANASTASIA_PERSUASION_27 = """Amelia appeared in the room nearly soundless giving you a sign that she's out to help you.
+
+Amelia: - Allow me to tell, as long as you are willing to take my word for it. King Alber was ruthless and cruel.
+
+Anastasia: - You lie! Father was always kind to me.
+
+Amelia: - I have no reason to lie, since he was gone long before I got the age to be capable to benefit from his demise. He might've been kind to his kin, but not so much to the others. 
+
+Anastasia: - ...""",
+	ANASTASIA_PERSUASION_28 = """Amelia: - Have you heard of the Broderick family? Lee Broderick was a successful merchant, but one day he delivered a book to the king. From the book the king decided that this meant to be a hidden insult, or maybe even a curse. His family and his children has been hanged one by one for a whole week. Some managed to flee before being caught, though.
+
+Anastasia: - ...
+
+Amelia: - Then there was a small group of religious followers who refused to abandon their beliefs or leave the city. Burned alive at the city square. And not to forget unlucky harlots being whipped to death about every few months. That I've personally seen with my own eyes on two occasions.""",
+	ANASTASIA_PERSUASION_29 = """Anastasia: - Enough...
+
+Amelia: - Didn't "Uncle" Greg tell you about these? 
+
+Anastasia: - No.
+
+Anastasia lowered her eyes emanating an aura of depression.
+
+Amelia: - I don't blame you, every child wants to be proud of their parents, but it shouldn't blind you.
+
+Anastasia: - If I was wrong all along... What's the point of this struggle? I've always believed I was doing my best for the people.""",
+	ANASTASIA_PERSUASION_OPTION_26 = """You've tried to do what you thought was right""",
+	ANASTASIA_PERSUASION_OPTION_27 = """You were mistaken, and it's time to make up for it""",
+	ANASTASIA_PERSUASION_OPTION_28 = """Stop your useless whines""",
+	ANASTASIA_PERSUASION_30 = """Anastasia: - I don't feel like I have any right to make any choices now.""",
+	ANASTASIA_PERSUASION_OPTION_29 = """If anything, you would still be able to help people instead of dying""",
+	ANASTASIA_PERSUASION_OPTION_30 = """It's your fault, but you can redeem yourself by submitting to us""",
+	ANASTASIA_PERSUASION_OPTION_31 = """Your crims can still be pardoned if you cooperate""",
+	ANASTASIA_PERSUASION_31 = """Anastasia: - .....I'm sorry, please leave me alone for now, I need some time.
+
+Amelia gives you a sign to comply with this request and you both leave the room.""",
+	ANASTASIA_PERSUASION_32 = """- Her facede is broken, but we will only find out if you managed to persuade her tomorrow.""",
+	ANASTASIA_PERSUASION_OPTION_32 = """Thanks for the help""",
+	ANASTASIA_PERSUASION_OPTION_33 = """You are really experienced at stuff like this""",
+	ANASTASIA_PERSUASION_33 = """- You are welcome, I've been having quite lots of fun at this too.""",
+	ANASTASIA_PERSUASION_34 = """- He-he, of course I am who do you take me for? I didn't learn my position of trainer guild just by having a pair of great tits.""",
+	ANASTASIA_PERSUASION_35 = """- We still have her elf servant Aire in captivity. We could arrange their meeting next time if you think this is going to help our cause.""",
+	ANASTASIA_PERSUASION_OPTION_34 = """Sure, this will let her ease out""",
+	ANASTASIA_PERSUASION_OPTION_35 = """No, she'll probably make things harder""",
+	ANASTASIA_PERSUASION_36 = """- Alright, I'll see what can be done. Let's hope you didn't anger her too badly or she might become a nuisance.""",
+	ANASTASIA_PERSUASION_37 = """- Your call it is, you'll probably have to do something about her at some time anyway, though.""",
+	ANASTASIA_PERSUASION_38 = """- Until then.
+	
+	Amelia gives you a playful smile and leaves on her business""",
+	ANASTASIA_PERSUASION_39 = """You enter the jail room with the princess in it, she seems in a better state than what you've left her in, she must've made her mind.""",
+	ANASTASIA_PERSUASION_40 = """- Hello, [name]. I've made my decision. I'm sorry, but after thinking about it, I can't side with the guilds no matter what. I'll accept my fate with honor. 
+
+You realize there's nothing you can say to change Anastasia's mind at this point, so your only option is to leave.""",
+	ANASTASIA_PERSUASION_41 = """You leave the jail room and find Amelia waiting for you.
+	
+	- Reject, huh. Too bad. I guess we don't have that many options now. Well, you'll know where to find me if anything.""",
+	ANASTASIA_PERSUASION_42 = """- Hello, [name]... I've been thinking a lot about this. I think you are correct and I can't throw my life away. I... I think I can acknowledge the guilds and beg mercy for my actions, but I'm still unsure if I should become yours.""",
+	ANASTASIA_PERSUASION_OPTION_36 = """I wish you to meet your friend (Call Aire)""",
+	ANASTASIA_PERSUASION_OPTION_37 = """I wanted to return something of yours""",
+	ANASTASIA_PERSUASION_OPTION_38 = """Eventually we'll have to come to an agreement""",
+	ANASTASIA_PERSUASION_OPTION_39 = """I'll come later""",
+	ANASTASIA_PERSUASION_43 = """Anastasia gives you a puzzled look. A few moments later the guards ordered by Amelia escort the elven girl to the cell. 
+
+Anastasia: - Aire..? You are alive!
+
+Aire: - Ana...
+
+The two girls hug slightly weeping for a next couple of seconds. However both realize their reunion will not last long.
+
+Anastasia: - You look so rugged...
+
+Aire: - Don't worry, I'm fine. I've been through worse.""",
+	ANASTASIA_PERSUASION_44 = """Aire turns to you and you can still spot the hatred in her eyes.
+
+Aire: - I'm sorry, but this man has no honor. You should never fall into his hands. 
+
+Anastasia: - Wha... why? 
+
+Aire: - I'm sorry, but please believe me. [He]'s but a beast. I don't believe [he] will treat you with any sort of respect.
+
+Anastasia kept silent analyzing her friend's words. Looks like her trust for you has taken a big hit.
+
+After a few more exchanges Aire has been taken back by the guards. The princess returned her hopeful but sad face to her department.""",
+	ANASTASIA_PERSUASION_45 = """Anastasia remained silent as Aire left the room.""",
+	ANASTASIA_PERSUASION_46 = """Aire turns to you. Her face displays a mix of confusion and respect for you.
+
+Anastasia: - Aire... I-I've been persuaded by this man to become [his] property in exchange for my life.
+
+Aire: - So that's what it came to be... 
+
+Aire took a deep sigh in order to muster her thoughts.""",
+	ANASTASIA_PERSUASION_47 = """Aire: - I'd ask you to save your life. This man, while our former enemy, has been one of the more honorable persons. If [he] managed to negotiate for your life I think it's your opportunity.
+
+Anastasia: - That's unusual for you to recommend someone like this.
+
+Aire: - Yes, but you do not deserve to die here. You are the most kind person I've ever met.""",
+	ANASTASIA_PERSUASION_48 = """Aire: - I can't say I vouch for this man, but [he] has treated me fairly so far. If [he] managed to negotiate for your life I think it's your opportunity.""",
+	ANASTASIA_PERSUASION_49 = """Anastasia: - Aire, but you know, I've never...
+
+Aire: - It's more than possible for you, you are very feminine and beautiful after all.
+
+...After a few more minutes of chatting the Aire finally was taken out.""",
+	ANASTASIA_PERSUASION_50 = """- Thank you for letting me meet her, that was generous of you.""",
+	ANASTASIA_PERSUASION_51 = """You pass Anastasia the bracelet you've found at the abandoned base.
+
+- This is... I thought I'd lost it. Where have you got it? I guess at our hideout. 
+
+- Thank you. This bracelet has been given to me by my father. I know, he wasn't a good person, but... It has been my memento for all these years.""",
+	ANASTASIA_PERSUASION_52 = """- I know that, but I don't really know if I can trust.""",
+	ANASTASIA_PERSUASION_OPTION_40 = """I will shower you with my love""",
+	ANASTASIA_PERSUASION_OPTION_41 = """I promise to treat you with dignity""",
+	ANASTASIA_PERSUASION_OPTION_42 = """Your needs will be met, what else is there to wish for?""",
+	ANASTASIA_PERSUASION_53 = """Anastasia stared at the wall weighting your words.""",
+	ANASTASIA_PERSUASION_54 = """- I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you. Now go, I know what is waiting for me and now I'm ready for it.""",
+	ANASTASIA_PERSUASION_55 = """You leave the jail room and find Amelia waiting for you.
+
+- Reject, huh. Too bad. I guess we don't have that many options now. Well, you'll know where to find me if anything.
+""",
+	ANASTASIA_PERSUASION_56 = """- I-I will accept your demand. I will announce whatever support guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I'm not the former royalty anymore.""",
+	ANASTASIA_PERSUASION_57 = """- But I have one demand in return. Could you ask your guild leader girl to come?""",
+	ANASTASIA_PERSUASION_58 = """Soon after she said it, the jail room opened and Amelia walked in. Looks like she still was around waiting for resolution.
+
+Amelia: - How can I be of service? 
+
+Anastasia: - I want you to promise me Aire's safety. No, wait, I want you to let us meet occasionally.
+
+Amelia: - Why yes, we can move your little elf friend to [name]'s service for that matter. I presume you won't deny another servant, right?
+
+Anastasia: - ...This would be very much to my liking.""",
+	ANASTASIA_PERSUASION_59 = """- Well, well, looks like you've done it. You've managed to persuade the haughty princess herself. I'm really impressed. We'll prepare her for the speech, and then we'll stage the announcement.""",
+	ANASTASIA_PERSUASION_OPTION_43 = """I wouldn't manage without you""",
+	ANASTASIA_PERSUASION_OPTION_44 = """She must be completely over me""",
+	ANASTASIA_PERSUASION_OPTION_45 = """Can't wait for this to be finally over""",
+	ANASTASIA_PERSUASION_60 = """- No need for flatter, you did a whole lot more.""",
+	ANASTASIA_PERSUASION_61 = """- Haha, I wonder. What shall you do about a pure maiden's heart though.""",
+	ANASTASIA_PERSUASION_62 = """- Don't worry, we've gotten to the best part at this point.""",
+	ANASTASIA_PERSUASION_63 = """- Anyway, I'll let you know in about 3 days. Have fun until then.""",
 	
 	
 	
-#	ANASTASIA_EXECUTION_1 = """""",
-#	ANASTASIA_EXECUTION_OPTION_1 = """""",
+	ANASTASIA_DECLARATION_1 = """The big announcement was declared on another day: the civil war was coming to an end and people were expecting a declaration of the victory. The next morning everyone free has gathered at the central square in anticipation of the event.
+
+Anastasia, the former rebel leader, has came out at the balcony of the government building and the crowd has stopped its mumbling awaiting for her words.
+
+- People of the Aliron. I am Anastasia, the former princess and leader of the rebels. I remember being at this square when I've made my announcement before. I know that many of you detest me for this conflict I brought, but I am here to... ask for your forgiveness. 
+
+Upon hearing this the crowd has brightened with enthusiasm, while Anastasia mustered her resolution.""",
+	ANASTASIA_DECLARATION_2 = """- My ways were wrong and I've led many people to the demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake, to stop and surrender.
+
+- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
+
+Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia on the waist. The crowd seems very enthusiastic and positive, as the rumors have been spread for some time how you're going to become the next ruler. Many people began applauding to you.""",
+	ANASTASIA_DECLARATION_3 = """Male Citizen 1: - It's finally over.
+
+Male Citizen 2: - She's really quite a beauty.
+
+Female Citizen: - They are a nice pair""",
+	ANASTASIA_DECLARATION_OPTION_1 = """Wave to the crowd""",
+	ANASTASIA_DECLARATION_OPTION_2 = """Fondle princess' butt""",
+	ANASTASIA_DECLARATION_4 = """You spend some more time greeting the citizens as Anastasia finishes her speech. Soon enough the announcement is declared to be over and you walk inside the building.""",
+	ANASTASIA_DECLARATION_5 = """As Anastasia continues her speech your hand she's accustomed to, moves lower and lands on her butt, making her to noticeably stutter and blush. Yet, her discipline has allowed her to finish the speech with no terrible mistakes and you walk inside the building.""",
+	
+	
+	
+	FINAL_WORDS_1 = """Duncan: - Congratulations, we've finally got here. The rebel forces won't die out just yet, but they should never be able to unite again.
+
+Sigmund: - Dis all good as long as dey won't be takin' towns. 
+
+Duncan: - So since this day you are officially the mayor. 
+
+Sigmund: - Let's finally get to the feast.""",
+	FINAL_WORDS_OPTION_1 = """Thank you""",
+	FINAL_WORDS_OPTION_2 = """I will miss the thrill""",
+	FINAL_WORDS_2 = """The end of First Act. Thank you for playing.""",
+	
+	
+	
+	AFTER_ELECTION_PRINCESS_1 = """After the feast you've found Anastasia nervously waiting for you.""",
+	AFTER_ELECTION_PRINCESS_2 = """- [name]... So, what are you going to do with me now? You did say that you are fancying me. Was it the truth, or you are planning to just use me how you feel like now?""",
+	AFTER_ELECTION_PRINCESS_3 = """- So, I'm your slave now... What are you planning to do with me?""",
+	AFTER_ELECTION_PRINCESS_OPTION_1 = """I have feelings for you""",
+	AFTER_ELECTION_PRINCESS_OPTION_2 = """I'm not really interested in you""",
+	AFTER_ELECTION_PRINCESS_OPTION_3 = """You are just a fine trophy""",
+	AFTER_ELECTION_PRINCESS_OPTION_4 = """You'll be a great plaything""",
+	AFTER_ELECTION_PRINCESS_OPTION_5 = """I haven't decided yet""",
+	AFTER_ELECTION_PRINCESS_4 = """Anastasia blushed fiercely upon hearing that, still not used to the situation and being in submissive state.
+
+- That's so? Then you must wish to lay with me. I'm... not entirely against it""",
+	AFTER_ELECTION_PRINCESS_5 = """Embrace her""",
+	AFTER_ELECTION_PRINCESS_6 = """Not today""",
+	AFTER_ELECTION_PRINCESS_7 = """You chivalrously lead Anastasia to your bedroom. 
+
+- I'm sorry, this is my first time with a man.""",
+	AFTER_ELECTION_PRINCESS_8 = """After she removes her clothes, the princess lies down on the bed as you instruct her. Her ample body lies before you.""",
+	AFTER_ELECTION_PRINCESS_9 = """With some preparation Anastasia manages to become wet enough for you to penetrate her relatively painless. As she endured through pain you savor the feel of her unused pussy.""",
+	AFTER_ELECTION_PRINCESS_10 = """In a few moments you both climax. She rolls her eyes in bliss as your seed fills her up.""",
+	AFTER_ELECTION_PRINCESS_11 = """- I-I'm not sure what to say. I guess I didn't think it would feel good like this. I'm glad my first time was with you.""",
+	AFTER_ELECTION_PRINCESS_12 = """The princess' face becomes slightly more relaxed but also uncertain as she hears your words. Deciding she'll be useful for some work or barter later on you decide to leave it at this.""",
+	AFTER_ELECTION_PRINCESS_13 = """Anastasia frowned upon hearing that but had no choice, but to comply.
+
+- I see... I guess I'm at your mercy now.""",
+	AFTER_ELECTION_PRINCESS_OPTION_6 = """I will claim my prize today""",
+	AFTER_ELECTION_PRINCESS_OPTION_7 = """I don't feel like doing it """,
+	AFTER_ELECTION_PRINCESS_14 = """You order the princess to join you at the bedroom, deciding it shall be a great end for the evening.""",
+	AFTER_ELECTION_PRINCESS_15 = """By your order Anastasia removes her clothes and you drop her on the bed on all fours. Deciding it's a suitable position for a loser like her, you quickly mount her from behind claiming girl's virginity. Despite her sobs she does not plead you to stop, stoically enduring the pain and humiliation for the rest of the night.""",
+	AFTER_ELECTION_PRINCESS_16 = """Anastasia looks puzzled by your answer but does not protest. However, it seems her nervousness has not disappeared.""",
+	AFTER_ELECTION_PRINCESS_17 = """After the feast you've found your broken Anastasia, who seems to patiently wait for you.""",
+	AFTER_ELECTION_PRINCESS_OPTION_8 = """Put her into use""",
+	AFTER_ELECTION_PRINCESS_OPTION_9 = """Maybe another time""",
+	AFTER_ELECTION_PRINCESS_18 = """By your order Anastasia removes her clothes and you drop her on the bed on all fours. Deciding it's a suitable position for a loser like her, you quickly mount her from behind claiming broken girl's virginity. Despite her state, she offers a nice warmth and tightness so you have a fairly satisfying night.""",
+	
+	
+	
+	
+	
 }
