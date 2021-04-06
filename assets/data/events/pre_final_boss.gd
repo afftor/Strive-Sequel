@@ -106,7 +106,7 @@ var data = {
 				image = null, tags = ['dialogue_scene', 'master_translate'], character = "demon_female", character2 = "kurdan",
 				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
 				options = [ {
-				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}],
+				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}], #We didn't kill nor let demon take rebels
 				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6
 				} ],
 			}, {

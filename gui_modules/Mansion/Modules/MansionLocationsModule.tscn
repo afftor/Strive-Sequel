@@ -10,8 +10,6 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Locations/Buttons/button_travelnavigation_pressed.png" type="Texture" id=8]
 [ext_resource path="res://gui_modules/Mansion/Scripts/MansionLocationsModule.gd" type="Script" id=9]
 
-
-
 [sub_resource type="ImageTexture" id=1]
 
 [sub_resource type="ImageTexture" id=2]

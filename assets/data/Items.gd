@@ -324,6 +324,44 @@ var materiallist = {
 		type = 'food',
 		tags = ['vege', 'meat'],
 	},
+	
+	divine_symbol = {
+		code = 'divine_symbol',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_soup.png"),
+		price = 1,
+		type = 'quest',
+		tags = [],
+	},
+	mythril = {
+		code = 'mythril',
+		name = '',
+		descript = '',
+		adjective = '',
+		icon = load("res://assets/images/iconsitems/item_obsidian.png"),
+		price = 20,
+		progress_per_item = 15,
+		progress_formula = 'mining_stone',
+		tool_type = 'pickaxe',
+		workstat = 'physics',
+		workmod = 'mod_collect',
+		type = 'stone',
+		tier = 'medium',
+		tags = [],
+		color = Color('a980ca'),
+		parts = {},
+	},
+	blessed_divine_symbol = {
+		code = 'blessed_divine_symbol',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_cake.png"),
+		price = 1,
+		type = 'quest',
+		tags = [],
+	},
+	
 	fishcakes = {
 		code = 'fishcakes',
 		name = '',
@@ -2477,6 +2515,22 @@ var recipes = {
 		workunits = 1, 
 		worktype = 'cooking'
 	},
+	
+	divine_symbol = {
+		code = 'divine_symbol',
+		materials = {mythril = 5},
+		items = {},
+		unlockreqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage1'},
+		{type = 'has_material', operant = 'lt', value = 1, material = 'divine_symbol'}],
+		crafttype = 'basic',
+		resultamount = 1,
+		resultitemtype = 'material', 
+		resultitem = 'divine_symbol', 
+		workunits = 1, 
+		worktype = 'smith',
+		unique = true
+	},
+	
 	fishcakes = {
 		code = 'fishcakes',
 		materials = {fish = 1, grain = 2},

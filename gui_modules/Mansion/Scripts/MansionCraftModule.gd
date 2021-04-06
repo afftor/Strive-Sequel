@@ -310,6 +310,17 @@ func selectcraftitem(item):
 	get_node("MaterialSetupPanel/BasicSetup/").visible = !get_node("MaterialSetupPanel/ModularSetup/").visible
 	# for i in ['Part1','Part2','Part3', 'Part1Descript', 'Part2Descript', 'Part3Descript', 'Label']:
 	# 	get_node("MaterialSetupPanel/ModularSetup/" + i).visible = !item.crafttype == 'basic'
+	if item.has('unique'):
+		if item.unique:
+			$NumberSelect/HSlider.value = 1
+			$NumberSelect/HSlider.hide()
+			for i in ResourceScripts.game_res.craftinglists[craft_category]:
+				if i.code == item.code:
+					$NumberSelect.hide()
+	else:
+		$NumberSelect/HSlider.show()
+
+
 	if item.crafttype == 'basic':
 		var baseitem
 		if Items.materiallist.has(item.resultitem):

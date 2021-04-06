@@ -1048,8 +1048,11 @@ func common_effects(effects):
 				newslave.generate_predescribed_character(worlddata.pregen_characters[i.value])
 				if "recruit_from_location" in i:
 					newslave.travel.location = input_handler.active_location.id
-				if "send_to_mansion" in i :
-					newslave.travel.return_to_mansion()
+				if "send_to_mansion" in i:
+					if i.send_to_mansion:
+						newslave.travel.return_to_mansion()
+				if "slave_category" in i:
+					newslave.set_slave_category(i.slave_category)
 				#newslave.set_slave_category(newslave.slave_class)
 				ResourceScripts.game_party.add_slave(newslave)
 			'add_timed_event':
@@ -1255,11 +1258,16 @@ func common_effects(effects):
 			'teleport_active_character':
 				input_handler.active_character.teleport(i.to_loc)
 			'teleport_active_location':
-				input_handler.exploration_node.open_location(ResourceScripts.world_gen.get_location_from_code(i.to_loc.code))
+				var location
+				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
+					if a.classname == i.to_loc.location.to_upper(): # SETTLEMENT_PLAINS1
+						location = a
+				#location.area = area
+				
 				for pos in input_handler.active_location.group:
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
-						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
+						characters_pool.get_char_by_id(ch_id).teleport(location)
 			'teleport_location':
 				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
 				if locdata.location == null:
@@ -1414,3 +1422,10 @@ func valuecheck(dict):
 			return dict.check == input_handler.active_faction.upgrades.has(dict.value)
 		'local_counter':
 			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, dict.value) == dict.check
+		'wits_factor_check':
+			var master_char = ResourceScripts.game_party.get_master()
+			if master_char == null:
+				return false
+			else:
+				var result = globals.rng.randi_range(dict.from, dict.to) > dict.value * master_char.statlist.statlist.wits
+				return result #returns true on fail and vice versa
