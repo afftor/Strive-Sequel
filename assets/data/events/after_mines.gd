@@ -19,7 +19,7 @@ var data = {
 				common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}],
 				options = [ {
 					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, 
-					bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}],
+					bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}], #adds option on sigmund introduction
 				} ],
 			},
 		]
@@ -120,7 +120,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_MESSAGE", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'decision', value = 'AfterMinesGotTheMessage'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'decision', value = 'AfterMinesGotTheMessage'}] #adds option to talk to duncan in intoduction
 		}],
 	},
 	

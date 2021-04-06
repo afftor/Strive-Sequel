@@ -126,7 +126,7 @@ var data = {
 	betrayal_confirmed_13 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan", character2 = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}],
-		common_effects = [{code = 'decision', value = "DivineSymbolStart"}],
+		common_effects = [{code = 'decision', value = "DivineSymbolStart"}], #Adds option in church
 		options = [ {
 			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1,
 		}, {

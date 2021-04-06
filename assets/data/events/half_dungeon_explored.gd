@@ -220,7 +220,7 @@ var data = {
 	
 	half_dungeon_explored_end_follow = {
 		image = null, character = "kurdan", tags = [],
-		text = [ {text = "HALF_DUNGEON_EXPLORED_9", reqs = [], previous_dialogue_option = 8, bonus_effects = [{code = 'decision', value = 'KurdanFollowing'}]}],
+		text = [ {text = "HALF_DUNGEON_EXPLORED_9", reqs = [], previous_dialogue_option = 8, bonus_effects = [{code = 'decision', value = 'KurdanFollowing'}]}], #Kurdan is following us in the dungeon and will be transformed by demon to fight us
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []
 			}
