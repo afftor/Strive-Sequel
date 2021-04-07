@@ -235,7 +235,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1008.0
+margin_right = 1004.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 996, 45 )
 size_flags_horizontal = 3
@@ -243,7 +243,7 @@ custom_constants/separation = 10
 
 [node name="Button" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 visible = false
-margin_right = 1008.0
+margin_right = 1004.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 1004, 52 )
 mouse_default_cursor_shape = 2
@@ -431,9 +431,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 10.0
-margin_right = 21.0
-margin_bottom = 29.0
+margin_top = 12.0
+margin_right = 28.0
+margin_bottom = 28.0
 text = "Sex"
 
 [node name="population" type="Label" parent="."]

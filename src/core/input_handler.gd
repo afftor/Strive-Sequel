@@ -1363,3 +1363,24 @@ func font_size_calculator(label): #, text, font):
 func append_not_duplicate(list, value):
 	if !list.has(value):
 		list.append(value)
+
+
+func get_actual_size_for_container(node):
+	var res = Vector2(0, 0)
+	if !(node is VBoxContainer) and !(node is HBoxContainer):
+		return node.rect_size
+	var separation = node.get("custom_constants/separation")
+	if separation == null: separation = 4 #don't know how to get default separation value
+	if node is VBoxContainer:
+		for tnode in node.get_children():
+			if !tnode.visible: continue
+			res.x = tnode.rect_size.x
+			res.y += tnode.rect_size.y + separation
+		if res.y > 0: res.y -= separation
+	if node is HBoxContainer:
+		for tnode in node.get_children():
+			if !tnode.visible: continue
+			res.x += tnode.rect_size.x + separation
+			res.y = tnode.rect_size.y
+		if res.x > 0: res.x -= separation
+	return res
