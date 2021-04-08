@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://gui_modules/Travel new/TravelModuleNew.gd" type="Script" id=1]
 [ext_resource path="res://assets/Textures_v2/Travel new 2021/panel_travel_main.png" type="Texture" id=2]
@@ -29,6 +29,10 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=27]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_36.tres" type="DynamicFont" id=28]
 [ext_resource path="res://assets/Themes_v2/travel_new/SelectorPanel.tres" type="StyleBox" id=29]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_pressed_right.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_hover_right.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_right.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=33]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.054902, 0.0823529, 1 )
@@ -452,9 +456,9 @@ text = "All"
 margin_left = 420.0
 margin_right = 472.0
 margin_bottom = 72.0
-texture_normal = ExtResource( 22 )
-texture_pressed = ExtResource( 20 )
-texture_hover = ExtResource( 21 )
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/area/to_panel"]
 anchor_top = 0.923
@@ -505,6 +509,7 @@ margin_bottom = 58.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 33 )
 
 [node name="Label" type="Label" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2"]
 anchor_right = 1.0
