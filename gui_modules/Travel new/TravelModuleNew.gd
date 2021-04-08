@@ -31,6 +31,7 @@ func _ready():
 
 
 func show():
+	gui_controller.clock.changespeed(0)
 	gui_controller.clock.visible = false
 	update_lists()
 	selector.get_node("SelectorMain").pressed = false
@@ -39,7 +40,7 @@ func show():
 
 
 func change_filter(value):
-	var filters = ['all'] + lands_order + locs_order
+	var filters = ['all'] + lands_order# + locs_order
 	if !(loc_filter in filters):
 		print ("wrong filter - %s" % loc_filter)
 		return
@@ -111,23 +112,23 @@ func build_sel_panel(is_open):
 			if !lands_count.has(loc) or lands_count[loc] <= 0: 
 				tbutton.disabled = true
 		
-		var separator2 = TextureRect.new()
-		separator2.texture = load("res://assets/Textures_v2/Travel new 2021/divider_travel_tooltip.png")
-		separator2.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
-		selector_list.add_child(separator2)
-		
-		for loc in locs_order:
-			if loc_filter == loc: continue
-			var tbutton = input_handler.DuplicateContainerTemplate(selector_list)
-			tbutton.text = selector_meta_bindings[loc]
-			tbutton.set_meta('value', loc)
-			tbutton.connect('pressed', self, 'select_filter', [loc])
-			if !locs_count.has(loc) or locs_count[loc] <= 0: 
-				tbutton.disabled = true
-	else:
-		var button = input_handler.DuplicateContainerTemplate(selector_list)
-		button.text = selector_meta_bindings[loc_filter]
-		button.mouse_filter = MOUSE_FILTER_IGNORE
+#		var separator2 = TextureRect.new()
+#		separator2.texture = load("res://assets/Textures_v2/Travel new 2021/divider_travel_tooltip.png")
+#		separator2.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+#		selector_list.add_child(separator2)
+#
+#		for loc in locs_order:
+#			if loc_filter == loc: continue
+#			var tbutton = input_handler.DuplicateContainerTemplate(selector_list)
+#			tbutton.text = selector_meta_bindings[loc]
+#			tbutton.set_meta('value', loc)
+#			tbutton.connect('pressed', self, 'select_filter', [loc])
+#			if !locs_count.has(loc) or locs_count[loc] <= 0: 
+#				tbutton.disabled = true
+#	else:
+#		var button = input_handler.DuplicateContainerTemplate(selector_list)
+#		button.text = selector_meta_bindings[loc_filter]
+#		button.mouse_filter = MOUSE_FILTER_IGNORE
 	selector_list.update()
 	selector.get_node("SelectorMain/SelectorPanel").rect_size.y = input_handler.get_actual_size_for_container(selector_list).y + 10
 
@@ -476,6 +477,7 @@ func build_location_resources():
 			var item = Items.materiallist[i]
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
+			newbutton.set_meta("exploration", true)
 			if dungeon:
 				if !hidden:
 					newbutton.get_node("Label").text = str(gatherable_resources[i])
@@ -500,6 +502,7 @@ func build_location_resources():
 func hide():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
+#		gui_controller.clock.restoreoldspeed()
 	if get_parent().mansion_state == 'travels':
 		get_parent().mansion_state = 'default'
 	.hide()

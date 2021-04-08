@@ -210,8 +210,8 @@ func match_state():
 #			travels_manager(travels_defaults)
 #			menu_buttons.get_node("TravelsButton").pressed = true
 			if mansion_state != mansion_prev_state:
-				ResourceScripts.core_animations.UnfadeAnimation($MansionTravelsModule, 0.3)
-				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+				ResourceScripts.core_animations.UnfadeAnimation($TravelsModule, 0.3)
+#				ResourceScripts.core_animations.UnfadeAnimation($SlaveListModule, 0.3)
 			else:
 				$TravelsModule.update_lists()
 		"upgrades":
