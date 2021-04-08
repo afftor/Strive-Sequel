@@ -761,16 +761,14 @@ func dialogue_option_selected(option):
 		gui_controller.dialogue_txt = gui_controller.dialogue.get_node("RichTextLabel").bbcode_text
 		match gui_controller.dialogue_window_type:
 			1:
-				pass
 				get_spec_node(self.NODE_DIALOGUE).hide()
-				yield(get_tree().create_timer(2), "timeout")
-				get_spec_node(self.NODE_DIALOGUE_T2).hide()
+				ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
+				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 			2:
-				pass
-				#yield(get_tree().create_timer(2), "timeout")
 				#get_spec_node(self.NODE_DIALOGUE).hide()
-				get_spec_node(self.NODE_DIALOGUE_T2).hide()
+				ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
+				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				# gui_controller.dialogue.get_node("Background").show()
 		gui_controller.dialogue.get_node("RichTextLabel").bbcode_text = gui_controller.dialogue_txt
