@@ -1,7 +1,8 @@
 extends "res://src/scenes/ClosingPanel.gd"
 
 
-onready var info_text_node = $MarginContainer/area/info_panel/MarginContainer/info_text
+onready var info_text_node = $MarginContainer/area/info_panel/MarginContainer/VBoxContainer/info_text
+onready var info_text_icon = $MarginContainer/area/info_panel/MarginContainer/VBoxContainer/TextureRect
 onready var info_res_panel = $MarginContainer/area/info_panel/resources
 onready var info_res_node = $MarginContainer/area/info_panel/resources/CenterContainer/GridContainer
 onready var from_list = $MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer
@@ -30,6 +31,7 @@ func _ready():
 
 
 func show():
+	gui_controller.clock.visible = false
 	update_lists()
 	selector.get_node("SelectorMain").pressed = false
 	build_sel_panel(false)
@@ -37,8 +39,26 @@ func show():
 
 
 func change_filter(value):
-	#i don't get what actions should be here - reselection of filter or reselection of location
-	pass
+	var filters = ['all'] + lands_order + locs_order
+	if !(loc_filter in filters):
+		print ("wrong filter - %s" % loc_filter)
+		return
+	var cpos = filters.find(loc_filter)
+	while cpos < filters.size(): # effectively while true
+		cpos += value
+		if cpos == -1: cpos += filters.size()
+		if cpos == filters.size(): cpos = 0
+		var next_filter = filters[cpos]
+		if next_filter in locs_order:
+			if !locs_count.has(next_filter) or locs_count[next_filter] <= 0: continue
+		if next_filter in lands_order:
+			if !ResourceScripts.game_world.areas.has(next_filter): continue
+			if !ResourceScripts.game_world.areas[next_filter].unlocked: continue
+			if !lands_count.has(next_filter) or lands_count[next_filter] <= 0: continue
+		loc_filter = next_filter
+		build_sel_panel(selector.get_node("SelectorMain").pressed)
+		update_to_list()
+		break
 
 
 func toggle_selector(outside = false):
@@ -129,7 +149,14 @@ func build_locations_list():
 		if locs_count.has(temp.type): locs_count[temp.type] += 1
 		else:  locs_count[temp.type] = 1
 		if cdata[id].has('captured'): temp.captured = cdata[id].captured
+		if cdata[id].has('background'): 
+			temp.icon = cdata[id].background
+		elif temp.type == 'capital' and adata.has('capital_background'): 
+			temp.icon = adata.capital_background
+		else:
+			temp.icon = null
 		temp_locations[id] = temp
+	var temp = {id = 'travel', heroes = 0}
 	
 	for character in ResourceScripts.game_party.characters.values():
 		if !character.is_active: continue
@@ -137,15 +164,17 @@ func build_locations_list():
 		if loc == "mansion":
 			character.travel.location = ResourceScripts.game_world.mansion_location
 		if loc == 'travel':
-			#i don't get how those characters should be handled - but they are in the sample list so i'm adding them to destination locations lists since there are no other location for them to add
-			loc = character.travel.travel_target.location
-		if !temp_locations.has(loc):
+#			loc = character.travel.travel_target.location
+			temp.heroes += 1
+		elif !temp_locations.has(loc):
 			print("warning - populated location %s not found or not avail" % loc)
 			continue
-		temp_locations[loc].heroes += 1
+		else:
+			temp_locations[loc].heroes += 1
 	
 	sorted_locations = temp_locations.values().duplicate()
 	sorted_locations.sort_custom(self, 'sort_locations')
+	sorted_locations.push_back(temp)
 
 
 func sort_locations(first, second):
@@ -166,26 +195,36 @@ func update_lists():
 	build_locations_list()
 	update_from_list()
 	update_to_list()
-	update_heroes_list()
+#	update_heroes_list()
 	build_location_info()
 	build_location_resources()
 
 
 func update_from_list():
 	input_handler.ClearContainer(from_list)
-	from_location_selected = null
+#	from_location_selected = null
+	var first_location = null
 	for loc in sorted_locations:
-		if loc.heroes <= 0: continue
+		if loc.heroes <= 0:
+			if from_location_selected != null and from_location_selected.id == loc.id: 
+				from_location_selected = null 
+			continue
 		var panel = input_handler.DuplicateContainerTemplate(from_list)
+		if first_location == null: 
+			first_location = panel
+		if from_location_selected != null and from_location_selected.id == loc.id:
+			first_location = panel
 		make_panel_for_location(panel, loc)
 		panel.get_node("Label").text = str(loc.heroes)
 		panel.connect("pressed", self, "select_from_location", [panel])
-
+	if first_location != null:
+		select_from_location(first_location)
 
 func update_to_list():
 	input_handler.ClearContainer(to_list)
 	location_selected = null
 	for loc in sorted_locations:
+		if loc.id == 'travel': continue
 		if loc_filter in lands_order and loc.area != loc_filter: continue
 		if loc_filter in locs_order and loc.type != loc_filter : continue
 		var panel = input_handler.DuplicateContainerTemplate(to_list)
@@ -206,37 +245,66 @@ func update_heroes_list():
 	#there can be a bug if character_order and characters are handled separatedly during character adding or removal
 	input_handler.ClearContainer(char_list)
 	if from_location_selected == null: return
+	#first pass
 	for ch_id in ResourceScripts.game_party.character_order:
 		var ch = characters_pool.get_char_by_id(ch_id)
-		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
-		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
+		if ch.get_location() != from_location_selected.id: continue
+#		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
+#		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
+		if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
+			continue
 		var panel = input_handler.DuplicateContainerTemplate(char_list)
 		make_panel_for_character(panel, ch)
 		panel.connect("pressed", self, "select_char", [panel])
+	#second pass - disabled
+	for ch_id in ResourceScripts.game_party.character_order:
+		var ch = characters_pool.get_char_by_id(ch_id)
+		if ch.get_location() != from_location_selected.id: continue
+#		if ch.get_location() != from_location_selected.id and ch.get_location() != 'travel': continue
+#		if ch.get_location() == 'travel' and ch.travel.travel_target.location != from_location_selected.id: continue
+		if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
+			var panel = input_handler.DuplicateContainerTemplate(char_list)
+			make_panel_for_character(panel, ch)
+			panel.connect("pressed", self, "select_char", [panel])
+
+
+func update_heroes_list_travel():
+	characters.clear()
+	#there can be a bug if character_order and characters are handled separatedly during character adding or removal
+	input_handler.ClearContainer(char_list)
+	for ch_id in ResourceScripts.game_party.character_order:
+		var ch = characters_pool.get_char_by_id(ch_id)
+		if ch.get_location() != 'travel': continue
+		var panel = input_handler.DuplicateContainerTemplate(char_list)
+		make_panel_for_character(panel, ch)
+		panel.connect("pressed", self, "return_char", [panel])
 
 
 func make_panel_for_location(panel, loc):
-	var text = ResourceScripts.world_gen.get_location_from_code(loc.id).name
-	if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
-		text = "Q:" + text
-	panel.text = text
-	if loc.has('captured'):
-		if loc.captured:
-			panel.set("custom_colors/font_color_disabled", variables.hexcolordict.red)
-			panel.disabled = true
-			globals.connecttexttooltip(panel, "Location unavailable")
-			globals.return_characters_from_location(loc.id)
-	var icon
-	match loc.type:
-		'settlement':
-			icon = images.icons.travel_village
-		'dungeon':
-			icon = images.icons.travel_dungeon
-		'capital':
-			icon = images.icons.travel_city
-		'quest_location', 'encounter':
-			icon = images.icons.travel_event
-	panel.get_node("Icon").texture = icon
+	if loc.id == 'travel':
+		panel.text = "Characters on the road"
+	else:
+		var text = ResourceScripts.world_gen.get_location_from_code(loc.id).name
+		if ResourceScripts.game_world.areas[loc.area].questlocations.has(loc.id):
+			text = "Q:" + text
+		panel.text = text
+		if loc.has('captured'):
+			if loc.captured:
+				panel.set("custom_colors/font_color_disabled", variables.hexcolordict.red)
+				panel.disabled = true
+				globals.connecttexttooltip(panel, "Location unavailable")
+				globals.return_characters_from_location(loc.id)
+		var icon
+		match loc.type:
+			'settlement':
+				icon = images.icons.travel_village
+			'dungeon':
+				icon = images.icons.travel_dungeon
+			'capital':
+				icon = images.icons.travel_city
+			'quest_location', 'encounter':
+				icon = images.icons.travel_event
+		panel.get_node("Icon").texture = icon
 	panel.set_meta('location', loc)
 
 
@@ -250,6 +318,17 @@ func make_panel_for_character(panel, ch):
 	newbutton.get_node("stats/mp").value = ch.mp
 	newbutton.get_node("stats").hint_tooltip = "HP: " + str(round(ch.hp)) + "/" + str(round(ch.get_stat('hpmax'))) + "\nMP: " + str(round(ch.mp)) + "/" + str(round(ch.get_stat('mpmax')))
 	
+	if !ch.xp_module.check_infinite_obedience():
+		newbutton.get_node("obed").text = str(ceil(ch.xp_module.predict_obed_time()))
+		if ch.xp_module.predict_obed_time() <= 0:
+			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.red))
+		elif ch.xp_module.predict_obed_time() <= 24:
+			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.yellow))
+		else:
+			newbutton.get_node("obed").set("custom_colors/font_color", Color(variables.hexcolordict.green))
+	else:
+		newbutton.get_node("obed").text = "∞"
+	
 	var gatherable = Items.materiallist.has(ch.get_work())
 	if ch.get_work() == '' || ch.get_work() == "Assignment":
 		if ch.is_on_quest():
@@ -260,25 +339,22 @@ func make_panel_for_character(panel, ch):
 				time_left_string = str(time_left) + " h."
 			else:
 				time_left_string = str(time_left) + " d."
-			newbutton.get_node("job").text = "On quest"
-			newbutton.get_node("time").text = time_left_string
+			newbutton.get_node("job").text = "On quest - %s" % time_left_string
 		else:
 			newbutton.get_node("job").text = tr("TASKREST")
-			newbutton.get_node("time").text = "∞"
 	elif ch.get_work() == 'travel':
-		newbutton.get_node("job").text = "Travel"
-		newbutton.get_node("time").text = str(ceil(ch.travel.travel_time/ch.travel_per_tick())) + " h."
+		newbutton.get_node("job").text = "Travel - %s h." % ceil(ch.travel.travel_time/ch.travel_per_tick())
 	else:
 		if !gatherable:
 			newbutton.get_node("job").text = races.tasklist[ch.get_work()].name
-			newbutton.get_node("time").text = "∞"
 		else:
 			newbutton.get_node("job").text = "Gathering " + Items.materiallist[ch.get_work()].name
-			newbutton.get_node("time").text = "∞"
 	
-	if ch.travel.location == "travel":
-		panel.disabled = true
-	elif (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
+	
+#	if ch.travel.location == "travel":
+#		panel.disabled = true
+#	el
+	if (ch.xp_module.predict_obed_time() <= 0) && !ch.is_controllable():
 		panel.disabled = true
 	
 	panel.set_meta('slave', ch)
@@ -288,7 +364,10 @@ func select_from_location(button):
 	for btn in from_list.get_children():
 		btn.pressed = (btn == button)
 	from_location_selected = button.get_meta("location")
-	update_heroes_list()
+	if from_location_selected.id == 'travel':
+		update_heroes_list_travel()
+	else:
+		update_heroes_list()
 #	update_to_list()
 #	build_location_resources()
 	build_location_info()
@@ -310,6 +389,26 @@ func select_char(button):
 		characters.erase(character.id)
 	build_location_info()
 
+var returnperson
+
+func return_char(button):
+	var person = button.get_meta('slave')
+	if person.travel.travel_target.location != 'mansion':
+		return_confirm(person)
+	else:
+		input_handler.SystemMessage(person.translate("[name] is already heading back to Mansion."))
+
+
+func return_confirm(person):
+	returnperson = person
+	input_handler.get_spec_node(input_handler.NODE_YESNOPANEL, [self, 'return_character', person.translate(tr('SENDCHARBACKTOMANSIONQUESTION'))])
+
+
+func return_character():
+	returnperson.return_to_mansion()
+	update_lists()
+
+
 
 func select_filter(value):
 	loc_filter = value
@@ -325,6 +424,7 @@ func build_location_info():
 	if location_selected != null: 
 		text += "Target location: %s\n" % ResourceScripts.world_gen.get_location_from_code(location_selected.id).name
 		text += "Type: %s\n" % selector_meta_bindings[location_selected.type].trim_suffix("s")
+		info_text_icon.texture = images.backgrounds[location_selected.icon]
 		if from_location_selected != null:
 			var travel_time = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 			if characters.size() > 0: 
@@ -334,6 +434,8 @@ func build_location_info():
 			else:
 				text += "Estimated travel time: %d\n" % ceil(travel_time.time)
 				text += "estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
+	else:
+		info_text_icon.texture = null
 	info_text_node.text = text
 
 
@@ -381,8 +483,12 @@ func build_location_resources():
 	info_res_panel.get_node('Label').visible = gatherable_resources != null
 
 
-func close():
-	hide()
+func hide():
+	if gui_controller.clock != null:
+		gui_controller.clock.visible = true
+	if get_parent().mansion_state == 'travel':
+		get_parent().mansion_state = 'default'
+	.hide()
 
 
 func confirm_travel():

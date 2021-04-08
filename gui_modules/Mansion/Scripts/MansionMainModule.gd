@@ -3,7 +3,6 @@ extends Control
 # VARIABLES
 # Modules
 onready var TravelsModule = $MansionTravelsModule
-#onready var TravelsModule = $TravelsModule
 onready var SlaveListModule = $MansionSlaveListModule
 onready var SkillModule = $MansionSkillsModule
 onready var UpgradesModule = $MansionUpgradesModule
@@ -209,10 +208,12 @@ func match_state():
 #			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
 #			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360)) 
 #			travels_manager(travels_defaults)
-			menu_buttons.get_node("TravelsButton").pressed = true
+#			menu_buttons.get_node("TravelsButton").pressed = true
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionTravelsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+			else:
+				$TravelsModule.update_lists()
 		"upgrades":
 			$MansionUpgradesModule.show()
 			$MansionUpgradesModule.open()
@@ -469,7 +470,7 @@ func _on_TestButton_pressed():
 
 func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
-#	variables.allow_remote_intereaction = true
+	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 
 	if generate_test_chars:
@@ -742,7 +743,7 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("AfterMinesTalkedToSigmund") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
-#		input_handler.interactive_message('servants_election_finish7', '', {})
+		input_handler.interactive_message('after_mines_message', '', {})
 	
 	
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
