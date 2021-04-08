@@ -202,15 +202,18 @@ func match_state():
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSkillsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
 		"travels":
-			$MansionTravelsModule.show()
-			$MansionSlaveListModule.set_size(Vector2(1100, 580))
-			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
-			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360)) 
-			travels_manager(travels_defaults)
-			menu_buttons.get_node("TravelsButton").pressed = true
+			$TravelsModule.show()
+#			$MansionTravelsModule.show()
+#			$MansionSlaveListModule.set_size(Vector2(1100, 580))
+#			SlaveListModule.get_node("Background").set_size(Vector2(1100, 580))
+#			$MansionSlaveListModule/ScrollContainer.set_size(Vector2(1004, 360)) 
+#			travels_manager(travels_defaults)
+#			menu_buttons.get_node("TravelsButton").pressed = true
 			if mansion_state != mansion_prev_state:
 				ResourceScripts.core_animations.UnfadeAnimation($MansionTravelsModule, 0.3)
 				ResourceScripts.core_animations.UnfadeAnimation($MansionSlaveListModule, 0.3)
+			else:
+				$TravelsModule.update_lists()
 		"upgrades":
 			$MansionUpgradesModule.show()
 			$MansionUpgradesModule.open()
