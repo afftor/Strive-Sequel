@@ -260,7 +260,7 @@ var data = {
 	servants_election_finish8 = {
 		image = null,
 		# character = 'anastasia',
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene', 'blackscreen_transition_slow'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH8", reqs = []}
 		],
