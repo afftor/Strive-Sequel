@@ -277,6 +277,7 @@ func update_heroes_list_travel():
 		if ch.get_location() != 'travel': continue
 		var panel = input_handler.DuplicateContainerTemplate(char_list)
 		make_panel_for_character(panel, ch)
+		panel.toggle_mode = false
 		panel.connect("pressed", self, "return_char", [panel])
 
 
@@ -371,6 +372,10 @@ func select_from_location(button):
 #	update_to_list()
 #	build_location_resources()
 	build_location_info()
+	if location_selected == null or location_selected.id == from_location_selected.id:
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = true
+	else:
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = false
 
 
 func select_to_location(button):
@@ -379,6 +384,10 @@ func select_to_location(button):
 	location_selected = button.get_meta("location")
 	build_location_info()
 	build_location_resources()
+	if from_location_selected == null or location_selected.id == from_location_selected.id:
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = true
+	else:
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = false
 
 
 func select_char(button):
@@ -425,7 +434,7 @@ func build_location_info():
 		text += "Target location: %s\n" % ResourceScripts.world_gen.get_location_from_code(location_selected.id).name
 		text += "Type: %s\n" % selector_meta_bindings[location_selected.type].trim_suffix("s")
 		info_text_icon.texture = images.backgrounds[location_selected.icon]
-		if from_location_selected != null:
+		if from_location_selected != null and from_location_selected.id != 'travel':
 			var travel_time = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 			if characters.size() > 0: 
 				var tmp = characters_pool.get_char_by_id(characters[0]).travel_per_tick()
@@ -446,6 +455,7 @@ func build_location_resources():
 		info_res_panel.hide()
 		return
 	var dungeon = false
+	var hidden = false
 	info_res_panel.show()
 	var location = ResourceScripts.world_gen.get_location_from_code(location_selected.id)
 	var gatherable_resources
@@ -454,8 +464,9 @@ func build_location_resources():
 		return
 	elif location.type == "dungeon":
 		dungeon = true
-		if location.completed:
-			gatherable_resources = location.gather_limit_resources
+		if !location.completed:
+			hidden = true
+		gatherable_resources = location.gather_limit_resources
 	else:
 		if location.has('gather_resources'):
 			gatherable_resources = location.gather_resources
@@ -466,27 +477,30 @@ func build_location_resources():
 			var newbutton = input_handler.DuplicateContainerTemplate(info_res_node)
 			newbutton.get_node("TextureRect").texture = Items.materiallist[i].icon
 			if dungeon:
-				newbutton.get_node("Label").text = str(gatherable_resources[i])
-				newbutton.set_meta("gather_mod", round(location.gather_mod*100))
+				if !hidden:
+					newbutton.get_node("Label").text = str(gatherable_resources[i])
+					newbutton.set_meta("gather_mod", round(location.gather_mod*100))
+					globals.connectmaterialtooltip(newbutton, item)
+				else:
+					newbutton.get_node("TextureRect").texture = load("res://assets/Textures_v2/Travel new 2021/placer_travel_question.png")
 			else:
 				var max_workers_count = gatherable_resources[i]
 				var current_workers_count = 0
 				var active_tasks = ResourceScripts.game_party.active_tasks
 				for task in active_tasks:
-					if (task.code == i) && (task.task_location == location_selected):
+					if (task.code == i) && (task.task_location == location_selected.id):
 						current_workers_count = task.workers_count
 				newbutton.get_node("Label").text = str(max_workers_count - current_workers_count) + "/" + str(max_workers_count)
 				newbutton.set_meta("max_workers", max_workers_count)
 				newbutton.set_meta("current_workers", current_workers_count)
-			globals.connectmaterialtooltip(newbutton, item)
-			#here are severe problems with tooltip position
+				globals.connectmaterialtooltip(newbutton, item)
 	info_res_panel.get_node('Label').visible = gatherable_resources != null
 
 
 func hide():
 	if gui_controller.clock != null:
 		gui_controller.clock.visible = true
-	if get_parent().mansion_state == 'travel':
+	if get_parent().mansion_state == 'travels':
 		get_parent().mansion_state = 'default'
 	.hide()
 
@@ -494,6 +508,7 @@ func hide():
 func confirm_travel():
 	if characters.size() == 0: return
 	if location_selected == null: return
+	if location_selected.id == from_location_selected.id: return 
 	var travel_cost = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 	for chid in characters:
 		var person = characters_pool.get_char_by_id(chid)
