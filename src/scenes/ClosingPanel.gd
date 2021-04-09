@@ -10,7 +10,8 @@ func _ready():
 	rect_pivot_offset = Vector2(rect_size.x/2, rect_size.y/2)
 	closebutton = load(ResourceScripts.scenedict.close).instance()
 	add_child(closebutton)
-	move_child(closebutton, 0)
+#	move_child(closebutton, 0)
+	closebutton.raise()
 	closebutton.connect("pressed", self, 'hide')
 	RepositionCloseButton()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/HintTooltip.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveListModule.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSkillsModule.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionJobModule.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gui_modules/Mansion/Modules/MansionTravelsModule.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gui_modules/Travel new/TravelModuleNew.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLeftMenuModule.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionLogModule.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gui_modules/Mansion/Modules/MansionSlaveModule.tscn" type="PackedScene" id=11]
@@ -33,6 +33,7 @@
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_hover.png" type="Texture" id=31]
 [ext_resource path="res://assets/Textures_v2/MANSION/Tutorial/button_tutorquestion_pressed.png" type="Texture" id=32]
 [ext_resource path="res://gui_modules/Mansion/Modules/TutorialIntro.tscn" type="PackedScene" id=33]
+[ext_resource path="res://gui_modules/Mansion/Modules/MansionTravelsModule.tscn" type="PackedScene" id=34]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 24 )
@@ -95,7 +96,7 @@ margin_top = 948.0
 margin_right = 319.84
 margin_bottom = 937.32
 
-[node name="MansionTravelsModule" parent="." instance=ExtResource( 8 )]
+[node name="MansionTravelsModule" parent="." instance=ExtResource( 34 )]
 visible = false
 margin_left = 320.0
 margin_top = 680.0
@@ -236,6 +237,9 @@ texture = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TravelsModule" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="TutorialButton" type="TextureButton" parent="."]
 margin_left = 1716.95

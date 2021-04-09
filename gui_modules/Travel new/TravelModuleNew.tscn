@@ -1,0 +1,653 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://gui_modules/Travel new/TravelModuleNew.gd" type="Script" id=1]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/panel_travel_main.png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_24.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainSmall.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/placer_travel_resources.png" type="Texture" id=6]
+[ext_resource path="res://assets/Textures_v2/MANSION/Craft/Buttons/button_craftchoose_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/Themes_v2/travel_new/NonDecorButtonThin_with_Font.tres" type="Theme" id=8]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_hover.png" type="Texture" id=9]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_36.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_inventory.png" type="Texture" id=12]
+[ext_resource path="res://assets/Themes_v2/travel_new/NonDecorButtonThinSmall_with_Font.tres" type="Theme" id=13]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred.png" type="Texture" id=14]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_hover.png" type="Texture" id=15]
+[ext_resource path="res://assets/Textures_v2/CITY/Buttons/buttonred_pressed.png" type="Texture" id=16]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/NS_30.tres" type="DynamicFont" id=17]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/tooltip_travel_pressed.png" type="Texture" id=18]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=19]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_pressed.png" type="Texture" id=20]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_hover.png" type="Texture" id=21]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation.png" type="Texture" id=22]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Icons/hpmp_icon.png" type="Texture" id=23]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/tooltip_travel.png" type="Texture" id=24]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/tooltip_travel_hover.png" type="Texture" id=25]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_hp.png" type="Texture" id=26]
+[ext_resource path="res://assets/Textures_v2/MANSION/CharacterList/Bars/hpmp_icon_mp.png" type="Texture" id=27]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/Ledger_36.tres" type="DynamicFont" id=28]
+[ext_resource path="res://assets/Themes_v2/travel_new/SelectorPanel.tres" type="StyleBox" id=29]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_pressed_right.png" type="Texture" id=30]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_hover_right.png" type="Texture" id=31]
+[ext_resource path="res://assets/Textures_v2/Travel new 2021/button_travel_changelocation_right.png" type="Texture" id=32]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_disabled.png" type="Texture" id=33]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.105882, 0.054902, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[node name="Travels" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 134.194 ],
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="frame" type="TextureRect" parent="MarginContainer"]
+margin_right = 1860.0
+margin_bottom = 1020.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+
+[node name="area" type="Control" parent="MarginContainer"]
+margin_right = 1860.0
+margin_bottom = 1020.0
+
+[node name="from_panel" type="Control" parent="MarginContainer/area"]
+anchor_right = 0.319
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/from_panel"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/from_panel/CenterContainer"]
+margin_left = 100.0
+margin_top = 17.0
+margin_right = 492.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Starting location"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/area/from_panel"]
+anchor_top = 0.103
+anchor_right = 1.0
+anchor_bottom = 0.42
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/area/from_panel/MarginContainer"]
+margin_right = 533.0
+margin_bottom = 263.0
+theme = ExtResource( 19 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer"]
+margin_right = 533.0
+margin_bottom = 263.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="Button" type="Button" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 533.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 8 )
+custom_fonts/font = ExtResource( 10 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 0.977
+anchor_right = 0.977
+anchor_bottom = 1.0
+margin_left = -0.741028
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "30"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/area/from_panel/MarginContainer/ScrollContainer/VBoxContainer/Button"]
+margin_left = 10.7248
+margin_top = 9.13593
+margin_right = 42.7248
+margin_bottom = 41.1359
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/area/from_panel"]
+anchor_top = 0.422
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 28.56
+margin_right = -30.34
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/area/from_panel/MarginContainer2"]
+margin_right = 533.0
+margin_bottom = 531.0
+theme = ExtResource( 19 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer"]
+margin_right = 533.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="Button" type="Button" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 533.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 320, 52 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 8 )
+toggle_mode = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer"]
+margin_right = 523.0
+margin_bottom = 42.0
+custom_constants/separation = 6
+
+[node name="icon" type="TextureRect" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+margin_right = 39.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 39, 39 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+margin_left = 45.0
+margin_top = 3.0
+margin_right = 229.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 175, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Name "
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stats" type="TextureRect" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+margin_left = 235.0
+margin_right = 275.0
+margin_bottom = 42.0
+grow_vertical = 2
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="TextureProgress" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer/stats"]
+show_behind_parent = true
+margin_left = 2.44171
+margin_top = 2.07547
+margin_right = 42.4417
+margin_bottom = 42.0755
+value = 100.0
+texture_progress = ExtResource( 26 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="TextureProgress" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer/stats"]
+show_behind_parent = true
+margin_left = 22.4639
+margin_top = 1.83129
+margin_right = 62.4639
+margin_bottom = 41.8313
+value = 100.0
+texture_progress = ExtResource( 27 )
+fill_mode = 3
+
+[node name="job" type="Label" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+margin_left = 281.0
+margin_top = 3.0
+margin_right = 465.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "rest"
+align = 1
+clip_text = true
+
+[node name="obed" type="Label" parent="MarginContainer/area/from_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+margin_left = 471.0
+margin_top = 3.0
+margin_right = 523.0
+margin_bottom = 38.0
+grow_horizontal = 0
+rect_min_size = Vector2( 52, 0 )
+custom_fonts/font = ExtResource( 4 )
+text = "∞"
+align = 2
+
+[node name="to_panel" type="Control" parent="MarginContainer/area"]
+anchor_left = 0.319
+anchor_right = 0.639
+anchor_bottom = 1.0
+margin_left = -0.340027
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/to_panel"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/CenterContainer"]
+margin_left = 116.0
+margin_top = 17.0
+margin_right = 478.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Travel location"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/area/to_panel"]
+anchor_top = 0.226
+anchor_right = 1.0
+anchor_bottom = 0.884
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/area/to_panel/MarginContainer2"]
+margin_right = 535.0
+margin_bottom = 611.0
+theme = ExtResource( 19 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer"]
+margin_right = 535.0
+margin_bottom = 611.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="Button" type="Button" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 535.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 320, 0 )
+theme = ExtResource( 13 )
+custom_fonts/font = ExtResource( 4 )
+toggle_mode = true
+text = "Location"
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button"]
+anchor_left = 0.977
+anchor_right = 0.977
+anchor_bottom = 1.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "30"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/area/to_panel/MarginContainer2/ScrollContainer/VBoxContainer/Button"]
+margin_left = 10.7248
+margin_top = 9.13593
+margin_right = 42.7248
+margin_bottom = 41.1359
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="CenterContainer" parent="MarginContainer/area/to_panel"]
+anchor_top = 0.106
+anchor_right = 1.0
+anchor_bottom = 0.265
+margin_top = -7.62939e-06
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/area/to_panel/HBoxContainer2"]
+margin_left = 61.0
+margin_top = 45.0
+margin_right = 533.0
+margin_bottom = 117.0
+
+[node name="SelectorLeft" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer"]
+margin_right = 52.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 21 )
+
+[node name="SelectorMain" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer"]
+margin_left = 56.0
+margin_right = 416.0
+margin_bottom = 72.0
+toggle_mode = true
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 25 )
+
+[node name="SelectorPanel" type="Panel" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain"]
+show_behind_parent = true
+anchor_right = 1.0
+margin_top = 10.0
+margin_bottom = 209.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screen" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain/SelectorPanel"]
+anchor_left = -2.083
+anchor_top = -1.037
+anchor_right = 3.301
+anchor_bottom = 4.476
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain/SelectorPanel"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_right = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer/SelectorMain/SelectorPanel/VBoxContainer"]
+visible = false
+margin_right = 340.0
+margin_bottom = 51.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_disabled = Color( 0.490196, 0.490196, 0.490196, 1 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "All"
+
+[node name="SelectorRight" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer2/HBoxContainer"]
+margin_left = 420.0
+margin_right = 472.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 32 )
+texture_pressed = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/area/to_panel"]
+anchor_top = 0.923
+anchor_right = 1.0
+anchor_bottom = 0.962
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/to_panel/HBoxContainer"]
+margin_right = 295.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer"]
+margin_left = 50.0
+margin_right = 244.0
+margin_bottom = 58.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Close"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/area/to_panel/HBoxContainer"]
+margin_left = 299.0
+margin_right = 595.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer2"]
+margin_left = 51.0
+margin_right = 245.0
+margin_bottom = 58.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Confirm"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info_panel" type="Control" parent="MarginContainer/area"]
+anchor_left = 0.64
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/info_panel"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/info_panel/CenterContainer"]
+margin_left = 187.0
+margin_top = 17.0
+margin_right = 481.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "Information"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/area/info_panel"]
+anchor_top = 0.105
+anchor_right = 1.0
+anchor_bottom = 0.666
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/area/info_panel/MarginContainer"]
+margin_right = 589.0
+margin_bottom = 492.0
+
+[node name="info_text" type="Label" parent="MarginContainer/area/info_panel/MarginContainer/VBoxContainer"]
+margin_right = 589.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 17 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "test text"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/area/info_panel/MarginContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 589.0
+margin_bottom = 492.0
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
+[node name="resources" type="VBoxContainer" parent="MarginContainer/area/info_panel"]
+anchor_top = 0.668
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/info_panel/resources"]
+margin_right = 669.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+text = "Avalible Resources"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/area/info_panel/resources"]
+margin_top = 39.0
+margin_right = 669.0
+margin_bottom = 338.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/area/info_panel/resources/CenterContainer"]
+margin_left = 334.0
+margin_top = 149.0
+margin_right = 334.0
+margin_bottom = 149.0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="MarginContainer/area/info_panel/resources/CenterContainer/GridContainer"]
+visible = false
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/area/info_panel/resources/CenterContainer/GridContainer/Button"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 74, 74 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/area/info_panel/resources/CenterContainer/GridContainer/Button"]
+margin_left = 2.0
+margin_top = 53.0
+margin_right = 77.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "2/3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MarginContainer/area/to_panel/HBoxContainer/CenterContainer/TextureButton" to="." method="hide"]
+[connection signal="pressed" from="MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2" to="." method="confirm_travel"]
