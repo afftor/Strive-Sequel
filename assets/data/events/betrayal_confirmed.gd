@@ -61,10 +61,11 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_7", reqs = []}],
 		options = [ {
-			code = 'betrayal_confirmed_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'betrayal_confirmed_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
 	},
 	
+	#wrong dialogue didn't need it
 	betrayal_confirmed_6 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_8", reqs = []}],
@@ -126,7 +127,9 @@ var data = {
 	betrayal_confirmed_13 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan", character2 = "myr",
 		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}],
-		common_effects = [{code = 'decision', value = "DivineSymbolStart"}], #Adds option in church
+		common_effects = [{code = 'decision', value = "DivineSymbolStart"}, #Adds option in church
+		{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
+		{code = 'update_location'}],
 		options = [ {
 			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1,
 		}, {
@@ -553,7 +556,6 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
 		options = [ {
-			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines', area = 'plains'}}],
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 		}],
 	},

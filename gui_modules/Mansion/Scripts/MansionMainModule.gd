@@ -790,4 +790,4 @@ func test_mode():
 		input_handler.add_random_chat_message(character2, 'hire')
 
 func test():
-	input_handler.interactive_message('servants_election_finish7', '', {})
+	input_handler.interactive_message('after_mines_convoy_1', '', {})

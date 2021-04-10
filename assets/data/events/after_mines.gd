@@ -178,7 +178,6 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
-			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}}],
 			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 		}],
 	},
@@ -213,7 +212,8 @@ var data = {
 		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
 		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
 		options = [ {
-			#bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines'}}],
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}},
+			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = true}],
 			code = 'after_mines_convoy_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
 		}],
 	},
@@ -291,7 +291,8 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "anastasia",
 		text = [{text = "AFTER_MINES_CONVOY_17", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
-		common_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}],
+		common_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'},
+		{code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
 		}],

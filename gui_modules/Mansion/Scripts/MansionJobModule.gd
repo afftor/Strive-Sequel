@@ -82,6 +82,9 @@ func open_jobs_window():
 		var person_location = person.get_location()
 		var location = ResourceScripts.world_gen.get_location_from_code(person_location)
 		var location_type
+		if location.has("locked"):
+			if location.locked:
+				return
 		if person_location != 'aliron':
 			location_type = location.type
 			if location_type == "dungeon":

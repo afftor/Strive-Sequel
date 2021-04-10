@@ -1156,7 +1156,16 @@ func common_effects(effects):
 			'update_location':
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
-				input_handler.exploration_node.open_location(input_handler.active_location)	
+				input_handler.exploration_node.open_location(input_handler.active_location)
+			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				var location
+				for a in ResourceScripts.game_world.areas[i.area].locations.values():
+					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
+						location = a
+				location = ResourceScripts.world_gen.get_location_from_code(location.id)
+				input_handler.exploration_node.open_location(location)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':
@@ -1257,6 +1266,7 @@ func common_effects(effects):
 			#{code = location_code} - means first id-wise existing location with given code
 			'teleport_active_character':
 				input_handler.active_character.teleport(i.to_loc)
+				gui_controller.nav_panel.build_accessible_locations()
 			'teleport_active_location':
 				var location
 				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
@@ -1268,6 +1278,8 @@ func common_effects(effects):
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
 						characters_pool.get_char_by_id(ch_id).teleport(location)
+				gui_controller.nav_panel.build_accessible_locations()
+				#(i.to_loc.location)
 			'teleport_location':
 				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
 				if locdata.location == null:
@@ -1278,8 +1290,21 @@ func common_effects(effects):
 					var ch_id = locdata.group[pos]
 					if ch_id != null:
 						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
+				gui_controller.nav_panel.build_accessible_locations()
 			'return_to_mansion':
 				gui_controller.nav_panel.return_to_mansion()
+			# example:
+			# location = "SETTLEMENT_PLAINS1"
+			# area = "plains"
+			# param = "type"
+			# value = "locked"
+			'set_location_param':
+				var param = i.param
+				var value = i.value
+				for a in ResourceScripts.game_world.areas[i.area].locations.values():
+					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
+						a[param] = value
+						break
 
 
 func get_nquest_for_rep(value):
