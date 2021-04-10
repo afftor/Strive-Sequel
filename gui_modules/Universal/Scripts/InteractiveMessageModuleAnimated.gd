@@ -17,7 +17,8 @@ func _ready():
 		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
-	$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
+	if $CharacterImage2 != null:
+		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
 
@@ -61,11 +62,14 @@ func open(scene):
 	
 	handle_scene_transition_fx(scene)
 	if doing_transition:
+		#print_debug("waiting")
 		yield(self, "TransitionFinished")
+		#print_debug("finished WAIT")
 		doing_transition = false
 	update_scene_characters()
 	$CharacterImage.hide()
-	$CharacterImage2.hide()
+	if $CharacterImage2 != null:
+		$CharacterImage2.hide()
 	$ImagePanel.hide()
 	handle_scene_backgrounds(scene)
 	handle_characters_sprites(scene)
@@ -456,7 +460,6 @@ func handle_scene_transition_fx(scene):
 		ResourceScripts.core_animations.BlackScreenTransition(2)
 		doing_transition = true
 		yield(get_tree().create_timer(2), "timeout")
-
 	if self.visible == false:
 		self.visible = true
 		ResourceScripts.core_animations.UnfadeAnimation(self, 0.2)
@@ -493,16 +496,20 @@ func handle_characters_sprites(scene):
 	
 	if !scene.has("character") and !scene.has("character2"):
 		$ImagePanel.show()
-		hide_long_text()
+		if self.name == "dialogue":
+			hide_long_text()
+			$CharacterImage2.hide()
 		$CharacterImage.hide()
 		if scene.image != '' && scene.image != null:
 			$ImagePanel/SceneImage.texture = images.scenes[scene.image]
 		else:
 			$ImagePanel.hide()
-			show_long_text()
+			if self.name == "dialogue":
+				show_long_text()
 	else:
 		$ImagePanel.hide()
-		show_long_text()
+		if self.name == "dialogue":
+			show_long_text()
 	
 		if scene.has("character"):
 			if scene.character.ends_with('_shade'):

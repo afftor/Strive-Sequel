@@ -13,8 +13,6 @@
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=11]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=13]
 
-
-
 [node name="QuestDialogue" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -158,6 +156,9 @@ margin_top = 732.0
 margin_right = 1447.0
 margin_bottom = 951.0
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 970.0

@@ -284,7 +284,7 @@ var data = {
 
 	start_finale = {
 		image = null,
-		tags = ['dialogue_scene','blackscreen_transition_slow'],
+		tags = ['dialogue_scene'],
 		text = [
 			{text = "STARTFINALE", reqs = []}
 		],
