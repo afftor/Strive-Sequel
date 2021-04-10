@@ -2763,7 +2763,7 @@ The men didn't make any effort to hide their tracks and you soon find a cave's m
 You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with  a group of armed men, almost certainly sellswords, standing over him.	
 {color=aqua|Merc: - See? He's not going anywhere.  I'm bored and it's hella cold here. Let's go already.}
 {color=yellow|Merc 2: - Stop being such a whiny little bitch. They said to get rid of this guy if they don't return by evening.} 
-{color=aqua|Merc: - Screw it, I wanna get drunk already. You don't really expect them to cough up extra pay do ya?""",
+{color=aqua|Merc: - Screw it, I wanna get drunk already. You don't really expect them to cough up extra pay do ya?}""",
 	
 	FINDFRED_OPTION1 = "Talk",
 	FINDFRED_OPTION2 = "Attack",

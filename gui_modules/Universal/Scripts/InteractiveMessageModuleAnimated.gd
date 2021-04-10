@@ -17,7 +17,7 @@ func _ready():
 		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
-	if $CharacterImage2 != null:
+	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
@@ -68,7 +68,7 @@ func open(scene):
 		doing_transition = false
 	update_scene_characters()
 	$CharacterImage.hide()
-	if $CharacterImage2 != null:
+	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.hide()
 	$ImagePanel.hide()
 	handle_scene_backgrounds(scene)

@@ -744,7 +744,6 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
 		input_handler.interactive_message('servants_election_finish7', '', {})
-		globals.connect("hour_tick", self, "test")
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
@@ -788,6 +787,3 @@ func test_mode():
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
-
-func test():
-	input_handler.interactive_message('after_mines_convoy_1', '', {})
