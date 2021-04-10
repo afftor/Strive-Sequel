@@ -145,6 +145,9 @@ margin_top = 948.0
 margin_right = -500.0
 margin_bottom = -12.0
 
+[node name="TravelsModule" parent="." instance=ExtResource( 8 )]
+visible = false
+
 [node name="MenuButton" type="TextureButton" parent="."]
 margin_left = 1785.0
 margin_top = 15.0
@@ -237,9 +240,6 @@ texture = ExtResource( 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TravelsModule" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="TutorialButton" type="TextureButton" parent="."]
 margin_left = 1716.95
