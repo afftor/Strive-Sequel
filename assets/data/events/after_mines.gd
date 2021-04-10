@@ -4,7 +4,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'SaveRebels', check = true}],
 				image = null, tags = ['dialogue_scene'], character = "sigmund",
 				text = [{text = "AFTER_MINES_SIGMUND_START", reqs = []}],
-				common_effects = [{code = 'money_change', operant = '+', value = 500}],
+				common_effects = [{code = 'money_change', operant = '+', value = 300}],
 				options = [ {
 				code = 'after_mines_sigmund_1',
 				text = "AFTER_MINES_SIGMUND_OPTION_1", reqs = [], dialogue_argument = 1
