@@ -2383,7 +2383,7 @@ func select_workers():
 func special_events():
 	if (active_location.code == 'dungeon_quest_mines') and !("MinesArrival" in ResourceScripts.game_progress.decisions):
 		input_handler.interactive_message("mines_arrival_start", '',{})
-		globals.common_effects([{code = 'decision', value = 'MinesArrival'}])
+		globals.common_effects([{code = 'decision', value = 'MinesArrival'}]) #so we don't trigger event again
 	if (active_location.code == 'dungeon_quest_mines') and (active_location.progress.stage
 			> active_location.levels["L" + str(active_location.levels.size())].stages / 2) and !("HalfDungeonExplored" in ResourceScripts.game_progress.decisions):
 				input_handler.interactive_message("half_dungeon_explored_start", '',{})
@@ -2392,7 +2392,9 @@ func special_events():
 			== active_location.levels["L" + str(active_location.levels.size())].stages - 1) and !("PreFinalBossDone" in ResourceScripts.game_progress.decisions):
 				input_handler.interactive_message("pre_final_boss_start", '',{})
 				globals.common_effects([{code = 'decision', value = 'PreFinalBossDone'}])
-
+	if (active_location.code == 'unique_final_operation_location') and !("HideoutAttackFinished" in ResourceScripts.game_progress.decisions):
+		input_handler.interactive_message("initiate_hideout_attack", '',{})
+		globals.common_effects([{code = 'decision', value = 'HideoutAttackFinished'}]) #so we don't trigger event again
 func combat_duncan_greg_event(pressed, button):
 	input_handler.interactive_message('betrayal_confirmed_advance', '', {})
 	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)

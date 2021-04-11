@@ -551,10 +551,15 @@ var data = {
 			bonus_effects = [{code = "return_to_mansion"}],
 		}],
 	},
-	
+	#return to mansion, final op after 10 days, quest log, Fighter/mage guild leaders meet back to normal
 	divine_symbol_36 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
+		
+		common_effects = [{code = 'add_timed_event', value = "after_mines_message", 
+		args = [{type = 'add_to_date', date = [4,4], hour = 7}]}, 
+		{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}],
+		
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 		}],

@@ -1357,6 +1357,32 @@ var dungeons = {
 		area = 'plains',
 		travel_time = [4,6],
 	},
+	unique_final_operation_location = {
+		code = 'unique_final_operation_location',
+		type = 'dungeon',
+		name = 'unique_final_operation',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background_pool = ['cave_1'],
+		enemyarray = [['bandits_easy', 1],['bandits_easy2', 1],['bandits_easy3', 0.5]], 
+		final_enemy = [['skeletons_lich_boss',1]], final_enemy_type = 'monster',
+		eventarray = [], 
+		levels = [1,1], 
+		resources = [],
+		#gatherable_resources = {},
+		#gather_mod = [],
+		gatherable_resources = {number = [2,3], pool = {mithril = [25,50], adamantine = [5,10], iron = [50,80]}}, #temp items for the game to work
+		gather_mod = [2.5,4], #temp mod for the game to work
+		stages_per_level = [10,10],
+		bgm = "dungeon",
+		purchase_price = 0,
+		affiliation = 'local', #defines character races and events
+		events = [],
+		
+		area = 'plains',
+		travel_time = [4,6],
+	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
 		type = 'dungeon',
