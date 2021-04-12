@@ -1211,6 +1211,9 @@ func common_effects(effects):
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)
+			'remove_decision':
+				if ResourceScripts.game_progress.decisions.has(i.value):
+					ResourceScripts.game_progress.decisions.erase(i.value)
 			'screen_black_transition':
 				ResourceScripts.core_animations.BlackScreenTransition(i.value)
 			'start_combat':

@@ -743,7 +743,7 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
-		input_handler.interactive_message('final_operation_start', '', {})
+		input_handler.interactive_message('message_before_looking_operation', '', {})
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500

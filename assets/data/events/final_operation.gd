@@ -1,13 +1,4 @@
 var data = {
-	message_before_final_operation = {
-		#common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2_1'}],
-		image = null, tags = ['dialogue_scene'],
-		text = [{text = "LOOKING_FOR_PRINCESS_START", reqs = []}],
-		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'decision', value = 'AfterMinesGotTheMessage'}] #adds option to talk to duncan in intoduction
-		}],
-	},
-	
 	final_operation_start = {
 		image = null,
 		character = "duncan",

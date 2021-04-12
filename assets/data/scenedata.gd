@@ -1378,16 +1378,23 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'looking_for_princess_quest', stage = 'meet_duncan'}], 
+			target = 'looking_for_princess_1',
+			target_option = 3,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], 
 			target = 'fighters_introduction2',
-			target_option = 3,
+			target_option = 4,
 		},
 		{
 			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [], 
 			target = 'fighters_introduction2',
-			target_option = 4,
+			target_option = 5,
 		},
 	],
 	servants_init = [
@@ -1568,7 +1575,16 @@ var quests = {
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
 		stages = {
-			stage1 = {code ='stage1', name = 'Divine symbol', descript = "Forge divine symbol for Ginny"},
+			stage1 = {code ='stage1', name = 'Divine Symbol', descript = "Forge divine symbol for Ginny"},
+		},
+	},
+	
+	looking_for_princess_quest = {
+		code = 'looking_for_princess_quest',
+		stages = {
+			wait_message = {code ='wait_message', name = 'Final Operation', descript = "Wait for further instructions"},
+			meet_duncan = {code ='meet_duncan', name = 'Final Operation', descript = "Talk to Duncan"},
+			go_for_search = {code ='go_for_search', name = 'Final Operation', descript = "Help Duncan look for princess"},
 		},
 	},
 	

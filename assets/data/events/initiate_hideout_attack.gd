@@ -92,6 +92,7 @@ var data = {
 		text = [
 			{text = "INITIATE_HIDEOUT_ATTACK_4", reqs = []},
 		],
+		common_effects = [{code = 'decision', value = "PlayerFrontline"}], #affects reward after battle
 		options = [
 			{
 				code = 'fight',

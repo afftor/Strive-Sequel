@@ -47,6 +47,7 @@ var data = {
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'decision', value = 'AfterMinesTalkedToSigmund', check = true}], dialogue_argument = 8, remove_after_first_use = true},
 		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'decision', value = 'AfterMinesGotTheMessage', check = true}], dialogue_argument = 9, remove_after_first_use = true},
+		{code = 'looking_for_princess_2', text = "LOOKING_FOR_PRINCESS_OPTION_3", reqs = [{type = 'decision', value = 'LookingForPrincessAccess', check = true}], dialogue_argument = 10},
 		],
 		
 	},
