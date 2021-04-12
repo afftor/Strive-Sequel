@@ -3915,22 +3915,22 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 
 
 	LOOKING_FOR_PRINCESS_START = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
-	LOOKING_FOR_PRINCESS_1 = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we’ve got no leads as to where she may have gone. Our interrogation of the prisoners hasn’t turned up much.""",
+	LOOKING_FOR_PRINCESS_1 = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
 	LOOKING_FOR_PRINCESS_2 = """
 
-- Don’t think I’ve forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you’ve proven yourself to be very capable.""",
+- Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
 	LOOKING_FOR_PRINCESS_3 = """
 
-- Oh, and here, your reward for your help in the raid. you’ve proven yourself to be very capable.""",
+- Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.""",
 	LOOKING_FOR_PRINCESS_4 = """
 
 - We still have to secure the princess.""",
-	LOOKING_FOR_PRINCESS_OPTION_1 = """Let’s get right into it, I’m eager to get to her myself.""",
+	LOOKING_FOR_PRINCESS_OPTION_1 = """Let's get right into it, I'm eager to get to her myself.""",
 	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
 	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
-	LOOKING_FOR_PRINCESS_5 = """-We’ve had no further leads on her location so far. So far no one has come forward with any new information.""",
-	LOOKING_FOR_PRINCESS_OPTION_4 = """I’ll track her down.""",
-	LOOKING_FOR_PRINCESS_OPTION_5 = """I’ll come back later.""",
+	LOOKING_FOR_PRINCESS_5 = """-We've had no further leads on her location so far. So far no one has come forward with any new information.""",
+	LOOKING_FOR_PRINCESS_OPTION_4 = """I'll track her down.""",
+	LOOKING_FOR_PRINCESS_OPTION_5 = """I'll come back later.""",
 	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds mercenaries and scavengers didn't waste any time. However after another half hour you notice a smaller scavenger. 
 
 The lone kobold is going through the rummage seemingly unaware of your presence yet. Having acquired a decent collection already you spot an uncharacteristically elegant silver bracelet on his hand. """,

@@ -22,7 +22,7 @@ var data = {
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
-				{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}]
+				{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}, {code = "update_guild"}]
 			}], 
 		}, {
 			reqs = [{type = 'decision', value = 'PlayerFrontline', check = false}],
@@ -36,7 +36,7 @@ var data = {
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
-				{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}]
+				{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}, {code = "update_guild"}]
 			}], 
 		}
 		]
