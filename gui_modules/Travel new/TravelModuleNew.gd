@@ -102,14 +102,14 @@ func build_sel_panel(is_open):
 		selector_list.add_child(separator)
 		
 		for loc in lands_order:
-			if loc_filter == loc: continue
+#			if loc_filter == loc: continue
 			if !ResourceScripts.game_world.areas.has(loc): continue
 			if !ResourceScripts.game_world.areas[loc].unlocked: continue
 			var tbutton = input_handler.DuplicateContainerTemplate(selector_list)
 			tbutton.text = selector_meta_bindings[loc]
 			tbutton.set_meta('value', loc)
 			tbutton.connect('pressed', self, 'select_filter', [loc])
-			if !lands_count.has(loc) or lands_count[loc] <= 0: 
+			if !lands_count.has(loc) or lands_count[loc] <= 0 or loc_filter == loc: 
 				tbutton.disabled = true
 		
 #		var separator2 = TextureRect.new()
@@ -125,10 +125,10 @@ func build_sel_panel(is_open):
 #			tbutton.connect('pressed', self, 'select_filter', [loc])
 #			if !locs_count.has(loc) or locs_count[loc] <= 0: 
 #				tbutton.disabled = true
-#	else:
-#		var button = input_handler.DuplicateContainerTemplate(selector_list)
-#		button.text = selector_meta_bindings[loc_filter]
-#		button.mouse_filter = MOUSE_FILTER_IGNORE
+	else:
+		var button = input_handler.DuplicateContainerTemplate(selector_list)
+		button.text = selector_meta_bindings[loc_filter]
+		button.mouse_filter = MOUSE_FILTER_IGNORE
 	selector_list.update()
 	selector.get_node("SelectorMain/SelectorPanel").rect_size.y = input_handler.get_actual_size_for_container(selector_list).y + 10
 
