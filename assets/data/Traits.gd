@@ -215,7 +215,14 @@ var traits = {
 		effects = [],#'e_tr_harlot'],
 		bonusstats = {mod_pros = 0.5}
 	},
-	
+	renown = {
+		code = 'renown',
+		name = '',
+		descript = '',
+		visible = false,
+		icon = null,
+		effects = ['e_tr_renown']
+	},
 	#exploration related traits
 	#needs to hardcode most of traits
 	medium_armor = {#removes penalty from medium armor

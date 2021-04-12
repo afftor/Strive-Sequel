@@ -49,6 +49,26 @@ var effect_table = {
 			}
 		]
 	},
+	e_tr_renown = {
+		type = 'trigger',
+		trigger = [variables.TR_S_CAST],
+		req_skill = true,
+		conditions = [],
+		atomic = [],
+		buffs = [],
+		sub_effects = [
+			{
+				type = 'oneshot',
+				target = 'skill',
+				atomic = [
+					{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['loyaltyObedience']},
+					{type = 'stat_mul', stat = 'value', value = 1.5, stats = ['loyalty']},
+					],
+				buffs = [],
+				sub_effects = []
+			}
+		]
+	},
 	e_tr_worker = {
 		type = 'static',
 		atomic = [{type = 'stat_add_p', stat = 'mod_collect', value = 0.5}],
@@ -2576,6 +2596,47 @@ var effect_table = {
 		target = 'target',
 		args = [],
 		atomic = [{type = 'remove_all_effects', value = 'atkpass'}],
+	},
+	e_s_takeposition = {
+		type = 'temp_s',
+		duration = 2,
+		stack = 1,
+		name = 'e_s_takeposition',
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		args = [],
+		atomic = [
+			{type = 'stat_add', stat = 'damage_mod_all', value = 0.2},
+			{type = 'stat_add', stat = 'armorpenetration', value = 50},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/heavyshot.png",
+			description = "",
+			args = [],
+			limit = 1,
+			t_name = 'takeposition',
+		}]
+	},
+	e_s_windwall = {
+		type = 'temp_s',
+		duration = 4,
+		stack = 1,
+		name = 'e_s_windwall',
+		tick_event = [variables.TR_TURN_F],
+		rem_event = [variables.TR_COMBAT_F, variables.TR_DEATH],
+		args = [],
+		atomic = [
+			{type = 'stat_add', stat = 'resist_damage_ranged', value = 0.5},
+		],
+		sub_effects = [],
+		buffs = [{
+			icon = "res://assets/images/iconsskills/heavyshot.png",
+			description = "",
+			args = [],
+			limit = 1,
+			t_name = 'windwall',
+		}]
 	},
 	#items
 	e_i_shackles = {

@@ -295,6 +295,10 @@ func TextEncoder(text, node = null):
 	#return text
 	
 	while text.find("{") != -1:
+		if text.find("}") == -1:
+			print ("error in formatted text - } not found in string:")
+			print (text.substr(0, 20) + "...")
+			text = text + "}"
 		var newtext = text.substr(text.find("{"), text.find("}") - text.find("{")+1)
 		var newtextarray = newtext.split("|")
 		var originaltext = newtextarray[newtextarray.size()-1].replace("}",'')
