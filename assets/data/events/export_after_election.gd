@@ -3,7 +3,7 @@ var data = {
 		image = null,
 		character = "duncan",
 		character2 = "myr",
-		tags = ["dialogue_scene", "master_translate"],
+		tags = ["dialogue_scene", "master_translate", 'blackscreen_transition_slow'],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE1", reqs = []}
 		],
@@ -58,6 +58,9 @@ var data = {
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE5", reqs = []}
 		],
+		common_effects = [
+			{code = 'progress_quest', value = 'civil_war_start', stage = 'stage1'},
+			],
 		options = [
 			{code = "after_election_answer1", text = "ALIRONELECTIONSFINISH_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "after_election_answer2", text = "ALIRONELECTIONSFINISH_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
@@ -85,6 +88,7 @@ var data = {
 		text = [
 			{text = "ALIRONELECTIONSFINISH_ANSWER2", reqs = []}
 		],
+		
 		options = [
 			{code = "after_election_answer3", text = "ALIRONELECTIONSFINISH_QUESTION3", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "after_election_answer4", text = "ALIRONELECTIONSFINISH_QUESTION4", reqs = [], dialogue_argument = 2, type = "next_dialogue"},

@@ -208,6 +208,7 @@ func generate_predescribed_character(data):
 	create(data.race, data.sex, data.age)
 	statlist.process_chardata(data, true)
 	food.process_chardata(data)
+	xp_module.process_chardata(data) #for testing 
 	tags = data.tags.duplicate()
 	skills.setup_skills(data)
 

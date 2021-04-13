@@ -18,8 +18,13 @@ var lands = {
 		gatherable_resources = ['fish'],
 		guilds = ['workers','servants','fighters','mages','slavemarket','exotic_slave_trader'],
 		events = [
-			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {}},
-			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {}},
+			{code = 'daisy_meet', text = "Check the streets", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start', state = false}, {type = "date", operant = 'gte', value = 2}], args = {"oneshot": true}},
+			
+			{code = 'reim_encounter', text = "Search for Reim", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage1'}], args = {"oneshot": true}},
+			
+			{code = 'fred_intro', text = "Visit Fred's Dormitory", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}], args = {"oneshot": true}},
+			{code = 'fred_bribe_take', text = "Visit Fred's Dormitory", reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}], args = {"oneshot": true}},
+			
 			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'dialogue_seen', value = 'GINNYVISIT', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'dialogue_seen', check = true, value = 'AFTER_MINES_DUNCAN_10'}], args = {"oneshot": false}},
@@ -1217,6 +1222,28 @@ var dungeons = {
 				args = [{code = 'start_event', data = 'xari_encounter9', args = []}]},
 		],
 	},
+	quest_mages_fred = {
+		code = 'quest_mages_fred',
+		type = 'encounter',
+		name = "Fred's Location",
+		area = 'plains',
+		classname = '',
+		descript = '',
+		difficulty = 'easy',
+		background = 'cave_3',
+		enemyarray =  [], 
+		eventarray = [], 
+		levels = [1,1], 
+		resources = [],
+		stages_per_level = [1,1],
+		travel_time = [2,2],
+		events = [],
+		options = [
+			{text = 'Search for Fred', reqs = [
+				{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage3'}], 
+				args = [{code = 'start_event', data = 'fred_1', args = []}]},
+		],
+	},
 	
 	basic_threat_wolves = {
 		code = 'basic_threat_wolves',
@@ -1458,7 +1485,7 @@ var dungeons = {
 		bgm = "dungeon",
 		enemyarray = [["rats_easy", 0.5],['wolves_easy1', 1],['wolves_easy2', 1],['spiders', 1]],
 		final_enemy = [['grove_easy_boss',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_easy', 1],['grove_find_wood',1],['grove_find_leather',0.5],['event_fairy_friendly', 0.2],['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
+		eventarray = [['dungeon_find_chest_easy', 1],['grove_find_wood',1],['grove_find_leather',0.5],['event_fairy_friendly', 0.5],['celena_shrine_find',0.1],['erebus_shrine_find',0.2],['freya_shrine_find',1]],
 		levels = [2,4],
 		resources = ['cloth','leather','woodmagic','wood','woodiron'],
 		gatherable_resources = {number = [2,3], pool = {meat = [150,250], wood = [50,100], woodmagic = [15,25], woodiron = [15,25]}},
@@ -1480,7 +1507,7 @@ var dungeons = {
 		bgm = "dungeon",
 		enemyarray = [['jungle_easy1', 1],['jungle_easy2', 1],['jungle_medium1', 1],['jungle_medium2', 1]],
 		final_enemy = [['jungle_boss1',1],['jungle_boss2',1],['jungle_boss3',1]], final_enemy_type = 'monster',
-		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5]],
+		eventarray = [['dungeon_find_chest_medium', 1], ['celena_shrine_find',0.1], ['erebus_shrine_find',0.2], ['freya_shrine_find',0.5],['event_tribal_elves', 0.5],['event_spring_heal', 1]],
 		levels = [2,4],
 		resources = ['woodmagic','woodiron','leatherthick','leathermythic','insect_chitin','iron'],
 		gatherable_resources = {number = [2,3], pool = {woodmagic = [15,25], woodiron = [15,30], leatherthick = [20,30], leathermythic = [10,20]}},

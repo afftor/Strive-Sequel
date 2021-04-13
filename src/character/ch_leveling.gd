@@ -36,6 +36,12 @@ func update_exp(value, is_set):
 		return tmp
 
 #professions
+func process_chardata(data):
+	if data.has('professions'):
+		for prof in data.professions: 
+			unlock_class(prof)
+
+
 func get_next_class_exp():
 #	var professions = parent.get_stat('professions')
 	var currentclassnumber = professions.size()

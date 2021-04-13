@@ -867,7 +867,7 @@ func start_event(code, type, args):
 
 func interactive_message_custom(data):
 	var scene = get_spec_node(self.NODE_DIALOGUE)
-	scene.open(data.duplicate(true), true)
+	scene.open(data.duplicate(true))
 
 func interactive_dialogue_start(code, stage):
 	var scene = get_spec_node(self.NODE_DIALOGUE)

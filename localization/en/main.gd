@@ -1960,6 +1960,17 @@ var TranslationDict = {
 	DIALOGUEEVENTFAIRYCAPTUREREPLY = "Before [he] can react, your group quickly pins [him] down.\n\n- Hey, wha-. Stop! What are you doing!? Let me go!!\n\nAs the [boy] is made your slave, [he] can be a very useful addition to your roost or net a good sum from the collectors.",
 	DIALOGUEVENTFAIRYLEAVEREPLY = "After chatting for a bit you part your ways with fairy. ",
 	
+	
+	SPRINGTEXT = "You find a small clearing with a spring. It might be a good time to take a break and rest.",
+	SPRING_HEAL = "Your group rests and restores some health.",
+	SPRING_HEAL_OPTION = "Rest",
+	SPRING_LOOT_OPTION = "Search around",
+	DIALOGUE_SPRING_LOOT = "After searching around you find a small burried stash. You decide to take its contests for yourself.",
+	DIALOGUE_SPRING_NO_LOOT = "You search around but weren't able to find anything useful.",
+	TRIBALELVES = "You find yourself surrounded by a group of local tribal elves. It seems they consider you an intruder on their territory and preparing for attack...",
+	TRIBALELVES_WIN = "As you defeat the attackers, they hastily retreat, yet one of them was left behind and your party manages to subdue them.",
+
+	
 	DIALOGUEEVENTGOODREBELSBEAST = "You come across a small group of rebels, who have caught a [race] [male] that likely strayed from their homelands. Given the rebels' attitude towards [him] it's easy to see they are up to no good...",
 	DIALOGUEEVENTREBELSBEASTINTIMIDATESUCCES = "[center]{color=green|Success!}[/center]\n[name] has successfully intimidated a group of rebels into fleeing, leaving their victim behind.", #to rework
 	DIALOGUEEVENTREBELSBEASTINTIMIDATEFAILURE = "[center]{color=red|Failure!}[/center]\n[name] hasn't managed to intimidate the rebels and they are preparing to attack you. ",
@@ -2661,123 +2672,143 @@ var TranslationDict = {
 	# Aliron elections finish
 
 	ALIRONELECTIONSFINISH_LINE1 = """A few hours later, an emergency meeting of the four major guilds was assembled. The leaders and landlords entered a fierce discussion on the current situation.
-{color=aqua|Duncan: This is ridiculous. Now every peasant will know King Alber's heir is alive. Today of all days, HOW did a large rebel group enter the city undetected? Your guild's duty is specifically to prevent such things, Myr. How do you explain this sabotage?}
-{color=yellow|Myr: How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family,and yet here we have a princess still very much alive, all grown up, and rallying the rebels against us.}""",
+	
+{color=aqua|Duncan:— This is ridiculous. Now every peasant will know King Alber's heir is alive. Today of all days, HOW did a large rebel group enter the city undetected? Your guild's duty is specifically to prevent such things, Myr. How do you explain this sabotage?}
 
-	ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund: Are ya sure she's actually da princess? Might be she's an imposter. Pretty common tactic fo' dwarven disputes.} 
-{color=yellow|Amelia: We are almost sure she's the real deal. Her appearance correlates to the youngest child and her aura is undeniably of the royal bloodline. What we don't know is who is backing her. If the empire has a hand in this...}""",
+{color=yellow|Myr:— How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family,and yet here we have a princess still very much alive, all grown up, and rallying the rebels against us.}""",
 
-	ALIRONELECTIONSFINISH_LINE3 = """{color=aqua|Duncan: Our scouts have been reporting increased activity from the rebels in past months. Sympathizers and rebel forces are advancing as we speak. I'm forced to declare a state of emergency.}
+	ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund:— Are ya sure she's actually da princess? Might be she's an imposter. Pretty common tactic fo' dwarven disputes.} 
+	
+{color=yellow|Amelia:— We are almost sure she's the real deal. Her appearance correlates to the youngest child and her aura is undeniably of the royal bloodline. What we don't know is who is backing her. If the empire has a hand in this...}""",
+
+	ALIRONELECTIONSFINISH_LINE3 = """{color=aqua|Duncan:— Our scouts have been reporting increased activity from the rebels in past months. Sympathizers and rebel forces are advancing as we speak. I'm forced to declare a state of emergency.}
 
 The crowd of landowners bursts into a hubbub.
 
-{color=yellow|Sigmund: Settle lads, he's right. We can't afford to lose any of da vital points or trade routes.}""",
+{color=yellow|Sigmund:— Settle lads, he's right. We can't afford to lose any of da vital points or trade routes.}""",
 
-	ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr: Mhph, so you're going to declare yourself leader now? How long do you expect the rest of the guilds to support you given your credibility after the appearance of a living heir?} 
-{color=aqua|Duncan: I don't expect your compliance, and I won't need your help to deal with them. Once we identify the traitor, there will be no mercy. You better prepare for it.} 
-{color=yellow|Myr: We?! Why? No, how would the Mage Guild benefit from this rebel stunt?} 
-{color=aqua|Duncan: Regardless, we will find the culprit and all accomplices will be dealt with thoroughly. Be it you, the Servants, or even one of ours.}""",
+	ALIRONELECTIONSFINISH_LINE4 = """{color=yellow|Myr:— Mhph, so you're going to declare yourself leader now? How long do you expect the rest of the guilds to support you given your credibility after the appearance of a living heir?} 
+	
+{color=aqua|Duncan:— I don't expect your compliance, and I won't need your help to deal with them. Once we identify the traitor, there will be no mercy. You better prepare for it.} 
+
+{color=yellow|Myr:— We?! Why? No, how would the Mage Guild benefit from this rebel stunt?} 
+
+{color=aqua|Duncan:— Regardless, we will find the culprit and all accomplices will be dealt with thoroughly. Be it you, the Servants, or even one of ours.}""",
 
 	ALIRONELECTIONSFINISH_LINE5 = """Once the meeting ended, you approach Amelia to discuss what will happen next.
-- Oh, this is horrible. Now the Fighters will rule with an iron fist until the riots are quelled. For you, the bad news is the election is naturally put on hold. The good news is so is your debt. Looks like the Servants  have been benched. Me especially.""",
+
+— Oh, this is horrible. Now the Fighters will rule with an iron fist until the riots are quelled. For you, the bad news is the election is naturally put on hold. The good news is so is your debt. Looks like the Servants  have been benched. Me especially.""",
 
 	ALIRONELECTIONSFINISH_QUESTION1 = "Why can't you do anything?",
 	ALIRONELECTIONSFINISH_QUESTION2 = "It seemed to me the guilds were fighting each other.",
 
-	ALIRONELECTIONSFINISH_ANSWER1 = """- The Servants have no role in warfare. We don't train soldiers, possess magic, or even produce supplies.
+	ALIRONELECTIONSFINISH_ANSWER1 = """— The Servants have no role in warfare. We don't train soldiers, possess magic, or even produce supplies.
 As such we barely have any influence while Aliron is under martial law.
 I guess all we can do is stick around 'till it's over and hope there will be something left for us afterwards.
 
-- You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
 You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 
-	ALIRONELECTIONSFINISH_ANSWER2 = """- Sure, that's what we always do. The stakes are higher this time though with one of our own betraying us to the rebellion.
+	ALIRONELECTIONSFINISH_ANSWER2 = """— Sure, that's what we always do. The stakes are higher this time though with one of our own betraying us to the rebellion.
 The Mages are in charge of any large scale teleportations, so this shouldn't have been possible short of infiltration and sabotage.
 
-- You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
+— You know, it's going to take Duncan weeks to find out what's really going on, and until then the air around here will be tense.
 You could obviously jump straight into the fight with the rebels, but I feel like we would do better to uncover the perpetrators and clear suspicion within the guilds first. What do you think?""",
 
 	ALIRONELECTIONSFINISH_QUESTION3 = "Actually, I was about to offer my assistance to Duncan personally.",
 	ALIRONELECTIONSFINISH_QUESTION4 = "That sounds like something a perpetrator would say to use me for their benefit.",
 	ALIRONELECTIONSFINISH_QUESTION5 = "I'm not sure, what if I get in the way?",
 
-	ALIRONELECTIONSFINISH_ANSWER3 = """- Quite enthusiastic, aren't you? This is all the better, but don't act prematurely. 
+	ALIRONELECTIONSFINISH_ANSWER3 = """— Quite enthusiastic, aren't you? This is all the better, but don't act prematurely. 
 
-	- Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+	— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 I suggest starting with the mage guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
-	ALIRONELECTIONSFINISH_ANSWER4 = """- Hah, that's the spirit. Trust no one. This is why I've chosen you. Well, since you've realized that and if that was the case, we won't be able to fool you, right? 
+	ALIRONELECTIONSFINISH_ANSWER4 = """— Hah, that's the spirit. Trust no one. This is why I've chosen you. Well, since you've realized that and if that was the case, we won't be able to fool you, right? 
 
-- Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 I suggest starting with the mage guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
-	ALIRONELECTIONSFINISH_ANSWER5 = """- Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you. 
+	ALIRONELECTIONSFINISH_ANSWER5 = """— Come on now. Someone aiming for a position of mayor should display more confidence. Don't worry, if something happens I'll cover for you. 
 
-- Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
+— Anyway, take this writ of inquisition. It proves your investigation is guild sanctioned and you'll be able to ask around.
 I suggest starting with the mage guild. If they haven't figured it out already, they should be able to determine how our princess got in.""",
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
 
-	MAGESAFTERELLECTION1 = "- I thought I made it clear I am not to be disturbed... Oh, it's you. What do you want?",
+	MAGESAFTERELLECTION1 = """You enter Myr's office to find her in a unusual state of distress. 
+	
+	— I thought I made it clear I am not to be disturbed... Oh, it's you. What do you want?""",
 
 	MAGESAFTERELLECTION1_QUESTION1 = "Just dropped to say \"Hi\".",
 	MAGESAFTERELLECTION1_QUESTION2 = "I'm investigating what's been going on around here.",
 
-	MAGESAFTERELLECTION1_ANSWER1 = """-Yeah, right, like hell you did. Did the Fighters send you? Or, more likely, it's Amelia's idea, right?
+	MAGESAFTERELLECTION1_ANSWER1 = """— Yeah, right, like hell you did. Did the Fighters send you? Or, more likely, it's Amelia's idea, right?
 
-- Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
-	MAGESAFTERELLECTION1_ANSWER2 = """- Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
+	MAGESAFTERELLECTION1_ANSWER2 = """— Fucking hell. They can't finish off one brat, don't even realize it until it's too late, and now it's all our fault. Like I care. So you wanna find out what actually happened?""",
 
 	MAGESAFTERELLECTION1_QUESTION3 = "Hoped you'd tell me",
 	MAGESAFTERELLECTION1_QUESTION4 = "I guess you don't know either",
 	MAGESAFTERELLECTION1_QUESTION5 = "...",
 
-	MAGESAFTERELLECTION1_ANSWER3 = """- The city is protected from unauthorized teleportation by a crystal sphere designed to dampen magic crossing a projected threshold. The device can have very different applications but what's important is that for this purpose, it requires a power source. This power source was stolen right before the... event. 
+	MAGESAFTERELLECTION1_ANSWER3 = """— The city is protected from unauthorized teleportation by a crystal sphere designed to dampen magic crossing a projected threshold. The device can have very different applications but what's important is that for this purpose, it requires a power source. This power source was stolen right before the... event. 
 
-- Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
+— Cutting to the chase, there are only a few guild members allowed access, and one of those has just happened to have gone missing on the day of the incident.
 Name's Fred. You can find him and confirm if he disabled the device on his own accord. If he indeed sided with the rebels or the empire it's best if you take him down immediately. 
 	
-- I'll give you his home address, you might find some clues about his whereabouts there.""",
+— I'll give you his home address, you might find some clues about his whereabouts there.""",
 
 	MAGESAFTERELLECTION1_QUESTION6 = "What's that power source which was stolen?",
 	MAGESAFTERELLECTION1_QUESTION7 = "You suspect he's dead?",
 	MAGESAFTERELLECTION1_QUESTION8 = "I'll let you know once I learn something.",
 
-	MAGESAFTERELLECTION1_ANSWER4 = """- It's an artifact, a sword of a former king Nicolas. Technically, it belonged to the royal family, but since the revolution the guilds have decided to utilize it for the good of everyone.""",
-	MAGESAFTERELLECTION1_ANSWER5 = """- I'd prefer to be dead if I was him. Otherwise, the death that Duncan will gladly prescribe will be a slow one. He does not take betrayal lightly.""",
-	MAGESAFTERELLECTION1_ANSWER6 = """- Find him, or what's left of him. If he's still alive, I'd not expect him to be happy to see you, so feel free to take him down if needed... or even if not.""",
+	MAGESAFTERELLECTION1_ANSWER4 = """— It's an artifact, a sword of a former king Nicolas. Technically, it belonged to the royal family, but since the revolution the guilds have decided to utilize it for the good of everyone.""",
+	MAGESAFTERELLECTION1_ANSWER5 = """— I'd prefer to be dead if I was him. Otherwise, the death that Duncan will gladly prescribe will be a slow one. He does not take betrayal lightly.""",
+	MAGESAFTERELLECTION1_ANSWER6 = """— Find him, or what's left of him. If he's still alive, I'd not expect him to be happy to see you, so feel free to take him down if needed... or even if not.""",
 
 	# Visit Fred's home
 
 	VISITFREDSHOMEINTRO = """You enter a dormitory in one of the poorer districts of the city.
+	
 Fred's room is rather small and unclean with thin walls letting you hear the neighbors. After some time searching you find a hidden note implying Fred was planning to secretly meet with someone named Greg on the outskirts of town.
+
 After asking around with the other residents, you decide it's the most likely place to find him.""",
 	
 	VISITFREDSHOME_IF_BRIBE = """You return to Fred's room. After a few minutes of searching you discover the hidden stash, proving Fred didn't lie to you. The sum makes you wonder how quickly Fred would be burgled by his neighbors if they knew about it.
-After securing the money you leave the dormitory.""",
+	
+After securing the money you leave the dormitory.
+
+{color=green|Earned 500 Gold}""",
 
 	FINDFRED1 = """You find the rendezvous point from the letter in Fred's room easily enough. It's marked by a large oak tree standing just off of a muddy farm road. No Fred here, but there are many presumably human footprints left in the soft earth and signs that someone was dragged away into a copse of trees a short distance away.
+
 The men didn't make any effort to hide their tracks and you soon find a cave's mouth on the side of a rocky outcrop hidden in the trees.
-You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with  a group of armed men, almost certainly sellswords, standing over him.	
-{color=aqua|Merc: - See? He's not going anywhere.  I'm bored and it's hella cold here. Let's go already.}
-{color=yellow|Merc 2: - Stop being such a whiny little bitch. They said to get rid of this guy if they don't return by evening.} 
-{color=aqua|Merc: - Screw it, I wanna get drunk already. You don't really expect them to cough up extra pay do ya?}""",
+
+You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with  a group of armed men, almost certainly sellswords, standing over him.""",
+
+	FINDFRED2 = """{color=aqua|Merc: — See? He's not going anywhere.  I'm bored and it's hella cold here. Let's go already.}
+
+{color=yellow|Merc 2: — Stop being such a whiny little bitch. They said to get rid of this guy if they don't return by evening.} 
+
+{color=aqua|Merc: — Screw it, I wanna get drunk already. You don't really expect them to cough up extra pay do ya?}""",
 	
 	FINDFRED_OPTION1 = "Talk",
 	FINDFRED_OPTION2 = "Attack",
 
-	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them.\nMerc: - Huh? Who the hell are you?",
+	FINDFRED_TALK1 = "You decide to approach the mercs peacefully and talk to them.\n\nMerc: — Huh? Who the hell are you?",
 	FINDFRED_TALK1_QUESTION1 = "I've come with a message, your services are no longer needed.",
 	FINDFRED_TALK1_QUESTION2 = "I'm interested in your prisoner, maybe we could work something out.",
 	FINDFRED_TALK1_QUESTION3 = "Sorry, it seems I'm lost, I better go.",
 	FINDFRED_TALK1_QUESTION4 = "This is a waste of time... *attack*",
 
 	FINDFRED_TALK1_ANSWER1 = """The merc leader gives you a skeptic look.
-- Huh, really? Who are you trying to fool here?""",
+	
+— Huh, really? Who are you trying to fool here?""",
 
-	FINDFRED_TALK1_ANSWER1_1 = """- Huh, really? Who are you trying to fool here?""",
+	FINDFRED_TALK1_ANSWER1_1 = """— Huh, really? Who are you trying to fool here?""",
 
 	FINDFRED_TALK1_QUESTION5 = "Taking me for an imposter would be a dumb move.",
 	FINDFRED_TALK1_QUESTION6 = "Hey, I'm being serious here. Let's not jump to conclusions.",
@@ -2785,25 +2816,27 @@ You do your best to muffle your footfalls as you explore deeper into the cave an
 	FINDFRED_TALK1_QUESTION8 = "Was worth a try. I guess we'll do it the hard way.",
 
 	FINDFRED_TALK1_ELSE = """The mercs look relieved by the thought of being freed from guard duty, but the leader gives you a doubtful look.
-Merc Leader: - Look we all want to punch out early, but just to make sure you're on the level, what's the name of our contractor?""",
+	
+Merc Leader: — Look we all want to punch out early, but just to make sure you're on the level, what's the name of our contractor?""",
 
 	FINDFRED_TALK1_CONTRACTOR_DUNCAN = "Duncan",
 	FINDFRED_TALK1_CONTRACTOR_GREG = "Greg",
 	FINDFRED_TALK1_CONTRACTOR_FRED = "Fred",
 	FINDFRED_TALK1_CONTRACTOR_AVERMIK = "Avermik",
 
-	FINDFRED_TALK1_IF_GREG1 = "Merc Leader: - Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again ‘suming the pay is good. See ya.",
-	FINDFRED_TALK1_IF_GREG2 = "As the mercs leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n- W-who are you? Are you from the guild? Would you mind untying me?",    
+	FINDFRED_TALK1_IF_GREG1 = "Merc Leader: — Huh, alright then. Let's get the hell outta this hole in the ground boys. And you... you make sure and report back we didn't neglect our mission. Will be glad if we got hired again ‘suming the pay is good. See ya.",
+	FINDFRED_TALK1_IF_GREG2 = "As the mercs leave, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.\n\n— W-who are you? Are you from the guild? Would you mind untying me?",    
 
 	FINDFRED_ATTACK = "Deciding there's no point in negotiations you prepare to attack the mercs.",
 
 	FINDFRED_AFTERWIN = """After the last sellsword falls, you move to Fred still bound on the rough stone floor and remove his gag, letting him speak.
-- W-who are you? Are you from the guild? Would you mind untying me?""",
+	
+— W-who are you? Are you from the guild? Would you mind untying me?""",
 
 	FINDFRED_AFTERWIN_QUESTION1 = "Not until you explain yourself.",
 	FINDFRED_AFTERWIN_QUESTION2 = "Where's the artifact you've stolen?",
 
-	FINDFRED_TALK1_ANSWER2 = """- *Sigh* I don't have much of a choice, do I? They offered me a good coin if I brought them the sword, but then they double-crossed and imprisoned me!
+	FINDFRED_TALK1_ANSWER2 = """— *Sigh* I don't have much of a choice, do I? They offered me a good coin if I brought them the sword, but then they double-crossed and imprisoned me!
 I don't know what they wanted it for. It's just some old relic nobody cares about anyway. Damned Greg and that demon bitch...""",
 
 	FINDFRED_AFTERWIN_QUESTION3 = "Why did you cooperate with the rebels?",
@@ -2811,118 +2844,128 @@ I don't know what they wanted it for. It's just some old relic nobody cares abou
 	FINDFRED_AFTERWIN_QUESTION5 = "I'll bring you back to guilds to face justice for aiding the rebellion.",
 	FINDFRED_AFTERWIN_QUESTION6 = "I've heard enough, traitors deserve death.",
 
-	FINDFRED_TALK1_ANSWER3 = """- They took it. It's just some old relic nobody cares about anyway and they offered me a nice sum to bring it to them. Then they double-crossed me and had those men drag me off here. Damned Greg and that demon bitch...""",
-	FINDFRED_TALK1_ANSWER4 = """- Rebels? Look, I had no idea who they were. You've seen my place, it's a dump! Ok, so I fucked up, but who wouldn't consider the opportunity?""",
-	FINDFRED_TALK1_ANSWER5 = """- I dunno, Greg's one shady backstabber? He told me to get the sword, I got it. After I handed it over, he passed it to some demon chick. Then they tied me up and left me to these guys. I really don't know much else.""",
+	FINDFRED_TALK1_ANSWER3 = """— They took it. It's just some old relic nobody cares about anyway and they offered me a nice sum to bring it to them. Then they double-crossed me and had those men drag me off here. Damned Greg and that demon bitch...""",
+	FINDFRED_TALK1_ANSWER4 = """— Rebels? Look, I had no idea who they were. You've seen my place, it's a dump! Ok, so I fucked up, but who wouldn't consider the opportunity?""",
+	FINDFRED_TALK1_ANSWER5 = """— I dunno, Greg's one shady backstabber? He told me to get the sword, I got it. After I handed it over, he passed it to some demon chick. Then they tied me up and left me to these guys. I really don't know much else.""",
 
-	FINDFRED_TALK1_ANSWER6 = """- No, please, I'll be executed for treason! You gotta believe me, I didn't know. Look, I can't go back, but if you let me go, you can have the first half of what I got paid. Five hundred gold just to look the other way, what do you say?""",
+	FINDFRED_TALK1_ANSWER6 = """— No, please, I'll be executed for treason! You gotta believe me, I didn't know. Look, I can't go back, but if you let me go, you can have the first half of what I got paid. Five hundred gold just to look the other way, what do you say?""",
 
 	FINDFRED_AFTERWIN_QUESTION7 = "This is not about gold, you will have to answer for your betrayal.",
 	FINDFRED_AFTERWIN_QUESTION8 = "I guess I could say that you escaped, but what would you do then?",
 
-	FINDFRED_TALK1_ANSWER7 = """- No, please! You gotta believe me, I didn't know. Look, I can't go back, but if you let me go, you can have the first half of what I got paid. Five hundred gold just to look the other way, what do you say?""",
+	FINDFRED_TALK1_ANSWER7 = """— No, please! You gotta believe me, I didn't know. Look, I can't go back, but if you let me go, you can have the first half of what I got paid. Five hundred gold just to look the other way, what do you say?""",
 
 	FINDFRED_AFTERWIN_QUESTION9 = "Funny of you to expect you could buy me *kill*",
 
 	FINDFRED_LINE_END = "Despite Fred's protests, you decide to take him back to Duncan.",
 	FINDFRED_LINE_END_KILL = "Fred continues pleading, but you're not listening anymore. You strike him down and go to work collecting proof you'd completed your task. You exit the cave a little while later with Fred's head in the same sack he'd likely concealed the sword in earlier.",
 
-	FINDFRED_TALK1_ANSWER8 = """- I... I don't really know. I guess I'll have to get out of the country. I don't think I'd be safe with either the rebels or the guilds now. Maybe I'll be able to get through the border.""",
+	FINDFRED_TALK1_ANSWER8 = """— I... I don't really know. I guess I'll have to get out of the country. I don't think I'd be safe with either the rebels or the guilds now. Maybe I'll be able to get through the border.""",
 
 	FINDFRED_AFTERWIN_QUESTION10 = "Alright, I believe you.",
 	FINDFRED_AFTERWIN_QUESTION11 = "Fine, the money can serve to repair some of the damage you've done at least.",
 	FINDFRED_AFTERWIN_QUESTION12 = "Forget it, you'll answer for your treachery.",
 	FINDFRED_AFTERWIN_QUESTION13 = "Forget it, you die here.",
 
-	FINDFRED_TALK1_ANSWER9 = """- Thank you! I left the money back in my room. There's a stash under the loose floorboard near the window.
+	FINDFRED_TALK1_ANSWER9 = """— Thank you! I left the money back in my room. There's a stash under the loose floorboard near the window.
 You release Fred and let him go on his way then get ready to depart.""",
 
 	
 	FINDFRED_TALK1_ANSWER10 = """Mercs give you a doubtful look and after a couple of phrases the leader speaks.
-- Alright, 300 gold and you can have him.""",
+	
+— Alright, 300 gold and you can have him.""",
 
 	FINDFRED_BRIBE_TAKEN = """You pass them the money and they prepare to leave.
-Bandit Leader: - Nice working with you. Oh, uh just in case someone else shows up, there's no need to mention our little deal.""",
+	
+Merc Leader: — Nice working with you. Oh, uh just in case someone else shows up, there's no need to mention our little deal.""",
 
-	FINDFRED_BRIBE_REFUSED = """Bandit Leader: - Well, that's a shame because we can't just let you leave after finding us here.""",
+	FINDFRED_BRIBE_REFUSED = """Merc Leader: — Well, that's a shame because we can't just let you leave after finding us here.""",
 
 	FINFRED_BRIBE_OPTION1 = "Agree",
 	FINFRED_BRIBE_OPTION2 = "Refuse",
 
 	FINDFRED_LINE_END_KILL2 = "You cut off further protests by stuffing the gag back in Fred's mouth and lead him out of the cave.",
 
-	FINDFRED_TALK_FAIL = "Merc Leader: - Yea', I don't think so. You'll have to tell us who you are after we beat the shit out of you.",
+	FINDFRED_TALK_FAIL = "Merc Leader: — Yea', I don't think so. You'll have to tell us who you are after we beat the shit out of you.",
 
-	# *Intermission scene - starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
+	# *Intermission scene — starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
 
-	INTERMISSIONINTRO1 = """{color=aqua|Greg: - You've got your fancy sword. I trust we are even now.}
-{color=yellow|Demon: - I can't complain, enabling you to pull off that mass teleportation performance serves our interests as well.}""",
+	INTERMISSIONINTRO1 = """
+	
+	{color=aqua|Greg: — You've got your fancy sword. I trust we are even now.}
+	
+{color=yellow|Demon: — I can't complain, enabling you to pull off that mass teleportation performance serves our interests as well.}""",
 
-	INTERMISSIONINTRO2 = """{color=aqua|Greg: - Perfect, then get lost. I would prefer us not being seen together, especially by the princess.}
-{color=yellow|Demon: - Now, don't be so harsh. The cult offered its assistance not just for the sake of the artifact. We could do more, you know.}
-{color=aqua|Greg: - I'm not giving you anything else, we don't need your help anymore.}
-{color=yellow|Demon: - Hmph, as you wish.}""",
+	INTERMISSIONINTRO2 = """{color=aqua|Greg: — Perfect, then get lost. I would prefer us not being seen together, especially by the princess.}
+	
+{color=yellow|Demon: — Now, don't be so harsh. The cult offered its assistance not just for the sake of the artifact. We could do more, you know.}
 
-	INTERMISSIONINTRO3 = "{color=yellow|Demon: - Still, there's more to be gained here. I think I'll stay for a bit.}",
+{color=aqua|Greg: — I'm not giving you anything else, we don't need your help anymore.}
 
-	RETURNTOMYR_IF_FRED = """- So you found him. Nice work, I've already sent him to Duncan along with your report.
+{color=yellow|Demon: — Hmph, as you wish.}""",
+
+	INTERMISSIONINTRO3 = "{color=yellow|Demon: — Still, there's more to be gained here. I think I'll stay for a bit.}",
+
+	RETURNTOMYR_IF_FRED = """— So you found him. Nice work, I've already sent him to Duncan along with your report.
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
 
-	RETURNTOMYR_IF_NOT_FRED = """- So you found him and took care of him. Good, I've already sent a note to Duncan.
+	RETURNTOMYR_IF_NOT_FRED = """— So you found him and took care of him. Good, I've already sent a note to Duncan.
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
+	
+	FREDQUESTREPORT = "About Fred...",
+	
+	RETURNTOMYR = """— So it was him after all, and we've lost the artifact as well... I expected as much. Here, take this report and get it to Duncan, I need to make some... arrangements if you'll excuse me.""",
 
-	RETURNTOMYR = """- So it was him after all, and we've lost the artifact as well... I expected as much. Here, take this report and get it to Duncan, I need to make some... arrangements if you'll excuse me.""",
-
-	RETURNTODUNCAN_IF_FRED = """- Good work finding the culprit, we've taken him to the jail where he will be awaiting punishment.""",
+	RETURNTODUNCAN_IF_FRED = """— Good work finding the culprit, we've taken him to the jail where he will be awaiting punishment.""",
 	RETURNTODUNCAN_IF_FRED_QUESTION1 = "Tell what you learned",
-	RETURNTODUNCAN_IF_NOT_FRED = "- So the traitor is dead. Allow me to ask, was there no other choice but to kill him?",
+	RETURNTODUNCAN_IF_NOT_FRED = "— So the traitor is dead. Allow me to ask, was there no other choice but to kill him?",
 
 	RETURNTODUNCAN_IF_NOT_FRED_QUESTION1 = "I had to defend myself.",
 	RETURNTODUNCAN_IF_NOT_FRED_QUESTION2 = "It was my decision.",
 
-	RETURNTODUNCAN1 = "- Just a report, huh? I take it you didn't find the actual culprit then.",
-	RETURNTODUNCAN2 = "- So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
+	RETURNTODUNCAN1 = "— Just a report, huh? I take it you didn't find the actual culprit then.",
+	RETURNTODUNCAN2 = "— So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
 
-	RETURNTODUNCAN_ANSWER1 = """- Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though.
-- Anyway, good work, but we have more immediate problems now. The rebels have taken several key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the fort, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
+	RETURNTODUNCAN_ANSWER1 = """— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though.
+— Anyway, good work, but we have more immediate problems now. The rebels have taken several key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the fort, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
 
 	RETURNTODUNCAN_QUESTION1 = "I'll see what I can do.",    
 	RETURNTODUNCAN_QUESTION2 = "Of course, I have nothing better to do...",
 		
-	RETURNTODUNCAN_ANSWER2 = "- Better not delay, every moment counts for us now.",
+	RETURNTODUNCAN_ANSWER2 = "— Better not delay, every moment counts for us now.",
 
-	RETURNTODUNCAN_EXTRA1 = """- This is obviously Mages' fault. Myr should know who's the one responsible. Once you find him, we will not hesitate with the proper punishment.""",
+	RETURNTODUNCAN_EXTRA1 = """— This is obviously Mages' fault. Myr should know who's the one responsible. Once you find him, we will not hesitate with the proper punishment.""",
 
 	#Intermission scene 2
 
 	INTERMISSION2INTRO1 = """The rebel army stood in front of a small settlement recently turned into a battlefield.
-{color=yellow|Anastasia: - Uncle! Why didn't you let me talk to them before attacking?!}
-{color=aqua|Greg: - Those were guilds' trained soldiers.}
-{color=yellow|Anastasia: - They had asked to see me in person though. We could've avoided all of this death and destruction.}""",
+{color=yellow|Anastasia: — Uncle! Why didn't you let me talk to them before attacking?!}
+{color=aqua|Greg: — Those were guilds' trained soldiers.}
+{color=yellow|Anastasia: — They had asked to see me in person though. We could've avoided all of this death and destruction.}""",
 
 	INTERMISSION2INTRO2 = """Despite his unwillingness to answer at all, Greg had to answer carefully since Anastasia had made her protest in the presence of so many rebel soldiers...
-{color=aqua|Greg: - You are too naive, Princess. There could have been assassins amongst them sent simply for your head. Our enemies are treacherous opportunists, this is how they work.}
-{color=yellow|Anastasia: - ... it's not supposed to be like this. What good is it to free the people from tyranny if they die in the process of being liberated? We must avoid harming innocents and such needless losses.}""",
+{color=aqua|Greg: — You are too naive, Princess. There could have been assassins amongst them sent simply for your head. Our enemies are treacherous opportunists, this is how they work.}
+{color=yellow|Anastasia: — ... it's not supposed to be like this. What good is it to free the people from tyranny if they die in the process of being liberated? We must avoid harming innocents and such needless losses.}""",
 
-	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: - I've decided. Release the survivors so they can return home.}
-{color=aqua|Greg: - What!?}
-{color=yellow|Anastasia: - This is the minimum we can do now to show our good will and noble intentions.}
-{color=aqua|Greg: - ...Fine, but don't fool yourself. You will not retake the throne through mercy or kindness.}""",
+	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: — I've decided. Release the survivors so they can return home.}
+{color=aqua|Greg: — What!?}
+{color=yellow|Anastasia: — This is the minimum we can do now to show our good will and noble intentions.}
+{color=aqua|Greg: — ...Fine, but don't fool yourself. You will not retake the throne through mercy or kindness.}""",
 
-	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: - Is there any news from Aire? She's still not back?}
-{color=aqua|Attendant: - I'm afraid not your highness. She has yet to return.}
-{color=yellow|Anastasia: - Ah... Aire, I could really use your company right about now. I hope you are safe.}""",
+	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: — Is there any news from Aire? She's still not back?}
+{color=aqua|Attendant: — I'm afraid not your highness. She has yet to return.}
+{color=yellow|Anastasia: — Ah... Aire, I could really use your company right about now. I hope you are safe.}""",
 
-	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: - Do you think I was wrong to demand their release?}
-{color=aqua|Aire: - I'm sorry, It's not my place to judge you, your highness.}
-{color=yellow|Anastasia: - Aire, please.}
-{color=aqua|Aire: - I'm just your tool, your highness. Your will is all that matters to me.}
+	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: — Do you think I was wrong to demand their release?}
+{color=aqua|Aire: — I'm sorry, It's not my place to judge you, your highness.}
+{color=yellow|Anastasia: — Aire, please.}
+{color=aqua|Aire: — I'm just your tool, your highness. Your will is all that matters to me.}
 Noticing the princess's angry stare Aire quickly adds.
-{color=aqua|Aire: - But, I guess, I would prefer to be able to return home if I were in their place.}""",
+{color=aqua|Aire: — But, I guess, I would prefer to be able to return home if I were in their place.}""",
 
-	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how did your last assignment go? You've been sullen ever since you returned. Did something bad happen?
+	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|Anastasia: — I didn't get a chance to ask, but how did your last assignment go? You've been sullen ever since you returned. Did something bad happen?
 The princess notices Aire tensing up in response to the question.	
-{color=aqua|Aire: - ... It's nothing worth mentioning to you.}""",
+{color=aqua|Aire: — ... It's nothing worth mentioning to you.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|Anastasia: - You didn't get injured again, did you?}
 {color=aqua|Aire: - I'm fine, as long as I can continue to serve you.}
@@ -3068,10 +3111,6 @@ The princess notices Aire tensing up in response to the question.
 	SKILLENEMY_ENTANGLE = "Entangle",
 	SKILLSHRED = "Shred",
 	
-	SPRINGTEXT = "SPRINGTEXT",
-	SPRING_HEAL = "SPRING_HEAL",
-	DIALOGUE_SPRING_LOOT = "DIALOGUE_SPRING_LOOT",
-	DIALOGUE_SPRING_NO_LOOT = "DIALOGUE_SPRING_NO_LOOT",
 
 
 

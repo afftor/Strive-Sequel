@@ -54,13 +54,16 @@ func rebuild():
 		newbutton.connect('mouse_exited', get_parent(), 'remove_hovered_person')
 		newbutton.get_node("job").connect("pressed", self, "open_job_panel", [person])
 		newbutton.get_node("job").set_disabled(false)
+		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
 		match get_parent().mansion_state:
 			"travels":
-				newbutton.get_node("job").set_disabled(true)
 				build_for_travel(person, newbutton)
-			"skill":
 				newbutton.get_node("job").set_disabled(true)
-				build_for_skills(person, newbutton)		
+				newbutton.get_node("job").set_mouse_filter(MOUSE_FILTER_IGNORE)
+			"skill":
+				build_for_skills(person, newbutton)
+				newbutton.get_node("job").set_disabled(true)
+				newbutton.get_node("job").set_mouse_filter(MOUSE_FILTER_IGNORE)
 			"upgrades":
 				build_for_upgrades(person, newbutton)
 			"default":
@@ -71,7 +74,7 @@ func rebuild():
 				build_for_craft(person, newbutton)
 			"sex":
 				build_sex_selection(person, newbutton)
-		newbutton.get_node("job").disabled = person.travel.location == "travel" || person.is_on_quest()
+		
 
 	var pos = self.rect_size
 	$TravelsContainerPanel.rect_position.y = pos.y - 50

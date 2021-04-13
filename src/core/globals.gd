@@ -295,6 +295,10 @@ func TextEncoder(text, node = null):
 	#return text
 	
 	while text.find("{") != -1:
+		if text.find("}") == -1:
+			print ("error in formatted text - } not found in string:")
+			print (text.substr(0, 20) + "...")
+			text = text + "}"
 		var newtext = text.substr(text.find("{"), text.find("}") - text.find("{")+1)
 		var newtextarray = newtext.split("|")
 		var originaltext = newtextarray[newtextarray.size()-1].replace("}",'')
@@ -1177,9 +1181,19 @@ func common_effects(effects):
 						quest_exists = true
 						k.stage = i.stage
 						text_log_add("quests", "Quest Updated: " + tr(scenedata.quests[k.code].stages[k.stage].name) + ". ")
+						var args = {}
+						args["label"] = "Quest Updated"
+						args["info"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
+						args["sound"] = "quest_aquired"
+						input_handler.play_animation("quest", args)
 				if quest_exists == false:
 					ResourceScripts.game_progress.active_quests.append({code = i.value, stage = i.stage})
 					text_log_add("quests", "Quest Received: " + tr(scenedata.quests[i.value].stages[i.stage].name) + ". ")
+					var args = {}
+					args["label"] = "Quest Received"
+					args["info"] = tr(scenedata.quests[i.value].stages[i.stage].name)
+					args["sound"] = "quest_aquired"
+					input_handler.play_animation("quest", args)
 			'complete_quest':
 				for k in ResourceScripts.game_progress.active_quests:
 					if k.code == i.value:
