@@ -18,7 +18,7 @@ var data = {
 			common_effects = [{code = 'material_change', operant = '+', material = 'wood', value = 1},
 			{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
-				code = 'looking_for_princess_3', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
+				code = '', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
@@ -32,7 +32,7 @@ var data = {
 			{text = "LOOKING_FOR_PRINCESS_4", reqs = []}],
 			common_effects = [{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
-				code = 'looking_for_princess_3', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
+				code = '', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
@@ -50,6 +50,44 @@ var data = {
 			bonus_effects = [{code = 'remove_decision', value = 'LookingForPrincessAccess'}]
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_5", reqs = [], dialogue_argument = 2 
+		},],
+	},
+	
+	# KOBOLD part
+	looking_for_princess_3 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "LOOKING_FOR_PRINCESS_6", reqs = []}],
+		options = [ {
+			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_6", reqs = [], dialogue_argument = 1,
+			bonus_effects = [{code = 'remove_decision', value = 'LookingForPrincessAccess'}]
+		}, {
+			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_7", reqs = [], dialogue_argument = 1 
+		},],
+	},
+	
+	looking_for_princess_4 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "LOOKING_FOR_PRINCESS_7", reqs = [], previous_dialogue_option = 1}, 
+		{text = "LOOKING_FOR_PRINCESS_8", previous_dialogue_option = 4}],
+		options = [ {
+			code = 'looking_for_princess_4', text = "LOOKING_FOR_PRINCESS_OPTION_8", reqs = [], dialogue_argument = 4, remove_after_first_use = true
+		}, {
+			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_9", reqs = [], dialogue_argument = 2 
+		},],
+	},
+	
+	looking_for_princess_5 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "LOOKING_FOR_PRINCESS_9", reqs = [], previous_dialogue_option = 2}, 
+		{text = "", previous_dialogue_option = 4}],
+		options = [ {
+			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_10", reqs = [], dialogue_argument = 4, remove_after_first_use = true
+		}, {
+			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
+		}, {
+			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_12", reqs = [], dialogue_argument = 2 
+		}, {
+			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_13", reqs = [], dialogue_argument = 3
 		},],
 	},
 }
