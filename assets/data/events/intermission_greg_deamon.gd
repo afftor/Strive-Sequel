@@ -1,8 +1,8 @@
 var data = {
 	intermission_intro1 = {
 		image = null,
-		# character = "greg",
-		# character2 = "myr",
+		character = "greg",
+		character2 = "demon_female",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "INTERMISSIONINTRO1", reqs = []}
@@ -14,8 +14,8 @@ var data = {
 
 	intermission_intro2 = {
 		image = null,
-		# character = "greg",
-		# character2 = "myr",
+		character = "greg",
+		character2 = "demon_female",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "INTERMISSIONINTRO2", reqs = []}
@@ -27,14 +27,14 @@ var data = {
 
 	intermission_intro3 = {
 		image = null,
-		# character = "greg",
-		# character2 = "myr",
+		character = "greg",
+		character2 = "demon_female",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "INTERMISSIONINTRO3", reqs = []}
 		],
 		options = [
-			{code = "clos", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]
 	},
 }

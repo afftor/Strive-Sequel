@@ -110,6 +110,16 @@ var scenes = {
 	goblin_encounter = load("res://assets/images/scenes/goblin_encounter.png"),
 	fairy_encounter = load("res://assets/images/scenes/fairy_encounter.png"),
 	chest_mimic = load("res://assets/images/scenes/chest_mimic.png"),
+	
+	battlefield = load("res://assets/images/scenes/battlefield.png"),
+	city_guards = load("res://assets/images/scenes/city_guards.png"),
+	dome = load("res://assets/images/scenes/dome.png"),
+	fred = load("res://assets/images/scenes/fred.png"),
+	fred_mercs = load("res://assets/images/scenes/fred_mercs.png"),
+	refugees = load("res://assets/images/scenes/refugees.png"),
+	spring = load("res://assets/images/scenes/spring.png"),
+	tribal_elves = load("res://assets/images/scenes/tribal_elves.png"),
+	
 }
 
 var sprites = {

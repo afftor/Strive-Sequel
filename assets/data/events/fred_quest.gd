@@ -1,32 +1,63 @@
 var data = {
 	fred_intro = {
 		image = null,
-		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "VISITFREDSHOMEINTRO", reqs = []}
 		],
 		options = [
+			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
+				bonus_effects = [
+					{code = 'progress_quest', value = 'civil_war_start', stage = 'stage3'},
+					{code = 'make_quest_location', value = 'quest_mages_fred'},
+					{code = 'update_city'},
+					]},
+			
+			]
+	},
+	
+	fred_bribe_take = {
+		image = null,
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "VISITFREDSHOME_IF_BRIBE", reqs = []}
+		],
+		common_effects = [
+			{code = 'money_change', operant = '+', value = 500},
+			{code = 'update_city'}
+			],
+		options = [
 			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
 	},
-
+	
+	
+	
 	fred_1 = {
 		image = null,
-		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED1", reqs = []}
 		],
 		options = [
-			{code = "fred_talk_1", text = "FINDFRED_OPTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
-			{code = 'quest_fight', text = "FINDFRED_OPTION2", reqs = [], args = 'lich_fight_easy', dialogue_argument = 1},
+			{code = "fred_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
 	},
+	fred_2 = {
+		image = 'fred_mercs',
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "FINDFRED2", reqs = []}
+		],
+		options = [
+			{code = "fred_talk_1", text = "FINDFRED_OPTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+			{code = 'quest_fight', text = "FINDFRED_OPTION2", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 1},
+		]
+	},
+	
 
 	fred_talk_1 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1", reqs = []}
@@ -35,13 +66,12 @@ var data = {
 			{code = "fred_talk_1_answer_1", text = "FINDFRED_TALK1_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "fred_talk_1_if_answer_10", text = "FINDFRED_TALK1_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 			{code = "fred_talk_fail", text = "FINDFRED_TALK1_QUESTION3", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
-			{code = "quest_fight", text = "FINDFRED_TALK1_QUESTION4", reqs = [], args = 'lich_fight_easy', dialogue_argument = 4},
+			{code = "quest_fight", text = "FINDFRED_TALK1_QUESTION4", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 4},
 		]
 	},
 
 	fred_talk_1_answer_1 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER1", reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'lt', value = 4}]},]},
@@ -56,8 +86,7 @@ var data = {
 	},
 
 	fred_talk_1_else = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ELSE", reqs = []}
@@ -71,32 +100,29 @@ var data = {
 	},
 
 	fred_talk_fail = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK_FAIL", reqs = []}
 		],
 		options = [
-			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'lich_fight_easy', dialogue_argument = 1},
+			{code = 'quest_fight', text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 1},
 		]
 	},
 
 	fred_talk_1_if_greg_1 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_IF_GREG1", reqs = []}
 		],
 		options = [
-			{code = "fred_talk_1_if_greg_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+			{code = "fred_got_no_fight", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 		]
 	},
-
-	fred_talk_1_if_greg_2 = {
-		image = null,
-		# character = "duncan",
+	
+	fred_got_no_fight = {
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_IF_GREG2", reqs = []}
@@ -107,9 +133,20 @@ var data = {
 		]
 	},
 	
+	fred_got_after_fight = {
+		image = 'fred',
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "FINDFRED_AFTERWIN", reqs = []}
+		],
+		options = [
+			{code = "fred_talk_1_if_answer_2", text = "FINDFRED_AFTERWIN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+			{code = "fred_talk_1_if_answer_3", text = "FINDFRED_AFTERWIN_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
+		]
+	},
+	
 	fred_talk_1_if_answer_2 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER2", reqs = []}
@@ -123,8 +160,7 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_3 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER3", reqs = []}
@@ -138,8 +174,7 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_4 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER4", reqs = []}
@@ -152,8 +187,7 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_5 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER5", reqs = []}
@@ -165,8 +199,7 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_6 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER6", reqs = []}
@@ -178,8 +211,7 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_7 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER7", reqs = []}
@@ -191,8 +223,7 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_8 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER8", reqs = []}
@@ -206,76 +237,95 @@ var data = {
 	},
 	
 	fred_talk_1_if_answer_9 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
+		common_effects = [
+			{code = 'decision', value = 'fred_bribe_taken'},
+			],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER9", reqs = []}
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [
+				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
+				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}]},
 		]
 	},
 
 	fred_talk_1_if_answer_10 = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_TALK1_ANSWER10", reqs = []}
 		],
 		options = [
-			{code = "fred_talk_bribe_taken", text = "FINFRED_BRIBE_OPTION1", reqs = [], dialogue_argument = 1},
+			{code = "fred_talk_bribe_taken", text = "FINFRED_BRIBE_OPTION1", reqs = [{type = "has_money", value = 300}], dialogue_argument = 1},
 			{code = "fred_talk_bribe_refused", text = "FINFRED_BRIBE_OPTION2", reqs = [], dialogue_argument = 2},
-			{code = "quest_fight", text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 3},
+			{code = "quest_fight", text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 3},
 		]
 	},
 
 	fred_talk_bribe_taken = {
 		image = null,
-		# character = "duncan",
+		common_effects = [
+			{code = 'money_change', operant = '-', value = 300},
+			{code = 'decision', value = 'bribed_mercs'},
+			],
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_BRIBE_TAKEN", reqs = []}
 		],
 		options = [
-			{code = "fred_talk_1_if_greg_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1},
+			{code = "fred_got_no_fight", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1},
 		]
 	},
 
 	fred_talk_bribe_refused = {
-		image = null,
-		# character = "duncan",
+		image = 'fred_mercs',
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "FINDFRED_BRIBE_REFUSED", reqs = []}
 		],
 		options = [
-			{code = "quest_fight", text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1},
+			{code = "quest_fight", text = "DIALOGUEFIGHTOPTION", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 1},
 		]
 	},
 	
 	fred_talk_line_end = {
-		image = null,
-		# character = "duncan",
+		image = "fred",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
-			{text = "FINDFRED_LINE_END", reqs = []}
+			{text = "FINDFRED_LINE_END_KILL2", reqs = []}
 		],
+		common_effects = [
+			{code = 'decision', value = 'capture_fred'},
+			],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			bonus_effects = [
+				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
+				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}]
+				},
 		]
 	},
 	
 	fred_talk_line_end_kill = {
-		image = null,
-		# character = "duncan",
+		image = 'fred',
 		tags = ["dialogue_scene", "master_translate"],
+		common_effects = [
+			{code = 'decision', value = 'kill_fred'},
+			],
 		text = [
-			{text = "FINDFRED_LINE_END", reqs = []}
+			{text = "FINDFRED_LINE_END_KILL", reqs = []}
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
+			bonus_effects = [
+				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
+				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}]
+				},
+			
 		]
 	},
 

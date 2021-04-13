@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/battlefield.png-f7beeeba599ea149c3540b48d450e6a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/scenes/battlefield.png"
+dest_files=[ "res://.import/battlefield.png-f7beeeba599ea149c3540b48d450e6a4.stex" ]
 
 [params]
 

@@ -12,7 +12,7 @@ var encounters = {
 	goblins_skirmish = {unittype = 'randomgroup', unitcode = 'goblins_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	ogre_skirmish = {unittype = 'randomgroup', unitcode = 'ogre_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
 	troll_skirmish = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
-	tribal_elves = {unittype = 'randomgroup', unitcode = 'troll_skirmish', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'tribal_elves_win', args = []}], lose_effects = []},
+	tribal_elves = {unittype = 'randomgroup', unitcode = 'tribal_elves', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'tribal_elves_win', args = []}], lose_effects = []},
 	
 	
 	lich_fight_easy = {unittype = 'randomgroup', unitcode = 'quest_lich_easy', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'lich_enc_win', args = []}], lose_effects = []},
@@ -32,8 +32,7 @@ var encounters = {
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'two_guards_lose', args = []}]},
 	
 	
-	
-	
+	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = '', args = []}], lose_effects = []},
 	
 	
 	
@@ -64,6 +63,8 @@ var enemygroups = {
 	goblins_skirmish = {reqs = [], units = {cave_goblin_melee = [2,3], cave_goblin_archer = [2,3], cave_goblin_mage = [0,1]}},
 	ogre_skirmish = {reqs = [], units = {cave_goblin_melee = [2,2], ogre_melee = [1,1]}},
 	troll_skirmish = {reqs = [], units = {cave_goblin_melee = [1,1], troll = [1,1], cave_goblin_archer = [1,1]}},
+	
+	tribal_elves = {reqs = [], units = {bandit_melee = [2,3], bandit_archer = [2,3]}},
 	
 	goblins_easy = {reqs = [], units = {cave_goblin_melee = [2,3]}},
 	goblins_easy2 = {reqs = [], units = {cave_goblin_melee = [1,3], cave_goblin_archer = [1,2]}},
@@ -101,6 +102,8 @@ var enemygroups = {
 	wrong_building_rebels = {reqs = [], units = {rebel_recruit = [2,2]}},
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	
+	
+	mercenary_fred_quest = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]},
 	
 	rebel_group_hideout1 = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]},
 	rebel_group_hideout2 = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]},

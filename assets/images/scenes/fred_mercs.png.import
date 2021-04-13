@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex"
+path="res://.import/fred_mercs.png-319956da73a43c72000e6fbc1b409666.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/spider.png"
-dest_files=[ "res://.import/spider.png-19b5c80f5af56d2f9106092fb402551d.stex" ]
+source_file="res://assets/images/scenes/fred_mercs.png"
+dest_files=[ "res://.import/fred_mercs.png-319956da73a43c72000e6fbc1b409666.stex" ]
 
 [params]
 

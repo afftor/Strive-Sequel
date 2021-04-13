@@ -1298,16 +1298,16 @@ var scenedict = {
 	spring = {
 		text = tr("SPRINGTEXT"), 
 		tags = ['dialogue_scene'],
-		image = '', 
+		image = 'spring', 
 		options = [
-			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL"), dialogue_argument = 1},
-			{code = 'spring_loot', reqs = [], text = tr("SPRING_CHANCE"), dialogue_argument = 2},
+			{code = 'spring_heal', reqs = [], text = tr("SPRING_HEAL_OPTION"), dialogue_argument = 1},
+			{code = 'spring_loot', reqs = [], text = tr("SPRING_LOOT_OPTION"), dialogue_argument = 2},
 		]
 		},
 	spring_heal = {
 		text = tr("SPRING_HEAL"), 
 		tags = [],
-		image = 'chest', 
+		image = 'spring', 
 		bonus_effects = [{code = 'affect_active_party', type = 'damage_percent', value = -33}],
 		options = [
 		{code = 'leave', reqs = [], text = "DIALOGUELEAVE"}
@@ -1317,7 +1317,7 @@ var scenedict = {
 		variations = [
 			{reqs = [{type = 'random', value = 66}],
 			text = tr("DIALOGUE_SPRING_LOOT"),
-			image = 'chest',
+			image = 'spring',
 			default_event_type = "loot",
 			common_effects = [{code = 'make_loot', type = 'tableloot', pool = [['easy_prisoner_reward_resource',1]] }],
 			tags = [''],
@@ -1327,7 +1327,7 @@ var scenedict = {
 			},
 			{reqs = [],
 			text = tr("DIALOGUE_SPRING_NO_LOOT"),
-			image = 'chest',
+			image = 'spring',
 			default_event_type = "loot",
 			common_effects = [],
 			tags = [''],
@@ -1338,10 +1338,10 @@ var scenedict = {
 			}
 		]},
 
-	tribal_elves = {text = tr("TRIBALELVES"), 
+	event_tribal_elves = {text = tr("TRIBALELVES"), 
 		args = {},
 		tags = [],
-		image = 'slavers_elf',
+		image = 'tribal_elves',
 		set_enemy = 'tribal_elves',
 		options = [
 		{code = 'fight_skirmish', reqs = [], text = tr("DIALOGUEFIGHTOPTION")},
@@ -1350,8 +1350,18 @@ var scenedict = {
 	tribal_elves_win = {text = tr("TRIBALELVES_WIN"), 
 	args = {},
 	tags = [''],
-	common_effects = [{code = 'make_scene_character', value = [{type = 'function', function = 'make_local_recruit', args = {}}]}],
-	image = 'slavers_elf',
+	common_effects = [
+		{code = 'make_scene_character', 
+			value = [
+			{type = 'function', function = 'make_local_recruit', 
+				args = {
+					races = [['DarkElf', 1]],
+					}
+			}
+			],
+		}
+	],
+	image = 'slave_decision',
 	options = [
 	{code = 'recruit_from_scene', reqs = [], text = tr("DIALOGUEKEEPSLAVEPERSON")},
 	{code = 'leave', reqs = [], text = tr("DIALOGUELEAVE")},
@@ -1459,13 +1469,23 @@ var dialogue_inits = {
 		},
 	],
 	mages_init = [
+		
 		{
 			code = 'default', 
-			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}],
-			target = 'final_operation_mages_1',
+			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage1'}], 
+			target = 'mages_after_election',
 			target_option = 1,
 		},
+		
+		#fred_return_to_myr_1
+#		{
+#			code = 'default', 
+#			name = "Ask for Help", 
+#			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}],
+#			target = 'final_operation_mages_1',
+#			target_option = 1,
+#		},
 		{
 			code = 'default', 
 			name = "Meet Leader", 
@@ -1493,6 +1513,7 @@ var dialogue_inits = {
 var quests = {
 	main_quest_loan = {
 		code = 'main_quest_loan',
+		summary = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home. ",
 		stages = {
 		stage0 = {code = 'start', name = 'The Loan', descript = 'You must have over 1000 gold by 14th day.'},
 		stage1 = {code = 'stage1', name = 'The Loan', descript = 'By 28th day have at least 3000 gold.'},
@@ -1502,6 +1523,7 @@ var quests = {
 	},
 	guilds_introduction = {
 		code = 'guilds_introduction',
+		summary = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.  ",
 		stages = {
 		start = {code = 'start', name = 'The Four Guilds', descript = 'Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.'},
 		stage1 = {code = 'stage1', name = 'First Step', descript = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board."},
@@ -1512,6 +1534,7 @@ var quests = {
 	},
 	fighters_election_quest = {
 		code = 'fighters_election_quest',
+		summary = "In your attempt to get Fighters Guild support for future election Duncan ordered you to acquire a perculiar item.",
 		stages = {
 			start = {code = 'start', name = "Rite of Passage", descript = "Obtain and deliver Lich's skull to Fighters Guild to make them support you for Mayor Elections. Duncan gave me a location where I can find one."},
 			stage2 = {code = 'stage2', name = "Rite of Passage", descript = "I've obtained a Lich's skull. With this Fighters Guild will provide their support to me. I should return to Duncan."}
@@ -1520,6 +1543,7 @@ var quests = {
 	},
 	mages_election_quest = {
 		code = 'mages_election_quest',
+		summary = "In your attempt to get Fighters Guild support for future election Myr gave you a personal order.",
 		stages = {
 			start = {code = 'start', name = "Dark Elf Witch", descript = "Myr asked me to visit her sister Xari nearby Aliron and retrieve her books."},
 			stage1 = {code = 'stage1', name = "Dark Elf Witch", descript = "To get Myr's books, Xari asked me to find her an elven boy and bring him to her."},
@@ -1528,25 +1552,27 @@ var quests = {
 	},
 	workers_election_quest = {
 		code = 'workers_election_quest',
+		summary = "In your attempt to get Fighters Guild support for future election Sigmund asked you to solve their issues with Fighters Guild.",
 		stages = {
 			start = {code = 'start', name = "Missing Payment", descript = "Sigmund, from Worker's Guild asked me to visit Duncan from Fighters Guild and retrieve the payment from previous shipment."},
 			stage1 = {code = 'stage1', name = "Missing Payment", descript = "Duncan told me that Reim was the courier, who should've brought Workers their payment. I should search for him at Aliron and figure out what happened."},
 			stage2 = {code = 'stage2', name = "Missing Payment", descript = "Reim refused to complete his duty and asked me to pay for him. I should return to Duncan."},
-			stage3 = {code = 'stage3', name = "Missing Payment", descript = "I've resolved the payment issue with Fighters Guild and it's time to return to Sigmund now.."},
+			stage3 = {code = 'stage3', name = "Missing Payment", descript = "I've resolved the payment issue with Fighters Guild and it's time to return to Sigmund now."},
 		},
 	},
 	
 	election_global_quest = {
 		code = 'election_global_quest',
+		summary = "According to City's electon process, any landowner is capable of becoming a mayor, as long as they are supported by the Guilds. ",
 		stages = {
-			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "According to City's electon process, any landowner is capable of becoming a mayor, as long as they are supported by the Guilds. Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
-			stage2 = {code = 'stage2', name = 'Story Complete', descript = "You've beaten current game's story. Thank you for playing! "}
+			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
 		},
 	
 	},
 
 	aliron_church_quest = {
 		code = 'aliron_church_quest',
+		summary = "You've met Ginny at her church in Aliron.",
 		stages = {
 			#start = {code ='start', name = 'Church Quest Name1', descript = "Church Quest Descript1"},
 			stage1 = {code ='stage1', name = 'Initiation', descript = "Ginny from Aliron's church of Celena asked you to brign her 25 Meat Soups."},
@@ -1555,22 +1581,101 @@ var quests = {
 	
 	},
 	
+	
+	civil_war_start = {
+		code = 'civil_war_start',
+		summary = "With the start of the civil war you were tasked to find out what happened to the magic barrier which was supposed to prevent the breach inside of city.",
+		stages = {
+			stage1 = {code = 'stage1', name = 'Betrayal', descript = 'Find Myr for further information '},
+			stage2 = {code = 'stage2', name = 'Betrayal', descript = """You've learned that the most likely culprit for the barrier failure is Fred, who went missing, visit his dormitory at Aliron. """},
+			stage3 = {code = 'stage3', name = 'Betrayal', descript = """You've learned that the most likely culprit for the barrier failure is Fred, who went missing, it seems he was supposed to meet with a person named Greg. Visit their location of the meeting. """},
+			stage4 = {code = 'stage4', name = 'Betrayal', descript = """As you are done with the Fred, it's time to report back to Myr"""},
+			stage5 = {code = 'stage5', name = 'Betrayal', descript = """As you are done with the Fred and Myr, it's time to return to Duncan"""},
+		}
+		
+	},
+	
+	civil_war_mines = {
+		code = "civil_war_mines",
+		summary = "As the war progresses, you received a message that Sigmund and the Workers Guild having some issues which can negatively affect the campaign.",
+		stages = {
+			stage1 = {code = 'stage1', name = 'Mine Company', descript = """Meet Sigmund at Workers Guild and find out what is the problem. """},
+			stage2 = {code = 'stage2', name = 'Mine Company', descript = """Sigmund told you that one of the mines has recently been overtaken by rebel group. You have to travel there and get the mine back to work. """},
+			stage3 = {code = 'stage3', name = 'Mine Company', descript = """You've taken care of the mine, it's time to return to Sigmund. """},
+			stage4 = {code = 'stage4', name = 'Mine Company', descript = """You've taken care of the mine and reported to Sigmund, it's time to see what new mission Duncan has for you. """},
+		},
+		
+		
+		
+	},
+	
 	lead_convoy_quest = {
 		code = 'lead_convoy_quest',
+		summary = "The Guilds prepare to take back a town from the rebels. The large siege is about to break through.",
 		stages = {
-			stage1 = {code ='stage1', name = 'Lead the convoy', descript = "Meet Fighters guild leader"},
-			stage2 = {code = 'stage2', name = 'Lead the convoy', descript = "Wait for the word from Duncan"},
-			stage2_1 = {code = 'stage2_1', name = 'Lead the convoy', descript = "Talk to Duncan"},
-			stage3 = {code = 'stage3', name = 'Lead the convoy', descript = "Meet Duncan at Aliron streets"}
+			stage1 = {code ='stage1', name = 'Guilds Strike Back', descript = """You should visit Duncan and learn your next goal."""},#in case player did not pick the mission instantly
+			stage2 = {code = 'stage2', name = 'Guilds Strike Back', descript = """Duncan ordered you to lead convoy of supplies for the prepared siege. You can find it at Aliron."""},
+			stage3 = {code = 'stage3', name = 'Guilds Strike Back', descript = """You must join Duncan in battle for the rebel occupied town."""},
 		},
 	},
 	
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
 		stages = {
-			stage1 = {code ='stage1', name = 'Divine symbol', descript = "Forge divine symbol for Ginny"},
+			stage1 = {code ='stage1', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
+			
+			Duncan ordered you to find a way to dispel the dome. Myr suggested you to visit religious institutions nearby, perhaps churh of Celena at Aliron can give you some ideas."""},
+			stage2 = {code ='stage2', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
+			
+			Ginny at Aliron's church told you to make a Divine Symbol for her. This should help you to get past the barrier."""},
+			stage3 = {code ='stage3', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
+			
+			As you've received the Divine Symbol from Ginny, it's time to return to Duncan."""},
+			stage4 = {code ='stage4', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
+			
+			Duncan told you to get rid of the champion and the barrier protecting the city. Assemble the team and move in."""},
+		},
+		
+	},
+	final_operation = {
+		code = 'final_operation',
+		summary = "While victorious during the siege, you still couldn't get the rebels' leaders. However, it seems Duncan has the plan for it. ",
+		stages = {
+			stage1 = {code ='stage1', name = 'Rebel Hunting', descript = """You should visit Duncan and learn your next goal."""},
+			stage2 = {code = 'stage2', name = 'Rebel Hunting', descript = """Duncan prepared attack on the rebel's hideout. You should join him there."""},
 		},
 	},
+	
+	princess_search = {
+		code = 'princess_search',
+		summary = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive. ",
+		stages = {
+			stage1 = {code ='stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
+			stage2 = {code = 'stage2', name = 'Chasing the Princes', descript = """Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her."""},
+			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
+			stage4 = {code = 'stage4', name = 'Chasing the Princes', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
+			stage5 = {code = 'stage5', name = 'Chasing the Princes', descript = """You've captured the princess herself. It's time to bring her back to Duncan."""},
+			
+		},
+	},
+	
+	princess_persuasion = {
+		code = 'princess_persuasion',
+		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputaiton, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
+		stages = {
+			stage1 = {code ='stage1', name = 'Distressed Damsel', descript = """You've been allowed to persuade Anastasia to succumb to the guilds. Find a way to do so, or agree to her execution."""},
+			
+		},
+	},
+	
+	final_words = {
+		code = 'final_words',
+		summary = "You've finished playing through the existing main story content. Thank you and please wait until next release",
+		stages = {
+			stage1 = {code = 'stage1', name = "Thank you for playing", descript = ""}
+		},
+		
+	}
 	
 }
 

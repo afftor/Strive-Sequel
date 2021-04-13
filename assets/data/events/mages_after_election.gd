@@ -1,5 +1,5 @@
 var data = {
-    mages_after_election = {
+	mages_after_election = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -10,9 +10,9 @@ var data = {
 			{code = "mages_after_election_answer1", text = "MAGESAFTERELLECTION1_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
 			{code = "mages_after_election_answer2", text = "MAGESAFTERELLECTION1_QUESTION2", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 		]
-    },
-    
-    mages_after_election_answer1 = {
+	},
+	
+	mages_after_election_answer1 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -24,9 +24,9 @@ var data = {
 			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION4", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION5", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 		]
-    },
-    
-    mages_after_election_answer2 = {
+	},
+	
+	mages_after_election_answer2 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -38,9 +38,9 @@ var data = {
 			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION4", reqs = [], dialogue_argument = 2, type = "next_dialogue"},
 			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION5", reqs = [], dialogue_argument = 3, type = "next_dialogue"},
 		]
-    },
-    
-    mages_after_election_answer3 = {
+	},
+	
+	mages_after_election_answer3 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -54,9 +54,9 @@ var data = {
 			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION7", reqs = [], dialogue_argument = 5, type = "next_dialogue", remove_after_first_use = true},
 			{code = "mages_after_election_answer6", text = "MAGESAFTERELLECTION1_QUESTION8", reqs = [], dialogue_argument = 6, type = "next_dialogue"},
 		]
-    },
-    
-    mages_after_election_answer6 = {
+	},
+	
+	mages_after_election_answer6 = {
 		image = null,
 		# character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
@@ -66,5 +66,5 @@ var data = {
 		options = [
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
 		]
-    },
+	},
 }

@@ -1,9 +1,43 @@
 var data = {
+	fred_return_to_myr_1 = {
+		variations = [
+			# Var 1
+			{reqs = [{type = 'decision', value = 'capture_fred', check = true}],
+			image = null,
+			character = "myr",
+			tags = ['dialogue_scene'],
+			text = [{text = "RETURNTOMYR_IF_FRED", reqs = []}],
+			options = [
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
+			},
+			# Var 2
+			{reqs = [{type = 'decision', value = 'kill_fred', check = true}],
+			image = null,
+			character = "myr",
+			tags = ['dialogue_scene'],
+			text = [{text = "RETURNTOMYR_IF_NOT_FRED", reqs = []}],
+			options = [
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
+			},
+			# Var 3
+			{reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}],
+			image = null,
+			character = "myr",
+			tags = ['dialogue_scene'],
+			text = [{text = "RETURNTOMYR", reqs = []}],
+			options = [
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
+			},
+		]
+	},
+	
+	
 	fred_return_to_duncan_1 = {
 		variations = [
 			# Var 1
 			{reqs = [{type = 'decision', value = 'brought_fred', check = true}],
 			image = null,
+			character = "duncan",
 			tags = ['dialogue_scene'],
 			text = [{text = "RETURNTODUNCAN_IF_FRED", reqs = []}],
 			options = [
@@ -13,6 +47,7 @@ var data = {
 			# Var 2
 			{reqs = [{type = 'decision', value = 'kill_fred', check = true}],
 			image = null,
+			character = "duncan",
 			tags = ['dialogue_scene'],
 			text = [{text = "RETURNTODUNCAN_IF_NOT_FRED", reqs = []}],
 			options = [
@@ -23,6 +58,7 @@ var data = {
 			# Var 3
 			{reqs = [], #{type = 'decision', value = 'bribe_from_fred_taken', check = true}
 			image = null,
+			character = "duncan",
 			tags = ['dialogue_scene'],
 			text = [{text = "RETURNTODUNCAN1", reqs = []}],
 			options = [
@@ -33,7 +69,7 @@ var data = {
 
 	fred_return_to_duncan_2 = {
 		image = null,
-		# character = "duncan",
+		character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "RETURNTODUNCAN2", reqs = []}
@@ -46,7 +82,7 @@ var data = {
 	
 	fred_return_to_duncan_answer_1 = {
 		image = null,
-		# character = "duncan",
+		character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "RETURNTODUNCAN_ANSWER1", reqs = []}
@@ -59,7 +95,7 @@ var data = {
 
 	fred_return_to_duncan_answer_2 = {
 		image = null,
-		# character = "duncan",
+		character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "RETURNTODUNCAN_ANSWER2", reqs = []}
