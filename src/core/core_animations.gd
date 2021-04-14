@@ -95,26 +95,26 @@ func HealTextFly(node):
 	FadeAnimation(node, 0.2, 1)
 	tween.start()
 
-func OpenAnimation(node):
+func OpenAnimation(node, speed = 0.2):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
 	node.visible = true
 	var tweennode = input_handler.GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tweennode.start()
-	yield(get_tree().create_timer(0.15), 'timeout')
+	yield(get_tree().create_timer(speed - 0.05), 'timeout')
 	BeingAnimated.erase(node)
 	node.raise()
 
-func CloseAnimation(node):
+func CloseAnimation(node, speed = 0.2):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 0.2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tweennode.start()
-	yield(get_tree().create_timer(0.15), 'timeout')
+	yield(get_tree().create_timer(speed - 0.05), 'timeout')
 	node.visible = false
 	BeingAnimated.erase(node)
 
@@ -143,14 +143,22 @@ func OldCloseAnimation(node):
 	BeingAnimated.erase(node)
 
 func FadeAnimation(node, time = 0.3, delay = 0):
+	#if BeingAnimated.has(node) == true:
+	#	return
+	#BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tweennode.start()
+	#BeingAnimated.erase(node)
 
 func UnfadeAnimation(node, time = 0.3, delay = 0):
+	#if BeingAnimated.has(node) == true:
+	#	return
+	#BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
 	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, delay)
 	tweennode.start()
+	#BeingAnimated.erase(node)
 
 
 func UnshadeAnimation(node, time = 0.3, delay = 0):

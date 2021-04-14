@@ -9,6 +9,7 @@ var previous_text = ''
 var base_text_size
 var base_text_position
 var doing_transition = false
+var wait_for = 0
 
 signal TransitionFinished
 
@@ -60,12 +61,17 @@ func open(scene):
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
 	
+	if wait_for != 0:
+		ResourceScripts.core_animations.OpenAnimation(self, wait_for) 
+		wait_for = 0
+	
 	handle_scene_transition_fx(scene)
 	if doing_transition:
 		#print_debug("waiting")
 		yield(self, "TransitionFinished")
 		#print_debug("finished WAIT")
 		doing_transition = false
+	
 	update_scene_characters()
 	$CharacterImage.hide()
 	if get_node_or_null("CharacterImage2") != null:
@@ -88,7 +94,6 @@ func open(scene):
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
 	
 	show()
-
 
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)

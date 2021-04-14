@@ -253,7 +253,7 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH7_ANY", reqs = []},
 		],
 		options = [
-			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
+			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5},
 		],
 	},
 
@@ -278,7 +278,8 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH9", reqs = []}
 		],
 		options = [
-			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 1}
+			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', 
+			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 2}
 		]
 	},
 	
