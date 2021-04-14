@@ -62,7 +62,7 @@ func open(scene):
 		scene.text = [{text = scene.text, reqs = []}]
 	
 	if wait_for != 0:
-		ResourceScripts.core_animations.OpenAnimation(self, wait_for) 
+		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN) 
 		wait_for = 0
 	
 	handle_scene_transition_fx(scene)

@@ -95,24 +95,24 @@ func HealTextFly(node):
 	FadeAnimation(node, 0.2, 1)
 	tween.start()
 
-func OpenAnimation(node, speed = 0.2):
+func OpenAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
 	node.visible = true
 	var tweennode = input_handler.GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,0), Color(1,1,1,1), speed, transition_type, ease_type)
 	tweennode.start()
 	yield(get_tree().create_timer(speed - 0.05), 'timeout')
 	BeingAnimated.erase(node)
 	node.raise()
 
-func CloseAnimation(node, speed = 0.2):
+func CloseAnimation(node, speed = 0.2, transition_type = Tween.TRANS_LINEAR, ease_type = Tween.EASE_IN_OUT):
 	if BeingAnimated.has(node) == true:
 		return
 	BeingAnimated.append(node)
 	var tweennode = input_handler.GetTweenNode(node)
-	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), speed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tweennode.interpolate_property(node, 'modulate', Color(1,1,1,1), Color(1,1,1,0), speed, transition_type, ease_type)
 	tweennode.start()
 	yield(get_tree().create_timer(speed - 0.05), 'timeout')
 	node.visible = false
