@@ -3996,15 +3996,15 @@ The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 
-	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
+- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time""",
 	LOOKING_FOR_PRINCESS_OPTION_THINK = """I'll think about""",
 	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard *attack*""",
 	LOOKING_FOR_PRINCESS_14 = """- Yeah, no shit, consider this a retribution for attacking me. Take it or leave, I don't care.""",
 	LOOKING_FOR_PRINCESS_15 = """Same as the last time the kobold quickly runs away into one of the small holes leaving you with nothing. You should probably return the other day.""",
 	LOOKING_FOR_PRINCESS_16 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
-	
-	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
+
+- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_18 = """The beating will be your payment *attack*""",
 	LOOKING_FOR_PRINCESS_17 = """This time you've went slightly ahead of the kobold, yet it wasn't enough to stop him from getting away. It's only at the last moment he thumbled on his way, almost falling, but regaining his composure. This, however, made him drop the bracelet behind.
 	
