@@ -76,18 +76,92 @@ var data = {
 		},],
 	},
 	
+	# =Search
 	looking_for_princess_5 = {
-		image = null, tags = ['dialogue_scene'],
-		text = [{text = "LOOKING_FOR_PRINCESS_9", reqs = [], previous_dialogue_option = 2}, 
-		{text = "", previous_dialogue_option = 4}],
-		options = [ {
-			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_10", reqs = [], dialogue_argument = 4, remove_after_first_use = true
+		variations = [{
+			# First time seeing
+			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = false},
+			{type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_9'}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "LOOKING_FOR_PRINCESS_9", previous_dialogue_option = 2}, 
+			{text = "LOOKING_FOR_PRINCESS_10", previous_dialogue_option = 4}],
+			options = [ {
+				code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_10", reqs = [], dialogue_argument = 4, remove_after_first_use = true
+			}, {
+				code = 'looking_for_princess_6', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
+			}, {
+				code = '', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [], dialogue_argument = 2 
+			}, {
+				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_13", reqs = [], dialogue_argument = 3
+			},],
 		}, {
-			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
+			# Previously seen and BraceletPreviousAttack = false
+			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = false}, 
+			{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'lt', value = 1, check = true}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "LOOKING_FOR_PRINCESS_12"}],
+			options = [ {
+				code = '', text = "LOOKING_FOR_PRINCESS_OPTION_14", reqs = [], dialogue_argument = 2 
+			}, {
+				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3
+			},],
 		}, {
-			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_12", reqs = [], dialogue_argument = 2 
+			# Previously seen and BraceletPreviousAttack = true and attempts >= 1
+			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = true}, 
+			{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 1, check = true}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "LOOKING_FOR_PRINCESS_13"}],
+			common_effects = [{code = 'remove_decision', name = 'BraceletPreviousAttack'}], 
+			options = [ {
+				code = 'looking_for_princess_7', text = "LOOKING_FOR_PRINCESS_OPTION_15", reqs = [], 
+				dialogue_argument = 9, remove_after_first_use = true
+			}, {
+				code = '', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [], dialogue_argument = 3
+			}, {
+				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
+			}, {
+				code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_17", reqs = [], dialogue_argument = 3,
+				bonus_effects = [{code = 'dialogue_counter', name = 'BraceletAttackAttempt', op = '+'}]
+			}],
 		}, {
-			code = 'looking_for_princess_5', text = "LOOKING_FOR_PRINCESS_OPTION_13", reqs = [], dialogue_argument = 3
-		},],
+			# Previously seen and BraceletPreviousAttack = true and attempts >= 2
+			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = true}, 
+			{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 2, check = true}],
+			image = null, tags = ['dialogue_scene'],
+			text = [{text = "LOOKING_FOR_PRINCESS_16"}],
+			common_effects = [{code = 'remove_decision', name = 'BraceletPreviousAttack'}], 
+			options = [ {
+				code = '', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [], dialogue_argument = 3
+			}, {
+				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
+			}, {
+				code = 'looking_for_princess_8', text = "LOOKING_FOR_PRINCESS_OPTION_18", reqs = [], dialogue_argument = 3,
+				bonus_effects = [{}]
+			}],
+		}
+		]
 	},
+	
+	#TODO block search for 1 day
+	looking_for_princess_6 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "LOOKING_FOR_PRINCESS_11", reqs = []}],
+		common_effects = [{code = 'dialogue_counter', name = 'BraceletAttackAttempt', op = '+'}, 
+		{code = 'decision', value = 'BraceletPreviousAttack'}], # the fact that we tried to attack kobold
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1 
+		}],
+	},
+	
+	looking_for_princess_7 = {
+		image = null, tags = ['dialogue_scene'],
+		text = [{text = "LOOKING_FOR_PRINCESS_14", reqs = []}], 
+		options = [ {
+			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [], dialogue_argument = 3
+		}, {
+			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
+		}, {
+			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_17", reqs = [], dialogue_argument = 3
+		}],
+	}
 }

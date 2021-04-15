@@ -744,8 +744,8 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
-		input_handler.interactive_message('servants_election_finish5', '', {})
-		globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
+		input_handler.interactive_message('start_finale', '', {})
+		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
