@@ -41,10 +41,10 @@ var data = {
 			{type = 'decision', value = 'mages_election_support', check = false}], dialogue_argument = 2, type = 'next_dialogue'},
 		{code = 'mages_election4', text = "MAGESINTRODUCTION2REPLY3", reqs = [{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage2'}], dialogue_argument = 3, type = 'next_dialogue'},
 		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3},
+		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'active_quest_stage', value = 'looking_for_princess_quest', stage = 'bracelet_found'}], dialogue_argument = 6},
 		
 		
-		
-		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4,  bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	mages_join = {

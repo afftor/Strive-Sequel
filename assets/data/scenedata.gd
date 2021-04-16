@@ -1653,6 +1653,15 @@ var quests = {
 		},
 	},
 	
+	looking_for_princess_quest = {
+		code = 'looking_for_princess_quest',
+		stages = {
+			wait_message = {code = 'wait_message', name = "", descript = """"""},
+			go_for_search = {code = 'go_for_search', name = "", descript = """"""},
+			bracelet_found = {code = 'bracelet_found', name = "", descript = """"""},
+		}
+	},
+	
 	princess_search = {
 		code = 'princess_search',
 		summary = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive. ",
