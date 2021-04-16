@@ -210,7 +210,7 @@ var data = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_18", reqs = []} ],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = []
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}]
 			}
 		],
 	},

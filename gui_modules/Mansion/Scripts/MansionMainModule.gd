@@ -744,12 +744,7 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
-		input_handler.interactive_message('looking_for_princess_4', '', {})
-		input_handler.interactive_message('looking_for_princess_5', '', {})
-		input_handler.interactive_message('looking_for_princess_5', '', {})
-		input_handler.interactive_message('looking_for_princess_5', '', {})
-		input_handler.interactive_message('looking_for_princess_5', '', {})
-		input_handler.interactive_message('looking_for_princess_5', '', {})
+		input_handler.interactive_message('fred_return_to_duncan_2', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

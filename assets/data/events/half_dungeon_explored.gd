@@ -193,7 +193,7 @@ var data = {
 			image = null, character = "kurdan", tags = ['dialogue_scene'],
 			text = [ {text = "HALF_DUNGEON_EXPLORED_7", reqs = []} ],
 			options = [ {
-				code = 'half_dungeon_explored_end',
+				code = 'half_dungeon_explored_end_left',
 				text = "HALF_DUNGEON_EXPLORED_OPTION_6", reqs = [], dialogue_argument = 6
 				}, {
 				code = 'half_dungeon_explored_5',

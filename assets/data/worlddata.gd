@@ -1723,7 +1723,8 @@ var pregen_characters = {
 		personality = 'serious',
 		food_like = 'meat',
 		food_hate = ['vege'],
-		classes = ['scholar','shaman']
+		classes = ['scholar','shaman'],
+		tags = [],
 	},
 	Aire = {
 		code = 'aire',
