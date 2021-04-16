@@ -863,6 +863,8 @@ func check_event_reqs(reqs):
 				check = input_handler.operate(i.operant, current_stage, i.value)
 			'dungeon_complete':
 				check = i.value == input_handler.exploration_node.check_dungeon_end()
+			'value_check':
+				check = valuecheck(i)
 		if check == false:
 			break
 	return check

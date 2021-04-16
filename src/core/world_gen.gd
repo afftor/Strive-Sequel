@@ -276,7 +276,9 @@ func make_location(code, area):
 		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_complete_loot_' + location.difficulty, reqs = []})
 	if location.has('gather_limit_resources'):
 		location.scriptedevents.append({trigger = 'dungeon_complete', event = 'custom_event', args = 'event_dungeon_unlock_resources', reqs = []})
-	
+	if location.has('scripteventdata'):
+		for script in location.scripteventdata:
+			location.scriptedevents.append(script)
 	
 	#location.scriptedevents.append({trigger = 'complete_location', event = 'finish_quest_dungeon', reqs = [], args = {}})
 	ResourceScripts.game_world.locationcounter += 1

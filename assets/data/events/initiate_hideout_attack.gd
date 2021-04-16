@@ -6,7 +6,7 @@ var data = {
 				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_1",
-				reqs = [],
+				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}],
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',
@@ -22,7 +22,7 @@ var data = {
 				character = "duncan",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "INITIATE_HIDEOUT_ATTACK_2",
-				reqs = [],
+				reqs = [{type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_2'}],
 				options = [
 					{
 						code = 'initiate_hideout_attack_6',

@@ -16,7 +16,8 @@ var data = {
 				code = 'pre_final_boss_1',
 				text = "PRE_FINAL_BOSS_OPTION_3", reqs = [], dialogue_argument = 3
 			} ]
-			}, {
+		}, 
+			{
 			reqs = [{type = 'decision', value = 'KurdanFollowing', check = false}],
 			image = null, tags = ['dialogue_scene'], character = "demon_female",
 			text = [ {text = "PRE_FINAL_BOSS_START", reqs = [], previous_dialogue_option = 0},
