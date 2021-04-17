@@ -4060,11 +4060,13 @@ Anastasia: - They will kill me, like they killed my dad. And you betrayed, I tho
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
 	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth*""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss it""",
-	LOOKING_FOR_PRINCESS_31 = """Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
+	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
+
+Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
 
 Priestess: - I'll excuse this display of misbehave for now. Now leave and remember our agency in future. 
 
-Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you. """,
+Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you.""",
 	LOOKING_FOR_PRINCESS_32 = """Anastasia: - Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-
 
 *Slap*

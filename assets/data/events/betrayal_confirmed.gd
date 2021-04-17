@@ -244,14 +244,14 @@ var data = {
 	
 	divine_symbol_11 = {
 		variations = [ {
-			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 50}]}],
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 50}]}],
 			image = null, tags = ['dialogue_scene'],
 			text = [{text = "DIVINE_SYMBOL_12", reqs = []}],
 			options = [ {
 				code = 'divine_symbol_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 			}],
 		}, {
-			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 50}]}],
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 50}]}],
 			image = null, tags = ['dialogue_scene'],
 			text = [{text = "DIVINE_SYMBOL_13", reqs = []}],
 			options = [ {
@@ -558,7 +558,7 @@ var data = {
 		
 		common_effects = [{code = 'add_timed_event', value = "message_before_looking_operation", 
 		args = [{type = 'add_to_date', date = [10,10], hour = 1}]}, 
-		{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'wait_message'}],
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage0'}],
 		
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,

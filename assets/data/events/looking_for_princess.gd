@@ -1,6 +1,6 @@
 var data = {
 	message_before_looking_operation = {
-		common_effects = [{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'meet_duncan'}], #adds option to talk to duncan in intoduction
+		common_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}], #adds option to talk to duncan in intoduction
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "LOOKING_FOR_PRINCESS_START", reqs = []}],
 		options = [ {
@@ -19,11 +19,11 @@ var data = {
 			{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
-				bonus_effects = [{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}]
+				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}]
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
-				{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}, {code = "update_guild"}]
+				{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}]
 			}], 
 		}, {
 			reqs = [{type = 'decision', value = 'PlayerFrontline', check = false}],
@@ -34,11 +34,11 @@ var data = {
 			common_effects = [{code = 'money_change', operant = '+', value = 760}],
 			options = [ {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_1", reqs = [], dialogue_argument = 3,
-				bonus_effects = [{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}]
+				bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}]
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_2", reqs = [], dialogue_argument = 4,
 				bonus_effects = [{code = "decision", value = "LookingForPrincessAccess"},
-				{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'go_for_search'}, {code = "update_guild"}]
+				{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}, {code = "update_guild"}]
 			}], 
 		}
 		]
@@ -189,7 +189,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_17", reqs = []}],
 		common_effects = [{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
-		{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'bracelet_found'}],
+		{code = 'decision', value = 'bracelet_found'}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
 		}],
@@ -201,7 +201,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_18", reqs = []}],
 			common_effects = [{code = 'money_change', operant = '-', value = 1000},
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
-			{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'bracelet_found'}],
+			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
 				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
 			}],
@@ -210,7 +210,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_18", reqs = []}],
 			common_effects = [{code = 'money_change', operant = '-', value = 1500},
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
-			{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'bracelet_found'}],
+			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
 				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
 			}],
@@ -219,7 +219,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_18", reqs = []}],
 			common_effects = [{code = 'money_change', operant = '-', value = 500},
 			{code = 'material_change', operant = '+', material = 'princess_bracelet', value = 1},
-			{code = 'progress_quest', value = 'looking_for_princess_quest', stage = 'bracelet_found'}],
+			{code = 'decision', value = 'bracelet_found'}],
 			options = [ {
 				code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_active_location'}]
 			}],
@@ -227,6 +227,108 @@ var data = {
 	},
 	
 	looking_for_princess_mages = {
-		
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "amelia", character2 = "myr",
+		text = [{text = "LOOKING_FOR_PRINCESS_19", reqs = []}],
+		options = [ {
+			code = 'looking_for_princess_mages_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	#TODO Leave to town
+	looking_for_princess_mages_1 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = "amelia", character2 = "myr",
+		text = [{text = "LOOKING_FOR_PRINCESS_20", reqs = []}],
+		options = [ {
+			code = 'looking_for_princess_mages_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_mages_2 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [],
+		text = [{text = "LOOKING_FOR_PRINCESS_21", reqs = []}], 
+		common_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_1 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "LOOKING_FOR_PRINCESS_22", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage3'}]},
+		{text = "LOOKING_FOR_PRINCESS_23", reqs = [{type = 'decision', value = 'interrogation_success', check = true}]}], 
+		options = [ {
+			code = 'looking_for_princess_elven_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_2 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_24", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_3', text = "LOOKING_FOR_PRINCESS_OPTION_20", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_3', text = "LOOKING_FOR_PRINCESS_OPTION_21", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		},{
+			code = 'looking_for_princess_elven_3', text = "LOOKING_FOR_PRINCESS_OPTION_22", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		},],
+	},
+	
+	looking_for_princess_elven_3 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_25", reqs = [], previous_dialogue_option = 1}, 
+		{text = "LOOKING_FOR_PRINCESS_26", reqs = [], previous_dialogue_option = 2}, 
+		{text = "LOOKING_FOR_PRINCESS_27", reqs = [], previous_dialogue_option = 3}, ], 
+		options = [ {
+			code = 'looking_for_princess_elven_4', text = "LOOKING_FOR_PRINCESS_OPTION_23", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_4', text = "LOOKING_FOR_PRINCESS_OPTION_24", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		},{
+			code = 'looking_for_princess_elven_4', text = "LOOKING_FOR_PRINCESS_OPTION_25", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		},],
+	},
+	
+	looking_for_princess_elven_4 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "LOOKING_FOR_PRINCESS_28", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_5 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		text = [{text = "LOOKING_FOR_PRINCESS_29", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_6', text = "LOOKING_FOR_PRINCESS_OPTION_26", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_6', text = "LOOKING_FOR_PRINCESS_OPTION_27", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		},{
+			code = 'looking_for_princess_elven_6', text = "LOOKING_FOR_PRINCESS_OPTION_28", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		},],
+	},
+	
+	looking_for_princess_elven_6 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		text = [{text = "LOOKING_FOR_PRINCESS_30", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_7', text = "LOOKING_FOR_PRINCESS_OPTION_29", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_7', text = "LOOKING_FOR_PRINCESS_OPTION_30", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		},{
+			code = 'looking_for_princess_elven_7', text = "LOOKING_FOR_PRINCESS_OPTION_31", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		},],
+	},
+	
+	looking_for_princess_elven_7 = {
+		variations = [ 
+			{
+				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
+				image = null, tags = ['dialogue_scene'],
+				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}], 
+				options = [ {
+					code = 'looking_for_princess_elven_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				}],
+			},
+		]
 	},
 }

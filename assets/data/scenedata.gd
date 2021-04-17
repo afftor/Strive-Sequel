@@ -1388,7 +1388,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'active_quest_stage', value = 'looking_for_princess_quest', stage = 'meet_duncan'}], 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], 
 			target = 'looking_for_princess_1',
 			target_option = 3,
 		},
@@ -1653,20 +1653,12 @@ var quests = {
 		},
 	},
 	
-	looking_for_princess_quest = {
-		code = 'looking_for_princess_quest',
-		stages = {
-			wait_message = {code = 'wait_message', name = "", descript = """"""},
-			go_for_search = {code = 'go_for_search', name = "", descript = """"""},
-			bracelet_found = {code = 'bracelet_found', name = "", descript = """"""},
-		}
-	},
-	
 	princess_search = {
 		code = 'princess_search',
 		summary = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive. ",
 		stages = {
-			stage1 = {code ='stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
+			stage0 = {code = 'stage0', name = 'Chasing the Princess', descript = """Wait for further instructions"""},
+			stage1 = {code = 'stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
 			stage2 = {code = 'stage2', name = 'Chasing the Princes', descript = """Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her."""},
 			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
 			stage4 = {code = 'stage4', name = 'Chasing the Princes', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
