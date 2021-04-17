@@ -4067,6 +4067,9 @@ Before she could say any more, you've jumped at Anastasia and delivered her face
 Priestess: - I'll excuse this display of misbehave for now. Now leave and remember our agency in future. 
 
 Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you.""",
+	LOOKING_FOR_PRINCESS_32_f = """{color=red|Failure}
+
+""",
 	LOOKING_FOR_PRINCESS_32 = """Anastasia: - Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-
 
 *Slap*
@@ -4077,7 +4080,9 @@ Before you managed to reach Anastasia, the priestess herself gave her a loud sla
 	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough""",
 	LOOKING_FOR_PRINCESS_33 = """Priestess: - Silence, [race]!
 	
-Her sudden outburst made you back off.""",
+Her sudden outburst made you back off.
+
+""",
 	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her being clearly enraged.
 
 Priestess: - I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have your tongue cut out already. 
@@ -4096,9 +4101,15 @@ Priestess: - She shall be executed regardless of your needs. This is the law and
 	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric""",
 	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this""",
 	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands""",
-	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.""",
-	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.""",
-	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.""",
+	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.
+
+""",
+	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.
+
+""",
+	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.
+
+""",
 	LOOKING_FOR_PRINCESS_40 = """You notice that Zephyra cautiously signals you to let her negotiate on your behalf.""",
 	LOOKING_FOR_PRINCESS_OPTION_40 = """As her guardian I request to take punishment for her""",
 	LOOKING_FOR_PRINCESS_OPTION_41 = """*Allow Zephyra to negotiate*""",

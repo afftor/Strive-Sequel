@@ -248,7 +248,7 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_21", reqs = []}], 
 		common_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
 		}],
 	},
 	
@@ -326,9 +326,73 @@ var data = {
 				image = null, tags = ['dialogue_scene'],
 				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}], 
 				options = [ {
-					code = 'looking_for_princess_elven_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
 				}],
+			}, {
+				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}],
+				image = null, tags = ['dialogue_scene'],
+				text = [{text = "LOOKING_FOR_PRINCESS_32_f", reqs = [], previous_dialogue_option = 2},
+				{text = "LOOKING_FOR_PRINCESS_32", reqs = []}], 
+				options = [ {
+					code = 'looking_for_princess_elven_8', text = "LOOKING_FOR_PRINCESS_OPTION_32", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+				}, {
+					code = 'looking_for_princess_elven_8', text = "LOOKING_FOR_PRINCESS_OPTION_33", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+				},{
+					code = 'looking_for_princess_elven_8', text = "LOOKING_FOR_PRINCESS_OPTION_34", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+				},],
 			},
 		]
+	},
+	
+	looking_for_princess_elven_8 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		text = [{text = "LOOKING_FOR_PRINCESS_33", reqs = [], previous_dialogue_option = 1},
+		{text = "LOOKING_FOR_PRINCESS_34", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_9', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_9 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		text = [{text = "LOOKING_FOR_PRINCESS_35", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_10', text = "LOOKING_FOR_PRINCESS_OPTION_35", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_36", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, ],
+	},
+	
+	looking_for_princess_elven_10 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_36", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_11', text = "LOOKING_FOR_PRINCESS_OPTION_37", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_11', text = "LOOKING_FOR_PRINCESS_OPTION_38", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_11', text = "LOOKING_FOR_PRINCESS_OPTION_39", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, ],
+	},
+	
+	#TODO Check slave reqs
+	#TODO change location (mansion) to forests
+	looking_for_princess_elven_11 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_37", reqs = [], previous_dialogue_option = 1},
+		{text = "LOOKING_FOR_PRINCESS_38", reqs = [], previous_dialogue_option = 2},
+		{text = "LOOKING_FOR_PRINCESS_39", reqs = [], previous_dialogue_option = 3},
+		{text = "LOOKING_FOR_PRINCESS_40", reqs = [
+				{type = "location_has_specific_slaves", value = 1, location = 'mansion', reqs = [
+					{code = 'name', value = 'Zephyra'}]}] }], 
+		options = [ {
+			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_40", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_11', text = "LOOKING_FOR_PRINCESS_OPTION_41", reqs = [
+				{type = "location_has_specific_slaves", value = 1, location = 'mansion', reqs = [
+					{code = 'name', value = 'Zephyra'}]}], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_42", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}, ],
 	},
 }
