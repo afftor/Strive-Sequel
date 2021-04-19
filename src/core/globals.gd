@@ -1069,6 +1069,14 @@ func common_effects(effects):
 						'fixed_date':
 							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
 							newevent.reqs += newreq
+						'add_to_hour':
+							var date = ResourceScripts.game_globals.date
+							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
+							if hour > 24: hour = hour-24
+							if ResourceScripts.game_globals.hour == 23:
+								date += 1
+							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
+							newevent.reqs += newreq
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'remove_timed_events':
 				var array = []
@@ -1157,6 +1165,12 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
+			'background_noise':
+				match i.value:
+					'stop':
+						input_handler.StopBackgroundSound()
+					'resume':
+						input_handler.ResumeBackgroundSound()
 			'update_location':
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
@@ -1229,6 +1243,8 @@ func common_effects(effects):
 				remove_location(i.value)
 			'set_music':
 				input_handler.SetMusic(i.value)
+			'play_sound':
+				input_handler.PlaySound(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
 				globals.return_to_main_menu()
@@ -1243,19 +1259,6 @@ func common_effects(effects):
 					k.affect_char(i)
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
-			'set_bg':
-				var image
-				if i.progress_based:
-					image = get_image_based_on_progress(i.value)
-				else:
-					image = images.backgrounds[i.value]
-				gui_controller.dialogue.get_node("EventBackground").show()
-				gui_controller.dialogue.get_node("EventBackground").texture = image
-				if i.save_to_gallery:
-					if i.has("scene_type") && i.scene_type == "ero_scene":
-						input_handler.update_progress_data("ero_scenes", image)
-					elif i.has("scene_type") && i.scene_type == "story_scene":
-						input_handler.update_progress_data("story_scenes", image)
 			'dialogue_counter':
 				gui_controller.dialogue.operate_counter(i.name, i.op)
 			'unlock_class':
@@ -1303,17 +1306,6 @@ func get_nquest_for_rep(value):
 	while value >= variables.reputation_tresholds[n]:
 		n += 1
 	return n
-
-func get_image_based_on_progress(event_name):
-	var image
-	match event_name:
-		"anastasia_event":
-			if ResourceScripts.game_progress.decisions.has("aire_is_dead"):
-				image = images.backgrounds.anastasia_event_dead
-			else:
-				image = images.backgrounds.anastasia_event_alive
-	return image
-
 
 func checkreqs(array):
 	var check = true

@@ -34,6 +34,7 @@
 		custom_background = "church_event",
 		image = null,
 		character = 'ginny',
+		common_effects = [{code = 'background_noise', value = 'stop'}],
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "ALIRONCHURCHFIRSTCOME", reqs = []},
@@ -53,6 +54,7 @@
 		image = null,
 		character = 'ginny',
 		tags = ['dialogue_scene', 'master_translate'],
+		common_effects = [{code = 'background_noise', value = 'stop'}],
 		text = [
 			{text = "ALIRONCHURCHINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
 			{text = "ALIRONCHURCHINTRODUCTION2", reqs = [], previous_dialogue_option = 2},
@@ -75,7 +77,7 @@
 			{text = "ALIRONCHURCHLEAVE", reqs = []},
 		],
 		options = [
-			{code = 'close', text = "DIALOGUECLOSE", reqs = []},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'background_noise', value = 'resume'}]},
 		],
 		
 	},
@@ -161,7 +163,7 @@
 		options = [
 			{code = 'aliron_church_quest_start1', reqs = [], text = "ALIRONCHURCHQUESTSTARTREPLY2", dialogue_argument = 2, type = 'next_dialogue', previous_dialogue_option = 1},
 			{code = 'aliron_church_quest_start1', reqs = [], text = "ALIRONCHURCHQUESTSTARTREPLY3", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 1},
-			{code = 'close', text = "DIALOGUECLOSE", reqs = [], previous_dialogue_option = [2,3]},
+			{code = 'close', text = "DIALOGUECLOSE", reqs = [], previous_dialogue_option = [2,3], bonus_effects = [{code = 'background_noise', value = 'resume'}]},
 		],
 		
 	},

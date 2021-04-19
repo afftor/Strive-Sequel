@@ -50,6 +50,7 @@ var sounds = {
 	classlearn = load("res://assets/sounds/sounds/classlearn.wav"),
 	crash = load("res://assets/sounds/sounds/crash.wav"),
 	punch = load("res://assets/sounds/sounds/punch.wav"),
+	slap = load("res://assets/sounds/sounds/slap.wav"),
 	
 	door_open = load("res://assets/sounds/sounds/door.wav"),
 	ding = load("res://assets/sounds/sounds/ding.wav"),

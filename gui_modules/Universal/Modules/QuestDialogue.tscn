@@ -22,7 +22,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EventBackground" type="TextureRect" parent="."]
+[node name="CustomBackground" type="TextureRect" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
 expand = true
@@ -31,6 +31,14 @@ __meta__ = {
 }
 
 [node name="CharacterImage" type="TextureRect" parent="."]
+margin_left = 1355.67
+margin_right = 1395.67
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterImage2" type="TextureRect" parent="."]
 margin_left = 1355.67
 margin_right = 1395.67
 margin_bottom = 40.0

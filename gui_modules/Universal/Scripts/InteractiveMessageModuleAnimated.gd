@@ -27,7 +27,7 @@ func hide_dialogue(action = "hide"):
 	for node in self.get_children():
 		if node.get_class() == "Tween":
 			continue
-		if !node.name in ["ShowPanel", "EventBackground"]:
+		if !node.name in ["ShowPanel", "CustomBackground"]:
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"
 
@@ -119,6 +119,7 @@ func update_scene_characters():
 
 # Temporary
 func show_full_info(person):
+	print(true)
 	gui_controller.close_all_closeable_windows()
 	var FullSlaveInfo = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO)
 	gui_controller.explore_slaveinfo = FullSlaveInfo
@@ -471,14 +472,13 @@ func handle_scene_transition_fx(scene):
 
 
 func handle_scene_backgrounds(scene):
-	if scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		gui_controller.dialogue.get_node("CustomBackground").show()
-		gui_controller.dialogue.get_node("CustomBackground").texture = images.backgrounds[scene.custom_background]
-	elif scene.has("custom_background") && gui_controller.dialogue_window_type == 2:
-		gui_controller.dialogue.get_node("EventBackground").show()
-		gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds[scene.custom_background]
+	var node = gui_controller.dialogue.get_node("CustomBackground")
+	if scene.has("custom_background"):
+		var newtexture = images.backgrounds[scene.custom_background]
+		ResourceScripts.core_animations.UnfadeAnimation(node, 0.5)
+		ResourceScripts.core_animations.SmoothTextureChange(gui_controller.dialogue.get_node("CustomBackground"), newtexture, 1)
 	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		gui_controller.dialogue.get_node("CustomBackground").hide()
+		node.hide()
 
 
 var ch1 = null

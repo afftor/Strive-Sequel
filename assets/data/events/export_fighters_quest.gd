@@ -41,13 +41,21 @@ var data = {
 		{type = 'dialogue_seen', check = true, value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7, type = 'next_dialogue'}, 
 		
 		
-		
 		{code = 'workers_elections_continue1', text = "FIGHTERSINTRODUCTION2REPLY6", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 6},
 		{code = 'workers_election_initiate3', text = "FIGHTERSINTRODUCTION2REPLY7", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 7}, 
-		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
+		
+		{code = 'fred_return_to_duncan_1', text = "FREDFIGHTERSQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage5'}], type = 'next_dialogue', dialogue_argument = 7}, 
+		
+		
 		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'decision', value = 'AfterMinesTalkedToSigmund', check = true}], dialogue_argument = 8, remove_after_first_use = true},
 		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'decision', value = 'AfterMinesGotTheMessage', check = true}], dialogue_argument = 9, remove_after_first_use = true},
+		
+		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
+		
+		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
+		
+		
 		
 	},
 	fighters_join = {

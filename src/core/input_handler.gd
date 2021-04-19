@@ -549,6 +549,7 @@ func PlaySound(name, delay = 0):
 	yield(soundnode, 'finished')
 	soundnode.queue_free()
 
+
 func PlayBackgroundSound(name):
 	var soundnode = get_spec_node(self.NODE_BACKGROUND_SOUND) #GetSoundNode()
 	soundnode.stream = audio.background_noise[name]
@@ -558,6 +559,10 @@ func PlayBackgroundSound(name):
 func StopBackgroundSound():
 	var soundnode = get_spec_node(self.NODE_BACKGROUND_SOUND) #GetSoundNode()
 	soundnode.stop()
+
+func ResumeBackgroundSound():
+	var soundnode = get_spec_node(self.NODE_BACKGROUND_SOUND) #GetSoundNode()
+	soundnode.play(0)
 
 var soundcooldown = 0
 
