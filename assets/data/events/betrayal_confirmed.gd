@@ -482,7 +482,7 @@ var data = {
 	divine_symbol_28 = {
 		image = null, tags = ['dialogue_scene'], #character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_39", reqs = []}],
-		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
+		common_effects = [{code = 'make_story_character', value = 'zephyra', recruit_from_location = true},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,

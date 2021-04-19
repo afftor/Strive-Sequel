@@ -4123,38 +4123,40 @@ The priestess takes another long pause to contemplate the situation when finally
 	LOOKING_FOR_PRINCESS_OPTION_43 = """*Accept*""",
 	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse* """,
 	LOOKING_FOR_PRINCESS_43 = """You've chosen the sacrifice to take the place of Anastasia. As you part with [name], you don't expect to see [him] again.
-	
-	Priestess: - Leave now and tell your masters that we still stand by old agreement.
-	
-	Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
-	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.""",
+
+Priestess: - Leave now and tell your masters that we still stand by old agreement.
+
+Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
+	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.
+
+""",
 	LOOKING_FOR_PRINCESS_45 = """Receiving your approval Zephyra walks forward. The Priestess observes her with prudence.
 
-	Zephyra: - Old traditions are important, but... quite problematic. 
+Zephyra: - Old traditions are important, but... quite problematic. 
 
-	Priestess: - What are you daring to suggest?
+Priestess: - What are you daring to suggest?
 
-	Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
+Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
 
-	Priestess: - You... You have no idea what you are talking about.
+Priestess: - You... You have no idea what you are talking about.
 """,
 	LOOKING_FOR_PRINCESS_46 = """Guard: - (whispering) Huh... What's this about?
-	
-	Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
 
-	You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
 
-	Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
+You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+
+Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
 	LOOKING_FOR_PRINCESS_47 = """By the order the princess is handed over to you and you give your thanks to the priestess.
 
-	Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
-	
-	Priestess: - Sure, whatever. Leave and take your foul vixen with you.
-	
-	Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
+Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
+
+Priestess: - Sure, whatever. Leave and take your foul vixen with you.
+
+Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
 	LOOKING_FOR_PRINCESS_48 = """Once outside with the now quiet princess you ask Zephyra to explain what happened.
-	
-	- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
+
+- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
 	LOOKING_FOR_PRINCESS_OPTION_45 = """That sounds pretty sad""",
 	LOOKING_FOR_PRINCESS_OPTION_46 = """So, she's a compelled lesbian?""",
 	LOOKING_FOR_PRINCESS_OPTION_47 = """You were unexpectedly helpful""",

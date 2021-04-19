@@ -236,7 +236,7 @@ var data = {
 	
 	#TODO Leave to town
 	looking_for_princess_mages_1 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = "amelia", character2 = "myr",
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = "amelia", character2 = "myr",
 		text = [{text = "LOOKING_FOR_PRINCESS_20", reqs = []}],
 		options = [ {
 			code = 'looking_for_princess_mages_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -274,7 +274,7 @@ var data = {
 	},
 	
 	looking_for_princess_elven_3 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
 		text = [{text = "LOOKING_FOR_PRINCESS_25", reqs = [], previous_dialogue_option = 1}, 
 		{text = "LOOKING_FOR_PRINCESS_26", reqs = [], previous_dialogue_option = 2}, 
 		{text = "LOOKING_FOR_PRINCESS_27", reqs = [], previous_dialogue_option = 3}, ], 
@@ -345,7 +345,7 @@ var data = {
 	},
 	
 	looking_for_princess_elven_8 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess', character2 = 'anastasia',
 		text = [{text = "LOOKING_FOR_PRINCESS_33", reqs = [], previous_dialogue_option = 1},
 		{text = "LOOKING_FOR_PRINCESS_34", reqs = []}], 
 		options = [ {
@@ -359,7 +359,8 @@ var data = {
 		options = [ {
 			code = 'looking_for_princess_elven_10', text = "LOOKING_FOR_PRINCESS_OPTION_35", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
-			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_36", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_36", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
+			bonus_effects = [{code = 'yes_or_no_panel', yes = 'looking_for_princess_elven_execute', no = 'looking_for_princess_elven_9', text = "Let Anastasia be executed? This option is irreversible"}]
 		}, ],
 	},
 	
@@ -378,7 +379,7 @@ var data = {
 	#TODO Check slave reqs
 	#TODO change location (mansion) to forests
 	looking_for_princess_elven_11 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
 		text = [{text = "LOOKING_FOR_PRINCESS_37", reqs = [], previous_dialogue_option = 1},
 		{text = "LOOKING_FOR_PRINCESS_38", reqs = [], previous_dialogue_option = 2},
 		{text = "LOOKING_FOR_PRINCESS_39", reqs = [], previous_dialogue_option = 3},
@@ -386,13 +387,105 @@ var data = {
 				{type = "location_has_specific_slaves", value = 1, location = 'mansion', reqs = [
 					{code = 'name', value = 'Zephyra'}]}] }], 
 		options = [ {
-			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_40", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'looking_for_princess_elven_12', text = "LOOKING_FOR_PRINCESS_OPTION_40", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
-			code = 'looking_for_princess_elven_11', text = "LOOKING_FOR_PRINCESS_OPTION_41", reqs = [
+			code = 'looking_for_princess_elven_15', text = "LOOKING_FOR_PRINCESS_OPTION_41", reqs = [
 				{type = "location_has_specific_slaves", value = 1, location = 'mansion', reqs = [
 					{code = 'name', value = 'Zephyra'}]}], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
-			code = '', text = "LOOKING_FOR_PRINCESS_OPTION_42", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_42", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
+			bonus_effects = [{code = 'yes_or_no_panel', yes = 'looking_for_princess_elven_execute', no = 'looking_for_princess_elven_11', text = "Let Anastasia be executed? This option is irreversible"}]
 		}, ],
+	},
+	
+	looking_for_princess_elven_12 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_41", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_13', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		} ],
+	},
+	
+	looking_for_princess_elven_13 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_42", reqs = []}], 
+		options = [ {
+			# *Accept* do sacrifice
+			code = 'looking_for_princess_elven_14', text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			# *Refuse*
+			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_44", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
+			bonus_effects = [{code = 'yes_or_no_panel', yes = 'looking_for_princess_elven_execute', no = 'looking_for_princess_elven_13', text = "Let Anastasia be executed? This option is irreversible"}]
+		}],
+	},
+	
+	#TODO select character
+	looking_for_princess_elven_14 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_43", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_15 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_45", reqs = []}],
+		options = [ {
+			code = 'looking_for_princess_elven_16', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_16 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra', character2 = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_46", reqs = []}],
+		options = [ {
+			code = 'looking_for_princess_elven_17', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_17 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra', character2 = 'elf_priestess',
+		text = [{text = "LOOKING_FOR_PRINCESS_47", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
+		options = [ {
+			code = 'looking_for_princess_elven_18', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_18 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'zephyra',
+		text = [{text = "LOOKING_FOR_PRINCESS_48", reqs = []}], 
+		options = [ {
+			code = 'looking_for_princess_elven_19', text = "LOOKING_FOR_PRINCESS_OPTION_45", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_19', text = "LOOKING_FOR_PRINCESS_OPTION_46", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+		}, {
+			code = 'looking_for_princess_elven_19', text = "LOOKING_FOR_PRINCESS_OPTION_47", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+		}],
+	},
+	
+	looking_for_princess_elven_19 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'zephyra',
+		text = [{text = "LOOKING_FOR_PRINCESS_49", reqs = [], previous_dialogue_option = 1},
+		{text = "LOOKING_FOR_PRINCESS_50", reqs = [], previous_dialogue_option = 2},
+		{text = "LOOKING_FOR_PRINCESS_51", reqs = [], previous_dialogue_option = 3}], 
+		
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
+	},
+	
+	#TODO yes\no panel
+	looking_for_princess_elven_execute = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "LOOKING_FOR_PRINCESS_44", reqs = [], previous_dialogue_option = 4},
+		{text = "LOOKING_FOR_PRINCESS_52", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessDead'}, #Anastasia is captured dead
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage4'}],
+		
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+		}],
 	},
 }

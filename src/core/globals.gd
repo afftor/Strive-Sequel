@@ -1041,7 +1041,8 @@ func return_characters_from_location(locationid):
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
 
-
+var yes
+var no
 func common_effects(effects):
 	for i in effects:
 		match i.code:
@@ -1324,7 +1325,16 @@ func common_effects(effects):
 					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
 						a[param] = value
 						break
+			'yes_or_no_panel':
+				yes = i.yes
+				no = i.no
+				input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, "yes_message", "no_message", i.text])
 
+func yes_message():
+	input_handler.interactive_message(yes, '', {})
+	
+func no_message():
+	input_handler.interactive_message(no, '', {})
 
 func get_nquest_for_rep(value):
 	if value > variables.reputation_tresholds.back() : 

@@ -21,6 +21,10 @@ func ShowYesNo(TargetNode : Object, \
 			   YesFunction : String, Text : String) -> void:
 		Show(TargetNode, Text, "YES", YesFunction, "NO", '')
 
+func ShowYesOrNo(TargetNode : Object, \
+			   YesFunction : String, NoFunction : String, Text : String) -> void:
+		Show(TargetNode, Text, "YES", YesFunction, "NO", NoFunction)
+
 # Use '' (the empty string) as label to hide a button.
 func Show(TargetNode : Object, Text : String, \
 		  LeftLabel : String, LeftFunc : String, \
