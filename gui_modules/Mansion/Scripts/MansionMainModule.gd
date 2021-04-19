@@ -546,7 +546,6 @@ func test_mode():
 		character.is_players_character = true
 		globals.impregnate(character, character)
 		#character.get_stat('pregnancy').duration = 10
-		print(character.get_stat('pregnancy'))
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Elf', 'male', 'random')
@@ -561,7 +560,6 @@ func test_mode():
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
-		print(ResourceScripts.game_party.get_master().get_stat('charm_factor'))
 		character.is_players_character = true
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('HalfkinCat', 'random', 'random')
@@ -745,11 +743,14 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
 		
-		var newslave = ResourceScripts.scriptdict.class_slave.new()
-		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
-		ResourceScripts.game_party.add_slave(newslave)
+		#var newslave = ResourceScripts.scriptdict.class_slave.new()
+		#newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
+		#ResourceScripts.game_party.add_slave(newslave)
+
+		input_handler.interactive_message('amelia_interrogation_report', '', {})
+		globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
+		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		
-		input_handler.interactive_message('looking_for_princess_elven_9', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		

@@ -311,6 +311,7 @@ var data = {
 		custom_background = "xari_encounter8",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
+		dialogue_type = 2,
 		# character = 'xari',
 		tags = [],
 		text = [

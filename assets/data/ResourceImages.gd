@@ -56,10 +56,14 @@ var backgrounds = {
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
+	jail = load("res://assets/images/backgrounds/dungeon.png"),
 	lich_aire_talk4 = load("res://assets/images/backgrounds/AireCG001.png"),
 	lich_aire_talk7 = load("res://assets/images/backgrounds/AireCG002.png"),
 	xari_encounter8 = load("res://assets/images/backgrounds/XariCG001.png"),
 	daisy_discipline = load("res://assets/images/backgrounds/Daizy7.png"),
+	
+	aire_amelia1 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
+	aire_amelia2 = load("res://assets/images/backgrounds/AireAmeliaCG002.png"),
 	}
 
 var scenes = {

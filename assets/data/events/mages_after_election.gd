@@ -1,7 +1,7 @@
 var data = {
 	mages_after_election = {
 		image = null,
-		# character = "duncan",
+		character = "myr",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "MAGESAFTERELLECTION1", reqs = []}
@@ -14,7 +14,7 @@ var data = {
 	
 	mages_after_election_answer1 = {
 		image = null,
-		# character = "duncan",
+		character = "myr",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "MAGESAFTERELLECTION1_ANSWER1", reqs = []}
@@ -28,7 +28,7 @@ var data = {
 	
 	mages_after_election_answer2 = {
 		image = null,
-		# character = "duncan",
+		character = "myr",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "MAGESAFTERELLECTION1_ANSWER2", reqs = []}
@@ -42,7 +42,7 @@ var data = {
 	
 	mages_after_election_answer3 = {
 		image = null,
-		# character = "duncan",
+		character = "myr",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "MAGESAFTERELLECTION1_ANSWER3", reqs = [], previous_dialogue_option = [1,2,3]},
@@ -58,7 +58,7 @@ var data = {
 	
 	mages_after_election_answer6 = {
 		image = null,
-		# character = "duncan",
+		character = "myr",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "MAGESAFTERELLECTION1_ANSWER6", reqs = []},

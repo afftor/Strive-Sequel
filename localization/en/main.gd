@@ -2043,6 +2043,11 @@ var TranslationDict = {
 	ENEMYTROLL = "Troll",
 	ENEMYBANDINT_ASSASSIN = "Bandit Asssassin",
 	
+	ENEMYDEMONESS = "Demoness",
+	ENEMYGREG = "Greg",
+	ENEMYAIRE = "Aire",
+	ENEMYKURDAN = "kurdan",
+	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
 	FOODFILTERLOW = "Low",
@@ -2737,7 +2742,7 @@ I suggest starting with the mage guild. If they haven't figured it out already, 
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
 
-	MAGESAFTERELLECTION1 = """You enter Myr's office to find her in a unusual state of distress. 
+	MAGESAFTERELLECTION1 = """You enter Myr's office to find her distressed, much unlike her usually calm state. 
 	
 	— I thought I made it clear I am not to be disturbed... Oh, it's you. What do you want?""",
 
@@ -2890,9 +2895,9 @@ Merc Leader: — Nice working with you. Oh, uh just in case someone else shows u
 
 	# *Intermission scene — starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
 
-	INTERMISSIONINTRO1 = """
+	INTERMISSIONINTRO1 = """Hiding from others' eyes one of the rebel leaders has been meeting the previously recruited helper.
 	
-	{color=aqua|Greg: — You've got your fancy sword. I trust we are even now.}
+{color=aqua|Greg: — You've got your fancy sword. I trust we are even now.}
 	
 {color=yellow|Demon: — I can't complain, enabling you to pull off that mass teleportation performance serves our interests as well.}""",
 
@@ -2904,7 +2909,9 @@ Merc Leader: — Nice working with you. Oh, uh just in case someone else shows u
 
 {color=yellow|Demon: — Hmph, as you wish.}""",
 
-	INTERMISSIONINTRO3 = "{color=yellow|Demon: — Still, there's more to be gained here. I think I'll stay for a bit.}",
+	INTERMISSIONINTRO3 = """As Greg left the scene, Demon thought to herself.
+	
+{color=yellow|Demon: — Still, there's more to be gained here. I think I'll stay for a bit.}""",
 
 	RETURNTOMYR_IF_FRED = """— So you found him. Nice work, I've already sent him to Duncan along with your report.
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
@@ -2913,6 +2920,8 @@ This should ease tensions between the guilds, until something new comes up. Here
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
 	
 	FREDQUESTREPORT = "About Fred...",
+	FREDFIGHTERSQUESTREPORT = "About the mages issue...",
+	PRINCESS_SEARCH_INITIATE = "How does your search goes?",
 	
 	RETURNTOMYR = """— So it was him after all, and we've lost the artifact as well... I expected as much. Here, take this report and get it to Duncan, I need to make some... arrangements if you'll excuse me.""",
 
@@ -2927,6 +2936,7 @@ This should ease tensions between the guilds, until something new comes up. Here
 	RETURNTODUNCAN2 = "— So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
 
 	RETURNTODUNCAN_ANSWER1 = """— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though.
+
 — Anyway, good work, but we have more immediate problems now. The rebels have taken several key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the fort, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
 
 	RETURNTODUNCAN_QUESTION1 = "I'll see what I can do.",    
@@ -2939,49 +2949,75 @@ This should ease tensions between the guilds, until something new comes up. Here
 	#Intermission scene 2
 
 	INTERMISSION2INTRO1 = """The rebel army stood in front of a small settlement recently turned into a battlefield.
+	
 {color=yellow|Anastasia: — Uncle! Why didn't you let me talk to them before attacking?!}
+
 {color=aqua|Greg: — Those were guilds' trained soldiers.}
+
 {color=yellow|Anastasia: — They had asked to see me in person though. We could've avoided all of this death and destruction.}""",
 
 	INTERMISSION2INTRO2 = """Despite his unwillingness to answer at all, Greg had to answer carefully since Anastasia had made her protest in the presence of so many rebel soldiers...
+	
 {color=aqua|Greg: — You are too naive, Princess. There could have been assassins amongst them sent simply for your head. Our enemies are treacherous opportunists, this is how they work.}
+
 {color=yellow|Anastasia: — ... it's not supposed to be like this. What good is it to free the people from tyranny if they die in the process of being liberated? We must avoid harming innocents and such needless losses.}""",
 
 	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: — I've decided. Release the survivors so they can return home.}
+	
 {color=aqua|Greg: — What!?}
+
 {color=yellow|Anastasia: — This is the minimum we can do now to show our good will and noble intentions.}
+
 {color=aqua|Greg: — ...Fine, but don't fool yourself. You will not retake the throne through mercy or kindness.}""",
 
 	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: — Is there any news from Aire? She's still not back?}
+	
 {color=aqua|Attendant: — I'm afraid not your highness. She has yet to return.}
+
 {color=yellow|Anastasia: — Ah... Aire, I could really use your company right about now. I hope you are safe.}""",
 
 	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: — Do you think I was wrong to demand their release?}
+	
 {color=aqua|Aire: — I'm sorry, It's not my place to judge you, your highness.}
+
 {color=yellow|Anastasia: — Aire, please.}
+
 {color=aqua|Aire: — I'm just your tool, your highness. Your will is all that matters to me.}
+
 Noticing the princess's angry stare Aire quickly adds.
+
 {color=aqua|Aire: — But, I guess, I would prefer to be able to return home if I were in their place.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|Anastasia: — I didn't get a chance to ask, but how did your last assignment go? You've been sullen ever since you returned. Did something bad happen?
+	
 The princess notices Aire tensing up in response to the question.	
+
 {color=aqua|Aire: — ... It's nothing worth mentioning to you.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|Anastasia: - You didn't get injured again, did you?}
+	
 {color=aqua|Aire: - I'm fine, as long as I can continue to serve you.}
+
 {color=yellow|Anastasia: - Hmm... I wonder if all elves are like this.}""",
 
 	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how did your last assignment go? You've been very lively ever since you returned, and I could use a bit of good news just about now.}
-{color=aqua|Aire: - Oh, yes. Actually I got in just slightly over my head this time.""",
+	
+{color=aqua|Aire: - Oh, yes. Actually I got in just slightly over my head this time.}""",
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|Anastasia: - Aire! You said you would be careful. You said- wait, why have you been so cheerful then?}
+	
 {color=aqua|Aire: - I… Well I was rescued.}
-{color=yellowAnastasia: - A rescuer? Do tell.}
-{color=aquaAire: - I don't really know much about [him], I believe [his] name was [name]. [He] seemed like a... well a good person I think.}""",
+
+{color=yellow|Anastasia: - A rescuer? Do tell.}
+
+{color=aqua|Aire: - I don't really know much about [him], I believe [his] name was [name]. [He] seemed like a... well a good person I think.}""",
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia: - [name]? We should properly reward [him], once this whole mess is over.}
+	
 	{color=aqua|Aire: - Ana, you really don't need to do that.}
+	
 	{color=yellow|Anastasia: - Don't be silly, I owe [him] my gratitude at the very least. You've been my friend for so long after all. What would I have done if you hadn't returned?}
+	
 	{color=aqua|Aire: - ...}""",
 
 	SIGMUNDOPTION = "- Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.",
@@ -3111,8 +3147,75 @@ The princess notices Aire tensing up in response to the question.
 	SKILLENEMY_ENTANGLE = "Entangle",
 	SKILLSHRED = "Shred",
 	
+	
+	AIRE_AMELIA1 = """
+Amelia entered Aire's cell with a neat black satchel and a smile on her face.
 
+Amelia: - Hello darling. Aire, if I'm correct? I hope the jailers weren't too harsh with you. It seems our little investigation isn't going fast enough, so I was asked to apply my skills to loosen your tongue. 
 
+At her words Aire glanced at the bag imagining all manner of blades and hooks that must be inside and then looked to the cat woman in her revealing attire with confusion. 
+
+Aire: - I won't reveal anything, not to you or anyone else no matter what you do. 
+
+Amelia: - That's cute. I believe you are a capable fighter and can withstand physical abuse, but I have my own ways of doing things. """,
+
+	AIRE_AMELIA2 = """
+Amelia retrieved a small flask of honey colored liquid which she upended against a handkerchief for a moment before stoppering it. Aire stood to her feet to struggle as best she could rather than be poisoned, but none of her training was of any use bound as she was. Amelia twisted her by her restraints and collar roughly before wrapping an arm around her and forcing the handkerchief over her nose and mouth.
+
+Amelia: - Just breath in deeply. It won't harm you.""",
+
+	AIRE_AMELIA3 = """
+Aire held her breath for over a minute. She struggled the whole time as Amelia held her firmly while chatting to her casually as if they were friends, but the burning in her lungs became too much and she desperately gulped breaths laced with the drug. Amelia held her like that until her breathing became steady and her body started to relax.
+
+Amelia: - Now, I understand you've heard some nasty rumors about my colleagues and I, but we can be quite generous with our partners. For instance, the drug I've just shared with you can't normally be found here at any price. They say one of the ingredients is actual Alruane nectar.
+
+Aire's heart had begun pounding and her body grew unbearably sensitive. Amelia idly fondled her trussed breasts and periodically pinched her nipples, eliciting jerks and squeals from the elf that gradually became shudders and moans.
+
+Amelia: - I see your voice has become more excited. Why won't you tell us what we want to know? To continue resisting like this... you must be quite fond of your master? Perhaps, even share a more intimate bond.""",
+
+	AIRE_AMELIA4 = """
+Aire: - It's not… like… that
+
+Amelia squeezed her breasts against Aire, leaning against her in such a way that Aire would fall unless she widened her stance and arched her back. Amelia's soft finely furred tail felt like it was made of pins and needles as it slid along Aire's leg slowly upward.
+
+Amelia: - Ah, another innocent elf maiden! I almost miss training the newcomers personally. 
+
+Amelia's tail had made its way to Aire's panty clad sex and twitched from side to side, stimulating her now swollen clit through the material. She just couldn't think.
+
+Amelia: - Look at you, all wet and shaking. It's pains me to torture a cute girl like that. And you must be really eager for me to end this.""",
+
+	AIRE_AMELIA5 =  """
+Aire: - Yes…
+
+Aire's eyes teared up with humiliation as she couldn't fight the overwhelming pleasure anymore.
+
+Amelia: - So we both want the same thing. You know how this can be done, tell me where Anastasia is.
+
+Amelia slid a hand down from Aire's chest to pull her panties to the side, and gently traced her fingers up and down her slick slit. Under the influence of the intense aphrodisiac Aire's hips thrusted at the digits without and against her conscious thought. 
+
+She pooled all of her will into one last attempt to twist away, but Amelia held her in place thrusting two fingers inside her and using her pussy as a handhold. Aire melted and began to tremble violently, but Amelia slipped her fingers back out and resumed teasing Aire's slit, keeping her on the edge.
+
+Aire: - Ah, p-please… """,
+
+	AIRE_AMELIA6 = """
+
+Amelia: - One word and you'll get what you want. 
+
+Aire: - ...F-fine.
+
+Aire turned her head and whispered. Amelia's ear twitched as the elf breathed heavily into it and she beamed.
+
+Amelia: - Good girl. Now, here's your reward.
+
+Amelia snaked her long tail back up Aire's leg, wriggling it back and forth, finally working it into her drooling honeypot. Aire moaned and bucked futilely against Amelia's hips on pure carnal instinct, but Amelia delivered a slow deliberate pace. Aire inhaled and just as she was about to cum, Amelia began thrusting into her without as much force as a man might have but much faster. 
+
+The sudden stimulation was overwhelming in the poor elf's hypersensitive state. She clenched and shook so wildly she stopped breathing and her eyes rolled back. One orgasm overlapped with another over minutes as Amelia pistoned her tail into the young elf until she blacked out.
+
+Amelia lowered the spasming girl to the floor gently and retrieved her satchel after cleaning off. 
+
+Amelia: - See, was that so hard? Hope we'll meet again in better circumstances. 
+
+She purred to herself and put a little sway into her hips on her way out as she gave orders to the jailers and went to deliver the good news.""",
 
 
 	# HELP SIGMUND
@@ -3860,8 +3963,9 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 	SEARCH_DUNGEON_6_2 = """- If you dare to even touch her, I'll hunt you down to the ends of the earth.""",
 	SEARCH_DUNGEON_OPTION_15 = """Fine. Enjoy rotting in this cell then""",
 	SEARCH_DUNGEON_6_3 = """Aire does not react to your words, but somehow she seems content with your irritation.""",
-	SEARCH_DUNGEON_OPTION_16 = """Hit her*""",
-	SEARCH_DUNGEON_6_4 = """*Smack*
+	SEARCH_DUNGEON_OPTION_16 = """*Hit her*""",
+	SEARCH_DUNGEON_6_4 = """*Smack* 
+	You hand makes a hard slap on Aire's cheek which turns red, yet her expression does not change.
 
 - Hmph, as expected from a lowly [man] like you.""",
 	SEARCH_DUNGEON_OPTION_LEAVE = """Leave""",
@@ -3938,11 +4042,12 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 - Fine, I'll trust you. If there's anyone from here who can act to her benefit, it would be you. She's escaped to elven lands. I've managed to secure a spot for her thanks to my heritage. You'd be able to find out more from the high priestess, assuming she'll let you meet her, but at this point I suspect it shouldn't be much of a problem for you.""",
 	SEARCH_DUNGEON_16 = """You see Amelia still waiting near the entrance to the cells as you exit the dungeons, she beckons you over to her.
 
--How'd it go?""",
+- How'd it go?""",
 	SEARCH_DUNGEON_OPTION_43 = """I got the princess' location.""",
 	SEARCH_DUNGEON_17 = """- Wow, really? I knew you had a silver tongue in you, great work. Duncan will want to know as soon as you're ready to deliver the information to him, don't worry I won't steal your spotlight if you want to wait a bit.""",
-	SEARCH_DUNGEON_OPTION_44 = """I wasn't able to get any information on the princess.""",
+	SEARCH_DUNGEON_OPTION_44_1 = """I wasn't able to get any information on the princess.""",
 	SEARCH_DUNGEON_18 = """- Aw, that's ok though, it was worth a try. I could tell by looking at her she'd be a tough one to crack. So.. have you considered my offer? I could try to get her talking if you want.""",
+	SEARCH_DUNGEON_OPTION_44_2 = """This girl is a tough nut to crack""",
 	SEARCH_DUNGEON_OPTION_45 = """Go ahead, it couldn't hurt.""",
 	SEARCH_DUNGEON_19_1 = """- Don't worry, I'm sure I can get at least something out of her, but it may take some time. I'll be sure to personally deliver the information to you when I get it.""",
 	SEARCH_DUNGEON_OPTION_46 = """No, I think I'll find another way.""",
@@ -4659,5 +4764,13 @@ Sigmund: - Let's finally get to the feast.""",
 	
 	
 	
+	##################################################New
+	AIREAMELIAREPORT = "During the morning you receive a short invitation from Amelia stating that she learned the location of princess and you should visit her.",
+	AIREAMELIAMEETOPTION = "I've heard you've learned some new information",
+	AIREAMELIAMEET1 = "- Yes, I've learned where's the princess can potentially be. But before I share this information, I'd like to ask you for a favor, since you'd be becoming the next mayor, especially after getting the princess herself. Can I make a request at some point in future from you?",
+	AIREAMELIAMEET1_OPTION1 = "Sure, you've done a lot for me",
+	AIREAMELIAMEET1_OPTION2 = "I can't promise that",
+	AIREAMELIAMEET2 = "- I'm pleased to hear that. According to the elf lass, Anastasia is hiding at elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I'm hoping to hear more of your success.",
+	AIREAMELIAMEET2_1 = "- I see. Well, I'll be waiting till you change your mind.",
 	
 }

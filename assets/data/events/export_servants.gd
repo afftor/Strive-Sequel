@@ -18,6 +18,9 @@ var data = {
 			{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 500},
 			{type = 'decision', value = 'servants_election_support', check = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}, {type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 1},
+		
+		{code = 'amelia_ask_location', text = "AIREAMELIAMEETOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{code = 'decision', value = 'amelia_interrogation_success', check = true}], type = 'next_dialogue', dialogue_argument = 1},
+		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},
@@ -259,18 +262,39 @@ var data = {
 	},
 
 	servants_election_finish8 = {
+		variations = [
+		{reqs = [{code = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
-		# character = 'anastasia',
+		custom_background = "anastasia_event_alive",
+		common_effects = [{code = 'set_music', value = 'battle2'}],
+		scene_type = "story_Scene",
+		save_scene_to_gallery = true,
+		dialogue_type = 2,
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH8", reqs = []}
 		],
-		common_effects = [{code = 'set_music', value = 'battle2'}, {code = 'set_bg', progress_based = true, value = 'anastasia_event', save_to_gallery = true, scene_type = "story_scene"}],
 		options = [
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
+		]},
+		{image = null,
+		custom_background = "anastasia_event_dead",
+		common_effects = [{code = 'set_music', value = 'battle2'}],
+		scene_type = "story_Scene",
+		save_scene_to_gallery = true,
+		dialogue_type = 2,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH8", reqs = []}
+		],
+		options = [
+			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
+		]},
+		
 		]
 	},
-
+	
+	
 	servants_election_finish9 = {
 		image = null,
 		# character = 'anastasia',

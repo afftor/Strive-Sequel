@@ -35,9 +35,11 @@ var data = {
 			{type = 'decision', value = 'workers_election_support', check = false}], 
 			type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'workers_election_initiate5', text = "WORKERSINTRODUCTION1REPLY6", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage3'}], bonus_effects = [{code = 'complete_quest', value = 'workers_election_quest'}], dialogue_argument = 6, type = 'next_dialogue'},
+		{code = 'help_sigmund_start', text = "HELP_SIGMUND_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage1'}], dialogue_argument = 6},
+		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage3'}], dialogue_argument = 7, remove_after_first_use = true},
+		
+		
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
-		{code = 'help_sigmund_start', text = "HELP_SIGMUND_OPTION_0", reqs = [{type = 'decision', value = 'HelpSigmundAvailable', check = true}], dialogue_argument = 6},
-		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", reqs = [{type = 'decision', value = 'PreFinalBossDone', check = true}], dialogue_argument = 7, remove_after_first_use = true},
 		],
 	},
 	workers_join = {
