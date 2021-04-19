@@ -376,7 +376,6 @@ var data = {
 		}, ],
 	},
 	
-	#TODO Check slave reqs
 	#TODO change location (mansion) to forests
 	looking_for_princess_elven_11 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
@@ -411,7 +410,7 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_42", reqs = []}], 
 		options = [ {
 			# *Accept* do sacrifice
-			code = 'looking_for_princess_elven_14', text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'looking_for_princess_elven_14', remove_person = true, text = "LOOKING_FOR_PRINCESS_OPTION_43", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			# *Refuse*
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_44", reqs = [], dialogue_argument = 4, type = 'next_dialogue',
@@ -419,7 +418,6 @@ var data = {
 		}],
 	},
 	
-	#TODO select character
 	looking_for_princess_elven_14 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'elf_priestess',
 		text = [{text = "LOOKING_FOR_PRINCESS_43", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
@@ -477,7 +475,6 @@ var data = {
 		}],
 	},
 	
-	#TODO yes\no panel
 	looking_for_princess_elven_execute = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_44", reqs = [], previous_dialogue_option = 4},

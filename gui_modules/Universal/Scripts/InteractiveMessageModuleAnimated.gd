@@ -273,6 +273,21 @@ func select_person_for_next_event(code):
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
 
+func remove_person(code):
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
+	stored_scene = code
+	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
+
+func remove_selected(person): 
+	person.remove_from_task()
+	ResourceScripts.game_party.remove_slave(person)
+	input_handler.slave_list_node.rebuild()
+	
+	var event_type = 'story_event'
+	if scenedata.scenedict[stored_scene].has('default_event_type'):
+		event_type = scenedata.scenedict[stored_scene].default_event_type
+	input_handler.interactive_message_follow(stored_scene, event_type, {})
+
 func event_person_selected(person):
 	input_handler.active_character = person
 	if stored_scene == 'lockpick_attempt':
@@ -707,6 +722,8 @@ func handle_scene_options(scene):
 			
 			if i.has('select_person'):
 				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+			if i.has('remove_person'):
+				newbutton.connect("pressed", self, 'remove_person', [i.code])
 			elif i.code == 'shrine_option':
 				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
 			elif i.code == 'chest_mimic_force_open':
