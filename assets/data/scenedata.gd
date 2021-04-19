@@ -1606,10 +1606,10 @@ var quests = {
 		code = "civil_war_mines",
 		summary = "As the war progresses, you received a message that Sigmund and the Workers Guild having some issues which can negatively affect the campaign.",
 		stages = {
-			stage1 = {code = 'stage1', name = 'Mine Company', descript = """Meet Sigmund at Workers Guild and find out what is the problem. """},
-			stage2 = {code = 'stage2', name = 'Mine Company', descript = """Sigmund told you that one of the mines has recently been overtaken by rebel group. You have to travel there and get the mine back to work. """},
+			stage1 = {code = 'stage1', name = 'Mine Company', descript = """Meet Sigmund at Workers Guild and find out what is the problem."""},
+			stage2 = {code = 'stage2', name = 'Mine Company', descript = """Sigmund told you that one of the mines has recently been overtaken by rebel group. You have to travel there and get the mine back to work."""},
 			stage3 = {code = 'stage3', name = 'Mine Company', descript = """You've taken care of the mine, it's time to return to Sigmund. """},
-			stage4 = {code = 'stage4', name = 'Mine Company', descript = """You've taken care of the mine and reported to Sigmund, it's time to see what new mission Duncan has for you. """},
+			stage4 = {code = 'stage4', name = 'Mine Company', descript = """You've taken care of the mine and reported to Sigmund, it's time to see what new mission Duncan has for you."""},
 		},
 		
 		
