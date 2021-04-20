@@ -423,7 +423,7 @@ func get_stat_data():
 #AI-related stuff
 func need_heal(): #stub. borderlines are subject to tuning
 	if parent.has_status('banish'): return -1.0
-	var rate = statlist.hp * 1.0 / self.statlist.hpmax
+	var rate = parent.hp * 1.0 / self.statlist.hpmax
 	if rate < 0.2: return 1.0
 	if rate < 0.4: return 0.5
 	if rate < 0.6: return 0.0

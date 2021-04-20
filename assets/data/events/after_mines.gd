@@ -16,7 +16,6 @@ var data = {
 				reqs = [{type = 'decision', value = 'SaveRebels', check = false}],
 				image = null, tags = ['dialogue_scene'], character = "sigmund",
 				text = [{text = "AFTER_MINES_SIGMUND_3", reqs = []}],
-				common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}],
 				options = [ {
 					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, 
 					bonus_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage4'}], #adds option on sigmund introduction
@@ -29,7 +28,6 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "sigmund",
 		text = [{text = "AFTER_MINES_SIGMUND_1", reqs = [], previous_dialogue_option = 1},
 		{text = "AFTER_MINES_SIGMUND_2", reqs = [], previous_dialogue_option = 2}],
-		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2,
 			bonus_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage4'}],
@@ -105,7 +103,7 @@ var data = {
 	after_mines_duncan_3 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "AFTER_MINES_DUNCAN_9", reqs = []}],
-		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 7}]}],
+		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 6}]}],
 		options = [ {
 			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_10", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'civil_war_mines'}]
 		},  {

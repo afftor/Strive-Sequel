@@ -1602,6 +1602,7 @@ var quests = {
 		}
 	},
 	
+	#checked
 	civil_war_mines = {
 		code = "civil_war_mines",
 		summary = "As the war progresses, you received a message that Sigmund and the Workers Guild having some issues which can negatively affect the campaign.",
@@ -1613,6 +1614,7 @@ var quests = {
 		},
 	},
 	
+	#checked
 	lead_convoy_quest = {
 		code = 'lead_convoy_quest',
 		summary = "The Guilds prepare to take back a town from the rebels. The large siege is about to break through.",
@@ -1623,8 +1625,10 @@ var quests = {
 		},
 	},
 	
+	# need to enable Ginny in order to test
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
+		summary = "",
 		stages = {
 			stage1 = {code ='stage1', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
 

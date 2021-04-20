@@ -993,9 +993,9 @@ func build_spell_panel():
 					newnode.script = null
 
 func test_stage(quest, stage):
-	var dict
-	dict.value = quest
-	dict.stage = stage
+	var dict = {value = quest, stage = stage}
+	#dict.value = quest
+	#dict.stage = stage
 	if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
 		if dict.has('state') && dict.state == false:
 			return true
@@ -1014,7 +1014,7 @@ func open_location_actions():
 			#better do it using actions next time
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 			newbutton.toggle_mode = true
-			if test_stage("divine_symbol_quest", "stage1"):
+			if test_stage("lead_convoy_quest", "stage3"):
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
 			elif test_stage("divine_symbol_quest", "stage3"):
