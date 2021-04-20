@@ -1621,19 +1621,12 @@ var quests = {
 	
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
+		summary = "The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.",
 		stages = {
-			stage1 = {code ='stage1', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
-			
-			Duncan ordered you to find a way to dispel the dome. Myr suggested you to visit religious institutions nearby, perhaps churh of Celena at Aliron can give you some ideas."""},
-			stage2 = {code ='stage2', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
-			
-			Ginny at Aliron's church told you to make a Divine Symbol for her. This should help you to get past the barrier."""},
-			stage3 = {code ='stage3', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
-			
-			As you've received the Divine Symbol from Ginny, it's time to return to Duncan."""},
-			stage4 = {code ='stage4', name = 'Divine Influence', descript = """The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.
-			
-			Duncan told you to get rid of the champion and the barrier protecting the city. Assemble the team and move in."""},
+			stage1 = {code ='stage1', name = 'Divine Influence', descript = """Duncan ordered you to find a way to dispel the dome. Myr suggested you to visit religious institutions nearby, perhaps churh of Celena at Aliron can give you some ideas."""},
+			stage2 = {code ='stage2', name = 'Divine Influence', descript = """Ginny at Aliron's church told you to make a Divine Symbol for her. This should help you to get past the barrier."""},
+			stage3 = {code ='stage3', name = 'Divine Influence', descript = """As you've received the Divine Symbol from Ginny, it's time to return to Duncan."""},
+			stage4 = {code ='stage4', name = 'Divine Influence', descript = """Duncan told you to get rid of the champion and the barrier protecting the city. Assemble the team and move in."""},
 		},
 		
 	},

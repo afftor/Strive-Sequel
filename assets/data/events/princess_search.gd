@@ -979,5 +979,34 @@ var data = {
 			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
 		]
 	},
+	
+	amelia_princess_advice = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AMELIAFINDPRINCESS1_1", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{code = 'decision', value = 'prison_avail', check = false}]},
+			{text = "AMELIAFINDPRINCESS1_2", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{code = 'decision', value = 'prison_avail', check = true}]},
+			{text = "AMELIAFINDPRINCESS1_3", reqs = [{type = 'decision', value = 'aire_is_dead', check = true}]},
+		],
+		options = [
+			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION1", reqs = [], dialogue_argument = 1},
+			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION2", reqs = [], dialogue_argument = 2},
+			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION3", reqs = [], dialogue_argument = 3},
+		]
+	},
+	amelia_princess_advice1 = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AMELIAFINDPRINCESS2_1", reqs = [], previous_dialogue_option = [1,2]},
+			{text = "AMELIAFINDPRINCESS2_2", reqs = [], previous_dialogue_option = 3},
+		],
+		options = [
+			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+		]
+	},
+	
 }
 
