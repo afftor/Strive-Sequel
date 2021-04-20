@@ -2789,7 +2789,7 @@ After securing the money you leave the dormitory.
 {color=green|Earned 500 Gold}""",
 
 	FINDFRED1 = """You find the rendezvous point from the letter in Fred's room easily enough. It's marked by a large oak tree standing just off of a muddy farm road. No Fred here, but there are many presumably human footprints left in the soft earth and signs that someone was dragged away into a copse of trees a short distance away.
-	
+
 The men didn't make any effort to hide their tracks and you soon find a cave's mouth on the side of a rocky outcrop hidden in the trees.
 
 You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with  a group of armed men, almost certainly sellswords, standing over him.""",
@@ -3891,21 +3891,6 @@ The elf struggles slightly against her bindings, as she huffs in defiance.""",
 
 	GREG_COMBAT_ON_WIN_8 = """- You don't need to worry about that, you'll get your reward. The fighters still have a lot of work to settle here, once that's done we can worry about rewards.""",
 	GREG_COMBAT_ON_WIN_9 = """- Go home. We'll clean everything up here. Come see me later and we'll decide what to do from there.""",
-	COMBAT_ON_WIN_FRONTLINE = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.
-
-- Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.
-
-- We still have to secure the princess.""",
-
-	COMBAT_ON_WIN_NOT_FRONTLINE = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.
-
-- Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.
-
-- We still have to secure the princess.""",
-
-	COMBAT_ON_WIN_OPTION_1 = """I'm eager to get to her myself.""",
-	COMBAT_ON_WIN_OPTION_2 = """I currently have other issues to deal with.""",
-
 
 #search for princess
 	SEARCH_FIGHTERS_1 = """- Now then, we haven't had any luck with our interrogations. These idiots are fanatically dedicated to their rebellion.""",
@@ -4075,9 +4060,15 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 
 	LOOKING_FOR_PRINCESS_START = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
 	LOOKING_FOR_PRINCESS_1 = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
-	LOOKING_FOR_PRINCESS_2 = """- Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
-	LOOKING_FOR_PRINCESS_3 = """- Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.""",
-	LOOKING_FOR_PRINCESS_4 = """- We still have to secure the princess.""",
+	LOOKING_FOR_PRINCESS_2 = """
+
+- Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
+	LOOKING_FOR_PRINCESS_3 = """
+
+- Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.""",
+	LOOKING_FOR_PRINCESS_4 = """
+
+- We still have to secure the princess.""",
 	LOOKING_FOR_PRINCESS_OPTION_1 = """Let's get right into it, I'm eager to get to her myself.""",
 	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
 	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
@@ -4110,15 +4101,15 @@ The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 
-	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
+- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time""",
 	LOOKING_FOR_PRINCESS_OPTION_THINK = """I'll think about""",
 	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard *attack*""",
 	LOOKING_FOR_PRINCESS_14 = """- Yeah, no shit, consider this a retribution for attacking me. Take it or leave, I don't care.""",
 	LOOKING_FOR_PRINCESS_15 = """Same as the last time the kobold quickly runs away into one of the small holes leaving you with nothing. You should probably return the other day.""",
 	LOOKING_FOR_PRINCESS_16 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
-	
-	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
+
+- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_18 = """The beating will be your payment *attack*""",
 	LOOKING_FOR_PRINCESS_17 = """This time you've went slightly ahead of the kobold, yet it wasn't enough to stop him from getting away. It's only at the last moment he thumbled on his way, almost falling, but regaining his composure. This, however, made him drop the bracelet behind.
 	
@@ -4174,11 +4165,16 @@ Anastasia: - They will kill me, like they killed my dad. And you betrayed, I tho
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
 	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth*""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss it""",
-	LOOKING_FOR_PRINCESS_31 = """Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
+	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
+
+Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
 
 Priestess: - I'll excuse this display of misbehave for now. Now leave and remember our agency in future. 
 
-Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you. """,
+Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you.""",
+	LOOKING_FOR_PRINCESS_32_f = """{color=red|Failure}
+
+""",
 	LOOKING_FOR_PRINCESS_32 = """Anastasia: - Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-
 
 *Slap*
@@ -4189,7 +4185,9 @@ Before you managed to reach Anastasia, the priestess herself gave her a loud sla
 	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough""",
 	LOOKING_FOR_PRINCESS_33 = """Priestess: - Silence, [race]!
 	
-Her sudden outburst made you back off.""",
+Her sudden outburst made you back off.
+
+""",
 	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her being clearly enraged.
 
 Priestess: - I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have your tongue cut out already. 
@@ -4208,9 +4206,15 @@ Priestess: - She shall be executed regardless of your needs. This is the law and
 	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric""",
 	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this""",
 	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands""",
-	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.""",
-	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.""",
-	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.""",
+	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.
+
+""",
+	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.
+
+""",
+	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.
+
+""",
 	LOOKING_FOR_PRINCESS_40 = """You notice that Zephyra cautiously signals you to let her negotiate on your behalf.""",
 	LOOKING_FOR_PRINCESS_OPTION_40 = """As her guardian I request to take punishment for her""",
 	LOOKING_FOR_PRINCESS_OPTION_41 = """*Allow Zephyra to negotiate*""",
@@ -4224,38 +4228,40 @@ The priestess takes another long pause to contemplate the situation when finally
 	LOOKING_FOR_PRINCESS_OPTION_43 = """*Accept*""",
 	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse* """,
 	LOOKING_FOR_PRINCESS_43 = """You've chosen the sacrifice to take the place of Anastasia. As you part with [name], you don't expect to see [him] again.
-	
-	Priestess: - Leave now and tell your masters that we still stand by old agreement.
-	
-	Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
-	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.""",
+
+Priestess: - Leave now and tell your masters that we still stand by old agreement.
+
+Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
+	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.
+
+""",
 	LOOKING_FOR_PRINCESS_45 = """Receiving your approval Zephyra walks forward. The Priestess observes her with prudence.
 
-	Zephyra: - Old traditions are important, but... quite problematic. 
+Zephyra: - Old traditions are important, but... quite problematic. 
 
-	Priestess: - What are you daring to suggest?
+Priestess: - What are you daring to suggest?
 
-	Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
+Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
 
-	Priestess: - You... You have no idea what you are talking about.
+Priestess: - You... You have no idea what you are talking about.
 """,
 	LOOKING_FOR_PRINCESS_46 = """Guard: - (whispering) Huh... What's this about?
-	
-	Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
 
-	You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
 
-	Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
+You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+
+Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
 	LOOKING_FOR_PRINCESS_47 = """By the order the princess is handed over to you and you give your thanks to the priestess.
 
-	Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
-	
-	Priestess: - Sure, whatever. Leave and take your foul vixen with you.
-	
-	Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
+Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
+
+Priestess: - Sure, whatever. Leave and take your foul vixen with you.
+
+Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
 	LOOKING_FOR_PRINCESS_48 = """Once outside with the now quiet princess you ask Zephyra to explain what happened.
-	
-	- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
+
+- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
 	LOOKING_FOR_PRINCESS_OPTION_45 = """That sounds pretty sad""",
 	LOOKING_FOR_PRINCESS_OPTION_46 = """So, she's a compelled lesbian?""",
 	LOOKING_FOR_PRINCESS_OPTION_47 = """You were unexpectedly helpful""",

@@ -329,6 +329,11 @@ func open_location(data):
 		$LocationGui/Resources/Label.visible = false
 	else:
 		$LocationGui/Resources/Label.visible = true
+	if data.has("locked"):
+		if data.locked:
+			$LocationGui/Resources/Forget.visible = false
+			$LocationGui/Resources/SelectWorkers.visible = false
+			$LocationGui/Resources/Label.visible = true	
 	gui_controller.nav_panel.build_accessible_locations()
 	#input_handler.interactive_message("spring", '',{})
 
@@ -987,10 +992,37 @@ func build_spell_panel():
 					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
 					newnode.script = null
 
-
+func test_stage(quest, stage):
+	var dict = {value = quest, stage = stage}
+	#dict.value = quest
+	#dict.stage = stage
+	if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
+		if dict.has('state') && dict.state == false:
+			return true
+		else:
+			return false
+	if dict.has('state') && dict.state == false:
+		return ResourceScripts.game_progress.get_active_quest(dict.value).stage != dict.stage
+	else:
+		return ResourceScripts.game_progress.get_active_quest(dict.value).stage == dict.stage
+	
 func open_location_actions():
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
+	if active_location.has("locked"):
+		if active_location.locked:
+			#better do it using actions next time
+			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+			newbutton.toggle_mode = true
+			if test_stage("lead_convoy_quest", "stage3"):
+				newbutton.text = tr('Combat')
+				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
+			elif test_stage("divine_symbol_quest", "stage3"):
+				newbutton.text = tr('Combat')
+				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
+			
+			return
+			
 	match active_location.type:
 		'dungeon':
 			enter_dungeon()
@@ -1056,8 +1088,6 @@ func enter_dungeon():
 		)
 		newbutton.text = "(debug)Complete location"
 		newbutton.connect("pressed", self, "debug_complete_location")
-		
-		special_events() # maybe change it for sending signal "enter_dungeon" with location data/code
 
 
 func debug_complete_location():
@@ -2366,16 +2396,8 @@ func select_workers():
 	MANSION.set_active_person(MANSION.active_person)
 	$NavigationModule.return_to_mansion("occupation")
 
-# func to add special events after enter_dungeon()
-func special_events():
-	if (active_location.code == 'dungeon_quest_mines') and !("MinesArrival" in ResourceScripts.game_progress.decisions):
-		input_handler.interactive_message("mines_arrival_start", '',{})
-		globals.common_effects([{code = 'decision', value = 'MinesArrival'}])
-	if (active_location.code == 'dungeon_quest_mines') and (active_location.progress.stage
-			> active_location.levels["L" + str(active_location.levels.size())].stages / 2) and !("HalfDungeonExplored" in ResourceScripts.game_progress.decisions):
-				input_handler.interactive_message("half_dungeon_explored_start", '',{})
-				globals.common_effects([{code = 'decision', value = 'HalfDungeonExplored'}])
-	if (active_location.code == 'dungeon_quest_mines') and (active_location.progress.stage
-			== active_location.levels["L" + str(active_location.levels.size())].stages - 1) and !("PreFinalBossDone" in ResourceScripts.game_progress.decisions):
-				input_handler.interactive_message("pre_final_boss_start", '',{})
-				globals.common_effects([{code = 'decision', value = 'PreFinalBossDone'}])
+func combat_duncan_greg_event(pressed, button):
+	input_handler.interactive_message('betrayal_confirmed_advance', '', {})
+	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+func meet_duncan_event(pressed, button):
+	input_handler.interactive_message('divine_symbol_6', '', {})

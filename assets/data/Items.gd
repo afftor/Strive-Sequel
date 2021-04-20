@@ -334,6 +334,16 @@ var materiallist = {
 		type = 'quest',
 		tags = [],
 	},
+	
+	princess_bracelet = {
+		code = 'princess_bracelet',
+		name = '',
+		descript = '',
+		icon = load("res://assets/images/iconsitems/item_soup.png"),
+		price = 1,
+		type = 'quest',
+		tags = [],
+	},
 	mythril = {
 		code = 'mythril',
 		name = '',

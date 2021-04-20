@@ -22,6 +22,7 @@ var data = {
 		{code = 'mages_introduction3', text = "MAGESINTRODUCTION2REPLY", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		],
 	},
+
 	mages_join = {
 		image = null,
 		character = 'myr',

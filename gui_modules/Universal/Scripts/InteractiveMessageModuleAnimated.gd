@@ -9,6 +9,7 @@ var previous_text = ''
 var base_text_size
 var base_text_position
 var doing_transition = false
+var wait_for = 0
 
 signal TransitionFinished
 
@@ -17,7 +18,7 @@ func _ready():
 		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
-	if $CharacterImage2 != null:
+	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
@@ -60,15 +61,20 @@ func open(scene):
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
 	
+	if wait_for != 0:
+		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN) 
+		wait_for = 0
+	
 	handle_scene_transition_fx(scene)
 	if doing_transition:
 		#print_debug("waiting")
 		yield(self, "TransitionFinished")
 		#print_debug("finished WAIT")
 		doing_transition = false
+	
 	update_scene_characters()
 	$CharacterImage.hide()
-	if $CharacterImage2 != null:
+	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.hide()
 	$ImagePanel.hide()
 	handle_scene_backgrounds(scene)
@@ -88,7 +94,6 @@ func open(scene):
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
 	
 	show()
-
 
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)
@@ -268,6 +273,21 @@ func select_person_for_next_event(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
+
+func remove_person(code):
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
+	stored_scene = code
+	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
+
+func remove_selected(person): 
+	person.remove_from_task()
+	ResourceScripts.game_party.remove_slave(person)
+	input_handler.slave_list_node.rebuild()
+	
+	var event_type = 'story_event'
+	if scenedata.scenedict[stored_scene].has('default_event_type'):
+		event_type = scenedata.scenedict[stored_scene].default_event_type
+	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 func event_person_selected(person):
 	input_handler.active_character = person
@@ -702,6 +722,8 @@ func handle_scene_options(scene):
 			
 			if i.has('select_person'):
 				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+			if i.has('remove_person'):
+				newbutton.connect("pressed", self, 'remove_person', [i.code])
 			elif i.code == 'shrine_option':
 				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
 			elif i.code == 'chest_mimic_force_open':

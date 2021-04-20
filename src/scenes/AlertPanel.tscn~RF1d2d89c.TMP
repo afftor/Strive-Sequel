@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/ConfirmWindowTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/Universal/Buttons/buttonbig_decor_hover.png" type="Texture" id=4]
+[ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=5]
+[ext_resource path="res://src/scenes/alertpanel.gd" type="Script" id=21]
+
+[node name="AlertPanel" type="Popup"]
+margin_left = 721.0
+margin_top = 331.0
+margin_right = 1245.0
+margin_bottom = 570.0
+theme = ExtResource( 1 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 53.0
+margin_top = 34.9474
+margin_right = 477.0
+margin_bottom = 138.947
+theme = ExtResource( 5 )
+custom_colors/default_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+bbcode_text = "<bbcode>"
+text = "<bbcode>"
+
+[node name="ButtonL" type="TextureButton" parent="."]
+margin_left = 26.0
+margin_top = 164.0
+margin_right = 236.0
+margin_bottom = 215.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="ButtonL"]
+margin_left = 12.0
+margin_right = 202.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "<left>"
+align = 1
+valign = 1
+
+[node name="ButtonR" type="TextureButton" parent="."]
+margin_left = 291.0
+margin_top = 164.0
+margin_right = 501.0
+margin_bottom = 215.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="ButtonR"]
+margin_left = 10.0
+margin_right = 201.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
+text = "<right>"
+align = 1
+valign = 1

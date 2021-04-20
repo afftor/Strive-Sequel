@@ -4,8 +4,6 @@
 #search_advice_3 - amelia -> myr
 #search_advice_4 - amelia -> amelia (failed interragation)
 #prison_avail - unlock
-#bracelet_found - not implemented
-#search_mages - not implemented - bracelet given to mages
 #amelia_help - not implemented - contionues questline
 
 

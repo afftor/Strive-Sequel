@@ -13,6 +13,7 @@ var data = {
 		],
 		
 	},
+
 	fighters_join = {
 		image = null,
 		character = 'duncan',

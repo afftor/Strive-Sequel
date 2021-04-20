@@ -740,6 +740,9 @@ func valuecheck(ch, ignore_npc_stats_gear = false): #additional flag is never us
 			return ResourceScripts.game_progress.if_class_unlocked(i.class, i.check, i.operant)
 		'has_wooden_gear':
 			return equipment.check_wooden_gear_equipped()
+		'name':
+			return get_stat('name') == i.value
+			
 	return check
 
 func decipher_reqs(reqs, colorcode = false):

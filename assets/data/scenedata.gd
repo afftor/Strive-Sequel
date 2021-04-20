@@ -1381,23 +1381,30 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
-			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage3'}], 
+			reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], 
 			target = 'duncan_not_found',
 			target_option = 2,
 		},
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], 
+			target = 'looking_for_princess_1',
+			target_option = 3,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], 
 			target = 'fighters_introduction2',
-			target_option = 3,
+			target_option = 4,
 		},
 		{
 			code = 'default', 
 			name = "Meet Leader", 
 			reqs = [], 
 			target = 'fighters_introduction2',
-			target_option = 4,
+			target_option = 5,
 		},
 	],
 	servants_init = [
@@ -1521,6 +1528,7 @@ var quests = {
 		stage3 = {code = 'stage3', name = 'The Loan', descript = 'By 100th day have at least 86000 gold.'},
 		},
 	},
+
 	guilds_introduction = {
 		code = 'guilds_introduction',
 		summary = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.  ",
@@ -1532,6 +1540,7 @@ var quests = {
 		stage2 = {code = 'stage2', name = 'New Friends', descript = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader. "},
 		},
 	},
+
 	fighters_election_quest = {
 		code = 'fighters_election_quest',
 		summary = "In your attempt to get Fighters Guild support for future election Duncan ordered you to acquire a perculiar item.",
@@ -1539,8 +1548,8 @@ var quests = {
 			start = {code = 'start', name = "Rite of Passage", descript = "Obtain and deliver Lich's skull to Fighters Guild to make them support you for Mayor Elections. Duncan gave me a location where I can find one."},
 			stage2 = {code = 'stage2', name = "Rite of Passage", descript = "I've obtained a Lich's skull. With this Fighters Guild will provide their support to me. I should return to Duncan."}
 		},
-		
 	},
+
 	mages_election_quest = {
 		code = 'mages_election_quest',
 		summary = "In your attempt to get Fighters Guild support for future election Myr gave you a personal order.",
@@ -1550,6 +1559,7 @@ var quests = {
 			stage2 = {code = 'stage2', name = "Dark Elf Witch", descript = "I've got the books Myr asked me to bring. It's time to get back to her."},
 		},
 	},
+
 	workers_election_quest = {
 		code = 'workers_election_quest',
 		summary = "In your attempt to get Fighters Guild support for future election Sigmund asked you to solve their issues with Fighters Guild.",
@@ -1567,7 +1577,6 @@ var quests = {
 		stages = {
 			stage1 = {code ='stage1', name = 'Mayor Elections', descript = "Earn 500 reputation with at least 3 main Guilds and acquire their support for future election.\n\n{custom_text_function=election_quest_text|} "},
 		},
-	
 	},
 
 	aliron_church_quest = {
@@ -1578,7 +1587,6 @@ var quests = {
 			stage1 = {code ='stage1', name = 'Initiation', descript = "Ginny from Aliron's church of Celena asked you to brign her 25 Meat Soups."},
 			#stage2 = {code ='stage2', name = 'Church Quest Name3', descript = "Church Quest Descript3"},
 		},
-	
 	},
 	
 	
@@ -1592,23 +1600,21 @@ var quests = {
 			stage4 = {code = 'stage4', name = 'Betrayal', descript = """As you are done with the Fred, it's time to report back to Myr"""},
 			stage5 = {code = 'stage5', name = 'Betrayal', descript = """As you are done with the Fred and Myr, it's time to return to Duncan"""},
 		}
-		
 	},
 	
+	#checked
 	civil_war_mines = {
 		code = "civil_war_mines",
 		summary = "As the war progresses, you received a message that Sigmund and the Workers Guild having some issues which can negatively affect the campaign.",
 		stages = {
-			stage1 = {code = 'stage1', name = 'Mine Company', descript = """Meet Sigmund at Workers Guild and find out what is the problem. """},
-			stage2 = {code = 'stage2', name = 'Mine Company', descript = """Sigmund told you that one of the mines has recently been overtaken by rebel group. You have to travel there and get the mine back to work. """},
+			stage1 = {code = 'stage1', name = 'Mine Company', descript = """Meet Sigmund at Workers Guild and find out what is the problem."""},
+			stage2 = {code = 'stage2', name = 'Mine Company', descript = """Sigmund told you that one of the mines has recently been overtaken by rebel group. You have to travel there and get the mine back to work."""},
 			stage3 = {code = 'stage3', name = 'Mine Company', descript = """You've taken care of the mine, it's time to return to Sigmund. """},
-			stage4 = {code = 'stage4', name = 'Mine Company', descript = """You've taken care of the mine and reported to Sigmund, it's time to see what new mission Duncan has for you. """},
+			stage4 = {code = 'stage4', name = 'Mine Company', descript = """You've taken care of the mine and reported to Sigmund, it's time to see what new mission Duncan has for you."""},
 		},
-		
-		
-		
 	},
 	
+	#checked
 	lead_convoy_quest = {
 		code = 'lead_convoy_quest',
 		summary = "The Guilds prepare to take back a town from the rebels. The large siege is about to break through.",
@@ -1619,6 +1625,7 @@ var quests = {
 		},
 	},
 	
+	# need to enable Ginny in order to test
 	divine_symbol_quest = {
 		code = 'divine_symbol_quest',
 		summary = "The battle for the town was abrupted by a magic dome of divine origin. You have no way to get inside and the battle was put on hold.",
@@ -1628,8 +1635,8 @@ var quests = {
 			stage3 = {code ='stage3', name = 'Divine Influence', descript = """As you've received the Divine Symbol from Ginny, it's time to return to Duncan."""},
 			stage4 = {code ='stage4', name = 'Divine Influence', descript = """Duncan told you to get rid of the champion and the barrier protecting the city. Assemble the team and move in."""},
 		},
-		
 	},
+
 	final_operation = {
 		code = 'final_operation',
 		summary = "While victorious during the siege, you still couldn't get the rebels' leaders. However, it seems Duncan has the plan for it. ",
@@ -1643,7 +1650,8 @@ var quests = {
 		code = 'princess_search',
 		summary = "With rebel main hideout cleared, the princess is on the run. However, you can't finish the business until she's caught and brought back, dead or alive. ",
 		stages = {
-			stage1 = {code ='stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
+			stage0 = {code = 'stage0', name = 'Chasing the Princess', descript = """Wait for further instructions"""},
+			stage1 = {code = 'stage1', name = 'Chasing the Princess', descript = """You should visit Duncan and learn your next goal."""},
 			stage2 = {code = 'stage2', name = 'Chasing the Princes', descript = """Duncan explained that you won't be able to complete the elections until princess is found. It's time to find any leads which would help you to locate her."""},
 			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
 			stage4 = {code = 'stage4', name = 'Chasing the Princes', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
@@ -1667,7 +1675,6 @@ var quests = {
 		stages = {
 			stage1 = {code = 'stage1', name = "Thank you for playing", descript = ""}
 		},
-		
 	}
 	
 }
