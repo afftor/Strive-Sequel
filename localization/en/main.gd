@@ -4772,5 +4772,17 @@ Sigmund: - Let's finally get to the feast.""",
 	AIREAMELIAMEET1_OPTION2 = "I can't promise that",
 	AIREAMELIAMEET2 = "- I'm pleased to hear that. According to the elf lass, Anastasia is hiding at elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I'm hoping to hear more of your success.",
 	AIREAMELIAMEET2_1 = "- I see. Well, I'll be waiting till you change your mind.",
-	
+	AMELIAFINDPRINCESSOPTION = "I've been wondering if you could give me an advice to find someone...",
+	AMELIAFINDPRINCESS1_1 = """- You've been aiming to find our princess? I've heard you've captured an elven girl, who seems to be close to her. It might be a good idea to try her, if you didn't already.
+
+	- Alternatively, we might use our mage friends to find her if you get some of her belonging. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me.""",
+	AMELIAFINDPRINCESS1_2 = """- You've been aiming to find our princess? Well, if you've given up on the captured elf, I have an alternative suggestion.
+
+	- We can use our mage friends to find her if you get some of her belonging. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me.""",
+	AMELIAFINDPRINCESS1_3 = "- You've been aiming to find our princess? There does not seem to be a lot of leads at our hands, is there? Well, for such cases we can utilize our mage friends, as long as you can provide them with something belonging to the one we seek. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me. ",
+	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice",
+	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I find anything",
+	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
+	AMELIAFINDPRINCESS2_1 = "- See you soon, dear.",
+	AMELIAFINDPRINCESS2_2 = "- You ask me? I haven't been there and I believe its your job. Don't sweat about it, I'm sure you'll manage.",
 }
