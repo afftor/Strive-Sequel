@@ -58,7 +58,8 @@ var data = {
 	help_sigmund_end_2 = {
 		image = null, character = "sigmund", tags = [],
 		text = [ {text = "HELP_SIGMUND_4", reqs = []} ],
-		common_effects = [{code = 'make_quest_location', value = 'dungeon_quest_mines'}],
+		common_effects = [{code = 'make_quest_location', value = 'dungeon_quest_mines'},
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []
 			}

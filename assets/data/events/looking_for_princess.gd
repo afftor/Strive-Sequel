@@ -1,6 +1,6 @@
 var data = {
 	message_before_looking_operation = {
-		common_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}], #adds option to talk to duncan in intoduction
+		common_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage2'}], #adds option to talk to duncan in intoduction
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "LOOKING_FOR_PRINCESS_START", reqs = []}],
 		options = [ {

@@ -992,7 +992,20 @@ func build_spell_panel():
 					newnode.get_node("name").set("custom_colors/font_color", Color(1, 0.5, 0.5))
 					newnode.script = null
 
-
+func test_stage(quest, stage):
+	var dict
+	dict.value = quest
+	dict.stage = stage
+	if ResourceScripts.game_progress.get_active_quest(dict.value) == null || dict.has('stage') == false:
+		if dict.has('state') && dict.state == false:
+			return true
+		else:
+			return false
+	if dict.has('state') && dict.state == false:
+		return ResourceScripts.game_progress.get_active_quest(dict.value).stage != dict.stage
+	else:
+		return ResourceScripts.game_progress.get_active_quest(dict.value).stage == dict.stage
+	
 func open_location_actions():
 	input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 	var newbutton
@@ -1001,9 +1014,15 @@ func open_location_actions():
 			#better do it using actions next time
 			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 			newbutton.toggle_mode = true
-			newbutton.text = tr('Combat')
-			newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
+			if test_stage("divine_symbol_quest", "stage1"):
+				newbutton.text = tr('Combat')
+				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
+			elif test_stage("divine_symbol_quest", "stage3"):
+				newbutton.text = tr('Combat')
+				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
+			
 			return
+			
 	match active_location.type:
 		'dungeon':
 			enter_dungeon()
@@ -2380,3 +2399,5 @@ func select_workers():
 func combat_duncan_greg_event(pressed, button):
 	input_handler.interactive_message('betrayal_confirmed_advance', '', {})
 	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+func meet_duncan_event(pressed, button):
+	input_handler.interactive_message('divine_symbol_6', '', {})

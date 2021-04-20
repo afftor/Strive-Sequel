@@ -135,6 +135,7 @@ var data = {
 	rebel_group_win = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_11", reqs = []} ],
+		common_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}],
 			}
@@ -210,6 +211,7 @@ var data = {
 	pre_final_boss_fin_1 = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_18", reqs = []} ],
+		common_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}]
 			}
@@ -219,7 +221,8 @@ var data = {
 	pre_final_boss_fin_2 = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_19", reqs = []} ],
-		common_effects = [{code = 'make_loot', pool = [['rebels_ore_reward',1]]}, {code = 'open_loot'}],
+		common_effects = [{code = 'make_loot', pool = [['rebels_ore_reward',1]]}, {code = 'open_loot'},
+		{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}]
 			}
