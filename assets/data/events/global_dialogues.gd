@@ -116,6 +116,7 @@ var data = {
 		{text = "MAGESINTRODUCTION3_1", reqs = [], previous_dialogue_option = 1, remove_after_first_use = true},
 		{text = "MAGESINTRODUCTION3_2", reqs = [], previous_dialogue_option = 2, remove_after_first_use = true},
 		{text = "MAGESINTRODUCTION3_3", reqs = [], previous_dialogue_option = 3, remove_after_first_use = true},
+		{text = "MIND_CONTROL_10", reqs = [], previous_dialogue_option = 4},
 		],
 		options = [
 		{code = 'mages_questions', text = "MAGESASKQUESTIONS", reqs = [], dialogue_argument = 1},
