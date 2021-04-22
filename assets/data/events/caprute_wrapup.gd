@@ -192,12 +192,11 @@ var data = {
 		}],
 	},
 	
-	# TODO GOTO ANA EXEC
 	guilds_meeting_15 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_28", reqs = []}],
 		options = [ {
-			code = '', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'anastasia_execution_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 	
@@ -242,12 +241,12 @@ var data = {
 		}  ],
 	},
 	
-	#TODO GOTO and add - Shame you didn't succeed. The execution will be held in a week.
+	#TODO add - Shame you didn't succeed. The execution will be held in a week.
 	about_princess_1 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "MIND_CONTROL_7", reqs = []}],
 		options = [ {
-			code = '', text = "YES", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'anastasia_execution_start', text = "YES", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'fighters_introduction2', text = "NO", reqs = [], dialogue_argument = 0,
 		}],
@@ -337,6 +336,16 @@ var data = {
 			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1,
 		}, {
 			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	anastasia_execution_start = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
+		text = [{text = "ANASTASIA_EXECUTION_1", reqs = []}],
+		options = [ {
+			code = '', text = "ANASTASIA_EXECUTION_OPTION_1", reqs = [], dialogue_argument = 1,
+		}, {
+			code = '', text = "ANASTASIA_EXECUTION_OPTION_2", reqs = [], dialogue_argument = 2,
 		}],
 	},
 }
