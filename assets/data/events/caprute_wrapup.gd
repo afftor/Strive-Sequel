@@ -202,7 +202,7 @@ var data = {
 	},
 	
 	amelia_intermission_start = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
 		text = [{text = "MIND_CONTROL_1", reqs = []}],
 		options = [ {
 			code = 'amelia_intermission_1', text = "MIND_CONTROL_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -262,6 +262,81 @@ var data = {
 			code = 'mages_introduction3', text = "MIND_CONTROL_OPTION_9", reqs = [], dialogue_argument = 4,
 		}, {
 			code = 'mages_introduction3', text = "MIND_CONTROL_OPTION_10", reqs = [], dialogue_argument = 4,
+		}],
+	},
+	
+	# Enter at Xari
+	mindcontrol_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_11", reqs = []}],
+		options = [ {
+			code = 'mindcontrol_2', text = "MIND_CONTROL_12_OPTION", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'close', text = "MIND_CONTROL_13_OPTION", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	mindcontrol_2 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_14", reqs = []}],
+		options = [ {
+			code = 'mindcontrol_3', text = "MIND_CONTROL_OPTION_11", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 1,
+		}, {
+			code = 'close', text = "MIND_CONTROL_OPTION_12", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	mindcontrol_3 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_15", reqs = []}],
+		options = [ {
+			code = 'mindcontrol_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	mindcontrol_4 = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_16", reqs = []}],
+		options = [ {
+			code = 'mindcontrol_5', text = "MIND_CONTROL_OPTION_13", reqs = [{type = 'decision', value = 'bracelet_found', check = true}], dialogue_argument = 1,
+		}, {
+			code = 'mindcontrol_7', text = "NO", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	mindcontrol_5 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_17", reqs = []}],
+		options = [ {
+			code = 'mindcontrol_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	mindcontrol_6 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_18", reqs = []}],
+		options = [ {
+			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2,
+		}],
+	},
+	
+	mindcontrol_7 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_19", reqs = []}],
+		options = [ {
+			code = 'mindcontrol_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	mindcontrol_8 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
+		text = [{text = "MIND_CONTROL_20", reqs = []}],
+		options = [ {
+			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2,
 		}],
 	},
 }

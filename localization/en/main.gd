@@ -4410,8 +4410,8 @@ Sigmund: - Yah, I agree. There's no point rushin' either.""",
 	MIND_CONTROL_OPTION_10 = """Your help would be invaluable""",
 	MIND_CONTROL_10 = """- *Sigh* Try Xari, I believe she's been dabbling in it. Just don't get any weird ideas about what you could do with this.""",
 	MIND_CONTROL_11 = """- Hey, [name], what's up?""",
-	MIND_CONTROL_12 = """I've been told you can help me with a mind control technique""",
-	MIND_CONTROL_13 = """Just dropped to say hi *Leave*""",
+	MIND_CONTROL_12_OPTION = """I've been told you can help me with a mind control technique""",
+	MIND_CONTROL_13_OPTION = """Just dropped to say hi *Leave*""",
 	MIND_CONTROL_14 = """- Eeh? I haven't been asked about this in a long while. 
 
 Xari takes a long pause thinking about your request.
