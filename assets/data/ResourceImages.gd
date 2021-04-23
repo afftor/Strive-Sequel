@@ -152,8 +152,12 @@ var dynamic_backgrounds = {
 }
 
 var portraits = {
-	daisy = 'res://assets/images/portraits/daisy.png',
-	daisy_sad = "res://assets/images/portraits/daisysad.png",
+	daisy = 'res://assets/images/portraits/daisy_prt.png',
+	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
+	anastasia = "res://assets/images/portraits/anastasia_prt.png",
+	aire = "res://assets/images/portraits/aire_prt.png",
+	kurdan = "",
+	zephyra = '',
 }
 
 var gui = {

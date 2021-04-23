@@ -251,7 +251,7 @@ func show_quest_info(quest):
 		$CompleteButton.visible = false
 		$SelectCharacter.visible = false
 		var quest_stage = scenedata.quests[quest.code].stages[quest.stage]
-		$QuestDescript.bbcode_text = globals.TextEncoder('[center]' + quest_stage.name + '[/center]\n' + scenedata.quests[quest.code].summary + "\n\n" + quest_stage.descript)
+		$QuestDescript.bbcode_text = globals.TextEncoder('[center]' + tr(quest_stage.name) + '[/center]\n' + tr(scenedata.quests[quest.code].summary) + "\n\n" + tr(quest_stage.descript))
 
 
 var selectedslave

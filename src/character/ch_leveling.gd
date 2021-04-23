@@ -37,8 +37,8 @@ func update_exp(value, is_set):
 
 #professions
 func process_chardata(data):
-	if data.has('professions'):
-		for prof in data.professions: 
+	if data.has('classes'):
+		for prof in data.classes: 
 			unlock_class(prof)
 
 

@@ -1531,6 +1531,16 @@ var dialogue_inits = {
 	],
 }
 
+var dict = {
+MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home. ",
+MAIN_QUEST_LOAN_STAGE0 = 'You must have over 1000 gold by 14th day.',
+MAIN_QUEST_LOAN_STAGE1 = 'By 28th day have at least 3000 gold.',
+MAIN_QUEST_LOAN_STAGE2 = 'By 50th day have at least 10000 gold.',
+MAIN_QUEST_LOAN_STAGE3 = 'By 100th day have at least 86000 gold.',
+MAIN_QUEST_LOAN_NAME = 'The Loan',
+
+
+}
 var quests = {
 	main_quest_loan = {
 		code = 'main_quest_loan',
