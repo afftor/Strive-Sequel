@@ -4789,4 +4789,25 @@ Sigmund: - Let's finally get to the feast.""",
 	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
 	AMELIAFINDPRINCESS2_1 = "- See you soon, dear.",
 	AMELIAFINDPRINCESS2_2 = "- You ask me? I haven't been there and I believe its your job. Don't sweat about it, I'm sure you'll manage.",
+	
+	
+	
+	
+	
+	#           QUESTS           #
+	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home.",
+	MAIN_QUEST_LOAN_NAME = "The Loan",
+	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by 14th day.",
+	MAIN_QUEST_LOAN_STAGE1 = "By 28th day have at least 3000 gold.",
+	MAIN_QUEST_LOAN_STAGE2 = "By 50th day have at least 10000 gold.",
+	MAIN_QUEST_LOAN_STAGE3 = "By 100th day have at least 86000 gold.",
+	
+	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.",
+	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
+	GUILDS_INTRODUCTION_NAME2 = "First Step",
+	GUILDS_INTRODUCTION_NAME3 = "New Friends",
+	GUILDS_INTRODUCTION_STAGE0 = "Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
+	GUILDS_INTRODUCTION_STAGE1 = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board.",
+	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
+	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader.",
 }
