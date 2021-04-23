@@ -4413,8 +4413,8 @@ Sigmund: - Yah, I agree. There's no point rushin' either.""",
 	MIND_CONTROL_OPTION_10 = """Your help would be invaluable""",
 	MIND_CONTROL_10 = """- *Sigh* Try Xari, I believe she's been dabbling in it. Just don't get any weird ideas about what you could do with this.""",
 	MIND_CONTROL_11 = """- Hey, [name], what's up?""",
-	MIND_CONTROL_12 = """I've been told you can help me with a mind control technique""",
-	MIND_CONTROL_13 = """Just dropped to say hi *Leave*""",
+	MIND_CONTROL_12_OPTION = """I've been told you can help me with a mind control technique""",
+	MIND_CONTROL_13_OPTION = """Just dropped to say hi *Leave*""",
 	MIND_CONTROL_14 = """- Eeh? I haven't been asked about this in a long while. 
 
 Xari takes a long pause thinking about your request.
@@ -4453,7 +4453,9 @@ Xari fishes a small ring out of her stash. As she chants the control spell, the 
 
 Amelia smiled at you mysteriously.""",
 	ANASTASIA_EXECUTION_3 = """- That's the spirit. After all, we got the best spots so we can easily leave if bored.""",
-	ANASTASIA_EXECUTION_4 = """Oh, look, it's about to begin.""",
+	ANASTASIA_EXECUTION_4 = """
+
+Oh, look, it's about to begin.""",
 	ANASTASIA_EXECUTION_5 = """As the cover from the postrum was removed the crowds began to raise their voices. In the center of it was a fully naked Anastasia entrapped in wooden stockade. As she was observed by the whole town her face quickly turned angry and red. The herald next to her began declaring her crimes which went on for a full minute. 
 
 Herald: - ...for these crimes, rebel Princess Anastasia is subjected...
@@ -4479,13 +4481,15 @@ However, the princess' pleads fell on deaf ears. Angry and horny citizens around
 	ANASTASIA_EXECUTION_8 = """Amelia: - I did say I pity her, didn't I? And this is much more fun to look at too.""",
 	ANASTASIA_EXECUTION_9 = """Amelia: - *giggle* Well, that's only half of the truth. Ever thought about how many landlords, riches and nobles would like to do it with a real and only princess? After the thought I gave them we managed to settle it in a democratic way. These first guys in the line could learn a better way to disguise themselves, though.""",
 	ANASTASIA_EXECUTION_10 = """Amelia: - Surely you don't believe this, do you? Even so, this was her choice. Yesterday I informed her about the new punishment and offered a way to end her life, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, given there would be no consequences.""",
-	ANASTASIA_EXECUTION_11 = """Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
+	ANASTASIA_EXECUTION_11 = """
+
+Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
 	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet customers didn't seem to end. Her pleads and cries have entirely turned into sobs and faint moans. 
 
 The former princess has been kept used by citizens for the whole next week, eventually disappearing from the main square.""",
 	ANASTASIA_EXECUTION_13 = """The crowd has gathered at the square in waiting for the announcement of the war being over. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The cries of rejoice have sprouted from the people. 
 
-- None can belittle how much effort [sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
+- None can belittle how much effort [Sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
 	
 	
 	ANASTASIA_PERSUASION_1 = """You walk into a rather comfortable jail room for a single unbound prisoner which is held there: the former rebellion leader, princess Anastasia. Despite her state she observes you with a sharp glance, yet stays silent. It seems she wasn't really tortured or interrogated since her arrival, but there would be little reason to that.""",
@@ -4702,7 +4706,7 @@ Anastasia, the former rebel leader, has came out at the balcony of the governmen
 Upon hearing this the crowd has brightened with enthusiasm, while Anastasia mustered her resolution.""",
 	ANASTASIA_DECLARATION_2 = """- My ways were wrong and I've led many people to the demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake, to stop and surrender.
 
-- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
+- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [Sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia on the waist. The crowd seems very enthusiastic and positive, as the rumors have been spread for some time how you're going to become the next ruler. Many people began applauding to you.""",
 	ANASTASIA_DECLARATION_3 = """Male Citizen 1: - It's finally over.
@@ -4788,4 +4792,25 @@ Sigmund: - Let's finally get to the feast.""",
 	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
 	AMELIAFINDPRINCESS2_1 = "- See you soon, dear.",
 	AMELIAFINDPRINCESS2_2 = "- You ask me? I haven't been there and I believe its your job. Don't sweat about it, I'm sure you'll manage.",
+	
+	
+	
+	
+	
+	#           QUESTS           #
+	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home.",
+	MAIN_QUEST_LOAN_NAME = "The Loan",
+	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by 14th day.",
+	MAIN_QUEST_LOAN_STAGE1 = "By 28th day have at least 3000 gold.",
+	MAIN_QUEST_LOAN_STAGE2 = "By 50th day have at least 10000 gold.",
+	MAIN_QUEST_LOAN_STAGE3 = "By 100th day have at least 86000 gold.",
+	
+	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.",
+	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
+	GUILDS_INTRODUCTION_NAME2 = "First Step",
+	GUILDS_INTRODUCTION_NAME3 = "New Friends",
+	GUILDS_INTRODUCTION_STAGE0 = "Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
+	GUILDS_INTRODUCTION_STAGE1 = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board.",
+	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
+	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader.",
 }

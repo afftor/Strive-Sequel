@@ -1224,6 +1224,9 @@ var dungeons = {
 			{text = 'See Xari', reqs = [
 				{type = 'active_quest_stage', value = 'mages_election_quest', stage = 'stage1'}], 
 				args = [{code = 'start_event', data = 'xari_encounter9', args = []}]},
+			{text = 'Enter', reqs = [
+				{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], 
+				args = [{code = 'start_event', data = 'mindcontrol_1', args = []}]},
 		],
 	},
 	quest_mages_fred = {
@@ -1828,6 +1831,7 @@ var pregen_characters = {
 	Zephyra = {
 		code = 'zephyra',
 		name = 'Zephyra',
+		unique = 'zephyra',
 		surname = '',
 		race = 'HalfkinFox',
 		sex = 'female',

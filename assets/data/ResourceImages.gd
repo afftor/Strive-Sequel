@@ -53,6 +53,9 @@ var backgrounds = {
 	#events
 	anastasia_event_alive = load("res://assets/images/backgrounds/anastasia_event.png"),
 	anastasia_event_dead = load("res://assets/images/backgrounds/anastasia_event2.png"),
+	anastasia_execution1 = load("res://assets/images/backgrounds/AnastasiaCG006.png"),
+	anastasia_execution2 = load("res://assets/images/backgrounds/AnastasiaCG007.png"),
+	anastasia_execution3 = load("res://assets/images/backgrounds/AnastasiaCG008.png"),
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),

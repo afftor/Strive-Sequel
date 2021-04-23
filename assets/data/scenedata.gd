@@ -1388,6 +1388,20 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage4'}], 
+			target = 'capture_wrapup_start',
+			target_option = 0,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage5'}], 
+			target = 'capture_wrapup_start',
+			target_option = 0,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], 
 			target = 'looking_for_princess_1',
 			target_option = 3,
@@ -1541,13 +1555,12 @@ var quests = {
 
 	guilds_introduction = {
 		code = 'guilds_introduction',
-		summary = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.  ",
+		summary = "GUILDS_INTRODUCTION_SUMMARY",
 		stages = {
-		start = {code = 'start', name = 'The Four Guilds', descript = 'Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.'},
-		stage1 = {code = 'stage1', name = 'First Step', descript = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board."},
-		stage1_5 = {code = 'stage1_5', name = 'First Step', descript = "You've earned enough reputation with one of the factions. Wait for a few days."},
-
-		stage2 = {code = 'stage2', name = 'New Friends', descript = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader. "},
+		start = {code = 'start', name = 'GUILDS_INTRODUCTION_NAME1', descript = 'GUILDS_INTRODUCTION_STAGE0'},
+		stage1 = {code = 'stage1', name = 'GUILDS_INTRODUCTION_NAME2', descript = "GUILDS_INTRODUCTION_STAGE1"},
+		stage1_5 = {code = 'stage1_5', name = 'GUILDS_INTRODUCTION_NAME2', descript = "GUILDS_INTRODUCTION_STAGE1_5"},
+		stage2 = {code = 'stage2', name = 'GUILDS_INTRODUCTION_NAME3', descript = "GUILDS_INTRODUCTION_STAGE2"},
 		},
 	},
 
@@ -1666,7 +1679,6 @@ var quests = {
 			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
 			stage4 = {code = 'stage4', name = 'Chasing the Princes', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
 			stage5 = {code = 'stage5', name = 'Chasing the Princes', descript = """You've captured the princess herself. It's time to bring her back to Duncan."""},
-			
 		},
 	},
 	
@@ -1675,7 +1687,6 @@ var quests = {
 		summary = "The former leader of rebels, princess Anastasia is at the hand of the guilds. Yet you've opposed to the idea of her execution. Given your reputaiton, you were allowed to persuade her to submit to the guilds, in such case you'll be able to get your hands on her. ",
 		stages = {
 			stage1 = {code ='stage1', name = 'Distressed Damsel', descript = """You've been allowed to persuade Anastasia to succumb to the guilds. Find a way to do so, or agree to her execution."""},
-			
 		},
 	},
 	
