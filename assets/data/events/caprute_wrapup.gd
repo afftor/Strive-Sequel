@@ -226,7 +226,7 @@ var data = {
 		text = [{text = "MIND_CONTROL_4", reqs = [], previous_dialogue_option = 1},
 		{text = "MIND_CONTROL_5", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'princess_persuasion', stage = 'stage1'}]
 		} ],
 	},
 	
@@ -235,20 +235,27 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "MIND_CONTROL_6", reqs = []}],
 		options = [ {
-			code = 'about_princess_1', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'about_princess_1', text = "MIND_CONTROL_OPTION_6", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
-			code = 'fighters_introduction2', text = "MIND_CONTROL_OPTION_7", reqs = [], dialogue_argument = 0,
+			code = 'fighters_introduction2', text = "MIND_CONTROL_OPTION_7", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 		}  ],
 	},
 	
-	#TODO add - Shame you didn't succeed. The execution will be held in a week.
 	about_princess_1 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "MIND_CONTROL_7", reqs = []}],
 		options = [ {
-			code = 'anastasia_execution_start', text = "YES", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'about_princess_2', text = "YES", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'fighters_introduction2', text = "NO", reqs = [], dialogue_argument = 0,
+		}],
+	},
+	
+	about_princess_2 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
+		text = [{text = "MIND_CONTROL_8", reqs = []}],
+		options = [ {
+			code = 'anastasia_execution_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}],
 	},
 	
@@ -315,9 +322,9 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_18", reqs = []}],
 		options = [ {
-			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1,
+			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}], 
 		}, {
-			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2,
+			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
 		}],
 	},
 	
@@ -333,19 +340,88 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_20", reqs = []}],
 		options = [ {
-			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1,
+			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
 		}, {
-			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2,
+			code = 'close', text = "MIND_CONTROL_OPTION_15", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
 		}],
 	},
 	
+	#TODO Close guild window
 	anastasia_execution_start = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common'], reqs = [], character = 'amelia',
 		text = [{text = "ANASTASIA_EXECUTION_1", reqs = []}],
 		options = [ {
-			code = '', text = "ANASTASIA_EXECUTION_OPTION_1", reqs = [], dialogue_argument = 1,
+			code = 'anastasia_execution_1', text = "ANASTASIA_EXECUTION_OPTION_1", reqs = [], dialogue_argument = 1,
 		}, {
-			code = '', text = "ANASTASIA_EXECUTION_OPTION_2", reqs = [], dialogue_argument = 2,
+			code = 'anastasia_execution_1', text = "ANASTASIA_EXECUTION_OPTION_2", reqs = [], dialogue_argument = 2,
 		}],
 	},
+	
+	anastasia_execution_1 = {
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'amelia',
+		text = [{text = "ANASTASIA_EXECUTION_2", reqs = [], previous_dialogue_option = 1},
+		{text = "ANASTASIA_EXECUTION_3", reqs = [], previous_dialogue_option = 2},
+		{text = "ANASTASIA_EXECUTION_4", reqs = []}],
+		options = [ {
+			code = 'anastasia_execution_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5
+		}],
+	},
+	
+	#TODO change sprites
+	anastasia_execution_2 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "ANASTASIA_EXECUTION_5", reqs = []}], custom_background = "anastasia_event_alive", 
+		options = [ {
+			code = 'anastasia_execution_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	anastasia_execution_3 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "ANASTASIA_EXECUTION_6", reqs = []}], custom_background = "anastasia_event_dead", 
+		options = [ {
+			code = 'anastasia_execution_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	anastasia_execution_4 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "ANASTASIA_EXECUTION_7", reqs = []}], custom_background = "anastasia_event_dead", 
+		options = [ {
+			code = 'anastasia_execution_5', text = "ANASTASIA_EXECUTION_OPTION_3", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'anastasia_execution_5', text = "ANASTASIA_EXECUTION_OPTION_4", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'anastasia_execution_5', text = "ANASTASIA_EXECUTION_OPTION_5", reqs = [], dialogue_argument = 3,
+		}],
+	},
+	
+	anastasia_execution_5 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "ANASTASIA_EXECUTION_8", reqs = [], previous_dialogue_option = 1},
+		{text = "ANASTASIA_EXECUTION_9", reqs = [], previous_dialogue_option = 2},
+		{text = "ANASTASIA_EXECUTION_10", reqs = [], previous_dialogue_option = 3},
+		{text = "ANASTASIA_EXECUTION_11", reqs = []}], custom_background = "anastasia_event_dead", 
+		options = [ {
+			code = 'anastasia_execution_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	},
+	
+	anastasia_execution_6 = {
+		image = null, tags = ['dialogue_scene'], reqs = [],
+		text = [{text = "ANASTASIA_EXECUTION_12", reqs = []}], custom_background = "anastasia_event_alive", 
+		options = [ {
+			code = 'duncans_declaration_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1
+		}],
+	},
+	
+	#TODO add final_words
+	duncans_declaration_start = {
+		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'duncan',
+		text = [{text = "ANASTASIA_EXECUTION_13", reqs = []}], 
+		options = [ {
+			#code = 'final_words', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+		}],
+	}
 }

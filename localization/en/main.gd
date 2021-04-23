@@ -4450,7 +4450,9 @@ Xari fishes a small ring out of her stash. As she chants the control spell, the 
 
 Amelia smiled at you mysteriously.""",
 	ANASTASIA_EXECUTION_3 = """- That's the spirit. After all, we got the best spots so we can easily leave if bored.""",
-	ANASTASIA_EXECUTION_4 = """Oh, look, it's about to begin.""",
+	ANASTASIA_EXECUTION_4 = """
+
+Oh, look, it's about to begin.""",
 	ANASTASIA_EXECUTION_5 = """As the cover from the postrum was removed the crowds began to raise their voices. In the center of it was a fully naked Anastasia entrapped in wooden stockade. As she was observed by the whole town her face quickly turned angry and red. The herald next to her began declaring her crimes which went on for a full minute. 
 
 Herald: - ...for these crimes, rebel Princess Anastasia is subjected...
@@ -4476,13 +4478,15 @@ However, the princess' pleads fell on deaf ears. Angry and horny citizens around
 	ANASTASIA_EXECUTION_8 = """Amelia: - I did say I pity her, didn't I? And this is much more fun to look at too.""",
 	ANASTASIA_EXECUTION_9 = """Amelia: - *giggle* Well, that's only half of the truth. Ever thought about how many landlords, riches and nobles would like to do it with a real and only princess? After the thought I gave them we managed to settle it in a democratic way. These first guys in the line could learn a better way to disguise themselves, though.""",
 	ANASTASIA_EXECUTION_10 = """Amelia: - Surely you don't believe this, do you? Even so, this was her choice. Yesterday I informed her about the new punishment and offered a way to end her life, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, given there would be no consequences.""",
-	ANASTASIA_EXECUTION_11 = """Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
+	ANASTASIA_EXECUTION_11 = """
+
+Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
 	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet customers didn't seem to end. Her pleads and cries have entirely turned into sobs and faint moans. 
 
 The former princess has been kept used by citizens for the whole next week, eventually disappearing from the main square.""",
 	ANASTASIA_EXECUTION_13 = """The crowd has gathered at the square in waiting for the announcement of the war being over. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The cries of rejoice have sprouted from the people. 
 
-- None can belittle how much effort [sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
+- None can belittle how much effort [Sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
 	
 	
 	ANASTASIA_PERSUASION_1 = """You walk into a rather comfortable jail room for a single unbound prisoner which is held there: the former rebellion leader, princess Anastasia. Despite her state she observes you with a sharp glance, yet stays silent. It seems she wasn't really tortured or interrogated since her arrival, but there would be little reason to that.""",
@@ -4699,7 +4703,7 @@ Anastasia, the former rebel leader, has came out at the balcony of the governmen
 Upon hearing this the crowd has brightened with enthusiasm, while Anastasia mustered her resolution.""",
 	ANASTASIA_DECLARATION_2 = """- My ways were wrong and I've led many people to the demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake, to stop and surrender.
 
-- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
+- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [Sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia on the waist. The crowd seems very enthusiastic and positive, as the rumors have been spread for some time how you're going to become the next ruler. Many people began applauding to you.""",
 	ANASTASIA_DECLARATION_3 = """Male Citizen 1: - It's finally over.

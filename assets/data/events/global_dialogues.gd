@@ -39,6 +39,7 @@ var data = {
 		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage1'}], dialogue_argument = 9, remove_after_first_use = true},
 
 		{code = 'looking_for_princess_2', text = "LOOKING_FOR_PRINCESS_OPTION_3", reqs = [{type = 'decision', value = 'LookingForPrincessAccess', check = true}], dialogue_argument = 10},
+		{code = 'about_princess_start', text = "MIND_CONTROL_OPTION_5", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11},
 		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -130,6 +131,7 @@ var data = {
 		{code = 'fred_return_to_myr_1', text = "FREDQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 3},
 		{code = 'looking_for_princess_mages', text = "LOOKING_FOR_PRINCESS_OPTION_19", reqs = [{type = 'decision', value = 'bracelet_found', check = true}], 
 		dialogue_argument = 6, type = 'next_dialogue', },#bonus_effects = [{code = "screen_black_transition", value = 2}]},
+		{code = 'mindcontrol_start', text = "MIND_CONTROL_OPTION_8", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11, remove_after_first_use = true},
 		
 		
 		{code = 'mages_leader_close', text = "MAGESINTRODUCTION3REPLY3", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
