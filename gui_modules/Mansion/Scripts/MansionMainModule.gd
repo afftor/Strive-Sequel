@@ -760,15 +760,9 @@ func test_mode():
 		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
 		ResourceScripts.game_party.add_slave(newslave)
 
-<<<<<<< HEAD
-		input_handler.interactive_message('guilds_meeting_7', '', {})
-		#ResourceScripts.game_progress.decisions.append("PrincessDead")
-		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage4'}])
-		
-=======
 		input_handler.interactive_message('servants_election_finish7', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
->>>>>>> ac110597980af07e6d950c08d0a3707412bf1220
+
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}])
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		
