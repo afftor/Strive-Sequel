@@ -50,7 +50,7 @@ func custom_stats_set(st, value):
 		if delta != 0:
 			delta *= get_stat(st+'_gain_mod')
 			statlist[st] = clamp(statlist[st] + delta, 0, 100)
-	elif st in ['physics', 'wits', 'charm', 'sexuals']: #not sure about sexuals since its getter has no reference to original value
+	elif st in ['physics', 'wits', 'charm']: #not sure about sexuals since its getter has no reference to original value
 #			if value.has(st):
 		statlist[st] = min(value, statlist[st + '_factor'] * 20)
 	else: statlist[st] = value
@@ -510,11 +510,14 @@ func generate_random_character_from_data(races, desired_class = null, adjust_dif
 				'magic':
 					array = ['wits']
 				'social', 'sexual':
-					array = ['charm', 'sexuals']#can't get it since sexuals cant be increased directly
+					array = ['charm', 'sexuals']
 				'labor':
 					array = ['physics', 'wits']
 		array = array[randi()%array.size()]
-		statlist[array] += rand_range(1,15)#initial setup direct access
+		if array == 'sexuals':
+			add_random_sex_skill()
+		else:
+			statlist[array] += rand_range(1,15)#initial setup direct access
 		difficulty -= 1
 	
 	#assign classes
@@ -721,6 +724,32 @@ func get_sex_features():
 	
 	if statlist.vaginal_virgin == false || statlist.anal_virgin == false:
 		statlist.mouth_virgin = false
+	
+	
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i] == false:
+			statlist.sex_skills[skill_shortcuts[i]] = rand_range(1,10)
+
+func add_random_sex_skill():
+	var array = ['petting']
+	for i in ['vaginal_virgin', 'anal_virgin', 'mouth_virgin','penis_virgin']:
+		if statlist[i] == false:
+			array.append(skill_shortcuts[i])
+	
+	if get_stat('penis_size') != '':
+		array.append('penetration')
+	if get_stat('tail') in variables.longtails:
+		array.append('tail')
+	
+	array = array[randi()%array.size()]
+	statlist.sex_skills[array] += rand_range(3,8)
+
+var skill_shortcuts = {
+	vaginal_virgin = 'pussy',
+	anal_virgin = "anal",
+	mouth_virgin = 'oral',
+	penis_virgin = 'penetration',
+}
 
 func apply_custom_bodychange(target, part):
 	statlist[target] = part

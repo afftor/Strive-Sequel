@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/daisysad_prt.png-a09cba18bb284b1e368875fdc92ef106.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/portraits/daisysad_prt.png"
+dest_files=[ "res://.import/daisysad_prt.png-a09cba18bb284b1e368875fdc92ef106.stex" ]
 
 [params]
 

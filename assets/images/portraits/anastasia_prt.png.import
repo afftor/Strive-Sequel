@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/anastasia_prt.png-52785a38354b42377ad5eaf146e6859b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/portraits/anastasia_prt.png"
+dest_files=[ "res://.import/anastasia_prt.png-52785a38354b42377ad5eaf146e6859b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisysad.png-3d351876c08c244d227789a8ed877a87.stex"
+path="res://.import/fairy_heal.png-047cede1aa80019ba610837ba59771f4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisysad.png"
-dest_files=[ "res://.import/daisysad.png-3d351876c08c244d227789a8ed877a87.stex" ]
+source_file="res://assets/images/iconsclasses/fairy_heal.png"
+dest_files=[ "res://.import/fairy_heal.png-047cede1aa80019ba610837ba59771f4.stex" ]
 
 [params]
 

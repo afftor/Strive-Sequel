@@ -1350,10 +1350,13 @@ var TranslationDict = {
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.", 
 	
-	PROFALIOSCHAMPION = "Champion of Alios",
-	PROFALIOSCHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
-	PROFRENOWNROYALTY = "Renown Royalty",
-	PROFRENOWNROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
+	PROFALIOS_CHAMPION = "Champion of Alios",
+	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
+	PROFRENOWN_ROYALTY = "Renown Royalty",
+	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
+	
+	TRAITRENOWN = "Renown",
+	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
 	
 	NEXTCLASSEXP = "Experience required for next class.",
 	

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/daisy_prt.png-88859f59cad9403b896ca7c880bfb454.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/portraits/daisy_prt.png"
+dest_files=[ "res://.import/daisy_prt.png-88859f59cad9403b896ca7c880bfb454.stex" ]
 
 [params]
 
