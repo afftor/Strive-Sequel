@@ -1332,6 +1332,8 @@ func common_effects(effects):
 				yes = i.yes
 				no = i.no
 				input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, "yes_message", "no_message", i.text])
+			'close_guild_window':
+				gui_controller.nav_panel.select_location("aliron")
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})
