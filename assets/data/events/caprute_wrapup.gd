@@ -39,7 +39,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_4", reqs = [], }],
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}]
 		} ],
 	},
 	
@@ -49,7 +49,7 @@ var data = {
 		options = [ {
 			code = 'capture_wrapup_start', text = "PRE_ANASTASIA_EXECUTION_OPTION_7", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		}, {
-			code = 'capture_wrapup_start', text = "PRE_ANASTASIA_EXECUTION_OPTION_8", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
+				code = 'capture_wrapup_start', text = "PRE_ANASTASIA_EXECUTION_OPTION_8", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
 		}],
 	},
 	
@@ -60,7 +60,7 @@ var data = {
 		common_effects = [{code = 'add_timed_event', value = "guilds_meeting_start", 
 		args = [{type = 'add_to_date', date = [1,1], hour = 8}]}], 
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}]
 		} ],
 	},
 	
@@ -193,7 +193,7 @@ var data = {
 	},
 	
 	guilds_meeting_15 = {
-		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
+		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan', character2 = 'amelia',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_28", reqs = []}],
 		options = [ {
 			code = 'anastasia_execution_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = "close_guild_window"}],

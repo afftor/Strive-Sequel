@@ -1388,6 +1388,20 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage4'}], 
+			target = 'capture_wrapup_start',
+			target_option = 0,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage5'}], 
+			target = 'capture_wrapup_start',
+			target_option = 0,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], 
 			target = 'looking_for_princess_1',
 			target_option = 3,
@@ -1655,7 +1669,6 @@ var quests = {
 			stage3 = {code = 'stage3', name = 'Chasing the Princes', descript = """You've learned that the princess is hiding in elven lands. Travel to the elf capital and secure her."""},
 			stage4 = {code = 'stage4', name = 'Chasing the Princes', descript = """Unfortunately, the princess deceased, yet you've acquired her body. Return to Duncan to finish the business."""},#if princess was killed
 			stage5 = {code = 'stage5', name = 'Chasing the Princes', descript = """You've captured the princess herself. It's time to bring her back to Duncan."""},
-			
 		},
 	},
 	
