@@ -54,16 +54,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color( 0.316406, 0.0791016, 0.0791016, 0.792157 )
-margin_left = 433.0
-margin_top = 713.0
-margin_right = 1487.0
-margin_bottom = 1047.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="OptionsBackground" type="Panel" parent="."]
 self_modulate = Color( 0.0392157, 0, 0.0627451, 0.792157 )
 margin_left = 433.0
