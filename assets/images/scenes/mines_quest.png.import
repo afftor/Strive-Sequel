@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/mines_quest.png-4e4d8b1deddf84aecf892b1939b3f447.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/scenes/mines_quest.png"
+dest_files=[ "res://.import/mines_quest.png-4e4d8b1deddf84aecf892b1939b3f447.stex" ]
 
 [params]
 

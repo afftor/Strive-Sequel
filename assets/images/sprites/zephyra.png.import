@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/zephyra.png-8a926ade29b19049fcb3b7a9a395a0a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/sprites/zephyra.png"
+dest_files=[ "res://.import/zephyra.png-8a926ade29b19049fcb3b7a9a395a0a3.stex" ]
 
 [params]
 

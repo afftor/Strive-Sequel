@@ -1358,6 +1358,11 @@ var TranslationDict = {
 	TRAITRENOWN = "Renown",
 	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
 	
+	SKILLWINDWALL = "Wind Wall",
+	SKILLWINDWALLDESCRIPT = "Reduces ally line received ranged damage by 50% for 4 turns. ",
+	SKILLTAKE_POSITION = "Take Position",
+	SKILLTAKE_POSITIONDESCRIPT = "Increases armor penetration by 50, damage by 20% for 2 turns. Instant.",
+	
 	NEXTCLASSEXP = "Experience required for next class.",
 	
 	UPGRADEPREVBONUS = "Previous bonus: ",
@@ -4777,8 +4782,10 @@ Sigmund: - Let's finally get to the feast.""",
 	AIREAMELIAMEET1 = "- Yes, I've learned where's the princess can potentially be. But before I share this information, I'd like to ask you for a favor, since you'd be becoming the next mayor, especially after getting the princess herself. Can I make a request at some point in future from you?",
 	AIREAMELIAMEET1_OPTION1 = "Sure, you've done a lot for me",
 	AIREAMELIAMEET1_OPTION2 = "I can't promise that",
-	AIREAMELIAMEET2 = "- I'm pleased to hear that. According to the elf lass, Anastasia is hiding at elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I'm hoping to hear more of your success.",
-	AIREAMELIAMEET2_1 = "- I see. Well, I'll be waiting till you change your mind.",
+	AIREAMELIAMEET2 = "I'm pleased to hear that. According to the elf lass, Anastasia is hiding at elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I'm hoping to hear more of your success.",
+	AIREAMELIAMEET2_1 = "I see. Well, I'll be waiting till you change your mind.",
+
+
 	AMELIAFINDPRINCESSOPTION = "I've been wondering if you could give me an advice to find someone...",
 	AMELIAFINDPRINCESS1_1 = """- You've been aiming to find our princess? I've heard you've captured an elven girl, who seems to be close to her. It might be a good idea to try her, if you didn't already.
 
@@ -4786,12 +4793,71 @@ Sigmund: - Let's finally get to the feast.""",
 	AMELIAFINDPRINCESS1_2 = """- You've been aiming to find our princess? Well, if you've given up on the captured elf, I have an alternative suggestion.
 
 	- We can use our mage friends to find her if you get some of her belonging. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me.""",
-	AMELIAFINDPRINCESS1_3 = "- You've been aiming to find our princess? There does not seem to be a lot of leads at our hands, is there? Well, for such cases we can utilize our mage friends, as long as you can provide them with something belonging to the one we seek. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me. ",
+	AMELIAFINDPRINCESS2 = "- You've been aiming to find our princess? There does not seem to be a lot of leads at our hands, is there? Well, for such cases we can utilize our mage friends, as long as you can provide them with something belonging to the one we seek. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me. ",
+
 	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice",
 	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I find anything",
 	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
 	AMELIAFINDPRINCESS2_1 = "- See you soon, dear.",
 	AMELIAFINDPRINCESS2_2 = "- You ask me? I haven't been there and I believe its your job. Don't sweat about it, I'm sure you'll manage.",
+	MATERIALPRINCESS_BRACELET = "Unusual Bracelet",
+	MATERIALPRINCESS_BRACELETDESCRIPT = """An unusual silver bracelet you've acquired at the rebels' hideout. On the inner side you can spot a small engravings: "To my beloved daughter". """,
+
+
+
+
+	ZEPHYRA_EXTRA_GREET = "- You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
+	ZEPHYRA_EXTRA_GREET2 = "- Hello, [master]. How can I serve you? You must want to ask me some questions?",
+	ZEPHYRA_EXTRA_OPTION1 = "How do you like it here?", 
+	ZEPHYRA_EXTRA_REPLY1_1 = "- It's quite interesting, but I don't have any choice at this point now, do I? I'm not complaing, since that's what I've agreed on myself. ",
+	ZEPHYRA_EXTRA_REPLY1_2 = "- Not shabby at all. I think you kinda lack on the cute side. Maybe add some flowers and ribbons, make it a bit more relaxed, you know. ",
+
+	ZEPHYRA_EXTRA_OPTION2 = "Tell me more about...",
+	ZEPHYRA_EXTRA_OPTION2_1 = "Alios",
+	ZEPHYRA_EXTRA_REPLY2_1 = """- Alios is a diety of winds. I'm not surprised you haven't heard of him, he does not seem to care much for any sorts of worships at all, so only very few people do care about him. 
+
+	- Me? Of course it's impossible for me to not worship him. Once you become a champion it's a part of your identity, it's a thing affecting your every step in some way. """,
+	ZEPHYRA_EXTRA_OPTION2_1_1 = "You seem rather casual about it",
+	ZEPHYRA_EXTRA_OPTION2_1_2 = "I'd hate to be in a such position, I value my independance",
+	ZEPHYRA_EXTRA_OPTION2_1_3 = "So you both are good-for-nothing loners",
+
+	ZEPHYRA_EXTRA_REPLY2_1_1 = "- Hehe, I guess you just get used to it after some time. Alios wouldn't like me to feel special because of it.",
+	ZEPHYRA_EXTRA_REPLY2_1_2 = "- Hmmm, that's too bad, even if Alios is a god of winds, freedom is only appealing when it is put in comparison, and sometimes being bound does outweight it anyway. ",
+	ZEPHYRA_EXTRA_REPLY2_1_3 = "- Hey, not true, I can also draw! Well, we aren't as fancy as Celena or Freya, but you take what you can get. ",
+	ZEPHYRA_EXTRA_OPTION2_2 = "Your Past",
+	ZEPHYRA_EXTRA_REPLY2_2 = """- What I've been doing prior becoming a champion? To tell the truth, I don't remember. One day I've up in the middle of a forest, by that moment I already was a champion. Mysterious right? 
+
+	- Somehow I don't care much for what has been going on with me before that, so here it is. """,
+	ZEPHYRA_EXTRA_OPTION2_3 = "Princess",
+	ZEPHYRA_EXTRA_REPLY2_3 = """- So you are hunting for that princess to stop the rebellion? Huh, it must be nice to be a princess, I wish I could be one, then live a rich boring life and marry a prince. Isn't that like every girl's dream?""",
+	ZEPHYRA_EXTRA_OPTION3 = "So what is your plan exactly?",
+	ZEPHYRA_EXTRA_REPLY3 = """- You should continue with your business, don't worry about me. Sorry, I can't give you any good directive as I don't have one either. Once the situtation present itself we will usually recognize it. 
+
+	- Yeah, sorry, I'm afraid I won't be able to perform another barrier trick in a while, you don't get to use such miracles casually. That does make our meeting fateful though, right? """,
+
+	KURDAN_EXTRA_GREET = "- Greetings, [name]. Do you have some questions for me?",
+	KURDAN_EXTRA_OPTION1 = "How do you like it here",
+	KURDAN_EXTRA_REPLY1 = "- You have quite a home. I must admit, I'm used to different things, but I did agree to this, didn't I? Well, there's some good in not having to care where to stay and what to eat.",
+	KURDAN_EXTRA_OPTION2 = "About magic",
+	KURDAN_EXTRA_REPLY2 = "- I've been studying magic since my juvinile years. My father was a practicioner for some time, so I guess it runs in the family. Some see it as a tool for their needs, but I'm a lot more curious about underlying reasons of how it operates and what role it has in the world. I'm still have much to learn, though. ",
+	KURDAN_EXTRA_OPTION3 = "About orcs",
+	KURDAN_EXTRA_REPLY3 = "- Those, who united at my homelands has decided to outlaw the magic practices alltogether. They are in a difficult position because of how they were greatly ruled by the cult of Thoth. Now the cult is persecuted, and we... they have chosen technological applications as their source of power. I think you will encounter it some day.",
+
+	AMELIA_BONUS_QUESTION = "- [name], I have a question for you but please answer honestly, who would you find more attractive between me and the princess? She seems to be only slightly younger than me and I can't deny her beauty, that alone must have earned her quite a support.",
+	AMELIA_BONUS_QUESTION_OPTION1 = "Princess",
+	AMELIA_BONUS_QUESTION_OPTION2 = "Amelia",
+	AMELIA_BONUS_QUESTION_OPTION3 = "This is a tough choice...",
+	AMELIA_BONUS_QUESTION_OPTION4 = "I'm actually into men",
+
+	AMELIA_BONUS_QUESTION_REPLY1 = """- A-ha, I see. I can't really compete with a real ex-princess, can I. 
+
+	- Just keep in mind, that you won't be able to side with her and turn on us. """,
+	AMELIA_BONUS_QUESTION_REPLY2 = """- Oh my, aren't you a flatterer? You would really prefer this mutt cat to a royal blood? How silly. To tell the truth, for the most of my life I was just another servant. I think I was one since birth. And now I don't even have a proper Master. Would you be up to the challenge?.. I'm just kidding. But be sure I appreciate your company.""",
+	AMELIA_BONUS_QUESTION_REPLY3 = "- He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advice to get too hopeful about her, she's too troublesome to us. ",
+	AMELIA_BONUS_QUESTION_REPLY4 = "- Oh, is that so? Alright, then you shouldn't join her just because of her charm. I guess we have a little less to worry about.", 
+	AMELIA_BONUS_QUESTION_REPLYALL = "- Well, I will not hold you any longer, good luck with your mission. ",
+
+
 	
 	
 	

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/letter.png-e1f37ea54eefbca17692381a264fef49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/scenes/letter.png"
+dest_files=[ "res://.import/letter.png-e1f37ea54eefbca17692381a264fef49.stex" ]
 
 [params]
 

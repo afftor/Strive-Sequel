@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/kurdan_prt.png-0672b05628edbc277845f8ccc116f9bb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/portraits/kurdan_prt.png"
+dest_files=[ "res://.import/kurdan_prt.png-0672b05628edbc277845f8ccc116f9bb.stex" ]
 
 [params]
 
