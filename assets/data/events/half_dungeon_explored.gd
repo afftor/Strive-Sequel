@@ -68,7 +68,8 @@ var data = {
 	},
 	
 	mines_arrival_start = {
-		image = null, tags = ['dialogue_scene', 'master_translate'],
+		image = 'mines_quest', 
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [ {text = "MINES_ARRIVAL_START", reqs = [], previous_dialogue_option = 0},
 		{text = "MINES_ARRIVAL_1", reqs = [], previous_dialogue_option = 1},
 		{text = "MINES_ARRIVAL_5", reqs = [], previous_dialogue_option = 6}],
@@ -86,7 +87,7 @@ var data = {
 	},
 	
 	mines_arrival_1 = {
-		image = null, tags = ['dialogue_scene'],
+		image = 'mines_quest', tags = ['dialogue_scene'],
 		text = [ {text = "MINES_ARRIVAL_2", reqs = [], previous_dialogue_option = 2},
 		{text = "MINES_ARRIVAL_3", reqs = [], previous_dialogue_option = 4},
 		{text = "MINES_ARRIVAL_4", reqs = [], previous_dialogue_option = 5} ],
@@ -104,7 +105,7 @@ var data = {
 	},
 	
 	mines_arrival_end = {
-		image = null, tags = [],
+		image = 'mines_quest', tags = [],
 		text = [ {text = "MINES_ARRIVAL_6", reqs = []} ],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = []

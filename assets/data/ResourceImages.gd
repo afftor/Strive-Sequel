@@ -117,7 +117,6 @@ var scenes = {
 	goblin_encounter = load("res://assets/images/scenes/goblin_encounter.png"),
 	fairy_encounter = load("res://assets/images/scenes/fairy_encounter.png"),
 	chest_mimic = load("res://assets/images/scenes/chest_mimic.png"),
-	
 	battlefield = load("res://assets/images/scenes/battlefield.png"),
 	city_guards = load("res://assets/images/scenes/city_guards.png"),
 	dome = load("res://assets/images/scenes/dome.png"),
@@ -126,7 +125,9 @@ var scenes = {
 	refugees = load("res://assets/images/scenes/refugees.png"),
 	spring = load("res://assets/images/scenes/spring.png"),
 	tribal_elves = load("res://assets/images/scenes/tribal_elves.png"),
-	
+	letter = load("res://assets/images/scenes/letter.png"),
+	kobold = load("res://assets/images/scenes/kobold.png"),
+	mines_quest = load('res://assets/images/scenes/mines_quest.png'),
 }
 
 var sprites = {
@@ -142,7 +143,7 @@ var sprites = {
 	demon_female = load("res://assets/images/sprites/demon_female.png"),
 	greg = load("res://assets/images/sprites/greg.png"),
 	elf_priestess = load("res://assets/images/sprites/elf_priestess.png"),
-	zephyra = load("res://assets/images/sprites/demon_female.png")
+	zephyra = load("res://assets/images/sprites/zephyra.png")
 	}
 
 var dynamic_backgrounds = {
@@ -156,8 +157,8 @@ var portraits = {
 	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
 	anastasia = "res://assets/images/portraits/anastasia_prt.png",
 	aire = "res://assets/images/portraits/aire_prt.png",
-	kurdan = "",
-	zephyra = '',
+	kurdan = "res://assets/images/portraits/kurdan_prt.png",
+	zephyra = 'res://assets/images/portraits/zephyra_prt.png',
 }
 
 var gui = {
