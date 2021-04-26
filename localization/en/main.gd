@@ -4579,7 +4579,7 @@ Anastasia: - ...
 Amelia: - Then there was a small group of religious followers who refused to abandon their beliefs or leave the city. Burned alive at the city square. And not to forget unlucky harlots being whipped to death about every few months. That I've personally seen with my own eyes on two occasions.""",
 	ANASTASIA_PERSUASION_29 = """Anastasia: - Enough...
 
-Amelia: - Didn't "Uncle" Greg tell you about these? 
+Amelia: - Didn't 'Uncle' Greg tell you about these? 
 
 Anastasia: - No.
 
@@ -4679,7 +4679,7 @@ Aire: - It's more than possible for you, you are very feminine and beautiful aft
 	ANASTASIA_PERSUASION_55 = """You leave the jail room and find Amelia waiting for you.
 
 - Reject, huh. Too bad. I guess we don't have that many options now. Well, you'll know where to find me if anything.
-""",
+""", #same as ANASTASIA_PERSUASION_41
 	ANASTASIA_PERSUASION_56 = """- I-I will accept your demand. I will announce whatever support guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I'm not the former royalty anymore.""",
 	ANASTASIA_PERSUASION_57 = """- But I have one demand in return. Could you ask your guild leader girl to come?""",
 	ANASTASIA_PERSUASION_58 = """Soon after she said it, the jail room opened and Amelia walked in. Looks like she still was around waiting for resolution.

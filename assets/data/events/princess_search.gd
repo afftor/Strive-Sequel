@@ -448,6 +448,7 @@ var data = {
 			{text = "SEARCH_DUNGEON_7_4", reqs = [], previous_dialogue_option = 4},
 			{text = "SEARCH_DUNGEON_7_5", reqs = [], previous_dialogue_option = 5},
 			{text = "SEARCH_DUNGEON_7_6", reqs = [], previous_dialogue_option = 6},
+			{text = "SEARCH_DUNGEON_7_7", reqs = [], previous_dialogue_option = 7},
 			],
 		options = [
 			{
