@@ -64,17 +64,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShowPanelBackground" type="Panel" parent="."]
-visible = false
-self_modulate = Color( 0.0392157, 0, 0.0627451, 0.792157 )
-margin_left = 433.0
-margin_top = 967.0
-margin_right = 1487.0
-margin_bottom = 1047.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BackgroundT2" type="TextureRect" parent="."]
 margin_left = 430.0
 margin_right = 1490.0

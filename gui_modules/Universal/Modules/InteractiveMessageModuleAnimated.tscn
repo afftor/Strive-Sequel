@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/images/portraits/daisy_prt.png" type="Texture" id=1]
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_lower.png" type="Texture" id=6]
 [ext_resource path="res://assets/Textures_v2/CHAR_CREATION/Buttons/frameclass.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/scenes/noevent.png" type="Texture" id=8]
-[ext_resource path="res://gui_modules/Universal/ShowPanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/images/sprites/duncan.png" type="Texture" id=11]
 [ext_resource path="res://assets/Textures_v2/CITY/Panels/panel_event_upper.png" type="Texture" id=13]
 [ext_resource path="res://assets/Themes_v2/UNIVERSAL/VScrollBar.tres" type="Theme" id=14]
@@ -136,17 +135,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsBackground" type="Panel" parent="."]
-visible = false
-self_modulate = Color( 0.0392157, 0, 0.0627451, 0.792157 )
-margin_left = -92.0
-margin_top = 328.0
-margin_right = 962.0
-margin_bottom = 662.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ImagePanel" type="TextureRect" parent="."]
 margin_top = -371.0
 margin_right = 801.0
@@ -209,13 +197,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ShowPanel" parent="." instance=ExtResource( 9 )]
-visible = false
-margin_left = -95.0
-margin_top = 578.0
-margin_right = 965.0
-margin_bottom = 664.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 44.0
