@@ -213,7 +213,7 @@ var data = {
 			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}},
 			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = true}],
 			code = 'after_mines_convoy_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
-		}],
+		} ],
 	},
 	
 	duncan_not_found = {
