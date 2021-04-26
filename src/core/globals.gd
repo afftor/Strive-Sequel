@@ -260,6 +260,7 @@ func connectmaterialtooltip(node, material, bonustext = ''):
 	if node.is_connected("mouse_entered",self,'mattooltip'):
 		node.disconnect("mouse_entered",self,'mattooltip')
 	node.connect("mouse_entered",self,'mattooltip', [node, material, bonustext])
+	print("tooltip connected for %s" % node.get_path())
 
 func connectslavetooltip(node, person):
 	if node.is_connected("mouse_entered",self,'slavetooltip'):
@@ -272,7 +273,7 @@ func slavetooltip(targetnode, person):
 
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + material.name + '[/center]\n' + material.descript
 	data.text = text + bonustext
@@ -1435,7 +1436,16 @@ func valuecheck(dict):
 		'has_faction_upgrade':
 			return dict.check == input_handler.active_faction.upgrades.has(dict.value)
 		'local_counter':
-			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, dict.value) == dict.check
+			var tval = dict.value
+			if dict.has("add_stat"):
+				var master_char = ResourceScripts.game_party.get_master()
+				if master_char != null:
+					tval -= master_char.get_stat(dict.add_stat)
+			if dict.has("sub_stat"):
+				var master_char = ResourceScripts.game_party.get_master()
+				if master_char != null:
+					tval += master_char.get_stat(dict.sub_stat)
+			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, tval) == dict.check
 		'wits_factor_check':
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:
