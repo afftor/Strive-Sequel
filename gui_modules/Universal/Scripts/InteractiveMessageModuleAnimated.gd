@@ -31,7 +31,6 @@ func hide_dialogue(action = "hide"):
 		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"
-	get_node("ShowPanelBackground").visible = action == "hide"
 
 func open(scene):
 	if gui_controller.dialogue == null:
