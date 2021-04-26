@@ -130,6 +130,10 @@ func show_location_resources(location_code):
 	if location.type in ["capital", "quest_location"]:
 		$Resources.hide()
 		return
+	elif location.has("locked"):
+		if location.locked:
+			$Resources.hide()
+			return
 	elif location.type == "dungeon":
 		dungeon = true
 		if location.completed:

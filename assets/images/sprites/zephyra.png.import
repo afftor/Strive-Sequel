@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisy.png-06325a1d86bf245a09cea43c19aa950a.stex"
+path="res://.import/zephyra.png-8a926ade29b19049fcb3b7a9a395a0a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisy.png"
-dest_files=[ "res://.import/daisy.png-06325a1d86bf245a09cea43c19aa950a.stex" ]
+source_file="res://assets/images/sprites/zephyra.png"
+dest_files=[ "res://.import/zephyra.png-8a926ade29b19049fcb3b7a9a395a0a3.stex" ]
 
 [params]
 

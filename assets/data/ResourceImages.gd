@@ -53,18 +53,26 @@ var backgrounds = {
 	#events
 	anastasia_event_alive = load("res://assets/images/backgrounds/anastasia_event.png"),
 	anastasia_event_dead = load("res://assets/images/backgrounds/anastasia_event2.png"),
+	anastasia_execution1 = load("res://assets/images/backgrounds/AnastasiaCG006.png"),
+	anastasia_execution2 = load("res://assets/images/backgrounds/AnastasiaCG007.png"),
+	anastasia_execution3 = load("res://assets/images/backgrounds/AnastasiaCG008.png"),
 
 	#custom dialogue backgrounds
 	church_event = load("res://assets/images/backgrounds/church.png"),
+	jail = load("res://assets/images/backgrounds/dungeon.png"),
 	lich_aire_talk4 = load("res://assets/images/backgrounds/AireCG001.png"),
 	lich_aire_talk7 = load("res://assets/images/backgrounds/AireCG002.png"),
 	xari_encounter8 = load("res://assets/images/backgrounds/XariCG001.png"),
 	daisy_discipline = load("res://assets/images/backgrounds/Daizy7.png"),
+
 	anastasia_sex_1 = load("res://assets/images/backgrounds/AnastasiaCG001.png"),
 	anastasia_sex_2 = load("res://assets/images/backgrounds/AnastasiaCG002.png"),
 	anastasia_sex_3 = load("res://assets/images/backgrounds/AnastasiaCG003.png"),
 	anastasia_rape_1 = load("res://assets/images/backgrounds/AnastasiaCG004.png"),
 	anastasia_rape_2 = load("res://assets/images/backgrounds/AnastasiaCG005.png"),
+	aire_amelia1 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
+	aire_amelia2 = load("res://assets/images/backgrounds/AireAmeliaCG002.png"),
+
 	}
 
 var scenes = {
@@ -115,7 +123,6 @@ var scenes = {
 	goblin_encounter = load("res://assets/images/scenes/goblin_encounter.png"),
 	fairy_encounter = load("res://assets/images/scenes/fairy_encounter.png"),
 	chest_mimic = load("res://assets/images/scenes/chest_mimic.png"),
-	
 	battlefield = load("res://assets/images/scenes/battlefield.png"),
 	city_guards = load("res://assets/images/scenes/city_guards.png"),
 	dome = load("res://assets/images/scenes/dome.png"),
@@ -124,7 +131,9 @@ var scenes = {
 	refugees = load("res://assets/images/scenes/refugees.png"),
 	spring = load("res://assets/images/scenes/spring.png"),
 	tribal_elves = load("res://assets/images/scenes/tribal_elves.png"),
-	
+	letter = load("res://assets/images/scenes/letter.png"),
+	kobold = load("res://assets/images/scenes/kobold.png"),
+	mines_quest = load('res://assets/images/scenes/mines_quest.png'),
 }
 
 var sprites = {
@@ -139,6 +148,8 @@ var sprites = {
 	kurdan = load("res://assets/images/sprites/kurdan.png"),
 	demon_female = load("res://assets/images/sprites/demon_female.png"),
 	greg = load("res://assets/images/sprites/greg.png"),
+	elf_priestess = load("res://assets/images/sprites/elf_priestess.png"),
+	zephyra = load("res://assets/images/sprites/zephyra.png")
 	}
 
 var dynamic_backgrounds = {
@@ -148,8 +159,12 @@ var dynamic_backgrounds = {
 }
 
 var portraits = {
-	daisy = 'res://assets/images/portraits/daisy.png',
-	daisy_sad = "res://assets/images/portraits/daisysad.png",
+	daisy = 'res://assets/images/portraits/daisy_prt.png',
+	daisy_sad = "res://assets/images/portraits/daisysad_prt.png",
+	anastasia = "res://assets/images/portraits/anastasia_prt.png",
+	aire = "res://assets/images/portraits/aire_prt.png",
+	kurdan = "res://assets/images/portraits/kurdan_prt.png",
+	zephyra = 'res://assets/images/portraits/zephyra_prt.png',
 }
 
 var gui = {

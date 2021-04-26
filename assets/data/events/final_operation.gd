@@ -6,6 +6,7 @@ var data = {
 		text = [
 			{text = "FINAL_OPERATON_START", reqs = []},
 		],
+		common_effects = [{code = 'make_quest_location', value = 'unique_final_operation_location'}],
 		options = [
 			{
 				code = 'final_operation_1',

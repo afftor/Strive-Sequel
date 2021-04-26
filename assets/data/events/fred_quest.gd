@@ -249,7 +249,10 @@ var data = {
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
 				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
-				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}]},
+				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'},
+				{code = 'add_timed_event', value = "intermission_greg_demon1", args = [{type = 'add_to_hour', hour = [1,1]}]}
+				]
+			},
 		]
 	},
 
@@ -305,8 +308,10 @@ var data = {
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
 			bonus_effects = [
 				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
-				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}]
-				},
+				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'},
+				{code = 'add_timed_event', value = "intermission_greg_demon1", args = [{type = 'add_to_hour', hour = [1,1]}]}
+				],
+			},
 		]
 	},
 	
@@ -323,10 +328,54 @@ var data = {
 			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, 
 			bonus_effects = [
 				{code = 'remove_quest_location', value = 'quest_mages_fred'}, 
-				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}]
-				},
-			
+				{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'},
+				{code = 'add_timed_event', value = "intermission_greg_demon1", args = [{type = 'add_to_hour', hour = [1,1]}]}
+				]
+			},
+		]
+	},
+	
+	
+	intermission_greg_demon1 = {
+		image = null,
+		character = "greg",
+		character2 = "demon_female",
+		tags = ["dialogue_scene", "master_translate","blackscreen_transition_slow"],
+		text = [
+			{text = "INTERMISSIONINTRO1", reqs = []}
+		],
+		options = [
+			{code = "intermission_greg_demon2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]
 	},
 
+	intermission_greg_demon2 = {
+		image = null,
+		character = "greg",
+		character2 = "demon_female",
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "INTERMISSIONINTRO2", reqs = []}
+		],
+		options = [
+			{code = "intermission_greg_demon3", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
+		]
+	},
+
+	intermission_greg_demon3 = {
+		image = null,
+		#character = null,
+		character2 = "demon_female",
+		tags = ["dialogue_scene", "master_translate"],
+		text = [
+			{text = "INTERMISSIONINTRO3", reqs = []}
+		],
+		options = [
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = "next_dialogue",
+			bonus_effects = [{code = 'screen_black_transition', value = 1}],
+				}, 
+				
+		]
+	},
+	
 }

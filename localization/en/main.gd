@@ -1350,10 +1350,18 @@ var TranslationDict = {
 	PROFTECHNOMANCER = "Technomancer",
 	PROFTECHNOMANCERDESCRIPT = "By merging magic and technology these specialists are capable of producing very unique results.", 
 	
-	PROFALIOSCHAMPION = "Champion of Alios",
-	PROFALIOSCHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
-	PROFRENOWNROYALTY = "Renown Royalty",
-	PROFRENOWNROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
+	PROFALIOS_CHAMPION = "Champion of Alios",
+	PROFALIOS_CHAMPIONDESCRIPT = "A lone girl with mysterious powers and the past. One thing is clear, her divine affiliation is real. ",
+	PROFRENOWN_ROYALTY = "Renown Royalty",
+	PROFRENOWN_ROYALTYDESCRIPT = "The royal blood is a boon in itself, even more so when recognized by others. ",
+	
+	TRAITRENOWN = "Renown",
+	TRAITRENOWNDESCRIPT = "Loyalty and Obedience from Gracious skills 50% more effective. ",
+	
+	SKILLWINDWALL = "Wind Wall",
+	SKILLWINDWALLDESCRIPT = "Reduces ally line received ranged damage by 50% for 4 turns. ",
+	SKILLTAKE_POSITION = "Take Position",
+	SKILLTAKE_POSITIONDESCRIPT = "Increases armor penetration by 50, damage by 20% for 2 turns. Instant.",
 	
 	NEXTCLASSEXP = "Experience required for next class.",
 	
@@ -2042,6 +2050,11 @@ var TranslationDict = {
 	ENEMYBALLISTA = "Ballista",
 	ENEMYTROLL = "Troll",
 	ENEMYBANDINT_ASSASSIN = "Bandit Asssassin",
+	
+	ENEMYDEMONESS = "Demoness",
+	ENEMYGREG = "Greg",
+	ENEMYAIRE = "Aire",
+	ENEMYKURDAN = "kurdan",
 	
 	FOODFILTERHIGH = "High",
 	FOODFILTERMED = "Med",
@@ -2737,7 +2750,7 @@ I suggest starting with the mage guild. If they haven't figured it out already, 
 
 	#==============Mages guild line================= (triggers when meeting mage leader)
 
-	MAGESAFTERELLECTION1 = """You enter Myr's office to find her in a unusual state of distress. 
+	MAGESAFTERELLECTION1 = """You enter Myr's office to find her distressed, much unlike her usually calm state. 
 	
 	— I thought I made it clear I am not to be disturbed... Oh, it's you. What do you want?""",
 
@@ -2784,7 +2797,7 @@ After securing the money you leave the dormitory.
 {color=green|Earned 500 Gold}""",
 
 	FINDFRED1 = """You find the rendezvous point from the letter in Fred's room easily enough. It's marked by a large oak tree standing just off of a muddy farm road. No Fred here, but there are many presumably human footprints left in the soft earth and signs that someone was dragged away into a copse of trees a short distance away.
-	
+
 The men didn't make any effort to hide their tracks and you soon find a cave's mouth on the side of a rocky outcrop hidden in the trees.
 
 You do your best to muffle your footfalls as you explore deeper into the cave and come across the steel barred door of a prison cell carved into the stone. You sneak a look inside and notice Fred tied up with  a group of armed men, almost certainly sellswords, standing over him.""",
@@ -2890,9 +2903,9 @@ Merc Leader: — Nice working with you. Oh, uh just in case someone else shows u
 
 	# *Intermission scene — starts 1 hour after deleting location, black screen transition; greg and demoness as sprites
 
-	INTERMISSIONINTRO1 = """
+	INTERMISSIONINTRO1 = """Hiding from others' eyes one of the rebel leaders has been meeting the previously recruited helper.
 	
-	{color=aqua|Greg: — You've got your fancy sword. I trust we are even now.}
+{color=aqua|Greg: — You've got your fancy sword. I trust we are even now.}
 	
 {color=yellow|Demon: — I can't complain, enabling you to pull off that mass teleportation performance serves our interests as well.}""",
 
@@ -2904,7 +2917,9 @@ Merc Leader: — Nice working with you. Oh, uh just in case someone else shows u
 
 {color=yellow|Demon: — Hmph, as you wish.}""",
 
-	INTERMISSIONINTRO3 = "{color=yellow|Demon: — Still, there's more to be gained here. I think I'll stay for a bit.}",
+	INTERMISSIONINTRO3 = """As Greg left the scene, Demon thought to herself.
+	
+{color=yellow|Demon: — Still, there's more to be gained here. I think I'll stay for a bit.}""",
 
 	RETURNTOMYR_IF_FRED = """— So you found him. Nice work, I've already sent him to Duncan along with your report.
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
@@ -2913,6 +2928,8 @@ This should ease tensions between the guilds, until something new comes up. Here
 This should ease tensions between the guilds, until something new comes up. Here, consider this a tip from me, and go report to Duncan next.""",
 	
 	FREDQUESTREPORT = "About Fred...",
+	FREDFIGHTERSQUESTREPORT = "About the mages issue...",
+	PRINCESS_SEARCH_INITIATE = "How does your search goes?",
 	
 	RETURNTOMYR = """— So it was him after all, and we've lost the artifact as well... I expected as much. Here, take this report and get it to Duncan, I need to make some... arrangements if you'll excuse me.""",
 
@@ -2927,6 +2944,7 @@ This should ease tensions between the guilds, until something new comes up. Here
 	RETURNTODUNCAN2 = "— So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
 
 	RETURNTODUNCAN_ANSWER1 = """— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though.
+
 — Anyway, good work, but we have more immediate problems now. The rebels have taken several key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the fort, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
 
 	RETURNTODUNCAN_QUESTION1 = "I'll see what I can do.",    
@@ -2939,49 +2957,75 @@ This should ease tensions between the guilds, until something new comes up. Here
 	#Intermission scene 2
 
 	INTERMISSION2INTRO1 = """The rebel army stood in front of a small settlement recently turned into a battlefield.
+	
 {color=yellow|Anastasia: — Uncle! Why didn't you let me talk to them before attacking?!}
+
 {color=aqua|Greg: — Those were guilds' trained soldiers.}
+
 {color=yellow|Anastasia: — They had asked to see me in person though. We could've avoided all of this death and destruction.}""",
 
 	INTERMISSION2INTRO2 = """Despite his unwillingness to answer at all, Greg had to answer carefully since Anastasia had made her protest in the presence of so many rebel soldiers...
+	
 {color=aqua|Greg: — You are too naive, Princess. There could have been assassins amongst them sent simply for your head. Our enemies are treacherous opportunists, this is how they work.}
+
 {color=yellow|Anastasia: — ... it's not supposed to be like this. What good is it to free the people from tyranny if they die in the process of being liberated? We must avoid harming innocents and such needless losses.}""",
 
 	INTERMISSION2INTRO3 = """{color=yellow|Anastasia: — I've decided. Release the survivors so they can return home.}
+	
 {color=aqua|Greg: — What!?}
+
 {color=yellow|Anastasia: — This is the minimum we can do now to show our good will and noble intentions.}
+
 {color=aqua|Greg: — ...Fine, but don't fool yourself. You will not retake the throne through mercy or kindness.}""",
 
 	INTERMISSION2_IF_AIRE_DEAD = """{color=yellow|Anastasia: — Is there any news from Aire? She's still not back?}
+	
 {color=aqua|Attendant: — I'm afraid not your highness. She has yet to return.}
+
 {color=yellow|Anastasia: — Ah... Aire, I could really use your company right about now. I hope you are safe.}""",
 
 	INTERMISSION2_IF_AIRE_ALIVE = """{color=yellow|Anastasia: — Do you think I was wrong to demand their release?}
+	
 {color=aqua|Aire: — I'm sorry, It's not my place to judge you, your highness.}
+
 {color=yellow|Anastasia: — Aire, please.}
+
 {color=aqua|Aire: — I'm just your tool, your highness. Your will is all that matters to me.}
+
 Noticing the princess's angry stare Aire quickly adds.
+
 {color=aqua|Aire: — But, I guess, I would prefer to be able to return home if I were in their place.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED1 = """{color=yellow|Anastasia: — I didn't get a chance to ask, but how did your last assignment go? You've been sullen ever since you returned. Did something bad happen?
+	
 The princess notices Aire tensing up in response to the question.	
+
 {color=aqua|Aire: — ... It's nothing worth mentioning to you.}""",
 
 	INTERMISSION2_IF_AIRE_RAPED2 = """{color=yellow|Anastasia: - You didn't get injured again, did you?}
+	
 {color=aqua|Aire: - I'm fine, as long as I can continue to serve you.}
+
 {color=yellow|Anastasia: - Hmm... I wonder if all elves are like this.}""",
 
 	INTERMISSION2_IF_AIRE_NOT_RAPED1 = """{color=yellow|Anastasia: - I didn't get a chance to ask, but how did your last assignment go? You've been very lively ever since you returned, and I could use a bit of good news just about now.}
-{color=aqua|Aire: - Oh, yes. Actually I got in just slightly over my head this time.""",
+	
+{color=aqua|Aire: - Oh, yes. Actually I got in just slightly over my head this time.}""",
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED2 = """{color=yellow|Anastasia: - Aire! You said you would be careful. You said- wait, why have you been so cheerful then?}
+	
 {color=aqua|Aire: - I… Well I was rescued.}
-{color=yellowAnastasia: - A rescuer? Do tell.}
-{color=aquaAire: - I don't really know much about [him], I believe [his] name was [name]. [He] seemed like a... well a good person I think.}""",
+
+{color=yellow|Anastasia: - A rescuer? Do tell.}
+
+{color=aqua|Aire: - I don't really know much about [him], I believe [his] name was [name]. [He] seemed like a... well a good person I think.}""",
 ###
 	INTERMISSION2_IF_AIRE_NOT_RAPED3 = """{color=yellow|Anastasia: - [name]? We should properly reward [him], once this whole mess is over.}
+	
 	{color=aqua|Aire: - Ana, you really don't need to do that.}
+	
 	{color=yellow|Anastasia: - Don't be silly, I owe [him] my gratitude at the very least. You've been my friend for so long after all. What would I have done if you hadn't returned?}
+	
 	{color=aqua|Aire: - ...}""",
 
 	SIGMUNDOPTION = "- Aye? That's a relief to 'ear. I guess ya came for da details? One of our mines 'ave been overtaken by rebels.",
@@ -3111,8 +3155,75 @@ The princess notices Aire tensing up in response to the question.
 	SKILLENEMY_ENTANGLE = "Entangle",
 	SKILLSHRED = "Shred",
 	
+	
+	AIRE_AMELIA1 = """
+Amelia entered Aire's cell with a neat black satchel and a smile on her face.
 
+Amelia: - Hello darling. Aire, if I'm correct? I hope the jailers weren't too harsh with you. It seems our little investigation isn't going fast enough, so I was asked to apply my skills to loosen your tongue. 
 
+At her words Aire glanced at the bag imagining all manner of blades and hooks that must be inside and then looked to the cat woman in her revealing attire with confusion. 
+
+Aire: - I won't reveal anything, not to you or anyone else no matter what you do. 
+
+Amelia: - That's cute. I believe you are a capable fighter and can withstand physical abuse, but I have my own ways of doing things. """,
+
+	AIRE_AMELIA2 = """
+Amelia retrieved a small flask of honey colored liquid which she upended against a handkerchief for a moment before stoppering it. Aire stood to her feet to struggle as best she could rather than be poisoned, but none of her training was of any use bound as she was. Amelia twisted her by her restraints and collar roughly before wrapping an arm around her and forcing the handkerchief over her nose and mouth.
+
+Amelia: - Just breath in deeply. It won't harm you.""",
+
+	AIRE_AMELIA3 = """
+Aire held her breath for over a minute. She struggled the whole time as Amelia held her firmly while chatting to her casually as if they were friends, but the burning in her lungs became too much and she desperately gulped breaths laced with the drug. Amelia held her like that until her breathing became steady and her body started to relax.
+
+Amelia: - Now, I understand you've heard some nasty rumors about my colleagues and I, but we can be quite generous with our partners. For instance, the drug I've just shared with you can't normally be found here at any price. They say one of the ingredients is actual Alruane nectar.
+
+Aire's heart had begun pounding and her body grew unbearably sensitive. Amelia idly fondled her trussed breasts and periodically pinched her nipples, eliciting jerks and squeals from the elf that gradually became shudders and moans.
+
+Amelia: - I see your voice has become more excited. Why won't you tell us what we want to know? To continue resisting like this... you must be quite fond of your master? Perhaps, even share a more intimate bond.""",
+
+	AIRE_AMELIA4 = """
+Aire: - It's not… like… that
+
+Amelia squeezed her breasts against Aire, leaning against her in such a way that Aire would fall unless she widened her stance and arched her back. Amelia's soft finely furred tail felt like it was made of pins and needles as it slid along Aire's leg slowly upward.
+
+Amelia: - Ah, another innocent elf maiden! I almost miss training the newcomers personally. 
+
+Amelia's tail had made its way to Aire's panty clad sex and twitched from side to side, stimulating her now swollen clit through the material. She just couldn't think.
+
+Amelia: - Look at you, all wet and shaking. It's pains me to torture a cute girl like that. And you must be really eager for me to end this.""",
+
+	AIRE_AMELIA5 =  """
+Aire: - Yes…
+
+Aire's eyes teared up with humiliation as she couldn't fight the overwhelming pleasure anymore.
+
+Amelia: - So we both want the same thing. You know how this can be done, tell me where Anastasia is.
+
+Amelia slid a hand down from Aire's chest to pull her panties to the side, and gently traced her fingers up and down her slick slit. Under the influence of the intense aphrodisiac Aire's hips thrusted at the digits without and against her conscious thought. 
+
+She pooled all of her will into one last attempt to twist away, but Amelia held her in place thrusting two fingers inside her and using her pussy as a handhold. Aire melted and began to tremble violently, but Amelia slipped her fingers back out and resumed teasing Aire's slit, keeping her on the edge.
+
+Aire: - Ah, p-please… """,
+
+	AIRE_AMELIA6 = """
+
+Amelia: - One word and you'll get what you want. 
+
+Aire: - ...F-fine.
+
+Aire turned her head and whispered. Amelia's ear twitched as the elf breathed heavily into it and she beamed.
+
+Amelia: - Good girl. Now, here's your reward.
+
+Amelia snaked her long tail back up Aire's leg, wriggling it back and forth, finally working it into her drooling honeypot. Aire moaned and bucked futilely against Amelia's hips on pure carnal instinct, but Amelia delivered a slow deliberate pace. Aire inhaled and just as she was about to cum, Amelia began thrusting into her without as much force as a man might have but much faster. 
+
+The sudden stimulation was overwhelming in the poor elf's hypersensitive state. She clenched and shook so wildly she stopped breathing and her eyes rolled back. One orgasm overlapped with another over minutes as Amelia pistoned her tail into the young elf until she blacked out.
+
+Amelia lowered the spasming girl to the floor gently and retrieved her satchel after cleaning off. 
+
+Amelia: - See, was that so hard? Hope we'll meet again in better circumstances. 
+
+She purred to herself and put a little sway into her hips on her way out as she gave orders to the jailers and went to deliver the good news.""",
 
 
 	# HELP SIGMUND
@@ -3788,21 +3899,6 @@ The elf struggles slightly against her bindings, as she huffs in defiance.""",
 
 	GREG_COMBAT_ON_WIN_8 = """- You don't need to worry about that, you'll get your reward. The fighters still have a lot of work to settle here, once that's done we can worry about rewards.""",
 	GREG_COMBAT_ON_WIN_9 = """- Go home. We'll clean everything up here. Come see me later and we'll decide what to do from there.""",
-	COMBAT_ON_WIN_FRONTLINE = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.
-
-- Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.
-
-- We still have to secure the princess.""",
-
-	COMBAT_ON_WIN_NOT_FRONTLINE = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.
-
-- Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.
-
-- We still have to secure the princess.""",
-
-	COMBAT_ON_WIN_OPTION_1 = """I'm eager to get to her myself.""",
-	COMBAT_ON_WIN_OPTION_2 = """I currently have other issues to deal with.""",
-
 
 #search for princess
 	SEARCH_FIGHTERS_1 = """- Now then, we haven't had any luck with our interrogations. These idiots are fanatically dedicated to their rebellion.""",
@@ -3875,8 +3971,9 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 	SEARCH_DUNGEON_6_2 = """- If you dare to even touch her, I'll hunt you down to the ends of the earth.""",
 	SEARCH_DUNGEON_OPTION_15 = """Fine. Enjoy rotting in this cell then""",
 	SEARCH_DUNGEON_6_3 = """Aire does not react to your words, but somehow she seems content with your irritation.""",
-	SEARCH_DUNGEON_OPTION_16 = """Hit her*""",
-	SEARCH_DUNGEON_6_4 = """*Smack*
+	SEARCH_DUNGEON_OPTION_16 = """*Hit her*""",
+	SEARCH_DUNGEON_6_4 = """*Smack* 
+	You hand makes a hard slap on Aire's cheek which turns red, yet her expression does not change.
 
 - Hmph, as expected from a lowly [man] like you.""",
 	SEARCH_DUNGEON_OPTION_LEAVE = """Leave""",
@@ -3953,11 +4050,12 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 - Fine, I'll trust you. If there's anyone from here who can act to her benefit, it would be you. She's escaped to elven lands. I've managed to secure a spot for her thanks to my heritage. You'd be able to find out more from the high priestess, assuming she'll let you meet her, but at this point I suspect it shouldn't be much of a problem for you.""",
 	SEARCH_DUNGEON_16 = """You see Amelia still waiting near the entrance to the cells as you exit the dungeons, she beckons you over to her.
 
--How'd it go?""",
+- How'd it go?""",
 	SEARCH_DUNGEON_OPTION_43 = """I got the princess' location.""",
 	SEARCH_DUNGEON_17 = """- Wow, really? I knew you had a silver tongue in you, great work. Duncan will want to know as soon as you're ready to deliver the information to him, don't worry I won't steal your spotlight if you want to wait a bit.""",
-	SEARCH_DUNGEON_OPTION_44 = """I wasn't able to get any information on the princess.""",
+	SEARCH_DUNGEON_OPTION_44_1 = """I wasn't able to get any information on the princess.""",
 	SEARCH_DUNGEON_18 = """- Aw, that's ok though, it was worth a try. I could tell by looking at her she'd be a tough one to crack. So.. have you considered my offer? I could try to get her talking if you want.""",
+	SEARCH_DUNGEON_OPTION_44_2 = """This girl is a tough nut to crack""",
 	SEARCH_DUNGEON_OPTION_45 = """Go ahead, it couldn't hurt.""",
 	SEARCH_DUNGEON_19_1 = """- Don't worry, I'm sure I can get at least something out of her, but it may take some time. I'll be sure to personally deliver the information to you when I get it.""",
 	SEARCH_DUNGEON_OPTION_46 = """No, I think I'll find another way.""",
@@ -3969,16 +4067,22 @@ To your surprise standing outside of the cell is Amelia, she notices you and mak
 
 
 	LOOKING_FOR_PRINCESS_START = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
-	LOOKING_FOR_PRINCESS_1 = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we’ve got no leads as to where she may have gone. Our interrogation of the prisoners hasn’t turned up much.""",
-	LOOKING_FOR_PRINCESS_2 = """- Don’t think I’ve forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you’ve proven yourself to be very capable.""",
-	LOOKING_FOR_PRINCESS_3 = """- Oh, and here, your reward for your help in the raid. you’ve proven yourself to be very capable.""",
-	LOOKING_FOR_PRINCESS_4 = """- We still have to secure the princess.""",
-	LOOKING_FOR_PRINCESS_OPTION_1 = """Let’s get right into it, I’m eager to get to her myself.""",
+	LOOKING_FOR_PRINCESS_1 = """- Many of the rebel forces now lie dead or in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
+	LOOKING_FOR_PRINCESS_2 = """
+
+- Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
+	LOOKING_FOR_PRINCESS_3 = """
+
+- Oh, and here, your reward for your help in the raid. you've proven yourself to be very capable.""",
+	LOOKING_FOR_PRINCESS_4 = """
+
+- We still have to secure the princess.""",
+	LOOKING_FOR_PRINCESS_OPTION_1 = """Let's get right into it, I'm eager to get to her myself.""",
 	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
 	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
-	LOOKING_FOR_PRINCESS_5 = """-We’ve had no further leads on her location so far. So far no one has come forward with any new information.""",
-	LOOKING_FOR_PRINCESS_OPTION_4 = """I’ll track her down.""",
-	LOOKING_FOR_PRINCESS_OPTION_5 = """I’ll come back later.""",
+	LOOKING_FOR_PRINCESS_5 = """-We've had no further leads on her location so far. So far no one has come forward with any new information.""",
+	LOOKING_FOR_PRINCESS_OPTION_4 = """I'll track her down.""",
+	LOOKING_FOR_PRINCESS_OPTION_5 = """I'll come back later.""",
 	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds mercenaries and scavengers didn't waste any time. However after another half hour you notice a smaller scavenger. 
 
 The lone kobold is going through the rummage seemingly unaware of your presence yet. Having acquired a decent collection already you spot an uncharacteristically elegant silver bracelet on his hand. """,
@@ -4005,15 +4109,15 @@ The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 
-	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
+- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time""",
 	LOOKING_FOR_PRINCESS_OPTION_THINK = """I'll think about""",
 	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard *attack*""",
 	LOOKING_FOR_PRINCESS_14 = """- Yeah, no shit, consider this a retribution for attacking me. Take it or leave, I don't care.""",
 	LOOKING_FOR_PRINCESS_15 = """Same as the last time the kobold quickly runs away into one of the small holes leaving you with nothing. You should probably return the other day.""",
 	LOOKING_FOR_PRINCESS_16 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
-	
-	- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
+
+- It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_18 = """The beating will be your payment *attack*""",
 	LOOKING_FOR_PRINCESS_17 = """This time you've went slightly ahead of the kobold, yet it wasn't enough to stop him from getting away. It's only at the last moment he thumbled on his way, almost falling, but regaining his composure. This, however, made him drop the bracelet behind.
 	
@@ -4069,11 +4173,16 @@ Anastasia: - They will kill me, like they killed my dad. And you betrayed, I tho
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
 	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth*""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss it""",
-	LOOKING_FOR_PRINCESS_31 = """Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
+	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
+
+Before she could say any more, you've jumped at Anastasia and delivered her face a loud slap. Not expecting this she fell shocked on the ground which you've immediately used to subdue her, plugging her mouth and excusing yourself to the priestess.
 
 Priestess: - I'll excuse this display of misbehave for now. Now leave and remember our agency in future. 
 
-Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you. """,
+Saying this the priestess has left the hall and guards lead you to the exit. Speechless and bound Anastasia had no option but be dragged by you.""",
+	LOOKING_FOR_PRINCESS_32_f = """{color=red|Failure}
+
+""",
 	LOOKING_FOR_PRINCESS_32 = """Anastasia: - Traitorous bastards, you are worse than these people! You and your rotten Freya should've been-
 
 *Slap*
@@ -4084,7 +4193,9 @@ Before you managed to reach Anastasia, the priestess herself gave her a loud sla
 	LOOKING_FOR_PRINCESS_OPTION_34 = """Alright, this is enough""",
 	LOOKING_FOR_PRINCESS_33 = """Priestess: - Silence, [race]!
 	
-Her sudden outburst made you back off.""",
+Her sudden outburst made you back off.
+
+""",
 	LOOKING_FOR_PRINCESS_34 = """The princess sat on the ground covering her cheek with a hand as the priestess glared at her being clearly enraged.
 
 Priestess: - I could excuse your insults, fool human, if only you kept it to us, but insult of the Goddess in this temple is a grave offence. If you were an elf commoner you would have your tongue cut out already. 
@@ -4103,9 +4214,15 @@ Priestess: - She shall be executed regardless of your needs. This is the law and
 	LOOKING_FOR_PRINCESS_OPTION_37 = """That's barbaric""",
 	LOOKING_FOR_PRINCESS_OPTION_38 = """She's just a spoiled child, surely you could overlook this""",
 	LOOKING_FOR_PRINCESS_OPTION_39 = """Her death by your hands could pose more danger for your lands""",
-	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.""",
-	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.""",
-	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.""",
+	LOOKING_FOR_PRINCESS_37 = """Priestess: - I'm well aware what she is, but this is the law and it won't be excused.
+
+""",
+	LOOKING_FOR_PRINCESS_38 = """Priestess: - Watch your tongue [race], or you might end up in a similar fashion. The law is final and not debatable.
+
+""",
+	LOOKING_FOR_PRINCESS_39 = """Priestess: - We won't care about pity threats. The punishment will be delivered as this is the tradition.
+
+""",
 	LOOKING_FOR_PRINCESS_40 = """You notice that Zephyra cautiously signals you to let her negotiate on your behalf.""",
 	LOOKING_FOR_PRINCESS_OPTION_40 = """As her guardian I request to take punishment for her""",
 	LOOKING_FOR_PRINCESS_OPTION_41 = """*Allow Zephyra to negotiate*""",
@@ -4119,38 +4236,40 @@ The priestess takes another long pause to contemplate the situation when finally
 	LOOKING_FOR_PRINCESS_OPTION_43 = """*Accept*""",
 	LOOKING_FOR_PRINCESS_OPTION_44 = """*Refuse* """,
 	LOOKING_FOR_PRINCESS_43 = """You've chosen the sacrifice to take the place of Anastasia. As you part with [name], you don't expect to see [him] again.
-	
-	Priestess: - Leave now and tell your masters that we still stand by old agreement.
-	
-	Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
-	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.""",
+
+Priestess: - Leave now and tell your masters that we still stand by old agreement.
+
+Anastasia quietly observes as [name] being taken away, perhaps blaming herself for another death.""",
+	LOOKING_FOR_PRINCESS_44 = """Priestess: - Then we will proceed as decided.
+
+""",
 	LOOKING_FOR_PRINCESS_45 = """Receiving your approval Zephyra walks forward. The Priestess observes her with prudence.
 
-	Zephyra: - Old traditions are important, but... quite problematic. 
+Zephyra: - Old traditions are important, but... quite problematic. 
 
-	Priestess: - What are you daring to suggest?
+Priestess: - What are you daring to suggest?
 
-	Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
+Zephyra: - Once I heard a story about a young elven lass who was fortunate to fall in love. It must've been very emboldening for her. But unfortunately she fell in love with a human male. A thing which could happen to any of us.
 
-	Priestess: - You... You have no idea what you are talking about.
+Priestess: - You... You have no idea what you are talking about.
 """,
 	LOOKING_FOR_PRINCESS_46 = """Guard: - (whispering) Huh... What's this about?
-	
-	Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
 
-	You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+Zephyra: - Ah, right, I remembered the man's name was Ansfrid, I can't quite recall the girl's though.
 
-	Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
+You've noticed how the stone cold priestess visibly twitched when hearing that. The elven guards seemed to be puzzled over the whole situation.
+
+Priestess: - Enough. We've made a decision. You can take your noble with you. The merciful Freya pardons her misdeed.""",
 	LOOKING_FOR_PRINCESS_47 = """By the order the princess is handed over to you and you give your thanks to the priestess.
 
-	Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
-	
-	Priestess: - Sure, whatever. Leave and take your foul vixen with you.
-	
-	Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
+Zephyra: - Isn't Freya's graciousness truly moving? I'm sure this decision will make more people happy in the end.
+
+Priestess: - Sure, whatever. Leave and take your foul vixen with you.
+
+Zephyra: - *sniff* Hey, [name], I'm not foul, am I?""",
 	LOOKING_FOR_PRINCESS_48 = """Once outside with the now quiet princess you ask Zephyra to explain what happened.
-	
-	- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
+
+- Oh, well, a long time ago Alios has turned into a human male named Ansfrid for the purpose of jesting around. Or maybe possessed him... Anyway, did you know that Freya's high priestess can never engage in relationships with men? Worse even, non-elven men? Ah, please forget what I told you, haha.""",
 	LOOKING_FOR_PRINCESS_OPTION_45 = """That sounds pretty sad""",
 	LOOKING_FOR_PRINCESS_OPTION_46 = """So, she's a compelled lesbian?""",
 	LOOKING_FOR_PRINCESS_OPTION_47 = """You were unexpectedly helpful""",
@@ -4299,8 +4418,8 @@ Sigmund: - Yah, I agree. There's no point rushin' either.""",
 	MIND_CONTROL_OPTION_10 = """Your help would be invaluable""",
 	MIND_CONTROL_10 = """- *Sigh* Try Xari, I believe she's been dabbling in it. Just don't get any weird ideas about what you could do with this.""",
 	MIND_CONTROL_11 = """- Hey, [name], what's up?""",
-	MIND_CONTROL_12 = """I've been told you can help me with a mind control technique""",
-	MIND_CONTROL_13 = """Just dropped to say hi *Leave*""",
+	MIND_CONTROL_12_OPTION = """I've been told you can help me with a mind control technique""",
+	MIND_CONTROL_13_OPTION = """Just dropped to say hi *Leave*""",
 	MIND_CONTROL_14 = """- Eeh? I haven't been asked about this in a long while. 
 
 Xari takes a long pause thinking about your request.
@@ -4339,7 +4458,9 @@ Xari fishes a small ring out of her stash. As she chants the control spell, the 
 
 Amelia smiled at you mysteriously.""",
 	ANASTASIA_EXECUTION_3 = """- That's the spirit. After all, we got the best spots so we can easily leave if bored.""",
-	ANASTASIA_EXECUTION_4 = """Oh, look, it's about to begin.""",
+	ANASTASIA_EXECUTION_4 = """
+
+Oh, look, it's about to begin.""",
 	ANASTASIA_EXECUTION_5 = """As the cover from the postrum was removed the crowds began to raise their voices. In the center of it was a fully naked Anastasia entrapped in wooden stockade. As she was observed by the whole town her face quickly turned angry and red. The herald next to her began declaring her crimes which went on for a full minute. 
 
 Herald: - ...for these crimes, rebel Princess Anastasia is subjected...
@@ -4365,13 +4486,15 @@ However, the princess' pleads fell on deaf ears. Angry and horny citizens around
 	ANASTASIA_EXECUTION_8 = """Amelia: - I did say I pity her, didn't I? And this is much more fun to look at too.""",
 	ANASTASIA_EXECUTION_9 = """Amelia: - *giggle* Well, that's only half of the truth. Ever thought about how many landlords, riches and nobles would like to do it with a real and only princess? After the thought I gave them we managed to settle it in a democratic way. These first guys in the line could learn a better way to disguise themselves, though.""",
 	ANASTASIA_EXECUTION_10 = """Amelia: - Surely you don't believe this, do you? Even so, this was her choice. Yesterday I informed her about the new punishment and offered a way to end her life, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, given there would be no consequences.""",
-	ANASTASIA_EXECUTION_11 = """Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
+	ANASTASIA_EXECUTION_11 = """
+
+Amelia: - But anyway, if you plan to take part in it, I'd recommend doing so before she becomes too much of a mess. """,
 	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet customers didn't seem to end. Her pleads and cries have entirely turned into sobs and faint moans. 
 
 The former princess has been kept used by citizens for the whole next week, eventually disappearing from the main square.""",
 	ANASTASIA_EXECUTION_13 = """The crowd has gathered at the square in waiting for the announcement of the war being over. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The cries of rejoice have sprouted from the people. 
 
-- None can belittle how much effort [sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
+- None can belittle how much effort [Sir] [name] [surname] has put into this to allow this to happen. For [his] achievements he has been elected as the next Mayor of Aliron.""",
 	
 	
 	ANASTASIA_PERSUASION_1 = """You walk into a rather comfortable jail room for a single unbound prisoner which is held there: the former rebellion leader, princess Anastasia. Despite her state she observes you with a sharp glance, yet stays silent. It seems she wasn't really tortured or interrogated since her arrival, but there would be little reason to that.""",
@@ -4588,7 +4711,7 @@ Anastasia, the former rebel leader, has came out at the balcony of the governmen
 Upon hearing this the crowd has brightened with enthusiasm, while Anastasia mustered her resolution.""",
 	ANASTASIA_DECLARATION_2 = """- My ways were wrong and I've led many people to the demise. I deeply regret it and I wish nothing else but for this war to stop. This is why I ask for those who are still out there fighting for my sake, to stop and surrender.
 
-- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
+- I'm no longer the rebel leader. I know some of you still believe in me having the birth rights to take the rule, but I'm not eligible for this. Instead, from now I'll be supporting the new elected mayor of Aliron, [Sir] [name] [surname]. From now on, I'll be at [his] mercy while still doing my best for the sake of people. 
 
 Upon hearing your name you come out of the shadows, delivering a quick bow and hugging Anastasia on the waist. The crowd seems very enthusiastic and positive, as the rumors have been spread for some time how you're going to become the next ruler. Many people began applauding to you.""",
 	ANASTASIA_DECLARATION_3 = """Male Citizen 1: - It's finally over.
@@ -4653,5 +4776,107 @@ Sigmund: - Let's finally get to the feast.""",
 	
 	
 	
+	##################################################New
+	AIREAMELIAREPORT = "During the morning you receive a short invitation from Amelia stating that she learned the location of princess and you should visit her.",
+	AIREAMELIAMEETOPTION = "I've heard you've learned some new information",
+	AIREAMELIAMEET1 = "- Yes, I've learned where's the princess can potentially be. But before I share this information, I'd like to ask you for a favor, since you'd be becoming the next mayor, especially after getting the princess herself. Can I make a request at some point in future from you?",
+	AIREAMELIAMEET1_OPTION1 = "Sure, you've done a lot for me",
+	AIREAMELIAMEET1_OPTION2 = "I can't promise that",
+	AIREAMELIAMEET2 = "I'm pleased to hear that. According to the elf lass, Anastasia is hiding at elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I'm hoping to hear more of your success.",
+	AIREAMELIAMEET2_1 = "I see. Well, I'll be waiting till you change your mind.",
+
+
+	AMELIAFINDPRINCESSOPTION = "I've been wondering if you could give me an advice to find someone...",
+	AMELIAFINDPRINCESS1_1 = """- You've been aiming to find our princess? I've heard you've captured an elven girl, who seems to be close to her. It might be a good idea to try her, if you didn't already.
+
+	- Alternatively, we might use our mage friends to find her if you get some of her belonging. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me.""",
+	AMELIAFINDPRINCESS1_2 = """- You've been aiming to find our princess? Well, if you've given up on the captured elf, I have an alternative suggestion.
+
+	- We can use our mage friends to find her if you get some of her belonging. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me.""",
+	AMELIAFINDPRINCESS2 = "- You've been aiming to find our princess? There does not seem to be a lot of leads at our hands, is there? Well, for such cases we can utilize our mage friends, as long as you can provide them with something belonging to the one we seek. Sometimes we use this trick to track down... less willing members. You can check the last place she was at, you will probably find something useful there, then get it back to me. ",
+
+	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice",
+	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I find anything",
+	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
+	AMELIAFINDPRINCESS2_1 = "- See you soon, dear.",
+	AMELIAFINDPRINCESS2_2 = "- You ask me? I haven't been there and I believe its your job. Don't sweat about it, I'm sure you'll manage.",
+	MATERIALPRINCESS_BRACELET = "Unusual Bracelet",
+	MATERIALPRINCESS_BRACELETDESCRIPT = """An unusual silver bracelet you've acquired at the rebels' hideout. On the inner side you can spot a small engravings: "To my beloved daughter". """,
+
+
+
+
+	ZEPHYRA_EXTRA_GREET = "- You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
+	ZEPHYRA_EXTRA_GREET2 = "- Hello, [master]. How can I serve you? You must want to ask me some questions?",
+	ZEPHYRA_EXTRA_OPTION1 = "How do you like it here?", 
+	ZEPHYRA_EXTRA_REPLY1_1 = "- It's quite interesting, but I don't have any choice at this point now, do I? I'm not complaing, since that's what I've agreed on myself. ",
+	ZEPHYRA_EXTRA_REPLY1_2 = "- Not shabby at all. I think you kinda lack on the cute side. Maybe add some flowers and ribbons, make it a bit more relaxed, you know. ",
+
+	ZEPHYRA_EXTRA_OPTION2 = "Tell me more about...",
+	ZEPHYRA_EXTRA_OPTION2_1 = "Alios",
+	ZEPHYRA_EXTRA_REPLY2_1 = """- Alios is a diety of winds. I'm not surprised you haven't heard of him, he does not seem to care much for any sorts of worships at all, so only very few people do care about him. 
+
+	- Me? Of course it's impossible for me to not worship him. Once you become a champion it's a part of your identity, it's a thing affecting your every step in some way. """,
+	ZEPHYRA_EXTRA_OPTION2_1_1 = "You seem rather casual about it",
+	ZEPHYRA_EXTRA_OPTION2_1_2 = "I'd hate to be in a such position, I value my independance",
+	ZEPHYRA_EXTRA_OPTION2_1_3 = "So you both are good-for-nothing loners",
+
+	ZEPHYRA_EXTRA_REPLY2_1_1 = "- Hehe, I guess you just get used to it after some time. Alios wouldn't like me to feel special because of it.",
+	ZEPHYRA_EXTRA_REPLY2_1_2 = "- Hmmm, that's too bad, even if Alios is a god of winds, freedom is only appealing when it is put in comparison, and sometimes being bound does outweight it anyway. ",
+	ZEPHYRA_EXTRA_REPLY2_1_3 = "- Hey, not true, I can also draw! Well, we aren't as fancy as Celena or Freya, but you take what you can get. ",
+	ZEPHYRA_EXTRA_OPTION2_2 = "Your Past",
+	ZEPHYRA_EXTRA_REPLY2_2 = """- What I've been doing prior becoming a champion? To tell the truth, I don't remember. One day I've up in the middle of a forest, by that moment I already was a champion. Mysterious right? 
+
+	- Somehow I don't care much for what has been going on with me before that, so here it is. """,
+	ZEPHYRA_EXTRA_OPTION2_3 = "Princess",
+	ZEPHYRA_EXTRA_REPLY2_3 = """- So you are hunting for that princess to stop the rebellion? Huh, it must be nice to be a princess, I wish I could be one, then live a rich boring life and marry a prince. Isn't that like every girl's dream?""",
+	ZEPHYRA_EXTRA_OPTION3 = "So what is your plan exactly?",
+	ZEPHYRA_EXTRA_REPLY3 = """- You should continue with your business, don't worry about me. Sorry, I can't give you any good directive as I don't have one either. Once the situtation present itself we will usually recognize it. 
+
+	- Yeah, sorry, I'm afraid I won't be able to perform another barrier trick in a while, you don't get to use such miracles casually. That does make our meeting fateful though, right? """,
+
+	KURDAN_EXTRA_GREET = "- Greetings, [name]. Do you have some questions for me?",
+	KURDAN_EXTRA_OPTION1 = "How do you like it here",
+	KURDAN_EXTRA_REPLY1 = "- You have quite a home. I must admit, I'm used to different things, but I did agree to this, didn't I? Well, there's some good in not having to care where to stay and what to eat.",
+	KURDAN_EXTRA_OPTION2 = "About magic",
+	KURDAN_EXTRA_REPLY2 = "- I've been studying magic since my juvinile years. My father was a practicioner for some time, so I guess it runs in the family. Some see it as a tool for their needs, but I'm a lot more curious about underlying reasons of how it operates and what role it has in the world. I'm still have much to learn, though. ",
+	KURDAN_EXTRA_OPTION3 = "About orcs",
+	KURDAN_EXTRA_REPLY3 = "- Those, who united at my homelands has decided to outlaw the magic practices alltogether. They are in a difficult position because of how they were greatly ruled by the cult of Thoth. Now the cult is persecuted, and we... they have chosen technological applications as their source of power. I think you will encounter it some day.",
+
+	AMELIA_BONUS_QUESTION = "- [name], I have a question for you but please answer honestly, who would you find more attractive between me and the princess? She seems to be only slightly younger than me and I can't deny her beauty, that alone must have earned her quite a support.",
+	AMELIA_BONUS_QUESTION_OPTION1 = "Princess",
+	AMELIA_BONUS_QUESTION_OPTION2 = "Amelia",
+	AMELIA_BONUS_QUESTION_OPTION3 = "This is a tough choice...",
+	AMELIA_BONUS_QUESTION_OPTION4 = "I'm actually into men",
+
+	AMELIA_BONUS_QUESTION_REPLY1 = """- A-ha, I see. I can't really compete with a real ex-princess, can I. 
+
+	- Just keep in mind, that you won't be able to side with her and turn on us. """,
+	AMELIA_BONUS_QUESTION_REPLY2 = """- Oh my, aren't you a flatterer? You would really prefer this mutt cat to a royal blood? How silly. To tell the truth, for the most of my life I was just another servant. I think I was one since birth. And now I don't even have a proper Master. Would you be up to the challenge?.. I'm just kidding. But be sure I appreciate your company.""",
+	AMELIA_BONUS_QUESTION_REPLY3 = "- He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advice to get too hopeful about her, she's too troublesome to us. ",
+	AMELIA_BONUS_QUESTION_REPLY4 = "- Oh, is that so? Alright, then you shouldn't join her just because of her charm. I guess we have a little less to worry about.", 
+	AMELIA_BONUS_QUESTION_REPLYALL = "- Well, I will not hold you any longer, good luck with your mission. ",
+
+
 	
+	
+	
+	
+	
+	#           QUESTS           #
+	MAIN_QUEST_LOAN_SUMMARY = "Your mansion comes with a loan. You must find a money to pay to the bank or you'll be thrown out of your newly acquired home.",
+	MAIN_QUEST_LOAN_NAME = "The Loan",
+	MAIN_QUEST_LOAN_STAGE0 = "You must have over 1000 gold by 14th day.",
+	MAIN_QUEST_LOAN_STAGE1 = "By 28th day have at least 3000 gold.",
+	MAIN_QUEST_LOAN_STAGE2 = "By 50th day have at least 10000 gold.",
+	MAIN_QUEST_LOAN_STAGE3 = "By 100th day have at least 86000 gold.",
+	
+	GUILDS_INTRODUCTION_SUMMARY = "You must get to know the most powerful establishments of Aliron. Those are the four guilds you must get closer to those.",
+	GUILDS_INTRODUCTION_NAME1 = "The Four Guilds",
+	GUILDS_INTRODUCTION_NAME2 = "First Step",
+	GUILDS_INTRODUCTION_NAME3 = "New Friends",
+	GUILDS_INTRODUCTION_STAGE0 = "Visit Four Aliron Guilds: Fighters, Servants, Workers, Mages; and choose one to join.",
+	GUILDS_INTRODUCTION_STAGE1 = "Now, that you got accostumed with Aliron's order, you should start making progress with your standing. Earn at least 300 reputation with one of the main guilds. You can do so by completing quests from the city's notice board.",
+	GUILDS_INTRODUCTION_STAGE1_5 = "You've earned enough reputation with one of the factions. Wait for a few days.",
+	GUILDS_INTRODUCTION_STAGE2 = "An unexpected letter came last morning. It suggests you to visit Servants guild and meet their leader.",
 }

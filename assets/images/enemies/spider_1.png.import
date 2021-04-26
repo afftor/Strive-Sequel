@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/daisysad.png-3d351876c08c244d227789a8ed877a87.stex"
+path="res://.import/spider_1.png-8e2e888cdc2038fb1c9d2ff73805f3ea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/portraits/daisysad.png"
-dest_files=[ "res://.import/daisysad.png-3d351876c08c244d227789a8ed877a87.stex" ]
+source_file="res://assets/images/enemies/spider_1.png"
+dest_files=[ "res://.import/spider_1.png-8e2e888cdc2038fb1c9d2ff73805f3ea.stex" ]
 
 [params]
 

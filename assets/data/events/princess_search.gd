@@ -4,8 +4,6 @@
 #search_advice_3 - amelia -> myr
 #search_advice_4 - amelia -> amelia (failed interragation)
 #prison_avail - unlock
-#bracelet_found - not implemented
-#search_mages - not implemented - bracelet given to mages
 #amelia_help - not implemented - contionues questline
 
 
@@ -15,6 +13,7 @@ var data = {
 		image = null,
 		character = "duncan",
 		tags = ['dialogue_scene'],
+		
 		text = [
 			{text = "SEARCH_FIGHTERS_1", reqs = [], previous_dialogue_option = 0},
 			{text = "SEARCH_FIGHTERS_1_1", reqs = [], previous_dialogue_option = 1},
@@ -96,11 +95,13 @@ var data = {
 		image = null,
 		character = "duncan",
 		tags = [],
-		text = [{text = "SEARCH_FIGHTERS_2", reqs = [], bonus_effects = [{code = 'decision', value = 'search_advice_1'}]}],
+		text = [{text = "SEARCH_FIGHTERS_2", reqs = []}],
 		options = [
 			{
 				code = 'close',
 				text = "DIALOGUECLOSE",
+				bonus_effects = [
+					{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}],
 				reqs = [],
 			},
 		],
@@ -175,7 +176,6 @@ var data = {
 			{
 				reqs = [
 					{type = 'decision', value = 'aire_is_dead', check = false},
-					{type = 'decision', value = 'prison_avail', check = false}
 				],
 				image = null,
 				character = "amelia",
@@ -184,14 +184,14 @@ var data = {
 				options = [
 					{
 						code = 'close',
-						bonus_effects = [{code = 'decision', value = 'search_advice_2'}, {code = 'decision', value = 'search_advice_3'}],
+						bonus_effects = [],
 						text = "SEARCH_SERVANTS_OPTION", 
 						reqs = [],
 					},
 				],
 			},
 			{
-				reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
+				reqs = [],
 				image = null,
 				character = "amelia",
 				tags = [],
@@ -199,7 +199,7 @@ var data = {
 				options = [
 					{
 						code = 'close',
-						bonus_effects = [{code = 'decision', value = 'search_advice_3'}],
+						bonus_effects = [],
 						text = "SEARCH_SERVANTS_OPTION", 
 						reqs = [],
 					},
@@ -223,10 +223,12 @@ var data = {
 	#dungeon
 	#look for some minor issues in translation file comments
 	princess_search_dungeon_1 = {
+		custom_background = "jail",
 		image = null,
 		character = 'amelia_shade',
 		tags = ['dialogue_scene'],
-		text = [{text = "SEARCH_DUNGEON_1", reqs = []}], 
+		text = [{text = "SEARCH_DUNGEON_1", reqs = []}],
+		common_effects = [{code = 'background_noise', value = 'stop'}],
 		options = [
 			{
 				code = 'princess_search_dungeon_2',
@@ -237,6 +239,7 @@ var data = {
 		],
 	},
 	princess_search_dungeon_2 = {
+		custom_background = "jail",
 		image = null,
 		character = 'amelia',
 		tags = ['dialogue_scene'],
@@ -264,6 +267,7 @@ var data = {
 		variations = [
 			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = true}],
+				custom_background = "jail",
 				image = null,
 				character = "aire",
 				tags = ['dialogue_scene'],
@@ -292,6 +296,7 @@ var data = {
 			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = false}],
 				image = null,
+				custom_background = "jail",
 				character = "aire",
 				tags = ['dialogue_scene'],
 				text = [{text = "SEARCH_DUNGEON_3_2", reqs = [], bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = 0}]}],
@@ -316,6 +321,7 @@ var data = {
 	princess_search_dungeon_4 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene'],
 		text = [
@@ -347,6 +353,7 @@ var data = {
 	princess_search_dungeon_5 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene'],
 		text = [
@@ -388,13 +395,14 @@ var data = {
 	princess_search_dungeon_6 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_6_1", reqs = [], previous_dialogue_option = 1},
 			{text = "SEARCH_DUNGEON_6_2", reqs = [], previous_dialogue_option = 2},
 			{text = "SEARCH_DUNGEON_6_3", reqs = [], previous_dialogue_option = 3},
-			{text = "SEARCH_DUNGEON_6_4", reqs = [], previous_dialogue_option = 4},
+			{text = "SEARCH_DUNGEON_6_4", reqs = [], previous_dialogue_option = 4,bonus_effects = [{code = 'play_sound', value = 'slap'}]},
 			],
 		options = [
 			{
@@ -430,6 +438,7 @@ var data = {
 	princess_search_dungeon_7 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene'],
 		text = [
@@ -468,6 +477,7 @@ var data = {
 	princess_search_dungeon_8 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -513,6 +523,7 @@ var data = {
 	princess_search_dungeon_9 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -543,6 +554,7 @@ var data = {
 	princess_search_dungeon_10 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -566,6 +578,7 @@ var data = {
 	princess_search_dungeon_11 = {
 		reqs = [],
 		image = null,
+		custom_background = "jail",
 		character = "aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
@@ -603,6 +616,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = "aire",
+		custom_background = "jail",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_12_1", reqs = [], previous_dialogue_option = 1},
@@ -642,6 +656,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = "aire",
+		custom_background = "jail",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_13", reqs = [], previous_dialogue_option = 1},
@@ -678,6 +693,7 @@ var data = {
 		reqs = [],
 		image = null,
 		character = "aire",
+		custom_background = "jail",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "SEARCH_DUNGEON_14_1", reqs = [], previous_dialogue_option = 1},
@@ -727,6 +743,7 @@ var data = {
 	princess_search_dungeon_15 = {
 		image = null,
 		character = "aire",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_15", reqs = [], bonus_effects = [{code = 'decision', value = 'interrogation_success'}]}], 
 		options = [
@@ -741,6 +758,7 @@ var data = {
 	princess_search_dungeon_16 = {
 		image = null,
 		character = "amelia",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_16", reqs = []}], 
 		options = [
@@ -752,7 +770,13 @@ var data = {
 			},
 			{
 				code = 'princess_search_dungeon_18',
-				text = "SEARCH_DUNGEON_OPTION_44",
+				text = "SEARCH_DUNGEON_OPTION_44_1",
+				reqs = [{type = 'decision', value = 'interrogation_success', check = false}],
+				dialogue_argument = 1,
+			},
+			{
+				code = 'princess_search_dungeon_18',
+				text = "SEARCH_DUNGEON_OPTION_44_2",
 				reqs = [{type = 'decision', value = 'interrogation_success', check = false}],
 				dialogue_argument = 1,
 			},
@@ -761,6 +785,7 @@ var data = {
 	princess_search_dungeon_17 = {
 		image = null,
 		character = "amelia",
+		custom_background = "jail",
 		tags = [],
 		text = [{text = "SEARCH_DUNGEON_17", reqs = []}],
 		options = [
@@ -774,6 +799,7 @@ var data = {
 	princess_search_dungeon_18 = {
 		image = null,
 		character = "amelia",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [{text = "SEARCH_DUNGEON_18", reqs = []}], 
 		options = [
@@ -782,7 +808,7 @@ var data = {
 				text = "SEARCH_DUNGEON_OPTION_45",
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'amelia_help'}] #or whatsever
+				bonus_effects = [{code = 'decision', value = 'amelia_help_interogation'}, {code = 'add_timed_event', value = "aire_amelia1", args = [{type = 'add_to_date', date = [2,2], hour = 18}]}, {code = 'add_timed_event', value = "aire_amelia_report", args = [{type = 'add_to_date', date = [3,3], hour = 9}]}]
 			},
 			{
 				code = 'princess_search_dungeon_19',
@@ -803,7 +829,8 @@ var data = {
 	princess_search_dungeon_19 = {
 		image = null,
 		character = "amelia",
-		tags = [],
+		custom_background = "jail",
+		tags = ['dialogue_scene'],
 		text = [
 			{text = "SEARCH_DUNGEON_19_1", reqs = [], previous_dialogue_option = 1},
 			{text = "SEARCH_DUNGEON_19_2", reqs = [], previous_dialogue_option = 2},
@@ -814,7 +841,171 @@ var data = {
 				code = 'close',
 				text = "SEARCH_DUNGEON_OPTION_48",
 				reqs = [],
+				bonus_effects = [{code = 'update_city'},{code = 'background_noise', value = 'resume'}],
 			},
 		],
 	},
+
+
+	aire_amelia1 = {
+		image = null,
+		character = "aire",
+		character2 = "amelia",
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIRE_AMELIA1", reqs = []},
+		],
+		options = [
+			{code = 'aire_amelia2' , text = tr("DIALOGUECONTINUE"), reqs = [], dialogue_argument = 1}
+		]
+	},
+	aire_amelia2 = {
+		image = null,
+		custom_background = "aire_amelia1",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		dialogue_type = 2,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIRE_AMELIA2", reqs = []},
+		],
+		options = [
+			{code = 'aire_amelia3' , text = tr("DIALOGUECONTINUE"), reqs = [], dialogue_argument = 1}
+		]
+	},
+	aire_amelia3 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIRE_AMELIA3", reqs = []},
+		],
+		options = [
+			{code = 'aire_amelia4' , text = tr("DIALOGUECONTINUE"), reqs = [], dialogue_argument = 1}
+		]
+	},
+	aire_amelia4 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIRE_AMELIA4", reqs = []},
+		],
+		options = [
+			{code = 'aire_amelia5' , text = tr("DIALOGUECONTINUE"), reqs = [], dialogue_argument = 1}
+		]
+	},
+	aire_amelia5 = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIRE_AMELIA5", reqs = []},
+		],
+		options = [
+			{code = 'aire_amelia6' , text = tr("DIALOGUECONTINUE"), reqs = [], dialogue_argument = 1}
+		]
+	},
+	aire_amelia6 = {
+		image = null,
+		custom_background = "aire_amelia2",
+		scene_type = "ero_scene",
+		save_scene_to_gallery = true,
+		dialogue_type = 2,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIRE_AMELIA6", reqs = []},
+		],
+		options = [
+			{code = 'close' , text = tr("DIALOGUECONTINUE"), reqs = [], bonus_effects = [{code = 'screen_black_transition', value = 1}]}
+		]
+	},
+	
+	aire_amelia_report = {
+		image = null,
+		tags = [],
+		text = [{text = "AIREAMELIAREPORT", reqs = []}],
+		common_effects = [{code = "decision", value = 'amelia_interrogation_success'}],
+		options = [
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE",
+				reqs = [],
+			},
+		],
+		
+	},
+	
+	amelia_interrogation_report = {
+		image = null,
+		tags = [],
+		text = [
+			{text = "AIREAMELIAREPORT", reqs = []},
+		],
+		options = [
+			{code = 'close' , text = tr("DIALOGUECLOSE"), reqs = [], dialogue_argument = 1}
+		]
+	},
+	
+	amelia_ask_location = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIREAMELIAMEET1", reqs = []},
+		],
+		options = [
+			{code = 'amelia_ask_location1' , text = "AIREAMELIAMEET1_OPTION1", reqs = [], dialogue_argument = 1},
+			{code = 'amelia_ask_location2' , text = "AIREAMELIAMEET1_OPTION2", reqs = [], dialogue_argument = 2}
+		]
+	},
+	amelia_ask_location1 = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIREAMELIAMEET2", reqs = []},
+		],
+		options = [
+			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'progress_quest', value = 'princess_search', stage = 'stage3'}, {code = "decision", value = 'amelia_accepted_interrogation_info'}]},
+		]
+	},
+	amelia_ask_location2 = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AIREAMELIAMEET2_1", reqs = []},
+		],
+		options = [
+			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+		]
+	},
+	
+	amelia_princess_advice = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AMELIAFINDPRINCESS1_1", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{code = 'decision', value = 'prison_avail', check = false}]},
+			{text = "AMELIAFINDPRINCESS1_2", reqs = [{type = 'decision', value = 'aire_is_dead', check = false},{code = 'decision', value = 'prison_avail', check = true}]},
+			{text = "AMELIAFINDPRINCESS1_3", reqs = [{type = 'decision', value = 'aire_is_dead', check = true}]},
+		],
+		options = [
+			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION1", reqs = [], dialogue_argument = 1},
+			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION2", reqs = [], dialogue_argument = 2},
+			{code = 'amelia_princess_advice1' , text = "AMELIAFINDPRINCESSOPTION3", reqs = [], dialogue_argument = 3},
+		]
+	},
+	amelia_princess_advice1 = {
+		character = 'amelia',
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "AMELIAFINDPRINCESS2_1", reqs = [], previous_dialogue_option = [1,2]},
+			{text = "AMELIAFINDPRINCESS2_2", reqs = [], previous_dialogue_option = 3},
+		],
+		options = [
+			{code = 'close' , text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+		]
+	},
+	
 }
+

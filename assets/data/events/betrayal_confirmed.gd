@@ -61,10 +61,11 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_7", reqs = []}],
 		options = [ {
-			code = 'betrayal_confirmed_6', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'betrayal_confirmed_7', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
 	},
 	
+	#wrong dialogue didn't need it
 	betrayal_confirmed_6 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "greg",
 		text = [{text = "BETRAYAL_CONFIRMED_8", reqs = []}],
@@ -125,14 +126,16 @@ var data = {
 	
 	betrayal_confirmed_13 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan", character2 = "myr",
-		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}],
-		common_effects = [{code = 'decision', value = "DivineSymbolStart"}], #Adds option in church
+		text = [{text = "BETRAYAL_CONFIRMED_14", reqs = []}], #DivineSymbolStart
+		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage1'}, #Adds option in church
+		{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = false},
+		{code = 'update_location'}],
 		options = [ {
-			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1,
+			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_3", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}]
 		}, {
-			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_4", reqs = [], dialogue_argument = 2,
+			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_4", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}]
 		}, {
-			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_5", reqs = [], dialogue_argument = 2,
+			code = 'close', text = "BETRAYAL_CONFIRMED_OPTION_5", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}]
 		}],
 	},
 	
@@ -171,7 +174,7 @@ var data = {
 	divine_symbol_4 = {
 		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene'], character = "ginny",
-		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage1'}],
+		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage2'}],
 		text = [{text = "DIVINE_SYMBOL_5", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 3,
@@ -181,7 +184,7 @@ var data = {
 	divine_symbol_5 = {
 		custom_background = "church_event",
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "ginny",
-		common_effects = [{code = 'complete_quest', value = 'divine_symbol_quest'},
+		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage3'},
 		{code = 'material_change', operant = '-', material = 'divine_symbol', value = 1},
 		{code = 'material_change', operant = '+', material = 'blessed_divine_symbol', value = 1},],
 		text = [{text = "DIVINE_SYMBOL_6", reqs = []}],
@@ -206,6 +209,7 @@ var data = {
 	divine_symbol_7 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "myr",
 		text = [{text = "DIVINE_SYMBOL_8", reqs = []}],
+		common_effects = [{code = 'progress_quest', value = 'divine_symbol_quest', stage = 'stage4'}],
 		options = [ {
 			code = 'divine_symbol_8', text = "DIVINE_SYMBOL_OPTION_9", reqs = [], dialogue_argument = 2,
 		}, {
@@ -241,14 +245,14 @@ var data = {
 	
 	divine_symbol_11 = {
 		variations = [ {
-			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 50}]}],
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'gte', value = 50}]}],
 			image = null, tags = ['dialogue_scene'],
 			text = [{text = "DIVINE_SYMBOL_12", reqs = []}],
 			options = [ {
 				code = 'divine_symbol_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 			}],
 		}, {
-			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 50}]}],
+			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'physics', operant = 'lt', value = 50}]}],
 			image = null, tags = ['dialogue_scene'],
 			text = [{text = "DIVINE_SYMBOL_13", reqs = []}],
 			options = [ {
@@ -360,7 +364,7 @@ var data = {
 	},
 	
 	divine_symbol_18 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_23", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_19', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -368,7 +372,7 @@ var data = {
 	},
 	
 	divine_symbol_19 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene', 'master_translate'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_24", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_20', text = "DIVINE_SYMBOL_OPTION_14", reqs = [], dialogue_argument = 1,
@@ -380,7 +384,7 @@ var data = {
 	},
 	
 	divine_symbol_20 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_25", reqs = [], previous_dialogue_option = 1}, 
 		{text = "DIVINE_SYMBOL_26", reqs = [], previous_dialogue_option = 2}, 
 		{text = "DIVINE_SYMBOL_27", reqs = [], previous_dialogue_option = 3}, 
@@ -393,7 +397,7 @@ var data = {
 	},
 	
 	divine_symbol_21 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_29", reqs = [], previous_dialogue_option = 1}, 
 		{text = "DIVINE_SYMBOL_30", reqs = [], previous_dialogue_option = 2}],
 		options = [ {
@@ -404,7 +408,7 @@ var data = {
 	},
 	
 	divine_symbol_22 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_31", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_23', text = "DIVINE_SYMBOL_OPTION_22", reqs = [], dialogue_argument = 1,
@@ -414,7 +418,7 @@ var data = {
 	},
 	
 	divine_symbol_23 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_32", reqs = [], previous_dialogue_option = 1}, 
 		{text = "DIVINE_SYMBOL_33", reqs = [], previous_dialogue_option = 2}, 
 		{text = "DIVINE_SYMBOL_34", reqs = [], previous_dialogue_option = 3}],
@@ -430,7 +434,7 @@ var data = {
 	},
 	
 	divine_symbol_24 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_35", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_27', text = "DIVINE_SYMBOL_OPTION_27", reqs = [], dialogue_argument = 1,
@@ -442,7 +446,7 @@ var data = {
 	},
 	
 	divine_symbol_25 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_36", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_26', text = "DIVINE_SYMBOL_OPTION_30", reqs = [], dialogue_argument = 1,
@@ -455,7 +459,7 @@ var data = {
 	
 	#recruit and type=slave
 	divine_symbol_26 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene', 'master_translate'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_37", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true, slave_category = 'slave'},
 		{code = 'decision', value = 'ZephyraRecruited'}, {code = 'decision', value = 'ZephyraEnslaved'}],
@@ -466,7 +470,7 @@ var data = {
 	
 	#=Alright, why not
 	divine_symbol_27 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_38", reqs = []}],
 		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
 		{code = 'decision', value = 'ZephyraRecruited'}],
@@ -477,9 +481,9 @@ var data = {
 	
 	#=That was a joke, you can join me
 	divine_symbol_28 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_39", reqs = []}],
-		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
+		common_effects = [{code = 'make_story_character', value = 'zephyra', recruit_from_location = true},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -488,7 +492,7 @@ var data = {
 	
 	#=No I can't trust you/No, after all I can't trust you
 	divine_symbol_29 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_40", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -497,7 +501,7 @@ var data = {
 	
 	#=Continue
 	divine_symbol_30 = {
-		image = null, tags = ['dialogue_scene'], #character = "zephyra",
+		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [ {text = "DIVINE_SYMBOL_41", reqs = []}, 
 		{text = "DIVINE_SYMBOL_42", reqs = [{type = 'decision', value = 'ZephyraRecruited', check = false}]},
 		{text = "DIVINE_SYMBOL_43", reqs = [{type = 'decision', value = 'ZephyraRecruited', check = true}]} ],
@@ -548,13 +552,18 @@ var data = {
 			bonus_effects = [{code = "return_to_mansion"}],
 		}],
 	},
-	
+	#Fighter/mage guild leaders meet back to normal
 	divine_symbol_36 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
+		
+		common_effects = [{code = 'add_timed_event', value = "message_before_looking_operation", 
+		args = [{type = 'add_to_date', date = [10,10], hour = 1}]}, 
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage0'},
+		{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1}],
+		
 		options = [ {
-			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines', area = 'plains'}}],
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1,
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'complete_quest', value = 'divine_symbol_quest'}]
 		}],
 	},
 }

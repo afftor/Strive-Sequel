@@ -87,6 +87,7 @@ enum {
 	NODE_ALERT_PANEL,
 	NODE_CONFIRMPANEL,
 	NODE_YESNOPANEL,
+	NODE_YESORNOPANEL,
 	NODE_SLAVESELECT,
 	NODE_SKILLSELECT,
 	NODE_EVENT,
@@ -549,6 +550,7 @@ func PlaySound(name, delay = 0):
 	yield(soundnode, 'finished')
 	soundnode.queue_free()
 
+
 func PlayBackgroundSound(name):
 	var soundnode = get_spec_node(self.NODE_BACKGROUND_SOUND) #GetSoundNode()
 	soundnode.stream = audio.background_noise[name]
@@ -558,6 +560,10 @@ func PlayBackgroundSound(name):
 func StopBackgroundSound():
 	var soundnode = get_spec_node(self.NODE_BACKGROUND_SOUND) #GetSoundNode()
 	soundnode.stop()
+
+func ResumeBackgroundSound():
+	var soundnode = get_spec_node(self.NODE_BACKGROUND_SOUND) #GetSoundNode()
+	soundnode.play(0)
 
 var soundcooldown = 0
 
@@ -762,12 +768,21 @@ func dialogue_option_selected(option):
 		match gui_controller.dialogue_window_type:
 			1:
 				get_spec_node(self.NODE_DIALOGUE).hide()
-				ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
+				if option.has("close_speed"):
+					get_spec_node(self.NODE_DIALOGUE).wait_for = option.close_speed
+					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.close_speed)
+					get_spec_node(self.NODE_DIALOGUE).hide()
+				else:
+					ResourceScripts.core_animations.CloseAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
 				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE)
 			2:
 				#get_spec_node(self.NODE_DIALOGUE).hide()
-				ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
+				if option.has("open_speed"):
+					get_spec_node(self.NODE_DIALOGUE).wait_for = option.open_speed
+					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2), option.open_speed)
+				else:
+					ResourceScripts.core_animations.OpenAnimation(get_spec_node(self.NODE_DIALOGUE_T2))
 				#get_spec_node(self.NODE_DIALOGUE_T2).hide()
 				#gui_controller.dialogue = get_spec_node(self.NODE_DIALOGUE_T2)
 				# gui_controller.dialogue.get_node("Background").show()

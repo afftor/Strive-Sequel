@@ -16,10 +16,9 @@ var data = {
 				reqs = [{type = 'decision', value = 'SaveRebels', check = false}],
 				image = null, tags = ['dialogue_scene'], character = "sigmund",
 				text = [{text = "AFTER_MINES_SIGMUND_3", reqs = []}],
-				common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}],
 				options = [ {
 					code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2, 
-					bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}], #adds option on sigmund introduction
+					bonus_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage4'}], #adds option on sigmund introduction
 				} ],
 			},
 		]
@@ -29,10 +28,9 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "sigmund",
 		text = [{text = "AFTER_MINES_SIGMUND_1", reqs = [], previous_dialogue_option = 1},
 		{text = "AFTER_MINES_SIGMUND_2", reqs = [], previous_dialogue_option = 2}],
-		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}],
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 2,
-			bonus_effects = [{code = 'decision', value = 'AfterMinesTalkedToSigmund'}],
+			bonus_effects = [{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage4'}],
 		} ],
 	},
 	
@@ -105,22 +103,22 @@ var data = {
 	after_mines_duncan_3 = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "AFTER_MINES_DUNCAN_9", reqs = []}],
-		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 7}]}, {code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}],
+		common_effects = [{code = 'add_timed_event', value = "after_mines_message", args = [{type = 'add_to_date', date = [4,4], hour = 6}]}],
 		options = [ {
-			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_10", reqs = [], dialogue_argument = 2
+			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_10", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'civil_war_mines'}]
 		},  {
-			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_11", reqs = [], dialogue_argument = 2
+			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_11", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'civil_war_mines'}]
 		},  {
-			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_12", reqs = [], dialogue_argument = 2
+			code = 'close', text = "AFTER_MINES_DUNCAN_OPTION_12", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'complete_quest', value = 'civil_war_mines'}]
 		},  ],
 	},
 	
 	after_mines_message = {
-		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2_1'}],
+		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage1'}],
 		image = null, tags = ['dialogue_scene'],
 		text = [{text = "AFTER_MINES_MESSAGE", reqs = []}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, bonus_effects = [{code = 'decision', value = 'AfterMinesGotTheMessage'}] #adds option to talk to duncan in intoduction
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2,
 		}],
 	},
 	
@@ -138,7 +136,7 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan",
 		text = [{text = "AFTER_MINES_DUNCAN_11", reqs = [], previous_dialogue_option = 1}, 
 		{text = "AFTER_MINES_DUNCAN_12", reqs = [], previous_dialogue_option = 2}],
-		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage3'}, {code = "update_guild"}],
+		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}, {code = "update_guild"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
 		}],
@@ -178,7 +176,6 @@ var data = {
 		text = [{text = "AFTER_MINES_CONVOY_4", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
 		options = [ {
-			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}}],
 			code = 'after_mines_convoy_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
 		}],
 	},
@@ -213,7 +210,8 @@ var data = {
 		{text = "AFTER_MINES_CONVOY_7", reqs = [], previous_dialogue_option = 2},
 		{text = "AFTER_MINES_CONVOY_8", reqs = [], previous_dialogue_option = 3} ],
 		options = [ {
-			#bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'dungeon_quest_mines', code = 'dungeon_quest_mines'}}],
+			bonus_effects = [{code = 'teleport_active_location', to_loc = {location = 'settlement_plains1', code = 'settlement_plains1', area = 'plains'}},
+			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'locked', value = true}],
 			code = 'after_mines_convoy_5', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
 		}],
 	},
@@ -291,7 +289,8 @@ var data = {
 		image = null, tags = ['dialogue_scene'], character = "duncan", character2 = "anastasia",
 		text = [{text = "AFTER_MINES_CONVOY_17", reqs = []}],
 		#common_effects = [{code = 'screen_black_transition', value = 0.5}],
-		common_effects = [{code = 'complete_quest', value = 'lead_convoy_quest'}],
+		common_effects = [{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage3'},
+		{code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
 		}],

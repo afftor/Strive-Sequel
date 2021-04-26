@@ -3005,9 +3005,9 @@ var Skilllist = {
 		targetreqs = [],
 		effects = [Effectdata.rebuild_template({effect = 'e_s_windwall'})], 
 		cost = {},
-		charges = 0,
-		combatcooldown = 5,#?
-		cooldown = 0,
+		charges = 2,
+		combatcooldown = 0,
+		cooldown = 1,
 		catalysts = {},
 		target = 'ally',
 		target_number = 'line',

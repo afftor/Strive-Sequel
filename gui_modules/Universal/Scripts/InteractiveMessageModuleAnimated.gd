@@ -9,6 +9,7 @@ var previous_text = ''
 var base_text_size
 var base_text_position
 var doing_transition = false
+var wait_for = 0
 
 signal TransitionFinished
 
@@ -17,7 +18,7 @@ func _ready():
 		get_node("BackgroundT2/HideButton").connect("pressed", self, "hide_dialogue")
 		get_node("ShowPanel/ShowButton").connect("pressed", self, "hide_dialogue", ["show"])
 	$CharacterImage.material = load("res://assets/silouette_shader.tres").duplicate()
-	if $CharacterImage2 != null:
+	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.material = load("res://assets/silouette_shader.tres").duplicate()
 	base_text_size = $RichTextLabel.rect_size
 	base_text_position = $RichTextLabel.rect_position
@@ -27,7 +28,7 @@ func hide_dialogue(action = "hide"):
 	for node in self.get_children():
 		if node.get_class() == "Tween":
 			continue
-		if !node.name in ["ShowPanel", "EventBackground"]:
+		if !node.name in ["ShowPanel", "CustomBackground"]:
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"
 
@@ -60,15 +61,20 @@ func open(scene):
 	if typeof(scene.text) == TYPE_STRING:
 		scene.text = [{text = scene.text, reqs = []}]
 	
+	if wait_for != 0:
+		ResourceScripts.core_animations.OpenAnimation(self, wait_for, Tween.TRANS_EXPO, Tween.EASE_IN) 
+		wait_for = 0
+	
 	handle_scene_transition_fx(scene)
 	if doing_transition:
 		#print_debug("waiting")
 		yield(self, "TransitionFinished")
 		#print_debug("finished WAIT")
 		doing_transition = false
+	
 	update_scene_characters()
 	$CharacterImage.hide()
-	if $CharacterImage2 != null:
+	if get_node_or_null("CharacterImage2") != null:
 		$CharacterImage2.hide()
 	$ImagePanel.hide()
 	handle_scene_backgrounds(scene)
@@ -88,7 +94,6 @@ func open(scene):
 		get_tree().get_root().get_node("ANIMTaskAquared").raise()
 	
 	show()
-
 
 func show_buttons():
 	get_tree().get_root().set_disable_input(true)
@@ -119,6 +124,7 @@ func update_scene_characters():
 
 # Temporary
 func show_full_info(person):
+	print(true)
 	gui_controller.close_all_closeable_windows()
 	var FullSlaveInfo = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO)
 	gui_controller.explore_slaveinfo = FullSlaveInfo
@@ -267,6 +273,21 @@ func select_person_for_next_event(code):
 	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
 	stored_scene = code
 	input_handler.ShowSlaveSelectPanel(self, 'event_person_selected', reqs)
+
+func remove_person(code):
+	var reqs = [{code = 'is_at_location', value = input_handler.active_location.id, check = true}]
+	stored_scene = code
+	input_handler.ShowSlaveSelectPanel(self, 'remove_selected', reqs)
+
+func remove_selected(person): 
+	person.remove_from_task()
+	ResourceScripts.game_party.remove_slave(person)
+	input_handler.slave_list_node.rebuild()
+	
+	var event_type = 'story_event'
+	if scenedata.scenedict[stored_scene].has('default_event_type'):
+		event_type = scenedata.scenedict[stored_scene].default_event_type
+	input_handler.interactive_message_follow(stored_scene, event_type, {})
 
 func event_person_selected(person):
 	input_handler.active_character = person
@@ -471,14 +492,13 @@ func handle_scene_transition_fx(scene):
 
 
 func handle_scene_backgrounds(scene):
-	if scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		gui_controller.dialogue.get_node("CustomBackground").show()
-		gui_controller.dialogue.get_node("CustomBackground").texture = images.backgrounds[scene.custom_background]
-	elif scene.has("custom_background") && gui_controller.dialogue_window_type == 2:
-		gui_controller.dialogue.get_node("EventBackground").show()
-		gui_controller.dialogue.get_node("EventBackground").texture = images.backgrounds[scene.custom_background]
+	var node = gui_controller.dialogue.get_node("CustomBackground")
+	if scene.has("custom_background"):
+		var newtexture = images.backgrounds[scene.custom_background]
+		ResourceScripts.core_animations.UnfadeAnimation(node, 0.5)
+		ResourceScripts.core_animations.SmoothTextureChange(gui_controller.dialogue.get_node("CustomBackground"), newtexture, 1)
 	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
-		gui_controller.dialogue.get_node("CustomBackground").hide()
+		node.hide()
 
 
 var ch1 = null
@@ -691,17 +711,22 @@ func handle_scene_options(scene):
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
 			newbutton.get_node("Label").bbcode_text = tr(i.text)
+			newbutton.hotkey = option_number
 			yield(get_tree(), 'idle_frame')
 			if i.has('active_char_translate'):
 				newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
-			newbutton.get_node("hotkey").text = str(option_number)
-			if newbutton.get_node("Label").get_v_scroll().is_visible():
-				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
-			newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
+			#newbutton.get_node("hotkey").text = str(option_number)
+#			if newbutton.get_node("Label").get_v_scroll().is_visible():
+#				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10
+			#newbutton.get_node("Label").rect_size.y = newbutton.rect_min_size.y
+			newbutton.get_node("Label").rect_size.y += 8
+			newbutton.rect_min_size.y = newbutton.get_node("Label").rect_size.y
 			newbutton.connect("pressed",input_handler,'dialogue_option_selected',[i])
 			
 			if i.has('select_person'):
 				newbutton.connect("pressed", self, 'select_person_for_next_event', [i.code])
+			if i.has('remove_person'):
+				newbutton.connect("pressed", self, 'remove_person', [i.code])
 			elif i.code == 'shrine_option':
 				newbutton.connect("pressed",self,'shrine_option',[i.args[0]])
 			elif i.code == 'chest_mimic_force_open':
@@ -729,14 +754,16 @@ func handle_scene_options(scene):
 				else:
 					newbutton.connect("pressed", self, i.code)
 			
+			if ResourceScripts.game_progress.selected_dialogues.has(i.text):
+				newbutton.status = 'seen'
 			if i.has('type'):
 				match i.type:
 					'next_dialogue':
-						newbutton.get_node("Label").bbcode_text = globals.TextEncoder("{color=yellow|"+newbutton.get_node("Label").bbcode_text +"}")
-			if ResourceScripts.game_progress.selected_dialogues.has(i.text):
-				newbutton.get_node("Label").bbcode_text = globals.TextEncoder("{color=gray_text_dialogue|"+newbutton.get_node("Label").bbcode_text +"}")
+						newbutton.status = 'next_dialogue'
+			
 			
 			if i.has('disabled') && i.disabled == true:
+				newbutton.status = 'disabled'
 				disable = true
 			if i.has('bonus_effects'):
 				newbutton.connect('pressed', globals, "common_effects", [i.bonus_effects])

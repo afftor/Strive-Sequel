@@ -864,6 +864,8 @@ func check_event_reqs(reqs):
 				check = input_handler.operate(i.operant, current_stage, i.value)
 			'dungeon_complete':
 				check = i.value == input_handler.exploration_node.check_dungeon_end()
+			'value_check':
+				check = valuecheck(i)
 		if check == false:
 			break
 	return check
@@ -1040,7 +1042,8 @@ func return_characters_from_location(locationid):
 				person.travel.location = ResourceScripts.game_world.mansion_location
 				person.return_to_task()
 
-
+var yes
+var no
 func common_effects(effects):
 	for i in effects:
 		match i.code:
@@ -1069,6 +1072,14 @@ func common_effects(effects):
 							newevent.reqs += newreq
 						'fixed_date':
 							var newreq = [{type = 'date', operant = 'eq', value = k.date}, {type = 'hour', operant = 'eq', value = k.hour}]
+							newevent.reqs += newreq
+						'add_to_hour':
+							var date = ResourceScripts.game_globals.date
+							var hour = ResourceScripts.game_globals.hour + round(rand_range(k.hour[0], k.hour[1]))
+							if hour > 24: hour = hour-24
+							if ResourceScripts.game_globals.hour == 23:
+								date += 1
+							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
 							newevent.reqs += newreq
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'remove_timed_events':
@@ -1158,10 +1169,25 @@ func common_effects(effects):
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
+			'background_noise':
+				match i.value:
+					'stop':
+						input_handler.StopBackgroundSound()
+					'resume':
+						input_handler.ResumeBackgroundSound()
 			'update_location':
 				if input_handler.exploration_node == null:
 					input_handler.exploration_node = gui_controller.exploration
-				input_handler.exploration_node.open_location(input_handler.active_location)	
+				input_handler.exploration_node.open_location(input_handler.active_location)
+			'open_location': # {code = 'open_location', location = "SETTLEMENT_PLAINS1", area = "plains"}
+				if input_handler.exploration_node == null:
+					input_handler.exploration_node = gui_controller.exploration
+				var location
+				for a in ResourceScripts.game_world.areas[i.area].locations.values():
+					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
+						location = a
+				location = ResourceScripts.world_gen.get_location_from_code(location.id)
+				input_handler.exploration_node.open_location(location)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
 			'main_progress':
@@ -1217,6 +1243,9 @@ func common_effects(effects):
 			'decision':
 				if !ResourceScripts.game_progress.decisions.has(i.value):
 					ResourceScripts.game_progress.decisions.append(i.value)
+			'remove_decision':
+				if ResourceScripts.game_progress.decisions.has(i.value):
+					ResourceScripts.game_progress.decisions.erase(i.value)
 			'screen_black_transition':
 				ResourceScripts.core_animations.BlackScreenTransition(i.value)
 			'start_combat':
@@ -1230,6 +1259,8 @@ func common_effects(effects):
 				remove_location(i.value)
 			'set_music':
 				input_handler.SetMusic(i.value)
+			'play_sound':
+				input_handler.PlaySound(i.value)
 			'lose_game':
 				input_handler.PlaySound('transition_sound')
 				globals.return_to_main_menu()
@@ -1244,19 +1275,6 @@ func common_effects(effects):
 					k.affect_char(i)
 			'progress_active_location':
 				gui_controller.exploration.skip_to_boss()
-			'set_bg':
-				var image
-				if i.progress_based:
-					image = get_image_based_on_progress(i.value)
-				else:
-					image = images.backgrounds[i.value]
-				gui_controller.dialogue.get_node("EventBackground").show()
-				gui_controller.dialogue.get_node("EventBackground").texture = image
-				if i.save_to_gallery:
-					if i.has("scene_type") && i.scene_type == "ero_scene":
-						input_handler.update_progress_data("ero_scenes", image)
-					elif i.has("scene_type") && i.scene_type == "story_scene":
-						input_handler.update_progress_data("story_scenes", image)
 			'dialogue_counter':
 				gui_controller.dialogue.operate_counter(i.name, i.op)
 			'unlock_class':
@@ -1272,6 +1290,7 @@ func common_effects(effects):
 			#{code = location_code} - means first id-wise existing location with given code
 			'teleport_active_character':
 				input_handler.active_character.teleport(i.to_loc)
+				gui_controller.nav_panel.build_accessible_locations()
 			'teleport_active_location':
 				var location
 				for a in ResourceScripts.game_world.areas[i.to_loc.area].locations.values():
@@ -1283,6 +1302,8 @@ func common_effects(effects):
 					var ch_id = input_handler.active_location.group[pos]
 					if ch_id != null:
 						characters_pool.get_char_by_id(ch_id).teleport(location)
+				gui_controller.nav_panel.build_accessible_locations()
+				#(i.to_loc.location)
 			'teleport_location':
 				var locdata = ResourceScripts.game_world.find_location_by_data(i.from_loc)
 				if locdata.location == null:
@@ -1293,9 +1314,33 @@ func common_effects(effects):
 					var ch_id = locdata.group[pos]
 					if ch_id != null:
 						characters_pool.get_char_by_id(ch_id).teleport(i.to_loc)
+				gui_controller.nav_panel.build_accessible_locations()
 			'return_to_mansion':
 				gui_controller.nav_panel.return_to_mansion()
+			# example:
+			# location = "SETTLEMENT_PLAINS1"
+			# area = "plains"
+			# param = "type"
+			# value = "locked"
+			'set_location_param':
+				var param = i.param
+				var value = i.value
+				for a in ResourceScripts.game_world.areas[i.area].locations.values():
+					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
+						a[param] = value
+						break
+			'yes_or_no_panel':
+				yes = i.yes
+				no = i.no
+				input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, "yes_message", "no_message", i.text])
+			'close_guild_window':
+				gui_controller.nav_panel.select_location("aliron")
 
+func yes_message():
+	input_handler.interactive_message(yes, '', {})
+	
+func no_message():
+	input_handler.interactive_message(no, '', {})
 
 func get_nquest_for_rep(value):
 	if value > variables.reputation_tresholds.back() : 
@@ -1304,17 +1349,6 @@ func get_nquest_for_rep(value):
 	while value >= variables.reputation_tresholds[n]:
 		n += 1
 	return n
-
-func get_image_based_on_progress(event_name):
-	var image
-	match event_name:
-		"anastasia_event":
-			if ResourceScripts.game_progress.decisions.has("aire_is_dead"):
-				image = images.backgrounds.anastasia_event_dead
-			else:
-				image = images.backgrounds.anastasia_event_alive
-	return image
-
 
 func checkreqs(array):
 	var check = true

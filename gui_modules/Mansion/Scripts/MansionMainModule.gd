@@ -546,7 +546,6 @@ func test_mode():
 		character.is_players_character = true
 		globals.impregnate(character, character)
 		#character.get_stat('pregnancy').duration = 10
-		print(character.get_stat('pregnancy'))
 		#globals.common_effects([{code = 'unlock_class', name = 'healer', operant = 'eq', value = true}])
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Elf', 'male', 'random')
@@ -561,7 +560,6 @@ func test_mode():
 		character.set_stat('tame_factor', 6)
 		character.set_stat('lust', 50)
 		character.set_stat('charm_factor', 2)
-		print(ResourceScripts.game_party.get_master().get_stat('charm_factor'))
 		character.is_players_character = true
 		character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('HalfkinCat', 'random', 'random')
@@ -643,6 +641,7 @@ func test_mode():
 		character.add_trait('core_trait')
 		character.set_slave_category('slave')
 		character.add_stat('lust', 100)
+		character.set_stat("tame_factor", 1)
 		character.unlock_class("dancer")
 		character.is_players_character = true
 		character.statlist.tattoo.face = 'ink_makeup'
@@ -664,6 +663,18 @@ func test_mode():
 				}
 			]
 		)
+		
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Aire'},
+			]
+		)
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Anastasia'},
+			]
+		)
+		
 		
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
@@ -744,11 +755,17 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
 		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
 		#input_handler.interactive_message("after_mines_convoy_2", '',{})
-		input_handler.interactive_message('event_tribal_elves', '', {})
-		globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
-		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
-		#globals.connect("hour_tick", self, "test")
+		var newslave = ResourceScripts.scriptdict.class_slave.new()
+		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
+		ResourceScripts.game_party.add_slave(newslave)
+
+		#input_handler.interactive_message('servants_election_finish7', '', {})
+		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
+		#ResourceScripts.game_progress.decisions.append("aire_raped")
+		
+		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
+		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
 		
 		for i in ResourceScripts.game_world.areas.plains.factions.values():
 			i.reputation = 500
@@ -792,6 +809,3 @@ func test_mode():
 #		character = ResourceScripts.scriptdict.class_slave.new()
 		yield(get_tree(), 'idle_frame')
 		input_handler.add_random_chat_message(character2, 'hire')
-
-func test():
-	input_handler.interactive_message('servants_election_finish7', '', {})

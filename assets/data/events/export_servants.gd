@@ -1,26 +1,4 @@
 var data = {
-	servants_introduction = {
-		image = null,
-		character = 'amelia',
-		tags = ['dialogue_scene','master_translate'],
-		text = [
-		{text = "SERVANTSINTRODUCTION1", reqs = [], previous_dialogue_option = 1},
-		{text = "SERVANTSINTRODUCTION1_1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], previous_dialogue_option = 1},
-		{text = "SERVANTSINTRODUCTION1_2", reqs = [], previous_dialogue_option = 2},
-		{text = "SERVANTSINTRODUCTION1_3", reqs = [], previous_dialogue_option = 3},
-		{text = "SERVANTSINTRODUCTION1_4", reqs = [], previous_dialogue_option = 4},
-		],
-		options = [
-		{code = 'servants_questions', text = "SERVANTSASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'servants_join', text = "SERVANTSINTRODUCTION1REPLY3", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
-		{code = 'servants_election', text = "SERVANTSREQUESTELECTIONSUPPORT", reqs = [
-			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, 
-			{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 500},
-			{type = 'decision', value = 'servants_election_support', check = false}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}, {type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
-		],
-	},
 	servants_join = {
 		image = null,
 		character = 'amelia',
@@ -253,23 +231,45 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH7_ANY", reqs = []},
 		],
 		options = [
-			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 2},
+			{code = 'servants_election_finish8', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', 
+			dialogue_argument = 1, change_dialogue_type = 2, open_speed = 0.5},
 		],
 	},
 
 	servants_election_finish8 = {
+		variations = [
+		{reqs = [{code = 'decision', value = 'aire_is_dead', check = false}],
 		image = null,
-		# character = 'anastasia',
+		custom_background = "anastasia_event_alive",
+		common_effects = [{code = 'set_music', value = 'battle2'}],
+		scene_type = "story_Scene",
+		save_scene_to_gallery = true,
+		dialogue_type = 2,
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "SERVANTSELECTIONFINISH8", reqs = []}
 		],
-		common_effects = [{code = 'set_music', value = 'battle2'}, {code = 'set_bg', progress_based = true, value = 'anastasia_event', save_to_gallery = true, scene_type = "story_scene"}],
 		options = [
 			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
+		]},
+		{image = null,
+		custom_background = "anastasia_event_dead",
+		common_effects = [{code = 'set_music', value = 'battle2'}],
+		scene_type = "story_Scene",
+		save_scene_to_gallery = true,
+		dialogue_type = 2,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "SERVANTSELECTIONFINISH8", reqs = []}
+		],
+		options = [
+			{code = 'servants_election_finish9', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1}
+		]},
+		
 		]
 	},
-
+	
+	
 	servants_election_finish9 = {
 		image = null,
 		# character = 'anastasia',
@@ -278,7 +278,8 @@ var data = {
 			{text = "SERVANTSELECTIONFINISH9", reqs = []}
 		],
 		options = [
-			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', dialogue_argument = 1, change_dialogue_type = 1}
+			{code = 'after_election_line1', text = tr("DIALOGUECONTINUE"), reqs = [], type = 'next_dialogue', 
+			dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1}
 		]
 	},
 	

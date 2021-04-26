@@ -13,43 +13,7 @@ var data = {
 		],
 		
 	},
-	fighters_introduction2 = {
-		image = null,
-		character = 'duncan',
-		tags = ['dialogue_scene'],
-		text = [
-		{text = "FIGHTERSINTRODUCTION2_1", reqs = [], previous_dialogue_option = 1, bonus_effects = [{code = "update_guild"}]},
-		{text = "FIGHTERSINTRODUCTION2_2", reqs = [], previous_dialogue_option = 2, bonus_effects = [{code = "update_guild"}]},
-		{text = "FIGHTERSINTRODUCTION2_3", reqs = [], previous_dialogue_option = [1,2]},
-		{text = "FIGHTERSINTRODUCTION2_3_1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], previous_dialogue_option = [1,2]},
-		{text = "FIGHTERSINTRODUCTION2_4", reqs = [], previous_dialogue_option = 3},
-		{text = "FIGHTERSINTRODUCTION2_5", reqs = [], previous_dialogue_option = 4},
-		{text = "FIGHTERSINTRODUCTION2_6", reqs = [], previous_dialogue_option = 5},
-		],
-		options = [
-		{code = 'fighters_questions', text = "FIGHTERSASKQUESTIONS", reqs = [], dialogue_argument = 1},
-		{code = 'fighters_join', text = "FIGHTERSINTRODUCTION2REPLY1", reqs = [{type = 'active_quest_stage', value = 'guilds_introduction', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 3},
-		
-		{code = 'fighters_election1', text = "FIGHTERSREQUESTELECTIONSUPPORT", reqs = [
-			{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}, 
-			{type = 'faction_reputation', code = 'fighters', operant = 'gte', value = 500},
-			{type = 'decision', value = 'fighters_election_support', check = false},
-			{type = 'dialogue_seen', check = false, value = 'FIGHTERSELECTIONSTART1'}], type = 'next_dialogue', dialogue_argument = 1},
-		{code = 'fighters_election5', text = "FIGHTERSINTRODUCTION2REPLY5", reqs = [{type = 'decision', value = 'fighters_election_support', check = false}, 
-		{type = 'active_quest_stage', value = 'fighters_election_quest', stage = 'stage2'}, 
-		#{type = 'has_material', operant = 'gte', value = 1, material = 'lich_skull'},
-		{type = 'dialogue_seen', check = true, value = 'FIGHTERSELECTIONSTART1'}], dialogue_argument = 7, type = 'next_dialogue'}, 
-		
-		
-		
-		{code = 'workers_elections_continue1', text = "FIGHTERSINTRODUCTION2REPLY6", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 6},
-		{code = 'workers_election_initiate3', text = "FIGHTERSINTRODUCTION2REPLY7", reqs = [{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'start'}], type = 'next_dialogue', dialogue_argument = 7}, 
-		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
-		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'decision', value = 'AfterMinesTalkedToSigmund', check = true}], dialogue_argument = 8, remove_after_first_use = true},
-		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'decision', value = 'AfterMinesGotTheMessage', check = true}], dialogue_argument = 9, remove_after_first_use = true},
-		],
-		
-	},
+
 	fighters_join = {
 		image = null,
 		character = 'duncan',
