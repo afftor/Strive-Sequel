@@ -114,14 +114,16 @@ func _ready():
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
-	
+	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 
-
+func test():
+	print(ResourceScripts.game_progress.decisions)
+	#ResourceScripts.game_progress.seen_dialogues.append('ALIRONCHURCHFIRSTCOME')
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -753,15 +755,15 @@ func test_mode():
 				#i.captured = true
 		
 		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
-		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
-		#input_handler.interactive_message("after_mines_convoy_2", '',{})
+		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken") # after we talked to workers
+		#input_handler.interactive_message("betrayal_confirmed_4", '',{})
 		
-		var newslave = ResourceScripts.scriptdict.class_slave.new()
-		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
-		ResourceScripts.game_party.add_slave(newslave)
+#		var newslave = ResourceScripts.scriptdict.class_slave.new()
+#		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
+#		ResourceScripts.game_party.add_slave(newslave)
 
 		#input_handler.interactive_message('servants_election_finish7', '', {})
-		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
+		globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}])
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])

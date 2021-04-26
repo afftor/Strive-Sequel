@@ -3,10 +3,11 @@ var data = {
 		image = null,
 		character = "duncan",
 		character2 = "myr",
-		tags = ["dialogue_scene", "master_translate"],
+		tags = ["dialogue_scene", "master_translate",'blackscreen_transition_slow'],
 		text = [
 			{text = "ALIRONELECTIONSFINISH_LINE1", reqs = []}
 		],
+		common_effects = [{code = 'set_music', value = 'exploration'}],
 		options = [
 			{code = "after_election_line2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]

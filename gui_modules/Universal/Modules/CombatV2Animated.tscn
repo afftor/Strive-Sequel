@@ -62,7 +62,6 @@
 [ext_resource path="res://assets/Textures_v2/ANIMATIONS/Victory/victory_glow.png" type="Texture" id=61]
 [ext_resource path="res://assets/Textures_v2/BATTLE/Panels/panel_victory.png" type="Texture" id=62]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 25 )
@@ -770,7 +769,6 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ItemPanel" type="TextureRect" parent="."]
-visible = false
 margin_left = 738.0
 margin_top = 257.0
 margin_right = 1182.0

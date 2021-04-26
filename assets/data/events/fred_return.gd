@@ -79,16 +79,35 @@ var data = {
 		],
 		common_effects = [],
 		options = [
-				{code = "fred_return_to_duncan_answer_1", text = "RETURNTODUNCAN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
+				{code = "fred_return_to_duncan_answer_1_1", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"}
 		]
 	},
 	
-	fred_return_to_duncan_answer_1 = {
+	fred_return_to_duncan_answer_1_1 = {
 		image = null,
 		character = "duncan",
 		tags = ["dialogue_scene", "master_translate"],
 		text = [
 			{text = "RETURNTODUNCAN_ANSWER1", reqs = []}
+		],
+		options = [
+			{code = "fred_return_to_duncan_answer_1_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+		]
+	},
+	
+	fred_return_to_duncan_answer_1_2 = {
+		image = null,
+		character = "duncan",
+		tags = ["dialogue_scene", "master_translate"],
+		common_effects = [
+			{code = 'play_sound', value = 'doorsmash'},
+			{code = 'screen_shake', strength = 3, length = 0.3},
+			{code = 'set_location_param', location = 'settlement_plains1', area = 'plains', param = 'captured', value = true},
+			#{code = 'return_characters_from_location', value = 'settlement_plains1'},
+			],
+		text = [
+			{text = "RETURNTODUNCAN_TOWNCAPTURE", reqs = []},
+			{text = "RETURNTODUNCAN_ANSWER1_1", reqs = []}
 		],
 		options = [
 			{code = "fred_return_to_duncan_answer_2", text = "RETURNTODUNCAN_QUESTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},

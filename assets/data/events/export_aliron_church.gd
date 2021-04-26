@@ -112,7 +112,7 @@
 			{text = "ALIRONCHURCHENTER1", reqs = [],  previous_dialogue_option = 0},
 		],
 		options = [
-			{code = 'aliron_church_celena', reqs = [], text = "ALIRONCHURCHINTRODUCTIONREPLY1", dialogue_argument = 1, type = 'next_dialogue', remove_after_first_use = true},
+			{code = 'aliron_church_celena', reqs = [], text = "ALIRONCHURCHINTRODUCTIONREPLY1", dialogue_argument = 1},
 			{code = 'aliron_church_quest_start', reqs = [{type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHQUESTSTART'}], text = "ALIRONCHURCHENTERREPLY1", dialogue_argument = 2, type = 'next_dialogue', remove_after_first_use = true},
 			{code = 'aliron_church_quest_complete', reqs = [
 				{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHQUESTSTART'},
@@ -123,11 +123,13 @@
 				{type = 'has_material', material = 'meatsoup', operant = 'gte', value = 25},
 				{type = 'timed_option', value = 7, quest = "aliron_church"},
 			], text = "ALIRONCHURCHENTERREPLY2", dialogue_argument = 3, type = 'next_dialogue', previous_dialogue_option = 0},
-			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4, type = 'next_dialogue'},
+			
 			{code = 'divine_symbol_1', text = "DIVINE_SYMBOL_OPTION_1", dialogue_argument = 5, type = 'next_dialogue', 
 			reqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage1'}], remove_after_first_use = true},
 			{code = 'divine_symbol_5', text = "DIVINE_SYMBOL_OPTION_7", dialogue_argument = 6, type = 'next_dialogue', 
-			reqs = [{type = 'has_material', operant = 'gte', value = 1, material = 'divine_symbol'}]},
+			reqs = [{type = 'has_material', operant = 'gte', value = 1, material = 'divine_symbol'},{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage2'}]},
+			
+			{code = 'aliron_church_leave', reqs = [], text = "DIALOGUELEAVE", dialogue_argument = 4},
 		],
 		
 	},

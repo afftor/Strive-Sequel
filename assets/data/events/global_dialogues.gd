@@ -35,11 +35,11 @@ var data = {
 		{code = 'fred_return_to_duncan_1', text = "FREDFIGHTERSQUESTREPORT", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage5'}], type = 'next_dialogue', dialogue_argument = 7}, 
 		
 		
-		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage4'}], dialogue_argument = 8, remove_after_first_use = true},
-		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage1'}], dialogue_argument = 9, remove_after_first_use = true},
+		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 8, remove_after_first_use = true},
+		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 9, remove_after_first_use = true},
 
-		{code = 'looking_for_princess_2', text = "LOOKING_FOR_PRINCESS_OPTION_3", reqs = [{type = 'decision', value = 'LookingForPrincessAccess', check = true}], dialogue_argument = 10},
-		{code = 'about_princess_start', text = "MIND_CONTROL_OPTION_5", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], dialogue_argument = 11},
+		{code = 'looking_for_princess_2', text = "LOOKING_FOR_PRINCESS_OPTION_3", reqs = [{type = 'decision', value = 'LookingForPrincessAccess', check = true}], type = 'next_dialogue', dialogue_argument = 10},
+		{code = 'about_princess_start', text = "MIND_CONTROL_OPTION_5", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 11},
 		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
@@ -73,7 +73,7 @@ var data = {
 			type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'workers_election_initiate5', text = "WORKERSINTRODUCTION1REPLY6", reqs = [{type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'},{type = 'active_quest_stage', value = 'workers_election_quest', stage = 'stage3'}], bonus_effects = [{code = 'complete_quest', value = 'workers_election_quest'}], dialogue_argument = 6, type = 'next_dialogue'},
 		{code = 'help_sigmund_start', text = "HELP_SIGMUND_OPTION_0", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage1'}], dialogue_argument = 6},
-		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage3'}], dialogue_argument = 7, remove_after_first_use = true},
+		{code = 'after_mines_sigmund_start', text = "AFTER_MINES_WORKERS_OPTION_1", type = 'next_dialogue', reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage3'}], dialogue_argument = 7, remove_after_first_use = true},
 		
 		
 		{code = 'workers_leader_close', text = "WORKERSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
@@ -100,9 +100,9 @@ var data = {
 			{type = 'decision', value = 'servants_election_support', check = false}], type = 'next_dialogue', dialogue_argument = 1},
 		{code = 'servants_election_finish1', text = "SERVANTSINTRODUCTION1REPLY5", reqs = [{type = "has_multiple_decisions", decisions = ['fighters_election_support', 'workers_election_support', 'servants_election_support', 'mages_election_support'], operant = 'gte', value = 3}, {type = 'active_quest_stage', value = 'election_global_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 1},
 		
-		{code = 'amelia_ask_location', text = "AIREAMELIAMEETOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{code = 'decision', value = 'amelia_interrogation_success', check = true}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'amelia_ask_location', text = "AIREAMELIAMEETOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = true}], type = 'next_dialogue', dialogue_argument = 1, remove_after_first_use = true},
 		
-		{code = 'amelia_princess_advice', text = "AMELIAFINDPRINCESSOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{code = 'decision', value = 'amelia_interrogation_success', check = false},{type = 'dialogue_selected', check = false, value = 'AMELIAFINDPRINCESSOPTION'}], type = 'next_dialogue', dialogue_argument = 1},
+		{code = 'amelia_princess_advice', text = "AMELIAFINDPRINCESSOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = false},{type = 'dialogue_selected', check = false, value = 'AMELIAFINDPRINCESSOPTION'}], type = 'next_dialogue', dialogue_argument = 1},
 		
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},

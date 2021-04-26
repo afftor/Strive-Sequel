@@ -1012,12 +1012,16 @@ func open_location_actions():
 	if active_location.has("locked"):
 		if active_location.locked:
 			#better do it using actions next time
-			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-			newbutton.toggle_mode = true
 			if test_stage("lead_convoy_quest", "stage3"):
+				
+				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'combat_duncan_greg_event', [newbutton])
 			elif test_stage("divine_symbol_quest", "stage3"):
+				
+				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
 			

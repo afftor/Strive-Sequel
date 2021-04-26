@@ -107,7 +107,7 @@ margin_left = 55.0
 margin_top = 165.0
 margin_right = 235.0
 margin_bottom = 223.0
-hint_tooltip = "Increase hours advanced per turn
+hint_tooltip = "Advance Time
 Hotkey: 1"
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
@@ -122,6 +122,9 @@ custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.882353, 0.505882, 1 )
 text = "Finish Turn"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="0speed" type="TextureButton" parent="TimeNode"]
 visible = false

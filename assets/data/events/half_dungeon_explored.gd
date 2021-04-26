@@ -4,10 +4,10 @@ var data = {
 		text = [ {text = "HELP_SIGMUND_START", reqs = []} ],
 		options = [ {
 			code = 'help_sigmund_1', remove_after_first_use = true,
-			text = "HELP_SIGMUND_OPTION_1", reqs = [], dialogue_argument = 1, 
+			text = "HELP_SIGMUND_OPTION_1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'help_sigmund_2',
-			text = "HELP_SIGMUND_OPTION_2", reqs = [], dialogue_argument = 2
+			text = "HELP_SIGMUND_OPTION_2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}
 		],
 	},
@@ -17,13 +17,13 @@ var data = {
 		text = [ {text = "HELP_SIGMUND_1", reqs = []} ],
 		options = [ {
 			code = 'help_sigmund_end_1',
-			text = "HELP_SIGMUND_OPTION_3", reqs = [], dialogue_argument = 1
+			text = "HELP_SIGMUND_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'help_sigmund_end_1',
-			text = "HELP_SIGMUND_OPTION_4", reqs = [], dialogue_argument = 2
+			text = "HELP_SIGMUND_OPTION_4", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			code = 'help_sigmund_end_2',
-			text = "HELP_SIGMUND_OPTION_5", reqs = [], dialogue_argument = 2
+			text = "HELP_SIGMUND_OPTION_5", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}
 		],
 	},
@@ -33,13 +33,13 @@ var data = {
 		text = [ {text = "HELP_SIGMUND_2", reqs = []} ],
 		options = [ {
 			code = 'help_sigmund_end_1',
-			text = "HELP_SIGMUND_OPTION_3", reqs = [], dialogue_argument = 1
+			text = "HELP_SIGMUND_OPTION_3", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'help_sigmund_end_1',
-			text = "HELP_SIGMUND_OPTION_4", reqs = [], dialogue_argument = 2
+			text = "HELP_SIGMUND_OPTION_4", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			code = 'help_sigmund_end_2',
-			text = "HELP_SIGMUND_OPTION_5", reqs = [], dialogue_argument = 2
+			text = "HELP_SIGMUND_OPTION_5", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		}
 		],
 	},
@@ -51,7 +51,7 @@ var data = {
 		{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage2'}],
 		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = []
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], type = 'next_dialogue'
 			}
 		],
 	},
@@ -62,7 +62,7 @@ var data = {
 		common_effects = [{code = 'make_quest_location', value = 'dungeon_quest_mines'},
 		{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage2'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = []
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], type = 'next_dialogue'
 			}
 		],
 	},
@@ -70,7 +70,7 @@ var data = {
 	mines_arrival_start = {
 		image = 'mines_quest', 
 		tags = ['dialogue_scene', 'master_translate'],
-		text = [ {text = "MINES_ARRIVAL_START", reqs = [], previous_dialogue_option = 0},
+		text = [{text = "MINES_ARRIVAL_START", reqs = [], previous_dialogue_option = 0},
 		{text = "MINES_ARRIVAL_1", reqs = [], previous_dialogue_option = 1},
 		{text = "MINES_ARRIVAL_5", reqs = [], previous_dialogue_option = 6}],
 		options = [ {
@@ -81,7 +81,7 @@ var data = {
 			text = "MINES_ARRIVAL_OPTION_2", reqs = [], dialogue_argument = 2
 		}, {
 			code = 'mines_arrival_end',
-			text = "MINES_ARRIVAL_OPTION_3", reqs = [], dialogue_argument = 2
+			text = "MINES_ARRIVAL_OPTION_3", reqs = [], dialogue_argument = 2, type = 'next_dialogue',
 		}
 		],
 	},

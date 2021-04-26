@@ -128,7 +128,7 @@ var TranslationDict = {
 	MATERIALMYTHRIL = "Mythril",
 	MATERIALMYTHRILDESCRIPT = "A very rare and strong magic alloy. Produced by crafting.",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
-	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "This should let you create a brief breech in the barrier (mouthful, right?) and get rid of a Champion",
+	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "This should let you create a brief breech in the barrier and get rid of a Champion",
 	
 	MATERIALINK_BRANDING = "Ink: Branding",
 	MATERIALINK_MAKEUP = "Ink: Permanent Makeup",
@@ -2013,6 +2013,7 @@ var TranslationDict = {
 	SETTLEMENT = "Settlement",
 	SETTLEMENT_SMALL = "Village",
 	SETTLEMENT_LARGE = "Town",
+	SETTLEMENT_PLAINS1 = "Settlement",
 	
 	DUNGEONDIFFICULTY = "Difficulty",
 	DUNGEONDIFFICULTYEASY = "Easy",
@@ -2752,7 +2753,7 @@ I suggest starting with the mage guild. If they haven't figured it out already, 
 
 	MAGESAFTERELLECTION1 = """You enter Myr's office to find her distressed, much unlike her usually calm state. 
 	
-	— I thought I made it clear I am not to be disturbed... Oh, it's you. What do you want?""",
+— I thought I made it clear I am not to be disturbed... Oh, it's you. What do you want?""",
 
 	MAGESAFTERELLECTION1_QUESTION1 = "Just dropped to say \"Hi\".",
 	MAGESAFTERELLECTION1_QUESTION2 = "I'm investigating what's been going on around here.",
@@ -2943,10 +2944,17 @@ This should ease tensions between the guilds, until something new comes up. Here
 	RETURNTODUNCAN1 = "— Just a report, huh? I take it you didn't find the actual culprit then.",
 	RETURNTODUNCAN2 = "— So that's how it was. I'd have preferred to have questioned him first, but what's done is done.",
 
-	RETURNTODUNCAN_ANSWER1 = """— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though.
-
-— Anyway, good work, but we have more immediate problems now. The rebels have taken several key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the fort, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
-
+	RETURNTODUNCAN_ANSWER1 = """— Greg... Well I'll be damned, he was one of the older knights back in the day, but he went missing during the coup. I thought he was killed but it seems I was wrong. I have no clue who the demon woman might be though...""",
+	
+	RETURNTODUNCAN_TOWNCAPTURE = """Before Duncan could finish, a messenger barged in the room with a panic shown on his face.
+	
+— Sir, the rebels have captured Millford! """,
+	RETURNTODUNCAN_ANSWER1_1 = """
+	
+— Curses.. They were this prepared for it. — Duncan took a deep breath and resumed like it was nothing.
+	
+— Anyway, good work, but we have more immediate problems now. The rebels have taken other key sites including one of the forts and are using it as a base of operations to launch attacks on our trade and supply routes. They'll expect us to try to take back the town, but it's not clear if they've realized how important one of the other sites they took is to us. The Workers can provide you with more information on this critical disruption. I'm short-handed. When you can manage it, go see Sigmund and take care of it.""",
+	
 	RETURNTODUNCAN_QUESTION1 = "I'll see what I can do.",    
 	RETURNTODUNCAN_QUESTION2 = "Of course, I have nothing better to do...",
 		
@@ -3400,11 +3408,11 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time""",
 	AFTER_MINES_MESSAGE = """In the morning you receive a messenger from Duncan who declares you're expected to visit him.""",
 	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message""",
-	AFTER_MINES_DUNCAN_10 = """- It's time. We've prepared to siege the [townname] which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for the full fledged siege.
+	AFTER_MINES_DUNCAN_10 = """- It's time. We've prepared to siege the Millford which has been captured by rebels. Now we finally have enough forces for the full fledged siege.
 
 - I'll be leading it and I have a mission for you. There's a convoy of additional food supplies necessary for the operation. You'll have to escort it there. As you do it, your forces will join the siege""",
 	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard""",
-	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I must play delivery boy at this time""",
+	AFTER_MINES_DUNCAN_OPTION_15 = """Can't believe I must play delivery boy at times like this""",
 	AFTER_MINES_DUNCAN_11 = """- Don't take this for granted, there might be rebel or bandit ambushes on the way still.
 
 - Now, we shall meet on the battlefield and put an end to this commotion.""",
@@ -3416,7 +3424,7 @@ Sigmund passes you the pouch with some gold in it.""",
 	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
 	AFTER_MINES_CONVOY_3 = """A few hours after you've left the town you enter the forest. Eventually the thin road among the trees is blocked by the fallen log. You order the men to clear it but as they get to it a large group of rebels jump out of the woods in an attempt to stop your mission.""",
 	AFTER_MINES_CONVOY_4 = """As you strike down the leader, the remnants of the rebel group quickly retreat in the woods. You've thought them a good lesson and they shouldn't give you any more problems as you continue on your mission.""",
-	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As [townname] gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are hardly armed. Once in range one of men kneels before you.
+	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As Millford gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are hardly armed. Once in range one of men kneels before you.
 
 - Your highness, I beg you to spare us some food. The war has been ruthless to us and soldiers took nearly all our food. After that we were attacked by goblins and had to retreat. Our children are starving!""",
 	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need""",
@@ -3534,7 +3542,7 @@ Duncan: - How long will this thing persist?
 Myr: - I'd not expect it to go down on its own. 
 
 Duncan: - Fuck...""",
-	BETRAYAL_CONFIRMED_13 = """Duncan: - Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we will be able to finish this battle and liberate [townname]. 
+	BETRAYAL_CONFIRMED_13 = """Duncan: - Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we will be able to finish this battle and liberate Millford. 
 
 Myr: - We will be keeping the forces ready in case they decide to launch a counterattack.""",
 	BETRAYAL_CONFIRMED_OPTION_1 = """I have no idea what to do either""",
@@ -3601,11 +3609,10 @@ You enter a small hallway with doors guarded by an armed group of rebels.
 First Guard: - Why can't we stay inside?
 
 Second Guard: - She requested to be left alone. That's for the better if you ask me.""",
-	DIVINE_SYMBOL_19 = """First Guard: - Hmm? Why you dislike her?
+DIVINE_SYMBOL_18_1 = """First Guard: - Hmm? Why you dislike her?
 
-Second Guard: - She's of beast blood, she acts like lunatic and looks like a brat. Greg finds her useful, but I'd rather side with a troll.
-
-First Guard: - Yeah, in terms of brains you would find a common ground.
+Second Guard: - She's of beast blood, she acts like lunatic and looks like a brat. Greg finds her useful, but I'd rather side with a troll.""",
+	DIVINE_SYMBOL_19 = """First Guard: - Yeah, in terms of brains you would find a common ground.
 
 Second Guard: - Hey, you shut yo-
 
