@@ -1,7 +1,7 @@
 var data = {
 	message_before_looking_operation = {
 		common_effects = [], #adds option to talk to duncan in intoduction
-		image = null, tags = ['dialogue_scene'],
+		image = "letter", tags = ['dialogue_scene'],
 		text = [{text = "LOOKING_FOR_PRINCESS_START", reqs = []}],
 		options = [ {
 			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'final_operation', stage = 'stage2'}],
@@ -68,7 +68,7 @@ var data = {
 	},
 	
 	looking_for_princess_4 = {
-		image = null, tags = ['dialogue_scene'],
+		image = "kobold", tags = ['dialogue_scene'],
 		text = [{text = "LOOKING_FOR_PRINCESS_7", reqs = [], previous_dialogue_option = 1}, 
 		{text = "LOOKING_FOR_PRINCESS_8", reqs = [], previous_dialogue_option = 4}],
 		options = [ {
@@ -84,7 +84,7 @@ var data = {
 			# First time seeing
 			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = false},
 			{type = 'dialogue_seen', check = false, value = 'LOOKING_FOR_PRINCESS_9'}],
-			image = null, tags = ['dialogue_scene'],
+			image = "kobold", tags = ['dialogue_scene'],
 			text = [{text = "LOOKING_FOR_PRINCESS_9", reqs = [], previous_dialogue_option = 2}, 
 			{text = "LOOKING_FOR_PRINCESS_10", reqs = [], previous_dialogue_option = 4}],
 			options = [ {
@@ -100,7 +100,7 @@ var data = {
 			# Previously seen and BraceletPreviousAttack = false
 			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = false} ], 
 			#{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'lt', value = 1, check = true}],
-			image = null, tags = ['dialogue_scene'],
+			image = "kobold", tags = ['dialogue_scene'],
 			text = [{text = "LOOKING_FOR_PRINCESS_12", reqs= []}],
 			options = [ {
 				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
@@ -114,7 +114,7 @@ var data = {
 			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = true}, 
 			{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 1, check = true},
 			{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'lt', value = 2, check = true},],
-			image = null, tags = ['dialogue_scene'],
+			image = "kobold", tags = ['dialogue_scene'],
 			text = [{text = "LOOKING_FOR_PRINCESS_13", reqs= []}],
 			common_effects = [{code = 'remove_decision', value = 'BraceletPreviousAttack'}], 
 			options = [ {
@@ -132,7 +132,7 @@ var data = {
 			# Previously seen and BraceletPreviousAttack = true and attempts >= 2
 			reqs = [{type = 'decision', value = 'BraceletPreviousAttack', check = true}, 
 			{type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 2, check = true}],
-			image = null, tags = ['dialogue_scene'],
+			image = "kobold", tags = ['dialogue_scene'],
 			text = [{text = "LOOKING_FOR_PRINCESS_16", reqs= []}],
 			common_effects = [{code = 'remove_decision', value = 'BraceletPreviousAttack'}], 
 			options = [ {
@@ -140,8 +140,7 @@ var data = {
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
 			}, {
-				code = 'looking_for_princess_8', text = "LOOKING_FOR_PRINCESS_OPTION_18", reqs = [], dialogue_argument = 3,
-				bonus_effects = [{}]
+				code = 'looking_for_princess_8', text = "LOOKING_FOR_PRINCESS_OPTION_18", reqs = [], dialogue_argument = 3
 			}],
 		}
 		]
@@ -149,7 +148,7 @@ var data = {
 	
 	#>That's rather expensive for something so simple (only once)
 	looking_for_princess_5_5 = {
-		image = null, tags = ['dialogue_scene'], reqs = [],
+		image = "kobold", tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_10", reqs = [], }],
 		options = [ {
 			code = 'looking_for_princess_6', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
@@ -173,7 +172,7 @@ var data = {
 	},
 	
 	looking_for_princess_7 = {
-		image = null, tags = ['dialogue_scene'], reqs = [],
+		image = "kobold", tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_14", reqs = []}], 
 		options = [ {
 			code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 3

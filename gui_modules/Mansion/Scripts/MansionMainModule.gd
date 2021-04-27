@@ -762,8 +762,9 @@ func test_mode():
 		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
 		ResourceScripts.game_party.add_slave(newslave)
 		
-		input_handler.interactive_message("ginny_visit", '',{})
-		input_handler.interactive_message('after_mines_message', '', {})
+		#input_handler.interactive_message("ginny_visit", '',{})
+		input_handler.interactive_message('half_dungeon_explored_start', '', {})
+		#input_handler.interactive_message('pre_final_boss_start', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}])
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
