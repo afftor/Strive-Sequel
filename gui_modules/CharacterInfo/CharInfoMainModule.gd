@@ -20,7 +20,8 @@ func _ready():
 	$TalkButton.connect("pressed", self, 'talk', [])
 
 func talk():
-	if active_person.
+	if active_person.get_stat("unique") == "kurdan":
+		input_handler.interactive_message("ginny_visit", '',{})
 
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
