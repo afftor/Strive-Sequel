@@ -24,10 +24,9 @@ var data = {
 		],
 		common_effects = [
 			{code = 'money_change', operant = '+', value = 500},
-			{code = 'update_city'}
 			],
 		options = [
-			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
+			{code = "close", text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1, type = "next_dialogue", bonus_effects = [{code= 'update_city'}]},
 		]
 	},
 	

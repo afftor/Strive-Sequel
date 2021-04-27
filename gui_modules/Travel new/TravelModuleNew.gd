@@ -26,6 +26,8 @@ func _ready():
 	selector.get_node("SelectorRight").connect('pressed', self, 'change_filter', [1])
 	selector.get_node("SelectorMain").connect('pressed', self, 'toggle_selector', [false])
 	selector.get_node("SelectorMain/SelectorPanel/Screen").connect('pressed', self, 'toggle_selector', [true])
+	$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.connect("pressed",self,'confirm_travel')
+	$MarginContainer/area/to_panel/HBoxContainer/CenterContainer/CancelButton.connect("pressed",self,'hide')
 	update_lists()
 	build_sel_panel(false)
 
@@ -199,6 +201,10 @@ func update_lists():
 #	update_heroes_list()
 	build_location_info()
 	build_location_resources()
+	update_confirm_button()
+
+func update_confirm_button():
+	$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || (location_selected != null && (location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
 
 
 func update_from_list():
@@ -292,10 +298,10 @@ func make_panel_for_location(panel, loc):
 		panel.text = text
 		if loc.has('captured'):
 			if loc.captured:
-				panel.set("custom_colors/font_color_disabled", variables.hexcolordict.red)
-				panel.disabled = true
-				globals.connecttexttooltip(panel, "Location unavailable")
-				globals.return_characters_from_location(loc.id)
+				panel.set("custom_colors/font_color", variables.hexcolordict.red)
+#				panel.disabled = true
+#				globals.connecttexttooltip(panel, "Location Unavailable")
+#				globals.return_characters_from_location(loc.id)
 		var icon
 		match loc.type:
 			'settlement':
@@ -374,9 +380,10 @@ func select_from_location(button):
 #	build_location_resources()
 	build_location_info()
 	if location_selected == null or location_selected.id == from_location_selected.id:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = true
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
 	else:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = false
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
+	update_confirm_button()
 
 
 func select_to_location(button):
@@ -386,9 +393,10 @@ func select_to_location(button):
 	build_location_info()
 	build_location_resources()
 	if from_location_selected == null or location_selected.id == from_location_selected.id:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = true
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = true
 	else:
-		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/TextureButton2.disabled = false
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = false
+	update_confirm_button()
 
 
 func select_char(button):
@@ -398,6 +406,7 @@ func select_char(button):
 	else:
 		characters.erase(character.id)
 	build_location_info()
+	update_confirm_button()
 
 var returnperson
 
@@ -443,10 +452,12 @@ func build_location_info():
 				text += "Obedience cost: %d\n" % ceil(travel_time.obed_cost / tmp)
 			else:
 				text += "Estimated travel time: %d\n" % ceil(travel_time.time)
-				text += "estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
+				text += "Estimated obedience cost: %d\n" % ceil(travel_time.obed_cost)
+		if location_selected.has('captured') && location_selected.captured == true:
+			text += globals.TextEncoder("{color=red|Location unaccessible}")
 	else:
 		info_text_icon.texture = null
-	info_text_node.text = text
+	info_text_node.bbcode_text = text
 
 
 func build_location_resources():
@@ -509,8 +520,6 @@ func hide():
 
 
 func confirm_travel():
-	if characters.size() == 0: return
-	if location_selected == null: return
 	if location_selected.id == from_location_selected.id: return 
 	var travel_cost = globals.calculate_travel_time(from_location_selected.id, location_selected.id)
 	for chid in characters:
@@ -530,6 +539,6 @@ func confirm_travel():
 			person.xp_module.work = 'travel'
 			person.travel.location = location_selected.id
 			person.travel.area  = location_selected.area
-		print(person.get_location())
+	input_handler.PlaySound("ding")
 	characters.clear()
 	update_lists()

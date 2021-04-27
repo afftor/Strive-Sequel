@@ -32,7 +32,9 @@ var data = {
 				text = "SEARCH_FIGHTERS_OPTION_4", 
 				reqs = [{type = 'decision', value = 'aire_is_dead', check = false}], 
 				dialogue_argument = 1,
-				remove_after_first_use = true
+				remove_after_first_use = true, 
+				type = 'next_dialogue'
+				
 			},
 			{
 				code = 'princess_search_fighters_main',
@@ -448,6 +450,7 @@ var data = {
 			{text = "SEARCH_DUNGEON_7_4", reqs = [], previous_dialogue_option = 4},
 			{text = "SEARCH_DUNGEON_7_5", reqs = [], previous_dialogue_option = 5},
 			{text = "SEARCH_DUNGEON_7_6", reqs = [], previous_dialogue_option = 6},
+			{text = "SEARCH_DUNGEON_7_7", reqs = [], previous_dialogue_option = 7},
 			],
 		options = [
 			{

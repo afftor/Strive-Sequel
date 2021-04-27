@@ -34,6 +34,7 @@ var music_categories = {
 var background_noise = {
 	aliron_noise = load("res://assets/sounds/sounds/aliron_background.ogg"),
 	elf_noise = null,
+	battle_noise = load("res://assets/sounds/sounds/ambient-battle-noise-swords-and-shouting.ogg"),
 }
 
 var sounds = {
@@ -84,6 +85,8 @@ var sounds = {
 	magic = load("res://assets/sounds/sounds/magic.wav"),
 	
 	error = load("res://assets/sounds/sounds/magiceffect.wav"),
+	
+	explosion = load("res://assets/sounds/sounds/explosion.wav"),
 	
 	#skills
 	arrowshower = load("res://assets/sounds/sounds/arrowshower.wav"),

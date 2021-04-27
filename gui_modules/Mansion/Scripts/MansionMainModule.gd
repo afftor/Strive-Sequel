@@ -114,14 +114,16 @@ func _ready():
 	slave_list_manager()
 	globals.log_node = $MansionLogModule
 	input_handler.SetMusicRandom("mansion")
-	
+	$TestButton.connect('pressed',self,'test')
 	SlaveListModule.update_dislocations()
 	SlaveListModule.build_locations_list()
 	if !ResourceScripts.game_progress.intro_tutorial_seen:
 		$TutorialIntro.show()
 	set_active_person(ResourceScripts.game_party.get_master())
 
-
+func test():
+	print(ResourceScripts.game_progress.decisions)
+	#ResourceScripts.game_progress.seen_dialogues.append('ALIRONCHURCHFIRSTCOME')
 
 func show_tutorial():
 	if gui_controller.mansion_tutorial_panel == null:
@@ -762,11 +764,6 @@ func test_mode():
 		
 		input_handler.interactive_message("ginny_visit", '',{})
 		input_handler.interactive_message('after_mines_message', '', {})
-		print_debug(globals.rng.randi_range(0, 100))
-		print_debug(globals.rng.randi_range(0, 100))
-		print_debug(globals.rng.randi_range(0, 100))
-		print_debug(globals.rng.randi_range(0, 100))
-		print_debug(globals.rng.randi_range(0, 100))
 		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}])
 		#ResourceScripts.game_progress.decisions.append("aire_raped")

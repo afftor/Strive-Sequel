@@ -1560,6 +1560,11 @@ var loot_variants_data = {
 		{code = 'defined', name = 'lifeshard', min = 5, max = 5},
 	],
 	
+	
+	blessed_divine_symbol = [
+		{code = 'defined', name = 'blessed_divine_symbol', min = 1, max = 1},
+	],
+	
 	celena_reward = [
 		{code = 'defined', name = 'lifeshard', min = 3, max = 5},
 	],

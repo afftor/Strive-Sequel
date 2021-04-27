@@ -14,7 +14,7 @@ var data = {
 				text = "PRE_FINAL_BOSS_OPTION_2", reqs = [], dialogue_argument = 2
 			}, {
 				code = 'pre_final_boss_1',
-				text = "PRE_FINAL_BOSS_OPTION_3", reqs = [], dialogue_argument = 3
+				text = "PRE_FINAL_BOSS_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 			} ]
 		}, 
 			{
@@ -31,7 +31,7 @@ var data = {
 				text = "PRE_FINAL_BOSS_OPTION_2", reqs = [], dialogue_argument = 2
 			}, {
 				code = 'pre_final_boss_1',
-				text = "PRE_FINAL_BOSS_OPTION_3", reqs = [], dialogue_argument = 3
+				text = "PRE_FINAL_BOSS_OPTION_3", reqs = [], dialogue_argument = 3, type = 'next_dialogue'
 			}
 			],
 			}
@@ -43,7 +43,7 @@ var data = {
 		text = [{text = "PRE_FINAL_BOSS_3", reqs = [], previous_dialogue_option = 3}],
 		options = [ {
 			code = 'pre_final_boss_2',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}
 		],
 	},
@@ -53,10 +53,10 @@ var data = {
 		text = [{text = "PRE_FINAL_BOSS_4", reqs = []}],
 		options = [ {
 			code = 'pre_final_boss_agree',
-			text = "PRE_FINAL_BOSS_OPTION_4", reqs = [], dialogue_argument = 4
+			text = "PRE_FINAL_BOSS_OPTION_4", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		}, {
 			code = 'pre_final_boss_refuse',
-			text = "PRE_FINAL_BOSS_OPTION_5", reqs = [], dialogue_argument = 5
+			text = "PRE_FINAL_BOSS_OPTION_5", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
 		}
 		],
 	},
@@ -97,7 +97,7 @@ var data = {
 		text = [{text = "PRE_FINAL_BOSS_6", reqs = []}],
 		options = [ {
 			code = 'pre_final_boss_3',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
 		} ],
 	},
 	
@@ -108,7 +108,7 @@ var data = {
 				text = [{text = "PRE_FINAL_BOSS_8", reqs = []}],
 				options = [ {
 				code = 'pre_final_boss_5', bonus_effects = [{code = 'decision', value = 'SaveRebels'}], #We didn't kill nor let demon take rebels
-				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6
+				text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
 				} ],
 			}, {
 				reqs = [{type = 'decision', value = 'KurdanFollowing', check = false}],
@@ -145,7 +145,7 @@ var data = {
 		image = null, character = "demon_female", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_12", reqs = []} ],
 		options = [ {
-			code = 'pre_final_boss_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0
+			code = 'pre_final_boss_8', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 			}
 		],
 	},
@@ -154,7 +154,7 @@ var data = {
 		image = null, character = "demon_female", tags = ['dialogue_scene'],
 		text = [ {text = "PRE_FINAL_BOSS_12", reqs = []} ],
 		options = [ {
-			code = 'demon_kurdan_win_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0
+			code = 'demon_kurdan_win_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 0, type = 'next_dialogue'
 			}
 		],
 	},
@@ -164,13 +164,13 @@ var data = {
 		text = [ {text = "PRE_FINAL_BOSS_13", reqs = []} ],
 		options = [ {
 			code = 'pre_final_boss_6',
-			text = "PRE_FINAL_BOSS_OPTION_6", reqs = [], dialogue_argument = 6
+			text = "PRE_FINAL_BOSS_OPTION_6", reqs = [], dialogue_argument = 6, type = 'next_dialogue'
 		}, {
 			code = 'pre_final_boss_7',
-			text = "PRE_FINAL_BOSS_OPTION_7", reqs = [], dialogue_argument = 7
+			text = "PRE_FINAL_BOSS_OPTION_7", reqs = [], dialogue_argument = 7, type = 'next_dialogue'
 		}, {
 			code = 'pre_final_boss_7',
-			text = "PRE_FINAL_BOSS_OPTION_8", reqs = [], dialogue_argument = 8
+			text = "PRE_FINAL_BOSS_OPTION_8", reqs = [], dialogue_argument = 8, type = 'next_dialogue'
 		}
 		],
 	},
@@ -181,7 +181,7 @@ var data = {
 		common_effects = [{code = 'make_story_character', value = 'Kurdan', recruit_from_location = true, send_to_mansion = true}],
 		options = [ {
 			code = 'pre_final_boss_8',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		} ],
 	},
 	
@@ -191,7 +191,7 @@ var data = {
 		 {text = "PRE_FINAL_BOSS_16", reqs = [], previous_dialogue_option = 8} ],
 		options = [ {
 			code = 'pre_final_boss_8',
-			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4
+			text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		} ],
 	},
 	
@@ -200,10 +200,10 @@ var data = {
 		text = [ {text = "PRE_FINAL_BOSS_17", reqs = []} ],
 		options = [ {
 			code = 'pre_final_boss_fin_1',
-			text = "PRE_FINAL_BOSS_OPTION_9", reqs = [], dialogue_argument = 9
+			text = "PRE_FINAL_BOSS_OPTION_9", reqs = [], dialogue_argument = 9, type = 'next_dialogue'
 		}, {
 			code = 'pre_final_boss_fin_2',
-			text = "PRE_FINAL_BOSS_OPTION_10", reqs = [], dialogue_argument = 10
+			text = "PRE_FINAL_BOSS_OPTION_10", reqs = [], dialogue_argument = 10, type = 'next_dialogue'
 		} ],
 	},
 	
@@ -211,7 +211,7 @@ var data = {
 		image = null, tags = [],
 		text = [ {text = "PRE_FINAL_BOSS_18", reqs = []} ],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}, {code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], type = 'next_dialogue', bonus_effects = [{code = 'remove_active_location'}, {code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}]
 			}
 		],
 	},
@@ -221,7 +221,7 @@ var data = {
 		text = [ {text = "PRE_FINAL_BOSS_19", reqs = []} ],
 		common_effects = [{code = 'make_loot', pool = [['rebels_ore_reward',1]]}, {code = 'open_loot'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], bonus_effects = [{code = 'remove_active_location'}, {code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}]
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], type = 'next_dialogue', bonus_effects = [{code = 'remove_active_location'}, {code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}]
 			}
 		],
 	},
@@ -230,7 +230,7 @@ var data = {
 		image = null, tags = [],
 		text = [ {text = "", reqs = []} ],
 		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
 			}
 		]
 	},
@@ -239,7 +239,7 @@ var data = {
 		image = null, tags = [],
 		text = [ {text = "", reqs = []} ],
 		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
 			}
 		]
 	},
@@ -248,7 +248,7 @@ var data = {
 		image = null, tags = [],
 		text = [ {text = "", reqs = []} ],
 		options = [ {
-			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), bonus_effects = [{code = 'lose_game'}]
+			code = 'close', reqs = [], text = tr("DIALOGUECLOSE"), type = 'next_dialogue', bonus_effects = [{code = 'lose_game'}]
 			}
 		]
 	}

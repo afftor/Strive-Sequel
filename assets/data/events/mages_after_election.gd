@@ -64,7 +64,7 @@ var data = {
 			{text = "MAGESAFTERELLECTION1_ANSWER6", reqs = []},
 		],
 		options = [
-			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1},
+			{code = "close", text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'progress_quest', value = 'civil_war_start', stage = 'stage2'}]},
 		]
 	},
 }

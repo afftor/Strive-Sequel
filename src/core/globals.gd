@@ -272,7 +272,7 @@ func slavetooltip(targetnode, person):
 
 func mattooltip(targetnode, material, bonustext = '', type = 'materialowned'):
 	var image
-	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP) #input_handler.GetItemTooltip()
+	var node = input_handler.get_spec_node(input_handler.NODE_ITEMTOOLTIP_V2) #input_handler.GetItemTooltip()
 	var data = {}
 	var text = '[center]' + material.name + '[/center]\n' + material.descript
 	data.text = text + bonustext
@@ -1170,6 +1170,8 @@ func common_effects(effects):
 				input_handler.exploration_node.open_city(input_handler.active_location.id)
 			'background_noise':
 				match i.value:
+					'start':
+						input_handler.PlayBackgroundSound(i.sound)
 					'stop':
 						input_handler.StopBackgroundSound()
 					'resume':
@@ -1201,7 +1203,7 @@ func common_effects(effects):
 						var args = {}
 						args["label"] = "Quest Updated"
 						args["info"] =  tr(scenedata.quests[k.code].stages[k.stage].name)
-						args["sound"] = "quest_aquired"
+						args["sound"] = "class_aquired"
 						input_handler.play_animation("quest", args)
 				if quest_exists == false:
 					ResourceScripts.game_progress.active_quests.append({code = i.value, stage = i.stage})
@@ -1209,7 +1211,7 @@ func common_effects(effects):
 					var args = {}
 					args["label"] = "Quest Received"
 					args["info"] = tr(scenedata.quests[i.value].stages[i.stage].name)
-					args["sound"] = "quest_aquired"
+					args["sound"] = "class_aquired"
 					input_handler.play_animation("quest", args)
 			'complete_quest':
 				for k in ResourceScripts.game_progress.active_quests:
@@ -1247,6 +1249,11 @@ func common_effects(effects):
 					ResourceScripts.game_progress.decisions.erase(i.value)
 			'screen_black_transition':
 				ResourceScripts.core_animations.BlackScreenTransition(i.value)
+			'screen_shake':
+				if i.has('delay'):
+					yield(get_tree().create_timer(i.delay),'timeout')
+				ResourceScripts.core_animations.ShakeAnimation(gui_controller.current_screen, i.length, i.strength)
+				ResourceScripts.core_animations.ShakeAnimation(gui_controller.dialogue, i.length, i.strength)
 			'start_combat':
 				current_enemy_group = i.value
 				input_handler.get_spec_node(input_handler.NODE_COMBATPOSITIONS)
@@ -1256,6 +1263,8 @@ func common_effects(effects):
 				ResourceScripts.world_gen.make_quest_location(i.value)
 			'remove_quest_location':
 				remove_location(i.value)
+			'return_characters_from_location':
+				return_characters_from_location(i.value)
 			'set_music':
 				input_handler.SetMusic(i.value)
 			'play_sound':
@@ -1324,10 +1333,14 @@ func common_effects(effects):
 			'set_location_param':
 				var param = i.param
 				var value = i.value
+				var loc
 				for a in ResourceScripts.game_world.areas[i.area].locations.values():
 					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
 						a[param] = value
+						loc = a
 						break
+				if param == 'captured' && value == true && loc != null:
+					return_characters_from_location(loc.id)
 			'yes_or_no_panel':
 				yes = i.yes
 				no = i.no
@@ -1469,7 +1482,16 @@ func valuecheck(dict):
 		'has_faction_upgrade':
 			return dict.check == input_handler.active_faction.upgrades.has(dict.value)
 		'local_counter':
-			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, dict.value) == dict.check
+			var tval = dict.value
+			if dict.has("add_stat"):
+				var master_char = ResourceScripts.game_party.get_master()
+				if master_char != null:
+					tval -= master_char.get_stat(dict.add_stat)
+			if dict.has("sub_stat"):
+				var master_char = ResourceScripts.game_party.get_master()
+				if master_char != null:
+					tval += master_char.get_stat(dict.sub_stat)
+			return gui_controller.dialogue.counter_cond(dict.name, dict.operant, tval) == dict.check
 		'wits_factor_check':
 			var master_char = ResourceScripts.game_party.get_master()
 			if master_char == null:

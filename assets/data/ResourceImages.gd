@@ -64,9 +64,15 @@ var backgrounds = {
 	lich_aire_talk7 = load("res://assets/images/backgrounds/AireCG002.png"),
 	xari_encounter8 = load("res://assets/images/backgrounds/XariCG001.png"),
 	daisy_discipline = load("res://assets/images/backgrounds/Daizy7.png"),
-	
+
+	anastasia_sex_1 = load("res://assets/images/backgrounds/AnastasiaCG001.png"),
+	anastasia_sex_2 = load("res://assets/images/backgrounds/AnastasiaCG002.png"),
+	anastasia_sex_3 = load("res://assets/images/backgrounds/AnastasiaCG003.png"),
+	anastasia_rape_1 = load("res://assets/images/backgrounds/AnastasiaCG004.png"),
+	anastasia_rape_2 = load("res://assets/images/backgrounds/AnastasiaCG005.png"),
 	aire_amelia1 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
 	aire_amelia2 = load("res://assets/images/backgrounds/AireAmeliaCG002.png"),
+
 	}
 
 var scenes = {
