@@ -17,7 +17,10 @@ func _ready():
 #	for module in self.get_children():
 #		module.update()
 #	update()
+	$TalkButton.connect("pressed", self, 'talk', [])
 
+func talk():
+	if active_person.
 
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person

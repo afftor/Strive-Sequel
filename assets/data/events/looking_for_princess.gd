@@ -92,7 +92,7 @@ var data = {
 			}, {
 				code = 'looking_for_princess_6', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
 			}, {
-				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE_500", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_13", reqs = [], dialogue_argument = 3
 			},],
@@ -103,7 +103,7 @@ var data = {
 			image = "kobold", tags = ['dialogue_scene'],
 			text = [{text = "LOOKING_FOR_PRINCESS_12", reqs= []}],
 			options = [ {
-				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14_500", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
 			}, {
 				code = 'looking_for_princess_6', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
 			}, {
@@ -121,7 +121,7 @@ var data = {
 				code = 'looking_for_princess_7', text = "LOOKING_FOR_PRINCESS_OPTION_15", reqs = [], 
 				dialogue_argument = 9, remove_after_first_use = true
 			}, {
-				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 3
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE_1000", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 3
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
 			}, {
@@ -136,7 +136,7 @@ var data = {
 			text = [{text = "LOOKING_FOR_PRINCESS_16", reqs= []}],
 			common_effects = [{code = 'remove_decision', value = 'BraceletPreviousAttack'}], 
 			options = [ {
-				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [{type = "has_money", value = 1500}], dialogue_argument = 3
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE_1500", reqs = [{type = "has_money", value = 1500}], dialogue_argument = 3
 			}, {
 				code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
 			}, {
@@ -153,7 +153,7 @@ var data = {
 		options = [ {
 			code = 'looking_for_princess_6', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
 		}, {
-			code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
+			code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE_500", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_13", reqs = [], dialogue_argument = 3
 		},],
@@ -175,7 +175,7 @@ var data = {
 		image = "kobold", tags = ['dialogue_scene'], reqs = [],
 		text = [{text = "LOOKING_FOR_PRINCESS_14", reqs = []}], 
 		options = [ {
-			code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 3
+			code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_FINE_1000", reqs = [{type = "has_money", value = 1000}], dialogue_argument = 3
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_THINK", reqs = [], dialogue_argument = 2 
 		}, {

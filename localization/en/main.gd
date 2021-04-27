@@ -4107,6 +4107,9 @@ The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_10 = """That's rather expensive for something so simple""",
 	LOOKING_FOR_PRINCESS_OPTION_11 = """I'll rather take it by force""",
 	LOOKING_FOR_PRINCESS_OPTION_FINE = """Fine, take the gold""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_500 = """Fine, take the gold (500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_1000 = """Fine, take the gold (1000 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_1500 = """Fine, take the gold (1500 gold)""",
 	LOOKING_FOR_PRINCESS_OPTION_13 = """I'll consider it and return then""",
 	LOOKING_FOR_PRINCESS_10 = """- Hah, trying to take me for a fool? I don't know how simple it is, but I can see you want it, and I can see you don't look cheap. Take it""",
 	LOOKING_FOR_PRINCESS_11 = """Before you are able to make a move, the kobold swiftly escapes in a small hole in the ground taking his possessions with him. There's no way for you to follow him like this. You should probably return the other day.""",
@@ -4114,6 +4117,7 @@ The kobold tediously looked you over.""",
 
 - Hey, made up your mind yet?""",
 	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
+	LOOKING_FOR_PRINCESS_OPTION_14_500 = """Purchase (500 gold)""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 
 - It's you brute again. You better not try to shit me again. But I'm merciful, I'll still sell you the bracelet you want for 1000 gold.""",

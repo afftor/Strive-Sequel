@@ -1705,6 +1705,7 @@ var pregen_characters = {
 	Kurdan = {
 		code = 'kurdan',
 		name = 'Kurdan',
+		unique = 'kurdan',
 		surname = '',
 		race = 'Orc',
 		sex = 'male',

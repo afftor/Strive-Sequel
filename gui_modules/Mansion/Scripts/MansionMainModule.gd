@@ -763,7 +763,7 @@ func test_mode():
 		ResourceScripts.game_party.add_slave(newslave)
 		
 		#input_handler.interactive_message("ginny_visit", '',{})
-		input_handler.interactive_message('half_dungeon_explored_start', '', {})
+		#input_handler.interactive_message('looking_for_princess_3', '', {})
 		#input_handler.interactive_message('pre_final_boss_start', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}])
