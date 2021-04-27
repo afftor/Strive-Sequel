@@ -124,7 +124,6 @@ func update_scene_characters():
 
 # Temporary
 func show_full_info(person):
-	print(true)
 	gui_controller.close_all_closeable_windows()
 	var FullSlaveInfo = input_handler.get_spec_node(input_handler.NODE_EXPLORE_SLAVEINFO)
 	gui_controller.explore_slaveinfo = FullSlaveInfo
@@ -492,11 +491,14 @@ func handle_scene_transition_fx(scene):
 
 
 func handle_scene_backgrounds(scene):
-	var node = gui_controller.dialogue.get_node("CustomBackground")
+	var node = $CustomBackground
 	if scene.has("custom_background"):
 		var newtexture = images.backgrounds[scene.custom_background]
-		ResourceScripts.core_animations.UnfadeAnimation(node, 0.5)
-		ResourceScripts.core_animations.SmoothTextureChange(gui_controller.dialogue.get_node("CustomBackground"), newtexture, 1)
+		if node.visible == false:
+			node.show()
+			ResourceScripts.core_animations.UnfadeAnimation(node, 0.5)
+		if node.texture != newtexture:
+			ResourceScripts.core_animations.SmoothTextureChange(node, newtexture, 1)
 	elif !scene.has("custom_background") && gui_controller.dialogue_window_type == 1:
 		node.hide()
 

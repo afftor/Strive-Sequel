@@ -323,9 +323,9 @@ __meta__ = {
 }
 
 [node name="PlayerCharacters" type="ScrollContainer" parent="."]
-margin_left = 789.0
+margin_left = 797.0
 margin_top = -297.0
-margin_right = 952.0
+margin_right = 960.0
 margin_bottom = 559.0
 scroll_horizontal_enabled = false
 __meta__ = {
@@ -352,11 +352,3 @@ margin_bottom = 158.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
-
-[node name="TextureRect3" type="TextureRect" parent="."]
-visible = false
-margin_left = -242.094
-margin_top = -396.556
-margin_right = 1677.91
-margin_bottom = 683.444
-texture = ExtResource( 3 )
