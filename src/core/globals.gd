@@ -1475,5 +1475,5 @@ func valuecheck(dict):
 			if master_char == null:
 				return false
 			else:
-				var result = globals.rng.randi_range(dict.from, dict.to) > dict.value * master_char.statlist.statlist.wits
+				var result = globals.rng.randi_range(dict.from, dict.to) > dict.value * master_char.statlist.statlist.wits_factor
 				return result #returns true on fail and vice versa
