@@ -38,9 +38,15 @@ var data = {
 		{code = 'after_mines_duncan_start', text = "AFTER_MINES_FIGHTERS_OPTION_1", reqs = [{type = 'active_quest_stage', value = 'civil_war_mines', stage = 'stage4'}], type = 'next_dialogue', dialogue_argument = 8, remove_after_first_use = true},
 		{code = 'after_mines_duncan_4', text = "AFTER_MINES_DUNCAN_OPTION_13", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 9, remove_after_first_use = true},
 
-		{code = 'looking_for_princess_2', text = "LOOKING_FOR_PRINCESS_OPTION_3", reqs = [{type = 'decision', value = 'LookingForPrincessAccess', check = true}], type = 'next_dialogue', dialogue_argument = 10},
+		#{code = 'looking_for_princess_2', text = "LOOKING_FOR_PRINCESS_OPTION_3", reqs = [{type = 'decision', value = 'LookingForPrincessAccess', check = true}], type = 'next_dialogue', dialogue_argument = 10},
 		{code = 'about_princess_start', text = "MIND_CONTROL_OPTION_5", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 11},
+		
+		{code = 'princess_search_fighters_3', text = "SEARCH_FIGHTERS_OPTION_4", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'SEARCH_FIGHTERS_3'}], type = 'next_dialogue', dialogue_argument = 11},
+		
 		{code = 'princess_search_fighters_main', text = "PRINCESS_SEARCH_INITIATE", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], type = 'next_dialogue', dialogue_argument = 0},
+		
+		
+		
 		{code = 'fighters_leader_close', text = "FIGHTERSINTRODUCTION2REPLY2", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 		

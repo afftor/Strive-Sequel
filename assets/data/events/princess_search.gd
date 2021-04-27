@@ -34,7 +34,6 @@ var data = {
 				dialogue_argument = 1,
 				remove_after_first_use = true, 
 				type = 'next_dialogue'
-				
 			},
 			{
 				code = 'princess_search_fighters_main',
