@@ -17,6 +17,7 @@
 
 var data = {
 	princess_persuation_init = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -29,14 +30,16 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_1",
 				reqs = [],
 				dialogue_argument = 1,
-				remove_after_first_use = true
+				remove_after_first_use = true,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_mindbreak_1',
 				text = "ANASTASIA_PERSUASION_OPTION_2", 
 				reqs = [{type = 'decision', value = 'mindbreak_enabled', check = true}], 
 				dialogue_argument = 1,
-				remove_after_first_use = true
+				remove_after_first_use = true,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'close',
@@ -46,6 +49,7 @@ var data = {
 		],
 	},
 	princess_mindbreak_1 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -58,10 +62,12 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [],
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_mindbreak_2 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -77,10 +83,12 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'decision', value = 'mindbreak_completed'}],
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_early_1 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -91,22 +99,26 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_3",
 				reqs = [],
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_early_2',
 				text = "ANASTASIA_PERSUASION_OPTION_4", 
 				reqs = [], 
 				dialogue_argument = 2,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_early_2',
 				text = "ANASTASIA_PERSUASION_OPTION_5",
 				reqs = [],
 				dialogue_argument = 3,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_early_2 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -122,22 +134,26 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_6",
 				reqs = [],
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_early_3',
 				text = "ANASTASIA_PERSUASION_OPTION_7", 
 				reqs = [], 
 				dialogue_argument = 2,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_early_3',
 				text = "ANASTASIA_PERSUASION_OPTION_8",
 				reqs = [],
 				dialogue_argument = 3,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_early_3 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -152,16 +168,19 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_9",
 				reqs = [],
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_early_4',
 				text = "ANASTASIA_PERSUASION_OPTION_10", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_early_4 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -174,16 +193,19 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_11",
 				reqs = [],
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_1',
 				text = "ANASTASIA_PERSUASION_OPTION_12", 
 				reqs = [], 
 				dialogue_argument = 2,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_1 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -196,32 +218,37 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_13",
 				reqs = [{type = 'decision', value = 'marry_option', check = true}],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'marry_proposed'}]
+				bonus_effects = [{code = 'decision', value = 'marry_proposed'}],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_marry',
 				text = "ANASTASIA_PERSUASION_OPTION_14", 
 				reqs = [{type = 'decision', value = 'marry_option', check = true}], 
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'marry_proposed'}]
+				bonus_effects = [{code = 'decision', value = 'marry_proposed'}],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_enslave',
 				text = "ANASTASIA_PERSUASION_OPTION_15",
 				reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'enslave_proposed'}]
+				bonus_effects = [],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_enslave',
 				text = "ANASTASIA_PERSUASION_OPTION_16", 
 				reqs = [{type = 'decision', value = 'enslave_option', check = true}], 
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'enslave_proposed'}]
+				bonus_effects = [],
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_marry = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -234,22 +261,26 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_17",
 				reqs = [],
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_3',
 				text = "ANASTASIA_PERSUASION_OPTION_18", 
 				reqs = [], 
 				dialogue_argument = 2,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_3',
 				text = "ANASTASIA_PERSUASION_OPTION_19",
 				reqs = [],
 				dialogue_argument = 3,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_enslave = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -262,23 +293,27 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_20",
 				reqs = [],
 				dialogue_argument = 4,
-				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = '+'}]
+				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = '+'}],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_3',
 				text = "ANASTASIA_PERSUASION_OPTION_21", 
 				reqs = [], 
 				dialogue_argument = 5,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_3',
 				text = "ANASTASIA_PERSUASION_OPTION_22",
 				reqs = [],
 				dialogue_argument = 6,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_3 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -296,23 +331,27 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_23",
 				reqs = [],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = '+'}]
+				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy', op = '+'}],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_4',
 				text = "ANASTASIA_PERSUASION_OPTION_24", 
 				reqs = [], 
 				dialogue_argument = 2,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_4',
 				text = "ANASTASIA_PERSUASION_OPTION_25", 
 				reqs = [], 
 				dialogue_argument = 3,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_4 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		tags = ['dialogue_scene'],
@@ -328,10 +367,12 @@ var data = {
 				text = "DIALOGUECONTINUE", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_amelia_1 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		character2 = "amelia",
@@ -345,10 +386,12 @@ var data = {
 				text = "DIALOGUECONTINUE", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_amelia_2 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		character2 = "amelia",
@@ -362,10 +405,12 @@ var data = {
 				text = "DIALOGUECONTINUE", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_7 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		character2 = "amelia",
@@ -390,16 +435,19 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_27", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_8',
 				text = "ANASTASIA_PERSUASION_OPTION_28", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_8 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		character2 = "amelia",
@@ -424,16 +472,19 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_30", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_9',
 				text = "ANASTASIA_PERSUASION_OPTION_31", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_1st_persuation_9 = {
+		custom_background = "jail",
 		image = null,
 		character = "anastasia",
 		character2 = "amelia",
@@ -448,17 +499,19 @@ var data = {
 				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = true}], 
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'decision', value = 'persuade_1_completed'}],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_intermission_1',
 				text = "DIALOGUECONTINUE", 
 				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = false}], 
 				dialogue_argument = 1,
-#				bonus_effects = [{code = 'decision', value = 'persuade_1_failed'}],
+				type = 'next_dialogue'
 			},
 		],
 	},
 	princess_recriut_intermission_1 = {
+		custom_background = "jail",
 		image = null,
 		character = "amelia",
 		tags = ['dialogue_scene'],
@@ -471,12 +524,14 @@ var data = {
 				text = "ANASTASIA_PERSUASION_OPTION_32", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_intermission_2',
 				text = "ANASTASIA_PERSUASION_OPTION_33", 
 				reqs = [], 
 				dialogue_argument = 2,
+				type = 'next_dialogue'
 			},
 		],
 	},
@@ -488,6 +543,7 @@ var data = {
 					{type = 'decision', value = 'persuade_1_completed', check = true},
 				],
 				image = null,
+				custom_background = "jail",
 				character = "amelia",
 				tags = ['dialogue_scene'],
 				text = [
@@ -502,12 +558,14 @@ var data = {
 						reqs = [], 
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'AireAnastasiaPersuasionAgree'}],
+						type = 'next_dialogue'
 					},
 					{
 						code = 'princess_recriut_intermission_3',
 						text = "ANASTASIA_PERSUASION_OPTION_35", 
 						reqs = [], 
 						dialogue_argument = 2,
+						type = 'next_dialogue'
 					},
 				],
 			},
@@ -518,6 +576,7 @@ var data = {
 				],
 				image = null,
 				character = "amelia",
+				custom_background = "jail",
 				tags = ['dialogue_scene'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_33", reqs = [], previous_dialogue_option = 1},
@@ -530,7 +589,8 @@ var data = {
 						text = "DIALOGUECLOSE", 
 						reqs = [], 
 						dialogue_argument = 1,
-						bonus_effects = [], #add second persuation trigger here
+						type = 'next_dialogue',
+						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}],
 					},
 				],
 			},
@@ -540,6 +600,7 @@ var data = {
 				],
 				image = null,
 				character = "amelia",
+				custom_background = "jail",
 				tags = ['dialogue_scene'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_33", reqs = [], previous_dialogue_option = 1},
@@ -552,6 +613,7 @@ var data = {
 						text = "DIALOGUECLOSE", 
 						reqs = [], 
 						dialogue_argument = 1,
+						type = 'next_dialogue',
 						bonus_effects = [], #add second persuation trigger here
 					},
 				],
@@ -561,6 +623,7 @@ var data = {
 	princess_recriut_intermission_3 = {
 		image = null,
 		character = "amelia",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_36", reqs = [], previous_dialogue_option = 1},
@@ -573,16 +636,40 @@ var data = {
 				text = "DIALOGUECLOSE", 
 				reqs = [], 
 				dialogue_argument = 1,
-				bonus_effects = [], #add second persuation trigger here
+				type = 'next_dialogue',
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}], #add second persuation trigger here
 			},
 		],
 	},
+	
+	princess_recruit_timeout_message = {
+		image = null,
+		tags = ['dialogue_scene'],
+		text = [
+			{text = "ANASTASIA_PERSUASION_NEXTDAY", reqs = []},
+		],
+		
+		options = [
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE", 
+				reqs = [], 
+				type = 'next_dialogue',
+				dialogue_argument = 1,
+				bonus_effects = [{code = 'decision', value = 'AnastasiaPersuasionNextday'}], #add second persuation trigger here
+			},
+		],
+	},
+	
+	
+	
 	princess_persuation_2_init = {
 		variations = [
 			{
 				reqs = [{type = 'decision', value = 'persuade_1_completed', check = true}],
 				image = null,
 				character = "anastasia",
+				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_39", reqs = [], previous_dialogue_option = 0},
@@ -597,6 +684,7 @@ var data = {
 						text = "ANASTASIA_PERSUASION_OPTION_36", 
 						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasionAgree', check = true}], 
 						dialogue_argument = 1,
+						type = 'next_dialogue',
 						remove_after_first_use = true
 					},
 					{
@@ -605,6 +693,7 @@ var data = {
 						reqs = [{type = 'decision', value = 'has_bracelet', check = true}], #has bracelet should be here. idk how it is named
 						dialogue_argument = 3,
 						remove_after_first_use = true,
+						type = 'next_dialogue',
 						bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
 					},
 					{
@@ -612,8 +701,8 @@ var data = {
 						text = "ANASTASIA_PERSUASION_OPTION_38", 
 						reqs = [], 
 						dialogue_argument = 1,
+						type = 'next_dialogue',
 						remove_after_first_use = true
-						#golden option not implemented
 					},
 					{
 						code = 'close',
@@ -627,6 +716,7 @@ var data = {
 				reqs = [{type = 'decision', value = 'persuade_1_completed', check = false}],
 				image = null,
 				character = "anastasia",
+				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_39", reqs = []},
@@ -638,7 +728,8 @@ var data = {
 						text = "DIALOGUECONTINUE", 
 						reqs = [], 
 						dialogue_argument = 1,
-						bonus_effects = [], #add second persuation trigger here
+						type = 'next_dialogue',
+						bonus_effects = [], 
 					},
 				],
 			},
@@ -647,16 +738,18 @@ var data = {
 	princess_persuation_2_fail = {
 		image = null,
 		character = "amelia",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_41", reqs = []},
 		],
-		options = [ #add execution trigger (or not) here
+		options = [
 			{
 				code = 'close',
 				text = "DIALOGUECLOSE", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue',
 			},
 		],
 	},
@@ -664,6 +757,7 @@ var data = {
 		image = null,
 		character = "anastasia",
 		character2 = "aire",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_43", reqs = []},
@@ -674,6 +768,7 @@ var data = {
 				text = "DIALOGUECONTINUE", 
 				reqs = [], 
 				dialogue_argument = 1,
+				type = 'next_dialogue',
 			},
 		],
 	},
@@ -684,6 +779,7 @@ var data = {
 				image = null,
 				character = "anastasia",
 				character2 = "aire",
+				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_44", reqs = []},
@@ -697,7 +793,8 @@ var data = {
 						bonus_effects = [
 							{code = 'dialogue_counter', name = 'sympathy2', op = '-'},
 							{code = 'dialogue_counter', name = 'sympathy2', op = '-'},
-							]
+							],
+						type = 'next_dialogue',
 					},
 				],
 			},
@@ -706,6 +803,7 @@ var data = {
 				image = null,
 				character = "anastasia",
 				character2 = "aire",
+				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_46", reqs = []},
@@ -726,7 +824,8 @@ var data = {
 						text = "DIALOGUECONTINUE", 
 						reqs = [], 
 						dialogue_argument = 2,
-						bonus_effects = []
+						bonus_effects = [],
+						type = 'next_dialogue',
 					},
 				],
 			},
@@ -735,6 +834,7 @@ var data = {
 	princess_persuation_2_bracelet = {#actually not used
 		image = null,
 		character = "anastasia",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_51", reqs = []},
@@ -745,6 +845,7 @@ var data = {
 				text = "DIALOGUECONTINUE", 
 				reqs = [], 
 				dialogue_argument = 3,
+				type = 'next_dialogue',
 				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
 			},
 		],
@@ -752,38 +853,275 @@ var data = {
 	princess_persuation_2_2 = {
 		image = null,
 		character = "anastasia",
+		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "ANASTASIA_PERSUASION_52", reqs = []},
 		],
 		options = [
 			{
-				code = 'princess_persuation_2_3',
+				code = 'princess_persuation_2_2_1',
 				text = "ANASTASIA_PERSUASION_OPTION_40", 
+				type = 'next_dialogue',
 				reqs = [], 
 				dialogue_argument = 1,
 			},
 			{
-				code = 'princess_persuation_2_3',
+				code = 'princess_persuation_2_2_1',
 				text = "ANASTASIA_PERSUASION_OPTION_41", 
+				type = 'next_dialogue',
 				reqs = [], 
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
 			},
 			{
-				code = 'princess_persuation_2_3',
+				code = 'princess_persuation_2_2_1',
 				text = "ANASTASIA_PERSUASION_OPTION_42", 
+				type = 'next_dialogue',
 				reqs = [], 
 				dialogue_argument = 1,
 			},
 		],
 	},
+	
+	princess_persuation_2_2_1 = {
+		variations = [{
+			reqs = [{type = 'decision', value = 'marry_option', check = true}],
+			image = null,
+			character = "anastasia",
+			custom_background = "jail",
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "ANASTASIA_PERSUASION_2_MARRY1", reqs = []},
+			],
+			options = [
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION1", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 1,
+				},
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION2", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 2,
+				},
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION3", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 3,
+				},
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION4", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 4,
+				},
+			],
+		},
+		
+		{
+			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
+			image = null,
+			character = "anastasia",
+			custom_background = "jail",
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "ANASTASIA_PERSUASION_2_ENSLAVE1", reqs = []},
+			],
+			options = [
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION1", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 1,
+				},
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION2", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 2,
+				},
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 3,
+				},
+				{
+					code = 'princess_persuation_2_2_2',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 4,
+				},
+			],
+		},
+		
+		]
+	
+	},
+	
+	princess_persuation_2_2_2 = {
+		variations = [{
+			reqs = [{type = 'decision', value = 'marry_option', check = true}],
+			image = null,
+			character = "anastasia",
+			custom_background = "jail",
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "ANASTASIA_PERSUASION_2_MARRY2_1", reqs = [], previous_dialogue_option = 2},
+				{text = "ANASTASIA_PERSUASION_2_MARRY2", reqs = []},
+				{text = "", reqs = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 5}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [], previous_dialogue_option = 3, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+			],
+			options = [
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION1", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 1,
+				},
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION2", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 2,
+				},
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION3", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 3,
+				},
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION4", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 4,
+				},
+			],
+		},
+		
+		{
+			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
+			image = null,
+			character = "anastasia",
+			custom_background = "jail",
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "", reqs = [], previous_dialogue_option = 1,
+				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "ANASTASIA_PERSUASION_2_ENSLAVE2", reqs = []},
+				{text = "ANASTASIA_PERSUASION_2_ENSLAVE2_1", reqs = [], previous_dialogue_option = 4},
+			],
+			options = [
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 1,
+				},
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 2,
+				},
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 3,
+				},
+				{
+					code = 'princess_persuation_2_2_3',
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4", 
+					type = 'next_dialogue',
+					reqs = [], 
+					dialogue_argument = 4,
+				},
+			],
+		},
+		
+		]
+	
+	},
+	
+	princess_persuation_2_2_3 = {
+		variations = [{
+			reqs = [{type = 'decision', value = 'marry_option', check = true}],
+			image = null,
+			character = "anastasia",
+			custom_background = "jail",
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "", reqs = []},
+				{text = "", reqs = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [], previous_dialogue_option = 4, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+			],
+			options = [
+				{
+					code = 'princess_persuation_2_3',
+					text = "DIALOGUECONTINUE", 
+					type = 'next_dialogue',
+					reqs = [], 
+				},
+			],
+		},
+		
+		{
+			reqs = [{type = 'decision', value = 'enslave_option', check = true}],
+			image = null,
+			character = "anastasia",
+			custom_background = "jail",
+			tags = ['dialogue_scene'],
+			text = [
+				{text = "", reqs = []},
+				{text = "", reqs = [{code = 'stat', stat = 'sexuals_factor', operant = 'gte', value = 4}], previous_dialogue_option = 1, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+				{text = "", reqs = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 4}], previous_dialogue_option = 2, bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]},
+			],
+			options = [
+				{
+					code = 'princess_persuation_2_3',
+					text = "DIALOGUECONTINUE", 
+					type = 'next_dialogue',
+					reqs = [], 
+				},
+			],
+		},
+		
+		]
+	
+	},
+	
+	
+	
 	princess_persuation_2_3 = { #check here is a bit harsh due to max counter value at 5
 		variations = [
 			{
 				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 10, check = false}],
 				image = null,
 				character = "anastasia",
+				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_53", reqs = []},
@@ -794,6 +1132,7 @@ var data = {
 						code = 'princess_persuation_2_fail',
 						text = "DIALOGUECONTINUE", 
 						reqs = [], 
+						type = 'next_dialogue',
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'AnastasiaRejected'}] #this decision for some reason not added onto first persuation fail
 					},
@@ -803,6 +1142,7 @@ var data = {
 				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 10, check = true}],
 				image = null,
 				character = "anastasia",
+				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_53", reqs = []},
@@ -814,6 +1154,7 @@ var data = {
 						code = 'princess_persuation_2_amelia',
 						text = "DIALOGUECONTINUE", 
 						reqs = [], 
+						type = 'next_dialogue',
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
 					},
@@ -823,6 +1164,7 @@ var data = {
 	},
 	princess_persuation_2_amelia = {
 		image = null,
+		custom_background = "jail",
 		character = "anastasia",
 		character2 = "amelia",
 		tags = ['dialogue_scene', 'master_translate'],
@@ -834,12 +1176,14 @@ var data = {
 				code = 'princess_recriut_finish_1',
 				text = "DIALOGUELEAVE", 
 				reqs = [], 
+				type = 'next_dialogue',
 				dialogue_argument = 1,
 			},
 		],
 	},
 	princess_recriut_finish_1 = {
 		image = null,
+		custom_background = "jail",
 		character = "amelia",
 		tags = ['dialogue_scene'],
 		text = [
@@ -850,24 +1194,28 @@ var data = {
 				code = 'princess_recriut_finish_2',
 				text = "ANASTASIA_PERSUASION_OPTION_43", 
 				reqs = [], 
+				type = 'next_dialogue',
 				dialogue_argument = 1,
 			},
 			{
 				code = 'princess_recriut_finish_2',
 				text = "ANASTASIA_PERSUASION_OPTION_44", 
 				reqs = [], 
+				type = 'next_dialogue',
 				dialogue_argument = 2,
 			},
 			{
 				code = 'princess_recriut_finish_2',
 				text = "ANASTASIA_PERSUASION_OPTION_45", 
 				reqs = [], 
+				type = 'next_dialogue',
 				dialogue_argument = 3,
 			},
 		],
 	},
 	princess_recriut_finish_2 = {
 		image = null,
+		custom_background = "jail",
 		character = "amelia",
 		tags = ['dialogue_scene'],
 		text = [
@@ -880,7 +1228,9 @@ var data = {
 			{
 				code = 'close',
 				text = "DIALOGUECLOSE", 
-				reqs = [], #add declaration trigger here
+				type = 'next_dialogue',
+				reqs = [],
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}],
 				dialogue_argument = 1,
 			},
 		],

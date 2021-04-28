@@ -122,7 +122,8 @@ func _ready():
 	set_active_person(ResourceScripts.game_party.get_master())
 
 func test():
-	print(ResourceScripts.game_progress.decisions)
+	input_handler.interactive_message('princess_persuation_2_init', '', {})
+	#print(ResourceScripts.game_progress.decisions)
 	#ResourceScripts.game_progress.seen_dialogues.append('ALIRONCHURCHFIRSTCOME')
 
 func show_tutorial():
@@ -762,9 +763,10 @@ func test_mode():
 #		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
 #		ResourceScripts.game_party.add_slave(newslave)
 
-		#input_handler.interactive_message('servants_election_finish7', '', {})
-		globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}])
-		#ResourceScripts.game_progress.decisions.append("aire_raped")
+		input_handler.interactive_message('princess_persuation_init', '', {})
+		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage1'}])
+		#ResourceScripts.game_progress.decisions.append("persuade_2_completed")
+		ResourceScripts.game_progress.decisions.append("enslave_option")
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")
