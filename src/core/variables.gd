@@ -20,7 +20,7 @@ enum {S_PHYS = 1, S_FIRE = 2, S_WATER = 4, S_AIR = 8, S_EARTH = 16, S_MAG = 30, 
 enum {TE_RES_NOACT, TE_RES_TICK, TE_RES_UPGRADE, TE_RES_DGRADE, TE_RES_REMOVE}
 #list for values modified by crits, effects etc
 
-var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+loyalty', '+consent', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-loyalty', '-energy','no_stat', '+authority']
+var dmg_mod_list = ['+damage_hp', "+hp", '+restore_mana', '+lust', '+obedience', '+loyalty', '+consent', '+energy', '-damage_hp', "-hp", '-restore_mana', '-lust', '-obedience', '-loyalty', '-energy','no_stat', '+authority', '+loyaltyObedience', '+submissionObedience']#, '-loyaltyObedience', '-submissionObedience'] #not sure about these
 #list for values modified by random_mod
 var dmg_rnd_list = ['damage_hp', 'restore_mana', 'hp', 'mp', 'lust', 'obedience', 'loyalty', 'fatigue', 'exhaustion', 'energy']
 #list for values with relative values
