@@ -445,7 +445,7 @@ func fill_masternoun():
 func process_chardata(chardata, unique = false):
 	if unique: statlist.unique = chardata.code
 	for i in chardata:
-		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits']):
+		if !(i in ['code','class_category', 'slave_class', 'tags','sex_traits', 'sex_skills']):
 			if typeof(chardata[i]) == TYPE_ARRAY or typeof(chardata[i]) == TYPE_DICTIONARY:
 				statlist[i] = chardata[i].duplicate(true)
 			else:
@@ -454,6 +454,9 @@ func process_chardata(chardata, unique = false):
 	if chardata.has("sex_traits"):
 		for i in chardata.sex_traits:
 			add_sex_trait(i)
+	if chardata.has("sex_skills"):
+		for skill in chardata.sex_skills:
+			statlist.sex_skills[skill] = chardata.sex_skills[skill]
 
 func generate_random_character_from_data(races, desired_class = null, adjust_difficulty = 0):
 	var gendata = {race = '', sex = 'random', age = 'random'}
