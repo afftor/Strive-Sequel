@@ -572,7 +572,7 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
 		
-		common_effects = [{code = 'add_timed_event', value = "message_before_looking_operation", 
+		common_effects = [{code = 'add_timed_event', value = "final_operation_message", 
 		args = [{type = 'add_to_date', date = [5,9], hour = 9}]}, 
 		{code = 'progress_quest', value = 'final_operation', stage = 'stage1'},
 		{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1}],

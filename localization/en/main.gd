@@ -3588,7 +3588,7 @@ Second Sentry:— Yah, I know. We’ve been at this for days and nothing. I'd ra
 
 As they pass you continue to move on.""",
 	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You’re about to be cut off, and won't be able to retreat unnoticed.""",
-	DIVINE_SYMBOL_OPTION_10 = """Make a run for it""",
+	DIVINE_SYMBOL_OPTION_10 = """Make a run for it (Physics Check)""",
 	DIVINE_SYMBOL_12 = """{color=green|Success}
 
 Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
@@ -3597,7 +3597,7 @@ Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
 You've tried, but after taking a corner too wildly you crash into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
 	DIVINE_SYMBOL_14 = """You've managed to defeat the patrol relatively quietly. Hoping not be discovered again, you leave the place.""",
 	DIVINE_SYMBOL_15 = """You arrive at a small square where your target should be. However, there are multiple buildings anyone of which could be it.""",
-	DIVINE_SYMBOL_OPTION_11 = """Search""",
+	DIVINE_SYMBOL_OPTION_11 = """Search (Wits Factor Check)""",
 	DIVINE_SYMBOL_16 = """{color=red|Failure}
 
 You've entered the wrong building. A few rebels recognize you as an intruder and arm themselves.""",
@@ -3618,7 +3618,7 @@ Second Guard:— She's of beast blood, she acts like lunatic and looks like a br
 Second Guard:— You shut yo-
 
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
-	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit""",
+	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor Check)""",
 	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
 	DIVINE_SYMBOL_20_1 = """Second Guard:— Damnit, what does he want now? 
 
@@ -4088,7 +4088,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 
 
 
-	LOOKING_FOR_PRINCESS_START = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
+	FINAL_OPERATION_MESSAGE = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
 	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we’ve got no leads as to where she may have gone. Our interrogation of the prisoners hasn’t turned up much.""",
 	LOOKING_FOR_PRINCESS_2 = """
 	
@@ -4197,7 +4197,7 @@ Priestess:— Cease your childish behavior, human, if you are truly royalty, act
 
 Anastasia:— They will kill me, like they killed my dad. And you betrayed me. I thought I could trust you!""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
-	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth*""",
+	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth* (Physics Factor check)""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss this""",
 	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
 	

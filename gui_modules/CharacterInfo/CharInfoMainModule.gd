@@ -20,6 +20,7 @@ func _ready():
 	$TalkButton.connect("pressed", self, 'talk', [])
 
 func talk():
+	input_handler.active_character = active_person
 	if active_person.get_stat("unique") == "kurdan":
 		input_handler.interactive_message("ginny_visit", '',{})
 	elif active_person.get_stat("unique") == "zephyra":

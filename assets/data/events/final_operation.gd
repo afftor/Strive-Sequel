@@ -1,4 +1,14 @@
 var data = {
+	
+	final_operation_message = {
+		common_effects = [], #adds option to talk to duncan in intoduction
+		image = "letter", tags = ['dialogue_scene'],
+		text = [{text = "FINAL_OPERATION_MESSAGE", reqs = []}],
+		options = [ {
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 2, type = 'next_dialogue', bonus_effects = [{code = 'progress_quest', value = 'final_operation', stage = 'stage1'}],
+		}],
+	},
+	
 	final_operation_start = {
 		image = null,
 		character = "duncan",
