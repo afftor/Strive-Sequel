@@ -22,6 +22,8 @@ func _ready():
 func talk():
 	if active_person.get_stat("unique") == "kurdan":
 		input_handler.interactive_message("ginny_visit", '',{})
+	elif active_person.get_stat("unique") == "zephyra":
+		input_handler.interactive_message("ginny_visit", '',{})
 
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person
