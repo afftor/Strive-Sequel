@@ -1006,12 +1006,14 @@ func makerandomgroup(enemygroup):
 
 func complete_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
+	if location == null: return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	return_characters_from_location(locationid)
 	ResourceScripts.game_progress.completed_locations[location.id] = {name = location.name, id = location.id, area = area.code}
 
 func remove_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
+	if location == null: return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	return_characters_from_location(locationid)
 	area.locations.erase(location.id)
@@ -1028,6 +1030,9 @@ func remove_location(locationid):
 
 func return_characters_from_location(locationid):
 	var location = ResourceScripts.world_gen.get_location_from_code(locationid)
+	if location == null: 
+		#possibly not that simple
+		return
 	var area = ResourceScripts.world_gen.get_area_from_location_code(locationid)
 	for id in ResourceScripts.game_party.character_order:
 		var person = ResourceScripts.game_party.characters[id]
@@ -1187,7 +1192,7 @@ func common_effects(effects):
 				for a in ResourceScripts.game_world.areas[i.area].locations.values():
 					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
 						location = a
-				location = ResourceScripts.world_gen.get_location_from_code(location.id)
+				location = ResourceScripts.world_gen.get_location_from_code(location.id) #dont understand why it is reqired
 				input_handler.exploration_node.open_location(location)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])

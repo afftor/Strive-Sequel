@@ -52,11 +52,14 @@ func make_area(code):
 	areadata.erase('guilds')
 	#update_guilds(areadata)
 
+#changes in next two methods handle only situation with adressing already removed location - they do not handle situation with generally broken location links data
 func get_area_from_location_code(code):
+	if !ResourceScripts.game_world.location_links.has(code): return null
 	var data = ResourceScripts.game_world.location_links[code]
 	return ResourceScripts.game_world.areas[data.area]
 
 func get_location_from_code(code):
+	if !ResourceScripts.game_world.location_links.has(code): return null
 	var data = ResourceScripts.game_world.location_links[code]
 	return ResourceScripts.game_world.areas[data.area][data.category][code]
 

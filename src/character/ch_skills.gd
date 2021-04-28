@@ -19,8 +19,13 @@ var items_used_today = {}
 var prepared_act = []
 
 func setup_skills(data):
+	#attention! counterintuitive naming is for a keeping compartibility with simple fighters templating, where 'skills' are for combat skills
 	if data.has('skills'):
-		combat_skills = data.skills.duplicate() 
+		for skill in data.skills:
+			learn_c_skill(skill)
+	if data.has('civ_skills'):
+		for skill in data.civ_skills:
+			learn_skill(skill)
 	if !combat_skills.has("ranged_attack") and !combat_skills.has('attack'):
 		combat_skills.push_back('attack')
 
