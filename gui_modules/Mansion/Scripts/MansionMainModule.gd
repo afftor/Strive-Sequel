@@ -764,7 +764,9 @@ func test_mode():
 		newslave.set_slave_category('slave')
 		ResourceScripts.game_party.add_slave(newslave)
 		
-		input_handler.interactive_message("final_operation_start", '',{})
+		input_handler.interactive_message("guild_attack_on_hideout_1", '',{})
+		#ResourceScripts.game_progress.decisions.append("aire_raped")
+		#ResourceScripts.game_progress.decisions.append("aire_is_dead")
 		#input_handler.interactive_message('looking_for_princess_3', '', {})
 		#input_handler.interactive_message('pre_final_boss_start', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])

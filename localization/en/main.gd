@@ -4958,7 +4958,9 @@ Sigmund:— Let's get to da feast already.""",
 	AMELIA_BONUS_QUESTION_REPLY2 = """— Oh my, aren't you a flatterer? You would really prefer this mutt cat to royal blood? How silly. To tell you the truth, for most of my life I was just another servant. I expect I have been one since birth. And now I don't even have a proper Master. Would you be up to the challenge?.. I'm just kidding. But be sure I appreciate your company.""",
 	AMELIA_BONUS_QUESTION_REPLY3 = "— He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advise getting your hopes up about her, she'll always be a liability to us. ",
 	AMELIA_BONUS_QUESTION_REPLY4 = "— Oh, is that so? That's quite convenient. I guess we won't have to worry about the influence of her charms on you.", 
-	AMELIA_BONUS_QUESTION_REPLYALL = "— Well, I will not hold you any longer, good luck with your mission. ",
+	AMELIA_BONUS_QUESTION_REPLYALL = """
+
+— Well, I will not hold you any longer, good luck with your mission. """,
 
 
 	

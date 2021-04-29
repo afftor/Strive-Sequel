@@ -79,4 +79,63 @@ var data = {
 			code = 'zephyra_dialogue_1', text = "ZEPHYRA_EXTRA_OPTION2", reqs = [], dialogue_argument = 4
 		}, ],
 	},
+	
+	
+	
+	
+	
+	kurdan_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'kurdan',
+		text = [
+			{text = "KURDAN_EXTRA_GREET", reqs = [], previous_dialogue_option = 0},
+			{text = "KURDAN_EXTRA_REPLY1", reqs = [], previous_dialogue_option = 1},
+			{text = "KURDAN_EXTRA_REPLY2", reqs = [], previous_dialogue_option = 2},
+			{text = "KURDAN_EXTRA_REPLY3", reqs = [], previous_dialogue_option = 3},
+		], 
+		options = [ {
+			code = 'kurdan_dialogue_start', text = "KURDAN_EXTRA_OPTION1", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'kurdan_dialogue_start', text = "KURDAN_EXTRA_OPTION2", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'kurdan_dialogue_start', text = "KURDAN_EXTRA_OPTION3", reqs = [], dialogue_argument = 3,
+		}, {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+		} ],
+	},
+	
+	
+	
+	
+	
+	amelia_dialogue_start = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		text = [
+			{text = "AMELIA_BONUS_QUESTION", reqs = [], previous_dialogue_option = 0}
+		], 
+		options = [ {
+			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION1", reqs = [], dialogue_argument = 1,
+		}, {
+			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION2", reqs = [], dialogue_argument = 2,
+		}, {
+			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION3", reqs = [], dialogue_argument = 3,
+		}, {
+			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION4", reqs = [], dialogue_argument = 4,
+		}, {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
+		} ],
+	},
+	
+	amelia_dialogue_1 = {
+		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		text = [
+			{text = "AMELIA_BONUS_QUESTION_REPLY1", reqs = [], previous_dialogue_option = 1},
+			{text = "AMELIA_BONUS_QUESTION_REPLY2", reqs = [], previous_dialogue_option = 2},
+			{text = "AMELIA_BONUS_QUESTION_REPLY3", reqs = [], previous_dialogue_option = 3},
+			{text = "AMELIA_BONUS_QUESTION_REPLY4", reqs = [], previous_dialogue_option = 4},
+			{text = "AMELIA_BONUS_QUESTION_REPLYALL", reqs = []},
+		], 
+		options = [ {
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
+		} ],
+	}
 }

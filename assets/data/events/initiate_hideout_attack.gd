@@ -120,7 +120,7 @@ var data = {
 	},
 	guild_attack_on_hideout_1 = {
 		image = null,
-		character = "duncan",
+		character = "greg", character2 = "anastasia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_1", reqs = []},
@@ -136,7 +136,7 @@ var data = {
 	},
 	guild_attack_on_hideout_2 = {
 		image = null,
-		character = "duncan",
+		character = "greg", character2 = "anastasia",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_2", reqs = []},
@@ -155,7 +155,7 @@ var data = {
 		variations = [
 			{
 				image = null,
-				character = "duncan",
+				character = "greg", character2 = "aire",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "GUILD_ATTACK_ON_HIDEOUT_4_1",
 				reqs = [],
@@ -171,7 +171,7 @@ var data = {
 			},
 			{
 				image = null,
-				character = "duncan",
+				character = "anastasia", character2 = "aire",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = "GUILD_ATTACK_ON_HIDEOUT_4_2",
 				reqs = [],
