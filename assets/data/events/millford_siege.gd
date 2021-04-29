@@ -567,6 +567,7 @@ var data = {
 			bonus_effects = [{code = "return_to_mansion"}],
 		}],
 	},
+	
 	#Fighter/mage guild leaders meet back to normal
 	divine_symbol_36 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
@@ -574,7 +575,6 @@ var data = {
 		
 		common_effects = [{code = 'add_timed_event', value = "final_operation_message", 
 		args = [{type = 'add_to_date', date = [5,9], hour = 9}]}, 
-		{code = 'progress_quest', value = 'final_operation', stage = 'stage1'},
 		{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1}],
 		
 		options = [ {

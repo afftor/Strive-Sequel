@@ -1352,6 +1352,8 @@ func common_effects(effects):
 				input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, "yes_message", "no_message", i.text])
 			'close_guild_window':
 				gui_controller.nav_panel.select_location("aliron")
+			'heal_full_party':
+				ResourceScripts.game_party.heal_full_party()
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

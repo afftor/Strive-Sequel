@@ -7,7 +7,7 @@ var data = {
 			{text = "FINAL_OPERATON_WORKERS_1", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	final_operation_servants_1 = {
@@ -18,7 +18,7 @@ var data = {
 			{text = "FINAL_OPERATON_SERVANTS_1", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	final_operation_mages_1 = {
@@ -80,7 +80,7 @@ var data = {
 				text = "FINAL_OPERATON_MAGES_5_1",
 				reqs = [{type = 'decision', value = 'slept_with_xari', check = true}],
 				options = [
-					{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+					{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 				]
 			},
 			{
@@ -116,7 +116,7 @@ var data = {
 			{text = "FINAL_OPERATON_MAGES_5_4", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	final_operation_mages_3_1 = {
@@ -127,7 +127,7 @@ var data = {
 			{text = "FINAL_OPERATON_MAGES_3_1", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	final_operation_mages_3_2 = {
@@ -160,7 +160,7 @@ var data = {
 			{text = "FINAL_OPERATON_MAGES_4", reqs = []},
 		],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 	final_operation_mages_5_3 = {
@@ -172,7 +172,7 @@ var data = {
 		],
 		common_effects = [{code = 'money_change', operant = '-', value = 300}],
 		options = [
-			{code = 'leave', text = "DIALOGUELEAVE", reqs = []},
+			{code = 'leave', text = "DIALOGUELEAVE", reqs = [], bonus_effects = [{code = "update_guild"}]},
 		],
 	},
 }
