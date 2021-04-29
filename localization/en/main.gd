@@ -4861,7 +4861,7 @@ Sigmund:— Let's get to da feast already.""",
 	ZEPHYRA_EXTRA_OPTION2_1 = "Alios",
 	ZEPHYRA_EXTRA_REPLY2_1 = """— Alios is a deity of the winds. I'm not surprised you haven't heard of him, he does not seem very interested in being worshipped, so only a very few people bother with him. 
 
-	— Me? Of course it's impossible for me to not worship him. Once you become a champion it's ingrained in you, it's a thing affecting your every step in some way. """,
+— Me? Of course it's impossible for me to not worship him. Once you become a champion it's ingrained in you, it's a thing affecting your every step in some way. """,
 	ZEPHYRA_EXTRA_OPTION2_1_1 = "You seem rather casual about it",
 	ZEPHYRA_EXTRA_OPTION2_1_2 = "I'd hate to be in a such a position, I value my independence",
 	ZEPHYRA_EXTRA_OPTION2_1_3 = "So you both are good-for-nothing loners",
@@ -4872,7 +4872,7 @@ Sigmund:— Let's get to da feast already.""",
 	ZEPHYRA_EXTRA_OPTION2_2 = "Your Past",
 	ZEPHYRA_EXTRA_REPLY2_2 = """— What I was doing prior to becoming a champion? To tell you the truth, I don't remember. One day I was up in the middle of a forest, at that moment I was already a champion. Mysterious right? 
 
-	— For some reason, I’ve never been that interested in what came before that, so there it is. """,
+— For some reason, I’ve never been that interested in what came before that, so there it is. """,
 	ZEPHYRA_EXTRA_OPTION2_3 = "Princess",
 	ZEPHYRA_EXTRA_REPLY2_3 = """— So you are hunting that princess to stop the rebellion? Huh, it must be nice to be a princess, I wish I could be one, then I could live a rich boring life and marry a prince. Isn't that like every girl's dream?""",
 	ZEPHYRA_EXTRA_OPTION3 = "So what is your plan exactly?",

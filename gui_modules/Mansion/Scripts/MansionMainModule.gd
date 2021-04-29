@@ -760,9 +760,10 @@ func test_mode():
 		
 		var newslave = ResourceScripts.scriptdict.class_slave.new()
 		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
+		newslave.set_slave_category('slave')
 		ResourceScripts.game_party.add_slave(newslave)
 		
-		#input_handler.interactive_message("ginny_visit", '',{})
+		#input_handler.interactive_message("divine_symbol_25", '',{})
 		#input_handler.interactive_message('looking_for_princess_3', '', {})
 		#input_handler.interactive_message('pre_final_boss_start', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'lead_convoy_quest', stage = 'stage2'}])
