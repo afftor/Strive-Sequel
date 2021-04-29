@@ -76,6 +76,7 @@ func equip(item, item_prev_id = null):
 
 func unequip(item):
 	var duplicate = globals.get_duplicate_id_if_exist(item.itembase, item.parts)
+	
 	if duplicate != null:
 		var duplicate_item = ResourceScripts.game_res.items[duplicate]
 		if duplicate_item.owner == null:

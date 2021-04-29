@@ -4902,8 +4902,10 @@ Sigmund:— Let's get to da feast already.""",
 	MATERIALDIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal, which can act as a medium for certain arts. Despite its simple look, it shows a considerable craftsmanship.",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal giving off a faint light.",
-
-
+	
+	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
+	ITEMANASTASIA_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
+	
 
 	ZEPHYRA_EXTRA_GREET = "— You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
 	ZEPHYRA_EXTRA_GREET2 = "— Hello, [master]. How can I serve you? You must want to ask me some questions?",

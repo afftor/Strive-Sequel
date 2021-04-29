@@ -127,7 +127,8 @@ func build_gear_panel():
 func unequip(slot):
 	var selectedhero = input_handler.interacted_character
 	if selectedhero.equipment.gear[slot] != null:
-		selectedhero.unequip(ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]])
+		var item = ResourceScripts.game_res.items[selectedhero.equipment.gear[slot]]
+		selectedhero.unequip(item)
 		var itemtooltip = get_tree().get_root().get_node_or_null("itemtooltip_v2")
 		if itemtooltip != null && itemtooltip.is_visible():
 			itemtooltip.hide()

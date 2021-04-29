@@ -35,8 +35,8 @@ var data = {
 			},
 			{
 				code = 'princess_mindbreak_1',
-				text = "ANASTASIA_PERSUASION_OPTION_2", 
-				reqs = [{type = 'decision', value = 'mindbreak_enabled', check = true}], 
+				text = "ANASTASIA_PERSUASION_OPTION_2",
+				reqs = [{type = 'decision', value = 'mindbreak_enabled', check = true}],
 				dialogue_argument = 1,
 				remove_after_first_use = true,
 				type = 'next_dialogue'
@@ -103,8 +103,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_early_2',
-				text = "ANASTASIA_PERSUASION_OPTION_4", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_4",
+				reqs = [],
 				dialogue_argument = 2,
 				type = 'next_dialogue'
 			},
@@ -138,8 +138,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_early_3',
-				text = "ANASTASIA_PERSUASION_OPTION_7", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_7",
+				reqs = [],
 				dialogue_argument = 2,
 				type = 'next_dialogue'
 			},
@@ -172,8 +172,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_early_4',
-				text = "ANASTASIA_PERSUASION_OPTION_10", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_10",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -197,8 +197,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_1',
-				text = "ANASTASIA_PERSUASION_OPTION_12", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_12",
+				reqs = [],
 				dialogue_argument = 2,
 				type = 'next_dialogue'
 			},
@@ -223,8 +223,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_marry',
-				text = "ANASTASIA_PERSUASION_OPTION_14", 
-				reqs = [{type = 'decision', value = 'marry_option', check = true}], 
+				text = "ANASTASIA_PERSUASION_OPTION_14",
+				reqs = [{type = 'decision', value = 'marry_option', check = true}],
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'decision', value = 'marry_proposed'}],
 				type = 'next_dialogue'
@@ -239,8 +239,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_enslave',
-				text = "ANASTASIA_PERSUASION_OPTION_16", 
-				reqs = [{type = 'decision', value = 'enslave_option', check = true}], 
+				text = "ANASTASIA_PERSUASION_OPTION_16",
+				reqs = [{type = 'decision', value = 'enslave_option', check = true}],
 				dialogue_argument = 1,
 				bonus_effects = [],
 				type = 'next_dialogue'
@@ -265,8 +265,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_3',
-				text = "ANASTASIA_PERSUASION_OPTION_18", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_18",
+				reqs = [],
 				dialogue_argument = 2,
 				type = 'next_dialogue'
 			},
@@ -298,8 +298,8 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_3',
-				text = "ANASTASIA_PERSUASION_OPTION_21", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_21",
+				reqs = [],
 				dialogue_argument = 5,
 				type = 'next_dialogue'
 			},
@@ -336,15 +336,15 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_4',
-				text = "ANASTASIA_PERSUASION_OPTION_24", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_24",
+				reqs = [],
 				dialogue_argument = 2,
 				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_4',
-				text = "ANASTASIA_PERSUASION_OPTION_25", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_25",
+				reqs = [],
 				dialogue_argument = 3,
 				type = 'next_dialogue'
 			},
@@ -364,8 +364,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_amelia_1',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -383,8 +383,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_amelia_2',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -402,8 +402,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_1st_persuation_7',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -421,8 +421,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_1st_persuation_8',
-				text = "ANASTASIA_PERSUASION_OPTION_26", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_26",
+				reqs = [],
 				dialogue_argument = 1,
 				bonus_effects = [
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
@@ -432,15 +432,15 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_8',
-				text = "ANASTASIA_PERSUASION_OPTION_27", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_27",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_8',
-				text = "ANASTASIA_PERSUASION_OPTION_28", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_28",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -458,8 +458,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_1st_persuation_9',
-				text = "ANASTASIA_PERSUASION_OPTION_29", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_29",
+				reqs = [],
 				dialogue_argument = 1,
 				bonus_effects = [
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
@@ -469,15 +469,15 @@ var data = {
 			},
 			{
 				code = 'princess_recriut_1st_persuation_9',
-				text = "ANASTASIA_PERSUASION_OPTION_30", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_30",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_9',
-				text = "ANASTASIA_PERSUASION_OPTION_31", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_31",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -495,16 +495,16 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_intermission_1',
-				text = "DIALOGUECONTINUE", 
-				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = true}], 
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = true}],
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'decision', value = 'persuade_1_completed'}],
 				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_intermission_1',
-				text = "DIALOGUECONTINUE", 
-				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = false}], 
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = false}],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
@@ -521,15 +521,15 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_intermission_2',
-				text = "ANASTASIA_PERSUASION_OPTION_32", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_32",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_intermission_2',
-				text = "ANASTASIA_PERSUASION_OPTION_33", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_33",
+				reqs = [],
 				dialogue_argument = 2,
 				type = 'next_dialogue'
 			},
@@ -554,16 +554,16 @@ var data = {
 				options = [
 					{
 						code = 'princess_recriut_intermission_3',
-						text = "ANASTASIA_PERSUASION_OPTION_34", 
-						reqs = [], 
+						text = "ANASTASIA_PERSUASION_OPTION_34",
+						reqs = [],
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'AireAnastasiaPersuasionAgree'}],
 						type = 'next_dialogue'
 					},
 					{
 						code = 'princess_recriut_intermission_3',
-						text = "ANASTASIA_PERSUASION_OPTION_35", 
-						reqs = [], 
+						text = "ANASTASIA_PERSUASION_OPTION_35",
+						reqs = [],
 						dialogue_argument = 2,
 						type = 'next_dialogue'
 					},
@@ -586,8 +586,8 @@ var data = {
 				options = [
 					{
 						code = 'close',
-						text = "DIALOGUECLOSE", 
-						reqs = [], 
+						text = "DIALOGUECLOSE",
+						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
 						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}],
@@ -610,8 +610,8 @@ var data = {
 				options = [
 					{
 						code = 'close',
-						text = "DIALOGUECLOSE", 
-						reqs = [], 
+						text = "DIALOGUECLOSE",
+						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
 						bonus_effects = [], #add second persuation trigger here
@@ -633,8 +633,8 @@ var data = {
 		options = [
 			{
 				code = 'close',
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
 				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}], #add second persuation trigger here
@@ -652,8 +652,8 @@ var data = {
 		options = [
 			{
 				code = 'close',
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'decision', value = 'AnastasiaPersuasionNextday'}], #add second persuation trigger here
@@ -681,33 +681,33 @@ var data = {
 				options = [
 					{
 						code = 'princess_persuation_2_aire_1',
-						text = "ANASTASIA_PERSUASION_OPTION_36", 
-						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasionAgree', check = true}], 
+						text = "ANASTASIA_PERSUASION_OPTION_36",
+						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasionAgree', check = true}],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
 						remove_after_first_use = true
 					},
 					{
 						code = 'princess_persuation_2_init',#'princess_persuation_2_bracelet',
-						text = "ANASTASIA_PERSUASION_OPTION_37", 
-						reqs = [{type = 'decision', value = 'has_bracelet', check = true}], #has bracelet should be here. idk how it is named
+						text = "ANASTASIA_PERSUASION_OPTION_37",
+						reqs = [{type = 'has_material', material = 'princess_bracelet', operant = 'gte', value = 1}], #has bracelet should be here. idk how it is named
 						dialogue_argument = 3,
 						remove_after_first_use = true,
 						type = 'next_dialogue',
-						bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
+						bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'},{code = 'decision', value = 'bracelet_returned'}, {code = 'material_change', operant = '-', material = 'princess_bracelet', value = 1}]
 					},
 					{
 						code = 'princess_persuation_2_2',
-						text = "ANASTASIA_PERSUASION_OPTION_38", 
-						reqs = [], 
+						text = "ANASTASIA_PERSUASION_OPTION_38",
+						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
 						remove_after_first_use = true
 					},
 					{
 						code = 'close',
-						text = "ANASTASIA_PERSUASION_OPTION_39", 
-						reqs = [], 
+						text = "ANASTASIA_PERSUASION_OPTION_39",
+						reqs = [],
 						dialogue_argument = 1,
 					},
 				],
@@ -725,11 +725,11 @@ var data = {
 				options = [
 					{
 						code = 'princess_persuation_2_fail',
-						text = "DIALOGUECONTINUE", 
-						reqs = [], 
+						text = "DIALOGUECONTINUE",
+						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						bonus_effects = [], 
+						bonus_effects = [],
 					},
 				],
 			},
@@ -746,8 +746,8 @@ var data = {
 		options = [
 			{
 				code = 'close',
-				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				text = "DIALOGUECLOSE",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
 			},
@@ -765,8 +765,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_persuation_2_aire_2',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
 			},
@@ -787,8 +787,8 @@ var data = {
 				options = [
 					{
 						code = 'princess_persuation_2_init',
-						text = "DIALOGUECONTINUE", 
-						reqs = [], 
+						text = "DIALOGUECONTINUE",
+						reqs = [],
 						dialogue_argument = 1,
 						bonus_effects = [
 							{code = 'dialogue_counter', name = 'sympathy2', op = '-'},
@@ -821,8 +821,8 @@ var data = {
 				options = [
 					{
 						code = 'princess_persuation_2_init',
-						text = "DIALOGUECONTINUE", 
-						reqs = [], 
+						text = "DIALOGUECONTINUE",
+						reqs = [],
 						dialogue_argument = 2,
 						bonus_effects = [],
 						type = 'next_dialogue',
@@ -842,8 +842,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_persuation_2_init',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 3,
 				type = 'next_dialogue',
 				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
@@ -861,24 +861,24 @@ var data = {
 		options = [
 			{
 				code = 'princess_persuation_2_2_1',
-				text = "ANASTASIA_PERSUASION_OPTION_40", 
+				text = "ANASTASIA_PERSUASION_OPTION_40",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 			},
 			{
 				code = 'princess_persuation_2_2_1',
-				text = "ANASTASIA_PERSUASION_OPTION_41", 
+				text = "ANASTASIA_PERSUASION_OPTION_41",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'dialogue_counter', name = 'sympathy2', op = '+'}]
 			},
 			{
 				code = 'princess_persuation_2_2_1',
-				text = "ANASTASIA_PERSUASION_OPTION_42", 
+				text = "ANASTASIA_PERSUASION_OPTION_42",
 				type = 'next_dialogue',
-				reqs = [], 
+				reqs = [],
 				dialogue_argument = 1,
 			},
 		],
@@ -897,30 +897,30 @@ var data = {
 			options = [
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION1", 
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION1",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 1,
 				},
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION2", 
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION2",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 2,
 				},
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION3", 
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION3",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 3,
 				},
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION4", 
+					text = "ANASTASIA_PERSUASION_2_MARRY1_OPTION4",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 4,
 				},
 			],
@@ -938,30 +938,30 @@ var data = {
 			options = [
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION1", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION1",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 1,
 				},
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION2", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION2",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 2,
 				},
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 3,
 				},
 				{
 					code = 'princess_persuation_2_2_2',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 4,
 				},
 			],
@@ -988,30 +988,30 @@ var data = {
 			options = [
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION1", 
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION1",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 1,
 				},
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION2", 
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION2",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 2,
 				},
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION3", 
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION3",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 3,
 				},
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION4", 
+					text = "ANASTASIA_PERSUASION_2_MARRY2_OPTION4",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 4,
 				},
 			],
@@ -1032,30 +1032,30 @@ var data = {
 			options = [
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 1,
 				},
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 2,
 				},
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 3,
 				},
 				{
 					code = 'princess_persuation_2_2_3',
-					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4", 
+					text = "ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 					dialogue_argument = 4,
 				},
 			],
@@ -1081,9 +1081,9 @@ var data = {
 			options = [
 				{
 					code = 'princess_persuation_2_3',
-					text = "DIALOGUECONTINUE", 
+					text = "DIALOGUECONTINUE",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 				},
 			],
 		},
@@ -1102,9 +1102,9 @@ var data = {
 			options = [
 				{
 					code = 'princess_persuation_2_3',
-					text = "DIALOGUECONTINUE", 
+					text = "DIALOGUECONTINUE",
 					type = 'next_dialogue',
-					reqs = [], 
+					reqs = [],
 				},
 			],
 		},
@@ -1130,8 +1130,8 @@ var data = {
 				options = [
 					{
 						code = 'princess_persuation_2_fail',
-						text = "DIALOGUECONTINUE", 
-						reqs = [], 
+						text = "DIALOGUECONTINUE",
+						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'AnastasiaRejected'}] #this decision for some reason not added onto first persuation fail
@@ -1153,8 +1153,8 @@ var data = {
 				options = [
 					{
 						code = 'princess_persuation_2_amelia',
-						text = "DIALOGUECONTINUE", 
-						reqs = [], 
+						text = "DIALOGUECONTINUE",
+						reqs = [],
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
@@ -1175,8 +1175,8 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_finish_1',
-				text = "DIALOGUELEAVE", 
-				reqs = [], 
+				text = "DIALOGUELEAVE",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 			},
@@ -1193,22 +1193,22 @@ var data = {
 		options = [
 			{
 				code = 'princess_recriut_finish_2',
-				text = "ANASTASIA_PERSUASION_OPTION_43", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_43",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
 			},
 			{
 				code = 'princess_recriut_finish_2',
-				text = "ANASTASIA_PERSUASION_OPTION_44", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_44",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 2,
 			},
 			{
 				code = 'princess_recriut_finish_2',
-				text = "ANASTASIA_PERSUASION_OPTION_45", 
-				reqs = [], 
+				text = "ANASTASIA_PERSUASION_OPTION_45",
+				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 3,
 			},
@@ -1228,7 +1228,7 @@ var data = {
 		options = [
 			{
 				code = 'close',
-				text = "DIALOGUECLOSE", 
+				text = "DIALOGUECLOSE",
 				type = 'next_dialogue',
 				reqs = [],
 				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}],
@@ -1257,14 +1257,14 @@ var data = {
 		options = [
 			{
 				code = 'princess_persuation_init',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 0,
 			},
 			{
 				code = 'princess_persuation_2_init',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 0,
 			},
 		],
@@ -1284,14 +1284,14 @@ var data = {
 		options = [
 			{
 				code = 'princess_persuation_init',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 0,
 			},
 			{
 				code = 'princess_persuation_2_init',
-				text = "DIALOGUECONTINUE", 
-				reqs = [], 
+				text = "DIALOGUECONTINUE",
+				reqs = [],
 				dialogue_argument = 0,
 			},
 		],

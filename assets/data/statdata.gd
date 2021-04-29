@@ -198,7 +198,7 @@ var statdata = {
 		descript = '',
 		baseicon = 'stat_cf',
 		type = 'mental_stat',
-		default_bonus = 'add_part'
+		default_bonus = 'add_part',
 	},
 	food_consumption = {
 		code = 'food_consumption',
