@@ -1390,6 +1390,25 @@ var itemlist = {
 		basestats = {},
 	},
 	
+	
+	anastasia_bracelet = {#
+		code = 'anastasia_bracelet',
+		name = "",
+		descript = "",
+		type = 'gear',
+		itemtype = 'armor',
+		geartype = 'costume',
+		crafttype = 'basic',
+		slots = ['hands'],
+		price = 500,
+		icon = load("res://assets/images/iconsitems/item_bracelet.png"),
+		tier = 'hard',
+		reqs = [{code = 'unique', value = 'anastasia'}],
+		effects = [],
+		tags = ['no_random'],
+		basestats = {obDrainReduction = 0.5, loyalty_gain_mod = 0.25, charm_bonus = 5},
+	},
+	
 	#gear
 	axe = {
 		name = tr("WEAPONAXENAME"), 

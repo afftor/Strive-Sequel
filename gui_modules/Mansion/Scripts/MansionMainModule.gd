@@ -122,7 +122,8 @@ func _ready():
 	set_active_person(ResourceScripts.game_party.get_master())
 
 func test():
-	print(ResourceScripts.game_progress.decisions)
+	input_handler.interactive_message('princess_persuation_2_init', '', {})
+	#print(ResourceScripts.game_progress.decisions)
 	#ResourceScripts.game_progress.seen_dialogues.append('ALIRONCHURCHFIRSTCOME')
 
 func show_tutorial():
@@ -681,7 +682,7 @@ func test_mode():
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:
 			ResourceScripts.game_res.materials[i] = 1899
-		globals.AddItemToInventory(globals.CreateGearItem("handcuffs", {}))
+		globals.AddItemToInventory(globals.CreateGearItem("anastasia_bracelet", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("animal_gloves", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("pet_suit", {}))
 		globals.AddItemToInventory(globals.CreateGearItem("tail_plug", {}))

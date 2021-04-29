@@ -106,6 +106,7 @@ func showup(node, data, type): #types material materialowned gear geartemplate
 func material_tooltip(data, workers_data = {}):
 	var item = data.item
 	var text = data.text
+	$Title.text = item.name
 	if ResourceScripts.game_res.materials.has(data.item) && ResourceScripts.game_res.materials[data.item] > 0:
 		text += "\n\n" + tr("CURRENTLYINPOSSESSION") + ": " + str(ResourceScripts.game_res.materials[data.item])
 	if workers_data.has("max"):

@@ -3241,7 +3241,7 @@ She purred to herself and put a little sway into her hips on her way out as she 
 	HELP_SIGMUND_OPTION_4 = """Anything goes as long as I get to beat more rebels""",
 	HELP_SIGMUND_OPTION_5 = """Hope I'll be rewarded for it.""",
 	HELP_SIGMUND_2 = """— Yah, it wouldn't be da problem, but it's actually da major one for the special ore used for enchantable alloys. Dis is not widely known information, but it seems da rebels knew where to strike.""",
-	HELP_SIGMUND_3 = """— Great, I’ll mark it on ya map.""",
+	HELP_SIGMUND_3 = """— Great, I'll mark it on ya map.""",
 	HELP_SIGMUND_4 = """— Argh, darn, fine, as long as you deal with it.""",
 	
 	# MINES ARRIVAL
@@ -3278,7 +3278,7 @@ He shows you a dull, uncommon metal bracelet hanging from his wrist.
 	HALF_DUNGEON_EXPLORED_OPTION_3 = """What's been going on in your lands?""",
 	HALF_DUNGEON_EXPLORED_OPTION_4 = """Is practicing magic really worth leaving your country?""",
 	HALF_DUNGEON_EXPLORED_OPTION_5 = """I know nothing about this""",
-	HALF_DUNGEON_EXPLORED_2 = """— Huh, I guess the word hasn’t spread yet. The practice of magic is no longer welcome by the orcish authorities. It’s because of the ongoing war against the Thoth. Anyone practicing sorcery is viewed as a threat. Most unfortunate circumstances.""",
+	HALF_DUNGEON_EXPLORED_2 = """— Huh, I guess the word hasn't spread yet. The practice of magic is no longer welcome by the orcish authorities. It's because of the ongoing war against the Thoth. Anyone practicing sorcery is viewed as a threat. Most unfortunate circumstances.""",
 	HALF_DUNGEON_EXPLORED_3 = """— It's not about magic... Not entirely at least. You see, learning magic gave me great insight as to the nature of the world. Some aim to use it for everyday purposes or adventures, but by tapping into magical energies you also get closer to understanding the underlying principles of existence itself. """,
 	HALF_DUNGEON_EXPLORED_4 = """— I see... Well, I should continue my small pilgrimage in this case. Since I've left my homeland I'm in a tight spot here unless I can find shelter.""",
 	HALF_DUNGEON_EXPLORED_OPTION_6 = """I'm performing an investigation on behalf of the guilds and I'd prefer you leave this place""",
@@ -3301,7 +3301,7 @@ You explain to Kurdan how to get to Aliron and find your place after which he le
 	PRE_FINAL_BOSS_OPTION_1 = """And who exactly are you?""",
 	PRE_FINAL_BOSS_OPTION_2 = """I thought the rebel leader was male""",
 	PRE_FINAL_BOSS_OPTION_3 = """You better surrender now if you wanna live""",
-	PRE_FINAL_BOSS_1 = """— That’s not really important, I'm only here for an errand, but it seems I'll get dragged into it at this point.""",
+	PRE_FINAL_BOSS_1 = """— That's not really important, I'm only here for an errand, but it seems I'll get dragged into it at this point.""",
 	PRE_FINAL_BOSS_2_1 = """— Male, female, who really cares, all these names are so meaningless after all.""",
 	PRE_FINAL_BOSS_2_2 = """— Male, female, who really cares, all these names are so meaningless after all. 
 
@@ -3317,7 +3317,7 @@ Rebel:— Hey, you traitorous bit-..
 — Silence, putzes. 
 
 Demon's voice shook the air and her underling froze in place.""",
-	PRE_FINAL_BOSS_4 = """— I believe this is a good deal for you. After all, these people are mere peasants, what’s the point in risking your life for them? I'm sure your employers will be able to replace them.
+	PRE_FINAL_BOSS_4 = """— I believe this is a good deal for you. After all, these people are mere peasants, what's the point in risking your life for them? I'm sure your employers will be able to replace them.
 
 The prisoners overhearing your conversation closely observed your reaction in fear.""",
 	PRE_FINAL_BOSS_OPTION_4 = """Agree""",
@@ -3379,7 +3379,7 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_WORKERS_OPTION_2 = """I've solved the issue with the mines, but there were some casualties""",
 	AFTER_MINES_SIGMUND_3 = """— Ya' I've received some reports. It seems some of da workers were taken after yer operation. We can't do a proper investigation right now, and I can't give you any extra reward. Ya should go see Duncan.""",
 	
-	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with the Workers’ issues""",
+	AFTER_MINES_FIGHTERS_OPTION_1 = """I'm done with the Workers' issues""",
 	AFTER_MINES_DUNCAN_1 = """— That's so. I've been getting some reports on the subject. Can you add anything?""",
 	AFTER_MINES_DUNCAN_OPTION_1 = """There was an Orc traveller at the mines""",
 	AFTER_MINES_DUNCAN_OPTION_2 = """I've ran into a female demon out there""",
@@ -3395,7 +3395,7 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_DUNCAN_OPTION_6 = """What's it to you? We still got the mine back up and running""",
 	AFTER_MINES_DUNCAN_5 = """— You were outnumbered, but she just left? I find it hard to believe. We'll drop this for now, but know that you won't be pardoned if some deeper connection between you and that rebel helping demon comes to light.""",
 	AFTER_MINES_DUNCAN_6 = """— Hmmh. Fine, I'll believe you. But know, you won't be pardoned if some deeper connection between you and that rebel helping demon comes to light.""",
-	AFTER_MINES_DUNCAN_7 = """— I'll tell you what it means to me. There will be no tolerance for cooperation with our foes. I’ll leave it to your imagination  what will happen if we find out there's some deeper connection between you and that rebel helping demon.""",
+	AFTER_MINES_DUNCAN_7 = """— I'll tell you what it means to me. There will be no tolerance for cooperation with our foes. I'll leave it to your imagination  what will happen if we find out there's some deeper connection between you and that rebel helping demon.""",
 	AFTER_MINES_DUNCAN_8 = """— So that was about it, the mine is back in production and your mission is finished. However, the timing of this is too inconvenient to think of it as of coincidence. I shall ask you, do you think the Workers might have planned this?""",
 	AFTER_MINES_DUNCAN_OPTION_7 = """There might be some connection""",
 	AFTER_MINES_DUNCAN_OPTION_8 = """I don't think so""",
@@ -3438,15 +3438,15 @@ After some time you are left alone with only a tenth of the original provisions.
 You part ways pondering how you are going to explain this to Duncan...""",
 	AFTER_MINES_CONVOY_8 = """You refuse to give the refugees any supplies. With no other option they miserably see you off.""",
 	DUNCAN_NOT_FOUND = """You've tried to find Duncan, but it seems he's not around. You'll have to join him during the siege.""",
-	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by the guilds’ united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.
+	AFTER_MINES_CONVOY_9 = """After another couple of hours your convoy finally makes it to the siege camps a few miles away from the town. A large tent camp has been set up by the guilds' united forces. Following the directions you find Duncan, debating the course of the upcoming battle. In the far corner you spot Myr quietly leaning against the wall.
 """,
-	AFTER_MINES_CONVOY_10 = """— You’ve finally arrived, [name]. I've received a report that you're missing a considerable amount of the provisions you've been requested to bring. Explain yourself.""",
+	AFTER_MINES_CONVOY_10 = """— You've finally arrived, [name]. I've received a report that you're missing a considerable amount of the provisions you've been requested to bring. Explain yourself.""",
 	AFTER_MINES_CONVOY_OPTION_5 = """I met a group of refugees who needed them""",
 	AFTER_MINES_CONVOY_OPTION_6 = """Bandits attacked us and stole it in the confusion (lie)""",
 	AFTER_MINES_CONVOY_11 = """— You had clear instructions, yet deliberately disobeyed. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.
 	""",
 	AFTER_MINES_CONVOY_12 = """— A failure is a failure. I'm disappointed in you, [name], and you will be penalized once we return back to Aliron. For now, get ready for battle.""",
-	AFTER_MINES_CONVOY_13 = """— Greetings, [name]. I see you've completed your mission successfully. I’m pleased to have a capable subordinate for once.""",
+	AFTER_MINES_CONVOY_13 = """— Greetings, [name]. I see you've completed your mission successfully. I'm pleased to have a capable subordinate for once.""",
 	AFTER_MINES_CONVOY_14 = """Inside the settlement walls, rebels have been fortifying their defence in preparation for the upcoming battle. 
 
 Aire:— The guilds forces are preparing an assault. There's roughly two thousand troops. These are trained soldiers and mages. Even in our current position I doubt we can withstand for long.
@@ -3461,7 +3461,7 @@ Anastasia:— It pains me to see how the people suffer because of our actions, b
 Duncan:— I shall thank you after our victory. It's been too long since my last battle.""",
 	AFTER_MINES_CONVOY_16 = """Anastasia threw an angry glance at Duncan.
 
-Anastasia:— That's all you’re gonna say now? After killing my father?
+Anastasia:— That's all you're gonna say now? After killing my father?
 
 Duncan:— I have nothing else to say to a juvenile here and now. Let's get this over with.""",
 	AFTER_MINES_CONVOY_17 = """Despite her irritation Anastasia managed to collect herself and demonstrate her royal upbringing with a calm answer. 
@@ -3481,7 +3481,7 @@ Duncan:— I wish it would have stayed that way.
 Greg:— You look tired, did safe living make you soft?
 
 Duncan:— I'm still collected enough to end you and this pitiful revolt.""",
-	BETRAYAL_CONFIRMED_3 = """Greg:— Heh, we'll see about that. I didn't expect you to come to the front lines, but I guess we’re in luck.
+	BETRAYAL_CONFIRMED_3 = """Greg:— Heh, we'll see about that. I didn't expect you to come to the front lines, but I guess we're in luck.
 
 Duncan:— What are you talking about?
 
@@ -3490,7 +3490,7 @@ Greg:— What do you expect your army to do it if you are taken down?
 Duncan: ...
 
 Now Duncan realized that there was another group of rebel reinforcements approaching their flank. Their group would be outnumbered by at least two to one. Regardless, he readied his sword.""",
-	BETRAYAL_CONFIRMED_4 = """As you deal with the rebels you are ordered to advance. From your perspective it seems the Guilds’ army is slowly coming out on top.""",
+	BETRAYAL_CONFIRMED_4 = """As you deal with the rebels you are ordered to advance. From your perspective it seems the Guilds' army is slowly coming out on top.""",
 	BETRAYAL_CONFIRMED_5 = """Myr observed the battlefield from the nearby hill a few hundred feet away. Most of the lower mages were drafted to support the fighting forces but she had a different mission. Being the strongest caster in all Aliron or perhaps the whole country, she was reserved for more than simple healing and spellslinging. 
 
 She patiently observed the battlefield, as the guilds troops advanced toward the town. """,
@@ -3521,10 +3521,10 @@ Duncan muttered to himself. However, Greg was far more surprised by this. He rea
 Greg:— Cursed sorcerers. Retreat to the town's walls!
 
 Following the command, the rebel forces withdrew, however the Guilds' army quickly took the initiative and moved in.""",
-	BETRAYAL_CONFIRMED_10 = """However, before the bulk of the guild forces were able to enter the town, a gigantic white dome had enveloped the rebels' refuge. Magic on a scale they’d never seen completely blocked any advance or attack from the guilds' army. 
+	BETRAYAL_CONFIRMED_10 = """However, before the bulk of the guild forces were able to enter the town, a gigantic white dome had enveloped the rebels' refuge. Magic on a scale they'd never seen completely blocked any advance or attack from the guilds' army. 
 
-Dumbfounded, the guilds’ forces were forced to halt and regroup.""",
-	BETRAYAL_CONFIRMED_11 = """The army’s leaders gathered together to discuss the situation.
+Dumbfounded, the guilds' forces were forced to halt and regroup.""",
+	BETRAYAL_CONFIRMED_11 = """The army's leaders gathered together to discuss the situation.
 	
 	Duncan:— What's this thing about? Why can't we pass through?
 
@@ -3539,7 +3539,7 @@ Myr:— I would imagine the princess could pull of something unusual, but not on
 
 Duncan:— How long will this thing persist?
 
-Myr:— I'd not expect it to go down on its own. The divine doesn’t always follow the same rules as normal magic.
+Myr:— I'd not expect it to go down on its own. The divine doesn't always follow the same rules as normal magic.
 
 Duncan:— Damnit...""",
 	BETRAYAL_CONFIRMED_13 = """Duncan:— Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate [townname]. 
@@ -3550,7 +3550,7 @@ Myr:— We will be keeping our forces ready in case they decide the rebels launc
 	BETRAYAL_CONFIRMED_14 = """Myr:— Hmm, my only idea would be to try asking a religious institution. Those usually are more familiar with Divine Influences and how to deal with them.""",
 	BETRAYAL_CONFIRMED_OPTION_3 = """I'll try my best""",
 	BETRAYAL_CONFIRMED_OPTION_4 = """You really make me work""",
-	BETRAYAL_CONFIRMED_OPTION_5 = """Alright, I’ll ask for a votive candle on your behalf""",
+	BETRAYAL_CONFIRMED_OPTION_5 = """Alright, I'll ask for a votive candle on your behalf""",
 	
 	DIVINE_SYMBOL_OPTION_1 = """Can you tell me anything about Divine Influence?""",
 	DIVINE_SYMBOL_1 = """— We've had some teaching and  records about it. What exactly would you like to know?""",
@@ -3562,7 +3562,7 @@ Myr:— We will be keeping our forces ready in case they decide the rebels launc
 	DIVINE_SYMBOL_4 = """— Hmm, I think there's a way. If another god conjures a medium you should be able to neutralize the powers of this god. Then you'll be able to pass that barrier, although for removing it completely you'll have to defeat the champion.""",
 	DIVINE_SYMBOL_OPTION_5 = """What do I need to do?""",
 	DIVINE_SYMBOL_OPTION_6 = """You can conjure such a thing?""",
-	DIVINE_SYMBOL_5 = """— If you bring me the divine symbol I can bless it with Celena's power. I'll give you the recipe. Please come back once you’ve made it.""",
+	DIVINE_SYMBOL_5 = """— If you bring me the divine symbol I can bless it with Celena's power. I'll give you the recipe. Please come back once you've made it.""",
 	DIVINE_SYMBOL_OPTION_7 = """I've brought the symbol you asked for""",
 	DIVINE_SYMBOL_6 = """— Ah, you have it? A beautiful work! Please, give me some time.
 
@@ -3584,7 +3584,7 @@ Myr:— There's a spot from which you can enter unnoticed from the hill side, I'
 
 First Sentry:— Why are we even doing this? It's not like those bastards can get in. 
 
-Second Sentry:— Yah, I know. We’ve been at this for days and nothing. I'd rather grab a beer and a pair of tits instead of a fuckin' spear. 
+Second Sentry:— Yah, I know. We've been at this for days and nothing. I'd rather grab a beer and a pair of tits instead of a fuckin' spear. 
 
 As they pass you continue to move on.""",
 	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You’re about to be cut off, and won't be able to retreat unnoticed.""",
@@ -3627,7 +3627,7 @@ First Guard:— Probably figured you've been sleeping during the last watch.
 Second Guard:— You didn't tell him that, did you? Fuck, lets go. 
 
 They leave the building, leaving the door unguarded.""",
-	DIVINE_SYMBOL_20_2 = "Second Guard:— Bullshit, they’re intruders. Get them!",
+	DIVINE_SYMBOL_20_2 = "Second Guard:— Bullshit, they're intruders. Get them!",
 	DIVINE_SYMBOL_21 = """Deciding there's no room for negotiation, you prepare for a fight.""",
 	DIVINE_SYMBOL_22 = """As you knock out the guards you are finally able to approach the doors.""",
 	DIVINE_SYMBOL_23 = """You enter a sumptuous though dimly lit room. A small figure on the other side turns at you. 
@@ -3685,7 +3685,7 @@ She passes you a roll of paper she took from the pile on a small table. As you u
 	DIVINE_SYMBOL_37 = """— Do I get to call you [master]? Hehe, now let me dispel the barrier, then we can continue once this is over.""",
 	DIVINE_SYMBOL_38 = """— Hehe, glad we worked this out. Alright, hold on, I'll dispel the barrier. We can discuss other things once this is over.""",
 	DIVINE_SYMBOL_39 = """— You idiot! Making me do something so embarrassing... Oh well, let's get this over with, we can discuss other things once this is over.""",
-	DIVINE_SYMBOL_40 = """— Ha-ah, that's a downer. Well, let’s get this over with then, I'll remove the barrier in a moment. Was nice to meet you.""",
+	DIVINE_SYMBOL_40 = """— Ha-ah, that's a downer. Well, let's get this over with then, I'll remove the barrier in a moment. Was nice to meet you.""",
 	DIVINE_SYMBOL_41 = """Zephyra closed her eyes and her figure was enveloped in dim light in proof of her divine connection. At the same time through the window you observe the barrier slowly begin to dissipate.""",
 	DIVINE_SYMBOL_42 = """
 
@@ -3716,7 +3716,7 @@ Duncan:— A splendid job. You are going down in history with what you've pulled
 
 Myr:— Screw you.""",
 	DIVINE_SYMBOL_OPTION_33 = """That wasn't too hard""",
-	DIVINE_SYMBOL_OPTION_34 = """I thought I wasn’t gonna make it""",
+	DIVINE_SYMBOL_OPTION_34 = """I thought I wasn't gonna make it""",
 	DIVINE_SYMBOL_48 = """Duncan:— Either way the town will be ours by tomorrow morning. You can go and rest until then.""",
 	DIVINE_SYMBOL_49 = """A few hours later
 
@@ -4079,7 +4079,7 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 	SEARCH_DUNGEON_18 = """— Aw, that's ok though, it was worth a try. I could tell by looking at her she'd be a tough one to crack. So.. have you considered my offer? I could try to get her talking if you want.""",
 	SEARCH_DUNGEON_OPTION_44_2 = """This girl is a tough nut to crack""",
 	SEARCH_DUNGEON_OPTION_45 = """Go ahead, it couldn't hurt.""",
-	SEARCH_DUNGEON_19_1 = """— Don't worry, I'm sure I’ll get something out of her, but it may take some time. I'll be sure to personally deliver the information to you when I get it.""",
+	SEARCH_DUNGEON_19_1 = """— Don't worry, I'm sure I'll get something out of her, but it may take some time. I'll be sure to personally deliver the information to you when I get it.""",
 	SEARCH_DUNGEON_OPTION_46 = """No, I think I'll find another way.""",
 	SEARCH_DUNGEON_19_2 = """— Alright, I understand, just come talk to me if you want to reconsider.""",
 	SEARCH_DUNGEON_OPTION_47 = """Actually I just wanted to talk with her, I've already got another way of finding the princess.""",
@@ -4092,20 +4092,20 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we’ve got no leads as to where she may have gone. Our interrogation of the prisoners hasn’t turned up much.""",
 	LOOKING_FOR_PRINCESS_2 = """
 	
-— Don’t think I’ve forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you’ve proven yourself to be very capable.""",
+— Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
 	LOOKING_FOR_PRINCESS_3 = """
 	
-— Oh, and here, your reward for your help in the raid, you’ve proven yourself to be very capable.""",
+— Oh, and here, your reward for your help in the raid, you've proven yourself to be very capable.""",
 	LOOKING_FOR_PRINCESS_4 = """
 	
 — We still have to secure the princess.""",
-	LOOKING_FOR_PRINCESS_OPTION_1 = """Let’s get right into it, I’m eager to get to her myself.""",
+	LOOKING_FOR_PRINCESS_OPTION_1 = """Let's get right into it, I'm eager to get to her myself.""",
 	LOOKING_FOR_PRINCESS_OPTION_2 = """I currently have other issues to deal with.""",
 	LOOKING_FOR_PRINCESS_OPTION_3 = """How goes the search?""",
-	LOOKING_FOR_PRINCESS_5 = """-We’ve had no further leads on her location so far. So far no one has come forward with any new information.""",
-	LOOKING_FOR_PRINCESS_OPTION_4 = """I’ll track her down.""",
-	LOOKING_FOR_PRINCESS_OPTION_5 = """I’ll come back later.""",
-	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds’ mercenaries and scavengers didn't waste any time. However after another half hour you notice a smaller scavenger. 
+	LOOKING_FOR_PRINCESS_5 = """-We've had no further leads on her location so far. So far no one has come forward with any new information.""",
+	LOOKING_FOR_PRINCESS_OPTION_4 = """I'll track her down.""",
+	LOOKING_FOR_PRINCESS_OPTION_5 = """I'll come back later.""",
+	LOOKING_FOR_PRINCESS_6 = """As you search through the now empty halls and traces of recent battle you struggle to find anything useful. It seems the guilds' mercenaries and scavengers didn't waste any time. However after another half hour you notice a smaller scavenger. 
 
 The lone kobold is going through the rummage seemingly unaware of your presence. Having acquired a decent collection already you spot an uncharacteristically elegant silver bracelet on his hand. """,
 	LOOKING_FOR_PRINCESS_OPTION_6 = """*Greet him*""",
@@ -4117,7 +4117,7 @@ The lone kobold is going through the rummage seemingly unaware of your presence.
 The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_8 = """What are you doing here?""",
 	LOOKING_FOR_PRINCESS_OPTION_9 = """That's a nice bracelet you have there""",
-	LOOKING_FOR_PRINCESS_8 = """— Same as you. Trying to survive. Or you gonna insist you’re not here to scavenge yourself?""",
+	LOOKING_FOR_PRINCESS_8 = """— Same as you. Trying to survive. Or you gonna insist you're not here to scavenge yourself?""",
 	LOOKING_FOR_PRINCESS_9 = """— Of course it's nice since I've found it. You look like you want it yourself, eh? Hah, I can see when someone is after something. Just for you I'm ready to sell it. Only 500 gold and it's yours.""",
 	LOOKING_FOR_PRINCESS_OPTION_10 = """That's rather expensive for something so simple""",
 	LOOKING_FOR_PRINCESS_OPTION_11 = """I'd rather just take it by force""",
@@ -4191,7 +4191,7 @@ Anastasia:— No... What the hell?! You can't do this to me!
 
 Priestess:— Cease your childish behavior, human, if you are truly royalty, act like it.""",
 	LOOKING_FOR_PRINCESS_OPTION_26 = """An honor to meet you, princess""",
-	LOOKING_FOR_PRINCESS_OPTION_27 = """Now, now, there’s no need to make a scene""",
+	LOOKING_FOR_PRINCESS_OPTION_27 = """Now, now, there's no need to make a scene""",
 	LOOKING_FOR_PRINCESS_OPTION_28 = """I've been waiting to get my hands on you""",
 	LOOKING_FOR_PRINCESS_30 = """The princess paid little attention to your words and continued to lash out at the priestess, who seemed to grow more and more irritated.
 
@@ -4255,7 +4255,7 @@ Priestess:— She shall be executed regardless of your needs. This is the law an
 	LOOKING_FOR_PRINCESS_OPTION_42 = """There's no helping it""",
 	LOOKING_FOR_PRINCESS_41 = """Priestess makes a long pause while glaring at you. 
 
-Priestess:— It is true that the guardian can be punished in a minor’s stead. Though you must be aware that I can't simply execute the peaceful messenger of a foreign nation. Yet, our tradition demands blood. 
+Priestess:— It is true that the guardian can be punished in a minor's stead. Though you must be aware that I can't simply execute the peaceful messenger of a foreign nation. Yet, our tradition demands blood. 
 
 The priestess takes another long pause to contemplate the situation and finally answers.""",
 	LOOKING_FOR_PRINCESS_42 = """Priestess:— Very well, I'll allow you to take her punishment by sacrificing one of your followers.""",
@@ -4336,10 +4336,10 @@ Duncan:— As many have already heard, the rebellious princess has finally been 
 Myr:— As all know, she instigated the civil war which led to many losses, in lives as well as in property...""",
 	PRE_ANASTASIA_EXECUTION_12 = """Sigmund:— Really care 'bout yar magic toys, huh. Were mages always dat mercantile? 
 
-Myr:— It’s hardly the time, besides you weren't the ones on the frontlines, exhausting your supplies for this pointless war. 
+Myr:— It's hardly the time, besides you weren't the ones on the frontlines, exhausting your supplies for this pointless war. 
 
 Sigmund:— Hmph.""",
-	PRE_ANASTASIA_EXECUTION_13 = """Duncan:— Her war weakened us, we’re lucky the empire didn’t make a move.
+	PRE_ANASTASIA_EXECUTION_13 = """Duncan:— Her war weakened us, we're lucky the empire didn't make a move.
 
 Amelia:— Hmm, according to my sources she and the rebels were mostly controlled by Gregor. A king's knight.
 
@@ -4421,17 +4421,17 @@ Sigmund:— Yah, I agree. There's no point rushin' either.""",
 	
 	MIND_CONTROL_1 = """— Well, who would've thought you would be so ambitious as to get your hands on the princess herself. But I assure you this shall not be easy. Duncan did not lie when he said she's completely unwilling to cooperate as she sees us as nothing but evil.
 
-— You'll have to do your best in order to persuade her. I'll give you a little tip. Play on her naivety and sense of duty. She still holds a strong conviction that she's responsible for everyone’s wellbeing.""",
+— You'll have to do your best in order to persuade her. I'll give you a little tip. Play on her naivety and sense of duty. She still holds a strong conviction that she's responsible for everyone's wellbeing.""",
 	MIND_CONTROL_OPTION_1 = """Another way?""",
 	MIND_CONTROL_OPTION_2 = """You mean torture""",
 	MIND_CONTROL_2 = """— No-no, the torture wouldn't work on her, if anything, it would probably make things worse, she might become even more recalcitrant leading up to her death.""",
-	MIND_CONTROL_3 = """— There exist some practices of enforced control. I've observed a magic technique which completely bends a target's mind to another’s will. Then the master could issue any orders, precious little was left of the slave's own personality in the end though.
+	MIND_CONTROL_3 = """— There exist some practices of enforced control. I've observed a magic technique which completely bends a target's mind to another's will. Then the master could issue any orders, precious little was left of the slave's own personality in the end though.
 
 — I guess it's up to you if you wish to use something like this. I'm sure if you ask nicely enough Myr could point you in the right direction.""",
 	MIND_CONTROL_OPTION_3 = """Thanks for the tip""",
 	MIND_CONTROL_OPTION_4 = """I wouldn't want to do something like this""",
 	MIND_CONTROL_4 = """— It's my pleasure. I wish you success in whatever you are planning.""",
-	MIND_CONTROL_5 = """— Neither would I,  a willing servant is always best after all. I just want to make sure you know it’s an option. Use this information as you see fit.""",
+	MIND_CONTROL_5 = """— Neither would I,  a willing servant is always best after all. I just want to make sure you know it's an option. Use this information as you see fit.""",
 	MIND_CONTROL_OPTION_5 = """About the princess...""",
 	MIND_CONTROL_6 = """— Yes, how'd your negotiations go?""",
 	MIND_CONTROL_OPTION_6 = """I've decided it's not worth it""",
@@ -4439,7 +4439,7 @@ Sigmund:— Yah, I agree. There's no point rushin' either.""",
 	MIND_CONTROL_7 = """— So you agree to her execution?""",
 	MIND_CONTROL_8 = """— Shame you didn't succeed. The execution will be held in a week.""",
 	MIND_CONTROL_OPTION_8 = """Ask about the mind control technique""",
-	MIND_CONTROL_9 = """— Mind control? We aren't really that interested in it. It’s a method that would be more popular for the sly puss and her company.""",
+	MIND_CONTROL_9 = """— Mind control? We aren't really that interested in it. It's a method that would be more popular for the sly puss and her company.""",
 	MIND_CONTROL_OPTION_9 = """But you must know something""",
 	MIND_CONTROL_OPTION_10 = """Your help would be invaluable""",
 	MIND_CONTROL_10 = """— *Sigh* Try Xari, I believe she's been dabbling in it. Just don't get any weird ideas about other applications.""",
@@ -4450,7 +4450,7 @@ Sigmund:— Yah, I agree. There's no point rushin' either.""",
 
 Xari takes a long pause thinking about your request.
 
-— I am in desperate need of gold right now, but this kind of magic it's too exhausting and I don't feel right doing it so… I can do it for you for 5000 gold. But this will be the only time and that’s my price. Take it or leave it.""",
+— I am in desperate need of gold right now, but this kind of magic it's too exhausting and I don't feel right doing it so… I can do it for you for 5000 gold. But this will be the only time and that's my price. Take it or leave it.""",
 	MIND_CONTROL_OPTION_11 = """*Pay*""",
 	MIND_CONTROL_OPTION_12 = """I'll think about it """,
 	MIND_CONTROL_15 = """You pass Xari the huge sum which she stores away. 
@@ -4458,7 +4458,7 @@ Xari takes a long pause thinking about your request.
 — Alright, let me prepare it.""",
 	MIND_CONTROL_16 = """After a couple of hours Xari comes out with a small vial of bright pink liquid. 
 
-— Finally done. This potion will suppress the will of its target irreversibly. One last thing, you’ll need a medium to act as the control device.""",
+— Finally done. This potion will suppress the will of its target irreversibly. One last thing, you'll need a medium to act as the control device.""",
 	MIND_CONTROL_OPTION_13 = """*Give her bracelet*""",
 	MIND_CONTROL_17 = """You pass Xari the princess's bracelet which helped to locate her.
 
@@ -4511,7 +4511,7 @@ However, the princess's pleading fell on deaf ears. Angry and horny citizens ali
 	ANASTASIA_EXECUTION_OPTION_4 = """This is even worse, remind me never to piss you off""",
 	ANASTASIA_EXECUTION_OPTION_5 = """That doesn't sound very convincing""",
 	ANASTASIA_EXECUTION_8 = """Amelia:— I did say I pity her, didn't I? And this is much more fun to watch too.""",
-	ANASTASIA_EXECUTION_9 = """Amelia:— *giggle* Well, I can’t take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.""",
+	ANASTASIA_EXECUTION_9 = """Amelia:— *giggle* Well, I can't take all the credit. Ever thought about how many of the landlords, the wealthy and the nobles would like to have their way with the one and only princess? After that thought took root in their minds, we managed to bring the matter to a vote in record time. These first guys in the line could do a much better job of disguising themselves, though.""",
 	ANASTASIA_EXECUTION_10 = """Amelia:— Surely you don't believe that, do you? Even so, this was actually her choice. Yesterday, I informed her she would be irreparably humiliated instead of executed and I offered her a way to end her life painlessly, but she didn't take it, not that I expected her to. Moreover, I know more than one woman who wouldn't mind taking her place, provided there would be no consequences.""",
 	ANASTASIA_EXECUTION_11 = """
 	
@@ -4519,7 +4519,7 @@ Amelia:— But anyway, if you plan to take part in it, I'd recommend doing so be
 	ANASTASIA_EXECUTION_12 = """After a few hours Anastasia only barely resembled her former feisty self and was heavily covered in semen, yet the line seemed to have no end. Her pleads and cries gave way entirely to sobs and faint moans. 
 
 The former princess kept being used by the citizenry for the whole of the next week until eventually disappearing from the main square.""",
-	ANASTASIA_EXECUTION_13 = """A crowd gathered in the square waiting for the announcement of the war’s conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced. 
+	ANASTASIA_EXECUTION_13 = """A crowd gathered in the square waiting for the announcement of the war's conclusion. Duncan stood on the balcony of the government building. He declared how the rebel leaders were finally defeated and punished accordingly. The people rejoiced. 
 
 — None can deny how instrumental the efforts of [sir] [name] [surname] were in securing our victory. For [his] achievements he has been awarded the office of Mayor of Aliron.""",
 	
@@ -4558,8 +4558,8 @@ As you finish, she drops to the ground coughing heavily and clinging to her thro
 	ANASTASIA_PERSUASION_OPTION_12 = """I've done a great number of deeds, including delivering you to them""",
 	ANASTASIA_PERSUASION_14 = """Anastasia fell silent upon hearing that. She had no reason to doubt you, but she was still hesitant to hope.
 
-— This can't be the only thing they actually expect of me, there’s more isn't there?""",
-	ANASTASIA_PERSUASION_OPTION_13 = """I will ask your hand, but you won’t really have the option to refuse me""",
+— This can't be the only thing they actually expect of me, there's more isn't there?""",
+	ANASTASIA_PERSUASION_OPTION_13 = """I will ask your hand, but you won't really have the option to refuse me""",
 	ANASTASIA_PERSUASION_OPTION_14 = """You'll have to marry me """,
 	ANASTASIA_PERSUASION_OPTION_15 = """You will also become my property""",
 	ANASTASIA_PERSUASION_OPTION_16 = """Your destiny will be in my hands""",
@@ -4571,22 +4571,26 @@ As you finish, she drops to the ground coughing heavily and clinging to her thro
 	ANASTASIA_PERSUASION_OPTION_19 = """Do you really have any other choice?""",
 	ANASTASIA_PERSUASION_16 = """Anastasia blushed even harder, clearly having little experience dealing with such situations, yet she maintained a royal countenance.
 
-	— Even if this is true, I have no reason to accept the demands of my father's killers.""",
-	ANASTASIA_PERSUASION_17 = """Anastasia paused to evaluate and reevaluate you and your statements. However, she wasn’t ready to compromise and maintained a royal bearing .
+— Even if this is true, I have no reason to accept the demands of my father's killers.""",
+	ANASTASIA_PERSUASION_17 = """Anastasia paused to evaluate and reevaluate you and your statements. However, she wasn't ready to compromise and maintained a royal bearing .
 
-	— Regardless, I have no reason to accept the demands of my father's killers.""",
+— Regardless, I have no reason to accept the demands of my father's killers.""",
 	ANASTASIA_PERSUASION_18 = """— Hmph, I have no reason to accept the demands of my father's killers.""",
 	ANASTASIA_PERSUASION_19 = """— Hmph, turned into a plaything. Why would I accept such a fate?""",
 	ANASTASIA_PERSUASION_OPTION_20 = """I promise to treat you fairly""",
 	ANASTASIA_PERSUASION_OPTION_21 = """You'd prefer to die instead?""",
-	ANASTASIA_PERSUASION_OPTION_22 = """It’s the best option you have left""",
+	ANASTASIA_PERSUASION_OPTION_22 = """It's the best option you have left""",
 	ANASTASIA_PERSUASION_20 = """Anastasia went silent for about half a minute. Sadness and fatigue warred on her face faintly, but it seemed like she wasn't completely opposed to the possibility.""",
-	ANASTASIA_PERSUASION_21 = """— Don't they say it's better to die standing than to live on your knees?""",
-	ANASTASIA_PERSUASION_22 = """— Regardless, I have no reason to accept the demands of my father's killers""",
+	ANASTASIA_PERSUASION_21 = """
+
+— Don't they say it's better to die standing than to live on your knees?""",
+	ANASTASIA_PERSUASION_22 = """
+	
+— Regardless, I have no reason to accept the demands of my father's killers""",
 	ANASTASIA_PERSUASION_OPTION_23 = """I'm sorry for your loss, but you have to think of yourself now""",
 	ANASTASIA_PERSUASION_OPTION_24 = """Do you have some sort of father complex?""",
 	ANASTASIA_PERSUASION_OPTION_25 = """Being stubborn will not benefit you now""",
-	ANASTASIA_PERSUASION_23 = """— If that's true, then you’ll understand why I cannot pardon my father's murderers.""",
+	ANASTASIA_PERSUASION_23 = """— If that's true, then you'll understand why I cannot pardon my father's murderers.""",
 	ANASTASIA_PERSUASION_24 = """— Shut up!""",
 	ANASTASIA_PERSUASION_25 = """— You don't understand it.""",
 	ANASTASIA_PERSUASION_26 = """After my father was killed, I've been forced to live constantly on the run and in fear. What did we do to deserve this?""",
@@ -4603,7 +4607,7 @@ Anastasia:— ...""",
 
 Anastasia:— ...
 
-Amelia:— There was a small religious sect that was commanded to abandon their beliefs or leave the city. They refused and were burned alive at the city square. Let’s not forget the unlucky harlots being whipped to death about every few months. That, I've personally seen with my own eyes on two occasions.""",
+Amelia:— There was a small religious sect that was commanded to abandon their beliefs or leave the city. They refused and were burned alive at the city square. Let's not forget the unlucky harlots being whipped to death about every few months. That, I've personally seen with my own eyes on two occasions.""",
 	ANASTASIA_PERSUASION_29 = """Anastasia:— Enough...
 
 Amelia:— Didn't "Uncle" Greg tell you about these? 
@@ -4629,36 +4633,44 @@ Amelia gives you a sign to comply with this request and you both leave the room.
 	ANASTASIA_PERSUASION_OPTION_32 = """Thanks for the help""",
 	ANASTASIA_PERSUASION_OPTION_33 = """You are really impressive with stuff like this""",
 	ANASTASIA_PERSUASION_33 = """— You are quite welcome, I've been having a lot of fun with this myself.""",
-	ANASTASIA_PERSUASION_34 = """— He-he, of course I am and who do you take me for? I didn't earn my position in the servant’s guild just by having a pair of great tits.""",
-	ANASTASIA_PERSUASION_35 = """— We still have her elf servant Aire in captivity. We could arrange their meeting next time if you think it may help our cause.""",
+	ANASTASIA_PERSUASION_34 = """— He-he, of course I am and who do you take me for? I didn't earn my position in the servant's guild just by having a pair of great tits.""",
+	ANASTASIA_PERSUASION_35 = """
+	
+— We still have her elf servant Aire in captivity. We could arrange their meeting next time if you think it may help our cause.""",
 	ANASTASIA_PERSUASION_OPTION_34 = """Sure, this could get her thinking beyond herself""",
 	ANASTASIA_PERSUASION_OPTION_35 = """No, that'll probably just make things more difficult""",
 	ANASTASIA_PERSUASION_36 = """— Alright, I'll see what can be done. Let's hope you didn't piss her off too badly or she might become a nuisance.""",
-	ANASTASIA_PERSUASION_37 = """— Your call, you'll probably have to do something about her at some point anyway though.""",
-	ANASTASIA_PERSUASION_38 = """— Until then.
+	ANASTASIA_PERSUASION_37 = """
+
+— Your call, you'll probably have to do something about her at some point anyway though.""",
+	ANASTASIA_PERSUASION_38 = """
+
+— Until then.
 	
-	Amelia gives you a playful smile and leaves to go about her business""",
-	ANASTASIA_PERSUASION_39 = """You enter the princess’s cell. She seems in better spirits than you left her in. She must've made up her mind.""",
+Amelia gives you a playful smile and leaves to go about her business""",
+	ANASTASIA_PERSUASION_39 = """You enter the princess's cell. She seems in better spirits than you left her in. She must've made up her mind.""",
 	ANASTASIA_PERSUASION_40 = """— Hello, [name]. I've made my decision. I'm sorry, but after thinking about it, I can't side with the guilds no matter what. I'll accept my fate with honor. 
 
 You realize there's nothing you can say to change Anastasia's mind at this point, so your only option is to leave.""",
 	ANASTASIA_PERSUASION_41 = """You leave the jail cell and find Amelia waiting for you.
 	
-	— Reject, huh. Too bad. I guess we don't have that many options now. Well, you'll know where to find me.""",
-	ANASTASIA_PERSUASION_42 = """— Hello, [name]... I've been thinking a lot about this. I think you’re right. I shouldn't throw my life away. I... I think I can acknowledge the guilds and beg mercy for my actions, but I'm still unsure if I should become yours.""",
+— Reject, huh. Too bad. I guess we don't have that many options now. Well, you'll know where to find me.""",
+	ANASTASIA_PERSUASION_42 = """
+	
+— Hello, [name]... I've been thinking a lot about this. I think you're right. I shouldn't throw my life away. I... I think I can acknowledge the guilds and beg mercy for my actions, but I'm still unsure if I should become yours.""",
 	ANASTASIA_PERSUASION_OPTION_36 = """I wish you reunite you with your friend (Call Aire)""",
 	ANASTASIA_PERSUASION_OPTION_37 = """I wanted to return something of yours""",
 	ANASTASIA_PERSUASION_OPTION_38 = """Eventually we'll have to come to an agreement""",
 	ANASTASIA_PERSUASION_OPTION_39 = """I'll come later""",
-	ANASTASIA_PERSUASION_43 = """Anastasia gives you a puzzled look. A few moments later the guards escort the elven girl to the cell at Amelia’s orders. 
+	ANASTASIA_PERSUASION_43 = """Anastasia gives you a puzzled look. A few moments later the guards escort the elven girl to the cell at Amelia's orders. 
 
-Anastasia:— Aire..? You’re alive!
+Anastasia:— Aire..? You're alive!
 
 Aire:— Ana...
 
 The two girls hug weeping softly for the next couple of seconds. However both realize their reunion will not last long.
 
-Anastasia:— You look... worn
+Anastasia:— You look... worn.
 
 Aire:— Don't worry, I'm fine. I've been through worse.""",
 	ANASTASIA_PERSUASION_44 = """Aire turns to you and you can still spot the hatred in her eyes.
@@ -4680,13 +4692,13 @@ Anastasia:— Aire... I-I've been persuaded. I mean this [man] has proposed that
 Aire:— So that's how it turned out... 
 
 Aire sighed deeply in contemplation.""",
-	ANASTASIA_PERSUASION_47 = """Aire:— I'd ask you to save yourself. This [man], while once our enemy, has been one of the few truly honorable persons I’ve known. If [he] managed to negotiate for your life I think you should accept the opportunity.
+	ANASTASIA_PERSUASION_47 = """Aire:— I'd ask you to save yourself. This [man], while once our enemy, has been one of the few truly honorable persons I've known. If [he] managed to negotiate for your life I think you should accept the opportunity.
 
 Anastasia:— It's unusual for you to endorse someone like this.
 
-Aire:— Yes, but... you can’t die now. You are the kindest person I've ever known.""",
+Aire:— Yes, but... you can't die now. You are the kindest person I've ever known.""",
 	ANASTASIA_PERSUASION_48 = """Aire:— I can't say I vouch for this [man], but [he] has treated me fairly so far. If [he] managed to negotiate for your life I think you should accept the opportunity.""",
-	ANASTASIA_PERSUASION_49 = """Anastasia:— Aire, but you know, I've never… what if I can’t be what [he] asks?
+	ANASTASIA_PERSUASION_49 = """Anastasia:— Aire, but you know, I've never… what if I can't be what [he] asks?
 
 Aire:— I-I think you will be alright, you are very graceful and beautiful after all.
 
@@ -4702,12 +4714,14 @@ Aire:— I-I think you will be alright, you are very graceful and beautiful afte
 	ANASTASIA_PERSUASION_OPTION_41 = """I promise to treat you with dignity""",
 	ANASTASIA_PERSUASION_OPTION_42 = """Your needs will be met, what more can you ask?""",
 	ANASTASIA_PERSUASION_53 = """Anastasia stared at the wall, weighing your words.""",
-	ANASTASIA_PERSUASION_54 = """— I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my master. Now go, I know what is waiting for me and I am prepared.""",
+	ANASTASIA_PERSUASION_54 = """
+
+— I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my [master]. Now go, I know what is waiting for me and I am prepared.""",
 	ANASTASIA_PERSUASION_55 = """You leave the jail cell and find Amelia waiting for you.
 
 — Rejected, huh. Too bad. I guess we don't have that many options now. Well, you know where to find me if you need anything.
 """,
-	ANASTASIA_PERSUASION_56 = """— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won’t be royalty anymore.""",
+	ANASTASIA_PERSUASION_56 = """— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
 	ANASTASIA_PERSUASION_57 = """— But I have one condition. Could you ask your guild leader girl to come?""",
 	ANASTASIA_PERSUASION_58 = """Soon after she said it, the cell door opens and Amelia walks in. Looks like she had lingered, awaiting the outcome of your discussion.
 
@@ -4718,6 +4732,11 @@ Anastasia:— I want you to promise me Aire's safety. No, wait, I want you to le
 Amelia:— Done, we can move your little elf friend to [name]'s service for that matter. I presume you won't deny another servant, right?
 
 Anastasia:— ...This would be very much to my liking.""",
+	
+	
+	
+	
+	
 	ANASTASIA_PERSUASION_59 = """— Well, well, looks like you've done it. You've managed to persuade the haughty princess herself. I'm very impressed. We'll prepare her for the speech, and then we'll stage an announcement.""",
 	ANASTASIA_PERSUASION_OPTION_43 = """I couldn't have done it without you""",
 	ANASTASIA_PERSUASION_OPTION_44 = """She must be smitten with me""",
@@ -4728,10 +4747,49 @@ Anastasia:— ...This would be very much to my liking.""",
 	ANASTASIA_PERSUASION_63 = """— Anyway, I'll let you know in about 3 days. Have fun until then.""",
 	
 	
+	ANASTASIA_PERSUASION_2_MARRY1 = "— But tell me, I wanna know, why would you choose me?",
+
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION1 = "I've fell in love with first sight (Charm Factor)",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION2 = "I can't stop imagining you naked (Sex Factor)",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION3 = "How could anyone pass on a girl like you?",
+	ANASTASIA_PERSUASION_2_MARRY1_OPTION4 = "Well, technically you still are a princess",
+
+	ANASTASIA_PERSUASION_2_MARRY2_1 = "\n\nAnastasia blushes heavily and looks away at your remark, but does not seem to doubt it.",
+	ANASTASIA_PERSUASION_2_MARRY2 = "— I-I don't know if I can answer your feelings here, this is too much pressure for me.",
+
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION1 = "You can take it at your own pace (Charm Factor)", 
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION2 = "We can work on it once things are set out (Sexuals Factor)",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION3 = "I have little interest in your feelings, as long as I can get your body",
+	ANASTASIA_PERSUASION_2_MARRY2_OPTION4 = "I understand, it would be a lot of pressure for anyone, but you can do it",
+
+	ANASTASIA_PERSUASION_2_ENSLAVE1 = "— I have to ask, what plans exactly do you have for me?",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION1 = "I'm sure your charisma and experience can help with management",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION2 = "You will make a good house servant",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION3 = "You will have to become trained in physical work or maybe fighting",
+	ANASTASIA_PERSUASION_2_ENSLAVE1_OPTION4 = "A bed warmer seems like an ideal place for you",
+
+	ANASTASIA_PERSUASION_2_ENSLAVE2_1 = "— Is that so... So you plan to also use me in a... intimate way?",
+	ANASTASIA_PERSUASION_2_ENSLAVE2 = "— So, I will have to become your property. I assume, that also mean in a... intimate way?",
+
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION1 = "Naturally, but I can promise you won't regret it. (Sexuals Factor)",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2 = "To be frank, I'd not be able to pass on a beauty like you. (Charm Factor)",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3 = "Well, this would happen sooner or later.",
+	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4 = "I don't really have such interest in you",
+	
+	ANASTASIA_ACCEPT_MARRY = """
+
+— I-I will accept your offer. I will announce whatever support the guilds want of me and I'll become... yours. I can't believe this is where I would end up, but I'll try to accept you as my consort.""",
+	ANASTASIA_ACCEPT_ENSLAVE = """
+
+— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
+	
+	
+	ANASTASIA_PERSUASION_NEXTDAY = "By this time Anastasia must have decided if she's willing to accept your proposal. It's a good idea to visit her again.",
+	
 	
 	ANASTASIA_DECLARATION_1 = """Today is your inauguration. With the civil war coming to an end, the people gather expecting a declaration of the victory. The central square is packed with nearly every citizen capable of attending, all in anticipation of the event.
 
-Anastasia steps out onto the balcony of the government building and the crowd’s mumbling gives way to silence awaiting for her words.
+Anastasia steps out onto the balcony of the government building and the crowd's mumbling gives way to silence awaiting for her words.
 
 — People of the Aliron. I am Anastasia, the former princess and leader of the rebels. I remember being at this square when I made my announcement before. I know that many of you detest me for the conflict I brought on, but I am here to... ask for your forgiveness. 
 
@@ -4747,12 +4805,12 @@ Male Citizen 2:— She's really quite a beauty.
 
 Female Citizen:— They make a nice pair""",
 	ANASTASIA_DECLARATION_OPTION_1 = """Wave to the crowd""",
-	ANASTASIA_DECLARATION_OPTION_2 = """Fondle princess's butt""",
+	ANASTASIA_DECLARATION_OPTION_2 = """Fondle Anastasia's butt""",
 	ANASTASIA_DECLARATION_4 = """You spend some more time greeting the citizens as Anastasia finishes her speech. Soon enough the announcement is declared to be over and you walk back inside the building.""",
 	ANASTASIA_DECLARATION_5 = """As Anastasia continues her speech your hand, which she's become only a little accustomed to, moves lower and lands on her butt, making her to noticeably stutter and blush. Her discipline allows her to finish the speech without any terrible mistakes though and you walk back inside the building together.""",
 	ANASTASIA_DECLARATION_1MC = """Today is your inauguration. With the civil war coming to an end, the people gather expecting a declaration of the victory. The central square is packed with nearly every citizen capable of attending, all in anticipation of the event.
 
-Anastasia steps out onto the balcony of the government building and the crowd’s mumbling gives way to silence awaiting her words. You hand her the guild’s prepared statement and instruct her to speak.
+Anastasia steps out onto the balcony of the government building and the crowd's mumbling gives way to silence awaiting her words. You hand her the guild's prepared statement and instruct her to speak.
 
 — People of the Aliron. I am Anastasia. The former princess and leader of the rebels. I remember being at this square. When I made my announcement before. You are right to detest me. For the war was indeed all my fault. So I am here. To beg for your forgiveness. 
 
@@ -4770,9 +4828,9 @@ ANASTASIA_DECLARATION_4MC = """You spend some more time greeting the citizens as
 	
 	FINAL_WORDS_1 = """Duncan:— Congratulations, you finally made it. The rebel forces won't die out just yet, but they should never be able to unite again.
 
-Sigmund:— Dis’s good ‘nuf, as long as dey won't be takin' towns. 
+Sigmund:— Dis's good ‘nuf, as long as dey won't be takin' towns. 
 
-Duncan:— So now you’re officially mayor. 
+Duncan:— So now you're officially mayor. 
 
 Sigmund:— Let's get to da feast already.""",
 	FINAL_WORDS_OPTION_1 = """Thank you""",
@@ -4821,7 +4879,7 @@ Sigmund:— Let's get to da feast already.""",
 	##################################################New
 	AIREAMELIAREPORT = "In the morning you receive a brief missive from Amelia stating that she learned the location of princess and inviting you to visit her.",
 	AIREAMELIAMEETOPTION = "I got your message, you have new information?",
-	AIREAMELIAMEET1 = "— Yes, I have a lead on the princess’s location, and I’m willing to share provided you agree to do me a favor in the future. That’s a nice trade since this could very well be the last hurdle on your path to becoming the next mayor. So, you scratch my back and I’ll scratch yours?",
+	AIREAMELIAMEET1 = "— Yes, I have a lead on the princess's location, and I'm willing to share provided you agree to do me a favor in the future. That's a nice trade since this could very well be the last hurdle on your path to becoming the next mayor. So, you scratch my back and I'll scratch yours?",
 	AIREAMELIAMEET1_OPTION1 = "Sure, you've done a lot for me",
 	AIREAMELIAMEET1_OPTION2 = "I can't agree to do you a favor without knowing what it is",
 	AIREAMELIAMEET2 = "I'm pleased to hear that. According to the elf lass, Anastasia is hiding in the elven lands. You should meet their leader to find out more. If I'm not mistaken, this should be their high priestess. I hope to hear news of your success.",
@@ -4831,31 +4889,33 @@ Sigmund:— Let's get to da feast already.""",
 	AMELIAFINDPRINCESSOPTION = "I've been wondering if you could give me any advice on how to find someone...",
 	AMELIAFINDPRINCESS1_1 = """— You've been aiming to find our princess, I take it? I've heard you captured her little elven friend. It might be a good idea to try questioning her, if you haven't already.
 
-— Alternatively, we might rely on our friends in the mage guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she’s been. If you find something useful there, bring it back to me.""",
+— Alternatively, we might rely on our friends in the mage guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
 	AMELIAFINDPRINCESS1_2 = """— You've been aiming to find our princess, I take it? Well, if you've given up on the imprisoned elf, I have an alternative suggestion.
 
-— We can rely on our friends in the mage guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she’s been. If you find something useful there, bring it back to me.""",
-	AMELIAFINDPRINCESS2 = "— You've been aiming to find our princess, I take it? There aren’t a lot of leads at hand, are there? Well, for such cases we can utilize our friends in the mage guild, as long as you can provide them with something belonging to the one we seek. They have a trick to track down... those less willing to be found. You can check the last place she’s been. If you find something useful there, bring it back to me. ",
+— We can rely on our friends in the mage guild to find her if you can get a hold of some of her belongings. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me.""",
+	AMELIAFINDPRINCESS2 = "— You've been aiming to find our princess, I take it? There aren't a lot of leads at hand, are there? Well, for such cases we can utilize our friends in the mage guild, as long as you can provide them with something belonging to the one we seek. They have a trick to track down... those less willing to be found. You can check the last place she's been. If you find something useful there, bring it back to me. ",
 
 	AMELIAFINDPRINCESSOPTION1 = "Thanks for the advice",
-	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I’ve found something",
+	AMELIAFINDPRINCESSOPTION2 = "I'll be back once I've found something",
 	AMELIAFINDPRINCESSOPTION3 = "What exactly am I looking for?",
 	AMELIAFINDPRINCESS2_1 = "— See you soon, dear.",
-	AMELIAFINDPRINCESS2_2 = "— You’re asking me? I can’t do everything for you. You just need something of hers.. Don't sweat it, I'm sure you'll manage.",
+	AMELIAFINDPRINCESS2_2 = "— You're asking me? I can't do everything for you. You just need something of hers.. Don't sweat it, I'm sure you'll manage.",
 	MATERIALPRINCESS_BRACELET = "Unusual Bracelet",
 	MATERIALPRINCESS_BRACELETDESCRIPT = """An unusual silver bracelet you've acquired at the rebels' hideout. On the inner side you can spot a small engraving: "To my beloved daughter". """,
 	MATERIALDIVINE_SYMBOL = "Divine Symbol",
 	MATERIALDIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal, which can act as a medium for certain arts. Despite its simple look, it shows a considerable craftsmanship.",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal giving off a faint light.",
-
-
+	
+	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
+	ITEMANASTASIA_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
+	
 
 	ZEPHYRA_EXTRA_GREET = "— You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
 	ZEPHYRA_EXTRA_GREET2 = "— Hello, [master]. How can I serve you? You must want to ask me some questions?",
 	ZEPHYRA_EXTRA_OPTION1 = "How do you like it here?", 
 	ZEPHYRA_EXTRA_REPLY1_1 = "— It's quite interesting, but I don't have any choice at this point now, do I? I'm not complaining though, since that's what I've agreed to. ",
-	ZEPHYRA_EXTRA_REPLY1_2 = "— Not shabby at all. It could use a woman’s touch though. Maybe add some flowers and ribbons, make it a bit more homey, you know. ",
+	ZEPHYRA_EXTRA_REPLY1_2 = "— Not shabby at all. It could use a woman's touch though. Maybe add some flowers and ribbons, make it a bit more homey, you know. ",
 
 	ZEPHYRA_EXTRA_OPTION2 = "Tell me more about...",
 	ZEPHYRA_EXTRA_OPTION2_1 = "Alios",
@@ -4873,20 +4933,21 @@ Sigmund:— Let's get to da feast already.""",
 	ZEPHYRA_EXTRA_REPLY2_2 = """— What I was doing prior to becoming a champion? To tell you the truth, I don't remember. One day I was up in the middle of a forest, at that moment I was already a champion. Mysterious right? 
 
 — For some reason, I’ve never been that interested in what came before that, so there it is. """,
+
 	ZEPHYRA_EXTRA_OPTION2_3 = "Princess",
 	ZEPHYRA_EXTRA_REPLY2_3 = """— So you are hunting that princess to stop the rebellion? Huh, it must be nice to be a princess, I wish I could be one, then I could live a rich boring life and marry a prince. Isn't that like every girl's dream?""",
 	ZEPHYRA_EXTRA_OPTION3 = "So what is your plan exactly?",
-	ZEPHYRA_EXTRA_REPLY3 = """— You should continue with your business, and don't worry about me. Sorry I can't point you in the right direction, I don't really have one either. Once the situation presents itself we’ll probably recognize it. 
+	ZEPHYRA_EXTRA_REPLY3 = """— You should continue with your business, and don't worry about me. Sorry I can't point you in the right direction, I don't really have one either. Once the situation presents itself we'll probably recognize it. 
 
 — Oh and I'm afraid I won't be able to perform another barrier trick for a while. You don't get to use miracles casually. That does make our meeting fateful though, right? """,
 
 	KURDAN_EXTRA_GREET = "— Greetings, [name]. Do you have some questions for me?",
 	KURDAN_EXTRA_OPTION1 = "How do you like it here",
-	KURDAN_EXTRA_REPLY1 = "— You have quite a home. I must admit, it’s not like in my homeland, but I did agree to this, didn't I? Well, there's some good in not having to worry about where to sleep and what to eat.",
+	KURDAN_EXTRA_REPLY1 = "— You have quite a home. I must admit, it's not like in my homeland, but I did agree to this, didn't I? Well, there's some good in not having to worry about where to sleep and what to eat.",
 	KURDAN_EXTRA_OPTION2 = "About magic",
 	KURDAN_EXTRA_REPLY2 = "— I've been studying magic since I was a juvenile. My father was an experienced practitioner, so I guess it runs in the family. Some see it as a tool, just a means to an end, but I'm a lot more curious about the underlying mechanics of how it operates and what role it has in the world. I still have much to learn, though. ",
 	KURDAN_EXTRA_OPTION3 = "About orcs",
-	KURDAN_EXTRA_REPLY3 = "— Those who united my homelands decided to outlaw the practice of magic altogether. They are in a difficult position today after being ruled for so long with an iron fist by the cult of Thoth. Now the cult is persecuted, and we... they have replaced magic with technology as the foundation of their power. I think it’s unavoidable that you will encounter them some day.",
+	KURDAN_EXTRA_REPLY3 = "— Those who united my homelands decided to outlaw the practice of magic altogether. They are in a difficult position today after being ruled for so long with an iron fist by the cult of Thoth. Now the cult is persecuted, and we... they have replaced magic with technology as the foundation of their power. I think it's unavoidable that you will encounter them some day.",
 
 	AMELIA_BONUS_QUESTION = "— [name], I have a question for you and please answer honestly. Who would you find more attractive between me and the princess? She seems only slightly younger than me and I can't deny her beauty, that alone must make her quite appealing.",
 	AMELIA_BONUS_QUESTION_OPTION1 = "Princess",
@@ -4898,8 +4959,8 @@ Sigmund:— Let's get to da feast already.""",
 
 — Just take care not to fall for her, you won't be able to switch sides and turn on us. """,
 	AMELIA_BONUS_QUESTION_REPLY2 = """— Oh my, aren't you a flatterer? You would really prefer this mutt cat to royal blood? How silly. To tell you the truth, for most of my life I was just another servant. I expect I have been one since birth. And now I don't even have a proper Master. Would you be up to the challenge?.. I'm just kidding. But be sure I appreciate your company.""",
-	AMELIA_BONUS_QUESTION_REPLY3 = "— He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advise getting your hopes up about her, she’ll always be a liability to us. ",
-	AMELIA_BONUS_QUESTION_REPLY4 = "— Oh, is that so? That’s quite convenient. I guess we won’t have to worry about the influence of her charms on you.", 
+	AMELIA_BONUS_QUESTION_REPLY3 = "— He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advise getting your hopes up about her, she'll always be a liability to us. ",
+	AMELIA_BONUS_QUESTION_REPLY4 = "— Oh, is that so? That's quite convenient. I guess we won't have to worry about the influence of her charms on you.", 
 	AMELIA_BONUS_QUESTION_REPLYALL = "— Well, I will not hold you any longer, good luck with your mission. ",
 
 

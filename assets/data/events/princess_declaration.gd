@@ -83,7 +83,7 @@ var data = {
 		image = null,
 		character = "duncan",
 		character2 = "sigmund",
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene','blackscreen_transition_common'],
 		text = [
 			{text = "FINAL_WORDS_1", reqs = []},
 		],
@@ -129,32 +129,32 @@ var data = {
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "AFTER_ELECTION_PRINCESS_1", reqs = []},
-					{text = "AFTER_ELECTION_PRINCESS_2", reqs = [{type = 'decision', value = 'marry_proposed', check = true}]},
-					{text = "AFTER_ELECTION_PRINCESS_3", reqs = [{type = 'decision', value = 'enslave_proposed', check = true}]},
+					{text = "AFTER_ELECTION_PRINCESS_2", reqs = [{type = 'decision', value = 'marry_option', check = true}]},
+					{text = "AFTER_ELECTION_PRINCESS_3", reqs = [{type = 'decision', value = 'enslave_option', check = true}]},
 				],
 				options = [
 					{
 						code = 'princess_cutscene_good_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_1", 
-						reqs = [{type = 'decision', value = 'marry_proposed', check = true}], 
+						reqs = [{type = 'decision', value = 'marry_option', check = true}], 
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_exit_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_2", 
-						reqs = [{type = 'decision', value = 'enslave_proposed', check = true}], 
+						reqs = [{type = 'decision', value = 'enslave_option', check = true}], 
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_bad_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_3", 
-						reqs = [{type = 'decision', value = 'marry_proposed', check = true}], 
+						reqs = [{type = 'decision', value = 'marry_option', check = true}], 
 						dialogue_argument = 1,
 					},
 					{
 						code = 'princess_cutscene_bad_1',
 						text = "AFTER_ELECTION_PRINCESS_OPTION_4", 
-						reqs = [{type = 'decision', value = 'enslave_proposed', check = true}], 
+						reqs = [{type = 'decision', value = 'enslave_option', check = true}], 
 						dialogue_argument = 1,
 					},
 					{
@@ -233,9 +233,10 @@ var data = {
 	princess_sex_good_1 = {
 		image = null,
 		custom_background = "anastasia_sex_1",
+		common_effects = [],
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene','blackscreen_transition_common'],
 		text = [{text = "AFTER_ELECTION_PRINCESS_8", reqs = []}],
 		options = [
 			{
@@ -371,7 +372,7 @@ var data = {
 		custom_background = "anastasia_rape_1",
 		scene_type = "ero_scene",
 		save_scene_to_gallery = true,
-		tags = ['dialogue_scene'],
+		tags = ['dialogue_scene','blackscreen_transition_common'],
 		text = [
 			{text = "AFTER_ELECTION_PRINCESS_15", reqs = [], previous_dialogue_option = 1},
 			{text = "AFTER_ELECTION_PRINCESS_18", reqs = [], previous_dialogue_option = 1}
@@ -393,8 +394,8 @@ var data = {
 		tags = ['dialogue_scene'],
 		text = [
 			{text = "DIALOGUECONTINUE", reqs = [], previous_dialogue_option = 0, bonus_effects = [
-				{code = 'decision', value = 'marry_proposed'},
-				{code = 'decision', value = 'enslave_proposed'},
+				{code = 'decision', value = 'marry_option'},
+				{code = 'decision', value = 'enslave_option'},
 				{code = 'decision', value = 'persuade_2_completed'},
 			]},
 		],
