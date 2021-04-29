@@ -1115,10 +1115,10 @@ var data = {
 	
 	
 	
-	princess_persuation_2_3 = { #check here is a bit harsh due to max counter value at 5
+	princess_persuation_2_3 = {
 		variations = [
 			{
-				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 10, check = false}],
+				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = false}],
 				image = null,
 				character = "anastasia",
 				custom_background = "jail",
@@ -1139,15 +1139,16 @@ var data = {
 				],
 			},
 			{
-				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 10, check = true}],
+				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = true}],
 				image = null,
 				character = "anastasia",
 				custom_background = "jail",
 				tags = ['dialogue_scene', 'master_translate'],
 				text = [
 					{text = "ANASTASIA_PERSUASION_53", reqs = []},
-					{text = "ANASTASIA_PERSUASION_56", reqs = []},
-					{text = "ANASTASIA_PERSUASION_57", reqs = []}, #there is a condition (meet Aire) here but those level of sympathy2 cannot be achived without Aire and there is also no lines for case of not usingf her - so i dont add reqs for this line and options in this scene
+					{text = "ANASTASIA_ACCEPT_MARRY", reqs = [{type = 'decision', value = 'marry_option', check = true}]},
+					{text = "ANASTASIA_ACCEPT_ENSLAVE", reqs = [{type = 'decision', value = 'enslave_option', check = true}]},
+					{text = "ANASTASIA_PERSUASION_57", reqs = []},
 				],
 				options = [
 					{

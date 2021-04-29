@@ -4712,7 +4712,7 @@ Aire:— I-I think you will be alright, you are very graceful and beautiful afte
 	ANASTASIA_PERSUASION_53 = """Anastasia stared at the wall, weighing your words.""",
 	ANASTASIA_PERSUASION_54 = """
 
-— I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my master. Now go, I know what is waiting for me and I am prepared.""",
+— I'm sorry, I can't agree to your proposal. I won't be able to make myself accept you as my [master]. Now go, I know what is waiting for me and I am prepared.""",
 	ANASTASIA_PERSUASION_55 = """You leave the jail cell and find Amelia waiting for you.
 
 — Rejected, huh. Too bad. I guess we don't have that many options now. Well, you know where to find me if you need anything.
@@ -4728,6 +4728,11 @@ Anastasia:— I want you to promise me Aire's safety. No, wait, I want you to le
 Amelia:— Done, we can move your little elf friend to [name]'s service for that matter. I presume you won't deny another servant, right?
 
 Anastasia:— ...This would be very much to my liking.""",
+	
+	
+	
+	
+	
 	ANASTASIA_PERSUASION_59 = """— Well, well, looks like you've done it. You've managed to persuade the haughty princess herself. I'm very impressed. We'll prepare her for the speech, and then we'll stage an announcement.""",
 	ANASTASIA_PERSUASION_OPTION_43 = """I couldn't have done it without you""",
 	ANASTASIA_PERSUASION_OPTION_44 = """She must be smitten with me""",
@@ -4766,6 +4771,13 @@ Anastasia:— ...This would be very much to my liking.""",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION2 = "To be frank, I'd not be able to pass on a beauty like you. (Charm Factor)",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION3 = "Well, this would happen sooner or later.",
 	ANASTASIA_PERSUASION_2_ENSLAVE2_OPTION4 = "I don't really have such interest in you",
+	
+	ANASTASIA_ACCEPT_MARRY = """
+
+— I-I will accept your offer. I will announce whatever support the guilds want of me and I'll become... yours. I can't believe this is where I would end up, but I'll try to accept you as my consort.""",
+	ANASTASIA_ACCEPT_ENSLAVE = """
+
+— I-I will accept your demand. I will announce whatever support the guilds want of me and I'll become... yours. After all you were right, it's my duty to continue serving the people, even if I won't be royalty anymore.""",
 	
 	
 	ANASTASIA_PERSUASION_NEXTDAY = "By this time Anastasia must have decided if she's willing to accept your proposal. It's a good idea to visit her again.",
