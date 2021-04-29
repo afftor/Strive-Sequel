@@ -3772,14 +3772,11 @@ Duncan:— [name], you can return to Aliron now. We shall plan out our next move
 You lead your new entourage out the door. Opening your map you show the group the place Duncan designated. Telling them to wait there and if anyone asks they're with you.""",
 	FINAL_OPERATON_MAGES_5_4 = """— I have zero interest in helping with anything related to the Fighters. Why don't you go ask them for help, it's their job or whatever. Now if you'll excuse me I've got actual business to attend to, see yourself out.""",
 
-	INITIATE_HIDEOUT_ATTACK_1 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.
-
-— Alright let's not waste time. Prepare your men and we will begin.""",
+	INITIATE_HIDEOUT_ATTACK_1 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.""",
 	INITIATE_HIDEOUT_ATTACK_2 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.
 
 You also notice your small group of mages, one waves to you as you pass.
 — Good, you're here. And it seems you followed my advice. Though I trust you didn't tell Myr the details?""",
-
 	INITIATE_HIDEOUT_ATTACK_6 = """— Alright let's not waste time. Prepare your men and we will begin.""",
 	INITIATE_HIDEOUT_ATTACK_OFCOURSE = """Of course""",
 	INITIATE_HIDEOUT_ATTACK_OPTION_1 = "I want to be on the frontline",

@@ -95,7 +95,8 @@ var data = {
 		common_effects = [{code = 'decision', value = "PlayerFrontline"}], #affects reward after battle
 		options = [
 			{
-				code = 'fight',
+				#code = 'fight',
+				code = 'close',
 				text = "DIALOGUEFIGHTOPTION",
 				reqs = [],
 			},
@@ -110,7 +111,8 @@ var data = {
 		],
 		options = [
 			{
-				code = 'fight',
+				#code = 'fight',
+				code = 'close',
 				text = "DIALOGUEFIGHTOPTION",
 				reqs = [],
 			},

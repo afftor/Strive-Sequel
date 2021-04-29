@@ -1393,8 +1393,8 @@ var dungeons = {
 		travel_time = [4,6],
 		
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'mines_arrival_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'MINES_ARRIVAL_START'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2, operant = 'gte'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 10 - 2, operant = 'gte'}]}]
+		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
+		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 9 - 2, operant = 'gte'}]}]
 	},
 	unique_final_operation_location = {
 		code = 'unique_final_operation_location',
@@ -1421,7 +1421,8 @@ var dungeons = {
 		
 		area = 'plains',
 		travel_time = [4,6],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = []}]
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
+		{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]}]
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
