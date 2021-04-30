@@ -29,8 +29,9 @@ var lands = {
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
 			
-			
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
+			
+			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}], args = {"oneshot": false}},
 			
 			],
 		capital_options = ['quest_board','location_purchase'],

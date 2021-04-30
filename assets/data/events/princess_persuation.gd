@@ -77,10 +77,10 @@ var data = {
 			{text = "ANASTASIA_PERSUASION_4", reqs = [{type = 'decision', value = 'enslave_bracelet', check = false}], previous_dialogue_option = 1},#stub req
 			{text = "ANASTASIA_PERSUASION_5", reqs = [], previous_dialogue_option = 1},
 		],
-		options = [ #add declaration trigger here
+		options = [
 			{
-				code = 'close',#'anastasia_declaration',
-				text = 'DIALOGUECLOSE',#"DIALOGUECONTINUE",
+				code = 'princess_declaration_1',
+				text = 'DIALOGUECONTINUE',
 				reqs = [],
 				dialogue_argument = 1,
 				bonus_effects = [{code = 'decision', value = 'mindbreak_completed'}],
@@ -691,7 +691,7 @@ var data = {
 					{
 						code = 'princess_persuation_2_init',#'princess_persuation_2_bracelet',
 						text = "ANASTASIA_PERSUASION_OPTION_37",
-						reqs = [{type = 'has_material', material = 'princess_bracelet', operant = 'gte', value = 1}], #has bracelet should be here. idk how it is named
+						reqs = [{type = 'has_material', material = 'princess_bracelet', operant = 'gte', value = 1}],
 						dialogue_argument = 3,
 						remove_after_first_use = true,
 						type = 'next_dialogue',
