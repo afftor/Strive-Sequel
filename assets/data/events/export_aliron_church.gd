@@ -6,6 +6,7 @@
 		text = [
 		{text = "GINNYVISIT", reqs = []},
 		],
+		common_effects = [{code = 'decision', value = 'ginny_visit'}],
 		options = [
 		{code = 'ginny_visit2', text = "GINNYVISITREPLY1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'},
 		{code = 'ginny_visit2', text = "GINNYVISITREPLY2", reqs = [], dialogue_argument = 2, type = 'next_dialogue'},

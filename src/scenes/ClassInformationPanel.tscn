@@ -11,7 +11,6 @@
 [ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=9]
 [ext_resource path="res://assets/Fonts_v2/Noto_Serif/NotoSerif-Italic.ttf" type="DynamicFontData" id=10]
 
-
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 700, 820 )
@@ -83,7 +82,7 @@ margin_top = 12.0
 margin_right = 676.0
 margin_bottom = 59.0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+custom_colors/font_color = Color( 0.878431, 0.772549, 0.345098, 1 )
 text = "name"
 align = 1
 valign = 1

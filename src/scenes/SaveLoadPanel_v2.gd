@@ -42,7 +42,7 @@ func update_save_file():
 			newbutton.get_node("Date").text = get_date_time(savedata[savename])
 
 
-func update_file(filename):	
+func update_file(filename):
 	if filename == '':
 		return
 	file_to_update = filename

@@ -50,8 +50,8 @@ var data = {
 			{text = "MAGESAFTERELLECTION1_ANSWER5", reqs = [], previous_dialogue_option = 5},
 		],
 		options = [
-			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION6", reqs = [], dialogue_argument = 4, type = "next_dialogue", remove_after_first_use = true},
-			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION7", reqs = [], dialogue_argument = 5, type = "next_dialogue", remove_after_first_use = true},
+			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION6", reqs = [], dialogue_argument = 4, remove_after_first_use = true},
+			{code = "mages_after_election_answer3", text = "MAGESAFTERELLECTION1_QUESTION7", reqs = [], dialogue_argument = 5, remove_after_first_use = true},
 			{code = "mages_after_election_answer6", text = "MAGESAFTERELLECTION1_QUESTION8", reqs = [], dialogue_argument = 6, type = "next_dialogue"},
 		]
 	},

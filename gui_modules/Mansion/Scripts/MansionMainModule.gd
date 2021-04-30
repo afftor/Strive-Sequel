@@ -93,10 +93,16 @@ func _ready():
 		input_handler.GameStartNode.queue_free()
 		show()
 		input_handler.ActivateTutorial("introduction")
-		if starting_presets.preset_data[ResourceScripts.game_globals.starting_preset].story == true:
+		var preset =  starting_presets.preset_data[ResourceScripts.game_globals.starting_preset]
+		if preset.start in ['default','default_solo']:
 			input_handler.interactive_message('intro', '', {})
+		elif preset.start in ['skip_prologue']:
+			input_handler.interactive_message('servants_election_finish6')
 		globals.common_effects([{code = 'add_timed_event', value = 'aliron_exotic_trader', args = [{type = 'fixed_date', date = 7, hour = 6}]}])
-		globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
+		if preset.completed_quests.has("aliron_church_quest"):
+			ResourceScripts.game_progress.unlocked_classes.append('healer')
+		else:
+			globals.common_effects([{code = 'add_timed_event', value = "ginny_visit", args = [{type = 'add_to_date', date = [5,10], hour = 8}]}])
 		
 		
 		SlaveListModule.rebuild()
@@ -362,7 +368,7 @@ func upgrades_manager():
 
 func skill_manager():
 	mansion_state = "skill"
-	SlaveListModule.rebuild()			
+	SlaveListModule.rebuild()
 
 func slave_list_manager():
 	match mansion_state:
@@ -677,7 +683,11 @@ func test_mode():
 				{code = 'make_story_character', value = 'Anastasia'},
 			]
 		)
-		
+		globals.common_effects(
+			[
+				{code = 'make_story_character', value = 'Zephyra'},
+			]
+		)
 		
 		ResourceScripts.game_res.money = 80000
 		for i in Items.materiallist:

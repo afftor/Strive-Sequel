@@ -583,11 +583,11 @@ var TranslationDict = {
 	SKILLBLOOD_EXPLOSION = "Blood Explosion",
 	SKILLBLOOD_EXPLOSIONDESCRIPT = "Sacrifice 20% of your health to deal 3x weapon type magic damage to all enemies. ",
 	
-	SKILLEARTH_ATK = "Earth Attack",
+	SKILLEARTH_ATK = "Earth Strike",
 	SKILLEARTH_ATKDESCRIPT = "Deals Earth physical damage and has 30% chance to Stun target for 1 turn",
-	SKILLWIND_ATK = "Wind Attack",
+	SKILLWIND_ATK = "Wind Flurry",
 	SKILLWIND_ATKDESCRIPT = "Deals Air physical damage to two random targets.",
-	SKILLWATER_ATK = "Water Attack",
+	SKILLWATER_ATK = "Water Blade",
 	SKILLWATER_ATKDESCRIPT = "Deals Water physical damage and causes target to bleed for 2 turns.",
 	SKILLHOLY_ATK = "Holy Attack",
 	SKILLHOLY_ATKDESCRIPT = "Deals Holy physical damage and has 20% chance to Confuse target.",
@@ -604,7 +604,7 @@ var TranslationDict = {
 	SKILLHOLY_LANCE = "Holy Lance",
 	SKILLHOLY_LANCEDESCRIPT = "Hits 2 targets with Holy physical damage.",
 	SKILLSWIPE = "Swipe",
-	SKILLSWIPEDESCRIPT = "Deals Wind physical damage to 3 targets. 30% chance to reduce target's DEF by 20 for 2 turns.",
+	SKILLSWIPEDESCRIPT = "Deals Air physical damage to 3 targets. 30% chance to reduce target's DEF by 20 for 2 turns.",
 	SKILLARROWRAIN = "Arrow Rain",
 	SKILLARROWRAINDESCRIPT = "Deals Water physical damage to a row. 30% chance to reduce target's MDEF by 20 for 2 turns.",
 	SKILLEXPLOSIVEARR = "Explosive Arrow",
@@ -1578,8 +1578,8 @@ var TranslationDict = {
 	BODYPARTVAGINAL_VIRGINTRUE_FALSE = "is not a virgin",
 	
 	
-	BODYPARTANAL_VIRGINTRUEDESCRIPT = "[His] asshole has not been [color=yellow]claimed[/color] by anyone.",
-	BODYPARTANAL_VIRGINFALSEDESCRIPT = "[His] asshole is trained enough for penetration.",
+	BODYPARTANAL_VIRGINTRUEDESCRIPT = "[His] {color=yellow|anal virginity} has not been claimed by anyone yet.",
+	BODYPARTANAL_VIRGINFALSEDESCRIPT = "[His] ass is trained enough for penetration.",
 	
 	BODYPARTPENIS_SIZEHUMAN_SMALLDESCRIPT = 'Below [his] waist dangles a [color=yellow]tiny humanish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} dick[/color], small enough that it could be called cute.',
 	BODYPARTPENIS_SIZEHUMAN_AVERAGEDESCRIPT ='[He] has an [color=yellow]ordinary humanish{check=active_slave.penis_virgin == true| [color=aqua]virgin[/color]} penis[/color] below [his] waist, more than enough to make most men proud.',
@@ -2576,7 +2576,7 @@ var TranslationDict = {
 	ALIRONCHURCHINTRODUCTIONREPLY2 = "Is there some way I could help?",
 	ALIRONCHURCHINTRODUCTIONREPLY3 = "Leave",
 
-	ALIRONCHURCHLEAVE = "Please come again!",
+	ALIRONCHURCHLEAVE = "— Please come again!",
 
 	ALIRONCHURCHCELENA = "— Gladly. Celena is the Goddess who's associated with us humans. She's the embodiment of compassion and always watches out for those in trouble. She's also the goddess of life and harvest so if you come across her shrine, you can offer it some food. ",
 	ALIRONCHURCHCELENAREPLY1 = "Are gods even real? Do you have any proof?",
@@ -3795,30 +3795,51 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 You prepare yourself and your group for the upcoming fight. Duncan can be seen moving between the groups informing them of the plan. You move near the front of the gathering with your group as Duncan raises an arm before bringing it down pointing at the hideout. """,
 
 	GUILD_ATTACK_ON_HIDEOUT_1 = """In the deeper rooms of the rebel hideout Greg barges into a room occupied by Aire and Anastasia. 
+	
 {color=aqua|Greg:— We are under attack. The guilds have found us.}
+
 {color=yellow|Anastasia:— So soon!? What do we do?}
+
 {color=aqua|Greg:— You need to escape.}""",
 	GUILD_ATTACK_ON_HIDEOUT_2 = """{color=yellow|Anastasia:— Run away? No, I-I can't...}
+
 {color=aqua|Greg:— There's no other choice. If you get captured you'll end up on the gallows. Moreover, without you there are no other heirs to the throne.}
+
 {color=yellow|Anastasia:— This is wrong, I can't leave everyone behind.}
+
 {color=aqua|Greg:— Enough, we are wasting time. Aire! Send the princess off and return to me immediately.}""",
 	GUILD_ATTACK_ON_HIDEOUT_3 = """{color=yellow|Aire:— ... I understand. Over here, your Highness.}
+
 {color=aqua|Anastasia:— No, what am I gonna do after that?}
+
 {color=yellow|Aire:— Don't worry, we've planned your escape for such occasions... Once we defeat the intruders we will reunite and get you back.}
+
 {color=green|Greg:— You've heard her, Ana, now move.}
+
 {color=aqua|Anastasia:— ...}""",
 	GUILD_ATTACK_ON_HIDEOUT_4_1 = """{color=yellow|Aire:— It is done.} 
+	
 {color=aqua|Greg:— Good, you've finally done something useful at least. Now get your weapon and prepare to defend.} 
+
 {color=yellow|Aire:— ...Understood.} 
+
 {color=aqua|Greg:— Damnit, this whole plan has gone downhill rapidly.}""",
-	GUILD_ATTACK_ON_HIDEOUT_4_2 = """In the deeper rooms of rebel hideout Greg barges into a room occupied by Anastasia. 
+
+GUILD_ATTACK_ON_HIDEOUT_4_2 = """In the deeper rooms of the rebel hideout Greg barges into a room occupied by Anastasia.
+
 {color=aqua|Greg:— We are under attack. The guilds have found us.}
+
 {color=green|Anastasia:— So soon!? What do we do?}
+
 {color=aqua|Greg:— You will have to escape. Use the route your elf has prepared for you.}""",
 	GUILD_ATTACK_ON_HIDEOUT_4_3 = """{color=yellow|Anastasia:— Run away? No, I-I can't...}
+	
 {color=aqua|Greg:— They must be targeting you and without you there's no revolution.}
+
 {color=yellow|Anastasia:— This is wrong, I can't leave everyone behind.}
+
 {color=aqua|Greg:— This is not up for debate. You'll be executed if you end up in their hands. Now go, we'll hold them back so they can't chase after you.}
+
 {color=yellow|Anastasia:— ...}""",
 
 	FINAL_BOSS_1 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
@@ -3830,46 +3851,55 @@ Quickly taking stock of your surroundings there's a few rebels carrying crates i
 	FINAL_BOSS_2 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room is an elf. She quickly adopts a fighting stance.
 
--We've got company. To arms!""",
+— We've got company. To arms!""",
 
 	FINAL_BOSS_3 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
+
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room however is someone you recognize, an elf. She notices you and quickly adopts a fighting stance.
+
 It's the elf girl you had your fun with before. Her eyes narrow at you with clear hatred.
 
--You… I'd never expect to get my revenge on you here of all places. To arms!""",
+— You… I'd never expect to get my revenge on you here of all places. To arms!""",
 
 	FINAL_BOSS_4 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
+
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room however is someone you recognize, an elf. She notices you and quickly adopts a fighting stance.
+
 It's the elf you saved from the lich. Her stance falters as she recognises you. She shakes her head and returns to her combat stance.
 
--This isn't exactly how I'd imagined I'd meet you again. I'm sorry but I won't let you get to Anastasia. To arms!""",
+— This isn't exactly how I'd imagined I'd meet you again. I'm sorry but I won't let you get to Anastasia. To arms!""",
 
 	AIRE_COMBAT_ON_WIN_2 = """The elf collapses in exhaustion and pain as you finish your fight looking around you're just in time to see Duncan's group charge in from a secondary entrance. 
 
-{color=yellow|-Duncan: Nice work out there. But I'm afraid there's nobody else here, including the princess. Though this bitch should know something for sure.}""",
+{color=yellow|Duncan:— Nice work out there. But I'm afraid there's nobody else here, including the princess. Though this bitch should know something for sure.}""",
 
-	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|-Aire: Damn you… You won't get her!}
-{color=aqua|-Duncan: Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
-{color=yellow|-Aire: Bastard… Agh-}
+	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|Aire:— Damn you… You won't get her!}
+{color=aqua|Duncan:— Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
+
+{color=yellow|Aire:— Bastard… Agh-}
 
 Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
-	AIRE_COMBAT_ON_WIN_3_1 = """{color=yellow|-Aire: Damn you… You won't get her!}
-{color=aqua|-Duncan: Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
-{color=yellow|-Aire: Bastard… Agh-}
+	AIRE_COMBAT_ON_WIN_3_1 = """{color=yellow|Aire:— Damn you… You won't get her!}
+
+{color=aqua|Duncan:— Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
+
+{color=yellow|Aire:— Bastard… Agh-}
 
 Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
 
 	GREG_COMBAT_ON_WIN_1 = """The man staggers back as breathing heavily. You look around to see Duncan cut down a rebel behind you. stepping up beside you as the both of you confront the apparent ringleader of this hideout.
 
-{color=aqua|-Duncan: Greg, stand down and surrender. This pathetic rebellion is over.}
-{color=yellow|-Greg: Ah, Duncan. I could have expected you'd show up here, too bad for you though, Anastasia is already far away from here.}
-{color=aqua|-Duncan: We'll see about that, my men have already surrounded the area. Now drop your w-}
+{color=aqua|Duncan:— Greg, stand down and surrender. This pathetic rebellion is over.}
+
+{color=yellow|Greg:— Ah, Duncan. I could have expected you'd show up here, too bad for you though, Anastasia is already far away from here.}
+
+{color=aqua|Duncan:— We'll see about that, my men have already surrounded the area. Now drop your w-}
 
 Before Duncan can even finish speaking the man throws something against the ground. Light suddenly envelops your vision as a horrid ringing sound plays in your ear. You stumble around blindly for a moment, quickly blinking to clear your vision. The ringing fades a bit as you look around the room to find the man gone.""",
 
-	GREG_COMBAT_ON_WIN_2 = """-I should have expected no less cowardice from a rebel. At least it seems like you can handle yourself, just watch your flank in the future.
+	GREG_COMBAT_ON_WIN_2 = """— I should have expected no less cowardice from a rebel. At least it seems like you can handle yourself, just watch your flank in the future.
 
 Duncan turns to speak with you. The guild members begin to handcuff the rebels that aren't already dead.
 
@@ -3893,11 +3923,11 @@ Duncan turns to speak with you. The guild members begin to handcuff the rebels t
 	GREG_COMBAT_OPTION_6 = """Thanks for letting me bash some rebel heads in.""",
 
 	GREG_COMBAT_ON_WIN_5 = """— While the outcome is disappointing, it's only a matter of time until she runs out of places to hide.""",
-	GREG_COMBAT_ON_WIN_6 = """{color=aqua|-Duncan: Her? Same as the rest of them, they'll be imprisoned and interrogated.}
+	GREG_COMBAT_ON_WIN_6 = """{color=aqua|Duncan:— Her? Same as the rest of them, they'll be imprisoned and interrogated.}
 
 The elf struggles slightly against her bindings, as she huffs in defiance.""",
 
-	GREG_COMBAT_ON_WIN_7 = """-They'll be imprisoned and interrogated for any information about the princess, she's still our primary focus.""",
+	GREG_COMBAT_ON_WIN_7 = """— They'll be imprisoned and interrogated for any information about the princess, she's still our primary focus.""",
 
 	GREG_COMBAT_ON_WIN_8 = """— You don't need to worry about that, you'll get your reward. The fighters still have a lot of work to settle here, once that's done we can worry about rewards.""",
 	GREG_COMBAT_ON_WIN_9 = """— Go home. We'll clean everything up here. Come see me later and we'll decide what to do from there.""",

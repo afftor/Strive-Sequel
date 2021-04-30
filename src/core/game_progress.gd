@@ -3,7 +3,6 @@ extends Reference
 
 var questcounter = 0
 
-var mainprogress = 0
 var decisions = []
 var active_quests = []
 var completed_quests = []
@@ -89,20 +88,10 @@ func if_has_area_progress(value, operant, area):
 	if !areaprogress.has(area):return false
 	return input_handler.operate(operant, areaprogress[area], value)
 
-func if_has_progress(value, operant):
-	return input_handler.operate(operant, mainprogress, value)
 
 func if_class_unlocked(name, value, operant):
 	return input_handler.operate(operant, unlocked_classes.has(name), value)
 
-func update_progress(operant, value):
-	match operant:
-		'+':
-			mainprogress += value
-		'-':
-			mainprogress -= value
-		'=':
-			mainprogress = value
 
 func if_time_passed(value, quest):
 	var check = false

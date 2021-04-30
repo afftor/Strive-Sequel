@@ -2841,7 +2841,7 @@ var Skilllist = {
 		target_number = 'x_random',
 		number_rnd_targets = 3,
 		target_range = 'any',
-		damage_type = 'fire',
+		damage_type = 'air',
 		sfx = [{code = 'flame', target = 'target', period = 'postdamage'}], 
 		sounddata = {initiate = null, strike = 'blade', hit = null},
 		value = 1.1,

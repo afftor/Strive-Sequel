@@ -850,7 +850,7 @@ var professions = {
 		statchanges = {mpmax = 20, wits_bonus = 15},
 		traits = [],
 		skills = [],
-		combatskills = ['windwall'], 
+		combatskills = ['wind_atk','windwall'], 
 		conflict_classes = [],
 	},
 }
