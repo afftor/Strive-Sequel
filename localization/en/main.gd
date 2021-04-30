@@ -3821,7 +3821,11 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 {color=aqua|Greg:— This is not up for debate. You'll be executed if you end up in their hands. Now go, we'll hold them back so they can't chase after you.}
 {color=yellow|Anastasia:— ...}""",
 
-	FINAL_BOSS_1 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.""",
+	FINAL_BOSS_1 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
+
+Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the back of the room a man oversees the activities of the rebels.
+
+-Ah, it seems we have company. All of you form up, stop the guild scum.""",
 
 	FINAL_BOSS_2 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room is an elf. She quickly adopts a fighting stance.
@@ -3854,10 +3858,7 @@ Before she can say anything else Duncan's men seize her and gag her mouth.""",
 {color=aqua|-Duncan: Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
 {color=yellow|-Aire: Bastard… Agh-}
 
-Before she can say anything else Duncan's men seize her and gag her mouth.
-Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the back of the room a man oversees the activities of the rebels.
-
--Ah, it seems we have company. All of you form up, stop the guild scum.""",
+Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
 
 	GREG_COMBAT_ON_WIN_1 = """The man staggers back as breathing heavily. You look around to see Duncan cut down a rebel behind you. stepping up beside you as the both of you confront the apparent ringleader of this hideout.

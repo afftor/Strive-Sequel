@@ -11,6 +11,15 @@ var data = {
 				],
 			},
 			{
+				reqs = [{type = 'decision', value = 'aire_is_saved', check = false}],
+				image = null,
+				tags = ['master_translate'],
+				text = [{text = "FINAL_BOSS_2", reqs = []}],
+				options = [
+					{code = 'fight', text = "DIALOGUEFIGHTOPTION", reqs = []},
+				],
+			},
+			{
 				reqs = [{type = 'decision', value = 'aire_raped', check = true}],
 				image = null,
 				tags = ['master_translate'],
