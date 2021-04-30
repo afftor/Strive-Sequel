@@ -772,11 +772,11 @@ func test_mode():
 		
 		var newslave = ResourceScripts.scriptdict.class_slave.new()
 		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
-		newslave.set_slave_category('slave')
+		newslave.set_slave_category('servant')
 		ResourceScripts.game_party.add_slave(newslave)
 		
 		ResourceScripts.game_progress.decisions.append("aire_is_dead")
-		input_handler.interactive_message("final_boss_start", '',{})
+		#input_handler.interactive_message("final_boss_start", '',{})
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		#input_handler.interactive_message('looking_for_princess_3', '', {})
 		#input_handler.interactive_message('pre_final_boss_start', '', {})

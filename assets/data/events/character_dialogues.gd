@@ -3,20 +3,10 @@ var data = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra',
 		text = [
 			{text = "ZEPHYRA_EXTRA_GREET", reqs = [
-				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'neq', value = 'slave'}]}]},
+				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'neq', value = 'slave'}]}], previous_dialogue_option = 0},
 			{text = "ZEPHYRA_EXTRA_GREET2", reqs = [
-				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'eq', value = 'slave'}]}]}
-		], 
-		options = [ {
-			code = 'zephyra_dialogue_1', text = "ZEPHYRA_EXTRA_OPTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}, {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
-		} ],
-	},
-	
-	zephyra_dialogue_1 = {
-		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'zephyra',
-		text = [
+				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'eq', value = 'slave'}]}], previous_dialogue_option = 0}, 
+				
 			{text = "", reqs = [], previous_dialogue_option = 4},
 			{text = "ZEPHYRA_EXTRA_REPLY3", reqs = [], previous_dialogue_option = 6},
 			{text = "ZEPHYRA_EXTRA_REPLY1_2", reqs = [
@@ -25,9 +15,11 @@ var data = {
 				{type = 'active_character_checks', value = [{code = 'slave_type', operant = 'eq', value = 'slave'}]}], previous_dialogue_option = 1}
 		], 
 		options = [ {
+			code = 'zephyra_dialogue_start', text = "ZEPHYRA_EXTRA_OPTION1", reqs = [], dialogue_argument = 1
+		}, {
 			code = 'zephyra_dialogue_2', text = "ZEPHYRA_EXTRA_OPTION2", reqs = [], dialogue_argument = 5
 		}, {
-			code = 'zephyra_dialogue_1', text = "ZEPHYRA_EXTRA_OPTION3", reqs = [], dialogue_argument = 6
+			code = 'zephyra_dialogue_start', text = "ZEPHYRA_EXTRA_OPTION3", reqs = [], dialogue_argument = 6
 		}, {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		}],
@@ -47,7 +39,7 @@ var data = {
 		}, {
 			code = 'zephyra_dialogue_2', text = "ZEPHYRA_EXTRA_OPTION2_3", reqs = [], dialogue_argument = 3,
 		}, {
-			code = 'zephyra_dialogue_1', text = "Back", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
+			code = 'zephyra_dialogue_start', text = "Back", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 		} ],
 	},
 	
@@ -76,7 +68,7 @@ var data = {
 			{text = "ZEPHYRA_EXTRA_REPLY3", reqs = []},
 		], 
 		options = [ {
-			code = 'zephyra_dialogue_1', text = "ZEPHYRA_EXTRA_OPTION2", reqs = [], dialogue_argument = 4
+			code = 'zephyra_dialogue_start', text = "ZEPHYRA_EXTRA_OPTION2", reqs = [], dialogue_argument = 4
 		}, ],
 	},
 	
