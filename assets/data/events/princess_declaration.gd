@@ -76,9 +76,10 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}],
 				dialogue_argument = 1,
-				common_effects = [
-					{code = 'make_story_character', value = 'Aire', recruit_from_location = true},
-					{code = 'make_story_character', value = 'Anastasia', recruit_from_location = true},
+				bonus_effects = [
+					{code = 'make_story_character', value = 'Aire'},
+					{code = 'make_story_character', value = 'Anastasia'},
+					{code = 'decision', value = 'anastasia_added'}
 					]
 			},
 			{
@@ -86,8 +87,9 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = false}],
 				dialogue_argument = 1,
-				common_effects = [
-					{code = 'make_story_character', value = 'Anastasia', recruit_from_location = true},
+				bonus_effects = [
+					{code = 'make_story_character', value = 'Anastasia'},
+					{code = 'decision', value = 'anastasia_added'}
 					]
 			}
 		],
@@ -125,9 +127,16 @@ var data = {
 			{
 				code = 'princess_cutscene_init',
 				text = "DIALOGUECLOSE", 
-				reqs = [], 
+				reqs = [{type = 'decision', value = 'anastasia_added', check = true}],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'anastasia_added'}]
+				bonus_effects = [],
+			},
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE", 
+				reqs = [{type = 'decision', value = 'anastasia_added', check = false}],
+				dialogue_argument = 1,
+				bonus_effects = [],
 			},
 		],
 	},
