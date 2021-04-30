@@ -113,12 +113,13 @@ var data = {
 		}, {
 			code = 'amelia_dialogue_1', text = "AMELIA_BONUS_QUESTION_OPTION4", reqs = [], dialogue_argument = 4,
 		}, {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 5, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 5, type = 'next_dialogue', bonus_effects = [{code = 'update_guild'}]
 		} ],
 	},
 	
 	amelia_dialogue_1 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], reqs = [], character = 'amelia',
+		common_effects = [{code = 'update_guild'}],
 		text = [
 			{text = "AMELIA_BONUS_QUESTION_REPLY1", reqs = [], previous_dialogue_option = 1},
 			{text = "AMELIA_BONUS_QUESTION_REPLY2", reqs = [], previous_dialogue_option = 2},

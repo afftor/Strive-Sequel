@@ -110,6 +110,7 @@ var data = {
 		
 		{code = 'amelia_princess_advice', text = "AMELIAFINDPRINCESSOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = false},{type = 'dialogue_selected', check = false, value = 'AMELIAFINDPRINCESSOPTION'}], type = 'next_dialogue', dialogue_argument = 1},
 		
+		{code = 'princess_search_servants_1', text = "SEARCH_SERVANTS_OPTION_INIT", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}], type = 'next_dialogue', dialogue_argument = 1, remove_after_first_use = true},
 		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],

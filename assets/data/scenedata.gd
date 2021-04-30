@@ -1439,6 +1439,13 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS_QUESTION'}],
+			target = 'amelia_dialogue_start',
+			target_option = 0,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'dialogue_seen', check = false, value = 'SERVANTSINTRODUCTION1'}], 
 			target = 'servants_introduction',
 			target_option = 1,
