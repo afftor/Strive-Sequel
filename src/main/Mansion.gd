@@ -37,7 +37,7 @@ func _ready():
 	input_handler.CurrentScreen = 'mansion'
 	update_turns_label()
 	if OS.get_executable_path() == "C:\\Users\\1\\Desktop\\godot\\Godot_v3.2.1-stable_win64.exe":# && false:
-		variables.generate_test_chars = false
+		variables.generate_test_chars = true
 		variables.allow_remote_intereaction = true
 		variables.combat_tests = true
 		ResourceScripts.game_progress.unlock_all_upgrades = true

@@ -482,7 +482,8 @@ var data = {
 		character = "aire",
 		tags = ['dialogue_scene', 'master_translate'],
 		text = [
-			{text = "SEARCH_DUNGEON_8_1", reqs = [], previous_dialogue_option = 1},
+			{text = "SEARCH_DUNGEON_8_1", reqs = [{type = 'decision', value = 'aire_is_saved', check = false}], previous_dialogue_option = 1},
+			{text = "SEARCH_DUNGEON_8_1_IF_MET", reqs = [{type = 'decision', value = 'aire_is_saved', check = false}], previous_dialogue_option = 1},
 			{text = "SEARCH_DUNGEON_8_2", reqs = [], previous_dialogue_option = 2},
 			{text = "SEARCH_DUNGEON_8_3", reqs = [], previous_dialogue_option = 3},
 			{text = "SEARCH_DUNGEON_8_4", reqs = [], previous_dialogue_option = 4},

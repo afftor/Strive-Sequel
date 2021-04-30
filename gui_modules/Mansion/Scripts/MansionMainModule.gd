@@ -77,6 +77,7 @@ var always_show = [
 
 
 func _ready():
+	test_mode = true
 	if test_mode:
 		test_mode()
 		mansion_state_set("default")
@@ -481,7 +482,7 @@ func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
 	#variables.allow_remote_intereaction = false
 	ResourceScripts.game_world.make_world()
-
+	generate_test_chars = true
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Human', 'female', 'random')
@@ -775,7 +776,7 @@ func test_mode():
 		ResourceScripts.game_party.add_slave(newslave)
 		
 		ResourceScripts.game_progress.decisions.append("aire_is_dead")
-		input_handler.interactive_message("guild_attack_on_hideout_1", '',{})
+		input_handler.interactive_message("final_boss_start", '',{})
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		#input_handler.interactive_message('looking_for_princess_3', '', {})
 		#input_handler.interactive_message('pre_final_boss_start', '', {})
