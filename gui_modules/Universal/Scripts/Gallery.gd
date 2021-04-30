@@ -23,17 +23,17 @@ func set_state(value):
 
 
 func load_images(scene_type):
-	var data
-	var file = File.new()
-	if !file.file_exists(variables.userfolder + 'progress-data'):
-		return
-	else:
-		file.open(variables.userfolder + 'progress-data', file.READ)
-	var text = file.get_as_text()
-	file.close()
-	var parse_result
-	parse_result = JSON.parse(text)
-	data = parse_result.result
+	#var data
+#	var file = File.new()
+#	if !file.file_exists(variables.userfolder + 'progress-data'):
+#		return
+#	else:
+#		file.open(variables.userfolder + 'progress-data', file.READ)
+#	var text = file.get_as_text()
+#	file.close()
+#	var parse_result
+#	parse_result = JSON.parse(text)
+	var data = input_handler.progress_data
 	var image_list
 	match scene_type:
 		"ero":

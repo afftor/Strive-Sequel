@@ -25,7 +25,7 @@ var lands = {
 			{code = 'fred_intro', text = "Visit Fred's Dormitory", reqs = [{type = 'active_quest_stage', value = 'civil_war_start', stage = 'stage2'}], args = {"oneshot": true}},
 			{code = 'fred_bribe_take', text = "Visit Fred's Dormitory", reqs = [{type = 'decision', value = 'fred_bribe_taken', check = true}], args = {"oneshot": true}},
 			
-			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'dialogue_seen', value = 'GINNYVISIT', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
+			{code = 'aliron_church_firstcome', text = "Aliron Church", reqs = [{type = 'decision', value = 'ginny_visit', check = true}, {type = 'dialogue_seen', check = false, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
 			
@@ -1699,7 +1699,7 @@ var pregen_characters = {
 		personality = 'shy',
 		food_like = 'vege',
 		food_hate = ['fish'],
-		#sex_skills = {},
+		sex_skills = {petting = 0, pussy = 0, oral = 0},
 	},
 	
 	Kurdan = {
@@ -1737,7 +1737,7 @@ var pregen_characters = {
 		food_hate = ['vege'],
 		classes = ['scholar','shaman'],
 		tags = [],
-		#sex_skills = {penetration = 15, oral = 4},
+		sex_skills = {petting = 2, penetration = 15, oral = 4},
 	},
 	Aire = {
 		code = 'aire',
@@ -1780,10 +1780,9 @@ var pregen_characters = {
 		personality = 'serious',
 		food_like = 'grain',
 		food_hate = ['meat'],
-		skills = [],
-		#combatskills = ['take_position'],
+		skills = ['take_position'],
 		classes = ['ranger'],
-		#sex_skills = {petting = 7, pussy = 17, oral = 12},
+		sex_skills = {petting = 7, pussy = 17, oral = 12},
 	},
 	Anastasia = {
 		code = 'anastasia',
@@ -1827,7 +1826,7 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['vege'],
 		classes = ['renown_royalty'],
-		#sex_skills = {},
+		sex_skills = {petting = 0, pussy = 0, oral = 0},
 	},
 	Zephyra = {
 		code = 'zephyra',
@@ -1872,6 +1871,6 @@ var pregen_characters = {
 		food_like = 'meat',
 		food_hate = ['fish'],
 		classes = ['alios_champion'],
-		#sex_skills = {},
+		sex_skills = {petting = 0, pussy = 0, oral = 0},
 	},
 }

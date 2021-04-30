@@ -1,10 +1,5 @@
 extends Control
 
-#
-#Writers: Barrus
-#Artists:
-#Coders:
-#
 
 var lastsave = null
 
@@ -24,7 +19,8 @@ func _ready():
 		#input_handler.ConnectSound($VBoxContainer.get_child(i), 'button_click', 'button_up')
 	$VBoxContainer/quitbutton.connect("pressed", self, "quit")
 	$VBoxContainer/gallery.connect("pressed", self, "gallery")
-	$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
+	#$char_sprite.texture = images.sprites[images.sprites.keys()[randi()%images.sprites.keys().size()]]
+	$char_sprite.texture = images.sprites[input_handler.progress_data.characters[randi()%input_handler.progress_data.characters.size()]]
 	$DemoPanel/Button.connect("pressed", self, "CloseDemoWarn")
 	yield(get_tree().create_timer(0.1), "timeout")
 	OS.window_fullscreen = input_handler.globalsettings.fullscreen
@@ -150,14 +146,17 @@ func start_preset_set(button):
 	var text = data.descript
 	for i in $NewGamePanel/PresetContainer/VBoxContainer.get_children():
 		i.pressed = i == button
-	if data.story == false:
-		text += "\n[color=yellow]Disables main story quests and events.[/color]"
+	if data.start in ['advanced']:
+		text += "\n[color=yellow]Skips prologue.[/color]"
 	text += "\n\n"
 	text += 'Additional Characters: ' + str(data.free_slave_number) + "\n"
 	if data.upgrades.size() > 0:
-		text += "Upgrades: " + data.upgrades
-	if data.items.size() > 0:
-		text += "Items: " + data.items
+		text += "Upgrades: " #+ data.upgrades
+		for i in data.upgrades:
+			text += tr("UPGRADE" + i.to_upper()) + ": Level - " + str(data.upgrades[i]) + ", "
+		text = text.substr(0, text.length()-2) + "."
+#	if data.items.size() > 0:
+#		text += "Items: " + data.items
 	# if data.materials.size() > 0:
 	# 	text += "Materials: "
 	# 	for i in data.materials:

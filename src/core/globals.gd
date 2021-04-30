@@ -1196,8 +1196,6 @@ func common_effects(effects):
 				input_handler.exploration_node.open_location(location)
 			'create_character':
 				input_handler.get_spec_node(input_handler.NODE_CHARCREATE, ['slave', i.type])
-			'main_progress':
-				ResourceScripts.game_progress.update_progress(i.operant, i.value)
 			'progress_quest':
 				var quest_exists = false
 				for k in ResourceScripts.game_progress.active_quests:
@@ -1229,8 +1227,6 @@ func common_effects(effects):
 				complete_location(input_handler.active_location.id)
 			'remove_active_location':
 				remove_location(input_handler.active_location.id)
-			'complete_event':
-				pass
 			'reputation':
 				var data = ResourceScripts.world_gen.get_faction_from_code(i.name)
 				var guild = ResourceScripts.game_world.areas[data.area].factions[data.code]
@@ -1399,8 +1395,6 @@ func valuecheck(dict):
 			return ResourceScripts.game_globals.newgame
 		"has_upgrade":
 			return ResourceScripts.game_res.if_has_upgrade(dict.name, dict.value)
-		"main_progress":
-			return ResourceScripts.game_progress.if_has_progress(dict.value, dict.operant)
 		"area_progress":
 			return ResourceScripts.game_progress.if_has_area_progress(dict.value, dict.operant, dict.area)
 		"decision":

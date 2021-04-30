@@ -1,11 +1,5 @@
 extends Node
-
-#
-#Writers: Barrus
-#Proofreaders: Dorant
-#Artists:
-#Coders: ykoc
-#
+#To be deleted?
 
 var lastsave = null
 

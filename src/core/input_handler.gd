@@ -174,8 +174,9 @@ var globalsettings = {
 # Progress data template
 var progress_data = {
 	story_scenes = [],
-	ero_scenes = []
-}
+	ero_scenes = [],
+	characters = ['amelia','duncan','sigmund','myr'],
+} setget save_progress_data
 
 
 func set_previous_scene(scene):
@@ -206,36 +207,60 @@ func settings_save(value):
 	if CurrentScene != null and weakref(CurrentScene) != null and CurrentScene.name == 'mansion':
 		CurrentScene.set_time_buttons()
 
-
-func update_progress_data(field, value):
-	if !progress_data.has(field):
-		print("Warning: progress data has no '", str(field), "' field.")
-		return
-
+func load_progress_data():
 	var text
-	var parse_result
-	var data
 	var file = File.new()
-	if file.file_exists(variables.userfolder + 'progress-data'):
-		file.open(variables.userfolder + 'progress-data', file.READ)
+	var parse_result
+	if file.file_exists(variables.userfolder + 'progress_data'):
+		file.open(variables.userfolder + 'progress_data', file.READ)
 		text = file.get_as_text()
 		parse_result = JSON.parse(text)
-		data = parse_result.result
+		progress_data = parse_result.result
 	else:
-		data = progress_data
+		save_progress_data(progress_data)
 	file.close()
-	match field:
-		"story_scenes":
-			append_not_duplicate(data.story_scenes, value.get_load_path()) #Passed "value" should be the type of StreamTexture
-		"ero_scenes":
-			append_not_duplicate(data.ero_scenes, value.get_load_path())
-		_: #Default
-			append_not_duplicate(data[field], value)
-	file = File.new()
-	file.open(variables.userfolder + 'progress-data', file.WRITE)
+
+func save_progress_data(data):
+	progress_data = data
+	var text
+	var file = File.new()
+	file.open(variables.userfolder + 'progress_data', file.WRITE)
 	text = JSON.print(data)
 	file.store_string(text)
 	file.close()
+	
+
+#func update_progress_data(field, value):
+#	if !progress_data.has(field):
+#		print("Warning: progress data has no '", str(field), "' field.")
+#		return
+#
+#	var text
+#	var parse_result
+#	var data
+#	var file = File.new()
+#	if file.file_exists(variables.userfolder + 'progress_data'):
+#		file.open(variables.userfolder + 'progress_data', file.READ)
+#		text = file.get_as_text()
+#		parse_result = JSON.parse(text)
+#		data = parse_result.result
+#	else:
+#		data = progress_data
+#	file.close()
+#	match field:
+#		"story_scenes":
+#			append_not_duplicate(data.story_scenes, value.get_load_path()) #Passed "value" should be the type of StreamTexture
+#		"ero_scenes":
+#			append_not_duplicate(data.ero_scenes, value.get_load_path())
+#		'character':
+#			append_not_duplicate(data.characters, value)
+#		_: #Default
+#			append_not_duplicate(data[field], value)
+#	file = File.new()
+#	file.open(variables.userfolder + 'progress_data', file.WRITE)
+#	text = JSON.print(data)
+#	file.store_string(text)
+#	file.close()
 
 
 func _notification(what):
@@ -279,6 +304,7 @@ func _ready():
 	OS.window_size = globalsettings.window_size
 	OS.window_position = globalsettings.window_pos
 	settings_load()
+	load_progress_data()
 
 func _input(event):
 	if event.is_echo() == true && !event.is_action_type(): 

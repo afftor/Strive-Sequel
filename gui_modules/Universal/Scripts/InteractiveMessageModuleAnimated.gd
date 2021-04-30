@@ -437,11 +437,12 @@ func quest_fight(code):
 
 
 func save_scene_to_gallery(scene):
-	if scene.has("scene_type"):
-		if scene.scene_type == "story_scene":
-			input_handler.update_progress_data("story_scenes", images.backgrounds[scene.custom_background])
-		elif scene.scene_type == "ero_scene":
-			input_handler.update_progress_data("ero_scenes", images.backgrounds[scene.custom_background])
+	pass
+#	if scene.has("scene_type"):
+#		if scene.scene_type == "story_scene":
+#			input_handler.update_progress_data("story_scenes", images.backgrounds[scene.custom_background])
+#		elif scene.scene_type == "ero_scene":
+#			input_handler.update_progress_data("ero_scenes", images.backgrounds[scene.custom_background])
 
 
 func select_scene_variation_based_on_data(scene):
@@ -540,6 +541,9 @@ func handle_characters_sprites(scene):
 			else:
 				scene_char = scene.character
 				char_shade = false
+				if !input_handler.progress_data.characters.has(scene_char):
+					input_handler.progress_data.characters.append(scene_char)
+					input_handler.save_progress_data(input_handler.progress_data)
 			if ch1 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage, 0.5)
 				$CharacterImage.texture = images.sprites[scene_char]
@@ -563,6 +567,9 @@ func handle_characters_sprites(scene):
 			else:
 				scene_char = scene.character2
 				char_shade = false
+				if !input_handler.progress_data.characters.has(scene_char):
+					input_handler.progress_data.characters.append(scene_char)
+					input_handler.save_progress_data(input_handler.progress_data)
 			if ch2 != scene_char:
 				ResourceScripts.core_animations.UnfadeAnimation($CharacterImage2, 0.5)
 				$CharacterImage2.texture = images.sprites[scene_char]

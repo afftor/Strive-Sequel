@@ -89,9 +89,9 @@ __meta__ = {
 [node name="ShowPanel" type="TextureRect" parent="."]
 visible = false
 margin_left = 430.0
-margin_top = 964.0
+margin_top = 965.0
 margin_right = 1490.0
-margin_bottom = 1050.0
+margin_bottom = 1051.0
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
