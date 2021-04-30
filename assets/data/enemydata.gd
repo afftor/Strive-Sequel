@@ -36,8 +36,8 @@ var encounters = {
 	
 	
 	
-	greg_boss_fight = {unittype = 'randomgroup', unitcode = 'greg', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
-	aire_boss_fight = {unittype = 'randomgroup', unitcode = 'aire', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'skirmish_complete', args = []}], lose_effects = []},
+	greg_boss_fight = {unittype = 'randomgroup', unitcode = 'greg', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'greg_combat_on_win_1', args = []}], lose_effects = []},
+	aire_boss_fight = {unittype = 'randomgroup', unitcode = 'aire', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'aire_combat_on_win_2', args = []}], lose_effects = []},
 }
 
 var enemygroups = {
