@@ -97,8 +97,9 @@ var data = {
 			{
 				#code = 'fight',
 				code = 'close',
-				text = "DIALOGUEFIGHTOPTION",
+				text = "DIALOGUECLOSE",
 				reqs = [],
+				type = 'next_dialogue',
 			},
 		]
 	},
@@ -113,27 +114,52 @@ var data = {
 			{
 				#code = 'fight',
 				code = 'close',
-				text = "DIALOGUEFIGHTOPTION",
+				text = "DIALOGUECLOSE",
 				reqs = [],
+				type = 'next_dialogue',
 			},
 		]
 	},
 	guild_attack_on_hideout_1 = {
-		image = null,
-		character = "greg", character2 = "anastasia",
-		tags = ['dialogue_scene', 'master_translate'],
-		text = [
-			{text = "GUILD_ATTACK_ON_HIDEOUT_1", reqs = []},
-		],
-		options = [
-			{
-				code = 'guild_attack_on_hideout_2',
-				text = "DIALOGUECONTINUE",
-				reqs = [],
-				dialogue_argument = 1
-			},
-		]
+		variations = [{
+			# (if Aire Alive)
+			reqs = [{type = 'decision', value = 'aire_is_dead', check = false}],
+			image = null,
+			character = "greg", character2 = "anastasia",
+			tags = ['dialogue_scene', 'master_translate'],
+			text = [
+				{text = "GUILD_ATTACK_ON_HIDEOUT_1", reqs = []},
+			],
+			options = [
+				{
+					code = 'guild_attack_on_hideout_2',
+					text = "DIALOGUECONTINUE",
+					reqs = [],
+					dialogue_argument = 1,
+					type = 'next_dialogue',
+				} 
+			]
+		}, {
+			# (if Aire Is Dead)
+			reqs = [{type = 'decision', value = 'aire_is_dead', check = true}],
+			image = null,
+			character = "greg", character2 = "anastasia",
+			tags = ['dialogue_scene', 'master_translate'],
+			text = [
+				{text = "GUILD_ATTACK_ON_HIDEOUT_4_2", reqs = []},
+			],
+			options = [
+				{
+					code = 'guild_attack_on_hideout_5',
+					text = "DIALOGUECONTINUE",
+					reqs = [],
+					dialogue_argument = 1,
+					type = 'next_dialogue',
+				} 
+			]
+		}]
 	},
+	
 	guild_attack_on_hideout_2 = {
 		image = null,
 		character = "greg", character2 = "anastasia",
@@ -146,52 +172,52 @@ var data = {
 				code = 'guild_attack_on_hideout_3',
 				text = "DIALOGUECONTINUE",
 				reqs = [],
-				dialogue_argument = 1
-			},
+				dialogue_argument = 1,
+				type = 'next_dialogue',
+			} 
 		]
 	},
 	
 	guild_attack_on_hideout_3 = {
-		variations = [
+		image = null,
+		character = "anastasia", character2 = "aire",
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "GUILD_ATTACK_ON_HIDEOUT_3", reqs = []},
+		],
+		options = [
 			{
-				image = null,
-				character = "greg", character2 = "aire",
-				tags = ['dialogue_scene', 'master_translate'],
-				text = "GUILD_ATTACK_ON_HIDEOUT_4_1",
+				code = 'guild_attack_on_hideout_4',
+				text = "DIALOGUECONTINUE",
 				reqs = [],
-				options = [
-					{
-						code = 'guild_attack_on_hideout_4_3',
-						text = "DIALOGUECONTINUE",
-						reqs = [],
-						type = 'next_dialogue',
-						dialogue_argument = 1
-					},
-				]
-			},
-			{
-				image = null,
-				character = "anastasia", character2 = "aire",
-				tags = ['dialogue_scene', 'master_translate'],
-				text = "GUILD_ATTACK_ON_HIDEOUT_4_2",
-				reqs = [],
-				options = [
-					{
-						code = 'guild_attack_on_hideout_4_3',
-						text = "DIALOGUECONTINUE",
-						reqs = [],
-						type = 'next_dialogue',
-						dialogue_argument = 1
-					},
-				]
-			}
+				dialogue_argument = 1,
+				type = 'next_dialogue',
+			} 
 		]
 	},
-
-	guild_attack_on_hideout_4_3 = {
+	
+	guild_attack_on_hideout_4 = {
 		image = null,
-		character = "duncan",
-		tags = ['master_translate'],
+		character = "greg", character2 = "aire",
+		tags = ['dialogue_scene', 'master_translate'],
+		text = [
+			{text = "GUILD_ATTACK_ON_HIDEOUT_4_1", reqs = []},
+		],
+		options = [
+			{
+				code = 'close',
+				text = "DIALOGUECLOSE",
+				reqs = [],
+				dialogue_argument = 1,
+				type = 'next_dialogue',
+			} 
+		]
+	},
+	
+	guild_attack_on_hideout_5 = {
+		image = null,
+		character = "greg", character2 = "anastasia",
+		tags = ['dialogue_scene', 'master_translate'],
 		text = [
 			{text = "GUILD_ATTACK_ON_HIDEOUT_4_3", reqs = []},
 		],
@@ -200,7 +226,9 @@ var data = {
 				code = 'close',
 				text = "DIALOGUECLOSE",
 				reqs = [],
-			},
+				dialogue_argument = 1,
+				type = 'next_dialogue',
+			} 
 		]
 	},
 }

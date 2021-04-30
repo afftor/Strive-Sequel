@@ -3811,11 +3811,7 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 {color=aqua|Greg:— Good, you've finally done something useful at least. Now get your weapon and prepare to defend.} 
 {color=yellow|Aire:— ...Understood.} 
 {color=aqua|Greg:— Damnit, this whole plan has gone downhill rapidly.}""",
-	GUILD_ATTACK_ON_HIDEOUT_4_2 = """{color=yellow|Aire:— It is done.} 
-{color=aqua|Greg:— Good, you've finally done something useful at least. Now get your weapon and prepare to defend.} 
-{color=yellow|Aire:— ...Understood.} 
-{color=aqua|Greg:— Damnit, this whole plan has gone downhill rapidly.
-In the deeper rooms of rebel hideout Greg barges into a room occupied by Anastasia.} 
+	GUILD_ATTACK_ON_HIDEOUT_4_2 = """In the deeper rooms of rebel hideout Greg barges into a room occupied by Anastasia. 
 {color=aqua|Greg:— We are under attack. The guilds have found us.}
 {color=green|Anastasia:— So soon!? What do we do?}
 {color=aqua|Greg:— You will have to escape. Use the route your elf has prepared for you.}""",
