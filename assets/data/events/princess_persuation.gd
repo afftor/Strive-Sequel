@@ -6,6 +6,7 @@
 #persuade_2_completed
 #marry_proposed
 #enslave_proposed
+#AireAnastasiaPersuasion
 
 #previous decisions
 #mindbreak_enabled
@@ -760,7 +761,7 @@ var data = {
 		custom_background = "jail",
 		tags = ['dialogue_scene'],
 		text = [
-			{text = "ANASTASIA_PERSUASION_43", reqs = []},
+			{text = "ANASTASIA_PERSUASION_43", reqs = [], bonus_effects = [{code = 'decision', value = 'AireAnastasiaPersuasion'}]},
 		],
 		options = [
 			{
@@ -1084,6 +1085,7 @@ var data = {
 					text = "DIALOGUECONTINUE",
 					type = 'next_dialogue',
 					reqs = [],
+					dialogue_argument = 1,
 				},
 			],
 		},
@@ -1105,6 +1107,7 @@ var data = {
 					text = "DIALOGUECONTINUE",
 					type = 'next_dialogue',
 					reqs = [],
+					dialogue_argument = 1,
 				},
 			],
 		},
@@ -1118,7 +1121,71 @@ var data = {
 	princess_persuation_2_3 = {
 		variations = [
 			{
-				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = false}],
+				reqs = [
+					{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = true},
+					{type = 'decision', value = 'marry_option', check = true}],
+				image = null,
+				character = "anastasia",
+				custom_background = "jail",
+				tags = ['dialogue_scene', 'master_translate'],
+				text = [
+					{text = "ANASTASIA_PERSUASION_53", reqs = []},
+					{text = "ANASTASIA_ACCEPT_MARRY", reqs = []}, #req same as variation's
+					{text = "ANASTASIA_PERSUASION_57", reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}]},
+				],
+				options = [
+					{
+						code = 'princess_persuation_2_amelia',
+						text = "DIALOGUECONTINUE",
+						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}],
+						type = 'next_dialogue',
+						dialogue_argument = 1,
+						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
+					},
+					{
+						code = 'princess_recriut_finish_1',
+						text = "DIALOGUECONTINUE",
+						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = false}],
+						type = 'next_dialogue',
+						dialogue_argument = 1,
+						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
+					},
+				],
+			},
+			{
+				reqs = [
+					{type = 'local_counter', name = 'sympathy2', add_stat = 'charm_factor', operant = 'gte', value = 11, check = true},
+					{type = 'decision', value = 'enslave_option', check = true}],
+				image = null,
+				character = "anastasia",
+				custom_background = "jail",
+				tags = ['dialogue_scene', 'master_translate'],
+				text = [
+					{text = "ANASTASIA_PERSUASION_53", reqs = []},
+					{text = "ANASTASIA_ACCEPT_ENSLAVE", reqs = []}, #req same as variation's
+					{text = "ANASTASIA_PERSUASION_57", reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}]},
+				],
+				options = [
+					{
+						code = 'princess_persuation_2_amelia',
+						text = "DIALOGUECONTINUE",
+						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}],
+						type = 'next_dialogue',
+						dialogue_argument = 1,
+						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
+					},
+					{
+						code = 'princess_recriut_finish_1',
+						text = "DIALOGUECONTINUE",
+						reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = false}],
+						type = 'next_dialogue',
+						dialogue_argument = 1,
+						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
+					},
+				],
+			},
+			{
+				reqs = [], #failcase, abusing current variation selection in imm. should be last variation!
 				image = null,
 				character = "anastasia",
 				custom_background = "jail",
@@ -1135,29 +1202,6 @@ var data = {
 						type = 'next_dialogue',
 						dialogue_argument = 1,
 						bonus_effects = [{code = 'decision', value = 'AnastasiaRejected'}] #this decision for some reason not added onto first persuation fail
-					},
-				],
-			},
-			{
-				reqs = [{type = 'local_counter', name = 'sympathy2', add_stat = 'sexuals_factor', operant = 'gte', value = 11, check = true}],
-				image = null,
-				character = "anastasia",
-				custom_background = "jail",
-				tags = ['dialogue_scene', 'master_translate'],
-				text = [
-					{text = "ANASTASIA_PERSUASION_53", reqs = []},
-					{text = "ANASTASIA_ACCEPT_MARRY", reqs = [{type = 'decision', value = 'marry_option', check = true}]},
-					{text = "ANASTASIA_ACCEPT_ENSLAVE", reqs = [{type = 'decision', value = 'enslave_option', check = true}]},
-					{text = "ANASTASIA_PERSUASION_57", reqs = []},
-				],
-				options = [
-					{
-						code = 'princess_persuation_2_amelia',
-						text = "DIALOGUECONTINUE",
-						reqs = [],
-						type = 'next_dialogue',
-						dialogue_argument = 1,
-						bonus_effects = [{code = 'decision', value = 'persuade_2_completed'}]
 					},
 				],
 			},
