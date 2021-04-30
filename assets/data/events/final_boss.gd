@@ -70,10 +70,10 @@ var data = {
 	aire_combat_on_win_3 = {
 			reqs = [],
 			image = null, character = "duncan", character2 = "aire",
-			tags = ['master_translate'],
+			tags = ['dialogue_scene', 'master_translate'],
 			text = [{text = "AIRE_COMBAT_ON_WIN_3", reqs = []}],
 			options = [
-				{code = 'greg_combat_on_win_2', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1},
+				{code = "greg_combat_on_win_2", text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1},
 			],
 	},
 	greg_combat_on_win_1 = {
