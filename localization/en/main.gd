@@ -3849,6 +3849,7 @@ Quickly taking stock of your surroundings there's a few rebels carrying crates i
 -Ah, it seems we have company. All of you form up, stop the guild scum.""",
 
 	FINAL_BOSS_2 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
+
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room is an elf. She quickly adopts a fighting stance.
 
 — We've got company. To arms!""",
@@ -3874,6 +3875,7 @@ It's the elf you saved from the lich. Her stance falters as she recognises you. 
 {color=yellow|Duncan:— Nice work out there. But I'm afraid there's nobody else here, including the princess. Though this bitch should know something for sure.}""",
 
 	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|Aire:— Damn you… You won't get her!}
+
 {color=aqua|Duncan:— Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
 
 {color=yellow|Aire:— Bastard… Agh-}
@@ -3907,7 +3909,7 @@ Duncan turns to speak with you. The guild members begin to handcuff the rebels t
 
 	GREG_COMBAT_ON_WIN_3 = """Duncan turns to speak with you. The guild members begin to handcuff the rebels that aren't already dead.
 
-— You've shown considerable skill here today.""",
+— You've shown considerable skill here today.""", # never should be used
 
 	GREG_COMBAT_ON_WIN_4 = """Duncan turns to speak with you. The guild members begin to handcuff the rebels that aren't already dead.
 
