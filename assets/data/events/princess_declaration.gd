@@ -74,8 +74,21 @@ var data = {
 			{
 				code = 'final_words_1',
 				text = "DIALOGUECONTINUE",
-				reqs = [],
+				reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = true}],
 				dialogue_argument = 1,
+				common_effects = [
+					{code = 'make_story_character', value = 'Aire', recruit_from_location = true},
+					{code = 'make_story_character', value = 'Anastasia', recruit_from_location = true},
+					]
+			},
+			{
+				code = 'final_words_1',
+				text = "DIALOGUECONTINUE",
+				reqs = [{type = 'decision', value = 'AireAnastasiaPersuasion', check = false}],
+				dialogue_argument = 1,
+				common_effects = [
+					{code = 'make_story_character', value = 'Anastasia', recruit_from_location = true},
+					]
 			}
 		],
 	},
@@ -110,7 +123,7 @@ var data = {
 		],
 		options = [
 			{
-				code = 'close',
+				code = 'princess_cutscene_init',
 				text = "DIALOGUECLOSE", 
 				reqs = [], 
 				dialogue_argument = 1,

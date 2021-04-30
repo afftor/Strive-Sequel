@@ -118,6 +118,9 @@ func material_tooltip(data, workers_data = {}):
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0
 	textnode.bbcode_text = globals.TextEncoder(text)
+	$InfoText.show() #some materials have their descriptions longer than can be displayed properly - mb need to remake some part of this scene
+	$InfoText2.hide()
+	$InfoText3.hide()
 #	$type.text = tr('MATERIALCATEGORY' + item.type.to_upper())
 
 func materialowned_tooltip(data):
