@@ -779,7 +779,7 @@ func test_mode():
 		#input_handler.interactive_message("looking_for_princess_1", '',{})
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		#input_handler.interactive_message('looking_for_princess_3', '', {})
-		#input_handler.interactive_message('pre_final_boss_start', '', {})
+		input_handler.interactive_message('anastasia_execution_start', '', {})
 		ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
 		ResourceScripts.game_progress.decisions.append("marry_option")
 		globals.common_effects([{code = 'progress_quest', value = 'princess_persuasion', stage = 'stage1'}])
