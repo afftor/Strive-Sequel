@@ -19,7 +19,7 @@ onready var Locations = $MansionLocationsModule
 onready var submodules = []
 
 export var test_mode = true
-export var generate_test_chars = true
+export var generate_test_chars = false
 
 
 signal tut_option_selected
@@ -77,7 +77,6 @@ var always_show = [
 
 
 func _ready():
-	test_mode = true
 	if test_mode:
 		test_mode()
 		mansion_state_set("default")
@@ -482,7 +481,6 @@ func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
 	#variables.allow_remote_intereaction = false
 	ResourceScripts.game_world.make_world()
-	generate_test_chars = true
 	if generate_test_chars:
 		var character = ResourceScripts.scriptdict.class_slave.new()
 		character.create('Human', 'female', 'random')
@@ -766,24 +764,15 @@ func test_mode():
 			#if i.classname == 'settlement_plains1'.to_upper(): # SETTLEMENT_PLAINS1
 				#i.captured = true
 		
-		#ResourceScripts.game_progress.decisions.append("PreFinalBossDone") # right after mines
-		#ResourceScripts.game_progress.decisions.append("DivineSymbolStart") # after we talked to workers
-		#input_handler.interactive_message("ginny_visit", '',{})
 		
 		var newslave = ResourceScripts.scriptdict.class_slave.new()
 		newslave.generate_predescribed_character(worlddata.pregen_characters["Zephyra"])
 		newslave.set_slave_category('servant')
 		ResourceScripts.game_party.add_slave(newslave)
 		
-		#ResourceScripts.game_progress.decisions.append("aire_is_dead")
-		#input_handler.interactive_message("looking_for_princess_1", '',{})
-		#ResourceScripts.game_progress.decisions.append("aire_raped")
-		#input_handler.interactive_message('looking_for_princess_3', '', {})
-		#input_handler.interactive_message('pre_final_boss_start', '', {})
-		ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
-		ResourceScripts.game_progress.decisions.append("marry_option")
-		globals.common_effects([{code = 'progress_quest', value = 'princess_persuasion', stage = 'stage1'}])
-		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}])
+		input_handler.interactive_message('final_operation_start', '', {})
+		#input_handler.interactive_message('looking_for_princess_2', '', {})
+		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])

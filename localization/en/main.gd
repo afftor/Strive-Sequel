@@ -4166,9 +4166,11 @@ The kobold tediously looked you over.""",
 — Hey, made up your mind yet?""",
 	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
 	LOOKING_FOR_PRINCESS_OPTION_14_500 = """Purchase (500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_14_1000 = """Purchase (1000 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_14_1500 = """Purchase (1500 gold)""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 
-	— It's the brute again. You better not try to give me shit again. I'm feeling generous so I'll still sell you the bracelet you want... for 1000 gold.""",
+— It's the brute again. You better not try to give me shit again. I'm feeling generous so I'll still sell you the bracelet you want... for 1000 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_15 = """It was 500 gold last time""",
 	LOOKING_FOR_PRINCESS_OPTION_THINK = """I'll think about""",
 	LOOKING_FOR_PRINCESS_OPTION_17 = """Trying to rip me off, you little bastard *attack*""",
@@ -4176,13 +4178,13 @@ The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_15 = """Same as the last time the kobold quickly disappears into one of the small holes leaving you with nothing. You should probably return another day.""",
 	LOOKING_FOR_PRINCESS_16 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 	
-	— It's the same brute again. Must be hard not knowing when to learn. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
+— It's the same brute again. Must be hard not knowing when to learn. But I'm merciful, I'll still sell you the bracelet you want for 1500 gold.""",
 	LOOKING_FOR_PRINCESS_OPTION_18 = """A beating will be your payment *attack*""",
 	LOOKING_FOR_PRINCESS_17 = """This time you lunged slightly ahead of the kobold. He was still quick enough to spin away from your grasp at the last moment but he tumbled on his way, almost falling. You curse as he regains his composure and escapes. Then you notice he dropped the bracelet in his haste.
 	
-	Unable to retrieve it without leaving the safety of his burrow, he only could swear back at you. 
+Unable to retrieve it without leaving the safety of his burrow, he only could swear back at you. 
 	
-	After closer inspection you confirm that it must belong to the royal family so it's time to take it to Myr.""",
+After closer inspection you confirm that it must belong to the royal family so it's time to take it to Myr.""",
 	LOOKING_FOR_PRINCESS_18 = """As you pass the gold to the kobold, he gives away the bracelet and quickly disappears with the money. After closer inspection you confirm that it must belong to the royal family so it's time to take it to Myr.""",
 	LOOKING_FOR_PRINCESS_OPTION_19 = """I've bought the bracelet""",
 	LOOKING_FOR_PRINCESS_19 = """You've presented the bracelet to Amelia who closely inspected it for a few moments.
@@ -4216,8 +4218,7 @@ Amelia:— Alright, alright, I should be going anyway. Good luck [name], I'm wai
 	LOOKING_FOR_PRINCESS_OPTION_25 = """Well, I'm not going to complain""",
 	LOOKING_FOR_PRINCESS_28 = """— We have no interest in your human disputes. This woman came seeking refuge, but we are no charity. Once you take the woman I expect you to leave this place. 
 
-The priestess gave orders to the guards to get the princess out.
-""",
+The priestess gave orders to the guards to get the princess out.""",
 	LOOKING_FOR_PRINCESS_29 = """As Anastasia saw you, she realized what she was brought for and her face became pale.
 
 Anastasia:— No... What the hell?! You can't do this to me!

@@ -1085,6 +1085,10 @@ func common_effects(effects):
 								date += 1
 							var newreq = [{type = 'date', operant = 'eq', value = date}, {type = 'hour', operant = 'eq', value = hour}]
 							newevent.reqs += newreq
+						'action_to_date':
+							var newreq = [{type = 'date', operant = 'eq', value = ResourceScripts.game_globals.date + round(rand_range(k.date[0], k.date[1]))}, {type = 'hour', operant = 'eq', value = k.hour}]
+							newevent.action = k.action
+							newevent.reqs += newreq
 				ResourceScripts.game_progress.stored_events.timed_events.append(newevent)
 			'remove_timed_events':
 				var array = []
@@ -1225,6 +1229,8 @@ func common_effects(effects):
 				ResourceScripts.game_progress.completed_quests.append(i.value)
 			'complete_active_location':
 				complete_location(input_handler.active_location.id)
+			'set_completed_active_location':
+				input_handler.active_location.completed = true
 			'remove_active_location':
 				remove_location(input_handler.active_location.id)
 			'reputation':
@@ -1336,7 +1342,11 @@ func common_effects(effects):
 				var value = i.value
 				var loc
 				for a in ResourceScripts.game_world.areas[i.area].locations.values():
-					if a.classname == i.location.to_upper(): # SETTLEMENT_PLAINS1
+					if a.classname == i.location.to_upper() || a.classname == i.location:
+						a[param] = value
+						loc = a
+						break
+					elif ResourceScripts.world_gen.get_location_from_code(a.classname) == i.location.to_upper() || a.classname == i.location:
 						a[param] = value
 						loc = a
 						break

@@ -94,7 +94,11 @@ var data = {
 			image = "kobold", tags = ['dialogue_scene'],
 			text = [{text = "LOOKING_FOR_PRINCESS_12", reqs= []}],
 			options = [ {
-				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14_500", reqs = [{type = "has_money", value = 500}], dialogue_argument = 2 
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14_500", reqs = [{type = "has_money", value = 500}, {type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'lt', value = 1, check = true}], dialogue_argument = 2 
+			}, {
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14_1000", reqs = [{type = "has_money", value = 1000}, {type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'lt', value = 2, check = true}], dialogue_argument = 2 
+			}, {
+				code = 'take_the_gold', text = "LOOKING_FOR_PRINCESS_OPTION_14_1500", reqs = [{type = "has_money", value = 1500}, {type = 'local_counter', name = 'BraceletAttackAttempt', operant = 'gte', value = 2, check = true}], dialogue_argument = 2 
 			}, {
 				code = 'looking_for_princess_6', text = "LOOKING_FOR_PRINCESS_OPTION_11", reqs = [], dialogue_argument = 1 
 			}, {
@@ -156,9 +160,12 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_11", reqs = [], previous_dialogue_option = 1}, 
 		{text = "LOOKING_FOR_PRINCESS_15", reqs = [], previous_dialogue_option = 2} ],
 		common_effects = [{code = 'dialogue_counter', name = 'BraceletAttackAttempt', op = '+'}, 
-		{code = 'decision', value = 'BraceletPreviousAttack'}], # the fact that we tried to attack kobold
+		{code = 'decision', value = 'BraceletPreviousAttack'}, # the fact that we tried to attack kobold
+		{code = 'decision', value = 'BlockSearch'},
+		{code = 'add_timed_event', value = "BlockSearch",
+		args = [{type = 'action_to_date', date = [1,1], hour = 1, action = "remove_decision"}]}], 
 		options = [ {
-			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1 
+			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 1 , bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 	
@@ -373,13 +380,13 @@ var data = {
 		{text = "LOOKING_FOR_PRINCESS_38", reqs = [], previous_dialogue_option = 2},
 		{text = "LOOKING_FOR_PRINCESS_39", reqs = [], previous_dialogue_option = 3},
 		{text = "LOOKING_FOR_PRINCESS_40", reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'mansion', reqs = [
+				{type = "location_has_specific_slaves", value = 1, location = 'forests', reqs = [
 					{code = 'unique', value = 'zephyra'}]}] }], 
 		options = [ {
 			code = 'looking_for_princess_elven_12', text = "LOOKING_FOR_PRINCESS_OPTION_40", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
 			code = 'looking_for_princess_elven_15', text = "LOOKING_FOR_PRINCESS_OPTION_41", reqs = [
-				{type = "location_has_specific_slaves", value = 1, location = 'mansion', reqs = [
+				{type = "location_has_specific_slaves", value = 1, location = 'forests', reqs = [
 					{code = 'unique', value = 'zephyra'}]}], dialogue_argument = 2, type = 'next_dialogue'
 		}, {
 			code = 'close', text = "LOOKING_FOR_PRINCESS_OPTION_42", reqs = [], dialogue_argument = 4, type = 'next_dialogue',

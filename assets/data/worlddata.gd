@@ -31,7 +31,7 @@ var lands = {
 			
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
 			
-			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}, {type = 'decision', value = 'aire_is_dead', check = false}], args = {"oneshot": false}},
+			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
 			
 			],
@@ -1418,18 +1418,20 @@ var dungeons = {
 		stages_per_level = [10,10],
 		bgm = "dungeon",
 		purchase_price = 0,
-		affiliation = 'local', #defines character races and events
+		affiliation = 'local', #defines character races and events 
+		#events = [{code = 'looking_for_princess_5', text = "Search", reqs = [ {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_1', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_2', orflag = true}, {code = 'value_check', type = 'dialogue_seen', check = true, value = 'AMELIAFINDPRINCESS1_3', orflag = true},
+		#	{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'decision', value = 'BlockSearch', check = false}], args = {"oneshot": false}},], # kobold event
 		events = [],
 		
 		area = 'plains',
 		travel_time = [4,6],
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
+		{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, {code = 'stage', value = 3, operant = 'gte'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
 			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_1', orflag = true},
 			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_3', orflag = true}, 
 			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_4', orflag = true}, 
-			{code = 'stage', value = 9 - 2, operant = 'gte'}]}]
+			{code = 'stage', value = 7, operant = 'gte'}]}]
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',

@@ -34,10 +34,11 @@ var data = {
 		]
 	},
 	
-	#TODO (set MayorElectionCompletion in 7 days 8 hour)
 	capture_wrapup_1 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'duncan',
 		text = [{text = "PRE_ANASTASIA_EXECUTION_4", reqs = [], }],
+		common_effects = [{code = 'add_timed_event', value = "duncans_declaration_start", 
+		args = [{type = 'add_to_date', date = [7,7], hour = 8}]}], 
 		options = [ {
 			code = 'close', text = "DIALOGUELEAVE", reqs = [], dialogue_argument = 3, type = 'next_dialogue', bonus_effects = [{code = 'complete_quest', value = 'princess_search'}]
 		} ],
@@ -370,6 +371,7 @@ var data = {
 	
 	anastasia_execution_2 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
+		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_5", reqs = []}], custom_background = "anastasia_execution1", 
 		options = [ {
 			code = 'anastasia_execution_3', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -378,6 +380,7 @@ var data = {
 	
 	anastasia_execution_3 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
+		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_6", reqs = []}], custom_background = "anastasia_execution2", 
 		options = [ {
 			code = 'anastasia_execution_4', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
@@ -409,19 +412,18 @@ var data = {
 	
 	anastasia_execution_6 = {
 		image = null, tags = ['dialogue_scene'], reqs = [],
+		save_scene_to_gallery = true,
 		text = [{text = "ANASTASIA_EXECUTION_12", reqs = []}], custom_background = "anastasia_execution3", 
 		options = [ {
 			code = 'duncans_declaration_start', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, change_dialogue_type = 1, close_speed = 1
 		}],
 	},
 	
-	#TODO add final_words
 	duncans_declaration_start = {
 		image = null, tags = ['dialogue_scene', 'blackscreen_transition_common', 'master_translate'], reqs = [], character = 'duncan',
 		text = [{text = "ANASTASIA_EXECUTION_13", reqs = []}], 
 		options = [ {
-			#code = 'final_words', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
-			code = 'close', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
+			code = 'final_words_1', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1,
 		}],
 	}
 }
