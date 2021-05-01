@@ -2069,7 +2069,8 @@ var TranslationDict = {
 	SCENEDAISY_CLAIM_KINSHIPTEXT = "You tell the man that the girl is your kinsman and his behavior is unacceptable\n\nTaken aback by your interruption, he quickly falls back and passes her to you.\n\nThe girl seems relieved even though she saw through your lie. \n\nShe tells you that her name is Daisy and she will try her best for you. ",
 	SCENEDAISY_PURCHASE_TEXT = "You offer to purchase the poor girl from the man. \n\nAfter some negotiations he offers you the price of 200 gold for her. ",
 	SCENEDAISY_PURCHASE_OPTION1 = "Ask for a discount",
-	SCENEDAISY_PURCHASE_OPTION2 = "Purchase",
+	SCENEDAISY_PURCHASE_OPTION2 = "Purchase (200 gold)",
+	SCENEDAISY_PURCHASE_OPTION2_1 = "Purchase (100 gold)",
 	SCENEDAISY_PURCHASE_OPTION3 = "Refuse",
 	SCENEDAISY_PURCHASE_NEGOTIATE_TEXT1 = "With some additional haggling you manage to make the man drop his demand to 100 gold. But this is his final offer.",
 	SCENEDAISY_PURCHASE_NEGOTIATE_TEXT2 = "Your further attempts to bring the girl's price down have failed and the man asks for 200 gold or tells you to bugger off.",
@@ -2086,7 +2087,10 @@ var TranslationDict = {
 	SCENEDAISY_CONFESS_EVENT_OPTION2 = "Refuse her",
 	SCENEDAISY_CONFESS_ACCEPT_TEXT = "— N..No way! You feel the same?! I can't believe it...\n\nYou press your lips to Daisy and she gives in into your embrace.\n\nShe's hoping to spend this night with you.",
 	SCENEDAISY_CONFESS_REFUSE_TEXT = "You politely refuse Daisy's proposal.\n\n— I see... But if that's too much for you, I could be your... night servant.\n\nIt seems Daisy still has some leftover hope to eventually win you over. ",
-
+	
+	SCENEDAISY_PURCHASE_WORKER_OPTION1 = "Point out her lack of strength will greatly impact her performance (Worker)",
+	SCENEDAISY_PURCHASE_WORKER1 = "The owner begrudgingly agrees with your remark and cuts the price in half.",
+	
 	TUTORIAL_MAINSCREEN = "The center of your Mansion is the list of available characters before you. Click once to see details and skills available to selected character. You can view detailed info about them by double clicking or selecting \"Character Info\" in the left bottom corner. You can assign them to task by clicking on Occupation button. You can use their skills by selecting them at the bottom of the screen. ",
 	
 	
@@ -3592,6 +3596,8 @@ As they pass you continue to move on.""",
 	DIVINE_SYMBOL_12 = """{color=green|Success}
 
 Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
+	DIVINE_SYMBOL_ASSASSIN = "Stealthly Dash (Assassin)",
+	DIVINE_SYMBOL12_1 = "{color=green|Success}\n\nYou nimbly dash through the street without raising any noise thanks to your skills. ",
 	DIVINE_SYMBOL_13 = """{color=red|Failure}
 
 You've tried, but after taking a corner too wildly you crash into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
@@ -4862,8 +4868,12 @@ Sigmund:— Let's get to da feast already.""",
 	
 	
 	AFTER_ELECTION_PRINCESS_1 = """After the feast you find Anastasia nervously waiting for you.""",
-	AFTER_ELECTION_PRINCESS_2 = """— [name]... So, what are you going to do with me now? You did say that you fancied me. Was it the truth, or are you planning to just use me however you feel like now?""",
-	AFTER_ELECTION_PRINCESS_3 = """— So, I'm your slave now... What are you planning to do with me?""",
+	AFTER_ELECTION_PRINCESS_2 = """
+
+— [name]... So, what are you going to do with me now? You did say that you fancied me. Was it the truth, or are you planning to just use me however you feel like now?""",
+	AFTER_ELECTION_PRINCESS_3 = """
+
+— So, I'm your slave now... What are you planning to do with me?""",
 	AFTER_ELECTION_PRINCESS_OPTION_1 = """I have feelings for you""",
 	AFTER_ELECTION_PRINCESS_OPTION_2 = """I'm not really interested in you""",
 	AFTER_ELECTION_PRINCESS_OPTION_3 = """You are just a fine trophy""",
@@ -4932,6 +4942,11 @@ Sigmund:— Let's get to da feast already.""",
 	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
 	ITEMANASTASIA_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
 	
+	SCENEWIP = "Sorry! This scene is currently WIP. ",
+	
+	AMELIASCENEOPTION = "I wonder if you could repay me for my work...",
+	
+	UNIQUE_CLASS = "Can't be learned normally",
 
 	ZEPHYRA_EXTRA_GREET = "— You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
 	ZEPHYRA_EXTRA_GREET2 = "— Hello, [master]. How can I serve you? You must want to ask me some questions?",

@@ -72,7 +72,14 @@ var backgrounds = {
 	anastasia_rape_2 = load("res://assets/images/backgrounds/AnastasiaCG005.png"),
 	aire_amelia1 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
 	aire_amelia2 = load("res://assets/images/backgrounds/AireAmeliaCG002.png"),
-
+	
+	amelia_titjob1 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
+	amelia_titjob2 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
+	amelia_titjob3 = load("res://assets/images/backgrounds/AireAmeliaCG001.png"),
+	
+	anastasia_aire1 = load("res://assets/images/backgrounds/AnastasiaAireCG001.png"),
+	anastasia_aire2 = load("res://assets/images/backgrounds/AnastasiaAireCG002.png"),
+	anastasia_aire3 = load("res://assets/images/backgrounds/AnastasiaAireCG003.png"),
 	}
 
 var scenes = {

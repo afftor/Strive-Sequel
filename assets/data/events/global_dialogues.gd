@@ -111,6 +111,8 @@ var data = {
 		{code = 'amelia_princess_advice', text = "AMELIAFINDPRINCESSOPTION", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'},{type = 'decision', value = 'amelia_interrogation_success', check = false},{type = 'dialogue_selected', check = false, value = 'AMELIAFINDPRINCESSOPTION'}], type = 'next_dialogue', dialogue_argument = 1},
 		
 		
+		{code = "amelia_titjob1", text = "AMELIASCENEOPTION", reqs = [{type = 'faction_reputation', code = 'servants', operant = 'gte', value = 3000}], dialogue_argument = 1, type = 'next_dialogue', remove_after_first_used = true},
+		
 		{code = 'servants_leader_close', text = "SERVANTSINTRODUCTION1REPLY4", reqs = [], dialogue_argument = 4, bonus_effects = [{code = "update_guild"}]},
 		],
 	},

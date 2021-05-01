@@ -638,7 +638,7 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
-				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}], #add second persuation trigger here
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}],
 			},
 		],
 	},
