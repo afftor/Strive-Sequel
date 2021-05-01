@@ -63,6 +63,16 @@ func get_active_quest(code):
 func check_timed_events():
 	for i in stored_events.timed_events:
 		if globals.checkreqs(i.reqs):
+			if i.has('action'):
+				match i.action:
+					'decision':
+						if !ResourceScripts.game_progress.decisions.has(i.code):
+							ResourceScripts.game_progress.decisions.append(i.code)
+					'remove_decision':
+						if ResourceScripts.game_progress.decisions.has(i.code):
+							ResourceScripts.game_progress.decisions.erase(i.code)
+				stored_events.timed_events.erase(i)
+				return
 			var event = scenedata.scenedict[i.code]
 			if event.has('reqs'):
 				for k in event.reqs:
