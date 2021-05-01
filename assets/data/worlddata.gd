@@ -31,7 +31,7 @@ var lands = {
 			
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
 			
-			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}], args = {"oneshot": false}},
+			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}, {type = 'decision', value = 'aire_is_dead', check = false}], args = {"oneshot": false}},
 			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
 			
 			],
