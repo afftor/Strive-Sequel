@@ -843,9 +843,9 @@ var scenedict = {
 		image = 'daisystart',
 		opp_characters = [{type = 'pregen', value = 'Daisy'}],
 		options = [
-		{code = 'daisy_purchase', text = tr("SCENEDAISY_MEET_OPTION1"), reqs = []},
-		{code = 'daisy_claim_kinship', text =  tr("SCENEDAISY_MEET_OPTION2"), reqs = [{type = 'master_is_beast', check = true}]},
-		{code = 'daisy_ignore_purchase', text = tr("SCENEDAISY_MEET_OPTION3"), reqs = []},
+		{code = 'daisy_purchase', text = tr("SCENEDAISY_MEET_OPTION1"), reqs = [], type = 'next_dialogue'},
+		{code = 'daisy_claim_kinship', text =  tr("SCENEDAISY_MEET_OPTION2"), type = 'next_dialogue', reqs = [{type = 'master_is_beast', check = true}]},
+		{code = 'daisy_ignore_purchase', text = tr("SCENEDAISY_MEET_OPTION3"), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_claim_kinship = {
@@ -855,7 +855,7 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [{code = 'make_story_character', value = 'Daisy'},{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_purchase = {
@@ -863,31 +863,45 @@ var scenedict = {
 		tags = ['linked_event'],
 		receiver = 'master',
 		image = 'daisystart',
-		options = [{code = 'daisy_purchase_negotiate', text = tr("SCENEDAISY_PURCHASE_OPTION1"), reqs = []},
-		{code = 'daisy_purchase_confirm', text = tr("SCENEDAISY_PURCHASE_OPTION2"), reqs = [{type = "has_money", value = 200}]},
-		{code = 'daisy_purchase_leave', text = tr("SCENEDAISY_PURCHASE_OPTION3"), reqs = []},
+		options = [{code = 'daisy_purchase_negotiate', text = tr("SCENEDAISY_PURCHASE_OPTION1"), reqs = [], type = 'next_dialogue'},
+		{code = 'daisy_purchase_negotiate', text = tr("SCENEDAISY_PURCHASE_WORKER_OPTION1"), type = 'next_dialogue', reqs = [{
+			type = 'master_check', value = [{code = 'has_profession', profession = 'worker', check = true}]}]},
+		{code = 'daisy_purchase_confirm', text = tr("SCENEDAISY_PURCHASE_OPTION2"), type = 'next_dialogue', reqs = [{type = "has_money", value = 200}]},
+		{code = 'daisy_purchase_leave', text = tr("SCENEDAISY_PURCHASE_OPTION3"), type = 'next_dialogue', reqs = []},
 		],
 	},
+	
 	daisy_purchase_negotiate = {
-		variations = [ #variations are used if previous option can have multiple outcomes. If variation's requirements are passed it triggers and the rest is ignored. Priority is set by order. 
+		variations = [
+			{reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'worker', check = true}]}],
+			text = tr("SCENEDAISY_PURCHASE_WORKER1"),
+			common_effects = [],
+			tags = ['linked_event'],
+			image = 'daisystart',
+			options = [
+				{code = 'daisy_purchase_confirm_discount', text = tr("SCENEDAISY_PURCHASE_OPTION2_1"), type = 'next_dialogue', reqs = [{type = "has_money", value = 100}]},
+				{code = 'daisy_purchase_leave', type = 'next_dialogue', text = tr("SCENEDAISY_PURCHASE_OPTION3"), reqs = []},
+				]
+			},
 			{reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 3}, {code = 'stat', stat = 'charm', operant = 'gte', value = 15, orflag = true}]}],
 			text = tr("SCENEDAISY_PURCHASE_NEGOTIATE_TEXT1"),
 			common_effects = [],
 			tags = ['linked_event'],
 			image = 'daisystart',
 			options = [
-				{code = 'daisy_purchase_confirm_discount', text = tr("SCENEDAISY_PURCHASE_OPTION2"), reqs = [{type = "has_money", value = 100}]},
-				{code = 'daisy_purchase_leave', text = tr("SCENEDAISY_PURCHASE_OPTION3"), reqs = []},
+				{code = 'daisy_purchase_confirm_discount', text = tr("SCENEDAISY_PURCHASE_OPTION2_1"), type = 'next_dialogue', reqs = [{type = "has_money", value = 100}]},
+				{code = 'daisy_purchase_leave', text = tr("SCENEDAISY_PURCHASE_OPTION3"), type = 'next_dialogue', reqs = []},
 				]
 			},
+			
 			{reqs = [],
 			text = tr("SCENEDAISY_PURCHASE_NEGOTIATE_TEXT2"),
 			image = 'daisystart',
 			common_effects = [],
 			tags = ['linked_event'],
 			options = [
-				{code = 'daisy_purchase_confirm', text = tr("SCENEDAISY_PURCHASE_OPTION2"), reqs = [{type = "has_money", value = 200}]},
-				{code = 'daisy_purchase_leave', text = tr("SCENEDAISY_PURCHASE_OPTION3"), reqs = []},
+				{code = 'daisy_purchase_confirm', text = tr("SCENEDAISY_PURCHASE_OPTION2"), type = 'next_dialogue', reqs = [{type = "has_money", value = 200}]},
+				{code = 'daisy_purchase_leave', text = tr("SCENEDAISY_PURCHASE_OPTION3"), type = 'next_dialogue', reqs = []},
 				],
 				
 			}
@@ -902,7 +916,7 @@ var scenedict = {
 		{code = 'make_story_character', value = 'Daisy'}, #make_story_character takes character data from worldgen.pregen_characters
 		{code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_purchase_confirm_discount = {
@@ -912,7 +926,7 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [{code = 'money_change', operant = '-', value = 100}, {code = 'make_story_character', value = 'Daisy'}, {code = 'add_timed_event', value = "daisy_first_event", args = [{type = 'add_to_date', date = [4,6], hour = 18}]}],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_purchase_leave = {
@@ -922,7 +936,7 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_ignore_purchase = {
@@ -932,7 +946,7 @@ var scenedict = {
 		image = 'daisystart',
 		common_effects = [],
 		options = [
-		{code = 'close', text = tr('DIALOGUECLOSE'), reqs = []},
+		{code = 'close', text = tr('DIALOGUECLOSE'), type = 'next_dialogue', reqs = []},
 		],
 	},
 	
@@ -943,8 +957,8 @@ var scenedict = {
 		reqs = [{type = 'unique_character_at_mansion', name = 'daisy', check = true, negative = 'repeat_next_day'}],#this requirement only applies when checking timed_events. 'negative' means what resolution should apply when requirement is not met.
 		image = 'daisyevent',
 		options = [
-		{code = 'daisy_first_event_reassure', text = tr("SCENEDAISY_FIRST_EVENT_OPTION1"), reqs = []},
-		{code = 'daisy_first_event_discipline', text = tr("SCENEDAISY_FIRST_EVENT_OPTION2"), reqs = []},
+		{code = 'daisy_first_event_reassure', text = tr("SCENEDAISY_FIRST_EVENT_OPTION1"), type = 'next_dialogue', reqs = []},
+		{code = 'daisy_first_event_discipline', text = tr("SCENEDAISY_FIRST_EVENT_OPTION2"), type = 'next_dialogue', reqs = []},
 		],
 	},
 	daisy_first_event_reassure = {

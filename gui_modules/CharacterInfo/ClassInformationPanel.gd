@@ -26,12 +26,14 @@ func open(classcode, person):
 	text += ResourceScripts.descriptions.get_class_traits(person, tempclass)
 	$bonus.bbcode_text = text
 	
-	text = tr('CLASSREQS')+"\n"
-	if tempclass.reqs.size() > 0:
+	text = tr('CLASSREQS')+":\n"
+	if tempclass.reqs.size() > 0 && tempclass.reqs[0].code != 'disabled':
 		if gui_controller.exploration != null && gui_controller.exploration.get_node("GuildShop").is_visible():
 			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass, false)
 		else:
 			text += ResourceScripts.descriptions.get_class_reqs(person, tempclass)
+	elif tempclass.reqs.size() > 0  && tempclass.reqs[0].code == 'disabled':
+		text += tr("UNIQUECLASS")
 	else:
 		text += tr("REQSNONE")
 	$reqs.bbcode_text = text

@@ -1348,8 +1348,17 @@ func common_effects(effects):
 				input_handler.get_spec_node(input_handler.NODE_YESORNOPANEL, [self, "yes_message", "no_message", i.text])
 			'close_guild_window':
 				gui_controller.nav_panel.select_location("aliron")
-			'heal_full_party':
-				ResourceScripts.game_party.heal_full_party()
+			'add_item':
+				var item = Items.itemlist[i.item]
+				var counter = i.number
+				if item.type == 'usable':
+					while counter > 0:
+						AddItemToInventory(CreateUsableItem(item.code))
+						counter -= 1
+				elif item.type == 'gear':
+					while counter > 0:
+						counter -= 1
+						AddItemToInventory(CreateGearItem(item.code, {}))
 
 func yes_message():
 	input_handler.interactive_message(yes, '', {})

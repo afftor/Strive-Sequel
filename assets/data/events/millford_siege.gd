@@ -245,9 +245,12 @@ var data = {
 		text = [{text = "DIVINE_SYMBOL_11", reqs = []}],
 		options = [ {
 			code = 'divine_symbol_11', text = "DIVINE_SYMBOL_OPTION_10", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
-		}, {
+		},
+		{code = 'divine_symbol_11_1', text = "DIVINE_SYMBOL_ASSASSIN", reqs = [{type = 'master_check', value = [{code = 'has_profession', profession = 'assassin', check = true}]}], dialogue_argument = 1, type = 'next_dialogue'},
+		 {
 			code = 'quest_fight', args = 'patrol', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
-		}],
+		},
+		],
 	},
 	
 	divine_symbol_11 = {
@@ -268,6 +271,16 @@ var data = {
 		}
 		]
 	},
+	
+	
+	divine_symbol_11_1 = {
+			reqs = [],
+			image = 'dome', tags = ['dialogue_scene'],
+			text = [{text = "DIVINE_SYMBOL12_1", reqs = []}],
+			options = [ {
+				code = 'divine_symbol_12', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			}],
+		}, 
 	
 	patrol_win = {
 		image = 'dome', tags = ['dialogue_scene'],
