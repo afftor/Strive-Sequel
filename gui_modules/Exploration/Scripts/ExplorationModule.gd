@@ -1011,7 +1011,7 @@ func open_location_actions():
 	var newbutton
 	if active_location.has("locked"):
 		if active_location.locked:
-			#better do it using actions next time
+			#better do it using actions next time. upd: cations doesn't for for dungeons
 			if test_stage("lead_convoy_quest", "stage3"):
 				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 				newbutton.toggle_mode = true
@@ -1022,9 +1022,13 @@ func open_location_actions():
 				newbutton.toggle_mode = true
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
-			
 			return
-			
+	if active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
+			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+			newbutton.toggle_mode = true
+			newbutton.text = tr('Search')
+			newbutton.connect("toggled", self, 'search_kobold', [newbutton])
+			return
 	match active_location.type:
 		'dungeon':
 			enter_dungeon()
@@ -2403,3 +2407,8 @@ func combat_duncan_greg_event(pressed, button):
 	#input_handler.ClearContainer($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
 func meet_duncan_event(pressed, button):
 	input_handler.interactive_message('divine_symbol_6', '', {})
+func search_kobold(pressed, button):
+	if (ResourceScripts.game_progress.seen_dialogues.has("LOOKING_FOR_PRINCESS_6")):
+		input_handler.interactive_message('looking_for_princess_5', '', {}) #already saw him
+	else:
+		input_handler.interactive_message('looking_for_princess_3', '', {}) #first time seeing

@@ -670,7 +670,7 @@ func enemy_turn(pos):
 	if !fighter.can_act():
 		#combatlogadd("%s cannot act" % fighter.name)
 		fighter.process_event(variables.TR_TURN_F)
-		fighter.displaynode.rebuildbuffs()
+		fighter.displaynode.rebuildbuffs() #I got error here once @SphinxKingStone
 		call_deferred('select_actor')
 		return
 	#Selecting active skill
