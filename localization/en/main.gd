@@ -3591,8 +3591,8 @@ First Sentry:— Why are we even doing this? It's not like those bastards can ge
 Second Sentry:— Yah, I know. We've been at this for days and nothing. I'd rather grab a beer and a pair of tits instead of a fuckin' spear. 
 
 As they pass you continue to move on.""",
-	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You're about to be cut off, and won't be able to retreat unnoticed.""",
-	DIVINE_SYMBOL_OPTION_10 = """Make a run for it""",
+	DIVINE_SYMBOL_11 = """As you slowly make your way into the town center, you notice your position is being approached by another patrol. You’re about to be cut off, and won't be able to retreat unnoticed.""",
+	DIVINE_SYMBOL_OPTION_10 = """Make a run for it (Physics Check)""",
 	DIVINE_SYMBOL_12 = """{color=green|Success}
 
 Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
@@ -3603,7 +3603,7 @@ Thanks to your quick reaction, you've managed to nimbly avoid the patrol.""",
 You've tried, but after taking a corner too wildly you crash into a pile of crates. The patrol has noticed the noise you've made and now you have no other option but to fight.""",
 	DIVINE_SYMBOL_14 = """You've managed to defeat the patrol relatively quietly. Hoping not be discovered again, you leave the place.""",
 	DIVINE_SYMBOL_15 = """You arrive at a small square where your target should be. However, there are multiple buildings anyone of which could be it.""",
-	DIVINE_SYMBOL_OPTION_11 = """Search""",
+	DIVINE_SYMBOL_OPTION_11 = """Search (Wits Factor Check)""",
 	DIVINE_SYMBOL_16 = """{color=red|Failure}
 
 You've entered the wrong building. A few rebels recognize you as an intruder and arm themselves.""",
@@ -3624,7 +3624,7 @@ Second Guard:— She's of beast blood, she acts like lunatic and looks like a br
 Second Guard:— You shut yo-
 
 The guards stop halfway noticing your approach. They give you a warring look waiting for your further actions.""",
-	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit""",
+	DIVINE_SYMBOL_OPTION_12 = """Greg called for me to pay him a visit (Charm Factor Check)""",
 	DIVINE_SYMBOL_OPTION_13 = """Attack them""",
 	DIVINE_SYMBOL_20_1 = """Second Guard:— Damnit, what does he want now? 
 
@@ -3778,14 +3778,11 @@ Duncan:— [name], you can return to Aliron now. We shall plan out our next move
 You lead your new entourage out the door. Opening your map you show the group the place Duncan designated. Telling them to wait there and if anyone asks they're with you.""",
 	FINAL_OPERATON_MAGES_5_4 = """— I have zero interest in helping with anything related to the Fighters. Why don't you go ask them for help, it's their job or whatever. Now if you'll excuse me I've got actual business to attend to, see yourself out.""",
 
-	INITIATE_HIDEOUT_ATTACK_1 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.
-
-— Alright let's not waste time. Prepare your men and we will begin.""",
+	INITIATE_HIDEOUT_ATTACK_1 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.""",
 	INITIATE_HIDEOUT_ATTACK_2 = """You arrive at the location Duncan marked for you, a forested area close to the hideout. Duncan is in the midst of the group from the Fighters Guild talking with a few of them. Though as he sees you he waves them off and waves you over to him.
 
 You also notice your small group of mages, one waves to you as you pass.
 — Good, you're here. And it seems you followed my advice. Though I trust you didn't tell Myr the details?""",
-
 	INITIATE_HIDEOUT_ATTACK_6 = """— Alright let's not waste time. Prepare your men and we will begin.""",
 	INITIATE_HIDEOUT_ATTACK_OFCOURSE = """Of course""",
 	INITIATE_HIDEOUT_ATTACK_OPTION_1 = "I want to be on the frontline",
@@ -3833,7 +3830,8 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 {color=yellow|Aire:— ...Understood.} 
 
 {color=aqua|Greg:— Damnit, this whole plan has gone downhill rapidly.}""",
-	GUILD_ATTACK_ON_HIDEOUT_4_2 = """In the deeper rooms of the rebel hideout Greg barges into a room occupied by Anastasia.
+
+GUILD_ATTACK_ON_HIDEOUT_4_2 = """In the deeper rooms of the rebel hideout Greg barges into a room occupied by Anastasia.
 
 {color=aqua|Greg:— We are under attack. The guilds have found us.}
 
@@ -3850,9 +3848,14 @@ You prepare yourself and your group for the upcoming fight. Duncan can be seen m
 
 {color=yellow|Anastasia:— ...}""",
 
-	FINAL_BOSS_1 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.""",
+	FINAL_BOSS_1 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
+
+Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the back of the room a man oversees the activities of the rebels.
+
+-Ah, it seems we have company. All of you form up, stop the guild scum.""",
 
 	FINAL_BOSS_2 = """Fighting your way down the long tunnelway you come to an archway and quickly walk through. You enter a decent sized room, perhaps it could have been a storeroom at some point.
+
 Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the center of the room is an elf. She quickly adopts a fighting stance.
 
 — We've got company. To arms!""",
@@ -3878,6 +3881,7 @@ It's the elf you saved from the lich. Her stance falters as she recognises you. 
 {color=yellow|Duncan:— Nice work out there. But I'm afraid there's nobody else here, including the princess. Though this bitch should know something for sure.}""",
 
 	AIRE_COMBAT_ON_WIN_3 = """{color=yellow|Aire:— Damn you… You won't get her!}
+
 {color=aqua|Duncan:— Shut it, elf. You've failed to protect this place and you've failed to protect your princess. She'll get what's coming to her just as you will.}
 
 {color=yellow|Aire:— Bastard… Agh-}
@@ -3890,11 +3894,7 @@ Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
 {color=yellow|Aire:— Bastard… Agh-}
 
-Before she can say anything else Duncan's men seize her and gag her mouth.
-
-Quickly taking stock of your surroundings there's a few rebels carrying crates in a hurry. Near the back of the room a man oversees the activities of the rebels.
-
-— Ah, it seems we have company. All of you form up, stop the guild scum.""",
+Before she can say anything else Duncan's men seize her and gag her mouth.""",
 
 
 	GREG_COMBAT_ON_WIN_1 = """The man staggers back as breathing heavily. You look around to see Duncan cut down a rebel behind you. stepping up beside you as the both of you confront the apparent ringleader of this hideout.
@@ -3915,7 +3915,7 @@ Duncan turns to speak with you. The guild members begin to handcuff the rebels t
 
 	GREG_COMBAT_ON_WIN_3 = """Duncan turns to speak with you. The guild members begin to handcuff the rebels that aren't already dead.
 
-— You've shown considerable skill here today.""",
+— You've shown considerable skill here today.""", # never should be used
 
 	GREG_COMBAT_ON_WIN_4 = """Duncan turns to speak with you. The guild members begin to handcuff the rebels that aren't already dead.
 
@@ -4045,7 +4045,8 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 	SEARCH_DUNGEON_OPTION_19 = """Actually I wanted to ask a few questions.""",
 	SEARCH_DUNGEON_OPTION_20 = """Let's cut to the chase, tell us where the princess is hiding.""",
 	SEARCH_DUNGEON_OPTION_21 = """I have to go""",
-	SEARCH_DUNGEON_8_1 = """— I won't be telling you where Anastasia is, not to you, nor anyone else in this city. Other than that, I don't mind some company. (if met previously) And I know you aren't a bad person at least.""",
+	SEARCH_DUNGEON_8_1 = """— I won't be telling you where Anastasia is, not to you, nor anyone else in this city. Other than that, I don't mind some company.""",
+	SEARCH_DUNGEON_8_1_IF_MET = """— I won't be telling you where Anastasia is, not to you, nor anyone else in this city. Other than that, I don't mind some company. And I know you aren't a bad person at least.""",
 	SEARCH_DUNGEON_OPTION_22 = """Why are you so loyal to the princess?""",
 	SEARCH_DUNGEON_OPTION_23 = """What's your role in the rebellion?""",
 	SEARCH_DUNGEON_OPTION_24 = """What do you think about me?""",
@@ -4120,8 +4121,8 @@ You hand makes a hard slap on Aire's cheek which turns red, yet her expression d
 
 
 
-	LOOKING_FOR_PRINCESS_START = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
-	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we've got no leads as to where she may have gone. Our interrogation of the prisoners hasn't turned up much.""",
+	FINAL_OPERATION_MESSAGE = """In the morning you receive a messenger who asks you to meet Duncan. It seems fairly urgent and he should have a new mission for you.""",
+	LOOKING_FOR_PRINCESS_1 = """— Many of the rebel forces now lie dead or reside in our prison. Unfortunately we missed the princess in our raid and we’ve got no leads as to where she may have gone. Our interrogation of the prisoners hasn’t turned up much.""",
 	LOOKING_FOR_PRINCESS_2 = """
 	
 — Don't think I've forgotten your bravery in the raid. Here, your reward. I trust I can continue to count on you, you've proven yourself to be very capable.""",
@@ -4154,6 +4155,9 @@ The kobold tediously looked you over.""",
 	LOOKING_FOR_PRINCESS_OPTION_10 = """That's rather expensive for something so simple""",
 	LOOKING_FOR_PRINCESS_OPTION_11 = """I'd rather just take it by force""",
 	LOOKING_FOR_PRINCESS_OPTION_FINE = """Fine, take the gold""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_500 = """Fine, take the gold (500 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_1000 = """Fine, take the gold (1000 gold)""",
+	LOOKING_FOR_PRINCESS_OPTION_FINE_1500 = """Fine, take the gold (1500 gold)""",
 	LOOKING_FOR_PRINCESS_OPTION_13 = """I'll consider it and return then""",
 	LOOKING_FOR_PRINCESS_10 = """— Hah, trying to take me for a fool? I don't know how simple it is, but I can see you want it, and I bet you have the means to pay. Take it or leave it""",
 	LOOKING_FOR_PRINCESS_11 = """Before you are able to make a move, the kobold swiftly escapes in a small hole in the ground taking his possessions with him. There's no way for you to follow him like this. You should probably return another day.""",
@@ -4161,6 +4165,7 @@ The kobold tediously looked you over.""",
 
 — Hey, made up your mind yet?""",
 	LOOKING_FOR_PRINCESS_OPTION_14 = """Purchase""",
+	LOOKING_FOR_PRINCESS_OPTION_14_500 = """Purchase (500 gold)""",
 	LOOKING_FOR_PRINCESS_13 = """After some time you find the same kobold with a bracelet who seems to have returned to the same spot. 
 
 	— It's the brute again. You better not try to give me shit again. I'm feeling generous so I'll still sell you the bracelet you want... for 1000 gold.""",
@@ -4225,7 +4230,7 @@ Priestess:— Cease your childish behavior, human, if you are truly royalty, act
 
 Anastasia:— They will kill me, like they killed my dad. And you betrayed me. I thought I could trust you!""",
 	LOOKING_FOR_PRINCESS_OPTION_29 = """*Remain silent*""",
-	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth*""",
+	LOOKING_FOR_PRINCESS_OPTION_30 = """*Slap the princess and shut her mouth* (Physics Factor check)""",
 	LOOKING_FOR_PRINCESS_OPTION_31 = """Lets not jump to conclusions, surely we can discuss this""",
 	LOOKING_FOR_PRINCESS_31 = """{color=green|Success}
 	
@@ -4958,7 +4963,7 @@ Sigmund:— Let's get to da feast already.""",
 	ZEPHYRA_EXTRA_OPTION2_1 = "Alios",
 	ZEPHYRA_EXTRA_REPLY2_1 = """— Alios is a deity of the winds. I'm not surprised you haven't heard of him, he does not seem very interested in being worshipped, so only a very few people bother with him. 
 
-	— Me? Of course it's impossible for me to not worship him. Once you become a champion it's ingrained in you, it's a thing affecting your every step in some way. """,
+— Me? Of course it's impossible for me to not worship him. Once you become a champion it's ingrained in you, it's a thing affecting your every step in some way. """,
 	ZEPHYRA_EXTRA_OPTION2_1_1 = "You seem rather casual about it",
 	ZEPHYRA_EXTRA_OPTION2_1_2 = "I'd hate to be in a such a position, I value my independence",
 	ZEPHYRA_EXTRA_OPTION2_1_3 = "So you both are good-for-nothing loners",
@@ -4969,7 +4974,8 @@ Sigmund:— Let's get to da feast already.""",
 	ZEPHYRA_EXTRA_OPTION2_2 = "Your Past",
 	ZEPHYRA_EXTRA_REPLY2_2 = """— What I was doing prior to becoming a champion? To tell you the truth, I don't remember. One day I was up in the middle of a forest, at that moment I was already a champion. Mysterious right? 
 
-	— For some reason, I've never been that interested in what came before that, so there it is. """,
+— For some reason, I’ve never been that interested in what came before that, so there it is. """,
+
 	ZEPHYRA_EXTRA_OPTION2_3 = "Princess",
 	ZEPHYRA_EXTRA_REPLY2_3 = """— So you are hunting that princess to stop the rebellion? Huh, it must be nice to be a princess, I wish I could be one, then I could live a rich boring life and marry a prince. Isn't that like every girl's dream?""",
 	ZEPHYRA_EXTRA_OPTION3 = "So what is your plan exactly?",
@@ -4997,7 +5003,9 @@ Sigmund:— Let's get to da feast already.""",
 	AMELIA_BONUS_QUESTION_REPLY2 = """— Oh my, aren't you a flatterer? You would really prefer this mutt cat to royal blood? How silly. To tell you the truth, for most of my life I was just another servant. I expect I have been one since birth. And now I don't even have a proper Master. Would you be up to the challenge?.. I'm just kidding. But be sure I appreciate your company.""",
 	AMELIA_BONUS_QUESTION_REPLY3 = "— He-he, is it so? Fine. Next time you can just lie to earn some extra favor points, but I wouldn't advise getting your hopes up about her, she'll always be a liability to us. ",
 	AMELIA_BONUS_QUESTION_REPLY4 = "— Oh, is that so? That's quite convenient. I guess we won't have to worry about the influence of her charms on you.", 
-	AMELIA_BONUS_QUESTION_REPLYALL = "— Well, I will not hold you any longer, good luck with your mission. ",
+	AMELIA_BONUS_QUESTION_REPLYALL = """
+
+— Well, I will not hold you any longer, good luck with your mission. """,
 
 
 	

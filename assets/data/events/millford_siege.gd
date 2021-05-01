@@ -359,14 +359,14 @@ var data = {
 		variations = [ {
 			reqs = [{type = 'master_check', value = [{code = 'stat', stat = 'charm_factor', operant = 'gte', value = 5}]}], 
 			image = 'city_guards', tags = ['dialogue_scene'],
-			text = [{text = "DIVINE_SYMBOL_20", reqs = []}],
+			text = [{text = "DIVINE_SYMBOL_20_1", reqs = []}],
 			options = [ {
 				code = 'divine_symbol_18', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 4, type = 'next_dialogue'
 			}],
 		}, {
 			reqs = [],
 			image = 'city_guards', tags = ['dialogue_scene'],
-			text = [{text = "", reqs = []}],
+			text = [{text = "DIVINE_SYMBOL_20_1", reqs = []}],
 			options = [ {
 				code = 'quest_fight', args = '', text = "DIALOGUEFIGHTOPTION", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 			}],
@@ -511,7 +511,7 @@ var data = {
 	divine_symbol_28 = {
 		image = null, tags = ['dialogue_scene'], character = "zephyra",
 		text = [{text = "DIVINE_SYMBOL_39", reqs = []}],
-		common_effects = [{code = 'make_story_character', value = 'zephyra', recruit_from_location = true},
+		common_effects = [{code = 'make_story_character', value = 'Zephyra', recruit_from_location = true},
 		{code = 'decision', value = 'ZephyraRecruited'}],
 		options = [ {
 			code = 'divine_symbol_30', text = "DIALOGUECONTINUE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
@@ -580,14 +580,14 @@ var data = {
 			bonus_effects = [{code = "return_to_mansion"}],
 		}],
 	},
+	
 	#Fighter/mage guild leaders meet back to normal
 	divine_symbol_36 = {
 		image = null, tags = ['dialogue_scene', 'master_translate'], character = "duncan",
 		text = [ {text = "DIVINE_SYMBOL_49", reqs = []}],
 		
-		common_effects = [{code = 'add_timed_event', value = "message_before_looking_operation", 
+		common_effects = [{code = 'add_timed_event', value = "final_operation_message", 
 		args = [{type = 'add_to_date', date = [5,9], hour = 9}]}, 
-		{code = 'progress_quest', value = 'final_operation', stage = 'stage1'},
 		{code = 'material_change', operant = '-', material = 'blessed_divine_symbol', value = 1}],
 		
 		options = [ {

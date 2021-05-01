@@ -1416,6 +1416,13 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'final_operation', stage = 'stage1'}], 
+			target = 'final_operation_start',
+			target_option = 0,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
 			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage1'}], 
 			target = 'looking_for_princess_1',
 			target_option = 3,
@@ -1439,9 +1446,16 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}],
+			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_SERVANTS_1'}],
 			target = 'final_operation_servants_1',
 			target_option = 1,
+		},
+		{
+			code = 'default', 
+			name = "Meet Leader", 
+			reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = false, value = 'AMELIA_BONUS_QUESTION'}],
+			target = 'amelia_dialogue_start',
+			target_option = 0,
 		},
 		{
 			code = 'default', 
@@ -1477,7 +1491,7 @@ var dialogue_inits = {
 		{
 			code = 'default', 
 			name = "Ask for Help", 
-			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_1'}],
+			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_WORKERS_1'}],
 			target = 'final_operation_workers_1',
 			target_option = 1,
 		},
@@ -1513,6 +1527,13 @@ var dialogue_inits = {
 			target_option = 1,
 		},
 		
+		{
+			code = 'default', 
+			name = "Ask for Help", 
+			reqs = [{type = 'dialogue_seen', check = true, value = 'FINAL_OPERATON_START'}, {type = 'dialogue_seen', check = false, value = 'FINAL_OPERATON_MAGES_1'}],
+			target = 'final_operation_mages_1',
+			target_option = 1,
+		},
 		#fred_return_to_myr_1
 #		{
 #			code = 'default', 

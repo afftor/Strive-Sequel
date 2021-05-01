@@ -204,7 +204,8 @@ func update_lists():
 	update_confirm_button()
 
 func update_confirm_button():
-	$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || (location_selected != null && (location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
+	if (location_selected != null):
+		$MarginContainer/area/to_panel/HBoxContainer/CenterContainer2/ConfirmButton.disabled = characters.size() == 0 || ((location_selected.has('captured') && location_selected.captured == true)) || location_selected.id == from_location_selected.id
 
 
 func update_from_list():

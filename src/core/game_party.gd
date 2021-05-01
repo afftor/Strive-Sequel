@@ -129,3 +129,7 @@ func check_profession_limit(name, value):
 		if i.has_profession(name):
 			counter += 1
 	return counter < value
+
+func heal_full_party():
+	for i in characters.values():
+		i.heal(i.hp)

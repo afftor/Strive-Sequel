@@ -17,7 +17,16 @@ func _ready():
 #	for module in self.get_children():
 #		module.update()
 #	update()
+	$TalkButton.connect("pressed", self, 'talk', [])
 
+func talk():
+	input_handler.active_character = active_person
+	if active_person.get_stat("unique") == "kurdan":
+		gui_controller.close_scene(self)
+		input_handler.interactive_message("kurdan_dialogue_start", '',{})
+	elif active_person.get_stat("unique") == "zephyra":
+		gui_controller.close_scene(self)
+		input_handler.interactive_message("zephyra_dialogue_start", '',{})
 
 func update():
 	# active_person = gui_controller.mansion.active_person if SummaryModule.selected_person == null else SummaryModule.selected_person

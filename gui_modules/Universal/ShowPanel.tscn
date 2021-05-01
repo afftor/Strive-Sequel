@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Fonts_v2/FontThemes/MainMiddle.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide.png" type="Texture" id=2]
+[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/button_hide_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/Textures_v2/QUEST_DIALOGUE/panel_questdialogue_small.png" type="Texture" id=5]
+
+[node name="ShowPanel" type="TextureRect"]
+margin_left = 430.0
+margin_top = 964.0
+margin_right = 1490.0
+margin_bottom = 1050.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowButton" type="TextureButton" parent="."]
+margin_left = 47.0
+margin_top = 22.3251
+margin_right = 1017.0
+margin_bottom = 62.3251
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ShowButton"]
+margin_right = 970.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Show"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 0.0392157, 0, 0.0627451, 0.792157 )
+show_behind_parent = true
+margin_right = 1060.0
+margin_bottom = 86.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

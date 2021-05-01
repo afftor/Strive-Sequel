@@ -28,10 +28,9 @@ func hide_dialogue(action = "hide"):
 	for node in self.get_children():
 		if node.get_class() == "Tween":
 			continue
-		if !node.name in ["ShowPanel", "CustomBackground"]:
+		if !node.name in ["ShowPanel", "CustomBackground", "ShowPanelBackground"]:
 			node.visible = action != "hide"
 	get_node("ShowPanel").visible = action == "hide"
-
 
 func open(scene):
 	if gui_controller.dialogue == null:

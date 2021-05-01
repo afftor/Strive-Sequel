@@ -124,7 +124,7 @@ var data = {
 	
 	#fight demon-kurdan
 	pre_final_boss_5 = {
-		image = null, tags = ['dialogue_scene'],
+		image = null, tags = ['dialogue_scene', 'master_translate'],
 		text = [{text = "PRE_FINAL_BOSS_9", reqs = []}], character = "demon_female",
 		options = [ {
 			code = 'quest_fight', args = 'demon_kurdan', type = 'next_dialogue',

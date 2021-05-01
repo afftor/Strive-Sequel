@@ -29,8 +29,10 @@ var lands = {
 			{code = 'aliron_church_enter', text = "Aliron Church", reqs = [{type = 'dialogue_seen', check = true, value = 'ALIRONCHURCHFIRSTCOME'}], args = {"oneshot": false}},
 			{code = 'after_mines_convoy_1', text = "Lead the convoy", reqs = [{type = 'active_quest_stage', value = 'lead_convoy_quest', stage = 'stage2'}], args = {"oneshot": false}},
 			
-			
 			{code = "princess_search_dungeon_1", text = "Visit Jail", reqs = [{type = 'active_quest_stage', value = 'princess_search', stage = 'stage2'}, {type = 'dialogue_seen', check = true, value = 'SEARCH_FIGHTERS_3'},{type = 'dialogue_seen', check = false, value = 'SEARCH_DUNGEON_1'}], args = {"oneshot": false}},
+			
+			{code = 'princess_persuation_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = false}, {type = 'decision', value = 'persuade_1_completed', check = false}, {type = 'decision', value = 'aire_is_dead', check = false}], args = {"oneshot": false}},
+			{code = 'princess_persuation_2_init', text = "Meet princess in jail", reqs = [{type = 'active_quest_stage', value = 'princess_persuasion', stage = 'stage1'}, {type = 'decision', value = 'AnastasiaPersuasionNextday', check = true}], args = {"oneshot": false}},
 			
 			],
 		capital_options = ['quest_board','location_purchase'],
@@ -1393,8 +1395,8 @@ var dungeons = {
 		travel_time = [4,6],
 		
 		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'mines_arrival_start', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'MINES_ARRIVAL_START'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2, operant = 'gte'}]},
-		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 10 - 2, operant = 'gte'}]}]
+		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
+		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 9 - 2, operant = 'gte'}]}]
 	},
 	unique_final_operation_location = {
 		code = 'unique_final_operation_location',
@@ -1421,7 +1423,13 @@ var dungeons = {
 		
 		area = 'plains',
 		travel_time = [4,6],
-		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = []}]
+		scripteventdata = [{trigger = 'enter', event = 'custom_event', args = 'initiate_hideout_attack', reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'INITIATE_HIDEOUT_ATTACK_6'}]},
+		{trigger = 'finish_combat', event = 'custom_event', args = 'guild_attack_on_hideout_1',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'GUILD_ATTACK_ON_HIDEOUT_1'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
+		{trigger = 'finish_combat', event = 'custom_event', args = 'final_boss_start',reqs = [
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_1', orflag = true},
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_3', orflag = true}, 
+			{code = 'value_check', type = 'dialogue_seen', check = false, value = 'FINAL_BOSS_4', orflag = true}, 
+			{code = 'stage', value = 9 - 2, operant = 'gte'}]}]
 	},
 	dungeon_bandit_fort = {
 		code = 'dungeon_bandit_fort',
@@ -1705,6 +1713,7 @@ var pregen_characters = {
 	Kurdan = {
 		code = 'kurdan',
 		name = 'Kurdan',
+		unique = 'kurdan',
 		surname = '',
 		race = 'Orc',
 		sex = 'male',
