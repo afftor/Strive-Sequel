@@ -780,9 +780,11 @@ func test_mode():
 		#ResourceScripts.game_progress.decisions.append("aire_raped")
 		#input_handler.interactive_message('looking_for_princess_3', '', {})
 		#input_handler.interactive_message('pre_final_boss_start', '', {})
+		ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
+		ResourceScripts.game_progress.decisions.append("marry_option")
 		globals.common_effects([{code = 'progress_quest', value = 'princess_persuasion', stage = 'stage1'}])
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_mines', stage = 'stage3'}])
-		#ResourceScripts.game_progress.decisions.append("aire_raped")
+		#ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
 		
 		#globals.common_effects([{code = 'progress_quest', value = 'civil_war_start', stage = 'stage4'}])
 		#ResourceScripts.game_progress.decisions.append("fred_bribe_taken")

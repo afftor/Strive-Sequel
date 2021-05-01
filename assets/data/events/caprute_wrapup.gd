@@ -320,6 +320,7 @@ var data = {
 	mindcontrol_6 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_18", reqs = []}],
+		common_effects = [{code = 'decision', value = 'mindbreak_enabled'}],
 		options = [ {
 			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}], 
 		}, {
@@ -338,6 +339,7 @@ var data = {
 	mindcontrol_8 = {
 		image = null, tags = ['dialogue_scene'], reqs = [], character = 'xari',
 		text = [{text = "MIND_CONTROL_20", reqs = []}],
+		common_effects = [{code = 'decision', value = 'mindbreak_enabled'}],
 		options = [ {
 			code = 'close', text = "MIND_CONTROL_OPTION_14", reqs = [], dialogue_argument = 1, bonus_effects = [{code = 'remove_quest_location', value = 'quest_mages_xari'}]
 		}, {

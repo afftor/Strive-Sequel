@@ -429,7 +429,8 @@ var data = {
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
-					]
+					],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_8',
@@ -466,7 +467,8 @@ var data = {
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
 					{code = 'dialogue_counter', name = 'sympathy', op = '+'},
-					]
+					],
+				type = 'next_dialogue'
 			},
 			{
 				code = 'princess_recriut_1st_persuation_9',
@@ -499,7 +501,7 @@ var data = {
 				text = "DIALOGUECONTINUE",
 				reqs = [{type = 'local_counter', name = 'sympathy', add_stat = 'charm_factor', operant = 'gte', value = 10, check = true}],
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'persuade_1_completed'}],
+				bonus_effects = [{code = 'decision', value = 'persuade_1_completed'}, {code = 'update_city'}],
 				type = 'next_dialogue'
 			},
 			{
@@ -591,7 +593,7 @@ var data = {
 						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}],
+						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}],
 					},
 				],
 			},
@@ -615,7 +617,7 @@ var data = {
 						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						bonus_effects = [], #add second persuation trigger here
+						bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}], #add second persuation trigger here
 					},
 				],
 			},
@@ -638,7 +640,7 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
-				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}], #add second persuation trigger here
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}], #add second persuation trigger here
 			},
 		],
 	},
@@ -657,7 +659,7 @@ var data = {
 				reqs = [],
 				type = 'next_dialogue',
 				dialogue_argument = 1,
-				bonus_effects = [{code = 'decision', value = 'AnastasiaPersuasionNextday'}], #add second persuation trigger here
+				bonus_effects = [{code = 'decision', value = 'AnastasiaPersuasionNextday'}, {code = 'update_city'}], #add second persuation trigger here
 			},
 		],
 	},
@@ -703,7 +705,14 @@ var data = {
 						reqs = [],
 						dialogue_argument = 1,
 						type = 'next_dialogue',
-						remove_after_first_use = true
+						#remove_after_first_use = true
+					},
+					{
+						code = 'princess_mindbreak_1',
+						text = "ANASTASIA_PERSUASION_OPTION_2",
+						reqs = [{type = 'decision', value = 'mindbreak_enabled', check = true}],
+						dialogue_argument = 1,
+						type = 'next_dialogue'
 					},
 					{
 						code = 'close',
@@ -751,6 +760,7 @@ var data = {
 				reqs = [],
 				dialogue_argument = 1,
 				type = 'next_dialogue',
+				bonus_effects = [{code = 'remove_decision', value = 'AnastasiaPersuasionNextday'}, {code = 'add_timed_event', value = 'princess_recruit_timeout_message', args = [{type = 'add_to_date', date = [1,1], hour = 7}]}, {code = 'update_city'}]
 			},
 		],
 	},
@@ -1275,7 +1285,7 @@ var data = {
 				text = "DIALOGUECLOSE",
 				type = 'next_dialogue',
 				reqs = [],
-				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}],
+				bonus_effects = [{code = 'add_timed_event', value = 'princess_declaration_1', args = [{type = 'add_to_date', date = [3,3], hour = 8}]}, {code = 'update_city'}],
 				dialogue_argument = 1,
 			},
 		],
