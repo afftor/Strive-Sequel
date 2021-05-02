@@ -18,7 +18,7 @@ onready var Journal = $MansionJournalModule
 onready var Locations = $MansionLocationsModule
 onready var submodules = []
 
-export var test_mode = true
+export var test_mode = false
 export var generate_test_chars = false
 
 

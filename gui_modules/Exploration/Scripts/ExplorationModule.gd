@@ -1023,12 +1023,13 @@ func open_location_actions():
 				newbutton.text = tr('Combat')
 				newbutton.connect("toggled", self, 'meet_duncan_event', [newbutton])
 			return
-	if active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
-			newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
-			newbutton.toggle_mode = true
-			newbutton.text = tr('Search')
-			newbutton.connect("toggled", self, 'search_kobold', [newbutton])
-			return
+	if active_location.has('completed'):
+		if active_location.completed && test_stage("princess_search", "stage2") && (ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_1") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_2") || ResourceScripts.game_progress.seen_dialogues.has("AMELIAFINDPRINCESS1_3")) && (!ResourceScripts.game_progress.decisions.has("BlockSearch")):
+				newbutton = input_handler.DuplicateContainerTemplate($LocationGui/DungeonInfo/ScrollContainer/VBoxContainer)
+				newbutton.toggle_mode = true
+				newbutton.text = tr('Search')
+				newbutton.connect("toggled", self, 'search_kobold', [newbutton])
+				return
 	match active_location.type:
 		'dungeon':
 			enter_dungeon()
