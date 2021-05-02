@@ -244,7 +244,7 @@ var dungeon_encounter_chance = 0.2
 var exp_scroll_quest_reward = false
 
 #debug_only
-var allow_remote_intereaction = true
+var allow_remote_intereaction = false
 var no_event_wait_time = false
 var ignore_quest_requirements = false
 

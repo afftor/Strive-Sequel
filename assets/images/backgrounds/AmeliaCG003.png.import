@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/AmeliaCG003.png-0a63aed5a73ac78d520d14c9dffb5904.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/images/backgrounds/AmeliaCG003.png"
+dest_files=[ "res://.import/AmeliaCG003.png-0a63aed5a73ac78d520d14c9dffb5904.stex" ]
 
 [params]
 

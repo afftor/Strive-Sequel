@@ -65,7 +65,7 @@ var data = {
 			tags = ['dialogue_scene'],
 			text = [{text = "RETURNTODUNCAN1", reqs = []}],
 			options = [
-			{code = 'fred_return_to_duncan_answer_1', text = "RETURNTODUNCAN_IF_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
+			{code = 'fred_return_to_duncan_2', text = "RETURNTODUNCAN_IF_FRED_QUESTION1", reqs = [], dialogue_argument = 1, type = 'next_dialogue'}],
 			},
 		]
 	},

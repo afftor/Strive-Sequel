@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex"
+path="res://.import/button_speechbubble.png-cc7e46a67ce5d169acc00ecacff2a781.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/enemies/golem.png"
-dest_files=[ "res://.import/golem.png-6bd700fb38dabddb95a4b15e6f57066f.stex" ]
+source_file="res://assets/Textures_v2/CHAR_INFO/Panels/button_speechbubble.png"
+dest_files=[ "res://.import/button_speechbubble.png-cc7e46a67ce5d169acc00ecacff2a781.stex" ]
 
 [params]
 

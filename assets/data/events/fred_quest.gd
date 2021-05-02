@@ -50,7 +50,7 @@ var data = {
 		],
 		options = [
 			{code = "fred_talk_1", text = "FINDFRED_OPTION1", reqs = [], dialogue_argument = 1, type = "next_dialogue"},
-			{code = 'quest_fight', text = "FINDFRED_OPTION2", reqs = [], args = 'mercenary_fred_quest', dialogue_argument = 1},
+			{code = 'quest_fight', text = "FINDFRED_OPTION2", reqs = [], args = 'mercenary_fred_quest', type = 'next_dialogue', dialogue_argument = 1},
 		]
 	},
 	

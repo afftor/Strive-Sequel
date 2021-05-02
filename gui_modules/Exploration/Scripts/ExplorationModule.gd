@@ -2313,7 +2313,7 @@ func location_purchase(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $BuyLocation, pressed_button)
 	input_handler.ClearContainer($BuyLocation/ScrollContainer/VBoxContainer)
 	for i in worlddata.dungeons.values():
-		if i.type != 'dungeon':
+		if i.type != 'dungeon' || i.code.findn('quest') >= 0:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BuyLocation/ScrollContainer/VBoxContainer)
 		newbutton.set_meta("location_name", i.name)

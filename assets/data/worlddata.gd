@@ -1398,10 +1398,10 @@ var dungeons = {
 		{trigger = 'finish_combat', event = 'custom_event', args = 'half_dungeon_explored_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'HALF_DUNGEON_EXPLORED_START'}, {code = 'stage', value = 10 / 2 - 1, operant = 'gte'}]},
 		{trigger = 'finish_combat', event = 'custom_event', args = 'pre_final_boss_start',reqs = [{code = 'value_check', type = 'dialogue_seen', check = false, value = 'PRE_FINAL_BOSS_START'}, {code = 'stage', value = 9 - 2, operant = 'gte'}]}]
 	},
-	unique_final_operation_location = {
-		code = 'unique_final_operation_location',
+	quest_final_operation_location = {
+		code = 'quest_final_operation_location',
 		type = 'dungeon',
-		name = 'unique_final_operation',
+		name = "Rebels' Hideout",
 		classname = '',
 		descript = '',
 		difficulty = 'easy',
@@ -1676,7 +1676,7 @@ var pregen_characters = {
 		age = 'teen',
 		slave_class = 'slave',
 		height = 'short',
-		hair_color = 'blond',
+		hair_color = 'brown',
 		hair_length = 'waist',
 		hair_style = 'straight',
 		eye_color = 'blue',

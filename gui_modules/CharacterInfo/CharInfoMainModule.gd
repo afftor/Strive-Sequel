@@ -38,6 +38,7 @@ func update():
 	for button in SummaryModule.get_node("VBoxContainer").get_children():
 		button.disabled = active_person.is_on_quest()
 	SlaveInfo.get_node("DietButton").disabled = active_person.is_on_quest()
+	$TalkButton.visible = active_person.get_stat('unique') in ['kurdan', 'zephyra']
 
 
 func set_state(state):

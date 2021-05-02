@@ -645,7 +645,7 @@ var TranslationDict = {
 	SKILLELEMENTAL_WEAKNESS = "Elemental Weakness",
 	SKILLELEMENTAL_WEAKNESSDESCRIPT = "Target enemy receive -40 Fire, Air, Earth and Water resists for 3 turns.",
 	SKILLELEMENTAL_PROTECTION = "Elemental Protection",
-	SKILLELEMENTAL_PROTECTIONDECRIPT = "Buff Ally Row: +25 Fire, Air, Earth and Water resists for 3 turns.",
+	SKILLELEMENTAL_PROTECTIONDESCRIPT = "Buff Ally Row: +25 Fire, Air, Earth and Water resists for 3 turns.",
 	SKILLTAUNT = "Taunt",
 	SKILLTAUNTDESCRIPT = "Forces all enemies to focus on caster.",
 	SKILLCAMOUFLAGE = "Camouflage",
@@ -2544,7 +2544,7 @@ var TranslationDict = {
 	SERVANTSELECTIONFINISH7_2 = "— Don't worry. We have a speaker who will make you look like you are the only reason the city hasn't collapsed in the past week. Just smile and look confident.",
 	SERVANTSELECTIONFINISH7_3 = "— Haha, just wait until it's over, I'll keep you company then.",
 	SERVANTSELECTIONFINISH7_ANY = "— It seems this one is done. You'll be up in ten minutes and... \n\n Before Amelia could answer, a deafening blast erupted from the podium, and a group of people materialized there. Led by a young blonde girl adorned in shiny armor and luxurious clothes.",
-	SERVANTSELECTIONFINISH8 = "Before anyone could react, the square was covered by a magic sphere, blocking any potential avenues for retreat or assistance. However, nobody from the invaders showed any unnecessary hostility. \n\n The girl spoke. \n\n— People of Aliron, the Human Lands. I'm Anastasia, Daughter of King Alber. My father was mercilessly killed 12 years ago. I swear to avenge him, defeat his enemies and return our kingdom to its former rule. Those who fight for our cause will be rewarded. Please stay strong and help us defeat the wrongdoers. Come seek us and together we will stop this unholy regime." ,
+	SERVANTSELECTIONFINISH8 = "Before anyone could react, the square was covered by a magic sphere, blocking any potential avenues for retreat or assistance. However, none of the invaders showed any apparent hostility. \n\n The girl spoke. \n\n— People of Aliron, the Human Lands. I'm Anastasia, Daughter of King Alber. My father was mercilessly killed 12 years ago. I swear to avenge him, defeat his enemies and return our kingdom to its former rule. Those who fight for our cause will be rewarded. Please stay strong and help us defeat the wrongdoers. Come seek us and together we will stop this unholy regime." ,
 	SERVANTSELECTIONFINISH9 = "A few moments after she finished a bright flash covered the square to hide a magic portal that Anastasia used to escape. The magic barrier fell and people stood dumbstruck at what just happened.",
 	STARTFINALE = "Thank you for playing the alpha version of Strive: Conquest. This project wouldn't be possible without the support of patrons.\n\nYou can keep playing indefinitely",
 	
@@ -2646,7 +2646,7 @@ var TranslationDict = {
 	JOBTUTORIAL2 = "Select an occupation from the list to see its details. Some occupations have different outputs which have to be selected in such cases. You can also adjust working conditions to modify the output.",
 	JOBTUTORIAL3 = "Production is based on the Total Productivity modifier. Different tasks have different additional modifiers, i.e. Stone or Iron Mining will also be affected by \"Collect Efficiency\". Productivity can be viewed at the character's info panel when hovering over.",
 
-	NOSLAVESINMARKET = "No Slaves Avalible.",
+	NOSLAVESINMARKET = "No Slaves Avaliable.",
 	RESETLOADCHARPROFESSION = "Class doesn't match current guild.\nStarting class will be reseted.",
 	TEMPLATETYPENOTMATCH = "Can't use this template. Types doesn't match.",
 
@@ -2684,11 +2684,11 @@ var TranslationDict = {
 
 	# Aliron elections finish
 
-	ALIRONELECTIONSFINISH_LINE1 = """A few hours later, an emergency meeting of the four major guilds was assembled. The leaders and landlords entered a fierce discussion on the current situation.
+	ALIRONELECTIONSFINISH_LINE1 = """A few hours later, an emergency meeting of the four major guilds was assembled. The leaders and landlords entered into a fierce discussion on the current situation.
 	
 {color=aqua|Duncan:— This is ridiculous. Now every peasant will know King Alber's heir is alive. Today of all days, HOW did a large rebel group enter the city undetected? Your guild's duty is specifically to prevent such things, Myr. How do you explain this sabotage?}
 
-{color=yellow|Myr:— How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family,and yet here we have a princess still very much alive, all grown up, and rallying the rebels against us.}""",
+{color=yellow|Myr:— How dare you accuse us of betrayal? I remember it was your duty to dispose of the royal family, and yet here we have a princess still very much alive, all grown up, and rallying the rebels against us.}""",
 
 	ALIRONELECTIONSFINISH_LINE2 = """{color=aqua|Sigmund:— Are ya sure she's actually da princess? Might be she's an imposter. Pretty common tactic fo' dwarven disputes.} 
 	
@@ -3410,7 +3410,7 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_DUNCAN_OPTION_12 = """Great, finally some free time""",
 	AFTER_MINES_MESSAGE = """In the morning you receive a messenger from Duncan who declares you're expected to visit him.""",
 	AFTER_MINES_DUNCAN_OPTION_13 = """I've received the message""",
-	AFTER_MINES_DUNCAN_10 = """— It's time. We've been preparing to siege [townname] which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for a full fledged siege.
+	AFTER_MINES_DUNCAN_10 = """— It's time. We've been preparing to siege Millford which has been captured by rebels at the firsts days of rebellion. Now we finally have enough forces for a full fledged siege.
 
 — I'll be leading it and I have a mission for you. There's a convoy carrying additional food supplies necessary for the operation. You'll have to escort it there. After that, your forces will join the siege""",
 	AFTER_MINES_DUNCAN_OPTION_14 = """This shouldn't be hard""",
@@ -3426,7 +3426,7 @@ Sigmund passes you the pouch with some gold in it.
 	AFTER_MINES_CONVOY_2 = """You order to finish preparations and move out with the convoy.""",
 	AFTER_MINES_CONVOY_3 = """A few hours after you've left town you enter the forest. Eventually you find the thin road among the trees blocked by a fallen log. You order the men to clear it but when they reach it a large group of rebels jump out of the woods in an attempt to stop your mission before it can begin.""",
 	AFTER_MINES_CONVOY_4 = """As you strike down the leader, the remnants of the rebel group quickly retreat into the woods. You've taught them a good lesson and they shouldn't give you any more problems as you continue on your mission.""",
-	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As [townname] gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are reasonably armed. Once in range one of men kneels before you.
+	AFTER_MINES_CONVOY_5 = """Your convoy leaves the forest. As Millford gets closer, you spot a small group of peasants closing on you from the front. You order to be ready for another ambush but as they get closer you notice it's only a couple of families. None of them are reasonably armed. Once in range one of men kneels before you.
 
 — Your highness, I beg you to spare us some food. The war has been ruthless to us and soldiers took nearly all of our stocks. After that we were attacked by goblins and had to migrate. Our children are starving!""",
 	AFTER_MINES_CONVOY_OPTION_2 = """This is awful, you can take as much as you need""",
@@ -3546,7 +3546,7 @@ Duncan:— How long will this thing persist?
 Myr:— I'd not expect it to go down on its own. The divine doesn't always follow the same rules as normal magic.
 
 Duncan:— Damnit...""",
-	BETRAYAL_CONFIRMED_13 = """Duncan:— Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate [townname]. 
+	BETRAYAL_CONFIRMED_13 = """Duncan:— Listen here, [name]. You've shown your resourcefulness earlier. I want you to find a way to remove the barrier. Without it we can finish this battle and liberate Millford. 
 
 Myr:— We will be keeping our forces ready in case they decide the rebels launch a counterattack.""",
 	BETRAYAL_CONFIRMED_OPTION_1 = """I have no idea what to do either""",
@@ -4945,6 +4945,8 @@ Sigmund:— Let's get to da feast already.""",
 	MATERIALBLESSED_DIVINE_SYMBOL = "Blessed Divine Symbol",
 	MATERIALBLESSED_DIVINE_SYMBOLDESCRIPT = "A small coin shaped piece of metal giving off a faint light.",
 	
+	UNIQUECLASS = "Can't be acquired normally",
+	
 	ITEMANASTASIA_BRACELET = "Anastasia's Bracelet",
 	ITEMANASTASIA_BRACELETDESCRIPT = "An expensive bracelet belonging to former princess Anastasia and was gifted by her parents. Understandably, she treats it with care. \n\n{color=yellow|Only equippable by Anastasia}",
 	
@@ -4953,6 +4955,7 @@ Sigmund:— Let's get to da feast already.""",
 	AMELIASCENEOPTION = "I wonder if you could repay me for my work...",
 	
 	UNIQUE_CLASS = "Can't be learned normally",
+	UNIQUE_FINAL_OPERATION_DUNGEON = "Rebel's Hideout",
 
 	ZEPHYRA_EXTRA_GREET = "— You wanted to see me, [name]? You must have some questions, I suppose. Well, ask away.",
 	ZEPHYRA_EXTRA_GREET2 = "— Hello, [master]. How can I serve you? You must want to ask me some questions?",

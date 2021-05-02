@@ -32,7 +32,7 @@ var encounters = {
 	two_guards = {unittype = 'randomgroup', unitcode = 'two_guards', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'two_guards_win', args = []}], lose_effects = [{code = 'start_event', data = 'two_guards_lose', args = []}]},
 	
 	
-	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = '', args = []}], lose_effects = []},
+	mercenary_fred_quest = {unittype = 'randomgroup', unitcode = 'mercenary_fred_quest', bg = 'default', bgm = 'default', win_effects = [{code = 'start_event', data = 'fred_got_after_fight', args = []}], lose_effects = []},
 	
 	
 	
@@ -103,11 +103,11 @@ var enemygroups = {
 	two_guards = {reqs = [], units = {rebel_knight = [1,1], rebel_recruit = [2,2], rebel_healer = [1,1]}},
 	
 	
-	mercenary_fred_quest = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]},
+	mercenary_fred_quest = {reqs = [], units = {bandit_melee = [2,2], bandit_archer = [2,2], bandit_mage = [1,1]}},
 	
-	rebel_group_hideout1 = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]},
-	rebel_group_hideout2 = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]},
-	rebel_group_hideout3 = {rebel_knight = [1,2], rebel_healer = [0,1], rebel_mage = [1,2]},
+	rebel_group_hideout1 = {reqs = [], units = {rebel_recruit = [1,3], rebel_healer = [1,2], rebel_mage = [0,1]}},
+	rebel_group_hideout2 = {reqs = [], units = {rebel_knight = [0,1], rebel_healer = [1,2], rebel_recruit = [1,2]}},
+	rebel_group_hideout3 = {reqs = [], units = {rebel_knight = [1,2], rebel_healer = [0,1], rebel_mage = [1,2]}},
 	greg_boss_fight = {reqs = [], units = {greg = [1,1], rebel_knight = [2,2], rebel_healer = [1,1], rebel_mage = [2,2]}},
 	aire_boss_fight = {reqs = [], units = {rebel_knight = [3,3], aire = [1,1], rebel_healer = [2,2]}},
 	
