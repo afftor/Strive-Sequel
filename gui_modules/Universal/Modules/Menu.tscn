@@ -532,7 +532,19 @@ margin_bottom = 687.654
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "0.4.1a
+bbcode_text = "0.5.0
+Added civil war story arc
+Added an option to start from after the prologue
+Characters now can be generated with sexual skills (based on their virginity/classes)
+Added many missing icons for skills and enemies
+Some enemies have been slightly buffed
+Rebel enemies have been made considerably stronger
+Added some new CGs (including main story)
+Added a few class dialogue checks
+Main menu won't show characters you haven't met yet
+Travel menu has been reworked
+Fixed many other bugs
+0.4.1a
 Fixed reputation not being gained
 Fixed some enemy names and skill issues
 Fixed some loot drops being too high
@@ -884,7 +896,19 @@ Fixed tutorial window issues
 Fixed interaction menu bug
 0.1.0
 Release"
-text = "0.4.1a
+text = "0.5.0
+Added civil war story arc
+Added an option to start from after the prologue
+Characters now can be generated with sexual skills (based on their virginity/classes)
+Added many missing icons for skills and enemies
+Some enemies have been slightly buffed
+Rebel enemies have been made considerably stronger
+Added some new CGs (including main story)
+Added a few class dialogue checks
+Main menu won't show characters you haven't met yet
+Travel menu has been reworked
+Fixed many other bugs
+0.4.1a
 Fixed reputation not being gained
 Fixed some enemy names and skill issues
 Fixed some loot drops being too high

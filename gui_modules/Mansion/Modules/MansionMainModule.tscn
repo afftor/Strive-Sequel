@@ -51,6 +51,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+test_mode = false
 
 [node name="MansionBottomLeftModule" parent="." instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -255,6 +256,7 @@ __meta__ = {
 }
 
 [node name="TestButton" type="Button" parent="."]
+visible = false
 margin_left = 102.757
 margin_top = 246.472
 margin_right = 164.757

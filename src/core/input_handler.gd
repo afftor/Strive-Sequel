@@ -1405,6 +1405,22 @@ func font_size_calculator(label): #, text, font):
 	return new_font
 
 
+func RTLabel_height_fix(label): #bugged and wrong
+	var font = label.get("custom_fonts/normal_font")
+	var new_font = DynamicFont.new()
+	new_font.use_filter = true
+	new_font.font_data = load(font.get_font_data().get_font_path())
+	var new_size = font.get_size()
+	var text_height = label.get_content_height()
+	var label_height = label.get_size().y
+#	var diff = (text_he / (label_width * 0.01)) - 100
+	if text_height > label_height:
+		new_size *= label_height
+		new_size /= text_height
+	new_font.size = new_size
+	label.set("custom_fonts/normal_font", new_font)
+
+
 func append_not_duplicate(list, value):
 	if !list.has(value):
 		list.append(value)

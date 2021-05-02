@@ -1797,6 +1797,7 @@ func update_sell_list():
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
 		newbutton.set_meta('item', item.name)
+		newbutton.set_meta('exploration', true)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
@@ -1844,6 +1845,7 @@ func update_buy_list():
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
 			newbutton.set_meta('item', item.name)
+			newbutton.set_meta('exploration', true)
 			newbutton.connect("pressed", self, "item_purchase", [item, amount])
 			newbutton.visible = (
 				(newbutton.get_meta("type") == buy_category)
@@ -2312,7 +2314,7 @@ func location_purchase(pressed, pressed_button):
 	gui_controller.win_btn_connections_handler(pressed, $BuyLocation, pressed_button)
 	input_handler.ClearContainer($BuyLocation/ScrollContainer/VBoxContainer)
 	for i in worlddata.dungeons.values():
-		if i.type != 'dungeon':
+		if i.type != 'dungeon' || i.code.findn('quest') >= 0:
 			continue
 		var newbutton = input_handler.DuplicateContainerTemplate($BuyLocation/ScrollContainer/VBoxContainer)
 		newbutton.set_meta("location_name", i.name)
