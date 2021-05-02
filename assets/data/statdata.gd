@@ -540,7 +540,8 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
-		default_bonus = 'mul'
+		default_bonus = 'mul',
+		is_negative = true
 	},
 	obDrainIncrease = {
 		code = 'obDrainIncrease',
@@ -548,6 +549,7 @@ var statdata = {
 		descript = '',
 		percent = true,
 		baseicon = 'food_love',
+		is_negative = true
 	},
 	authority_mod = {#never applied stat for some reasons
 		code = 'authority_mod',
@@ -635,6 +637,7 @@ func _ready():
 		if !val.has('direct'): val.direct = false
 		if !val.has('custom_get'): val.custom_get = false
 		if !val.has('skip_process'): val.skip_process = false
+		if !val.has('is_negative'): val.is_negative = false
 	
 #	for st in statdata:
 #		print("'%s':" % st)

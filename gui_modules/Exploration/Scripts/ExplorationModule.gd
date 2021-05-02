@@ -1794,6 +1794,7 @@ func update_sell_list():
 		newbutton.get_node("amount").text = str(ResourceScripts.game_res.materials[i])
 		newbutton.set_meta('type', type)
 		newbutton.set_meta('item', item.name)
+		newbutton.set_meta('exploration', true)
 		newbutton.connect("pressed", self, "item_sell", [item])
 		newbutton.visible = (newbutton.get_meta("type") == sell_category) || sell_category == "all"
 		globals.connectmaterialtooltip(newbutton, item)
@@ -1841,6 +1842,7 @@ func update_buy_list():
 			newbutton.get_node("price").text = str(item.price)
 			newbutton.set_meta('type', type)
 			newbutton.set_meta('item', item.name)
+			newbutton.set_meta('exploration', true)
 			newbutton.connect("pressed", self, "item_purchase", [item, amount])
 			newbutton.visible = (
 				(newbutton.get_meta("type") == buy_category)

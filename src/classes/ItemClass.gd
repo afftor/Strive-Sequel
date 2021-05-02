@@ -298,18 +298,42 @@ func tooltiptext_2():
 			if bonusstats[i] != 0:
 				var value = bonusstats[i]
 				var change = ''
-				if statdata.statdata[i].percent:
-					value = value*100
-				text += statdata.statdata[i].name + ': {color='
-				if value > 0:
-					change = '+'
-					text += 'k_green|' + change
-				else:
-					text += 'k_red|'
-				value = str(value)
-				if statdata.statdata[i].percent:
-					value = value + '%'
-				text += value + '}\n'
+				text += '\n' + statdata.statdata[i].name + ': {color='
+				match statdata.statdata[i].default_bonus:
+					"add":
+						if statdata.statdata[i].percent:
+							value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						if statdata.statdata[i].percent:
+							value = value + '%'
+					"add_part":
+						value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						value = value + '%'
+					"mul":
+						value = value - 1.0
+						value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						value = value + '%'
+				text += value + '}'#\n'
 		text += tooltipeffects()
 	elif itemtype == 'usable':
 		text += tr("INPOSESSION") + ': ' + str(amount)
@@ -353,6 +377,8 @@ func tooltipeffects():
 			text += Effectdata.effect_table[i].descript + "\n"
 #		text += "{color=" + Effectdata.effects[i].textcolor + '|' + Effectdata.effects[i].descript
 #		text += '}\n'
+	if text != "":
+		text = "\n" + text
 	return text
 
 
