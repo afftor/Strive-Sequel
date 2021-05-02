@@ -118,6 +118,7 @@ func material_tooltip(data, workers_data = {}):
 	$Cost/Label.text = str(item.price)
 	$Cost.visible = int(item.price) != 0
 	textnode.bbcode_text = globals.TextEncoder(text)
+	#input_handler.RTLabel_height_fix(textnode) #for it is working wrong, we need to think some different approach 
 	$InfoText.show() #some materials have their descriptions longer than can be displayed properly - mb need to remake some part of this scene
 	$InfoText2.hide()
 	$InfoText3.hide()
@@ -170,17 +171,41 @@ func gear_detailed_tooltip(data, item = null):
 			if material.parts[i][k] != 0:
 				var value = material.parts[i][k]
 				var change = ''
-				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
-					value = value*100
 				text += '\n' + statdata.statdata[k].name + ': {color='
-				if value > 0:
-					change = '+'
-					text += 'green|' + change
-				else:
-					text += 'red|'
-				value = str(value)
-				if k in ['hpmod', 'manamod','task_energy_tool', 'task_efficiency_tool']:
-					value = value + '%'
+				match statdata.statdata[k].default_bonus:
+					"add":
+						if statdata.statdata[k].percent:
+							value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						if statdata.statdata[k].percent:
+							value = value + '%'
+					"add_part":
+						value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						value = value + '%'
+					"mul":
+						value = value - 1.0
+						value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[k].is_negative or value < 0 and statdata.statdata[k].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						value = value + '%'
 				text +=  value + '}'
 		text += '\n'
 #		for k in material.parts[i]:
@@ -213,17 +238,42 @@ func geartemplete_tooltip(data):
 			if item.basestats[i] != 0:
 				var value = item.basestats[i]
 				var change = ''
-				if statdata.statdata[i].percent:
-					value = value*100
-				text += statdata.statdata[i].name  + ': {color='
-				if value > 0:
-					change = '+'
-					text += 'green|' + change
-				else:
-					text += 'red|'
-				value = str(value)
-				if statdata.statdata[i].percent:
-					value = value + '%'
+				text += '\n' + statdata.statdata[i].name + ': {color='
+				match statdata.statdata[i].default_bonus:
+					"add":
+						if statdata.statdata[i].percent:
+							value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						if statdata.statdata[i].percent:
+							value = value + '%'
+					"add_part":
+						value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						value = value + '%'
+					"mul":
+						value = value - 1.0
+						value = value*100
+						if value > 0:
+							change = '+'
+						if value > 0 and !statdata.statdata[i].is_negative or value < 0 and statdata.statdata[i].is_negative:
+							text += 'green|' + change
+						else:
+							text += 'red|'
+						value = str(value)
+						value = value + '%'
+				text +=  value + '}'
 				text += value + '}\n'
 	
 	
