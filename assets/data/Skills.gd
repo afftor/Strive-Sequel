@@ -2513,7 +2513,7 @@ var Skilllist = {
 	},
 	resurrect = {
 		code = 'resurrect',
-		new_syntax = true,
+#		new_syntax = true,
 		descript = '',
 		icon = load('res://assets/images/iconsskills/Innervate.png'),
 		type = 'combat', 

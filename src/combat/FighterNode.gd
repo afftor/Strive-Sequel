@@ -68,9 +68,12 @@ func update_hp():
 		else:
 			args.type = 'heal'
 			args.color = Color(0.2,0.8,0.2)
-		if hp <= 0: args.damage_float = false
+		if hp <= 0: 
+			args.damage_float = false
+			if args.newhp > 0:
+				args.res = true
 		hp = fighter.hp
-		if hp < 0:
+		if args.newhp < 0:
 			args.newhp = 0
 			args.newhpp = 0
 			hp = 0
@@ -88,9 +91,12 @@ func update_mana():
 		var data = {node = self, time = input_handler.combat_node.turns,type = 'mp_update',slot = 'MP', params = args}
 		animation_node.add_new_data(data)
 
+
 func defeat():
 	var data = {node = self, time = input_handler.combat_node.turns, type = 'defeat', slot = 'SFX', params = {}}
 	animation_node.add_new_data(data)
+
+
 
 func update_shield(): 
 	var args = {}
@@ -191,3 +197,6 @@ func update_mp_label(newmp, newmpp):
 func noq_defeat():
 	$Icon.material = load("res://assets/sfx/bw_shader.tres")
 #	set_process_input(false)
+
+func resurrect():
+	$Icon.material = null

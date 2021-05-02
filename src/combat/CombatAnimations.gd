@@ -327,6 +327,8 @@ func hp_update(node, args):
 	#update hp label
 	tween.interpolate_callback (node, delay, 'update_hp_label', args.newhp, args.newhpp)
 	#node.update_hp_label(args.newhp, args.newhpp)
+	if args.has("res"):
+		tween.interpolate_callback (node, delay, 'resurrect')
 	tween.start()
 	return delaytime + delay
 
