@@ -718,11 +718,13 @@ func handle_scene_options(scene):
 					continue
 			var newbutton = input_handler.DuplicateContainerTemplate($ScrollContainer/VBoxContainer)
 			newbutton.set("modulate", Color(1, 1, 1, 0))
+			if i.has('active_char_translate'):
+				i.text = input_handler.active_character.translate(i.text)
+			elif i.has('master_translate'):
+				i.text = ResourceScripts.game_party.get_master().translate(i.text)
 			newbutton.get_node("Label").bbcode_text = tr(i.text)
 			newbutton.hotkey = option_number
 			yield(get_tree(), 'idle_frame')
-			if i.has('active_char_translate'):
-				newbutton.get_node("Label").bbcode_text = input_handler.active_character.translate(tr(i.text))
 			#newbutton.get_node("hotkey").text = str(option_number)
 #			if newbutton.get_node("Label").get_v_scroll().is_visible():
 #				newbutton.rect_min_size.y = newbutton.get_node("Label").get_v_scroll().get_max()+10

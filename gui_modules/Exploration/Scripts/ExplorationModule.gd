@@ -110,6 +110,8 @@ func enslave_select():
 	input_handler.scene_characters.append(character)
 	input_handler.interactive_message('enslave', '', {})
 	input_handler.update_slave_list()
+	sell_slave()
+	
 
 
 func open_journal(pressed):

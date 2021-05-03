@@ -356,24 +356,6 @@ var materiallist = {
 		tier = '',
 		tags = ['no_random'],
 	},
-	mythril = {
-		code = 'mythril',
-		name = '',
-		descript = '',
-		adjective = '',
-		icon = load("res://assets/images/iconsitems/item_obsidian.png"),
-		price = 20,
-		progress_per_item = 15,
-		progress_formula = 'mining_stone',
-		tool_type = 'pickaxe',
-		workstat = 'physics',
-		workmod = 'mod_collect',
-		type = 'stone',
-		tier = 'medium',
-		tags = [],
-		color = Color('a980ca'),
-		parts = {},
-	},
 	
 	fishcakes = {
 		code = 'fishcakes',
@@ -2550,7 +2532,7 @@ var recipes = {
 	
 	divine_symbol = {
 		code = 'divine_symbol',
-		materials = {mythril = 5},
+		materials = {mithril = 5},
 		items = {},
 		unlockreqs = [{type = 'active_quest_stage', value = 'divine_symbol_quest', stage = 'stage2'},
 		{type = 'has_material', operant = 'lt', value = 1, material = 'divine_symbol'}],

@@ -128,7 +128,7 @@ var data = {
 		options = [ {
 			code = 'after_mines_duncan_5', text = "AFTER_MINES_DUNCAN_OPTION_14", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
 		}, {
-			code = 'after_mines_duncan_5', text = "AFTER_MINES_DUNCAN_OPTION_15", reqs = [], dialogue_argument = 2, type = 'next_dialogue'
+			code = 'after_mines_duncan_5', text = "AFTER_MINES_DUNCAN_OPTION_15", master_translate = true, reqs = [], dialogue_argument = 2, type = 'next_dialogue'
 		} ],
 	},
 	

@@ -478,7 +478,7 @@ func _on_TestButton_pressed():
 
 func test_mode():
 	ResourceScripts.game_progress.allow_skip_fights = true
-	#variables.allow_remote_intereaction = false
+	variables.allow_remote_intereaction = true
 	ResourceScripts.game_world.make_world()
 	if true:
 		var character = ResourceScripts.scriptdict.class_slave.new()
@@ -501,6 +501,7 @@ func test_mode():
 	#	character.add_stat('wits', 100)
 		character.add_stat('hpmax', 100)
 		character.set_stat('hair_length','bald')
+		character.set_stat('wits_factor', 5)
 		character.unlock_class("master")
 		character.unlock_class("worker")
 		character.unlock_class("apprentice")
@@ -752,11 +753,11 @@ func test_mode():
 		# )
 #		globals.common_effects(
 #			[
-#				{code = "make_loot", pool = [['easy_chest_usable',1]]},
+#				{code = "make_loot", pool = [['hard_boss_chest',1]]},
 #				{code = 'open_loot'}
 #			]
-#
 #		)
+		
 		character.mp = 10
 		var tmp = {}
 		tmp.oral = 70
@@ -775,7 +776,7 @@ func test_mode():
 		newslave.set_slave_category('servant')
 		ResourceScripts.game_party.add_slave(newslave)
 		
-		input_handler.interactive_message('final_operation_start', '', {})
+		input_handler.interactive_message('dungeon_find_chest_easy', '', {})
 		#input_handler.interactive_message('looking_for_princess_2', '', {})
 		#globals.common_effects([{code = 'progress_quest', value = 'princess_search', stage = 'stage2'}])
 		#ResourceScripts.game_progress.decisions.append("mindbreak_enabled")
