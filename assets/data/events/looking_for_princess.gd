@@ -322,9 +322,10 @@ var data = {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'gte', value = 5}],
 				image = null, tags = ['dialogue_scene'], character = 'elf_priestess', character2 = 'anastasia',
 				text = [{text = "LOOKING_FOR_PRINCESS_31", reqs = []}], 
-				common_effects = [{code = 'play_sound', value = 'slap'}],
+				common_effects = [{code = 'play_sound', value = 'slap'}, {code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
+		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 				options = [ {
-					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1
+					code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, bonus_effects = 'update_location'
 				} ],
 			}, {
 				reqs = [{code = 'stat', stat = 'physics_factor', operant = 'lt', value = 5}], character = 'elf_priestess', character2 = 'anastasia',
@@ -436,7 +437,7 @@ var data = {
 		text = [{text = "LOOKING_FOR_PRINCESS_43", reqs = []}], common_effects = [{code = 'decision', value = 'PrincessObtained'}, #Anastasia is captured alive
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage5'}],
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 	
@@ -484,7 +485,7 @@ var data = {
 		{text = "LOOKING_FOR_PRINCESS_51", reqs = [], previous_dialogue_option = 3}], 
 		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 	
@@ -495,7 +496,7 @@ var data = {
 		{code = 'progress_quest', value = 'princess_search', stage = 'stage4'}],
 		
 		options = [ {
-			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue'
+			code = 'close', text = "DIALOGUECLOSE", reqs = [], dialogue_argument = 1, type = 'next_dialogue', bonus_effects = [{code = 'update_location'}]
 		}],
 	},
 }
