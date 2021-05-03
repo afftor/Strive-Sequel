@@ -22,6 +22,7 @@ var locs_count = {}
 var loc_filter = 'all'
 
 func _ready():
+	add_to_group("pauseprocess")
 	selector.get_node("SelectorLeft").connect('pressed', self, 'change_filter', [-1])
 	selector.get_node("SelectorRight").connect('pressed', self, 'change_filter', [1])
 	selector.get_node("SelectorMain").connect('pressed', self, 'toggle_selector', [false])
@@ -33,7 +34,7 @@ func _ready():
 
 
 func show():
-	gui_controller.clock.changespeed(0)
+#	gui_controller.clock.changespeed(0)
 	gui_controller.clock.visible = false
 	update_lists()
 	selector.get_node("SelectorMain").pressed = false
